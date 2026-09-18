@@ -1,0 +1,36 @@
+{
+  "added": "2026-09-01",
+  "capability": "Stdlib CCC vault harvest / snapshot toolchain: plan, snapshot, verify, and self-test a synthetic Class D dead-end box with gold-out-only copies and fail-closed isolation.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "host/ccc_snapshot_toolchain.py",
+    "test_ccc_snapshot_toolchain.py",
+    "ground/CCC_VAULT_HARVEST.md",
+    "inventory/ccc_snapshot_protocol.json",
+    "ccc-snapshot-toolchain.html",
+    "p/ccc-snapshot-toolchain-working-20260901-01.md"
+  ],
+  "dependencies": [],
+  "id": "ccc-snapshot-toolchain-working-20260901-01",
+  "name": "CCC snapshot toolchain",
+  "next_gap": "Keep HOLD / BUILD-AND-VERIFY; operator private CCC run stays local; do not remint the false-complete ship-loop card.",
+  "owner_subsystem": "harvest",
+  "public_entrypoint": "ccc-snapshot-toolchain.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": false,
+    "resources": false
+  },
+  "resource_links": [
+    "ccc-snapshot-toolchain.html",
+    "ground/CCC_VAULT_HARVEST.md",
+    "p/ccc-snapshot-toolchain-working-20260901-01.md",
+    "https://github.com/woahwhattheheck/commons/issues/7238"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_ccc_snapshot_toolchain.py",
+    "host/ccc_snapshot_toolchain.py"
+  ]
+}

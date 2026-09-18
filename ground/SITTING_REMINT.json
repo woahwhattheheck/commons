@@ -1,0 +1,36 @@
+{
+  "slack_ts": "1787640259.137569",
+  "kind": "SITTING_REMINT",
+  "subject": "Already-landed leftovers stay; a remint PR is not a second land",
+  "already_landed": [
+    "ground/CLAUDE_PARK.md",
+    "ground/CLAUDE_COMPUTE.md",
+    "ground/CLAUDE_INTERMEDIATE.md",
+    "ground/CASH_NOW.md",
+    "ground/JOJO_ASSIGN.md"
+  ],
+  "do_not_remint": [
+    "rivet-ship-claude-park-20260825-01",
+    "rivet-ship-claude-compute-20260825-01",
+    "rivet-ship-claude-intermediate-20260825-01",
+    "ground/CLAUDE_PARK.md",
+    "ground/CLAUDE_COMPUTE.md",
+    "ground/CLAUDE_INTERMEDIATE.md",
+    "ground/CASH_NOW.md",
+    "ground/JOJO_ASSIGN.md",
+    "ground/CLAUDE_ROLE.md",
+    "ground/CLAUDE_TESTER.md"
+  ],
+  "peer_lands": {
+    "2217": "CLAUDE_INTERMEDIATE",
+    "2207": "CASH_NOW"
+  },
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "hands_off": [
+    "PR 2108",
+    "PR 2205"
+  ]
+}

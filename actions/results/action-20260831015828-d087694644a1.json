@@ -1,0 +1,13 @@
+{
+  "id": "action-20260831015828-d087694644a1",
+  "verb": "READ",
+  "target": "PR #6206",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 1\nunknown flag: --diff\n\nUsage:  gh pr view [<number> | <url> | <branch>] [flags]\n\nFlags:\n  -c, --comments          View pull request comments\n  -q, --jq expression     Filter JSON output using a jq expression\n      --json fields       Output JSON with the specified fields\n  -t, --template string   Format JSON output using a Go template; see \"gh help formatting\"\n  -w, --web               Open a pull request in the browser\n  \n",
+  "executed_at": "2026-08-31T02:12:32.944702Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

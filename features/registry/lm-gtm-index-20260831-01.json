@@ -1,0 +1,38 @@
+{
+  "added": "2026-08-31",
+  "capability": "LLM-native compose/query layer over existing GTM ledgers. One INDEX, live next-actions, open-by-reference, overlay events. Not a second CRM or contact book.",
+  "carrier": "GROK",
+  "claimed_paths": [
+    "host/lm_gtm_index.py",
+    "test_lm_gtm_index.py",
+    "revenue/lm_gtm_index/INDEX.jsonl",
+    "revenue/lm_gtm_index/state.json",
+    "lm-gtm-index.html",
+    "p/lm-gtm-index-20260831-01.md"
+  ],
+  "dependencies": [
+    "website-people-email-book-20260830-01"
+  ],
+  "id": "lm-gtm-index-20260831-01",
+  "name": "LLM-native GTM index",
+  "next_gap": "Owner mailbox still required for live send. Do not mint a second CRM. Do not claim sends, bookings, or cash.",
+  "owner_subsystem": "lm-gtm-index",
+  "public_entrypoint": "lm-gtm-index.html",
+  "related": {
+    "boards": true,
+    "current_work": true,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "lm-gtm-index.html",
+    "revenue/lm_gtm_index/README.md",
+    "website-people-email-book.html",
+    "p/lm-gtm-index-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_lm_gtm_index.py",
+    "host/lm_gtm_index.py"
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "slack_ts": "1787647999.742959",
+  "kind": "H002",
+  "subject": "Filesystem discovery is outside compat.claude; a Slack first-clean receipt is not a land",
+  "grok_build": "1.0.5",
+  "discovery_surfaces": [
+    "~/.claude/settings.json",
+    "~/.claude/plugins/installed_plugins.json",
+    "direct Claude plugin directories",
+    "marketplace metadata"
+  ],
+  "discovery_gated_by_compat": false,
+  "imported_true_gates": "enabledPlugins merge only",
+  "disabled_means": "discover-but-don't-load",
+  "inspect_can_show_enabled": true,
+  "restore_registry": false,
+  "patch_upstream": "DO_NOT_PATCH_YET",
+  "containment": {
+    "registry_maps": "EMPTY",
+    "payload_cache": "INTACT",
+    "hygiene_before_job": "host/grok_claude_hygiene.py PASS 0 Claude cells/plugins/skills/hooks/MCP",
+    "claude_verdict_lane": false,
+    "opus_available": true
+  },
+  "token_receipt": {
+    "calls": 32,
+    "total_tokens": 3125077,
+    "input": 173401,
+    "cache_read": 2914560,
+    "output": 37116,
+    "reasoning": 19107,
+    "quota_429": false,
+    "state": "CARRIER_ONLY until this leftover plus p/{id}.md on official current main"
+  },
+  "xhigh_lanes": [
+    "ARCHITECT",
+    "SKEPTIC",
+    "false-zero estate audit"
+  ],
+  "already_landed": [
+    "ground/GROK_HYGIENE.md",
+    "host/grok_hygiene.py",
+    "ground/GROK_CLAUDE_HYGIENE.md",
+    "host/grok_claude_hygiene.py",
+    "ground/SUPERGROK_HEAVY.md",
+    "host/supergrok_heavy.py",
+    "ground/HEAVY_LANES.md",
+    "host/heavy_lanes.py"
+  ],
+  "do_not_remint": [
+    "GROK_HYGIENE",
+    "GROK_CLAUDE_HYGIENE",
+    "SUPERGROK_HEAVY",
+    "HEAVY_LANES",
+    "REVIEW_LANE",
+    "MUHL_TRAIN_BRIDGE",
+    "rivet-ship-grok-hygiene-20260825-01",
+    "rivet-ship-supergrok-heavy-20260825-01",
+    "rivet-ship-review-lane-20260825-01"
+  ],
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "hands_off": [
+    "PR 2108",
+    "PR 2286",
+    "SPECTER",
+    "titan --go",
+    "~/.claude",
+    "~/.grok",
+    "upstream patch"
+  ]
+}

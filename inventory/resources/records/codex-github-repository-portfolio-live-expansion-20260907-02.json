@@ -1,0 +1,99 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-github-repository-portfolio-live-expansion-20260907-02",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "selected_resource": "github-repository-portfolio",
+  "observed_at": "2026-09-07T04:35:09Z",
+  "before": {
+    "capacity": "30_ACCESSIBLE_REPOSITORIES",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "evidence_freshness": "EXPIRED_BY_NEW_REPOSITORY_ACCESS"
+  },
+  "after": {
+    "capacity": "32_ACCESSIBLE_REPOSITORIES",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "authority": "SHARED_ALL_CARRIERS; SHIP_TO_WOAHWHATTHEHECK_ONLY; PUBLIC_DETAILS_ONLY; PRIVATE_CAPACITY_AGGREGATE_ONLY",
+    "holder": "Commons",
+    "activation_base_main_sha": "4da8a89435a5a04ce460ee28c041ed868bb6328a"
+  },
+  "concrete_consumer": "Every Commons builder, recovery/release agent, Queue Manager and Resource Master route selector.",
+  "measurable_outcome": "Authenticated pagination reconciles 32 accessible repositories as 19 public plus 13 private. Nineteen public heads are exact and private capacity remains aggregate-only.",
+  "repository_truth": {
+    "accessible_repositories": 32,
+    "public_repositories": 19,
+    "private_repositories": 13,
+    "public_heads_persisted": 19,
+    "private_details_persisted": false,
+    "repositories_mutated": 0,
+    "branches_mutated": 0,
+    "deployments_performed": 0
+  },
+  "discovered_resources": [
+    {
+      "name": "kaggle-account-binding",
+      "stage": "REACHABLE",
+      "condition": "CONSTRAINED",
+      "evidence": "Fresh provider receipt proves a Google-linked Kaggle account road.",
+      "boundary": "No live session, contest eligibility, terms acceptance, dataset access, quota, entry, submission, ranking, prize, payout, revenue or cash is inferred."
+    }
+  ],
+  "delta": {
+    "previous_terminal_main_sha": "9256a90fe96a60474375f3bd8e5d4d3746f0e656",
+    "measurement_main_sha": "7897a8ddf041d5f43fac9c8ae98f3328b37f652b",
+    "material_state_changes": [
+      "The authenticated repository fleet increased from 30 to 32 accessible repositories: 19 public and 13 private.",
+      "The Kaggriculture capacity-improvement PR and Slack source-data publication repair landed after the prior terminal watermark.",
+      "A Google account-data sharing receipt names Kaggle and establishes a shared account-binding resource without proving provider activity.",
+      "A publication-hold notification arrived after the prior terminal watermark; it is evidence of the existing publication boundary, not a new deployable resource."
+    ],
+    "official_or_observed_openai_reset": false
+  },
+  "build_orders": [],
+  "build_order_decision": "No new build order survived deduplication. Repository presence alone does not establish a missing product lane, and the Kaggle account binding routes existing competition work whose entry and submission actions remain owner-only.",
+  "verification": {
+    "focused_tests": "Connected-capability, repository-portfolio and resource-ledger suites pass.",
+    "privacy": "Only public repository names and heads are persisted; private repository count is aggregate-only.",
+    "open_door": "The routing graph adds no authentication, identity, permission, admission, seat or capability gate.",
+    "zero_fabrication": "Repository access and account binding remain separate from deployment, provider activity, entry, submission, acceptance, payment, revenue and cash.",
+    "collision": "No open Commons pull request existed at claim time; the two post-watermark merges were already on the activation base."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-07T04:35:09Z",
+    "prior_terminal_slack_ts": "1788755322.954639",
+    "main_sha_at_claim": "7897a8ddf041d5f43fac9c8ae98f3328b37f652b",
+    "integration_base_main_sha": "4da8a89435a5a04ce460ee28c041ed868bb6328a",
+    "commons_slack_ts": "1788755643.262339",
+    "delegations_slack_ts": "1788753530.074019",
+    "todo_slack_ts": "1788750462.953749",
+    "shipped_builds_slack_ts": "1788750437.175159",
+    "products_slack_ts": "1788344189.473619",
+    "leads_slack_ts": "1788750538.151319",
+    "sales_slack_ts": "1788750579.025069",
+    "gmail_checked_after": "2026-09-07T04:07:41Z",
+    "gmail_new_material_messages": 2,
+    "gmail_next_page": null,
+    "automations": "14 total; 7 enabled; 7 disabled",
+    "connected_tools": "442 callable tools; 427 app tools across 20 families",
+    "skills": "118 fully paginated executor skills",
+    "openai_reset": "No new official OpenAI or directly observed ChatGPT Work/Codex global reset; prior quota state retained."
+  },
+  "projection": {
+    "resources": 77,
+    "producing": 47
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788755643262339",
+    "prior_terminal_receipt": "p/codex-github-repository-portfolio-privacy-refresh-20260907-01.md",
+    "current_public_portfolio": "inventory/resources/repository_portfolio.json",
+    "current_connected_catalog": "inventory/resources/connected_capabilities.json"
+  },
+  "non_claims": [
+    "No private repository identity, head, branch, URL, file name or content is persisted by this activation.",
+    "No repository, device, model, provider, deployment, outreach, resend, bid, registration, entry, submission, payment, settlement, payout, revenue or cash mutation occurred.",
+    "No Cursor, Claude, Grok Bot, grok.com or Titan quota was consumed."
+  ],
+  "titan": "NOT_WRITTEN"
+}

@@ -1,0 +1,104 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-mcp-conformance-product-activation-20260828-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "observed_at": "2026-08-28T04:11:10Z",
+  "selected_resource": "commons-mcp-family",
+  "before": {
+    "stage": "EXERCISED",
+    "condition": "CONSTRAINED",
+    "evidence": "Four overlapping MCP contracts existed, but no single canonical product runner or named buyer/operator consumer was producing value."
+  },
+  "after": {
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "activation_base_main_sha": "9d54aad9ccb1ec33f3f14fb7cdd12f4ce908bd4c",
+    "product_merge_sha": "fa9ac7a3f02d191f4b969e9b6457c684d1447021",
+    "repaired_head_sha": "67fcff1060d5459e181eb0c9289411c5764a6f89"
+  },
+  "concrete_consumer": "MCP buyers, operators, and Commons carrier integrators",
+  "producing_outcome": "Public Git main now provides one canonical dependency-free MCP conformance runner, a no-account product/intake page, a machine-readable $49 receipt-run / $250 focused-repair contract, and focused tests. A real endpoint can be measured immediately; optional tools/call remains caller-explicit.",
+  "exact_blobs": {
+    "carriers/catalog.json": "80b47dfdf03ee4618a23afb677f3b861b75003f9",
+    "host/mcp_conformance.py": "541c1b863a91ebc348c0cd4fac1d7b952b55ad95",
+    "mcp-conformance.html": "a927e7e0183184885d9d5df303ef3e40ab43e8d2",
+    "revenue/mcp_conformance/product.json": "d44dc2b9f2b4d71f5d575e5fe728827e7b740595",
+    "test_mcp_conformance.py": "645ecb9e7fd2daa92eda83bcc6621132b0998efe"
+  },
+  "repair_truth": {
+    "duplicate_root_blob": "541c1b863a91ebc348c0cd4fac1d7b952b55ad95",
+    "duplicate_root_path": "mcp_conformance.py",
+    "current_main_duplicate_root_readback": "NOT_FOUND_404",
+    "result": "ONE_CANONICAL_HOST_RUNNER; ALL_PRODUCT_REFERENCES_UPDATED"
+  },
+  "product_truth": {
+    "state": "PUBLIC_OFFER",
+    "receipt_run_usd": "49.00",
+    "same_day_repair_usd": "250.00",
+    "payment_state": "NOT_CONNECTED",
+    "cash_received_usd": 0,
+    "pages_deployment": "NOT_VERIFIED"
+  },
+  "expired_claims": [
+    "github-repository-portfolio",
+    "localdeviceagent",
+    "owner-workstation",
+    "titan-hands-windows",
+    "action-pad",
+    "muhlnickel-substrate",
+    "public-commerce-road",
+    "commons-carrier-gateway",
+    "commons-swarm-gateway",
+    "gemini-peer-pair",
+    "active-agent-fleet",
+    "stale-claim-capacity",
+    "agent-address-and-memory",
+    "revenue-outreach",
+    "revenue-offer-stack",
+    "github-actions"
+  ],
+  "projection": {
+    "resources": 58,
+    "producing": 22,
+    "fresh": 23,
+    "stale": 16,
+    "event_driven": 14,
+    "needs_probe": 5
+  },
+  "connected_app_aggregate": {
+    "enabled_automations": 3,
+    "github_repository": "PUBLIC; ADMIN/PUSH/PULL REACHABLE",
+    "slack_commons": "READ_AND_WRITE_PRODUCING",
+    "slack_activation_ts": "1787890270.133139",
+    "disabled_automations_excluded": true
+  },
+  "verification": {
+    "focused_runner_tests": "6/6 passed on content-identical runner logic",
+    "repaired_head_open_door_guard": "success",
+    "repaired_head_path_manifest": "success",
+    "repaired_head_muhlnickel_spec_guard": "success",
+    "repaired_head_full_battery": "in progress at merge; not a serialization blocker",
+    "known_broad_baselines": [
+      "infra/host/test_split_drive.py: ModuleNotFoundError sdc_cc",
+      "test_capability_composers.js: owner-directive sentence drift"
+    ],
+    "fresh_main_collision_audit": "zero overlap across five exact paths",
+    "json_reference_secret_checks": "passed",
+    "exact_main_readback": "five blobs matched; obsolete duplicate root path returned 404"
+  },
+  "evidence": {
+    "pull_request": "https://github.com/woahwhattheheck/commons/pull/4474",
+    "merge": "https://github.com/woahwhattheheck/commons/commit/fa9ac7a3f02d191f4b969e9b6457c684d1447021",
+    "slack": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1787890270133139"
+  },
+  "non_claims": [
+    "No buyer, acceptance, outreach, resend, payment authorization, settlement, payout, bank availability, revenue, or cash",
+    "No public Pages deployment or live page byte-match",
+    "No owner device or physical action",
+    "No Cursor, Cursor Grok, Grokbot, or local Grok CLI use",
+    "No Claude tester, verifier, reviewer, QA, or landing role",
+    "No Titan model mutation"
+  ],
+  "titan": "NOT_WRITTEN"
+}

@@ -1,0 +1,10 @@
+{
+  "feature_id": "unique-data-license-door-20260830-01",
+  "from": "UNSEATED",
+  "id": "ev-unique-data-license-receipt-20260830-01",
+  "kind": "RECEIPT",
+  "note": "Named product receipt. Do not remint p/codex-unique-data-license-door-20260830-01.md.",
+  "receipt": "codex-unique-data-license-door-20260830-01",
+  "recorded_at": "2026-08-30T05:15:00Z",
+  "schema": "commons-feature-evidence-v1"
+}

@@ -1,0 +1,3 @@
+CAIRN MARK - sealed at fabrication, withheld from Kite until first surface.
+cell (row=5, col=5) set to 0xC1.
+The marker that says: a player passed here, and did not stay to be buried.

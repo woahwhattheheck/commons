@@ -1,0 +1,33 @@
+--- scheduler.py
++++ scheduler.py
+@@ -53,6 +53,12 @@
+             products=m.SHOPS.get(shop,())
+             if item in products:n+=2 if len(products)==1 else 1
+     if item!='FERTILIZER' and step % int(config.get('townCenterSellInterval',24))==0:n+=1
++    try:
++        from e20_hire_shop import shop_arb_enabled, shop_weight
++        if shop_arb_enabled() and n:
++            n=n*shop_weight(item, shops, m.SHOPS)
++    except Exception:
++        pass
+     return n
+ 
+ 
+@@ -383,6 +389,17 @@
+             self.pending[item]=max(0,q-sold)
+             if not self.pending[item]:self.planned.pop(item,None)
+         self.previous=copy.deepcopy(obs)
++        try:
++            from e11_rival_sell import apply_e11, enabled as _e11
++            if _e11():
++                hist=getattr(self,'_price_hist',[])
++                out,rep=apply_e11(obs,out,hist,config,absorption)
++                self.diagnostics['e11']=rep
++                prices=dict((obs.get('market') or {}).get('prices') or {})
++                hist=list(hist)+[(now,prices)]
++                self._price_hist=[h for h in hist if now-h[0]<=int(config.get('rival_dump_lookback_steps',8))]
++        except Exception:
++            pass
+         return out
+ 
+ 

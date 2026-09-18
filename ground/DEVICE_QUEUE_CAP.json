@@ -1,0 +1,36 @@
+{
+  "source_id": "rivet-ship-queue-cap-collision-20260825-01",
+  "slack_ts": "1787645425.769089",
+  "kind": "DEVICE_QUEUE_CAP",
+  "subject": "JOJO COLLISION_RESOLVED is not a remint and does not clear the backlog",
+  "workflow": ".github/workflows/commons-device-executor.yml",
+  "queue": "single",
+  "cancel_in_progress": false,
+  "historical_backlog_cleared": false,
+  "cancel_historical_runs": false,
+  "already_landed": [
+    ".github/workflows/commons-device-executor.yml",
+    "test_action_executor.py",
+    "p/rivet-ship-device-queue-single-20260825-01.md"
+  ],
+  "do_not_remint": [
+    "jojo-device-queue-collapse-20260825-01",
+    "rivet-ship-device-queue-single-20260825-01",
+    "PR 2264",
+    "PR 2263"
+  ],
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "hands_off": [
+    "CML 2108",
+    "SPECTER 2205",
+    "Spark 2276",
+    "JOJO 2262",
+    "commons.mno",
+    "titan.gguf",
+    "historical Actions runs"
+  ],
+  "note": "A Slack COLLISION_RESOLVED is still not the file. queue: max is a regression. Historical backlog stays NOT_CLEARED."
+}

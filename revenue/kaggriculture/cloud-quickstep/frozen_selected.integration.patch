@@ -1,0 +1,27 @@
+--- a/frozen_selected.py
++++ b/frozen_selected.py
+@@ -6,6 +6,8 @@
+ Original scheduler and sale valuation remain intact.
+ """
+ from scheduler import *
++from seller_snapshot import seller_public_observation
++from selected_sell_core import optimize_lot
+ 
+ class FrozenSelected(SellScheduler):
+     def transform(self, obs, config, base):
+@@ -19,7 +21,7 @@
+         if now==last:
+             out=copy.deepcopy(base)
+             out['market']=parent._terminal_settlement(shed,obs['market']['prices'],out['market'])
+-            self.pending={};self.previous=copy.deepcopy(obs);return out
++            self.pending={};self.previous=seller_public_observation(obs);return out
+         end=min(now+HORIZON,last,(now//24+1)*24-1)
+         # Future controller branch changes are not predicted.
+         for checkpoint,*_ in parent.DECISIONS:
+@@ -102,5 +104,5 @@
+             sold=sum(o[2] for o in out['market'] if o and o[0]=='SELL' and o[1]==item)
+             self.pending[item]=max(0,q-sold)
+             if not self.pending[item]:self.planned.pop(item,None)
+-        self.previous=copy.deepcopy(obs)
++        self.previous=seller_public_observation(obs)
+         return out

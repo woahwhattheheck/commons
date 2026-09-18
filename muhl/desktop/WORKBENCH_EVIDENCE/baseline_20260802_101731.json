@@ -1,0 +1,444 @@
+{
+ "git": {
+  "head": "3f3177b63e1a1755bfffee926af3a0e0b448eb61",
+  "short": "3f3177b",
+  "branch": "archive/desktop-20260801",
+  "dirty": "?? host/pfc_mac_prefix_fab.py",
+  "note": "muhl_builds and titan.gguf NOT tracked; git covers docs/host only"
+ },
+ "substrate": {
+  "path": "C:/llm/models/titan.gguf",
+  "size": 40028316800,
+  "expected": 40028316800,
+  "size_ok": true,
+  "magic": "GGUF"
+ },
+ "registry": {
+  "entries": 4949,
+  "sha16": "db53d6f4db65d3d1"
+ },
+ "genome_journals": {
+  "count": 97,
+  "total_bytes": 2685080251,
+  "files": [
+   {
+    "name": "titan_absence_genome.jsonl",
+    "bytes": 1924
+   },
+   {
+    "name": "titan_accelerator_genome.jsonl",
+    "bytes": 25182
+   },
+   {
+    "name": "titan_aes_genome.jsonl",
+    "bytes": 3280705
+   },
+   {
+    "name": "titan_alloc_roundtrip_genome.jsonl",
+    "bytes": 16662
+   },
+   {
+    "name": "titan_app_genome.jsonl",
+    "bytes": 313
+   },
+   {
+    "name": "titan_bakegp_genome.jsonl",
+    "bytes": 45272
+   },
+   {
+    "name": "titan_batch2_genome.jsonl",
+    "bytes": 1707
+   },
+   {
+    "name": "titan_batch_genome.jsonl",
+    "bytes": 73083
+   },
+   {
+    "name": "titan_bounce_genome.jsonl",
+    "bytes": 1922
+   },
+   {
+    "name": "titan_chaintest_genome.jsonl",
+    "bytes": 105
+   },
+   {
+    "name": "titan_clockcounter_genome.jsonl",
+    "bytes": 356
+   },
+   {
+    "name": "titan_clockrelocate_genome.jsonl",
+    "bytes": 374
+   },
+   {
+    "name": "titan_collider_genome.jsonl",
+    "bytes": 72086
+   },
+   {
+    "name": "titan_cpu32_genome.jsonl",
+    "bytes": 137727
+   },
+   {
+    "name": "titan_cpu32r_genome.jsonl",
+    "bytes": 273980
+   },
+   {
+    "name": "titan_dblinv_genome.jsonl",
+    "bytes": 8536788
+   },
+   {
+    "name": "titan_engine_store_genome.jsonl",
+    "bytes": 2257798
+   },
+   {
+    "name": "titan_eval_genome.jsonl",
+    "bytes": 9285
+   },
+   {
+    "name": "titan_fold_latch_genome.jsonl",
+    "bytes": 6103660
+   },
+   {
+    "name": "titan_fold_phys_genome.jsonl",
+    "bytes": 58500906
+   },
+   {
+    "name": "titan_full_miner_genome.jsonl",
+    "bytes": 6106805
+   },
+   {
+    "name": "titan_fwdphys_genome.jsonl",
+    "bytes": 21571807
+   },
+   {
+    "name": "titan_fwdring_genome.jsonl",
+    "bytes": 356
+   },
+   {
+    "name": "titan_gen_win_genome.jsonl",
+    "bytes": 6104598
+   },
+   {
+    "name": "titan_genwin_shallow_genome.jsonl",
+    "bytes": 12370359
+   },
+   {
+    "name": "titan_genwin_shared_genome.jsonl",
+    "bytes": 10631451
+   },
+   {
+    "name": "titan_golomb_answer_genome.jsonl",
+    "bytes": 49
+   },
+   {
+    "name": "titan_halt_latch_genome.jsonl",
+    "bytes": 2171
+   },
+   {
+    "name": "titan_handshake_genome.jsonl",
+    "bytes": 4172
+   },
+   {
+    "name": "titan_lane_bank_genome.jsonl",
+    "bytes": 1670550865
+   },
+   {
+    "name": "titan_lane_phys_genome.jsonl",
+    "bytes": 18851029
+   },
+   {
+    "name": "titan_lane_sched_genome.jsonl",
+    "bytes": 13095600
+   },
+   {
+    "name": "titan_lookup_genome.jsonl",
+    "bytes": 793
+   },
+   {
+    "name": "titan_mdlconnect_genome.jsonl",
+    "bytes": 7904782
+   },
+   {
+    "name": "titan_membership_genome.jsonl",
+    "bytes": 1435
+   },
+   {
+    "name": "titan_memocache_genome.jsonl",
+    "bytes": 32835
+   },
+   {
+    "name": "titan_mid_sched_genome.jsonl",
+    "bytes": 3373979
+   },
+   {
+    "name": "titan_mine_shallow_genome.jsonl",
+    "bytes": 11354651
+   },
+   {
+    "name": "titan_miner_physical_genome.jsonl",
+    "bytes": 17637033
+   },
+   {
+    "name": "titan_miner_split_genome.jsonl",
+    "bytes": 10633580
+   },
+   {
+    "name": "titan_model_fab_genome.jsonl",
+    "bytes": 14779093
+   },
+   {
+    "name": "titan_model_selfclock_genome.jsonl",
+    "bytes": 23733
+   },
+   {
+    "name": "titan_muhl_control_genome.20260802_055011.reverted.jsonl",
+    "bytes": 602
+   },
+   {
+    "name": "titan_muhl_control_genome.jsonl",
+    "bytes": 4778
+   },
+   {
+    "name": "titan_muhl_fold_genome.jsonl",
+    "bytes": 6103083
+   },
+   {
+    "name": "titan_nonce_list_genome.jsonl",
+    "bytes": 32921
+   },
+   {
+    "name": "titan_nonce_map_genome.jsonl",
+    "bytes": 44463
+   },
+   {
+    "name": "titan_nring2_genome.jsonl",
+    "bytes": 3767368
+   },
+   {
+    "name": "titan_nring2_run_genome.jsonl",
+    "bytes": 480
+   },
+   {
+    "name": "titan_oscall_genome.jsonl",
+    "bytes": 73674
+   },
+   {
+    "name": "titan_oscbank_genome.jsonl",
+    "bytes": 289
+   },
+   {
+    "name": "titan_osccollatz_genome.jsonl",
+    "bytes": 11242
+   },
+   {
+    "name": "titan_oscjunction_genome.jsonl",
+    "bytes": 97
+   },
+   {
+    "name": "titan_oscphys_genome.jsonl",
+    "bytes": 180
+   },
+   {
+    "name": "titan_oscphysstore_genome.jsonl",
+    "bytes": 315
+   },
+   {
+    "name": "titan_oscspaced_genome.jsonl",
+    "bytes": 28134
+   },
+   {
+    "name": "titan_osctight_genome.jsonl",
+    "bytes": 6673
+   },
+   {
+    "name": "titan_oscwide_genome.jsonl",
+    "bytes": 106366
+   },
+   {
+    "name": "titan_oscwire_genome.jsonl",
+    "bytes": 98
+   },
+   {
+    "name": "titan_oscwireall_genome.jsonl",
+    "bytes": 17697
+   },
+   {
+    "name": "titan_pfc_control_genome.20260802_054419.reverted.jsonl",
+    "bytes": 1164
+   },
+   {
+    "name": "titan_pfc_executor_genome.jsonl",
+    "bytes": 6103395
+   },
+   {
+    "name": "titan_pfc_load_genome.jsonl",
+    "bytes": 900
+   },
+   {
+    "name": "titan_pfc_membus_genome.jsonl",
+    "bytes": 432
+   },
+   {
+    "name": "titan_pfc_mine_clk_genome.jsonl",
+    "bytes": 6108515
+   },
+   {
+    "name": "titan_pfc_miner_genome.jsonl",
+    "bytes": 6105407
+   },
+   {
+    "name": "titan_pfc_mmu_genome.jsonl",
+    "bytes": 29657
+   },
+   {
+    "name": "titan_pfc_program_genome.jsonl",
+    "bytes": 2961
+   },
+   {
+    "name": "titan_pfcmac_genome.jsonl",
+    "bytes": 5815970
+   },
+   {
+    "name": "titan_physprob_prob_collatz_genome.jsonl",
+    "bytes": 202822
+   },
+   {
+    "name": "titan_physprob_prob_erdos_straus_genome.jsonl",
+    "bytes": 5714950
+   },
+   {
+    "name": "titan_physprob_prob_golomb_genome.jsonl",
+    "bytes": 229908
+   },
+   {
+    "name": "titan_physprob_prob_lucas_lehmer_genome.jsonl",
+    "bytes": 1394808
+   },
+   {
+    "name": "titan_physprob_prob_lychrel_genome.jsonl",
+    "bytes": 185766
+   },
+   {
+    "name": "titan_physprob_prob_perfect_cuboid_genome.jsonl",
+    "bytes": 1067582
+   },
+   {
+    "name": "titan_physprob_prob_three_cubes_genome.jsonl",
+    "bytes": 5815768
+   },
+   {
+    "name": "titan_problems_genome.jsonl",
+    "bytes": 5366069
+   },
+   {
+    "name": "titan_property_genome.jsonl",
+    "bytes": 824843
+   },
+   {
+    "name": "titan_race_genome.jsonl",
+    "bytes": 6713
+   },
+   {
+    "name": "titan_replicas_genome.jsonl",
+    "bytes": 410689629
+   },
+   {
+    "name": "titan_retention_genome.jsonl",
+    "bytes": 1346
+   },
+   {
+    "name": "titan_ringpower_genome.jsonl",
+    "bytes": 414
+   },
+   {
+    "name": "titan_ringstart_genome.jsonl",
+    "bytes": 194
+   },
+   {
+    "name": "titan_rx_genome.jsonl",
+    "bytes": 126453
+   },
+   {
+    "name": "titan_sdc_federation_genome.jsonl",
+    "bytes": 2426
+   },
+   {
+    "name": "titan_sdc_genome.jsonl",
+    "bytes": 260918880
+   },
+   {
+    "name": "titan_selector_genome.jsonl",
+    "bytes": 2742481
+   },
+   {
+    "name": "titan_selfclock_genome.jsonl",
+    "bytes": 35700902
+   },
+   {
+    "name": "titan_selfrouted_genome.jsonl",
+    "bytes": 67
+   },
+   {
+    "name": "titan_seq_pfc_fwd_loop_genome.jsonl",
+    "bytes": 6638845
+   },
+   {
+    "name": "titan_shortfix_genome.jsonl",
+    "bytes": 88
+   },
+   {
+    "name": "titan_signal_osc_genome.jsonl",
+    "bytes": 24129
+   },
+   {
+    "name": "titan_storetest_genome.jsonl",
+    "bytes": 140
+   },
+   {
+    "name": "titan_surfaces_genome.jsonl",
+    "bytes": 11504
+   },
+   {
+    "name": "titan_whitebox_zero_genome.jsonl",
+    "bytes": 8673703
+   },
+   {
+    "name": "titan_win_surface_genome.jsonl",
+    "bytes": 45
+   },
+   {
+    "name": "titan_wirephys_genome.jsonl",
+    "bytes": 1904
+   }
+  ]
+ },
+ "allocator": {
+  "module": true,
+  "ledger_exists": true
+ },
+ "integrity": {
+  "live_rings": 30,
+  "shorts": 0,
+  "registry_lag": 24,
+  "missing_depth": 56
+ },
+ "governing": {
+  "pfc_preflight.py": "e71f7b59e4daef11",
+  "pfc_foundry.py": "ac2904977fa85e30",
+  "pfc_autofab.py": "eeeb9e6b74a0e01b",
+  "pfc_master_autofab.py": "ab5e6e0f53310f7c",
+  "pfc_meter.py": "b65ab7e4662f27fa",
+  "titan_circuit.py": "d06678967c71b5f6"
+ },
+ "ui": {
+  "exists": true,
+  "sha16": "ec64d365db333a8e"
+ },
+ "tests": [
+  "muhl_test.py",
+  "muhl_test2.py",
+  "run_battery.py",
+  "sdc_checker.py",
+  "sdc_os_checker.py",
+  "pfc_probe_battery.py"
+ ]
+}

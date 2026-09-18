@@ -1,0 +1,50 @@
+[
+  {
+    "id": "competition-build",
+    "required_capabilities": ["coding", "research"],
+    "priority": 90,
+    "revenue_usd_expected": 10000,
+    "impact": 95,
+    "urgency": 80,
+    "token_cost": 80,
+    "outbound": false,
+    "status": "OPEN",
+    "preferred_workers": ["grok-heavy"]
+  },
+  {
+    "id": "math-proof",
+    "required_capabilities": ["math", "research"],
+    "priority": 75,
+    "revenue_usd_expected": 2500,
+    "impact": 80,
+    "urgency": 30,
+    "token_cost": 60,
+    "outbound": false,
+    "status": "OPEN",
+    "preferred_workers": ["claude-max"]
+  },
+  {
+    "id": "warm-lead-email",
+    "required_capabilities": ["outbound", "research"],
+    "priority": 100,
+    "revenue_usd_expected": 30000,
+    "impact": 100,
+    "urgency": 100,
+    "token_cost": 5,
+    "outbound": true,
+    "status": "OPEN",
+    "preferred_workers": ["grok-heavy"]
+  },
+  {
+    "id": "dead-lead",
+    "required_capabilities": ["outbound"],
+    "priority": 100,
+    "revenue_usd_expected": 50000,
+    "impact": 100,
+    "urgency": 100,
+    "token_cost": 1,
+    "outbound": true,
+    "status": "DNR",
+    "preferred_workers": ["grok-heavy"]
+  }
+]

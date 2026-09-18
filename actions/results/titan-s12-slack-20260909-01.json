@@ -1,0 +1,13 @@
+{
+  "id": "titan-s12-slack-20260909-01",
+  "verb": "SLACK_POST",
+  "target": "C0BUH19DW80",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: {channel:C0BUH19DW80,text:S12 replay diagnostics. 21 episodes. Otter 142805 SpaTaro 142496 Matthew 106341. TITAN vs leaders exact 8/2160. div_hire 1177 land 13 plant 800 water 2652 feed 1477 harvest 1436 market 1845. PR https://github.com/woahwhattheheck/commons/pull/11210 merged 853b2c73fdafe1b4af3621a67b29bae6d98c0f00. p/titan-s12-replay-diag-20260909-01.md. Docs revenue/kaggriculture/cloud-execution-lab/docs/s12-leader-replays/RESULTS.md. No archive change. No Kaggle submit.}: not found\n",
+  "executed_at": "2026-09-10T23:42:20.088029Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

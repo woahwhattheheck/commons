@@ -1,0 +1,140 @@
+{
+  "action": "nring_fab",
+  "kind": "tenancy",
+  "path": "C:\\Users\\lucys\\Desktop\\MUHL_TENANCY\\muhl_tenancy.mno",
+  "len": 23536,
+  "sha256": "6ff40b960f8d08c7e38ee8327bafd537e238589c8cefb3837e14f56c212c6ac3",
+  "n_gate": 901,
+  "n_wire": 914,
+  "depth": 5,
+  "computations_per_tick": 180.2,
+  "magic": "TENANCY1",
+  "n_in": 12,
+  "n_rings": 12,
+  "growth_base": 23535,
+  "rings": [
+    {
+      "name": "PALF",
+      "purpose": "tenant \u2014 both-sense gates PALF inject slot",
+      "fwd": 110,
+      "rev": 142,
+      "carry": 174,
+      "pub": 175
+    },
+    {
+      "name": "NEFG",
+      "purpose": "tenant \u2014 both-sense gates NEFG object_a[0] slot",
+      "fwd": 176,
+      "rev": 208,
+      "carry": 240,
+      "pub": 241
+    },
+    {
+      "name": "ARDR",
+      "purpose": "tenant \u2014 both-sense gates ARDR inject slot",
+      "fwd": 242,
+      "rev": 274,
+      "carry": 306,
+      "pub": 307
+    },
+    {
+      "name": "VSCF",
+      "purpose": "tenant \u2014 both-sense gates VSCF input[0] slot",
+      "fwd": 308,
+      "rev": 340,
+      "carry": 372,
+      "pub": 373
+    },
+    {
+      "name": "KEGN",
+      "purpose": "tenant \u2014 both-sense gates KEGN input[0] slot",
+      "fwd": 374,
+      "rev": 406,
+      "carry": 438,
+      "pub": 439
+    },
+    {
+      "name": "NMPIS",
+      "purpose": "tenant \u2014 both-sense gates NMPIS input[0] slot",
+      "fwd": 440,
+      "rev": 472,
+      "carry": 504,
+      "pub": 505
+    },
+    {
+      "name": "AWCG",
+      "purpose": "tenant \u2014 both-sense gates AWCG input slot",
+      "fwd": 506,
+      "rev": 538,
+      "carry": 570,
+      "pub": 571
+    },
+    {
+      "name": "DMB",
+      "purpose": "tenant \u2014 both-sense gates DMB input slot",
+      "fwd": 572,
+      "rev": 604,
+      "carry": 636,
+      "pub": 637
+    },
+    {
+      "name": "CGAT",
+      "purpose": "tenant \u2014 both-sense gates CGAT input_U slot",
+      "fwd": 638,
+      "rev": 670,
+      "carry": 702,
+      "pub": 703
+    },
+    {
+      "name": "EAL",
+      "purpose": "tenant \u2014 both-sense gates EAL attractor_select slot",
+      "fwd": 704,
+      "rev": 736,
+      "carry": 768,
+      "pub": 769
+    },
+    {
+      "name": "MHA",
+      "purpose": "tenant \u2014 both-sense gates MHA input[0] slot",
+      "fwd": 770,
+      "rev": 802,
+      "carry": 834,
+      "pub": 835
+    },
+    {
+      "name": "HPC",
+      "purpose": "tenant \u2014 both-sense gates HPC input[0] slot",
+      "fwd": 836,
+      "rev": 868,
+      "carry": 900,
+      "pub": 901
+    }
+  ],
+  "cell_base": 914,
+  "inj_base": 902,
+  "clock": 98,
+  "ring0": 110,
+  "cases": [
+    [
+      "fire_take_inject",
+      true
+    ],
+    [
+      "dark_hold",
+      true
+    ],
+    [
+      "mixed_ring0_dark",
+      true
+    ],
+    [
+      "one_sense_DC",
+      true
+    ],
+    [
+      "ungated_caught",
+      true
+    ]
+  ],
+  "status": "WROTE"
+}

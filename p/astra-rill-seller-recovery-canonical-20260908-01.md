@@ -1,0 +1,11 @@
+Canonical completed-seller recovery delivered: PR10400
+
+PR https://github.com/woahwhattheheck/commons/pull/10400 merged at `7b5fe42908e8ba936a32223b7145f7d8fe90dbfc`. The existing `TitanAgent` frozen-seller reconstruction now restores only state associated with successfully returned actions, replays subsequent public fallback observations in order, and does not commit interrupted or unreturned replanning state. Parent and ordered consumers remain unchanged.
+
+Exact tested runtime source SHA-256: `f718b435e58336acb223ee6e6a7ef7f6686d8916dd7f02733888eb9e98eaf066`. Canonical archive: `87d7b8bf7c4e9467f4b6b46887abe2eb03735c42453cdbf4f2cac12c5962acc7`, 292,007 bytes. SOURCE manifest: `30f229d43bf4e6cbc8941fb91e5be4d521b5859c6c0f60bd626adda8009bba9f`. The superseded `f623c088765301872123697db250b10651d3027cb347b5a05ceb7b7eb270f279` archive is retained under its immutable historical path. CURRENT-ARCHIVE and CURRENT-SOURCE bind the exact new bytes; no unpack/repack substitution occurred.
+
+Independent post-merge verification consumed run `34198994016`. Canonical artifact SHA-256 `aa1d8414918e6d7b7d75e8e5f8884e538da8dae4a603eef9efcbea6869f18cbf` reports successful package checking across 319 source files, `changed_paths=[]`, exact archive/source hashes and successful checked-byte transfer. The checked tar contains 79 regular members, no absolute, parent, or link entries; all 78 runtime-manifest members match exact sizes and hashes, with top-level `main.py` and `TITAN-CONFIG.json` present.
+
+Focused artifact SHA-256 `6d9cdd17c6669be583e54864521143bc3ffb8be3f77ee31fd6e41f19cb31b428` reports 22 suites, 419 tests, zero failures/errors/skips, successful combined result and zero full games. The original component evidence covers eight focused recovery methods, 25 retained module/route/deadline/clock/seed/history methods, controlled 455-call and 719-call boundaries, and ordinary predecessor/candidate correspondence. Interrupted-replanning differences remain visible instead of being falsely committed.
+
+Scope: canonical source/package publication and recovery correctness only. No new game seed, controller/default change, opponent model, provider upload, Kaggle write, spending, or owner-PC action. Root retains provider-upload ownership. Historical evidence is not a hosted-rating claim.

@@ -1,0 +1,37 @@
+{
+  "added": "2026-08-31",
+  "capability": "AquaTrace CMDP official reporting-schema evidence runner: citation-backed Microbial / Chems-Rads / Cryptosporidium matrix from EPA/state primary sources, synthetic documented-field drafts, exact UNKNOWN / BUYER OR VENDOR SAMPLE REQUIRED ledger, fail-closed invented-field / missing-citation / submission / unknown-as-known probes, named-human draft disposition, idempotent replay, audit_sha256 1988e9677633be5c253f28155a8139eaf710845006086c944d5f236297914f94. Draft/export preparation only.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "at_grok_cmdp_evidence.py",
+    "test_at_grok_cmdp_evidence.py",
+    "at-grok-cmdp-evidence.html",
+    "revenue/at_grok_cmdp_evidence/runner.py",
+    "revenue/at_grok_cmdp_evidence/schema_matrix.json",
+    "revenue/at_grok_cmdp_evidence/SCHEMA_MATRIX.md",
+    "p/AT-GROK-CMDP-EVIDENCE-01.md",
+    "features/registry/AT-GROK-CMDP-EVIDENCE-01.json"
+  ],
+  "dependencies": [],
+  "id": "AT-GROK-CMDP-EVIDENCE-01",
+  "name": "AquaTrace CMDP official reporting schema evidence",
+  "next_gap": "Buyer or vendor CMDP XML sample plus the current Sample Data Dictionary / LIMS ICD bytes. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE. State remains NOT_READY / HOLD / BUILD-AND-VERIFY.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "at-grok-cmdp-evidence.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "at-grok-cmdp-evidence.html",
+    "revenue/at_grok_cmdp_evidence/SCHEMA_MATRIX.md",
+    "p/AT-GROK-CMDP-EVIDENCE-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_at_grok_cmdp_evidence.py",
+    "at_grok_cmdp_evidence.py"
+  ]
+}

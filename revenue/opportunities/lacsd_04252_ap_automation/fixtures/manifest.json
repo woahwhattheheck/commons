@@ -1,0 +1,46 @@
+{
+  "schema": "tjlabs.lacsd-04252-ap-evidence/v1",
+  "solicitation": {
+    "id": "04252",
+    "buyer": "Los Angeles County Sanitation Districts",
+    "title": "AUTOMATED ACCOUNTS PAYABLE INVOICE PROCESSING SYSTEM"
+  },
+  "sources": {
+    "detail": {
+      "url": "https://www.lacsd.org/Home/Components/RFP/RFP/954/488?selsta=4",
+      "captured_at_utc": "2026-09-16T22:20:00Z",
+      "due_utc": "2026-10-15T18:00:00Z"
+    },
+    "list": {
+      "url": "https://www.lacsd.org/opportunities/bids-purchasing/purchasing-section-projects/-sortn-RFPTitle",
+      "captured_at_utc": "2026-09-16T22:20:00Z",
+      "due_utc": "2026-09-30T18:00:00Z"
+    }
+  },
+  "requirements": {
+    "zero_template_ai_extraction": true,
+    "target_accuracy_bps": 9900,
+    "target_cycle_seconds": 172800,
+    "automated_matching": true,
+    "approval_routing": true,
+    "oracle_ebs_realtime_integration": true,
+    "complete_audit_trail": true,
+    "realtime_bi_visibility": true
+  },
+  "commercial_offer": {
+    "state": "PROPOSED_NOT_ACCEPTED",
+    "name": "AP Automation Validation/UAT Evidence Workshare",
+    "price_usd_cents": 500000,
+    "acceptance": "Qualified prime supplies the agreed AP workflow, source/target evidence, and Oracle integration contract. TJLabs returns a deterministic requirement-to-evidence matrix, hostile acceptance cases, observed accuracy and cycle-time metrics, an exception register, and owner-review handoff. No Oracle writeback, payment mutation, buyer submission, product credential, or customer reference is included.",
+    "external_send_authorized": false
+  },
+  "authority": {
+    "oracle_write_authorized": false,
+    "payment_authorized": false,
+    "buyer_contact_authorized": false,
+    "prime_contact_authorized": false,
+    "submission_authorized": false,
+    "contract_acceptance_authorized": false,
+    "revenue_recognized": false
+  }
+}

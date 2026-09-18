@@ -1,0 +1,74 @@
+{
+  "schema": "nhdes_lims_2026_093.partner_candidate.v1",
+  "evidence_checked_before": "2026-09-17T00:37:14-04:00",
+  "candidate": {
+    "name": "LabLynx, Inc.",
+    "domain": "lablynx.com",
+    "route": "sales@lablynx.com",
+    "status": "CANDIDATE_ONLY_NOT_PARTNER",
+    "official_contact_url": "https://www.lablynx.com/contact-us/"
+  },
+  "first_party_evidence": [
+    {
+      "url": "https://www.lablynx.com/resources/case-studies/lims-vendor-security-audit/",
+      "supports": [
+        "LabLynx describes a state-government deployment subject to an annual independent security audit.",
+        "LabLynx says that deployment's security standard is grounded in the NIST Cybersecurity Framework and NIST SP 800-53.",
+        "The case study does not establish NHDES-specific compliance, NIST SP 800-171 compliance, or GovRAMP authorization."
+      ]
+    },
+    {
+      "url": "https://www.lablynx.com/services/",
+      "supports": [
+        "LabLynx advertises implementation, data migration, integration, validation, cloud hosting, support, and training services."
+      ]
+    },
+    {
+      "url": "https://www.lablynx.com/resources/articles/types-of-lims/",
+      "supports": [
+        "LabLynx publishes current LIMS material explicitly discussing environmental and water testing laboratories."
+      ]
+    },
+    {
+      "url": "https://www.lablynx.com/contact-us/",
+      "supports": [
+        "LabLynx publishes sales@lablynx.com as a sales contact route."
+      ]
+    }
+  ],
+  "qualification_gaps": {
+    "pursuing_nhdes_2026_093": "UNVERIFIED",
+    "govramp_authorization": "UNVERIFIED",
+    "nist_sp_800_171": "UNVERIFIED",
+    "conus_hosting_for_this_offer": "UNVERIFIED",
+    "required_insurance": "UNVERIFIED",
+    "personnel_background_checks": "UNVERIFIED",
+    "nh_public_sector_references": "UNVERIFIED",
+    "willing_to_prime_or_team": "UNVERIFIED",
+    "implementation_bandwidth": "UNVERIFIED"
+  },
+  "collision_preflight": {
+    "slack_exact_history": 0,
+    "gmail_exact_history": 0,
+    "owned_github_exact_history": 0,
+    "requires_fresh_last_inch_recensus": true,
+    "requires_muse_single_writer_clearance": true
+  },
+  "current_collision": {
+    "status": "ACTIVE_ORG_ROUTE_COLLISION_HOLD",
+    "observed_at": "2026-09-17T00:38:55-04:00",
+    "same_org": true,
+    "same_route": true,
+    "competing_operation": "ALBERTA-AB-2026-06140-LABLYNX-PARTNER-CONVERSION-ZSOL-20260917",
+    "muse_arbitration_ts": "1789620147.584609",
+    "muse_resolution": "PENDING"
+  },
+  "external_authority": {
+    "contact_authorized_by_file": false,
+    "partnership_asserted": false,
+    "qualification_asserted": false,
+    "bid_role_asserted": false,
+    "payment_asserted": false,
+    "revenue_asserted": false
+  }
+}

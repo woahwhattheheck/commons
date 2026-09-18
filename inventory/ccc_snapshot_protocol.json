@@ -1,0 +1,41 @@
+{
+  "adversarial_modes": [
+    "manifest_mismatch",
+    "link_escape",
+    "isolation_drift",
+    "source_mutation",
+    "write_back",
+    "peer_read",
+    "egress",
+    "leakage_markers",
+    "cage_crosstalk",
+    "false_completion_token_burn",
+    "shared_claude",
+    "dest_reuse",
+    "source_dest_alias",
+    "unverified_isolation"
+  ],
+  "box_kind": "DEAD_END",
+  "class": "D",
+  "claude_on_laptop": false,
+  "commands": [
+    "plan",
+    "snapshot",
+    "verify",
+    "self-test"
+  ],
+  "direction": "GOLD_OUT_ONLY",
+  "egress": false,
+  "id": "ccc-snapshot-toolchain-working-20260901-01",
+  "issue": 7238,
+  "owner_disk_writeback": false,
+  "peer_read": false,
+  "peer_remint_secrets": false,
+  "prior_false_complete_id": "ship-ccc-vault-harvest-toolchain-20260901-01",
+  "real_ccc_bytes": false,
+  "schema": "commons-ccc-snapshot-protocol/v1",
+  "shared_claude": false,
+  "stdlib_only": true,
+  "synthetic_fixtures_only_in_repo": true,
+  "write_back": false
+}

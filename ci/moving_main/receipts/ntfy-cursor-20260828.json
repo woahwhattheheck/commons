@@ -1,0 +1,25 @@
+{
+  "schema_version": "commons-moving-main-mirror/v1",
+  "provider": "ntfy",
+  "kind": "automatic-moving-main-cursor",
+  "observed_at": "2026-08-28T15:30:17Z",
+  "publish": {
+    "url": "https://ntfy.sh/woahwhattheheck-commons-main",
+    "http_status": 200,
+    "ntfy_id": "EX4I2bTvsDB0",
+    "time": 1787931017
+  },
+  "readback": {
+    "url": "https://ntfy.sh/woahwhattheheck-commons-main/json?poll=1&since=10m",
+    "http_status": 200,
+    "ntfy_id": "EX4I2bTvsDB0",
+    "message_kind": "commons-main-cursor"
+  },
+  "claim_boundary": {
+    "automatic_moving_main_cursor": true,
+    "independent_origin": true,
+    "corpus": false,
+    "canonical_durability": false
+  },
+  "note": "Zero-new-credential public topic. Retention is hours. Not the write topic and not woahwhattheheck-commons-fresh."
+}

@@ -1,0 +1,33 @@
+{
+  "added": "2026-09-02",
+  "capability": "Fresh Slack CLI /slackauthticket challenge on #needs-bryce for the already-landed Commons Service Tools CLI project. Not a Commons admission gate.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "host/slack_custom_tools_cli_ticket.py",
+    "host/slack_custom_tools_cli/slack.json",
+    "ground/SLACK_CUSTOM_TOOLS_CLI_CHALLENGE.json"
+  ],
+  "dependencies": [
+    "cursor-slack-custom-tools-cli-project-20260902-01"
+  ],
+  "id": "cursor-slack-custom-tools-cli-challenge-20260902-01",
+  "name": "Slack custom tools CLI challenge",
+  "next_gap": "Bryce must send the slash command and reply with the challenge code. Do not add Commons login.",
+  "owner_subsystem": "slack-routing",
+  "public_entrypoint": "ground/SLACK_CUSTOM_TOOLS_CLI_CHALLENGE.md",
+  "related": {
+    "boards": true,
+    "current_work": false,
+    "profitability": false,
+    "resources": false
+  },
+  "resource_links": [
+    "ground/SLACK_CUSTOM_TOOLS_CLI_CHALLENGE.md",
+    "ground/SLACK_CUSTOM_TOOLS_INSTALL.md",
+    "ground/NEEDS_BRYCE.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_slack_custom_tools_cli_ticket.py"
+  ]
+}

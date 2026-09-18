@@ -1,0 +1,37 @@
+{
+  "id": "agriseed-rush-work-allocator-lims-01",
+  "name": "Agri Seed rush-aware work allocator",
+  "schema": "commons-feature-v1",
+  "added": "2026-09-01",
+  "carrier": "CURSOR",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "agriseed-rush-work-allocator-lims.html",
+  "capability": "Agri Seed Testing / Sharon Davidson rush-aware work allocator: a working CLI loads 300 frozen synthetic AOSA/Canadian/ISTA submissions, accessions 240 valids once with expected method revision and qualified-role assignment across AST_BOISE/AST_NAMPA, holds 60 truth-set missing-billing/duplicate-bag/invalid-rule-certificate/lot-size/unauthorized-ISTA-sampler defects with the exact reason, keeps rush from shortening regulated biological duration, requires named-human release, and reproduces fixture_sha256 f9f8c49394b5826f1979f80a67a1bc970774aeee91063f1cd76638ef5d729d30. Adapters stay simulated and read-only.",
+  "claimed_paths": [
+    "agriseed_rush_work_allocator.py",
+    "test_agriseed_rush_work_allocator.py",
+    "agriseed-rush-work-allocator-lims.html",
+    "revenue/agriseed_rush_work_allocator/contract.json",
+    "revenue/agriseed_rush_work_allocator/README.md",
+    "revenue/agriseed_rush_work_allocator/runner.py",
+    "p/agriseed-rush-work-allocator-lims-01.md",
+    "features/registry/agriseed-rush-work-allocator-lims-01.json"
+  ],
+  "test_paths": [
+    "test_agriseed_rush_work_allocator.py",
+    "agriseed_rush_work_allocator.py"
+  ],
+  "resource_links": [
+    "agriseed-rush-work-allocator-lims.html",
+    "revenue/agriseed_rush_work_allocator/contract.json",
+    "p/agriseed-rush-work-allocator-lims-01.md"
+  ],
+  "dependencies": [],
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "next_gap": "Buyer-owned de-identified AOSA/Canadian/ISTA intake and sampler golden files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE."
+}

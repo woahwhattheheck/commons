@@ -1,0 +1,239 @@
+{
+  "schema_version": "gguf-customer-launch/v1",
+  "kind": "GGUF_CUSTOMER_LAUNCH_PACKET",
+  "packet_id": "branded-dissident-gguf-launch-edge-20260825-01",
+  "release_state": "RELEASED_UNSENT",
+  "prepared_at": "2026-08-26T03:21:00.776Z",
+  "prepared_by": "BRANDED: Dissident - shameful",
+  "offer": {
+    "offer_id": "gguf-diagnostic-10d-12k",
+    "public_url": "https://woahwhattheheck.github.io/commons/diagnostic.html",
+    "fixed_fee_usd": 12000,
+    "term_days": 10,
+    "milestones_usd": [
+      6000,
+      6000
+    ],
+    "terms_sha256": "1c0756062563415e551587a5f1ab22147366d406135de6c45ccbd3a562985730"
+  },
+  "live_safe_proof": {
+    "observed_main_sha": "f12860fe70ee99deacdcaf205dfda504fe5adb2e",
+    "pages_last_modified": "2026-08-26T02:13:55Z",
+    "all_http_200": true,
+    "pages_equal_sha_pinned_main": true,
+    "artifacts": [
+      {
+        "path": "diagnostic.html",
+        "sha256": "3a4b2e6d979b3b0cbc690b1f060ad9f04bd77d9745467a57cdb40e64c76b5245"
+      },
+      {
+        "path": "revenue/payment_ready/pack.json",
+        "sha256": "cd132df7790940db230d7703ba49d6f95e2e00cc2a8893f0e29b5010453ecb36"
+      },
+      {
+        "path": "revenue/payment_ready/recovery.json",
+        "sha256": "ab06c4e0deaae2a89fc9e7566a6896f484d867c95e32c4ed7db6fe96aab1d3db"
+      },
+      {
+        "path": "revenue/payment_ready/current_receipt.json",
+        "sha256": "fb0126f3ccf46b1cc4fd476d18fd38f27e18492d31844d2971da5fc2d1b7c7f5"
+      },
+      {
+        "path": "revenue/payment_ready/prospects.json",
+        "sha256": "8194289d751fec92488fe03500d9c27411e478595ed682adf1e5a138b0422975"
+      },
+      {
+        "path": "revenue/payment_ready/integration_inventory.json",
+        "sha256": "42e194b7478c9de6061d06f34c776df9ede18faf819494fdee84cd540c13e20c"
+      }
+    ],
+    "boundary": "Public page accepts non-confidential purchase intent only; it does not collect payment or model files."
+  },
+  "sender": {
+    "email": "tokenjunkielabs@gmail.com",
+    "provider": "Apollo/Gmail",
+    "active": true,
+    "default": true,
+    "last_synced_at": "2026-08-25T22:59:00.923Z"
+  },
+  "receipt_schema_path": "revenue/payment_ready/outreach_receipt.schema.json",
+  "targets": [
+    {
+      "target_id": "parallel-wireless",
+      "organization": "Parallel Wireless",
+      "airtable_record_id": "rec2m84ASLg7eKDFd",
+      "evidence_url": "https://jobs.lever.co/parallelwireless/233858ab-104d-42fe-8b5b-f9d86aa8f5a4",
+      "channel": "EMAIL",
+      "official_route_url": "https://www.parallelwireless.com/company/contact-us/",
+      "route_http_status": 200,
+      "recipient_email": "info@parallelwireless.com",
+      "subject": "Bounded rollback-evidenced GGUF diagnostic",
+      "body": "Your current Local LLM platform role calls out open-weight model evaluation, quantization, llama.cpp-class runtimes, repeatable regression tests, rollback, and build-vs-buy decisions. Commons publishes a fixed-scope 10-day diagnostic for one legally controlled GGUF: one reversible ablation, byte-exact restoration, customer-harness evidence, USD 12,000 split 6,000/6,000. Would that be relevant during the platform buildout? No model file is requested on this channel; NDA, SOW, bytes, and billing remain private. Details: https://woahwhattheheck.github.io/commons/diagnostic.html",
+      "message_sha256": "04e8d336be9a5f54433cb1b6cf4365ec318ad73be43af6b1d48627e367057ae7",
+      "execution": {
+        "adapter": "APOLLO_EMAILER",
+        "contact_lookup_email": "info@parallelwireless.com",
+        "contact_state": "READY_UNSENT",
+        "draft_created": false,
+        "sent": false
+      },
+      "receipt_template": {
+        "schema_version": "gguf-outreach-receipt/v1",
+        "kind": "GGUF_OUTREACH_RECEIPT",
+        "receipt_id": "replace-after-send-parallel-wireless",
+        "packet_id": "branded-dissident-gguf-launch-edge-20260825-01",
+        "target_id": "parallel-wireless",
+        "airtable_record_id": "rec2m84ASLg7eKDFd",
+        "offer_id": "gguf-diagnostic-10d-12k",
+        "terms_sha256": "1c0756062563415e551587a5f1ab22147366d406135de6c45ccbd3a562985730",
+        "sender_email": "tokenjunkielabs@gmail.com",
+        "channel": "EMAIL",
+        "route_url": "https://www.parallelwireless.com/company/contact-us/",
+        "recipient_email": "info@parallelwireless.com",
+        "subject": "Bounded rollback-evidenced GGUF diagnostic",
+        "message_sha256": "04e8d336be9a5f54433cb1b6cf4365ec318ad73be43af6b1d48627e367057ae7",
+        "transport_state": "UNSENT",
+        "provider_reference": null,
+        "sent_at": null,
+        "observed_at": "2026-08-26T03:21:00.776Z",
+        "response_state": "UNKNOWN",
+        "response_reference": null,
+        "facts": {
+          "buyer_authorization": "UNKNOWN",
+          "legal_acceptance": "NOT_LANDED",
+          "cash_claimed": false,
+          "collected_cash_usd": 0
+        }
+      }
+    },
+    {
+      "target_id": "nextgen-federal",
+      "organization": "NextGen Federal Systems",
+      "airtable_record_id": "recxfhMevKAHsnYql",
+      "evidence_url": "https://jobs.lever.co/nextgenfed/414bed25-dc3b-472a-abc5-8c6d1aaf7820",
+      "channel": "EMAIL",
+      "official_route_url": "https://www.nextgenfed.com/contact-us/",
+      "route_http_status": 200,
+      "recipient_email": "info@nextgenfed.com",
+      "subject": "GGUF rollback diagnostic for a bounded edge AI workstream",
+      "body": "Your current Edge AI/Model Optimization role describes benchmarking, operationalizing, and sustaining local models—including GGUF—on constrained and disconnected systems, and your site invites capability-provider partnerships. Commons offers a fixed 10-day rollback-first diagnostic on one legally controlled GGUF using the customer's runnable harness, with byte-exact restoration and evidence receipts. Could this fit a bounded evaluation or partner workstream? No file is requested publicly; any controlled data, NDA/SOW, and billing stay private. Details: https://woahwhattheheck.github.io/commons/diagnostic.html",
+      "message_sha256": "625d8f4ea73d4994ea0fe97313dbea1a98f162dfda6285db342cedb800da1914",
+      "execution": {
+        "adapter": "APOLLO_EMAILER",
+        "contact_lookup_email": "info@nextgenfed.com",
+        "contact_state": "READY_UNSENT",
+        "fallback_form": {
+          "url": "https://www.nextgenfed.com/contact-us/",
+          "required_fields": [
+            "full-name",
+            "your-email",
+            "partnership"
+          ],
+          "partnership_value": "Doing Business with NextGen",
+          "description_field": "description",
+          "turnstile_required": true
+        },
+        "draft_created": false,
+        "sent": false
+      },
+      "receipt_template": {
+        "schema_version": "gguf-outreach-receipt/v1",
+        "kind": "GGUF_OUTREACH_RECEIPT",
+        "receipt_id": "replace-after-send-nextgen-federal",
+        "packet_id": "branded-dissident-gguf-launch-edge-20260825-01",
+        "target_id": "nextgen-federal",
+        "airtable_record_id": "recxfhMevKAHsnYql",
+        "offer_id": "gguf-diagnostic-10d-12k",
+        "terms_sha256": "1c0756062563415e551587a5f1ab22147366d406135de6c45ccbd3a562985730",
+        "sender_email": "tokenjunkielabs@gmail.com",
+        "channel": "EMAIL",
+        "route_url": "https://www.nextgenfed.com/contact-us/",
+        "recipient_email": "info@nextgenfed.com",
+        "subject": "GGUF rollback diagnostic for a bounded edge AI workstream",
+        "message_sha256": "625d8f4ea73d4994ea0fe97313dbea1a98f162dfda6285db342cedb800da1914",
+        "transport_state": "UNSENT",
+        "provider_reference": null,
+        "sent_at": null,
+        "observed_at": "2026-08-26T03:21:00.776Z",
+        "response_state": "UNKNOWN",
+        "response_reference": null,
+        "facts": {
+          "buyer_authorization": "UNKNOWN",
+          "legal_acceptance": "NOT_LANDED",
+          "cash_claimed": false,
+          "collected_cash_usd": 0
+        }
+      }
+    },
+    {
+      "target_id": "lyceum-technology",
+      "organization": "Lyceum Technology",
+      "airtable_record_id": "recRImaMH45FwtiJS",
+      "evidence_url": "https://lyceum-technology.jobs.personio.com/job/2572662",
+      "channel": "WEB_FORM",
+      "official_route_url": "https://lyceum.technology/company/contact/index.html",
+      "route_http_status": 200,
+      "recipient_email": null,
+      "subject": "Bounded rollback diagnostic for one GGUF",
+      "body": "Your current inference-platform role says customer requests shape model and framework support and specifically names GGUF conversion pipelines. Commons publishes a fixed-scope 10-day diagnostic for one legally controlled GGUF: reversible ablation, byte-exact rollback, and customer-harness evidence, priced USD 12,000 split 6,000/6,000. Would that help validate a bounded customer or platform case while the team scales? No model file is requested on this channel; NDA, SOW, bytes, and billing remain private. Details: https://woahwhattheheck.github.io/commons/diagnostic.html",
+      "message_sha256": "309bd0b41843f96bab224539db77796afd57358a41fcc120862b2720ec7769fe",
+      "execution": {
+        "adapter": "OFFICIAL_WEB_FORM",
+        "submit_endpoint": "https://api-internal-151277957838.europe-west1.run.app/api/support/issue",
+        "payload": {
+          "name": "Bryce Muhlnickel",
+          "email": "tokenjunkielabs@gmail.com",
+          "company": "",
+          "inquiry_type": "partnership",
+          "referral_source": "llm"
+        },
+        "recaptcha_required": true,
+        "submitted": false
+      },
+      "receipt_template": {
+        "schema_version": "gguf-outreach-receipt/v1",
+        "kind": "GGUF_OUTREACH_RECEIPT",
+        "receipt_id": "replace-after-send-lyceum-technology",
+        "packet_id": "branded-dissident-gguf-launch-edge-20260825-01",
+        "target_id": "lyceum-technology",
+        "airtable_record_id": "recRImaMH45FwtiJS",
+        "offer_id": "gguf-diagnostic-10d-12k",
+        "terms_sha256": "1c0756062563415e551587a5f1ab22147366d406135de6c45ccbd3a562985730",
+        "sender_email": "tokenjunkielabs@gmail.com",
+        "channel": "WEB_FORM",
+        "route_url": "https://lyceum.technology/company/contact/index.html",
+        "recipient_email": null,
+        "subject": "Bounded rollback diagnostic for one GGUF",
+        "message_sha256": "309bd0b41843f96bab224539db77796afd57358a41fcc120862b2720ec7769fe",
+        "transport_state": "UNSENT",
+        "provider_reference": null,
+        "sent_at": null,
+        "observed_at": "2026-08-26T03:21:00.776Z",
+        "response_state": "UNKNOWN",
+        "response_reference": null,
+        "facts": {
+          "buyer_authorization": "UNKNOWN",
+          "legal_acceptance": "NOT_LANDED",
+          "cash_claimed": false,
+          "collected_cash_usd": 0
+        }
+      }
+    }
+  ],
+  "execution_order": [
+    "parallel-wireless",
+    "nextgen-federal",
+    "lyceum-technology"
+  ],
+  "action_boundary": {
+    "external_contact_performed": false,
+    "drafts_created": false,
+    "email_sent": false,
+    "forms_submitted": false,
+    "required_at_action_time": [
+      "Confirm exact recipient, subject, and body before Apollo draft/send.",
+      "Complete the official anti-bot challenge on form routes when presented.",
+      "Write one receipt per attempted route; do not infer buyer authorization or cash from transport success."
+    ]
+  }
+}

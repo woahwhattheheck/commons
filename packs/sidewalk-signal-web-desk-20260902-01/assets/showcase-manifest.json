@@ -1,0 +1,32 @@
+{
+  "kind": "BUSINESS_PACK_DEMO_ATTACHMENTS",
+  "instance": "sidewalk-signal-web-desk-20260902-01",
+  "delivered_by": "owner_at_sale",
+  "in_this_repository": false,
+  "why_not_here": "Sellable product artifacts stay on the private product main (products-private). The buyer receives these two files from the owner with the pack; this manifest lets the buyer verify the bytes.",
+  "source": {
+    "repository": "woahwhattheheck/smb-showcase-inventory (private)",
+    "main_sha": "0d91231e4df3cd670cb707a28847a07495c98542",
+    "manifest_path": "manifest/attachments.json",
+    "verify_command": "node scripts/verify_artifacts.mjs"
+  },
+  "files": [
+    {
+      "name": "SMB-Website-Showcase.pdf",
+      "bytes": 1099041,
+      "sha256": "b8206fea309646e1ff3f99b2419d8f8924d0919e6ff6b68470164e6567ab6742",
+      "what": "Self-contained PDF walkthrough of one finished local-business website (desktop and mobile home, services and proof, estimate to confirmation). Zero links, zero scripts.",
+      "use": "Show a prospect what 'finished' means. It is a demo, never the client's site."
+    },
+    {
+      "name": "SMB-Workflow-App-Showcase.mp4",
+      "bytes": 661524,
+      "sha256": "6d1b1ef126eb23b6c51d623ef645dc49e49d3f9055909baec66510eb6642198a",
+      "what": "H.264 1080p, 45-60 s, burned-in captions: one installable workflow app (quote to confirmation).",
+      "use": "Show offer #4 without promising a native app."
+    }
+  ],
+  "buyer_check": "sha256sum <file> must equal the value above; if it does not, ask the owner for the file again before showing it to anyone.",
+  "license": "Demo use by the pack buyer while operating this instance. Not for resale, not for representation as the buyer's own past work.",
+  "marketing": "bryce_only"
+}

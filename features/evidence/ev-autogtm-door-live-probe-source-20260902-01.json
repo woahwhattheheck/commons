@@ -1,0 +1,14 @@
+{
+  "feature_id": "autogtm-door-live-probe-20260902-01",
+  "from": "UNSEATED",
+  "id": "ev-autogtm-door-live-probe-source-20260902-01",
+  "kind": "SOURCE_PATHS",
+  "note": "Door live-probes Explee GET with credentials=omit. No login.",
+  "paths": [
+    "autogtm.html",
+    "ground/tokens/autogtm.md",
+    "p/cursor-autogtm-door-live-probe-20260902-01.md"
+  ],
+  "recorded_at": "2026-09-02T19:35:00Z",
+  "schema": "commons-feature-evidence-v1"
+}

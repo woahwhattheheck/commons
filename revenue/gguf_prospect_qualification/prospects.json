@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "offer_id": "gguf-diagnostic-10d-12k",
+  "measured_at": "2026-09-13",
+  "notes": "Research-only expansion. No contact/send authority. Existing 2026-08-27 DNR cohort is intentionally excluded.",
+  "candidates": [
+    {
+      "organization": "CloudSurf Software LLC",
+      "commercial_entity": true,
+      "public_business_channel": true,
+      "gap_is_current": true,
+      "budget_signal": "medium",
+      "known_prior_contact": false,
+      "known_do_not_resend": false,
+      "evidence": {
+        "gguf_control": {
+          "verified": true,
+          "url": "https://huggingface.co/cloudsurf-software/CloudSurf-4B-FC-GGUF",
+          "fact": "CloudSurf calls the repository its official GGUF quantizations and says it quantized the model itself."
+        },
+        "evaluation_harness": {
+          "verified": true,
+          "url": "https://huggingface.co/cloudsurf-software/CloudSurf-4B-FC",
+          "fact": "CloudSurf publishes BFCL artifacts and tau2 trajectories for the base model."
+        },
+        "quantization_gap": {
+          "verified": true,
+          "url": "https://huggingface.co/cloudsurf-software/CloudSurf-4B-FC-GGUF",
+          "fact": "The official card states the quantized-model evaluation is pending and BF16 benchmark numbers do not yet apply to the quants."
+        },
+        "business_channel": {
+          "verified": true,
+          "url": "https://cloudsurf.com",
+          "fact": "Public company/support surface for CloudSurf Software LLC."
+        }
+      },
+      "disqualifiers": [
+        "Bootstrapped/small company; $12k budget is not evidenced.",
+        "Their team may prefer to complete the pending evaluation internally."
+      ],
+      "gap_strength": "named_missing_eval",
+      "internal_capability": "medium"
+    },
+    {
+      "organization": "Liquid AI",
+      "commercial_entity": true,
+      "public_business_channel": true,
+      "gap_is_current": true,
+      "budget_signal": "strong",
+      "known_prior_contact": false,
+      "known_do_not_resend": false,
+      "evidence": {
+        "gguf_control": {
+          "verified": true,
+          "url": "https://huggingface.co/LiquidAI/LFM2.5-350M-GGUF",
+          "fact": "Liquid AI publishes multiple first-party GGUF variants, including PTQ and QAD Q4_0 checkpoints."
+        },
+        "evaluation_harness": {
+          "verified": true,
+          "url": "https://www.liquid.ai/blog/introducing-lfm2-5-the-next-generation-of-on-device-ai",
+          "fact": "Liquid AI publishes model-family benchmark and deployment evidence for LFM2.5."
+        },
+        "quantization_gap": {
+          "verified": true,
+          "url": "https://huggingface.co/LiquidAI/LFM2.5-350M-GGUF",
+          "fact": "First-party repository exposes both QAD and post-training Q4_0 variants, creating a concrete reversible same-format comparison surface."
+        },
+        "business_channel": {
+          "verified": true,
+          "url": "https://www.liquid.ai/",
+          "fact": "Commercial model company public surface."
+        }
+      },
+      "disqualifiers": [
+        "Liquid AI has substantial internal model/quantization capability; outside diagnostic demand is unproven.",
+        "No public request for third-party GGUF evaluation was observed in this research pass."
+      ],
+      "gap_strength": "comparison_surface",
+      "internal_capability": "very_high"
+    },
+    {
+      "organization": "Mistral AI",
+      "commercial_entity": true,
+      "public_business_channel": true,
+      "gap_is_current": true,
+      "budget_signal": "strong",
+      "known_prior_contact": false,
+      "known_do_not_resend": false,
+      "evidence": {
+        "gguf_control": {
+          "verified": true,
+          "url": "https://huggingface.co/mistralai/Magistral-Small-2509-GGUF",
+          "fact": "Mistral publishes first-party GGUF checkpoints in Q8_0, Q5_K_M, and Q4_K_M."
+        },
+        "evaluation_harness": {
+          "verified": true,
+          "url": "https://huggingface.co/mistralai/Magistral-Small-2509-GGUF",
+          "fact": "The model family has public release/benchmark context and a defined mistral-common reference path."
+        },
+        "quantization_gap": {
+          "verified": true,
+          "url": "https://huggingface.co/mistralai/Mistral-Medium-3.5-128B/discussions/14/files",
+          "fact": "Mistral documented a config defect that caused long-context degradation and affected GGUFs produced before the fix; Magistral GGUF also warns llama.cpp's automatic chat template is likely incorrect."
+        },
+        "business_channel": {
+          "verified": true,
+          "url": "https://mistral.ai/",
+          "fact": "Commercial model company public surface."
+        }
+      },
+      "disqualifiers": [
+        "Known issues may already be internally understood/remediated.",
+        "Large internal inference team makes external diagnostic demand uncertain."
+      ],
+      "gap_strength": "documented_regression",
+      "internal_capability": "very_high"
+    },
+    {
+      "organization": "IBM Granite",
+      "commercial_entity": true,
+      "public_business_channel": true,
+      "gap_is_current": false,
+      "budget_signal": "strong",
+      "known_prior_contact": false,
+      "known_do_not_resend": false,
+      "evidence": {
+        "gguf_control": {
+          "verified": true,
+          "url": "https://huggingface.co/ibm-granite/granite-guardian-4.1-8b-GGUF",
+          "fact": "IBM Granite owns a large first-party GGUF collection."
+        },
+        "evaluation_harness": {
+          "verified": true,
+          "url": "https://github.com/ibm-granite/gguf",
+          "fact": "IBM publishes automated GGUF conversion, quantization, build-verification, packaging and partner-delivery workflows."
+        },
+        "quantization_gap": {
+          "verified": true,
+          "url": "https://huggingface.co/ibm-granite/granite-guardian-4.1-8b-GGUF",
+          "fact": "The GGUF card carries base-model performance claims while the public GGUF card itself does not present a quant-vs-base acceptance table, leaving a measurable fidelity surface."
+        },
+        "business_channel": {
+          "verified": true,
+          "url": "https://www.ibm.com/granite",
+          "fact": "IBM Granite public product/research surface."
+        }
+      },
+      "disqualifiers": [
+        "IBM already has a dedicated GGUF CI/CD and verification pipeline, lowering likely external need.",
+        "No current public regression or request for external validation was identified in this pass."
+      ],
+      "gap_strength": "inferred",
+      "internal_capability": "very_high"
+    },
+    {
+      "organization": "XHToken / SparkLLM",
+      "commercial_entity": true,
+      "public_business_channel": true,
+      "gap_is_current": true,
+      "budget_signal": "unknown",
+      "known_prior_contact": false,
+      "known_do_not_resend": false,
+      "evidence": {
+        "gguf_control": {
+          "verified": false,
+          "url": "https://huggingface.co/abenzerps/Spark-X2.5-4B-GGUF",
+          "fact": "A high-traffic GGUF exists, but the observed artifact is published by a third party, not XHToken."
+        },
+        "evaluation_harness": {
+          "verified": true,
+          "url": "https://github.com/XHToken/Spark-X2.5",
+          "fact": "Spark-X2.5 publishes extensive benchmark results and deployment instructions."
+        },
+        "quantization_gap": {
+          "verified": true,
+          "url": "https://github.com/XHToken/Spark-X2.5",
+          "fact": "The family added fresh llama.cpp architecture support and multiple quantized deployment paths in September 2026."
+        }
+      },
+      "disqualifiers": [
+        "Fails the current offer's buyer-controls-GGUF gate on observed evidence; keep RESEARCH_INCOMPLETE until a first-party controlled GGUF is proven."
+      ],
+      "gap_strength": "comparison_surface",
+      "internal_capability": "high"
+    }
+  ]
+}

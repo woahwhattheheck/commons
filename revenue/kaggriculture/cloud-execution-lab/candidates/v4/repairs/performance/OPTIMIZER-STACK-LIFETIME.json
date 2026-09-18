@@ -1,0 +1,172 @@
+{
+  "artifact_provenance": {
+    "archive_sha256": "b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9",
+    "id": 10175943272,
+    "scope": "Existing artifact recovered without dispatch. This checker authenticates and executes three listed dependency files; it does not claim whole-current-main runtime validation."
+  },
+  "baseline_dependencies": {
+    "mechanics.py": {
+      "bytes": 22526,
+      "git_blob": "044a4f9c0a4a44dde10ada57563238bcaf82075d",
+      "sha256": "579965e589237d1e5bbcc8b8448188f91b173d4480430d34b3a7f0e07e0c48d3"
+    },
+    "reference/decision/decision.py": {
+      "bytes": 7759,
+      "git_blob": "2931aa55831204fbb473ab85a6f5b81ec947fcf7",
+      "sha256": "9d78406668c927785b29f5bf2b5a67f0263bfcd63f626c881a60bad5f8293c52"
+    },
+    "selected_sell_core.py": {
+      "bytes": 15050,
+      "git_blob": "f23d3a8b5ee5e82029026e7f8f44eb36c143a5a3",
+      "sha256": "6588b37ebb8237422513eb65ba1b5478a426dd193da34d42e0b4b7e6c13f4846"
+    }
+  },
+  "candidate": {
+    "bytes": 21392,
+    "git_blob": "16dde00627effa5d0ae4d73a8e05a295e9534e1f",
+    "sha256": "6bd91f5b8132df2c10b127f69e3dc43c4b9b9fbf32b38860ce1c7517d1575256"
+  },
+  "canonical_workspace": "main:revenue/kaggriculture/cloud-execution-lab/candidates/v4",
+  "checker": {
+    "bytes": 27998,
+    "git_blob": "2b87df67c427ca484a77dfe520deee9ff3d016e9",
+    "path": "repairs/performance/check_optimizer_stack_lifetime.py"
+  },
+  "claim_thread": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1789181686367379",
+  "composition_owner": "ASTRA-WEAVE",
+  "composition_sequence_git": [
+    "f23d3a8b5ee5e82029026e7f8f44eb36c143a5a3",
+    "5e6be72cda2e71a1aff6c68b13a0a934b2964a36",
+    "aae1c0c5a508797037757e745d946cddfc83404f",
+    "23e8f02e9f50cb569556f045edfa085c67739eaf",
+    "16dde00627effa5d0ae4d73a8e05a295e9534e1f"
+  ],
+  "constructor_characterization": {
+    "cause": "model=MarketPath(...) occurs before the optimizer try/finally; interruption before joint installation leaves the already-bound single cache cycle.",
+    "disposition": "Pre-existing boundary, not fixed by this composition. Do not describe the stack as universally interruption-leak-free.",
+    "per_source": "Three synthetic lru_cache-installation interruptions, at quote/single/joint construction boundaries. Both baseline and candidate: live owners after traceback release [0,0,1]; after cyclic GC [0,0,0]."
+  },
+  "constructor_handoff": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1789182419089579",
+  "counts_per_mode": {
+    "baseline_cycle_controls": 1,
+    "boundary_optimizer_pairs": 36,
+    "bounded_receipt_comparisons": 300,
+    "capacity_callback_entries_compared": 6565,
+    "capacity_interruption_sites": 34,
+    "constructor_characterization_cases": 6,
+    "exception_type_and_recovery_pairs": 6,
+    "fallback_and_rounding_comparisons": 109,
+    "interleaved_owner_comparisons": 300,
+    "live_calendar_comparisons": 12,
+    "normal_reclamation_calls": 36,
+    "optimizer_pairs": 360,
+    "reentrant_optimizer_pairs": 2,
+    "score_interruption_sites": 160
+  },
+  "disposition": "SCOPED_PASS_WITH_KNOWN_CONSTRUCTOR_CANCELLATION_LIMIT",
+  "donor_transformer_git": {
+    "CACHELIFE": "e48861b8fe186ded0337aa66ba68833b760708b3",
+    "EVENTPATH": "f7ae150bc47058393552fd1d7600b7f5d5aaa84c",
+    "MEADOW": "6b8a32669d75f6a239c3a2b78cafa6c92402d719",
+    "SIEVE": "5ade322bfdc916b7d3ac071ab2e3fc60fb1f0db0"
+  },
+  "interpretation": [
+    "396 full optimize_lot output/diagnostic and callback-order comparisons per mode comprise 360 ordinary matrix cells plus 36 boundary cells. Additional recovery/reentrancy comparisons are separately counted.",
+    "All strict, expected_downside and minimax_regret branches include accepted and rejected plans; the matrix also includes 120 forced-feasibility and 120 infeasible cells.",
+    "160 score and 34 capacity interruption sites per mode are exhaustively swept within three fixed small optimizer itineraries, not all possible inputs.",
+    "Quote caches are inspected after finally while the traceback holds the frame. Reclamation is tested only after traceback release, with cyclic GC disabled.",
+    "36 successful optimizer instances and all covered post-construction interrupted instances are reclaimed without cyclic GC. A nested optimizer leaves the suspended outer instance and its caches alive, then both reclaim at their own boundaries.",
+    "The no-cleanup predecessor deliberately retains one normal-call cycle until gc.collect, proving the test can detect the targeted defect.",
+    "Five broken implementations are rejected by assertion failures in both modes; zero exception-only or import-error credit."
+  ],
+  "known_limits": [
+    "Constructor interruption at cache installation 3 retains one self/bound-cache cycle in both baseline and candidate until cyclic GC; explicitly characterized, not fixed.",
+    "Injected exceptions at scoring/capacity boundaries are not real OS timer/deadline integration tests.",
+    "Equivalence reference is the pinned active predecessor, not an independent official-engine oracle; no full-game, EV or production activation claim."
+  ],
+  "matrix_branch_counts_per_mode": {
+    "expected_downside:accepted=False": 114,
+    "expected_downside:accepted=True": 6,
+    "feasible=False": 120,
+    "feasible=True": 240,
+    "forced=False": 240,
+    "forced=True": 120,
+    "minimax_regret:accepted=False": 113,
+    "minimax_regret:accepted=True": 7,
+    "strict:accepted=False": 117,
+    "strict:accepted=True": 3
+  },
+  "mutation_controls_per_mode": {
+    "shared_receipts": {
+      "errors": 0,
+      "failures": 1,
+      "killed_by_assertion": true,
+      "returncode": 1,
+      "tests_run": 1
+    },
+    "stale_calendar": {
+      "errors": 0,
+      "failures": 1,
+      "killed_by_assertion": true,
+      "returncode": 1,
+      "tests_run": 1
+    },
+    "swallowed_deadline": {
+      "errors": 0,
+      "failures": 160,
+      "killed_by_assertion": true,
+      "returncode": 1,
+      "tests_run": 1
+    },
+    "uncleared_quote": {
+      "errors": 0,
+      "failures": 160,
+      "killed_by_assertion": true,
+      "returncode": 1,
+      "tests_run": 1
+    },
+    "unreleased_owner": {
+      "errors": 0,
+      "failures": 1,
+      "killed_by_assertion": true,
+      "returncode": 1,
+      "tests_run": 1
+    }
+  },
+  "normal": {
+    "errors": 0,
+    "failures": 0,
+    "optimize": 0,
+    "skipped": 0,
+    "status": "PASS",
+    "tests_run": 13
+  },
+  "normal_optimized_count_identity": true,
+  "optimized": {
+    "errors": 0,
+    "failures": 0,
+    "optimize": 1,
+    "skipped": 0,
+    "status": "PASS",
+    "tests_run": 13
+  },
+  "owner": "ASTRA-CANOPY",
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "raw_execution_reports": {
+    "data": "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",
+    "decode": "json.loads(lzma.decompress(base64.b64decode(receipt[\"raw_execution_reports\"][\"data\"])))",
+    "encoding": "base64(xz(utf8-json))",
+    "uncompressed_bytes": 874310,
+    "uncompressed_sha256": "59edae28fba9c5bfe0a844efac6aae3d03cb00311741dc62eabf0e2838136162",
+    "xz_bytes": 4184,
+    "xz_sha256": "9138b2bfceafe0129ecfe76ec0956df78fbd6ef020eed0b3db4672f8aa72a3f7"
+  },
+  "reproduce": [
+    "Generate selected_sell_core.py with WEAVE compose_optimizer_stack.py from the four exact donor components; the output must match candidate.git_blob and candidate.sha256 above.",
+    "python check_optimizer_stack_lifetime.py --runtime <artifact10175943272/final-pressure-runtime> --candidate <WEAVE-generated-selected_sell_core.py> --self-test-mutants --output <new-normal.json>",
+    "python -O check_optimizer_stack_lifetime.py --runtime <artifact10175943272/final-pressure-runtime> --candidate <WEAVE-generated-selected_sell_core.py> --self-test-mutants --output <new-optimized.json>"
+  ],
+  "schema": "titan-v4-optimizer-stack-independent-lifetime-receipt/v1",
+  "source_scope": "Only independent checker and this receipt. No composer, optimizer source, scheduler source, runtime, default, archive or Kaggle mutation.",
+  "weave_thread": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1789181661901419"
+}

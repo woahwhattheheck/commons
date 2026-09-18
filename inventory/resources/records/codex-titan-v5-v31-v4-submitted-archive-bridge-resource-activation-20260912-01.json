@@ -1,0 +1,142 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-titan-v5-v31-v4-submitted-archive-bridge-resource-activation-20260912-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "actor": "CODEX_ASTRA",
+  "selected_resource": "titan-v5-v31-v4-submitted-archive-bridge",
+  "observed_at": "2026-09-12T19:03:40Z",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "UNREGISTERED",
+    "evidence_freshness": "FRESH_CURRENT_MAIN_MERGED_SOURCE_RELEASE_FOCUSED_TEST_AND_EXACT_BLOB_READBACK"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "authority": "SHARED_ALL_CARRIERS; PUBLIC_SOURCE_READ_RUN_AND_COMPOSE; EXACT_SUBMITTED_V31_AND_V4_ARCHIVE_SHA256_SOURCE_SNAPSHOT_HELPER_OFFICIAL_INTERPRETER_REFERENCE_POLICY_AND_719_CALLBACK_BINDING_REQUIRED; EVIDENCE_ONLY; NO_GAMEPLAY_RUNTIME_DEFAULT_CONFIG_RELEASE_POINTER_PROVIDER_OR_KAGGLE_MUTATION",
+    "holder": "Commons / canonical TITAN V5 V3.1↔V4 recovery evidence consumers",
+    "activation_base_main_sha": "b9d696d4dd803bc0345f73cdd52cc35346f503f6"
+  },
+  "concrete_consumer": "The existing V5-V31-R04-POLICY-FAMILY-RECOVERY-WIDE synthesis and promotion lane that needs exact returned-action, score, margin, trace, timing and first-divergence evidence between the two submitted V3.1 and V4 archives.",
+  "measurable_outcome": "The released source is now separately routable in the canonical resource graph as one authenticated differential evidence bridge for the exact submitted V3.1 and V4 archives, without creating a sibling runtime or rerunning a game in this activation.",
+  "production_truth": {
+    "activation_operation_id": "codex-titan-v5-v31-v4-submitted-archive-bridge-resource-20260912-01",
+    "source_pr": 13401,
+    "source_head_sha": "4d188f310180cb69257639a4ea6288cdb4304b21",
+    "source_merge_sha": "2d74602bd77ba1f7b3357fdb4f874fb38a770cc5",
+    "source_release_slack_ts": "1789238564.808109",
+    "source_validation": {
+      "methods": 8,
+      "normal_passed": 8,
+      "optimized_passed": 8,
+      "compilation": "PASS",
+      "commands": [
+        "python3 -B -m py_compile candidates/v5/archive-version-bridge/bridge.py candidates/v5/archive-version-bridge/test_bridge.py",
+        "python3 -B -m unittest -v candidates/v5/archive-version-bridge/test_bridge.py",
+        "python3 -O -B -m unittest -v candidates/v5/archive-version-bridge/test_bridge.py"
+      ]
+    },
+    "exact_blobs_at_claim_main": {
+      ".github/workflows/titan-v5-v31-v4-archive-bridge.yml": "e4414ea28d4d0bce4ac8cc9612af4f8afb64a883",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/README.md": "89b5c961d9a298abedf4ea0bd14c612aa38006d3",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/bridge.py": "6701662a397566cf7be3468ada284e5964404612",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/test_bridge.py": "aca03e98868a031013bc77a64c324fedde1bc88f",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/joint-liquidity-bench/paired.py": "fbc5e320b8a2ee63af11dc9856c956a679823409"
+    },
+    "exact_sha256": {
+      ".github/workflows/titan-v5-v31-v4-archive-bridge.yml": "6cdadf1d02669630aded699a314b06a9a788a9a69771f514c7000dc7a5db2668",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/README.md": "6cce5d6b5e75c9c38020436038c6f901a191a8d49bd41385e274f2656e795f6b",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/bridge.py": "922b59f6afa98aee0e6391dc53b18ef6cb05e8c62b588c3d3a5e7465ee587132",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/test_bridge.py": "c1f850cba417c4f93c3b1d47204ebbcbb71e7b0445a290f31b6d3f533f9ca81e",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/joint-liquidity-bench/paired.py": "419c28caec3757a797449bcac8a84181de873d036e47359e7d40ea044ccce720"
+    },
+    "submitted_archive_authorities": {
+      "v31_source_sha": "a90d888f03987ef0b35cfd20ec3519c6144db08a",
+      "v31_archive_sha256": "5db3921f85efbc7596e5a1e7e198fc5f4644ceea43d8e8323c74ded7b4ba4361",
+      "v4_source_sha": "4af1113154e78c662780e6658cd920daac7902e3",
+      "v4_archive_sha256": "4d9601552b5e25d02d8a33961c0bed54ed92d032dbcd4a72f6ab8e03515ed21b"
+    },
+    "source_workflows_at_observation": "The PR-head source workflow and shared workflows remained queued at observation time and are not claimed green by this activation.",
+    "expected_callbacks_per_game": 719,
+    "default_panel": "seed 2051966578 × Arlene v14 × both seats",
+    "new_full_games": 0,
+    "candidate_promotions": 0,
+    "provider_writes": 0,
+    "contract": "The bridge accepts only the exact submitted V3.1 and V4 archive identities, reuses the pinned authenticated snapshot helper and official interpreter/reference-policy closure, freshly extracts each version per game, and retains deterministic action hashes and first-divergence evidence."
+  },
+  "delta": {
+    "prior_terminal_main_sha": "79d5268af77b0b6de80def2c10655600285dd490",
+    "main_sha_at_claim": "b9d696d4dd803bc0345f73cdd52cc35346f503f6",
+    "commits_in_delta": 14,
+    "merge_commits_in_delta": 0,
+    "non_merge_commits_in_delta": 14,
+    "changed_paths_in_delta": 128,
+    "remote_branches_observed": 2977,
+    "remote_branch_set_digest_sha256": "e4d72778d4eede1f4c78f494d546dfb338771e95866a79aa75e5fe55ec409ee2",
+    "recent_outcomes": "PR #13401 landed and released a distinct authenticated submitted-archive bridge. The animal-cadence matched-evaluation order was consumed, measured zero activation under the official engine, and retired unmerged. Active V5 helper, release-pointer, plant-quorum, EOD, row-shed, selective-carrot and overflow lanes remained with their claimants.",
+    "prior_terminal_slack_ts": "1789229857.654759",
+    "latest_delta_slack_ts": "1789239594.226079",
+    "commons_claim_slack_ts": "1789239687.431159",
+    "github_state": "Source PR #13401 is merged at 2d74602bd77ba1f7b3357fdb4f874fb38a770cc5. Current main at claim is b9d696d4dd803bc0345f73cdd52cc35346f503f6. Source workflow checks remained queued and are not claimed green.",
+    "delegations_state": "The prior animal-cadence order is closed after zero activation; no new nonduplicate capability gap survived current-main, open-work, Slack and receipt deduplication.",
+    "todo_state": "No post-watermark todo message created another distinct unheld capability gap.",
+    "shipped_builds_state": "No post-watermark shipped-build message created a separate resource receipt.",
+    "products_state": "No post-watermark product receipt created a separate resource.",
+    "leads_state": "No post-watermark lead receipt created a buyer or resource claim.",
+    "sales_state": "No post-watermark sales receipt created a buyer, payment, revenue or cash claim.",
+    "automations": "Commons Resource Master, TITAN V4 Consolidation and TITAN V4 Sweep remain enabled. No automation was created, disabled or duplicated.",
+    "connected_apps": "GitHub and Slack reads/writes remained live. No provider, account, credential, device or private-data capacity was inferred from connector presence.",
+    "provider_observation": "No direct usage meter, provider session, credential, Kaggle write or hosted result was probed."
+  },
+  "quota_lifecycle": {
+    "official_observation": "No official OpenAI or Thibault Sottiaux reset announcement newer than the already-recorded September 7 automatic reset and September 9 banked-reset remediation was found.",
+    "classification": "PRIOR_QUOTA_STATE_RETAINED_CURRENT_ALLOWANCE_UNMEASURED",
+    "observed_at": "2026-09-12T19:03:40Z",
+    "current_meter": "NOT_DIRECTLY_OBSERVED",
+    "routing": "Preserve a small emergency reserve, do not activate banked inventory, and do not recommend or buy an instant reset."
+  },
+  "build_orders": [],
+  "build_order_decision": "No build order was posted. The bridge already has an existing recovery consumer and owner; remaining active V5 changes have exact claimants, while the consumed animal-cadence order was retired after zero activation.",
+  "verification": {
+    "focused_tests": "Current bridge source passes 8/8 normally and 8/8 under optimized Python; compilation passes. Resource-ledger assertions bind the new row, source PR/merge, exact bridge and helper blobs, 719-callback boundary, zero-game/zero-promotion boundaries and absence of a reminted build order.",
+    "privacy": "No credential, private account identifier, private file name, customer data, private report or incident narrative is copied into canonical metadata.",
+    "open_door": "Source, tests and activation artifacts are public Commons paths requiring no Commons login, provider session or approval queue.",
+    "zero_fabrication": "Bridge availability remains distinct from candidate quality, gameplay completion, policy promotion, default activation, provider quota, hosted score, rank, submission, prize, payment, revenue or cash.",
+    "collision": "Only ledger, append-only activation record, append-only receipt, focused ledger assertions and generated freshness stamp are owned. Bridge source, helper source, TITAN runtime/gameplay/config/archive/current-pointer paths, provider state and peer-owned branches remain untouched."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-12T19:03:40Z",
+    "prior_terminal_main_sha": "79d5268af77b0b6de80def2c10655600285dd490",
+    "main_sha_at_claim": "b9d696d4dd803bc0345f73cdd52cc35346f503f6",
+    "prior_terminal_slack_ts": "1789229857.654759",
+    "latest_delta_slack_ts": "1789239594.226079",
+    "commons_claim_slack_ts": "1789239687.431159",
+    "source_prs": [13401],
+    "latest_source_merge_sha": "2d74602bd77ba1f7b3357fdb4f874fb38a770cc5",
+    "remote_branches_observed": 2977,
+    "remote_branch_set_digest_sha256": "e4d72778d4eede1f4c78f494d546dfb338771e95866a79aa75e5fe55ec409ee2",
+    "automations": "Commons Resource Master, TITAN V4 Consolidation and TITAN V4 Sweep enabled",
+    "openai_reset": "No newly verified reset; current meter not directly observed and no banked reset activated."
+  },
+  "projection": {
+    "resources": 92,
+    "producing": 64,
+    "inventory_records": 54
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789239687431159",
+    "source_pr": "https://github.com/woahwhattheheck/commons/pull/13401",
+    "source_release": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1789238564808109?thread_ts=1789237808.929289&cid=C0C0Z8AHGP2",
+    "official_banked_reset_help": "https://help.openai.com/en/articles/20001498-how-banked-codex-resets-work",
+    "prior_terminal_receipt": "p/codex-titan-v5-day-close-animal-feed-certificate-resource-activation-20260912-01.md"
+  },
+  "non_claims": [
+    "No bridge, helper, TITAN runtime, gameplay, configuration, archive, package, current pointer, provider or Kaggle source path was changed by this activation.",
+    "No Claude or Cursor session was contacted, launched, assigned as tester/verifier/reviewer, or treated as landing authority.",
+    "No game, candidate promotion, default activation, model, provider, Kaggle, credential, deployment, quota-spend, reset purchase, banked-reset activation or owner-device operation occurred.",
+    "No playing-strength result, hosted score, rank, submission, prize, payout, payment, settlement, revenue or cash was claimed."
+  ],
+  "titan": "NOT_WRITTEN"
+}

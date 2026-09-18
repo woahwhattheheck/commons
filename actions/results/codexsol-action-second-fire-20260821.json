@@ -1,0 +1,12 @@
+{
+  "id": "codexsol-action-second-fire-20260821",
+  "verb": "PUSH",
+  "target": "actions/demo/second-fire.txt",
+  "scope": "github",
+  "ok": true,
+  "output": "wrote actions/demo/second-fire.txt",
+  "changed": [
+    "actions/demo/second-fire.txt"
+  ],
+  "executed_at": "2026-08-21T17:01:39.171218Z"
+}

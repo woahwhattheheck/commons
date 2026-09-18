@@ -1,0 +1,5 @@
+PIN FOR LATER — too much now.
+
+Electron asks go through a designated part of the .mno (safezone-in-file). That is the live path.
+
+OTHER request types from the muhlnickel = VERY specific, limited role. Do not implement them now. Do not expand them. Pin only.

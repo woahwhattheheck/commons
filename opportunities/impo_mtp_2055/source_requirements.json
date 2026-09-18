@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "opportunity_id": "IMPO-MTP2055-2026",
+  "source_title": "Request for Proposals for Professional Services for Metropolitan Transportation Plan (MTP) 2055",
+  "source_url": "https://s3-us-east-2.amazonaws.com/mpo-website-2025/wp-media-folder-impo/wp-content/uploads/2026/09/IMPO-MTP-RFP-09.09.2026.pdf",
+  "source_sha256": null,
+  "source_binding_status": "URL_AND_PAGE_REFERENCES_ONLY",
+  "requirements": [
+    {
+      "id": "RFP-001",
+      "category": "schedule",
+      "requirement": "Questions are due September 16, 2026 at 10:00 a.m. ET.",
+      "source_reference": "RFP page 1, selection schedule"
+    },
+    {
+      "id": "RFP-002",
+      "category": "schedule",
+      "requirement": "Proposal packages are due October 6, 2026 at 5:00 p.m. ET.",
+      "source_reference": "RFP cover and page 1"
+    },
+    {
+      "id": "RFP-003",
+      "category": "schedule",
+      "requirement": "Anticipated performance begins around January 1, 2027 and final handoff is due no later than December 31, 2028.",
+      "source_reference": "RFP page 2, project schedule"
+    },
+    {
+      "id": "RFP-004",
+      "category": "commercial",
+      "requirement": "The total not-to-exceed budget is $215,000, with base scope distinguished from optional or additive services.",
+      "source_reference": "RFP page 2, project budget"
+    },
+    {
+      "id": "RFP-005",
+      "category": "scope",
+      "requirement": "The MTP and development process must comply with applicable federal and state metropolitan transportation planning requirements, including 23 CFR 450 Subpart C.",
+      "source_reference": "RFP pages 3 and 5"
+    },
+    {
+      "id": "RFP-006",
+      "category": "management",
+      "requirement": "The consultant must designate a project manager, maintain a work plan and schedule, attend coordination and milestone meetings, invoice monthly, and apply QA/QC.",
+      "source_reference": "RFP pages 3-4"
+    },
+    {
+      "id": "RFP-007",
+      "category": "engagement",
+      "requirement": "Engagement must be integrated into technical tasks and tied to identified decisions, information needs, participants, methods, timing, analysis, communication, and use of findings.",
+      "source_reference": "RFP page 4"
+    },
+    {
+      "id": "RFP-008",
+      "category": "survey",
+      "requirement": "The consultant must adapt and administer a statistically valid regional survey, explaining sampling, weighting, representativeness, specialized partners, findings, and limitations.",
+      "source_reference": "RFP pages 4-5"
+    },
+    {
+      "id": "RFP-009",
+      "category": "analysis",
+      "requirement": "Regional conditions analysis must focus on findings that influence plan decisions, investment strategy, performance measures, or recommendations rather than reproduce descriptive information.",
+      "source_reference": "RFP page 5"
+    },
+    {
+      "id": "RFP-010",
+      "category": "performance",
+      "requirement": "The consultant must refine vision, goals, objectives, KPIs, and the required system performance report using maintainable and understandable measures.",
+      "source_reference": "RFP page 6"
+    },
+    {
+      "id": "RFP-011",
+      "category": "modeling",
+      "requirement": "The consultant must integrate updated population, employment, land-use, scenario, and travel-model assumptions while accounting for the staged availability of updated ITDM outputs.",
+      "source_reference": "RFP page 6"
+    },
+    {
+      "id": "RFP-012",
+      "category": "investment",
+      "requirement": "The consultant must support resource-allocation goals, improve project scoring, run a project call, quality-control data, assign scores, incorporate ITDM outputs, and support fiscal constraint.",
+      "source_reference": "RFP page 7"
+    },
+    {
+      "id": "RFP-013",
+      "category": "implementation",
+      "requirement": "Major recommendations must state outcomes, roles, mechanisms, time horizon, dependencies, funding or staffing implications, and monitoring method.",
+      "source_reference": "RFP page 8"
+    },
+    {
+      "id": "RFP-014",
+      "category": "delivery",
+      "requirement": "Final public documents must be accessible and concise, with native/editable report files plus native mapping files and scripts for future amendments.",
+      "source_reference": "RFP page 8"
+    },
+    {
+      "id": "RFP-015",
+      "category": "response",
+      "requirement": "The main qualifications response is limited to 16 pages; listed forms, addendum, cover page, table of contents, vendor-profile information, and separate quote are excluded.",
+      "source_reference": "RFP pages 9-10"
+    },
+    {
+      "id": "RFP-016",
+      "category": "response",
+      "requirement": "The counted response includes a one-page cover letter, one-to-two-page firm overview, one-to-four-page approach, maximum two-page team section, maximum three-page project sheets, and maximum four-page resumes.",
+      "source_reference": "RFP pages 9-10"
+    },
+    {
+      "id": "RFP-017",
+      "category": "experience",
+      "requirement": "At least three relevant project examples must identify client, participating staff, and staff roles; IMPO experience may be listed but IMPO references are prohibited.",
+      "source_reference": "RFP pages 9-10"
+    },
+    {
+      "id": "RFP-018",
+      "category": "forms",
+      "requirement": "Forms A, B, and C must be completed; Form A requests legal organization type, professional liability status, vendor number, and SAM.gov UEI.",
+      "source_reference": "RFP pages 10 and 14-16"
+    },
+    {
+      "id": "RFP-019",
+      "category": "addenda",
+      "requirement": "Vendors must monitor the official procurement page for addenda through the due date, sign the questions addendum, and include it in the response.",
+      "source_reference": "RFP page 10"
+    },
+    {
+      "id": "RFP-020",
+      "category": "commercial",
+      "requirement": "A separate quote PDF must provide costs, rates, and hours of key staff by major task.",
+      "source_reference": "RFP page 10"
+    },
+    {
+      "id": "RFP-021",
+      "category": "evaluation",
+      "requirement": "Evaluation weights are project approach 35 points, project team 35 points, and past project experience/examples 30 points.",
+      "source_reference": "RFP pages 10-11"
+    },
+    {
+      "id": "RFP-022",
+      "category": "federal",
+      "requirement": "The procurement uses FHWA and FTA federal planning funds and requires current federal certifications and Title VI assurances.",
+      "source_reference": "RFP page 11"
+    },
+    {
+      "id": "RFP-023",
+      "category": "truthfulness",
+      "requirement": "The vendor warrants that submission information is true and accurate, that it can supply the work, and that delegation beyond disclosed subcontracting requires prior written permission.",
+      "source_reference": "RFP page 12"
+    },
+    {
+      "id": "RFP-024",
+      "category": "insurance",
+      "requirement": "The sample contract lists general liability, auto liability, umbrella liability, workers compensation, and employer liability thresholds, but also contains an alternative no-insurance clause by agreement of all parties.",
+      "source_reference": "RFP pages 21-22"
+    },
+    {
+      "id": "RFP-025",
+      "category": "intellectual_property",
+      "requirement": "Pre-existing works remain with the contractor only if listed as pre-existing works in the agreement; delivery planning must identify tools, methods, code, data, and licenses accurately.",
+      "source_reference": "RFP page 21"
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+# TITAN V4 checker donor hardening patch H4 — dict/reflection provenance precision
+#
+# Apply AFTER H3 b1dd199ce69d2f3b7dc441769442a218c495a76d.
+# H4 repairs deterministic false-greens found by exact H3 source audit:
+#   1) dict literal constant lookup must obey Python last-equal-key wins;
+#   2) dynamic keys / ** mappings that may override a constant lookup must fail
+#      conservatively rather than letting an earlier safe entry certify safety;
+#   3) globals()/locals().get(PROTECTED, default) is a protected class lookup.
+# Donor only. No checker carrier/ref/workflow/Actions/canonical authority.
+
+diff --git a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/check_v4_plumbing.py b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/check_v4_plumbing.py
+--- a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/check_v4_plumbing.py
++++ b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/check_v4_plumbing.py
+@@
+     def possible_kinds(expr,before=None):
+@@
+         if isinstance(expr,ast.Subscript) and isinstance(expr.value,ast.Dict):
++            def dict_lookup_kinds(node,wanted):
++                pairs=list(zip(node.keys,node.values))
++                # With only literal keys Python's result is exact: duplicate
++                # equal keys collapse and the LAST equal key wins.  Equality
++                # is intentional here (e.g. 1 and True collide as dict keys).
++                if all(isinstance(key,ast.Constant) for key,_ in pairs):
++                    for key,value in reversed(pairs):
++                        if key.value==wanted:
++                            return possible_kinds(value,before)
++                    return set()
++
++                # A dynamic key may equal wanted at runtime.  Union only the
++                # protected identities its value may return.  Unknown **maps
++                # are stronger: their selected value is opaque, so fail closed
++                # for either protected object kind.  Literal **{...} remains
++                # recursively auditable.
++                out=set()
++                for key,value in pairs:
++                    if key is None:
++                        if isinstance(value,ast.Dict):
++                            out.update(dict_lookup_kinds(value,wanted))
++                        else:
++                            out.update({'root','feature'})
++                    elif isinstance(key,ast.Constant):
++                        if key.value==wanted:
++                            out.update(possible_kinds(value,before))
++                    else:
++                        out.update(possible_kinds(value,before))
++                return out
+             if isinstance(expr.slice,ast.Constant):
+-                wanted=expr.slice.value
+-                for key,value in zip(expr.value.keys,expr.value.values):
+-                    if isinstance(key,ast.Constant) and key.value==wanted:
+-                        return possible_kinds(value,before)
+-                return set()
++                return dict_lookup_kinds(expr.value,expr.slice.value)
+             out=set()
+             for value in expr.value.values:
+-                out.update(possible_kinds(value,before))
++                if isinstance(value,ast.Dict):
++                    # Unknown lookup into a nested **literal mapping is still
++                    # value-selecting.  Conservatively preserve both kinds;
++                    # the constant-index path above stays precise.
++                    out.update({'root','feature'})
++                else:
++                    out.update(possible_kinds(value,before))
+             return out
+@@
+     def module_lookup(expr):
+@@
+-        if isinstance(expr,ast.Call) and len(expr.args)==1 and not expr.keywords:
+-            if (
+-                isinstance(expr.func,ast.Attribute) and expr.func.attr in {'get','__getitem__'}
+-                and namespace_call(expr.func.value)
+-                and isinstance(expr.args[0],ast.Constant)
+-                and expr.args[0].value in {'Features','TitanAgent'}
+-            ):
+-                return expr.args[0].value
++        if (
++            isinstance(expr,ast.Call)
++            and isinstance(expr.func,ast.Attribute)
++            and namespace_call(expr.func.value)
++            and not expr.keywords
++        ):
++            attr=expr.func.attr
++            valid_arity=(
++                (attr=='get' and len(expr.args) in {1,2})
++                or (attr=='__getitem__' and len(expr.args)==1)
++            )
++            if (
++                valid_arity and isinstance(expr.args[0],ast.Constant)
++                and expr.args[0].value in {'Features','TitanAgent'}
++            ):
++                return expr.args[0].value
+         return None
+@@
+     def possible_kinds(expr,before=None):
+@@
+         if isinstance(expr,ast.Subscript) and isinstance(expr.value,ast.Dict):
++            def dict_lookup_kinds(node,wanted):
++                pairs=list(zip(node.keys,node.values))
++                if all(isinstance(key,ast.Constant) for key,_ in pairs):
++                    for key,value in reversed(pairs):
++                        if key.value==wanted:
++                            return possible_kinds(value,before)
++                    return set()
++
++                out=set()
++                for key,value in pairs:
++                    if key is None:
++                        if isinstance(value,ast.Dict):
++                            out.update(dict_lookup_kinds(value,wanted))
++                        else:
++                            out.update(protected_by_kind)
++                    elif isinstance(key,ast.Constant):
++                        if key.value==wanted:
++                            out.update(possible_kinds(value,before))
++                    else:
++                        out.update(possible_kinds(value,before))
++                return out
+             if isinstance(expr.slice,ast.Constant):
+-                wanted=expr.slice.value
+-                for key,value in zip(expr.value.keys,expr.value.values):
+-                    if isinstance(key,ast.Constant) and key.value==wanted:
+-                        return possible_kinds(value,before)
+-                return set()
++                return dict_lookup_kinds(expr.value,expr.slice.value)
+             out=set()
+             for value in expr.value.values:
+-                out.update(possible_kinds(value,before))
++                if isinstance(value,ast.Dict):
++                    out.update(protected_by_kind)
++                else:
++                    out.update(possible_kinds(value,before))
+             return out
+@@
+ def self_test():
+@@
++    # H4: Python dict literals use the LAST equal key.  Earlier safe entries
++    # must not hide a later protected identity.
++    feature_dup_key=ast.parse(
++        'class A:\n def act(self):\n'
++        '  f={0: object(), 0: self.features}[0]\n'
++        '  setattr(f,"r04_x",True)\n'
++    ).body[0].body[0]
++    try: mutation_scan([feature_dup_key],('r04_x',))
++    except SystemExit: pass
++    else: fail('duplicate-dict-key feature alias poison false-passed')
++
++    # Inverse precision guard: a later safe duplicate really overwrites the
++    # earlier protected value and must not be over-tainted.
++    feature_dup_safe=ast.parse(
++        'class A:\n def act(self):\n'
++        '  f={0: self.features, 0: object()}[0]\n'
++        '  setattr(f,"r04_x",True)\n'
++    ).body[0].body[0]
++    req(protected_object_alias_reason(feature_dup_safe,{'features','act'},{'r04_x'}) is None,
++        'last-safe duplicate dict key was over-tainted')
++
++    # Equality, not type identity, controls duplicate dict keys: 1 == True.
++    feature_equal_key=ast.parse(
++        'class A:\n def act(self):\n'
++        '  f={1: object(), True: self.features}[1]\n'
++        '  setattr(f,"r04_x",True)\n'
++    ).body[0].body[0]
++    try: mutation_scan([feature_equal_key],('r04_x',))
++    except SystemExit: pass
++    else: fail('equal-dict-key feature alias poison false-passed')
++
++    class_dup_tree=ast.parse(
++        'class Features:\n pass\n'
++        'class TitanAgent:\n def act(self):\n  pass\n'
++        '_F={"k": object(), "k": Features}["k"]\n'
++        'setattr(_F,"__bool__",evil)\n'
++    )
++    _f=class_dup_tree.body[0]; _a=class_dup_tree.body[1]
++    req(module_class_alias_mutation_reason(class_dup_tree,_f,_a,('r04_x',),{'act'}) is not None,
++        'duplicate-dict-key Features alias poison false-passed')
++
++    class_get_default_tree=ast.parse(
++        'class Features:\n pass\n'
++        'class TitanAgent:\n def act(self):\n  pass\n'
++        'setattr(globals().get("Features", object()),"__bool__",evil)\n'
++    )
++    _f=class_get_default_tree.body[0]; _a=class_get_default_tree.body[1]
++    req(module_class_alias_mutation_reason(class_get_default_tree,_f,_a,('r04_x',),{'act'}) is not None,
++        'globals().get(Features, default) reflection poison false-passed')

@@ -1,0 +1,146 @@
+{
+  "_header": {
+    "name": "MUHLNICKEL AUTONOMY DIRECTIVES",
+    "author": "Bryce Muhlnickel",
+    "date": "2026-08-03",
+    "purpose": "Machine-readable optimization targets for the autonomous self-optimization loop",
+    "encoding": "Each directive has an ID (0-9), a name, scoring criteria, and the fabrication action it drives",
+    "note": "The substrate ACTS on these — every iteration fabricates real circuits, not proposals"
+  },
+  "directives": [
+    {
+      "id": 0,
+      "name": "CASCADING_RESERVOIRS",
+      "description": "Build sub-reservoirs from the main reservoir. Meta-reservoir feeds sub-reservoirs, each feeding ring clusters.",
+      "score_axes": {
+        "sub_reservoir_count": "number of sub-reservoir circuits in registry",
+        "ring_clusters_served": "number of distinct ring groups with dedicated sub-reservoir",
+        "distribution_depth": "ticks from main reservoir input to farthest ring"
+      },
+      "fabrication_action": "build physical-format NAND fan-out trees as sub-reservoirs, wire to ring clusters, store in titan.gguf",
+      "parent_address": 40022599232,
+      "target_topology": "hierarchical_tree",
+      "priority_bits": 3
+    },
+    {
+      "id": 1,
+      "name": "WEIGHTS_AS_GATES",
+      "description": "Convert trained model weights into gate wiring. The forward pass IS the circuit.",
+      "score_axes": {
+        "weight_circuits_stored": "number of weight-baked circuit netlists in registry",
+        "total_gates_baked": "total gate count across all baked weight circuits",
+        "depth_per_inference": "critical-path depth of the baked forward pass"
+      },
+      "fabrication_action": "read weights from muhl_self_train.weights, bake MLP forward pass as NAND gates per muhl_neural pattern, store",
+      "source_pattern": "muhl_neural.py / muhl_train_deep.py",
+      "priority_bits": 2
+    },
+    {
+      "id": 2,
+      "name": "PERSISTENT_CONTEXT",
+      "description": "Use storage-resident state as permanent memory. Accumulator circuits aggregate knowledge across runs.",
+      "score_axes": {
+        "accumulator_circuits": "number of accumulator circuits stored",
+        "context_bytes_addressable": "total bytes of persistent context in registry",
+        "retention_depth": "ticks for a write to reach the accumulator output"
+      },
+      "fabrication_action": "build NAND accumulator circuits with self-routing feedback (output==input addresses), store via store_loop",
+      "mechanism": "self_clock_feedback",
+      "priority_bits": 2
+    },
+    {
+      "id": 3,
+      "name": "ATTENTION_AS_ADDRESSING",
+      "description": "Build transformer blocks using file-offset addressing as the attention mechanism directly.",
+      "score_axes": {
+        "attention_circuits_stored": "number of attention-as-addressing circuits in registry",
+        "addressable_kv_bytes": "total KV memory addressable by attention circuits",
+        "score_depth": "depth of popcount-XNOR match score kernel"
+      },
+      "fabrication_action": "build popcount-XNOR score kernels and winner-mux circuits per muhl_attention/muhl_transformer pattern, store",
+      "source_pattern": "muhl_attention.py / muhl_transformer.py",
+      "priority_bits": 2
+    },
+    {
+      "id": 4,
+      "name": "SELF_REPLICATING_FABRICATION",
+      "description": "Wire in-circuit fabricator to training output. Model identifies useful patterns, fabricator builds them.",
+      "score_axes": {
+        "incircuit_fab_instances": "number of in-circuit fabricator instances stored",
+        "circuits_fabricated_by_substrate": "count of circuits whose fabricator field traces to in-circuit fab",
+        "fab_depth": "depth of the in-circuit fabricator netlist"
+      },
+      "fabrication_action": "instantiate muhl_whitebox_incircuit at scale (larger NW/G), wire training output to netlist-data input, store",
+      "source_pattern": "muhl_whitebox_incircuit.py",
+      "priority_bits": 3
+    },
+    {
+      "id": 5,
+      "name": "RING_SPECIALIZATION",
+      "description": "Search the ring genome space. Different rings for different jobs: inference, training, fabrication.",
+      "score_axes": {
+        "specialized_ring_count": "number of rings with non-default genome configuration",
+        "genome_variants_tested": "number of distinct genome configurations tried by the foundry",
+        "composed_depth_improvement": "depth reduction from specialization vs uniform rings"
+      },
+      "fabrication_action": "run foundry search over ring genome space, fabricate winner configurations, store ring records with new genomes",
+      "source_pattern": "pfc_foundry.py",
+      "genome_space": {"adder": ["ripple", "kogge", "brentkung", "csel8", "search"], "clean": ["on", "off"], "order": ["frontload", "asis"]},
+      "priority_bits": 2
+    },
+    {
+      "id": 6,
+      "name": "SELF_MONITORING",
+      "description": "Build circuits that watch other circuits. Monitor reads output addresses, checks against expected patterns.",
+      "score_axes": {
+        "monitor_circuits_stored": "number of monitor circuits in registry",
+        "workers_monitored": "number of worker circuits with a dedicated monitor",
+        "anomaly_detection_depth": "depth of the comparison/check circuit"
+      },
+      "fabrication_action": "build NAND comparator circuits that read worker output addresses and check vs stored expected values, store",
+      "mechanism": "output_address_comparator",
+      "priority_bits": 1
+    },
+    {
+      "id": 7,
+      "name": "ELECTRON_PRESSURE_CONTROL",
+      "description": "Feedback circuit between reservoir and ring bank. Auto load-balancing of electron distribution.",
+      "score_axes": {
+        "pressure_circuits_stored": "number of pressure-control circuits in registry",
+        "rings_with_feedback": "number of rings whose return path connects to a pressure controller",
+        "regulation_depth": "depth of the feedback comparison circuit"
+      },
+      "fabrication_action": "build NAND feedback comparators between ring return rates and reservoir distribution gates, store",
+      "mechanism": "reservoir_ring_feedback_loop",
+      "priority_bits": 2
+    },
+    {
+      "id": 8,
+      "name": "FEDERATED_MULTI_GGUF",
+      "description": "Build addressing circuits that read from other gguf files. Cross-file addressing expands addressable space.",
+      "score_axes": {
+        "cross_file_circuits_stored": "number of cross-file addressing circuits in registry",
+        "gguf_files_addressable": "number of distinct gguf files wired into the addressing space",
+        "total_addressable_bytes": "sum of all addressable bytes across all wired gguf files"
+      },
+      "fabrication_action": "build address-translation circuits mapping cross-file offsets to absolute addresses, store, register new address spaces",
+      "target_path": "C:/llm/models",
+      "priority_bits": 1
+    },
+    {
+      "id": 9,
+      "name": "META_LEARNING",
+      "description": "Circuit that evaluates training circuit performance and proposes modifications. Substrate optimizes its own hardware.",
+      "score_axes": {
+        "meta_circuits_stored": "number of meta-learning circuits in registry",
+        "training_circuits_evaluated": "number of training circuits whose output the meta-circuit reads",
+        "improvement_depth": "depth of the meta-evaluation circuit"
+      },
+      "fabrication_action": "build performance-evaluation circuits that read training outputs, compute improvement gradient, drive fabricator, store",
+      "source_pattern": "muhl_selfimprove.py",
+      "priority_bits": 3
+    }
+  ],
+  "scoring_rule": "compute_per_tick = REPLICAS / DEPTH, REPLICAS = storage / gates. Lower gates*depth is better. DEPTH is in TICKS, never host seconds.",
+  "iteration_rule": "fabricate -> verify byte-exact -> store -> score -> fabricate again. Default is STORE, not discard. Every iteration changes titan.gguf."
+}

@@ -1,0 +1,18 @@
+{
+  "id": "codexsol-bryce-demand-gap-20260822-03",
+  "verb": "POST",
+  "target": "TABLE",
+  "scope": "github",
+  "ok": false,
+  "output": "posted codexsol-bryce-demand-gap-20260822-03-post",
+  "write": "conflict",
+  "output_id": "codexsol-bryce-demand-gap-20260822-03-post",
+  "changed": [
+    "conflicts/codexsol-bryce-demand-gap-20260822-03-post.jsonl"
+  ],
+  "canonical_records": {
+    "conflicts/codexsol-bryce-demand-gap-20260822-03-post.jsonl": "6aab2555a9a7da5681e02080a2d32bb0778cbe0edb00b1b6c843fbab2629f2b8"
+  },
+  "executed_at": "2026-08-23T00:12:13Z",
+  "error": "CONFLICT"
+}

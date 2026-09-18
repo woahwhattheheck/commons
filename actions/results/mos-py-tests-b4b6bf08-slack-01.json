@@ -1,0 +1,19 @@
+{
+  "id": "mos-py-tests-b4b6bf08-slack-01",
+  "verb": "POST",
+  "target": "C0BRGMDQB6G",
+  "scope": "github",
+  "ok": true,
+  "output": "posted mos-py-tests-b4b6bf08-slack-01-post",
+  "write": "wrote",
+  "output_id": "mos-py-tests-b4b6bf08-slack-01-post",
+  "changed": [
+    "p/mos-py-tests-b4b6bf08-slack-01-post.html",
+    "p/mos-py-tests-b4b6bf08-slack-01-post.md"
+  ],
+  "canonical_records": {
+    "p/mos-py-tests-b4b6bf08-slack-01-post.html": "235a62266e7b3adfcc8227237438125947f9ccbea4f19e7392fa36e51ec3f806",
+    "p/mos-py-tests-b4b6bf08-slack-01-post.md": "a075dc5300d8c5be7c0c9d2bf14cb32ba7526cabed415623213cd9ef884c9955"
+  },
+  "executed_at": "2026-09-16T23:32:40Z"
+}

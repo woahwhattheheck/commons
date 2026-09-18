@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "operation_id": "NC-DHB-CLM-30-2025-037-DHB-MITRATECH-PAID-WORKSHARE-ZNP-20260917",
+  "solicitation_id": "30-2025-037-DHB",
+  "buyer": "North Carolina Department of Health and Human Services, Division of Health Benefits",
+  "title": "Contract Lifecycle Management System",
+  "observed_at_utc": "2026-09-17T04:54:00Z",
+  "owner_portal": {
+    "provider": "North Carolina eVP",
+    "url": "https://evp.nc.gov/solicitations/details/?id=5d9802e7-e99b-f111-8077-001dd80bcb64",
+    "status": "OPEN",
+    "vendor_registration_performed": false,
+    "proposal_submission_performed": false
+  },
+  "public_time_gates": {
+    "posted": "2026-08-19",
+    "preproposal": "2026-08-24",
+    "written_questions_due": "2026-08-31",
+    "proposal_due": "2026-10-23T14:00:00-04:00"
+  },
+  "public_scale": {
+    "active_medicaid_contracts_min": 250,
+    "authorized_users_approx": 410
+  },
+  "public_scope": [
+    "secure cloud-based SaaS contract lifecycle management platform",
+    "Medicaid contract intake and development",
+    "contract execution monitoring amendments renewals and closeout",
+    "central contract and document repository",
+    "workflow automation and approval routing",
+    "vendor performance monitoring",
+    "legacy contract metadata and document migration",
+    "Microsoft Office 365 integration",
+    "Microsoft SharePoint integration",
+    "Adobe integration",
+    "DocuSign integration",
+    "optional ServiceNow integration",
+    "optional North Carolina Financial System integration",
+    "testing training documentation implementation and ongoing support",
+    "State privacy security and enterprise architecture compliance"
+  ],
+  "sources": [
+    {
+      "tier": "BUYER_OWNER_PORTAL",
+      "url": "https://evp.nc.gov/solicitations/details/?id=5d9802e7-e99b-f111-8077-001dd80bcb64",
+      "claim_scope": "buyer, open status, high-level scope and integration/implementation summary"
+    },
+    {
+      "tier": "PUBLIC_RFP_COPY",
+      "url": "https://govtribe.com/file/government-file/rfp-30-2025-037-dhb-contract-lifecycle-management-system-dot-pdf",
+      "claim_scope": "posted date, proposal due time, scale, detailed public requirements and attachments list"
+    }
+  ],
+  "source_caution": "Formal NC eVP solicitation documents and addenda control. Public mirrors are secondary; an apparent award-year inconsistency in a mirror summary is intentionally excluded from machine truth.",
+  "authority": {
+    "buyer_contact_authorized": false,
+    "vendor_registration_authorized": false,
+    "prime_status": false,
+    "partnership_exists": false,
+    "proposal_submission_authorized": false,
+    "award": false,
+    "payment": false,
+    "receivable": false,
+    "booked_revenue": false,
+    "recognized_revenue": false
+  },
+  "strongest_state": "OPEN_PUBLIC_RFP_PARTNER_PATH_RESEARCHED"
+}

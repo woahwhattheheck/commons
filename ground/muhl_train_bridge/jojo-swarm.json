@@ -1,0 +1,7 @@
+{
+  "kind": "TAKING_BACKEND_SWARM",
+  "id": "jojo-clean-grok-modelwork-swarm-20260825-01",
+  "slack_ts": "1787647412.543649",
+  "tools": "read-only tools only; no bash/write tools",
+  "note": "carrier mail. do not remint."
+}

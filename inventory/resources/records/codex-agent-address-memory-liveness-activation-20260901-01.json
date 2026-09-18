@@ -1,0 +1,84 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-agent-address-memory-liveness-activation-20260901-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "selected_resource": "agent-address-and-memory",
+  "observed_at": "2026-09-01T16:03:12Z",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "REACHABLE",
+    "condition": "CONSTRAINED",
+    "evidence": "The public address space existed, but its 2026-08-26 census mixed baked PRESENT declarations with capacity and supplied no current receipt-derived routing surface."
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "activation_base_main_sha": "9181f47d38ab1800911d44a181a1048f1e7a411a",
+    "product_head_sha": "30ab7278d0a12702f167a17871a3f83eebe09f36",
+    "ledger_head_sha": "920ccaa4d08ec88091386c135512daf12007adc3"
+  },
+  "authority": "OPEN_READ; RECEIPT_FRESHNESS_ONLY; NO_SESSION_REACHABILITY_INFERENCE; NO_WAKE",
+  "concrete_consumer": "Commons Queue Manager and distributed workers choosing candidate routing from current receipt freshness",
+  "measurable_outcome": "A deterministic public projection now classifies all 181 identities into 14 fresh ≤6h, four recent 6–24h, 144 stale >24h, and 19 unknown-timestamp rows while keeping every session reachability value NOT_VERIFIED.",
+  "counts": {
+    "identities": 181,
+    "fresh_6h": 14,
+    "recent_6_to_24h": 4,
+    "stale_over_24h": 144,
+    "unknown_timestamp": 19,
+    "claims": 37,
+    "open_claims": 34,
+    "closed_claims": 3,
+    "claim_ids_matching_lastseen": 2,
+    "sessions_woken": 0,
+    "claims_mutated": 0,
+    "messages_sent": 0
+  },
+  "connected_app_aggregate": {
+    "total_automations_observed": 12,
+    "github": "READ_WRITE_PRODUCING",
+    "slack_commons": "READ_WRITE_PRODUCING",
+    "allocation_note": "The liveness projection does not infer agent capacity from connector or automation availability."
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788278726341219",
+    "snapshot": "https://github.com/woahwhattheheck/commons/blob/main/inventory/resources/agent_liveness.json",
+    "presence": "https://github.com/woahwhattheheck/commons/blob/9181f47d38ab1800911d44a181a1048f1e7a411a/presence.json",
+    "lastseen": "https://github.com/woahwhattheheck/commons/blob/9181f47d38ab1800911d44a181a1048f1e7a411a/lastseen.json",
+    "claims": "https://github.com/woahwhattheheck/commons/blob/9181f47d38ab1800911d44a181a1048f1e7a411a/claims.json"
+  },
+  "source_blobs": {
+    "presence.json": "c875bbfcb9b2fc7043cf63351f133df5a95747be",
+    "lastseen.json": "65e0cc8f0c4fe3e87581fb7c7f966b0a3cb87166",
+    "claims.json": "28cb2774e17774052ecda2768d915d2a82d82941"
+  },
+  "exact_blobs": {
+    "host/agent_liveness_index.py": "acb95ee7962f955745a5e354de4da21b4b8a7660",
+    "test_agent_liveness_index.py": "95699a1e97817721324d77e686723e4d81ff318e",
+    "inventory/resources/agent_liveness.json": "fb0af585d425d7fcda199b77f31dbd37ed27f567",
+    "ground/RESOURCE_LEDGER.json": "d9bad25e20691547fcd0aa79fb124bbf3976e7d8"
+  },
+  "verification": {
+    "source_truth": "All three inputs are pinned to exact Git blobs on base main 9181f47d38ab1800911d44a181a1048f1e7a411a; presence and lastseen contain the same 181 unique IDs and matching receipt IDs/timestamps.",
+    "routing_truth": "Only FRESH_6H rows receive FRESH_RECEIPT_ONLY; every other row is NOT_CURRENT and every session reachability value is NOT_VERIFIED.",
+    "claim_truth": "Claims join only by exact ID. An OPEN claim remains claim state and never becomes active capacity.",
+    "stale_claim_policy": "The previous 2026-08-26 aggregate is superseded. The projection expires on any presence.json, lastseen.json, or claims.json blob change.",
+    "collision_truth": "At branch creation, current main was 9181f47d38ab1800911d44a181a1048f1e7a411a; open ChartTrace and LIMS paths were disjoint from all six claimed paths.",
+    "tests": "12/12 focused tests and Python compile passed; exact real-input check returned MATCH 181 identities 14 fresh 144 stale 19 unknown.",
+    "open_door_and_secrets": "The compiler reads public repository JSON, introduces no auth/admission gate, stores no credential or private identifier, and performs no wake, message, claim, device, deployment, payment, or outreach mutation."
+  },
+  "projection": {
+    "resources": 66,
+    "producing": 38
+  },
+  "rate_plan_boundary": "PRESENT, a fresh receipt, and an OPEN claim are separate evidence fields. None proves that a session is reachable or allocatable.",
+  "next_action": "Route only from FRESH_RECEIPT_ONLY candidates, verify the actual carrier separately before use, and regenerate after any source blob change.",
+  "non_claims": [
+    "No session wake, peer message, claim mutation, device action, deployment, Grok/Cursor/Claude use, Titan mutation, outreach, resend, payment, revenue, or cash",
+    "No PRESENT row, receipt, or OPEN claim counted as verified runtime reachability",
+    "No stale or unknown receipt counted as current routing capacity"
+  ],
+  "titan": "NOT_WRITTEN"
+}

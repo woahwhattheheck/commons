@@ -1,0 +1,54 @@
+{
+  "audit_sha256": "c01bfafdb625bca1d84091c9f595dbbb0406b3031539ee3004dd7e5daa33ae9b",
+  "block_reasons": {
+    "INCOMPLETE_CUSTODY": 5,
+    "INCOMPLETE_DOCK_TIMESTAMP": 5,
+    "INCOMPLETE_ORDER_ID": 5,
+    "SCOPE_AGING_NOT_AT_EAST": 5,
+    "SCOPE_ISTA_NOT_AT_EAST": 5,
+    "SCOPE_PRODUCT_NOT_AT_MICHIGAN": 5
+  },
+  "counts": {
+    "actual": {
+      "aging": 40,
+      "blocked": 30,
+      "blocked_expected_reason": 30,
+      "blocked_released": 0,
+      "custody_complete": 150,
+      "distribution": 40,
+      "dock_to_start_exact": 150,
+      "incomplete": 15,
+      "integrity": 40,
+      "orders": 180,
+      "outside_site_scope": 15,
+      "product": 30,
+      "released_after_named_qa": 150,
+      "released_without_named_qa": 0,
+      "replay_changed_records": 0,
+      "report_sla_exact": 150,
+      "routed_exact": 150,
+      "valid": 150
+    },
+    "expected": {
+      "aging": 40,
+      "blocked": 30,
+      "blocked_expected_reason": 30,
+      "blocked_released": 0,
+      "custody_complete": 150,
+      "distribution": 40,
+      "dock_to_start_exact": 150,
+      "incomplete": 15,
+      "integrity": 40,
+      "orders": 180,
+      "outside_site_scope": 15,
+      "product": 30,
+      "released_after_named_qa": 150,
+      "released_without_named_qa": 0,
+      "replay_changed_records": 0,
+      "report_sla_exact": 150,
+      "routed_exact": 150,
+      "valid": 150
+    },
+    "match": true
+  }
+}

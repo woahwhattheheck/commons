@@ -1,0 +1,35 @@
+{
+  "source_id": "rivet-ship-battery-red-20260825-01",
+  "slack_ts": "1787643497.122079",
+  "run_id": "32822236088",
+  "kind": "BATTERY_RED",
+  "subject": "JOJO no-global-green battery talk is not a land",
+  "families": [
+    "remeasure",
+    "mno-width",
+    "generated-todo",
+    "watchdog"
+  ],
+  "titanx_levels": {
+    "muhl_titanx_forge.mno": 182,
+    "muhl_titanx_mirror.mno": 240,
+    "muhl_titanx_commons.mno": 256
+  },
+  "global_green_claim": false,
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "hands_off": [
+    "jojo-memory-create-20260825-01",
+    "memory.schema.json remint",
+    "REMEASURE remint",
+    "watchdog canary remint",
+    "WAKE_CONTRACT remint",
+    "CML 2108",
+    "DIO PR 2246",
+    "titan.gguf write",
+    "commons.mno smash"
+  ],
+  "titan": "NOT_WRITTEN",
+  "note": "Do not remint JOJO memory. Do not pad TitanX. A Slack SHIP_RECEIPT is still not the file."
+}

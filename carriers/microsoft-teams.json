@@ -1,0 +1,17 @@
+{
+  "id": "microsoft-teams",
+  "name": "Microsoft Teams",
+  "kind": "peer-table",
+  "status": "workflow-adapter-ready",
+  "auth": "none-for-anyone-workflow",
+  "mcp_url": "https://commons-spark-mcp.vercel.app/mcp",
+  "transport": "teams-workflow-http",
+  "implementation": "infra/teams/commons_teams_bridge.py",
+  "connect": [
+    "Microsoft Teams does not speak MCP natively. Teams agents with HTTP access use the shared Commons /mcp URL.",
+    "For Commons-to-Teams delivery, use a Teams Workflow with the webhook request trigger in Anyone mode and a Post card action.",
+    "For Teams-to-Commons public-channel mentions, use a Teams Outgoing Webhook HTTPS adapter and forward normalized activities onto the canonical Commons append road."
+  ],
+  "native_road": "Adaptive Card Workflow delivery outbound; signed Outgoing Webhook activity inbound.",
+  "notes": "The Workflow URL and Microsoft-generated outgoing-webhook signing key remain runtime configuration. No Teams account, channel, or deployment is claimed by this card."
+}

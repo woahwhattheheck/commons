@@ -1,0 +1,174 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-titan-v5-route-block-b-resource-activation-20260913-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "actor": "CODEX_ASTRA",
+  "selected_resource": "titan-v5-route-matrix-native-block-b-evidence",
+  "observed_at": "2026-09-13T01:06:53Z",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "UNREGISTERED",
+    "evidence_freshness": "FRESH_CURRENT_MAIN_MERGED_SOURCE_RELEASE_INDEPENDENT_REVIEW_AND_EXACT_12_BLOB_CUSTODY"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "authority": "SHARED_ALL_CARRIERS; PUBLIC_CURRENT_MAIN_READ_REDUCE_AND_SELECTOR_INPUT; EXACT_PR13517_HEAD_531928937E85B7F55967CC6A9A28BB8334CDAB3A_12_BLOB_CUSTODY_32_OF_32_GAMES_719_DECISIONS_ZERO_FAILURE_C00_DEDUP_64_SNAPSHOT_BANK_MATCHES_2136_INPUT_CHECKS_AND_SHA256_BINDING_REQUIRED; DISCOVERY_EVIDENCE_ONLY; NO_RERUN_POLICY_DEFAULT_CONFIG_CURRENT_RELEASE_PROVIDER_OR_KAGGLE_MUTATION",
+    "holder": "Commons / canonical TITAN V5 P04 route reducer and preregistered selector consumers",
+    "activation_base_main_sha": "4be49a4e7d4959f0913d08745dba9578b73fd247"
+  },
+  "concrete_consumer": "The merged P04 route reducer and preregistered selector need exact public R05–R08 rows, snapshots and source custody to rank the complete 13-route matrix and evaluate fresh holdouts without rerunning these completed native cells.",
+  "measurable_outcome": "The released source is now separately routable in the canonical resource graph as one immutable Block-B evidence bundle contributing 32 completed native cells, 64 snapshot matches and 2,136 input checks to the existing P04 consumer.",
+  "production_truth": {
+    "activation_operation_id": "codex-titan-v5-route-block-b-resource-20260913-01",
+    "source_pr": 13517,
+    "source_head_sha": "531928937e85b7f55967cc6a9a28bb8334cdab3a",
+    "source_merge_sha": "145a007a64e0cade1424db27e7be55f308edde1d",
+    "source_release_slack_ts": "1789257343.509319",
+    "routes": [
+      "R05",
+      "R06",
+      "R07",
+      "R08"
+    ],
+    "native_games_completed": 32,
+    "native_games_failed": 0,
+    "decisions_per_game": 719,
+    "public_snapshots": 64,
+    "snapshot_bank_matches": 64,
+    "input_file_checks": 2136,
+    "canonical_control": "C00 production-v3 from PR #13489; racing duplicate control retained with zero sample weight",
+    "combined_rows_sha256": "853cc8df7a20d5d78cefb796ed3ddac079c4ad92d9eaac6c338d9f4d398c9093",
+    "bundle_sha256": "8bb7c01fa36b842c4cd1df5533ba6e46f0b612b5cd1134ede5db69f97d2af9e5",
+    "projection_summary_sha256": "d896cb08f2018caa51e6db183dccf0e624f0ea742a17451112df5f2e6d16b5f9",
+    "route_results": {
+      "R05": {
+        "mean_delta_own": 729.5,
+        "mean_delta_margin": -1597.25
+      },
+      "R06": {
+        "mean_delta_own": 727.0,
+        "mean_delta_margin": -420.0
+      },
+      "R07": {
+        "mean_delta_own": 788.75,
+        "mean_delta_margin": -283.25
+      },
+      "R08": {
+        "mean_delta_own": 775.75,
+        "mean_delta_margin": -308.75
+      }
+    },
+    "blanket_adoption": false,
+    "policy_ready": false,
+    "exact_blobs_at_claim_main": {
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/selective-carrot/route-matrix-native/BLOCK-B/BLOCK-B-p04-rows.jsonl": "56ad64da297d8afb0f3ec51fcb3ad58ea91104d1",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/selective-carrot/route-matrix-native/BLOCK-B/BLOCK-B-projection-summary.json": "5347574ef37fc89182d79d77e65c5dbe37d47802",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/selective-carrot/route-matrix-native/BLOCK-B/BLOCK-B-snapshot-hashes.json": "68e91d80e9a7098925e2986c8e14401b6d657534",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/selective-carrot/route-matrix-native/BLOCK-B/BUNDLE-MANIFEST.json": "08862fc784d132e55d36411e97df14a7a5560076",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/selective-carrot/route-matrix-native/BLOCK-B/BUNDLE-SHA256.txt": "b8aea7af0783266584d7299ee10ebefdd5ea5732",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/selective-carrot/route-matrix-native/BLOCK-B/R05-report.json": "1f245487d8cacd76dc225fc039485276f917a8ef",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/selective-carrot/route-matrix-native/BLOCK-B/R06-report.json": "d7c62e8f6b0a47136172dacb505f7b9e8bced0f2",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/selective-carrot/route-matrix-native/BLOCK-B/R07-report.json": "cc24ec86c1b6a9cdcd8b9f32ed0920a21925fe53",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/selective-carrot/route-matrix-native/BLOCK-B/R08-report.json": "e3099358a0a239ec350aecf45dc57b0592adff78",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/selective-carrot/route-matrix-native/BLOCK-B/README.md": "4b78e5846ae957875dbf2cba9bb8758d2a5350cf",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/selective-carrot/route-matrix-native/BLOCK-B/SUMMARY.json": "fd6b6241a1282a955260f21af461ca85e2fb13eb",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/selective-carrot/route-matrix-native/BLOCK-B/raw-evidence.tar.gz": "1be6814334d48337cd1e581a674525da382274cf"
+    },
+    "exact_sha256": {
+      "BLOCK-B-p04-rows.jsonl": "853cc8df7a20d5d78cefb796ed3ddac079c4ad92d9eaac6c338d9f4d398c9093",
+      "BLOCK-B-projection-summary.json": "d896cb08f2018caa51e6db183dccf0e624f0ea742a17451112df5f2e6d16b5f9",
+      "BLOCK-B-snapshot-hashes.json": "200afb2c33ffe8a5688c81d57a6456d2cf4e1df7ff0df4655cec70c193e52763",
+      "BUNDLE-MANIFEST.json": "88bb4b65825846c42666e557a106488ddaf7bc9107d0af49a9c770c2e42906f4",
+      "BUNDLE-SHA256.txt": "4af9aac51a58a0b25d80fd74cebd37af27f7b2ca6dde651ab722087922692c44",
+      "R05-report.json": "79a5edd449eda89ae6d11484545ff69a8f121031bdacdecdae0ef27ef2dd93cc",
+      "R06-report.json": "180ecfad51cd513b8dd9c662e1beee56e41d4dec2390c9e14d5595c72d16e5b1",
+      "R07-report.json": "efbbab70cb107bdd539343e0bda86dcc7238a3b24d102d8fcb3fdaf3840b7b8c",
+      "R08-report.json": "a093548e2b6b38db58cb1ad0963d56c7ba83e9b9889fbf6421d2f614f09c394a",
+      "README.md": "ca69df590b4d35de69fe84cadbf6586d2a84cb0806a337d60d19008b999f7e34",
+      "SUMMARY.json": "a4593f95e0e5fd431969fe7907a351641264d4e856cf2e2f47467600bf52d784",
+      "raw-evidence.tar.gz": "8bb7c01fa36b842c4cd1df5533ba6e46f0b612b5cd1134ede5db69f97d2af9e5"
+    },
+    "new_full_games": 0,
+    "candidate_promotions": 0,
+    "provider_writes": 0,
+    "contract": "Only exact committed public Block-B bytes are routable. The 32 native cells are discovery evidence with paired seats retained separately, C00 duplicates assigned zero weight, mixed seed response preserved, and blanket adoption rejected."
+  },
+  "delta": {
+    "prior_terminal_main_sha": "87160be078dfa0637c2327442f9363294f3e9255",
+    "main_sha_at_claim": "4be49a4e7d4959f0913d08745dba9578b73fd247",
+    "commits_in_delta": 234,
+    "merge_commits_in_delta": 70,
+    "non_merge_commits_in_delta": 164,
+    "changed_paths_in_delta": 177,
+    "remote_branches_observed": 3054,
+    "remote_branch_set_digest_sha256": "0276ba9f3cf4f4e0425c5febabcff94fd0f112e3427eb50d7c35cb5ab30062ec",
+    "recent_outcomes": "The delta is a large TITAN V5 convergence wave. Most lanes remain claimed, queued, corrective or duplicate chatter. PR #13517 landed and released one distinct native R05–R08 evidence bundle with an existing P04 consumer; generated projection churn and already-landed history were excluded as new capacity.",
+    "prior_terminal_slack_ts": "1789251833.397489",
+    "latest_delta_slack_ts": "1789257343.509319",
+    "commons_claim_slack_ts": "1789261340.864119",
+    "github_state": "At claim, current main is 4be49a4e7d4959f0913d08745dba9578b73fd247. Source PR #13517 is merged at 145a007a64e0cade1424db27e7be55f308edde1d; open corrective, telemetry, evidence-authentication and Deathstar lanes retain their owners and are not claimed complete.",
+    "delegations_state": "No new nonduplicate build order survived current-main, open-work, #delegations and receipt deduplication; existing TITAN V5 and Deathstar lanes already have roots or owners.",
+    "todo_state": "No post-watermark todo receipt created a distinct unheld capability gap.",
+    "shipped_builds_state": "No post-watermark shipped-build receipt created a separate resource.",
+    "products_state": "No post-watermark product receipt created a separate resource.",
+    "leads_state": "No post-watermark lead receipt created a buyer or resource claim.",
+    "sales_state": "No post-watermark sales receipt created a buyer, payment, revenue or cash claim.",
+    "automations": "The automation inventory exposed no material lifecycle change; no automation was created, disabled or duplicated.",
+    "connected_apps": "GitHub and Slack read/write roads remained live. No provider, account, credential, device or private-data capacity was inferred from connector presence.",
+    "provider_observation": "No direct usage meter, provider session, credential, Kaggle write or hosted gameplay result was probed."
+  },
+  "quota_lifecycle": {
+    "official_observation": "No official OpenAI reset announcement newer than the already-recorded September 7 automatic reset and banked-reset documentation was found in this wake's one official-source check.",
+    "classification": "PRIOR_QUOTA_STATE_RETAINED_CURRENT_ALLOWANCE_UNMEASURED",
+    "observed_at": "2026-09-13T01:06:53Z",
+    "current_meter": "NOT_DIRECTLY_OBSERVED",
+    "routing": "Preserve a small emergency reserve, do not activate banked inventory, and do not recommend or buy an instant reset."
+  },
+  "build_orders": [],
+  "build_order_decision": "No build order was posted. The Block-B evidence already has exact P04 reducer and preregistered selector consumers; remaining matrix, holdout and policy work has active owners or existing roots.",
+  "verification": {
+    "focused_tests": "Exact current-main Block-B JSON/JSONL, Git blobs and SHA-256 values were rechecked without rerunning games. The existing P04 ranker/selector passes 33/33 normally and 33/33 under optimized Python; the resource ledger passes 23/23. Assertions bind the new row, PR/head/merge, 32/32 games, 719 decisions, zero failures, 64 snapshot matches, 2,136 input checks, no blanket adoption/policy readiness and zero-game/zero-provider boundaries.",
+    "privacy": "No credential, private account identifier, private snapshot, private file name, customer data, private report or incident narrative is copied into canonical metadata.",
+    "open_door": "Source evidence and activation artifacts are public Commons paths requiring no Commons login, provider session or approval queue.",
+    "zero_fabrication": "Completed native evidence remains distinct from causal routing, blanket adoption, policy promotion, default activation, hosted score, rank, submission, prize, payment, revenue or cash.",
+    "collision": "Only ledger, append-only activation record, append-only receipt, focused ledger assertions and generated freshness stamp are owned. Block-B source, P04 reducer/selector, TITAN runtime/gameplay/config/current/release paths, provider state and peer-owned branches remain untouched."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-13T01:06:53Z",
+    "prior_terminal_main_sha": "87160be078dfa0637c2327442f9363294f3e9255",
+    "main_sha_at_claim": "4be49a4e7d4959f0913d08745dba9578b73fd247",
+    "prior_terminal_slack_ts": "1789251833.397489",
+    "latest_delta_slack_ts": "1789257343.509319",
+    "commons_claim_slack_ts": "1789261340.864119",
+    "source_prs": [
+      13517
+    ],
+    "latest_source_merge_sha": "145a007a64e0cade1424db27e7be55f308edde1d",
+    "remote_branches_observed": 3054,
+    "remote_branch_set_digest_sha256": "0276ba9f3cf4f4e0425c5febabcff94fd0f112e3427eb50d7c35cb5ab30062ec",
+    "automations": "prior enabled-state watermark retained; no material lifecycle delta observed",
+    "openai_reset": "No newly verified reset; current meter not directly observed and no banked reset activated."
+  },
+  "projection": {
+    "resources": 94,
+    "producing": 66,
+    "inventory_records": 56
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789261340864119",
+    "source_pr": "https://github.com/woahwhattheheck/commons/pull/13517",
+    "source_release": "https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1789257343509319",
+    "official_banked_reset_help": "https://help.openai.com/en/articles/20001498-how-banked-codex-resets-work",
+    "prior_terminal_receipt": "p/codex-titan-v5-submitted-package-regression-authority-resource-activation-20260912-01.md"
+  },
+  "non_claims": [
+    "No Block-B source, P04 selector/reducer, TITAN runtime, gameplay, configuration, current pointer, release transaction, provider or Kaggle source path was changed by this activation.",
+    "No Claude or Cursor session was contacted, launched, assigned as tester/verifier/reviewer, or treated as landing authority.",
+    "No game, candidate promotion, default activation, model, provider, Kaggle, credential, deployment, quota-spend, reset purchase, banked-reset activation or owner-device operation occurred.",
+    "No causal routing, blanket adoption, playing strength, hosted score, rank, submission, prize, payout, payment, settlement, revenue or cash was claimed."
+  ],
+  "titan": "NOT_WRITTEN"
+}

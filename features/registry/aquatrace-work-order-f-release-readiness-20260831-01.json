@@ -1,0 +1,38 @@
+{
+  "added": "2026-08-31",
+  "capability": "AquaTrace Lane F customer release-readiness runner: independently checks demo, training, deployment, support, security, disaster recovery, interfaces, and buyer-acceptance against durable evidence pointers; unresolved gates stay NOT_READY; named-human release only; SYSTEM/unnamed/HELD denied; synthetic/read-only fixtures; idempotent replay.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "aquatrace_work_order_f_release_readiness.py",
+    "test_aquatrace_work_order_f_release_readiness.py",
+    "aquatrace-work-order-f-release-readiness.html",
+    "revenue/aquatrace_work_order_f_release_readiness/contract.json",
+    "revenue/aquatrace_work_order_f_release_readiness/source.json",
+    "revenue/aquatrace_work_order_f_release_readiness/gates.json",
+    "revenue/aquatrace_work_order_f_release_readiness/default_pointers.json",
+    "p/aquatrace-work-order-f-release-readiness-20260831-01.md",
+    "features/registry/aquatrace-work-order-f-release-readiness-20260831-01.json"
+  ],
+  "dependencies": [],
+  "id": "aquatrace-work-order-f-release-readiness-20260831-01",
+  "name": "AquaTrace Lane F release readiness",
+  "next_gap": "Durable local evidence for each of the eight gates after the private AquaTrace customer-release-gates cite. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "aquatrace-work-order-f-release-readiness.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "aquatrace-work-order-f-release-readiness.html",
+    "revenue/aquatrace_work_order_f_release_readiness/contract.json",
+    "p/aquatrace-work-order-f-release-readiness-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_aquatrace_work_order_f_release_readiness.py",
+    "aquatrace_work_order_f_release_readiness.py"
+  ]
+}

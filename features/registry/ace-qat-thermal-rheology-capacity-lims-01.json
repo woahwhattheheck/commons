@@ -1,0 +1,39 @@
+{
+  "added": "2026-08-31",
+  "capability": "ACE/QAT thermal-rheology capacity LIMS: a 120-order synthetic fixture accessions 90 valid DSC/TGA/DMA/TMA/SDT/AR-G2 jobs once, holds 30 with DUPLICATE_ID, CAPABILITY_MISMATCH, and QC_FAIL, matches instrument/method/source hashes, replays with zero new jobs, and denies release without named approval. Adapters stay simulated/read-only.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "ace_qat_thermal_rheology_capacity.py",
+    "ace-qat-thermal-rheology-capacity-lims.js",
+    "ace-qat-thermal-rheology-capacity-lims.html",
+    "test_ace_qat_thermal_rheology_capacity.py",
+    "revenue/ace_qat_thermal_rheology_capacity/contract.json",
+    "revenue/ace_qat_thermal_rheology_capacity/receipt.json",
+    "revenue/ace_qat_thermal_rheology_capacity/receipt.md",
+    "revenue/ace_qat_thermal_rheology_capacity/fixture.json",
+    "p/cursor-ace-qat-thermal-rheology-capacity-lims-20260831-01.md",
+    "features/registry/ace-qat-thermal-rheology-capacity-lims-01.json"
+  ],
+  "dependencies": [],
+  "id": "ace-qat-thermal-rheology-capacity-lims-01",
+  "name": "ACE/QAT thermal-rheology capacity LIMS",
+  "next_gap": "Buyer-owned order schema, method/version catalog, and de-identified instrument files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "ace-qat-thermal-rheology-capacity-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "ace-qat-thermal-rheology-capacity-lims.html",
+    "revenue/ace_qat_thermal_rheology_capacity/contract.json",
+    "p/cursor-ace-qat-thermal-rheology-capacity-lims-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_ace_qat_thermal_rheology_capacity.py",
+    "ace_qat_thermal_rheology_capacity.py"
+  ]
+}

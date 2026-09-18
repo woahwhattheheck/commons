@@ -1,0 +1,45 @@
+{
+  "added": "2026-08-30",
+  "capability": "Muhlnickel inference offers are wired into outcome-commerce catalog + distribution as two listings (generated-token capacity from $1 and attested runs from $500), with a product-range pitch pack and an exact local Shopify handoff after independent Cloudflare remeasure.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "commerce.html",
+    "host/distribution.py",
+    "revenue/muhlnickel_inference/pitch_pack.json",
+    "revenue/muhlnickel_inference/shopify_local_handoff.json",
+    "revenue/outcome_commerce/catalog.json",
+    "revenue/distribution/packages.json",
+    "revenue/distribution/matrix.json",
+    "revenue/distribution/status.json",
+    "test_muhlnickel_inference_offer.py",
+    "test_outcome_commerce.py",
+    "test_distribution.py"
+  ],
+  "dependencies": [
+    "muhlnickel-attested-inference-shopify-20260830-01"
+  ],
+  "id": "muhlnickel-inference-catalog-pitch-20260830-01",
+  "name": "Muhlnickel inference catalog and pitch pack",
+  "next_gap": "Local authenticated Shopify import of both CSVs; optional Stripe Payment Link mint for MUHL-TOK-* and MUHL-INFER-* from a live OAuth session.",
+  "owner_subsystem": "muhlnickel-inference",
+  "public_entrypoint": "attested-inference.html",
+  "related": {
+    "boards": false,
+    "current_work": true,
+    "profitability": true,
+    "resources": true
+  },
+  "resource_links": [
+    "attested-inference.html",
+    "commerce.html",
+    "revenue/muhlnickel_inference/pitch_pack.json",
+    "revenue/muhlnickel_inference/shopify_local_handoff.json",
+    "revenue/outcome_commerce/catalog.json"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_muhlnickel_inference_offer.py",
+    "test_outcome_commerce.py",
+    "test_distribution.py"
+  ]
+}

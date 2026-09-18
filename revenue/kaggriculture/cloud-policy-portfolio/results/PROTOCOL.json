@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "task_url": "https://chatgpt.com/c/6a9f1774-69dc-83e9-a065-88f61de7f0a4",
+  "thread": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788810761611259",
+  "seed_collisions": {
+    "requested_development": [
+      9860001,
+      9860019,
+      9860037
+    ],
+    "requested_held": [
+      9860101,
+      9860119
+    ],
+    "consumed_by_osprey": [
+      9860001,
+      9860019,
+      9860101,
+      9860119
+    ],
+    "replacement_development": [
+      9880001,
+      9880019
+    ],
+    "replacement_held": [
+      9880101,
+      9880119
+    ],
+    "collision_check": "Exact seed Slack searches before games; OSPREY source b520aea; preserved 9860037 was unused."
+  },
+  "development_screen": {
+    "reserved_range": [
+      9880201,
+      9880232
+    ],
+    "actual_searched": [
+      9880201,
+      9880202,
+      9880203
+    ],
+    "selection_uses": "Observed prefix only; no terminal labels",
+    "record": "regime-screen.json",
+    "announcement": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788812262331859"
+  },
+  "freeze_announcement": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788812716097709",
+  "conditional_validation_screen": {
+    "reserved_range": [
+      9880301,
+      9880332
+    ],
+    "actual_searched": [
+      9880301,
+      9880302,
+      9880303,
+      9880304,
+      9880305,
+      9880306,
+      9880307,
+      9880308,
+      9880309,
+      9880310,
+      9880311,
+      9880312,
+      9880313,
+      9880314,
+      9880315,
+      9880316,
+      9880317,
+      9880318,
+      9880319,
+      9880320,
+      9880321,
+      9880322,
+      9880323,
+      9880324,
+      9880325,
+      9880326,
+      9880327,
+      9880328
+    ],
+    "selected": 9880328,
+    "record": "conditional-screen.json",
+    "announcement": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788812974045079",
+    "selection_uses": "Unchanged development screening predicate, no terminal labels; subsequent results stay conditional validation and never train this model."
+  },
+  "prefix_contract": {
+    "policies": [
+      "sell",
+      "carrot_sell"
+    ],
+    "checkpoint": 360,
+    "source_test": "test_portfolio.py",
+    "incompatible_families": [
+      "T04 service",
+      "T10 labor",
+      "KEEL service/labor bank",
+      "T13 weed recovery"
+    ],
+    "midgame_controller_replacement": false
+  },
+  "features": {
+    "runtime_observed_at": 360,
+    "outcome_observed_at": 718,
+    "offline_grouping_only": [
+      "seed",
+      "opponent_identity",
+      "source_commit"
+    ],
+    "unknown_feature_or_label": "Preserved as null and excluded from training",
+    "late_or_hidden": "Future shops/prices, terminal outcome, configuration seed, and rival private state are not runtime features."
+  },
+  "peer_evidence": {
+    "keel": {
+      "source": "d27094988025bfde18f35138e3035efc2251ac27",
+      "records_imported": 40,
+      "split": "historical_development",
+      "training_eligible": false,
+      "reason": "No shared checkpoint observation or prefix-compatible controller switching contract"
+    },
+    "t13_seed": {
+      "source": "419a674c0d7870beee518bb94f0f9ba8a1f5eb10",
+      "source_receipt": "../research/t13-seed/SOURCE.json",
+      "t14_games": 0,
+      "training_eligible": false
+    }
+  },
+  "new_full_games": 266,
+  "historical_held_as_new_validation": 0
+}

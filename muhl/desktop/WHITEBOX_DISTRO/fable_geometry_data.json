@@ -1,0 +1,184 @@
+[
+ {
+  "tag": "A_large",
+  "dim": 2816,
+  "vocab": 262144,
+  "quant": "Q4_0",
+  "anisotropy": {
+   "random_pair_cos_mean": NaN,
+   "p05": NaN,
+   "p50": NaN,
+   "p95": -0.3125
+  },
+  "mean_vector_norm": NaN,
+  "norm_by_frequency": [
+   [
+    "the",
+    NaN
+   ],
+   [
+    "of",
+    749027.35
+   ],
+   [
+    "and",
+    NaN
+   ],
+   [
+    "to",
+    NaN
+   ],
+   [
+    "in",
+    NaN
+   ],
+   [
+    "is",
+    NaN
+   ],
+   [
+    "it",
+    0.0
+   ],
+   [
+    "that",
+    NaN
+   ],
+   [
+    "people",
+    NaN
+   ],
+   [
+    "because",
+    569108.982
+   ],
+   [
+    "however",
+    43887.048
+   ],
+   [
+    "science",
+    186.733
+   ],
+   [
+    "molecule",
+    87881.292
+   ],
+   [
+    "philosophy",
+    1604308.006
+   ],
+   [
+    "elephant",
+    Infinity
+   ]
+  ],
+  "separation": {
+   "raw": {
+    "opp": NaN,
+    "rand": NaN,
+    "ratio": NaN
+   },
+   "mean_centered": {
+    "opp": NaN,
+    "rand": NaN,
+    "ratio": NaN
+   }
+  },
+  "tightest_opposite": [
+   "love/hate",
+   0.101
+  ]
+ },
+ {
+  "tag": "B_small",
+  "dim": 960,
+  "vocab": 49152,
+  "quant": "Q8_0",
+  "anisotropy": {
+   "random_pair_cos_mean": 0.2505,
+   "p05": 0.0395,
+   "p50": 0.2686,
+   "p95": 0.4015
+  },
+  "mean_vector_norm": 0.4995,
+  "norm_by_frequency": [
+   [
+    "the",
+    2.584
+   ],
+   [
+    "of",
+    3.309
+   ],
+   [
+    "and",
+    2.973
+   ],
+   [
+    "to",
+    3.278
+   ],
+   [
+    "in",
+    3.515
+   ],
+   [
+    "is",
+    3.566
+   ],
+   [
+    "it",
+    3.363
+   ],
+   [
+    "that",
+    2.922
+   ],
+   [
+    "people",
+    3.352
+   ],
+   [
+    "because",
+    3.664
+   ],
+   [
+    "however",
+    4.292
+   ],
+   [
+    "science",
+    3.827
+   ],
+   [
+    "molecule",
+    3.899
+   ],
+   [
+    "philosophy",
+    2.91
+   ],
+   [
+    "elephant",
+    3.169
+   ]
+  ],
+  "separation": {
+   "raw": {
+    "opp": 0.4393,
+    "rand": 0.2587,
+    "ratio": 1.698
+   },
+   "mean_centered": {
+    "opp": 0.3823,
+    "rand": 0.1621,
+    "ratio": 2.358
+   }
+  },
+  "tightest_opposite": [
+   "true/false",
+   0.679
+  ]
+ }
+]

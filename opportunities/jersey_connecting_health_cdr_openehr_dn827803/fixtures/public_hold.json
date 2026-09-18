@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "notice_id": "DN827803",
+  "evaluated_at": "2026-09-13T11:20:00Z",
+  "source_ledger_sha256": "3cd5b1f229b0bc5c6a9593bbb574045d9a6ba259ed1d9fd39692b6bd1e58c2d8",
+  "route": "TEAMING_ACCEPTANCE_EVIDENCE",
+  "partner_prime_confirmed": false,
+  "authority": {
+    "portal_registration": false,
+    "buyer_contact": false,
+    "clarification_question": false,
+    "tender_submission": false,
+    "pricing_commitment": false,
+    "staffing_commitment": false,
+    "clinical_certification_claim": false,
+    "contract_acceptance": false,
+    "spend": false,
+    "revenue_claim": false
+  },
+  "capabilities": {
+    "openehr_platform_product": {"status": "UNKNOWN", "evidence_refs": []},
+    "clinical_cdr_delivery": {"status": "UNKNOWN", "evidence_refs": []},
+    "real_time_clinical_data": {"status": "UNKNOWN", "evidence_refs": []},
+    "healthcare_interoperability": {"status": "UNKNOWN", "evidence_refs": []},
+    "clinical_identity_terminology": {"status": "UNKNOWN", "evidence_refs": []},
+    "security_privacy": {"status": "UNKNOWN", "evidence_refs": []},
+    "clinical_safety": {"status": "UNKNOWN", "evidence_refs": []},
+    "migration_at_scale": {"status": "UNKNOWN", "evidence_refs": []},
+    "service_operations": {"status": "UNKNOWN", "evidence_refs": []},
+    "commercial_delivery_capacity": {"status": "UNKNOWN", "evidence_refs": []},
+    "data_migration_reconciliation": {"status": "UNKNOWN", "evidence_refs": []},
+    "interface_conformance": {"status": "UNKNOWN", "evidence_refs": []},
+    "replay_idempotency": {"status": "UNKNOWN", "evidence_refs": []},
+    "observability_lineage": {"status": "UNKNOWN", "evidence_refs": []},
+    "security_data_governance": {"status": "UNKNOWN", "evidence_refs": []},
+    "human_release_controls": {"status": "UNKNOWN", "evidence_refs": []}
+  }
+}

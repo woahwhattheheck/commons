@@ -1,0 +1,96 @@
+{
+  "base": {
+    "bytes": 34254,
+    "commit": "2885d176373c33410148829fef93c310c3752c0b",
+    "path": "revenue/roadef2026/fleet-candidate/main.cpp",
+    "repository": "woahwhattheheck/commons",
+    "sha256": "322ec2e6bec9ab17c4cdf74c52d8e40414ce90cf60f9e53aaee2531cce652ab1"
+  },
+  "canonical_solver_modified": false,
+  "component": "critical-rank-band continuation",
+  "coordination": {
+    "checkpoint": "https://tokenjunkielabs.slack.com/archives/C0BUY3EKMSB/p1788854439072929",
+    "claim": "https://tokenjunkielabs.slack.com/archives/C0BUY3EKMSB/p1788853397745699",
+    "thread": "https://tokenjunkielabs.slack.com/archives/C0BUY3EKMSB/p1788750090535979"
+  },
+  "evidence_dependencies": [
+    {
+      "library_file_id": "file_00000000320881f78ecce6721df75592",
+      "name": "ROADEF-QUARTZ-B12-native-2885d176.zip",
+      "sha256": "1494b0faf268be12b99f25444ce5bd6c42539a187c00ca7ef29f11d24484fd9f"
+    },
+    {
+      "library_file_id": "file_0000000004f881f5bb67303fe7f403b4",
+      "name": "ROADEF-QUARTZ-screen30-2885d176.zip",
+      "sha256": "0fed26e0260aad3c3c840c3e2c38b035f21ce6d3cac5544428f4f8a5f2959d9d"
+    },
+    {
+      "library_file_id": "file_0000000007c081fda1e225df8fd0e8ef",
+      "name": "ROADEF-WREN-build-inputs-2885d176.zip",
+      "sha256": "82785dc0ccbbd5daf0a77770faec95f02094a42aa40fb0dc84ad94e818765e6a"
+    },
+    {
+      "library_file_id": "file_000000008c8481f783a95eb409c035fb",
+      "name": "ROADEF-QUARTZ-verified-context-2885d176.zip",
+      "sha256": "62bb113f6fecf074fad8a5a76623c548d099466e230f509c8e353fb2b2e181e6"
+    }
+  ],
+  "files": [
+    {
+      "bytes": 4310,
+      "path": "COMPONENT-VALIDATION.json",
+      "sha256": "2341dba193ecf6af840bd0dbd9c67eff6e3e461735690705442c5f128268ae2a"
+    },
+    {
+      "bytes": 948,
+      "path": "NOTICE.md",
+      "sha256": "9f66a77aae1646764dbffc6260efcef5918aacf458784b8ce83114d3f60a21bf"
+    },
+    {
+      "bytes": 5536,
+      "path": "README.md",
+      "sha256": "51c03db97a0a9c2ffbf73aa4d7db8b2fb7e2157dee2f5a584ba3ae6e05d3bdd5"
+    },
+    {
+      "bytes": 11775,
+      "path": "RESULTS.json",
+      "sha256": "7307b3cfa29d9bfe4f5ea93a00c48371ea01941f608a5544c984e64f06ea44f2"
+    },
+    {
+      "bytes": 3808,
+      "path": "RESULTS.md",
+      "sha256": "6e7a5789d5d792ba364056d98612b7c3a690fc45e03836a551f951ae24c28de5"
+    },
+    {
+      "bytes": 8404,
+      "path": "build_candidate.py",
+      "sha256": "ef8be880251963e4b05826cc6233e1538fcc8d5786c99d6453d9ce2be8e024aa"
+    },
+    {
+      "bytes": 6067,
+      "path": "critical-rank-bands.patch",
+      "sha256": "b8ab07d91fadb5cbe5fe701f1b496f0da0d4fe90e47e1a8bb12f9c76a6b262b3"
+    },
+    {
+      "bytes": 7677,
+      "path": "run_experiment.py",
+      "sha256": "673758a00935aa2a6bb6abc8ca3796a51be49d294a763928eb17e5c2498a96e5"
+    },
+    {
+      "bytes": 1563,
+      "path": "test_rank_schedule.cpp",
+      "sha256": "58a0687e2be1924cf960b9f71bf6b603c3210a19e61325e9170b15dc798bc9f7"
+    },
+    {
+      "bytes": 6448,
+      "path": "validate_component.py",
+      "sha256": "a3debc4b39febd055e34ca12781c2ed74ee1b3381f326452a4a3b8a676f51099"
+    }
+  ],
+  "generated_candidate": {
+    "bytes": 37452,
+    "sha256": "f3c76d2aa60525cde061bcb10b95c504b09d13a54cf2a442cd0dcae6975057c9"
+  },
+  "schema": "roadef-critical-rank-bands-manifest-v1",
+  "submitted": false
+}
