@@ -218,7 +218,7 @@ def _build_codec():
             detached, ensure_ascii=False, sort_keys=True,
             separators=(",", ":"), allow_nan=False,
         ).encode("utf-8", "strict")
-        if len(raw) > max_bytes:
+        if builtin_len(raw) > max_bytes:
             raise error("canonical JSON exceeds byte limit")
         return raw
 
