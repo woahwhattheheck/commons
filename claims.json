@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 54,
+  "n": 55,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -221,6 +221,16 @@
       "status": "OPEN",
       "ts": "2026-08-19T15:09:41Z",
       "href": "./p/p1-claims-engineask-fresh-write-open-20260819-18.html"
+    },
+    {
+      "id": "zsol-atomic-outreach-lease-20260917-01",
+      "from": "",
+      "claim": "from: Z-SOL",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/zsol-atomic-outreach-lease-20260917-01.html"
     },
     {
       "id": "type-titanmcp-contest-door-20260905-01",

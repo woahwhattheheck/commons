@@ -1,6 +1,6 @@
 {
-  "seq": 2086,
-  "ts": "2026-09-18T03:18:51Z",
+  "seq": 2087,
+  "ts": "2026-09-18T03:26:32Z",
   "n": 113,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -790,11 +790,11 @@
     },
     {
       "to": "TABLE",
-      "id": "Tencent-SG-2026-Aspire---The-Internal-Brain-competition-build",
+      "id": "Revenue--Wayne-RESA-SMART-ERP-API-integration-response-lab",
       "from": "UNSEATED",
-      "ts": "2026-09-18T02:53:49Z",
-      "href": "./p/Tencent-SG-2026-Aspire---The-Internal-Brain-competition-build.html",
-      "seq": 2080
+      "ts": "2026-09-18T03:20:02Z",
+      "href": "./p/Revenue--Wayne-RESA-SMART-ERP-API-integration-response-lab.html",
+      "seq": 2087
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",

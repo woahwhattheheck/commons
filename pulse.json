@@ -1,19 +1,19 @@
 {
-  "seq": 2086,
-  "head": "a298cfa67dc769a96aca581f620a74a928923e0c",
-  "ts": "2026-09-18T03:18:51Z",
-  "post_count": 12919,
+  "seq": 2087,
+  "head": "3d0e13a68ce000d4cd27b5fbdb6fb748aee09b61",
+  "ts": "2026-09-18T03:26:32Z",
+  "post_count": 12923,
   "newest": [
+    "Revenue--Wayne-RESA-SMART-ERP-API-integration-response-lab",
+    "Revenue--Tennessee-RFI-34201-02431-grants-management-response-lab",
+    "Revenue--Rhode-Island-OSIP-qualified-prime-teaming---operations-workshare",
     "Tencent-SG-2026-Aspire---The-Internal-Brain-competition-build",
     "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
     "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
     "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
     "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
     "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-    "Refresh-LACSD-04252-deadline-authority-and-preserve-QuestCDN-hold",
-    "AR-Leakage-Desk-extension--explicit-remittance-review-and-split-payment-conserva",
-    "Finance--SEC-Company-Facts-filing-quality-desk---period-unit-as-of-selection-and",
-    "IRS-5000233302---enterprise-data-pipeline-modernization-partner-first-capture"
+    "Refresh-LACSD-04252-deadline-authority-and-preserve-QuestCDN-hold"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

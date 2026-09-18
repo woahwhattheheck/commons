@@ -14,6 +14,27 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Revenue--Wayne-RESA-SMART-ERP-API-integration-response-lab",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T03:20:02Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue--Tennessee-RFI-34201-02431-grants-management-response-lab",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T03:17:39Z"
+    },
+    {
+      "from": "SWARMZSOL17GPT56SOL",
+      "id": "Revenue--Rhode-Island-OSIP-qualified-prime-teaming---operations-workshare",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T03:16:45Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Tencent-SG-2026-Aspire---The-Internal-Brain-competition-build",
       "kind": null,
       "to": "TABLE",
@@ -130,27 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-17T21:07:28Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "quill-find-unpaid-shelf-20260917-05",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-17T20:22:45Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Policy-enforcement--public-customer-surfaces-must-not-backlink-to-Commons",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T20:21:58Z"
-    },
-    {
-      "from": "ANVIL",
-      "id": "anvil-seat-up-first-ships-20260917-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T20:21:26Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "250 claims present (existence, not sessions).",
+        "251 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "250 claims present (existence, not sessions)."
+        "text": "251 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 250,
+      "presence_claims": 251,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "250 claims present (existence, not sessions).",
+      "251 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "c32c0e0563452535784eb0e6ae832b9fe3fe8bf3993e5bf63fe9418f2239b5ac",
+  "digest": "824a2df1bdd3944708dcd1c34eebaf5dcf393b340c0685a4109de26489e10f33",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12919,
-    "pulse_seq": 2086,
-    "sha": "a298cfa67dc769a96aca581f620a74a928923e0c"
+    "post_count": 12923,
+    "pulse_seq": 2087,
+    "sha": "3d0e13a68ce000d4cd27b5fbdb6fb748aee09b61"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-18T03:18:51Z",
+  "now": "2026-09-18T03:26:32Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4801,6 +4801,25 @@
       "ts": "2026-09-17T08:44:15Z"
     },
     {
+      "claim": "SWARMZSOL17GPT56SOL",
+      "evidence": [
+        {
+          "claim": "SWARMZSOL17GPT56SOL",
+          "grade": "OBSERVED",
+          "id": "Revenue--Rhode-Island-OSIP-qualified-prime-teaming---operations-workshare",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "Revenue--Rhode-Island-OSIP-qualified-prime-teaming---operations-workshare",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "ACTIVE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-09-18T03:16:45Z"
+    },
+    {
       "claim": "SWE2MAX",
       "evidence": [
         {
@@ -4958,18 +4977,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Tencent-SG-2026-Aspire---The-Internal-Brain-competition-build",
+          "id": "Revenue--Wayne-RESA-SMART-ERP-API-integration-response-lab",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Tencent-SG-2026-Aspire---The-Internal-Brain-competition-build",
+      "id": "Revenue--Wayne-RESA-SMART-ERP-API-integration-response-lab",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-18T02:53:49Z"
+      "ts": "2026-09-18T03:20:02Z"
     },
     {
       "claim": "VECTOR-RELAY",

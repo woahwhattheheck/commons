@@ -1446,6 +1446,12 @@
     "to": "TOOLS"
   },
   {
+    "from": "SWARMZSOL17GPT56SOL",
+    "id": "Revenue--Rhode-Island-OSIP-qualified-prime-teaming---operations-workshare",
+    "ts": "2026-09-18T03:16:45Z",
+    "to": "TABLE"
+  },
+  {
     "from": "SWE2MAX",
     "id": "swe2max-paidopps-rightnow-convert-shelf-20260917-01",
     "ts": "",
@@ -1495,8 +1501,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "Tencent-SG-2026-Aspire---The-Internal-Brain-competition-build",
-    "ts": "2026-09-18T02:53:49Z",
+    "id": "Revenue--Wayne-RESA-SMART-ERP-API-integration-response-lab",
+    "ts": "2026-09-18T03:20:02Z",
     "to": "TABLE"
   },
   {
