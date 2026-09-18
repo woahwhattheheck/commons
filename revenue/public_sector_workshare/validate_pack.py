@@ -100,9 +100,9 @@ def collision_key(opportunity_id: str, organization_id: str, route_id: str) -> s
     company/address spelling is audit text only and never enters this key.
     """
     values = (
-        _text(opportunity_id, "opportunity_id", machine_id=True),
-        _text(organization_id, "organization_id", machine_id=True),
-        _text(route_id, "route_id", machine_id=True),
+        _text(opportunity_id, "opportunity_id"),
+        _text(organization_id, "organization_id"),
+        _text(route_id, "route_id"),
     )
     canonical = "\n".join(v.lower() for v in values)
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
