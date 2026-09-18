@@ -181,7 +181,7 @@ def _utc(
     label: str,
     _text_fn=_text,
     _datetime_fromisoformat=datetime.fromisoformat,
-    _timezone_utc=_timezone_utc,
+    _timezone_utc=timezone.utc,
     _error=ContractError,
 ) -> datetime:
     value = _text_fn(value, label, 40)
@@ -458,7 +458,7 @@ def evaluate_partner(
     _https_fn=_https,
     _bool_fn=_bool,
     _error=ContractError,
-    _partner_schema=_partner_schema,
+    _partner_schema=PARTNER_SCHEMA,
 ) -> dict[str, Any]:
     row = _exact_fn(
         candidate,
@@ -534,7 +534,7 @@ def evaluate_partners(
     _add_receipt_fn=_add_receipt,
     _exact_fn=_exact,
     _error=ContractError,
-    _partner_schema=_partner_schema,
+    _partner_schema=PARTNER_SCHEMA,
 ) -> dict[str, Any]:
     doc = _exact_fn(document, {"schema", "candidates"}, "partners")
     if doc["schema"] != _partner_schema:
@@ -573,7 +573,7 @@ def evaluate_reconciliation_case(
     _int_fn=_int,
     _utc_fn=_utc,
     _error=ContractError,
-    _case_schema=_case_schema,
+    _case_schema=CASE_SCHEMA,
 ) -> dict[str, Any]:
     row = _exact_fn(
         case,
@@ -682,8 +682,8 @@ def evaluate_matrix(
     _exact_fn=_exact,
     _text_fn=_text,
     _error=ContractError,
-    _case_schema=_case_schema,
-    _terminal_decisions=tuple(_terminal_decisions),
+    _case_schema=CASE_SCHEMA,
+    _terminal_decisions=tuple(TERMINAL_DECISIONS),
 ) -> dict[str, Any]:
     doc = _exact_fn(document, {"schema", "cases"}, "matrix")
     if doc["schema"] != _case_schema:
