@@ -330,6 +330,25 @@ class MuseRuntimeAdoptionGateTests(unittest.TestCase):
             self.assertEqual(verified.returncode, 3, verified.stdout + verified.stderr)
             self.assertEqual(verified.stdout, b"")
 
+    def test_shipped_paths_do_not_add_open_door_locks(self):
+        from open_door_guard import AddedLine, scan_added
+
+        paths = (
+            Path("coordination/MUSE_RUNTIME_ADOPTION_GATE.md"),
+            Path("coordination/muse_runtime_adoption_gate.py"),
+            Path("test_muse_runtime_adoption_gate.py"),
+        )
+        added = []
+        for path in paths:
+            text = path.read_text(encoding="utf-8")
+            for line_number, line in enumerate(text.splitlines(), 1):
+                added.append(AddedLine(str(path), line_number, line))
+        violations = scan_added(added)
+        self.assertEqual(
+            [(item.path, item.line_number, item.rule) for item in violations],
+            [],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
