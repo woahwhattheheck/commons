@@ -1,0 +1,62 @@
+{
+  "schema": "tjlabs.columbia-ca-rfp27-05-workshare/v1",
+  "solicitation": {
+    "id": "27-05",
+    "buyer": "Columbia Association",
+    "title": "Enterprise Resource Planning (ERP) Software and Services",
+    "issued_date": "2026-09-08",
+    "questions_due_utc": "2026-10-16T20:00:00Z",
+    "proposal_due_utc": "2026-10-27T18:00:00Z",
+    "target_go_live_date": "2027-05-01"
+  },
+  "sources": {
+    "portal": {
+      "url": "https://vendors.planetbids.com/portal/77636/portal-home",
+      "captured_at_utc": "2026-09-18T02:50:00Z",
+      "role": "OFFICIAL_PROCUREMENT_PORTAL"
+    },
+    "rfp_mirror": {
+      "url": "https://govtribe.com/file/government-file/rfp-27-05-erp-software-and-services-9-dot-8-dot-26-dot-pdf",
+      "captured_at_utc": "2026-09-18T02:50:00Z",
+      "role": "PUBLIC_RESEARCH_MIRROR_NOT_SUBMISSION_AUTHORITY"
+    },
+    "opportunity": {
+      "url": "https://govtribe.com/opportunity/state-local-contract-opportunity/enterprise-resource-planning-erp-software-and-services-142927",
+      "captured_at_utc": "2026-09-18T02:50:00Z",
+      "role": "PUBLIC_RESEARCH_SUMMARY_NOT_SUBMISSION_AUTHORITY"
+    }
+  },
+  "research_references": {
+    "legacy_erp": "Infor Lawson V10",
+    "retained_integrations": [
+      "8x8/Diagenix IVR",
+      "Club Automation",
+      "Dayforce",
+      "ESRI",
+      "Smartsheet"
+    ],
+    "annual_assessment_transactions_reference": 27000,
+    "annual_assessment_revenue_reference_cents": 5000000000,
+    "mandatory_mbe_participation_bps": 2300,
+    "implementation_only_prime_allowed": false
+  },
+  "commercial_offer": {
+    "state": "PROPOSED_NOT_ACCEPTED",
+    "name": "ERP Migration & Financial Reconciliation Acceptance Workshare",
+    "base_price_usd_cents": 1800000,
+    "optional_extension_price_usd_cents": 600000,
+    "acceptance": "Qualified ERP software/implementation prime supplies retained migration inputs, mappings, control totals and agreed integration/cutover evidence. TJLabs returns deterministic reconciliation evidence, exception register, cutover rehearsal proof and first-close handoff. Any expanded scope or production access requires a separate written agreement.",
+    "external_send_authorized": false
+  },
+  "authority": {
+    "buyer_contact_authorized": false,
+    "partner_contact_authorized": false,
+    "portal_registration_authorized": false,
+    "portal_submission_authorized": false,
+    "contract_acceptance_authorized": false,
+    "production_erp_write_authorized": false,
+    "payment_authorized": false,
+    "certification_assertion_authorized": false,
+    "revenue_recognized": false
+  }
+}
