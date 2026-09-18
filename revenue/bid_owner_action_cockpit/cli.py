@@ -1,8 +1,6 @@
 from __future__ import annotations
 
 import argparse
-import os
-import stat
 import sys
 from datetime import datetime, timezone
 
@@ -14,102 +12,12 @@ from .core import (
     render_markdown,
     verify_cockpit,
 )
-
-MAX_INPUT_BYTES = 2_000_000
-
-
-def _read_regular(path: str | os.PathLike[str], limit: int = MAX_INPUT_BYTES) -> bytes:
-    path = os.fspath(path)
-    flags = os.O_RDONLY
-    if hasattr(os, "O_NOFOLLOW"):
-        flags |= os.O_NOFOLLOW
-    try:
-        fd = os.open(path, flags)
-    except OSError as exc:
-        raise ValidationError(f"cannot open regular input {path}: {exc}") from exc
-    try:
-        before = os.fstat(fd)
-        if not stat.S_ISREG(before.st_mode):
-            raise ValidationError(f"input is not a regular file: {path}")
-        if before.st_size > limit:
-            raise ValidationError(f"input exceeds {limit} bytes: {path}")
-        chunks = []
-        total = 0
-        while True:
-            chunk = os.read(fd, min(65536, limit + 1 - total))
-            if not chunk:
-                break
-            chunks.append(chunk)
-            total += len(chunk)
-            if total > limit:
-                raise ValidationError(f"input exceeds {limit} bytes: {path}")
-        after = os.fstat(fd)
-        fingerprint_before = (before.st_dev, before.st_ino, before.st_mode, before.st_size, before.st_mtime_ns, before.st_ctime_ns)
-        fingerprint_after = (after.st_dev, after.st_ino, after.st_mode, after.st_size, after.st_mtime_ns, after.st_ctime_ns)
-        if fingerprint_before != fingerprint_after:
-            raise ValidationError(f"input changed while reading: {path}")
-        raw = b"".join(chunks)
-        if len(raw) != after.st_size:
-            raise ValidationError(f"input size changed while reading: {path}")
-        return raw
-    finally:
-        os.close(fd)
-
-
-def _preflight_absent(path: str | os.PathLike[str]) -> None:
-    path = os.fspath(path)
-    parent = os.path.dirname(path) or "."
-    try:
-        st = os.stat(parent, follow_symlinks=False)
-    except OSError as exc:
-        raise ValidationError(f"output parent unavailable: {parent}") from exc
-    if not stat.S_ISDIR(st.st_mode):
-        raise ValidationError(f"output parent is not a directory: {parent}")
-    if os.path.lexists(path):
-        raise ValidationError(f"output already exists: {path}")
-
-
-def _write_exclusive(path: str | os.PathLike[str], data: bytes) -> None:
-    path = os.fspath(path)
-    _preflight_absent(path)
-    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
-    if hasattr(os, "O_NOFOLLOW"):
-        flags |= os.O_NOFOLLOW
-    fd = None
-    identity = None
-    success = False
-    try:
-        fd = os.open(path, flags, 0o600)
-        created = os.fstat(fd)
-        if not stat.S_ISREG(created.st_mode):
-            raise ValidationError(f"output is not a regular file: {path}")
-        identity = (created.st_dev, created.st_ino)
-        view = memoryview(data)
-        offset = 0
-        while offset < len(view):
-            written = os.write(fd, view[offset:])
-            if written <= 0:
-                raise ValidationError(f"short write: {path}")
-            offset += written
-        os.fsync(fd)
-        after = os.fstat(fd)
-        if after.st_size != len(data):
-            raise ValidationError(f"output size mismatch: {path}")
-        success = True
-    except FileExistsError as exc:
-        raise ValidationError(f"output already exists: {path}") from exc
-    except OSError as exc:
-        raise ValidationError(f"output write failed: {path}: {exc}") from exc
-    finally:
-        if fd is not None:
-            os.close(fd)
-        if not success and identity is not None:
-            try:
-                visible = os.stat(path, follow_symlinks=False)
-                if (visible.st_dev, visible.st_ino) == identity:
-                    os.unlink(path)
-            except OSError:
-                pass
+from .custody import (
+    MAX_INPUT_BYTES,
+    read_regular as _read_regular,
+    write_exclusive as _write_exclusive,
+    write_bundle,
+)
 
 
 def _load(path: str) -> object:
@@ -126,14 +34,10 @@ def cmd_compile(args: argparse.Namespace) -> int:
     out = compile_cockpit(packet, policy, as_of=_now())
     json_bytes = canonical_json_bytes(out) + b"\n"
     md_bytes = render_markdown(out).encode("utf-8")
-    outputs = [args.output]
+    outputs = [(args.output, json_bytes)]
     if args.markdown:
-        outputs.append(args.markdown)
-    for path in outputs:
-        _preflight_absent(path)
-    _write_exclusive(args.output, json_bytes)
-    if args.markdown:
-        _write_exclusive(args.markdown, md_bytes)
+        outputs.append((args.markdown, md_bytes))
+    write_bundle(outputs)
     print(out["receipt_sha256"])
     return 0
 
@@ -156,7 +60,6 @@ def cmd_render(args: argparse.Namespace) -> int:
     compiled = _load(args.output)
     if not verify_cockpit(packet, policy, compiled, current_as_of=_now()):
         raise ValidationError("compiled output is not currently verified")
-    _preflight_absent(args.markdown)
     _write_exclusive(args.markdown, render_markdown(compiled).encode("utf-8"))
     return 0
 

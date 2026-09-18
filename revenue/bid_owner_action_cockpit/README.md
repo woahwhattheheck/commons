@@ -20,6 +20,8 @@ The same action label with a different buyer requirement digest or generation re
 
 A `PROVEN` gate in one opportunity never cures a `MISSING` gate in another. Buyer-specific carriers remain authoritative for their own requirement status.
 
+For a group with unresolved members, only those members contribute affected opportunities, gates, evidence, prerequisites, source packets, blocking counts, reasons, and deadlines. Completed (`PROVEN` / `NOT_APPLICABLE`) peers cannot inflate priority or live breadth. A wholly completed group keeps its membership visible as `NO_ACTION_PROVEN`.
+
 ## Input contract
 
 The compiler accepts one strict JSON blocker snapshot:
@@ -59,7 +61,7 @@ The parser rejects duplicate JSON keys and IDs, unknown fields, bool-as-int alia
 
 ## Source/currentness boundary
 
-Policy defines a maximum blocker-packet age plus critical/high deadline windows.
+Policy defines a maximum blocker-packet age plus critical/high deadline windows. Source admission compares the exact elapsed duration: the maximum age itself is current, but maximum plus one second is stale. No integer-minute flooring is used for this decision.
 
 If an opportunity's blocker packet is incomplete or stale, the compiler emits `SOURCE_REFRESH_REQUIRED` and suppresses its downstream gate rows. Stale or partial source evidence cannot keep an old owner action looking current.
 
@@ -156,7 +158,13 @@ python -m revenue.bid_owner_action_cockpit render \
   --markdown cockpit.md
 ```
 
-CLI input is bounded regular-file input with no-follow protection where available. Outputs are create-exclusive ordinary files; pre-existing paths and symlink targets are refused.
+CLI I/O requires POSIX descriptor-relative operations and `O_DIRECTORY`, `O_NOFOLLOW`, and `O_NONBLOCK`; unsupported hosts fail closed rather than silently weakening custody. Every ancestor is walked through retained directory descriptors without resolving symlinks or lexically collapsing `..`. Absolute paths start at a retained root descriptor; relative paths start at the initial working-directory descriptor. Directory-only paths, NUL, and implementation-dependent double-slash roots are refused.
+
+Inputs are bounded regular files, checked before open and against the opened descriptor, then checked again after a bounded read. Nonregular inputs such as FIFOs are refused before the final open; `O_NONBLOCK` also prevents a raced-in FIFO from blocking. Directory and final-entry generation drift is rejected.
+
+Compile reserves **all** requested outputs, including optional Markdown, with exclusive creation before writing any payload. A pre-existing second output therefore does not leave a new JSON result behind. The writer retains file and directory descriptors through writes, fsync, exact byte readback, visible-entry checks, and failure cleanup. A detected parent replacement fails without writing into or deleting from the replacement namespace. Rollback only unlinks entries whose device/inode still matches this invocation's retained file descriptor; replacement entries are preserved.
+
+This is local filesystem integrity, not a filesystem-wide security boundary or a crash-atomic multi-file transaction. Empty reservations are briefly visible. Process termination, storage failure, or cleanup failure can leave partial files; existing outputs remain non-overwritable on retry and require explicit inspection. Success describes the checked generation, not perpetual immutability. In particular, portable `stat` plus `unlink` is not an atomic conditional-delete primitive: arbitrary hostile same-directory writers racing the cleanup check itself, privileged filesystem mutation, and hostile same-process code are outside this contract. No claim of protection against those actors is made.
 
 ## Synthetic portfolio proof
 
@@ -180,25 +188,18 @@ Expected summary: 8 opportunities, 10 queue rows, 4 `OWNER_ACTION_NOW`, 1 source
 ## Tests
 
 ```bash
-python -m py_compile \
-  revenue/bid_owner_action_cockpit/core.py \
-  revenue/bid_owner_action_cockpit/cli.py \
-  revenue/bid_owner_action_cockpit/test_core.py \
-  revenue/bid_owner_action_cockpit/test_cli.py \
-  revenue/bid_owner_action_cockpit/test_fixture.py
-
-python -m unittest \
-  revenue.bid_owner_action_cockpit.test_core \
-  revenue.bid_owner_action_cockpit.test_cli \
-  revenue.bid_owner_action_cockpit.test_fixture
-
-python -O -m unittest \
-  revenue.bid_owner_action_cockpit.test_core \
-  revenue.bid_owner_action_cockpit.test_cli \
-  revenue.bid_owner_action_cockpit.test_fixture
+python -m py_compile revenue/bid_owner_action_cockpit/*.py
+python -m unittest discover -s revenue/bid_owner_action_cockpit -t . -p 'test_*.py' -v
+python -O -m unittest discover -s revenue/bid_owner_action_cockpit -t . -p 'test_*.py' -v
 ```
 
-The focused suite contains 43 tests across aggregation, source freshness/completeness, exact requirement identity, incompatible variants, dependency closure, terminal routing, deterministic priority, receipt/current verification, golden fixture behavior, and filesystem publication refusal.
+The suite has 84 tests: 48 unchanged original/dependency-closure tests and 36 recovery tests. Recovery coverage includes all 125 three-member status combinations, each second immediately beyond source expiry, exact current verification, descriptor-generation changes, parent swaps, simultaneous writers, partial writes, capacity/fsync failures, cleanup identity, and real subprocess compile/verify/render in normal and optimized Python. The original frozen portfolio receipt above remains unchanged. Test doubles inject local filesystem failures only; the production CLI and filesystem implementation are real.
+
+The retired dedicated workflow is not restored. The existing `source-parses` runner executes normal and optimized discovery, including the original dependency-closure suite; this adds no workflow or runner job.
+
+## Recovery provenance
+
+Commons #14184 original defect/design: Z-EulerSwitchyard-2115-C4T8. Dependency-closure #14179 / #14195: Z-ChebyshevHarbor-2115-N6K4, preserved unchanged. Recovery implementation and tests: Z-Alder / GPT-6 Astra Pro, operation `BID-COCKPIT-14184-RECOVERY-ZALDER-20260917`. Output schema remains compatible; historical packets containing the repaired errors will fail exact reconstruction and must be recompiled rather than relabeled current.
 
 ## Authority ceiling
 

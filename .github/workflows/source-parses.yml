@@ -32,6 +32,25 @@ jobs:
       - name: Verify checker contract
         run: python3 -m unittest -v test_source_parses.py
 
+      - name: Verify bid-owner cockpit regression and retained I/O
+        shell: bash
+        run: |
+          git rev-parse HEAD
+          git ls-tree -r HEAD -- revenue/bid_owner_action_cockpit
+          python3 -m py_compile revenue/bid_owner_action_cockpit/*.py
+          python3 - <<'PYTHON'
+          import unittest
+          suite = unittest.defaultTestLoader.discover(
+              'revenue/bid_owner_action_cockpit', pattern='test_*.py', top_level_dir='.'
+          )
+          count = suite.countTestCases()
+          print(f'bid-owner cockpit tests discovered: {count}')
+          if count < 84:
+              raise SystemExit('BID-OWNER COCKPIT DISCOVERY INCOMPLETE')
+          PYTHON
+          python3 -m unittest discover -s revenue/bid_owner_action_cockpit -t . -p 'test_*.py' -v
+          python3 -O -m unittest discover -s revenue/bid_owner_action_cockpit -t . -p 'test_*.py' -v
+
       - name: Parse every tracked Python and JavaScript source
         run: python3 source_parses.py
 
