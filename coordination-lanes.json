@@ -1,9 +1,10 @@
 {
  "lanes": [
+  {"canonical":15803,"chain":[15700,15803],"content_keys":["6fecdafd18d9e431"],"families":[],"lane":"lane-15700","open":[15700,15803],"state":"OPEN","title":"NIH temporal KG: rejoin policy-clean ontology interoperability profile"},
+  {"canonical":15797,"chain":[15382,15645,15797],"content_keys":["47acce249358712d","afeb7304edf3b4fb"],"families":[],"lane":"lane-15382","open":[15645,15797],"state":"OPEN","title":"Hamilton: rejoin retained-evidence gate with exact projection and strict ingress"},
   {"canonical":15724,"chain":[15655,15724],"content_keys":["efcaf3b71495ee02"],"families":[],"lane":"lane-15655","open":[15724],"state":"OPEN","title":"Close Indiana IOT retained-evidence trust-root defect"},
   {"canonical":15657,"chain":[15586,15657],"content_keys":["328141e324353543"],"families":[],"lane":"lane-15586","open":[15657],"state":"OPEN","title":"Recover Okaloosa root-schema authority closure on current main"},
-  {"canonical":15645,"chain":[15382,15645],"content_keys":["36962f0dcc975e14","afeb7304edf3b4fb"],"families":[],"lane":"lane-15382","open":[15645],"state":"OPEN","title":"Close Hamilton qualification and retained-evidence trust roots"},
-  {"canonical":15640,"chain":[15612,15640],"content_keys":["0076cf0bf936ca01","6316d285b95aff00"],"families":[],"lane":"lane-15612","open":[15640],"state":"OPEN","title":"Revenue: recover partner qualification gate on clean current main"},
+  {"canonical":15640,"chain":[15612,15640],"content_keys":["43934e7c79baa7ec","6316d285b95aff00"],"families":[],"lane":"lane-15612","open":[15640],"state":"OPEN","title":"Revenue: recover partner qualification gate on clean current main"},
   {"canonical":15744,"chain":[15743,15744],"content_keys":["bc592613edcc6749"],"families":[],"lane":"lane-15743","open":[],"state":"MERGED","title":"convert shelf: baddl-eia + billings-1421 acceptance (sledge-baddl-billingsaccept-convert-shelf-20260917-01)"},
   {"canonical":15742,"chain":[15741,15742],"content_keys":["3bf144c905776aa5","df761e3a3ebaa1e8"],"families":[],"lane":"lane-15741","open":[],"state":"MERGED","title":"Wire existing $29 and $250 Buy links onto paid-opportunities and right-now shelves"},
   {"canonical":15642,"chain":[15634,15642],"content_keys":["ed8d00c3cfd39752"],"families":[],"lane":"lane-15634","open":[],"state":"MERGED","title":"Recover existing checkout shelf on current main"},
@@ -23,7 +24,7 @@
   {"canonical":15244,"chain":[15244,15289],"content_keys":["e866289334985d04"],"families":[],"lane":"lane-15244","open":[],"state":"MERGED","title":"CASMI: recover multi-spectrum baseline with fail-closed source admission"}
  ],
  "note": "lanes with two or more members; an open pull request row without a lane field is a lane of its own",
- "observed_at": "2026-09-17T23:01:21Z",
+ "observed_at": "2026-09-18T01:12:05Z",
  "recent_closed": [
   {"closed_at":"2026-09-17T20:46:59Z","content_key":"bc592613edcc6749","created_at":"2026-09-17T20:46:56Z","head":"e54c71bafbc5f5c2d54baf83eadc21fe1cbc08d0","links":[],"markers":[],"number":15744,"state":"MERGED","title":"convert shelf: baddl-eia + billings-1421 acceptance (sledge-baddl-billingsaccept-convert-shelf-20260"},
   {"closed_at":"2026-09-17T20:48:48Z","content_key":"bc592613edcc6749","created_at":"2026-09-17T20:44:50Z","head":"bb95cd6366f05d21416335349a3692b031b6159d","links":[15744],"markers":[],"number":15743,"state":"CLOSED","title":"[superseded by #15744] convert shelf: baddl-eia + billings-1421 acceptance"},
