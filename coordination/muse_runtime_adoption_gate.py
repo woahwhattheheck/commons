@@ -329,4 +329,53 @@ def _build_api():
         runtime = exact_keys(packet["runtime"], "runtime", runtime_keys)
         capture = exact_keys(packet["capture"], "capture", capture_keys)
         events = packet["events"]
-   
+        if type(events) is not list or not events or len(events) > max_events:
+            fail(f"events must be a non-empty list <= {max_events}")
+
+        out: dict[str, _Any] = {
+            "schema": input_schema,
+            "operation_key": text(packet["operation_key"], "operation_key", maximum=240),
+            "counterparty": text(packet["counterparty"], "counterparty"),
+            "route": text(packet["route"], "route"),
+            "purpose": text(packet["purpose"], "purpose"),
+            "lease_id": text(packet["lease_id"], "lease_id", maximum=128),
+            "selected_session": text(packet["selected_session"], "selected_session", maximum=160),
+            "runtime": {
+                "instance_id": text(runtime["instance_id"], "runtime.instance_id", maximum=160),
+                "build_id": text(runtime["build_id"], "runtime.build_id", maximum=160),
+                "source_sha256": sha(runtime["source_sha256"], "runtime.source_sha256"),
+            },
+            "capture": {},
+            "transcript_source_ref": text(packet["transcript_source_ref"], "transcript_source_ref"),
+            "transcript_source_sha256": sha(packet["transcript_source_sha256"], "transcript_source_sha256"),
+            "events": [],
+        }
+        captured_text, captured_s = parse_utc(capture["captured_at"], "capture.captured_at")
+        out["capture"] = {
+            "captured_at": captured_text,
+            "captured_at_s": captured_s,
+            "max_age_seconds": integer(
+                capture["max_age_seconds"],
+                "capture.max_age_seconds",
+                minimum=1,
+                maximum=max_freshness_seconds,
+            ),
+        }
+
+        seen_ids: set[str] = set()
+        previous_event_s: int | None = None
+        for idx, raw in enumerate(events):
+            if type(raw) is not dict:
+                fail(f"events[{idx}] must be an object")
+            cls = raw.get("event_class")
+            if type(cls) is not str or cls not in event_classes:
+                fail(f"events[{idx}].event_class is unsupported")
+            keys = set(event_base)
+            if cls in {"CONSUMED", "GO"}:
+                keys.add("capability_sha256")
+            elif cls == "COMMIT":
+                keys.update({"capability_sha256", "provider", "provider_message_id"})
+            exact_keys(raw, f"events[{idx}]", keys)
+            event_id = text(raw["id"], f"events[{idx}].id", maximum=160)
+            if event_id in seen_ids:
+                fail("du
