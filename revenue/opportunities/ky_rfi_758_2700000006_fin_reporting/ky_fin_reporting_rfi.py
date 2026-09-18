@@ -18,6 +18,7 @@ OFFICE = "Office of Statewide Accounting Services"
 TITLE = "Enterprise Financial Reporting Discovery"
 CLOSE_UTC = "2026-10-02T19:30:00Z"
 ADDENDUM_QA_TARGET_DATE = "2026-09-23"
+MAX_SOURCE_AGE_SECONDS = 48 * 60 * 60
 
 AUTHORITY_FALSE = {
     "buyer_contact_authorized": False,
@@ -219,6 +220,7 @@ def validate_manifest(manifest: Any, trusted_as_of: str) -> dict[str, Any]:
     if type(sources) is not list or not 2 <= len(sources) <= 8:
         raise ContractError("manifest.source_evidence: 2..8 sources required")
     seen_urls = set()
+    source_fresh = True
     for index, raw in enumerate(sources):
         row = _exact(
             raw,
@@ -236,11 +238,14 @@ def validate_manifest(manifest: Any, trusted_as_of: str) -> dict[str, Any]:
             raise ContractError(
                 f"manifest.source_evidence[{index}].source_class: unsupported"
             )
-        if _utc(
+        captured = _utc(
             row["captured_at_utc"],
             f"manifest.source_evidence[{index}].captured_at_utc",
-        ) > as_of:
+        )
+        if captured > as_of:
             raise ContractError("manifest.source_evidence: future capture")
+        if int((as_of - captured).total_seconds()) > MAX_SOURCE_AGE_SECONDS:
+            source_fresh = False
         _text(row["note"], f"manifest.source_evidence[{index}].note")
 
     packet = _exact(
@@ -250,29 +255,18 @@ def validate_manifest(manifest: Any, trusted_as_of: str) -> dict[str, Any]:
     )
     retained = _bool(packet["retained"], "manifest.buyer_packet.retained")
     if retained:
-        digest = packet["sha256"]
-        if type(digest) is not str or not re.fullmatch(r"[0-9a-f]{64}", digest):
-            raise ContractError(
-                "manifest.buyer_packet.sha256: retained packet needs digest"
-            )
-        _text(
-            packet["source_generation"],
-            "manifest.buyer_packet.source_generation",
-            160,
+        raise ContractError(
+            "manifest.buyer_packet.retained: not supported in this generation"
         )
-        if packet["authority"] != "BUYER_PACKET":
-            raise ContractError(
-                "manifest.buyer_packet.authority: buyer authority required"
-            )
-    else:
-        if (
-            packet["sha256"] is not None
-            or packet["source_generation"] is not None
-            or packet["authority"] != "NOT_RETAINED"
-        ):
-            raise ContractError(
-                "manifest.buyer_packet: absent packet must stay unasserted"
-            )
+    if (
+        packet["sha256"] is not None
+        or packet["source_generation"] is not None
+        or packet["authority"] != "NOT_RETAINED"
+    ):
+        raise ContractError(
+            "manifest.buyer_packet: absent packet must stay unasserted"
+        )
+
 
     leads = doc["research_leads"]
     if type(leads) is not list or not 1 <= len(leads) <= 12:
@@ -381,7 +375,13 @@ def validate_manifest(manifest: Any, trusted_as_of: str) -> dict[str, Any]:
             else "HOLD_BUYER_PACKET_REQUIRED"
         ),
         "response_window_state": (
-            "OPEN_INTERNAL_BUILD" if as_of < close else "HOLD_CLOSED_WINDOW"
+            "HOLD_CLOSED_WINDOW"
+            if as_of >= close
+            else (
+                "OPEN_INTERNAL_BUILD"
+                if source_fresh
+                else "HOLD_SOURCE_REFRESH_REQUIRED"
+            )
         ),
         "submission_state": "HOLD_OWNER_AND_PORTAL_AUTHORITY",
         "research_lead_count": len(leads),
