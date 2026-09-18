@@ -308,6 +308,14 @@ def _validate_packet(packet: Any) -> dict[str, Any]:
             raise PlannerError(f"{label} throttle details require last_throttle_utc")
         if last_throttle_epoch is not None and throttle_count == 0:
             raise PlannerError(f"{label} last_throttle_utc requires throttle count")
+        if (
+            last_success_epoch is not None
+            and last_throttle_epoch is not None
+            and last_success_epoch > last_throttle_epoch
+        ):
+            raise PlannerError(
+                f"{label} throttle state conflicts with later successful read"
+            )
         min_interval = _bounded_int(
             raw_surface["min_poll_interval_seconds"],
             f"{label}.min_poll_interval_seconds",
@@ -479,7 +487,7 @@ def compile_plan(packet: Any) -> dict[str, Any]:
     runnable.sort(key=lambda row: (-row["priority_score"], row["surface_id"]))
     budget = normalized["request_budget"]
     allocated = 0
-    budget_degraded = False
+    budget_degraded = budget == 0 or len(runnable) > budget
     for row in runnable:
         if allocated < budget:
             row["decision"] = "POLL_NOW"
