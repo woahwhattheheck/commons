@@ -65,6 +65,40 @@ class RevenueCollectionDeskTests(unittest.TestCase):
         self.assertEqual(out["claims"][0]["next_action"], "WAIT_HOLD")
         self.assertEqual(out["totals_by_instrument"]["USD"]["asserted_hold"], "10")
 
+    def test_future_settlement_event_fails_closed(self):
+        cl = claim(events=[
+            ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
+            ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
+            ev("e3", "2026-09-19T00:00:00Z", "SETTLED_CASH",
+               settlement_currency="USD", settlement_amount="10.00"),
+        ])
+        with self.assertRaisesRegex(c.ContractError, "event timestamp exceeds ledger as_of"):
+            c.compile_ledger(ledger([cl], as_of="2026-09-18T00:00:00Z"))
+
+    def test_future_route_release_and_repair_fail_closed(self):
+        cases = [
+            [
+                ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
+                ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
+                ev("e3", "2026-09-03T00:00:00Z", "COLLECTION_CONTACT_SENT",
+                   cooldown_until="2026-09-04T00:00:00Z"),
+                ev("e4", "2026-09-03T01:00:00Z", "DELIVERY_CONFIRMED"),
+                ev("e5", "2026-09-19T00:00:00Z", "COLLECTION_RELEASED"),
+            ],
+            [
+                ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
+                ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
+                ev("e3", "2026-09-03T00:00:00Z", "COLLECTION_CONTACT_SENT",
+                   cooldown_until="2026-09-04T00:00:00Z"),
+                ev("e4", "2026-09-03T01:00:00Z", "DELIVERY_BOUNCED"),
+                ev("e5", "2026-09-19T00:00:00Z", "ROUTE_REPAIRED"),
+            ],
+        ]
+        for events in cases:
+            with self.subTest(kind=events[-1]["kind"]):
+                with self.assertRaisesRegex(c.ContractError, "event timestamp exceeds ledger as_of"):
+                    c.compile_ledger(ledger([claim(events=events)], as_of="2026-09-18T00:00:00Z"))
+
     def test_expired_payment_hold_verifies_available(self):
         cl = claim(events=[
             ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
