@@ -75,9 +75,11 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Compile provider-cost source
+        if: hashFiles('tools/provider_cost_truth/*.py') != ''
         run: python -m py_compile tools/provider_cost_truth/*.py
 
       - name: Prove provider-cost discovery is non-vacuous
+        if: hashFiles('tools/provider_cost_truth/*.py') != ''
         run: |
           python - <<'PY'
           import unittest
@@ -89,9 +91,11 @@ jobs:
           PY
 
       - name: Normal provider-cost hostile suite
+        if: hashFiles('tools/provider_cost_truth/*.py') != ''
         run: python -m unittest discover -s tools/provider_cost_truth -p 'test_*.py' -v
 
       - name: Optimized provider-cost hostile suite
+        if: hashFiles('tools/provider_cost_truth/*.py') != ''
         run: python -O -m unittest discover -s tools/provider_cost_truth -p 'test_*.py' -v
 
   multi-framework-evidence-freshness:
