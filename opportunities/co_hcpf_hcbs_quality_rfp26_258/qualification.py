@@ -364,7 +364,7 @@ def _build_engine(
     def compile_packet(untrusted_packet: Any) -> dict[str, Any]:
         packet = exact(
             snapshot(untrusted_packet),
-            frozenset({"schema", "pursuit_id", "buyer_source_sets", "prime_evidence", "workshare_evidence"}),
+            builtin_frozenset({"schema", "pursuit_id", "buyer_source_sets", "prime_evidence", "workshare_evidence"}),
             "packet",
         )
         if packet["schema"] != packet_schema:
@@ -373,11 +373,11 @@ def _build_engine(
             raise error("pursuit_id mismatch")
 
         buyer_rows = packet["buyer_source_sets"]
-        if type(buyer_rows) is not list:
+        if builtin_type(buyer_rows) is not list_type:
             raise error("buyer_source_sets must be array")
         admitted_sources = []
-        source_ids = set()
-        for idx, row in enumerate(buyer_rows):
+        source_ids = builtin_set()
+        for idx, row in builtin_enumerate(buyer_rows):
             row = exact(row, source_keys, f"buyer_source_sets[{idx}]")
             sid = text(row["id"], f"buyer_source_sets[{idx}].id")
             if sid in source_ids:
@@ -393,17 +393,17 @@ def _build_engine(
             admitted_sources.sort(key=lambda item: (item[0], item[1]))
             newest = admitted_sources[-1][0]
             newest_rows = [item for item in admitted_sources if item[0] == newest]
-            if len(newest_rows) != 1:
+            if builtin_len(newest_rows) != 1:
                 raise error("ambiguous current official buyer generation")
             current = newest_rows[0]
 
         prime_rows = packet["prime_evidence"]
-        if type(prime_rows) is not list:
+        if builtin_type(prime_rows) is not list_type:
             raise error("prime_evidence must be array")
         prime_by_org: dict[str, set[str]] = {}
         admitted_prime_ids = []
-        seen_prime_ids = set()
-        for idx, row in enumerate(prime_rows):
+        seen_prime_ids = builtin_set()
+        for idx, row in builtin_enumerate(prime_rows):
             row = exact(row, prime_keys, f"prime_evidence[{idx}]")
             eid = text(row["id"], f"prime_evidence[{idx}].id")
             if eid in seen_prime_ids:
@@ -413,15 +413,15 @@ def _build_engine(
             trusted = trusted_primes.get(eid)
             if trusted is not None and row == trusted:
                 admitted_prime_ids.append(eid)
-                prime_by_org.setdefault(row["org_id"], set()).add(row["gate"])
+                prime_by_org.setdefault(row["org_id"], builtin_set()).add(row["gate"])
 
         work_rows = packet["workshare_evidence"]
-        if type(work_rows) is not list:
+        if builtin_type(work_rows) is not list_type:
             raise error("workshare_evidence must be array")
-        work_gates = set()
+        work_gates = builtin_set()
         admitted_work_ids = []
-        seen_work_ids = set()
-        for idx, row in enumerate(work_rows):
+        seen_work_ids = builtin_set()
+        for idx, row in builtin_enumerate(work_rows):
             row = exact(row, workshare_keys, f"workshare_evidence[{idx}]")
             eid = text(row["id"], f"workshare_evidence[{idx}].id")
             if eid in seen_work_ids:
@@ -434,7 +434,7 @@ def _build_engine(
                 work_gates.add(row["gate"])
 
         now = trusted_clock()
-        if not isinstance(now, dt_type) or now.tzinfo is None:
+        if not builtin_isinstance(now, dt_type) or now.tzinfo is None:
             raise error("trusted clock must return aware datetime")
         now = now.astimezone(utc)
         qualified = sorted(
