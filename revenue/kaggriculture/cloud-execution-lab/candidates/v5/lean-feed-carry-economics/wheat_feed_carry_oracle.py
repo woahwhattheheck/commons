@@ -382,8 +382,8 @@ def analyze_certified_window(packet: Mapping[str, Any]) -> dict[str, Any]:
     plus_one = min(saleable, minimum + 1)
     upstream_gap = upstream_balance_offer_gap(stock, returned, required, offered)
     return {
-        "schema": schema,
-            "state": negative_state,
+        "schema": SCHEMA,
+        "state": NEGATIVE,
         "feed_item": "WHEAT",
         "mechanism": "selected_sell_wheat_reservation",
         "current_policy_withheld": current,
@@ -414,26 +414,26 @@ def _build_source_theorem_receipt(
         """Return helper theorem plus the independent upstream empirical gate."""
         authority = authority_validator()
         return {
-        "schema": SCHEMA,
-        "state": NEGATIVE,
-        "authority": authority,
-        "scope": "certified operating_stock.protect_feed_stock WHEAT SELL reservation only",
-        "theorem": (
+            "schema": schema,
+            "state": negative_state,
+            "authority": authority,
+            "scope": "certified operating_stock.protect_feed_stock WHEAT SELL reservation only",
+            "theorem": (
             "For every supported certified window, the source current-policy "
             "withholding equation equals the independent minimum balance needed "
             "to preserve required_wheat after the offered executable sale."
         ),
-        "helper_seam_candidate": False,
-        "candidate_build_authorized": False,
-        "promotion_authorized": False,
-        "empirical_result": None,
-        "remaining_gate_state": upstream_gate,
-        "upstream_offer_census_required": True,
-        "candidate_hypothesis_paths": [
+            "helper_seam_candidate": False,
+            "candidate_build_authorized": False,
+            "promotion_authorized": False,
+            "empirical_result": None,
+            "remaining_gate_state": upstream_gate,
+            "upstream_offer_census_required": True,
+            "candidate_hypothesis_paths": [
             "AUTHENTICATED_UPSTREAM_UNDER_OFFERING_WITH_HELPER_THEOREM_INTACT",
             "SEPARATELY_REVIEWED_SOURCE_RUNTIME_CONTRADICTION",
         ],
-        "empirical_gate": (
+            "empirical_gate": (
             "No official-engine dev/holdout candidate is authorized by this source theorem. "
             "The next retained census must independently test whether authenticated D2 "
             "selected actions under-offer balance-permitted WHEAT while protect_feed_stock "
@@ -441,7 +441,7 @@ def _build_source_theorem_receipt(
             "intact and may justify a separately reviewed candidate hypothesis. A source/runtime "
             "contradiction is a distinct path and must first be reviewed as drift."
         ),
-    }
+        }
 
     return source_theorem_receipt
 
