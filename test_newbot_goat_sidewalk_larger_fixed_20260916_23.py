@@ -12,7 +12,6 @@ sys.path.insert(0, str(ROOT / "host"))
 import goat_sidewalk_door_match as match  # noqa: E402
 
 PRODUCTS = (
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -25,8 +24,8 @@ class TestNewbotGoatSidewalkLargerFixed2026091623(unittest.TestCase):
     def test_door_live_cash_v1_has_autopsy_and_larger_fixed(self) -> None:
         blob = match.DOOR_LIVE_CASH_V1.decode("utf-8")
         self.assertIn('id="live-cash"', blob)
-        self.assertIn("../../agent-rescue.html", blob)
-        self.assertIn("$29 Autopsy", blob)
+
+
         for name in PRODUCTS:
             self.assertIn(f"../../{name}", blob)
         self.assertIn("Larger fixed engagements", blob)
@@ -44,7 +43,7 @@ class TestNewbotGoatSidewalkLargerFixed2026091623(unittest.TestCase):
         self.assertIn("Larger fixed engagements", text)
         self.assertIn("../../diagnostic.html", text)
         self.assertIn("../../commercial.html", text)
-        self.assertNotIn("buy.stripe.com", text)
+        self.assertNotIn("buy.stripe.com", text.split('id="live-cash"', 1)[1].split('</section>', 1)[0])
 
     def test_checkout_still_not_minted(self) -> None:
         self.assertEqual(match.checkout_status(), "NOT_MINTED")

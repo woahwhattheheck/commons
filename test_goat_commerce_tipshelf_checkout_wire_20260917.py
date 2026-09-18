@@ -81,14 +81,12 @@ SHELF = (
 SHELF_URLS = frozenset(row["url"] for row in SHELF)
 COMMERCE_URLS = TYPE_PRODUCT_BUYS | SHELF_URLS
 SIBLING_RAILS = {
-    "agent-rescue.html": "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
     "dealer-service-lead-rescue.html": "https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b",
     "referral-intake-completeness.html": "https://buy.stripe.com/9B600i98N77b9uFeBk43S0c",
     "repair-booking-preflight.html": "https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d",
     "plant-downtime-handoff.html": "https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e",
 }
 TYPE_CTAS = (
-    "Buy Autopsy — $29",
     "Buy dealer diagnostic — $199",
     "Buy referral diagnostic — $199",
     "Buy repair diagnostic — $199",

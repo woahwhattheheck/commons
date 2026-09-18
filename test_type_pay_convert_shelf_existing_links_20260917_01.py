@@ -18,7 +18,6 @@ RECEIPT = ROOT / "p" / "type-pay-convert-shelf-existing-links-20260917-01.md"
 
 ALLOWED_LIVE_BUY_URLS = frozenset(
     {
-        "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
         "https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e",
         "https://buy.stripe.com/28E9AS70F6378qB2SC43S0w",
         "https://buy.stripe.com/14AfZg1Gl3UZ7mxfFo43S0x",
@@ -30,14 +29,12 @@ BUY_HOST_PATH = re.compile(
     re.IGNORECASE,
 )
 SHELF_LABELS = (
-    ("Agent Failure Autopsy", "$29"),
     ("Plant Downtime Handoff", "$199"),
     ("Chargeback Evidence Readiness", "$4,000"),
     ("Late-cancel / no-show", "$3,500"),
     ("Hotel room-turn", "$2,500"),
 )
 RELATIVE_DOORS = (
-    "./agent-rescue.html",
     "./plant-downtime-handoff.html",
     "./chargeback-evidence-readiness.html",
     "./late-cancel-noshow-fee-leakage.html",
@@ -89,7 +86,6 @@ class TestTypePayConvertShelfExistingLinks2026091701(unittest.TestCase):
         for url in ALLOWED_LIVE_BUY_URLS:
             self.assertIn(url, text)
         for name in (
-            "agent-rescue.html",
             "commercial.html",
             "plant-downtime-handoff.html",
             "chargeback-evidence-readiness.html",

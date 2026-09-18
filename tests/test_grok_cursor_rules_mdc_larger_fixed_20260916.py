@@ -27,7 +27,7 @@ class T(unittest.TestCase):
             with self.subTest(stem=stem):
                 text = (ROOT / ".cursor/rules" / f"{stem}.mdc").read_text(encoding="utf-8")
                 self.assertIn("Live cash", text)
-                self.assertIn("../../agent-rescue.html", text)
+
                 self.assertIn("Larger fixed engagements", text)
                 self.assertIn("../../diagnostic.html", text)
                 self.assertIn("../../commercial.html", text)

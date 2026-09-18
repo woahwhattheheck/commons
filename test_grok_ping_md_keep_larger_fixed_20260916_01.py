@@ -12,7 +12,6 @@ PAGES = (
     "ping/action.md",
 )
 PRODUCTS = (
-    "agent-rescue.html",
     "diagnostic.html",
     "commercial.html",
 )

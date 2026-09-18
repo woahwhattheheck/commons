@@ -11,7 +11,6 @@ PAGES = (
     "ENTRY.md",
 )
 PRODUCTS = (
-    "agent-rescue.html",
     "diagnostic.html",
     "commercial.html",
 )

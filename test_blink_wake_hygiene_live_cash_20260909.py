@@ -11,7 +11,7 @@ TARGETS = [
   "ground/CLAUDE_OVER_REFUSAL_LOCAL.md",
   "ground/wake-universal-all-harness.md",
 ]
-MARKERS = ["## Live cash", "agent-rescue.html", "tools-cash.html"]
+MARKERS = ["## Live cash", "tools-cash.html"]
 
 def test_live_cash_shelves():
   for rel in TARGETS:

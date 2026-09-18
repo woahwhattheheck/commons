@@ -108,7 +108,7 @@ class DirectoryTests(unittest.TestCase):
                 self.assertIn('existing navigation', first)
                 self.assertIn('id="boardsum"', first)
                 self.assertIn('id="live-cash-doors"', first)
-                self.assertIn('./agent-rescue.html', Page(first).links)
+
                 hub_pages.rebuild_boards(mod, state)
                 self.assertEqual((Path(tmp) / 'boards.html').read_text(encoding='utf-8'), first)
 

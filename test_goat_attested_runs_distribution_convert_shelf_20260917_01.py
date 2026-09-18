@@ -4,8 +4,7 @@
 Wire EXISTING live Stripe Payment Links as first-screen Buy CTAs on
 attested-runs.html and distribution.html. Do not invent new buy.stripe.com
 host paths. Keep Live cash product-page links. Same rails as GOAT
-free-sample/humans and Wire tools / Latch annex convert: Autopsy $29 +
-White Box hour $250 only. Tip KEEP. Hands off Type agent-triage/control,
+free-sample/humans and Wire tools / Latch annex convert: White Box hour $250 only. Tip KEEP. Hands off Type agent-triage/control,
 Wire live/delta, Latch annex/archive + #15248 fleet, Quill product
 heroes, ingest, fat index, #8802.
 """
@@ -24,7 +23,6 @@ COPY_RECEIPT = ROOT / "p" / "goat-attested-runs-distribution-convert-copy-202609
 
 ALLOWED_LIVE_BUY_URLS = frozenset(
     {
-        "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
         "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
     }
 )
@@ -33,15 +31,12 @@ BUY_HOST_PATH = re.compile(
     re.IGNORECASE,
 )
 BUY_LABELS = (
-    "See what broke in one failed agent run — $29.",
     "One live instrumented hour, white box — $250.",
 )
 GENERIC_LABELS = (
-    "Buy Autopsy $29",
     "Buy one White Box hour $250",
 )
 LIVE_CASH_DOORS = (
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -127,7 +122,6 @@ class TestGoatAttestedRunsDistributionConvertShelf2026091701(unittest.TestCase):
         for name in (
             "attested-runs.html",
             "distribution.html",
-            "agent-rescue.html",
             "commercial.html",
             "diagnostic.html",
         ):

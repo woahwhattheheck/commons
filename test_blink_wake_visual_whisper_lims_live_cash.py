@@ -11,7 +11,7 @@ TARGETS = [
   "ground/XYZ_ZERO.md",
   "ground/WIDTH200.md",
 ]
-MARKERS = ["## Live cash", "agent-rescue.html", "dealer-service-lead-rescue.html", "tools-cash.html"]
+MARKERS = ["## Live cash", "dealer-service-lead-rescue.html", "tools-cash.html"]
 
 def test_live_cash_shelves():
   for rel in TARGETS:

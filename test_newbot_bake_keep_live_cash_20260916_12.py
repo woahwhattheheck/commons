@@ -16,7 +16,6 @@ from unittest.mock import Mock, patch
 ROOT = Path(__file__).resolve().parent
 SOURCE = ROOT / "llms_txt.py"
 PRODUCTS = [
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -88,7 +87,6 @@ class TestNewbotBakeKeepLiveCash2026091612(unittest.TestCase):
             "cite": [CLAIM],
             "note": "fixture keep",
             "products": [
-                {"name": "Agent Failure Autopsy", "price_usd": 29, "path": "agent-rescue.html"},
                 {"name": "Dealer Service Lead Rescue", "price_usd": 199, "path": "dealer-service-lead-rescue.html"},
                 {"name": "Referral Intake Completeness", "price_usd": 199, "path": "referral-intake-completeness.html"},
                 {"name": "Repair Booking Preflight", "price_usd": 199, "path": "repair-booking-preflight.html"},

@@ -110,7 +110,7 @@ class TestGrokbuildTestsBattery34389153926KeepLift(unittest.TestCase):
     def test_autogtm_live_cash_door_stays_open(self) -> None:
         text = (ROOT / "autogtm.html").read_text(encoding="utf-8")
         self.assertIn('id="live-cash"', text)
-        self.assertIn("agent-rescue.html", text)
+
         self.assertNotIn('type="password"', text)
         self.assertNotIn("Authorization", text)
 

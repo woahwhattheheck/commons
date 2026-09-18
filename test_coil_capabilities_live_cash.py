@@ -12,17 +12,14 @@ PAGE = ROOT / "capabilities.html"
 
 REQUIRED = [
     'id="live-cash"',
-    "./agent-rescue.html",
     "./dealer-service-lead-rescue.html",
     "./referral-intake-completeness.html",
     "./repair-booking-preflight.html",
     "./plant-downtime-handoff.html",
-    "$29 Autopsy",
     "$199 dealer diagnostic",
 ]
 
 PRODUCT_HREFS = [
-    "./agent-rescue.html",
     "./dealer-service-lead-rescue.html",
     "./referral-intake-completeness.html",
     "./repair-booking-preflight.html",
