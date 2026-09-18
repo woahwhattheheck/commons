@@ -1,5 +1,8 @@
 from .core import *
 
+def _public(x):
+    return {'value':dec_text(x['v']),'filed':x['filed'],'accession':x['accn'],'form':x['form']}
+
 def select(facts,q):
     try:rows=facts[q['taxonomy']][q['concept']]['units'][q['unit']]
     except (KeyError,TypeError) as e:raise FilingQualityError(f"missing fact path for {q['id']}") from e
@@ -15,5 +18,8 @@ def select(facts,q):
     if not candidates:raise FilingQualityError(f"no in-scope fact for {q['id']}")
     latest=max(x['filed'] for x in candidates);same=[x for x in candidates if x['filed']==latest]
     if len({dec_text(x['v']) for x in same})!=1:raise FilingQualityError(f"ambiguous same-day differing values for {q['id']}")
-    best=min(same,key=lambda x:(x['accn'],x['form']));value=best['v']
-    return {'selector_id':q['id'],'taxonomy':q['taxonomy'],'concept':q['concept'],'unit':q['unit'],'kind':q['kind'],'start':q['start'],'end':q['end'],'period':f"{q['start'] or ''}/{q['end']}",'value':dec_text(value),'filed':latest,'accession':best['accn'],'form':best['form'],'provenance_accessions':sorted({x['accn'] for x in same}),'prior_values':sorted({dec_text(x['v']) for x in candidates if x['filed']<latest and x['v']!=value})}
+    same.sort(key=lambda x:(x['accn'],x['form'],dec_text(x['v'])))
+    best=same[0];value=best['v']
+    prior=sorted((_public(x) for x in candidates if x['filed']<latest),key=lambda x:(x['filed'],x['accession'],x['form'],x['value']))
+    provenance=[_public(x) for x in same]
+    return {'selector_id':q['id'],'taxonomy':q['taxonomy'],'concept':q['concept'],'unit':q['unit'],'kind':q['kind'],'start':q['start'],'end':q['end'],'period':f"{q['start'] or ''}/{q['end']}",'value':dec_text(value),'filed':latest,'accession':best['accn'],'form':best['form'],'provenance_accessions':sorted({x['accn'] for x in same}),'provenance':provenance,'prior_values':sorted({x['value'] for x in prior if x['value']!=dec_text(value)}),'prior_observations':prior}

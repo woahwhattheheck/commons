@@ -19,12 +19,19 @@ def parse_policy(p):
         start=q.get('start');start=day(start,f'{sid}.start') if start is not None else None
         if (kind=='duration')!=(start is not None):raise FilingQualityError('duration requires start; instant forbids start')
         sc=q.get('filed_on_or_before',cutoff);sc=day(sc,f'{sid}.cutoff') if sc is not None else None
-        out.append({'id':sid,'taxonomy':ident(q.get('taxonomy','us-gaap'),f'{sid}.taxonomy'),'concept':ident(q.get('concept'),f'{sid}.concept'),'unit':ident(q.get('unit'),f'{sid}.unit'),'kind':kind,'start':start,'end':day(q.get('end'),f'{sid}.end'),'cutoff':sc})
+        out.append({'id':sid,'taxonomy':ident(q.get('taxonomy','us-gaap'),f'{sid}.taxonomy'),'concept':ident(q.get('concept'),f'{sid}.concept'),'unit':unit(q.get('unit'),f'{sid}.unit'),'kind':kind,'start':start,'end':day(q.get('end'),f'{sid}.end'),'cutoff':sc})
+    check_ids=set()
     for c in checks:
         if not isinstance(c,dict) or set(c)-{'id','kind','lhs','rhs','tolerance'}:raise FilingQualityError('invalid check fields')
-        ident(c.get('id'),'check.id')
+        cid=ident(c.get('id'),'check.id')
+        if cid in check_ids:raise FilingQualityError(f'duplicate check {cid}')
+        check_ids.add(cid)
         if c.get('kind')!='sum_equals' or not isinstance(c.get('lhs'),list) or not c['lhs']:raise FilingQualityError('unsupported check')
-        for x in c['lhs']:ident(x,'check.lhs')
-        ident(c.get('rhs'),'check.rhs');tol=dec(c.get('tolerance','0'),'tolerance')
+        refs=[]
+        for x in c['lhs']:refs.append(ident(x,'check.lhs'))
+        refs.append(ident(c.get('rhs'),'check.rhs'))
+        unknown=sorted(set(refs)-seen)
+        if unknown:raise FilingQualityError(f'check {cid} references unknown selectors: {unknown}')
+        tol=dec(c.get('tolerance','0'),'tolerance')
         if tol<0:raise FilingQualityError('negative tolerance')
     return cik,cutoff,out,checks

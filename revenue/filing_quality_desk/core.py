@@ -6,6 +6,7 @@ from decimal import Decimal,InvalidOperation
 class FilingQualityError(ValueError): pass
 MAX_BYTES=8_000_000; MAX_DEPTH=40; MAX_SCALARS=300_000
 ID=re.compile(r'^[A-Za-z0-9_.:-]{1,120}$')
+UNIT=re.compile(r'^[A-Za-z0-9_.:/-]{1,120}$')
 
 def _pairs(pairs):
     d={}
@@ -37,10 +38,15 @@ def ident(x,name):
     x=text(x,name)
     if not ID.fullmatch(x): raise FilingQualityError(f'{name} has unsafe characters')
     return x
+def unit(x,name):
+    x=text(x,name)
+    if not UNIT.fullmatch(x): raise FilingQualityError(f'{name} has unsafe characters')
+    return x
 def day(x,name):
     x=text(x,name)
-    try:date.fromisoformat(x)
+    try:parsed=date.fromisoformat(x)
     except ValueError as e:raise FilingQualityError(f'{name} must be ISO date') from e
+    if parsed.isoformat()!=x:raise FilingQualityError(f'{name} must be canonical ISO date')
     return x
 def dec(x,name):
     if isinstance(x,bool) or not isinstance(x,str):raise FilingQualityError(f'{name} must be numeric')
