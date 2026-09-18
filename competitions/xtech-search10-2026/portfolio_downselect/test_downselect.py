@@ -3,9 +3,17 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import tempfile
 import unittest
+from pathlib import Path
 
-from downselect import ContractError, compile_portfolio, parse_json_strict
+from downselect import (
+    MAX_FILE_BYTES,
+    ContractError,
+    compile_portfolio,
+    parse_json_strict,
+    read_regular_json,
+)
 
 
 SHA_A = "1" * 40
@@ -343,6 +351,23 @@ class DownselectTests(unittest.TestCase):
         with self.assertRaisesRegex(ContractError, "EVIDENCE_CANDIDATE_GENERATION_MISMATCH"):
             compile_portfolio(packet)
 
+    def test_repo_path_dot_segment_alias_is_rejected(self) -> None:
+        packet = ready_packet()
+        packet["candidates"][0]["source"]["path"] = "products/alpha/../beta"
+        with self.assertRaisesRegex(ContractError, "INVALID_REPO_PATH"):
+            self.compile(packet)
+
+    def test_evidence_path_dot_segment_alias_is_rejected(self) -> None:
+        packet = bind_evidence(ready_packet())
+        target = next(
+            row
+            for row in packet["evidenceRecords"]
+            if row["binding"] == "candidate:alpha:claim:alpha.intro"
+        )
+        target["path"] = "products/alpha/../beta"
+        with self.assertRaisesRegex(ContractError, "INVALID_REPO_PATH"):
+            compile_portfolio(packet)
+
     def test_repo_evidence_path_transplant_is_rejected(self) -> None:
         packet = bind_evidence(ready_packet())
         target = next(
@@ -470,6 +495,33 @@ class DownselectTests(unittest.TestCase):
         report = self.compile(ready_packet())
         self.assertIn("does not independently authenticate", report["evidenceTrustBoundary"])
         self.assertFalse(report["authority"]["armyEligibilityDetermined"])
+
+    def test_file_ingress_rejects_oversize_before_json_parse(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "packet.json"
+            path.write_bytes(b"x" * (MAX_FILE_BYTES + 1))
+            with self.assertRaisesRegex(ContractError, "INPUT_TOO_LARGE"):
+                read_regular_json(path)
+
+    def test_file_ingress_rejects_symlink(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            target = root / "target.json"
+            target.write_text("{}", encoding="utf-8")
+            link = root / "link.json"
+            try:
+                link.symlink_to(target)
+            except (OSError, NotImplementedError):
+                self.skipTest("symlinks unavailable")
+            with self.assertRaisesRegex(ContractError, "INPUT_SYMLINK_FORBIDDEN"):
+                read_regular_json(link)
+
+    def test_file_ingress_rejects_invalid_utf8(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "packet.json"
+            path.write_bytes(b"{\\xff}")
+            with self.assertRaisesRegex(ContractError, "JSON_NOT_UTF8"):
+                read_regular_json(path)
 
 
 if __name__ == "__main__":
