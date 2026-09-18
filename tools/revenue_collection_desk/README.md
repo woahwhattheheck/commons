@@ -26,9 +26,13 @@ the exact settlement currency and amount. The compiler never calculates FX or
 token-to-USD value.
 
 Compensation-basis evidence is orthogonal to work acceptance. A receipt-bound
-`ENTITLEMENT_CONFIRMED` event records that the claim's exact instrument and amount
-have retained support such as an advertised bounty or an agreed commercial term.
-Without it, accepted work remains `VERIFY_ENTITLEMENT`, is counted only in
+`ENTITLEMENT_CONFIRMED` event must carry `entitlement_instrument` and
+`entitlement_amount`; the instrument must exactly match the claim and the amount
+must be the same exact decimal value. Its source reference/digest and bound economics
+are retained as `entitlement_evidence` and folded into `economics_receipt_sha256`.
+That prevents a generic acceptance or unrelated compensation receipt from making a
+different claim collectible. Without valid bound evidence, accepted work remains
+`VERIFY_ENTITLEMENT`, is counted only in
 `accepted_unconfirmed`, and cannot enter the collection route. A proposed quote or
 merge by itself is not entitlement evidence. Direct retained payment evidence may
 still advance the financial lifecycle without this event.
