@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from hashlib import sha256
 import json
 import re
@@ -244,7 +244,7 @@ def validate_manifest(manifest: Any, trusted_as_of: str) -> dict[str, Any]:
         )
         if captured > as_of:
             raise ContractError("manifest.source_evidence: future capture")
-        if int((as_of - captured).total_seconds()) > MAX_SOURCE_AGE_SECONDS:
+        if as_of - captured > timedelta(seconds=MAX_SOURCE_AGE_SECONDS):
             source_fresh = False
         _text(row["note"], f"manifest.source_evidence[{index}].note")
 
