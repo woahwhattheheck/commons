@@ -239,6 +239,57 @@ class RelationshipGuardDirectBoundaryTests(unittest.TestCase):
         with self.assertRaises(TypeError):
             verify_guard(packet, artifact, _canonical_bytes_fn=lambda value: b"forged")
 
+    def test_bounded_file_prefix_requests_only_limit_plus_one(self):
+        calls = []
+
+        class Reader:
+            def __enter__(self):
+                return self
+
+            def __exit__(self, exc_type, exc, tb):
+                return False
+
+            def read(self, size=-1):
+                calls.append(size)
+                if size < 0:
+                    raise AssertionError("unbounded file read attempted")
+                return b"x" * size
+
+        reader = Reader()
+
+        def fake_open(path, mode):
+            self.assertEqual(mode, "rb")
+            return reader
+
+        raw = guard._bounded_file_prefix(
+            guard.Path("ignored.json"),
+            guard.MAX_JSON_BYTES,
+            _path_open=fake_open,
+        )
+        self.assertEqual(calls, [guard.MAX_JSON_BYTES + 1])
+        self.assertEqual(len(raw), guard.MAX_JSON_BYTES + 1)
+
+    def test_remaining_helper_rebinding_cannot_weaken_loaded_public_generation(self):
+        original_size = guard._json_string_size
+        original_decode_error = guard.json.JSONDecodeError
+        try:
+            guard._json_string_size = lambda value, path, remaining: 0
+            guard.json.JSONDecodeError = RuntimeError
+
+            packet = {
+                "candidate": candidate(purpose="p"),
+                "events": [],
+                "padding": "x" * (guard.MAX_JSON_BYTES + 1),
+            }
+            with self.assertRaisesRegex(GuardError, "canonical bytes"):
+                compile_guard(packet)
+
+            with self.assertRaises(GuardError):
+                guard._decode_json_bytes(b"{", "broken.json")
+        finally:
+            guard._json_string_size = original_size
+            guard.json.JSONDecodeError = original_decode_error
+
 
 if __name__ == "__main__":
     unittest.main()
