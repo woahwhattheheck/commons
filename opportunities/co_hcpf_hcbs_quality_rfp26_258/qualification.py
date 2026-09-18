@@ -281,12 +281,12 @@ def _build_engine(
     list_type = list
 
     def text(value: Any, label: str) -> str:
-        if type(value) is not str or not value or value != value.strip():
+        if builtin_type(value) is not str_type or not value or value != value.strip():
             raise error(f"{label} must be a non-empty trimmed string")
         return value
 
     def sha(value: Any, label: str) -> str:
-        if type(value) is not str or sha_fullmatch(value) is None:
+        if builtin_type(value) is not str_type or sha_fullmatch(value) is None:
             raise error(f"{label} must be lowercase SHA-256 hex")
         return value
 
@@ -301,13 +301,13 @@ def _build_engine(
         return parsed.astimezone(utc)
 
     def positive_int(value: Any, label: str) -> int:
-        if type(value) is not int or value <= 0 or value > max_safe:
+        if builtin_type(value) is not int_type or value <= 0 or value > max_safe:
             raise error(f"{label} must be a positive safe integer")
         return value
 
     def exact(row: Any, keys: frozenset[str], label: str) -> dict[str, Any]:
-        if type(row) is not dict or set(row) != set(keys):
-            raise error(f"{label} must contain exact keys: {sorted(keys)}")
+        if builtin_type(row) is not dict_type or builtin_set(row) != builtin_set(keys):
+            raise error(f"{label} must contain exact keys: {builtin_sorted(keys)}")
         return row
 
     def validate_source(row: Any, label: str) -> dict[str, Any]:
@@ -346,12 +346,12 @@ def _build_engine(
         return row
 
     def freeze(roots, validator, label):
-        if not isinstance(roots, Mapping):
+        if not builtin_isinstance(roots, mapping_type):
             raise error(f"{label} roots must be mapping")
         frozen = {}
         for key, value in roots.items():
             key = text(key, f"{label}.id")
-            row = dict(validator(snapshot(dict(value)), f"{label}[{key}]"))
+            row = builtin_dict(validator(snapshot(builtin_dict(value)), f"{label}[{key}]"))
             if row["id"] != key:
                 raise error(f"{label} key/id mismatch")
             frozen[key] = row
