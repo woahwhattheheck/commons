@@ -29,6 +29,15 @@ Poly = Dict[Monomial, Q]
 Poly1 = Dict[int, Q]
 
 
+class CertificateError(RuntimeError):
+    """A claimed exact witness failed a theorem-critical runtime check."""
+
+
+def require_certificate(condition: bool, message: str) -> None:
+    if not condition:
+        raise CertificateError(message)
+
+
 def clean(p: Poly) -> Poly:
     return {m: Q(c) for m, c in p.items() if c}
 
@@ -133,6 +142,66 @@ X: Poly = {(1, 0): Q(1)}
 Y: Poly = {(0, 1): Q(1)}
 
 
+def _certify_local_p4_velocity(vx: Poly, vy: Poly) -> dict:
+    """Derive and enforce all machine-readable claims for the local witness."""
+    div_v = add(derivative(vx, "x"), derivative(vy, "y"))
+    x_trace_zero = (
+        not restrict_x(vx, 0)
+        and not restrict_x(vy, 0)
+    )
+    y_trace_zero = (
+        not restrict_y(vx, 0)
+        and not restrict_y(vy, 0)
+    )
+    trace_zero = x_trace_zero and y_trace_zero
+    velocity_degree = max(degree(vx), degree(vy))
+    contained_in_p4 = velocity_degree <= 4
+
+    forcing_pairing = integrate_reference_triangle(vx)
+    # On x+y=1, outward n=(1,1)/sqrt(2), ds=sqrt(2) dx, so
+    # p v.n ds = x * (vx+vy) dx for p=x.
+    pressure_flux_poly = restrict_y_one_minus_x(mul(X, add(vx, vy)))
+    pressure_boundary_flux = integrate_1d(pressure_flux_poly, 0, 1)
+    pressure_volume_pairing = integrate_reference_triangle(mul(X, div_v))
+
+    require_certificate(not div_v, "local P4 witness is not divergence-free")
+    require_certificate(
+        trace_zero,
+        "local P4 witness does not have zero vector trace on both extension edges",
+    )
+    require_certificate(
+        velocity_degree == 3 and contained_in_p4,
+        "local witness is not the claimed P3 subset of full P4",
+    )
+    require_certificate(
+        forcing_pairing == Q(1, 30),
+        "local witness forcing pairing changed",
+    )
+    require_certificate(
+        pressure_boundary_flux == forcing_pairing,
+        "local witness pressure boundary work no longer matches forcing",
+    )
+    require_certificate(
+        pressure_volume_pairing == 0,
+        "local witness volume pressure pairing is nonzero",
+    )
+
+    return {
+        "velocity_degree": velocity_degree,
+        "contained_in_full_P4_velocity_space": contained_in_p4,
+        "divergence_polynomial": {
+            f"{i},{j}": str(coefficient)
+            for (i, j), coefficient in sorted(div_v.items())
+        },
+        "zero_extension_trace_zero": trace_zero,
+        "forcing_pairing": str(forcing_pairing),
+        "pressure_volume_pairing": str(pressure_volume_pairing),
+        "pressure_boundary_flux": str(pressure_boundary_flux),
+        "pressure_free_kernel_lhs_at_u_zero": "0",
+        "consistency_defect_lhs_minus_rhs": str(-forcing_pairing),
+    }
+
+
 def local_p4_boundary_triangle_witness() -> dict:
     """A P3 velocity supported on one weak-boundary triangle.
 
@@ -146,18 +215,7 @@ def local_p4_boundary_triangle_witness() -> dict:
     psi = mul(X, X, Y, Y)
     vx = derivative(psi, "y")
     vy = scale(derivative(psi, "x"), -1)
-    div_v = add(derivative(vx, "x"), derivative(vy, "y"))
-    assert not div_v
-    assert not restrict_x(vx, 0) and not restrict_x(vy, 0)
-    assert not restrict_y(vx, 0) and not restrict_y(vy, 0)
-
-    forcing_pairing = integrate_reference_triangle(vx)
-    # On x+y=1, outward n=(1,1)/sqrt(2), ds=sqrt(2) dx, so
-    # p v.n ds = x * (vx+vy) dx for p=x.
-    pressure_flux_poly = restrict_y_one_minus_x(mul(X, add(vx, vy)))
-    pressure_boundary_flux = integrate_1d(pressure_flux_poly, 0, 1)
-    assert forcing_pairing == Q(1, 30)
-    assert pressure_boundary_flux == forcing_pairing
+    proof = _certify_local_p4_velocity(vx, vy)
 
     return {
         "domain": "reference triangle x>=0,y>=0,x+y<=1",
@@ -167,21 +225,12 @@ def local_p4_boundary_triangle_witness() -> dict:
         "forcing": "f=(1,0)",
         "stream_function": "psi=x^2 y^2",
         "velocity": "v=(2*x^2*y,-2*x*y^2)",
-        "velocity_degree": max(degree(vx), degree(vy)),
-        "contained_in_full_P4_velocity_space": True,
-        "divergence_polynomial": {},
-        "zero_extension_trace_zero": True,
-        "forcing_pairing": str(forcing_pairing),
-        "pressure_volume_pairing": "0",
-        "pressure_boundary_flux": str(pressure_boundary_flux),
-        "pressure_free_kernel_lhs_at_u_zero": "0",
-        "consistency_defect_lhs_minus_rhs": str(-forcing_pairing),
+        **proof,
         "scope": (
             "exact local P3/P4-compatible weak-boundary consistency witness; "
             "extendable by zero across the two non-weak edges"
         ),
     }
-
 
 def square_annulus_witness() -> dict:
     # Omega = [-2,2]^2 \ [-1,1]^2.
@@ -200,20 +249,24 @@ def square_annulus_witness() -> dict:
     vx = derivative(psi, "y")
     vy = scale(derivative(psi, "x"), -1)
     div_v = add(derivative(vx, "x"), derivative(vy, "y"))
-    assert not div_v
-
-    for x0 in (-2, 2):
-        assert not restrict_x(vx, x0)
-        assert not restrict_x(vy, x0)
-    for y0 in (-2, 2):
-        assert not restrict_y(vx, y0)
-        assert not restrict_y(vy, y0)
+    outer_trace_zero = all(
+        not trace
+        for trace in (
+            *(restrict_x(component, x0) for x0 in (-2, 2) for component in (vx, vy)),
+            *(restrict_y(component, y0) for y0 in (-2, 2) for component in (vx, vy)),
+        )
+    )
+    velocity_degree = max(degree(vx), degree(vy))
 
     forcing_pairing = (
         integrate_rect(vx, -2, 2, -2, 2)
         - integrate_rect(vx, -1, 1, -1, 1)
     )
-    pressure_volume_pairing = Q(0)
+    p_div_v = mul(X, div_v)
+    pressure_volume_pairing = (
+        integrate_rect(p_div_v, -2, 2, -2, 2)
+        - integrate_rect(p_div_v, -1, 1, -1, 1)
+    )
 
     p_vx = mul(X, vx)
     p_vy = mul(X, vy)
@@ -225,9 +278,18 @@ def square_annulus_witness() -> dict:
     }
     pressure_boundary_flux = sum(edge_flux.values(), Q(0))
 
-    assert forcing_pairing == Q(-2436, 5)
-    assert pressure_boundary_flux == forcing_pairing
-    assert pressure_volume_pairing == 0
+    require_certificate(not div_v, "annulus witness is not divergence-free")
+    require_certificate(outer_trace_zero, "annulus witness strong outer trace is nonzero")
+    require_certificate(velocity_degree == 8, "annulus witness degree changed")
+    require_certificate(forcing_pairing == Q(-2436, 5), "annulus forcing pairing changed")
+    require_certificate(
+        pressure_boundary_flux == forcing_pairing,
+        "annulus pressure boundary work no longer matches forcing",
+    )
+    require_certificate(
+        pressure_volume_pairing == 0,
+        "annulus volume pressure pairing is nonzero",
+    )
 
     return {
         "domain": "[-2,2]^2 minus [-1,1]^2",
@@ -237,9 +299,12 @@ def square_annulus_witness() -> dict:
         "forcing": "f=(1,0)",
         "stream_function": "(4-x^2)^2(4-y^2)^2(1+y)",
         "velocity": "v=(d_y psi,-d_x psi)",
-        "velocity_degree": max(degree(vx), degree(vy)),
-        "divergence_polynomial": {},
-        "strong_outer_trace_zero": True,
+        "velocity_degree": velocity_degree,
+        "divergence_polynomial": {
+            f"{i},{j}": str(coefficient)
+            for (i, j), coefficient in sorted(div_v.items())
+        },
+        "strong_outer_trace_zero": outer_trace_zero,
         "forcing_pairing": str(forcing_pairing),
         "pressure_volume_pairing": str(pressure_volume_pairing),
         "pressure_boundary_flux": str(pressure_boundary_flux),
