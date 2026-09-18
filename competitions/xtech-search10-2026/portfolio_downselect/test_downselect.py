@@ -335,10 +335,10 @@ class DownselectTests(unittest.TestCase):
             compile_portfolio(packet)
 
     def test_invalid_source_generation_fails_closed(self) -> None:
-        packet = ready_packet()
+        packet = bind_evidence(ready_packet())
         packet["candidates"][0]["source"]["commit"] = "main"
         with self.assertRaisesRegex(ContractError, "INVALID_SOURCE_COMMIT"):
-            self.compile(packet)
+            compile_portfolio(packet)
 
     def test_repo_evidence_generation_transplant_is_rejected(self) -> None:
         packet = bind_evidence(ready_packet())
