@@ -32,7 +32,7 @@ class MuhlnickelSpecGuardTests(unittest.TestCase):
         for name, body in (files or {"seed.txt": "seed\n"}).items():
             path = root / name
             path.parent.mkdir(parents=True, exist_ok=True)
-            path.write_text(body, encoding="utf-8")
+            path.write_text(body, encoding="utf-8", newline="")
         subprocess.run(["git", "add", "."], cwd=root, check=True)
         subprocess.run(["git", "commit", "-qm", "trusted base"], cwd=root, check=True)
         return td, root

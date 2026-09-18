@@ -20,13 +20,13 @@ PEER_TEST = ROOT / "test_grokbuild_muhlnickel_spec_guard_33699980193_billing_loc
 
 KEEP = {
     "p/grokbuild-muhlnickel-spec-guard-33717733967-billing-lock-20260903-01.md": "5b7f49cd",
-    "test_grokbuild_muhlnickel_spec_guard_33717733967_billing_lock.py": "7b43807a",
+    "test_grokbuild_muhlnickel_spec_guard_33717733967_billing_lock.py": "7242e3df",
     "muhlnickel_spec_guard.py": "8bd147aa",
-    "test_muhlnickel_spec_guard.py": "107fa191",
+    "test_muhlnickel_spec_guard.py": "58829073",
     ".github/workflows/muhlnickel-spec-guard.yml": "132dc670",
     "open_door_guard.py": "877e148d",
     "p/grokbuild-muhlnickel-spec-guard-33699980193-billing-lock-20260903-01.md": "79285c10",
-    "test_grokbuild_muhlnickel_spec_guard_33699980193_billing_lock.py": "c51e350c",
+    "test_grokbuild_muhlnickel_spec_guard_33699980193_billing_lock.py": "af9232a7",
 }
 
 BODY_SHA256 = "1dda787eec3da5e31d95ad35482ac74e9efe69b5212bb628efcb5295bc6d63f6"

@@ -20,15 +20,15 @@ WORKFLOW = ROOT / ".github/workflows/muhlnickel-spec-guard.yml"
 
 KEEP = {
     "muhlnickel_spec_guard.py": "8bd147aa",
-    "test_muhlnickel_spec_guard.py": "107fa191",
+    "test_muhlnickel_spec_guard.py": "58829073",
     ".github/workflows/muhlnickel-spec-guard.yml": "132dc670",
     "open_door_guard.py": "877e148d",
     "p/grokbuild-leftover-id-census-33723043828-billing-lock-20260903-01.md": "e135862e",
     "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "79066cb5",
     "p/grokbuild-muhlnickel-spec-guard-33718116252-billing-lock-20260903-01.md": "4f43a687",
-    "test_grokbuild_muhlnickel_spec_guard_33718116252_billing_lock.py": "4e394e7b",
+    "test_grokbuild_muhlnickel_spec_guard_33718116252_billing_lock.py": "3fa3a30b",
     "p/grokbuild-muhlnickel-spec-guard-33717733967-billing-lock-20260903-01.md": "5b7f49cd",
-    "test_grokbuild_muhlnickel_spec_guard_33717733967_billing_lock.py": "7b43807a",
+    "test_grokbuild_muhlnickel_spec_guard_33717733967_billing_lock.py": "7242e3df",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
     "leftover-census.md": "70fb3d87",
     "leftover-census.json": "32d3ee6b",

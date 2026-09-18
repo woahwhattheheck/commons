@@ -25,7 +25,7 @@ WORKFLOW = ROOT / ".github/workflows/muhlnickel-spec-guard.yml"
 KEEP = {
     ".github/workflows/muhlnickel-spec-guard.yml": "132dc670",
     "muhlnickel_spec_guard.py": "8bd147aa",
-    "test_muhlnickel_spec_guard.py": "107fa191",
+    "test_muhlnickel_spec_guard.py": "58829073",
     "p/grok-build-muhlnickel-spec-guard-33689243569-billing-lock-20260902-01.md": "7032fbcf",
     "test_grokbuild_muhlnickel_spec_guard_33689243569_billing_lock.py": "a2b9339f",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
