@@ -6,6 +6,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
+import coordination.revenue_lane_state.core as core_module
 from coordination.revenue_lane_state.core import (
     ContractError,
     canonical_bytes,
@@ -329,6 +330,102 @@ class RevenueLaneStateTest(unittest.TestCase):
             corrected["event_digest_sha256"],
             hold_only["event_digest_sha256"],
         )
+
+    def test_retained_send_dominates_later_unrelated_route_bounce(self):
+        result = self.compile([
+            ev(
+                "sent-route-a",
+                1,
+                "PROVIDER_SENT",
+                "provider",
+                "2026-09-17T18:00:00Z",
+                route_id="route-a",
+            ),
+            ev(
+                "bounce-route-b",
+                2,
+                "BOUNCED",
+                "provider",
+                "2026-09-17T19:00:00Z",
+                route_id="route-b",
+            ),
+        ])
+        self.assertEqual(result["state"], "SENT_DNR_PENDING_EVENT")
+
+    def test_post_import_policy_rebind_cannot_widen_or_self_ratify(self):
+        baseline = self.compile([
+            ev("researched-policy", 1, "RESEARCHED", "coordination", "2026-09-17T20:00:00Z")
+        ])
+        policy_generation = baseline["policy_generation_sha256"]
+        self.assertRegex(policy_generation, r"^[0-9a-f]{64}$")
+
+        originals = {
+            "SOURCE_REQUIREMENTS": core_module.SOURCE_REQUIREMENTS,
+            "CURRENTNESS_BASIS_KINDS": core_module.CURRENTNESS_BASIS_KINDS,
+            "MAX_CURRENTNESS_SECONDS": core_module.MAX_CURRENTNESS_SECONDS,
+            "validate_packet": core_module.validate_packet,
+            "reduce_state": core_module.reduce_state,
+        }
+        try:
+            widened_sources = {
+                kind: set(classes)
+                for kind, classes in originals["SOURCE_REQUIREMENTS"].items()
+            }
+            widened_sources["PROVIDER_SENT"].add("coordination")
+            core_module.SOURCE_REQUIREMENTS = widened_sources
+
+            widened_basis = {
+                state: set(kinds)
+                for state, kinds in originals["CURRENTNESS_BASIS_KINDS"].items()
+            }
+            widened_basis["HUMAN_REPLY_ACTIONABLE"] = {"TAKE"}
+            core_module.CURRENTNESS_BASIS_KINDS = widened_basis
+            core_module.MAX_CURRENTNESS_SECONDS = 9007199254740991
+
+            # Rebinding the public helper names must not change the already
+            # captured compile graph either.
+            core_module.validate_packet = lambda *_args, **_kwargs: (_ for _ in ()).throw(
+                AssertionError("rebound validate_packet must not be used")
+            )
+            core_module.reduce_state = lambda *_args, **_kwargs: "AWARDED_PENDING_CONTRACT"
+
+            with self.assertRaisesRegex(
+                ContractError,
+                "PROVIDER_SENT cannot be proven by source_class=coordination",
+            ):
+                self.compile([
+                    ev(
+                        "fake-sent",
+                        1,
+                        "PROVIDER_SENT",
+                        "coordination",
+                        "2026-09-17T20:00:00Z",
+                    )
+                ])
+
+            stale_reply = self.compile(
+                [
+                    ev("reply-policy", 1, "HUMAN_REPLY", "human", "2026-09-17T18:00:00Z"),
+                    ev("take-policy", 2, "TAKE", "coordination", "2026-09-17T20:30:00Z"),
+                ],
+                currentness_seconds=3600,
+            )
+            self.assertEqual(stale_reply["state"], "HOLD_EVIDENCE")
+
+            with self.assertRaisesRegex(ContractError, "compiler maximum"):
+                self.compile(
+                    [ev("reply-old-policy", 1, "HUMAN_REPLY", "human", "2026-01-01T00:00:00Z")],
+                    currentness_seconds=9007199254740991,
+                )
+
+            after = self.compile([
+                ev("researched-policy", 1, "RESEARCHED", "coordination", "2026-09-17T20:00:00Z")
+            ])
+            self.assertEqual(after["policy_generation_sha256"], policy_generation)
+            self.assertEqual(after["state"], baseline["state"])
+        finally:
+            for name, value in originals.items():
+                setattr(core_module, name, value)
 
     def test_patch_plan_refuses_malformed_existing_block(self):
         body = "<!-- REVENUE_LANE_CURRENT_STATE:BEGIN -->\nmissing end"
