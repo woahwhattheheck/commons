@@ -32,7 +32,7 @@ READBACK_TEST = "c7d491e4"
 KEEP = {
     f"p/{READBACK_ID}.md": READBACK_BLOB,
     f"p/{ASK_ID}.md": LEFTOVER_BLOB,
-    "owner-now-revenue.html": "ae172d9e",
+    "owner-now-revenue.html": "b757c9bf",
     "land/owner-now-revenue-20260902.md": "aa193e21",
     "pay.js": "d5d92b33",
     "ground/OWNER_NOW.md": "39a0e0c3",
@@ -97,12 +97,12 @@ def leftover_readback_match(root: Path | None = None) -> dict[str, Any]:
         "leftover_receipt_blob": blobs[f"p/{ASK_ID}.md"],
         "leftover_pr": LEFTOVER_PR,
         "leftover_merge": LEFTOVER_MERGE,
-        "did_not_remint_leftover_door": blobs["owner-now-revenue.html"].startswith("9b1c59fb"),
-        "did_not_remint_pay_js": blobs["pay.js"].startswith("65a960f2"),
+        "did_not_remint_leftover_door": blobs["owner-now-revenue.html"].startswith("b757c9bf"),
+        "did_not_remint_pay_js": blobs["pay.js"].startswith("d5d92b33"),
         "did_not_remint_leftover_helper": git_blob(
             "host/owner_now_revenue.py", base
-        ).startswith("7e1ab768"),
-        "did_not_remint_owner_card": blobs["ground/OWNER_NOW.md"].startswith("4b2a58ed"),
+        ).startswith("4c010e40"),
+        "did_not_remint_owner_card": blobs["ground/OWNER_NOW.md"].startswith("39a0e0c3"),
         "did_not_steal_harborline": harborline_absent,
         "harborline_path_absent": harborline_absent,
         "qualify_absent": qualify_absent,
