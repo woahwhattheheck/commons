@@ -6,9 +6,8 @@ import unittest
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 PAGE = ROOT / "webmcp.html"
-REQUIRED = ['id="live-cash"', "./agent-rescue.html", "./dealer-service-lead-rescue.html", "./referral-intake-completeness.html", "./repair-booking-preflight.html", "./plant-downtime-handoff.html", "$29 Autopsy", "$199 dealer diagnostic"]
+REQUIRED = ['id="live-cash"', "./dealer-service-lead-rescue.html", "./referral-intake-completeness.html", "./repair-booking-preflight.html", "./plant-downtime-handoff.html", "$199 dealer diagnostic"]
 ALLOWED_LIVE_BUY_URLS = {
-    "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
     "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
 }
 BUY_HOST_PATH = re.compile(r"https?://buy\.stripe\.com/([A-Za-z0-9_-]+)", re.I)

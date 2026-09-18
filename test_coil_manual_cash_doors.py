@@ -12,12 +12,10 @@ CASH = ROOT / "tools-cash.html"
 
 REQUIRED_CASH = [
     'id="cash-doors"',
-    "./agent-rescue.html",
     "./dealer-service-lead-rescue.html",
     "./referral-intake-completeness.html",
     "./repair-booking-preflight.html",
     "./plant-downtime-handoff.html",
-    "$29 Autopsy checkout",
     "$199 dealer diagnostic",
 ]
 

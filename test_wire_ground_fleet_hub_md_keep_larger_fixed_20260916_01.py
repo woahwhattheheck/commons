@@ -26,7 +26,7 @@ class T(unittest.TestCase):
             self.assertIn("$12,000", text, rel)
             self.assertIn("$30,000", text, rel)
     def test_products(self):
-        for n in ("diagnostic.html","commercial.html","agent-rescue.html"):
+        for n in ("diagnostic.html","commercial.html"):
             self.assertTrue((ROOT/n).is_file(), n)
 if __name__ == "__main__":
     unittest.main()

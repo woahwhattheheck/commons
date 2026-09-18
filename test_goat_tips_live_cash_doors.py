@@ -9,7 +9,6 @@ ROOT = Path(__file__).resolve().parent
 PAGE = ROOT / "tips.html"
 
 DOORS = (
-    ("sku-agent-failure-autopsy", "Agent Failure Autopsy", "./agent-rescue.html", "Open $29 Autopsy checkout"),
     ("sku-dealer-service-lead-rescue", "Dealer Service Lead Rescue", "./dealer-service-lead-rescue.html", "Open $199 dealer diagnostic"),
     ("sku-referral-intake-completeness", "Referral Intake Completeness", "./referral-intake-completeness.html", "Open $199 referral diagnostic"),
     ("sku-repair-booking-preflight", "Repair Booking Preflight", "./repair-booking-preflight.html", "Open $199 repair diagnostic"),
@@ -17,7 +16,6 @@ DOORS = (
 )
 
 FORBIDDEN_PLINKS = (
-    "buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
     "buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b",
     "buy.stripe.com/9B600i98N77b9uFeBk43S0c",
     "buy.stripe.com/9B66oGacR2QVdKVeBk43S0d",

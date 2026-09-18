@@ -26,7 +26,6 @@ class T(unittest.TestCase):
                 self.assertEqual(text.count("## Live cash"), 1)
                 self.assertIn("Verified product pages only — no invented Stripe links.", text)
                 for page in (
-                    "agent-rescue.html",
                     "dealer-service-lead-rescue.html",
                     "referral-intake-completeness.html",
                     "repair-booking-preflight.html",

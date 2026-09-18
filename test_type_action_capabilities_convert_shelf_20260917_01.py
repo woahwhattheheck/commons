@@ -2,8 +2,7 @@
 """type-action-capabilities-convert-shelf-20260917-01 — convert shelves.
 
 Wire EXISTING live Stripe Payment Links as first-screen Buy CTAs on
-action.html and capabilities.html. Thin shelf only: Autopsy $29 and
-White Box hour $250. Do not invent new buy.stripe.com host paths.
+action.html and capabilities.html. Thin shelf only: White Box hour $250. Do not invent new buy.stripe.com host paths.
 Keep Live cash product-page links. Match Wire/Latch/Goat first-screen
 CTA style. Tip KEEP. Hands off Wire live/delta/boards/builds, Latch
 annex/archive, Goat free-sample/humans/commerce tip, Quill
@@ -23,7 +22,6 @@ RECEIPT = ROOT / "p" / "type-action-capabilities-convert-shelf-20260917-01.md"
 
 ALLOWED_LIVE_BUY_URLS = frozenset(
     {
-        "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
         "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
     }
 )
@@ -32,11 +30,9 @@ BUY_HOST_PATH = re.compile(
     re.IGNORECASE,
 )
 BUY_LABELS = (
-    "Buy Autopsy $29",
     "Buy one White Box hour $250",
 )
 LIVE_CASH_DOORS = (
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -107,7 +103,6 @@ class TestTypeActionCapabilitiesConvertShelf2026091701(unittest.TestCase):
         for name in (
             "action.html",
             "capabilities.html",
-            "agent-rescue.html",
             "commercial.html",
             "diagnostic.html",
         ):

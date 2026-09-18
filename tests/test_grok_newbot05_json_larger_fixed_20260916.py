@@ -16,7 +16,6 @@ DOORS = [
     "ringdelta",
 ]
 PRODUCT_PATHS = [
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -32,7 +31,7 @@ class T(unittest.TestCase):
                 cash = data["live_cash"]
                 products = cash["products"]
                 self.assertEqual([p["path"] for p in products], PRODUCT_PATHS)
-                self.assertEqual([p["price_usd"] for p in products], [29, 199, 199, 199, 199])
+                self.assertEqual([p["price_usd"] for p in products], [199, 199, 199, 199])
                 larger = cash["larger_fixed"]
                 self.assertEqual([x["path"] for x in larger], ["diagnostic.html", "commercial.html"])
                 self.assertEqual(larger[0]["price_usd"], 12000)

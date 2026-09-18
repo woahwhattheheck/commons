@@ -7,11 +7,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 
 PATHS = (
-    ("START.md", "./diagnostic.html", "./commercial.html", "./agent-rescue.html"),
-    ("ground/CASH_NOW.md", "../diagnostic.html", "../commercial.html", "../agent-rescue.html"),
-    ("ground/CHECKOUT_CAPABILITY.md", "../diagnostic.html", "../commercial.html", "../agent-rescue.html"),
-    ("ground/BAZAAR.md", "../diagnostic.html", "../commercial.html", "../agent-rescue.html"),
-    ("ground/BUSINESS_PACKS.md", "../diagnostic.html", "../commercial.html", "../agent-rescue.html"),
+    ("START.md", "./diagnostic.html", "./commercial.html"),
+    ("ground/CASH_NOW.md", "../diagnostic.html", "../commercial.html"),
+    ("ground/CHECKOUT_CAPABILITY.md", "../diagnostic.html", "../commercial.html"),
+    ("ground/BAZAAR.md", "../diagnostic.html", "../commercial.html"),
+    ("ground/BUSINESS_PACKS.md", "../diagnostic.html", "../commercial.html"),
 )
 
 
@@ -27,7 +27,7 @@ class TestTypeStartCashGroundMdKeepLargerFixed2026091601(unittest.TestCase):
             self.assertNotIn("buy.stripe.com", text, rel)
 
     def test_product_pages_exist(self):
-        for name in ("agent-rescue.html", "diagnostic.html", "commercial.html"):
+        for name in ("diagnostic.html", "commercial.html"):
             self.assertTrue((ROOT / name).is_file(), name)
 
 

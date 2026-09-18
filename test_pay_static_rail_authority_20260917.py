@@ -19,7 +19,6 @@ PAY_JS = ROOT / "pay.js"
 
 TYPE_PRODUCT_BUYS = frozenset(
     {
-        "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
         "https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e",
         "https://buy.stripe.com/28E9AS70F6378qB2SC43S0w",
         "https://buy.stripe.com/14AfZg1Gl3UZ7mxfFo43S0x",
