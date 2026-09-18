@@ -633,4 +633,17 @@ def _build_api():
             "valid": current_match,
             "reason": "CURRENT_STATUS_MATCH" if current_match else reason if not valid else "CURRENT_STATUS_CHANGED",
             "artifact_status": artifact_status,
-      
+            "current_status": current_status,
+            "checked_at": utc_from_epoch(now_s),
+            "send_authorized": False,
+            "provider_action_authorized": False,
+            "provider_send_proven": False,
+            "payment_authorized": False,
+            "cash_proven": False,
+            "revenue_recognized": False,
+        }
+        result["receipt_sha256"] = digest(result)
+        return result
+
+    def read_file(path_value: str | _os.PathLike[str]) -> bytes:
+        path = pa
