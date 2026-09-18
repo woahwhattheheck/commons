@@ -119,6 +119,15 @@ class ManifestTests(unittest.TestCase):
         with self.assertRaises(ContractError):
             validate_manifest(doc, AS_OF)
 
+    def test_packet_cannot_self_attest_with_arbitrary_digest(self):
+        doc = manifest()
+        doc["buyer_packet"]["retained"] = True
+        doc["buyer_packet"]["sha256"] = "a" * 64
+        doc["buyer_packet"]["source_generation"] = "version-2"
+        doc["buyer_packet"]["authority"] = "BUYER_PACKET"
+        with self.assertRaises(ContractError):
+            validate_manifest(doc, AS_OF)
+
     def test_absent_packet_cannot_carry_fake_digest(self):
         doc = manifest()
         doc["buyer_packet"]["sha256"] = "0" * 64
@@ -138,6 +147,17 @@ class ManifestTests(unittest.TestCase):
         )
         with self.assertRaises(ContractError):
             validate_manifest(doc, AS_OF)
+
+    def test_stale_secondary_source_holds_internal_readiness(self):
+        doc = manifest()
+        doc["source_evidence"][0]["captured_at_utc"] = (
+            "2026-09-15T02:10:00Z"
+        )
+        state = validate_manifest(doc, AS_OF)
+        self.assertEqual(
+            state["response_window_state"],
+            "HOLD_SOURCE_REFRESH_REQUIRED",
+        )
 
     def test_response_cannot_authorize_send(self):
         doc = manifest()
