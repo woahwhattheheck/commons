@@ -86,7 +86,9 @@ def _kernels(memory_size, initial_radius, max_radius, armijo, shrink,
         raw = -jax.lax.fori_loop(0, memory_size, forward, gamma[:, None] * q)
         finite = jnp.all(jnp.isfinite(raw), axis=1)
         bounded = _cap(jnp.where(finite[:, None], raw, -g), radius)
-        slope = jnp.sum(g * bounded, axis=1)
+        # Only the sign is needed; normalize before reducing large gradients.
+        g_scale = jnp.maximum(jnp.max(jnp.abs(g), axis=1), jnp.finfo(g.dtype).tiny)
+        slope = jnp.sum((g / g_scale[:, None]) * bounded, axis=1)
         descent = jnp.isfinite(slope) & (slope < 0)
         return jnp.where(descent[:, None], bounded, _cap(-g, radius))
 
@@ -96,8 +98,11 @@ def _kernels(memory_size, initial_radius, max_radius, armijo, shrink,
         valid = (jnp.isfinite(losses) & jnp.all(jnp.isfinite(grads), axis=1)
                  & jnp.all(jnp.isfinite(st.trial), axis=1))
         no_base = ~jnp.isfinite(st.f)
-        slope = jnp.sum(st.g * st.direction, axis=1)
-        accepted = valid & (no_base | (losses <= st.f + armijo * st.step * slope))
+        # Apply the small factors before reduction: g.dot(d) can overflow even
+        # when the actual Armijo decrement is finite. Rejected trials retain g.
+        scaled_g = (armijo * st.g) * st.step[:, None]
+        decrease = jnp.sum(scaled_g * st.direction, axis=1)
+        accepted = valid & (no_base | (losses <= st.f + decrease))
         safe_g = jnp.where(valid[:, None], grads, 0.0)
         ds = st.trial - st.x
         dy = safe_g - st.g
