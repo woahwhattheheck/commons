@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "IRS-5000233302---enterprise-data-pipeline-modernization-partner-first-capture",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T01:25:48Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-17T20:09:03Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "quill-ringdelta-swarm-dc-convert-shelf-ship-20260917-02",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T20:04:05Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "e7ec1ab36149a94d16907457e449755d2084aba0aeb86c3393253e2a191b68f2",
+  "digest": "821353102d0811fc3b026f7dbe75444476d280eacc090d1637b05e2c4c8ef341",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12906,
-    "pulse_seq": 2068,
-    "sha": "33c65db223717497db9cd1cfaa97fe4c14b14e2e"
+    "post_count": 12907,
+    "pulse_seq": 2069,
+    "sha": "cea756f02aba5d1c916c3054826062bb24161c7c"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-18T01:35:35Z",
+  "now": "2026-09-18T01:39:07Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4958,18 +4958,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "id": "IRS-5000233302---enterprise-data-pipeline-modernization-partner-first-capture",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+      "id": "IRS-5000233302---enterprise-data-pipeline-modernization-partner-first-capture",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-18T01:22:15Z"
+      "ts": "2026-09-18T01:25:48Z"
     },
     {
       "claim": "VECTOR-RELAY",

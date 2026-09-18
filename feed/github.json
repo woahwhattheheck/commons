@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 98,
-    "open_pull_requests": 52,
-    "runs_in_progress": 13,
-    "runs_queued": 304
+    "open_issues": 106,
+    "open_pull_requests": 54,
+    "runs_in_progress": 10,
+    "runs_queued": 346
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,46 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zferro/partner-qualification-current-main-20260917",
+      "created_at": "2026-09-18T01:45:20Z",
+      "draft": false,
+      "head_sha": "cd27c67f6a43e0ef010f73918bffdd500d867c8a",
+      "number": 15861,
+      "title": "Revenue: current-main partner qualification gate with sealed runway trust roots",
+      "updated_at": "2026-09-18T01:45:20Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zq2132/umissouri-27-0012-finance-pursuit-20260917",
+      "created_at": "2026-09-18T01:43:10Z",
+      "draft": false,
+      "head_sha": "1bc841e9815298565cef6cc80773a0ebab9d04bf",
+      "number": 15857,
+      "title": "Finance: UM 27-0012 payables and merchant reconciliation workshare",
+      "updated_at": "2026-09-18T01:45:48Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/mcc-1017-27-deadline-authority-20260917",
+      "created_at": "2026-09-18T01:42:52Z",
+      "draft": false,
+      "head_sha": "87cf7cb787a1c4572c2bc57e1f061c0583515018",
+      "number": 15855,
+      "title": "MCC 1017-27: bind deadline windows to source authority",
+      "updated_at": "2026-09-18T01:42:52Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zsol17/irs-5000233302-partner-capture-20260917",
       "created_at": "2026-09-18T01:34:40Z",
       "draft": false,
-      "head_sha": "96524e04f7732351602d6e23d9a0e5bda4b3fb98",
+      "head_sha": "6fa5893a8358c2e670b7979a197b84730fed7194",
       "number": 15846,
       "title": "Revenue: add IRS 5000233302 partner-first capture packet",
-      "updated_at": "2026-09-18T01:35:08Z"
+      "updated_at": "2026-09-18T01:41:07Z"
     },
     {
       "author": "woahwhattheheck",
@@ -119,7 +152,7 @@
       "head_sha": "b49ec6eeb333403b8bdb679b546c572bf646b00a",
       "number": 15838,
       "title": "Alameda 902737 qualification carrier",
-      "updated_at": "2026-09-18T01:35:07Z"
+      "updated_at": "2026-09-18T01:39:01Z"
     },
     {
       "author": "woahwhattheheck",
@@ -142,39 +175,6 @@
       "number": 15834,
       "title": "RWD #3 retainage packet: proof-surface fix-forward",
       "updated_at": "2026-09-18T01:23:31Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-argent/ky-ai-workforce-response-kit-recovery-20260917",
-      "created_at": "2026-09-18T01:21:13Z",
-      "draft": false,
-      "head_sha": "2bb76c998d58b02141f2f01e05c48f20829178b8",
-      "number": 15832,
-      "title": "Revenue: recover Kentucky AI workforce response assembly kit",
-      "updated_at": "2026-09-18T01:34:44Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol17/cron-floor-rejoin-20260917-2111",
-      "created_at": "2026-09-18T01:14:02Z",
-      "draft": false,
-      "head_sha": "783792d04073809967c44caaa80d754bd79f5466",
-      "number": 15823,
-      "title": "CI: rejoin 264/day cron-floor recovery onto current main",
-      "updated_at": "2026-09-18T01:14:17Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/hcpf-hcbs-258-partner-first-20260917",
-      "created_at": "2026-09-18T00:54:58Z",
-      "draft": false,
-      "head_sha": "d16105e6759e92870b31f2d795b86383333f898d",
-      "number": 15822,
-      "title": "Revenue: qualify HCPF HCBS monitoring for paid partner workshare",
-      "updated_at": "2026-09-18T01:20:05Z"
     }
   ],
   "open_heads": {
@@ -198,13 +198,12 @@
     "15717": "867cddeeb96b2d0cb6c4e8099e2602256d4ed9e4",
     "15721": "f691d4d452180f1df152a4b504b730fa4854f000",
     "15724": "0bc0e6b19aed5ea71598c6ab6b914a828bc8a6f4",
-    "15728": "cb58a8a194a40c354da2e68cb266c733fb6b77c5",
     "15730": "ed09e795c50666ad4158da3fa3a991d6017332d8",
     "15731": "0900f7c40284d7576b016cbafb541d5ec06edb0d",
     "15732": "8cd5546c7fef5d2d2b48101e7a40d134ddaed2b0",
     "15733": "2b7131508bb5a57c1c41b5befc05a979673afbb1",
     "15734": "2a8d940c5207c273f797e73a9a5004b305b186a8",
-    "15751": "bdc19074f0aa0d97a3845340301914e8bc2ef3dc",
+    "15751": "b87f58434b653ee8bed28b8c85bbe3eb49d95905",
     "15756": "0b3c329d99a1c4d912942f3eaa5e3e5ce3e1842a",
     "15758": "3f6c365bc02476ed9ecaab888d4faf07b0a8b6fc",
     "15761": "0268984b5ed72aa4c8e20031e98ee0c204ca584c",
@@ -218,23 +217,59 @@
     "15811": "c4bd51dbf9e71bd53fa8d85685edb71af4dc5a06",
     "15812": "46a5911866f1ddf1b634f662ff138ee815bdeaba",
     "15815": "9774850de83d1c467264f5e88082b68e72301b6d",
-    "15817": "ee123d32349afef40d145cc9a135d331ad9fa7a0",
+    "15817": "dd4c908a228ac07cabcadcde9eae3d2b16a32f0d",
     "15818": "bfaf415a8f0ba3b9f2cae990b5bbddb4063854e0",
-    "15822": "d16105e6759e92870b31f2d795b86383333f898d",
+    "15822": "c0cb21e34f8de59f64cb023c721ce96c05e2b16b",
     "15823": "783792d04073809967c44caaa80d754bd79f5466",
-    "15832": "2bb76c998d58b02141f2f01e05c48f20829178b8",
+    "15832": "ce2798006cd356f898fe27078dda08dba2f31496",
     "15834": "c3464df897f45c235b3ec385d6cd1bf83dc1f9f9",
     "15836": "b053ab20ae622e273b8a776d326d5a4323c7835e",
     "15838": "b49ec6eeb333403b8bdb679b546c572bf646b00a",
     "15840": "1dd7127ba8b46b36e0020a347946d334bddab2b3",
     "15841": "568a80567ae0d16bd343299b681aac683fc98f5e",
     "15843": "2fa099d3627947bcd343bc62119c0b952a760a46",
-    "15846": "96524e04f7732351602d6e23d9a0e5bda4b3fb98"
+    "15846": "6fa5893a8358c2e670b7979a197b84730fed7194",
+    "15855": "87cf7cb787a1c4572c2bc57e1f061c0583515018",
+    "15857": "1bc841e9815298565cef6cc80773a0ebab9d04bf",
+    "15861": "cd27c67f6a43e0ef010f73918bffdd500d867c8a"
   },
-  "pulls_listed": 52,
+  "pulls_listed": 54,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 23.4,
+  "queue_depth_per_runner": 34.6,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-rook/mapping-equity-nca-real-run-20260917",
+      "closed_at": "2026-09-18T01:44:08Z",
+      "head_sha": "f57c67616bf762ad02ca1cbaf741c41457ff2cd0",
+      "merged_at": null,
+      "number": 15858,
+      "state": "CLOSED",
+      "title": "ci(one-shot): execute Mapping Equity Northern-CA public-data receipt"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "sol-z/douglas-ks-erp-acceptance-20260917",
+      "closed_at": "2026-09-18T01:43:38Z",
+      "head_sha": "85e50c709dd98c962c0600813a3cfbdeabc8ae73",
+      "merged_at": "2026-09-18T01:43:38Z",
+      "number": 15853,
+      "state": "MERGED",
+      "title": "Revenue: screen Douglas County KS ERP acceptance workshare"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "solz/payoff-path-ledger-15712-20260917",
+      "closed_at": "2026-09-18T01:42:08Z",
+      "head_sha": "cb58a8a194a40c354da2e68cb266c733fb6b77c5",
+      "merged_at": null,
+      "number": 15728,
+      "state": "CLOSED",
+      "title": "Revenue: compile explicit payoff paths for uncompensated work"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -366,43 +401,10 @@
       "number": 15821,
       "state": "MERGED",
       "title": "fix(live-cash): stop resurrecting retired product doors in remints"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cairnz/rcap-submission-packet-ready-20260917",
-      "closed_at": "2026-09-18T00:39:22Z",
-      "head_sha": "b5a995cde0dbd091e3d99c227f0ba1841c32c073",
-      "merged_at": "2026-09-18T00:39:22Z",
-      "number": 15813,
-      "state": "MERGED",
-      "title": "Revenue: bind RCAP sanitized submission packet"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/workflow-autopsy-archive-recovery-20260917",
-      "closed_at": "2026-09-18T00:36:26Z",
-      "head_sha": "47098d3d560c95a95f219888c66434d0a09078aa",
-      "merged_at": "2026-09-18T00:36:26Z",
-      "number": 15814,
-      "state": "MERGED",
-      "title": "CI: restore retired Autopsy workflow archive invariant"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "anvil/outcome-commerce-reconcile-20260918",
-      "closed_at": "2026-09-18T00:33:44Z",
-      "head_sha": "298a58658e86e7bef620e4af534c3316d77f9f6f",
-      "merged_at": "2026-09-18T00:33:44Z",
-      "number": 15816,
-      "state": "MERGED",
-      "title": "fix(commerce): reconcile outcome_commerce catalog+test with landed main"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T01:36:01Z",
+  "unchanged_since": "2026-09-18T01:46:01Z",
   "undatable_pulls": []
 }
