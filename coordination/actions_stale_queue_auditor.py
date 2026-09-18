@@ -501,11 +501,21 @@ def _classify(
     return "SAFE_TO_CANCEL", ["ALL_ASSOCIATED_PRS_CLOSED_OR_STALE"]
 
 
-def build_report(packet: Any) -> dict[str, Any]:
-    retained = normalize_packet(packet)
+def build_report(
+    packet: Any,
+    *,
+    _normalize_packet_fn: Any = normalize_packet,
+    _classify_fn: Any = _classify,
+    _canonical_json_fn: Any = canonical_json,
+    _sha256_hex_fn: Any = sha256_hex,
+    _report_schema: str = REPORT_SCHEMA,
+    _product: str = PRODUCT,
+    _version: str = VERSION,
+) -> dict[str, Any]:
+    retained = _normalize_packet_fn(packet)
     rows: list[dict[str, Any]] = []
     for run in retained["runs"]:
-        decision, reasons = _classify(run, retained["default_branch"])
+        decision, reasons = _classify_fn(run, retained["default_branch"])
         rows.append(
             {
                 "run_id": run["run_id"],
@@ -526,13 +536,13 @@ def build_report(packet: Any) -> dict[str, Any]:
         "SAFE_TO_CANCEL": sum(row["decision"] == "SAFE_TO_CANCEL" for row in rows),
     }
     report: dict[str, Any] = {
-        "schema": REPORT_SCHEMA,
-        "product": PRODUCT,
-        "version": VERSION,
+        "schema": _report_schema,
+        "product": _product,
+        "version": _version,
         "repository": retained["repository"],
         "default_branch": retained["default_branch"],
         "observed_at": retained["observed_at"],
-        "input_digest": sha256_hex(canonical_json(retained)),
+        "input_digest": _sha256_hex_fn(_canonical_json_fn(retained)),
         "authority": {
             "cancel_run_authorized": False,
             "rerun_authorized": False,
@@ -547,35 +557,54 @@ def build_report(packet: Any) -> dict[str, Any]:
         "rows": rows,
         "counts": counts,
     }
-    report["report_receipt"] = sha256_hex(canonical_json(report))
+    report["report_receipt"] = _sha256_hex_fn(_canonical_json_fn(report))
     return report
 
 
-def verify_report(report: Any) -> bool:
-    frozen = _freeze_plain_json(report)
-    row = _exact_keys(frozen, REPORT_KEYS, "audit report")
+def verify_report(
+    report: Any,
+    *,
+    _freeze_fn: Any = _freeze_plain_json,
+    _exact_keys_fn: Any = _exact_keys,
+    _normalize_packet_fn: Any = normalize_packet,
+    _canonical_json_fn: Any = canonical_json,
+    _sha256_hex_fn: Any = sha256_hex,
+    _exact_int_fn: Any = _exact_int,
+    _bounded_string_fn: Any = _bounded_string,
+    _sha_fn: Any = _sha,
+    _exact_bool_fn: Any = _exact_bool,
+    _build_report_fn: Any = build_report,
+    _report_keys: frozenset[str] = frozenset(REPORT_KEYS),
+    _row_keys: frozenset[str] = frozenset(ROW_KEYS),
+    _authority_keys: frozenset[str] = frozenset(AUTHORITY_KEYS),
+    _report_schema: str = REPORT_SCHEMA,
+    _product: str = PRODUCT,
+    _version: str = VERSION,
+) -> bool:
+    frozen = _freeze_fn(report)
+    row = _exact_keys_fn(frozen, _report_keys, "audit report")
     if (
-        row["schema"] != REPORT_SCHEMA
-        or row["product"] != PRODUCT
-        or row["version"] != VERSION
+        row["schema"] != _report_schema
+        or row["product"] != _product
+        or row["version"] != _version
     ):
         raise AuditError("wrong report schema/product/version")
 
-    if type(row["authority"]) is not dict or set(row["authority"]) != AUTHORITY_KEYS:
+    if type(row["authority"]) is not dict or set(row["authority"]) != _authority_keys:
         raise AuditError("authority schema mismatch")
-    for name in sorted(AUTHORITY_KEYS):
+    for name in sorted(_authority_keys):
         value = row["authority"][name]
         if type(value) is not bool or value is not False:
             raise AuditError(f"authority {name} must be literal false")
 
-    retained = normalize_packet(row["retained_input"])
+    retained = _normalize_packet_fn(row["retained_input"])
     if row["repository"] != retained["repository"]:
         raise AuditError("repository binding mismatch")
     if row["default_branch"] != retained["default_branch"]:
         raise AuditError("default branch binding mismatch")
     if row["observed_at"] != retained["observed_at"]:
         raise AuditError("observation binding mismatch")
-    if row["input_digest"] != sha256_hex(canonical_json(retained)):
+    if row["input_digest"] != _sha256_hex_fn(_canonical_json_fn(retained)):
         raise AuditError("input digest mismatch")
 
     supplied = row["report_receipt"]
@@ -585,36 +614,36 @@ def verify_report(report: Any) -> bool:
         raise AuditError("report_receipt must be lowercase SHA-256 hex")
     unsigned = dict(row)
     unsigned.pop("report_receipt")
-    if sha256_hex(canonical_json(unsigned)) != supplied:
+    if _sha256_hex_fn(_canonical_json_fn(unsigned)) != supplied:
         raise AuditError("report receipt mismatch")
 
     if type(row["rows"]) is not list:
         raise AuditError("rows must be a list")
     for item in row["rows"]:
-        checked = _exact_keys(item, ROW_KEYS, "audit row")
-        _exact_int(checked["run_id"], "audit row run_id", minimum=1)
-        _bounded_string(checked["workflow"], "audit row workflow", maximum=256)
-        _bounded_string(checked["head_branch"], "audit row head_branch", maximum=256)
-        _sha(checked["head_sha"], "audit row head_sha")
+        checked = _exact_keys_fn(item, _row_keys, "audit row")
+        _exact_int_fn(checked["run_id"], "audit row run_id", minimum=1)
+        _bounded_string_fn(checked["workflow"], "audit row workflow", maximum=256)
+        _bounded_string_fn(checked["head_branch"], "audit row head_branch", maximum=256)
+        _sha_fn(checked["head_sha"], "audit row head_sha")
         if checked["decision"] not in {"SAFE_TO_CANCEL", "HOLD"}:
             raise AuditError("unknown audit decision")
         if type(checked["reasons"]) is not list or not checked["reasons"]:
             raise AuditError("audit reasons must be a nonempty list")
         for reason in checked["reasons"]:
-            _bounded_string(reason, "audit reason", maximum=64)
+            _bounded_string_fn(reason, "audit reason", maximum=64)
         if type(checked["associated_pr_numbers"]) is not list:
             raise AuditError("associated_pr_numbers must be a list")
         for number in checked["associated_pr_numbers"]:
-            _exact_int(number, "associated PR number", minimum=1)
-        if _exact_bool(checked["requires_live_reread"], "requires_live_reread") is not True:
+            _exact_int_fn(number, "associated PR number", minimum=1)
+        if _exact_bool_fn(checked["requires_live_reread"], "requires_live_reread") is not True:
             raise AuditError("requires_live_reread must be literal true")
 
-    counts = _exact_keys(row["counts"], {"HOLD", "SAFE_TO_CANCEL"}, "counts")
-    _exact_int(counts["HOLD"], "counts.HOLD")
-    _exact_int(counts["SAFE_TO_CANCEL"], "counts.SAFE_TO_CANCEL")
+    counts = _exact_keys_fn(row["counts"], {"HOLD", "SAFE_TO_CANCEL"}, "counts")
+    _exact_int_fn(counts["HOLD"], "counts.HOLD")
+    _exact_int_fn(counts["SAFE_TO_CANCEL"], "counts.SAFE_TO_CANCEL")
 
-    rebuilt = build_report(retained)
-    if canonical_json(rebuilt) != canonical_json(row):
+    rebuilt = _build_report_fn(retained)
+    if _canonical_json_fn(rebuilt) != _canonical_json_fn(row):
         raise AuditError("semantic recompile mismatch")
     return True
 
