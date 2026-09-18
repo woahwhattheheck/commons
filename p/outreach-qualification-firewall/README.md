@@ -47,6 +47,24 @@ For a **current** send authorization, the authenticated relationship snapshot mu
 
 The current maximum relationship age is 60 seconds; a signed snapshot may additionally carry a shorter validity window.
 
+## Host-interpreter trust boundary
+
+This package is a **data/evidence firewall inside a trusted Python interpreter**. It is not a sandbox for malicious Python code already executing in that same interpreter.
+
+Supported adversarial inputs include forged/stale packets, forged tags, stale relationship state, alias variation, replay, schema/type abuse, duplicate JSON keys, and ordinary post-import rebinding or mutation of module globals / function defaults / keyword defaults. The implementation deliberately captures those dependency generations so accidental or ordinary monkeypatching does not silently redefine send-gating semantics.
+
+The following are explicitly **outside this package's trust boundary**:
+
+- direct reflective mutation of live function internals such as `__closure__[...].cell_contents` or `__code__`;
+- debugger/frame/GC/ctypes-style mutation of the validator's live Python object graph;
+- arbitrary untrusted plugin/agent code running with interpreter-level access to the validator process.
+
+CPython makes closure cells and function internals writable to code already inside the process. A Python library cannot truthfully claim isolation from an attacker that can rewrite the library's executing trust objects. If that attacker exists, treat the host interpreter as compromised.
+
+Operational rule: **do not colocate untrusted agent/plugin code with this validator when `authorized_to_send` is consequential.** Untrusted seats must cross a separately isolated and authenticated process/provider boundary; this package may then validate the data received at that boundary. The HMAC keys and process clock are only meaningful while the validator interpreter itself is trusted.
+
+The retained hostile suite intentionally demonstrates the closure-cell clock/HMAC bypasses under this declared out-of-scope condition. Those tests are boundary proofs, not claims that reflective interpreter tamper is blocked.
+
 ## Opportunity and economics gates
 
 A packet also binds:
@@ -85,7 +103,7 @@ JSON ingress rejects duplicate keys, floating/non-finite numbers, oversized inpu
 
 Decision receipts bind the normalized packet digest, exact source generation, canonical dedupe key, qualification/send states, hold reasons, evaluation mode/time, and a hard-false authority ceiling. Verification re-evaluates semantics and, for a current positive receipt, re-checks against fresh process time.
 
-Trust-bearing canonicalization, writer-message generation, context verification, dedupe, current-clock, and verifier helpers capture their intended dependency generation rather than accepting ordinary post-import module-global substitution.
+Trust-bearing canonicalization, writer-message generation, context verification, dedupe, current-clock, and verifier helpers capture their intended dependency generation rather than accepting ordinary post-import module-global/default substitution. This is resilience to ordinary monkeypatching, not a sandbox boundary against direct reflective mutation of live Python function internals; see the host-interpreter trust boundary above.
 
 ## CLI
 
