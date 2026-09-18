@@ -258,3 +258,143 @@ def _claim_seam(key_sha256: str, prior_release_reveal_receipt_sha256: str) -> st
 
 def claim_branch(key_sha256: str, prior_release_reveal_receipt_sha256: str = ZERO64) -> str:
     return CLAIM_BRANCH_PREFIX + _claim_seam(key_sha256, prior_release_reveal_receipt_sha256)
+
+
+def terminal_branch(claim_seam_sha256: str) -> str:
+    return TERMINAL_BRANCH_PREFIX + _sha64(claim_seam_sha256, "claim_seam_sha256")
+
+
+def reveal_branch(claim_seam_sha256: str) -> str:
+    return REVEAL_BRANCH_PREFIX + _sha64(claim_seam_sha256, "claim_seam_sha256")
+
+
+def contacted_branch(claim_seam_sha256: str) -> str:
+    return CONTACTED_BRANCH_PREFIX + _sha64(claim_seam_sha256, "claim_seam_sha256")
+
+
+def _metadata_path(claim_seam_sha256: str, kind: str) -> str:
+    if kind not in {"claim", "terminal", "reveal", "contacted"}:
+        raise CustodyError("metadata kind invalid")
+    return f"{METADATA_PREFIX}{_sha64(claim_seam_sha256, 'claim_seam_sha256')}/{kind}.json"
+
+
+def _seal(doc: dict[str, Any], field: str) -> dict[str, Any]:
+    out = dict(doc)
+    out[field] = _digest(out)
+    return out
+
+
+def _verify_seal(raw: Mapping[str, Any], field: str) -> dict[str, Any]:
+    if not isinstance(raw, Mapping):
+        raise CustodyError("object required")
+    expected = _expected_sealed_fields(raw, field)
+    actual = set(raw)
+    if actual != expected:
+        raise CustodyError(f"sealed object keys mismatch; missing={sorted(expected-actual)} extra={sorted(actual-expected)}")
+    doc = dict(raw)
+    seal = _sha64(doc.pop(field, None), field)
+    if _digest(doc) != seal:
+        raise CustodyError(f"{field} mismatch")
+    _check_authority_flags(doc)
+    return dict(raw)
+
+
+def _canonical_json_text(doc: Mapping[str, Any]) -> str:
+    return _canon(doc).decode("utf-8") + "\n"
+
+
+def _verify_live_metadata(expected_text: str, live_text: str) -> None:
+    if type(live_text) is not str or live_text != expected_text:
+        raise CustodyError("live metadata mismatch")
+
+
+def _prior_release_context(
+    target_key: str,
+    prior_release_reveal_receipt: Mapping[str, Any] | None,
+    *,
+    live_prior_claim_branch_sha: str | None,
+    live_prior_claim_parent_sha: str | None,
+    live_prior_claim_metadata_json: str | None,
+    live_prior_terminal_branch_sha: str | None,
+    live_prior_terminal_parent_sha: str | None,
+    live_prior_terminal_metadata_json: str | None,
+    live_prior_reveal_branch_sha: str | None,
+    live_prior_reveal_parent_sha: str | None,
+    live_prior_reveal_metadata_json: str | None,
+) -> tuple[int, str]:
+    live_values = (
+        live_prior_claim_branch_sha, live_prior_claim_parent_sha, live_prior_claim_metadata_json,
+        live_prior_terminal_branch_sha, live_prior_terminal_parent_sha, live_prior_terminal_metadata_json,
+        live_prior_reveal_branch_sha, live_prior_reveal_parent_sha, live_prior_reveal_metadata_json,
+    )
+    if prior_release_reveal_receipt is None:
+        if any(x is not None for x in live_values):
+            raise CustodyError("prior release live readback provided without reveal receipt")
+        return 1, ZERO64
+
+    reveal = verify_release_reveal_receipt(prior_release_reveal_receipt)
+    release = verify_terminal_receipt(reveal["terminal_receipt"])
+    if release["state"] != "RELEASED_UNSENT":
+        raise CustodyError("only RELEASED_UNSENT may reopen contact")
+    if reveal["key_sha256"] != target_key:
+        raise CustodyError("prior release contact mismatch")
+    if any(x is None for x in live_values):
+        raise CustodyError("fresh prior claim + terminal + reveal readback required")
+
+    verify_claim_readback(
+        release["claim_receipt"],
+        live_branch_sha=live_prior_claim_branch_sha,
+        live_parent_sha=live_prior_claim_parent_sha,
+        live_metadata_json=live_prior_claim_metadata_json,
+    )
+    if _sha40(live_prior_terminal_branch_sha, "live prior terminal branch sha") != release["terminal_commit_sha"]:
+        raise CustodyError("prior release terminal branch moved")
+    if _sha40(live_prior_terminal_parent_sha, "live prior terminal parent sha") != release["claim_commit_sha"]:
+        raise CustodyError("prior release terminal parent mismatch")
+    _verify_live_metadata(release["metadata_json"], live_prior_terminal_metadata_json)
+
+    if _sha40(live_prior_reveal_branch_sha, "live prior reveal branch sha") != reveal["reveal_commit_sha"]:
+        raise CustodyError("prior release reveal branch moved")
+    if _sha40(live_prior_reveal_parent_sha, "live prior reveal parent sha") != release["terminal_commit_sha"]:
+        raise CustodyError("prior release reveal parent mismatch")
+    _verify_live_metadata(reveal["metadata_json"], live_prior_reveal_metadata_json)
+
+    retired = _capability(reveal["retired_capability"])
+    if capability_commitment(retired) != reveal["claim_capability_sha256"]:
+        raise CustodyError("prior release retired capability mismatch")
+    return int(reveal["generation"]) + 1, reveal["receipt_sha256"]
+
+
+def prepare_claim(
+    kind: str,
+    raw_target: str,
+    *,
+    claimant: str,
+    operation_id: str,
+    anchor_sha: str,
+    preflight_sha256: str,
+    retain_capability: Callable[[str], None],
+    prior_release_reveal_receipt: Mapping[str, Any] | None = None,
+    live_prior_claim_branch_sha: str | None = None,
+    live_prior_claim_parent_sha: str | None = None,
+    live_prior_claim_metadata_json: str | None = None,
+    live_prior_terminal_branch_sha: str | None = None,
+    live_prior_terminal_parent_sha: str | None = None,
+    live_prior_terminal_metadata_json: str | None = None,
+    live_prior_reveal_branch_sha: str | None = None,
+    live_prior_reveal_parent_sha: str | None = None,
+    live_prior_reveal_metadata_json: str | None = None,
+) -> dict[str, Any]:
+    target = normalize_target(kind, raw_target)
+    claimant = _token(claimant, "claimant")
+    operation_id = _token(operation_id, "operation_id")
+    anchor_sha = _sha40(anchor_sha, "anchor_sha")
+    preflight_sha256 = _sha64(preflight_sha256, "preflight_sha256")
+    if not callable(retain_capability):
+        raise CustodyError("retain_capability callback required")
+    generation, prior_digest = _prior_release_context(
+        target["key_sha256"], prior_release_reveal_receipt,
+        live_prior_claim_branch_sha=live_prior_claim_branch_sha,
+        live_prior_claim_parent_sha=live_prior_claim_parent_sha,
+        live_prior_claim_metadata_json=live_prior_claim_metadata_json,
+        live_prior_terminal_branch_sha=live_prior_terminal_branch_sha,
