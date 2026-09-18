@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from .cli import _read_regular, _write_exclusive
+from .cli import _open_retained_parent, _read_regular, _write_exclusive, _write_exclusive_at
 from .core import ValidationError
 
 
@@ -51,6 +51,53 @@ class CliIoTests(unittest.TestCase):
             p = Path(td) / "in.json"
             p.write_bytes(b'{"ok":true}')
             self.assertEqual(b'{"ok":true}', _read_regular(p))
+
+    def test_read_regular_refuses_symlink_ancestor(self):
+        if not hasattr(os, "symlink"):
+            self.skipTest("symlink unavailable")
+        with tempfile.TemporaryDirectory() as td:
+            real = Path(td) / "real"
+            real.mkdir()
+            target = real / "in.json"
+            target.write_bytes(b'{"ok":true}')
+            link_parent = Path(td) / "via"
+            os.symlink(real, link_parent)
+            with self.assertRaises(ValidationError):
+                _read_regular(link_parent / "in.json")
+
+    def test_write_exclusive_refuses_symlink_ancestor(self):
+        if not hasattr(os, "symlink"):
+            self.skipTest("symlink unavailable")
+        with tempfile.TemporaryDirectory() as td:
+            real = Path(td) / "real"
+            real.mkdir()
+            link_parent = Path(td) / "via"
+            os.symlink(real, link_parent)
+            with self.assertRaises(ValidationError):
+                _write_exclusive(link_parent / "out.json", b"payload")
+            self.assertFalse((real / "out.json").exists())
+
+    def test_write_stays_in_retained_parent_after_replacement(self):
+        if not hasattr(os, "symlink"):
+            self.skipTest("symlink unavailable")
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            original = root / "held"
+            original.mkdir()
+            replacement = root / "other"
+            replacement.mkdir()
+            decoy = replacement / "out.json"
+            decoy.write_bytes(b"decoy")
+            dest = original / "out.json"
+            parent_fd, name = _open_retained_parent(dest)
+            try:
+                os.rename(original, root / "held-moved")
+                os.rename(replacement, original)
+                _write_exclusive_at(parent_fd, name, b"retained", display_path=str(dest))
+            finally:
+                os.close(parent_fd)
+            self.assertEqual(b"retained", (root / "held-moved" / "out.json").read_bytes())
+            self.assertEqual(b"decoy", (original / "out.json").read_bytes())
 
 
 if __name__ == "__main__":
