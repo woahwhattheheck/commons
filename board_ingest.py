@@ -4153,12 +4153,7 @@ def _slack_connector_declared_id(issue, outer_src, outer_dest, outer_id, text, e
 def _completion_marker_for_closed_issue(issue, operation_id):
     """Return strongest same-repo main-merge evidence, or None when unproven."""
     number = issue.get("number")
-    if (
-        issue.get("state") != "closed"
-        or issue.get("state_reason") != "completed"
-        or not isinstance(number, int)
-        or isinstance(number, bool)
-    ):
+    if not isinstance(number, int) or isinstance(number, bool):
         return None
     canonical_issue = _gh_api(
         "https://api.github.com/repos/woahwhattheheck/commons/issues/%s" % number
