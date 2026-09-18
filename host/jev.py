@@ -50,7 +50,7 @@ MAX_QUESTIONS = 500
 
 
 class JevError(Exception):
-    """Typed failure: NO_KEY / KEY_SOURCE_CONFLICT / HTTP_<status> / TRANSPORT / BAD_REPLY."""
+    """Typed failure: key-state / HTTP_<status> / TRANSPORT / BAD_REPLY."""
 
 
 class CREDENTIALW(ctypes.Structure):
@@ -85,7 +85,11 @@ def _cred_read(target: str) -> str:
     advapi32.CredReadW.restype = wintypes.BOOL
     pcred = ctypes.POINTER(CREDENTIALW)()
     if not advapi32.CredReadW(target, _CRED_TYPE_GENERIC, 0, ctypes.byref(pcred)):
-        return ""
+        error = ctypes.get_last_error()
+        # ERROR_NOT_FOUND means this configured alias is genuinely absent.
+        if error == 1168:
+            return ""
+        raise OSError(error, "CredReadW failed")
     try:
         blob = ctypes.string_at(
             pcred.contents.CredentialBlob, pcred.contents.CredentialBlobSize
@@ -103,14 +107,16 @@ def _cred_read(target: str) -> str:
 
 
 def _read_key_sources() -> tuple[str, list[tuple[str, str]]]:
-    """Read configured key sources without selecting or exposing a value."""
+    """Read configured key sources; vault read failures are authority failures."""
     env_key = os.environ.get(ENV_KEY, "").strip()
     vault_keys: list[tuple[str, str]] = []
     for target in CREDVAULT_TARGETS:
         try:
             key = _cred_read(target)
         except Exception:
-            key = ""
+            # Do not reinterpret an unreadable vault as "missing" and fall
+            # back to an environment generation we can no longer reconcile.
+            raise JevError("KEY_SOURCE_UNAVAILABLE") from None
         if key:
             vault_keys.append((target, key))
     return env_key, vault_keys
@@ -139,11 +145,13 @@ def load_key() -> str:
 
 def key_state() -> str:
     """Report credential source state without exposing credential material."""
-    env_key, vault_keys = _read_key_sources()
     try:
+        env_key, vault_keys = _read_key_sources()
         _select_key(env_key, vault_keys)
-    except JevError:
-        return "KEY_SOURCE_CONFLICT"
+    except JevError as err:
+        if str(err) in {"KEY_SOURCE_CONFLICT", "KEY_SOURCE_UNAVAILABLE"}:
+            return str(err)
+        raise
     if vault_keys:
         state = "KEY_PRESENT_CREDVAULT:" + vault_keys[0][0]
         if env_key:
