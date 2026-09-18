@@ -6,7 +6,7 @@ import json
 import os
 from typing import Any
 
-from firewall_codec import FirewallError
+from firewall_codec import FirewallError, canonical_json
 
 WRITER_AUTHORITY_ENV = "OUTREACH_WRITER_LEASE_AUTHORITY_KEY_HEX"
 _SIGNED_FIELDS = (
