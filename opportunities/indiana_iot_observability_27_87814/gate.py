@@ -74,59 +74,108 @@ def _pairs_no_dupes(pairs):
     out = {}
     for k, v in pairs:
         if k in out:
-            raise GateError(f"duplicate JSON key: {k}")
+            raise _error(f"duplicate JSON key: {k}")
         out[k] = v
     return out
 
 
 def _reject_constant(v):
-    raise GateError(f"non-finite JSON number: {v}")
+    raise _error(f"non-finite JSON number: {v}")
 
 
-def loads_strict(text: str) -> Any:
+def _ensure_utf8_tree(value: Any, label: str = "json") -> Any:
+    """Reject lone surrogates before any later canonical UTF-8 encoding."""
+    def visit(v: Any, where: str) -> None:
+        if type(v) is str:
+            try:
+                v.encode("utf-8", "strict")
+            except UnicodeEncodeError as exc:
+                raise _error(f"{where} contains invalid Unicode") from exc
+            return
+        if type(v) is list:
+            for i, item in enumerate(v):
+                visit(item, f"{where}[{i}]")
+            return
+        if type(v) is dict:
+            for key, item in v.items():
+                if type(key) is not str:
+                    raise _error(f"{where} keys must be exact strings")
+                visit(key, f"{where}.<key>")
+                visit(item, f"{where}.{key}")
+    visit(value, label)
+    return value
+
+
+def loads_strict(
+    text: str,
+    _json_loads=json.loads,
+    _pairs_hook=_pairs_no_dupes,
+    _constant_hook=_reject_constant,
+    _utf8_tree=_ensure_utf8_tree,
+    _json_error=json.JSONDecodeError,
+    _error=GateError,
+) -> Any:
     try:
-        return json.loads(text, object_pairs_hook=_pairs_no_dupes, parse_constant=_reject_constant)
-    except GateError:
+        value = _json_loads(
+            text,
+            object_pairs_hook=_pairs_hook,
+            parse_constant=_constant_hook,
+        )
+        return _utf8_tree(value)
+    except _error:
         raise
-    except (json.JSONDecodeError, TypeError) as exc:
-        raise GateError(str(exc)) from exc
+    except (_json_error, TypeError, ValueError, RecursionError) as exc:
+        raise _error(str(exc)) from exc
 
 
-def _freeze(value: Any, label: str = "value") -> Any:
-    if value is None or type(value) in (str, bool, int):
-        return value
-    if type(value) is float:
-        if value != value or value in (float("inf"), float("-inf")):
-            raise GateError(f"{label} contains non-finite float")
-        return value
-    if type(value) is list:
-        return [_freeze(v, f"{label}[{i}]") for i, v in enumerate(value)]
-    if type(value) is dict:
-        out = {}
-        for k, v in value.items():
-            if type(k) is not str:
-                raise GateError(f"{label} keys must be exact strings")
-            out[k] = _freeze(v, f"{label}.{k}")
-        return out
-    raise GateError(f"{label} must be an exact built-in JSON value")
+def _freeze(value: Any, label: str = "value", _error=GateError) -> Any:
+    def visit(v: Any, where: str) -> Any:
+        if v is None or type(v) in (bool, int):
+            return v
+        if type(v) is str:
+            try:
+                v.encode("utf-8", "strict")
+            except UnicodeEncodeError as exc:
+                raise _error(f"{where} contains invalid Unicode") from exc
+            return v
+        if type(v) is float:
+            if v != v or v in (float("inf"), float("-inf")):
+                raise _error(f"{where} contains non-finite float")
+            return v
+        if type(v) is list:
+            return [visit(item, f"{where}[{i}]") for i, item in enumerate(v)]
+        if type(v) is dict:
+            out = {}
+            for key, item in v.items():
+                if type(key) is not str:
+                    raise _error(f"{where} keys must be exact strings")
+                try:
+                    key.encode("utf-8", "strict")
+                except UnicodeEncodeError as exc:
+                    raise _error(f"{where} key contains invalid Unicode") from exc
+                out[key] = visit(item, f"{where}.{key}")
+            return out
+        raise _error(f"{where} must be an exact built-in JSON value")
+
+    return visit(value, label)
 
 
 def _str(v: Any, label: str) -> str:
     if type(v) is not str or not v.strip() or v != v.strip():
-        raise GateError(f"{label} must be a trimmed non-empty string")
+        raise _error(f"{label} must be a trimmed non-empty string")
     return v
 
 
 def _bool(v: Any, label: str) -> bool:
     if type(v) is not bool:
-        raise GateError(f"{label} must be a JSON boolean")
+        raise _error(f"{label} must be a JSON boolean")
     return v
 
 
 def _sha(v: Any, label: str) -> str:
     s = _str(v, label)
     if len(s) != 64 or s.lower() != s or any(c not in "0123456789abcdef" for c in s):
-        raise GateError(f"{label} must be lowercase sha256")
+        raise _error(f"{label} must be lowercase sha256")
     return s
 
 
@@ -135,9 +184,9 @@ def _time(v: Any, label: str, _datetime=datetime, _timezone=timezone) -> datetim
     try:
         dt = _datetime.fromisoformat(s.replace("Z", "+00:00"))
     except ValueError as exc:
-        raise GateError(f"{label} must be ISO-8601") from exc
+        raise _error(f"{label} must be ISO-8601") from exc
     if dt.tzinfo is None:
-        raise GateError(f"{label} must include timezone")
+        raise _error(f"{label} must include timezone")
     return dt.astimezone(_timezone.utc)
 
 
@@ -145,7 +194,7 @@ def _safe_relpath(v: Any, label: str) -> str:
     s = _str(v, label)
     p = PurePosixPath(s)
     if p.is_absolute() or not p.parts or any(x in ("", ".", "..") for x in p.parts):
-        raise GateError(f"{label} must be a safe relative path")
+        raise _error(f"{label} must be a safe relative path")
     return s
 
 
@@ -153,94 +202,140 @@ def _expect_keys(obj: dict, required: set[str], label: str) -> None:
     if set(obj) != required:
         missing = sorted(required - set(obj))
         extra = sorted(set(obj) - required)
-        raise GateError(f"{label} keys mismatch missing={missing} extra={extra}")
+        raise _error(f"{label} keys mismatch missing={missing} extra={extra}")
 
 
-def _read_retained(root: Path, relpath: str) -> bytes:
-    """Read one ordinary single-link file under a fixed package root without symlink leaves."""
-    rel = PurePosixPath(_safe_relpath(relpath, "retained relpath"))
-    root_fd = os.open(
-        os.fspath(root),
-        os.O_RDONLY | getattr(os, "O_DIRECTORY", 0) | getattr(os, "O_NOFOLLOW", 0),
+def _read_retained(
+    root: Path,
+    relpath: str,
+    _safe_relpath_fn=_safe_relpath,
+    _pure_path=PurePosixPath,
+    _os_open=os.open,
+    _os_fspath=os.fspath,
+    _os_close=os.close,
+    _os_fstat=os.fstat,
+    _os_read=os.read,
+    _o_rdonly=os.O_RDONLY,
+    _o_directory=getattr(os, "O_DIRECTORY", 0),
+    _o_nofollow=getattr(os, "O_NOFOLLOW", None),
+    _is_regular=stat.S_ISREG,
+    _max_bytes=MAX_RETAINED_BYTES,
+    _error=GateError,
+) -> bytes:
+    """Read one source through an import-bound no-follow descriptor generation."""
+    if _o_nofollow is None:
+        raise _error("platform lacks O_NOFOLLOW; refusing retained evidence reads")
+    rel = _pure_path(_safe_relpath_fn(relpath, "retained relpath"))
+    root_fd = _os_open(
+        _os_fspath(root),
+        _o_rdonly | _o_directory | _o_nofollow,
     )
     fd = root_fd
     try:
         for part in rel.parts[:-1]:
-            child = os.open(
+            child = _os_open(
                 part,
-                os.O_RDONLY | getattr(os, "O_DIRECTORY", 0) | getattr(os, "O_NOFOLLOW", 0),
+                _o_rdonly | _o_directory | _o_nofollow,
                 dir_fd=fd,
             )
             if fd != root_fd:
-                os.close(fd)
+                _os_close(fd)
             fd = child
-        leaf = os.open(rel.parts[-1], os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0), dir_fd=fd)
+        leaf = _os_open(rel.parts[-1], _o_rdonly | _o_nofollow, dir_fd=fd)
         try:
-            before = os.fstat(leaf)
-            if not stat.S_ISREG(before.st_mode) or before.st_nlink != 1:
-                raise GateError(f"retained source must be ordinary single-link file: {relpath}")
-            if before.st_size > MAX_RETAINED_BYTES:
-                raise GateError(f"retained source too large: {relpath}")
-            chunks, remaining = [], MAX_RETAINED_BYTES + 1
+            before = _os_fstat(leaf)
+            if not _is_regular(before.st_mode) or before.st_nlink != 1:
+                raise _error(
+                    f"retained source must be ordinary single-link file: {relpath}"
+                )
+            if before.st_size > _max_bytes:
+                raise _error(f"retained source too large: {relpath}")
+            chunks, remaining = [], _max_bytes + 1
             while remaining:
-                b = os.read(leaf, min(1024 * 1024, remaining))
-                if not b:
+                chunk = _os_read(leaf, min(1024 * 1024, remaining))
+                if not chunk:
                     break
-                chunks.append(b)
-                remaining -= len(b)
+                chunks.append(chunk)
+                remaining -= len(chunk)
             data = b"".join(chunks)
-            after = os.fstat(leaf)
-            identity = lambda s: (s.st_dev, s.st_ino, s.st_size, s.st_mtime_ns, s.st_ctime_ns)
+            after = _os_fstat(leaf)
+            identity = lambda st: (
+                st.st_dev,
+                st.st_ino,
+                st.st_size,
+                st.st_mtime_ns,
+                st.st_ctime_ns,
+            )
             if identity(before) != identity(after) or len(data) != before.st_size:
-                raise GateError(f"retained source changed during read: {relpath}")
+                raise _error(f"retained source changed during read: {relpath}")
             return data
         finally:
-            os.close(leaf)
+            _os_close(leaf)
     finally:
         if fd != root_fd:
-            os.close(fd)
-        os.close(root_fd)
+            _os_close(fd)
+        _os_close(root_fd)
 
 
-def _parse_authority(raw: bytes, root: Path, expected_sha256: str) -> EvidenceAuthority:
-    got = hashlib.sha256(raw).hexdigest()
+def _parse_authority(
+    raw: bytes,
+    root: Path,
+    expected_sha256: str,
+    _sha256=hashlib.sha256,
+    _loads_strict_fn=loads_strict,
+    _freeze_fn=_freeze,
+    _expect_keys_fn=_expect_keys,
+    _str_fn=_str,
+    _safe_relpath_fn=_safe_relpath,
+    _sha_fn=_sha,
+    _read_retained_fn=_read_retained,
+    _source_binding=SourceBinding,
+    _evidence_binding=EvidenceBinding,
+    _evidence_authority=EvidenceAuthority,
+    _mapping_proxy=MappingProxyType,
+    _positive_authorities=frozenset(POSITIVE_SOURCE_AUTHORITIES),
+    _opportunity_id=OPPORTUNITY_ID,
+    _event_id=EVENT_ID,
+    _error=GateError,
+) -> EvidenceAuthority:
+    got = _sha256(raw).hexdigest()
     if got != expected_sha256:
-        raise GateError("authority manifest does not match source-literal pinned root")
+        raise _error("authority manifest does not match source-literal pinned root")
     try:
-        doc = loads_strict(raw.decode("utf-8"))
+        doc = _loads_strict_fn(raw.decode("utf-8"))
     except UnicodeDecodeError as exc:
-        raise GateError("authority manifest must be UTF-8") from exc
-    doc = _freeze(doc, "authority manifest")
+        raise _error("authority manifest must be UTF-8") from exc
+    doc = _freeze_fn(doc, "authority manifest")
     if type(doc) is not dict:
-        raise GateError("authority manifest must be object")
-    _expect_keys(doc, {"schema", "opportunity_id", "event_id", "generation_id", "sources", "evidence"}, "authority manifest")
+        raise _error("authority manifest must be object")
+    _expect_keys_fn(doc, {"schema", "opportunity_id", "event_id", "generation_id", "sources", "evidence"}, "authority manifest")
     if doc["schema"] != "indiana-iot-observability-authority/v1":
-        raise GateError("authority manifest schema mismatch")
-    if doc["opportunity_id"] != OPPORTUNITY_ID or doc["event_id"] != EVENT_ID:
-        raise GateError("authority manifest identity mismatch")
-    generation = _str(doc["generation_id"], "authority generation_id")
+        raise _error("authority manifest schema mismatch")
+    if doc["opportunity_id"] != _opportunity_id or doc["event_id"] != _event_id:
+        raise _error("authority manifest identity mismatch")
+    generation = _str_fn(doc["generation_id"], "authority generation_id")
     if type(doc["sources"]) is not list or type(doc["evidence"]) is not list:
-        raise GateError("authority sources/evidence must be arrays")
+        raise _error("authority sources/evidence must be arrays")
 
     sources = {}
     for i, row in enumerate(doc["sources"]):
         if type(row) is not dict:
-            raise GateError(f"authority sources[{i}] must be object")
-        _expect_keys(row, {"id", "authority", "relpath", "sha256", "subject", "scope", "generation_id"}, f"authority sources[{i}]")
-        sid = _str(row["id"], f"authority sources[{i}].id")
+            raise _error(f"authority sources[{i}] must be object")
+        _expect_keys_fn(row, {"id", "authority", "relpath", "sha256", "subject", "scope", "generation_id"}, f"authority sources[{i}]")
+        sid = _str_fn(row["id"], f"authority sources[{i}].id")
         if sid in sources:
-            raise GateError(f"duplicate authority source id: {sid}")
-        authority = _str(row["authority"], f"{sid}.authority")
-        if authority not in POSITIVE_SOURCE_AUTHORITIES:
-            raise GateError(f"{sid} cannot be a positive retained authority")
-        if row["subject"] != OPPORTUNITY_ID or row["generation_id"] != generation:
-            raise GateError(f"{sid} subject/generation mismatch")
-        relpath = _safe_relpath(row["relpath"], f"{sid}.relpath")
-        digest = _sha(row["sha256"], f"{sid}.sha256")
-        data = _read_retained(root, relpath)
-        if hashlib.sha256(data).hexdigest() != digest:
-            raise GateError(f"retained source digest mismatch: {sid}")
-        sources[sid] = SourceBinding(
+            raise _error(f"duplicate authority source id: {sid}")
+        authority = _str_fn(row["authority"], f"{sid}.authority")
+        if authority not in _positive_authorities:
+            raise _error(f"{sid} cannot be a positive retained authority")
+        if row["subject"] != _opportunity_id or row["generation_id"] != generation:
+            raise _error(f"{sid} subject/generation mismatch")
+        relpath = _safe_relpath_fn(row["relpath"], f"{sid}.relpath")
+        digest = _sha_fn(row["sha256"], f"{sid}.sha256")
+        data = _read_retained_fn(root, relpath)
+        if _sha256(data).hexdigest() != digest:
+            raise _error(f"retained source digest mismatch: {sid}")
+        sources[sid] = _source_binding(
             sid, authority, relpath, digest, OPPORTUNITY_ID,
             _str(row["scope"], f"{sid}.scope"), generation,
         )
@@ -248,113 +343,140 @@ def _parse_authority(raw: bytes, root: Path, expected_sha256: str) -> EvidenceAu
     evidence = {}
     for i, row in enumerate(doc["evidence"]):
         if type(row) is not dict:
-            raise GateError(f"authority evidence[{i}] must be object")
-        _expect_keys(row, {"id", "source_id", "requirement_id", "subject", "scope", "generation_id"}, f"authority evidence[{i}]")
-        eid = _str(row["id"], f"authority evidence[{i}].id")
+            raise _error(f"authority evidence[{i}] must be object")
+        _expect_keys_fn(row, {"id", "source_id", "requirement_id", "subject", "scope", "generation_id"}, f"authority evidence[{i}]")
+        eid = _str_fn(row["id"], f"authority evidence[{i}].id")
         if eid in evidence:
-            raise GateError(f"duplicate evidence id: {eid}")
-        source_id = _str(row["source_id"], f"{eid}.source_id")
+            raise _error(f"duplicate evidence id: {eid}")
+        source_id = _str_fn(row["source_id"], f"{eid}.source_id")
         if source_id not in sources:
-            raise GateError(f"{eid} source is not authenticated")
-        if row["subject"] != OPPORTUNITY_ID or row["generation_id"] != generation:
-            raise GateError(f"{eid} subject/generation mismatch")
+            raise _error(f"{eid} source is not authenticated")
+        if row["subject"] != _opportunity_id or row["generation_id"] != generation:
+            raise _error(f"{eid} subject/generation mismatch")
         if row["scope"] != sources[source_id].scope:
-            raise GateError(f"{eid} scope does not match source scope")
-        evidence[eid] = EvidenceBinding(
+            raise _error(f"{eid} scope does not match source scope")
+        evidence[eid] = _evidence_binding(
             eid, source_id, _str(row["requirement_id"], f"{eid}.requirement_id"),
-            OPPORTUNITY_ID, row["scope"], generation,
+            _opportunity_id, row["scope"], generation,
         )
-    return EvidenceAuthority(got, generation, MappingProxyType(sources), MappingProxyType(evidence))
+    return _evidence_authority(got, generation, _mapping_proxy(sources), _mapping_proxy(evidence))
 
 
-def _load_authority(root: Path = PACKAGE_ROOT, expected_sha256: str = AUTHORITY_MANIFEST_SHA256) -> EvidenceAuthority:
-    return _parse_authority(_read_retained(root, AUTHORITY_MANIFEST), root, expected_sha256)
+def _load_authority(
+    root: Path = PACKAGE_ROOT,
+    expected_sha256: str = AUTHORITY_MANIFEST_SHA256,
+    _parser=_parse_authority,
+    _reader=_read_retained,
+    _manifest=AUTHORITY_MANIFEST,
+) -> EvidenceAuthority:
+    return _parser(_reader(root, _manifest), root, expected_sha256)
 
 
 def _sources(ledger: Mapping[str, Any], authority: EvidenceAuthority):
     ledger = _freeze(ledger, "source ledger")
-    if type(ledger) is not dict or ledger.get("opportunity_id") != OPPORTUNITY_ID or ledger.get("event_id") != EVENT_ID:
-        raise GateError("source ledger identity mismatch")
+    if type(ledger) is not dict or ledger.get("opportunity_id") != _opportunity_id or ledger.get("event_id") != EVENT_ID:
+        raise _error("source ledger identity mismatch")
     rows = ledger.get("sources")
     if type(rows) is not list:
-        raise GateError("sources must be array")
+        raise _error("sources must be array")
     out = {}
     authenticated_seen = set()
     for i, row in enumerate(rows):
         if type(row) is not dict:
-            raise GateError(f"sources[{i}] must be object")
-        sid = _str(row.get("id"), f"sources[{i}].id")
+            raise _error(f"sources[{i}] must be object")
+        sid = _str_fn(row.get("id"), f"sources[{i}].id")
         if sid in out:
-            raise GateError(f"duplicate source id: {sid}")
-        source_authority = _str(row.get("authority"), f"{sid}.authority")
+            raise _error(f"duplicate source id: {sid}")
+        source_authority = _str_fn(row.get("authority"), f"{sid}.authority")
         if source_authority not in AUTHORITIES:
-            raise GateError(f"unsupported authority: {source_authority}")
+            raise _error(f"unsupported authority: {source_authority}")
         retained = _bool(row.get("retained"), f"{sid}.retained")
         _str(row.get("url"), f"{sid}.url")
         claims, controls = row.get("claims", {}), row.get("controls", [])
         if type(claims) is not dict or type(controls) is not list or any(type(x) is not str for x in controls):
-            raise GateError(f"{sid} claims/controls malformed")
+            raise _error(f"{sid} claims/controls malformed")
         if len(controls) != len(set(controls)):
-            raise GateError(f"{sid}.controls duplicates")
+            raise _error(f"{sid}.controls duplicates")
         binding = authority.sources.get(sid)
         if retained and binding is None:
-            raise GateError(f"{sid} retained=true is not authenticated by the pinned authority root")
+            raise _error(f"{sid} retained=true is not authenticated by the pinned authority root")
         if binding is not None:
             if not retained or binding.authority != source_authority:
-                raise GateError(f"{sid} authenticated source does not match source-ledger assertion")
+                raise _error(f"{sid} authenticated source does not match source-ledger assertion")
             authenticated_seen.add(sid)
         elif controls:
-            raise GateError(f"{sid} cannot control fields without authenticated retained bytes")
+            raise _error(f"{sid} cannot control fields without authenticated retained bytes")
         if source_authority != "OFFICIAL_CONTROLLING_PACKAGE" and CONTROLLING_FIELDS.intersection(controls):
-            raise GateError(f"{sid} cannot control package-only fields")
+            raise _error(f"{sid} cannot control package-only fields")
         out[sid] = row
     if authenticated_seen != set(authority.sources):
-        raise GateError("source ledger does not expose the complete authenticated retained-source inventory")
+        raise _error("source ledger does not expose the complete authenticated retained-source inventory")
     return out
 
 
 def _requirements(doc: Mapping[str, Any], authority: EvidenceAuthority):
     doc = _freeze(doc, "requirements")
-    if type(doc) is not dict or doc.get("opportunity_id") != OPPORTUNITY_ID:
-        raise GateError("requirements identity mismatch")
+    if type(doc) is not dict or doc.get("opportunity_id") != _opportunity_id:
+        raise _error("requirements identity mismatch")
     rows = doc.get("requirements")
     if type(rows) is not list:
-        raise GateError("requirements must be array")
+        raise _error("requirements must be array")
     out = {}
     used = set()
     for i, row in enumerate(rows):
         if type(row) is not dict:
-            raise GateError(f"requirements[{i}] must be object")
-        rid = _str(row.get("id"), f"requirements[{i}].id")
+            raise _error(f"requirements[{i}] must be object")
+        rid = _str_fn(row.get("id"), f"requirements[{i}].id")
         if rid in out:
-            raise GateError(f"duplicate requirement id: {rid}")
-        state = _str(row.get("state"), f"{rid}.state")
+            raise _error(f"duplicate requirement id: {rid}")
+        state = _str_fn(row.get("state"), f"{rid}.state")
         if state not in ALLOWED_REQUIREMENT_STATES:
-            raise GateError(f"{rid}.state unsupported")
+            raise _error(f"{rid}.state unsupported")
         ev = row.get("evidence")
         if type(ev) is not list or any(type(x) is not str or not x for x in ev) or len(ev) != len(set(ev)):
-            raise GateError(f"{rid}.evidence must be unique string array")
+            raise _error(f"{rid}.evidence must be unique string array")
         if state == "PROVEN" and not ev:
-            raise GateError(f"{rid} PROVEN requires retained evidence")
+            raise _error(f"{rid} PROVEN requires retained evidence")
         if state != "PROVEN" and ev:
-            raise GateError(f"{rid} non-PROVEN cannot carry positive evidence")
+            raise _error(f"{rid} non-PROVEN cannot carry positive evidence")
         for eid in ev:
             binding = authority.evidence.get(eid)
             if binding is None:
-                raise GateError(f"{rid} evidence {eid} is not authenticated")
+                raise _error(f"{rid} evidence {eid} is not authenticated")
             if binding.requirement_id != rid:
-                raise GateError(f"{eid} is bound to another requirement")
+                raise _error(f"{eid} is bound to another requirement")
             if eid in used:
-                raise GateError(f"{eid} cannot be reused across requirements")
+                raise _error(f"{eid} cannot be reused across requirements")
             used.add(eid)
         out[rid] = row
     return out
 
 
-def _receipt(report: Mapping[str, Any]) -> str:
+def _canonical_json_bytes(
+    value: Any,
+    _json_dumps=json.dumps,
+    _error=GateError,
+) -> bytes:
+    try:
+        return _json_dumps(
+            value,
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=False,
+            allow_nan=False,
+        ).encode("utf-8", "strict")
+    except (TypeError, ValueError, UnicodeError) as exc:
+        raise _error(f"cannot canonicalize JSON value: {exc}") from exc
+
+
+def _receipt(
+    report: Mapping[str, Any],
+    _canonical_bytes=_canonical_json_bytes,
+    _sha256=hashlib.sha256,
+) -> str:
     base = dict(report)
     base.pop("receipt_sha256", None)
-    return hashlib.sha256(json.dumps(base, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False).encode()).hexdigest()
+    return _sha256(_canonical_bytes(base)).hexdigest()
 
 
 def _compile(
@@ -365,19 +487,19 @@ def _compile(
     reqs = _requirements(requirements, authority)
     partners = _freeze(partners, "partners")
     scope = _freeze(scope, "scope")
-    if type(partners) is not dict or partners.get("opportunity_id") != OPPORTUNITY_ID or type(partners.get("targets")) is not list:
-        raise GateError("partner targets identity/shape mismatch")
+    if type(partners) is not dict or partners.get("opportunity_id") != _opportunity_id or type(partners.get("targets")) is not list:
+        raise _error("partner targets identity/shape mismatch")
     targets = partners["targets"]
     for i, target in enumerate(targets):
         if type(target) is not dict:
-            raise GateError(f"targets[{i}] malformed")
+            raise _error(f"targets[{i}] malformed")
         _str(target.get("name"), f"targets[{i}].name")
         if target.get("status") != "RESEARCH_TARGET_NO_CONTACT" or target.get("contact_authority") is not False:
-            raise GateError("partner target may not claim contact or selection")
-    if type(scope) is not dict or scope.get("opportunity_id") != OPPORTUNITY_ID or scope.get("status") != "TEMPLATE_NOT_OFFER":
-        raise GateError("paid specialist scope must remain a non-offer template")
+            raise _error("partner target may not claim contact or selection")
+    if type(scope) is not dict or scope.get("opportunity_id") != _opportunity_id or scope.get("status") != "TEMPLATE_NOT_OFFER":
+        raise _error("paid specialist scope must remain a non-offer template")
     if scope.get("price_usd") is not None:
-        raise GateError("template price must remain unset before partner discovery")
+        raise _error("template price must remain unset before partner discovery")
 
     package = sources.get("idoa-bid-package")
     binding = authority.sources.get("idoa-bid-package")
@@ -447,17 +569,29 @@ def _compile(
     return report
 
 
-def _make_public(loader, compiler, clock, freezer, receipt_fn):
+def _make_public(
+    loader,
+    compiler,
+    clock,
+    freezer,
+    receipt_fn,
+    canonical_bytes_fn,
+    time_fn=_time,
+    utc=timezone.utc,
+    max_age_seconds=CURRENT_MAX_AGE_SECONDS,
+    future_skew_seconds=CURRENT_FUTURE_SKEW_SECONDS,
+    error_type=GateError,
+):
     def compile_pursuit(ledger, requirements, partners, scope, *, now: str):
         return compiler(
             ledger, requirements, partners, scope,
-            authority=loader(), evaluation_dt=_time(now, "now"), current=False,
+            authority=loader(), evaluation_dt=time_fn(now, "now"), current=False,
         )
 
     def compile_current(ledger, requirements, partners, scope):
         return compiler(
             ledger, requirements, partners, scope,
-            authority=loader(), evaluation_dt=clock(timezone.utc), current=True,
+            authority=loader(), evaluation_dt=clock(utc), current=True,
         )
 
     def verify_pursuit(packet, ledger, requirements, partners, scope) -> bool:
@@ -473,11 +607,11 @@ def _make_public(loader, compiler, clock, freezer, receipt_fn):
             if frozen.get("authority_generation_id") != authority.generation_id:
                 return False
             mode = frozen.get("evaluation_mode")
-            dt = _time(frozen.get("evaluation_time"), "packet.evaluation_time")
+            dt = time_fn(frozen.get("evaluation_time"), "packet.evaluation_time")
             if mode == "CURRENT_PROCESS_TIME":
-                fresh_now = clock(timezone.utc)
+                fresh_now = clock(utc)
                 age = (fresh_now - dt).total_seconds()
-                if age > CURRENT_MAX_AGE_SECONDS or age < -CURRENT_FUTURE_SKEW_SECONDS:
+                if age > max_age_seconds or age < -future_skew_seconds:
                     return False
                 current = True
             elif mode == "HISTORICAL_CALLER_TIME":
@@ -488,15 +622,20 @@ def _make_public(loader, compiler, clock, freezer, receipt_fn):
                 ledger, requirements, partners, scope,
                 authority=authority, evaluation_dt=dt, current=current,
             )
-            return frozen == expected
-        except (GateError, OSError, UnicodeError, ValueError):
+            return canonical_bytes_fn(frozen) == canonical_bytes_fn(expected)
+        except (error_type, OSError, UnicodeError, ValueError, TypeError):
             return False
 
     return compile_pursuit, compile_current, verify_pursuit
 
 
 compile_pursuit, compile_current, verify_pursuit = _make_public(
-    _load_authority, _compile, datetime.now, _freeze, _receipt,
+    _load_authority,
+    _compile,
+    datetime.now,
+    _freeze,
+    _receipt,
+    _canonical_json_bytes,
 )
 del _make_public
 
@@ -505,7 +644,7 @@ def _read(path: Path):
     try:
         return loads_strict(path.read_text(encoding="utf-8"))
     except (OSError, UnicodeError) as exc:
-        raise GateError(f"cannot read {path}: {exc}") from exc
+        raise _error(f"cannot read {path}: {exc}") from exc
 
 
 def main(argv=None):
