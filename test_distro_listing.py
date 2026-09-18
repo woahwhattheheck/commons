@@ -17,7 +17,6 @@ CANONICAL_STRIPE = [
     "https://buy.stripe.com/7sYbJ02Kpcrv9uF0Ku43S09",
 ]
 CONVERT_SHELF_LIVE_BUYS = {
-    "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
     "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
 }
 

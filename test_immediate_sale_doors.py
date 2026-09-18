@@ -87,9 +87,6 @@ class ImmediateSaleDoorTests(unittest.TestCase):
                 self.assertNotIn(gate, page.lower())
 
         self.assertNotIn("<script", task_forge.lower())
-        self.assertIn(
-            "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g", task_forge
-        )
         self.assertIn(WHITEBOX_CHECKOUT, task_forge)
         self.assertNotIn(UNLOCK_CHECKOUT, task_forge)
         self.assertIn("./commerce.html#sku-unlock-20260826", task_forge)

@@ -28,7 +28,7 @@ class T(unittest.TestCase):
             self.assertIn("$30,000", text, rel)
             self.assertNotIn("buy.stripe.com", text[text.lower().find("live cash"):] if "live cash" in text.lower() else text, rel)
     def test_products(self):
-        for name in ("diagnostic.html", "commercial.html", "agent-rescue.html"):
+        for name in ("diagnostic.html", "commercial.html"):
             self.assertTrue((ROOT / name).is_file(), name)
 if __name__ == "__main__":
     unittest.main()

@@ -3475,7 +3475,7 @@ def write_pulse(rows):
     }
     # KEEP tip live_cash across board remints (newbot-12 llms bake KEEP is not enough —
     # this writer also rebuilds pulse.json and was stripping $199 doors).
-    pulse = hub_pages._preserve_live_cash(prev if isinstance(prev, dict) else {}, pulse)
+    pulse = hub_pages._preserve_live_cash(prev if isinstance(prev, dict) else {}, pulse, ROOT)
     _write(pulse_path, json.dumps(pulse, indent=2))
     return seq
 

@@ -11,7 +11,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 CLAIM = "newbot-tracker-keep-live-cash-20260916-15"
 PRODUCTS = [
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -25,7 +24,6 @@ def _live_cash(cite=CLAIM):
         "cite": [cite],
         "note": "fixture keep",
         "products": [
-            {"name": "Agent Failure Autopsy", "price_usd": 29, "path": "agent-rescue.html"},
             {"name": "Dealer Service Lead Rescue", "price_usd": 199, "path": "dealer-service-lead-rescue.html"},
             {"name": "Referral Intake Completeness", "price_usd": 199, "path": "referral-intake-completeness.html"},
             {"name": "Repair Booking Preflight", "price_usd": 199, "path": "repair-booking-preflight.html"},
@@ -69,6 +67,8 @@ class TestNewbotTrackerKeepLiveCash2026091615(unittest.TestCase):
         (root / "features" / "evidence").mkdir(parents=True)
         (root / "host").mkdir()
         (root / "host" / "ok.py").write_text("# ok\n", encoding="utf-8")
+        for name in PRODUCTS + ["diagnostic.html", "commercial.html"]:
+            (root / name).write_text("<html></html>\n", encoding="utf-8")
         live = _live_cash()
         (root / "feature-tracker.json").write_text(
             json.dumps({"schema": "prev", "live_cash": live}, indent=2) + "\n",
@@ -83,7 +83,7 @@ class TestNewbotTrackerKeepLiveCash2026091615(unittest.TestCase):
         self.assertEqual(on_disk["live_cash"]["cite"], [CLAIM])
         html = (root / "feature-tracker.html").read_text(encoding="utf-8")
         self.assertIn('id="live-cash"', html)
-        self.assertIn("agent-rescue.html", html)
+        self.assertIn("dealer-service-lead-rescue.html", html)
         self.assertIn("diagnostic.html", html)
         self.assertIn("commercial.html", html)
         self.assertIn("Larger fixed", html)
@@ -97,6 +97,8 @@ class TestNewbotTrackerKeepLiveCash2026091615(unittest.TestCase):
         self.addCleanup(temp.cleanup)
         root = Path(temp.name)
         (root / "ground").mkdir()
+        for name in PRODUCTS + ["diagnostic.html", "commercial.html"]:
+            (root / name).write_text("<html></html>\n", encoding="utf-8")
         (root / "ground" / "UNBUILT_ITEMS.json").write_text(
             json.dumps({"schema": ui.SCHEMA, "items": []}, indent=2) + "\n",
             encoding="utf-8",

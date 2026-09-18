@@ -31,7 +31,6 @@ class DigitRightNowKeepLargerFixed2026091601Test(unittest.TestCase):
         self.assertEqual(
             [(row["path"], row["price_usd"]) for row in live["products"]],
             [
-                ("agent-rescue.html", 29),
                 ("dealer-service-lead-rescue.html", 199),
                 ("referral-intake-completeness.html", 199),
                 ("repair-booking-preflight.html", 199),

@@ -8,7 +8,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 CLAIM = "newbot-stealable-lanes-html-keep-larger-fixed-20260916-18"
 PRODUCTS = [
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -22,8 +21,8 @@ class TestNewbotStealableLanesHtmlKeepLargerFixed2026091618(unittest.TestCase):
     def test_tip_stealable_has_autopsy_and_larger(self):
         html = (ROOT / "stealable-lanes.html").read_text(encoding="utf-8")
         self.assertIn('id="live-cash"', html)
-        self.assertIn("agent-rescue.html", html)
-        self.assertIn("$29", html)
+
+
         self.assertIn("Larger fixed engagements", html)
         for path in LARGER:
             self.assertIn(path, html)
@@ -43,7 +42,7 @@ class TestNewbotStealableLanesHtmlKeepLargerFixed2026091618(unittest.TestCase):
         self.assertIn("Larger fixed engagements", html)
         self.assertIn("diagnostic.html", html)
         self.assertIn("commercial.html", html)
-        self.assertIn("agent-rescue.html", html)
+
         tip = (ROOT / "stealable-lanes.html").read_text(encoding="utf-8")
         tip_cash = CASH_RE.search(tip)
         gen_cash = CASH_RE.search(html)

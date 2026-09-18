@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import html
 import json
+import math
 import re
 import sys
 from dataclasses import dataclass
@@ -18,6 +19,22 @@ WORKFLOW_PATH = Path(".github/workflows/capability-entrypoints.yml")
 ACTIVE_STATIC_PATHS = (
     Path("host/payment_capability.py"),
     Path("revenue/outcome_commerce/catalog.json"),
+)
+STRUCTURED_ACTIVE_JSON_PATHS = frozenset(
+    {Path("revenue/outcome_commerce/catalog.json")}
+)
+ACTIVE_JSON_MAX_BYTES = 8_000_000
+ACTIVE_JSON_MAX_NODES = 100_000
+ACTIVE_JSON_MAX_TEXT_BYTES = 4_000_000
+REQUIRED_WORKFLOW_EVENTS = ("push", "pull_request")
+REQUIRED_WORKFLOW_STATIC_PATHS = frozenset(
+    {
+        WORKFLOW_PATH.as_posix(),
+        "host/product_lifecycle_guard.py",
+        "revenue/product_lifecycle/**",
+        "*.html",
+        *(path.as_posix() for path in ACTIVE_STATIC_PATHS),
+    }
 )
 URL_RE = re.compile(r"(?:(?:https?):)?//[^\s\"'<>]+", re.IGNORECASE)
 PRODUCT_KEYS = frozenset(
@@ -85,6 +102,89 @@ def load_json_bytes(raw: bytes) -> Any:
         raise
     except (json.JSONDecodeError, TypeError, ValueError) as exc:
         raise LifecycleError(f"invalid registry JSON: {exc}") from exc
+
+
+def load_active_json_bytes(raw: bytes, label: str) -> Any:
+    """Decode one active JSON surface with consumer-equivalent string semantics."""
+    if len(raw) > ACTIVE_JSON_MAX_BYTES:
+        raise LifecycleError(
+            f"active JSON exceeds {ACTIVE_JSON_MAX_BYTES} bytes: {label}"
+        )
+    try:
+        text = raw.decode("utf-8", "strict")
+    except UnicodeDecodeError as exc:
+        raise LifecycleError(f"active JSON must be UTF-8: {label}") from exc
+    try:
+        return json.loads(
+            text,
+            object_pairs_hook=_reject_duplicate_pairs,
+            parse_constant=lambda raw_value: (_ for _ in ()).throw(
+                LifecycleError(
+                    f"non-finite active JSON value forbidden in {label}: {raw_value}"
+                )
+            ),
+        )
+    except LifecycleError:
+        raise
+    except (json.JSONDecodeError, TypeError, ValueError) as exc:
+        raise LifecycleError(f"invalid active JSON {label}: {exc}") from exc
+
+
+def _bounded_json_strings(value: Any, label: str) -> tuple[str, ...]:
+    """Return decoded JSON keys/string leaves under explicit work bounds."""
+    stack: list[Any] = [value]
+    strings: list[str] = []
+    nodes = 0
+    text_bytes = 0
+    while stack:
+        current = stack.pop()
+        nodes += 1
+        if nodes > ACTIVE_JSON_MAX_NODES:
+            raise LifecycleError(
+                f"active JSON node budget exceeded in {label}: {ACTIVE_JSON_MAX_NODES}"
+            )
+        if type(current) is dict:
+            if nodes + (2 * len(current)) > ACTIVE_JSON_MAX_NODES:
+                raise LifecycleError(
+                    f"active JSON node budget exceeded in {label}: {ACTIVE_JSON_MAX_NODES}"
+                )
+            for key, child in reversed(tuple(current.items())):
+                stack.append(child)
+                stack.append(key)
+            continue
+        if type(current) is list:
+            if nodes + len(current) > ACTIVE_JSON_MAX_NODES:
+                raise LifecycleError(
+                    f"active JSON node budget exceeded in {label}: {ACTIVE_JSON_MAX_NODES}"
+                )
+            stack.extend(reversed(current))
+            continue
+        if type(current) is str:
+            try:
+                encoded = current.encode("utf-8", "strict")
+            except UnicodeEncodeError as exc:
+                raise LifecycleError(
+                    f"active JSON contains non-UTF-8 string in {label}"
+                ) from exc
+            text_bytes += len(encoded)
+            if text_bytes > ACTIVE_JSON_MAX_TEXT_BYTES:
+                raise LifecycleError(
+                    f"active JSON text budget exceeded in {label}: "
+                    f"{ACTIVE_JSON_MAX_TEXT_BYTES}"
+                )
+            strings.append(current)
+            continue
+        if current is None or type(current) in (bool, int):
+            continue
+        if type(current) is float:
+            if not math.isfinite(current):
+                raise LifecycleError(f"active JSON non-finite number in {label}")
+            continue
+        raise LifecycleError(
+            f"active JSON contains unsupported value type in {label}: "
+            f"{type(current).__name__}"
+        )
+    return tuple(strings)
 
 
 def _plain_str(value: Any, field: str, *, allow_none: bool = False) -> str | None:
@@ -358,19 +458,181 @@ def _malformed_mentions_retired_host(token: str, retired_hosts: set[str]) -> boo
     return any(host and host.casefold() in folded for host in retired_hosts)
 
 
+_WORKFLOW_EVENT_RE = re.compile(r"^  ([A-Za-z0-9_-]+):\s*(?:#.*)?$")
+_WORKFLOW_PATHS_RE = re.compile(
+    r"^    paths:\s*(?:(?:&([A-Za-z0-9_-]+))|(?:\*([A-Za-z0-9_-]+)))?"
+    r"\s*(?:#.*)?$"
+)
+_WORKFLOW_PATH_ITEM_RE = re.compile(
+    r"^      -\s+'((?:[^']|'')*)'\s*(?:#.*)?$"
+)
+
+
+def _workflow_event_paths(text: str) -> dict[str, tuple[str, ...]]:
+    """Parse the intentionally constrained `on.<event>.paths` workflow subset.
+
+    Fail closed on representation changes rather than accepting path-looking text
+    from comments, heredocs, unrelated lists, or other YAML locations.
+    """
+    lines = text.splitlines()
+    on_rows = [
+        index
+        for index, line in enumerate(lines)
+        if line.rstrip() == "on:" and line == line.lstrip(" ")
+    ]
+    if len(on_rows) != 1:
+        raise LifecycleError("lifecycle workflow must contain exactly one top-level on:")
+    start = on_rows[0] + 1
+    end = len(lines)
+    for index in range(start, len(lines)):
+        line = lines[index]
+        if not line.strip() or line.lstrip().startswith("#"):
+            continue
+        if "\t" in line[: len(line) - len(line.lstrip())]:
+            raise LifecycleError("tabs are forbidden in lifecycle workflow indentation")
+        if len(line) - len(line.lstrip(" ")) == 0:
+            end = index
+            break
+
+    sections: dict[str, tuple[int, int]] = {}
+    index = start
+    while index < end:
+        line = lines[index]
+        match = _WORKFLOW_EVENT_RE.fullmatch(line)
+        if match:
+            event = match.group(1)
+            if event in sections:
+                raise LifecycleError(f"duplicate lifecycle workflow event: {event}")
+            section_end = end
+            probe = index + 1
+            while probe < end:
+                candidate = lines[probe]
+                if candidate.strip() and not candidate.lstrip().startswith("#"):
+                    indent = len(candidate) - len(candidate.lstrip(" "))
+                    if indent <= 2:
+                        section_end = probe
+                        break
+                probe += 1
+            sections[event] = (index + 1, section_end)
+            index = section_end
+            continue
+        index += 1
+
+    anchors: dict[str, tuple[str, ...]] = {}
+    specs: dict[str, tuple[str, str | tuple[str, ...]]] = {}
+    for event, (section_start, section_end) in sections.items():
+        found: tuple[str, str | tuple[str, ...]] | None = None
+        row = section_start
+        while row < section_end:
+            line = lines[row]
+            if line.strip() and not line.lstrip().startswith("#"):
+                indent = len(line) - len(line.lstrip(" "))
+                if indent == 4 and line.lstrip().startswith("paths-ignore:"):
+                    raise LifecycleError(
+                        f"lifecycle workflow paths-ignore is forbidden for event: {event}"
+                    )
+                if indent == 4 and line.lstrip().startswith("paths:"):
+                    if found is not None:
+                        raise LifecycleError(
+                            f"duplicate lifecycle workflow paths key for event: {event}"
+                        )
+                    match = _WORKFLOW_PATHS_RE.fullmatch(line)
+                    if match is None:
+                        raise LifecycleError(
+                            f"unsupported lifecycle workflow paths syntax for event: {event}"
+                        )
+                    anchor_name, alias_name = match.groups()
+                    if alias_name is not None:
+                        found = ("alias", alias_name)
+                    else:
+                        values: list[str] = []
+                        probe = row + 1
+                        while probe < section_end:
+                            item_line = lines[probe]
+                            if not item_line.strip() or item_line.lstrip().startswith("#"):
+                                probe += 1
+                                continue
+                            item_indent = len(item_line) - len(item_line.lstrip(" "))
+                            if item_indent <= 4:
+                                break
+                            item_match = _WORKFLOW_PATH_ITEM_RE.fullmatch(item_line)
+                            if item_match is None:
+                                raise LifecycleError(
+                                    f"unsupported lifecycle workflow path item for event: "
+                                    f"{event}"
+                                )
+                            value = item_match.group(1).replace("''", "'")
+                            if value.startswith("!"):
+                                raise LifecycleError(
+                                    f"negative lifecycle workflow path filter is forbidden "
+                                    f"for event {event}: {value}"
+                                )
+                            values.append(value)
+                            probe += 1
+                        if not values:
+                            raise LifecycleError(
+                                f"lifecycle workflow paths list is empty for event: {event}"
+                            )
+                        direct = tuple(values)
+                        found = ("direct", direct)
+                        if anchor_name is not None:
+                            if anchor_name in anchors:
+                                raise LifecycleError(
+                                    f"duplicate lifecycle workflow anchor: {anchor_name}"
+                                )
+                            anchors[anchor_name] = direct
+            row += 1
+        if found is not None:
+            specs[event] = found
+
+    resolved: dict[str, tuple[str, ...]] = {}
+    for event in REQUIRED_WORKFLOW_EVENTS:
+        spec = specs.get(event)
+        if spec is None:
+            raise LifecycleError(
+                f"lifecycle workflow missing on.{event}.paths"
+            )
+        kind, payload = spec
+        if kind == "alias":
+            if type(payload) is not str:
+                raise LifecycleError(
+                    f"invalid lifecycle workflow alias payload for event: {event}"
+                )
+            direct = anchors.get(payload)
+            if direct is None:
+                raise LifecycleError(
+                    f"lifecycle workflow unresolved paths alias for {event}: {payload}"
+                )
+            resolved[event] = direct
+        else:
+            if type(payload) is not tuple:
+                raise LifecycleError(
+                    f"invalid lifecycle workflow paths payload for event: {event}"
+                )
+            resolved[event] = payload
+    return resolved
+
+
 def validate_workflow_source_coverage(repo_root: Path, products: Iterable[Product]) -> None:
     workflow = repo_root / WORKFLOW_PATH
     try:
         text = workflow.read_text(encoding="utf-8", errors="strict")
     except (OSError, UnicodeDecodeError) as exc:
         raise LifecycleError(f"cannot read lifecycle workflow coverage: {workflow}") from exc
+
+    event_paths = _workflow_event_paths(text)
+    required = set(REQUIRED_WORKFLOW_STATIC_PATHS)
     for product in products:
-        for source in product.catalog_sources:
-            needle = f"- '{source}'"
-            if needle not in text:
-                raise LifecycleError(
-                    f"catalog source missing exact lifecycle workflow trigger: {source}"
-                )
+        required.update(product.catalog_sources)
+
+    for event in REQUIRED_WORKFLOW_EVENTS:
+        available = set(event_paths[event])
+        missing = sorted(required - available)
+        if missing:
+            raise LifecycleError(
+                f"lifecycle workflow on.{event}.paths missing required trigger(s): "
+                f"{', '.join(missing)}"
+            )
 
 
 def scan_active_surfaces(
@@ -383,11 +645,24 @@ def scan_active_surfaces(
     retired_hosts = _checkout_hosts(retired)
     for path in active_surface_paths(repo_root):
         try:
-            text = path.read_text(encoding="utf-8", errors="strict")
+            raw = path.read_bytes()
+            text = raw.decode("utf-8", "strict")
         except (OSError, UnicodeDecodeError) as exc:
             raise LifecycleError(f"cannot read active surface: {path}") from exc
-        found_urls, malformed_urls = _active_url_identities(text)
-        rel = path.relative_to(repo_root).as_posix()
+        rel_path = path.relative_to(repo_root)
+        rel = rel_path.as_posix()
+        views: list[str] = [text]
+        if rel_path in STRUCTURED_ACTIVE_JSON_PATHS:
+            doc = load_active_json_bytes(raw, rel)
+            views.extend(_bounded_json_strings(doc, rel))
+
+        found_urls: set[str] = set()
+        malformed_urls: list[str] = []
+        for view in views:
+            view_urls, view_malformed = _active_url_identities(view)
+            found_urls.update(view_urls)
+            malformed_urls.extend(view_malformed)
+
         for token in malformed_urls:
             if _malformed_mentions_retired_host(token, retired_hosts):
                 violations.append(
@@ -400,7 +675,7 @@ def scan_active_surfaces(
                         Violation(product.id, rel, "checkout_url", checkout)
                     )
             for source in product.catalog_sources:
-                if source in text:
+                if any(source in view for view in views):
                     violations.append(
                         Violation(product.id, rel, "catalog_source_reference", source)
                     )

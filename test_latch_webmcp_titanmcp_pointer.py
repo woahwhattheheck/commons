@@ -7,7 +7,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 PAGE = ROOT / "webmcp.html"
 ALLOWED_LIVE_BUY_URLS = {
-    "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
     "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
 }
 BUY_HOST_PATH = re.compile(r"https?://buy\.stripe\.com/([A-Za-z0-9_-]+)", re.I)
@@ -20,8 +19,8 @@ class LatchWebmcpTitanmcpPointerTest(unittest.TestCase):
         self.assertIn("https://webmcp-pad.vercel.app/", text)
         self.assertIn("1.4.5", text)
         self.assertIn('id="live-cash"', text)
-        self.assertIn("./agent-rescue.html", text)
-        self.assertIn("$29 Autopsy", text)
+
+
         found = {
             "https://buy.stripe.com/%s" % path
             for path in BUY_HOST_PATH.findall(text)

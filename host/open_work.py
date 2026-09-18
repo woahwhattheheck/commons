@@ -104,7 +104,7 @@ def resolve_main_sha(root, explicit=""):
 
 
 def receipt_path(ident):
-    return os.path.join("p", "%s.md" % ident)
+    return "p/%s.md" % ident
 
 
 def _git_object_exists(root, spec):
@@ -559,7 +559,6 @@ def render_human(snapshot):
             "",
             "Verified product pages only — no invented Stripe links.",
             "",
-            "- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run",
             "- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)",
             "- [$199 referral diagnostic](../referral-intake-completeness.html)",
             "- [$199 repair diagnostic](../repair-booking-preflight.html)",
@@ -598,7 +597,6 @@ def render_pointer(snapshot):
             "",
             "Verified product pages only — no invented Stripe links.",
             "",
-            "- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run",
             "- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)",
             "- [$199 referral diagnostic](../referral-intake-completeness.html)",
             "- [$199 repair diagnostic](../repair-booking-preflight.html)",
@@ -607,6 +605,10 @@ def render_pointer(snapshot):
             "Larger fixed engagements (separate product pages; checkout/intent stays there): [GGUF diagnostic · $12,000 / 10 days](../diagnostic.html) · [White Box pilot · $30,000 / 30 days](../commercial.html). Not remints of tip SKUs.",
             "",
             "Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-19 — do not remint.",
+            "",
+            "## Contest product (titanmcp)",
+            "",
+            "Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.",
             "",
         ]
     )

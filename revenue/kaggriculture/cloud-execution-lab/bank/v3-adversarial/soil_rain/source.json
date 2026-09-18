@@ -19,9 +19,18 @@
   "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
   "acquired_utc": "2026-08-22T03:35:00Z",
   "acquisition": "Authenticated Kaggle kernels pull plus kernels output for the resolved latest script version",
-  "dependencies": ["python-standard-library"],
-  "excluded": ["notebook image/output log", "external weights", "replay bytes", "credentials"],
+  "dependencies": [
+    "python-standard-library"
+  ],
+  "excluded": [
+    "notebook image/output log",
+    "external weights",
+    "replay bytes",
+    "credentials"
+  ],
   "default_enabled": false,
   "public_score_used_for_promotion": false,
-  "kaggle_submission": "NOT_PERFORMED"
+  "kaggle_submission": "NOT_PERFORMED",
+  "family": "high-variance",
+  "vendored_as": "soil_rain"
 }

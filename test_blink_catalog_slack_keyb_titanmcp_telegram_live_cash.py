@@ -10,8 +10,8 @@ class T(unittest.TestCase):
         for name in FILES:
             text = (ROOT / name).read_text(encoding="utf-8")
             self.assertIn('id="live-cash"', text, name)
-            self.assertIn("agent-rescue.html", text, name)
-            self.assertIn("$29", text, name)
+
+
             self.assertIn("dealer-service-lead-rescue.html", text, name)
             self.assertIn("referral-intake-completeness.html", text, name)
             self.assertIn("repair-booking-preflight.html", text, name)

@@ -20,7 +20,7 @@ class TestQuillSkillsDropGithubHeadMdKeepLargerFixed2026091608(unittest.TestCase
             with self.subTest(page=str(page.relative_to(ROOT))):
                 text = page.read_text(encoding="utf-8")
                 self.assertRegex(text, r"## Live cash")
-                self.assertIn("Autopsy", text)
+
                 self.assertIn("$199", text)
                 self.assertIn("Larger fixed engagements", text)
                 self.assertIn("diagnostic.html", text)
@@ -36,7 +36,7 @@ class TestQuillSkillsDropGithubHeadMdKeepLargerFixed2026091608(unittest.TestCase
                 self.assertNotIn("buy.stripe.com", live)
 
     def test_product_pages_exist(self):
-        for name in ("agent-rescue.html", "diagnostic.html", "commercial.html"):
+        for name in ("diagnostic.html", "commercial.html"):
             self.assertTrue((ROOT / name).is_file(), name)
 
 

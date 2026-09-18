@@ -15,7 +15,6 @@ PATHS = (
     "memory/LAW.md",
 )
 TIP_PATHS = (
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",

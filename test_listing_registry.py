@@ -179,10 +179,6 @@ class ListingRegistryTests(unittest.TestCase):
         self.assertEqual(autopsy["fit"], "FIT")
         self.assertEqual(autopsy["published_status"], "SURFACE_PUBLISHED")
         self.assertEqual(autopsy["chargeability_state"], "ACTIVE_CHARGEABLE")
-        self.assertEqual(
-            autopsy["chargeability"]["url"],
-            "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
-        )
 
     def test_external_surface_not_chargeable_even_with_stripe(self):
         row = self.rows["sku-tip-20260826__upwork-project-catalog"]
@@ -251,7 +247,6 @@ class ListingRegistryTests(unittest.TestCase):
     def test_survival_and_autopsy_routes_match_canonical_offers(self):
         expected = {
             "production-survival-sprint": "revenue/production_survival/README.md",
-            "agent-failure-autopsy-29": "agent-rescue.html",
         }
         exported_registry = json.loads((REG / "registry.json").read_text(encoding="utf-8"))
         exported_assets = json.loads((REG / "assets.json").read_text(encoding="utf-8"))

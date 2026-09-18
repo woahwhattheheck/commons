@@ -1,4 +1,4 @@
-"""Tip docs/TITAN_HANDS_PEERS.md surfaces live Autopsy + $199 cash doors."""
+"""Tip docs/TITAN_HANDS_PEERS.md surfaces live $199 cash doors."""
 from __future__ import annotations
 
 import pathlib

@@ -16,15 +16,29 @@ ID_OK = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 FROM_OK = re.compile(r"^[A-Z][A-Z0-9_]{1,31}$")
 
 
-def _preserve_live_cash(prev, doc):
+def _preserve_live_cash(prev, doc, root=None):
     """Keep tip $199 product doors across wakeups.json remints.
 
     Paths only — never invent Stripe. Mirrors hub_pages KEEP (newbot-13).
+    Retired products (deleted checkout page) are not resurrected.
     """
     if not isinstance(prev, dict) or not isinstance(doc, dict):
         return doc
     live = prev.get("live_cash")
     if isinstance(live, dict) and live.get("products"):
+        if root is not None:
+            live = dict(live)
+            for key in ("products", "larger_fixed"):
+                items = live.get(key)
+                if isinstance(items, list):
+                    live[key] = [
+                        item for item in items
+                        if not isinstance(item, dict)
+                        or not item.get("path")
+                        or os.path.isfile(os.path.join(root, item["path"]))
+                    ]
+            if not live.get("products") and not live.get("larger_fixed"):
+                return doc
         doc["live_cash"] = live
     return doc
 
@@ -259,7 +273,7 @@ def main():
     }
     # KEEP tip live_cash (newbot-06) across wakeup baker remints.
     public = _preserve_live_cash(
-        previous_public if isinstance(previous_public, dict) else {}, public
+        previous_public if isinstance(previous_public, dict) else {}, public, ROOT
     )
     # A scheduled check with no due work must be byte-quiet. Preserve the
     # prior observation timestamp when only wall-clock time changed.

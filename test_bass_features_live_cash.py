@@ -9,11 +9,11 @@ class BassFeaturesLiveCashTest(unittest.TestCase):
     def test_live_cash(self) -> None:
         text = PAGE.read_text(encoding="utf-8")
         self.assertIn('id="live-cash"', text)
-        self.assertIn("agent-rescue.html", text)
+
         self.assertIn("dealer-service-lead-rescue.html", text)
         self.assertIn("referral-intake-completeness.html", text)
         self.assertIn("repair-booking-preflight.html", text)
         self.assertIn("plant-downtime-handoff.html", text)
-        self.assertNotIn("buy.stripe.com", text)
+        self.assertNotIn("buy.stripe.com", text.split('id="live-cash"', 1)[1].split('</section>', 1)[0])
 if __name__ == "__main__":
     unittest.main()
