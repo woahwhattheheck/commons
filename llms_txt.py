@@ -159,17 +159,31 @@ def git_head():
 
 
 
-def _preserve_live_cash(prev, doc):
+def _preserve_live_cash(prev, doc, root=None):
     """Keep tip $199 (+ Larger fixed) product doors across projection rebakes.
 
     Scheduled llms_txt bakes rewrite head.json / pulse.json observation fields.
     Without this KEEP, machine readers lose checkout product paths after a land.
     Paths only — never invent Stripe Payment Links.
+    Retired products (deleted checkout page) are not resurrected.
     """
     if not isinstance(prev, dict) or not isinstance(doc, dict):
         return doc
     live = prev.get("live_cash")
     if isinstance(live, dict) and live.get("products"):
+        if root is not None:
+            live = dict(live)
+            for key in ("products", "larger_fixed"):
+                items = live.get(key)
+                if isinstance(items, list):
+                    live[key] = [
+                        item for item in items
+                        if not isinstance(item, dict)
+                        or not item.get("path")
+                        or os.path.isfile(os.path.join(root, item["path"]))
+                    ]
+            if not live.get("products") and not live.get("larger_fixed"):
+                return doc
         doc["live_cash"] = live
     return doc
 
@@ -206,7 +220,7 @@ def write_head_json(sha, observed_at, path=None):
     if not isinstance(prev, dict):
         prev = {}
     doc = head_document(sha, observed_at)
-    doc = _preserve_live_cash(prev, doc)
+    doc = _preserve_live_cash(prev, doc, ROOT)
     with open(path, "w", encoding="utf-8") as f:
         f.write(json.dumps(doc, indent=2, sort_keys=True) + "\n")
     return doc
@@ -316,7 +330,7 @@ def write_head_pulse(rows, path=None, head=None):
         "instruction": prev.get("instruction")
         or "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses.",
     }
-    pulse = _preserve_live_cash(prev, pulse)
+    pulse = _preserve_live_cash(prev, pulse, ROOT)
     with open(path, "w", encoding="utf-8") as f:
         f.write(json.dumps(pulse, indent=2) + "\n")
     return True
