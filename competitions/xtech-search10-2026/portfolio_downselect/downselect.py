@@ -654,13 +654,19 @@ def compile_portfolio(packet: Any) -> dict[str, Any]:
     ):
         raise ContractError("CANDIDATE_COUNT")
 
+    candidate_ids: list[str] = []
+    for index, row in enumerate(candidates_raw):
+        if type(row) is not dict:
+            raise ContractError("EXPECTED_OBJECT", f"$.candidates[{index}]")
+        candidate_id = _id(row.get("candidateId"), f"$.candidates[{index}].candidateId")
+        if candidate_id in candidate_ids:
+            raise ContractError("DUPLICATE_CANDIDATE_ID", candidate_id)
+        candidate_ids.append(candidate_id)
+
     projections = [
         _candidate(row, i, registry=registry, used=used_evidence)
         for i, row in enumerate(candidates_raw)
     ]
-    ids = [row.candidateId for row in projections]
-    if len(ids) != len(set(ids)):
-        raise ContractError("DUPLICATE_CANDIDATE_ID")
     unused = sorted(set(registry) - used_evidence)
     if unused:
         raise ContractError("UNUSED_EVIDENCE_RECORD", unused[0])
