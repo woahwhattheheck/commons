@@ -20,6 +20,8 @@ sys.path.insert(0, str(ROOT))
 
 import outreach_qualification_firewall as fw  # noqa: E402
 import firewall_model as model_impl  # noqa: E402
+import firewall_decision as decision_impl  # noqa: E402
+import writer_authority as writer_impl  # noqa: E402
 import context_authority as context_impl  # noqa: E402
 
 HIST = "2026-09-17T20:00:00Z"
@@ -78,11 +80,11 @@ def rebind_and_resign_lease(data):
 
 def prepare_current(data, *, relationship_state="OPEN", relationship_before_lease=False):
     now = fw._process_utc_now()
-    data["writer_lease"]["issued_at"] = fw._utc_text(now - timedelta(seconds=60))
+    data["writer_lease"]["issued_at"] = fw._utc_text(now - timedelta(seconds=30))
     data["writer_lease"]["expires_at"] = fw._utc_text(now + timedelta(seconds=300))
     data["writer_lease"]["status"] = "GO"
     data["contact"]["relationship_state"] = relationship_state
-    relationship_observed = now - timedelta(seconds=120 if relationship_before_lease else 30)
+    relationship_observed = now - timedelta(seconds=50 if relationship_before_lease else 10)
     resign_relationship(data, relationship_observed, now + timedelta(seconds=240))
     rebind_and_resign_lease(data)
     return now
@@ -175,6 +177,68 @@ class ContextAuthorityV2Tests(unittest.TestCase):
         resign_identity(data)
         with self.assertRaisesRegex(fw.FirewallError, "source/opportunity mismatch"):
             fw.normalize_packet(data)
+
+
+    def test_wrong_collision_key_stays_blocked_under_dedupe_global_rebind(self):
+        data = packet()
+        prepare_current(data)
+        data["writer_lease"]["collision_key"] = "f" * 64
+        lease = data["writer_lease"]
+        message = {
+            k: lease[k]
+            for k in ("lease_id", "collision_key", "seat", "session_nonce", "issued_at", "expires_at", "status")
+        }
+        lease["authority_tag_hex"] = hmac.new(
+            bytes.fromhex(TEST_WRITER_KEY_HEX), fw.canonical_json(message), hashlib.sha256
+        ).hexdigest()
+        original_decision = decision_impl.compute_dedupe_key
+        original_model = model_impl.compute_dedupe_key
+        try:
+            decision_impl.compute_dedupe_key = lambda *_: "f" * 64
+            model_impl.compute_dedupe_key = lambda *_: "f" * 64
+            out = fw.compile_current(data)
+        finally:
+            decision_impl.compute_dedupe_key = original_decision
+            model_impl.compute_dedupe_key = original_model
+        self.assertFalse(out["authorized_to_send"])
+        self.assertIn("HOLD_WRITER_LEASE_KEY", out["hold_reasons"])
+
+    def test_writer_message_global_rebind_cannot_authenticate_transplanted_lease(self):
+        data = packet()
+        prepare_current(data)
+        legitimate = copy.deepcopy(data["writer_lease"])
+        transplanted = copy.deepcopy(legitimate)
+        transplanted["collision_key"] = "f" * 64
+        signed_message = writer_impl.writer_lease_message(legitimate)
+        original_message = writer_impl.writer_lease_message
+        original_canonical = writer_impl.canonical_json
+        try:
+            writer_impl.writer_lease_message = lambda _row: signed_message
+            writer_impl.canonical_json = lambda _value: signed_message
+            self.assertFalse(writer_impl.verify_writer_lease_authority(transplanted))
+        finally:
+            writer_impl.writer_lease_message = original_message
+            writer_impl.canonical_json = original_canonical
+
+    def test_verifier_canonicalizer_rebind_cannot_ratify_resealed_tamper(self):
+        data = packet()
+        receipt = fw.compile_historical(data, as_of=HIST)
+        tampered = copy.deepcopy(receipt)
+        tampered["qualified_for_owner_review"] = False
+        tampered["qualification_state"] = "HOLD"
+        unsigned = dict(tampered)
+        unsigned.pop("receipt_sha256")
+        tampered["receipt_sha256"] = fw.sha256_hex(fw.canonical_json(unsigned))
+        original_canonical = decision_impl.canonical_json
+        original_sha = decision_impl.sha256_hex
+        try:
+            decision_impl.canonical_json = lambda _value: b"{}"
+            decision_impl.sha256_hex = lambda _value: tampered["receipt_sha256"]
+            with self.assertRaises(fw.FirewallError):
+                fw.verify_receipt(data, tampered)
+        finally:
+            decision_impl.canonical_json = original_canonical
+            decision_impl.sha256_hex = original_sha
 
     def test_process_context_key_default_resists_late_global_rebind(self):
         data = packet()
