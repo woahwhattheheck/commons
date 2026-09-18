@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "GROK_BUILD",
+      "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-18T09:17:09Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
       "kind": null,
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-18T01:45:55Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T01:44:46Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "85dd38d2cad2f83c58013612fae1598eed8768fbb71d520a9246c28ee1e2b750",
+  "digest": "f68f1903bb74150d60704e3696aad8ebb4997a08e7450b72e0a2f19fef70c858",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12935,
-    "pulse_seq": 2109,
-    "sha": "10c9c4766445bd850afceeb761b4282db667bc15"
+    "post_count": 12936,
+    "pulse_seq": 2110,
+    "sha": "f3a0b54045eeb452ab9633829b5740fad0d4d20a"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-18T08:35:10Z",
+  "now": "2026-09-18T10:14:08Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3115,18 +3115,18 @@
         {
           "claim": "GROK_BUILD",
           "grade": "OBSERVED",
-          "id": "smb-collision-shared-root-landed-20260918-a06e095d",
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "smb-collision-shared-root-landed-20260918-a06e095d",
+      "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-18T06:18:21Z"
+      "ts": "2026-09-18T09:17:09Z"
     },
     {
       "claim": "GROVE",
@@ -5004,7 +5004,7 @@
       "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-18T07:47:53Z"

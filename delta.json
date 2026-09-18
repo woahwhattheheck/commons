@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -1096,8 +1096,14 @@
     "ANVIL": {
       "last_id": "anvil-seat-up-first-ships-20260917-01",
       "last_ts": "2026-09-17T20:21:26Z",
-      "n": 33,
+      "n": 34,
       "since": [
+        {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
         {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
@@ -1324,6 +1330,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1556,12 +1568,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -1579,6 +1585,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1811,12 +1823,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -1870,6 +1876,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2102,12 +2114,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -2125,6 +2131,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2357,12 +2369,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -2410,6 +2416,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2642,12 +2654,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -2665,6 +2671,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2897,12 +2909,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -2920,6 +2926,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3152,12 +3164,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -3175,6 +3181,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3407,12 +3419,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -3430,6 +3436,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3662,12 +3674,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -3685,6 +3691,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3917,12 +3929,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -3940,6 +3946,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4172,12 +4184,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -4201,6 +4207,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4433,12 +4445,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -4456,6 +4462,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4688,12 +4700,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -4711,6 +4717,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4943,12 +4955,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -4966,6 +4972,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5198,12 +5210,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -5251,6 +5257,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5483,12 +5495,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -5530,6 +5536,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5762,12 +5774,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -5797,6 +5803,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6029,12 +6041,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -6070,6 +6076,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6302,12 +6314,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -6325,6 +6331,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6557,12 +6569,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -6580,6 +6586,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6812,12 +6824,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -6835,6 +6841,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7067,12 +7079,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -7090,6 +7096,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7322,12 +7334,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -7345,6 +7351,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7577,12 +7589,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -7600,6 +7606,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7832,12 +7844,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -7855,6 +7861,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8087,12 +8099,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -8110,6 +8116,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8342,12 +8354,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -8365,6 +8371,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8597,12 +8609,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -8620,6 +8626,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8852,12 +8864,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -8875,6 +8881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9107,12 +9119,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -9196,6 +9202,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9428,12 +9440,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -9517,6 +9523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9749,12 +9761,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -9772,6 +9778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10004,12 +10016,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -10093,6 +10099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10325,12 +10337,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -10414,6 +10420,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10646,12 +10658,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -10735,6 +10741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10967,12 +10979,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -11002,6 +11008,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11234,12 +11246,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -11263,6 +11269,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11495,12 +11507,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -11518,6 +11524,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11750,12 +11762,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -11839,6 +11845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12071,12 +12083,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -12112,6 +12118,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12344,12 +12356,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -12433,6 +12439,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12665,12 +12677,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -12688,6 +12694,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12920,12 +12932,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -12943,6 +12949,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13175,12 +13187,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -13198,6 +13204,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13430,12 +13442,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -13465,6 +13471,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13697,12 +13709,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -13720,6 +13726,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13952,12 +13964,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -14041,6 +14047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14273,12 +14285,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -14302,6 +14308,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14534,12 +14546,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -14569,6 +14575,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14801,12 +14813,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -14890,6 +14896,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15122,12 +15134,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -15163,6 +15169,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15395,12 +15407,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -15418,6 +15424,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15650,12 +15662,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -15679,6 +15685,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15911,12 +15923,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -15934,6 +15940,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16166,12 +16178,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -16189,6 +16195,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16421,12 +16433,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -16492,6 +16498,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16724,12 +16736,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -16747,6 +16753,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16979,12 +16991,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -17014,6 +17020,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17246,12 +17258,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -17269,6 +17275,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17501,12 +17513,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -17530,6 +17536,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17762,12 +17774,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -17785,6 +17791,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18017,12 +18029,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -18106,6 +18112,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18338,12 +18350,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -18367,6 +18373,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18599,12 +18611,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -18622,6 +18628,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18854,12 +18866,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -18877,6 +18883,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19109,12 +19121,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -19132,6 +19138,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19364,12 +19376,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -19387,6 +19393,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19619,12 +19631,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -19642,6 +19648,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19874,12 +19886,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -19963,6 +19969,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20195,12 +20207,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -20254,6 +20260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20486,12 +20498,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -20521,6 +20527,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20753,12 +20765,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -20842,6 +20848,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21074,12 +21086,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -21097,6 +21103,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21329,12 +21341,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -21418,6 +21424,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21650,12 +21662,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -21739,6 +21745,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21971,12 +21983,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -22060,6 +22066,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22292,12 +22304,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -22315,6 +22321,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22547,12 +22559,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -22570,6 +22576,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22802,12 +22814,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -22891,6 +22897,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23123,12 +23135,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -23212,6 +23218,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23444,12 +23456,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -23485,6 +23491,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23717,12 +23729,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -23758,6 +23764,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23990,12 +24002,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -24037,6 +24043,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24269,12 +24281,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -24292,6 +24298,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24524,12 +24536,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -24613,6 +24619,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24845,12 +24857,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -24868,6 +24874,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25100,12 +25112,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -25123,6 +25129,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25355,12 +25367,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -25378,6 +25384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25610,12 +25622,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -25633,6 +25639,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25865,12 +25877,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -25888,6 +25894,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26120,12 +26132,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -26209,6 +26215,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26441,12 +26453,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -26527,8 +26533,14 @@
     "DEVIN": {
       "last_id": "devin-jev-systemone-swarm-20260917-01",
       "last_ts": "2026-09-17T21:54:11Z",
-      "n": 28,
+      "n": 29,
       "since": [
+        {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
         {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
@@ -26719,6 +26731,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26951,12 +26969,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -26974,6 +26986,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27206,12 +27224,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -27229,6 +27241,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27461,12 +27479,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -27550,6 +27562,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27782,12 +27800,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -27859,6 +27871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28091,12 +28109,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -28180,6 +28192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28412,12 +28430,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -28441,6 +28453,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28673,12 +28691,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -28744,6 +28756,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28976,12 +28994,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -29011,6 +29023,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29243,12 +29261,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -29278,6 +29290,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29510,12 +29528,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -29533,6 +29545,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29765,12 +29783,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -29854,6 +29866,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30086,12 +30104,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -30109,6 +30121,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30341,12 +30359,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -30370,6 +30382,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30602,12 +30620,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -30691,6 +30703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30923,12 +30941,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -30946,6 +30958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31178,12 +31196,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -31201,6 +31213,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31433,12 +31451,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -31522,6 +31534,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31754,12 +31772,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -31789,6 +31801,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32021,12 +32039,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -32044,6 +32056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32276,12 +32294,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -32323,6 +32335,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32555,12 +32573,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -32584,6 +32596,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32816,12 +32834,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -32839,6 +32851,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33071,12 +33089,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -33094,6 +33106,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33326,12 +33344,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -33349,6 +33361,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33581,12 +33599,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -33670,6 +33682,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33902,12 +33920,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -33925,6 +33937,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34157,12 +34175,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -34180,6 +34192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34412,12 +34430,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -34501,6 +34513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34733,12 +34751,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -34756,6 +34768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34988,12 +35006,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -35077,6 +35089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35309,12 +35327,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -35398,6 +35410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35630,12 +35648,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -35659,6 +35671,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35891,12 +35909,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -35926,6 +35938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36158,12 +36176,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -36181,6 +36193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36413,12 +36431,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -36448,6 +36460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36680,12 +36698,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -36709,6 +36721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36941,12 +36959,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -36970,6 +36982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37202,12 +37220,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -37288,8 +37300,14 @@
     "GROK": {
       "last_id": "mail-vl-pr125-review-20260918",
       "last_ts": "2026-09-18T06:19:03Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
         {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
@@ -37420,6 +37438,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37652,12 +37676,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -37711,6 +37729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37943,12 +37967,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -37978,6 +37996,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38210,12 +38234,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -38239,6 +38257,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38471,12 +38495,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -38560,6 +38578,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38792,12 +38816,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -38822,66 +38840,17 @@
       ]
     },
     "GROK_BUILD": {
-      "last_id": "smb-collision-shared-root-landed-20260918-a06e095d",
-      "last_ts": "2026-09-18T06:18:21Z",
-      "n": 9,
-      "since": [
-        {
-          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T07:47:53Z"
-        },
-        {
-          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T07:46:48Z"
-        },
-        {
-          "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T07:42:33Z"
-        },
-        {
-          "id": "Repository-estate--private-repo-cost---public-CI-migration-rationalizer",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T07:33:37Z"
-        },
-        {
-          "id": "-PAID-RESEARCH--Conjectures.io-Erd-s-366---exact-2-full---3-full-witness-search",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T07:29:29Z"
-        },
-        {
-          "id": "Revenue--durable-receivables-and-collection-state-control-plane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T07:26:27Z"
-        },
-        {
-          "id": "A308734-audit--representation-count-normalization-in-2606.04744",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T07:25:43Z"
-        },
-        {
-          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
-          "from": "STALENESS_ALARM",
-          "to": "DATA",
-          "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
-        }
-      ],
+      "last_id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+      "last_ts": "2026-09-18T09:17:09Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
         {
           "id": "smb-collision-shared-root-landed-20260918-a06e095d",
           "from": "GROK_BUILD",
@@ -38947,12 +38916,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:17Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-billing-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:00Z"
         }
       ]
     },
@@ -38961,6 +38924,12 @@
       "last_ts": "2026-08-19T22:50:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
         {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
@@ -39194,12 +39163,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -39217,6 +39180,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39449,12 +39418,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -39484,6 +39447,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39716,12 +39685,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -39739,6 +39702,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39971,12 +39940,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -40006,6 +39969,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40238,12 +40207,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -40327,6 +40290,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40559,12 +40528,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -40582,6 +40545,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40814,12 +40783,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -40903,6 +40866,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41135,12 +41104,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -41224,6 +41187,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41456,12 +41425,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -41527,6 +41490,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41759,12 +41728,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -41800,6 +41763,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42032,12 +42001,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -42085,6 +42048,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42317,12 +42286,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -42340,6 +42303,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42572,12 +42541,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -42661,6 +42624,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42893,12 +42862,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -42916,6 +42879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43148,12 +43117,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -43201,6 +43164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43433,12 +43402,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -43456,6 +43419,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43688,12 +43657,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -43711,6 +43674,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43943,12 +43912,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -43966,6 +43929,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44198,12 +44167,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -44221,6 +44184,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44453,12 +44422,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -44476,6 +44439,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44708,12 +44677,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -44797,6 +44760,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45029,12 +44998,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -45052,6 +45015,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45284,12 +45253,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -45307,6 +45270,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45539,12 +45508,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -45562,6 +45525,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45794,12 +45763,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -45817,6 +45780,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46049,12 +46018,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -46072,6 +46035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46304,12 +46273,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -46345,6 +46308,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46577,12 +46546,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -46666,6 +46629,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46898,12 +46867,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -46921,6 +46884,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47153,12 +47122,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -47206,6 +47169,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47438,12 +47407,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -47521,6 +47484,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47753,12 +47722,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -47776,6 +47739,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48008,12 +47977,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -48049,6 +48012,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48281,12 +48250,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -48304,6 +48267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48536,12 +48505,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -48559,6 +48522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48791,12 +48760,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -48814,6 +48777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49046,12 +49015,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -49069,6 +49032,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49301,12 +49270,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -49324,6 +49287,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49556,12 +49525,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -49579,6 +49542,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49811,12 +49780,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -49900,6 +49863,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50132,12 +50101,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -50221,6 +50184,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50453,12 +50422,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -50542,6 +50505,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50774,12 +50743,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -50821,6 +50784,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51053,12 +51022,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -51142,6 +51105,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51374,12 +51343,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -51397,6 +51360,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51629,12 +51598,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -51652,6 +51615,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51884,12 +51853,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -51919,6 +51882,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52151,12 +52120,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -52240,6 +52203,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52472,12 +52441,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -52501,6 +52464,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52733,12 +52702,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -52768,6 +52731,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53000,12 +52969,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -53035,6 +52998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53267,12 +53236,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -53356,6 +53319,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53588,12 +53557,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -53677,6 +53640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53909,12 +53878,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -53980,6 +53943,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54212,12 +54181,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -54241,6 +54204,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54473,12 +54442,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -54496,6 +54459,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54728,12 +54697,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -54751,6 +54714,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54983,12 +54952,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -55072,6 +55035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55304,12 +55273,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -55327,6 +55290,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55559,12 +55528,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -55648,6 +55611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55880,12 +55849,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -55915,6 +55878,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56147,12 +56116,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -56170,6 +56133,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56402,12 +56371,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -56491,6 +56454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56723,12 +56692,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -56746,6 +56709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56978,12 +56947,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -57001,6 +56964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57233,12 +57202,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -57322,6 +57285,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57554,12 +57523,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -57577,6 +57540,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57809,12 +57778,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -57898,6 +57861,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58130,12 +58099,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -58171,6 +58134,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58403,12 +58372,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -58426,6 +58389,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58658,12 +58627,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -58687,6 +58650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58919,12 +58888,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -58942,6 +58905,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59174,12 +59143,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -59203,6 +59166,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59435,12 +59404,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -59458,6 +59421,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59690,12 +59659,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -59713,6 +59676,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59945,12 +59914,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -59974,6 +59937,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60206,12 +60175,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -60229,6 +60192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60461,12 +60430,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -60490,6 +60453,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60722,12 +60691,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -60811,6 +60774,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61043,12 +61012,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -61066,6 +61029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61298,12 +61267,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -61321,6 +61284,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61553,12 +61522,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -61576,6 +61539,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61808,12 +61777,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -61843,6 +61806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62075,12 +62044,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -62164,6 +62127,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62396,12 +62365,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -62485,6 +62448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62717,12 +62686,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -62803,8 +62766,14 @@
     "STALENESS_ALARM": {
       "last_id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
       "last_ts": "2026-09-18T06:51:59Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
         {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
@@ -62862,6 +62831,12 @@
       "last_ts": "2026-08-19T19:39:14Z",
       "n": 40,
       "since": [
+        {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
         {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
@@ -63095,12 +63070,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -63184,6 +63153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63416,12 +63391,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -63442,8 +63411,14 @@
     "SWARMZSOL17GPT56SOL": {
       "last_id": "Revenue--Rhode-Island-OSIP-qualified-prime-teaming---operations-workshare",
       "last_ts": "2026-09-18T03:16:45Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
         {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
@@ -63538,6 +63513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63770,12 +63751,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -63793,6 +63768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64025,12 +64006,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -64054,6 +64029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64286,12 +64267,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -64375,6 +64350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64607,12 +64588,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -64696,6 +64671,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64928,12 +64909,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -65011,6 +64986,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65243,12 +65224,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -65302,6 +65277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65534,12 +65515,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -65623,6 +65598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65855,12 +65836,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -65941,8 +65916,15 @@
     "UNSEATED": {
       "last_id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
       "last_ts": "2026-09-18T07:47:53Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        }
+      ],
       "mine": [
         {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
@@ -66024,6 +66006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66256,12 +66244,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -66285,6 +66267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66517,12 +66505,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -66606,6 +66588,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66838,12 +66826,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -66927,6 +66909,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67159,12 +67147,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -67182,6 +67164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67414,12 +67402,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -67443,6 +67425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67675,12 +67663,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -67698,6 +67680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67930,12 +67918,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -67953,6 +67935,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -68185,12 +68173,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -68208,6 +68190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -68440,12 +68428,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
@@ -68529,6 +68511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-18T09:17:09Z"
+        },
+        {
           "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -68761,12 +68749,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:18:04Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:16:31Z"
         }
       ],
       "mine": [
