@@ -9,6 +9,7 @@ from pathlib import Path
 import pytest
 
 from tools.repo_estate_rationalizer import rationalizer as rr
+from tools.repo_estate_rationalizer import schema as rr_schema
 
 NOW = datetime(2026, 9, 18, 7, 35, 0, tzinfo=UTC)
 SHA = "a" * 40
@@ -277,6 +278,23 @@ def test_exported_policy_globals_cannot_widen_captured_generation(monkeypatch):
     assert row["state"] == "PUBLICATION_REVIEW"
     assert packet["authority"]["repository_visibility_mutation_authorized"] is False
     assert packet["authority"]["publication_safety_certified"] is False
+
+
+def test_schema_dependency_rebinding_cannot_widen_captured_generation(monkeypatch):
+    generation = test_generation()
+    stale = evidence([ev(observed="2026-09-01T00:00:00Z")])
+
+    monkeypatch.setattr(rr_schema, "_fresh", lambda *_args: True)
+    monkeypatch.setattr(rr_schema, "MAX_EVIDENCE_AGE", timedelta(days=9999))
+    monkeypatch.setattr(rr_schema, "VISIBILITY", {"public", "private", "forged"})
+    monkeypatch.setattr(rr_schema, "INTENTS", {"keep_private", "review_public", "review_archive", "publish_now"})
+
+    packet = generation.compile_at(snapshot(), stale, now=NOW)
+    row = by_repo(packet, "private-one")
+    assert row["state"] == "HOLD"
+    assert "SECRET_SCAN_NOT_CURRENT_CLEAR" in row["reasons"]
+    assert "OPEN_WORK_SNAPSHOT_STALE" in row["reasons"]
+    assert "DEPENDENCY_SNAPSHOT_STALE" in row["reasons"]
 
 
 def test_evidence_row_order_is_receipt_independent():
