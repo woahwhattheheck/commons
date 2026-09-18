@@ -153,8 +153,9 @@ def _bind_relationship_authority(
     contact: dict[str, Any],
     identity: dict[str, Any],
     _verify=verify_context_authority,
+    _payload_fn=_relationship_authority_payload,
 ) -> dict[str, Any]:
-    payload = _relationship_authority_payload(source, source_digest, contact, identity)
+    payload = _payload_fn(source, source_digest, contact, identity)
     contact["relationship_authority_authenticated"] = _verify(
         "RELATIONSHIP", payload, contact["relationship_authority_tag_hex"]
     )
@@ -163,13 +164,19 @@ def _bind_relationship_authority(
     return contact
 
 
-def compute_dedupe_key(source: dict[str, Any], contact: dict[str, Any]) -> str:
+def compute_dedupe_key(
+    source: dict[str, Any],
+    contact: dict[str, Any],
+    _sha=sha256_hex,
+    _canonical=canonical_json,
+    _err=FirewallError,
+) -> str:
     try:
         canonical_org_id = contact["canonical_org_id"]
         canonical_purpose_id = contact["canonical_purpose_id"]
     except KeyError as exc:
-        raise FirewallError("canonical identity binding required before dedupe") from exc
-    return sha256_hex(canonical_json({
+        raise _err("canonical identity binding required before dedupe") from exc
+    return _sha(_canonical({
         "opportunity_id": source["opportunity_id"],
         "canonical_org_id": canonical_org_id,
         "canonical_purpose_id": canonical_purpose_id,
@@ -198,26 +205,43 @@ def _validate_lease(value: Any, _verify_writer_authority=verify_writer_lease_aut
     return row
 
 
-def normalize_packet(payload: Any, _validate_lease_fn=_validate_lease) -> dict[str, Any]:
-    row = _exact_keys(payload, TOP_KEYS, "packet")
-    if row["schema"] != SCHEMA:
-        raise FirewallError("wrong packet schema")
-    source = _validate_source(row["source_packet"])
-    expected_source_digest = _digest(row["source_packet_sha256"], "source_packet_sha256")
-    if sha256_hex(canonical_json(source)) != expected_source_digest:
-        raise FirewallError("source_packet digest mismatch")
-    qualifications = _validate_qualifications(row["qualifications"])
-    economics = _validate_economics(row["economics"])
-    contact = _validate_contact(row["contact"])
-    identity = _validate_identity_binding(
+def normalize_packet(
+    payload: Any,
+    _validate_lease_fn=_validate_lease,
+    _exact=_exact_keys,
+    _source=_validate_source,
+    _digest_fn=_digest,
+    _sha=sha256_hex,
+    _canonical=canonical_json,
+    _quals=_validate_qualifications,
+    _econ=_validate_economics,
+    _contact=_validate_contact,
+    _identity=_validate_identity_binding,
+    _bind_relationship=_bind_relationship_authority,
+    _token_fn=_token,
+    _schema=SCHEMA,
+    _top_keys=TOP_KEYS,
+    _err=FirewallError,
+) -> dict[str, Any]:
+    row = _exact(payload, _top_keys, "packet")
+    if row["schema"] != _schema:
+        raise _err("wrong packet schema")
+    source = _source(row["source_packet"])
+    expected_source_digest = _digest_fn(row["source_packet_sha256"], "source_packet_sha256")
+    if _sha(_canonical(source)) != expected_source_digest:
+        raise _err("source_packet digest mismatch")
+    qualifications = _quals(row["qualifications"])
+    economics = _econ(row["economics"])
+    contact = _contact(row["contact"])
+    identity = _identity(
         row["identity_binding"], source=source, source_digest=expected_source_digest, contact=contact
     )
-    contact = _bind_relationship_authority(source, expected_source_digest, contact, identity)
-    requesting_seat = _token(row["requesting_seat"], "requesting_seat")
-    session_nonce = _token(row["session_nonce"], "session_nonce")
+    contact = _bind_relationship(source, expected_source_digest, contact, identity)
+    requesting_seat = _token_fn(row["requesting_seat"], "requesting_seat")
+    session_nonce = _token_fn(row["session_nonce"], "session_nonce")
     lease = None if row["writer_lease"] is None else _validate_lease_fn(row["writer_lease"])
     return {
-        "schema": SCHEMA,
+        "schema": _schema,
         "source_packet": source,
         "source_packet_sha256": expected_source_digest,
         "qualifications": qualifications,
