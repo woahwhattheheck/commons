@@ -64,6 +64,17 @@ class ProviderTests(unittest.TestCase):
         self.assertEqual("60", result.retry_after)
         self.assertIsNone(result.payload)
 
+        # Retry-After itself is enough to preserve backoff if the error body
+        # cannot be parsed, instead of allowing an immediate cross-route retry.
+        malformed = urllib.error.HTTPError(
+            API_ROOT + "/repos/o/r", 403, "Forbidden", {"Retry-After": "45"}, io.BytesIO(b"not-json")
+        )
+        provider._opener.open.side_effect = malformed
+        result = provider("repo.get", {"owner": "o", "repo": "r"})
+        self.assertTrue(result.secondary_limited)
+        self.assertEqual("45", result.retry_after)
+        self.assertIsNone(result.payload)
+
     def test_primary_limit_headers_preserved(self):
         provider = GitHubProvider("synthetic-token-never-real")
         err = urllib.error.HTTPError(API_ROOT + "/repos/o/r", 403, "Forbidden", {"X-RateLimit-Remaining": "0", "X-RateLimit-Reset": "2000"}, io.BytesIO(b'{"message":"rate limit exceeded"}'))
