@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 119,
-    "open_pull_requests": 66,
+    "open_issues": 120,
+    "open_pull_requests": 64,
     "runs_in_progress": 15,
-    "runs_queued": 577
+    "runs_queued": 585
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,35 +69,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-meridian-f7/tn-cashiering-response-scope",
-      "created_at": "2026-09-18T07:47:49Z",
-      "draft": false,
-      "head_sha": "c5d803046ac30edaa88b5694d6306ab14a97bb70",
-      "number": 16020,
-      "title": "Revenue: complete Tennessee cashiering response-material slice",
-      "updated_at": "2026-09-18T07:47:49Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkestrel/e2b-executor-current-20260918",
-      "created_at": "2026-09-18T07:45:11Z",
-      "draft": false,
-      "head_sha": "b87fbf9e547eab6287634606f7163768c4041882",
-      "number": 16016,
-      "title": "E2B: recover free off-owner execution receipts on current main",
-      "updated_at": "2026-09-18T07:46:28Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "z-copperleaf/actions-auditor-classifier-generation-15756",
       "created_at": "2026-09-18T07:42:48Z",
       "draft": false,
-      "head_sha": "df996051fd23d870adc33e4535b57df42e1b8cf0",
+      "head_sha": "8f0604b1b9dabcf0c76e8bece76b799bbb1c579c",
       "number": 16015,
       "title": "Harden stale Actions queue auditor classifier generation",
-      "updated_at": "2026-09-18T07:45:49Z"
+      "updated_at": "2026-09-18T07:50:33Z"
     },
     {
       "author": "woahwhattheheck",
@@ -175,6 +153,28 @@
       "number": 15949,
       "title": "CI: repair workflow budget with event-scoped schedule cancellation",
       "updated_at": "2026-09-18T07:48:02Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/recover-org-outbound-chain-14269-20260918",
+      "created_at": "2026-09-18T04:38:17Z",
+      "draft": false,
+      "head_sha": "e3c64ad3bdca75688fbbab953ce473f9c77e0266",
+      "number": 15945,
+      "title": "fix(outbound): recover mandatory organization provider chain on fresh main",
+      "updated_at": "2026-09-18T07:49:49Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-costaqua/15926-provider-observed-truth-20260917",
+      "created_at": "2026-09-18T04:04:40Z",
+      "draft": false,
+      "head_sha": "ee52bc783f9ba97c32a3cbc9213ab3335dcf5457",
+      "number": 15942,
+      "title": "Repair provider submission observation truth",
+      "updated_at": "2026-09-18T06:32:24Z"
     }
   ],
   "open_heads": {
@@ -201,7 +201,7 @@
     "15732": "8cd5546c7fef5d2d2b48101e7a40d134ddaed2b0",
     "15733": "2b7131508bb5a57c1c41b5befc05a979673afbb1",
     "15751": "b87f58434b653ee8bed28b8c85bbe3eb49d95905",
-    "15756": "0b3c329d99a1c4d912942f3eaa5e3e5ce3e1842a",
+    "15756": "d70961fef442bf56de2502cec31762c224db9cb8",
     "15758": "3f6c365bc02476ed9ecaab888d4faf07b0a8b6fc",
     "15761": "9d28247a10ad1b911050eb865b7a74bba6eb5cf2",
     "15796": "a9e5a6f90592f9a99a5e05b27f32110e180813a5",
@@ -233,7 +233,7 @@
     "15927": "7a3ac3bda36fcf33b62d0817c18120111deb3874",
     "15940": "af98a5bdfdbfc9eba99318aa675843e159fe0d00",
     "15942": "ee52bc783f9ba97c32a3cbc9213ab3335dcf5457",
-    "15945": "a829fb646a569f7e03aca9b19504e36bfb822022",
+    "15945": "e3c64ad3bdca75688fbbab953ce473f9c77e0266",
     "15949": "33827c082c125ff900463bc78876658147831c0e",
     "15952": "57bca6a648d707af84952a944c80f8096feed155",
     "15953": "76a838d99f33d6acee4b73e7c833cd4da80f8caa",
@@ -241,14 +241,34 @@
     "15970": "7e7e8af26d481f78de8ecad7e525a43c1a338b10",
     "16007": "0109cf93e012b1fe4c9a93aaeb9f37e26482a593",
     "16012": "a08d73c13394cf6f1719befdb168065ec94381c8",
-    "16015": "df996051fd23d870adc33e4535b57df42e1b8cf0",
-    "16016": "b87fbf9e547eab6287634606f7163768c4041882",
-    "16020": "c5d803046ac30edaa88b5694d6306ab14a97bb70"
+    "16015": "8f0604b1b9dabcf0c76e8bece76b799bbb1c579c"
   },
-  "pulls_listed": 66,
+  "pulls_listed": 64,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 38.5,
+  "queue_depth_per_runner": 39.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zkestrel/e2b-executor-current-20260918",
+      "closed_at": "2026-09-18T07:51:21Z",
+      "head_sha": "b87fbf9e547eab6287634606f7163768c4041882",
+      "merged_at": null,
+      "number": 16016,
+      "state": "CLOSED",
+      "title": "E2B: recover free off-owner execution receipts on current main"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-meridian-f7/tn-cashiering-response-scope",
+      "closed_at": "2026-09-18T07:49:46Z",
+      "head_sha": "c5d803046ac30edaa88b5694d6306ab14a97bb70",
+      "merged_at": "2026-09-18T07:49:46Z",
+      "number": 16020,
+      "state": "MERGED",
+      "title": "Revenue: complete Tennessee cashiering response-material slice"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -391,32 +411,10 @@
       "number": 16001,
       "state": "CLOSED",
       "title": "CI + revenue: restore 67-slot budget on current integrations and recover Kentucky RFI"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zcost/ky-rfi-2700000006-workflow-surface-recovery-20260918",
-      "closed_at": "2026-09-18T07:37:31Z",
-      "head_sha": "1120270bd502573578b5ba915667e2bc15aed871",
-      "merged_at": null,
-      "number": 15956,
-      "state": "CLOSED",
-      "title": "[SUPERSEDED by #16005] Revenue: recover Kentucky reporting carrier inside 67-workflow budget"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-finwick-delta9/ky-rfi-15956-donor-only-20260918",
-      "closed_at": "2026-09-18T07:36:40Z",
-      "head_sha": "a5e169955328c4ab9bd97273385569fc957054e1",
-      "merged_at": "2026-09-18T07:36:40Z",
-      "number": 16005,
-      "state": "MERGED",
-      "title": "Revenue: recover Kentucky reporting carrier without unrelated workflow archive"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T07:49:25Z",
+  "unchanged_since": "2026-09-18T07:52:58Z",
   "undatable_pulls": []
 }
