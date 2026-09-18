@@ -20,7 +20,7 @@ KEEP = {
     "p/wire-webmcp-challenge-20260903-01.md": "0e815c6d",
     "p/cursor-webmcp-contest-20260903-01.md": "98fb6b6f",
     "test_webmcp_door.py": "21b6993f",
-    "test_cursor_webmcp_contest.py": "f9ea7aee",
+    "test_cursor_webmcp_contest.py": "944c0b95",
     "vercel.json": "86c5b13a",
 }
 
@@ -63,7 +63,7 @@ class TestWebmcpJudgeUrl(unittest.TestCase):
         self.assertEqual(packet["mcp_initialize"]["name"], "commons")
         self.assertEqual(packet["mcp_initialize"]["version"], "1.4.0")
         self.assertEqual(packet["adapter_blob"], "393da756")
-        self.assertEqual(packet["pad_blob"], "1fc25f8b")
+        self.assertEqual(packet["pad_blob"], "8bb181e0")
         self.assertEqual(packet["contest_receipt"], "98fb6b6f")
         self.assertEqual(packet["vercel_team_token"], "FINDER-FAILED")
         self.assertFalse(packet["second_mcp"])

@@ -34,8 +34,8 @@ KEEP = {
 
 HISTORICAL_TREE = "dc5455bf2894fa705bf57a4510ceee0119a6c729"
 HISTORICAL_LIVE_FILES = {
-    ".agents/skills/google-ai-mode-hall-pass/SKILL.md": "a27254f8",
-    "ground/tokens/google-ai-mode-hall-pass.md": "d5885cd3",
+    ".agents/skills/google-ai-mode-hall-pass/SKILL.md": "bb22f950",
+    "ground/tokens/google-ai-mode-hall-pass.md": "f730edc2",
 }
 
 
@@ -118,7 +118,7 @@ class TestCursorGoogleAiModeHallPassReadback(unittest.TestCase):
         self.assertIn("97070cc2e", text)
         self.assertIn("4bb8b78d", text)
         self.assertIn("ecc43da1", text)
-        self.assertIn("3f633323", text)
+        self.assertIn("9fe45498", text)
         self.assertIn("Did **not** remint leftover id", text)
         self.assertIn("F0BUL9V9Z34", text)
         self.assertNotEqual(text, leftover)

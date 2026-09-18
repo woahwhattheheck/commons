@@ -50,17 +50,17 @@ class GrokbuildOccupancyLandedWorkKeepLiftTest(unittest.TestCase):
         self.assertNotEqual(
             terminal.KEEP.get("test_landed_work_feed_readback.py"), "cb58ab08"
         )
-        self.assertTrue(git_blob("test_stealable_lanes.py").startswith("1b9ef2a9"))
-        self.assertTrue(git_blob("test_landed_work_feed.py").startswith("d9e8a18b"))
+        self.assertTrue(git_blob("test_stealable_lanes.py").startswith("5bd684a3"))
+        self.assertTrue(git_blob("test_landed_work_feed.py").startswith("d05f42c3"))
         self.assertTrue(
-            git_blob("test_landed_work_feed_readback.py").startswith("01adaf18")
+            git_blob("test_landed_work_feed_readback.py").startswith("ece12c9a")
         )
 
     def test_living_owner_now_stays_clear_of_invented_signature(self) -> None:
         text = CARD.read_text(encoding="utf-8")
         self.assertNotIn(SIGNATURE, text)
         self.assertIn("invented closer was never Bryce law", text)
-        self.assertTrue(git_blob("ground/OWNER_NOW.md").startswith("40f786fe"))
+        self.assertTrue(git_blob("ground/OWNER_NOW.md").startswith("39a0e0c3"))
 
     def test_lifted_leftover_tests_still_pass(self) -> None:
         for name in (

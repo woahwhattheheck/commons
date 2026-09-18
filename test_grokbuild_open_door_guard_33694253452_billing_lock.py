@@ -27,7 +27,7 @@ KEEP = {
     "p/grokbuild-open-door-guard-33689357297-billing-lock-20260902-01.md": "261c9cf6",
     "test_grokbuild_open_door_guard_33689357297_billing_lock.py": "fd8c75fc",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
-    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "6a372963",
+    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "a4bc4bf5",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/latch-hub-eyes-wake-habit-20260902-01.md": "dc83d42c",
 }

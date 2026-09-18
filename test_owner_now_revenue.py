@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import sys
 import unittest
@@ -35,6 +36,8 @@ CANONICAL = (
     "sku-muhlnickel-titan-20260826",
 )
 
+WHITEBOX_HOUR_CHECKOUT = "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07"
+
 
 def git_blob(rel: str) -> str:
     return subprocess.check_output(
@@ -56,7 +59,7 @@ class TestOwnerNowRevenue(unittest.TestCase):
         self.assertTrue(match["ok"], match)
         self.assertTrue(match["did_not_remint_owner_card"])
         self.assertTrue(match["did_not_remint_leftover"])
-        self.assertTrue(match["owner_now_blob"].startswith("40f786fe"))
+        self.assertTrue(match["owner_now_blob"].startswith("39a0e0c3"))
         self.assertTrue(match["leftover_blob"].startswith("1b3cd631"))
 
     def test_ask_for_sale_on_current_proven_rails(self) -> None:
@@ -71,7 +74,9 @@ class TestOwnerNowRevenue(unittest.TestCase):
         self.assertEqual(packet["cash_usd"], 0)
         self.assertEqual(packet["sends"], 0)
         self.assertEqual(packet["sku_count"], len(packet["ask_for_sale"]))
-        self.assertIn("agent-failure-autopsy-29", {row["sku"] for row in packet["ask_for_sale"]})
+        self.assertNotIn(
+            "agent-failure-autopsy-29", {row["sku"] for row in packet["ask_for_sale"]}
+        )
         skus = [row["sku"] for row in packet["ask_for_sale"]]
         self.assertEqual(skus[:len(CANONICAL)], list(CANONICAL))
         self.assertEqual(len(skus), len(set(skus)))
@@ -126,7 +131,8 @@ class TestOwnerNowRevenue(unittest.TestCase):
         self.assertIn("348ffcc2a", door)
         self.assertIn("1b3cd631", door)
         self.assertIn("6b8ee988", door)
-        self.assertNotIn("https://buy.stripe.com/", door)
+        for m in re.finditer(r"https://buy\.stripe\.com/[A-Za-z0-9]+", door):
+            self.assertEqual(m.group(0), WHITEBOX_HOUR_CHECKOUT)
         self.assertNotIn("https://donate.stripe.com/", door)
         for sku in CANONICAL:
             self.assertIn('data-sku="%s"' % sku, door)

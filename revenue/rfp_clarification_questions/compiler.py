@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import argparse
-import fcntl
 import json
 import os
 import stat
@@ -53,8 +52,11 @@ def _open_regular(path: str, *, write: bool = False, exclusive: bool = False):
         st = os.fstat(fd)
         if not stat.S_ISREG(st.st_mode):
             raise Error(f"{path}: regular file required")
-        current = fcntl.fcntl(fd, fcntl.F_GETFL)
-        fcntl.fcntl(fd, fcntl.F_SETFL, current & ~os.O_NONBLOCK)
+        if hasattr(os, "O_NONBLOCK"):
+            import fcntl
+
+            current = fcntl.fcntl(fd, fcntl.F_GETFL)
+            fcntl.fcntl(fd, fcntl.F_SETFL, current & ~os.O_NONBLOCK)
         return fd
     except Exception:
         os.close(fd)

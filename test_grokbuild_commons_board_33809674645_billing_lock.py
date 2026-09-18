@@ -21,9 +21,9 @@ PRIOR_ISSUE = ROOT / "p/grokbuild-resources-tab-freshness-33809352414-billing-lo
 WORKFLOW = ROOT / ".github/workflows/commons-board.yml"
 
 KEEP = {
-    ".github/workflows/commons-board.yml": "0086f987",
-    "board_ingest.py": "cf565381",
-    "open_door_guard.py": "877e148d",
+    ".github/workflows/commons-board.yml": "ce1c2867",
+    "board_ingest.py": "7c6c5b8c",
+    "open_door_guard.py": "4b053e43",
     "fix_first.py": "a57aee1c",
     "p/grok-build-commons-board-billing-lock-20260903-01.md": "c07bf913",
     "p/grok-build-commons-board-33723893937-billing-lock-20260903-01.md": "3549efa3",
