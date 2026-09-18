@@ -795,10 +795,6 @@ def _verify_current_at_impl(
 
 def _make_public_generation(
     authority_key: bytes | None,
-    _loads=json.loads,
-    _dumps=json.dumps,
-    _json_decode_error=json.JSONDecodeError,
-    _hmac_new=hmac.new,
     _sha256=hashlib.sha256,
     _compare=hmac.compare_digest,
     _process_now=datetime.now,
@@ -814,6 +810,9 @@ def _make_public_generation(
     _dict_type=dict,
     _len=len,
     _abs=abs,
+    _sorted=sorted,
+    _ord=ord,
+    _chr=chr,
     _set_type=set,
     _any=any,
     _all=all,
@@ -996,59 +995,249 @@ def _make_public_generation(
             _err=_err,
         )
 
+    def sealed_escape_string(value: str) -> str:
+        parts = ['"']
+        for ch in value:
+            code = _ord(ch)
+            if ch == '"':
+                parts.append('\\\"')
+            elif ch == "\\":
+                parts.append("\\\\")
+            elif ch == "\b":
+                parts.append("\\b")
+            elif ch == "\f":
+                parts.append("\\f")
+            elif ch == "\n":
+                parts.append("\\n")
+            elif ch == "\r":
+                parts.append("\\r")
+            elif ch == "\t":
+                parts.append("\\t")
+            elif code < 0x20:
+                parts.append("\\u" + f"{code:04x}")
+            else:
+                parts.append(ch)
+        parts.append('"')
+        return "".join(parts)
+
     def sealed_canonical(value: Any) -> bytes:
         frozen = sealed_freeze(value)
+
+        def encode(node: Any) -> str:
+            node_type = _type(node)
+            if node is None:
+                return "null"
+            if node_type is _bool_type:
+                return "true" if node else "false"
+            if node_type is _int_type:
+                return _str_type(node)
+            if node_type is _str_type:
+                return sealed_escape_string(node)
+            if node_type is _list_type:
+                return "[" + ",".join(encode(child) for child in node) + "]"
+            if node_type is _dict_type:
+                return "{" + ",".join(
+                    sealed_escape_string(key) + ":" + encode(node[key])
+                    for key in _sorted(node)
+                ) + "}"
+            raise _err("cannot canonicalize non-JSON value")
+
         try:
-            return _dumps(
-                frozen, sort_keys=True, separators=(",", ":"), ensure_ascii=False
-            ).encode("utf-8", "strict")
+            return encode(frozen).encode("utf-8", "strict")
         except (_unicode_error, _value_error, _type_error, _recursion_error) as exc:
             raise _err("cannot canonicalize JSON") from exc
 
     def sealed_sha(value: Any) -> str:
         return _sha256(sealed_canonical(value)).hexdigest()
 
-    def sealed_reject_float(_: str) -> Any:
-        raise _err("floating-point JSON is not allowed")
+    def sealed_parse_json(text: str) -> Any:
+        length = _len(text)
+        index = 0
+        nodes = 0
+        whitespace = " \t\r\n"
+        hex_digits = "0123456789abcdefABCDEF"
 
-    def sealed_reject_constant(_: str) -> Any:
-        raise _err("non-finite JSON is not allowed")
+        def skip_ws(pos: int) -> int:
+            while pos < length and text[pos] in whitespace:
+                pos += 1
+            return pos
 
-    def sealed_parse_int(token: str) -> int:
-        if _len(token.lstrip("-")) > 16:
-            raise _err("integer outside safe domain")
-        value = _int_type(token)
-        if _abs(value) > max_safe_int:
-            raise _err("integer outside safe domain")
-        return value
+        def parse_string(pos: int) -> tuple[str, int]:
+            if pos >= length or text[pos] != '"':
+                raise _err("invalid JSON")
+            pos += 1
+            out: list[str] = []
+            while pos < length:
+                ch = text[pos]
+                if ch == '"':
+                    return "".join(out), pos + 1
+                if _ord(ch) < 0x20:
+                    raise _err("invalid JSON")
+                if ch != "\\":
+                    out.append(ch)
+                    pos += 1
+                    continue
+                pos += 1
+                if pos >= length:
+                    raise _err("invalid JSON")
+                esc = text[pos]
+                pos += 1
+                simple = {'"': '"', "\\": "\\", "/": "/", "b": "\b", "f": "\f", "n": "\n", "r": "\r", "t": "\t"}
+                if esc in simple:
+                    out.append(simple[esc])
+                    continue
+                if esc != "u" or pos + 4 > length:
+                    raise _err("invalid JSON")
+                token = text[pos:pos + 4]
+                if _len(token) != 4 or any(chx not in hex_digits for chx in token):
+                    raise _err("invalid JSON")
+                code = _int_type(token, 16)
+                pos += 4
+                if 0xD800 <= code <= 0xDBFF and pos + 6 <= length and text[pos:pos + 2] == "\\u":
+                    low_token = text[pos + 2:pos + 6]
+                    if _len(low_token) == 4 and all(chx in hex_digits for chx in low_token):
+                        low = _int_type(low_token, 16)
+                        if 0xDC00 <= low <= 0xDFFF:
+                            code = 0x10000 + ((code - 0xD800) << 10) + (low - 0xDC00)
+                            pos += 6
+                out.append(_chr(code))
+            raise _err("invalid JSON")
 
-    def sealed_pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
-        out: dict[str, Any] = {}
-        for key, value in pairs:
-            if key in out:
-                raise _err("duplicate JSON key")
-            out[key] = value
-        return out
+        def parse_number(pos: int) -> tuple[int, int]:
+            begin = pos
+            if text[pos] == "-":
+                pos += 1
+                if pos >= length:
+                    raise _err("invalid JSON")
+            if text[pos] == "0":
+                pos += 1
+                if pos < length and "0" <= text[pos] <= "9":
+                    raise _err("invalid JSON")
+            elif "1" <= text[pos] <= "9":
+                while pos < length and "0" <= text[pos] <= "9":
+                    pos += 1
+            else:
+                raise _err("invalid JSON")
+            if pos < length and text[pos] in ".eE":
+                raise _err("floating-point JSON is not allowed")
+            token = text[begin:pos]
+            digits = token[1:] if token.startswith("-") else token
+            if _len(digits) > 16:
+                raise _err("integer outside safe domain")
+            value = _int_type(token)
+            if _abs(value) > max_safe_int:
+                raise _err("integer outside safe domain")
+            return value, pos
+
+        def parse_value(pos: int, depth: int) -> tuple[Any, int]:
+            nonlocal nodes
+            if depth > max_depth:
+                raise _err("JSON nesting exceeds depth limit")
+            pos = skip_ws(pos)
+            if pos >= length:
+                raise _err("invalid JSON")
+            nodes += 1
+            if nodes > max_nodes:
+                raise _err("JSON graph exceeds node limit")
+            ch = text[pos]
+            if ch == '"':
+                return parse_string(pos)
+            if ch == "{":
+                pos = skip_ws(pos + 1)
+                obj: dict[str, Any] = {}
+                if pos < length and text[pos] == "}":
+                    return obj, pos + 1
+                while True:
+                    key, pos = parse_string(pos)
+                    nodes += 1
+                    if nodes > max_nodes:
+                        raise _err("JSON graph exceeds node limit")
+                    if key in obj:
+                        raise _err("duplicate JSON key")
+                    pos = skip_ws(pos)
+                    if pos >= length or text[pos] != ":":
+                        raise _err("invalid JSON")
+                    value, pos = parse_value(pos + 1, depth + 1)
+                    obj[key] = value
+                    if _len(obj) > max_rows:
+                        raise _err("mapping too large")
+                    pos = skip_ws(pos)
+                    if pos >= length:
+                        raise _err("invalid JSON")
+                    if text[pos] == "}":
+                        return obj, pos + 1
+                    if text[pos] != ",":
+                        raise _err("invalid JSON")
+                    pos = skip_ws(pos + 1)
+            if ch == "[":
+                pos = skip_ws(pos + 1)
+                arr: list[Any] = []
+                if pos < length and text[pos] == "]":
+                    return arr, pos + 1
+                while True:
+                    value, pos = parse_value(pos, depth + 1)
+                    arr.append(value)
+                    if _len(arr) > max_rows:
+                        raise _err("collection too large")
+                    pos = skip_ws(pos)
+                    if pos >= length:
+                        raise _err("invalid JSON")
+                    if text[pos] == "]":
+                        return arr, pos + 1
+                    if text[pos] != ",":
+                        raise _err("invalid JSON")
+                    pos = skip_ws(pos + 1)
+            if text.startswith("true", pos):
+                return True, pos + 4
+            if text.startswith("false", pos):
+                return False, pos + 5
+            if text.startswith("null", pos):
+                return None, pos + 4
+            if ch == "-" or ("0" <= ch <= "9"):
+                return parse_number(pos)
+            raise _err("invalid JSON")
+
+        try:
+            value, index = parse_value(index, 0)
+            index = skip_ws(index)
+            if index != length:
+                raise _err("invalid JSON")
+            return sealed_freeze(value)
+        except _err:
+            raise
+        except (_value_error, _type_error, _recursion_error, _unicode_error) as exc:
+            raise _err("invalid JSON") from exc
 
     def loads_strict_json(raw: bytes | str) -> Any:
-        return _loads_strict_json_impl(
-            raw,
-            _loads=_loads,
-            _pairs_hook=sealed_pairs,
-            _reject_float_fn=sealed_reject_float,
-            _parse_int_fn=sealed_parse_int,
-            _reject_constant_fn=sealed_reject_constant,
-            _freeze=sealed_freeze,
-            _json_decode_error=_json_decode_error,
-            _bytes_type=_bytes_type,
-            _str_type=_str_type,
-            _type=_type,
-            _len=_len,
-            _max_input_bytes=max_input_bytes,
-            _unicode_error=_unicode_error,
-            _other_errors=(_value_error, _type_error, _recursion_error),
-            _err=_err,
-        )
+        try:
+            if _type(raw) is _bytes_type:
+                if _len(raw) > max_input_bytes:
+                    raise _err("JSON input exceeds byte limit")
+                text = raw.decode("utf-8", "strict")
+            elif _type(raw) is _str_type:
+                if _len(raw) > max_input_bytes:
+                    raise _err("JSON input exceeds byte limit")
+                encoded = raw.encode("utf-8", "strict")
+                if _len(encoded) > max_input_bytes:
+                    raise _err("JSON input exceeds byte limit")
+                text = raw
+            else:
+                raise _err("JSON input must be bytes or exact str")
+        except _unicode_error as exc:
+            raise _err("invalid UTF-8") from exc
+        return sealed_parse_json(text)
+
+    def sealed_hmac_sha256(key: bytes, payload: bytes) -> str:
+        block_size = 64
+        material = key
+        if _len(material) > block_size:
+            material = _sha256(material).digest()
+        if _len(material) < block_size:
+            material = material + (b"\x00" * (block_size - _len(material)))
+        inner_pad = _bytes_type((byte ^ 0x36 for byte in material))
+        outer_pad = _bytes_type((byte ^ 0x5C for byte in material))
+        inner = _sha256(inner_pad + payload).digest()
+        return _sha256(outer_pad + inner).hexdigest()
 
     def sealed_tag(kind: str, row_without_tag: dict[str, Any], supplied_key: bytes) -> str:
         if authority_key is None or supplied_key != authority_key:
@@ -1058,7 +1247,7 @@ def _make_public_generation(
             "kind": kind,
             "row": row_without_tag,
         }
-        return _hmac_new(authority_key, sealed_canonical(payload), _sha256).hexdigest()
+        return sealed_hmac_sha256(authority_key, sealed_canonical(payload))
 
     def sealed_verify_tag(kind: str, row: dict[str, Any], supplied_key: bytes) -> None:
         tag = row.get("auth_tag_hex")
