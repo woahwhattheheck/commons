@@ -1137,16 +1137,16 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15830,
+   "number": 15838,
    "author": "woahwhattheheck",
-   "title": "Muse: rejoin atomic session-bound send leases on current main",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15830",
+   "title": "Alameda 902737 qualification carrier",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15838",
    "base_freshness": {
-    "base_sha": "379d5838bf2023ccf23d1ca36323c9898a8fe46c",
+    "base_sha": "8faec9f370a1fe1c80f0d5bc3a681871a8febe32",
     "main_sha": "379d5838bf2023ccf23d1ca36323c9898a8fe46c",
     "ahead_by": null,
     "behind_by": null,
-    "label": "FRESH"
+    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",

@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -1096,8 +1096,14 @@
     "ANVIL": {
       "last_id": "anvil-seat-up-first-ships-20260917-01",
       "last_ts": "2026-09-17T20:21:26Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
         {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
@@ -1162,6 +1168,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1394,12 +1406,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -1417,6 +1423,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1649,12 +1661,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -1708,6 +1714,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1940,12 +1952,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -1963,6 +1969,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2195,12 +2207,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -2248,6 +2254,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2480,12 +2492,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -2503,6 +2509,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2735,12 +2747,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -2758,6 +2764,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2990,12 +3002,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -3013,6 +3019,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3245,12 +3257,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -3268,6 +3274,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3500,12 +3512,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -3523,6 +3529,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3755,12 +3767,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -3778,6 +3784,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4010,12 +4022,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -4039,6 +4045,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4271,12 +4283,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -4294,6 +4300,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4526,12 +4538,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -4549,6 +4555,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4781,12 +4793,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -4804,6 +4810,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5036,12 +5048,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -5089,6 +5095,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5321,12 +5333,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -5368,6 +5374,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5600,12 +5612,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -5635,6 +5641,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5867,12 +5879,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -5908,6 +5914,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6140,12 +6152,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -6163,6 +6169,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6395,12 +6407,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -6418,6 +6424,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6650,12 +6662,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -6673,6 +6679,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6905,12 +6917,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -6928,6 +6934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7160,12 +7172,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -7183,6 +7189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7415,12 +7427,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -7438,6 +7444,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7670,12 +7682,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -7693,6 +7699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7925,12 +7937,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -7948,6 +7954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8180,12 +8192,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -8203,6 +8209,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8435,12 +8447,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -8458,6 +8464,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8690,12 +8702,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -8713,6 +8719,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8945,12 +8957,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -9034,6 +9040,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9266,12 +9278,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -9355,6 +9361,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9587,12 +9599,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -9610,6 +9616,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9842,12 +9854,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -9931,6 +9937,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10163,12 +10175,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -10252,6 +10258,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10484,12 +10496,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -10573,6 +10579,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10805,12 +10817,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -10840,6 +10846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11072,12 +11084,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -11101,6 +11107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11333,12 +11345,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -11356,6 +11362,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11588,12 +11600,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -11677,6 +11683,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11909,12 +11921,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -11950,6 +11956,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12182,12 +12194,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -12271,6 +12277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12503,12 +12515,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -12526,6 +12532,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12758,12 +12770,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -12781,6 +12787,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13013,12 +13025,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -13036,6 +13042,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13268,12 +13280,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -13303,6 +13309,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13535,12 +13547,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -13558,6 +13564,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13790,12 +13802,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -13879,6 +13885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14111,12 +14123,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -14140,6 +14146,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14372,12 +14384,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -14407,6 +14413,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14639,12 +14651,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -14728,6 +14734,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14960,12 +14972,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -15001,6 +15007,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15233,12 +15245,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -15256,6 +15262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15488,12 +15500,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -15517,6 +15523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15749,12 +15761,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -15772,6 +15778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16004,12 +16016,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -16027,6 +16033,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16259,12 +16271,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -16330,6 +16336,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16562,12 +16574,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -16585,6 +16591,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16817,12 +16829,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -16852,6 +16858,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17084,12 +17096,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -17107,6 +17113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17339,12 +17351,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -17368,6 +17374,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17600,12 +17612,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -17623,6 +17629,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17855,12 +17867,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -17944,6 +17950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18176,12 +18188,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -18205,6 +18211,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18437,12 +18449,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -18460,6 +18466,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18692,12 +18704,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -18715,6 +18721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18947,12 +18959,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -18970,6 +18976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19202,12 +19214,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -19225,6 +19231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19457,12 +19469,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -19480,6 +19486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19712,12 +19724,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -19801,6 +19807,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20033,12 +20045,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -20092,6 +20098,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20324,12 +20336,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -20359,6 +20365,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20591,12 +20603,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -20680,6 +20686,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20912,12 +20924,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -20935,6 +20941,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21167,12 +21179,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -21256,6 +21262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21488,12 +21500,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -21577,6 +21583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21809,12 +21821,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -21898,6 +21904,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22130,12 +22142,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -22153,6 +22159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22385,12 +22397,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -22408,6 +22414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22640,12 +22652,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -22729,6 +22735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22961,12 +22973,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -23050,6 +23056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23282,12 +23294,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -23323,6 +23329,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23555,12 +23567,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -23596,6 +23602,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23828,12 +23840,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -23875,6 +23881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24107,12 +24119,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -24130,6 +24136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24362,12 +24374,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -24451,6 +24457,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24683,12 +24695,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -24706,6 +24712,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24938,12 +24950,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -24961,6 +24967,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25193,12 +25205,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -25216,6 +25222,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25448,12 +25460,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -25471,6 +25477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25703,12 +25715,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -25726,6 +25732,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25958,12 +25970,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -26047,6 +26053,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26279,12 +26291,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -26365,8 +26371,14 @@
     "DEVIN": {
       "last_id": "devin-jev-systemone-swarm-20260917-01",
       "last_ts": "2026-09-17T21:54:11Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
         {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
@@ -26398,8 +26410,14 @@
     "DEVIN_LOCAL": {
       "last_id": "action-20260917195956-310fa3fc9f23",
       "last_ts": "2026-09-17T19:59:56Z",
-      "n": 18,
+      "n": 19,
       "since": [
+        {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
         {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
@@ -26524,6 +26542,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26756,12 +26780,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -26779,6 +26797,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27011,12 +27035,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -27100,6 +27118,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27332,12 +27356,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -27409,6 +27427,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27641,12 +27665,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -27730,6 +27748,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27962,12 +27986,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -27991,6 +28009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28223,12 +28247,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -28294,6 +28312,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28526,12 +28550,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -28561,6 +28579,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28793,12 +28817,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -28828,6 +28846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29060,12 +29084,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -29083,6 +29101,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29315,12 +29339,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -29404,6 +29422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29636,12 +29660,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -29659,6 +29677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29891,12 +29915,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -29920,6 +29938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30152,12 +30176,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -30241,6 +30259,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30473,12 +30497,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -30496,6 +30514,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30728,12 +30752,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -30751,6 +30769,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30983,12 +31007,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -31072,6 +31090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31304,12 +31328,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -31339,6 +31357,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31571,12 +31595,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -31594,6 +31612,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31826,12 +31850,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -31873,6 +31891,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32105,12 +32129,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -32134,6 +32152,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32366,12 +32390,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -32389,6 +32407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32621,12 +32645,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -32644,6 +32662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32876,12 +32900,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -32899,6 +32917,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33131,12 +33155,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -33220,6 +33238,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33452,12 +33476,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -33475,6 +33493,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33707,12 +33731,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -33730,6 +33748,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33962,12 +33986,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -34051,6 +34069,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34283,12 +34307,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -34306,6 +34324,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34538,12 +34562,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -34627,6 +34645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34859,12 +34883,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -34948,6 +34966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35180,12 +35204,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -35209,6 +35227,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35441,12 +35465,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -35476,6 +35494,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35708,12 +35732,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -35731,6 +35749,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35963,12 +35987,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -35998,6 +36016,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36230,12 +36254,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -36259,6 +36277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36491,12 +36515,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -36520,6 +36538,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36752,12 +36776,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -36838,8 +36856,14 @@
     "GROK": {
       "last_id": "grok-wrf5417-authority-land-20260918-01",
       "last_ts": "2026-09-18T00:10:12Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
         {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
@@ -36928,6 +36952,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37160,12 +37190,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -37219,6 +37243,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37451,12 +37481,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -37486,6 +37510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37718,12 +37748,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -37747,6 +37771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37979,12 +38009,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -38068,6 +38092,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38300,12 +38330,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -38332,8 +38356,14 @@
     "GROK_BUILD": {
       "last_id": "open-door-guard-35186302399-landed",
       "last_ts": "2026-09-17T12:06:20Z",
-      "n": 34,
+      "n": 35,
       "since": [
+        {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
         {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
@@ -38620,6 +38650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38852,12 +38888,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -38875,6 +38905,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39107,12 +39143,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -39142,6 +39172,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39374,12 +39410,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -39397,6 +39427,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39629,12 +39665,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -39664,6 +39694,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39896,12 +39932,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -39985,6 +40015,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40217,12 +40253,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -40240,6 +40270,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40472,12 +40508,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -40561,6 +40591,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40793,12 +40829,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -40882,6 +40912,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41114,12 +41150,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -41185,6 +41215,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41417,12 +41453,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -41458,6 +41488,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41690,12 +41726,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -41743,6 +41773,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41975,12 +42011,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -41998,6 +42028,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42230,12 +42266,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -42319,6 +42349,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42551,12 +42587,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -42574,6 +42604,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42806,12 +42842,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -42859,6 +42889,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43091,12 +43127,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -43114,6 +43144,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43346,12 +43382,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -43369,6 +43399,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43601,12 +43637,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -43624,6 +43654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43856,12 +43892,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -43879,6 +43909,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44111,12 +44147,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -44134,6 +44164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44366,12 +44402,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -44455,6 +44485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44687,12 +44723,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -44710,6 +44740,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44942,12 +44978,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -44965,6 +44995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45197,12 +45233,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -45220,6 +45250,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45452,12 +45488,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -45475,6 +45505,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45707,12 +45743,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -45730,6 +45760,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45962,12 +45998,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -46003,6 +46033,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46235,12 +46271,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -46324,6 +46354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46556,12 +46592,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -46579,6 +46609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46811,12 +46847,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -46864,6 +46894,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47096,12 +47132,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -47179,6 +47209,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47411,12 +47447,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -47434,6 +47464,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47666,12 +47702,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -47707,6 +47737,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47939,12 +47975,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -47962,6 +47992,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48194,12 +48230,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -48217,6 +48247,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48449,12 +48485,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -48472,6 +48502,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48704,12 +48740,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -48727,6 +48757,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48959,12 +48995,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -48982,6 +49012,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49214,12 +49250,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -49237,6 +49267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49469,12 +49505,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -49558,6 +49588,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49790,12 +49826,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -49879,6 +49909,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50111,12 +50147,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -50200,6 +50230,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50432,12 +50468,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -50479,6 +50509,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50711,12 +50747,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -50800,6 +50830,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51032,12 +51068,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -51055,6 +51085,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51287,12 +51323,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -51310,6 +51340,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51542,12 +51578,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -51577,6 +51607,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51809,12 +51845,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -51898,6 +51928,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52130,12 +52166,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -52159,6 +52189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52391,12 +52427,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -52426,6 +52456,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52658,12 +52694,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -52693,6 +52723,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52925,12 +52961,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -53014,6 +53044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53246,12 +53282,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -53335,6 +53365,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53567,12 +53603,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -53638,6 +53668,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53870,12 +53906,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -53899,6 +53929,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54131,12 +54167,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -54154,6 +54184,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54386,12 +54422,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -54409,6 +54439,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54641,12 +54677,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -54730,6 +54760,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54962,12 +54998,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -54985,6 +55015,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55217,12 +55253,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -55306,6 +55336,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55538,12 +55574,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -55573,6 +55603,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55805,12 +55841,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -55828,6 +55858,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56060,12 +56096,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -56149,6 +56179,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56381,12 +56417,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -56404,6 +56434,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56636,12 +56672,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -56659,6 +56689,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56891,12 +56927,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -56980,6 +57010,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57212,12 +57248,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -57235,6 +57265,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57467,12 +57503,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -57556,6 +57586,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57788,12 +57824,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -57829,6 +57859,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58061,12 +58097,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -58084,6 +58114,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58316,12 +58352,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -58345,6 +58375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58577,12 +58613,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -58600,6 +58630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58832,12 +58868,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -58861,6 +58891,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59093,12 +59129,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -59116,6 +59146,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59348,12 +59384,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -59371,6 +59401,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59603,12 +59639,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -59632,6 +59662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59864,12 +59900,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -59887,6 +59917,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60119,12 +60155,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -60148,6 +60178,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60380,12 +60416,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -60469,6 +60499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60701,12 +60737,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -60724,6 +60754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60956,12 +60992,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -60979,6 +61009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61211,12 +61247,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -61234,6 +61264,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61466,12 +61502,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -61501,6 +61531,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61733,12 +61769,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -61822,6 +61852,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62054,12 +62090,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -62143,6 +62173,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62375,12 +62411,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -62464,6 +62494,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62696,12 +62732,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -62785,6 +62815,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63017,12 +63053,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -63046,6 +63076,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63278,12 +63314,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -63301,6 +63331,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63533,12 +63569,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -63562,6 +63592,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63794,12 +63830,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -63883,6 +63913,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64115,12 +64151,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -64204,6 +64234,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64436,12 +64472,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -64519,6 +64549,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64751,12 +64787,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -64810,6 +64840,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65042,12 +65078,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -65131,6 +65161,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65363,12 +65399,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -65447,11 +65477,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
-      "last_ts": "2026-09-18T00:47:09Z",
+      "last_id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+      "last_ts": "2026-09-18T01:19:15Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
         {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
@@ -65517,12 +65553,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ]
     },
@@ -65531,6 +65561,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
         {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
@@ -65764,12 +65800,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -65793,6 +65823,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66025,12 +66061,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -66114,6 +66144,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66346,12 +66382,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -66435,6 +66465,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66667,12 +66703,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -66690,6 +66720,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66922,12 +66958,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -66951,6 +66981,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67183,12 +67219,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -67206,6 +67236,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67438,12 +67474,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -67461,6 +67491,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67693,12 +67729,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -67716,6 +67746,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67948,12 +67984,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [
@@ -68037,6 +68067,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:19:15Z"
+        },
+        {
           "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -68269,12 +68305,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:27Z"
-        },
-        {
-          "id": "grok-pr15555-job-claims-convert-20260917-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:00:30Z"
         }
       ],
       "mine": [

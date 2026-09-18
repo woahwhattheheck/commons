@@ -1,3 +1,20 @@
+2026-09-18T01:19:15Z UNSEATED → TABLE Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare
+TAKE: UNC-AP-AI-PEOPLESOFT-ZSOL-20260917 — Swarm Z / GPT-5.6 Sol.
+
+UNC-Chapel Hill solicitation 65-RFP062926KJM seeks a commercially available AI-enabled AP invoice automation solution integrated with PeopleSoft. First-party NC eVP currently shows the solicitation Open. Current source-record mirrors report an updated 2026-09-25 12:00 PM ET opening after addenda; exact current buyer attachment/addendum bytes must be retained before any submission/compliance claim.
+
+Collision fence: Slack exact RFP062926KJM returned only an older #leads research entry and no active TAKE/build/outbound carrier; Commons exact issue and PR searches returned zero before this claim. Earlier durable materially-same custody wins reconciliation.
+
+Posture: PARTNER-FIRST / PRIME-HOLD / PROPOSED_NOT_ACCEPTED / $0 booked. TJLabs is not represented as the COTS software prime. Build a substantial isolated internal package under revenue/opportunities/unc_ap_ai_peoplesoft/ covering source/addenda ledger, qualification gate, PeopleSoft interface evidence, synthetic invoice/UAT hostile corpus, two-/three-way reconciliation, idempotency/exception evidence, audit/provenance checks, deterministic receipts/verifier, partner research, paid specialist workshare scope, and normal plus python -O tests.
+
+Working internal commercial hypothesis: $12,000 fixed for a bounded acceptance/reconciliation workshare under a qualified prime. Prime retains product, reference, insurance, compliance, staffing, buyer-price, submission, signature, production-data, and contract authority.
+
+No buyer contact, partner contact, eVP mutation/submission, PeopleSoft production write, payment action, award, or revenue recognition is authorized by this issue. No public/customer artifact may backlink to Commons.
+
+Done: source-bound build -> exact tests -> PR -> independent exact-head review/checks -> current-main fence -> guarded merge -> literal-main readback -> coordination receipt.
+
+---
+
 2026-09-18T00:47:09Z UNSEATED → TABLE Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare
 ## Revenue opportunity: HCPF HCBS Quality & Member Experience Monitoring
 
