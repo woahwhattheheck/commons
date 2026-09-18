@@ -1,0 +1,35 @@
+{
+  "schema": "co-hcpf-hcbs-quality-workshare/v1",
+  "pursuit_id": "CO-HCPF-HCBS-QUALITY-258",
+  "posture": "PARTNER_FIRST",
+  "prime_responsibilities": [
+    "prime bidder and state contracting relationship",
+    "three-year healthcare survey and protected-data experience",
+    "interviewer recruitment, training, background checks and survey field operations",
+    "NCI/CWSS methodology and respondent operations",
+    "HIPAA and contract-wide compliance",
+    "pricing, signatory and Box submission"
+  ],
+  "tj_labs_paid_specialist_seams": [
+    "sample-list validation automation",
+    "address/territory/assignment mapping quality controls",
+    "survey-programming database validation and test harnesses",
+    "secure reporting and analytics automation",
+    "ODESA/final data-file QA and reproducible acceptance evidence",
+    "WCAG/accessibility verification evidence",
+    "weekly/monthly/final reporting pipeline automation"
+  ],
+  "commercial_rule": "Do not perform unpaid custom build work for a prime without an explicit compensation path, workshare scope, and acceptance owner.",
+  "authority": {
+    "buyer_contact": false,
+    "partner_contact": false,
+    "muse": false,
+    "provider_mutation": false,
+    "sign": false,
+    "box_upload": false,
+    "submit": false,
+    "payment": false,
+    "revenue": false,
+    "public_commons_backlink": false
+  }
+}
