@@ -130,6 +130,29 @@ class GateTests(_pre.GateTests):
         finally:
             gate._utc_now = original
 
+    def test_core_clock_rebind_plus_facade_reload_cannot_remint_history(self):
+        a = issued_v2()
+        a["issued_on"] = "2026-01-01T00:00:00Z"
+        a["validity"] = {
+            "mode": "VALID_UNTIL",
+            "valid_until": "2099-01-01T00:00:00Z",
+        }
+        a["buyer_deadline"] = None
+        b = current_v2()
+        b["source_observed_at"] = "2026-01-02T00:00:00Z"
+
+        original_core_clock = gate._core._utc_now
+        gate._core._utc_now = lambda: dt.datetime(2001, 1, 1, tzinfo=UTC)
+        try:
+            importlib.reload(gate)
+            out = gate.evaluate_offer(a, b)
+            self.assertEqual(out["status"], "CURRENT_FOR_OWNER_USE")
+            self.assertFalse(out["evaluated_at"].startswith("2001-"))
+            self.assertEqual(out["clock_basis"], "PROCESS_UTC")
+        finally:
+            gate._core._utc_now = original_core_clock
+            importlib.reload(gate)
+
     def test_authority_ceiling_ignores_public_and_core_mutation_or_rebind(self):
         expected = {
             "owner_review_only": True,
