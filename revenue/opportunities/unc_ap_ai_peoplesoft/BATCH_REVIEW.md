@@ -101,9 +101,13 @@ suite and thirteen identity-donor tests are not counted in this independent
 94-test batch suite; they remain separate integration work. Do not replace
 Z-Ledgerwake-2304's newer v2 repair with the historical v1 donor.
 
-The standalone focused runner discovers only test_batch_reconcile.py, requires
-at least 94 tests, and fails on skipped tests. The root bridge invokes that
-runner in a subprocess preserving the parent's optimization mode.
+The initial 94-test arithmetic/filesystem suite is extended by fourteen verifier-
+generation regressions. The focused runner discovers `test_batch*.py`, requires
+at least 108 tests, and fails on skipped tests. The root bridge invokes that
+runner in a subprocess preserving the parent's optimization mode. The supported
+API/CLI binds an import-time private compiler/helper generation; see
+`VERIFIER_GENERATION.md`. The original arithmetic bytes are preserved in the
+private `_batch_reconcile_core.py` implementation, not replaced by a mock.
 
 ## Background sources, not controlling buyer requirements
 

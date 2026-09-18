@@ -7,10 +7,10 @@ ROOT = Path(__file__).resolve().parent
 
 def main() -> int:
     sys.path.insert(0, str(ROOT))
-    suite = unittest.defaultTestLoader.discover(str(ROOT), pattern="test_batch_reconcile.py")
+    suite = unittest.defaultTestLoader.discover(str(ROOT), pattern="test_batch*.py")
     count = suite.countTestCases()
     print(f"python={sys.version.split()[0]} optimize={sys.flags.optimize} discovered={count}", flush=True)
-    if count < 94:
+    if count < 108:
         print("ERROR: focused discovery is incomplete", file=sys.stderr)
         return 2
     result = unittest.TextTestRunner(verbosity=2).run(suite)

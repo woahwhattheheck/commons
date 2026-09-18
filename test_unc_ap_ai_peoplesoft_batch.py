@@ -1,5 +1,6 @@
 """Repository-root bridge for the independent AP batch review suite."""
 from pathlib import Path
+import re
 import subprocess
 import sys
 import unittest
@@ -14,7 +15,9 @@ class APBatchSuite(unittest.TestCase):
         result = subprocess.run(command, cwd=PACKAGE, capture_output=True,
                                 text=True, timeout=60)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        self.assertIn("discovered=94", result.stdout)
+        match = re.search(r"discovered=(\d+)", result.stdout)
+        self.assertIsNotNone(match, result.stdout)
+        self.assertGreaterEqual(int(match.group(1)), 108)
 
 if __name__ == "__main__":
     unittest.main()
