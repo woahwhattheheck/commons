@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 111,
-    "open_pull_requests": 61,
-    "runs_in_progress": 12,
-    "runs_queued": 468
+    "open_pull_requests": 62,
+    "runs_in_progress": 9,
+    "runs_queued": 473
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zsol17/muse-runtime-adoption-fixforward-20260917-2305",
+      "created_at": "2026-09-18T03:06:02Z",
+      "draft": false,
+      "head_sha": "b96d8d8e4811978e8e586a9b6b631bb7b778f35f",
+      "number": 15902,
+      "title": "Muse runtime adoption: fresh-main gate without workflow fanout",
+      "updated_at": "2026-09-18T03:06:02Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zsol17/muse-send-lease-fixforward-20260917-2257",
       "created_at": "2026-09-18T03:00:05Z",
       "draft": false,
       "head_sha": "0f267bea65b30fe4eb9f0e894ff826ab898556b0",
       "number": 15899,
       "title": "Muse: carry sealed atomic send-lease repair onto current main",
-      "updated_at": "2026-09-18T03:03:43Z"
+      "updated_at": "2026-09-18T03:06:15Z"
     },
     {
       "author": "woahwhattheheck",
@@ -86,7 +97,7 @@
       "head_sha": "eb3bf3ed9844d51d96e3af2d245346358be06cba",
       "number": 15898,
       "title": "Revenue: Illinois TRS investment-tech interoperability evidence",
-      "updated_at": "2026-09-18T03:03:28Z"
+      "updated_at": "2026-09-18T03:06:15Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 15869,
       "title": "revenue: bind SigNoz Sep 15 send into collision truth",
       "updated_at": "2026-09-18T01:53:14Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-cairn-astra/ar-remittance-review-20260917",
-      "created_at": "2026-09-18T01:53:04Z",
-      "draft": false,
-      "head_sha": "4fdb67823db0349de7b70717af7aa5b517eccaf3",
-      "number": 15868,
-      "title": "AR Leakage Desk: explicit remittance review, split payments, and conserved residuals",
-      "updated_at": "2026-09-18T02:20:35Z"
     }
   ],
   "open_heads": {
@@ -238,11 +238,12 @@
     "15888": "abb4d4b8f9e1b223c21a28e644132ebdd3b50085",
     "15889": "0d0283b19d0528d2c74d66fba7d04a73dafadab4",
     "15898": "eb3bf3ed9844d51d96e3af2d245346358be06cba",
-    "15899": "0f267bea65b30fe4eb9f0e894ff826ab898556b0"
+    "15899": "0f267bea65b30fe4eb9f0e894ff826ab898556b0",
+    "15902": "b96d8d8e4811978e8e586a9b6b631bb7b778f35f"
   },
-  "pulls_listed": 61,
+  "pulls_listed": 62,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 39.0,
+  "queue_depth_per_runner": 52.6,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -412,6 +413,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T03:04:55Z",
+  "unchanged_since": "2026-09-18T03:06:52Z",
   "undatable_pulls": []
 }
