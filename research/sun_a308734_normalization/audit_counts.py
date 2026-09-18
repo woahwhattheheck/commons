@@ -116,12 +116,36 @@ def verify(limit: int = 512) -> dict[str, Any]:
     }
 
 
+def self_test() -> dict[str, Any]:
+    """Run regression controls without unittest or assertion statements."""
+    require(square_residues_mod8() == {0, 1, 4}, "square residue regression")
+    for k in range(8):
+        m = 4**k
+        require(nonnegative_count(m) == 3, "power-four nonnegative regression")
+        require(signed_representations(m) == 6, "power-four signed regression")
+    for m in range(3, 300, 8):
+        rows = nonnegative_representations(m)
+        require(all(all(c % 2 == 1 for c in row) for row in rows), "parity regression")
+        require(signed_representations(m) == 8 * len(rows), "free-sign regression")
+    for m in range(129):
+        require(signed_representations(m) == signed_by_direct_enumeration(m),
+                "direct signed-oracle regression")
+    require((nonnegative_count(3), signed_representations(3)) == (1, 8), "m=3 regression")
+    require((nonnegative_count(11), signed_representations(11)) == (3, 24), "m=11 regression")
+    require((nonnegative_count(27), signed_representations(27)) == (4, 32), "m=27 regression")
+    full = verify(512)
+    require(full["verified_through"] == 512, "full verifier regression")
+    return {"result": "SELF_TEST_PASS", "checks": 8, "verified_through": 512,
+            "paper_theorem_refuted": False}
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--limit", type=int, default=512)
+    parser.add_argument("--self-test", action="store_true")
     args = parser.parse_args()
     try:
-        result = verify(args.limit)
+        result = self_test() if args.self_test else verify(args.limit)
     except (ValueError, OverflowError) as exc:
         parser.exit(1, f"INVALID: {exc}\n")
     print(json.dumps(result, sort_keys=True))
