@@ -1,0 +1,52 @@
+name: xTech Search 10 portfolio downselect
+
+on:
+  pull_request:
+    paths:
+      - 'competitions/xtech-search10-2026/portfolio_downselect/**'
+      - '.github/workflows/xtech-search10-portfolio-downselect.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'competitions/xtech-search10-2026/portfolio_downselect/**'
+      - '.github/workflows/xtech-search10-portfolio-downselect.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  evidence-contract:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile
+        working-directory: competitions/xtech-search10-2026/portfolio_downselect
+        run: python -m py_compile downselect.py test_downselect.py
+      - name: Hostile contract tests
+        working-directory: competitions/xtech-search10-2026/portfolio_downselect
+        run: python -m unittest -v test_downselect.py
+      - name: Hostile contract tests under optimized Python
+        working-directory: competitions/xtech-search10-2026/portfolio_downselect
+        run: python -O -m unittest -v test_downselect.py
+      - name: Current portfolio must fail closed
+        working-directory: competitions/xtech-search10-2026/portfolio_downselect
+        run: |
+          python downselect.py portfolio.current.json --pretty > /tmp/xtech-current.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('/tmp/xtech-current.json').read_text())
+          assert report['state'] == 'HOLD', report
+          assert report['selectedCandidateId'] is None, report
+          assert report['globalBlockers'], report
+          assert report['authority']['submissionAuthorized'] is False, report
+          assert report['authority']['entitySlotConsumed'] is False, report
+          assert report['authority']['awardOrPrizeClaimed'] is False, report
+          assert len(report['receiptSha256']) == 64, report
+          PY
