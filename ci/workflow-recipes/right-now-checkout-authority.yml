@@ -5,8 +5,6 @@ on:
     paths:
       - "host/right_now_revenue.py"
       - "revenue/right_now/**"
-      - "revenue/agent_failure_autopsy/offer.json"
-      - "agent-rescue.html"
       - "test_right_now_checkout_authority.py"
       - "test_right_now_execution.py"
       - ".github/workflows/right-now-checkout-authority.yml"
@@ -14,8 +12,6 @@ on:
     paths:
       - "host/right_now_revenue.py"
       - "revenue/right_now/**"
-      - "revenue/agent_failure_autopsy/offer.json"
-      - "agent-rescue.html"
       - "test_right_now_checkout_authority.py"
       - "test_right_now_execution.py"
       - ".github/workflows/right-now-checkout-authority.yml"

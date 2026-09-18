@@ -116,7 +116,6 @@ merely because its verb is new.
 
 Verified product pages only — no invented Stripe links.
 
-- [$29 Autopsy](../../agent-rescue.html)
 - [$199 dealer](../../dealer-service-lead-rescue.html) · [$199 referral](../../referral-intake-completeness.html) · [$199 repair](../../repair-booking-preflight.html) · [$199 plant](../../plant-downtime-handoff.html)
 - Shelf: [tips.html](../../tips.html) · [commerce.html](../../commerce.html)
 

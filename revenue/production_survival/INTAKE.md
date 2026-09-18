@@ -116,7 +116,6 @@ proof land under `revenue/production_survival/proofs/` on main with a commit-pin
 
 Verified Commons product pages only — no invented Stripe links. Survival Proof intake is not Autopsy checkout.
 
-- [$29 Autopsy checkout](../../agent-rescue.html) — one failed coding-agent run (separate SKU)
 - [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../../referral-intake-completeness.html)
 - [$199 repair diagnostic](../../repair-booking-preflight.html)

@@ -14,13 +14,12 @@ PATHS = (
     "ground/CARRIER_PICKUP.md",
 )
 
-
 class TestTypeGroundDoorsMdKeepLargerFixed2026091601(unittest.TestCase):
-    def test_tip_doors_have_autopsy_and_larger(self):
+    def test_tip_doors_have_diagnostic_and_larger(self):
         for rel in PATHS:
             text = (ROOT / rel).read_text(encoding="utf-8")
             self.assertIn("## Live cash", text, rel)
-            self.assertIn("../agent-rescue.html", text, rel)
+            self.assertIn("../dealer-service-lead-rescue.html", text, rel)
             self.assertIn("Larger fixed engagements", text, rel)
             self.assertIn("../diagnostic.html", text, rel)
             self.assertIn("../commercial.html", text, rel)
@@ -29,7 +28,6 @@ class TestTypeGroundDoorsMdKeepLargerFixed2026091601(unittest.TestCase):
     def test_product_pages_exist(self):
         for name in ("diagnostic.html", "commercial.html"):
             self.assertTrue((ROOT / name).is_file(), name)
-
 
 if __name__ == "__main__":
     unittest.main()

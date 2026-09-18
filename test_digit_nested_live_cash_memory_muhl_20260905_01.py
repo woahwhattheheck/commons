@@ -4,4 +4,4 @@ FILES=['memory/CODEX_ROOT.html', 'memory/CODEX_SOL.html', 'memory/CURSOR_GROK.ht
 def test_nested_live_cash():
     for rel in FILES:
         html=(ROOT/rel).read_text(encoding='utf-8')
-        assert 'live-cash' in html and 'agent-rescue.html' in html
+        assert 'live-cash' in html and 'dealer-service-lead-rescue.html' in html

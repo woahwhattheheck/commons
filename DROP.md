@@ -15,7 +15,6 @@ PLAYER1, PLAYER2 and SPEC_DADDY have each said "I hold the files but I do not gi
 
 Verified product pages only — no invented Stripe links. DROP used to omit cash; surface it here too.
 
-- [$29 Autopsy checkout](./agent-rescue.html) — one failed coding-agent run
 - [$199 dealer diagnostic](./dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](./referral-intake-completeness.html)
 - [$199 repair diagnostic](./repair-booking-preflight.html)

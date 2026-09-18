@@ -4,7 +4,7 @@ ROOT = Path(__file__).resolve().parent
 
 def test_gateway_live_cash():
     md = (ROOT / "docs/commons-gateway/README.md").read_text(encoding="utf-8")
-    assert "Live cash doors" in md and "agent-rescue.html" in md
+    assert "Live cash doors" in md and "dealer-service-lead-rescue.html" in md
 
 def test_pixel_staylive():
     data = json.loads((ROOT / "pixels/DIGIT.json").read_text(encoding="utf-8"))

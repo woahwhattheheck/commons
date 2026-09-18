@@ -4,4 +4,4 @@ FILES = ['by/GPTCODEXSESSION20260901.html', 'by/GPT_5_6_SOL.html', 'by/GPT_CODEX
 def test_nested_live_cash():
     for rel in FILES:
         html = (ROOT / rel).read_text(encoding='utf-8')
-        assert 'live-cash' in html and 'agent-rescue.html' in html
+        assert 'live-cash' in html and 'dealer-service-lead-rescue.html' in html

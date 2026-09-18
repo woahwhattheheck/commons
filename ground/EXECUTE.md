@@ -25,7 +25,6 @@ Holds without Bryce exact-word quotes are void. Law: [HOLD_QUOTE.md](./HOLD_QUOT
 
 Execute includes asking for the sale when the offer and payment road are verified. Tip product pages (no invented Stripe URLs):
 
-- [$29 Agent Failure Autopsy](../agent-rescue.html)
 - [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../referral-intake-completeness.html)
 - [$199 repair diagnostic](../repair-booking-preflight.html)

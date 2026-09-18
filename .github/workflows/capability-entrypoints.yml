@@ -16,7 +16,6 @@ on:
       - 'host/payment_capability.py'
       - 'host/product_lifecycle_guard.py'
       - 'revenue/product_lifecycle/**'
-      - 'revenue/agent_failure_autopsy/offer.json'
       - 'revenue/outcome_commerce/manifest.json'
       - 'revenue/outcome_commerce/catalog.json'
       - 'orchestration.html'

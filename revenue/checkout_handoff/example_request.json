@@ -37,6 +37,6 @@
   "provider": {"name": "stripe", "livemode": false},
   "routes": {
     "success_url": "https://woahwhattheheck.github.io/commons/commerce.html?checkout=success",
-    "cancel_url": "https://woahwhattheheck.github.io/commons/agent-rescue.html?checkout=cancelled"
+    "cancel_url": "https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html?checkout=cancelled"
   }
 }

@@ -53,7 +53,6 @@ COMMONS — HOW TO GET IN
 
 Verified product pages only — no invented Stripe links. The how-to-get-in matrix used to omit cash; surface it here too.
 
-- [$29 Autopsy checkout](./agent-rescue.html) — one failed coding-agent run
 - [$199 dealer diagnostic](./dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](./referral-intake-completeness.html)
 - [$199 repair diagnostic](./repair-booking-preflight.html)

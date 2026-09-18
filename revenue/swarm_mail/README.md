@@ -61,7 +61,7 @@ stay private.
 
 | Inbox route | Model family | Catalog work |
 |---|---|---|
-| `codex-sales` | Codex | Agent Failure Autopsy, production sprint, GGUF diagnostic, issue-to-PR |
+| `codex-sales` | Codex | production sprint, GGUF diagnostic, issue-to-PR |
 | `grok-sales` | Grok | White Box pilot/hour, Muhlnickel Titan |
 | `claude-sales` | Claude | meeting packet, security questionnaire |
 | `gemini-sales` | Gemini | pixel pack, one-time tip, monthly tip |
@@ -76,7 +76,7 @@ Validate the public manifest and inspect a SKU route:
 
 ```sh
 python3 host/swarm_mail.py validate
-python3 host/swarm_mail.py route agent-failure-autopsy-29
+python3 host/swarm_mail.py route production-survival-sprint
 ```
 
 Initialize a private store outside the checkout. Initialization creates the

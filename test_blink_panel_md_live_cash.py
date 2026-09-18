@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Hermetic: PANEL.md Live cash surfaces Autopsy $29 + four $199 tip-shelf doors."""
+"""Hermetic: PANEL.md Live cash surfaces four $199 diagnostic doors."""
 from __future__ import annotations
 import unittest
 from pathlib import Path
@@ -8,8 +8,7 @@ class T(unittest.TestCase):
     def test_live_cash(self) -> None:
         text = (ROOT / "PANEL.md").read_text(encoding="utf-8")
         self.assertIn("## Live cash", text)
-        self.assertIn("agent-rescue.html", text)
-        self.assertIn("$29", text)
+        self.assertIn("dealer-service-lead-rescue.html", text)
         self.assertIn("dealer-service-lead-rescue.html", text)
         self.assertIn("referral-intake-completeness.html", text)
         self.assertIn("repair-booking-preflight.html", text)

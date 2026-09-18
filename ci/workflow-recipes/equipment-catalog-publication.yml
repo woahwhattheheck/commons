@@ -25,7 +25,6 @@ jobs:
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /integrations/
-            /revenue/agent_failure_autopsy/
             /revenue/dealer_service_lead_rescue/
             /revenue/referral_intake_completeness/
             /revenue/repair_booking_preflight/

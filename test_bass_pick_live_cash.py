@@ -9,20 +9,17 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 PICK = ROOT / "ground" / "PICK.md"
 
-
 class BassPickLiveCashTest(unittest.TestCase):
     def test_live_cash_section(self) -> None:
         text = PICK.read_text(encoding="utf-8")
         self.assertIn("## Live cash", text)
-        self.assertIn("agent-rescue.html", text)
-        self.assertIn("$29", text)
+        self.assertIn("dealer-service-lead-rescue.html", text)
         self.assertIn("dealer-service-lead-rescue.html", text)
         self.assertIn("referral-intake-completeness.html", text)
         self.assertIn("repair-booking-preflight.html", text)
         self.assertIn("plant-downtime-handoff.html", text)
         self.assertNotIn("buy.stripe.com", text)
         self.assertNotIn("donate.stripe.com", text)
-
 
 if __name__ == "__main__":
     unittest.main()
