@@ -5,11 +5,13 @@ import os
 import unittest
 from datetime import datetime, timedelta, timezone
 
-from revenue.payoff_path_ledger import core
-
 REAL_KEY_HEX = "31" * 32
 REAL_KEY = bytes.fromhex(REAL_KEY_HEX)
 EVIL_KEY = bytes.fromhex("22" * 32)
+_PREIMPORT_KEY = os.environ.get("PAYOFF_PATH_EVIDENCE_AUTHORITY_KEY_HEX")
+os.environ["PAYOFF_PATH_EVIDENCE_AUTHORITY_KEY_HEX"] = REAL_KEY_HEX
+
+from revenue.payoff_path_ledger import core
 A = "a" * 64
 B = "b" * 64
 C = "c" * 64
@@ -75,8 +77,7 @@ def make_packet(key=REAL_KEY):
 class V4BoundaryTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.old = os.environ.get(core.EVIDENCE_AUTH_ENV)
-        os.environ[core.EVIDENCE_AUTH_ENV] = REAL_KEY_HEX
+        cls.old = _PREIMPORT_KEY
 
     @classmethod
     def tearDownClass(cls):
@@ -118,6 +119,41 @@ class V4BoundaryTests(unittest.TestCase):
         finally:
             for name in names:
                 delattr(core, name)
+
+    def test_post_import_env_cannot_replace_captured_authority(self):
+        old = os.environ.get(core.EVIDENCE_AUTH_ENV)
+        os.environ[core.EVIDENCE_AUTH_ENV] = "22" * 32
+        try:
+            self.assertEqual(
+                core.compile_current(make_packet(REAL_KEY))["state"],
+                "PAYOFF_BOUND",
+            )
+            with self.assertRaises(core.GateError):
+                core.compile_current(make_packet(EVIL_KEY))
+        finally:
+            if old is None:
+                os.environ.pop(core.EVIDENCE_AUTH_ENV, None)
+            else:
+                os.environ[core.EVIDENCE_AUTH_ENV] = old
+
+    def test_post_import_env_removal_or_malformed_value_is_inert(self):
+        old = os.environ.get(core.EVIDENCE_AUTH_ENV)
+        try:
+            os.environ.pop(core.EVIDENCE_AUTH_ENV, None)
+            self.assertEqual(
+                core.compile_current(make_packet(REAL_KEY))["state"],
+                "PAYOFF_BOUND",
+            )
+            os.environ[core.EVIDENCE_AUTH_ENV] = "not-lowercase-hex"
+            self.assertEqual(
+                core.compile_current(make_packet(REAL_KEY))["state"],
+                "PAYOFF_BOUND",
+            )
+        finally:
+            if old is None:
+                os.environ.pop(core.EVIDENCE_AUTH_ENV, None)
+            else:
+                os.environ[core.EVIDENCE_AUTH_ENV] = old
 
     def test_raw_bytes_rejected_before_unbounded_parse(self):
         with self.assertRaisesRegex(core.GateError, "byte limit"):
