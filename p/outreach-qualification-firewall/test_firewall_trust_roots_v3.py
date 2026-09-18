@@ -38,6 +38,15 @@ def context_message(kind, payload):
     })
 
 
+
+
+def closure_cell(fn, name):
+    names = fn.__code__.co_freevars
+    if name not in names or fn.__closure__ is None:
+        raise AssertionError(f"{fn!r} has no closure cell {name!r}")
+    return fn.__closure__[names.index(name)]
+
+
 def writer_message(row):
     return fw.canonical_json({
         key: row[key]
@@ -54,6 +63,62 @@ def writer_message(row):
 
 
 class TrustRootClosureTests(unittest.TestCase):
+
+    def test_reflective_interpreter_tamper_is_explicitly_out_of_scope(self):
+        self.assertEqual(fw.THREAT_MODEL_ID, "trusted-python-interpreter-v1")
+        self.assertIs(fw.REFLECTIVE_INTERPRETER_TAMPER_IN_SCOPE, False)
+        self.assertIs(fw.REQUIRES_ISOLATED_PROCESS_FOR_UNTRUSTED_CODE, True)
+        readme = (ROOT / "README.md").read_text()
+        self.assertIn("outside this package's trust boundary", readme)
+        self.assertIn("__closure__[...].cell_contents", readme)
+        self.assertIn("separately isolated and authenticated process/provider boundary", readme)
+
+    def test_out_of_scope_clock_cell_mutation_can_resurrect_old_current_time(self):
+        self.assertIs(fw.REFLECTIVE_INTERPRETER_TAMPER_IN_SCOPE, False)
+        cell = closure_cell(decision_impl.compile_current, "current_clock")
+        original = cell.cell_contents
+        try:
+            cell.cell_contents = lambda: fw._utc(HIST, "reflective-tamper")
+            out = fw.compile_current(packet())
+        finally:
+            cell.cell_contents = original
+
+        # Boundary proof: malicious code already rewriting live closure state can
+        # defeat an in-process current-time assertion. This is intentionally
+        # documented as host-interpreter compromise, not a supported attacker.
+        self.assertEqual(out["evaluation_mode"], "CURRENT_PROCESS")
+        self.assertTrue(out["authorized_to_send"])
+
+    def test_out_of_scope_context_compare_cell_can_forge_context_tags(self):
+        self.assertIs(fw.REFLECTIVE_INTERPRETER_TAMPER_IN_SCOPE, False)
+        data = packet()
+        data["identity_binding"]["auth_tag_hex"] = "0" * 64
+        data["contact"]["relationship_authority_tag_hex"] = "0" * 64
+        cell = closure_cell(context_impl.verify_context_authority, "compare_digest")
+        original = cell.cell_contents
+        try:
+            cell.cell_contents = lambda *_: True
+            normalized = fw.normalize_packet(data)
+        finally:
+            cell.cell_contents = original
+
+        self.assertTrue(normalized["identity_binding"]["authority_authenticated"])
+        self.assertTrue(normalized["contact"]["relationship_authority_authenticated"])
+
+    def test_out_of_scope_writer_compare_cell_can_forge_go_tag(self):
+        self.assertIs(fw.REFLECTIVE_INTERPRETER_TAMPER_IN_SCOPE, False)
+        data = packet()
+        data["writer_lease"]["authority_tag_hex"] = "0" * 64
+        cell = closure_cell(writer_impl.verify_writer_lease_authority, "compare_digest")
+        original = cell.cell_contents
+        try:
+            cell.cell_contents = lambda *_: True
+            normalized = fw.normalize_packet(data)
+        finally:
+            cell.cell_contents = original
+
+        self.assertTrue(normalized["writer_lease"]["authority_authenticated"])
+
     def test_public_current_and_verifier_signatures_have_no_injection_kwargs(self):
         current = inspect.signature(fw.compile_current)
         self.assertEqual(list(current.parameters), ["payload"])
