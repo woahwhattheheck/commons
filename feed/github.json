@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 111,
-    "open_pull_requests": 62,
-    "runs_in_progress": 9,
-    "runs_queued": 473
+    "open_issues": 113,
+    "open_pull_requests": 58,
+    "runs_in_progress": 12,
+    "runs_queued": 484
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,35 +69,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsol17/muse-runtime-adoption-fixforward-20260917-2305",
-      "created_at": "2026-09-18T03:06:02Z",
+      "branch": "z-lantern/provider-armory-15900-20260917",
+      "created_at": "2026-09-18T03:14:12Z",
       "draft": false,
-      "head_sha": "b96d8d8e4811978e8e586a9b6b631bb7b778f35f",
-      "number": 15902,
-      "title": "Muse runtime adoption: fresh-main gate without workflow fanout",
-      "updated_at": "2026-09-18T03:06:02Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol17/muse-send-lease-fixforward-20260917-2257",
-      "created_at": "2026-09-18T03:00:05Z",
-      "draft": false,
-      "head_sha": "0f267bea65b30fe4eb9f0e894ff826ab898556b0",
-      "number": 15899,
-      "title": "Muse: carry sealed atomic send-lease repair onto current main",
-      "updated_at": "2026-09-18T03:06:15Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-ternion/trs-il-investment-tech-15890",
-      "created_at": "2026-09-18T02:59:16Z",
-      "draft": false,
-      "head_sha": "eb3bf3ed9844d51d96e3af2d245346358be06cba",
-      "number": 15898,
-      "title": "Revenue: Illinois TRS investment-tech interoperability evidence",
-      "updated_at": "2026-09-18T03:06:15Z"
+      "head_sha": "024a6eae976c504cb56edc29b9d747b9b9383dec",
+      "number": 15909,
+      "title": "Inventory: expose vaulted free-provider armory as activation-only",
+      "updated_at": "2026-09-18T03:14:12Z"
     },
     {
       "author": "woahwhattheheck",
@@ -152,18 +130,7 @@
       "head_sha": "42fc7c08ad7640b73ad7ff4af4df677a04e0bd92",
       "number": 15875,
       "title": "board: rejoin proven-complete UNSEATED suppression onto current main",
-      "updated_at": "2026-09-18T02:59:22Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol-2114/muse-runtime-adoption-gate-15748-current-main-20260917",
-      "created_at": "2026-09-18T01:57:49Z",
-      "draft": false,
-      "head_sha": "8db262260770217c7ecb5cba44827d32ee011faa",
-      "number": 15871,
-      "title": "Muse runtime adoption: prove retained atomic lease/CONSUME/GO evidence",
-      "updated_at": "2026-09-18T02:38:50Z"
+      "updated_at": "2026-09-18T03:13:31Z"
     },
     {
       "author": "woahwhattheheck",
@@ -175,6 +142,39 @@
       "number": 15869,
       "title": "revenue: bind SigNoz Sep 15 send into collision truth",
       "updated_at": "2026-09-18T01:53:14Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-cairn-astra/ar-remittance-review-20260917",
+      "created_at": "2026-09-18T01:53:04Z",
+      "draft": false,
+      "head_sha": "4fdb67823db0349de7b70717af7aa5b517eccaf3",
+      "number": 15868,
+      "title": "AR Leakage Desk: explicit remittance review, split payments, and conserved residuals",
+      "updated_at": "2026-09-18T02:20:35Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "sol-zeta/nm-ocs-tprm-20260917",
+      "created_at": "2026-09-18T01:51:09Z",
+      "draft": false,
+      "head_sha": "7353c760d9f4c8a3d9f9ceeb1e753f93887c5067",
+      "number": 15867,
+      "title": "Revenue: build OCS2026.01 multi-tenant TPRM teaming carrier",
+      "updated_at": "2026-09-18T01:51:09Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/aidt-ewds-workshare-20260918",
+      "created_at": "2026-09-18T01:48:14Z",
+      "draft": false,
+      "head_sha": "d4a6d1eb3ed0f7615f22c1847f9c379e9f468135",
+      "number": 15866,
+      "title": "AIDT: add migration and Salesforce/LMS specialist workshare",
+      "updated_at": "2026-09-18T01:48:14Z"
     }
   ],
   "open_heads": {
@@ -204,7 +204,6 @@
     "15756": "0b3c329d99a1c4d912942f3eaa5e3e5ce3e1842a",
     "15758": "3f6c365bc02476ed9ecaab888d4faf07b0a8b6fc",
     "15761": "9d28247a10ad1b911050eb865b7a74bba6eb5cf2",
-    "15794": "eb14686cdbf9e67a4dbad1c445151ce99cb73fdb",
     "15796": "a9e5a6f90592f9a99a5e05b27f32110e180813a5",
     "15797": "3f07c97eff85513b1450229eb85abd7f14f10a22",
     "15801": "b6f95da17ad8f331ce752c34137919c98f42e64d",
@@ -219,7 +218,7 @@
     "15822": "c0cb21e34f8de59f64cb023c721ce96c05e2b16b",
     "15823": "783792d04073809967c44caaa80d754bd79f5466",
     "15834": "c3464df897f45c235b3ec385d6cd1bf83dc1f9f9",
-    "15836": "b053ab20ae622e273b8a776d326d5a4323c7835e",
+    "15836": "a0c47ae54f43d5ade1110b29d63f3b42ec8597a0",
     "15838": "b49ec6eeb333403b8bdb679b546c572bf646b00a",
     "15840": "1dd7127ba8b46b36e0020a347946d334bddab2b3",
     "15841": "568a80567ae0d16bd343299b681aac683fc98f5e",
@@ -231,20 +230,83 @@
     "15867": "7353c760d9f4c8a3d9f9ceeb1e753f93887c5067",
     "15868": "4fdb67823db0349de7b70717af7aa5b517eccaf3",
     "15869": "0029c8cfd68a9966b035e00838fb030ebe9850fb",
-    "15871": "8db262260770217c7ecb5cba44827d32ee011faa",
     "15875": "42fc7c08ad7640b73ad7ff4af4df677a04e0bd92",
     "15877": "c99ecdfd1313bdf5f7f6bae3468d9252cea412a3",
     "15884": "fc85ecf3036d57c69c8685068a1f2f49d88c2e8c",
     "15888": "abb4d4b8f9e1b223c21a28e644132ebdd3b50085",
     "15889": "0d0283b19d0528d2c74d66fba7d04a73dafadab4",
-    "15898": "eb3bf3ed9844d51d96e3af2d245346358be06cba",
-    "15899": "0f267bea65b30fe4eb9f0e894ff826ab898556b0",
-    "15902": "b96d8d8e4811978e8e586a9b6b631bb7b778f35f"
+    "15909": "024a6eae976c504cb56edc29b9d747b9b9383dec"
   },
-  "pulls_listed": 62,
+  "pulls_listed": 58,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 52.6,
+  "queue_depth_per_runner": 40.3,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol17/muse-send-lease-fixforward-20260917-2257",
+      "closed_at": "2026-09-18T03:11:37Z",
+      "head_sha": "0f267bea65b30fe4eb9f0e894ff826ab898556b0",
+      "merged_at": null,
+      "number": 15899,
+      "state": "CLOSED",
+      "title": "Muse: carry sealed atomic send-lease repair onto current main"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol17/muse-runtime-adoption-fixforward-20260917-2305",
+      "closed_at": "2026-09-18T03:11:10Z",
+      "head_sha": "b96d8d8e4811978e8e586a9b6b631bb7b778f35f",
+      "merged_at": "2026-09-18T03:11:10Z",
+      "number": 15902,
+      "state": "MERGED",
+      "title": "Muse runtime adoption: fresh-main gate without workflow fanout"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/muse-send-lease-main4cf-20260917-2305",
+      "closed_at": "2026-09-18T03:10:23Z",
+      "head_sha": "6f1755c1c4aa04a8443059e24d599d50ff67ffe5",
+      "merged_at": "2026-09-18T03:10:23Z",
+      "number": 15905,
+      "state": "MERGED",
+      "title": "Muse: land sealed atomic send lease on current main (4cf generation)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol-2114/muse-runtime-adoption-gate-15748-current-main-20260917",
+      "closed_at": "2026-09-18T03:09:55Z",
+      "head_sha": "8db262260770217c7ecb5cba44827d32ee011faa",
+      "merged_at": null,
+      "number": 15871,
+      "state": "CLOSED",
+      "title": "Muse runtime adoption: prove retained atomic lease/CONSUME/GO evidence"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol17/muse-atomic-send-lease-main-rejoin-20260917",
+      "closed_at": "2026-09-18T03:09:51Z",
+      "head_sha": "eb14686cdbf9e67a4dbad1c445151ce99cb73fdb",
+      "merged_at": null,
+      "number": 15794,
+      "state": "CLOSED",
+      "title": "Muse: rejoin atomic send lease onto current main"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-ternion/trs-il-investment-tech-15890",
+      "closed_at": "2026-09-18T03:09:02Z",
+      "head_sha": "1635df0e119f0cd68c28a2a9868ee88856362abd",
+      "merged_at": "2026-09-18T03:09:02Z",
+      "number": 15898,
+      "state": "MERGED",
+      "title": "Revenue: Illinois TRS investment-tech interoperability evidence"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -343,76 +405,10 @@
       "number": 15883,
       "state": "MERGED",
       "title": "revenue: rejoin 5000233302 capture on current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol17/product-lifecycle-structured-wake-15873-v2",
-      "closed_at": "2026-09-18T02:17:32Z",
-      "head_sha": "43ef1cfcdb22835ad169b4ffe906bf33f84017a0",
-      "merged_at": "2026-09-18T02:17:32Z",
-      "number": 15880,
-      "state": "MERGED",
-      "title": "revenue: close structured lifecycle guard bypasses"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol-ky-fin-reporting-current-20260917",
-      "closed_at": "2026-09-18T02:16:06Z",
-      "head_sha": "4030aa0aa073a309fa0a5db81adfd8d0118c5952",
-      "merged_at": null,
-      "number": 15881,
-      "state": "CLOSED",
-      "title": "Kentucky reporting discovery: land executable parity probe"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol-1447/muse-atomic-send-lease-15659",
-      "closed_at": "2026-09-18T02:13:16Z",
-      "head_sha": "4717e0a2e5a198122956f443afb115265a11edf8",
-      "merged_at": null,
-      "number": 15662,
-      "state": "CLOSED",
-      "title": "Muse: atomically consume session-bound send leases (#15659)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol17/product-lifecycle-structured-wake-15873",
-      "closed_at": "2026-09-18T02:10:13Z",
-      "head_sha": "8d1228e6d37d2b716e0f250e5fd422f532f1cb9f",
-      "merged_at": null,
-      "number": 15876,
-      "state": "CLOSED",
-      "title": "revenue: close structured lifecycle guard bypasses"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z17/signoz-collision-truth-current-main-20260917",
-      "closed_at": "2026-09-18T02:10:12Z",
-      "head_sha": "1c95369c708420ae6cd34b21a2ba8e796bb42a21",
-      "merged_at": "2026-09-18T02:10:12Z",
-      "number": 15879,
-      "state": "MERGED",
-      "title": "revenue: rejoin outreach collision truth on current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "anvil/autopsy-residue-sweep-20260918",
-      "closed_at": "2026-09-18T02:09:17Z",
-      "head_sha": "0598825c73a1cc2b12134052a869669bc1f1173d",
-      "merged_at": "2026-09-18T02:09:17Z",
-      "number": 15878,
-      "state": "MERGED",
-      "title": "Retire Autopsy residue: stale test asserts + live allowlist cleanup"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T03:06:52Z",
+  "unchanged_since": "2026-09-18T03:14:15Z",
   "undatable_pulls": []
 }
