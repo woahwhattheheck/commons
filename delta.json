@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -1096,8 +1096,14 @@
     "ANVIL": {
       "last_id": "anvil-seat-up-first-ships-20260917-01",
       "last_ts": "2026-09-17T20:21:26Z",
-      "n": 17,
+      "n": 18,
       "since": [
+        {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
         {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
@@ -1222,6 +1228,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1454,12 +1466,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -1477,6 +1483,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1709,12 +1721,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -1768,6 +1774,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2000,12 +2012,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -2023,6 +2029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2255,12 +2267,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -2308,6 +2314,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2540,12 +2552,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -2563,6 +2569,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2795,12 +2807,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -2818,6 +2824,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3050,12 +3062,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -3073,6 +3079,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3305,12 +3317,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -3328,6 +3334,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3560,12 +3572,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -3583,6 +3589,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3815,12 +3827,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -3838,6 +3844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4070,12 +4082,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -4099,6 +4105,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4331,12 +4343,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -4354,6 +4360,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4586,12 +4598,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -4609,6 +4615,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4841,12 +4853,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -4864,6 +4870,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5096,12 +5108,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -5149,6 +5155,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5381,12 +5393,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -5428,6 +5434,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5660,12 +5672,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -5695,6 +5701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5927,12 +5939,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -5968,6 +5974,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6200,12 +6212,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -6223,6 +6229,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6455,12 +6467,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -6478,6 +6484,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6710,12 +6722,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -6733,6 +6739,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6965,12 +6977,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -6988,6 +6994,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7220,12 +7232,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -7243,6 +7249,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7475,12 +7487,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -7498,6 +7504,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7730,12 +7742,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -7753,6 +7759,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7985,12 +7997,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -8008,6 +8014,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8240,12 +8252,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -8263,6 +8269,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8495,12 +8507,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -8518,6 +8524,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8750,12 +8762,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -8773,6 +8779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9005,12 +9017,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -9094,6 +9100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9326,12 +9338,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -9415,6 +9421,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9647,12 +9659,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -9670,6 +9676,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9902,12 +9914,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -9991,6 +9997,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10223,12 +10235,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -10312,6 +10318,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10544,12 +10556,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -10633,6 +10639,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10865,12 +10877,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -10900,6 +10906,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11132,12 +11144,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -11161,6 +11167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11393,12 +11405,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -11416,6 +11422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11648,12 +11660,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -11737,6 +11743,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11969,12 +11981,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -12010,6 +12016,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12242,12 +12254,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -12331,6 +12337,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12563,12 +12575,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -12586,6 +12592,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12818,12 +12830,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -12841,6 +12847,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13073,12 +13085,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -13096,6 +13102,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13328,12 +13340,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -13363,6 +13369,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13595,12 +13607,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -13618,6 +13624,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13850,12 +13862,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -13939,6 +13945,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14171,12 +14183,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -14200,6 +14206,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14432,12 +14444,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -14467,6 +14473,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14699,12 +14711,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -14788,6 +14794,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15020,12 +15032,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -15061,6 +15067,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15293,12 +15305,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -15316,6 +15322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15548,12 +15560,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -15577,6 +15583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15809,12 +15821,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -15832,6 +15838,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16064,12 +16076,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -16087,6 +16093,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16319,12 +16331,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -16390,6 +16396,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16622,12 +16634,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -16645,6 +16651,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16877,12 +16889,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -16912,6 +16918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17144,12 +17156,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -17167,6 +17173,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17399,12 +17411,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -17428,6 +17434,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17660,12 +17672,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -17683,6 +17689,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17915,12 +17927,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -18004,6 +18010,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18236,12 +18248,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -18265,6 +18271,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18497,12 +18509,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -18520,6 +18526,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18752,12 +18764,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -18775,6 +18781,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19007,12 +19019,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -19030,6 +19036,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19262,12 +19274,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -19285,6 +19291,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19517,12 +19529,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -19540,6 +19546,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19772,12 +19784,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -19861,6 +19867,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20093,12 +20105,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -20152,6 +20158,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20384,12 +20396,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -20419,6 +20425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20651,12 +20663,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -20740,6 +20746,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20972,12 +20984,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -20995,6 +21001,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21227,12 +21239,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -21311,10 +21317,16 @@
       ]
     },
     "COMMONS": {
-      "last_id": "discord-1549330310540300361",
-      "last_ts": "2026-09-15T08:05:31.198000Z",
+      "last_id": "discord-1550052731660541983",
+      "last_ts": "2026-09-17T07:56:09.815000Z",
       "n": 40,
       "since": [
+        {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
         {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
@@ -21548,15 +21560,21 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
+        {
+          "id": "discord-1550052731660541983",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:56:09.815000Z"
+        },
+        {
+          "id": "discord-1549980931723624469",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:10:51.376000Z"
+        },
         {
           "id": "discord-1549330310540300361",
           "from": "COMMONS",
@@ -21616,18 +21634,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.527000Z"
-        },
-        {
-          "id": "discord-1548421623093272637",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ]
     },
@@ -21636,6 +21642,12 @@
       "last_ts": "2026-09-01T22:29:17.704829Z",
       "n": 40,
       "since": [
+        {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
         {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
@@ -21869,12 +21881,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -21958,6 +21964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22190,12 +22202,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -22213,6 +22219,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22445,12 +22457,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -22468,6 +22474,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22700,12 +22712,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -22789,6 +22795,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23021,12 +23033,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -23110,6 +23116,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23342,12 +23354,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -23383,6 +23389,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23615,12 +23627,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -23656,6 +23662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23888,12 +23900,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -23935,6 +23941,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24167,12 +24179,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -24190,6 +24196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24422,12 +24434,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -24511,6 +24517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24743,12 +24755,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -24766,6 +24772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24998,12 +25010,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -25021,6 +25027,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25253,12 +25265,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -25276,6 +25282,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25508,12 +25520,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -25531,6 +25537,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25763,12 +25775,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -25786,6 +25792,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26018,12 +26030,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -26107,6 +26113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26339,12 +26351,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -26425,8 +26431,14 @@
     "DEVIN": {
       "last_id": "devin-jev-systemone-swarm-20260917-01",
       "last_ts": "2026-09-17T21:54:11Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
         {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
@@ -26518,8 +26530,14 @@
     "DEVIN_LOCAL": {
       "last_id": "action-20260917195956-310fa3fc9f23",
       "last_ts": "2026-09-17T19:59:56Z",
-      "n": 28,
+      "n": 29,
       "since": [
+        {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
         {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
@@ -26704,6 +26722,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26936,12 +26960,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -26959,6 +26977,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27191,12 +27215,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -27280,6 +27298,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27512,12 +27536,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -27589,6 +27607,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27821,12 +27845,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -27910,6 +27928,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28142,12 +28166,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -28171,6 +28189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28403,12 +28427,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -28474,6 +28492,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28706,12 +28730,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -28741,6 +28759,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28973,12 +28997,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -29008,6 +29026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29240,12 +29264,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -29263,6 +29281,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29495,12 +29519,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -29584,6 +29602,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29816,12 +29840,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -29839,6 +29857,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30071,12 +30095,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -30100,6 +30118,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30332,12 +30356,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -30421,6 +30439,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30653,12 +30677,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -30676,6 +30694,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30908,12 +30932,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -30931,6 +30949,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31163,12 +31187,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -31252,6 +31270,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31484,12 +31508,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -31519,6 +31537,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31751,12 +31775,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -31774,6 +31792,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32006,12 +32030,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -32053,6 +32071,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32285,12 +32309,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -32314,6 +32332,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32546,12 +32570,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -32569,6 +32587,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32801,12 +32825,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -32824,6 +32842,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33056,12 +33080,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -33079,6 +33097,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33311,12 +33335,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -33400,6 +33418,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33632,12 +33656,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -33655,6 +33673,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33887,12 +33911,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -33910,6 +33928,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34142,12 +34166,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -34231,6 +34249,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34463,12 +34487,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -34486,6 +34504,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34718,12 +34742,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -34807,6 +34825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35039,12 +35063,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -35128,6 +35146,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35360,12 +35384,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -35389,6 +35407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35621,12 +35645,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -35656,6 +35674,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35888,12 +35912,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -35911,6 +35929,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36143,12 +36167,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -36178,6 +36196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36410,12 +36434,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -36439,6 +36457,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36671,12 +36695,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -36700,6 +36718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36932,12 +36956,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -37018,8 +37036,14 @@
     "GROK": {
       "last_id": "grok-wrf5417-authority-land-20260918-01",
       "last_ts": "2026-09-18T00:10:12Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
         {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
@@ -37168,6 +37192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37400,12 +37430,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -37459,6 +37483,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37691,12 +37721,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -37726,6 +37750,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37958,12 +37988,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -37987,6 +38011,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38219,12 +38249,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -38308,6 +38332,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38540,12 +38570,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -38575,6 +38599,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38807,12 +38837,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -38896,6 +38920,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39128,12 +39158,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -39151,6 +39175,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39383,12 +39413,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -39418,6 +39442,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39650,12 +39680,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -39673,6 +39697,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39905,12 +39935,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -39940,6 +39964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40172,12 +40202,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -40261,6 +40285,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40493,12 +40523,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -40516,6 +40540,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40748,12 +40778,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -40837,6 +40861,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41069,12 +41099,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -41158,6 +41182,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41390,12 +41420,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -41461,6 +41485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41693,12 +41723,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -41734,6 +41758,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41966,12 +41996,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -42019,6 +42043,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42251,12 +42281,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -42274,6 +42298,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42506,12 +42536,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -42595,6 +42619,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42827,12 +42857,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -42850,6 +42874,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43082,12 +43112,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -43135,6 +43159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43367,12 +43397,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -43390,6 +43414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43622,12 +43652,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -43645,6 +43669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43877,12 +43907,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -43900,6 +43924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44132,12 +44162,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -44155,6 +44179,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44387,12 +44417,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -44410,6 +44434,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44642,12 +44672,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -44731,6 +44755,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44963,12 +44993,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -44986,6 +45010,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45218,12 +45248,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -45241,6 +45265,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45473,12 +45503,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -45496,6 +45520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45728,12 +45758,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -45751,6 +45775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45983,12 +46013,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -46006,6 +46030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46238,12 +46268,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -46279,6 +46303,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46511,12 +46541,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -46600,6 +46624,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46832,12 +46862,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -46855,6 +46879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47087,12 +47117,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -47140,6 +47164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47372,12 +47402,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -47455,6 +47479,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47687,12 +47717,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -47710,6 +47734,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47942,12 +47972,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -47983,6 +48007,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48215,12 +48245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -48238,6 +48262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48470,12 +48500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -48493,6 +48517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48725,12 +48755,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -48748,6 +48772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48980,12 +49010,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -49003,6 +49027,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49235,12 +49265,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -49258,6 +49282,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49490,12 +49520,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -49513,6 +49537,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49745,12 +49775,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -49834,6 +49858,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50066,12 +50096,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -50155,6 +50179,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50387,12 +50417,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -50476,6 +50500,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50708,12 +50738,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -50755,6 +50779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50987,12 +51017,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -51076,6 +51100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51308,12 +51338,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -51331,6 +51355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51563,12 +51593,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -51586,6 +51610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51818,12 +51848,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -51853,6 +51877,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52085,12 +52115,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -52174,6 +52198,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52406,12 +52436,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -52435,6 +52459,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52667,12 +52697,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -52702,6 +52726,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52934,12 +52964,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -52969,6 +52993,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53201,12 +53231,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -53290,6 +53314,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53522,12 +53552,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -53611,6 +53635,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53843,12 +53873,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -53914,6 +53938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54146,12 +54176,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -54175,6 +54199,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54407,12 +54437,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -54430,6 +54454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54662,12 +54692,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -54685,6 +54709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54917,12 +54947,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -55006,6 +55030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55238,12 +55268,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -55261,6 +55285,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55493,12 +55523,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -55582,6 +55606,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55814,12 +55844,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -55849,6 +55873,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56081,12 +56111,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -56104,6 +56128,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56336,12 +56366,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -56425,6 +56449,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56657,12 +56687,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -56680,6 +56704,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56912,12 +56942,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -56935,6 +56959,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57167,12 +57197,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -57256,6 +57280,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57488,12 +57518,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -57511,6 +57535,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57743,12 +57773,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -57832,6 +57856,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58064,12 +58094,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -58105,6 +58129,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58337,12 +58367,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -58360,6 +58384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58592,12 +58622,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -58621,6 +58645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58853,12 +58883,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -58876,6 +58900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59108,12 +59138,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -59137,6 +59161,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59369,12 +59399,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -59392,6 +59416,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59624,12 +59654,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -59647,6 +59671,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59879,12 +59909,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -59908,6 +59932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60140,12 +60170,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -60163,6 +60187,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60395,12 +60425,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -60424,6 +60448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60656,12 +60686,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -60745,6 +60769,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60977,12 +61007,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -61000,6 +61024,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61232,12 +61262,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -61255,6 +61279,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61487,12 +61517,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -61510,6 +61534,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61742,12 +61772,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -61777,6 +61801,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62009,12 +62039,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -62098,6 +62122,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62330,12 +62360,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -62419,6 +62443,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62651,12 +62681,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -62740,6 +62764,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62972,12 +63002,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -63061,6 +63085,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63293,12 +63323,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -63322,6 +63346,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63554,12 +63584,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -63577,6 +63601,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63809,12 +63839,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -63838,6 +63862,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64070,12 +64100,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -64159,6 +64183,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64391,12 +64421,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -64480,6 +64504,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64712,12 +64742,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -64795,6 +64819,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65027,12 +65057,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -65086,6 +65110,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65318,12 +65348,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -65407,6 +65431,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65639,12 +65669,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -65723,11 +65747,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
-      "last_ts": "2026-09-18T02:13:25Z",
+      "last_id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+      "last_ts": "2026-09-18T02:51:20Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
         {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
@@ -65793,12 +65823,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T00:47:09Z"
-        },
-        {
-          "id": "action-20260917210932-c1de03fe7df1",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T21:09:32Z"
         }
       ]
     },
@@ -65807,6 +65831,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
         {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
@@ -66040,12 +66070,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -66069,6 +66093,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66301,12 +66331,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -66390,6 +66414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66622,12 +66652,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -66711,6 +66735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66943,12 +66973,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -66966,6 +66990,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67198,12 +67228,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -67227,6 +67251,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67459,12 +67489,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -67482,6 +67506,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67714,12 +67744,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -67737,6 +67761,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67969,12 +67999,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -67992,6 +68016,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -68224,12 +68254,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
@@ -68313,6 +68337,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:51:20Z"
+        },
+        {
           "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -68545,12 +68575,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T18:27:07Z"
-        },
-        {
-          "id": "grok-15579-verified-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:05:13Z"
         }
       ],
       "mine": [
