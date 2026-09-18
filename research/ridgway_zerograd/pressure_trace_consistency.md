@@ -136,9 +136,12 @@ Even after this blocker is repaired, #14998 still needs curved-to-polygonal dive
 - the `P3`/full-`P4` boundary-triangle witness, exact zero-extension traces, and `1/30` equality;
 - strong-outer/weak-inner annulus trace and `-2436/5` equality;
 - exact annulus edge partition;
+- explicit runtime certification of divergence, zero/strong trace, polynomial degree, pressure-volume pairing, and forcing/boundary-flux identities;
+- negative local witnesses that are either non-divergence-free or divergence-free with a bad zero-extension trace, both of which must raise `CertificateError`;
+- a real `python -O` subprocess hostile proving those negative witnesses cannot mint a positive certificate when interpreter assertions are disabled;
 - an explicit theorem ceiling.
 
-The machine-readable certificate is `results/pressure_trace_counterexample.json`.
+The successful machine-readable certificate shape remains `results/pressure_trace_counterexample.json`, but its truth fields are now derived from the actual exact polynomials and protected by explicit runtime checks rather than Python `assert`.
 
 **Proved here:** a nonzero pressure-normal consistency defect exists in the displayed general weak-normal formulation, including an exact `P3` test contained in a full `P4` velocity space.
 
