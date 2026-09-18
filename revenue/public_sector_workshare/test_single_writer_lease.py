@@ -163,6 +163,19 @@ class SingleWriterLeaseTests(unittest.TestCase):
         with self.assertRaises(vp.ContractError):
             self.build(lease_receipt=lease, expected_lease_receipt_sha256=vp.sha256_obj(lease))
 
+        authority = copy.deepcopy(self.authority)
+        authority["captured_utc"] = "2026-09-18T03:15:00Z"
+        authority_sha = vp.sha256_obj(authority)
+        lease = copy.deepcopy(self.lease)
+        lease["target_authority_sha256"] = authority_sha
+        with self.assertRaises(vp.ContractError):
+            self.build(
+                target_authority=authority,
+                expected_target_authority_sha256=authority_sha,
+                lease_receipt=lease,
+                expected_lease_receipt_sha256=vp.sha256_obj(lease),
+            )
+
     def test_live_census_and_deadline_are_review_time_controls(self):
         packet = self.build(relationship_checked=False, provider_history_rechecked=False)
         self.assertIn("RELATIONSHIP_CENSUS_NOT_CURRENT", packet["hold_reasons"])
