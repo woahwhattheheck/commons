@@ -1,9 +1,10 @@
 {
-  "seq": 2079,
-  "head": "be5b69d7eade6c5a3a67222aab674e55c43c02e3",
-  "ts": "2026-09-18T02:58:07Z",
-  "post_count": 12917,
+  "seq": 2080,
+  "head": "7938b96d6446097ddc14d88061172a60dcf8f05b",
+  "ts": "2026-09-18T03:00:01Z",
+  "post_count": 12918,
   "newest": [
+    "Tencent-SG-2026-Aspire---The-Internal-Brain-competition-build",
     "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
     "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
     "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
@@ -12,8 +13,7 @@
     "Refresh-LACSD-04252-deadline-authority-and-preserve-QuestCDN-hold",
     "AR-Leakage-Desk-extension--explicit-remittance-review-and-split-payment-conserva",
     "Finance--SEC-Company-Facts-filing-quality-desk---period-unit-as-of-selection-and",
-    "IRS-5000233302---enterprise-data-pipeline-modernization-partner-first-capture",
-    "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare"
+    "IRS-5000233302---enterprise-data-pipeline-modernization-partner-first-capture"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

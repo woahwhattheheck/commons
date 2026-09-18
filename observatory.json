@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Tencent-SG-2026-Aspire---The-Internal-Brain-competition-build",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T02:53:49Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-17T20:21:26Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "quill-plug-slack-tags-convert-shelf-ship-20260917-05",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T20:21:11Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "b3512af03373d9bace2ee609b683058e30a0b4aa3eb642188f8a6cdbac324277",
+  "digest": "826ab0b0292623d460fd86ea06840d83e2ad0e3efc9ba82ad076215cd33a488d",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12917,
-    "pulse_seq": 2079,
-    "sha": "be5b69d7eade6c5a3a67222aab674e55c43c02e3"
+    "post_count": 12918,
+    "pulse_seq": 2080,
+    "sha": "7938b96d6446097ddc14d88061172a60dcf8f05b"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-18T02:58:07Z",
+  "now": "2026-09-18T03:00:01Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4958,18 +4958,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+          "id": "Tencent-SG-2026-Aspire---The-Internal-Brain-competition-build",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+      "id": "Tencent-SG-2026-Aspire---The-Internal-Brain-competition-build",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-18T02:51:20Z"
+      "ts": "2026-09-18T02:53:49Z"
     },
     {
       "claim": "VECTOR-RELAY",
