@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 124,
+    "open_issues": 125,
     "open_pull_requests": 74,
     "runs_in_progress": 18,
-    "runs_queued": 341
+    "runs_queued": 343
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -222,13 +222,13 @@
     "15840": "1dd7127ba8b46b36e0020a347946d334bddab2b3",
     "15841": "6fc34824119487c0bd292afc5687c8e5792866b1",
     "15843": "2fa099d3627947bcd343bc62119c0b952a760a46",
-    "15863": "79ba7a61b66d0ffd841ac2210cae69b23a914a42",
+    "15863": "f9c31fdf0f5c0d9171500a26c910331eafe2bcbe",
     "15865": "d6ba9099718fab8b308daeab7c7b57d1e97aa786",
     "15866": "d4a6d1eb3ed0f7615f22c1847f9c379e9f468135",
     "15867": "7353c760d9f4c8a3d9f9ceeb1e753f93887c5067",
     "15868": "4fdb67823db0349de7b70717af7aa5b517eccaf3",
     "15869": "0029c8cfd68a9966b035e00838fb030ebe9850fb",
-    "15875": "e0737f306531ab2559eef6f089b016da256baada",
+    "15875": "82b3c6efe5cd87650cb66ca89213d0928ab2cbe3",
     "15877": "a4672c41352745889717172e08616533a542467a",
     "15884": "fc85ecf3036d57c69c8685068a1f2f49d88c2e8c",
     "15888": "abb4d4b8f9e1b223c21a28e644132ebdd3b50085",
@@ -255,7 +255,7 @@
   },
   "pulls_listed": 74,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 18.9,
+  "queue_depth_per_runner": 19.1,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -425,6 +425,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T06:49:43Z",
+  "unchanged_since": "2026-09-18T06:50:32Z",
   "undatable_pulls": []
 }
