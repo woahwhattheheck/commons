@@ -109,6 +109,29 @@ class ManifestTests(unittest.TestCase):
         with self.assertRaises(ContractError):
             validate_manifest(doc, AS_OF)
 
+    def test_buyer_packet_cannot_self_mint_with_arbitrary_digest(self):
+        doc = manifest()
+        doc["buyer_packet"]["retained"] = True
+        doc["buyer_packet"]["sha256"] = "a" * 64
+        doc["buyer_packet"]["authority"] = "BUYER_PACKET"
+        with self.assertRaises(ContractError):
+            validate_manifest(doc, AS_OF)
+
+    def test_stale_secondary_source_holds_partner_readiness(self):
+        doc = manifest()
+        doc["source_evidence"]["notice"]["captured_at_utc"] = (
+            "2026-09-15T01:40:00Z"
+        )
+        result = validate_manifest(doc, AS_OF)
+        self.assertEqual(
+            result["source_authority_state"],
+            "HOLD_BUYER_PACKET_REQUIRED",
+        )
+        self.assertEqual(
+            result["teaming_build_state"],
+            "HOLD_SOURCE_REFRESH_REQUIRED",
+        )
+
     def test_secondary_source_cannot_be_future_dated(self):
         doc = manifest()
         doc["source_evidence"]["notice"]["captured_at_utc"] = (
