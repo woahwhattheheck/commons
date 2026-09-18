@@ -419,10 +419,10 @@ def _build_source_theorem_receipt(
             "authority": authority,
             "scope": "certified operating_stock.protect_feed_stock WHEAT SELL reservation only",
             "theorem": (
-            "For every supported certified window, the source current-policy "
-            "withholding equation equals the independent minimum balance needed "
-            "to preserve required_wheat after the offered executable sale."
-        ),
+                "For every supported certified window, the source current-policy "
+                "withholding equation equals the independent minimum balance needed "
+                "to preserve required_wheat after the offered executable sale."
+            ),
             "helper_seam_candidate": False,
             "candidate_build_authorized": False,
             "promotion_authorized": False,
@@ -430,17 +430,17 @@ def _build_source_theorem_receipt(
             "remaining_gate_state": upstream_gate,
             "upstream_offer_census_required": True,
             "candidate_hypothesis_paths": [
-            "AUTHENTICATED_UPSTREAM_UNDER_OFFERING_WITH_HELPER_THEOREM_INTACT",
-            "SEPARATELY_REVIEWED_SOURCE_RUNTIME_CONTRADICTION",
-        ],
+                "AUTHENTICATED_UPSTREAM_UNDER_OFFERING_WITH_HELPER_THEOREM_INTACT",
+                "SEPARATELY_REVIEWED_SOURCE_RUNTIME_CONTRADICTION",
+            ],
             "empirical_gate": (
-            "No official-engine dev/holdout candidate is authorized by this source theorem. "
-            "The next retained census must independently test whether authenticated D2 "
-            "selected actions under-offer balance-permitted WHEAT while protect_feed_stock "
-            "continues to equal MIN_PROVABLE. Such under-offering can keep the helper theorem "
-            "intact and may justify a separately reviewed candidate hypothesis. A source/runtime "
-            "contradiction is a distinct path and must first be reviewed as drift."
-        ),
+                "No official-engine dev/holdout candidate is authorized by this source theorem. "
+                "The next retained census must independently test whether authenticated D2 "
+                "selected actions under-offer balance-permitted WHEAT while protect_feed_stock "
+                "continues to equal MIN_PROVABLE. Such under-offering can keep the helper theorem "
+                "intact and may justify a separately reviewed candidate hypothesis. A source/runtime "
+                "contradiction is a distinct path and must first be reviewed as drift."
+            ),
         }
 
     return source_theorem_receipt
