@@ -1,8 +1,98 @@
 {
-  "schema": "co-chsd-partner-candidates/v1",
-  "opportunity_id": "RFPFHLA20270000013",
+  "schema": "co-chsd-partner-candidates/v2",
+  "opportunity_id": "CO-CHSD-PURSUIT",
   "state": "RESEARCH_ONLY_NO_CONTACT_AUTHORITY",
   "candidates": [
+    {
+      "name": "Neudesic (IBM company)",
+      "qualification_state": "STRONG_TECHNICAL_RESEARCH_CANDIDATE_NOT_QUALIFIED",
+      "evidence": [
+        {
+          "url": "https://www.neudesic.com/services/integration-and-apis/",
+          "supports": [
+            "BizTalk HealthCheck and BizTalk-to-Azure integration practice"
+          ]
+        },
+        {
+          "url": "https://www.neudesic.com/services/application-management-services/",
+          "supports": [
+            "BizTalk application managed services"
+          ]
+        },
+        {
+          "url": "https://www.neudesic.com/wp-content/uploads/Neudesic-Migration-Accelerator-BizTalk-Azure.pdf",
+          "supports": [
+            "healthcare-targeted BizTalk/Azure accelerator; FHIR/OAuth/HL7/compliance positioning"
+          ]
+        },
+        {
+          "url": "https://www.neudesic.com/wp-content/uploads/cs_stryker-neudesic-1-1.pdf",
+          "supports": [
+            "Stryker healthcare/medical-device managed-services case with Microsoft BizTalk steady-state environment"
+          ]
+        },
+        {
+          "url": "https://www.neudesic.com/healthcare/",
+          "supports": [
+            "healthcare, Medicare/Medicaid and Microsoft cloud practice"
+          ]
+        },
+        {
+          "url": "https://www.neudesic.com/industries/",
+          "supports": [
+            "government industry practice"
+          ]
+        }
+      ],
+      "unresolved_required_evidence": [
+        "exact current buyer-required Microsoft/BizTalk certification match",
+        "organization-level SOC 2 Type II evidence",
+        "Colorado Vendor Self Service registration",
+        "required similar-project count and buyer-acceptable references",
+        "insurance and exact staffing/operations compliance",
+        "willingness to pursue this exact solicitation and negotiate a paid TJLabs workshare"
+      ],
+      "contact_authorized": false
+    },
+    {
+      "name": "Cognizant / Cognizant Government Solutions",
+      "qualification_state": "STRONG_HEALTHCARE_GOV_RESEARCH_CANDIDATE_NOT_QUALIFIED",
+      "evidence": [
+        {
+          "url": "https://careers.cognizant.com/us-en/jobs/00069649511/qnxt-infrastructure-installation-consultant/",
+          "supports": [
+            "current healthcare role using BizTalk Server, SQL Server, .NET, HIPAA EDI, Azure and security"
+          ]
+        },
+        {
+          "url": "https://www.cognizant.com/us/en/industries/government-technology-solutions",
+          "supports": [
+            "current federal/state/local government practice and contract vehicles"
+          ]
+        },
+        {
+          "url": "https://www.cognizant.com/us/en/industries/healthcare-technology-solutions",
+          "supports": [
+            "healthcare, government Azure and Medicare/Medicaid practice"
+          ]
+        },
+        {
+          "url": "https://www.cognizant.com/us/en/about-cognizant/partners/microsoft",
+          "supports": [
+            "current Microsoft partnership"
+          ]
+        }
+      ],
+      "unresolved_required_evidence": [
+        "exact current buyer-required BizTalk certification",
+        "organization-level SOC 2 Type II evidence",
+        "Colorado Vendor Self Service registration",
+        "required similar projects and buyer-acceptable references",
+        "insurance and exact staffing/operations compliance",
+        "willingness and commercial role"
+      ],
+      "contact_authorized": false
+    },
     {
       "name": "TwoConnect",
       "qualification_state": "PROMISING_RESEARCH_CANDIDATE_NOT_QUALIFIED",
@@ -11,14 +101,14 @@
           "url": "https://www.twoconnect.com/azure-biztalk-hipaa-hl7",
           "supports": [
             "BizTalk healthcare integration",
-            "HIPAA and HL7 integration",
-            "claims and patient-data integration experience"
+            "HIPAA/HL7 integration",
+            "claims and patient-data integration"
           ]
         },
         {
           "url": "https://partner.microsoft.com/es-es/case-studies/twoconnect-bupa",
           "supports": [
-            "Microsoft-published Bupa Global healthcare integration case study",
+            "Microsoft-published Bupa Global healthcare integration case",
             "Azure and BizTalk delivery"
           ]
         },
@@ -32,20 +122,18 @@
         {
           "url": "https://www.twoconnect.com/about-us",
           "supports": [
-            "public Microsoft Gold/Azure/BizTalk integration-partner claims",
-            "Microsoft integration staff/certification claims"
+            "public Microsoft/Azure/BizTalk integration-partner claims"
           ]
         }
       ],
       "unresolved_required_evidence": [
         "exact current buyer-required Microsoft/BizTalk certification match",
-        "SOC 2 Type II report on offeror operations",
-        "Colorado Vendor Self Service registration",
-        "three buyer-comparable projects completed within the required five-year window",
+        "organization-level SOC 2 Type II evidence",
+        "Colorado VSS",
+        "three buyer-comparable projects in the required window",
         "two buyer-acceptable references",
-        "applicable insurance limits",
-        "Colorado/public-sector legal and contracting readiness",
-        "willingness to pursue this exact RFP and negotiate a paid TJLabs workshare"
+        "insurance",
+        "willingness and commercial role"
       ],
       "contact_authorized": false
     },
@@ -57,29 +145,28 @@
           "url": "https://www.art2link.com/",
           "supports": [
             "Microsoft Solutions Partner claim",
-            "20+ years enterprise integration claim",
-            "healthcare and public-sector positioning",
-            "BizTalk deployment lineage"
+            "enterprise integration history",
+            "healthcare/public-sector positioning",
+            "BizTalk lineage"
           ]
         },
         {
           "url": "https://www.art2link.com/solutions/hl7-fhir-platform/",
           "supports": [
-            "healthcare integration",
-            "HL7/FHIR",
-            "Azure-tenant deployment",
+            "HL7/FHIR healthcare integration",
+            "Azure deployment",
             "BizTalk delivery lineage"
           ]
         }
       ],
       "unresolved_required_evidence": [
-        "current BizTalk 2020 maintenance fit versus modernization focus",
-        "exact buyer-required certification",
+        "current BizTalk operations fit",
+        "exact buyer certification",
         "SOC 2 Type II",
         "Colorado VSS",
-        "buyer-comparable projects/references",
-        "insurance and operational staffing",
-        "willingness and commercial role"
+        "projects/references",
+        "insurance/staffing",
+        "willingness"
       ],
       "contact_authorized": false
     },
@@ -90,20 +177,20 @@
         {
           "url": "https://beyondbiztalk.com/",
           "supports": [
-            "deep BizTalk/Azure migration and integration experience",
-            "public healthcare integration testimonials",
+            "BizTalk/Azure integration depth",
+            "healthcare integration testimonials",
             "Rocky Mountain Health Plans testimonial"
           ]
         }
       ],
       "unresolved_required_evidence": [
         "prime-scale managed-service capacity",
-        "exact buyer-required Microsoft/BizTalk certification",
+        "exact buyer certification",
         "SOC 2 Type II",
         "Colorado VSS",
-        "three similar buyer-acceptable projects and two references",
-        "insurance and seven-day support coverage",
-        "willingness and commercial role"
+        "projects/references",
+        "insurance/support coverage",
+        "willingness"
       ],
       "contact_authorized": false
     }
