@@ -678,3 +678,183 @@ def prepare_release_terminal(
         live_parent_sha=live_claim_parent_sha,
         live_metadata_json=live_claim_metadata_json,
     )
+    if type(reason) is not str:
+        raise CustodyError("release reason must be text")
+    reason = unicodedata.normalize("NFKC", reason.strip())
+    if not reason or len(reason) > MAX_TEXT or CONTROL_RE.search(reason):
+        raise CustodyError("release reason invalid")
+    reason_sha = hashlib.sha256(reason.encode()).hexdigest()
+    proof_material = {
+        "state": "RELEASED_UNSENT",
+        "claim_receipt_sha256": claim["receipt_sha256"],
+        "release_reason_sha256": reason_sha,
+    }
+    proof = _holder_proof(cap, proof_material)
+    metadata = _terminal_material_base(claim, "RELEASED_UNSENT")
+    metadata.update({
+        "release_reason_sha256": reason_sha,
+        "holder_proof_hmac_sha256": proof,
+    })
+    metadata_json = _canonical_json_text(metadata)
+    plan = {
+        "schema": TERMINAL_PLAN_SCHEMA,
+        "state": "RELEASED_UNSENT",
+        "generation": claim["generation"],
+        "key_sha256": claim["key_sha256"],
+        "claim_seam_sha256": claim["claim_seam_sha256"],
+        "claim_commit_sha": claim["claim_commit_sha"],
+        "claim_receipt_sha256": claim["receipt_sha256"],
+        "claim_receipt": claim,
+        "claim_capability_sha256": claim["claim_capability_sha256"],
+        "terminal_branch_name": terminal_branch(claim["claim_seam_sha256"]),
+        "metadata_path": _metadata_path(claim["claim_seam_sha256"], "terminal"),
+        "metadata_sha256": _text_digest(metadata_json),
+        "metadata_json": metadata_json,
+        "release_reason_sha256": reason_sha,
+        "holder_proof_hmac_sha256": proof,
+        **_authority_flags(),
+    }
+    return _seal(plan, "plan_sha256")
+
+
+def _dispatch_proof(capability: str, material: Mapping[str, Any]) -> str:
+    return _holder_proof(capability, material)
+
+
+def prepare_dispatch_terminal(
+    claim_receipt_raw: Mapping[str, Any],
+    *,
+    capability: str,
+    live_claim_branch_sha: str,
+    live_claim_parent_sha: str,
+    live_claim_metadata_json: str,
+    message_sha256: str,
+    channel: str,
+    compensation_path: str,
+) -> dict[str, Any]:
+    claim = verify_claim_receipt(claim_receipt_raw)
+    cap = _capability(capability)
+    verify_claim_possession(
+        claim,
+        capability=cap,
+        live_branch_sha=live_claim_branch_sha,
+        live_parent_sha=live_claim_parent_sha,
+        live_metadata_json=live_claim_metadata_json,
+    )
+    message_sha256 = _sha64(message_sha256, "message_sha256")
+    channel = _token(channel, "channel").casefold()
+    category, compensation_sha = _compensation_category(compensation_path)
+    proof_material = {
+        "state": "DISPATCHED_OUTCOME_UNKNOWN",
+        "claim_receipt_sha256": claim["receipt_sha256"],
+        "message_sha256": message_sha256,
+        "channel": channel,
+        "compensation_path_sha256": compensation_sha,
+        "compensation_category": category,
+    }
+    proof = _dispatch_proof(cap, proof_material)
+    metadata = _terminal_material_base(claim, "DISPATCHED_OUTCOME_UNKNOWN")
+    metadata.update({**proof_material,
+        "holder_proof_hmac_sha256": proof,
+    })
+    # state/claim fields duplicated by proof_material are identical; canonical map remains unambiguous.
+    metadata_json = _canonical_json_text(metadata)
+    plan = {
+        "schema": TERMINAL_PLAN_SCHEMA,
+        "state": "DISPATCHED_OUTCOME_UNKNOWN",
+        "generation": claim["generation"],
+        "key_sha256": claim["key_sha256"],
+        "claim_seam_sha256": claim["claim_seam_sha256"],
+        "claim_commit_sha": claim["claim_commit_sha"],
+        "claim_receipt_sha256": claim["receipt_sha256"],
+        "claim_receipt": claim,
+        "claim_capability_sha256": claim["claim_capability_sha256"],
+        "terminal_branch_name": terminal_branch(claim["claim_seam_sha256"]),
+        "metadata_path": _metadata_path(claim["claim_seam_sha256"], "terminal"),
+        "metadata_sha256": _text_digest(metadata_json),
+        "metadata_json": metadata_json,
+        "message_sha256": message_sha256,
+        "channel": channel,
+        "compensation_path_sha256": compensation_sha,
+        "compensation_category": category,
+        "holder_proof_hmac_sha256": proof,
+        **_authority_flags(),
+    }
+    return _seal(plan, "plan_sha256")
+
+
+def verify_terminal_plan(raw: Mapping[str, Any]) -> dict[str, Any]:
+    plan = _verify_seal(raw, "plan_sha256")
+    if plan.get("schema") != TERMINAL_PLAN_SCHEMA:
+        raise CustodyError("terminal plan schema mismatch")
+    state = plan.get("state")
+    if state not in {"RELEASED_UNSENT", "DISPATCHED_OUTCOME_UNKNOWN"}:
+        raise CustodyError("terminal plan state invalid")
+    seam = _sha64(plan["claim_seam_sha256"], "claim_seam_sha256")
+    if plan.get("terminal_branch_name") != terminal_branch(seam):
+        raise CustodyError("terminal branch mismatch")
+    if plan.get("metadata_path") != _metadata_path(seam, "terminal"):
+        raise CustodyError("terminal metadata path mismatch")
+    if plan.get("metadata_sha256") != _text_digest(plan["metadata_json"]):
+        raise CustodyError("terminal metadata digest mismatch")
+    _sha40(plan["claim_commit_sha"], "claim_commit_sha")
+    for field in ("key_sha256","claim_receipt_sha256","claim_capability_sha256"):
+        _sha64(plan[field], field)
+    claim = verify_claim_receipt(plan.get("claim_receipt"))
+    if claim["receipt_sha256"] != plan["claim_receipt_sha256"] or claim["claim_commit_sha"] != plan["claim_commit_sha"] or claim["claim_seam_sha256"] != plan["claim_seam_sha256"] or claim["claim_capability_sha256"] != plan["claim_capability_sha256"]:
+        raise CustodyError("terminal plan claim receipt mismatch")
+    expected_metadata = _terminal_material_base(claim, state)
+    if state == "RELEASED_UNSENT":
+        reason_sha = _sha64(plan.get("release_reason_sha256"), "release_reason_sha256")
+        proof = _sha64(plan.get("holder_proof_hmac_sha256"), "holder_proof_hmac_sha256")
+        expected_metadata.update({"release_reason_sha256": reason_sha, "holder_proof_hmac_sha256": proof})
+        if "retired_capability" in plan or "retired_capability" in plan.get("metadata_json", ""):
+            raise CustodyError("release terminal must not disclose active capability")
+    else:
+        message_sha = _sha64(plan.get("message_sha256"), "message_sha256")
+        compensation_sha = _sha64(plan.get("compensation_path_sha256"), "compensation_path_sha256")
+        proof = _sha64(plan.get("holder_proof_hmac_sha256"), "holder_proof_hmac_sha256")
+        channel = _token(plan.get("channel"), "channel").casefold()
+        category = plan.get("compensation_category")
+        if category not in {"priced_service","bounty_or_prize","bid_or_contract","fee_or_invoice","paid_path"}:
+            raise CustodyError("compensation category invalid")
+        proof_material = {
+            "state": "DISPATCHED_OUTCOME_UNKNOWN",
+            "claim_receipt_sha256": claim["receipt_sha256"],
+            "message_sha256": message_sha,
+            "channel": channel,
+            "compensation_path_sha256": compensation_sha,
+            "compensation_category": category,
+        }
+        expected_metadata.update({**proof_material, "holder_proof_hmac_sha256": proof})
+        if "retired_capability" in plan:
+            raise CustodyError("dispatch must not disclose capability")
+    expected_text = _canonical_json_text(expected_metadata)
+    if plan.get("metadata_json") != expected_text or plan.get("metadata_sha256") != _text_digest(expected_text):
+        raise CustodyError("terminal metadata binding mismatch")
+    return plan
+
+
+def bind_terminal_commit(plan_raw: Mapping[str, Any], terminal_commit_sha: str) -> dict[str, Any]:
+    plan = verify_terminal_plan(plan_raw)
+    commit = _sha40(terminal_commit_sha, "terminal_commit_sha")
+    intent = {
+        "schema": TERMINAL_INTENT_SCHEMA,
+        "state": plan["state"],
+        "generation": plan["generation"],
+        "key_sha256": plan["key_sha256"],
+        "claim_seam_sha256": plan["claim_seam_sha256"],
+        "claim_commit_sha": plan["claim_commit_sha"],
+        "claim_receipt_sha256": plan["claim_receipt_sha256"],
+        "claim_receipt": plan["claim_receipt"],
+        "claim_capability_sha256": plan["claim_capability_sha256"],
+        "terminal_branch_name": plan["terminal_branch_name"],
+        "metadata_path": plan["metadata_path"],
+        "metadata_sha256": plan["metadata_sha256"],
+        "plan_sha256": plan["plan_sha256"],
+        "terminal_commit_sha": commit,
+        **_authority_flags(),
+    }
+    return _seal(intent, "intent_sha256")
+
+
