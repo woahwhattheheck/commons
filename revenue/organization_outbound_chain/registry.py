@@ -160,7 +160,7 @@ _INTERNAL_PROVIDER_MARKER_EXEMPTIONS = (
     ),
     (
         "integrations/grok_slack/bridge.py",
-        "d7a7fdc09b6a0a19a078a4d962b95e003c618e78",
+        "123a179e3071c0b700ac76baa8bd52631c180696",
         _INTERNAL_PROVIDER_GUARD_MARKERS,
     ),
 )
@@ -307,6 +307,118 @@ def _python_call_violations(
                 violations.add(f"dynamic-provider-transport-method:{attr}")
     return violations
 
+
+
+def _ast_expr_key(node: ast.AST | None) -> str | None:
+    if node is None:
+        return None
+    return ast.dump(node, annotate_fields=True, include_attributes=False)
+
+
+def _dict_channel_expr(node: ast.AST | None) -> ast.AST | None:
+    if not isinstance(node, ast.Dict):
+        return None
+    for key, value in zip(node.keys, node.values):
+        if isinstance(key, ast.Constant) and key.value == "channel":
+            return value
+    return None
+
+
+def _internal_slack_callsite_violations(tree: ast.AST) -> set[str]:
+    """Require each exempt Slack mutation to have a same-channel guard first.
+
+    The reviewed bridge blob remains an identity fence, but identity alone never
+    exempts an entire file. Direct WebClient chat_postMessage calls and the raw
+    slack_web_call("chat.postMessage", ...) helper are each paired with a prior
+    require_channel() call in the same function and for the same channel
+    expression.
+    """
+
+    guards: dict[int, list[tuple[int, str | None]]] = {}
+    mutations: list[tuple[int, str, int, str | None, str]] = []
+
+    class Visitor(ast.NodeVisitor):
+        def __init__(self) -> None:
+            self.stack: list[ast.AST] = []
+
+        def _visit_function(self, node: ast.AST) -> None:
+            self.stack.append(node)
+            self.generic_visit(node)
+            self.stack.pop()
+
+        def visit_FunctionDef(self, node: ast.FunctionDef) -> None:
+            self._visit_function(node)
+
+        def visit_AsyncFunctionDef(self, node: ast.AsyncFunctionDef) -> None:
+            self._visit_function(node)
+
+        def visit_Call(self, node: ast.Call) -> None:
+            if self.stack:
+                function = self.stack[-1]
+                function_id = id(function)
+                function_name = str(getattr(function, "name", "<function>"))
+
+                if isinstance(node.func, ast.Attribute) and node.func.attr == "require_channel":
+                    guard_expr = node.args[0] if node.args else None
+                    guards.setdefault(function_id, []).append(
+                        (node.lineno, _ast_expr_key(guard_expr))
+                    )
+
+                mutation_kind: str | None = None
+                channel_expr: ast.AST | None = None
+                if isinstance(node.func, ast.Attribute) and node.func.attr == "chat_postMessage":
+                    mutation_kind = "webclient-chat-post"
+                    for keyword in node.keywords:
+                        if keyword.arg == "channel":
+                            channel_expr = keyword.value
+                            break
+                else:
+                    dotted = _dotted(node.func)
+                    if (
+                        dotted
+                        and dotted.endswith("slack_web_call")
+                        and node.args
+                        and isinstance(node.args[0], ast.Constant)
+                        and node.args[0].value == "chat.postMessage"
+                    ):
+                        mutation_kind = "raw-webapi-chat-post"
+                        payload_expr: ast.AST | None = node.args[2] if len(node.args) >= 3 else None
+                        if payload_expr is None:
+                            for keyword in node.keywords:
+                                if keyword.arg == "payload":
+                                    payload_expr = keyword.value
+                                    break
+                        channel_expr = _dict_channel_expr(payload_expr)
+
+                if mutation_kind is not None:
+                    mutations.append(
+                        (
+                            function_id,
+                            function_name,
+                            node.lineno,
+                            _ast_expr_key(channel_expr),
+                            mutation_kind,
+                        )
+                    )
+            self.generic_visit(node)
+
+    Visitor().visit(tree)
+    violations: set[str] = set()
+    for function_id, function_name, line, channel_key, kind in mutations:
+        if channel_key is None:
+            violations.add(
+                f"internal-provider-callsite-channel-unknown:{function_name}:{line}:{kind}"
+            )
+            continue
+        guarded = any(
+            guard_line < line and guard_key == channel_key
+            for guard_line, guard_key in guards.get(function_id, ())
+        )
+        if not guarded:
+            violations.add(
+                f"internal-provider-callsite-unguarded:{function_name}:{line}:{kind}"
+            )
+    return violations
 
 def _top_level_defs(tree: ast.AST) -> tuple[set[str], set[str]]:
     functions: set[str] = set()
@@ -468,6 +580,7 @@ def find_bypasses(
     _iter_files=_iter_code_files,
     _python_scan=_python_call_violations,
     _marker_match=_contains_provider_marker,
+    _internal_callsite_scan=_internal_slack_callsite_violations,
     _provider_markers: tuple[str, ...] = PROVIDER_MARKERS,
     _low_level_primitives: frozenset[str] = frozenset(_LOW_LEVEL_PRIMITIVES),
     _chain_files: frozenset[str] = frozenset(_CHAIN_FILES),
@@ -536,9 +649,17 @@ def find_bypasses(
                     for label in _python_scan(tree):
                         if label.startswith("provider-transport-method:") or label.startswith("dynamic-provider-transport-method:"):
                             violations.append(f"{rel}:{label}")
+                if exact_internal_marker_exempt:
+                    for label in _internal_callsite_scan(tree):
+                        violations.append(f"{rel}:{label}")
 
-        if rel not in _marker_allowed and not exact_internal_marker_exempt:
+        if rel not in _marker_allowed:
             for marker in _provider_markers:
+                # Exact bridge identity may exempt only the direct SDK marker,
+                # and only after the AST callsite proof above has run. Other
+                # provider markers in the same file are never blanket-exempt.
+                if exact_internal_marker_exempt and marker == "chat_postMessage(":
+                    continue
                 if _marker_match(source, marker):
                     violations.append(f"{rel}:provider-marker:{marker}")
 
