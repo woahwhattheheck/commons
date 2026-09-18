@@ -5,6 +5,8 @@ import json
 import unittest
 from pathlib import Path
 
+import ky_fin_reporting_rfi as subject
+
 from ky_fin_reporting_rfi import (
     AUTHORITY_FALSE,
     CASE_SCHEMA,
@@ -333,6 +335,50 @@ class MatrixAndBundleTests(unittest.TestCase):
         one = compile_bundle(manifest(), matrix(), AS_OF)
         two = compile_bundle(manifest(), matrix(), AS_OF)
         self.assertEqual(one, two)
+
+    def test_exported_authority_map_cannot_widen_compiled_or_verified_outputs(self):
+        authority_fields = tuple(AUTHORITY_FALSE)
+        original = subject.AUTHORITY_FALSE
+        try:
+            original["submission_authorized"] = True
+            mutated = subject.compile_bundle(manifest(), matrix(), AS_OF)
+            surfaces = [
+                mutated,
+                mutated["pursuit"],
+                mutated["discovery_matrix"],
+                *mutated["discovery_matrix"]["results"],
+            ]
+            for surface in surfaces:
+                for field in authority_fields:
+                    self.assertIs(surface[field], False)
+
+            subject.AUTHORITY_FALSE = {"submission_authorized": True}
+            rebound = subject.compile_bundle(manifest(), matrix(), AS_OF)
+            surfaces = [
+                rebound,
+                rebound["pursuit"],
+                rebound["discovery_matrix"],
+                *rebound["discovery_matrix"]["results"],
+            ]
+            for surface in surfaces:
+                for field in authority_fields:
+                    self.assertIs(surface[field], False)
+
+            forged = copy.deepcopy(rebound)
+            forged["submission_authorized"] = True
+            forged = subject.receipt(forged)
+            self.assertFalse(
+                subject.verify_bundle(
+                    forged,
+                    manifest(),
+                    matrix(),
+                    AS_OF,
+                )
+            )
+        finally:
+            original.clear()
+            original.update({field: False for field in authority_fields})
+            subject.AUTHORITY_FALSE = original
 
 
 if __name__ == "__main__":
