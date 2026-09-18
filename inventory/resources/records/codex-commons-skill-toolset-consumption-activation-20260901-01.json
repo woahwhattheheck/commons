@@ -63,7 +63,7 @@
   "exact_blobs": {
     "host/tool_consumption_index.py": "53cca608877f0eeea3b6c43e08216c057b1fdc30",
     "test_tool_consumption_index.py": "cd5c374597eb455e5e49e19d8350c256ac66d08f",
-    "inventory/resources/tool_consumption.json": "32a24231c3ffaa2cde511a988b8e16d69f2c0c9e",
+    "inventory/resources/tool_consumption.json": "049e2041e9d5483a02f05b11571a4870a70e9bfd",
     "ground/RESOURCE_LEDGER.json": "cec7fbd9708ae9d9ecc970673686979b3729d47b"
   },
   "verification": {

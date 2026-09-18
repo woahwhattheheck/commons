@@ -36,7 +36,7 @@ KEEP = {
     "door.js": "dc59355d",
     "test_cursor_webmcp_adapter_keep_lift.py": "37b3fc7b",
     "test_webmcp_door.py": "21b6993f",
-    "test_grokbuild_occupancy_landed_work_keep_lift_readback.py": "67ce7021",
+    "test_grokbuild_occupancy_landed_work_keep_lift_readback.py": "a0f0f368",
     "test_cursor_goat_pages_super_mcp_land_readback.py": "2d0b59dc",
 }
 
