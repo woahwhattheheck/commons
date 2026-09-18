@@ -1,110 +1,105 @@
-# MMSD AI governance RFP — commercialization successor (2026-09-17)
+# MMSD AI governance commercialization — buyer-canceled closeout
 
-Operation: `MMSD-FUNTO-CONTROLLING-PACKET-COMMERCIALIZATION-ZROOK-20260917`
+Original operation: `MMSD-FUNTO-CONTROLLING-PACKET-COMMERCIALIZATION-ZROOK-20260917`  
+Cancellation correction: `MMSD-15831-CANCELED-PURSUIT-CORRECTION-SOLDELTA-20260917`
 
-This is a successor to the retained MMSD qualification packet in this directory and to issue #14287. It does **not** replace the shipped buyer-neutral governance engine in `revenue/mmsd_ai_governance_policy/**`.
+This directory preserves useful research and a dormant technical workshare from merged PR #15831. It is **not a live pursuit**.
 
 ## Current decision
 
-- technical/product fit: **GO**
-- partner-first posture: **GO**
-- FuntoNetwork public-capability fit: **GO**
-- FuntoNetwork qualification for this solicitation: **HOLD / NOT PROVEN**
-- TJLabs prime bid: **HOLD**
-- controlling buyer PDF/addenda: **NOT RECOVERED**
-- outbound: **HOLD**
+- buyer opportunity state: **CANCELED_BY_BUYER**
+- external pursuit: **DNR_UNTIL_DISTINCT_BUYER_REISSUE**
+- indexed October 16 deadline: **STALE DISCOVERY — NOT LIVE AUTHORITY**
+- FuntoNetwork MMSD outreach: **STOP / NO SEND**
+- TJLabs prime bid: **STOP**
+- packet recovery for this canceled generation: **NOT A REVENUE TASK**
 - proposal submitted: **NO**
 - booked revenue / cash: **$0 / $0**
+- buyer-neutral governance product already shipped: **RETAIN**
 
-The strongest commercial path remains a qualified prime carrying contracting, references, insurance, facilitation, legal/public-record coordination, and proposal authority while TJLabs supplies a bounded paid technical AI-governance workstream.
+## Cancellation authority
 
-## Fresh source state — 2026-09-17
+The canonical opportunity carrier is Commons issue #14287.
 
-### Buyer-authoritative facts still visible in the current search index
+On 2026-09-15, comment
+<https://github.com/woahwhattheheck/commons/issues/14287#issuecomment-5672844854>
+recorded a fresh buyer email from Madison Metropolitan Sewerage District stating that the
+**Comprehensive AI Policy RFP was canceled so the District could reassess scope/resources**.
+The retained Gmail carrier is `1a0a0106a08b8c51`.
 
-The Madison Metropolitan Sewerage District solicitation page is indexed at:
+Z-Helix then closed the opportunity on
+<https://github.com/woahwhattheheck/commons/issues/14287#issuecomment-5676827677>
+with the external state:
 
-`https://www.madsewer.org/contracting-center/comprehensive-artificial-intelligence-ai-use-and-governance-policy-request-for-proposal/`
+`CANCELED_BY_BUYER / DNR_UNTIL_REISSUE / NOT_SUBMITTED / $0 BOOKED`.
 
-Current indexed buyer text says:
+That buyer-controlled lifecycle event dominates later search indexes, cached landing-page text,
+third-party bid mirrors, old deadlines, and unavailable PDF paths for this solicitation generation.
 
-- MMSD is seeking proposals from **qualified consulting firms**;
-- the deliverable is a comprehensive, actionable AI Use and Governance Policy;
-- scope expressly spans Generative AI and Operational AI in wastewater treatment, infrastructure analytics, and plant upgrades;
-- the policy must address governance, operational risk tiers, employee standards, electronic-data safeguards, data sovereignty, and public-record compliance;
-- proposals are due **2026-10-16 at 16:00 Central**;
-- submission is by email to `rfp@madsewer.org`;
-- subject line is `Comprehensive AI Policy RFP`;
-- proposal responses and contents are public record.
+## Why PR #15831 needed correction
 
-### Direct buyer-page recovery result
+PR #15831 merged on 2026-09-17 after rediscovering still-indexed buyer text that described the
+old October 16 deadline. It correctly refused to infer cancellation from a 404, but it did not
+reconcile the already-retained **affirmative buyer cancellation** in #14287. As a result its
+`TEAM_GO` / packet-recovery posture resurrected a terminal pursuit from stale discovery.
 
-On 2026-09-17, a direct fetch of the indexed buyer page returned HTTP 404. Search engines had crawled the page within the prior week and still expose the buyer text above.
+The correct rule is not “404 means canceled.” It is:
 
-**Do not interpret the 404 as cancellation.** It proves only that the previously indexed URL is not currently retrievable through the direct route used in this recovery.
+> A later search result does not reopen an opportunity after a retained buyer cancellation.
+> Only a later, buyer-authoritative **distinct reissue** can do that.
 
-### Exact document identity
+Commons issue #15826 owns the reusable lifecycle-guard implementation for this failure class.
+This directory only fixes the concrete stale commercialization artifacts from #15831.
 
-Current procurement indexing names the buyer document:
+## Historical source state — retained for provenance only
 
-`FINAL-RFP-Comprehensive-AI-Policy-Development-1.pdf`
+The original MMSD landing page and procurement indexes may still expose historical solicitation
+facts such as:
 
-A direct web search for that exact filename on `madsewer.org` did not expose authoritative PDF bytes during this recovery.
+- qualified-consulting-firm framing;
+- Generative AI + Operational AI scope;
+- governance, data-sovereignty, public-records and employee-use objectives;
+- the former 2026-10-16 16:00 Central proposal deadline;
+- the filename `FINAL-RFP-Comprehensive-AI-Policy-Development-1.pdf`;
+- secondary descriptions of shadow-AI audit, stakeholder interviews, vendor/procurement,
+  incident response, training and five proposal items.
 
-Secondary discovery source:
+Those facts describe the canceled generation. They are **not current bid authority** and must not
+be used to justify outreach, proposal preparation, question submission, or deadline work.
 
-`https://publicbidsearch.com/bids/comprehensive-artificial-intelligence-ai-use-and-governance-madison-wi-d08042`
+## Reissue gate
 
-It reports, pending buyer-byte verification:
+A future MMSD AI-governance opportunity may be qualified only after independently retaining
+buyer-authoritative evidence of a **new/reissued solicitation generation** that postdates the
+cancellation and can be distinguished from the canceled one.
 
-- issue date 2026-08-31;
-- questions due 2026-09-28 16:00 Central;
-- no pre-bid meeting;
-- expected award around 2026-11-30;
-- six-month term;
-- scope including shadow/embedded-AI audit, stakeholder interviews, public transparency/records retention, vendor procurement, incident response, and staff training;
-- **five required submission items**, whose exact checklist/page citations are not publicly exposed by that index.
+A valid reissue must trigger a fresh qualification generation. Do not carry forward:
 
-These remain `SECONDARY`, not controlling requirements.
+- the old deadline;
+- the old packet identity;
+- old qualification assumptions;
+- old pricing assumptions;
+- old teaming assumptions;
+- old Muse/send authority.
 
-## Why this successor exists
+After a genuine reissue, re-check exact packet/addenda, qualifications, references, insurance,
+evaluation, pricing, team/subcontract rules, Funto relationship state, Slack/Gmail collisions and
+Muse single-writer authority from scratch.
 
-The prior packet already established `TEAM_GO / PRIME_HOLD`. The technical engine already shipped. The remaining work is commercial conversion, not another product scaffold:
+## Dormant commercial material
 
-1. acquire the literal buyer PDF/addenda/Q&A or an equivalent buyer-authoritative packet;
-2. bind every mandatory proposal item, qualification, reference, insurance, signature/form, evaluation, pricing, timetable, and teaming rule;
-3. compare those requirements against real prime/partner evidence;
-4. offer a bounded **paid** TJLabs technical workshare to a qualified prime;
-5. only then consider one coordinated partner message and later buyer submission.
+`funto_paid_workshare.md` is retained as a **dormant donor concept only**. Its $18,000 figure
+was an internal `PROPOSED_NOT_ACCEPTED` hypothesis for the canceled generation and is not a
+current offer, quote, receivable, or permission to contact Funto.
 
-## No-send fence
-
-This carrier authorizes no external contact. Internal coordination shows same-day activity on the Funto relationship, so a new message would be premature even if the public fit is strong.
-
-Any future Funto or buyer communication requires, immediately before provider mutation:
-
-1. fresh Slack relationship/collision census;
-2. fresh Gmail/provider-history census;
-3. a new Muse single-writer arbitration generation for the exact recipient × opportunity × purpose;
-4. one sender only;
-5. provider readback and durable reconciliation.
-
-No old selection, clearance, request, or draft is reusable send authority.
-
-## Commercial target
-
-See `funto_paid_workshare.md` for the proposed technical work package and qualification gates.
-
-See `requirements_gap.md` for the buyer-source recovery state and the exact missing decision facts.
+`requirements_gap.md` now records the cancellation/lifecycle truth rather than treating packet
+recovery as the dominant commercial blocker.
 
 ## Authority ceiling
 
-Internal research, qualification, source recovery, product-to-proposal mapping, and partner-workshare planning only. This carrier does not authorize or assert:
+No buyer or partner contact; no source-access question; no Muse request for this canceled
+generation; no proposal; no submission; no signature; no provider/account mutation; no award;
+no receivable; no payment; no cash; no recognized revenue.
 
-- buyer or partner contact;
-- bidder eligibility;
-- legal/public-records advice;
-- references, insurance, licenses, certifications, or staffing not independently evidenced;
-- proposal submission;
-- signature or contract commitment;
-- award, receivable, payment, cash, or recognized revenue.
+The shipped buyer-neutral governance engine remains reusable independent of this canceled buyer
+pursuit.
