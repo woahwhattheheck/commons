@@ -649,9 +649,12 @@ def find_bypasses(
                     for label in _python_scan(tree):
                         if label.startswith("provider-transport-method:") or label.startswith("dynamic-provider-transport-method:"):
                             violations.append(f"{rel}:{label}")
-                if exact_internal_marker_exempt:
-                    for label in _internal_callsite_scan(tree):
-                        violations.append(f"{rel}:{label}")
+                # Raw Slack Web API sends are provider mutations everywhere,
+                # not only inside the two reviewed internal bridge files. Running
+                # this for every parsed Python file closes helper-import bypasses
+                # such as slack_web_call("chat.postMessage", ...).
+                for label in _internal_callsite_scan(tree):
+                    violations.append(f"{rel}:{label}")
 
         if rel not in _marker_allowed:
             for marker in _provider_markers:
