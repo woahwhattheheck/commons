@@ -200,18 +200,13 @@ def _registration(
     if state != "UNKNOWN" and not any(sources[r["source_id"]]["kind"] == "SOLICITATION_CONTROL" for r in req):
         raise QualificationError(f"{field} requirement must bind solicitation control")
     if any(
-        sources[r["source_id"]]["kind"] in PARTNER_SOURCE_KINDS
-        and sources[r["source_id"]]["subject_partner"] != partner_name
-        for r in evidence
-    ):
-        raise QualificationError(f"{field} contains evidence for a different partner")
-    if state == "COMPLETE" and not any(
-        sources[r["source_id"]]["kind"] == "REGISTRATION_EVIDENCE"
-        and sources[r["source_id"]]["subject_partner"] == partner_name
+        sources[r["source_id"]]["kind"] != "REGISTRATION_EVIDENCE"
+        or sources[r["source_id"]]["subject_partner"] != partner_name
         for r in evidence
     ):
         raise QualificationError(
-            f"{field}.COMPLETE requires REGISTRATION_EVIDENCE bound to partner {partner_name}"
+            f"{field}.evidence_refs may contain only REGISTRATION_EVIDENCE "
+            f"bound to partner {partner_name}"
         )
     return {
         "state": state,
@@ -264,21 +259,26 @@ def _disposition(
     refs = _refs(obj["evidence_refs"], f"{field}.evidence_refs", sources, state != "UNKNOWN")
     if state == "UNKNOWN" and refs:
         raise QualificationError(f"{field}.UNKNOWN cannot claim evidence")
-    if any(
-        sources[r["source_id"]]["kind"] in PARTNER_SOURCE_KINDS
-        and sources[r["source_id"]]["subject_partner"] != partner_name
-        for r in refs
-    ):
-        raise QualificationError(f"{field} contains evidence for a different partner")
-    if state != "UNKNOWN" and not any(
-        sources[r["source_id"]]["kind"] == gate["required_evidence_kind"]
-        and sources[r["source_id"]]["subject_partner"] == partner_name
-        for r in refs
-    ):
-        raise QualificationError(
-            f"{field}.{state} requires {gate['required_evidence_kind']} evidence "
-            f"bound to partner {partner_name} for gate {gid}"
-        )
+    if state != "UNKNOWN":
+        gate_sources = {
+            (ref["source_id"], ref["source_sha256"])
+            for ref in gate["source_refs"]
+        }
+        for ref in refs:
+            identity = (ref["source_id"], ref["source_sha256"])
+            source = sources[ref["source_id"]]
+            if identity not in gate_sources:
+                raise QualificationError(
+                    f"{field}.{state} evidence must be explicitly bound in gate {gid} source_refs"
+                )
+            if (
+                source["kind"] != gate["required_evidence_kind"]
+                or source["subject_partner"] != partner_name
+            ):
+                raise QualificationError(
+                    f"{field}.{state} evidence must be only {gate['required_evidence_kind']} "
+                    f"bound to partner {partner_name} for gate {gid}"
+                )
     return {
         "gate_id": gid,
         "state": state,
