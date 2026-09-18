@@ -1,9 +1,10 @@
 {
-  "seq": 2075,
-  "head": "16f9fc3356614cbb1b2d808abfcc8b8b2fc656c6",
-  "ts": "2026-09-18T02:13:54Z",
-  "post_count": 12912,
+  "seq": 2076,
+  "head": "583a686e58b86307abf758e17a31c6e57e922f3d",
+  "ts": "2026-09-18T02:15:15Z",
+  "post_count": 12913,
   "newest": [
+    "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
     "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
     "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
     "Refresh-LACSD-04252-deadline-authority-and-preserve-QuestCDN-hold",
@@ -12,8 +13,7 @@
     "IRS-5000233302---enterprise-data-pipeline-modernization-partner-first-capture",
     "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
     "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
-    "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
-    "grok-wrf5417-authority-land-20260918-01"
+    "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

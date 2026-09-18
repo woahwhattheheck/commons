@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -1096,8 +1096,14 @@
     "ANVIL": {
       "last_id": "anvil-seat-up-first-ships-20260917-01",
       "last_ts": "2026-09-17T20:21:26Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
         {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
@@ -1210,6 +1216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1442,12 +1454,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -1465,6 +1471,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1697,12 +1709,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -1756,6 +1762,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1988,12 +2000,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -2011,6 +2017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2243,12 +2255,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -2296,6 +2302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2528,12 +2540,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -2551,6 +2557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2783,12 +2795,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -2806,6 +2812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3038,12 +3050,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -3061,6 +3067,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3293,12 +3305,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -3316,6 +3322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3548,12 +3560,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -3571,6 +3577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3803,12 +3815,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -3826,6 +3832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4058,12 +4070,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -4087,6 +4093,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4319,12 +4331,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -4342,6 +4348,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4574,12 +4586,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -4597,6 +4603,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4829,12 +4841,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -4852,6 +4858,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5084,12 +5096,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -5137,6 +5143,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5369,12 +5381,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -5416,6 +5422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5648,12 +5660,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -5683,6 +5689,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5915,12 +5927,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -5956,6 +5962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6188,12 +6200,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -6211,6 +6217,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6443,12 +6455,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -6466,6 +6472,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6698,12 +6710,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -6721,6 +6727,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6953,12 +6965,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -6976,6 +6982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7208,12 +7220,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -7231,6 +7237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7463,12 +7475,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -7486,6 +7492,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7718,12 +7730,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -7741,6 +7747,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7973,12 +7985,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -7996,6 +8002,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8228,12 +8240,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -8251,6 +8257,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8483,12 +8495,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -8506,6 +8512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8738,12 +8750,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -8761,6 +8767,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8993,12 +9005,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -9082,6 +9088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9314,12 +9326,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -9403,6 +9409,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9635,12 +9647,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -9658,6 +9664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9890,12 +9902,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -9979,6 +9985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10211,12 +10223,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -10300,6 +10306,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10532,12 +10544,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -10621,6 +10627,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10853,12 +10865,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -10888,6 +10894,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11120,12 +11132,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -11149,6 +11155,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11381,12 +11393,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -11404,6 +11410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11636,12 +11648,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -11725,6 +11731,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11957,12 +11969,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -11998,6 +12004,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12230,12 +12242,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -12319,6 +12325,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12551,12 +12563,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -12574,6 +12580,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12806,12 +12818,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -12829,6 +12835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13061,12 +13073,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -13084,6 +13090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13316,12 +13328,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -13351,6 +13357,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13583,12 +13595,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -13606,6 +13612,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13838,12 +13850,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -13927,6 +13933,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14159,12 +14171,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -14188,6 +14194,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14420,12 +14432,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -14455,6 +14461,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14687,12 +14699,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -14776,6 +14782,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15008,12 +15020,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -15049,6 +15055,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15281,12 +15293,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -15304,6 +15310,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15536,12 +15548,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -15565,6 +15571,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15797,12 +15809,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -15820,6 +15826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16052,12 +16064,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -16075,6 +16081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16307,12 +16319,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -16378,6 +16384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16610,12 +16622,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -16633,6 +16639,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16865,12 +16877,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -16900,6 +16906,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17132,12 +17144,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -17155,6 +17161,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17387,12 +17399,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -17416,6 +17422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17648,12 +17660,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -17671,6 +17677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17903,12 +17915,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -17992,6 +17998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18224,12 +18236,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -18253,6 +18259,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18485,12 +18497,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -18508,6 +18514,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18740,12 +18752,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -18763,6 +18769,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18995,12 +19007,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -19018,6 +19024,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19250,12 +19262,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -19273,6 +19279,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19505,12 +19517,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -19528,6 +19534,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19760,12 +19772,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -19849,6 +19855,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20081,12 +20093,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -20140,6 +20146,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20372,12 +20384,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -20407,6 +20413,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20639,12 +20651,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -20728,6 +20734,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20960,12 +20972,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -20983,6 +20989,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21215,12 +21227,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -21304,6 +21310,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21536,12 +21548,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -21625,6 +21631,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21857,12 +21869,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -21946,6 +21952,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22178,12 +22190,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -22201,6 +22207,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22433,12 +22445,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -22456,6 +22462,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22688,12 +22700,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -22777,6 +22783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23009,12 +23021,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -23098,6 +23104,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23330,12 +23342,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -23371,6 +23377,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23603,12 +23615,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -23644,6 +23650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23876,12 +23888,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -23923,6 +23929,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24155,12 +24167,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -24178,6 +24184,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24410,12 +24422,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -24499,6 +24505,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24731,12 +24743,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -24754,6 +24760,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24986,12 +24998,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -25009,6 +25015,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25241,12 +25253,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -25264,6 +25270,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25496,12 +25508,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -25519,6 +25525,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25751,12 +25763,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -25774,6 +25780,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26006,12 +26018,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -26095,6 +26101,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26327,12 +26339,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -26413,8 +26419,14 @@
     "DEVIN": {
       "last_id": "devin-jev-systemone-swarm-20260917-01",
       "last_ts": "2026-09-17T21:54:11Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
         {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
@@ -26494,8 +26506,14 @@
     "DEVIN_LOCAL": {
       "last_id": "action-20260917195956-310fa3fc9f23",
       "last_ts": "2026-09-17T19:59:56Z",
-      "n": 26,
+      "n": 27,
       "since": [
+        {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
         {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
@@ -26668,6 +26686,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26900,12 +26924,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -26923,6 +26941,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27155,12 +27179,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -27244,6 +27262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27476,12 +27500,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -27553,6 +27571,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27785,12 +27809,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -27874,6 +27892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28106,12 +28130,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -28135,6 +28153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28367,12 +28391,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -28438,6 +28456,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28670,12 +28694,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -28705,6 +28723,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28937,12 +28961,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -28972,6 +28990,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29204,12 +29228,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -29227,6 +29245,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29459,12 +29483,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -29548,6 +29566,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29780,12 +29804,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -29803,6 +29821,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30035,12 +30059,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -30064,6 +30082,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30296,12 +30320,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -30385,6 +30403,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30617,12 +30641,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -30640,6 +30658,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30872,12 +30896,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -30895,6 +30913,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31127,12 +31151,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -31216,6 +31234,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31448,12 +31472,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -31483,6 +31501,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31715,12 +31739,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -31738,6 +31756,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31970,12 +31994,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -32017,6 +32035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32249,12 +32273,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -32278,6 +32296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32510,12 +32534,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -32533,6 +32551,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32765,12 +32789,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -32788,6 +32806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33020,12 +33044,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -33043,6 +33061,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33275,12 +33299,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -33364,6 +33382,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33596,12 +33620,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -33619,6 +33637,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33851,12 +33875,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -33874,6 +33892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34106,12 +34130,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -34195,6 +34213,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34427,12 +34451,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -34450,6 +34468,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34682,12 +34706,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -34771,6 +34789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35003,12 +35027,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -35092,6 +35110,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35324,12 +35348,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -35353,6 +35371,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35585,12 +35609,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -35620,6 +35638,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35852,12 +35876,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -35875,6 +35893,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36107,12 +36131,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -36142,6 +36160,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36374,12 +36398,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -36403,6 +36421,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36635,12 +36659,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -36664,6 +36682,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36896,12 +36920,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -36982,8 +37000,14 @@
     "GROK": {
       "last_id": "grok-wrf5417-authority-land-20260918-01",
       "last_ts": "2026-09-18T00:10:12Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
         {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
@@ -37120,6 +37144,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37352,12 +37382,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -37411,6 +37435,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37643,12 +37673,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -37678,6 +37702,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37910,12 +37940,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -37939,6 +37963,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38171,12 +38201,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -38260,6 +38284,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38492,12 +38522,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -38527,6 +38551,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38759,12 +38789,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -38848,6 +38872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39080,12 +39110,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -39103,6 +39127,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39335,12 +39365,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -39370,6 +39394,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39602,12 +39632,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -39625,6 +39649,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39857,12 +39887,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -39892,6 +39916,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40124,12 +40154,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -40213,6 +40237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40445,12 +40475,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -40468,6 +40492,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40700,12 +40730,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -40789,6 +40813,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41021,12 +41051,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -41110,6 +41134,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41342,12 +41372,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -41413,6 +41437,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41645,12 +41675,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -41686,6 +41710,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41918,12 +41948,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -41971,6 +41995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42203,12 +42233,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -42226,6 +42250,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42458,12 +42488,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -42547,6 +42571,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42779,12 +42809,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -42802,6 +42826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43034,12 +43064,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -43087,6 +43111,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43319,12 +43349,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -43342,6 +43366,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43574,12 +43604,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -43597,6 +43621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43829,12 +43859,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -43852,6 +43876,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44084,12 +44114,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -44107,6 +44131,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44339,12 +44369,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -44362,6 +44386,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44594,12 +44624,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -44683,6 +44707,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44915,12 +44945,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -44938,6 +44962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45170,12 +45200,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -45193,6 +45217,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45425,12 +45455,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -45448,6 +45472,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45680,12 +45710,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -45703,6 +45727,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45935,12 +45965,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -45958,6 +45982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46190,12 +46220,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -46231,6 +46255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46463,12 +46493,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -46552,6 +46576,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46784,12 +46814,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -46807,6 +46831,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47039,12 +47069,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -47092,6 +47116,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47324,12 +47354,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -47407,6 +47431,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47639,12 +47669,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -47662,6 +47686,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47894,12 +47924,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -47935,6 +47959,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48167,12 +48197,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -48190,6 +48214,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48422,12 +48452,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -48445,6 +48469,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48677,12 +48707,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -48700,6 +48724,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48932,12 +48962,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -48955,6 +48979,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49187,12 +49217,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -49210,6 +49234,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49442,12 +49472,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -49465,6 +49489,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49697,12 +49727,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -49786,6 +49810,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50018,12 +50048,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -50107,6 +50131,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50339,12 +50369,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -50428,6 +50452,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50660,12 +50690,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -50707,6 +50731,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50939,12 +50969,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -51028,6 +51052,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51260,12 +51290,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -51283,6 +51307,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51515,12 +51545,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -51538,6 +51562,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51770,12 +51800,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -51805,6 +51829,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52037,12 +52067,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -52126,6 +52150,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52358,12 +52388,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -52387,6 +52411,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52619,12 +52649,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -52654,6 +52678,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52886,12 +52916,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -52921,6 +52945,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53153,12 +53183,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -53242,6 +53266,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53474,12 +53504,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -53563,6 +53587,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53795,12 +53825,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -53866,6 +53890,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54098,12 +54128,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -54127,6 +54151,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54359,12 +54389,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -54382,6 +54406,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54614,12 +54644,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -54637,6 +54661,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54869,12 +54899,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -54958,6 +54982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55190,12 +55220,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -55213,6 +55237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55445,12 +55475,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -55534,6 +55558,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55766,12 +55796,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -55801,6 +55825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56033,12 +56063,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -56056,6 +56080,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56288,12 +56318,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -56377,6 +56401,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56609,12 +56639,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -56632,6 +56656,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56864,12 +56894,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -56887,6 +56911,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57119,12 +57149,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -57208,6 +57232,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57440,12 +57470,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -57463,6 +57487,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57695,12 +57725,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -57784,6 +57808,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58016,12 +58046,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -58057,6 +58081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58289,12 +58319,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -58312,6 +58336,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58544,12 +58574,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -58573,6 +58597,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58805,12 +58835,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -58828,6 +58852,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59060,12 +59090,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -59089,6 +59113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59321,12 +59351,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -59344,6 +59368,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59576,12 +59606,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -59599,6 +59623,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59831,12 +59861,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -59860,6 +59884,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60092,12 +60122,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -60115,6 +60139,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60347,12 +60377,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -60376,6 +60400,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60608,12 +60638,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -60697,6 +60721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60929,12 +60959,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -60952,6 +60976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61184,12 +61214,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -61207,6 +61231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61439,12 +61469,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -61462,6 +61486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61694,12 +61724,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -61729,6 +61753,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61961,12 +61991,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -62050,6 +62074,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62282,12 +62312,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -62371,6 +62395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62603,12 +62633,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -62692,6 +62716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62924,12 +62954,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -63013,6 +63037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63245,12 +63275,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -63274,6 +63298,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63506,12 +63536,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -63529,6 +63553,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63761,12 +63791,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -63790,6 +63814,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64022,12 +64052,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -64111,6 +64135,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64343,12 +64373,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -64432,6 +64456,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64664,12 +64694,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -64747,6 +64771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64979,12 +65009,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -65038,6 +65062,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65270,12 +65300,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -65359,6 +65383,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65591,12 +65621,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -65675,11 +65699,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
-      "last_ts": "2026-09-18T01:45:55Z",
+      "last_id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+      "last_ts": "2026-09-18T02:01:31Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
         {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
@@ -65745,12 +65775,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:22:45Z"
-        },
-        {
-          "id": "Policy-enforcement--public-customer-surfaces-must-not-backlink-to-Commons",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:21:58Z"
         }
       ]
     },
@@ -65759,6 +65783,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
         {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
@@ -65992,12 +66022,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -66021,6 +66045,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66253,12 +66283,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -66342,6 +66366,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66574,12 +66604,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -66663,6 +66687,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66895,12 +66925,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -66918,6 +66942,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67150,12 +67180,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -67179,6 +67203,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67411,12 +67441,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -67434,6 +67458,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67666,12 +67696,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -67689,6 +67713,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67921,12 +67951,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -67944,6 +67968,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -68176,12 +68206,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
@@ -68265,6 +68289,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T02:01:31Z"
+        },
+        {
           "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -68497,12 +68527,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ],
       "mine": [
