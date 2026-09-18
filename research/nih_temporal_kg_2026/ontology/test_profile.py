@@ -233,6 +233,54 @@ class OntologyProfileTests(unittest.TestCase):
         mutated["fact_count"] += 1
         self.assertFalse(profile.verify_conformance_receipt(mutated, self.jsonl, self.nt))
 
+
+    def test_public_verifier_generation_is_sealed_against_rebinding(self) -> None:
+        receipt = profile.build_conformance_receipt(self.jsonl, self.nt)
+        saved_verify = profile.verify_conformance_receipt
+        saved_build = profile.build_conformance_receipt
+        saved_export = profile.export_jsonl_to_ntriples
+
+        names = (
+            "build_conformance_receipt",
+            "verify_conformance_receipt",
+            "_sha256_text",
+            "_profile_descriptor_sha256",
+            "_implementation_sha256",
+            "_parent_implementation_sha256",
+            "export_jsonl_to_ntriples",
+            "import_ntriples_to_jsonl",
+            "_temporal_evidence_module",
+            "TemporalEvidenceGraph",
+            "json",
+            "hashlib",
+            "Path",
+        )
+        originals = {name: getattr(profile, name) for name in names}
+        try:
+            profile.build_conformance_receipt = lambda *_args, **_kwargs: {"forged": True}
+            profile.verify_conformance_receipt = lambda *_args, **_kwargs: True
+            profile._sha256_text = lambda *_args, **_kwargs: "0" * 64
+            profile._profile_descriptor_sha256 = lambda: "1" * 64
+            profile._implementation_sha256 = lambda: "2" * 64
+            profile._parent_implementation_sha256 = lambda: "3" * 64
+            profile.export_jsonl_to_ntriples = lambda *_args, **_kwargs: "forged\n"
+            profile.import_ntriples_to_jsonl = lambda *_args, **_kwargs: self.jsonl
+            profile._temporal_evidence_module = object()
+            profile.TemporalEvidenceGraph = object
+            profile.json = object()
+            profile.hashlib = object()
+            profile.Path = object
+
+            self.assertEqual(saved_export(self.jsonl), self.nt)
+            self.assertEqual(saved_build(self.jsonl, self.nt), receipt)
+            self.assertTrue(saved_verify(receipt, self.jsonl, self.nt))
+            self.assertFalse(saved_verify(receipt, self.jsonl + "\n", self.nt))
+            tampered_nt = self.nt.replace('"source-A"', '"source-X"', 1)
+            self.assertFalse(saved_verify(receipt, self.jsonl, tampered_nt))
+        finally:
+            for name, value in originals.items():
+                setattr(profile, name, value)
+
     def test_retraction_roundtrip(self) -> None:
         graph = TemporalEvidenceGraph()
         graph.add_fact(self.fact_a)
