@@ -1,0 +1,302 @@
+{
+  "manifest": {
+    "schema": "tjlabs.umissouri-27-0012-finance-pursuit/v1",
+    "solicitation": {
+      "id": "27-0012",
+      "buyer": "University of Missouri System",
+      "title": "Payables Program and Merchant Services",
+      "due_utc": "2026-09-25T19:00:00Z",
+      "question_cutoff_utc": "2026-09-10T19:00:00Z"
+    },
+    "source_evidence": {
+      "notice": {
+        "url": "https://www.governmentcontracts.us/government-contracts/opportunity-details/80633382558814146.htm",
+        "captured_at_utc": "2026-09-18T01:40:00Z",
+        "source_class": "SECONDARY_PUBLIC_INDEX"
+      },
+      "scope": {
+        "url": "https://app.govly.com/public/opportunities/17012722",
+        "captured_at_utc": "2026-09-18T01:40:00Z",
+        "source_class": "SECONDARY_PUBLIC_INDEX"
+      }
+    },
+    "buyer_packet": {
+      "retained": false,
+      "sha256": null,
+      "authority": "NOT_RETAINED"
+    },
+    "requirements": {
+      "merchant_services": true,
+      "payables_program": true,
+      "current_peoplesoft_integration": true,
+      "future_erp_support": true,
+      "reconciliation_reporting": true,
+      "fraud_liability_controls": true,
+      "commercial_card_epayables": true,
+      "security_questionnaires": true,
+      "accessibility_evidence": true
+    },
+    "commercial_offer": {
+      "state": "PROPOSED_NOT_ACCEPTED",
+      "fixed_fee_usd_cents": 1800000,
+      "optional_cutover_usd_cents": 600000,
+      "name": "Payables and Merchant Reconciliation Acceptance Workshare",
+      "external_send_authorized": false
+    },
+    "authority": {
+      "buyer_contact_authorized": false,
+      "partner_contact_authorized": false,
+      "submission_authorized": false,
+      "contract_acceptance_authorized": false,
+      "banking_authorized": false,
+      "merchant_acquiring_authorized": false,
+      "card_issuance_authorized": false,
+      "payment_authorized": false,
+      "production_erp_write_authorized": false,
+      "compliance_certification_authorized": false,
+      "revenue_recognized": false
+    }
+  },
+  "partners": {
+    "schema": "tjlabs.umissouri-27-0012-partners/v1",
+    "candidates": [
+      {
+        "partner_id": "jpmorgan-current-um-route",
+        "name": "J.P. Morgan",
+        "evidence_url": "https://www.umsystem.edu/departments-staff/finance/investments-treasury/treasury/e-commerce-credit-cards",
+        "evidence_class": "BUYER_PUBLIC",
+        "public_merchant_capability": true,
+        "public_payables_or_card_capability": false,
+        "public_higher_ed_or_public_sector_fit": true,
+        "peoplesoft_or_erp_fit_confirmed": false,
+        "rfp_participation_confirmed": false,
+        "contact_authorized": false,
+        "evidence_note": "UM public treasury material identifies JPMorgan Chase Bank in the current internet merchant-account path. This is ecosystem evidence, not proof of RFP participation, commercial-card scope, or future-ERP fit."
+      },
+      {
+        "partner_id": "commerce-payments",
+        "name": "Commerce Bank",
+        "evidence_url": "https://www.commercebank.com/corporate/payments-treasury",
+        "evidence_class": "PROVIDER_PUBLIC",
+        "public_merchant_capability": true,
+        "public_payables_or_card_capability": true,
+        "public_higher_ed_or_public_sector_fit": false,
+        "peoplesoft_or_erp_fit_confirmed": false,
+        "rfp_participation_confirmed": false,
+        "contact_authorized": false,
+        "evidence_note": "Commerce publicly exposes merchant services, commercial cards, virtual cards, integrated payables, fraud controls, and ERP-facing reconciliation. Higher-ed/RFP-specific fit and PeopleSoft generation remain unconfirmed."
+      },
+      {
+        "partner_id": "usbank-higher-ed",
+        "name": "U.S. Bank",
+        "evidence_url": "https://www.usbank.com/corporate-and-commercial-banking/industry-expertise/public-sector/higher-education-payment-solutions.html",
+        "evidence_class": "PROVIDER_PUBLIC",
+        "public_merchant_capability": false,
+        "public_payables_or_card_capability": true,
+        "public_higher_ed_or_public_sector_fit": true,
+        "peoplesoft_or_erp_fit_confirmed": false,
+        "rfp_participation_confirmed": false,
+        "contact_authorized": false,
+        "evidence_note": "U.S. Bank publicly markets higher-education payables and commercial-card services. Merchant-acquiring, PeopleSoft integration, and RFP participation remain unconfirmed."
+      },
+      {
+        "partner_id": "jpmorgan-commercial-cards",
+        "name": "J.P. Morgan Commercial Cards",
+        "evidence_url": "https://www.jpmorgan.com/payments/solutions/commercial-cards/program-management",
+        "evidence_class": "PROVIDER_PUBLIC",
+        "public_merchant_capability": false,
+        "public_payables_or_card_capability": true,
+        "public_higher_ed_or_public_sector_fit": false,
+        "peoplesoft_or_erp_fit_confirmed": true,
+        "rfp_participation_confirmed": false,
+        "contact_authorized": false,
+        "evidence_note": "J.P. Morgan publicly documents commercial-card reporting and secure file export to ERP/accounting systems. Merchant-acquiring and higher-ed RFP participation are not established by this source."
+      }
+    ]
+  },
+  "matrix": {
+    "schema": "tjlabs.umissouri-27-0012-reconciliation-case/v1",
+    "cases": [
+      {
+        "expected_decision": "EVIDENCE_READY",
+        "case": {
+          "schema": "tjlabs.umissouri-27-0012-reconciliation-case/v1",
+          "case_id": "ready-001",
+          "merchant_id": "merchant-synthetic-001",
+          "settlement_file_present": true,
+          "processor_total_cents": 125000,
+          "erp_total_cents": 125000,
+          "gl_mapping_complete": true,
+          "unresolved_chargeback_count": 0,
+          "payables_supplier_match": true,
+          "future_erp_contract_evidenced": true,
+          "audit_chain_complete": true,
+          "sensitive_cardholder_data_present": false,
+          "observed_at_utc": "2026-09-18T01:00:00Z"
+        }
+      },
+      {
+        "expected_decision": "REJECT_SENSITIVE_DATA",
+        "case": {
+          "schema": "tjlabs.umissouri-27-0012-reconciliation-case/v1",
+          "case_id": "sensitive-001",
+          "merchant_id": "merchant-synthetic-001",
+          "settlement_file_present": true,
+          "processor_total_cents": 125000,
+          "erp_total_cents": 125000,
+          "gl_mapping_complete": true,
+          "unresolved_chargeback_count": 0,
+          "payables_supplier_match": true,
+          "future_erp_contract_evidenced": true,
+          "audit_chain_complete": true,
+          "sensitive_cardholder_data_present": true,
+          "observed_at_utc": "2026-09-18T01:00:00Z"
+        }
+      },
+      {
+        "expected_decision": "HOLD_MISSING_SETTLEMENT",
+        "case": {
+          "schema": "tjlabs.umissouri-27-0012-reconciliation-case/v1",
+          "case_id": "settlement-001",
+          "merchant_id": "merchant-synthetic-001",
+          "settlement_file_present": false,
+          "processor_total_cents": 125000,
+          "erp_total_cents": 125000,
+          "gl_mapping_complete": true,
+          "unresolved_chargeback_count": 0,
+          "payables_supplier_match": true,
+          "future_erp_contract_evidenced": true,
+          "audit_chain_complete": true,
+          "sensitive_cardholder_data_present": false,
+          "observed_at_utc": "2026-09-18T01:00:00Z"
+        }
+      },
+      {
+        "expected_decision": "HOLD_MERCHANT_TOTAL_MISMATCH",
+        "case": {
+          "schema": "tjlabs.umissouri-27-0012-reconciliation-case/v1",
+          "case_id": "total-001",
+          "merchant_id": "merchant-synthetic-001",
+          "settlement_file_present": true,
+          "processor_total_cents": 125001,
+          "erp_total_cents": 125000,
+          "gl_mapping_complete": true,
+          "unresolved_chargeback_count": 0,
+          "payables_supplier_match": true,
+          "future_erp_contract_evidenced": true,
+          "audit_chain_complete": true,
+          "sensitive_cardholder_data_present": false,
+          "observed_at_utc": "2026-09-18T01:00:00Z"
+        }
+      },
+      {
+        "expected_decision": "HOLD_GL_MAPPING",
+        "case": {
+          "schema": "tjlabs.umissouri-27-0012-reconciliation-case/v1",
+          "case_id": "gl-001",
+          "merchant_id": "merchant-synthetic-001",
+          "settlement_file_present": true,
+          "processor_total_cents": 125000,
+          "erp_total_cents": 125000,
+          "gl_mapping_complete": false,
+          "unresolved_chargeback_count": 0,
+          "payables_supplier_match": true,
+          "future_erp_contract_evidenced": true,
+          "audit_chain_complete": true,
+          "sensitive_cardholder_data_present": false,
+          "observed_at_utc": "2026-09-18T01:00:00Z"
+        }
+      },
+      {
+        "expected_decision": "HOLD_CHARGEBACK_EXCEPTION",
+        "case": {
+          "schema": "tjlabs.umissouri-27-0012-reconciliation-case/v1",
+          "case_id": "chargeback-001",
+          "merchant_id": "merchant-synthetic-001",
+          "settlement_file_present": true,
+          "processor_total_cents": 125000,
+          "erp_total_cents": 125000,
+          "gl_mapping_complete": true,
+          "unresolved_chargeback_count": 1,
+          "payables_supplier_match": true,
+          "future_erp_contract_evidenced": true,
+          "audit_chain_complete": true,
+          "sensitive_cardholder_data_present": false,
+          "observed_at_utc": "2026-09-18T01:00:00Z"
+        }
+      },
+      {
+        "expected_decision": "HOLD_PAYABLES_SUPPLIER",
+        "case": {
+          "schema": "tjlabs.umissouri-27-0012-reconciliation-case/v1",
+          "case_id": "supplier-001",
+          "merchant_id": "merchant-synthetic-001",
+          "settlement_file_present": true,
+          "processor_total_cents": 125000,
+          "erp_total_cents": 125000,
+          "gl_mapping_complete": true,
+          "unresolved_chargeback_count": 0,
+          "payables_supplier_match": false,
+          "future_erp_contract_evidenced": true,
+          "audit_chain_complete": true,
+          "sensitive_cardholder_data_present": false,
+          "observed_at_utc": "2026-09-18T01:00:00Z"
+        }
+      },
+      {
+        "expected_decision": "HOLD_FUTURE_ERP",
+        "case": {
+          "schema": "tjlabs.umissouri-27-0012-reconciliation-case/v1",
+          "case_id": "erp-001",
+          "merchant_id": "merchant-synthetic-001",
+          "settlement_file_present": true,
+          "processor_total_cents": 125000,
+          "erp_total_cents": 125000,
+          "gl_mapping_complete": true,
+          "unresolved_chargeback_count": 0,
+          "payables_supplier_match": true,
+          "future_erp_contract_evidenced": false,
+          "audit_chain_complete": true,
+          "sensitive_cardholder_data_present": false,
+          "observed_at_utc": "2026-09-18T01:00:00Z"
+        }
+      },
+      {
+        "expected_decision": "HOLD_AUDIT_CHAIN",
+        "case": {
+          "schema": "tjlabs.umissouri-27-0012-reconciliation-case/v1",
+          "case_id": "audit-001",
+          "merchant_id": "merchant-synthetic-001",
+          "settlement_file_present": true,
+          "processor_total_cents": 125000,
+          "erp_total_cents": 125000,
+          "gl_mapping_complete": true,
+          "unresolved_chargeback_count": 0,
+          "payables_supplier_match": true,
+          "future_erp_contract_evidenced": true,
+          "audit_chain_complete": false,
+          "sensitive_cardholder_data_present": false,
+          "observed_at_utc": "2026-09-18T01:00:00Z"
+        }
+      },
+      {
+        "expected_decision": "HOLD_STALE_EVIDENCE",
+        "case": {
+          "schema": "tjlabs.umissouri-27-0012-reconciliation-case/v1",
+          "case_id": "stale-001",
+          "merchant_id": "merchant-synthetic-001",
+          "settlement_file_present": true,
+          "processor_total_cents": 125000,
+          "erp_total_cents": 125000,
+          "gl_mapping_complete": true,
+          "unresolved_chargeback_count": 0,
+          "payables_supplier_match": true,
+          "future_erp_contract_evidenced": true,
+          "audit_chain_complete": true,
+          "sensitive_cardholder_data_present": false,
+          "observed_at_utc": "2026-09-10T01:00:00Z"
+        }
+      }
+    ]
+  }
+}
