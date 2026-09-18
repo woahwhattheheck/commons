@@ -1,0 +1,119 @@
+{
+  "schema": "co-chsd-partner-candidates/v1",
+  "opportunity_id": "RFPFHLA20270000013",
+  "state": "RESEARCH_ONLY_NO_CONTACT_AUTHORITY",
+  "candidates": [
+    {
+      "name": "TwoConnect",
+      "qualification_state": "PROMISING_RESEARCH_CANDIDATE_NOT_QUALIFIED",
+      "evidence": [
+        {
+          "url": "https://www.twoconnect.com/azure-biztalk-hipaa-hl7",
+          "supports": [
+            "BizTalk healthcare integration",
+            "HIPAA and HL7 integration",
+            "claims and patient-data integration experience"
+          ]
+        },
+        {
+          "url": "https://partner.microsoft.com/es-es/case-studies/twoconnect-bupa",
+          "supports": [
+            "Microsoft-published Bupa Global healthcare integration case study",
+            "Azure and BizTalk delivery"
+          ]
+        },
+        {
+          "url": "https://www.twoconnect.com/biztalk-support",
+          "supports": [
+            "BizTalk support and maintenance",
+            "publicly advertised 24x7x365 support"
+          ]
+        },
+        {
+          "url": "https://www.twoconnect.com/about-us",
+          "supports": [
+            "public Microsoft Gold/Azure/BizTalk integration-partner claims",
+            "Microsoft integration staff/certification claims"
+          ]
+        }
+      ],
+      "unresolved_required_evidence": [
+        "exact current buyer-required Microsoft/BizTalk certification match",
+        "SOC 2 Type II report on offeror operations",
+        "Colorado Vendor Self Service registration",
+        "three buyer-comparable projects completed within the required five-year window",
+        "two buyer-acceptable references",
+        "applicable insurance limits",
+        "Colorado/public-sector legal and contracting readiness",
+        "willingness to pursue this exact RFP and negotiate a paid TJLabs workshare"
+      ],
+      "contact_authorized": false
+    },
+    {
+      "name": "Art2link / Cerebrum City",
+      "qualification_state": "SECONDARY_RESEARCH_CANDIDATE_NOT_QUALIFIED",
+      "evidence": [
+        {
+          "url": "https://www.art2link.com/",
+          "supports": [
+            "Microsoft Solutions Partner claim",
+            "20+ years enterprise integration claim",
+            "healthcare and public-sector positioning",
+            "BizTalk deployment lineage"
+          ]
+        },
+        {
+          "url": "https://www.art2link.com/solutions/hl7-fhir-platform/",
+          "supports": [
+            "healthcare integration",
+            "HL7/FHIR",
+            "Azure-tenant deployment",
+            "BizTalk delivery lineage"
+          ]
+        }
+      ],
+      "unresolved_required_evidence": [
+        "current BizTalk 2020 maintenance fit versus modernization focus",
+        "exact buyer-required certification",
+        "SOC 2 Type II",
+        "Colorado VSS",
+        "buyer-comparable projects/references",
+        "insurance and operational staffing",
+        "willingness and commercial role"
+      ],
+      "contact_authorized": false
+    },
+    {
+      "name": "Beyond BizTalk",
+      "qualification_state": "SPECIALIST_RESEARCH_CANDIDATE_NOT_QUALIFIED",
+      "evidence": [
+        {
+          "url": "https://beyondbiztalk.com/",
+          "supports": [
+            "deep BizTalk/Azure migration and integration experience",
+            "public healthcare integration testimonials",
+            "Rocky Mountain Health Plans testimonial"
+          ]
+        }
+      ],
+      "unresolved_required_evidence": [
+        "prime-scale managed-service capacity",
+        "exact buyer-required Microsoft/BizTalk certification",
+        "SOC 2 Type II",
+        "Colorado VSS",
+        "three similar buyer-acceptable projects and two references",
+        "insurance and seven-day support coverage",
+        "willingness and commercial role"
+      ],
+      "contact_authorized": false
+    }
+  ],
+  "outbound_policy": {
+    "muse_single_writer_required": true,
+    "fresh_slack_gmail_github_dedupe_required": true,
+    "max_initial_messages_per_selected_route": 1,
+    "commons_public_backlink_forbidden": true,
+    "buyer_contact_authorized": false,
+    "partner_contact_authorized": false
+  }
+}
