@@ -1,38 +1,67 @@
 {
-  "schema": "co-chsd-discovery-source-ledger/v1",
-  "opportunity_id": "RFPFHLA20270000013",
+  "schema": "co-chsd-discovery-source-ledger/v2",
+  "opportunity_id": "CO-CHSD-PURSUIT",
   "authority": "DISCOVERY_ONLY",
   "controlling_buyer_source_bound": false,
-  "sources": [
+  "reported_current_generation": {
+    "solicitation_id": "RFP-FHLA-2027000001-3",
+    "status": "AMENDED",
+    "issue_date": "2026-08-17",
+    "reported_last_amended": "2026-09-09",
+    "reported_close": "2026-10-01T14:00:00-06:00",
+    "confidence": "HIGH_CORROBORATION_NOT_CONTROLLING_BYTES",
+    "exact_official_bytes_retained": false
+  },
+  "official_route": {
+    "url": "https://prd.co.cgiadvantage.com/PRDVSS1X1/Advantage4",
+    "source_class": "BUYER_PORTAL_ROUTE_ONLY",
+    "facts_authorized": false,
+    "notes": [
+      "ColoradoVSS is the buyer-authoritative route identified by donor research.",
+      "The current -3 solicitation/SOW/addenda/form bytes are not yet retained by this carrier."
+    ]
+  },
+  "generation_fence": [
+    "Aug-17-era / -2 material is stale for reliance if the reported Sep-09 -3 generation is confirmed by retained buyer bytes.",
+    "Public mirrors report a 10-attachment current package including signature, budget, proposer-response, security-plan and DUA materials; exact current bytes remain required."
+  ],
+  "corroborating_discovery_sources": [
+    "https://governmentbidders.com/government_bids/detail/NBD15676004765613988.htm?ak=3bbbc",
+    "https://www.governmentcontracts.us/government-contracts/opportunity-details/00476561398815676.htm?cts=97c71",
+    "https://atlasbydrmiltie.com/healthcare-grants/colorado-cdphe-colorado-health-systems-directory-chsd-rfp-rfp-fhla-2027000001-3/",
+    "https://publicbidsearch.com/bids/colorado-health-systems-directory-chsd-co-66f8d9"
+  ],
+  "discovery_mirrors": [
     {
       "id": "govtribe-opportunity",
       "url": "https://govtribe.com/opportunity/state-local-contract-opportunity/colorado-health-systems-directory-chsd-rfpfhla20270000013",
-      "source_class": "DISCOVERY_MIRROR",
-      "buyer_authority": false,
-      "observed_date": "2026-09-17",
       "notes": [
-        "Reports proposal due 2026-10-01 2:00 PM MDT via BidNet Direct; exact controlling BidNet generation still required.",
-        "Reports five-year funding shape totaling 3500000 USD, subject to funding and controlling buyer documents.",
-        "Reports mandatory minimums including BizTalk certification, three years relevant experience, three similar projects in five years, two references, VSS registration, SOC 2 Type II, security/accessibility requirements.",
-        "Reports Azure/BizTalk 2020 CU7/SQL Server 2022/.NET 4.8 health-data integration scope."
+        "Reports Oct-01 2:00 PM MDT close and Azure/BizTalk/SQL/.NET health-data integration scope.",
+        "Reports a 3.5M USD five-year funding shape, but other current metadata sources do not verify a ceiling; treat value as disputed discovery only."
       ]
     },
     {
       "id": "govtribe-draft-sow",
       "url": "https://govtribe.com/file/government-file/exhibit-b-draft-statement-of-work-dot-pdf-15",
-      "source_class": "DISCOVERY_MIRROR",
-      "buyer_authority": false,
-      "observed_date": "2026-09-17",
       "notes": [
-        "Mirror exposes text attributed to Exhibit B Draft Statement of Work.",
-        "Reports CHSD health-workforce data integration, HIPAA/HITECH/FedRAMP compliance, Azure environments, BizTalk integration, APCD and Medicaid claims, data quality, reports and dashboards."
+        "Reports CHSD workforce/claims integration, Azure environments, BizTalk, APCD/Medicaid claims, data quality, reports and dashboards.",
+        "Mirror transport is not controlling buyer custody."
       ]
     }
   ],
+  "conflicts_requiring_current_buyer_bytes": {
+    "contract_term": "CONFLICTING_MIRRORS",
+    "question_cutoff": "CONFLICTING_MIRRORS",
+    "total_contract_ceiling": "UNVERIFIED_DISPUTED_DISCOVERY",
+    "submission_mechanics": "CONFLICTING_MIRRORS",
+    "insurance_limits": "NONCONTROLLING_MIRROR_SUMMARY",
+    "exact_qualification_and_evaluation": "CURRENT_BYTES_REQUIRED"
+  },
   "authority_ceiling": {
     "buyer_deadline": false,
     "proposer_qualification": false,
     "price": false,
+    "contract_value": false,
     "sign": false,
     "submit": false,
     "outbound": false,
