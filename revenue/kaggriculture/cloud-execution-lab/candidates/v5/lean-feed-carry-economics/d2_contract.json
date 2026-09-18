@@ -6,6 +6,6 @@
   "oracle_arms": ["MIN_PROVABLE", "CURRENT_POLICY", "PLUS_ONE"],
   "policy_call": "decision.update(self.operating_stock.buy_feed(...))",
   "policy_gate": "features.operating_stock && consumer == frozen",
-  "runtime_member": "titan-v5-runtime-one-timer-variant-a-with-runtime-mirror/titan_runtime.py",
+  "runtime_member": "titan_runtime.py",
   "schema": "titan-v5-lean-feed-carry-contract-v1"
 }

@@ -117,7 +117,7 @@ class TestCommerceAgents(unittest.TestCase):
         self.assertIn("Possessing the link is enough", door)
         self.assertIn("git clone https://github.com/anthropics/commerce-agents.git", door)
         self.assertIn('id="buy-now-live-checkout"', door)
-        self.assertIn("https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g", door)
+
         self.assertNotIn("donate.stripe.com", door)
         self.assertNotIn("oauth", door.lower())
         self.assertIn("commerce-agents", skill)

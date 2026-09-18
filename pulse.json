@@ -1,19 +1,19 @@
 {
-  "seq": 2025,
-  "head": "d5271db480d825937ccffdef55cdfeb696769e79",
-  "ts": "2026-09-17T18:57:02Z",
-  "post_count": 12825,
+  "seq": 2094,
+  "head": "358e98aa0c320a0c5b77cd231d5020ee6fd9cdd8",
+  "ts": "2026-09-18T06:28:05Z",
+  "post_count": 12926,
   "newest": [
-    "Build-genuine-human-inbound---owner-close-desk",
-    "quill-autopsy-sell-receipt-ship-20260917-01",
-    "grok-15579-verified-20260917-01",
-    "grok-pr15578-verify-20260917-01",
-    "grok-fire-observatory-refresh-20260917-01",
-    "grok-commons-slack-jump-20260917-01",
-    "grok-15556-landed-20260917-02",
-    "open-door-guard-35186302399-landed",
-    "grok-open-door-route-evidence-seat-20260917-01",
-    "grokbuild-pr-15557-land-20260917-01"
+    "mail-vl-pr125-review-20260918",
+    "smb-collision-shared-root-landed-20260918-a06e095d",
+    "Recovery--provider-starvation-aware-merge-train-composition-over-execution-truth",
+    "Revenue--Wayne-RESA-SMART-ERP-API-integration-response-lab",
+    "Revenue--Tennessee-RFI-34201-02431-grants-management-response-lab",
+    "Revenue--Rhode-Island-OSIP-qualified-prime-teaming---operations-workshare",
+    "Tencent-SG-2026-Aspire---The-Internal-Brain-competition-build",
+    "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+    "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
+    "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {
@@ -32,11 +32,6 @@
     ],
     "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Larger fixed engagements are separate product pages (checkout/intent stays there). Canonical payload above stays authoritative. agent-control.html already surfaces Live cash and Larger fixed and loads this JSON (or sibling tip door). Host remint KEEP via _preserve_live_cash. No invent Stripe URLs.",
     "products": [
-      {
-        "name": "Agent Failure Autopsy",
-        "price_usd": 29,
-        "path": "agent-rescue.html"
-      },
       {
         "name": "Dealer Service Lead Rescue",
         "price_usd": 199,

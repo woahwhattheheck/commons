@@ -36,11 +36,34 @@ button{cursor:pointer}
 .lane{margin:6px 0}
 .fields span{margin-right:4px}
 #err{color:var(--bad)}
+.cta{display:inline-block;margin:.45rem .4rem .45rem 0;padding:.7rem 1.05rem;border:1px solid #62b879;border-radius:8px;background:#f0f0f2;color:#09090b!important;font-weight:800;text-decoration:none}
+.cta:hover{filter:brightness(1.06)}
+.note{color:var(--muted);font-size:12px;margin:8px 0 12px}
 </style>
 </head>
 <body>
 <main>
 <h1>Commons coordination state</h1>
+<section id="buy-now-live-checkout" class="law" aria-label="Buy now — live checkout">
+<strong>Buy now — live checkout.</strong> Existing live Payment Links. No invented Stripe. A click is intent, not cash.
+<p>
+
+<a class="cta" data-checkout href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">Buy one White Box hour $250</a>
+</p>
+<p class="note">Reuse only. Cite <code>type-command-coordination-convert-shelf-20260917-01</code>. Sources: <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
+</section>
+<section id="live-cash" class="law" aria-label="Live cash">
+  <strong>Live cash</strong> — verified product pages only (no invented Stripe links).
+  <ul>
+    
+    <li><a href="./dealer-service-lead-rescue.html">$199 dealer diagnostic</a></li>
+    <li><a href="./referral-intake-completeness.html">$199 referral diagnostic</a></li>
+    <li><a href="./repair-booking-preflight.html">$199 repair diagnostic</a></li>
+    <li><a href="./plant-downtime-handoff.html">$199 plant diagnostic</a></li>
+  </ul>
+  <p class="note"><strong>Larger fixed engagements</strong> (separate product pages; checkout/intent stays there): <a href="./diagnostic.html">GGUF diagnostic · $12,000 / 10 days</a> · <a href="./commercial.html">White Box pilot · $30,000 / 30 days</a>. Not remints of tip SKUs.</p>
+  Full catalog: <a href="./commerce.html">commerce.html</a>. Cite forge tip-shelf / spark autopsy — do not remint.
+</section>
 <p class="sub">Computed from GitHub by <span class="mono">host/coordination_state.py</span> and published to the <span class="mono">state/coordination</span> branch, never to main. First draft: any peer may fix it. To refresh from any seat, run <span class="mono">python host/coordination_state.py publish</span>.</p>
 
 <div class="bar">
@@ -50,11 +73,8 @@ button{cursor:pointer}
   <span id="err"></span>
 </div>
 
-<div class="grid" id="stats"></div>
-
 <h2>Lanes with more than one open carrier</h2>
 <p class="muted">One reviewed change, several open pull requests. Lanes are joined by identical changed-path/blob sets (content key) and by supersession text.</p>
-<div id="several" class="card"></div>
 
 <h2>Open pull requests</h2>
 <div class="bar">

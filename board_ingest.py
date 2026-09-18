@@ -249,7 +249,7 @@ TRUST_DOCTRINE_HTML = (
 CASH_DOORS_POINTER = (
     '<p class="note cash-doors-link" id="cash-doors">'
     '<a href="./tools-cash.html"><strong>Live cash</strong></a>'
-    " — $29 Autopsy + four $199 tip-shelf diagnostics (product pages only).</p>\n"
+    " — four $199 tip-shelf diagnostics (product pages only).</p>\n"
 )
 CASH_DOORS_NEEDLE = "</section>\n<section>\n<h2>Catalog</h2>"
 CASH_DOORS_REPLACEMENT = "</section>\n" + CASH_DOORS_POINTER + "<section>\n<h2>Catalog</h2>"
@@ -268,9 +268,6 @@ TOOLS_CONVERT_SHELF = (
     "<strong>Buy now — live checkout.</strong> Existing live Payment Links. "
     "No invented Stripe. A click is intent, not cash.\n"
     "<p>\n"
-    '<a class="cta" data-checkout '
-    'href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">'
-    "Buy Autopsy $29</a>\n"
     '<a class="cta" data-checkout '
     'href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">'
     "Buy one White Box hour $250</a>\n"
@@ -291,9 +288,6 @@ LIVE_DELTA_CONVERT_SHELF = (
     "No invented Stripe. A click is intent, not cash.\n"
     "<p>\n"
     '<a class="cta" data-checkout '
-    'href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">'
-    "Buy Autopsy $29</a>\n"
-    '<a class="cta" data-checkout '
     'href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">'
     "Buy one White Box hour $250</a>\n"
     "</p>\n"
@@ -312,9 +306,6 @@ BOARDS_BUILDS_CONVERT_SHELF = (
     "<strong>Buy now — live checkout.</strong> Existing live Payment Links. "
     "No invented Stripe. A click is intent, not cash.\n"
     "<p>\n"
-    '<a class="cta" data-checkout '
-    'href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">'
-    "Buy Autopsy $29</a>\n"
     '<a class="cta" data-checkout '
     'href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">'
     "Buy one White Box hour $250</a>\n"
@@ -335,9 +326,6 @@ ARBITRAGE_ATTESTED_CONVERT_SHELF = (
     "No invented Stripe. A click is intent, not cash.\n"
     "<p>\n"
     '<a class="cta" data-checkout '
-    'href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">'
-    "Buy Autopsy $29</a>\n"
-    '<a class="cta" data-checkout '
     'href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">'
     "Buy one White Box hour $250</a>\n"
     "</p>\n"
@@ -356,9 +344,6 @@ AUTHORSHIP_ACCORDION_CONVERT_SHELF = (
     "<strong>Buy now — live checkout.</strong> Existing live Payment Links. "
     "No invented Stripe. A click is intent, not cash.\n"
     "<p>\n"
-    '<a class="cta" data-checkout '
-    'href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">'
-    "Buy Autopsy $29</a>\n"
     '<a class="cta" data-checkout '
     'href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">'
     "Buy one White Box hour $250</a>\n"
@@ -421,7 +406,7 @@ def splice_tools_cash_doors(root=None):
     unique live-cash pointer. Compose it back after each rebuild. Do not remint
     hub_pages.py leftover bytes. Also restore the unique leftover cash-hook and
     DIGIT door cites that rebuild_tools does not emit. Also restore the
-    tools.html convert shelf (existing Autopsy $29 + White Box hour $250)
+    tools.html convert shelf (existing White Box hour $250)
     that rebuild_tools drops; cite wire-tools-toolbench-convert-shelf-20260917-01.
     """
     path = os.path.join(root or ROOT, "tools.html")
@@ -478,7 +463,7 @@ def splice_live_delta_convert_shelf(root=None):
     """Keep live.html + delta.html convert shelves across ingest remints.
 
     rebuild_live and hub_pages.rebuild_delta remint those pages and drop a
-    first-screen Buy shelf. Compose the existing Autopsy $29 + White Box hour
+    first-screen Buy shelf. Compose the existing White Box hour
     $250 Payment Links back after each rebuild. Same cash-doors splice pattern
     as tools.html (#15402). Cite wire-live-delta-convert-shelf-20260917-01.
     Do not remint hub_pages.py leftover bytes.
@@ -525,8 +510,8 @@ def splice_boards_builds_convert_shelf(root=None):
     """Keep boards.html + builds.html convert shelves across remints.
 
     hub_pages.rebuild_boards and builds_ledger.project remint those pages and
-    drop a first-screen Buy shelf. Compose the existing Autopsy $29 + White
-    Box hour $250 Payment Links back after each rebuild. Same cash-doors
+    drop a first-screen Buy shelf. Compose the existing White
+    Box hour $250 Payment Link back after each rebuild. Same cash-doors
     splice pattern as tools.html (#15402) / live+delta (#15479). Cite
     wire-boards-builds-convert-shelf-20260917-01. Do not remint hub_pages.py leftover bytes.
     """
@@ -571,7 +556,7 @@ def splice_arbitrage_attested_convert_shelf(root=None):
     """Keep arbitrage.html + attested-inference.html convert shelves across remints.
 
     Tip KEEP pages may lose a first-screen Buy shelf on rebuild. Compose the
-    existing Autopsy $29 + White Box hour $250 Payment Links back. Prefer
+    existing White Box hour $250 Payment Links back. Prefer
     insert before <main> (arbitrage first-screen) else before live-cash
     (attested-inference). Same cash-doors splice pattern as boards/builds
     (#15519). Cite wire-arbitrage-attested-convert-shelf-20260917-01.
@@ -620,7 +605,7 @@ def splice_authorship_accordion_convert_shelf(root=None):
     """Keep authorship.html + accordion.html convert shelves across remints.
 
     Tip KEEP pages may lose a first-screen Buy shelf on rebuild. Compose the
-    existing Autopsy $29 + White Box hour $250 Payment Links back. Prefer
+    existing White Box hour $250 Payment Links back. Prefer
     insert before <main>, else before live-cash section/p. Same cash-doors
     splice pattern as arbitrage/attested (#15537). Cite
     wire-authorship-accordion-convert-shelf-20260917-01.
@@ -3489,8 +3474,8 @@ def write_pulse(rows):
         },
     }
     # KEEP tip live_cash across board remints (newbot-12 llms bake KEEP is not enough —
-    # this writer also rebuilds pulse.json and was stripping Autopsy/$199 doors).
-    pulse = hub_pages._preserve_live_cash(prev if isinstance(prev, dict) else {}, pulse)
+    # this writer also rebuilds pulse.json and was stripping $199 doors).
+    pulse = hub_pages._preserve_live_cash(prev if isinstance(prev, dict) else {}, pulse, ROOT)
     _write(pulse_path, json.dumps(pulse, indent=2))
     return seq
 

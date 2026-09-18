@@ -9,7 +9,6 @@ FILES = [
     "ground/tokens/super-mcp.md",
 ]
 PRODUCTS = [
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",

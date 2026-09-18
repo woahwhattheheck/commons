@@ -16,7 +16,6 @@ import goat_sidewalk_door_match as match  # noqa: E402
 CLAIM = "goat-sidewalk-door-live-cash-v1-keep-larger-fixed-20260916-01"
 DOOR = ROOT / match.DOOR_REL
 TIP_PATHS = (
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -29,8 +28,8 @@ class TestGoatSidewalkDoorLiveCashV1KeepLargerFixed2026091601(unittest.TestCase)
     def test_door_live_cash_v1_keeps_autopsy_and_larger_fixed(self) -> None:
         block = match.DOOR_LIVE_CASH_V1
         text = block.decode("utf-8")
-        self.assertIn("$29 Autopsy", text)
-        self.assertIn("../../agent-rescue.html", text)
+
+
         for rel in TIP_PATHS:
             self.assertIn("../../" + rel, text)
         self.assertIn("$199 dealer", text)
@@ -50,7 +49,7 @@ class TestGoatSidewalkDoorLiveCashV1KeepLargerFixed2026091601(unittest.TestCase)
         self.assertEqual(data.count(match.DOOR_LIVE_CASH_V1), 1)
         text = data.decode("utf-8")
         self.assertIn('id="live-cash"', text)
-        self.assertIn("$29 Autopsy", text)
+
         for rel in TIP_PATHS:
             self.assertIn("../../" + rel, text)
         self.assertIn("../../diagnostic.html", text)

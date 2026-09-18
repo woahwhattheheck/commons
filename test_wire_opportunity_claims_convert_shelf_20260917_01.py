@@ -31,7 +31,6 @@ RENDERER = ROOT / "host" / "opportunity_registry.py"
 
 ALLOWED_LIVE_BUY_URLS = frozenset(
     {
-        "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
         "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
     }
 )
@@ -39,12 +38,8 @@ BUY_HOST_PATH = re.compile(
     r"https?://buy\.stripe\.com/([A-Za-z0-9_-]+)",
     re.IGNORECASE,
 )
-BUY_LABELS = (
-    "Buy Autopsy $29",
-    "Buy one White Box hour $250",
-)
+BUY_LABELS = ("Buy one White Box hour $250",)
 LIVE_CASH_DOORS = (
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -110,7 +105,7 @@ class TestWireOpportunityClaimsConvertShelf2026091701(unittest.TestCase):
     def test_opportunity_renderer_emits_the_same_existing_buys(self) -> None:
         source = RENDERER.read_text(encoding="utf-8")
         self.assertIn('id="buy-now-live-checkout"', source)
-        self.assertIn("Buy Autopsy $29", source)
+        self.assertNotIn("Buy Autopsy $29", source)
         self.assertIn("Buy one White Box hour $250", source)
         found = live_buy_urls(source)
         self.assertEqual(found, ALLOWED_LIVE_BUY_URLS)
@@ -122,7 +117,7 @@ class TestWireOpportunityClaimsConvertShelf2026091701(unittest.TestCase):
         )
         rendered = opportunity_registry_mod.render_opportunity_html(registry)
         self.assertEqual(live_buy_urls(rendered), ALLOWED_LIVE_BUY_URLS)
-        self.assertIn("Buy Autopsy $29", rendered)
+        self.assertNotIn("Buy Autopsy $29", rendered)
         self.assertIn("Buy one White Box hour $250", rendered)
         gen_cash = rendered.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
         self.assertNotIn("buy.stripe.com", gen_cash)
@@ -136,7 +131,6 @@ class TestWireOpportunityClaimsConvertShelf2026091701(unittest.TestCase):
         for name in (
             "opportunity.html",
             "claims.html",
-            "agent-rescue.html",
             "commercial.html",
             "diagnostic.html",
         ):

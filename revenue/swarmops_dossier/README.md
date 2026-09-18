@@ -54,7 +54,7 @@ Library callers use `compile_current_dossier()` / `verify_current_dossier()` for
 
 ## Evidence semantics
 
-Each input row binds one capability to a typed immutable source reference, SHA-256, observed state, observation time/freshness, release class, required flag, and bounded factual claim. The underlying v3 semantic engine classifies rows as `DEMONSTRATED`, `LIMITED`, `HELD`, or `UNKNOWN`; required capabilities need current prospect-safe technical evidence or the current dossier is `HOLD`.
+Each input row describes a technical feature using a typed immutable source reference, SHA-256 and bounded factual statement. It also records observed state, observation time/freshness, release class and the input's `required` flag. The underlying v3 semantic engine classifies rows as `DEMONSTRATED`, `LIMITED`, `HELD`, or `UNKNOWN`. For features marked `required`, the dossier becomes `HOLD` when current prospect-safe technical evidence is absent.
 
 Queued/running CI is not green. A provider send is not buyer acceptance. A merge is not payment. No state implies another.
 
@@ -65,7 +65,7 @@ Queued/running CI is not green. A provider send is not buyer acceptance. A merge
 - `PAID` requires a payment-receipt row plus independently retained exact payment authority.
 - `REVENUE_RECOGNIZED` requires an accounting-receipt row plus independently retained exact accounting authority.
 
-The privileged engine/current APIs accept a host-owned authority map keyed by trusted `source_id`. Each authority record binds the exact portfolio and full commercial evidence semantics: capability, source kind/reference/SHA-256, commercial state, observation time/freshness, prospect release class, required flag, and claim. A digest match by itself is insufficient.
+The library engine/current APIs accept a host-owned authority map keyed by trusted `source_id`. Each record identifies the exact portfolio and technical feature together with source kind/reference/SHA-256 and commercial state. It also binds observation time/freshness, prospect release class, the input's `required` flag and the complete factual statement. A digest match by itself is insufficient.
 
 That prevents semantic transplantation: a retained payment receipt cannot be relabelled as buyer acceptance or accounting recognition, moved to another portfolio/capability/reference, refreshed in time, given a longer freshness window, or promoted from internal-only to prospect-safe. Malformed, inconsistent, or unused authority fails closed, and the authority generation digest is receipt-bound.
 
@@ -73,7 +73,7 @@ That prevents semantic transplantation: a retained payment receipt cannot be rel
 
 ## Prospect and file boundaries
 
-`INTERNAL_ONLY` evidence never appears in the prospect projection. `OWNER_APPROVAL_REQUIRED` cannot satisfy a required capability. Input JSON rejects duplicate keys and non-finite numbers. CLI inputs must be bounded regular files opened with no-follow and generation checks; outputs are mode-0600 create-exclusive files and are never overwritten.
+`INTERNAL_ONLY` evidence never appears in the prospect projection. A row marked `OWNER_APPROVAL_REQUIRED` cannot establish prospect-safe technical evidence for a feature marked `required`. These are dossier-content classifications, not controls on access to Commons. Input JSON rejects duplicate keys and non-finite numbers. CLI inputs must be bounded regular files opened with no-follow and generation checks; outputs are mode-0600 create-exclusive files and are never overwritten.
 
 ## Verification and proof
 

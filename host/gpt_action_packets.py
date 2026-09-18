@@ -104,7 +104,7 @@ def next_external_action(control: dict[str, Any], packets: dict[str, Any]) -> st
         if item.get("decision") == "READY_TO_DRAFT":
             return f"draft packet for {item['prospect_id']} without sending"
     return (
-        "Keep inbound doors live (agent-triage.html, agent-rescue.html, "
+        "Keep inbound doors live (agent-triage.html, "
         "tokenjunkielabs@gmail.com). Do not resend held prospects. "
         "Founder still must evidence a chargeable processor path."
     )

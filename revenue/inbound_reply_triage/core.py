@@ -7,6 +7,7 @@ import json
 import re
 from pathlib import Path
 from typing import Any, Mapping
+import unicodedata
 
 INPUT_SCHEMA = "inbound-reply-triage-input/v1"
 PACKET_SCHEMA = "inbound-reply-triage-packet/v1"
@@ -44,6 +45,20 @@ STATE_PRIORITY = {
     "WAITING_EXTERNAL": 7,
     "DNR": 8,
 }
+# Unicode Default_Ignorable_Code_Point members whose general category is not C.
+# Category-C default ignorables are already rejected below. Keeping this explicit
+# table avoids treating every combining mark as invisible while still rejecting
+# variation selectors, grapheme joiners, Hangul fillers, and related controls.
+DEFAULT_IGNORABLE_NON_C_RANGES = (
+    (0x034F, 0x034F),
+    (0x115F, 0x1160),
+    (0x17B4, 0x17B5),
+    (0x180B, 0x180F),
+    (0x3164, 0x3164),
+    (0xFE00, 0xFE0F),
+    (0xFFA0, 0xFFA0),
+    (0xE0100, 0xE01EF),
+)
 
 
 class TriageError(ValueError):
@@ -130,6 +145,37 @@ def _text(value: Any, where: str, *, max_len: int) -> str:
     if any(ord(ch) < 32 or 0xD800 <= ord(ch) <= 0xDFFF for ch in value):
         raise TriageError(f"{where} contains forbidden control/surrogate text")
     return value
+
+
+def _is_non_c_default_ignorable(ch: str) -> bool:
+    cp = ord(ch)
+    return any(start <= cp <= end for start, end in DEFAULT_IGNORABLE_NON_C_RANGES)
+
+
+def _binding_text(value: Any, where: str, *, max_len: int) -> str:
+    """Return an exact, collision-safe human binding label.
+
+    Validate the caller-authored spelling before any whitespace canonicalization so
+    trim-erased or default-ignorable Unicode cannot alias a clean lane. Only
+    ordinary ASCII SPACE may be used as boundary whitespace and removed after the
+    original text has passed the visibility and exact-NFKC fences.
+    """
+    original = _text(value, where, max_len=max_len)
+    for ch in original:
+        category = unicodedata.category(ch)
+        if (
+            category.startswith("C")
+            or _is_non_c_default_ignorable(ch)
+            or category in {"Zl", "Zp"}
+            or (category == "Zs" and ch != " ")
+        ):
+            raise TriageError(f"{where} contains invisible/control text")
+    if unicodedata.normalize("NFKC", original) != original:
+        raise TriageError(f"{where} must be exact NFKC text")
+    text = original.strip(" ")
+    if not text:
+        raise TriageError(f"{where} must remain non-empty after trimming")
+    return text
 
 
 def _token(value: Any, where: str) -> str:
@@ -250,10 +296,18 @@ def _validate_transition_shape(events: list[dict[str, Any]], lane_id: str) -> No
         if typ == "MUSE_SELECTED":
             last_muse = event
         elif typ == "SENT":
-            if last_muse is None or (last_sent is not None and last_muse["at"] <= last_sent["at"]):
+            if (
+                last_muse is None
+                or last_muse["at"] >= event["at"]
+                or (last_sent is not None and last_muse["at"] <= last_sent["at"])
+            ):
                 raise TriageError(f"{lane_id}: SENT requires fresh prior MUSE_SELECTED")
-            if last_sent is not None and (last_human is None or last_human["at"] <= last_sent["at"]):
-                raise TriageError(f"{lane_id}: repeat SENT requires later HUMAN_REPLY")
+            if last_sent is not None and (
+                last_human is None
+                or last_human["at"] <= last_sent["at"]
+                or last_human["at"] >= event["at"]
+            ):
+                raise TriageError(f"{lane_id}: repeat SENT requires intervening prior HUMAN_REPLY")
             last_sent = event
         elif typ == "HUMAN_REPLY":
             last_human = event
@@ -261,8 +315,8 @@ def _validate_transition_shape(events: list[dict[str, Any]], lane_id: str) -> No
             if last_sent is None:
                 raise TriageError(f"{lane_id}: {typ} requires prior SENT")
         elif typ == "RESPONSE_DRAFT_READY":
-            if last_human is None:
-                raise TriageError(f"{lane_id}: RESPONSE_DRAFT_READY requires prior HUMAN_REPLY")
+            if last_human is None or last_human["at"] >= event["at"]:
+                raise TriageError(f"{lane_id}: RESPONSE_DRAFT_READY requires strictly earlier HUMAN_REPLY")
 
 
 def _classify(events: list[dict[str, Any]], lease: dict[str, Any] | None, evaluation: datetime, stale_after: int) -> dict[str, Any]:
@@ -285,7 +339,7 @@ def _classify(events: list[dict[str, Any]], lease: dict[str, Any] | None, evalua
     elif hard_bounce is not None and not _after(human, hard_bounce):
         state = "BOUNCE"
     elif human is not None and _after(human, sent):
-        if draft is not None and draft["at"] >= human["at"]:
+        if draft is not None and draft["at"] > human["at"]:
             state = "RESPONSE_READY_OWNER_REVIEW" if lease is not None and lease["active"] else "COLLISION_HOLD"
         else:
             state = "NEW_HUMAN_INBOUND"
@@ -320,8 +374,8 @@ def _lane(value: Any, where: str, evaluation: datetime, stale_after: int) -> dic
         where,
     )
     lane_id = _token(obj["id"], f"{where}.id")
-    org = _text(obj["org_key"], f"{where}.org_key", max_len=192).strip()
-    route = _text(obj["route_key"], f"{where}.route_key", max_len=320).strip()
+    org = _binding_text(obj["org_key"], f"{where}.org_key", max_len=192)
+    route = _binding_text(obj["route_key"], f"{where}.route_key", max_len=320)
     domain = _text(obj["domain"], f"{where}.domain", max_len=253).lower()
     if not DOMAIN_RE.fullmatch(domain):
         raise TriageError(f"{where}.domain invalid")

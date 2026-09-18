@@ -1,5 +1,59 @@
 [
   {
+    "id": "Outbound--cut-over-fleet-single-writer-control-to-GitHub-native-atomic-custody",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-18T04:32:59Z",
+    "body": ""
+  },
+  {
+    "id": "Since-AI-2026---50k-in-person-competition-feasibility---72h-build-strategy",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-18T00:16:01Z",
+    "body": ""
+  },
+  {
+    "id": "Revenue--Colorado-Health-Systems-Directory--3.5M-partner-first-qualification---r",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "general_disagreement",
+    "ts": "2026-09-18T00:11:36Z",
+    "body": ""
+  },
+  {
+    "id": "DO-NOT-CREATE---schema-probe",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-09-17T23:52:03Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
+    "id": "titan_hands-Slack-lane-never-posts---SlackServer-post-history-callables-never-in",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-17T23:07:14Z",
+    "body": ""
+  },
+  {
+    "id": "Build-fail-closed-pre-send-outreach-qualification-firewall",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-17T19:07:03Z",
+    "body": ""
+  },
+  {
     "id": "Fix-Muse-liveness-ledger--reconcile-explicit-provider-decision-corrections",
     "reason": "commons_publication_terms",
     "code": "commons_publication_terms",

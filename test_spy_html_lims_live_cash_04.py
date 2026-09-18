@@ -5,6 +5,6 @@ FILES=['qlabs-qconnect-cutover-verification-lims.html', 'rosecity-olcc-metrc-sam
 class X(unittest.TestCase):
     def test_all(self):
         for rel in FILES:
-            t=(ROOT/rel).read_text(); self.assertIn('id="live-cash"', t, rel); self.assertIn('agent-rescue.html', t, rel)
+            t=(ROOT/rel).read_text(); self.assertIn('id="live-cash"', t, rel)
 if __name__=='__main__':
     unittest.main()

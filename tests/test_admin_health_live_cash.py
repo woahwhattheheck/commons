@@ -14,7 +14,6 @@ class T(unittest.TestCase):
         text = (ROOT / "health.html").read_text(encoding="utf-8")
         self.assertIn('id="live-cash"', text)
         for href in (
-            "agent-rescue.html",
             "dealer-service-lead-rescue.html",
             "referral-intake-completeness.html",
             "repair-booking-preflight.html",

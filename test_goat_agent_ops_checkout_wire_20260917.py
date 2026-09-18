@@ -32,7 +32,6 @@ SHELF_KEYS = {
     "foundry": "commons-agent-ops-foundry",
 }
 SIBLING_RAILS = {
-    "agent-rescue.html": "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
     "dealer-service-lead-rescue.html": "https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b",
     "referral-intake-completeness.html": "https://buy.stripe.com/9B600i98N77b9uFeBk43S0c",
     "repair-booking-preflight.html": "https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d",
@@ -73,7 +72,7 @@ class GoatAgentOpsCheckoutWire(unittest.TestCase):
         self.assertIn("mailto:tokenjunkielabs@gmail.com?subject=Commons%20Agent%20Ops%20Foundry", html)
         self.assertIn("mailto:tokenjunkielabs@gmail.com?subject=Commons%20Agent%20Ops%20pilot", html)
         self.assertIn('id="live-cash"', html)
-        self.assertIn("./agent-rescue.html", html)
+
         self.assertIn("checkoutPresentation", script)
         self.assertNotIn("STATIC_CHARGEABLE", script)
         self.assertIn("primary CTAs were demoted to contact-only", script)

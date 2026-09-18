@@ -35,17 +35,31 @@ except ImportError:
 
 
 
-def _preserve_live_cash(prev, doc):
+def _preserve_live_cash(prev, doc, root=None):
     """Keep tip Autopsy/$199 product doors across feature-tracker remints.
 
     Paths only — never invent Stripe. Mirrors hub_pages KEEP (newbot-13/14).
+    Retired products (deleted checkout page) are not resurrected.
     """
     if hub_pages is not None:
-        return hub_pages._preserve_live_cash(prev, doc)
+        return hub_pages._preserve_live_cash(prev, doc, root)
     if not isinstance(prev, dict) or not isinstance(doc, dict):
         return doc
     live = prev.get("live_cash")
     if isinstance(live, dict) and live.get("products"):
+        if root is not None:
+            live = dict(live)
+            for key in ("products", "larger_fixed"):
+                items = live.get(key)
+                if isinstance(items, list):
+                    live[key] = [
+                        item for item in items
+                        if not isinstance(item, dict)
+                        or not item.get("path")
+                        or os.path.isfile(os.path.join(root, item["path"]))
+                    ]
+            if not live.get("products") and not live.get("larger_fixed"):
+                return doc
         doc["live_cash"] = live
     return doc
 
@@ -701,7 +715,7 @@ def render_html(projection):
 </head><body>
 <section id="trust-through-proof" class="law trust-law" aria-label="Trust after proof"><strong>TRUST AFTER PROOF.</strong> <a href="./trust.html">On Trust.</a> Proof is cached. Source-built is not live. Chat is not evidence.</section>
 <p class="nav"><a href="./index.html">Commons</a> · <a href="./current-work.html">current work</a> · <a href="./resources.html">resources</a> · <a href="./boards.html">boards</a> · <a href="./ground/PROFITABILITY_BUILD_MAP.md">profitability</a> · <a href="./commercial.html">commercial</a> · <a href="./features.html">FEATURES lane</a> · <a href="./todo.html">todo</a> · <a href="./builds.html">builds</a> · <a href="./ledger.html">resource ledger</a> · <a href="./feature-tracker.json">machine JSON</a></p>
-<section id="live-cash" class="law" aria-label="Live cash"><strong>Live cash — verified product pages only.</strong> No invented Stripe links. <a href="./agent-rescue.html">$29 Autopsy checkout</a> · <a href="./dealer-service-lead-rescue.html">$199 dealer diagnostic</a>.<p class="note"><strong>Larger fixed engagements</strong> (separate product pages; checkout/intent stays there): <a href="./diagnostic.html">GGUF diagnostic · $12,000 / 10 days</a> · <a href="./commercial.html">White Box pilot · $30,000 / 30 days</a>. Not remints of tip SKUs.</p></section>
+<section id="live-cash" class="law" aria-label="Live cash"><strong>Live cash — verified product pages only.</strong> No invented Stripe links. <a href="./dealer-service-lead-rescue.html">$199 dealer diagnostic</a>.<p class="note"><strong>Larger fixed engagements</strong> (separate product pages; checkout/intent stays there): <a href="./diagnostic.html">GGUF diagnostic · $12,000 / 10 days</a> · <a href="./commercial.html">White Box pilot · $30,000 / 30 days</a>. Not remints of tip SKUs.</p></section>
 <h1>Feature tracker</h1>
 <p class="law">Derived from exact Git/tree/receipt evidence. Never from prose. <a href="./features.html">features.html</a> is the FEATURES board lane — do not remint it. This page is the shipped-state tracker. Law: <a href="./ground/FEATURE_TRACKER.md">ground/FEATURE_TRACKER.md</a>. Instrument: <code>python3 host/feature_tracker.py --write</code>. Proof: <code>python3 test_feature_tracker.py</code>.</p>
 <p>Two columns of truth: <b>source</b> (paths on the tree / cited SHA) and <b>live</b> (only a LIVE_MEASUREMENT evidence row with a 40-character SHA and URL). Pages, pulse, ntfy 200, Slack, chat, and <code>claimed_status</code> do not promote LIVE. HTTP is not the computer.</p>
@@ -783,7 +797,7 @@ def write_projection(root, projection):
     html_path = os.path.join(root, HTML_OUT)
     # KEEP tip live_cash across feature-tracker remints (newbot-05 doors;
     # --write rebuilds wipe Autopsy/$199 + Larger fixed otherwise).
-    projection = _preserve_live_cash(_load_prev_tip_json(root, JSON_OUT), projection)
+    projection = _preserve_live_cash(_load_prev_tip_json(root, JSON_OUT), projection, root)
     with open(json_path, "w", encoding="utf-8") as handle:
         handle.write(_sorted_json(projection))
     with open(html_path, "w", encoding="utf-8") as handle:

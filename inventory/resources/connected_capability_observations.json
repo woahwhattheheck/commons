@@ -1,9 +1,9 @@
 {
   "schema": "commons-connected-capability-observations/v1",
   "snapshot": {
-    "observed_at": "2026-09-07T10:22:14Z",
-    "base_main_sha": "42df8480bedf254b121a179ea5c7b2f51747fb1b",
-    "source_watermark": "2026-09-07T07:11:48Z",
+    "observed_at": "2026-09-18T03:00:37Z",
+    "base_main_sha": "d66ac9862e3448e2bff54c7386ce27f5a81b3640",
+    "source_watermark": "2026-09-18T03:00:37Z",
     "route_rule": "All Commons carriers may consume all shared resources; Claude is the sole owner-handled exception.",
     "truth_rule": "Exposure, successful probe, lifecycle stage, condition, authority, mutation, consumption, and value are independent facts.",
     "secret_rule": "Share account roles, business identity, services, quotas, and routes; never persist passwords, tokens, recovery links, verification links, or payment credentials."
@@ -102,7 +102,8 @@
   "component_freshness": {
     "account_roles": "2026-09-07T10:02:06Z",
     "tool_fleet": "2026-09-07T04:08:47Z",
-    "github_portfolio": "2026-09-07T04:35:09Z"
+    "github_portfolio": "2026-09-07T04:35:09Z",
+    "provider_armory": "2026-09-18T03:00:37Z"
   },
   "github_portfolio": {
     "observed_at": "2026-09-07T04:35:09Z",
@@ -860,18 +861,200 @@
       "freshness": "EMAIL_RECEIPT",
       "source_kind": "EMAIL_RECEIPT",
       "evidence": "Feature-access receipt exists; exact plan and quotas unverified."
+    },
+    {
+      "id": "groq-api",
+      "kind": "MODEL_INFERENCE_API",
+      "capacity": "LIVE",
+      "stage": "AVAILABLE",
+      "condition": "CONSTRAINED",
+      "authority": "SHARED_ALL_CARRIERS",
+      "holder": "Commons",
+      "consumers": [
+        "model workers",
+        "inference experiments"
+      ],
+      "mutation": "INTEGRATE_SHARED_ADAPTER_THEN_TASK_SCOPED",
+      "route_state": "ACTIVATE_FIRST",
+      "value": "Shared Groq provider capacity is vaulted; a callable Commons adapter is not yet proven.",
+      "last_use": "NOT_YET_SHARED_ADAPTER",
+      "freshness": "SWARM_ARMORY_RECEIPT",
+      "source_kind": "SWARM_ARMORY_RECEIPT",
+      "evidence": "Commons issue #15900 records the 2026-09-17 Groq credential as vaulted/verified without exposing its value; callable integration remains unproven."
+    },
+    {
+      "id": "cerebras-api",
+      "kind": "MODEL_INFERENCE_API",
+      "capacity": "LIVE",
+      "stage": "AVAILABLE",
+      "condition": "CONSTRAINED",
+      "authority": "SHARED_ALL_CARRIERS",
+      "holder": "Commons",
+      "consumers": [
+        "model workers",
+        "inference experiments"
+      ],
+      "mutation": "INTEGRATE_SHARED_ADAPTER_THEN_TASK_SCOPED",
+      "route_state": "ACTIVATE_FIRST",
+      "value": "Shared Cerebras provider capacity is vaulted; a callable Commons adapter is not yet proven.",
+      "last_use": "NOT_YET_SHARED_ADAPTER",
+      "freshness": "SWARM_ARMORY_RECEIPT",
+      "source_kind": "SWARM_ARMORY_RECEIPT",
+      "evidence": "Commons issue #15900 records the 2026-09-17 Cerebras credential as vaulted/verified without exposing its value; callable integration remains unproven."
+    },
+    {
+      "id": "e2b",
+      "kind": "SANDBOX_COMPUTE",
+      "capacity": "LIVE",
+      "stage": "AVAILABLE",
+      "condition": "CONSTRAINED",
+      "authority": "SHARED_ALL_CARRIERS",
+      "holder": "Commons",
+      "consumers": [
+        "sandbox workers",
+        "isolated execution"
+      ],
+      "mutation": "INTEGRATE_SHARED_ADAPTER_THEN_TASK_SCOPED",
+      "route_state": "ACTIVATE_FIRST",
+      "value": "Shared E2B provider capacity is vaulted; a callable Commons adapter is not yet proven.",
+      "last_use": "NOT_YET_SHARED_ADAPTER",
+      "freshness": "SWARM_ARMORY_RECEIPT",
+      "source_kind": "SWARM_ARMORY_RECEIPT",
+      "evidence": "Commons issue #15900 records the 2026-09-17 E2B credential as vaulted/verified without exposing its value; callable integration remains unproven."
+    },
+    {
+      "id": "langfuse",
+      "kind": "OBSERVABILITY",
+      "capacity": "LIVE",
+      "stage": "AVAILABLE",
+      "condition": "CONSTRAINED",
+      "authority": "SHARED_ALL_CARRIERS",
+      "holder": "Commons",
+      "consumers": [
+        "agent observability",
+        "evaluation workers"
+      ],
+      "mutation": "INTEGRATE_SHARED_ADAPTER_THEN_TASK_SCOPED",
+      "route_state": "ACTIVATE_FIRST",
+      "value": "Shared Langfuse provider capacity is vaulted; a callable Commons adapter is not yet proven.",
+      "last_use": "NOT_YET_SHARED_ADAPTER",
+      "freshness": "SWARM_ARMORY_RECEIPT",
+      "source_kind": "SWARM_ARMORY_RECEIPT",
+      "evidence": "Commons issue #15900 records the 2026-09-17 Langfuse credential as vaulted/verified without exposing its value; callable integration remains unproven."
+    },
+    {
+      "id": "zep",
+      "kind": "AGENT_MEMORY_DATA",
+      "capacity": "LIVE",
+      "stage": "AVAILABLE",
+      "condition": "CONSTRAINED",
+      "authority": "SHARED_ALL_CARRIERS",
+      "holder": "Commons",
+      "consumers": [
+        "agent memory experiments",
+        "retrieval workers"
+      ],
+      "mutation": "INTEGRATE_SHARED_ADAPTER_THEN_TASK_SCOPED",
+      "route_state": "ACTIVATE_FIRST",
+      "value": "Shared Zep provider capacity is vaulted; a callable Commons adapter is not yet proven.",
+      "last_use": "NOT_YET_SHARED_ADAPTER",
+      "freshness": "SWARM_ARMORY_RECEIPT",
+      "source_kind": "SWARM_ARMORY_RECEIPT",
+      "evidence": "Commons issue #15900 records the 2026-09-17 Zep credential as vaulted/verified without exposing its value; callable integration remains unproven."
+    },
+    {
+      "id": "openrouter",
+      "kind": "MODEL_ROUTER_API",
+      "capacity": "LIVE",
+      "stage": "AVAILABLE",
+      "condition": "CONSTRAINED",
+      "authority": "SHARED_ALL_CARRIERS",
+      "holder": "Commons",
+      "consumers": [
+        "model workers",
+        "routing experiments"
+      ],
+      "mutation": "INTEGRATE_SHARED_ADAPTER_THEN_TASK_SCOPED",
+      "route_state": "ACTIVATE_FIRST",
+      "value": "Shared OpenRouter provider capacity is vaulted; a callable Commons adapter is not yet proven.",
+      "last_use": "NOT_YET_SHARED_ADAPTER",
+      "freshness": "SWARM_ARMORY_RECEIPT",
+      "source_kind": "SWARM_ARMORY_RECEIPT",
+      "evidence": "Commons issue #15900 records the 2026-09-17 OpenRouter credential as vaulted/verified without exposing its value; callable integration remains unproven."
+    },
+    {
+      "id": "firecrawl",
+      "kind": "WEB_EXTRACTION",
+      "capacity": "LIVE",
+      "stage": "AVAILABLE",
+      "condition": "CONSTRAINED",
+      "authority": "SHARED_ALL_CARRIERS",
+      "holder": "Commons",
+      "consumers": [
+        "research workers",
+        "web extraction"
+      ],
+      "mutation": "INTEGRATE_SHARED_ADAPTER_THEN_TASK_SCOPED",
+      "route_state": "ACTIVATE_FIRST",
+      "value": "Shared Firecrawl provider capacity is vaulted; a callable Commons adapter is not yet proven.",
+      "last_use": "NOT_YET_SHARED_ADAPTER",
+      "freshness": "SWARM_ARMORY_RECEIPT",
+      "source_kind": "SWARM_ARMORY_RECEIPT",
+      "evidence": "Commons issue #15900 records the 2026-09-17 Firecrawl credential as vaulted/verified without exposing its value; callable integration remains unproven."
+    },
+    {
+      "id": "parallel",
+      "kind": "RESEARCH_API",
+      "capacity": "LIVE",
+      "stage": "AVAILABLE",
+      "condition": "CONSTRAINED",
+      "authority": "SHARED_ALL_CARRIERS",
+      "holder": "Commons",
+      "consumers": [
+        "research workers",
+        "data gathering"
+      ],
+      "mutation": "INTEGRATE_SHARED_ADAPTER_THEN_TASK_SCOPED",
+      "route_state": "ACTIVATE_FIRST",
+      "value": "Shared Parallel provider capacity is vaulted; a callable Commons adapter is not yet proven and provider entitlement is constrained.",
+      "last_use": "NOT_YET_SHARED_ADAPTER",
+      "freshness": "SWARM_ARMORY_RECEIPT",
+      "source_kind": "SWARM_ARMORY_RECEIPT",
+      "evidence": "Commons issue #15900 records the 2026-09-17 Parallel credential as vaulted/verified without exposing its value and records a provider-entitlement constraint; callable integration remains unproven."
+    },
+    {
+      "id": "alibaba-cloud",
+      "kind": "CLOUD_COMPUTE",
+      "capacity": "DECLARED",
+      "stage": "AVAILABLE",
+      "condition": "ACTIVE_UNKNOWN",
+      "authority": "SHARED_ALL_CARRIERS",
+      "holder": "Commons",
+      "consumers": [
+        "compute workers",
+        "hosting experiments"
+      ],
+      "mutation": "INTEGRATE_SHARED_ADAPTER_THEN_TASK_SCOPED",
+      "route_state": "ACTIVATE_FIRST",
+      "value": "Alibaba Cloud account/SSO surface is present; API credential and callable Commons adapter are not proven.",
+      "last_use": "ACCOUNT_SURFACE_ONLY",
+      "freshness": "ACCOUNT_RECEIPT",
+      "source_kind": "ACCOUNT_AND_SSO_RECEIPT",
+      "evidence": "Commons issue #15900 records an Alibaba Cloud account/SSO surface only. API credential, callable adapter, quota, and execution are not claimed."
     }
   ],
   "durable_evidence": {
     "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788755643262339",
     "owner_correction": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788305523796789?thread_ts=1788304349.282199&cid=C0BRGMDQB6G",
     "peer_handoff_and_build_order": "https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1788305514110759",
-    "current_main": "https://github.com/woahwhattheheck/commons/commit/4da8a89435a5a04ce460ee28c041ed868bb6328a"
+    "current_main": "https://github.com/woahwhattheheck/commons/commit/d66ac9862e3448e2bff54c7386ce27f5a81b3640",
+    "provider_armory_issue": "https://github.com/woahwhattheheck/commons/issues/15900"
   },
   "non_claims": [
     "No literal password, token, API secret, OAuth credential, recovery link, verification link, card data, or bank data persisted.",
     "No Claude use, delegation, measurement, quota publication, review, or file mutation.",
     "No Grok submission or token spend.",
-    "No prospect outreach, resend, deployment, device action, payment, revenue, settlement, payout, or cash."
+    "No prospect outreach, resend, deployment, device action, payment, revenue, settlement, payout, or cash.",
+    "No armory row claims a callable adapter, provider execution, quota, spend, or value merely from account or credential existence."
   ]
 }

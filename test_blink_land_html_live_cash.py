@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Hermetic: land.html Live cash surfaces Autopsy $29 + four $199 tip-shelf doors."""
+"""Hermetic: land.html Live cash surfaces four $199 tip-shelf doors."""
 
 from __future__ import annotations
 
@@ -14,8 +14,8 @@ class BlinkLandHtmlLiveCashTest(unittest.TestCase):
     def test_live_cash(self) -> None:
         text = DOC.read_text(encoding="utf-8")
         self.assertIn('id="live-cash"', text)
-        self.assertIn("agent-rescue.html", text)
-        self.assertIn("$29", text)
+
+
         self.assertIn("dealer-service-lead-rescue.html", text)
         self.assertIn("referral-intake-completeness.html", text)
         self.assertIn("repair-booking-preflight.html", text)
