@@ -8,11 +8,35 @@ around the seal.
 from __future__ import annotations
 
 import hashlib as _loader_hashlib
+import json as _loader_json
+import re as _loader_re
 from pathlib import Path as _Path
 from types import MappingProxyType as _MappingProxyType
 from typing import Any
 
-_CORE_SOURCE_SHA256 = "b7bb52e25ad714ff8e62f38cf3275aec2c21d31f3889fa36b51844929c93d32a"
+_CORE_SOURCE_SHA256 = "6c6c2dc5703dabcd07dd73fb6097bb1060a6d256967a26dbc90228296203673b"
+
+if "_TRUSTED_RUNTIME_MEMBERS" not in globals():
+    _TRUSTED_RUNTIME_MEMBERS = _MappingProxyType({
+        "hashlib.sha256": _loader_hashlib.sha256,
+        "json.loads": _loader_json.loads,
+        "json.dumps": _loader_json.dumps,
+        "json.JSONDecodeError": _loader_json.JSONDecodeError,
+        "re.compile": _loader_re.compile,
+        "re.fullmatch": _loader_re.fullmatch,
+    })
+
+for _label, _current in (
+    ("hashlib.sha256", _loader_hashlib.sha256),
+    ("json.loads", _loader_json.loads),
+    ("json.dumps", _loader_json.dumps),
+    ("json.JSONDecodeError", _loader_json.JSONDecodeError),
+    ("re.compile", _loader_re.compile),
+    ("re.fullmatch", _loader_re.fullmatch),
+):
+    if _current is not _TRUSTED_RUNTIME_MEMBERS[_label]:
+        raise ImportError(f"exact-head ship-fence runtime member changed: {_label}")
+del _label, _current
 # importlib.reload() reuses the module dictionary.  Remove legacy helper names
 # that are intentionally not part of this public module's semantic graph.
 for _stale_name in ("_build", "_class", "_sha"):
@@ -34,7 +58,7 @@ _AUTHORITY_LITERAL = {
 def _load_generation():
     core_path = _Path(__file__).with_name("_core.src")
     source = core_path.read_bytes()
-    if _loader_hashlib.sha256(source).hexdigest() != _CORE_SOURCE_SHA256:
+    if _TRUSTED_RUNTIME_MEMBERS["hashlib.sha256"](source).hexdigest() != _CORE_SOURCE_SHA256:
         raise ImportError("exact-head ship-fence core source digest mismatch")
 
     namespace: dict[str, Any] = {
@@ -91,6 +115,14 @@ def _load_generation():
         name: namespace[name]
         for name in ("datetime", "timezone", "hashlib", "json", "re")
     }
+    runtime_members = {
+        "hashlib.sha256": (namespace["hashlib"], "sha256", _TRUSTED_RUNTIME_MEMBERS["hashlib.sha256"]),
+        "json.loads": (namespace["json"], "loads", _TRUSTED_RUNTIME_MEMBERS["json.loads"]),
+        "json.dumps": (namespace["json"], "dumps", _TRUSTED_RUNTIME_MEMBERS["json.dumps"]),
+        "json.JSONDecodeError": (namespace["json"], "JSONDecodeError", _TRUSTED_RUNTIME_MEMBERS["json.JSONDecodeError"]),
+        "re.compile": (namespace["re"], "compile", _TRUSTED_RUNTIME_MEMBERS["re.compile"]),
+        "re.fullmatch": (namespace["re"], "fullmatch", _TRUSTED_RUNTIME_MEMBERS["re.fullmatch"]),
+    }
 
     def integrity() -> None:
         for name, value in private_callables.items():
@@ -102,6 +134,9 @@ def _load_generation():
         for name, value in imported_bindings.items():
             if namespace.get(name) is not value:
                 raise error(f"core runtime binding changed: {name}")
+        for label, (owner, attr, value) in runtime_members.items():
+            if getattr(owner, attr, None) is not value:
+                raise error(f"core runtime member changed: {label}")
 
     def reviewer_guard(snapshot: Any) -> None:
         if type(snapshot) is not dict or type(snapshot.get("reviews")) is not list:
