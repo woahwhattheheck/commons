@@ -13,6 +13,7 @@ contradicting the helper theorem; that remains an explicit empirical census gate
 from __future__ import annotations
 
 import json
+from hashlib import sha256 as _sha256_source
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -29,6 +30,7 @@ RUNTIME_GIT_BLOB = "e0cdcf5a5dbe350d442d3b492795d37507449853"
 OPERATING_STOCK_GIT_BLOB = "80b372bfd34d04a2c9e2376fa02917f21f659c41"
 OFFICIAL_ENGINE_SHA256 = "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e"
 HARNESS_SHA256 = "853850d8673cff0b21fdfe783e2dfcd539b8b2707bfe2d36c2e60d8ec2e43ea4"
+D2_STATUS_SHA256 = "fc4617e4f0075098e101d19dd859b574090b0cc8ef43add0d6d028c26cedb371"
 
 STATE_AUTHENTICATED = "D2_SOURCE_AUTHENTICATED"
 NEGATIVE = "NO_DISCRETIONARY_EXCESS_AT_CERTIFIED_WHEAT_SEAM"
@@ -82,8 +84,9 @@ def _check_status_shape(value: Any) -> None:
         raise WheatCensusError(f"unsupported status JSON type: {type(item).__name__}")
 
 
-def _strict_json_object(path: Path) -> dict[str, Any]:
-    raw = path.read_bytes()
+def _parse_status_bytes(raw: bytes) -> dict[str, Any]:
+    """Strictly parse bounded status bytes without granting source authority."""
+    _require(type(raw) is bytes, "status input must be bytes")
     _require(len(raw) <= MAX_STATUS_BYTES, "status file too large")
 
     def pairs_hook(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
@@ -124,56 +127,142 @@ def _strict_json_object(path: Path) -> dict[str, Any]:
     return value
 
 
+def _strict_json_object(path: Path) -> dict[str, Any]:
+    """Test/diagnostic parser only; parsing arbitrary paths never grants authority."""
+    return _parse_status_bytes(Path(path).read_bytes())
+
+
 def default_status_path() -> Path:
     return Path(__file__).with_name("D2_RECOVERY_STATUS.json")
 
 
-def validate_authenticated_status(path: Path | None = None) -> dict[str, Any]:
-    """Validate the checked-in post-#15592 D2 source-authentication state."""
-    status = _strict_json_object(default_status_path() if path is None else Path(path))
-    _require(status.get("schema") == STATUS_SCHEMA, "wrong status schema")
-    _require(status.get("state") == STATE_AUTHENTICATED, "D2 source is not authenticated")
-    _require(status.get("source_authority_verified") is True, "root source authority must be true")
-    _require(status.get("execution_inputs_ready") is True, "execution inputs are not ready")
-    _require(status.get("candidate_build_authorized") is False, "status cannot authorize candidate")
-    _require(status.get("promotion_authorized") is False, "status cannot authorize promotion")
-
-    archive = status.get("archive")
-    _require(type(archive) is dict, "archive status missing")
-    _require(archive.get("sha256") == D2_ARCHIVE_SHA256, "wrong archive sha256")
-    _require(archive.get("bytes") == D2_ARCHIVE_BYTES, "wrong archive byte count")
-    _require(archive.get("member_count") == D2_MEMBER_COUNT, "wrong archive member count")
-
-    auth = status.get("operator_host_archive_authentication")
-    _require(type(auth) is dict, "operator archive authentication missing")
-    _require(auth.get("source_authority_verified") is True, "nested source authority must be true")
-    _require(auth.get("execution_inputs_ready") is True, "nested execution inputs not ready")
-    _require(auth.get("receipt_sha256") == AUTH_RECEIPT_SHA256, "wrong auth receipt")
-    _require(auth.get("safe_member_manifest_sha256") == SAFE_MANIFEST_SHA256, "wrong safe manifest")
-
-    bindings = status.get("retained_source_bindings")
-    _require(type(bindings) is dict, "retained bindings missing")
-    expected = {
-        "runtime_member": RUNTIME_MEMBER,
-        "runtime_git_blob": RUNTIME_GIT_BLOB,
-        "operating_stock_git_blob": OPERATING_STOCK_GIT_BLOB,
-        "official_engine_sha256": OFFICIAL_ENGINE_SHA256,
-        "harness_sha256": HARNESS_SHA256,
+def _build_status_validator(
+    *,
+    status_path: Path = default_status_path(),
+    sha256_fn=_sha256_source,
+    parse_status=_parse_status_bytes,
+    require_fn=_require,
+    expected_status_sha256: str = D2_STATUS_SHA256,
+    status_schema: str = STATUS_SCHEMA,
+    authenticated_state: str = STATE_AUTHENTICATED,
+    archive_sha256: str = D2_ARCHIVE_SHA256,
+    archive_bytes: int = D2_ARCHIVE_BYTES,
+    archive_members: int = D2_MEMBER_COUNT,
+    auth_receipt_sha256: str = AUTH_RECEIPT_SHA256,
+    safe_manifest_sha256: str = SAFE_MANIFEST_SHA256,
+    runtime_member: str = RUNTIME_MEMBER,
+    runtime_git_blob: str = RUNTIME_GIT_BLOB,
+    operating_stock_git_blob: str = OPERATING_STOCK_GIT_BLOB,
+    official_engine_sha256: str = OFFICIAL_ENGINE_SHA256,
+    harness_sha256: str = HARNESS_SHA256,
+):
+    """Seal the one retained source-authority generation at module initialization."""
+    read_status = status_path.read_bytes
+    top_keys = frozenset(
+        {
+            "archive",
+            "blocked_receipt_sha256",
+            "candidate_build_authorized",
+            "checked_surfaces",
+            "date",
+            "empirical_result",
+            "execution_inputs_ready",
+            "issue",
+            "model",
+            "next_step",
+            "operation",
+            "operator_host_archive_authentication",
+            "promotion_authorized",
+            "retained_source_bindings",
+            "schema",
+            "seat",
+            "source_authority_verified",
+            "state",
+            "verifier_validation",
+        }
+    )
+    archive_keys = frozenset({"bytes", "main_sha256", "member_count", "name", "sha256"})
+    auth_keys = frozenset(
+        {
+            "archive_path",
+            "execution_inputs_ready",
+            "receipt_sha256",
+            "safe_member_manifest_sha256",
+            "source_authority_verified",
+        }
+    )
+    binding_keys = frozenset(
+        {
+            "runtime_member",
+            "runtime_git_blob",
+            "operating_stock_git_blob",
+            "official_engine_sha256",
+            "harness_sha256",
+        }
+    )
+    expected_bindings = {
+        "runtime_member": runtime_member,
+        "runtime_git_blob": runtime_git_blob,
+        "operating_stock_git_blob": operating_stock_git_blob,
+        "official_engine_sha256": official_engine_sha256,
+        "harness_sha256": harness_sha256,
     }
-    for key, expected_value in expected.items():
-        _require(bindings.get(key) == expected_value, f"wrong retained binding: {key}")
 
-    return {
-        "state": STATE_AUTHENTICATED,
-        "archive_sha256": D2_ARCHIVE_SHA256,
-        "authentication_receipt_sha256": AUTH_RECEIPT_SHA256,
-        "safe_member_manifest_sha256": SAFE_MANIFEST_SHA256,
-        "runtime_member": RUNTIME_MEMBER,
-        "runtime_git_blob": RUNTIME_GIT_BLOB,
-        "operating_stock_git_blob": OPERATING_STOCK_GIT_BLOB,
-        "official_engine_sha256": OFFICIAL_ENGINE_SHA256,
-        "harness_sha256": HARNESS_SHA256,
-    }
+    def validate_authenticated_status() -> dict[str, Any]:
+        """Authenticate only the exact retained in-tree D2 status generation."""
+        try:
+            raw = read_status()
+        except OSError as exc:
+            raise WheatCensusError("cannot read retained D2 status generation") from exc
+        require_fn(
+            sha256_fn(raw).hexdigest() == expected_status_sha256,
+            "retained D2 status generation digest mismatch",
+        )
+        status = parse_status(raw)
+        require_fn(set(status) == top_keys, "retained status key set mismatch")
+        require_fn(status.get("schema") == status_schema, "wrong status schema")
+        require_fn(status.get("state") == authenticated_state, "D2 source is not authenticated")
+        require_fn(status.get("source_authority_verified") is True, "root source authority must be true")
+        require_fn(status.get("execution_inputs_ready") is True, "execution inputs are not ready")
+        require_fn(status.get("candidate_build_authorized") is False, "status cannot authorize candidate")
+        require_fn(status.get("promotion_authorized") is False, "status cannot authorize promotion")
+
+        archive = status.get("archive")
+        require_fn(type(archive) is dict and set(archive) == archive_keys, "archive status key set mismatch")
+        require_fn(archive.get("sha256") == archive_sha256, "wrong archive sha256")
+        require_fn(archive.get("bytes") == archive_bytes, "wrong archive byte count")
+        require_fn(archive.get("member_count") == archive_members, "wrong archive member count")
+
+        auth = status.get("operator_host_archive_authentication")
+        require_fn(type(auth) is dict and set(auth) == auth_keys, "operator authentication key set mismatch")
+        require_fn(auth.get("source_authority_verified") is True, "nested source authority must be true")
+        require_fn(auth.get("execution_inputs_ready") is True, "nested execution inputs not ready")
+        require_fn(auth.get("receipt_sha256") == auth_receipt_sha256, "wrong auth receipt")
+        require_fn(auth.get("safe_member_manifest_sha256") == safe_manifest_sha256, "wrong safe manifest")
+
+        bindings = status.get("retained_source_bindings")
+        require_fn(type(bindings) is dict and set(bindings) == binding_keys, "retained binding key set mismatch")
+        for key, expected_value in expected_bindings.items():
+            require_fn(bindings.get(key) == expected_value, f"wrong retained binding: {key}")
+
+        return {
+            "state": authenticated_state,
+            "status_generation_sha256": expected_status_sha256,
+            "archive_sha256": archive_sha256,
+            "authentication_receipt_sha256": auth_receipt_sha256,
+            "safe_member_manifest_sha256": safe_manifest_sha256,
+            "runtime_member": runtime_member,
+            "runtime_git_blob": runtime_git_blob,
+            "operating_stock_git_blob": operating_stock_git_blob,
+            "official_engine_sha256": official_engine_sha256,
+            "harness_sha256": harness_sha256,
+        }
+
+    return validate_authenticated_status
+
+
+validate_authenticated_status = _build_status_validator()
+del _build_status_validator, _sha256_source
 
 
 def minimum_required_withheld(
@@ -293,8 +382,8 @@ def analyze_certified_window(packet: Mapping[str, Any]) -> dict[str, Any]:
     plus_one = min(saleable, minimum + 1)
     upstream_gap = upstream_balance_offer_gap(stock, returned, required, offered)
     return {
-        "schema": SCHEMA,
-        "state": NEGATIVE,
+        "schema": schema,
+            "state": negative_state,
         "feed_item": "WHEAT",
         "mechanism": "selected_sell_wheat_reservation",
         "current_policy_withheld": current,
@@ -313,10 +402,18 @@ def analyze_certified_window(packet: Mapping[str, Any]) -> dict[str, Any]:
     }
 
 
-def source_theorem_receipt(status_path: Path | None = None) -> dict[str, Any]:
-    """Return helper theorem plus the independent upstream empirical gate."""
-    authority = validate_authenticated_status(status_path)
-    return {
+def _build_source_theorem_receipt(
+    authority_validator=validate_authenticated_status,
+    schema: str = SCHEMA,
+    negative_state: str = NEGATIVE,
+    upstream_gate: str = UPSTREAM_GATE,
+):
+    """Capture retained authority so later module rebinding cannot mint receipts."""
+
+    def source_theorem_receipt() -> dict[str, Any]:
+        """Return helper theorem plus the independent upstream empirical gate."""
+        authority = authority_validator()
+        return {
         "schema": SCHEMA,
         "state": NEGATIVE,
         "authority": authority,
@@ -330,7 +427,7 @@ def source_theorem_receipt(status_path: Path | None = None) -> dict[str, Any]:
         "candidate_build_authorized": False,
         "promotion_authorized": False,
         "empirical_result": None,
-        "remaining_gate_state": UPSTREAM_GATE,
+        "remaining_gate_state": upstream_gate,
         "upstream_offer_census_required": True,
         "candidate_hypothesis_paths": [
             "AUTHENTICATED_UPSTREAM_UNDER_OFFERING_WITH_HELPER_THEOREM_INTACT",
@@ -345,3 +442,9 @@ def source_theorem_receipt(status_path: Path | None = None) -> dict[str, Any]:
             "contradiction is a distinct path and must first be reviewed as drift."
         ),
     }
+
+    return source_theorem_receipt
+
+
+source_theorem_receipt = _build_source_theorem_receipt()
+del _build_source_theorem_receipt
