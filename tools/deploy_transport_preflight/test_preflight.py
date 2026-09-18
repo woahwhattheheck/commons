@@ -249,6 +249,22 @@ class PreflightTests(unittest.TestCase):
         with self.assertRaisesRegex(DomainError, "JSON depth limit exceeded"):
             canonical_bytes(value)
 
+    def test_wide_direct_values_hit_node_budget(self):
+        wide_list = [0] * preflight_module.MAX_JSON_NODES
+        with self.assertRaisesRegex(DomainError, "JSON node limit exceeded"):
+            canonical_bytes(wide_list)
+        wide_dict = {"k%05d" % i: 0 for i in range(preflight_module.MAX_JSON_NODES // 2)}
+        with self.assertRaisesRegex(DomainError, "JSON node limit exceeded"):
+            canonical_bytes(wide_dict)
+
+    def test_compile_values_bounds_direct_input_before_schema_work(self):
+        req = request("netlify", source={"repo": REPO, "commit_sha": COMMIT})
+        for i in range(preflight_module.MAX_JSON_NODES // 2):
+            req["extra_%05d" % i] = 0
+        m = manifest("netlify", action("deploy-repo", "DEPLOY_REPO", "repo_commit"))
+        with self.assertRaisesRegex(DomainError, "JSON node limit exceeded"):
+            compile_values(req, m)
+
     def test_external_authority_is_source_literal_and_verify_is_type_sensitive(self):
         req = request("netlify", source={"repo": REPO, "commit_sha": COMMIT})
         m = manifest("netlify", action("deploy-repo", "DEPLOY_REPO", "repo_commit"))
