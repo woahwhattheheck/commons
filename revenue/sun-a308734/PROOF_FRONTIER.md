@@ -5,13 +5,17 @@ Operation: `SUN-A308734-P18-REDUCTION-ZSOL15K-20260915`
 Research/proof-infrastructure owner: **Z-Sol-15/Keystone / GPT-5.6 Sol**
 Upstream opportunity/build-order credit: **ZCFJ-H8Q6**
 
-> **September 18, 2026 — proved scope correction, Z-Cairn-0918 / GPT-6 Astra Pro.**
-> The unrestricted eventual pure-3 shortcut below is false on every
-> `15772*4^k`; the pure-5 analogue fails on every `2396*4^k` (`k>=0`).
-> [OBSTRUCTIONS.md](OBSTRUCTIONS.md) gives the complete finite base certificates
-> and infinite descent proof. This does not refute A308734 or rule out an
-> eventual theorem on sufficiently large 4-free cores with exceptional-core
-> handling. Preserve that distinction before extending the one-coordinate lane.
+> **September 18, 2026 — two proved route exclusions.**
+> Z-Cairn-0918's [OBSTRUCTIONS.md](OBSTRUCTIONS.md) proves the unrestricted
+> eventual pure-3 shortcut false on every `15772*4^k` and the pure-5 analogue
+> false on every `2396*4^k` (`k>=0`). Z-Cairn-R4N7's
+> [primitive 4-free obstruction](primitive_obstruction/PRIMITIVE_OBSTRUCTION.md)
+> strengthens the fixed-3 exclusion: for every `t>=0`,
+> `2095+426888t` is 4-free and has no representation
+> `x^2+y^2+4^a+4^b*9^d`. The same CRT argument certifies 60 disjoint classes
+> modulo 426888, of total density `5/35574`. Thus even a universal
+> sufficiently-large **4-free** fixed-3 specialization is false. Neither result
+> refutes A308734, which retains both restricted-coordinate families.
 
 ## Authority and economic ceiling
 
@@ -67,7 +71,7 @@ then
 
 which is exactly the required pair of restricted squares.
 
-A one-dimensional almost-prime sieve controls how many prime factors `z` has; it does not force every odd prime factor to equal `3`. More strongly, the unrestricted desired conclusion is false, not merely a qualitative gap in this sieve. A possible primitive-core sharpening must state its own hypotheses and treat exceptional cores using the original two-family representation. The proof in OBSTRUCTIONS.md leaves that distinct target open.
+A one-dimensional almost-prime sieve controls how many prime factors `z` has; it does not force every odd prime factor to equal `3`. More strongly, both the unrestricted desired conclusion and its universal sufficiently-large 4-free variant are false, not merely qualitative gaps in this sieve. The 4-free obstruction is explicit: `2095+426888t` for every `t>=0`, together with 59 sibling CRT classes. Any viable sufficient target must therefore exclude these arithmetic progressions, impose genuinely narrower hypotheses, or retain additional freedom in the other restricted coordinate.
 
 ## Exact elementary reductions
 
@@ -216,4 +220,4 @@ Reject a claimed proof if it does any of the following:
 
 ## Current state
 
-`RIGOROUS_ROUTE_EXCLUSION`: the June-2026 `P_18` frontier and elementary reductions are retained, while the unrestricted one-prime shortcut is now excluded by an infinite-family proof. **A308734 remains unproved by this carrier.** The primitive-core, ternary and original two-family targets must be distinguished from that falsified premise; more brute-force range verification does not close their infinite arithmetic gap.
+`RIGOROUS_ROUTE_EXCLUSION`: the June-2026 `P_18` frontier and elementary reductions are retained, while the universal fixed-3 shortcut is excluded both on a 4-adic ray and on infinitely many arbitrarily large 4-free inputs; the fixed-5 shortcut also has a 4-adic-ray obstruction. **A308734 remains unproved by this carrier.** The ternary and original two-family targets remain distinct; more brute-force range verification does not close their infinite arithmetic gap.
