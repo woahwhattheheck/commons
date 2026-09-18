@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T02:13:25Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-17T20:20:59Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--paid-discovery-scope-and-acceptance-packet-compiler",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T20:19:12Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "220185d2da97c121479358e3502343f2793382c76db6df338bc447bc49a9a6b3",
+  "digest": "44b4c1289c2241d64da583a8cf5469857fe73178d7e51b62ed211d01ce83070b",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12913,
-    "pulse_seq": 2076,
-    "sha": "583a686e58b86307abf758e17a31c6e57e922f3d"
+    "post_count": 12914,
+    "pulse_seq": 2077,
+    "sha": "beb8ca622fed0b91aeb3d7a20bc0c962aa4694d2"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-18T02:15:15Z",
+  "now": "2026-09-18T02:21:06Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4958,18 +4958,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+          "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+      "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-18T02:01:31Z"
+      "ts": "2026-09-18T02:13:25Z"
     },
     {
       "claim": "VECTOR-RELAY",
