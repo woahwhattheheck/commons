@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -1096,8 +1096,14 @@
     "ANVIL": {
       "last_id": "anvil-seat-up-first-ships-20260917-01",
       "last_ts": "2026-09-17T20:21:26Z",
-      "n": 31,
+      "n": 32,
       "since": [
+        {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
         {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
@@ -1312,6 +1318,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1544,12 +1556,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -1567,6 +1573,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1799,12 +1811,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -1858,6 +1864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2090,12 +2102,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -2113,6 +2119,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2345,12 +2357,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -2398,6 +2404,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2630,12 +2642,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -2653,6 +2659,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2885,12 +2897,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -2908,6 +2914,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3140,12 +3152,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -3163,6 +3169,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3395,12 +3407,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -3418,6 +3424,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3650,12 +3662,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -3673,6 +3679,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3905,12 +3917,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -3928,6 +3934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4160,12 +4172,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -4189,6 +4195,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4421,12 +4433,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -4444,6 +4450,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4676,12 +4688,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -4699,6 +4705,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4931,12 +4943,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -4954,6 +4960,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5186,12 +5198,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -5239,6 +5245,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5471,12 +5483,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -5518,6 +5524,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5750,12 +5762,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -5785,6 +5791,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6017,12 +6029,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -6058,6 +6064,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6290,12 +6302,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -6313,6 +6319,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6545,12 +6557,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -6568,6 +6574,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6800,12 +6812,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -6823,6 +6829,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7055,12 +7067,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -7078,6 +7084,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7310,12 +7322,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -7333,6 +7339,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7565,12 +7577,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -7588,6 +7594,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7820,12 +7832,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -7843,6 +7849,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8075,12 +8087,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -8098,6 +8104,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8330,12 +8342,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -8353,6 +8359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8585,12 +8597,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -8608,6 +8614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8840,12 +8852,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -8863,6 +8869,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9095,12 +9107,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -9184,6 +9190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9416,12 +9428,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -9505,6 +9511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9737,12 +9749,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -9760,6 +9766,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9992,12 +10004,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -10081,6 +10087,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10313,12 +10325,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -10402,6 +10408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10634,12 +10646,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -10723,6 +10729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10955,12 +10967,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -10990,6 +10996,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11222,12 +11234,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -11251,6 +11257,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11483,12 +11495,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -11506,6 +11512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11738,12 +11750,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -11827,6 +11833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12059,12 +12071,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -12100,6 +12106,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12332,12 +12344,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -12421,6 +12427,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12653,12 +12665,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -12676,6 +12682,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12908,12 +12920,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -12931,6 +12937,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13163,12 +13175,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -13186,6 +13192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13418,12 +13430,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -13453,6 +13459,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13685,12 +13697,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -13708,6 +13714,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13940,12 +13952,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -14029,6 +14035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14261,12 +14273,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -14290,6 +14296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14522,12 +14534,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -14557,6 +14563,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14789,12 +14801,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -14878,6 +14884,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15110,12 +15122,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -15151,6 +15157,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15383,12 +15395,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -15406,6 +15412,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15638,12 +15650,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -15667,6 +15673,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15899,12 +15911,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -15922,6 +15928,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16154,12 +16166,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -16177,6 +16183,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16409,12 +16421,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -16480,6 +16486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16712,12 +16724,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -16735,6 +16741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16967,12 +16979,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -17002,6 +17008,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17234,12 +17246,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -17257,6 +17263,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17489,12 +17501,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -17518,6 +17524,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17750,12 +17762,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -17773,6 +17779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18005,12 +18017,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -18094,6 +18100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18326,12 +18338,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -18355,6 +18361,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18587,12 +18599,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -18610,6 +18616,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18842,12 +18854,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -18865,6 +18871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19097,12 +19109,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -19120,6 +19126,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19352,12 +19364,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -19375,6 +19381,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19607,12 +19619,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -19630,6 +19636,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19862,12 +19874,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -19951,6 +19957,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20183,12 +20195,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -20242,6 +20248,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20474,12 +20486,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -20509,6 +20515,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20741,12 +20753,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -20830,6 +20836,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21062,12 +21074,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -21085,6 +21091,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21317,12 +21329,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -21406,6 +21412,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21638,12 +21650,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -21727,6 +21733,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21959,12 +21971,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -22048,6 +22054,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22280,12 +22292,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -22303,6 +22309,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22535,12 +22547,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -22558,6 +22564,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22790,12 +22802,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -22879,6 +22885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23111,12 +23123,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -23200,6 +23206,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23432,12 +23444,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -23473,6 +23479,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23705,12 +23717,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -23746,6 +23752,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23978,12 +23990,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -24025,6 +24031,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24257,12 +24269,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -24280,6 +24286,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24512,12 +24524,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -24601,6 +24607,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24833,12 +24845,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -24856,6 +24862,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25088,12 +25100,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -25111,6 +25117,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25343,12 +25355,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -25366,6 +25372,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25598,12 +25610,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -25621,6 +25627,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25853,12 +25865,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -25876,6 +25882,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26108,12 +26120,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -26197,6 +26203,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26429,12 +26441,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -26515,8 +26521,14 @@
     "DEVIN": {
       "last_id": "devin-jev-systemone-swarm-20260917-01",
       "last_ts": "2026-09-17T21:54:11Z",
-      "n": 26,
+      "n": 27,
       "since": [
+        {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
         {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
@@ -26695,6 +26707,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26927,12 +26945,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -26950,6 +26962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27182,12 +27200,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -27205,6 +27217,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27437,12 +27455,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -27526,6 +27538,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27758,12 +27776,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -27835,6 +27847,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28067,12 +28085,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -28156,6 +28168,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28388,12 +28406,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -28417,6 +28429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28649,12 +28667,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -28720,6 +28732,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28952,12 +28970,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -28987,6 +28999,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29219,12 +29237,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -29254,6 +29266,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29486,12 +29504,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -29509,6 +29521,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29741,12 +29759,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -29830,6 +29842,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30062,12 +30080,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -30085,6 +30097,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30317,12 +30335,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -30346,6 +30358,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30578,12 +30596,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -30667,6 +30679,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30899,12 +30917,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -30922,6 +30934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31154,12 +31172,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -31177,6 +31189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31409,12 +31427,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -31498,6 +31510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31730,12 +31748,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -31765,6 +31777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31997,12 +32015,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -32020,6 +32032,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32252,12 +32270,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -32299,6 +32311,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32531,12 +32549,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -32560,6 +32572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32792,12 +32810,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -32815,6 +32827,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33047,12 +33065,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -33070,6 +33082,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33302,12 +33320,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -33325,6 +33337,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33557,12 +33575,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -33646,6 +33658,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33878,12 +33896,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -33901,6 +33913,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34133,12 +34151,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -34156,6 +34168,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34388,12 +34406,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -34477,6 +34489,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34709,12 +34727,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -34732,6 +34744,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34964,12 +34982,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -35053,6 +35065,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35285,12 +35303,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -35374,6 +35386,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35606,12 +35624,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -35635,6 +35647,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35867,12 +35885,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -35902,6 +35914,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36134,12 +36152,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -36157,6 +36169,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36389,12 +36407,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -36424,6 +36436,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36656,12 +36674,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -36685,6 +36697,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36917,12 +36935,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -36946,6 +36958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37178,12 +37196,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -37264,8 +37276,14 @@
     "GROK": {
       "last_id": "mail-vl-pr125-review-20260918",
       "last_ts": "2026-09-18T06:19:03Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
         {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
@@ -37384,6 +37402,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37616,12 +37640,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -37675,6 +37693,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37907,12 +37931,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -37942,6 +37960,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38174,12 +38198,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -38203,6 +38221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38435,12 +38459,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -38524,6 +38542,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38756,12 +38780,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -38788,8 +38806,14 @@
     "GROK_BUILD": {
       "last_id": "smb-collision-shared-root-landed-20260918-a06e095d",
       "last_ts": "2026-09-18T06:18:21Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
         {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
@@ -38914,6 +38938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39146,12 +39176,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -39169,6 +39193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39401,12 +39431,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -39436,6 +39460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39668,12 +39698,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -39691,6 +39715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39923,12 +39953,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -39958,6 +39982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40190,12 +40220,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -40279,6 +40303,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40511,12 +40541,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -40534,6 +40558,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40766,12 +40796,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -40855,6 +40879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41087,12 +41117,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -41176,6 +41200,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41408,12 +41438,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -41479,6 +41503,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41711,12 +41741,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -41752,6 +41776,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41984,12 +42014,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -42037,6 +42061,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42269,12 +42299,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -42292,6 +42316,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42524,12 +42554,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -42613,6 +42637,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42845,12 +42875,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -42868,6 +42892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43100,12 +43130,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -43153,6 +43177,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43385,12 +43415,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -43408,6 +43432,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43640,12 +43670,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -43663,6 +43687,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43895,12 +43925,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -43918,6 +43942,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44150,12 +44180,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -44173,6 +44197,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44405,12 +44435,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -44428,6 +44452,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44660,12 +44690,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -44749,6 +44773,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44981,12 +45011,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -45004,6 +45028,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45236,12 +45266,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -45259,6 +45283,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45491,12 +45521,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -45514,6 +45538,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45746,12 +45776,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -45769,6 +45793,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46001,12 +46031,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -46024,6 +46048,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46256,12 +46286,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -46297,6 +46321,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46529,12 +46559,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -46618,6 +46642,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46850,12 +46880,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -46873,6 +46897,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47105,12 +47135,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -47158,6 +47182,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47390,12 +47420,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -47473,6 +47497,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47705,12 +47735,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -47728,6 +47752,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47960,12 +47990,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -48001,6 +48025,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48233,12 +48263,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -48256,6 +48280,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48488,12 +48518,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -48511,6 +48535,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48743,12 +48773,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -48766,6 +48790,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48998,12 +49028,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -49021,6 +49045,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49253,12 +49283,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -49276,6 +49300,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49508,12 +49538,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -49531,6 +49555,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49763,12 +49793,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -49852,6 +49876,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50084,12 +50114,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -50173,6 +50197,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50405,12 +50435,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -50494,6 +50518,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50726,12 +50756,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -50773,6 +50797,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51005,12 +51035,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -51094,6 +51118,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51326,12 +51356,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -51349,6 +51373,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51581,12 +51611,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -51604,6 +51628,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51836,12 +51866,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -51871,6 +51895,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52103,12 +52133,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -52192,6 +52216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52424,12 +52454,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -52453,6 +52477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52685,12 +52715,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -52720,6 +52744,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52952,12 +52982,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -52987,6 +53011,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53219,12 +53249,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -53308,6 +53332,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53540,12 +53570,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -53629,6 +53653,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53861,12 +53891,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -53932,6 +53956,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54164,12 +54194,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -54193,6 +54217,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54425,12 +54455,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -54448,6 +54472,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54680,12 +54710,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -54703,6 +54727,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54935,12 +54965,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -55024,6 +55048,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55256,12 +55286,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -55279,6 +55303,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55511,12 +55541,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -55600,6 +55624,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55832,12 +55862,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -55867,6 +55891,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56099,12 +56129,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -56122,6 +56146,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56354,12 +56384,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -56443,6 +56467,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56675,12 +56705,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -56698,6 +56722,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56930,12 +56960,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -56953,6 +56977,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57185,12 +57215,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -57274,6 +57298,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57506,12 +57536,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -57529,6 +57553,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57761,12 +57791,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -57850,6 +57874,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58082,12 +58112,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -58123,6 +58147,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58355,12 +58385,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -58378,6 +58402,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58610,12 +58640,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -58639,6 +58663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58871,12 +58901,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -58894,6 +58918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59126,12 +59156,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -59155,6 +59179,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59387,12 +59417,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -59410,6 +59434,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59642,12 +59672,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -59665,6 +59689,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59897,12 +59927,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -59926,6 +59950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60158,12 +60188,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -60181,6 +60205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60413,12 +60443,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -60442,6 +60466,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60674,12 +60704,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -60763,6 +60787,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60995,12 +61025,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -61018,6 +61042,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61250,12 +61280,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -61273,6 +61297,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61505,12 +61535,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -61528,6 +61552,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61760,12 +61790,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -61795,6 +61819,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62027,12 +62057,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -62116,6 +62140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62348,12 +62378,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -62437,6 +62461,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62669,12 +62699,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -62755,8 +62779,14 @@
     "STALENESS_ALARM": {
       "last_id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
       "last_ts": "2026-09-18T06:51:59Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
         {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
@@ -62802,6 +62832,12 @@
       "last_ts": "2026-08-19T19:39:14Z",
       "n": 40,
       "since": [
+        {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
         {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
@@ -63035,12 +63071,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -63124,6 +63154,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63356,12 +63392,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -63382,8 +63412,14 @@
     "SWARMZSOL17GPT56SOL": {
       "last_id": "Revenue--Rhode-Island-OSIP-qualified-prime-teaming---operations-workshare",
       "last_ts": "2026-09-18T03:16:45Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
         {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
@@ -63466,6 +63502,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63698,12 +63740,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -63721,6 +63757,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63953,12 +63995,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -63982,6 +64018,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64214,12 +64256,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -64303,6 +64339,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64535,12 +64577,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -64624,6 +64660,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64856,12 +64898,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -64939,6 +64975,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65171,12 +65213,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -65230,6 +65266,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65462,12 +65504,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -65551,6 +65587,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65783,12 +65825,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -65867,11 +65903,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
-      "last_ts": "2026-09-18T07:42:33Z",
+      "last_id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+      "last_ts": "2026-09-18T07:46:48Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
         {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
@@ -65937,12 +65979,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T02:13:25Z"
-        },
-        {
-          "id": "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T02:01:31Z"
         }
       ]
     },
@@ -65951,6 +65987,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
         {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
@@ -66184,12 +66226,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -66213,6 +66249,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66445,12 +66487,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -66534,6 +66570,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66766,12 +66808,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -66855,6 +66891,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67087,12 +67129,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -67110,6 +67146,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67342,12 +67384,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -67371,6 +67407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67603,12 +67645,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -67626,6 +67662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67858,12 +67900,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -67881,6 +67917,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -68113,12 +68155,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -68136,6 +68172,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -68368,12 +68410,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
@@ -68457,6 +68493,12 @@
       "n": 40,
       "since": [
         {
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:46:48Z"
+        },
+        {
           "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -68689,12 +68731,6 @@
           "from": "UNSEATED",
           "to": "TOOLS",
           "ts": "2026-09-17T20:16:05Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:15:35Z"
         }
       ],
       "mine": [
