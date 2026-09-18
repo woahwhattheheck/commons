@@ -304,8 +304,8 @@ def _state_for(req, pursuit):
     return "OWNER_INPUT", "NO_SAFE_CURRENT_COVERAGE"
 
 
-def compile_payload(raw: Any) -> dict[str, Any]:
-    n = validate_and_normalize(raw)
+def _compile_impl(raw: Any, normalize, classify, render, canonical, digest) -> dict[str, Any]:
+    n = normalize(raw)
     # Caller-provided carrier rows are retained as evidence claims, but cannot authenticate
     # their own presence on repository main. Until a code-owned/main-bound carrier manifest
     # exists, every LIVE invocation must fail closed regardless of caller booleans.
@@ -314,7 +314,13 @@ def compile_payload(raw: Any) -> dict[str, Any]:
     needs = {}
     for p in n["pursuits"]:
         for r in p["requirements"]:
-            state, reason = _state_for(r, p)
+            if n["materialization_mode"] == "LIVE":
+                state, reason = (
+                    "OWNER_INPUT",
+                    "LIVE_TRUST_GENERATION_UNAVAILABLE",
+                )
+            else:
+                state, reason = classify(r, p)
             row = {"pursuit_id": p["pursuit_id"], "requirement_id": r["requirement_id"], "text": r["text"], "category": r["category"], "capability_key": r["capability_key"], "mandatory": r["mandatory"], "state": state, "reason": reason, "source_uri": p["source_uri"], "source_sha256": p["source_sha256"]}
             rows.append(row)
             if state == "PARTNER_REQUIRED":
@@ -330,8 +336,8 @@ def compile_payload(raw: Any) -> dict[str, Any]:
     core = {"schema_version": SCHEMA_VERSION, "as_of": n["as_of"], "materialization_mode": n["materialization_mode"], "status": status, "blockers": blocker, "crosswalk": rows, "partner_capability_shortlist": shortlist, "authority": {"company_recommendation": False, "route_recommendation": False, "external_contact": False, "buyer_submission": False, "signature": False, "price_commitment": False, "award": False, "payment": False, "revenue": False}}
     core["currentness_basis"] = n["currentness_basis"]
     core["trusted_generation_sha256"] = n["trusted_generation_sha256"]
-    md = render_markdown(core)
-    receipt = {"schema_version": SCHEMA_VERSION, "canonical_input_sha256": sha256(canonical_bytes(n)), "payload_sha256": sha256(canonical_bytes(core)), "crosswalk_sha256": sha256(canonical_bytes(rows)), "shortlist_sha256": sha256(canonical_bytes(shortlist)), "markdown_sha256": sha256(md.encode("utf-8")), "status": status, "blockers": blocker}
+    md = render(core)
+    receipt = {"schema_version": SCHEMA_VERSION, "canonical_input_sha256": digest(canonical(n)), "payload_sha256": digest(canonical(core)), "crosswalk_sha256": digest(canonical(rows)), "shortlist_sha256": digest(canonical(shortlist)), "markdown_sha256": digest(md.encode("utf-8")), "status": status, "blockers": blocker}
     receipt["currentness_basis"] = n["currentness_basis"]
     receipt["trusted_generation_sha256"] = n["trusted_generation_sha256"]
     return {"normalized_input": n, "payload": core, "markdown": md, "receipt": receipt}
@@ -358,6 +364,23 @@ def render_markdown(core: dict[str, Any]) -> str:
             lines += [f"### {s['capability_key']}", f"- proof category: `{s['proof_category']}`", f"- company: `{s['company']}`", f"- route: `{s['route']}`", f"- requirements: {refs}", ""]
     lines += ["## Authority", "", "This artifact names missing capabilities and proof only. It does not select a company or route and creates no contact, submission, signature, price, award, payment, or revenue authority.", ""]
     return "\n".join(lines)
+
+
+def _build_compiler():
+    normalize = validate_and_normalize
+    classify = _state_for
+    render = render_markdown
+    canonical = canonical_bytes
+    digest = sha256
+    impl = _compile_impl
+
+    def compile_payload(raw: Any) -> dict[str, Any]:
+        return impl(raw, normalize, classify, render, canonical, digest)
+
+    return compile_payload
+
+
+compile_payload = _build_compiler()
 
 
 def _write_exclusive(path: Path, data: bytes):

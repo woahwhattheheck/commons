@@ -212,6 +212,29 @@ class CompilerTests(unittest.TestCase):
             all(r["state"] == "OWNER_INPUT" for r in out["payload"]["crosswalk"])
         )
 
+    def test_live_saved_compiler_ignores_module_classifier_rebind(self):
+        x = copy.deepcopy(FIX)
+        x["materialization_mode"] = "LIVE"
+        saved_compile = compiler.compile_payload
+        classifier_before = compiler._state_for
+        try:
+            compiler._state_for = lambda *_: (
+                "PASS",
+                "CURRENT_EXACT_TJLABS_EVIDENCE",
+            )
+            out = saved_compile(x)
+        finally:
+            compiler._state_for = classifier_before
+
+        rows = out["payload"]["crosswalk"]
+        self.assertTrue(rows)
+        self.assertTrue(all(r["state"] == "OWNER_INPUT" for r in rows))
+        self.assertTrue(all(
+            r["state"] not in {"PASS", "PRIME_SUPPORTED"}
+            for r in rows
+        ))
+        self.assertEqual(out["payload"]["status"], compiler.BLOCKED_NO_CARRIER)
+
     def test_live_caller_clock_rollback_cannot_revive_expired_source(self):
         x = copy.deepcopy(FIX)
         x["materialization_mode"] = "LIVE"
