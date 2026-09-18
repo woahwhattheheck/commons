@@ -15,7 +15,6 @@ _FIXTURES = (
     / "fixtures"
 )
 DIAG = _FIXTURES / "synthetic_diagnostic_fulfillment_role.json"
-AUTOPSY = _FIXTURES / "synthetic_agent_failure_autopsy_role.json"
 CRM = _FIXTURES / "synthetic_crm_followup_role.json"
 
 _EVIDENCE = "2026-09-04T15:00:00-04:00"
@@ -29,7 +28,6 @@ class ProveHandoffEquipmentCardTests(unittest.TestCase):
     def setUp(self) -> None:
         self.eq = GrokBotEquipment()
         self.diag = json.loads(DIAG.read_text(encoding="utf-8"))
-        self.autopsy = json.loads(AUTOPSY.read_text(encoding="utf-8"))
 
     def test_tool_listed(self) -> None:
         names = {t["name"] for t in self.eq.tools()}
@@ -71,25 +69,6 @@ class ProveHandoffEquipmentCardTests(unittest.TestCase):
             missed["proof"]["executes"]["diagnostic-fulfill-sla"]["sla_status"],
             "MISSED",
         )
-
-    def test_prove_handoff_card_autopsy(self) -> None:
-        out = self.eq.call(
-            "prove_handoff_card",
-            {
-                "role": self.autopsy,
-                "case_ref": "case_001",
-                "usable_evidence_at": _EVIDENCE,
-                "as_of": _AS_OF_OPEN,
-            },
-        )
-        self.assertTrue(out.get("ok"), out)
-        proof = out["proof"]
-        self.assertTrue(proof.get("ok"))
-        self.assertIn("autopsy-case", proof["executes"])
-        self.assertIn("autopsy-fulfill-sla", proof["executes"])
-        sla = proof["executes"]["autopsy-fulfill-sla"]
-        self.assertEqual(sla.get("sla_status"), "OPEN")
-        self.assertEqual(sla.get("amount_usd"), 29)
 
     def test_crm_role_refuses(self) -> None:
         crm = json.loads(CRM.read_text(encoding="utf-8"))

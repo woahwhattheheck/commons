@@ -21,7 +21,7 @@ KEEP = {
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-owner-now-revenue-20260902-01.md": "fe5ba035",
     "p/cursor-owner-now-revenue-readback-20260902-01.md": "3449da29",
-    "owner-now-revenue.html": "ae172d9e",
+    "owner-now-revenue.html": "b757c9bf",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
     "p/cursor-big-things-incoming-shots-20260902-01.md": "60b24eff",
     "p/cursor-big-things-incoming-shots-readback-20260902-01.md": "3cabb764",

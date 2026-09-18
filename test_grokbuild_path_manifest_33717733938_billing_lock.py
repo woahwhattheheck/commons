@@ -24,7 +24,7 @@ KEEP = {
     "architecture/path-manifest.json": "e5ecb24f",
     "open_door_guard.py": "877e148d",
     "p/grokbuild-path-manifest-33699980177-billing-lock-20260903-01.md": "d9365b97",
-    "test_grokbuild_path_manifest_33699980177_billing_lock.py": "0f37e80a",
+    "test_grokbuild_path_manifest_33699980177_billing_lock.py": "76a368f2",
     "p/grokbuild-main-range-verify-33717084528-billing-lock-20260903-01.md": "2b0fd9c9",
     "test_grokbuild_main_range_verify_33717084528_billing_lock.py": "76349d08",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",

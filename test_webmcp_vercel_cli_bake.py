@@ -24,8 +24,8 @@ KEEP = {
     "p/cursor-webmcp-contest-20260903-01.md": "98fb6b6f",
     "p/cursor-webmcp-judge-url-20260903-01.md": "eb52debf",
     "test_webmcp_door.py": "21b6993f",
-    "test_cursor_webmcp_contest.py": "f9ea7aee",
-    "host/webmcp_judge_url.py": "533cb47a",
+    "test_cursor_webmcp_contest.py": "944c0b95",
+    "host/webmcp_judge_url.py": "ba58a49c",
     "host/webmcp_live.py": "52253820",
 }
 
@@ -80,7 +80,7 @@ class TestWebmcpVercelCliBake(unittest.TestCase):
         self.assertIn("text/html", str(packet["judge"]["content_type"]).lower())
         self.assertTrue(packet["judge"]["html"])
         self.assertEqual(packet["adapter_blob"], "393da756")
-        self.assertEqual(packet["pad_blob"], "1fc25f8b")
+        self.assertEqual(packet["pad_blob"], "8bb181e0")
         self.assertEqual(packet["stager_blob"], "548ef02b")
         self.assertEqual(packet["contest_receipt"], "98fb6b6f")
         self.assertEqual(packet["judge_receipt"], "eb52debf")

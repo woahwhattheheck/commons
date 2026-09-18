@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import unittest
 from pathlib import Path
@@ -108,7 +109,8 @@ class TestLandedWorkFeed(unittest.TestCase):
         self.assertIn("Did not remint", text)
         self.assertNotIn("buy.stripe.com", text)
         self.assertIn("per merge", door)
-        self.assertNotIn("https://buy.stripe.com/", door)
+        door_buys = re.findall(r"https://buy\.stripe\.com/[A-Za-z0-9]+", door)
+        self.assertEqual(door_buys, ["https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07"])
         self.assertFalse((ROOT / "qualify.html").exists())
         self.assertFalse((ROOT / "marketplace.html").exists())
         self.assertFalse((ROOT / "CLAUDE_CORNER.md").exists())

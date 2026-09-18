@@ -48,9 +48,9 @@ class CoilToolsJsonSchemaLockTest(unittest.TestCase):
         self.assertIsInstance(cash, dict)
         doors = cash.get("doors")
         self.assertIsInstance(doors, list)
-        self.assertGreaterEqual(len(doors), 5)
+        self.assertGreaterEqual(len(doors), 4)
         hrefs = [d.get("href") for d in doors if isinstance(d, dict)]
-        self.assertIn("./agent-rescue.html", hrefs)
+        self.assertNotIn("./agent-rescue.html", hrefs)
         blob = TOOLS.read_text(encoding="utf-8")
         self.assertNotIn("buy.stripe.com", blob)
 
