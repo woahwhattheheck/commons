@@ -4160,6 +4160,14 @@ def _completion_marker_for_closed_issue(issue, operation_id):
         or isinstance(number, bool)
     ):
         return None
+    canonical_issue = _gh_api(
+        "https://api.github.com/repos/woahwhattheheck/commons/issues/%s" % number
+    )
+    if not isinstance(canonical_issue, dict):
+        return None
+    issue = canonical_issue
+    if issue.get("state") != "closed" or issue.get("state_reason") != "completed":
+        return None
     timeline = _gh_api(
         "https://api.github.com/repos/woahwhattheheck/commons/issues/%s/timeline?per_page=100"
         % number
@@ -4172,6 +4180,10 @@ def _completion_marker_for_closed_issue(issue, operation_id):
             continue
         source_issue = ((event.get("source") or {}).get("issue") or {})
         if not isinstance(source_issue, dict) or not source_issue.get("pull_request"):
+            continue
+        if source_issue.get("repository_url") != (
+            "https://api.github.com/repos/woahwhattheheck/commons"
+        ):
             continue
         pr_number = source_issue.get("number")
         if not isinstance(pr_number, int) or isinstance(pr_number, bool):
@@ -4186,7 +4198,10 @@ def _completion_marker_for_closed_issue(issue, operation_id):
         except completion_projection.CompletionEvidenceError:
             continue
         merge_sha = marker["merge"]["merge_commit_sha"]
-        landed = _git(["merge-base", "--is-ancestor", merge_sha, "HEAD"], git_env())
+        try:
+            landed = _git(["merge-base", "--is-ancestor", merge_sha, "HEAD"], git_env())
+        except (OSError, subprocess.TimeoutExpired):
+            continue
         if landed.returncode != 0:
             continue
         candidates.append(marker)
