@@ -814,6 +814,138 @@ def status(db_path: str | os.PathLike[str], *, lease_id: str, _rt=_RUNTIME_AUTHO
         conn.close()
 
 
+def _seal_runtime_surfaces(
+    _runtime=_RUNTIME_AUTHORITY,
+    _issue_impl=_issue_at,
+    _expire_locked_impl=_expire_locked,
+    _consume_impl=_consume_at,
+    _commit_impl=_commit_at,
+    _expire_impl=_expire_at,
+    _reconcile_impl=_reconcile_at,
+    _status_impl=status,
+):
+    """Bind deterministic and public-facing semantics to one first-load runtime."""
+
+    def expire_locked(conn: sqlite3.Connection, row: sqlite3.Row, now_s: int) -> sqlite3.Row:
+        return _expire_locked_impl(conn, row, now_s, _rt=_runtime)
+
+    def issue_at(
+        db_path: str | os.PathLike[str],
+        *,
+        operation_key: str,
+        counterparty: str,
+        route: str,
+        purpose: str,
+        seat: str,
+        session_nonce: str,
+        ttl_seconds: int,
+        now_s: int,
+    ) -> dict[str, Any]:
+        return _issue_impl(
+            db_path,
+            operation_key=operation_key,
+            counterparty=counterparty,
+            route=route,
+            purpose=purpose,
+            seat=seat,
+            session_nonce=session_nonce,
+            ttl_seconds=ttl_seconds,
+            now_s=now_s,
+            _rt=_runtime,
+        )
+
+    def consume_at(
+        db_path: str | os.PathLike[str],
+        *,
+        lease_id: str,
+        operation_key: str,
+        counterparty: str,
+        route: str,
+        purpose: str,
+        session_nonce: str,
+        now_s: int,
+    ) -> dict[str, Any]:
+        return _consume_impl(
+            db_path,
+            lease_id=lease_id,
+            operation_key=operation_key,
+            counterparty=counterparty,
+            route=route,
+            purpose=purpose,
+            session_nonce=session_nonce,
+            now_s=now_s,
+            _rt=_runtime,
+            _expire_locked_fn=expire_locked,
+        )
+
+    def commit_at(
+        db_path: str | os.PathLike[str],
+        *,
+        lease_id: str,
+        session_nonce: str,
+        go_token: str,
+        provider: str,
+        provider_message_id: str,
+        now_s: int,
+    ) -> dict[str, Any]:
+        return _commit_impl(
+            db_path,
+            lease_id=lease_id,
+            session_nonce=session_nonce,
+            go_token=go_token,
+            provider=provider,
+            provider_message_id=provider_message_id,
+            now_s=now_s,
+            _rt=_runtime,
+            _expire_locked_fn=expire_locked,
+        )
+
+    def expire_at(
+        db_path: str | os.PathLike[str],
+        *,
+        lease_id: str,
+        now_s: int,
+    ) -> dict[str, Any]:
+        return _expire_impl(
+            db_path,
+            lease_id=lease_id,
+            now_s=now_s,
+            _rt=_runtime,
+            _expire_locked_fn=expire_locked,
+        )
+
+    def reconcile_at(
+        db_path: str | os.PathLike[str],
+        *,
+        lease_id: str,
+        provider_seen: bool,
+        provider: str | None,
+        provider_message_id: str | None,
+        note: str,
+        now_s: int,
+    ) -> dict[str, Any]:
+        return _reconcile_impl(
+            db_path,
+            lease_id=lease_id,
+            provider_seen=provider_seen,
+            provider=provider,
+            provider_message_id=provider_message_id,
+            note=note,
+            now_s=now_s,
+            _rt=_runtime,
+            _expire_locked_fn=expire_locked,
+        )
+
+    def status_bound(db_path: str | os.PathLike[str], *, lease_id: str) -> dict[str, Any]:
+        return _status_impl(db_path, lease_id=lease_id, _rt=_runtime)
+
+    return issue_at, expire_locked, consume_at, commit_at, expire_at, reconcile_at, status_bound
+
+
+_issue_at, _expire_locked, _consume_at, _commit_at, _expire_at, _reconcile_at, status = _seal_runtime_surfaces()
+del _seal_runtime_surfaces
+
+
 def _process_clock_factory(
     _time_ns: Callable[[], int] = time.time_ns,
     _integer_fn=_integer,
