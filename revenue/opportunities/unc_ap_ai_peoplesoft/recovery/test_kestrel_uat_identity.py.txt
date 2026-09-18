@@ -1,0 +1,60 @@
+"""New regression coverage; original six tests remain unchanged."""
+from copy import deepcopy
+import unittest
+import unc_ap_ai as m
+from test_unc_ap_ai import invoice, src, vendor
+
+class IdentityRegression(unittest.TestCase):
+    def evaluate(self,value):
+        return m.evaluate_invoice_case(value,extraction_threshold_basis_points=9900)
+    def bundle(self,cases):
+        return m.compile_bundle(src(),cases,[vendor()])
+    def test_monies_are_receipt_bound(self):
+        a=invoice(); b=deepcopy(a)
+        for key in ("expected_amount_cents","extracted_amount_cents","purchase_order_amount_cents","receipt_amount_cents"):
+            b[key]=990000
+        self.assertEqual(self.evaluate(a)["disposition"],"PASS")
+        self.assertEqual(self.evaluate(b)["disposition"],"PASS")
+        self.assertNotEqual(self.evaluate(a)["receipt_sha256"],self.evaluate(b)["receipt_sha256"])
+    def test_supplier_is_receipt_bound(self):
+        a=invoice(); b=deepcopy(a); b["supplier_id"]=b["extracted_supplier_id"]="SUP-OTHER"
+        self.assertNotEqual(self.evaluate(a)["receipt_sha256"],self.evaluate(b)["receipt_sha256"])
+    def test_integration_hashes_bound(self):
+        for key in ("request_sha256","ack_sha256"):
+            a=invoice(); b=deepcopy(a); b["integration"][key]="c"*64
+            self.assertNotEqual(self.evaluate(a)["receipt_sha256"],self.evaluate(b)["receipt_sha256"])
+    def test_audit_extra_event_bound(self):
+        a=invoice(); b=deepcopy(a); b["audit_events"].append("human_reviewed")
+        self.assertNotEqual(self.evaluate(a)["receipt_sha256"],self.evaluate(b)["receipt_sha256"])
+    def test_research_observation_bound(self):
+        a=vendor(); b=deepcopy(a); b["researched_at"]="2026-09-17T21:16:00-04:00"
+        self.assertNotEqual(m.compile_partner(a)["receipt_sha256"],m.compile_partner(b)["receipt_sha256"])
+    def test_duplicate_invoice_holds_all(self):
+        a=invoice(); result=self.bundle([a,deepcopy(a)])
+        self.assertEqual(result["state"],"HOLD_UAT")
+        self.assertTrue(all(row["disposition"]=="HOLD_DUPLICATE" for row in result["cases"]))
+    def test_duplicate_effect_different_invoice_holds_all(self):
+        a=invoice(); b=deepcopy(a); b["invoice_id"]="INV-002"
+        self.assertTrue(all(row["disposition"]=="HOLD_DUPLICATE" for row in self.bundle([a,b])["cases"]))
+    def test_duplicate_invoice_different_effect_holds_all(self):
+        a=invoice(); b=deepcopy(a); b["integration"]["effect_key"]=b["integration"]["retry_effect_key"]="invoice:OTHER"
+        self.assertTrue(all(row["disposition"]=="HOLD_DUPLICATE" for row in self.bundle([a,b])["cases"]))
+    def test_distinct_identity_stays_clear(self):
+        a=invoice(); b=deepcopy(a); b["invoice_id"]="INV-002"
+        b["integration"]["effect_key"]=b["integration"]["retry_effect_key"]="invoice:INV-002"
+        self.assertEqual(self.bundle([a,b])["state"],"INTERNAL_WORKSHARE_READY")
+    def test_duplicate_case_receipts_recomputed(self):
+        for row in self.bundle([invoice(),invoice()])["cases"]:
+            value=deepcopy(row); actual=value.pop("receipt_sha256")
+            self.assertEqual(actual,m.receipt(value))
+    def test_duplicate_permutation_does_not_select_winner(self):
+        a=invoice(); b=deepcopy(a); b["invoice_id"]="INV-002"
+        x=self.bundle([a,b]); y=self.bundle([b,a])
+        self.assertEqual(sorted(x["cases"],key=lambda r:r["invoice_id"]),sorted(y["cases"],key=lambda r:r["invoice_id"]))
+    def test_duplicate_work_never_authorizes_payment(self):
+        r=self.bundle([invoice(),invoice()])
+        self.assertTrue(all(value is False for value in r["authority"].values()))
+    def test_inputs_unmodified(self):
+        a=invoice(); before=deepcopy(a); self.bundle([a,a]); self.assertEqual(a,before)
+
+if __name__=="__main__": unittest.main()
