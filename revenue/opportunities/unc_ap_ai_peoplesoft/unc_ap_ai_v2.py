@@ -489,7 +489,7 @@ def evaluate_invoice_case(
         or request_sha != expected["request_sha256"]
         or ack_sha != expected["ack_sha256"]
         or integration["effect_count"] != 1
-        or (integration["retry_count"] > 0 and retry_effect_key != expected["effect_key"])
+        or (integration["retry_count"] == 0 and retry_effect_key is not None)\n        or (integration["retry_count"] > 0 and retry_effect_key != expected["effect_key"])
     ):
         disposition = "HOLD_INTEGRATION"
     elif not _ordered_contains(events, _REQUIRED_AUDIT):
