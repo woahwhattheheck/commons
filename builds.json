@@ -961,22 +961,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15807,
-   "author": "woahwhattheheck",
-   "title": "Revenue: add fail-closed Colorado CHSD partner-first carrier",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15807",
-   "base_freshness": {
-    "base_sha": "e031a9f12e7699d2708347f9f77d27437e655901",
-    "main_sha": "e031a9f12e7699d2708347f9f77d27437e655901",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "FRESH"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 15682,
    "author": "woahwhattheheck",
    "title": "Research: formalize Rule 30 linear-effort prize boundary",
@@ -1067,6 +1051,22 @@
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15807,
+   "author": "woahwhattheheck",
+   "title": "Revenue: add fail-closed Colorado CHSD partner-first carrier",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15807",
+   "base_freshness": {
+    "base_sha": "e031a9f12e7699d2708347f9f77d27437e655901",
+    "main_sha": "e031a9f12e7699d2708347f9f77d27437e655901",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "FRESH"
    },
    "status": "PR_OPEN",
    "road": "pr",
