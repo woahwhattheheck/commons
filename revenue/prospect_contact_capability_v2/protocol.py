@@ -538,3 +538,143 @@ def claim_receipt_from_readback(
         raise CustodyError("claim branch head mismatch")
     if _sha40(live_parent_sha, "live_parent_sha") != plan["anchor_sha"]:
         raise CustodyError("claim commit parent mismatch")
+    _verify_live_metadata(plan["metadata_json"], live_metadata_json)
+    receipt = {
+        "schema": CLAIM_RECEIPT_SCHEMA,
+        "state": "CLAIM_HELD",
+        "generation": plan["generation"],
+        "key_sha256": plan["key_sha256"],
+        "target_kind": plan["target_kind"],
+        "target_hint": plan["target_hint"],
+        "claim_seam_sha256": plan["claim_seam_sha256"],
+        "prior_release_reveal_receipt_sha256": plan["prior_release_reveal_receipt_sha256"],
+        "claimant": plan["claimant"],
+        "operation_id": plan["operation_id"],
+        "anchor_sha": plan["anchor_sha"],
+        "preflight_sha256": plan["preflight_sha256"],
+        "claim_capability_sha256": plan["claim_capability_sha256"],
+        "branch_name": plan["branch_name"],
+        "metadata_path": plan["metadata_path"],
+        "metadata_sha256": plan["metadata_sha256"],
+        "metadata_json": plan["metadata_json"],
+        "claim_commit_sha": intent["claim_commit_sha"],
+        "plan_sha256": plan["plan_sha256"],
+        "intent_sha256": intent["intent_sha256"],
+        **_authority_flags(),
+    }
+    return _seal(receipt, "receipt_sha256")
+
+
+def verify_claim_receipt(raw: Mapping[str, Any]) -> dict[str, Any]:
+    receipt = _verify_seal(raw, "receipt_sha256")
+    if receipt.get("schema") != CLAIM_RECEIPT_SCHEMA or receipt.get("state") != "CLAIM_HELD":
+        raise CustodyError("claim receipt schema/state mismatch")
+    seam = _claim_seam(receipt["key_sha256"], receipt["prior_release_reveal_receipt_sha256"])
+    if receipt.get("claim_seam_sha256") != seam or receipt.get("branch_name") != CLAIM_BRANCH_PREFIX + seam:
+        raise CustodyError("claim receipt seam mismatch")
+    _sha40(receipt["claim_commit_sha"], "claim_commit_sha")
+    _sha40(receipt["anchor_sha"], "anchor_sha")
+    for field in ("claim_capability_sha256","metadata_sha256","plan_sha256","intent_sha256","preflight_sha256"):
+        _sha64(receipt[field], field)
+    if receipt.get("metadata_path") != _metadata_path(seam, "claim"):
+        raise CustodyError("claim receipt metadata path mismatch")
+    expected_metadata = {
+        "schema": SCHEMA,
+        "record_type": "CLAIM",
+        "generation": receipt["generation"],
+        "key_sha256": receipt["key_sha256"],
+        "target_kind": receipt["target_kind"],
+        "target_hint": receipt["target_hint"],
+        "claim_seam_sha256": seam,
+        "prior_release_reveal_receipt_sha256": receipt["prior_release_reveal_receipt_sha256"],
+        "claimant": receipt["claimant"],
+        "operation_id": receipt["operation_id"],
+        "anchor_sha": receipt["anchor_sha"],
+        "preflight_sha256": receipt["preflight_sha256"],
+        "claim_capability_sha256": receipt["claim_capability_sha256"],
+        **_authority_flags(),
+    }
+    expected_text = _canonical_json_text(expected_metadata)
+    if receipt.get("metadata_json") != expected_text or receipt.get("metadata_sha256") != _text_digest(expected_text):
+        raise CustodyError("claim receipt metadata binding mismatch")
+    return receipt
+
+
+def verify_claim_readback(
+    receipt_raw: Mapping[str, Any],
+    *,
+    live_branch_sha: str,
+    live_parent_sha: str,
+    live_metadata_json: str,
+) -> bool:
+    receipt = verify_claim_receipt(receipt_raw)
+    if _sha40(live_branch_sha, "live_branch_sha") != receipt["claim_commit_sha"]:
+        raise CustodyError("live claim branch moved")
+    if _sha40(live_parent_sha, "live_parent_sha") != receipt["anchor_sha"]:
+        raise CustodyError("live claim parent mismatch")
+    _verify_live_metadata(receipt["metadata_json"], live_metadata_json)
+    return True
+
+
+def verify_claim_possession(
+    receipt_raw: Mapping[str, Any],
+    *,
+    capability: str,
+    live_branch_sha: str,
+    live_parent_sha: str,
+    live_metadata_json: str,
+) -> bool:
+    receipt = verify_claim_receipt(receipt_raw)
+    verify_claim_readback(
+        receipt,
+        live_branch_sha=live_branch_sha,
+        live_parent_sha=live_parent_sha,
+        live_metadata_json=live_metadata_json,
+    )
+    cap = _capability(capability)
+    if capability_commitment(cap) != receipt["claim_capability_sha256"]:
+        raise CustodyError("private capability does not match claim commitment")
+    return True
+
+
+def _terminal_material_base(claim: Mapping[str, Any], state: str) -> dict[str, Any]:
+    if state not in {"RELEASED_UNSENT", "DISPATCHED_OUTCOME_UNKNOWN"}:
+        raise CustodyError("terminal state invalid")
+    return {
+        "schema": SCHEMA,
+        "record_type": "TERMINAL",
+        "state": state,
+        "generation": claim["generation"],
+        "key_sha256": claim["key_sha256"],
+        "claim_seam_sha256": claim["claim_seam_sha256"],
+        "claim_commit_sha": claim["claim_commit_sha"],
+        "claim_receipt_sha256": claim["receipt_sha256"],
+        "claim_capability_sha256": claim["claim_capability_sha256"],
+        "claimant": claim["claimant"],
+        "operation_id": claim["operation_id"],
+        **_authority_flags(),
+    }
+
+
+def _holder_proof(capability: str, material: Mapping[str, Any]) -> str:
+    return hmac.new(bytes.fromhex(_capability(capability)), _canon(material), hashlib.sha256).hexdigest()
+
+
+def prepare_release_terminal(
+    claim_receipt_raw: Mapping[str, Any],
+    *,
+    capability: str,
+    live_claim_branch_sha: str,
+    live_claim_parent_sha: str,
+    live_claim_metadata_json: str,
+    reason: str,
+) -> dict[str, Any]:
+    claim = verify_claim_receipt(claim_receipt_raw)
+    cap = _capability(capability)
+    verify_claim_possession(
+        claim,
+        capability=cap,
+        live_branch_sha=live_claim_branch_sha,
+        live_parent_sha=live_claim_parent_sha,
+        live_metadata_json=live_claim_metadata_json,
+    )
