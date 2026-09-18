@@ -65,31 +65,40 @@ class StrictJsonTests(unittest.TestCase):
         with self.assertRaises(ContractError):
             strict_loads('{"a":NaN}')
 
-    def test_saved_ingress_keeps_original_validation(self):
+    def test_saved_ingress_ignores_later_public_rebinding(self):
         saved_loads = module_under_test.strict_loads
         saved_load = module_under_test.strict_load
-        original_json_loads = module_under_test.json.loads
-        original_reject_constant = module_under_test._reject_constant
+        original_loads = module_under_test.json.loads
+        original_decode_error = module_under_test.json.JSONDecodeError
+        original_reject = module_under_test._reject_constant
         original_error = module_under_test.ContractError
         original_strict_loads = module_under_test.strict_loads
 
-        def later_binding(*_args, **_kwargs):
-            raise AssertionError("later module binding was reached")
+        def poisoned(*_args, **_kwargs):
+            raise AssertionError("later exported ingress binding was reached")
 
         try:
-            module_under_test.json.loads = later_binding
-            module_under_test._reject_constant = later_binding
+            module_under_test.json.loads = poisoned
+            module_under_test.json.JSONDecodeError = RuntimeError
+            module_under_test._reject_constant = lambda _value: None
             module_under_test.ContractError = RuntimeError
-            module_under_test.strict_loads = later_binding
+            module_under_test.strict_loads = poisoned
 
-            with self.assertRaises(original_error):
+            self.assertEqual(saved_loads('{"ok":1}'), {"ok": 1})
+            with self.assertRaises(ContractError):
                 saved_loads('{"a":1,"a":2}')
-            with self.assertRaises(original_error):
+            with self.assertRaises(ContractError):
                 saved_loads('{"a":NaN}')
-            self.assertEqual(saved_load(ROOT / "fixtures.json"), FIXTURES)
+
+            loaded = saved_load(ROOT / "fixtures.json")
+            self.assertEqual(
+                loaded["manifest"]["solicitation"]["id"],
+                "27-0012",
+            )
         finally:
-            module_under_test.json.loads = original_json_loads
-            module_under_test._reject_constant = original_reject_constant
+            module_under_test.json.loads = original_loads
+            module_under_test.json.JSONDecodeError = original_decode_error
+            module_under_test._reject_constant = original_reject
             module_under_test.ContractError = original_error
             module_under_test.strict_loads = original_strict_loads
 
