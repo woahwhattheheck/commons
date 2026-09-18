@@ -13,6 +13,7 @@ import hashlib
 import json
 import re
 import sys
+import types as _types
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -649,6 +650,101 @@ def verify_report(
     if _canonical_json_fn(rebuilt) != _canonical_json_fn(row):
         raise AuditError("semantic recompile mismatch")
     return True
+
+
+# Seal the trust-bearing semantic generation into a private globals mapping.
+# Capturing a function object alone is insufficient when that function later
+# resolves helpers through the mutable module namespace. These clones share one
+# private globals dict whose helper names are replaced with the cloned
+# generation, and function-valued kwdefaults are remapped to those clones.
+# Public names remain compatibility entrypoints, but later module-global
+# rebinding cannot change the generation already captured here.
+def _seal_semantic_generation() -> dict[str, Any]:
+    names = (
+        "_exact_keys",
+        "_exact_bool",
+        "_exact_int",
+        "_bounded_string",
+        "_sha",
+        "_utc",
+        "_json_string_serialized_size",
+        "_freeze_plain_json",
+        "_parse_int_token",
+        "_pairs_no_dupes",
+        "loads_strict",
+        "canonical_json",
+        "sha256_hex",
+        "_normalize_pr",
+        "_normalize_run",
+        "normalize_packet",
+        "_classify",
+        "build_report",
+        "verify_report",
+    )
+    private_globals = dict(globals())
+    for key_name in (
+        "INPUT_KEYS",
+        "RUN_KEYS",
+        "PROVENANCE_KEYS",
+        "PR_KEYS",
+        "REPORT_KEYS",
+        "ROW_KEYS",
+        "AUTHORITY_KEYS",
+    ):
+        private_globals[key_name] = frozenset(private_globals[key_name])
+
+    originals = {name: private_globals[name] for name in names}
+    by_identity = {id(fn): name for name, fn in originals.items()}
+    sealed: dict[str, Any] = {}
+
+    for name, fn in originals.items():
+        clone = _types.FunctionType(
+            fn.__code__,
+            private_globals,
+            name=fn.__name__,
+            argdefs=fn.__defaults__,
+            closure=fn.__closure__,
+        )
+        clone.__qualname__ = fn.__qualname__
+        clone.__doc__ = fn.__doc__
+        clone.__annotations__ = dict(fn.__annotations__)
+        sealed[name] = clone
+
+    private_globals.update(sealed)
+
+    for name, fn in originals.items():
+        kwdefaults = dict(fn.__kwdefaults__ or {})
+        for key, value in tuple(kwdefaults.items()):
+            dependency_name = by_identity.get(id(value))
+            if dependency_name is not None:
+                kwdefaults[key] = sealed[dependency_name]
+        sealed[name].__kwdefaults__ = kwdefaults
+
+    return sealed
+
+
+_SEALED_SEMANTIC_GENERATION = _seal_semantic_generation()
+_exact_keys = _SEALED_SEMANTIC_GENERATION["_exact_keys"]
+_exact_bool = _SEALED_SEMANTIC_GENERATION["_exact_bool"]
+_exact_int = _SEALED_SEMANTIC_GENERATION["_exact_int"]
+_bounded_string = _SEALED_SEMANTIC_GENERATION["_bounded_string"]
+_sha = _SEALED_SEMANTIC_GENERATION["_sha"]
+_utc = _SEALED_SEMANTIC_GENERATION["_utc"]
+_json_string_serialized_size = _SEALED_SEMANTIC_GENERATION[
+    "_json_string_serialized_size"
+]
+_freeze_plain_json = _SEALED_SEMANTIC_GENERATION["_freeze_plain_json"]
+_parse_int_token = _SEALED_SEMANTIC_GENERATION["_parse_int_token"]
+_pairs_no_dupes = _SEALED_SEMANTIC_GENERATION["_pairs_no_dupes"]
+loads_strict = _SEALED_SEMANTIC_GENERATION["loads_strict"]
+canonical_json = _SEALED_SEMANTIC_GENERATION["canonical_json"]
+sha256_hex = _SEALED_SEMANTIC_GENERATION["sha256_hex"]
+_normalize_pr = _SEALED_SEMANTIC_GENERATION["_normalize_pr"]
+_normalize_run = _SEALED_SEMANTIC_GENERATION["_normalize_run"]
+normalize_packet = _SEALED_SEMANTIC_GENERATION["normalize_packet"]
+_classify = _SEALED_SEMANTIC_GENERATION["_classify"]
+build_report = _SEALED_SEMANTIC_GENERATION["build_report"]
+verify_report = _SEALED_SEMANTIC_GENERATION["verify_report"]
 
 
 def _read_json(path: str) -> Any:
