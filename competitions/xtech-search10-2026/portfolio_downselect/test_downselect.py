@@ -453,6 +453,7 @@ class DownselectTests(unittest.TestCase):
     def test_candidate_alias_cannot_replay_same_source_generation(self) -> None:
         packet = ready_packet()
         packet["candidates"][1]["source"] = copy.deepcopy(packet["candidates"][0]["source"])
+        packet["candidates"][1]["source"]["repo"] = "WOAHWHATTHEHECK/EXAMPLE"
         with self.assertRaisesRegex(ContractError, "CANDIDATE_SOURCE_REPLAY"):
             self.compile(packet)
 
@@ -468,7 +469,7 @@ class DownselectTests(unittest.TestCase):
             for row in packet["evidenceRecords"]
             if row["binding"] == "candidate:beta:traction:beta.contract"
         )
-        beta["locator"] = alpha["locator"]
+        self.assertNotEqual(beta["locator"], alpha["locator"])
         beta["sha256"] = alpha["sha256"]
         with self.assertRaisesRegex(ContractError, "EXTERNAL_EVIDENCE_CANDIDATE_REPLAY"):
             compile_portfolio(packet)
