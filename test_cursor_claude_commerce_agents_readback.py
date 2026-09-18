@@ -21,13 +21,13 @@ KEEP = {
     "ground/COMMERCE_AGENTS.json": "ab6f56a8",
     "commerce-agents.html": "cbf2325d",
     ".agents/skills/commerce-agents/SKILL.md": "4cf66eed",
-    "test_commerce_agents.py": "7ec07521",
+    "test_commerce_agents.py": "f0ff008c",
     "p/cursor-explee-skills-adopt-20260902-01.md": "20db155c",
     ".agents/skills/autogtm/SKILL.md": "a3ca5a74",
     "autogtm.html": "5c966110",
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
     "host/commerce_agents_same_loop.py": "c90f6e50",
-    "test_commerce_agents_same_loop.py": "a1ab8b26",
+    "test_commerce_agents_same_loop.py": "03426c3c",
     "p/cursor-harborline-commerce-compose-20260902-01.md": "45b7d435",
     "host/harborline_commerce_compose.py": "75128e5d",
     "p/cursor-harborline-commerce-compose-keep-lift-20260902-01.md": "668dd5c4",
@@ -37,7 +37,7 @@ KEEP = {
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "hub_pages.py": "673dab89",
     "door.js": "5899223c",
-    "ground/OWNER_NOW.md": "40f786fe",
+    "ground/OWNER_NOW.md": "39a0e0c3",
 }
 
 

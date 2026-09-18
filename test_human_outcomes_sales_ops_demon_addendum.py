@@ -31,20 +31,20 @@ FORBIDDEN_VALUE_MARKERS = (
     "ein:",
 )
 PEER_BLOBS = {
-    "revenue/human_outcomes/sales_ops/README.md": "94bdce3dbfb67a778367951f48be49f61f90b0cb",
+    "revenue/human_outcomes/sales_ops/README.md": "15f051d7e72ce90503e3659401a14275b62fce0d",
     "revenue/human_outcomes/sales_ops/owner_activation.json": "3c0afab7bffe015a5c041d92fe0332696f86c2f6",
-    "revenue/human_outcomes/sales_ops/sow_template.md": "99bba3c076581c285e77163ef44ac9e2153356b0",
-    "revenue/human_outcomes/sales_ops/invoice_template.md": "763db45a8ddd9d2d9acde53bfb5c51f6a7b6b0da",
+    "revenue/human_outcomes/sales_ops/sow_template.md": "1674b265a246103d82340a96a2d34cd424a29daa",
+    "revenue/human_outcomes/sales_ops/invoice_template.md": "888fe358737bc5b05e27445fd98799698bd2e3dd",
     "revenue/human_outcomes/sales_ops/outreach.json": "a67a0c97f9f4bf96a868964cf54eab00a06d4612",
     "revenue/human_outcomes/sales_ops/targets.json": "3e484fafcb9a619eb04c254e44073370f2674a83",
-    "test_human_outcomes_sales_ops.py": "e0094d39cb8f74e3c3626a587a46b050d70a560a",
+    "test_human_outcomes_sales_ops.py": "6774bc3b14b2af5b38d5535567de611bb8c5d861",
     "p/demon-human-outcomes-sales-ops-20260825-01.md": "fe19cfb7e57c4932d3db5f161166a91814a037f9",
 }
 CATALOG_BLOBS = {
-    "humans.html": "113200f8c2a9e4ce42f2d26242a8fc6d1b89dd0a",
+    "humans.html": "7f6a97edfb86d1397177533664bedf88056437ff",
     "revenue/human_outcomes/offers.json": "1b72639aaea1a3d41c0d2419470add5a3ca8d839",
-    "revenue/human_outcomes/README.md": "330d9166cee149845d89d06b48f209ecc3f3c227",
-    "revenue/human_outcomes/fulfillment.md": "73bdce03a57b97f49bcc3dce49fd2882b90da76d",
+    "revenue/human_outcomes/README.md": "a027519af6831e4cddd94ca99268f9d49fc4f991",
+    "revenue/human_outcomes/fulfillment.md": "3265ae9963f18bcdf0f88382c569676fa3d79d44",
 }
 ADDENDUM_PATHS = (
     "revenue/human_outcomes/sales_ops/demand_r6.json",

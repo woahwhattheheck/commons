@@ -22,8 +22,8 @@ KEEP = {
     ".agents/plugins/marketplace.json": "97875086",
     "integrations/commons_network_plugin/.codex-plugin/plugin.json": "0bc6fd84",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
-    "wire.html": "623602a7",
-    "ground/WIRE_SUPER_MCP.md": "dba33cf7",
+    "wire.html": "5f0d0f84",
+    "ground/WIRE_SUPER_MCP.md": "626b07f7",
     "p/wire-shared-super-mcp-catalog-20260902-01.md": "b6cb27ef",
     "super-mcp.html": "9deb2201",
     "host/super_mcp.py": "defaf19f",
@@ -35,7 +35,7 @@ KEEP = {
     "api/mcp.py": "393da756",
     "hub_pages.py": "673dab89",
     "door.js": "5899223c",
-    "ground/OWNER_NOW.md": "40f786fe",
+    "ground/OWNER_NOW.md": "39a0e0c3",
 }
 
 

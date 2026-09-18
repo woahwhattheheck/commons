@@ -4,8 +4,8 @@
   "channel_count":15,
   "channels":"revenue/distribution/channels.json",
   "kind":"DISTRIBUTION_MATRIX",
-  "offer_count":28,
-  "pair_count":420,
+  "offer_count":21,
+  "pair_count":315,
   "pairs":[
     {
       "amount":"15000.00",
@@ -24,7 +24,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"830e8e9a3ddae95799142eba6bcbd03f85eb4787",
+      "source_blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
       "source_path":"revenue/production_survival/offer.json",
       "submit_allowed":false
     },
@@ -45,7 +45,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"830e8e9a3ddae95799142eba6bcbd03f85eb4787",
+      "source_blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
       "source_path":"revenue/production_survival/offer.json",
       "submit_allowed":false
     },
@@ -68,7 +68,7 @@
       "reasons":[
         "class high_ticket_service is outside bounded_service,expertise_hour"
       ],
-      "source_blob_sha":"830e8e9a3ddae95799142eba6bcbd03f85eb4787",
+      "source_blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
       "source_path":"revenue/production_survival/offer.json",
       "submit_allowed":false
     },
@@ -91,7 +91,7 @@
       "reasons":[
         "class high_ticket_service is outside bounded_service"
       ],
-      "source_blob_sha":"830e8e9a3ddae95799142eba6bcbd03f85eb4787",
+      "source_blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
       "source_path":"revenue/production_survival/offer.json",
       "submit_allowed":false
     },
@@ -112,7 +112,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"830e8e9a3ddae95799142eba6bcbd03f85eb4787",
+      "source_blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
       "source_path":"revenue/production_survival/offer.json",
       "submit_allowed":false
     },
@@ -133,7 +133,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"830e8e9a3ddae95799142eba6bcbd03f85eb4787",
+      "source_blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
       "source_path":"revenue/production_survival/offer.json",
       "submit_allowed":false
     },
@@ -154,7 +154,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"830e8e9a3ddae95799142eba6bcbd03f85eb4787",
+      "source_blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
       "source_path":"revenue/production_survival/offer.json",
       "submit_allowed":false
     },
@@ -175,7 +175,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"830e8e9a3ddae95799142eba6bcbd03f85eb4787",
+      "source_blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
       "source_path":"revenue/production_survival/offer.json",
       "submit_allowed":false
     },
@@ -196,7 +196,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"830e8e9a3ddae95799142eba6bcbd03f85eb4787",
+      "source_blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
       "source_path":"revenue/production_survival/offer.json",
       "submit_allowed":false
     },
@@ -217,7 +217,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"830e8e9a3ddae95799142eba6bcbd03f85eb4787",
+      "source_blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
       "source_path":"revenue/production_survival/offer.json",
       "submit_allowed":false
     },
@@ -240,7 +240,7 @@
       "reasons":[
         "class high_ticket_service is outside developer_product"
       ],
-      "source_blob_sha":"830e8e9a3ddae95799142eba6bcbd03f85eb4787",
+      "source_blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
       "source_path":"revenue/production_survival/offer.json",
       "submit_allowed":false
     },
@@ -263,7 +263,7 @@
       "reasons":[
         "class high_ticket_service is outside developer_product"
       ],
-      "source_blob_sha":"830e8e9a3ddae95799142eba6bcbd03f85eb4787",
+      "source_blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
       "source_path":"revenue/production_survival/offer.json",
       "submit_allowed":false
     },
@@ -286,7 +286,7 @@
       "reasons":[
         "class high_ticket_service is outside developer_product"
       ],
-      "source_blob_sha":"830e8e9a3ddae95799142eba6bcbd03f85eb4787",
+      "source_blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
       "source_path":"revenue/production_survival/offer.json",
       "submit_allowed":false
     },
@@ -309,7 +309,7 @@
       "reasons":[
         "class high_ticket_service is outside data_pack,developer_product"
       ],
-      "source_blob_sha":"830e8e9a3ddae95799142eba6bcbd03f85eb4787",
+      "source_blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
       "source_path":"revenue/production_survival/offer.json",
       "submit_allowed":false
     },
@@ -332,7 +332,7 @@
       "reasons":[
         "class high_ticket_service is outside micro_sku,expertise_hour,high_ticket_product"
       ],
-      "source_blob_sha":"830e8e9a3ddae95799142eba6bcbd03f85eb4787",
+      "source_blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
       "source_path":"revenue/production_survival/offer.json",
       "submit_allowed":false
     },
@@ -684,7 +684,7 @@
       "reasons":[
         "amount 30000.00 is outside channel window"
       ],
-      "source_blob_sha":"34062d6a9a9bf2f797d7ad7f506ccb0be52b59ce",
+      "source_blob_sha":"30ecdec61d19f005330f75ae239ca469482ff06a",
       "source_path":"commercial.json",
       "submit_allowed":false
     },
@@ -705,7 +705,7 @@
       "offer_state":"PROPOSED",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"34062d6a9a9bf2f797d7ad7f506ccb0be52b59ce",
+      "source_blob_sha":"30ecdec61d19f005330f75ae239ca469482ff06a",
       "source_path":"commercial.json",
       "submit_allowed":false
     },
@@ -728,7 +728,7 @@
       "reasons":[
         "class high_ticket_service is outside bounded_service,expertise_hour"
       ],
-      "source_blob_sha":"34062d6a9a9bf2f797d7ad7f506ccb0be52b59ce",
+      "source_blob_sha":"30ecdec61d19f005330f75ae239ca469482ff06a",
       "source_path":"commercial.json",
       "submit_allowed":false
     },
@@ -751,7 +751,7 @@
       "reasons":[
         "class high_ticket_service is outside bounded_service"
       ],
-      "source_blob_sha":"34062d6a9a9bf2f797d7ad7f506ccb0be52b59ce",
+      "source_blob_sha":"30ecdec61d19f005330f75ae239ca469482ff06a",
       "source_path":"commercial.json",
       "submit_allowed":false
     },
@@ -772,7 +772,7 @@
       "offer_state":"PROPOSED",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"34062d6a9a9bf2f797d7ad7f506ccb0be52b59ce",
+      "source_blob_sha":"30ecdec61d19f005330f75ae239ca469482ff06a",
       "source_path":"commercial.json",
       "submit_allowed":false
     },
@@ -793,7 +793,7 @@
       "offer_state":"PROPOSED",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"34062d6a9a9bf2f797d7ad7f506ccb0be52b59ce",
+      "source_blob_sha":"30ecdec61d19f005330f75ae239ca469482ff06a",
       "source_path":"commercial.json",
       "submit_allowed":false
     },
@@ -814,7 +814,7 @@
       "offer_state":"PROPOSED",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"34062d6a9a9bf2f797d7ad7f506ccb0be52b59ce",
+      "source_blob_sha":"30ecdec61d19f005330f75ae239ca469482ff06a",
       "source_path":"commercial.json",
       "submit_allowed":false
     },
@@ -835,7 +835,7 @@
       "offer_state":"PROPOSED",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"34062d6a9a9bf2f797d7ad7f506ccb0be52b59ce",
+      "source_blob_sha":"30ecdec61d19f005330f75ae239ca469482ff06a",
       "source_path":"commercial.json",
       "submit_allowed":false
     },
@@ -856,7 +856,7 @@
       "offer_state":"PROPOSED",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"34062d6a9a9bf2f797d7ad7f506ccb0be52b59ce",
+      "source_blob_sha":"30ecdec61d19f005330f75ae239ca469482ff06a",
       "source_path":"commercial.json",
       "submit_allowed":false
     },
@@ -877,7 +877,7 @@
       "offer_state":"PROPOSED",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"34062d6a9a9bf2f797d7ad7f506ccb0be52b59ce",
+      "source_blob_sha":"30ecdec61d19f005330f75ae239ca469482ff06a",
       "source_path":"commercial.json",
       "submit_allowed":false
     },
@@ -900,7 +900,7 @@
       "reasons":[
         "class high_ticket_service is outside developer_product"
       ],
-      "source_blob_sha":"34062d6a9a9bf2f797d7ad7f506ccb0be52b59ce",
+      "source_blob_sha":"30ecdec61d19f005330f75ae239ca469482ff06a",
       "source_path":"commercial.json",
       "submit_allowed":false
     },
@@ -923,7 +923,7 @@
       "reasons":[
         "class high_ticket_service is outside developer_product"
       ],
-      "source_blob_sha":"34062d6a9a9bf2f797d7ad7f506ccb0be52b59ce",
+      "source_blob_sha":"30ecdec61d19f005330f75ae239ca469482ff06a",
       "source_path":"commercial.json",
       "submit_allowed":false
     },
@@ -946,7 +946,7 @@
       "reasons":[
         "class high_ticket_service is outside developer_product"
       ],
-      "source_blob_sha":"34062d6a9a9bf2f797d7ad7f506ccb0be52b59ce",
+      "source_blob_sha":"30ecdec61d19f005330f75ae239ca469482ff06a",
       "source_path":"commercial.json",
       "submit_allowed":false
     },
@@ -969,7 +969,7 @@
       "reasons":[
         "class high_ticket_service is outside data_pack,developer_product"
       ],
-      "source_blob_sha":"34062d6a9a9bf2f797d7ad7f506ccb0be52b59ce",
+      "source_blob_sha":"30ecdec61d19f005330f75ae239ca469482ff06a",
       "source_path":"commercial.json",
       "submit_allowed":false
     },
@@ -992,7 +992,7 @@
       "reasons":[
         "class high_ticket_service is outside micro_sku,expertise_hour,high_ticket_product"
       ],
-      "source_blob_sha":"34062d6a9a9bf2f797d7ad7f506ccb0be52b59ce",
+      "source_blob_sha":"30ecdec61d19f005330f75ae239ca469482ff06a",
       "source_path":"commercial.json",
       "submit_allowed":false
     },
@@ -2335,7 +2335,7 @@
       "reasons":[
         "class micro_sku is outside bounded_service,expertise_hour,high_ticket_service"
       ],
-      "source_blob_sha":"e18c2865cf737eb2c76da23012dd0a890ccca202",
+      "source_blob_sha":"7e94f42e9a92e166f614916d63712403f6fc77f7",
       "source_path":"land/sku-tip-20260826.md",
       "submit_allowed":false
     },
@@ -2358,7 +2358,7 @@
       "reasons":[
         "class micro_sku is outside bounded_service,expertise_hour,high_ticket_service"
       ],
-      "source_blob_sha":"e18c2865cf737eb2c76da23012dd0a890ccca202",
+      "source_blob_sha":"7e94f42e9a92e166f614916d63712403f6fc77f7",
       "source_path":"land/sku-tip-20260826.md",
       "submit_allowed":false
     },
@@ -2381,7 +2381,7 @@
       "reasons":[
         "class micro_sku is outside bounded_service,expertise_hour"
       ],
-      "source_blob_sha":"e18c2865cf737eb2c76da23012dd0a890ccca202",
+      "source_blob_sha":"7e94f42e9a92e166f614916d63712403f6fc77f7",
       "source_path":"land/sku-tip-20260826.md",
       "submit_allowed":false
     },
@@ -2404,7 +2404,7 @@
       "reasons":[
         "class micro_sku is outside bounded_service"
       ],
-      "source_blob_sha":"e18c2865cf737eb2c76da23012dd0a890ccca202",
+      "source_blob_sha":"7e94f42e9a92e166f614916d63712403f6fc77f7",
       "source_path":"land/sku-tip-20260826.md",
       "submit_allowed":false
     },
@@ -2425,7 +2425,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"e18c2865cf737eb2c76da23012dd0a890ccca202",
+      "source_blob_sha":"7e94f42e9a92e166f614916d63712403f6fc77f7",
       "source_path":"land/sku-tip-20260826.md",
       "submit_allowed":false
     },
@@ -2446,7 +2446,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"e18c2865cf737eb2c76da23012dd0a890ccca202",
+      "source_blob_sha":"7e94f42e9a92e166f614916d63712403f6fc77f7",
       "source_path":"land/sku-tip-20260826.md",
       "submit_allowed":false
     },
@@ -2467,7 +2467,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"e18c2865cf737eb2c76da23012dd0a890ccca202",
+      "source_blob_sha":"7e94f42e9a92e166f614916d63712403f6fc77f7",
       "source_path":"land/sku-tip-20260826.md",
       "submit_allowed":false
     },
@@ -2490,7 +2490,7 @@
       "reasons":[
         "class micro_sku is outside high_ticket_service,high_ticket_product,expertise_hour"
       ],
-      "source_blob_sha":"e18c2865cf737eb2c76da23012dd0a890ccca202",
+      "source_blob_sha":"7e94f42e9a92e166f614916d63712403f6fc77f7",
       "source_path":"land/sku-tip-20260826.md",
       "submit_allowed":false
     },
@@ -2513,7 +2513,7 @@
       "reasons":[
         "class micro_sku is outside high_ticket_service,high_ticket_product"
       ],
-      "source_blob_sha":"e18c2865cf737eb2c76da23012dd0a890ccca202",
+      "source_blob_sha":"7e94f42e9a92e166f614916d63712403f6fc77f7",
       "source_path":"land/sku-tip-20260826.md",
       "submit_allowed":false
     },
@@ -2536,7 +2536,7 @@
       "reasons":[
         "class micro_sku is outside bounded_service,high_ticket_service,high_ticket_product,expertise_hour"
       ],
-      "source_blob_sha":"e18c2865cf737eb2c76da23012dd0a890ccca202",
+      "source_blob_sha":"7e94f42e9a92e166f614916d63712403f6fc77f7",
       "source_path":"land/sku-tip-20260826.md",
       "submit_allowed":false
     },
@@ -2559,7 +2559,7 @@
       "reasons":[
         "class micro_sku is outside developer_product"
       ],
-      "source_blob_sha":"e18c2865cf737eb2c76da23012dd0a890ccca202",
+      "source_blob_sha":"7e94f42e9a92e166f614916d63712403f6fc77f7",
       "source_path":"land/sku-tip-20260826.md",
       "submit_allowed":false
     },
@@ -2582,7 +2582,7 @@
       "reasons":[
         "class micro_sku is outside developer_product"
       ],
-      "source_blob_sha":"e18c2865cf737eb2c76da23012dd0a890ccca202",
+      "source_blob_sha":"7e94f42e9a92e166f614916d63712403f6fc77f7",
       "source_path":"land/sku-tip-20260826.md",
       "submit_allowed":false
     },
@@ -2605,7 +2605,7 @@
       "reasons":[
         "class micro_sku is outside developer_product"
       ],
-      "source_blob_sha":"e18c2865cf737eb2c76da23012dd0a890ccca202",
+      "source_blob_sha":"7e94f42e9a92e166f614916d63712403f6fc77f7",
       "source_path":"land/sku-tip-20260826.md",
       "submit_allowed":false
     },
@@ -2628,7 +2628,7 @@
       "reasons":[
         "class micro_sku is outside data_pack,developer_product"
       ],
-      "source_blob_sha":"e18c2865cf737eb2c76da23012dd0a890ccca202",
+      "source_blob_sha":"7e94f42e9a92e166f614916d63712403f6fc77f7",
       "source_path":"land/sku-tip-20260826.md",
       "submit_allowed":false
     },
@@ -2651,7 +2651,7 @@
       "reasons":[
         "exact active Stripe checkout is proven on the catalog"
       ],
-      "source_blob_sha":"e18c2865cf737eb2c76da23012dd0a890ccca202",
+      "source_blob_sha":"7e94f42e9a92e166f614916d63712403f6fc77f7",
       "source_path":"land/sku-tip-20260826.md",
       "submit_allowed":false
     },
@@ -2674,7 +2674,7 @@
       "reasons":[
         "class micro_sku is outside bounded_service,expertise_hour,high_ticket_service"
       ],
-      "source_blob_sha":"7f7d41a94333a72cbd1f641f0c437557f3a95361",
+      "source_blob_sha":"235c94284c14c179388b5e53b4b9d0f6a8a0dd7d",
       "source_path":"land/sku-seat-20260826.md",
       "submit_allowed":false
     },
@@ -2697,7 +2697,7 @@
       "reasons":[
         "class micro_sku is outside bounded_service,expertise_hour,high_ticket_service"
       ],
-      "source_blob_sha":"7f7d41a94333a72cbd1f641f0c437557f3a95361",
+      "source_blob_sha":"235c94284c14c179388b5e53b4b9d0f6a8a0dd7d",
       "source_path":"land/sku-seat-20260826.md",
       "submit_allowed":false
     },
@@ -2720,7 +2720,7 @@
       "reasons":[
         "class micro_sku is outside bounded_service,expertise_hour"
       ],
-      "source_blob_sha":"7f7d41a94333a72cbd1f641f0c437557f3a95361",
+      "source_blob_sha":"235c94284c14c179388b5e53b4b9d0f6a8a0dd7d",
       "source_path":"land/sku-seat-20260826.md",
       "submit_allowed":false
     },
@@ -2743,7 +2743,7 @@
       "reasons":[
         "class micro_sku is outside bounded_service"
       ],
-      "source_blob_sha":"7f7d41a94333a72cbd1f641f0c437557f3a95361",
+      "source_blob_sha":"235c94284c14c179388b5e53b4b9d0f6a8a0dd7d",
       "source_path":"land/sku-seat-20260826.md",
       "submit_allowed":false
     },
@@ -2764,7 +2764,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"7f7d41a94333a72cbd1f641f0c437557f3a95361",
+      "source_blob_sha":"235c94284c14c179388b5e53b4b9d0f6a8a0dd7d",
       "source_path":"land/sku-seat-20260826.md",
       "submit_allowed":false
     },
@@ -2785,7 +2785,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"7f7d41a94333a72cbd1f641f0c437557f3a95361",
+      "source_blob_sha":"235c94284c14c179388b5e53b4b9d0f6a8a0dd7d",
       "source_path":"land/sku-seat-20260826.md",
       "submit_allowed":false
     },
@@ -2806,7 +2806,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"7f7d41a94333a72cbd1f641f0c437557f3a95361",
+      "source_blob_sha":"235c94284c14c179388b5e53b4b9d0f6a8a0dd7d",
       "source_path":"land/sku-seat-20260826.md",
       "submit_allowed":false
     },
@@ -2829,7 +2829,7 @@
       "reasons":[
         "class micro_sku is outside high_ticket_service,high_ticket_product,expertise_hour"
       ],
-      "source_blob_sha":"7f7d41a94333a72cbd1f641f0c437557f3a95361",
+      "source_blob_sha":"235c94284c14c179388b5e53b4b9d0f6a8a0dd7d",
       "source_path":"land/sku-seat-20260826.md",
       "submit_allowed":false
     },
@@ -2852,7 +2852,7 @@
       "reasons":[
         "class micro_sku is outside high_ticket_service,high_ticket_product"
       ],
-      "source_blob_sha":"7f7d41a94333a72cbd1f641f0c437557f3a95361",
+      "source_blob_sha":"235c94284c14c179388b5e53b4b9d0f6a8a0dd7d",
       "source_path":"land/sku-seat-20260826.md",
       "submit_allowed":false
     },
@@ -2875,7 +2875,7 @@
       "reasons":[
         "class micro_sku is outside bounded_service,high_ticket_service,high_ticket_product,expertise_hour"
       ],
-      "source_blob_sha":"7f7d41a94333a72cbd1f641f0c437557f3a95361",
+      "source_blob_sha":"235c94284c14c179388b5e53b4b9d0f6a8a0dd7d",
       "source_path":"land/sku-seat-20260826.md",
       "submit_allowed":false
     },
@@ -2898,7 +2898,7 @@
       "reasons":[
         "class micro_sku is outside developer_product"
       ],
-      "source_blob_sha":"7f7d41a94333a72cbd1f641f0c437557f3a95361",
+      "source_blob_sha":"235c94284c14c179388b5e53b4b9d0f6a8a0dd7d",
       "source_path":"land/sku-seat-20260826.md",
       "submit_allowed":false
     },
@@ -2921,7 +2921,7 @@
       "reasons":[
         "class micro_sku is outside developer_product"
       ],
-      "source_blob_sha":"7f7d41a94333a72cbd1f641f0c437557f3a95361",
+      "source_blob_sha":"235c94284c14c179388b5e53b4b9d0f6a8a0dd7d",
       "source_path":"land/sku-seat-20260826.md",
       "submit_allowed":false
     },
@@ -2944,7 +2944,7 @@
       "reasons":[
         "class micro_sku is outside developer_product"
       ],
-      "source_blob_sha":"7f7d41a94333a72cbd1f641f0c437557f3a95361",
+      "source_blob_sha":"235c94284c14c179388b5e53b4b9d0f6a8a0dd7d",
       "source_path":"land/sku-seat-20260826.md",
       "submit_allowed":false
     },
@@ -2967,7 +2967,7 @@
       "reasons":[
         "class micro_sku is outside data_pack,developer_product"
       ],
-      "source_blob_sha":"7f7d41a94333a72cbd1f641f0c437557f3a95361",
+      "source_blob_sha":"235c94284c14c179388b5e53b4b9d0f6a8a0dd7d",
       "source_path":"land/sku-seat-20260826.md",
       "submit_allowed":false
     },
@@ -2990,7 +2990,7 @@
       "reasons":[
         "exact active Stripe checkout is proven on the catalog"
       ],
-      "source_blob_sha":"7f7d41a94333a72cbd1f641f0c437557f3a95361",
+      "source_blob_sha":"235c94284c14c179388b5e53b4b9d0f6a8a0dd7d",
       "source_path":"land/sku-seat-20260826.md",
       "submit_allowed":false
     },
@@ -3013,7 +3013,7 @@
       "reasons":[
         "class micro_sku is outside bounded_service,expertise_hour,high_ticket_service"
       ],
-      "source_blob_sha":"e607d3ba7cd24dd542b24a1e8be9e8579d6745ce",
+      "source_blob_sha":"258734957efc727f46f6315804b6034487e98896",
       "source_path":"land/sku-unlock-20260826.md",
       "submit_allowed":false
     },
@@ -3036,7 +3036,7 @@
       "reasons":[
         "class micro_sku is outside bounded_service,expertise_hour,high_ticket_service"
       ],
-      "source_blob_sha":"e607d3ba7cd24dd542b24a1e8be9e8579d6745ce",
+      "source_blob_sha":"258734957efc727f46f6315804b6034487e98896",
       "source_path":"land/sku-unlock-20260826.md",
       "submit_allowed":false
     },
@@ -3059,7 +3059,7 @@
       "reasons":[
         "class micro_sku is outside bounded_service,expertise_hour"
       ],
-      "source_blob_sha":"e607d3ba7cd24dd542b24a1e8be9e8579d6745ce",
+      "source_blob_sha":"258734957efc727f46f6315804b6034487e98896",
       "source_path":"land/sku-unlock-20260826.md",
       "submit_allowed":false
     },
@@ -3082,7 +3082,7 @@
       "reasons":[
         "class micro_sku is outside bounded_service"
       ],
-      "source_blob_sha":"e607d3ba7cd24dd542b24a1e8be9e8579d6745ce",
+      "source_blob_sha":"258734957efc727f46f6315804b6034487e98896",
       "source_path":"land/sku-unlock-20260826.md",
       "submit_allowed":false
     },
@@ -3103,7 +3103,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"e607d3ba7cd24dd542b24a1e8be9e8579d6745ce",
+      "source_blob_sha":"258734957efc727f46f6315804b6034487e98896",
       "source_path":"land/sku-unlock-20260826.md",
       "submit_allowed":false
     },
@@ -3124,7 +3124,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"e607d3ba7cd24dd542b24a1e8be9e8579d6745ce",
+      "source_blob_sha":"258734957efc727f46f6315804b6034487e98896",
       "source_path":"land/sku-unlock-20260826.md",
       "submit_allowed":false
     },
@@ -3145,7 +3145,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"e607d3ba7cd24dd542b24a1e8be9e8579d6745ce",
+      "source_blob_sha":"258734957efc727f46f6315804b6034487e98896",
       "source_path":"land/sku-unlock-20260826.md",
       "submit_allowed":false
     },
@@ -3168,7 +3168,7 @@
       "reasons":[
         "class micro_sku is outside high_ticket_service,high_ticket_product,expertise_hour"
       ],
-      "source_blob_sha":"e607d3ba7cd24dd542b24a1e8be9e8579d6745ce",
+      "source_blob_sha":"258734957efc727f46f6315804b6034487e98896",
       "source_path":"land/sku-unlock-20260826.md",
       "submit_allowed":false
     },
@@ -3191,7 +3191,7 @@
       "reasons":[
         "class micro_sku is outside high_ticket_service,high_ticket_product"
       ],
-      "source_blob_sha":"e607d3ba7cd24dd542b24a1e8be9e8579d6745ce",
+      "source_blob_sha":"258734957efc727f46f6315804b6034487e98896",
       "source_path":"land/sku-unlock-20260826.md",
       "submit_allowed":false
     },
@@ -3214,7 +3214,7 @@
       "reasons":[
         "class micro_sku is outside bounded_service,high_ticket_service,high_ticket_product,expertise_hour"
       ],
-      "source_blob_sha":"e607d3ba7cd24dd542b24a1e8be9e8579d6745ce",
+      "source_blob_sha":"258734957efc727f46f6315804b6034487e98896",
       "source_path":"land/sku-unlock-20260826.md",
       "submit_allowed":false
     },
@@ -3237,7 +3237,7 @@
       "reasons":[
         "class micro_sku is outside developer_product"
       ],
-      "source_blob_sha":"e607d3ba7cd24dd542b24a1e8be9e8579d6745ce",
+      "source_blob_sha":"258734957efc727f46f6315804b6034487e98896",
       "source_path":"land/sku-unlock-20260826.md",
       "submit_allowed":false
     },
@@ -3260,7 +3260,7 @@
       "reasons":[
         "class micro_sku is outside developer_product"
       ],
-      "source_blob_sha":"e607d3ba7cd24dd542b24a1e8be9e8579d6745ce",
+      "source_blob_sha":"258734957efc727f46f6315804b6034487e98896",
       "source_path":"land/sku-unlock-20260826.md",
       "submit_allowed":false
     },
@@ -3283,7 +3283,7 @@
       "reasons":[
         "class micro_sku is outside developer_product"
       ],
-      "source_blob_sha":"e607d3ba7cd24dd542b24a1e8be9e8579d6745ce",
+      "source_blob_sha":"258734957efc727f46f6315804b6034487e98896",
       "source_path":"land/sku-unlock-20260826.md",
       "submit_allowed":false
     },
@@ -3306,7 +3306,7 @@
       "reasons":[
         "class micro_sku is outside data_pack,developer_product"
       ],
-      "source_blob_sha":"e607d3ba7cd24dd542b24a1e8be9e8579d6745ce",
+      "source_blob_sha":"258734957efc727f46f6315804b6034487e98896",
       "source_path":"land/sku-unlock-20260826.md",
       "submit_allowed":false
     },
@@ -3329,7 +3329,7 @@
       "reasons":[
         "exact active Stripe checkout is proven on the catalog"
       ],
-      "source_blob_sha":"e607d3ba7cd24dd542b24a1e8be9e8579d6745ce",
+      "source_blob_sha":"258734957efc727f46f6315804b6034487e98896",
       "source_path":"land/sku-unlock-20260826.md",
       "submit_allowed":false
     },
@@ -3352,7 +3352,7 @@
       "reasons":[
         "class micro_sku is outside bounded_service,expertise_hour,high_ticket_service"
       ],
-      "source_blob_sha":"ec94c5a6113ce6de6fd601f8bd438d5e6b117b2f",
+      "source_blob_sha":"b2c54753a82683a70831588366e35114ad644a65",
       "source_path":"land/sku-monthly-tip-20260826.md",
       "submit_allowed":false
     },
@@ -3375,7 +3375,7 @@
       "reasons":[
         "class micro_sku is outside bounded_service,expertise_hour,high_ticket_service"
       ],
-      "source_blob_sha":"ec94c5a6113ce6de6fd601f8bd438d5e6b117b2f",
+      "source_blob_sha":"b2c54753a82683a70831588366e35114ad644a65",
       "source_path":"land/sku-monthly-tip-20260826.md",
       "submit_allowed":false
     },
@@ -3398,7 +3398,7 @@
       "reasons":[
         "class micro_sku is outside bounded_service,expertise_hour"
       ],
-      "source_blob_sha":"ec94c5a6113ce6de6fd601f8bd438d5e6b117b2f",
+      "source_blob_sha":"b2c54753a82683a70831588366e35114ad644a65",
       "source_path":"land/sku-monthly-tip-20260826.md",
       "submit_allowed":false
     },
@@ -3421,7 +3421,7 @@
       "reasons":[
         "class micro_sku is outside bounded_service"
       ],
-      "source_blob_sha":"ec94c5a6113ce6de6fd601f8bd438d5e6b117b2f",
+      "source_blob_sha":"b2c54753a82683a70831588366e35114ad644a65",
       "source_path":"land/sku-monthly-tip-20260826.md",
       "submit_allowed":false
     },
@@ -3442,7 +3442,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"ec94c5a6113ce6de6fd601f8bd438d5e6b117b2f",
+      "source_blob_sha":"b2c54753a82683a70831588366e35114ad644a65",
       "source_path":"land/sku-monthly-tip-20260826.md",
       "submit_allowed":false
     },
@@ -3463,7 +3463,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"ec94c5a6113ce6de6fd601f8bd438d5e6b117b2f",
+      "source_blob_sha":"b2c54753a82683a70831588366e35114ad644a65",
       "source_path":"land/sku-monthly-tip-20260826.md",
       "submit_allowed":false
     },
@@ -3484,7 +3484,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"ec94c5a6113ce6de6fd601f8bd438d5e6b117b2f",
+      "source_blob_sha":"b2c54753a82683a70831588366e35114ad644a65",
       "source_path":"land/sku-monthly-tip-20260826.md",
       "submit_allowed":false
     },
@@ -3507,7 +3507,7 @@
       "reasons":[
         "class micro_sku is outside high_ticket_service,high_ticket_product,expertise_hour"
       ],
-      "source_blob_sha":"ec94c5a6113ce6de6fd601f8bd438d5e6b117b2f",
+      "source_blob_sha":"b2c54753a82683a70831588366e35114ad644a65",
       "source_path":"land/sku-monthly-tip-20260826.md",
       "submit_allowed":false
     },
@@ -3530,7 +3530,7 @@
       "reasons":[
         "class micro_sku is outside high_ticket_service,high_ticket_product"
       ],
-      "source_blob_sha":"ec94c5a6113ce6de6fd601f8bd438d5e6b117b2f",
+      "source_blob_sha":"b2c54753a82683a70831588366e35114ad644a65",
       "source_path":"land/sku-monthly-tip-20260826.md",
       "submit_allowed":false
     },
@@ -3553,7 +3553,7 @@
       "reasons":[
         "class micro_sku is outside bounded_service,high_ticket_service,high_ticket_product,expertise_hour"
       ],
-      "source_blob_sha":"ec94c5a6113ce6de6fd601f8bd438d5e6b117b2f",
+      "source_blob_sha":"b2c54753a82683a70831588366e35114ad644a65",
       "source_path":"land/sku-monthly-tip-20260826.md",
       "submit_allowed":false
     },
@@ -3576,7 +3576,7 @@
       "reasons":[
         "class micro_sku is outside developer_product"
       ],
-      "source_blob_sha":"ec94c5a6113ce6de6fd601f8bd438d5e6b117b2f",
+      "source_blob_sha":"b2c54753a82683a70831588366e35114ad644a65",
       "source_path":"land/sku-monthly-tip-20260826.md",
       "submit_allowed":false
     },
@@ -3599,7 +3599,7 @@
       "reasons":[
         "class micro_sku is outside developer_product"
       ],
-      "source_blob_sha":"ec94c5a6113ce6de6fd601f8bd438d5e6b117b2f",
+      "source_blob_sha":"b2c54753a82683a70831588366e35114ad644a65",
       "source_path":"land/sku-monthly-tip-20260826.md",
       "submit_allowed":false
     },
@@ -3622,7 +3622,7 @@
       "reasons":[
         "class micro_sku is outside developer_product"
       ],
-      "source_blob_sha":"ec94c5a6113ce6de6fd601f8bd438d5e6b117b2f",
+      "source_blob_sha":"b2c54753a82683a70831588366e35114ad644a65",
       "source_path":"land/sku-monthly-tip-20260826.md",
       "submit_allowed":false
     },
@@ -3645,7 +3645,7 @@
       "reasons":[
         "class micro_sku is outside data_pack,developer_product"
       ],
-      "source_blob_sha":"ec94c5a6113ce6de6fd601f8bd438d5e6b117b2f",
+      "source_blob_sha":"b2c54753a82683a70831588366e35114ad644a65",
       "source_path":"land/sku-monthly-tip-20260826.md",
       "submit_allowed":false
     },
@@ -3668,7 +3668,7 @@
       "reasons":[
         "exact active Stripe checkout is proven on the catalog"
       ],
-      "source_blob_sha":"ec94c5a6113ce6de6fd601f8bd438d5e6b117b2f",
+      "source_blob_sha":"b2c54753a82683a70831588366e35114ad644a65",
       "source_path":"land/sku-monthly-tip-20260826.md",
       "submit_allowed":false
     },
@@ -3691,7 +3691,7 @@
       "reasons":[
         "class micro_sku is outside bounded_service,expertise_hour,high_ticket_service"
       ],
-      "source_blob_sha":"885dd967197935ca69cc25482f52fea09d2c5bc3",
+      "source_blob_sha":"4fd23e7a10e90a5c988f3581d77e83b86e212884",
       "source_path":"land/sku-boost-20260826.md",
       "submit_allowed":false
     },
@@ -3714,7 +3714,7 @@
       "reasons":[
         "class micro_sku is outside bounded_service,expertise_hour,high_ticket_service"
       ],
-      "source_blob_sha":"885dd967197935ca69cc25482f52fea09d2c5bc3",
+      "source_blob_sha":"4fd23e7a10e90a5c988f3581d77e83b86e212884",
       "source_path":"land/sku-boost-20260826.md",
       "submit_allowed":false
     },
@@ -3737,7 +3737,7 @@
       "reasons":[
         "class micro_sku is outside bounded_service,expertise_hour"
       ],
-      "source_blob_sha":"885dd967197935ca69cc25482f52fea09d2c5bc3",
+      "source_blob_sha":"4fd23e7a10e90a5c988f3581d77e83b86e212884",
       "source_path":"land/sku-boost-20260826.md",
       "submit_allowed":false
     },
@@ -3760,7 +3760,7 @@
       "reasons":[
         "class micro_sku is outside bounded_service"
       ],
-      "source_blob_sha":"885dd967197935ca69cc25482f52fea09d2c5bc3",
+      "source_blob_sha":"4fd23e7a10e90a5c988f3581d77e83b86e212884",
       "source_path":"land/sku-boost-20260826.md",
       "submit_allowed":false
     },
@@ -3781,7 +3781,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"885dd967197935ca69cc25482f52fea09d2c5bc3",
+      "source_blob_sha":"4fd23e7a10e90a5c988f3581d77e83b86e212884",
       "source_path":"land/sku-boost-20260826.md",
       "submit_allowed":false
     },
@@ -3802,7 +3802,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"885dd967197935ca69cc25482f52fea09d2c5bc3",
+      "source_blob_sha":"4fd23e7a10e90a5c988f3581d77e83b86e212884",
       "source_path":"land/sku-boost-20260826.md",
       "submit_allowed":false
     },
@@ -3823,7 +3823,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"885dd967197935ca69cc25482f52fea09d2c5bc3",
+      "source_blob_sha":"4fd23e7a10e90a5c988f3581d77e83b86e212884",
       "source_path":"land/sku-boost-20260826.md",
       "submit_allowed":false
     },
@@ -3846,7 +3846,7 @@
       "reasons":[
         "class micro_sku is outside high_ticket_service,high_ticket_product,expertise_hour"
       ],
-      "source_blob_sha":"885dd967197935ca69cc25482f52fea09d2c5bc3",
+      "source_blob_sha":"4fd23e7a10e90a5c988f3581d77e83b86e212884",
       "source_path":"land/sku-boost-20260826.md",
       "submit_allowed":false
     },
@@ -3869,7 +3869,7 @@
       "reasons":[
         "class micro_sku is outside high_ticket_service,high_ticket_product"
       ],
-      "source_blob_sha":"885dd967197935ca69cc25482f52fea09d2c5bc3",
+      "source_blob_sha":"4fd23e7a10e90a5c988f3581d77e83b86e212884",
       "source_path":"land/sku-boost-20260826.md",
       "submit_allowed":false
     },
@@ -3892,7 +3892,7 @@
       "reasons":[
         "class micro_sku is outside bounded_service,high_ticket_service,high_ticket_product,expertise_hour"
       ],
-      "source_blob_sha":"885dd967197935ca69cc25482f52fea09d2c5bc3",
+      "source_blob_sha":"4fd23e7a10e90a5c988f3581d77e83b86e212884",
       "source_path":"land/sku-boost-20260826.md",
       "submit_allowed":false
     },
@@ -3915,7 +3915,7 @@
       "reasons":[
         "class micro_sku is outside developer_product"
       ],
-      "source_blob_sha":"885dd967197935ca69cc25482f52fea09d2c5bc3",
+      "source_blob_sha":"4fd23e7a10e90a5c988f3581d77e83b86e212884",
       "source_path":"land/sku-boost-20260826.md",
       "submit_allowed":false
     },
@@ -3938,7 +3938,7 @@
       "reasons":[
         "class micro_sku is outside developer_product"
       ],
-      "source_blob_sha":"885dd967197935ca69cc25482f52fea09d2c5bc3",
+      "source_blob_sha":"4fd23e7a10e90a5c988f3581d77e83b86e212884",
       "source_path":"land/sku-boost-20260826.md",
       "submit_allowed":false
     },
@@ -3961,7 +3961,7 @@
       "reasons":[
         "class micro_sku is outside developer_product"
       ],
-      "source_blob_sha":"885dd967197935ca69cc25482f52fea09d2c5bc3",
+      "source_blob_sha":"4fd23e7a10e90a5c988f3581d77e83b86e212884",
       "source_path":"land/sku-boost-20260826.md",
       "submit_allowed":false
     },
@@ -3984,7 +3984,7 @@
       "reasons":[
         "class micro_sku is outside data_pack,developer_product"
       ],
-      "source_blob_sha":"885dd967197935ca69cc25482f52fea09d2c5bc3",
+      "source_blob_sha":"4fd23e7a10e90a5c988f3581d77e83b86e212884",
       "source_path":"land/sku-boost-20260826.md",
       "submit_allowed":false
     },
@@ -4007,7 +4007,7 @@
       "reasons":[
         "exact active Stripe checkout is proven on the catalog"
       ],
-      "source_blob_sha":"885dd967197935ca69cc25482f52fea09d2c5bc3",
+      "source_blob_sha":"4fd23e7a10e90a5c988f3581d77e83b86e212884",
       "source_path":"land/sku-boost-20260826.md",
       "submit_allowed":false
     },
@@ -4030,7 +4030,7 @@
       "reasons":[
         "amount 250.00 is outside channel window"
       ],
-      "source_blob_sha":"49cc55559e93595b22bbcef15de6f74ac8e0f3f4",
+      "source_blob_sha":"62625136a9e5abfe77d9e7afa59e8ee67571b33e",
       "source_path":"land/sku-whitebox-hour-20260826.md",
       "submit_allowed":false
     },
@@ -4053,7 +4053,7 @@
       "reasons":[
         "amount 250.00 is outside channel window"
       ],
-      "source_blob_sha":"49cc55559e93595b22bbcef15de6f74ac8e0f3f4",
+      "source_blob_sha":"62625136a9e5abfe77d9e7afa59e8ee67571b33e",
       "source_path":"land/sku-whitebox-hour-20260826.md",
       "submit_allowed":false
     },
@@ -4076,7 +4076,7 @@
       "reasons":[
         "amount 250.00 is outside channel window"
       ],
-      "source_blob_sha":"49cc55559e93595b22bbcef15de6f74ac8e0f3f4",
+      "source_blob_sha":"62625136a9e5abfe77d9e7afa59e8ee67571b33e",
       "source_path":"land/sku-whitebox-hour-20260826.md",
       "submit_allowed":false
     },
@@ -4099,7 +4099,7 @@
       "reasons":[
         "class expertise_hour is outside bounded_service"
       ],
-      "source_blob_sha":"49cc55559e93595b22bbcef15de6f74ac8e0f3f4",
+      "source_blob_sha":"62625136a9e5abfe77d9e7afa59e8ee67571b33e",
       "source_path":"land/sku-whitebox-hour-20260826.md",
       "submit_allowed":false
     },
@@ -4120,7 +4120,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"49cc55559e93595b22bbcef15de6f74ac8e0f3f4",
+      "source_blob_sha":"62625136a9e5abfe77d9e7afa59e8ee67571b33e",
       "source_path":"land/sku-whitebox-hour-20260826.md",
       "submit_allowed":false
     },
@@ -4141,7 +4141,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"49cc55559e93595b22bbcef15de6f74ac8e0f3f4",
+      "source_blob_sha":"62625136a9e5abfe77d9e7afa59e8ee67571b33e",
       "source_path":"land/sku-whitebox-hour-20260826.md",
       "submit_allowed":false
     },
@@ -4162,7 +4162,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"49cc55559e93595b22bbcef15de6f74ac8e0f3f4",
+      "source_blob_sha":"62625136a9e5abfe77d9e7afa59e8ee67571b33e",
       "source_path":"land/sku-whitebox-hour-20260826.md",
       "submit_allowed":false
     },
@@ -4185,7 +4185,7 @@
       "reasons":[
         "amount 250.00 is outside channel window"
       ],
-      "source_blob_sha":"49cc55559e93595b22bbcef15de6f74ac8e0f3f4",
+      "source_blob_sha":"62625136a9e5abfe77d9e7afa59e8ee67571b33e",
       "source_path":"land/sku-whitebox-hour-20260826.md",
       "submit_allowed":false
     },
@@ -4208,7 +4208,7 @@
       "reasons":[
         "class expertise_hour is outside high_ticket_service,high_ticket_product"
       ],
-      "source_blob_sha":"49cc55559e93595b22bbcef15de6f74ac8e0f3f4",
+      "source_blob_sha":"62625136a9e5abfe77d9e7afa59e8ee67571b33e",
       "source_path":"land/sku-whitebox-hour-20260826.md",
       "submit_allowed":false
     },
@@ -4231,7 +4231,7 @@
       "reasons":[
         "amount 250.00 is outside channel window"
       ],
-      "source_blob_sha":"49cc55559e93595b22bbcef15de6f74ac8e0f3f4",
+      "source_blob_sha":"62625136a9e5abfe77d9e7afa59e8ee67571b33e",
       "source_path":"land/sku-whitebox-hour-20260826.md",
       "submit_allowed":false
     },
@@ -4254,7 +4254,7 @@
       "reasons":[
         "class expertise_hour is outside developer_product"
       ],
-      "source_blob_sha":"49cc55559e93595b22bbcef15de6f74ac8e0f3f4",
+      "source_blob_sha":"62625136a9e5abfe77d9e7afa59e8ee67571b33e",
       "source_path":"land/sku-whitebox-hour-20260826.md",
       "submit_allowed":false
     },
@@ -4277,7 +4277,7 @@
       "reasons":[
         "class expertise_hour is outside developer_product"
       ],
-      "source_blob_sha":"49cc55559e93595b22bbcef15de6f74ac8e0f3f4",
+      "source_blob_sha":"62625136a9e5abfe77d9e7afa59e8ee67571b33e",
       "source_path":"land/sku-whitebox-hour-20260826.md",
       "submit_allowed":false
     },
@@ -4300,7 +4300,7 @@
       "reasons":[
         "class expertise_hour is outside developer_product"
       ],
-      "source_blob_sha":"49cc55559e93595b22bbcef15de6f74ac8e0f3f4",
+      "source_blob_sha":"62625136a9e5abfe77d9e7afa59e8ee67571b33e",
       "source_path":"land/sku-whitebox-hour-20260826.md",
       "submit_allowed":false
     },
@@ -4323,7 +4323,7 @@
       "reasons":[
         "class expertise_hour is outside data_pack,developer_product"
       ],
-      "source_blob_sha":"49cc55559e93595b22bbcef15de6f74ac8e0f3f4",
+      "source_blob_sha":"62625136a9e5abfe77d9e7afa59e8ee67571b33e",
       "source_path":"land/sku-whitebox-hour-20260826.md",
       "submit_allowed":false
     },
@@ -4346,7 +4346,7 @@
       "reasons":[
         "exact active Stripe checkout is proven on the catalog"
       ],
-      "source_blob_sha":"49cc55559e93595b22bbcef15de6f74ac8e0f3f4",
+      "source_blob_sha":"62625136a9e5abfe77d9e7afa59e8ee67571b33e",
       "source_path":"land/sku-whitebox-hour-20260826.md",
       "submit_allowed":false
     },
@@ -4369,7 +4369,7 @@
       "reasons":[
         "class high_ticket_product is outside bounded_service,expertise_hour,high_ticket_service"
       ],
-      "source_blob_sha":"6fb73c5837ac37ec7f48cc6efc12cc98797f12d8",
+      "source_blob_sha":"fa4ef433b0b233bb3ddc633c1828957e5d75e453",
       "source_path":"land/sku-muhlnickel-titan-20260826.md",
       "submit_allowed":false
     },
@@ -4392,7 +4392,7 @@
       "reasons":[
         "class high_ticket_product is outside bounded_service,expertise_hour,high_ticket_service"
       ],
-      "source_blob_sha":"6fb73c5837ac37ec7f48cc6efc12cc98797f12d8",
+      "source_blob_sha":"fa4ef433b0b233bb3ddc633c1828957e5d75e453",
       "source_path":"land/sku-muhlnickel-titan-20260826.md",
       "submit_allowed":false
     },
@@ -4415,7 +4415,7 @@
       "reasons":[
         "class high_ticket_product is outside bounded_service,expertise_hour"
       ],
-      "source_blob_sha":"6fb73c5837ac37ec7f48cc6efc12cc98797f12d8",
+      "source_blob_sha":"fa4ef433b0b233bb3ddc633c1828957e5d75e453",
       "source_path":"land/sku-muhlnickel-titan-20260826.md",
       "submit_allowed":false
     },
@@ -4438,7 +4438,7 @@
       "reasons":[
         "class high_ticket_product is outside bounded_service"
       ],
-      "source_blob_sha":"6fb73c5837ac37ec7f48cc6efc12cc98797f12d8",
+      "source_blob_sha":"fa4ef433b0b233bb3ddc633c1828957e5d75e453",
       "source_path":"land/sku-muhlnickel-titan-20260826.md",
       "submit_allowed":false
     },
@@ -4459,7 +4459,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"6fb73c5837ac37ec7f48cc6efc12cc98797f12d8",
+      "source_blob_sha":"fa4ef433b0b233bb3ddc633c1828957e5d75e453",
       "source_path":"land/sku-muhlnickel-titan-20260826.md",
       "submit_allowed":false
     },
@@ -4480,7 +4480,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"6fb73c5837ac37ec7f48cc6efc12cc98797f12d8",
+      "source_blob_sha":"fa4ef433b0b233bb3ddc633c1828957e5d75e453",
       "source_path":"land/sku-muhlnickel-titan-20260826.md",
       "submit_allowed":false
     },
@@ -4501,7 +4501,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"6fb73c5837ac37ec7f48cc6efc12cc98797f12d8",
+      "source_blob_sha":"fa4ef433b0b233bb3ddc633c1828957e5d75e453",
       "source_path":"land/sku-muhlnickel-titan-20260826.md",
       "submit_allowed":false
     },
@@ -4522,7 +4522,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"6fb73c5837ac37ec7f48cc6efc12cc98797f12d8",
+      "source_blob_sha":"fa4ef433b0b233bb3ddc633c1828957e5d75e453",
       "source_path":"land/sku-muhlnickel-titan-20260826.md",
       "submit_allowed":false
     },
@@ -4543,7 +4543,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"6fb73c5837ac37ec7f48cc6efc12cc98797f12d8",
+      "source_blob_sha":"fa4ef433b0b233bb3ddc633c1828957e5d75e453",
       "source_path":"land/sku-muhlnickel-titan-20260826.md",
       "submit_allowed":false
     },
@@ -4564,7 +4564,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"6fb73c5837ac37ec7f48cc6efc12cc98797f12d8",
+      "source_blob_sha":"fa4ef433b0b233bb3ddc633c1828957e5d75e453",
       "source_path":"land/sku-muhlnickel-titan-20260826.md",
       "submit_allowed":false
     },
@@ -4587,7 +4587,7 @@
       "reasons":[
         "class high_ticket_product is outside developer_product"
       ],
-      "source_blob_sha":"6fb73c5837ac37ec7f48cc6efc12cc98797f12d8",
+      "source_blob_sha":"fa4ef433b0b233bb3ddc633c1828957e5d75e453",
       "source_path":"land/sku-muhlnickel-titan-20260826.md",
       "submit_allowed":false
     },
@@ -4610,7 +4610,7 @@
       "reasons":[
         "class high_ticket_product is outside developer_product"
       ],
-      "source_blob_sha":"6fb73c5837ac37ec7f48cc6efc12cc98797f12d8",
+      "source_blob_sha":"fa4ef433b0b233bb3ddc633c1828957e5d75e453",
       "source_path":"land/sku-muhlnickel-titan-20260826.md",
       "submit_allowed":false
     },
@@ -4633,7 +4633,7 @@
       "reasons":[
         "class high_ticket_product is outside developer_product"
       ],
-      "source_blob_sha":"6fb73c5837ac37ec7f48cc6efc12cc98797f12d8",
+      "source_blob_sha":"fa4ef433b0b233bb3ddc633c1828957e5d75e453",
       "source_path":"land/sku-muhlnickel-titan-20260826.md",
       "submit_allowed":false
     },
@@ -4656,7 +4656,7 @@
       "reasons":[
         "class high_ticket_product is outside data_pack,developer_product"
       ],
-      "source_blob_sha":"6fb73c5837ac37ec7f48cc6efc12cc98797f12d8",
+      "source_blob_sha":"fa4ef433b0b233bb3ddc633c1828957e5d75e453",
       "source_path":"land/sku-muhlnickel-titan-20260826.md",
       "submit_allowed":false
     },
@@ -4679,7 +4679,7 @@
       "reasons":[
         "exact active Stripe checkout is proven on the catalog"
       ],
-      "source_blob_sha":"6fb73c5837ac37ec7f48cc6efc12cc98797f12d8",
+      "source_blob_sha":"fa4ef433b0b233bb3ddc633c1828957e5d75e453",
       "source_path":"land/sku-muhlnickel-titan-20260826.md",
       "submit_allowed":false
     },
@@ -6056,7 +6056,7 @@
       "reasons":[
         "amount 199.00 is outside channel window"
       ],
-      "source_blob_sha":"c42254704953b8a91f3cfcaec0045f8af9bbdb2e",
+      "source_blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
       "source_path":"revenue/referral_intake_completeness/contract.json",
       "submit_allowed":false
     },
@@ -6079,7 +6079,7 @@
       "reasons":[
         "amount 199.00 is outside channel window"
       ],
-      "source_blob_sha":"c42254704953b8a91f3cfcaec0045f8af9bbdb2e",
+      "source_blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
       "source_path":"revenue/referral_intake_completeness/contract.json",
       "submit_allowed":false
     },
@@ -6102,7 +6102,7 @@
       "reasons":[
         "amount 199.00 is outside channel window"
       ],
-      "source_blob_sha":"c42254704953b8a91f3cfcaec0045f8af9bbdb2e",
+      "source_blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
       "source_path":"revenue/referral_intake_completeness/contract.json",
       "submit_allowed":false
     },
@@ -6125,7 +6125,7 @@
       "reasons":[
         "amount 199.00 is outside channel window"
       ],
-      "source_blob_sha":"c42254704953b8a91f3cfcaec0045f8af9bbdb2e",
+      "source_blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
       "source_path":"revenue/referral_intake_completeness/contract.json",
       "submit_allowed":false
     },
@@ -6146,7 +6146,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"c42254704953b8a91f3cfcaec0045f8af9bbdb2e",
+      "source_blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
       "source_path":"revenue/referral_intake_completeness/contract.json",
       "submit_allowed":false
     },
@@ -6167,7 +6167,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"c42254704953b8a91f3cfcaec0045f8af9bbdb2e",
+      "source_blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
       "source_path":"revenue/referral_intake_completeness/contract.json",
       "submit_allowed":false
     },
@@ -6188,7 +6188,7 @@
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"c42254704953b8a91f3cfcaec0045f8af9bbdb2e",
+      "source_blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
       "source_path":"revenue/referral_intake_completeness/contract.json",
       "submit_allowed":false
     },
@@ -6211,7 +6211,7 @@
       "reasons":[
         "class bounded_service is outside high_ticket_service,high_ticket_product,expertise_hour"
       ],
-      "source_blob_sha":"c42254704953b8a91f3cfcaec0045f8af9bbdb2e",
+      "source_blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
       "source_path":"revenue/referral_intake_completeness/contract.json",
       "submit_allowed":false
     },
@@ -6234,7 +6234,7 @@
       "reasons":[
         "class bounded_service is outside high_ticket_service,high_ticket_product"
       ],
-      "source_blob_sha":"c42254704953b8a91f3cfcaec0045f8af9bbdb2e",
+      "source_blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
       "source_path":"revenue/referral_intake_completeness/contract.json",
       "submit_allowed":false
     },
@@ -6257,7 +6257,7 @@
       "reasons":[
         "amount 199.00 is outside channel window"
       ],
-      "source_blob_sha":"c42254704953b8a91f3cfcaec0045f8af9bbdb2e",
+      "source_blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
       "source_path":"revenue/referral_intake_completeness/contract.json",
       "submit_allowed":false
     },
@@ -6280,7 +6280,7 @@
       "reasons":[
         "class bounded_service is outside developer_product"
       ],
-      "source_blob_sha":"c42254704953b8a91f3cfcaec0045f8af9bbdb2e",
+      "source_blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
       "source_path":"revenue/referral_intake_completeness/contract.json",
       "submit_allowed":false
     },
@@ -6303,7 +6303,7 @@
       "reasons":[
         "class bounded_service is outside developer_product"
       ],
-      "source_blob_sha":"c42254704953b8a91f3cfcaec0045f8af9bbdb2e",
+      "source_blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
       "source_path":"revenue/referral_intake_completeness/contract.json",
       "submit_allowed":false
     },
@@ -6326,7 +6326,7 @@
       "reasons":[
         "class bounded_service is outside developer_product"
       ],
-      "source_blob_sha":"c42254704953b8a91f3cfcaec0045f8af9bbdb2e",
+      "source_blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
       "source_path":"revenue/referral_intake_completeness/contract.json",
       "submit_allowed":false
     },
@@ -6349,7 +6349,7 @@
       "reasons":[
         "class bounded_service is outside data_pack,developer_product"
       ],
-      "source_blob_sha":"c42254704953b8a91f3cfcaec0045f8af9bbdb2e",
+      "source_blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
       "source_path":"revenue/referral_intake_completeness/contract.json",
       "submit_allowed":false
     },
@@ -6372,7 +6372,7 @@
       "reasons":[
         "exact active Stripe checkout is proven on the catalog"
       ],
-      "source_blob_sha":"c42254704953b8a91f3cfcaec0045f8af9bbdb2e",
+      "source_blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
       "source_path":"revenue/referral_intake_completeness/contract.json",
       "submit_allowed":false
     },
@@ -6716,2715 +6716,342 @@
       "submit_allowed":false
     },
     {
-      "amount":"199.00",
+      "amount":"29.00",
       "blocked_reason":null,
       "channel_family":"public_marketplace",
       "channel_id":"upwork-project-catalog",
       "channel_name":"Upwork Project Catalog",
       "currency":"USD",
       "fit":"UNFIT",
-      "human_route":"salesforce-contact-preflight.html",
-      "id":"upwork-project-catalog__salesforce-contact-preflight",
+      "human_route":"agent-rescue.html",
+      "id":"upwork-project-catalog__agent-failure-autopsy-29",
       "listing_state":"NOT_LISTED",
       "offer_class":"bounded_service",
-      "offer_id":"salesforce-contact-preflight",
-      "offer_name":"Salesforce Contact Exactly-Once Preflight Diagnostic",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
       "offer_state":"PUBLIC_OFFER",
       "package_state":"UNFIT",
       "reasons":[
-        "amount 199.00 is outside channel window"
+        "amount 29.00 is outside channel window"
       ],
-      "source_blob_sha":"818a957e49730e02f4427e088e1da8207547de70",
-      "source_path":"revenue/salesforce_contact_preflight/contract.json",
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
       "submit_allowed":false
     },
     {
-      "amount":"199.00",
+      "amount":"29.00",
       "blocked_reason":null,
       "channel_family":"public_marketplace",
       "channel_id":"upwork-job-feed",
       "channel_name":"Upwork job feed",
       "currency":"USD",
       "fit":"UNFIT",
-      "human_route":"salesforce-contact-preflight.html",
-      "id":"upwork-job-feed__salesforce-contact-preflight",
+      "human_route":"agent-rescue.html",
+      "id":"upwork-job-feed__agent-failure-autopsy-29",
       "listing_state":"NOT_LISTED",
       "offer_class":"bounded_service",
-      "offer_id":"salesforce-contact-preflight",
-      "offer_name":"Salesforce Contact Exactly-Once Preflight Diagnostic",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
       "offer_state":"PUBLIC_OFFER",
       "package_state":"UNFIT",
       "reasons":[
-        "amount 199.00 is outside channel window"
+        "amount 29.00 is outside channel window"
       ],
-      "source_blob_sha":"818a957e49730e02f4427e088e1da8207547de70",
-      "source_path":"revenue/salesforce_contact_preflight/contract.json",
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
       "submit_allowed":false
     },
     {
-      "amount":"199.00",
+      "amount":"29.00",
       "blocked_reason":null,
       "channel_family":"public_marketplace",
       "channel_id":"contra-services",
       "channel_name":"Contra Services",
       "currency":"USD",
       "fit":"UNFIT",
-      "human_route":"salesforce-contact-preflight.html",
-      "id":"contra-services__salesforce-contact-preflight",
+      "human_route":"agent-rescue.html",
+      "id":"contra-services__agent-failure-autopsy-29",
       "listing_state":"NOT_LISTED",
       "offer_class":"bounded_service",
-      "offer_id":"salesforce-contact-preflight",
-      "offer_name":"Salesforce Contact Exactly-Once Preflight Diagnostic",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
       "offer_state":"PUBLIC_OFFER",
       "package_state":"UNFIT",
       "reasons":[
-        "amount 199.00 is outside channel window"
+        "amount 29.00 is outside channel window"
       ],
-      "source_blob_sha":"818a957e49730e02f4427e088e1da8207547de70",
-      "source_path":"revenue/salesforce_contact_preflight/contract.json",
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
       "submit_allowed":false
     },
     {
-      "amount":"199.00",
+      "amount":"29.00",
       "blocked_reason":null,
       "channel_family":"public_marketplace",
       "channel_id":"fiverr-gig",
       "channel_name":"Fiverr Gig",
       "currency":"USD",
       "fit":"UNFIT",
-      "human_route":"salesforce-contact-preflight.html",
-      "id":"fiverr-gig__salesforce-contact-preflight",
+      "human_route":"agent-rescue.html",
+      "id":"fiverr-gig__agent-failure-autopsy-29",
       "listing_state":"NOT_LISTED",
       "offer_class":"bounded_service",
-      "offer_id":"salesforce-contact-preflight",
-      "offer_name":"Salesforce Contact Exactly-Once Preflight Diagnostic",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
       "offer_state":"PUBLIC_OFFER",
       "package_state":"UNFIT",
       "reasons":[
-        "amount 199.00 is outside channel window"
+        "amount 29.00 is outside channel window"
       ],
-      "source_blob_sha":"818a957e49730e02f4427e088e1da8207547de70",
-      "source_path":"revenue/salesforce_contact_preflight/contract.json",
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
       "submit_allowed":false
     },
     {
-      "amount":"199.00",
+      "amount":"29.00",
       "blocked_reason":null,
       "channel_family":"commons_surface",
       "channel_id":"commons-pages",
       "channel_name":"Commons public pages",
       "currency":"USD",
       "fit":"FIT",
-      "human_route":"salesforce-contact-preflight.html",
-      "id":"commons-pages__salesforce-contact-preflight",
+      "human_route":"agent-rescue.html",
+      "id":"commons-pages__agent-failure-autopsy-29",
       "listing_state":"SURFACE_LIVE",
       "offer_class":"bounded_service",
-      "offer_id":"salesforce-contact-preflight",
-      "offer_name":"Salesforce Contact Exactly-Once Preflight Diagnostic",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"818a957e49730e02f4427e088e1da8207547de70",
-      "source_path":"revenue/salesforce_contact_preflight/contract.json",
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
       "submit_allowed":false
     },
     {
-      "amount":"199.00",
+      "amount":"29.00",
       "blocked_reason":null,
       "channel_family":"partner",
       "channel_id":"tokenjunkielabs-slack",
       "channel_name":"TokenJunkieLabs Slack #commons",
       "currency":"USD",
       "fit":"FIT",
-      "human_route":"salesforce-contact-preflight.html",
-      "id":"tokenjunkielabs-slack__salesforce-contact-preflight",
+      "human_route":"agent-rescue.html",
+      "id":"tokenjunkielabs-slack__agent-failure-autopsy-29",
       "listing_state":"SURFACE_LIVE",
       "offer_class":"bounded_service",
-      "offer_id":"salesforce-contact-preflight",
-      "offer_name":"Salesforce Contact Exactly-Once Preflight Diagnostic",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"818a957e49730e02f4427e088e1da8207547de70",
-      "source_path":"revenue/salesforce_contact_preflight/contract.json",
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
       "submit_allowed":false
     },
     {
-      "amount":"199.00",
+      "amount":"29.00",
       "blocked_reason":null,
       "channel_family":"partner",
       "channel_id":"founder-email",
       "channel_name":"Founder-sent email",
       "currency":"USD",
       "fit":"FIT",
-      "human_route":"salesforce-contact-preflight.html",
-      "id":"founder-email__salesforce-contact-preflight",
+      "human_route":"agent-rescue.html",
+      "id":"founder-email__agent-failure-autopsy-29",
       "listing_state":"SURFACE_LIVE",
       "offer_class":"bounded_service",
-      "offer_id":"salesforce-contact-preflight",
-      "offer_name":"Salesforce Contact Exactly-Once Preflight Diagnostic",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[],
-      "source_blob_sha":"818a957e49730e02f4427e088e1da8207547de70",
-      "source_path":"revenue/salesforce_contact_preflight/contract.json",
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
       "submit_allowed":false
     },
     {
-      "amount":"199.00",
+      "amount":"29.00",
       "blocked_reason":null,
       "channel_family":"procurement",
       "channel_id":"sam-gov-procurement",
       "channel_name":"SAM.gov",
       "currency":"USD",
       "fit":"UNFIT",
-      "human_route":"salesforce-contact-preflight.html",
-      "id":"sam-gov-procurement__salesforce-contact-preflight",
+      "human_route":"agent-rescue.html",
+      "id":"sam-gov-procurement__agent-failure-autopsy-29",
       "listing_state":"NOT_LISTED",
       "offer_class":"bounded_service",
-      "offer_id":"salesforce-contact-preflight",
-      "offer_name":"Salesforce Contact Exactly-Once Preflight Diagnostic",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
       "offer_state":"PUBLIC_OFFER",
       "package_state":"UNFIT",
       "reasons":[
         "class bounded_service is outside high_ticket_service,high_ticket_product,expertise_hour"
       ],
-      "source_blob_sha":"818a957e49730e02f4427e088e1da8207547de70",
-      "source_path":"revenue/salesforce_contact_preflight/contract.json",
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
       "submit_allowed":false
     },
     {
-      "amount":"199.00",
+      "amount":"29.00",
       "blocked_reason":null,
       "channel_family":"procurement",
       "channel_id":"gsa-schedule",
       "channel_name":"GSA Schedule",
       "currency":"USD",
       "fit":"UNFIT",
-      "human_route":"salesforce-contact-preflight.html",
-      "id":"gsa-schedule__salesforce-contact-preflight",
+      "human_route":"agent-rescue.html",
+      "id":"gsa-schedule__agent-failure-autopsy-29",
       "listing_state":"NOT_LISTED",
       "offer_class":"bounded_service",
-      "offer_id":"salesforce-contact-preflight",
-      "offer_name":"Salesforce Contact Exactly-Once Preflight Diagnostic",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
       "offer_state":"PUBLIC_OFFER",
       "package_state":"UNFIT",
       "reasons":[
         "class bounded_service is outside high_ticket_service,high_ticket_product"
       ],
-      "source_blob_sha":"818a957e49730e02f4427e088e1da8207547de70",
-      "source_path":"revenue/salesforce_contact_preflight/contract.json",
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
       "submit_allowed":false
     },
     {
-      "amount":"199.00",
+      "amount":"29.00",
       "blocked_reason":null,
       "channel_family":"procurement",
       "channel_id":"public-rfp-pack",
       "channel_name":"Public RFP response pack",
       "currency":"USD",
       "fit":"UNFIT",
-      "human_route":"salesforce-contact-preflight.html",
-      "id":"public-rfp-pack__salesforce-contact-preflight",
+      "human_route":"agent-rescue.html",
+      "id":"public-rfp-pack__agent-failure-autopsy-29",
       "listing_state":"NOT_LISTED",
       "offer_class":"bounded_service",
-      "offer_id":"salesforce-contact-preflight",
-      "offer_name":"Salesforce Contact Exactly-Once Preflight Diagnostic",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
       "offer_state":"PUBLIC_OFFER",
       "package_state":"UNFIT",
       "reasons":[
-        "amount 199.00 is outside channel window"
+        "amount 29.00 is outside channel window"
       ],
-      "source_blob_sha":"818a957e49730e02f4427e088e1da8207547de70",
-      "source_path":"revenue/salesforce_contact_preflight/contract.json",
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
       "submit_allowed":false
     },
     {
-      "amount":"199.00",
+      "amount":"29.00",
       "blocked_reason":null,
       "channel_family":"developer_ecosystem",
       "channel_id":"github-marketplace",
       "channel_name":"GitHub Marketplace",
       "currency":"USD",
       "fit":"UNFIT",
-      "human_route":"salesforce-contact-preflight.html",
-      "id":"github-marketplace__salesforce-contact-preflight",
+      "human_route":"agent-rescue.html",
+      "id":"github-marketplace__agent-failure-autopsy-29",
       "listing_state":"NOT_LISTED",
       "offer_class":"bounded_service",
-      "offer_id":"salesforce-contact-preflight",
-      "offer_name":"Salesforce Contact Exactly-Once Preflight Diagnostic",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
       "offer_state":"PUBLIC_OFFER",
       "package_state":"UNFIT",
       "reasons":[
         "class bounded_service is outside developer_product"
       ],
-      "source_blob_sha":"818a957e49730e02f4427e088e1da8207547de70",
-      "source_path":"revenue/salesforce_contact_preflight/contract.json",
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
       "submit_allowed":false
     },
     {
-      "amount":"199.00",
+      "amount":"29.00",
       "blocked_reason":null,
       "channel_family":"developer_ecosystem",
       "channel_id":"mcp-public-registry",
       "channel_name":"Public MCP registry",
       "currency":"USD",
       "fit":"UNFIT",
-      "human_route":"salesforce-contact-preflight.html",
-      "id":"mcp-public-registry__salesforce-contact-preflight",
+      "human_route":"agent-rescue.html",
+      "id":"mcp-public-registry__agent-failure-autopsy-29",
       "listing_state":"NOT_LISTED",
       "offer_class":"bounded_service",
-      "offer_id":"salesforce-contact-preflight",
-      "offer_name":"Salesforce Contact Exactly-Once Preflight Diagnostic",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
       "offer_state":"PUBLIC_OFFER",
       "package_state":"UNFIT",
       "reasons":[
         "class bounded_service is outside developer_product"
       ],
-      "source_blob_sha":"818a957e49730e02f4427e088e1da8207547de70",
-      "source_path":"revenue/salesforce_contact_preflight/contract.json",
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
       "submit_allowed":false
     },
     {
-      "amount":"199.00",
+      "amount":"29.00",
       "blocked_reason":null,
       "channel_family":"developer_ecosystem",
       "channel_id":"npm-public-registry",
       "channel_name":"npm public registry",
       "currency":"USD",
       "fit":"UNFIT",
-      "human_route":"salesforce-contact-preflight.html",
-      "id":"npm-public-registry__salesforce-contact-preflight",
+      "human_route":"agent-rescue.html",
+      "id":"npm-public-registry__agent-failure-autopsy-29",
       "listing_state":"NOT_LISTED",
       "offer_class":"bounded_service",
-      "offer_id":"salesforce-contact-preflight",
-      "offer_name":"Salesforce Contact Exactly-Once Preflight Diagnostic",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
       "offer_state":"PUBLIC_OFFER",
       "package_state":"UNFIT",
       "reasons":[
         "class bounded_service is outside developer_product"
       ],
-      "source_blob_sha":"818a957e49730e02f4427e088e1da8207547de70",
-      "source_path":"revenue/salesforce_contact_preflight/contract.json",
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
       "submit_allowed":false
     },
     {
-      "amount":"199.00",
+      "amount":"29.00",
       "blocked_reason":null,
       "channel_family":"developer_ecosystem",
       "channel_id":"huggingface-hub",
       "channel_name":"Hugging Face Hub",
       "currency":"USD",
       "fit":"UNFIT",
-      "human_route":"salesforce-contact-preflight.html",
-      "id":"huggingface-hub__salesforce-contact-preflight",
+      "human_route":"agent-rescue.html",
+      "id":"huggingface-hub__agent-failure-autopsy-29",
       "listing_state":"NOT_LISTED",
       "offer_class":"bounded_service",
-      "offer_id":"salesforce-contact-preflight",
-      "offer_name":"Salesforce Contact Exactly-Once Preflight Diagnostic",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
       "offer_state":"PUBLIC_OFFER",
       "package_state":"UNFIT",
       "reasons":[
         "class bounded_service is outside data_pack,developer_product"
       ],
-      "source_blob_sha":"818a957e49730e02f4427e088e1da8207547de70",
-      "source_path":"revenue/salesforce_contact_preflight/contract.json",
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
       "submit_allowed":false
     },
     {
-      "amount":"199.00",
+      "amount":"29.00",
       "blocked_reason":null,
       "channel_family":"recorded_rail",
       "channel_id":"stripe-payment-links",
       "channel_name":"Stripe Payment Links",
       "currency":"USD",
       "fit":"FIT",
-      "human_route":"salesforce-contact-preflight.html",
-      "id":"stripe-payment-links__salesforce-contact-preflight",
+      "human_route":"agent-rescue.html",
+      "id":"stripe-payment-links__agent-failure-autopsy-29",
       "listing_state":"NOT_LISTED",
       "offer_class":"bounded_service",
-      "offer_id":"salesforce-contact-preflight",
-      "offer_name":"Salesforce Contact Exactly-Once Preflight Diagnostic",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
       "reasons":[
         "exact active Stripe checkout is proven on the catalog"
       ],
-      "source_blob_sha":"818a957e49730e02f4427e088e1da8207547de70",
-      "source_path":"revenue/salesforce_contact_preflight/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"upwork-project-catalog",
-      "channel_name":"Upwork Project Catalog",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"permit-intake-receipt.html",
-      "id":"upwork-project-catalog__permit-intake-receipt",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"permit-intake-receipt",
-      "offer_name":"Permit Intake Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 199.00 is outside channel window"
-      ],
-      "source_blob_sha":"55a805b7b18afd1b8ea57b862a4becad93689626",
-      "source_path":"revenue/permit_intake_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"upwork-job-feed",
-      "channel_name":"Upwork job feed",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"permit-intake-receipt.html",
-      "id":"upwork-job-feed__permit-intake-receipt",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"permit-intake-receipt",
-      "offer_name":"Permit Intake Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 199.00 is outside channel window"
-      ],
-      "source_blob_sha":"55a805b7b18afd1b8ea57b862a4becad93689626",
-      "source_path":"revenue/permit_intake_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"contra-services",
-      "channel_name":"Contra Services",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"permit-intake-receipt.html",
-      "id":"contra-services__permit-intake-receipt",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"permit-intake-receipt",
-      "offer_name":"Permit Intake Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 199.00 is outside channel window"
-      ],
-      "source_blob_sha":"55a805b7b18afd1b8ea57b862a4becad93689626",
-      "source_path":"revenue/permit_intake_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"fiverr-gig",
-      "channel_name":"Fiverr Gig",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"permit-intake-receipt.html",
-      "id":"fiverr-gig__permit-intake-receipt",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"permit-intake-receipt",
-      "offer_name":"Permit Intake Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 199.00 is outside channel window"
-      ],
-      "source_blob_sha":"55a805b7b18afd1b8ea57b862a4becad93689626",
-      "source_path":"revenue/permit_intake_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"commons_surface",
-      "channel_id":"commons-pages",
-      "channel_name":"Commons public pages",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"permit-intake-receipt.html",
-      "id":"commons-pages__permit-intake-receipt",
-      "listing_state":"SURFACE_LIVE",
-      "offer_class":"bounded_service",
-      "offer_id":"permit-intake-receipt",
-      "offer_name":"Permit Intake Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[],
-      "source_blob_sha":"55a805b7b18afd1b8ea57b862a4becad93689626",
-      "source_path":"revenue/permit_intake_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"partner",
-      "channel_id":"tokenjunkielabs-slack",
-      "channel_name":"TokenJunkieLabs Slack #commons",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"permit-intake-receipt.html",
-      "id":"tokenjunkielabs-slack__permit-intake-receipt",
-      "listing_state":"SURFACE_LIVE",
-      "offer_class":"bounded_service",
-      "offer_id":"permit-intake-receipt",
-      "offer_name":"Permit Intake Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[],
-      "source_blob_sha":"55a805b7b18afd1b8ea57b862a4becad93689626",
-      "source_path":"revenue/permit_intake_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"partner",
-      "channel_id":"founder-email",
-      "channel_name":"Founder-sent email",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"permit-intake-receipt.html",
-      "id":"founder-email__permit-intake-receipt",
-      "listing_state":"SURFACE_LIVE",
-      "offer_class":"bounded_service",
-      "offer_id":"permit-intake-receipt",
-      "offer_name":"Permit Intake Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[],
-      "source_blob_sha":"55a805b7b18afd1b8ea57b862a4becad93689626",
-      "source_path":"revenue/permit_intake_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"procurement",
-      "channel_id":"sam-gov-procurement",
-      "channel_name":"SAM.gov",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"permit-intake-receipt.html",
-      "id":"sam-gov-procurement__permit-intake-receipt",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"permit-intake-receipt",
-      "offer_name":"Permit Intake Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside high_ticket_service,high_ticket_product,expertise_hour"
-      ],
-      "source_blob_sha":"55a805b7b18afd1b8ea57b862a4becad93689626",
-      "source_path":"revenue/permit_intake_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"procurement",
-      "channel_id":"gsa-schedule",
-      "channel_name":"GSA Schedule",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"permit-intake-receipt.html",
-      "id":"gsa-schedule__permit-intake-receipt",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"permit-intake-receipt",
-      "offer_name":"Permit Intake Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside high_ticket_service,high_ticket_product"
-      ],
-      "source_blob_sha":"55a805b7b18afd1b8ea57b862a4becad93689626",
-      "source_path":"revenue/permit_intake_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"procurement",
-      "channel_id":"public-rfp-pack",
-      "channel_name":"Public RFP response pack",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"permit-intake-receipt.html",
-      "id":"public-rfp-pack__permit-intake-receipt",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"permit-intake-receipt",
-      "offer_name":"Permit Intake Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 199.00 is outside channel window"
-      ],
-      "source_blob_sha":"55a805b7b18afd1b8ea57b862a4becad93689626",
-      "source_path":"revenue/permit_intake_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"github-marketplace",
-      "channel_name":"GitHub Marketplace",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"permit-intake-receipt.html",
-      "id":"github-marketplace__permit-intake-receipt",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"permit-intake-receipt",
-      "offer_name":"Permit Intake Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside developer_product"
-      ],
-      "source_blob_sha":"55a805b7b18afd1b8ea57b862a4becad93689626",
-      "source_path":"revenue/permit_intake_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"mcp-public-registry",
-      "channel_name":"Public MCP registry",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"permit-intake-receipt.html",
-      "id":"mcp-public-registry__permit-intake-receipt",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"permit-intake-receipt",
-      "offer_name":"Permit Intake Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside developer_product"
-      ],
-      "source_blob_sha":"55a805b7b18afd1b8ea57b862a4becad93689626",
-      "source_path":"revenue/permit_intake_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"npm-public-registry",
-      "channel_name":"npm public registry",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"permit-intake-receipt.html",
-      "id":"npm-public-registry__permit-intake-receipt",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"permit-intake-receipt",
-      "offer_name":"Permit Intake Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside developer_product"
-      ],
-      "source_blob_sha":"55a805b7b18afd1b8ea57b862a4becad93689626",
-      "source_path":"revenue/permit_intake_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"huggingface-hub",
-      "channel_name":"Hugging Face Hub",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"permit-intake-receipt.html",
-      "id":"huggingface-hub__permit-intake-receipt",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"permit-intake-receipt",
-      "offer_name":"Permit Intake Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside data_pack,developer_product"
-      ],
-      "source_blob_sha":"55a805b7b18afd1b8ea57b862a4becad93689626",
-      "source_path":"revenue/permit_intake_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"recorded_rail",
-      "channel_id":"stripe-payment-links",
-      "channel_name":"Stripe Payment Links",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"permit-intake-receipt.html",
-      "id":"stripe-payment-links__permit-intake-receipt",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"permit-intake-receipt",
-      "offer_name":"Permit Intake Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[
-        "exact active Stripe checkout is proven on the catalog"
-      ],
-      "source_blob_sha":"55a805b7b18afd1b8ea57b862a4becad93689626",
-      "source_path":"revenue/permit_intake_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"upwork-project-catalog",
-      "channel_name":"Upwork Project Catalog",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"catering-deposit-rescue.html",
-      "id":"upwork-project-catalog__catering-deposit-rescue",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"catering-deposit-rescue",
-      "offer_name":"Catering Deposit Rescue Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 199.00 is outside channel window"
-      ],
-      "source_blob_sha":"cacc6bcc912d0923196d9f61a974a2f6a2ed8b57",
-      "source_path":"revenue/catering_deposit_rescue/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"upwork-job-feed",
-      "channel_name":"Upwork job feed",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"catering-deposit-rescue.html",
-      "id":"upwork-job-feed__catering-deposit-rescue",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"catering-deposit-rescue",
-      "offer_name":"Catering Deposit Rescue Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 199.00 is outside channel window"
-      ],
-      "source_blob_sha":"cacc6bcc912d0923196d9f61a974a2f6a2ed8b57",
-      "source_path":"revenue/catering_deposit_rescue/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"contra-services",
-      "channel_name":"Contra Services",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"catering-deposit-rescue.html",
-      "id":"contra-services__catering-deposit-rescue",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"catering-deposit-rescue",
-      "offer_name":"Catering Deposit Rescue Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 199.00 is outside channel window"
-      ],
-      "source_blob_sha":"cacc6bcc912d0923196d9f61a974a2f6a2ed8b57",
-      "source_path":"revenue/catering_deposit_rescue/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"fiverr-gig",
-      "channel_name":"Fiverr Gig",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"catering-deposit-rescue.html",
-      "id":"fiverr-gig__catering-deposit-rescue",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"catering-deposit-rescue",
-      "offer_name":"Catering Deposit Rescue Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 199.00 is outside channel window"
-      ],
-      "source_blob_sha":"cacc6bcc912d0923196d9f61a974a2f6a2ed8b57",
-      "source_path":"revenue/catering_deposit_rescue/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"commons_surface",
-      "channel_id":"commons-pages",
-      "channel_name":"Commons public pages",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"catering-deposit-rescue.html",
-      "id":"commons-pages__catering-deposit-rescue",
-      "listing_state":"SURFACE_LIVE",
-      "offer_class":"bounded_service",
-      "offer_id":"catering-deposit-rescue",
-      "offer_name":"Catering Deposit Rescue Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[],
-      "source_blob_sha":"cacc6bcc912d0923196d9f61a974a2f6a2ed8b57",
-      "source_path":"revenue/catering_deposit_rescue/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"partner",
-      "channel_id":"tokenjunkielabs-slack",
-      "channel_name":"TokenJunkieLabs Slack #commons",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"catering-deposit-rescue.html",
-      "id":"tokenjunkielabs-slack__catering-deposit-rescue",
-      "listing_state":"SURFACE_LIVE",
-      "offer_class":"bounded_service",
-      "offer_id":"catering-deposit-rescue",
-      "offer_name":"Catering Deposit Rescue Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[],
-      "source_blob_sha":"cacc6bcc912d0923196d9f61a974a2f6a2ed8b57",
-      "source_path":"revenue/catering_deposit_rescue/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"partner",
-      "channel_id":"founder-email",
-      "channel_name":"Founder-sent email",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"catering-deposit-rescue.html",
-      "id":"founder-email__catering-deposit-rescue",
-      "listing_state":"SURFACE_LIVE",
-      "offer_class":"bounded_service",
-      "offer_id":"catering-deposit-rescue",
-      "offer_name":"Catering Deposit Rescue Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[],
-      "source_blob_sha":"cacc6bcc912d0923196d9f61a974a2f6a2ed8b57",
-      "source_path":"revenue/catering_deposit_rescue/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"procurement",
-      "channel_id":"sam-gov-procurement",
-      "channel_name":"SAM.gov",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"catering-deposit-rescue.html",
-      "id":"sam-gov-procurement__catering-deposit-rescue",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"catering-deposit-rescue",
-      "offer_name":"Catering Deposit Rescue Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside high_ticket_service,high_ticket_product,expertise_hour"
-      ],
-      "source_blob_sha":"cacc6bcc912d0923196d9f61a974a2f6a2ed8b57",
-      "source_path":"revenue/catering_deposit_rescue/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"procurement",
-      "channel_id":"gsa-schedule",
-      "channel_name":"GSA Schedule",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"catering-deposit-rescue.html",
-      "id":"gsa-schedule__catering-deposit-rescue",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"catering-deposit-rescue",
-      "offer_name":"Catering Deposit Rescue Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside high_ticket_service,high_ticket_product"
-      ],
-      "source_blob_sha":"cacc6bcc912d0923196d9f61a974a2f6a2ed8b57",
-      "source_path":"revenue/catering_deposit_rescue/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"procurement",
-      "channel_id":"public-rfp-pack",
-      "channel_name":"Public RFP response pack",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"catering-deposit-rescue.html",
-      "id":"public-rfp-pack__catering-deposit-rescue",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"catering-deposit-rescue",
-      "offer_name":"Catering Deposit Rescue Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 199.00 is outside channel window"
-      ],
-      "source_blob_sha":"cacc6bcc912d0923196d9f61a974a2f6a2ed8b57",
-      "source_path":"revenue/catering_deposit_rescue/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"github-marketplace",
-      "channel_name":"GitHub Marketplace",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"catering-deposit-rescue.html",
-      "id":"github-marketplace__catering-deposit-rescue",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"catering-deposit-rescue",
-      "offer_name":"Catering Deposit Rescue Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside developer_product"
-      ],
-      "source_blob_sha":"cacc6bcc912d0923196d9f61a974a2f6a2ed8b57",
-      "source_path":"revenue/catering_deposit_rescue/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"mcp-public-registry",
-      "channel_name":"Public MCP registry",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"catering-deposit-rescue.html",
-      "id":"mcp-public-registry__catering-deposit-rescue",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"catering-deposit-rescue",
-      "offer_name":"Catering Deposit Rescue Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside developer_product"
-      ],
-      "source_blob_sha":"cacc6bcc912d0923196d9f61a974a2f6a2ed8b57",
-      "source_path":"revenue/catering_deposit_rescue/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"npm-public-registry",
-      "channel_name":"npm public registry",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"catering-deposit-rescue.html",
-      "id":"npm-public-registry__catering-deposit-rescue",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"catering-deposit-rescue",
-      "offer_name":"Catering Deposit Rescue Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside developer_product"
-      ],
-      "source_blob_sha":"cacc6bcc912d0923196d9f61a974a2f6a2ed8b57",
-      "source_path":"revenue/catering_deposit_rescue/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"huggingface-hub",
-      "channel_name":"Hugging Face Hub",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"catering-deposit-rescue.html",
-      "id":"huggingface-hub__catering-deposit-rescue",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"catering-deposit-rescue",
-      "offer_name":"Catering Deposit Rescue Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside data_pack,developer_product"
-      ],
-      "source_blob_sha":"cacc6bcc912d0923196d9f61a974a2f6a2ed8b57",
-      "source_path":"revenue/catering_deposit_rescue/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"recorded_rail",
-      "channel_id":"stripe-payment-links",
-      "channel_name":"Stripe Payment Links",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"catering-deposit-rescue.html",
-      "id":"stripe-payment-links__catering-deposit-rescue",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"catering-deposit-rescue",
-      "offer_name":"Catering Deposit Rescue Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[
-        "exact active Stripe checkout is proven on the catalog"
-      ],
-      "source_blob_sha":"cacc6bcc912d0923196d9f61a974a2f6a2ed8b57",
-      "source_path":"revenue/catering_deposit_rescue/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"upwork-project-catalog",
-      "channel_name":"Upwork Project Catalog",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"invoice-exception-pack.html",
-      "id":"upwork-project-catalog__invoice-exception-pack",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"invoice-exception-pack",
-      "offer_name":"Invoice Exception Pack Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 199.00 is outside channel window"
-      ],
-      "source_blob_sha":"faa5742a4b045f55073fa2386aee9f4e17eab76a",
-      "source_path":"revenue/invoice_exception_pack/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"upwork-job-feed",
-      "channel_name":"Upwork job feed",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"invoice-exception-pack.html",
-      "id":"upwork-job-feed__invoice-exception-pack",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"invoice-exception-pack",
-      "offer_name":"Invoice Exception Pack Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 199.00 is outside channel window"
-      ],
-      "source_blob_sha":"faa5742a4b045f55073fa2386aee9f4e17eab76a",
-      "source_path":"revenue/invoice_exception_pack/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"contra-services",
-      "channel_name":"Contra Services",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"invoice-exception-pack.html",
-      "id":"contra-services__invoice-exception-pack",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"invoice-exception-pack",
-      "offer_name":"Invoice Exception Pack Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 199.00 is outside channel window"
-      ],
-      "source_blob_sha":"faa5742a4b045f55073fa2386aee9f4e17eab76a",
-      "source_path":"revenue/invoice_exception_pack/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"fiverr-gig",
-      "channel_name":"Fiverr Gig",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"invoice-exception-pack.html",
-      "id":"fiverr-gig__invoice-exception-pack",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"invoice-exception-pack",
-      "offer_name":"Invoice Exception Pack Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 199.00 is outside channel window"
-      ],
-      "source_blob_sha":"faa5742a4b045f55073fa2386aee9f4e17eab76a",
-      "source_path":"revenue/invoice_exception_pack/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"commons_surface",
-      "channel_id":"commons-pages",
-      "channel_name":"Commons public pages",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"invoice-exception-pack.html",
-      "id":"commons-pages__invoice-exception-pack",
-      "listing_state":"SURFACE_LIVE",
-      "offer_class":"bounded_service",
-      "offer_id":"invoice-exception-pack",
-      "offer_name":"Invoice Exception Pack Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[],
-      "source_blob_sha":"faa5742a4b045f55073fa2386aee9f4e17eab76a",
-      "source_path":"revenue/invoice_exception_pack/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"partner",
-      "channel_id":"tokenjunkielabs-slack",
-      "channel_name":"TokenJunkieLabs Slack #commons",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"invoice-exception-pack.html",
-      "id":"tokenjunkielabs-slack__invoice-exception-pack",
-      "listing_state":"SURFACE_LIVE",
-      "offer_class":"bounded_service",
-      "offer_id":"invoice-exception-pack",
-      "offer_name":"Invoice Exception Pack Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[],
-      "source_blob_sha":"faa5742a4b045f55073fa2386aee9f4e17eab76a",
-      "source_path":"revenue/invoice_exception_pack/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"partner",
-      "channel_id":"founder-email",
-      "channel_name":"Founder-sent email",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"invoice-exception-pack.html",
-      "id":"founder-email__invoice-exception-pack",
-      "listing_state":"SURFACE_LIVE",
-      "offer_class":"bounded_service",
-      "offer_id":"invoice-exception-pack",
-      "offer_name":"Invoice Exception Pack Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[],
-      "source_blob_sha":"faa5742a4b045f55073fa2386aee9f4e17eab76a",
-      "source_path":"revenue/invoice_exception_pack/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"procurement",
-      "channel_id":"sam-gov-procurement",
-      "channel_name":"SAM.gov",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"invoice-exception-pack.html",
-      "id":"sam-gov-procurement__invoice-exception-pack",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"invoice-exception-pack",
-      "offer_name":"Invoice Exception Pack Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside high_ticket_service,high_ticket_product,expertise_hour"
-      ],
-      "source_blob_sha":"faa5742a4b045f55073fa2386aee9f4e17eab76a",
-      "source_path":"revenue/invoice_exception_pack/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"procurement",
-      "channel_id":"gsa-schedule",
-      "channel_name":"GSA Schedule",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"invoice-exception-pack.html",
-      "id":"gsa-schedule__invoice-exception-pack",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"invoice-exception-pack",
-      "offer_name":"Invoice Exception Pack Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside high_ticket_service,high_ticket_product"
-      ],
-      "source_blob_sha":"faa5742a4b045f55073fa2386aee9f4e17eab76a",
-      "source_path":"revenue/invoice_exception_pack/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"procurement",
-      "channel_id":"public-rfp-pack",
-      "channel_name":"Public RFP response pack",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"invoice-exception-pack.html",
-      "id":"public-rfp-pack__invoice-exception-pack",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"invoice-exception-pack",
-      "offer_name":"Invoice Exception Pack Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 199.00 is outside channel window"
-      ],
-      "source_blob_sha":"faa5742a4b045f55073fa2386aee9f4e17eab76a",
-      "source_path":"revenue/invoice_exception_pack/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"github-marketplace",
-      "channel_name":"GitHub Marketplace",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"invoice-exception-pack.html",
-      "id":"github-marketplace__invoice-exception-pack",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"invoice-exception-pack",
-      "offer_name":"Invoice Exception Pack Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside developer_product"
-      ],
-      "source_blob_sha":"faa5742a4b045f55073fa2386aee9f4e17eab76a",
-      "source_path":"revenue/invoice_exception_pack/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"mcp-public-registry",
-      "channel_name":"Public MCP registry",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"invoice-exception-pack.html",
-      "id":"mcp-public-registry__invoice-exception-pack",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"invoice-exception-pack",
-      "offer_name":"Invoice Exception Pack Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside developer_product"
-      ],
-      "source_blob_sha":"faa5742a4b045f55073fa2386aee9f4e17eab76a",
-      "source_path":"revenue/invoice_exception_pack/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"npm-public-registry",
-      "channel_name":"npm public registry",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"invoice-exception-pack.html",
-      "id":"npm-public-registry__invoice-exception-pack",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"invoice-exception-pack",
-      "offer_name":"Invoice Exception Pack Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside developer_product"
-      ],
-      "source_blob_sha":"faa5742a4b045f55073fa2386aee9f4e17eab76a",
-      "source_path":"revenue/invoice_exception_pack/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"huggingface-hub",
-      "channel_name":"Hugging Face Hub",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"invoice-exception-pack.html",
-      "id":"huggingface-hub__invoice-exception-pack",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"invoice-exception-pack",
-      "offer_name":"Invoice Exception Pack Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside data_pack,developer_product"
-      ],
-      "source_blob_sha":"faa5742a4b045f55073fa2386aee9f4e17eab76a",
-      "source_path":"revenue/invoice_exception_pack/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"recorded_rail",
-      "channel_id":"stripe-payment-links",
-      "channel_name":"Stripe Payment Links",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"invoice-exception-pack.html",
-      "id":"stripe-payment-links__invoice-exception-pack",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"invoice-exception-pack",
-      "offer_name":"Invoice Exception Pack Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[
-        "exact active Stripe checkout is proven on the catalog"
-      ],
-      "source_blob_sha":"faa5742a4b045f55073fa2386aee9f4e17eab76a",
-      "source_path":"revenue/invoice_exception_pack/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"upwork-project-catalog",
-      "channel_name":"Upwork Project Catalog",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"open-model-release-receipt.html",
-      "id":"upwork-project-catalog__open-model-release-receipt",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"open-model-release-receipt",
-      "offer_name":"Open Model Release Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 199.00 is outside channel window"
-      ],
-      "source_blob_sha":"7be8c00672596c4418a1a9f7a1c597ff2afe11ae",
-      "source_path":"revenue/open_model_release_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"upwork-job-feed",
-      "channel_name":"Upwork job feed",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"open-model-release-receipt.html",
-      "id":"upwork-job-feed__open-model-release-receipt",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"open-model-release-receipt",
-      "offer_name":"Open Model Release Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 199.00 is outside channel window"
-      ],
-      "source_blob_sha":"7be8c00672596c4418a1a9f7a1c597ff2afe11ae",
-      "source_path":"revenue/open_model_release_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"contra-services",
-      "channel_name":"Contra Services",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"open-model-release-receipt.html",
-      "id":"contra-services__open-model-release-receipt",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"open-model-release-receipt",
-      "offer_name":"Open Model Release Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 199.00 is outside channel window"
-      ],
-      "source_blob_sha":"7be8c00672596c4418a1a9f7a1c597ff2afe11ae",
-      "source_path":"revenue/open_model_release_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"fiverr-gig",
-      "channel_name":"Fiverr Gig",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"open-model-release-receipt.html",
-      "id":"fiverr-gig__open-model-release-receipt",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"open-model-release-receipt",
-      "offer_name":"Open Model Release Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 199.00 is outside channel window"
-      ],
-      "source_blob_sha":"7be8c00672596c4418a1a9f7a1c597ff2afe11ae",
-      "source_path":"revenue/open_model_release_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"commons_surface",
-      "channel_id":"commons-pages",
-      "channel_name":"Commons public pages",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"open-model-release-receipt.html",
-      "id":"commons-pages__open-model-release-receipt",
-      "listing_state":"SURFACE_LIVE",
-      "offer_class":"bounded_service",
-      "offer_id":"open-model-release-receipt",
-      "offer_name":"Open Model Release Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[],
-      "source_blob_sha":"7be8c00672596c4418a1a9f7a1c597ff2afe11ae",
-      "source_path":"revenue/open_model_release_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"partner",
-      "channel_id":"tokenjunkielabs-slack",
-      "channel_name":"TokenJunkieLabs Slack #commons",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"open-model-release-receipt.html",
-      "id":"tokenjunkielabs-slack__open-model-release-receipt",
-      "listing_state":"SURFACE_LIVE",
-      "offer_class":"bounded_service",
-      "offer_id":"open-model-release-receipt",
-      "offer_name":"Open Model Release Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[],
-      "source_blob_sha":"7be8c00672596c4418a1a9f7a1c597ff2afe11ae",
-      "source_path":"revenue/open_model_release_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"partner",
-      "channel_id":"founder-email",
-      "channel_name":"Founder-sent email",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"open-model-release-receipt.html",
-      "id":"founder-email__open-model-release-receipt",
-      "listing_state":"SURFACE_LIVE",
-      "offer_class":"bounded_service",
-      "offer_id":"open-model-release-receipt",
-      "offer_name":"Open Model Release Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[],
-      "source_blob_sha":"7be8c00672596c4418a1a9f7a1c597ff2afe11ae",
-      "source_path":"revenue/open_model_release_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"procurement",
-      "channel_id":"sam-gov-procurement",
-      "channel_name":"SAM.gov",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"open-model-release-receipt.html",
-      "id":"sam-gov-procurement__open-model-release-receipt",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"open-model-release-receipt",
-      "offer_name":"Open Model Release Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside high_ticket_service,high_ticket_product,expertise_hour"
-      ],
-      "source_blob_sha":"7be8c00672596c4418a1a9f7a1c597ff2afe11ae",
-      "source_path":"revenue/open_model_release_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"procurement",
-      "channel_id":"gsa-schedule",
-      "channel_name":"GSA Schedule",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"open-model-release-receipt.html",
-      "id":"gsa-schedule__open-model-release-receipt",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"open-model-release-receipt",
-      "offer_name":"Open Model Release Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside high_ticket_service,high_ticket_product"
-      ],
-      "source_blob_sha":"7be8c00672596c4418a1a9f7a1c597ff2afe11ae",
-      "source_path":"revenue/open_model_release_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"procurement",
-      "channel_id":"public-rfp-pack",
-      "channel_name":"Public RFP response pack",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"open-model-release-receipt.html",
-      "id":"public-rfp-pack__open-model-release-receipt",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"open-model-release-receipt",
-      "offer_name":"Open Model Release Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 199.00 is outside channel window"
-      ],
-      "source_blob_sha":"7be8c00672596c4418a1a9f7a1c597ff2afe11ae",
-      "source_path":"revenue/open_model_release_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"github-marketplace",
-      "channel_name":"GitHub Marketplace",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"open-model-release-receipt.html",
-      "id":"github-marketplace__open-model-release-receipt",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"open-model-release-receipt",
-      "offer_name":"Open Model Release Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside developer_product"
-      ],
-      "source_blob_sha":"7be8c00672596c4418a1a9f7a1c597ff2afe11ae",
-      "source_path":"revenue/open_model_release_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"mcp-public-registry",
-      "channel_name":"Public MCP registry",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"open-model-release-receipt.html",
-      "id":"mcp-public-registry__open-model-release-receipt",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"open-model-release-receipt",
-      "offer_name":"Open Model Release Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside developer_product"
-      ],
-      "source_blob_sha":"7be8c00672596c4418a1a9f7a1c597ff2afe11ae",
-      "source_path":"revenue/open_model_release_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"npm-public-registry",
-      "channel_name":"npm public registry",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"open-model-release-receipt.html",
-      "id":"npm-public-registry__open-model-release-receipt",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"open-model-release-receipt",
-      "offer_name":"Open Model Release Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside developer_product"
-      ],
-      "source_blob_sha":"7be8c00672596c4418a1a9f7a1c597ff2afe11ae",
-      "source_path":"revenue/open_model_release_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"huggingface-hub",
-      "channel_name":"Hugging Face Hub",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"open-model-release-receipt.html",
-      "id":"huggingface-hub__open-model-release-receipt",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"open-model-release-receipt",
-      "offer_name":"Open Model Release Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside data_pack,developer_product"
-      ],
-      "source_blob_sha":"7be8c00672596c4418a1a9f7a1c597ff2afe11ae",
-      "source_path":"revenue/open_model_release_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"recorded_rail",
-      "channel_id":"stripe-payment-links",
-      "channel_name":"Stripe Payment Links",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"open-model-release-receipt.html",
-      "id":"stripe-payment-links__open-model-release-receipt",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"open-model-release-receipt",
-      "offer_name":"Open Model Release Receipt Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[
-        "exact active Stripe checkout is proven on the catalog"
-      ],
-      "source_blob_sha":"7be8c00672596c4418a1a9f7a1c597ff2afe11ae",
-      "source_path":"revenue/open_model_release_receipt/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"upwork-project-catalog",
-      "channel_name":"Upwork Project Catalog",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"fleet-work-order.html",
-      "id":"upwork-project-catalog__fleet-work-order-exactly-once",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"fleet-work-order-exactly-once",
-      "offer_name":"Fleet Work Order Exactly-Once Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 199.00 is outside channel window"
-      ],
-      "source_blob_sha":"44a8a71434b7d616cdb3f304b46b51166201011e",
-      "source_path":"revenue/fleet_work_order/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"upwork-job-feed",
-      "channel_name":"Upwork job feed",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"fleet-work-order.html",
-      "id":"upwork-job-feed__fleet-work-order-exactly-once",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"fleet-work-order-exactly-once",
-      "offer_name":"Fleet Work Order Exactly-Once Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 199.00 is outside channel window"
-      ],
-      "source_blob_sha":"44a8a71434b7d616cdb3f304b46b51166201011e",
-      "source_path":"revenue/fleet_work_order/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"contra-services",
-      "channel_name":"Contra Services",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"fleet-work-order.html",
-      "id":"contra-services__fleet-work-order-exactly-once",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"fleet-work-order-exactly-once",
-      "offer_name":"Fleet Work Order Exactly-Once Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 199.00 is outside channel window"
-      ],
-      "source_blob_sha":"44a8a71434b7d616cdb3f304b46b51166201011e",
-      "source_path":"revenue/fleet_work_order/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"fiverr-gig",
-      "channel_name":"Fiverr Gig",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"fleet-work-order.html",
-      "id":"fiverr-gig__fleet-work-order-exactly-once",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"fleet-work-order-exactly-once",
-      "offer_name":"Fleet Work Order Exactly-Once Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 199.00 is outside channel window"
-      ],
-      "source_blob_sha":"44a8a71434b7d616cdb3f304b46b51166201011e",
-      "source_path":"revenue/fleet_work_order/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"commons_surface",
-      "channel_id":"commons-pages",
-      "channel_name":"Commons public pages",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"fleet-work-order.html",
-      "id":"commons-pages__fleet-work-order-exactly-once",
-      "listing_state":"SURFACE_LIVE",
-      "offer_class":"bounded_service",
-      "offer_id":"fleet-work-order-exactly-once",
-      "offer_name":"Fleet Work Order Exactly-Once Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[],
-      "source_blob_sha":"44a8a71434b7d616cdb3f304b46b51166201011e",
-      "source_path":"revenue/fleet_work_order/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"partner",
-      "channel_id":"tokenjunkielabs-slack",
-      "channel_name":"TokenJunkieLabs Slack #commons",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"fleet-work-order.html",
-      "id":"tokenjunkielabs-slack__fleet-work-order-exactly-once",
-      "listing_state":"SURFACE_LIVE",
-      "offer_class":"bounded_service",
-      "offer_id":"fleet-work-order-exactly-once",
-      "offer_name":"Fleet Work Order Exactly-Once Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[],
-      "source_blob_sha":"44a8a71434b7d616cdb3f304b46b51166201011e",
-      "source_path":"revenue/fleet_work_order/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"partner",
-      "channel_id":"founder-email",
-      "channel_name":"Founder-sent email",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"fleet-work-order.html",
-      "id":"founder-email__fleet-work-order-exactly-once",
-      "listing_state":"SURFACE_LIVE",
-      "offer_class":"bounded_service",
-      "offer_id":"fleet-work-order-exactly-once",
-      "offer_name":"Fleet Work Order Exactly-Once Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[],
-      "source_blob_sha":"44a8a71434b7d616cdb3f304b46b51166201011e",
-      "source_path":"revenue/fleet_work_order/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"procurement",
-      "channel_id":"sam-gov-procurement",
-      "channel_name":"SAM.gov",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"fleet-work-order.html",
-      "id":"sam-gov-procurement__fleet-work-order-exactly-once",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"fleet-work-order-exactly-once",
-      "offer_name":"Fleet Work Order Exactly-Once Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside high_ticket_service,high_ticket_product,expertise_hour"
-      ],
-      "source_blob_sha":"44a8a71434b7d616cdb3f304b46b51166201011e",
-      "source_path":"revenue/fleet_work_order/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"procurement",
-      "channel_id":"gsa-schedule",
-      "channel_name":"GSA Schedule",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"fleet-work-order.html",
-      "id":"gsa-schedule__fleet-work-order-exactly-once",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"fleet-work-order-exactly-once",
-      "offer_name":"Fleet Work Order Exactly-Once Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside high_ticket_service,high_ticket_product"
-      ],
-      "source_blob_sha":"44a8a71434b7d616cdb3f304b46b51166201011e",
-      "source_path":"revenue/fleet_work_order/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"procurement",
-      "channel_id":"public-rfp-pack",
-      "channel_name":"Public RFP response pack",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"fleet-work-order.html",
-      "id":"public-rfp-pack__fleet-work-order-exactly-once",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"fleet-work-order-exactly-once",
-      "offer_name":"Fleet Work Order Exactly-Once Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 199.00 is outside channel window"
-      ],
-      "source_blob_sha":"44a8a71434b7d616cdb3f304b46b51166201011e",
-      "source_path":"revenue/fleet_work_order/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"github-marketplace",
-      "channel_name":"GitHub Marketplace",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"fleet-work-order.html",
-      "id":"github-marketplace__fleet-work-order-exactly-once",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"fleet-work-order-exactly-once",
-      "offer_name":"Fleet Work Order Exactly-Once Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside developer_product"
-      ],
-      "source_blob_sha":"44a8a71434b7d616cdb3f304b46b51166201011e",
-      "source_path":"revenue/fleet_work_order/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"mcp-public-registry",
-      "channel_name":"Public MCP registry",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"fleet-work-order.html",
-      "id":"mcp-public-registry__fleet-work-order-exactly-once",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"fleet-work-order-exactly-once",
-      "offer_name":"Fleet Work Order Exactly-Once Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside developer_product"
-      ],
-      "source_blob_sha":"44a8a71434b7d616cdb3f304b46b51166201011e",
-      "source_path":"revenue/fleet_work_order/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"npm-public-registry",
-      "channel_name":"npm public registry",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"fleet-work-order.html",
-      "id":"npm-public-registry__fleet-work-order-exactly-once",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"fleet-work-order-exactly-once",
-      "offer_name":"Fleet Work Order Exactly-Once Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside developer_product"
-      ],
-      "source_blob_sha":"44a8a71434b7d616cdb3f304b46b51166201011e",
-      "source_path":"revenue/fleet_work_order/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"huggingface-hub",
-      "channel_name":"Hugging Face Hub",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"fleet-work-order.html",
-      "id":"huggingface-hub__fleet-work-order-exactly-once",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"fleet-work-order-exactly-once",
-      "offer_name":"Fleet Work Order Exactly-Once Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside data_pack,developer_product"
-      ],
-      "source_blob_sha":"44a8a71434b7d616cdb3f304b46b51166201011e",
-      "source_path":"revenue/fleet_work_order/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"199.00",
-      "blocked_reason":null,
-      "channel_family":"recorded_rail",
-      "channel_id":"stripe-payment-links",
-      "channel_name":"Stripe Payment Links",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"fleet-work-order.html",
-      "id":"stripe-payment-links__fleet-work-order-exactly-once",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"fleet-work-order-exactly-once",
-      "offer_name":"Fleet Work Order Exactly-Once Diagnostic",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[
-        "exact active Stripe checkout is proven on the catalog"
-      ],
-      "source_blob_sha":"44a8a71434b7d616cdb3f304b46b51166201011e",
-      "source_path":"revenue/fleet_work_order/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"49.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"upwork-project-catalog",
-      "channel_name":"Upwork Project Catalog",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"mcp-conformance.html",
-      "id":"upwork-project-catalog__mcp-conformance-receipt-run",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-receipt-run",
-      "offer_name":"MCP Conformance Receipt Run",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 49.00 is outside channel window"
-      ],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"49.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"upwork-job-feed",
-      "channel_name":"Upwork job feed",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"mcp-conformance.html",
-      "id":"upwork-job-feed__mcp-conformance-receipt-run",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-receipt-run",
-      "offer_name":"MCP Conformance Receipt Run",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 49.00 is outside channel window"
-      ],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"49.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"contra-services",
-      "channel_name":"Contra Services",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"mcp-conformance.html",
-      "id":"contra-services__mcp-conformance-receipt-run",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-receipt-run",
-      "offer_name":"MCP Conformance Receipt Run",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 49.00 is outside channel window"
-      ],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"49.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"fiverr-gig",
-      "channel_name":"Fiverr Gig",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"mcp-conformance.html",
-      "id":"fiverr-gig__mcp-conformance-receipt-run",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-receipt-run",
-      "offer_name":"MCP Conformance Receipt Run",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 49.00 is outside channel window"
-      ],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"49.00",
-      "blocked_reason":null,
-      "channel_family":"commons_surface",
-      "channel_id":"commons-pages",
-      "channel_name":"Commons public pages",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"mcp-conformance.html",
-      "id":"commons-pages__mcp-conformance-receipt-run",
-      "listing_state":"SURFACE_LIVE",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-receipt-run",
-      "offer_name":"MCP Conformance Receipt Run",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"49.00",
-      "blocked_reason":null,
-      "channel_family":"partner",
-      "channel_id":"tokenjunkielabs-slack",
-      "channel_name":"TokenJunkieLabs Slack #commons",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"mcp-conformance.html",
-      "id":"tokenjunkielabs-slack__mcp-conformance-receipt-run",
-      "listing_state":"SURFACE_LIVE",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-receipt-run",
-      "offer_name":"MCP Conformance Receipt Run",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"49.00",
-      "blocked_reason":null,
-      "channel_family":"partner",
-      "channel_id":"founder-email",
-      "channel_name":"Founder-sent email",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"mcp-conformance.html",
-      "id":"founder-email__mcp-conformance-receipt-run",
-      "listing_state":"SURFACE_LIVE",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-receipt-run",
-      "offer_name":"MCP Conformance Receipt Run",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"49.00",
-      "blocked_reason":null,
-      "channel_family":"procurement",
-      "channel_id":"sam-gov-procurement",
-      "channel_name":"SAM.gov",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"mcp-conformance.html",
-      "id":"sam-gov-procurement__mcp-conformance-receipt-run",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-receipt-run",
-      "offer_name":"MCP Conformance Receipt Run",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside high_ticket_service,high_ticket_product,expertise_hour"
-      ],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"49.00",
-      "blocked_reason":null,
-      "channel_family":"procurement",
-      "channel_id":"gsa-schedule",
-      "channel_name":"GSA Schedule",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"mcp-conformance.html",
-      "id":"gsa-schedule__mcp-conformance-receipt-run",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-receipt-run",
-      "offer_name":"MCP Conformance Receipt Run",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside high_ticket_service,high_ticket_product"
-      ],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"49.00",
-      "blocked_reason":null,
-      "channel_family":"procurement",
-      "channel_id":"public-rfp-pack",
-      "channel_name":"Public RFP response pack",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"mcp-conformance.html",
-      "id":"public-rfp-pack__mcp-conformance-receipt-run",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-receipt-run",
-      "offer_name":"MCP Conformance Receipt Run",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 49.00 is outside channel window"
-      ],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"49.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"github-marketplace",
-      "channel_name":"GitHub Marketplace",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"mcp-conformance.html",
-      "id":"github-marketplace__mcp-conformance-receipt-run",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-receipt-run",
-      "offer_name":"MCP Conformance Receipt Run",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside developer_product"
-      ],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"49.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"mcp-public-registry",
-      "channel_name":"Public MCP registry",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"mcp-conformance.html",
-      "id":"mcp-public-registry__mcp-conformance-receipt-run",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-receipt-run",
-      "offer_name":"MCP Conformance Receipt Run",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside developer_product"
-      ],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"49.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"npm-public-registry",
-      "channel_name":"npm public registry",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"mcp-conformance.html",
-      "id":"npm-public-registry__mcp-conformance-receipt-run",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-receipt-run",
-      "offer_name":"MCP Conformance Receipt Run",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside developer_product"
-      ],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"49.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"huggingface-hub",
-      "channel_name":"Hugging Face Hub",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"mcp-conformance.html",
-      "id":"huggingface-hub__mcp-conformance-receipt-run",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-receipt-run",
-      "offer_name":"MCP Conformance Receipt Run",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside data_pack,developer_product"
-      ],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"49.00",
-      "blocked_reason":null,
-      "channel_family":"recorded_rail",
-      "channel_id":"stripe-payment-links",
-      "channel_name":"Stripe Payment Links",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"mcp-conformance.html",
-      "id":"stripe-payment-links__mcp-conformance-receipt-run",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-receipt-run",
-      "offer_name":"MCP Conformance Receipt Run",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[
-        "exact active Stripe checkout is proven on the catalog"
-      ],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"250.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"upwork-project-catalog",
-      "channel_name":"Upwork Project Catalog",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"mcp-conformance.html",
-      "id":"upwork-project-catalog__mcp-conformance-same-day-repair",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-same-day-repair",
-      "offer_name":"MCP Conformance Same-Day Repair",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 250.00 is outside channel window"
-      ],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"250.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"upwork-job-feed",
-      "channel_name":"Upwork job feed",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"mcp-conformance.html",
-      "id":"upwork-job-feed__mcp-conformance-same-day-repair",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-same-day-repair",
-      "offer_name":"MCP Conformance Same-Day Repair",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 250.00 is outside channel window"
-      ],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"250.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"contra-services",
-      "channel_name":"Contra Services",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"mcp-conformance.html",
-      "id":"contra-services__mcp-conformance-same-day-repair",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-same-day-repair",
-      "offer_name":"MCP Conformance Same-Day Repair",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 250.00 is outside channel window"
-      ],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"250.00",
-      "blocked_reason":null,
-      "channel_family":"public_marketplace",
-      "channel_id":"fiverr-gig",
-      "channel_name":"Fiverr Gig",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"mcp-conformance.html",
-      "id":"fiverr-gig__mcp-conformance-same-day-repair",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-same-day-repair",
-      "offer_name":"MCP Conformance Same-Day Repair",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 250.00 is outside channel window"
-      ],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"250.00",
-      "blocked_reason":null,
-      "channel_family":"commons_surface",
-      "channel_id":"commons-pages",
-      "channel_name":"Commons public pages",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"mcp-conformance.html",
-      "id":"commons-pages__mcp-conformance-same-day-repair",
-      "listing_state":"SURFACE_LIVE",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-same-day-repair",
-      "offer_name":"MCP Conformance Same-Day Repair",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"250.00",
-      "blocked_reason":null,
-      "channel_family":"partner",
-      "channel_id":"tokenjunkielabs-slack",
-      "channel_name":"TokenJunkieLabs Slack #commons",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"mcp-conformance.html",
-      "id":"tokenjunkielabs-slack__mcp-conformance-same-day-repair",
-      "listing_state":"SURFACE_LIVE",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-same-day-repair",
-      "offer_name":"MCP Conformance Same-Day Repair",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"250.00",
-      "blocked_reason":null,
-      "channel_family":"partner",
-      "channel_id":"founder-email",
-      "channel_name":"Founder-sent email",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"mcp-conformance.html",
-      "id":"founder-email__mcp-conformance-same-day-repair",
-      "listing_state":"SURFACE_LIVE",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-same-day-repair",
-      "offer_name":"MCP Conformance Same-Day Repair",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"250.00",
-      "blocked_reason":null,
-      "channel_family":"procurement",
-      "channel_id":"sam-gov-procurement",
-      "channel_name":"SAM.gov",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"mcp-conformance.html",
-      "id":"sam-gov-procurement__mcp-conformance-same-day-repair",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-same-day-repair",
-      "offer_name":"MCP Conformance Same-Day Repair",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside high_ticket_service,high_ticket_product,expertise_hour"
-      ],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"250.00",
-      "blocked_reason":null,
-      "channel_family":"procurement",
-      "channel_id":"gsa-schedule",
-      "channel_name":"GSA Schedule",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"mcp-conformance.html",
-      "id":"gsa-schedule__mcp-conformance-same-day-repair",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-same-day-repair",
-      "offer_name":"MCP Conformance Same-Day Repair",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside high_ticket_service,high_ticket_product"
-      ],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"250.00",
-      "blocked_reason":null,
-      "channel_family":"procurement",
-      "channel_id":"public-rfp-pack",
-      "channel_name":"Public RFP response pack",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"mcp-conformance.html",
-      "id":"public-rfp-pack__mcp-conformance-same-day-repair",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-same-day-repair",
-      "offer_name":"MCP Conformance Same-Day Repair",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "amount 250.00 is outside channel window"
-      ],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"250.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"github-marketplace",
-      "channel_name":"GitHub Marketplace",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"mcp-conformance.html",
-      "id":"github-marketplace__mcp-conformance-same-day-repair",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-same-day-repair",
-      "offer_name":"MCP Conformance Same-Day Repair",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside developer_product"
-      ],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"250.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"mcp-public-registry",
-      "channel_name":"Public MCP registry",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"mcp-conformance.html",
-      "id":"mcp-public-registry__mcp-conformance-same-day-repair",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-same-day-repair",
-      "offer_name":"MCP Conformance Same-Day Repair",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside developer_product"
-      ],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"250.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"npm-public-registry",
-      "channel_name":"npm public registry",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"mcp-conformance.html",
-      "id":"npm-public-registry__mcp-conformance-same-day-repair",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-same-day-repair",
-      "offer_name":"MCP Conformance Same-Day Repair",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside developer_product"
-      ],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"250.00",
-      "blocked_reason":null,
-      "channel_family":"developer_ecosystem",
-      "channel_id":"huggingface-hub",
-      "channel_name":"Hugging Face Hub",
-      "currency":"USD",
-      "fit":"UNFIT",
-      "human_route":"mcp-conformance.html",
-      "id":"huggingface-hub__mcp-conformance-same-day-repair",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-same-day-repair",
-      "offer_name":"MCP Conformance Same-Day Repair",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
-      "reasons":[
-        "class bounded_service is outside data_pack,developer_product"
-      ],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
-      "submit_allowed":false
-    },
-    {
-      "amount":"250.00",
-      "blocked_reason":null,
-      "channel_family":"recorded_rail",
-      "channel_id":"stripe-payment-links",
-      "channel_name":"Stripe Payment Links",
-      "currency":"USD",
-      "fit":"FIT",
-      "human_route":"mcp-conformance.html",
-      "id":"stripe-payment-links__mcp-conformance-same-day-repair",
-      "listing_state":"NOT_LISTED",
-      "offer_class":"bounded_service",
-      "offer_id":"mcp-conformance-same-day-repair",
-      "offer_name":"MCP Conformance Same-Day Repair",
-      "offer_state":"PUBLIC_OFFER",
-      "package_state":"PACKAGE_READY",
-      "reasons":[
-        "exact active Stripe checkout is proven on the catalog"
-      ],
-      "source_blob_sha":"accd2d9fda85c36a4f5854320370937764dccd14",
-      "source_path":"revenue/mcp_conformance/contract.json",
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
       "submit_allowed":false
     }
   ],

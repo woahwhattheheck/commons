@@ -151,9 +151,9 @@
       "start_route": "humans.html#interest"
     },
     {
-      "commons_bottleneck": "Reserve one delivery window and build the accepted proof after funding.",
+      "commons_bottleneck": "Reserve one delivery window and build the accepted proof after funding; keep agent-rescue.html reserved for Autopsy.",
       "delivery_window": "one agreed business day",
-      "founder_bottleneck": "Do not route Survival Proof buyers to agent-rescue.html (that page is retired). Accept the exact sentence and window from revenue/production_survival/README.md, then issue a buyer-specific payment handoff.",
+      "founder_bottleneck": "Do not route Survival Proof buyers to agent-rescue.html (that page is the live $29 Autopsy). Accept the exact sentence and window from revenue/production_survival/README.md, then issue a buyer-specific payment handoff.",
       "id": "same-day-agent-survival-proof",
       "name": "Same-Day Agent Survival Proof",
       "next_external_event": "A real buyer starts from revenue/production_survival/README.md with the one-sentence failure and agrees to a start window.",

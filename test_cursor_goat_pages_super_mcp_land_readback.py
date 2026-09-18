@@ -19,9 +19,9 @@ HUB = ROOT / "hub_pages.py"
 KEEP = {
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
     "catalog.html": "68b9b066",
-    "boards.html": "b54177b5",
-    "wire.html": "623602a7",
-    "ground/WIRE_SUPER_MCP.md": "dba33cf7",
+    "boards.html": "74332cb0",
+    "wire.html": "5f0d0f84",
+    "ground/WIRE_SUPER_MCP.md": "626b07f7",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
     "p/latch-wake-super-mcp-pointer-20260902-01.md": "a35e63c3",
     "p/wire-shared-super-mcp-catalog-20260902-01.md": "b6cb27ef",
@@ -30,16 +30,16 @@ KEEP = {
     "door.js": "5899223c",
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "host/commerce_agents.py": "8d2ddf29",
-    "test_commerce_agents.py": "7ec07521",
+    "test_commerce_agents.py": "f0ff008c",
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
     "host/commerce_agents_same_loop.py": "c90f6e50",
-    "test_commerce_agents_same_loop.py": "a1ab8b26",
+    "test_commerce_agents_same_loop.py": "03426c3c",
     "p/cursor-claude-commerce-agents-readback-20260902-01.md": "0153924f",
     "p/cursor-harborline-commerce-compose-readback-20260902-01.md": "b33e2e24",
     "p/cursor-harborline-commerce-compose-keep-lift-20260902-01.md": "668dd5c4",
     "p/cursor-big-huge-commerce-agents-readback-20260902-01.md": "2a5ce894",
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
-    "ground/OWNER_NOW.md": "40f786fe",
+    "ground/OWNER_NOW.md": "39a0e0c3",
 }
 
 

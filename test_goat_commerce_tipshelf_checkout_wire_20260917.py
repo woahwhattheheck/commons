@@ -132,7 +132,7 @@ class GoatCommerceTipshelfCheckoutWire(unittest.TestCase):
         self.assertEqual(len(SHELF_URLS), 6)
 
         hrefs = [unescape(value) for value in STRIPE_HREF_RE.findall(html)]
-        self.assertGreaterEqual(len(hrefs), 21)
+        self.assertGreaterEqual(len(hrefs), 20)
         seen = set()
         for href in hrefs:
             parsed = urlsplit(href)

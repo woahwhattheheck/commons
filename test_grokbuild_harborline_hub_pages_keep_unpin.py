@@ -25,7 +25,7 @@ KEEP_UNREAD = {
     "host/harborline_pack_market_render.py": "cc9a3320",
     "p/cursor-harborline-pack-market-render-readback-20260902-01.md": "6efbac54",
     "p/cursor-harborline-pack-market-render-readback-rematch-20260902-01.md": "f965e00f",
-    "ground/OWNER_NOW.md": "40f786fe",
+    "ground/OWNER_NOW.md": "39a0e0c3",
     "autogtm.html": "5c966110",
 }
 

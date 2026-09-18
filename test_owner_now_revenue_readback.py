@@ -19,7 +19,7 @@ KEEP = {
     "owner-now-revenue.html": "ae172d9e",
     "land/owner-now-revenue-20260902.md": "aa193e21",
     "pay.js": "d5d92b33",
-    "ground/OWNER_NOW.md": "40f786fe",
+    "ground/OWNER_NOW.md": "39a0e0c3",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
@@ -58,6 +58,7 @@ class TestOwnerNowRevenueReadback(unittest.TestCase):
         packet = json.loads(proc.stdout)
         self.assertEqual(packet["verdict"], "ASK_FOR_SALE", packet)
         self.assertEqual(packet["sku_count"], len(packet["ask_for_sale"]))
+        self.assertIn("agent-failure-autopsy-29", {row["sku"] for row in packet["ask_for_sale"]})
         self.assertTrue(packet["chargeable"])
         self.assertFalse(packet["invented_stripe_urls"])
         self.assertEqual(packet["cash_usd"], 0)

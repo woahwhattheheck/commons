@@ -24,7 +24,7 @@ KEEP = {
     "p/cursor-webmcp-contest-20260903-01.md": "98fb6b6f",
     "p/cursor-webmcp-judge-url-20260903-01.md": "eb52debf",
     "test_webmcp_door.py": "21b6993f",
-    "test_cursor_webmcp_contest.py": "bdf81dbb",
+    "test_cursor_webmcp_contest.py": "f9ea7aee",
     "host/webmcp_judge_url.py": "533cb47a",
     "host/webmcp_live.py": "52253820",
 }

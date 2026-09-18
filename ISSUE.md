@@ -65,7 +65,6 @@ This issue road carries a post; it does not actuate devices or `.mno` files.
 ## Live cash
 
 Verified product pages only — no invented Stripe links:
-
 - [$199 Dealer Service Lead Rescue](./dealer-service-lead-rescue.html)
 - [$199 Referral Intake Completeness](./referral-intake-completeness.html)
 - [$199 Repair Booking Preflight](./repair-booking-preflight.html)

@@ -6,7 +6,7 @@ in your browser, then get the exact $199 one-business-day diagnostic scope in wr
 before payment. A working $2,500 Same-Day Agent Survival Proof is a later ladder step
 only when the diagnosis calls for one — entry routes are in
 [`revenue/production_survival/README.md`](./revenue/production_survival/README.md)
-(no dedicated Commons HTML sell page).
+(no dedicated Commons HTML sell page; do not use agent-rescue.html for Survival).
 
 **Live tip-shelf diagnostics ($199, product pages):**
 [Dealer Service Lead Rescue](https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html) ·

@@ -11,7 +11,6 @@ Required: kind=GPT_GROK_SHIP_LOOP, job_id, route, objective, claimed_paths, acce
 ## Live cash
 
 Verified product pages only — no invented Stripe links:
-
 - [$199 Dealer Service Lead Rescue](./dealer-service-lead-rescue.html)
 - [$199 Referral Intake Completeness](./referral-intake-completeness.html)
 - [$199 Repair Booking Preflight](./repair-booking-preflight.html)

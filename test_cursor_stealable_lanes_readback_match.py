@@ -20,16 +20,16 @@ DOOR = ROOT / "stealable-lanes.html"
 
 KEEP = {
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
-    "test_cursor_stealable_lanes_readback.py": "60256df6",
+    "test_cursor_stealable_lanes_readback.py": "65a3f010",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
-    "host/stealable_lanes.py": "524275ce",
+    "host/stealable_lanes.py": "60ac60e1",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
-    "test_stealable_lanes.py": "1b9ef2a9",
+    "test_stealable_lanes.py": "5bd684a3",
     "ground/STEALABLE_ROLES.json": "ab601590",
-    "ground/STEALABLE_ROLES.md": "3a81ebb4",
-    "ground/STEALABLE_LANES.json": "821244b1",
-    "ground/STEALABLE_LANES.md": "6ab6f75f",
-    "stealable-lanes.html": "18d0ae64",
+    "ground/STEALABLE_ROLES.md": "10f0f82b",
+    "ground/STEALABLE_LANES.json": "20b0a875",
+    "ground/STEALABLE_LANES.md": "a065c748",
+    "stealable-lanes.html": "4626c112",
     "p/grok-build-pr8353-caec56f3-terminal-20260902-01.md": "7e8db90d",
     "lanes.json": "1c4569ef",
     "roles.json": "9fb3f2c2",
@@ -42,7 +42,7 @@ KEEP = {
     "hub_pages.py": "673dab89",
     "door.js": "5899223c",
     "api/mcp.py": "393da756",
-    "ground/OWNER_NOW.md": "40f786fe",
+    "ground/OWNER_NOW.md": "39a0e0c3",
 }
 
 

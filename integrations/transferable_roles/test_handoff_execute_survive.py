@@ -18,6 +18,7 @@ import cli as roles_cli
 
 FIXTURES = Path(__file__).resolve().parent / "fixtures"
 CRM = FIXTURES / "synthetic_crm_followup_role.json"
+AUTOPSY = FIXTURES / "synthetic_agent_failure_autopsy_role.json"
 DIAG = FIXTURES / "synthetic_diagnostic_fulfillment_role.json"
 DIAG_CONTRACT = FIXTURES.parents[2] / "revenue/dealer_service_lead_rescue/contract.json"
 DIAG_REFUND = json.loads(DIAG_CONTRACT.read_text(encoding="utf-8"))["commercial"]["refund"]
@@ -31,8 +32,130 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
     def tearDown(self) -> None:
         self._tmp.cleanup()
 
+    def test_autopsy_transfer_then_prove(self) -> None:
+        role = self.store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
+        rid = role["role_id"]
+        self.store.bind_access_route(
+            rid,
+            route_name="grokbot_control_g2",
+            session_id="g2-handoff-sess",
+            last_run_id="g2-handoff-run",
+        )
+        self.store.equip(rid, session_id="sess-A", harness="hinge", seat="HINGE")
+        self.store.transfer(
+            rid,
+            from_session_id="sess-A",
+            to_session_id="sess-B",
+            to_harness="rivet",
+            seat="RIVET",
+        )
+        proof = prove_successor_executes(self.store, rid)
+        self.assertTrue(proof["ok"])
+        self.assertEqual(proof["occupant_session"], "sess-B")
+        self.assertIn("autopsy-case", proof["executes"])
+        self.assertIn("autopsy-receipt-row", proof["executes"])
+        self.assertEqual(proof["verification_scope"], "LOCAL_HELPER_EXECUTION")
+        self.assertIs(proof["service_operations_performed"], False)
+        receipt = proof["executes"]["autopsy-receipt-row"]
+        self.assertEqual(receipt["state"], "UNVERIFIED")
+        self.assertNotIn("g2_run_id", receipt)
+        self.assertNotIn("g2_session_id", receipt)
+        self.assertNotIn("payment_observed_at", receipt)
+        self.assertIn("autopsy-fulfill-deadline", proof["executes"])
+        self.assertIn("autopsy-fulfill-validate", proof["executes"])
+        # wedge-r4-handoff-prove-autopsy-sla-20260905-01
+        self.assertIn("autopsy-fulfill-sla", proof["executes"])
+        sla = proof["executes"]["autopsy-fulfill-sla"]
+        self.assertEqual(sla["sla_status"], "OPEN")
+        self.assertTrue(sla.get("delivery_due_at"))
+        # wedge-r4-handoff-prove-autopsy-sla-amount-usd-20260905-01
+        self.assertEqual(sla["amount_usd"], 29)
+        self.assertIn("refund usd 29", str(sla.get("refund", "")).lower())
 
+        missed = prove_successor_executes(
+            self.store,
+            rid,
+            as_of="2026-09-10T10:00:00-04:00",
+        )
+        missed_sla = missed["executes"]["autopsy-fulfill-sla"]
+        self.assertEqual(missed_sla["sla_status"], "MISSED")
+        self.assertEqual(missed_sla["amount_usd"], 29)
 
+        g2 = next(r for r in proof["bound_routes"] if r["name"] == "grokbot_control_g2")
+        self.assertEqual(g2["session_id"], "g2-handoff-sess")
+        self.assertEqual(g2["last_run_id"], "g2-handoff-run")
+
+    def test_autopsy_export_import_then_prove(self) -> None:
+        # rivet-r4-handoff-prove-autopsy-export-matrix-20260905-01
+        role = self.store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
+        rid = role["role_id"]
+        self.store.bind_access_route(
+            rid,
+            route_name="grokbot_control_g2",
+            session_id="g2-export-sess",
+            last_run_id="g2-export-run",
+        )
+        self.store.equip(rid, session_id="occ-export", harness="hinge")
+        package = self.store.export_package(rid)
+        with tempfile.TemporaryDirectory() as fresh_dir:
+            fresh = RoleStore(fresh_dir)
+            imported = fresh.import_package(package)
+            fresh.equip(
+                imported["role_id"],
+                session_id="occ-import",
+                harness="rivet",
+                seat="RIVET",
+            )
+            proof = prove_successor_executes(fresh, imported["role_id"])
+            self.assertTrue(proof["ok"])
+            self.assertEqual(proof["occupant_session"], "occ-import")
+            self.assertIn("autopsy-case", proof["executes"])
+            self.assertIn("autopsy-receipt-row", proof["executes"])
+            receipt = proof["executes"]["autopsy-receipt-row"]
+            self.assertEqual(receipt["state"], "UNVERIFIED")
+            self.assertNotIn("g2_run_id", receipt)
+            self.assertIn("autopsy-fulfill-deadline", proof["executes"])
+            self.assertIn("autopsy-fulfill-validate", proof["executes"])
+            self.assertIn("autopsy-fulfill-sla", proof["executes"])
+            sla = proof["executes"]["autopsy-fulfill-sla"]
+            self.assertEqual(sla["sla_status"], "OPEN")
+            self.assertEqual(sla["amount_usd"], 29)
+            self.assertIn("refund usd 29", str(sla.get("refund", "")).lower())
+            g2 = next(
+                r for r in proof["bound_routes"] if r["name"] == "grokbot_control_g2"
+            )
+            self.assertEqual(g2["session_id"], "g2-export-sess")
+
+    def test_autopsy_release_then_equip_prove(self) -> None:
+        # rivet-r4-handoff-prove-release-equip-20260905-01
+        role = self.store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
+        rid = role["role_id"]
+        self.store.bind_access_route(
+            rid,
+            route_name="grokbot_control_g2",
+            session_id="g2-release-sess",
+            last_run_id="g2-release-run",
+        )
+        self.store.equip(rid, session_id="rel-A", harness="hinge", seat="HINGE")
+        self.store.release(rid, from_session_id="rel-A")
+        self.store.equip(rid, session_id="rel-B", harness="rivet", seat="RIVET")
+        proof = prove_successor_executes(self.store, rid)
+        self.assertTrue(proof["ok"])
+        self.assertEqual(proof["occupant_session"], "rel-B")
+        self.assertIn("autopsy-case", proof["executes"])
+        self.assertIn("autopsy-receipt-row", proof["executes"])
+        self.assertIn("autopsy-fulfill-deadline", proof["executes"])
+        self.assertIn("autopsy-fulfill-validate", proof["executes"])
+        self.assertIn("autopsy-fulfill-sla", proof["executes"])
+        self.assertEqual(proof["executes"]["autopsy-fulfill-sla"]["amount_usd"], 29)
+        # rivet-r4-handoff-prove-autopsy-release-refund-20260905-01
+        self.assertIn(
+            "refund usd 29",
+            str(proof["executes"]["autopsy-fulfill-sla"].get("refund", "")).lower(),
+        )
+        g2 = next(r for r in proof["bound_routes"] if r["name"] == "grokbot_control_g2")
+        self.assertEqual(g2["session_id"], "g2-release-sess")
+        self.assertEqual(g2["last_run_id"], "g2-release-run")
 
     def test_diagnostic_transfer_then_prove(self) -> None:
         role = self.store.create(json.loads(DIAG.read_text(encoding="utf-8")))
@@ -162,6 +285,48 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         with self.assertRaises(RoleError):
             prove_successor_executes(self.store, role["role_id"])
 
+    def test_cli_prove_handoff(self) -> None:
+        store_dir = self._tmp.name
+        with redirect_stdout(io.StringIO()):
+            rc = roles_cli.main(
+                ["--store", store_dir, "create", "--file", str(AUTOPSY)]
+            )
+        self.assertEqual(rc, 0)
+        rid = "role-synthetic-agent-failure-autopsy-20260905"
+        with redirect_stdout(io.StringIO()):
+            rc = roles_cli.main(
+                [
+                    "--store",
+                    store_dir,
+                    "equip",
+                    rid,
+                    "--session",
+                    "cli-A",
+                    "--harness",
+                    "hinge",
+                ]
+            )
+        self.assertEqual(rc, 0)
+        cli = FIXTURES.parent / "cli.py"
+        result = subprocess.run(
+            [
+                sys.executable,
+                str(cli),
+                "prove-handoff",
+                rid,
+                "--store",
+                store_dir,
+            ],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+        proof = json.loads(result.stdout)
+        self.assertTrue(proof["ok"])
+        self.assertIn("autopsy-case", proof["executes"])
+        self.assertIn("autopsy-fulfill-sla", proof["executes"])
+        self.assertEqual(proof["executes"]["autopsy-fulfill-sla"]["amount_usd"], 29)
 
 
 if __name__ == "__main__":

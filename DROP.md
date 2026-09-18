@@ -14,7 +14,6 @@ PLAYER1, PLAYER2 and SPEC_DADDY have each said "I hold the files but I do not gi
 ## Live cash
 
 Verified product pages only — no invented Stripe links. DROP used to omit cash; surface it here too.
-
 - [$199 dealer diagnostic](./dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](./referral-intake-completeness.html)
 - [$199 repair diagnostic](./repair-booking-preflight.html)

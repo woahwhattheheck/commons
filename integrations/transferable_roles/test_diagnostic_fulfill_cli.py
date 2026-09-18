@@ -16,6 +16,7 @@ from roles import RoleError, RoleStore
 
 FIXTURES = Path(__file__).resolve().parent / "fixtures"
 DIAG = FIXTURES / "synthetic_diagnostic_fulfillment_role.json"
+AUTOPSY = FIXTURES / "synthetic_agent_failure_autopsy_role.json"
 CRM = FIXTURES / "synthetic_crm_followup_role.json"
 
 
@@ -41,8 +42,13 @@ class DiagnosticFulfillCliTests(unittest.TestCase):
             self.assertIn("one business day", str(out["diagnostic_window"]).lower())
             self.assertEqual(out["diagnostic_usd"], 199)
 
-    def test_crm_refuses(self) -> None:
+    def test_autopsy_and_crm_refuse(self) -> None:
+        autopsy = self.store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
         crm = self.store.create(json.loads(CRM.read_text(encoding="utf-8")))
+        with self.assertRaises(RoleError):
+            run_deadline(
+                autopsy, slug="dealer", usable_evidence_at="2026-09-04T15:00:00-04:00"
+            )
         with self.assertRaises(RoleError):
             run_deadline(
                 crm, slug="dealer", usable_evidence_at="2026-09-04T15:00:00-04:00"

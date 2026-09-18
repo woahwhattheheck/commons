@@ -15,9 +15,9 @@ LEFTOVER = ROOT / "p/grokbuild-pr8399-commons-slack-20260902-01.md"
 KEEP = {
     "p/grokbuild-pr8399-commons-slack-20260902-01.md": "1905dd74",
     "p/grokbuild-stealable-occupancy-keep-match-20260902-01.md": "dc058b13",
-    "test_grokbuild_stealable_occupancy_keep_match.py": "52bddae8",
+    "test_grokbuild_stealable_occupancy_keep_match.py": "93d0c7f1",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
-    "host/stealable_lanes.py": "524275ce",
+    "host/stealable_lanes.py": "60ac60e1",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
     "p/grokbuild-occupancy-landed-work-keep-lift-20260902-01.md": "67a8a527",
@@ -32,7 +32,7 @@ KEEP = {
     "hub_pages.py": "673dab89",
     "door.js": "5899223c",
     "api/mcp.py": "393da756",
-    "ground/OWNER_NOW.md": "40f786fe",
+    "ground/OWNER_NOW.md": "39a0e0c3",
 }
 
 

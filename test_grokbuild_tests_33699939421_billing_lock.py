@@ -20,15 +20,15 @@ ASSOC = ROOT / "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md"
 WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
-    ".github/workflows/tests.yml": "92cddb81",
+    ".github/workflows/tests.yml": "57d36525",
     "open_door_guard.py": "877e148d",
     "test_open_door_guard.py": "cfa7c8a4",
     "fix_first.py": "a57aee1c",
     "p/grokbuild-tests-33694253421-billing-lock-20260902-01.md": "da396946",
     "p/grokbuild-tests-33694246830-billing-lock-20260902-01.md": "b07d6192",
-    "test_grokbuild_tests_33694246830_billing_lock.py": "b000f3e4",
+    "test_grokbuild_tests_33694246830_billing_lock.py": "80617e93",
     "p/grokbuild-tests-33689281316-billing-lock-20260902-01.md": "3db0ab2e",
-    "test_grokbuild_tests_33689281316_billing_lock.py": "e3a00f16",
+    "test_grokbuild_tests_33689281316_billing_lock.py": "8f146b54",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
     "test_grokbuild_llms_txt_33699286770_billing_lock.py": "71ad16e0",
     "p/grok-build-llms-txt-33694402716-billing-lock-20260902-01.md": "6a8728e3",

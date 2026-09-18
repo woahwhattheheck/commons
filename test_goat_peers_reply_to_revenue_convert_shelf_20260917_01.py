@@ -4,7 +4,7 @@
 Wire EXISTING live Stripe Payment Links as first-screen Buy CTAs on
 peers.html and reply-to-revenue.html with DeepSeek convert copy. Do not
 invent new buy.stripe.com host paths. Keep Live cash product-page links.
-Same rails as GOAT attested-runs/distribution DeepSeek copy: White Box $250
+Same rails as GOAT attested-runs/distribution DeepSeek copy: Autopsy $29
 + White Box hour $250 only. Tip KEEP. Hands off Type agent-triage/control,
 action/capabilities, commands/cloud-current, Wire live/delta/boards/builds/
 arbitrage/attested-inference, Latch annex/archive #15248, Quill
@@ -22,7 +22,6 @@ ROOT = Path(__file__).resolve().parent
 PEERS = ROOT / "peers.html"
 REPLY = ROOT / "reply-to-revenue.html"
 RECEIPT = ROOT / "p" / "goat-peers-reply-to-revenue-convert-shelf-20260917-01.md"
-DEALER = ROOT / "dealer-service-lead-rescue.html"
 COMMERCIAL = ROOT / "commercial.html"
 
 ALLOWED_LIVE_BUY_URLS = frozenset(
@@ -38,7 +37,7 @@ BUY_LABELS = (
     "One live instrumented hour, white box — $250.",
 )
 GENERIC_LABELS = (
-    "Buy White Box $250",
+    "Buy Autopsy $29",
     "Buy one White Box hour $250",
 )
 LIVE_CASH_DOORS = (
@@ -93,12 +92,7 @@ def live_cash_slice(html: str) -> str:
 
 class TestGoatPeersReplyToRevenueConvertShelf2026091701(unittest.TestCase):
     def test_head_product_pages_still_own_the_exact_urls(self) -> None:
-        autopsy = DEALER.read_text(encoding="utf-8")
         commercial = COMMERCIAL.read_text(encoding="utf-8")
-        self.assertIn(
-            "https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b",
-            autopsy,
-        )
         self.assertIn(
             "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
             commercial,

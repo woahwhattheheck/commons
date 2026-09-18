@@ -18,7 +18,7 @@ DOOR = ROOT / "merge-on-pr.html"
 KEEP = {
     "host/sprint_integration.py": "1ba2002c",
     "ground/SPRINT_INTEGRATION.json": "eba10870",
-    "ground/SPRINT_INTEGRATION.md": "ce9347de",
+    "ground/SPRINT_INTEGRATION.md": "ab06de07",
     "host/pr7915_closed_unmerged.py": "9d56ea0e",
     "test_pr7915_closed_unmerged.py": "ec14cf1d",
     "p/cursor-pr7915-closed-unmerged-readback-20260902-01.md": "2a7f31a4",

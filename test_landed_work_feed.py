@@ -16,7 +16,7 @@ CATALOG = ROOT / "ground/LANDED_WORK_FEED.json"
 DOOR = ROOT / "landed-work.html"
 
 KEEP = {
-    "ground/OWNER_NOW.md": "40f786fe",
+    "ground/OWNER_NOW.md": "39a0e0c3",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-owner-now-revenue-20260902-01.md": "fe5ba035",
     "p/cursor-owner-now-revenue-readback-20260902-01.md": "3449da29",

@@ -42,7 +42,6 @@ Not a gate. Not auth. Does not flip Pages source. Does not remint Fable's claim.
 ## Live cash
 
 Verified product pages only — no invented Stripe links.
-
 - [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../referral-intake-completeness.html)
 - [$199 repair diagnostic](../repair-booking-preflight.html)

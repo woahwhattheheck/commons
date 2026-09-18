@@ -21,7 +21,7 @@ KEEP = {
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "host/landed_work_feed.py": "5a5e5804",
     "ground/LANDED_WORK_FEED.json": "4c42f69f",
-    "landed-work.html": "ac1e48ad",
+    "landed-work.html": "c767e323",
     "repo_pulse.py": "298716e9",
 }
 

@@ -22,7 +22,7 @@ KEEP = {
     "test_open_door_guard.py": "cfa7c8a4",
     ".github/workflows/open-door-guard.yml": "ac6c46c4",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
-    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "7f46b502",
+    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "71b64e8e",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
     "p/grok-build-llms-txt-billing-lock-20260902-01.md": "cf9c9f40",

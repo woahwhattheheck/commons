@@ -17,7 +17,7 @@ ORIGINAL = ROOT / "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902
 KEEP = {
     "p/grokbuild-pr8408-verify-20260902-01.md": "0a594dda",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
-    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "7f46b502",
+    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "71b64e8e",
     "open_door_guard.py": "877e148d",
 }
 

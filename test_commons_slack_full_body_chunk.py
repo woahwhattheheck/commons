@@ -31,7 +31,7 @@ KEEP = {
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
-    "ground/OWNER_NOW.md": "40f786fe",
+    "ground/OWNER_NOW.md": "39a0e0c3",
     "host/landed_work_feed.py": "5a5e5804",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
     "p/grokbuild-occupancy-landed-work-keep-lift-readback-20260902-01.md": "892bc4c0",

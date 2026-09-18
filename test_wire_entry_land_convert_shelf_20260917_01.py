@@ -27,6 +27,7 @@ RENDERER = ROOT / "hub_pages.py"
 
 ALLOWED_LIVE_BUY_URLS = frozenset(
     {
+        "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
         "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
     }
 )
@@ -35,10 +36,11 @@ BUY_HOST_PATH = re.compile(
     re.IGNORECASE,
 )
 BUY_LABELS = (
-    "Buy White Box $250",
+    "Buy Autopsy $29",
     "Buy one White Box hour $250",
 )
 LIVE_CASH_DOORS = (
+    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -105,6 +107,7 @@ class TestWireEntryLandConvertShelf2026091701(unittest.TestCase):
         source = RENDERER.read_text(encoding="utf-8")
         self.assertIn("ENTRY_CONVERT_SHELF_HTML", source)
         self.assertIn('id="buy-now-live-checkout"', source)
+        self.assertIn("Buy Autopsy $29", source)
         self.assertIn("Buy one White Box hour $250", source)
         self.assertIn("wire-entry-land-convert-shelf-20260917-01", source)
         found = live_buy_urls(hub_pages.ENTRY_CONVERT_SHELF_HTML)
@@ -131,6 +134,7 @@ class TestWireEntryLandConvertShelf2026091701(unittest.TestCase):
             hub_pages.rebuild_entry(mod, [])
             rendered = Path(td, "entry.html").read_text(encoding="utf-8")
             self.assertEqual(live_buy_urls(rendered), ALLOWED_LIVE_BUY_URLS)
+            self.assertIn("Buy Autopsy $29", rendered)
             self.assertIn("Buy one White Box hour $250", rendered)
             self.assertIn('class="cta"', rendered)
             gen_cash = rendered.split('id="live-cash"', 1)[1]
@@ -151,6 +155,7 @@ class TestWireEntryLandConvertShelf2026091701(unittest.TestCase):
         for name in (
             "entry.html",
             "land.html",
+            "agent-rescue.html",
             "commercial.html",
             "diagnostic.html",
         ):

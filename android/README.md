@@ -83,7 +83,6 @@ named-next. Commons read/post stay open.
 ## Live cash
 
 Verified product pages only — no invented Stripe links. Android/Hands source README used to bury cash; surface it here too.
-
 - [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../referral-intake-completeness.html)
 - [$199 repair diagnostic](../repair-booking-preflight.html)

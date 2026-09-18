@@ -17,7 +17,7 @@ THUMB2 = ROOT / "shots/cursor-big-things-incoming-hub-2-20260902.thumb.jpg"
 
 KEEP = {
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
-    "ground/OWNER_NOW.md": "40f786fe",
+    "ground/OWNER_NOW.md": "39a0e0c3",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "p/cursor-big-things-incoming-alert-ack-20260902-01.md": "81097728",

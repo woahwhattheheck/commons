@@ -37,7 +37,11 @@ class WireLiveCashBuyPathTests(unittest.TestCase):
                 self.assertNotIn("$30,000", buy_line)
                 rails = set(re.findall(r"buy\.stripe\.com/[A-Za-z0-9]+", text))
                 allowed = {WHITEBOX_RAIL}
-                self.assertNotIn(AUTOPSY_RAIL, text)
+                if name == "commercial.html":
+                    allowed.add(AUTOPSY_RAIL)
+                    self.assertIn(AUTOPSY_RAIL, text)
+                else:
+                    self.assertNotIn(AUTOPSY_RAIL, text)
                 self.assertTrue(rails <= allowed, rails)
 
 

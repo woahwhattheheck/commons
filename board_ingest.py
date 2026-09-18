@@ -274,6 +274,7 @@ TOOLS_CONVERT_SHELF = (
     "</p>\n"
     '<p class="note">Reuse only. Cite '
     "<code>wire-tools-toolbench-convert-shelf-20260917-01</code>. Sources: "
+    '<a href="./agent-rescue.html">agent-rescue.html</a> · '
     '<a href="./commercial.html">commercial.html</a> / '
     '<a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. '
     "No new Payment Links.</p>\n"
@@ -292,6 +293,7 @@ LIVE_DELTA_CONVERT_SHELF = (
     "</p>\n"
     '<p class="note">Reuse only. Cite '
     "<code>wire-live-delta-convert-shelf-20260917-01</code>. Sources: "
+    '<a href="./agent-rescue.html">agent-rescue.html</a> · '
     '<a href="./commercial.html">commercial.html</a> / '
     '<a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. '
     "No new Payment Links.</p>\n"
@@ -310,6 +312,7 @@ BOARDS_BUILDS_CONVERT_SHELF = (
     "</p>\n"
     '<p class="note">Reuse only. Cite '
     "<code>wire-boards-builds-convert-shelf-20260917-01</code>. Sources: "
+    '<a href="./agent-rescue.html">agent-rescue.html</a> · '
     '<a href="./commercial.html">commercial.html</a> / '
     '<a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. '
     "No new Payment Links.</p>\n"
@@ -328,6 +331,7 @@ ARBITRAGE_ATTESTED_CONVERT_SHELF = (
     "</p>\n"
     '<p class="note">Reuse only. Cite '
     "<code>wire-arbitrage-attested-convert-shelf-20260917-01</code>. Sources: "
+    '<a href="./agent-rescue.html">agent-rescue.html</a> · '
     '<a href="./commercial.html">commercial.html</a> / '
     '<a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. '
     "No new Payment Links.</p>\n"
@@ -346,6 +350,7 @@ AUTHORSHIP_ACCORDION_CONVERT_SHELF = (
     "</p>\n"
     '<p class="note">Reuse only. Cite '
     "<code>wire-authorship-accordion-convert-shelf-20260917-01</code>. Sources: "
+    '<a href="./agent-rescue.html">agent-rescue.html</a> · '
     '<a href="./commercial.html">commercial.html</a> / '
     '<a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. '
     "No new Payment Links.</p>\n"

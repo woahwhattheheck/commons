@@ -83,16 +83,16 @@ class CatalogPublicationTests(unittest.TestCase):
     def test_real_composition_contains_every_local_family(self):
         names = [tool['name'] for tool in self.catalog.tools()]
         self.assertEqual(len(names), len(set(names)))
-        for name in ('slack_read_thread', 'github_create_branch', 'diagnostic_receipt_card',
+        for name in ('slack_read_thread', 'github_create_branch', 'autopsy_receipt_card',
                      'grokbot_submit', 'claude_headless_start', 'gemini_submit', 'command_center_ingest'):
             self.assertIn(name, names)
         self.assertEqual(self.messages, [])
 
     def test_original_descriptor_and_schema_are_preserved(self):
-        card = next(t for t in diagnostic_card_tool_schemas() if t['name'] == 'diagnostic_receipt_card')
-        self.assertIn('receipt.json', card['description'])
-        self.assertEqual(card['inputSchema']['properties']['slug'], {'type': 'string'})
-        self.assertEqual(card['inputSchema']['required'], ['role', 'slug'])
+        card = next(t for t in diagnostic_card_tool_schemas() if t['name'] == 'autopsy_receipt_card')
+        self.assertIn('Default state UNVERIFIED.', card['description'])
+        self.assertEqual(card['inputSchema']['properties']['state'], {'type': 'string'})
+        self.assertEqual(card['inputSchema']['required'], ['role', 'case_ref'])
 
     def test_schema_error_key_and_all_metadata_survive(self):
         tools = self.catalog.tools()

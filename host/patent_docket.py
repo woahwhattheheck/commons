@@ -37,6 +37,7 @@ PROVENANCE_SUCCESSORS = {
             (
                 "\n## Live cash\n\n"
                 "Verified product pages only — no invented Stripe links.\n\n"
+                "- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run\n"
                 "- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)\n"
                 "- [$199 referral diagnostic](../referral-intake-completeness.html)\n"
                 "- [$199 repair diagnostic](../repair-booking-preflight.html)\n"
@@ -63,6 +64,7 @@ PROVENANCE_SUCCESSORS = {
             (
                 "\n## Live cash\n\n"
                 "Verified product pages only — no invented Stripe links.\n\n"
+                "- [$29 Autopsy checkout](./agent-rescue.html)\n"
                 "- [$199 dealer diagnostic](./dealer-service-lead-rescue.html)\n"
                 "- [$199 referral diagnostic](./referral-intake-completeness.html)\n"
                 "- [$199 repair diagnostic](./repair-booking-preflight.html)\n"

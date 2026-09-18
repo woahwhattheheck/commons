@@ -46,7 +46,6 @@ measured. The taking file itself is **CARRIER_ONLY** until
 Verified product pages only — no invented Stripe links. These are
 AUTHORIZATION doors on tip. They are **not** SETTLEMENT and **not**
 BANK_AVAILABLE. Do not call them collectable USD.
-
 - [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../referral-intake-completeness.html)
 - [$199 repair diagnostic](../repair-booking-preflight.html)
@@ -115,7 +114,6 @@ titan: **NOT_WRITTEN**.
 ## Live cash
 
 Verified product pages only — no invented Stripe links.
-
 - [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../referral-intake-completeness.html)
 - [$199 repair diagnostic](../repair-booking-preflight.html)

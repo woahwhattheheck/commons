@@ -36,7 +36,6 @@ This module makes **no** GAMP 5, GMP, FDA, validation, quality-release, or regul
 ## Live cash
 
 Verified product pages only — no invented Stripe links.
-
 - [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../../referral-intake-completeness.html)
 - [$199 repair diagnostic](../../repair-booking-preflight.html)

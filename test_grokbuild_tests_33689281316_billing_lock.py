@@ -17,7 +17,7 @@ PRIOR_LLMS = ROOT / "p/grok-build-llms-txt-33687829181-billing-lock-20260902-01.
 WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
-    ".github/workflows/tests.yml": "92cddb81",
+    ".github/workflows/tests.yml": "57d36525",
     "p/grokbuild-pr8411-verify-20260902-01.md": "642dea64",
     "test_grokbuild_pr8411_verify.py": "c1c37c21",
     "p/grok-build-llms-txt-33687829181-billing-lock-20260902-01.md": "3183564c",

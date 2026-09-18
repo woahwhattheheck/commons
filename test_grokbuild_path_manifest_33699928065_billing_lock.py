@@ -26,11 +26,11 @@ KEEP = {
     ".github/workflows/path-manifest.yml": "33685fa1",
     "architecture/path-manifest.json": "e5ecb24f",
     "p/grokbuild-path-manifest-33694214802-billing-lock-20260902-01.md": "d9331b17",
-    "test_grokbuild_path_manifest_33694214802_billing_lock.py": "c690b812",
+    "test_grokbuild_path_manifest_33694214802_billing_lock.py": "9c61306a",
     "p/grokbuild-pr8415-path-manifest-33689243555-20260902-01.md": "3c72cd09",
     "test_grokbuild_pr8415_path_manifest_33689243555.py": "eeca0bf5",
     "p/grokbuild-open-door-guard-33699286785-billing-lock-20260902-01.md": "d22e0707",
-    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "2424eadd",
+    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "aeb4ecec",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
 }
 

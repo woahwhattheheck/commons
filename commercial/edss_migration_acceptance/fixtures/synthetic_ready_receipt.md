@@ -30,7 +30,6 @@ Receipt SHA-256: `932373a8376640ab3df27b1aa94b36d6b94692e9f7a69321aa3aa9ff29b080
 ## Live cash
 
 Verified product pages only — no invented Stripe links.
-
 - [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../../../referral-intake-completeness.html)
 - [$199 repair diagnostic](../../../repair-booking-preflight.html)

@@ -19,7 +19,7 @@ KEEP = {
     "p/cursor-commons-slack-full-body-chunk-20260902-01.md": "94770f41",
     "host/commons_slack_full_body_chunk.py": "b132f8bb",
     "ground/COMMONS_SLACK_FULL_BODY_CHUNK.json": "df1d7af1",
-    "test_commons_slack_full_body_chunk.py": "5995c267",
+    "test_commons_slack_full_body_chunk.py": "25174d80",
     "commons-slack-chunk.html": "4d9ebea2",
     "host/commons_slack_full_body.py": "7a6067d7",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
@@ -37,7 +37,7 @@ KEEP = {
     "hub_pages.py": "673dab89",
     "door.js": "5899223c",
     "api/mcp.py": "393da756",
-    "ground/OWNER_NOW.md": "40f786fe",
+    "ground/OWNER_NOW.md": "39a0e0c3",
 }
 
 

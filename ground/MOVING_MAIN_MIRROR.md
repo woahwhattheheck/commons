@@ -65,7 +65,6 @@ Cite `BRYCE-1787050390335`. Cite `spur-dir9-ntfy-read-20260820-01`. Do not remin
 ## Live cash
 
 Verified product pages only — no invented Stripe links.
-
 - [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../referral-intake-completeness.html)
 - [$199 repair diagnostic](../repair-booking-preflight.html)

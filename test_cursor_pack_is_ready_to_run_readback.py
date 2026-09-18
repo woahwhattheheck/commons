@@ -19,7 +19,7 @@ KEEP = {
     "p/cursor-pack-is-ready-to-run-20260902-01.md": "897b00ba",
     "host/pack_is_ready_to_run.py": "aab508cf",
     "ground/PACK_IS_READY_TO_RUN.json": "69a67ee1",
-    "test_pack_is_ready_to_run.py": "835fa35d",
+    "test_pack_is_ready_to_run.py": "09680159",
     "pack-is-ready-to-run.html": "ca38f755",
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "host/pack_quality_dictates_tier.py": "74d36b0a",
@@ -29,7 +29,7 @@ KEEP = {
     "p/cursor-what-a-pack-is-20260902-01.md": "a4e4dd89",
     "host/what_a_pack_is.py": "14df3b8d",
     "ground/WHAT_A_PACK_IS.json": "2f473414",
-    "test_what_a_pack_is.py": "46662ab3",
+    "test_what_a_pack_is.py": "9e13acf0",
     "what-a-pack-is.html": "963184e3",
     "p/cursor-commons-slack-full-body-chunk-20260902-01.md": "94770f41",
     "p/cursor-commons-slack-full-body-chunk-readback-20260902-01.md": "364ae3a4",
@@ -37,7 +37,7 @@ KEEP = {
     "host/slack_mirror.py": "72c0844e",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
-    "host/stealable_lanes.py": "524275ce",
+    "host/stealable_lanes.py": "60ac60e1",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
@@ -47,7 +47,7 @@ KEEP = {
     "hub_pages.py": "673dab89",
     "door.js": "5899223c",
     "api/mcp.py": "393da756",
-    "ground/OWNER_NOW.md": "40f786fe",
+    "ground/OWNER_NOW.md": "39a0e0c3",
 }
 
 

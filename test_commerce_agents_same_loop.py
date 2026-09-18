@@ -21,7 +21,7 @@ SPEC.loader.exec_module(loop)
 KEEP = {
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "host/commerce_agents.py": "8d2ddf29",
-    "test_commerce_agents.py": "7ec07521",
+    "test_commerce_agents.py": "f0ff008c",
     "commerce-agents.html": "cbf2325d",
     "ground/COMMERCE_AGENTS.json": "ab6f56a8",
     ".agents/skills/commerce-agents/SKILL.md": "4cf66eed",
@@ -32,14 +32,14 @@ KEEP = {
     "p/cursor-what-a-pack-is-20260902-01.md": "a4e4dd89",
     "host/autogtm_same_loop.py": "86415634",
     "autogtm.html": "5c966110",
-    "host/payment_capability.py": "14464a8b",
+    "host/payment_capability.py": "3617ac3d",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "door.js": "5899223c",
     "hub_pages.py": "673dab89",
-    "ground/OWNER_NOW.md": "40f786fe",
+    "ground/OWNER_NOW.md": "39a0e0c3",
     "host/slack_mirror.py": "72c0844e",
-    "CLAUDE.md": "2a236007",
+    "CLAUDE.md": "ac158b12",
 }
 
 

@@ -60,6 +60,7 @@ class TestOwnerNowRevenueReadbackShip(unittest.TestCase):
         self.assertEqual(packet["leftover_receipt_blob"], "fe5ba035")
         self.assertEqual(packet["leftover_pr"], 8343)
         self.assertEqual(packet["sku_count"], len(packet["ask_for_sale"]))
+        self.assertIn("agent-failure-autopsy-29", {row["sku"] for row in packet["ask_for_sale"]})
         self.assertTrue(packet["chargeable"])
         self.assertFalse(packet["invented_stripe_urls"])
         self.assertEqual(packet["cash_usd"], 0)
@@ -105,6 +106,7 @@ class TestOwnerNowRevenueReadbackShip(unittest.TestCase):
         packet = json.loads(leftover.stdout)
         self.assertEqual(packet["verdict"], "ASK_FOR_SALE")
         self.assertEqual(packet["sku_count"], len(packet["ask_for_sale"]))
+        self.assertIn("agent-failure-autopsy-29", {row["sku"] for row in packet["ask_for_sale"]})
         self.assertFalse(packet["invented_stripe_urls"])
         invented = subprocess.run(
             [

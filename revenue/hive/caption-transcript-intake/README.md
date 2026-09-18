@@ -126,7 +126,6 @@ The integrated podcast check ran against canonical source blob `2051b0fdf43648d8
 ## Live cash
 
 Verified product pages only — no invented Stripe links.
-
 - [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../../../referral-intake-completeness.html)
 - [$199 repair diagnostic](../../../repair-booking-preflight.html)

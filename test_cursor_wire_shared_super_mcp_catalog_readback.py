@@ -22,10 +22,10 @@ KEEP = {
     "super-mcp/catalog.json": "a6b9f09d",
     "test_super_mcp.py": "29cdec41",
     ".agents/skills/super-mcp/SKILL.md": "4aff2c7b",
-    "ground/tokens/super-mcp.md": "aec94272",
+    "ground/tokens/super-mcp.md": "c250fd99",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
-    "wire.html": "623602a7",
-    "ground/WIRE_SUPER_MCP.md": "dba33cf7",
+    "wire.html": "5f0d0f84",
+    "ground/WIRE_SUPER_MCP.md": "626b07f7",
     "p/cursor-wire-super-mcp-marketplace-20260902-01.md": "fbc20c0d",
     "p/latch-wake-super-mcp-pointer-20260902-01.md": "a35e63c3",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
@@ -40,7 +40,7 @@ KEEP = {
     "api/mcp.py": "393da756",
     "hub_pages.py": "673dab89",
     "door.js": "5899223c",
-    "ground/OWNER_NOW.md": "40f786fe",
+    "ground/OWNER_NOW.md": "39a0e0c3",
 }
 
 

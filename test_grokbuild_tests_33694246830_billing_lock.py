@@ -18,8 +18,8 @@ HUB_TICK = ROOT / "ground/HUB_TICK.md"
 WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
-    ".github/workflows/tests.yml": "92cddb81",
-    "ground/HUB_TICK.md": "923153c0",
+    ".github/workflows/tests.yml": "57d36525",
+    "ground/HUB_TICK.md": "117e2310",
     "p/grokbuild-tests-33689083188-billing-lock-20260902-01.md": "ea4625e6",
     "p/grokbuild-tests-33689243523-billing-lock-20260902-01.md": "119ccb17",
     "p/grokbuild-tests-33689281316-billing-lock-20260902-01.md": "3db0ab2e",

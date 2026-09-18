@@ -46,7 +46,7 @@ HISTORICAL_TREE = "b4ea49b49a1d6dda16b611c811c174be43bc850d"
 HISTORICAL_GOOGLE_FILES = {
     "test_cursor_google_ai_mode_hall_pass_readback.py": "e8f7465d",
     ".agents/skills/google-ai-mode-hall-pass/SKILL.md": "a27254f8",
-    "ground/tokens/google-ai-mode-hall-pass.md": "bcdf97cb",
+    "ground/tokens/google-ai-mode-hall-pass.md": "d5885cd3",
 }
 
 

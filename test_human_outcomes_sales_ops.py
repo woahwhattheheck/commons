@@ -18,10 +18,10 @@ CARRIER_SCRIPT_RE = re.compile(
     r'(<script src="\./carrier\.js\?v=)([A-Za-z0-9]+)("></script>)'
 )
 CATALOG = {
-    "humans.html": "113200f8c2a9e4ce42f2d26242a8fc6d1b89dd0a",
+    "humans.html": "7f6a97edfb86d1397177533664bedf88056437ff",
     "revenue/human_outcomes/offers.json": "1b72639aaea1a3d41c0d2419470add5a3ca8d839",
-    "revenue/human_outcomes/README.md": "330d9166cee149845d89d06b48f209ecc3f3c227",
-    "revenue/human_outcomes/fulfillment.md": "73bdce03a57b97f49bcc3dce49fd2882b90da76d",
+    "revenue/human_outcomes/README.md": "a027519af6831e4cddd94ca99268f9d49fc4f991",
+    "revenue/human_outcomes/fulfillment.md": "3265ae9963f18bcdf0f88382c569676fa3d79d44",
 }
 REQUIRED_SALES_PATHS = [
     "revenue/human_outcomes/sales_ops/README.md",

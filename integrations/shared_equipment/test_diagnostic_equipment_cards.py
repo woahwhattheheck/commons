@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Hermetic: equipment diagnostic contract+receipt+fulfill cards."""
+"""Hermetic: equipment diagnostic/autopsy contract+receipt+fulfill cards."""
 
 from __future__ import annotations
 
@@ -22,6 +22,7 @@ if str(_TR) not in sys.path:
 from roles import RoleStore  # noqa: E402
 
 DIAG = _FIXTURES / "synthetic_diagnostic_fulfillment_role.json"
+AUTOPSY = _FIXTURES / "synthetic_agent_failure_autopsy_role.json"
 CRM = _FIXTURES / "synthetic_crm_followup_role.json"
 
 _EVIDENCE = "2026-09-04T15:00:00-04:00"
@@ -34,6 +35,7 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
     def setUp(self) -> None:
         self.eq = GrokBotEquipment()
         self.diag = json.loads(DIAG.read_text(encoding="utf-8"))
+        self.autopsy = json.loads(AUTOPSY.read_text(encoding="utf-8"))
 
     def test_contract_card_all_slugs(self) -> None:
         for slug in ("dealer", "referral", "repair", "plant"):
@@ -104,10 +106,89 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
         self.assertTrue(missed.get("ok"), missed)
         self.assertEqual(missed["card"].get("sla_status"), "MISSED")
 
+    def test_autopsy_fulfill_deadline_and_sla(self) -> None:
+        due = self.eq.call(
+            "autopsy_fulfill_deadline_card",
+            {"role": self.autopsy, "usable_evidence_at": _EVIDENCE},
+        )
+        self.assertTrue(due.get("ok"), due)
+        self.assertTrue(due["card"].get("delivery_due_at"))
+        open_card = self.eq.call(
+            "autopsy_fulfill_sla_card",
+            {
+                "role": self.autopsy,
+                "usable_evidence_at": _EVIDENCE,
+                "as_of": _AS_OF_OPEN,
+            },
+        )
+        self.assertTrue(open_card.get("ok"), open_card)
+        self.assertEqual(open_card["card"].get("sla_status"), "OPEN")
+        missed = self.eq.call(
+            "autopsy_fulfill_sla_card",
+            {
+                "role": self.autopsy,
+                "usable_evidence_at": _EVIDENCE,
+                "as_of": _AS_OF_MISSED,
+            },
+        )
+        self.assertTrue(missed.get("ok"), missed)
+        self.assertEqual(missed["card"].get("sla_status"), "MISSED")
+
+    def test_autopsy_fulfill_validate_card(self) -> None:
+        # hinge-r4-equipment-autopsy-fulfill-validate-card-20260905-01
+        out = self.eq.call(
+            "autopsy_fulfill_validate_card",
+            {"role": self.autopsy},
+        )
+        self.assertTrue(out.get("ok"), out)
+        card = out["card"]
+        self.assertIsInstance(card, dict)
+        if "ok" in card:
+            self.assertTrue(card["ok"])
+        for key in ("case_id", "disposition", "artifact_state"):
+            if key in card:
+                self.assertTrue(card[key])
+        crm = json.loads(CRM.read_text(encoding="utf-8"))
+        crm_refuse = self.eq.call(
+            "autopsy_fulfill_validate_card",
+            {"role": crm},
+        )
+        self.assertFalse(crm_refuse.get("ok"))
+        self.assertEqual(crm_refuse.get("error"), "role_refused")
+        diag_refuse = self.eq.call(
+            "autopsy_fulfill_validate_card",
+            {"role": self.diag},
+        )
+        self.assertFalse(diag_refuse.get("ok"))
+        self.assertEqual(diag_refuse.get("error"), "role_refused")
+
+    def test_autopsy_case_and_receipt_cards(self) -> None:
+        # hinge-r4-equipment-autopsy-case-receipt-cards-20260905-01
+        case_out = self.eq.call(
+            "autopsy_case_card",
+            {"role": self.autopsy, "case_ref": _CASE_REF},
+        )
+        self.assertTrue(case_out.get("ok"), case_out)
+        case = case_out["card"]
+        self.assertTrue(case.get("case_ref") or case.get("offer_id") or case)
+        receipt_out = self.eq.call(
+            "autopsy_receipt_card",
+            {"role": self.autopsy, "case_ref": _CASE_REF},
+        )
+        self.assertTrue(receipt_out.get("ok"), receipt_out)
+        row = receipt_out["card"]
+        self.assertEqual(row.get("state"), "UNVERIFIED")
+        diag_refuse = self.eq.call(
+            "autopsy_case_card",
+            {"role": self.diag, "case_ref": _CASE_REF},
+        )
+        self.assertFalse(diag_refuse.get("ok"))
+        self.assertEqual(diag_refuse.get("error"), "role_refused")
+
     def test_open_obligations_cash_card(self) -> None:
         # wedge-r4-equipment-open-obligations-cash-card-20260905-01
         crm = json.loads(CRM.read_text(encoding="utf-8"))
-        roles = [crm, self.diag]
+        roles = [crm, self.autopsy, self.diag]
         before = json.dumps(roles, sort_keys=True)
         out = self.eq.call(
             "open_obligations_cash_card",
@@ -118,7 +199,7 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
         self.assertEqual(json.dumps(roles, sort_keys=True), before)
         expected = {
             (role["role_id"], ob["id"])
-            for role in (self.diag,)
+            for role in (self.autopsy, self.diag)
             for ob in role["obligations"]
             if ob["status"] == "open"
         }
@@ -144,6 +225,22 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
                     "usable_evidence_at": _EVIDENCE,
                 },
             ),
+            (
+                "autopsy_fulfill_deadline_card",
+                {"role": crm, "usable_evidence_at": _EVIDENCE},
+            ),
+            (
+                "autopsy_fulfill_validate_card",
+                {"role": crm},
+            ),
+            (
+                "autopsy_case_card",
+                {"role": crm, "case_ref": _CASE_REF},
+            ),
+            (
+                "autopsy_receipt_card",
+                {"role": crm, "case_ref": _CASE_REF},
+            ),
         ]
         for name, args in cases:
             with self.subTest(name=name):
@@ -158,9 +255,70 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
             "diagnostic_receipt_card",
             "diagnostic_fulfill_deadline_card",
             "diagnostic_fulfill_sla_card",
+            "autopsy_fulfill_deadline_card",
+            "autopsy_fulfill_sla_card",
+            "autopsy_fulfill_validate_card",
+            "autopsy_case_card",
+            "autopsy_receipt_card",
             "open_obligations_cash_card",
         ):
             self.assertIn(name, names)
+
+    def _assert_autopsy_fulfill_cards(self, role: dict) -> None:
+        # hinge-r4-equipment-autopsy-sla-amount-usd-survive-handoff-20260905-01
+        due = self.eq.call(
+            "autopsy_fulfill_deadline_card",
+            {"role": role, "usable_evidence_at": _EVIDENCE},
+        )
+        self.assertTrue(due.get("ok"), due)
+        self.assertTrue(due["card"].get("delivery_due_at"))
+        self.assertEqual(due["card"].get("amount_usd"), 29)
+        open_card = self.eq.call(
+            "autopsy_fulfill_sla_card",
+            {
+                "role": role,
+                "usable_evidence_at": _EVIDENCE,
+                "as_of": _AS_OF_OPEN,
+            },
+        )
+        self.assertTrue(open_card.get("ok"), open_card)
+        self.assertEqual(open_card["card"].get("sla_status"), "OPEN")
+        self.assertEqual(open_card["card"].get("amount_usd"), 29)
+        self.assertIn("29", str(open_card["card"].get("refund", "")).lower())
+        missed = self.eq.call(
+            "autopsy_fulfill_sla_card",
+            {
+                "role": role,
+                "usable_evidence_at": _EVIDENCE,
+                "as_of": _AS_OF_MISSED,
+            },
+        )
+        self.assertTrue(missed.get("ok"), missed)
+        self.assertEqual(missed["card"].get("sla_status"), "MISSED")
+        self.assertEqual(missed["card"].get("amount_usd"), 29)
+        self.assertIn("29", str(missed["card"].get("refund", "")).lower())
+
+    def _assert_autopsy_fulfill_validate_card(self, role: dict) -> None:
+        out = self.eq.call(
+            "autopsy_fulfill_validate_card",
+            {"role": role},
+        )
+        self.assertTrue(out.get("ok"), out)
+        self.assertIsInstance(out["card"], dict)
+
+    def _assert_autopsy_case_receipt_cards(self, role: dict) -> None:
+        # hinge-r4-equipment-autopsy-case-receipt-cards-20260905-01
+        case_out = self.eq.call(
+            "autopsy_case_card",
+            {"role": role, "case_ref": _CASE_REF},
+        )
+        self.assertTrue(case_out.get("ok"), case_out)
+        receipt_out = self.eq.call(
+            "autopsy_receipt_card",
+            {"role": role, "case_ref": _CASE_REF},
+        )
+        self.assertTrue(receipt_out.get("ok"), receipt_out)
+        self.assertEqual(receipt_out["card"].get("state"), "UNVERIFIED")
 
     def _assert_diag_fulfill_cards(self, role: dict) -> None:
         # rivet-r4-equipment-diag-sla-diagnostic-usd-survive-handoff-20260905-01
@@ -265,6 +423,116 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
             self.assertIs(row.get("payment_capability"), True)
             self.assertFalse(row["role_id"].startswith("role-synthetic-crm"))
 
+    def test_autopsy_cards_survive_transfer(self) -> None:
+        # rivet-r4-equipment-cards-survive-handoff-20260905-01
+        with tempfile.TemporaryDirectory() as tmp:
+            store = RoleStore(tmp)
+            role = store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
+            rid = role["role_id"]
+            store.equip(rid, session_id="eq-A", harness="hinge", seat="HINGE")
+            store.transfer(
+                rid,
+                from_session_id="eq-A",
+                to_session_id="eq-B",
+                to_harness="rivet",
+                seat="RIVET",
+            )
+            self._assert_autopsy_fulfill_cards(store.get(rid))
+
+    def test_autopsy_fulfill_validate_survive_transfer(self) -> None:
+        # hinge-r4-equipment-autopsy-fulfill-validate-card-20260905-01
+        with tempfile.TemporaryDirectory() as tmp:
+            store = RoleStore(tmp)
+            role = store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
+            rid = role["role_id"]
+            store.equip(rid, session_id="av-A", harness="hinge")
+            store.transfer(
+                rid,
+                from_session_id="av-A",
+                to_session_id="av-B",
+                to_harness="rivet",
+            )
+            self._assert_autopsy_fulfill_validate_card(store.get(rid))
+
+    def test_autopsy_fulfill_validate_survive_export_import_equip(self) -> None:
+        # rivet-r4-equipment-autopsy-validate-survive-handoff-20260905-01
+        with tempfile.TemporaryDirectory() as tmp:
+            store = RoleStore(tmp)
+            role = store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
+            rid = role["role_id"]
+            store.equip(rid, session_id="av-exp-A", harness="hinge")
+            package = store.export_package(rid)
+        with tempfile.TemporaryDirectory() as fresh_dir:
+            fresh = RoleStore(fresh_dir)
+            imported = fresh.import_package(package)
+            fresh.equip(
+                imported["role_id"],
+                session_id="av-exp-B",
+                harness="rivet",
+                seat="RIVET",
+            )
+            self._assert_autopsy_fulfill_validate_card(
+                fresh.get(imported["role_id"])
+            )
+
+    def test_autopsy_fulfill_validate_survive_release_equip(self) -> None:
+        # rivet-r4-equipment-autopsy-validate-survive-handoff-20260905-01
+        with tempfile.TemporaryDirectory() as tmp:
+            store = RoleStore(tmp)
+            role = store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
+            rid = role["role_id"]
+            store.equip(rid, session_id="av-rel-A", harness="hinge")
+            store.release(rid, from_session_id="av-rel-A")
+            store.equip(rid, session_id="av-rel-B", harness="rivet")
+            self._assert_autopsy_fulfill_validate_card(store.get(rid))
+
+    def test_autopsy_case_receipt_survive_transfer(self) -> None:
+        # hinge-r4-equipment-autopsy-case-receipt-cards-20260905-01
+        with tempfile.TemporaryDirectory() as tmp:
+            store = RoleStore(tmp)
+            role = store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
+            rid = role["role_id"]
+            store.equip(rid, session_id="ac-A", harness="hinge")
+            store.transfer(
+                rid,
+                from_session_id="ac-A",
+                to_session_id="ac-B",
+                to_harness="rivet",
+            )
+            self._assert_autopsy_case_receipt_cards(store.get(rid))
+
+    def test_autopsy_case_receipt_survive_export_import_equip(self) -> None:
+        # rivet-r4-equipment-autopsy-case-receipt-survive-handoff-20260905-01
+        with tempfile.TemporaryDirectory() as tmp:
+            store = RoleStore(tmp)
+            role = store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
+            rid = role["role_id"]
+            store.equip(rid, session_id="ac-exp-A", harness="hinge")
+            package = store.export_package(rid)
+        with tempfile.TemporaryDirectory() as fresh_dir:
+            fresh = RoleStore(fresh_dir)
+            imported = fresh.import_package(package)
+            fresh.equip(
+                imported["role_id"],
+                session_id="ac-exp-B",
+                harness="rivet",
+                seat="RIVET",
+            )
+            self._assert_autopsy_case_receipt_cards(
+                fresh.get(imported["role_id"])
+            )
+
+    def test_autopsy_case_receipt_survive_release_equip(self) -> None:
+        # rivet-r4-equipment-autopsy-case-receipt-survive-handoff-20260905-01
+        with tempfile.TemporaryDirectory() as tmp:
+            store = RoleStore(tmp)
+            role = store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
+            rid = role["role_id"]
+            store.equip(rid, session_id="ac-rel-A", harness="hinge")
+            store.release(rid, from_session_id="ac-rel-A")
+            store.equip(rid, session_id="ac-rel-B", harness="rivet")
+            self._assert_autopsy_case_receipt_cards(store.get(rid))
+
     def test_diagnostic_cards_survive_transfer(self) -> None:
         # rivet-r4-equipment-cards-survive-handoff-20260905-01
         with tempfile.TemporaryDirectory() as tmp:
@@ -279,6 +547,25 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
                 to_harness="rivet",
             )
             self._assert_diag_fulfill_cards(store.get(rid))
+
+    def test_autopsy_cards_survive_export_import_equip(self) -> None:
+        # rivet-r4-equipment-cards-survive-handoff-20260905-01
+        with tempfile.TemporaryDirectory() as tmp:
+            store = RoleStore(tmp)
+            role = store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
+            rid = role["role_id"]
+            store.equip(rid, session_id="exp-A", harness="hinge")
+            package = store.export_package(rid)
+        with tempfile.TemporaryDirectory() as fresh_dir:
+            fresh = RoleStore(fresh_dir)
+            imported = fresh.import_package(package)
+            fresh.equip(
+                imported["role_id"],
+                session_id="exp-B",
+                harness="rivet",
+                seat="RIVET",
+            )
+            self._assert_autopsy_fulfill_cards(fresh.get(imported["role_id"]))
 
     def test_diagnostic_cards_survive_release_equip(self) -> None:
         # rivet-r4-equipment-cards-survive-handoff-20260905-01
@@ -309,6 +596,17 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
                 seat="RIVET",
             )
             self._assert_diag_fulfill_cards(fresh.get(imported["role_id"]))
+
+    def test_autopsy_fulfill_cards_survive_release_equip(self) -> None:
+        # rivet-r4-equipment-fulfill-handoff-matrix-20260905-01
+        with tempfile.TemporaryDirectory() as tmp:
+            store = RoleStore(tmp)
+            role = store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
+            rid = role["role_id"]
+            store.equip(rid, session_id="af-rel-A", harness="hinge")
+            store.release(rid, from_session_id="af-rel-A")
+            store.equip(rid, session_id="af-rel-B", harness="rivet")
+            self._assert_autopsy_fulfill_cards(store.get(rid))
 
     def test_diagnostic_contract_receipt_survive_transfer(self) -> None:
         # rivet-r4-equipment-contract-receipt-survive-handoff-20260905-01
@@ -362,12 +660,10 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             store = RoleStore(tmp)
             crm = store.create(json.loads(CRM.read_text(encoding="utf-8")))
-            diag_b_raw = json.loads(DIAG.read_text(encoding="utf-8"))
-            diag_b_raw["role_id"] += "-b"
-            diag_b = store.create(diag_b_raw)
+            autopsy = store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
             diag = store.create(json.loads(DIAG.read_text(encoding="utf-8")))
             for rid, sess_a, sess_b in (
-                (diag_b["role_id"], "cash-a-A", "cash-a-B"),
+                (autopsy["role_id"], "cash-a-A", "cash-a-B"),
                 (diag["role_id"], "cash-d-A", "cash-d-B"),
             ):
                 store.equip(rid, session_id=sess_a, harness="hinge")
@@ -380,7 +676,7 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
             self._assert_open_obligations_cash_card(
                 [
                     store.get(crm["role_id"]),
-                    store.get(diag_b["role_id"]),
+                    store.get(autopsy["role_id"]),
                     store.get(diag["role_id"]),
                 ]
             )
@@ -392,13 +688,10 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
             store = RoleStore(tmp)
             for path, sess in (
                 (CRM, "cash-exp-crm"),
-                (DIAG, "cash-exp-a"),
+                (AUTOPSY, "cash-exp-a"),
                 (DIAG, "cash-exp-d"),
             ):
-                role = json.loads(path.read_text(encoding="utf-8"))
-                if sess == "cash-exp-a":
-                    role["role_id"] += "-b"
-                role = store.create(role)
+                role = store.create(json.loads(path.read_text(encoding="utf-8")))
                 store.equip(role["role_id"], session_id=sess, harness="hinge")
                 packages.append(store.export_package(role["role_id"]))
         with tempfile.TemporaryDirectory() as fresh_dir:
@@ -420,12 +713,10 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             store = RoleStore(tmp)
             crm = store.create(json.loads(CRM.read_text(encoding="utf-8")))
-            diag_b_raw = json.loads(DIAG.read_text(encoding="utf-8"))
-            diag_b_raw["role_id"] += "-b"
-            diag_b = store.create(diag_b_raw)
+            autopsy = store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
             diag = store.create(json.loads(DIAG.read_text(encoding="utf-8")))
             for rid, sess_a, sess_b in (
-                (diag_b["role_id"], "cash-rel-a-A", "cash-rel-a-B"),
+                (autopsy["role_id"], "cash-rel-a-A", "cash-rel-a-B"),
                 (diag["role_id"], "cash-rel-d-A", "cash-rel-d-B"),
             ):
                 store.equip(rid, session_id=sess_a, harness="hinge")
@@ -434,7 +725,7 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
             self._assert_open_obligations_cash_card(
                 [
                     store.get(crm["role_id"]),
-                    store.get(diag_b["role_id"]),
+                    store.get(autopsy["role_id"]),
                     store.get(diag["role_id"]),
                 ]
             )

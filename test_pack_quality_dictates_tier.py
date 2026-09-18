@@ -30,7 +30,7 @@ KEEP = {
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
-    "ground/OWNER_NOW.md": "40f786fe",
+    "ground/OWNER_NOW.md": "39a0e0c3",
     "hub_pages.py": "673dab89",
     "door.js": "5899223c",
     "api/mcp.py": "393da756",

@@ -58,10 +58,10 @@ class DigitRightNowKeepLargerFixed2026091601Test(unittest.TestCase):
         with self.assertRaisesRegex(core.ControlError, "live_cash fields differ"):
             core.validate_live_cash(live)
 
-    def test_autopsy_products_still_required(self) -> None:
+    def test_products_still_required(self) -> None:
         live = copy.deepcopy(_tip_live())
         live["products"] = live["products"][1:]
-        with self.assertRaisesRegex(core.ControlError, "five verified product pages"):
+        with self.assertRaisesRegex(core.ControlError, "four verified product pages"):
             core.validate_live_cash(live)
 
     def test_invented_stripe_on_larger_fixed_fails_closed(self) -> None:

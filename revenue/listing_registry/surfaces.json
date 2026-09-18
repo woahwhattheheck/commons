@@ -272,7 +272,7 @@
       "account_status": "NONE_IN_THIS_SESSION",
       "owner": null,
       "submit_allowed": false,
-      "product_scope": ["same-day-agent-survival-proof"],
+      "product_scope": ["agent-failure-autopsy-29"],
       "maps_to_distribution_channel": null,
       "guidance": "ground/PROFITABILITY_BUILD_MAP.md",
       "next_action": "Draft a failure-first Show HN from measured receipts. Zero visitors is the premise. Do not post from this leftover. Do not invent traffic.",
