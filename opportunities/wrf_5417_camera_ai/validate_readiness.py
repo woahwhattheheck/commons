@@ -312,8 +312,7 @@ def has_exact_record(records, kind, gate, subject, fact):
     return len(matches) == 1
 
 
-def compile_readiness(manifest, authority, now=None):
-    now = now or dt.datetime.now(dt.timezone.utc)
+def _compile_at(manifest, authority, now):
     if now.tzinfo is None:
         raise ReadinessError("verification clock must be timezone-aware")
     now = now.astimezone(dt.timezone.utc).replace(microsecond=0)
@@ -384,7 +383,12 @@ def compile_readiness(manifest, authority, now=None):
     return receipt
 
 
-def verify_receipt(receipt, manifest, authority, now=None):
+def compile_readiness(manifest, authority):
+    """Compile current readiness using verifier-owned process UTC only."""
+    return _compile_at(manifest, authority, dt.datetime.now(dt.timezone.utc))
+
+
+def _verify_receipt_at(receipt, manifest, authority, now):
     if type(receipt) is not dict or type(receipt.get("receipt_sha256")) is not str:
         return False, ["receipt digest missing"]
     body = dict(receipt); claimed = body.pop("receipt_sha256")
@@ -392,14 +396,19 @@ def verify_receipt(receipt, manifest, authority, now=None):
         return False, ["receipt digest mismatch"]
     try:
         evaluated = parse_utc(receipt.get("evaluated_at"), "receipt.evaluated_at")
-        if compile_readiness(manifest, authority, evaluated) != receipt:
+        if _compile_at(manifest, authority, evaluated) != receipt:
             return False, ["receipt semantic mismatch"]
-        current = compile_readiness(manifest, authority, now)
+        current = _compile_at(manifest, authority, now)
     except ReadinessError as exc:
         return False, [str(exc)]
     if current["state"] != receipt["state"] or current["reasons"] != receipt["reasons"]:
         return False, ["current readiness differs from retained receipt"]
     return True, []
+
+
+def verify_receipt(receipt, manifest, authority):
+    """Verify retained semantics, then re-evaluate with verifier-owned current UTC."""
+    return _verify_receipt_at(receipt, manifest, authority, dt.datetime.now(dt.timezone.utc))
 
 
 def write_exclusive(path, raw):
