@@ -42,7 +42,7 @@ class OkaloosaSourceAuditTimestampGuard(unittest.TestCase):
     def test_missing_source_audit_timestamp_is_rejected(self) -> None:
         packet = copy.deepcopy(self.packet)
         packet.pop("last_source_audit_utc", None)
-        with self.assertRaisesRegex(validator.PacketError, "last_source_audit_utc changed"):
+        with self.assertRaisesRegex(validator.PacketError, "root key set changed"):
             validator.validate_packet(packet)
 
 
