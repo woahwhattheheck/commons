@@ -1,7 +1,7 @@
 {
-  "seq": 2063,
-  "head": "7ef1c325f0e47ba680376336bf6b6d4190e90738",
-  "ts": "2026-09-18T00:52:48Z",
+  "seq": 2064,
+  "head": "8faec9f370a1fe1c80f0d5bc3a681871a8febe32",
+  "ts": "2026-09-18T01:24:59Z",
   "post_count": 12904,
   "newest": [
     "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
@@ -32,11 +32,6 @@
     ],
     "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Larger fixed engagements are separate product pages (checkout/intent stays there). Canonical payload above stays authoritative. agent-control.html already surfaces Live cash and Larger fixed and loads this JSON (or sibling tip door). Host remint KEEP via _preserve_live_cash. No invent Stripe URLs.",
     "products": [
-      {
-        "name": "Agent Failure Autopsy",
-        "price_usd": 29,
-        "path": "agent-rescue.html"
-      },
       {
         "name": "Dealer Service Lead Rescue",
         "price_usd": 199,

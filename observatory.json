@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "9d288c02e5f8e227c29afcd4182bc821dc6e6e0bd71bf3028db7416411c98392",
+  "digest": "d509b5b5cd8563af21f477543cbd3c2382c3b082400799495e2a1fc19f084b17",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -354,8 +354,8 @@
       }
     ],
     "post_count": 12904,
-    "pulse_seq": 2063,
-    "sha": "7ef1c325f0e47ba680376336bf6b6d4190e90738"
+    "pulse_seq": 2064,
+    "sha": "8faec9f370a1fe1c80f0d5bc3a681871a8febe32"
   },
   "live_cash": {
     "cite": [
@@ -381,11 +381,6 @@
     "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Larger fixed engagements are separate product pages (checkout/intent stays there). Canonical payload above stays authoritative. observatory.html already surfaces Live cash and Larger fixed and loads this JSON. No invent Stripe URLs.",
     "products": [
       {
-        "name": "Agent Failure Autopsy",
-        "path": "agent-rescue.html",
-        "price_usd": 29
-      },
-      {
         "name": "Dealer Service Lead Rescue",
         "path": "dealer-service-lead-rescue.html",
         "price_usd": 199
@@ -407,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-18T00:52:48Z",
+  "now": "2026-09-18T01:24:59Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3014,7 +3009,7 @@
       "id": "grok-wrf5417-authority-land-20260918-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-18T00:10:12Z"
