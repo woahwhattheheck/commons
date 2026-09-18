@@ -31,7 +31,7 @@ def _pairs(xs):
     return d
 
 def _badnum(x): raise Error("floats/nonfinite are not allowed")
-def loads(data,_maxint=MAXINT):
+def loads(data,_maxint=MAXINT,_any=any):
     if isinstance(data,str): data=data.encode()
     if not isinstance(data,(bytes,bytearray)) or len(data)>4*1024*1024: raise Error("invalid packet bytes")
     try: v=json.loads(bytes(data).decode("utf-8"),object_pairs_hook=_pairs,parse_float=_badnum,parse_constant=_badnum)
@@ -44,7 +44,7 @@ def loads(data,_maxint=MAXINT):
             if abs(x)>_maxint: raise Error("unsafe integer")
             return
         if isinstance(x,str):
-            if len(x)>4096 or any(ord(c)<32 or ord(c)==127 or 0xD800<=ord(c)<=0xDFFF for c in x): raise Error("unsafe text")
+            if len(x)>4096 or _any(ord(c)<32 or ord(c)==127 or 0xD800<=ord(c)<=0xDFFF for c in x): raise Error("unsafe text")
             return
         if isinstance(x,list):
             if len(x)>10032: raise Error("list too large")
@@ -66,9 +66,9 @@ def sint(x,name,lo=0,hi=30*24*3600):
     if type(x) is not int or not lo<=x<=hi: raise Error(f"bad {name}")
     return x
 
-def txt(x,name,limit=2048,pat=None):
+def txt(x,name,limit=2048,pat=None,_any=any):
     if not isinstance(x,str) or not x or len(x)>limit: raise Error(f"bad {name}")
-    if any(ord(c)<32 or ord(c)==127 or 0xD800<=ord(c)<=0xDFFF for c in x): raise Error(f"bad {name}")
+    if _any(ord(c)<32 or ord(c)==127 or 0xD800<=ord(c)<=0xDFFF for c in x): raise Error(f"bad {name}")
     if pat and not pat.fullmatch(x): raise Error(f"bad {name}")
     return x
 
@@ -104,29 +104,29 @@ def hold(op,ident,events,*reasons):
     i=ident or ("UNKNOWN",)*4
     return {"operation_key":op,"state":"HOLD_EVIDENCE","counterparty":i[0],"route":i[1],"purpose":i[2],"seat":i[3],"request_event_id":next((e[1] for e in events if e[4]=="REQUEST"),None),"latest_event_id":events[-1][1] if events else None,"latest_event_at":events[-1][0].strftime("%Y-%m-%dT%H:%M:%SZ") if events else None,"reasons":sorted(set(reasons)),"resurface_recommended":False,"requires_fresh_arbitration":False}
 
-def classify(op,es,ev,cap,stale,ttl,dupids,duprec,capture_stale,_prov=frozenset(PROV),_rel=frozenset(REL),_dec=frozenset(DEC)):
+def classify(op,es,ev,cap,stale,ttl,dupids,duprec,capture_stale,_prov=frozenset(PROV),_rel=frozenset(REL),_dec=frozenset(DEC),_any=any):
     es=sorted(es); ident=es[0][6]; bad=[]
     if capture_stale: bad.append("STALE_CAPTURE")
-    if any(e[6]!=ident for e in es): bad.append("IDENTITY_DRIFT")
-    if any(e[1] in dupids for e in es): bad.append("DUPLICATE_EVENT_ID")
-    if any(e[7] in duprec for e in es if e[7]): bad.append("PROVIDER_RECEIPT_CROSS_KEY_REUSE")
-    if any(e[0]>ev for e in es): bad.append("FUTURE_EVENT")
-    if any(e[0]>cap for e in es): bad.append("EVENT_AFTER_CAPTURE")
-    if any(a[0]>=b[0] for a,b in zip(es,es[1:])): bad.append("AMBIGUOUS_OR_NONINCREASING_CHRONOLOGY")
+    if _any(e[6]!=ident for e in es): bad.append("IDENTITY_DRIFT")
+    if _any(e[1] in dupids for e in es): bad.append("DUPLICATE_EVENT_ID")
+    if _any(e[7] in duprec for e in es if e[7]): bad.append("PROVIDER_RECEIPT_CROSS_KEY_REUSE")
+    if _any(e[0]>ev for e in es): bad.append("FUTURE_EVENT")
+    if _any(e[0]>cap for e in es): bad.append("EVENT_AFTER_CAPTURE")
+    if _any(a[0]>=b[0] for a,b in zip(es,es[1:])): bad.append("AMBIGUOUS_OR_NONINCREASING_CHRONOLOGY")
     req=[e for e in es if e[4]=="REQUEST"]
     if len(req)!=1: bad.append("EXACTLY_ONE_REQUEST_REQUIRED")
     if es[0][4]!="REQUEST": bad.append("REQUEST_MUST_BE_FIRST")
     dec=[e for e in es if e[4] in _dec]
     if len(dec)>1: bad.append("MULTIPLE_MUSE_DECISIONS_AMBIGUOUS")
     selected=[e for e in es if e[4]=="SELECTED"]; leased=[e for e in es if e[4]=="LEASED"]; consumed=[e for e in es if e[4]=="CONSUMED"]; go=[e for e in es if e[4]=="GO"]; prov=[e for e in es if e[4] in _prov]; rel=[e for e in es if e[4] in _rel]; h=[e for e in es if e[4] in {"HOLD","COLLISION"}]
-    if any(len(x)>1 for x in (selected,leased,consumed,go,prov,rel)): bad.append("DUPLICATE_STATE_EVENT")
-    if any((leased,consumed,go,prov)) and not selected: bad.append("ATOMIC_OR_PROVIDER_EVENT_WITHOUT_SELECTED")
+    if _any(len(x)>1 for x in (selected,leased,consumed,go,prov,rel)): bad.append("DUPLICATE_STATE_EVENT")
+    if _any((leased,consumed,go,prov)) and not selected: bad.append("ATOMIC_OR_PROVIDER_EVENT_WITHOUT_SELECTED")
     if consumed and not leased: bad.append("CONSUMED_WITHOUT_LEASE")
     if go and not consumed: bad.append("GO_WITHOUT_CONSUMED")
     if prov and not (consumed and go): bad.append("PROVIDER_TERMINAL_WITHOUT_CONSUME_GO")
     seq=[selected,leased,consumed,go,prov]
     flat=[x[0] for x in seq if x]
-    if any(a[0]>=b[0] for a,b in zip(flat,flat[1:])): bad.append("ATOMIC_SEQUENCE_ORDER")
+    if _any(a[0]>=b[0] for a,b in zip(flat,flat[1:])): bad.append("ATOMIC_SEQUENCE_ORDER")
     if rel and rel[0] != es[-1]: bad.append("EVENT_AFTER_RELEASE_TERMINAL")
     if rel and prov: bad.append("RELEASE_AND_PROVIDER_TERMINAL_CONFLICT")
     if h and selected: bad.append("SELECTED_AND_HOLD_COLLISION_CONFLICT")

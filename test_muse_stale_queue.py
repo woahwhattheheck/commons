@@ -1,5 +1,5 @@
 from __future__ import annotations
-import copy, json, os, subprocess, sys, tempfile, unittest
+import builtins, copy, json, os, subprocess, sys, tempfile, unittest
 from pathlib import Path
 from coordination import muse_stale_queue as m
 
@@ -72,6 +72,15 @@ class T(unittest.TestCase):
             m.AUTH={"external_send_authorized":True,"muse_selection_authorized":True,"provider_action_authorized":True,"payment_authorized":True,"cash_proven":True,"revenue_recognized":True}
             b,bmd=m.compile_packet(raw); self.assertTrue(all(v is False for v in b["authority"].values())); self.assertTrue(m.verify_compiled(raw,b,bmd))
         finally: m.AUTH=saved
+    def test_real_builtins_any_mutation_cannot_disable_safety(self):
+        saved=builtins.any; error=None; state=None
+        try:
+            builtins.any=lambda *args,**kwargs: False
+            try: self.comp(self.packet([self.req(route="bad\nroute")]))
+            except Exception as exc: error=exc
+            state=self.state(self.packet([self.req(),self.event("RELEASE",10),self.event("SELECTED",20)]))["state"]
+        finally: builtins.any=saved
+        self.assertIsInstance(error,m.Error); self.assertEqual(state,"HOLD_EVIDENCE")
     def test_policy_global_mutation_and_rebinding_cannot_change_semantics(self):
         terminal_raw=json.dumps(self.packet([self.req(),self.event("RELEASE",20)]),separators=(",",":")).encode()
         bad_actor=self.packet([self.req()]); bad_actor["events"][0]["actor_class"]="MUSE"; bad_actor_raw=json.dumps(bad_actor,separators=(",",":")).encode()
