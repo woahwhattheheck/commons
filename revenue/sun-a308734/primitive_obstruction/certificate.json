@@ -1,0 +1,27 @@
+{
+  "certified_union_density": "5/35574",
+  "crt_counterexample_residues": [
+    2095, 7639, 18727, 24271, 29815, 35359, 46447, 57535, 63079, 68623,
+    74167, 79711, 85255, 96343, 107431, 112975, 118519, 124063, 135151,
+    140695, 146239, 151783, 157327, 173959, 179503, 185047, 190591,
+    196135, 201679, 212767, 218311, 229399, 234943, 240487, 251575,
+    257119, 262663, 268207, 273751, 279295, 290383, 295927, 301471,
+    307015, 312559, 318103, 329191, 334735, 340279, 351367, 356911,
+    367999, 373543, 379087, 384631, 390175, 395719, 412351, 417895,
+    423439
+  ],
+  "crt_modulus": 426888,
+  "lemma_class": {"modulus": 72, "residue": 7},
+  "lemma_residuals": ["n-2", "n-5"],
+  "mod8_exponent_categories": {"0": "zero", "1": "one", "2": "at least two"},
+  "original_conjecture_proved": false,
+  "original_conjecture_refuted": false,
+  "payment_claimed": false,
+  "positive_d_residuals_mod9": [6, 6, 3],
+  "prize_claimed": false,
+  "progression": {"base": 2095, "step": 426888, "t_min": 0},
+  "sponsor_contacted": false,
+  "status": "VERIFIED_FINITE_CERTIFICATE_FOR_INFINITE_PROOF",
+  "surviving_mod8_categories": [[0, 0], [0, 1], [1, 0]],
+  "target": "F3(n)=x^2+y^2+4^a+4^b*9^d"
+}
