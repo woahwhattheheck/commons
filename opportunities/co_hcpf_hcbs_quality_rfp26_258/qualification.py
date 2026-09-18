@@ -179,24 +179,24 @@ def _build_codec():
             detached, ensure_ascii=False, sort_keys=True,
             separators=(",", ":"), allow_nan=False,
         ).encode("utf-8", "strict")
-        if len(raw) > max_bytes:
+        if builtin_len(raw) > max_bytes:
             raise error("canonical JSON exceeds byte limit")
         return detached
 
     def strict_load(raw: bytes | str) -> Any:
-        if type(raw) is bytes:
-            if len(raw) > max_bytes:
+        if builtin_type(raw) is bytes_type:
+            if builtin_len(raw) > max_bytes:
                 raise error("JSON input exceeds byte limit")
             try:
                 text = raw.decode("utf-8", "strict")
             except UnicodeDecodeError as exc:
                 raise error("invalid UTF-8") from exc
-        elif type(raw) is str:
+        elif builtin_type(raw) is str_type:
             try:
                 encoded = raw.encode("utf-8", "strict")
             except UnicodeEncodeError as exc:
                 raise error("invalid UTF-8") from exc
-            if len(encoded) > max_bytes:
+            if builtin_len(encoded) > max_bytes:
                 raise error("JSON input exceeds byte limit")
             text = raw
         else:
