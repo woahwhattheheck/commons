@@ -1,6 +1,10 @@
 import copy
 import inspect
+import subprocess
+import sys
+import textwrap
 import unittest
+from pathlib import Path
 
 import revenue.partner_opportunity_qualification_gate.engine as engine_module
 
@@ -145,31 +149,127 @@ class QualificationGateTests(unittest.TestCase):
             "runway_receipt",
             "verify_runway",
             "runway_bytes",
+            "_state",
+            "_validate_disposition_source_binding",
         )
         previous = {name: getattr(engine_module, name, marker) for name in names}
-        prior_state = engine_module._state
 
         def poison(*args, **kwargs):
-            raise AssertionError("mutable module runway alias was consulted")
+            raise AssertionError("recreated mutable module alias was consulted")
 
         try:
             for name in names:
                 setattr(engine_module, name, poison)
-            engine_module._state = lambda *args, **kwargs: (
-                "READY_FOR_MUSE_ELECTION_ONLY",
-                ["poisoned module state"],
-            )
             out = compile_qualification(p)
             receipt = make_receipt(p, out)
             self.assertEqual(out["partners"][0]["state"], "HOLD_CONTACT_POLICY")
             verify_bundle(p, out, receipt)
         finally:
-            engine_module._state = prior_state
             for name, old in previous.items():
                 if old is marker:
                     delattr(engine_module, name)
                 else:
                     setattr(engine_module, name, old)
+
+    def test_donor_and_local_validation_rebind_cannot_widen_normal_or_optimized(self):
+        root = Path(__file__).resolve().parents[2]
+        script = textwrap.dedent(
+            r"""
+            import copy
+            import revenue.procurement_runway_gate.engine as donor
+            import revenue.partner_opportunity_qualification_gate.validation as validation
+            from revenue.partner_opportunity_qualification_gate.engine import (
+                compile_qualification,
+                make_receipt,
+                verify_bundle,
+            )
+            from revenue.partner_opportunity_qualification_gate.test_gate import packet
+
+            p = packet()
+            p["runway_input"]["opportunities"][0]["relationship_state"] = "DNR"
+            q = packet()
+            q["partners"][0]["gate_dispositions"][0]["state"] = "UNSATISFIED"
+            malformed = packet()
+            malformed["partners"][0]["gate_dispositions"][0]["evidence_refs"] = []
+
+            def fabricated_ready(*args, **kwargs):
+                return "ELIGIBLE_FOR_SEPARATE_MUSE_ELECTION_ONLY"
+
+            def poison(*args, **kwargs):
+                raise AssertionError("poisoned semantic dependency was consulted")
+
+            donor.validate_input = lambda raw: raw
+            donor._contact_state = fabricated_ready
+            donor._score_opportunity = lambda *args, **kwargs: {
+                "id": "opp-1",
+                "runway_state": "READY",
+                "selected_partners": [{
+                    "name": "Example MSP",
+                    "timing_status": "EXPLICIT_FIT",
+                }],
+                "contact_state": "ELIGIBLE_FOR_SEPARATE_MUSE_ELECTION_ONLY",
+                "source_urls": ["https://buyer.example/rfp.pdf"],
+            }
+            donor._partner_timing = lambda *args, **kwargs: ("EXPLICIT_FIT", "poisoned")
+            donor._target_date = lambda *args, **kwargs: None
+            donor.RELATIONSHIP_STATES = {"CLEAR"}
+            donor.RUNWAY_STATES = {"READY"}
+            donor.AUTHORITY_FALSE = {
+                "external_send_authorized": True,
+                "provider_mutation_authorized": True,
+                "submission_authorized": True,
+                "payment_or_revenue_inferred": True,
+            }
+
+            validation.normalize_input = lambda raw: raw
+            for name in (
+                "_obj",
+                "_arr",
+                "_text",
+                "_integer",
+                "_date",
+                "_sha",
+                "_url",
+                "_shape",
+                "_source",
+                "_refs",
+                "_gate",
+                "_registration",
+                "_workshare",
+                "_disposition",
+            ):
+                setattr(validation, name, poison)
+            validation.PHASES = {"PRE_OUTREACH"}
+            validation.GATE_STATES = {"SATISFIED"}
+            validation.REG_STATES = {"COMPLETE"}
+            validation.SOURCE_KINDS = {"SOLICITATION_CONTROL"}
+            validation.SOURCE_STATES = {"CURRENT"}
+            validation.GATE_EVIDENCE_KINDS = {"PARTNER_EVIDENCE"}
+            validation.PARTNER_SOURCE_KINDS = {"PARTNER_EVIDENCE"}
+
+            out = compile_qualification(p)
+            if out["partners"][0]["state"] != "HOLD_CONTACT_POLICY":
+                raise SystemExit("donor DNR poison widened qualification")
+            verify_bundle(p, out, make_receipt(p, out))
+
+            out = compile_qualification(q)
+            if out["partners"][0]["state"] != "HOLD_HARD_GATE":
+                raise SystemExit("local UNSATISFIED poison widened qualification")
+            verify_bundle(q, out, make_receipt(q, out))
+
+            try:
+                compile_qualification(malformed)
+            except Exception:
+                pass
+            else:
+                raise SystemExit("malformed satisfied evidence escaped sealed normalization")
+            """
+        )
+        for optimized in (False, True):
+            cmd = [sys.executable] + (["-O"] if optimized else []) + ["-c", script]
+            run = subprocess.run(cmd, cwd=root, text=True, capture_output=True, check=False)
+            with self.subTest(optimized=optimized):
+                self.assertEqual(run.returncode, 0, run.stderr or run.stdout)
 
     def test_authority_tamper_requires_exact_false(self):
         p = packet()
