@@ -16,7 +16,7 @@ STATUS = ROOT / "revenue/kaggriculture/cloud-execution-lab/candidates/v5/lean-fe
 
 class WheatCarryFollowupTests(unittest.TestCase):
     def test_machine_receipt_keeps_upstream_offer_census_open(self):
-        receipt = m.source_theorem_receipt(STATUS)
+        receipt = m.source_theorem_receipt()
         self.assertEqual(receipt["remaining_gate_state"], m.UPSTREAM_GATE)
         self.assertTrue(receipt["upstream_offer_census_required"])
         self.assertFalse(receipt["helper_seam_candidate"])
