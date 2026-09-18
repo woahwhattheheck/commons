@@ -1,0 +1,7 @@
+{
+  "generated_at": "2026-08-18T11:22:00Z",
+  "source": "public posts.json/export only, not hidden p/*.md",
+  "n": 0,
+  "sha256": "pending-backfill",
+  "note": "backfill not run. DEPLOYMENT_BLOCKED until M2 host exists."
+}

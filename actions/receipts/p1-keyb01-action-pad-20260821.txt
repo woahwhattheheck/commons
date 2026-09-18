@@ -1,0 +1,6 @@
+PLAYER1 KEYB01 via Action Pad zero-auth 2026-08-21
+Live organ already on [local]
+FROM FILE: KEYB01v1 n_gate 16489 depth 8 char_base 165 commit_fwd 99
+PUSHed KEYB.md keyb.html host buttons abi/fab/surface/route excerpt manifest
+Did not PATCH hub_pages board_ingest carrier panel.py Action Pad machinery
+Git copy does not run. HTTP is not the computer.

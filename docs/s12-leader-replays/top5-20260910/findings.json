@@ -1,0 +1,38 @@
+{
+  "corpus": {
+    "baseline_episode": 107130860,
+    "top5_decisions_audited": 17256,
+    "top5_episodes": 12,
+    "top5_seats": 24
+  },
+  "exact_findings": {
+    "baseline_liquidity_divergence": {
+      "cash_after_step_2": {"apa": 984, "bryce": 52},
+      "cash_end_day_0": {"apa": 42, "bryce": 6},
+      "day1_hands_after_first_action": {"apa": 4, "bryce": 3},
+      "melon_seed_auc_day_0": {"apa": 12, "bryce": 125},
+      "melon_seed_peak_day_0": {"apa": 2, "bryce": 12}
+    },
+    "baseline_opening_same_output": {
+      "day0_animals_equal": true,
+      "day0_hands_equal": true,
+      "day0_plants_equal": true
+    },
+    "baseline_worker_cardinality": {
+      "apa_overage_rows": 0,
+      "bryce_nonpass_unreachable_commands": 26,
+      "bryce_overage_rows": 45,
+      "bryce_unreachable_commands": 45
+    },
+    "top5_minimum_max_hands_day_0": 5,
+    "top5_rejected_hires": 5,
+    "top5_winner_day0_hand_comparison": {"equal": 7, "winner_fewer": 2, "winner_more": 3},
+    "top5_worker_cardinality_overage_rows": 0
+  },
+  "interpretation_boundary": [
+    "The corpus is observational; recurring schedules nominate mechanisms but do not prove score causality.",
+    "Raw market-order quantities are requested actions, not execution receipts.",
+    "The exact leaderboard invariant is observation-bound worker action cardinality, not universal HIRE affordability."
+  ],
+  "schema": "titan.s12b.top5-schedule-findings.v1"
+}

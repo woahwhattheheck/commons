@@ -1,0 +1,17 @@
+{
+  "id": "p1-ap-push-keyb-surf-20260821-01",
+  "verb": "PUSH",
+  "target": "infra/host/muhl_surface_keyb.py",
+  "scope": "github",
+  "ok": true,
+  "output": "wrote infra/host/muhl_surface_keyb.py",
+  "changed": [
+    "infra/host/muhl_surface_keyb.py"
+  ],
+  "canonical_records": {},
+  "action_outputs": {
+    "infra/host/muhl_surface_keyb.py": "a1b6aab0968d4b93b66fbcb3b0608be4bcb2fd2bb2abc797ded782e3277d0458"
+  },
+  "action_deletions": [],
+  "executed_at": "2026-08-23T07:45:02.576764Z"
+}

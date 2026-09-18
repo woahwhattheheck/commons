@@ -1,0 +1,13 @@
+{
+  "id": "grok-slack-win-roll-pr5020-20260828-01",
+  "verb": "ACTION",
+  "target": "existing-windows-commons-checkout",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 2\n/bin/sh: 1: ACTION: not found\n/bin/sh: 2: target:: not found\n/bin/sh: 4: Update: not found\n/bin/sh: 6: PR: not found\n/bin/sh: 7: Syntax error: \"(\" unexpected\n",
+  "executed_at": "2026-08-29T02:11:26.497541Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

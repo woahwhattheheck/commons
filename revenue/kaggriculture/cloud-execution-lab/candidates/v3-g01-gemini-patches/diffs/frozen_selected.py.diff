@@ -1,0 +1,18 @@
+--- frozen_selected.py
++++ frozen_selected.py
+@@ -714,4 +714,15 @@
+             self.pending[item]=max(0,q-sold)
+             if not self.pending[item]:self.planned.pop(item,None)
+         self.previous=seller_public_observation(obs)
++        try:
++            from e11_rival_sell import apply_e11, enabled as _e11
++            if _e11():
++                hist=getattr(self,'_price_hist',[])
++                out,rep=apply_e11(obs,out,hist,config,absorption)
++                self.diagnostics['e11']=rep
++                prices=dict((obs.get('market') or {}).get('prices') or {})
++                hist=list(hist)+[(now,prices)]
++                self._price_hist=[h for h in hist if now-h[0]<=int(config.get('rival_dump_lookback_steps',8))]
++        except Exception:
++            pass
+         return out

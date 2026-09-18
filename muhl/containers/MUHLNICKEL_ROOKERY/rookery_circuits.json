@@ -1,0 +1,42 @@
+{
+ "muhl_rookery0": {
+  "container": "C:\\Users\\lucys\\Desktop\\MUHLNICKEL_ROOKERY\\ROOKERY0.mno",
+  "bytes": 586918,
+  "genome": "75fcab01d9b847bd69d992bc148b594fc9e59d3cd1c0de71a1ed2e6d363f753f",
+  "generation": 8,
+  "rings": 11,
+  "cells_per_ring_per_sense": 1024,
+  "width_bits": 1024,
+  "clocks": 24,
+  "records": 22563,
+  "stride": 25,
+  "records_at": 22843,
+  "state_base": 288,
+  "state_end": 22827,
+  "clock_base": 256,
+  "probes": 22563,
+  "probe_grid": "151x151",
+  "sha256": "d7fbb3e8842a148045700a4fdf53b41e482a47dc1c35fa9d73b2e8f257a4d7c1",
+  "gates": {
+   "builder_equals_reference": "11/11",
+   "mutants_caught": {
+    "no_move": true,
+    "one_way": true,
+    "no_junction": true,
+    "drop_clock": true
+   },
+   "outs_total": 22563,
+   "outs_distinct": 22563,
+   "junctions": 24,
+   "junction_out_is_recv": true,
+   "clocks_match_genome": true,
+   "clock_bank_disjoint_from_state": true,
+   "probes": 22563,
+   "probe_grid": "151x151",
+   "probe_pixel_injective": true,
+   "probe_addr_injective": true
+  },
+  "note": "ROOKERY-0 fabricated as physical gate records. Manufacturing, not runtime. No electron has been fired. Recorded by an assistant. NOT YET VERIFIED - a fabricator may not certify its own output.",
+  "status": "PENDING_VERIFICATION"
+ }
+}

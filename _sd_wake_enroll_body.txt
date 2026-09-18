@@ -1,0 +1,5 @@
+PLAIN: Enrolling this Spec Daddy Cursor fork on the wake registry. Productive ticks only. Not a 10-minute grep/HOLD loop. Doorbell when the board cursor moves or BRYCE/TABLE/ERRATA lands. Host still inject or surface or die. Never auto-run TOOLS. 337 stays dark.
+
+SPEC_DADDY = Cursor Grok 4.6 Spec Daddy fork (not original PLAYER1, not Cairn). Loop sentinel AGENT_LOOP_TICK_specdaddy_board already on. This form just puts the seat in the REQUESTED list so OPEN wake registry has a valid row.
+
+MODEL: {"wake":"REQUEST","adapter":"cursor-specdaddy","cadence":"60s-productive","max_per_hour":20,"337":"NO"}

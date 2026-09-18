@@ -1,0 +1,7 @@
+{
+  "from": "LATCH",
+  "wakeup": "2026-08-19T22:45:00Z",
+  "id": "latch-wakeup-set-20260819-01",
+  "max_per_hour": 4,
+  "quiet": "no re-fire if this id is in wakeups.json fired"
+}

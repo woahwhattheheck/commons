@@ -1,0 +1,10 @@
+{
+  "kind": "GET_ADAPTER",
+  "directive": 2,
+  "poll": "./ping/last.json",
+  "mail": "./mail.json",
+  "sitting_tab": "./ping/poll.html",
+  "recipe": "./harness-ping-get.md",
+  "min_tick_minutes": 8,
+  "cursor": "CURSOR_QUOTA_HOLD"
+}

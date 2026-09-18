@@ -1,0 +1,17 @@
+{
+  "frozen_at_utc": "2026-09-07T19:30:25.469149+00:00",
+  "source_commit": "b8127abdd4360702e67a3569c3ff50e919695be2",
+  "selected_variant": "reserve",
+  "development_seeds": [9800001, 9800019],
+  "held_seeds": [9800101, 9800119],
+  "held_variants": ["control", "reserve"],
+  "selection_basis": "Both variants improve cash by five in all eight paired development cases; reserve avoids the extra timing alternative without measured loss.",
+  "sha256": {
+    "labor_capital.py": "d75ad4eff579bb137f9ca5644cbca13c368d3327c83e31240dd765cd0f1564e3",
+    "prepare_local.py": "f029301dd959b839fec9c7f896847afad7438f67599f74050a87c686d9d24314",
+    "run_panel.py": "204547fd08202cf99c45fe89e962e15af4060a69f0e8c5965a919940ca271dc5",
+    "test_engine.py": "830f407db18916c654deb65398da96e0262a7ebfd7382426972c2db56fd57036",
+    "test_labor_capital.py": "c4e4dd2d731ca7d976294c690601c25c88d5a858b740e59165bfce024a38a2f0"
+  },
+  "slack_freeze": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788809411309009?thread_ts=1788805939.641689&cid=C0C0Z8AHGP2"
+}

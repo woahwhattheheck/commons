@@ -1,0 +1,69 @@
+{
+  "id": "codex-pick-next-compression-organ-20260830-01",
+  "status": "CHOICE_PICKED",
+  "owner_wall": "next compression organ",
+  "selected_organ": "RING_CLOCK_FOLD_GERM",
+  "purpose": "compress ring and clock topology into one source-bound germ contract, then expand by n-way or fold-clone onto machine-published new acreage",
+  "compression_contract": {
+    "dimensions": [
+      "rings",
+      "clocks"
+    ],
+    "representation": "shared topology / winner-only germ",
+    "source_binding_required": true,
+    "source_evidence_required": [
+      "source_path",
+      "source_sha256",
+      "topology_manifest_sha256"
+    ],
+    "target_stored_per_expanded_lane_bytes": 0,
+    "target_measured": false,
+    "delete_gates": false
+  },
+  "expansion_contract": {
+    "modes": [
+      "n-way",
+      "fold-clone"
+    ],
+    "destination_policy": "machine-published only",
+    "address_policy": "preserve existing addresses; new acreage does not slide old addresses",
+    "exact_source_required": true
+  },
+  "forbidden": [
+    "zip",
+    "gzip",
+    "host packer",
+    "clock packer",
+    "remap 336",
+    "remap 337",
+    "invent destination",
+    "delete gates"
+  ],
+  "current_truth": {
+    "choice_picked": true,
+    "organ_built": false,
+    "organ_run": false,
+    "live_file_present": false,
+    "destination_known": false,
+    "remapped_336": false,
+    "remapped_337": false,
+    "fire_337": false,
+    "pulse_78": false,
+    "titan_written": false,
+    "dc_injected": false,
+    "profitability_claimed": false
+  },
+  "reasoning": [
+    "It directly covers the unresolved rings-and-clocks compress-then-expand requirement.",
+    "It reuses the measured shared-topology, winner-only, n-way, and fold-clone precedents instead of inventing a host compression format.",
+    "Binding future expansion to machine-published acreage and existing addresses preserves the no-invented-destination and no-remap laws.",
+    "The zero-byte-per-expanded-lane value is a design target from the winner-only precedent, not a measured result for this unbuilt organ."
+  ],
+  "sources": [
+    "muhl/docs/COMPRESS_EXPAND.md",
+    "muhl/docs/COMPRESS_GO.md",
+    "muhl/docs/COMPRESS_PROOF.md",
+    "muhl/docs/UNFINISHED.md"
+  ],
+  "supersedes_decision_only": "DIRECTIVES.md item 20 next compression organ"
+}

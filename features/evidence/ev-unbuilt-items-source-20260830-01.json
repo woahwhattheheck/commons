@@ -1,0 +1,17 @@
+{
+  "feature_id": "unbuilt-items-surface-20260830-01",
+  "from": "UNSEATED",
+  "id": "ev-unbuilt-items-source-20260830-01",
+  "kind": "SOURCE_PATHS",
+  "note": "Product bytes landed as cursor-unbuilt-items-surface-20260830-01. This row does not remint them or hub_pages/boards/index.",
+  "paths": [
+    "unbuilt-items.html",
+    "unbuilt-items.json",
+    "host/unbuilt_items.py",
+    "ground/UNBUILT_ITEMS.md",
+    "ground/UNBUILT_ITEMS.json",
+    "test_unbuilt_items.py"
+  ],
+  "recorded_at": "2026-08-30T06:48:00Z",
+  "schema": "commons-feature-evidence-v1"
+}

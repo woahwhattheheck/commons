@@ -1,0 +1,45 @@
+--- a/scheduler.py
++++ b/scheduler.py
+@@ -171,6 +171,13 @@
+     return 0,hires
+ 
+ 
++def _receipt_market_prefix(action, config):
++    # Official interpreter truncates raw slots before interpreting orders.
++    market=action.get('market',[]) if isinstance(action,dict) else []
++    queue=list(market) if isinstance(market,list) else []
++    return queue[:max(1,int(config.get('maxMarketOrdersPerTurn',10)))]
++
++
+ class SellScheduler:
+     def __init__(self, mode='candidate'):
+         self.controller=parent.Agent();self.mode=mode;self.pending={};self.planned={}
+@@ -214,7 +221,8 @@
+         route=self.controller.R[self.controller.cur]
+         for t in range(now,end+1):
+             if t>now and t%24==0:hires=0
+-            orders=base['market'] if t==now else (route[t].get('market',[]) if t<len(route) else [])
++            market_action=base if t==now else (route[t] if t<len(route) else parent.PASS)
++            orders=_receipt_market_prefix(market_action,config)
+             for order in orders:
+                 n,hires=_order_spend(order,farm,obs['market']['inventory'],obs['market'].get('params'),hires,config);cost+=n
+                 if order and order[0]=='BUY_LAND' and len(farm['unlocked_quadrants'])<=len(m.LAND_ORDER):
+@@ -230,7 +238,7 @@
+         """
+         now=int(obs['step']);cap=int(config.get('shedCapacity',100))
+         f,p=copy.deepcopy(farm),copy.deepcopy(private)
+-        for o in base['market']:
++        for o in _receipt_market_prefix(base,config):
+             if o and o[0]=='SELL' and len(o)>2 and o[1]!=item:
+                 p['shed'][o[1]]=max(0,p['shed'].get(o[1],0)-int(o[2]))
+         profile=[]
+@@ -243,7 +251,8 @@
+                     m._apply_unit_action(f,p,i,a,len(f['tiles']),t//24,24,10**6)
+             # Before market: arrivals cannot be rescued by this turn's sale.
+             profile.append((t,'before',sum(p['shed'].values())))
+-            orders=base['market'] if t==now else (route[t].get('market',[]) if t<len(route) else [])
++            market_action=base if t==now else (route[t] if t<len(route) else parent.PASS)
++            orders=_receipt_market_prefix(market_action,config)
+             for o in orders:
+                 if not o:continue
+                 if o[0]=='SELL' and t>now and o[1]!=item:

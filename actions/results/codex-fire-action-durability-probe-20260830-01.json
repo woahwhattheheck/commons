@@ -1,0 +1,13 @@
+{
+  "id": "codex-fire-action-durability-probe-20260830-01",
+  "verb": "ACTION",
+  "target": "",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: Harmless: not found\n",
+  "executed_at": "2026-08-30T07:34:18.493072Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Conway's Game of Life",
+  "gates": 270336,
+  "depth": 67,
+  "grid": "64x64",
+  "bits_per_cell": 4,
+  "source": "C:/llm/sdc_sandbox/pfc_life.pfc",
+  "magic": "PFCGAME1",
+  "description": "Conway's Life with 4-bit cells (alive + 3-bit heat trail), 64x64 toroidal grid, computed entirely on the muhlnickel."
+}

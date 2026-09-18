@@ -1,0 +1,38 @@
+{
+  "added": "2026-08-31",
+  "capability": "RoslinCT Hopkinton paperless QC: a 240-row synthetic RAW/IN_PROCESS/RELEASE/RETAIN/STABILITY fixture completes 216 valid samples once through accession, custody, scheduling, read-only results, inventory, and CoA, holds 24 seeded label/temperature/duplicate/late/OOS exceptions, uses 12 mock instruments and 3 mock contract labs, reproduces audit_sha256 93e5ce0ef00ca6de9ac87203b67ec05f9eb80d1cb10ffb284b1948a195dab83a, and blocks release until a named human. Adapters stay simulated.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "roslinct_hopkinton_paperless_qc.py",
+    "roslinct-hopkinton-paperless-qc-lims.js",
+    "roslinct-hopkinton-paperless-qc-lims.html",
+    "test_roslinct_hopkinton_paperless_qc.py",
+    "revenue/roslinct_hopkinton_paperless_qc/contract.json",
+    "revenue/roslinct_hopkinton_paperless_qc/receipt.json",
+    "revenue/roslinct_hopkinton_paperless_qc/receipt.md",
+    "p/cursor-roslinct-hopkinton-paperless-qc-20260831-01.md",
+    "features/registry/roslinct-hopkinton-paperless-qc-lims-01.json"
+  ],
+  "dependencies": [],
+  "id": "roslinct-hopkinton-paperless-qc-lims-01",
+  "name": "RoslinCT Hopkinton paperless QC LIMS",
+  "next_gap": "Buyer-owned sample classes, instrument map, contract-lab list, and de-identified golden files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "roslinct-hopkinton-paperless-qc-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "roslinct-hopkinton-paperless-qc-lims.html",
+    "revenue/roslinct_hopkinton_paperless_qc/contract.json",
+    "p/cursor-roslinct-hopkinton-paperless-qc-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_roslinct_hopkinton_paperless_qc.py",
+    "roslinct_hopkinton_paperless_qc.py"
+  ]
+}

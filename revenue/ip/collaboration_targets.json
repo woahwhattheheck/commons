@@ -1,0 +1,148 @@
+{
+  "schema_version": "commons-collaboration-targets/v1",
+  "kind": "COLLABORATION_TARGETS",
+  "generated_at": "2026-08-26T23:51:02Z",
+  "generated_from_main": "ba92e535b9976d7cfe48800549a5712db12f7fe7",
+  "assessed_at": "2026-08-26",
+  "scope": "Six public-source collaboration candidates split evenly across reproduction labs, integration vendors, and evaluation-focused research projects.",
+  "boundary": "This is a research ledger, not outreach or evidence of fit. Every proposed experiment uses customer-owned or independently cleared inputs; the owner White Box archive is excluded from use and transfer.",
+  "truth": {
+    "contacted": false,
+    "interest_verified": false,
+    "agreement_signed": false,
+    "delivery_completed": false,
+    "cash_received": false
+  },
+  "offer_catalog_source": {
+    "path": "revenue/ip/whitebox_collaboration_offers.json",
+    "blob_sha": "2beb6bf61d8fb04dc6fb0d74094717db488789b3"
+  },
+  "targets": [
+    {
+      "id": "eleutherai-lm-eval-harness",
+      "entity": "EleutherAI LM Evaluation Harness",
+      "route": "LAB_REPRODUCTION",
+      "status": "RESEARCHED_NOT_CONTACTED",
+      "mapped_offer_id": "whitebox-joint-paper-reproduction",
+      "collaboration_hypothesis": "Reproduce one cleared GGUF evaluation as a jointly reviewable harness configuration plus exact crash-resume and rollback receipts.",
+      "evidence_limit": "The official repository establishes an evaluation framework, not interest in Commons, a partnership, or willingness to pay.",
+      "next_action": "Prepare a public, no-private-data reproduction packet against one already-supported harness task before considering any contact.",
+      "asset_boundary": "CUSTOMER_OWNED_OR_INDEPENDENTLY_CLEARED",
+      "uses_owner_archive_payload": false,
+      "source": {
+        "repository": "EleutherAI/lm-evaluation-harness",
+        "commit_sha": "dd417662e5bda6a247489ec28d2ff46a45d1c42c",
+        "readme_path": "README.md",
+        "readme_blob_sha": "bdf7de36c33c4484487c5269d4d9790b64b72283",
+        "evidence_phrase": "# Language Model Evaluation Harness",
+        "immutable_url": "https://github.com/EleutherAI/lm-evaluation-harness/blob/dd417662e5bda6a247489ec28d2ff46a45d1c42c/README.md",
+        "observed_at": "2026-08-26"
+      }
+    },
+    {
+      "id": "mlcommons-inference",
+      "entity": "MLCommons MLPerf Inference",
+      "route": "LAB_REPRODUCTION",
+      "status": "RESEARCHED_NOT_CONTACTED",
+      "mapped_offer_id": "whitebox-sponsored-benchmark",
+      "collaboration_hypothesis": "Produce a bounded comparison showing how Commons evidence receipts compose with one cleared MLPerf Inference reference scenario.",
+      "evidence_limit": "The official repository establishes benchmark reference implementations, not compatibility, endorsement, demand, or buyer intent.",
+      "next_action": "Select one feasible reference scenario and publish an exact method-and-limit note before considering a benchmark collaboration approach.",
+      "asset_boundary": "CUSTOMER_OWNED_OR_INDEPENDENTLY_CLEARED",
+      "uses_owner_archive_payload": false,
+      "source": {
+        "repository": "mlcommons/inference",
+        "commit_sha": "cfb0df14b21a3898521891f021a1c6aadec2ab2c",
+        "readme_path": "README.md",
+        "readme_blob_sha": "81fb646d6e9fb1351bdf227be288b1b6f808b55f",
+        "evidence_phrase": "MLPerf Inference is a benchmark suite for measuring how fast systems can run models",
+        "immutable_url": "https://github.com/mlcommons/inference/blob/cfb0df14b21a3898521891f021a1c6aadec2ab2c/README.md",
+        "observed_at": "2026-08-26"
+      }
+    },
+    {
+      "id": "hugging-face-hub",
+      "entity": "Hugging Face Hub",
+      "route": "VENDOR_INTEGRATION",
+      "status": "RESEARCHED_NOT_CONTACTED",
+      "mapped_offer_id": "whitebox-private-evaluation",
+      "collaboration_hypothesis": "Evaluate a customer-owned model workflow that attaches Commons provenance, rollback, and delivery receipts to Hub-native model operations.",
+      "evidence_limit": "The official client repository establishes Hub interaction surfaces, not a requested integration, accepted design, or commercial opportunity.",
+      "next_action": "Build a local proof using a disposable public test repository and synthetic metadata, with no upload or target-side mutation in this lane.",
+      "asset_boundary": "CUSTOMER_OWNED_OR_INDEPENDENTLY_CLEARED",
+      "uses_owner_archive_payload": false,
+      "source": {
+        "repository": "huggingface/huggingface_hub",
+        "commit_sha": "2c60641c98afa344892600e6ba76e010959ed637",
+        "readme_path": "README.md",
+        "readme_blob_sha": "d626032c129815d0373f5c4cc12e811933839068",
+        "evidence_phrase": "The `huggingface_hub` library allows you to interact with the [Hugging Face Hub]",
+        "immutable_url": "https://github.com/huggingface/huggingface_hub/blob/2c60641c98afa344892600e6ba76e010959ed637/README.md",
+        "observed_at": "2026-08-26"
+      }
+    },
+    {
+      "id": "nvidia-tensorrt-llm",
+      "entity": "NVIDIA TensorRT LLM",
+      "route": "VENDOR_INTEGRATION",
+      "status": "RESEARCHED_NOT_CONTACTED",
+      "mapped_offer_id": "whitebox-private-evaluation",
+      "collaboration_hypothesis": "Test whether Commons exact recovery receipts can accompany one customer-owned inference optimization and rollback workflow.",
+      "evidence_limit": "The official repository establishes an inference runtime and optimization framework, not interest, integration approval, or procurement intent.",
+      "next_action": "Write a synthetic integration boundary and acceptance-test matrix without running vendor infrastructure or contacting NVIDIA.",
+      "asset_boundary": "CUSTOMER_OWNED_OR_INDEPENDENTLY_CLEARED",
+      "uses_owner_archive_payload": false,
+      "source": {
+        "repository": "NVIDIA/TensorRT-LLM",
+        "commit_sha": "767af6f2856bcfb9dbd888b00b02d105dedee4b5",
+        "readme_path": "README.md",
+        "readme_blob_sha": "d94ad93c9b26a35c732d4c55f01ed495e68dbb06",
+        "evidence_phrase": "TensorRT LLM optimizes inference for LLMs and Visual Gen models",
+        "immutable_url": "https://github.com/NVIDIA/TensorRT-LLM/blob/767af6f2856bcfb9dbd888b00b02d105dedee4b5/README.md",
+        "observed_at": "2026-08-26"
+      }
+    },
+    {
+      "id": "ggml-llama-cpp",
+      "entity": "ggml-org llama.cpp",
+      "route": "RESEARCHER_EVALUATION",
+      "status": "RESEARCHED_NOT_CONTACTED",
+      "mapped_offer_id": "whitebox-joint-paper-reproduction",
+      "collaboration_hypothesis": "Evaluate exact GGUF metadata, load, and rollback evidence against one cleared llama.cpp model execution path.",
+      "evidence_limit": "The official repository establishes a GGUF-capable inference project, not maintainer interest, an identified defect, or permission to submit work.",
+      "next_action": "Create a synthetic GGUF interoperability case with exact expected bytes and public reproduction steps before considering a maintainer approach.",
+      "asset_boundary": "CUSTOMER_OWNED_OR_INDEPENDENTLY_CLEARED",
+      "uses_owner_archive_payload": false,
+      "source": {
+        "repository": "ggml-org/llama.cpp",
+        "commit_sha": "925e1179947ea0c0ebfb0032df18af3a729822be",
+        "readme_path": "README.md",
+        "readme_blob_sha": "0b5598c6e5bd9a8130136ee5009cbc500729c953",
+        "evidence_phrase": "llama cli -hf ggml-org/Qwen3.5-0.8B-GGUF",
+        "immutable_url": "https://github.com/ggml-org/llama.cpp/blob/925e1179947ea0c0ebfb0032df18af3a729822be/README.md",
+        "observed_at": "2026-08-26"
+      }
+    },
+    {
+      "id": "bitsandbytes-foundation",
+      "entity": "bitsandbytes foundation",
+      "route": "RESEARCHER_EVALUATION",
+      "status": "RESEARCHED_NOT_CONTACTED",
+      "mapped_offer_id": "whitebox-sponsored-benchmark",
+      "collaboration_hypothesis": "Cross-check a cleared quantization evaluation with Commons reproducibility and rollback receipts while keeping framework differences explicit.",
+      "evidence_limit": "The official repository establishes k-bit quantization primitives, not GGUF equivalence, project interest, demand, or a paid evaluation.",
+      "next_action": "Draft a method note separating bitsandbytes and GGUF quantization claims before any benchmark execution or contact.",
+      "asset_boundary": "CUSTOMER_OWNED_OR_INDEPENDENTLY_CLEARED",
+      "uses_owner_archive_payload": false,
+      "source": {
+        "repository": "bitsandbytes-foundation/bitsandbytes",
+        "commit_sha": "4f1fc6c249d72a95145b5563927656f291378cad",
+        "readme_path": "README.md",
+        "readme_blob_sha": "e2501a99a5c07e0f97a7b4366bdada809da33703",
+        "evidence_phrase": "`bitsandbytes` enables accessible large language models via k-bit quantization for PyTorch",
+        "immutable_url": "https://github.com/bitsandbytes-foundation/bitsandbytes/blob/4f1fc6c249d72a95145b5563927656f291378cad/README.md",
+        "observed_at": "2026-08-26"
+      }
+    }
+  ]
+}

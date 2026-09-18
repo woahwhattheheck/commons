@@ -1,0 +1,27 @@
+WEBVTT Original fictional workflow interview
+
+NOTE Fictional speakers and scripted captions. No recording was verified.
+
+intro
+00:00.000 --> 00:07.250
+<v Morgan>How do you keep a small project handoff understandable?</v>
+
+source
+00:07.250 --> 00:17.500
+<v Rowan>Start with the original source. Keep it beside the edited version so another person can compare them.</v>
+
+ownership
+00:17.500 --> 00:28.125
+<v Morgan>We also name the next action and the person responsible for it. That is more useful than a vague status label.</v>
+
+review
+00:28.125 --> 00:39.875
+<v Rowan>When words are uncertain, mark them for review. A readable draft should not hide uncertainty in the source.</v>
+
+export
+00:39.875 --> 00:51.000 align:start
+<v Morgan>Package the transcript, timestamps, and originals together. The next editor should not need to reconstruct the context.</v>
+
+finish
+00:51.000 --> 01:02.500
+<v Rowan>A useful handoff makes the next action easy without pretending the work is already finished.</v>

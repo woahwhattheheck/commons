@@ -1,0 +1,70 @@
+{
+  "accession_sha256": "5990a5bb320af57005134c3b4b490f5915a9eb9ad56d6f5abbf31b4a17b98458",
+  "actual": {
+    "accessions": 240,
+    "autonomous_released": 0,
+    "billing_writes": 0,
+    "complete": 240,
+    "duplicate_accessions": 0,
+    "held_testing_started": 0,
+    "holds": 60,
+    "human_released": 240,
+    "input_rows": 300,
+    "live_reports": 0,
+    "live_tests": 0,
+    "production_writes": 0
+  },
+  "audit_sha256": "d6e4aa3a3161f357c540faf386fcfa0d5c49608f936158d444c646f643fc9213",
+  "autonomous_released": 0,
+  "buyer": "Canyon Labs / Wendy Mach",
+  "cash_usd": 0,
+  "demand_id": "canyon-multisite-regulated-intake-lims-01",
+  "expected": {
+    "accessions": 240,
+    "autonomous_released": 0,
+    "billing_writes": 0,
+    "complete": 240,
+    "duplicate_accessions": 0,
+    "held_testing_started": 0,
+    "holds": 60,
+    "human_released": 240,
+    "input_rows": 300,
+    "live_reports": 0,
+    "live_tests": 0,
+    "production_writes": 0
+  },
+  "failures": [],
+  "held_testing_started": 0,
+  "hold_code_counts": {
+    "HOLD_CONFLICT_SITE_METHOD_SCOPE": 10,
+    "HOLD_CONFLICT_SOURCE_LINEAGE": 10,
+    "HOLD_MISSING_COLLECTION_DATETIME": 10,
+    "HOLD_MISSING_CUSTODY_SEAL": 10,
+    "HOLD_MISSING_METHOD": 10,
+    "HOLD_MISSING_SAMPLE_ID": 10
+  },
+  "human_released": 240,
+  "interfaces": "SIMULATED",
+  "lineage_sha256": "43941be44834145fefb3826da12775ed08878cb75d2692932708032ace33380e",
+  "match": true,
+  "official_binary": "python3 canyon_multisite_regulated_intake.py",
+  "official_test": "python3 test_canyon_multisite_regulated_intake.py",
+  "ok": true,
+  "pre_sale_transport": "NONE",
+  "replay": {
+    "accession_count": 240,
+    "added_accession_count": 0,
+    "added_holds": 0,
+    "hold_count": 60,
+    "replay_noops": 300,
+    "state_changed": false
+  },
+  "replay_audit_sha256": "d6e4aa3a3161f357c540faf386fcfa0d5c49608f936158d444c646f643fc9213",
+  "site_counts": {
+    "BLF": 120,
+    "RSH": 80,
+    "VST": 40
+  },
+  "truth_gate": "HOLD / BUILD-AND-VERIFY",
+  "wrong_site": []
+}

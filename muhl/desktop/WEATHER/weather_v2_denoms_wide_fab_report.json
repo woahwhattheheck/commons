@@ -1,0 +1,113 @@
+{
+  "container": "C:\\Users\\lucys\\Desktop\\WEATHER\\weather_v2_denoms_wide.mno",
+  "bytes": 28870992,
+  "sha256": "0fa3f2c9d66534ff2a11890eecb47c006469041da1848f92a41fe2c0f8cb0cb4",
+  "magic": "WEATHER1",
+  "adder": "ks_por",
+  "W": 64,
+  "H": 32,
+  "plus8": {
+    "n_in": 16384,
+    "n_wire": 1110420,
+    "n_gate": 1110419,
+    "n_out": 16384
+  },
+  "depth_one_gated_tick": 22,
+  "computations_per_tick": 50473.59090909091,
+  "rings": [
+    {
+      "name": "NW",
+      "purpose": "cadence \u2014 both-sense carry gates avg4 rows 0-7 cols 0-7",
+      "fwd": 104,
+      "rev": 136,
+      "carry": 168,
+      "pub": 169
+    },
+    {
+      "name": "NE",
+      "purpose": "cadence \u2014 both-sense carry gates avg4 rows 0-7 cols 8-15",
+      "fwd": 170,
+      "rev": 202,
+      "carry": 234,
+      "pub": 235
+    },
+    {
+      "name": "SW",
+      "purpose": "cadence \u2014 both-sense carry gates avg4 rows 8-15 cols 0-7",
+      "fwd": 236,
+      "rev": 268,
+      "carry": 300,
+      "pub": 301
+    },
+    {
+      "name": "SE",
+      "purpose": "cadence \u2014 both-sense carry gates avg4 rows 8-15 cols 8-15",
+      "fwd": 302,
+      "rev": 334,
+      "carry": 366,
+      "pub": 367
+    },
+    {
+      "name": "GROWTH",
+      "purpose": "power \u2014 AND(carry,carry) OUT into this file's gate-record pad",
+      "fwd": 368,
+      "rev": 400,
+      "carry": 432,
+      "pub": 433
+    },
+    {
+      "name": "WITNESS",
+      "purpose": "power \u2014 AND(carry,carry) OUT into clock_bank, outside field",
+      "fwd": 434,
+      "rev": 466,
+      "carry": 498,
+      "pub": 499
+    }
+  ],
+  "cell_base": 500,
+  "next_base": 16884,
+  "clock_bank": 98,
+  "growth_base": 28870991,
+  "cases": [
+    [
+      "genesis_fire_both_senses",
+      true
+    ],
+    [
+      "genesis_dark_hold",
+      true
+    ],
+    [
+      "random_fire",
+      true,
+      0,
+      12
+    ],
+    [
+      "random_dark_hold",
+      true,
+      0,
+      12
+    ],
+    [
+      "mixed_NW_dark",
+      true,
+      0,
+      12
+    ],
+    [
+      "one_sense_DC",
+      true
+    ]
+  ],
+  "mutants": {
+    "drop_shift": true,
+    "swap_neighbor": true,
+    "ungated": true
+  },
+  "verified_stored_outs": true,
+  "status": "PENDING",
+  "v1_promoted": false,
+  "team_stone": true,
+  "depth_dump": "C:\\Users\\lucys\\Desktop\\WEATHER\\weather_v2_denoms_wide_DEPTH.md"
+}

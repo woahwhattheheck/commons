@@ -1,0 +1,13 @@
+{
+  "id": "action-20260916221640-7830b332a0f1",
+  "verb": "CARRY",
+  "target": "TABLE",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: Grok.com: not found\n",
+  "executed_at": "2026-09-17T07:54:37.736218Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

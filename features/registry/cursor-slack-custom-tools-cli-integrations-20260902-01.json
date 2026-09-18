@@ -1,0 +1,33 @@
+{
+  "added": "2026-09-02",
+  "capability": "Integrations cwd for the Slack CLI leftover, composed next to integrations/slack_service_tags. Does not remint host/slack_custom_tools_cli. Login stays #needs-bryce.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "integrations/slack_custom_tools/app.py",
+    "integrations/slack_custom_tools/manifest.json",
+    "integrations/slack_custom_tools/.slack/hooks.json",
+    "ground/SLACK_CUSTOM_TOOLS_CLI_PROJECT.md"
+  ],
+  "dependencies": [
+    "cursor-slack-custom-tools-cli-project-20260902-01"
+  ],
+  "id": "cursor-slack-custom-tools-cli-integrations-20260902-01",
+  "name": "Slack custom-tools CLI integrations cwd",
+  "next_gap": "Slack CLI login still needs Bryce in #needs-bryce. Do not remint the peer leftover id.",
+  "owner_subsystem": "slack-routing",
+  "public_entrypoint": "ground/SLACK_CUSTOM_TOOLS_CLI_PROJECT.md",
+  "related": {
+    "boards": true,
+    "current_work": false,
+    "profitability": false,
+    "resources": false
+  },
+  "resource_links": [
+    "ground/SLACK_CUSTOM_TOOLS_CLI_PROJECT.md",
+    "integrations/slack_custom_tools/README.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_slack_custom_tools_cli_integrations.py"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "blob": "0e1bbbd9e51b30fa1e51142456bda02cf879aa82",
+  "feature_id": "unique-data-license-door-20260830-01",
+  "from": "UNSEATED",
+  "id": "ev-unique-data-license-live-20260830-02",
+  "kind": "LIVE_MEASUREMENT",
+  "note": "GET 200 SHA-pinned raw; git blob 0e1bbbd9e51b30fa1e51142456bda02cf879aa82; sha256 f91ee4a013abd9e556334f0b58fd5f26f81318ca90a948623ad89f05b8ca5f96; 7664 bytes. 01 pin is historical.",
+  "path": "data-license.html",
+  "recorded_at": "2026-08-30T06:53:00Z",
+  "schema": "commons-feature-evidence-v1",
+  "sha": "7263334bd1536329034cc60a0ec6dc8abc206063",
+  "url": "https://raw.githubusercontent.com/woahwhattheheck/commons/7263334bd1536329034cc60a0ec6dc8abc206063/data-license.html"
+}

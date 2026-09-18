@@ -1,0 +1,57 @@
+{
+  "source_commit": "419a674c0d7870beee518bb94f0f9ba8a1f5eb10",
+  "source_path": "revenue/kaggriculture/cloud-hosted-loss-response/",
+  "thread": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788809878981589",
+  "callable": "seed_main.py::make_agent(root, sell=True, enabled=True)",
+  "integration": "Start one intact controller at step0. Not included in the T14 frozen candidate or selected baseline. No composition with route-rewriting variants is assumed.",
+  "peer_reported_development": {
+    "pairs": 18,
+    "candidate_wtl": [
+      16,
+      0,
+      2
+    ],
+    "sell_wtl": [
+      12,
+      4,
+      2
+    ],
+    "own_cash_delta_per_pair": [
+      240,
+      340
+    ],
+    "rival_cash_delta": 0
+  },
+  "peer_reported_held": {
+    "pairs": 12,
+    "seeds": [
+      9850101,
+      9850119
+    ],
+    "candidate_wtl": [
+      10,
+      2,
+      0
+    ],
+    "sell_wtl": [
+      8,
+      4,
+      0
+    ],
+    "source_report": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788812447067289"
+  },
+  "t14_new_games": 0,
+  "training_labels_imported": 0,
+  "files": {
+    "seed_budget.py": "455024a4179a95ad597492e1f4b94de7bd3bfe7a3a88fd0dce46001f629ec3cd",
+    "seed_main.py": "7aead9356b166de2c3ec9435ce1ba5f36a63635e41bdad27fe67ac9d131f9861",
+    "vendor/sell/SOURCE-FREEZE.json": "37ffcba618a4a640ceae08b54a1770569904cc29b2698eb6377a7b3aa62eb283",
+    "vendor/sell/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "vendor/sell/CALLABLE.md": "7c66d1c9adefcfd68e319fb5e20ac8b8beac96a053c3d2fdc32b5bfbb69afc37",
+    "vendor/sell/NOTICE": "8bffc504d8ef1ea771fd10e383533eb690f8398e5f05153993cb14cca06b5b3f",
+    "vendor/sell/scheduler.py": "32c8610c9827d1686a6f831e2c4b6af4c00d32d2aa04dcf25699d976d6d97dd9",
+    "vendor/sell/mechanics.py": "579965e589237d1e5bbcc8b8448188f91b173d4480430d34b3a7f0e07e0c48d3",
+    "vendor/sell/reference/decision/decision.py": "9d78406668c927785b29f5bf2b5a67f0263bfcd63f626c881a60bad5f8293c52",
+    "vendor/sell/reference/next-panel/vendor/arlene.py": "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4"
+  }
+}

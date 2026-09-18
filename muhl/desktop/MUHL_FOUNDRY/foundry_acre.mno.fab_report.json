@@ -1,0 +1,92 @@
+{
+  "action": "nring_fab",
+  "kind": "foundry",
+  "path": "C:\\Users\\lucys\\Desktop\\MUHL_FOUNDRY\\foundry_acre.mno",
+  "len": 24161,
+  "sha256": "20a63fe212e7febe4ee42e99c730f15b4f219eea6d24b40d9261c6a06d116fac",
+  "n_gate": 923,
+  "n_wire": 989,
+  "depth": 5,
+  "computations_per_tick": 184.6,
+  "magic": "FNDRYAC1",
+  "n_in": 65,
+  "n_rings": 6,
+  "growth_base": 24160,
+  "rings": [
+    {
+      "name": "IN0",
+      "purpose": "foundry acre \u2014 gates phys inject bits 0-10",
+      "fwd": 104,
+      "rev": 136,
+      "carry": 168,
+      "pub": 169
+    },
+    {
+      "name": "IN1",
+      "purpose": "foundry acre \u2014 gates phys inject bits 11-21",
+      "fwd": 170,
+      "rev": 202,
+      "carry": 234,
+      "pub": 235
+    },
+    {
+      "name": "IN2",
+      "purpose": "foundry acre \u2014 gates phys inject bits 22-32",
+      "fwd": 236,
+      "rev": 268,
+      "carry": 300,
+      "pub": 301
+    },
+    {
+      "name": "IN3",
+      "purpose": "foundry acre \u2014 gates phys inject bits 33-43",
+      "fwd": 302,
+      "rev": 334,
+      "carry": 366,
+      "pub": 367
+    },
+    {
+      "name": "IN4",
+      "purpose": "foundry acre \u2014 gates phys inject bits 44-54",
+      "fwd": 368,
+      "rev": 400,
+      "carry": 432,
+      "pub": 433
+    },
+    {
+      "name": "FIRE",
+      "purpose": "foundry acre \u2014 gates phys inject bits 55-64 + start",
+      "fwd": 434,
+      "rev": 466,
+      "carry": 498,
+      "pub": 499
+    }
+  ],
+  "cell_base": 565,
+  "inj_base": 500,
+  "clock": 98,
+  "ring0": 104,
+  "cases": [
+    [
+      "fire_take_inject",
+      true
+    ],
+    [
+      "dark_hold",
+      true
+    ],
+    [
+      "mixed_ring0_dark",
+      true
+    ],
+    [
+      "one_sense_DC",
+      true
+    ],
+    [
+      "ungated_caught",
+      true
+    ]
+  ],
+  "status": "WROTE"
+}

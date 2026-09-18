@@ -1,0 +1,6 @@
+team,games,wins,mean_final_reward,median_final_reward,mean_cash_after_step_1,mean_hands_after_step_1,mean_cash_after_step_2,mean_hands_after_step_2,mean_max_hands_day_0,mean_plants_day_0,mean_animals_day_0,mean_melon_seed_peak_day_0,mean_melon_seed_auc_day_0,first_land_unlock_steps,hire_orders_rejected,worker_cardinality_overage_rows,unreachable_hand_commands
+Himanshu Kumar,5,2,89689.2,98549.0,2635.2,0.0,1055.8,5.0,5.0,18.6,4.0,3.0,12.0,[151],0,0,0
+Otter Vibe,8,6,112949.0,112688.5,366.75,5.0,226.75,5.0,5.0,20.0,5.0,6.0,98.0,[121],0,0,0
+SpaTaro,5,3,97867.2,98907.0,438.6,4.4,380.2,6.0,6.2,15.8,3.8,7.0,68.8,[151],5,0,0
+Terry Luo,4,1,105180.25,105149.0,2649.5,0.0,1072.0,5.0,5.0,19.0,4.0,3.0,12.0,[151],0,0,0
+pensukesan,2,0,80654.5,80654.5,2623.5,0.0,1050.5,5.0,5.0,18.0,4.0,3.0,12.0,[151],0,0,0

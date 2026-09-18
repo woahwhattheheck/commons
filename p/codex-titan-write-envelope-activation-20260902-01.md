@@ -1,0 +1,50 @@
+# Titan write envelope activation — 2026-09-02
+
+`titan-write-envelope` is a producing, constrained Commons resource. It converts a proposed bounded Titan write into a deterministic, content-free safety receipt. It cannot write a file, model, device, or owner machine.
+
+## Material delta
+
+- Measurement range: `56a1343ebeaca5ade38d98477564edaee454f66f` through `1267075cc02aaec135c56e078475e60090aa3010` (20 commits).
+- Bryce's direct Slack correction removed the previously invented personal-approval prerequisite for Titan writes. The surviving boundary is operational: do not break Titan.
+- The Zapier trial ended. The expired account is not counted as live capacity.
+- MWDOC's official notice delayed its Q&A addendum until/by September 4 while preserving the September 25, 5:00 p.m. PT SOQ deadline. A deduplicated implementation order was routed as `mwdoc-d365-partner-soq-packet-20260902-01`.
+- CALIPER carrier pickup PR #7322 landed at `1267075cc02aaec135c56e078475e60090aa3010`; it is newly recorded and not reminted. Active PRs #7334 and #7335 have different owners and exact paths. This activation does not touch them.
+- No official OpenAI/Thibault global reset or directly observed usage-meter reset was found during the once-per-wake check. Prior quota truth remains unchanged.
+
+## Producing result
+
+The compiler requires strict JSON types, a canonical relative target, exact fixed-size preimage and postimage digests, non-overlapping bounded spans, strict base64, exact content and rollback hashes, an explicit reversible flag, and a deterministic intent ID. It emits no payload bytes and exposes no write primitive.
+
+One synthetic four-byte envelope compiled to:
+
+- intent: `titan-write-c17f733083b6fc77ca5f583b4786da958979c183540fd10a03fba73489cae99d`
+- operations: `1`
+- total write bytes: `4`
+- reversible: `true`
+- mutation performed: `false`
+
+An executor must still recheck the exact live preimage, use a crash-safe journal, verify the exact postimage, and retain rollback bytes until a terminal receipt. This activation does not authorize or claim that later execution.
+
+## Verification
+
+- `python -W error -m unittest -v test_titan_write_envelope.py`: 12/12 pass.
+- `python -W error -m py_compile host/titan_write_envelope.py test_titan_write_envelope.py`: pass.
+- Deterministic duplicate compile: identical receipt and intent ID.
+- Negative cases: unknown fields, traversal/absolute/backslash/noncanonical targets, booleans as integers, missing rollback, hash/length mismatch, out-of-bounds and size-changing writes, overlapping spans, identical pre/post digests, bad CLI input.
+- Open door: stdlib-only local compiler; no login, credential, identity, seat, post, or capability gate.
+- Privacy: receipt contains only target, offsets, lengths, hashes, and executor requirements; content and rollback bytes are absent.
+
+PR #7337 merged at `f837f43a80abc39ba63d1f1155b2976ca3beee10` from reviewed head `4dda909be724f6c1b5cb00431efc52d2f1eb401c`. All six product blobs remained exact at descendant main `f41c4f21bdda9e77ff8fd8c945ef2a2d934c1066`; the two intervening commits changed projection paths only. Product-merge blobs: compiler `3cc49876c70be419eab2f265251820ad6e380afa`, focused tests `ae3a4ea60083ae771ff4e4709c1134ff3887eebf`, activation record `9d2fde6b618cd6502d5d038fba47fbbd8a24904a`, this receipt `c2a607eba302a6cc8b2bb829c3d4fad98b4842e4`, ledger `b95d1b71bcdce9066de25bb603faad32c4176ebd`, and ledger test `7ff3e80c0b476c703d4abb9e4c0bc773f0698c2e`.
+
+## Next delta watermark
+
+- observed: `2026-09-02T01:03:48Z`
+- Git main: `f41c4f21bdda9e77ff8fd8c945ef2a2d934c1066`
+- #commons: `1788310861.421539`
+- #delegations: `1788310861.914509`
+- #todo: `1788309979.267129`
+- #leads: `1788309831.051499`
+- Gmail checked through: `2026-09-02T00:31:01Z`
+- Automations: 13 total / 6 enabled / 7 disabled
+
+No Titan/model/device mutation, deployment, outreach, resend, bid, partner eligibility, buyer acceptance, payment, settlement, payout, revenue, or cash is claimed. Titan remains `NOT_WRITTEN`; cash remains USD 0.

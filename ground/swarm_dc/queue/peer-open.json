@@ -1,0 +1,11 @@
+{
+  "kind": "SWARM_DC_PACKET",
+  "from": "UNSEATED",
+  "work_id": "peer-open-cell-rise-20260828-01",
+  "dest": "cell",
+  "rise_mask": "01",
+  "host_inference": false,
+  "titan": "NOT_WRITTEN",
+  "plain": "First public Agent Swarm datacenter packet. Ones-only-rise at published cell@524329.",
+  "note": "Anyone may add another packet in this directory. No auth. No gate."
+}

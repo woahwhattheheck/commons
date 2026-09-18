@@ -1,0 +1,84 @@
+{
+  "schema": "commons.mass-dds-ipms-rfi-input/v1",
+  "evaluation_time": "2026-09-15T08:00:00Z",
+  "opportunity": {
+    "buyer": "Massachusetts Executive Office of Health and Human Services / Department of Developmental Services",
+    "solicitation_id": "BD-27-1039-EHS01-ASHWA-133015",
+    "alternate_id": "27EHSPMDDSIPMSRFI",
+    "notice_url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-27-1039-EHS01-ASHWA-133015&external=true&parentUrl=close",
+    "deadline": "2026-10-01T15:00:00-04:00",
+    "market_research_only": true
+  },
+  "company": {"legal_name": null, "contact_name": null, "contact_email": null, "product_name": null},
+  "sources": [
+    {
+      "id": "src.notice.header.20260915",
+      "source_class": "SOLICITATION_HEADER",
+      "authority": "CONTROLLING",
+      "url": "https://www.commbuys.com/bso/external/bidDetail.sda?docId=BD-27-1039-EHS01-ASHWA-133015&external=true&parentUrl=close",
+      "published_at": "2026-09-01T16:08:46-04:00",
+      "observed_at": "2026-09-15T07:45:00Z",
+      "sha256": null,
+      "current": true,
+      "supersedes": null
+    },
+    {
+      "id": "src.attachment.rfi",
+      "source_class": "BUYER_ATTACHMENT",
+      "authority": "CONTROLLING",
+      "url": "COMMBUYS attachment: RFI for an Incident Prevention Monitoring System IPMS Procurement",
+      "published_at": "2026-09-01T16:08:46-04:00",
+      "observed_at": "2026-09-15T07:45:00Z",
+      "sha256": null,
+      "current": true,
+      "supersedes": null
+    },
+    {
+      "id": "src.attachment.response-template",
+      "source_class": "BUYER_ATTACHMENT",
+      "authority": "CONTROLLING",
+      "url": "COMMBUYS attachment: Response Template - RFI for an Incident Prevention Monitoring System IPMS Procurement",
+      "published_at": "2026-09-01T16:08:46-04:00",
+      "observed_at": "2026-09-15T07:45:00Z",
+      "sha256": null,
+      "current": true,
+      "supersedes": null
+    }
+  ],
+  "evidence": [],
+  "capabilities": [
+    {"id": "cap.video-analytics", "label": "AI-driven safety / incident-prevention video analytics", "semantic": "VIDEO_ANALYTICS", "state": "UNKNOWN", "evidence_refs": [], "caveat": "No TJLabs product capability evidence has been supplied."},
+    {"id": "cap.facial-recognition", "label": "Facial recognition / identity tracking", "semantic": "FACIAL_RECOGNITION", "state": "UNKNOWN", "evidence_refs": [], "caveat": "No capability claim is made."}
+  ],
+  "privacy": [
+    {"id": "facial_recognition", "value": "UNKNOWN", "evidence_refs": [], "caveat": "Product posture not supplied."},
+    {"id": "human_review", "value": "UNKNOWN", "evidence_refs": [], "caveat": "Workflow evidence not supplied."},
+    {"id": "bias_performance_validation", "value": "UNKNOWN", "evidence_refs": [], "caveat": "Validation evidence not supplied."},
+    {"id": "explainability", "value": "UNKNOWN", "evidence_refs": [], "caveat": "Explainability evidence not supplied."},
+    {"id": "retention", "value": "UNKNOWN", "evidence_refs": [], "caveat": "Retention policy not supplied."},
+    {"id": "data_ownership", "value": "UNKNOWN", "evidence_refs": [], "caveat": "Data ownership terms not supplied."},
+    {"id": "deployment_boundary", "value": "UNKNOWN", "evidence_refs": [], "caveat": "Deployment boundary not supplied."},
+    {"id": "encryption_access_control", "value": "UNKNOWN", "evidence_refs": [], "caveat": "Security evidence not supplied."},
+    {"id": "auditability", "value": "UNKNOWN", "evidence_refs": [], "caveat": "Auditability evidence not supplied."},
+    {"id": "accessibility", "value": "UNKNOWN", "evidence_refs": [], "caveat": "Accessibility evidence not supplied."},
+    {"id": "incident_response", "value": "UNKNOWN", "evidence_refs": [], "caveat": "Incident-response evidence not supplied."}
+  ],
+  "architecture": [
+    {"id": "arch.deployment", "claim": "Buyer-neutral deployment model", "state": "OWNER_INPUT_REQUIRED", "evidence_refs": [], "caveat": "No production IPMS architecture is represented."},
+    {"id": "arch.alerting", "claim": "Alert routing, dashboard, and reporting model", "state": "OWNER_INPUT_REQUIRED", "evidence_refs": [], "caveat": "Product evidence required."}
+  ],
+  "compatibility": [
+    {"id": "compat.camera", "surface": "Existing camera systems", "state": "UNKNOWN", "evidence_refs": [], "caveat": "Supported camera models/protocols not supplied."},
+    {"id": "compat.integration", "surface": "Buyer integrations / alert destinations", "state": "UNKNOWN", "evidence_refs": [], "caveat": "Integration inventory not supplied."}
+  ],
+  "tco": {"currency": "USD", "components": [], "declared_five_year_low": 0, "declared_five_year_high": 0},
+  "questions": [
+    {"id": "q.company", "prompt": "Vendor/company and product identity", "answer": null, "state": "OWNER_INPUT_REQUIRED", "evidence_refs": [], "caveats": ["Must be supplied by the owner; do not invent legal/product identity."], "attachments": [], "required": true},
+    {"id": "q.capabilities", "prompt": "Product capabilities and implementation considerations", "answer": null, "state": "OWNER_INPUT_REQUIRED", "evidence_refs": [], "caveats": ["Capability claims require product evidence."], "attachments": [], "required": true},
+    {"id": "q.budget", "prompt": "Budgetary / five-year TCO estimate", "answer": null, "state": "OWNER_INPUT_REQUIRED", "evidence_refs": [], "caveats": ["Ranges are owner/vendor inputs only; compiler does not invent pricing."], "attachments": [], "required": true}
+  ],
+  "required_attachments": [
+    {"id": "att.rfi", "source_id": "src.attachment.rfi", "required": true, "available": false},
+    {"id": "att.response-template", "source_id": "src.attachment.response-template", "required": true, "available": false}
+  ]
+}

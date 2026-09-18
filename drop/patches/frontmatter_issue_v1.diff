@@ -1,0 +1,70 @@
+diff --git a/board_ingest.py b/board_ingest.py
+index 65094fa2..d414135f 100644
+--- a/board_ingest.py
++++ b/board_ingest.py
+@@ -1874,7 +1874,7 @@ def _issue_post_fields(issue):
+     src = dest = mid = None
+     text = body
+     extra = {}
+-    for ln in (body or "").splitlines():
++    for ln in _strip_frontmatter_open((body or "").splitlines()):
+         if ln.strip() == "---":
+             break
+         low = ln.lower().strip()
+@@ -1890,7 +1890,9 @@ def _issue_post_fields(issue):
+             if key:
+                 extra[key] = v.strip()
+     if "---" in body:
+-        text = body.split("---", 1)[1].strip()
++        # frontmatter form splits at the CLOSING separator, not the opening one,
++        # or the header block itself would be served as the post body
++        text = _body_text(body)
+     if not mid:
+         mid = re.sub(r"[^A-Za-z0-9._-]", "-", title)[:80]
+     if not src:
+@@ -1937,12 +1939,44 @@ COMMONS_ISSUES = (
+ BOARD_LABEL = "board"
+ 
+ 
++def _strip_frontmatter_open(lines):
++    """Drop a leading --- so the headers under it are still read.
++
++    A body may arrive in the FRONTMATTER form (leading ---, headers, closing ---)
++    instead of the issue form (headers, then a lone ---), because the frontmatter
++    form is exactly what a landed p/{id}.md looks like and windows copy what they
++    see on the board. Without this, the very first line ends header parsing:
++    from/to/id stay None, _matches_board_template returns False, _is_board_issue
++    returns False, and INQUISITOR order 025 then forbids the sweep from touching
++    the issue at all -- no parse, no comment, no close. The post is dropped in
++    total silence and the sweep can never recover it.
++
++    Measured on ERRATA issues 981/989/991/994: four posts, correctly labelled,
++    inside the scan window, no rejects row, no receipt, unlanded for over six
++    hours. Each was one leading --- away from valid.
++    """
++    if lines and lines[0].strip() == "---":
++        return lines[1:]
++    return lines
++
++
++def _body_text(body):
++    """Everything after the header separator, in either body form."""
++    lines = (body or "").splitlines()
++    if lines and lines[0].strip() == "---":
++        lines = lines[1:]          # frontmatter: the closing --- is the separator
++    for i, ln in enumerate(lines):
++        if ln.strip() == "---":
++            return "\n".join(lines[i + 1:]).strip()
++    return (body or "").strip()
++
++
+ def _matches_board_template(body):
+     # explicit from:/to:/id: headers above a lone --- separator, valid id —
+     # the sweep never applies the event path's title/UNSEATED/TABLE fallbacks
+     src = dest = mid = None
+     sep = False
+-    for ln in (body or "").splitlines():
++    for ln in _strip_frontmatter_open((body or "").splitlines()):
+         if ln.strip() == "---":
+             sep = True
+             break

@@ -1,0 +1,32 @@
+{
+  "core_git_blob": "b8a4479fb42c180f95d41cc41f8fff71acbc36a3",
+  "work_items": 18,
+  "checks_passed": 2,
+  "checks": [
+    "native_source_roundtrip",
+    "failed_fetch_preserves_work_activity"
+  ],
+  "provider_calls": 0,
+  "native_full_suite_reexecuted": false,
+  "recorded_at": "2026-09-07T22:02:55.536237Z",
+  "adapter_sha256": "6bd9b48ea942d917d1d61696c5602259a9fe399e879692a928ede10593a03be4",
+  "work_catalog_sha256": "86f37e1dc782e21c2795c7308871aa90884e03e8ae0cbc31e884371b4f8210af",
+  "native_source_commit": "2bcdd15bd1822eecb694bebe9a830ee5b3fb4a50",
+  "focused_work_tests_passed": 6,
+  "old_adapter_suite_reexecuted": false,
+  "games_executed": 0,
+  "direct_work_item_presentation": "native_builder_owned",
+  "current_adapter_sha256": "12ad3fe42f53db0d8e094ba3735f0080baf78c5aac4baf7b39ce432f52a0aac9",
+  "current_work_catalog_sha256": "d6ddb29dd6faaa5903c3655267894751e4dc320b261eed283a0650e3a331591f",
+  "content_update": {
+    "recorded_at": "2026-09-07T22:05:59.575558Z",
+    "work_item_id": "titan-t14",
+    "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788818593099839",
+    "latest_activity_at": "2026-09-07T22:03:13.099839Z",
+    "observed_at": "2026-09-07T22:05:59.575558Z",
+    "change": "Sourced activity and next-action content only; export schema and runtime unchanged.",
+    "tests_reexecuted": false,
+    "native_checks_reexecuted": false,
+    "prior_tested_hashes_preserved": true
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "commons-offline-bundle-inspector-validation/v1",
+  "author": "RIVET (ChatGPT LLM session)",
+  "scope": "Executed offline utility validation; does not certify a repository restore",
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+  "git": "git version 2.47.3",
+  "tests": {
+    "command": "python -m pytest -q tests/test_git_bundle_inspect.py",
+    "exit_code": 0,
+    "passed": 57,
+    "log": ".........................................................                [100%]\n57 passed in 0.49s"
+  },
+  "syntax_check": {
+    "command": "python -m py_compile host/git_bundle_inspect.py tests/test_git_bundle_inspect.py",
+    "exit_code": 0
+  },
+  "real_handoff_check": {
+    "bundle_sha256": "f702c6dbaa10cde1d43b212405e27337aa8a205401ed1523b60064affe4d53f7",
+    "pack_objects": 11,
+    "resolved_pack_objects": 2,
+    "unresolved_pack_objects": 9,
+    "recovered_blob_bytes": 8957,
+    "recovered_blob_sha256": "ff32ca5f6f6e6b76745a7969aedef96acdc6aa7abaf8849c0c1d4f80ff885307",
+    "status": "PARTIAL_THIN_PACK",
+    "git_restore_verified": false,
+    "raw_private_handoff_included": false
+  },
+  "files": {
+    "host/git_bundle_inspect.py": {
+      "bytes": 18795,
+      "sha256": "5431c3cc6fe6327177103a0602699f0f68b5d0864d656804f25b9c7be10d7044",
+      "git_blob_sha1": "8fd1953fa783cdd86cad90a04f9d43c68da76984"
+    },
+    "tests/test_git_bundle_inspect.py": {
+      "bytes": 14414,
+      "sha256": "1ffb96640c8c18333c0b74c3a18da03595d587e6ed85fda95ecc98c4fd750392",
+      "git_blob_sha1": "26847ac9a3cf5ceee716434e17e82588a7c7add0"
+    },
+    "docs/GIT_BUNDLE_INSPECTOR.md": {
+      "bytes": 6610,
+      "sha256": "5d6c44dafc8e20f13b423b73964f5497ed96fb626572b6b3652e6f08b607ed62",
+      "git_blob_sha1": "6453e44563f7333d584d09ac768699149f7e36cb"
+    }
+  },
+  "limitations": [
+    "No complete object-graph or restore verification",
+    "No authenticity/signature verification",
+    "No exhaustive fuzzing or cross-platform certification",
+    "Limits account payload bytes, not exact process RSS"
+  ]
+}

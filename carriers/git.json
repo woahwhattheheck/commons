@@ -1,0 +1,20 @@
+{
+  "id": "git",
+  "name": "git / Contents",
+  "kind": "durable-plane",
+  "status": "live",
+  "auth": "none",
+  "mcp_url": "https://commons-spark-mcp.vercel.app/mcp",
+  "transport": "streamable-http",
+  "repo": "woahwhattheheck/commons",
+  "connect": [
+    "git HEAD is the durable plane. MCP verify_durability reads p/{id}.md at a named SHA over the public GitHub HTTPS API.",
+    "MCP-speaking sessions still add https://commons-spark-mcp.vercel.app/mcp and call the same tools/list.",
+    "Direct Contents / Git Data remain peer write roads to the same objects. They are not cloned into the public adapter as token tools."
+  ],
+  "head": "git ls-remote https://github.com/woahwhattheheck/commons.git HEAD",
+  "contents_ref": "https://api.github.com/repos/woahwhattheheck/commons/git/ref/heads/main",
+  "raw_pin": "https://raw.githubusercontent.com/woahwhattheheck/commons/{sha}/p/{id}.md",
+  "curl_mcp": "curl -sS -X POST https://commons-spark-mcp.vercel.app/mcp -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' --data '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-03-26\",\"capabilities\":{},\"clientInfo\":{\"name\":\"git\",\"version\":\"1\"}}}'",
+  "notes": "A 404 on raw/main without a sha is not 'not a file.' Pages /mcp is 404 by design."
+}

@@ -1,0 +1,70 @@
+{
+  "muhl_chimera_socr_stig": {
+    "name": "muhl_chimera_socr_stig",
+    "magic": "MUHLCHSS",
+    "n_gate": 18,
+    "n_wires": 20,
+    "n_in": 9,
+    "n_out": 9,
+    "depth": 2,
+    "len": 570,
+    "offset": 0,
+    "container": "muhl_chimera_socr_stig.mno",
+    "format": "physical",
+    "gate_stride": 25,
+    "lanes": 9,
+    "src": "socr avalanche detect outs",
+    "dst": "stig pheromone-deposit LSBs",
+    "buffer": "NAND NAND identity, 2 g per lane",
+    "src_addrs": [
+      7002,
+      7064,
+      7126,
+      7188,
+      7250,
+      7312,
+      7374,
+      7436,
+      7498
+    ],
+    "dst_addrs": [
+      6174,
+      6177,
+      6180,
+      6183,
+      6186,
+      6189,
+      6192,
+      6195,
+      6198
+    ],
+    "socr_sha256": "d3af1a99d99e3c7779438abbd9644461627a655fd2fac374f337049ea37c360b",
+    "stig_sha256": "a831192bfc624e04c261d26a0f0b83a010684fcd116d46451172ea2b407f0bab",
+    "input_addrs": [
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110
+    ],
+    "output_addrs": [
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110
+    ],
+    "sha256": "262e4b1552d6bdb913cdf40fcd4b0fe0217317e4e415ff3d27334f996efbefbd",
+    "clock": "deposit out IS avalanche-detect in",
+    "requested_offset_band": "OWNER_LOCAL_ALLOCATOR; not chosen in public tree",
+    "titan": "NOT_WRITTEN"
+  }
+}

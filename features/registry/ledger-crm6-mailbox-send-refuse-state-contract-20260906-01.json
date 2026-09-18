@@ -1,0 +1,34 @@
+{
+  "schema": "commons-feature-v1",
+  "id": "ledger-crm6-mailbox-send-refuse-state-contract-20260906-01",
+  "name": "CRM6 mailbox --send refuse + state.json contract",
+  "added": "2026-09-06",
+  "carrier": "LEDGER",
+  "owner_subsystem": "lm-gtm-index",
+  "capability": "Mailbox CLI --send/send exits 3 (refuse transport). state.json contract pins mailbox_verify, handoff_mailbox_verify, mailbox_send=illegal; exits 3.",
+  "public_entrypoint": "revenue/lm_gtm_index/README.md",
+  "claimed_paths": [
+    "host/lm_gtm_mailbox_buyer_reply_verify.py",
+    "revenue/lm_gtm_index/state.json",
+    "tests/test_ledger_crm6_mailbox_send_refuse_state_contract.py"
+  ],
+  "test_paths": [
+    "tests/test_ledger_crm6_mailbox_send_refuse_state_contract.py"
+  ],
+  "resource_links": [
+    "revenue/lm_gtm_index/README.md",
+    "revenue/lm_gtm_index/state.json",
+    "p/ledger-crm6-mailbox-send-refuse-state-contract-20260906-01.md",
+    "https://github.com/woahwhattheheck/commons/pull/9269"
+  ],
+  "dependencies": [
+    "ledger-crm6-mailbox-buyer-reply-verify-20260905-01"
+  ],
+  "next_gap": "Landed #9269 @ bd7263e382c33c2d0bb12abec733a97622671efa. Never invent VERIFIED_HUMAN_YES.",
+  "related": {
+    "boards": true,
+    "current_work": true,
+    "profitability": false,
+    "resources": false
+  }
+}

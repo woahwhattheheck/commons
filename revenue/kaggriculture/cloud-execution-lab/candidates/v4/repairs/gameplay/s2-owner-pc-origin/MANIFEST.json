@@ -1,0 +1,29 @@
+{
+  "lane": "S2 sheep swap owner-PC provenance",
+  "status": "ORIGIN_BYTES_UNAVAILABLE_CURRENT_RECOVERY_NOT_PROVEN_BYTE_EQUIVALENT",
+  "authoritative_handoff": {
+    "slack_channel": "C0C0Z8AHGP2",
+    "message_ts": "1789166108.152929",
+    "local_branch": "claude/v4-s2-swap-20260911",
+    "local_commits": ["ac901317d", "28e9ff901"],
+    "base": "titan/v4-20260911@71f3a9adc",
+    "key": "r04_s2_swap",
+    "default": false,
+    "focused_checks_reported": 36,
+    "build_v3_checks_reported": 301,
+    "live_panel": {"games":88,"mean_margin_per_game":395.9,"better":8,"worse":3,"win_loss":"77-11 unchanged"},
+    "leader_panel": {"episodes":133,"mean_margin_per_game":1027.3,"mean_own_delta":241.8,"better":10,"worse":6,"unchanged":117,"win_loss":"64-69 -> 65-68"},
+    "field_wave": "s2a1 readback was outstanding at handoff"
+  },
+  "current_main_recovery": {
+    "source_path": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/donor/overlay/r04_s2_sheep_swap.py",
+    "ledger_status": "default_off_complete_day_cash_hardened",
+    "note": "Current recovery has additional hardening and focused tests, but no exact owner-PC source/test blob IDs were available to prove byte identity with ac901317d+28e9ff901."
+  },
+  "rules": [
+    "Do not create a duplicate S2 key or sibling V4 root.",
+    "Do not bind the owner-PC economics to the current recovery implementation unless exact byte/provenance equivalence or a fresh paired rerun establishes that relationship.",
+    "If the owner-PC commits or exact raw source/test objects become reachable, attach them as provenance/donor custody and compare semantically against current main before any change.",
+    "Keep S2 default OFF unless current promotion evidence authorizes otherwise."
+  ]
+}

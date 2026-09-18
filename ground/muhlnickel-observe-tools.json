@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "identity_source": "exact owner observation and surface instrument blobs already present on the base commit; this is not sender authentication",
+  "owner_observation_tool_blobs": [
+    "3b97b9cb5b41c1fcb26f97cb86b7d917c89dbda1",
+    "7f6504b300e20f86c9f8a2cc566b702ff6aaa664",
+    "d4c6995e25c2088996620f0a450bc015fa6d8e74",
+    "59530b1435bda37405d2bc0a6457bd402063c6cb",
+    "8b6a302f6231d2d52a9149e0801dc16d490af3b9",
+    "481f04ce8615454a322807a4eedd9c54f0f5c137",
+    "39842f0d411d294d45256ceb1d00289d8c3752ff",
+    "a235cef44d893cd2ae07f2cf88d9c0e4dff63b26",
+    "ecf6bc36f8a9073b8a7735b33aae5c63704c5a23"
+  ]
+}

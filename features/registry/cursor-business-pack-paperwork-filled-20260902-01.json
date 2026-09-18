@@ -1,0 +1,40 @@
+{
+  "added": "2026-09-02",
+  "capability": "Paperwork included is a filled instance checklist. Two $200 DESK sheets (Harborline sidecar + Pierlight) share a vertical and stay UNIQUE. Factory OWNER_UNSET sheet not reminted. Not legal advice. Not filing as counsel.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "ground/BUSINESS_PACK_PAPERWORK_FILLED.md",
+    "ground/BUSINESS_PACK_PAPERWORK_FILLED.json",
+    "host/business_pack_paperwork_filled.py",
+    "packs/paperwork-included-20260902-01/harborline-desk.md",
+    "packs/paperwork-included-20260902-01/pierlight-desk.md",
+    "paperwork-included.html",
+    "test_business_pack_paperwork_filled.py"
+  ],
+  "dependencies": [
+    "cursor-business-pack-paperwork-included-20260902-01"
+  ],
+  "id": "cursor-business-pack-paperwork-filled-20260902-01",
+  "name": "Filled paperwork-included DESK checklists",
+  "next_gap": "Owner pastes buyer_state / buyer_city and a live Payment Link. Formation partner stays OWNER_UNSET. Do not invent filings or earnings ads.",
+  "owner_subsystem": "business-packs",
+  "public_entrypoint": "paperwork-included.html",
+  "related": {
+    "boards": true,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "ground/BUSINESS_PACK_PAPERWORK_FILLED.md",
+    "packs/paperwork-included-20260902-01/README.md",
+    "paperwork-included.html",
+    "ground/BUSINESS_PACK_PAPERWORK.md",
+    "p/cursor-business-pack-paperwork-included-20260902-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_business_pack_paperwork_filled.py",
+    "host/business_pack_paperwork_filled.py"
+  ]
+}

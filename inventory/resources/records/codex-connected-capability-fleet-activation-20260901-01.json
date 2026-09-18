@@ -1,0 +1,122 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-connected-capability-fleet-activation-20260901-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "selected_resource": "chatgpt-connected-capability-fleet",
+  "observed_at": "2026-09-01T23:32:25Z",
+  "before": {
+    "capacity": "UNMEASURED",
+    "stage": "AVAILABLE",
+    "condition": "ACTIVE_UNKNOWN",
+    "evidence": "Connected tools and subscriptions existed across screenshots, email receipts, plugins, GitHub, Slack, and prior ledger rows, but no single current route catalog separated account sharing, callable state, reset state, service activation, mutation, consumption, and value."
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "measurement_main_sha": "392e8f99d374ca1f03740daf7f29eeae092576a2",
+    "activation_base_main_sha": "4bf6b2816956a8f44416dd541f8350e04f2ad450",
+    "product_head_sha": "1e838ce9e01938f173d0ff10ff4cd0b74c50ccfd"
+  },
+  "authority": "ALL_SHARED_RESOURCES_ARE_USABLE_BY_ALL_CARRIERS; CLAUDE_IS_THE_SOLE_OWNER_HANDLED_EXCEPTION; LITERAL_SECRETS_ARE_NOT_PERSISTED",
+  "concrete_consumer": "Commons Resource Master, Queue Manager, #delegations builders, and every carrier selecting an actually callable account, service, model, plugin, repository, or quota pool",
+  "measurable_outcome": "Thirty resource routes now compile deterministically into 29 shared resources and one owner-handled resource, 15 callable-now routes, 12 activation/discovery routes, and two timed reset waits. The peer handoff names the shared business Gmail and creates a nonduplicate AgentMail first-inbox build order.",
+  "counts": {
+    "provider_routes": 30,
+    "shared_all_carriers": 29,
+    "owner_handled": 1,
+    "callable_now": 15,
+    "callable_unconstrained": 6,
+    "callable_with_constraint": 9,
+    "activate_first": 5,
+    "discover_in_carrier": 7,
+    "wait_for_reset": 2,
+    "callable_tools": 405,
+    "connected_app_tools": 390,
+    "app_tool_families": 18,
+    "installed_skills": 104,
+    "installed_gpt_plugins": 7,
+    "latent_recommended_plugins": 45,
+    "automations_total": 13,
+    "automations_enabled": 6,
+    "automations_disabled": 7,
+    "github_identities": 2,
+    "accessible_repositories": 9,
+    "public_repositories": 4,
+    "private_repositories": 5,
+    "gmail_inbound_receipts_scanned": 141
+  },
+  "lifecycle_corrections": {
+    "cursor-ultra": "CACHE / EXERCISED / HELD -> LIVE / PRODUCING / CONSTRAINED; two connectors, one depleted and one usable; current-main hold lifted.",
+    "github-repository-portfolio": "Five accessible repositories -> nine: four public and five private; shared identity and shipping destination kept separate.",
+    "openai-automation-fleet": "Three stale active tasks -> thirteen total, six enabled and seven disabled.",
+    "supergrok-heavy": "Still PRODUCING / CONSTRAINED; weekly included pool measured exhausted with USD 0 extra credits and a dated reset boundary.",
+    "claude": "Remains AVAILABLE / HELD and becomes the explicit sole OWNER_ONLY exception."
+  },
+  "installed_gpt_plugins": [
+    "Demos",
+    "Dropbox",
+    "Gmail",
+    "GitHub",
+    "Google Drive",
+    "Slack",
+    "Vercel"
+  ],
+  "email_discovered_service_routes": [
+    "AgentMail",
+    "Apollo",
+    "Cal.com",
+    "Cursor",
+    "Dropbox",
+    "Google/Gemini",
+    "HeyGen",
+    "Higgsfield",
+    "MEGA",
+    "Oracle Cloud",
+    "RevenueCat",
+    "Shopify",
+    "Stripe",
+    "Whop",
+    "X @TheCommonsSwarm",
+    "Zapier MCP"
+  ],
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788304349282199",
+    "owner_correction": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788305523796789?thread_ts=1788304349.282199&cid=C0BRGMDQB6G",
+    "peer_capability_handoff": "https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1788305514110759",
+    "product_commit": "https://github.com/woahwhattheheck/commons/commit/1e838ce9e01938f173d0ff10ff4cd0b74c50ccfd",
+    "snapshot": "https://github.com/woahwhattheheck/commons/blob/main/inventory/resources/connected_capabilities.json"
+  },
+  "exact_blobs": {
+    "host/connected_capability_inventory.py": "940ff883a572e94e3dae8131e2abe723f9084e03",
+    "test_connected_capability_inventory.py": "4e586bf91c5f249d36cfb26a660190890b778716",
+    "inventory/resources/connected_capability_observations.json": "2cd23c9f66da15a9cfdd053880574908c63bdc8d",
+    "inventory/resources/connected_capabilities.json": "4b6060304263a2439b84fd0074526c4c3772ba9d",
+    "ground/RESOURCE_LEDGER.json": "80fa64076362f283990a03fc0dd605b50dfaf930"
+  },
+  "verification": {
+    "input_truth": "Live connector probes, a fully paginated 141-message business-Gmail receipt census, a fully paginated 104-skill list, the 405-tool registry, plugin-directory reads, automation census, current GitHub repo/PR state, Slack delta reads, current-main routing law, owner declarations, and seven owner screenshots are source-distinguished.",
+    "axis_truth": "Every provider row separately records capacity, lifecycle stage, operating condition, authority, holder, consumers, mutation mode, allocation state, value, last use, freshness, source kind, and evidence.",
+    "sharing_truth": "29 rows are SHARED_ALL_CARRIERS. Claude is the sole OWNER_ONLY row. The public catalog explicitly names tokenjunkielabs@gmail.com and distinguishes the two GitHub identities from the woahwhattheheck shipping target.",
+    "quota_truth": "Cursor's two connectors, SuperGrok Heavy, and the two Grokbot pools are distinct. Exhausted pools map to WAIT_FOR_RESET; the usable Cursor connector remains callable.",
+    "plugin_truth": "Installed GPT plugins were verified through Plugin Management. Searches returned no AgentMail or Cursor/Grok/Claude plugin, so those are not falsely counted as installed GPT plugins.",
+    "collision_truth": "Fresh activation base 4bf6b2816956a8f44416dd541f8350e04f2ad450 was seven commits ahead of measurement main with zero claimed-path overlap. Twelve current open PRs have zero overlap with the seven claimed paths.",
+    "tests": "16/16 focused unit tests, deterministic checked-in projection verification, CLI self-test, and Python compile passed.",
+    "open_door_and_secrets": "The compiler is advisory metadata, sets admission_gate=false, adds no login/permission/seat/path/action gate, and rejects only secret-shaped persistence in the public inventory. No literal secret or private mail body is present."
+  },
+  "projection": {
+    "resources": 67,
+    "producing": 41
+  },
+  "rate_plan_boundary": "Account existence, connector exposure, or quota does not prove consumption or value. A service receipt does not prove deployment, buyer acceptance, payment, revenue, settlement, payout, or cash.",
+  "next_action": "Consume the AgentMail first-inbox build order with the shared business Gmail, route nonduplicate work through the available Cursor Ultra connector, wait for exact Grok reset probes, and refresh after the 2026-09-01T23:29:27Z watermark.",
+  "non_claims": [
+    "No literal password, token, API secret, OAuth credential, recovery or verification link, payment credential, private mail body, card data, or bank data persisted.",
+    "No Claude launch, delegation, quota measurement/publication, review, landing, or file mutation.",
+    "No Grok submission or token spend.",
+    "No prospect outreach, resend, deployment, device action, payment, buyer acceptance, revenue, settlement, payout, or cash."
+  ],
+  "titan": "NOT_WRITTEN"
+}
+

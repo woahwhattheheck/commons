@@ -1,0 +1,17 @@
+{
+ "record_type": "BUILD_RECEIPT",
+ "permit_id": "PERMIT-20260818-ATTRIBUTION-LEDGER-01",
+ "commit_shas": [
+  "39818c0b"
+ ],
+ "github_push_actor": "woahwhattheheck (session token; window claim: FABLE)",
+ "paths": [
+  "builds_ledger.py",
+  "builds/records/001,002",
+  "test_builds_ledger.py",
+  "board_ingest.py (rebuild wiring + ASSET_PATHS)"
+ ],
+ "tests": "test_builds_ledger.py ALL PASS; determinism/sweep suites re-run green",
+ "status": "LANDED",
+ "ts": "2026-08-18T15:52:00Z"
+}

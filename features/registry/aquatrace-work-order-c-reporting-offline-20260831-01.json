@@ -1,0 +1,43 @@
+{
+  "added": "2026-08-31",
+  "capability": "AquaTrace reporting and offline recovery runner: a working CLI loads 80 frozen synthetic offline events, recovers 60 into CMDP, netDMR, and Power BI destinations, blocks 20 conflicts with exact HOLD codes, locks three export-contract golden hashes, refuses autonomous export or release, and reproduces audit_sha256 5be4b7ebe6432e675fdb1360ad1125262a014de25eb740dae8ea7aa88c63e51b. Adapters stay synthetic and read-only.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "aquatrace_work_order_c_reporting_offline.py",
+    "revenue/aquatrace_work_order_c_reporting_offline/runner.py",
+    "revenue/aquatrace_work_order_c_reporting_offline/fixture.json",
+    "revenue/aquatrace_work_order_c_reporting_offline/source.json",
+    "revenue/aquatrace_work_order_c_reporting_offline/README.md",
+    "revenue/aquatrace_work_order_c_reporting_offline/contract.json",
+    "revenue/aquatrace_work_order_c_reporting_offline/receipts/run.json",
+    "revenue/aquatrace_work_order_c_reporting_offline/receipts/audit.json",
+    "revenue/aquatrace_work_order_c_reporting_offline/receipts/replay.json",
+    "revenue/aquatrace_work_order_c_reporting_offline/receipts/exports.json",
+    "test_aquatrace_work_order_c_reporting_offline.py",
+    "aquatrace-work-order-c-reporting-offline.html",
+    "p/aquatrace-work-order-c-reporting-offline-20260831-01.md",
+    "features/registry/aquatrace-work-order-c-reporting-offline-20260831-01.json"
+  ],
+  "dependencies": [],
+  "id": "aquatrace-work-order-c-reporting-offline-20260831-01",
+  "name": "AquaTrace reporting and offline recovery runner",
+  "next_gap": "Buyer-owned de-identified offline/export golden files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE. State remains NOT_READY / HOLD / BUILD-AND-VERIFY.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "aquatrace-work-order-c-reporting-offline.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "aquatrace-work-order-c-reporting-offline.html",
+    "revenue/aquatrace_work_order_c_reporting_offline/contract.json",
+    "p/aquatrace-work-order-c-reporting-offline-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_aquatrace_work_order_c_reporting_offline.py",
+    "aquatrace_work_order_c_reporting_offline.py"
+  ]
+}

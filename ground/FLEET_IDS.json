@@ -1,0 +1,19 @@
+{
+  "source_id": "jojo-revenue-fleet-20260825-01",
+  "slack_ts": "1787633743.561299",
+  "subject": "Revenue/substrate fleet live — Grok 4.6 workflows + Claude verifier",
+  "ids": [
+    "jojo-revenue-fleet-20260825-01",
+    "grok46-revenue-discovery-20260825-01",
+    "grok46-open-revenue-desk-20260825-01",
+    "grok46-revenue-redteam-20260825-01"
+  ],
+  "hands_off": [
+    "host/muhl_revenue.py",
+    "LocalDeviceAgent host/test_muhl_revenue.py",
+    "test/live-titan-contract-20260825",
+    "dio-titan-move-truth-reconcile-20260825-01",
+    "revenue/dio/"
+  ],
+  "note": "A Slack fleet announcement is CLAIMED until each id is p/{id}.md on current main. Do not remint. Do not take LDA revenue or Titan live-contract."
+}

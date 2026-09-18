@@ -1,0 +1,127 @@
+{
+  "artifact": {
+    "archive_bytes": 429604,
+    "archive_sha256": "b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9",
+    "github_artifact_id": 10175943272,
+    "runtime_map_files_authenticated": 109,
+    "source_manifest_sha256": "e87d70dd3bcf5aea1e929f1a5dbdc86f3cc33d8a0b3492986f2970fc8e774be2",
+    "zip_sha256": "3a3b74936d238bf884f89a1b279f42676cda35c590f131a6a3548de52d61b4e8"
+  },
+  "author_session": "ASTRA-THISTLE",
+  "canonical_branch": "main",
+  "claim": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1789180551646579",
+  "focused": {
+    "mutant_failed_subcases_per_mode": {
+      "filter_before_cap": 24,
+      "off_by_one": 168,
+      "route_full_vector": 96,
+      "selected_full_vector": 90,
+      "zero_minimum": 6
+    },
+    "normal": {
+      "passed": 9,
+      "seconds": 24.306,
+      "tests": 9
+    },
+    "optimized": {
+      "passed": 9,
+      "seconds": 24.408,
+      "tests": 9
+    },
+    "per_mode": {
+      "behavioral_mutants_killed": 5,
+      "engine_suffix_pairs": 72,
+      "future_route_suffix_cases": 96,
+      "live_engine_hire_positive_controls": 24,
+      "live_hire_slot_controls": 96,
+      "official_interpreter_callbacks": 600,
+      "selected_suffix_cases": 72,
+      "three_arm_rejoin_worlds": 24
+    },
+    "route_world_design": "Both seats; BUILD_PASTURE/BUILD_COOP/PLANT-WHEAT; authored market boundary at steps28/29/30/31. Each world runs baseline raw, repaired raw, baseline truncated for six callbacks each. Repaired and truncated-reference complete observations/actions agree; original misses the build/plant; final money and actor positions equal."
+  },
+  "limits": {
+    "archive_rebuilt": false,
+    "automatic_activation_authorized_by_evidence": false,
+    "competitive_gain_measured": false,
+    "feature_defaults_changed": false,
+    "kaggle_submitted": false,
+    "new_complete_games": 0,
+    "production_edited": false
+  },
+  "logs": {
+    "custom-normal.log": {
+      "sha256": "5d207e7841c407c8cf915015729fb990bf4cc3bef18ba533b2b65a9158ae2da4",
+      "text": "test_current_pristine_route_census_is_explicitly_zero_engagement (__main__.SpatialHirePrefixTests.test_current_pristine_route_census_is_explicitly_zero_engagement) ... ok\ntest_current_selected_scan_uses_raw_prefix (__main__.SpatialHirePrefixTests.test_current_selected_scan_uses_raw_prefix) ... ok\ntest_every_live_hire_slot_remains_a_boundary (__main__.SpatialHirePrefixTests.test_every_live_hire_slot_remains_a_boundary) ... ok\ntest_exact_source_transform_and_other_methods_unchanged (__main__.SpatialHirePrefixTests.test_exact_source_transform_and_other_methods_unchanged) ... ok\ntest_full_engine_rejoin_builds_or_plants_in_both_seats (__main__.SpatialHirePrefixTests.test_full_engine_rejoin_builds_or_plants_in_both_seats) ... ok\ntest_full_engine_suffix_invariance_and_executable_hire_controls (__main__.SpatialHirePrefixTests.test_full_engine_suffix_invariance_and_executable_hire_controls) ... ok\ntest_future_authored_scan_uses_raw_prefix (__main__.SpatialHirePrefixTests.test_future_authored_scan_uses_raw_prefix) ... ok\ntest_guard_mutants_are_killed (__main__.SpatialHirePrefixTests.test_guard_mutants_are_killed) ... ok\ntest_source_drift_and_repeat_are_rejected_even_optimized (__main__.SpatialHirePrefixTests.test_source_drift_and_repeat_are_rejected_even_optimized) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 24.306s\n\nOK\nTHISTLE_MUTANTS={\"filter_before_cap\": 24, \"off_by_one\": 168, \"route_full_vector\": 96, \"selected_full_vector\": 90, \"zero_minimum\": 6}\nTHISTLE_COUNTS={\"behavioral_mutants_killed\": 5, \"engine_hire_controls\": 24, \"engine_suffix_pairs\": 72, \"full_route_three_arm_worlds\": 24, \"live_hire_controls\": 96, \"official_interpreter_calls\": 600, \"pristine_hire_tails\": 0, \"pristine_routes\": 4, \"pristine_rows\": 2880, \"route_suffix_cases\": 96, \"selected_suffix_cases\": 72}\n"
+    },
+    "custom-optimized.log": {
+      "sha256": "7e8a9bc355db991fbf01b987113b0093f03c7b92ea37f194720b488930b36add",
+      "text": "test_current_pristine_route_census_is_explicitly_zero_engagement (__main__.SpatialHirePrefixTests.test_current_pristine_route_census_is_explicitly_zero_engagement) ... ok\ntest_current_selected_scan_uses_raw_prefix (__main__.SpatialHirePrefixTests.test_current_selected_scan_uses_raw_prefix) ... ok\ntest_every_live_hire_slot_remains_a_boundary (__main__.SpatialHirePrefixTests.test_every_live_hire_slot_remains_a_boundary) ... ok\ntest_exact_source_transform_and_other_methods_unchanged (__main__.SpatialHirePrefixTests.test_exact_source_transform_and_other_methods_unchanged) ... ok\ntest_full_engine_rejoin_builds_or_plants_in_both_seats (__main__.SpatialHirePrefixTests.test_full_engine_rejoin_builds_or_plants_in_both_seats) ... ok\ntest_full_engine_suffix_invariance_and_executable_hire_controls (__main__.SpatialHirePrefixTests.test_full_engine_suffix_invariance_and_executable_hire_controls) ... ok\ntest_future_authored_scan_uses_raw_prefix (__main__.SpatialHirePrefixTests.test_future_authored_scan_uses_raw_prefix) ... ok\ntest_guard_mutants_are_killed (__main__.SpatialHirePrefixTests.test_guard_mutants_are_killed) ... ok\ntest_source_drift_and_repeat_are_rejected_even_optimized (__main__.SpatialHirePrefixTests.test_source_drift_and_repeat_are_rejected_even_optimized) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 24.408s\n\nOK\nTHISTLE_MUTANTS={\"filter_before_cap\": 24, \"off_by_one\": 168, \"route_full_vector\": 96, \"selected_full_vector\": 90, \"zero_minimum\": 6}\nTHISTLE_COUNTS={\"behavioral_mutants_killed\": 5, \"engine_hire_controls\": 24, \"engine_suffix_pairs\": 72, \"full_route_three_arm_worlds\": 24, \"live_hire_controls\": 96, \"official_interpreter_calls\": 600, \"pristine_hire_tails\": 0, \"pristine_routes\": 4, \"pristine_rows\": 2880, \"route_suffix_cases\": 96, \"selected_suffix_cases\": 72}\n"
+    },
+    "titan-current-normal.log": {
+      "sha256": "07ed043fe59a72cda10e87ede9e0eae2c8f54e29da904483fa5e6f168f3441d8",
+      "text": "======================================================================\nFAIL: test_prelude_fallback_returns_and_sells_already_collected_unit (checks.test_idle_fertilizer.IdleFertilizerRuntimeTests.test_prelude_fallback_returns_and_sells_already_collected_unit)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/mnt/data/titan-current/checks/test_idle_fertilizer.py\", line 348, in test_prelude_fallback_returns_and_sells_already_collected_unit\n    self.assertEqual(out['farmer'],[expected],agent.diagnostics)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: ['PASS'] != ['SOUTH']\n\nFirst differing element 0:\n'PASS'\n'SOUTH'\n\n- ['PASS']\n+ ['SOUTH'] : {'consumer': 'frozen', 'parent_calls': 0, 'entrypoint_prelude_seconds': 2.000000531000012, 'status': 'deadline_fallback', 'fallback_stage': 'entrypoint_prelude', 'elapsed_seconds': 2.0000344920000543, 'act_cpu_seconds': 3.3408999999817723e-05}\n\n----------------------------------------------------------------------\nRan 118 tests in 1.134s\n\nFAILED (failures=1)\n"
+    },
+    "titan-current-optimized.log": {
+      "sha256": "a457dc71459ae9d72996c0d876290d261b573ccb3ea442bffed650ca19a19d98",
+      "text": "======================================================================\nFAIL: test_prelude_fallback_returns_and_sells_already_collected_unit (checks.test_idle_fertilizer.IdleFertilizerRuntimeTests.test_prelude_fallback_returns_and_sells_already_collected_unit)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/mnt/data/titan-current/checks/test_idle_fertilizer.py\", line 348, in test_prelude_fallback_returns_and_sells_already_collected_unit\n    self.assertEqual(out['farmer'],[expected],agent.diagnostics)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: ['PASS'] != ['SOUTH']\n\nFirst differing element 0:\n'PASS'\n'SOUTH'\n\n- ['PASS']\n+ ['SOUTH'] : {'consumer': 'frozen', 'parent_calls': 0, 'entrypoint_prelude_seconds': 2.0000006710000093, 'status': 'deadline_fallback', 'fallback_stage': 'entrypoint_prelude', 'elapsed_seconds': 2.0000382169999966, 'act_cpu_seconds': 3.579299999989516e-05}\n\n----------------------------------------------------------------------\nRan 118 tests in 1.118s\n\nFAILED (failures=1)\n"
+    },
+    "titan-thistle-candidate-normal.log": {
+      "sha256": "49a3636148f80b1b891d45b5040c678cd66f8bfdf2a1de7ecd5a490d17343aa5",
+      "text": "======================================================================\nFAIL: test_prelude_fallback_returns_and_sells_already_collected_unit (checks.test_idle_fertilizer.IdleFertilizerRuntimeTests.test_prelude_fallback_returns_and_sells_already_collected_unit)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/mnt/data/titan-thistle-candidate/checks/test_idle_fertilizer.py\", line 348, in test_prelude_fallback_returns_and_sells_already_collected_unit\n    self.assertEqual(out['farmer'],[expected],agent.diagnostics)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: ['PASS'] != ['SOUTH']\n\nFirst differing element 0:\n'PASS'\n'SOUTH'\n\n- ['PASS']\n+ ['SOUTH'] : {'consumer': 'frozen', 'parent_calls': 0, 'entrypoint_prelude_seconds': 2.000000479999983, 'status': 'deadline_fallback', 'fallback_stage': 'entrypoint_prelude', 'elapsed_seconds': 2.00003295800002, 'act_cpu_seconds': 3.209699999984217e-05}\n\n----------------------------------------------------------------------\nRan 118 tests in 1.087s\n\nFAILED (failures=1)\n"
+    },
+    "titan-thistle-candidate-optimized.log": {
+      "sha256": "77b90502d74db73b8a149ff3ff9d44ea9520a2649a0a4e3181f3395c9359b80d",
+      "text": "======================================================================\nFAIL: test_prelude_fallback_returns_and_sells_already_collected_unit (checks.test_idle_fertilizer.IdleFertilizerRuntimeTests.test_prelude_fallback_returns_and_sells_already_collected_unit)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/mnt/data/titan-thistle-candidate/checks/test_idle_fertilizer.py\", line 348, in test_prelude_fallback_returns_and_sells_already_collected_unit\n    self.assertEqual(out['farmer'],[expected],agent.diagnostics)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Lists differ: ['PASS'] != ['SOUTH']\n\nFirst differing element 0:\n'PASS'\n'SOUTH'\n\n- ['PASS']\n+ ['SOUTH'] : {'consumer': 'frozen', 'parent_calls': 0, 'entrypoint_prelude_seconds': 2.0000004999999987, 'status': 'deadline_fallback', 'fallback_stage': 'entrypoint_prelude', 'elapsed_seconds': 2.0000333389999696, 'act_cpu_seconds': 3.285799999996897e-05}\n\n----------------------------------------------------------------------\nRan 118 tests in 1.207s\n\nFAILED (failures=1)\n"
+    }
+  },
+  "natural_engagement": {
+    "hire_orders_beyond_default_cap10": 0,
+    "interpretation": "Zero mechanism engagement in the pristine native route census. Does not measure dynamically rewritten/composed routes or nondefault caps.",
+    "pristine_routes": 4,
+    "pristine_rows": 2880
+  },
+  "official_engine": {
+    "git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+    "sha256": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e"
+  },
+  "schema": "titan-v4-spatial-hire-prefix-evidence/v1",
+  "source": {
+    "changed_methods": [
+      "SpatialTempo.transform"
+    ],
+    "path": "revenue/kaggriculture/cloud-execution-lab/spatial_tempo.py",
+    "postimage_git_blob": "499d84bd61158d6535a83f633ad1d08c1174d9b5",
+    "postimage_sha256": "135b63e53464b5083ab8b2ff7cb735b1b7aa1101fdda4601680a6800b87b4053",
+    "preimage_git_blob": "edbc423023479dbe2e78131495334384a87b607f",
+    "preimage_sha256": "9efe9588013b97452813f43dcfe0f5f2c311c2668b5ad64e53f173b7c457a60e",
+    "preservation": "Reversing the single literal OLD/NEW block exactly recovers every preimage byte; all other methods AST-identical."
+  },
+  "status": "source_ready_not_activated",
+  "surrounding_regressions": {
+    "arms": [
+      "pristine_normal",
+      "pristine_optimized",
+      "candidate_normal",
+      "candidate_optimized"
+    ],
+    "each_arm": {
+      "errors": 0,
+      "failures": 1,
+      "passed": 117,
+      "tests": 118
+    },
+    "failure_detail": "At line348 farmer ['PASS'] differs from expected ['SOUTH']; status=deadline_fallback, fallback_stage=entrypoint_prelude, parent_calls=0.",
+    "identical_failure": "checks.test_idle_fertilizer.IdleFertilizerRuntimeTests.test_prelude_fallback_returns_and_sells_already_collected_unit",
+    "interpretation": "Baseline/candidate have the same one known failure; this is not a clean full-suite PASS.",
+    "modules": [
+      "checks.test_weed_continuation",
+      "checks.test_idle_fertilizer",
+      "checks.test_crop_release",
+      "checks.test_operating_stock",
+      "checks.test_feed_stock"
+    ],
+    "new_named_failures": [],
+    "relay": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1789180984692169?thread_ts=1789180219.129419&cid=C0C0Z8AHGP2"
+  }
+}

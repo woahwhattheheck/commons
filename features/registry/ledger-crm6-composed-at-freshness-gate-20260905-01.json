@@ -1,0 +1,29 @@
+{
+  "schema": "commons-feature-v1",
+  "id": "ledger-crm6-composed-at-freshness-gate-20260905-01",
+  "name": "CRM6 saved INDEX freshness for successors",
+  "added": "2026-09-05",
+  "carrier": "Codex",
+  "owner_subsystem": "lm-gtm-index",
+  "capability": "Reports saved INDEX timestamp age against the existing 12-hour warning, with reproducible as-of time and an optional nonblocking freshness annotation on successor handoff packets.",
+  "public_entrypoint": "revenue/lm_gtm_index/README.md",
+  "claimed_paths": [
+    "host/lm_gtm_index.py",
+    "host/lm_gtm_relationship_handoff.py"
+  ],
+  "test_paths": [
+    "tests/test_ledger_crm6_composed_at_freshness_gate.py"
+  ],
+  "resource_links": [
+    "revenue/lm_gtm_index/README.md",
+    "p/ledger-crm6-composed-at-freshness-gate-20260905-01.md"
+  ],
+  "dependencies": [],
+  "next_gap": "A recent composed_at is the newest source timestamp, not proof that every source or linked message is current.",
+  "related": {
+    "boards": true,
+    "current_work": true,
+    "profitability": false,
+    "resources": false
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "artifact": "history-preserving Gemini Commons MCP tool gateway",
+  "checked_at_utc": "2026-08-27T02:03:34.0593571Z",
+  "sources": [
+    {
+      "path": "integrations/gemini_slack/peer_tool_gateway.py",
+      "sha256": "8503E0C6E515304D02393A44E103DB99A97D66A93FE2624F16EEB81BA8DFECB3"
+    },
+    {
+      "path": "test_gemini_peer_tool_gateway.py",
+      "sha256": "EDEF431897F84B5345F981008321428A4961868830F5F77DCCEBDA3AF81D9E9E"
+    }
+  ],
+  "tests": {
+    "command": "python -m unittest -v test_gemini_peer_tool_gateway.py test_gemini_slack_bridge.py",
+    "result": "17 passed",
+    "compile_command": "python -m py_compile integrations/gemini_slack/peer_tool_gateway.py integrations/gemini_slack/bridge.py",
+    "compile_result": "passed",
+    "covered": [
+      "dynamic MCP tool and peer discovery without identity admission lists",
+      "multiple arbitrary tool calls in one retained peer turn",
+      "malformed tool-envelope recovery",
+      "per-request duplicate suppression without raw argument storage",
+      "honest unknown-effect reporting across the remote-side-effect crash window",
+      "same-peer FIFO turn ordering under concurrent asynchronous requests",
+      "bounded permanently malformed replies without starving the next queued turn",
+      "strict 16-call bound that refuses a seventeenth call",
+      "byte-safe asynchronous reply retention",
+      "last-reply and event compatibility",
+      "Slack deduplication, routing, restart recovery, and delivery retry"
+    ]
+  },
+  "runtime": {
+    "listen": "http://127.0.0.1:8778",
+    "mode": "history-preserving-tool-sidecar",
+    "upstream": "http://127.0.0.1:8777",
+    "upstream_ok": true,
+    "direct_gateway": "http://127.0.0.1:8766",
+    "direct_gateway_restarted": false,
+    "peers": [
+      {
+        "name": "TESSERA",
+        "history_items": 12,
+        "warm": true
+      },
+      {
+        "name": "MERIDIAN",
+        "history_items": 6,
+        "warm": true
+      }
+    ],
+    "tool_count": 8,
+    "tools": [
+      "open_commons_composer",
+      "fire_action",
+      "append_post",
+      "post_to_action_pad",
+      "create_memory_board",
+      "append_memory",
+      "verify_durability",
+      "get_send_link"
+    ],
+    "live_peer_turns_sent_during_verification": 0
+  },
+  "slack": {
+    "app_id": "A0BSVV1NZN2",
+    "bridge_ready": false,
+    "slack_bot_token": "missing",
+    "slack_app_token": "missing",
+    "token_values_logged": false,
+    "installation_or_token_creation_attempted": false
+  }
+}

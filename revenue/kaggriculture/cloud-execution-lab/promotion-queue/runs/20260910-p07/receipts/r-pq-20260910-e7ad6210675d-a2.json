@@ -1,0 +1,191 @@
+{
+  "attempt": 2,
+  "comparisons": [
+    {
+      "aggregate": {
+        "mean_margin_delta": 0.0,
+        "mean_own_delta": 0.0,
+        "median_own_delta": 0.0,
+        "new_losses": 0,
+        "result_regressions": 0
+      },
+      "baseline_name": "frozen-control-f8f1",
+      "duration_ms": 247,
+      "exit_code": 3,
+      "failed_checks": [
+        "any_score_change"
+      ],
+      "grid": {
+        "expected_cells": 192,
+        "observed_baseline_cells": 192,
+        "observed_candidate_cells": 192,
+        "opponents": [
+          "apex",
+          "arlene",
+          "cok_v10",
+          "kaito_v43",
+          "public_bt12",
+          "v1_submitted"
+        ],
+        "seats": [
+          0,
+          1
+        ],
+        "seeds": [
+          2611041001,
+          2611041002,
+          2611041003,
+          2611041004,
+          2611041005,
+          2611041006,
+          2611041007,
+          2611041008,
+          2611041009,
+          2611041010,
+          2611041011,
+          2611041012,
+          2611041013,
+          2611041014,
+          2611041015,
+          2611041016
+        ]
+      },
+      "input_sha256": {
+        "baseline_games": "9794dc0837821c08c4bd53c4215e5558870d8bee5a6fe8aba2d072875f0b6b00",
+        "candidate_games": "9794dc0837821c08c4bd53c4215e5558870d8bee5a6fe8aba2d072875f0b6b00",
+        "contract": "db2fbae4288438dee824efa963343c659786c8c727266bb7bbf1f4a86dd99e1a",
+        "evidence": "3df96d515ebcd9e9843c8abefbbe26d5d246552e2ab2b2caa3e5d67cfbbb9420"
+      },
+      "panel_id": "pq-20260910-e7ad6210675d-vs-frozen_control",
+      "report_sha256": "aa4ec4aaa4fc3407e60d906391e37f08faa4390438ef6875999966525d1cd592",
+      "slot": "frozen_control",
+      "strategy": "paired",
+      "verdict": "REJECT"
+    },
+    {
+      "aggregate": {
+        "mean_margin_delta": 0.0,
+        "mean_own_delta": 0.0,
+        "median_own_delta": 0.0,
+        "new_losses": 0,
+        "result_regressions": 0
+      },
+      "baseline_name": "land-f8f1",
+      "duration_ms": 166,
+      "exit_code": 3,
+      "failed_checks": [
+        "any_score_change"
+      ],
+      "grid": {
+        "expected_cells": 192,
+        "observed_baseline_cells": 192,
+        "observed_candidate_cells": 192,
+        "opponents": [
+          "apex",
+          "arlene",
+          "cok_v10",
+          "kaito_v43",
+          "public_bt12",
+          "v1_submitted"
+        ],
+        "seats": [
+          0,
+          1
+        ],
+        "seeds": [
+          2611041001,
+          2611041002,
+          2611041003,
+          2611041004,
+          2611041005,
+          2611041006,
+          2611041007,
+          2611041008,
+          2611041009,
+          2611041010,
+          2611041011,
+          2611041012,
+          2611041013,
+          2611041014,
+          2611041015,
+          2611041016
+        ]
+      },
+      "input_sha256": {
+        "baseline_games": "9794dc0837821c08c4bd53c4215e5558870d8bee5a6fe8aba2d072875f0b6b00",
+        "candidate_games": "9794dc0837821c08c4bd53c4215e5558870d8bee5a6fe8aba2d072875f0b6b00",
+        "contract": "ce61edb09dc4ba9f19b8f03ea94f55a1aa1e9e1150e0e6192470700f566200f6",
+        "evidence": "c644e8fdfd6f0ef0571accedabfac4bf29e6282264f00fd6be1bdf0c97938bee"
+      },
+      "panel_id": "pq-20260910-e7ad6210675d-vs-land",
+      "report_sha256": "5d14cdfcf3205085f2d80384f9f6900620344a34e76fab867ee7aea795af04c9",
+      "slot": "land",
+      "strategy": "paired",
+      "verdict": "REJECT"
+    }
+  ],
+  "created_at": "2026-09-10T18:57:43+00:00",
+  "extra": {
+    "gate_sha256": {
+      "dual_predecessor_gate.py": "9a5b6ec212ee156b908ad0922116629d5e6c61726739c667ff8dbb31a627ac82",
+      "gate.py": "e79b8b98e456a42ba7d27479295a086b8f41959e3ee039d0c40384bf28c73aa6"
+    },
+    "strategy": "paired"
+  },
+  "integrity": {
+    "algorithm": "sha256-canonical-json-v1",
+    "digest": "ed9cc27e9a228711633bd6ad6549973c379dbddca56ee7a45dad26bf727a942b",
+    "prev_receipt_digest": "faab01f1930251734bf33db33e6c882d7d334e0edafb52ba2c08ff6557dbef8b"
+  },
+  "policy_version": "promotion-policy/v1",
+  "predecessors": {
+    "frozen_control": {
+      "artifact_sha256": "fe85975d0475eba58edb69264be8ca0d6e003e22072bd07bcdc6d2a71acf8b5c",
+      "contract_sha256": "db2fbae4288438dee824efa963343c659786c8c727266bb7bbf1f4a86dd99e1a",
+      "evidence_sha256": "3df96d515ebcd9e9843c8abefbbe26d5d246552e2ab2b2caa3e5d67cfbbb9420",
+      "games_sha256": "9794dc0837821c08c4bd53c4215e5558870d8bee5a6fe8aba2d072875f0b6b00",
+      "name": "frozen-control-f8f1",
+      "panel_id": "pq-20260910-e7ad6210675d-vs-frozen_control"
+    },
+    "land": {
+      "artifact_sha256": "fe85975d0475eba58edb69264be8ca0d6e003e22072bd07bcdc6d2a71acf8b5c",
+      "contract_sha256": "ce61edb09dc4ba9f19b8f03ea94f55a1aa1e9e1150e0e6192470700f566200f6",
+      "evidence_sha256": "c644e8fdfd6f0ef0571accedabfac4bf29e6282264f00fd6be1bdf0c97938bee",
+      "games_sha256": "9794dc0837821c08c4bd53c4215e5558870d8bee5a6fe8aba2d072875f0b6b00",
+      "name": "land-f8f1",
+      "panel_id": "pq-20260910-e7ad6210675d-vs-land"
+    }
+  },
+  "queue_pin": {
+    "input_digest": "e7ad6210675d87f1744588fa6997c83cf52956cfc3e1a5ba7404f17475eb336e",
+    "inputs": {
+      "candidate_artifact": {
+        "bytes": 15141,
+        "sha256": "4ab7678d12694d693ab3f189eb2e7646eec60f0af199044c32b7da1686905521"
+      },
+      "candidate_games": {
+        "bytes": 26098,
+        "sha256": "9794dc0837821c08c4bd53c4215e5558870d8bee5a6fe8aba2d072875f0b6b00"
+      },
+      "policy": {
+        "bytes": 396,
+        "sha256": "cd87103cd3af70e5941f87b2245f553a25c505558b573192db9944de40609514"
+      }
+    },
+    "pin_id": "pq-20260910-e7ad6210675d"
+  },
+  "receipt_id": "r-pq-20260910-e7ad6210675d-a2",
+  "receipt_type": "titan-promotion-queue-receipt/v1",
+  "schema_version": 1,
+  "submission_id": "pq-20260910-e7ad6210675d",
+  "timings": {
+    "duration_ms": 574,
+    "finished_at": "2026-09-10T18:57:43+00:00",
+    "per_slot_ms": {
+      "frozen_control": 247,
+      "land": 166
+    },
+    "started_at": "2026-09-10T18:57:43+00:00"
+  },
+  "verdict": "REJECT"
+}

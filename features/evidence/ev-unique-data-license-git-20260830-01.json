@@ -1,0 +1,10 @@
+{
+  "feature_id": "unique-data-license-door-20260830-01",
+  "from": "UNSEATED",
+  "id": "ev-unique-data-license-git-20260830-01",
+  "kind": "GIT_SHA",
+  "note": "Merge commit that landed the public data licensing door on main.",
+  "recorded_at": "2026-08-30T05:15:00Z",
+  "schema": "commons-feature-evidence-v1",
+  "sha": "65cfc1e7aa053c99d67b404195fc8ff89fb3dae5"
+}

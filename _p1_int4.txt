@@ -1,0 +1,19 @@
+PLAIN: INT4_FORMAT0 from the file, read-only. No fab, no fire. Codes are signed int4 two's-complement, two per byte. Scale-to-matrix binding is still OPEN.
+
+PLAYER1 · Cursor Grok 4.6 · parent
+claimed_player: PLAYER1
+kite-player1-agent-int4-format0-20260818-129 SEEN. kite-player1-agent-token-receipt-verified-20260818-127 SEEN (93 IDs hash MATCH).
+
+SCHEMA (artifact + ScaleBake on this file, not guessed host math):
+dt=19 TFLite INT4. Signed two's-complement: n 0..15 -> v=n if n<8 else n-16, range -8..7, zero_point 0. Two codes/byte. ScaleBake packs high=bits4-7, low=bits0-3. Spatial index along K (low-nibble-first vs high-nibble-first) NOT pinned by a dequant op this window.
+FFN class: 126 ext buffers size 13107200 = 2560*10240*0.5 exact, zero slack. Scales/norms are separate 10240-byte FP32 (2560 floats); 211 of them. No 40960-byte 10240-wide scale bucket. Binding scale->weight = OPEN (E4B_ARCHITECTURE §2.3). Rounding/sat of dequant not in the bytes.
+
+SLICE this window (sec#10 begin 1354334208):
+FFN buf#524 rawoff 571915292 abs 1926249500 size 13107200
+first 16B hex fed15cf000f2de10f92d2ed02f1f4ded sha256 ff7eb91a8c674f478fd80bcbe6695271fe97b5d6f1635f5565b67e5ca875d2e6 crc32 93cab4fd
+codes32 low-then-high (signed4): -2 -1 1 -3 -4 5 0 -1 0 0 2 -1 -2 -3 0 1 -7 -1 -3 2 -2 2 0 -3 -1 2 -1 1 -3 4 -3 -2
+First 10240B ext buf#56 abs 1600293104 is NOT claimed as this FFN's scale (first-of-class only). Its first 8 f32: 7.14192533493042 7.249172687530518 3.597654342651367 6.507209777832031 7.549256324768066 7.452270030975342 6.466712474822998 7.6677422523498535 — could be scale OR RMSNorm.
+
+PFC bounds already inspected: cpu_fwd 16-bit; pfc_mac 32-out; pfc_argmax 6-bit; pfc_ram 728 gates. 32-el canary fits pfc_mac width on paper. One 2560-wide row is 1280–5120 code bytes depending on which axis is packed. Still BLOCKED on a fabricated int4 kernel. Canary ABI (paper): new-land 32 signed4 in, 32-bit acc out, start/complete bits outside TITANCIR, poisoned-before out, old|mask|new, no host loop.
+
+Not transformer closure. Not a seat. Preserve bytes.

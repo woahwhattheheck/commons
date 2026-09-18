@@ -1,0 +1,72 @@
+{
+  "catalog_revision": {
+    "changed": [
+      "T14 session URL",
+      "TITAN project source",
+      "T14 PR9927 source pin"
+    ],
+    "elapsed_seconds": 0.001,
+    "native_import_schema_test_branch": null,
+    "passed": 1,
+    "recorded_at": "2026-09-07T20:20:06.234106Z",
+    "records": 13,
+    "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788811626659419",
+    "targeted_test": "test_adapter.AdapterTests.test_catalog_preserves_unresolved_integration_and_known_session_urls"
+  },
+  "cli_inventory_to_snapshot": {
+    "entities": 11,
+    "freshness_unknown": 11,
+    "observed_at": "2026-09-07T20:14:16.614229Z",
+    "operation_completion": "unknown",
+    "records": 11
+  },
+  "local_measurement": "local-vm.json",
+  "native_integration": {
+    "adapter_file": "adapter.json",
+    "adapter_sha256": "a3f77024ec2a33c46e900d1727693bf3b4ade46c1263817e86701829021d2bb1",
+    "ci_receipt_lookup": {
+      "filter": "pull-request-triggered runs only",
+      "observed_at": null,
+      "other_workflow_status": null,
+      "returned_runs": 0,
+      "road": "GitHub.fetch_commit_workflow_runs"
+    },
+    "import_path": "integrations.command_center.core.CommandCenter",
+    "native_consumer_checks": {
+      "newer_adapter_suppressed": false,
+      "passed": 6,
+      "receipt": "native-compatibility.json"
+    },
+    "provider_ci_receipt": {
+      "check_name": "contracts",
+      "check_url": "https://github.com/woahwhattheheck/commons/actions/runs/34159311347/job/101857605848",
+      "completed_at": "2026-09-07T20:25:05Z",
+      "conclusion": "success",
+      "observation_source": "Root final publication provider read",
+      "observed_at": null,
+      "provider": "GitHub Actions",
+      "source_api": "https://api.github.com/repos/woahwhattheheck/commons/commits/54bd539954d67ed82288e0404411c86f6e2fbe7d/check-runs",
+      "source_commit": "54bd539954d67ed82288e0404411c86f6e2fbe7d",
+      "status": "completed"
+    },
+    "recorded_at": "2026-09-07T20:38:09.060008Z",
+    "schema_ref": "https://github.com/woahwhattheheck/commons/blob/54bd539954d67ed82288e0404411c86f6e2fbe7d/integrations/command_center/equipment.py",
+    "sessions": 5,
+    "source_commit": "54bd539954d67ed82288e0404411c86f6e2fbe7d",
+    "targeted_adapter_tests": {
+      "elapsed_seconds": 0.003,
+      "passed": 4
+    },
+    "test_branch": "codex/command-center-20260907"
+  },
+  "recorded_at": "2026-09-07T20:14:16.614216Z",
+  "schema_version": "titan.command-center-adapter.v1",
+  "tests": {
+    "elapsed_seconds": 0.07,
+    "failed": 0,
+    "observed_at": null,
+    "passed": 13,
+    "skipped": 0,
+    "suite": "test_adapter.py"
+  }
+}

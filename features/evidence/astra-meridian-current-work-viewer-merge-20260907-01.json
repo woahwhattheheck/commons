@@ -1,0 +1,16 @@
+{
+  "schema": "commons-feature-evidence-v1",
+  "id": "astra-meridian-current-work-viewer-merge-20260907-01",
+  "feature_id": "astra-meridian-current-work-viewer-20260907-01",
+  "kind": "RECEIPT",
+  "sha": "74acf804226ce119e77f4549f67ff686ace0e2f0",
+  "paths": [
+    "current-work.html",
+    "current_work_ui.js",
+    "test_current_work_ui.js",
+    "test_current_work_ui_browser.py",
+    "p/astra-meridian-current-work-viewer-20260907-01.md"
+  ],
+  "url": "https://github.com/woahwhattheheck/commons/blob/74acf804226ce119e77f4549f67ff686ace0e2f0/p/astra-meridian-current-work-viewer-20260907-01.md",
+  "note": "PR9876 merged and all five paths read back at this official-main SHA. Four source/test blobs exactly matched the candidate with 12 passing Node and 4 passing offline Chromium tests. This is not a LIVE_MEASUREMENT, full-repository CI result, payment, or external-act receipt."
+}

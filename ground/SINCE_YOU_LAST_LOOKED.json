@@ -1,0 +1,90 @@
+{
+  "schema": "commons-since-you-last-looked/v1",
+  "id": "cursor-since-you-last-looked-20260902-01",
+  "kind": "SINCE_YOU_LAST_LOOKED_FEED",
+  "item": 2,
+  "gate": false,
+  "login": false,
+  "commons_admission": false,
+  "commons_is_store": false,
+  "model_decides_what_matters": false,
+  "nothing_dropped": true,
+  "grouped_by": ["git", "slack", "commons"],
+  "not_per_merge_line": true,
+  "not_first_visit_grounding": true,
+  "watermark": "localStorage:commons-since-you-last-looked-ms",
+  "hub": {
+    "channel": "C0BU51F1PL3",
+    "approvals_ts": "1788381748.979959",
+    "claim_ts": "1788383811.692339",
+    "duplicate_later_claim_ts": "1788383843.564909"
+  },
+  "bryce": {
+    "user_id": "U0BR9670G2H",
+    "account": "his account",
+    "sent_using_footer": false,
+    "pin": "top of Slack surface",
+    "search_space": "from:<@U0BR9670G2H> in:C0BU51F1PL3 -\"Sent using\" after:2026-09-02",
+    "keyword_search_hits": "FINDER-FAILED",
+    "thread_parent_hit": "1788380844.707619"
+  },
+  "slack_live_token": "FINDER-FAILED",
+  "slack_note": "This repo does not mint a Slack secret. Live history is the harness that already has Slack. Baked rows are independently measured this seat. Keyword search for Bryce-without-footer returned 0; the Big things parent has no Sent-using footer and is the pin hit.",
+  "invented_stripe_urls": false,
+  "sends": 0,
+  "cash_usd": 0,
+  "checkout": "FINDER-FAILED",
+  "slack_measured": [
+    {
+      "ts": "1788380844.707619",
+      "iso": "2026-09-02T20:27:24Z",
+      "user_id": "U0BR9670G2H",
+      "bot": false,
+      "sent_using": false,
+      "bryce_pin": true,
+      "channel": "C0BU51F1PL3",
+      "text": "Big things incoming alert the peers",
+      "files": ["F0BVDSJSUU8", "F0BU44LE3AT"]
+    },
+    {
+      "ts": "1788381748.979959",
+      "iso": "2026-09-02T20:42:28Z",
+      "user_id": "U0BR9670G2H",
+      "bot": false,
+      "sent_using": true,
+      "bryce_pin": false,
+      "channel": "C0BU51F1PL3",
+      "text": "OWNER APPROVALS from the 9/2 team meeting — after-meeting work, in his words."
+    },
+    {
+      "ts": "1788383536.602639",
+      "iso": "2026-09-02T21:12:16Z",
+      "user_id": "U0BR9670G2H",
+      "bot": false,
+      "sent_using": true,
+      "bryce_pin": false,
+      "channel": "C0BU51F1PL3",
+      "text": "SHIP leftover cursor-stealable-lanes-occupancy-20260902-01"
+    },
+    {
+      "ts": "1788383811.692339",
+      "iso": "2026-09-02T21:16:51Z",
+      "user_id": "U0BR9670G2H",
+      "bot": false,
+      "sent_using": true,
+      "bryce_pin": false,
+      "channel": "C0BU51F1PL3",
+      "text": "CLAIM item 2 leftover cursor-since-you-last-looked-20260902-01 | seat bc-31c8ef9a"
+    },
+    {
+      "ts": "1788383843.564909",
+      "iso": "2026-09-02T21:17:23Z",
+      "user_id": "U0BR97NKHGD",
+      "bot": true,
+      "sent_using": false,
+      "bryce_pin": false,
+      "channel": "C0BU51F1PL3",
+      "text": "CLAIM item 2 leftover cursor-since-you-last-looked-20260902-01. Duplicate later CLAIM — does not steal this leftover id."
+    }
+  ]
+}

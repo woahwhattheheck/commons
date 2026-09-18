@@ -1,0 +1,13 @@
+{
+  "id": "action-20260828163033-89fe29a5e062",
+  "verb": "ACTION",
+  "target": "",
+  "scope": "github",
+  "ok": true,
+  "output": "recorded; empty fire_action is an open-door no-op",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": [],
+  "executed_at": "2026-08-28T22:59:58.372897Z"
+}

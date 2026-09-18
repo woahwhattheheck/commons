@@ -1,0 +1,29 @@
+{
+  "id": "cursor-business-pack-keep-sell-20260902-01",
+  "kind": "BUSINESS_PACK_KEEP_SELL_FACTORY",
+  "schema_version": "business-pack-keep-sell/v1",
+  "measured_at": "2026-09-02",
+  "source_slack_ts": "1788322816.580769",
+  "control_plane_receipt": "cursor-slack-business-packs-channel-20260902-01",
+  "slack_channel": {
+    "name": "#business-packs",
+    "id": "C0BU7JAPUH3"
+  },
+  "marketing": "BRYCE",
+  "scaffold_not_stolen": true,
+  "scaffold_owned_by": "GOAT",
+  "no_fake_stripe_urls": true,
+  "product_engines": "private_product_main",
+  "tiers_usd": [20, 100, 200, 1000, 10000],
+  "honesty": {
+    "no_fake_stripe_urls": true,
+    "no_invented_buyers": true,
+    "no_invented_cash": true,
+    "no_agent_ad_spend": true,
+    "marketing_stays_bryce": true,
+    "checkout_href_requires_chargeable": true
+  },
+  "cash_usd": "0.00",
+  "buyers": 0,
+  "packs": []
+}
