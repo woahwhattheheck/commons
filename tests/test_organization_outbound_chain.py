@@ -14,6 +14,7 @@ from unittest.mock import patch
 
 import revenue.initial_outreach_slot.slot as initial_slot_impl
 import revenue.organization_outbound_chain.provider_boundary as provider_boundary_impl
+import revenue.organization_outbound_chain.registry as registry_impl
 from revenue.organization_outbound_chain import chain
 from revenue.organization_outbound_chain.provider_boundary import (
     GmailBoundary,
@@ -855,6 +856,50 @@ class RegistryTest(unittest.TestCase):
             violations = find_bypasses(root, validate_manifest=False)
             self.assertIn("live.py:direct-initial-outreach", violations)
             self.assertIn("live.py:direct-terminal-consumer", violations)
+
+    def test_computed_nonpython_host_identity_is_detected(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            (root / "live.ts").write_text(
+                "const p = 'mcp__Slack__' + 'slack_' + 'send_message';\n",
+                encoding="utf-8",
+            )
+            violations = find_bypasses(root, validate_manifest=False)
+            self.assertTrue(
+                any(
+                    item.startswith("live.ts:provider-marker:")
+                    and "mcp__Slack__slack_send_message" in item
+                    for item in violations
+                ),
+                violations,
+            )
+
+    def test_registry_public_rebinding_cannot_redefine_first_load_generation(self):
+        root = Path(__file__).resolve().parents[1]
+        with patch.object(registry_impl, "ADAPTERS", ()):
+            self.assertIn(
+                "registry:public-manifest-drift",
+                validate_registry(root),
+            )
+
+        with tempfile.TemporaryDirectory() as td:
+            temp_root = Path(td)
+            (temp_root / "live.ts").write_text(
+                "const p = 'mcp__Slack__' + 'slack_' + 'send_message';\n",
+                encoding="utf-8",
+            )
+            with patch.object(registry_impl, "PROVIDER_MARKERS", ()):
+                violations = find_bypasses(
+                    temp_root,
+                    validate_manifest=False,
+                )
+            self.assertTrue(
+                any(
+                    "mcp__Slack__slack_send_message" in item
+                    for item in violations
+                ),
+                violations,
+            )
 
     def test_test_files_do_not_count_as_live_adapter_bypass(self):
         with tempfile.TemporaryDirectory() as td:
