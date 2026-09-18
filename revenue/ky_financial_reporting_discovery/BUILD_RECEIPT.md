@@ -1,0 +1,1 @@
+# Kentucky financial reporting discovery\n\nSource lane: Commons issue #15835.\n\nLocal proof before publication: 17/17 normal tests, 17/17 optimized-Python tests, compile/verify replay green.\n
