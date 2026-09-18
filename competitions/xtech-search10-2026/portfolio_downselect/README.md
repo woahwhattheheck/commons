@@ -58,9 +58,11 @@ The report remains `HOLD` unless all global gates are evidenced:
 
 Every candidate additionally requires:
 
-- exact immutable source generation (repository + 40-hex commit + path);
-- every declared rubric claim to be `EVIDENCED`; `PROPOSED`,
-  `OWNER_REQUIRED`, and `FORBIDDEN` all block selection;
+- exact immutable source generation (repository + 40-hex commit + path) plus
+  an OWNER-evidenced source-currentness state of `CURRENT`;
+- every declared rubric claim, demonstrated-metric claim, and transition-path
+  claim to be `EVIDENCED`; `PROPOSED`, `OWNER_REQUIRED`, and
+  `FORBIDDEN` all block selection;
 - at least one real external commercial-traction receipt;
 - federal-support overlap state `NONE`, bound to OWNER evidence;
 - `NOT_EXCLUSIVE` USAMRDC scope, bound to OWNER evidence.
@@ -94,8 +96,9 @@ If two viable candidates have identical top evidence coverage, the state is
 - **LocalDeviceAgent** — resilient/offline local-agent authority surface.
 
 The checked-in packet intentionally marks owner/entity/provider facts,
-candidate federal-support overlap, candidate USAMRDC exclusivity, and external
-traction as unknown/required rather than manufacturing evidence. Its retained
+candidate source currentness, candidate federal-support overlap, candidate
+USAMRDC exclusivity, and external traction as unknown/required rather than
+manufacturing evidence. Its retained
 REPO evidence records bind only already-landed technical generations. The
 expected current result is therefore `HOLD`.
 
@@ -104,16 +107,32 @@ expected current result is therefore `HOLD`.
 From this directory:
 
 ```bash
-python -m py_compile downselect.py test_downselect.py
-python -m unittest -v test_downselect.py
-python -O -m unittest -v test_downselect.py
+python -m py_compile downselect.py whitepaper.py test_downselect.py test_whitepaper.py
+python -m unittest -v test_downselect.py test_whitepaper.py
+python -O -m unittest -v test_downselect.py test_whitepaper.py
 python downselect.py portfolio.current.json --pretty
+python whitepaper.py portfolio.current.json
 ```
 
 Exit 0 from the compiler means the packet was well-formed and a deterministic
 report was produced. It does **not** mean submission is authorized. Read the
 report's `state`, `globalBlockers`, candidate `hardBlockers`, and
 `authority` map.
+
+## White-paper source packet
+
+`whitepaper.py` is the deterministic compiler required by #14250. It mirrors
+the five published weighted areas and carries the exact retained claim text and
+evidence identifiers forward. Demonstrated metrics are folded into Technical
+Approach; transition-path claims are folded into Commercial Potential.
+
+It is deliberately a **source packet**, not a substitute template. If there is
+no unique internally selected candidate it emits
+`BLOCKED_NO_INTERNAL_SELECTION`. Even after an internal selection it emits
+`INTERNAL_SOURCE_PACKET_ONLY` and keeps
+`officialTemplateApplied=false`, `pageConformanceDetermined=false`, and
+`submissionAuthorized=false`. The mandatory official ValidEval template still
+has to be obtained/bound and applied in a separately authorized release step.
 
 ## Mutation / authority boundary
 
