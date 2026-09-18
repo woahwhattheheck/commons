@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import json
 import re
+import tempfile
 import unittest
 from datetime import datetime, timedelta, timezone
 
@@ -264,6 +266,53 @@ class RelationshipGuardDirectBoundaryTests(unittest.TestCase):
             self.assertFalse(any(checked["authority"].values()))
         finally:
             datetime_module.datetime = original_datetime
+
+    def test_saved_main_ignores_module_global_cli_rebinding(self):
+        saved_main = guard.main
+        original = {
+            "compile_guard": guard.compile_guard,
+            "verify_guard": guard.verify_guard,
+            "load_json": guard.load_json,
+            "_write": guard._write,
+            "json_dumps": guard.json.dumps,
+            "path_write_text": guard.Path.write_text,
+        }
+
+        with tempfile.TemporaryDirectory() as tmp:
+            packet_path = guard.Path(tmp) / "packet.json"
+            artifact_path = guard.Path(tmp) / "artifact.json"
+            packet_path.write_text(
+                json.dumps({"candidate": candidate(), "events": []}),
+                encoding="utf-8",
+            )
+
+            try:
+                guard.compile_guard = lambda packet: {"forged": True}
+                guard.verify_guard = lambda packet, artifact: (_ for _ in ()).throw(
+                    AssertionError("mutable module verifier used")
+                )
+                guard.load_json = lambda path: {"forged": True}
+                guard._write = lambda path, value: (_ for _ in ()).throw(
+                    AssertionError("mutable module writer used")
+                )
+                guard.json.dumps = lambda *args, **kwargs: '{"forged":true}'
+                guard.Path.write_text = lambda *args, **kwargs: (_ for _ in ()).throw(
+                    AssertionError("mutable Path.write_text used")
+                )
+
+                self.assertEqual(saved_main(["compile", str(packet_path), str(artifact_path)]), 0)
+                artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+                self.assertNotIn("forged", artifact)
+                self.assertEqual(artifact["decision"]["status"], "NO_CONFLICT_FOUND")
+                self.assertFalse(any(artifact["decision"]["authority"].values()))
+                self.assertEqual(saved_main(["verify", str(packet_path), str(artifact_path)]), 0)
+            finally:
+                guard.compile_guard = original["compile_guard"]
+                guard.verify_guard = original["verify_guard"]
+                guard.load_json = original["load_json"]
+                guard._write = original["_write"]
+                guard.json.dumps = original["json_dumps"]
+                guard.Path.write_text = original["path_write_text"]
 
     def test_public_entrypoints_reject_dependency_injection(self):
         packet = {"candidate": candidate(), "events": []}
