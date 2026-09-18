@@ -646,4 +646,15 @@ def _build_api():
         return result
 
     def read_file(path_value: str | _os.PathLike[str]) -> bytes:
-        path = pa
+        path = path_cls(path_value)
+        flags = os_flags["O_RDONLY"] | os_flags["O_CLOEXEC"] | os_flags["O_NOFOLLOW"]
+        try:
+            fd = os_open(path, flags)
+        except OSError as exc:
+            raise error_cls(f"cannot open retained file: {path}") from exc
+        try:
+            st = os_fstat(fd)
+            if not s_isreg(st.st_mode) or st.st_size < 0 or st.st_size > max_input_bytes:
+                fail("retained file must be bounded regular file")
+            chunks = []
+            re
