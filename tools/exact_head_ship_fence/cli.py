@@ -204,19 +204,49 @@ def _write_bundle(
         os.close(parent_fd)
 
 
-def _read_bundle(output_dir: Path) -> tuple[bytes, bytes]:
-    dir_fd = _open_directory(output_dir)
-    owned = os.fstat(dir_fd)
+def _generation_token(st: os.stat_result) -> tuple[int, int, int, int, int, int, int]:
+    return (
+        st.st_dev, st.st_ino, st.st_mode, st.st_nlink, st.st_size,
+        st.st_mtime_ns, st.st_ctime_ns,
+    )
+
+
+def _read_at_generation(
+    dir_fd: int, name: str, max_bytes: int = MAX_JSON_BYTES
+) -> tuple[bytes, tuple[int, int, int, int, int, int, int]]:
+    fd = os.open(name, _fd_flags(), dir_fd=dir_fd)
     try:
-        report = _read_at(dir_fd, "report.json")
-        markdown = _read_at(dir_fd, "report.md")
+        data = _read_fd(fd, name, max_bytes)
+        owned = _generation_token(os.fstat(fd))
+    finally:
+        os.close(fd)
+    try:
+        visible = _generation_token(os.stat(name, dir_fd=dir_fd, follow_symlinks=False))
+    except FileNotFoundError as exc:
+        raise EvidenceError(f"bundle member disappeared: {name}") from exc
+    if visible != owned:
+        raise EvidenceError(f"bundle member generation changed: {name}")
+    return data, owned
+
+
+def _read_bundle(output_dir: Path):
+    dir_fd = _open_directory(output_dir)
+    owned_dir = os.fstat(dir_fd)
+    try:
+        report, report_generation = _read_at_generation(dir_fd, "report.json")
+        markdown, markdown_generation = _read_at_generation(dir_fd, "report.md")
         try:
             visible = os.stat(output_dir, follow_symlinks=False)
         except FileNotFoundError as exc:
             raise EvidenceError("bundle directory disappeared") from exc
-        if not _same_generation(visible, owned):
+        if not _same_generation(visible, owned_dir):
             raise EvidenceError("bundle directory generation changed")
-        return report, markdown
+        generations = (
+            _generation_token(owned_dir),
+            report_generation,
+            markdown_generation,
+        )
+        return report, markdown, generations
     finally:
         os.close(dir_fd)
 
@@ -231,13 +261,21 @@ def _compile(args: argparse.Namespace) -> int:
 
 def _verify(args: argparse.Namespace) -> int:
     snapshot = parse_json_bytes(_read_regular(Path(args.snapshot)))
-    report_bytes, md_bytes = _read_bundle(Path(args.output_dir))
+    bundle_path = Path(args.output_dir)
+    report_bytes, md_bytes, generations = _read_bundle(bundle_path)
     report = parse_json_bytes(report_bytes)
     md = md_bytes.decode("utf-8", "strict")
     if not verify_current(report, snapshot):
         raise EvidenceError("semantic verification failed")
     if md != render_markdown(report):
         raise EvidenceError("Markdown projection mismatch")
+    current_report, current_md, current_generations = _read_bundle(bundle_path)
+    if (
+        current_generations != generations
+        or current_report != report_bytes
+        or current_md != md_bytes
+    ):
+        raise EvidenceError("bundle generation changed during verification")
     print("VERIFIED")
     return 0
 
