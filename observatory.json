@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T01:22:15Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-17T20:04:05Z"
-    },
-    {
-      "from": "DEVIN_LOCAL",
-      "id": "action-20260917195956-310fa3fc9f23",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-17T19:59:56Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "8b749b5e23048dc3dd69b5eb1faeb5d0571819a77935d3c20b518325290367f5",
+  "digest": "e7ec1ab36149a94d16907457e449755d2084aba0aeb86c3393253e2a191b68f2",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12905,
-    "pulse_seq": 2067,
-    "sha": "eefabaafcc631744e08cc87d431b42e226319b30"
+    "post_count": 12906,
+    "pulse_seq": 2068,
+    "sha": "33c65db223717497db9cd1cfaa97fe4c14b14e2e"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-18T01:31:24Z",
+  "now": "2026-09-18T01:35:35Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4958,18 +4958,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
+      "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-18T01:19:15Z"
+      "ts": "2026-09-18T01:22:15Z"
     },
     {
       "claim": "VECTOR-RELAY",

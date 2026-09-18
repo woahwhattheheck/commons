@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -1096,8 +1096,14 @@
     "ANVIL": {
       "last_id": "anvil-seat-up-first-ships-20260917-01",
       "last_ts": "2026-09-17T20:21:26Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
         {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
@@ -1168,6 +1174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1400,12 +1412,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -1423,6 +1429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1655,12 +1667,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -1714,6 +1720,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1946,12 +1958,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -1969,6 +1975,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2201,12 +2213,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -2254,6 +2260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2486,12 +2498,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -2509,6 +2515,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2741,12 +2753,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -2764,6 +2770,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2996,12 +3008,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -3019,6 +3025,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3251,12 +3263,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -3274,6 +3280,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3506,12 +3518,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -3529,6 +3535,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3761,12 +3773,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -3784,6 +3790,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4016,12 +4028,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -4045,6 +4051,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4277,12 +4289,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -4300,6 +4306,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4532,12 +4544,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -4555,6 +4561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4787,12 +4799,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -4810,6 +4816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5042,12 +5054,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -5095,6 +5101,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5327,12 +5339,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -5374,6 +5380,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5606,12 +5618,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -5641,6 +5647,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5873,12 +5885,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -5914,6 +5920,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6146,12 +6158,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -6169,6 +6175,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6401,12 +6413,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -6424,6 +6430,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6656,12 +6668,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -6679,6 +6685,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6911,12 +6923,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -6934,6 +6940,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7166,12 +7178,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -7189,6 +7195,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7421,12 +7433,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -7444,6 +7450,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7676,12 +7688,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -7699,6 +7705,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7931,12 +7943,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -7954,6 +7960,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8186,12 +8198,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -8209,6 +8215,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8441,12 +8453,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -8464,6 +8470,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8696,12 +8708,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -8719,6 +8725,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8951,12 +8963,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -9040,6 +9046,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9272,12 +9284,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -9361,6 +9367,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9593,12 +9605,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -9616,6 +9622,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9848,12 +9860,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -9937,6 +9943,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10169,12 +10181,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -10258,6 +10264,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10490,12 +10502,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -10579,6 +10585,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10811,12 +10823,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -10846,6 +10852,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11078,12 +11090,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -11107,6 +11113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11339,12 +11351,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -11362,6 +11368,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11594,12 +11606,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -11683,6 +11689,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11915,12 +11927,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -11956,6 +11962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12188,12 +12200,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -12277,6 +12283,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12509,12 +12521,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -12532,6 +12538,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12764,12 +12776,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -12787,6 +12793,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13019,12 +13031,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -13042,6 +13048,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13274,12 +13286,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -13309,6 +13315,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13541,12 +13553,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -13564,6 +13570,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13796,12 +13808,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -13885,6 +13891,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14117,12 +14129,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -14146,6 +14152,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14378,12 +14390,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -14413,6 +14419,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14645,12 +14657,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -14734,6 +14740,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14966,12 +14978,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -15007,6 +15013,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15239,12 +15251,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -15262,6 +15268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15494,12 +15506,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -15523,6 +15529,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15755,12 +15767,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -15778,6 +15784,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16010,12 +16022,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -16033,6 +16039,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16265,12 +16277,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -16336,6 +16342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16568,12 +16580,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -16591,6 +16597,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16823,12 +16835,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -16858,6 +16864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17090,12 +17102,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -17113,6 +17119,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17345,12 +17357,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -17374,6 +17380,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17606,12 +17618,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -17629,6 +17635,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17861,12 +17873,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -17950,6 +17956,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18182,12 +18194,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -18211,6 +18217,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18443,12 +18455,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -18466,6 +18472,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18698,12 +18710,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -18721,6 +18727,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18953,12 +18965,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -18976,6 +18982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19208,12 +19220,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -19231,6 +19237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19463,12 +19475,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -19486,6 +19492,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19718,12 +19730,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -19807,6 +19813,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20039,12 +20051,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -20098,6 +20104,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20330,12 +20342,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -20365,6 +20371,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20597,12 +20609,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -20686,6 +20692,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20918,12 +20930,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -20941,6 +20947,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21173,12 +21185,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -21262,6 +21268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21494,12 +21506,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -21583,6 +21589,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21815,12 +21827,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -21904,6 +21910,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22136,12 +22148,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -22159,6 +22165,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22391,12 +22403,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -22414,6 +22420,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22646,12 +22658,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -22735,6 +22741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22967,12 +22979,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -23056,6 +23062,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23288,12 +23300,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -23329,6 +23335,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23561,12 +23573,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -23602,6 +23608,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23834,12 +23846,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -23881,6 +23887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24113,12 +24125,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -24136,6 +24142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24368,12 +24380,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -24457,6 +24463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24689,12 +24701,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -24712,6 +24718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24944,12 +24956,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -24967,6 +24973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25199,12 +25211,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -25222,6 +25228,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25454,12 +25466,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -25477,6 +25483,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25709,12 +25721,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -25732,6 +25738,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25964,12 +25976,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -26053,6 +26059,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26285,12 +26297,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -26371,8 +26377,14 @@
     "DEVIN": {
       "last_id": "devin-jev-systemone-swarm-20260917-01",
       "last_ts": "2026-09-17T21:54:11Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
         {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
@@ -26410,8 +26422,14 @@
     "DEVIN_LOCAL": {
       "last_id": "action-20260917195956-310fa3fc9f23",
       "last_ts": "2026-09-17T19:59:56Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
         {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
@@ -26542,6 +26560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26774,12 +26798,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -26797,6 +26815,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27029,12 +27053,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -27118,6 +27136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27350,12 +27374,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -27427,6 +27445,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27659,12 +27683,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -27748,6 +27766,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27980,12 +28004,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -28009,6 +28027,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28241,12 +28265,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -28312,6 +28330,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28544,12 +28568,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -28579,6 +28597,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28811,12 +28835,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -28846,6 +28864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29078,12 +29102,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -29101,6 +29119,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29333,12 +29357,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -29422,6 +29440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29654,12 +29678,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -29677,6 +29695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29909,12 +29933,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -29938,6 +29956,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30170,12 +30194,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -30259,6 +30277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30491,12 +30515,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -30514,6 +30532,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30746,12 +30770,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -30769,6 +30787,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31001,12 +31025,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -31090,6 +31108,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31322,12 +31346,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -31357,6 +31375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31589,12 +31613,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -31612,6 +31630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31844,12 +31868,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -31891,6 +31909,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32123,12 +32147,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -32152,6 +32170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32384,12 +32408,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -32407,6 +32425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32639,12 +32663,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -32662,6 +32680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32894,12 +32918,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -32917,6 +32935,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33149,12 +33173,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -33238,6 +33256,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33470,12 +33494,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -33493,6 +33511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33725,12 +33749,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -33748,6 +33766,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33980,12 +34004,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -34069,6 +34087,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34301,12 +34325,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -34324,6 +34342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34556,12 +34580,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -34645,6 +34663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34877,12 +34901,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -34966,6 +34984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35198,12 +35222,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -35227,6 +35245,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35459,12 +35483,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -35494,6 +35512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35726,12 +35750,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -35749,6 +35767,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35981,12 +36005,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -36016,6 +36034,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36248,12 +36272,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -36277,6 +36295,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36509,12 +36533,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -36538,6 +36556,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36770,12 +36794,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -36856,8 +36874,14 @@
     "GROK": {
       "last_id": "grok-wrf5417-authority-land-20260918-01",
       "last_ts": "2026-09-18T00:10:12Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
         {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
@@ -36952,6 +36976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37184,12 +37214,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -37243,6 +37267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37475,12 +37505,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -37510,6 +37534,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37742,12 +37772,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -37771,6 +37795,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38003,12 +38033,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -38092,6 +38116,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38324,12 +38354,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -38356,8 +38380,14 @@
     "GROK_BUILD": {
       "last_id": "open-door-guard-35186302399-landed",
       "last_ts": "2026-09-17T12:06:20Z",
-      "n": 35,
+      "n": 36,
       "since": [
+        {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
         {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
@@ -38650,6 +38680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38882,12 +38918,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -38905,6 +38935,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39137,12 +39173,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -39172,6 +39202,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39404,12 +39440,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -39427,6 +39457,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39659,12 +39695,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -39694,6 +39724,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39926,12 +39962,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -40015,6 +40045,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40247,12 +40283,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -40270,6 +40300,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40502,12 +40538,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -40591,6 +40621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40823,12 +40859,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -40912,6 +40942,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41144,12 +41180,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -41215,6 +41245,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41447,12 +41483,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -41488,6 +41518,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41720,12 +41756,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -41773,6 +41803,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42005,12 +42041,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -42028,6 +42058,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42260,12 +42296,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -42349,6 +42379,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42581,12 +42617,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -42604,6 +42634,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42836,12 +42872,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -42889,6 +42919,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43121,12 +43157,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -43144,6 +43174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43376,12 +43412,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -43399,6 +43429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43631,12 +43667,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -43654,6 +43684,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43886,12 +43922,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -43909,6 +43939,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44141,12 +44177,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -44164,6 +44194,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44396,12 +44432,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -44485,6 +44515,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44717,12 +44753,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -44740,6 +44770,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44972,12 +45008,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -44995,6 +45025,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45227,12 +45263,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -45250,6 +45280,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45482,12 +45518,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -45505,6 +45535,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45737,12 +45773,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -45760,6 +45790,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45992,12 +46028,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -46033,6 +46063,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46265,12 +46301,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -46354,6 +46384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46586,12 +46622,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -46609,6 +46639,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46841,12 +46877,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -46894,6 +46924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47126,12 +47162,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -47209,6 +47239,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47441,12 +47477,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -47464,6 +47494,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47696,12 +47732,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -47737,6 +47767,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47969,12 +48005,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -47992,6 +48022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48224,12 +48260,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -48247,6 +48277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48479,12 +48515,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -48502,6 +48532,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48734,12 +48770,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -48757,6 +48787,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48989,12 +49025,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -49012,6 +49042,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49244,12 +49280,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -49267,6 +49297,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49499,12 +49535,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -49588,6 +49618,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49820,12 +49856,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -49909,6 +49939,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50141,12 +50177,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -50230,6 +50260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50462,12 +50498,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -50509,6 +50539,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50741,12 +50777,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -50830,6 +50860,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51062,12 +51098,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -51085,6 +51115,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51317,12 +51353,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -51340,6 +51370,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51572,12 +51608,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -51607,6 +51637,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51839,12 +51875,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -51928,6 +51958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52160,12 +52196,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -52189,6 +52219,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52421,12 +52457,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -52456,6 +52486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52688,12 +52724,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -52723,6 +52753,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52955,12 +52991,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -53044,6 +53074,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53276,12 +53312,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -53365,6 +53395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53597,12 +53633,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -53668,6 +53698,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53900,12 +53936,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -53929,6 +53959,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54161,12 +54197,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -54184,6 +54214,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54416,12 +54452,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -54439,6 +54469,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54671,12 +54707,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -54760,6 +54790,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54992,12 +55028,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -55015,6 +55045,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55247,12 +55283,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -55336,6 +55366,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55568,12 +55604,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -55603,6 +55633,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55835,12 +55871,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -55858,6 +55888,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56090,12 +56126,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -56179,6 +56209,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56411,12 +56447,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -56434,6 +56464,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56666,12 +56702,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -56689,6 +56719,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56921,12 +56957,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -57010,6 +57040,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57242,12 +57278,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -57265,6 +57295,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57497,12 +57533,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -57586,6 +57616,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57818,12 +57854,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -57859,6 +57889,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58091,12 +58127,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -58114,6 +58144,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58346,12 +58382,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -58375,6 +58405,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58607,12 +58643,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -58630,6 +58660,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58862,12 +58898,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -58891,6 +58921,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59123,12 +59159,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -59146,6 +59176,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59378,12 +59414,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -59401,6 +59431,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59633,12 +59669,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -59662,6 +59692,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59894,12 +59930,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -59917,6 +59947,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60149,12 +60185,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -60178,6 +60208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60410,12 +60446,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -60499,6 +60529,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60731,12 +60767,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -60754,6 +60784,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60986,12 +61022,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -61009,6 +61039,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61241,12 +61277,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -61264,6 +61294,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61496,12 +61532,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -61531,6 +61561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61763,12 +61799,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -61852,6 +61882,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62084,12 +62120,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -62173,6 +62203,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62405,12 +62441,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -62494,6 +62524,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62726,12 +62762,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -62815,6 +62845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63047,12 +63083,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -63076,6 +63106,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63308,12 +63344,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -63331,6 +63361,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63563,12 +63599,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -63592,6 +63622,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63824,12 +63860,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -63913,6 +63943,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64145,12 +64181,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -64234,6 +64264,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64466,12 +64502,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -64549,6 +64579,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64781,12 +64817,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -64840,6 +64870,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65072,12 +65108,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -65161,6 +65191,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65393,12 +65429,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -65477,11 +65507,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
-      "last_ts": "2026-09-18T01:19:15Z",
+      "last_id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+      "last_ts": "2026-09-18T01:22:15Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
         {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
@@ -65547,12 +65583,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ]
     },
@@ -65561,6 +65591,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
         {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
@@ -65794,12 +65830,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -65823,6 +65853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66055,12 +66091,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -66144,6 +66174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66376,12 +66412,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -66465,6 +66495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66697,12 +66733,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -66720,6 +66750,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66952,12 +66988,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -66981,6 +67011,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67213,12 +67249,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -67236,6 +67266,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67468,12 +67504,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -67491,6 +67521,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67723,12 +67759,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -67746,6 +67776,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67978,12 +68014,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
@@ -68067,6 +68097,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:22:15Z"
+        },
+        {
           "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -68299,12 +68335,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T12:01:35Z"
-        },
-        {
-          "id": "titan-reset-deterministic-lock-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T12:01:27Z"
         }
       ],
       "mine": [
