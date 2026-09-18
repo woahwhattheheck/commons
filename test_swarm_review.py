@@ -194,5 +194,74 @@ class ClosedPacket(unittest.TestCase):
                 self.assertIn("no longer open", payload["reason"])
 
 
+class StaleExecutablePacket(unittest.TestCase):
+    """Packet is a review aid: stale-vs-main executable PRs must still write a packet.
+
+    command-center contracts already passed; aborting the packet CLI because
+    main moved is a stale-base stopping condition, not a review-aid result.
+    check/merge remain fail-closed on the same error.
+    """
+
+    REASON = "executable PR head must contain current main; recompose and rerun provider checks"
+
+    def test_packet_writes_recompose_stub_and_exits_zero(self):
+        pull = {"number": 16029, "state": "open", "merged": False}
+        out = Path(tempfile.mkdtemp()) / "packet.json"
+        with mock.patch.object(sr, "live_pull", return_value=pull), \
+             mock.patch.object(sr, "verify_live", side_effect=ValueError(self.REASON)):
+            code = sr.main(["packet", "--prs", "16029", "--out", str(out)])
+        self.assertEqual(0, code)
+        data = json.loads(out.read_text())
+        self.assertEqual("commons-review-packet/v1", data["schema"])
+        row = data["prs"][0]
+        self.assertEqual(16029, row["number"])
+        self.assertEqual("UNKNOWN", row["review"]["state"])
+        self.assertIn("must contain current main", row["review"]["reason"])
+        self.assertEqual({}, row["review_template"])
+        self.assertEqual("", row["diff"])
+        self.assertFalse(row["diff_truncated"])
+
+    def test_mixed_batch_keeps_closed_and_stale_stubs(self):
+        pulls = {
+            12: {"number": 12, "state": "closed", "merged": False},
+            16029: {"number": 16029, "state": "open", "merged": False},
+        }
+        out = Path(tempfile.mkdtemp()) / "packet.json"
+        with mock.patch.object(sr, "live_pull", side_effect=lambda _gh, n: pulls[n]), \
+             mock.patch.object(sr, "verify_live", side_effect=ValueError(self.REASON)):
+            code = sr.main(["packet", "--prs", "12,16029", "--out", str(out)])
+        self.assertEqual(0, code)
+        data = json.loads(out.read_text())
+        self.assertEqual([12, 16029], [row["number"] for row in data["prs"]])
+        self.assertEqual("UNKNOWN", data["prs"][0]["review"]["state"])
+        self.assertEqual("PR is no longer open", data["prs"][0]["review"]["reason"])
+        self.assertIn("must contain current main", data["prs"][1]["review"]["reason"])
+
+    def test_unrelated_packet_errors_still_fail_the_cli(self):
+        pull = {"number": 9, "state": "open", "merged": False}
+        out = Path(tempfile.mkdtemp()) / "packet.json"
+        buf = io.StringIO()
+        with mock.patch.object(sr, "live_pull", return_value=pull), \
+             mock.patch.object(sr, "verify_live", side_effect=ValueError("malformed review history")), \
+             mock.patch("sys.stdout", buf):
+            code = sr.main(["packet", "--prs", "9", "--out", str(out)])
+        self.assertEqual(1, code)
+        self.assertFalse(out.exists())
+        payload = json.loads(buf.getvalue())
+        self.assertEqual("UNKNOWN", payload["state"])
+        self.assertIn("malformed review history", payload["reason"])
+
+    def test_check_and_merge_still_refuse_stale_executable_heads(self):
+        with mock.patch.object(sr, "verify_live", side_effect=ValueError(self.REASON)):
+            for command in ("check", "merge"):
+                buf = io.StringIO()
+                with mock.patch("sys.stdout", buf):
+                    code = sr.main([command, "--pr", "16029"])
+                self.assertEqual(1, code, command)
+                payload = json.loads(buf.getvalue())
+                self.assertEqual("UNKNOWN", payload["state"])
+                self.assertIn("must contain current main", payload["reason"])
+
+
 if __name__ == "__main__":
     unittest.main()
