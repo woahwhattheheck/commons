@@ -220,7 +220,7 @@ class RevenueLaneStateTest(unittest.TestCase):
         self.assertFalse(result["input_authentication"]["verified_by_compiler"])
 
     def test_coordination_superseder_cannot_erase_provider_truth(self):
-        with self.assertRaisesRegex(ContractError, "immutable"):
+        with self.assertRaisesRegex(ContractError, "source authority mismatch"):
             self.compile([
                 ev("sent", 1, "PROVIDER_SENT", "provider", "2026-09-17T19:00:00Z"),
                 ev("hold", 2, "EVIDENCE_HOLD", "coordination", "2026-09-17T20:00:00Z", supersedes="sent"),
@@ -234,19 +234,26 @@ class RevenueLaneStateTest(unittest.TestCase):
         ])
         self.assertEqual(result["state"], "COLLISION_DUPLICATE_SEND_DNR")
 
-    def test_provider_truth_cannot_be_erased_by_provider_superseder(self):
-        with self.assertRaisesRegex(ContractError, "immutable"):
+    def test_provider_send_cannot_be_hidden_by_provider_correction(self):
+        with self.assertRaisesRegex(ContractError, "provider send evidence cannot be superseded"):
             self.compile([
                 ev("sent1", 1, "PROVIDER_SENT", "provider", "2026-09-17T18:00:00Z"),
                 ev("sent2", 2, "PROVIDER_SENT", "provider", "2026-09-17T19:00:00Z", supersedes="sent1"),
             ])
 
-    def test_human_truth_cannot_be_erased_by_human_superseder(self):
-        with self.assertRaisesRegex(ContractError, "immutable"):
-            self.compile([
-                ev("decline", 1, "HUMAN_DECLINE", "human", "2026-09-17T18:00:00Z"),
-                ev("reply", 2, "HUMAN_REPLY", "human", "2026-09-17T19:00:00Z", supersedes="decline"),
-            ])
+    def test_same_source_human_correction_can_retire_stale_modeled_state(self):
+        result = self.compile([
+            ev("decline", 1, "HUMAN_DECLINE", "human", "2026-09-17T18:00:00Z"),
+            ev("reply", 2, "HUMAN_REPLY", "human", "2026-09-17T19:00:00Z", supersedes="decline"),
+        ])
+        self.assertEqual(result["state"], "HUMAN_REPLY_ACTIONABLE")
+
+    def test_same_source_provider_correction_can_retire_stale_modeled_state(self):
+        result = self.compile([
+            ev("bounce", 1, "BOUNCED", "provider", "2026-09-17T18:00:00Z"),
+            ev("dead", 2, "DEAD_ROUTE", "provider", "2026-09-17T19:00:00Z", supersedes="bounce"),
+        ])
+        self.assertEqual(result["state"], "BOUNCED_DEAD_ROUTE")
 
     def test_fresh_coordination_does_not_refresh_stale_human_reply(self):
         result = self.compile(
@@ -273,6 +280,55 @@ class RevenueLaneStateTest(unittest.TestCase):
         for raw in cases:
             with self.assertRaises(ContractError):
                 strict_json_loads(raw)
+
+    def test_packet_cannot_select_unbounded_currentness_horizon(self):
+        with self.assertRaisesRegex(ContractError, "compiler maximum"):
+            self.compile(
+                [ev("reply", 1, "HUMAN_REPLY", "human", "2026-01-01T00:00:00Z")],
+                currentness_seconds=9007199254740991,
+            )
+
+    def test_lease_consumed_without_provider_event_stays_hold(self):
+        result = self.compile([
+            ev("selected", 1, "MUSE_SELECTED", "coordination", "2026-09-17T20:00:00Z"),
+            ev("lease", 1, "LEASE_CONSUMED", "coordination", "2026-09-17T20:01:00Z"),
+        ])
+        self.assertEqual(result["state"], "HOLD_EVIDENCE")
+
+    def test_conflicting_terminal_procurement_truth_fails_closed(self):
+        with self.assertRaisesRegex(ContractError, "conflicting terminal procurement"):
+            self.compile([
+                ev("lost", 1, "LOST", "procurement", "2026-09-17T19:00:00Z"),
+                ev("awarded", 1, "AWARDED", "procurement", "2026-09-17T19:01:00Z"),
+            ])
+
+    def test_expired_and_submitted_truth_fails_closed(self):
+        with self.assertRaisesRegex(ContractError, "expired and submitted"):
+            self.compile([
+                ev("submitted", 1, "SUBMITTED", "procurement", "2026-09-17T19:00:00Z"),
+                ev("expired", 1, "EXPIRED", "procurement", "2026-09-17T19:01:00Z"),
+            ])
+
+    def test_human_decline_and_partner_acceptance_fails_closed(self):
+        with self.assertRaisesRegex(ContractError, "human decline and partner acceptance"):
+            self.compile([
+                ev("decline", 1, "HUMAN_DECLINE", "human", "2026-09-17T19:00:00Z"),
+                ev("accept", 1, "PARTNER_ACCEPTED", "human", "2026-09-17T19:01:00Z"),
+            ])
+
+    def test_superseded_history_remains_bound_into_event_digest(self):
+        corrected = self.compile([
+            ev("pending", 1, "MUSE_PENDING", "coordination", "2026-09-17T19:00:00Z"),
+            ev("hold", 2, "EVIDENCE_HOLD", "coordination", "2026-09-17T19:30:00Z", supersedes="pending"),
+        ])
+        hold_only = self.compile([
+            ev("hold", 2, "EVIDENCE_HOLD", "coordination", "2026-09-17T19:30:00Z"),
+        ])
+        self.assertEqual(corrected["state"], hold_only["state"])
+        self.assertNotEqual(
+            corrected["event_digest_sha256"],
+            hold_only["event_digest_sha256"],
+        )
 
     def test_patch_plan_refuses_malformed_existing_block(self):
         body = "<!-- REVENUE_LANE_CURRENT_STATE:BEGIN -->\nmissing end"
