@@ -55,6 +55,16 @@ class Tests(unittest.TestCase):
     def test_acceptance_escalation(self): self.truth_bad(lambda p:p['commercial_truth'].__setitem__('accepted_offer',True))
     def test_payment_escalation(self): self.truth_bad(lambda p:p['commercial_truth'].__setitem__('payment',True))
     def test_revenue_truth_escalation(self): self.truth_bad(lambda p:p['commercial_truth'].__setitem__('revenue',True))
+    def test_unknown_public_authority_key_rejected(self):
+        self.pub_bad(lambda p:p['authority'].__setitem__('send_authorized',True))
+    def test_unknown_truth_submission_key_rejected(self):
+        self.truth_bad(lambda p:p['submission'].__setitem__('route_guessed',True))
+    def test_unknown_truth_commercial_key_rejected(self):
+        self.truth_bad(lambda p:p['commercial_truth'].__setitem__('booked_revenue',True))
+    def test_unknown_public_top_key_rejected(self):
+        self.pub_bad(lambda p:p.__setitem__('extra_authority',True))
+    def test_unknown_truth_top_key_rejected(self):
+        self.truth_bad(lambda p:p.__setitem__('extra_commercial',True))
     def test_public_source_guard_rejects_commons_repo_url(self):
         with tempfile.TemporaryDirectory() as td:
             root=Path(td)
