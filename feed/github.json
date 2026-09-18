@@ -1,8 +1,8 @@
 {
   "counts": {
     "open_issues": 115,
-    "open_pull_requests": 60,
-    "runs_in_progress": 4,
+    "open_pull_requests": 59,
+    "runs_in_progress": 7,
     "runs_queued": 70
   },
   "counts_source": "graphql",
@@ -70,23 +70,23 @@
       "author": "woahwhattheheck",
       "base": "anvil/autopsy-boilerplate-sweep",
       "branch": "anvil/retirement-portability-reconcile",
-      "created_at": "2026-09-18T18:33:17Z",
+      "created_at": "2026-09-18T20:20:49Z",
       "draft": false,
-      "head_sha": "1980a9edc2ea5db42e4875dd02bc13c05b056801",
-      "number": 16056,
-      "title": "retirement+portability: reconcile autopsy sweep residue, Windows-safe opens, convert-shelf restore, stale-pin repair",
-      "updated_at": "2026-09-18T19:32:04Z"
+      "head_sha": "80da0ad6c723a9c1ca357c71f1bdd2f890ae6bf0",
+      "number": 16064,
+      "title": "reconcile: swarm-mail routing/page restore + owner-now ship pins + gtm index regen",
+      "updated_at": "2026-09-18T20:39:32Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "sledge/battery-regression-fixes",
-      "created_at": "2026-09-18T15:46:21Z",
+      "branch": "devinlocal/rejoin-pressure-trace-15733-20260918",
+      "created_at": "2026-09-18T20:16:34Z",
       "draft": false,
-      "head_sha": "69725192c882bd12d60f60b90772965eec36d1ad",
-      "number": 16052,
-      "title": "battery: repair autopsy-retirement fallout on unowned files",
-      "updated_at": "2026-09-18T18:34:46Z"
+      "head_sha": "f91d666af58b125b5da80640d0768cd377546876",
+      "number": 16063,
+      "title": "rejoin(commons#15733): pressure-trace counterexample carrier onto current main",
+      "updated_at": "2026-09-18T20:18:04Z"
     },
     {
       "author": "woahwhattheheck",
@@ -105,10 +105,10 @@
       "branch": "anvil/autopsy-boilerplate-sweep",
       "created_at": "2026-09-18T09:54:24Z",
       "draft": false,
-      "head_sha": "b426cda805fd0830c9ec3b6e1217514dd2873d79",
+      "head_sha": "b459cc74ef2396a13b77fa04697b5da30cf81b69",
       "number": 16029,
       "title": "purge: sweep retired Autopsy boilerplate \u2014 1371 files (docs, orphan shelf li, registries, CI filters)",
-      "updated_at": "2026-09-18T18:14:11Z"
+      "updated_at": "2026-09-18T21:35:13Z"
     },
     {
       "author": "woahwhattheheck",
@@ -226,7 +226,6 @@
     "15940": "af98a5bdfdbfc9eba99318aa675843e159fe0d00",
     "15942": "ee52bc783f9ba97c32a3cbc9213ab3335dcf5457",
     "15949": "33827c082c125ff900463bc78876658147831c0e",
-    "15952": "fd0a9db84fe554aaed8482cd59e8e947555daace",
     "15953": "76a838d99f33d6acee4b73e7c833cd4da80f8caa",
     "15958": "288f1a3b73d9e07b7c55180c0c696ac0b95480ad",
     "15970": "7e7e8af26d481f78de8ecad7e525a43c1a338b10",
@@ -234,15 +233,92 @@
     "16012": "a08d73c13394cf6f1719befdb168065ec94381c8",
     "16015": "5c4e04aeccb9a02035cf0775750669180dde5521",
     "16022": "57851a1b908e65b9a6bd49aa56329e1c096bd15a",
-    "16029": "b426cda805fd0830c9ec3b6e1217514dd2873d79",
+    "16029": "b459cc74ef2396a13b77fa04697b5da30cf81b69",
     "16047": "e5f30b4978379740e7631c4e33fd849878ff53e6",
-    "16052": "69725192c882bd12d60f60b90772965eec36d1ad",
-    "16056": "1980a9edc2ea5db42e4875dd02bc13c05b056801"
+    "16063": "f91d666af58b125b5da80640d0768cd377546876",
+    "16064": "80da0ad6c723a9c1ca357c71f1bdd2f890ae6bf0"
   },
-  "pulls_listed": 60,
+  "pulls_listed": 59,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 17.5,
+  "queue_depth_per_runner": 10.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/erdos789-two-element-20260918",
+      "closed_at": "2026-09-18T21:31:42Z",
+      "head_sha": "18dd82f93184398d29e0f202a5cbf49d4df9d213",
+      "merged_at": "2026-09-18T21:31:42Z",
+      "number": 16066,
+      "state": "MERGED",
+      "title": "research: add Erd\u0151s 789 two-element separating-subset lemma carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "anvil/autopsy-retirement-stage2",
+      "closed_at": "2026-09-18T21:06:11Z",
+      "head_sha": "47b62d247da0b72d41404ea4d91c2683d01a6124",
+      "merged_at": "2026-09-18T21:06:11Z",
+      "number": 15952,
+      "state": "MERGED",
+      "title": "purge: finish Agent Failure Autopsy retirement \u2014 generators, registries, dead code, stale tests"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/titan-12096-forced-floor-current-abi",
+      "closed_at": "2026-09-18T21:02:55Z",
+      "head_sha": "ebf2ca8eae9225458f22031e02f195c127ded1c8",
+      "merged_at": "2026-09-18T21:02:55Z",
+      "number": 16061,
+      "state": "MERGED",
+      "title": "TITAN: port forced-feasibility economic floor to current ABI"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/erdos686-len5-20260918",
+      "closed_at": "2026-09-18T20:31:34Z",
+      "head_sha": "ac2dd6026da8057173c248e1550cc01445dd9914",
+      "merged_at": "2026-09-18T20:31:34Z",
+      "number": 16065,
+      "state": "MERGED",
+      "title": "research: Erd\u0151s 686 k=5 centered-quintic reduction"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "sledge/open-work-regen-3a588b",
+      "closed_at": "2026-09-18T20:08:24Z",
+      "head_sha": "8676e94ba4a0c9b21e3a078e8d19ed5beeb3b014",
+      "merged_at": "2026-09-18T20:08:24Z",
+      "number": 16062,
+      "state": "MERGED",
+      "title": "ground: regenerate open-work projection on fixed extractor @3a588b762"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "anvil/autopsy-boilerplate-sweep",
+      "branch": "anvil/retirement-portability-reconcile",
+      "closed_at": "2026-09-18T19:57:10Z",
+      "head_sha": "1980a9edc2ea5db42e4875dd02bc13c05b056801",
+      "merged_at": "2026-09-18T19:57:10Z",
+      "number": 16056,
+      "state": "MERGED",
+      "title": "retirement+portability: reconcile autopsy sweep residue, Windows-safe opens, convert-shelf restore, stale-pin repair"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "sledge/battery-regression-fixes",
+      "closed_at": "2026-09-18T19:56:33Z",
+      "head_sha": "69725192c882bd12d60f60b90772965eec36d1ad",
+      "merged_at": "2026-09-18T19:56:33Z",
+      "number": 16052,
+      "state": "MERGED",
+      "title": "battery: repair autopsy-retirement fallout on unowned files"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -330,87 +406,10 @@
       "number": 16048,
       "state": "MERGED",
       "title": "packet: write review-aid stub when executable PR head trails main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "sledge/open-work-refresh",
-      "closed_at": "2026-09-18T15:09:14Z",
-      "head_sha": "33839dc59de63d53e3f32f159ac397576ad4bb3e",
-      "merged_at": "2026-09-18T15:09:14Z",
-      "number": 16045,
-      "state": "MERGED",
-      "title": "ground: regenerate open-work projection at current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol-376a/erdos376-digit-exact-20260918",
-      "closed_at": "2026-09-18T14:43:04Z",
-      "head_sha": "f64acafaf1fce1d6d81e6abaf46007d405bd4f4c",
-      "merged_at": "2026-09-18T14:43:04Z",
-      "number": 16046,
-      "state": "MERGED",
-      "title": "research: extend Erd\u0151s 376 with exact digit reverse candidate"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "anvil/autopsy-boilerplate-sweep",
-      "branch": "anvil/test-portability-repin",
-      "closed_at": "2026-09-18T14:35:01Z",
-      "head_sha": "114f74cfef88a3625b7a3729de175793877cd4f9",
-      "merged_at": "2026-09-18T14:35:01Z",
-      "number": 16040,
-      "state": "MERGED",
-      "title": "test-infra: sys.executable portability + pin-reconcile fixpoint"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol373a/erdos373-witness-contrib-compliance-20260918",
-      "closed_at": "2026-09-18T14:08:18Z",
-      "head_sha": "188c0d57594009198a928ada09642231d1ce429f",
-      "merged_at": "2026-09-18T14:08:18Z",
-      "number": 16044,
-      "state": "MERGED",
-      "title": "research: make Erd\u0151s 373 first piece sponsor-contribution shaped"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol373a/erdos373-witness-firstpiece-20260918",
-      "closed_at": "2026-09-18T14:04:48Z",
-      "head_sha": "24d2546ed1e92df46ac343b244c956825b28cd79",
-      "merged_at": "2026-09-18T14:04:48Z",
-      "number": 16043,
-      "state": "MERGED",
-      "title": "research: preflight Erd\u0151s 373 concrete witness first piece"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol688a/erdos688-pinned-audit-20260918",
-      "closed_at": "2026-09-18T13:52:27Z",
-      "head_sha": "2cc7e4ca44e8c888c4714370f39ef729cf0b5da9",
-      "merged_at": "2026-09-18T13:52:27Z",
-      "number": 16042,
-      "state": "MERGED",
-      "title": "research: pin Erd\u0151s 688(ii) semantic audit and exact finite checker"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "anvil/workflow-budget-fix",
-      "closed_at": "2026-09-18T13:47:03Z",
-      "head_sha": "d86cca1da2cbca76a04842760d4ea59f88b884a6",
-      "merged_at": "2026-09-18T13:47:03Z",
-      "number": 16030,
-      "state": "MERGED",
-      "title": "ci: archive repo-estate-rationalizer recipe \u2014 restore 67-workflow budget"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T19:37:45Z",
+  "unchanged_since": "2026-09-18T21:52:44Z",
   "undatable_pulls": []
 }
