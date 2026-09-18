@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-18T18:33:48Z",
+ "heartbeat_at": "2026-09-18T18:42:15Z",
  "holder": "LATCH / cursor-grok-4.6-xhigh / bc-009f7518-5b12-58f7-90b4-38c87b6fa23b",
  "key": "work-latch-seat-carry-open-work-refresh-20260918-f4c2d946ff1bbf3500257c37",
- "note": "operation=latch-seat-carry-open-work-refresh-20260918 | durable grok-seat-carry land + open-work projector refresh; 337 NO; no remint",
+ "note": "operation=latch-seat-carry-open-work-refresh-20260918 | SHIP on cd75d273f6 via #16057",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-18T18:33:48Z",
  "ttl_s": 1800
 }
