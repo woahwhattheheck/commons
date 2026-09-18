@@ -318,8 +318,9 @@ def _criterion_projection(items: Any, path: str) -> tuple[int, list[str]]:
         else:
             if evidence is not None:
                 raise ContractError("UNEVIDENCED_CLAIM_HAS_REF", item_path)
-            if state in {"OWNER_REQUIRED", "FORBIDDEN"}:
-                blockers.append(f"claim:{claim_id}:{state}")
+            # Coverage remains diagnostic, but no unevidenced claim can enter an
+            # internally SELECTED candidate. PROPOSED is not evidence.
+            blockers.append(f"claim:{claim_id}:{state}")
     return (evidenced * 10_000) // len(items), blockers
 
 
