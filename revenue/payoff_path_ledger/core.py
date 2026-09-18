@@ -820,6 +820,7 @@ def _make_public_generation(
     _recursion_error=RecursionError,
     _value_error=ValueError,
     _type_error=TypeError,
+    _object=object,
     _err=GateError,
 ):
     """Construct one import-generation trust boundary for the public API.
@@ -854,6 +855,7 @@ def _make_public_generation(
     cash_classes = CASH_TERM_CLASSES
     receipt_schema = SCHEMA_RECEIPT
     compiler_id = COMPILER_ID
+    authority_override_sentinel = _object()
 
     def sealed_freeze(value: Any) -> Any:
         return freeze_impl(
@@ -1047,8 +1049,27 @@ def _make_public_generation(
 
     # Compatibility/test seams are exact-signature wrappers over the same sealed
     # generation. They expose deterministic-at-time evaluation, not authority injection.
-    def _validate_packet(packet: Any, now: datetime):
-        return sealed_validate(packet, now)
+    def _validate_packet(
+        packet: Any,
+        now: datetime,
+        _authority_key=authority_override_sentinel,
+    ):
+        if _authority_key is authority_override_sentinel:
+            return sealed_validate(packet, now)
+        if _authority_key is not None:
+            raise _err("test-only authority override accepts only None")
+        return packet_impl(
+            packet,
+            now,
+            None,
+            _term=sealed_term,
+            _outcome=sealed_outcome,
+            _scope=sealed_scope,
+            _sha256=_sha256,
+            _set_type=_set_type,
+            _env_name=evidence_auth_env,
+            _err=_err,
+        )
 
     def _compile_at(packet: Any, now: datetime):
         return sealed_compile_at(packet, now)
