@@ -22,12 +22,25 @@ VERSION = "1"
 INPUT_SCHEMA = "actions-stale-queue-audit.input.v1"
 REPORT_SCHEMA = "actions-stale-queue-audit.report.v1"
 
-MAX_SAFE_INTEGER = 9_007_199_254_740_991
-MAX_JSON_BYTES = 1_048_576
-MAX_JSON_DEPTH = 64
-MAX_JSON_NODES = 20_000
-MAX_RUNS = 2_000
-MAX_PULL_REQUESTS_PER_RUN = 256
+# Source-owned semantic/work generation. Public mirrors below are compatibility
+# views only; trust-bearing functions capture these literals/callables at import.
+_MAX_SAFE_INTEGER_LITERAL = 9_007_199_254_740_991
+_MAX_JSON_BYTES_LITERAL = 1_048_576
+_MAX_JSON_DEPTH_LITERAL = 64
+_MAX_JSON_NODES_LITERAL = 20_000
+_MAX_RUNS_LITERAL = 2_000
+_MAX_PULL_REQUESTS_PER_RUN_LITERAL = 256
+_JSON_LOADS_LITERAL = json.loads
+_JSON_DUMPS_LITERAL = json.dumps
+_JSON_DECODE_ERROR_LITERAL = json.JSONDecodeError
+_SHA256_LITERAL = hashlib.sha256
+
+MAX_SAFE_INTEGER = _MAX_SAFE_INTEGER_LITERAL
+MAX_JSON_BYTES = _MAX_JSON_BYTES_LITERAL
+MAX_JSON_DEPTH = _MAX_JSON_DEPTH_LITERAL
+MAX_JSON_NODES = _MAX_JSON_NODES_LITERAL
+MAX_RUNS = _MAX_RUNS_LITERAL
+MAX_PULL_REQUESTS_PER_RUN = _MAX_PULL_REQUESTS_PER_RUN_LITERAL
 
 HEX40 = re.compile(r"^[0-9a-f]{40}$")
 REPO = re.compile(r"^[A-Za-z0-9_.-]{1,100}/[A-Za-z0-9_.-]{1,100}$")
@@ -93,7 +106,7 @@ def _exact_int(
     label: str,
     *,
     minimum: int = 0,
-    maximum: int = MAX_SAFE_INTEGER,
+    maximum: int = _MAX_SAFE_INTEGER_LITERAL,
 ) -> int:
     if type(value) is not int:
         raise AuditError(f"{label} must be an exact integer")
@@ -135,12 +148,17 @@ def _utc(value: Any, label: str) -> str:
     return value
 
 
-def _json_string_serialized_size(value: str, *, remaining: int) -> int:
+def _json_string_serialized_size(
+    value: str,
+    *,
+    remaining: int,
+    _max_json_bytes: int = __max_json_bytes_LITERAL,
+) -> int:
     """Exact UTF-8 byte size for this encoder, before serializer entry."""
     if type(value) is not str:
         raise AuditError("JSON string must be an exact string")
     if len(value) + 2 > remaining:
-        raise AuditError(f"canonical JSON exceeds {MAX_JSON_BYTES} bytes")
+        raise AuditError(f"canonical JSON exceeds {_max_json_bytes} bytes")
     total = 2
     for ch in value:
         code = ord(ch)
@@ -162,11 +180,18 @@ def _json_string_serialized_size(value: str, *, remaining: int) -> int:
             step = 4
         total += step
         if total > remaining:
-            raise AuditError(f"canonical JSON exceeds {MAX_JSON_BYTES} bytes")
+            raise AuditError(f"canonical JSON exceeds {_max_json_bytes} bytes")
     return total
 
 
-def _freeze_plain_json(value: Any) -> Any:
+def _freeze_plain_json(
+    value: Any,
+    *,
+    _max_safe_integer: int = __max_safe_integer_LITERAL,
+    _max_json_bytes: int = __max_json_bytes_LITERAL,
+    _max_json_depth: int = __max_json_depth_LITERAL,
+    _max_json_nodes: int = __max_json_nodes_LITERAL,
+) -> Any:
     """Detach exact JSON and charge every node/canonical byte before dumps.
 
     Repeated aliases are charged once per serialized occurrence. Dict keys count
@@ -179,23 +204,25 @@ def _freeze_plain_json(value: Any) -> Any:
     def charge(amount: int) -> None:
         if type(amount) is not int or amount < 0:
             raise AuditError("invalid canonical JSON work charge")
-        if amount > MAX_JSON_BYTES - bytes_used[0]:
-            raise AuditError(f"canonical JSON exceeds {MAX_JSON_BYTES} bytes")
+        if amount > _max_json_bytes - bytes_used[0]:
+            raise AuditError(f"canonical JSON exceeds {_max_json_bytes} bytes")
         bytes_used[0] += amount
 
     def take_node() -> None:
         nodes[0] += 1
-        if nodes[0] > MAX_JSON_NODES:
-            raise AuditError(f"JSON node count exceeds {MAX_JSON_NODES}")
+        if nodes[0] > _max_json_nodes:
+            raise AuditError(f"JSON node count exceeds {_max_json_nodes}")
 
     def string_cost(item: str) -> int:
         return _json_string_serialized_size(
-            item, remaining=MAX_JSON_BYTES - bytes_used[0]
+            item,
+            remaining=_max_json_bytes - bytes_used[0],
+            _max_json_bytes=_max_json_bytes,
         )
 
     def freeze(item: Any, depth: int) -> Any:
-        if depth > MAX_JSON_DEPTH:
-            raise AuditError(f"JSON nesting exceeds {MAX_JSON_DEPTH}")
+        if depth > _max_json_depth:
+            raise AuditError(f"JSON nesting exceeds {_max_json_depth}")
         take_node()
         if item is None:
             charge(4)
@@ -207,8 +234,8 @@ def _freeze_plain_json(value: Any) -> Any:
             checked = _exact_int(
                 item,
                 "JSON integer",
-                minimum=-MAX_SAFE_INTEGER,
-                maximum=MAX_SAFE_INTEGER,
+                minimum=-_max_safe_integer,
+                maximum=_max_safe_integer,
             )
             charge(len(str(checked)))
             return checked
@@ -216,13 +243,13 @@ def _freeze_plain_json(value: Any) -> Any:
             charge(string_cost(item))
             return item
         if type(item) is list:
-            remaining_nodes = MAX_JSON_NODES - nodes[0]
+            remaining_nodes = _max_json_nodes - nodes[0]
             if len(item) > remaining_nodes:
                 raise AuditError("JSON container exceeds remaining node budget")
             charge(2 + max(0, len(item) - 1))
             return [freeze(child, depth + 1) for child in item]
         if type(item) is dict:
-            remaining_nodes = MAX_JSON_NODES - nodes[0]
+            remaining_nodes = _max_json_nodes - nodes[0]
             if len(item) * 2 > remaining_nodes:
                 raise AuditError("JSON object exceeds remaining node budget")
             charge(2 + max(0, len(item) - 1) + len(item))
@@ -239,15 +266,19 @@ def _freeze_plain_json(value: Any) -> Any:
     return freeze(value, 0)
 
 
-def _parse_int_token(token: str) -> int:
+def _parse_int_token(
+    token: str,
+    *,
+    _max_safe_integer: int = __max_safe_integer_LITERAL,
+) -> int:
     digits = token[1:] if token.startswith("-") else token
-    if not digits or len(digits) > 16:
+    if not digits or len(digits) > len(str(_max_safe_integer)):
         raise AuditError("JSON integer token exceeds safe integer digit bound")
     try:
         value = int(token)
     except ValueError as exc:
         raise AuditError("invalid JSON integer token") from exc
-    if not -MAX_SAFE_INTEGER <= value <= MAX_SAFE_INTEGER:
+    if not -_max_safe_integer <= value <= _max_safe_integer:
         raise AuditError("JSON integer outside safe integer range")
     return value
 
@@ -261,17 +292,23 @@ def _pairs_no_dupes(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
     return out
 
 
-def loads_strict(raw: str) -> Any:
+def loads_strict(
+    raw: str,
+    *,
+    _max_json_bytes: int = __max_json_bytes_LITERAL,
+    _loads: Any = _JSON_LOADS_LITERAL,
+    _json_decode_error: type[Exception] = _JSON_DECODE_ERROR_LITERAL,
+) -> Any:
     if type(raw) is not str:
         raise AuditError("JSON input must be text")
     try:
         raw_size = len(raw.encode("utf-8", "strict"))
     except UnicodeError as exc:
         raise AuditError("JSON input is not valid Unicode text") from exc
-    if raw_size > MAX_JSON_BYTES:
-        raise AuditError(f"raw JSON exceeds {MAX_JSON_BYTES} bytes")
+    if raw_size > _max_json_bytes:
+        raise AuditError(f"raw JSON exceeds {_max_json_bytes} bytes")
     try:
-        value = json.loads(
+        value = _loads(
             raw,
             object_pairs_hook=_pairs_no_dupes,
             parse_int=_parse_int_token,
@@ -285,17 +322,21 @@ def loads_strict(raw: str) -> Any:
     except AuditError:
         raise
     except (
-        json.JSONDecodeError, TypeError, ValueError, OverflowError,
+        _json_decode_error, TypeError, ValueError, OverflowError,
         RecursionError, UnicodeError,
     ) as exc:
         raise AuditError(f"invalid JSON: {exc}") from exc
     return _freeze_plain_json(value)
 
 
-def canonical_json(value: Any) -> bytes:
+def canonical_json(
+    value: Any,
+    *,
+    _dumps: Any = _JSON_DUMPS_LITERAL,
+) -> bytes:
     frozen = _freeze_plain_json(value)
     try:
-        return json.dumps(
+        return _dumps(
             frozen,
             sort_keys=True,
             separators=(",", ":"),
@@ -306,8 +347,12 @@ def canonical_json(value: Any) -> bytes:
         raise AuditError(f"cannot canonicalize JSON: {exc}") from exc
 
 
-def sha256_hex(data: bytes) -> str:
-    return hashlib.sha256(data).hexdigest()
+def sha256_hex(
+    data: bytes,
+    *,
+    _sha256: Any = _SHA256_LITERAL,
+) -> str:
+    return _sha256(data).hexdigest()
 
 
 def _normalize_pr(value: Any) -> dict[str, Any]:
@@ -327,6 +372,7 @@ def _normalize_run(
     value: Any,
     *,
     _allowed_sources: frozenset[str] = _ALLOWED_PROVENANCE_SOURCES_LITERAL,
+    _max_pull_requests_per_run: int = __max_pull_requests_per_run_LITERAL,
 ) -> dict[str, Any]:
     row = _exact_keys(value, RUN_KEYS, "run")
     run_id = _exact_int(row["run_id"], "run_id", minimum=1)
@@ -356,7 +402,7 @@ def _normalize_run(
     prs_raw = provenance["pull_requests"]
     if type(prs_raw) is not list:
         raise AuditError("provenance.pull_requests must be a list")
-    if len(prs_raw) > MAX_PULL_REQUESTS_PER_RUN:
+    if len(prs_raw) > _max_pull_requests_per_run:
         raise AuditError("too many associated pull requests")
     prs = [_normalize_pr(item) for item in prs_raw]
     by_number: dict[int, dict[str, Any]] = {}
@@ -385,7 +431,11 @@ def _normalize_run(
     }
 
 
-def normalize_packet(packet: Any) -> dict[str, Any]:
+def normalize_packet(
+    packet: Any,
+    *,
+    _max_runs: int = __max_runs_LITERAL,
+) -> dict[str, Any]:
     frozen = _freeze_plain_json(packet)
     row = _exact_keys(frozen, INPUT_KEYS, "audit packet")
     if row["schema"] != INPUT_SCHEMA:
@@ -401,8 +451,8 @@ def normalize_packet(packet: Any) -> dict[str, Any]:
     runs_raw = row["runs"]
     if type(runs_raw) is not list:
         raise AuditError("runs must be a list")
-    if len(runs_raw) > MAX_RUNS:
-        raise AuditError(f"runs exceeds {MAX_RUNS}")
+    if len(runs_raw) > _max_runs:
+        raise AuditError(f"runs exceeds {_max_runs}")
     runs = [_normalize_run(item) for item in runs_raw]
     by_id: dict[int, dict[str, Any]] = {}
     for run in runs:
