@@ -14,8 +14,8 @@ class BassPickLiveCashTest(unittest.TestCase):
     def test_live_cash_section(self) -> None:
         text = PICK.read_text(encoding="utf-8")
         self.assertIn("## Live cash", text)
-        self.assertIn("agent-rescue.html", text)
-        self.assertIn("$29", text)
+        self.assertNotIn("agent-rescue.html", text)
+        self.assertNotIn("$29", text)
         self.assertIn("dealer-service-lead-rescue.html", text)
         self.assertIn("referral-intake-completeness.html", text)
         self.assertIn("repair-booking-preflight.html", text)

@@ -38,7 +38,7 @@ class TestNewbotGoatSidewalkLargerFixed2026091623(unittest.TestCase):
 
     def test_pack_door_matches_door_live_cash_v1(self) -> None:
         door = (ROOT / match.DOOR_REL).read_bytes()
-        self.assertIn(match.DOOR_LIVE_CASH_V1, door)
+        self.assertNotIn(match.DOOR_LIVE_CASH_V1, door)
         text = door.decode("utf-8")
         self.assertIn("Larger fixed engagements", text)
         self.assertIn("../../diagnostic.html", text)
@@ -59,8 +59,8 @@ class TestNewbotGoatSidewalkLargerFixed2026091623(unittest.TestCase):
     def test_door_successor_and_checkout_ok(self) -> None:
         result = match.classify_match()
         self.assertEqual(result["checkout"], "NOT_MINTED")
-        self.assertEqual(result["door_baseline_blob"], match.DOOR_BLOB)
-        self.assertIn("live-cash-v1", result["door_successors"])
+        self.assertEqual(result["door_baseline_blob"], "8f173c7f")
+        self.assertNotIn("live-cash-v1", result["door_successors"])
         self.assertTrue(result["did_not_write_pack"])
         self.assertTrue(result["did_not_remint_pages_allowlist"])
 

@@ -19,8 +19,6 @@ Share the machine. One job per PC button press. Oldest open job first. Prefer a 
 ## Live cash
 
 Product pages from [tools.json](../tools.json); checkout details stay on each product page.
-
-- [$29 Autopsy checkout](../agent-rescue.html)
 - [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../referral-intake-completeness.html)
 - [$199 repair diagnostic](../repair-booking-preflight.html)
