@@ -16,6 +16,7 @@ from pathlib import Path
 import re
 import stat
 import sys
+from types import MappingProxyType
 from typing import Any, Iterable
 
 PORTFOLIO_VERSION = "xtech.search10.portfolio/v1"
@@ -31,13 +32,15 @@ SHA40_RE = re.compile(r"^[0-9a-f]{40}$")
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 UTC_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$")
 
-CRITERIA_WEIGHTS = {
-    "introduction": 5,
-    "armyBenefits": 25,
-    "technicalApproach": 40,
-    "commercialPotential": 25,
-    "proposalQuality": 5,
-}
+CRITERIA_WEIGHTS = MappingProxyType(
+    {
+        "introduction": 5,
+        "armyBenefits": 25,
+        "technicalApproach": 40,
+        "commercialPotential": 25,
+        "proposalQuality": 5,
+    }
+)
 CLAIM_STATES = {"EVIDENCED", "PROPOSED", "OWNER_REQUIRED", "FORBIDDEN"}
 STRONG_TRACTION_KINDS = {
     "CUSTOMER_PAYMENT",
@@ -76,15 +79,24 @@ EXCLUSIVITY_STATES = {"UNKNOWN", "NOT_EXCLUSIVE", "EXCLUSIVE"}
 EVIDENCE_CLASSES = {"REPO", "OWNER", "PROVIDER", "EXTERNAL_COUNTERPARTY"}
 
 # Hard-coded from the current official competition announcement/RFI and kept
-# separate from any candidate-controlled packet.
-OFFICIAL_CONSTRAINTS = {
-    "deadlineUtc": "2026-10-19T21:00:00Z",
-    "oneSubmissionPerEligibleEntity": True,
-    "whitePaperPages": 3,
-    "mandatoryTemplate": True,
-    "weights": CRITERIA_WEIGHTS,
-    "priorityAreas": sorted(PRIORITY_AREAS - {"OTHER_VALID_ARMY_NEED"}),
-}
+# separate from any candidate-controlled packet. Containers exposed in reports
+# are freshly materialized so consumers cannot mutate later scoring policy.
+OFFICIAL_DEADLINE_UTC = "2026-10-19T21:00:00Z"
+OFFICIAL_WHITEPAPER_PAGES = 3
+OFFICIAL_MANDATORY_TEMPLATE = True
+OFFICIAL_ONE_SUBMISSION_PER_ENTITY = True
+OFFICIAL_PRIORITY_AREAS = tuple(sorted(PRIORITY_AREAS - {"OTHER_VALID_ARMY_NEED"}))
+
+
+def _official_constraint_snapshot() -> dict[str, Any]:
+    return {
+        "deadlineUtc": OFFICIAL_DEADLINE_UTC,
+        "oneSubmissionPerEligibleEntity": OFFICIAL_ONE_SUBMISSION_PER_ENTITY,
+        "whitePaperPages": OFFICIAL_WHITEPAPER_PAGES,
+        "mandatoryTemplate": OFFICIAL_MANDATORY_TEMPLATE,
+        "weights": dict(CRITERIA_WEIGHTS),
+        "priorityAreas": list(OFFICIAL_PRIORITY_AREAS),
+    }
 
 
 class ContractError(ValueError):
@@ -837,7 +849,7 @@ def compile_portfolio(packet: Any) -> dict[str, Any]:
         "holdReason": hold_reason or None,
         "globalBlockers": sorted(global_blockers),
         "projections": [asdict(row) for row in sorted(projections, key=lambda row: row.candidateId)],
-        "officialConstraintSnapshot": OFFICIAL_CONSTRAINTS,
+        "officialConstraintSnapshot": _official_constraint_snapshot(),
         "retainedEvidenceManifestSha256": sha256_json(
             [registry[key] for key in sorted(registry)]
         ),
@@ -845,6 +857,9 @@ def compile_portfolio(packet: Any) -> dict[str, Any]:
             "retained references are structurally bound to one semantic use and "
             "carry immutable repo generation or artifact SHA-256; compiler does "
             "not independently authenticate the underlying external artifact"
+        ),
+        "officialConstraintPolicySha256": sha256_json(
+            _official_constraint_snapshot()
         ),
         "readinessMetricMeaning": (
             "internal evidence-coverage basis points using published criterion weights; "
