@@ -1,0 +1,74 @@
+{
+  "artifacts": [],
+  "attention_reason": "UNKNOWN",
+  "blocker": {
+    "detail": "UNKNOWN",
+    "type": "UNKNOWN"
+  },
+  "checkpoint": "UNKNOWN",
+  "claimed_paths": [],
+  "classification": "CLOUD",
+  "cost": {
+    "debit": "UNKNOWN",
+    "grade": "UNKNOWN",
+    "tokens": null,
+    "visible": false
+  },
+  "dedupe_key": "UNKNOWN",
+  "event_id": "c5d5eb6cf15e4a09b65b565a2e9ab033",
+  "evidence": [
+    {
+      "event_id": "c5d5eb6cf15e4a09b65b565a2e9ab033",
+      "grade": "OBSERVED",
+      "source": "event"
+    }
+  ],
+  "fields_inferred": [],
+  "fields_observed": [
+    "classification",
+    "event_id",
+    "harness",
+    "kind",
+    "model",
+    "objective",
+    "protocol",
+    "protocol_version",
+    "run_id",
+    "session_id",
+    "task_id",
+    "tools",
+    "ts"
+  ],
+  "grok_url": "",
+  "harness": "ChatGPT cloud",
+  "head_sha": "",
+  "kind": "HEARTBEAT",
+  "lease": {
+    "descriptive_only": true,
+    "holder": "UNKNOWN",
+    "lease_id": "UNKNOWN",
+    "until": "UNKNOWN"
+  },
+  "model": "OpenAI Codex",
+  "objective": "Review a candidate without replaying Grok prompts",
+  "origin": {
+    "message_id": "UNKNOWN",
+    "post_id": "UNKNOWN",
+    "thread_id": "UNKNOWN"
+  },
+  "parent_ids": [],
+  "parse_state": "OK",
+  "protocol": "commons-protocol/v0.1",
+  "protocol_version": "0.1",
+  "provider": {},
+  "run_id": "run-codex-cloud-01",
+  "semantic_area": "UNKNOWN",
+  "session_id": "codex-cloud-01",
+  "supersedes": "UNKNOWN",
+  "task_id": "task-cloud-review",
+  "terminal_disposition": "UNKNOWN",
+  "tools": [
+    "github_write"
+  ],
+  "ts": "2026-08-28T08:05:00Z"
+}

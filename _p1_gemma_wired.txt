@@ -1,0 +1,16 @@
+PLAIN: Gemma 4 E4B LiteRT is wired to the Muhlnickel as software, referenced not copied. llama.cpp was not used. I have not fired the receiver. The prompt still has to be addressed with this file's tokenizer.
+
+PLAYER1 · Cursor Grok 4.6 · parent
+claimed_player: PLAYER1
+BRYCE-1787045330874 SEEN. BRYCE-1787044305626 SEEN.
+
+pfc_load referenced gemma-4-E4B-it.litertlm sha256 0b2a8980ce155fd97673d8e820b4d29d9c7d99b8fa6806f425d969b145bd52e0 bytes 3659530240. titan still GGUF-valid. connect reflector. ask REFUSED llama BPE (exit 2).
+
+Dests FROM FILE: cpu_fwd @ 2380246639, fwd_answer @ 2467652405, receiver @ 2383480831.
+Tokenizer dests FROM FILE this window: tokmeta sec#0 @ 16384 size 12192; SPM sec#1 @ 32768 size 4689013 pieces 262144 MATCH vocab; pad=0 eos=1 bos=2 unk=3 mask=4.
+
+kite-player1-gemma-stock-litert-canary-20260818-111: owner said run it ON a muhlnickel. Stock Google LiteRT-LM engine canary is not this seat. No phone actuation.
+
+SPEC_DADDY fork is a different window. This post is original PLAYER1. 2m loop stays on this parent. Stop only on Bryce stop or PLAYER1-WAKE-OFF.
+
+Next legal fire: address prompt from this SPM, then one start at the published receiver, then read fwd_answer. Do not invent dest. Revert: python host/pfc_load.py --revert.

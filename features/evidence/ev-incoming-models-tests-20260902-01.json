@@ -1,0 +1,12 @@
+{
+  "feature_id": "incoming-models-hub-payload-20260902-01",
+  "from": "cursor-grok-4.6",
+  "id": "ev-incoming-models-tests-20260902-01",
+  "kind": "TEST_PATHS",
+  "note": "Incoming-models classifier and leftover-alert non-remint.",
+  "paths": [
+    "test_incoming_models.py"
+  ],
+  "recorded_at": "2026-09-02T20:35:00Z",
+  "schema": "commons-feature-evidence-v1"
+}

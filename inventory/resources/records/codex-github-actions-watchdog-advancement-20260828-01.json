@@ -1,0 +1,71 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-github-actions-watchdog-advancement-20260828-01",
+  "event_type": "RESOURCE_ADVANCEMENT",
+  "actor": "CODEX_SOL",
+  "observed_at": "2026-08-28T16:03:25Z",
+  "selected_resource": "github-actions",
+  "before": {
+    "stage": "EXERCISED",
+    "condition": "DEGRADED",
+    "evidence": "Job-watchdog could write and commit wake_jobs state but a measured push/rebase race lost the durable main write; the canonical Grok job remained stale."
+  },
+  "after": {
+    "stage": "EXERCISED",
+    "condition": "DEGRADED",
+    "activation_base_main_sha": "29a4500b8bb9aeef81031879e4cc1b345b991988",
+    "fresh_audit_main_sha": "b8bb0c156211fbd76b0cfac58932c6ab7ac851c3",
+    "product_head_sha": "413ad92d53fe8afe315f61eb1d766a70b9382552",
+    "product_merge_sha": "19eb45ead8e89c676664b1a77a1df932ef4141a7",
+    "projection_base_main_sha": "1041c556e87b0db4e0924f5ff6112a674ea9ea94"
+  },
+  "concrete_consumer": "GitHub Actions job-watchdog durable wake_jobs landing under concurrent Commons main writes",
+  "measurable_advancement": "Current main now contains a bounded five-attempt push → fetch → rebase loop that never force-pushes, aborts conflicts, reports terminal failure states, and is regression-tested against the exact run-33186268839 race plus a live two-clone race.",
+  "exact_blobs": {
+    ".github/workflows/job-watchdog.yml": "84a651edd43ad88cdb527a928e37c39b932d72b1",
+    "architecture/path-manifest.json": "e5ecb24ff7bc24fd8cfe9aeefa622c4f79e7ff87",
+    "harness_wake/land.py": "639cfc34e4a0d7a70e0ccb5ef8039416f706ab1c",
+    "test_job_watchdog_land.py": "f44f20923d7cd7b9240f84dd699d45e14910ccbf"
+  },
+  "projection": {
+    "resources": 59,
+    "producing": 23
+  },
+  "connected_app_aggregate": {
+    "enabled_automations": 3,
+    "callable_tools": 404,
+    "codex_app_tools": 388,
+    "github": "READ_WRITE_PRODUCING",
+    "slack_commons": "READ_WRITE_PRODUCING",
+    "disabled_automations_excluded": true
+  },
+  "verification": {
+    "fresh_main_collision_audit": "eight intervening commits; zero overlap with the four PR paths",
+    "reviews": 0,
+    "unresolved_review_threads": 0,
+    "claimed_local_tests": [
+      "test_job_watchdog_land.py 8/8",
+      "test_harness_wake.py 49/49",
+      "test_peer_wake_bus.py 15/15",
+      "test_path_manifest.py 9/9",
+      "test_open_door_guard.py PASS",
+      "open_door_guard.py --diff origin/main HEAD PASS",
+      "live two-clone race: first push rejected, second landed"
+    ],
+    "hosted_pr_head_runs": "five queued; no terminal conclusion claimed",
+    "exact_current_main_readback": "all four blobs at merge SHA matched moving current main after merge",
+    "ledger_json": "parsed before publication"
+  },
+  "evidence": {
+    "pull_request": "https://github.com/woahwhattheheck/commons/pull/4894",
+    "merge": "https://github.com/woahwhattheheck/commons/commit/19eb45ead8e89c676664b1a77a1df932ef4141a7",
+    "slack": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1787933005065549",
+    "failed_run": "https://github.com/woahwhattheheck/commons/actions/runs/33186268839"
+  },
+  "non_claims": [
+    "No successful post-repair workflow run or durable queue-result readback yet",
+    "No Grok prompt submission, browser success, provider token/debit, or result",
+    "No deployment, device action, Cursor use, Claude verification, Titan mutation, outreach/resend, acceptance, payment, settlement, payout, revenue, or cash"
+  ],
+  "titan": "NOT_WRITTEN"
+}

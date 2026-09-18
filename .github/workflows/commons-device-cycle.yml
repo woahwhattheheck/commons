@@ -1,0 +1,118 @@
+name: commons-device-cycle
+on:
+  workflow_call:
+permissions:
+  contents: read
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      reservation_count: ${{ steps.prepare.outputs.reservation_count }}
+      prepared_commit: ${{ steps.prepare.outputs.prepared_commit }}
+      batch_path: ${{ steps.prepare.outputs.batch_path }}
+      batch_sha256: ${{ steps.prepare.outputs.batch_sha256 }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - id: prepare
+        name: reserve a bounded open-action batch before runner allocation
+        run: |
+          test "$GITHUB_ACTIONS" = true
+          test "$(git rev-parse --show-toplevel)" = "$GITHUB_WORKSPACE"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            if python3 device_action_state.py prepare \
+              --run-id "$GITHUB_RUN_ID" \
+              --run-attempt "$GITHUB_RUN_ATTEMPT" \
+              --github-output "$GITHUB_OUTPUT"; then
+              exit 0
+            else
+              code=$?
+            fi
+            if [ "$code" -ne 75 ]; then
+              exit "$code"
+            fi
+          done
+          echo "prepare CAS exhausted after 5 fresh-main attempts" >&2
+          exit 1
+
+  execute:
+    needs: prepare
+    if: needs.prepare.outputs.reservation_count != '0'
+    runs-on: [self-hosted, commons-device]
+    # At most 16 sequential shell payloads at 15 minutes each, plus bounded
+    # checkout/validation/receipt headroom.  GitHub's job ceiling is 360.
+    timeout-minutes: 260
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ needs.prepare.outputs.prepared_commit }}
+          fetch-depth: 0
+          persist-credentials: false
+          clean: true
+      - name: execute the prepared batch in sorted order and emit bounded receipts
+        run: >-
+          python3 device_action_state.py execute-batch
+          --run-id "${{ github.run_id }}"
+          --run-attempt "${{ github.run_attempt }}"
+          --prepared-commit "${{ needs.prepare.outputs.prepared_commit }}"
+          --batch-path "${{ needs.prepare.outputs.batch_path }}"
+          --batch-sha256 "${{ needs.prepare.outputs.batch_sha256 }}"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: commons-device-receipts-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/device-receipts
+          if-no-files-found: error
+          retention-days: 7
+
+  finalize:
+    needs: [prepare, execute]
+    if: ${{ always() && needs.prepare.result == 'success' && needs.execute.result == 'success' && needs.prepare.outputs.reservation_count != '0' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        continue-on-error: true
+        with:
+          name: commons-device-receipts-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/device-receipts
+      - name: validate every receipt on a fresh host and land only terminal records
+        env:
+          COMMONS_PREPARED_COMMIT: ${{ needs.prepare.outputs.prepared_commit }}
+          COMMONS_BATCH_PATH: ${{ needs.prepare.outputs.batch_path }}
+          COMMONS_BATCH_SHA256: ${{ needs.prepare.outputs.batch_sha256 }}
+        run: |
+          test "$GITHUB_ACTIONS" = true
+          test "$(git rev-parse --show-toplevel)" = "$GITHUB_WORKSPACE"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            if python3 device_action_state.py finalize \
+              --source "$RUNNER_TEMP/device-receipts" \
+              --run-id "$GITHUB_RUN_ID" \
+              --run-attempt "$GITHUB_RUN_ATTEMPT" \
+              --prepared-commit "$COMMONS_PREPARED_COMMIT" \
+              --batch-path "$COMMONS_BATCH_PATH" \
+              --batch-sha256 "$COMMONS_BATCH_SHA256"; then
+              exit 0
+            else
+              code=$?
+            fi
+            if [ "$code" -ne 75 ]; then
+              exit "$code"
+            fi
+          done
+          echo "finalize CAS exhausted after 5 fresh-main attempts" >&2
+          exit 1

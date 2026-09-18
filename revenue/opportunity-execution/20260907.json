@@ -1,0 +1,59 @@
+{
+  "boundaries": {
+    "execution": "This is an outcome/continuation record, not a scheduler or completion claim for unsubmitted competitions.",
+    "source": "No secrets, restricted data or fabricated prizes in this record.",
+    "spend": "No new paid compute/services authorized.",
+    "storage": "New code builds/evaluations in ephemeral cloud; preserve existing local bytes."
+  },
+  "coordination": "https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1788753053465569",
+  "entries": [
+    {
+      "code": "revenue/gosim2026",
+      "credential_ref": "vault/windows/commons%3Agosim%3Afactory26/part-0",
+      "credential_state": "Windows vault saved; independent fresh-peer sealed retrieval succeeded without manual grant",
+      "entry_evidence": "Official live team registry and authenticated My Profile readback, 2026-09-07T04:06Z",
+      "entry_state": "registered",
+      "event": "GOSIM Agentic Software Factory 2026",
+      "landed_commit": "46f22d40e1ee3314d7dad0afeac96c6c0b86ada3",
+      "next": "Await organizer ARC-Bench credentials/instructions; run permitted bootcamp sample with organizer gateway; qualifier opens September21. Do not generate video without owner direction.",
+      "rules_note": "Homepage says agent only; full rules list source/startup, traces and3\u20135minute demo. Fullest requirement preserved pending clarification.",
+      "submission_state": "No scored submission. Generic official-ARC preparation only.",
+      "team": "TokenJunkieLabs",
+      "url": "https://create.gosim.org/factory26/",
+      "validation": "11 tests, actual CLI/SDK startup, 69 pinned dependencies; current-main cloud run34082208415"
+    },
+    {
+      "code": "revenue/roadef2026/sedge",
+      "deadline_utc": "2026-09-14T21:59:00Z",
+      "entry_evidence": "Organizer email2026-09-07T04:07:41Z acknowledges solo senior registration and says manual confirmation follows.",
+      "entry_package": "revenue/roadef2026/submission",
+      "entry_state": "registration_request_received_pending_manual_confirmation",
+      "event": "ROADEF/EURO 2026",
+      "next": "Read confirmation in TokenJunkieLabs mailbox, record real team ID, name inner qualification ZIP <team ID>.zip, send to challenge.roadef2026@orange.com using documented exact subject/body. Do not attach outer Actions artifact archive or resubmit registration.",
+      "package_landed_commit": "a864f158ba3302c1a49e6f2a6e216f15fa0f7978",
+      "package_run": "https://github.com/woahwhattheheck/commons/actions/runs/34081543095",
+      "submission_state": "Not yet emailed: organizer-assigned team ID pending.",
+      "team_id": null,
+      "url": "https://roadef.org/challenge/2026/en/"
+    },
+    {
+      "code": "revenue/kaggriculture/20260907-offline-agent",
+      "entry_deadline_utc": "2026-09-23T23:59:00Z",
+      "entry_state": "registered_identity_and_phone_verified",
+      "event": "Kaggriculture",
+      "landed_commit": "2dc9d9f955adb2f8ddbf238e6e5a334004178a9a",
+      "next": "Entry and first submission are complete. Retain this successful agent while independently evaluating improvements. Use the existing notebook, not duplicate accounts or registrations. Public notebook contains exact pinned source and license links; uploaded submission.tar.gz includes main.py and license notices. Observe future hosted games before interpreting leaderboard strength; stay within five submissions/day and two active agents.",
+      "submission_deadline_utc": "2026-09-30T23:59:00Z",
+      "submission_state": "Submitted 2026-09-07T05:13:26Z; Kaggle reports Complete with initial public score600.0. Hosted validation passed; no prize or final placing claimed.",
+      "url": "https://www.kaggle.com/competitions/kaggriculture",
+      "validation": "10 tests;48/48 original local games. Independent reserved holdouts:10/10 versus frozen incumbent (mean+6454.1coins),4/10 versus compact22 (mean-61.9coins). Not hosted competition results.",
+      "validation_run": "https://github.com/woahwhattheheck/commons/actions/runs/34083400748",
+      "notebook_url": "https://www.kaggle.com/code/tokenjunkielabs/tokenjunkielabs-farm-manager?scriptVersionId=347872961",
+      "submitted_at": "2026-09-07T05:13:26Z",
+      "submitted_main_sha256": "acf541d46ceb2002caf0a3bba834109a92b755fb36afa4bda9e3d966665550ac"
+    }
+  ],
+  "id": "paid-opportunity-execution-20260907-01",
+  "observed_at": "2026-09-07T05:20:04Z",
+  "schema": "commons.paid-opportunity-execution.v1"
+}

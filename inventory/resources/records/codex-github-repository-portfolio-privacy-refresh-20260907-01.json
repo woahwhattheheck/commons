@@ -1,0 +1,95 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-github-repository-portfolio-privacy-refresh-20260907-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "selected_resource": "github-repository-portfolio",
+  "observed_at": "2026-09-07T04:08:47Z",
+  "before": {
+    "capacity": "9_ACCESSIBLE_REPOSITORIES",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "evidence_freshness": "STALE_SINCE_2026-09-01",
+    "privacy": "PUBLIC_CAPABILITY_SOURCE_AND_PROJECTION_CONTAINED_PRIVATE_REPOSITORY_IDENTIFIERS_AND_HEADS"
+  },
+  "after": {
+    "capacity": "30_ACCESSIBLE_REPOSITORIES",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "authority": "SHARED_ALL_CARRIERS; SHIP_TO_WOAHWHATTHEHECK_ONLY; PUBLIC_DETAILS_ONLY; PRIVATE_CAPACITY_AGGREGATE_ONLY",
+    "holder": "Commons",
+    "activation_base_main_sha": "eda0b5aada832a6b65e8d23305cff813b6f9a1ca"
+  },
+  "concrete_consumer": "Every Commons builder, recovery/release agent, Queue Manager and Resource Master route selector.",
+  "measurable_outcome": "Authenticated pagination reconciles 30 accessible repositories as 18 public plus 12 private. The public graph retains exact public heads and rejects every private repository row or private-detail persistence flag.",
+  "repository_truth": {
+    "accessible_repositories": 30,
+    "public_repositories": 18,
+    "private_repositories": 12,
+    "public_heads_persisted": 18,
+    "private_details_persisted": false,
+    "repositories_mutated": 0,
+    "branches_mutated": 0,
+    "deployments_performed": 0
+  },
+  "delta": {
+    "previous_terminal_main_sha": "55b1b78910b693f3171390fb27bf56a57801a022",
+    "measurement_main_sha": "eda0b5aada832a6b65e8d23305cff813b6f9a1ca",
+    "github_main_after_sweep": "a9fefea3a87538c771d6a4031c06cf1931ddceca",
+    "material_state_changes": [
+      "The authenticated woahwhattheheck repository fleet increased from the stale recorded 9 to 30 accessible repositories: 18 public and 12 private.",
+      "The connected app surface now exposes 442 callable tools, including 427 app tools across 20 families; Netlify and Railway are newly callable families relative to the prior catalog.",
+      "The fully paginated skill fleet increased from 104 to 118, and the automation fleet increased from 13 to 14 with 7 enabled and 7 disabled.",
+      "Post-watermark business-mail receipts show newly reachable service-account surfaces including Resend, Bubble, Make, a separate Slack workspace, Devpost and an agent-mail service. Account evidence is not product deployment or spend authority.",
+      "A provider receipt states the held Grok Bot pool reset on 2026-09-05; the Cursor/Grokbot hold remains in force and no quota was consumed.",
+      "ROADEF registration-request receipt exists as of 2026-09-07T04:07:41Z; organizer confirmation and qualification submission remain separate states.",
+      "Current GitHub Actions execution proves earlier billing-lock receipts stale as blockers; successful focused Kaggriculture and GOSIM runs were observed.",
+      "Slack delta exposed five existing unclaimed cloud build lanes; none was duplicated."
+    ],
+    "official_or_observed_openai_reset": false
+  },
+  "build_orders": [],
+  "build_order_decision": "No new build order survived deduplication. Five evidence-backed cloud lanes already exist in #delegations, while the newly observed service accounts either have existing consumers or require a provider/account action rather than an independent build.",
+  "verification": {
+    "focused_tests": "Connected-capability, repository-portfolio and resource-ledger suites pass.",
+    "privacy": "Only public repository names and heads remain in the public projections; private repository count is aggregate-only and private row injection fails closed.",
+    "open_door": "The inventory is advisory routing metadata and adds no authentication, identity, permission, admission, seat or capability gate.",
+    "zero_fabrication": "Account connection, repository access, quota reset mail, registration request and workflow execution are kept separate from deployment, submission, buyer acceptance, payment, revenue and cash.",
+    "collision": "The sole open PR at claim time was disjoint and then merged; final GitHub sweep found no open PRs and no active September 7 branch collision."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-07T04:08:47Z",
+    "main_sha_at_claim": "eda0b5aada832a6b65e8d23305cff813b6f9a1ca",
+    "github_main_after_sweep": "a9fefea3a87538c771d6a4031c06cf1931ddceca",
+    "commons_slack_ts": "1788753164.286449",
+    "delegations_slack_ts": "1788753530.074019",
+    "todo_slack_ts": "1788750462.953749",
+    "shipped_builds_slack_ts": "1788750437.175159",
+    "products_slack_ts": "1788344189.473619",
+    "leads_slack_ts": "1788750538.151319",
+    "sales_slack_ts": "1788750579.025069",
+    "gmail_checked_after": "2026-09-02T10:06:41Z",
+    "gmail_messages": 103,
+    "gmail_next_page": null,
+    "automations": "14 total; 7 enabled; 7 disabled",
+    "connected_tools": "442 callable tools; 427 app tools across 20 families",
+    "skills": "118 fully paginated executor skills",
+    "openai_reset": "No new official OpenAI or directly observed ChatGPT Work/Codex global reset in this wake; prior quota state retained."
+  },
+  "projection": {
+    "resources": 76,
+    "producing": 47
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788754083404829",
+    "prior_terminal_receipt": "p/codex-upwork-marketplace-capacity-activation-20260902-01.md",
+    "current_public_portfolio": "inventory/resources/repository_portfolio.json",
+    "current_connected_catalog": "inventory/resources/connected_capabilities.json"
+  },
+  "non_claims": [
+    "No private repository identity, head, branch, URL, file name or content is persisted by this activation.",
+    "No repository, device, model, provider, deployment, outreach, resend, bid, registration, submission, payment, settlement, payout, revenue or cash mutation occurred in this activation.",
+    "No Cursor, Claude, Grok Bot, grok.com or Titan quota was consumed."
+  ],
+  "titan": "NOT_WRITTEN"
+}

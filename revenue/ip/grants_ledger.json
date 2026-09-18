@@ -1,0 +1,191 @@
+{
+  "schema_version": "commons-grants-ledger/v1",
+  "kind": "GRANTS_LEDGER",
+  "generated_at": "2026-08-26T20:50:00Z",
+  "generated_from_main": "e6ac397aa6f038bf83a89668c9118d63a3770d9f",
+  "scope": "Public evidence and prioritization for three independently checked funding programs. This ledger records program terms and bounded public follow-up only.",
+  "nonclaims": [
+    "Program terms are not a finding that Commons, Bryce Muhlnickel, or Token Junkie Labs qualifies.",
+    "No row records readiness, an application sent to a funder, an award, or cash.",
+    "The ledger does not restrict participation or make decisions for an owner."
+  ],
+  "legal_scope": {
+    "applicant_eligibility_adjudicated": false,
+    "submission_readiness_claimed": false,
+    "award_claimed": false,
+    "funding_success_claimed": false,
+    "cash_received_claimed": false
+  },
+  "omitted_private_fields": [
+    "application_draft",
+    "bank_details",
+    "collaboration_letter_files",
+    "contact_email",
+    "contact_phone",
+    "entity_identifier",
+    "payout_details",
+    "research_portal_identity",
+    "tax_identifier"
+  ],
+  "programs": [
+    {
+      "id": "nsf-pesose-26-506",
+      "funder": "U.S. National Science Foundation",
+      "program": "Pathways to Enable Secure Open-Source Ecosystems (PESOSE), NSF 26-506",
+      "official_urls": [
+        "https://www.nsf.gov/funding/opportunities/pesose-pathways-enable-secure-open-source-ecosystems/nsf26-506/solicitation"
+      ],
+      "evidence_urls": [
+        "https://www.nsf.gov/funding/opportunities/pesose-pathways-enable-secure-open-source-ecosystems/nsf26-506/solicitation"
+      ],
+      "checked_at": "2026-08-26T20:50:00Z",
+      "application_state": "OPEN",
+      "application_state_basis": "The official solicitation page was labeled active/current and listed the next deadline as 2026-09-01.",
+      "opens_date": "UNKNOWN",
+      "deadline": {
+        "date": "2026-09-01",
+        "time": "17:00",
+        "timezone_basis": "submitting organization's local time; not a UTC instant"
+      },
+      "program_eligibility_text": "Program text names U.S. institutions of higher education; qualifying U.S. nonprofit, nonacademic research or education organizations; qualifying U.S.-based for-profit organizations including small businesses; state and local governments; Tribal Nations; and specified federal or FFRDC cases. Non-IHE PI and ownership or control restrictions also apply.",
+      "program_eligibility_evidence_state": "VERIFIED",
+      "applicant_eligibility_state": "UNKNOWN",
+      "applicant_eligibility_public_evidence_url": "UNKNOWN",
+      "funding_text": "Track 1 maximum USD 300,000; Track 2 maximum USD 1,500,000; Track 3 maximum USD 1,500,000; all subject to availability.",
+      "funding_evidence_state": "VERIFIED",
+      "matching_state": "NOT_REQUIRED",
+      "matching_basis": "The solicitation prohibits voluntary committed cost sharing.",
+      "ip_terms": "UNKNOWN: IP ownership terms were not established from the inspected solicitation.",
+      "ip_evidence_state": "UNKNOWN",
+      "deliverables": [
+        "Standard NSF reporting.",
+        "For Track 1 or Track 2, I-Corps for PESOSE participation unless the solicitation's stated waiver condition applies."
+      ],
+      "fit_note": "ANALYSIS: Existing public Commons artifacts may map to open-source ecosystem work, but that observation is neither applicant eligibility nor program fit adjudication.",
+      "public_next_action": "Compare already-public Commons artifacts with the Track 1, Track 2, and Track 3 required sections and the collaboration-letter requirement.",
+      "owner": "COMMONS_ANY_PEER",
+      "private_blockers": [
+        "Exact eligible entity, ownership, and residency facts",
+        "Active UEI and SAM registration status",
+        "Research.gov or Grants.gov identity",
+        "Third-party collaboration letters",
+        "Owner choice"
+      ],
+      "nonclaims": [
+        "Program eligibility language is not an applicant eligibility finding.",
+        "No application, award, or cash is recorded."
+      ],
+      "submission_status": "NOT_SUBMITTED",
+      "award_status": "NOT_AWARDED",
+      "cash_received_usd": 0
+    },
+    {
+      "id": "nsf-sbir-sttr-26-510",
+      "funder": "U.S. National Science Foundation",
+      "program": "SBIR/STTR Phase I, Phase II, Fast-Track Programs, NSF 26-510",
+      "official_urls": [
+        "https://www.nsf.gov/funding/opportunities/small-business-innovation-research-small-business-technology/nsf26-510/solicitation"
+      ],
+      "evidence_urls": [
+        "https://www.nsf.gov/funding/opportunities/small-business-innovation-research-small-business-technology/nsf26-510/solicitation"
+      ],
+      "checked_at": "2026-08-26T20:50:00Z",
+      "application_state": "OPEN",
+      "application_state_basis": "The official current solicitation listed 2026-11-04 as the next deadline after the elapsed July date; a required Project Pitch and invitation remain prerequisites.",
+      "opens_date": "UNKNOWN",
+      "deadline": {
+        "date": "2026-11-04",
+        "time": "17:00",
+        "timezone_basis": "submitting organization's local time; not a UTC instant"
+      },
+      "program_eligibility_text": "Program text requires a qualifying small business concern. STTR includes a research-institution partner, and PI employment and related program rules apply.",
+      "program_eligibility_evidence_state": "VERIFIED",
+      "applicant_eligibility_state": "UNKNOWN",
+      "applicant_eligibility_public_evidence_url": "UNKNOWN",
+      "funding_text": "Phase I maximum USD 305,000; Phase II maximum USD 1,250,000. Fast-Track conflicts internally: the summary says USD 1,555,000, while the detailed award section says USD 1,555,555.",
+      "funding_evidence_state": "CONFLICT",
+      "matching_state": "NOT_REQUIRED",
+      "matching_basis": "The solicitation prohibits voluntary committed cost sharing for Phase I, Phase II, and Fast-Track; the separate Phase IIB rule is not copied here.",
+      "ip_terms": "The official synopsis says NSF takes no equity and awardees retain company and IP ownership. Detailed data-rights clauses remain UNKNOWN because linked terms PDFs were not inspected.",
+      "ip_evidence_state": "PARTIAL",
+      "deliverables": [
+        "Required Project Pitch and invitation before a full proposal.",
+        "Phase-specific technical, commercialization, and NSF reporting requirements stated by the solicitation."
+      ],
+      "fit_note": "ANALYSIS: Public product and commercialization evidence may inform a Project Pitch comparison, but no qualifying-small-business or PI finding has been made.",
+      "public_next_action": "Map already-public product and commercialization evidence to the Project Pitch key elements.",
+      "owner": "COMMONS_ANY_PEER",
+      "private_blockers": [
+        "Qualifying small-business and entity determination",
+        "SAM and UEI status",
+        "SBA registry status",
+        "Research.gov identity",
+        "Project Pitch invitation",
+        "PI employment facts",
+        "Owner choice"
+      ],
+      "nonclaims": [
+        "Program eligibility language is not an applicant eligibility finding.",
+        "The conflicting Fast-Track figures are preserved without selecting one.",
+        "No application, award, or cash is recorded."
+      ],
+      "submission_status": "NOT_SUBMITTED",
+      "award_status": "NOT_AWARDED",
+      "cash_received_usd": 0
+    },
+    {
+      "id": "nlnet-restack-ois-2026",
+      "funder": "NLnet Foundation",
+      "program": "Restack (Open Internet Stack)",
+      "official_urls": [
+        "https://nlnet.nl/propose/",
+        "https://nlnet.nl/restack/",
+        "https://nlnet.nl/restack/eligibility/"
+      ],
+      "evidence_urls": [
+        "https://nlnet.nl/propose/",
+        "https://nlnet.nl/restack/",
+        "https://nlnet.nl/restack/eligibility/"
+      ],
+      "checked_at": "2026-08-26T20:50:00Z",
+      "application_state": "UPCOMING",
+      "application_state_basis": "The official propose page said sending material was currently impossible, calls open 2026-09-03, and the first deadline is 2026-11-03.",
+      "opens_date": "2026-09-03",
+      "deadline": {
+        "date": "2026-11-03",
+        "time": "12:00",
+        "timezone_basis": "CEST (noon), as labeled; no conversion performed"
+      },
+      "program_eligibility_text": "Program text lists FOSS and open-hardware work, research, validation, security, audit, continuous integration, documentation, standards, usability, deployability, project management, and infrastructure. It states no categorical exclusion, gives EU or Horizon-associated priority, and requires exceptional quality, unique expertise, and a clear European dimension for an outside-region exception.",
+      "program_eligibility_evidence_state": "VERIFIED",
+      "applicant_eligibility_state": "UNKNOWN",
+      "applicant_eligibility_public_evidence_url": "UNKNOWN",
+      "funding_text": "UNKNOWN: amount lines were not independently verified for this build.",
+      "funding_evidence_state": "UNKNOWN",
+      "matching_state": "UNKNOWN",
+      "matching_basis": "UNKNOWN: no matching determination was independently verified from the inspected pages.",
+      "ip_terms": "The public propose page requires libre or open licenses; detailed MoU terms remain UNKNOWN.",
+      "ip_evidence_state": "PARTIAL",
+      "deliverables": [
+        "Work in an activity category described by the public Restack eligibility page.",
+        "Detailed MoU deliverables and reporting remain UNKNOWN until those terms are inspected."
+      ],
+      "fit_note": "ANALYSIS: Public Commons artifacts may relate to listed open-stack activities, but European dimension, rates, budget, and applicant eligibility remain unresolved.",
+      "public_next_action": "Re-read the official pages after 2026-09-03 and compare already-public Commons artifacts with Restack topics without using the form.",
+      "owner": "COMMONS_ANY_PEER",
+      "private_blockers": [
+        "European-dimension case",
+        "Contact and form fields",
+        "Rates and budget",
+        "Owner choice after opening"
+      ],
+      "nonclaims": [
+        "Program eligibility language is not an applicant eligibility finding.",
+        "No application, award, or cash is recorded."
+      ],
+      "submission_status": "NOT_SUBMITTED",
+      "award_status": "NOT_AWARDED",
+      "cash_received_usd": 0
+    }
+  ]
+}

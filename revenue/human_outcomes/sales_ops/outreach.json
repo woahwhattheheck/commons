@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "kind": "HUMAN_OUTCOMES_SALES_OPS_OUTREACH",
+  "mandate": "demon-human-outcomes-sales-ops-20260825-01",
+  "founder_reviewed": true,
+  "review_basis": [
+    "revenue/human_outcomes/offers.json",
+    "revenue/human_outcomes/fulfillment.md",
+    "humans.html interest form",
+    "this leftover rail decision: Stripe Invoice for a specific customer; no Payment Link"
+  ],
+  "reviewed_at": "2026-08-25",
+  "status": "NOT_SENT",
+  "contact_sent": false,
+  "emails_queued": 0,
+  "channel": "founder-sent only after public non-confidential OFFER interest on humans.html or any open write road",
+  "do_not": [
+    "send these drafts from this leftover",
+    "collect a phone or private email on Commons",
+    "name a private buyer",
+    "claim a checkout",
+    "claim collected cash",
+    "invent certifications",
+    "paste remittance"
+  ],
+  "drafts": [
+    {
+      "id": "outreach-issue-to-pr",
+      "sku": "ho-issue-to-pr",
+      "status": "NOT_SENT",
+      "audience": "someone who already posted public non-confidential interest naming one public issue",
+      "subject": "Named issue to a CI-green PR — public numbers, private next step",
+      "body": "You named one public issue. The catalog job is ho-issue-to-pr: one pull request, CI green on the merged SHA, issue closed by that PR. USD 2500 / 7 days. Half before start, half on acceptance. There is no checkout on Commons. If you want the private SOW, reply to this founder-sent note. Do not paste secrets."
+    },
+    {
+      "id": "outreach-meeting-packet",
+      "sku": "ho-meeting-packet",
+      "status": "NOT_SENT",
+      "audience": "someone who already posted public non-confidential interest naming one public meeting",
+      "subject": "Accessible public-meeting packet — public numbers, private next step",
+      "body": "You named one public meeting. The catalog job is ho-meeting-packet: HTML plus printable packet, agenda, one-page brief, sourced claims, readable with no login. USD 1200 / 5 days. Half before start, half on delivery before the meeting date. There is no checkout on Commons. If you want the private SOW, reply to this founder-sent note."
+    },
+    {
+      "id": "outreach-security-questionnaire",
+      "sku": "ho-security-questionnaire",
+      "status": "NOT_SENT",
+      "audience": "someone who already posted public non-confidential interest naming one questionnaire",
+      "subject": "Security questionnaire completion — public numbers, private next step",
+      "body": "You named one questionnaire. The catalog job is ho-security-questionnaire: every required cell filled or marked UNMEASURED, no invented CMMC/FedRAMP/SOC2/ITAR stamp, filled copy returned privately. USD 3000 / 10 days. Half before start, half on return. There is no checkout on Commons. Do not attach the questionnaire or credentials to a public road. If you want the private SOW, reply to this founder-sent note."
+    },
+    {
+      "id": "outreach-pixel-pack",
+      "sku": "ho-pixel-pack",
+      "status": "NOT_SENT",
+      "audience": "someone who already posted public non-confidential interest naming a public pixel page",
+      "subject": "8-bit / pixel agent pack — public numbers, private next step",
+      "body": "You named a public page. The catalog job is ho-pixel-pack: one sprite, one walk loop, one speak line citing a public p/{id}.md, static frame readable with JS off. USD 800 / 5 days. Half before start, half when the sprite lands. There is no checkout on Commons. If you want the private SOW, reply to this founder-sent note."
+    }
+  ]
+}

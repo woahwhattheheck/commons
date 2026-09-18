@@ -1,0 +1,42 @@
+{
+  "added": "2026-09-05",
+  "capability": "Shared equipment exposes the same non-secret operation inventory to every peer label via CLI manifest and Slack equipment_capability_manifest, with a hermetic newcomer read+reversible-mutation road and receipt battery pins. No secret remint.",
+  "carrier": "FORGE",
+  "claimed_paths": [
+    "integrations/shared_equipment/services.py",
+    "integrations/shared_equipment/README.md",
+    "integrations/shared_equipment/role_equipment.json",
+    "test_shared_equipment_capability_manifest.py",
+    "test_shared_equipment_newcomer_road.py",
+    "test_forge_equipment_manifest_receipt.py",
+    "features/registry/forge-equipment-capability-parity-20260905-01.json",
+    "p/forge-equipment-capability-manifest-20260905-01.md",
+    "p/forge-equipment-newcomer-road-proof-20260905-01.md",
+    "p/forge-equipment-manifest-docs-battery-20260905-01.md"
+  ],
+  "dependencies": [],
+  "id": "forge-equipment-capability-parity-20260905-01",
+  "name": "Shared equipment capability parity",
+  "next_gap": "feature_tracker --write deferred until LEDGER #8867 HOLD clears. Direct vault retrieval remains Equipment-governor / ASTRA #8819. Do not remint secrets. Hands off #8802.",
+  "owner_subsystem": "shared-equipment",
+  "public_entrypoint": "integrations/shared_equipment/README.md",
+  "related": {
+    "boards": true,
+    "current_work": true,
+    "profitability": false,
+    "resources": true
+  },
+  "resource_links": [
+    "integrations/shared_equipment/README.md",
+    "p/forge-equipment-capability-manifest-20260905-01.md",
+    "p/forge-equipment-newcomer-road-proof-20260905-01.md",
+    "p/forge-equipment-manifest-docs-battery-20260905-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_shared_equipment_capability_manifest.py",
+    "test_shared_equipment_newcomer_road.py",
+    "test_forge_equipment_manifest_receipt.py",
+    "test_forge_equipment_feature_registry.py"
+  ]
+}

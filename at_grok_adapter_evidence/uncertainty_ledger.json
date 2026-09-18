@@ -1,0 +1,426 @@
+{
+  "id": "AT-GROK-ADAPTER-EVIDENCE-01",
+  "schema": "commons-at-grok-adapter-evidence/v1",
+  "state": "NOT_READY / HOLD / BUILD-AND-VERIFY",
+  "cash_usd": 0,
+  "private_aquatrace_lims_cite": "e380a58",
+  "private_repo_rule": "Do not clone, write, or push woahwhattheheck/aquatrace-lims. Cite main e380a58 only.",
+  "lane": "MoA GROK PRODUCTION SWARM lane 1 / AT-GROK Cursor-lane evidence",
+  "grok_com": "dry",
+  "city_contact": false,
+  "official_command": "python3 at_grok_adapter_evidence.py",
+  "binary_command": "python3 test_at_grok_adapter_evidence.py",
+  "measured_at_utc": "2026-08-31T07:32:00Z",
+  "search_space": [
+    "OEM / manufacturer public pages and official PDFs only",
+    "Metrohm MagIC Net 4.0 manual 8.102.8088EN (metrohm.com)",
+    "Metrohm Eco IC manual 8.925.8001EN (metrohm.com)",
+    "Metrohm USA support article Create an Export Template (.csv)",
+    "Veolia watertechnologies.com Sievers M5310 C product and manuals index",
+    "SEAL Analytical AQ300 product page and aq300-brochure-web.pdf",
+    "PerkinElmer Syngistix for AA / PinAAcle 900 official pages",
+    "Distributor or Scribd copies were not used as schema sources"
+  ],
+  "buyer_labels": [
+    "Metrohm Eco IC",
+    "Seivers M5310C",
+    "Seal Analytical AQ300",
+    "Perkin Elmer PinAAcle 900Z"
+  ],
+  "counts": {
+    "instruments": 4,
+    "schema_unknown": 4,
+    "schema_documented": 0,
+    "framing_documented_partial": 1,
+    "framing_transport_named": 2,
+    "framing_unknown": 1,
+    "export_fixtures": 0
+  },
+  "honesty_rule": "schema_status stays UNKNOWN until a public OEM record schema exists. A guessed schema, invented field name, or invented export fixture fails closed.",
+  "instruments": [
+    {
+      "buyer_label": "Metrohm Eco IC",
+      "schema_status": "UNKNOWN",
+      "schema_reason": "UNKNOWN / BUYER OR VENDOR SAMPLE REQUIRED",
+      "framing_status": "DOCUMENTED_PARTIAL",
+      "fixture": null,
+      "documented_facts": [
+        "Eco IC is operated with MagIC Net Basic over a USB connection to a PC (official Eco IC manual).",
+        "MagIC Net documents export file types: *.idet, *.csv, *.slk, *.xml, *.cdf (AIA), *.txt measuring point list.",
+        "CSV field separator selection is ; | , | Tab; default ;. Record separator CR/LF | CR | LF; default CR/LF. Header on|off default on.",
+        "Filename options: Determination ID | Sample identification | Request on each export | Fixed file name (append data). Date stamp -YYYYMMDD-HHMMSS.",
+        "XML export is documented as a section tree (Determination report / data groups / System data). Exact XML element tag names are not published.",
+        "*.xml and *.idet always export all fields; field selection applies only to *.csv and *.slk.",
+        "Partial-export behavior: Cancel skips one determination; Cancel all stops the marked set; existing Sample identification names get a version suffix; Fixed file name appends to an existing CSV/SLK file.",
+        "Encoding of export bytes is not stated in the public MagIC Net 4.0 export chapters."
+      ],
+      "unknowns": [
+        "Exact XML element/attribute names and namespaces",
+        "Complete CSV/SLK available-field list and buyer template column order",
+        "Character encoding of export files",
+        "Buyer MagIC Net version, license, export template, and City sample files"
+      ],
+      "verbatim_names": [
+        {
+          "name": "Determination ID",
+          "kind": "filename_option_and_txt_header",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.2.1 File name / 4.6.2.1 *.txt header"
+        },
+        {
+          "name": "Sample identification",
+          "kind": "filename_option",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.2.1 File name"
+        },
+        {
+          "name": "Ident",
+          "kind": "sample_identification_source",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.2.1 Sample identification"
+        },
+        {
+          "name": "Info 1",
+          "kind": "sample_identification_source",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.2.1 Sample identification (Ident, Info 1 - 4 or Value 1 - 4)"
+        },
+        {
+          "name": "Info 2",
+          "kind": "sample_identification_source",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.2.1 Sample identification (Ident, Info 1 - 4 or Value 1 - 4)"
+        },
+        {
+          "name": "Info 3",
+          "kind": "sample_identification_source",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.2.1 Sample identification (Ident, Info 1 - 4 or Value 1 - 4)"
+        },
+        {
+          "name": "Info 4",
+          "kind": "sample_identification_source",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.2.1 Sample identification (Ident, Info 1 - 4 or Value 1 - 4)"
+        },
+        {
+          "name": "Value 1",
+          "kind": "sample_identification_source",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.2.1 Sample identification (Ident, Info 1 - 4 or Value 1 - 4)"
+        },
+        {
+          "name": "Value 2",
+          "kind": "sample_identification_source",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.2.1 Sample identification (Ident, Info 1 - 4 or Value 1 - 4)"
+        },
+        {
+          "name": "Value 3",
+          "kind": "sample_identification_source",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.2.1 Sample identification (Ident, Info 1 - 4 or Value 1 - 4)"
+        },
+        {
+          "name": "Value 4",
+          "kind": "sample_identification_source",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.2.1 Sample identification (Ident, Info 1 - 4 or Value 1 - 4)"
+        },
+        {
+          "name": "Determination report",
+          "kind": "xml_export_section",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.3.1 XML export - Overview p.279"
+        },
+        {
+          "name": "Program name",
+          "kind": "xml_export_section",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.3.1 XML export - Overview p.279"
+        },
+        {
+          "name": "Program version",
+          "kind": "xml_export_section",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.3.1 XML export - Overview p.279"
+        },
+        {
+          "name": "Build number",
+          "kind": "xml_export_section",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.3.1 XML export - Overview p.279"
+        },
+        {
+          "name": "Determination data",
+          "kind": "xml_export_section",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.3.1 XML export - Overview p.279"
+        },
+        {
+          "name": "Method data",
+          "kind": "xml_export_section",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.3.1 XML export - Overview p.279"
+        },
+        {
+          "name": "Sample data",
+          "kind": "xml_export_section",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.3.1 XML export - Overview p.279"
+        },
+        {
+          "name": "Common variables",
+          "kind": "xml_export_section",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.3.1 XML export - Overview p.279"
+        },
+        {
+          "name": "Component results",
+          "kind": "xml_export_section",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.3.1 XML export - Overview p.279"
+        },
+        {
+          "name": "Single results",
+          "kind": "xml_export_section",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.3.1 XML export - Overview p.279"
+        },
+        {
+          "name": "Monitored results",
+          "kind": "xml_export_section",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.3.1 XML export - Overview p.279"
+        },
+        {
+          "name": "Method parameters",
+          "kind": "xml_export_section",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.3.1 XML export - Overview p.279"
+        },
+        {
+          "name": "Statistics results",
+          "kind": "xml_export_section",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.3.1 XML export - Overview p.279"
+        },
+        {
+          "name": "Device data",
+          "kind": "xml_export_section",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.3.1 XML export - Overview p.279"
+        },
+        {
+          "name": "Analysis data",
+          "kind": "xml_export_section",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.3.1 XML export - Overview p.279"
+        },
+        {
+          "name": "Columns data",
+          "kind": "xml_export_section",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.3.1 XML export - Overview p.279"
+        },
+        {
+          "name": "System data",
+          "kind": "xml_export_section",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.3.1 XML export - Overview p.279"
+        },
+        {
+          "name": "User name (abbreviation)",
+          "kind": "xml_export_section",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.3.1 System data"
+        },
+        {
+          "name": "User name (full name)",
+          "kind": "xml_export_section",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.3.1 System data"
+        },
+        {
+          "name": "Client name",
+          "kind": "xml_export_section",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.3.1 System data"
+        },
+        {
+          "name": "License code",
+          "kind": "xml_export_section",
+          "source_url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.3.1 System data"
+        }
+      ],
+      "citations": [
+        {
+          "url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/89/89258001EN.pdf",
+          "page_or_section": "Eco IC Manual 8.925.8001EN / v7 / 2023-12-31 Introduction / ch 3.14 Connecting the instrument to a computer",
+          "verbatim": "The instrument is operated with the MagIC Net Basic software. It is connected to a PC on which MagIC Net is installed via a USB connection."
+        },
+        {
+          "url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.2.1 File type",
+          "verbatim": "Selection *.idet (MagIC Net format) | *.csv (comma separated) | *.slk (SLK format) | *.xml (XML format) | *.cdf (AIA format) | *.txt (measuring point list)"
+        },
+        {
+          "url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.2.3 Options for CSV format",
+          "verbatim": "Field separator Selection ; | , | Tab Default value ; Record separator Selection CR/LF | CR | LF Default value CR/LF Header on | off (Default value: on)"
+        },
+        {
+          "url": "https://www.metrohm.com/content/dam/metrohm/shared/documents/manuals/81/81028088EN.pdf",
+          "page_or_section": "MagIC Net 4.0 Manual 8.102.8088EN ch 4.6.3.1 XML export - Overview p.279",
+          "verbatim": "An XML export file is constructed as follows: Determination report Program name Program version Build number + Determination data + Method data + Sample data + Common variables + Component results + Single results + Monitored results + Method parameters + Statistics results + Device data + Analysis data + Columns data – System data"
+        },
+        {
+          "url": "https://support.metrohmusa.com/hc/en-us/articles/47412051624083-Create-an-Export-Template-csv-MagIC-Net",
+          "page_or_section": "Instructions for Template Creation / File name",
+          "verbatim": "Determination ID—automatic unique ID assigned by MagIC Net. Sample identification—file name based on user-entered ID."
+        }
+      ]
+    },
+    {
+      "buyer_label": "Seivers M5310C",
+      "schema_status": "UNKNOWN",
+      "schema_reason": "UNKNOWN / BUYER OR VENDOR SAMPLE REQUIRED",
+      "framing_status": "TRANSPORT_NAMED",
+      "fixture": null,
+      "oem_trademark_spelling": "Sievers M5310 C",
+      "spelling_rule": "Buyer label is Seivers M5310C. Do not normalize Seivers to Sievers.",
+      "documented_facts": [
+        "Official Veolia Laboratory page names USB and Modbus TCP/IP outputs; range 4 ppb to 50 ppm; analysis time 2 minutes; DataPro2 software for autosampler integration.",
+        "Official Veolia On-Line page also names 4-20 mA outputs (3), alarm outputs (4), binary input (1), USB device/host, Ethernet.",
+        "Official manuals index lists M5310 C Series Operation and Maintenance Manual FW 2.01 as DLM 77120 and DataPro2 user guide DUG 77520. Certain documents require a password.",
+        "No public Modbus register map, USB file format, CSV/XML field list, encoding, delimiter, timestamp format, or error/partial-file contract is published on the OEM pages searched."
+      ],
+      "unknowns": [
+        "USB export file type, encoding, delimiters, field names, units-per-column, timestamps",
+        "Modbus TCP/IP register map and error codes",
+        "4-20 mA channel assignment",
+        "DataPro2 export schema",
+        "Buyer firmware/software edition and sample files"
+      ],
+      "verbatim_names": [],
+      "citations": [
+        {
+          "url": "https://www.watertechnologies.com/products/analyzers-instruments/sievers-m5310-c-lab",
+          "page_or_section": "Sievers M5310 C Laboratory TOC Analyzer / Features and Benefits / Specifications",
+          "verbatim": "Easy data communications — export or collect data via USB or Modbus TCP/IP outputs"
+        },
+        {
+          "url": "https://www.watertechnologies.com/products/analyzers-instruments/sievers-m5310-c-line",
+          "page_or_section": "Sievers M5310 C On-Line TOC Analyzer / Features and Benefits / Outputs",
+          "verbatim": "Easy data communications — export or collect data via USB, 4-20 mA, or Modbus TCP/IP outputs"
+        },
+        {
+          "url": "https://www.watertechnologies.com/sievers-support/manuals/m-series-documentation",
+          "page_or_section": "Sievers M9 and M5310 C Documentation / Operating and Maintenance Manuals",
+          "verbatim": "M5310 C Series Operation and Maintenance Manual FW 2.01 DLM 77120 02 A English. Certain documents require a password to download."
+        }
+      ]
+    },
+    {
+      "buyer_label": "Seal Analytical AQ300",
+      "schema_status": "UNKNOWN",
+      "schema_reason": "UNKNOWN / BUYER OR VENDOR SAMPLE REQUIRED",
+      "framing_status": "TRANSPORT_NAMED",
+      "fixture": null,
+      "documented_facts": [
+        "Official AQ300 brochure states LIMS compatible – export in .csv format and names QCPro Data Quality System.",
+        "Official AQ300 product page states export files are fully customizable and that a test schedule may be imported from LIMS.",
+        "Official tech-support page lists AQ300 current software version AQ 2.5.2.",
+        "No public CSV column list, delimiter, encoding, timestamp, QC flag, or partial-file contract is published. Customizable export is the opposite of a fixed public schema."
+      ],
+      "unknowns": [
+        "CSV column names and order",
+        "Field and record separators actually used by a buyer template",
+        "Encoding",
+        "QCPro field names and failure codes",
+        "Buyer AQ software version and sample files"
+      ],
+      "verbatim_names": [],
+      "citations": [
+        {
+          "url": "https://seal-analytical.com/files/downloads/aq300-brochure-web.pdf",
+          "page_or_section": "AQ300 Discrete Analyzer brochure / Advantages and benefits",
+          "verbatim": "LIMS compatible – export in .csv format"
+        },
+        {
+          "url": "https://seal-analytical.com/en/products/discrete-analyzers/aq300-discrete-analyzer/",
+          "page_or_section": "How the AQ300 Works / Step 7 Review of data and export to LIMS",
+          "verbatim": "Export files are fully customizable ensuring integration with any LIMS program."
+        },
+        {
+          "url": "https://seal-analytical.com/en/tech-support/",
+          "page_or_section": "AQ Software for SEAL Discrete Analyzers",
+          "verbatim": "AQ300 current version: AQ 2.5.2"
+        }
+      ]
+    },
+    {
+      "buyer_label": "Perkin Elmer PinAAcle 900Z",
+      "schema_status": "UNKNOWN",
+      "schema_reason": "UNKNOWN / BUYER OR VENDOR SAMPLE REQUIRED",
+      "framing_status": "UNKNOWN",
+      "fixture": null,
+      "documented_facts": [
+        "Official PerkinElmer AAS software page names Syngistix for AA for Flame (PinAAcle 500/900F) and Furnace (PinAAcle 900H/T/Z).",
+        "Official shop listing N1010302 names Syngistix for AA as workflow software for those PinAAcle models.",
+        "No official PerkinElmer-hosted public manual on the searched OEM pages publishes XML/CSV/TCP framing, delimiters, encoding, field names, timestamps, or error/partial-file behavior for PinAAcle 900Z / Syngistix for AA.",
+        "Distributor-hosted or Scribd copies of Syngistix guides were not used as schema sources."
+      ],
+      "unknowns": [
+        "Export file type, encoding, delimiters, field names, units, timestamps",
+        "Syngistix Data Manager export design columns",
+        "Buyer software version, license, and sample files"
+      ],
+      "verbatim_names": [],
+      "citations": [
+        {
+          "url": "https://www.perkinelmer.com/category/atomic-absorption-spectroscopy-aas/aas-software",
+          "page_or_section": "AAS Software / Syngistix for AA Software",
+          "verbatim": "Syngistix for AA software offers intuitive, workflow-based operation that simplifies analyses and boosts productivity across all AA techniques – whether flame or graphite furnace AA (PinAAcle 500/900)"
+        },
+        {
+          "url": "https://shop.perkinelmer.com/product/N1010302",
+          "page_or_section": "Syngistix for AA Software / Product Compatibility",
+          "verbatim": "Flame (PinAAcle 500/900F), Furnace (PinAAcle 900H/T/Z)"
+        }
+      ]
+    }
+  ],
+  "off_limits": [
+    "AT-GROK-CMDP-EVIDENCE-01",
+    "AT-GROK-OPS-ACCEPTANCE-01",
+    "corrigan-specialty-fuel-blend-dossier-lims-01",
+    "torrent-workorder-commissioning-lims-01",
+    "bsk-multilab-accession-parity-lims-01",
+    "chemtechford-short-hold-intake-lims-01",
+    "aquatrace-work-order-c-reporting-offline-20260831-01",
+    "aquatrace-work-order-b-production-foundation-20260831-01",
+    "aquatrace-work-order-f-release-readiness-20260831-01",
+    "sanair-asbestos-coc-router-lims-01",
+    "wadsworth-five-site-consolidation-lims-01",
+    "highpower-ssf-receiving-gate-lims-01",
+    "westpak-scope-capacity-routing-lims-01",
+    "ddl-crosssite-method-proficiency-lims-01",
+    "sharp-rtu-vial-isolator-lineage-lims-01",
+    "canyon-multisite-regulated-intake-lims-01",
+    "pcl-scope-sla-routing-lims-01",
+    "organabio-multisite-donor-coa-lims-01",
+    "billings-bid-1421-instrument-fixtures-20260831-01"
+  ],
+  "not_claims": [
+    "production",
+    "spend",
+    "certification",
+    "compliance",
+    "live_adapter",
+    "deployed",
+    "instrument_compatible",
+    "customer_reference"
+  ]
+}

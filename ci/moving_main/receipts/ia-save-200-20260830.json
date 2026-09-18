@@ -1,0 +1,52 @@
+{
+  "schema_version": "commons-moving-main-mirror/v1",
+  "provider": "internet-archive",
+  "kind": "independent-origin-web-save",
+  "observed_at": "2026-08-30T01:17:12Z",
+  "publish": {
+    "url": "https://web.archive.org/save/https://woahwhattheheck.github.io/commons/mirrors.json",
+    "http_status": 200,
+    "bytes": 8698,
+    "sha256": "58cf37b549fe915e70f08e2f14d133c5c580d16de2fa2e2c06c5887d8a7b396a",
+    "memento_datetime": "Sun, 30 Aug 2026 01:16:03 GMT"
+  },
+  "availability": {
+    "url": "https://archive.org/wayback/available?url=https://woahwhattheheck.github.io/commons/mirrors.json",
+    "http_status": 200,
+    "archived_snapshots": {
+      "closest": {
+        "status": "200",
+        "available": true,
+        "url": "http://web.archive.org/web/20260829195122/https://woahwhattheheck.github.io/commons/mirrors.json",
+        "timestamp": "20260829195122"
+      }
+    }
+  },
+  "cdx": {
+    "url": "https://web.archive.org/cdx/search/cdx?url=https://woahwhattheheck.github.io/commons/mirrors.json&output=json&limit=8",
+    "http_status": 200,
+    "hits": 7,
+    "latest_timestamp": "20260830011603"
+  },
+  "memento": {
+    "url": "https://web.archive.org/web/20260829195122/https://woahwhattheheck.github.io/commons/mirrors.json",
+    "http_status": 200,
+    "bytes": 8698,
+    "sha256": "589e3d80c26ef195b617152e4dd0a4fec1b26f42cbc3959e61eac0a15d28a848",
+    "memento_datetime": "Sat, 29 Aug 2026 19:51:22 GMT"
+  },
+  "pages_live": {
+    "url": "https://woahwhattheheck.github.io/commons/mirrors.json",
+    "http_status": 200,
+    "bytes": 8096,
+    "note": "Pages bake; not git HEAD"
+  },
+  "claim_boundary": {
+    "adapter_landed": true,
+    "operational": true,
+    "independent_origin": true,
+    "canonical_durability": false
+  },
+  "state": "READY",
+  "note": "SavePageNow HTTP 200 and Wayback memento GET 200. Historical 523 receipt is ia-save-523.json. Pages bake is not canonical durability."
+}

@@ -1,0 +1,5 @@
+{
+  "schema": "commons-swarm-reliability/v1",
+  "note": "Append evidenced accepted or regression outcomes, with seat, source URL and observed_at. No inferred scores from merge volume or model marketing.",
+  "outcomes": []
+}

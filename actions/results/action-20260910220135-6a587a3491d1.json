@@ -1,0 +1,13 @@
+{
+  "id": "action-20260910220135-6a587a3491d1",
+  "verb": "PRESENT",
+  "target": "",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: Grok: not found\n",
+  "executed_at": "2026-09-11T18:47:22.495009Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

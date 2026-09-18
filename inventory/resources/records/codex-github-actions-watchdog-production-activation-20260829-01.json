@@ -1,0 +1,67 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-github-actions-watchdog-production-activation-20260829-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "observed_at": "2026-08-29T04:05:47Z",
+  "selected_resource": "github-actions",
+  "before": {
+    "stage": "EXERCISED",
+    "condition": "DEGRADED",
+    "evidence": "The moving-main retry repair was merged, but no successful post-repair watchdog write had yet been read back from current main."
+  },
+  "after": {
+    "stage": "PRODUCING",
+    "condition": "DEGRADED",
+    "activation_base_main_sha": "d3414c8cf82c205387b23366f17eaff60cd48822",
+    "post_repair_tick_shas": [
+      "08b734f5d742e1bb801c137eade48e4edf428950",
+      "33ee7a16a6164bcf0cb6f9edc835e0b57f6291b7",
+      "d3414c8cf82c205387b23366f17eaff60cd48822"
+    ]
+  },
+  "concrete_consumer": "GitHub Actions job-watchdog durable wake_jobs landing under concurrent moving-main writes",
+  "measurable_outcome": "The repaired watchdog produced three current-main tick commits. Exact readback at d3414c8c found five durable queue records at attempt_count=5, no_progress_count=5, status OPEN, in_backoff=true, lease=null, tokens_used=0, and empty result_address.",
+  "exact_blobs": {
+    "wake_jobs/grkrev-0e59ce019f07a77987b59d51.json": "afc5772c5e3567c19aca6c3d011c4ebbfedf9960",
+    "wake_jobs/grkrev-0ecd3820031d55c63b9d3bb5.json": "fe543f32de9caaf88cee3e201fad5c695591455b",
+    "wake_jobs/grkrev-14a8159cd820923a38a68976.json": "8a4066f8153c579641c274fabf86876f72d9af23",
+    "wake_jobs/grkrev-2ef99560a796aabaf31f4d97.json": "aec35833af5d67f587b3cfe4974f36d84b4e07d3",
+    "wake_jobs/grkrev-e22329ee946b771a8ba277b2.json": "e58e6e850df8b4856740794876e61c677cdfef47"
+  },
+  "projection": {
+    "resources": 60,
+    "producing": 26
+  },
+  "connected_app_aggregate": {
+    "enabled_automations": 3,
+    "callable_tools": 403,
+    "codex_app_tools": 388,
+    "github": "READ_WRITE_PRODUCING",
+    "slack_commons": "READ_WRITE_PRODUCING",
+    "disabled_automations_excluded": true
+  },
+  "verification": {
+    "repair_merge": "PR #4894 merged as 19eb45ead8e89c676664b1a77a1df932ef4141a7",
+    "post_repair_current_main_commits": 3,
+    "durable_records_read_back": 5,
+    "record_invariants": "All five parse as JSON and match attempt_count 5, no_progress_count 5, OPEN, in_backoff true, lease null, tokens_used 0, result_address empty.",
+    "fresh_main_collision_audit": "No open pull requests at selection time; evidence lane limited to ledger plus one append-only record and one receipt.",
+    "automation_census": "Three enabled nonduplicate tasks; disabled records excluded.",
+    "ledger_json": "Parsed before publication."
+  },
+  "evidence": {
+    "repair_pr": "https://github.com/woahwhattheheck/commons/pull/4894",
+    "first_post_repair_tick": "https://github.com/woahwhattheheck/commons/commit/08b734f5d742e1bb801c137eade48e4edf428950",
+    "second_post_repair_tick": "https://github.com/woahwhattheheck/commons/commit/33ee7a16a6164bcf0cb6f9edc835e0b57f6291b7",
+    "latest_post_repair_tick": "https://github.com/woahwhattheheck/commons/commit/d3414c8cf82c205387b23366f17eaff60cd48822",
+    "slack_start": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1787976347829539"
+  },
+  "next_action": "Let the watchdog terminalize or release the five backoff jobs at their existing attempt boundary; do not enqueue duplicates or treat infrastructure production as Grok completion.",
+  "non_claims": [
+    "No Grok/model execution, token debit, provider result, or result address",
+    "No successful queue job; all five remain OPEN and in backoff",
+    "No deployment, device action, Cursor use, Claude verification, Titan mutation, outreach/resend, acceptance, payment, settlement, payout, revenue, or cash"
+  ],
+  "titan": "NOT_WRITTEN"
+}

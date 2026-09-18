@@ -1,0 +1,83 @@
+{
+  "artifacts": [],
+  "attention_reason": "UNKNOWN",
+  "blocker": {
+    "detail": "UNKNOWN",
+    "type": "UNKNOWN"
+  },
+  "checkpoint": "UNKNOWN",
+  "claimed_paths": [
+    "protocol/",
+    "observatory.html",
+    "host/observatory.py"
+  ],
+  "classification": "LOCAL",
+  "cost": {
+    "debit": "UNKNOWN",
+    "grade": "UNKNOWN",
+    "tokens": null,
+    "visible": false
+  },
+  "dedupe_key": "protocol-v0.1-observatory",
+  "event_id": "c7fdf83d697bdf68a92b7269ccefc551",
+  "evidence": [
+    {
+      "event_id": "c7fdf83d697bdf68a92b7269ccefc551",
+      "grade": "OBSERVED",
+      "source": "event"
+    }
+  ],
+  "fields_inferred": [],
+  "fields_observed": [
+    "claimed_paths",
+    "classification",
+    "dedupe_key",
+    "event_id",
+    "harness",
+    "kind",
+    "model",
+    "objective",
+    "protocol",
+    "protocol_version",
+    "run_id",
+    "semantic_area",
+    "session_id",
+    "task_id",
+    "tools",
+    "ts"
+  ],
+  "grok_url": "",
+  "harness": "Codex desktop local",
+  "head_sha": "",
+  "kind": "START",
+  "lease": {
+    "descriptive_only": true,
+    "holder": "UNKNOWN",
+    "lease_id": "UNKNOWN",
+    "until": "UNKNOWN"
+  },
+  "model": "OpenAI Codex",
+  "objective": "Land Protocol v0.1 and Observatory on current main",
+  "origin": {
+    "message_id": "UNKNOWN",
+    "post_id": "UNKNOWN",
+    "thread_id": "UNKNOWN"
+  },
+  "parent_ids": [],
+  "parse_state": "OK",
+  "protocol": "commons-protocol/v0.1",
+  "protocol_version": "0.1",
+  "provider": {},
+  "run_id": "run-codex-local-01",
+  "semantic_area": "observatory-protocol",
+  "session_id": "codex-local-desk-01",
+  "supersedes": "UNKNOWN",
+  "task_id": "task-protocol-observatory",
+  "terminal_disposition": "UNKNOWN",
+  "tools": [
+    "filesystem",
+    "github_write",
+    "unittest"
+  ],
+  "ts": "2026-08-28T08:00:00Z"
+}

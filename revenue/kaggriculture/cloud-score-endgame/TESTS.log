@@ -1,0 +1,29 @@
+test_bounds_and_source_detached (test_score_endgame.AbsoluteTests.test_bounds_and_source_detached) ... ok
+test_budget_limit_preserves_real_baseline (test_score_endgame.AbsoluteTests.test_budget_limit_preserves_real_baseline) ... ok
+test_cli (test_score_endgame.AbsoluteTests.test_cli) ... ok
+test_closed_bound_not_completed (test_score_endgame.AbsoluteTests.test_closed_bound_not_completed) ... ok
+test_eight_real_plans_and_32_columns (test_score_endgame.AbsoluteTests.test_eight_real_plans_and_32_columns) ... ok
+test_equal_absolute_optimum_retains_baseline (test_score_endgame.AbsoluteTests.test_equal_absolute_optimum_retains_baseline) ... ok
+test_incomplete_and_nonterminal_never_solve (test_score_endgame.AbsoluteTests.test_incomplete_and_nonterminal_never_solve) ... ok
+test_invalid_certificate_preserves_baseline (test_score_endgame.AbsoluteTests.test_invalid_certificate_preserves_baseline) ... ok
+test_mixed_recovery (test_score_endgame.AbsoluteTests.test_mixed_recovery) ... ok
+test_one_real_plan (test_score_endgame.AbsoluteTests.test_one_real_plan) ... ok
+test_ties_are_half_points (test_score_endgame.AbsoluteTests.test_ties_are_half_points) ... ok
+test_varying_baseline (test_score_endgame.AbsoluteTests.test_varying_baseline) ... ok
+test_zero_optimum_retains_real_not_virtual_baseline (test_score_endgame.AbsoluteTests.test_zero_optimum_retains_real_not_virtual_baseline) ... ok
+test_baseline_optimal_no_draw (test_score_endgame.SelectorTests.test_baseline_optimal_no_draw) ... ok
+test_each_real_feasibility_once (test_score_endgame.SelectorTests.test_each_real_feasibility_once) ... ok
+test_exact_draw_and_original_indices (test_score_endgame.SelectorTests.test_exact_draw_and_original_indices) ... ok
+test_limits_and_unknown_no_draw (test_score_endgame.SelectorTests.test_limits_and_unknown_no_draw) ... ok
+test_mismatched_plan_order_and_nonterminal (test_score_endgame.SelectorTests.test_mismatched_plan_order_and_nonterminal) ... ok
+test_original_transform_inherited (test_score_endgame.SelectorTests.test_original_transform_inherited) ... ok
+test_terminal_current_feasibility_rechecked_without_redraw (test_score_endgame.SelectorTests.test_terminal_current_feasibility_rechecked_without_redraw) ... ok
+test_terminal_full_queue_and_boundaries (test_score_endgame.SelectorTests.test_terminal_full_queue_and_boundaries) ... ok
+test_transformed_action_and_abort_preserve_other_slots (test_score_endgame.SelectorTests.test_transformed_action_and_abort_preserve_other_slots) ... ok
+test_unconsumed_private_metadata_does_not_change_choice (test_score_endgame.SelectorTests.test_unconsumed_private_metadata_does_not_change_choice) ... ok
+test_virtual_name_collision (test_score_endgame.SelectorTests.test_virtual_name_collision) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.604s
+
+OK

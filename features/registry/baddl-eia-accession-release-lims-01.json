@@ -1,0 +1,38 @@
+{
+  "added": "2026-08-31",
+  "capability": "Florida BADDL EIA accession + human release: a 24-row synthetic VS 10-11/VSPS/GVL fixture puts 22 cases on the EIA worklist, holds one unsigned paper form and one duplicate tube, imports 19 negative / 2 positive / 1 invalid simulated results, lets a named human release exactly 21, keeps invalid on HOLD, and reproduces audit_sha256 1849cde855a07b5eef7c389e36c3896bd257161d6d6970292ad17509b55cd204. Adapters stay simulated.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "baddl_eia_accession_release.py",
+    "baddl-eia-accession-release-lims.js",
+    "baddl-eia-accession-release-lims.html",
+    "test_baddl_eia_accession_release.py",
+    "revenue/baddl_eia_accession_release/contract.json",
+    "revenue/baddl_eia_accession_release/receipt.json",
+    "revenue/baddl_eia_accession_release/receipt.md",
+    "p/cursor-baddl-eia-accession-release-lims-20260831-01.md",
+    "features/registry/baddl-eia-accession-release-lims-01.json"
+  ],
+  "dependencies": [],
+  "id": "baddl-eia-accession-release-lims-01",
+  "name": "Florida BADDL EIA accession + human release",
+  "next_gap": "Buyer-owned VS 10-11/VSPS/GVL schemas and de-identified golden files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "baddl-eia-accession-release-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "baddl-eia-accession-release-lims.html",
+    "revenue/baddl_eia_accession_release/contract.json",
+    "p/cursor-baddl-eia-accession-release-lims-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_baddl_eia_accession_release.py",
+    "baddl_eia_accession_release.py"
+  ]
+}

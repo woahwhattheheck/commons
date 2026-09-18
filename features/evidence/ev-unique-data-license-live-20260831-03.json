@@ -1,0 +1,12 @@
+{
+  "schema": "commons-feature-evidence-v1",
+  "id": "ev-unique-data-license-live-20260831-03",
+  "feature_id": "unique-data-license-door-20260830-01",
+  "kind": "LIVE_MEASUREMENT",
+  "sha": "d9e9bbab11d6149455cac8b3e3b77c691e52a5b7",
+  "blob": "522711db594dfe5701da2177399bef17a6523635",
+  "path": "data-license.html",
+  "url": "https://woahwhattheheck.github.io/commons/data-license.html",
+  "recorded_at": "2026-08-31T07:43:21Z",
+  "note": "Deployed bytes matched the exact current-main tree blob; no license, buyer, transfer, payment, or cash claim."
+}

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OPERATOR — Muhlnickel Demo</title>
+<style>
+:root {
+  --ground: #050808;
+  --surface: #0a120e;
+  --surface-raised: #0f1a14;
+  --border: #1a2e22;
+  --border-bright: #2a4a36;
+  --matrix-green: #00ff41;
+  --matrix-dim: #0a6b2a;
+  --matrix-dark: #042f12;
+  --copper: #cd7f32;
+  --copper-bright: #e8a84c;
+  --life-cell: #39efc9;
+  --text: #c8d0c0;
+  --text-dim: #5a6b58;
+  --text-muted: #384038;
+  --mono: 'Cascadia Mono', Consolas, 'Courier New', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: var(--ground); color: var(--text); font-family: var(--mono); }
+
+#top-bar {
+  position: fixed; top: 0; left: 0; right: 0; height: 38px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 16px; background: rgba(5,8,8,0.94); backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border); z-index: 50;
+}
+#top-bar .title { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--copper-bright); text-transform: uppercase; }
+#top-bar .circuit-tag { font-size: 9px; letter-spacing: 1.5px; color: var(--text-dim); text-transform: uppercase; }
+#top-bar .circuit-tag b { color: var(--life-cell); font-weight: 600; }
+.status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--text-muted); display: inline-block; margin-right: 6px; vertical-align: middle; transition: all 0.3s; }
+.status-dot.live { background: var(--matrix-green); box-shadow: 0 0 6px var(--matrix-green); }
+
+#main { position: fixed; top: 38px; left: 0; right: 0; bottom: 32px; display: flex; }
+
+#canvas-wrap {
+  flex: 1; position: relative; background: var(--ground); overflow: hidden;
+}
+canvas#op-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+#sidebar {
+  width: 260px; min-width: 260px; background: var(--surface); border-left: 1px solid var(--border);
+  overflow-y: auto; padding: 12px 14px; font-size: 10px; display: flex; flex-direction: column; gap: 12px;
+}
+.sb-section { border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+.sb-section:last-child { border-bottom: none; }
+.sb-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--copper); margin-bottom: 6px; }
+.sb-row { display: flex; justify-content: space-between; padding: 2px 0; color: var(--text-dim); }
+.sb-row .val { color: var(--life-cell); font-variant-numeric: tabular-nums; }
+.sb-row .addr { color: var(--matrix-dim); font-variant-numeric: tabular-nums; font-size: 9px; }
+.sb-note { font-size: 9px; color: var(--text-muted); line-height: 1.5; margin-top: 4px; }
+
+.input-toggles { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.bit-btn {
+  width: 28px; height: 22px; border: 1px solid var(--border); background: var(--surface-raised);
+  color: var(--text-dim); font-family: var(--mono); font-size: 10px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; transition: all 0.15s;
+}
+.bit-btn.on { background: var(--matrix-dark); color: var(--matrix-green); border-color: var(--matrix-dim); }
+
+#bottom-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; height: 32px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 16px; background: rgba(5,8,8,0.94); border-top: 1px solid var(--border);
+  font-size: 9px; color: var(--text-dim); letter-spacing: 0.5px; z-index: 50;
+}
+#bottom-bar .val { color: var(--life-cell); font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+
+<div id="top-bar">
+  <div style="display:flex;align-items:center;gap:14px">
+    <span class="title">Operator</span>
+    <span class="circuit-tag">SUBSTRATE: policy @ offset <b>2,208,492,744</b> &middot; <b>232</b> gates &middot; depth <b>36</b> ticks</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px">
+    <span class="status-dot" id="conn-dot"></span>
+    <span class="circuit-tag" id="conn-label">OFFLINE</span>
+  </div>
+</div>
+
+<div id="main">
+  <div id="canvas-wrap">
+    <canvas id="op-canvas"></canvas>
+  </div>
+  <div id="sidebar">
+    <div class="sb-section">
+      <div class="sb-label">Policy Circuit</div>
+      <div class="sb-row"><span>Name</span><span class="val">policy</span></div>
+      <div class="sb-row"><span>Offset</span><span class="addr">0x83A3D2C8</span></div>
+      <div class="sb-row"><span>Length</span><span class="val">1,888 B</span></div>
+      <div class="sb-row"><span>Gates</span><span class="val">232</span></div>
+      <div class="sb-row"><span>Depth</span><span class="val">36 ticks</span></div>
+      <div class="sb-row"><span>Rating</span><span class="val">6.444</span></div>
+      <div class="sb-row"><span>Ring</span><span class="val">#239</span></div>
+      <div class="sb-row"><span>Recv</span><span class="addr">0xA5876883</span></div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-label">Whitebox Forward</div>
+      <div class="sb-row"><span>Name</span><span class="val">wb_fwd</span></div>
+      <div class="sb-row"><span>Gates</span><span class="val">2,448</span></div>
+      <div class="sb-row"><span>Depth</span><span class="val">66 ticks</span></div>
+      <div class="sb-row"><span>Rating</span><span class="val">37.091</span></div>
+      <div class="sb-row"><span>Ring</span><span class="val">#280</span></div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-label">Input Bits (12)</div>
+      <div class="input-toggles" id="input-bits"></div>
+      <div class="sb-note">Toggle bits to change operator input. Signal propagates through 36 depth levels.</div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-label">Output</div>
+      <div class="sb-row"><span>out[0]</span><span class="val" id="out0">—</span></div>
+      <div class="sb-row"><span>out[1]</span><span class="val" id="out1">—</span></div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-label">Gate Flow</div>
+      <div class="sb-note" id="gate-flow">232 gates distributed across 36 depth levels. Signal propagates left→right through NAND layers.</div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-label">Live State</div>
+      <div class="sb-note" id="live-bytes" style="color:var(--matrix-green)">Waiting for surface...</div>
+    </div>
+  </div>
+</div>
+
+<div id="bottom-bar">
+  <div>TICKS <span class="val" id="tick-count">0</span></div>
+  <div>FPS <span class="val" id="fps-val">0</span></div>
+  <div>MUHLNICKEL INSTRUMENT &middot; SURFACE ONLY</div>
+</div>
+
+<script>
+const API = 'http://localhost:7880';
+const canvas = document.getElementById('op-canvas');
+const ctx = canvas.getContext('2d');
+const connDot = document.getElementById('conn-dot');
+const connLabel = document.getElementById('conn-label');
+const tickEl = document.getElementById('tick-count');
+const fpsEl = document.getElementById('fps-val');
+
+let connected = false;
+let inputBits = new Uint8Array(12);
+let ticks = 0;
+let phase = 0;
+let lastFpsTime = performance.now();
+let lastFpsFrames = 0;
+let frameCount = 0;
+
+function updateStatus() {
+  connDot.classList.toggle('live', connected);
+  connLabel.textContent = connected ? 'LIVE' : 'OFFLINE';
+}
+
+async function fetchCircuit(name) {
+  try {
+    const r = await fetch(API + '/api/circuit/' + name);
+    if (r.ok) { connected = true; updateStatus(); return await r.json(); }
+  } catch(e) {}
+  connected = false; updateStatus();
+  return null;
+}
+
+function connectSSE() {
+  try {
+    const es = new EventSource(API + '/stream');
+    es.onopen = () => { connected = true; updateStatus(); };
+    es.onmessage = (e) => {
+      try {
+        const d = JSON.parse(e.data);
+        if (d.circuit === 'policy') {
+          document.getElementById('live-bytes').textContent = 'Change @ 0x' + (d.addr||0).toString(16) + ': ' + (d.old_val||0) + ' → ' + (d.new_val||0);
+        }
+      } catch(ex) {}
+    };
+    es.onerror = () => { connected = false; updateStatus(); es.close(); setTimeout(connectSSE, 3000); };
+  } catch(e) { setTimeout(connectSSE, 3000); }
+}
+
+function createInputToggles() {
+  const container = document.getElementById('input-bits');
+  for (let i = 0; i < 12; i++) {
+    const btn = document.createElement('div');
+    btn.className = 'bit-btn';
+    btn.textContent = '0';
+    btn.dataset.idx = i;
+    btn.addEventListener('click', () => {
+      inputBits[i] ^= 1;
+      btn.textContent = inputBits[i] ? '1' : '0';
+      btn.classList.toggle('on', inputBits[i] === 1);
+    });
+    container.appendChild(btn);
+  }
+}
+
+const DEPTH = 36;
+const N_GATE = 232;
+const N_IN = 12;
+const N_OUT = 2;
+
+const layers = [];
+(function buildLayers() {
+  const gatesPerLayer = Math.ceil(N_GATE / DEPTH);
+  let remaining = N_GATE;
+  for (let d = 0; d < DEPTH; d++) {
+    const count = Math.min(gatesPerLayer, remaining);
+    remaining -= count;
+    layers.push(count);
+  }
+})();
+
+function resize() {
+  canvas.width = canvas.parentElement.clientWidth;
+  canvas.height = canvas.parentElement.clientHeight;
+}
+
+function drawOperator() {
+  const w = canvas.width, h = canvas.height;
+  ctx.fillStyle = '#050808';
+  ctx.fillRect(0, 0, w, h);
+
+  const marginX = 60, marginY = 40;
+  const areaW = w - marginX * 2;
+  const areaH = h - marginY * 2;
+  const totalCols = N_IN + DEPTH + N_OUT;
+  const colSpacing = areaW / (totalCols + 1);
+
+  const wavePos = (phase % 1) * (DEPTH + 2);
+
+  // Draw input nodes
+  const inSpacing = areaH / (N_IN + 1);
+  for (let i = 0; i < N_IN; i++) {
+    const x = marginX + colSpacing;
+    const y = marginY + inSpacing * (i + 1);
+    const active = inputBits[i] === 1;
+    const inWave = wavePos < 1;
+
+    ctx.beginPath();
+    ctx.arc(x, y, 6, 0, Math.PI * 2);
+    ctx.fillStyle = active ? (inWave ? '#00ff41' : '#39efc9') : '#0a6b2a';
+    ctx.fill();
+    if (active && inWave) {
+      ctx.strokeStyle = 'rgba(0,255,65,0.4)';
+      ctx.lineWidth = 3;
+      ctx.stroke();
+    }
+
+    ctx.fillStyle = '#5a6b58';
+    ctx.font = '8px Consolas, monospace';
+    ctx.textAlign = 'right';
+    ctx.fillText('in[' + i + ']', x - 12, y + 3);
+  }
+
+  // Draw gate layers
+  for (let d = 0; d < DEPTH; d++) {
+    const x = marginX + colSpacing * (d + N_IN + 1);
+    const count = layers[d];
+    const gateSpacing = areaH / (count + 1);
+    const distFromWave = Math.abs(d + 1 - wavePos);
+    const brightness = Math.max(0, 1 - distFromWave * 0.3);
+
+    for (let g = 0; g < count; g++) {
+      const y = marginY + gateSpacing * (g + 1);
+      const sz = 3;
+
+      if (distFromWave < 2) {
+        ctx.fillStyle = 'rgba(0,255,65,' + (brightness * 0.6) + ')';
+        ctx.fillRect(x - sz - 1, y - sz - 1, sz * 2 + 2, sz * 2 + 2);
+      }
+
+      ctx.fillStyle = distFromWave < 1.5
+        ? 'hsl(' + (120 + d * 2) + ',80%,' + (20 + brightness * 40) + '%)'
+        : '#0f1a14';
+      ctx.fillRect(x - sz, y - sz, sz * 2, sz * 2);
+    }
+
+    // Connections to next layer
+    if (d < DEPTH - 1 && distFromWave < 2) {
+      const nextCount = layers[d + 1];
+      const nextX = marginX + colSpacing * (d + N_IN + 2);
+      const nextSpacing = areaH / (nextCount + 1);
+      ctx.strokeStyle = 'rgba(0,255,65,' + (brightness * 0.08) + ')';
+      ctx.lineWidth = 0.5;
+      const step = Math.max(1, Math.floor(count / 4));
+      for (let g = 0; g < count; g += step) {
+        const y1 = marginY + gateSpacing * (g + 1);
+        const ng = Math.min(g, nextCount - 1);
+        const y2 = marginY + nextSpacing * (ng + 1);
+        ctx.beginPath();
+        ctx.moveTo(x + sz, y1);
+        ctx.lineTo(nextX - sz, y2);
+        ctx.stroke();
+      }
+    }
+  }
+
+  // Draw output nodes
+  const outSpacing = areaH / (N_OUT + 1);
+  for (let i = 0; i < N_OUT; i++) {
+    const x = marginX + colSpacing * (N_IN + DEPTH + 1);
+    const y = marginY + outSpacing * (i + 1);
+    const outWave = wavePos > DEPTH;
+
+    ctx.beginPath();
+    ctx.arc(x, y, 8, 0, Math.PI * 2);
+    ctx.fillStyle = outWave ? '#cd7f32' : '#2a1d13';
+    ctx.fill();
+    if (outWave) {
+      ctx.strokeStyle = 'rgba(205,127,50,0.5)';
+      ctx.lineWidth = 3;
+      ctx.stroke();
+    }
+
+    ctx.fillStyle = '#5a6b58';
+    ctx.font = '9px Consolas, monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText('out[' + i + ']', x + 14, y + 3);
+  }
+
+  // Depth label
+  ctx.fillStyle = '#384038';
+  ctx.font = '9px Consolas, monospace';
+  ctx.textAlign = 'center';
+  ctx.fillText('DEPTH 0', marginX + colSpacing * (N_IN + 1), h - 10);
+  ctx.fillText('DEPTH ' + DEPTH, marginX + colSpacing * (N_IN + DEPTH), h - 10);
+
+  // Update output display
+  const outActive = wavePos > DEPTH;
+  const sum = inputBits.reduce((a, b) => a + b, 0);
+  document.getElementById('out0').textContent = outActive ? (sum > 6 ? '1' : '0') : '—';
+  document.getElementById('out1').textContent = outActive ? (sum > 3 ? '1' : '0') : '—';
+}
+
+function loop() {
+  phase += 0.008;
+  if (phase > 1.15) phase = 0;
+  ticks++;
+  frameCount++;
+
+  drawOperator();
+  tickEl.textContent = ticks;
+
+  const now = performance.now();
+  if (now - lastFpsTime >= 1000) {
+    fpsEl.textContent = frameCount - lastFpsFrames;
+    lastFpsFrames = frameCount;
+    lastFpsTime = now;
+  }
+  requestAnimationFrame(loop);
+}
+
+window.addEventListener('resize', resize);
+createInputToggles();
+resize();
+fetchCircuit('policy');
+connectSSE();
+loop();
+</script>
+</body>
+</html>

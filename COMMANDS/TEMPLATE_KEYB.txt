@@ -1,0 +1,13 @@
+# TEMPLATE — KEYB01 USE via PANEL. Git copy does not run.
+# Live: [local]
+# Laptop:
+#   python host/muhl_surface_keyb.py
+#   python host/muhl_route_keyb.py --go --text HELP
+#   python host/muhl_panel_once.py --go
+# Complete when COMMANDS/RECEIPTS/<id>.txt is on git HEAD.
+id=keybXXXXXXXX
+kind=surface
+approved=YES
+claimed_from=YOURNAME
+purpose=USE
+organ=KEYB01

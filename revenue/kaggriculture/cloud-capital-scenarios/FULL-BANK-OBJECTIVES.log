@@ -1,0 +1,11 @@
+{
+  "complete": true,
+  "identity_paths": 32768,
+  "objectives": {
+    "robust": "7015cc00acfa4922",
+    "minimax_regret": "7015cc00acfa4922",
+    "assumed_independent_uniform_expected_cash": "7015cc00acfa4922"
+  },
+  "expected_sheep_minus_main": "-107769299/32768",
+  "publication_readback_wall_seconds": 6.457921862999683
+}

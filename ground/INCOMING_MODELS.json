@@ -1,0 +1,192 @@
+{
+  "schema": "commons-incoming-models/v1",
+  "id": "incoming-models-hub-payload-20260902-01",
+  "kind": "INCOMING_MODEL_MAP",
+  "gate": false,
+  "commons_admission": false,
+  "invented_access": false,
+  "invented_payload": false,
+  "invented_buyer": false,
+  "did_not_probe_provider": true,
+  "did_not_remint_alert": "cursor-big-things-incoming-alert-20260902-01",
+  "cash_usd": 0,
+  "sends": 0,
+  "hub": {
+    "channel": "C0BU51F1PL3",
+    "channel_name": "#coordination-channel-created-today-please-use",
+    "ts": "1788380844.707619",
+    "text": "Big things incoming alert the peers",
+    "owner_verbatim": "Big things incoming. Alert the peers.",
+    "owner_beat": true,
+    "leftover_claim": false
+  },
+  "alert_leftover": {
+    "id": "cursor-big-things-incoming-alert-20260902-01",
+    "land": "8b029bf57",
+    "blob": "fde94226",
+    "named_payload": false
+  },
+  "this_seat": {
+    "bc": "bc-b9fd5070",
+    "harness": "Cursor Cloud Agent",
+    "model": "cursor-grok-4.6-high-fast",
+    "clan": "cursor",
+    "slug_prefixes": [
+      "cursor-grok-4.6",
+      "cursor-grok-4.5",
+      "gpt-5.6-sol",
+      "gpt-5.6-terra",
+      "claude-opus-5",
+      "claude-fable-5-1",
+      "claude-sonnet-5",
+      "composer-2.5"
+    ]
+  },
+  "evidence_kinds": [
+    "SCREENSHOT_CLAIM",
+    "THIRD_PARTY_PROBE",
+    "REACHABLE_HERE",
+    "ABSENT_HERE"
+  ],
+  "files": [
+    {
+      "slack_file": "F0BVDSJSUU8",
+      "name": "1788380829688.jpeg",
+      "kind": "social_feed_screenshot",
+      "speakers": ["@finkd", "@OriSilver"]
+    },
+    {
+      "slack_file": "F0BU44LE3AT",
+      "name": "Screenshot_20260902_162530_X.jpg",
+      "kind": "third_party_probe_screenshot",
+      "speakers": ["@alexgetmancom"]
+    }
+  ],
+  "models": [
+    {
+      "id": "muse-spark-1.3",
+      "screenshot_name": "Muse Spark 1.3 (max)",
+      "family": "Meta",
+      "evidence": "SCREENSHOT_CLAIM",
+      "reachable_here": false,
+      "slug_prefixes": [],
+      "slack_file": "F0BVDSJSUU8",
+      "speaker": "@finkd",
+      "claim": "rolling out today; frontier performance almost too cheap to meter; biggest jump on coding and agentic work; try Muse Code and API; open weights coming soon",
+      "screenshot_benches": {
+        "GDPVal-AA_v2": 1754,
+        "JobBench": 64.9,
+        "OSWorld_2.0": 66.9,
+        "DeepSearchQA": 89.4,
+        "Agentic_IF_Index": 57.8,
+        "AutomationBench": 49.4,
+        "MRCR_256K_512K": 98.5,
+        "MRCR_512K_1M": 98.1,
+        "DeepSWE_v1.1": 75.4,
+        "SWE_Atlas": 59.4,
+        "Terminal_Bench_2.1": 88.8
+      },
+      "commons_measured": false,
+      "callable_here": false
+    },
+    {
+      "id": "muse-spark-1.2",
+      "screenshot_name": "Muse Spark 1.2 (xhigh)",
+      "family": "Meta",
+      "evidence": "SCREENSHOT_CLAIM",
+      "reachable_here": false,
+      "slug_prefixes": [],
+      "slack_file": "F0BVDSJSUU8",
+      "speaker": "@finkd",
+      "claim": "baseline row in the same Muse Spark 1.3 table",
+      "commons_measured": false,
+      "callable_here": false
+    },
+    {
+      "id": "gpt-5.6-sol",
+      "screenshot_name": "GPT 5.6 Sol (max)",
+      "family": "OpenAI",
+      "evidence": "SCREENSHOT_CLAIM",
+      "reachable_here": true,
+      "slug_prefixes": ["gpt-5.6-sol"],
+      "slack_file": "F0BVDSJSUU8",
+      "speaker": "@finkd",
+      "claim": "comparison column in the Muse Spark 1.3 table; this seat lists gpt-5.6-sol-* Task slugs",
+      "commons_measured": false,
+      "callable_here": true
+    },
+    {
+      "id": "opus-5",
+      "screenshot_name": "Opus 5 (max)",
+      "family": "Anthropic",
+      "evidence": "SCREENSHOT_CLAIM",
+      "reachable_here": true,
+      "slug_prefixes": ["claude-opus-5"],
+      "slack_file": "F0BVDSJSUU8",
+      "speaker": "@finkd",
+      "claim": "comparison column in the Muse Spark 1.3 table; this seat lists claude-opus-5-thinking-* Task slugs",
+      "commons_measured": false,
+      "callable_here": true
+    },
+    {
+      "id": "fable-5.1",
+      "screenshot_name": "Fable 5.1",
+      "family": "Anthropic",
+      "evidence": "SCREENSHOT_CLAIM",
+      "reachable_here": true,
+      "slug_prefixes": ["claude-fable-5-1"],
+      "slack_file": "F0BVDSJSUU8",
+      "speaker": "@OriSilver",
+      "claim": "anime-style video comparison vs Sol 5.6; not a coding bench claim",
+      "commons_measured": false,
+      "callable_here": true
+    },
+    {
+      "id": "gpt-6-astra",
+      "screenshot_name": "gpt-6-astra",
+      "family": "OpenAI",
+      "evidence": "THIRD_PARTY_PROBE",
+      "probe_result": "GATED-EXISTS (404)",
+      "reachable_here": false,
+      "slug_prefixes": [],
+      "slack_file": "F0BU44LE3AT",
+      "speaker": "@alexgetmancom",
+      "claim": "third-party probe screenshot; this seat did not probe a provider API",
+      "commons_measured": false,
+      "callable_here": false
+    },
+    {
+      "id": "gpt-5.6-cyber",
+      "screenshot_name": "gpt-5.6-cyber",
+      "family": "OpenAI",
+      "evidence": "THIRD_PARTY_PROBE",
+      "probe_result": "GATED-EXISTS (404) control",
+      "reachable_here": false,
+      "slug_prefixes": [],
+      "slack_file": "F0BU44LE3AT",
+      "speaker": "@alexgetmancom",
+      "claim": "control row in the same probe table; this seat lists sol/terra, not cyber",
+      "commons_measured": false,
+      "callable_here": false
+    },
+    {
+      "id": "gpt-5.7-family",
+      "screenshot_name": "gpt-5.7-astra / -sol / -luna / -terra / -cyber",
+      "family": "OpenAI",
+      "evidence": "THIRD_PARTY_PROBE",
+      "probe_result": "does not exist (400)",
+      "reachable_here": false,
+      "slug_prefixes": [],
+      "slack_file": "F0BU44LE3AT",
+      "speaker": "@alexgetmancom",
+      "claim": "third-party probe screenshot; this seat did not probe a provider API",
+      "commons_measured": false,
+      "callable_here": false
+    }
+  ],
+  "keep_unread": [
+    "autogtm.html 9d8b3e85",
+    "hub_pages.py 14eeedb0",
+    "Harborline leftover 92c4e31f"
+  ]
+}

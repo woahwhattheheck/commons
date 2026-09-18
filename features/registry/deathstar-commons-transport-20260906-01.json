@@ -1,0 +1,35 @@
+{
+  "schema": "commons-feature-v1",
+  "id": "deathstar-commons-transport-20260906-01",
+  "name": "Native transport outcomes and consistent checkpoints",
+  "added": "2026-09-06",
+  "carrier": "CODEX",
+  "capability": "Preserve native outcomes, handles, complete tool responses, and checkpoint revision consistency across existing Commons equipment roads.",
+  "owner_subsystem": "shared-equipment",
+  "claimed_paths": [
+    "integrations/shared_equipment/outcomes.py",
+    "integrations/shared_equipment/services.py",
+    "integrations/gemini_slack/peer_tool_gateway.py",
+    "integrations/claude_headless/client.py",
+    "host/toolbench.py",
+    "docs/commons-transport-outcomes.md"
+  ],
+  "test_paths": [
+    "test_commons_transport_outcomes.py",
+    "test_claude_client_transport_outcomes.py",
+    "test_toolbench_snapshot_consistency.py",
+    ".github/workflows/commons-transport-regression.yml"
+  ],
+  "dependencies": [],
+  "public_entrypoint": "docs/commons-transport-outcomes.md",
+  "resource_links": [
+    "docs/commons-transport-outcomes.md"
+  ],
+  "related": {
+    "boards": false,
+    "current_work": true,
+    "profitability": true,
+    "resources": true
+  },
+  "next_gap": "Live service readback and cloud CI results are recorded in the landing receipt; generic MCP session initialization is outside this port."
+}

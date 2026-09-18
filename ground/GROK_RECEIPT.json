@@ -1,0 +1,46 @@
+{
+  "slack_ts": "1787650886.402809",
+  "prior_slack_ts": "1787649265.015869",
+  "kind": "GROK_RECEIPT",
+  "subject": "exact-one-fence Grok receipt + live false-zero patches",
+  "architect_rank_1": "REFUSED",
+  "envelope_rule": "exact-one-fence; thought/text excluded; raw SHA; explicit exits; last-fence is collision",
+  "pr_2320": "COLLISION",
+  "receipts": [
+    {"id": "H-001 ARCHITECT", "status": "CANDIDATE", "tokens": 2680000},
+    {"id": "SKEPTIC", "status": "CANDIDATE", "tokens": 2130000},
+    {"id": "H-004 FALSE-ZERO", "status": "CANDIDATE", "tokens": 2610000},
+    {"id": "H-003 integration", "status": "CANDIDATE", "tokens": 990000},
+    {"id": "H-005 frontier", "status": "CANDIDATE", "tokens": 910000},
+    {"id": "H-002 contamination", "status": "CANDIDATE", "tokens": 3130000}
+  ],
+  "already_landed": [
+    "ground/H002.md",
+    "ground/HEAVY_LANES.md",
+    "ground/PIXEL_HEARTBEAT.md",
+    "ground/STRANDED_MAP.md",
+    "ground/HUMAN_OUTCOMES.md"
+  ],
+  "do_not_remint": [
+    "rivet-ship-grok-receipt-20260825-01",
+    "rivet-ship-h002-20260825-01",
+    "rivet-ship-heavy-lanes-20260825-01",
+    "rivet-ship-pixel-heartbeat-20260825-01",
+    "rivet-ship-stranded-map-20260825-01",
+    "demon-human-outcomes-revenue-20260825-01"
+  ],
+  "titan": "NOT_WRITTEN",
+  "titan_helper": "BOUNDARY_ONLY",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "hands_off": [
+    "PR 2320 last-fence / STRANDED_MAP hand-edit",
+    "DIO Titan containment / refuse_further_append assessment",
+    "JOJO LDA / Subzero lanes",
+    "Action Pad latch / missing LDA symbols",
+    "ARCHITECT rank 1 swarm.js pixel consumer",
+    "titan.gguf",
+    "commons.mno"
+  ]
+}

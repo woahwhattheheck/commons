@@ -1,0 +1,12 @@
+{
+  "schema": "commons-feature-evidence-v1",
+  "id": "ev-arbitrage-opportunity-live-20260831-04",
+  "feature_id": "arbitrage-opportunity-road-20260830-01",
+  "kind": "LIVE_MEASUREMENT",
+  "sha": "d9e9bbab11d6149455cac8b3e3b77c691e52a5b7",
+  "blob": "c0aa1ad5846cbc03a1070873548275f4d4d8ce4f",
+  "path": "arbitrage.html",
+  "url": "https://woahwhattheheck.github.io/commons/arbitrage.html",
+  "recorded_at": "2026-08-31T07:43:21Z",
+  "note": "Deployed bytes matched the exact current-main tree blob; no buyer, trade, payout, or cash claim."
+}

@@ -1,0 +1,134 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-titan-v25-cloud-simulation-order-queue-activation-20260909-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "actor": "CODEX_ASTRA",
+  "selected_resource": "titan-v25-cloud-simulation-order-queue",
+  "observed_at": "2026-09-09T10:15:16Z",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "UNREGISTERED",
+    "evidence_freshness": "FRESH_EXHAUSTIVE_SLACK_INDEX_THREADS_CURRENT_MAIN_PR_AND_MANIFEST_READBACK"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "authority": "SHARED_READ_CLAIM_RESULT_AND_SOURCE_HANDOFF; OWNER_MANAGES_CLAUDE; EXACT_SOURCE_ENGINE_SEED_SEAT_AND_OPERATION_BINDING_REQUIRED; NO_CLAUDE_WAKE_TESTER_VERIFIER_OR_LANDING_AUTHORITY; NO_KAGGLE_SUBMISSION_OR_PROVIDER_WRITE",
+    "holder": "Commons / owner-managed TITAN V2.5 cloud experiment workers and canonical TITAN integration writer",
+    "activation_base_main_sha": "97b7a7a69764974191eb01368209f7a5d3e42d3e"
+  },
+  "concrete_consumer": "The already-designated owner-managed cloud experiment pool and existing canonical TITAN integration writer consuming distinct measured experiment results.",
+  "measurable_outcome": "The complete 72-order queue is now separately routable in the canonical resource graph with stable order families, claim/result semantics, exact-source boundaries and duplicate prevention. No worker was launched and no experiment was rerun.",
+  "production_truth": {
+    "channel": "C0C1DLNJG5N",
+    "index_operation_id": "titan-v25-orders-20260909-index",
+    "bootstrap_operation_id": "titan-v25-orders-20260909-bootstrap",
+    "run_operation_id": "titan-v25-orders-20260909-runs",
+    "index_slack_ts": "1788946727.112159",
+    "latest_queue_slack_ts": "1788948162.263629",
+    "pagination_pages": 2,
+    "messages_read": 136,
+    "order_roots": 72,
+    "order_families": {
+      "P01-P24": "production, spatial and capital",
+      "E01-E24": "market and GOOP",
+      "S01-S24": "search, opponents and throughput"
+    },
+    "queue_contract": "Workers claim one existing root with exact cloud session/base and bounded plan, publish actionable intermediate evidence and portable source/result artifacts, then attach DONE/result receipts. Claims coordinate but do not create access restrictions.",
+    "source_binding": {
+      "bootstrap_pr": 11017,
+      "bootstrap_merge_sha": "96782ff99d68f047f073c8ed3a2bb7236233e977",
+      "bootstrap_archive_sha256": "4ca5de6ba4b3f1d2ec63cece6abcd666a926daa4a783160736db2de5afcb5744",
+      "current_canonical_pr": 11035,
+      "current_canonical_head_sha": "4c5d876388f71f0e91fa58898515f7818e338121",
+      "current_canonical_merge_sha": "7fcf729c06d69f6e14f4d8e50fc89ecb657bdc8f",
+      "current_archive_sha256": "e363125093463d1f7a63a01aecb70646344dae5b318952e13a1b1641e2043e58",
+      "current_archive_bytes": 377624,
+      "current_archive_runtime_files": 100,
+      "current_source_manifest_sha256": "c5828d8173d1cf6bcf091d643ffcbb7aa9068c96a18d3390ff1b21119e7cdf4d",
+      "rule": "Existing frozen order pins remain unchanged. A later current canonical archive does not relabel predecessor results or silently rewrite an order's source."
+    }
+  },
+  "delta": {
+    "prior_terminal_main_sha": "7867515bfcc033f926cee9bf1c8f5269b6e52128",
+    "main_sha_at_claim": "97b7a7a69764974191eb01368209f7a5d3e42d3e",
+    "commits_in_delta": 51,
+    "merge_commits_in_delta": 14,
+    "non_merge_commits_in_delta": 37,
+    "changed_paths_in_delta": 436,
+    "remote_branches_observed": 1719,
+    "remote_branch_count_change": -3,
+    "remote_branch_set_digest_sha256": "47bea0a75ab3d27c7646a9159b0adb5616e38f4751d34d967c23136804e1ccad",
+    "open_prs_at_collision_read": [
+      {
+        "number": 10978,
+        "state": "OPEN_DRAFT_NON_MERGEABLE",
+        "ownership": "peer-owned and untouched"
+      }
+    ],
+    "recent_outcomes": "PR #11035 landed the bounded terminal-delivery correction and current archive metadata; #11036 landed test-only billing-lock decoupling; #11037 landed a receipt-rendering contract. TITAN source, Biohub, ROADEF, billing, command-center and other active lanes retain their existing owners.",
+    "prior_terminal_slack_ts": "1788939066.099539",
+    "latest_preclaim_commons_slack_ts": "1788948272.380539",
+    "commons_claim_slack_ts": "1788948890.322939",
+    "latest_titan_slack_ts": "1788948427.135269",
+    "latest_v25_queue_slack_ts": "1788948162.263629",
+    "delegations_state": "no new messages after 1788915444.173389",
+    "todo_state": "no new results after the prior terminal watermark",
+    "shipped_builds_state": "no new results after the prior terminal watermark",
+    "products_state": "no new results after the prior terminal watermark",
+    "leads_state": "no new results after the prior terminal watermark",
+    "sales_state": "no new results after the prior terminal watermark",
+    "connected_tools": "442 callable tools; 427 connected-app tools; 33 Slack tools and 89 GitHub tools; aggregate unchanged",
+    "automations": "Automation inventory was inspected once and the current Resource Master run remains enabled; no exposed automation lifecycle delta was observed.",
+    "provider_observation": "No model session, direct usage meter, credential, provider write or hosted result was probed. Queue presence is coordination capacity only."
+  },
+  "build_orders": [],
+  "build_order_decision": "No build order was posted. The 72 V2.5 capability lanes already exist as distinct owner-created roots with claim and result contracts; creating another delegation would remint the same work. Other newly changed source and CI lanes are landed or actively owned.",
+  "verification": {
+    "focused_tests": "Focused resource-ledger assertions bind the row, count, operation identities, page/message census, source-pin separation and no-session inference without importing TITAN or launching any experiment.",
+    "privacy": "No credential, private account identifier, private file name, model-session identifier, private raw result or customer data is copied into canonical metadata.",
+    "open_door": "The queue index, public order contract and source manifests are readable without authentication; private result bundles and model sessions are not required for this public coordination contract.",
+    "zero_fabrication": "Orders and claims remain distinct from started sessions, completed experiments, measured gains, source merges, provider submissions, quota resets, scores, payments, revenue and cash.",
+    "collision": "Only ledger, append-only activation record, append-only receipt and focused ledger assertions are owned. TITAN source/runtime/config/archive/current pointers, order roots, active result threads, draft #10978 and unrelated peer dirt remain off-limits."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-09T10:15:16Z",
+    "prior_terminal_main_sha": "7867515bfcc033f926cee9bf1c8f5269b6e52128",
+    "main_sha_at_claim": "97b7a7a69764974191eb01368209f7a5d3e42d3e",
+    "prior_terminal_slack_ts": "1788939066.099539",
+    "commons_latest_preclaim_slack_ts": "1788948272.380539",
+    "commons_claim_slack_ts": "1788948890.322939",
+    "titan_latest_slack_ts": "1788948427.135269",
+    "v25_queue_latest_slack_ts": "1788948162.263629",
+    "delegations_latest_slack_ts": "1788915444.173389",
+    "todo_state": "no new results after the prior terminal watermark",
+    "shipped_builds_state": "no new results after the prior terminal watermark",
+    "products_state": "no new results after the prior terminal watermark",
+    "leads_state": "no new results after the prior terminal watermark",
+    "sales_state": "no new results after the prior terminal watermark",
+    "connected_tools": "442 callable tools; 427 app tools; unchanged",
+    "automations": "Resource Master remains enabled; no lifecycle change observed",
+    "openai_reset": "No official hard/global reset and no direct meter reset observed; prior quota state retained."
+  },
+  "projection": {
+    "resources": 87,
+    "producing": 59
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788948890322939",
+    "queue_index": "https://tokenjunkielabs.slack.com/archives/C0C1DLNJG5N/p1788946727112159",
+    "canonical_readback": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788948269411169?thread_ts=1788805908.915009&cid=C0C0Z8AHGP2",
+    "canonical_source_pr": "https://github.com/woahwhattheheck/commons/pull/11035",
+    "official_release": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+    "prior_terminal_receipt": "p/codex-titan-official-engine-benchmark-evidence-activation-20260909-01.md"
+  },
+  "non_claims": [
+    "No TITAN source, runtime, configuration, archive, current pointer, queue root, claim or result thread was changed by this activation.",
+    "No Claude session was contacted, launched, assigned as tester/verifier/reviewer, or treated as landing authority.",
+    "No game, model, provider, Kaggle, credential, deployment, quota-spend, reset-purchase or owner-device operation occurred.",
+    "No experiment result, policy gain, hosted score, rank, submission, prize, payout, payment, settlement, revenue or cash was claimed."
+  ],
+  "titan": "NOT_WRITTEN"
+}

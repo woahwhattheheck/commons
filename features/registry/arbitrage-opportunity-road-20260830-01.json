@@ -1,0 +1,34 @@
+{
+  "added": "2026-08-30",
+  "capability": "Evidence-first public scout for sourced Commons-deliverable edges. Local before-tax calculator and non-confidential OFFER intake. Places no trade, purchases nothing, and does not claim cash.",
+  "carrier": "CODEX",
+  "claimed_paths": [
+    "arbitrage.html",
+    "revenue/arbitrage/opportunity.schema.json",
+    "test_arbitrage.py"
+  ],
+  "dependencies": [],
+  "id": "arbitrage-opportunity-road-20260830-01",
+  "name": "Arbitrage opportunity road",
+  "next_gap": "A QUOTABLE candidate is not a buyer or cash. Do not invent outreach, trades, or payouts. Keep automatic_purchase and automatic_trade false. Distribution remains the binding constraint.",
+  "owner_subsystem": "commerce",
+  "public_entrypoint": "arbitrage.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": true
+  },
+  "resource_links": [
+    "commerce.html",
+    "data-license.html",
+    "opportunity.html",
+    "p/codex-arbitrage-opportunity-road-20260830-01.md",
+    "agent-rescue.html"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_arbitrage.py",
+    "revenue/arbitrage/opportunity.schema.json"
+  ]
+}

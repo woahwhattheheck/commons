@@ -1,0 +1,34 @@
+{
+  "schema": "commons-feature-v1",
+  "id": "operation-command-center-20260907",
+  "name": "Operation command center",
+  "added": "2026-09-07",
+  "carrier": "CODEX",
+  "capability": "Shared operations state and a human control surface for canonical resources, connected services, observed fleet sessions, budgets, tool calls and reversible feed housekeeping. The same state is available through existing shared-equipment carriers.",
+  "claimed_paths": [
+    "integrations/command_center/",
+    "integrations/shared_equipment/services.py",
+    ".github/workflows/command-center.yml"
+  ],
+  "test_paths": [
+    "integrations/command_center/test_core.py",
+    "integrations/command_center/test_server.py"
+  ],
+  "dependencies": [
+    "shared-equipment"
+  ],
+  "owner_subsystem": "operations",
+  "public_entrypoint": "integrations/command_center/README.md",
+  "related": {
+    "resources": true,
+    "current_work": true,
+    "boards": false,
+    "profitability": false
+  },
+  "resource_links": [
+    "ground/RESOURCE_LEDGER.json",
+    "inventory/resources/connected_capabilities.json",
+    "revenue/kaggriculture/command-center-adapter/adapter.json"
+  ],
+  "next_gap": "Only schemas reported by a live registered gateway are callable there. Provider metadata, reported VM capacity and current operational outcomes remain distinct. Model drivers use the existing APIs; this interface does not create an autonomous model loop."
+}

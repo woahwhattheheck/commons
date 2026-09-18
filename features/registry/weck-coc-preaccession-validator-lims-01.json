@@ -1,0 +1,40 @@
+{
+  "added": "2026-08-31",
+  "capability": "Weck COC-to-LIMS pre-accession validator: a 400-COC synthetic fixture accessions 320 valid submissions with field parity, holds 80 truth-set exceptions with exact codes, keeps source hashes/coordinates, regenerates COA plus GeoTracker and EPA SEDD fixture digests after a named human signs, and reproduces audit_sha256 75c9c6ffa53e9c6cbaa025ad63254f6134ef9f9ba239d546e758c1c15476e5f3. Adapters stay simulated. Complement incumbent LIMS only.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "revenue/weck_coc_preaccession_validator/runner.py",
+    "revenue/weck_coc_preaccession_validator/fixture.json",
+    "revenue/weck_coc_preaccession_validator/source.json",
+    "revenue/weck_coc_preaccession_validator/README.md",
+    "revenue/weck_coc_preaccession_validator/contract.json",
+    "revenue/weck_coc_preaccession_validator/receipt.json",
+    "revenue/weck_coc_preaccession_validator/receipt.md",
+    "test_weck_coc_preaccession_validator.py",
+    "weck-coc-preaccession-validator-lims.html",
+    "p/weck-coc-preaccession-validator-lims-01.md",
+    "features/registry/weck-coc-preaccession-validator-lims-01.json"
+  ],
+  "dependencies": [],
+  "id": "weck-coc-preaccession-validator-lims-01",
+  "name": "Weck COC-to-LIMS pre-accession validator",
+  "next_gap": "Buyer-owned de-identified COC / COA / EDD golden files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "weck-coc-preaccession-validator-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "weck-coc-preaccession-validator-lims.html",
+    "revenue/weck_coc_preaccession_validator/contract.json",
+    "p/weck-coc-preaccession-validator-lims-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_weck_coc_preaccession_validator.py",
+    "revenue/weck_coc_preaccession_validator/runner.py"
+  ]
+}

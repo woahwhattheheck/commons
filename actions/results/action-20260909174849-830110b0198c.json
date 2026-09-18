@@ -1,0 +1,13 @@
+{
+  "id": "action-20260909174849-830110b0198c",
+  "verb": "GITHUB_COMMIT_AND_PR",
+  "target": "woahwhattheheck/commons",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: {repository:woahwhattheheck/commons,path:revenue/kaggriculture/cloud-execution-lab/candidates/v3-e11-rival-sell-timing/RESULTS-PLAN.md,branch:gemini/v3-e11-rival-sell-timing,base:main,title:TITAN V3 E11 rival-aware sell timing, Gemini TESSERA, 2026-09-09,body:Delivering E11 rival-aware sell timing implementation, diff, test suite, and gauntlet results plan.}: not found\n",
+  "executed_at": "2026-09-10T23:42:17.525433Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

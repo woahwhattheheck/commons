@@ -1,0 +1,3642 @@
+[
+  {
+    "dock_at": "2026-08-31T00:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-001",
+    "method_id": "ASTM_F2096_BUBBLE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-001",
+    "released": true,
+    "report_at": "2026-09-03T00:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-01T00:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-08-31T01:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-002",
+    "method_id": "ASTM_F2096_BUBBLE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-002",
+    "released": true,
+    "report_at": "2026-09-03T01:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-01T01:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-08-31T02:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-003",
+    "method_id": "ASTM_F2096_BUBBLE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-003",
+    "released": true,
+    "report_at": "2026-09-03T02:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-01T02:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-08-31T03:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-004",
+    "method_id": "ASTM_F2096_BUBBLE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-004",
+    "released": true,
+    "report_at": "2026-09-03T03:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-01T03:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-08-31T04:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-005",
+    "method_id": "ASTM_F2096_BUBBLE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-005",
+    "released": true,
+    "report_at": "2026-09-03T04:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-01T04:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-08-31T05:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-006",
+    "method_id": "ASTM_F2096_BUBBLE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-006",
+    "released": true,
+    "report_at": "2026-09-03T05:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-01T05:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-08-31T06:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-007",
+    "method_id": "ASTM_F2096_BUBBLE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-007",
+    "released": true,
+    "report_at": "2026-09-03T06:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-01T06:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-08-31T07:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-008",
+    "method_id": "ASTM_F2096_BUBBLE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-008",
+    "released": true,
+    "report_at": "2026-09-03T07:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-01T07:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-08-31T08:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-009",
+    "method_id": "ASTM_F2096_BUBBLE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-009",
+    "released": true,
+    "report_at": "2026-09-03T08:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-01T08:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-08-31T09:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-010",
+    "method_id": "ASTM_F2096_BUBBLE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-010",
+    "released": true,
+    "report_at": "2026-09-03T09:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-01T09:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-08-31T10:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-011",
+    "method_id": "ASTM_F2096_BUBBLE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-011",
+    "released": true,
+    "report_at": "2026-09-03T10:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-01T10:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-08-31T11:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-012",
+    "method_id": "ASTM_F2096_BUBBLE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-012",
+    "released": true,
+    "report_at": "2026-09-03T11:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-01T11:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-08-31T12:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-013",
+    "method_id": "ASTM_F2096_BUBBLE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-013",
+    "released": true,
+    "report_at": "2026-09-03T12:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-01T12:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-08-31T13:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-014",
+    "method_id": "ASTM_F2096_BUBBLE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-014",
+    "released": true,
+    "report_at": "2026-09-03T13:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "BUBBLE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-01T13:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-08-31T14:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-015",
+    "method_id": "ASTM_F1929_DYE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-015",
+    "released": true,
+    "report_at": "2026-09-03T14:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "DYE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "DYE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-01T14:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-08-31T15:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-016",
+    "method_id": "ASTM_F1929_DYE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-016",
+    "released": true,
+    "report_at": "2026-09-03T15:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "DYE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "DYE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-01T15:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-08-31T16:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-017",
+    "method_id": "ASTM_F1929_DYE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-017",
+    "released": true,
+    "report_at": "2026-09-03T16:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "DYE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "DYE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-01T16:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-08-31T17:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-018",
+    "method_id": "ASTM_F1929_DYE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-018",
+    "released": true,
+    "report_at": "2026-09-03T17:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "DYE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "DYE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-01T17:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-08-31T18:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-019",
+    "method_id": "ASTM_F1929_DYE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-019",
+    "released": true,
+    "report_at": "2026-09-03T18:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "DYE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "DYE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-01T18:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-08-31T19:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-020",
+    "method_id": "ASTM_F1929_DYE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-020",
+    "released": true,
+    "report_at": "2026-09-03T19:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "DYE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "DYE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-01T19:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-08-31T20:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-021",
+    "method_id": "ASTM_F1929_DYE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-021",
+    "released": true,
+    "report_at": "2026-09-03T20:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "DYE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "DYE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-01T20:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-08-31T21:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-022",
+    "method_id": "ASTM_F1929_DYE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-022",
+    "released": true,
+    "report_at": "2026-09-03T21:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "DYE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "DYE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-01T21:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-08-31T22:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-023",
+    "method_id": "ASTM_F1929_DYE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-023",
+    "released": true,
+    "report_at": "2026-09-03T22:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "DYE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "DYE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-01T22:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-08-31T23:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-024",
+    "method_id": "ASTM_F1929_DYE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-024",
+    "released": true,
+    "report_at": "2026-09-03T23:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "DYE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "DYE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-01T23:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-01T00:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-025",
+    "method_id": "ASTM_F1929_DYE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-025",
+    "released": true,
+    "report_at": "2026-09-04T00:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "DYE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "DYE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-02T00:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-01T01:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-026",
+    "method_id": "ASTM_F1929_DYE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-026",
+    "released": true,
+    "report_at": "2026-09-04T01:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "DYE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "DYE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-02T01:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-01T02:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-027",
+    "method_id": "ASTM_F1929_DYE",
+    "method_revision": "REV-MI-2024-03",
+    "order_id": "SYN-PCL-ORD-027",
+    "released": true,
+    "report_at": "2026-09-04T02:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "DYE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "DYE_LEAK",
+      "SEAL_REVIEW"
+    ],
+    "start_at": "2026-09-02T02:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-01T03:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-028",
+    "method_id": "ASTM_F88_SEAL",
+    "method_revision": "REV-BOTH-2025-06",
+    "order_id": "SYN-PCL-ORD-028",
+    "released": true,
+    "report_at": "2026-09-04T03:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "SEAL_STRENGTH",
+      "REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "SEAL_STRENGTH",
+      "REVIEW"
+    ],
+    "start_at": "2026-09-02T03:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-01T04:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-029",
+    "method_id": "ASTM_F88_SEAL",
+    "method_revision": "REV-BOTH-2025-06",
+    "order_id": "SYN-PCL-ORD-029",
+    "released": true,
+    "report_at": "2026-09-04T04:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "SEAL_STRENGTH",
+      "REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "SEAL_STRENGTH",
+      "REVIEW"
+    ],
+    "start_at": "2026-09-02T04:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-01T05:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-030",
+    "method_id": "ASTM_F88_SEAL",
+    "method_revision": "REV-BOTH-2025-06",
+    "order_id": "SYN-PCL-ORD-030",
+    "released": true,
+    "report_at": "2026-09-04T05:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "SEAL_STRENGTH",
+      "REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "SEAL_STRENGTH",
+      "REVIEW"
+    ],
+    "start_at": "2026-09-02T05:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-01T06:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-031",
+    "method_id": "ASTM_F88_SEAL",
+    "method_revision": "REV-BOTH-2025-06",
+    "order_id": "SYN-PCL-ORD-031",
+    "released": true,
+    "report_at": "2026-09-04T06:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "SEAL_STRENGTH",
+      "REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "SEAL_STRENGTH",
+      "REVIEW"
+    ],
+    "start_at": "2026-09-02T06:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-01T07:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-032",
+    "method_id": "ASTM_F88_SEAL",
+    "method_revision": "REV-BOTH-2025-06",
+    "order_id": "SYN-PCL-ORD-032",
+    "released": true,
+    "report_at": "2026-09-04T07:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "SEAL_STRENGTH",
+      "REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "SEAL_STRENGTH",
+      "REVIEW"
+    ],
+    "start_at": "2026-09-02T07:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-01T08:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-033",
+    "method_id": "ASTM_F88_SEAL",
+    "method_revision": "REV-BOTH-2025-06",
+    "order_id": "SYN-PCL-ORD-033",
+    "released": true,
+    "report_at": "2026-09-04T08:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "SEAL_STRENGTH",
+      "REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "SEAL_STRENGTH",
+      "REVIEW"
+    ],
+    "start_at": "2026-09-02T08:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-01T09:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-034",
+    "method_id": "ASTM_F88_SEAL",
+    "method_revision": "REV-BOTH-2025-06",
+    "order_id": "SYN-PCL-ORD-034",
+    "released": true,
+    "report_at": "2026-09-04T09:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "SEAL_STRENGTH",
+      "REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "SEAL_STRENGTH",
+      "REVIEW"
+    ],
+    "start_at": "2026-09-02T09:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-01T10:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-035",
+    "method_id": "ASTM_F88_SEAL",
+    "method_revision": "REV-BOTH-2025-06",
+    "order_id": "SYN-PCL-ORD-035",
+    "released": true,
+    "report_at": "2026-09-04T10:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "SEAL_STRENGTH",
+      "REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "SEAL_STRENGTH",
+      "REVIEW"
+    ],
+    "start_at": "2026-09-02T10:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-01T11:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-036",
+    "method_id": "ASTM_F88_SEAL",
+    "method_revision": "REV-BOTH-2025-06",
+    "order_id": "SYN-PCL-ORD-036",
+    "released": true,
+    "report_at": "2026-09-04T11:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "SEAL_STRENGTH",
+      "REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "SEAL_STRENGTH",
+      "REVIEW"
+    ],
+    "start_at": "2026-09-02T11:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-01T12:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-037",
+    "method_id": "ASTM_F88_SEAL",
+    "method_revision": "REV-BOTH-2025-06",
+    "order_id": "SYN-PCL-ORD-037",
+    "released": true,
+    "report_at": "2026-09-04T12:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "SEAL_STRENGTH",
+      "REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "SEAL_STRENGTH",
+      "REVIEW"
+    ],
+    "start_at": "2026-09-02T12:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-01T13:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-038",
+    "method_id": "ASTM_F88_SEAL",
+    "method_revision": "REV-BOTH-2025-06",
+    "order_id": "SYN-PCL-ORD-038",
+    "released": true,
+    "report_at": "2026-09-04T13:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "SEAL_STRENGTH",
+      "REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "SEAL_STRENGTH",
+      "REVIEW"
+    ],
+    "start_at": "2026-09-02T13:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-01T14:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-039",
+    "method_id": "ASTM_F88_SEAL",
+    "method_revision": "REV-BOTH-2025-06",
+    "order_id": "SYN-PCL-ORD-039",
+    "released": true,
+    "report_at": "2026-09-04T14:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "SEAL_STRENGTH",
+      "REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "SEAL_STRENGTH",
+      "REVIEW"
+    ],
+    "start_at": "2026-09-02T14:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-01T15:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-040",
+    "method_id": "ASTM_F88_SEAL",
+    "method_revision": "REV-BOTH-2025-06",
+    "order_id": "SYN-PCL-ORD-040",
+    "released": true,
+    "report_at": "2026-09-04T15:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CONDITION",
+      "SEAL_STRENGTH",
+      "REVIEW"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CONDITION",
+      "SEAL_STRENGTH",
+      "REVIEW"
+    ],
+    "start_at": "2026-09-02T15:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-01T16:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-041",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-041",
+    "released": true,
+    "report_at": "2026-09-04T16:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-02T16:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-01T17:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-042",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-042",
+    "released": true,
+    "report_at": "2026-09-04T17:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-02T17:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-01T18:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-043",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-043",
+    "released": true,
+    "report_at": "2026-09-04T18:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-02T18:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-01T19:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-044",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-044",
+    "released": true,
+    "report_at": "2026-09-04T19:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-02T19:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-01T20:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-045",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-045",
+    "released": true,
+    "report_at": "2026-09-04T20:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-02T20:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-01T21:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-046",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-046",
+    "released": true,
+    "report_at": "2026-09-04T21:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-02T21:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-01T22:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-047",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-047",
+    "released": true,
+    "report_at": "2026-09-04T22:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-02T22:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-01T23:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-048",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-048",
+    "released": true,
+    "report_at": "2026-09-04T23:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-02T23:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-02T00:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-049",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-049",
+    "released": true,
+    "report_at": "2026-09-05T00:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-03T00:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-02T01:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-050",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-050",
+    "released": true,
+    "report_at": "2026-09-05T01:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-03T01:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-02T02:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-051",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-051",
+    "released": true,
+    "report_at": "2026-09-05T02:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-03T02:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-02T03:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-052",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-052",
+    "released": true,
+    "report_at": "2026-09-05T03:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-03T03:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-02T04:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-053",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-053",
+    "released": true,
+    "report_at": "2026-09-05T04:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-03T04:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-02T05:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-054",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-054",
+    "released": true,
+    "report_at": "2026-09-05T05:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-03T05:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-02T06:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-055",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-055",
+    "released": true,
+    "report_at": "2026-09-05T06:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-03T06:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-02T07:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-056",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-056",
+    "released": true,
+    "report_at": "2026-09-05T07:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-03T07:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-02T08:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-057",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-057",
+    "released": true,
+    "report_at": "2026-09-05T08:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-03T08:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-02T09:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-058",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-058",
+    "released": true,
+    "report_at": "2026-09-05T09:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-03T09:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-02T10:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-059",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-059",
+    "released": true,
+    "report_at": "2026-09-05T10:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-03T10:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-02T11:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-060",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-060",
+    "released": true,
+    "report_at": "2026-09-05T11:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-03T11:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-02T12:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-061",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-061",
+    "released": true,
+    "report_at": "2026-09-05T12:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-03T12:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-02T13:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-062",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-062",
+    "released": true,
+    "report_at": "2026-09-05T13:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-03T13:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-02T14:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-063",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-063",
+    "released": true,
+    "report_at": "2026-09-05T14:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-03T14:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-02T15:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-064",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-064",
+    "released": true,
+    "report_at": "2026-09-05T15:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-03T15:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-02T16:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-065",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-065",
+    "released": true,
+    "report_at": "2026-09-05T16:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-03T16:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-02T17:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-066",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-066",
+    "released": true,
+    "report_at": "2026-09-05T17:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-03T17:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-02T18:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-067",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-067",
+    "released": true,
+    "report_at": "2026-09-05T18:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-03T18:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-02T19:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-068",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-068",
+    "released": true,
+    "report_at": "2026-09-05T19:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-03T19:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-02T20:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-069",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-069",
+    "released": true,
+    "report_at": "2026-09-05T20:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-03T20:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-02T21:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-070",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-070",
+    "released": true,
+    "report_at": "2026-09-05T21:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-03T21:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-02T22:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-071",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-071",
+    "released": true,
+    "report_at": "2026-09-05T22:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-03T22:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-02T23:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-072",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-072",
+    "released": true,
+    "report_at": "2026-09-05T23:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-03T23:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-03T00:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-073",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-073",
+    "released": true,
+    "report_at": "2026-09-06T00:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-04T00:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-03T01:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-074",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-074",
+    "released": true,
+    "report_at": "2026-09-06T01:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-04T01:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-03T02:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-075",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-075",
+    "released": true,
+    "report_at": "2026-09-06T02:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-04T02:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-03T03:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-076",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-076",
+    "released": true,
+    "report_at": "2026-09-06T03:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-04T03:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-03T04:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-077",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-077",
+    "released": true,
+    "report_at": "2026-09-06T04:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-04T04:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-03T05:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-078",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-078",
+    "released": true,
+    "report_at": "2026-09-06T05:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-04T05:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-03T06:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-079",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-079",
+    "released": true,
+    "report_at": "2026-09-06T06:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-04T06:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-03T07:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-080",
+    "method_id": "ASTM_F1980_AGING",
+    "method_revision": "REV-MI-2023-11",
+    "order_id": "SYN-PCL-ORD-080",
+    "released": true,
+    "report_at": "2026-09-06T07:00:00Z",
+    "sequence": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "CHAMBER_LOAD",
+      "AGED_PULL",
+      "INTEGRITY_RECHECK"
+    ],
+    "start_at": "2026-09-04T07:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-03T08:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-081",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-081",
+    "released": true,
+    "report_at": "2026-09-06T08:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-04T08:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-03T09:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-082",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-082",
+    "released": true,
+    "report_at": "2026-09-06T09:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-04T09:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-03T10:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-083",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-083",
+    "released": true,
+    "report_at": "2026-09-06T10:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-04T10:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-03T11:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-084",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-084",
+    "released": true,
+    "report_at": "2026-09-06T11:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-04T11:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-03T12:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-085",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-085",
+    "released": true,
+    "report_at": "2026-09-06T12:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-04T12:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-03T13:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-086",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-086",
+    "released": true,
+    "report_at": "2026-09-06T13:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-04T13:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-03T14:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-087",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-087",
+    "released": true,
+    "report_at": "2026-09-06T14:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-04T14:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-03T15:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-088",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-088",
+    "released": true,
+    "report_at": "2026-09-06T15:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-04T15:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-03T16:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-089",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-089",
+    "released": true,
+    "report_at": "2026-09-06T16:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-04T16:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-03T17:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-090",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-090",
+    "released": true,
+    "report_at": "2026-09-06T17:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-04T17:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-03T18:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-091",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-091",
+    "released": true,
+    "report_at": "2026-09-06T18:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-04T18:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-03T19:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-092",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-092",
+    "released": true,
+    "report_at": "2026-09-06T19:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-04T19:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-03T20:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-093",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-093",
+    "released": true,
+    "report_at": "2026-09-06T20:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-04T20:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-03T21:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-094",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-094",
+    "released": true,
+    "report_at": "2026-09-06T21:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-04T21:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-03T22:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-095",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-095",
+    "released": true,
+    "report_at": "2026-09-06T22:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-04T22:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-03T23:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-096",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-096",
+    "released": true,
+    "report_at": "2026-09-06T23:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-04T23:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-04T00:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-097",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-097",
+    "released": true,
+    "report_at": "2026-09-07T00:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-05T00:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-04T01:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-098",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-098",
+    "released": true,
+    "report_at": "2026-09-07T01:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-05T01:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-04T02:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-099",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-099",
+    "released": true,
+    "report_at": "2026-09-07T02:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-05T02:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-04T03:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-100",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-100",
+    "released": true,
+    "report_at": "2026-09-07T03:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-05T03:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-04T04:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-101",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-101",
+    "released": true,
+    "report_at": "2026-09-07T04:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-05T04:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-04T05:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-102",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-102",
+    "released": true,
+    "report_at": "2026-09-07T05:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-05T05:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-04T06:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-103",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-103",
+    "released": true,
+    "report_at": "2026-09-07T06:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-05T06:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-04T07:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-104",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-104",
+    "released": true,
+    "report_at": "2026-09-07T07:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-05T07:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-04T08:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-105",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-105",
+    "released": true,
+    "report_at": "2026-09-07T08:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-05T08:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-04T09:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-106",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-106",
+    "released": true,
+    "report_at": "2026-09-07T09:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-05T09:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-04T10:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-107",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-107",
+    "released": true,
+    "report_at": "2026-09-07T10:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-05T10:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-04T11:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-108",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-108",
+    "released": true,
+    "report_at": "2026-09-07T11:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-05T11:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-04T12:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-109",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-109",
+    "released": true,
+    "report_at": "2026-09-07T12:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-05T12:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-04T13:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-110",
+    "method_id": "ASTM_D4169_DISTRIBUTION",
+    "method_revision": "REV-BOTH-2025-01",
+    "order_id": "SYN-PCL-ORD-110",
+    "released": true,
+    "report_at": "2026-09-07T13:00:00Z",
+    "sequence": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "DROP",
+      "VIBRATION",
+      "COMPRESSION",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-05T13:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-04T14:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-111",
+    "method_id": "ISTA_3A",
+    "method_revision": "REV-MI-2024-08",
+    "order_id": "SYN-PCL-ORD-111",
+    "released": true,
+    "report_at": "2026-09-07T14:00:00Z",
+    "sequence": [
+      "DOCK",
+      "ISTA_SEQUENCE",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "ISTA_SEQUENCE",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-05T14:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-04T15:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-112",
+    "method_id": "ISTA_3A",
+    "method_revision": "REV-MI-2024-08",
+    "order_id": "SYN-PCL-ORD-112",
+    "released": true,
+    "report_at": "2026-09-07T15:00:00Z",
+    "sequence": [
+      "DOCK",
+      "ISTA_SEQUENCE",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "ISTA_SEQUENCE",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-05T15:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-04T16:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-113",
+    "method_id": "ISTA_3A",
+    "method_revision": "REV-MI-2024-08",
+    "order_id": "SYN-PCL-ORD-113",
+    "released": true,
+    "report_at": "2026-09-07T16:00:00Z",
+    "sequence": [
+      "DOCK",
+      "ISTA_SEQUENCE",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "ISTA_SEQUENCE",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-05T16:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-04T17:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-114",
+    "method_id": "ISTA_3A",
+    "method_revision": "REV-MI-2024-08",
+    "order_id": "SYN-PCL-ORD-114",
+    "released": true,
+    "report_at": "2026-09-07T17:00:00Z",
+    "sequence": [
+      "DOCK",
+      "ISTA_SEQUENCE",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "ISTA_SEQUENCE",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-05T17:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-04T18:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-115",
+    "method_id": "ISTA_3A",
+    "method_revision": "REV-MI-2024-08",
+    "order_id": "SYN-PCL-ORD-115",
+    "released": true,
+    "report_at": "2026-09-07T18:00:00Z",
+    "sequence": [
+      "DOCK",
+      "ISTA_SEQUENCE",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "ISTA_SEQUENCE",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-05T18:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-04T19:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-116",
+    "method_id": "ISTA_3A",
+    "method_revision": "REV-MI-2024-08",
+    "order_id": "SYN-PCL-ORD-116",
+    "released": true,
+    "report_at": "2026-09-07T19:00:00Z",
+    "sequence": [
+      "DOCK",
+      "ISTA_SEQUENCE",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "ISTA_SEQUENCE",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-05T19:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-04T20:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-117",
+    "method_id": "ISTA_3A",
+    "method_revision": "REV-MI-2024-08",
+    "order_id": "SYN-PCL-ORD-117",
+    "released": true,
+    "report_at": "2026-09-07T20:00:00Z",
+    "sequence": [
+      "DOCK",
+      "ISTA_SEQUENCE",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "ISTA_SEQUENCE",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-05T20:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-04T21:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-118",
+    "method_id": "ISTA_3A",
+    "method_revision": "REV-MI-2024-08",
+    "order_id": "SYN-PCL-ORD-118",
+    "released": true,
+    "report_at": "2026-09-07T21:00:00Z",
+    "sequence": [
+      "DOCK",
+      "ISTA_SEQUENCE",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "ISTA_SEQUENCE",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-05T21:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-04T22:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-119",
+    "method_id": "ISTA_3A",
+    "method_revision": "REV-MI-2024-08",
+    "order_id": "SYN-PCL-ORD-119",
+    "released": true,
+    "report_at": "2026-09-07T22:00:00Z",
+    "sequence": [
+      "DOCK",
+      "ISTA_SEQUENCE",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "ISTA_SEQUENCE",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-05T22:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-04T23:00:00Z",
+    "facility": "PCL_MICHIGAN",
+    "intake_id": "SYN-PCL-INTAKE-120",
+    "method_id": "ISTA_3A",
+    "method_revision": "REV-MI-2024-08",
+    "order_id": "SYN-PCL-ORD-120",
+    "released": true,
+    "report_at": "2026-09-07T23:00:00Z",
+    "sequence": [
+      "DOCK",
+      "ISTA_SEQUENCE",
+      "INSPECTION"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "ISTA_SEQUENCE",
+      "INSPECTION"
+    ],
+    "start_at": "2026-09-05T23:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-05T00:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-121",
+    "method_id": "PRODUCT_MECH_SHOCK",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-121",
+    "released": true,
+    "report_at": "2026-09-08T00:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "MECHANICAL_SHOCK",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "MECHANICAL_SHOCK",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-06T00:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-05T01:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-122",
+    "method_id": "PRODUCT_MECH_SHOCK",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-122",
+    "released": true,
+    "report_at": "2026-09-08T01:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "MECHANICAL_SHOCK",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "MECHANICAL_SHOCK",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-06T01:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-05T02:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-123",
+    "method_id": "PRODUCT_MECH_SHOCK",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-123",
+    "released": true,
+    "report_at": "2026-09-08T02:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "MECHANICAL_SHOCK",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "MECHANICAL_SHOCK",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-06T02:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-05T03:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-124",
+    "method_id": "PRODUCT_MECH_SHOCK",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-124",
+    "released": true,
+    "report_at": "2026-09-08T03:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "MECHANICAL_SHOCK",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "MECHANICAL_SHOCK",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-06T03:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-05T04:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-125",
+    "method_id": "PRODUCT_MECH_SHOCK",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-125",
+    "released": true,
+    "report_at": "2026-09-08T04:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "MECHANICAL_SHOCK",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "MECHANICAL_SHOCK",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-06T04:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-05T05:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-126",
+    "method_id": "PRODUCT_MECH_SHOCK",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-126",
+    "released": true,
+    "report_at": "2026-09-08T05:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "MECHANICAL_SHOCK",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "MECHANICAL_SHOCK",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-06T05:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-05T06:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-127",
+    "method_id": "PRODUCT_MECH_SHOCK",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-127",
+    "released": true,
+    "report_at": "2026-09-08T06:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "MECHANICAL_SHOCK",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "MECHANICAL_SHOCK",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-06T06:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-05T07:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-128",
+    "method_id": "PRODUCT_MECH_SHOCK",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-128",
+    "released": true,
+    "report_at": "2026-09-08T07:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "MECHANICAL_SHOCK",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "MECHANICAL_SHOCK",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-06T07:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-05T08:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-129",
+    "method_id": "PRODUCT_MECH_SHOCK",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-129",
+    "released": true,
+    "report_at": "2026-09-08T08:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "MECHANICAL_SHOCK",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "MECHANICAL_SHOCK",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-06T08:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-05T09:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-130",
+    "method_id": "PRODUCT_MECH_SHOCK",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-130",
+    "released": true,
+    "report_at": "2026-09-08T09:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "MECHANICAL_SHOCK",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "MECHANICAL_SHOCK",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-06T09:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-05T10:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-131",
+    "method_id": "PRODUCT_VIBRATION",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-131",
+    "released": true,
+    "report_at": "2026-09-08T10:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "VIBRATION",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "VIBRATION",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-06T10:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-05T11:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-132",
+    "method_id": "PRODUCT_VIBRATION",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-132",
+    "released": true,
+    "report_at": "2026-09-08T11:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "VIBRATION",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "VIBRATION",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-06T11:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-05T12:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-133",
+    "method_id": "PRODUCT_VIBRATION",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-133",
+    "released": true,
+    "report_at": "2026-09-08T12:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "VIBRATION",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "VIBRATION",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-06T12:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-05T13:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-134",
+    "method_id": "PRODUCT_VIBRATION",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-134",
+    "released": true,
+    "report_at": "2026-09-08T13:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "VIBRATION",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "VIBRATION",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-06T13:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-05T14:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-135",
+    "method_id": "PRODUCT_VIBRATION",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-135",
+    "released": true,
+    "report_at": "2026-09-08T14:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "VIBRATION",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "VIBRATION",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-06T14:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-05T15:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-136",
+    "method_id": "PRODUCT_VIBRATION",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-136",
+    "released": true,
+    "report_at": "2026-09-08T15:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "VIBRATION",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "VIBRATION",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-06T15:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-05T16:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-137",
+    "method_id": "PRODUCT_VIBRATION",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-137",
+    "released": true,
+    "report_at": "2026-09-08T16:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "VIBRATION",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "VIBRATION",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-06T16:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-05T17:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-138",
+    "method_id": "PRODUCT_VIBRATION",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-138",
+    "released": true,
+    "report_at": "2026-09-08T17:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "VIBRATION",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "VIBRATION",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-06T17:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-05T18:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-139",
+    "method_id": "PRODUCT_VIBRATION",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-139",
+    "released": true,
+    "report_at": "2026-09-08T18:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "VIBRATION",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "VIBRATION",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-06T18:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-05T19:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-140",
+    "method_id": "PRODUCT_VIBRATION",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-140",
+    "released": true,
+    "report_at": "2026-09-08T19:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "VIBRATION",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "VIBRATION",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-06T19:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-05T20:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-141",
+    "method_id": "PRODUCT_IPX",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-141",
+    "released": true,
+    "report_at": "2026-09-08T20:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "IPX_WATER",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "IPX_WATER",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-06T20:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-05T21:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-142",
+    "method_id": "PRODUCT_IPX",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-142",
+    "released": true,
+    "report_at": "2026-09-08T21:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "IPX_WATER",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "IPX_WATER",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-06T21:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-05T22:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-143",
+    "method_id": "PRODUCT_IPX",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-143",
+    "released": true,
+    "report_at": "2026-09-08T22:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "IPX_WATER",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "IPX_WATER",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-06T22:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-05T23:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-144",
+    "method_id": "PRODUCT_IPX",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-144",
+    "released": true,
+    "report_at": "2026-09-08T23:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "IPX_WATER",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "IPX_WATER",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-06T23:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-06T00:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-145",
+    "method_id": "PRODUCT_IPX",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-145",
+    "released": true,
+    "report_at": "2026-09-09T00:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "IPX_WATER",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "IPX_WATER",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-07T00:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-06T01:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-146",
+    "method_id": "PRODUCT_IPX",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-146",
+    "released": true,
+    "report_at": "2026-09-09T01:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "IPX_WATER",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "IPX_WATER",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-07T01:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-06T02:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-147",
+    "method_id": "PRODUCT_IPX",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-147",
+    "released": true,
+    "report_at": "2026-09-09T02:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "IPX_WATER",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "IPX_WATER",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-07T02:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-06T03:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-148",
+    "method_id": "PRODUCT_IPX",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-148",
+    "released": true,
+    "report_at": "2026-09-09T03:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "IPX_WATER",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "IPX_WATER",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-07T03:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-06T04:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-149",
+    "method_id": "PRODUCT_IPX",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-149",
+    "released": true,
+    "report_at": "2026-09-09T04:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "IPX_WATER",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "IPX_WATER",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-07T04:00:00Z",
+    "state": "RELEASED"
+  },
+  {
+    "dock_at": "2026-09-06T05:00:00Z",
+    "facility": "PCL_EAST",
+    "intake_id": "SYN-PCL-INTAKE-150",
+    "method_id": "PRODUCT_IPX",
+    "method_revision": "REV-EAST-2025-05",
+    "order_id": "SYN-PCL-ORD-150",
+    "released": true,
+    "report_at": "2026-09-09T05:00:00Z",
+    "sequence": [
+      "DOCK",
+      "FIXTURE",
+      "IPX_WATER",
+      "FUNCTIONAL"
+    ],
+    "sequence_log": [
+      "DOCK",
+      "FIXTURE",
+      "IPX_WATER",
+      "FUNCTIONAL"
+    ],
+    "start_at": "2026-09-07T05:00:00Z",
+    "state": "RELEASED"
+  }
+]

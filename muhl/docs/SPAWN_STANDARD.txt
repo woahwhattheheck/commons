@@ -1,0 +1,11 @@
+SPAWN STANDARD — 2026-08-15 ~2:00 AM launch style.
+
+THIS IS THE STANDARD. Topics good + launch wrong = still wrong.
+
+1. Launch agents in BACKGROUND immediately.
+2. Parent ENDS the turn. Do not sit in "waiting for agents."
+   That wait is why Bryce interrupts and kills them.
+3. Revive on interrupt. Don't wait on dozens.
+4. Grok = main builder.
+   GPT = cool-dude / extra brain only, with Grok nearby if it builds.
+   Praise-and-react is allowed.

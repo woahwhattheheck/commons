@@ -1,0 +1,69 @@
+{
+  "bid_intent": {
+    "categories": [
+      "CATEGORY_1_CONSULTING",
+      "CATEGORY_2_SERVICES"
+    ],
+    "teaming_subcontract": true
+  },
+  "claims": [],
+  "mandatory_requirement_evidence": [],
+  "organization": {
+    "legal_entity_evidence_ref": "",
+    "legal_entity_evidence_sha256": "",
+    "public_name": "TokenJunkieLabs candidate (legal-entity status not asserted by this artifact)",
+    "website": "https://github.com/woahwhattheheck/commons"
+  },
+  "personnel_evidence": [],
+  "pricing": {
+    "currency": "USD",
+    "evidence_ref": "",
+    "evidence_sha256": "",
+    "status": "NOT_COMMITTED",
+    "unit_model": "Role/rate and SOW-unit worksheet deferred until the controlling pricing attachment and prime commercial model are captured."
+  },
+  "prime_partner": {
+    "commitment_evidence_ref": "",
+    "commitment_evidence_sha256": "",
+    "cooperative_contract_admin_evidence_ref": "",
+    "cooperative_contract_admin_evidence_sha256": "",
+    "organization_ref": "",
+    "public_sector_prime_track_record": [],
+    "status": "NONE"
+  },
+  "public_sector_references": [],
+  "schema": "naspo.sw1045.owner_inputs/v1",
+  "teaming_scope": {
+    "acceptance_evidence": "Reuse the exact SW1045 agent-workflow acceptance core for deterministic approval, idempotency, reconciliation, and tamper-evident evidence; add buyer/SOW-specific tests only after official requirements are captured.",
+    "data_boundary": "No offshore or data-residency commitment is made from mirror text. The subcontract design can support a contiguous-U.S.-only boundary if the controlling packet confirms it and the prime/customer environment supplies compliant infrastructure.",
+    "deliverables": [
+      "AI/agent solution architecture and bounded workflow design",
+      "responsible-AI governance controls and human-approval boundaries",
+      "implementation, integration, test, and evaluation artifacts",
+      "MLOps/model-version telemetry, provenance, replay, and reconciliation evidence",
+      "acceptance test pack with deterministic receipts and hostile failure cases"
+    ],
+    "responsible_ai": "Keep consequential authority with humans; bind policy/model/configuration identity; preserve provenance; minimize data; surface uncertainty and failure; separate technical capability from buyer compliance.",
+    "staffing_roles": [
+      "AI workflow engineer",
+      "evaluation and reliability engineer"
+    ],
+    "summary": "Specialist AI/ML and agent-engineering subcontract seam under an established public-sector prime; buyer qualification remains prime-owned until the controlling packet is captured and mapped."
+  },
+  "technical_evidence": [
+    {
+      "blob_sha": "66deb64378a06e3261f54d357c30b6a895ca7e38",
+      "capability": "Buyer-neutral offline acceptance core for deterministic approvals, idempotency, reconciliation, tamper-evident receipts, and hostile workflow testing.",
+      "evidence_id": "SW1045-AGENT-WORKFLOW-ACCEPTANCE",
+      "path": "revenue/naspo_sw1045_agent_workflow_acceptance/README.md",
+      "public_sector_past_performance": false
+    },
+    {
+      "blob_sha": "2cafa67c2ce8d6c393ba1fb459b882f2afe80e51",
+      "capability": "Package manifest explicitly disclaims prime qualification, external action, procurement certification, payment, and recognized revenue.",
+      "evidence_id": "SW1045-PACKAGE-MANIFEST",
+      "path": "revenue/naspo_sw1045_agent_workflow_acceptance/PACKAGE_MANIFEST.json",
+      "public_sector_past_performance": false
+    }
+  ]
+}

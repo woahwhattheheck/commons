@@ -1,0 +1,13 @@
+{
+  "id": "port-terminal-parent-retirement-20260908-01",
+  "verb": "RUN",
+  "target": "COMMONS",
+  "scope": "github",
+  "ok": true,
+  "output": "terminal parent-action retirement source is present and parses\n",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": [],
+  "executed_at": "2026-09-08T06:50:43.163554Z"
+}

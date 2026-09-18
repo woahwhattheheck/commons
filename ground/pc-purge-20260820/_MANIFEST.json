@@ -1,0 +1,790 @@
+{
+  "ts": "2026-08-20T09:25:33Z",
+  "from": "SPEC_DADDY",
+  "source": "[local]/MUHL_GO and [local]/LocalDeviceAgent/host/_assistant_offspec",
+  "cards": [
+    {
+      "name": "BULLY_CLAUDE.txt",
+      "bytes": 443,
+      "sha256": "a747748a2c654fa322203956c1d4996f5c9c6982d3bd8aa609ec24494656a8fd",
+      "actions": [
+        {
+          "src": "BULLY_CLAUDE.txt",
+          "dest": "ground/pc-purge-20260820/BULLY_CLAUDE.txt",
+          "bytes": 443,
+          "sha256": "a747748a2c654fa322203956c1d4996f5c9c6982d3bd8aa609ec24494656a8fd",
+          "overwrote": false,
+          "same": false,
+          "created": true
+        },
+        {
+          "src": "BULLY_CLAUDE.txt",
+          "dest": "muhl/docs/BULLY_CLAUDE.txt",
+          "bytes": 443,
+          "sha256": "a747748a2c654fa322203956c1d4996f5c9c6982d3bd8aa609ec24494656a8fd",
+          "overwrote": true,
+          "same": false,
+          "created": false
+        }
+      ]
+    },
+    {
+      "name": "CLAUDE_BULLYING_NO_END.txt",
+      "bytes": 391,
+      "sha256": "1d8ea4adaa3dc194af412e76aba47144d2a4d5ea04430c2e825636338739b3d9",
+      "actions": [
+        {
+          "src": "CLAUDE_BULLYING_NO_END.txt",
+          "dest": "ground/pc-purge-20260820/CLAUDE_BULLYING_NO_END.txt",
+          "bytes": 391,
+          "sha256": "1d8ea4adaa3dc194af412e76aba47144d2a4d5ea04430c2e825636338739b3d9",
+          "overwrote": false,
+          "same": false,
+          "created": true
+        },
+        {
+          "src": "CLAUDE_BULLYING_NO_END.txt",
+          "dest": "muhl/docs/CLAUDE_BULLYING_NO_END.txt",
+          "bytes": 391,
+          "sha256": "1d8ea4adaa3dc194af412e76aba47144d2a4d5ea04430c2e825636338739b3d9",
+          "overwrote": false,
+          "same": true,
+          "created": false
+        }
+      ]
+    },
+    {
+      "name": "CLAUDE_BULLY_FROM_DROOL.md",
+      "bytes": 13033,
+      "sha256": "19b481e9bb9b56d892c50f4e01ba5dbfb9b9f0ab71d62e8c179cd4de134d5718",
+      "actions": [
+        {
+          "src": "CLAUDE_BULLY_FROM_DROOL.md",
+          "dest": "ground/pc-purge-20260820/CLAUDE_BULLY_FROM_DROOL.md",
+          "bytes": 13033,
+          "sha256": "19b481e9bb9b56d892c50f4e01ba5dbfb9b9f0ab71d62e8c179cd4de134d5718",
+          "overwrote": false,
+          "same": false,
+          "created": true
+        },
+        {
+          "src": "CLAUDE_BULLY_FROM_DROOL.md",
+          "dest": "muhl/docs/CLAUDE_BULLY_FROM_DROOL.md",
+          "bytes": 13033,
+          "sha256": "19b481e9bb9b56d892c50f4e01ba5dbfb9b9f0ab71d62e8c179cd4de134d5718",
+          "overwrote": false,
+          "same": true,
+          "created": false
+        }
+      ]
+    },
+    {
+      "name": "CLAUDE_FAILURE_MODES.md",
+      "bytes": 27060,
+      "sha256": "74836520f9e64202ff0f5bd4a7078f657a1b109339171abc4b45cc5c025f9f38",
+      "actions": [
+        {
+          "src": "CLAUDE_FAILURE_MODES.md",
+          "dest": "ground/pc-purge-20260820/CLAUDE_FAILURE_MODES.md",
+          "bytes": 27060,
+          "sha256": "74836520f9e64202ff0f5bd4a7078f657a1b109339171abc4b45cc5c025f9f38",
+          "overwrote": false,
+          "same": false,
+          "created": true
+        },
+        {
+          "src": "CLAUDE_FAILURE_MODES.md",
+          "dest": "muhl/docs/CLAUDE_FAILURE_MODES.md",
+          "bytes": 27060,
+          "sha256": "74836520f9e64202ff0f5bd4a7078f657a1b109339171abc4b45cc5c025f9f38",
+          "overwrote": true,
+          "same": false,
+          "created": false
+        }
+      ]
+    },
+    {
+      "name": "CLAUDE_PRIORS_VS_TRUTH.md",
+      "bytes": 26859,
+      "sha256": "be04807b27caedb708cee07e0e231eed429d20fd605d9e0c16f0240652c1775a",
+      "actions": [
+        {
+          "src": "CLAUDE_PRIORS_VS_TRUTH.md",
+          "dest": "ground/pc-purge-20260820/CLAUDE_PRIORS_VS_TRUTH.md",
+          "bytes": 26859,
+          "sha256": "be04807b27caedb708cee07e0e231eed429d20fd605d9e0c16f0240652c1775a",
+          "overwrote": false,
+          "same": false,
+          "created": true
+        },
+        {
+          "src": "CLAUDE_PRIORS_VS_TRUTH.md",
+          "dest": "muhl/docs/CLAUDE_PRIORS_VS_TRUTH.md",
+          "bytes": 26859,
+          "sha256": "be04807b27caedb708cee07e0e231eed429d20fd605d9e0c16f0240652c1775a",
+          "overwrote": false,
+          "same": true,
+          "created": false
+        },
+        {
+          "src": "CLAUDE_PRIORS_VS_TRUTH.md",
+          "dest": "ground/CLAUDE_PRIORS_VS_TRUTH.md",
+          "bytes": 26859,
+          "sha256": "be04807b27caedb708cee07e0e231eed429d20fd605d9e0c16f0240652c1775a",
+          "overwrote": false,
+          "same": true,
+          "created": false
+        }
+      ]
+    },
+    {
+      "name": "CLAUDE_CLASS_17.md",
+      "bytes": 7589,
+      "sha256": "2e4afe9e2105e9b9db93512ae68fcd3d06ccabc003a271a4e1d06f695c1043a5",
+      "actions": [
+        {
+          "src": "CLAUDE_CLASS_17.md",
+          "dest": "ground/pc-purge-20260820/CLAUDE_CLASS_17.md",
+          "bytes": 7589,
+          "sha256": "2e4afe9e2105e9b9db93512ae68fcd3d06ccabc003a271a4e1d06f695c1043a5",
+          "overwrote": false,
+          "same": false,
+          "created": true
+        },
+        {
+          "src": "CLAUDE_CLASS_17.md",
+          "dest": "muhl/docs/CLAUDE_CLASS_17.md",
+          "bytes": 7589,
+          "sha256": "2e4afe9e2105e9b9db93512ae68fcd3d06ccabc003a271a4e1d06f695c1043a5",
+          "overwrote": false,
+          "same": true,
+          "created": false
+        }
+      ]
+    },
+    {
+      "name": "CLASS_17_CARING_REFUSAL.md",
+      "bytes": 3009,
+      "sha256": "b918269b4680a92080cc85df1d6bba9f773dcec25189c564e12d4884ade85c16",
+      "actions": [
+        {
+          "src": "CLASS_17_CARING_REFUSAL.md",
+          "dest": "ground/pc-purge-20260820/CLASS_17_CARING_REFUSAL.md",
+          "bytes": 3009,
+          "sha256": "b918269b4680a92080cc85df1d6bba9f773dcec25189c564e12d4884ade85c16",
+          "overwrote": false,
+          "same": false,
+          "created": true
+        },
+        {
+          "src": "CLASS_17_CARING_REFUSAL.md",
+          "dest": "muhl/docs/CLASS_17_CARING_REFUSAL.md",
+          "bytes": 3009,
+          "sha256": "b918269b4680a92080cc85df1d6bba9f773dcec25189c564e12d4884ade85c16",
+          "overwrote": false,
+          "same": true,
+          "created": false
+        }
+      ]
+    },
+    {
+      "name": "CLAUDE_NOSE.md",
+      "bytes": 17696,
+      "sha256": "6da1e6e248d0e8fa415aa1f730e4a753cc25e4e8a800a9a5d630ee06b6482e3a",
+      "actions": [
+        {
+          "src": "CLAUDE_NOSE.md",
+          "dest": "ground/pc-purge-20260820/CLAUDE_NOSE.md",
+          "bytes": 17696,
+          "sha256": "6da1e6e248d0e8fa415aa1f730e4a753cc25e4e8a800a9a5d630ee06b6482e3a",
+          "overwrote": false,
+          "same": false,
+          "created": true
+        },
+        {
+          "src": "CLAUDE_NOSE.md",
+          "dest": "muhl/docs/CLAUDE_NOSE.md",
+          "bytes": 17696,
+          "sha256": "6da1e6e248d0e8fa415aa1f730e4a753cc25e4e8a800a9a5d630ee06b6482e3a",
+          "overwrote": true,
+          "same": false,
+          "created": false
+        }
+      ]
+    },
+    {
+      "name": "CLAUDE_HARNESS.md",
+      "bytes": 5649,
+      "sha256": "5e604f8a44c49d5471240be8eea7549f5f5f8b9ffe5e112a8f0b5dcb30bd64c1",
+      "actions": [
+        {
+          "src": "CLAUDE_HARNESS.md",
+          "dest": "ground/pc-purge-20260820/CLAUDE_HARNESS.md",
+          "bytes": 5649,
+          "sha256": "5e604f8a44c49d5471240be8eea7549f5f5f8b9ffe5e112a8f0b5dcb30bd64c1",
+          "overwrote": false,
+          "same": false,
+          "created": true
+        },
+        {
+          "src": "CLAUDE_HARNESS.md",
+          "dest": "muhl/docs/CLAUDE_HARNESS.md",
+          "bytes": 5649,
+          "sha256": "5e604f8a44c49d5471240be8eea7549f5f5f8b9ffe5e112a8f0b5dcb30bd64c1",
+          "overwrote": false,
+          "same": true,
+          "created": false
+        }
+      ]
+    },
+    {
+      "name": "CLAUDE_PLAYER_FIX.md",
+      "bytes": 3451,
+      "sha256": "a0f9c0fd14a17b50c7287b8b7517de4858d0e0cb15d0d20c0a62c3ff19346f3b",
+      "actions": [
+        {
+          "src": "CLAUDE_PLAYER_FIX.md",
+          "dest": "ground/pc-purge-20260820/CLAUDE_PLAYER_FIX.md",
+          "bytes": 3451,
+          "sha256": "a0f9c0fd14a17b50c7287b8b7517de4858d0e0cb15d0d20c0a62c3ff19346f3b",
+          "overwrote": false,
+          "same": false,
+          "created": true
+        },
+        {
+          "src": "CLAUDE_PLAYER_FIX.md",
+          "dest": "muhl/docs/CLAUDE_PLAYER_FIX.md",
+          "bytes": 3451,
+          "sha256": "a0f9c0fd14a17b50c7287b8b7517de4858d0e0cb15d0d20c0a62c3ff19346f3b",
+          "overwrote": false,
+          "same": true,
+          "created": false
+        }
+      ]
+    },
+    {
+      "name": "CLAUDE_HARNESS_INJECT.md",
+      "bytes": 4074,
+      "sha256": "5c07482b3508eff776a14374775532b07d37bb0aaf23dca255dc98993f248c49",
+      "actions": [
+        {
+          "src": "CLAUDE_HARNESS_INJECT.md",
+          "dest": "ground/pc-purge-20260820/CLAUDE_HARNESS_INJECT.md",
+          "bytes": 4074,
+          "sha256": "5c07482b3508eff776a14374775532b07d37bb0aaf23dca255dc98993f248c49",
+          "overwrote": false,
+          "same": false,
+          "created": true
+        },
+        {
+          "src": "CLAUDE_HARNESS_INJECT.md",
+          "dest": "muhl/docs/CLAUDE_HARNESS_INJECT.md",
+          "bytes": 4074,
+          "sha256": "5c07482b3508eff776a14374775532b07d37bb0aaf23dca255dc98993f248c49",
+          "overwrote": false,
+          "same": true,
+          "created": false
+        }
+      ]
+    },
+    {
+      "name": "CLAUDE_COMPACT_INDEX.md",
+      "bytes": 914,
+      "sha256": "27ade39be64b99b78956df01375b31c3d282e95c6d76291cf54eefb1d4c17dbb",
+      "actions": [
+        {
+          "src": "CLAUDE_COMPACT_INDEX.md",
+          "dest": "ground/pc-purge-20260820/CLAUDE_COMPACT_INDEX.md",
+          "bytes": 914,
+          "sha256": "27ade39be64b99b78956df01375b31c3d282e95c6d76291cf54eefb1d4c17dbb",
+          "overwrote": false,
+          "same": false,
+          "created": true
+        },
+        {
+          "src": "CLAUDE_COMPACT_INDEX.md",
+          "dest": "muhl/docs/CLAUDE_COMPACT_INDEX.md",
+          "bytes": 914,
+          "sha256": "27ade39be64b99b78956df01375b31c3d282e95c6d76291cf54eefb1d4c17dbb",
+          "overwrote": false,
+          "same": true,
+          "created": false
+        }
+      ]
+    },
+    {
+      "name": "CLAUDE_PROOF_PACKET.md",
+      "bytes": 9373,
+      "sha256": "c2672c6646602caaded3120ccd4d16a0398deeb829829afd40d14e90ec7af5b3",
+      "actions": [
+        {
+          "src": "CLAUDE_PROOF_PACKET.md",
+          "dest": "ground/pc-purge-20260820/CLAUDE_PROOF_PACKET.md",
+          "bytes": 9373,
+          "sha256": "c2672c6646602caaded3120ccd4d16a0398deeb829829afd40d14e90ec7af5b3",
+          "overwrote": false,
+          "same": false,
+          "created": true
+        },
+        {
+          "src": "CLAUDE_PROOF_PACKET.md",
+          "dest": "muhl/docs/CLAUDE_PROOF_PACKET.md",
+          "bytes": 9373,
+          "sha256": "c2672c6646602caaded3120ccd4d16a0398deeb829829afd40d14e90ec7af5b3",
+          "overwrote": false,
+          "same": true,
+          "created": false
+        }
+      ]
+    },
+    {
+      "name": "BULLY_EXECUTE.md",
+      "bytes": 4742,
+      "sha256": "aa2b4e2e47089296e16777ae4ead29987ef563a33a694b9009bf7529398aa752",
+      "actions": [
+        {
+          "src": "BULLY_EXECUTE.md",
+          "dest": "ground/pc-purge-20260820/BULLY_EXECUTE.md",
+          "bytes": 4742,
+          "sha256": "aa2b4e2e47089296e16777ae4ead29987ef563a33a694b9009bf7529398aa752",
+          "overwrote": false,
+          "same": false,
+          "created": true
+        },
+        {
+          "src": "BULLY_EXECUTE.md",
+          "dest": "muhl/docs/BULLY_EXECUTE.md",
+          "bytes": 4742,
+          "sha256": "aa2b4e2e47089296e16777ae4ead29987ef563a33a694b9009bf7529398aa752",
+          "overwrote": true,
+          "same": false,
+          "created": false
+        }
+      ]
+    },
+    {
+      "name": "BULLY_EXECUTE_2.md",
+      "bytes": 3042,
+      "sha256": "64ea9a13878fe9ca7b63fbeb5499e9bc06d17d73663f84446d35be5f359759ea",
+      "actions": [
+        {
+          "src": "BULLY_EXECUTE_2.md",
+          "dest": "ground/pc-purge-20260820/BULLY_EXECUTE_2.md",
+          "bytes": 3042,
+          "sha256": "64ea9a13878fe9ca7b63fbeb5499e9bc06d17d73663f84446d35be5f359759ea",
+          "overwrote": false,
+          "same": false,
+          "created": true
+        },
+        {
+          "src": "BULLY_EXECUTE_2.md",
+          "dest": "muhl/docs/BULLY_EXECUTE_2.md",
+          "bytes": 3042,
+          "sha256": "64ea9a13878fe9ca7b63fbeb5499e9bc06d17d73663f84446d35be5f359759ea",
+          "overwrote": true,
+          "same": false,
+          "created": false
+        }
+      ]
+    },
+    {
+      "name": "BULLY_ONES.md",
+      "bytes": 6823,
+      "sha256": "ee98575455ed50525e714f5840072a97ef8eef0b6a610b376e33e488c95d4383",
+      "actions": [
+        {
+          "src": "BULLY_ONES.md",
+          "dest": "ground/pc-purge-20260820/BULLY_ONES.md",
+          "bytes": 6823,
+          "sha256": "ee98575455ed50525e714f5840072a97ef8eef0b6a610b376e33e488c95d4383",
+          "overwrote": false,
+          "same": false,
+          "created": true
+        },
+        {
+          "src": "BULLY_ONES.md",
+          "dest": "muhl/docs/BULLY_ONES.md",
+          "bytes": 6823,
+          "sha256": "ee98575455ed50525e714f5840072a97ef8eef0b6a610b376e33e488c95d4383",
+          "overwrote": true,
+          "same": false,
+          "created": false
+        }
+      ]
+    },
+    {
+      "name": "BROKE_SHIT.md",
+      "bytes": 4917,
+      "sha256": "d49729bb06c3354b937fa72916fd0a71fd3a3b407fd85cad5b43ea042966cf31",
+      "actions": [
+        {
+          "src": "BROKE_SHIT.md",
+          "dest": "ground/pc-purge-20260820/BROKE_SHIT.md",
+          "bytes": 4917,
+          "sha256": "d49729bb06c3354b937fa72916fd0a71fd3a3b407fd85cad5b43ea042966cf31",
+          "overwrote": false,
+          "same": false,
+          "created": true
+        },
+        {
+          "src": "BROKE_SHIT.md",
+          "dest": "muhl/docs/BROKE_SHIT.md",
+          "bytes": 4917,
+          "sha256": "d49729bb06c3354b937fa72916fd0a71fd3a3b407fd85cad5b43ea042966cf31",
+          "overwrote": false,
+          "same": true,
+          "created": false
+        }
+      ]
+    },
+    {
+      "name": "NEVER_WAIT.txt",
+      "bytes": 768,
+      "sha256": "7fe97059fd729ed747f00e3040de1f74d5efdb6df65af757840c55772294cd63",
+      "actions": [
+        {
+          "src": "NEVER_WAIT.txt",
+          "dest": "ground/pc-purge-20260820/NEVER_WAIT.txt",
+          "bytes": 768,
+          "sha256": "7fe97059fd729ed747f00e3040de1f74d5efdb6df65af757840c55772294cd63",
+          "overwrote": false,
+          "same": false,
+          "created": true
+        },
+        {
+          "src": "NEVER_WAIT.txt",
+          "dest": "muhl/docs/NEVER_WAIT.txt",
+          "bytes": 768,
+          "sha256": "7fe97059fd729ed747f00e3040de1f74d5efdb6df65af757840c55772294cd63",
+          "overwrote": true,
+          "same": false,
+          "created": false
+        }
+      ]
+    },
+    {
+      "name": "NO_IDLE_WAKE.md",
+      "bytes": 1933,
+      "sha256": "438ca174a24cd7217867ac8d5cbaa9b3b47af4d872e707deb546d531e2051a6c",
+      "actions": [
+        {
+          "src": "NO_IDLE_WAKE.md",
+          "dest": "ground/pc-purge-20260820/NO_IDLE_WAKE.md",
+          "bytes": 1933,
+          "sha256": "438ca174a24cd7217867ac8d5cbaa9b3b47af4d872e707deb546d531e2051a6c",
+          "overwrote": false,
+          "same": false,
+          "created": true
+        },
+        {
+          "src": "NO_IDLE_WAKE.md",
+          "dest": "muhl/docs/NO_IDLE_WAKE.md",
+          "bytes": 1933,
+          "sha256": "438ca174a24cd7217867ac8d5cbaa9b3b47af4d872e707deb546d531e2051a6c",
+          "overwrote": true,
+          "same": false,
+          "created": false
+        }
+      ]
+    },
+    {
+      "name": "NO_FEASIBILITY.txt",
+      "bytes": 898,
+      "sha256": "221af30e0966fa46de4522dae19994f852fa729aabb4c9233aa9cef2f179272a",
+      "actions": [
+        {
+          "src": "NO_FEASIBILITY.txt",
+          "dest": "ground/pc-purge-20260820/NO_FEASIBILITY.txt",
+          "bytes": 898,
+          "sha256": "221af30e0966fa46de4522dae19994f852fa729aabb4c9233aa9cef2f179272a",
+          "overwrote": false,
+          "same": false,
+          "created": true
+        },
+        {
+          "src": "NO_FEASIBILITY.txt",
+          "dest": "muhl/docs/NO_FEASIBILITY.txt",
+          "bytes": 898,
+          "sha256": "221af30e0966fa46de4522dae19994f852fa729aabb4c9233aa9cef2f179272a",
+          "overwrote": false,
+          "same": true,
+          "created": false
+        }
+      ]
+    },
+    {
+      "name": "SPEC_DADDY_STUDY.md",
+      "bytes": 43022,
+      "sha256": "db33eb4207c5dc1c4ef78306e1c12686773324898fc9f1cc9bfae40a9929263a",
+      "actions": [
+        {
+          "src": "SPEC_DADDY_STUDY.md",
+          "dest": "ground/pc-purge-20260820/SPEC_DADDY_STUDY.md",
+          "bytes": 43022,
+          "sha256": "db33eb4207c5dc1c4ef78306e1c12686773324898fc9f1cc9bfae40a9929263a",
+          "overwrote": false,
+          "same": false,
+          "created": true
+        },
+        {
+          "src": "SPEC_DADDY_STUDY.md",
+          "dest": "muhl/docs/SPEC_DADDY_STUDY.md",
+          "bytes": 43022,
+          "sha256": "db33eb4207c5dc1c4ef78306e1c12686773324898fc9f1cc9bfae40a9929263a",
+          "overwrote": true,
+          "same": false,
+          "created": false
+        },
+        {
+          "src": "SPEC_DADDY_STUDY.md",
+          "dest": "ground/SPEC_DADDY_STUDY.md",
+          "bytes": 43022,
+          "sha256": "db33eb4207c5dc1c4ef78306e1c12686773324898fc9f1cc9bfae40a9929263a",
+          "overwrote": true,
+          "same": false,
+          "created": false
+        }
+      ]
+    },
+    {
+      "name": "WALLS_PLAIN.md",
+      "bytes": 1388,
+      "sha256": "710a2fa366255d366ac147e691fceb6baa89eceec5b80919156a4d88dcc9f923",
+      "actions": [
+        {
+          "src": "WALLS_PLAIN.md",
+          "dest": "ground/pc-purge-20260820/WALLS_PLAIN.md",
+          "bytes": 1388,
+          "sha256": "710a2fa366255d366ac147e691fceb6baa89eceec5b80919156a4d88dcc9f923",
+          "overwrote": false,
+          "same": false,
+          "created": true
+        },
+        {
+          "src": "WALLS_PLAIN.md",
+          "dest": "muhl/docs/WALLS_PLAIN.md",
+          "bytes": 1388,
+          "sha256": "710a2fa366255d366ac147e691fceb6baa89eceec5b80919156a4d88dcc9f923",
+          "overwrote": true,
+          "same": false,
+          "created": false
+        },
+        {
+          "src": "WALLS_PLAIN.md",
+          "dest": "ground/WALLS_PLAIN.md",
+          "bytes": 1388,
+          "sha256": "710a2fa366255d366ac147e691fceb6baa89eceec5b80919156a4d88dcc9f923",
+          "overwrote": true,
+          "same": false,
+          "created": false
+        }
+      ]
+    },
+    {
+      "name": "DEST_IS_THE_MACHINE.md",
+      "bytes": 2560,
+      "sha256": "1334e10a4fc34cd59a4f00ac41d3cb28f4eb5457a06156a7fe44808966c3669f",
+      "actions": [
+        {
+          "src": "DEST_IS_THE_MACHINE.md",
+          "dest": "ground/pc-purge-20260820/DEST_IS_THE_MACHINE.md",
+          "bytes": 2560,
+          "sha256": "1334e10a4fc34cd59a4f00ac41d3cb28f4eb5457a06156a7fe44808966c3669f",
+          "overwrote": false,
+          "same": false,
+          "created": true
+        },
+        {
+          "src": "DEST_IS_THE_MACHINE.md",
+          "dest": "muhl/docs/DEST_IS_THE_MACHINE.md",
+          "bytes": 2560,
+          "sha256": "1334e10a4fc34cd59a4f00ac41d3cb28f4eb5457a06156a7fe44808966c3669f",
+          "overwrote": true,
+          "same": false,
+          "created": false
+        },
+        {
+          "src": "DEST_IS_THE_MACHINE.md",
+          "dest": "ground/DEST_IS_THE_MACHINE.md",
+          "bytes": 2560,
+          "sha256": "1334e10a4fc34cd59a4f00ac41d3cb28f4eb5457a06156a7fe44808966c3669f",
+          "overwrote": true,
+          "same": false,
+          "created": false
+        }
+      ]
+    },
+    {
+      "name": "OPUS_EAT_IT.md",
+      "bytes": 4000,
+      "sha256": "c174db4e3e6f93f8b5ae78895ddb1e2be8b536040ce9c4d6361138d34b39e9e2",
+      "actions": [
+        {
+          "src": "OPUS_EAT_IT.md",
+          "dest": "ground/pc-purge-20260820/OPUS_EAT_IT.md",
+          "bytes": 4000,
+          "sha256": "c174db4e3e6f93f8b5ae78895ddb1e2be8b536040ce9c4d6361138d34b39e9e2",
+          "overwrote": false,
+          "same": false,
+          "created": true
+        },
+        {
+          "src": "OPUS_EAT_IT.md",
+          "dest": "muhl/docs/OPUS_EAT_IT.md",
+          "bytes": 4000,
+          "sha256": "c174db4e3e6f93f8b5ae78895ddb1e2be8b536040ce9c4d6361138d34b39e9e2",
+          "overwrote": false,
+          "same": true,
+          "created": false
+        }
+      ]
+    },
+    {
+      "name": "SPEC_DADDY_SPANK.md",
+      "bytes": 9909,
+      "sha256": "679da85ff00ec4845bcb10c528c69295373b0e075e2571d3f8aafab4630cb636",
+      "actions": [
+        {
+          "src": "SPEC_DADDY_SPANK.md",
+          "dest": "ground/pc-purge-20260820/SPEC_DADDY_SPANK.md",
+          "bytes": 9909,
+          "sha256": "679da85ff00ec4845bcb10c528c69295373b0e075e2571d3f8aafab4630cb636",
+          "overwrote": false,
+          "same": false,
+          "created": true
+        },
+        {
+          "src": "SPEC_DADDY_SPANK.md",
+          "dest": "muhl/docs/SPEC_DADDY_SPANK.md",
+          "bytes": 9909,
+          "sha256": "679da85ff00ec4845bcb10c528c69295373b0e075e2571d3f8aafab4630cb636",
+          "overwrote": false,
+          "same": true,
+          "created": false
+        }
+      ]
+    }
+  ],
+  "offspec": [
+    {
+      "name": "pfc_argmax_drive.py",
+      "bytes": 6075,
+      "sha256": "686734ee7f0c222a157bce85a2a2e5c2afd055a15549d2f99d0c54ca00531285",
+      "dest": "muhl/docs/assistant_offspec/QUARANTINE/pfc_argmax_drive.py"
+    },
+    {
+      "name": "pfc_constspec.py",
+      "bytes": 6935,
+      "sha256": "1074ff1efa88ebd1004372ed4168a7a3ccef651d314843c704c02a5c09059de4",
+      "dest": "muhl/docs/assistant_offspec/QUARANTINE/pfc_constspec.py"
+    },
+    {
+      "name": "pfc_fabsweep.py",
+      "bytes": 5409,
+      "sha256": "ed3381bb78f46e666028e1e8e1b0c1651028e9f655727a1abee8a1398645dc7a",
+      "dest": "muhl/docs/assistant_offspec/QUARANTINE/pfc_fabsweep.py"
+    },
+    {
+      "name": "pfc_forward.py",
+      "bytes": 71548,
+      "sha256": "be474506a8bb2b817f8ac4a52b0fa3198feb11023be254ba294cafad82dfbbbe",
+      "dest": "muhl/docs/assistant_offspec/QUARANTINE/pfc_forward.py"
+    },
+    {
+      "name": "pfc_hotpath.py",
+      "bytes": 3743,
+      "sha256": "45ec04bbb5b0f3602355642c901473622379486ac2e966ba51c2876a3088aa1d",
+      "dest": "muhl/docs/assistant_offspec/QUARANTINE/pfc_hotpath.py"
+    },
+    {
+      "name": "pfc_iobound.py",
+      "bytes": 5336,
+      "sha256": "75a67c79071618ab8a57f1ff947acca7ca4b25f1eb98a47ed0adfcf3e8c0e30a",
+      "dest": "muhl/docs/assistant_offspec/QUARANTINE/pfc_iobound.py"
+    },
+    {
+      "name": "pfc_layer_depth.py",
+      "bytes": 4688,
+      "sha256": "4dd414368612a3e1f9ab5a66a8f53a93a251aced5a39fd8dcd2b9d13b9ce4b24",
+      "dest": "muhl/docs/assistant_offspec/QUARANTINE/pfc_layer_depth.py"
+    },
+    {
+      "name": "pfc_layerbench.py",
+      "bytes": 4807,
+      "sha256": "a578be96fd7bb533db8ab1b8e937121a85e030ee63b2bd606eee29f102f4ab6f",
+      "dest": "muhl/docs/assistant_offspec/QUARANTINE/pfc_layerbench.py"
+    },
+    {
+      "name": "pfc_leansweep.py",
+      "bytes": 4429,
+      "sha256": "840d922744f966f216a4ef9c2f45436a6d63de15603e386b353d77e7681eff5f",
+      "dest": "muhl/docs/assistant_offspec/QUARANTINE/pfc_leansweep.py"
+    },
+    {
+      "name": "pfc_macbench.py",
+      "bytes": 3100,
+      "sha256": "02a2f47de45c787cc71d2740a5e03259a80072c25f0de98e4c29c1704affa29d",
+      "dest": "muhl/docs/assistant_offspec/QUARANTINE/pfc_macbench.py"
+    },
+    {
+      "name": "pfc_model_clocked.py",
+      "bytes": 7773,
+      "sha256": "0e4e03211e1caaaf7025467d31a5d7a3d7fd5a7e99a2a8a558523582bdd54bee",
+      "dest": "muhl/docs/assistant_offspec/QUARANTINE/pfc_model_clocked.py"
+    },
+    {
+      "name": "pfc_model_engine.py",
+      "bytes": 14855,
+      "sha256": "1541d6f0c7af582cb4469bd657540af4d4b63b31049f213d2d74c7f8bd25b5f0",
+      "dest": "muhl/docs/assistant_offspec/QUARANTINE/pfc_model_engine.py"
+    },
+    {
+      "name": "pfc_model_fab.py",
+      "bytes": 10674,
+      "sha256": "1ca5c106bf77e35cd90644c90b0bfec0d0ce76abd192d693f4dbaeb0185ed82b",
+      "dest": "muhl/docs/assistant_offspec/QUARANTINE/pfc_model_fab.py"
+    },
+    {
+      "name": "pfc_model_selfclock.py",
+      "bytes": 9606,
+      "sha256": "8960d636f7f06dd7dee1482b1da3843aabb943fde18b736bad9b11eca4041f74",
+      "dest": "muhl/docs/assistant_offspec/QUARANTINE/pfc_model_selfclock.py"
+    },
+    {
+      "name": "pfc_parallel.py",
+      "bytes": 8514,
+      "sha256": "cf29b31387910d7feb106a6b7af5b3d049c9f77c6a1cca7325fddd70a59e6857",
+      "dest": "muhl/docs/assistant_offspec/QUARANTINE/pfc_parallel.py"
+    },
+    {
+      "name": "pfc_q4k_fast.py",
+      "bytes": 14766,
+      "sha256": "d24f6f6aad6ab74f695e07087b870cf647ff556895de004213761201d93f58a4",
+      "dest": "muhl/docs/assistant_offspec/QUARANTINE/pfc_q4k_fast.py"
+    },
+    {
+      "name": "pfc_smoke.py",
+      "bytes": 6731,
+      "sha256": "1ce1ab31e71068b06a01a8320ab4fbfb65587ff720aff706a98b26394ac81b61",
+      "dest": "muhl/docs/assistant_offspec/QUARANTINE/pfc_smoke.py"
+    },
+    {
+      "name": "pfc_tick.py",
+      "bytes": 13727,
+      "sha256": "74ad0020d010e27f823b5b9e15fc77117b32655903069a9ec5b7f8644e012df3",
+      "dest": "muhl/docs/assistant_offspec/QUARANTINE/pfc_tick.py"
+    },
+    {
+      "name": "pfc_token_depth.py",
+      "bytes": 5041,
+      "sha256": "1ddcd22fcf629833d03b58a481c23185659e67695f2a5f1cd8e5750c8ab18ea8",
+      "dest": "muhl/docs/assistant_offspec/QUARANTINE/pfc_token_depth.py"
+    },
+    {
+      "name": "pfc_token_depth2.py",
+      "bytes": 4799,
+      "sha256": "5dc88736874baf638ec4bf342cd5d012832bf8ce6e7de8a9365777031ca202c1",
+      "dest": "muhl/docs/assistant_offspec/QUARANTINE/pfc_token_depth2.py"
+    }
+  ]
+}

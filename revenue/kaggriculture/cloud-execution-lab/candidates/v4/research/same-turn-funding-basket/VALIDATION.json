@@ -1,0 +1,63 @@
+{
+  "status": "COMPLETE_RESEARCH_PARKED_NO_ACTIVATION",
+  "owner": "ASTRA-CAPITAL-FRONTIER",
+  "canonical_branch": "main",
+  "claim": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1789180526995049",
+  "source_files": {
+    "funding_basket.py": {"bytes": 10276, "git_blob": "0dcb722fe9b8bb19e9d48b6b820cc3fe1186b3c8", "sha256": "bcb1bee8f04134faff9e4b7e911a1dc7090d67b8ae06ea53ab0cae9a00f2ae3f"},
+    "test_funding_basket.py": {"bytes": 23261, "git_blob": "0d10449634299970aa2a0bd8fb46eb4dc48d8024", "sha256": "27daa3b16633a72cd9b4b40048ae43dd8ecce5f4aceeb6881c8079185b664d84"},
+    "check_mutations.py": {"bytes": 4119, "git_blob": "0d4b8270304a69b706ce995183605ed7e22f32eb", "sha256": "fcc503f31c24999da46237ac428f0d71c064b3acb37be352b7b3c0d40ee5ebe3"},
+    "census_funding_basket.py": {"bytes": 4706, "git_blob": "0e702c708935d9edc24ec63828a55d830bf50866", "sha256": "5554ce218f4e36ec1fb4c870ce5a02b918269abfb966644515b9ad4b414e469f"}
+  },
+  "inputs": {
+    "artifact_id": 10175943272,
+    "run_id": 34537404363,
+    "archive_sha256": "b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9",
+    "source_json_sha256": "e87d70dd3bcf5aea1e929f1a5dbdc86f3cc33d8a0b3492986f2970fc8e774be2",
+    "native_blob": "fc7baf5c179818a55037f6a61d92984d81d1a21c",
+    "official_engine_blob": "3c202c7ee921da239356789e266b694635103fc4",
+    "runtime_map_files_verified": 109
+  },
+  "execution": {
+    "python": "3.13.5",
+    "normal": {"tests": 26, "failures": 0, "errors": 0, "adapter_calls": 217, "official_market_calls": 353, "official_interpreter_calls": 233, "oracle_allocations": 276, "oracle_cases": 37, "max_adapter_seconds": 0.044498744999941664, "median_adapter_seconds": 0.0001899009999988266},
+    "optimized": {"tests": 26, "failures": 0, "errors": 0, "adapter_calls": 217, "official_market_calls": 353, "official_interpreter_calls": 233, "oracle_allocations": 276, "oracle_cases": 37, "max_adapter_seconds": 0.04754460100002689, "median_adapter_seconds": 0.0001902619999327726},
+    "interpreter_counts_include_initialization": true,
+    "non_initialization_full_callbacks_per_mode": 14,
+    "timing_scope": "Constructed tests only, includes predecessor cost; not a production deadline guarantee.",
+    "mutations": [
+      {"name": "downstream-fill-theft", "normal_failures": 1, "optimized_failures": 1, "errors_each": 0},
+      {"name": "unowned-stock", "normal_failures": 1, "optimized_failures": 1, "errors_each": 0},
+      {"name": "budget-ignored", "normal_failures": 1, "optimized_failures": 1, "errors_each": 0},
+      {"name": "source-pin-disabled", "normal_failures": 1, "optimized_failures": 1, "errors_each": 0},
+      {"name": "suffix-admitted", "normal_failures": 2, "optimized_failures": 2, "errors_each": 0},
+      {"name": "sale-not-debited", "normal_failures": 78, "optimized_failures": 78, "errors_each": 0},
+      {"name": "default-on", "normal_failures": 1, "optimized_failures": 1, "errors_each": 0},
+      {"name": "maximum-movement", "normal_failures": 3, "optimized_failures": 3, "errors_each": 0},
+      {"name": "single-source-only", "normal_failures": 78, "optimized_failures": 78, "errors_each": 0}
+    ],
+    "mutation_controls": "Unmodified normal and optimized suites required green before any mutant run. All 18 mutant runs completed all 26 tests and exited 1 with behavioral assertion failures."
+  },
+  "census": [
+    {"mode": "shadow; original funding output returned", "seed": 17, "seat": 0, "opponent": "official_starter", "callbacks": 719, "status": ["DONE", "DONE"], "completed": true, "counts": {"funding_calls": 718, "parent:no-target": 646, "parent:unsupported-buy-product": 72, "runtime:completed": 719}, "witnesses": [], "probe_max_seconds": 0},
+    {"mode": "shadow; original funding output returned", "seed": 17, "seat": 1, "opponent": "official_starter", "callbacks": 719, "status": ["DONE", "DONE"], "completed": true, "counts": {"funding_calls": 718, "parent:no-target": 646, "parent:unsupported-buy-product": 72, "runtime:completed": 719}, "witnesses": [], "probe_max_seconds": 0}
+  ],
+  "decision": {
+    "production_changed": false,
+    "default_changed": false,
+    "new_policy_key": false,
+    "archive_changed": false,
+    "kaggle_submission": false,
+    "new_workflow_dispatch": false,
+    "strength_claim": false,
+    "pending_build_demand": false,
+    "next_evidence_required": "Naturally occurring no-safe-prefix-sale states against competitive opponents, then current-finalizer composition and matched economics. Do not enable from constructed feasibility."
+  },
+  "limitations": [
+    "Only the documented deterministic product/slot placement convention is searched; not all market permutations.",
+    "Native conservative sale scenarios are not a universal adversarial guarantee.",
+    "Helper calls require post-unit state; package source drift fails closed.",
+    "The shadow census covers one seed and starter opponent, includes instrumentation overhead, and is not a paired economic comparison.",
+    "Existing single-source cash-rank proposal #12062 is separate and unchanged."
+  ]
+}

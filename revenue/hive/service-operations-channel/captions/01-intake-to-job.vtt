@@ -1,0 +1,17 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.000
+Start in a clean local workspace backed by the landed Hive intake application.
+
+2
+00:00:04.000 --> 00:00:08.000
+Enter a synthetic request with a stable source ID and the service details the operator actually received.
+
+3
+00:00:08.000 --> 00:00:12.000
+Submit once: the application records one customer and one job, with three open tasks and one pending delivery.
+
+4
+00:00:12.000 --> 00:00:16.000
+The job card keeps source identity, task state, requested date, and delivery state together for operator follow-through.

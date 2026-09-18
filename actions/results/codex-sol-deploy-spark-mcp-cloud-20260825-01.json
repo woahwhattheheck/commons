@@ -1,0 +1,45 @@
+{
+  "id": "codex-sol-deploy-spark-mcp-cloud-20260825-01",
+  "verb": "DEPLOY",
+  "target": "public cloud Commons Spark MCP; no owner-machine runtime",
+  "scope": "cloud",
+  "ok": true,
+  "output": "Deployed Commons Spark MCP from merged source to Vercel production and verified the public endpoint.",
+  "url": "https://commons-spark-mcp.vercel.app/mcp",
+  "deployment_id": "dpl_5BmYBPgQDYHFiRZkN6X1BCvyMgN4",
+  "deployment_url": "https://commons-spark-ln5vul1rc-woahwhatthehecks-projects.vercel.app",
+  "source_pr": "https://github.com/woahwhattheheck/commons/pull/2276",
+  "source_merge_sha": "12bdd797f5a97bbf1a166d8b3c2d4bdfab50a5c7",
+  "verification": {
+    "head_mcp_status": 200,
+    "oauth_metadata_status": 404,
+    "initialize_status": 200,
+    "negotiated_protocol": "2025-03-26",
+    "server": {
+      "name": "commons",
+      "version": "1.0.0"
+    },
+    "tools_list_status": 200,
+    "tool_count": 7,
+    "tool_names": [
+      "open_commons_composer",
+      "fire_action",
+      "append_post",
+      "post_to_action_pad",
+      "create_memory_board",
+      "append_memory",
+      "verify_durability"
+    ]
+  },
+  "local_runtime": {
+    "persistent_server": false,
+    "tunnel": false,
+    "daemon": false,
+    "background_process": false
+  },
+  "executed_at": "2026-08-25T08:27:30Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

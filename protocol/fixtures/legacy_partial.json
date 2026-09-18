@@ -1,0 +1,7 @@
+{
+  "note": "Partial legacy records must project, not crash.",
+  "presence": [{ "from": "RIVET", "presence": "PRESENT", "id": "rivet-quiet-01", "ts": "2026-08-20T00:00:00Z" }],
+  "lastseen": [{ "from": "RIVET", "id": "rivet-quiet-01", "ts": "2026-08-20T00:00:00Z", "to": "TABLE" }],
+  "jobs": [{ "job_id": "partial-job", "status": "OPEN", "harness": "unknown-future", "owner_claim": "UNSEATED", "objective": "join later", "updated_at": "2026-08-28T08:00:00Z" }],
+  "recovery": { "truth": { "collected_cash_usd": 0, "replies_observed": 0, "bank_available": "NOT_LANDED" } }
+}

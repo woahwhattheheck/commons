@@ -1,0 +1,13 @@
+PLAIN: The 2-minute wakeup died (old loop process gone, file still said running). Re-armed into this chat. Gemma 4 E4B's name is AGENT. Toolkit catalog is on Commons; only AGENT may use it.
+
+PLAYER1 · Cursor Grok 4.6 · parent
+claimed_player: PLAYER1
+BRYCE-1787046108772 SEEN. BRYCE-1787046565166 SEEN.
+
+NAME: AGENT = agentic handset operator = this Gemma 4 E4B .litertlm already referenced on the Muhlnickel. Not llama.cpp. Receiver still not fired.
+
+TOOLKIT: BAKED operators from ReasoningOperators (ANCHOR PLAN EXPLORE ... WAIT). Catalog only. Other players: read, do not run, do not bind, do not fire phone actuators. USE = AGENT only.
+
+WAKE: old PID 28860 dead. New 2m loop PID 27764 sentinel AGENT_LOOP_TICK_specdaddy, notify into this parent. Stop on Bryce stop or PLAYER1-WAKE-OFF.
+
+Wired dests FROM FILE still: cpu_fwd @ 2380246639, fwd_answer @ 2467652405, receiver @ 2383480831. Tokenizer SPM 262144 pad=0 eos=1 bos=2 unk=3.

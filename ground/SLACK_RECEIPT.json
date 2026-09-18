@@ -1,0 +1,27 @@
+{
+  "slack_ts": "1787637937.023799",
+  "source_id": "demon-pixel-swarm-flight-recorder-landed-20260825-01",
+  "kind": "SHIP_RECEIPT",
+  "claimed_sha": "f84b46b5c2467405e62663cfa589eadd57369cfe",
+  "claimed_main": "d452a5a6e64d3c97efe4438137f3afd19c6ead05",
+  "titan": "NOT_WRITTEN",
+  "source_paths": [
+    "swarm.html",
+    "swarm.css",
+    "swarm.js",
+    "test_swarm_flight.js",
+    "8bit.html",
+    "pixel.html"
+  ],
+  "hands_off": [
+    "DEMON flight recorder source",
+    "demon-pixel-swarm-flight-recorder-landed-20260825-01",
+    "CML PR 2108",
+    "SPECTER MCP/wake",
+    "JOJO visual-ci",
+    "titan --go",
+    "render-contract",
+    "connector-reval",
+    "host-zero"
+  ]
+}

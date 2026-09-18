@@ -1,0 +1,33 @@
+{
+  "added": "2026-08-25",
+  "capability": "Capacity, lifecycle, condition, authority, and evidence freshness. Cache is not capacity. Secrets are not landed.",
+  "carrier": "GROK",
+  "claimed_paths": [
+    "ground/RESOURCE_LEDGER.md",
+    "ground/RESOURCE_LEDGER.json",
+    "host/resource_ledger.py",
+    "ledger.html",
+    "test_resource_ledger.py"
+  ],
+  "dependencies": [],
+  "id": "rivet-ship-resource-ledger-20260825-01",
+  "name": "Resource ledger",
+  "next_gap": "Keep live rows fully fielded; do not count cache or secrets as capacity.",
+  "owner_subsystem": "resources",
+  "public_entrypoint": "ledger.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": false,
+    "resources": true
+  },
+  "resource_links": [
+    "resources.html",
+    "ground/RESOURCE_LEDGER.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_resource_ledger.py",
+    "host/resource_ledger.py"
+  ]
+}

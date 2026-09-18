@@ -1,0 +1,122 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-commons-context-dispatch-compiler-resource-activation-20260913-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "actor": "CODEX_GPT5",
+  "selected_resource": "commons-context-dispatch-compiler",
+  "observed_at": "2026-09-13T13:10:45Z",
+  "before": {"capacity": "LIVE", "stage": "PRODUCING", "condition": "UNREGISTERED", "evidence_freshness": "FRESH_MERGED_SOURCE"},
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "authority": "SHARED_ALL_CARRIERS; PUBLIC_CURRENT_MAIN_READ_COMPILE_VERIFY_AND_RENDER; EXACT_PR13837_HEAD_13A3AC9FBF964E355804798752C819FA319E686D_MERGE_693F695FE1FB0962C0E21AE1CEA714AAEE77EA1D_AND_FOUR_SOURCE_BLOBS_REQUIRED; CONTEXT_ONLY; CLAIM_FALSE; SELECT_FALSE; EXECUTE_FALSE; CONTACT_FALSE; PAY_FALSE; DEPLOY_FALSE; AUTHORITY_GRANT_FALSE",
+    "holder": "Commons / workers and operation finalizers",
+    "activation_base_main_sha": "099fe811c64e44082cec3b51d086cbecc59a3a8c"
+  },
+  "concrete_consumer": "A fresh Commons worker or finalizer that must resume one stable operation from a bounded packet without rereading the full project corpus.",
+  "measurable_outcome": "The released compiler is separately routable in the canonical graph with four exact source blobs, deterministic normal/optimized tests, a verified packet-to-Markdown smoke, explicit omissions and a visible stale-source fence.",
+  "production_truth": {
+    "activation_operation_id": "codex-commons-context-dispatch-compiler-resource-20260913-01",
+    "source_repository": "woahwhattheheck/commons",
+    "source_pr": 13837,
+    "source_head_sha": "13a3ac9fbf964e355804798752c819fa319e686d",
+    "source_merge_sha": "693f695fe1fb0962c0e21ae1cea714aaee77ea1d",
+    "source_descendant_main_sha": "099fe811c64e44082cec3b51d086cbecc59a3a8c",
+    "source_paths": {
+      "ground/CONTEXT_DISPATCH.md": "d4ae7fa2c9a4867e2a28ac3a8b22e04fbda18b66",
+      "host/context_dispatch.py": "f5548abb9148f90f9b63ee39809375b6504ee775",
+      "host/context_packet.py": "c1e51664fee3d67127c90143ae737a8c41876f02",
+      "tests/test_context_dispatch.py": "5e2cb34007c4fa2ae1235789cc7807d0af86961e"
+    },
+    "focused_tests": {"normal": "8/8 PASS", "optimized": "8/8 PASS", "py_compile": "PASS"},
+    "smoke": {
+      "packet": "PASS",
+      "verify": "PASS",
+      "render": "PASS",
+      "semantic_sha256": "387076242b7c0ffae4a5ccd0fc22cdf10359b88ba57f4047ce8627b7eee53852",
+      "pulse_matches_requested_main": false,
+      "explicit_omissions": true
+    },
+    "maximum_state": "VERIFIED_CONTEXT_PACKET",
+    "claim_work": false,
+    "select_work": false,
+    "execute_tools": false,
+    "customer_contact": false,
+    "payment": false,
+    "deployment": false,
+    "authority_grant": false,
+    "buyer_acceptance": false,
+    "revenue_recognition": false,
+    "provider_writes": 0
+  },
+  "delta": {
+    "prior_terminal_main_sha": "b051a27a1f7f1eb0282cc74327de0c754f6578da",
+    "activation_base_main_sha": "099fe811c64e44082cec3b51d086cbecc59a3a8c",
+    "commits_in_delta": 227,
+    "changed_paths_in_delta": 321,
+    "remote_branches_observed": 3194,
+    "prior_remote_branches_observed": 3181,
+    "remote_branch_identity_boundary": "The connector exposed 3,194 current names across 33 nonempty pages, 13 more than the prior count; enumeration does not prove branch-tip movement.",
+    "prior_terminal_slack_ts": "1789295608.499779",
+    "commons_claim_slack_ts": "1789304964.289899",
+    "github_state": "The delta included released merged capabilities, active claimed work, queued hosted workflows and fresh review findings. Source PR #13837 merged at 693f695fe1fb0962c0e21ae1cea714aaee77ea1d, and all four source blobs remain exact on descendant main 099fe811c64e44082cec3b51d086cbecc59a3a8c.",
+    "delegations_state": "Fresh substantial lanes were already claimed or shipped by their existing owners; no nonduplicate unowned implementation gap survived.",
+    "todo_state": "No post-watermark todo receipt created a distinct unheld build lane.",
+    "shipped_builds_state": "New shipped receipts retained their own source, consumer and custody; queued hosted checks were not relabeled green.",
+    "products_state": "The context compiler has an internal worker/finalizer consumer and does not infer a buyer, payment, deployment or external authority from product presence.",
+    "leads_state": "Fresh lead and sales activity carried explicit outbound owners and DNR fences; no duplicate contact or buyer inference was made.",
+    "sales_state": "A new buyer contact receipt remained under its originating owner's custody and proved neither acceptance, payment nor recognized revenue.",
+    "automations": "Four enabled automations were exposed by the private automation peek, including this task; no lifecycle mutation was made by this wake.",
+    "connected_apps": "GitHub read/write and Slack read/write roads remained live. No account, credential, quota, device, customer or provider capacity was inferred from connector presence.",
+    "blocked_candidate": "The MCP cross-client conformance activation was claimed and then explicitly released before file mutation after exact PR history exposed a post-merge RED on masked hostile observation identity mismatches.",
+    "provider_observation": "No direct usage meter, provider session, credential, customer, wallet, device or deployment surface was probed or mutated."
+  },
+  "quota_lifecycle": {
+    "official_observation": "This wake's single official-source check found no reset announcement newer than the already-recorded September 7 automatic reset; the September 10 release note concerns Data and Library surfaces.",
+    "classification": "PRIOR_QUOTA_STATE_RETAINED_CURRENT_ALLOWANCE_UNMEASURED",
+    "observed_at": "2026-09-13T13:10:45Z",
+    "current_meter": "NOT_DIRECTLY_OBSERVED",
+    "routing": "Preserve a small emergency reserve, do not activate banked inventory, and do not recommend or buy an instant reset."
+  },
+  "build_orders": [],
+  "build_order_decision": "No build order was posted. The selected capability was already implemented and merged, the MCP defect already had exact review evidence, and the other fresh lanes had owners, landed work or owner-routed boundaries.",
+  "verification": {
+    "focused_tests": "Four exact source-head blobs matched descendant main; 8/8 tests passed normally and 8/8 optimized; compilation and packet/verify/render smoke passed.",
+    "privacy": "No credential, private account identifier, customer data, private file name, private business detail or incident narrative is copied into canonical metadata.",
+    "open_door": "The source and activation artifacts are public; compile, verify and render require no Commons login, buyer identity, customer data, credential or approval queue.",
+    "zero_fabrication": "A verified packet proves only bounded context. It proves no work claim, selection, execution, contact, payment, deployment, authority grant, buyer acceptance, revenue or cash.",
+    "collision": "Only ledger, append-only activation record, append-only receipt, focused ledger assertions and generated projection are owned. Source, queues, claims, customer/provider state, peer paths and foreign branches remain untouched."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-13T13:10:45Z",
+    "prior_terminal_main_sha": "b051a27a1f7f1eb0282cc74327de0c754f6578da",
+    "activation_base_main_sha": "099fe811c64e44082cec3b51d086cbecc59a3a8c",
+    "prior_terminal_slack_ts": "1789295608.499779",
+    "latest_delta_slack_ts": "1789304964.289899",
+    "commons_claim_slack_ts": "1789304964.289899",
+    "source_prs": [13837],
+    "latest_source_merge_sha": "693f695fe1fb0962c0e21ae1cea714aaee77ea1d",
+    "source_descendant_main_sha": "099fe811c64e44082cec3b51d086cbecc59a3a8c",
+    "remote_branches_observed": 3194,
+    "automations": "Four enabled automations exposed; no lifecycle mutation by this wake",
+    "openai_reset": "No newly verified reset; current meter not directly observed and no banked reset activated."
+  },
+  "projection": {"resources": 99, "producing": 71, "inventory_records": 61},
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789304964289899",
+    "released_blocked_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789304960858739?thread_ts=1789304898.349399&cid=C0BRGMDQB6G",
+    "source_pr": "https://github.com/woahwhattheheck/commons/pull/13837",
+    "source_descendant_tree": "https://github.com/woahwhattheheck/commons/tree/099fe811c64e44082cec3b51d086cbecc59a3a8c",
+    "official_banked_reset_help": "https://help.openai.com/en/articles/20001498-how-banked-codex-resets-work",
+    "official_release_notes": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+    "prior_terminal_receipt": "p/codex-cross-family-offering-bundle-composer-resource-activation-20260913-01.md"
+  },
+  "non_claims": [
+    "No source compiler, queue, claim, runtime, customer/provider state, peer-owned path or foreign branch was changed by this activation.",
+    "No Claude or Cursor session was contacted, launched, assigned as tester, verifier or reviewer, or treated as landing authority.",
+    "No work claim/selection, tool execution, customer contact, payment, deployment, authority grant, buyer acceptance, revenue recognition or cash was claimed.",
+    "No purchased or banked reset, provider call, spend, payment, submission or device operation occurred."
+  ],
+  "titan": "NOT_WRITTEN"
+}

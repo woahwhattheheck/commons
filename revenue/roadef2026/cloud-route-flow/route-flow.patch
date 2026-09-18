@@ -1,0 +1,28 @@
+--- a/main.cpp
++++ b/main.cpp
+@@ -171,14 +171,24 @@
+     bool routeFlow(int d, int t, const Route& route, Sparse& flow) {
+         flow.clear();
+         int from = demands[d].from;
++        std::size_t split = 0;
+         for (std::size_t k = 0; k <= route.size(); ++k) {
+             int to = k == route.size() ? demands[d].to : route[k];
+             const auto& part = segment(t, from, to);
+             if (!part.empty() && part.front().first == -1) return false;
++            split = flow.size();
+             flow.insert(flow.end(), part.begin(), part.end());
+             from = to;
+         }
+-        std::sort(flow.begin(), flow.end());
++        // A segment is already sorted and contains each directed edge once.
++        if (route.empty()) return true;
++        // For two sorted legs, preserve exactly the same (edge, ratio) order
++        // with a linear merge. Keep short and multi-waypoint routes on the
++        // original sort path; small sorts avoid the merge-buffer overhead.
++        if (route.size() == 1 && flow.size() > 32)
++            std::inplace_merge(flow.begin(), flow.begin() + split, flow.end());
++        else
++            std::sort(flow.begin(), flow.end());
+         std::size_t out = 0;
+         for (auto item : flow) {
+             if (out && flow[out - 1].first == item.first) flow[out - 1].second += item.second;

@@ -1,0 +1,44 @@
+{
+  "scope": "standalone submission protocol audit; one protocol-only full episode; no Kaggle write or strength claim",
+  "resolved_main": "f7af1b0ae8ba3bb5a4e981b54a93fcf439799246",
+  "selected_merge": "9db2f2f94666b3ca126f97ab98d28f9a3814de4f",
+  "archive": "revenue/kaggriculture/cloud-execution-lab/exports/titan-current.tar.gz",
+  "archive_sha256": "58f8e6c1808a28ad659e763e9d47ce45e566bc16d9248e28c9c2764f9ad66062",
+  "archive_bytes": 278337,
+  "entrypoint": "main.py::agent",
+  "source_manifest_sha256": "ab1704734b4082af14e322dfa3f32a5440f6a22338dd65530c52845604bca4c4",
+  "archive_validation": {
+    "runtime_members": 73,
+    "runtime_manifest_mismatches": 0,
+    "tar_members": 74,
+    "absolute_parent_or_link_members": 0
+  },
+  "raw_loader_episode": {
+    "engine_commit": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+    "engine_package": "1.32.7",
+    "loader_contract": "pinned build_agent/get_last_callable with loader-supplied __raw_path__",
+    "seed": 9922999,
+    "candidate_seat": 0,
+    "opponent": "official_starter",
+    "steps": 719,
+    "scores": [190319.0, 3550.0],
+    "failure": null,
+    "candidate_calls": 719,
+    "candidate_max_call_seconds": 0.05340280500240624,
+    "candidate_mean_call_seconds": 0.006286484125011662,
+    "candidate_max_rpc_seconds": 0.054014438996091485,
+    "candidate_mean_rpc_seconds": 0.006963801871900517,
+    "candidate_call_cpu_seconds": 4.517521037,
+    "candidate_peak_rss_kib": 23860,
+    "trace_sha256": "20133364cd0802a933f7936cac79f226f64179654157067f064401b468f6fc85"
+  },
+  "transport_defect": {
+    "before": "historical operation-only readback returned ALREADY_PRESENT for the new archive when an old operation row existed",
+    "repair": "readback now requires operation ID plus exact artifact SHA; CLI requires a fresh explicit operation ID",
+    "tests": 4,
+    "tests_passed": 4
+  },
+  "submission_instruction": "Upload these exact tar.gz bytes once. Do not unpack or repack. If using transport.py, use the repaired version and a fresh operation ID. Do not use narrow_archive_upload.py, which is pinned to the historical 79b407d payload.",
+  "notebook_instruction": "Direct archive submission is independent of the existing disclosure notebook. That notebook describes the historical 79b407d archive and must not be presented as the source identity for this checkpoint.",
+  "kaggle_writes": 0
+}

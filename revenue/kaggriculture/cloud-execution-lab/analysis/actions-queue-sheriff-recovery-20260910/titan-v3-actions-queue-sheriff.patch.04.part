@@ -1,0 +1,178 @@
+'
++            fake = self.FakeClient(
++                [run(9, created=dt.datetime(2000, 1, 1, tzinfo=UTC))],
++                status=409,
++            )
++            self.assertEqual(self.invoke(fake, report, '--apply'), 0)
++            data = json.loads(report.read_text())
++            self.assertEqual(data['cancellations'], [{
++                'outcome': 'already_terminal',
++                'run_id': 9,
++                'status': 409,
++            }])
++
++    def test_negative_cancel_delay_is_rejected_before_api_access(self):
++        with tempfile.TemporaryDirectory() as temp:
++            report = Path(temp) / 'receipt.json'
++            with self.assertRaisesRegex(SheriffError, 'cancel-delay-seconds'):
++                main([
++                    '--repository', 'owner/repo',
++                    '--report', str(report),
++                    '--cancel-delay-seconds', '-0.01',
++                ])
++
++
++class ClientRaceTests(unittest.TestCase):
++    def test_cancel_conflict_is_recorded_as_already_terminal(self):
++        client = GitHubClient("owner/repo", "not-a-real-token")
++        error = GitHubHTTPError("POST", "https://example.invalid", 409, "Conflict")
++        with mock.patch.object(client, "_request", side_effect=error):
++            self.assertEqual(client.cancel(123), 409)
++
++    def test_cancel_other_http_error_fails_closed(self):
++        client = GitHubClient("owner/repo", "not-a-real-token")
++        error = GitHubHTTPError("POST", "https://example.invalid", 403, "Forbidden")
++        with mock.patch.object(client, "_request", side_effect=error):
++            with self.assertRaises(GitHubHTTPError):
++                client.cancel(123)
++
++
++if __name__ == "__main__":
++    unittest.main()
+diff --git a/.github/workflows/actions-queue-sheriff.yml b/.github/workflows/actions-queue-sheriff.yml
+new file mode 100644
+--- /dev/null
++++ b/.github/workflows/actions-queue-sheriff.yml
+@@ -0,0 +1,143 @@
++name: actions-queue-sheriff
++
++on:
++  pull_request_target:
++    types: [closed]
++  workflow_dispatch:
++    inputs:
++      apply:
++        description: "Actually cancel classified stale runs (false is audit-only)"
++        required: true
++        type: boolean
++        default: false
++      stale_minutes:
++        description: "Grace period before unresolved PR/deleted-branch runs are cancellable"
++        required: true
++        type: number
++        default: 30
++      max_cancel:
++        description: "Maximum cancellation requests in this pass"
++        required: true
++        type: number
++        default: 1000
++      protect_run_ids:
++        description: "Comma/space-separated run IDs that must survive"
++        required: false
++        type: string
++        default: ""
++      protect_workflows:
++        description: "Newline-separated workflow-name globs that must survive"
++        required: false
++        type: string
++        default: "*one-tree*\n*publication*\n*release*"
++      protect_branches:
++        description: "Newline-separated branch globs that must survive"
++        required: false
++        type: string
++        default: "main\nrelease/*"
++
++permissions:
++  actions: write
++  contents: read
++  pull-requests: read
++
++concurrency:
++  group: actions-queue-sheriff
++  cancel-in-progress: false
++
++jobs:
++  classify-and-cancel:
++    runs-on: ubuntu-latest
++    timeout-minutes: 20
++    steps:
++      - uses: actions/checkout@v4
++        with:
++          # Never execute queue-mutating code from a feature branch. The closed
++          # PR event and manual audit both consume the trusted default branch.
++          ref: ${{ github.event.repository.default_branch }}
++          persist-credentials: false
++          sparse-checkout-cone-mode: false
++          sparse-checkout: |
++            /.github/scripts/queue_sheriff.py
++            /.github/scripts/test_queue_sheriff.py
++
++      - name: Prove classifier contracts
++        working-directory: .github/scripts
++        run: python -B -m unittest -v test_queue_sheriff.py
++
++      - name: Classify queue and optionally cancel stale runs
++        env:
++          GITHUB_TOKEN: ${{ github.token }}
++          DISPATCH_APPLY: ${{ inputs.apply }}
++          DISPATCH_STALE_MINUTES: ${{ inputs.stale_minutes }}
++          DISPATCH_MAX_CANCEL: ${{ inputs.max_cancel }}
++          DISPATCH_PROTECT_RUN_IDS: ${{ inputs.protect_run_ids }}
++          DISPATCH_PROTECT_WORKFLOWS: ${{ inputs.protect_workflows }}
++          DISPATCH_PROTECT_BRANCHES: ${{ inputs.protect_branches }}
++        shell: bash
++        run: |
++          set -euo pipefail
++          if [[ "$GITHUB_EVENT_NAME" == "pull_request_target" ]]; then
++            # This workflow is loaded from the trusted default branch. Closing a
++            # PR is an exact retirement signal, so no grace window is needed.
++            apply=true
++            stale_minutes=0
++            max_cancel=1000
++            protect_run_ids=""
++            protect_workflows=$'*one-tree*\n*publication*\n*release*'
++            protect_branches=$'main\nrelease/*'
++          else
++            apply="${DISPATCH_APPLY:-false}"
++            stale_minutes="${DISPATCH_STALE_MINUTES:-30}"
++            max_cancel="${DISPATCH_MAX_CANCEL:-1000}"
++            protect_run_ids="${DISPATCH_PROTECT_RUN_IDS:-}"
++            protect_workflows="${DISPATCH_PROTECT_WORKFLOWS:-}"
++            protect_branches="${DISPATCH_PROTECT_BRANCHES:-}"
++          fi
++          args=(
++            --repository "$GITHUB_REPOSITORY"
++            --report "$RUNNER_TEMP/actions-queue-sheriff.json"
++            --stale-minutes "$stale_minutes"
++            --max-cancel "$max_cancel"
++            --protect-run-ids "$GITHUB_RUN_ID $protect_run_ids"
++          )
++          while IFS= read -r pattern; do
++            [[ -z "$pattern" ]] || args+=(--protect-workflow "$pattern")
++          done <<< "$protect_workflows"
++          while IFS= read -r pattern; do
++            [[ -z "$pattern" ]] || args+=(--protect-branch "$pattern")
++          done <<< "$protect_branches"
++          [[ "$apply" == "true" ]] && args+=(--apply)
++          python -B .github/scripts/queue_sheriff.py "${args[@]}"
++
++      - name: Publish receipt summary
++        if: always()
++        shell: python
++        run: |
++          import json, os
++          from pathlib import Path
++          path = Path(os.environ['RUNNER_TEMP']) / 'actions-queue-sheriff.json'
++          if not path.exists():
++              raise SystemExit('queue sheriff did not produce a receipt')
++          data = json.loads(path.read_text())
++          keys = (
++              'mode', 'api_total_queued', 'visible_queued', 'api_search_truncated',
++              'open_pull_count', 'cancellable_visible', 'selected_for_cancellation',
++              'cancellable_not_selected',
++          )
++          summary = Path(os.environ['GITHUB_STEP_SUMMARY'])
++          with summary.open('a', encoding='utf-8') as out:
++              out.write('## Actions queue sheriff\n\n')
++              for key in keys:
++    

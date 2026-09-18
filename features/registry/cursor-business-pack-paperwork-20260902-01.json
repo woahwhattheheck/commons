@@ -1,0 +1,37 @@
+{
+  "added": "2026-09-02",
+  "capability": "Factory paperwork checklist for sold packs. Registration, EIN, sales tax, license, insurance, and contract slots stay OWNER_UNSET. Counsel stays HOLD_COUNSEL. This feature does not invent plant, desk, or ToS numbers.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "ground/BUSINESS_PACK_PAPERWORK.md",
+    "ground/BUSINESS_PACK_PAPERWORK.json",
+    "host/business_pack_paperwork.py",
+    "packs/_template/paperwork.md",
+    "test_business_pack_paperwork.py"
+  ],
+  "dependencies": [
+    "cursor-tjlabs-pack-tos-20260902-01"
+  ],
+  "id": "cursor-business-pack-paperwork-20260902-01",
+  "name": "Business pack factory paperwork checklist",
+  "next_gap": "Owner pastes registration/EIN/sales-tax/license/insurance/contract facts and counsel clears. Do not invent ToS percent, plant, or desk numbers.",
+  "owner_subsystem": "business-packs",
+  "public_entrypoint": "packs/_template/paperwork.md",
+  "related": {
+    "boards": true,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "ground/BUSINESS_PACK_PAPERWORK.md",
+    "packs/_template/paperwork.md",
+    "ground/BUSINESS_PACKS.md",
+    "ground/TJLABS_PACK_TERMS.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_business_pack_paperwork.py",
+    "host/business_pack_paperwork.py"
+  ]
+}

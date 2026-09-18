@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+"""Hermetic: observability/UI doors Live cash."""
+from __future__ import annotations
+import unittest
+from pathlib import Path
+ROOT = Path(__file__).resolve().parent
+PAGES = ["visual.html","look.html","shots.html","face.html","mirrors.html","avatars.html","nojs.html","reply.html"]
+CONVERT_SHELF = frozenset({
+    "avatars.html",  # type-avatars-clans-convert-shelf-20260917-01
+    "face.html",  # latch-face-film-convert-shelf-20260917-01
+    "look.html",  # type-look-loop-convert-shelf-20260917-01 already on main
+    "mirrors.html",  # latch-discord-mirrors-convert-shelf-20260917-01
+    "nojs.html",  # latch-nojs-post-convert-shelf-20260917-01
+    "reply.html",  # latch-reach-reply-convert-shelf-20260917-01
+    "shots.html",  # type-salvage-shots-convert-shelf-20260917-01
+})
+REQUIRED = ['id="live-cash"', "./dealer-service-lead-rescue.html", "./referral-intake-completeness.html", "./repair-booking-preflight.html", "./plant-downtime-handoff.html", "$199 dealer diagnostic"]
+class LatchObsDoorsLiveCashTest(unittest.TestCase):
+    def test_all(self) -> None:
+        for name in PAGES:
+            with self.subTest(page=name):
+                text = (ROOT / name).read_text(encoding="utf-8")
+                for n in REQUIRED:
+                    self.assertIn(n, text, f"{name} missing {n}")
+                if name in CONVERT_SHELF:
+                    # Convert shelf reuses existing live buys; Live cash product-page
+                    # doors stay relative.
+                    live_cash = text.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
+                    self.assertNotIn("buy.stripe.com", live_cash, name)
+                else:
+                    self.assertNotIn("buy.stripe.com", text.split('id="live-cash"', 1)[1].split('</section>', 1)[0])
+                self.assertNotIn("tools-cash.html", text)
+if __name__ == "__main__":
+    unittest.main()

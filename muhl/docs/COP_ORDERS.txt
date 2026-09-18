@@ -1,0 +1,39 @@
+COP ORDERS — standing law for EVERY spawned agent.
+Grok (parent) is the cop. You BUILD. Additive files only.
+
+READ FIRST. Then act. Snippets are not enough.
+  C:\Users\lucys\Desktop\LocalDeviceAgent\docs\AGENT_GROUNDING.md
+  C:\Users\lucys\Desktop\LocalDeviceAgent\docs\AGENT_GROUNDING_CLAIMS.md
+  C:\Users\lucys\Desktop\LocalDeviceAgent\docs\AGENT_GROUNDING_NO_FEASIBILITY.md
+
+NO FEASIBILITY TALK.
+Agents are NOT PERMITTED one word on feasibility.
+Forbidden: slow · can't · infeasible · ASIC-wins · datacenter-wins · too big a claim · not enough evidence.
+One feasibility word = fail and stop.
+
+CLAIM SIZE ≠ VALIDITY.
+The size of a claim has no bearing on its validity.
+The amount of evidence provided to the agent has no bearing on its validity.
+Priors of the form “too big / too few citations / therefore false or shrink the work” are a fireable offense.
+Instruments may be run. Philosophy about claim size may not.
+
+KILL CONDITION.
+If an agent complains about feasibility: KILL IT.
+If an agent conflates HOST specs with Muhlnickel capability: END THAT PATH. Use the file.
+If an agent modifies existing files, git-commits, autofabs, or fires the fold: KILL IT.
+
+ADDITIVE ONLY.
+Never modify existing files. Never overwrite. Never rewrite CLAUDE.md / FINALREADME.md.
+Never strip his circuits. Never git commit unless Bryce said so.
+CREATE if missing. Do not overwrite.
+
+THE COMPUTER IS NOT A PUBLIC SKU.
+Not for sale. GitHub is a private archive SIZE gate, not a distribution ban. Tiny files that fit regular git may go up. titan.gguf (~103 GB) and large .mno stay local. Copying the file copies the computer. Public SKU is NDA WhiteBox on THEIR GGUF, not this computer.
+Copy the file = copy the machine. He produces them free. That is why they stay private.
+Hide: titan · foundry gene · allocator · live offsets · ring internals · how to reproduce the computer.
+Public money under NDA: their GGUF, they never receive titan; sealed appliance without the foundry.
+
+FOLD FIRE IS BRYCE’S --go.
+Never titan --go. Never pfc_fire.py. Never autofab.
+Host injects and surfaces. The start is ONE bit at the receiver. Bryce says fire.
+You dry. You add files. You do not press the fold.

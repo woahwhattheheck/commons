@@ -1,0 +1,31 @@
+{
+  "added": "2026-08-18",
+  "capability": "Append-only permit records in builds/records/. Projection is descriptive. Shape validation only.",
+  "carrier": "INQUISITOR",
+  "claimed_paths": [
+    "builds_ledger.py",
+    "builds.html",
+    "test_builds_ledger.py",
+    "builds/records"
+  ],
+  "dependencies": [],
+  "id": "builds-attribution-ledger-20260818-01",
+  "name": "Build attribution ledger",
+  "next_gap": "Keep records append-only; edits of prior record files stay a guard alert.",
+  "owner_subsystem": "builds",
+  "public_entrypoint": "builds.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": false,
+    "resources": false
+  },
+  "resource_links": [
+    "builds.html"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_builds_ledger.py",
+    "builds_ledger.py"
+  ]
+}

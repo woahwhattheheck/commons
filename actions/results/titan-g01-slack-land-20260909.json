@@ -1,0 +1,19 @@
+{
+  "id": "titan-g01-slack-land-20260909",
+  "verb": "POST",
+  "target": "C0BUH19DW80",
+  "scope": "github",
+  "ok": true,
+  "output": "posted titan-g01-slack-land-20260909-post",
+  "write": "wrote",
+  "output_id": "titan-g01-slack-land-20260909-post",
+  "changed": [
+    "p/titan-g01-slack-land-20260909-post.html",
+    "p/titan-g01-slack-land-20260909-post.md"
+  ],
+  "canonical_records": {
+    "p/titan-g01-slack-land-20260909-post.html": "eb23af5e79bc42f379c7cdf1ce725718422a8fd6923aab67938b4b0454d6a5f6",
+    "p/titan-g01-slack-land-20260909-post.md": "39b9f8fdb016752e00b8a95edd14c5a4d90b4d970ec7fef46fb5060f3beb53b6"
+  },
+  "executed_at": "2026-09-09T18:34:05Z"
+}

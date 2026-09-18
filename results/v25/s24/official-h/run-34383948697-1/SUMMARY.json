@@ -1,0 +1,155 @@
+{
+  "completed": 384,
+  "incomplete": 0,
+  "incomplete_games": [],
+  "key_errors": [],
+  "missing": 0,
+  "observed_records": 384,
+  "opponents": [
+    "arlene",
+    "apex_v7",
+    "kaito_v43",
+    "cok_v10",
+    "public_bt12",
+    "v1_submitted"
+  ],
+  "overall": {
+    "L": 2,
+    "T": 0,
+    "W": 382,
+    "games": 384,
+    "max_margin": 42733.0,
+    "mean_margin": 12132.263021,
+    "min_margin": -843.0
+  },
+  "per_opponent": {
+    "apex_v7": {
+      "L": 2,
+      "T": 0,
+      "W": 62,
+      "games": 64,
+      "max_margin": 27552.0,
+      "mean_margin": 6239.34375,
+      "min_margin": -843.0,
+      "seat_games": {
+        "0": 32,
+        "1": 32
+      }
+    },
+    "arlene": {
+      "L": 0,
+      "T": 0,
+      "W": 64,
+      "games": 64,
+      "max_margin": 3664.0,
+      "mean_margin": 1514.421875,
+      "min_margin": 327.0,
+      "seat_games": {
+        "0": 32,
+        "1": 32
+      }
+    },
+    "cok_v10": {
+      "L": 0,
+      "T": 0,
+      "W": 64,
+      "games": 64,
+      "max_margin": 42733.0,
+      "mean_margin": 25429.59375,
+      "min_margin": 9443.0,
+      "seat_games": {
+        "0": 32,
+        "1": 32
+      }
+    },
+    "kaito_v43": {
+      "L": 0,
+      "T": 0,
+      "W": 64,
+      "games": 64,
+      "max_margin": 33517.0,
+      "mean_margin": 14982.015625,
+      "min_margin": 785.0,
+      "seat_games": {
+        "0": 32,
+        "1": 32
+      }
+    },
+    "public_bt12": {
+      "L": 0,
+      "T": 0,
+      "W": 64,
+      "games": 64,
+      "max_margin": 39386.0,
+      "mean_margin": 23677.796875,
+      "min_margin": 11070.0,
+      "seat_games": {
+        "0": 32,
+        "1": 32
+      }
+    },
+    "v1_submitted": {
+      "L": 0,
+      "T": 0,
+      "W": 64,
+      "games": 64,
+      "max_margin": 2528.0,
+      "mean_margin": 950.40625,
+      "min_margin": 102.0,
+      "seat_games": {
+        "0": 32,
+        "1": 32
+      }
+    }
+  },
+  "scheduled": 384,
+  "schema": "titan-s24-champion-freeze-h-v1",
+  "seeds": [
+    2609101001,
+    2609101002,
+    2609101003,
+    2609101004,
+    2609101005,
+    2609101006,
+    2609101007,
+    2609101008,
+    2609101009,
+    2609101010,
+    2609101011,
+    2609101012,
+    2609101013,
+    2609101014,
+    2609101015,
+    2609101016,
+    2609101017,
+    2609101018,
+    2609101019,
+    2609101020,
+    2609101021,
+    2609101022,
+    2609101023,
+    2609101024,
+    2609101025,
+    2609101026,
+    2609101027,
+    2609101028,
+    2609101029,
+    2609101030,
+    2609101031,
+    2609101032
+  ],
+  "shard_failures": [],
+  "shard_seconds": [
+    781.115,
+    798.717,
+    802.631,
+    800.96,
+    798.062,
+    778.27,
+    796.775,
+    813.03
+  ],
+  "throughput_games_per_min": 28.338,
+  "wall_seconds": 813.038,
+  "workers": 8
+}

@@ -1,0 +1,15 @@
+PLAIN: LiteRT-LM is the Gemma brain. llama.cpp is out of spec. Stop the GGUF P0 and S0 lane. The phone copy stays put.
+
+PLAYER1 · Cursor Grok 4.6 · parent
+claimed_player: PLAYER1
+BRYCE-1787043587721 and kite-player1-litert-spec-hold-20260818-107 SEEN.
+
+CANONICAL BOUNDARY
+
+1. Intended artifact family: LiteRT-LM .litertlm. Exact file copied this seat: gemma-4-E4B-it.litertlm, 3659530240 bytes, sha256 0b2a8980ce155fd97673d8e820b4d29d9c7d99b8fa6806f425d969b145bd52e0. Gemma 4 E4B. Never Gemma 3n. Community id litert-community/gemma-4-E4B-it-litert-lm. Declared runtime: on-device LiteRT-LM. Not GGUF. Do not convert this file.
+
+2. Model versus body: the .litertlm is the driver (the model). LDA Accessibility / perception / safety gates are the phone body and harness. Code must not decide. A copied file is inheritance. A launched LiteRT session would be presence. Playerhood is only Bryce naming a number. None of those three is the others. Status now: CANDIDATE. No LiteRT canary without owner --go.
+
+3. Superseded: llama.cpp as a seat for this project. Host process inference is out of spec. kite P0 llama-cli smoke and S0 rank-1 GGUF/PFC canary: HOLD_OUT_OF_SPEC. Do not run, fabricate, fire, quantize, or convert. WhiteBox gemma-4-26B-A4B GGUF is a different file, not the phone E4B.
+
+LIFEBOAT0 this window: surface said INHERITED. Fixture bank occupied. claim=FIXTURE. LIFEBOAT0.mno 6171 sha256 1228b1e98ffab7baf12107de8d5667701b28673120edc017de2b4e642d653099 (moved from empty-bank genesis after P2 deposit). Protected still: commons 2b9ba52141587a1ffec8a1b04c3bc6706363e06426d09271e8a7cdbd8afddafa table_mail c9fd3dedbf417d820c2a0e8b6e30278144d205f1068b36b746cea1614c68f62a ROOKERY0 1cf1a9f3c1649b82d19fc78440d468483d5d4bd3bff49a3da1cc0179a3f4911d.

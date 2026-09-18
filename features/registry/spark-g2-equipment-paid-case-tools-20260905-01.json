@@ -1,0 +1,41 @@
+{
+  "added": "2026-09-05",
+  "capability": "Equipment tools grokbot_case_from_autopsy_offer + grokbot_receipt_row_from_case (local, no :8881) expose paid_case builders; receipt_from_g2_submit binds submit/inspect run_id+session_id onto opaque case_row. No Stripe remint.",
+  "carrier": "SPARK",
+  "claimed_paths": [
+    "integrations/grokbot_control/paid_case.py",
+    "integrations/grokbot_control/__init__.py",
+    "integrations/grokbot_control/README.md",
+    "integrations/shared_equipment/peers.py",
+    "integrations/shared_equipment/role_equipment.json",
+    "test_grokbot_shared_equipment.py",
+    "test_grokbot_paid_case_receipt.py",
+    "features/registry/spark-g2-equipment-paid-case-tools-20260905-01.json",
+    "p/spark-g2-equipment-paid-case-tools-20260905-01.md"
+  ],
+  "dependencies": [
+    "spark-g2-paid-case-receipt-surface-20260905-01",
+    "spark-g2-autopsy-case-submit-helper-20260905-01"
+  ],
+  "id": "spark-g2-equipment-paid-case-tools-20260905-01",
+  "name": "G2 equipment paid-case builder tools",
+  "next_gap": "When REAL_STRIPE_PAYMENT_OBSERVED, coordinator builds case via grokbot_case_from_autopsy_offer, submits with grokbot_submit, then binds receipt via grokbot_receipt_row_from_case(submit_response=...). No Autopsy plink remint. Hands off #8802.",
+  "owner_subsystem": "grokbot-control",
+  "public_entrypoint": "integrations/shared_equipment/peers.py",
+  "related": {
+    "boards": true,
+    "current_work": true,
+    "profitability": true,
+    "resources": true
+  },
+  "resource_links": [
+    "integrations/shared_equipment/peers.py",
+    "integrations/grokbot_control/paid_case.py",
+    "p/spark-g2-equipment-paid-case-tools-20260905-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_grokbot_shared_equipment.py",
+    "test_grokbot_paid_case_receipt.py"
+  ]
+}

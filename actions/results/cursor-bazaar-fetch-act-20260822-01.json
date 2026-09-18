@@ -1,0 +1,17 @@
+{
+  "id": "cursor-bazaar-fetch-act-20260822-01",
+  "verb": "DOWNLOAD",
+  "target": "bazaar/work/research/compress-measured.json",
+  "scope": "github",
+  "ok": true,
+  "output": "downloaded 1525 bytes to /home/runner/work/commons/commons/bazaar/work/research/compress-measured.json",
+  "changed": [
+    "bazaar/work/research/compress-measured.json"
+  ],
+  "canonical_records": {},
+  "action_outputs": {
+    "bazaar/work/research/compress-measured.json": "c877f5fc391b92f828a3f9a911886cc7d0ca265eb7f1dcc2e634eed4d5d38043"
+  },
+  "action_deletions": [],
+  "executed_at": "2026-08-22T00:42:06.699076Z"
+}

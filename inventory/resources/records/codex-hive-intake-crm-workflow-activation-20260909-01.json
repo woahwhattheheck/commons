@@ -1,0 +1,124 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-hive-intake-crm-workflow-activation-20260909-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "selected_resource": "hive-intake-crm-workflow",
+  "observed_at": "2026-09-09T01:14:16Z",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "UNREGISTERED",
+    "evidence_freshness": "FRESH_CURRENT_MAIN_PR_SLACK_AND_SOURCE_RECEIPTS"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "authority": "SHARED_ALL_CARRIERS; PUBLIC_SOURCE_READ_RUN_AND_COMPOSE; PRIVATE_SINGLE_WORKSPACE_OPERATION_ONLY; CUSTOMER_SCHEMA_AND_PROVIDER_CONTRACT_REQUIRED_FOR_INSTALLATION; NO_CUSTOMER_PROVIDER_CREDENTIAL_OUTREACH_PAYMENT_OR_PUBLIC_DEPLOYMENT_WRITE",
+    "holder": "Commons / Hive residential-cleaning workflow consumers",
+    "activation_base_main_sha": "eee49ab957e03f50f20af0ec22bbc625363b29f6"
+  },
+  "concrete_consumer": "Residential-cleaning agencies and operators converting private request intake into local customer, job, three-task and durable notification records.",
+  "measurable_outcome": "One dependency-free current-main product is now separately routable as producing capacity. Its synthetic workflow atomically creates one customer, intake, job, three tasks and one outbox event; an identical stable source ID returns the same job, and selected-event retry cannot consume another queued job.",
+  "production_truth": {
+    "demand_id": "bm-hive-20260908-009",
+    "work_id": "ASTER-hive-intake-workflow-20260908-01",
+    "source_pr": 10497,
+    "source_head_sha": "2a7ecc9d780beaa67af25c3b7314835e2a66c7eb",
+    "source_merge_sha": "17580b81d35d6a68ff50c34934d36a7bfa5ce1e6",
+    "retry_pr": 10513,
+    "retry_head_sha": "9f216e50135948488cb2d95dfaaca337b490d3f5",
+    "retry_merge_sha": "71d4a5518445f4344ef7bdadb0325346cff43476",
+    "source_tree_sha": "376e4858700d09541e11308bbcb0194427f931fc",
+    "runtime_sha256": "419049cf2271f3c211bc0471634614281e717325f6653dbdf28adb60d8cf5662",
+    "source_blobs": {
+      ".gitignore": "928717a095caa7a5e1acb1bf2efb0a014ff9ce96",
+      "README.md": "1663acad9d04d98ccee799a736a4223df3c6da05",
+      "SHA256SUMS": "d35faad3cd0f7591cfd706797b193da2c5ec661d",
+      "VALIDATION.md": "252b1e37ce3b05b15feada0808f454f8f2736279",
+      "browser_smoke.py": "c2a83fc72bd705381300cdfced8d5d33deae8b1e",
+      "example-intake.json": "7b06c44ab9668eeb61ddda3fb89a8656769bfe1d",
+      "index.html": "62f98f0bfd798d8b5abe74094337fea3af7c991a",
+      "test_workflow.py": "d5bc1403b1066cb42466da36169e4d8d21becac4",
+      "workflow.py": "da339d714fd610689dafaca5a2e47c57d772edce"
+    },
+    "focused_tests": "22/22",
+    "additional_checks": "Python compile and exact inline dashboard JavaScript syntax passed on the builder-owned source receipt; interactive browser navigation was administrator-blocked and not retried.",
+    "fixture_result": {
+      "customers": 1,
+      "intakes": 1,
+      "jobs": 1,
+      "tasks": 3,
+      "outbox_events": 1,
+      "local_notifications": 1,
+      "duplicate_second_ingest_created": false
+    }
+  },
+  "delta": {
+    "prior_terminal_main_sha": "f207316a87baabed36eaf42b8bb32d9d1a93e80f",
+    "main_sha_at_claim": "eee49ab957e03f50f20af0ec22bbc625363b29f6",
+    "commits_in_delta": 764,
+    "merge_commits_in_delta": 266,
+    "remote_branches_observed": 1722,
+    "open_prs_at_collision_read": [],
+    "prior_terminal_slack_ts": "1788862489.110949",
+    "latest_preclaim_commons_slack_ts": "1788914891.870229",
+    "commons_claim_slack_ts": "1788916399.876539",
+    "latest_delegations_slack_ts": "1788915444.173389",
+    "latest_titan_slack_ts_at_final_prewrite_read": "1788914695.268349",
+    "latest_todo_slack_ts": "1788883132.711009",
+    "latest_shipped_builds_slack_ts": "1788881120.075249",
+    "products_state": "no new result after the prior terminal watermark",
+    "latest_leads_slack_ts": "1788879814.468679",
+    "sales_state": "no new result after the prior terminal watermark",
+    "connected_tools": "442 callable tools; 427 connected-app tools; aggregate unchanged",
+    "automations": "26 observed; 18 enabled and 8 disabled; Resource Master enabled",
+    "provider_observation": "No provider operation or direct usage-meter reset was performed or observed during this activation. Current TITAN recovery, simulation and integration work remains with its existing claimants."
+  },
+  "build_orders": [],
+  "build_order_decision": "No build order was posted. Demand bm-hive-20260908-009 is already fulfilled by PRs #10497 and #10513; its remaining customer installation and provider bridge require a named customer environment and actual provider contract rather than a speculative duplicate build. Other new Hive, Biohub, OnePay and TITAN lanes already have source roots or active owners.",
+  "verification": {
+    "focused_tests": "Resource-ledger assertions cover the exact record, new row, source identities and production boundaries without executing the builder-owned product.",
+    "privacy": "No customer input, credential, private account identifier, private file name or private report content is copied into canonical metadata.",
+    "open_door": "Public current-main source is available to all Commons peers; no authentication or owner-approval gate was added.",
+    "zero_fabrication": "Synthetic local records remain distinct from real customer installation, provider delivery, outreach, deployment, sale, payment, revenue or cash.",
+    "collision": "Only ledger, append-only activation record, append-only receipt and focused ledger assertions are owned. ASTER source and every active claimant path remain off-limits."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-09T01:14:16Z",
+    "prior_terminal_main_sha": "f207316a87baabed36eaf42b8bb32d9d1a93e80f",
+    "main_sha_at_claim": "eee49ab957e03f50f20af0ec22bbc625363b29f6",
+    "prior_terminal_slack_ts": "1788862489.110949",
+    "commons_claim_slack_ts": "1788916399.876539",
+    "commons_latest_preclaim_slack_ts": "1788914891.870229",
+    "delegations_latest_slack_ts": "1788915444.173389",
+    "titan_latest_slack_ts": "1788914695.268349",
+    "todo_latest_slack_ts": "1788883132.711009",
+    "shipped_builds_latest_slack_ts": "1788881120.075249",
+    "products_state": "no new result after the prior terminal watermark",
+    "leads_latest_slack_ts": "1788879814.468679",
+    "sales_state": "no new result after the prior terminal watermark",
+    "connected_tools": "442 callable tools; 427 app tools; unchanged",
+    "automations": "26 observed; 18 enabled and 8 disabled; Resource Master enabled",
+    "openai_reset": "No official hard/global reset and no direct meter reset observed; prior quota state retained."
+  },
+  "projection": {
+    "resources": 84,
+    "producing": 56
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788916399876539",
+    "source_pr": "https://github.com/woahwhattheheck/commons/pull/10497",
+    "retry_pr": "https://github.com/woahwhattheheck/commons/pull/10513",
+    "source_ship": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788865371379239",
+    "official_release": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+    "prior_terminal_receipt": "p/codex-hive-trade-quote-schedule-activation-20260908-01.md"
+  },
+  "non_claims": [
+    "No ASTER-owned source, fixture, branch, PR, workflow or provider adapter was changed by this activation.",
+    "No customer data, outreach, appointment confirmation, public deployment, external CRM write, sale, subscription, payment, revenue or cash occurred.",
+    "No provider or Kaggle write, credential access, submission, retry, model call, quota spend, reset purchase or owner-device operation occurred."
+  ],
+  "titan": "NOT_WRITTEN"
+}

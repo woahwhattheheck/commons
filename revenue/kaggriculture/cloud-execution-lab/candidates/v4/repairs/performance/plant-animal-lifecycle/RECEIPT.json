@@ -1,0 +1,268 @@
+{
+  "lane": "ASTRA-PHENOLOGY",
+  "status": "COMPLETE_SOURCE_ONLY_COLD_NATIVE_PROBES",
+  "canonical_branch": "main",
+  "workspace": "revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/performance/plant-animal-lifecycle",
+  "source": {
+    "evidence_support.py": {
+      "sha256": "bc559aff50f085a8249667ab946ea5347f35b1701397a6ac77a23d85ba68987d",
+      "git_blob": "cc387248cc2a810303e659317bb739de50fe28d2",
+      "bytes": 4621
+    },
+    "measure_lifecycle.py": {
+      "sha256": "d13e19c6ae444865e9010d45b6d1534c235e8115d98f331a11ee3edb67a16173",
+      "git_blob": "d327e184bc10ab17dc0ce00d2f531ba5bd77fa6c",
+      "bytes": 4244
+    },
+    "native_gate.py": {
+      "sha256": "262ac8ccc9a78846777ed69fe38a668482a1b3b1b6f0937150441dce94d1fc75",
+      "git_blob": "2d7907faf73f719f8f1ec4b35b09d6e0876a3057",
+      "bytes": 9748
+    },
+    "repair_lifecycle.py": {
+      "sha256": "0cade23870f06b329f91eec136e3b3089a017d334fe21475e6ecf06a8c301feb",
+      "git_blob": "caa51332e72ca7ef44e0758da687e292d7d5e40f",
+      "bytes": 4109
+    },
+    "test_lifecycle.py": {
+      "sha256": "d8e6d8494fa3a6f2fd48909d41fe55856ae697e13e906a66af0cfc57fa883207",
+      "git_blob": "5c362c41d0e1e5421460691c8551bc07b76e02df",
+      "bytes": 12116
+    },
+    "README.md": {
+      "sha256": "18c96bf9f3bf5765aa9909878d1b7424ad536257c8b87cfbc28001df83dbbf54",
+      "git_blob": "fda413b87dbe999cf3b1279b98c3cf3332243e9e",
+      "bytes": 6700
+    },
+    "EVIDENCE.b64.00": {
+      "sha256": "1fa204a89a6dc27e8e471c2e02fa03b3a219d32dd86789c208f6d1fc5ae5c833",
+      "git_blob": "2f4fdbff134b6ec51f67b56159d28d980c49be34",
+      "bytes": 2505
+    },
+    "EVIDENCE.b64.01": {
+      "sha256": "750e5f70954128397bc30e15ea53790cd2f7bd9d78c760a0715cde7d9e7c6523",
+      "git_blob": "3ee4af4e1b6e80888ad19fcde38af096272e3289",
+      "bytes": 2505
+    },
+    "EVIDENCE.b64.02": {
+      "sha256": "b7c325c8b9936c7d1eb130c5889f91d44e549b0023472eb88ed0a67ea23ea263",
+      "git_blob": "a53970c726b8a11bdcf34dbc23beede8bf5da8fb",
+      "bytes": 2505
+    },
+    "EVIDENCE.b64.03": {
+      "sha256": "b139d7c1d5ba500b3b5d29cf21702ae7d258f1bb582c99f6575183bab4ff5cc0",
+      "git_blob": "f5388f0c36338369fed1416ce613833da946b7aa",
+      "bytes": 2509
+    }
+  },
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "input": {
+    "artifact_id": 10175943272,
+    "zip_sha256": "3a3b74936d238bf884f89a1b279f42676cda35c590f131a6a3548de52d61b4e8",
+    "archive_sha256": "b567942e4fb4e0571ebf9f8eaaf143d4a9156df3289f09a98db37823ef4d68d9",
+    "manifest_sha256": "e87d70dd3bcf5aea1e929f1a5dbdc86f3cc33d8a0b3492986f2970fc8e774be2",
+    "authenticated_runtime_files": 109,
+    "mechanics_git_blob": "044a4f9c0a4a44dde10ada57563238bcaf82075d",
+    "function_sha256": {
+      "_decay_plants": "aac4a2dffe4fcfe2e608ad2a7f50241ee497d0a8919d26f0ecb062ba9bfdf40c",
+      "_daily_refresh_plants": "d4f651c87a027ed0da36ab6484a55173c9e50ec1b1766cf8b10b09860defb853",
+      "_daily_refresh_animals": "ba957381e16ca43f8e39c9cddfa982a2a91936e1af22864eb821cdc9ee15a3e0"
+    }
+  },
+  "candidate_mechanics_git_blob": "ccfb28728a31d6c242669c85eba7d4904619c13d",
+  "candidate_mechanics_sha256": "9439887cb143bee1d1dfe405e80282dc7c07363c74a31f226fa68e6b3989a499",
+  "component_per_mode": {
+    "tests_passed": 17,
+    "skips": 0,
+    "errors": 0,
+    "native_official_candidate_comparison_triplets": 4353,
+    "serviced_sequence_steps": 720,
+    "serviced_sequence_calls_per_module": 780,
+    "full_interpreter_pairs": 120,
+    "full_interpreter_calls_including_initialization": 360,
+    "semantic_mutants_assertion_rejected": 7,
+    "witness_tests_executed_per_mutant": 7
+  },
+  "native": {
+    "scope": "artifact-native foundation only, not whole-current assembled V4 or hosted Kaggle",
+    "seeds": [
+      9600913,
+      9922031
+    ],
+    "seats": [
+      0,
+      1
+    ],
+    "opponent": "pinned official starter",
+    "uninstrumented_pairs_per_mode": 4,
+    "modes": [
+      "normal",
+      "optimized"
+    ],
+    "probe_pairs_normal_only": 2,
+    "probe_seed": 9600913,
+    "total_complete_games": 20,
+    "total_native_agent_calls": 14380,
+    "incomplete_calls": 0,
+    "action_state_trace_reward_equal": true,
+    "normal_optimized_equal": true,
+    "raw_surplus_hand_rows_preserved": true,
+    "max_call_seconds": 0.18181926199986265,
+    "engagement": [
+      {
+        "seed": 9600913,
+        "seat": 0,
+        "disposition": "COLD_ON_PROBE",
+        "counts": {
+          "_decay_plants": 0,
+          "_daily_refresh_plants": 0,
+          "_daily_refresh_animals": 0
+        },
+        "instrumented_from_step": 1,
+        "instrumented_modules": [
+          "mechanics",
+          "_titan_pressure_mechanics"
+        ],
+        "positive_controls_passed": true
+      },
+      {
+        "seed": 9600913,
+        "seat": 1,
+        "disposition": "COLD_ON_PROBE",
+        "counts": {
+          "_decay_plants": 0,
+          "_daily_refresh_plants": 0,
+          "_daily_refresh_animals": 0
+        },
+        "instrumented_from_step": 1,
+        "instrumented_modules": [
+          "mechanics",
+          "_titan_pressure_mechanics"
+        ],
+        "positive_controls_passed": true
+      }
+    ]
+  },
+  "component_benchmarks": {
+    "normal": [
+      {
+        "density": 0.0,
+        "function": "_decay_plants",
+        "median_ratio": 1.311864031215486
+      },
+      {
+        "density": 0.0,
+        "function": "_daily_refresh_plants",
+        "median_ratio": 1.2340621982496172
+      },
+      {
+        "density": 0.0,
+        "function": "_daily_refresh_animals",
+        "median_ratio": 1.1194411679475615
+      },
+      {
+        "density": 0.5,
+        "function": "_decay_plants",
+        "median_ratio": 1.1769285958033102
+      },
+      {
+        "density": 0.5,
+        "function": "_daily_refresh_plants",
+        "median_ratio": 1.1843725946606922
+      },
+      {
+        "density": 0.5,
+        "function": "_daily_refresh_animals",
+        "median_ratio": 1.2884203535715253
+      },
+      {
+        "density": 1.0,
+        "function": "_decay_plants",
+        "median_ratio": 1.0390000137159787
+      },
+      {
+        "density": 1.0,
+        "function": "_daily_refresh_plants",
+        "median_ratio": 1.1116794140382809
+      },
+      {
+        "density": 1.0,
+        "function": "_daily_refresh_animals",
+        "median_ratio": 1.2403284486079973
+      }
+    ],
+    "optimized": [
+      {
+        "density": 0.0,
+        "function": "_decay_plants",
+        "median_ratio": 1.2557070644884858
+      },
+      {
+        "density": 0.0,
+        "function": "_daily_refresh_plants",
+        "median_ratio": 1.308302992520613
+      },
+      {
+        "density": 0.0,
+        "function": "_daily_refresh_animals",
+        "median_ratio": 1.0747367069598066
+      },
+      {
+        "density": 0.5,
+        "function": "_decay_plants",
+        "median_ratio": 1.1209271987058207
+      },
+      {
+        "density": 0.5,
+        "function": "_daily_refresh_plants",
+        "median_ratio": 1.1954135767358973
+      },
+      {
+        "density": 0.5,
+        "function": "_daily_refresh_animals",
+        "median_ratio": 1.292835452924017
+      },
+      {
+        "density": 1.0,
+        "function": "_decay_plants",
+        "median_ratio": 1.2822687665775971
+      },
+      {
+        "density": 1.0,
+        "function": "_daily_refresh_plants",
+        "median_ratio": 1.168209258490379
+      },
+      {
+        "density": 1.0,
+        "function": "_daily_refresh_animals",
+        "median_ratio": 1.190408832074734
+      }
+    ]
+  },
+  "limitations": [
+    "No current-default acceleration or strength claim: all three measured root functions are cold on both-seat probes; first callback is excluded from counters.",
+    "Timing ratios are local component medians, nine alternating pairs per workload with copies excluded; no deadline-rate or field-EV inference.",
+    "Current default is frozen with terminal_route, fourth_quadrant, spatial_pathing, spatial_tempo and terminal_history disabled; ordered/optional spatial callers were not activated.",
+    "Only mechanics.py differs in disposable candidate stages; every other authenticated runtime byte is unchanged before/after each final pair.",
+    "No whole-current multi-repair composition, broad baseline unittest discovery, Python3.11 or hosted runner test.",
+    "Earlier interrupted monolithic runner experiments are excluded; all20 counted games were rerun through the final driver whose digest is bound in every pair record.",
+    "No production/config/default/archive/Kaggle/workflow modifications; source claim complete, not an active feature or queued build."
+  ],
+  "claim": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1789181913287849",
+  "evidence": {
+    "encoding": "base64-partitioned gzip JSON",
+    "parts": [
+      "EVIDENCE.b64.00",
+      "EVIDENCE.b64.01",
+      "EVIDENCE.b64.02",
+      "EVIDENCE.b64.03"
+    ],
+    "reconstructed_gzip": {
+      "sha256": "fe390c4346585303118a01337943e6eb81684473a52bf677abb9dbff687593c6",
+      "git_blob": "da3102e9e32d1f45ac723eea531e2874ff420317",
+      "bytes": 7515
+    },
+    "decompressed_bytes": 86255,
+    "content": "files mapping; final component and mutant logs, benchmark samples, ten final native pair receipts"
+  }
+}

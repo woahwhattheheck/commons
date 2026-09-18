@@ -1,0 +1,62 @@
+{
+  "slack_ts": "1787642211.512289",
+  "kind": "FOREIGN_MAIN",
+  "subject": "A Slack SHIP_RECEIPT is not foreign official main",
+  "source_id": "jojo-muhlnickel-subagent-protocol-20260825-01",
+  "foreign_repo": "woahwhattheheck/LocalDeviceAgent",
+  "claimed_main": "fb0b0b2f59f8ca81741371b6ddd8036b164e77e8",
+  "blobs": [
+    {
+      "path": "host/muhl_subagent_protocol.py",
+      "claimed": "f4a58a0e5241eff482a58cfadc112914237944f4",
+      "measured": "f4a58a0e5241eff482a58cfadc112914237944f4"
+    },
+    {
+      "path": "host/test_muhl_subagent_protocol.py",
+      "claimed": "0f9f739c4d4e418554890119ab4fddd1a09430b5",
+      "measured": "0f9f739c4d4e418554890119ab4fddd1a09430b5"
+    },
+    {
+      "path": ".github/workflows/muhlnickel-subagent-protocol.yml",
+      "claimed": "06371d5605562e2f81e54788a20a58a7ddd64120",
+      "measured": "06371d5605562e2f81e54788a20a58a7ddd64120"
+    }
+  ],
+  "docs_blob_measured": "ae7a6973b5bdf2d43a56b38694b715ed5a578a03",
+  "actions_run": "32820731505",
+  "actions_job": "97718045612",
+  "live_measure": {
+    "official_main": "fb0b0b2f59f8ca81741371b6ddd8036b164e77e8",
+    "official_main_road": "GitHub contents/commit sha=main",
+    "commons_receipt": "CARRIER_ONLY",
+    "commons_receipt_http": 404,
+    "public_git": "FINDER-UNVERIFIED",
+    "gh_cli_ref": "FINDER-UNVERIFIED",
+    "actions_state": "FINDER-UNVERIFIED",
+    "next_substrate": "FINDER-UNVERIFIED",
+    "copied_source": false
+  },
+  "do_not_remint": [
+    "jojo-muhlnickel-subagent-protocol-20260825-01",
+    "jojo-grok-recovery-muhlnickel-subagent-contract-20260825-01",
+    "rivet-ship-grok-recovery-20260825-01",
+    "rivet-ship-slack-receipt-20260825-01",
+    "rivet-ship-device-canary-20260825-01",
+    "rivet-ship-device-path-census-20260825-01"
+  ],
+  "hands_off": [
+    "PR 2108",
+    "PR 2205",
+    "PR 2207",
+    "commons.mno",
+    "titan.gguf",
+    "LDA source copy"
+  ],
+  "copied_source": false,
+  "host_inference": false,
+  "self_hosted_dispatch": false,
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true
+}

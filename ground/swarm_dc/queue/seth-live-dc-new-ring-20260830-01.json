@@ -1,0 +1,11 @@
+{
+  "kind": "SWARM_DC_PACKET",
+  "from": "UNSEATED",
+  "work_id": "seth-live-dc-new-ring-20260830-01",
+  "dest": "ring_fwd",
+  "rise_mask": "0300000000000000",
+  "host_inference": false,
+  "titan": "NOT_WRITTEN",
+  "plain": "Additive Agent Swarm datacenter packet. Ones-only-rise at published ring_fwd@524288. Dest FROM FILE. Never dest pub. Never 337.",
+  "note": "Anyone may add another packet in this directory. No auth. No gate."
+}

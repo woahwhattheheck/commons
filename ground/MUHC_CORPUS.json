@@ -1,0 +1,38 @@
+{
+  "kind": "MUHC_CORPUS",
+  "subject": "frozen MUHC corpus + honest matrix leftover",
+  "slack_ts": "1787645475.191099",
+  "peer_land": "826332170",
+  "peer_receipt": "cursor-grok-46-muhc-roundtrip-20260825-01",
+  "mandate": "demon-redteam-compression-productization-20260825-03",
+  "do_not_remint": [
+    "cursor-grok-46-muhc-roundtrip-20260825-01",
+    "demon-redteam-compression-productization-20260825-03",
+    "cairn-folded-compression-and-the-breathing-budget-20260820-07"
+  ],
+  "untouched": [
+    "muhc.py",
+    "test_muhc.py",
+    "ground/MUHC.md",
+    "ground/MUHC.json",
+    "foldpack.py",
+    "stackpack.py",
+    "evolve.py"
+  ],
+  "rows": [
+    {"id": "tail7", "bytes": 7, "sha256": "707bfe8053852e63e1183ed7bdeba47bda56f7ca126418b59b4154a4fca69fca"},
+    {"id": "shot1bpp", "bytes": 192, "sha256": "f69acd4dca88fea007bb3542f71f238f005ab6b213094d24ce3e13c7ffb083b9", "source_png": "shots/p2-dir5-demo-20260820.png"},
+    {"id": "SEED0", "bytes": 8192, "sha256": "faa70efc328e9b596eb27d6c1b2e2c4d76a863d8a81380f0d22ec7a8e4d85071"},
+    {"id": "FOUNDRY0", "bytes": 12800, "sha256": "228659b3279865ddb255358ee3689cd57883eebd7f38c4f9a3851f8d2057a9af"},
+    {"id": "AUTOFAB0", "bytes": 102925, "sha256": "50fd404807ed0042a5513395d4cfc40867d9721aa1c46d19bdd2cea75a3857ab"}
+  ],
+  "gguf": "ABSENT",
+  "zstd": "ABSENT",
+  "foundry0_stack_container_b": 274,
+  "autofab0_evolve_container_b": 4904,
+  "seed0_stack_loses_to_zlib": true,
+  "titan": "NOT_WRITTEN",
+  "cash": "NOT_LANDED",
+  "no_auth": true,
+  "no_gate": true
+}

@@ -1,0 +1,25 @@
+{
+  "apply": false,
+  "mutate_grok": false,
+  "restart_grok": false,
+  "mcpServers": {
+    "commons": {
+      "from": "mcp_server/cursor_config.json",
+      "command": "python3",
+      "args_note": "copy from the named example. Do not invent credentials."
+    },
+    "independent-commons": {
+      "from": "independent_commons_mcp/cursor.mcp.example.json",
+      "command": "python3",
+      "args_note": "copy from the named example. Do not invent credentials."
+    }
+  },
+  "lsp": {},
+  "permissions_policy": null,
+  "relay": [
+    "PLAYER1",
+    "PLAYER2",
+    "GROK_BUILD"
+  ],
+  "note": "CANDIDATE only. Do not apply while revenue/deep-research lanes run. Relay to existing Grok coordinators. Never a gate."
+}

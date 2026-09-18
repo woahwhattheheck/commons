@@ -1,0 +1,40 @@
+--- a/revenue/kaggriculture/cloud-execution-lab/selected_sell_core.py
++++ b/revenue/kaggriculture/cloud-execution-lab/selected_sell_core.py
+@@ -151,0 +152,30 @@
++def _single_burst_timing_envelope(scenarios, now, end, rival_quantity):
++    """Research-only fixed-stock timing stresses, not a hidden-stock estimate.
++
++    Cover one complete rival sale on every integer turn and raw-order alignment.
++    This is NOT a certificate for multi-burst, partial-volume, cross-product,
++    buying, reactive, or newly harvested rival paths. Keep canonical defaults OFF.
++    """
++    if (type(now) is not int or type(end) is not int or now < 0
++            or end < now or end - now > 15):
++        raise ValueError('timing envelope requires 1..16 integer turns')
++    if type(rival_quantity) is not int or not 0 <= rival_quantity <= 100:
++        raise ValueError('timing envelope requires integer rival quantity 0..100')
++
++    def signature(rival, alignment):
++        rows = rival if isinstance(rival, tuple) else ((now, rival),)
++        positive = tuple((t, q) for t, q in rows if q > 0)
++        return positive, alignment if positive else 'paired'
++
++    result = list(scenarios)
++    seen = {signature(r, a) for _, r, a in result}
++    for step in range(now, end + 1):
++        for alignment in ('before', 'paired', 'after'):
++            rival = ((step, rival_quantity),)
++            key = signature(rival, alignment)
++            if key not in seen:
++                result.append((f'timing_{step}_{alignment}', rival, alignment))
++                seen.add(key)
++    return result
++
++
+@@ -162,0 +193,6 @@
++    # Opt-in research envelope only. Preserve rescue and non-strict economics.
++    if (reference_feasible and _acceptance_rule(config) == 'strict'
++            and (config or {}).get('sellRivalTimingEnvelope') is True):
++        scenarios = _single_burst_timing_envelope(scenarios, now, end, rival_quantity)
++        baseline = [model.score(reference, quantity, r, a, end == last)
++                    for _, r, a in scenarios]

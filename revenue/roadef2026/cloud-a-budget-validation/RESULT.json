@@ -1,0 +1,2300 @@
+{
+  "cases": [
+    {
+      "instance": "setA-04",
+      "status": "complete",
+      "eligibility": {
+        "all_lanes_naturally_exhausted": false,
+        "source": "https://tokenjunkielabs.slack.com/archives/C0BUY3EKMSB/p1788852842488019",
+        "evidence_kind": "coordinator retained-log readback; local archive download unavailable",
+        "retained_run": 34197333541,
+        "retained_artifact": 10044706015,
+        "retained_head_prefix": "9eca8e67",
+        "reported_stop_reason": "search_budget",
+        "reported_stop_seconds": 26.4106,
+        "same_frozen_runtime_config_inputs": true,
+        "identity_limitation": "This eligibility witness is the original9eca run, separate from the later f17 calibration artifact10044831235; no outputs are pooled or selected between them.",
+        "authorization": "Coordinator explicitly directed proceed with all three cold585/565 extensions in the cited message."
+      },
+      "comparison": {
+        "instance": "setA-04",
+        "candidate_valid": true,
+        "reference_best_team": "J27",
+        "reference_csv_line": 5,
+        "reference_vector_length": 500,
+        "candidate_checker_path": "/tmp/quartz-roadef-a-budget-20260908-01/execution/setA-04/checker-6.json",
+        "candidate_checker_sha256": "f43834192ed4bbfc7ee9c690292de6ce816c039159e7c4c927f3a313ee2669fa",
+        "candidate_total_cost_diagnostic": 44,
+        "cost_used_in_ranking": false,
+        "first_changed_rank": 1,
+        "instance_binding": "caller-declared exact instance label; vector length checked when valid",
+        "input_file_identity_verified": false,
+        "reference_link_time_coordinates_available": false,
+        "load_count": 500,
+        "winner": "reference",
+        "comparison_status": "compared",
+        "candidate_mlu": "0.587276",
+        "reference_mlu": "0.581237",
+        "candidate_at_first_change": "0.587276",
+        "reference_at_first_change": "0.581237"
+      },
+      "independent_checks": [
+        {
+          "decimals": 6,
+          "command": [
+            "/tmp/quartz-roadef-final-20260908-01/context/bin/checker",
+            "--net",
+            "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-04-net.json",
+            "--tm",
+            "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-04-tm.json",
+            "--scenario",
+            "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-04-scenario.json",
+            "--srpaths",
+            "/tmp/quartz-roadef-a-budget-20260908-01/execution/setA-04/solution.json",
+            "--max-decimal-places",
+            "6"
+          ],
+          "returncode": 0,
+          "wall_seconds": 0.0077582230005646124,
+          "sha256": "f43834192ed4bbfc7ee9c690292de6ce816c039159e7c4c927f3a313ee2669fa",
+          "original_report_sha256": "f43834192ed4bbfc7ee9c690292de6ce816c039159e7c4c927f3a313ee2669fa",
+          "valid": true,
+          "load_count": 500
+        },
+        {
+          "decimals": 12,
+          "command": [
+            "/tmp/quartz-roadef-final-20260908-01/context/bin/checker",
+            "--net",
+            "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-04-net.json",
+            "--tm",
+            "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-04-tm.json",
+            "--scenario",
+            "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-04-scenario.json",
+            "--srpaths",
+            "/tmp/quartz-roadef-a-budget-20260908-01/execution/setA-04/solution.json",
+            "--max-decimal-places",
+            "12"
+          ],
+          "returncode": 0,
+          "wall_seconds": 0.007628777999343583,
+          "sha256": "2b505b4ca94634894db7bdff6c8ae8420a412687d8398344f4585bd492b5f1ed",
+          "original_report_sha256": "2b505b4ca94634894db7bdff6c8ae8420a412687d8398344f4585bd492b5f1ed",
+          "valid": true,
+          "load_count": 500
+        }
+      ],
+      "resources": {
+        "command": [
+          "timeout",
+          "--signal=TERM",
+          "--kill-after=10s",
+          "590s",
+          "/tmp/quartz-roadef-final-20260908-01/context/run.sh",
+          "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-04-net.json",
+          "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-04-tm.json",
+          "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-04-scenario.json",
+          "/tmp/quartz-roadef-a-budget-20260908-01/execution/setA-04/solution.json"
+        ],
+        "cwd": "/tmp/quartz-roadef-a-budget-20260908-01/execution",
+        "started_utc": "2026-09-08T07:37:52.367487+00:00",
+        "platform": "Linux-6.18.35-x86_64-with-glibc2.39",
+        "cpu_max": "800000 100000",
+        "memory_max": "21474836480",
+        "observer_sha256": "9dc966fa257114768b221d73ad8429f186daff2c222c07f89a86020e0b146ccd",
+        "environment_controls": {
+          "PORTFOLIO_SECONDS": "585",
+          "PORTFOLIO_CHECK_INTERVAL": null,
+          "PORTFOLIO_CHECK_TIMEOUT": null,
+          "SEDGE_SECONDS": null,
+          "SEDGE_MAX_ROUNDS": null,
+          "CLOUD_INITIAL_SOLUTION": null,
+          "FLEET_DIRECTED": "1",
+          "FLEET_JOINT": "1",
+          "FLEET_WAYPOINT_LIMIT": "0"
+        },
+        "sample_period_seconds": 0.5,
+        "wall_observation_resolution_seconds": 0.5,
+        "memory_measurement": "sum of reachable process-tree VmRSS at 0.5s; excludes page cache; not a hard bound",
+        "pid": 17,
+        "returncode": 0,
+        "wall_seconds": 33.67623622500105,
+        "sampled_peak_tree_rss_kib": 23136,
+        "samples": 67,
+        "missing_or_racing_proc_entries": 0,
+        "maximum_observed_processes": 5,
+        "waited_children_user_seconds": 95.599013,
+        "waited_children_system_seconds": 0.103478,
+        "waited_children_maxrss_kib": 14080,
+        "finished_utc": "2026-09-08T07:38:26.045219+00:00"
+      },
+      "portfolio_receipt": {
+        "status": "complete",
+        "validated": true,
+        "solution_sha256": "03075aa4e0703e568451d730f63e312124e5a039b26366802a5e28c12898c9b9",
+        "comparison": "official checker six-decimal descending saturation vector",
+        "cost_used_in_ranking": false,
+        "checker_sha256": "7227194df604d627720938b163b3d63baaba5a090ed90bff574e7e26af69149a",
+        "input_sha256": {
+          "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-04-net.json": "fbab36e356e73d8660f2a1a1aa3c110a3037938d834583d46707722b767c1559",
+          "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-04-tm.json": "eae88eb99c495a5a4fa6f42717867169f2dbd12babb51520a0a26aa40be4be84",
+          "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-04-scenario.json": "2a1b2744591d2707b2fb0ed7844a07ec2f5a61f6790df3ae0b60e392c950ad7e"
+        },
+        "peak_sampled_process_rss_kib": 25044,
+        "memory_measurement": "Linux /proc RSS sum of supervisor and active lane/checker leaders every 0.5s; complete samples only; excludes descendants/page cache; shared pages may repeat; not a hard bound",
+        "memory_sampling": {
+          "status": "complete",
+          "expected_processes": 2,
+          "sampled_processes": 2,
+          "sampled_sum_kib": 16628,
+          "reason": null,
+          "complete_samples": 67,
+          "incomplete_samples": 0,
+          "duration_seconds": 0.001564
+        },
+        "wall_seconds": 33.4798,
+        "search_allowance_seconds": 565.0,
+        "deadline_seconds": 585.0,
+        "signal_received": null,
+        "artifacts": "/tmp/quartz-roadef-a-budget-20260908-01/execution/setA-04/artifacts/roadef-portfolio-y2j6_9vt",
+        "events": [
+          {
+            "event": "provisional_zero_change_checkpoint",
+            "elapsed_seconds": 0.0006
+          },
+          {
+            "event": "lane_started",
+            "elapsed_seconds": 0.0032,
+            "lane": "sedge",
+            "pid": 25
+          },
+          {
+            "event": "lane_started",
+            "elapsed_seconds": 0.0038,
+            "lane": "flora",
+            "pid": 26
+          },
+          {
+            "event": "lane_started",
+            "elapsed_seconds": 0.0045,
+            "lane": "candidate",
+            "pid": 27
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 0.1089,
+            "lane": "zero_change_baseline",
+            "solution_sha256": "606a5ba1723e8ce3b803c8ebc565eee0d8ae7e1a9aeda274af3cac8b4465ee7b",
+            "maximum_load": "1.0",
+            "load_count": 500
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 0.1093,
+            "lane": "zero_change_baseline",
+            "valid": true,
+            "checker_seconds": 0.1026,
+            "solution_sha256": "606a5ba1723e8ce3b803c8ebc565eee0d8ae7e1a9aeda274af3cac8b4465ee7b"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 15.2256,
+            "lane": "sedge",
+            "solution_sha256": "532f4763023eb5748e398c74d69eb26ed9d0f7e0a4b8f4e0212766619faee106",
+            "maximum_load": "0.588881",
+            "load_count": 500
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 15.226,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1028,
+            "solution_sha256": "532f4763023eb5748e398c74d69eb26ed9d0f7e0a4b8f4e0212766619faee106"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 15.3291,
+            "lane": "flora",
+            "solution_sha256": "680bb826717b9ca8ae7aa1684469e086275b4317057fb55a9d72f05d755f08f1",
+            "maximum_load": "0.588881",
+            "load_count": 500
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 15.3294,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1008,
+            "solution_sha256": "680bb826717b9ca8ae7aa1684469e086275b4317057fb55a9d72f05d755f08f1"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 15.4324,
+            "lane": "candidate",
+            "solution_sha256": "fa49879f887129a8535e8c4cb567791aad6e8d2b47e8b85c79c1fb07506d93f2",
+            "maximum_load": "0.587276",
+            "load_count": 500
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 15.4329,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1006,
+            "solution_sha256": "fa49879f887129a8535e8c4cb567791aad6e8d2b47e8b85c79c1fb07506d93f2"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 30.2407,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "a10690307e0d6dc1a7802271e13ab847edc8957b9778c74c9ae1cd19eedcb683"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 30.3484,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.106,
+            "solution_sha256": "b3ece91d9b761f2e17ec4e0ce3dcb5e95802cd0d426defb63f561746c6e5d73b"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 30.4546,
+            "lane": "candidate",
+            "solution_sha256": "4314d0f0a6e73401fca8434b16d36e77220028684828ad9a75055bf96e47a444",
+            "maximum_load": "0.587276",
+            "load_count": 500
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 30.4551,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1008,
+            "solution_sha256": "4314d0f0a6e73401fca8434b16d36e77220028684828ad9a75055bf96e47a444"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 30.5607,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.104,
+            "solution_sha256": "a1b0e188bb0e92ab73c229d6d9a28705b376fef244d0650e379cb98c576a29c3"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 33.4792,
+            "lane": "candidate",
+            "solution_sha256": "03075aa4e0703e568451d730f63e312124e5a039b26366802a5e28c12898c9b9",
+            "maximum_load": "0.587276",
+            "load_count": 500
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 33.4797,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "03075aa4e0703e568451d730f63e312124e5a039b26366802a5e28c12898c9b9"
+          }
+        ],
+        "lanes": [
+          {
+            "name": "sedge",
+            "executable": "/tmp/quartz-roadef-final-20260908-01/context/bin/sedge",
+            "source_binary_sha256": "c9cb373dbe454dbaa87a581f09e4ff7608bc3ed31b05baeda5113df8cb629ec8",
+            "returncode": 0
+          },
+          {
+            "name": "flora",
+            "executable": "/tmp/quartz-roadef-final-20260908-01/context/bin/flora",
+            "source_binary_sha256": "449fe1d4919bed04056924d70b6c9e786219940986225eb5dc0c67d250213790",
+            "returncode": 0
+          },
+          {
+            "name": "candidate",
+            "executable": "/tmp/quartz-roadef-final-20260908-01/context/bin/candidate",
+            "source_binary_sha256": "2dcbbe9bf36581fc102d861e742027c41d755fa198edcef8738c546b196df6cd",
+            "returncode": 0
+          }
+        ],
+        "selected_lane": "candidate",
+        "selected_checker_sha256": "f43834192ed4bbfc7ee9c690292de6ce816c039159e7c4c927f3a313ee2669fa",
+        "load_count": 500,
+        "maximum_load": "0.587276",
+        "total_cost_diagnostic": 44
+      },
+      "solution_sha256": "03075aa4e0703e568451d730f63e312124e5a039b26366802a5e28c12898c9b9"
+    },
+    {
+      "instance": "setA-14",
+      "status": "complete",
+      "eligibility": {
+        "all_lanes_naturally_exhausted": false,
+        "source": "https://tokenjunkielabs.slack.com/archives/C0BUY3EKMSB/p1788852842488019",
+        "evidence_kind": "coordinator retained-log readback; local archive download unavailable",
+        "retained_run": 34197333541,
+        "retained_artifact": 10044706015,
+        "retained_head_prefix": "9eca8e67",
+        "reported_stop_reason": "search_budget",
+        "reported_stop_seconds": 26.4381,
+        "same_frozen_runtime_config_inputs": true,
+        "identity_limitation": "This eligibility witness is the original9eca run, separate from the later f17 calibration artifact10044831235; no outputs are pooled or selected between them.",
+        "authorization": "Coordinator explicitly directed proceed with all three cold585/565 extensions in the cited message.",
+        "reported_lane_wall_seconds": {
+          "candidate": 26.4003,
+          "flora": 19.7709,
+          "sedge": 25.9889
+        }
+      },
+      "comparison": {
+        "instance": "setA-14",
+        "candidate_valid": true,
+        "reference_best_team": "S2",
+        "reference_csv_line": 15,
+        "reference_vector_length": 2216,
+        "candidate_checker_path": "/tmp/quartz-roadef-a-budget-20260908-01/execution/setA-14/checker-6.json",
+        "candidate_checker_sha256": "f78654834213958d38eadf02be3f0fc9b7616e5814e9f3eb6552e00500bdd540",
+        "candidate_total_cost_diagnostic": 13,
+        "cost_used_in_ranking": false,
+        "first_changed_rank": 1,
+        "instance_binding": "caller-declared exact instance label; vector length checked when valid",
+        "input_file_identity_verified": false,
+        "reference_link_time_coordinates_available": false,
+        "load_count": 2216,
+        "winner": "reference",
+        "comparison_status": "compared",
+        "candidate_mlu": "0.533147",
+        "reference_mlu": "0.517621",
+        "candidate_at_first_change": "0.533147",
+        "reference_at_first_change": "0.517621"
+      },
+      "independent_checks": [
+        {
+          "decimals": 6,
+          "command": [
+            "/tmp/quartz-roadef-final-20260908-01/context/bin/checker",
+            "--net",
+            "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-14-net.json",
+            "--tm",
+            "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-14-tm.json",
+            "--scenario",
+            "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-14-scenario.json",
+            "--srpaths",
+            "/tmp/quartz-roadef-a-budget-20260908-01/execution/setA-14/solution.json",
+            "--max-decimal-places",
+            "6"
+          ],
+          "returncode": 0,
+          "wall_seconds": 0.03216205099670333,
+          "sha256": "f78654834213958d38eadf02be3f0fc9b7616e5814e9f3eb6552e00500bdd540",
+          "original_report_sha256": "f78654834213958d38eadf02be3f0fc9b7616e5814e9f3eb6552e00500bdd540",
+          "valid": true,
+          "load_count": 2216
+        },
+        {
+          "decimals": 12,
+          "command": [
+            "/tmp/quartz-roadef-final-20260908-01/context/bin/checker",
+            "--net",
+            "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-14-net.json",
+            "--tm",
+            "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-14-tm.json",
+            "--scenario",
+            "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-14-scenario.json",
+            "--srpaths",
+            "/tmp/quartz-roadef-a-budget-20260908-01/execution/setA-14/solution.json",
+            "--max-decimal-places",
+            "12"
+          ],
+          "returncode": 0,
+          "wall_seconds": 0.03204434400322498,
+          "sha256": "06f04311f10ba6582dd3cd1270899f7d68fd3e351ce5069aaef13f658b8e3c65",
+          "original_report_sha256": "06f04311f10ba6582dd3cd1270899f7d68fd3e351ce5069aaef13f658b8e3c65",
+          "valid": true,
+          "load_count": 2216
+        }
+      ],
+      "resources": {
+        "command": [
+          "timeout",
+          "--signal=TERM",
+          "--kill-after=10s",
+          "590s",
+          "/tmp/quartz-roadef-final-20260908-01/context/run.sh",
+          "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-14-net.json",
+          "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-14-tm.json",
+          "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-14-scenario.json",
+          "/tmp/quartz-roadef-a-budget-20260908-01/execution/setA-14/solution.json"
+        ],
+        "cwd": "/tmp/quartz-roadef-a-budget-20260908-01/execution",
+        "started_utc": "2026-09-08T07:37:52.359552+00:00",
+        "platform": "Linux-6.18.35-x86_64-with-glibc2.39",
+        "cpu_max": "800000 100000",
+        "memory_max": "21474836480",
+        "observer_sha256": "9dc966fa257114768b221d73ad8429f186daff2c222c07f89a86020e0b146ccd",
+        "environment_controls": {
+          "PORTFOLIO_SECONDS": "585",
+          "PORTFOLIO_CHECK_INTERVAL": null,
+          "PORTFOLIO_CHECK_TIMEOUT": null,
+          "SEDGE_SECONDS": null,
+          "SEDGE_MAX_ROUNDS": null,
+          "CLOUD_INITIAL_SOLUTION": null,
+          "FLEET_DIRECTED": "1",
+          "FLEET_JOINT": "1",
+          "FLEET_WAYPOINT_LIMIT": "0"
+        },
+        "sample_period_seconds": 0.5,
+        "wall_observation_resolution_seconds": 0.5,
+        "memory_measurement": "sum of reachable process-tree VmRSS at 0.5s; excludes page cache; not a hard bound",
+        "pid": 12,
+        "returncode": 0,
+        "wall_seconds": 68.83886251199874,
+        "sampled_peak_tree_rss_kib": 83572,
+        "samples": 137,
+        "missing_or_racing_proc_entries": 0,
+        "maximum_observed_processes": 5,
+        "waited_children_user_seconds": 110.756729,
+        "waited_children_system_seconds": 0.202902,
+        "waited_children_maxrss_kib": 24724,
+        "finished_utc": "2026-09-08T07:39:01.199832+00:00"
+      },
+      "portfolio_receipt": {
+        "status": "complete",
+        "validated": true,
+        "solution_sha256": "9d01dea739f910ae3c23d4649dbffb248884b0af18a2cc0624bf338b3defb009",
+        "comparison": "official checker six-decimal descending saturation vector",
+        "cost_used_in_ranking": false,
+        "checker_sha256": "7227194df604d627720938b163b3d63baaba5a090ed90bff574e7e26af69149a",
+        "input_sha256": {
+          "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-14-net.json": "779364ffbae366e1943dcf913f61ce8cc0928fcd52c158660b4eb7c68b1446cb",
+          "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-14-tm.json": "244b41ce8d5a1cf19e7a42c1b86a0ef4de18a173ccfa24a61a602c3200032d28",
+          "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-14-scenario.json": "e891294997f9580cd976b164faaeb1e182f76338d727a5eb7dbb5f0aba32505a"
+        },
+        "peak_sampled_process_rss_kib": 82556,
+        "memory_measurement": "Linux /proc RSS sum of supervisor and active lane/checker leaders every 0.5s; complete samples only; excludes descendants/page cache; shared pages may repeat; not a hard bound",
+        "memory_sampling": {
+          "status": "complete",
+          "expected_processes": 2,
+          "sampled_processes": 2,
+          "sampled_sum_kib": 40856,
+          "reason": null,
+          "complete_samples": 136,
+          "incomplete_samples": 0,
+          "duration_seconds": 0.001581
+        },
+        "wall_seconds": 68.4253,
+        "search_allowance_seconds": 565.0,
+        "deadline_seconds": 585.0,
+        "signal_received": null,
+        "artifacts": "/tmp/quartz-roadef-a-budget-20260908-01/execution/setA-14/artifacts/roadef-portfolio-nx7bj0ub",
+        "events": [
+          {
+            "event": "provisional_zero_change_checkpoint",
+            "elapsed_seconds": 0.0004
+          },
+          {
+            "event": "lane_started",
+            "elapsed_seconds": 0.0028,
+            "lane": "sedge",
+            "pid": 21
+          },
+          {
+            "event": "lane_started",
+            "elapsed_seconds": 0.0034,
+            "lane": "flora",
+            "pid": 22
+          },
+          {
+            "event": "lane_started",
+            "elapsed_seconds": 0.004,
+            "lane": "candidate",
+            "pid": 23
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 0.1205,
+            "lane": "zero_change_baseline",
+            "solution_sha256": "606a5ba1723e8ce3b803c8ebc565eee0d8ae7e1a9aeda274af3cac8b4465ee7b",
+            "maximum_load": "1.0",
+            "load_count": 2216
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 0.1208,
+            "lane": "zero_change_baseline",
+            "valid": true,
+            "checker_seconds": 0.1072,
+            "solution_sha256": "606a5ba1723e8ce3b803c8ebc565eee0d8ae7e1a9aeda274af3cac8b4465ee7b"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 15.2507,
+            "lane": "sedge",
+            "solution_sha256": "0a25503bca196258acf3ab12f7c466d9f837ea1e2fd4537dbb62644fd494634b",
+            "maximum_load": "0.533147",
+            "load_count": 2216
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 15.2511,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1035,
+            "solution_sha256": "0a25503bca196258acf3ab12f7c466d9f837ea1e2fd4537dbb62644fd494634b"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 15.3572,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1006,
+            "solution_sha256": "a945b6b4c28bec3e4e201633b0b06b91561a1eb657d3c0c44a2274a93fcf90c9"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 15.4649,
+            "lane": "candidate",
+            "solution_sha256": "daff79ad980d3c7fe63073b1ea0912389f0e7a3a2c81755934e15f3e3a252197",
+            "maximum_load": "0.533147",
+            "load_count": 2216
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 15.4653,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1006,
+            "solution_sha256": "daff79ad980d3c7fe63073b1ea0912389f0e7a3a2c81755934e15f3e3a252197"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 20.8186,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1033,
+            "solution_sha256": "ffa39dde44c814f524b14cdde5e13fd6ec0a228dd926b3f27ad942f0b4828873"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 30.4866,
+            "lane": "candidate",
+            "solution_sha256": "612b88b209bf0b4e2025d4d772d9dd6d0ff5ea7c2db57993379b6bad5f4cea10",
+            "maximum_load": "0.533147",
+            "load_count": 2216
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 30.487,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "612b88b209bf0b4e2025d4d772d9dd6d0ff5ea7c2db57993379b6bad5f4cea10"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 45.5798,
+            "lane": "candidate",
+            "solution_sha256": "8b3f635e46894b9cd77db818e2e7fc80850b8b003b071516110a7b1d65511619",
+            "maximum_load": "0.533147",
+            "load_count": 2216
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 45.5802,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1008,
+            "solution_sha256": "8b3f635e46894b9cd77db818e2e7fc80850b8b003b071516110a7b1d65511619"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 60.6715,
+            "lane": "candidate",
+            "solution_sha256": "95e1b5ae0bf44119af6d1de7cee2d8967a571a4280e7be351d448015ba90a8e1",
+            "maximum_load": "0.533147",
+            "load_count": 2216
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 60.6718,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1006,
+            "solution_sha256": "95e1b5ae0bf44119af6d1de7cee2d8967a571a4280e7be351d448015ba90a8e1"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 68.4248,
+            "lane": "candidate",
+            "solution_sha256": "9d01dea739f910ae3c23d4649dbffb248884b0af18a2cc0624bf338b3defb009",
+            "maximum_load": "0.533147",
+            "load_count": 2216
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 68.4252,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1016,
+            "solution_sha256": "9d01dea739f910ae3c23d4649dbffb248884b0af18a2cc0624bf338b3defb009"
+          }
+        ],
+        "lanes": [
+          {
+            "name": "sedge",
+            "executable": "/tmp/quartz-roadef-final-20260908-01/context/bin/sedge",
+            "source_binary_sha256": "c9cb373dbe454dbaa87a581f09e4ff7608bc3ed31b05baeda5113df8cb629ec8",
+            "returncode": 0
+          },
+          {
+            "name": "flora",
+            "executable": "/tmp/quartz-roadef-final-20260908-01/context/bin/flora",
+            "source_binary_sha256": "449fe1d4919bed04056924d70b6c9e786219940986225eb5dc0c67d250213790",
+            "returncode": 0
+          },
+          {
+            "name": "candidate",
+            "executable": "/tmp/quartz-roadef-final-20260908-01/context/bin/candidate",
+            "source_binary_sha256": "2dcbbe9bf36581fc102d861e742027c41d755fa198edcef8738c546b196df6cd",
+            "returncode": 0
+          }
+        ],
+        "selected_lane": "candidate",
+        "selected_checker_sha256": "f78654834213958d38eadf02be3f0fc9b7616e5814e9f3eb6552e00500bdd540",
+        "load_count": 2216,
+        "maximum_load": "0.533147",
+        "total_cost_diagnostic": 13
+      },
+      "solution_sha256": "9d01dea739f910ae3c23d4649dbffb248884b0af18a2cc0624bf338b3defb009"
+    },
+    {
+      "instance": "setA-16",
+      "status": "complete",
+      "eligibility": {
+        "all_lanes_naturally_exhausted": false,
+        "source": "https://tokenjunkielabs.slack.com/archives/C0BUY3EKMSB/p1788852842488019",
+        "evidence_kind": "coordinator retained-log readback; local archive download unavailable",
+        "retained_run": 34197333541,
+        "retained_artifact": 10044706015,
+        "retained_head_prefix": "9eca8e67",
+        "reported_stop_reason": "search_budget",
+        "reported_stop_seconds": 26.4443,
+        "same_frozen_runtime_config_inputs": true,
+        "identity_limitation": "This eligibility witness is the original9eca run, separate from the later f17 calibration artifact10044831235; no outputs are pooled or selected between them.",
+        "authorization": "Coordinator explicitly directed proceed with all three cold585/565 extensions in the cited message."
+      },
+      "comparison": {
+        "instance": "setA-16",
+        "candidate_valid": true,
+        "reference_best_team": "S2",
+        "reference_csv_line": 17,
+        "reference_vector_length": 2904,
+        "candidate_checker_path": "/tmp/quartz-roadef-a-budget-20260908-01/execution/setA-16/checker-6.json",
+        "candidate_checker_sha256": "af668ee83b063433f7f9ec4552f4f0476d444d05ce5ed5d6a3f084ef82d88bd5",
+        "candidate_total_cost_diagnostic": 12,
+        "cost_used_in_ranking": false,
+        "first_changed_rank": 1,
+        "instance_binding": "caller-declared exact instance label; vector length checked when valid",
+        "input_file_identity_verified": false,
+        "reference_link_time_coordinates_available": false,
+        "load_count": 2904,
+        "winner": "reference",
+        "comparison_status": "compared",
+        "candidate_mlu": "0.079918",
+        "reference_mlu": "0.044262",
+        "candidate_at_first_change": "0.079918",
+        "reference_at_first_change": "0.044262"
+      },
+      "independent_checks": [
+        {
+          "decimals": 6,
+          "command": [
+            "/tmp/quartz-roadef-final-20260908-01/context/bin/checker",
+            "--net",
+            "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-16-net.json",
+            "--tm",
+            "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-16-tm.json",
+            "--scenario",
+            "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-16-scenario.json",
+            "--srpaths",
+            "/tmp/quartz-roadef-a-budget-20260908-01/execution/setA-16/solution.json",
+            "--max-decimal-places",
+            "6"
+          ],
+          "returncode": 0,
+          "wall_seconds": 0.06404770500012091,
+          "sha256": "af668ee83b063433f7f9ec4552f4f0476d444d05ce5ed5d6a3f084ef82d88bd5",
+          "original_report_sha256": "af668ee83b063433f7f9ec4552f4f0476d444d05ce5ed5d6a3f084ef82d88bd5",
+          "valid": true,
+          "load_count": 2904
+        },
+        {
+          "decimals": 12,
+          "command": [
+            "/tmp/quartz-roadef-final-20260908-01/context/bin/checker",
+            "--net",
+            "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-16-net.json",
+            "--tm",
+            "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-16-tm.json",
+            "--scenario",
+            "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-16-scenario.json",
+            "--srpaths",
+            "/tmp/quartz-roadef-a-budget-20260908-01/execution/setA-16/solution.json",
+            "--max-decimal-places",
+            "12"
+          ],
+          "returncode": 0,
+          "wall_seconds": 0.06413892700220458,
+          "sha256": "cbbf5d19c23c9f397889832c6bf8cbe1db90e987cbffc8a0c29d1f7a3fdba04e",
+          "original_report_sha256": "cbbf5d19c23c9f397889832c6bf8cbe1db90e987cbffc8a0c29d1f7a3fdba04e",
+          "valid": true,
+          "load_count": 2904
+        }
+      ],
+      "resources": {
+        "command": [
+          "timeout",
+          "--signal=TERM",
+          "--kill-after=10s",
+          "590s",
+          "/tmp/quartz-roadef-final-20260908-01/context/run.sh",
+          "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-16-net.json",
+          "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-16-tm.json",
+          "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-16-scenario.json",
+          "/tmp/quartz-roadef-a-budget-20260908-01/execution/setA-16/solution.json"
+        ],
+        "cwd": "/tmp/quartz-roadef-a-budget-20260908-01/execution",
+        "started_utc": "2026-09-08T07:38:26.107031+00:00",
+        "platform": "Linux-6.18.35-x86_64-with-glibc2.39",
+        "cpu_max": "800000 100000",
+        "memory_max": "21474836480",
+        "observer_sha256": "9dc966fa257114768b221d73ad8429f186daff2c222c07f89a86020e0b146ccd",
+        "environment_controls": {
+          "PORTFOLIO_SECONDS": "585",
+          "PORTFOLIO_CHECK_INTERVAL": null,
+          "PORTFOLIO_CHECK_TIMEOUT": null,
+          "SEDGE_SECONDS": null,
+          "SEDGE_MAX_ROUNDS": null,
+          "CLOUD_INITIAL_SOLUTION": null,
+          "FLEET_DIRECTED": "1",
+          "FLEET_JOINT": "1",
+          "FLEET_WAYPOINT_LIMIT": "0"
+        },
+        "sample_period_seconds": 0.5,
+        "wall_observation_resolution_seconds": 0.5,
+        "memory_measurement": "sum of reachable process-tree VmRSS at 0.5s; excludes page cache; not a hard bound",
+        "pid": 46,
+        "returncode": 0,
+        "wall_seconds": 565.3734979159999,
+        "sampled_peak_tree_rss_kib": 126660,
+        "samples": 1126,
+        "missing_or_racing_proc_entries": 0,
+        "maximum_observed_processes": 6,
+        "waited_children_user_seconds": 1596.116803,
+        "waited_children_system_seconds": 1.98021,
+        "waited_children_maxrss_kib": 34164,
+        "finished_utc": "2026-09-08T07:47:51.481808+00:00"
+      },
+      "portfolio_receipt": {
+        "status": "complete",
+        "validated": true,
+        "solution_sha256": "7da0327ce340a2fb2cfb6ad01489c9be344bbae3ef1706ac3698245592543160",
+        "comparison": "official checker six-decimal descending saturation vector",
+        "cost_used_in_ranking": false,
+        "checker_sha256": "7227194df604d627720938b163b3d63baaba5a090ed90bff574e7e26af69149a",
+        "input_sha256": {
+          "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-16-net.json": "341c874ba43a464f1140944fbde8b0b22afc70557acb9a1ed37c13116c748268",
+          "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-16-tm.json": "db98d522634230e15337dc81ddca15a9922e1f505056f8c696db9b6cd6e00d3f",
+          "/tmp/quartz-roadef-a-budget-20260908-01/inputs/setA-16-scenario.json": "a992e5ddc30bdcdc33a2f64737abfd0f20231f272419a038e76582b49db7b7f0"
+        },
+        "peak_sampled_process_rss_kib": 122616,
+        "memory_measurement": "Linux /proc RSS sum of supervisor and active lane/checker leaders every 0.5s; complete samples only; excludes descendants/page cache; shared pages may repeat; not a hard bound",
+        "memory_sampling": {
+          "status": "complete",
+          "expected_processes": 1,
+          "sampled_processes": 1,
+          "sampled_sum_kib": 16688,
+          "reason": null,
+          "complete_samples": 1122,
+          "incomplete_samples": 0,
+          "duration_seconds": 0.000122
+        },
+        "wall_seconds": 565.2062,
+        "search_allowance_seconds": 565.0,
+        "deadline_seconds": 585.0,
+        "signal_received": null,
+        "artifacts": "/tmp/quartz-roadef-a-budget-20260908-01/execution/setA-16/artifacts/roadef-portfolio-c6fi53qg",
+        "events": [
+          {
+            "event": "provisional_zero_change_checkpoint",
+            "elapsed_seconds": 0.0005
+          },
+          {
+            "event": "lane_started",
+            "elapsed_seconds": 0.0037,
+            "lane": "sedge",
+            "pid": 50
+          },
+          {
+            "event": "lane_started",
+            "elapsed_seconds": 0.0042,
+            "lane": "flora",
+            "pid": 51
+          },
+          {
+            "event": "lane_started",
+            "elapsed_seconds": 0.0047,
+            "lane": "candidate",
+            "pid": 52
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 0.1163,
+            "lane": "zero_change_baseline",
+            "solution_sha256": "606a5ba1723e8ce3b803c8ebc565eee0d8ae7e1a9aeda274af3cac8b4465ee7b",
+            "maximum_load": "0.999999",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 0.1167,
+            "lane": "zero_change_baseline",
+            "valid": true,
+            "checker_seconds": 0.1021,
+            "solution_sha256": "606a5ba1723e8ce3b803c8ebc565eee0d8ae7e1a9aeda274af3cac8b4465ee7b"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 15.317,
+            "lane": "sedge",
+            "solution_sha256": "0f767966bcb6472bde1b6f1d3c9708309a54a194bf6195a000917e34c28cc3f8",
+            "maximum_load": "0.096311",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 15.3174,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.101,
+            "solution_sha256": "0f767966bcb6472bde1b6f1d3c9708309a54a194bf6195a000917e34c28cc3f8"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 15.4253,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1008,
+            "solution_sha256": "60e66318166e3089d8beaf3431b0aa7072c420d3290c90ba217f15bc0d8802bc"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 15.5328,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "1d52d0d85d3345709de825343bfcd1e8040bbc2bf926ee0ad4c5fb03067afb50"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 30.3359,
+            "lane": "sedge",
+            "solution_sha256": "09c2fba89936b9b9431b1a5ebd715b3ba6d21e3d9215fd8bea5d050984b2b03e",
+            "maximum_load": "0.096311",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 30.3364,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1034,
+            "solution_sha256": "09c2fba89936b9b9431b1a5ebd715b3ba6d21e3d9215fd8bea5d050984b2b03e"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 30.4452,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1008,
+            "solution_sha256": "afadfe157858fc891e9ff70a2e4426642cef147e7d63235189dd3fe6f48bf8fb"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 30.5552,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1008,
+            "solution_sha256": "5af6ebaaffed0ffc89a55201da759dfbab9fa8276ba28c252b96dbc450ee4d83"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 45.3871,
+            "lane": "sedge",
+            "solution_sha256": "c493edf38e65480a5ac5210578b70973ad0c1b2570a93121d1f3bac481fd62c9",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 45.3876,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1009,
+            "solution_sha256": "c493edf38e65480a5ac5210578b70973ad0c1b2570a93121d1f3bac481fd62c9"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 45.4963,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1025,
+            "solution_sha256": "79ffd0dfe6870266524af1cc1a48c6970b2e61b5add689237040cf7e17494e91"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 45.6056,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1006,
+            "solution_sha256": "95fa14dd768f837bbcd82463d3cbe7a4d3c912bee47909737384ec7dc83c6d2d"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 60.404,
+            "lane": "sedge",
+            "solution_sha256": "b603eb16c441ea2f05188e3c78747ce9d26ad7f3cc1ae06b259985529b217cf3",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 60.4044,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "b603eb16c441ea2f05188e3c78747ce9d26ad7f3cc1ae06b259985529b217cf3"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 60.5197,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "a200ee60525122294e3534bc0f70243d0612693f4dd8b66dcc44d21ddcd2bf94"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 60.6303,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1028,
+            "solution_sha256": "d48136ca526ee1f7f0de610ac3a7064d313ecf74b2d9d51adefbed882838f57d"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 75.4258,
+            "lane": "sedge",
+            "solution_sha256": "df35866f1db4c4b6a03aea43705006e5e9fa8b056e7982d4f1e54b47098d3c2a",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 75.4263,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "df35866f1db4c4b6a03aea43705006e5e9fa8b056e7982d4f1e54b47098d3c2a"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 75.534,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1006,
+            "solution_sha256": "2764cfc35e0c7e11d55e1e6441f13ed7bd72e14cd2b4ba876ba87b79e4170a27"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 75.6421,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1008,
+            "solution_sha256": "3f5d9f824f57bcf7a059061db0b37e800d88f897739c9f65ee0e72131c0edaf1"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 90.4371,
+            "lane": "sedge",
+            "solution_sha256": "6a9adaceba49b5c9b667e1a969fa384329fc23610c27eb3979d6c3c92b18bf96",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 90.4375,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "6a9adaceba49b5c9b667e1a969fa384329fc23610c27eb3979d6c3c92b18bf96"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 90.5453,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1006,
+            "solution_sha256": "6152560ba5c11b4dd8ed54467cce107a38cd36bc0f4f491ef2ed57c7cf875240"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 90.653,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1008,
+            "solution_sha256": "383d25662ee62be45fdc996cca56573ab27f6ffd8d8c7368172be73427bfbe74"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 105.4424,
+            "lane": "sedge",
+            "solution_sha256": "bc42ac4a770457e347aef2cc4663c61cd18177225190292bd51782dacfdfeb6c",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 105.4428,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1053,
+            "solution_sha256": "bc42ac4a770457e347aef2cc4663c61cd18177225190292bd51782dacfdfeb6c"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 105.5501,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "88ee3fe69882e126c600f721c8429616bae84626ec8a47017c1bff29264529b6"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 105.6569,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1006,
+            "solution_sha256": "e8dbc6d442b58619deb926a8e1b8edbd275dcde1a22ab14ee6ee2b6d143e01bc"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 120.4447,
+            "lane": "sedge",
+            "solution_sha256": "ccb52282d5fb8f289cc671c53dfeb45c01df0b2b15916f4933ae6a475e40ad94",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 120.4451,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.101,
+            "solution_sha256": "ccb52282d5fb8f289cc671c53dfeb45c01df0b2b15916f4933ae6a475e40ad94"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 120.7547,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1008,
+            "solution_sha256": "5fa121ba1e2f8f6029191363c170fce4c085916adb4af0c160537e1f2a55852d"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 135.5438,
+            "lane": "sedge",
+            "solution_sha256": "23b86a4e0e88e8ff7e164f56b17103987c650e3391037dbefa8ca2e42fc7def8",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 135.5445,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1012,
+            "solution_sha256": "23b86a4e0e88e8ff7e164f56b17103987c650e3391037dbefa8ca2e42fc7def8"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 135.6568,
+            "lane": "flora",
+            "solution_sha256": "d8213de8755ea5af6f2de0065f390ed4c868a03f0e26f7022534a1dcd7cdbb1d",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 135.6575,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1025,
+            "solution_sha256": "d8213de8755ea5af6f2de0065f390ed4c868a03f0e26f7022534a1dcd7cdbb1d"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 135.7662,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1011,
+            "solution_sha256": "df1c2086378685e00c2c90e5b9262559c452400721a2ff2719b9ed6d03916642"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 150.5585,
+            "lane": "sedge",
+            "solution_sha256": "a97dcb3293cfaef5516a0d9d5169b811c8490651b5c106c4a2a41470737f3f47",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 150.559,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1013,
+            "solution_sha256": "a97dcb3293cfaef5516a0d9d5169b811c8490651b5c106c4a2a41470737f3f47"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 150.6685,
+            "lane": "flora",
+            "solution_sha256": "43f54c2997a7c6682edd13ba43bd00edd13fd9dbb1a11b296d571a42649faa07",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 150.669,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1006,
+            "solution_sha256": "43f54c2997a7c6682edd13ba43bd00edd13fd9dbb1a11b296d571a42649faa07"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 150.7777,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1025,
+            "solution_sha256": "89f9c4e8be950e2b773363f2d7c506142328cd035da4f62e133903b034792beb"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 165.5668,
+            "lane": "sedge",
+            "solution_sha256": "5f95afc9df404318ccf7ccb1cc5536073851e884ce30664906e85636a35400a5",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 165.5674,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1008,
+            "solution_sha256": "5f95afc9df404318ccf7ccb1cc5536073851e884ce30664906e85636a35400a5"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 165.6752,
+            "lane": "flora",
+            "solution_sha256": "053c95086b511baa8db38f54b6d63e313a0ad1759fcb389f39d819864e6e312a",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 165.6757,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "053c95086b511baa8db38f54b6d63e313a0ad1759fcb389f39d819864e6e312a"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 165.7826,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1008,
+            "solution_sha256": "2b9c100c98f401d4082b7a0a64e51ae3e3c0e0b5a03a782d507a32978b4a2f63"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 180.5722,
+            "lane": "sedge",
+            "solution_sha256": "eb84102443742a1d035281d6a0aea19cb2c15b1ed933d886554395985b8f603a",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 180.5727,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1006,
+            "solution_sha256": "eb84102443742a1d035281d6a0aea19cb2c15b1ed933d886554395985b8f603a"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 180.6803,
+            "lane": "flora",
+            "solution_sha256": "43bf33cfe5a5016c008050b467efc2ee280cf1708c094d0532cca4b1db7b3743",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 180.6809,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "43bf33cfe5a5016c008050b467efc2ee280cf1708c094d0532cca4b1db7b3743"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 180.7911,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "497e55bf045669094483e4be1c40cf952d89ccce197162b882a87cf40188f46e"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 195.6016,
+            "lane": "sedge",
+            "solution_sha256": "dc71e5a0da33699d8271c5e55f641f58c244da95db6b176147b9a4759a867a77",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 195.6022,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1033,
+            "solution_sha256": "dc71e5a0da33699d8271c5e55f641f58c244da95db6b176147b9a4759a867a77"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 195.8128,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "915e061fbfbfc490dd8db751f7b9d31bdfb46ccd274f096448a63db9965f9fac"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 210.6002,
+            "lane": "sedge",
+            "solution_sha256": "c30f8384ade693be57e94b024791e84795460c1e86573daa3e4b999a46c3e3bc",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 210.6008,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1023,
+            "solution_sha256": "c30f8384ade693be57e94b024791e84795460c1e86573daa3e4b999a46c3e3bc"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 210.8151,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1008,
+            "solution_sha256": "2053e9eaf34bb398173d64346cde30d8b0f90b387d306a5814e8ecbc39168a45"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 210.9338,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1008,
+            "solution_sha256": "bddaac43b69ce4fb8c0e301bc81f05ee822d33604827fba8cb01fcc4dfb7d0f3"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 225.6218,
+            "lane": "sedge",
+            "solution_sha256": "c98477d05b821c3cb41df76c3b4469b13dbd3dae28004f941eff7947d00159d8",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 225.6226,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1011,
+            "solution_sha256": "c98477d05b821c3cb41df76c3b4469b13dbd3dae28004f941eff7947d00159d8"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 225.8325,
+            "lane": "flora",
+            "solution_sha256": "a5153bcdb74eac01be11685c02e7916f71a659825c3d898185abcb947ee7ee57",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 225.8335,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1022,
+            "solution_sha256": "a5153bcdb74eac01be11685c02e7916f71a659825c3d898185abcb947ee7ee57"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 225.9434,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "8065e5e5e9038351d22e6bc47b33b8bfb263ffc93bd6af15859b33d7249a5540"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 240.6324,
+            "lane": "sedge",
+            "solution_sha256": "c54b6a756b510864a72c4a80098a3e0f3b1cc1ed4b9b03e95eda0c31a3107d79",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 240.633,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "c54b6a756b510864a72c4a80098a3e0f3b1cc1ed4b9b03e95eda0c31a3107d79"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 240.8425,
+            "lane": "flora",
+            "solution_sha256": "0d6ab1ecc6b9b5648a572c6552b08001764ab0ba1f5e0195d68c72e74a814424",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 240.8431,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1008,
+            "solution_sha256": "0d6ab1ecc6b9b5648a572c6552b08001764ab0ba1f5e0195d68c72e74a814424"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 240.9536,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1029,
+            "solution_sha256": "31476f6b2cac9a43adeba5c4ad9087f8580b32b053c8c4efba53ae868815d1e0"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 255.6581,
+            "lane": "sedge",
+            "solution_sha256": "976aa5f5a76da42b26e2720864e8fa23d31c80e2d257f4464f7f03e54887d8e9",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 255.6588,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1008,
+            "solution_sha256": "976aa5f5a76da42b26e2720864e8fa23d31c80e2d257f4464f7f03e54887d8e9"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 255.8705,
+            "lane": "flora",
+            "solution_sha256": "e2d422965782868ee91e86eae3c669f7f906debf1a788fd803eae8fb1f1212a3",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 255.8712,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1023,
+            "solution_sha256": "e2d422965782868ee91e86eae3c669f7f906debf1a788fd803eae8fb1f1212a3"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 255.979,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1009,
+            "solution_sha256": "251ea3218b14f203c158ce3206cabb2690771e9626b1159727e046d6bde9dc9f"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 270.6716,
+            "lane": "sedge",
+            "solution_sha256": "f52c4d3684444817cd36e59a1a8250db5047ad791b6be5001900f77babdbda5a",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 270.6725,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1028,
+            "solution_sha256": "f52c4d3684444817cd36e59a1a8250db5047ad791b6be5001900f77babdbda5a"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 270.8831,
+            "lane": "flora",
+            "solution_sha256": "f64ca84836345bd0ea9967b132e7bca77784da5b01b8d4eda6475af9230f4bd9",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 270.8838,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1008,
+            "solution_sha256": "f64ca84836345bd0ea9967b132e7bca77784da5b01b8d4eda6475af9230f4bd9"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 270.991,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1006,
+            "solution_sha256": "cc4802985744f29dc2fbe2ed0ff131d6f4921216125eac67de5b9848186424f1"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 285.6786,
+            "lane": "sedge",
+            "solution_sha256": "809d196f4e37e6fe2f67bb1a10bfd59f0ed4e949efa1c915ed61f2226eb83793",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 285.6794,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1008,
+            "solution_sha256": "809d196f4e37e6fe2f67bb1a10bfd59f0ed4e949efa1c915ed61f2226eb83793"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 285.8896,
+            "lane": "flora",
+            "solution_sha256": "16643d4de93e4aab5dc4524438c7627e1fae1267542378043a1ccfbbb3a65704",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 285.8904,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1008,
+            "solution_sha256": "16643d4de93e4aab5dc4524438c7627e1fae1267542378043a1ccfbbb3a65704"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 285.9978,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1006,
+            "solution_sha256": "73fe6a4b052a01528d78b540b00850f1ffb10adaa2e49bee6da47a45a797c33c"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 300.6906,
+            "lane": "sedge",
+            "solution_sha256": "db7bebb7633755070fdd511ccfe29c282b0b57fc97a1f80961e5df83e0d264e2",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 300.6914,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1008,
+            "solution_sha256": "db7bebb7633755070fdd511ccfe29c282b0b57fc97a1f80961e5df83e0d264e2"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 301.0013,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "c4ee29241845ff0b1a7b635a29750c35215b748a4b5d14fae3a6dbab03d8daea"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 315.6946,
+            "lane": "sedge",
+            "solution_sha256": "87cf40f2368087cbcf5b9681ae3e488581ec7cf88dbe15301ac30626ae164866",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 315.6955,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.101,
+            "solution_sha256": "87cf40f2368087cbcf5b9681ae3e488581ec7cf88dbe15301ac30626ae164866"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 315.9061,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "0f60692534cb38f50fc835cb77c71d376e6133ffe2a896c96e729747611c1220"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 316.0188,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1027,
+            "solution_sha256": "5c476a68562ecd16818b1fe9b2f5a2852d4b4d1840a0e722595e928498378946"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 330.7105,
+            "lane": "sedge",
+            "solution_sha256": "27c11f68667881accb976ae349c5603a80f34be82d2a57f207514e2ec4997ee2",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 330.7112,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "27c11f68667881accb976ae349c5603a80f34be82d2a57f207514e2ec4997ee2"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 330.9221,
+            "lane": "flora",
+            "solution_sha256": "7ca670009d4de761ee3942d569c2fd0d68b4ac6e1a5f401e2decc06462a8a1d6",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 330.9239,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "7ca670009d4de761ee3942d569c2fd0d68b4ac6e1a5f401e2decc06462a8a1d6"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 331.0317,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1009,
+            "solution_sha256": "6e8065d061857dbc6db54def4f40a03bdcab3dd20c18d57dcd19272c8f8a933c"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 345.7296,
+            "lane": "sedge",
+            "solution_sha256": "01a782d76ca3cc47dfc55e7a69e94ed8229fc2c8855f3be0e9066f09b1327ea6",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 345.7311,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1028,
+            "solution_sha256": "01a782d76ca3cc47dfc55e7a69e94ed8229fc2c8855f3be0e9066f09b1327ea6"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 346.0433,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.101,
+            "solution_sha256": "566aedac17251fa437b456e9b9d796dd9622f10d6d54a03ba7755ddb8ddd1f19"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 360.7324,
+            "lane": "sedge",
+            "solution_sha256": "f209abea05ab9ef386678284c57c359ab0a5da9edaa3423adb0f25ee0826c670",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 360.7335,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1008,
+            "solution_sha256": "f209abea05ab9ef386678284c57c359ab0a5da9edaa3423adb0f25ee0826c670"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 360.9445,
+            "lane": "flora",
+            "solution_sha256": "722b9a38b1c3b16ea67c04d77f7476921f18b7f40d36f1479eeeff4efbecd639",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 360.9453,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1008,
+            "solution_sha256": "722b9a38b1c3b16ea67c04d77f7476921f18b7f40d36f1479eeeff4efbecd639"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 361.0527,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "05668e5f05d25c2c0b7771c9355a97dd801880167a86fe35c3296cb5b6d81a4f"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 375.7373,
+            "lane": "sedge",
+            "solution_sha256": "9255a61a527d6c9d2daa8dd8c23e5ac25143af7900ea73f4bb834d568b9cfaaf",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 375.7382,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "9255a61a527d6c9d2daa8dd8c23e5ac25143af7900ea73f4bb834d568b9cfaaf"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 376.1481,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "a03cff9b013885ff91d0d4a39683984bb237d71ecc8f50b7ec53f72816733093"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 390.8376,
+            "lane": "sedge",
+            "solution_sha256": "6528339e2682fc9178248b1c7aac1afdb3037da8cffa7a74537692111b48fda2",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 390.8384,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1008,
+            "solution_sha256": "6528339e2682fc9178248b1c7aac1afdb3037da8cffa7a74537692111b48fda2"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 390.9467,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1006,
+            "solution_sha256": "958078c7ee3ae84b0267e8236b672425ffd1ef66a6f8b86b9a65fc1352a0b4a1"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 391.1586,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1009,
+            "solution_sha256": "0ecb168c7a3f27b97037f5190977eff43b0a57dc4e6cc28b717ef61544005a57"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 405.8689,
+            "lane": "sedge",
+            "solution_sha256": "61e8d59e054482d49c7eb9ae5a811470fa439abc66c043f491dc98f44d280b31",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 405.8698,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1009,
+            "solution_sha256": "61e8d59e054482d49c7eb9ae5a811470fa439abc66c043f491dc98f44d280b31"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 405.9766,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1006,
+            "solution_sha256": "beaca121fa85ead9f16a596efbde583ea24efd64f4ae8c899506439c6b883114"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 406.1866,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1022,
+            "solution_sha256": "7ae91b109e1e5b9c27c21dd9837c770076b9a550dcb496424421b76c9cd792a8"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 420.9708,
+            "lane": "sedge",
+            "solution_sha256": "53afb1046dcacb33940f4b5cf12c42f3ab2a62aedd580de668832774b5f48785",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 420.9716,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "53afb1046dcacb33940f4b5cf12c42f3ab2a62aedd580de668832774b5f48785"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 421.0828,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "6b8432db599b871e893c5f6a04ea703f17dafa8464885db9d34a252dc5a85644"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 421.1905,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "f443a9fc4ed2241c513e6977f6c25c4d97503786e0fa011cf8bfc7e37ac74aad"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 435.9864,
+            "lane": "sedge",
+            "solution_sha256": "47249dac49033e9a764c05236f29162aa9235b114c3d8bb516b82f3158c16478",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 435.9872,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1015,
+            "solution_sha256": "47249dac49033e9a764c05236f29162aa9235b114c3d8bb516b82f3158c16478"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 436.0961,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1017,
+            "solution_sha256": "fe56a48c334a7c50c509371efbddd96a01722bc8a576b85679b058eb321f28c0"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 436.2042,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1006,
+            "solution_sha256": "9c04061ad98d290ce028be5a467375cdaaf63d6317fc7626f822c5e587779e52"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 450.9946,
+            "lane": "sedge",
+            "solution_sha256": "4fa2a55a039cf345d76cc7baa6c3b85588ac14412d9f1c8b6243226038f92edd",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 450.9954,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1023,
+            "solution_sha256": "4fa2a55a039cf345d76cc7baa6c3b85588ac14412d9f1c8b6243226038f92edd"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 451.1064,
+            "lane": "flora",
+            "solution_sha256": "6c8018c06baf24b01f9fd391d54c9fe37fd7f4ab2c2c59e68f3a41eca619da34",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 451.1075,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "6c8018c06baf24b01f9fd391d54c9fe37fd7f4ab2c2c59e68f3a41eca619da34"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 451.2151,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1009,
+            "solution_sha256": "4ee1c9bf8d20193bfa43c00122d9d224f5bcf9e9f3647d9280b4abd1e3a7b0eb"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 466.0006,
+            "lane": "sedge",
+            "solution_sha256": "a8b2ef7e8258734833a86c356cb5408e80d7de4656bc56219562739cdba60df9",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 466.0019,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1008,
+            "solution_sha256": "a8b2ef7e8258734833a86c356cb5408e80d7de4656bc56219562739cdba60df9"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 466.1125,
+            "lane": "flora",
+            "solution_sha256": "9b478b3fbe7ce06485dfd4dd22cb06d019951997ab82a95ad4bc7ff763203689",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 466.1135,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1025,
+            "solution_sha256": "9b478b3fbe7ce06485dfd4dd22cb06d019951997ab82a95ad4bc7ff763203689"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 466.2236,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1006,
+            "solution_sha256": "342957177cc6a83f4ea7527e7fe6a2a4446b793d2f58e5a840cc267dd9ab0458"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 481.0203,
+            "lane": "sedge",
+            "solution_sha256": "3e581bf1e4aae47857d628ab0fba493a6277a727366dfd5aad637ad7c093e30c",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 481.0215,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1008,
+            "solution_sha256": "3e581bf1e4aae47857d628ab0fba493a6277a727366dfd5aad637ad7c093e30c"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 481.1306,
+            "lane": "flora",
+            "solution_sha256": "504217db27f52679d429b009dd7179d1d96b1062f03f5f2b43c0ca4e8b6b19df",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 481.1317,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "504217db27f52679d429b009dd7179d1d96b1062f03f5f2b43c0ca4e8b6b19df"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 481.2428,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1021,
+            "solution_sha256": "01dde7e2813a86fe2bdef9505d87be80e1038f6bb3e46fe5658ec9ede3339b9b"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 496.0346,
+            "lane": "sedge",
+            "solution_sha256": "6621c9f23bcf1aba685e2a59d227d2014a022f9d8fbecb8776d83719606a69ac",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 496.0357,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1011,
+            "solution_sha256": "6621c9f23bcf1aba685e2a59d227d2014a022f9d8fbecb8776d83719606a69ac"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 496.1479,
+            "lane": "flora",
+            "solution_sha256": "fc898a5dcbeb65294771a4e89a9554484df374034c6d59bd7af151152139bf3c",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 496.1492,
+            "lane": "flora",
+            "valid": true,
+            "checker_seconds": 0.1022,
+            "solution_sha256": "fc898a5dcbeb65294771a4e89a9554484df374034c6d59bd7af151152139bf3c"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 496.257,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "19f940f4916c73eb5d44e67dd32dbc644410e8c169ef6285fcaf4956a7adcc14"
+          },
+          {
+            "event": "incumbent_improved",
+            "elapsed_seconds": 511.0555,
+            "lane": "sedge",
+            "solution_sha256": "7da0327ce340a2fb2cfb6ad01489c9be344bbae3ef1706ac3698245592543160",
+            "maximum_load": "0.079918",
+            "load_count": 2904
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 511.0565,
+            "lane": "sedge",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "7da0327ce340a2fb2cfb6ad01489c9be344bbae3ef1706ac3698245592543160"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 511.2644,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "da4203f6b3d3b29e2911a4a407c13da1fd139be29a3c9f7c9b3ea13a558663f7"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 526.3554,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "0d292f083cc2dd94b355b9d30f44bea91e91a9fc272c8a88e8877110a4918739"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 541.4462,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1009,
+            "solution_sha256": "49274284eb8dae7d71dd31c3bc58e74fe32ce635ff182e3684a3dea433fb2a56"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 556.4502,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1007,
+            "solution_sha256": "0cadbb6dd709ff04fede270cbe0afa8fe7776385951d7c9f15b947c98a0d1ee0"
+          },
+          {
+            "event": "stopping",
+            "elapsed_seconds": 565.0969,
+            "reason": "search_budget"
+          },
+          {
+            "event": "check_completed",
+            "elapsed_seconds": 565.2056,
+            "lane": "candidate",
+            "valid": true,
+            "checker_seconds": 0.1008,
+            "solution_sha256": "5fa6f41d8b4b69112354b525cb4098ceeea4c2a171f0cb793c4fc257189ddc2a"
+          }
+        ],
+        "lanes": [
+          {
+            "name": "sedge",
+            "executable": "/tmp/quartz-roadef-final-20260908-01/context/bin/sedge",
+            "source_binary_sha256": "c9cb373dbe454dbaa87a581f09e4ff7608bc3ed31b05baeda5113df8cb629ec8",
+            "returncode": 0
+          },
+          {
+            "name": "flora",
+            "executable": "/tmp/quartz-roadef-final-20260908-01/context/bin/flora",
+            "source_binary_sha256": "449fe1d4919bed04056924d70b6c9e786219940986225eb5dc0c67d250213790",
+            "returncode": 0
+          },
+          {
+            "name": "candidate",
+            "executable": "/tmp/quartz-roadef-final-20260908-01/context/bin/candidate",
+            "source_binary_sha256": "2dcbbe9bf36581fc102d861e742027c41d755fa198edcef8738c546b196df6cd",
+            "returncode": 0
+          }
+        ],
+        "selected_lane": "sedge",
+        "selected_checker_sha256": "af668ee83b063433f7f9ec4552f4f0476d444d05ce5ed5d6a3f084ef82d88bd5",
+        "load_count": 2904,
+        "maximum_load": "0.079918",
+        "total_cost_diagnostic": 12
+      },
+      "solution_sha256": "7da0327ce340a2fb2cfb6ad01489c9be344bbae3ef1706ac3698245592543160"
+    }
+  ],
+  "all_complete": true,
+  "historical_reference_resource_budgets_matched": false,
+  "qualification_rank": "unknown",
+  "postprocessor_sha256": "b1182bf7fbb293b2c440e0234786b032b3c2c14b3c7f0248f143a37b93c2fcc9",
+  "postprocessing_only": true,
+  "new_solver_calls": 0,
+  "new_checker_calls": 0,
+  "setup": {
+    "source_sha256": {
+      "sources/candidate/main.cpp": "758977095f8f34263bbcd9ed043ac4ab7943f04f65fae530c78ee64787c34f8f",
+      "supervisor.py": "182371658e82f9037716e90ea8cd115622d089d02512916c7a7bf3b39fca1c63",
+      "compare_checker.py": "a402a0166b1e52c95dd181e15b8a124504ac78ddea7e815944c754569b323cb8"
+    },
+    "binaries": {
+      "candidate": "2dcbbe9bf36581fc102d861e742027c41d755fa198edcef8738c546b196df6cd",
+      "checker": "7227194df604d627720938b163b3d63baaba5a090ed90bff574e7e26af69149a",
+      "flora": "449fe1d4919bed04056924d70b6c9e786219940986225eb5dc0c67d250213790",
+      "sedge": "c9cb373dbe454dbaa87a581f09e4ff7608bc3ed31b05baeda5113df8cb629ec8"
+    },
+    "observer_sha256": "9dc966fa257114768b221d73ad8429f186daff2c222c07f89a86020e0b146ccd",
+    "runner_sha256": "f10ea80622d3171edc9d980f5dca81751ca4f553513c8e508cef8429c334793f",
+    "eligibility": {
+      "claim": "1788852707.332779",
+      "cases": {
+        "setA-04": {
+          "all_lanes_naturally_exhausted": false,
+          "source": "https://tokenjunkielabs.slack.com/archives/C0BUY3EKMSB/p1788852842488019",
+          "evidence_kind": "coordinator retained-log readback; local archive download unavailable",
+          "retained_run": 34197333541,
+          "retained_artifact": 10044706015,
+          "retained_head_prefix": "9eca8e67",
+          "reported_stop_reason": "search_budget",
+          "reported_stop_seconds": 26.4106,
+          "same_frozen_runtime_config_inputs": true,
+          "identity_limitation": "This eligibility witness is the original9eca run, separate from the later f17 calibration artifact10044831235; no outputs are pooled or selected between them.",
+          "authorization": "Coordinator explicitly directed proceed with all three cold585/565 extensions in the cited message."
+        },
+        "setA-14": {
+          "all_lanes_naturally_exhausted": false,
+          "source": "https://tokenjunkielabs.slack.com/archives/C0BUY3EKMSB/p1788852842488019",
+          "evidence_kind": "coordinator retained-log readback; local archive download unavailable",
+          "retained_run": 34197333541,
+          "retained_artifact": 10044706015,
+          "retained_head_prefix": "9eca8e67",
+          "reported_stop_reason": "search_budget",
+          "reported_stop_seconds": 26.4381,
+          "same_frozen_runtime_config_inputs": true,
+          "identity_limitation": "This eligibility witness is the original9eca run, separate from the later f17 calibration artifact10044831235; no outputs are pooled or selected between them.",
+          "authorization": "Coordinator explicitly directed proceed with all three cold585/565 extensions in the cited message.",
+          "reported_lane_wall_seconds": {
+            "candidate": 26.4003,
+            "flora": 19.7709,
+            "sedge": 25.9889
+          }
+        },
+        "setA-16": {
+          "all_lanes_naturally_exhausted": false,
+          "source": "https://tokenjunkielabs.slack.com/archives/C0BUY3EKMSB/p1788852842488019",
+          "evidence_kind": "coordinator retained-log readback; local archive download unavailable",
+          "retained_run": 34197333541,
+          "retained_artifact": 10044706015,
+          "retained_head_prefix": "9eca8e67",
+          "reported_stop_reason": "search_budget",
+          "reported_stop_seconds": 26.4443,
+          "same_frozen_runtime_config_inputs": true,
+          "identity_limitation": "This eligibility witness is the original9eca run, separate from the later f17 calibration artifact10044831235; no outputs are pooled or selected between them.",
+          "authorization": "Coordinator explicitly directed proceed with all three cold585/565 extensions in the cited message."
+        }
+      },
+      "input_sha256": {
+        "setA-04-net.json": "fbab36e356e73d8660f2a1a1aa3c110a3037938d834583d46707722b767c1559",
+        "setA-04-tm.json": "eae88eb99c495a5a4fa6f42717867169f2dbd12babb51520a0a26aa40be4be84",
+        "setA-04-scenario.json": "2a1b2744591d2707b2fb0ed7844a07ec2f5a61f6790df3ae0b60e392c950ad7e",
+        "setA-14-net.json": "779364ffbae366e1943dcf913f61ce8cc0928fcd52c158660b4eb7c68b1446cb",
+        "setA-14-tm.json": "244b41ce8d5a1cf19e7a42c1b86a0ef4de18a173ccfa24a61a602c3200032d28",
+        "setA-14-scenario.json": "e891294997f9580cd976b164faaeb1e182f76338d727a5eb7dbb5f0aba32505a",
+        "setA-16-net.json": "341c874ba43a464f1140944fbde8b0b22afc70557acb9a1ed37c13116c748268",
+        "setA-16-tm.json": "db98d522634230e15337dc81ddca15a9922e1f505056f8c696db9b6cd6e00d3f",
+        "setA-16-scenario.json": "a992e5ddc30bdcdc33a2f64737abfd0f20231f272419a038e76582b49db7b7f0"
+      }
+    },
+    "maximum_concurrent_cases": 2,
+    "execution_order": [
+      "04",
+      "14",
+      "16"
+    ],
+    "source_manifest_commit": "6feb9c0566b8f203c5d1a2ffdfbf1cb6d11be055"
+  },
+  "input_identity": {
+    "official_commit": "d84d319a7fdb8de3b1866830d2eaa2937871e5ae",
+    "official_archive_sha256": "e03b9ebf266755097e236d880830631574f528b872e44b67dc45af4796bd5ca8",
+    "files": [
+      {
+        "path": "setA-04-net.json",
+        "bytes": 30995,
+        "sha256": "fbab36e356e73d8660f2a1a1aa3c110a3037938d834583d46707722b767c1559",
+        "original_member": "challenge-roadef-2026-d84d319a7fdb8de3b1866830d2eaa2937871e5ae-d84d319a7fdb8de3b1866830d2eaa2937871e5ae/setA/setA-04-net.json"
+      },
+      {
+        "path": "setA-04-tm.json",
+        "bytes": 20766,
+        "sha256": "eae88eb99c495a5a4fa6f42717867169f2dbd12babb51520a0a26aa40be4be84",
+        "original_member": "challenge-roadef-2026-d84d319a7fdb8de3b1866830d2eaa2937871e5ae-d84d319a7fdb8de3b1866830d2eaa2937871e5ae/setA/setA-04-tm.json"
+      },
+      {
+        "path": "setA-04-scenario.json",
+        "bytes": 191,
+        "sha256": "2a1b2744591d2707b2fb0ed7844a07ec2f5a61f6790df3ae0b60e392c950ad7e",
+        "original_member": "challenge-roadef-2026-d84d319a7fdb8de3b1866830d2eaa2937871e5ae-d84d319a7fdb8de3b1866830d2eaa2937871e5ae/setA/setA-04-scenario.json"
+      },
+      {
+        "path": "setA-14-net.json",
+        "bytes": 149533,
+        "sha256": "779364ffbae366e1943dcf913f61ce8cc0928fcd52c158660b4eb7c68b1446cb",
+        "original_member": "challenge-roadef-2026-d84d319a7fdb8de3b1866830d2eaa2937871e5ae-d84d319a7fdb8de3b1866830d2eaa2937871e5ae/setA/setA-14-net.json"
+      },
+      {
+        "path": "setA-14-tm.json",
+        "bytes": 62427,
+        "sha256": "244b41ce8d5a1cf19e7a42c1b86a0ef4de18a173ccfa24a61a602c3200032d28",
+        "original_member": "challenge-roadef-2026-d84d319a7fdb8de3b1866830d2eaa2937871e5ae-d84d319a7fdb8de3b1866830d2eaa2937871e5ae/setA/setA-14-tm.json"
+      },
+      {
+        "path": "setA-14-scenario.json",
+        "bytes": 191,
+        "sha256": "e891294997f9580cd976b164faaeb1e182f76338d727a5eb7dbb5f0aba32505a",
+        "original_member": "challenge-roadef-2026-d84d319a7fdb8de3b1866830d2eaa2937871e5ae-d84d319a7fdb8de3b1866830d2eaa2937871e5ae/setA/setA-14-scenario.json"
+      },
+      {
+        "path": "setA-16-net.json",
+        "bytes": 187335,
+        "sha256": "341c874ba43a464f1140944fbde8b0b22afc70557acb9a1ed37c13116c748268",
+        "original_member": "challenge-roadef-2026-d84d319a7fdb8de3b1866830d2eaa2937871e5ae-d84d319a7fdb8de3b1866830d2eaa2937871e5ae/setA/setA-16-net.json"
+      },
+      {
+        "path": "setA-16-tm.json",
+        "bytes": 507495,
+        "sha256": "db98d522634230e15337dc81ddca15a9922e1f505056f8c696db9b6cd6e00d3f",
+        "original_member": "challenge-roadef-2026-d84d319a7fdb8de3b1866830d2eaa2937871e5ae-d84d319a7fdb8de3b1866830d2eaa2937871e5ae/setA/setA-16-tm.json"
+      },
+      {
+        "path": "setA-16-scenario.json",
+        "bytes": 191,
+        "sha256": "a992e5ddc30bdcdc33a2f64737abfd0f20231f272419a038e76582b49db7b7f0",
+        "original_member": "challenge-roadef-2026-d84d319a7fdb8de3b1866830d2eaa2937871e5ae-d84d319a7fdb8de3b1866830d2eaa2937871e5ae/setA/setA-16-scenario.json"
+      }
+    ]
+  },
+  "run_notes": {
+    "claim": "1788852707.332779",
+    "initial_setup_failure": "results/: missing artifacts parent caused all three wrappers to exit before solver start; failed-launch-runner.py preserves exact original harness.",
+    "actual_execution": "execution/: each solver case executed once with max2 concurrent cases; executed-runner.py preserves invoked source.",
+    "report_writer_failure": "The execution harness passed official12dp diagnostics through frozen6dp-only ranking parser after both independent checker calls. Solver/checker files retained, no solver repeated.",
+    "repair": "Owned run_budget.py diagnostic reader fixed; summarize_saved.py consumes retained reports only. Frozen comparator/runtime unchanged.",
+    "final_checker_verification": "Six additional official6/12dp calls preserve exit codes and compare bytes with the six original reports. These are validation calls, no solver reruns."
+  },
+  "artifact": {
+    "filename": "ROADEF-QUARTZ-A-budget-75897709.zip",
+    "bytes": 4651078,
+    "sha256": "5b6b53ecfa74a1b7c0ac911b64534e0a0bd224038a3f99564074eb9c55174a0f",
+    "payload_files": 486,
+    "file_id": "file_000000008cfc81f59b7ac6a240572622",
+    "library_file_id": "libfile_5ccaccc59e148191a342e845b633274e",
+    "version": 0,
+    "local_payload_hashes_verified": true,
+    "saved_size_verified": true,
+    "saved_readback_verified": false,
+    "readback_status": "Independent materialization returned HTTP502."
+  },
+  "actual_maximum_concurrent_portfolio_cases": 2,
+  "observed_interval_events": [
+    [
+      "2026-09-08T07:37:52.359552+00:00",
+      1,
+      "setA-14"
+    ],
+    [
+      "2026-09-08T07:37:52.367487+00:00",
+      1,
+      "setA-04"
+    ],
+    [
+      "2026-09-08T07:38:26.045219+00:00",
+      -1,
+      "setA-04"
+    ],
+    [
+      "2026-09-08T07:38:26.107031+00:00",
+      1,
+      "setA-16"
+    ],
+    [
+      "2026-09-08T07:39:01.199832+00:00",
+      -1,
+      "setA-14"
+    ],
+    [
+      "2026-09-08T07:47:51.481808+00:00",
+      -1,
+      "setA-16"
+    ]
+  ]
+}

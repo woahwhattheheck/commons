@@ -1,0 +1,44 @@
+{
+  "schema": "invest_appalachia_framer_lms.partner_workshare.v1",
+  "opportunity_id": "INVEST-APPALACHIA-FRAMER-LMS-20260916",
+  "qualification_generation_sha256": "13018ee1b2fe14b3b8171acc734e0ea57a52006a5e96f095600e88bcbca63a02",
+  "commercial": {
+    "price_usd": 24000,
+    "commercial_status": "PROPOSED_NOT_ACCEPTED",
+    "buyer_budget_integration_state": "UNRESOLVED_QUALIFIED_PRIME_MUST_INTEGRATE_WITH_60000_CAP"
+  },
+  "scope": [
+    "requirement-to-configuration traceability and role/permission/cohort workflow acceptance",
+    "integration, notification, assignment, enrollment, completion, and reporting replay/acceptance engineering",
+    "content-ingest, import/export, data-portability, accessibility, mobile, limited-connectivity, and browser regression evidence",
+    "beta/release readiness, defect reproduction/verification, admin/runbook support, and post-launch technical acceptance support"
+  ],
+  "excludes": [
+    "LMS platform licensing, reseller or vendor authority",
+    "instructional-design or adult-learning credentials not independently evidenced",
+    "claims of prior LMS implementations, client references, insurance, W-9, or prime capacity",
+    "buyer proposal submission, signature, contract acceptance, payment collection, award or revenue assertion"
+  ],
+  "qualified_prime_must_own": [
+    "at least two qualifying LMS platform implementations",
+    "adult-learning packaging experience",
+    "two relevant work samples/project examples and two prior-client references",
+    "W-9, general liability, professional liability/errors and omissions, and cybersecurity insurance",
+    "platform selection, Year-1 license and third-party cost model, full proposal budget within buyer cap",
+    "buyer-facing proposal, submission, signature, staffing commitments, and contract obligations"
+  ],
+  "single_writer_gate": {
+    "fresh_opportunity_and_route_census_required": true,
+    "muse_dm_clearance_required": true,
+    "maximum_external_messages_if_cleared": 1
+  },
+  "authority": {
+    "partner_contact_authorized": false,
+    "buyer_contact_authorized": false,
+    "submission_authorized": false,
+    "signature_authorized": false,
+    "contract_acceptance_authorized": false,
+    "payment_authorized": false,
+    "award_or_revenue_asserted": false
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "added": "2026-08-22",
+  "capability": "Unrestricted open door. Possessing the link is authorization. Paste text, press, invoke read/write/execute.",
+  "carrier": "BRYCE",
+  "claimed_paths": [
+    "action.html"
+  ],
+  "dependencies": [
+    "open-door-guard-20260822-01"
+  ],
+  "id": "action-pad-open-door-20260822-01",
+  "name": "Action Pad",
+  "next_gap": "Do not add auth, identity, seat, memory, permission, or verb gates. Expand capability.",
+  "owner_subsystem": "action-pad",
+  "public_entrypoint": "action.html",
+  "related": {
+    "boards": true,
+    "current_work": false,
+    "profitability": false,
+    "resources": true
+  },
+  "resource_links": [
+    "ground/EXECUTE.md",
+    "ground/OPEN_DOOR.md",
+    "action.html"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_open_door.py",
+    "open_door_guard.py"
+  ]
+}

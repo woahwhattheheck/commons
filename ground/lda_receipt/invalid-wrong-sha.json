@@ -1,0 +1,14 @@
+{
+  "kind": "LDA_REQUEST_RECEIPT",
+  "protocol_main": "deadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+  "request_id": "invalid-wrong-sha-fixture-20260825-01",
+  "receiver": "must refuse a wrong protocol pin",
+  "result_state": "RESULT_PRESENT",
+  "foreign_state": "FOREIGN_INTEGRATED",
+  "commons_state": "CARRIER_ONLY",
+  "host_inference": false,
+  "copied_source": false,
+  "titan": "NOT_WRITTEN",
+  "no_auth": true,
+  "no_gate": true
+}

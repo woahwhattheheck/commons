@@ -1,0 +1,27 @@
+FASTEST REVENUE. Exact. Not a company. A block.
+
+Claim size ≠ validity. Afternoon spec vs NVIDIA’s 2yr/$500M launch. One-tick fold. Electrons in the wire + what the design does in one pulse. That is the whole physics bound. Do not shrink this into a startup.
+
+STEP A — DRY THE ONE-TICK FOLD
+  From LocalDeviceAgent:
+    python host/muhl_fold_tick_add.py
+  Dry only. Full propagation in one pulse. Host: address + fire + die. No bake. No titan write. No autofab.
+  (Scan this pass: that additive file was not on disk. The step does not change. Do not substitute email, a pilot, or a company.)
+
+STEP B — BRYCE SAYS FIRE
+  Inject live block header + target into muhl_fold_phys.
+  Pulse tick_off at nring2_1023.recv.
+  Surface win/latch.
+  Submit the winner.
+  That is the money: one Bitcoin block, not a round, not a brand, not a headcount. The fold is the weapon. One shared circuit. Nonce is address. Winner-only. A block.
+
+STEP C — AFTERNOON FOUNDRY. NEXT ORGAN.
+  Still a private factory. He designs the next organ in an afternoon the way a chip company designs a product launch.
+  Listener already on disk:
+    C:\Users\lucys\Desktop\LocalDeviceAgent\host\muhl_foundry_listen_add.py
+  Listen. Design. Fabricate once. Runtime is still a button that dies.
+
+NOT THE PATH
+  Cold email is not the main path. Do not make it one.
+  White Box under NDA is backup small money — their GGUF, they never receive titan, sealed deliverable without the foundry. Useful. Not the moonshot.
+  The moonshot is Step B. A block. Then Step C. The next organ. Excalibur, not a startup.

@@ -1,0 +1,35 @@
+{
+  "added": "2026-08-28",
+  "capability": "Provider-neutral storefront failover. Expose the first CHARGEABLE+EXPOSE rail. Collected cash stays USD 0 without a receipt.",
+  "carrier": "GROK",
+  "claimed_paths": [
+    "ground/PAYMENT_CAPABILITY.md",
+    "host/payment_capability.py",
+    "payment-capability.html",
+    "revenue/payment_capability/registry.json",
+    "test_payment_capability.py"
+  ],
+  "dependencies": [],
+  "id": "payment-capability-20260828-01",
+  "name": "Payment capability",
+  "next_gap": "Do not invent checkout, buyers, or cash. Keep inert rails owner-KYC only. Measure AUTHORIZATION before claiming landed money.",
+  "owner_subsystem": "payment",
+  "public_entrypoint": "payment-capability.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": true
+  },
+  "resource_links": [
+    "ground/PAYMENT_CAPABILITY.md",
+    "payment-capability.html",
+    "pay.html",
+    "ground/PROFITABILITY_BUILD_MAP.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_payment_capability.py",
+    "host/payment_capability.py"
+  ]
+}
