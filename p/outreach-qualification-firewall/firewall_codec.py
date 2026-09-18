@@ -19,9 +19,9 @@ MAX_RUNWAY_SECONDS = 366 * 24 * 3600
 MAX_LEASE_SECONDS = 3600
 MAX_IDENTITY_VALIDITY_SECONDS = 180 * 24 * 3600
 MAX_RELATIONSHIP_VALIDITY_SECONDS = 600
-MAX_RELATIONSHIP_AGE_SECONDS = 300
+MAX_RELATIONSHIP_AGE_SECONDS = 60
 TOKEN_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:/+-]{0,127}$")
-EMAIL_RE = re.compile(r"^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,63}$")
+EMAIL_RE = re.compile(r"^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,63}$")
 HEX = set("0123456789abcdef")
 
 TOP_KEYS = {
