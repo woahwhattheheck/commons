@@ -363,7 +363,10 @@ class DownselectTests(unittest.TestCase):
 
     def test_artifact_evidence_requires_real_sha256_shape(self) -> None:
         packet = bind_evidence(ready_packet())
-        packet["evidenceRecords"][0]["sha256"] = "not-a-digest"
+        target = next(
+            row for row in packet["evidenceRecords"] if row["sourceClass"] != "REPO"
+        )
+        target["sha256"] = "not-a-digest"
         with self.assertRaisesRegex(ContractError, "INVALID_EVIDENCE_SHA256"):
             compile_portfolio(packet)
 
