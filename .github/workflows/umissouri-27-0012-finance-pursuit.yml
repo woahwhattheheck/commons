@@ -1,1 +1,33 @@
-name: UM 27-0012 finance pursuit\n\non:\n  pull_request:\n    paths:\n      - "revenue/opportunities/umissouri_27_0012_payables_merchant/**"\n      - ".github/workflows/umissouri-27-0012-finance-pursuit.yml"\n  workflow_dispatch:\n\npermissions:\n  contents: read\n\njobs:\n  semantic:\n    strategy:\n      fail-fast: false\n      matrix:\n        python-version: ["3.11", "3.13"]\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-python@v5\n        with:\n          python-version: ${{ matrix.python-version }}\n      - name: Compile\n        working-directory: revenue/opportunities/umissouri_27_0012_payables_merchant\n        run: python -m py_compile umissouri_27_0012.py test_umissouri_27_0012.py\n      - name: Normal semantic suite\n        working-directory: revenue/opportunities/umissouri_27_0012_payables_merchant\n        run: python -m unittest -v test_umissouri_27_0012.py\n      - name: Optimized semantic suite\n        working-directory: revenue/opportunities/umissouri_27_0012_payables_merchant\n        run: python -O -m unittest -v test_umissouri_27_0012.py\n
+name: UM 27-0012 finance pursuit
+
+on:
+  pull_request:
+    paths:
+      - "revenue/opportunities/umissouri_27_0012_payables_merchant/**"
+      - ".github/workflows/umissouri-27-0012-finance-pursuit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  semantic:
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.13"]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile
+        working-directory: revenue/opportunities/umissouri_27_0012_payables_merchant
+        run: python -m py_compile umissouri_27_0012.py test_umissouri_27_0012.py
+      - name: Normal semantic suite
+        working-directory: revenue/opportunities/umissouri_27_0012_payables_merchant
+        run: python -m unittest -v test_umissouri_27_0012.py
+      - name: Optimized semantic suite
+        working-directory: revenue/opportunities/umissouri_27_0012_payables_merchant
+        run: python -O -m unittest -v test_umissouri_27_0012.py
