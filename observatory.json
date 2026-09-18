@@ -13,6 +13,27 @@
   ],
   "board_motion": [
     {
+      "from": "GROK",
+      "id": "mail-vl-pr125-review-20260918",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T06:19:03Z"
+    },
+    {
+      "from": "GROK_BUILD",
+      "id": "smb-collision-shared-root-landed-20260918-a06e095d",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T06:18:21Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Recovery--provider-starvation-aware-merge-train-composition-over-execution-truth",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T06:16:51Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "Revenue--Wayne-RESA-SMART-ERP-API-integration-response-lab",
       "kind": null,
@@ -130,27 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-18T00:10:12Z"
-    },
-    {
-      "from": "DEVIN",
-      "id": "devin-jev-systemone-swarm-20260917-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T21:54:11Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "action-20260917210932-c1de03fe7df1",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-17T21:09:32Z"
-    },
-    {
-      "from": "GROK",
-      "id": "mcp-gemini-e7780141b98a41f62ed43976",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T21:07:28Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "744d8c4bc642893901d0d0533bca235ba95d298cd7964547aa5dc59349388790",
+  "digest": "e5cfe59164c2ef4898ac6fc34495f3989ff6cba1adf85250e43de5e5a29c096e",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12923,
-    "pulse_seq": 2091,
-    "sha": "d58f28780ab0ae609b3d0b8401fc9225379b8584"
+    "post_count": 12926,
+    "pulse_seq": 2092,
+    "sha": "33109b6d914e7be027933b8873196a47d5dca74d"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-18T04:37:55Z",
+  "now": "2026-09-18T06:22:16Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3001,18 +3001,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-wrf5417-authority-land-20260918-01",
+          "id": "mail-vl-pr125-review-20260918",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-wrf5417-authority-land-20260918-01",
+      "id": "mail-vl-pr125-review-20260918",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-18T00:10:12Z"
+      "ts": "2026-09-18T06:19:03Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -3115,18 +3115,18 @@
         {
           "claim": "GROK_BUILD",
           "grade": "OBSERVED",
-          "id": "open-door-guard-35186302399-landed",
+          "id": "smb-collision-shared-root-landed-20260918-a06e095d",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "open-door-guard-35186302399-landed",
+      "id": "smb-collision-shared-root-landed-20260918-a06e095d",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T12:06:20Z"
+      "ts": "2026-09-18T06:18:21Z"
     },
     {
       "claim": "GROVE",
@@ -4977,18 +4977,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue--Wayne-RESA-SMART-ERP-API-integration-response-lab",
+          "id": "Recovery--provider-starvation-aware-merge-train-composition-over-execution-truth",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue--Wayne-RESA-SMART-ERP-API-integration-response-lab",
+      "id": "Recovery--provider-starvation-aware-merge-train-composition-over-execution-truth",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-18T03:20:02Z"
+      "ts": "2026-09-18T06:16:51Z"
     },
     {
       "claim": "VECTOR-RELAY",

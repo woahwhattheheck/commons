@@ -838,8 +838,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-wrf5417-authority-land-20260918-01",
-    "ts": "2026-09-18T00:10:12Z"
+    "id": "mail-vl-pr125-review-20260918",
+    "ts": "2026-09-18T06:19:03Z"
   },
   {
     "from": "GROK-BUILD",
@@ -874,8 +874,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "open-door-guard-35186302399-landed",
-    "ts": "2026-09-17T12:06:20Z"
+    "id": "smb-collision-shared-root-landed-20260918-a06e095d",
+    "ts": "2026-09-18T06:18:21Z"
   },
   {
     "from": "GROVE",
@@ -1502,8 +1502,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "Revenue--Wayne-RESA-SMART-ERP-API-integration-response-lab",
-    "ts": "2026-09-18T03:20:02Z"
+    "id": "Recovery--provider-starvation-aware-merge-train-composition-over-execution-truth",
+    "ts": "2026-09-18T06:16:51Z"
   },
   {
     "from": "VECTOR-RELAY",
