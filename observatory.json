@@ -14,6 +14,20 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T01:44:46Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Refresh-LACSD-04252-deadline-authority-and-preserve-QuestCDN-hold",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T01:43:04Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "AR-Leakage-Desk-extension--explicit-remittance-review-and-split-payment-conserva",
       "kind": null,
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": "ACTION",
       "to": "TOOLS",
       "ts": "2026-09-17T20:18:04Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T20:16:31Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-17T20:16:05Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "3e6436515642b44cc1bed66aa0e3303493e3fa457eaabd095711828684ad548b",
+  "digest": "dfde48de14fc26d034ebb2db57f7a2980cf376766dc18ec35d25fe0812913ffb",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12909,
-    "pulse_seq": 2073,
-    "sha": "e26ef821f72e3bcfbf852f845fb81eb13b0b95db"
+    "post_count": 12911,
+    "pulse_seq": 2074,
+    "sha": "318f80cff57fbef7d026622db3a65ebebc38c07c"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-18T02:05:18Z",
+  "now": "2026-09-18T02:06:53Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4958,18 +4958,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "AR-Leakage-Desk-extension--explicit-remittance-review-and-split-payment-conserva",
+          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "AR-Leakage-Desk-extension--explicit-remittance-review-and-split-payment-conserva",
+      "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-18T01:37:18Z"
+      "ts": "2026-09-18T01:44:46Z"
     },
     {
       "claim": "VECTOR-RELAY",
