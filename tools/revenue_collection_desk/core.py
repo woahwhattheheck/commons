@@ -194,6 +194,8 @@ _EVENT_ALLOWED = _EVENT_COMMON | {
     "cooldown_until",
     "settlement_currency",
     "settlement_amount",
+    "entitlement_instrument",
+    "entitlement_amount",
 }
 
 def _normalize_reference(value: Any, label: str) -> dict[str, Any]:
@@ -229,6 +231,19 @@ def _normalize_event(value: Any, label: str) -> tuple[dict[str, Any], datetime]:
             if hold_dt < at_dt:
                 raise ContractError(f"{label}.hold_until precedes event")
             out["hold_until"] = hold
+    elif kind == "ENTITLEMENT_CONFIRMED":
+        if extras != {"entitlement_instrument", "entitlement_amount"}:
+            raise ContractError(
+                f"{label}: ENTITLEMENT_CONFIRMED requires entitlement_instrument "
+                "and entitlement_amount"
+            )
+        _, entitlement_amount = _amount(
+            obj["entitlement_amount"], f"{label}.entitlement_amount"
+        )
+        out["entitlement_instrument"] = _instrument(
+            obj["entitlement_instrument"], f"{label}.entitlement_instrument"
+        )
+        out["entitlement_amount"] = entitlement_amount
     elif kind == "COLLECTION_CONTACT_SENT":
         if extras != {"cooldown_until"}:
             raise ContractError(f"{label}: COLLECTION_CONTACT_SENT requires only cooldown_until")
@@ -312,7 +327,7 @@ def _normalize_claim(value: Any, index: int, as_of_dt: datetime) -> dict[str, An
     asserted_hold_until: datetime | None = None
     asserted_hold_text: str | None = None
     settlement: dict[str, str] | None = None
-    entitlement_confirmed = False
+    entitlement_evidence: dict[str, str] | None = None
 
     contact_sent = False
     contact_open = False
@@ -357,16 +372,30 @@ def _normalize_claim(value: Any, index: int, as_of_dt: datetime) -> dict[str, An
                 raise ContractError(
                     f"{label}: entitlement evidence not allowed in state {state}"
                 )
-            if entitlement_confirmed:
+            if entitlement_evidence is not None:
                 raise ContractError(f"{label}: entitlement evidence cannot repeat")
-            entitlement_confirmed = True
+            if event["entitlement_instrument"] != instrument:
+                raise ContractError(
+                    f"{label}: entitlement instrument does not match claim instrument"
+                )
+            if Decimal(event["entitlement_amount"]) != amount_dec:
+                raise ContractError(
+                    f"{label}: entitlement amount does not match claim amount"
+                )
+            entitlement_evidence = {
+                "instrument": event["entitlement_instrument"],
+                "amount": event["entitlement_amount"],
+                "source_ref": event["source_ref"],
+                "source_digest": event["source_digest"],
+                "at": event["at"],
+            }
         else:
             if state not in {STATE_ACCEPTED, STATE_ASSERTED, STATE_AVAILABLE, STATE_DISPUTED}:
                 raise ContractError(f"{label}: route event {kind} not allowed in state {state}")
             if kind == "COLLECTION_CONTACT_SENT":
                 if state != STATE_ACCEPTED:
                     raise ContractError(f"{label}: collection contact only allowed while awaiting payment")
-                if not entitlement_confirmed:
+                if entitlement_evidence is None:
                     raise ContractError(
                         f"{label}: collection contact requires confirmed compensation entitlement"
                     )
@@ -425,7 +454,7 @@ def _normalize_claim(value: Any, index: int, as_of_dt: datetime) -> dict[str, An
     elif state == STATE_AVAILABLE:
         next_action = "VERIFY_SETTLEMENT"
     elif state == STATE_ACCEPTED:
-        if not entitlement_confirmed:
+        if entitlement_evidence is None:
             next_action = "VERIFY_ENTITLEMENT"
         elif route_dead:
             next_action = "ROUTE_REPAIR_REQUIRED"
@@ -447,7 +476,8 @@ def _normalize_claim(value: Any, index: int, as_of_dt: datetime) -> dict[str, An
         "instrument": instrument,
         "amount": amount,
         "state": state,
-        "entitlement_confirmed": entitlement_confirmed,
+        "entitlement_confirmed": entitlement_evidence is not None,
+        "entitlement_evidence": entitlement_evidence,
         "next_action": next_action,
         "events": events,
         "route": {
@@ -470,6 +500,7 @@ def _normalize_claim(value: Any, index: int, as_of_dt: datetime) -> dict[str, An
                 "instrument": instrument,
                 "amount": amount,
                 "reference_valuation": reference,
+                "entitlement_evidence": entitlement_evidence,
             }
         ),
     }
