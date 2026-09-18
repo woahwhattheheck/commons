@@ -242,5 +242,61 @@ class CanonicalWorkBoundaryTests(unittest.TestCase):
             auditor.MAX_PULL_REQUESTS_PER_RUN = original_prs
 
 
+    def test_exported_build_report_rebind_cannot_self_ratify_false_safe(self):
+        data = packet()
+        data["runs"][0]["provenance"]["pull_requests"] = [
+            {"number": 1, "state": "OPEN", "current_head_sha": SHA_A}
+        ]
+        report = auditor.build_report(data)
+        self.assertEqual(report["rows"][0]["decision"], "HOLD")
+
+        tampered = copy.deepcopy(report)
+        tampered["rows"][0]["decision"] = "SAFE_TO_CANCEL"
+        tampered["rows"][0]["reasons"] = ["ALL_ASSOCIATED_PRS_CLOSED_OR_STALE"]
+        tampered["counts"] = {"HOLD": 0, "SAFE_TO_CANCEL": 1}
+        unsigned = dict(tampered)
+        unsigned.pop("report_receipt")
+        tampered["report_receipt"] = auditor.sha256_hex(
+            auditor.canonical_json(unsigned)
+        )
+
+        original_build_report = auditor.build_report
+        auditor.build_report = lambda _retained: tampered
+        try:
+            with self.assertRaisesRegex(
+                auditor.AuditError, "semantic recompile mismatch"
+            ):
+                auditor.verify_report(tampered)
+        finally:
+            auditor.build_report = original_build_report
+
+    def test_exported_canonical_json_rebind_cannot_collapse_verifier(self):
+        data = packet()
+        data["runs"][0]["provenance"]["pull_requests"] = [
+            {"number": 1, "state": "OPEN", "current_head_sha": SHA_A}
+        ]
+        report = auditor.build_report(data)
+        tampered = copy.deepcopy(report)
+        tampered["rows"][0]["decision"] = "SAFE_TO_CANCEL"
+        tampered["rows"][0]["reasons"] = ["ALL_ASSOCIATED_PRS_CLOSED_OR_STALE"]
+        tampered["counts"] = {"HOLD": 0, "SAFE_TO_CANCEL": 1}
+
+        original_canonical_json = auditor.canonical_json
+        auditor.canonical_json = lambda _value: b"{}"
+        try:
+            tampered["input_digest"] = auditor.sha256_hex(
+                auditor.canonical_json(tampered["retained_input"])
+            )
+            unsigned = dict(tampered)
+            unsigned.pop("report_receipt")
+            tampered["report_receipt"] = auditor.sha256_hex(
+                auditor.canonical_json(unsigned)
+            )
+            with self.assertRaises(auditor.AuditError):
+                auditor.verify_report(tampered)
+        finally:
+            auditor.canonical_json = original_canonical_json
+
+
 if __name__ == "__main__":
     unittest.main()
