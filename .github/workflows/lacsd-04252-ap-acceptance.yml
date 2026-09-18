@@ -1,0 +1,40 @@
+name: lacsd-04252-ap-acceptance
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/opportunities/lacsd_04252_ap_automation/**'
+      - '.github/workflows/lacsd-04252-ap-acceptance.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'revenue/opportunities/lacsd_04252_ap_automation/**'
+      - '.github/workflows/lacsd-04252-ap-acceptance.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  acceptance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: LACSD 04252 AP acceptance — normal semantics
+        working-directory: revenue/opportunities/lacsd_04252_ap_automation
+        run: |
+          python -m py_compile lacsd_04252.py test_lacsd_04252.py
+          python -m unittest -v test_lacsd_04252.py
+      - name: LACSD 04252 AP acceptance — optimized semantics
+        working-directory: revenue/opportunities/lacsd_04252_ap_automation
+        run: |
+          python -O -m unittest -v test_lacsd_04252.py
+      - name: whitespace guard
+        run: git diff --check HEAD^

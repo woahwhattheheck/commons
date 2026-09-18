@@ -16,9 +16,9 @@ SOLICITATION_ID = "04252"
 BUYER = "Los Angeles County Sanitation Districts"
 TITLE = "AUTOMATED ACCOUNTS PAYABLE INVOICE PROCESSING SYSTEM"
 DETAIL_URL = "https://www.lacsd.org/Home/Components/RFP/RFP/954/488?selsta=4"
-LIST_URL = "https://www.lacsd.org/opportunities/bids-purchasing/purchasing-section-projects/-sortn-RFPTitle"
-DETAIL_DUE_UTC = "2026-10-15T18:00:00Z"
-LIST_DUE_UTC = "2026-09-30T18:00:00Z"
+CURRENT_LIST_URL = "https://www.lacsd.org/about-us/advanced-components/list-detail-pages/rfp-posts-list"
+SUBMISSION_RULES_URL = "https://www.lacsd.org/opportunities/bids-purchasing/purchasing-section-projects"
+BID_DUE_UTC = "2026-10-15T18:00:00Z"
 TARGET_ACCURACY_BPS = 9900
 TARGET_CYCLE_SECONDS = 48 * 60 * 60
 
@@ -289,7 +289,15 @@ def evaluate_matrix(document: Any) -> dict[str, Any]:
 def validate_manifest(manifest: Any, trusted_as_of: str) -> dict[str, Any]:
     doc = _exact_keys(
         manifest,
-        {"schema", "solicitation", "sources", "requirements", "commercial_offer", "authority"},
+        {
+            "schema",
+            "solicitation",
+            "sources",
+            "submission_evidence",
+            "requirements",
+            "commercial_offer",
+            "authority",
+        },
         "manifest",
     )
     if doc["schema"] != SCHEMA:
@@ -303,23 +311,83 @@ def validate_manifest(manifest: Any, trusted_as_of: str) -> dict[str, Any]:
     if solicitation["title"] != TITLE:
         raise ContractError("manifest.solicitation.title: exact title required")
 
-    sources = _exact_keys(doc["sources"], {"detail", "list"}, "manifest.sources")
-    detail = _exact_keys(sources["detail"], {"url", "captured_at_utc", "due_utc"}, "manifest.sources.detail")
-    listing = _exact_keys(sources["list"], {"url", "captured_at_utc", "due_utc"}, "manifest.sources.list")
+    sources = _exact_keys(
+        doc["sources"], {"detail", "current_list", "submission_rules"}, "manifest.sources"
+    )
+    detail = _exact_keys(
+        sources["detail"], {"url", "captured_at_utc", "due_utc"}, "manifest.sources.detail"
+    )
+    listing = _exact_keys(
+        sources["current_list"],
+        {"url", "captured_at_utc", "due_utc"},
+        "manifest.sources.current_list",
+    )
+    submission_rules = _exact_keys(
+        sources["submission_rules"],
+        {
+            "url",
+            "captured_at_utc",
+            "authorized_distributor",
+            "proper_download_required_for_planholder",
+            "planholder_required_to_submit",
+            "submission_route",
+        },
+        "manifest.sources.submission_rules",
+    )
     if _https(detail["url"], "manifest.sources.detail.url") != DETAIL_URL:
         raise ContractError("manifest.sources.detail.url: controlling URL drift")
-    if _https(listing["url"], "manifest.sources.list.url") != LIST_URL:
-        raise ContractError("manifest.sources.list.url: controlling URL drift")
-    if detail["due_utc"] != DETAIL_DUE_UTC:
+    if _https(listing["url"], "manifest.sources.current_list.url") != CURRENT_LIST_URL:
+        raise ContractError("manifest.sources.current_list.url: controlling URL drift")
+    if _https(submission_rules["url"], "manifest.sources.submission_rules.url") != SUBMISSION_RULES_URL:
+        raise ContractError("manifest.sources.submission_rules.url: controlling URL drift")
+    if detail["due_utc"] != BID_DUE_UTC:
         raise ContractError("manifest.sources.detail.due_utc: detail deadline drift")
-    if listing["due_utc"] != LIST_DUE_UTC:
-        raise ContractError("manifest.sources.list.due_utc: list deadline drift")
+    if listing["due_utc"] != BID_DUE_UTC:
+        raise ContractError("manifest.sources.current_list.due_utc: current-list deadline drift")
+    if submission_rules["authorized_distributor"] != "QuestCDN":
+        raise ContractError("manifest.sources.submission_rules.authorized_distributor: must remain QuestCDN")
+    if _bool(
+        submission_rules["proper_download_required_for_planholder"],
+        "manifest.sources.submission_rules.proper_download_required_for_planholder",
+    ) is not True:
+        raise ContractError("manifest.sources.submission_rules: proper-download rule must remain true")
+    if _bool(
+        submission_rules["planholder_required_to_submit"],
+        "manifest.sources.submission_rules.planholder_required_to_submit",
+    ) is not True:
+        raise ContractError("manifest.sources.submission_rules: planholder rule must remain true")
+    if submission_rules["submission_route"] != "QUESTCDN_ONLY":
+        raise ContractError("manifest.sources.submission_rules.submission_route: must remain QUESTCDN_ONLY")
 
     as_of = _utc(trusted_as_of, "trusted_as_of")
-    detail_capture = _utc(detail["captured_at_utc"], "manifest.sources.detail.captured_at_utc")
-    list_capture = _utc(listing["captured_at_utc"], "manifest.sources.list.captured_at_utc")
-    if detail_capture > as_of or list_capture > as_of:
+    capture_values = (
+        _utc(detail["captured_at_utc"], "manifest.sources.detail.captured_at_utc"),
+        _utc(listing["captured_at_utc"], "manifest.sources.current_list.captured_at_utc"),
+        _utc(
+            submission_rules["captured_at_utc"],
+            "manifest.sources.submission_rules.captured_at_utc",
+        ),
+    )
+    if any(capture > as_of for capture in capture_values):
         raise ContractError("manifest.sources: future source generation")
+
+    submission_evidence = _exact_keys(
+        doc["submission_evidence"],
+        {"authorized_packet_retained", "proper_download_evidenced", "planholder_status"},
+        "manifest.submission_evidence",
+    )
+    if _bool(
+        submission_evidence["authorized_packet_retained"],
+        "manifest.submission_evidence.authorized_packet_retained",
+    ) is not False:
+        raise ContractError("manifest.submission_evidence.authorized_packet_retained: retained authority absent")
+    if _bool(
+        submission_evidence["proper_download_evidenced"],
+        "manifest.submission_evidence.proper_download_evidenced",
+    ) is not False:
+        raise ContractError("manifest.submission_evidence.proper_download_evidenced: retained authority absent")
+    if submission_evidence["planholder_status"] != "NOT_ESTABLISHED":
+        raise ContractError("manifest.submission_evidence.planholder_status: must remain NOT_ESTABLISHED")
 
     requirements = _exact_keys(
         doc["requirements"],
@@ -376,21 +444,25 @@ def validate_manifest(manifest: Any, trusted_as_of: str) -> dict[str, Any]:
         "buyer": BUYER,
         "title": TITLE,
         "detail_url": DETAIL_URL,
-        "detail_due_utc": DETAIL_DUE_UTC,
-        "list_url": LIST_URL,
-        "list_due_utc": LIST_DUE_UTC,
+        "current_list_url": CURRENT_LIST_URL,
+        "submission_rules_url": SUBMISSION_RULES_URL,
+        "bid_due_utc": BID_DUE_UTC,
+        "authorized_distributor": "QuestCDN",
+        "submission_route": "QUESTCDN_ONLY",
     }
-    deadline_conflict = DETAIL_DUE_UTC != LIST_DUE_UTC
-    latest_public_due = max(_utc(DETAIL_DUE_UTC, "detail due"), _utc(LIST_DUE_UTC, "list due"))
+    latest_public_due = _utc(BID_DUE_UTC, "bid due")
     packet = {
         "schema": SCHEMA,
         "solicitation_id": SOLICITATION_ID,
         "buyer": BUYER,
         "source_facts_sha256": sha256_hex(canonical_json(source_facts)),
-        "deadline_conflict": deadline_conflict,
-        "detail_due_utc": DETAIL_DUE_UTC,
-        "list_due_utc": LIST_DUE_UTC,
-        "submission_state": "HOLD_PACKET_REQUIRED" if deadline_conflict else "OWNER_REVIEW_REQUIRED",
+        "deadline_conflict": False,
+        "deadline_state": "CURRENT_BUYER_PAGES_AGREE",
+        "bid_due_utc": BID_DUE_UTC,
+        "detail_due_utc": BID_DUE_UTC,
+        "list_due_utc": BID_DUE_UTC,
+        "submission_control_state": "QUESTCDN_PACKET_DOWNLOAD_AND_PLANHOLDER_NOT_ESTABLISHED",
+        "submission_state": "HOLD_QUESTCDN_PACKET_AND_PLANHOLDER",
         "teaming_build_state": "READY" if as_of < latest_public_due else "HOLD_RESPONSE_WINDOW",
         "commercial_offer_state": offer["state"],
         "commercial_offer_price_usd_cents": offer["price_usd_cents"],

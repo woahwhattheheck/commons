@@ -20,7 +20,7 @@ from lacsd_04252 import (
 ROOT = Path(__file__).resolve().parent
 MANIFEST = ROOT / "fixtures" / "manifest.json"
 CASES = ROOT / "fixtures" / "ap_cases.json"
-AS_OF = "2026-09-16T22:30:00Z"
+AS_OF = "2026-09-18T02:00:00Z"
 
 
 def manifest():
@@ -160,10 +160,18 @@ class MatrixTests(unittest.TestCase):
 
 
 class PursuitContractTests(unittest.TestCase):
-    def test_source_conflict_holds_submission_but_keeps_build_ready(self):
+    def test_current_deadline_consensus_keeps_submission_gate_closed(self):
         result = validate_manifest(manifest(), AS_OF)
-        self.assertTrue(result["deadline_conflict"])
-        self.assertEqual(result["submission_state"], "HOLD_PACKET_REQUIRED")
+        self.assertFalse(result["deadline_conflict"])
+        self.assertEqual(result["deadline_state"], "CURRENT_BUYER_PAGES_AGREE")
+        self.assertEqual(result["bid_due_utc"], "2026-10-15T18:00:00Z")
+        self.assertEqual(
+            result["submission_state"], "HOLD_QUESTCDN_PACKET_AND_PLANHOLDER"
+        )
+        self.assertEqual(
+            result["submission_control_state"],
+            "QUESTCDN_PACKET_DOWNLOAD_AND_PLANHOLDER_NOT_ESTABLISHED",
+        )
         self.assertEqual(result["teaming_build_state"], "READY")
         self.assertEqual(result["commercial_offer_state"], "PROPOSED_NOT_ACCEPTED")
         self.assertEqual(result["commercial_offer_price_usd_cents"], 500000)
@@ -194,6 +202,33 @@ class PursuitContractTests(unittest.TestCase):
         with self.assertRaises(ContractError):
             validate_manifest(doc, AS_OF)
 
+    def test_packet_cannot_self_attest_retention(self):
+        doc = manifest()
+        doc["submission_evidence"]["authorized_packet_retained"] = True
+        with self.assertRaises(ContractError):
+            validate_manifest(doc, AS_OF)
+
+    def test_proper_download_cannot_self_attest(self):
+        doc = manifest()
+        doc["submission_evidence"]["proper_download_evidenced"] = True
+        with self.assertRaises(ContractError):
+            validate_manifest(doc, AS_OF)
+
+    def test_planholder_status_cannot_self_promote(self):
+        doc = manifest()
+        doc["submission_evidence"]["planholder_status"] = "PLANHOLDER"
+        with self.assertRaises(ContractError):
+            validate_manifest(doc, AS_OF)
+
+    def test_legacy_purchasing_list_cannot_replace_current_deadline_root(self):
+        doc = manifest()
+        doc["sources"]["current_list"]["url"] = (
+            "https://www.lacsd.org/opportunities/bids-purchasing/"
+            "purchasing-section-projects/-sortn-RFPTitle"
+        )
+        with self.assertRaises(ContractError):
+            validate_manifest(doc, AS_OF)
+
     def test_detail_deadline_drift_rejected(self):
         doc = manifest()
         doc["sources"]["detail"]["due_utc"] = "2026-10-16T18:00:00Z"
@@ -202,13 +237,13 @@ class PursuitContractTests(unittest.TestCase):
 
     def test_list_deadline_drift_rejected(self):
         doc = manifest()
-        doc["sources"]["list"]["due_utc"] = "2026-10-01T18:00:00Z"
+        doc["sources"]["current_list"]["due_utc"] = "2026-09-30T18:00:00Z"
         with self.assertRaises(ContractError):
             validate_manifest(doc, AS_OF)
 
     def test_future_source_generation_rejected(self):
         doc = manifest()
-        doc["sources"]["detail"]["captured_at_utc"] = "2026-09-16T22:31:00Z"
+        doc["sources"]["detail"]["captured_at_utc"] = "2026-09-18T02:00:01Z"
         with self.assertRaises(ContractError):
             validate_manifest(doc, AS_OF)
 
@@ -229,14 +264,14 @@ class PursuitContractTests(unittest.TestCase):
     def test_expired_latest_public_window_holds_teaming(self):
         result = validate_manifest(manifest(), "2026-10-15T18:00:00Z")
         self.assertEqual(result["teaming_build_state"], "HOLD_RESPONSE_WINDOW")
-        self.assertEqual(result["submission_state"], "HOLD_PACKET_REQUIRED")
+        self.assertEqual(result["submission_state"], "HOLD_QUESTCDN_PACKET_AND_PLANHOLDER")
 
 
 class EvidenceBundleTests(unittest.TestCase):
     def test_compile_bundle_is_review_ready_not_submission_ready(self):
         bundle = compile_evidence(manifest(), matrix(), AS_OF)
         self.assertEqual(bundle["teaming_review_verdict"], "READY_FOR_PAID_TEAMING_REVIEW")
-        self.assertEqual(bundle["submission_verdict"], "HOLD_PACKET_REQUIRED")
+        self.assertEqual(bundle["submission_verdict"], "HOLD_QUESTCDN_PACKET_AND_PLANHOLDER")
         for field in AUTHORITY_FALSE:
             self.assertFalse(bundle[field])
         self.assertTrue(verify_evidence(bundle, manifest(), matrix(), AS_OF))
