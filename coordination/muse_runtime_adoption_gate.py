@@ -378,4 +378,55 @@ def _build_api():
             exact_keys(raw, f"events[{idx}]", keys)
             event_id = text(raw["id"], f"events[{idx}].id", maximum=160)
             if event_id in seen_ids:
-                fail("du
+                fail("duplicate event id is not admitted")
+            seen_ids.add(event_id)
+            occurred_text, occurred_s = parse_utc(raw["occurred_at"], f"events[{idx}].occurred_at")
+            if previous_event_s is not None and occurred_s <= previous_event_s:
+                fail("events must be strictly increasing in retained order")
+            previous_event_s = occurred_s
+            event: dict[str, _Any] = {
+                "id": event_id,
+                "event_class": cls,
+                "occurred_at": occurred_text,
+                "occurred_at_s": occurred_s,
+                "operation_key": text(raw["operation_key"], f"events[{idx}].operation_key", maximum=240),
+                "counterparty": text(raw["counterparty"], f"events[{idx}].counterparty"),
+                "route": text(raw["route"], f"events[{idx}].route"),
+                "purpose": text(raw["purpose"], f"events[{idx}].purpose"),
+                "lease_id": text(raw["lease_id"], f"events[{idx}].lease_id", maximum=128),
+                "session": text(raw["session"], f"events[{idx}].session", maximum=160),
+                "runtime_instance_id": text(raw["runtime_instance_id"], f"events[{idx}].runtime_instance_id", maximum=160),
+                "runtime_build_id": text(raw["runtime_build_id"], f"events[{idx}].runtime_build_id", maximum=160),
+                "runtime_source_sha256": sha(raw["runtime_source_sha256"], f"events[{idx}].runtime_source_sha256"),
+                "source_ref": text(raw["source_ref"], f"events[{idx}].source_ref"),
+                "source_sha256": sha(raw["source_sha256"], f"events[{idx}].source_sha256"),
+            }
+            if cls in {"CONSUMED", "GO", "COMMIT"}:
+                event["capability_sha256"] = sha(raw["capability_sha256"], f"events[{idx}].capability_sha256")
+            if cls == "COMMIT":
+                event["provider"] = text(raw["provider"], f"events[{idx}].provider", maximum=80)
+                event["provider_message_id"] = text(
+                    raw["provider_message_id"], f"events[{idx}].provider_message_id", maximum=240
+                )
+            out["events"].append(event)
+        return out
+
+    def input_projection(normalized: dict[str, _Any]) -> dict[str, _Any]:
+        # Strip parser-only epoch helpers before hashing/emitting source identity.
+        projected = {
+            key: value
+            for key, value in normalized.items()
+            if key not in {"events", "capture"}
+        }
+        projected["capture"] = {
+            "captured_at": normalized["capture"]["captured_at"],
+            "max_age_seconds": normalized["capture"]["max_age_seconds"],
+        }
+        projected["events"] = []
+        for event in normalized["events"]:
+            projected["events"].append({key: value for key, value in event.items() if key != "occurred_at_s"})
+        return projected
+
+    def status_for(normalized: dict[str, _Any], now_s: int) -> tuple[str, list[str], dict[str, int]]:
+        integer(now_s, "now_s")
+        cap
