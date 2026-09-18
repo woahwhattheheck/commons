@@ -54,17 +54,153 @@ class GuardError(ValueError):
     pass
 
 
-def _pairs(pairs: Sequence[tuple[str, Any]]) -> dict[str, Any]:
+def _pairs(
+    pairs: Sequence[tuple[str, Any]],
+    _guard_error=GuardError,
+) -> dict[str, Any]:
     out: dict[str, Any] = {}
     for key, value in pairs:
         if key in out:
-            raise GuardError(f"duplicate JSON key: {key}")
+            raise _guard_error(f"duplicate JSON key: {key}")
         out[key] = value
     return out
 
 
-def _bad_constant(value: str) -> None:
-    raise GuardError(f"non-finite JSON constant forbidden: {value}")
+def _bad_constant(value: str, _guard_error=GuardError) -> None:
+    raise _guard_error(f"non-finite JSON constant forbidden: {value}")
+
+
+def _make_json_text_encoder(
+    _guard_error,
+    _isfinite,
+    _repr,
+    _sorted,
+):
+    escapes = {
+        '"': '\\"',
+        "\\": "\\\\",
+        "\b": "\\b",
+        "\f": "\\f",
+        "\n": "\\n",
+        "\r": "\\r",
+        "\t": "\\t",
+    }
+
+    def quote(value: str) -> str:
+        parts = ['"']
+        for char in value:
+            replacement = escapes.get(char)
+            if replacement is not None:
+                parts.append(replacement)
+                continue
+            code = ord(char)
+            if 0x20 <= code < 0x7F:
+                parts.append(char)
+            elif code <= 0xFFFF:
+                parts.append(f"\\u{code:04x}")
+            else:
+                scalar = code - 0x10000
+                high = 0xD800 + (scalar >> 10)
+                low = 0xDC00 + (scalar & 0x3FF)
+                parts.append(f"\\u{high:04x}\\u{low:04x}")
+        parts.append('"')
+        return "".join(parts)
+
+    def encode(value: Any, *, pretty: bool = False) -> str:
+        def walk(item: Any, depth: int) -> str:
+            if item is None:
+                return "null"
+            if type(item) is bool:
+                return "true" if item else "false"
+            if type(item) is int:
+                return _repr(item)
+            if type(item) is float:
+                if not _isfinite(item):
+                    raise _guard_error("canonical JSON serialization forbids non-finite float")
+                return _repr(item)
+            if type(item) is str:
+                return quote(item)
+            if type(item) is list:
+                if not item:
+                    return "[]"
+                values = [walk(child, depth + 1) for child in item]
+                if not pretty:
+                    return "[" + ",".join(values) + "]"
+                child_pad = " " * (2 * (depth + 1))
+                pad = " " * (2 * depth)
+                return "[\n" + child_pad + (",\n" + child_pad).join(values) + "\n" + pad + "]"
+            if type(item) is dict:
+                if not item:
+                    return "{}"
+                entries: list[str] = []
+                for key in _sorted(item):
+                    if type(key) is not str:
+                        raise _guard_error("canonical JSON object key must be string")
+                    separator = ": " if pretty else ":"
+                    entries.append(quote(key) + separator + walk(item[key], depth + 1))
+                if not pretty:
+                    return "{" + ",".join(entries) + "}"
+                child_pad = " " * (2 * (depth + 1))
+                pad = " " * (2 * depth)
+                return "{\n" + child_pad + (",\n" + child_pad).join(entries) + "\n" + pad + "}"
+            raise _guard_error("canonical JSON serialization requires exact plain JSON types")
+
+        return walk(value, 0)
+
+    return encode
+
+
+_json_text = _make_json_text_encoder(
+    GuardError,
+    math.isfinite,
+    repr,
+    sorted,
+)
+
+
+def _make_strict_json_decoder(
+    _decoder_cls,
+    _pairs_hook,
+    _bad_constant_hook,
+    _decode_error,
+    _guard_error,
+):
+    # Build one private decoder generation now. Its bound raw_decode and
+    # scan_once retain the parser/hook generation even if public json module
+    # encoder/decoder/scanner attributes are rebound later.
+    decoder = _decoder_cls(
+        object_pairs_hook=_pairs_hook,
+        parse_constant=_bad_constant_hook,
+    )
+    raw_decode = decoder.raw_decode
+
+    def decode(raw: bytes, label: str) -> Any:
+        try:
+            text = raw.decode("utf-8")
+            start = 0
+            while start < len(text) and text[start] in " \t\n\r":
+                start += 1
+            value, end = raw_decode(text, start)
+            while end < len(text) and text[end] in " \t\n\r":
+                end += 1
+            if end != len(text):
+                raise _guard_error(f"{label}: trailing JSON data")
+            return value
+        except _guard_error:
+            raise
+        except (UnicodeDecodeError, _decode_error, ValueError, RecursionError) as exc:
+            raise _guard_error(f"{label}: invalid strict JSON") from exc
+
+    return decode
+
+
+_strict_json_decode = _make_strict_json_decoder(
+    json.JSONDecoder,
+    _pairs,
+    _bad_constant,
+    json.JSONDecodeError,
+    GuardError,
+)
 
 
 def _json_string_size(value: str, path: str, remaining: int) -> int:
@@ -100,13 +236,13 @@ def _freeze_plain_json(
     _max_json_nodes: int = MAX_JSON_NODES,
     _json_string_size_fn=_json_string_size,
     _isfinite=math.isfinite,
-    _json_dumps=json.dumps,
+    _float_text=repr,
 ) -> Any:
     """Detach one bounded exact-JSON generation before canonical serialization.
 
     Container cardinality is checked against the remaining node budget before
     child iteration/copy. String/key canonical bytes are charged incrementally,
-    so over-budget direct objects fail before the full value reaches _json_dumps.
+    so over-budget direct objects fail before the full value reaches the canonical encoder.
     """
     state = {"nodes": 0, "bytes": 0}
 
@@ -139,12 +275,9 @@ def _freeze_plain_json(
         if type(item) is float:
             if not _isfinite(item):
                 raise GuardError(f"{item_path}: non-finite number")
-            # A finite float's scalar representation is intrinsically tiny;
-            # using the serializer here cannot bypass aggregate work bounds.
-            try:
-                scalar = _json_dumps(item, ensure_ascii=True, allow_nan=False)
-            except (ValueError, TypeError, OverflowError) as exc:
-                raise GuardError(f"{item_path}: canonical float serialization failed") from exc
+            # Python's finite-float repr is the scalar spelling used by the
+            # canonical encoder. Capture it as a first-load dependency.
+            scalar = _float_text(item)
             charge_bytes(len(scalar.encode("ascii")), item_path)
             return item
         if type(item) is str:
@@ -197,17 +330,18 @@ def _freeze_plain_json(
     return visit(value, path, 0)
 
 
-def canonical_bytes(value: Any, *, _json_dumps=json.dumps) -> bytes:
+def canonical_bytes(
+    value: Any,
+    *,
+    _json_text_fn=_json_text,
+    _guard_error=GuardError,
+) -> bytes:
     try:
-        return _json_dumps(
-            value,
-            sort_keys=True,
-            separators=(",", ":"),
-            ensure_ascii=True,
-            allow_nan=False,
-        ).encode()
+        return _json_text_fn(value, pretty=False).encode("ascii")
+    except _guard_error:
+        raise
     except (ValueError, TypeError, RecursionError, OverflowError) as exc:
-        raise GuardError("canonical JSON serialization failed") from exc
+        raise _guard_error("canonical JSON serialization failed") from exc
 
 
 def digest(value: Any, *, _sha256=hashlib.sha256, _canonical_bytes=canonical_bytes) -> str:
@@ -218,19 +352,9 @@ def _decode_json_bytes(
     raw: bytes,
     label: str,
     *,
-    _json_loads=json.loads,
-    _pairs_hook=_pairs,
-    _bad_constant_hook=_bad_constant,
-    _json_decode_error=json.JSONDecodeError,
+    _strict_decode_fn=_strict_json_decode,
 ) -> Any:
-    try:
-        text = raw.decode("utf-8")
-        return _json_loads(text, object_pairs_hook=_pairs_hook, parse_constant=_bad_constant_hook)
-    except GuardError:
-        raise
-    except (UnicodeDecodeError, _json_decode_error, ValueError) as exc:
-        raise GuardError(f"{label}: invalid strict JSON") from exc
-
+    return _strict_decode_fn(raw, label)
 
 def _freeze(
     value: Any,
@@ -842,21 +966,15 @@ verify_guard = _make_verify_guard(
     _PROCESS_TIMEZONE.utc,
 )
 
-def _make_write(_json_dumps, _write_text):
+def _make_write(_json_text_fn, _write_text):
     def _write(path: Path, value: Any) -> None:
-        text = _json_dumps(
-            value,
-            sort_keys=True,
-            indent=2,
-            ensure_ascii=True,
-            allow_nan=False,
-        ) + "\n"
+        text = _json_text_fn(value, pretty=True) + "\n"
         _write_text(path, text, encoding="utf-8")
 
     return _write
 
 
-_write = _make_write(json.dumps, Path.write_text)
+_write = _make_write(_json_text, Path.write_text)
 
 
 def _make_main(
