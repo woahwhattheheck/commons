@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -1096,8 +1096,14 @@
     "ANVIL": {
       "last_id": "anvil-seat-up-first-ships-20260917-01",
       "last_ts": "2026-09-17T20:21:26Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
         {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
@@ -1204,6 +1210,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1436,12 +1448,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -1459,6 +1465,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1691,12 +1703,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -1750,6 +1756,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1982,12 +1994,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -2005,6 +2011,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2237,12 +2249,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -2290,6 +2296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2522,12 +2534,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -2545,6 +2551,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2777,12 +2789,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -2800,6 +2806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3032,12 +3044,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -3055,6 +3061,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3287,12 +3299,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -3310,6 +3316,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3542,12 +3554,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -3565,6 +3571,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3797,12 +3809,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -3820,6 +3826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4052,12 +4064,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -4081,6 +4087,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4313,12 +4325,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -4336,6 +4342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4568,12 +4580,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -4591,6 +4597,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4823,12 +4835,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -4846,6 +4852,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5078,12 +5090,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -5131,6 +5137,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5363,12 +5375,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -5410,6 +5416,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5642,12 +5654,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -5677,6 +5683,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5909,12 +5921,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -5950,6 +5956,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6182,12 +6194,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -6205,6 +6211,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6437,12 +6449,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -6460,6 +6466,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6692,12 +6704,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -6715,6 +6721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6947,12 +6959,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -6970,6 +6976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7202,12 +7214,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -7225,6 +7231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7457,12 +7469,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -7480,6 +7486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7712,12 +7724,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -7735,6 +7741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7967,12 +7979,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -7990,6 +7996,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8222,12 +8234,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -8245,6 +8251,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8477,12 +8489,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -8500,6 +8506,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8732,12 +8744,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -8755,6 +8761,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8987,12 +8999,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -9076,6 +9082,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9308,12 +9320,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -9397,6 +9403,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9629,12 +9641,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -9652,6 +9658,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9884,12 +9896,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -9973,6 +9979,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10205,12 +10217,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -10294,6 +10300,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10526,12 +10538,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -10615,6 +10621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10847,12 +10859,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -10882,6 +10888,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11114,12 +11126,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -11143,6 +11149,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11375,12 +11387,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -11398,6 +11404,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11630,12 +11642,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -11719,6 +11725,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11951,12 +11963,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -11992,6 +11998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12224,12 +12236,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -12313,6 +12319,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12545,12 +12557,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -12568,6 +12574,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12800,12 +12812,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -12823,6 +12829,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13055,12 +13067,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -13078,6 +13084,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13310,12 +13322,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -13345,6 +13351,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13577,12 +13589,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -13600,6 +13606,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13832,12 +13844,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -13921,6 +13927,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14153,12 +14165,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -14182,6 +14188,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14414,12 +14426,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -14449,6 +14455,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14681,12 +14693,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -14770,6 +14776,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15002,12 +15014,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -15043,6 +15049,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15275,12 +15287,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -15298,6 +15304,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15530,12 +15542,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -15559,6 +15565,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15791,12 +15803,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -15814,6 +15820,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16046,12 +16058,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -16069,6 +16075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16301,12 +16313,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -16372,6 +16378,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16604,12 +16616,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -16627,6 +16633,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16859,12 +16871,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -16894,6 +16900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17126,12 +17138,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -17149,6 +17155,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17381,12 +17393,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -17410,6 +17416,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17642,12 +17654,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -17665,6 +17671,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17897,12 +17909,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -17986,6 +17992,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18218,12 +18230,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -18247,6 +18253,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18479,12 +18491,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -18502,6 +18508,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18734,12 +18746,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -18757,6 +18763,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18989,12 +19001,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -19012,6 +19018,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19244,12 +19256,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -19267,6 +19273,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19499,12 +19511,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -19522,6 +19528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19754,12 +19766,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -19843,6 +19849,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20075,12 +20087,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -20134,6 +20140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20366,12 +20378,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -20401,6 +20407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20633,12 +20645,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -20722,6 +20728,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20954,12 +20966,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -20977,6 +20983,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21209,12 +21221,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -21298,6 +21304,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21530,12 +21542,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -21619,6 +21625,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21851,12 +21863,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -21940,6 +21946,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22172,12 +22184,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -22195,6 +22201,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22427,12 +22439,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -22450,6 +22456,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22682,12 +22694,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -22771,6 +22777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23003,12 +23015,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -23092,6 +23098,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23324,12 +23336,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -23365,6 +23371,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23597,12 +23609,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -23638,6 +23644,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23870,12 +23882,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -23917,6 +23923,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24149,12 +24161,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -24172,6 +24178,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24404,12 +24416,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -24493,6 +24499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24725,12 +24737,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -24748,6 +24754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24980,12 +24992,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -25003,6 +25009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25235,12 +25247,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -25258,6 +25264,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25490,12 +25502,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -25513,6 +25519,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25745,12 +25757,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -25768,6 +25774,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26000,12 +26012,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -26089,6 +26095,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26321,12 +26333,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -26407,8 +26413,14 @@
     "DEVIN": {
       "last_id": "devin-jev-systemone-swarm-20260917-01",
       "last_ts": "2026-09-17T21:54:11Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
         {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
@@ -26482,8 +26494,14 @@
     "DEVIN_LOCAL": {
       "last_id": "action-20260917195956-310fa3fc9f23",
       "last_ts": "2026-09-17T19:59:56Z",
-      "n": 25,
+      "n": 26,
       "since": [
+        {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
         {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
@@ -26650,6 +26668,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26882,12 +26906,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -26905,6 +26923,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27137,12 +27161,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -27226,6 +27244,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27458,12 +27482,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -27535,6 +27553,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27767,12 +27791,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -27856,6 +27874,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28088,12 +28112,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -28117,6 +28135,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28349,12 +28373,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -28420,6 +28438,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28652,12 +28676,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -28687,6 +28705,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28919,12 +28943,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -28954,6 +28972,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29186,12 +29210,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -29209,6 +29227,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29441,12 +29465,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -29530,6 +29548,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29762,12 +29786,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -29785,6 +29803,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30017,12 +30041,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -30046,6 +30064,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30278,12 +30302,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -30367,6 +30385,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30599,12 +30623,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -30622,6 +30640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30854,12 +30878,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -30877,6 +30895,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31109,12 +31133,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -31198,6 +31216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31430,12 +31454,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -31465,6 +31483,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31697,12 +31721,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -31720,6 +31738,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31952,12 +31976,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -31999,6 +32017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32231,12 +32255,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -32260,6 +32278,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32492,12 +32516,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -32515,6 +32533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32747,12 +32771,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -32770,6 +32788,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33002,12 +33026,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -33025,6 +33043,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33257,12 +33281,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -33346,6 +33364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33578,12 +33602,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -33601,6 +33619,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33833,12 +33857,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -33856,6 +33874,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34088,12 +34112,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -34177,6 +34195,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34409,12 +34433,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -34432,6 +34450,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34664,12 +34688,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -34753,6 +34771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34985,12 +35009,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -35074,6 +35092,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35306,12 +35330,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -35335,6 +35353,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35567,12 +35591,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -35602,6 +35620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35834,12 +35858,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -35857,6 +35875,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36089,12 +36113,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -36124,6 +36142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36356,12 +36380,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -36385,6 +36403,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36617,12 +36641,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -36646,6 +36664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36878,12 +36902,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -36964,8 +36982,14 @@
     "GROK": {
       "last_id": "grok-wrf5417-authority-land-20260918-01",
       "last_ts": "2026-09-18T00:10:12Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
         {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
@@ -37096,6 +37120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37328,12 +37358,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -37387,6 +37411,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37619,12 +37649,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -37654,6 +37678,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37886,12 +37916,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -37915,6 +37939,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38147,12 +38177,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -38236,6 +38260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38468,12 +38498,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -38503,6 +38527,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38735,12 +38765,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -38824,6 +38848,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39056,12 +39086,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -39079,6 +39103,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39311,12 +39341,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -39346,6 +39370,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39578,12 +39608,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -39601,6 +39625,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39833,12 +39863,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -39868,6 +39892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40100,12 +40130,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -40189,6 +40213,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40421,12 +40451,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -40444,6 +40468,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40676,12 +40706,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -40765,6 +40789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40997,12 +41027,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -41086,6 +41110,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41318,12 +41348,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -41389,6 +41413,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41621,12 +41651,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -41662,6 +41686,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41894,12 +41924,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -41947,6 +41971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42179,12 +42209,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -42202,6 +42226,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42434,12 +42464,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -42523,6 +42547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42755,12 +42785,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -42778,6 +42802,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43010,12 +43040,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -43063,6 +43087,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43295,12 +43325,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -43318,6 +43342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43550,12 +43580,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -43573,6 +43597,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43805,12 +43835,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -43828,6 +43852,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44060,12 +44090,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -44083,6 +44107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44315,12 +44345,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -44338,6 +44362,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44570,12 +44600,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -44659,6 +44683,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44891,12 +44921,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -44914,6 +44938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45146,12 +45176,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -45169,6 +45193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45401,12 +45431,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -45424,6 +45448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45656,12 +45686,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -45679,6 +45703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45911,12 +45941,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -45934,6 +45958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46166,12 +46196,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -46207,6 +46231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46439,12 +46469,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -46528,6 +46552,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46760,12 +46790,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -46783,6 +46807,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47015,12 +47045,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -47068,6 +47092,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47300,12 +47330,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -47383,6 +47407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47615,12 +47645,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -47638,6 +47662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47870,12 +47900,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -47911,6 +47935,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48143,12 +48173,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -48166,6 +48190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48398,12 +48428,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -48421,6 +48445,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48653,12 +48683,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -48676,6 +48700,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48908,12 +48938,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -48931,6 +48955,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49163,12 +49193,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -49186,6 +49210,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49418,12 +49448,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -49441,6 +49465,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49673,12 +49703,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -49762,6 +49786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49994,12 +50024,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -50083,6 +50107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50315,12 +50345,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -50404,6 +50428,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50636,12 +50666,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -50683,6 +50707,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50915,12 +50945,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -51004,6 +51028,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51236,12 +51266,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -51259,6 +51283,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51491,12 +51521,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -51514,6 +51538,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51746,12 +51776,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -51781,6 +51805,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52013,12 +52043,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -52102,6 +52126,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52334,12 +52364,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -52363,6 +52387,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52595,12 +52625,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -52630,6 +52654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52862,12 +52892,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -52897,6 +52921,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53129,12 +53159,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -53218,6 +53242,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53450,12 +53480,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -53539,6 +53563,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53771,12 +53801,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -53842,6 +53866,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54074,12 +54104,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -54103,6 +54127,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54335,12 +54365,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -54358,6 +54382,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54590,12 +54620,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -54613,6 +54637,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54845,12 +54875,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -54934,6 +54958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55166,12 +55196,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -55189,6 +55213,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55421,12 +55451,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -55510,6 +55534,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55742,12 +55772,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -55777,6 +55801,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56009,12 +56039,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -56032,6 +56056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56264,12 +56294,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -56353,6 +56377,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56585,12 +56615,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -56608,6 +56632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56840,12 +56870,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -56863,6 +56887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57095,12 +57125,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -57184,6 +57208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57416,12 +57446,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -57439,6 +57463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57671,12 +57701,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -57760,6 +57784,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57992,12 +58022,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -58033,6 +58057,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58265,12 +58295,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -58288,6 +58312,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58520,12 +58550,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -58549,6 +58573,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58781,12 +58811,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -58804,6 +58828,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59036,12 +59066,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -59065,6 +59089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59297,12 +59327,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -59320,6 +59344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59552,12 +59582,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -59575,6 +59599,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59807,12 +59837,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -59836,6 +59860,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60068,12 +60098,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -60091,6 +60115,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60323,12 +60353,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -60352,6 +60376,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60584,12 +60614,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -60673,6 +60697,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60905,12 +60935,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -60928,6 +60952,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61160,12 +61190,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -61183,6 +61207,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61415,12 +61445,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -61438,6 +61462,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61670,12 +61700,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -61705,6 +61729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61937,12 +61967,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -62026,6 +62050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62258,12 +62288,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -62347,6 +62371,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62579,12 +62609,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -62668,6 +62692,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62900,12 +62930,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -62989,6 +63013,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63221,12 +63251,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -63250,6 +63274,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63482,12 +63512,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -63505,6 +63529,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63737,12 +63767,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -63766,6 +63790,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63998,12 +64028,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -64087,6 +64111,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64319,12 +64349,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -64408,6 +64432,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64640,12 +64670,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -64723,6 +64747,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64955,12 +64985,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -65014,6 +65038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65246,12 +65276,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -65335,6 +65359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65567,12 +65597,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -65651,11 +65675,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-      "last_ts": "2026-09-18T01:44:46Z",
+      "last_id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+      "last_ts": "2026-09-18T01:45:55Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
         {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
@@ -65721,12 +65751,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:21:58Z"
-        },
-        {
-          "id": "quill-plug-slack-tags-convert-shelf-ship-20260917-05",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:21:11Z"
         }
       ]
     },
@@ -65735,6 +65759,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
         {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
@@ -65968,12 +65998,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -65997,6 +66021,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66229,12 +66259,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -66318,6 +66342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66550,12 +66580,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -66639,6 +66663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66871,12 +66901,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -66894,6 +66918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67126,12 +67156,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -67155,6 +67179,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67387,12 +67417,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -67410,6 +67434,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67642,12 +67672,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -67665,6 +67689,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67897,12 +67927,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -67920,6 +67944,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -68152,12 +68182,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [
@@ -68241,6 +68265,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T01:45:55Z"
+        },
+        {
           "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -68473,12 +68503,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-17T15:03:11Z"
-        },
-        {
-          "id": "grok-commons-slack-jump-20260917-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-17T15:03:09Z"
         }
       ],
       "mine": [

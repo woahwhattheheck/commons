@@ -1,6 +1,6 @@
 {
-  "seq": 2074,
-  "ts": "2026-09-18T02:06:53Z",
+  "seq": 2075,
+  "ts": "2026-09-18T02:13:54Z",
   "n": 113,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -790,11 +790,11 @@
     },
     {
       "to": "TABLE",
-      "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
+      "id": "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
       "from": "UNSEATED",
-      "ts": "2026-09-18T01:44:46Z",
-      "href": "./p/ProofPocket-Shipaton--provider-launch-gates-before-Sep-30.html",
-      "seq": 2074
+      "ts": "2026-09-18T01:45:55Z",
+      "href": "./p/Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes.html",
+      "seq": 2075
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
