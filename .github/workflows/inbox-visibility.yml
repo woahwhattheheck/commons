@@ -13,12 +13,14 @@ on:
       - .github/workflows/inbox-visibility.yml
   workflow_dispatch:
   schedule:
-    - cron: '3,18,33,48 * * * *'
+    - cron: '3 * * * *'
 permissions:
   contents: read
 concurrency:
-  group: inbox-visibility
-  cancel-in-progress: false
+  # Scheduled polls may supersede only older scheduled polls. Push/manual runs
+  # use unique groups and cannot be cancelled by schedule backlog churn.
+  group: ${{ github.workflow }}-${{ github.event_name == 'schedule' && 'schedule' || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'schedule' }}
 jobs:
   poll:
     runs-on: ubuntu-latest
