@@ -38,8 +38,11 @@ def candidate(
             "path": f"products/{cid}",
         },
         "priorityArea": "ADAPTIVE_SUSTAINMENT",
-        "usamrdcExclusive": usamrdc,
-        "federalSupportOverlap": overlap,
+        "usamrdcExclusive": {
+            "state": "EXCLUSIVE" if usamrdc else "NOT_EXCLUSIVE",
+            "evidenceRef": None,
+        },
+        "federalSupportOverlap": {"state": overlap, "evidenceRef": None},
         "criteria": {
             "introduction": [claim(f"{cid}.intro", state)],
             "armyBenefits": [claim(f"{cid}.army", state)],
@@ -96,6 +99,27 @@ def bind_evidence(packet: dict) -> dict:
 
     for cand in packet["candidates"]:
         source = cand["source"]
+        for gate_name in ("usamrdcExclusive", "federalSupportOverlap"):
+            row = cand[gate_name]
+            if row["state"] == "UNKNOWN":
+                row["evidenceRef"] = None
+                continue
+            evidence_id = f"ev:{cand['candidateId']}:gate:{gate_name}"
+            row["evidenceRef"] = evidence_id
+            records.append(
+                {
+                    "evidenceId": evidence_id,
+                    "binding": f"candidate:{cand['candidateId']}:{gate_name}",
+                    "sourceClass": "OWNER",
+                    "repo": None,
+                    "commit": None,
+                    "path": None,
+                    "locator": f"fixture:gate:{cand['candidateId']}:{gate_name}",
+                    "sha256": digest(
+                        f"gate:{cand['candidateId']}:{gate_name}:{row['state']}"
+                    ),
+                }
+            )
         for claims in cand["criteria"].values():
             for row in claims:
                 if row["state"] != "EVIDENCED":
@@ -210,9 +234,32 @@ class DownselectTests(unittest.TestCase):
         }
         self.assertEqual(self.compile(packet)["state"], "HOLD")
 
+    def test_unknown_candidate_support_overlap_is_hard_blocker(self) -> None:
+        packet = ready_packet()
+        packet["candidates"][0]["federalSupportOverlap"] = {
+            "state": "UNKNOWN",
+            "evidenceRef": None,
+        }
+        report = self.compile(packet)
+        alpha = next(row for row in report["projections"] if row["candidateId"] == "alpha")
+        self.assertIn("federal_support_overlap:UNKNOWN", alpha["hardBlockers"])
+
+    def test_unknown_usamrdc_scope_is_hard_blocker(self) -> None:
+        packet = ready_packet()
+        packet["candidates"][0]["usamrdcExclusive"] = {
+            "state": "UNKNOWN",
+            "evidenceRef": None,
+        }
+        report = self.compile(packet)
+        alpha = next(row for row in report["projections"] if row["candidateId"] == "alpha")
+        self.assertIn("scope:USAMRDC_EXCLUSIVE:UNKNOWN", alpha["hardBlockers"])
+
     def test_candidate_support_overlap_is_hard_blocker(self) -> None:
         packet = ready_packet()
-        packet["candidates"][0]["federalSupportOverlap"] = "POTENTIALLY_SAME"
+        packet["candidates"][0]["federalSupportOverlap"] = {
+            "state": "POTENTIALLY_SAME",
+            "evidenceRef": None,
+        }
         report = self.compile(packet)
         alpha = next(row for row in report["projections"] if row["candidateId"] == "alpha")
         self.assertIn("federal_support_overlap:POTENTIALLY_SAME", alpha["hardBlockers"])
@@ -251,10 +298,13 @@ class DownselectTests(unittest.TestCase):
 
     def test_usamrdc_exclusive_candidate_is_hard_blocked(self) -> None:
         packet = ready_packet()
-        packet["candidates"][0]["usamrdcExclusive"] = True
+        packet["candidates"][0]["usamrdcExclusive"] = {
+            "state": "EXCLUSIVE",
+            "evidenceRef": None,
+        }
         report = self.compile(packet)
         alpha = next(row for row in report["projections"] if row["candidateId"] == "alpha")
-        self.assertIn("scope:USAMRDC_EXCLUSIVE", alpha["hardBlockers"])
+        self.assertIn("scope:USAMRDC_EXCLUSIVE:EXCLUSIVE", alpha["hardBlockers"])
 
     def test_equal_readiness_tie_holds_without_arbitrary_winner(self) -> None:
         packet = ready_packet()
