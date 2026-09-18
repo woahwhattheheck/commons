@@ -17,7 +17,7 @@ FROM_OK = re.compile(r"^[A-Z][A-Z0-9_]{1,31}$")
 
 
 def _preserve_live_cash(prev, doc):
-    """Keep tip Autopsy/$199 product doors across wakeups.json remints.
+    """Keep tip $199 product doors across wakeups.json remints.
 
     Paths only — never invent Stripe. Mirrors hub_pages KEEP (newbot-13).
     """
