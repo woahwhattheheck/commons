@@ -63,8 +63,11 @@ def strict_loads(
     text: str,
     _json_loads=json.loads,
     _reject_constant_fn=_reject_constant,
+    _json_decode_error=json.JSONDecodeError,
     _error=ContractError,
 ) -> Any:
+    # Strict ingress is a reviewed generation: later rebinding of public module
+    # names must not weaken duplicate-key or non-finite rejection.
     if type(text) is not str:
         raise _error("JSON input must be str")
 
@@ -84,16 +87,16 @@ def strict_loads(
         )
     except _error:
         raise
-    except (TypeError, ValueError) as exc:
+    except (TypeError, ValueError, _json_decode_error) as exc:
         raise _error(f"invalid JSON: {exc}") from exc
 
 
 def strict_load(
     path,
-    _open=open,
     _strict_loads_fn=strict_loads,
+    _open_fn=open,
 ) -> Any:
-    with _open(path, "r", encoding="utf-8") as handle:
+    with _open_fn(path, "r", encoding="utf-8") as handle:
         return _strict_loads_fn(handle.read())
 
 
