@@ -5,6 +5,11 @@
     "purpose_ref": "paid-qualification-001",
     "relationship_evidence_ref": "rel-evidence-001",
     "relationship_evidence_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+    "relationship_generation": "rel-gen-001",
+    "relationship_head_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+    "relationship_observed_at": "2026-09-17T19:59:30Z",
+    "relationship_valid_until": "2026-09-17T20:05:00Z",
+    "relationship_authority_tag_hex": "eec8f75f2adabea7a504d2eb28ee7888d405f2aa0f3e7105f357a63a5cfd6a7a",
     "relationship_state": "OPEN",
     "route": "paid@example.com",
     "route_type": "EMAIL"
@@ -16,6 +21,18 @@
     "quantity_max": 1,
     "scope_ref": "bounded-scope-001",
     "workshare_ref": "workshare-001"
+  },
+  "identity_binding": {
+    "binding_id": "identity-synthetic-001",
+    "source_packet_sha256": "0b737c8e88c5f23aabb35acb0c7bb97f4d98a596042bd4227044c5c118200a08",
+    "opportunity_id": "synthetic-opportunity-001",
+    "org_ref": "synthetic-org",
+    "purpose_ref": "paid-qualification-001",
+    "canonical_org_id": "org:synthetic",
+    "canonical_purpose_id": "purpose:paid-qualification",
+    "observed_at": "2026-09-17T19:00:00Z",
+    "valid_until": "2026-12-17T19:00:00Z",
+    "auth_tag_hex": "5dd4131f31cd7a1a892810c974f871eb09e781016fb849dd6e6b3638b6254337"
   },
   "qualifications": [
     {
@@ -34,7 +51,7 @@
     }
   ],
   "requesting_seat": "synthetic-seat",
-  "schema": "outreach-qualification-firewall.v1",
+  "schema": "outreach-qualification-firewall.v2",
   "session_nonce": "synthetic-session-001",
   "source_packet": {
     "deadline_at": "2099-01-01T00:00:00Z",
