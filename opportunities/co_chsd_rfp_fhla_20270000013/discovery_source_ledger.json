@@ -1,0 +1,43 @@
+{
+  "schema": "co-chsd-discovery-source-ledger/v1",
+  "opportunity_id": "RFPFHLA20270000013",
+  "authority": "DISCOVERY_ONLY",
+  "controlling_buyer_source_bound": false,
+  "sources": [
+    {
+      "id": "govtribe-opportunity",
+      "url": "https://govtribe.com/opportunity/state-local-contract-opportunity/colorado-health-systems-directory-chsd-rfpfhla20270000013",
+      "source_class": "DISCOVERY_MIRROR",
+      "buyer_authority": false,
+      "observed_date": "2026-09-17",
+      "notes": [
+        "Reports proposal due 2026-10-01 2:00 PM MDT via BidNet Direct; exact controlling BidNet generation still required.",
+        "Reports five-year funding shape totaling 3500000 USD, subject to funding and controlling buyer documents.",
+        "Reports mandatory minimums including BizTalk certification, three years relevant experience, three similar projects in five years, two references, VSS registration, SOC 2 Type II, security/accessibility requirements.",
+        "Reports Azure/BizTalk 2020 CU7/SQL Server 2022/.NET 4.8 health-data integration scope."
+      ]
+    },
+    {
+      "id": "govtribe-draft-sow",
+      "url": "https://govtribe.com/file/government-file/exhibit-b-draft-statement-of-work-dot-pdf-15",
+      "source_class": "DISCOVERY_MIRROR",
+      "buyer_authority": false,
+      "observed_date": "2026-09-17",
+      "notes": [
+        "Mirror exposes text attributed to Exhibit B Draft Statement of Work.",
+        "Reports CHSD health-workforce data integration, HIPAA/HITECH/FedRAMP compliance, Azure environments, BizTalk integration, APCD and Medicaid claims, data quality, reports and dashboards."
+      ]
+    }
+  ],
+  "authority_ceiling": {
+    "buyer_deadline": false,
+    "proposer_qualification": false,
+    "price": false,
+    "sign": false,
+    "submit": false,
+    "outbound": false,
+    "provider_mutation": false,
+    "payment": false,
+    "revenue": false
+  }
+}
