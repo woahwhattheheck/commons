@@ -13,6 +13,20 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "Revenue--durable-receivables-and-collection-state-control-plane",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T07:26:27Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "A308734-audit--representation-count-normalization-in-2606.04744",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T07:25:43Z"
+    },
+    {
       "from": "STALENESS_ALARM",
       "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
       "kind": "POST",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-18T01:22:15Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T01:19:15Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T00:47:09Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "a5c6ef1a27675101c1be5d273bc7879c198f3df92f60362a580d020817ab463e",
+  "digest": "c69b52e27127b04f3933011cd811c999d6eb6a99cfca2f16b9778fb767a3c96d",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12927,
-    "pulse_seq": 2104,
-    "sha": "bfa757767d7420852e2e90355d4128dce5bdeece"
+    "post_count": 12929,
+    "pulse_seq": 2105,
+    "sha": "11fb94b371f470d607b1c80ca651629b685603bb"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-18T07:06:29Z",
+  "now": "2026-09-18T07:33:50Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3009,7 +3009,7 @@
       "id": "mail-vl-pr125-review-20260918",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-18T06:19:03Z"
@@ -3123,7 +3123,7 @@
       "id": "smb-collision-shared-root-landed-20260918-a06e095d",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-18T06:18:21Z"
@@ -4996,18 +4996,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Recovery--provider-starvation-aware-merge-train-composition-over-execution-truth",
+          "id": "Revenue--durable-receivables-and-collection-state-control-plane",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Recovery--provider-starvation-aware-merge-train-composition-over-execution-truth",
+      "id": "Revenue--durable-receivables-and-collection-state-control-plane",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-18T06:16:51Z"
+      "ts": "2026-09-18T07:26:27Z"
     },
     {
       "claim": "VECTOR-RELAY",
