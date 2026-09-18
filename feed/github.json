@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 92,
-    "open_pull_requests": 47,
-    "runs_in_progress": 12,
-    "runs_queued": 461
+    "open_issues": 96,
+    "open_pull_requests": 50,
+    "runs_in_progress": 14,
+    "runs_queued": 248
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -62,31 +62,86 @@
       "head_sha": "1c5d3124d105457b83015f767c1628a9905dc080",
       "number": 15635,
       "title": "Recover Nebius ProofPatch evidence-bound coding agent",
-      "updated_at": "2026-09-18T00:18:19Z"
+      "updated_at": "2026-09-18T01:07:22Z"
     }
   ],
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "anvil/live-cash-preserve-retired-20260918",
-      "created_at": "2026-09-18T00:53:13Z",
+      "branch": "zsol/alameda-902737",
+      "created_at": "2026-09-18T01:24:26Z",
       "draft": false,
-      "head_sha": "24eb4199dc817be991dfea5dd9f93b46e6b29d07",
-      "number": 15821,
-      "title": "fix(live-cash): stop resurrecting retired product doors in remints",
-      "updated_at": "2026-09-18T00:53:13Z"
+      "head_sha": "0874f8f06e4709d32d9aacf445a4be2ef19514f2",
+      "number": 15838,
+      "title": "Alameda 902737 qualification carrier",
+      "updated_at": "2026-09-18T01:25:07Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsol/cron-floor-recovery-20260917",
-      "created_at": "2026-09-18T00:45:40Z",
+      "branch": "zsol/org-outbound-chain-current-main-r2-20260918",
+      "created_at": "2026-09-18T01:22:05Z",
       "draft": false,
-      "head_sha": "2d5d2fad4eb32c1c321cfc0021585fddbe45ea54",
-      "number": 15819,
-      "title": "CI: recover 264/day cron floor without cancelling live events",
-      "updated_at": "2026-09-18T00:46:05Z"
+      "head_sha": "1c1e1718242e83a26a0e26afc4c2eff80d7c4c7d",
+      "number": 15836,
+      "title": "Outbound: recover mandatory organization-aware provider chain on current main",
+      "updated_at": "2026-09-18T01:22:05Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/rwd3-rogers-payapp-owner-packet-20260917",
+      "created_at": "2026-09-18T01:21:32Z",
+      "draft": false,
+      "head_sha": "c3464df897f45c235b3ec385d6cd1bf83dc1f9f9",
+      "number": 15834,
+      "title": "RWD #3 retainage packet: proof-surface fix-forward",
+      "updated_at": "2026-09-18T01:23:31Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-argent/ky-ai-workforce-response-kit-recovery-20260917",
+      "created_at": "2026-09-18T01:21:13Z",
+      "draft": false,
+      "head_sha": "2fbb85ed66dcd4ed2e6153e2e746a567c03ed2b9",
+      "number": 15832,
+      "title": "Revenue: recover Kentucky AI workforce response assembly kit",
+      "updated_at": "2026-09-18T01:22:20Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/cron-floor-recovery-main-rejoin-20260918",
+      "created_at": "2026-09-18T01:16:38Z",
+      "draft": false,
+      "head_sha": "64a2aba675ee9711f45e80b79d5802592ceec856",
+      "number": 15825,
+      "title": "CI: rejoin 264/day cron floor recovery onto current main",
+      "updated_at": "2026-09-18T01:17:40Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol17/cron-floor-rejoin-20260917-2111",
+      "created_at": "2026-09-18T01:14:02Z",
+      "draft": false,
+      "head_sha": "783792d04073809967c44caaa80d754bd79f5466",
+      "number": 15823,
+      "title": "CI: rejoin 264/day cron-floor recovery onto current main",
+      "updated_at": "2026-09-18T01:14:17Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/hcpf-hcbs-258-partner-first-20260917",
+      "created_at": "2026-09-18T00:54:58Z",
+      "draft": false,
+      "head_sha": "d16105e6759e92870b31f2d795b86383333f898d",
+      "number": 15822,
+      "title": "Revenue: qualify HCPF HCBS monitoring for paid partner workshare",
+      "updated_at": "2026-09-18T01:20:05Z"
     },
     {
       "author": "woahwhattheheck",
@@ -97,7 +152,7 @@
       "head_sha": "bfaf415a8f0ba3b9f2cae990b5bbddb4063854e0",
       "number": 15818,
       "title": "Revenue: add source-bound HCPF Hospital Portal partner-first carrier",
-      "updated_at": "2026-09-18T00:52:49Z"
+      "updated_at": "2026-09-18T01:18:14Z"
     },
     {
       "author": "woahwhattheheck",
@@ -105,10 +160,10 @@
       "branch": "zsol/payoff-path-authority-init-fixforward-20260917",
       "created_at": "2026-09-18T00:34:21Z",
       "draft": false,
-      "head_sha": "20094cae674b48567a60b5fb33d008dde1bf5d21",
+      "head_sha": "8c0537c50969b449a0f493c0b01e0213bee1969e",
       "number": 15817,
       "title": "Revenue: pin payoff evidence authority at process initialization",
-      "updated_at": "2026-09-18T00:39:37Z"
+      "updated_at": "2026-09-18T01:25:15Z"
     },
     {
       "author": "woahwhattheheck",
@@ -116,65 +171,10 @@
       "branch": "zsol/xtech-search10-portfolio-downselect-recovery-20260917",
       "created_at": "2026-09-18T00:28:16Z",
       "draft": false,
-      "head_sha": "3d12f02cf9d669a1c1cdbcf6da694365cab0eb21",
+      "head_sha": "9774850de83d1c467264f5e88082b68e72301b6d",
       "number": 15815,
       "title": "xTech Search 10: recover cross-asset one-shot portfolio downselect",
-      "updated_at": "2026-09-18T00:50:34Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/jev-credential-source-conflict-fence-20260917",
-      "created_at": "2026-09-18T00:24:12Z",
-      "draft": false,
-      "head_sha": "46a5911866f1ddf1b634f662ff138ee815bdeaba",
-      "number": 15812,
-      "title": "Harden JEV credential generation selection after key exposure",
-      "updated_at": "2026-09-18T00:26:55Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-solstice/pilot-15643-15714-currentmain-compose-20260917",
-      "created_at": "2026-09-18T00:23:24Z",
-      "draft": false,
-      "head_sha": "c4bd51dbf9e71bd53fa8d85685edb71af4dc5a06",
-      "number": 15811,
-      "title": "Compose pilot-renewal trust repair with 67-slot workflow recovery",
-      "updated_at": "2026-09-18T00:37:00Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-z/danville-erp-pm-early-runway-20260917",
-      "created_at": "2026-09-18T00:21:11Z",
-      "draft": false,
-      "head_sha": "2f4469ad034bde42932800fe17e12016cea6d01e",
-      "number": 15810,
-      "title": "Add Danville ERP PM early-runway qualification packet",
-      "updated_at": "2026-09-18T00:24:27Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/rwd3-rogers-payapp-owner-packet-20260917",
-      "created_at": "2026-09-18T00:19:32Z",
-      "draft": false,
-      "head_sha": "5978d82c1a7a8176b224c52ccdf24ff4eae3f5d5",
-      "number": 15808,
-      "title": "Revenue: bind RWD #3 retainage owner-review packet",
-      "updated_at": "2026-09-18T00:21:09Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/co-chsd-15804-partner-first-20260917",
-      "created_at": "2026-09-18T00:18:03Z",
-      "draft": false,
-      "head_sha": "6613675940d14d8b23dca66cbe15fbdcf2acc930",
-      "number": 15807,
-      "title": "Revenue: add fail-closed Colorado CHSD partner-first carrier",
-      "updated_at": "2026-09-18T00:32:11Z"
+      "updated_at": "2026-09-18T01:17:06Z"
     }
   ],
   "open_heads": {
@@ -189,13 +189,12 @@
     "15653": "b8f6a1aaed25bd2cfb74db49037043a38a531974",
     "15656": "b972392658f06a04880f6d32a646e6f061557471",
     "15657": "db205be68cb31e3cc37beca55fc5287fb65d54a6",
-    "15662": "7d64ec1c9f86240cc6e79beff696b756d5b2a8dd",
+    "15662": "4717e0a2e5a198122956f443afb115265a11edf8",
     "15668": "a0806469a08003c3ae84752d7a23d61fa7cd8109",
     "15682": "05cbf55253cf86fef5e60807ffd19b3a082addb0",
     "15684": "a5aca2b07b41ca47fc3e914b172584fbc3712788",
     "15699": "43ada9c1b6a2152d1fd65d95ed41ccade89be98f",
     "15700": "5441a7eae9e7d554fb0dbbb0fed044a9a101fa55",
-    "15707": "ee21d3ee5188664db80beb46d2b26a3bb8e16a68",
     "15714": "49f70c1b3d26a1caffe7edb0cb5dc5fa6263c517",
     "15717": "867cddeeb96b2d0cb6c4e8099e2602256d4ed9e4",
     "15721": "f691d4d452180f1df152a4b504b730fa4854f000",
@@ -211,25 +210,117 @@
     "15758": "3f6c365bc02476ed9ecaab888d4faf07b0a8b6fc",
     "15761": "0268984b5ed72aa4c8e20031e98ee0c204ca584c",
     "15794": "eb14686cdbf9e67a4dbad1c445151ce99cb73fdb",
-    "15796": "56ea3469e3c71674a7b037d1b7e1846ded4ca5f0",
+    "15796": "a9e5a6f90592f9a99a5e05b27f32110e180813a5",
     "15797": "3f07c97eff85513b1450229eb85abd7f14f10a22",
     "15801": "b6f95da17ad8f331ce752c34137919c98f42e64d",
     "15803": "1c64ca5d71cc679f7df7b4b538ccf6b6ef953c2a",
     "15807": "6613675940d14d8b23dca66cbe15fbdcf2acc930",
-    "15808": "5978d82c1a7a8176b224c52ccdf24ff4eae3f5d5",
     "15810": "2f4469ad034bde42932800fe17e12016cea6d01e",
     "15811": "c4bd51dbf9e71bd53fa8d85685edb71af4dc5a06",
     "15812": "46a5911866f1ddf1b634f662ff138ee815bdeaba",
-    "15815": "3d12f02cf9d669a1c1cdbcf6da694365cab0eb21",
-    "15817": "20094cae674b48567a60b5fb33d008dde1bf5d21",
+    "15815": "9774850de83d1c467264f5e88082b68e72301b6d",
+    "15817": "8c0537c50969b449a0f493c0b01e0213bee1969e",
     "15818": "bfaf415a8f0ba3b9f2cae990b5bbddb4063854e0",
-    "15819": "2d5d2fad4eb32c1c321cfc0021585fddbe45ea54",
-    "15821": "24eb4199dc817be991dfea5dd9f93b46e6b29d07"
+    "15822": "d16105e6759e92870b31f2d795b86383333f898d",
+    "15823": "783792d04073809967c44caaa80d754bd79f5466",
+    "15825": "64a2aba675ee9711f45e80b79d5802592ceec856",
+    "15832": "2fbb85ed66dcd4ed2e6153e2e746a567c03ed2b9",
+    "15834": "c3464df897f45c235b3ec385d6cd1bf83dc1f9f9",
+    "15836": "1c1e1718242e83a26a0e26afc4c2eff80d7c4c7d",
+    "15838": "0874f8f06e4709d32d9aacf445a4be2ef19514f2"
   },
-  "pulls_listed": 47,
+  "pulls_listed": 50,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 38.4,
+  "queue_depth_per_runner": 17.7,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "kestrel/muse-send-lease-current-main-20260917",
+      "closed_at": "2026-09-18T01:24:45Z",
+      "head_sha": "34be6259e2f31ae2b5873462424835ab515cd3ed",
+      "merged_at": null,
+      "number": 15830,
+      "state": "CLOSED",
+      "title": "Muse: rejoin atomic session-bound send leases on current main"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "solz/org-outbound-chain-14269-20260917",
+      "closed_at": "2026-09-18T01:22:16Z",
+      "head_sha": "ee21d3ee5188664db80beb46d2b26a3bb8e16a68",
+      "merged_at": null,
+      "number": 15707,
+      "state": "CLOSED",
+      "title": "feat(outbound): enforce mandatory organization-aware provider chain"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol17/restore-autopsy-vendor-recipe-20260917",
+      "closed_at": "2026-09-18T01:22:05Z",
+      "head_sha": "539869466df18b4d52fca51849c33a8e5d3934be",
+      "merged_at": null,
+      "number": 15827,
+      "state": "CLOSED",
+      "title": "CI: restore archived autopsy-vendor-guard recipe"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "sol-z/autopsy-vendor-guard-archive-recovery-20260917",
+      "closed_at": "2026-09-18T01:21:58Z",
+      "head_sha": "48093ac85d136e6e74a3490a6d598a064711b51a",
+      "merged_at": "2026-09-18T01:21:58Z",
+      "number": 15828,
+      "state": "MERGED",
+      "title": "CI: restore retired Autopsy vendor-guard archive invariant"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-rook/mmsd-funto-commercialization-20260917",
+      "closed_at": "2026-09-18T01:20:06Z",
+      "head_sha": "63ae8a5a8e9077dfd4eaca61cb8f85f38cbe2fb2",
+      "merged_at": "2026-09-18T01:20:06Z",
+      "number": 15831,
+      "state": "MERGED",
+      "title": "revenue: convert MMSD AI governance into partner-first paid workshare"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/rwd3-rogers-payapp-owner-packet-20260917",
+      "closed_at": "2026-09-18T01:19:31Z",
+      "head_sha": "379d5838bf2023ccf23d1ca36323c9898a8fe46c",
+      "merged_at": null,
+      "number": 15808,
+      "state": "CLOSED",
+      "title": "Revenue: bind RWD #3 retainage owner-review packet"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/cron-floor-recovery-20260917",
+      "closed_at": "2026-09-18T01:16:53Z",
+      "head_sha": "2d5d2fad4eb32c1c321cfc0021585fddbe45ea54",
+      "merged_at": null,
+      "number": 15819,
+      "state": "CLOSED",
+      "title": "CI: recover 264/day cron floor without cancelling live events"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "anvil/live-cash-preserve-retired-20260918",
+      "closed_at": "2026-09-18T00:53:20Z",
+      "head_sha": "24eb4199dc817be991dfea5dd9f93b46e6b29d07",
+      "merged_at": "2026-09-18T00:53:20Z",
+      "number": 15821,
+      "state": "MERGED",
+      "title": "fix(live-cash): stop resurrecting retired product doors in remints"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -306,98 +397,10 @@
       "number": 15798,
       "state": "MERGED",
       "title": "Revenue: recover RCAP route and isolate buyer-facing proposal"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/wrf-5417-authority-recovery-20260917",
-      "closed_at": "2026-09-18T00:09:11Z",
-      "head_sha": "fe1c4dfe0bb36b5238f1cc99ae6b11efa892fe20",
-      "merged_at": "2026-09-18T00:09:11Z",
-      "number": 15802,
-      "state": "MERGED",
-      "title": "fix: bind WRF 5417 readiness to retained authority"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarmz/provider-cost-truth-15619",
-      "closed_at": "2026-09-18T00:04:41Z",
-      "head_sha": "dc8af881b2b4dc49ec7423c6629d012b2577c9ca",
-      "merged_at": null,
-      "number": 15636,
-      "state": "CLOSED",
-      "title": "Fleet: fail closed on unproven \u201cfree\u201d provider compute"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol17/muse-send-lease-main-rejoin-20260917",
-      "closed_at": "2026-09-17T23:55:05Z",
-      "head_sha": "868f58c2a70c1e69f563e629ed3f0b5f43889669",
-      "merged_at": null,
-      "number": 15795,
-      "state": "CLOSED",
-      "title": "Muse: rejoin atomic send lease on current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarmz/opportunity-intake-trusted-completeness-14130-20260917",
-      "closed_at": "2026-09-17T23:51:08Z",
-      "head_sha": "827f1a67ed0fdd820df9d2586261005607a63922",
-      "merged_at": "2026-09-17T23:51:08Z",
-      "number": 15687,
-      "state": "MERGED",
-      "title": "fix: bind opportunity-intake completeness to trusted snapshot authority"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "anvil/titan-slack-lane-wire-20260917",
-      "closed_at": "2026-09-17T23:29:56Z",
-      "head_sha": "f7a4004d933ad859f489ecc68c0b01e41626932f",
-      "merged_at": "2026-09-17T23:29:56Z",
-      "number": 15791,
-      "state": "MERGED",
-      "title": "Wire titan_hands slack lane to env-token HTTP path (#15789)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "anvil/convert-shelf-49-20260917",
-      "closed_at": "2026-09-17T23:19:30Z",
-      "head_sha": "2a26f4284262b6b8dc96eda7a8652f1dfb29d664",
-      "merged_at": "2026-09-17T23:19:30Z",
-      "number": 15790,
-      "state": "MERGED",
-      "title": "Add $49 convert-shelf pack (WO-CONVERT-SHELF-49)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "devin/wb-hour-delivery-kit-20260917-01",
-      "closed_at": "2026-09-17T23:04:13Z",
-      "head_sha": "1e759e3bed87e0f8d48cbd11bf3e5869eb3a73d9",
-      "merged_at": "2026-09-17T23:04:13Z",
-      "number": 15788,
-      "state": "MERGED",
-      "title": "Add White Box hour delivery kit (WO-WB-DELIVERY-KIT)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/latch-ci-fix-pack-99-54f4",
-      "closed_at": "2026-09-17T22:59:00Z",
-      "head_sha": "77cc131608ef0185902f50155491dab032639162",
-      "merged_at": "2026-09-17T22:59:00Z",
-      "number": 15787,
-      "state": "MERGED",
-      "title": "LATCH WO-CI-FIX-PACK-99 produce pack + sample"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T00:53:16Z",
+  "unchanged_since": "2026-09-18T01:25:22Z",
   "undatable_pulls": []
 }
