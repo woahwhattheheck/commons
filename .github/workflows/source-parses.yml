@@ -9,11 +9,13 @@ on:
       - "revenue/multi_framework_evidence_freshness/**"
       - "tests/test_multi_framework_evidence_freshness*.py"
       - "tools/provider_cost_truth/**"
+      - "revenue/hive/commercial-laundry-operations/**"
       - ".github/workflows/source-parses.yml"
   pull_request:
     paths:
       - "**/*.py"
       - "**/*.js"
+      - "revenue/hive/commercial-laundry-operations/**"
       - ".github/workflows/source-parses.yml"
 
 permissions:
@@ -140,3 +142,39 @@ jobs:
 
       - name: Optimized Python freshness battery
         run: python -O -B -m unittest discover -s tests -p 'test_multi_framework_evidence_freshness*.py' -v
+
+  commercial-laundry-operations:
+    name: commercial-laundry-operations (${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - name: Check out exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Compile laundry desk and retained hostiles
+        working-directory: revenue/hive/commercial-laundry-operations
+        run: python -m py_compile laundry_desk.py laundry_desk_core.py cli.py demo.py test_laundry_desk.py test_export_hostiles.py test_cross_stop_custody.py test_core_authority_hostiles.py test_cli_read_only.py
+
+      - name: Normal laundry hostile suite
+        working-directory: revenue/hive/commercial-laundry-operations
+        run: python -B -m unittest -v test_laundry_desk.py test_export_hostiles.py test_cross_stop_custody.py test_core_authority_hostiles.py test_cli_read_only.py
+
+      - name: Optimized laundry hostile suite
+        working-directory: revenue/hive/commercial-laundry-operations
+        run: python -O -B -m unittest -v test_laundry_desk.py test_export_hostiles.py test_cross_stop_custody.py test_core_authority_hostiles.py test_cli_read_only.py
+
+      - name: Synthetic two-account demo
+        working-directory: revenue/hive/commercial-laundry-operations
+        run: python -B demo.py >/tmp/commercial-laundry-demo.json
