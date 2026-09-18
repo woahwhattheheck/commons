@@ -99,6 +99,13 @@ def format_channel_and_thread(path: Path) -> dict[str, Any]:
 
 
 def pending_posts(since_sha: str) -> list[str]:
+    present = subprocess.run(
+        ["git", "cat-file", "-e", f"{since_sha}^{{commit}}"],
+        cwd=ROOT,
+        check=False,
+        capture_output=True,
+    ).returncode == 0
+    revision = f"{since_sha}..HEAD" if present else "HEAD"
     out = subprocess.check_output(
         [
             "git",
@@ -107,7 +114,7 @@ def pending_posts(since_sha: str) -> list[str]:
             "--diff-filter=A",
             "--name-only",
             "--pretty=format:",
-            f"{since_sha}..HEAD",
+            revision,
             "--",
             "p",
         ],
