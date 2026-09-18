@@ -1,0 +1,64 @@
+{
+  "artifact": {
+    "command": "python3 erdos366_extend.py --bound 1000000000000000 --pretty",
+    "engine": "erdos366-extend-v2",
+    "engine_git_blob_sha1": "d6aa20d16c481c0eaf848d14c40e5ff89b05df04",
+    "engine_sha256": "382e15a6e4ffeb1379583bf42b523e60087a7340eaea277c03ce578bd460ea46",
+    "normal_tests": "9/9 PASS",
+    "observed_wall_seconds": 23.31,
+    "optimized_tests": "9/9 PASS",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "python": "3.13.5",
+    "tests_git_blob_sha1": "567ec34d7c9ea9f330415877832659c6146c73bb",
+    "tests_sha256": "4d41414819dfe1e870a583192bd3b18b62cc5ce554327b269991ec6ac50eb712"
+  },
+  "bounded_search": {
+    "classification_counts": {
+      "factored_remainder": 51021,
+      "prime_remainder": 31183,
+      "small_residue": 352367
+    },
+    "engine": "erdos366-extend-v2",
+    "global_3full_successors": 434571,
+    "interpretation": "Exhaustive only for this deterministic shard of n+1 <= successor_bound_inclusive; zero witnesses is not a global nonexistence proof. Union all shard indexes for the same bound/count/engine to cover the full bounded search.",
+    "record_digest_sha256": "1af48a7652b35372d41eabe2e1192940d89ef3d9b85aa1f885bb7e6e898edad6",
+    "schema_version": 2,
+    "selected_3full_successors": 434571,
+    "shard_count": 1,
+    "shard_index": 0,
+    "successor_bound_inclusive": 1000000000000000,
+    "target": "exists n>0: Nat.Full 2 n and Nat.Full 3 (n+1)",
+    "trial_prime_limit": 997,
+    "witness_count": 0,
+    "witnesses": []
+  },
+  "claims": {
+    "global_nonexistence_claimed": false,
+    "global_solution_found": false,
+    "paid_verification_attempted": false,
+    "revenue_booked": false,
+    "reward_claimed": false,
+    "sponsor_submission_made": false
+  },
+  "construction": {
+    "intended_base_ref": "fresh main at publication time",
+    "intended_base_repo": "woahwhattheheck/commons"
+  },
+  "cross_check": {
+    "landed_1e12_expected_candidates": 41135,
+    "landed_1e12_expected_witnesses": 0,
+    "reproduced_by_test": true
+  },
+  "lane": "CONJECTURES-ERDOS366-EXTENSION-C83F-RB8-20260918",
+  "schema_version": 2,
+  "task": {
+    "attempt_state_snapshot": "nobody has started; no attempts; nothing published against this problem",
+    "canonical_url": "https://conjectures.io/problems/erdos366-erdos-366",
+    "exact_target": "True \u2194 \u2203 n > 0, Nat.Full 2 n \u2227 Nat.Full 3 (n + 1)",
+    "reward_snapshot_usd_from_parent_issue": 3992,
+    "reward_snapshot_verified_date": "2026-09-18",
+    "source_type_sha256": "6756a198d091e0d0a2c6913ee1de0c5eaf403a0f98873b7645b3c4337e162a99",
+    "task_commitment_sha256": "bdc4fc9e24b0984b86699ded1d2c0f00fe0fb9faf8ab48f374224e5a3790cc1a",
+    "task_id": "fc-8432eac9-erdos366-erdos-366-e013583642-formalized-v1"
+  }
+}
