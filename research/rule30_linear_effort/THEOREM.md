@@ -9,9 +9,10 @@ the Rule 30 prize theorem.
 
 Let `T(n)` be the running time of an exact predictor.
 
-The surrounding sponsor prose asks whether there is a shortcut taking *less than
-linear* effort. The natural asymptotic negation of a linear lower-bound claim is
-therefore the existence of an exact predictor with `T(n) = o(n)`.
+Three asymptotic statements must remain distinct: (A) no exact predictor has
+`T(n)=o(n)`; (B) every exact predictor has `T(n)=Omega(n)`; (C) no exact
+predictor has finite `limsup T(n)/n`, equivalently no exact `O(n)` predictor.
+Neither (A) nor (C) is synonymous with (B).
 
 The displayed formal predicate instead rules out an exact machine satisfying
 
@@ -21,15 +22,18 @@ For nonnegative runtimes, finite limsup implies an eventual constant upper bound
 `T(n) <= C n`, i.e. an `O(n)`-type upper bound. Hence the displayed predicate
 rules out both sublinear and ordinary linear-time exact predictors.
 
-The difference is witnessed by `T(n)=n`:
+Two separators make the distinctions explicit.
 
-* `T(n)` is **not** `o(n)`, so it is not a counterexample to an intended
-  `Omega(n)` lower bound;
-* `limsup T(n)/n = 1 < infinity`, so it **is** a counterexample to the displayed
-  `NotExists[...]` predicate.
+* Let `S(n)=n` on powers of two and `floor(sqrt(n))` otherwise. Then `S`
+  is not `o(n)` because its ratio has limsup 1, but it is not `Omega(n)`
+  because its ratio tends to zero along non-powers. Thus (A) does not imply (B).
+* Let `Q(n)=n^2` on powers of two and `floor(sqrt(n))` otherwise. Then
+  `Q` is not `O(n)` but also not `Omega(n)`. Thus the per-machine
+  properties behind (B) and (C) differ. Conversely `T(n)=n` is
+  `Omega(n)` and `O(n)`.
 
-Therefore a proof must name which target it establishes. They cannot be silently
-substituted for one another.
+Therefore every result must name A, B, or C explicitly; the generic phrase
+“linear lower bound” is insufficient here.
 
 `asymptotic.py` makes this distinction executable for exact power/log families
 and includes a non-smooth O(n), non-o(n) witness to prevent accidental
@@ -104,10 +108,9 @@ explicit reduction to this exact function.
 
 ## What remains open
 
-The hard step remains untouched by these model-cleanup lemmas: prove that every
-finite exact machine for the Rule 30 lone-seed center bit uses non-sublinear
-effort under the intended model (or prove the stronger displayed predicate), or
-exhibit a correct sublinear shortcut.
+The hard step remains untouched by these model-cleanup lemmas: prove one
+explicitly named target A, B, or C above, or exhibit a correct algorithm that
+refutes the corresponding target. The three statements are not interchangeable.
 
 No finite timing curve, symbolic-expression growth plot, causal-cone count, or
 generic CA hardness statement is promoted to that conclusion here.
