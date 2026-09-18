@@ -25,18 +25,25 @@ def _hard_false_authority(_items=(
 def _evaluate(
     normalized: dict[str, Any], as_of: datetime, *, current_process: bool,
     _authority_factory=_hard_false_authority,
+    _dedupe=compute_dedupe_key,
+    _utc_fn=_utc,
+    _utc_text_fn=_utc_text,
+    _canonical=canonical_json,
+    _sha=sha256_hex,
+    _max_relationship_age=MAX_RELATIONSHIP_AGE_SECONDS,
+    _decision_schema=DECISION_SCHEMA,
 ) -> dict[str, Any]:
     source = normalized["source_packet"]
     contact = normalized["contact"]
     identity = normalized["identity_binding"]
     lease = normalized["writer_lease"]
-    dedupe_key = compute_dedupe_key(source, contact)
+    dedupe_key = _dedupe(source, contact)
     reasons: list[str] = []
 
-    observed = _utc(source["observed_at"], "observed_at")
+    observed = _utc_fn(source["observed_at"], "observed_at")
     if observed > as_of:
         reasons.append("HOLD_SOURCE_FUTURE")
-    deadline = _utc(source["deadline_at"], "deadline_at")
+    deadline = _utc_fn(source["deadline_at"], "deadline_at")
     if int((deadline - as_of).total_seconds()) < source["min_runway_seconds"]:
         reasons.append("HOLD_RUNWAY")
     if source["registration_required"] and source["registration_state"] != "READY":
@@ -48,8 +55,8 @@ def _evaluate(
     if any(g["disposition"] == "UNKNOWN" for g in required_gates):
         reasons.append("HOLD_QUALIFICATION_UNKNOWN")
 
-    identity_observed = _utc(identity["observed_at"], "identity.observed_at")
-    identity_valid_until = _utc(identity["valid_until"], "identity.valid_until")
+    identity_observed = _utc_fn(identity["observed_at"], "identity.observed_at")
+    identity_valid_until = _utc_fn(identity["valid_until"], "identity.valid_until")
     if not identity["authority_authenticated"]:
         reasons.append("HOLD_IDENTITY_AUTHORITY")
     if identity_observed > as_of:
@@ -57,13 +64,13 @@ def _evaluate(
     if as_of >= identity_valid_until:
         reasons.append("HOLD_IDENTITY_EXPIRED")
 
-    relationship_observed = _utc(contact["relationship_observed_at"], "relationship_observed_at")
-    relationship_valid_until = _utc(contact["relationship_valid_until"], "relationship_valid_until")
+    relationship_observed = _utc_fn(contact["relationship_observed_at"], "relationship_observed_at")
+    relationship_valid_until = _utc_fn(contact["relationship_valid_until"], "relationship_valid_until")
     if not contact["relationship_authority_authenticated"]:
         reasons.append("HOLD_RELATIONSHIP_AUTHORITY")
     if relationship_observed > as_of:
         reasons.append("HOLD_RELATIONSHIP_FUTURE")
-    if as_of >= relationship_valid_until or (as_of - relationship_observed).total_seconds() > MAX_RELATIONSHIP_AGE_SECONDS:
+    if as_of >= relationship_valid_until or (as_of - relationship_observed).total_seconds() > _max_relationship_age:
         reasons.append("HOLD_RELATIONSHIP_STALE")
     if contact["relationship_state"] in {"DNR", "BOUNCE", "SENT_DNR"}:
         reasons.append("HOLD_RELATIONSHIP")
@@ -85,8 +92,8 @@ def _evaluate(
             send_reasons.append("HOLD_WRITER_LEASE_SEAT")
         if lease["session_nonce"] != normalized["session_nonce"]:
             send_reasons.append("HOLD_WRITER_LEASE_SESSION")
-        issued = _utc(lease["issued_at"], "lease.issued_at")
-        expires = _utc(lease["expires_at"], "lease.expires_at")
+        issued = _utc_fn(lease["issued_at"], "lease.issued_at")
+        expires = _utc_fn(lease["expires_at"], "lease.expires_at")
         if as_of < issued:
             send_reasons.append("HOLD_WRITER_LEASE_NOT_YET_VALID")
         if as_of >= expires:
@@ -96,10 +103,10 @@ def _evaluate(
 
     authorized = qualified and not send_reasons
     decision: dict[str, Any] = {
-        "schema": DECISION_SCHEMA,
-        "evaluated_at": _utc_text(as_of),
+        "schema": _decision_schema,
+        "evaluated_at": _utc_text_fn(as_of),
         "evaluation_mode": "CURRENT_PROCESS" if current_process else "HISTORICAL_REVIEW_ONLY",
-        "packet_digest": sha256_hex(canonical_json(normalized)),
+        "packet_digest": _sha(_canonical(normalized)),
         "source_packet_sha256": normalized["source_packet_sha256"],
         "dedupe_key": dedupe_key,
         "qualification_state": "QUALIFIED_FOR_OWNER_REVIEW" if qualified else "HOLD",
@@ -109,7 +116,7 @@ def _evaluate(
         "hold_reasons": sorted(set(reasons + send_reasons)),
         "authority": _authority_factory(),
     }
-    decision["receipt_sha256"] = sha256_hex(canonical_json(decision))
+    decision["receipt_sha256"] = _sha(_canonical(decision))
     return decision
 
 
