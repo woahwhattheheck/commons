@@ -1,0 +1,17 @@
+{
+  "schema": "commons-work-terminality-v1",
+  "entries": [
+    {
+      "operation_id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+      "terminal_state": "LANDED_ON_MAIN",
+      "evidence_commit": "ccab91f74dfec13e1dcb8228b422e044fbc19e08",
+      "canonical_issue": 15130,
+      "duplicate_issues": [15616],
+      "card_ids": [
+        "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+        "Build-genuine-human-inbound---owner-close-desk"
+      ],
+      "evidence": "Canonical issue 15130 completed and shipped; issue 15616 was closed as a duplicate after the stale UNSEATED projection recreated the same operation."
+    }
+  ]
+}
