@@ -14,7 +14,7 @@ A retirement must compose the last active-footprint/source removal and the `RETI
 
 ## Active vs historical
 
-`host/product_lifecycle_guard.py` scans active root `*.html` customer surfaces plus the active payment-capability and outcome-commerce catalog sources. Every lifecycle `catalog_sources` path is also direct active source state: once its product is `RETIRED`, that source path itself must be absent. Historical `p/`, `by/`, `d/`, and other append-only evidence trees are intentionally not recursively scanned or rewritten. Historical receipts remain evidence; retirement is not history deletion.
+`host/product_lifecycle_guard.py` scans active root `*.html` customer surfaces plus the active payment-capability and outcome-commerce catalog sources. Root `board.html` is the live projection of historical board receipts, not a customer storefront, and is excluded with `p/`, `by/`, and `d/`. Every lifecycle `catalog_sources` path is also direct active source state: once its product is `RETIRED`, that source path itself must be absent. Historical `p/`, `by/`, `d/`, and other append-only evidence trees are intentionally not recursively scanned or rewritten. Historical receipts remain evidence; retirement is not history deletion.
 
 Every lifecycle `catalog_sources` path must have an exact path trigger in the retained `.github/workflows/capability-entrypoints.yml` workflow. This makes a stale restoration wake the guard even if no already-active surface changed in the same commit.
 
