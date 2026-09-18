@@ -39,6 +39,30 @@ class AsymptoticContractTests(unittest.TestCase):
         self.assertFalse(witness.is_prose_shortcut())
         self.assertTrue(witness.is_displayed_predicate_counterexample())
 
+    def test_three_way_target_separators(self):
+        # A vs B: not-o(n) does not imply Omega(n).
+        for k in range(2, 12):
+            power = 1 << k
+            self.assertEqual(spiky_linear_runtime(power), power)
+            non_power = power + 1
+            self.assertEqual(spiky_linear_runtime(non_power), isqrt(non_power))
+
+        # B vs C: not-O(n) does not imply Omega(n).  This second witness is
+        # quadratic on powers of two and sqrt-scale elsewhere.
+        def q(n):
+            return n * n if n > 0 and (n & (n - 1)) == 0 else isqrt(n)
+
+        for k in range(2, 12):
+            power = 1 << k
+            self.assertEqual(q(power), power * power)
+            non_power = power + 1
+            self.assertEqual(q(non_power), isqrt(non_power))
+
+        huge_power = 1 << 2048
+        huge_non_power = huge_power + 1
+        self.assertEqual(q(huge_power), huge_power * huge_power)
+        self.assertEqual(q(huge_non_power), isqrt(huge_non_power))
+
     def test_canonical_growth_families(self):
         cases = [
             (PowerLogRuntime(Fraction(0), 1), RelationToLinear.SUBLINEAR),
