@@ -19,7 +19,6 @@ DOOR_REL = "packs/sidewalk-signal-web-desk-20260902-01/index.html"
 DOOR_BLOB = "638e60b4"
 DOOR_LIVE_CASH_V1 = (
     '<p id="live-cash" class="note"><strong>Live cash</strong> — '
-    '<a href="../../agent-rescue.html">$29 Autopsy</a> · '
     '<a href="../../dealer-service-lead-rescue.html">$199 dealer</a> · '
     '<a href="../../referral-intake-completeness.html">$199 referral</a> · '
     '<a href="../../repair-booking-preflight.html">$199 repair</a> · '

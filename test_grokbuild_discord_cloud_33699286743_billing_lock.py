@@ -23,11 +23,11 @@ WORKFLOW = ROOT / ".github/workflows/commons-discord-cloud.yml"
 KEEP = {
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grok-build-discord-cloud-billing-lock-readback-20260902-01.md": "e14e443b",
-    "test_grok_build_discord_cloud_billing_lock_readback.py": "197da638",
+    "test_grok_build_discord_cloud_billing_lock_readback.py": "2e1620c4",
     "p/grok-build-discord-cloud-33689083145-billing-lock-20260902-01.md": "6e34f897",
     "p/grok-build-discord-cloud-33689281288-billing-lock-20260902-01.md": "89fdbcf0",
     "p/grok-build-discord-cloud-33694219370-billing-lock-20260902-01.md": "9dcc171b",
-    "test_grokbuild_discord_cloud_33694219370_billing_lock.py": "71ea6b6e",
+    "test_grokbuild_discord_cloud_33694219370_billing_lock.py": "e6f4be64",
     "p/grok-discord-cloud-dark-20260831-01.md": "cdbad10b",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "commons_discord.py": "f6f1a374",
@@ -37,7 +37,7 @@ KEEP = {
     "infra/discord/test_commons_discord_bridge.py": "9c623e59",
     "infra/discord/test_windows_runtime.py": "158feb48",
     "infra/discord/assert_ready.py": "ad33fdba",
-    ".github/workflows/commons-discord-cloud.yml": "6f1c1479",
+    ".github/workflows/commons-discord-cloud.yml": "90738ad6",
 }
 
 

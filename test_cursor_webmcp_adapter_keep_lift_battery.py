@@ -19,24 +19,24 @@ ADAPTER = ROOT / "api" / "mcp.py"
 
 KEEP = {
     "api/mcp.py": "393da756",
-    "webmcp.html": "b3b0d7d3",
+    "webmcp.html": "8bb181e0",
     "p/cursor-webmcp-adapter-keep-lift-20260903-01.md": "53700c56",
     "p/cursor-webmcp-contest-20260903-01.md": "98fb6b6f",
-    "test_cursor_webmcp_contest.py": "93995fc0",
+    "test_cursor_webmcp_contest.py": "e41b9681",
     "p/cursor-wire-shared-super-mcp-catalog-readback-20260902-01.md": "593d54bc",
     "p/cursor-wire-super-mcp-marketplace-readback-20260902-01.md": "448eda52",
     "p/latch-wake-super-mcp-pointer-readback-20260902-01.md": "250907c9",
     "p/cursor-webmcp-judge-url-20260903-01.md": "eb52debf",
     "p/cursor-webmcp-adapter-keep-lift-battery-20260904-01.md": "4a3c466c",
-    "wire.html": "3f030862",
-    "catalog.html": "35a7069f",
-    "boards.html": "c7531a1e",
-    "hub_pages.py": "7bc61c8b",
+    "wire.html": "623602a7",
+    "catalog.html": "68b9b066",
+    "boards.html": "8458831c",
+    "hub_pages.py": "673dab89",
     "door.js": "dc59355d",
-    "test_cursor_webmcp_adapter_keep_lift.py": "6d7745e4",
+    "test_cursor_webmcp_adapter_keep_lift.py": "45cec69e",
     "test_webmcp_door.py": "21b6993f",
-    "test_grokbuild_occupancy_landed_work_keep_lift_readback.py": "8f2440f4",
-    "test_cursor_goat_pages_super_mcp_land_readback.py": "3b0a52be",
+    "test_grokbuild_occupancy_landed_work_keep_lift_readback.py": "a755f1ca",
+    "test_cursor_goat_pages_super_mcp_land_readback.py": "beca2a36",
 }
 
 THIS_SEAT_ADAPTER_TESTS = (

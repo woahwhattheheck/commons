@@ -17,12 +17,12 @@ KEEP = {
     "host/incoming_models.py": "b1963da4",
     "test_incoming_models.py": "d8f2ddbd",
     "ground/INCOMING_MODELS.json": "6b5e89dc",
-    "ground/INCOMING_MODELS.md": "b9c37880",
+    "ground/INCOMING_MODELS.md": "7717fcd2",
     "incoming-models.html": "9cfbf0af",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
-    "ground/OWNER_NOW.md": "a17b0afb",
+    "ground/OWNER_NOW.md": "39a0e0c3",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
-    "autogtm.html": "1009c4cd",
+    "autogtm.html": "dec0ecbe",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
 }
 

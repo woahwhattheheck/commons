@@ -56,29 +56,25 @@ class CheckoutCapability(unittest.TestCase):
             {rail["sku"] for rail in projected["public_rails"]},
             set(active),
         )
-        self.assertIn("agent-failure-autopsy-29", checkout_first)
+        self.assertNotIn("agent-failure-autopsy-29", checkout_first)
         self.assertEqual(len(projected["inert_urls"]), 3)
 
-    def test_seven_digit_fractional_offset_timestamp_keeps_autopsy_chargeable(self):
+    def test_seven_digit_fractional_offset_timestamp_parses(self):
         observed = "2026-09-05T09:13:12.9504913+00:00"
-        parsed = capability._timestamp(observed, "autopsy.evidence.observed_at")
+        parsed = capability._timestamp(observed, "rail.evidence.observed_at")
         self.assertEqual(parsed.microsecond, 950491)
         snapshot = json.loads(
             (ROOT / "revenue" / "checkout_capability" / "snapshot.json").read_text(
                 encoding="utf-8"
             )
         )
-        rail = next(
-            row
-            for row in snapshot["canonical_rails"]
-            if row["sku"] == "agent-failure-autopsy-29"
+        self.assertNotIn(
+            "agent-failure-autopsy-29",
+            {row["sku"] for row in snapshot["canonical_rails"]},
         )
-        self.assertEqual(rail["evidence"]["observed_at"], observed)
         projected = capability.project(snapshot, self._catalog())
         public = {row["sku"]: row for row in projected["public_rails"]}
-        self.assertIn("agent-failure-autopsy-29", public)
-        self.assertTrue(public["agent-failure-autopsy-29"]["chargeable"])
-        self.assertEqual(public["agent-failure-autopsy-29"]["public"], "EXPOSE_CHECKOUT")
+        self.assertNotIn("agent-failure-autopsy-29", public)
 
     def test_duplicate_urls_never_become_public_anchors(self):
         snapshot = json.loads(
@@ -150,12 +146,12 @@ class CheckoutCapability(unittest.TestCase):
         rail = next(
             row
             for row in changed["canonical_rails"]
-            if row["sku"] == "agent-failure-autopsy-29"
+            if row["sku"] == "dealer-service-lead-rescue"
         )
         rail["url"] = "https://buy.stripe.com/does_not_match_catalog"
         projected = capability.project(changed, self._catalog())
         public = {row["sku"] for row in projected["public_rails"]}
-        self.assertNotIn("agent-failure-autopsy-29", public)
+        self.assertNotIn("dealer-service-lead-rescue", public)
 
 
 if __name__ == "__main__":

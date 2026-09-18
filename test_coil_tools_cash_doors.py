@@ -12,12 +12,10 @@ CASH = ROOT / "tools-cash.html"
 
 REQUIRED_CASH = [
     'id="cash-doors"',
-    "./agent-rescue.html",
     "./dealer-service-lead-rescue.html",
     "./referral-intake-completeness.html",
     "./repair-booking-preflight.html",
     "./plant-downtime-handoff.html",
-    "$29 Autopsy checkout",
     "$199 dealer diagnostic",
 ]
 
@@ -28,7 +26,6 @@ class CoilToolsCashDoorsTest(unittest.TestCase):
         text = TOOLS.read_text(encoding="utf-8")
         self.assertIn('id="cash-doors"', text)
         self.assertIn("./tools-cash.html", text)
-        self.assertIn("$29 Autopsy", text)
 
     def test_tools_cash_page(self) -> None:
         self.assertTrue(CASH.is_file(), "tools-cash.html missing")
@@ -44,7 +41,6 @@ class CoilToolsCashDoorsTest(unittest.TestCase):
         self.assertIn("splice_tools_cash_doors()", ingest)
         self.assertIn('id="cash-doors"', ingest)
         self.assertIn("./tools-cash.html", ingest)
-        self.assertIn("$29 Autopsy", ingest)
         self.assertIn("def splice_tools_cash_doors", ingest)
         self.assertIn('id="cash-hook"', ingest)
         self.assertIn('id="digit-door"', ingest)
@@ -78,9 +74,8 @@ class CoilToolsCashDoorsTest(unittest.TestCase):
             self.assertIn('id="cash-hook"', restored)
             self.assertIn('id="digit-door"', restored)
             self.assertIn('id="buy-now-live-checkout"', restored)
-            self.assertIn("Buy Autopsy $29", restored)
             self.assertIn("./tools-cash.html", restored)
-            self.assertIn("$29 Autopsy", restored)
+            self.assertIn("$199 tip-shelf", restored)
             self.assertIn("coil-tools-json-live-cash-20260905-01", restored)
             self.assertIn("by/DIGIT.html", restored)
             self.assertNotIn("hygiene seat", restored)

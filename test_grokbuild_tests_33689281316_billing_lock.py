@@ -17,11 +17,11 @@ PRIOR_LLMS = ROOT / "p/grok-build-llms-txt-33687829181-billing-lock-20260902-01.
 WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
-    ".github/workflows/tests.yml": "fd94b65c",
+    ".github/workflows/tests.yml": "57d36525",
     "p/grokbuild-pr8411-verify-20260902-01.md": "642dea64",
-    "test_grokbuild_pr8411_verify.py": "f2468c3d",
+    "test_grokbuild_pr8411_verify.py": "3b831583",
     "p/grok-build-llms-txt-33687829181-billing-lock-20260902-01.md": "3183564c",
-    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "eea1a9f3",
+    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "ce7b327f",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",

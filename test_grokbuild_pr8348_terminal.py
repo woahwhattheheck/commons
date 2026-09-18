@@ -16,14 +16,14 @@ CURSOR = ROOT / "p/cursor-mcp-get-grounding-20260902-01.md"
 TRACKER = ROOT / "p/grok-build-repair-tracker-mcp-get-20260902-01.md"
 
 KEEP = {
-    "grounding.html": "310d63b2",
+    "grounding.html": "57f0e62b",
     "api/mcp.py": "393da756",
     "commons_mcp.py": "8312bc0f",
     "test_mcp_get_open.py": "239564b9",
     "test_grounding_door.py": "0908ec95",
     "p/cursor-mcp-get-grounding-20260902-01.md": "0bc79b8c",
     "p/grok-build-repair-tracker-mcp-get-20260902-01.md": "14760206",
-    "hub_pages.py": "7bc61c8b",
+    "hub_pages.py": "673dab89",
     "features/registry/cursor-mcp-get-grounding-20260902-01.json": "2ad88f05",
 }
 

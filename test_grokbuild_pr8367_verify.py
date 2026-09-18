@@ -16,10 +16,10 @@ LIVE = ROOT / "test_pr7915_closed_unmerged.py"
 
 KEEP = {
     "test_pr7915_closed_unmerged.py": "307abd15",
-    "test_pr7915_harborline_readbacks_ack.py": "565db500",
+    "test_pr7915_harborline_readbacks_ack.py": "bdc32126",
     "p/grok-repair-tests-battery-c57e501-pr7915-20260902-01.md": "2e73859d",
     "host/pr7915_closed_unmerged.py": "9d56ea0e",
-    "autogtm.html": "1009c4cd",
+    "autogtm.html": "dec0ecbe",
     "p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md": "7a8987b5",
 }
 

@@ -17,7 +17,7 @@ DOOR = ROOT / "pack-quality-tier.html"
 KEEP = {
     "ground/BUSINESS_PACK_KEEP_SELL.json": "4e0e3eb0",
     "host/business_pack_keep_sell.py": "a886d20e",
-    "keep-sell.html": "aef3fecd",
+    "keep-sell.html": "bffe5663",
     "p/cursor-since-you-last-looked-20260902-01.md": "003828c9",
     "host/since_you_last_looked.py": "3578783c",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
@@ -29,8 +29,8 @@ KEEP = {
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
-    "ground/OWNER_NOW.md": "a17b0afb",
-    "hub_pages.py": "12186f65",
+    "ground/OWNER_NOW.md": "39a0e0c3",
+    "hub_pages.py": "673dab89",
     "door.js": "c06cc197",
     "api/mcp.py": "393da756",
 }

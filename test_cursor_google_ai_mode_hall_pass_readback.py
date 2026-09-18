@@ -20,15 +20,15 @@ KEEP = {
     "p/codex-google-research-grok-automation-resource-delta-20260902-01.md": "0ba4c667",
     "p/codex-google-research-resource-delta-landed-20260902-01.md": "ee08c28d",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
-    "wire.html": "3f030862",
+    "wire.html": "623602a7",
     "ground/WIRE_SUPER_MCP.md": "6a50f614",
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
     "p/cursor-big-huge-commerce-agents-readback-20260902-01.md": "2a5ce894",
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
-    "hub_pages.py": "7bc61c8b",
+    "hub_pages.py": "673dab89",
     "door.js": "de1d570b",
-    "ground/OWNER_NOW.md": "4b2a58ed",
+    "ground/OWNER_NOW.md": "39a0e0c3",
 }
 
 HISTORICAL_TREE = "dc5455bf2894fa705bf57a4510ceee0119a6c729"

@@ -15,10 +15,10 @@ ORIGINAL = ROOT / "p/cursor-merge-on-pr-20260902-01.md"
 
 KEEP = {
     "p/grokbuild-pr-collision-notice-33689085107-billing-lock-20260902-01.md": "594b5e71",
-    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "e850c579",
+    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "dd5a89d8",
     "pr_collision_notice.py": "381d6b9b",
     "test_pr_collision_notice.py": "18a87c08",
-    ".github/workflows/pr-collision-notice.yml": "1c2ebcd5",
+    ".github/workflows/pr-collision-notice.yml": "deeeaf57",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
 }

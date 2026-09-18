@@ -289,46 +289,6 @@ def main(argv: list[str] | None = None) -> int:
                     evidence_pointer=args.evidence_pointer,
                 )
             )
-            _print(
-                build_g2_case_from_role(
-                    role,
-                    case_ref=args.case_ref,
-                    client_reference_id=args.client_reference_id,
-                    sku=args.sku,
-                )
-            )
-            _print(
-                build_receipt_row_from_role(
-                    role,
-                    case_ref=args.case_ref,
-                    client_reference_id=args.client_reference_id,
-                    sku=args.sku,
-                    g2_run_id=args.g2_run_id,
-                    g2_session_id=args.g2_session_id,
-                    payment_observed_at=args.payment_observed_at,
-                    state=args.state,
-                )
-            )
-            _print(
-                run_deadline(
-                    role, usable_evidence_at=args.usable_evidence_at
-                )
-            )
-            _print(
-                run_validate(
-                    role,
-                    intake=args.intake,
-                    report=args.report,
-                    evidence_root=args.evidence_root,
-                )
-            )
-            _print(
-                run_sla_status(
-                    role,
-                    usable_evidence_at=args.usable_evidence_at,
-                    as_of=args.as_of,
-                )
-            )
         elif args.cmd == "diagnostic-contract":
             role = store.get(args.role_id)
             _print(load_contract_from_role(role, slug=args.slug))

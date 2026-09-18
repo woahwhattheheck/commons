@@ -9,7 +9,6 @@ ROOT = Path(__file__).resolve().parent
 CLAIM = "goat-cash-now-json-keep-larger-fixed-20260916-01"
 CATALOG = ROOT / "ground" / "CASH_NOW.json"
 TIP_PATHS = (
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -27,7 +26,6 @@ class TestGoatCashNowJsonKeepLargerFixed2026091601(unittest.TestCase):
         tip_paths = [item.get("path") for item in pages]
         self.assertEqual(tip_paths, list(TIP_PATHS))
         by_path = {item["path"]: item for item in pages}
-        self.assertEqual(by_path["agent-rescue.html"].get("amount_usd"), 29)
         for rel in TIP_PATHS[1:]:
             self.assertEqual(by_path[rel].get("amount_usd"), 199, rel)
 

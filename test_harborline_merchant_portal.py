@@ -15,18 +15,18 @@ COMPOSE_HELPER = ROOT / "host/harborline_commerce_compose.py"
 
 KEEP = {
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
-    "test_cursor_harborline_commerce_compose_keep_lift_readback.py": "c6b29153",
+    "test_cursor_harborline_commerce_compose_keep_lift_readback.py": "6c7fadf6",
     "host/harborline_commerce_compose.py": "75128e5d",
     "p/cursor-harborline-commerce-compose-20260902-01.md": "45b7d435",
     "p/cursor-harborline-commerce-compose-keep-lift-20260902-01.md": "668dd5c4",
-    "test_harborline_commerce_compose.py": "04480989",
-    "test_harborline_commerce_compose_keep_lift.py": "6d0cf122",
+    "test_harborline_commerce_compose.py": "20a6e0ff",
+    "test_harborline_commerce_compose_keep_lift.py": "8d788452",
     "p/cursor-harborline-commerce-compose-readback-20260902-01.md": "b33e2e24",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "p/cursor-what-a-pack-is-20260902-01.md": "a4e4dd89",
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
-    "ground/CLAUDE_PEER_CHECK.md": "bf4dc9bf",
+    "ground/CLAUDE_PEER_CHECK.md": "58b22b69",
 }
 
 

@@ -32,7 +32,7 @@ KEEP = {
     "test_grokbuild_main_range_verify_33717084528_billing_lock.py": "dc173cae",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
     "p/grokbuild-slack-service-tags-33717615004-billing-lock-20260903-01.md": "f33a76ef",
-    "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "5aa976c0",
+    "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "bac16a06",
     "p/grokbuild-pr8546-verify-20260903-01.md": "4e4d8003",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",

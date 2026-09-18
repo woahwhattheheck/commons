@@ -429,7 +429,7 @@ def html_stripe_url_errors(name: str, text: str) -> list[str]:
     """tips/pay/commerce convert shelves reuse existing Stripe URLs; Type product buys stay exact."""
     if name == "tips.html":
         found = live_stripe_checkout_urls(text)
-        if found != TIPS_CONVERT_SHELF_LIVE_CHECKOUTS:
+        if found != TIPS_CONVERT_SHELF_LIVE_CHECKOUTS | {WHITEBOX_HOUR_CHECKOUT}:
             return [
                 "%s convert shelf must reuse exactly the existing tip-shelf Stripe URLs"
                 % name

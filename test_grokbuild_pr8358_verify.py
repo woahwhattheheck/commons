@@ -18,10 +18,10 @@ LEFTOVER_TEST = ROOT / "test_harborline_pack_market_render.py"
 
 KEEP = {
     "p/grokbuild-pr8345-terminal-20260902-01.md": "baae9aaf",
-    "test_grokbuild_pr8345_terminal.py": "9967129f",
+    "test_grokbuild_pr8345_terminal.py": "6da965b8",
     "host/harborline_pack_market_render.py": "cc9a3320",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
-    "test_harborline_pack_market_render.py": "5ba443dd",
+    "test_harborline_pack_market_render.py": "76ba2366",
 }
 
 

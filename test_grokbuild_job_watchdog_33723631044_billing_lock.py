@@ -30,7 +30,7 @@ KEEP = {
     "p/grok-build-job-watchdog-33718116277-billing-lock-20260903-01.md": "664bd6de",
     "p/grok-build-job-watchdog-33717741080-billing-lock-20260903-01.md": "f3afb926",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "297f868b",
+    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "5d77b1cd",
     "p/grok-build-repo-pulse-billing-lock-20260903-01.md": "b6e5953c",
 }
 
