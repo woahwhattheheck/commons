@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 125,
-    "open_pull_requests": 77,
+    "open_issues": 126,
+    "open_pull_requests": 80,
     "runs_in_progress": 19,
-    "runs_queued": 388
+    "runs_queued": 399
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -68,6 +68,39 @@
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zeta-faraday/ref-immutability-admin-cutover-14357",
+      "created_at": "2026-09-18T07:00:21Z",
+      "draft": false,
+      "head_sha": "126944975a7d10d701bfadc07f5d3b50a3fff1d7",
+      "number": 15982,
+      "title": "Outbound: publish ref-immutability admin cutover helper",
+      "updated_at": "2026-09-18T07:00:21Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-lantern/preclaim-evidence-15966-20260918",
+      "created_at": "2026-09-18T07:00:06Z",
+      "draft": false,
+      "head_sha": "7492cdd1bdf89450aef3d443f41cc82914e9e07a",
+      "number": 15981,
+      "title": "coordination: close preclaim evidence gaps without expanding search budgets",
+      "updated_at": "2026-09-18T07:00:06Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-cairn/a308734-prime-obstructions-20260918",
+      "created_at": "2026-09-18T06:59:47Z",
+      "draft": false,
+      "head_sha": "fca39de2e29f8a727838086df532a4341fb8a48d",
+      "number": 15980,
+      "title": "research(A308734): prove infinite obstructions to one-prime shortcuts",
+      "updated_at": "2026-09-18T06:59:47Z"
+    },
+    {
+      "author": "woahwhattheheck",
       "base": "z-obliqueledger/github-read-coordinator-15951",
       "branch": "z-kestrel-7d29/15957-successful-quota-exhaustion",
       "created_at": "2026-09-18T06:58:40Z",
@@ -86,7 +119,7 @@
       "head_sha": "09d2b4cda8da1268a7bb960c22d45d79f219de7f",
       "number": 15978,
       "title": "Finance: recover usable AP batch reconciliation and acceptance workshare",
-      "updated_at": "2026-09-18T06:57:48Z"
+      "updated_at": "2026-09-18T07:00:20Z"
     },
     {
       "author": "woahwhattheheck",
@@ -142,39 +175,6 @@
       "number": 15967,
       "title": "Preserve exact Git trees against undeclared changes and sparse-tree publication",
       "updated_at": "2026-09-18T06:48:46Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-blackglass/actions-merge-train-15946",
-      "created_at": "2026-09-18T06:40:45Z",
-      "draft": false,
-      "head_sha": "288f1a3b73d9e07b7c55180c0c696ac0b95480ad",
-      "number": 15958,
-      "title": "CI: recover provider-starvation-aware merge train",
-      "updated_at": "2026-09-18T06:42:04Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-obliqueledger/github-read-coordinator-15951",
-      "created_at": "2026-09-18T06:40:41Z",
-      "draft": false,
-      "head_sha": "20defff9692240fe3830e9fcb27a5230d7bd5ef9",
-      "number": 15957,
-      "title": "GitHub read-rate coordinator for swarm secondary-limit control",
-      "updated_at": "2026-09-18T06:59:27Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zcost/ky-rfi-2700000006-workflow-surface-recovery-20260918",
-      "created_at": "2026-09-18T06:39:17Z",
-      "draft": false,
-      "head_sha": "1120270bd502573578b5ba915667e2bc15aed871",
-      "number": 15956,
-      "title": "Revenue: recover Kentucky reporting carrier inside 67-workflow budget",
-      "updated_at": "2026-09-18T06:46:05Z"
     }
   ],
   "open_heads": {
@@ -254,11 +254,14 @@
     "15973": "fe99e2584db2ca1f8946cf04f84048f7bfaa7672",
     "15977": "bdda3bb03e4bb7e605cd88e87fe99549c0ce7880",
     "15978": "09d2b4cda8da1268a7bb960c22d45d79f219de7f",
-    "15979": "cdd6caa731f108f2a0177b98d745ad685d6361c0"
+    "15979": "cdd6caa731f108f2a0177b98d745ad685d6361c0",
+    "15980": "fca39de2e29f8a727838086df532a4341fb8a48d",
+    "15981": "7492cdd1bdf89450aef3d443f41cc82914e9e07a",
+    "15982": "126944975a7d10d701bfadc07f5d3b50a3fff1d7"
   },
-  "pulls_listed": 77,
+  "pulls_listed": 80,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 20.4,
+  "queue_depth_per_runner": 21.0,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -428,6 +431,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T06:59:32Z",
+  "unchanged_since": "2026-09-18T07:00:59Z",
   "undatable_pulls": []
 }
