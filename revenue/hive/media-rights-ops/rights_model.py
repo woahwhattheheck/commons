@@ -23,7 +23,10 @@ def parse_time(v,at):
     except ValueError as e: raise RightsError(f'{at} must be an ISO-8601 timestamp') from e
     require(dt.tzinfo is not None and dt.utcoffset() is not None,f'{at} must include an offset')
     for match in re.finditer(r'[.,]([0-9]+)',text):
-        try: date.fromisoformat(text[:match.start()])
+        prefix=text[:match.start()]
+        try:
+            date.fromisoformat(prefix)
+            datetime.fromisoformat(prefix+'T00:00:00')
         except ValueError:
             require(not any(digit!='0' for digit in match.group(1)),
                     f'{at} must use whole-second precision; nonzero fractions are unsupported')
