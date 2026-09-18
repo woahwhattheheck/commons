@@ -842,28 +842,63 @@ verify_guard = _make_verify_guard(
     _PROCESS_TIMEZONE.utc,
 )
 
-def _write(path: Path, value: Any) -> None:
-    path.write_text(json.dumps(value, sort_keys=True, indent=2, ensure_ascii=True, allow_nan=False) + "\n", encoding="utf-8")
+def _make_write(_json_dumps, _write_text):
+    def _write(path: Path, value: Any) -> None:
+        text = _json_dumps(
+            value,
+            sort_keys=True,
+            indent=2,
+            ensure_ascii=True,
+            allow_nan=False,
+        ) + "\n"
+        _write_text(path, text, encoding="utf-8")
+
+    return _write
 
 
-def main(argv: Sequence[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    sub = parser.add_subparsers(dest="command", required=True)
-    cp = sub.add_parser("compile")
-    cp.add_argument("packet", type=Path)
-    cp.add_argument("output", type=Path)
-    vp = sub.add_parser("verify")
-    vp.add_argument("packet", type=Path)
-    vp.add_argument("artifact", type=Path)
-    args = parser.parse_args(argv)
-    if args.command == "compile":
-        artifact = compile_guard(load_json(args.packet))
-        _write(args.output, artifact)
-        print(artifact["receipt_sha256"])
+_write = _make_write(json.dumps, Path.write_text)
+
+
+def _make_main(
+    _compile_guard_fn,
+    _verify_guard_fn,
+    _load_json_fn,
+    _write_fn,
+    _argument_parser_cls,
+    _path_cls,
+    _description,
+):
+    def main(argv: Sequence[str] | None = None) -> int:
+        parser = _argument_parser_cls(description=_description)
+        sub = parser.add_subparsers(dest="command", required=True)
+        cp = sub.add_parser("compile")
+        cp.add_argument("packet", type=_path_cls)
+        cp.add_argument("output", type=_path_cls)
+        vp = sub.add_parser("verify")
+        vp.add_argument("packet", type=_path_cls)
+        vp.add_argument("artifact", type=_path_cls)
+        args = parser.parse_args(argv)
+        if args.command == "compile":
+            artifact = _compile_guard_fn(_load_json_fn(args.packet))
+            _write_fn(args.output, artifact)
+            print(artifact["receipt_sha256"])
+            return 0
+        _verify_guard_fn(_load_json_fn(args.packet), _load_json_fn(args.artifact))
+        print("OK")
         return 0
-    verify_guard(load_json(args.packet), load_json(args.artifact))
-    print("OK")
-    return 0
+
+    return main
+
+
+main = _make_main(
+    compile_guard,
+    verify_guard,
+    load_json,
+    _write,
+    argparse.ArgumentParser,
+    Path,
+    __doc__,
+)
 
 
 if __name__ == "__main__":
