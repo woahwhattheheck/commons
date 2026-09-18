@@ -25,13 +25,13 @@ A credible prime must independently prove the buyer-required facts. A bounded TJ
 `qualification.py` deliberately separates:
 
 1. **Discovery input** — useful for research, never controlling buyer authority.
-2. **Source-owned buyer roots** — exact buyer documents whose leaf id and SHA-256 are admitted by reviewed source code.
-3. **Source-owned qualification evidence** — exact owner/partner evidence whose id and SHA-256 are admitted by reviewed source code.
-4. **Untrusted runtime packet** — may point at evidence, but cannot mint its authority class.
+2. **Source-owned buyer roots** — exact buyer descriptor generations whose full identity, authority class, artifact SHA-256, effective time, deadline, and solicitation identity are pinned by reviewed source code.
+3. **Source-owned qualification evidence** — exact evidence descriptor generations whose id, party, gate, and artifact SHA-256 are pinned by reviewed source code.
+4. **Untrusted runtime packet** — may point at evidence but cannot relabel a trusted SHA into a different deadline, party, gate, or authority class.
 
-Production trusted roots intentionally start empty. The first safe state is therefore `HOLD_MISSING_BUYER_SOURCE`. Future positive evidence requires a reviewed source mutation that pins the exact source/evidence digest.
+Production trusted roots intentionally start empty. The first safe state is therefore `HOLD_MISSING_BUYER_SOURCE`. Future positive evidence requires a reviewed source mutation that pins the **entire** source/evidence descriptor generation, not merely an id→hash association.
 
-The Python process is trusted. Untrusted JSON/runtime input, source/evidence transplant, caller-selected time, and self-authored authority labels are inside the threat boundary.
+The production engine captures a real UTC process clock at import-time generation construction; runtime packets cannot backdate evaluation to evade the deadline. The Python process is trusted. Untrusted JSON/runtime input, descriptor transplant/relabeling, caller-selected time, and self-authored authority labels are inside the threat boundary.
 
 ## Public-surface rule
 
@@ -42,7 +42,7 @@ Do **not** put links to `woahwhattheheck/commons`, Commons Pages, raw/API/codelo
 Before any READY state:
 
 - retain the current official BidNet solicitation, SOW, addenda, submission instructions, budget template, contract/security/insurance exhibits, and Q&A if any;
-- hash exact bytes and add their reviewed source-owned leaf/digest admissions;
+- hash exact bytes and add their reviewed source-owned full descriptor generations;
 - bind the exact current deadline and supersession generation;
 - qualify a real prime/team using retained evidence;
 - bind commercial terms and owner/signatory facts;
