@@ -170,6 +170,19 @@ class CompletionProjectionTests(unittest.TestCase):
         with self.assertRaises(cp.CompletionEvidenceError):
             cp.write_marker(self.root, marker, lambda _sha: False)
 
+    def test_ancestry_verifier_must_return_literal_true_and_exceptions_fail_closed(self):
+        marker = cp.build_marker(self.root, OP, self.issue, self.pr)
+        path = self.root / cp.marker_rel(OP)
+        path.parent.mkdir(parents=True)
+        path.write_text(json.dumps(marker), encoding="utf-8")
+        self.assertFalse(cp.marker_is_valid(self.root, marker, lambda _sha: 1))
+
+        def boom(_sha):
+            raise RuntimeError("verifier unavailable")
+
+        self.assertFalse(cp.marker_is_valid(self.root, marker, boom))
+        self.assertEqual(frozenset(), cp.completed_operation_ids(self.root, boom))
+
     def test_marker_binds_git_blob_identity(self):
         marker = cp.build_marker(self.root, OP, self.issue, self.pr)
         expected = git_blob_sha1(self.source.read_bytes())
@@ -210,6 +223,8 @@ class CheckedInPredecessorTests(unittest.TestCase):
             publisher,
         )
         self.assertIn("remove_markers_for_issue(ROOT, number)", publisher)
+        self.assertIn("operation_id = completion_projection.stable_operation_id_from_issue(issue)", publisher)
+        self.assertIn("def _completion_marker_for_closed_issue(issue):", publisher)
         self.assertIn("_completion_merge_is_ancestor", publisher)
         self.assertIn('action in ("closed", "reopened")', publisher)
 
