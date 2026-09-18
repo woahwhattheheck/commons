@@ -21,7 +21,7 @@ Removing only a signed adverse row changes the census digest and invalidates the
 
 The host key is never accepted from packet/API/CLI arguments and is never emitted. Receipts retain only SHA-256 of the active key. The compiler intentionally has no signing CLI: an evidence authority must authenticate source facts and census completeness outside the packet-ingest path, then issue the tags.
 
-**Initialization boundary:** `PAYOFF_PATH_EVIDENCE_AUTHORITY_KEY_HEX` must be present and valid **before the payoff-path module/process is imported or the CLI process starts**. The module samples that authority generation once and public compile/verify paths retain the immutable decoded key. Changing, removing, or corrupting the environment variable after initialization does not rotate signing authority. Rotation requires a fresh trusted process/module initialization; an in-process environment write is never authority.
+**Initialization boundary:** `PAYOFF_PATH_EVIDENCE_AUTHORITY_KEY_HEX` must be present and valid **before the payoff-path module/process is imported or the CLI process starts**. The module samples that authority generation once into a private closure-owned trust generation used by evidence-tag validation and public compile/verify paths. The decoded key is not retained in public or trust-bearing function defaults/kwdefaults or as a module-global authority binding. Changing, removing, or corrupting the environment variable after initialization does not rotate signing authority. Rotation requires a fresh trusted process/module initialization; an in-process environment write is never authority. Ordinary module-name and function-default replacement is in scope and must not replace the captured evidence authority. Direct closure-cell/code-object rewriting or arbitrary interpreter-memory inspection is outside this in-process boundary; callers requiring that threat model must be isolated in another process.
 
 ## Bounded strategic/product conversion
 
@@ -39,7 +39,7 @@ Both parsed JSON and direct Python-object ingress are bounded before policy eval
 - maximum JSON nesting depth and total graph-node budget;
 - recursive overflow normalized to `GateError` rather than leaking raw `RecursionError`.
 
-Canonicalization and trust-bearing validators/compilers retain their intended dependency generation rather than re-resolving mutable module globals.
+Canonicalization and trust-bearing validators/compilers retain their intended dependency generation rather than re-resolving mutable module globals. Public ingress and verification surfaces are exact-signature APIs: `loads_strict_json(raw)`, `verify_integrity(packet, receipt)`, `compile_current(packet)`, and `verify_current(packet, receipt)` do not accept caller-selected parser/compiler/verifier dependencies.
 
 ## Authority ceiling
 
