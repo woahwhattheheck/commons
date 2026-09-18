@@ -527,6 +527,10 @@ def _workflow_event_paths(text: str) -> dict[str, tuple[str, ...]]:
             line = lines[row]
             if line.strip() and not line.lstrip().startswith("#"):
                 indent = len(line) - len(line.lstrip(" "))
+                if indent == 4 and line.lstrip().startswith("paths-ignore:"):
+                    raise LifecycleError(
+                        f"lifecycle workflow paths-ignore is forbidden for event: {event}"
+                    )
                 if indent == 4 and line.lstrip().startswith("paths:"):
                     if found is not None:
                         raise LifecycleError(
@@ -557,7 +561,13 @@ def _workflow_event_paths(text: str) -> dict[str, tuple[str, ...]]:
                                     f"unsupported lifecycle workflow path item for event: "
                                     f"{event}"
                                 )
-                            values.append(item_match.group(1).replace("''", "'"))
+                            value = item_match.group(1).replace("''", "'")
+                            if value.startswith("!"):
+                                raise LifecycleError(
+                                    f"negative lifecycle workflow path filter is forbidden "
+                                    f"for event {event}: {value}"
+                                )
+                            values.append(value)
                             probe += 1
                         if not values:
                             raise LifecycleError(
