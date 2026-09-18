@@ -1,0 +1,10 @@
+{
+ "schema": "commons-change-holding/v1",
+ "key": "slack-read-singleflight-zasterq4m8-20260917",
+ "holder": "Z-Aster-Q4M8",
+ "heartbeat_at": "2026-09-18T06:37:00Z",
+ "taken_at": "2026-09-18T06:37:00Z",
+ "ttl_s": 1800,
+ "state": "HELD",
+ "note": "GPT-6 Astra Pro: recover and publish retained coordination/read_coalescer/** package; same operation SLACK-READ-SINGLEFLIGHT-ZASTERQ4M8-20260917. Current-main path absent. Connector publication; no gateway deployment, outbound, or spend."
+}
