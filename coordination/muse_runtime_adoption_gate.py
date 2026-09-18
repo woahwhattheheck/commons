@@ -657,4 +657,14 @@ def _build_api():
             if not s_isreg(st.st_mode) or st.st_size < 0 or st.st_size > max_input_bytes:
                 fail("retained file must be bounded regular file")
             chunks = []
-            re
+            remaining = st.st_size
+            while remaining:
+                chunk = os_read(fd, min(65536, remaining))
+                if not chunk:
+                    fail("retained file truncated during read")
+                chunks.append(chunk)
+                remaining -= len(chunk)
+            if os_read(fd, 1):
+                fail("retained file grew during read")
+            after = os_fstat(fd)
+            if (after.st_dev, after.st_ino, after.st_size, after.st_mtime_ns, after.st_ctime_ns) != (
