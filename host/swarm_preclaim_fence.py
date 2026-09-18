@@ -140,22 +140,31 @@ def finalize(report):
     return out
 
 
+def _search_limit(limit):
+    # Slack's legacy endpoint supports at most 100 pages of 100 rows.
+    if type(limit) is not int or not 1 <= limit <= 10000:
+        raise EvidenceError("Slack search limit must be an integer from 1 to 10000")
+    return min(100, limit)
+
+
 class SlackSearch:
-    """Read-only Slack ``search.messages`` client with full-tail paging."""
+    """Read-only bounded search; partial results are never absence evidence."""
 
     def __init__(self, token):
         self.token = token.strip()
 
     def search(self, query, limit=1000):
+        count = _search_limit(limit)
         if not self.token:
             raise EvidenceError(
                 "Slack search token missing; set SLACK_USER_TOKEN/SLACK_TOKEN "
                 "or pass --slack-evidence"
             )
-        out, page = [], 1
-        while len(out) < limit:
+        out, seen, snapshot = [], set(), None
+        # Keep count fixed: page offsets depend on it, including the last page.
+        for page in range(1, (limit + count - 1) // count + 1):
             params = urllib.parse.urlencode(
-                {"query": query, "count": min(100, limit - len(out)), "page": page}
+                {"query": query, "count": count, "page": page}
             )
             req = urllib.request.Request(
                 "https://slack.com/api/search.messages?" + params,
@@ -171,32 +180,98 @@ class SlackSearch:
                 raise EvidenceError(
                     f"Slack search failed for {query!r}: {exc}"
                 ) from exc
-            if not payload.get("ok"):
-                raise EvidenceError(
-                    f"Slack search failed for {query!r}: "
-                    f"{payload.get('error', 'unknown_error')}"
-                )
-            messages = payload.get("messages") or {}
-            matches = messages.get("matches") or []
+            if not isinstance(payload, dict) or payload.get("ok") is not True:
+                error = payload.get("error", "invalid_response") if isinstance(payload, dict) else "invalid_response"
+                raise EvidenceError(f"Slack search failed for {query!r}: {error}")
+            messages = payload.get("messages")
+            if not isinstance(messages, dict):
+                raise EvidenceError("Slack search messages must be an object")
+            matches, paging = messages.get("matches"), messages.get("paging")
+            if not isinstance(matches, list) or not isinstance(paging, dict):
+                raise EvidenceError("Slack search requires matches and explicit paging")
+            for field in ("count", "page", "pages", "total"):
+                if type(paging.get(field)) is not int or paging[field] < 0:
+                    raise EvidenceError(f"Slack search invalid paging.{field}")
+            total, pages = paging["total"], paging["pages"]
+            if paging["count"] != count or paging["page"] != page:
+                raise EvidenceError("Slack search returned a different page or page width")
+            expected_pages = (total + count - 1) // count
+            if pages != expected_pages and not (total == 0 and pages == 1):
+                raise EvidenceError("Slack search page count contradicts total")
+            if "total" in messages and (
+                type(messages["total"]) is not int or messages["total"] != total
+            ):
+                raise EvidenceError("Slack search totals disagree")
+            if "pagination" in messages:
+                secondary = messages["pagination"]
+                pairs = (("page", page), ("per_page", count),
+                         ("page_count", pages), ("total_count", total))
+                if not isinstance(secondary, dict) or any(
+                    type(secondary.get(key)) is not int or secondary[key] != value
+                    for key, value in pairs
+                ):
+                    raise EvidenceError("Slack search pagination objects disagree")
+            if snapshot is not None and snapshot != (total, pages):
+                raise EvidenceError("Slack search paging changed during collection")
+            snapshot = (total, pages)
+            if total > limit:
+                raise EvidenceError(f"Slack search exceeds {limit}-result budget; tail not collected")
+            expected_rows = min(count, max(0, total - (page - 1) * count))
+            if len(matches) != expected_rows:
+                raise EvidenceError("Slack search page is incomplete or inconsistent")
             for match in matches:
-                channel = match.get("channel") or {}
+                if not isinstance(match, dict) or not isinstance(match.get("channel"), dict):
+                    raise EvidenceError("Slack search malformed message/channel")
+                channel = match["channel"]
+                identity = channel.get("id") or channel.get("name")
+                ts = match.get("ts")
+                if not isinstance(identity, str) or not identity or not isinstance(ts, str) or not ts:
+                    raise EvidenceError("Slack search message lacks channel/timestamp identity")
+                if not isinstance(match.get("text"), str):
+                    raise EvidenceError("Slack search message text must be a string")
+                key = (identity, ts)
+                if key in seen:
+                    raise EvidenceError("Slack search repeated a message; coverage is incomplete")
+                seen.add(key)
                 out.append(
                     {
                         "query": query,
-                        "ts": match.get("ts"),
-                        "channel": channel.get("name") or channel.get("id"),
+                        "ts": ts,
+                        "channel": channel.get("name") or identity,
                         "username": match.get("username"),
                         "permalink": match.get("permalink"),
-                        "text": match.get("text") or "",
+                        "text": match["text"],
                     }
                 )
-                if len(out) >= limit:
-                    break
-            pages = int((messages.get("paging") or {}).get("pages") or 1)
-            if not matches or page >= pages:
-                break
-            page += 1
-        return out
+            if page >= pages:
+                if len(out) != total:
+                    raise EvidenceError("Slack search did not collect the reported total")
+                return out
+        raise EvidenceError("Slack search budget exhausted before completion")
+
+
+class OfflineSlack:
+    """Explicit query-to-hit mapping; a missing query is missing evidence."""
+
+    def __init__(self, evidence):
+        self.evidence = evidence
+
+    def search(self, query, limit=1000):
+        _search_limit(limit)
+        if not isinstance(self.evidence, dict) or query not in self.evidence:
+            raise EvidenceError(f"offline Slack evidence missing query {query!r}")
+        hits = self.evidence[query]
+        if not isinstance(hits, list) or len(hits) > limit:
+            raise EvidenceError(f"offline Slack query {query!r} requires a bounded hit list")
+        for hit in hits:
+            if not isinstance(hit, dict) or not isinstance(hit.get("text"), str):
+                raise EvidenceError(f"offline Slack query {query!r} has malformed hits")
+            if hit.get("custody") is not None and type(hit["custody"]) is not bool:
+                raise EvidenceError("offline Slack custody must be boolean or null")
+            for key in ("channel", "ts", "query", "username", "permalink"):
+                if hit.get(key) is not None and not isinstance(hit[key], str):
+                    raise EvidenceError(f"offline Slack hit {key} must be a string or null")
+        return [dict(hit) for hit in hits]
 
 
 def _dedupe(hits):
@@ -317,6 +392,10 @@ def _pull(github, repo, number):
 
 def _issue(github, repo, number):
     issue = github.rest(f"/repos/{repo}/issues/{number}")
+    if not isinstance(issue, dict) or "pull_request" in issue:
+        raise EvidenceError(
+            f"{repo}#{number} is not an ordinary issue; PR evidence must be collected"
+        )
     cross = []
     for page in range(1, MAX_PR_FILE_PAGES + 1):
         batch = github.rest(
@@ -451,7 +530,11 @@ def _references_target(text, target):
         f"https://github.com/{repo}/issue/{n}",
         f"https://github.com/{repo}/issues/{n}",
     )
-    return any(needle in lowered for needle in needles)
+    # Neither an embedded repository name nor a longer issue number is exact.
+    return any(
+        re.search(r"(?<![\w./-])" + re.escape(needle) + r"(?![\w-])", lowered)
+        for needle in needles
+    )
 
 
 def collect_owner_pr_census(
@@ -699,11 +782,7 @@ def main(argv=None):
             with open(args.slack_evidence, encoding="utf-8") as fh:
                 evidence = json.load(fh)
 
-            class OfflineSlack:
-                def search(self, query, limit=1000):
-                    return list(evidence.get(query, []))
-
-            slack = OfflineSlack()
+            slack = OfflineSlack(evidence)
         else:
             token = (
                 args.slack_token
