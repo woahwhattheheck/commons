@@ -22,6 +22,11 @@ TIP_PATHS = (
     "plant-downtime-handoff.html",
 )
 LARGER_PATHS = ("diagnostic.html", "commercial.html")
+# Measured on current main after #16032: autopsy live-cash-v1 is already
+# absent, so baseline is the door with remaining successors reversed.
+CURRENT_DOOR_BLOB = "9db77016"
+CURRENT_DOOR_BASELINE_BLOB = "7aa7d2a8"
+STALE_POST_SWEEP_BASELINE_BLOB = "8f173c7f"
 
 
 class TestGoatSidewalkDoorLiveCashV1KeepLargerFixed2026091601(unittest.TestCase):
@@ -59,7 +64,11 @@ class TestGoatSidewalkDoorLiveCashV1KeepLargerFixed2026091601(unittest.TestCase)
 
     def test_normalization_still_recovers_baseline_blob(self) -> None:
         result = match.classify_match()
-        self.assertEqual(result["door_baseline_blob"], "8f173c7f")
+        obs = match.normalized_observation(match.DOOR_REL)
+        self.assertEqual(result["door_blob"], CURRENT_DOOR_BLOB)
+        self.assertEqual(result["door_baseline_blob"], CURRENT_DOOR_BASELINE_BLOB)
+        self.assertEqual(obs["baseline_blob"], CURRENT_DOOR_BASELINE_BLOB)
+        self.assertNotEqual(result["door_baseline_blob"], STALE_POST_SWEEP_BASELINE_BLOB)
         self.assertNotIn("live-cash-v1", result["door_successors"])
         self.assertEqual(result["checkout"], "NOT_MINTED")
         self.assertGreater(result["door_size"], 8148)
