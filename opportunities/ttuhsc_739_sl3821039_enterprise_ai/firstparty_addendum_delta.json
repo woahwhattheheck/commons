@@ -1,0 +1,103 @@
+{
+  "schema": "tjlabs.ttuhsc-739-sl3821039-firstparty-delta/v1",
+  "solicitation": "739-SL3821039",
+  "observed_date_utc": "2026-09-18",
+  "authority_rule": "This receipt records first-party buyer content recovered anonymously from Texas SmartBuy ESBD. It does not replace the canonical raw-byte/SHA generation gate or bidder-vault evidence.",
+  "detail_endpoint": "https://www.txsmartbuy.gov/app/extensions/CPA/CPAMain/1.0.0/services/ESBD.Details.Service.ss?urlRoot=esbd&identification=739-SL3821039",
+  "public_detail_page": "https://www.txsmartbuy.gov/esbd/739-SL3821039",
+  "observed_status": "Addendum Posted",
+  "observed_last_modified": "8/28/2026 4:29 pm",
+  "attachments": [
+    {
+      "kind": "RFP",
+      "file_id": "33617565",
+      "filename": "ESBD_549115_1786718523037_RFP 739-SL3821039 - Consulting Services - Enterprise AI Adoption & Enablement.pdf",
+      "pages_observed": 41,
+      "anonymous_content_read": true,
+      "raw_bytes_retained": false,
+      "sha256": null
+    },
+    {
+      "kind": "VENDOR_QUESTIONS_ADDENDUM",
+      "file_id": "33673094",
+      "filename": "ESBD_549115_1787952589881_Addendum - Vendor Questions RFP 739-SL3821039 - Consulting Services - Enterprise AI Adoption Enablement.pdf",
+      "anonymous_content_read": true,
+      "raw_bytes_retained": false,
+      "sha256": null
+    }
+  ],
+  "controlling_deltas": {
+    "deadline_local": "2026-09-21 16:30 CT",
+    "total_cost_not_to_exceed_usd": 750000,
+    "planning_schedule": {
+      "kickoff": "2027-02",
+      "deliverable_1": "2027-04",
+      "deliverable_2": "2027-04",
+      "deliverable_3": "2027-09",
+      "deliverable_4": "2027-09",
+      "deliverable_5": "2027-12",
+      "deliverable_6": "2028-02",
+      "buyer_note": "Planning dates may change; TTUHSC will work collaboratively to construct a contract term that accommodates completion."
+    },
+    "change_order_rate_card_valid_through": "2028-03-31",
+    "workflow_volume": {
+      "approximate_total": "8-10",
+      "functional_areas": [
+        "Academic",
+        "Clinical",
+        "Research",
+        "Admin"
+      ],
+      "buyer_expectation": "At least two workflows/use cases from each functional area; solutions should be pilot-ready or fully production-ready."
+    },
+    "workforce_scale": {
+      "employees_approx": 6000,
+      "leaders_approx": "150-200",
+      "initial_rollout_approx": 3000
+    },
+    "environment": {
+      "enterprise": "Microsoft",
+      "deployed_enterprise_genai": "Microsoft Copilot",
+      "lms_present": true,
+      "available_patterns": [
+        "Microsoft 365",
+        "Azure",
+        "Power BI",
+        "SharePoint",
+        "intranet"
+      ]
+    },
+    "governance": {
+      "align_to": [
+        "NIST AI Risk Management Framework",
+        "Texas DIR framework"
+      ],
+      "build_on": [
+        "TTUHSC OP 52.21",
+        "active AI tool inventory"
+      ]
+    },
+    "tx_ramp": {
+      "buyer_rule": "Applies to hosted cloud computing services (SaaS/PaaS/IaaS).",
+      "managed_service_boundary": "Buyer says a service inside TTUHSC-approved infrastructure with no contractor-hosted cloud and no institutional data leaving TTUHSC-controlled systems would not require TX-RAMP under the stated boundary; actual proposal architecture still controls applicability."
+    },
+    "subcontracting": {
+      "identify_named_partner_at_submission": true,
+      "prior_written_approval_required": true,
+      "evaluation_treatment": "neutral"
+    },
+    "incumbent": {
+      "consulting_integrator_present": false
+    }
+  },
+  "readiness": {
+    "first_party_content_verified": true,
+    "first_party_packet_bytes_retained": false,
+    "first_party_packet_sha256": null,
+    "complete_generation_bound": false,
+    "bidder_vault_complete": false,
+    "external_submission_authorized": false,
+    "canonical_hold_preserved": true
+  },
+  "sanitization": "Attachment signed/session URL query material is intentionally omitted; only public detail endpoints, buyer file IDs and filenames are retained."
+}
