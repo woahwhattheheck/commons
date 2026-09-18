@@ -16,7 +16,7 @@ import json
 import os
 import re
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 SCHEMA = "commons-completed-operation-v1"
 STATE = "COMPLETED"
@@ -165,9 +165,13 @@ def build_marker(
     }
 
 
-def write_marker(root: str | os.PathLike[str], marker: dict[str, Any]) -> str:
+def write_marker(
+    root: str | os.PathLike[str],
+    marker: dict[str, Any],
+    ancestor_verifier: Callable[[str], bool] | None = None,
+) -> str:
     operation_id = _clean_id(marker.get("operation_id"))
-    if not marker_is_valid(root, marker):
+    if not marker_is_valid(root, marker, ancestor_verifier):
         raise CompletionEvidenceError("refusing to write invalid completion marker")
     path = Path(root) / marker_rel(operation_id)
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -198,7 +202,45 @@ def remove_marker(
     return True
 
 
-def marker_is_valid(root: str | os.PathLike[str], row: Any) -> bool:
+def remove_markers_for_issue(
+    root: str | os.PathLike[str],
+    issue_number: int,
+) -> tuple[str, ...]:
+    """Invalidate retained completion evidence on reopen by canonical issue id.
+
+    Reopen safety must not depend on the current issue title/body still carrying
+    the operation id that was present when completion was recorded.
+    """
+    if (
+        not isinstance(issue_number, int)
+        or isinstance(issue_number, bool)
+        or issue_number < 1
+    ):
+        return ()
+    removed: list[str] = []
+    for rel in source_paths(root):
+        path = Path(root) / rel
+        try:
+            row = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, UnicodeError, json.JSONDecodeError):
+            continue
+        issue = row.get("issue") if isinstance(row, dict) else None
+        if not isinstance(issue, dict) or issue.get("number") != issue_number:
+            continue
+        operation_id = str(row.get("operation_id") or "")
+        try:
+            path.unlink()
+        except OSError:
+            continue
+        removed.append(operation_id)
+    return tuple(sorted(removed))
+
+
+def marker_is_valid(
+    root: str | os.PathLike[str],
+    row: Any,
+    ancestor_verifier: Callable[[str], bool] | None = None,
+) -> bool:
     if not isinstance(row, dict):
         return False
     try:
@@ -221,7 +263,15 @@ def marker_is_valid(root: str | os.PathLike[str], row: Any) -> bool:
         merged_at = str(merge.get("merged_at") or "")
         if merge.get("base") != "main" or not merged_at or merged_at > closed_at:
             return False
-        if not HEX40_RE.fullmatch(str(merge.get("merge_commit_sha") or "").lower()):
+        merge_commit_sha = str(merge.get("merge_commit_sha") or "").lower()
+        if not HEX40_RE.fullmatch(merge_commit_sha):
+            return False
+        if ancestor_verifier is None:
+            return False
+        try:
+            if ancestor_verifier(merge_commit_sha) is not True:
+                return False
+        except Exception:
             return False
         pr_number = merge.get("pr_number")
         if not isinstance(pr_number, int) or isinstance(pr_number, bool) or pr_number < 1:
@@ -242,7 +292,10 @@ def marker_is_valid(root: str | os.PathLike[str], row: Any) -> bool:
         return False
 
 
-def completed_operation_ids(root: str | os.PathLike[str]) -> frozenset[str]:
+def completed_operation_ids(
+    root: str | os.PathLike[str],
+    ancestor_verifier: Callable[[str], bool] | None = None,
+) -> frozenset[str]:
     completed: set[str] = set()
     for rel in source_paths(root):
         path = Path(root) / rel
@@ -250,7 +303,7 @@ def completed_operation_ids(root: str | os.PathLike[str]) -> frozenset[str]:
             row = json.loads(path.read_text(encoding="utf-8"))
         except (OSError, UnicodeError, json.JSONDecodeError):
             continue
-        if marker_is_valid(root, row):
+        if marker_is_valid(root, row, ancestor_verifier):
             completed.add(str(row["operation_id"]))
     return frozenset(completed)
 
