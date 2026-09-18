@@ -22,17 +22,17 @@ Controlling index:
 Base RFI:
 - https://www.tn.gov/content/dam/tn/generalservices/documents/cpo/rfi-updates/34201-02431/RFI_34201_02431_GMS.docx
 
-Amendment 1:
+Candidate amendment URL from the original handoff — **not verified from the controlling row in this review**:
 - https://www.tn.gov/content/dam/tn/generalservices/documents/cpo/rfi-updates/34201-02431/Amendment_1.docx
 
-Verified on the live State index on 2026-09-17:
+Fresh controlling-source review on 2026-09-17:
 - RFI 34201-02431 is **Grants Management System** for TEMA.
 - Original posting date: 2026-09-01.
-- Listing state: **UPDATED 2026-09-17**.
-- Current response due date: **2026-09-30**.
-- Amendment 1 is linked.
+- Tennessee CPO reports **LAST UPDATED: September 17, 2026 08:14 AM**.
+- Its currently retrievable row shows response due **2026-09-18** and does **not** expose an Amendment 1 link.
+- A current secondary listing reports **2026-09-30**. Deadline/amendment state is therefore **UNRESOLVED**.
 
-The original RFI schedule said 2026-09-18 at 3:00 PM Central. This lab therefore treats the live State index's Sep 30 date as current. The Amendment 1 DOCX body was not retrievable in this execution environment, so **no other amendment change is asserted**. Any later respondent must read Amendment 1 directly before sending or submitting anything.
+The base RFI schedule said 2026-09-18 at 3:00 PM Central. Until a controlling Tennessee source explicitly publishes a different deadline or amendment for this exact RFI, do not rely on a Sep-30 extension or unverified amendment content for outreach, questions, submission timing, or commercial commitments.
 
 Indexed base-RFI facts:
 - buyer: Tennessee Emergency Management Authority (TEMA);
@@ -99,7 +99,7 @@ Evidence:
 - https://eunasolutions.com/solutions/grants/
 
 Unknown until direct validation:
-TEMA-specific intent; disaster surge sizing; exact State payment-system fit; duplicate-detection semantics; accessibility evidence; e-signature/non-repudiation behavior; pricing; Amendment 1 fit; willingness to subcontract.
+TEMA-specific intent; disaster surge sizing; exact State payment-system fit; duplicate-detection semantics; accessibility evidence; e-signature/non-repudiation behavior; pricing; any verified amendment/update fit; willingness to subcontract.
 
 ### B. Submittable — unusually relevant disaster/Tennessee evidence
 
@@ -120,7 +120,7 @@ Evidence:
 - https://www.submittable.com/guides/government-grant-management-software-buyers-guide
 
 Unknown until direct validation:
-payment-system integration/reconciliation depth; duplicate detection across all four TEMA object classes; authenticated e-signature/non-repudiation; disaster surge capacity commitments; exact Tennessee enterprise relationship; Amendment 1 fit; subcontract appetite.
+payment-system integration/reconciliation depth; duplicate detection across all four TEMA object classes; authenticated e-signature/non-repudiation; disaster surge capacity commitments; exact Tennessee enterprise relationship; any verified amendment/update fit; subcontract appetite.
 
 ### C. SmartSimple Cloud for Government Funding
 
@@ -139,7 +139,7 @@ Evidence:
 - https://www.smartsimple.com/solution/grants-management-tracking-software
 
 Unknown until direct validation:
-TEMA/disaster scale references; State payment connector specifics; accessibility evidence; duplicate semantics; SLA/support details; Amendment 1 fit; subcontract appetite.
+TEMA/disaster scale references; State payment connector specifics; accessibility evidence; duplicate semantics; SLA/support details; any verified amendment/update fit; subcontract appetite.
 
 ## 5. Specialist acceptance package
 
@@ -218,9 +218,9 @@ No demo should imply production certification or State acceptance.
 ## 7. Prime qualification questions
 
 Ask a candidate OEM/prime only after Muse grants the single-writer slot:
-1. Are you actively evaluating/responding to TEMA RFI 34201-02431 after Amendment 1?
+1. Are you actively evaluating/responding to TEMA RFI 34201-02431, and have you independently confirmed any amendment or deadline extension?
 2. Can you truthfully cover every base-RFI item as prime, especially disaster surge, State payment integration, accessibility, e-signature/non-repudiation, implementation references and ongoing support?
-3. What changed in Amendment 1 beyond the public deadline?
+3. Have you independently retrieved any amendment for this exact RFI? If yes, what changed, including any deadline change?
 4. Which State payment/ERP integrations are production-supported today?
 5. What are your deterministic duplicate identities for applicant, project, application and payment?
 6. What current accessibility evidence can you supply?
@@ -240,7 +240,7 @@ Do **not** submit these from TJLabs under this operation. A qualified prime deci
 - Does duplicate detection need fuzzy/entity-resolution behavior or exact identity rules, and across which records?
 - What authenticated signature services are permitted/preferred?
 - What migration sources, data volumes and document repositories are anticipated?
-- What did Amendment 1 change beyond the response deadline?
+- Has an amendment been issued for this exact RFI, and if so what did it change, including the response deadline?
 - Will demonstrations use vendor data, State-provided synthetic cases, or both?
 
 ## 9. Commercial handoff
@@ -275,7 +275,7 @@ It does not authorize:
 - contract or revenue recognition.
 
 Before any external message:
-1. re-read Amendment 1;
+1. re-read the controlling Tennessee CPO row and any amendment independently verified for this exact RFI;
 2. refresh exact org/recipient/purpose/history across Slack/Gmail/GitHub;
 3. request Muse arbitration for the exact outbound;
 4. only the selected writer sends;
