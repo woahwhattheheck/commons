@@ -1,0 +1,96 @@
+{
+  "schema": "tjlabs.mcc-1017-27-pursuit/v1",
+  "opportunity": {
+    "solicitation_id": "1017-27",
+    "buyer": "Metropolitan Community College-Kansas City"
+  },
+  "secondary_discovery": {
+    "checked_at_utc": "2026-09-18T01:27:00Z",
+    "sources": [
+      {
+        "authority": "secondary",
+        "name": "Bidscope",
+        "url": "https://bidscopeai.com/opportunities/6abd32b5-0193-4bf8-9f86-c4d655c22fec"
+      },
+      {
+        "authority": "secondary",
+        "name": "HigherGov",
+        "url": "https://www.highergov.com/sl/contract-opportunity/mo-cloud-based-collaborative-ai-workspace-s-73998101/"
+      },
+      {
+        "authority": "secondary",
+        "name": "Govly",
+        "url": "https://app.govly.com/public/opportunities/17099639"
+      }
+    ],
+    "facts": {
+      "status": "OPEN_INDEXED",
+      "posted_date": "2026-09-14",
+      "questions_due": "2026-09-25 17:00 (timezone not buyer-authoritative in retained evidence)",
+      "proposal_due": "2026-10-05 16:00 (timezone not buyer-authoritative in retained evidence)",
+      "minimum_relevant_experience_years": 5,
+      "minimum_higher_education_references": 3,
+      "submission": "Public Purchase online portal",
+      "indexed_package_files": [
+        "Public Purchase - Vendor Response Instructions.docx",
+        "IFB 1017-27 Pricing Form.docx",
+        "1017-27 Bid Package (4) (4).docx"
+      ]
+    }
+  },
+  "buyer_authority": {
+    "package_complete": false,
+    "documents": [],
+    "addenda": [],
+    "q_and_a": [],
+    "controlling_dates": {
+      "questions_due_utc": null,
+      "proposal_due_utc": null
+    }
+  },
+  "prime_qualification": {
+    "verified_relevant_experience_years": 0,
+    "verified_higher_education_references": []
+  },
+  "partner_candidates": [
+    {
+      "name": "Presidio",
+      "state": "PUBLIC_FIT_ONLY",
+      "evidence": [
+        "https://www.presidio.com/how-we-help/industries/education/",
+        "https://www.presidio.com/who-we-are/newsroom-press/university-of-michigan-midas-taps-presidio-aws/"
+      ]
+    },
+    {
+      "name": "CDW",
+      "state": "PUBLIC_FIT_ONLY",
+      "evidence": [
+        "https://www.cdw.com/content/cdw/en/articles/dataanalytics/educause-2024-industry-partnerships-bring-large-language-models-to-life.html",
+        "https://www.cdw.com/content/cdw/en/articles/services/4-critical-security-considerations-ai-higher-education.html"
+      ]
+    },
+    {
+      "name": "SHI",
+      "state": "PUBLIC_FIT_ONLY",
+      "evidence": [
+        "https://www.shi.com/public-sector/higher-education"
+      ]
+    }
+  ],
+  "commercial": {
+    "proposed_fixed_fee_usd": 24000,
+    "status": "PROPOSED_NOT_ACCEPTED"
+  },
+  "external_authority": {
+    "buyer_contact": false,
+    "partner_contact": false,
+    "provider_mutation": false,
+    "proposal_submission": false,
+    "signature": false,
+    "award": false,
+    "invoice": false,
+    "payment": false,
+    "cash": false,
+    "revenue": false
+  }
+}
