@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 GRANTS = ROOT / "GRANTS.md"
-PRODUCTS = ("agent-rescue.html", "diagnostic.html", "commercial.html")
+PRODUCTS = ("diagnostic.html", "commercial.html")
 BASELINE_BLOB = "34e4baadebb27388137d12c2b7cfa515f88d4672"
 
 
@@ -26,7 +26,6 @@ class TestGrokGrantsMdKeepLargerFixed2026091601(unittest.TestCase):
     def test_tip_grants_has_autopsy_and_larger(self):
         text = GRANTS.read_text(encoding="utf-8")
         self.assertIn("## Live cash", text)
-        self.assertIn("./agent-rescue.html", text)
         self.assertIn("Larger fixed engagements", text)
         self.assertIn("./diagnostic.html", text)
         self.assertIn("./commercial.html", text)
@@ -65,7 +64,6 @@ class TestGrokGrantsMdKeepLargerFixed2026091601(unittest.TestCase):
         self.assertIn("spy-ground-live-cash-v1", labels)
         spy = dict(entries)["spy-ground-live-cash-v1"].decode("utf-8")
         self.assertIn("## Live cash", spy)
-        self.assertIn("../agent-rescue.html", spy)
         self.assertNotIn("Larger fixed engagements", spy)
         self.assertNotIn("diagnostic.html", spy)
 

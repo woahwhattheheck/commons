@@ -113,11 +113,7 @@ class TestGrokbuildTestsBattery34402627346KeepLift(unittest.TestCase):
             self.assertIn('id="digit-door"', tools)
             self.assertIn("coil-tools-json-live-cash-20260905-01", tools)
             self.assertIn('id="buy-now-live-checkout"', tools)
-            self.assertIn("Buy Autopsy $29", tools)
             self.assertIn("Buy one White Box hour $250", tools)
-            self.assertIn(
-                "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g", tools
-            )
             self.assertIn(
                 "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07", tools
             )

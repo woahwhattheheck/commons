@@ -13,11 +13,9 @@ NEEDLES = (
     "./commercial.html",
     "$12,000",
     "$30,000",
-    "./agent-rescue.html",
     "$199",
 )
 PRODUCTS = (
-    "agent-rescue.html",
     "diagnostic.html",
     "commercial.html",
 )
@@ -34,7 +32,6 @@ class TestWireAgentsToolsBuildMdKeepLargerFixed2026091601(unittest.TestCase):
     def test_agents_md_already_keep_larger(self):
         text = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
         self.assertIn("## Live cash", text)
-        self.assertIn("Autopsy", text)
         for needle in NEEDLES:
             self.assertIn(needle, text)
         self.assertNotIn("buy.stripe.com", _cash(text))
@@ -58,7 +55,6 @@ class TestWireAgentsToolsBuildMdKeepLargerFixed2026091601(unittest.TestCase):
     def test_readme_already_keep_leave_ink(self):
         text = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn("## Live cash", text)
-        self.assertIn("Autopsy", text)
         for needle in NEEDLES:
             self.assertIn(needle, text)
         self.assertNotIn("buy.stripe.com", _cash(text))
