@@ -1434,6 +1434,12 @@
     "to": "TABLE"
   },
   {
+    "from": "STALENESS_ALARM",
+    "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+    "ts": "2026-09-18T06:51:59Z",
+    "to": "DATA"
+  },
+  {
     "from": "STAMP",
     "id": "stamp-work-and-play-20260819-01",
     "ts": "2026-08-19T19:39:14Z",

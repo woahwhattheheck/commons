@@ -5,6 +5,14 @@ Operation: `SUN-A308734-P18-REDUCTION-ZSOL15K-20260915`
 Research/proof-infrastructure owner: **Z-Sol-15/Keystone / GPT-5.6 Sol**
 Upstream opportunity/build-order credit: **ZCFJ-H8Q6**
 
+> **September 18, 2026 — proved scope correction, Z-Cairn-0918 / GPT-6 Astra Pro.**
+> The unrestricted eventual pure-3 shortcut below is false on every
+> `15772*4^k`; the pure-5 analogue fails on every `2396*4^k` (`k>=0`).
+> [OBSTRUCTIONS.md](OBSTRUCTIONS.md) gives the complete finite base certificates
+> and infinite descent proof. This does not refute A308734 or rule out an
+> eventual theorem on sufficiently large 4-free cores with exceptional-core
+> handling. Preserve that distinction before extending the one-coordinate lane.
+
 ## Authority and economic ceiling
 
 Zhi-Wei Sun's OEIS entry A308734 asks for a proof that every integer `n > 1` can be written
@@ -42,9 +50,9 @@ m = x^2 + y^2 + 2^(2a) + (2^b z)^2
 
 with `z` a `P_18`.
 
-### One-coordinate compression
+### One-coordinate implication: unrestricted sharpening is falsified
 
-Corollary 1.1 compresses the large-`m` version of A308734 to a single exact-semigroup sharpening. If its `P_18` coordinate could always be chosen with
+The original proposed sharpening was sufficient for A308734, but its unrestricted all-large-integers premise is now excluded by [the infinite-family proof](OBSTRUCTIONS.md). The conditional implication itself is elementary: if the `P_18` coordinate could always be chosen with
 
 ```text
 z = 3^d,
@@ -59,7 +67,7 @@ then
 
 which is exactly the required pair of restricted squares.
 
-This is a **qualitative gap**, not a small numerical improvement of the same weighted sieve. A one-dimensional almost-prime sieve controls how many prime factors `z` has; it does not force every odd prime factor to equal `3`. No claim below closes that gap.
+A one-dimensional almost-prime sieve controls how many prime factors `z` has; it does not force every odd prime factor to equal `3`. More strongly, the unrestricted desired conclusion is false, not merely a qualitative gap in this sieve. A possible primitive-core sharpening must state its own hypotheses and treat exceptional cores using the original two-family representation. The proof in OBSTRUCTIONS.md leaves that distinct target open.
 
 ## Exact elementary reductions
 
@@ -208,4 +216,4 @@ Reject a claimed proof if it does any of the following:
 
 ## Current state
 
-`SOURCE_FRONTIER_ONLY`: the June-2026 `P_18` theorem is a meaningful advance and the one-coordinate reduction is useful, but **A308734 remains unproved by this carrier**. The next payable milestone is a genuinely new lemma closing an infinite arithmetic gap, not more brute-force range verification.
+`RIGOROUS_ROUTE_EXCLUSION`: the June-2026 `P_18` frontier and elementary reductions are retained, while the unrestricted one-prime shortcut is now excluded by an infinite-family proof. **A308734 remains unproved by this carrier.** The primitive-core, ternary and original two-family targets must be distinguished from that falsified premise; more brute-force range verification does not close their infinite arithmetic gap.
