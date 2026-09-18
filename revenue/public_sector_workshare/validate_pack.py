@@ -348,6 +348,8 @@ def build_target_packet(
     expires = _utc(lease_receipt["expires_utc"], "lease expires_utc")
     if captured > review:
         raise ContractError("target authority capture is in the future")
+    if acquired < captured:
+        raise ContractError("lease acquisition predates target authority capture")
     if acquired > review:
         raise ContractError("lease acquisition is in the future")
 
