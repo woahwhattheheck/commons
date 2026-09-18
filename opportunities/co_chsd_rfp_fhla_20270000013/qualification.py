@@ -152,7 +152,7 @@ def _validate_tree(
                 except UnicodeEncodeError as exc:
                     raise QualificationError("invalid Unicode object key") from exc
                 utf8_bytes += len(key_bytes)
-                if utf8_bytes > MAX_JSON_BYTES:
+                if utf8_bytes > _max_bytes:
                     raise QualificationError("JSON value exceeds aggregate string-byte limit")
                 stack.append((item, depth + 1))
             continue
@@ -362,6 +362,7 @@ def _build_engine(
     canonical_fn = canonical_bytes
     digest_fn = hashlib.sha256
     utc = timezone.utc
+    datetime_type = datetime
     packet_schema = PACKET_SCHEMA
     receipt_schema = RECEIPT_SCHEMA
     opportunity_id = OPPORTUNITY_ID
@@ -441,7 +442,7 @@ def _build_engine(
             )
 
         now = trusted_clock()
-        if not isinstance(now, datetime) or now.tzinfo is None:
+        if not isinstance(now, datetime_type) or now.tzinfo is None:
             raise QualificationError("trusted clock must return aware datetime")
         now = now.astimezone(utc)
 
