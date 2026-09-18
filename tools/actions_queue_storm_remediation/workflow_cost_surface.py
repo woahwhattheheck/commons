@@ -17,8 +17,8 @@ from collections import Counter
 from pathlib import Path
 from typing import Sequence
 
-_TOP_RE = re.compile(r'^(?P<key>[A-Za-z0-9_"\\'-]+):(?P<tail>.*)$')
-_KEY_RE = re.compile(r'^(?P<indent> *)(?P<key>[A-Za-z0-9_"\\'-]+):(?P<tail>.*)$')
+_TOP_RE = re.compile(r"^(?P<key>[^:\\s]+):(?P<tail>.*)$")
+_KEY_RE = re.compile(r"^(?P<indent> *)(?P<key>[^:\\s]+):(?P<tail>.*)$")
 _EVENTS = {
     "push", "pull_request", "pull_request_target", "schedule",
     "workflow_dispatch", "workflow_call", "merge_group",
