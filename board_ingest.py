@@ -2867,7 +2867,7 @@ def rebuild_board(rows):
     md_items = []
     feed = []
     active_feed = []
-    completed_ids = completion_projection.completed_operation_ids(ROOT)
+    completed_ids = completion_projection.completed_operation_ids(ROOT, _completion_merge_is_ancestor)
     seen_from = []
     seen_to = []
     for ts, meta, body in rows:
@@ -2966,7 +2966,7 @@ def rebuild_board(rows):
 def rebuild_by(rows):
     os.makedirs(BY, exist_ok=True)
     hidden = set(hub_pages.mod_state(rows)["hidden"])
-    completed_ids = completion_projection.completed_operation_ids(ROOT)
+    completed_ids = completion_projection.completed_operation_ids(ROOT, _completion_merge_is_ancestor)
     grouped = {}
     for ts, meta, body in rows:
         src = (meta.get("from") or "").upper()
@@ -3011,7 +3011,7 @@ def rebuild_by(rows):
 def rebuild_to(rows):
     os.makedirs(TO, exist_ok=True)
     hidden = set(hub_pages.mod_state(rows)["hidden"])
-    completed_ids = completion_projection.completed_operation_ids(ROOT)
+    completed_ids = completion_projection.completed_operation_ids(ROOT, _completion_merge_is_ancestor)
     grouped = {}
     for ts, meta, body in rows:
         dest = (meta.get("to") or "").upper()
@@ -4150,6 +4150,18 @@ def _slack_connector_declared_id(issue, outer_src, outer_dest, outer_id, text, e
 
 
 
+def _completion_merge_is_ancestor(merge_sha):
+    """Fail-closed proof that a retained merge commit is in checked-out HEAD."""
+    try:
+        landed = _git(
+            ["merge-base", "--is-ancestor", str(merge_sha or ""), "HEAD"],
+            git_env(),
+        )
+    except (OSError, subprocess.TimeoutExpired, ValueError):
+        return False
+    return landed.returncode == 0
+
+
 def _completion_marker_for_closed_issue(issue, operation_id):
     """Return strongest same-repo main-merge evidence, or None when unproven."""
     number = issue.get("number")
@@ -4193,11 +4205,7 @@ def _completion_marker_for_closed_issue(issue, operation_id):
         except completion_projection.CompletionEvidenceError:
             continue
         merge_sha = marker["merge"]["merge_commit_sha"]
-        try:
-            landed = _git(["merge-base", "--is-ancestor", merge_sha, "HEAD"], git_env())
-        except (OSError, subprocess.TimeoutExpired):
-            continue
-        if landed.returncode != 0:
+        if not _completion_merge_is_ancestor(merge_sha):
             continue
         candidates.append(marker)
     if not candidates:
@@ -4212,23 +4220,26 @@ def _handle_completion_issue_event(ev):
     """Project close/reopen state without re-ingesting the issue as a post."""
     action = str(ev.get("action") or "")
     issue = ev.get("issue") or {}
-    operation_id = completion_projection.stable_operation_id_from_issue(issue)
     number = issue.get("number")
-    if not operation_id or not isinstance(number, int) or isinstance(number, bool):
-        print("COMPLETION_HOLD reason=missing_stable_identity", flush=True)
+    if not isinstance(number, int) or isinstance(number, bool) or number < 1:
+        print("COMPLETION_HOLD reason=missing_issue_number", flush=True)
         return 0
     if action == "reopened":
-        try:
-            removed = completion_projection.remove_marker(ROOT, operation_id, number)
-        except completion_projection.CompletionEvidenceError:
-            removed = False
+        removed = completion_projection.remove_markers_for_issue(ROOT, number)
         print(
-            "COMPLETION_REOPEN id=%s issue=%s removed=%s"
-            % (operation_id, number, "1" if removed else "0"),
+            "COMPLETION_REOPEN issue=%s removed=%s ids=%s"
+            % (number, len(removed), ",".join(removed)),
             flush=True,
         )
         return 0
     if action != "closed":
+        return 0
+    operation_id = completion_projection.stable_operation_id_from_issue(issue)
+    if not operation_id:
+        print(
+            "COMPLETION_HOLD issue=%s reason=missing_stable_identity" % number,
+            flush=True,
+        )
         return 0
     marker = _completion_marker_for_closed_issue(issue, operation_id)
     if marker is None:
@@ -4239,7 +4250,9 @@ def _handle_completion_issue_event(ev):
         )
         return 0
     try:
-        state = completion_projection.write_marker(ROOT, marker)
+        state = completion_projection.write_marker(
+            ROOT, marker, _completion_merge_is_ancestor
+        )
     except completion_projection.CompletionEvidenceError as exc:
         print(
             "COMPLETION_HOLD id=%s issue=%s reason=%s"
