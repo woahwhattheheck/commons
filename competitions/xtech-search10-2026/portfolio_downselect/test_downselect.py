@@ -25,7 +25,12 @@ def digest(label: str) -> str:
 
 
 def claim(name: str, state: str = "EVIDENCED") -> dict:
-    return {"claimId": name, "state": state, "evidenceRef": None}
+    return {
+        "claimId": name,
+        "text": f"Evidence statement for {name}.",
+        "state": state,
+        "evidenceRef": None,
+    }
 
 
 def candidate(
@@ -46,6 +51,7 @@ def candidate(
             "path": f"products/{cid}",
         },
         "priorityArea": "ADAPTIVE_SUSTAINMENT",
+        "sourceCurrentness": {"state": "CURRENT", "evidenceRef": None},
         "usamrdcExclusive": {
             "state": "EXCLUSIVE" if usamrdc else "NOT_EXCLUSIVE",
             "evidenceRef": None,
@@ -107,7 +113,11 @@ def bind_evidence(packet: dict) -> dict:
 
     for cand in packet["candidates"]:
         source = cand["source"]
-        for gate_name in ("usamrdcExclusive", "federalSupportOverlap"):
+        for gate_name in (
+            "sourceCurrentness",
+            "usamrdcExclusive",
+            "federalSupportOverlap",
+        ):
             row = cand[gate_name]
             if row["state"] == "UNKNOWN":
                 row["evidenceRef"] = None
@@ -241,6 +251,27 @@ class DownselectTests(unittest.TestCase):
             "evidenceRef": None,
         }
         self.assertEqual(self.compile(packet)["state"], "HOLD")
+
+    def test_stale_source_generation_is_hard_blocker(self) -> None:
+        packet = ready_packet()
+        packet["candidates"][0]["sourceCurrentness"] = {
+            "state": "STALE",
+            "evidenceRef": None,
+        }
+        report = self.compile(packet)
+        alpha = next(row for row in report["projections"] if row["candidateId"] == "alpha")
+        self.assertIn("source_generation:STALE", alpha["hardBlockers"])
+        self.assertEqual(report["state"], "HOLD")
+
+    def test_unknown_source_generation_is_hard_blocker(self) -> None:
+        packet = ready_packet()
+        packet["candidates"][0]["sourceCurrentness"] = {
+            "state": "UNKNOWN",
+            "evidenceRef": None,
+        }
+        report = self.compile(packet)
+        alpha = next(row for row in report["projections"] if row["candidateId"] == "alpha")
+        self.assertIn("source_generation:UNKNOWN", alpha["hardBlockers"])
 
     def test_unknown_candidate_support_overlap_is_hard_blocker(self) -> None:
         packet = ready_packet()
