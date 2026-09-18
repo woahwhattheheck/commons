@@ -11,13 +11,20 @@ a=importlib.util.module_from_spec(spec); sys.modules[spec.name]=a; spec.loader.e
 class OneWriterTests(unittest.TestCase):
     def setUp(self): self.m=a.load_json(M); self.d=a.load_json(E)
     def replay(self,d=None): return a.replay(copy.deepcopy(self.m),copy.deepcopy(d or self.d))
+    def evaluate(self,d=None): return a.evaluate(copy.deepcopy(self.m),copy.deepcopy(d or self.d))
     def receipts(self,d=None): return {r["event_id"]:r for r in self.replay(d)["receipts"]}
+    def eval_receipts(self,d=None): return {r["event_id"]:r for r in self.evaluate(d)["receipts"]}
     def test_baseline(self):
         s=self.replay()["summary"]; self.assertEqual((s["status"],s["event_count"],s["lane_count"]),("OK",14,3)); self.assertEqual(s["metrics"]["duplicate_touches_prevented"],4)
     def test_cross_route_parallel_claim_collides(self):
         r=self.receipts(); self.assertNotEqual(r["evt-001"]["event_route"],r["evt-002"]["event_route"]); self.assertEqual(r["evt-001"]["decision"],"GRANTED"); self.assertEqual(r["evt-002"]["decision"],"DENIED_ACTIVE_LEASE"); self.assertEqual(r["evt-001"]["collision_key"],r["evt-002"]["collision_key"])
     def test_sent_fence_and_human_reopen_can_select_new_route(self):
         r=self.receipts(); self.assertEqual(r["evt-003"]["state"],"HARD_DNR"); self.assertEqual(r["evt-004"]["decision"],"DENIED_HARD_DNR"); self.assertEqual(r["evt-005"]["decision"],"REOPENED_HUMAN_EVENT"); self.assertEqual(r["evt-006"]["decision"],"GRANTED_AFTER_HUMAN_EVENT"); self.assertNotEqual(r["evt-003"]["lane_route"],r["evt-006"]["lane_route"])
+    def test_human_reopen_expired_lease_refences_instead_of_stale_recovering(self):
+        d=copy.deepcopy(self.d); d["events"][5]["lease_seconds"]=30
+        probe=copy.deepcopy(d["events"][3]); probe.update({"id":"evt-006b","actor":"agent-after-expiry","at_utc":"2026-09-17T12:02:50Z","route":"email:another@northstar.invalid","reason":"attempt stale recovery after the one human-authorized lease expired","expect":{"decision":"DENIED_HARD_DNR","state":"HARD_DNR"}})
+        d["events"].insert(6,probe); r=self.eval_receipts(d)["evt-006b"]
+        self.assertEqual((r["prior_state"],r["decision"],r["state"]),("HARD_DNR","DENIED_HARD_DNR","HARD_DNR")); self.assertTrue(r["reopen_expiry_refenced"]); self.assertEqual(r["lane_route"],"email:ops@northstar.invalid")
     def test_provider_outcome_must_match_leased_route(self):
         d=copy.deepcopy(self.d); d["events"][2]["route"]="email:founder@northstar.invalid"
         with self.assertRaisesRegex(a.ContractError,"does not match current leased route"): a.replay(self.m,d)
@@ -29,6 +36,11 @@ class OneWriterTests(unittest.TestCase):
     def test_hold(self):
         r=self.receipts(); self.assertEqual(r["evt-012"]["decision"],"DENIED_HOLD"); self.assertEqual(r["evt-013"]["decision"],"REOPENED_HUMAN_EVENT")
     def test_all_receipts_deny_external_authority(self): self.assertTrue(all(x["external_send_authorized"] is False for x in self.replay()["receipts"]))
+    def test_receipt_binds_complete_accepted_event(self):
+        base=self.eval_receipts(); d=copy.deepcopy(self.d); d["events"][2]["provider_receipt"]="provider-sent-replacement"; changed=self.eval_receipts(d)
+        self.assertNotEqual(base["evt-003"]["receipt_sha256"],changed["evt-003"]["receipt_sha256"]); self.assertNotEqual(base["evt-003"]["accepted_event_sha256"],changed["evt-003"]["accepted_event_sha256"]); self.assertEqual(changed["evt-003"]["accepted_event"]["provider_receipt"],"provider-sent-replacement")
+        q=copy.deepcopy(self.d); q["events"][0]["lease_seconds"]=301; q["events"][0]["reason"]="different admitted reason"; qchanged=self.eval_receipts(q)
+        self.assertNotEqual(base["evt-001"]["receipt_sha256"],qchanged["evt-001"]["receipt_sha256"])
     def test_duplicate_json_key(self):
         with tempfile.TemporaryDirectory() as td:
             p=Path(td)/"x"; p.write_text('{"x":1,"x":2}')
@@ -45,13 +57,22 @@ class OneWriterTests(unittest.TestCase):
         with self.assertRaisesRegex(a.ContractError,"all-false"): a.validate_machine(m)
     def test_duplicate_event(self):
         d=copy.deepcopy(self.d); d["events"][2]["id"]=d["events"][1]["id"]
-        with self.assertRaisesRegex(a.ContractError,"duplicate event id"): a.replay(self.m,d)
+        with self.assertRaisesRegex(a.ContractError,"workspace identifier reused"): a.replay(self.m,d)
     def test_reused_provider_receipt(self):
         d=copy.deepcopy(self.d); d["events"][8]["provider_receipt"]=d["events"][2]["provider_receipt"]
-        with self.assertRaisesRegex(a.ContractError,"provider receipt reused"): a.replay(self.m,d)
+        with self.assertRaisesRegex(a.ContractError,"workspace identifier reused"): a.replay(self.m,d)
     def test_reused_human_evidence(self):
         d=copy.deepcopy(self.d); d["events"][12]["human_evidence_id"]=d["events"][4]["human_evidence_id"]
-        with self.assertRaisesRegex(a.ContractError,"human evidence reused"): a.replay(self.m,d)
+        with self.assertRaisesRegex(a.ContractError,"workspace identifier reused"): a.replay(self.m,d)
+    def test_provider_evidence_cannot_be_reused_as_human_evidence(self):
+        d=copy.deepcopy(self.d); d["events"][4]["human_evidence_id"]=d["events"][2]["provider_receipt"]
+        with self.assertRaisesRegex(a.ContractError,"workspace identifier reused"): a.evaluate(self.m,d)
+    def test_human_evidence_cannot_be_reused_as_provider_evidence(self):
+        d=copy.deepcopy(self.d); d["events"][8]["provider_receipt"]=d["events"][4]["human_evidence_id"]
+        with self.assertRaisesRegex(a.ContractError,"workspace identifier reused"): a.evaluate(self.m,d)
+    def test_event_id_cannot_reuse_evidence_id(self):
+        d=copy.deepcopy(self.d); d["events"][3]["id"]=d["events"][2]["provider_receipt"]
+        with self.assertRaisesRegex(a.ContractError,"workspace identifier reused"): a.evaluate(self.m,d)
     def test_nonmonotone_time(self):
         d=copy.deepcopy(self.d); d["events"][1]["at_utc"]=d["events"][0]["at_utc"]
         with self.assertRaisesRegex(a.ContractError,"strictly monotone"): a.replay(self.m,d)
@@ -89,8 +110,13 @@ class OneWriterTests(unittest.TestCase):
         for index,field,value,pattern in cases:
             d=copy.deepcopy(self.d); d["events"][index][field]=value
             with self.subTest(field=field,value=value.encode("unicode_escape")), self.assertRaisesRegex(a.ContractError,pattern): a.replay(self.m,d)
+    def test_event_ids_use_same_strict_unicode_admission(self):
+        cases=(("\u200b","non-visible Unicode"),("evt-001\u034f","Default_Ignorable"),("evt-001\ufe0f","Default_Ignorable"),("evt-001\u115f","Default_Ignorable"),("\u0301","visible base"),(" padded-event","trimmed nonempty"))
+        for value,pattern in cases:
+            d=copy.deepcopy(self.d); d["events"][0]["id"]=value
+            with self.subTest(value=value.encode("unicode_escape")), self.assertRaisesRegex(a.ContractError,pattern): a.evaluate(self.m,d)
     def test_visible_combining_unicode_evidence_remains_admitted(self):
-        value="provider-cafe\u0301-001"; self.assertEqual(a.evidence_id(value,"provider_receipt"),value)
+        value="provider-cafe\u0301-001"; self.assertEqual(a.evidence_id(value,"provider_receipt"),value); self.assertEqual(a.evidence_id("evt-cafe\u0301-001","event id"),"evt-cafe\u0301-001")
     def test_real_cli_normal_and_optimized(self):
         for optimized in (False,True):
             cmd=[sys.executable]+(["-O"] if optimized else [])+[str(A),"replay",str(M),str(E)]; run=subprocess.run(cmd,cwd=HERE,text=True,capture_output=True,check=False)
