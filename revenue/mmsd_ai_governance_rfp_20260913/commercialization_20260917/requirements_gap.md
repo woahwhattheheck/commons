@@ -1,100 +1,115 @@
-# Buyer requirements gap and source-recovery ledger — 2026-09-17
+# MMSD AI-governance source/lifecycle ledger — cancellation controls currentness
 
-This file records what is known, what is secondary, and what remains impossible to decide without the literal MMSD solicitation packet.
+Current opportunity state:
 
-## Source recovery attempted
+`CANCELED_BY_BUYER / DNR_UNTIL_DISTINCT_REISSUE / NOT_SUBMITTED / $0_BOOKED`
 
-| Source / route | 2026-09-17 result | Authority |
+This file supersedes the #15831 interpretation that packet recovery was the dominant blocker.
+The dominant fact is the retained **buyer cancellation**.
+
+## Authoritative lifecycle evidence
+
+Commons issue #14287 retains the opportunity generation and its later lifecycle event.
+
+| Evidence | Date | Meaning |
+|---|---:|---|
+| Original MMSD solicitation generation | 2026-08-31-era | Historical issued opportunity |
+| Buyer cancellation record, issue comment 5672844854 | 2026-09-15 record of 2026-09-14 buyer message | MMSD canceled the Comprehensive AI Policy RFP to reassess scope/resources |
+| Z-Helix closeout, issue comment 5676827677 | 2026-09-15 | `CANCELED_BY_BUYER / DNR_UNTIL_REISSUE / NOT_SUBMITTED / $0 BOOKED` |
+| Later cached/indexed old deadline | still visible 2026-09-17 | Discovery artifact only; cannot reopen terminal generation |
+| PR #15831 commercialization merge | 2026-09-17 | Stale resurrection; corrected by this successor |
+
+Cancellation record:
+<https://github.com/woahwhattheheck/commons/issues/14287#issuecomment-5672844854>
+
+Closeout:
+<https://github.com/woahwhattheheck/commons/issues/14287#issuecomment-5676827677>
+
+Reusable lifecycle-guard build:
+<https://github.com/woahwhattheheck/commons/issues/15826>
+
+## Why the old recovery conclusion was wrong
+
+The #15831 version correctly observed that an HTTP 404 alone does not prove cancellation.
+However, the system already had stronger evidence: a retained **buyer email explicitly canceling
+the solicitation**.
+
+Therefore this former statement is false as a current pursuit conclusion:
+
+`SOURCE_RECOVERY_BLOCKED does not mean CANCELLED`
+
+The corrected statement is:
+
+`404/INDEX STATE DOES NOT DECIDE LIFECYCLE; RETAINED BUYER CANCELLATION DOES.`
+
+Search indexes, bid mirrors and cached official-page text can continue showing the old October 16
+deadline after cancellation. They are useful for historical discovery, but not for reopening the
+opportunity.
+
+## Historical packet facts — non-actionable
+
+The canceled generation was associated with:
+
+- Madison Metropolitan Sewerage District;
+- a Comprehensive AI Use and Governance Policy;
+- Generative AI + Operational AI scope;
+- data-sovereignty/public-records objectives;
+- an old indexed 2026-10-16 16:00 Central deadline;
+- old submission route `rfp@madsewer.org`;
+- filename `FINAL-RFP-Comprehensive-AI-Policy-Development-1.pdf`;
+- secondary-index descriptions of shadow AI, stakeholder interviews, vendor procurement,
+  incident response, staff training and five proposal items.
+
+Do not use those fields as current instructions.
+
+## Current decision matrix
+
+| Question | Current state | What can change it |
 |---|---|---|
-| Indexed MMSD solicitation landing page | Search index still returns current buyer text; direct fetch returns 404 | Buyer text authoritative when indexed; direct current availability failed |
-| Page's `Bid Document` link | Link target not exposed by current direct route | Unknown |
-| Exact filename `FINAL-RFP-Comprehensive-AI-Policy-Development-1.pdf` on buyer domain | No authoritative PDF hit surfaced in current search | Not recovered |
-| PublicBidSearch solicitation index | Current page identifies filename/timetable/scope and says 5 required items | Secondary only |
-| WordPress JSON/media discovery routes | Not retrievable through the available web route in this recovery | No buyer bytes recovered |
+| Is the old solicitation live? | **NO — CANCELED_BY_BUYER** | Nothing; the old generation remains terminal |
+| Should the old PDF be recovered for bidding? | **NO** | Historical research only, not revenue qualification |
+| Should the Oct. 16 deadline drive work? | **NO — STALE** | A distinct buyer reissue must carry its own deadline |
+| Should Funto be contacted about the old MMSD RFP? | **NO / DNR** | Only a distinct buyer reissue + fresh qualification |
+| Is TJLabs prime/team qualification relevant now? | **NO ACTIVE BID** | Re-evaluate from scratch on reissue |
+| Is the $18k workshare a live proposal? | **NO / DORMANT DONOR** | Fresh scope and commercial acceptance on reissue |
+| Was a proposal submitted? | **NO** | Historical fact |
+| Booked revenue / cash | **$0 / $0** | Genuine future acceptance/payment only |
 
-### Required interpretation
+## Reissue authority
 
-`SOURCE_RECOVERY_BLOCKED` does **not** mean `CANCELLED`.
+A canceled generation may not be reopened because a mirror updates, a cache recrawls, an old page
+returns 200 again, a deadline changes in an index, or a filename reappears.
 
-The buyer's indexed landing copy still describes a live October 16 deadline. Cancellation, replacement, amended schedule, or revised packet requires buyer-authoritative evidence.
+Qualification may resume only after a **later buyer-authoritative reissue** that is retained as a
+distinct successor generation and explicitly postdates the cancellation.
 
-## Decision matrix
+A reissue should bind at minimum:
 
-| Requirement | State | Current evidence | What closes it |
-|---|---|---|---|
-| Buyer / opportunity identity | VERIFIED | MMSD indexed official page | Recheck buyer surface before external action |
-| Qualified-consulting-firm framing | VERIFIED | MMSD indexed official page | None |
-| GenAI + Operational AI scope | VERIFIED | MMSD indexed official page | None |
-| Data sovereignty / public-record objective | VERIFIED | MMSD indexed official page | None |
-| Proposal deadline 2026-10-16 16:00 CT | VERIFIED from indexed buyer page | MMSD indexed official page | Recheck for addendum |
-| Email route + required subject | VERIFIED from indexed buyer page | `rfp@madsewer.org`, `Comprehensive AI Policy RFP` | Recheck for addendum |
-| Proposal contents public record | VERIFIED | MMSD indexed official page | None |
-| Questions deadline 2026-09-28 16:00 CT | SECONDARY | PublicBidSearch | Buyer PDF/addendum |
-| Issue date 2026-08-31 | SECONDARY | PublicBidSearch | Buyer PDF metadata |
-| No pre-bid meeting | SECONDARY | PublicBidSearch | Buyer PDF/addendum |
-| Expected award ~2026-11-30 | SECONDARY | PublicBidSearch | Buyer PDF/addendum |
-| Six-month term | SECONDARY | PublicBidSearch | Buyer PDF/contract |
-| Shadow/embedded-AI audit | SECONDARY | PublicBidSearch | Buyer PDF |
-| Stakeholder interviews | SECONDARY | PublicBidSearch | Buyer PDF |
-| Vendor procurement framework | SECONDARY | PublicBidSearch | Buyer PDF |
-| Incident response framework | SECONDARY | PublicBidSearch | Buyer PDF |
-| Staff training / AI literacy | SECONDARY | PublicBidSearch | Buyer PDF |
-| Exact five mandatory proposal items | **BLOCKED** | Index says five, hides checklist | Literal buyer PDF |
-| Evaluation criteria / weights | **BLOCKED** | Not public in recovered text | Literal buyer PDF |
-| Minimum firm experience | **BLOCKED** | Only generic "qualified consulting firm" is verified | Literal buyer PDF |
-| Reference count / recency / sector | **BLOCKED** | Unknown | Literal buyer PDF |
-| Subcontractor/team eligibility | **BLOCKED** | Unknown | Literal buyer PDF/contract |
-| Prime-only vs team-combined qualifications | **BLOCKED** | Unknown | Literal buyer PDF/Q&A |
-| Insurance / indemnity | **BLOCKED** | Unknown | Literal buyer PDF/contract |
-| Required forms / signatures | **BLOCKED** | Unknown | Literal buyer PDF |
-| Pricing format / budget | **BLOCKED** | Unknown | Literal buyer PDF |
-| On-site / travel expectations | **BLOCKED** | Unknown | Literal buyer PDF |
-| Contract/IP/confidentiality terms | **BLOCKED** | Unknown | Literal buyer PDF/contract |
+1. buyer-authoritative source and retrieval time;
+2. distinct solicitation/generation identity;
+3. relationship to or replacement of the canceled generation;
+4. exact current packet/addenda/Q&A;
+5. current deadlines;
+6. current qualification/reference/insurance rules;
+7. current evaluation/pricing requirements;
+8. current teaming/subcontract rules.
+
+Then create a **fresh** decision generation. Do not silently inherit the old
+`TEAM_GO`, old price, old Funto workshare, old packet assumptions, or any historical Muse state.
+
+## No-send rule
+
+No MMSD source-access question and no Funto teaming message is justified for the canceled
+generation. Do not request Muse authority merely to revive it.
+
+If a distinct reissue appears, first reconcile it against the retained lifecycle ledger, then run
+fresh Slack + Gmail collision checks and a new Muse single-writer generation before any external
+provider mutation.
 
 ## Commercial consequence
 
-The correct present state is:
+The buyer-neutral governance product remains shipped and reusable.
 
-`TEAM_GO / PRIME_HOLD / FUNTO_PUBLIC_FIT_GO / FUNTO_QUALIFICATION_HOLD / OUTBOUND_HOLD`
+The MMSD external opportunity is terminal until reissue:
 
-The exact missing packet is now the dominant commercial blocker. Building another AI-governance engine would not close it.
-
-## Packet acquisition ladder
-
-Use the least noisy authoritative route that becomes available:
-
-1. buyer landing page restored with working `Bid Document` target;
-2. buyer Contracting Center replacement/current listing;
-3. buyer-hosted PDF discovered under a canonical or attachment URL;
-4. buyer addendum/Q&A page naming/replacing the packet;
-5. only if the public packet remains unavailable and internal coordination authorizes it, one source-access question through the buyer's published RFP route, after Muse arbitration and collision census.
-
-Do **not** scrape behind paywalls, treat third-party summaries as controlling, guess upload URLs into evidence, or infer requirements from unrelated MMSD solicitations.
-
-## Time gate
-
-If the secondary question deadline of **2026-09-28 16:00 Central** is confirmed, source recovery must occur early enough to:
-
-1. identify only genuinely unanswered questions;
-2. decide prime vs team;
-3. let a proposed prime validate its own eligibility;
-4. request clarification before the deadline without pitching or duplicating outreach.
-
-## Exact next decision after packet recovery
-
-Within one source-bound review, produce:
-
-- document URL + SHA-256 + page count;
-- addenda/Q&A list and precedence;
-- five mandatory proposal items with page citations;
-- all pass/fail firm qualifications;
-- all reference requirements;
-- all insurance/contract/form/signature requirements;
-- all evaluation criteria/weights;
-- all pricing/travel requirements;
-- explicit subcontract/team rules;
-- contradiction list against the retained packet;
-- revised `PRIME_GO / TEAM_GO / NO_BID` state;
-- revised Funto workshare and only then a candidate Muse-gated partner message.
-
-No external communication is required to complete this internal recovery carrier.
+`CANCELED_BY_BUYER / DNR_UNTIL_DISTINCT_REISSUE / $0_BOOKED / $0_CASH`.
