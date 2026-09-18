@@ -9,6 +9,7 @@ on:
       - "revenue/multi_framework_evidence_freshness/**"
       - "tests/test_multi_framework_evidence_freshness*.py"
       - "tools/provider_cost_truth/**"
+      - "tools/evidence_authority/**"
       - ".github/workflows/source-parses.yml"
   pull_request:
     paths:
@@ -93,6 +94,59 @@ jobs:
 
       - name: Optimized provider-cost hostile suite
         run: python -O -m unittest discover -s tools/provider_cost_truth -p 'test_*.py' -v
+
+  evidence-authority:
+    name: evidence-authority (${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - name: Check out exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Compile evidence-authority source
+        run: python -m py_compile tools/evidence_authority/*.py
+
+      - name: Prove evidence-authority discovery is non-vacuous
+        run: |
+          python - <<'PY'
+          import unittest
+          suite = unittest.defaultTestLoader.discover('tools/evidence_authority', pattern='test_*.py')
+          count = suite.countTestCases()
+          print(f'evidence-authority tests discovered: {count}')
+          if count < 1:
+              raise SystemExit('NO EVIDENCE-AUTHORITY TESTS DISCOVERED')
+          PY
+
+      - name: Normal evidence-authority hostile suite
+        run: python -m unittest discover -s tools/evidence_authority -p 'test_*.py' -v
+
+      - name: Optimized evidence-authority hostile suite
+        run: python -O -m unittest discover -s tools/evidence_authority -p 'test_*.py' -v
+
+      - name: Synthetic retained-source CLI smoke
+        shell: bash
+        run: |
+          ROOT="$(cat tools/evidence_authority/fixtures/pinned_root.txt)"
+          python -m tools.evidence_authority.cli compile-current \
+            tools/evidence_authority/fixtures/candidate.json \
+            tools/evidence_authority/fixtures/manifest.json \
+            tools/evidence_authority/fixtures/sources "$ROOT" > /tmp/evidence-authority-receipt.json
+          python -m tools.evidence_authority.cli verify \
+            tools/evidence_authority/fixtures/candidate.json \
+            tools/evidence_authority/fixtures/manifest.json \
+            tools/evidence_authority/fixtures/sources "$ROOT" /tmp/evidence-authority-receipt.json
 
   multi-framework-evidence-freshness:
     name: multi-framework-evidence-freshness
