@@ -94,6 +94,19 @@ class HcpfHospitalPortalQualificationTests(unittest.TestCase):
         self.assertFalse(result["authority"]["box_upload"])
         self.assertFalse(result["authority"]["revenue"])
 
+    def test_owner_only_prime_does_not_need_teaming_agreement(self):
+        gates = (
+            q.TEAM_GATES
+            + q.PERSONNEL_GATES
+            + ("colorado_vss_legal", "price_approved", "signatory_authorized")
+        )
+        rows = [evidence("OWNER", gate) for gate in gates]
+        result = self.engine(rows)(packet(rows))
+        self.assertEqual(result["state"], "RESPONSE_READY_FOR_OWNER_REVIEW")
+        self.assertEqual(result["commercial_posture"], "PRIME_CANDIDATE")
+        self.assertEqual(result["owner_control_gaps"], [])
+        self.assertFalse(result["trusted_teaming_agreement"])
+
     def test_partner_can_supply_individual_and_team_evidence_but_needs_agreement(self):
         owner_rows = [
             evidence("OWNER", gate)
