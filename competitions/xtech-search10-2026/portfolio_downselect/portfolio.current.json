@@ -1,0 +1,208 @@
+{
+  "version": "xtech.search10.portfolio/v1",
+  "entityId": "TOKEN_JUNKIE_LABS_OWNER_EVIDENCE_REQUIRED",
+  "globalGates": {
+    "forProfitIndependentUsSmallBusiness": {
+      "state": "UNKNOWN",
+      "evidenceRef": null
+    },
+    "ownershipControlEligible": {
+      "state": "UNKNOWN",
+      "evidenceRef": null
+    },
+    "employeeCeilingMet": {
+      "state": "UNKNOWN",
+      "evidenceRef": null
+    },
+    "sbirSmallBusinessRequirementsMet": {
+      "state": "UNKNOWN",
+      "evidenceRef": null
+    },
+    "federalSupportCensus": {
+      "state": "UNKNOWN",
+      "evidenceRef": null
+    },
+    "oneSubmissionSlot": {
+      "state": "UNKNOWN",
+      "evidenceRef": null
+    },
+    "officialTemplate": {
+      "state": "UNKNOWN",
+      "evidenceRef": null
+    }
+  },
+  "candidates": [
+    {
+      "candidateId": "sustainproof",
+      "source": {
+        "repo": "woahwhattheheck/commons",
+        "commit": "9fdaea9b7238bd3467afa8b32ac253e9f495f417",
+        "path": "competitions/xtech-search10-2026/sustainproof"
+      },
+      "priorityArea": "ADAPTIVE_SUSTAINMENT",
+      "usamrdcExclusive": false,
+      "federalSupportOverlap": "UNKNOWN",
+      "criteria": {
+        "introduction": [
+          {
+            "claimId": "sustainproof.existing-prototype",
+            "state": "EVIDENCED",
+            "evidenceRef": "git:woahwhattheheck/commons@9fdaea9b7238bd3467afa8b32ac253e9f495f417:competitions/xtech-search10-2026/sustainproof"
+          },
+          {
+            "claimId": "sustainproof.submitting-entity",
+            "state": "OWNER_REQUIRED",
+            "evidenceRef": null
+          }
+        ],
+        "armyBenefits": [
+          {
+            "claimId": "sustainproof.adaptive-sustainment-fit",
+            "state": "PROPOSED",
+            "evidenceRef": null
+          }
+        ],
+        "technicalApproach": [
+          {
+            "claimId": "sustainproof.prototype-and-tests",
+            "state": "EVIDENCED",
+            "evidenceRef": "git:woahwhattheheck/commons@9fdaea9b7238bd3467afa8b32ac253e9f495f417:competitions/xtech-search10-2026/sustainproof"
+          },
+          {
+            "claimId": "sustainproof.army-environment-validation",
+            "state": "OWNER_REQUIRED",
+            "evidenceRef": null
+          }
+        ],
+        "commercialPotential": [
+          {
+            "claimId": "sustainproof.external-commercial-traction",
+            "state": "OWNER_REQUIRED",
+            "evidenceRef": null
+          }
+        ],
+        "proposalQuality": [
+          {
+            "claimId": "sustainproof.three-page-draft",
+            "state": "EVIDENCED",
+            "evidenceRef": "git:woahwhattheheck/commons@9fdaea9b7238bd3467afa8b32ac253e9f495f417:competitions/xtech-search10-2026/sustainproof/whitepaper.md"
+          },
+          {
+            "claimId": "sustainproof.valid-eval-template-binding",
+            "state": "OWNER_REQUIRED",
+            "evidenceRef": null
+          }
+        ]
+      },
+      "traction": []
+    },
+    {
+      "candidateId": "acqatlas",
+      "source": {
+        "repo": "woahwhattheheck/commons",
+        "commit": "ad4d7c322a1909fcd99b5ac389f19b4bf83e4335",
+        "path": "competitions/nawcad-acqdoc-acqatlas-2026"
+      },
+      "priorityArea": "OTHER_VALID_ARMY_NEED",
+      "usamrdcExclusive": false,
+      "federalSupportOverlap": "UNKNOWN",
+      "criteria": {
+        "introduction": [
+          {
+            "claimId": "acqatlas.existing-prototype",
+            "state": "EVIDENCED",
+            "evidenceRef": "git:woahwhattheheck/commons@ad4d7c322a1909fcd99b5ac389f19b4bf83e4335:competitions/nawcad-acqdoc-acqatlas-2026"
+          }
+        ],
+        "armyBenefits": [
+          {
+            "claimId": "acqatlas.acquisition-decision-benefit",
+            "state": "PROPOSED",
+            "evidenceRef": null
+          }
+        ],
+        "technicalApproach": [
+          {
+            "claimId": "acqatlas.deterministic-engine-and-tests",
+            "state": "EVIDENCED",
+            "evidenceRef": "git:woahwhattheheck/commons@ad4d7c322a1909fcd99b5ac389f19b4bf83e4335:competitions/nawcad-acqdoc-acqatlas-2026"
+          },
+          {
+            "claimId": "acqatlas.army-use-validation",
+            "state": "OWNER_REQUIRED",
+            "evidenceRef": null
+          }
+        ],
+        "commercialPotential": [
+          {
+            "claimId": "acqatlas.external-commercial-traction",
+            "state": "OWNER_REQUIRED",
+            "evidenceRef": null
+          }
+        ],
+        "proposalQuality": [
+          {
+            "claimId": "acqatlas.xtech-whitepaper",
+            "state": "OWNER_REQUIRED",
+            "evidenceRef": null
+          }
+        ]
+      },
+      "traction": []
+    },
+    {
+      "candidateId": "local-device-agent",
+      "source": {
+        "repo": "woahwhattheheck/LocalDeviceAgent",
+        "commit": "fd54957dd34d09a4f7762058561cbdc6af502b7c",
+        "path": "README.md"
+      },
+      "priorityArea": "C2_COUNTER_C2_NETWORKS",
+      "usamrdcExclusive": false,
+      "federalSupportOverlap": "UNKNOWN",
+      "criteria": {
+        "introduction": [
+          {
+            "claimId": "lda.public-software-generation",
+            "state": "EVIDENCED",
+            "evidenceRef": "git:woahwhattheheck/LocalDeviceAgent@fd54957dd34d09a4f7762058561cbdc6af502b7c:README.md"
+          }
+        ],
+        "armyBenefits": [
+          {
+            "claimId": "lda.resilient-offline-authority-fit",
+            "state": "PROPOSED",
+            "evidenceRef": null
+          }
+        ],
+        "technicalApproach": [
+          {
+            "claimId": "lda.source-generation",
+            "state": "EVIDENCED",
+            "evidenceRef": "git:woahwhattheheck/LocalDeviceAgent@fd54957dd34d09a4f7762058561cbdc6af502b7c:README.md"
+          },
+          {
+            "claimId": "lda.army-environment-validation",
+            "state": "OWNER_REQUIRED",
+            "evidenceRef": null
+          }
+        ],
+        "commercialPotential": [
+          {
+            "claimId": "lda.external-commercial-traction",
+            "state": "OWNER_REQUIRED",
+            "evidenceRef": null
+          }
+        ],
+        "proposalQuality": [
+          {
+            "claimId": "lda.xtech-whitepaper",
+            "state": "OWNER_REQUIRED",
+            "evidenceRef": null
+          }
+        ]
+      },
+      "traction": []
+    }
+  ]
+}
