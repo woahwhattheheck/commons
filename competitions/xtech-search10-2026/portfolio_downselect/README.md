@@ -59,10 +59,24 @@ The report remains `HOLD` unless all global gates are evidenced:
 Every candidate additionally requires:
 
 - exact immutable source generation (repository + 40-hex commit + path);
-- no `FORBIDDEN` or `OWNER_REQUIRED` claim blockers;
+- every declared rubric claim to be `EVIDENCED`; `PROPOSED`,
+  `OWNER_REQUIRED`, and `FORBIDDEN` all block selection;
 - at least one real external commercial-traction receipt;
-- federal-support overlap state `NONE`;
-- non-USAMRDC-exclusive scope.
+- federal-support overlap state `NONE`, bound to OWNER evidence;
+- `NOT_EXCLUSIVE` USAMRDC scope, bound to OWNER evidence.
+
+All positive evidence lives in a typed retained evidence registry. Each record is
+bound to exactly one gate, claim, or traction semantic. `REPO` records must
+match the candidate's repository + exact commit + path generation.
+`OWNER`/`PROVIDER`/`EXTERNAL_COUNTERPARTY` records carry an artifact
+SHA-256. External commercial traction accepts only the
+`EXTERNAL_COUNTERPARTY` source class. One record cannot be transplanted or
+reused to satisfy another semantic, and unused records fail closed.
+
+This is an integrity boundary, not an authentication oracle: the compiler does
+not independently authenticate the external artifact behind a retained digest.
+That truth boundary is emitted in every report together with a deterministic
+evidence-manifest SHA-256.
 
 Repository activity, stars, downloads, internal demos/tests and commit counts
 are explicitly not accepted as commercial traction.
@@ -79,8 +93,10 @@ If two viable candidates have identical top evidence coverage, the state is
 - **AcqAtlas** — deterministic acquisition-document analysis/recommendation.
 - **LocalDeviceAgent** — resilient/offline local-agent authority surface.
 
-The checked-in packet intentionally marks owner/entity/provider facts and
-external traction as unknown/required rather than manufacturing evidence. The
+The checked-in packet intentionally marks owner/entity/provider facts,
+candidate federal-support overlap, candidate USAMRDC exclusivity, and external
+traction as unknown/required rather than manufacturing evidence. Its retained
+REPO evidence records bind only already-landed technical generations. The
 expected current result is therefore `HOLD`.
 
 ## Run
