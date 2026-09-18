@@ -675,4 +675,14 @@ def _build_api():
                 st.st_ctime_ns,
             ):
                 fail("retained file generation changed during read")
-            return 
+            return b"".join(chunks)
+        finally:
+            os_close(fd)
+
+    def read_packet(path_value):
+        value = loads_strict(read_file(path_value))
+        normalize_packet(value)
+        return value
+
+    def read_diagnostic(path_value):
+        value 
