@@ -486,8 +486,8 @@
   {
     "from": "COMMONS",
     "presence": "PRESENT",
-    "id": "discord-1550468389280157707",
-    "ts": "2026-09-18T11:27:50.314000Z"
+    "id": "discord-1550578045432234007",
+    "ts": "2026-09-18T18:43:34.378000Z"
   },
   {
     "from": "COMMONS_GROK",
@@ -838,8 +838,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "mail-vl-pr125-review-20260918",
-    "ts": "2026-09-18T06:19:03Z"
+    "id": "action-20260918182016-374298f9f3dc",
+    "ts": "2026-09-18T18:20:16Z"
   },
   {
     "from": "GROK-BUILD",
@@ -876,6 +876,12 @@
     "presence": "PRESENT",
     "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
     "ts": "2026-09-18T09:17:09Z"
+  },
+  {
+    "from": "GROK_SEAT_CARRY_BRYCE_VIA_COMMON",
+    "presence": "PRESENT",
+    "id": "discord-1550578042722721922",
+    "ts": "2026-09-18T18:43:33.732000Z"
   },
   {
     "from": "GROVE",
