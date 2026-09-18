@@ -113,64 +113,108 @@ def _add_receipt(
     return base
 
 
-def _exact(obj: Any, keys: set[str], label: str) -> dict[str, Any]:
+def _exact(
+    obj: Any,
+    keys: set[str],
+    label: str,
+    _error=ContractError,
+) -> dict[str, Any]:
     if type(obj) is not dict:
-        raise ContractError(f"{label}: object required")
+        raise _error(f"{label}: object required")
     got = set(obj)
     if got != keys:
-        raise ContractError(
+        raise _error(
             f"{label}: exact keys required; "
             f"missing={sorted(keys - got)} extra={sorted(got - keys)}"
         )
     return obj
 
 
-def _text(value: Any, label: str, max_len: int = 1024) -> str:
+def _text(
+    value: Any,
+    label: str,
+    max_len: int = 1024,
+    _error=ContractError,
+) -> str:
     if type(value) is not str or not value or len(value) > max_len:
-        raise ContractError(f"{label}: bounded non-empty string required")
+        raise _error(f"{label}: bounded non-empty string required")
     return value
 
 
-def _id(value: Any, label: str) -> str:
-    value = _text(value, label, 128)
-    if not _ID.fullmatch(value):
-        raise ContractError(f"{label}: invalid identifier")
+def _id(
+    value: Any,
+    label: str,
+    _text_fn=_text,
+    _id_re=_ID,
+    _error=ContractError,
+) -> str:
+    value = _text_fn(value, label, 128)
+    if not _id_re.fullmatch(value):
+        raise _error(f"{label}: invalid identifier")
     return value
 
 
-def _bool(value: Any, label: str) -> bool:
+def _bool(
+    value: Any,
+    label: str,
+    _error=ContractError,
+) -> bool:
     if type(value) is not bool:
-        raise ContractError(f"{label}: bool required")
+        raise _error(f"{label}: bool required")
     return value
 
 
-def _int(value: Any, label: str, low: int = 0, high: int = 10**15) -> int:
+def _int(
+    value: Any,
+    label: str,
+    low: int = 0,
+    high: int = 10**15,
+    _error=ContractError,
+) -> int:
     if type(value) is not int or not (low <= value <= high):
-        raise ContractError(f"{label}: integer in [{low},{high}] required")
+        raise _error(f"{label}: integer in [{low},{high}] required")
     return value
 
 
-def _utc(value: Any, label: str) -> datetime:
-    value = _text(value, label, 40)
+def _utc(
+    value: Any,
+    label: str,
+    _text_fn=_text,
+    _datetime_fromisoformat=datetime.fromisoformat,
+    _timezone_utc=_timezone_utc,
+    _error=ContractError,
+) -> datetime:
+    value = _text_fn(value, label, 40)
     if not value.endswith("Z"):
-        raise ContractError(f"{label}: UTC Z timestamp required")
+        raise _error(f"{label}: UTC Z timestamp required")
     try:
-        parsed = datetime.fromisoformat(value[:-1] + "+00:00")
+        parsed = _datetime_fromisoformat(value[:-1] + "+00:00")
     except ValueError as exc:
-        raise ContractError(f"{label}: invalid timestamp") from exc
-    if parsed.tzinfo != timezone.utc:
-        raise ContractError(f"{label}: UTC required")
+        raise _error(f"{label}: invalid timestamp") from exc
+    if parsed.tzinfo != _timezone_utc:
+        raise _error(f"{label}: UTC required")
     return parsed
 
 
-def _https(value: Any, label: str) -> str:
-    value = _text(value, label, 2048)
+def _https(
+    value: Any,
+    label: str,
+    _text_fn=_text,
+    _error=ContractError,
+) -> str:
+    value = _text_fn(value, label, 2048)
     if not value.startswith("https://"):
-        raise ContractError(f"{label}: https URL required")
+        raise _error(f"{label}: https URL required")
     return value
 
 
-def _validate_authority(obj: Any, label: str) -> None:
+def _validate_authority(
+    obj: Any,
+    label: str,
+    _exact_fn=_exact,
+    _bool_fn=_bool,
+    _error=ContractError,
+) -> None:
     # Literal field generation is deliberate: exported AUTHORITY_FALSE is an
     # operator-facing compatibility view, never a production policy root.
     fields = (
@@ -186,18 +230,27 @@ def _validate_authority(obj: Any, label: str) -> None:
         "compliance_certification_authorized",
         "revenue_recognized",
     )
-    authority = _exact(obj, set(fields), label)
+    authority = _exact_fn(obj, set(fields), label)
     for field in fields:
-        if _bool(authority[field], f"{label}.{field}") is not False:
-            raise ContractError(f"{label}.{field}: must remain false")
+        if _bool_fn(authority[field], f"{label}.{field}") is not False:
+            raise _error(f"{label}.{field}: must remain false")
 
 
 def validate_manifest(
     manifest: Any,
     trusted_as_of: str,
     _add_receipt_fn=_add_receipt,
+    _exact_fn=_exact,
+    _utc_fn=_utc,
+    _https_fn=_https,
+    _bool_fn=_bool,
+    _int_fn=_int,
+    _text_fn=_text,
+    _validate_authority_fn=_validate_authority,
+    _error=ContractError,
+    _schema=SCHEMA,
 ) -> dict[str, Any]:
-    doc = _exact(
+    doc = _exact_fn(
         manifest,
         {
             "schema",
@@ -210,10 +263,10 @@ def validate_manifest(
         },
         "manifest",
     )
-    if doc["schema"] != SCHEMA:
-        raise ContractError("manifest.schema: unsupported")
+    if doc["schema"] != _schema:
+        raise _error("manifest.schema: unsupported")
 
-    sol = _exact(
+    sol = _exact_fn(
         doc["solicitation"],
         {"id", "buyer", "title", "due_utc", "question_cutoff_utc"},
         "manifest.solicitation",
@@ -223,64 +276,64 @@ def validate_manifest(
         or sol["buyer"] != "University of Missouri System"
         or sol["title"] != "Payables Program and Merchant Services"
     ):
-        raise ContractError("manifest.solicitation: solicitation identity drift")
+        raise _error("manifest.solicitation: solicitation identity drift")
     if (
         sol["due_utc"] != "2026-09-25T19:00:00Z"
         or sol["question_cutoff_utc"] != "2026-09-10T19:00:00Z"
     ):
-        raise ContractError("manifest.solicitation: deadline drift")
+        raise _error("manifest.solicitation: deadline drift")
 
-    as_of = _utc(trusted_as_of, "trusted_as_of")
-    source = _exact(
+    as_of = _utc_fn(trusted_as_of, "trusted_as_of")
+    source = _exact_fn(
         doc["source_evidence"],
         {"notice", "scope"},
         "manifest.source_evidence",
     )
     source_fresh = True
     for key in ("notice", "scope"):
-        row = _exact(
+        row = _exact_fn(
             source[key],
             {"url", "captured_at_utc", "source_class"},
             f"manifest.source_evidence.{key}",
         )
-        _https(row["url"], f"manifest.source_evidence.{key}.url")
+        _https_fn(row["url"], f"manifest.source_evidence.{key}.url")
         if row["source_class"] not in {
             "SECONDARY_PUBLIC_INDEX",
             "PROVIDER_PUBLIC",
             "BUYER_PUBLIC",
         }:
-            raise ContractError(
+            raise _error(
                 f"manifest.source_evidence.{key}.source_class: unsupported"
             )
-        captured = _utc(
+        captured = _utc_fn(
             row["captured_at_utc"],
             f"manifest.source_evidence.{key}.captured_at_utc",
         )
         if captured > as_of:
-            raise ContractError("manifest.source_evidence: future capture")
+            raise _error("manifest.source_evidence: future capture")
         if int((as_of - captured).total_seconds()) > 48 * 60 * 60:
             source_fresh = False
 
-    buyer_packet = _exact(
+    buyer_packet = _exact_fn(
         doc["buyer_packet"],
         {"retained", "sha256", "authority"},
         "manifest.buyer_packet",
     )
-    retained = _bool(
+    retained = _bool_fn(
         buyer_packet["retained"], "manifest.buyer_packet.retained"
     )
     digest = buyer_packet["sha256"]
     if retained:
-        raise ContractError(
+        raise _error(
             "manifest.buyer_packet.retained: verifier-owned packet bytes "
             "are required; caller metadata cannot mint buyer authority"
         )
     if digest is not None or buyer_packet["authority"] != "NOT_RETAINED":
-        raise ContractError(
+        raise _error(
             "manifest.buyer_packet: absent packet must remain unasserted"
         )
 
-    req = _exact(
+    req = _exact_fn(
         doc["requirements"],
         {
             "merchant_services",
@@ -296,12 +349,12 @@ def validate_manifest(
         "manifest.requirements",
     )
     for field in req:
-        if _bool(req[field], f"manifest.requirements.{field}") is not True:
-            raise ContractError(
+        if _bool_fn(req[field], f"manifest.requirements.{field}") is not True:
+            raise _error(
                 f"manifest.requirements.{field}: requirement cannot be weakened"
             )
 
-    offer = _exact(
+    offer = _exact_fn(
         doc["commercial_offer"],
         {
             "state",
@@ -313,11 +366,11 @@ def validate_manifest(
         "manifest.commercial_offer",
     )
     if offer["state"] != "PROPOSED_NOT_ACCEPTED":
-        raise ContractError(
+        raise _error(
             "manifest.commercial_offer.state: must remain PROPOSED_NOT_ACCEPTED"
         )
     if (
-        _int(
+        _int_fn(
             offer["fixed_fee_usd_cents"],
             "manifest.commercial_offer.fixed_fee_usd_cents",
             1,
@@ -325,11 +378,11 @@ def validate_manifest(
         )
         != 1_800_000
     ):
-        raise ContractError(
+        raise _error(
             "manifest.commercial_offer.fixed_fee_usd_cents: reference fee drift"
         )
     if (
-        _int(
+        _int_fn(
             offer["optional_cutover_usd_cents"],
             "manifest.commercial_offer.optional_cutover_usd_cents",
             0,
@@ -337,31 +390,31 @@ def validate_manifest(
         )
         != 600_000
     ):
-        raise ContractError(
+        raise _error(
             "manifest.commercial_offer.optional_cutover_usd_cents: reference option drift"
         )
     if (
-        _text(offer["name"], "manifest.commercial_offer.name", 180)
+        _text_fn(offer["name"], "manifest.commercial_offer.name", 180)
         != "Payables and Merchant Reconciliation Acceptance Workshare"
     ):
-        raise ContractError(
+        raise _error(
             "manifest.commercial_offer.name: exact bounded offer required"
         )
     if (
-        _bool(
+        _bool_fn(
             offer["external_send_authorized"],
             "manifest.commercial_offer.external_send_authorized",
         )
         is not False
     ):
-        raise ContractError(
+        raise _error(
             "manifest.commercial_offer.external_send_authorized: must remain false"
         )
 
-    _validate_authority(doc["authority"], "manifest.authority")
+    _validate_authority_fn(doc["authority"], "manifest.authority")
 
     packet = {
-        "schema": SCHEMA,
+        "schema": _schema,
         "solicitation_id": "27-0012",
         "source_authority_state": (
             "BUYER_PACKET_RETAINED"
@@ -370,7 +423,7 @@ def validate_manifest(
         ),
         "teaming_build_state": (
             "HOLD_RESPONSE_WINDOW"
-            if as_of >= _utc("2026-09-25T19:00:00Z", "due")
+            if as_of >= _utc_fn("2026-09-25T19:00:00Z", "due")
             else (
                 "READY_FOR_PARTNER_REVIEW"
                 if source_fresh
@@ -399,8 +452,15 @@ def validate_manifest(
 def evaluate_partner(
     candidate: Any,
     _add_receipt_fn=_add_receipt,
+    _exact_fn=_exact,
+    _id_fn=_id,
+    _text_fn=_text,
+    _https_fn=_https,
+    _bool_fn=_bool,
+    _error=ContractError,
+    _partner_schema=_partner_schema,
 ) -> dict[str, Any]:
-    row = _exact(
+    row = _exact_fn(
         candidate,
         {
             "partner_id",
@@ -417,34 +477,34 @@ def evaluate_partner(
         },
         "partner",
     )
-    partner_id = _id(row["partner_id"], "partner.partner_id")
-    name = _text(row["name"], "partner.name", 200)
-    _https(row["evidence_url"], "partner.evidence_url")
+    partner_id = _id_fn(row["partner_id"], "partner.partner_id")
+    name = _text_fn(row["name"], "partner.name", 200)
+    _https_fn(row["evidence_url"], "partner.evidence_url")
     if row["evidence_class"] not in {"BUYER_PUBLIC", "PROVIDER_PUBLIC"}:
-        raise ContractError("partner.evidence_class: unsupported")
-    merchant = _bool(
+        raise _error("partner.evidence_class: unsupported")
+    merchant = _bool_fn(
         row["public_merchant_capability"],
         "partner.public_merchant_capability",
     )
-    payables = _bool(
+    payables = _bool_fn(
         row["public_payables_or_card_capability"],
         "partner.public_payables_or_card_capability",
     )
-    sector = _bool(
+    sector = _bool_fn(
         row["public_higher_ed_or_public_sector_fit"],
         "partner.public_higher_ed_or_public_sector_fit",
     )
-    erp = _bool(
+    erp = _bool_fn(
         row["peoplesoft_or_erp_fit_confirmed"],
         "partner.peoplesoft_or_erp_fit_confirmed",
     )
-    rfp = _bool(
+    rfp = _bool_fn(
         row["rfp_participation_confirmed"],
         "partner.rfp_participation_confirmed",
     )
-    if _bool(row["contact_authorized"], "partner.contact_authorized") is not False:
-        raise ContractError("partner.contact_authorized: must remain false")
-    _text(row["evidence_note"], "partner.evidence_note", 1000)
+    if _bool_fn(row["contact_authorized"], "partner.contact_authorized") is not False:
+        raise _error("partner.contact_authorized: must remain false")
+    _text_fn(row["evidence_note"], "partner.evidence_note", 1000)
 
     public_fit = merchant and payables and sector
     if not public_fit:
@@ -456,7 +516,7 @@ def evaluate_partner(
 
     return _add_receipt_fn(
         {
-            "schema": PARTNER_SCHEMA,
+            "schema": _partner_schema,
             "partner_id": partner_id,
             "name": name,
             "status": status,
@@ -472,26 +532,29 @@ def evaluate_partners(
     document: Any,
     _evaluate_partner_fn=evaluate_partner,
     _add_receipt_fn=_add_receipt,
+    _exact_fn=_exact,
+    _error=ContractError,
+    _partner_schema=_partner_schema,
 ) -> dict[str, Any]:
-    doc = _exact(document, {"schema", "candidates"}, "partners")
-    if doc["schema"] != PARTNER_SCHEMA:
-        raise ContractError("partners.schema: unsupported")
+    doc = _exact_fn(document, {"schema", "candidates"}, "partners")
+    if doc["schema"] != _partner_schema:
+        raise _error("partners.schema: unsupported")
     rows = doc["candidates"]
     if type(rows) is not list or not (3 <= len(rows) <= 12):
-        raise ContractError("partners.candidates: 3..12 candidates required")
+        raise _error("partners.candidates: 3..12 candidates required")
 
     seen = set()
     results = []
     for raw in rows:
         result = _evaluate_partner_fn(raw)
         if result["partner_id"] in seen:
-            raise ContractError("partners: duplicate partner_id")
+            raise _error("partners: duplicate partner_id")
         seen.add(result["partner_id"])
         results.append(result)
 
     return _add_receipt_fn(
         {
-            "schema": PARTNER_SCHEMA,
+            "schema": _partner_schema,
             "candidate_count": len(results),
             "candidates": results,
             "selection_authorized": False,
@@ -504,8 +567,15 @@ def evaluate_reconciliation_case(
     case: Any,
     trusted_as_of: str,
     _add_receipt_fn=_add_receipt,
+    _exact_fn=_exact,
+    _id_fn=_id,
+    _bool_fn=_bool,
+    _int_fn=_int,
+    _utc_fn=_utc,
+    _error=ContractError,
+    _case_schema=_case_schema,
 ) -> dict[str, Any]:
-    row = _exact(
+    row = _exact_fn(
         case,
         {
             "schema",
@@ -524,39 +594,39 @@ def evaluate_reconciliation_case(
         },
         "case",
     )
-    if row["schema"] != CASE_SCHEMA:
-        raise ContractError("case.schema: unsupported")
+    if row["schema"] != _case_schema:
+        raise _error("case.schema: unsupported")
 
-    case_id = _id(row["case_id"], "case.case_id")
-    merchant_id = _id(row["merchant_id"], "case.merchant_id")
-    settlement = _bool(
+    case_id = _id_fn(row["case_id"], "case.case_id")
+    merchant_id = _id_fn(row["merchant_id"], "case.merchant_id")
+    settlement = _bool_fn(
         row["settlement_file_present"], "case.settlement_file_present"
     )
-    processor = _int(row["processor_total_cents"], "case.processor_total_cents")
-    erp = _int(row["erp_total_cents"], "case.erp_total_cents")
-    gl = _bool(row["gl_mapping_complete"], "case.gl_mapping_complete")
-    chargebacks = _int(
+    processor = _int_fn(row["processor_total_cents"], "case.processor_total_cents")
+    erp = _int_fn(row["erp_total_cents"], "case.erp_total_cents")
+    gl = _bool_fn(row["gl_mapping_complete"], "case.gl_mapping_complete")
+    chargebacks = _int_fn(
         row["unresolved_chargeback_count"],
         "case.unresolved_chargeback_count",
         0,
         1_000_000,
     )
-    supplier = _bool(
+    supplier = _bool_fn(
         row["payables_supplier_match"], "case.payables_supplier_match"
     )
-    future_erp = _bool(
+    future_erp = _bool_fn(
         row["future_erp_contract_evidenced"],
         "case.future_erp_contract_evidenced",
     )
-    audit = _bool(row["audit_chain_complete"], "case.audit_chain_complete")
-    sensitive = _bool(
+    audit = _bool_fn(row["audit_chain_complete"], "case.audit_chain_complete")
+    sensitive = _bool_fn(
         row["sensitive_cardholder_data_present"],
         "case.sensitive_cardholder_data_present",
     )
-    observed = _utc(row["observed_at_utc"], "case.observed_at_utc")
-    as_of = _utc(trusted_as_of, "trusted_as_of")
+    observed = _utc_fn(row["observed_at_utc"], "case.observed_at_utc")
+    as_of = _utc_fn(trusted_as_of, "trusted_as_of")
     if observed > as_of:
-        raise ContractError("case.observed_at_utc: future evidence")
+        raise _error("case.observed_at_utc: future evidence")
     age_seconds = int((as_of - observed).total_seconds())
 
     if sensitive:
@@ -582,7 +652,7 @@ def evaluate_reconciliation_case(
 
     return _add_receipt_fn(
         {
-            "schema": CASE_SCHEMA,
+            "schema": _case_schema,
             "case_id": case_id,
             "merchant_id": merchant_id,
             "decision": decision,
@@ -609,38 +679,43 @@ def evaluate_matrix(
     trusted_as_of: str,
     _evaluate_case_fn=evaluate_reconciliation_case,
     _add_receipt_fn=_add_receipt,
+    _exact_fn=_exact,
+    _text_fn=_text,
+    _error=ContractError,
+    _case_schema=_case_schema,
+    _terminal_decisions=tuple(_terminal_decisions),
 ) -> dict[str, Any]:
-    doc = _exact(document, {"schema", "cases"}, "matrix")
-    if doc["schema"] != CASE_SCHEMA:
-        raise ContractError("matrix.schema: unsupported")
+    doc = _exact_fn(document, {"schema", "cases"}, "matrix")
+    if doc["schema"] != _case_schema:
+        raise _error("matrix.schema: unsupported")
     rows = doc["cases"]
-    if type(rows) is not list or len(rows) < len(TERMINAL_DECISIONS):
-        raise ContractError("matrix.cases: terminal coverage required")
+    if type(rows) is not list or len(rows) < len(_terminal_decisions):
+        raise _error("matrix.cases: terminal coverage required")
 
     seen = set()
-    counts = {decision: 0 for decision in TERMINAL_DECISIONS}
+    counts = {decision: 0 for decision in _terminal_decisions}
     results = []
     for index, raw in enumerate(rows):
-        wrap = _exact(
+        wrap = _exact_fn(
             raw,
             {"expected_decision", "case"},
             f"matrix.cases[{index}]",
         )
-        expected = _text(
+        expected = _text_fn(
             wrap["expected_decision"],
             f"matrix.cases[{index}].expected_decision",
             64,
         )
         if expected not in counts:
-            raise ContractError(
+            raise _error(
                 f"matrix.cases[{index}].expected_decision: unsupported"
             )
         result = _evaluate_case_fn(wrap["case"], trusted_as_of)
         if result["case_id"] in seen:
-            raise ContractError("matrix: duplicate case_id")
+            raise _error("matrix: duplicate case_id")
         seen.add(result["case_id"])
         if result["decision"] != expected:
-            raise ContractError(
+            raise _error(
                 f"matrix.cases[{index}]: expected {expected}, "
                 f"got {result['decision']}"
             )
@@ -649,11 +724,11 @@ def evaluate_matrix(
 
     missing = [key for key, count in counts.items() if count == 0]
     if missing:
-        raise ContractError(f"matrix: missing terminal decisions {missing}")
+        raise _error(f"matrix: missing terminal decisions {missing}")
 
     return _add_receipt_fn(
         {
-            "schema": CASE_SCHEMA,
+            "schema": _case_schema,
             "case_count": len(results),
             "decision_counts": counts,
             "results": results,
