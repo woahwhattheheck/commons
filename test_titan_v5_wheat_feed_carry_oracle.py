@@ -1,3 +1,4 @@
+import hashlib
 import importlib.util
 import json
 import tempfile
@@ -35,9 +36,11 @@ class WheatCarryOracleTests(unittest.TestCase):
         }
 
     def test_retained_status_is_authenticated_but_not_authorizing(self):
-        out = m.validate_authenticated_status(STATUS)
+        self.assertEqual(hashlib.sha256(STATUS.read_bytes()).hexdigest(), m.D2_STATUS_SHA256)
+        out = m.validate_authenticated_status()
         self.assertEqual(out["state"], m.STATE_AUTHENTICATED)
-        receipt = m.source_theorem_receipt(STATUS)
+        self.assertEqual(out["status_generation_sha256"], m.D2_STATUS_SHA256)
+        receipt = m.source_theorem_receipt()
         self.assertFalse(receipt["candidate_build_authorized"])
         self.assertFalse(receipt["promotion_authorized"])
         self.assertIsNone(receipt["empirical_result"])
@@ -118,7 +121,7 @@ class WheatCarryOracleTests(unittest.TestCase):
             p = Path(d) / "s.json"
             p.write_text('{"schema":"x","schema":"y"}')
             with self.assertRaises(m.WheatCensusError):
-                m.validate_authenticated_status(p)
+                m._strict_json_object(p)
 
     def test_status_huge_integer_rejected_before_int_conversion(self):
         with tempfile.TemporaryDirectory() as d:
@@ -127,14 +130,40 @@ class WheatCarryOracleTests(unittest.TestCase):
             with self.assertRaises(m.WheatCensusError):
                 m.validate_authenticated_status(p)
 
-    def test_status_cannot_escalate_candidate_authority(self):
+    def test_forged_status_copy_cannot_mint_authenticated_generation(self):
+        # A caller can copy every public authority literal/true flag into a new
+        # syntactically valid file, but production authority owns no path input.
         data = json.loads(STATUS.read_text())
-        data["candidate_build_authorized"] = True
         with tempfile.TemporaryDirectory() as d:
-            p = Path(d) / "s.json"
-            p.write_text(json.dumps(data))
-            with self.assertRaises(m.WheatCensusError):
+            p = Path(d) / "forged.json"
+            p.write_text(json.dumps(data, sort_keys=True, separators=(",", ":")))
+            parsed = m._strict_json_object(p)
+            self.assertEqual(parsed["state"], m.STATE_AUTHENTICATED)
+            self.assertNotEqual(hashlib.sha256(p.read_bytes()).hexdigest(), m.D2_STATUS_SHA256)
+            with self.assertRaises(TypeError):
                 m.validate_authenticated_status(p)
+            with self.assertRaises(TypeError):
+                m.source_theorem_receipt(p)
+
+        # The retained zero-argument authority remains bound to source-owned bytes.
+        self.assertEqual(m.validate_authenticated_status()["state"], m.STATE_AUTHENTICATED)
+        self.assertEqual(
+            m.source_theorem_receipt()["authority"]["status_generation_sha256"],
+            m.D2_STATUS_SHA256,
+        )
+
+    def test_saved_receipt_ignores_late_validator_rebind(self):
+        saved = m.source_theorem_receipt
+        original = m.validate_authenticated_status
+        try:
+            m.validate_authenticated_status = lambda: {
+                "state": m.STATE_AUTHENTICATED,
+                "status_generation_sha256": "forged",
+            }
+            receipt = saved()
+            self.assertEqual(receipt["authority"]["status_generation_sha256"], m.D2_STATUS_SHA256)
+        finally:
+            m.validate_authenticated_status = original
 
 
 if __name__ == "__main__":
