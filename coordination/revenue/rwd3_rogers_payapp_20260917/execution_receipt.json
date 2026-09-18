@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "operation_id": "RWD3-ROGERS-PAYAPP-RETAINAGE-OWNER-PACKET-ZSOL-20260917",
+  "exact_git_blobs": {
+    "public_facts.json": "3ee56b9fc4d1319c55500b0b48a5145360e3ab35",
+    "owner_handoff.json": "ef3514a9bdf9cd17bf4b6741bfc974aa1da0ef26",
+    "verify_packet.py": "df5c7e7ddc62d92dd659f4cfbff836ed25de31b4"
+  },
+  "proof": {
+    "py_compile": "PASS",
+    "normal_cli": "PASS",
+    "python_optimized_cli": "PASS",
+    "hostile_cases": 14,
+    "hostile_rejections": 14
+  },
+  "receipt_status": "OWNER_PACKET_READY_NO_OUTBOUND",
+  "provider_ci": "UNKNOWN_NOT_CLAIMED"
+}
