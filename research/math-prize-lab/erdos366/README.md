@@ -72,7 +72,7 @@ Result committed in `receipt_1e12.json`:
 - deterministic per-candidate record digest
   `sha256:918602c8e3953bc30aa073be61f54fa3dd41ea77bf23709714747da9e5c5b437`;
 - search-engine Git blob `7e9adb5c2b532a333df34495727e5728925ad746`;
-- test-file Git blob `6402a046e17188a324eed87e1ecfaf6c33c4e5b1`.
+- test-file Git blob `c3f3260d2521176e87beba37e6e1ca66780f0c36`.
 
 This bounded result is an independent reproducibility receipt, not a novelty
 claim and not an improvement over literature-scale searches reported around
@@ -96,7 +96,7 @@ bound.
 python -m unittest -v research/math-prize-lab/erdos366/test_erdos366_search.py
 ```
 
-Six tests pass. They include:
+Six tests pass from the repository root in normal Python and real `python -O` after the import-bootstrap repair. They include:
 
 - exact integer-root checks;
 - generator equality against an independent brute-force oracle for 2-full and
