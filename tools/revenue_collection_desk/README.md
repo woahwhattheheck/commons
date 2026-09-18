@@ -5,7 +5,8 @@ Internal, deterministic collection-state compiler for sanitized retained evidenc
 It keeps these facts separate:
 
 - submitted work is not accepted work;
-- accepted work is not paid work;
+- accepted work does not prove the proposed compensation was agreed or allocated;
+- confirmed compensation entitlement is not paid work;
 - a provider/email statement that payment was sent is not bank settlement;
 - a hosted token balance or reference valuation is not USD cash;
 - a sent collection message is not proof of delivery;
@@ -24,9 +25,17 @@ accepted/asserted state is allowed only when a retained `SETTLED_CASH` event sup
 the exact settlement currency and amount. The compiler never calculates FX or
 token-to-USD value.
 
+Compensation-basis evidence is orthogonal to work acceptance. A receipt-bound
+`ENTITLEMENT_CONFIRMED` event records that the claim's exact instrument and amount
+have retained support such as an advertised bounty or an agreed commercial term.
+Without it, accepted work remains `VERIFY_ENTITLEMENT`, is counted only in
+`accepted_unconfirmed`, and cannot enter the collection route. A proposed quote or
+merge by itself is not entitlement evidence. Direct retained payment evidence may
+still advance the financial lifecycle without this event.
+
 Collection-route events are orthogonal:
 
-- `COLLECTION_CONTACT_SENT` requires an explicit `cooldown_until`;
+- `COLLECTION_CONTACT_SENT` requires confirmed entitlement plus an explicit `cooldown_until`;
 - `DELIVERY_CONFIRMED` records delivery evidence but never changes financial state;
 - `DELIVERY_BOUNCED` marks the route dead and yields `ROUTE_REPAIR_REQUIRED`;
 - `ROUTE_REPAIRED` clears the dead route;
