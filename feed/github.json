@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 113,
-    "open_pull_requests": 59,
-    "runs_in_progress": 13,
-    "runs_queued": 493
+    "open_issues": 115,
+    "open_pull_requests": 58,
+    "runs_in_progress": 14,
+    "runs_queued": 495
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,24 +69,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "grokbuild/pr15902-odg-field-text-20260917",
-      "created_at": "2026-09-18T03:15:18Z",
-      "draft": false,
-      "head_sha": "c023b47686a54b0d70c5719bc51021ec90fbbdda",
-      "number": 15910,
-      "title": "Muse runtime adoption: open-door README wording + scan regression",
-      "updated_at": "2026-09-18T03:15:38Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "z-lantern/provider-armory-15900-20260917",
       "created_at": "2026-09-18T03:14:12Z",
       "draft": false,
       "head_sha": "024a6eae976c504cb56edc29b9d747b9b9383dec",
       "number": 15909,
       "title": "Inventory: expose vaulted free-provider armory as activation-only",
-      "updated_at": "2026-09-18T03:14:12Z"
+      "updated_at": "2026-09-18T03:16:29Z"
     },
     {
       "author": "woahwhattheheck",
@@ -141,7 +130,7 @@
       "head_sha": "42fc7c08ad7640b73ad7ff4af4df677a04e0bd92",
       "number": 15875,
       "title": "board: rejoin proven-complete UNSEATED suppression onto current main",
-      "updated_at": "2026-09-18T03:13:31Z"
+      "updated_at": "2026-09-18T03:15:49Z"
     },
     {
       "author": "woahwhattheheck",
@@ -175,6 +164,17 @@
       "number": 15867,
       "title": "Revenue: build OCS2026.01 multi-tenant TPRM teaming carrier",
       "updated_at": "2026-09-18T01:51:09Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/aidt-ewds-workshare-20260918",
+      "created_at": "2026-09-18T01:48:14Z",
+      "draft": false,
+      "head_sha": "d4a6d1eb3ed0f7615f22c1847f9c379e9f468135",
+      "number": 15866,
+      "title": "AIDT: add migration and Salesforce/LMS specialist workshare",
+      "updated_at": "2026-09-18T01:48:14Z"
     }
   ],
   "open_heads": {
@@ -219,7 +219,7 @@
     "15823": "783792d04073809967c44caaa80d754bd79f5466",
     "15834": "c3464df897f45c235b3ec385d6cd1bf83dc1f9f9",
     "15836": "a0c47ae54f43d5ade1110b29d63f3b42ec8597a0",
-    "15838": "b49ec6eeb333403b8bdb679b546c572bf646b00a",
+    "15838": "6d821c5eebcbf4d95a91915e9b38e2de7cbbd9aa",
     "15840": "1dd7127ba8b46b36e0020a347946d334bddab2b3",
     "15841": "568a80567ae0d16bd343299b681aac683fc98f5e",
     "15843": "2fa099d3627947bcd343bc62119c0b952a760a46",
@@ -235,13 +235,23 @@
     "15884": "fc85ecf3036d57c69c8685068a1f2f49d88c2e8c",
     "15888": "abb4d4b8f9e1b223c21a28e644132ebdd3b50085",
     "15889": "0d0283b19d0528d2c74d66fba7d04a73dafadab4",
-    "15909": "024a6eae976c504cb56edc29b9d747b9b9383dec",
-    "15910": "c023b47686a54b0d70c5719bc51021ec90fbbdda"
+    "15909": "024a6eae976c504cb56edc29b9d747b9b9383dec"
   },
-  "pulls_listed": 59,
+  "pulls_listed": 58,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 37.9,
+  "queue_depth_per_runner": 35.4,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grokbuild/pr15902-odg-field-text-20260917",
+      "closed_at": "2026-09-18T03:16:04Z",
+      "head_sha": "c023b47686a54b0d70c5719bc51021ec90fbbdda",
+      "merged_at": "2026-09-18T03:16:04Z",
+      "number": 15910,
+      "state": "MERGED",
+      "title": "Muse runtime adoption: open-door README wording + scan regression"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -395,21 +405,10 @@
       "number": 15846,
       "state": "CLOSED",
       "title": "Revenue: add IRS 5000233302 partner-first capture packet"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z17/irs-rejoin",
-      "closed_at": "2026-09-18T02:18:20Z",
-      "head_sha": "2348c6d22f5483f66dcd4301234bb1d4b1d00ebb",
-      "merged_at": "2026-09-18T02:18:20Z",
-      "number": 15883,
-      "state": "MERGED",
-      "title": "revenue: rejoin 5000233302 capture on current main"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T03:15:48Z",
+  "unchanged_since": "2026-09-18T03:17:46Z",
   "undatable_pulls": []
 }
