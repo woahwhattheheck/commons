@@ -1063,6 +1063,183 @@ class RegistryTest(unittest.TestCase):
                 store.close()
 
 
+    def test_internal_provider_exemption_is_callsite_scoped(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            path = root / "unsafe.py"
+            raw = (
+                "class InternalSlackScope:\n"
+                "    pass\n"
+                "def guarded(self, web, channel):\n"
+                "    self.scope.require_channel(channel)\n"
+                "    web.chat_postMessage(channel=channel, text='ok')\n"
+                "def unguarded(token):\n"
+                "    slack_web_call('chat.postMessage', token, {'channel': 'COTHER'})\n"
+            ).encode("utf-8")
+            path.write_bytes(raw)
+            sha = registry_impl._git_blob_sha(raw)
+            violations = find_bypasses(
+                root,
+                validate_manifest=False,
+                _internal_provider_marker_exemptions=(
+                    (
+                        "unsafe.py",
+                        sha,
+                        (
+                            "class InternalSlackScope",
+                            "self.scope.require_channel(channel)",
+                        ),
+                    ),
+                ),
+            )
+            self.assertTrue(
+                any(
+                    item.startswith(
+                        "unsafe.py:internal-provider-callsite-unguarded:unguarded:"
+                    )
+                    for item in violations
+                ),
+                violations,
+            )
+            self.assertFalse(
+                any(
+                    item.startswith(
+                        "unsafe.py:internal-provider-callsite-unguarded:guarded:"
+                    )
+                    for item in violations
+                ),
+                violations,
+            )
+
+    def test_internal_provider_guard_must_match_mutation_channel(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            path = root / "unsafe.py"
+            raw = (
+                "class InternalSlackScope:\n"
+                "    pass\n"
+                "def mismatched(self, web):\n"
+                "    self.scope.require_channel('CONE')\n"
+                "    web.chat_postMessage(channel='CTWO', text='no')\n"
+            ).encode("utf-8")
+            path.write_bytes(raw)
+            sha = registry_impl._git_blob_sha(raw)
+            violations = find_bypasses(
+                root,
+                validate_manifest=False,
+                _internal_provider_marker_exemptions=(
+                    (
+                        "unsafe.py",
+                        sha,
+                        (
+                            "class InternalSlackScope",
+                            "self.scope.require_channel",
+                        ),
+                    ),
+                ),
+            )
+            self.assertTrue(
+                any(
+                    item.startswith(
+                        "unsafe.py:internal-provider-callsite-unguarded:mismatched:"
+                    )
+                    for item in violations
+                ),
+                violations,
+            )
+
+    def test_grok_table_proof_refuses_shared_channel_before_receipt_post(self):
+        from integrations.grok_slack import bridge as grok_bridge
+
+        calls: list[str] = []
+
+        def fake_slack_web_call(method, _token, payload=None, **_kwargs):
+            calls.append(method)
+            if method == "auth.test":
+                return {"ok": True, "team": "Local", "team_id": "TLOCAL"}
+            if method == "conversations.history":
+                return {"ok": True, "messages": []}
+            if method == "conversations.info":
+                self.assertEqual((payload or {}).get("channel"), grok_bridge.DEFAULT_CHANNEL)
+                return {
+                    "ok": True,
+                    "channel": {
+                        "id": grok_bridge.DEFAULT_CHANNEL,
+                        "is_member": True,
+                        "is_ext_shared": True,
+                    },
+                }
+            if method == "chat.postMessage":
+                return {"ok": True, "ts": "1.0"}
+            raise AssertionError(method)
+
+        health_report = {
+            "state": "READY",
+            "slack_bot_token": "present",
+            "slack_app_token": "present",
+        }
+        with (
+            patch.object(grok_bridge, "health", return_value=(0, health_report)),
+            patch.object(
+                grok_bridge,
+                "slack_web_call",
+                side_effect=fake_slack_web_call,
+            ),
+        ):
+            with self.assertRaises(grok_bridge.BridgeError):
+                grok_bridge.table_proof(
+                    SimpleNamespace(post_receipt=True),
+                    env={"SLACK_BOT_TOKEN": "xoxb-test-token"},
+                )
+        self.assertIn("conversations.info", calls)
+        self.assertNotIn("chat.postMessage", calls)
+
+    def test_grok_table_proof_internal_channel_allows_one_receipt_post(self):
+        from integrations.grok_slack import bridge as grok_bridge
+
+        calls: list[str] = []
+
+        def fake_slack_web_call(method, _token, payload=None, **_kwargs):
+            calls.append(method)
+            if method == "auth.test":
+                return {"ok": True, "team": "Local", "team_id": "TLOCAL"}
+            if method == "conversations.history":
+                return {"ok": True, "messages": []}
+            if method == "conversations.info":
+                return {
+                    "ok": True,
+                    "channel": {
+                        "id": grok_bridge.DEFAULT_CHANNEL,
+                        "is_member": True,
+                        "team_id": "TLOCAL",
+                    },
+                }
+            if method == "chat.postMessage":
+                self.assertEqual((payload or {}).get("channel"), grok_bridge.DEFAULT_CHANNEL)
+                return {"ok": True, "ts": "1.0"}
+            raise AssertionError(method)
+
+        health_report = {
+            "state": "READY",
+            "slack_bot_token": "present",
+            "slack_app_token": "present",
+        }
+        with (
+            patch.object(grok_bridge, "health", return_value=(0, health_report)),
+            patch.object(
+                grok_bridge,
+                "slack_web_call",
+                side_effect=fake_slack_web_call,
+            ),
+        ):
+            code, report = grok_bridge.table_proof(
+                SimpleNamespace(post_receipt=True),
+                env={"SLACK_BOT_TOKEN": "xoxb-test-token"},
+            )
+        self.assertEqual(code, 0)
+        self.assertTrue(report["internal_scope_verified"])
+        self.assertEqual(calls.count("chat.postMessage"), 1)
+
     def test_parse_incompatible_python_still_gets_sensitive_lexical_scan(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
