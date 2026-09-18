@@ -1063,6 +1063,26 @@ class RegistryTest(unittest.TestCase):
                 store.close()
 
 
+    def test_raw_slack_web_call_is_provider_send_outside_exempt_bridge(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            (root / "live.py").write_text(
+                "def bypass(token, channel):\n"
+                "    return slack_web_call('chat.postMessage', token, "
+                "{'channel': channel, 'text': 'x'})\n",
+                encoding="utf-8",
+            )
+            violations = find_bypasses(root, validate_manifest=False)
+            self.assertTrue(
+                any(
+                    item.startswith(
+                        "live.py:internal-provider-callsite-unguarded:bypass:"
+                    )
+                    for item in violations
+                ),
+                violations,
+            )
+
     def test_internal_provider_exemption_is_callsite_scoped(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
