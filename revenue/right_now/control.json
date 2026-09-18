@@ -79,7 +79,9 @@
       "transport_authorized": false
     },
     {
-      "collision_receipts": [],
+      "collision_receipts": [
+        "revenue/payment_ready/outreach_receipts/20260915-signoz-1a0a32516d82ccb0.json"
+      ],
       "decision": "HOLD_DO_NOT_CONTACT",
       "fit_score": 40,
       "missing": [
@@ -355,6 +357,10 @@
     {
       "path": "revenue/payment_ready/outreach_receipts/20260914-nysa-technology-do-not-resend.json",
       "sha256": "1945e22513e06d3600f224d2e5d87a0c38919e2b5ba3bff7eb57db9fd1475082"
+    },
+    {
+      "path": "revenue/payment_ready/outreach_receipts/20260915-signoz-1a0a32516d82ccb0.json",
+      "sha256": "bed1826e2655b639a342912e33e65a1db2a14ad729f4ed4f509bdb8477124b67"
     }
   ],
   "truth": {
