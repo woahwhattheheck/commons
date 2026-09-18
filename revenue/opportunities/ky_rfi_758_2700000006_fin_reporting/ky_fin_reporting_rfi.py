@@ -168,8 +168,21 @@ def _https(value: Any, label: str) -> str:
 
 
 def _validate_authority(obj: Any, label: str) -> None:
-    authority = _exact(obj, set(AUTHORITY_FALSE), label)
-    for field in AUTHORITY_FALSE:
+    authority_fields = set({
+    "buyer_contact_authorized": False,
+    "portal_action_authorized": False,
+    "vendor_registration_authorized": False,
+    "terms_acceptance_authorized": False,
+    "signature_authorized": False,
+    "submission_authorized": False,
+    "contract_acceptance_authorized": False,
+    "production_access_authorized": False,
+    "production_data_authorized": False,
+    "payment_authorized": False,
+    "revenue_recognized": False,
+})
+    authority = _exact(obj, authority_fields, label)
+    for field in authority_fields:
         if _bool(authority[field], f"{label}.{field}") is not False:
             raise ContractError(f"{label}.{field}: must remain false")
 
@@ -387,7 +400,19 @@ def validate_manifest(manifest: Any, trusted_as_of: str) -> dict[str, Any]:
         "research_lead_count": len(leads),
         "commercial_follow_on_state": offer["state"],
         "commercial_follow_on_price_usd_cents": offer["price_usd_cents"],
-        **AUTHORITY_FALSE,
+        **{
+    "buyer_contact_authorized": False,
+    "portal_action_authorized": False,
+    "vendor_registration_authorized": False,
+    "terms_acceptance_authorized": False,
+    "signature_authorized": False,
+    "submission_authorized": False,
+    "contract_acceptance_authorized": False,
+    "production_access_authorized": False,
+    "production_data_authorized": False,
+    "payment_authorized": False,
+    "revenue_recognized": False,
+},
     }
     return receipt(state)
 
@@ -485,7 +510,19 @@ def evaluate_case(case: Any, trusted_as_of: str) -> dict[str, Any]:
             "report_id": report_id,
             "decision": decision,
             "evidence_age_seconds": age_seconds,
-            **AUTHORITY_FALSE,
+            **{
+    "buyer_contact_authorized": False,
+    "portal_action_authorized": False,
+    "vendor_registration_authorized": False,
+    "terms_acceptance_authorized": False,
+    "signature_authorized": False,
+    "submission_authorized": False,
+    "contract_acceptance_authorized": False,
+    "production_access_authorized": False,
+    "production_data_authorized": False,
+    "payment_authorized": False,
+    "revenue_recognized": False,
+},
         }
     )
 
@@ -538,7 +575,19 @@ def evaluate_matrix(document: Any, trusted_as_of: str) -> dict[str, Any]:
             "case_count": len(results),
             "decision_counts": counts,
             "results": results,
-            **AUTHORITY_FALSE,
+            **{
+    "buyer_contact_authorized": False,
+    "portal_action_authorized": False,
+    "vendor_registration_authorized": False,
+    "terms_acceptance_authorized": False,
+    "signature_authorized": False,
+    "submission_authorized": False,
+    "contract_acceptance_authorized": False,
+    "production_access_authorized": False,
+    "production_data_authorized": False,
+    "payment_authorized": False,
+    "revenue_recognized": False,
+},
         }
     )
 
@@ -563,7 +612,19 @@ def compile_bundle(
                 else "OWNER_REVIEW_REQUIRED"
             ),
             "submission_state": "HOLD_OWNER_AND_PORTAL_AUTHORITY",
-            **AUTHORITY_FALSE,
+            **{
+    "buyer_contact_authorized": False,
+    "portal_action_authorized": False,
+    "vendor_registration_authorized": False,
+    "terms_acceptance_authorized": False,
+    "signature_authorized": False,
+    "submission_authorized": False,
+    "contract_acceptance_authorized": False,
+    "production_access_authorized": False,
+    "production_data_authorized": False,
+    "payment_authorized": False,
+    "revenue_recognized": False,
+},
         }
     )
 
