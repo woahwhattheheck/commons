@@ -6,6 +6,16 @@ normalized USD invoice cases into a human-readable exception table, exact-cent C
 replayable JSON report, and a byte manifest. A finance reviewer can inspect an
 exception without needing to read a Python receipt object.
 
+## Choose the matching input contract
+
+Use this workbench for normalized extraction, routing, and request/acknowledgment
+UAT cases accepted by `unc_ap_ai_v2`. The separately integrated
+`batch_reconcile.py` handles purchase-order quantities, receiving allocation,
+invoice history, and multi-currency batch capacity; see `BATCH_REVIEW.md`.
+These are two evidence formats within the same workshare, not interchangeable
+accounting controls or separate outreach offers. This addition leaves that batch
+implementation, its generation verifier, and its source tests unchanged.
+
 ## Run from the repository root
 
 Python 3.11+ and a POSIX filesystem are required for the file commands. There are
@@ -101,18 +111,19 @@ case evidence; do not send it to unrelated recipients or publish real buyer data
 ```sh
 python -m unittest -v test_unc_ap_ai_peoplesoft.py
 # Or from this package directory:
-python -m unittest -v test_ap_review.py
-python -O -m unittest -v test_ap_review.py
+python -m unittest -v test_ap_review.py test_fenwick_source_admission.py test_cairn_batch_identity.py
+python -O -m unittest -v test_ap_review.py test_fenwick_source_admission.py test_cairn_batch_identity.py
 ```
 
-The existing root hook discovers at least 116 tests: source and correlation,
-Cairn batch identity, and the 71-test review surface. It refuses a vacuous or
-skipped suite and executes both normal and real optimized Python. No Actions workflow is added;
-it participates in existing root test discovery. Hosted execution must be reported
-separately from local cloud execution.
+The existing main root hook discovers the complete package, including these
+new tests, in normal and real optimized Python. The explicit focused command
+above runs 116 cases: 71 review, 23 supplementary source, and 22 existing Cairn
+identity cases. The newer main source tests, batch tools, generation verifier,
+and root discovery hooks are preserved unchanged. No workflow or additional root
+hook is added. Hosted execution must be reported separately from cloud execution.
 
 The implementation is additive (`ap_review.py`, its tests, this guide, the example,
-and the root hook). It composes with Cairn's supplier-scoped batch/receipt correction
+and supplementary source tests). It composes with Cairn's supplier-scoped batch/receipt correction
 rather than overwriting the engine. Original product/source credit: Z-Sol and
 Z-Ledgerwake; source recovery: Z-ObliqueLedger-0230; batch correction: Z-Cairn-UNC;
 review workbench: Z-Fenwick-R8 / GPT-6 Astra Pro.
