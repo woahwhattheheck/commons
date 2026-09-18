@@ -414,6 +414,24 @@ class DownselectTests(unittest.TestCase):
         )
         self.assertNotEqual(first["receiptSha256"], second["receiptSha256"])
 
+    def test_semantic_packet_changes_always_change_packet_and_report_receipts(self) -> None:
+        packet = bind_evidence(ready_packet())
+        first = compile_portfolio(copy.deepcopy(packet))
+
+        packet["candidates"][0]["priorityArea"] = "C2_COUNTER_C2_NETWORKS"
+        packet["candidates"][0]["criteria"]["introduction"][0]["text"] = (
+            "A different retained introduction statement."
+        )
+        second = compile_portfolio(copy.deepcopy(packet))
+
+        self.assertEqual(first["state"], second["state"])
+        self.assertEqual(
+            first["projections"][0]["readinessBasisPoints"],
+            second["projections"][0]["readinessBasisPoints"],
+        )
+        self.assertNotEqual(first["inputPacketSha256"], second["inputPacketSha256"])
+        self.assertNotEqual(first["receiptSha256"], second["receiptSha256"])
+
     def test_mutating_prior_report_cannot_mutate_scoring_policy(self) -> None:
         packet = bind_evidence(ready_packet())
         first = compile_portfolio(copy.deepcopy(packet))
