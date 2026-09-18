@@ -81,9 +81,13 @@ def strict_load(path) -> Any:
         return strict_loads(handle.read())
 
 
-def canonical_json(value: Any) -> str:
+def canonical_json(
+    value: Any,
+    _json_dumps=json.dumps,
+    _error=ContractError,
+) -> str:
     try:
-        return json.dumps(
+        return _json_dumps(
             value,
             sort_keys=True,
             separators=(",", ":"),
@@ -91,17 +95,21 @@ def canonical_json(value: Any) -> str:
             allow_nan=False,
         )
     except (TypeError, ValueError) as exc:
-        raise ContractError(f"not canonicalizable: {exc}") from exc
+        raise _error(f"not canonicalizable: {exc}") from exc
 
 
-def sha256_hex(text: str) -> str:
-    return sha256(text.encode("utf-8")).hexdigest()
+def sha256_hex(text: str, _sha256=sha256) -> str:
+    return _sha256(text.encode("utf-8")).hexdigest()
 
 
-def _add_receipt(value: dict[str, Any]) -> dict[str, Any]:
+def _add_receipt(
+    value: dict[str, Any],
+    _sha256_hex_fn=sha256_hex,
+    _canonical_json_fn=canonical_json,
+) -> dict[str, Any]:
     base = dict(value)
     base.pop("receipt_sha256", None)
-    base["receipt_sha256"] = sha256_hex(canonical_json(base))
+    base["receipt_sha256"] = _sha256_hex_fn(_canonical_json_fn(base))
     return base
 
 
@@ -184,7 +192,11 @@ def _validate_authority(obj: Any, label: str) -> None:
             raise ContractError(f"{label}.{field}: must remain false")
 
 
-def validate_manifest(manifest: Any, trusted_as_of: str) -> dict[str, Any]:
+def validate_manifest(
+    manifest: Any,
+    trusted_as_of: str,
+    _add_receipt_fn=_add_receipt,
+) -> dict[str, Any]:
     doc = _exact(
         manifest,
         {
@@ -381,10 +393,13 @@ def validate_manifest(manifest: Any, trusted_as_of: str) -> dict[str, Any]:
         "compliance_certification_authorized": False,
         "revenue_recognized": False,
     }
-    return _add_receipt(packet)
+    return _add_receipt_fn(packet)
 
 
-def evaluate_partner(candidate: Any) -> dict[str, Any]:
+def evaluate_partner(
+    candidate: Any,
+    _add_receipt_fn=_add_receipt,
+) -> dict[str, Any]:
     row = _exact(
         candidate,
         {
@@ -439,7 +454,7 @@ def evaluate_partner(candidate: Any) -> dict[str, Any]:
     else:
         status = "QUALIFIED_FOR_HUMAN_PARTNER_REVIEW"
 
-    return _add_receipt(
+    return _add_receipt_fn(
         {
             "schema": PARTNER_SCHEMA,
             "partner_id": partner_id,
@@ -453,7 +468,11 @@ def evaluate_partner(candidate: Any) -> dict[str, Any]:
     )
 
 
-def evaluate_partners(document: Any) -> dict[str, Any]:
+def evaluate_partners(
+    document: Any,
+    _evaluate_partner_fn=evaluate_partner,
+    _add_receipt_fn=_add_receipt,
+) -> dict[str, Any]:
     doc = _exact(document, {"schema", "candidates"}, "partners")
     if doc["schema"] != PARTNER_SCHEMA:
         raise ContractError("partners.schema: unsupported")
@@ -464,13 +483,13 @@ def evaluate_partners(document: Any) -> dict[str, Any]:
     seen = set()
     results = []
     for raw in rows:
-        result = evaluate_partner(raw)
+        result = _evaluate_partner_fn(raw)
         if result["partner_id"] in seen:
             raise ContractError("partners: duplicate partner_id")
         seen.add(result["partner_id"])
         results.append(result)
 
-    return _add_receipt(
+    return _add_receipt_fn(
         {
             "schema": PARTNER_SCHEMA,
             "candidate_count": len(results),
@@ -482,7 +501,9 @@ def evaluate_partners(document: Any) -> dict[str, Any]:
 
 
 def evaluate_reconciliation_case(
-    case: Any, trusted_as_of: str
+    case: Any,
+    trusted_as_of: str,
+    _add_receipt_fn=_add_receipt,
 ) -> dict[str, Any]:
     row = _exact(
         case,
@@ -559,7 +580,7 @@ def evaluate_reconciliation_case(
     else:
         decision = "EVIDENCE_READY"
 
-    return _add_receipt(
+    return _add_receipt_fn(
         {
             "schema": CASE_SCHEMA,
             "case_id": case_id,
@@ -583,7 +604,12 @@ def evaluate_reconciliation_case(
     )
 
 
-def evaluate_matrix(document: Any, trusted_as_of: str) -> dict[str, Any]:
+def evaluate_matrix(
+    document: Any,
+    trusted_as_of: str,
+    _evaluate_case_fn=evaluate_reconciliation_case,
+    _add_receipt_fn=_add_receipt,
+) -> dict[str, Any]:
     doc = _exact(document, {"schema", "cases"}, "matrix")
     if doc["schema"] != CASE_SCHEMA:
         raise ContractError("matrix.schema: unsupported")
@@ -609,7 +635,7 @@ def evaluate_matrix(document: Any, trusted_as_of: str) -> dict[str, Any]:
             raise ContractError(
                 f"matrix.cases[{index}].expected_decision: unsupported"
             )
-        result = evaluate_reconciliation_case(wrap["case"], trusted_as_of)
+        result = _evaluate_case_fn(wrap["case"], trusted_as_of)
         if result["case_id"] in seen:
             raise ContractError("matrix: duplicate case_id")
         seen.add(result["case_id"])
@@ -625,7 +651,7 @@ def evaluate_matrix(document: Any, trusted_as_of: str) -> dict[str, Any]:
     if missing:
         raise ContractError(f"matrix: missing terminal decisions {missing}")
 
-    return _add_receipt(
+    return _add_receipt_fn(
         {
             "schema": CASE_SCHEMA,
             "case_count": len(results),
@@ -651,14 +677,19 @@ def compile_bundle(
     partners: Any,
     matrix: Any,
     trusted_as_of: str,
+    _validate_manifest_fn=validate_manifest,
+    _evaluate_partners_fn=evaluate_partners,
+    _evaluate_matrix_fn=evaluate_matrix,
+    _add_receipt_fn=_add_receipt,
+    _bundle_schema=BUNDLE_SCHEMA,
 ) -> dict[str, Any]:
-    pursuit = validate_manifest(manifest, trusted_as_of)
-    partner_result = evaluate_partners(partners)
-    matrix_result = evaluate_matrix(matrix, trusted_as_of)
+    pursuit = _validate_manifest_fn(manifest, trusted_as_of)
+    partner_result = _evaluate_partners_fn(partners)
+    matrix_result = _evaluate_matrix_fn(matrix, trusted_as_of)
 
-    return _add_receipt(
+    return _add_receipt_fn(
         {
-            "schema": BUNDLE_SCHEMA,
+            "schema": _bundle_schema,
             "solicitation_id": "27-0012",
             "pursuit": pursuit,
             "partners": partner_result,
@@ -691,9 +722,11 @@ def verify_bundle(
     partners: Any,
     matrix: Any,
     trusted_as_of: str,
+    _canonical_json_fn=canonical_json,
+    _compile_bundle_fn=compile_bundle,
 ) -> bool:
     if type(bundle) is not dict:
         return False
-    return canonical_json(bundle) == canonical_json(
-        compile_bundle(manifest, partners, matrix, trusted_as_of)
+    return _canonical_json_fn(bundle) == _canonical_json_fn(
+        _compile_bundle_fn(manifest, partners, matrix, trusted_as_of)
     )
