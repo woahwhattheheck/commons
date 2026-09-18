@@ -424,8 +424,8 @@ def _build_trust_generation():
         if type_fn(gates) is not list_type:
             raise value_error("gates must be a list")
 
-        seen: set[str] = set()
-        used_receipts: set[str] = set()
+        seen: set[str] = set_type()
+        used_receipts: set[str] = set_type()
         evaluated: list[GateResult] = []
         for index, raw in enumerate_fn(gates):
             if type_fn(raw) is not dict_type:
@@ -457,7 +457,7 @@ def _build_trust_generation():
             if (
                 type_fn(evidence_refs) is not list_type
                 or not all_fn(
-                    type_fn(ref) is str_type and bool(ref)
+                    type_fn(ref) is str_type and ref != ""
                     for ref in evidence_refs
                 )
             ):
