@@ -319,6 +319,8 @@ def _normalize_claim(value: Any, index: int, as_of_dt: datetime) -> dict[str, An
 
     for eindex, raw_event in enumerate(raw_events):
         event, event_at = _normalize_event(raw_event, f"{label}.events[{eindex}]")
+        if event_at > as_of_dt:
+            raise ContractError(f"{label}: event timestamp is after ledger as_of")
         if event["event_id"] in seen_event_ids:
             raise ContractError(f"{label}: duplicate event_id {event['event_id']}")
         seen_event_ids.add(event["event_id"])
