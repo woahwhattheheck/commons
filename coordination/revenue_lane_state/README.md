@@ -24,15 +24,19 @@ mistaken for independently verified truth.
 
 Within that pre-authenticated packet, provider state must come from
 provider-class events; human reply/decline or partner acceptance must come from
-human-class events. Coordination intent (`TAKE`, `MUSE_PENDING`,
+human-class events. Event-list membership/order and each admitted event mapping
+are detached into compiler-owned snapshots before semantic parsing; reduction
+and retained-history hashing therefore consume the same admitted generation even
+if the caller mutates its original packet object afterward. Coordination intent (`TAKE`, `MUSE_PENDING`,
 `MUSE_SELECTED`, `LEASE_CONSUMED`) cannot mint or erase provider/human
 state.
 
 The source-class matrix, state-specific currentness basis, identifier grammar,
-resource ceilings, and all-false authority policy are captured at first import.
-Compiled artifacts bind that exact semantic generation as
-`policy_generation_sha256`; ordinary post-import rebinding of exported policy
-or helper names cannot widen compile/verify semantics for the loaded compiler.
+resource ceilings, strict-JSON parser primitives, canonical-JSON validator/size
+ceiling, and all-false authority policy are captured at first import. Compiled
+artifacts bind that exact semantic generation as `policy_generation_sha256`;
+ordinary post-import rebinding of exported policy/helper names or JSON limit
+globals cannot widen compile/verify semantics for the loaded compiler.
 
 A correction may supersede only an older event from the **same authenticated
 source class**, must be strictly later in time, and cannot reach backward across
@@ -112,8 +116,9 @@ python -m coordination.revenue_lane_state.cli verify \
   second-send collision, same-source authenticated correction with retained
   superseded-history digest binding, coordination-cannot-erase authority,
   provider-send non-retirement, later unrelated route-bounce send preservation,
-  post-import policy/helper rebinding resistance, supersession-cycle rejection,
-  compiler-bounded currentness, state-basis currentness,
+  post-import policy/helper/JSON-generation rebinding resistance,
+  validate-to-reduce caller-mutation generation integrity, supersession-cycle
+  rejection, compiler-bounded currentness, state-basis currentness,
   lease-without-provider HOLD, conflicting
   procurement/human terminal truth, event transplant, replay/currentness,
   malformed projection blocks, semantic tamper, and CLI create-exclusive
