@@ -157,6 +157,17 @@ class DownselectTests(unittest.TestCase):
         self.assertIn("fake_traction:stars:GITHUB_STARS", alpha["hardBlockers"])
         self.assertEqual(alpha["externalTractionEvidenceCount"], 0)
 
+    def test_proposed_claim_is_diagnostic_but_blocks_selection(self) -> None:
+        packet = ready_packet()
+        packet["candidates"][0]["criteria"]["armyBenefits"][0] = claim(
+            "alpha.army-hypothesis", "PROPOSED"
+        )
+        report = compile_portfolio(packet)
+        alpha = next(row for row in report["projections"] if row["candidateId"] == "alpha")
+        self.assertIn("claim:alpha.army-hypothesis:PROPOSED", alpha["hardBlockers"])
+        self.assertEqual(report["state"], "HOLD")
+        self.assertIsNone(report["selectedCandidateId"])
+
     def test_forbidden_claim_is_hard_blocker(self) -> None:
         packet = ready_packet()
         packet["candidates"][0]["criteria"]["technicalApproach"][0] = claim(
