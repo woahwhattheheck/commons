@@ -12,6 +12,22 @@ The response therefore uses one evidence chain:
 
 Every material roadmap recommendation and prototype candidate retains this lineage. This directly supports the buyer-required findings-to-recommendations traceability matrix and prevents fashionable use cases from outrunning evidence.
 
+## First-party addendum controls recovered 2026-09-18
+
+The current buyer-issued Vendor Questions addendum materially narrows the response assumptions while the canonical raw-byte/SHA readiness gate remains unchanged:
+
+- **Commercial ceiling:** total cost shall not exceed **$750,000**. This is a buyer ceiling, not a Token Junkie Labs price commitment.
+- **Planning schedule:** kickoff February 2027; Deliverables 1–2 April 2027; Deliverables 3–4 September 2027; Deliverable 5 December 2027; Deliverable 6 February 2028. TTUHSC says these dates may change and it will construct a contract term that accommodates completion.
+- **Workflow scale:** approximately **8–10 workflows** across Academic, Clinical, Research and Admin, with at least two per functional area contemplated. Solutions should be pilot-ready or fully production-ready; associated solution costs sit outside the fixed fee and may be optional items.
+- **Adoption scale:** approximately 6,000 employees, 150–200 leaders, and an initial rollout target of about 3,000 people.
+- **Environment:** Microsoft Copilot is the currently deployed enterprise generative-AI tool; TTUHSC operates in a Microsoft enterprise environment, has an LMS, and allows Microsoft 365/Azure/Power BI/SharePoint/intranet patterns where appropriate.
+- **Governance:** build on OP 52.21 and the active AI tool inventory, aligned to NIST AI RMF and Texas DIR rather than replacing existing governance.
+- **TX-RAMP:** buyer says TX-RAMP applies to contractor-hosted cloud services; a managed-service design inside TTUHSC-controlled infrastructure can avoid that trigger when it introduces no contractor-hosted cloud and no prohibited external data path. Final applicability remains an owner/legal/compliance input tied to the actual architecture.
+- **Subcontracting:** named partners should be identified at submission when used; inclusion is viewed neutrally and delegation requires TTUHSC prior written approval.
+- **Incumbency:** buyer states there is no incumbent systems integrator/reseller/implementation partner engaged for these consulting services.
+
+The buyer PDFs are directly readable from the first-party ESBD attachment records, but this runtime still has not retained their raw bytes/SHA-256. These content facts improve proposal accuracy; they do **not** clear the canonical source-currentness or bidder-vault submission gates.
+
 ## 2. Workstream A — AI strategy, governance and transformation planning
 
 ### A1. Executive alignment
@@ -155,7 +171,7 @@ Candidate portfolio record:
 
 ### D2. Portfolio triage
 
-Target a bounded set of approximately **8–10 workflow candidates only if the current controlling packet/addenda confirms that planning assumption**. Rank candidates by value, feasibility, data/security readiness, integration effort and risk. Do not promise a prototype count unsupported by the current buyer generation.
+Plan approximately **8–10 workflows across Academic, Clinical, Research and Admin**, consistent with the buyer-issued addendum. TTUHSC contemplates at least two workflows/use cases per functional area. Rank candidates by value, feasibility, data/security readiness, integration effort and risk; selected solutions should reach pilot-ready or fully production-ready maturity. Treat implementation/hosting/licensing/maintenance costs outside the fixed fee as optional items where applicable rather than silently embedding them.
 
 ### D3. Prototype engineering pattern
 
@@ -241,7 +257,7 @@ Any software/data-transfer mechanism in scope must be designed for the buyer-req
 
 ### F3. HIPAA / FERPA / BAA / TX-RAMP
 
-Determine applicability per workflow/tool/data boundary before work begins. Where PHI/ePHI is involved, the included Business Associate Agreement and applicable HIPAA/HITECH/Texas obligations become a major performance boundary. TX-RAMP status/applicability must be resolved with real evidence. No repository artifact is allowed to mark these items proven merely because the technical architecture can support them.
+Determine applicability per workflow/tool/data boundary before work begins. Where PHI/ePHI is involved, the included Business Associate Agreement and applicable HIPAA/HITECH/Texas obligations become a major performance boundary. The buyer addendum says TX-RAMP applies to hosted cloud services (SaaS/PaaS/IaaS); a professional/managed service operating inside TTUHSC-approved infrastructure, with no contractor-hosted cloud and no institutional data leaving TTUHSC-controlled systems, is the preferred architecture to avoid introducing that requirement. If the actual proposal introduces hosted cloud, TX-RAMP applies. No repository artifact may convert this architecture choice into a certification claim.
 
 ## 8. Engagement management and cadence
 
@@ -312,15 +328,15 @@ Suggested cadence, subject to buyer alignment:
 
 ## 10. Proposed delivery sequence
 
-The RFP leaves milestone dates blank for proposers to propose. The final schedule must be based on real staffing/capacity. A defensible sequence is:
+The buyer addendum now supplies planning dates, subject to change and final contracting:
 
-1. **Mobilize / assess:** source intake, executive alignment, readiness and workflow baseline.
-2. **Design:** governance, change model, learning architecture, portfolio triage, analytics baseline.
-3. **Build / validate:** curricula, selected prototypes, agentic controls, analytics/ROI instrumentation.
-4. **Scale / transfer:** leadership/change activation, training delivery, measured pilots/prototypes, repository and playbooks.
-5. **Synthesize / hand off:** final roadmap, operating model, acceptance evidence and transition package.
+1. **Kickoff:** February 2027.
+2. **Deliverables 1–2:** April 2027.
+3. **Deliverables 3–4:** September 2027.
+4. **Deliverable 5:** December 2027.
+5. **Deliverable 6:** February 2028.
 
-Run workstreams in parallel only where real staffing commitments support it.
+The delivery plan should work backward from those milestones, preserve dependencies discovered during the readiness assessment, and run workstreams in parallel only where real staffing commitments support it. TTUHSC states it will work collaboratively to construct a contract term that accommodates completion.
 
 ## 11. Pricing architecture — no invented dollars
 
@@ -328,10 +344,10 @@ The buyer requests:
 
 - not-to-exceed fixed fee **per deliverable**, inclusive of associated fees such as meetings/travel;
 - level-of-effort schedule supporting the quoted fixed fees;
-- hourly resource rate card by resource type valid through 2027-08-31 for change orders;
+- hourly resource rate card by resource type valid through **2028-03-31** for change orders;
 - standard Net 30 payment terms.
 
-Internal pricing workbook/response should therefore hold, for each deliverable: role, hours, rate, direct expense, subcontract cost, tool/platform cost, contingency/risk allowance, margin, total NTE fee and assumptions. Every dollar/rate is an owner/company input. No model-generated commercial amount is submission-authorized.
+The buyer-issued addendum sets an overall **$750,000 not-to-exceed ceiling**. Internal pricing workbook/response should therefore hold, for each deliverable: role, hours, rate, direct expense, subcontract cost, tool/platform cost, contingency/risk allowance, margin, total NTE fee and assumptions, while proving the aggregate proposal remains within the buyer ceiling. Every TJLabs dollar/rate remains an owner/company input; the $750,000 figure is a buyer constraint, not a submission-authorized TJLabs price.
 
 ## 12. Experience and reference evidence slots
 
