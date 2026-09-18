@@ -429,4 +429,73 @@ def _build_api():
 
     def status_for(normalized: dict[str, _Any], now_s: int) -> tuple[str, list[str], dict[str, int]]:
         integer(now_s, "now_s")
-        cap
+        capture = normalized["capture"]
+        events = normalized["events"]
+        reasons: list[str] = []
+        counts = {name: 0 for name in sorted(event_classes)}
+        for event in events:
+            counts[event["event_class"]] += 1
+
+        # Future evidence/capture and capture-before-event are evidence failures.
+        if capture["captured_at_s"] > now_s:
+            reasons.append("capture_is_future")
+        if any(event["occurred_at_s"] > now_s for event in events):
+            reasons.append("event_is_future")
+        if events[-1]["occurred_at_s"] > capture["captured_at_s"]:
+            reasons.append("capture_precedes_latest_event")
+        if reasons:
+            return "HOLD_EVIDENCE", reasons, counts
+
+        if now_s > capture["captured_at_s"] + capture["max_age_seconds"]:
+            return "HOLD_STALE_CAPTURE", ["capture_exceeds_freshness_window"], counts
+
+        root_scope = (
+            normalized["operation_key"],
+            normalized["counterparty"],
+            normalized["route"],
+            normalized["purpose"],
+            normalized["lease_id"],
+        )
+        for event in events:
+            event_scope = (
+                event["operation_key"],
+                event["counterparty"],
+                event["route"],
+                event["purpose"],
+                event["lease_id"],
+            )
+            if event_scope != root_scope:
+                return "HOLD_SCOPE_DRIFT", [f"scope_drift:{event['id']}"], counts
+
+        runtime = normalized["runtime"]
+        runtime_tuple = (runtime["instance_id"], runtime["build_id"], runtime["source_sha256"])
+        for event in events:
+            event_runtime = (
+                event["runtime_instance_id"],
+                event["runtime_build_id"],
+                event["runtime_source_sha256"],
+            )
+            if event_runtime != runtime_tuple:
+                return "HOLD_RUNTIME_DRIFT", [f"runtime_drift:{event['id']}"], counts
+
+        selected = normalized["selected_session"]
+        for event in events:
+            if event["session"] != selected:
+                return "HOLD_WRONG_SESSION", [f"wrong_session:{event['id']}"], counts
+
+        # A transcript must start with exactly one SELECTED and at most one LEASED/
+        # CONSUMED. Duplicate GO has its own terminal state because it is the
+        # reproduced economic failure class.
+        if counts["GO"] > 1:
+            return "HOLD_DUPLICATE_GO", ["multiple_go_events"], counts
+        if counts["SELECTED"] != 1:
+            return "HOLD_EVIDENCE", ["selected_count_must_equal_one"], counts
+        if counts["LEASED"] > 1 or counts["CONSUMED"] > 1 or counts["COMMIT"] > 1:
+            return "HOLD_EVIDENCE", ["non_go_event_count_exceeds_one"], counts
+
+        classes = [event["event_class"] for event in events]
+        if classes[0] != "SELECTED":
+            return "HOLD_EVIDENCE", ["first_event_must_be_selected"], counts
+        if counts["LEASED"] == 0:
+            if len(events) == 1:
+   
