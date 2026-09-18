@@ -21,7 +21,7 @@ KEEP = {
     "p/grokbuild-occupancy-landed-work-keep-lift-20260902-01.md": "67a8a527",
     "test_grokbuild_occupancy_landed_work_keep_lift.py": "6c960797",
     "p/grokbuild-occupancy-landed-work-keep-lift-readback-20260902-01.md": "892bc4c0",
-    "test_grokbuild_occupancy_landed_work_keep_lift_readback.py": "2e9425a1",
+    "test_grokbuild_occupancy_landed_work_keep_lift_readback.py": "a755f1ca",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "host/stealable_lanes.py": "524275ce",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",

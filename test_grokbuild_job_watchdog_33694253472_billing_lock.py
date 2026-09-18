@@ -32,7 +32,7 @@ KEEP = {
     "catalog.html": "68b9b066",
     "hub_pages.py": "673dab89",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
-    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "aba48efe",
+    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "71008d70",
 }
 
 

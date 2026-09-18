@@ -19,7 +19,7 @@ WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
     ".github/workflows/tests.yml": "57d36525",
-    "test_cursor_merge_on_pr_readback.py": "6387d6fe",
+    "test_cursor_merge_on_pr_readback.py": "a667c176",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "host/merge_on_pr.py": "0270094d",

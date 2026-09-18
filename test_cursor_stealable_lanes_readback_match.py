@@ -19,7 +19,7 @@ DOOR = ROOT / "stealable-lanes.html"
 
 KEEP = {
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
-    "test_cursor_stealable_lanes_readback.py": "5773beb9",
+    "test_cursor_stealable_lanes_readback.py": "e3591633",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "host/stealable_lanes.py": "524275ce",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
@@ -28,7 +28,7 @@ KEEP = {
     "ground/STEALABLE_ROLES.md": "66f4feda",
     "ground/STEALABLE_LANES.json": "3627162a",
     "ground/STEALABLE_LANES.md": "3743d4f5",
-    "stealable-lanes.html": "a15f15b5",
+    "stealable-lanes.html": "18d0ae64",
     "p/grok-build-pr8353-caec56f3-terminal-20260902-01.md": "7e8db90d",
     "lanes.json": "1c4569ef",
     "roles.json": "9fb3f2c2",

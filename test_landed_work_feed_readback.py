@@ -18,7 +18,7 @@ KEEP = {
     "host/landed_work_feed.py": "5a5e5804",
     "ground/LANDED_WORK_FEED.json": "4c42f69f",
     "test_landed_work_feed.py": "55edf425",
-    "landed-work.html": "c767e323",
+    "landed-work.html": "ac1e48ad",
     "repo_pulse.py": "298716e9",
     "ground/OWNER_NOW.md": "39a0e0c3",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",

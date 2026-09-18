@@ -17,7 +17,7 @@ KEEP = {
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
     "catalog.html": "68b9b066",
-    "boards.html": "c7531a1e",
+    "boards.html": "8458831c",
     "hub_pages.py": "673dab89",
     "p/cursor-goat-pages-super-mcp-land-readback-20260902-01.md": "f98887bf",
 }

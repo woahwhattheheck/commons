@@ -22,7 +22,7 @@ KEEP = {
     "p/grokbuild-tests-33694246830-billing-lock-20260902-01.md": "b07d6192",
     "test_grokbuild_tests_33694246830_billing_lock.py": "8da3910b",
     "p/grokbuild-tests-battery-33689096444-billing-lock-20260902-01.md": "a7ff1feb",
-    "test_grokbuild_tests_battery_33689096444_billing_lock.py": "dcd3d5ae",
+    "test_grokbuild_tests_battery_33689096444_billing_lock.py": "e2e0395c",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
     "test_grokbuild_llms_txt_33699286770_billing_lock.py": "0be8ee39",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",

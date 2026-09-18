@@ -30,7 +30,7 @@ KEEP = {
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
     "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "5d77b1cd",
     "p/grok-build-discord-cloud-33717741051-billing-lock-20260903-01.md": "b7a4ea0e",
-    "test_grokbuild_discord_cloud_33717741051_billing_lock.py": "83651f18",
+    "test_grokbuild_discord_cloud_33717741051_billing_lock.py": "b71dd148",
     "p/grokbuild-slack-service-tags-33717615004-billing-lock-20260903-01.md": "f33a76ef",
     "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "bac16a06",
     "p/grokbuild-open-door-guard-33717733987-billing-lock-20260903-01.md": "a0af1282",

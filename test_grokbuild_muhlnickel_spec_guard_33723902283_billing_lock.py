@@ -25,9 +25,9 @@ KEEP = {
     "p/grokbuild-leftover-id-census-33723043828-billing-lock-20260903-01.md": "e135862e",
     "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "ed237a30",
     "p/grokbuild-muhlnickel-spec-guard-33718116252-billing-lock-20260903-01.md": "4f43a687",
-    "test_grokbuild_muhlnickel_spec_guard_33718116252_billing_lock.py": "345edb58",
+    "test_grokbuild_muhlnickel_spec_guard_33718116252_billing_lock.py": "78c2de02",
     "p/grokbuild-muhlnickel-spec-guard-33717733967-billing-lock-20260903-01.md": "5b7f49cd",
-    "test_grokbuild_muhlnickel_spec_guard_33717733967_billing_lock.py": "dcfc39e8",
+    "test_grokbuild_muhlnickel_spec_guard_33717733967_billing_lock.py": "103ab21d",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
     "leftover-census.md": "70fb3d87",
     "leftover-census.json": "32d3ee6b",
@@ -36,8 +36,8 @@ KEEP = {
     "test_work_becomes_automation.py": "2a0c4e51",
     "p/work-becomes-automation-20260830-01.md": "c0ab7d78",
     "p/cursor-wire-catalog-marketplace-latch-readback-rematch-20260903-01.md": "f23e1db8",
-    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "5b2bd0d4",
-    "wire.html": "5f0d0f84",
+    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "1d586720",
+    "wire.html": "623602a7",
     "ground/WIRE_SUPER_MCP.md": "9f1a457b",
 }
 

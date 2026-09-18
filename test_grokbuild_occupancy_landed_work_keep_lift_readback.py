@@ -33,7 +33,7 @@ KEEP = {
     "test_stealable_lanes.py": "4b90b09b",
     "test_stealable_lanes_occupancy.py": "c1b2d2c0",
     "test_landed_work_feed.py": "55edf425",
-    "test_landed_work_feed_readback.py": "b55c8954",
+    "test_landed_work_feed_readback.py": "ac39d344",
     "hub_pages.py": "673dab89",
     "door.js": "c06cc197",
     "api/mcp.py": "393da756",

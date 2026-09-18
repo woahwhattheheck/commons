@@ -18,11 +18,11 @@ COIL = ROOT / "p/coil-tools-super-mcp-fold-20260902-01.md"
 
 KEEP = {
     "p/cursor-goat-pages-super-mcp-land-readback-20260902-01.md": "f98887bf",
-    "test_cursor_goat_pages_super_mcp_land_readback.py": "5c5f4c0d",
+    "test_cursor_goat_pages_super_mcp_land_readback.py": "beca2a36",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
     "catalog.html": "68b9b066",
-    "boards.html": "486b13e1",
-    "wire.html": "5f0d0f84",
+    "boards.html": "8458831c",
+    "wire.html": "623602a7",
     "ground/WIRE_SUPER_MCP.md": "9f1a457b",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
     "p/latch-wake-super-mcp-pointer-20260902-01.md": "a35e63c3",

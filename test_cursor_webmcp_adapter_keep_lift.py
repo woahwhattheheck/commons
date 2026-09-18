@@ -29,7 +29,7 @@ KEEP = {
     "p/cursor-wire-hall-pass-unique-pack-ship-20260902-01.md": "7900eaba",
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
-    "wire.html": "5f0d0f84",
+    "wire.html": "623602a7",
     "ground/WIRE_SUPER_MCP.md": "6a50f614",
     "hub_pages.py": "673dab89",
     "door.js": "de1d570b",
