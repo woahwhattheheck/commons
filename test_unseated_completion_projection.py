@@ -90,6 +90,12 @@ class CompletionProjectionTests(unittest.TestCase):
         bad = dict(self.pr, body="Mentions #15130 without closing it.")
         with self.assertRaises(cp.CompletionEvidenceError):
             cp.build_marker(self.root, OP, self.issue, bad)
+        bad = dict(self.pr, merged_at="2026-09-17T00:41:28Z")
+        with self.assertRaises(cp.CompletionEvidenceError):
+            cp.build_marker(self.root, OP, self.issue, bad)
+        bad = dict(self.pr, html_url="https://github.com/other/repo/pull/15138")
+        with self.assertRaises(cp.CompletionEvidenceError):
+            cp.build_marker(self.root, OP, self.issue, bad)
 
     def test_source_mismatch_fails_closed_instead_of_hiding_work(self):
         marker = cp.build_marker(self.root, OP, self.issue, self.pr)
@@ -102,6 +108,14 @@ class CompletionProjectionTests(unittest.TestCase):
         cp.write_marker(self.root, marker)
         self.assertFalse(cp.remove_marker(self.root, OP, 99999))
         self.assertTrue(cp.remove_marker(self.root, OP, 15130))
+        self.assertEqual(frozenset(), cp.completed_operation_ids(self.root))
+
+    def test_marker_reader_rejects_tampered_provenance(self):
+        marker = cp.build_marker(self.root, OP, self.issue, self.pr)
+        marker["issue"]["url"] = "https://github.com/other/repo/issues/15130"
+        path = self.root / cp.marker_rel(OP)
+        path.parent.mkdir(parents=True)
+        path.write_text(json.dumps(marker), encoding="utf-8")
         self.assertEqual(frozenset(), cp.completed_operation_ids(self.root))
 
     def test_marker_binds_git_blob_identity(self):
