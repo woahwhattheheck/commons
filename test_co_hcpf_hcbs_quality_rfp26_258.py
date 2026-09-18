@@ -1,3 +1,4 @@
+import builtins
 import copy
 import json
 import subprocess
@@ -233,18 +234,59 @@ class Hcbs258Tests(unittest.TestCase):
             for name, value in saved.items():
                 setattr(q, name, value)
 
-    def test_15_public_api_rejects_dependency_kwargs(self):
+    def test_15_builtin_shadowing_cannot_bypass_bounds_or_mint_prime(self):
+        s, w = source(), work()
+        compile_fixture = engine(
+            sources={s["id"]: s},
+            prime={},
+            workshare={row["id"]: row for row in w},
+        )
+        baseline = compile_fixture(packet([s], [], w))
+        self.assertEqual(baseline["state"], "HOLD_NO_QUALIFIED_PRIME")
+        self.assertEqual(baseline["qualified_prime_org_ids"], [])
+
+        names = ("len", "set", "sorted", "type", "isinstance", "dict", "abs", "enumerate", "frozenset")
+        sentinel = object()
+        saved = {name: q.__dict__.get(name, sentinel) for name in names}
+        try:
+            q.len = lambda _: 0
+            oversized = packet()
+            oversized["pursuit_id"] = "x" * (q.MAX_JSON_BYTES + 1)
+            raw = json.dumps(oversized, separators=(",", ":"))
+            with self.assertRaisesRegex(q.QualificationError, "JSON input exceeds byte limit"):
+                q.compile_json(raw)
+
+            q.set = lambda *_: builtins.set(q.PRIME_GATES)
+            q.sorted = lambda *_: ["synthetic-prime"]
+            q.type = lambda *_: str
+            q.isinstance = lambda *_: True
+            q.dict = lambda *_args, **_kwargs: {"state": "ATTACK"}
+            q.abs = lambda *_: 0
+            q.enumerate = lambda *_: ()
+            q.frozenset = lambda *_: builtins.frozenset()
+            out = compile_fixture(packet([s], [], w))
+            self.assertEqual(out["state"], "HOLD_NO_QUALIFIED_PRIME")
+            self.assertEqual(out["qualified_prime_org_ids"], [])
+            self.assertTrue(all(v is False for v in out["authority"].values()))
+        finally:
+            for name, value in saved.items():
+                if value is sentinel:
+                    q.__dict__.pop(name, None)
+                else:
+                    setattr(q, name, value)
+
+    def test_16_public_api_rejects_dependency_kwargs(self):
         with self.assertRaises(TypeError):
             q.compile_packet(packet(), _engine=lambda _: {})
         with self.assertRaises(TypeError):
             q.compile_json("{}", _loader=lambda _: packet())
 
-    def test_16_bool_is_not_price(self):
+    def test_17_bool_is_not_price(self):
         bad = source(initial_cap_usd=True)
         with self.assertRaises(q.QualificationError):
             q._build_engine({bad["id"]: bad}, {}, {}, lambda: datetime.now(timezone.utc))
 
-    def test_17_real_python_O(self):
+    def test_18_real_python_O(self):
         if not sys.flags.optimize:
             proc = subprocess.run(
                 [sys.executable, "-O", "-m", "unittest", "-v", __file__],
