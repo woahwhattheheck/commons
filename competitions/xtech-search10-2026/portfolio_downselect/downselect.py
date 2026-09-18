@@ -94,6 +94,7 @@ class ContractError(ValueError):
 @dataclass(frozen=True)
 class CandidateProjection:
     candidateId: str
+    sourceIdentity: str
     readinessBasisPoints: int
     criterionBasisPoints: dict[str, int]
     hardBlockers: list[str]
@@ -364,6 +365,18 @@ def _evidence_registry(raw: Any) -> dict[str, dict[str, Any]]:
                 raise ContractError("INVALID_EVIDENCE_SHA256", evidence_id)
             normalized["sha256"] = digest
         registry[evidence_id] = normalized
+
+    external_artifacts: dict[tuple[str, str], str] = {}
+    for row in registry.values():
+        if row["sourceClass"] != "EXTERNAL_COUNTERPARTY":
+            continue
+        parts = row["binding"].split(":")
+        candidate_id = parts[1] if len(parts) >= 3 and parts[0] == "candidate" else ""
+        identity = (row["locator"], row["sha256"])
+        prior_candidate = external_artifacts.get(identity)
+        if prior_candidate is not None and prior_candidate != candidate_id:
+            raise ContractError("EXTERNAL_EVIDENCE_CANDIDATE_REPLAY", row["evidenceId"])
+        external_artifacts[identity] = candidate_id
     return registry
 
 
@@ -664,6 +677,7 @@ def _candidate(
         blockers.append(f"scope:USAMRDC_EXCLUSIVE:{exclusivity_state}")
     return CandidateProjection(
         candidateId=candidate_id,
+        sourceIdentity=f"{repo}@{commit}:{source_path}",
         readinessBasisPoints=total_bp,
         criterionBasisPoints=criterion_bp,
         hardBlockers=sorted(set(blockers)),
@@ -780,6 +794,9 @@ def compile_portfolio(packet: Any) -> dict[str, Any]:
         _candidate(row, i, registry=registry, used=used_evidence)
         for i, row in enumerate(candidates_raw)
     ]
+    source_identities = [row.sourceIdentity for row in projections]
+    if len(source_identities) != len(set(source_identities)):
+        raise ContractError("CANDIDATE_SOURCE_REPLAY")
     unused = sorted(set(registry) - used_evidence)
     if unused:
         raise ContractError("UNUSED_EVIDENCE_RECORD", unused[0])
