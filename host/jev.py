@@ -50,7 +50,7 @@ MAX_QUESTIONS = 500
 
 
 class JevError(Exception):
-    """Typed failure. str(self) carries NO_KEY / HTTP_<status> / TRANSPORT / BAD_REPLY."""
+    """Typed failure: NO_KEY / KEY_SOURCE_CONFLICT / HTTP_<status> / TRANSPORT / BAD_REPLY."""
 
 
 class CREDENTIALW(ctypes.Structure):
