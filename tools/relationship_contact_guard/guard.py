@@ -96,6 +96,7 @@ def _freeze_plain_json(
     _max_safe_integer: int = MAX_SAFE_INTEGER,
     _max_json_depth: int = MAX_JSON_DEPTH,
     _max_json_nodes: int = MAX_JSON_NODES,
+    _json_string_size_fn=_json_string_size,
     _isfinite=math.isfinite,
     _json_dumps=json.dumps,
 ) -> Any:
@@ -146,7 +147,7 @@ def _freeze_plain_json(
             return item
         if type(item) is str:
             remaining = _max_json_bytes - state["bytes"]
-            charge_bytes(_json_string_size(item, item_path, remaining), item_path)
+            charge_bytes(_json_string_size_fn(item, item_path, remaining), item_path)
             return item
 
         if type(item) is list:
@@ -181,7 +182,7 @@ def _freeze_plain_json(
                         raise GuardError(f"{item_path}: non-string JSON key")
                     take_node(f"{item_path}.<key>")
                     remaining = _max_json_bytes - state["bytes"]
-                    charge_bytes(_json_string_size(key, f"{item_path}.<key>", remaining), f"{item_path}.<key>")
+                    charge_bytes(_json_string_size_fn(key, f"{item_path}.<key>", remaining), f"{item_path}.<key>")
                     out[key] = visit(child, f"{item_path}.{key}", depth + 1)
             except RuntimeError as exc:
                 raise GuardError(f"{item_path}: object changed during bounded snapshot") from exc
@@ -218,13 +219,14 @@ def _decode_json_bytes(
     _json_loads=json.loads,
     _pairs_hook=_pairs,
     _bad_constant_hook=_bad_constant,
+    _json_decode_error=json.JSONDecodeError,
 ) -> Any:
     try:
         text = raw.decode("utf-8")
         return _json_loads(text, object_pairs_hook=_pairs_hook, parse_constant=_bad_constant_hook)
     except GuardError:
         raise
-    except (UnicodeDecodeError, json.JSONDecodeError, ValueError) as exc:
+    except (UnicodeDecodeError, _json_decode_error, ValueError) as exc:
         raise GuardError(f"{label}: invalid strict JSON") from exc
 
 
@@ -253,19 +255,43 @@ def _freeze(
     return frozen
 
 
-def load_json(
+def _bounded_file_prefix(
     path: Path,
+    limit: int,
     *,
-    _max_json_bytes: int = MAX_JSON_BYTES,
-    _decode_json_bytes_fn=_decode_json_bytes,
-    _freeze_fn=_freeze,
-) -> dict[str, Any]:
-    raw = path.read_bytes()
-    if len(raw) > _max_json_bytes:
-        raise GuardError(f"{path}: exceeds {_max_json_bytes} bytes")
-    value = _decode_json_bytes_fn(raw, str(path))
-    return _freeze_fn(value, str(path))
+    _path_open=Path.open,
+) -> bytes:
+    if type(limit) is not int or limit < 0:
+        raise GuardError("file byte limit must be a nonnegative integer")
+    with _path_open(path, "rb") as handle:
+        raw = handle.read(limit + 1)
+    if type(raw) is not bytes:
+        raise GuardError(f"{path}: binary file read required")
+    return raw
 
+
+def _make_load_json(
+    _max_json_bytes: int,
+    _bounded_file_prefix_fn,
+    _decode_json_bytes_fn,
+    _freeze_fn,
+):
+    def load_json(path: Path) -> dict[str, Any]:
+        raw = _bounded_file_prefix_fn(path, _max_json_bytes)
+        if len(raw) > _max_json_bytes:
+            raise GuardError(f"{path}: exceeds {_max_json_bytes} bytes")
+        value = _decode_json_bytes_fn(raw, str(path))
+        return _freeze_fn(value, str(path))
+
+    return load_json
+
+
+load_json = _make_load_json(
+    MAX_JSON_BYTES,
+    _bounded_file_prefix,
+    _decode_json_bytes,
+    _freeze,
+)
 
 def _keys(obj: Mapping[str, Any], required: set[str], allowed: set[str], label: str) -> None:
     keys = set(obj)
