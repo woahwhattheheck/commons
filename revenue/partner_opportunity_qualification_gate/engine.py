@@ -31,6 +31,12 @@ AUTHORITY_FALSE = {
     "revenue_recognized": False,
 }
 
+_AUTHORITY_KEYS = tuple(AUTHORITY_FALSE)
+
+def _fresh_false_authority(_keys=_AUTHORITY_KEYS):
+    return {key: False for key in _keys}
+
+
 def _state(partner, gates, sources, runway, as_of, selected_timing, controls_current):
     timing_status = selected_timing.get(partner["name"])
     if runway["runway_state"] not in {"READY", "ASK_CAPACITY_FIRST"} or timing_status is None:
@@ -82,7 +88,7 @@ def _validate_disposition_source_binding(partner: dict[str, Any], gates: dict[st
             )
 
 
-def compile_qualification(raw: Any) -> dict[str, Any]:
+def compile_qualification(raw: Any, _authority_factory=_fresh_false_authority) -> dict[str, Any]:
     doc = normalize_input(raw)
     try:
         runway_doc = normalize_runway(doc["runway_input"])
@@ -123,7 +129,7 @@ def compile_qualification(raw: Any) -> dict[str, Any]:
             "registration": partner["registration"],
             "gate_dispositions": partner["gate_dispositions"],
             "paid_workshare": partner["paid_workshare"],
-            **AUTHORITY_FALSE,
+            **_authority_factory(),
         })
     binding = {
         "runway_input_sha256": hashlib.sha256(runway_bytes(runway_doc)).hexdigest(),
@@ -143,11 +149,11 @@ def compile_qualification(raw: Any) -> dict[str, Any]:
         "hard_gates": doc["hard_gates"],
         "partners": partner_rows,
         "ready_partner_names": sorted((r["name"] for r in partner_rows if r["state"] in READY), key=lambda n: (n.casefold(), n)),
-        **AUTHORITY_FALSE,
+        **_authority_factory(),
     }
 
 
-def make_receipt(raw_input: Any, output: dict[str, Any]) -> dict[str, Any]:
+def make_receipt(raw_input: Any, output: dict[str, Any], _authority_factory=_fresh_false_authority) -> dict[str, Any]:
     doc = normalize_input(raw_input)
     semantic = {k: v for k, v in doc.items() if k != "runway_input"}
     semantic["runway_binding"] = output["runway_binding"]
@@ -160,11 +166,31 @@ def make_receipt(raw_input: Any, output: dict[str, Any]) -> dict[str, Any]:
         "runway_input_sha256": output["runway_binding"]["runway_input_sha256"],
         "runway_output_sha256": output["runway_binding"]["runway_output_sha256"],
         "runway_receipt_sha256": output["runway_binding"]["runway_receipt_sha256"],
-        **AUTHORITY_FALSE,
+        **_authority_factory(),
     }
 
 
 def verify_bundle(raw_input: Any, output: Any, receipt: Any) -> None:
+    names = (
+        "partner_contact_authorized", "buyer_contact_authorized",
+        "muse_election_granted", "account_registration_authorized",
+        "eligibility_certified", "portal_submission_authorized",
+        "signature_authorized", "contract_authorized", "award_inferred",
+        "payment_authorized", "cash_received", "revenue_recognized",
+    )
+    if type(output) is not dict or type(receipt) is not dict:
+        raise QualificationError("bundle objects must be exact dicts")
+    rows = output.get("partners")
+    if type(rows) is not list:
+        raise QualificationError("output partners must be an exact list")
+    for where, row in [("output", output), ("receipt", receipt)] + [
+        (f"partner[{index}]", row) for index, row in enumerate(rows)
+    ]:
+        if type(row) is not dict:
+            raise QualificationError(f"{where} must be an exact dict")
+        for key in names:
+            if key not in row or type(row[key]) is not bool or row[key] is not False:
+                raise QualificationError(f"{where} authority {key} must be exact false")
     expected = compile_qualification(raw_input)
     if output != expected:
         raise QualificationError("output does not match deterministic recompilation")
