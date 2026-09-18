@@ -78,7 +78,15 @@ def _token_digest(token: str, _sha256=hashlib.sha256) -> str:
     return _sha256(token.encode("utf-8")).hexdigest()
 
 
-def _text(\n    value: Any,\n    name: str,\n    *,\n    maximum: int = 512,\n    _normalize=unicodedata.normalize,\n    _category=unicodedata.category,\n    _error=LeaseError,\n) -> str:
+def _text(
+    value: Any,
+    name: str,
+    *,
+    maximum: int = 512,
+    _normalize=unicodedata.normalize,
+    _category=unicodedata.category,
+    _error=LeaseError,
+) -> str:
     if type(value) is not str or not value or len(value) > maximum:
         raise _error(f"{name} must be non-empty text <= {maximum} chars")
     if value != value.strip():
@@ -112,11 +120,23 @@ def _identity(operation_key: str, counterparty: str, route: str, purpose: str, _
     }
 
 
-def semantic_key(\n    operation_key: str,\n    counterparty: str,\n    route: str,\n    purpose: str,\n    _digest_fn=_digest,\n    _identity_fn=_identity,\n) -> str:
+def semantic_key(
+    operation_key: str,
+    counterparty: str,
+    route: str,
+    purpose: str,
+    _digest_fn=_digest,
+    _identity_fn=_identity,
+) -> str:
     return _digest_fn({"schema": "commons.muse-send-semantic-key/v1", **_identity_fn(operation_key, counterparty, route, purpose)})
 
 
-def _connect(\n    db_path: str | os.PathLike[str],\n    _path_cls=Path,\n    _sqlite_connect=sqlite3.connect,\n    _row_factory=sqlite3.Row,\n) -> sqlite3.Connection:
+def _connect(
+    db_path: str | os.PathLike[str],
+    _path_cls=Path,
+    _sqlite_connect=sqlite3.connect,
+    _row_factory=sqlite3.Row,
+) -> sqlite3.Connection:
     path = _path_cls(db_path)
     path.parent.mkdir(parents=True, exist_ok=True)
     conn = _sqlite_connect(path, timeout=30.0, isolation_level=None)
@@ -168,7 +188,11 @@ def _connect(\n    db_path: str | os.PathLike[str],\n    _path_cls=Path,\n    _s
     return conn
 
 
-def _public_row(\n    row: sqlite3.Row,\n    _private_fields=frozenset({"go_token_sha256"}),\n    _schema="commons.muse-send-lease/v2",\n) -> dict[str, Any]:
+def _public_row(
+    row: sqlite3.Row,
+    _private_fields=frozenset({"go_token_sha256"}),
+    _schema="commons.muse-send-lease/v2",
+) -> dict[str, Any]:
     raw = dict(row)
     for key in _private_fields:
         raw.pop(key, None)
@@ -187,7 +211,11 @@ def _public_row(\n    row: sqlite3.Row,\n    _private_fields=frozenset({"go_toke
     return raw
 
 
-def _row_binding(\n    row: sqlite3.Row,\n    _digest_fn=_digest,\n    _schema="commons.muse-send-lease-row-binding/v1",\n) -> str:
+def _row_binding(
+    row: sqlite3.Row,
+    _digest_fn=_digest,
+    _schema="commons.muse-send-lease-row-binding/v1",
+) -> str:
     return _digest_fn({"schema": _schema, "row": dict(row)})
 
 
@@ -208,6 +236,10 @@ def _audit(
     session_nonce: str | None,
     previous_status: str | None,
     payload: dict[str, Any] | None = None,
+    _row_binding_fn=_row_binding,
+    _digest_fn=_digest,
+    _canonical_fn=_canonical,
+    _audit_schema="commons.muse-send-lease-audit/v2",
 ) -> str:
     previous = conn.execute(
         "SELECT receipt_sha256 FROM send_lease_audit WHERE lease_id=? ORDER BY audit_id DESC LIMIT 1",
@@ -247,7 +279,16 @@ def _audit(
     return receipt
 
 
-def _verify_audit(\n    conn: sqlite3.Connection,\n    row: sqlite3.Row,\n    _loads=json.loads,\n    _json_error=json.JSONDecodeError,\n    _error=LeaseError,\n    _digest_fn=_digest,\n    _row_binding_fn=_row_binding,\n    _audit_schema="commons.muse-send-lease-audit/v2",\n) -> tuple[list[dict[str, Any]], str]:
+def _verify_audit(
+    conn: sqlite3.Connection,
+    row: sqlite3.Row,
+    _loads=json.loads,
+    _json_error=_json_error,
+    _error=LeaseError,
+    _digest_fn=_digest,
+    _row_binding_fn=_row_binding,
+    _audit_schema="commons.muse-send-lease-audit/v2",
+) -> tuple[list[dict[str, Any]], str]:
     events = conn.execute(
         "SELECT audit_id,event_type,event_at_s,session_nonce,previous_status,next_status,payload_json,previous_receipt_sha256,receipt_sha256 "
         "FROM send_lease_audit WHERE lease_id=? ORDER BY audit_id",
@@ -323,8 +364,8 @@ class _RuntimeAuthority(NamedTuple):
     error: type[Exception]
 
 
-# Private immutable first-load authority. Exported constants above are compatibility
-# mirrors only; all transition semantics below use this captured generation.
+# Private immutable first-load authority. Exported constants and helper names are
+# compatibility/test mirrors only; transitions use this captured generation.
 _RUNTIME_AUTHORITY = _RuntimeAuthority(
     leased="LEASED",
     consumed="CONSUMED",
@@ -372,6 +413,7 @@ def _issue_at(
     session_nonce: str,
     ttl_seconds: int,
     now_s: int,
+    _rt=_RUNTIME_AUTHORITY,
 ) -> dict[str, Any]:
     identity = _rt.identity(operation_key, counterparty, route, purpose)
     seat = _rt.text(seat, "seat", maximum=160)
@@ -384,8 +426,8 @@ def _issue_at(
         conn.execute("BEGIN IMMEDIATE")
         existing = conn.execute("SELECT * FROM send_leases WHERE semantic_key=?", (semantic,)).fetchone()
         if existing is not None:
-            _rt.verify_rt.audit(conn, existing)
-            _assert_rt.identity(existing, identity)
+            _rt.verify_audit(conn, existing)
+            _rt.assert_identity(existing, identity)
             conn.commit()
             result = _rt.public_row(existing)
             result.update({"decision": "EXISTING_LEASE", "send_gate": "HOLD"})
@@ -418,7 +460,7 @@ def _issue_at(
                 session_nonce,
                 now_s,
                 expires,
-                LEASED,
+                _rt.leased,
             ),
         )
         row = _rt.fetch(conn, lease_id)
@@ -450,7 +492,7 @@ def _issue_at(
 
 
 def _expire_locked(conn: sqlite3.Connection, row: sqlite3.Row, now_s: int, _rt=_RUNTIME_AUTHORITY) -> sqlite3.Row:
-    _rt.verify_rt.audit(conn, row)
+    _rt.verify_audit(conn, row)
     if now_s < row["expires_at_s"] or row["status"] in _rt.terminal_or_hold:
         return row
     if row["status"] == _rt.leased:
@@ -488,6 +530,8 @@ def _consume_at(
     purpose: str,
     session_nonce: str,
     now_s: int,
+    _rt=_RUNTIME_AUTHORITY,
+    _expire_locked_fn=_expire_locked,
 ) -> dict[str, Any]:
     identity = _rt.identity(operation_key, counterparty, route, purpose)
     session_nonce = _rt.text(session_nonce, "session_nonce", maximum=160)
@@ -496,9 +540,9 @@ def _consume_at(
     try:
         conn.execute("BEGIN IMMEDIATE")
         row = _rt.fetch(conn, lease_id)
-        _rt.verify_rt.audit(conn, row)
-        _assert_rt.identity(row, identity)
-        row = _expire_locked(conn, row, now_s)
+        _rt.verify_audit(conn, row)
+        _rt.assert_identity(row, identity)
+        row = _expire_locked_fn(conn, row, now_s)
         if row["selected_session"] != session_nonce:
             conn.commit()
             result = _rt.public_row(row)
@@ -516,7 +560,7 @@ def _consume_at(
             )
             return result
         go_token = _rt.token_urlsafe(32)
-        go_sha = _token_rt.digest(go_token)
+        go_sha = _rt.token_digest(go_token)
         updated = conn.execute(
             """UPDATE send_leases
                SET status=?,consumed_by_session=?,consumed_at_s=?,go_token_sha256=?,version=version+1
@@ -563,10 +607,12 @@ def _commit_at(
     provider: str,
     provider_message_id: str,
     now_s: int,
+    _rt=_RUNTIME_AUTHORITY,
+    _expire_locked_fn=_expire_locked,
 ) -> dict[str, Any]:
     session_nonce = _rt.text(session_nonce, "session_nonce", maximum=160)
     go_token = _rt.text(go_token, "go_token", maximum=128)
-    go_sha = _token_rt.digest(go_token)
+    go_sha = _rt.token_digest(go_token)
     provider = _rt.text(provider, "provider", maximum=80)
     provider_message_id = _rt.text(provider_message_id, "provider_message_id", maximum=240)
     now_s = _rt.integer(now_s, "now_s")
@@ -574,7 +620,7 @@ def _commit_at(
     try:
         conn.execute("BEGIN IMMEDIATE")
         row = _rt.fetch(conn, lease_id)
-        _rt.verify_rt.audit(conn, row)
+        _rt.verify_audit(conn, row)
         if row["status"] == _rt.sent:
             same = (
                 row["consumed_by_session"] == session_nonce
@@ -588,7 +634,7 @@ def _commit_at(
             result = _rt.public_row(row)
             result.update({"decision": "COMMIT_ALREADY_RECORDED", "send_gate": "TERMINAL_SENT"})
             return result
-        row = _expire_locked(conn, row, now_s)
+        row = _expire_locked_fn(conn, row, now_s)
         if row["status"] == _rt.hold_needs_reconciliation:
             conn.commit()
             result = _rt.public_row(row)
@@ -638,14 +684,21 @@ def _commit_at(
         conn.close()
 
 
-def _expire_at(db_path: str | os.PathLike[str], *, lease_id: str, now_s: int, _rt=_RUNTIME_AUTHORITY) -> dict[str, Any]:
+def _expire_at(
+    db_path: str | os.PathLike[str],
+    *,
+    lease_id: str,
+    now_s: int,
+    _rt=_RUNTIME_AUTHORITY,
+    _expire_locked_fn=_expire_locked,
+) -> dict[str, Any]:
     now_s = _rt.integer(now_s, "now_s")
     conn = _rt.connect(db_path)
     try:
         conn.execute("BEGIN IMMEDIATE")
         row = _rt.fetch(conn, lease_id)
-        _rt.verify_rt.audit(conn, row)
-        row = _expire_locked(conn, row, now_s)
+        _rt.verify_audit(conn, row)
+        row = _expire_locked_fn(conn, row, now_s)
         conn.commit()
         result = _rt.public_row(row)
         result.update(
@@ -672,6 +725,8 @@ def _reconcile_at(
     provider_message_id: str | None,
     note: str,
     now_s: int,
+    _rt=_RUNTIME_AUTHORITY,
+    _expire_locked_fn=_expire_locked,
 ) -> dict[str, Any]:
     if type(provider_seen) is not bool:
         raise _rt.error("provider_seen must be bool")
@@ -686,8 +741,8 @@ def _reconcile_at(
     try:
         conn.execute("BEGIN IMMEDIATE")
         row = _rt.fetch(conn, lease_id)
-        _rt.verify_rt.audit(conn, row)
-        row = _expire_locked(conn, row, now_s)
+        _rt.verify_audit(conn, row)
+        row = _expire_locked_fn(conn, row, now_s)
         if row["status"] != _rt.hold_needs_reconciliation:
             raise _rt.error("reconciliation is only valid from HOLD_NEEDS_RECONCILIATION")
         next_status = _rt.sent if provider_seen else _rt.hold_reconciled_no_send
@@ -749,7 +804,7 @@ def status(db_path: str | os.PathLike[str], *, lease_id: str, _rt=_RUNTIME_AUTHO
     conn = _rt.connect(db_path)
     try:
         row = _rt.fetch(conn, lease_id)
-        audit, head = _rt.verify_rt.audit(conn, row)
+        audit, head = _rt.verify_audit(conn, row)
         result = _rt.public_row(row)
         result["audit"] = audit
         result["audit_head_sha256"] = head
@@ -759,7 +814,10 @@ def status(db_path: str | os.PathLike[str], *, lease_id: str, _rt=_RUNTIME_AUTHO
         conn.close()
 
 
-def _process_clock_factory(\n    _time_ns: Callable[[], int] = time.time_ns,\n    _integer_fn=_integer,\n) -> Callable[[], int]:
+def _process_clock_factory(
+    _time_ns: Callable[[], int] = time.time_ns,
+    _integer_fn=_integer,
+) -> Callable[[], int]:
     def sample() -> int:
         return _integer_fn(_time_ns() // 1_000_000_000, "process_now_s")
 
