@@ -426,6 +426,64 @@ class BundleTests(unittest.TestCase):
         )
         self.assertEqual(one, two)
 
+    def test_saved_verifier_ignores_later_semantic_rebinding(self):
+        bundle = module_under_test.compile_bundle(
+            manifest(), partners(), matrix(), AS_OF
+        )
+        saved_verify = module_under_test.verify_bundle
+        names = (
+            "compile_bundle",
+            "canonical_json",
+            "validate_manifest",
+            "evaluate_partner",
+            "evaluate_partners",
+            "evaluate_reconciliation_case",
+            "evaluate_matrix",
+            "_add_receipt",
+            "sha256_hex",
+        )
+        originals = {
+            name: getattr(module_under_test, name)
+            for name in names
+        }
+        original_json_dumps = module_under_test.json.dumps
+        original_sha256 = module_under_test.sha256
+
+        def poisoned(*_args, **_kwargs):
+            raise AssertionError("later exported semantic binding was reached")
+
+        try:
+            for name in names:
+                setattr(module_under_test, name, poisoned)
+            module_under_test.json.dumps = poisoned
+            module_under_test.sha256 = poisoned
+
+            self.assertTrue(
+                saved_verify(
+                    bundle,
+                    manifest(),
+                    partners(),
+                    matrix(),
+                    AS_OF,
+                )
+            )
+            forged = copy.deepcopy(bundle)
+            forged["submission_state"] = "READY"
+            self.assertFalse(
+                saved_verify(
+                    forged,
+                    manifest(),
+                    partners(),
+                    matrix(),
+                    AS_OF,
+                )
+            )
+        finally:
+            for name, value in originals.items():
+                setattr(module_under_test, name, value)
+            module_under_test.json.dumps = original_json_dumps
+            module_under_test.sha256 = original_sha256
+
 
 if __name__ == "__main__":
     unittest.main()
