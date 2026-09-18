@@ -1,30 +1,35 @@
-"""Hosted proof hook for the UNC AP/PeopleSoft compiler.\n\nA branch-head change to this file intentionally triggers the standard tests workflow.\n"""
-
+"""Run all UNC AP source, batch and review tests without a new Actions workflow."""
 from pathlib import Path
 import subprocess
 import sys
 import unittest
 
 PACKAGE = Path(__file__).parent / "revenue" / "opportunities" / "unc_ap_ai_peoplesoft"
+CODE = """
+import unittest
+suite = unittest.defaultTestLoader.discover('.', pattern='test_*.py')
+count = suite.countTestCases()
+print(f'UNC_AP_TESTS={count}')
+if count < 116:
+    raise SystemExit('UNC AP discovery lost expected coverage')
+result = unittest.TextTestRunner(verbosity=2).run(suite)
+raise SystemExit(0 if result.wasSuccessful() and not result.skipped else 1)
+"""
 
-class HostedProof(unittest.TestCase):
-    def run_suite(self, optimized):
-        argv = [sys.executable]
-        if optimized:
-            argv.append("-O")
-        argv += ["-m", "unittest", "-v", "test_unc_ap_ai.py"]
-        result = subprocess.run(
-            argv, cwd=PACKAGE, text=True,
-            stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=120,
-        )
-        if result.returncode:
-            self.fail(result.stdout)
+
+class UNCAPProof(unittest.TestCase):
+    def run_mode(self, optimized):
+        command = [sys.executable, *(['-O'] if optimized else []), '-B', '-c', CODE]
+        result = subprocess.run(command, cwd=PACKAGE, capture_output=True, text=True, timeout=120)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn('UNC_AP_TESTS=', result.stdout)
 
     def test_normal(self):
-        self.run_suite(False)
+        self.run_mode(False)
 
     def test_optimized(self):
-        self.run_suite(True)
+        self.run_mode(True)
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
     unittest.main()
