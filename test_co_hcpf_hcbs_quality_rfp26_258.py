@@ -275,18 +275,71 @@ class Hcbs258Tests(unittest.TestCase):
                 else:
                     setattr(q, name, value)
 
-    def test_16_public_api_rejects_dependency_kwargs(self):
+    def test_16_json_class_rebind_does_not_change_captured_codec(self):
+        left = packet()
+        right = packet(workshare=[
+            {"id": "x", "gate": "sample_validation_automation", "sha256": A}
+        ])
+        raw_left = json.dumps(left, separators=(",", ":"))
+        left_before = q.compile_packet(left)
+        right_before = q.compile_packet(right)
+        raw_before = q.compile_json(raw_left)
+        self.assertNotEqual(
+            left_before["input_digest_sha256"],
+            right_before["input_digest_sha256"],
+        )
+
+        encoder_before = q.json.JSONEncoder
+        decoder_before = q.json.JSONDecoder
+
+        class DisabledEncoder:
+            def __init__(self, *args, **kwargs):
+                raise AssertionError("live JSONEncoder must not be used")
+
+        class DisabledDecoder:
+            def __init__(self, *args, **kwargs):
+                raise AssertionError("live JSONDecoder must not be used")
+
+        try:
+            q.json.JSONEncoder = DisabledEncoder
+            q.json.JSONDecoder = DisabledDecoder
+            left_after = q.compile_packet(left)
+            right_after = q.compile_packet(right)
+            raw_after = q.compile_json(raw_left)
+        finally:
+            q.json.JSONEncoder = encoder_before
+            q.json.JSONDecoder = decoder_before
+
+        self.assertEqual(
+            left_after["input_digest_sha256"],
+            left_before["input_digest_sha256"],
+        )
+        self.assertEqual(
+            right_after["input_digest_sha256"],
+            right_before["input_digest_sha256"],
+        )
+        self.assertNotEqual(
+            left_after["input_digest_sha256"],
+            right_after["input_digest_sha256"],
+        )
+        self.assertEqual(
+            raw_after["input_digest_sha256"],
+            raw_before["input_digest_sha256"],
+        )
+        self.assertEqual(raw_after["state"], raw_before["state"])
+
+    def test_17_public_api_rejects_dependency_kwargs(self):
         with self.assertRaises(TypeError):
             q.compile_packet(packet(), _engine=lambda _: {})
         with self.assertRaises(TypeError):
             q.compile_json("{}", _loader=lambda _: packet())
 
-    def test_17_bool_is_not_price(self):
+    def test_18_bool_is_not_price(self):
         bad = source(initial_cap_usd=True)
         with self.assertRaises(q.QualificationError):
             q._build_engine({bad["id"]: bad}, {}, {}, lambda: datetime.now(timezone.utc))
 
-    def test_18_real_python_O(self):
+    def test_19_real_python_O(self):
         if not sys.flags.optimize:
             proc = subprocess.run(
                 [sys.executable, "-O", "-m", "unittest", "-v", __file__],
