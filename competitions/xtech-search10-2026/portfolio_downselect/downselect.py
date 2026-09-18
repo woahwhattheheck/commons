@@ -209,27 +209,42 @@ def read_regular_json(path: str | os.PathLike[str]) -> Any:
         raise ContractError("INPUT_STAT_FAILED", type(exc).__name__) from exc
     if stat.S_ISLNK(before_lstat.st_mode):
         raise ContractError("INPUT_SYMLINK_FORBIDDEN")
+    if not stat.S_ISREG(before_lstat.st_mode):
+        raise ContractError("INPUT_NOT_REGULAR")
     try:
         fd = os.open(supplied, flags)
     except OSError as exc:
         raise ContractError("INPUT_OPEN_FAILED", type(exc).__name__) from exc
+
+    primary_error = False
     try:
-        opened = os.fstat(fd)
+        try:
+            opened = os.fstat(fd)
+        except OSError as exc:
+            raise ContractError("INPUT_FSTAT_FAILED", type(exc).__name__) from exc
         if not stat.S_ISREG(opened.st_mode):
             raise ContractError("INPUT_NOT_REGULAR")
+        if (opened.st_dev, opened.st_ino) != (before_lstat.st_dev, before_lstat.st_ino):
+            raise ContractError("INPUT_GENERATION_CHANGED_BEFORE_READ")
         if opened.st_size > MAX_FILE_BYTES:
             raise ContractError("INPUT_TOO_LARGE")
         chunks: list[bytes] = []
         total = 0
         while True:
-            chunk = os.read(fd, 65536)
+            try:
+                chunk = os.read(fd, 65536)
+            except OSError as exc:
+                raise ContractError("INPUT_READ_FAILED", type(exc).__name__) from exc
             if not chunk:
                 break
             total += len(chunk)
             if total > MAX_FILE_BYTES:
                 raise ContractError("INPUT_TOO_LARGE")
             chunks.append(chunk)
-        after = os.fstat(fd)
+        try:
+            after = os.fstat(fd)
+        except OSError as exc:
+            raise ContractError("INPUT_FSTAT_FAILED", type(exc).__name__) from exc
         if (
             (opened.st_dev, opened.st_ino) != (after.st_dev, after.st_ino)
             or opened.st_size != after.st_size
@@ -238,8 +253,15 @@ def read_regular_json(path: str | os.PathLike[str]) -> Any:
         ):
             raise ContractError("INPUT_CHANGED_DURING_READ")
         return parse_json_strict(b"".join(chunks))
+    except BaseException:
+        primary_error = True
+        raise
     finally:
-        os.close(fd)
+        try:
+            os.close(fd)
+        except OSError as exc:
+            if not primary_error:
+                raise ContractError("INPUT_CLOSE_FAILED", type(exc).__name__) from exc
 
 
 def _exact(value: Any, keys: set[str], path: str) -> dict[str, Any]:
@@ -272,6 +294,16 @@ def _repo_name(value: Any, path: str) -> str:
     text = _evidence_ref(value, path)
     if text.count("/") != 1 or text.startswith("/") or text.endswith("/"):
         raise ContractError("INVALID_SOURCE_REPO", path)
+    return text
+
+
+def _repo_path(value: Any, path: str) -> str:
+    text = _evidence_ref(value, path)
+    if text.startswith("/") or "\\" in text:
+        raise ContractError("INVALID_REPO_PATH", path)
+    parts = text.split("/")
+    if any(part in {"", ".", ".."} for part in parts):
+        raise ContractError("INVALID_REPO_PATH", path)
     return text
 
 
@@ -311,7 +343,7 @@ def _evidence_registry(raw: Any) -> dict[str, dict[str, Any]]:
             if not isinstance(commit, str) or SHA40_RE.fullmatch(commit) is None:
                 raise ContractError("INVALID_EVIDENCE_COMMIT", evidence_id)
             normalized["commit"] = commit
-            normalized["path"] = _evidence_ref(row["path"], path + ".path")
+            normalized["path"] = _repo_path(row["path"], path + ".path")
             if row["locator"] is not None or row["sha256"] is not None:
                 raise ContractError("REPO_EVIDENCE_VARIANT_MISMATCH", evidence_id)
         else:
@@ -483,7 +515,7 @@ def _candidate(
     commit = source["commit"]
     if not isinstance(commit, str) or SHA40_RE.fullmatch(commit) is None:
         raise ContractError("INVALID_SOURCE_COMMIT", candidate_id)
-    source_path = _evidence_ref(source["path"], path + ".source.path")
+    source_path = _repo_path(source["path"], path + ".source.path")
     candidate_source = {"repo": repo, "commit": commit, "path": source_path}
 
     priority = obj["priorityArea"]
