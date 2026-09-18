@@ -52,33 +52,49 @@ class ContractError(ValueError):
     pass
 
 
-def _reject_constant(value: str) -> None:
-    raise ContractError(f"non-finite JSON constant rejected: {value}")
+def _reject_constant(
+    value: str,
+    _error=ContractError,
+) -> None:
+    raise _error(f"non-finite JSON constant rejected: {value}")
 
 
-def strict_loads(text: str) -> Any:
+def strict_loads(
+    text: str,
+    _json_loads=json.loads,
+    _reject_constant_fn=_reject_constant,
+    _error=ContractError,
+) -> Any:
     if type(text) is not str:
-        raise ContractError("JSON input must be str")
+        raise _error("JSON input must be str")
 
     def pairs(items):
         out = {}
         for key, value in items:
             if key in out:
-                raise ContractError(f"duplicate JSON key: {key}")
+                raise _error(f"duplicate JSON key: {key}")
             out[key] = value
         return out
 
     try:
-        return json.loads(text, object_pairs_hook=pairs, parse_constant=_reject_constant)
-    except ContractError:
+        return _json_loads(
+            text,
+            object_pairs_hook=pairs,
+            parse_constant=_reject_constant_fn,
+        )
+    except _error:
         raise
-    except (TypeError, ValueError, json.JSONDecodeError) as exc:
-        raise ContractError(f"invalid JSON: {exc}") from exc
+    except (TypeError, ValueError) as exc:
+        raise _error(f"invalid JSON: {exc}") from exc
 
 
-def strict_load(path) -> Any:
-    with open(path, "r", encoding="utf-8") as handle:
-        return strict_loads(handle.read())
+def strict_load(
+    path,
+    _open=open,
+    _strict_loads_fn=strict_loads,
+) -> Any:
+    with _open(path, "r", encoding="utf-8") as handle:
+        return _strict_loads_fn(handle.read())
 
 
 def canonical_json(
