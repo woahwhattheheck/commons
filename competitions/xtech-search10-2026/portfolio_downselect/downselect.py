@@ -355,7 +355,15 @@ def _consume_evidence(
     return row
 
 
-def _fact(value: Any, path: str) -> tuple[str, str | None]:
+def _fact(
+    value: Any,
+    path: str,
+    *,
+    binding: str,
+    allowed_classes: set[str],
+    registry: dict[str, dict[str, Any]],
+    used: set[str],
+) -> tuple[str, str | None]:
     obj = _exact(value, {"state", "evidenceRef"}, path)
     state = obj["state"]
     if state not in GLOBAL_FACT_STATES:
@@ -365,12 +373,26 @@ def _fact(value: Any, path: str) -> tuple[str, str | None]:
         if evidence is not None:
             raise ContractError("UNKNOWN_WITH_EVIDENCE", path)
     else:
-        evidence = _evidence_ref(evidence, path + ".evidenceRef")
+        _consume_evidence(
+            evidence,
+            binding=binding,
+            allowed_classes=allowed_classes,
+            registry=registry,
+            used=used,
+        )
     return state, evidence
 
 
 def _enum_fact(
-    value: Any, path: str, allowed: set[str], *, ready: str
+    value: Any,
+    path: str,
+    allowed: set[str],
+    *,
+    ready: str,
+    binding: str,
+    allowed_classes: set[str],
+    registry: dict[str, dict[str, Any]],
+    used: set[str],
 ) -> tuple[str, str | None, bool]:
     obj = _exact(value, {"state", "evidenceRef"}, path)
     state = obj["state"]
@@ -381,40 +403,65 @@ def _enum_fact(
         if evidence is not None:
             raise ContractError("UNKNOWN_WITH_EVIDENCE", path)
     else:
-        evidence = _evidence_ref(evidence, path + ".evidenceRef")
+        _consume_evidence(
+            evidence,
+            binding=binding,
+            allowed_classes=allowed_classes,
+            registry=registry,
+            used=used,
+        )
     return state, evidence, state == ready
 
 
-def _criterion_projection(items: Any, path: str) -> tuple[int, list[str]]:
+def _criterion_projection(
+    items: Any,
+    path: str,
+    *,
+    candidate_id: str,
+    candidate_source: dict[str, str],
+    registry: dict[str, dict[str, Any]],
+    used: set[str],
+    seen_claim_ids: set[str],
+) -> tuple[int, list[str]]:
     if not isinstance(items, list) or not items or len(items) > MAX_CLAIMS_PER_CRITERION:
         raise ContractError("INVALID_CLAIM_LIST", path)
     evidenced = 0
     blockers: list[str] = []
-    seen: set[str] = set()
     for index, raw in enumerate(items):
         item_path = f"{path}[{index}]"
         item = _exact(raw, {"claimId", "state", "evidenceRef"}, item_path)
         claim_id = _id(item["claimId"], item_path + ".claimId")
-        if claim_id in seen:
+        if claim_id in seen_claim_ids:
             raise ContractError("DUPLICATE_CLAIM_ID", claim_id)
-        seen.add(claim_id)
+        seen_claim_ids.add(claim_id)
         state = item["state"]
         if state not in CLAIM_STATES:
             raise ContractError("INVALID_CLAIM_STATE", item_path)
         evidence = item["evidenceRef"]
         if state == "EVIDENCED":
-            _evidence_ref(evidence, item_path + ".evidenceRef")
+            _consume_evidence(
+                evidence,
+                binding=f"candidate:{candidate_id}:claim:{claim_id}",
+                allowed_classes=EVIDENCE_CLASSES,
+                registry=registry,
+                used=used,
+                candidate_source=candidate_source,
+            )
             evidenced += 1
         else:
             if evidence is not None:
                 raise ContractError("UNEVIDENCED_CLAIM_HAS_REF", item_path)
-            # Coverage remains diagnostic, but no unevidenced claim can enter an
-            # internally SELECTED candidate. PROPOSED is not evidence.
             blockers.append(f"claim:{claim_id}:{state}")
     return (evidenced * 10_000) // len(items), blockers
 
 
-def _candidate(raw: Any, index: int) -> CandidateProjection:
+def _candidate(
+    raw: Any,
+    index: int,
+    *,
+    registry: dict[str, dict[str, Any]],
+    used: set[str],
+) -> CandidateProjection:
     path = f"$.candidates[{index}]"
     obj = _exact(
         raw,
@@ -431,13 +478,12 @@ def _candidate(raw: Any, index: int) -> CandidateProjection:
     )
     candidate_id = _id(obj["candidateId"], path + ".candidateId")
     source = _exact(obj["source"], {"repo", "commit", "path"}, path + ".source")
-    repo = _evidence_ref(source["repo"], path + ".source.repo")
+    repo = _repo_name(source["repo"], path + ".source.repo")
     commit = source["commit"]
     if not isinstance(commit, str) or SHA40_RE.fullmatch(commit) is None:
         raise ContractError("INVALID_SOURCE_COMMIT", candidate_id)
-    _evidence_ref(source["path"], path + ".source.path")
-    if repo.count("/") != 1:
-        raise ContractError("INVALID_SOURCE_REPO", candidate_id)
+    source_path = _evidence_ref(source["path"], path + ".source.path")
+    candidate_source = {"repo": repo, "commit": commit, "path": source_path}
 
     priority = obj["priorityArea"]
     if priority not in PRIORITY_AREAS:
@@ -451,10 +497,17 @@ def _candidate(raw: Any, index: int) -> CandidateProjection:
     criteria = _exact(obj["criteria"], set(CRITERIA_WEIGHTS), path + ".criteria")
     criterion_bp: dict[str, int] = {}
     blockers: list[str] = []
+    seen_claim_ids: set[str] = set()
     total_bp = 0
     for criterion, weight in CRITERIA_WEIGHTS.items():
         coverage_bp, claim_blockers = _criterion_projection(
-            criteria[criterion], f"{path}.criteria.{criterion}"
+            criteria[criterion],
+            f"{path}.criteria.{criterion}",
+            candidate_id=candidate_id,
+            candidate_source=candidate_source,
+            registry=registry,
+            used=used,
+            seen_claim_ids=seen_claim_ids,
         )
         weighted_bp = (coverage_bp * weight) // 100
         criterion_bp[criterion] = weighted_bp
@@ -475,11 +528,19 @@ def _candidate(raw: Any, index: int) -> CandidateProjection:
         traction_ids.add(evidence_id)
         kind = row["kind"]
         if kind in INTERNAL_ONLY_TRACTION_KINDS:
+            if row["evidenceRef"] is not None:
+                raise ContractError("INTERNAL_TRACTION_HAS_EVIDENCE_REF", evidence_id)
             blockers.append(f"fake_traction:{evidence_id}:{kind}")
             continue
         if kind not in EXTERNAL_TRACTION_KINDS:
             raise ContractError("UNKNOWN_TRACTION_KIND", str(kind))
-        _evidence_ref(row["evidenceRef"], tpath + ".evidenceRef")
+        _consume_evidence(
+            row["evidenceRef"],
+            binding=f"candidate:{candidate_id}:traction:{evidence_id}",
+            allowed_classes={"EXTERNAL_COUNTERPARTY"},
+            registry=registry,
+            used=used,
+        )
         external_count += 1
 
     if external_count == 0:
