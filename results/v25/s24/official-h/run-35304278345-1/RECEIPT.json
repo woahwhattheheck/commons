@@ -1,0 +1,33 @@
+{
+  "files": {
+    "EXIT_CODE.txt": {
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "GAMES.jsonl": {
+      "bytes": 52305,
+      "sha256": "ccef0fc69c84e4cb1a79b196a9c150c672a7e798d0cc41b5379047a562a05595"
+    },
+    "MANIFEST.json": {
+      "bytes": 3216,
+      "sha256": "23c63679a390f58601aa30e285ffd1bedf17d93f88a87da9d94f6355fedf45af"
+    },
+    "SHARDS.json": {
+      "bytes": 157976,
+      "sha256": "d7faff535413258276c79b4afd788b24fc4bdb108c15aaff9050a5f894b40d83"
+    },
+    "SUMMARY.json": {
+      "bytes": 2711,
+      "sha256": "6fc7e13ebd9296b02cdcf1a1e6b0ab9f59b31f6126be3fd4a9f4e2592bb75f07"
+    },
+    "TIME.txt": {
+      "bytes": 2268,
+      "sha256": "aab3ec9353da917ebd0da9a17dd1b860474142559bc4fc46d87ce6cca86d1a00"
+    }
+  },
+  "max_resident_set_kib_from_gnu_time": 114108,
+  "run_attempt": "1",
+  "run_id": "35304278345",
+  "runner_exit_code": 0,
+  "schema": "titan-s24-champion-freeze-receipt-v1"
+}
