@@ -639,6 +639,23 @@ def compile_portfolio(packet: Any) -> dict[str, Any]:
     if root["version"] != PORTFOLIO_VERSION:
         raise ContractError("UNSUPPORTED_VERSION")
     entity_id = _id(root["entityId"], "$.entityId")
+
+    candidates_raw = root["candidates"]
+    if (
+        not isinstance(candidates_raw, list)
+        or len(candidates_raw) < 2
+        or len(candidates_raw) > MAX_CANDIDATES
+    ):
+        raise ContractError("CANDIDATE_COUNT")
+    candidate_ids: list[str] = []
+    for index, row in enumerate(candidates_raw):
+        if type(row) is not dict:
+            raise ContractError("EXPECTED_OBJECT", f"$.candidates[{index}]")
+        candidate_id = _id(row.get("candidateId"), f"$.candidates[{index}].candidateId")
+        if candidate_id in candidate_ids:
+            raise ContractError("DUPLICATE_CANDIDATE_ID", candidate_id)
+        candidate_ids.append(candidate_id)
+
     registry = _evidence_registry(root["evidenceRecords"])
     used_evidence: set[str] = set()
     gates = _exact(
@@ -711,23 +728,6 @@ def compile_portfolio(packet: Any) -> dict[str, Any]:
     )
     if not template_ready:
         global_blockers.append(f"global:officialTemplate:{template_state}")
-
-    candidates_raw = root["candidates"]
-    if (
-        not isinstance(candidates_raw, list)
-        or len(candidates_raw) < 2
-        or len(candidates_raw) > MAX_CANDIDATES
-    ):
-        raise ContractError("CANDIDATE_COUNT")
-
-    candidate_ids: list[str] = []
-    for index, row in enumerate(candidates_raw):
-        if type(row) is not dict:
-            raise ContractError("EXPECTED_OBJECT", f"$.candidates[{index}]")
-        candidate_id = _id(row.get("candidateId"), f"$.candidates[{index}].candidateId")
-        if candidate_id in candidate_ids:
-            raise ContractError("DUPLICATE_CANDIDATE_ID", candidate_id)
-        candidate_ids.append(candidate_id)
 
     projections = [
         _candidate(row, i, registry=registry, used=used_evidence)
