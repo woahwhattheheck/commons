@@ -2,8 +2,9 @@
 
 Production starts with NO admitted buyer source and NO admitted qualification
 evidence. Runtime JSON cannot promote itself by claiming an authority label.
-Future positive evidence requires a reviewed source mutation that pins exact
-ids to exact SHA-256 digests.
+Future positive evidence requires a reviewed source mutation that pins each
+entire trusted descriptor generation, including identity, semantic role, and
+artifact SHA-256.
 
 Threat boundary: runtime JSON is untrusted; the Python process/source is trusted.
 """
@@ -25,6 +26,11 @@ MAX_JSON_NODES = 50_000
 MAX_INT_DIGITS = 16
 MAX_SAFE_INT = (1 << 53) - 1
 
+BUYER_KEYS = {
+    "id", "authority", "sha256", "effective_at",
+    "proposal_deadline", "solicitation_id",
+}
+EVIDENCE_KEYS = {"id", "party", "gate", "sha256"}
 PRIME_GATES = (
     "biztalk_certification",
     "relevant_experience_3y",
@@ -44,9 +50,9 @@ PARTIES = frozenset({"OWNER", "PARTNER"})
 _SHA_RE = re.compile(r"^[0-9a-f]{64}$")
 
 # Reviewed source-owned trust roots. Production intentionally begins empty.
-# Future official-source/evidence admissions are source changes, never packet data.
-_PRODUCTION_BUYER_ROOTS: Mapping[str, str] = MappingProxyType({})
-_PRODUCTION_EVIDENCE_ROOTS: Mapping[str, str] = MappingProxyType({})
+# A future admission pins the whole descriptor generation, not only its digest.
+_PRODUCTION_BUYER_ROOTS: Mapping[str, Mapping[str, str]] = MappingProxyType({})
+_PRODUCTION_EVIDENCE_ROOTS: Mapping[str, Mapping[str, str]] = MappingProxyType({})
 
 
 class QualificationError(ValueError):
@@ -207,28 +213,77 @@ def _exact_keys(value: Any, keys: set[str], label: str) -> dict[str, Any]:
     return value
 
 
-def _freeze_roots(roots: Mapping[str, str], label: str) -> dict[str, str]:
+def _validate_buyer_descriptor(value: Any, label: str) -> dict[str, Any]:
+    row = _exact_keys(value, BUYER_KEYS, label)
+    _text(row["id"], f"{label}.id")
+    if row["authority"] != "BUYER_OFFICIAL":
+        raise QualificationError(f"{label}.authority must be BUYER_OFFICIAL")
+    _sha(row["sha256"], f"{label}.sha256")
+    _instant(row["effective_at"], f"{label}.effective_at")
+    _instant(row["proposal_deadline"], f"{label}.proposal_deadline")
+    if row["solicitation_id"] != OPPORTUNITY_ID:
+        raise QualificationError(f"{label}.solicitation_id mismatch")
+    return row
+
+
+def _validate_evidence_descriptor(value: Any, label: str) -> dict[str, Any]:
+    row = _exact_keys(value, EVIDENCE_KEYS, label)
+    _text(row["id"], f"{label}.id")
+    if row["party"] not in PARTIES:
+        raise QualificationError(f"{label}.party invalid")
+    if row["gate"] not in ALL_EVIDENCE_GATES:
+        raise QualificationError(f"{label}.gate invalid")
+    _sha(row["sha256"], f"{label}.sha256")
+    return row
+
+
+def _freeze_buyer_roots(
+    roots: Mapping[str, Mapping[str, str]],
+) -> dict[str, dict[str, Any]]:
     if type(roots) not in (dict, MappingProxyType):
-        raise QualificationError(f"{label} must be a mapping")
+        raise QualificationError("buyer_roots must be a mapping")
     out = {}
     for key, value in roots.items():
-        key = _text(key, f"{label}.id")
-        out[key] = _sha(value, f"{label}[{key}]")
+        key = _text(key, "buyer_roots.id")
+        row = dict(_validate_buyer_descriptor(dict(value), f"buyer_roots[{key}]"))
+        if row["id"] != key:
+            raise QualificationError("buyer root key/id mismatch")
+        out[key] = row
     return out
 
 
+def _freeze_evidence_roots(
+    roots: Mapping[str, Mapping[str, str]],
+) -> dict[str, dict[str, Any]]:
+    if type(roots) not in (dict, MappingProxyType):
+        raise QualificationError("evidence_roots must be a mapping")
+    out = {}
+    for key, value in roots.items():
+        key = _text(key, "evidence_roots.id")
+        row = dict(_validate_evidence_descriptor(dict(value), f"evidence_roots[{key}]"))
+        if row["id"] != key:
+            raise QualificationError("evidence root key/id mismatch")
+        out[key] = row
+    return out
+
+
+def _utc_now(_now=datetime.now, _utc=timezone.utc) -> datetime:
+    return _now(_utc)
+
+
 def _build_engine(
-    buyer_roots: Mapping[str, str],
-    evidence_roots: Mapping[str, str],
+    buyer_roots: Mapping[str, Mapping[str, str]],
+    evidence_roots: Mapping[str, Mapping[str, str]],
     clock: Callable[[], datetime],
 ):
     """Build one trusted engine generation.
 
-    This factory is private. Production captures empty reviewed roots and the real
-    UTC process clock once. Tests may build synthetic reviewed generations.
+    This factory is private. Production captures empty reviewed descriptor roots
+    and a real UTC process clock once. Tests may build synthetic reviewed
+    generations without changing the public runtime API.
     """
-    trusted_buyers = _freeze_roots(buyer_roots, "buyer_roots")
-    trusted_evidence = _freeze_roots(evidence_roots, "evidence_roots")
+    trusted_buyers = _freeze_buyer_roots(buyer_roots)
+    trusted_evidence = _freeze_evidence_roots(evidence_roots)
     trusted_clock = clock
 
     def compile_packet(packet: Any) -> dict[str, Any]:
@@ -249,28 +304,25 @@ def _build_engine(
         admitted_sources = []
         source_ids = set()
         for idx, source in enumerate(sources):
-            source = _exact_keys(
-                source,
-                {
-                    "id", "authority", "sha256", "effective_at",
-                    "proposal_deadline", "solicitation_id",
-                },
-                f"buyer_sources[{idx}]",
-            )
+            source = _exact_keys(source, BUYER_KEYS, f"buyer_sources[{idx}]")
             sid = _text(source["id"], f"buyer_sources[{idx}].id")
             if sid in source_ids:
                 raise QualificationError("duplicate buyer source id")
             source_ids.add(sid)
-            digest = _sha(source["sha256"], f"{sid}.sha256")
+            _sha(source["sha256"], f"{sid}.sha256")
+
+            # Discovery/nonofficial rows may be retained in the runtime packet,
+            # but they never enter controlling buyer authority.
             if source["authority"] != "BUYER_OFFICIAL":
                 continue
-            if source["solicitation_id"] != OPPORTUNITY_ID:
-                raise QualificationError(f"{sid}.solicitation_id mismatch")
+
+            _validate_buyer_descriptor(source, f"buyer_sources[{idx}]")
+            trusted = trusted_buyers.get(sid)
+            if trusted is None or source != trusted:
+                continue
             effective = _instant(source["effective_at"], f"{sid}.effective_at")
             deadline = _instant(source["proposal_deadline"], f"{sid}.proposal_deadline")
-            if trusted_buyers.get(sid) != digest:
-                continue
-            admitted_sources.append((effective, sid, digest, deadline))
+            admitted_sources.append((effective, sid, source["sha256"], deadline))
 
         current_buyer = None
         if admitted_sources:
@@ -289,26 +341,21 @@ def _build_engine(
         satisfied = {"OWNER": set(), "PARTNER": set()}
         admitted_evidence = []
         for idx, row in enumerate(rows):
-            row = _exact_keys(
-                row,
-                {"id", "party", "gate", "sha256"},
+            row = _validate_evidence_descriptor(
+                _exact_keys(row, EVIDENCE_KEYS, f"qualification_evidence[{idx}]"),
                 f"qualification_evidence[{idx}]",
             )
-            eid = _text(row["id"], f"qualification_evidence[{idx}].id")
+            eid = row["id"]
             if eid in evidence_ids:
                 raise QualificationError("duplicate evidence id")
             evidence_ids.add(eid)
-            party = row["party"]
-            gate = row["gate"]
-            if party not in PARTIES:
-                raise QualificationError(f"{eid}.party invalid")
-            if gate not in ALL_EVIDENCE_GATES:
-                raise QualificationError(f"{eid}.gate invalid")
-            digest = _sha(row["sha256"], f"{eid}.sha256")
-            if trusted_evidence.get(eid) != digest:
+            trusted = trusted_evidence.get(eid)
+            if trusted is None or row != trusted:
                 continue
-            satisfied[party].add(gate)
-            admitted_evidence.append((eid, party, gate, digest))
+            satisfied[row["party"]].add(row["gate"])
+            admitted_evidence.append(
+                (eid, row["party"], row["gate"], row["sha256"])
+            )
 
         now = trusted_clock()
         if not isinstance(now, datetime) or now.tzinfo is None:
@@ -428,7 +475,7 @@ def _build_engine(
 _PRODUCTION_ENGINE = _build_engine(
     _PRODUCTION_BUYER_ROOTS,
     _PRODUCTION_EVIDENCE_ROOTS,
-    datetime.now,
+    _utc_now,
 )
 
 
