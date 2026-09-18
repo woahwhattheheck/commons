@@ -1038,3 +1038,183 @@ def prepare_release_reveal(
         "retired_capability": cap,
         "reveal_branch_name": reveal_branch(release["claim_seam_sha256"]),
         "metadata_path": _metadata_path(release["claim_seam_sha256"], "reveal"),
+        "metadata_sha256": _text_digest(metadata_json),
+        "metadata_json": metadata_json,
+        **_authority_flags(),
+    }
+    return _seal(plan, "plan_sha256")
+
+
+def verify_release_reveal_plan(raw: Mapping[str, Any]) -> dict[str, Any]:
+    plan = _verify_seal(raw, "plan_sha256")
+    if plan.get("schema") != REVEAL_PLAN_SCHEMA or plan.get("state") != "RELEASED_UNSENT":
+        raise CustodyError("release reveal plan schema/state mismatch")
+    release = verify_terminal_receipt(plan.get("terminal_receipt"))
+    if release["state"] != "RELEASED_UNSENT":
+        raise CustodyError("release reveal must bind released terminal")
+    if release["receipt_sha256"] != plan.get("terminal_receipt_sha256") or release["terminal_commit_sha"] != plan.get("terminal_commit_sha"):
+        raise CustodyError("release reveal terminal binding mismatch")
+    if release["claim_seam_sha256"] != plan.get("claim_seam_sha256") or release["claim_capability_sha256"] != plan.get("claim_capability_sha256"):
+        raise CustodyError("release reveal claim binding mismatch")
+    cap = _capability(plan.get("retired_capability"))
+    _verify_release_holder_proof(release, cap)
+    if plan.get("reveal_branch_name") != reveal_branch(plan["claim_seam_sha256"]):
+        raise CustodyError("release reveal branch mismatch")
+    if plan.get("metadata_path") != _metadata_path(plan["claim_seam_sha256"], "reveal"):
+        raise CustodyError("release reveal metadata path mismatch")
+    expected_metadata = {
+        "schema": SCHEMA,
+        "record_type": "RELEASE_CAPABILITY_REVEAL",
+        "state": "RELEASED_UNSENT",
+        "generation": release["generation"],
+        "key_sha256": release["key_sha256"],
+        "claim_seam_sha256": release["claim_seam_sha256"],
+        "claim_commit_sha": release["claim_commit_sha"],
+        "terminal_commit_sha": release["terminal_commit_sha"],
+        "terminal_receipt_sha256": release["receipt_sha256"],
+        "claim_capability_sha256": release["claim_capability_sha256"],
+        "retired_capability": cap,
+        **_authority_flags(),
+    }
+    expected_text = _canonical_json_text(expected_metadata)
+    if plan.get("metadata_json") != expected_text or plan.get("metadata_sha256") != _text_digest(expected_text):
+        raise CustodyError("release reveal metadata binding mismatch")
+    return plan
+
+
+def bind_release_reveal_commit(plan_raw: Mapping[str, Any], reveal_commit_sha: str) -> dict[str, Any]:
+    plan = verify_release_reveal_plan(plan_raw)
+    intent = {
+        "schema": REVEAL_INTENT_SCHEMA,
+        "state": "RELEASED_UNSENT",
+        "generation": plan["generation"],
+        "key_sha256": plan["key_sha256"],
+        "claim_seam_sha256": plan["claim_seam_sha256"],
+        "terminal_commit_sha": plan["terminal_commit_sha"],
+        "terminal_receipt_sha256": plan["terminal_receipt_sha256"],
+        "reveal_branch_name": plan["reveal_branch_name"],
+        "metadata_path": plan["metadata_path"],
+        "metadata_sha256": plan["metadata_sha256"],
+        "plan_sha256": plan["plan_sha256"],
+        "reveal_commit_sha": _sha40(reveal_commit_sha, "reveal_commit_sha"),
+        **_authority_flags(),
+    }
+    return _seal(intent, "intent_sha256")
+
+
+def verify_release_reveal_intent(raw: Mapping[str, Any]) -> dict[str, Any]:
+    intent = _verify_seal(raw, "intent_sha256")
+    if intent.get("schema") != REVEAL_INTENT_SCHEMA or intent.get("state") != "RELEASED_UNSENT":
+        raise CustodyError("release reveal intent schema/state mismatch")
+    if intent.get("reveal_branch_name") != reveal_branch(intent["claim_seam_sha256"]):
+        raise CustodyError("release reveal intent branch mismatch")
+    _sha40(intent["terminal_commit_sha"], "terminal_commit_sha")
+    _sha40(intent["reveal_commit_sha"], "reveal_commit_sha")
+    return intent
+
+
+def release_reveal_receipt_from_readback(
+    plan_raw: Mapping[str, Any], intent_raw: Mapping[str, Any], *,
+    live_branch_sha: str, live_parent_sha: str, live_metadata_json: str,
+) -> dict[str, Any]:
+    plan = verify_release_reveal_plan(plan_raw)
+    intent = verify_release_reveal_intent(intent_raw)
+    if intent["plan_sha256"] != plan["plan_sha256"]:
+        raise CustodyError("release reveal plan/intent mismatch")
+    if _sha40(live_branch_sha, "live_branch_sha") != intent["reveal_commit_sha"]:
+        raise CustodyError("release reveal branch head mismatch")
+    if _sha40(live_parent_sha, "live_parent_sha") != plan["terminal_commit_sha"]:
+        raise CustodyError("release reveal parent mismatch")
+    _verify_live_metadata(plan["metadata_json"], live_metadata_json)
+    receipt = {
+        "schema": REVEAL_RECEIPT_SCHEMA,
+        "state": "RELEASED_UNSENT",
+        "generation": plan["generation"],
+        "key_sha256": plan["key_sha256"],
+        "claim_seam_sha256": plan["claim_seam_sha256"],
+        "claim_commit_sha": plan["claim_commit_sha"],
+        "terminal_commit_sha": plan["terminal_commit_sha"],
+        "terminal_receipt_sha256": plan["terminal_receipt_sha256"],
+        "terminal_receipt": plan["terminal_receipt"],
+        "claim_capability_sha256": plan["claim_capability_sha256"],
+        "retired_capability": plan["retired_capability"],
+        "reveal_branch_name": plan["reveal_branch_name"],
+        "metadata_path": plan["metadata_path"],
+        "metadata_sha256": plan["metadata_sha256"],
+        "metadata_json": plan["metadata_json"],
+        "reveal_commit_sha": intent["reveal_commit_sha"],
+        "plan_sha256": plan["plan_sha256"],
+        "intent_sha256": intent["intent_sha256"],
+        **_authority_flags(),
+    }
+    return _seal(receipt, "receipt_sha256")
+
+
+def verify_release_reveal_receipt(raw: Mapping[str, Any]) -> dict[str, Any]:
+    receipt = _verify_seal(raw, "receipt_sha256")
+    if receipt.get("schema") != REVEAL_RECEIPT_SCHEMA or receipt.get("state") != "RELEASED_UNSENT":
+        raise CustodyError("release reveal receipt schema/state mismatch")
+    release = verify_terminal_receipt(receipt.get("terminal_receipt"))
+    if release["state"] != "RELEASED_UNSENT" or release["receipt_sha256"] != receipt.get("terminal_receipt_sha256"):
+        raise CustodyError("release reveal receipt terminal mismatch")
+    cap = _capability(receipt.get("retired_capability"))
+    _verify_release_holder_proof(release, cap)
+    if receipt.get("claim_capability_sha256") != release["claim_capability_sha256"] or receipt.get("claim_seam_sha256") != release["claim_seam_sha256"]:
+        raise CustodyError("release reveal receipt claim mismatch")
+    if receipt.get("reveal_branch_name") != reveal_branch(receipt["claim_seam_sha256"]):
+        raise CustodyError("release reveal receipt branch mismatch")
+    _sha40(receipt["reveal_commit_sha"], "reveal_commit_sha")
+    if receipt.get("metadata_path") != _metadata_path(receipt["claim_seam_sha256"], "reveal"):
+        raise CustodyError("release reveal receipt metadata path mismatch")
+    expected_metadata = {
+        "schema": SCHEMA,
+        "record_type": "RELEASE_CAPABILITY_REVEAL",
+        "state": "RELEASED_UNSENT",
+        "generation": release["generation"],
+        "key_sha256": release["key_sha256"],
+        "claim_seam_sha256": release["claim_seam_sha256"],
+        "claim_commit_sha": release["claim_commit_sha"],
+        "terminal_commit_sha": release["terminal_commit_sha"],
+        "terminal_receipt_sha256": release["receipt_sha256"],
+        "claim_capability_sha256": release["claim_capability_sha256"],
+        "retired_capability": cap,
+        **_authority_flags(),
+    }
+    expected_text = _canonical_json_text(expected_metadata)
+    if receipt.get("metadata_json") != expected_text or receipt.get("metadata_sha256") != _text_digest(expected_text):
+        raise CustodyError("release reveal receipt metadata binding mismatch")
+    return receipt
+
+def verify_dispatch_possession(
+    terminal_receipt_raw: Mapping[str, Any], *, capability: str,
+    live_claim_branch_sha: str, live_claim_parent_sha: str,
+    live_claim_metadata_json: str,
+    live_terminal_branch_sha: str, live_terminal_parent_sha: str,
+    live_terminal_metadata_json: str,
+) -> bool:
+    receipt = verify_terminal_receipt(terminal_receipt_raw)
+    if receipt["state"] != "DISPATCHED_OUTCOME_UNKNOWN":
+        raise CustodyError("dispatch receipt required")
+    verify_claim_readback(
+        receipt["claim_receipt"],
+        live_branch_sha=live_claim_branch_sha,
+        live_parent_sha=live_claim_parent_sha,
+        live_metadata_json=live_claim_metadata_json,
+    )
+    cap = _capability(capability)
+    if capability_commitment(cap) != receipt["claim_capability_sha256"]:
+        raise CustodyError("dispatch capability mismatch")
+    if _sha40(live_terminal_branch_sha, "live_terminal_branch_sha") != receipt["terminal_commit_sha"]:
+        raise CustodyError("live terminal branch moved")
+    if _sha40(live_terminal_parent_sha, "live_terminal_parent_sha") != receipt["claim_commit_sha"]:
+        raise CustodyError("live terminal parent mismatch")
+    _verify_live_metadata(receipt["metadata_json"], live_terminal_metadata_json)
+    material = {
+        "state": "DISPATCHED_OUTCOME_UNKNOWN",
+        "claim_receipt_sha256": receipt["claim_receipt_sha256"],
+        "message_sha256": receipt["message_sha256"],
+        "channel": receipt["channel"],
+        "compensation_path_sha256": receipt["compensation_path_sha256"],
+        "compensation_category": receipt["compensation_category"],
+    }
+    if not hmac.compare_digest(_dispatch_proof(cap, material), receipt["holder_proof_hmac_sha256"]):
