@@ -434,5 +434,204 @@ class MuseSendLeaseTests(unittest.TestCase):
             )
 
 
+    def test_exported_policy_and_helper_rebinding_cannot_resurrect_terminal_go(self):
+        sent = self.issue(now=1000, ttl=20, operation_key="REBIND-SENT")
+        sent_go = self.consume(sent, now=1001, operation_key="REBIND-SENT")
+        committed = m._commit_at(
+            self.db,
+            lease_id=sent["lease_id"],
+            session_nonce=self.session,
+            go_token=sent_go["go_token"],
+            provider="gmail",
+            provider_message_id="rebind-sent-msg",
+            now_s=1002,
+        )
+        self.assertEqual(committed["status"], "SENT")
+
+        needs_reconciliation = self.issue(now=1010, ttl=2, operation_key="REBIND-RECON")
+        self.consume(needs_reconciliation, now=1011, operation_key="REBIND-RECON")
+        needs_reconciliation = m._expire_at(
+            self.db, lease_id=needs_reconciliation["lease_id"], now_s=1012
+        )
+        self.assertEqual(needs_reconciliation["status"], "HOLD_NEEDS_RECONCILIATION")
+
+        reconciled_no_send = self.issue(now=1020, ttl=2, operation_key="REBIND-NOSEND")
+        self.consume(reconciled_no_send, now=1021, operation_key="REBIND-NOSEND")
+        m._expire_at(self.db, lease_id=reconciled_no_send["lease_id"], now_s=1022)
+        reconciled_no_send = m._reconcile_at(
+            self.db,
+            lease_id=reconciled_no_send["lease_id"],
+            provider_seen=False,
+            provider=None,
+            provider_message_id=None,
+            note="authenticated provider census found no send",
+            now_s=1023,
+        )
+        self.assertEqual(reconciled_no_send["status"], "HOLD_RECONCILED_NO_SEND")
+
+        expired_unconsumed = self.issue(now=1030, ttl=1, operation_key="REBIND-EXPIRED")
+        expired_unconsumed = m._expire_at(
+            self.db, lease_id=expired_unconsumed["lease_id"], now_s=1031
+        )
+        self.assertEqual(expired_unconsumed["status"], "HOLD_EXPIRED_UNCONSUMED")
+
+        names = (
+            "LEASED",
+            "CONSUMED",
+            "SENT",
+            "HOLD_NEEDS_RECONCILIATION",
+            "HOLD_EXPIRED_UNCONSUMED",
+            "HOLD_RECONCILED_NO_SEND",
+            "TERMINAL_OR_HOLD",
+            "MIN_TTL_SECONDS",
+            "MAX_TTL_SECONDS",
+            "MAX_TEXT",
+            "SCHEMA",
+            "AUDIT_SCHEMA",
+            "ROW_BINDING_SCHEMA",
+            "_PRIVATE_ROW_FIELDS",
+            "_RUNTIME_AUTHORITY",
+            "_canonical",
+            "_digest",
+            "_token_digest",
+            "_text",
+            "_integer",
+            "_identity",
+            "semantic_key",
+            "_connect",
+            "_public_row",
+            "_row_binding",
+            "_fetch",
+            "_audit",
+            "_verify_audit",
+            "_assert_identity",
+            "_expire_locked",
+            "json",
+            "hashlib",
+            "secrets",
+            "sqlite3",
+            "unicodedata",
+            "time",
+            "Path",
+            "LeaseError",
+        )
+        original = {name: getattr(m, name) for name in names}
+
+        def poison(*args, **kwargs):
+            raise AssertionError("live module helper unexpectedly influenced captured runtime")
+
+        try:
+            m.LEASED = "HOLD_RECONCILED_NO_SEND"
+            m.CONSUMED = "LEASED"
+            m.SENT = "LEASED"
+            m.HOLD_NEEDS_RECONCILIATION = "LEASED"
+            m.HOLD_EXPIRED_UNCONSUMED = "LEASED"
+            m.HOLD_RECONCILED_NO_SEND = "LEASED"
+            m.TERMINAL_OR_HOLD = set()
+            m.MIN_TTL_SECONDS = 0
+            m.MAX_TTL_SECONDS = 2**53 - 1
+            m.MAX_TEXT = 2**53 - 1
+            m.SCHEMA = "attacker-schema"
+            m.AUDIT_SCHEMA = "attacker-audit"
+            m.ROW_BINDING_SCHEMA = "attacker-binding"
+            m._PRIVATE_ROW_FIELDS = set()
+            m._RUNTIME_AUTHORITY = None
+            original_error = original["LeaseError"]
+            m.json = object()
+            m.hashlib = object()
+            m.secrets = object()
+            m.sqlite3 = object()
+            m.unicodedata = object()
+            m.time = object()
+            m.Path = object()
+            m.LeaseError = RuntimeError
+            for name in (
+                "_canonical",
+                "_digest",
+                "_token_digest",
+                "_text",
+                "_integer",
+                "_identity",
+                "semantic_key",
+                "_connect",
+                "_public_row",
+                "_row_binding",
+                "_fetch",
+                "_audit",
+                "_verify_audit",
+                "_assert_identity",
+                "_expire_locked",
+            ):
+                setattr(m, name, poison)
+
+            sent_status = m.status(self.db, lease_id=sent["lease_id"])
+            self.assertEqual(sent_status["status"], "SENT")
+            self.assertEqual(sent_status["send_gate"], "TERMINAL_SENT")
+            self.assert_no_capability(sent_status)
+
+            terminal_cases = (
+                (sent, "REBIND-SENT", "SENT"),
+                (needs_reconciliation, "REBIND-RECON", "HOLD_NEEDS_RECONCILIATION"),
+                (reconciled_no_send, "REBIND-NOSEND", "HOLD_RECONCILED_NO_SEND"),
+                (expired_unconsumed, "REBIND-EXPIRED", "HOLD_EXPIRED_UNCONSUMED"),
+            )
+            for lease, operation_key, expected_status in terminal_cases:
+                result = m._consume_at(
+                    self.db,
+                    lease_id=lease["lease_id"],
+                    operation_key=operation_key,
+                    counterparty=self.identity["counterparty"],
+                    route=self.identity["route"],
+                    purpose=self.identity["purpose"],
+                    session_nonce=self.session,
+                    now_s=1100,
+                )
+                self.assertEqual(result["status"], expected_status)
+                self.assertNotEqual(result["decision"], "GO")
+                self.assertEqual(result["send_gate"], "HOLD")
+                self.assert_no_capability(result)
+
+            # Bounds and validation also come from the sealed generation, not the
+            # compatibility mirrors poisoned above.
+            with self.assertRaises(original_error):
+                m._issue_at(
+                    self.db,
+                    **self.identity,
+                    seat="Z-Sol-1447",
+                    session_nonce="rebind-new-session",
+                    ttl_seconds=3601,
+                    now_s=1200,
+                )
+        finally:
+            for name, value in original.items():
+                setattr(m, name, value)
+
+    def test_public_current_api_keeps_first_load_runtime_after_module_rebinding(self):
+        original_leased = m.LEASED
+        original_max_ttl = m.MAX_TTL_SECONDS
+        original_runtime = m._RUNTIME_AUTHORITY
+        original_issue = m._issue_at
+        try:
+            m.LEASED = "HOLD_RECONCILED_NO_SEND"
+            m.MAX_TTL_SECONDS = 2**53 - 1
+            m._RUNTIME_AUTHORITY = None
+            m._issue_at = lambda *args, **kwargs: (_ for _ in ()).throw(
+                AssertionError("issue_current dynamically resolved _issue_at")
+            )
+            with self.assertRaises(m.LeaseError):
+                m.issue_current(
+                    self.db,
+                    **self.identity,
+                    seat="Z-Sol-1447",
+                    session_nonce="current-runtime-boundary",
+                    ttl_seconds=3601,
+                )
+        finally:
+            m.LEASED = original_leased
+            m.MAX_TTL_SECONDS = original_max_ttl
+            m._RUNTIME_AUTHORITY = original_runtime
+            m._issue_at = original_issue
+
+
 if __name__ == "__main__":
     unittest.main()
