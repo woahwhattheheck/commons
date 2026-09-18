@@ -9,6 +9,8 @@ on:
       - "revenue/multi_framework_evidence_freshness/**"
       - "tests/test_multi_framework_evidence_freshness*.py"
       - "tools/provider_cost_truth/**"
+      - "revenue/pilot_delivery_renewal_expansion_gate/**"
+      - "test_pilot_delivery_renewal_expansion_gate.py"
       - ".github/workflows/source-parses.yml"
   pull_request:
     paths:
@@ -73,6 +75,21 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
+
+      - name: Compile pilot delivery / renewal / expansion gate
+        run: >-
+          python -m py_compile
+          revenue/pilot_delivery_renewal_expansion_gate/common.py
+          revenue/pilot_delivery_renewal_expansion_gate/model.py
+          revenue/pilot_delivery_renewal_expansion_gate/engine.py
+          revenue/pilot_delivery_renewal_expansion_gate/test_gate.py
+          test_pilot_delivery_renewal_expansion_gate.py
+
+      - name: Normal pilot delivery / renewal / expansion contract
+        run: python -m unittest -v test_pilot_delivery_renewal_expansion_gate
+
+      - name: Optimized pilot delivery / renewal / expansion contract
+        run: python -O -m unittest -v test_pilot_delivery_renewal_expansion_gate
 
       - name: Compile provider-cost source
         run: python -m py_compile tools/provider_cost_truth/*.py
