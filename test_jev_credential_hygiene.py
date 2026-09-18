@@ -39,6 +39,21 @@ class JevCredentialHygieneTests(unittest.TestCase):
             self.assertNotIn(env_key, rendered)
             self.assertNotIn(vault_key, rendered)
 
+    def test_unreadable_vault_never_falls_back_to_env(self) -> None:
+        env_key = "stale-env-generation"
+
+        def unreadable(_target):
+            raise OSError("simulated vault access failure " + env_key)
+
+        with patch.dict(os.environ, {jev.ENV_KEY: env_key}, clear=True), patch.object(
+            jev, "_cred_read", side_effect=unreadable
+        ):
+            with self.assertRaisesRegex(jev.JevError, "^KEY_SOURCE_UNAVAILABLE$") as caught:
+                jev.load_key()
+            self.assertEqual(jev.key_state(), "KEY_SOURCE_UNAVAILABLE")
+            rendered = str(caught.exception) + jev.key_state()
+            self.assertNotIn(env_key, rendered)
+
     def test_two_vault_generations_disagree_fail_closed(self) -> None:
         first, second = jev.CREDVAULT_TARGETS
         values = {first: "vault-generation-a", second: "vault-generation-b"}
