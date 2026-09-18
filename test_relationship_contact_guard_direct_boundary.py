@@ -225,6 +225,46 @@ class RelationshipGuardDirectBoundaryTests(unittest.TestCase):
             for name, value in original.items():
                 setattr(guard, name, value)
 
+    def test_sys_modules_datetime_rebinding_cannot_age_out_current_contact(self):
+        import datetime as datetime_module
+
+        occurred_at = (datetime.now(timezone.utc) - timedelta(minutes=1)).replace(microsecond=0)
+        sent = {
+            "event_id": "sent-datetime-root-1",
+            "kind": "PROVIDER_SENT",
+            "occurred_at": occurred_at.isoformat(timespec="seconds").replace("+00:00", "Z"),
+            "counterparty_id": "example.com",
+            "opportunity_id": "other-rfp",
+            "route": "other@example.com",
+            "purpose": "other-purpose",
+            "provider_message_id": "msg-datetime-root-1",
+        }
+        packet = {"candidate": candidate(), "events": [sent]}
+        artifact = compile_guard(packet)
+        self.assertEqual(artifact["decision"]["status"], "HOLD_RECENT_COUNTERPARTY_CONTACT")
+
+        original_datetime = datetime_module.datetime
+
+        class FakeDateTime(original_datetime):
+            @classmethod
+            def now(cls, tz=None):
+                return cls(2099, 1, 1, tzinfo=tz)
+
+            @classmethod
+            def fromisoformat(cls, value):
+                return cls(2099, 1, 1, tzinfo=timezone.utc)
+
+        datetime_module.datetime = FakeDateTime
+        try:
+            fresh = compile_guard(packet)
+            self.assertEqual(fresh["decision"]["status"], "HOLD_RECENT_COUNTERPARTY_CONTACT")
+
+            checked = verify_guard(packet, artifact)
+            self.assertEqual(checked["fresh_status"], "HOLD_RECENT_COUNTERPARTY_CONTACT")
+            self.assertFalse(any(checked["authority"].values()))
+        finally:
+            datetime_module.datetime = original_datetime
+
     def test_public_entrypoints_reject_dependency_injection(self):
         packet = {"candidate": candidate(), "events": []}
         forged = {"artifact_schema": "forged", "decision": {"status": "NO_CONFLICT_FOUND"}}
