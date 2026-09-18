@@ -12,4 +12,6 @@ TJLabs is not represented as the evacuation-platform prime. The intended commerc
 
 Working internal scope hypothesis: $25,000 fixed, proposed/not accepted, covering requirements traceability, integration evidence, configuration/data reconciliation, cross-jurisdiction acceptance artifacts, demo/implementation proof, security/accessibility evidence normalization, and cutover/handoff evidence.
 
-The checked-in gate has empty production trust roots and therefore remains HOLD_MISSING_OFFICIAL_PACKET. Even a fully admitted synthetic generation reaches only READY_FOR_MUSE_ELECTION_ONLY; external authority stays false.
+The checked-in gate has empty production trust roots and therefore remains HOLD_MISSING_OFFICIAL_PACKET. Buyer deadline, teaming, and local-participation decisions must be typed claims bound to the same admitted source generation; caller prose cannot create them. Production currentness uses a captured process clock and accepts no caller time override.
+
+A fully admitted deterministic replay generation can reach only QUALIFIED_REPLAY_ONLY. The production classifier's positive terminal is only QUALIFIED_FOR_INTERNAL_NEXT_EDGE, and receipts explicitly carry external_authority=false. Neither state carries buyer contact, provider/portal mutation, submission, contract, payment, or revenue authority.
