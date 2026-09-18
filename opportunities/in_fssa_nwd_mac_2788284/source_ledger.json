@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "operation_id": "IN-FSSA-NWD-MAC-2788284-PARTNER-FIRST-ZSOL-20260917",
+  "generated_on": "2026-09-17",
+  "solicitation": {
+    "buyer": "Indiana Family and Social Services Administration / DDARS / Bureau of Better Aging",
+    "rfp": "27-88284",
+    "event_id": "004980000088284",
+    "title": "FSSA DDARS BBA No Wrong Door",
+    "due_local": "2026-10-28T15:00:00-04:00",
+    "official_notice_url": "https://secure.in.gov/idoa/procurement/current-business-opportunities/",
+    "official_package_url": "https://secure.in.gov/idoa/proc/solicitations/files/004980000088284.zip",
+    "official_package_state": "MISSING_BYTES",
+    "official_package_sha256": null,
+    "official_package_members": []
+  },
+  "official_notice_facts": [
+    "IDOA is procuring on behalf of FSSA / DDARS / Bureau of Better Aging.",
+    "Public notice scope headline concerns No Wrong Door process modernization, implementation, operations, and transition to the agency.",
+    "Public notice identifies Medicaid Administrative Claiming as the process domain.",
+    "Response due 2026-10-28 3:00 PM ET."
+  ],
+  "official_package_requirements": [],
+  "context_sources": [
+    {
+      "source_class": "BACKGROUND_FSSA",
+      "url": "https://www.in.gov/fssa/da/files/Quarterly-Report-SFY26-Q1.pdf",
+      "allowed_use": "program context only; cannot mint solicitation requirements or qualification"
+    },
+    {
+      "source_class": "BACKGROUND_FSSA",
+      "url": "https://www.in.gov/fssa/da/files/Quarterly-Report-SFY26-Q3.pdf",
+      "allowed_use": "program context only; cannot mint solicitation requirements or qualification"
+    },
+    {
+      "source_class": "BACKGROUND_CMS",
+      "url": "https://www.medicaid.gov/medicaid/long-term-services-supports/no-wrong-door-system-and-medicaid-administrative-claiming-reimbursement-guidance",
+      "allowed_use": "federal program context only; cannot mint Indiana buyer requirements or legal conclusions"
+    }
+  ],
+  "partner_research": [
+    {
+      "organization": "Public Consulting Group",
+      "first_party_url": "https://publicconsultinggroup.com/industry-solutions/human-services/justice-consulting-services/",
+      "evidence_class": "PARTNER_MARKETING",
+      "observed_fit": "publicly describes Medicaid Administrative Claiming implementation/operations experience",
+      "rfp_qualification": "UNKNOWN"
+    },
+    {
+      "organization": "Maximus",
+      "first_party_url": "https://maximus.com/state-and-local-government/medicaid",
+      "evidence_class": "PARTNER_MARKETING",
+      "observed_fit": "publicly describes Medicaid program operations and state modernization services",
+      "rfp_qualification": "UNKNOWN"
+    },
+    {
+      "organization": "Guidehouse",
+      "first_party_url": "https://guidehouse.com/industries/health/state-health-and-human-services",
+      "evidence_class": "PARTNER_MARKETING",
+      "observed_fit": "publicly describes state health/human services, aging, Medicaid reimbursement and operations transformation",
+      "rfp_qualification": "UNKNOWN"
+    },
+    {
+      "organization": "Sellers Dorsey",
+      "first_party_url": "https://www.sellersdorsey.com/",
+      "evidence_class": "PARTNER_MARKETING",
+      "observed_fit": "publicly describes Medicaid finance and long-term-services consulting",
+      "rfp_qualification": "UNKNOWN"
+    }
+  ],
+  "posture": {
+    "commercial": "PARTNER_FIRST",
+    "prime": "HOLD_PACKAGE_BYTES_REQUIRED",
+    "response_ready": false,
+    "package_bytes_required": true
+  },
+  "authority": {
+    "buyer_contact": false,
+    "partner_contact": false,
+    "muse_requested": false,
+    "proposal_submission": false,
+    "signature": false,
+    "compliance_certification": false,
+    "external_account_mutation": false,
+    "spend": false,
+    "payment": false,
+    "revenue": false
+  }
+}
