@@ -12,6 +12,7 @@ from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
 
+import revenue.initial_outreach_slot.slot as initial_slot_impl
 from revenue.organization_outbound_chain import chain
 from revenue.organization_outbound_chain.provider_boundary import (
     GmailBoundary,
@@ -655,7 +656,7 @@ class FullChainRaceTest(unittest.TestCase):
                 return_value=current_pressure,
             ),
             patch.object(
-                chain.initial_slot.alias_v1,
+                initial_slot_impl.alias_v1,
                 "resolve_current",
                 side_effect=resolved,
             ),
