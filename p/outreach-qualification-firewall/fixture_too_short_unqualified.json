@@ -1,0 +1,70 @@
+{
+  "contact": {
+    "contact_ref": "synthetic-contact",
+    "org_ref": "synthetic-org",
+    "purpose_ref": "paid-qualification-001",
+    "relationship_evidence_ref": "rel-evidence-001",
+    "relationship_evidence_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+    "relationship_generation": "rel-gen-001",
+    "relationship_head_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+    "relationship_observed_at": "2026-09-17T19:59:30Z",
+    "relationship_valid_until": "2026-09-17T20:05:00Z",
+    "relationship_authority_tag_hex": "aece67732b72c4bb0821e4cb1aec476cc176989bda11875d339fcce24f7f1397",
+    "relationship_state": "OPEN",
+    "route": "paid@example.com",
+    "route_type": "EMAIL"
+  },
+  "economics": {
+    "amount_minor": 750000,
+    "compensation_basis": "FIXED",
+    "currency": "USD",
+    "quantity_max": 1,
+    "scope_ref": "bounded-scope-001",
+    "workshare_ref": "workshare-001"
+  },
+  "identity_binding": {
+    "binding_id": "identity-synthetic-001",
+    "source_packet_sha256": "60ab1d8723b4d4daf1aab93085ffa63c48f4e5cc7a893fa66ef4d728c4eec744",
+    "opportunity_id": "synthetic-opportunity-001",
+    "org_ref": "synthetic-org",
+    "purpose_ref": "paid-qualification-001",
+    "canonical_org_id": "org:synthetic",
+    "canonical_purpose_id": "purpose:paid-qualification",
+    "observed_at": "2026-09-17T19:00:00Z",
+    "valid_until": "2026-12-17T19:00:00Z",
+    "auth_tag_hex": "632931e9ad6cca18dda7957a3c6d9444462338740a4f1e4fc3289fa0cd77c00c"
+  },
+  "qualifications": [
+    {
+      "disposition": "UNKNOWN",
+      "evidence_ref": "evidence-bidder",
+      "evidence_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "gate_id": "bidder-eligibility",
+      "required_for_outreach": true
+    },
+    {
+      "disposition": "SATISFIED",
+      "evidence_ref": "evidence-capacity",
+      "evidence_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "gate_id": "delivery-capacity",
+      "required_for_outreach": true
+    }
+  ],
+  "requesting_seat": "synthetic-seat",
+  "schema": "outreach-qualification-firewall.v2",
+  "session_nonce": "synthetic-session-001",
+  "source_packet": {
+    "deadline_at": "2026-09-17T20:30:00Z",
+    "min_runway_seconds": 86400,
+    "observed_at": "2026-09-17T19:00:00Z",
+    "opportunity_id": "synthetic-opportunity-001",
+    "registration_required": false,
+    "registration_state": "NOT_REQUIRED",
+    "source_generation": "gen-001",
+    "source_uri": "https://example.com/opportunity/001",
+    "submission_route": "https://example.com/submit",
+    "submission_route_type": "PORTAL"
+  },
+  "source_packet_sha256": "60ab1d8723b4d4daf1aab93085ffa63c48f4e5cc7a893fa66ef4d728c4eec744",
+  "writer_lease": null
+}
