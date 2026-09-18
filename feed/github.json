@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 98,
-    "open_pull_requests": 52,
-    "runs_in_progress": 13,
-    "runs_queued": 304
+    "open_issues": 103,
+    "open_pull_requests": 53,
+    "runs_in_progress": 9,
+    "runs_queued": 313
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "sol-z/douglas-ks-erp-acceptance-20260917",
+      "created_at": "2026-09-18T01:39:26Z",
+      "draft": false,
+      "head_sha": "83b89c0ee31b242a344008a8b4ae810c5a1cbd03",
+      "number": 15853,
+      "title": "Revenue: screen Douglas County KS ERP acceptance workshare",
+      "updated_at": "2026-09-18T01:39:26Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zsol17/irs-5000233302-partner-capture-20260917",
       "created_at": "2026-09-18T01:34:40Z",
       "draft": false,
-      "head_sha": "96524e04f7732351602d6e23d9a0e5bda4b3fb98",
+      "head_sha": "004886cdbb9cd435a8bf2ca3b7da54eb97690946",
       "number": 15846,
       "title": "Revenue: add IRS 5000233302 partner-first capture packet",
-      "updated_at": "2026-09-18T01:35:08Z"
+      "updated_at": "2026-09-18T01:39:34Z"
     },
     {
       "author": "woahwhattheheck",
@@ -119,7 +130,7 @@
       "head_sha": "b49ec6eeb333403b8bdb679b546c572bf646b00a",
       "number": 15838,
       "title": "Alameda 902737 qualification carrier",
-      "updated_at": "2026-09-18T01:35:07Z"
+      "updated_at": "2026-09-18T01:39:01Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 15823,
       "title": "CI: rejoin 264/day cron-floor recovery onto current main",
       "updated_at": "2026-09-18T01:14:17Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/hcpf-hcbs-258-partner-first-20260917",
-      "created_at": "2026-09-18T00:54:58Z",
-      "draft": false,
-      "head_sha": "d16105e6759e92870b31f2d795b86383333f898d",
-      "number": 15822,
-      "title": "Revenue: qualify HCPF HCBS monitoring for paid partner workshare",
-      "updated_at": "2026-09-18T01:20:05Z"
     }
   ],
   "open_heads": {
@@ -204,7 +204,7 @@
     "15732": "8cd5546c7fef5d2d2b48101e7a40d134ddaed2b0",
     "15733": "2b7131508bb5a57c1c41b5befc05a979673afbb1",
     "15734": "2a8d940c5207c273f797e73a9a5004b305b186a8",
-    "15751": "bdc19074f0aa0d97a3845340301914e8bc2ef3dc",
+    "15751": "b87f58434b653ee8bed28b8c85bbe3eb49d95905",
     "15756": "0b3c329d99a1c4d912942f3eaa5e3e5ce3e1842a",
     "15758": "3f6c365bc02476ed9ecaab888d4faf07b0a8b6fc",
     "15761": "0268984b5ed72aa4c8e20031e98ee0c204ca584c",
@@ -218,7 +218,7 @@
     "15811": "c4bd51dbf9e71bd53fa8d85685edb71af4dc5a06",
     "15812": "46a5911866f1ddf1b634f662ff138ee815bdeaba",
     "15815": "9774850de83d1c467264f5e88082b68e72301b6d",
-    "15817": "ee123d32349afef40d145cc9a135d331ad9fa7a0",
+    "15817": "dd4c908a228ac07cabcadcde9eae3d2b16a32f0d",
     "15818": "bfaf415a8f0ba3b9f2cae990b5bbddb4063854e0",
     "15822": "d16105e6759e92870b31f2d795b86383333f898d",
     "15823": "783792d04073809967c44caaa80d754bd79f5466",
@@ -229,11 +229,12 @@
     "15840": "1dd7127ba8b46b36e0020a347946d334bddab2b3",
     "15841": "568a80567ae0d16bd343299b681aac683fc98f5e",
     "15843": "2fa099d3627947bcd343bc62119c0b952a760a46",
-    "15846": "96524e04f7732351602d6e23d9a0e5bda4b3fb98"
+    "15846": "004886cdbb9cd435a8bf2ca3b7da54eb97690946",
+    "15853": "83b89c0ee31b242a344008a8b4ae810c5a1cbd03"
   },
-  "pulls_listed": 52,
+  "pulls_listed": 53,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 23.4,
+  "queue_depth_per_runner": 34.8,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -403,6 +404,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T01:36:01Z",
+  "unchanged_since": "2026-09-18T01:39:38Z",
   "undatable_pulls": []
 }
