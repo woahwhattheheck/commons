@@ -182,6 +182,47 @@ class WorkflowSurfaceTests(unittest.TestCase):
         self.assertLessEqual(result['active'], data['max_active_workflows'])
         self.assertEqual(result['status'], 'PASS', result['errors'])
 
+    def test_inbox_visibility_schedule_floor_and_event_scoped_supersession(self):
+        parsed = surface.workflow(Path('.github/workflows/inbox-visibility.yml').read_bytes())
+        self.assertEqual(parsed['on']['schedule'], [{'cron': '3 * * * *'}])
+        self.assertIn('push', parsed['on'])
+        self.assertIn('workflow_dispatch', parsed['on'])
+        concurrency = parsed['concurrency']
+        self.assertIn("github.event_name == 'schedule'", concurrency['group'])
+        self.assertIn('github.run_id', concurrency['group'])
+        self.assertEqual(
+            concurrency['cancel-in-progress'],
+            "${{ github.event_name == 'schedule' }}",
+        )
+        # A non-schedule generation is uniquely grouped by run_id, so a scheduled
+        # poll cannot cancel push/manual delivery validation.
+        self.assertNotEqual(concurrency['group'], 'inbox-visibility')
+
+    def test_discord_schedule_floor_never_cancels_push_outbound(self):
+        parsed = surface.workflow(Path('.github/workflows/commons-discord-cloud.yml').read_bytes())
+        self.assertEqual(parsed['on']['schedule'], [{'cron': '*/15 * * * *'}])
+        self.assertIn('push', parsed['on'])
+        self.assertIn('workflow_dispatch', parsed['on'])
+        concurrency = parsed['concurrency']
+        self.assertIn("github.event_name == 'schedule'", concurrency['group'])
+        self.assertIn('github.run_id', concurrency['group'])
+        self.assertEqual(
+            concurrency['cancel-in-progress'],
+            "${{ github.event_name == 'schedule' }}",
+        )
+        self.assertEqual(
+            parsed['jobs']['outbound']['if'],
+            "github.event_name == 'push'",
+        )
+        self.assertIn(
+            "github.event_name == 'schedule'",
+            parsed['jobs']['inbound']['if'],
+        )
+        self.assertIn(
+            "github.event_name == 'workflow_dispatch'",
+            parsed['jobs']['inbound']['if'],
+        )
+
     def test_procurement_award_price_intelligence_recipe_stays_archived(self):
         """Regress run 35159989477: path-scoped price-intel CI stays archived in the 67-slot budget."""
         self.assertFalse(Path('.github/workflows/procurement-award-price-intelligence.yml').exists())
