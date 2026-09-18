@@ -1,0 +1,19 @@
+{
+  "schema": "commons-exact-head-evidence/v1",
+  "repo": "woahwhattheheck/commons",
+  "pr_number": 42,
+  "source_owner_ref": "source-seat",
+  "candidate_head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "provider_pr_head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "base_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "current_main_sha": "cccccccccccccccccccccccccccccccccccccccc",
+  "observed_at_utc": "2026-09-17T21:00:00Z",
+  "valid_until_utc": "2026-09-17T22:00:00Z",
+  "mergeability": "unknown",
+  "pr_changed_paths": ["coordination/example.py"],
+  "main_changed_paths": ["README.md"],
+  "required_workflows": ["tests"],
+  "workflow_runs": [{"run_id": 123, "name": "tests", "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "status": "queued", "conclusion": null}],
+  "reviews": [],
+  "critical_blobs": [{"path": "coordination/example.py", "expected_blob_sha": "dddddddddddddddddddddddddddddddddddddddd", "observed_blob_sha": "dddddddddddddddddddddddddddddddddddddddd"}]
+}
