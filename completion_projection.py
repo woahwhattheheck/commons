@@ -73,6 +73,22 @@ def source_paths(root: str | os.PathLike[str]) -> list[str]:
     ]
 
 
+def stable_operation_id_from_issue(issue: dict[str, Any]) -> str:
+    """Return one explicit stable id; conflicting or fuzzy identity returns empty."""
+    if not isinstance(issue, dict):
+        return ""
+    candidates: set[str] = set()
+    title = str(issue.get("title") or "").strip()
+    if ID_RE.fullmatch(title):
+        candidates.add(title)
+    body = str(issue.get("body") or "").replace("\r\n", "\n").replace("\r", "\n")
+    for line in body.split("\n"):
+        match = re.match(r"(?i)^\s*(?:id|operation)\s*:\s*([A-Za-z0-9._-]{8,80})\s*$", line)
+        if match and ID_RE.fullmatch(match.group(1)):
+            candidates.add(match.group(1))
+    return next(iter(candidates)) if len(candidates) == 1 else ""
+
+
 def closing_keyword_mentions_issue(body: str, issue_number: int) -> bool:
     if not isinstance(issue_number, int) or isinstance(issue_number, bool) or issue_number < 1:
         return False
