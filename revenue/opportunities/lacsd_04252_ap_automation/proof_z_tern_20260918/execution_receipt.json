@@ -1,0 +1,133 @@
+{
+  "schema": "z-tern/exact-source-execution/v1",
+  "worker": "UNSPECIFIED_REPLAY_OPERATOR",
+  "operator_identity_is_declared": true,
+  "execution_context": "unspecified local replay",
+  "repo": "woahwhattheheck/commons",
+  "pr": 15865,
+  "head_sha": "d6ba9099718fab8b308daeab7c7b57d1e97aa786",
+  "source_root": "revenue/opportunities/lacsd_04252_ap_automation",
+  "subset_only": true,
+  "subset_complete_for_requested_commands": true,
+  "execution_class": "hash-pinned source-closure replay; not full Git checkout, provider authentication, or hosted CI",
+  "started_at_utc": "2026-09-18T06:38:51.533301+00:00",
+  "machine": {
+    "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+    "executable": "/opt/pyvenv/bin/python",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "machine": "x86_64",
+    "cpu_count": 5
+  },
+  "sources_before": {
+    "lacsd_04252.py": {
+      "git_blob_sha1": "a5f2f9730724f81fc0202519601e02fe63340dd6",
+      "sha256": "ab82b8b33762b6523f5fdcbf75ea107216e23f6e67c954a1f9b46f22a3f84c27",
+      "size": 19930
+    },
+    "test_lacsd_04252.py": {
+      "git_blob_sha1": "bff86c95ea65e242c5c2bf8a3673651bb00f0250",
+      "sha256": "f9f6e764acbad5043ef97867db8e78018abae3ca2002e004551bd70fb0a34986",
+      "size": 10655
+    },
+    "fixtures/manifest.json": {
+      "git_blob_sha1": "a11113306aa62274e17e57f48f5d7056bfe9c558",
+      "sha256": "33c65f140b188daa701ce699fc2dd6a1fdc378128f97024b9fbc7084a8815194",
+      "size": 2381
+    },
+    "fixtures/ap_cases.json": {
+      "git_blob_sha1": "4b5d070864bb6db3ebae439894283d216c965bd7",
+      "sha256": "a046220885befd913022f098c504609b0c7257051eefe9f1b213a5813ad2d95f",
+      "size": 9033
+    },
+    "README.md": {
+      "git_blob_sha1": "5249a545558c5a78ae5e725193f3e1aee4d1cb68",
+      "sha256": "d051fe54da7b445a28ab7aa7c116c5e8f02845ef85a26612d4437dacff560119",
+      "size": 5646
+    }
+  },
+  "commands": [
+    {
+      "name": "py_compile",
+      "argv": [
+        "/opt/pyvenv/bin/python",
+        "-m",
+        "py_compile",
+        "lacsd_04252.py",
+        "test_lacsd_04252.py"
+      ],
+      "cwd": "/mnt/data/z-tern-recovery/lacsd-15865",
+      "returncode": 0,
+      "elapsed_seconds": 2.62746,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "normal",
+      "argv": [
+        "/opt/pyvenv/bin/python",
+        "-m",
+        "unittest",
+        "-v",
+        "test_lacsd_04252.py"
+      ],
+      "cwd": "/mnt/data/z-tern-recovery/lacsd-15865",
+      "returncode": 0,
+      "elapsed_seconds": 2.312005,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "dd8cf57a89506809d5131be97e16b1f3b3c95eb92af2eb94d20751ffd8006c7c"
+    },
+    {
+      "name": "optimized",
+      "argv": [
+        "/opt/pyvenv/bin/python",
+        "-O",
+        "-m",
+        "unittest",
+        "-v",
+        "test_lacsd_04252.py"
+      ],
+      "cwd": "/mnt/data/z-tern-recovery/lacsd-15865",
+      "returncode": 0,
+      "elapsed_seconds": 6.574359,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "9483dffc7c07e15c67b3275e8d9deca4ebd0cb7a2be55ec2b541c68e085c2203"
+    }
+  ],
+  "remote_mutations": {
+    "slack_post": false,
+    "github_comment": false,
+    "github_source": false,
+    "github_merge": false,
+    "external_outreach": false
+  },
+  "sources_after": {
+    "lacsd_04252.py": {
+      "git_blob_sha1": "a5f2f9730724f81fc0202519601e02fe63340dd6",
+      "sha256": "ab82b8b33762b6523f5fdcbf75ea107216e23f6e67c954a1f9b46f22a3f84c27",
+      "size": 19930
+    },
+    "test_lacsd_04252.py": {
+      "git_blob_sha1": "bff86c95ea65e242c5c2bf8a3673651bb00f0250",
+      "sha256": "f9f6e764acbad5043ef97867db8e78018abae3ca2002e004551bd70fb0a34986",
+      "size": 10655
+    },
+    "fixtures/manifest.json": {
+      "git_blob_sha1": "a11113306aa62274e17e57f48f5d7056bfe9c558",
+      "sha256": "33c65f140b188daa701ce699fc2dd6a1fdc378128f97024b9fbc7084a8815194",
+      "size": 2381
+    },
+    "fixtures/ap_cases.json": {
+      "git_blob_sha1": "4b5d070864bb6db3ebae439894283d216c965bd7",
+      "sha256": "a046220885befd913022f098c504609b0c7257051eefe9f1b213a5813ad2d95f",
+      "size": 9033
+    },
+    "README.md": {
+      "git_blob_sha1": "5249a545558c5a78ae5e725193f3e1aee4d1cb68",
+      "sha256": "d051fe54da7b445a28ab7aa7c116c5e8f02845ef85a26612d4437dacff560119",
+      "size": 5646
+    }
+  },
+  "source_unchanged": true,
+  "completed_at_utc": "2026-09-18T06:39:03.057998+00:00",
+  "all_commands_passed": true
+}
