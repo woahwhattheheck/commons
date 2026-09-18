@@ -29,6 +29,9 @@ EVIDENCE_ARTIFACT_SCHEMA = "hamilton-065-26-jw-evidence/v3"
 OFFICIAL_ARTIFACT_SCHEMA = "hamilton-065-26-jw-official-source/v1"
 PACKET_SCHEMA = "hamilton-065-26-jw-pursuit/v3"
 MAX_RETAINED_EVIDENCE_BYTES = 262_144
+MAX_JSON_TEXT_BYTES = 1_000_000
+MAX_SAFE_JSON_INT = (1 << 53) - 1
+MAX_SAFE_JSON_INT_DIGITS = len(str(MAX_SAFE_JSON_INT))
 
 BUYER_CONTROL_FIELDS = {
     "response_deadline", "question_deadline", "submission_mechanics",
@@ -94,13 +97,44 @@ def _reject_constant(value):
     raise GateError(f"non-finite JSON number: {value}")
 
 
-def loads_strict(text: str) -> Any:
+def _reject_float(value: str) -> None:
+    raise GateError(f"floating-point JSON number forbidden: {value}")
+
+
+def _parse_int(value: str) -> int:
+    digits = value[1:] if value.startswith("-") else value
+    if not digits or len(digits) > MAX_SAFE_JSON_INT_DIGITS:
+        raise GateError("unsafe JSON integer")
     try:
-        return json.loads(text, object_pairs_hook=_pairs_no_dupes, parse_constant=_reject_constant)
+        number = int(value)
+    except ValueError as exc:
+        raise GateError("unsafe JSON integer") from exc
+    if abs(number) > MAX_SAFE_JSON_INT:
+        raise GateError("unsafe JSON integer")
+    return number
+
+
+def loads_strict(text: str) -> Any:
+    if type(text) is not str:
+        raise GateError("JSON input must be text")
+    try:
+        encoded = text.encode("utf-8", "strict")
+    except UnicodeEncodeError as exc:
+        raise GateError("JSON input must be valid UTF-8 text") from exc
+    if len(encoded) > MAX_JSON_TEXT_BYTES:
+        raise GateError("JSON input exceeds byte limit")
+    try:
+        return json.loads(
+            text,
+            object_pairs_hook=_pairs_no_dupes,
+            parse_constant=_reject_constant,
+            parse_float=_reject_float,
+            parse_int=_parse_int,
+        )
     except GateError:
         raise
-    except json.JSONDecodeError as exc:
-        raise GateError(str(exc)) from exc
+    except (json.JSONDecodeError, ValueError, OverflowError, RecursionError, UnicodeError) as exc:
+        raise GateError(f"invalid JSON: {exc}") from exc
 
 
 def canonical_bytes(value: Any) -> bytes:
@@ -329,7 +363,10 @@ def _official_artifact_binding(source: Mapping[str, Any], sid: str) -> None:
     if authority not in OFFICIAL_CONTROLLING_AUTHORITIES or source.get("authority") != authority:
         raise GateError(f"{sid}.retained_artifact official authority mismatch")
     url = _str(artifact.get("url"), f"{sid}.retained_artifact.url")
-    observed = _time(artifact.get("observed_at"), f"{sid}.retained_artifact.observed_at")
+    observed_at = _str(
+        artifact.get("observed_at"), f"{sid}.retained_artifact.observed_at"
+    )
+    _time(observed_at, f"{sid}.retained_artifact.observed_at")
     claims = artifact.get("claims")
     controls = artifact.get("controls")
     if type(claims) is not dict:
@@ -344,12 +381,22 @@ def _official_artifact_binding(source: Mapping[str, Any], sid: str) -> None:
         raise GateError(f"{sid}.retained_artifact controls unsupported buyer fields")
     for field in controls:
         _validate_official_claim(field, claims[field], sid)
-    if source.get("url") != url:
-        raise GateError(f"{sid} url does not match retained official artifact")
-    if _time(source.get("observed_at"), f"{sid}.observed_at") != observed:
-        raise GateError(f"{sid} observed_at does not match retained official artifact")
-    if source.get("claims") != claims or source.get("controls") != controls:
-        raise GateError(f"{sid} claims/controls do not exactly match retained official artifact")
+    retained_projection = {
+        "url": url,
+        "observed_at": observed_at,
+        "claims": claims,
+        "controls": controls,
+    }
+    runtime_projection = {
+        "url": source.get("url"),
+        "observed_at": source.get("observed_at"),
+        "claims": source.get("claims"),
+        "controls": source.get("controls"),
+    }
+    if canonical_bytes(runtime_projection) != canonical_bytes(retained_projection):
+        raise GateError(
+            f"{sid} url/observed_at/claims/controls do not exactly match retained official artifact"
+        )
 
 
 def _source_index(ledger: Mapping[str, Any]) -> dict[str, Mapping[str, Any]]:
