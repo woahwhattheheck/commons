@@ -12,7 +12,7 @@ One packet binds the exact operation key, counterparty, route, purpose, lease id
 
 Event classes are `SELECTED`, `LEASED`, `CONSUMED`, `GO`, and optional `COMMIT`. Every event repeats the operation/scope/lease/session/runtime bindings and carries an immutable retained source reference + SHA-256. `CONSUMED`, `GO`, and `COMMIT` carry only a retained capability **digest**, never the plaintext GO capability. `COMMIT`, when present, also carries retained provider/message identity; it remains an assertion, not independently authenticated provider truth.
 
-Strict JSON rejects duplicate keys, floats/non-finite values, huge integers, bool/int aliases where integers are required, lone surrogates/control-shaped identity text, unknown fields, excessive nesting/work, duplicate event ids, and non-increasing event times.
+Strict JSON rejects duplicate keys, floats/non-finite values, huge integers, bool/int aliases where integers are required, lone surrogates/control-shaped field text, unknown fields, excessive nesting/work, duplicate event ids, and non-increasing event times.
 
 ## States
 
