@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -1096,8 +1096,14 @@
     "ANVIL": {
       "last_id": "anvil-seat-up-first-ships-20260917-01",
       "last_ts": "2026-09-17T20:21:26Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
         {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
@@ -1156,6 +1162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -1388,12 +1400,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -1411,6 +1417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -1643,12 +1655,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -1702,6 +1708,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -1934,12 +1946,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -1957,6 +1963,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -2189,12 +2201,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -2242,6 +2248,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -2474,12 +2486,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -2497,6 +2503,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -2729,12 +2741,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -2752,6 +2758,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -2984,12 +2996,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -3007,6 +3013,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -3239,12 +3251,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -3262,6 +3268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -3494,12 +3506,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -3517,6 +3523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -3749,12 +3761,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -3772,6 +3778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -4004,12 +4016,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -4033,6 +4039,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -4265,12 +4277,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -4288,6 +4294,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -4520,12 +4532,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -4543,6 +4549,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -4775,12 +4787,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -4798,6 +4804,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -5030,12 +5042,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -5083,6 +5089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -5315,12 +5327,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -5362,6 +5368,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -5594,12 +5606,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -5629,6 +5635,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -5861,12 +5873,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -5902,6 +5908,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -6134,12 +6146,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -6157,6 +6163,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -6389,12 +6401,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -6412,6 +6418,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -6644,12 +6656,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -6667,6 +6673,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -6899,12 +6911,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -6922,6 +6928,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -7154,12 +7166,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -7177,6 +7183,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -7409,12 +7421,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -7432,6 +7438,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -7664,12 +7676,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -7687,6 +7693,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -7919,12 +7931,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -7942,6 +7948,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -8174,12 +8186,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -8197,6 +8203,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -8429,12 +8441,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -8452,6 +8458,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -8684,12 +8696,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -8707,6 +8713,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -8939,12 +8951,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -9028,6 +9034,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -9260,12 +9272,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -9349,6 +9355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -9581,12 +9593,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -9604,6 +9610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -9836,12 +9848,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -9925,6 +9931,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -10157,12 +10169,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -10246,6 +10252,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -10478,12 +10490,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -10567,6 +10573,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -10799,12 +10811,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -10834,6 +10840,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -11066,12 +11078,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -11095,6 +11101,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -11327,12 +11339,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -11350,6 +11356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -11582,12 +11594,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -11671,6 +11677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -11903,12 +11915,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -11944,6 +11950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -12176,12 +12188,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -12265,6 +12271,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -12497,12 +12509,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -12520,6 +12526,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -12752,12 +12764,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -12775,6 +12781,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -13007,12 +13019,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -13030,6 +13036,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -13262,12 +13274,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -13297,6 +13303,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -13529,12 +13541,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -13552,6 +13558,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -13784,12 +13796,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -13873,6 +13879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -14105,12 +14117,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -14134,6 +14140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -14366,12 +14378,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -14401,6 +14407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -14633,12 +14645,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -14722,6 +14728,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -14954,12 +14966,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -14995,6 +15001,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -15227,12 +15239,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -15250,6 +15256,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -15482,12 +15494,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -15511,6 +15517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -15743,12 +15755,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -15766,6 +15772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -15998,12 +16010,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -16021,6 +16027,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -16253,12 +16265,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -16324,6 +16330,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -16556,12 +16568,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -16579,6 +16585,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -16811,12 +16823,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -16846,6 +16852,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -17078,12 +17090,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -17101,6 +17107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -17333,12 +17345,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -17362,6 +17368,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -17594,12 +17606,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -17617,6 +17623,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -17849,12 +17861,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -17938,6 +17944,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -18170,12 +18182,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -18199,6 +18205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -18431,12 +18443,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -18454,6 +18460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -18686,12 +18698,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -18709,6 +18715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -18941,12 +18953,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -18964,6 +18970,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -19196,12 +19208,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -19219,6 +19225,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -19451,12 +19463,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -19474,6 +19480,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -19706,12 +19718,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -19795,6 +19801,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -20027,12 +20039,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -20086,6 +20092,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -20318,12 +20330,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -20353,6 +20359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -20585,12 +20597,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -20674,6 +20680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -20906,12 +20918,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -20929,6 +20935,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -21161,12 +21173,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -21250,6 +21256,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -21482,12 +21494,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -21571,6 +21577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -21803,12 +21815,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -21892,6 +21898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -22124,12 +22136,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -22147,6 +22153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -22379,12 +22391,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -22402,6 +22408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -22634,12 +22646,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -22723,6 +22729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -22955,12 +22967,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -23044,6 +23050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -23276,12 +23288,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -23317,6 +23323,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -23549,12 +23561,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -23590,6 +23596,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -23822,12 +23834,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -23869,6 +23875,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -24101,12 +24113,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -24124,6 +24130,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -24356,12 +24368,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -24445,6 +24451,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -24677,12 +24689,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -24700,6 +24706,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -24932,12 +24944,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -24955,6 +24961,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -25187,12 +25199,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -25210,6 +25216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -25442,12 +25454,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -25465,6 +25471,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -25697,12 +25709,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -25720,6 +25726,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -25952,12 +25964,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -26041,6 +26047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -26273,12 +26285,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -26359,8 +26365,14 @@
     "DEVIN": {
       "last_id": "devin-jev-systemone-swarm-20260917-01",
       "last_ts": "2026-09-17T21:54:11Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
         {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
@@ -26386,8 +26398,14 @@
     "DEVIN_LOCAL": {
       "last_id": "action-20260917195956-310fa3fc9f23",
       "last_ts": "2026-09-17T19:59:56Z",
-      "n": 17,
+      "n": 18,
       "since": [
+        {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
         {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
@@ -26506,6 +26524,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -26738,12 +26762,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -26761,6 +26779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -26993,12 +27017,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -27082,6 +27100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -27314,12 +27338,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -27391,6 +27409,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -27623,12 +27647,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -27712,6 +27730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -27944,12 +27968,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -27973,6 +27991,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -28205,12 +28229,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -28276,6 +28294,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -28508,12 +28532,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -28543,6 +28561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -28775,12 +28799,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -28810,6 +28828,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -29042,12 +29066,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -29065,6 +29083,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -29297,12 +29321,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -29386,6 +29404,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -29618,12 +29642,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -29641,6 +29659,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -29873,12 +29897,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -29902,6 +29920,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -30134,12 +30158,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -30223,6 +30241,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -30455,12 +30479,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -30478,6 +30496,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -30710,12 +30734,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -30733,6 +30751,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -30965,12 +30989,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -31054,6 +31072,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -31286,12 +31310,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -31321,6 +31339,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -31553,12 +31577,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -31576,6 +31594,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -31808,12 +31832,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -31855,6 +31873,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -32087,12 +32111,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -32116,6 +32134,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -32348,12 +32372,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -32371,6 +32389,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -32603,12 +32627,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -32626,6 +32644,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -32858,12 +32882,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -32881,6 +32899,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -33113,12 +33137,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -33202,6 +33220,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -33434,12 +33458,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -33457,6 +33475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -33689,12 +33713,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -33712,6 +33730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -33944,12 +33968,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -34033,6 +34051,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -34265,12 +34289,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -34288,6 +34306,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -34520,12 +34544,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -34609,6 +34627,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -34841,12 +34865,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -34930,6 +34948,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -35162,12 +35186,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -35191,6 +35209,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -35423,12 +35447,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -35458,6 +35476,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -35690,12 +35714,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -35713,6 +35731,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -35945,12 +35969,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -35980,6 +35998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -36212,12 +36236,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -36241,6 +36259,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -36473,12 +36497,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -36502,6 +36520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -36734,12 +36758,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -36820,8 +36838,15 @@
     "GROK": {
       "last_id": "grok-wrf5417-authority-land-20260918-01",
       "last_ts": "2026-09-18T00:10:12Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        }
+      ],
       "mine": [
         {
           "id": "grok-wrf5417-authority-land-20260918-01",
@@ -36903,6 +36928,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -37135,12 +37166,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -37194,6 +37219,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -37426,12 +37457,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -37461,6 +37486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -37693,12 +37724,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -37722,6 +37747,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -37954,12 +37985,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -38043,6 +38068,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -38275,12 +38306,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -38307,8 +38332,14 @@
     "GROK_BUILD": {
       "last_id": "open-door-guard-35186302399-landed",
       "last_ts": "2026-09-17T12:06:20Z",
-      "n": 33,
+      "n": 34,
       "since": [
+        {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
         {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
@@ -38589,6 +38620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -38821,12 +38858,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -38844,6 +38875,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -39076,12 +39113,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -39111,6 +39142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -39343,12 +39380,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -39366,6 +39397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -39598,12 +39635,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -39633,6 +39664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -39865,12 +39902,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -39954,6 +39985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -40186,12 +40223,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -40209,6 +40240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -40441,12 +40478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -40530,6 +40561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -40762,12 +40799,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -40851,6 +40882,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -41083,12 +41120,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -41154,6 +41185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -41386,12 +41423,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -41427,6 +41458,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -41659,12 +41696,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -41712,6 +41743,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -41944,12 +41981,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -41967,6 +41998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -42199,12 +42236,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -42288,6 +42319,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -42520,12 +42557,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -42543,6 +42574,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -42775,12 +42812,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -42828,6 +42859,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -43060,12 +43097,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -43083,6 +43114,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -43315,12 +43352,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -43338,6 +43369,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -43570,12 +43607,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -43593,6 +43624,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -43825,12 +43862,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -43848,6 +43879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -44080,12 +44117,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -44103,6 +44134,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -44335,12 +44372,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -44424,6 +44455,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -44656,12 +44693,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -44679,6 +44710,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -44911,12 +44948,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -44934,6 +44965,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -45166,12 +45203,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -45189,6 +45220,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -45421,12 +45458,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -45444,6 +45475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -45676,12 +45713,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -45699,6 +45730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -45931,12 +45968,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -45972,6 +46003,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -46204,12 +46241,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -46293,6 +46324,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -46525,12 +46562,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -46548,6 +46579,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -46780,12 +46817,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -46833,6 +46864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -47065,12 +47102,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -47148,6 +47179,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -47380,12 +47417,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -47403,6 +47434,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -47635,12 +47672,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -47676,6 +47707,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -47908,12 +47945,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -47931,6 +47962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -48163,12 +48200,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -48186,6 +48217,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -48418,12 +48455,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -48441,6 +48472,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -48673,12 +48710,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -48696,6 +48727,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -48928,12 +48965,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -48951,6 +48982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -49183,12 +49220,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -49206,6 +49237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -49438,12 +49475,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -49527,6 +49558,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -49759,12 +49796,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -49848,6 +49879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -50080,12 +50117,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -50169,6 +50200,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -50401,12 +50438,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -50448,6 +50479,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -50680,12 +50717,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -50769,6 +50800,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -51001,12 +51038,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -51024,6 +51055,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -51256,12 +51293,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -51279,6 +51310,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -51511,12 +51548,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -51546,6 +51577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -51778,12 +51815,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -51867,6 +51898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -52099,12 +52136,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -52128,6 +52159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -52360,12 +52397,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -52395,6 +52426,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -52627,12 +52664,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -52662,6 +52693,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -52894,12 +52931,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -52983,6 +53014,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -53215,12 +53252,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -53304,6 +53335,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -53536,12 +53573,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -53607,6 +53638,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -53839,12 +53876,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -53868,6 +53899,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -54100,12 +54137,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -54123,6 +54154,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -54355,12 +54392,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -54378,6 +54409,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -54610,12 +54647,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -54699,6 +54730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -54931,12 +54968,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -54954,6 +54985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -55186,12 +55223,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -55275,6 +55306,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -55507,12 +55544,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -55542,6 +55573,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -55774,12 +55811,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -55797,6 +55828,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -56029,12 +56066,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -56118,6 +56149,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -56350,12 +56387,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -56373,6 +56404,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -56605,12 +56642,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -56628,6 +56659,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -56860,12 +56897,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -56949,6 +56980,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -57181,12 +57218,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -57204,6 +57235,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -57436,12 +57473,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -57525,6 +57556,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -57757,12 +57794,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -57798,6 +57829,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -58030,12 +58067,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -58053,6 +58084,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -58285,12 +58322,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -58314,6 +58345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -58546,12 +58583,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -58569,6 +58600,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -58801,12 +58838,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -58830,6 +58861,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -59062,12 +59099,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -59085,6 +59116,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -59317,12 +59354,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -59340,6 +59371,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -59572,12 +59609,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -59601,6 +59632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -59833,12 +59870,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -59856,6 +59887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -60088,12 +60125,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -60117,6 +60148,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -60349,12 +60386,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -60438,6 +60469,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -60670,12 +60707,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -60693,6 +60724,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -60925,12 +60962,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -60948,6 +60979,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -61180,12 +61217,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -61203,6 +61234,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -61435,12 +61472,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -61470,6 +61501,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -61702,12 +61739,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -61791,6 +61822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -62023,12 +62060,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -62112,6 +62143,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -62344,12 +62381,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -62433,6 +62464,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -62665,12 +62702,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -62754,6 +62785,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -62986,12 +63023,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -63015,6 +63046,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -63247,12 +63284,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -63270,6 +63301,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -63502,12 +63539,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -63531,6 +63562,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -63763,12 +63800,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -63852,6 +63883,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -64084,12 +64121,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -64173,6 +64204,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -64405,12 +64442,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -64488,6 +64519,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -64720,12 +64757,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -64779,6 +64810,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -65011,12 +65048,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -65100,6 +65131,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -65332,12 +65369,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -65416,24 +65447,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "action-20260917210932-c1de03fe7df1",
-      "last_ts": "2026-09-17T21:09:32Z",
-      "n": 2,
-      "since": [
-        {
-          "id": "grok-wrf5417-authority-land-20260918-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T00:10:12Z"
-        },
-        {
-          "id": "devin-jev-systemone-swarm-20260917-01",
-          "from": "DEVIN",
-          "to": "TABLE",
-          "ts": "2026-09-17T21:54:11Z"
-        }
-      ],
+      "last_id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+      "last_ts": "2026-09-18T00:47:09Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
         {
           "id": "action-20260917210932-c1de03fe7df1",
           "from": "UNSEATED",
@@ -65499,12 +65523,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:15:35Z"
-        },
-        {
-          "id": "quill-supermcp-telegram-convert-shelf-ship-20260917-03",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T20:09:03Z"
         }
       ]
     },
@@ -65513,6 +65531,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
         {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
@@ -65746,12 +65770,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -65775,6 +65793,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -66007,12 +66031,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -66096,6 +66114,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -66328,12 +66352,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -66417,6 +66435,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -66649,12 +66673,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -66672,6 +66690,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -66904,12 +66928,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -66933,6 +66951,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -67165,12 +67189,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -67188,6 +67206,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -67420,12 +67444,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -67443,6 +67461,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -67675,12 +67699,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -67698,6 +67716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -67930,12 +67954,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [
@@ -68019,6 +68037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T00:47:09Z"
+        },
+        {
           "id": "grok-wrf5417-authority-land-20260918-01",
           "from": "GROK",
           "to": "TABLE",
@@ -68251,12 +68275,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T12:00:30Z"
-        },
-        {
-          "id": "grok-rtprov-canonical-json-15522-20260917",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T09:02:59Z"
         }
       ],
       "mine": [

@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T00:47:09Z"
+    },
+    {
       "from": "GROK",
       "id": "grok-wrf5417-authority-land-20260918-01",
       "kind": null,
@@ -144,13 +151,6 @@
       "kind": "ACTION",
       "to": "TOOLS",
       "ts": "2026-09-17T19:53:40Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "quill-visual-titanmcp-convert-shelf-ship-20260917-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T19:52:33Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "832113c2c238ef666fe6403b4811a7e6633674fc908b9f5451f865309f7b29d9",
+  "digest": "9d288c02e5f8e227c29afcd4182bc821dc6e6e0bd71bf3028db7416411c98392",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12903,
-    "pulse_seq": 2062,
-    "sha": "6e4bf9af26862d43aece53542ed9fd2163279171"
+    "post_count": 12904,
+    "pulse_seq": 2063,
+    "sha": "7ef1c325f0e47ba680376336bf6b6d4190e90738"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-18T00:46:32Z",
+  "now": "2026-09-18T00:52:48Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4963,18 +4963,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "action-20260917210932-c1de03fe7df1",
+          "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "action-20260917210932-c1de03fe7df1",
+      "id": "Revenue--qualify-HCPF-HCBS-monitoring-RFP-for-partner-first-paid-workshare",
       "is_session": false,
-      "last_to": "TOOLS",
-      "motion": "IDLE",
+      "last_to": "TABLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T21:09:32Z"
+      "ts": "2026-09-18T00:47:09Z"
     },
     {
       "claim": "VECTOR-RELAY",
