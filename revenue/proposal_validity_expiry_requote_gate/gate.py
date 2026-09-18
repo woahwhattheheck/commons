@@ -2,9 +2,10 @@ from __future__ import annotations
 
 """Public hardened facade for the canonical proposal-validity gate.
 
-The reviewed 9dee implementation is retained byte-for-byte in
-``_proposal_validity_core.py``. This facade closes two later exact-head STOPs
-without rewriting that large validated core:
+The reviewed 9dee implementation remains structurally preserved in
+``_proposal_validity_core.py``, with one later source-literal authority
+hardening at the packet-emission seam. This facade closes the clock and
+supersession STOPs without otherwise rewriting that large validated core:
 
 * current public APIs capture their trusted clock generation at import time, so
   rebinding ``gate._utc_now`` cannot select or freeze historical time; and
