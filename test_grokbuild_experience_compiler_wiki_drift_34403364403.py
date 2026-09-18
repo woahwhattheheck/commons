@@ -15,6 +15,7 @@ from __future__ import annotations
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 import host.experience_compiler as compiler
 
@@ -51,7 +52,7 @@ class TestGrokbuildExperienceCompilerWikiDrift34403364403(unittest.TestCase):
 
     def test_check_and_existing_compiler_contracts_pass(self) -> None:
         check = subprocess.run(
-            ["python3", "host/experience_compiler.py", "check"],
+            [sys.executable, "host/experience_compiler.py", "check"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -60,7 +61,7 @@ class TestGrokbuildExperienceCompilerWikiDrift34403364403(unittest.TestCase):
         self.assertEqual(check.returncode, 0, msg=check.stdout + check.stderr)
         self.assertIn("CURRENT 4 records 7 outputs", check.stdout)
         unit = subprocess.run(
-            ["python3", "-m", "unittest", "-v", "test_experience_compiler.py"],
+            [sys.executable, "-m", "unittest", "-v", "test_experience_compiler.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -72,7 +73,7 @@ class TestGrokbuildExperienceCompilerWikiDrift34403364403(unittest.TestCase):
         before_index = INDEX.read_text(encoding="utf-8")
         before_pattern = PATTERN.read_text(encoding="utf-8")
         rc = subprocess.run(
-            ["python3", "host/experience_compiler.py", "compile"],
+            [sys.executable, "host/experience_compiler.py", "compile"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -98,7 +99,7 @@ class TestGrokbuildExperienceCompilerWikiDrift34403364403(unittest.TestCase):
             self.assertNotIn("Authorization", text)
             self.assertNotIn("buy.stripe.com", text)
         guard = subprocess.run(
-            ["python3", "open_door_guard.py", "--diff-file", "-"],
+            [sys.executable, "open_door_guard.py", "--diff-file", "-"],
             cwd=ROOT,
             text=True,
             input=subprocess.check_output(

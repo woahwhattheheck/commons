@@ -6,6 +6,7 @@ from __future__ import annotations
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md"
@@ -18,28 +19,28 @@ COIL = ROOT / "p/coil-tools-super-mcp-fold-20260902-01.md"
 
 KEEP = {
     "p/cursor-goat-pages-super-mcp-land-readback-20260902-01.md": "f98887bf",
-    "test_cursor_goat_pages_super_mcp_land_readback.py": "d6437050",
+    "test_cursor_goat_pages_super_mcp_land_readback.py": "247956d0",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
-    "catalog.html": "71c0c5fd",
-    "boards.html": "486b13e1",
-    "wire.html": "3f030862",
-    "ground/WIRE_SUPER_MCP.md": "9f1a457b",
+    "catalog.html": "68b9b066",
+    "boards.html": "74332cb0",
+    "wire.html": "5f0d0f84",
+    "ground/WIRE_SUPER_MCP.md": "626b07f7",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
     "p/latch-wake-super-mcp-pointer-20260902-01.md": "a35e63c3",
     "p/wire-shared-super-mcp-catalog-20260902-01.md": "b6cb27ef",
-    "super-mcp.html": "412ce905",
-    "hub_pages.py": "12186f65",
-    "door.js": "c06cc197",
+    "super-mcp.html": "9deb2201",
+    "hub_pages.py": "673dab89",
+    "door.js": "5899223c",
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "host/commerce_agents.py": "8d2ddf29",
-    "test_commerce_agents.py": "8ca269cd",
+    "test_commerce_agents.py": "f0ff008c",
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
     "host/commerce_agents_same_loop.py": "c90f6e50",
-    "test_commerce_agents_same_loop.py": "f45d3a49",
+    "test_commerce_agents_same_loop.py": "03426c3c",
     "p/cursor-claude-commerce-agents-readback-20260902-01.md": "0153924f",
     "p/cursor-harborline-commerce-compose-readback-20260902-01.md": "b33e2e24",
     "p/cursor-harborline-commerce-compose-keep-lift-20260902-01.md": "668dd5c4",
-    "ground/OWNER_NOW.md": "a17b0afb",
+    "ground/OWNER_NOW.md": "39a0e0c3",
     "p/coil-tools-super-mcp-fold-20260902-01.md": "6948bdc1",
 }
 
@@ -62,7 +63,7 @@ class TestCursorGoatPagesSuperMcpLandReadbackMatch(unittest.TestCase):
     def test_leftover_unique_pack_tests_still_pass(self) -> None:
         leftover = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "-m",
                 "unittest",
                 "test_cursor_goat_pages_super_mcp_land_readback.py",

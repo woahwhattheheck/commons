@@ -121,7 +121,7 @@ class PackHarborlineWaitlistSlotTest(unittest.TestCase):
         )
         self.assertEqual(
             result["blobs"]["host/business_pack_harborline_tally_map.py"],
-            "0abcd651",
+            "6a02ec32",
         )
         self.assertEqual(
             result["blobs"][

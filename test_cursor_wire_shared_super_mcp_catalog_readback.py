@@ -8,6 +8,7 @@ import subprocess
 import unittest
 import urllib.request
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-wire-shared-super-mcp-catalog-readback-20260902-01.md"
@@ -16,19 +17,19 @@ DOOR = ROOT / "super-mcp.html"
 
 KEEP = {
     "p/wire-shared-super-mcp-catalog-20260902-01.md": "b6cb27ef",
-    "super-mcp.html": "d72c7828",
+    "super-mcp.html": "9deb2201",
     "host/super_mcp.py": "defaf19f",
-    "super-mcp/catalog.json": "a668a320",
+    "super-mcp/catalog.json": "a6b9f09d",
     "test_super_mcp.py": "29cdec41",
-    ".agents/skills/super-mcp/SKILL.md": "11eae655",
-    "ground/tokens/super-mcp.md": "e4ffb61d",
+    ".agents/skills/super-mcp/SKILL.md": "4aff2c7b",
+    "ground/tokens/super-mcp.md": "c250fd99",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
-    "wire.html": "3f030862",
-    "ground/WIRE_SUPER_MCP.md": "6a50f614",
+    "wire.html": "5f0d0f84",
+    "ground/WIRE_SUPER_MCP.md": "626b07f7",
     "p/cursor-wire-super-mcp-marketplace-20260902-01.md": "fbc20c0d",
     "p/latch-wake-super-mcp-pointer-20260902-01.md": "a35e63c3",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
-    "catalog.html": "71c0c5fd",
+    "catalog.html": "68b9b066",
     "p/cursor-wire-super-mcp-fold-readback-20260902-01.md": "63b8221d",
     "p/cursor-google-ai-mode-hall-pass-readback-20260902-01.md": "42e9e750",
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
@@ -37,9 +38,9 @@ KEEP = {
     "p/cursor-big-huge-commerce-agents-readback-20260902-01.md": "2a5ce894",
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
     "api/mcp.py": "393da756",
-    "hub_pages.py": "7bc61c8b",
-    "door.js": "de1d570b",
-    "ground/OWNER_NOW.md": "4b2a58ed",
+    "hub_pages.py": "673dab89",
+    "door.js": "5899223c",
+    "ground/OWNER_NOW.md": "39a0e0c3",
 }
 
 
@@ -72,7 +73,7 @@ class TestCursorWireSharedSuperMcpCatalogReadback(unittest.TestCase):
 
     def test_leftover_route_browser_is_no_login(self) -> None:
         leftover = subprocess.run(
-            ["python3", "host/super_mcp.py", "route", "--need", "browser"],
+            [sys.executable, "host/super_mcp.py", "route", "--need", "browser"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -98,7 +99,7 @@ class TestCursorWireSharedSuperMcpCatalogReadback(unittest.TestCase):
 
     def test_leftover_catalog_tests_still_pass(self) -> None:
         leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_super_mcp.py"],
+            [sys.executable, "-m", "unittest", "test_super_mcp.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

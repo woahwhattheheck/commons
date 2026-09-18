@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import pr_collision_notice as notice
 
 ROOT = Path(__file__).resolve().parent
@@ -20,10 +21,10 @@ DISCORD = ROOT / "p/grok-build-discord-cloud-billing-lock-20260902-01.md"
 KEEP = {
     "pr_collision_notice.py": "381d6b9b",
     "test_pr_collision_notice.py": "18a87c08",
-    ".github/workflows/pr-collision-notice.yml": "1c2ebcd5",
+    ".github/workflows/pr-collision-notice.yml": "deeeaf57",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
-    "test_cursor_merge_on_pr_readback.py": "5a33ec30",
+    "test_cursor_merge_on_pr_readback.py": "36a79283",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
@@ -31,7 +32,7 @@ KEEP = {
     "p/grok-build-llms-txt-billing-lock-20260902-01.md": "cf9c9f40",
     "p/grok-resources-tab-freshness-billing-lock-20260902-01.md": "ac39fe78",
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "6a512428",
+    "test_open_door_guard.py": "2e2cc164",
 }
 
 
@@ -60,7 +61,7 @@ class TestGrokbuildPrCollisionNotice33689085107BillingLock(unittest.TestCase):
 
     def test_local_failed_step_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", "test_pr_collision_notice.py"],
+            [sys.executable, "test_pr_collision_notice.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

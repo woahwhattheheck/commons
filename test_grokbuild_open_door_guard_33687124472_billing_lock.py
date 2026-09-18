@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -18,13 +19,13 @@ READBACK = ROOT / "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md"
 
 KEEP = {
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "6a512428",
+    "test_open_door_guard.py": "2e2cc164",
     ".github/workflows/open-door-guard.yml": "ac6c46c4",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
-    "test_cursor_stealable_lanes_occupancy_readback.py": "466a6128",
-    "test_stealable_lanes_occupancy.py": "745dcd19",
+    "test_cursor_stealable_lanes_occupancy_readback.py": "3398d0bf",
+    "test_stealable_lanes_occupancy.py": "ad9cd1f2",
     "host/stealable_lanes.py": "60ac60e1",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
@@ -48,7 +49,7 @@ class TestGrokbuildOpenDoorGuard33687124472BillingLock(unittest.TestCase):
 
     def test_local_failed_step_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", "test_open_door_guard.py"],
+            [sys.executable, "test_open_door_guard.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

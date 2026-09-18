@@ -6,6 +6,7 @@ from __future__ import annotations
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 import open_door_guard as guard
 
@@ -18,12 +19,12 @@ SIBLING_TEST = ROOT / "test_grokbuild_open_door_guard_33699980139_billing_lock.p
 
 KEEP = {
     "p/grokbuild-open-door-guard-33717741083-billing-lock-20260903-01.md": "d4c58153",
-    "test_grokbuild_open_door_guard_33717741083_billing_lock.py": "4e72f805",
+    "test_grokbuild_open_door_guard_33717741083_billing_lock.py": "71fb69aa",
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "6a512428",
+    "test_open_door_guard.py": "2e2cc164",
     ".github/workflows/open-door-guard.yml": "ac6c46c4",
     "p/grokbuild-open-door-guard-33699980139-billing-lock-20260903-01.md": "81d9e0a0",
-    "test_grokbuild_open_door_guard_33699980139_billing_lock.py": "b23336b8",
+    "test_grokbuild_open_door_guard_33699980139_billing_lock.py": "01a59b2b",
 }
 
 
@@ -73,7 +74,7 @@ class TestGrokbuildPr8595Verify(unittest.TestCase):
 
     def test_original_leftover_unittest_still_green(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_grokbuild_open_door_guard_33717741083_billing_lock.py"],
+            [sys.executable, "-m", "unittest", "test_grokbuild_open_door_guard_33717741083_billing_lock.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

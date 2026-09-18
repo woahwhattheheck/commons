@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 import pr_collision_notice as notice
 
@@ -21,14 +22,14 @@ WORKFLOW = ROOT / ".github/workflows/pr-collision-notice.yml"
 KEEP = {
     "pr_collision_notice.py": "381d6b9b",
     "test_pr_collision_notice.py": "18a87c08",
-    ".github/workflows/pr-collision-notice.yml": "1c2ebcd5",
+    ".github/workflows/pr-collision-notice.yml": "deeeaf57",
     "p/grokbuild-pr-collision-notice-33689085107-billing-lock-20260902-01.md": "594b5e71",
-    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "e850c579",
+    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "36d78c04",
     "p/grokbuild-pr-collision-notice-33689347426-billing-lock-20260902-01.md": "e92d45af",
-    "test_grokbuild_pr_collision_notice_33689347426_billing_lock.py": "92d06e74",
+    "test_grokbuild_pr_collision_notice_33689347426_billing_lock.py": "040480f8",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
-    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "21631fce",
+    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "6a372963",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
@@ -36,7 +37,7 @@ KEEP = {
     "p/grok-build-llms-txt-billing-lock-20260902-01.md": "cf9c9f40",
     "p/grok-resources-tab-freshness-billing-lock-20260902-01.md": "ac39fe78",
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "6a512428",
+    "test_open_door_guard.py": "2e2cc164",
 }
 
 
@@ -59,13 +60,13 @@ class TestGrokbuildPrCollisionNotice33694241061BillingLock(unittest.TestCase):
         self.assertNotIn("schedule:", yml)
         self.assertIn("ref: ${{ github.event.pull_request.base.sha }}", yml)
         self.assertNotIn("github.event.pull_request.head.sha", yml)
-        self.assertIn("python3 pr_collision_notice.py", yml)
+        self.assertIn("python3 listener/pr_collision_notice.py", yml)
         self.assertNotIn("if: false", yml)
         self.assertNotIn("billing", yml.lower())
 
     def test_local_failed_step_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", "test_pr_collision_notice.py"],
+            [sys.executable, "test_pr_collision_notice.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -73,7 +74,7 @@ class TestGrokbuildPrCollisionNotice33694241061BillingLock(unittest.TestCase):
         )
         out = (proc.stdout or "") + (proc.stderr or "")
         self.assertEqual(proc.returncode, 0, msg=out)
-        self.assertIn("Ran 4 tests", out)
+        self.assertIn("Ran 11 tests", out)
         self.assertIn("OK", out)
         rows = notice.find_pr_overlaps(
             10,

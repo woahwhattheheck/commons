@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 HELPER = ROOT / "host/landed_work_feed.py"
@@ -15,7 +16,7 @@ CATALOG = ROOT / "ground/LANDED_WORK_FEED.json"
 DOOR = ROOT / "landed-work.html"
 
 KEEP = {
-    "ground/OWNER_NOW.md": "a17b0afb",
+    "ground/OWNER_NOW.md": "39a0e0c3",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-owner-now-revenue-20260902-01.md": "fe5ba035",
     "p/cursor-owner-now-revenue-readback-20260902-01.md": "3449da29",
@@ -26,8 +27,8 @@ KEEP = {
     "p/cursor-incoming-models-hub-payload-readback-20260902-01.md": "2d297673",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "p/cursor-harborline-pack-market-render-readback-20260902-01.md": "6efbac54",
-    "autogtm.html": "1009c4cd",
-    "hub_pages.py": "12186f65",
+    "autogtm.html": "5c966110",
+    "hub_pages.py": "673dab89",
     "repo_pulse.py": "298716e9",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
 }
@@ -41,7 +42,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,

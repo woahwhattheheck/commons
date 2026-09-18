@@ -4,6 +4,8 @@
 from pathlib import Path
 from subprocess import CompletedProcess
 import json
+import subprocess
+import sys
 
 import open_door_guard as guard
 
@@ -907,10 +909,12 @@ def test_workflow_diff_base():
     workflow = (root / '.github/workflows/open-door-guard.yml').read_text(encoding='utf-8')
     step = workflow.split('      - name: reject newly added ', 1)[1]
     block = step.split('        run: |\n', 1)[1].split('\n      - name:', 1)[0]
-    script = textwrap.dedent(block)
+    script = textwrap.dedent(block).replace(
+        "python3 ", '"' + Path(sys.executable).as_posix() + '" '
+    )
     scanner = root / 'open_door_guard.py'
     cases = []
-    with tempfile.TemporaryDirectory(prefix='guard-base-') as temporary:
+    with tempfile.TemporaryDirectory(prefix='guard-base-', ignore_cleanup_errors=True) as temporary:
         tmp = Path(temporary)
         home = tmp / 'home'
         home.mkdir()
@@ -969,7 +973,7 @@ def test_workflow_diff_base():
         assert 'parent ' + actual_base in raw_parents
         assert 'parent ' + feature_head in raw_parents
 
-        old_result = command(['python3', 'open_door_guard.py', '--diff', old_base, merged], check=False)
+        old_result = command([sys.executable, 'open_door_guard.py', '--diff', old_base, merged], check=False)
         assert old_result.returncode == 1 and 'concurrent.py:' in old_result.stderr
         cases.append('stale-event-base-reproduces-concurrent-finding')
         check_case('actual-merge-base-excludes-concurrent-change', 0, contains='GUARD: PASS')

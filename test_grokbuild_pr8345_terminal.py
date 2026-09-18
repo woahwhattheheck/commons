@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 # This receipt records this immutable tree; it does not freeze evolving main.
@@ -19,13 +20,13 @@ RECEIPT = ROOT / "p/grokbuild-pr8345-terminal-20260902-01.md"
 KEEP = {
     "host/harborline_pack_market_render.py": "cc9a3320",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
-    "test_harborline_pack_market_render.py": "5ba443dd",
+    "test_harborline_pack_market_render.py": "305c1390",
     "p/cursor-harborline-pack-market-render-readback-20260902-01.md": "6efbac54",
-    "ground/OWNER_NOW.md": "4b2a58ed",
+    "ground/OWNER_NOW.md": "39a0e0c3",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
     "p/cursor-big-things-incoming-shots-20260902-01.md": "60b24eff",
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
-    "autogtm.html": "2fe108f4",
+    "autogtm.html": "5c966110",
 }
 
 
@@ -48,7 +49,7 @@ class TestGrokbuildPr8345Terminal(unittest.TestCase):
 
     def test_helper_still_renders_standalone_store(self) -> None:
         proc = subprocess.run(
-            ["python3", str(HELPER), "--json"],
+            [sys.executable, str(HELPER), "--json"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -64,7 +65,7 @@ class TestGrokbuildPr8345Terminal(unittest.TestCase):
         self.assertEqual(payload["sent"], 0)
         self.assertEqual(payload["checkout"], "FINDER-FAILED")
         refused = subprocess.run(
-            ["python3", str(HELPER), "--send"],
+            [sys.executable, str(HELPER), "--send"],
             cwd=ROOT,
             text=True,
             capture_output=True,

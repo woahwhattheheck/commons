@@ -78,8 +78,8 @@ PAGES_IDS = (
 # except the already-peer-pinned door.
 OBSERVED_AT_LAND = {
     DOOR_REL: DOOR_BLOB,
-    "host/business_pack_desk_instance.py": "a550ae1b",
-    ".github/workflows/pages-deploy.yml": "d3b298c2",
+    "host/business_pack_desk_instance.py": "1029faad",
+    ".github/workflows/pages-deploy.yml": "7bb72d05",
     "pages-deploy.json": "475d5f24",
 }
 THIS_SEAT_DOES_NOT_WRITE = (

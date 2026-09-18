@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-harborline-commerce-compose-readback-20260902-01.md"
@@ -17,19 +18,19 @@ KEEP = {
     "p/cursor-harborline-commerce-compose-20260902-01.md": "45b7d435",
     "host/harborline_commerce_compose.py": "75128e5d",
     "p/cursor-harborline-commerce-compose-keep-lift-20260902-01.md": "668dd5c4",
-    "test_harborline_commerce_compose.py": "04480989",
-    "test_harborline_commerce_compose_keep_lift.py": "6d0cf122",
+    "test_harborline_commerce_compose.py": "4d0997c4",
+    "test_harborline_commerce_compose_keep_lift.py": "fb5ce9aa",
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "host/commerce_agents.py": "8d2ddf29",
     "ground/COMMERCE_AGENTS.json": "ab6f56a8",
-    "commerce-agents.html": "7e4e621b",
-    ".agents/skills/commerce-agents/SKILL.md": "1c0da1d4",
-    "test_commerce_agents.py": "8ca269cd",
+    "commerce-agents.html": "cbf2325d",
+    ".agents/skills/commerce-agents/SKILL.md": "4cf66eed",
+    "test_commerce_agents.py": "f0ff008c",
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
     "p/cursor-big-huge-commerce-agents-readback-20260902-01.md": "2a5ce894",
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
     "host/commerce_agents_same_loop.py": "c90f6e50",
-    "test_commerce_agents_same_loop.py": "f45d3a49",
+    "test_commerce_agents_same_loop.py": "03426c3c",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "host/harborline_pack_market_render.py": "cc9a3320",
     "p/cursor-what-a-pack-is-20260902-01.md": "a4e4dd89",
@@ -37,10 +38,10 @@ KEEP = {
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "packs/desk-website-service-20260902-01/instance.json": "f460d7bc",
     "packs/desk-website-service-20260902-01/checkout.md": "b24932b9",
-    "packs/desk-website-service-20260902-01/door.html": "299b01fd",
-    "hub_pages.py": "12186f65",
-    "door.js": "c06cc197",
-    "ground/OWNER_NOW.md": "a17b0afb",
+    "packs/desk-website-service-20260902-01/door.html": "d75b3f3b",
+    "hub_pages.py": "673dab89",
+    "door.js": "5899223c",
+    "ground/OWNER_NOW.md": "39a0e0c3",
 }
 
 
@@ -52,7 +53,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,
@@ -113,7 +114,7 @@ class TestCursorHarborlineCommerceComposeReadback(unittest.TestCase):
 
     def test_leftover_tests_pass_after_keep_lift_unread(self) -> None:
         leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_harborline_commerce_compose.py"],
+            [sys.executable, "-m", "unittest", "test_harborline_commerce_compose.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -122,7 +123,7 @@ class TestCursorHarborlineCommerceComposeReadback(unittest.TestCase):
         self.assertEqual(leftover.returncode, 0, msg=leftover.stdout + leftover.stderr)
         self.assertIn("Ran 6 tests", leftover.stderr)
         lift = subprocess.run(
-            ["python3", "-m", "unittest", "test_harborline_commerce_compose_keep_lift.py"],
+            [sys.executable, "-m", "unittest", "test_harborline_commerce_compose_keep_lift.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

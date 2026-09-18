@@ -7,6 +7,7 @@ import hashlib
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grokbuild-pr8491-verify-20260902-01.md"
@@ -15,9 +16,9 @@ PRIOR_TEST = ROOT / "test_grokbuild_open_door_guard_33694402752_billing_lock.py"
 
 KEEP = {
     "p/grokbuild-open-door-guard-33694402752-billing-lock-20260902-01.md": "e3d789b6",
-    "test_grokbuild_open_door_guard_33694402752_billing_lock.py": "4248a8cb",
+    "test_grokbuild_open_door_guard_33694402752_billing_lock.py": "04165683",
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "6a512428",
+    "test_open_door_guard.py": "2e2cc164",
     ".github/workflows/open-door-guard.yml": "ac6c46c4",
     "p/grokbuild-pr8481-verify-20260902-01.md": "ccbaff70",
     "p/latch-hub-eyes-wake-habit-20260902-01.md": "dc83d42c",
@@ -70,7 +71,7 @@ class TestGrokbuildPr8491Verify(unittest.TestCase):
 
     def test_local_guard_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", "test_open_door_guard.py"],
+            [sys.executable, "test_open_door_guard.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

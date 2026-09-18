@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -19,21 +20,21 @@ WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
     "p/grokbuild-pr8411-verify-20260902-01.md": "642dea64",
-    "test_grokbuild_pr8411_verify.py": "f2468c3d",
+    "test_grokbuild_pr8411_verify.py": "c1c37c21",
     "p/grok-build-llms-txt-33687829181-billing-lock-20260902-01.md": "3183564c",
-    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "eea1a9f3",
+    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "a93e988e",
     "p/grok-build-llms-txt-billing-lock-20260902-01.md": "cf9c9f40",
     "p/grokbuild-pr8413-terminal-20260902-01.md": "bca13858",
     ".github/workflows/tests.yml": "57d36525",
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "6a512428",
+    "test_open_door_guard.py": "2e2cc164",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
     "p/grokbuild-open-door-guard-33689243568-billing-lock-20260902-01.md": "4ab677c5",
-    "test_grokbuild_open_door_guard_33689243568_billing_lock.py": "5fc16975",
+    "test_grokbuild_open_door_guard_33689243568_billing_lock.py": "1d366dab",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
     "p/grok-resources-tab-freshness-billing-lock-20260902-01.md": "ac39fe78",
-    "ground/OWNER_NOW.md": "a17b0afb",
+    "ground/OWNER_NOW.md": "39a0e0c3",
 }
 
 
@@ -66,7 +67,7 @@ class TestGrokbuildTests33689243523BillingLock(unittest.TestCase):
             ("test_grokbuild_llms_txt_33687829181_billing_lock.py", "Ran 3 tests"),
         ):
             proc = subprocess.run(
-                ["python3", "-m", "unittest", name],
+                [sys.executable, "-m", "unittest", name],
                 cwd=ROOT,
                 text=True,
                 capture_output=True,

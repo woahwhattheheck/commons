@@ -39,7 +39,7 @@ def git_blob(rel: str) -> str:
 
 def leftover_compose_json() -> dict[str, Any]:
     proc = subprocess.run(
-        ["python3", str(COMPOSE_HELPER), "--json"],
+        [sys.executable, str(COMPOSE_HELPER), "--json"],
         cwd=ROOT,
         text=True,
         capture_output=True,

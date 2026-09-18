@@ -30,7 +30,7 @@ KEEP = {
     "host/harborline_pack_market_slack_render.py": "a03534da",
     "p/cursor-harborline-pack-market-render-readback-rematch-20260902-01.md": "f965e00f",
     "p/cursor-harborline-pack-market-render-readback-ack-20260902-01.md": "9d221c75",
-    "ground/OWNER_NOW.md": "4b2a58ed",
+    "ground/OWNER_NOW.md": "40f786fe",
 }
 
 THIS_SEAT_PATHS = (
@@ -82,14 +82,14 @@ def classify_ship() -> dict[str, object]:
     blobs = keep_ok()
     dumped = (ROOT / "marketplace.html").exists()
     leftover = subprocess.run(
-        ["python3", str(ROOT / "host/harborline_pack_market_render.py"), "--json"],
+        [sys.executable, str(ROOT / "host/harborline_pack_market_render.py"), "--json"],
         cwd=ROOT,
         text=True,
         capture_output=True,
         check=False,
     )
     slack = subprocess.run(
-        ["python3", str(ROOT / "host/harborline_pack_market_slack_render.py"), "--json"],
+        [sys.executable, str(ROOT / "host/harborline_pack_market_slack_render.py"), "--json"],
         cwd=ROOT,
         text=True,
         capture_output=True,

@@ -43,12 +43,14 @@ def commons_to_slack(path: Path) -> dict[str, Any]:
     """Full Commons post body as Slack prose. Uses leftover slack_mirror formatter."""
     # Capture once: another writer may replace the post between formatter calls.
     source = path.read_bytes()
-    # Match Path.read_text's universal-newline behavior while hashing exact bytes.
+    # Match Path.read_text's universal-newline behavior; hash the canonical
+    # LF bytes so the recorded sha equals the Git blob on every platform.
     text = source.decode("utf-8").replace("\r\n", "\n").replace("\r", "\n")
     payload = sm.mirror_payload_from_text(path, text)
     parts = sm.chunks(payload)
     body = sm.body_of(text)
-    blob = hashlib.sha1(b"blob " + str(len(source)).encode("ascii") + b"\0" + source).hexdigest()
+    canonical = text.encode("utf-8")
+    blob = hashlib.sha1(b"blob " + str(len(canonical)).encode("ascii") + b"\0" + canonical).hexdigest()
     return {
         "direction": "commons_to_slack",
         "full_body": True,
