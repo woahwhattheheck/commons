@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T07:47:53Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-18T01:44:46Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Refresh-LACSD-04252-deadline-authority-and-preserve-QuestCDN-hold",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T01:43:04Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "ccca6055e4e3b5f46aaf779d25d988de76a1aca34a89d560aa4487a31fc41bb0",
+  "digest": "85dd38d2cad2f83c58013612fae1598eed8768fbb71d520a9246c28ee1e2b750",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12933,
-    "pulse_seq": 2108,
-    "sha": "1f0655caf3195818f3bbf2d9203ba21699ac466b"
+    "post_count": 12935,
+    "pulse_seq": 2109,
+    "sha": "10c9c4766445bd850afceeb761b4282db667bc15"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-18T07:52:28Z",
+  "now": "2026-09-18T08:35:10Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4996,18 +4996,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+      "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-18T07:46:48Z"
+      "ts": "2026-09-18T07:47:53Z"
     },
     {
       "claim": "VECTOR-RELAY",

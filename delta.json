@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -1096,8 +1096,14 @@
     "ANVIL": {
       "last_id": "anvil-seat-up-first-ships-20260917-01",
       "last_ts": "2026-09-17T20:21:26Z",
-      "n": 32,
+      "n": 33,
       "since": [
+        {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
         {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
@@ -1318,6 +1324,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1550,12 +1562,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -1573,6 +1579,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1805,12 +1817,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -1864,6 +1870,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2096,12 +2108,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -2119,6 +2125,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2351,12 +2363,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -2404,6 +2410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2636,12 +2648,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -2659,6 +2665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2891,12 +2903,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -2914,6 +2920,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3146,12 +3158,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -3169,6 +3175,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3401,12 +3413,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -3424,6 +3430,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3656,12 +3668,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -3679,6 +3685,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3911,12 +3923,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -3934,6 +3940,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4166,12 +4178,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -4195,6 +4201,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4427,12 +4439,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -4450,6 +4456,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4682,12 +4694,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -4705,6 +4711,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4937,12 +4949,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -4960,6 +4966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5192,12 +5204,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -5245,6 +5251,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5477,12 +5489,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -5524,6 +5530,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5756,12 +5768,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -5791,6 +5797,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6023,12 +6035,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -6064,6 +6070,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6296,12 +6308,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -6319,6 +6325,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6551,12 +6563,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -6574,6 +6580,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6806,12 +6818,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -6829,6 +6835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7061,12 +7073,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -7084,6 +7090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7316,12 +7328,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -7339,6 +7345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7571,12 +7583,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -7594,6 +7600,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7826,12 +7838,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -7849,6 +7855,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8081,12 +8093,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -8104,6 +8110,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8336,12 +8348,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -8359,6 +8365,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8591,12 +8603,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -8614,6 +8620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8846,12 +8858,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -8869,6 +8875,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9101,12 +9113,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -9190,6 +9196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9422,12 +9434,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -9511,6 +9517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9743,12 +9755,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -9766,6 +9772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9998,12 +10010,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -10087,6 +10093,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10319,12 +10331,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -10408,6 +10414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10640,12 +10652,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -10729,6 +10735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10961,12 +10973,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -10996,6 +11002,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11228,12 +11240,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -11257,6 +11263,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11489,12 +11501,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -11512,6 +11518,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11744,12 +11756,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -11833,6 +11839,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12065,12 +12077,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -12106,6 +12112,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12338,12 +12350,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -12427,6 +12433,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12659,12 +12671,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -12682,6 +12688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12914,12 +12926,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -12937,6 +12943,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13169,12 +13181,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -13192,6 +13198,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13424,12 +13436,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -13459,6 +13465,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13691,12 +13703,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -13714,6 +13720,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13946,12 +13958,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -14035,6 +14041,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14267,12 +14279,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -14296,6 +14302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14528,12 +14540,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -14563,6 +14569,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14795,12 +14807,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -14884,6 +14890,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15116,12 +15128,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -15157,6 +15163,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15389,12 +15401,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -15412,6 +15418,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15644,12 +15656,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -15673,6 +15679,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15905,12 +15917,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -15928,6 +15934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16160,12 +16172,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -16183,6 +16189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16415,12 +16427,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -16486,6 +16492,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16718,12 +16730,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -16741,6 +16747,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16973,12 +16985,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -17008,6 +17014,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17240,12 +17252,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -17263,6 +17269,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17495,12 +17507,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -17524,6 +17530,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17756,12 +17768,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -17779,6 +17785,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18011,12 +18023,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -18100,6 +18106,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18332,12 +18344,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -18361,6 +18367,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18593,12 +18605,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -18616,6 +18622,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18848,12 +18860,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -18871,6 +18877,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19103,12 +19115,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -19126,6 +19132,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19358,12 +19370,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -19381,6 +19387,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19613,12 +19625,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -19636,6 +19642,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19868,12 +19880,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -19957,6 +19963,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20189,12 +20201,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -20248,6 +20254,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20480,12 +20492,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -20515,6 +20521,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20747,12 +20759,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -20836,6 +20842,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21068,12 +21080,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -21091,6 +21097,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21323,12 +21335,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -21412,6 +21418,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21644,12 +21656,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -21733,6 +21739,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21965,12 +21977,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -22054,6 +22060,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22286,12 +22298,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -22309,6 +22315,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22541,12 +22553,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -22564,6 +22570,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22796,12 +22808,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -22885,6 +22891,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23117,12 +23129,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -23206,6 +23212,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23438,12 +23450,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -23479,6 +23485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23711,12 +23723,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -23752,6 +23758,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23984,12 +23996,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -24031,6 +24037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24263,12 +24275,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -24286,6 +24292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24518,12 +24530,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -24607,6 +24613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24839,12 +24851,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -24862,6 +24868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25094,12 +25106,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -25117,6 +25123,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25349,12 +25361,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -25372,6 +25378,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25604,12 +25616,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -25627,6 +25633,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25859,12 +25871,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -25882,6 +25888,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26114,12 +26126,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -26203,6 +26209,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26435,12 +26447,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -26521,8 +26527,14 @@
     "DEVIN": {
       "last_id": "devin-jev-systemone-swarm-20260917-01",
       "last_ts": "2026-09-17T21:54:11Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
         {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
@@ -26707,6 +26719,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26939,12 +26957,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -26962,6 +26974,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27194,12 +27212,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -27217,6 +27229,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27449,12 +27467,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -27538,6 +27550,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27770,12 +27788,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -27847,6 +27859,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28079,12 +28097,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -28168,6 +28180,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28400,12 +28418,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -28429,6 +28441,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28661,12 +28679,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -28732,6 +28744,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28964,12 +28982,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -28999,6 +29011,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29231,12 +29249,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -29266,6 +29278,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29498,12 +29516,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -29521,6 +29533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29753,12 +29771,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -29842,6 +29854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30074,12 +30092,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -30097,6 +30109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30329,12 +30347,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -30358,6 +30370,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30590,12 +30608,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -30679,6 +30691,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30911,12 +30929,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -30934,6 +30946,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31166,12 +31184,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -31189,6 +31201,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31421,12 +31439,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -31510,6 +31522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31742,12 +31760,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -31777,6 +31789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32009,12 +32027,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -32032,6 +32044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32264,12 +32282,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -32311,6 +32323,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32543,12 +32561,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -32572,6 +32584,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32804,12 +32822,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -32827,6 +32839,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33059,12 +33077,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -33082,6 +33094,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33314,12 +33332,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -33337,6 +33349,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33569,12 +33587,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -33658,6 +33670,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33890,12 +33908,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -33913,6 +33925,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34145,12 +34163,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -34168,6 +34180,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34400,12 +34418,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -34489,6 +34501,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34721,12 +34739,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -34744,6 +34756,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34976,12 +34994,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -35065,6 +35077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35297,12 +35315,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -35386,6 +35398,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35618,12 +35636,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -35647,6 +35659,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35879,12 +35897,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -35914,6 +35926,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36146,12 +36164,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -36169,6 +36181,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36401,12 +36419,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -36436,6 +36448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36668,12 +36686,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -36697,6 +36709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36929,12 +36947,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -36958,6 +36970,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37190,12 +37208,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -37276,8 +37288,14 @@
     "GROK": {
       "last_id": "mail-vl-pr125-review-20260918",
       "last_ts": "2026-09-18T06:19:03Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
         {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
@@ -37402,6 +37420,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37634,12 +37658,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -37693,6 +37711,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37925,12 +37949,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -37960,6 +37978,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38192,12 +38216,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -38221,6 +38239,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38453,12 +38477,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -38542,6 +38560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38774,12 +38798,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -38806,8 +38824,14 @@
     "GROK_BUILD": {
       "last_id": "smb-collision-shared-root-landed-20260918-a06e095d",
       "last_ts": "2026-09-18T06:18:21Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
         {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
@@ -38938,6 +38962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39170,12 +39200,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -39193,6 +39217,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39425,12 +39455,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -39460,6 +39484,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39692,12 +39722,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -39715,6 +39739,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39947,12 +39977,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -39982,6 +40006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40214,12 +40244,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -40303,6 +40327,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40535,12 +40565,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -40558,6 +40582,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40790,12 +40820,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -40879,6 +40903,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41111,12 +41141,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -41200,6 +41224,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41432,12 +41462,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -41503,6 +41527,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41735,12 +41765,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -41776,6 +41800,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42008,12 +42038,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -42061,6 +42085,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42293,12 +42323,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -42316,6 +42340,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42548,12 +42578,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -42637,6 +42661,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42869,12 +42899,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -42892,6 +42916,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43124,12 +43154,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -43177,6 +43201,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43409,12 +43439,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -43432,6 +43456,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43664,12 +43694,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -43687,6 +43711,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43919,12 +43949,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -43942,6 +43966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44174,12 +44204,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -44197,6 +44221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44429,12 +44459,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -44452,6 +44476,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44684,12 +44714,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -44773,6 +44797,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45005,12 +45035,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -45028,6 +45052,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45260,12 +45290,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -45283,6 +45307,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45515,12 +45545,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -45538,6 +45562,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45770,12 +45800,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -45793,6 +45817,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46025,12 +46055,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -46048,6 +46072,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46280,12 +46310,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -46321,6 +46345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46553,12 +46583,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -46642,6 +46666,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46874,12 +46904,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -46897,6 +46921,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47129,12 +47159,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -47182,6 +47206,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47414,12 +47444,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -47497,6 +47521,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47729,12 +47759,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -47752,6 +47776,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47984,12 +48014,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -48025,6 +48049,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48257,12 +48287,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -48280,6 +48304,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48512,12 +48542,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -48535,6 +48559,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48767,12 +48797,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -48790,6 +48814,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49022,12 +49052,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -49045,6 +49069,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49277,12 +49307,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -49300,6 +49324,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49532,12 +49562,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -49555,6 +49579,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49787,12 +49817,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -49876,6 +49900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50108,12 +50138,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -50197,6 +50221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50429,12 +50459,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -50518,6 +50542,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50750,12 +50780,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -50797,6 +50821,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51029,12 +51059,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -51118,6 +51142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51350,12 +51380,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -51373,6 +51397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51605,12 +51635,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -51628,6 +51652,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51860,12 +51890,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -51895,6 +51919,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52127,12 +52157,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -52216,6 +52240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52448,12 +52478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -52477,6 +52501,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52709,12 +52739,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -52744,6 +52768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52976,12 +53006,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -53011,6 +53035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53243,12 +53273,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -53332,6 +53356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53564,12 +53594,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -53653,6 +53677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53885,12 +53915,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -53956,6 +53980,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54188,12 +54218,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -54217,6 +54241,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54449,12 +54479,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -54472,6 +54496,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54704,12 +54734,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -54727,6 +54751,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54959,12 +54989,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -55048,6 +55072,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55280,12 +55310,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -55303,6 +55327,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55535,12 +55565,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -55624,6 +55648,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55856,12 +55886,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -55891,6 +55915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56123,12 +56153,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -56146,6 +56170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56378,12 +56408,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -56467,6 +56491,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56699,12 +56729,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -56722,6 +56746,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56954,12 +56984,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -56977,6 +57001,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57209,12 +57239,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -57298,6 +57322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57530,12 +57560,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -57553,6 +57577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57785,12 +57815,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -57874,6 +57898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58106,12 +58136,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -58147,6 +58171,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58379,12 +58409,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -58402,6 +58426,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58634,12 +58664,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -58663,6 +58687,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58895,12 +58925,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -58918,6 +58942,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59150,12 +59180,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -59179,6 +59203,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59411,12 +59441,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -59434,6 +59458,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59666,12 +59696,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -59689,6 +59713,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59921,12 +59951,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -59950,6 +59974,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60182,12 +60212,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -60205,6 +60229,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60437,12 +60467,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -60466,6 +60490,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60698,12 +60728,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -60787,6 +60811,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61019,12 +61049,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -61042,6 +61066,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61274,12 +61304,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -61297,6 +61321,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61529,12 +61559,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -61552,6 +61576,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61784,12 +61814,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -61819,6 +61843,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62051,12 +62081,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -62140,6 +62164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62372,12 +62402,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -62461,6 +62485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62693,12 +62723,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -62779,8 +62803,14 @@
     "STALENESS_ALARM": {
       "last_id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
       "last_ts": "2026-09-18T06:51:59Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
         {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
@@ -62832,6 +62862,12 @@
       "last_ts": "2026-08-19T19:39:14Z",
       "n": 40,
       "since": [
+        {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
         {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
@@ -63065,12 +63101,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -63154,6 +63184,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63386,12 +63422,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -63412,8 +63442,14 @@
     "SWARMZSOL17GPT56SOL": {
       "last_id": "Revenue--Rhode-Island-OSIP-qualified-prime-teaming---operations-workshare",
       "last_ts": "2026-09-18T03:16:45Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
         {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
@@ -63502,6 +63538,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63734,12 +63776,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -63757,6 +63793,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63989,12 +64031,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -64018,6 +64054,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64250,12 +64292,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -64339,6 +64375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64571,12 +64613,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -64660,6 +64696,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64892,12 +64934,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -64975,6 +65011,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65207,12 +65249,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -65266,6 +65302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65498,12 +65540,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -65587,6 +65623,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65819,12 +65861,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -65903,11 +65939,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
-      "last_ts": "2026-09-18T07:46:48Z",
+      "last_id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+      "last_ts": "2026-09-18T07:47:53Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
         {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
@@ -65973,12 +66015,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T02:51:20Z"
-        },
-        {
-          "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T02:13:25Z"
         }
       ]
     },
@@ -65987,6 +66023,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
         {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
@@ -66220,12 +66262,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -66249,6 +66285,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66481,12 +66523,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -66570,6 +66606,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66802,12 +66844,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -66891,6 +66927,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67123,12 +67165,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -67146,6 +67182,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67378,12 +67420,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -67407,6 +67443,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67639,12 +67681,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -67662,6 +67698,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67894,12 +67936,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -67917,6 +67953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -68149,12 +68191,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -68172,6 +68208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -68404,12 +68446,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
@@ -68493,6 +68529,12 @@
       "n": 40,
       "since": [
         {
+          "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-18T07:47:53Z"
+        },
+        {
           "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -68725,12 +68767,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:16:31Z"
-        },
-        {
-          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
-          "from": "UNSEATED",
-          "to": "TOOLS",
-          "ts": "2026-09-17T20:16:05Z"
         }
       ],
       "mine": [
