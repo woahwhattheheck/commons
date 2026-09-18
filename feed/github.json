@@ -1,13 +1,13 @@
 {
   "counts": {
     "open_issues": 106,
-    "open_pull_requests": 60,
+    "open_pull_requests": 59,
     "runs_in_progress": 12,
-    "runs_queued": 488
+    "runs_queued": 482
   },
   "counts_source": "graphql",
   "degraded": [],
-  "drafts": 0,
+  "drafts": 1,
   "longest_open": [
     {
       "author": "woahwhattheheck",
@@ -69,24 +69,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z17/r30-fresh",
-      "created_at": "2026-09-18T02:21:31Z",
+      "branch": "zquoin6f2/15854-67slot-cron-compose",
+      "created_at": "2026-09-18T02:28:21Z",
       "draft": false,
-      "head_sha": "92a675a0dad4551d3cb5f5335d2665c3b395d79c",
-      "number": 15885,
-      "title": "research: rejoin reviewed linear-effort carrier",
-      "updated_at": "2026-09-18T02:21:31Z"
+      "head_sha": "4c88dd2147a1eddd88741480e5356ae4f6f8458b",
+      "number": 15886,
+      "title": "CI: compose 67-slot recovery with 264/day poll reduction",
+      "updated_at": "2026-09-18T02:28:36Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
       "branch": "z-cairn-6f42/camt-statement-20260917",
       "created_at": "2026-09-18T02:19:47Z",
-      "draft": false,
+      "draft": true,
       "head_sha": "fc85ecf3036d57c69c8685068a1f2f49d88c2e8c",
       "number": 15884,
-      "title": "revenue: offline camt.053 statement intake workbench and paid integration pilot",
-      "updated_at": "2026-09-18T02:19:47Z"
+      "title": "HOLD / canonical SMB #1351: preserved camt .02/.08 contribution source",
+      "updated_at": "2026-09-18T02:25:42Z"
     },
     {
       "author": "woahwhattheheck",
@@ -116,10 +116,10 @@
       "branch": "zsol-2114/muse-runtime-adoption-gate-15748-current-main-20260917",
       "created_at": "2026-09-18T01:57:49Z",
       "draft": false,
-      "head_sha": "9de1c731e6bf6f0fd1dc75a113f3182542c99275",
+      "head_sha": "9642f8141f0bdbb08a711185133dfe29854263df",
       "number": 15871,
       "title": "Muse runtime adoption: prove retained atomic lease/CONSUME/GO evidence",
-      "updated_at": "2026-09-18T01:57:49Z"
+      "updated_at": "2026-09-18T02:31:48Z"
     },
     {
       "author": "woahwhattheheck",
@@ -189,7 +189,6 @@
     "15656": "b972392658f06a04880f6d32a646e6f061557471",
     "15657": "d67e7d6c3c44f361b13718dc59f200bd8c4e8866",
     "15668": "a0806469a08003c3ae84752d7a23d61fa7cd8109",
-    "15682": "8bc90eedfd545cab08277ba8df1937bf4629e8c0",
     "15684": "a5aca2b07b41ca47fc3e914b172584fbc3712788",
     "15699": "141b373f9e3d43b667a9396e50470f831b7962a8",
     "15700": "5441a7eae9e7d554fb0dbbb0fed044a9a101fa55",
@@ -233,16 +232,38 @@
     "15867": "7353c760d9f4c8a3d9f9ceeb1e753f93887c5067",
     "15868": "4fdb67823db0349de7b70717af7aa5b517eccaf3",
     "15869": "0029c8cfd68a9966b035e00838fb030ebe9850fb",
-    "15871": "9de1c731e6bf6f0fd1dc75a113f3182542c99275",
+    "15871": "9642f8141f0bdbb08a711185133dfe29854263df",
     "15875": "82c3ef9fd469094cfdba52c5dc6baedd73495e93",
     "15877": "c99ecdfd1313bdf5f7f6bae3468d9252cea412a3",
     "15884": "fc85ecf3036d57c69c8685068a1f2f49d88c2e8c",
-    "15885": "92a675a0dad4551d3cb5f5335d2665c3b395d79c"
+    "15886": "4c88dd2147a1eddd88741480e5356ae4f6f8458b"
   },
-  "pulls_listed": 60,
+  "pulls_listed": 59,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 40.7,
+  "queue_depth_per_runner": 40.2,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zrh1546/rule30-linear-effort-20260917",
+      "closed_at": "2026-09-18T02:23:24Z",
+      "head_sha": "8bc90eedfd545cab08277ba8df1937bf4629e8c0",
+      "merged_at": null,
+      "number": 15682,
+      "state": "CLOSED",
+      "title": "Research: formalize Rule 30 linear-effort prize boundary"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z17/r30-fresh",
+      "closed_at": "2026-09-18T02:22:52Z",
+      "head_sha": "92a675a0dad4551d3cb5f5335d2665c3b395d79c",
+      "merged_at": "2026-09-18T02:22:52Z",
+      "number": 15885,
+      "state": "MERGED",
+      "title": "research: rejoin reviewed linear-effort carrier"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -385,32 +406,10 @@
       "number": 15864,
       "state": "MERGED",
       "title": "revenue: tombstone buyer-canceled MMSD pursuit"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-rook/mapping-equity-nca-real-run-20260917",
-      "closed_at": "2026-09-18T01:44:08Z",
-      "head_sha": "f57c67616bf762ad02ca1cbaf741c41457ff2cd0",
-      "merged_at": null,
-      "number": 15858,
-      "state": "CLOSED",
-      "title": "ci(one-shot): execute Mapping Equity Northern-CA public-data receipt"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "sol-z/douglas-ks-erp-acceptance-20260917",
-      "closed_at": "2026-09-18T01:43:38Z",
-      "head_sha": "85e50c709dd98c962c0600813a3cfbdeabc8ae73",
-      "merged_at": "2026-09-18T01:43:38Z",
-      "number": 15853,
-      "state": "MERGED",
-      "title": "Revenue: screen Douglas County KS ERP acceptance workshare"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T02:21:33Z",
+  "unchanged_since": "2026-09-18T02:33:12Z",
   "undatable_pulls": []
 }
