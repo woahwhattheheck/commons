@@ -79,13 +79,13 @@ def ready_fixture():
 class Tests(unittest.TestCase):
     def test_default_candidate_holds_even_with_self_claimed_pi_rule(self):
         authority = json.loads((HERE.parent / "authority_evidence.example.json").read_text())
-        receipt = v.compile_readiness(copy.deepcopy(BASE), authority, NOW)
+        receipt = v._compile_at(copy.deepcopy(BASE), authority, NOW)
         self.assertEqual(receipt["state"], v.HOLD)
         self.assertIn("pi_owner_eligibility: missing exact retained authority", receipt["reasons"])
 
     def test_full_synthetic_fixture_reaches_review_ready_not_submission(self):
         m, a = ready_fixture()
-        receipt = v.compile_readiness(m, a, NOW)
+        receipt = v._compile_at(m, a, NOW)
         self.assertEqual(receipt["state"], v.READY)
         self.assertEqual(receipt["reasons"], [])
         self.assertFalse(receipt["authority"]["carrier_may_submit"])
@@ -95,17 +95,17 @@ class Tests(unittest.TestCase):
         m, a = ready_fixture()
         m["hard_gates"].pop("legal_ip_pfa_review")
         with self.assertRaisesRegex(v.ReadinessError, "immutable required gate set"):
-            v.compile_readiness(m, a, NOW)
+            v._compile_at(m, a, NOW)
 
     def test_candidate_cannot_choose_deadline(self):
         m, a = ready_fixture()
         m["deadline"] = {"local":"2099-01-01T00:00:00"}
         with self.assertRaisesRegex(v.ReadinessError, "keys mismatch"):
-            v.compile_readiness(m, a, NOW)
+            v._compile_at(m, a, NOW)
 
     def test_deadline_is_verifier_owned_and_expired(self):
         m, a = ready_fixture()
-        receipt = v.compile_readiness(m, a, LATE)
+        receipt = v._compile_at(m, a, LATE)
         self.assertEqual(receipt["state"], v.HOLD)
         self.assertIn("deadline expired", receipt["reasons"])
 
@@ -116,84 +116,92 @@ class Tests(unittest.TestCase):
         subject = f"{fact['utility_id']}|{fact['site_id']}|{fact['role']}"
         a["records"] = [r for r in a["records"] if r["kind"] != "UTILITY_CONSENT"]
         a["records"].append(record("utility-only", "UTILITY_CONSENT", "utility_consent", subject, fact))
-        receipt = v.compile_readiness(m, a, NOW)
+        receipt = v._compile_at(m, a, NOW)
         self.assertIn("fewer than two distinct consenting utility sites", receipt["reasons"])
 
     def test_cross_site_consent_transplant_fails(self):
         m, a = ready_fixture()
         m["utility_participants"][0]["site_id"] = "site-x"
-        receipt = v.compile_readiness(m, a, NOW)
+        receipt = v._compile_at(m, a, NOW)
         self.assertIn("utility 0: missing exact retained consent authority", receipt["reasons"])
 
     def test_cross_gate_evidence_transplant_fails(self):
         m, a = ready_fixture()
         target = next(r for r in a["records"] if r["gate"] == "computer_vision_lead")
         target["gate"] = "water_wastewater_domain_lead"
-        receipt = v.compile_readiness(m, a, NOW)
+        receipt = v._compile_at(m, a, NOW)
         self.assertIn("computer_vision_lead: missing exact retained authority", receipt["reasons"])
 
     def test_cross_opportunity_authority_rejected(self):
         m, a = ready_fixture()
         a["records"][0]["opportunity_id"] = "OTHER"
         with self.assertRaisesRegex(v.ReadinessError, "cross-opportunity"):
-            v.compile_readiness(m, a, NOW)
+            v._compile_at(m, a, NOW)
 
     def test_source_generation_transplant_rejected(self):
         m, a = ready_fixture()
         a["records"][0]["source_sha256"] = "b" * 64
         with self.assertRaisesRegex(v.ReadinessError, "source generation mismatch"):
-            v.compile_readiness(m, a, NOW)
+            v._compile_at(m, a, NOW)
 
     def test_future_authority_rejected(self):
         m, a = ready_fixture()
         a["records"][0]["verified_at"] = "2026-09-13T14:00:01Z"
         with self.assertRaisesRegex(v.ReadinessError, "future"):
-            v.compile_readiness(m, a, NOW)
+            v._compile_at(m, a, NOW)
 
     def test_contribution_floor_is_exact_integer_arithmetic(self):
         m, a = ready_fixture()
         m["budget"]["documented_eligible_contribution_usd_cents"] = 9_899_999
-        receipt = v.compile_readiness(m, a, NOW)
+        receipt = v._compile_at(m, a, NOW)
         self.assertTrue(any("below immutable 33% floor" in x for x in receipt["reasons"]))
 
     def test_indirect_ceiling_is_enforced(self):
         m, a = ready_fixture()
         m["budget"]["reimbursed_indirect_usd_cents"] = 3_000_001
-        receipt = v.compile_readiness(m, a, NOW)
+        receipt = v._compile_at(m, a, NOW)
         self.assertTrue(any("exceeds immutable 15%" in x for x in receipt["reasons"]))
 
     def test_budget_bool_is_not_integer(self):
         m, a = ready_fixture()
         m["budget"]["wrf_request_usd_cents"] = True
         with self.assertRaisesRegex(v.ReadinessError, "nonnegative integer"):
-            v.compile_readiness(m, a, NOW)
+            v._compile_at(m, a, NOW)
 
     def test_budget_workbook_requires_retained_authority(self):
         m, a = ready_fixture()
         a["records"] = [r for r in a["records"] if r["gate"] != "budget_workbook"]
-        receipt = v.compile_readiness(m, a, NOW)
+        receipt = v._compile_at(m, a, NOW)
         self.assertIn("budget_workbook: missing exact retained authority", receipt["reasons"])
 
     def test_candidate_cannot_enable_submission_authority(self):
         m, a = ready_fixture()
         m["submission_authority"]["carrier_may_submit"] = True
         with self.assertRaisesRegex(v.ReadinessError, "hard false"):
-            v.compile_readiness(m, a, NOW)
+            v._compile_at(m, a, NOW)
 
     def test_duplicate_evidence_id_rejected(self):
         m, a = ready_fixture()
         a["records"][1]["evidence_id"] = a["records"][0]["evidence_id"]
         with self.assertRaisesRegex(v.ReadinessError, "duplicate evidence_id"):
-            v.compile_readiness(m, a, NOW)
+            v._compile_at(m, a, NOW)
 
     def test_receipt_tamper_and_current_drift_fail(self):
         m, a = ready_fixture()
-        receipt = v.compile_readiness(m, a, NOW)
-        ok, reasons = v.verify_receipt(receipt, m, a, NOW)
+        receipt = v._compile_at(m, a, NOW)
+        ok, reasons = v._verify_receipt_at(receipt, m, a, NOW)
         self.assertTrue(ok, reasons)
         bad = copy.deepcopy(receipt); bad["state"] = v.HOLD
-        self.assertFalse(v.verify_receipt(bad, m, a, NOW)[0])
-        self.assertFalse(v.verify_receipt(receipt, m, a, LATE)[0])
+        self.assertFalse(v._verify_receipt_at(bad, m, a, NOW)[0])
+        self.assertFalse(v._verify_receipt_at(receipt, m, a, LATE)[0])
+
+    def test_public_api_has_no_caller_clock_authority(self):
+        m, a = ready_fixture()
+        with self.assertRaises(TypeError):
+            v.compile_readiness(m, a, NOW)
+        current = v.compile_readiness(m, a)
+        self.assertEqual(current["state"], v.HOLD)
+        self.assertIn("deadline expired", current["reasons"])
 
     def test_strict_json_rejects_duplicate_keys_float_and_nonfinite(self):
         for raw in (b'{"a":1,"a":2}', b'{"a":1.5}', b'{"a":NaN}'):
