@@ -9,16 +9,19 @@ from datetime import datetime as _datetime, timezone as _timezone
 from typing import Any
 from urllib.parse import urlsplit, urlunsplit
 
-SCHEMA = "outreach-qualification-firewall.v1"
-DECISION_SCHEMA = "outreach-qualification-firewall.decision.v1"
+SCHEMA = "outreach-qualification-firewall.v2"
+DECISION_SCHEMA = "outreach-qualification-firewall.decision.v2"
 MAX_INPUT_BYTES = 1_000_000
 MAX_LIST_ROWS = 500
 MAX_MINOR_UNITS = 10**12
 MAX_QUANTITY = 10**6
 MAX_RUNWAY_SECONDS = 366 * 24 * 3600
 MAX_LEASE_SECONDS = 3600
+MAX_IDENTITY_VALIDITY_SECONDS = 180 * 24 * 3600
+MAX_RELATIONSHIP_VALIDITY_SECONDS = 600
+MAX_RELATIONSHIP_AGE_SECONDS = 300
 TOKEN_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:/+-]{0,127}$")
-EMAIL_RE = re.compile(r"^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,63}$")
+EMAIL_RE = re.compile(r"^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,63}$")
 HEX = set("0123456789abcdef")
 
 TOP_KEYS = {
@@ -28,6 +31,7 @@ TOP_KEYS = {
     "qualifications",
     "economics",
     "contact",
+    "identity_binding",
     "requesting_seat",
     "session_nonce",
     "writer_lease",
@@ -46,6 +50,18 @@ SOURCE_KEYS = {
 }
 QUAL_KEYS = {"gate_id", "disposition", "required_for_outreach", "evidence_ref", "evidence_sha256"}
 ECON_KEYS = {"workshare_ref", "currency", "amount_minor", "compensation_basis", "quantity_max", "scope_ref"}
+IDENTITY_KEYS = {
+    "binding_id",
+    "source_packet_sha256",
+    "opportunity_id",
+    "org_ref",
+    "purpose_ref",
+    "canonical_org_id",
+    "canonical_purpose_id",
+    "observed_at",
+    "valid_until",
+    "auth_tag_hex",
+}
 CONTACT_KEYS = {
     "org_ref",
     "contact_ref",
@@ -54,6 +70,11 @@ CONTACT_KEYS = {
     "relationship_state",
     "relationship_evidence_ref",
     "relationship_evidence_sha256",
+    "relationship_generation",
+    "relationship_head_sha256",
+    "relationship_observed_at",
+    "relationship_valid_until",
+    "relationship_authority_tag_hex",
     "purpose_ref",
 }
 LEASE_KEYS = {"lease_id", "collision_key", "seat", "session_nonce", "issued_at", "expires_at", "status"}
@@ -113,11 +134,17 @@ def _parse_int(token: str) -> int:
         raise FirewallError("invalid integer token") from exc
 
 
-def strict_json_loads(raw: str) -> Any:
-    if not isinstance(raw, str):
-        raise FirewallError("JSON input must be text")
+def strict_json_loads(raw: str, _loads=json.loads, _len=len, _max=MAX_INPUT_BYTES) -> Any:
+    if type(raw) is not str:
+        raise FirewallError("JSON input must be exact text")
     try:
-        value = json.loads(
+        encoded = raw.encode("utf-8", "strict")
+    except UnicodeError as exc:
+        raise FirewallError("invalid bounded JSON") from exc
+    if _len(encoded) > _max:
+        raise FirewallError("JSON input exceeds byte ceiling")
+    try:
+        value = _loads(
             raw,
             object_pairs_hook=_no_duplicate_pairs,
             parse_int=_parse_int,
@@ -132,10 +159,10 @@ def strict_json_loads(raw: str) -> Any:
     return value
 
 
-def _reject_unsafe_unicode(value: Any) -> None:
+def _reject_unsafe_unicode(value: Any, _category=unicodedata.category) -> None:
     if isinstance(value, str):
         for ch in value:
-            if unicodedata.category(ch) in {"Cc", "Cf", "Cs", "Zl", "Zp"}:
+            if _category(ch) in {"Cc", "Cf", "Cs", "Zl", "Zp"}:
                 raise FirewallError("forbidden control/format/surrogate character")
     elif isinstance(value, list):
         for item in value:
@@ -146,21 +173,25 @@ def _reject_unsafe_unicode(value: Any) -> None:
             _reject_unsafe_unicode(item)
 
 
-def canonical_json(value: Any) -> bytes:
-    _reject_unsafe_unicode(value)
+def canonical_json(
+    value: Any,
+    _reject=_reject_unsafe_unicode,
+    _dumps=json.dumps,
+) -> bytes:
+    _reject(value)
     try:
-        return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
+        return _dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
     except (TypeError, ValueError, UnicodeError, RecursionError) as exc:
         raise FirewallError("value is not canonically serializable") from exc
 
 
-def sha256_hex(data: bytes) -> str:
-    return hashlib.sha256(data).hexdigest()
+def sha256_hex(data: bytes, _sha256=hashlib.sha256) -> str:
+    return _sha256(data).hexdigest()
 
 
 def _exact_keys(value: Any, expected: set[str], label: str) -> dict[str, Any]:
-    if not isinstance(value, dict):
-        raise FirewallError(f"{label} must be an object")
+    if type(value) is not dict:
+        raise FirewallError(f"{label} must be an exact object")
     keys = set(value)
     if keys != expected:
         raise FirewallError(f"{label} schema mismatch")
@@ -168,19 +199,19 @@ def _exact_keys(value: Any, expected: set[str], label: str) -> dict[str, Any]:
 
 
 def _token(value: Any, field: str) -> str:
-    if not isinstance(value, str) or not TOKEN_RE.fullmatch(value):
+    if type(value) is not str or not TOKEN_RE.fullmatch(value):
         raise FirewallError(f"{field} must be a bounded opaque ASCII token")
     return value
 
 
 def _digest(value: Any, field: str) -> str:
-    if not isinstance(value, str) or len(value) != 64 or any(ch not in HEX for ch in value):
+    if type(value) is not str or len(value) != 64 or any(ch not in HEX for ch in value):
         raise FirewallError(f"{field} must be lowercase SHA-256 hex")
     return value
 
 
 def _exact_int(value: Any, field: str, minimum: int, maximum: int) -> int:
-    if isinstance(value, bool) or not isinstance(value, int):
+    if type(value) is not int:
         raise FirewallError(f"{field} must be an exact integer")
     if not minimum <= value <= maximum:
         raise FirewallError(f"{field} is out of range")
@@ -193,8 +224,8 @@ def _exact_bool(value: Any, field: str) -> bool:
     return value
 
 
-def _utc(value: Any, field: str, _fromisoformat=_datetime.fromisoformat, _tz=_timezone.utc) -> datetime:
-    if not isinstance(value, str) or not value.endswith("Z"):
+def _utc(value: Any, field: str, _fromisoformat=_datetime.fromisoformat, _tz=_timezone.utc) -> _datetime:
+    if type(value) is not str or not value.endswith("Z"):
         raise FirewallError(f"{field} must be canonical UTC Z time")
     try:
         dt = _fromisoformat(value[:-1] + "+00:00")
@@ -206,18 +237,16 @@ def _utc(value: Any, field: str, _fromisoformat=_datetime.fromisoformat, _tz=_ti
     return dt
 
 
-def _utc_text(dt: datetime) -> str:
+def _utc_text(dt: _datetime) -> str:
     return dt.astimezone(_timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
 
 
-def _process_utc_now(_clock=_time_module.time, _fromtimestamp=_datetime.fromtimestamp, _tz=_timezone.utc) -> datetime:
-    # Default arguments capture initialization-owned callables so ordinary module/global rebinding
-    # cannot substitute caller-selected historical time into compile_current().
+def _process_utc_now(_clock=_time_module.time, _fromtimestamp=_datetime.fromtimestamp, _tz=_timezone.utc) -> _datetime:
     return _fromtimestamp(_clock(), _tz).replace(microsecond=0)
 
 
 def _canonical_https(value: Any, field: str) -> str:
-    if not isinstance(value, str) or len(value) > 512:
+    if type(value) is not str or len(value) > 512:
         raise FirewallError(f"{field} must be bounded HTTPS URL text")
     parts = urlsplit(value)
     if parts.scheme.lower() != "https" or not parts.hostname or parts.username or parts.password or parts.fragment:
@@ -239,7 +268,7 @@ def _canonical_https(value: Any, field: str) -> str:
 
 
 def _canonical_email(value: Any, field: str) -> str:
-    if not isinstance(value, str) or len(value) > 254 or not EMAIL_RE.fullmatch(value):
+    if type(value) is not str or len(value) > 254 or not EMAIL_RE.fullmatch(value):
         raise FirewallError(f"{field} must be an email address")
     return value.lower()
 
@@ -248,5 +277,3 @@ def _canonical_route(route_type: str, value: Any, field: str) -> str:
     if route_type == "EMAIL":
         return _canonical_email(value, field)
     return _canonical_https(value, field)
-
-
