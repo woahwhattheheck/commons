@@ -352,7 +352,7 @@ def _jobs(
         self_hosted = bool(
             runs_on
             and "self-hosted" in runs_on.lower()
-            and "matrix." not in runs_on
+            and "$" not in runs_on
         )
 
         strategy = next(
