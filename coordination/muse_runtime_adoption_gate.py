@@ -685,4 +685,28 @@ def _build_api():
         return value
 
     def read_diagnostic(path_value):
-        value 
+        value = loads_strict(read_file(path_value))
+        if type(value) is not dict:
+            fail("diagnostic file must contain an object")
+        return value
+
+    return (
+        loads_strict,
+        canonical,
+        normalize_packet,
+        compile_at,
+        compile_current,
+        verify_artifact,
+        verify_current,
+        read_packet,
+        read_diagnostic,
+    )
+
+
+(
+    loads_strict,
+    canonical_json,
+    _normalize_packet,
+    _compile_at_for_test,
+    compile_current,
+    ver
