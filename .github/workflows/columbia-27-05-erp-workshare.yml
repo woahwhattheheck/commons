@@ -1,0 +1,42 @@
+name: Columbia 27-05 ERP Workshare
+
+on:
+  push:
+    paths:
+      - 'revenue/opportunities/columbia_ca_rfp_27_05_erp_workshare/**'
+      - '.github/workflows/columbia-27-05-erp-workshare.yml'
+  pull_request:
+    paths:
+      - 'revenue/opportunities/columbia_ca_rfp_27_05_erp_workshare/**'
+      - '.github/workflows/columbia-27-05-erp-workshare.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: columbia-27-05-erp-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    defaults:
+      run:
+        working-directory: revenue/opportunities/columbia_ca_rfp_27_05_erp_workshare
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile
+        run: python -m py_compile columbia_27_05.py test_columbia_27_05.py
+      - name: Normal semantic suite
+        run: python -m unittest -v test_columbia_27_05.py
+      - name: Optimized semantic suite
+        run: python -O -m unittest -v test_columbia_27_05.py
