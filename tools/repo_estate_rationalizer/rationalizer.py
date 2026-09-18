@@ -11,6 +11,10 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
 from tools.repo_estate_rationalizer.schema import *
 from tools.repo_estate_rationalizer.schema import _canon_time, _plain, _time
 def _decision(repo: dict[str, Any], ev: dict[str, Any] | None) -> dict[str, Any]:
