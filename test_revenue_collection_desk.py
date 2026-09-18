@@ -274,5 +274,48 @@ class RevenueCollectionDeskTests(unittest.TestCase):
         with self.assertRaises(c.ContractError):
             c.compile_ledger(ledger([cl]))
 
+    def test_future_settlement_after_as_of_fails(self):
+        cl = claim(amount="90.00", events=[
+            ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
+            ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
+            ev("e3", "2026-09-20T00:00:00Z", "SETTLED_CASH",
+               settlement_currency="USD", settlement_amount="90.00"),
+        ])
+        with self.assertRaisesRegex(c.ContractError, "exceeds as_of"):
+            c.compile_ledger(ledger([cl], as_of="2026-09-18T00:00:00Z"))
+
+    def test_same_instrument_partial_settlement_fails(self):
+        cl = claim(amount="90.00", events=[
+            ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
+            ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
+            ev("e3", "2026-09-03T00:00:00Z", "SETTLED_CASH",
+               settlement_currency="USD", settlement_amount="1.00"),
+        ])
+        with self.assertRaisesRegex(c.ContractError, "same-instrument settlement"):
+            c.compile_ledger(ledger([cl]))
+
+    def test_same_instrument_exact_settlement_passes(self):
+        cl = claim(amount="90.00", events=[
+            ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
+            ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
+            ev("e3", "2026-09-03T00:00:00Z", "SETTLED_CASH",
+               settlement_currency="USD", settlement_amount="90.00"),
+        ])
+        out = c.compile_ledger(ledger([cl]))
+        self.assertEqual(out["claims"][0]["state"], c.STATE_SETTLED)
+        self.assertEqual(out["settled_cash_by_currency"], {"USD": "90"})
+
+    def test_cross_instrument_explicit_settlement_still_passes(self):
+        cl = claim(instrument="RTC", amount="25", events=[
+            ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
+            ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
+            ev("e3", "2026-09-03T00:00:00Z", "SETTLED_CASH",
+               settlement_currency="USD", settlement_amount="1.00"),
+        ])
+        out = c.compile_ledger(ledger([cl]))
+        self.assertEqual(out["claims"][0]["state"], c.STATE_SETTLED)
+        self.assertEqual(out["settled_cash_by_currency"], {"USD": "1"})
+        self.assertNotIn("RTC", out["settled_cash_by_currency"])
+
 if __name__ == "__main__":
     unittest.main()
