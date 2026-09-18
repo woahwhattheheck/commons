@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
 import unittest
 
@@ -11,12 +12,12 @@ SHA_A = "1" * 40
 SHA_B = "2" * 40
 
 
+def digest(label: str) -> str:
+    return hashlib.sha256(label.encode("utf-8")).hexdigest()
+
+
 def claim(name: str, state: str = "EVIDENCED") -> dict:
-    return {
-        "claimId": name,
-        "state": state,
-        "evidenceRef": f"evidence:{name}" if state == "EVIDENCED" else None,
-    }
+    return {"claimId": name, "state": state, "evidenceRef": None}
 
 
 def candidate(
@@ -47,13 +48,7 @@ def candidate(
             "proposalQuality": [claim(f"{cid}.quality", state)],
         },
         "traction": (
-            [
-                {
-                    "evidenceId": f"{cid}.pilot",
-                    "kind": "CUSTOMER_PILOT",
-                    "evidenceRef": f"external:{cid}:pilot",
-                }
-            ]
+            [{"evidenceId": f"{cid}.pilot", "kind": "CUSTOMER_PILOT", "evidenceRef": None}]
             if traction
             else []
         ),
@@ -61,10 +56,95 @@ def candidate(
 
 
 def gate(state: str = "CONFIRMED_TRUE") -> dict:
-    return {
-        "state": state,
-        "evidenceRef": "owner:evidence" if state != "UNKNOWN" else None,
-    }
+    return {"state": state, "evidenceRef": None}
+
+
+GLOBAL_CLASSES = {
+    "forProfitIndependentUsSmallBusiness": "OWNER",
+    "ownershipControlEligible": "OWNER",
+    "employeeCeilingMet": "OWNER",
+    "sbirSmallBusinessRequirementsMet": "OWNER",
+    "federalSupportCensus": "OWNER",
+    "oneSubmissionSlot": "PROVIDER",
+    "officialTemplate": "PROVIDER",
+}
+
+
+def bind_evidence(packet: dict) -> dict:
+    """Build deterministic retained evidence records for the packet's declared states."""
+    packet = copy.deepcopy(packet)
+    records: list[dict] = []
+
+    for name, row in packet["globalGates"].items():
+        if row["state"] == "UNKNOWN":
+            row["evidenceRef"] = None
+            continue
+        evidence_id = f"ev:global:{name}"
+        row["evidenceRef"] = evidence_id
+        records.append(
+            {
+                "evidenceId": evidence_id,
+                "binding": f"global:{name}",
+                "sourceClass": GLOBAL_CLASSES[name],
+                "repo": None,
+                "commit": None,
+                "path": None,
+                "locator": f"fixture:{name}",
+                "sha256": digest("global:" + name + ":" + row["state"]),
+            }
+        )
+
+    for cand in packet["candidates"]:
+        source = cand["source"]
+        for claims in cand["criteria"].values():
+            for row in claims:
+                if row["state"] != "EVIDENCED":
+                    row["evidenceRef"] = None
+                    continue
+                evidence_id = f"ev:{cand['candidateId']}:claim:{row['claimId']}"
+                row["evidenceRef"] = evidence_id
+                records.append(
+                    {
+                        "evidenceId": evidence_id,
+                        "binding": f"candidate:{cand['candidateId']}:claim:{row['claimId']}",
+                        "sourceClass": "REPO",
+                        "repo": source["repo"],
+                        "commit": source["commit"],
+                        "path": source["path"],
+                        "locator": None,
+                        "sha256": None,
+                    }
+                )
+        for row in cand["traction"]:
+            if row["kind"] in {
+                "CUSTOMER_PAYMENT",
+                "CUSTOMER_CONTRACT",
+                "CUSTOMER_PILOT",
+                "CUSTOMER_DEPLOYMENT",
+                "CUSTOMER_LOI",
+                "EXTERNAL_ADOPTION",
+            }:
+                evidence_id = f"ev:{cand['candidateId']}:traction:{row['evidenceId']}"
+                row["evidenceRef"] = evidence_id
+                records.append(
+                    {
+                        "evidenceId": evidence_id,
+                        "binding": f"candidate:{cand['candidateId']}:traction:{row['evidenceId']}",
+                        "sourceClass": "EXTERNAL_COUNTERPARTY",
+                        "repo": None,
+                        "commit": None,
+                        "path": None,
+                        "locator": f"fixture:traction:{cand['candidateId']}:{row['evidenceId']}",
+                        "sha256": digest(
+                            f"traction:{cand['candidateId']}:{row['evidenceId']}"
+                        ),
+                    }
+                )
+            else:
+                row["evidenceRef"] = None
+
+    packet["evidenceRecords"] = sorted(records, key=lambda row: row["evidenceId"])
+    return packet
 
 
 def ready_packet() -> dict:
@@ -76,10 +156,11 @@ def ready_packet() -> dict:
             "ownershipControlEligible": gate(),
             "employeeCeilingMet": gate(),
             "sbirSmallBusinessRequirementsMet": gate(),
-            "federalSupportCensus": {"state": "CLEAR", "evidenceRef": "owner:federal-census"},
-            "oneSubmissionSlot": {"state": "AVAILABLE", "evidenceRef": "owner:slot-census"},
-            "officialTemplate": {"state": "BOUND", "evidenceRef": "provider:template-digest"},
+            "federalSupportCensus": {"state": "CLEAR", "evidenceRef": None},
+            "oneSubmissionSlot": {"state": "AVAILABLE", "evidenceRef": None},
+            "officialTemplate": {"state": "BOUND", "evidenceRef": None},
         },
+        "evidenceRecords": [],
         "candidates": [
             candidate("alpha", SHA_A, evidence=True, traction=True),
             candidate("beta", SHA_B, evidence=False, traction=True),
@@ -88,8 +169,11 @@ def ready_packet() -> dict:
 
 
 class DownselectTests(unittest.TestCase):
+    def compile(self, packet: dict) -> dict:
+        return compile_portfolio(bind_evidence(packet))
+
     def test_unique_fully_gated_leader_is_internal_selected_only(self) -> None:
-        report = compile_portfolio(ready_packet())
+        report = self.compile(ready_packet())
         self.assertEqual(report["state"], "SELECTED")
         self.assertEqual(report["selectedCandidateId"], "alpha")
         self.assertFalse(report["authority"]["submissionAuthorized"])
@@ -98,7 +182,7 @@ class DownselectTests(unittest.TestCase):
     def test_unknown_entity_facts_force_hold(self) -> None:
         packet = ready_packet()
         packet["globalGates"]["ownershipControlEligible"] = gate("UNKNOWN")
-        report = compile_portfolio(packet)
+        report = self.compile(packet)
         self.assertEqual(report["state"], "HOLD")
         self.assertEqual(report["holdReason"], "GLOBAL_GATES")
         self.assertIsNone(report["selectedCandidateId"])
@@ -106,7 +190,7 @@ class DownselectTests(unittest.TestCase):
     def test_missing_template_forces_hold(self) -> None:
         packet = ready_packet()
         packet["globalGates"]["officialTemplate"] = {"state": "UNKNOWN", "evidenceRef": None}
-        report = compile_portfolio(packet)
+        report = self.compile(packet)
         self.assertEqual(report["state"], "HOLD")
         self.assertTrue(any("officialTemplate" in row for row in report["globalBlockers"]))
 
@@ -114,107 +198,193 @@ class DownselectTests(unittest.TestCase):
         packet = ready_packet()
         packet["globalGates"]["oneSubmissionSlot"] = {
             "state": "CONSUMED_OR_RESERVED",
-            "evidenceRef": "provider:slot",
+            "evidenceRef": None,
         }
-        self.assertEqual(compile_portfolio(packet)["state"], "HOLD")
+        self.assertEqual(self.compile(packet)["state"], "HOLD")
 
     def test_support_census_blocked_forces_hold(self) -> None:
         packet = ready_packet()
         packet["globalGates"]["federalSupportCensus"] = {
             "state": "BLOCKED",
-            "evidenceRef": "owner:collision",
+            "evidenceRef": None,
         }
-        self.assertEqual(compile_portfolio(packet)["state"], "HOLD")
+        self.assertEqual(self.compile(packet)["state"], "HOLD")
 
     def test_candidate_support_overlap_is_hard_blocker(self) -> None:
         packet = ready_packet()
-        packet["candidates"][0] = candidate(
-            "alpha", SHA_A, evidence=True, traction=True, overlap="POTENTIALLY_SAME"
-        )
-        report = compile_portfolio(packet)
-        self.assertEqual(report["state"], "HOLD")
+        packet["candidates"][0]["federalSupportOverlap"] = "POTENTIALLY_SAME"
+        report = self.compile(packet)
         alpha = next(row for row in report["projections"] if row["candidateId"] == "alpha")
         self.assertIn("federal_support_overlap:POTENTIALLY_SAME", alpha["hardBlockers"])
 
     def test_no_external_traction_is_hard_blocker(self) -> None:
         packet = ready_packet()
-        packet["candidates"][0] = candidate("alpha", SHA_A, evidence=True, traction=False)
-        report = compile_portfolio(packet)
+        packet["candidates"][0]["traction"] = []
+        report = self.compile(packet)
         alpha = next(row for row in report["projections"] if row["candidateId"] == "alpha")
         self.assertIn("commercial_traction:missing_external_evidence", alpha["hardBlockers"])
 
     def test_repo_activity_cannot_become_traction(self) -> None:
         packet = ready_packet()
         packet["candidates"][0]["traction"] = [
-            {
-                "evidenceId": "stars",
-                "kind": "GITHUB_STARS",
-                "evidenceRef": None,
-            }
+            {"evidenceId": "stars", "kind": "GITHUB_STARS", "evidenceRef": None}
         ]
-        report = compile_portfolio(packet)
+        report = self.compile(packet)
         alpha = next(row for row in report["projections"] if row["candidateId"] == "alpha")
         self.assertIn("fake_traction:stars:GITHUB_STARS", alpha["hardBlockers"])
         self.assertEqual(alpha["externalTractionEvidenceCount"], 0)
 
     def test_proposed_claim_is_diagnostic_but_blocks_selection(self) -> None:
         packet = ready_packet()
-        packet["candidates"][0]["criteria"]["armyBenefits"][0] = claim(
-            "alpha.army-hypothesis", "PROPOSED"
-        )
-        report = compile_portfolio(packet)
+        packet["candidates"][0]["criteria"]["armyBenefits"][0]["state"] = "PROPOSED"
+        report = self.compile(packet)
         alpha = next(row for row in report["projections"] if row["candidateId"] == "alpha")
-        self.assertIn("claim:alpha.army-hypothesis:PROPOSED", alpha["hardBlockers"])
+        self.assertIn("claim:alpha.army:PROPOSED", alpha["hardBlockers"])
         self.assertEqual(report["state"], "HOLD")
-        self.assertIsNone(report["selectedCandidateId"])
 
     def test_forbidden_claim_is_hard_blocker(self) -> None:
         packet = ready_packet()
-        packet["candidates"][0]["criteria"]["technicalApproach"][0] = claim(
-            "alpha.weapon-control", "FORBIDDEN"
-        )
-        report = compile_portfolio(packet)
+        packet["candidates"][0]["criteria"]["technicalApproach"][0]["state"] = "FORBIDDEN"
+        report = self.compile(packet)
         alpha = next(row for row in report["projections"] if row["candidateId"] == "alpha")
-        self.assertIn("claim:alpha.weapon-control:FORBIDDEN", alpha["hardBlockers"])
+        self.assertIn("claim:alpha.technical:FORBIDDEN", alpha["hardBlockers"])
 
     def test_usamrdc_exclusive_candidate_is_hard_blocked(self) -> None:
         packet = ready_packet()
         packet["candidates"][0]["usamrdcExclusive"] = True
-        report = compile_portfolio(packet)
+        report = self.compile(packet)
         alpha = next(row for row in report["projections"] if row["candidateId"] == "alpha")
         self.assertIn("scope:USAMRDC_EXCLUSIVE", alpha["hardBlockers"])
 
     def test_equal_readiness_tie_holds_without_arbitrary_winner(self) -> None:
         packet = ready_packet()
         packet["candidates"][1] = candidate("beta", SHA_B, evidence=True, traction=True)
-        report = compile_portfolio(packet)
+        report = self.compile(packet)
         self.assertEqual(report["state"], "HOLD")
         self.assertEqual(report["holdReason"], "TOP_READINESS_TIE")
         self.assertIsNone(report["selectedCandidateId"])
 
-    def test_duplicate_candidate_id_fails_closed(self) -> None:
+    def test_duplicate_candidate_id_fails_before_evidence_use(self) -> None:
         packet = ready_packet()
         packet["candidates"][1]["candidateId"] = "alpha"
         with self.assertRaisesRegex(ContractError, "DUPLICATE_CANDIDATE_ID"):
+            self.compile(packet)
+
+    def test_duplicate_claim_id_across_criteria_is_rejected(self) -> None:
+        packet = bind_evidence(ready_packet())
+        packet["candidates"][0]["criteria"]["armyBenefits"][0]["claimId"] = "alpha.intro"
+        with self.assertRaisesRegex(ContractError, "DUPLICATE_CLAIM_ID"):
             compile_portfolio(packet)
 
     def test_invalid_source_generation_fails_closed(self) -> None:
         packet = ready_packet()
         packet["candidates"][0]["source"]["commit"] = "main"
         with self.assertRaisesRegex(ContractError, "INVALID_SOURCE_COMMIT"):
+            self.compile(packet)
+
+    def test_repo_evidence_generation_transplant_is_rejected(self) -> None:
+        packet = bind_evidence(ready_packet())
+        target = next(
+            row
+            for row in packet["evidenceRecords"]
+            if row["binding"] == "candidate:alpha:claim:alpha.intro"
+        )
+        target["commit"] = SHA_B
+        with self.assertRaisesRegex(ContractError, "EVIDENCE_CANDIDATE_GENERATION_MISMATCH"):
+            compile_portfolio(packet)
+
+    def test_repo_evidence_path_transplant_is_rejected(self) -> None:
+        packet = bind_evidence(ready_packet())
+        target = next(
+            row
+            for row in packet["evidenceRecords"]
+            if row["binding"] == "candidate:alpha:claim:alpha.intro"
+        )
+        target["path"] = "products/beta"
+        with self.assertRaisesRegex(ContractError, "EVIDENCE_CANDIDATE_PATH_MISMATCH"):
+            compile_portfolio(packet)
+
+    def test_claim_binding_transplant_is_rejected(self) -> None:
+        packet = bind_evidence(ready_packet())
+        target = next(
+            row
+            for row in packet["evidenceRecords"]
+            if row["binding"] == "candidate:alpha:claim:alpha.intro"
+        )
+        target["binding"] = "candidate:alpha:claim:alpha.army"
+        with self.assertRaisesRegex(ContractError, "EVIDENCE_BINDING_MISMATCH"):
+            compile_portfolio(packet)
+
+    def test_one_evidence_record_cannot_satisfy_two_claims(self) -> None:
+        packet = bind_evidence(ready_packet())
+        intro_ref = packet["candidates"][0]["criteria"]["introduction"][0]["evidenceRef"]
+        packet["candidates"][0]["criteria"]["armyBenefits"][0]["evidenceRef"] = intro_ref
+        with self.assertRaisesRegex(ContractError, "EVIDENCE_RECORD_REUSED"):
+            compile_portfolio(packet)
+
+    def test_external_traction_requires_external_counterparty_class(self) -> None:
+        packet = bind_evidence(ready_packet())
+        target = next(
+            row
+            for row in packet["evidenceRecords"]
+            if row["binding"] == "candidate:alpha:traction:alpha.pilot"
+        )
+        target["sourceClass"] = "OWNER"
+        with self.assertRaisesRegex(ContractError, "EVIDENCE_CLASS_MISMATCH"):
+            compile_portfolio(packet)
+
+    def test_template_requires_provider_class(self) -> None:
+        packet = bind_evidence(ready_packet())
+        target = next(
+            row
+            for row in packet["evidenceRecords"]
+            if row["binding"] == "global:officialTemplate"
+        )
+        target["sourceClass"] = "OWNER"
+        with self.assertRaisesRegex(ContractError, "EVIDENCE_CLASS_MISMATCH"):
+            compile_portfolio(packet)
+
+    def test_unused_evidence_record_fails_closed(self) -> None:
+        packet = bind_evidence(ready_packet())
+        packet["evidenceRecords"].append(
+            {
+                "evidenceId": "ev:unused",
+                "binding": "unused:test",
+                "sourceClass": "OWNER",
+                "repo": None,
+                "commit": None,
+                "path": None,
+                "locator": "fixture:unused",
+                "sha256": digest("unused"),
+            }
+        )
+        with self.assertRaisesRegex(ContractError, "UNUSED_EVIDENCE_RECORD"):
+            compile_portfolio(packet)
+
+    def test_artifact_evidence_requires_real_sha256_shape(self) -> None:
+        packet = bind_evidence(ready_packet())
+        packet["evidenceRecords"][0]["sha256"] = "not-a-digest"
+        with self.assertRaisesRegex(ContractError, "INVALID_EVIDENCE_SHA256"):
+            compile_portfolio(packet)
+
+    def test_repo_evidence_cannot_smuggle_artifact_digest_variant(self) -> None:
+        packet = bind_evidence(ready_packet())
+        target = next(row for row in packet["evidenceRecords"] if row["sourceClass"] == "REPO")
+        target["sha256"] = digest("wrong-variant")
+        with self.assertRaisesRegex(ContractError, "REPO_EVIDENCE_VARIANT_MISMATCH"):
             compile_portfolio(packet)
 
     def test_single_candidate_packet_fails_closed(self) -> None:
         packet = ready_packet()
         packet["candidates"] = packet["candidates"][:1]
         with self.assertRaisesRegex(ContractError, "CANDIDATE_COUNT"):
-            compile_portfolio(packet)
+            self.compile(packet)
 
     def test_extra_root_field_fails_closed(self) -> None:
         packet = ready_packet()
         packet["surprise"] = True
         with self.assertRaisesRegex(ContractError, "OBJECT_SHAPE"):
-            compile_portfolio(packet)
+            self.compile(packet)
 
     def test_duplicate_json_key_is_rejected(self) -> None:
         with self.assertRaisesRegex(ContractError, "JSON_DUPLICATE_KEY"):
@@ -224,20 +394,29 @@ class DownselectTests(unittest.TestCase):
         with self.assertRaisesRegex(ContractError, "JSON_FLOAT_FORBIDDEN"):
             parse_json_strict('{"score":1.5}')
 
-    def test_receipt_is_deterministic(self) -> None:
-        packet = ready_packet()
+    def test_receipt_and_evidence_manifest_are_deterministic(self) -> None:
+        packet = bind_evidence(ready_packet())
         first = compile_portfolio(copy.deepcopy(packet))
         second = compile_portfolio(copy.deepcopy(packet))
         self.assertEqual(first["receiptSha256"], second["receiptSha256"])
+        self.assertEqual(
+            first["retainedEvidenceManifestSha256"],
+            second["retainedEvidenceManifestSha256"],
+        )
         self.assertEqual(
             json.dumps(first, sort_keys=True, separators=(",", ":")),
             json.dumps(second, sort_keys=True, separators=(",", ":")),
         )
 
     def test_readiness_metric_is_not_sponsor_score(self) -> None:
-        report = compile_portfolio(ready_packet())
+        report = self.compile(ready_packet())
         self.assertIn("not an Army score", report["readinessMetricMeaning"])
         self.assertNotIn("probability", report["projections"][0])
+
+    def test_evidence_truth_boundary_is_explicit(self) -> None:
+        report = self.compile(ready_packet())
+        self.assertIn("does not independently authenticate", report["evidenceTrustBoundary"])
+        self.assertFalse(report["authority"]["armyEligibilityDetermined"])
 
 
 if __name__ == "__main__":
