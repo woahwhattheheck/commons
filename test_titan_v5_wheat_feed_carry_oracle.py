@@ -128,7 +128,7 @@ class WheatCarryOracleTests(unittest.TestCase):
             p = Path(d) / "s.json"
             p.write_text('{"n":' + ('9' * 5000) + '}')
             with self.assertRaises(m.WheatCensusError):
-                m.validate_authenticated_status(p)
+                m._strict_json_object(p)
 
     def test_forged_status_copy_cannot_mint_authenticated_generation(self):
         # A caller can copy every public authority literal/true flag into a new
