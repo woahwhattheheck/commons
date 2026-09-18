@@ -413,9 +413,10 @@ def _build_api():
         events_raw = packet["delivery_events"]
         if type(events_raw) is not list or len(events_raw) > max_events:
             fail("delivery_events must be a bounded array")
-        if events_raw and sub is None:
-            fail("delivery evidence requires a provider submission receipt")
-        events = [normalize_event(item, sub, out, i) for i, item in enumerate(events_raw)] if sub is not None else []
+        binding = sub if sub is not None else legacy
+        if events_raw and binding is None:
+            fail("delivery evidence requires a provider submission or legacy local-SENT record")
+        events = [normalize_event(item, binding, out, i) for i, item in enumerate(events_raw)] if binding is not None else []
 
         seen_ids = set()
         seen_source_sha = set()
@@ -461,7 +462,7 @@ def _build_api():
         events = normalized["delivery_events"]
         if sub is None and legacy is None:
             return "UNSENT", ["no provider submission evidence"]
-        if sub is None and legacy is not None:
+        if sub is None and legacy is not None and not events:
             return "DELIVERY_UNKNOWN", ["historical local-SENT is not delivery evidence"]
         if not events:
             return "PROVIDER_SUBMITTED_PENDING_DELIVERY", ["provider submission observed; no delivery evidence retained"]
