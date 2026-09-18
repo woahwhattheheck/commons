@@ -19,6 +19,7 @@ MAX_JSON_NODES = 100_000
 MAX_STRING_UTF8_BYTES = 262_144
 MAX_EVENTS = 4_096
 MAX_CANONICAL_BYTES = 2_000_000
+MAX_CURRENTNESS_SECONDS = 7 * 24 * 60 * 60
 MAX_SAFE_INT_DIGITS = len(str(SAFE_INT_MAX))
 STATE_BEGIN = "<!-- REVENUE_LANE_CURRENT_STATE:BEGIN -->"
 STATE_END = "<!-- REVENUE_LANE_CURRENT_STATE:END -->"
@@ -79,7 +80,7 @@ CURRENTNESS_BASIS_KINDS = {
     "CLAIMED_NO_OUTBOUND": {"TAKE"},
     "MUSE_PENDING_NO_AUTHORITY": {"MUSE_PENDING"},
     "SELECTED_UNCONSUMED_NO_SEND_AUTHORITY": {"MUSE_SELECTED"},
-    "SEND_ATTEMPTED_PROVIDER_UNKNOWN": {"PROVIDER_SEND_ATTEMPTED", "LEASE_CONSUMED"},
+    "SEND_ATTEMPTED_PROVIDER_UNKNOWN": {"PROVIDER_SEND_ATTEMPTED"},
     "HUMAN_REPLY_ACTIONABLE": {"HUMAN_REPLY"},
     "PARTNER_CONFIRMED": {"PARTNER_ACCEPTED"},
     "BUYER_QUESTION_PENDING": {"QUESTION_SENT"},
@@ -285,6 +286,10 @@ def validate_packet(packet: Any, evaluation_time: str) -> tuple[dict[str, Any], 
         "purpose_id": _id(packet["purpose_id"], "purpose_id"),
     }
     currentness = _safe_positive_int(packet["currentness_seconds"], "currentness_seconds")
+    if currentness > MAX_CURRENTNESS_SECONDS:
+        raise ContractError(
+            f"currentness_seconds exceeds compiler maximum {MAX_CURRENTNESS_SECONDS}"
+        )
     eval_dt = _timestamp(evaluation_time, "evaluation_time")
     events_raw = packet["events"]
     if not isinstance(events_raw, list) or not events_raw:
@@ -368,6 +373,14 @@ def _latest_generation(events: list[ParsedEvent]) -> int:
 
 def reduce_state(events: list[ParsedEvent], eval_dt: datetime, currentness_seconds: int) -> str:
     kinds = {event.kind for event in events}
+    terminal_procurement = kinds & {"AWARDED", "LOST", "EXPIRED"}
+    if len(terminal_procurement) > 1:
+        raise ContractError("conflicting terminal procurement outcomes")
+    if "EXPIRED" in kinds and "SUBMITTED" in kinds:
+        raise ContractError("expired and submitted outcomes conflict")
+    if "HUMAN_DECLINE" in kinds and "PARTNER_ACCEPTED" in kinds:
+        raise ContractError("human decline and partner acceptance conflict")
+
     if "LOST" in kinds:
         state = "LOST_CLOSED"
     elif "EXPIRED" in kinds:
@@ -408,8 +421,10 @@ def reduce_state(events: list[ParsedEvent], eval_dt: datetime, currentness_secon
             )
         elif bounced or dead_routes:
             state = "BOUNCED_DEAD_ROUTE"
-        elif "PROVIDER_SEND_ATTEMPTED" in kinds or "LEASE_CONSUMED" in kinds:
+        elif "PROVIDER_SEND_ATTEMPTED" in kinds:
             state = "SEND_ATTEMPTED_PROVIDER_UNKNOWN"
+        elif "LEASE_CONSUMED" in kinds:
+            state = "HOLD_EVIDENCE"
         else:
             latest_gen = _latest_generation(events)
             generation_events = [event for event in events if event.generation == latest_gen]
