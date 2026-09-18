@@ -71,6 +71,30 @@ class CompletionProjectionTests(unittest.TestCase):
             )
         )
 
+    def test_issue_identity_is_explicit_and_conflicts_fail_closed(self):
+        self.assertEqual(OP, cp.stable_operation_id_from_issue({"title": OP, "body": ""}))
+        self.assertEqual(
+            OP,
+            cp.stable_operation_id_from_issue(
+                {"title": "Build the close desk", "body": "Operation: %s\n" % OP}
+            ),
+        )
+        self.assertEqual(
+            "",
+            cp.stable_operation_id_from_issue(
+                {
+                    "title": OP,
+                    "body": "Operation: DIFFERENT-STABLE-OPERATION-0001\n",
+                }
+            ),
+        )
+        self.assertEqual(
+            "",
+            cp.stable_operation_id_from_issue(
+                {"title": "Build the close desk", "body": "Mentions work without an id."}
+            ),
+        )
+
     def test_closed_or_duplicate_alone_cannot_mint_completion(self):
         for reason in ("not_planned", None):
             issue = dict(self.issue, state_reason=reason)
