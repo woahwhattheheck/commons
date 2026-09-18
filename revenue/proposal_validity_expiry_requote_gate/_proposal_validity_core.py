@@ -544,7 +544,19 @@ def _evaluate_at(
         "economics_sha256": _sha(issued["economics"]),
         "source_binding": source_binding,
         "requote_delta": delta,
-        "authority": dict(_AUTHORITY),
+        # Source-literal authority ceiling. _AUTHORITY remains a compatibility
+        # descriptor for callers/tests, but is not a semantic trust root: ordinary
+        # mutation or rebinding of either the facade alias or this core global
+        # cannot widen packet authority.
+        "authority": {
+            "owner_review_only": True,
+            "buyer_acceptance": False,
+            "contract_signed": False,
+            "checkout_or_payment_rail_is_acceptance": False,
+            "payment_authorized": False,
+            "revenue_recognized": False,
+            "outbound_authorized": False,
+        },
     }
     body["receipt_sha256"] = _sha(body)
     return body
