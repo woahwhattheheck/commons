@@ -398,3 +398,143 @@ def prepare_claim(
         live_prior_claim_parent_sha=live_prior_claim_parent_sha,
         live_prior_claim_metadata_json=live_prior_claim_metadata_json,
         live_prior_terminal_branch_sha=live_prior_terminal_branch_sha,
+        live_prior_terminal_parent_sha=live_prior_terminal_parent_sha,
+        live_prior_terminal_metadata_json=live_prior_terminal_metadata_json,
+        live_prior_reveal_branch_sha=live_prior_reveal_branch_sha,
+        live_prior_reveal_parent_sha=live_prior_reveal_parent_sha,
+        live_prior_reveal_metadata_json=live_prior_reveal_metadata_json,
+    )
+    capability = secrets.token_hex(CAPABILITY_BYTES)
+    try:
+        retain_capability(capability)
+    except Exception as exc:
+        raise CustodyError("capability retention failed before any authority mutation") from exc
+    commitment = capability_commitment(capability)
+    seam = _claim_seam(target["key_sha256"], prior_digest)
+    metadata = {
+        "schema": SCHEMA,
+        "record_type": "CLAIM",
+        "generation": generation,
+        "key_sha256": target["key_sha256"],
+        "target_kind": target["kind"],
+        "target_hint": target["target_hint"],
+        "claim_seam_sha256": seam,
+        "prior_release_reveal_receipt_sha256": prior_digest,
+        "claimant": claimant,
+        "operation_id": operation_id,
+        "anchor_sha": anchor_sha,
+        "preflight_sha256": preflight_sha256,
+        "claim_capability_sha256": commitment,
+        **_authority_flags(),
+    }
+    metadata_json = _canonical_json_text(metadata)
+    plan = {
+        "schema": CLAIM_PLAN_SCHEMA,
+        "generation": generation,
+        "key_sha256": target["key_sha256"],
+        "target_kind": target["kind"],
+        "target_hint": target["target_hint"],
+        "claim_seam_sha256": seam,
+        "prior_release_reveal_receipt_sha256": prior_digest,
+        "claimant": claimant,
+        "operation_id": operation_id,
+        "anchor_sha": anchor_sha,
+        "preflight_sha256": preflight_sha256,
+        "claim_capability_sha256": commitment,
+        "branch_name": claim_branch(target["key_sha256"], prior_digest),
+        "metadata_path": _metadata_path(seam, "claim"),
+        "metadata_sha256": _text_digest(metadata_json),
+        "metadata_json": metadata_json,
+        **_authority_flags(),
+    }
+    return _seal(plan, "plan_sha256")
+
+
+def verify_claim_plan(raw: Mapping[str, Any]) -> dict[str, Any]:
+    plan = _verify_seal(raw, "plan_sha256")
+    if plan.get("schema") != CLAIM_PLAN_SCHEMA:
+        raise CustodyError("claim plan schema mismatch")
+    seam = _claim_seam(plan["key_sha256"], plan["prior_release_reveal_receipt_sha256"])
+    if plan.get("claim_seam_sha256") != seam:
+        raise CustodyError("claim seam mismatch")
+    if plan.get("branch_name") != CLAIM_BRANCH_PREFIX + seam:
+        raise CustodyError("claim branch mismatch")
+    if plan.get("metadata_path") != _metadata_path(seam, "claim"):
+        raise CustodyError("claim metadata path mismatch")
+    expected_metadata = {
+        "schema": SCHEMA,
+        "record_type": "CLAIM",
+        "generation": plan["generation"],
+        "key_sha256": plan["key_sha256"],
+        "target_kind": plan["target_kind"],
+        "target_hint": plan["target_hint"],
+        "claim_seam_sha256": seam,
+        "prior_release_reveal_receipt_sha256": plan["prior_release_reveal_receipt_sha256"],
+        "claimant": plan["claimant"],
+        "operation_id": plan["operation_id"],
+        "anchor_sha": _sha40(plan["anchor_sha"], "anchor_sha"),
+        "preflight_sha256": _sha64(plan["preflight_sha256"], "preflight_sha256"),
+        "claim_capability_sha256": _sha64(plan["claim_capability_sha256"], "claim_capability_sha256"),
+        **_authority_flags(),
+    }
+    expected_text = _canonical_json_text(expected_metadata)
+    if plan.get("metadata_json") != expected_text or plan.get("metadata_sha256") != _text_digest(expected_text):
+        raise CustodyError("claim metadata binding mismatch")
+    if type(plan.get("generation")) is not int or plan["generation"] < 1:
+        raise CustodyError("claim generation invalid")
+    _token(plan["claimant"], "claimant")
+    _token(plan["operation_id"], "operation_id")
+    return plan
+
+
+def bind_claim_commit(plan_raw: Mapping[str, Any], claim_commit_sha: str) -> dict[str, Any]:
+    plan = verify_claim_plan(plan_raw)
+    commit = _sha40(claim_commit_sha, "claim_commit_sha")
+    intent = {
+        "schema": CLAIM_INTENT_SCHEMA,
+        "plan_sha256": plan["plan_sha256"],
+        "key_sha256": plan["key_sha256"],
+        "claim_seam_sha256": plan["claim_seam_sha256"],
+        "generation": plan["generation"],
+        "branch_name": plan["branch_name"],
+        "metadata_path": plan["metadata_path"],
+        "metadata_sha256": plan["metadata_sha256"],
+        "claim_capability_sha256": plan["claim_capability_sha256"],
+        "claimant": plan["claimant"],
+        "operation_id": plan["operation_id"],
+        "anchor_sha": plan["anchor_sha"],
+        "claim_commit_sha": commit,
+        **_authority_flags(),
+    }
+    return _seal(intent, "intent_sha256")
+
+
+def verify_claim_intent(raw: Mapping[str, Any]) -> dict[str, Any]:
+    intent = _verify_seal(raw, "intent_sha256")
+    if intent.get("schema") != CLAIM_INTENT_SCHEMA:
+        raise CustodyError("claim intent schema mismatch")
+    for field in ("key_sha256", "claim_seam_sha256", "metadata_sha256", "claim_capability_sha256", "plan_sha256"):
+        _sha64(intent[field], field)
+    _sha40(intent["anchor_sha"], "anchor_sha")
+    _sha40(intent["claim_commit_sha"], "claim_commit_sha")
+    if intent.get("branch_name") != CLAIM_BRANCH_PREFIX + intent["claim_seam_sha256"]:
+        raise CustodyError("claim intent branch mismatch")
+    return intent
+
+
+def claim_receipt_from_readback(
+    plan_raw: Mapping[str, Any],
+    intent_raw: Mapping[str, Any],
+    *,
+    live_branch_sha: str,
+    live_parent_sha: str,
+    live_metadata_json: str,
+) -> dict[str, Any]:
+    plan = verify_claim_plan(plan_raw)
+    intent = verify_claim_intent(intent_raw)
+    if intent["plan_sha256"] != plan["plan_sha256"]:
+        raise CustodyError("claim plan/intent mismatch")
+    if _sha40(live_branch_sha, "live_branch_sha") != intent["claim_commit_sha"]:
+        raise CustodyError("claim branch head mismatch")
+    if _sha40(live_parent_sha, "live_parent_sha") != plan["anchor_sha"]:
+        raise CustodyError("claim commit parent mismatch")
