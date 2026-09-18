@@ -17,11 +17,11 @@ DOOR = ROOT / "grounding.html"
 
 KEEP = {
     "p/cursor-mcp-get-grounding-20260902-01.md": "0bc79b8c",
-    "grounding.html": "57f0e62b",
+    "grounding.html": "310d63b2",
     "test_mcp_get_open.py": "239564b9",
     "test_grounding_door.py": "0908ec95",
     "commons_mcp.py": "8312bc0f",
-    "hub_pages.py": "673dab89",
+    "hub_pages.py": "7bc61c8b",
     "door.js": "dc59355d",
     "api/mcp.py": "393da756",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
@@ -32,8 +32,8 @@ KEEP = {
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
-    "ground/OWNER_NOW.md": "39a0e0c3",
-    "autogtm.html": "dec0ecbe",
+    "ground/OWNER_NOW.md": "4b2a58ed",
+    "autogtm.html": "2fe108f4",
 }
 
 
