@@ -203,6 +203,47 @@ class WorkflowSurfaceTests(unittest.TestCase):
 
 
 
+    def test_pilot_contract_is_consolidated_into_retained_source_parses(self):
+        """Regress 68>67: pilot proof stays live without a standalone workflow slot."""
+        pilot = Path('.github/workflows/pilot-delivery-renewal-expansion-gate.yml')
+        self.assertFalse(pilot.exists())
+        data = json.loads(Path('ci/workflow-surface.json').read_text(encoding='utf-8'))
+        result = surface.check(Path('.'))
+        self.assertEqual(data['max_active_workflows'], 67)
+        self.assertEqual(result['active'], 67)
+        self.assertEqual(result['status'], 'PASS', result['errors'])
+
+        parsed = surface.workflow(Path('.github/workflows/source-parses.yml').read_bytes())
+        self.assertIn('revenue/pilot_delivery_renewal_expansion_gate/**', parsed['on']['push']['paths'])
+        self.assertIn('test_pilot_delivery_renewal_expansion_gate.py', parsed['on']['push']['paths'])
+        job = parsed['jobs']['provider-cost-truth']
+        self.assertEqual(job['strategy']['matrix']['python-version'], ['3.11', '3.13'])
+        commands = '\n'.join(str(step.get('run', '')) for step in job['steps'] if isinstance(step, dict))
+        self.assertIn('revenue/pilot_delivery_renewal_expansion_gate/common.py', commands)
+        self.assertIn('python -m unittest -v test_pilot_delivery_renewal_expansion_gate', commands)
+        self.assertIn('python -O -m unittest -v test_pilot_delivery_renewal_expansion_gate', commands)
+
+    def test_pollers_throttle_and_isolate_schedule_concurrency(self):
+        """A scheduled run may cancel older schedules, never push/manual work."""
+        cases = (
+            ('.github/workflows/commons-discord-cloud.yml', '*/15 * * * *'),
+            ('.github/workflows/inbox-visibility.yml', '3 * * * *'),
+        )
+        for path, expected_cron in cases:
+            with self.subTest(path=path):
+                parsed = surface.workflow(Path(path).read_bytes())
+                self.assertEqual(parsed['on']['schedule'], [{'cron': expected_cron}])
+                group = parsed['concurrency']['group']
+                self.assertIn("github.event_name == 'schedule'", group)
+                self.assertIn('github.run_id', group)
+                self.assertEqual(parsed['concurrency']['cancel-in-progress'], "${{ github.event_name == 'schedule' }}")
+                self.assertNotIn(group, {'commons-discord-cloud', 'inbox-visibility'})
+        discord = surface.workflow(Path('.github/workflows/commons-discord-cloud.yml').read_bytes())
+        self.assertEqual(discord['jobs']['outbound']['if'], "github.event_name == 'push'")
+        self.assertIn("github.event_name == 'schedule'", discord['jobs']['inbound']['if'])
+        self.assertIn("github.event_name == 'workflow_dispatch'", discord['jobs']['inbound']['if'])
+
+
 
 
 
