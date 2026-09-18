@@ -4212,7 +4212,7 @@ def _handle_completion_issue_event(ev):
     """Project close/reopen state without re-ingesting the issue as a post."""
     action = str(ev.get("action") or "")
     issue = ev.get("issue") or {}
-    _src, _dest, operation_id, _text, _extra = _issue_post_fields(issue)
+    operation_id = completion_projection.stable_operation_id_from_issue(issue)
     number = issue.get("number")
     if not operation_id or not isinstance(number, int) or isinstance(number, bool):
         print("COMPLETION_HOLD reason=missing_stable_identity", flush=True)
