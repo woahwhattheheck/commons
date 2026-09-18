@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 118,
     "open_pull_requests": 69,
-    "runs_in_progress": 12,
-    "runs_queued": 273
+    "runs_in_progress": 14,
+    "runs_queued": 260
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -97,7 +97,7 @@
       "head_sha": "06f88b9d48f5f3b7b62d29ac8dc45a64b5d2a677",
       "number": 15945,
       "title": "fix(outbound): recover mandatory organization provider chain on fresh main",
-      "updated_at": "2026-09-18T06:19:53Z"
+      "updated_at": "2026-09-18T06:24:42Z"
     },
     {
       "author": "woahwhattheheck",
@@ -250,7 +250,7 @@
   },
   "pulls_listed": 69,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 22.8,
+  "queue_depth_per_runner": 18.6,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -321,28 +321,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-ledger/tn-34201-02431-lab-finalize",
-      "closed_at": "2026-09-18T03:33:09Z",
-      "head_sha": "c714484aa87095a75d98b8ceb49e25a43289e057",
-      "merged_at": null,
-      "number": 15923,
-      "state": "CLOSED",
-      "title": "Revenue: publish Tennessee 34201-02431 partner response lab"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-relaydsn/delivery-truth-main851-2317",
-      "closed_at": "2026-09-18T03:32:19Z",
-      "head_sha": "b2c15fa80f28ba00cc80421bf2da9952129034a1",
-      "merged_at": "2026-09-18T03:32:19Z",
-      "number": 15925,
-      "state": "MERGED",
-      "title": "Add delivery evidence classifier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "z-ledger-17a/tn-34201-02431-response-lab",
       "closed_at": "2026-09-18T03:30:45Z",
       "head_sha": "8ddf012243797a6242e2c2f5e866471b82f3d42f",
@@ -350,6 +328,39 @@
       "number": 15919,
       "state": "CLOSED",
       "title": "Revenue: Tennessee 34201-02431 partner response lab"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-lantern/provider-armory-15900-20260917",
+      "closed_at": "2026-09-18T03:26:45Z",
+      "head_sha": "024a6eae976c504cb56edc29b9d747b9b9383dec",
+      "merged_at": "2026-09-18T03:26:45Z",
+      "number": 15909,
+      "state": "MERGED",
+      "title": "Inventory: expose vaulted free-provider armory as activation-only"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/reconcile-outreach-lease-15905",
+      "closed_at": "2026-09-18T03:25:49Z",
+      "head_sha": "39b21706a407489e24a8b6548ccd2eda986e86b8",
+      "merged_at": "2026-09-18T03:25:49Z",
+      "number": 15920,
+      "state": "MERGED",
+      "title": "Reconcile outreach lease with canonical #15905"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/atomic-outreach-lease-20260917",
+      "closed_at": "2026-09-18T03:24:00Z",
+      "head_sha": "247d3153c9e0cdca5c90b4417a3df2c1bda30fad",
+      "merged_at": "2026-09-18T03:24:00Z",
+      "number": 15917,
+      "state": "MERGED",
+      "title": "Atomic outreach leases: first-writer-wins outbound"
     },
     {
       "author": "woahwhattheheck",
@@ -405,21 +416,10 @@
       "number": 15905,
       "state": "MERGED",
       "title": "Muse: land sealed atomic send lease on current main (4cf generation)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-ternion/trs-il-investment-tech-15890",
-      "closed_at": "2026-09-18T03:09:02Z",
-      "head_sha": "1635df0e119f0cd68c28a2a9868ee88856362abd",
-      "merged_at": "2026-09-18T03:09:02Z",
-      "number": 15898,
-      "state": "MERGED",
-      "title": "Revenue: Illinois TRS investment-tech interoperability evidence"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T06:24:17Z",
+  "unchanged_since": "2026-09-18T06:28:28Z",
   "undatable_pulls": []
 }
