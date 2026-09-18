@@ -16,7 +16,7 @@ from synthetic import SyntheticObjective, load_candidate, problem
 
 ROOT = Path(__file__).resolve().parent
 PINS = {
-    "submission.py": "2bd09e07a24070a210c08d760899b539cb69ca61",
+    "submission.py": "a3d3965f68c9af8081be44e4e37cc140606e7ffe",
     "baseline_v2.py": "ac814d1f543529a823f7c3afa2a9c4f54c0bfe12",
 }
 

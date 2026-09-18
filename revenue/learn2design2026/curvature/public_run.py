@@ -25,7 +25,7 @@ ORGANIZER_REVISION = "84a4b0a4c7e0f3b702459ffc8ba6a1d84d34cefa"
 ORGANIZER_PROJECT_BLOB = "50f509ac6cfd4e1f4843337410d1fb76d36720c4"
 CANDIDATES = {
     "curvature_b8": ("submission.py", "BatchedCurvaturePortfolio", 8,
-                     "2bd09e07a24070a210c08d760899b539cb69ca61"),
+                     "a3d3965f68c9af8081be44e4e37cc140606e7ffe"),
     "v2_b8": ("baseline_v2.py", "StagedTrustPortfolio", 8,
               "ac814d1f543529a823f7c3afa2a9c4f54c0bfe12"),
     "v2_default_b16": ("baseline_v2.py", "StagedTrustPortfolio", 16,
