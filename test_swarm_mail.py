@@ -90,7 +90,11 @@ class SwarmMailManifestTests(unittest.TestCase):
         for sku in diagnostics:
             self.assertEqual(mail.route_sku(sku)["inbox_id"], "swarm-sales")
         codex = next(item for item in manifest["inboxes"] if item["inbox_id"] == "codex-sales")
-        self.assertNotIn("agent-failure-autopsy-29", codex["sku_ids"])
+        self.assertIn("agent-failure-autopsy-29", codex["sku_ids"])
+        self.assertEqual(
+            mail.route_sku("agent-failure-autopsy-29")["inbox_id"],
+            "codex-sales",
+        )
         for sku in routed:
             route = mail.route_sku(sku)
             self.assertEqual(route["sku_id"], sku)

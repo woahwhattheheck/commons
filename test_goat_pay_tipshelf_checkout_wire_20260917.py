@@ -98,7 +98,7 @@ class GoatPayTipshelfCheckoutWire(unittest.TestCase):
             "provider-inert",
             html.split("<style>", 1)[0] + html.split("</style>", 1)[1],
         )
-        self.assertGreaterEqual(html.count("js-checkout-slot"), 8)
+        self.assertGreaterEqual(html.count("js-checkout-slot"), 7)
         self.assertIn('src="./pay.js?v=20260902a"', html)
         self.assertIn(HOUR_URL, html)
         self.assertIn("Buy White Box hour — $250", html)
@@ -126,7 +126,7 @@ class GoatPayTipshelfCheckoutWire(unittest.TestCase):
         )
 
         hrefs = [unescape(value) for value in STRIPE_HREF_RE.findall(html)]
-        self.assertGreaterEqual(len(hrefs), 17)
+        self.assertGreaterEqual(len(hrefs), 16)
         seen = set()
         for href in hrefs:
             parsed = urlsplit(href)

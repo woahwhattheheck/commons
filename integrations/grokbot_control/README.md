@@ -39,11 +39,13 @@ Optional `case` on submit (durable on the run from queued onward; follow-up inhe
 
 Only those four string keys are kept (max 200 chars each). Unknown keys dropped. Empty object omitted.
 
-Paid-case fulfillers: build `case` as an opaque dict (`offer_id`, `case_ref`, optional `client_reference_id`, `sku`) and pass it to `GrokBotControlClient.submit(..., case=...)` or `grokbot_submit`. Does not remint Stripe.
+Autopsy fulfillers: build `case` with `case_from_autopsy_offer(case_ref=…, client_reference_id=…)` in `paid_case.py` (reads checked-in `revenue/agent_failure_autopsy/offer.json`). Pass the result to `GrokBotControlClient.submit(..., case=...)` or `grokbot_submit`. Does not remint Stripe. Peer equipment path (tools + receipt bind): `revenue/agent_failure_autopsy/RUNBOOK.md` §10.
 
-Opaque paid-case receipt: `receipt_row_from_case(case, g2_run_id=…, g2_session_id=…)` builds a public seats `case_row` from caller-supplied opaque identifiers. Its default state is `UNVERIFIED`; it does not observe payment or sanitize PII. Pass an observed `state` only when evidence supports it. Receipt values over 200 characters raise instead of truncating identifiers. Shape: required `offer_id`/`case_ref`/`sku`/`state`; optional `client_reference_id`/`g2_run_id`/`g2_session_id`/`payment_observed_at` (max 200 chars). Hermetic pin: `python test_grokbot_paid_case_receipt.py`.
+Opaque paid-case receipt: `receipt_row_from_case(case, g2_run_id=…, g2_session_id=…)` builds a public seats `case_row` from caller-supplied opaque identifiers. Its default state is `UNVERIFIED`; it does not observe payment or sanitize PII. Pass an observed `state` only when evidence supports it. Receipt values over 200 characters raise instead of truncating identifiers. Shape lives on `revenue/agent_failure_autopsy/seats.json` `case_row_shape`; `case_rows` stay empty until `REAL_STRIPE_PAYMENT_OBSERVED`. Hermetic pin: `python test_grokbot_paid_case_receipt.py`.
 
-`receipt_from_g2_submit(case, submit_response)` binds a grokbot_submit/inspect response onto that same opaque `case_row`: nonempty `run_id` is required; nonempty `session_id` is optional. Shared equipment exposes the receipt builder as local tool `grokbot_receipt_row_from_case` (no `:8881` call); the tool prefers `submit_response` when present. Pin: `python test_grokbot_paid_case_receipt.py` (`test_receipt_from_g2_submit`) and `python test_grokbot_shared_equipment.py` (`test_paid_case_equipment_helpers`, `test_paid_case_equipment_live_e2e`).
+`receipt_from_g2_submit(case, submit_response)` binds a grokbot_submit/inspect response onto that same opaque `case_row`: nonempty `run_id` is required; nonempty `session_id` is optional. Shared equipment exposes the builders as local tools `grokbot_case_from_autopsy_offer` and `grokbot_receipt_row_from_case` (no `:8881` call); the receipt tool prefers `submit_response` when present. Pin: `python test_grokbot_paid_case_receipt.py` (`test_receipt_from_g2_submit`) and `python test_grokbot_shared_equipment.py` (`test_paid_case_equipment_helpers`, `test_paid_case_equipment_live_e2e`).
+
+X-campaign door: `agent-rescue.html` stamps `client_reference_id=afa29_x_a_v1` for exact `utm_source=x` / `utm_medium=paid_social` / `utm_campaign=agent_failure_autopsy_29`. Hermetic pin: `python test_grokbot_client_reference_roundtrip.py`.
 
 Attribution on completed runs:
 
@@ -57,9 +59,9 @@ Default pool id: grokbot from clans.json. Extra pool ids only via GROKBOT_CONTRO
 
 integrations.shared_equipment.peers.GrokBotEquipment exposes:
 
-grokbot_submit, grokbot_inspect, grokbot_follow_up, grokbot_cancel, grokbot_session, grokbot_events, grokbot_pools, grokbot_health, grokbot_receipt_row_from_case
+grokbot_submit, grokbot_inspect, grokbot_follow_up, grokbot_cancel, grokbot_session, grokbot_events, grokbot_pools, grokbot_health, grokbot_case_from_autopsy_offer, grokbot_receipt_row_from_case
 
-grokbot_submit accepts optional `case`. grokbot_health is GET /health so peers can read memory_guard before submit. `grokbot_receipt_row_from_case` is a local paid_case helper (no control HTTP). Wired into the Gemini peer tool gateway catalog beside Slack/GitHub/Gemini lifecycle tools. CLI: python -m integrations.shared_equipment.services catalog|call|manifest.
+grokbot_submit accepts optional `case`. grokbot_health is GET /health so peers can read memory_guard before submit. `grokbot_case_from_autopsy_offer` and `grokbot_receipt_row_from_case` are local paid_case helpers (no control HTTP). Wired into the Gemini peer tool gateway catalog beside Slack/GitHub/Gemini lifecycle tools. CLI: python -m integrations.shared_equipment.services catalog|call|manifest.
 
 Peer client: integrations/grokbot_control/client.py (GrokBotControlClient).
 
@@ -77,6 +79,7 @@ python test_grokbot_client_reference_roundtrip.py
 
 Verified product pages only — no invented Stripe links.
 
+- [$29 Autopsy checkout](../../agent-rescue.html)
 - [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../../referral-intake-completeness.html)
 - [$199 repair diagnostic](../../repair-booking-preflight.html)

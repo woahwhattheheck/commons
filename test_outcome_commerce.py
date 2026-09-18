@@ -846,8 +846,8 @@ class OutcomeCommerceTests(unittest.TestCase):
             self.assertEqual(funnel["measurement"]["dom_action"], expected_action)
             self.assertEqual(funnel["measurement"]["first_evidence_state"], expected_first)
         truth = self.catalog["funnel_truth"]
-        self.assertEqual(truth["distinct_targets"], 14)
-        self.assertEqual(truth["delivered_transports"], 19)
+        self.assertEqual(truth["distinct_targets"], 15)
+        self.assertEqual(truth["delivered_transports"], 20)
         self.assertEqual(truth["verified_positive_replies"], 0)
         self.assertEqual(truth["accepted_scopes"], 0)
         self.assertEqual(truth["paid_deliveries"], 0)
@@ -1764,8 +1764,8 @@ process.stdout.write(JSON.stringify({payHrefs: payHrefs, resolved: resolved, noH
                 or row["target_id"]
             )
         self.assertEqual(len(contacts), truth["distinct_targets"])
-        self.assertEqual(truth["delivered_transports"], 19)
-        self.assertEqual(truth["distinct_targets"], 14)
+        self.assertEqual(truth["delivered_transports"], 20)
+        self.assertEqual(truth["distinct_targets"], 15)
         for target_id, provider_reference in (
             ("metaforms", "apollo:emailer_message:6a8f9759437c7d0010ef8788"),
             ("dexmate", "apollo:emailer_message:6a8f9f8cc46158001490e2f4"),
@@ -1809,9 +1809,9 @@ process.stdout.write(JSON.stringify({payHrefs: payHrefs, resolved: resolved, noH
         receipts = sorted(
             (ROOT / "revenue" / "payment_ready" / "outreach_receipts").glob("*.json")
         )
-        self.assertEqual(len(receipts), 19)
-        self.assertEqual(truth["delivered_transports"], 19)
-        self.assertEqual(truth["distinct_targets"], 14)
+        self.assertEqual(len(receipts), 20)
+        self.assertEqual(truth["delivered_transports"], 20)
+        self.assertEqual(truth["distinct_targets"], 15)
         self.assertIn("20260828-langfuse-1a0496451e052b9d.json", truth["source"])
         self.assertIn("20260830-composio-1a053aa4f8a0014a.json", truth["source"])
         self.assertEqual(truth["collected_cash_usd"], "0.00")
@@ -1841,9 +1841,9 @@ process.stdout.write(JSON.stringify({payHrefs: payHrefs, resolved: resolved, noH
 
     def test_composio_hard_dnr_zero_cash_advances_funnel_truth(self) -> None:
         truth = self.catalog["funnel_truth"]
-        self.assertEqual(truth["as_of"], "2026-09-14T06:06:39Z")
-        self.assertEqual(truth["delivered_transports"], 19)
-        self.assertEqual(truth["distinct_targets"], 14)
+        self.assertEqual(truth["as_of"], "2026-09-15T06:06:39Z")
+        self.assertEqual(truth["delivered_transports"], 20)
+        self.assertEqual(truth["distinct_targets"], 15)
         self.assertIn("20260830-composio-1a053aa4f8a0014a.json", truth["source"])
         row = read_json(
             ROOT

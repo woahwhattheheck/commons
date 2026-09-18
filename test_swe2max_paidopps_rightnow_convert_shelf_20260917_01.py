@@ -2,7 +2,7 @@
 """swe2max-paidopps-rightnow-convert-shelf-20260917-01 — convert shelves.
 
 Wire EXISTING live Stripe Payment Links as first-screen Buy CTAs on
-paid-opportunities.html and right-now.html. Thin shelf only: White Box $250
+paid-opportunities.html and right-now.html. Thin shelf only: Autopsy $29
 and White Box hour $250. Copy character-exact from recents.html. Do not
 invent new buy.stripe.com host paths. Do not wire the nine-link shelf.
 Keep Live cash product-page links. Match recents.html thin CTA style.
@@ -28,17 +28,19 @@ RECEIPT = ROOT / "p" / "swe2max-paidopps-rightnow-convert-shelf-20260917-01.md"
 
 ALLOWED_LIVE_BUY_URLS = frozenset(
     {
+        "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
         "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
     }
 )
 BUY_HTTPS_URL = re.compile(r"https://buy\.stripe\.com/[A-Za-z0-9_-]+")
 HTTP_BUY_DUP = re.compile(r"http://buy\.stripe\.com/", re.IGNORECASE)
-HTTP_DUP_HREF = "http://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07"
+HTTP_DUP_HREF = "http://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g"
 BUY_LABELS = (
-    "Buy White Box $250",
+    "Buy Autopsy $29",
     "Buy one White Box hour $250",
 )
 LIVE_CASH_DOORS = (
+    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -282,6 +284,7 @@ class TestSwe2maxPaidoppsRightnowConvertShelf2026091701(unittest.TestCase):
         for name in (
             "paid-opportunities.html",
             "right-now.html",
+            "agent-rescue.html",
             "commercial.html",
             "diagnostic.html",
         ):
@@ -316,6 +319,7 @@ class TestSwe2maxPaidoppsRightnowConvertShelf2026091701(unittest.TestCase):
                 ALLOWED_LIVE_BUY_URLS,
             )
             forged = page_html.replace(
+                "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
                 "https://buy.stripe.com/not-a-canonical-link",
                 1,
             )
@@ -325,7 +329,7 @@ class TestSwe2maxPaidoppsRightnowConvertShelf2026091701(unittest.TestCase):
             )
             poisoned = (
                 page_html
-                + '<a href="http://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">dup</a>'
+                + '<a href="http://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">dup</a>'
             )
             self.assertEqual(live_buy_urls(poisoned), ALLOWED_LIVE_BUY_URLS)
             self.assertEqual(
@@ -339,6 +343,7 @@ class TestSwe2maxPaidoppsRightnowConvertShelf2026091701(unittest.TestCase):
                 ["%s %s" % (name, http_error)],
             )
             http_only = page_html.replace(
+                "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
                 HTTP_DUP_HREF,
                 1,
             )

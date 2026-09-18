@@ -48,6 +48,7 @@ class PlantDowntimeHeroBuyConvertTests(unittest.TestCase):
         self.assertIn('href="./titanmcp.html"', self.page)
 
     def test_live_cash_and_larger_fixed_kept(self):
+        self.assertIn("Agent Failure Autopsy · $29", self.page)
         self.assertIn("Larger fixed engagements", self.page)
         self.assertIn("./diagnostic.html", self.page)
         self.assertIn("./commercial.html", self.page)

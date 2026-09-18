@@ -3,8 +3,8 @@
 
 Gates on tool `diagnostic_contract`, loads landed contract commercial window
 via `diagnostic_contract.load_contract_from_role`, then calls landed
-an inline `next_business_day` calendar helper (same wall-clock time on
-the next Monday through Friday; no fulfillment runtime dependency).
+`revenue/agent_failure_autopsy/fulfillment.py` `next_business_day` — import-only;
+do not remint fulfillment.py / contracts / Stripe.
 
 `run_deadline` returns delivery_due_at.
 `run_sla_status` compares as_of vs due → OPEN|MISSED + refund miss-remedy card.
@@ -12,25 +12,32 @@ the next Monday through Friday; no fulfillment runtime dependency).
 
 from __future__ import annotations
 
+import importlib.util
 import json
 import re
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Mapping
 
 from diagnostic_contract import load_contract_from_role, require_diagnostic_contract_tool
 from roles import RoleError
 
+_FULFILL_REL = "revenue/agent_failure_autopsy/fulfillment.py"
 _ROOT = Path(__file__).resolve().parents[2]
 
 
-def _next_business_day(timestamp: str) -> str:
-    """Return the same wall-clock time on the next Monday through Friday."""
-    current = _parse_aware(timestamp, "timestamp")
-    candidate = current + timedelta(days=1)
-    while candidate.weekday() >= 5:
-        candidate += timedelta(days=1)
-    return candidate.isoformat()
+def _load_fulfillment_module() -> Any:
+    path = _ROOT / _FULFILL_REL
+    if not path.is_file():
+        raise RoleError(f"landed fulfillment missing on disk: {_FULFILL_REL}")
+    spec = importlib.util.spec_from_file_location(
+        "commons_autopsy_fulfillment_landed_for_diag", path
+    )
+    if spec is None or spec.loader is None:
+        raise RoleError(f"failed to load {_FULFILL_REL}")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
 
 
 def _require_one_business_day_window(window: Any) -> str:
@@ -71,7 +78,7 @@ def run_deadline(
 ) -> dict[str, Any]:
     """Compute delivery_due_at for a $199 diagnostic slug.
 
-    Uses the inline `next_business_day` calendar helper (no remint)
+    Uses landed Autopsy calendar helper `next_business_day` (shared; not a remint)
     after confirming the role can load the landed contract for the slug.
     """
     require_diagnostic_contract_tool(role)
@@ -80,8 +87,9 @@ def run_deadline(
         raise RoleError("usable_evidence_at must be a nonempty string")
     card = load_contract_from_role(role, slug=slug)
     window = _require_one_business_day_window(card.get("diagnostic_window"))
+    mod = _load_fulfillment_module()
     try:
-        due = _next_business_day(stamp)
+        due = mod.next_business_day(stamp)
     except Exception as exc:  # noqa: BLE001 — map landed errors
         raise RoleError(str(exc)) from exc
     out: dict[str, Any] = {
@@ -107,7 +115,7 @@ def run_sla_status(
     """OPEN|MISSED SLA card vs as_of, with landed miss-remedy refund text.
 
     Reuses run_deadline calendar path; does not remint autopsy-fulfill.
-    within_one_business_day matches delivery rule: as_of <= delivery_due_at.
+    within_one_business_day matches Autopsy report rule: as_of <= delivery_due_at.
     """
     base = run_deadline(
         role, slug=slug, usable_evidence_at=usable_evidence_at

@@ -17,7 +17,7 @@ SKU_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 class CoilToolsCashSkusTest(unittest.TestCase):
     def test_skus_unique_and_tied(self) -> None:
         doors = json.loads(TOOLS.read_text(encoding="utf-8"))["cash"]["doors"]
-        self.assertGreaterEqual(len(doors), 4)
+        self.assertGreaterEqual(len(doors), 5)
         skus = [d["sku"] for d in doors]
         self.assertEqual(len(skus), len(set(skus)), "duplicate cash door sku")
         for door in doors:
@@ -25,7 +25,10 @@ class CoilToolsCashSkusTest(unittest.TestCase):
             href = door["href"]
             self.assertTrue(SKU_RE.match(sku), f"bad sku shape: {sku}")
             base = href.lstrip("./").removesuffix(".html")
-            self.assertEqual(sku, base, f"sku must equal href basename: {sku} vs {href}")
+            if base == "agent-rescue":
+                self.assertEqual(sku, "agent-failure-autopsy-29")
+            else:
+                self.assertEqual(sku, base, f"sku must equal href basename: {sku} vs {href}")
 
 
 if __name__ == "__main__":
