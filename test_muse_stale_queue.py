@@ -94,6 +94,39 @@ class T(unittest.TestCase):
             with self.assertRaises(m.Error): m.compile_packet(bad_actor_raw)
         finally:
             for name,value in saved.items(): setattr(m,name,value)
+    def test_lexical_generation_has_no_semantic_defaults(self):
+        funcs=(m.loads,m.txt,m.parse,m.classify,m.compile_packet,m.verify_compiled)
+        for fn in funcs:
+            with self.subTest(fn=fn.__name__):
+                self.assertIsNone(fn.__defaults__)
+                self.assertIsNone(fn.__kwdefaults__)
+        raw=json.dumps(self.packet([self.req()]),separators=(",",":")).encode()
+        baseline,md=m.compile_packet(raw); tampered=copy.deepcopy(baseline); tampered["authority"]["cash_proven"]=True
+        saved=[fn.__defaults__ for fn in funcs]
+        try:
+            for fn in funcs: fn.__defaults__=(object(),)
+            again,amd=m.compile_packet(raw)
+            self.assertEqual(again,baseline); self.assertEqual(amd,md)
+            self.assertFalse(m.verify_compiled(raw,tampered,md))
+        finally:
+            for fn,value in zip(funcs,saved): fn.__defaults__=value
+    def test_dependency_rebinding_cannot_remint_or_self_verify(self):
+        raw=json.dumps(self.packet([self.req()]),separators=(",",":")).encode()
+        prod_compile=m.compile_packet; prod_verify=m.verify_compiled
+        baseline,md=prod_compile(raw); tampered=copy.deepcopy(baseline); tampered["authority"]["cash_proven"]=True
+        names=("canon","sha","loads","exact","ts","sint","txt","parse","classify","md","compile_packet")
+        saved={name:getattr(m,name) for name in names}
+        try:
+            m.canon=lambda _x:b"x"; m.sha=lambda _x:"0"*64; m.loads=lambda _x:{}
+            m.exact=lambda *_a:None; m.ts=lambda *_a:None; m.sint=lambda *_a:0; m.txt=lambda *_a:"attacker"
+            m.parse=lambda _x:{}; m.classify=lambda *_a:{"operation_key":"OP-1","state":"TERMINAL_RELEASED"}
+            m.md=lambda _x:"attacker"; m.compile_packet=lambda *_a:(tampered,md)
+            again,amd=prod_compile(raw)
+            self.assertEqual(again,baseline); self.assertEqual(amd,md)
+            self.assertTrue(prod_verify(raw,baseline,md))
+            self.assertFalse(prod_verify(raw,tampered,md))
+        finally:
+            for name,value in saved.items(): setattr(m,name,value)
     def test_release_family_is_terminal(self):
         for term in ("WITHDRAW","RELEASE","SUPERSEDE"):
             with self.subTest(term=term,later="SELECTED"):
