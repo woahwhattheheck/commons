@@ -13,11 +13,14 @@ from datetime import timedelta
 from pathlib import Path
 
 TEST_WRITER_KEY_HEX = "11" * 32
+TEST_CONTEXT_KEY_HEX = "22" * 32
 os.environ.setdefault("OUTREACH_WRITER_LEASE_AUTHORITY_KEY_HEX", TEST_WRITER_KEY_HEX)
+os.environ.setdefault("OUTREACH_CONTEXT_AUTHORITY_KEY_HEX", TEST_CONTEXT_KEY_HEX)
 
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 import outreach_qualification_firewall as fw  # noqa: E402
+import firewall_model as model_impl  # noqa: E402
 
 HIST = "2026-09-17T20:00:00Z"
 
@@ -26,10 +29,39 @@ def packet():
     return fw.strict_json_loads((ROOT / "demo.json").read_text())
 
 
+def context_tag(kind, payload):
+    return hmac.new(
+        bytes.fromhex(TEST_CONTEXT_KEY_HEX),
+        fw.canonical_json({"domain": "outreach-qualification-firewall.context.v2", "kind": kind, "payload": payload}),
+        hashlib.sha256,
+    ).hexdigest()
+
+
+def resign_identity(data):
+    unsigned = {k: v for k, v in data["identity_binding"].items() if k != "auth_tag_hex"}
+    data["identity_binding"]["auth_tag_hex"] = context_tag("IDENTITY", unsigned)
+
+
+def resign_relationship(data, observed=None, valid_until=None):
+    if observed is not None:
+        data["contact"]["relationship_observed_at"] = fw._utc_text(observed)
+    if valid_until is not None:
+        data["contact"]["relationship_valid_until"] = fw._utc_text(valid_until)
+    source = fw._validate_source(copy.deepcopy(data["source_packet"]))
+    contact = fw._validate_contact(copy.deepcopy(data["contact"]))
+    payload = model_impl._relationship_authority_payload(
+        source, data["source_packet_sha256"], contact, data["identity_binding"]
+    )
+    data["contact"]["relationship_authority_tag_hex"] = context_tag("RELATIONSHIP", payload)
+
+
 def resign_source(data):
     source = fw._validate_source(copy.deepcopy(data["source_packet"]))
     data["source_packet"] = source
     data["source_packet_sha256"] = fw.sha256_hex(fw.canonical_json(source))
+    data["identity_binding"]["source_packet_sha256"] = data["source_packet_sha256"]
+    resign_identity(data)
+    resign_relationship(data)
 
 
 def rebind_lease(data):
@@ -59,6 +91,7 @@ class FirewallDecisionTests(unittest.TestCase):
         now = fw._process_utc_now()
         data["writer_lease"]["issued_at"] = fw._utc_text(now - timedelta(seconds=60))
         data["writer_lease"]["expires_at"] = fw._utc_text(now + timedelta(seconds=600))
+        resign_relationship(data, now - timedelta(seconds=30), now + timedelta(seconds=240))
         resign_lease(data)
         out = fw.compile_current(data)
         self.assertTrue(out["qualified_for_owner_review"])
@@ -72,6 +105,7 @@ class FirewallDecisionTests(unittest.TestCase):
         data["writer_lease"]["issued_at"] = fw._utc_text(now - timedelta(seconds=60))
         data["writer_lease"]["expires_at"] = fw._utc_text(now + timedelta(seconds=600))
         data["writer_lease"]["status"] = "SELECTED"
+        resign_relationship(data, now - timedelta(seconds=30), now + timedelta(seconds=240))
         resign_lease(data)
         out = fw.compile_current(data)
         self.assertTrue(out["qualified_for_owner_review"])
