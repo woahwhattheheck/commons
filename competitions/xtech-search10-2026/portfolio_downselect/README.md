@@ -63,7 +63,10 @@ Every candidate additionally requires:
 - every declared rubric claim, demonstrated-metric claim, and transition-path
   claim to be `EVIDENCED`; `PROPOSED`, `OWNER_REQUIRED`, and
   `FORBIDDEN` all block selection;
-- at least one real external commercial-traction receipt;
+- at least one **strong** external commercial-traction receipt
+  (`CUSTOMER_PAYMENT`, `CUSTOMER_CONTRACT`, `CUSTOMER_DEPLOYMENT`, or
+  `EXTERNAL_ADOPTION`); pilots/LOIs are retained as supporting evidence but
+  cannot alone clear the hard gate;
 - federal-support overlap state `NONE`, bound to OWNER evidence;
 - `NOT_EXCLUSIVE` USAMRDC scope, bound to OWNER evidence.
 
