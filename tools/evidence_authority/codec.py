@@ -53,7 +53,7 @@ def _walk(value:Any,*,depth:int=0,budget:list[int]|None=None,label:str="value")-
 def canonical_bytes(value:Any)->bytes:
     _walk(value)
     try: raw=json.dumps(value,sort_keys=True,separators=(",",":"),ensure_ascii=False,allow_nan=False).encode("utf-8","strict")
-    except (TypeError,ValueError,UnicodeEncodeError) as exc: raise AuthorityError(f"value is not canonical JSON") from exc
+    except (TypeError,ValueError,UnicodeEncodeError) as exc: raise AuthorityError("value is not canonical JSON") from exc
     if len(raw)>MAX_DOCUMENT_BYTES: raise AuthorityError("canonical JSON exceeds document byte bound")
     return raw
 
@@ -68,4 +68,22 @@ def _parse_int(token:str)->int:
     try: value=int(token)
     except ValueError as exc: raise AuthorityError("invalid integer token") from exc
     return strict_int(value,"integer token")
-def _reject_float(token:str): raise AuthorityError,"floating-point JSON numbers are not admitted")
+def _reject_float(token:str): raise AuthorityError("floating-point JSON numbers are not admitted")
+def _reject_constant(token:str): raise AuthorityError(f"non-finite JSON number is not admitted: {token}")
+def _pairs(pairs):
+    out={}
+    for key,value in pairs:
+        if key in out: raise AuthorityError("duplicate JSON key")
+        out[key]=value
+    return out
+
+def loads_strict_json_bytes(raw:bytes,*,label:str="document")->Any:
+    if not isinstance(raw,bytes): raise AuthorityError(f"{label} must be bytes")
+    if len(raw)>MAX_DOCUMENT_BYTES: raise AuthorityError(f"{label} exceeds document byte bound")
+    try: text=raw.decode("utf-8","strict")
+    except UnicodeDecodeError as exc: raise AuthorityError(f"{label} is not strict UTF-8") from exc
+    try: value=json.loads(text,object_pairs_hook=_pairs,parse_int=_parse_int,parse_float=_reject_float,parse_constant=_reject_constant)
+    except AuthorityError: raise
+    except (json.JSONDecodeError,ValueError,RecursionError) as exc: raise AuthorityError(f"{label} is not strict bounded JSON") from exc
+    _walk(value,label=label)
+    return value
