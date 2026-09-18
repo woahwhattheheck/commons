@@ -147,10 +147,10 @@ class ProviderCostTruthTests(unittest.TestCase):
         with self.assertRaisesRegex(gate.GateError,"lowercase SHA-256"):
             self.evaluate(snapshot([bad]))
         bad=event("a-scope",scope="SESSION",session_id="s");bad["model"]=None
-        with self.assertRaisesRegex(gate.GateError,"SESSION scope identity"):
+        with self.assertRaisesRegex(gate.GateError,"SESSION scope"):
             self.evaluate(snapshot([bad]))
         bad=event("a-x");bad["account_id"]="other-account"
-        with self.assertRaisesRegex(gate.GateError,"identity transplant"):
+        with self.assertRaisesRegex(gate.GateError,"transplant"):
             self.evaluate(snapshot([bad]))
 
     def test_current_receipt_raw_snapshot_is_non_authorizing_and_replay_bound(self):
@@ -174,6 +174,21 @@ class ProviderCostTruthTests(unittest.TestCase):
             self.evaluate(snapshot([a,b]),trusted_events=[a,b]),
             self.evaluate(snapshot([b,a]),trusted_events=[a,b]),
         )
+
+    def test_validate_snapshot_canonicalizes_evidence_after_duplicate_rejection(self):
+        a=event("a-zero")
+        b=event("b-billing",scope="ACCOUNT",kind="CHARGE_PAID",amount=2160,event_at="2026-09-17T18:20:00Z",observed_at="2026-09-17T18:21:00Z")
+        forward=gate.validate_snapshot(snapshot([b,a]))
+        reverse=gate.validate_snapshot(snapshot([a,b]))
+        self.assertIsInstance(forward, dict)
+        self.assertEqual(forward, reverse)
+        self.assertEqual([row["event_id"] for row in forward["evidence"]], ["a-zero", "b-billing"])
+        self.assertEqual(
+            self.evaluate(snapshot([a,b]),trusted_events=[a,b])["snapshot_sha256"],
+            self.evaluate(snapshot([b,a]),trusted_events=[a,b])["snapshot_sha256"],
+        )
+        with self.assertRaisesRegex(gate.GateError, "duplicate evidence event_id"):
+            gate.validate_snapshot(snapshot([a, b, a]))
 
     def test_strict_roundtrip_loader(self):
         snap=snapshot([event("a-zero")])

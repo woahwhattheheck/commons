@@ -74,4 +74,8 @@ def validate_snapshot(s:Any,_exact=_require_exact_keys,_req=_validate_request,_e
         e=_event(raw,req,i)
         if e["event_id"] in seen:raise GateError(f"duplicate evidence event_id: {e['event_id']}")
         seen.add(e["event_id"]);out.append(e)
-    # Evidence is a set keyed by unique event_id for semantic purposes.\n    # Canonicalize only after validation/duplicate detection so receipt and\n    # snapshot digests are invariant to caller list permutation.\n    out.sort(key=lambda event: event["event_id"])\n    return{"schema":_schema,"request":req,"evidence":out}
+    # Evidence is a set keyed by unique event_id for semantic purposes.
+    # Canonicalize only after validation/duplicate detection so receipt and
+    # snapshot digests are invariant to caller list permutation.
+    out.sort(key=lambda event: event["event_id"])
+    return{"schema":_schema,"request":req,"evidence":out}
