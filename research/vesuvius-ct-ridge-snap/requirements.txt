@@ -1,3 +1,0 @@
-numpy>=2.0,<3
-# Optional only for kind="zarr" manifests:
-# zarr>=3,<4

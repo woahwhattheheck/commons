@@ -1,1 +1,0 @@
-Synthetic evidence: backup restore procedure was exercised successfully in the retained test fixture.

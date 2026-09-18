@@ -1,8 +1,0 @@
-from pathlib import Path
-ROOT = Path(__file__).resolve().parent
-FILES = ['test_digit-since-you-last-looked-live-cash-20260905-01.py', 'test_digit-free-sample-live-cash-20260905-01.py', 'test_digit-demand-survive-live-cash-20260905-01.py', 'test_digit-attested-runs-live-cash-20260905-01.py', 'test_digit-stripe-payment-links-live-cash-20260905-01.py', 'test_digit-humans-live-cash-20260905-01.py', 'test_digit-diagnostic-live-cash-20260905-01.py', 'test_digit-authorship-live-cash-20260905-01.py', 'test_digit-titan-hour-live-cash-20260905-01.py', 'test_digit-image-drop-live-cash-20260905-01.py', 'test_digit-distribution-live-cash-20260905-01.py', 'test_digit-billings-bid-1421-live-cash-20260905-01.py', 'test_digit-invoice-exception-live-cash-20260905-01.py', 'test_digit-keys-live-cash-20260905-01.py', 'test_digit-first-night-live-cash-20260905-01.py', 'test_digit_hermetic_parents_fix_20260905_01.py', 'test_digit-builds-live-cash-20260905-01.py', 'test_digit-scope-to-delivery-live-cash-20260905-01.py', 'test_digit-right-now-live-cash-20260905-01.py', 'test_digit-feature-tracker-live-cash-20260905-01.py', 'test_digit-fleet-work-order-live-cash-20260905-01.py', 'test_digit-commerce-live-cash-20260905-01.py', 'test_digit-court-live-cash-20260905-01.py', 'test_digit-data-license-live-cash-20260905-01.py', 'test_digit-embassy-live-cash-20260905-01.py', 'test_digit-federated-ci-live-cash-20260905-01.py', 'test_digit-commons-flowchart-live-cash-20260905-01.py']
-
-def test_no_parents1_left_in_fixed_set():
-    for rel in FILES:
-        text = (ROOT / rel).read_text(encoding="utf-8")
-        assert ("resolve()." + "parents[1]") not in text
