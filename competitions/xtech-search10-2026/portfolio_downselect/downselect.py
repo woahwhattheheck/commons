@@ -39,14 +39,17 @@ CRITERIA_WEIGHTS = {
     "proposalQuality": 5,
 }
 CLAIM_STATES = {"EVIDENCED", "PROPOSED", "OWNER_REQUIRED", "FORBIDDEN"}
-EXTERNAL_TRACTION_KINDS = {
+STRONG_TRACTION_KINDS = {
     "CUSTOMER_PAYMENT",
     "CUSTOMER_CONTRACT",
-    "CUSTOMER_PILOT",
     "CUSTOMER_DEPLOYMENT",
-    "CUSTOMER_LOI",
     "EXTERNAL_ADOPTION",
 }
+SUPPORTING_TRACTION_KINDS = {
+    "CUSTOMER_PILOT",
+    "CUSTOMER_LOI",
+}
+EXTERNAL_TRACTION_KINDS = STRONG_TRACTION_KINDS | SUPPORTING_TRACTION_KINDS
 INTERNAL_ONLY_TRACTION_KINDS = {
     "REPO_ACTIVITY",
     "GITHUB_STARS",
@@ -99,6 +102,7 @@ class CandidateProjection:
     criterionBasisPoints: dict[str, int]
     hardBlockers: list[str]
     externalTractionEvidenceCount: int
+    strongCommercialTractionEvidenceCount: int
 
 
 def _pairs_no_duplicates(pairs: Iterable[tuple[str, Any]]) -> dict[str, Any]:
@@ -642,6 +646,7 @@ def _candidate(
     if not isinstance(traction, list) or len(traction) > 32:
         raise ContractError("INVALID_TRACTION_LIST", candidate_id)
     external_count = 0
+    strong_traction_count = 0
     traction_ids: set[str] = set()
     for tindex, raw_traction in enumerate(traction):
         tpath = f"{path}.traction[{tindex}]"
@@ -666,11 +671,15 @@ def _candidate(
             used=used,
         )
         external_count += 1
+        if kind in STRONG_TRACTION_KINDS:
+            strong_traction_count += 1
 
     if source_currentness_state != "CURRENT":
         blockers.append(f"source_generation:{source_currentness_state}")
     if external_count == 0:
         blockers.append("commercial_traction:missing_external_evidence")
+    if strong_traction_count == 0:
+        blockers.append("commercial_traction:missing_strong_external_evidence")
     if overlap != "NONE":
         blockers.append(f"federal_support_overlap:{overlap}")
     if exclusivity_state != "NOT_EXCLUSIVE":
@@ -682,6 +691,7 @@ def _candidate(
         criterionBasisPoints=criterion_bp,
         hardBlockers=sorted(set(blockers)),
         externalTractionEvidenceCount=external_count,
+        strongCommercialTractionEvidenceCount=strong_traction_count,
     )
 
 
