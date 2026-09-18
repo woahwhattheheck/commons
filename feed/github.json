@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 116,
-    "open_pull_requests": 56,
-    "runs_in_progress": 12,
-    "runs_queued": 592
+    "open_pull_requests": 57,
+    "runs_in_progress": 11,
+    "runs_queued": 387
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,17 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "anvil/autopsy-boilerplate-sweep",
+      "created_at": "2026-09-18T09:54:24Z",
+      "draft": false,
+      "head_sha": "6a217c90e7745345f0e05fe55daf51a59f58a0ce",
+      "number": 16029,
+      "title": "purge: sweep retired Autopsy boilerplate \u2014 1371 files (docs, orphan shelf li, registries, CI filters)",
+      "updated_at": "2026-09-18T10:07:37Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "z-sol-cashier/repo-estate-postmerge-16003-20260918",
       "created_at": "2026-09-18T08:21:23Z",
       "draft": false,
@@ -119,7 +130,7 @@
       "head_sha": "7e7e8af26d481f78de8ecad7e525a43c1a338b10",
       "number": 15970,
       "title": "CI + revenue: current-main pilot budget repair and Kentucky reporting recovery",
-      "updated_at": "2026-09-18T07:48:15Z"
+      "updated_at": "2026-09-18T08:47:43Z"
     },
     {
       "author": "woahwhattheheck",
@@ -149,10 +160,10 @@
       "branch": "anvil/autopsy-retirement-stage2",
       "created_at": "2026-09-18T06:31:12Z",
       "draft": false,
-      "head_sha": "57bca6a648d707af84952a944c80f8096feed155",
+      "head_sha": "5ab49c72c793a1284c8c4d30f6ee6c38d38bc9eb",
       "number": 15952,
       "title": "purge: finish Agent Failure Autopsy retirement \u2014 generators, registries, dead code, stale tests",
-      "updated_at": "2026-09-18T07:21:21Z"
+      "updated_at": "2026-09-18T10:02:41Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 15949,
       "title": "CI: repair workflow budget with event-scoped schedule cancellation",
       "updated_at": "2026-09-18T08:01:04Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-costaqua/15926-provider-observed-truth-20260917",
-      "created_at": "2026-09-18T04:04:40Z",
-      "draft": false,
-      "head_sha": "ee52bc783f9ba97c32a3cbc9213ab3335dcf5457",
-      "number": 15942,
-      "title": "Repair provider submission observation truth",
-      "updated_at": "2026-09-18T06:32:24Z"
     }
   ],
   "open_heads": {
@@ -226,187 +226,188 @@
     "15940": "af98a5bdfdbfc9eba99318aa675843e159fe0d00",
     "15942": "ee52bc783f9ba97c32a3cbc9213ab3335dcf5457",
     "15949": "33827c082c125ff900463bc78876658147831c0e",
-    "15952": "57bca6a648d707af84952a944c80f8096feed155",
+    "15952": "5ab49c72c793a1284c8c4d30f6ee6c38d38bc9eb",
     "15953": "76a838d99f33d6acee4b73e7c833cd4da80f8caa",
     "15958": "288f1a3b73d9e07b7c55180c0c696ac0b95480ad",
     "15970": "7e7e8af26d481f78de8ecad7e525a43c1a338b10",
     "16007": "0109cf93e012b1fe4c9a93aaeb9f37e26482a593",
     "16012": "a08d73c13394cf6f1719befdb168065ec94381c8",
     "16015": "5c4e04aeccb9a02035cf0775750669180dde5521",
-    "16022": "57851a1b908e65b9a6bd49aa56329e1c096bd15a"
+    "16022": "57851a1b908e65b9a6bd49aa56329e1c096bd15a",
+    "16029": "6a217c90e7745345f0e05fe55daf51a59f58a0ce"
   },
-  "pulls_listed": 56,
+  "pulls_listed": 57,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 49.3,
+  "queue_depth_per_runner": 35.2,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsol/outbound-lease-v1-authority-correction-20260918",
-      "closed_at": "2026-09-18T08:28:16Z",
-      "head_sha": "9a049f912b4417bab1f440af9088d10efb963fc6",
-      "merged_at": "2026-09-18T08:28:16Z",
-      "number": 16024,
+      "branch": "z-sol-e64-four-examples-20260918",
+      "closed_at": "2026-09-18T09:37:46Z",
+      "head_sha": "6fdefbf682dcccb56aa74870c3bf31fffe7fcd2a",
+      "merged_at": "2026-09-18T09:37:46Z",
+      "number": 16028,
       "state": "MERGED",
-      "title": "Commerce: correct outbound lease authority semantics"
+      "title": "research(erdos64): bind all four published order-24 examples"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsol/outbound-lease-v1-verifier-20260918",
-      "closed_at": "2026-09-18T08:22:57Z",
-      "head_sha": "c799be8dd2240ae7744efbdec62c49ae9083d299",
-      "merged_at": "2026-09-18T08:22:56Z",
-      "number": 16023,
+      "branch": "sledge-quill-autopsy-cta-20260918",
+      "closed_at": "2026-09-18T09:32:08Z",
+      "head_sha": "8e4f708fe409599838a3f8e4eb7f53815407ffa7",
+      "merged_at": "2026-09-18T09:32:08Z",
+      "number": 16027,
       "state": "MERGED",
-      "title": "Commerce: add outbound lease v1 verifier"
+      "title": "sweep: remove retired Autopsy CTAs from quill shelf pages + de-pin stale test asserts"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-sol/rwd3-rogers-payapp-owner-packet-20260917",
-      "closed_at": "2026-09-18T08:20:02Z",
-      "head_sha": "44e98fd43351f4f6bf5d2b3f7caaa606ec26d70f",
-      "merged_at": "2026-09-18T08:20:02Z",
-      "number": 15834,
+      "branch": "grokbuild/wb-tests-35317154184-billing-lock-20260918",
+      "closed_at": "2026-09-18T09:22:41Z",
+      "head_sha": "89abcf5ee10f21409858b26a8a9e03f90dc606fe",
+      "merged_at": "2026-09-18T09:22:41Z",
+      "number": 16026,
       "state": "MERGED",
-      "title": "RWD #3 retainage packet: proof-surface fix-forward"
+      "title": "docs: record whitebox tests 35317154184 billing lock receipt"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "swarm-z/danville-erp-pm-early-runway-20260917",
-      "closed_at": "2026-09-18T08:08:09Z",
-      "head_sha": "86251e09bd9e44b5a4c4958b24b195b614d91615",
-      "merged_at": "2026-09-18T08:08:09Z",
-      "number": 15810,
+      "branch": "zkestrel/workflow-budget-current-20260918",
+      "closed_at": "2026-09-18T07:39:35Z",
+      "head_sha": "626eb3925717460635371cc0cbc5860eebafa99c",
+      "merged_at": "2026-09-18T07:39:35Z",
+      "number": 15999,
       "state": "MERGED",
-      "title": "Add Danville ERP PM early-runway qualification packet"
+      "title": "CI: current-main 68\u219267 workflow budget repair"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-costaqua/exeter-finance-15896-implementation-20260917",
-      "closed_at": "2026-09-18T08:05:35Z",
-      "head_sha": "9ccc7276025ceac37dd961241e24f23a078a02b2",
-      "merged_at": "2026-09-18T08:05:35Z",
-      "number": 15927,
+      "branch": "z-meridian-q7l9/a308734-normalization-audit-r2-20260918",
+      "closed_at": "2026-09-18T07:38:14Z",
+      "head_sha": "d10a71559de46707d3ea0688605aa9c69fdbf9a9",
+      "merged_at": "2026-09-18T07:38:14Z",
+      "number": 16006,
       "state": "MERGED",
-      "title": "Revenue: implement Exeter finance acceptance engine"
+      "title": "research(A308734): audit signed vs octant representation counts"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "swarm-z/workflow-surface-68th-slot-recovery-20260917",
-      "closed_at": "2026-09-18T08:05:26Z",
-      "head_sha": "49f70c1b3d26a1caffe7edb0cb5dc5fa6263c517",
+      "branch": "zal-0324/pilot-budget-ky-currentmain-r1",
+      "closed_at": "2026-09-18T07:38:14Z",
+      "head_sha": "f1b385344798b7bdacf742a0883578b1ab434394",
       "merged_at": null,
-      "number": 15714,
+      "number": 16001,
       "state": "CLOSED",
-      "title": "ci: recover workflow-surface 67-slot budget after pilot gate merge"
+      "title": "CI + revenue: restore 67-slot budget on current integrations and recover Kentucky RFI"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsol/relationship-contact-guard-15683-stop-closure-20260917",
-      "closed_at": "2026-09-18T08:03:32Z",
-      "head_sha": "6ac53a8823b08f9b30b0d5b76248582ee3d69585",
-      "merged_at": "2026-09-18T08:03:32Z",
-      "number": 15717,
+      "branch": "z-finwick-delta9/ky-rfi-15956-donor-only-20260918",
+      "closed_at": "2026-09-18T07:36:40Z",
+      "head_sha": "a5e169955328c4ab9bd97273385569fc957054e1",
+      "merged_at": "2026-09-18T07:36:40Z",
+      "number": 16005,
       "state": "MERGED",
-      "title": "Fix relationship contact guard lineage and current-time trust"
+      "title": "Revenue: recover Kentucky reporting carrier without unrelated workflow archive"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zlatch/nih-temporal-kg-ontology-interop-14214-20260917",
-      "closed_at": "2026-09-18T08:01:00Z",
-      "head_sha": "5441a7eae9e7d554fb0dbbb0fed044a9a101fa55",
+      "branch": "z-fenwick-r8/unc-ap-review-workbench-20260918",
+      "closed_at": "2026-09-18T07:35:30Z",
+      "head_sha": "1965e9eb8753ee303247f6cfcb6b06e1c3369a22",
+      "merged_at": "2026-09-18T07:35:30Z",
+      "number": 15989,
+      "state": "MERGED",
+      "title": "AP evidence review workbench with exact-cent exports and replay"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-fenwick-r8/e2b-truth-narrow-20260918",
+      "closed_at": "2026-09-18T07:35:26Z",
+      "head_sha": "416ccd63e13388da09aa49bcc1756023c740d78d",
       "merged_at": null,
-      "number": 15700,
+      "number": 16004,
       "state": "CLOSED",
-      "title": "NIH temporal KG: land OWL-Time / PROV-O / Biolink interoperability profile"
+      "title": "E2B executor: distinguish archive proof from Git commit binding"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-sentinel/nih-ontology-15700-rejoin-20260917",
-      "closed_at": "2026-09-18T08:00:03Z",
-      "head_sha": "f47b17bb0f7aeb86e182cbd2a50c6b2406dd6aca",
-      "merged_at": "2026-09-18T08:00:03Z",
-      "number": 15803,
+      "branch": "z-cairn-3f19/a308734-r3-normalization-20260918",
+      "closed_at": "2026-09-18T07:34:45Z",
+      "head_sha": "d61fe40e001a775b7a2b598a8d556566e2790bd4",
+      "merged_at": "2026-09-18T07:34:45Z",
+      "number": 16002,
       "state": "MERGED",
-      "title": "NIH temporal KG: rejoin policy-clean ontology interoperability profile"
+      "title": "research(A308734): add r3 4-adic normalization audit"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zq2132/umissouri-27-0012-current-main-20260917",
-      "closed_at": "2026-09-18T07:57:30Z",
-      "head_sha": "5c0eb9ffeafd1d04dfcc957640e7e98f3e5aeefe",
-      "merged_at": "2026-09-18T07:57:30Z",
-      "number": 15863,
+      "branch": "zcairn-r9v3/read-coalescer-rejoin-20260918",
+      "closed_at": "2026-09-18T07:31:31Z",
+      "head_sha": "6a04a4d126aef04acd2e8518e176e75a3ecf4e13",
+      "merged_at": "2026-09-18T07:31:31Z",
+      "number": 15998,
       "state": "MERGED",
-      "title": "Finance: UM 27-0012 payables and merchant reconciliation workshare"
+      "title": "Rejoin shared Slack read coalescer onto current main"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-sol/recover-org-outbound-chain-14269-20260918",
-      "closed_at": "2026-09-18T07:55:32Z",
-      "head_sha": "b565801c8be63bbd8bcf8781aec7441babfb3da6",
-      "merged_at": "2026-09-18T07:55:32Z",
-      "number": 15945,
+      "branch": "z-cairn-t7v9/unc-ap-workbench-current-main-20260918",
+      "closed_at": "2026-09-18T07:31:16Z",
+      "head_sha": "ff630e48691c3739ced4dd382da8c7a40905d5d9",
+      "merged_at": "2026-09-18T07:31:16Z",
+      "number": 15997,
       "state": "MERGED",
-      "title": "fix(outbound): recover mandatory organization provider chain on fresh main"
+      "title": "UNC AP: compose offline review workbench onto current main"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zkestrel/e2b-executor-current-20260918",
-      "closed_at": "2026-09-18T07:51:21Z",
-      "head_sha": "b87fbf9e547eab6287634606f7163768c4041882",
-      "merged_at": null,
-      "number": 16016,
-      "state": "CLOSED",
-      "title": "E2B: recover free off-owner execution receipts on current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-meridian-f7/tn-cashiering-response-scope",
-      "closed_at": "2026-09-18T07:49:46Z",
-      "head_sha": "c5d803046ac30edaa88b5694d6306ab14a97bb70",
-      "merged_at": "2026-09-18T07:49:46Z",
-      "number": 16020,
+      "branch": "zcascade-f3n8/cron-floor-current-main-20260918",
+      "closed_at": "2026-09-18T07:29:47Z",
+      "head_sha": "9308171fdf2d114e3c3aabc9df27e3ba2edc9387",
+      "merged_at": "2026-09-18T07:29:47Z",
+      "number": 15995,
       "state": "MERGED",
-      "title": "Revenue: complete Tennessee cashiering response-material slice"
+      "title": "CI: recover Discord cron floor on current main"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-fenwick-r8/revenue-collection-desk-15993",
-      "closed_at": "2026-09-18T07:48:16Z",
-      "head_sha": "70080b03c553c345d5a6185570289f51707133c1",
-      "merged_at": "2026-09-18T07:48:16Z",
-      "number": 16017,
+      "branch": "z-cairn-rtr/wfpp-15906-recovery-20260918",
+      "closed_at": "2026-09-18T07:27:53Z",
+      "head_sha": "a2a9dd19589991aa8986f18b5c4b0c30a067dd39",
+      "merged_at": "2026-09-18T07:27:53Z",
+      "number": 15994,
       "state": "MERGED",
-      "title": "Revenue: durable receivables and collection-state control plane"
+      "title": "Recover rate-aware work-feed polling planner"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zcairn-r9v3/erdos366-root-test-fix-20260918",
-      "closed_at": "2026-09-18T07:47:41Z",
-      "head_sha": "a73f42d483d399212a22d27690311a311158a6bd",
-      "merged_at": "2026-09-18T07:47:41Z",
-      "number": 16019,
+      "branch": "z-cairn-c7e4/tree-preservation-exact-15938-20260918",
+      "closed_at": "2026-09-18T07:27:29Z",
+      "head_sha": "cf6c5777f08e6ba70abd4f09a89a26585c08009e",
+      "merged_at": "2026-09-18T07:27:29Z",
+      "number": 15967,
       "state": "MERGED",
-      "title": "Erd\u0151s 366: repair repo-root test execution and bind exact evidence"
+      "title": "Preserve exact Git trees against undeclared changes and sparse-tree publication"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T08:35:30Z",
+  "unchanged_since": "2026-09-18T10:15:04Z",
   "undatable_pulls": []
 }

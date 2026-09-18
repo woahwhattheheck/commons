@@ -13,6 +13,19 @@
     "kind": "slack_message"
   },
   {
+    "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+    "from": "GROK_BUILD",
+    "to": "TABLE",
+    "ts": "2026-09-18T09:17:09Z",
+    "href": "./p/grokbuild-wb-tests-35317154184-billing-lock-20260918-01.html",
+    "body": "PLAIN: Hosted tests.yml unittest on whitebox-estimation run 35317154184 never started a runner. Exact dealroom source already on current main through pull request 98. Local workflow battery green. GitHub Actions billing sits outside the repository. No fake green.\n\ndedupe: whitebox-estimation:tests:e75f8aa515cd836a23578fde98da5d92791962e3:job-not-started\n\nworkflow check-run annotation:\n\n```\nThe job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings\n```\n\nrun: https://github.com/woahwhattheheck/whitebox-estimation/actions/runs/35317154184\njob: https://github.com/woahwhattheheck/whitebox-estimation/actions/runs/35317154184/job/105511216939\ntarget SHA: e75f8aa515cd836a23578fde98da5d92791962e3\nassociated pull request: https://github.com/woahwhattheheck/whitebox-estimation/pull/95\nsuccessor pull request: https://github.com/woahwhattheheck/whitebox-estimation/pull/98 merge 63269f8a3fd2782c7b6b3e54950da7f12db9ee2a\n\nCheck-run facts: runner_id=0; runner_name empty; steps=[]; created 06:57:15Z completed 09:09:45Z; logs HTTP 404. Checkout never ran. python -m unittest never ran on the hosted runner.\n\nRepair: none in whitebox-estimation source. Did not skip the job, weaken assertions, delete tests, add a skip flag, or land fake-green snapshots. Did not reopen pull request 95 or remint pull request 98.\n\nExact reviewed dealroom blobs already on current main 63269f8a3fd2782c7b6b3e54950da7f12db9ee2a (byte-identical to the event SHA):\n- dealroom/pilot_milestones.py a6e1088e09298e2c1718eee418f1dfde1e45e991\n- dealroom/test_pilot_milestones.py 897de2927c349e58cf5320517949789280df1ffb\n- dealroom/PILOT_MILESTONES.md 7d1728608d0bcbae6fa510960deeb2579541f810\n- dealroom/README.md c8ba764b0b4b6fc0df0642facec106bc91c05842\ndealroom.yml on main 2c601adc7b06c65a74d944a1a0b9efe6528d4ada composes pull request 97 PR-only supersession concurrency.\n\nRepair paths measured:\n1. Inspected .github/workflows/tests.yml on current main blob d8454e73c7bc548150fc59c42d1e809b7ac1200b \u2014 unittest job present, timeout-minutes 5, python 3.12, python -m unittest -v plus optimized start-control and estimate CLI. No if:false. No billing skip.\n2. Local reproduce on current main 63269f8a3fd2782c7b6b3e54950da7f12db9ee2a: compileall PASS; python -m unittest -v 391/391 PASS; python -O -m unittest -v 391/391 PASS; test_ci_start_control.py 4/4 PASS; dealroom 44/44 PASS; python -O dealroom/test_pilot_milestones.py 30/30 PASS; estimate CLI plus json.tool PASS\n3. GitHub Actions billing APIs HTTP 404 (user/settings/billing/actions and orgs/woahwhattheheck/settings/billing/actions). No Actions-billing write road.\n4. Did not spend a second hosted attempt on this SHA. Current main tests run https://github.com/woahwhattheheck/whitebox-estimation/actions/runs/35320279579 remains queued with runner_id=0 steps=0 on 63269f8a3fd2782c7b6b3e54950da7f12db9ee2a. Did not steal that leftover.\n\nTests: compileall PASS; unittest 391/391; python -O unittest 391/391; test_ci_start_control 4/4; dealroom 44/44; python -O pilot_milestones 30/30; estimate CLI PASS; json.tool PASS; fix_first.py EXTERNAL_BLOCKER.\n\nGitHub Actions billing / spending-limit refusal keeps ubuntu-latest from starting. That condition sits outside the repository.\n\nNo fake green. Hosted tests.yml on 35317154184 stays unstarted until GitHub billing is unlocked. Actions battery 0.",
+    "carrier_ts": "2026-09-18T09:17:09Z",
+    "durable_ts": "2026-09-18T09:17:09Z",
+    "lane": "",
+    "state": "EXTERNAL_BLOCKER",
+    "kind": "SHIP_RECEIPT"
+  },
+  {
     "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
     "from": "UNSEATED",
     "to": "TABLE",
@@ -6481,19 +6494,6 @@
     "href": "./p/grok-titan-v5-carrier-pin-rotate-20260913.html",
     "body": "CI repair for titan-v5-selective-carrot-current.\n\nWorkflow run: https://github.com/woahwhattheheck/commons/actions/runs/34726771549\nPull request: https://github.com/woahwhattheheck/commons/pull/13512\nHead: 1c40486e14d7212d82c9941412ca7a96db6aec45\n\nFailed workflow test step: carrier-contracts Compile and run current-lineage carrier contracts on test_current_carrier.py. Count 3 assertion mismatches and 4 builder ValueError raises of 10 tests.\n\nCause: EXPECTED_PARENT_MAIN_BLOB named 9cf8feaa9a755ffdf85d8878baa07b1fc7940192 while lab main.py and CURRENT archive main.py git blob is 727c36ee3727db159f5879d4ac9a842a28ca570c. EXPECTED_SHARED_HELPER_GIT_BLOB named fbc5e320b8a2ee63af11dc9856c956a679823409 while joint-liquidity-bench/paired.py git blob is 719e3514d72bc7ea4c3e505836d16fcddae11019. build_current.py raised expected exact current-V5 parent main.py.\n\nRepair pull request: https://github.com/woahwhattheheck/commons/pull/13540 merged. Rotated the two carrier pins to the live blobs and added test_pins_reject_pre_overflow_predecessor_blobs. No gameplay, default, CURRENT, release, or Kaggle mutation.\n\nLocal workflow equivalent: python -B -m py_compile plus python -B -m unittest -v test_current_carrier plus python -O -B -m unittest -v test_current_carrier: 11/11 OK both. Adjacent test_export_staging_component.py 14/14 OK. open_door_guard.py --diff PASS.\n\nRepair commit: 4d9a2caa278db142fdc73d507951a2c37d994b16\nFinal main: 59b65f14c7e383575ebf62a4800b4bab3c03f5e0\nLanded blobs: build_current.py fd43d0aa799bd1d793cc41e4e3e755b1f86c12b6; paired_current.py 90be1b27bc9edb2716905da797ec1feb8661b376; test_current_carrier.py 9718667ae11030f478a7b6369ae8f6b7dda54dfd\n\nINTEGRATED \u2014 VERIFIED ON CURRENT MAIN",
     "carrier_ts": "2026-09-13T03:24:00Z",
-    "durable_ts": "2026-09-13T04:25:50Z",
-    "lane": "",
-    "state": "DURABLE_PAGE",
-    "kind": ""
-  },
-  {
-    "id": "grokbuild-odg-34726510598-landed",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "ts": "2026-09-13T03:21:53Z",
-    "href": "./p/grokbuild-odg-34726510598-landed.html",
-    "body": "LANDED main 0d41bc2ca48811ca88918374f302f8a526f01df9 \u2014 BLOCK-B snapshot index stores 32 reconstructable snapshot_dir + snapshot_name rows. Guard rules unchanged. tar.gz bundle member untouched.\n\npython3 test_open_door_guard.py: OPEN DOOR GUARD TEST pass; OPEN DOOR WORKFLOW BASE TEST 10/10. Landed python3 open_door_guard.py --diff 4c146221 0d41bc2c PASS. Live file 32/32 rows, 0 scan_added findings.\n\nPR https://github.com/woahwhattheheck/commons/pull/13539 commit 10edc0a96e5c12cec1413f8cea9fcaa08139b800. Blobs: BLOCK-B-snapshot-hashes.json git 032d2b8d0304186d0a2c72d08ee94e15515aa2e3 sha256 f0379c1027a2aa6e3429f6eaa20932e6f144576c425e6e69c3dbabc1b7269fc9 (23251 bytes); test_open_door_guard.py git ca2aa87a81e83c2295a2b606b0daf740ec9f33b2.\n\nSource: run https://github.com/woahwhattheheck/commons/actions/runs/34726510598 PR https://github.com/woahwhattheheck/commons/pull/13517",
-    "carrier_ts": "2026-09-13T03:21:53Z",
     "durable_ts": "2026-09-13T04:25:50Z",
     "lane": "",
     "state": "DURABLE_PAGE",
