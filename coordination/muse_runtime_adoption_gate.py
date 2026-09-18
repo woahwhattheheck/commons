@@ -498,4 +498,56 @@ def _build_api():
             return "HOLD_EVIDENCE", ["first_event_must_be_selected"], counts
         if counts["LEASED"] == 0:
             if len(events) == 1:
-   
+                return "HOLD_SELECTED_ONLY", ["selection_observed_without_lease"], counts
+            return "HOLD_EVIDENCE", ["events_after_selected_without_lease"], counts
+        if counts["CONSUMED"] == 0:
+            if "GO" in classes or "COMMIT" in classes:
+                return "HOLD_NO_CONSUME", ["go_or_commit_without_consume"], counts
+            return "HOLD_NO_CONSUME", ["lease_not_consumed"], counts
+        if counts["GO"] == 0:
+            if "COMMIT" in classes:
+                return "HOLD_NO_GO", ["commit_without_go"], counts
+            return "HOLD_NO_GO", ["consume_observed_without_go"], counts
+
+        # Require exactly the positive prefix, with optional COMMIT last.
+        expected = list(positive_sequence)
+        if classes[:4] != expected:
+            return "HOLD_EVIDENCE", ["atomic_sequence_order_mismatch"], counts
+        if len(classes) > 5 or (len(classes) == 5 and classes[4] != "COMMIT"):
+            return "HOLD_EVIDENCE", ["events_after_go_are_not_single_commit"], counts
+
+        consumed = next(event for event in events if event["event_class"] == "CONSUMED")
+        go = next(event for event in events if event["event_class"] == "GO")
+        if consumed["capability_sha256"] != go["capability_sha256"]:
+            return "HOLD_EVIDENCE", ["consume_go_capability_digest_mismatch"], counts
+        if counts["COMMIT"] == 1:
+            commit = next(event for event in events if event["event_class"] == "COMMIT")
+            if commit["capability_sha256"] != go["capability_sha256"]:
+                return "HOLD_EVIDENCE", ["commit_go_capability_digest_mismatch"], counts
+        return "ATOMIC_SEQUENCE_OBSERVED", ["retained_sequence_internally_consistent"], counts
+
+    def compile_at(packet: _Any, now_s: int) -> dict[str, _Any]:
+        normalized = normalize_packet(packet)
+        now_s = integer(now_s, "now_s")
+        status, reasons, counts = status_for(normalized, now_s)
+        projected = input_projection(normalized)
+        commit = next((e for e in normalized["events"] if e["event_class"] == "COMMIT"), None)
+        diagnostic: dict[str, _Any] = {
+            "schema": output_schema,
+            "input_schema": input_schema,
+            "input_sha256": digest(projected),
+            "operation_key": normalized["operation_key"],
+            "counterparty": normalized["counterparty"],
+            "route": normalized["route"],
+            "purpose": normalized["purpose"],
+            "lease_id": normalized["lease_id"],
+            "selected_session": normalized["selected_session"],
+            "runtime": dict(normalized["runtime"]),
+            "captured_at": normalized["capture"]["captured_at"],
+            "max_age_seconds": normalized["capture"]["max_age_seconds"],
+            "evaluated_at": utc_from_epoch(now_s),
+            "status": status,
+            "reasons": reasons,
+            "event_counts": counts,
+            "event_classes": [e["event_class"] for e in normalized["events"]],
+            "atomic_sequ
