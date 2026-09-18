@@ -122,15 +122,18 @@ class GitHubProvider:
                 retry = error.headers.get("Retry-After")
                 remaining = error.headers.get("X-RateLimit-Remaining")
                 reset = error.headers.get("X-RateLimit-Reset")
-                secondary = False
+                # Retry-After on a 403/429 is provider throttling evidence even
+                # if an intermediary or malformed body prevents message parsing.
+                secondary = error.code in {403, 429} and retry is not None
                 if error.code in {403, 429}:
                     try:
                         raw = error.read(min(32768, MAX_RESPONSE))
                         payload = loads(raw)
                         message = payload.get("message") if isinstance(payload, dict) else None
-                        secondary = isinstance(message, str) and "secondary rate limit" in message.lower()
+                        body_secondary = isinstance(message, str) and "secondary rate limit" in message.lower()
+                        secondary = secondary or body_secondary
                     except (ValueError, UnicodeDecodeError, RecursionError, OSError):
-                        secondary = False
+                        pass
                 return Upstream(error.code, None, retry, remaining, reset, secondary)
             finally:
                 error.close()
