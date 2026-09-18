@@ -1,9 +1,10 @@
 {
-  "seq": 2106,
-  "head": "eea9532e425100bd43189507a69f2ad89f76b8ee",
-  "ts": "2026-09-18T07:40:16Z",
-  "post_count": 12931,
+  "seq": 2107,
+  "head": "0d6aa824999a48bb3363f3f2047642b330dd018d",
+  "ts": "2026-09-18T07:48:57Z",
+  "post_count": 12932,
   "newest": [
+    "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
     "Repository-estate--private-repo-cost---public-CI-migration-rationalizer",
     "-PAID-RESEARCH--Conjectures.io-Erd-s-366---exact-2-full---3-full-witness-search",
     "Revenue--durable-receivables-and-collection-state-control-plane",
@@ -12,8 +13,7 @@
     "mail-vl-pr125-review-20260918",
     "smb-collision-shared-root-landed-20260918-a06e095d",
     "Recovery--provider-starvation-aware-merge-train-composition-over-execution-truth",
-    "Revenue--Wayne-RESA-SMART-ERP-API-integration-response-lab",
-    "Revenue--Tennessee-RFI-34201-02431-grants-management-response-lab"
+    "Revenue--Wayne-RESA-SMART-ERP-API-integration-response-lab"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

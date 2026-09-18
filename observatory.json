@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T07:42:33Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Repository-estate--private-repo-cost---public-CI-migration-rationalizer",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-18T01:37:18Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Finance--SEC-Company-Facts-filing-quality-desk---period-unit-as-of-selection-and",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T01:36:36Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "cc4353b28a721d0df69336e6758b8d334200766e5107a3d4f550a817027b7beb",
+  "digest": "e90de2ce08fe0371cee05e1b89e7bbf6ea5e8bc3fe52aba5a82bb91c31965b9f",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12931,
-    "pulse_seq": 2106,
-    "sha": "eea9532e425100bd43189507a69f2ad89f76b8ee"
+    "post_count": 12932,
+    "pulse_seq": 2107,
+    "sha": "0d6aa824999a48bb3363f3f2047642b330dd018d"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-18T07:40:16Z",
+  "now": "2026-09-18T07:48:57Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4996,18 +4996,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Repository-estate--private-repo-cost---public-CI-migration-rationalizer",
+          "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Repository-estate--private-repo-cost---public-CI-migration-rationalizer",
+      "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-18T07:33:37Z"
+      "ts": "2026-09-18T07:42:33Z"
     },
     {
       "claim": "VECTOR-RELAY",
