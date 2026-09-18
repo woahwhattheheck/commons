@@ -3,15 +3,14 @@
   "drift": {
    "contained": 0,
    "current": 0,
-   "disjoint": 43,
-   "overlap": 16,
+   "disjoint": 40,
+   "overlap": 19,
    "unknown": 0
   },
   "hosted": {
    "CANCELLED_NOT_RUN": 1,
    "FAILED": 54,
-   "RUNNING": 1,
-   "SUCCESS": 3
+   "SUCCESS": 4
   },
   "lanes_open": 57,
   "lanes_with_several_open": 2,
@@ -27,13 +26,13 @@
   "full": "coordination.json"
  },
  "main": {
-  "committed_at": "2026-09-18T13:22:38Z",
-  "sha": "1dcf09718f5872e8446998772a3cdb73324feeb3"
+  "committed_at": "2026-09-18T17:08:50Z",
+  "sha": "c24949419680313955420a80684dca542e95cb01"
  },
- "observed_at": "2026-09-18T13:33:40Z",
+ "observed_at": "2026-09-18T17:10:43Z",
  "queue": {
-  "in_progress": 7,
-  "oldest_queued_age_s": 2620656,
+  "in_progress": 4,
+  "oldest_queued_age_s": 2633679,
   "queued": 70
  },
  "schema": "commons-coordination-head/v1",
