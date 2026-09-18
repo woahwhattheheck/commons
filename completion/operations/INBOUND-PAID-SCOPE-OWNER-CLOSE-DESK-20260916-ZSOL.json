@@ -1,0 +1,22 @@
+{
+  "issue": {
+    "closed_at": "2026-09-17T00:41:27Z",
+    "number": 15130,
+    "state_reason": "completed",
+    "url": "https://github.com/woahwhattheheck/commons/issues/15130"
+  },
+  "merge": {
+    "base": "main",
+    "merge_commit_sha": "ccab91f74dfec13e1dcb8228b422e044fbc19e08",
+    "merged_at": "2026-09-17T00:41:26Z",
+    "pr_number": 15138,
+    "url": "https://github.com/woahwhattheheck/commons/pull/15138"
+  },
+  "operation_id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+  "schema": "commons-completed-operation-v1",
+  "source": {
+    "blob_sha1": "8079657bc1a90d8cfad1bdcc1c9b6b93f7ed8ee4",
+    "path": "p/INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL.md"
+  },
+  "state": "COMPLETED"
+}
