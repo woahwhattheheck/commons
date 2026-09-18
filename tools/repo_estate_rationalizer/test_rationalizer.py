@@ -258,6 +258,8 @@ def test_production_clock_is_captured_before_exported_datetime_rebind(monkeypatc
             return poisoned if tz is None else poisoned.astimezone(tz)
 
     monkeypatch.setattr(rr, "datetime", PoisonClock)
+    monkeypatch.setattr(rr, "UTC", None)
+    monkeypatch.setattr(rr, "_plain", lambda *_args: {"forged": True})
     after = rr.compile_packet(snap, evidence())
     assert by_repo(after, "private-one")["state"] == "HOLD"
     assert rr.verify_packet(packet, snap, evidence()) is True
