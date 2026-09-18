@@ -80,9 +80,13 @@ class BrokerTests(unittest.TestCase):
         search = self.broker.read("search.issues", {"q": "repo:octo-org/demo bug"}, self.good)
         self.assertEqual("FETCHED", search["state"])
 
-    def test_429_without_headers_is_60_seconds(self):
+    def test_429_without_headers_is_principal_wide_60_seconds(self):
         result = self.broker.read("repo.get", PARAMS, lambda *_: Upstream(429))
         self.assertEqual(("COOLDOWN", 60), (result["state"], result["retry_after_seconds"]))
+        self.clock.advance(1)
+        search = self.broker.read("search.code", {"q": "repo:octo-org/demo token"}, self.good)
+        self.assertEqual(("COOLDOWN", 59), (search["state"], search["retry_after_seconds"]))
+        self.assertEqual(0, self.calls)
 
     def test_401_purges_namespace_and_token_rotation_recovers(self):
         self.broker.read("repo.get", PARAMS, self.good)
