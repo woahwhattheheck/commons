@@ -163,7 +163,7 @@ def _make_unicode_rejector(_category, _err):
 _reject_unsafe_unicode = _make_unicode_rejector(unicodedata.category, FirewallError)
 
 
-def _make_strict_json_loads(_loads, _len, _max, _pairs, _parse_int_fn, _reject, _err, _parse_errors):
+def _make_strict_json_loads(_loads, _decoder_cls, _len, _max, _pairs, _parse_int_fn, _reject, _err, _parse_errors):
     def strict_json_loads(raw: str) -> Any:
         if type(raw) is not str:
             raise _err("JSON input must be exact text")
@@ -176,6 +176,8 @@ def _make_strict_json_loads(_loads, _len, _max, _pairs, _parse_int_fn, _reject, 
         try:
             value = _loads(
                 raw,
+                cls=_decoder_cls,
+                object_hook=None,
                 object_pairs_hook=_pairs,
                 parse_int=_parse_int_fn,
                 parse_float=lambda _: (_ for _ in ()).throw(_err("floating point numbers are forbidden")),
@@ -192,6 +194,7 @@ def _make_strict_json_loads(_loads, _len, _max, _pairs, _parse_int_fn, _reject, 
 
 strict_json_loads = _make_strict_json_loads(
     json.loads,
+    json.JSONDecoder,
     len,
     MAX_INPUT_BYTES,
     _no_duplicate_pairs,
@@ -202,15 +205,21 @@ strict_json_loads = _make_strict_json_loads(
 )
 
 
-def _make_canonical_json(_reject, _dumps, _err, _errors):
+def _make_canonical_json(_reject, _dumps, _encoder_cls, _err, _errors):
     def canonical_json(value: Any) -> bytes:
         _reject(value)
         try:
             return _dumps(
                 value,
+                skipkeys=False,
                 ensure_ascii=False,
-                sort_keys=True,
+                check_circular=True,
+                allow_nan=False,
+                cls=_encoder_cls,
+                indent=None,
                 separators=(",", ":"),
+                default=None,
+                sort_keys=True,
             ).encode("utf-8")
         except _errors as exc:
             raise _err("value is not canonically serializable") from exc
@@ -220,6 +229,7 @@ def _make_canonical_json(_reject, _dumps, _err, _errors):
 canonical_json = _make_canonical_json(
     _reject_unsafe_unicode,
     json.dumps,
+    json.JSONEncoder,
     FirewallError,
     (TypeError, ValueError, UnicodeError, RecursionError),
 )

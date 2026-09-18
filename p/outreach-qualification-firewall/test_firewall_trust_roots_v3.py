@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import hmac
 import inspect
+import json
 import os
 import sys
 import unittest
@@ -258,6 +259,73 @@ class TrustRootClosureTests(unittest.TestCase):
             with self.subTest(fn=fn.__name__):
                 self.assertIsNone(fn.__defaults__)
                 self.assertIsNone(fn.__kwdefaults__)
+
+    def test_json_dumps_kwdefault_cannot_transplant_writer_tag(self):
+        data = packet()
+        authentic = dict(data["writer_lease"])
+        replay = writer_message(authentic).decode("utf-8")
+        authentic_tag = authentic["authority_tag_hex"]
+
+        class ReplayEncoder(json.JSONEncoder):
+            def encode(self, _value):
+                return replay
+
+        data["writer_lease"]["lease_id"] = "forged-lease"
+        data["writer_lease"]["authority_tag_hex"] = authentic_tag
+        kw = json.dumps.__kwdefaults__
+        original_cls = kw["cls"]
+        try:
+            kw["cls"] = ReplayEncoder
+            normalized = fw.normalize_packet(data)
+        finally:
+            kw["cls"] = original_cls
+
+        self.assertFalse(
+            normalized["writer_lease"]["authority_authenticated"]
+        )
+
+    def test_json_dumps_kwdefault_cannot_transplant_context_tag(self):
+        data = packet()
+        authentic = dict(data["identity_binding"])
+        unsigned = {
+            key: value
+            for key, value in authentic.items()
+            if key != "auth_tag_hex"
+        }
+        replay = context_message("IDENTITY", unsigned).decode("utf-8")
+        authentic_tag = authentic["auth_tag_hex"]
+
+        class ReplayEncoder(json.JSONEncoder):
+            def encode(self, _value):
+                return replay
+
+        data["identity_binding"]["binding_id"] = "binding-forged"
+        data["identity_binding"]["auth_tag_hex"] = authentic_tag
+        kw = json.dumps.__kwdefaults__
+        original_cls = kw["cls"]
+        try:
+            kw["cls"] = ReplayEncoder
+            normalized = fw.normalize_packet(data)
+        finally:
+            kw["cls"] = original_cls
+
+        self.assertFalse(
+            normalized["identity_binding"]["authority_authenticated"]
+        )
+
+    def test_json_loads_kwdefault_cannot_bypass_duplicate_key_guard(self):
+        class BypassDecoder(json.JSONDecoder):
+            def decode(self, _raw):
+                return {"accepted": True}
+
+        kw = json.loads.__kwdefaults__
+        original_cls = kw["cls"]
+        try:
+            kw["cls"] = BypassDecoder
+            with self.assertRaises(ValueError):
+                fw.strict_json_loads('{"x":1,"x":2}')
+        finally:
+            kw["cls"] = original_cls
 
     def test_context_and_writer_process_key_globals_are_not_live_trust_roots(self):
         data = packet()

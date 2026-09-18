@@ -2,12 +2,11 @@ from __future__ import annotations
 
 import hashlib
 import hmac
-import json
 import os
 import re
 from typing import Any
 
-from firewall_codec import FirewallError
+from firewall_codec import FirewallError, canonical_json
 
 CONTEXT_AUTHORITY_ENV = "OUTREACH_CONTEXT_AUTHORITY_KEY_HEX"
 _CONTEXT_DOMAIN = "outreach-qualification-firewall.context.v2"
@@ -31,16 +30,11 @@ def _make_context_authority(
     hmac_new,
     compare_digest,
     sha256,
-    dumps,
+    canonical,
     domain: str,
 ):
     def message(kind: str, payload: dict[str, Any]) -> bytes:
-        return dumps(
-            {"domain": domain, "kind": kind, "payload": payload},
-            ensure_ascii=False,
-            sort_keys=True,
-            separators=(",", ":"),
-        ).encode("utf-8")
+        return canonical({"domain": domain, "kind": kind, "payload": payload})
 
     def verify(kind: str, payload: dict[str, Any], tag_hex: str) -> bool:
         if key is None:
@@ -56,7 +50,7 @@ context_authority_message, verify_context_authority = _make_context_authority(
     hmac.new,
     hmac.compare_digest,
     hashlib.sha256,
-    json.dumps,
+    canonical_json,
     _CONTEXT_DOMAIN,
 )
 

@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import hashlib
 import hmac
-import json
 import os
 from typing import Any
 
@@ -37,18 +36,13 @@ def _make_writer_authority(
     hmac_new,
     compare_digest,
     sha256,
-    dumps,
+    canonical,
     signed_fields: tuple[str, ...],
 ):
     fields = tuple(signed_fields)
 
     def message(row: dict[str, Any]) -> bytes:
-        return dumps(
-            {field: row[field] for field in fields},
-            ensure_ascii=False,
-            sort_keys=True,
-            separators=(",", ":"),
-        ).encode("utf-8")
+        return canonical({field: row[field] for field in fields})
 
     def verify(row: dict[str, Any]) -> bool:
         if key is None:
@@ -64,7 +58,7 @@ writer_lease_message, verify_writer_lease_authority = _make_writer_authority(
     hmac.new,
     hmac.compare_digest,
     hashlib.sha256,
-    json.dumps,
+    canonical_json,
     _SIGNED_FIELDS,
 )
 
