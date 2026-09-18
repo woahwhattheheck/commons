@@ -1,0 +1,32 @@
+name: muse-runtime-adoption-gate
+
+on:
+  pull_request:
+    paths:
+      - 'coordination/muse_runtime_adoption_gate.py'
+      - 'coordination/MUSE_RUNTIME_ADOPTION_GATE.md'
+      - 'test_muse_runtime_adoption_gate.py'
+      - '.github/workflows/muse-runtime-adoption-gate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile
+        run: python -m py_compile coordination/muse_runtime_adoption_gate.py test_muse_runtime_adoption_gate.py
+      - name: Unit tests
+        run: python -m unittest -v test_muse_runtime_adoption_gate.py
+      - name: Optimized unit tests
+        run: python -O -m unittest -v test_muse_runtime_adoption_gate.py
