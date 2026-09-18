@@ -276,6 +276,16 @@ class ContextAuthorityV2Tests(unittest.TestCase):
         self.assertFalse(out["qualified_for_owner_review"])
         self.assertIn("HOLD_RELATIONSHIP_AUTHORITY", out["hold_reasons"])
 
+    def test_qualification_input_order_preserves_commercial_binding(self):
+        data = packet()
+        data["qualifications"] = list(reversed(data["qualifications"]))
+        normalized = fw.normalize_packet(data)
+        self.assertTrue(
+            normalized["contact"]["relationship_authority_authenticated"]
+        )
+        out = fw.compile_historical(data, as_of=HIST)
+        self.assertTrue(out["qualified_for_owner_review"])
+
     def test_economics_mutation_requires_trusted_relationship_resign(self):
         data = packet()
         data["economics"]["amount_minor"] += 1
