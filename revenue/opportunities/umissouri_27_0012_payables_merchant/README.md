@@ -66,7 +66,7 @@ Current evidence leads:
 
 These links establish research leads only. RFP participation, complete merchant/payables scope, PeopleSoft/current-generation integration, certifications, commercial terms, and willingness to team remain unconfirmed unless separately evidenced.
 
-Before **any** external partner contact: fresh Slack + Gmail collision fence, then Muse arbitration for the exact org × route × purpose. This repository cannot authorize the send.
+Before **any** external partner contact: run a fresh Slack + Gmail collision census, then acquire the canonical atomic outbound-custody lease for the exact org × route × purpose. Muse is advisory only; it cannot authorize or block a send. Absence of canonical custody remains a hard HOLD, and this repository cannot authorize the send.
 
 ## Deterministic finance evidence
 
@@ -104,7 +104,7 @@ The compiled pursuit and evidence bundle preserve all of these as false:
 - compliance certification;
 - revenue recognition.
 
-The bundle additionally emits `HOLD_MUSE_ARBITRATION_REQUIRED` for partner outreach and `HOLD_BUYER_PACKET_REQUIRED` while exact buyer packet bytes are absent.
+The bundle additionally emits `HOLD_OUTBOUND_CUSTODY_REQUIRED` for partner outreach and `HOLD_BUYER_PACKET_REQUIRED` while exact buyer packet bytes are absent.
 
 ## Verify
 
@@ -116,4 +116,4 @@ python -m unittest -v test_umissouri_27_0012.py
 python -O -m unittest -v test_umissouri_27_0012.py
 ```
 
-Hosted CI repeats compile + semantic suites on Python 3.11 and 3.13. A queued, absent, cancelled, or stale workflow run is **UNKNOWN**, never green by inference.
+No dedicated active workflow is added for this carrier: Commons' retained `source-parses` workflow already wakes on Python pull-request changes and parses this source, avoiding another fleet workflow slot. The focused compile + normal + real `python -O` commands above remain the semantic proof surface and must be executed against the exact candidate bytes before merge. Queued, absent, cancelled, or stale provider proof is **UNKNOWN**, never green by inference.
