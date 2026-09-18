@@ -326,7 +326,10 @@ def _repo_name(value: Any, path: str) -> str:
     text = _evidence_ref(value, path)
     if REPO_RE.fullmatch(text) is None:
         raise ContractError("INVALID_SOURCE_REPO", path)
-    return text.casefold()
+    owner, name = text.split("/", 1)
+    if owner in {".", ".."} or name in {".", ".."} or name.casefold().endswith(".git"):
+        raise ContractError("INVALID_SOURCE_REPO", path)
+    return f"{owner.casefold()}/{name.casefold()}"
 
 
 def _repo_path(value: Any, path: str) -> str:
