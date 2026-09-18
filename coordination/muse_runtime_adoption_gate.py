@@ -596,4 +596,32 @@ def _build_api():
         "provider_commit",
         "evidence_claims",
         "authority",
-  
+        "receipt_sha256",
+    }
+
+    def verify_artifact(packet: _Any, diagnostic: _Any) -> tuple[bool, str, dict[str, _Any] | None]:
+        try:
+            exact_keys(diagnostic, "diagnostic", diagnostic_keys)
+            if diagnostic["schema"] != output_schema or diagnostic["input_schema"] != input_schema:
+                return False, "schema_mismatch", None
+            receipt = sha(diagnostic["receipt_sha256"], "diagnostic.receipt_sha256")
+            unsigned = dict(diagnostic)
+            unsigned.pop("receipt_sha256")
+            if digest(unsigned) != receipt:
+                return False, "receipt_mismatch", None
+            if diagnostic["status"] not in status_values:
+                return False, "status_invalid", None
+            evaluated_text, evaluated_s = parse_utc(diagnostic["evaluated_at"], "diagnostic.evaluated_at")
+            if evaluated_text != diagnostic["evaluated_at"]:
+                return False, "evaluated_at_invalid", None
+            expected = compile_at(packet, evaluated_s)
+            if canonical(expected) != canonical(diagnostic):
+                return False, "semantic_recompile_mismatch", expected
+            return True, "artifact_authenticated", expected
+        except error_cls as exc:
+            return False, f"artifact_invalid:{exc}", None
+
+    def verify_current(packet: _Any, diagnostic: _Any) -> dict[str, _Any]:
+        valid, reason, _expected = verify_artifact(packet, diagnostic)
+        now_s = process_now_s()
+        curren
