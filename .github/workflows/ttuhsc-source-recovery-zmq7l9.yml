@@ -1,0 +1,38 @@
+name: TTUHSC first-party source recovery
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/ttuhsc-source-recovery-zmq7l9.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Retrieve exact first-party buyer PDFs
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p out
+          curl --fail --location --silent --show-error --retry 2 \
+            'https://www.txsmartbuy.gov/core/media/media.nl?id=33617565&c=852252&h=qzwrxsdZ2xCXgCIZHOlJSnTYaIuD_sC92q8CKP9mko-kVCh9&_xt=.pdf' \
+            -o 'out/RFP_739-SL3821039.pdf'
+          curl --fail --location --silent --show-error --retry 2 \
+            'https://www.txsmartbuy.gov/core/media/media.nl?id=33673094&c=852252&h=6CrGlGFdaaQH-lMPU0AIfsznLru5JP68I8QeyAs0EaNRDtry&_xt=.pdf' \
+            -o 'out/Addendum_Vendor_Questions_739-SL3821039.pdf'
+          for f in out/*.pdf; do
+            test "$(head -c 5 "$f")" = '%PDF-'
+            printf 'FILE=%s SIZE=%s SHA256=%s\n' \
+              "$(basename "$f")" "$(stat -c %s "$f")" "$(sha256sum "$f" | awk '{print $1}')"
+          done
+      - name: Upload exact recovered bytes
+        uses: actions/upload-artifact@v4
+        with:
+          name: ttuhsc-739-sl3821039-firstparty-pdfs
+          path: out/*.pdf
+          if-no-files-found: error
+          retention-days: 7
