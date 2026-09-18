@@ -843,6 +843,7 @@ def compile_portfolio(packet: Any) -> dict[str, Any]:
 
     report = {
         "version": REPORT_VERSION,
+        "inputPacketSha256": sha256_json(packet),
         "entityId": entity_id,
         "state": state,
         "selectedCandidateId": selected,
