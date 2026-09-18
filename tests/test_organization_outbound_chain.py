@@ -13,6 +13,7 @@ from types import SimpleNamespace
 from unittest.mock import patch
 
 import revenue.initial_outreach_slot.slot as initial_slot_impl
+import revenue.organization_outbound_chain.adapters as adapters_impl
 import revenue.organization_outbound_chain.provider_boundary as provider_boundary_impl
 import revenue.organization_outbound_chain.registry as registry_impl
 from revenue.organization_outbound_chain import chain
@@ -311,6 +312,43 @@ class ProviderBoundaryTest(unittest.TestCase):
         )
 
 
+class AdapterGenerationTest(unittest.TestCase):
+    def test_saved_adapters_ignore_post_import_dependency_rebinding(self):
+        saved = (
+            adapters_impl.gmail_initial_outreach,
+            adapters_impl.slack_dm_initial_outreach,
+            adapters_impl.discord_initial_outreach,
+            adapters_impl.webhook_mail_initial_outreach,
+        )
+        originals = {
+            "_run": adapters_impl._run,
+            "execute_guarded_initial_outreach": adapters_impl.execute_guarded_initial_outreach,
+            "GmailBoundary": adapters_impl.GmailBoundary,
+            "SlackDmBoundary": adapters_impl.SlackDmBoundary,
+            "DiscordBoundary": adapters_impl.DiscordBoundary,
+            "WebhookMailBoundary": adapters_impl.WebhookMailBoundary,
+        }
+
+        def poison(*args, **kwargs):
+            raise AssertionError("post-import adapter alias controlled saved production entrypoint")
+
+        try:
+            for name in originals:
+                setattr(adapters_impl, name, poison)
+
+            # Each saved adapter must still construct its first-load boundary and
+            # reach the captured chain callable. Missing opportunity_raw then fails
+            # in that captured chain signature, rather than entering poison.
+            for entrypoint in saved:
+                with self.subTest(entrypoint=entrypoint.__name__):
+                    with self.assertRaises(TypeError) as caught:
+                        entrypoint(transport=object())
+                    self.assertIn("opportunity_raw", str(caught.exception))
+        finally:
+            for name, value in originals.items():
+                setattr(adapters_impl, name, value)
+
+
 class ChainCompositionTest(unittest.TestCase):
     def _run(
         self,
@@ -512,6 +550,26 @@ class ChainCompositionTest(unittest.TestCase):
         self.assertEqual(result["decision"], "RECONCILE_REQUIRED")
         self.assertEqual(result["terminal_state"], "OUTCOME_UNKNOWN")
         self.assertFalse(result["replay_or_retry_authorized"])
+
+    def test_saved_chain_entrypoint_ignores_post_import_provider_rebinding(self):
+        saved = chain.execute_guarded_initial_outreach
+        original_name = chain.boundary_provider_name
+        original_invoke = chain.invoke_provider_boundary
+
+        def poison(*args, **kwargs):
+            raise AssertionError("post-import provider alias controlled saved chain entrypoint")
+
+        try:
+            chain.boundary_provider_name = poison
+            chain.invoke_provider_boundary = poison
+            self.assertIs(chain.execute_guarded_initial_outreach, saved)
+            result, calls = self._run()
+            self.assertEqual(result["decision"], "SENT")
+            self.assertEqual(len(calls), 1)
+        finally:
+            chain.boundary_provider_name = original_name
+            chain.invoke_provider_boundary = original_invoke
+
 
 
 class FullChainRaceTest(unittest.TestCase):
