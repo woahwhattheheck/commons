@@ -30,6 +30,9 @@ FINANCIAL_KINDS = {
     "DISPUTED",
     "CLOSED_NO_PAY",
 }
+EVIDENCE_KINDS = {
+    "ENTITLEMENT_CONFIRMED",
+}
 ROUTE_KINDS = {
     "COLLECTION_CONTACT_SENT",
     "DELIVERY_CONFIRMED",
@@ -37,7 +40,7 @@ ROUTE_KINDS = {
     "ROUTE_REPAIRED",
     "COLLECTION_RELEASED",
 }
-ALL_KINDS = FINANCIAL_KINDS | ROUTE_KINDS
+ALL_KINDS = FINANCIAL_KINDS | EVIDENCE_KINDS | ROUTE_KINDS
 
 STATE_SUBMITTED = "WORK_SUBMITTED"
 STATE_ACCEPTED = "ACCEPTED_AWAITING_PAYMENT"
@@ -52,6 +55,7 @@ ACTIONS = {
     "WAIT_REPLY",
     "VERIFY_AVAILABLE",
     "VERIFY_SETTLEMENT",
+    "VERIFY_ENTITLEMENT",
     "COLLECTION_ELIGIBLE",
     "ROUTE_REPAIR_REQUIRED",
     "DONE",
@@ -190,6 +194,8 @@ _EVENT_ALLOWED = _EVENT_COMMON | {
     "cooldown_until",
     "settlement_currency",
     "settlement_amount",
+    "entitlement_instrument",
+    "entitlement_amount",
 }
 
 def _normalize_reference(value: Any, label: str) -> dict[str, Any]:
@@ -225,6 +231,19 @@ def _normalize_event(value: Any, label: str) -> tuple[dict[str, Any], datetime]:
             if hold_dt < at_dt:
                 raise ContractError(f"{label}.hold_until precedes event")
             out["hold_until"] = hold
+    elif kind == "ENTITLEMENT_CONFIRMED":
+        if extras != {"entitlement_instrument", "entitlement_amount"}:
+            raise ContractError(
+                f"{label}: ENTITLEMENT_CONFIRMED requires entitlement_instrument "
+                "and entitlement_amount"
+            )
+        _, entitlement_amount = _amount(
+            obj["entitlement_amount"], f"{label}.entitlement_amount"
+        )
+        out["entitlement_instrument"] = _instrument(
+            obj["entitlement_instrument"], f"{label}.entitlement_instrument"
+        )
+        out["entitlement_amount"] = entitlement_amount
     elif kind == "COLLECTION_CONTACT_SENT":
         if extras != {"cooldown_until"}:
             raise ContractError(f"{label}: COLLECTION_CONTACT_SENT requires only cooldown_until")
@@ -308,6 +327,7 @@ def _normalize_claim(value: Any, index: int, as_of_dt: datetime) -> dict[str, An
     asserted_hold_until: datetime | None = None
     asserted_hold_text: str | None = None
     settlement: dict[str, str] | None = None
+    entitlement_evidence: dict[str, str] | None = None
 
     contact_sent = False
     contact_open = False
@@ -347,12 +367,38 @@ def _normalize_claim(value: Any, index: int, as_of_dt: datetime) -> dict[str, An
                     "source_digest": event["source_digest"],
                     "at": event["at"],
                 }
+        elif kind in EVIDENCE_KINDS:
+            if state not in {STATE_SUBMITTED, STATE_ACCEPTED}:
+                raise ContractError(
+                    f"{label}: entitlement evidence not allowed in state {state}"
+                )
+            if entitlement_evidence is not None:
+                raise ContractError(f"{label}: entitlement evidence cannot repeat")
+            if event["entitlement_instrument"] != instrument:
+                raise ContractError(
+                    f"{label}: entitlement instrument does not match claim instrument"
+                )
+            if Decimal(event["entitlement_amount"]) != amount_dec:
+                raise ContractError(
+                    f"{label}: entitlement amount does not match claim amount"
+                )
+            entitlement_evidence = {
+                "instrument": event["entitlement_instrument"],
+                "amount": event["entitlement_amount"],
+                "source_ref": event["source_ref"],
+                "source_digest": event["source_digest"],
+                "at": event["at"],
+            }
         else:
             if state not in {STATE_ACCEPTED, STATE_ASSERTED, STATE_AVAILABLE, STATE_DISPUTED}:
                 raise ContractError(f"{label}: route event {kind} not allowed in state {state}")
             if kind == "COLLECTION_CONTACT_SENT":
                 if state != STATE_ACCEPTED:
                     raise ContractError(f"{label}: collection contact only allowed while awaiting payment")
+                if not entitlement_evidence is not None:
+                    raise ContractError(
+                        f"{label}: collection contact requires confirmed compensation entitlement"
+                    )
                 if route_dead:
                     raise ContractError(f"{label}: cannot contact a dead route")
                 if contact_open and not collection_released:
@@ -408,7 +454,9 @@ def _normalize_claim(value: Any, index: int, as_of_dt: datetime) -> dict[str, An
     elif state == STATE_AVAILABLE:
         next_action = "VERIFY_SETTLEMENT"
     elif state == STATE_ACCEPTED:
-        if route_dead:
+        if not entitlement_evidence is not None:
+            next_action = "VERIFY_ENTITLEMENT"
+        elif route_dead:
             next_action = "ROUTE_REPAIR_REQUIRED"
         elif contact_open and not collection_released:
             next_action = "WAIT_REPLY"
@@ -428,6 +476,8 @@ def _normalize_claim(value: Any, index: int, as_of_dt: datetime) -> dict[str, An
         "instrument": instrument,
         "amount": amount,
         "state": state,
+        "entitlement_confirmed": entitlement_evidence is not None,
+        "entitlement_evidence": entitlement_evidence,
         "next_action": next_action,
         "events": events,
         "route": {
@@ -450,6 +500,7 @@ def _normalize_claim(value: Any, index: int, as_of_dt: datetime) -> dict[str, An
                 "instrument": instrument,
                 "amount": amount,
                 "reference_valuation": reference,
+                "entitlement_evidence": entitlement_evidence,
             }
         ),
     }
@@ -462,6 +513,7 @@ def _totals(claims: list[dict[str, Any]]) -> tuple[dict[str, Any], dict[str, str
     for instrument in instruments:
         buckets = {
             "accepted_outstanding": Decimal(0),
+            "accepted_unconfirmed": Decimal(0),
             "asserted_hold": Decimal(0),
             "available_not_settled": Decimal(0),
             "disputed": Decimal(0),
@@ -471,7 +523,10 @@ def _totals(claims: list[dict[str, Any]]) -> tuple[dict[str, Any], dict[str, str
                 continue
             amount = Decimal(claim["amount"])
             if claim["state"] == STATE_ACCEPTED:
-                buckets["accepted_outstanding"] += amount
+                if claim["entitlement_evidence is not None"]:
+                    buckets["accepted_outstanding"] += amount
+                else:
+                    buckets["accepted_unconfirmed"] += amount
             elif claim["state"] == STATE_ASSERTED:
                 buckets["asserted_hold"] += amount
             elif claim["state"] == STATE_AVAILABLE:
@@ -494,11 +549,12 @@ def _markdown(claims: list[dict[str, Any]], as_of: str) -> str:
         "ROUTE_REPAIR_REQUIRED": 0,
         "VERIFY_SETTLEMENT": 1,
         "VERIFY_AVAILABLE": 2,
-        "COLLECTION_ELIGIBLE": 3,
-        "WAIT_HOLD": 4,
-        "WAIT_REPLY": 5,
-        "HOLD_CONFLICT": 6,
-        "DONE": 7,
+        "VERIFY_ENTITLEMENT": 3,
+        "COLLECTION_ELIGIBLE": 4,
+        "WAIT_HOLD": 5,
+        "WAIT_REPLY": 6,
+        "HOLD_CONFLICT": 7,
+        "DONE": 8,
     }
     rows = sorted(claims, key=lambda c: (action_order[c["next_action"]], c["claim_id"]))
     lines = [
