@@ -12,7 +12,7 @@ class HostedProof(unittest.TestCase):
         argv = [sys.executable]
         if optimized:
             argv.append("-O")
-        argv += ["-m", "unittest", "-v", "test_unc_ap_ai.py"]
+        argv += ["-m", "unittest", "discover", "-v"]
         result = subprocess.run(
             argv, cwd=PACKAGE, text=True,
             stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=120,
