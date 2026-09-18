@@ -1,8 +1,16 @@
 {
   "buyer_authoritative_sources": [],
   "deadlines": {
-    "questions_due": "2026-09-25T17:00:00-05:00",
-    "response_due": "2026-10-05T16:00:00-05:00"
+    "questions_due": {
+      "at": "2026-09-25T17:00:00-05:00",
+      "authority": "SECONDARY_DISCOVERY",
+      "source_sha256": "4776fca7396725e63e6b8f24f584506c29bc07e59b6df4b454245aae2d0fdcf3"
+    },
+    "response_due": {
+      "at": "2026-10-05T16:00:00-05:00",
+      "authority": "SECONDARY_DISCOVERY",
+      "source_sha256": "4776fca7396725e63e6b8f24f584506c29bc07e59b6df4b454245aae2d0fdcf3"
+    }
   },
   "opportunity_id": "MCC-1017-27",
   "partner_candidates": [
