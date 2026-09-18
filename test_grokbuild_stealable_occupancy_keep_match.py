@@ -43,7 +43,7 @@ class TestGrokbuildStealableOccupancyKeepMatch(unittest.TestCase):
     def test_occupancy_keep_no_longer_freezes_stale_stealable_test(self) -> None:
         occ = importlib.import_module("test_stealable_lanes_occupancy")
         self.assertNotEqual(occ.KEEP.get("test_stealable_lanes.py"), "721adc44")
-        self.assertTrue(git_blob("test_stealable_lanes.py").startswith("1b9ef2a9"))
+        self.assertTrue(git_blob("test_stealable_lanes.py").startswith("5bd684a3"))
         occupancy = subprocess.run(
             [sys.executable, "-m", "unittest", "test_stealable_lanes_occupancy.py"],
             cwd=ROOT,

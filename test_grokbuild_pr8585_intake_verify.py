@@ -26,7 +26,7 @@ class TestGrokbuildPr8585IntakeVerify(unittest.TestCase):
             )
         )
         self.assertTrue(
-            git_blob("test_grokbuild_slack_service_tags_33717615004_billing_lock.py").startswith("5ce8f8b0")
+            git_blob("test_grokbuild_slack_service_tags_33717615004_billing_lock.py").startswith("f417e943")
         )
 
     def test_verify_receipt_is_unique(self) -> None:
