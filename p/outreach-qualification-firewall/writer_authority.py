@@ -34,8 +34,12 @@ _COMPARE_DIGEST = hmac.compare_digest
 _SHA256 = hashlib.sha256
 
 
-def writer_lease_message(row: dict[str, Any]) -> bytes:
-    return canonical_json({field: row[field] for field in _SIGNED_FIELDS})
+def writer_lease_message(
+    row: dict[str, Any],
+    _canonical=canonical_json,
+    _fields=_SIGNED_FIELDS,
+) -> bytes:
+    return _canonical({field: row[field] for field in _fields})
 
 
 def verify_writer_lease_authority(
@@ -45,8 +49,9 @@ def verify_writer_lease_authority(
     _hmac_new=_HMAC_NEW,
     _compare_digest=_COMPARE_DIGEST,
     _sha256=_SHA256,
+    _message=writer_lease_message,
 ) -> bool:
     if _key is None:
         return False
-    expected = _hmac_new(_key, writer_lease_message(row), _sha256).hexdigest()
+    expected = _hmac_new(_key, _message(row), _sha256).hexdigest()
     return _compare_digest(expected, row["authority_tag_hex"])
