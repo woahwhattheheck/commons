@@ -46,7 +46,7 @@ class TestGoatSidewalkDoorLiveCashV1KeepLargerFixed2026091601(unittest.TestCase)
 
     def test_pack_door_html_matches_successor_byte_for_byte(self) -> None:
         data = DOOR.read_bytes()
-        self.assertEqual(data.count(match.DOOR_LIVE_CASH_V1), 1)
+        self.assertEqual(data.count(match.DOOR_LIVE_CASH_V1), 0)
         text = data.decode("utf-8")
         self.assertIn('id="live-cash"', text)
 
@@ -59,8 +59,8 @@ class TestGoatSidewalkDoorLiveCashV1KeepLargerFixed2026091601(unittest.TestCase)
 
     def test_normalization_still_recovers_baseline_blob(self) -> None:
         result = match.classify_match()
-        self.assertEqual(result["door_baseline_blob"], "638e60b4")
-        self.assertIn("live-cash-v1", result["door_successors"])
+        self.assertEqual(result["door_baseline_blob"], "8f173c7f")
+        self.assertNotIn("live-cash-v1", result["door_successors"])
         self.assertEqual(result["checkout"], "NOT_MINTED")
         self.assertGreater(result["door_size"], 8148)
         # pages-deploy.yml later successors already drifted match_ok on main;

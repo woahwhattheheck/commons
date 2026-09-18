@@ -2,9 +2,8 @@
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 
-def _check(text: str, autopsy_link: str):
+def _check(text: str):
     assert "## Live cash" in text or 'id="live-cash"' in text
-    assert autopsy_link in text
     for slug in (
         "dealer-service-lead-rescue.html",
         "referral-intake-completeness.html",

@@ -127,8 +127,6 @@ Fix is not "run it on this VM." Fix is: computation stays in the `.mno`. Host on
 ## Live cash
 
 Verified product pages only — no invented Stripe links.
-
-- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
 - [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../referral-intake-completeness.html)
 - [$199 repair diagnostic](../repair-booking-preflight.html)
