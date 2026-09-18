@@ -292,6 +292,13 @@ def _load_host_key(
     return _bytes_fromhex(raw)
 
 
+# Authority generation is established exactly once when this module is
+# initialized. Public validation/compile/verify paths bind to this immutable
+# bytes object in function defaults below. Later process-environment mutation
+# cannot substitute a new evidence-signing authority.
+_INITIAL_EVIDENCE_AUTHORITY_KEY = _load_host_key()
+
+
 def _evidence_tag(kind: str, row_without_tag: dict[str, Any], key: bytes, _canonical=_canonical_bytes, _hmac_new=hmac.new, _sha256=hashlib.sha256) -> str:
     payload = {"domain": "commons-payoff-path-evidence/v2", "kind": kind, "row": row_without_tag}
     return _hmac_new(key, _canonical(payload), _sha256).hexdigest()
@@ -461,7 +468,7 @@ def _validate_packet(
     packet: Any,
     now: datetime,
     _structure=_validate_packet_structure,
-    _load_key=_load_host_key,
+    _authority_key=_INITIAL_EVIDENCE_AUTHORITY_KEY,
     _term=_validate_term,
     _outcome=_validate_outcome,
     _scope=_validate_scope_attestation,
@@ -471,7 +478,7 @@ def _validate_packet(
     _err=GateError,
 ) -> tuple[dict[str, Any], str | None, bool, list[str]]:
     packet = _structure(packet)
-    key = _load_key()
+    key = _authority_key
     if (packet["term_evidence"] or packet["outcome_evidence"]) and key is None:
         raise _err(f"host evidence authority unavailable: {_env_name}")
 
@@ -787,3 +794,8 @@ compile_current = _make_compile_current(_compile_at, _freeze_json, datetime.now,
 verify_current = _make_verify_current(_verify_current_at, _freeze_json, datetime.now, timezone.utc)
 del _make_compile_current
 del _make_verify_current
+
+# The public validator already captured the immutable authority bytes above.
+# Remove the module-global binding so ordinary name replacement cannot become
+# a second semantic authority surface.
+del _INITIAL_EVIDENCE_AUTHORITY_KEY
