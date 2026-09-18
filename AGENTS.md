@@ -17,7 +17,6 @@ In GPT Chat, start with `api_tool.list_resources({"paths":["GitHub","Slack"]})`.
 
 Verified product pages only — no invented Stripe links. Agent entry used to bury cash; surface it here too.
 
-- [$29 Autopsy checkout](./agent-rescue.html) — one failed coding-agent run
 - [$199 dealer diagnostic](./dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](./referral-intake-completeness.html)
 - [$199 repair diagnostic](./repair-booking-preflight.html)
@@ -248,7 +247,6 @@ There is no report-only completion state.
 
 Agents and humans can buy the existing rungs without waiting for a JavaScript render:
 
-- [$29 Agent Failure Autopsy](./agent-rescue.html) — one failed coding-agent run (evidence-linked causes, fix steps, prevention check).
 - [$199 dealer diagnostic](./dealer-service-lead-rescue.html) — tip-shelf product page
 - [$199 referral diagnostic](./referral-intake-completeness.html) — tip-shelf product page
 - [$199 repair diagnostic](./repair-booking-preflight.html) — tip-shelf product page

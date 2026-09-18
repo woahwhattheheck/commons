@@ -27,13 +27,12 @@ CHANGE_NEWEST = 5
 
 # Preserve the approved BASS section from e3bd058d through every digest bake.
 # Larger-fixed KEEP (grok-change-md-keep-larger-fixed-20260916-01) is additive —
-# do not remint the Autopsy/$199 bullets.
+# do not remint the $199 bullets.
 CHANGE_LIVE_CASH = """
 ## Live cash
 
 Verified product pages only — no invented Stripe links.
 
-- [$29 Autopsy checkout](./agent-rescue.html)
 - [$199 dealer diagnostic](./dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](./referral-intake-completeness.html)
 - [$199 repair diagnostic](./repair-booking-preflight.html)
@@ -161,7 +160,7 @@ def git_head():
 
 
 def _preserve_live_cash(prev, doc):
-    """Keep tip Autopsy/$199 (+ Larger fixed) product doors across projection rebakes.
+    """Keep tip $199 (+ Larger fixed) product doors across projection rebakes.
 
     Scheduled llms_txt bakes rewrite head.json / pulse.json observation fields.
     Without this KEEP, machine readers lose checkout product paths after a land.
@@ -674,7 +673,6 @@ def main(publish_mesh=True):
         "",
         "## Commercial",
         "",
-        "- [$29 Agent Failure Autopsy](https://woahwhattheheck.github.io/commons/agent-rescue.html): one failed coding-agent run — evidence-linked causes, fix steps, and a prevention check within one business day after usable, in-cap evidence arrives.",
         "- [$199 dealer diagnostic](%s/dealer-service-lead-rescue.html)" % BASE,
         "- [$199 referral diagnostic](%s/referral-intake-completeness.html)" % BASE,
         "- [$199 repair diagnostic](%s/repair-booking-preflight.html)" % BASE,
