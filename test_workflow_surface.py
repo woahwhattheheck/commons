@@ -218,6 +218,36 @@ class WorkflowSurfaceTests(unittest.TestCase):
 
 
 
+    def test_pilot_contract_is_consolidated_into_retained_source_parses(self):
+        """Regress 68>67: pilot proof stays live without a standalone workflow slot."""
+        self.assertFalse(Path('.github/workflows/pilot-delivery-renewal-expansion-gate.yml').exists())
+        data = json.loads(Path('ci/workflow-surface.json').read_text(encoding='utf-8'))
+        result = surface.check(Path('.'))
+        self.assertEqual(data['max_active_workflows'], 67)
+        self.assertEqual(result['active'], 67)
+        self.assertEqual(result['status'], 'PASS', result['errors'])
+        parsed = surface.workflow(Path('.github/workflows/source-parses.yml').read_bytes())
+        self.assertIn('revenue/pilot_delivery_renewal_expansion_gate/**', parsed['on']['push']['paths'])
+        self.assertIn('test_pilot_delivery_renewal_expansion_gate.py', parsed['on']['push']['paths'])
+        job = parsed['jobs']['provider-cost-truth']
+        self.assertEqual(job['strategy']['matrix']['python-version'], ['3.11', '3.13'])
+        commands = '\n'.join(str(step.get('run', '')) for step in job['steps'] if isinstance(step, dict))
+        self.assertIn('revenue/pilot_delivery_renewal_expansion_gate/common.py', commands)
+        self.assertIn('python -m unittest -v test_pilot_delivery_renewal_expansion_gate', commands)
+        self.assertIn('python -O -m unittest -v test_pilot_delivery_renewal_expansion_gate', commands)
+
+    def test_inbox_schedule_floor_never_cancels_push_or_manual(self):
+        parsed = surface.workflow(Path('.github/workflows/inbox-visibility.yml').read_bytes())
+        self.assertEqual(parsed['on']['schedule'], [{'cron': '3 * * * *'}])
+        self.assertIn('push', parsed['on'])
+        self.assertIn('workflow_dispatch', parsed['on'])
+        group = parsed['concurrency']['group']
+        self.assertIn("github.event_name == 'schedule'", group)
+        self.assertIn('github.run_id', group)
+        self.assertEqual(parsed['concurrency']['cancel-in-progress'], "${{ github.event_name == 'schedule' }}")
+        self.assertNotEqual(group, 'inbox-visibility')
+
+
 
 
 
