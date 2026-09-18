@@ -64,6 +64,26 @@ def _build_codec():
     max_nodes = MAX_JSON_NODES
     max_safe = MAX_SAFE_INTEGER
     max_digits = MAX_INT_DIGITS
+    builtin_len = len
+    builtin_type = type
+    builtin_abs = abs
+    builtin_int = int
+    builtin_id = id
+    builtin_set = set
+    bytes_type = bytes
+    str_type = str
+    bool_type = bool
+    int_type = int
+    float_type = float
+    list_type = list
+    dict_type = dict
+    unicode_encode_error = UnicodeEncodeError
+    unicode_decode_error = UnicodeDecodeError
+    runtime_error = RuntimeError
+    value_error = ValueError
+    overflow_error = OverflowError
+    recursion_error = RecursionError
+    unicode_error = UnicodeError
 
     def pairs(pairs_in):
         out = {}
