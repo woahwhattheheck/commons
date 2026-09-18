@@ -64,6 +64,8 @@ def candidate(
             "commercialPotential": [claim(f"{cid}.commercial", state)],
             "proposalQuality": [claim(f"{cid}.quality", state)],
         },
+        "demonstratedMetrics": [claim(f"{cid}.metric", state)],
+        "transitionPath": [claim(f"{cid}.transition", state)],
         "traction": (
             [{"evidenceId": f"{cid}.pilot", "kind": "CUSTOMER_PILOT", "evidenceRef": None}]
             if traction
@@ -138,7 +140,11 @@ def bind_evidence(packet: dict) -> dict:
                     ),
                 }
             )
-        for claims in cand["criteria"].values():
+        claim_groups = list(cand["criteria"].values()) + [
+            cand["demonstratedMetrics"],
+            cand["transitionPath"],
+        ]
+        for claims in claim_groups:
             for row in claims:
                 if row["state"] != "EVIDENCED":
                     row["evidenceRef"] = None
@@ -302,6 +308,21 @@ class DownselectTests(unittest.TestCase):
         report = self.compile(packet)
         alpha = next(row for row in report["projections"] if row["candidateId"] == "alpha")
         self.assertIn("federal_support_overlap:POTENTIALLY_SAME", alpha["hardBlockers"])
+
+    def test_proposed_transition_path_blocks_selection(self) -> None:
+        packet = ready_packet()
+        packet["candidates"][0]["transitionPath"][0]["state"] = "PROPOSED"
+        report = self.compile(packet)
+        alpha = next(row for row in report["projections"] if row["candidateId"] == "alpha")
+        self.assertIn("claim:alpha.transition:PROPOSED", alpha["hardBlockers"])
+        self.assertEqual(report["state"], "HOLD")
+
+    def test_owner_required_metric_blocks_selection(self) -> None:
+        packet = ready_packet()
+        packet["candidates"][0]["demonstratedMetrics"][0]["state"] = "OWNER_REQUIRED"
+        report = self.compile(packet)
+        alpha = next(row for row in report["projections"] if row["candidateId"] == "alpha")
+        self.assertIn("claim:alpha.metric:OWNER_REQUIRED", alpha["hardBlockers"])
 
     def test_no_external_traction_is_hard_blocker(self) -> None:
         packet = ready_packet()
