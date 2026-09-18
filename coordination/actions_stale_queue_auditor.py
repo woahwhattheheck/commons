@@ -152,7 +152,7 @@ def _json_string_serialized_size(
     value: str,
     *,
     remaining: int,
-    _max_json_bytes: int = __max_json_bytes_LITERAL,
+    _max_json_bytes: int = _MAX_JSON_BYTES_LITERAL,
 ) -> int:
     """Exact UTF-8 byte size for this encoder, before serializer entry."""
     if type(value) is not str:
@@ -187,10 +187,10 @@ def _json_string_serialized_size(
 def _freeze_plain_json(
     value: Any,
     *,
-    _max_safe_integer: int = __max_safe_integer_LITERAL,
-    _max_json_bytes: int = __max_json_bytes_LITERAL,
-    _max_json_depth: int = __max_json_depth_LITERAL,
-    _max_json_nodes: int = __max_json_nodes_LITERAL,
+    _max_safe_integer: int = _MAX_SAFE_INTEGER_LITERAL,
+    _max_json_bytes: int = _MAX_JSON_BYTES_LITERAL,
+    _max_json_depth: int = _MAX_JSON_DEPTH_LITERAL,
+    _max_json_nodes: int = _MAX_JSON_NODES_LITERAL,
 ) -> Any:
     """Detach exact JSON and charge every node/canonical byte before dumps.
 
@@ -269,7 +269,7 @@ def _freeze_plain_json(
 def _parse_int_token(
     token: str,
     *,
-    _max_safe_integer: int = __max_safe_integer_LITERAL,
+    _max_safe_integer: int = _MAX_SAFE_INTEGER_LITERAL,
 ) -> int:
     digits = token[1:] if token.startswith("-") else token
     if not digits or len(digits) > len(str(_max_safe_integer)):
@@ -295,7 +295,7 @@ def _pairs_no_dupes(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
 def loads_strict(
     raw: str,
     *,
-    _max_json_bytes: int = __max_json_bytes_LITERAL,
+    _max_json_bytes: int = _MAX_JSON_BYTES_LITERAL,
     _loads: Any = _JSON_LOADS_LITERAL,
     _json_decode_error: type[Exception] = _JSON_DECODE_ERROR_LITERAL,
 ) -> Any:
@@ -372,7 +372,7 @@ def _normalize_run(
     value: Any,
     *,
     _allowed_sources: frozenset[str] = _ALLOWED_PROVENANCE_SOURCES_LITERAL,
-    _max_pull_requests_per_run: int = __max_pull_requests_per_run_LITERAL,
+    _max_pull_requests_per_run: int = _MAX_PULL_REQUESTS_PER_RUN_LITERAL,
 ) -> dict[str, Any]:
     row = _exact_keys(value, RUN_KEYS, "run")
     run_id = _exact_int(row["run_id"], "run_id", minimum=1)
@@ -434,7 +434,7 @@ def _normalize_run(
 def normalize_packet(
     packet: Any,
     *,
-    _max_runs: int = __max_runs_LITERAL,
+    _max_runs: int = _MAX_RUNS_LITERAL,
 ) -> dict[str, Any]:
     frozen = _freeze_plain_json(packet)
     row = _exact_keys(frozen, INPUT_KEYS, "audit packet")
