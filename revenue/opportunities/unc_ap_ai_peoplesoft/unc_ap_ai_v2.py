@@ -378,7 +378,13 @@ def expected_integration_evidence(case: Mapping[str, Any]) -> dict[str, Any]:
     needed = _CASE_KEYS - {"integration"}
     if not needed.issubset(case):
         raise ContractError("case is missing fields required for request binding")
-    effect_key = f"invoice:{_require_text(case['invoice_id'], 'invoice_id')}"
+    # The business identity is supplier + invoice, not invoice number alone.
+    # Canonical structured encoding avoids delimiter aliases. Amount changes do
+    # not create a new effect identity for the same business invoice.
+    effect_key = "invoice:" + receipt({
+        "supplier_id": _require_text(case["supplier_id"], "supplier_id"),
+        "invoice_id": _require_text(case["invoice_id"], "invoice_id"),
+    })
     request_sha = receipt(_request_semantics(case))
     ack_sha = receipt(
         {
@@ -489,13 +495,16 @@ def evaluate_invoice_case(
         or request_sha != expected["request_sha256"]
         or ack_sha != expected["ack_sha256"]
         or integration["effect_count"] != 1
-        or (integration["retry_count"] == 0 and retry_effect_key is not None)\n        or (integration["retry_count"] > 0 and retry_effect_key != expected["effect_key"])
+        or (integration["retry_count"] == 0 and retry_effect_key is not None)
+        or (integration["retry_count"] > 0 and retry_effect_key != expected["effect_key"])
     ):
         disposition = "HOLD_INTEGRATION"
     elif not _ordered_contains(events, _REQUIRED_AUDIT):
         disposition = "HOLD_AUDIT"
 
     result = {
+        "case_input_sha256": receipt(case),
+        "supplier_id": supplier_id,
         "invoice_id": invoice_id,
         "match_mode": mode,
         "extraction_accuracy_basis_points": accuracy_bp,
@@ -525,6 +534,8 @@ def compile_partner(candidate: Any) -> dict[str, Any]:
     route = _require_text(candidate["route"], "partner.route")
     _parse_time(candidate["researched_at"], "partner.researched_at")
     result = {
+        "partner_input_sha256": receipt(candidate),
+        "researched_at": candidate["researched_at"],
         "name": name,
         "qualification_state": "RESEARCH_CANDIDATE",
         "ap_automation_evidence": ap,
@@ -561,13 +572,32 @@ def _compile_bundle_at(
         for case in cases
     ]
     partner_results = [compile_partner(candidate) for candidate in partners]
+    # A self-reported duplicate flag is not a batch-level uniqueness proof.
+    # Preserve all cases, and report every repeated business identity rather
+    # than silently deduplicating or netting conflicting amount generations.
+    identities: dict[tuple[str, str], int] = {}
+    for case in cases:
+        identity = (case["supplier_id"], case["invoice_id"])
+        identities[identity] = identities.get(identity, 0) + 1
+    conflicts = [
+        {"supplier_id": supplier, "invoice_id": invoice, "case_count": count}
+        for (supplier, invoice), count in sorted(identities.items())
+        if count > 1
+    ]
     if source_result["state"] != "SOURCE_BOUND":
         state = source_result["state"]
+    elif conflicts:
+        state = "HOLD_DUPLICATE"
     elif any(case["disposition"] != "PASS" for case in case_results):
         state = "HOLD_UAT"
     else:
         state = "INTERNAL_WORKSHARE_READY"
     bundle = {
+        "batch_input_sha256": receipt({
+            "cases": cases, "partners": partners,
+            "extraction_threshold_basis_points": extraction_threshold_basis_points,
+        }),
+        "batch_conflicts": conflicts,
         "pursuit": "UNC_AP_AI_PEOPLESOFT",
         "commercial_hypothesis_usd": COMMERCIAL_HYPOTHESIS_USD,
         "commercial_state": COMMERCIAL_STATE,
