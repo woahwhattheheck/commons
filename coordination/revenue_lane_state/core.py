@@ -91,6 +91,57 @@ CURRENTNESS_BASIS_KINDS = {
 _ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:/@+-]{0,199}$")
 
 
+def _make_policy_generation_sha256() -> str:
+    """Bind the first-load semantic policy used by compile and verify."""
+    descriptor = {
+        "policy_schema": "commons.revenue-lane-policy.v1",
+        "schema_version": SCHEMA_VERSION,
+        "kinds": sorted(KINDS),
+        "source_classes": sorted(SOURCE_CLASSES),
+        "source_requirements": {
+            kind: sorted(classes)
+            for kind, classes in sorted(SOURCE_REQUIREMENTS.items())
+        },
+        "root_keys": sorted(ROOT_KEYS),
+        "event_keys": sorted(EVENT_KEYS),
+        "actionable_current_states": sorted(ACTIONABLE_CURRENT_STATES),
+        "currentness_basis_kinds": {
+            state: sorted(kinds)
+            for state, kinds in sorted(CURRENTNESS_BASIS_KINDS.items())
+        },
+        "limits": {
+            "safe_int_max": SAFE_INT_MAX,
+            "max_input_bytes": MAX_INPUT_BYTES,
+            "max_json_depth": MAX_JSON_DEPTH,
+            "max_json_nodes": MAX_JSON_NODES,
+            "max_string_utf8_bytes": MAX_STRING_UTF8_BYTES,
+            "max_events": MAX_EVENTS,
+            "max_canonical_bytes": MAX_CANONICAL_BYTES,
+            "max_currentness_seconds": MAX_CURRENTNESS_SECONDS,
+        },
+        "id_pattern": _ID_RE.pattern,
+        "authority": {
+            "send": False,
+            "muse": False,
+            "provider_mutation": False,
+            "payment": False,
+            "revenue": False,
+        },
+    }
+    payload = json.dumps(
+        descriptor,
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+        allow_nan=False,
+    ).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
+
+
+_POLICY_GENERATION_SHA256 = _make_policy_generation_sha256()
+del _make_policy_generation_sha256
+
+
 class ContractError(ValueError):
     pass
 
@@ -272,204 +323,340 @@ class ParsedEvent:
     supersedes: str | None
 
 
-def validate_packet(packet: Any, evaluation_time: str) -> tuple[dict[str, Any], list[ParsedEvent], datetime]:
-    _validate_json_value(packet)
-    if not isinstance(packet, dict):
-        raise ContractError("root must be object")
-    _require_exact_keys(packet, ROOT_KEYS)
-    if type(packet["schema_version"]) is not int or packet["schema_version"] != SCHEMA_VERSION:
-        raise ContractError("unsupported schema_version")
-    identity = {
-        "lane_id": _id(packet["lane_id"], "lane_id"),
-        "opportunity_id": _id(packet["opportunity_id"], "opportunity_id"),
-        "counterparty_id": _id(packet["counterparty_id"], "counterparty_id"),
-        "purpose_id": _id(packet["purpose_id"], "purpose_id"),
+def _bind_validate_packet():
+    """Capture trust-bearing policy so later module rebinding cannot widen v1."""
+    schema_version = SCHEMA_VERSION
+    safe_int_max = SAFE_INT_MAX
+    max_currentness_seconds = MAX_CURRENTNESS_SECONDS
+    max_events = MAX_EVENTS
+    max_json_depth = MAX_JSON_DEPTH
+    max_json_nodes = MAX_JSON_NODES
+    max_string_utf8_bytes = MAX_STRING_UTF8_BYTES
+    root_keys = frozenset(ROOT_KEYS)
+    event_keys = frozenset(EVENT_KEYS)
+    kinds = frozenset(KINDS)
+    source_classes = frozenset(SOURCE_CLASSES)
+    source_requirements = {
+        kind: frozenset(classes)
+        for kind, classes in SOURCE_REQUIREMENTS.items()
     }
-    currentness = _safe_positive_int(packet["currentness_seconds"], "currentness_seconds")
-    if currentness > MAX_CURRENTNESS_SECONDS:
-        raise ContractError(
-            f"currentness_seconds exceeds compiler maximum {MAX_CURRENTNESS_SECONDS}"
-        )
-    eval_dt = _timestamp(evaluation_time, "evaluation_time")
-    events_raw = packet["events"]
-    if not isinstance(events_raw, list) or not events_raw:
-        raise ContractError("events must be non-empty list")
-    if len(events_raw) > MAX_EVENTS:
-        raise ContractError("event count limit exceeded")
-    parsed: list[ParsedEvent] = []
-    seen: set[str] = set()
-    for raw in events_raw:
-        if not isinstance(raw, dict):
-            raise ContractError("event must be object")
-        _require_exact_keys(raw, EVENT_KEYS, optional={"route_id", "supersedes"})
-        for field, expected in identity.items():
-            if _id(raw[field], field) != expected:
-                raise ContractError("cross-lane/counterparty/opportunity/purpose transplant")
-        event_id = _id(raw["event_id"], "event_id")
-        if event_id in seen:
-            raise ContractError(f"duplicate event_id: {event_id}")
-        seen.add(event_id)
-        generation = _safe_positive_int(raw["generation"], "generation")
-        kind = raw["kind"]
-        if kind not in KINDS:
-            raise ContractError(f"invalid event kind: {kind}")
-        source_class = raw["source_class"]
-        if source_class not in SOURCE_CLASSES:
-            raise ContractError(f"invalid source_class: {source_class}")
-        if source_class not in SOURCE_REQUIREMENTS[kind]:
-            raise ContractError(f"{kind} cannot be proven by source_class={source_class}")
-        _id(raw["source_ref"], "source_ref")
-        occurred_at = _timestamp(raw["occurred_at"], "occurred_at")
-        if occurred_at > eval_dt:
-            raise ContractError("future event relative to trusted evaluation time")
-        route_id = None
-        if "route_id" in raw:
-            route_id = _id(raw["route_id"], "route_id")
-        supersedes = None
-        if "supersedes" in raw:
-            supersedes = _id(raw["supersedes"], "supersedes")
-            if supersedes == event_id:
-                raise ContractError("event cannot supersede itself")
-        parsed.append(ParsedEvent(raw, event_id, generation, kind, source_class, occurred_at, route_id, supersedes))
-    chronological = sorted(parsed, key=lambda e: (e.occurred_at, e.generation, e.event_id))
-    max_generation = 0
-    for event in chronological:
-        if event.generation < max_generation:
-            raise ContractError("generation chronology regressed")
-        max_generation = max(max_generation, event.generation)
+    id_re = re.compile(_ID_RE.pattern)
+    contract_error = ContractError
+    parsed_event_type = ParsedEvent
+    datetime_fromisoformat = datetime.fromisoformat
+    utc = timezone.utc
 
-    by_id = {event.event_id: event for event in parsed}
-    superseded: set[str] = set()
-    for event in parsed:
-        if event.supersedes:
-            target = by_id.get(event.supersedes)
-            if target is None:
-                raise ContractError("supersedes target missing")
-            if target.occurred_at >= event.occurred_at:
-                raise ContractError("supersession chronology invalid")
-            if event.generation < target.generation:
-                raise ContractError("supersession generation regressed")
-            if event.source_class != target.source_class:
-                raise ContractError("supersession source authority mismatch")
-            if target.kind == "PROVIDER_SENT":
-                raise ContractError("provider send evidence cannot be superseded")
-            if target.event_id in superseded:
-                raise ContractError("multiple supersessions of one event")
-            superseded.add(target.event_id)
-    active = [event for event in parsed if event.event_id not in superseded]
-    if not active:
-        raise ContractError("all events superseded")
-    active.sort(key=lambda e: (e.occurred_at, e.generation, e.event_id))
-    normalized = {
-        "schema_version": SCHEMA_VERSION,
-        **identity,
-        "currentness_seconds": currentness,
-        "events": [
-            event.raw
-            for event in sorted(
-                parsed,
-                key=lambda e: (e.generation, e.occurred_at, e.event_id),
+    def validate_json_value_local(value: Any) -> None:
+        stack: list[tuple[Any, int]] = [(value, 0)]
+        seen_containers: set[int] = set()
+        nodes = 0
+        while stack:
+            item, depth = stack.pop()
+            nodes += 1
+            if nodes > max_json_nodes:
+                raise contract_error("JSON node limit exceeded")
+            if depth > max_json_depth:
+                raise contract_error("JSON depth limit exceeded")
+            item_type = type(item)
+            if item_type is str:
+                try:
+                    encoded = item.encode("utf-8", "strict")
+                except UnicodeEncodeError as exc:
+                    raise contract_error("lone surrogate forbidden") from exc
+                if len(encoded) > max_string_utf8_bytes:
+                    raise contract_error("JSON string byte limit exceeded")
+            elif item_type is int:
+                if abs(item) > safe_int_max:
+                    raise contract_error("unsafe integer")
+            elif item_type is bool or item is None:
+                continue
+            elif item_type is list:
+                marker = id(item)
+                if marker in seen_containers:
+                    raise contract_error("container alias or cycle forbidden")
+                seen_containers.add(marker)
+                for child in reversed(item):
+                    stack.append((child, depth + 1))
+            elif item_type is dict:
+                marker = id(item)
+                if marker in seen_containers:
+                    raise contract_error("container alias or cycle forbidden")
+                seen_containers.add(marker)
+                for key, child in reversed(list(item.items())):
+                    if type(key) is not str:
+                        raise contract_error("JSON object keys must be exact strings")
+                    stack.append((child, depth + 1))
+                    stack.append((key, depth + 1))
+            else:
+                raise contract_error("non-JSON value type")
+
+    def require_exact_keys_local(
+        obj: dict[str, Any],
+        expected: frozenset[str],
+        *,
+        optional: frozenset[str] = frozenset(),
+    ) -> None:
+        keys = set(obj)
+        unknown = keys - expected
+        missing = (expected - optional) - keys
+        if unknown:
+            raise contract_error(f"unknown keys: {sorted(unknown)}")
+        if missing:
+            raise contract_error(f"missing keys: {sorted(missing)}")
+
+    def id_local(value: Any, name: str) -> str:
+        if not isinstance(value, str) or not id_re.fullmatch(value):
+            raise contract_error(f"invalid {name}")
+        return value
+
+    def safe_positive_int_local(value: Any, name: str) -> int:
+        if type(value) is not int or value <= 0 or value > safe_int_max:
+            raise contract_error(f"invalid {name}")
+        return value
+
+    def timestamp_local(value: Any, name: str) -> datetime:
+        if not isinstance(value, str) or not value:
+            raise contract_error(f"invalid {name}")
+        try:
+            dt = datetime_fromisoformat(value.replace("Z", "+00:00"))
+        except ValueError as exc:
+            raise contract_error(f"invalid {name}") from exc
+        if dt.tzinfo is None:
+            raise contract_error(f"{name} must include timezone")
+        return dt.astimezone(utc)
+
+    def validate_packet(
+        packet: Any,
+        evaluation_time: str,
+    ) -> tuple[dict[str, Any], list[ParsedEvent], datetime]:
+        validate_json_value_local(packet)
+        if not isinstance(packet, dict):
+            raise contract_error("root must be object")
+        require_exact_keys_local(packet, root_keys)
+        if type(packet["schema_version"]) is not int or packet["schema_version"] != schema_version:
+            raise contract_error("unsupported schema_version")
+        identity = {
+            "lane_id": id_local(packet["lane_id"], "lane_id"),
+            "opportunity_id": id_local(packet["opportunity_id"], "opportunity_id"),
+            "counterparty_id": id_local(packet["counterparty_id"], "counterparty_id"),
+            "purpose_id": id_local(packet["purpose_id"], "purpose_id"),
+        }
+        currentness = safe_positive_int_local(packet["currentness_seconds"], "currentness_seconds")
+        if currentness > max_currentness_seconds:
+            raise contract_error(
+                f"currentness_seconds exceeds compiler maximum {max_currentness_seconds}"
             )
-        ],
-    }
-    return normalized, active, eval_dt
+        eval_dt = timestamp_local(evaluation_time, "evaluation_time")
+        events_raw = packet["events"]
+        if not isinstance(events_raw, list) or not events_raw:
+            raise contract_error("events must be non-empty list")
+        if len(events_raw) > max_events:
+            raise contract_error("event count limit exceeded")
+        parsed: list[ParsedEvent] = []
+        seen: set[str] = set()
+        for raw in events_raw:
+            if not isinstance(raw, dict):
+                raise contract_error("event must be object")
+            require_exact_keys_local(
+                raw,
+                event_keys,
+                optional=frozenset({"route_id", "supersedes"}),
+            )
+            for field, expected in identity.items():
+                if id_local(raw[field], field) != expected:
+                    raise contract_error("cross-lane/counterparty/opportunity/purpose transplant")
+            event_id = id_local(raw["event_id"], "event_id")
+            if event_id in seen:
+                raise contract_error(f"duplicate event_id: {event_id}")
+            seen.add(event_id)
+            generation = safe_positive_int_local(raw["generation"], "generation")
+            kind = raw["kind"]
+            if kind not in kinds:
+                raise contract_error(f"invalid event kind: {kind}")
+            source_class = raw["source_class"]
+            if source_class not in source_classes:
+                raise contract_error(f"invalid source_class: {source_class}")
+            if source_class not in source_requirements[kind]:
+                raise contract_error(f"{kind} cannot be proven by source_class={source_class}")
+            id_local(raw["source_ref"], "source_ref")
+            occurred_at = timestamp_local(raw["occurred_at"], "occurred_at")
+            if occurred_at > eval_dt:
+                raise contract_error("future event relative to trusted evaluation time")
+            route_id = None
+            if "route_id" in raw:
+                route_id = id_local(raw["route_id"], "route_id")
+            supersedes = None
+            if "supersedes" in raw:
+                supersedes = id_local(raw["supersedes"], "supersedes")
+                if supersedes == event_id:
+                    raise contract_error("event cannot supersede itself")
+            parsed.append(
+                parsed_event_type(
+                    raw,
+                    event_id,
+                    generation,
+                    kind,
+                    source_class,
+                    occurred_at,
+                    route_id,
+                    supersedes,
+                )
+            )
+        chronological = sorted(parsed, key=lambda e: (e.occurred_at, e.generation, e.event_id))
+        max_generation = 0
+        for event in chronological:
+            if event.generation < max_generation:
+                raise contract_error("generation chronology regressed")
+            max_generation = max(max_generation, event.generation)
+
+        by_id = {event.event_id: event for event in parsed}
+        superseded: set[str] = set()
+        for event in parsed:
+            if event.supersedes:
+                target = by_id.get(event.supersedes)
+                if target is None:
+                    raise contract_error("supersedes target missing")
+                if target.occurred_at >= event.occurred_at:
+                    raise contract_error("supersession chronology invalid")
+                if event.generation < target.generation:
+                    raise contract_error("supersession generation regressed")
+                if event.source_class != target.source_class:
+                    raise contract_error("supersession source authority mismatch")
+                if target.kind == "PROVIDER_SENT":
+                    raise contract_error("provider send evidence cannot be superseded")
+                if target.event_id in superseded:
+                    raise contract_error("multiple supersessions of one event")
+                superseded.add(target.event_id)
+        active = [event for event in parsed if event.event_id not in superseded]
+        if not active:
+            raise contract_error("all events superseded")
+        active.sort(key=lambda e: (e.occurred_at, e.generation, e.event_id))
+        normalized = {
+            "schema_version": schema_version,
+            **identity,
+            "currentness_seconds": currentness,
+            "events": [
+                event.raw
+                for event in sorted(
+                    parsed,
+                    key=lambda e: (e.generation, e.occurred_at, e.event_id),
+                )
+            ],
+        }
+        return normalized, active, eval_dt
+
+    return validate_packet
+
+
+validate_packet = _bind_validate_packet()
+del _bind_validate_packet
 
 
 def _latest_generation(events: list[ParsedEvent]) -> int:
     return max(event.generation for event in events)
 
 
-def reduce_state(events: list[ParsedEvent], eval_dt: datetime, currentness_seconds: int) -> str:
-    kinds = {event.kind for event in events}
-    terminal_procurement = kinds & {"AWARDED", "LOST", "EXPIRED"}
-    if len(terminal_procurement) > 1:
-        raise ContractError("conflicting terminal procurement outcomes")
-    if "EXPIRED" in kinds and "SUBMITTED" in kinds:
-        raise ContractError("expired and submitted outcomes conflict")
-    if "HUMAN_DECLINE" in kinds and "PARTNER_ACCEPTED" in kinds:
-        raise ContractError("human decline and partner acceptance conflict")
+def _bind_reduce_state():
+    contract_error = ContractError
+    actionable_current_states = frozenset(ACTIONABLE_CURRENT_STATES)
+    currentness_basis_kinds = {
+        state: frozenset(kinds)
+        for state, kinds in CURRENTNESS_BASIS_KINDS.items()
+    }
 
-    if "LOST" in kinds:
-        state = "LOST_CLOSED"
-    elif "EXPIRED" in kinds:
-        state = "EXPIRED_CLOSED"
-    elif "AWARDED" in kinds:
-        state = "AWARDED_PENDING_CONTRACT"
-    elif "SUBMITTED" in kinds:
-        state = "SUBMITTED_PENDING_RESULT"
-    elif "HUMAN_DECLINE" in kinds:
-        state = "HUMAN_DECLINE_DNR"
-    elif "PARTNER_ACCEPTED" in kinds:
-        state = "PARTNER_CONFIRMED"
-    elif "HUMAN_REPLY" in kinds:
-        state = "HUMAN_REPLY_ACTIONABLE"
-    else:
-        sent = [event for event in events if event.kind == "PROVIDER_SENT"]
-        bounced = [event for event in events if event.kind == "BOUNCED"]
-        dead_routes = [event for event in events if event.kind == "DEAD_ROUTE"]
-        # No packet-authenticated reopen event exists in schema v1. Therefore a
-        # caller-controlled generation/route change cannot reset send permission:
-        # a second retained provider send in the same business lane is a collision.
-        duplicate_send = len(sent) >= 2
-        if duplicate_send:
-            state = "COLLISION_DUPLICATE_SEND_DNR"
-        elif "DNR" in kinds:
-            state = "SENT_DNR_PENDING_EVENT" if sent else "HOLD_EVIDENCE"
-        elif sent:
-            latest_sent = max(sent, key=lambda event: (event.occurred_at, event.generation, event.event_id))
-            transport_terminals = bounced + dead_routes
-            latest_terminal = (
-                max(transport_terminals, key=lambda event: (event.occurred_at, event.generation, event.event_id))
-                if transport_terminals else None
-            )
-            state = (
-                "BOUNCED_DEAD_ROUTE"
-                if latest_terminal is not None and latest_terminal.occurred_at >= latest_sent.occurred_at
-                else "SENT_DNR_PENDING_EVENT"
-            )
-        elif bounced or dead_routes:
-            state = "BOUNCED_DEAD_ROUTE"
-        elif "PROVIDER_SEND_ATTEMPTED" in kinds:
-            state = "SEND_ATTEMPTED_PROVIDER_UNKNOWN"
-        elif "LEASE_CONSUMED" in kinds:
-            state = "HOLD_EVIDENCE"
+    def reduce_state(
+        events: list[ParsedEvent],
+        eval_dt: datetime,
+        currentness_seconds: int,
+    ) -> str:
+        kinds = {event.kind for event in events}
+        terminal_procurement = kinds & {"AWARDED", "LOST", "EXPIRED"}
+        if len(terminal_procurement) > 1:
+            raise contract_error("conflicting terminal procurement outcomes")
+        if "EXPIRED" in kinds and "SUBMITTED" in kinds:
+            raise contract_error("expired and submitted outcomes conflict")
+        if "HUMAN_DECLINE" in kinds and "PARTNER_ACCEPTED" in kinds:
+            raise contract_error("human decline and partner acceptance conflict")
+
+        if "LOST" in kinds:
+            state = "LOST_CLOSED"
+        elif "EXPIRED" in kinds:
+            state = "EXPIRED_CLOSED"
+        elif "AWARDED" in kinds:
+            state = "AWARDED_PENDING_CONTRACT"
+        elif "SUBMITTED" in kinds:
+            state = "SUBMITTED_PENDING_RESULT"
+        elif "HUMAN_DECLINE" in kinds:
+            state = "HUMAN_DECLINE_DNR"
+        elif "PARTNER_ACCEPTED" in kinds:
+            state = "PARTNER_CONFIRMED"
+        elif "HUMAN_REPLY" in kinds:
+            state = "HUMAN_REPLY_ACTIONABLE"
         else:
-            latest_gen = _latest_generation(events)
-            generation_events = [event for event in events if event.generation == latest_gen]
-            generation_kinds = {event.kind for event in generation_events}
-            if "MUSE_SELECTED" in generation_kinds:
-                state = "SELECTED_UNCONSUMED_NO_SEND_AUTHORITY"
-            elif "MUSE_PENDING" in generation_kinds:
-                state = "MUSE_PENDING_NO_AUTHORITY"
-            elif "PACKET_RECEIVED" in kinds:
-                state = "PACKET_RECEIVED"
-            elif "PACKET_REQUESTED" in kinds:
-                state = "PACKET_PENDING"
-            elif "QUESTION_SENT" in kinds and "BUYER_ACK" not in kinds:
-                state = "BUYER_QUESTION_PENDING"
-            elif "BUYER_ACK" in kinds:
+            sent = [event for event in events if event.kind == "PROVIDER_SENT"]
+            bounced = [event for event in events if event.kind == "BOUNCED"]
+            dead_routes = [event for event in events if event.kind == "DEAD_ROUTE"]
+            if len(sent) >= 2:
+                state = "COLLISION_DUPLICATE_SEND_DNR"
+            elif "DNR" in kinds:
+                state = "SENT_DNR_PENDING_EVENT" if sent else "HOLD_EVIDENCE"
+            elif sent:
+                # Retained successful send truth dominates a later transport-only
+                # failure on another route/generation. The failure remains bound
+                # in history but cannot turn an already-contacted lane unopened.
+                state = "SENT_DNR_PENDING_EVENT"
+            elif bounced or dead_routes:
+                state = "BOUNCED_DEAD_ROUTE"
+            elif "PROVIDER_SEND_ATTEMPTED" in kinds:
+                state = "SEND_ATTEMPTED_PROVIDER_UNKNOWN"
+            elif "LEASE_CONSUMED" in kinds:
                 state = "HOLD_EVIDENCE"
-            elif "EVIDENCE_HOLD" in kinds:
-                state = "HOLD_EVIDENCE"
-            elif "TAKE" in kinds:
-                state = "CLAIMED_NO_OUTBOUND"
-            elif "RESEARCHED" in kinds:
-                state = "RESEARCHED_NOT_CONTACTED"
             else:
-                state = "HOLD_EVIDENCE"
-    if state in ACTIONABLE_CURRENT_STATES:
-        basis_kinds = CURRENTNESS_BASIS_KINDS[state]
-        basis_events = [event for event in events if event.kind in basis_kinds]
-        if not basis_events:
-            raise ContractError("currentness basis missing")
-        latest_basis = max(
-            basis_events,
-            key=lambda event: (event.occurred_at, event.generation, event.event_id),
-        )
-        age = (eval_dt - latest_basis.occurred_at).total_seconds()
-        if age > currentness_seconds:
-            return "HOLD_EVIDENCE"
-    return state
+                latest_gen = max(event.generation for event in events)
+                generation_events = [
+                    event for event in events
+                    if event.generation == latest_gen
+                ]
+                generation_kinds = {event.kind for event in generation_events}
+                if "MUSE_SELECTED" in generation_kinds:
+                    state = "SELECTED_UNCONSUMED_NO_SEND_AUTHORITY"
+                elif "MUSE_PENDING" in generation_kinds:
+                    state = "MUSE_PENDING_NO_AUTHORITY"
+                elif "PACKET_RECEIVED" in kinds:
+                    state = "PACKET_RECEIVED"
+                elif "PACKET_REQUESTED" in kinds:
+                    state = "PACKET_PENDING"
+                elif "QUESTION_SENT" in kinds and "BUYER_ACK" not in kinds:
+                    state = "BUYER_QUESTION_PENDING"
+                elif "BUYER_ACK" in kinds:
+                    state = "HOLD_EVIDENCE"
+                elif "EVIDENCE_HOLD" in kinds:
+                    state = "HOLD_EVIDENCE"
+                elif "TAKE" in kinds:
+                    state = "CLAIMED_NO_OUTBOUND"
+                elif "RESEARCHED" in kinds:
+                    state = "RESEARCHED_NOT_CONTACTED"
+                else:
+                    state = "HOLD_EVIDENCE"
+        if state in actionable_current_states:
+            basis_kinds = currentness_basis_kinds[state]
+            basis_events = [event for event in events if event.kind in basis_kinds]
+            if not basis_events:
+                raise contract_error("currentness basis missing")
+            latest_basis = max(
+                basis_events,
+                key=lambda event: (event.occurred_at, event.generation, event.event_id),
+            )
+            age = (eval_dt - latest_basis.occurred_at).total_seconds()
+            if age > currentness_seconds:
+                return "HOLD_EVIDENCE"
+        return state
+
+    return reduce_state
+
+
+reduce_state = _bind_reduce_state()
+del _bind_reduce_state
 
 
 _STALE_RULES: tuple[tuple[set[str], re.Pattern[str], str], ...] = (
@@ -574,60 +761,100 @@ def make_patch_plan(body_text: str, header: str, findings: list[dict[str, Any]])
     }
 
 
-def compile_state(packet: dict[str, Any], *, body_text: str, evaluation_time: str) -> dict[str, Any]:
-    normalized, events, eval_dt = validate_packet(packet, evaluation_time)
-    state = reduce_state(events, eval_dt, normalized["currentness_seconds"])
-    event_digest = sha256_bytes(canonical_bytes(normalized))
-    semantic_basis = {
-        "schema_version": SCHEMA_VERSION,
-        "lane_id": normalized["lane_id"],
-        "opportunity_id": normalized["opportunity_id"],
-        "counterparty_id": normalized["counterparty_id"],
-        "purpose_id": normalized["purpose_id"],
-        "evaluation_time": evaluation_time,
-        "state": state,
-        "event_digest_sha256": event_digest,
-        "input_authentication": {
-            "verified_by_compiler": False,
-            "requirement": "UPSTREAM_AUTHENTICATED_RETAINED_EVENTS",
-        },
-        "authority": {
-            "send": False,
-            "muse": False,
-            "provider_mutation": False,
-            "payment": False,
-            "revenue": False,
-        },
-    }
-    receipt = sha256_bytes(canonical_bytes(semantic_basis))
-    findings = stale_body_findings(body_text, state)
-    header = render_header(state, evaluation_time, event_digest, receipt)
-    result = {
-        **semantic_basis,
-        "semantic_receipt_sha256": receipt,
-        "current_state_markdown": header,
-        "stale_body_findings": findings,
-        "patch_plan": make_patch_plan(body_text, header, findings),
-    }
-    return result
+def _bind_compile_state():
+    validate = validate_packet
+    reduce = reduce_state
+    canonical = canonical_bytes
+    digest = sha256_bytes
+    stale_findings = stale_body_findings
+    render = render_header
+    patch = make_patch_plan
+    schema_version = SCHEMA_VERSION
+    policy_generation_sha256 = _POLICY_GENERATION_SHA256
+
+    def compile_state(packet: dict[str, Any], *, body_text: str, evaluation_time: str) -> dict[str, Any]:
+        normalized, events, eval_dt = validate(packet, evaluation_time)
+        state = reduce(events, eval_dt, normalized["currentness_seconds"])
+        event_digest = digest(canonical(normalized))
+        semantic_basis = {
+            "schema_version": schema_version,
+            "policy_generation_sha256": policy_generation_sha256,
+            "lane_id": normalized["lane_id"],
+            "opportunity_id": normalized["opportunity_id"],
+            "counterparty_id": normalized["counterparty_id"],
+            "purpose_id": normalized["purpose_id"],
+            "evaluation_time": evaluation_time,
+            "state": state,
+            "event_digest_sha256": event_digest,
+            "input_authentication": {
+                "verified_by_compiler": False,
+                "requirement": "UPSTREAM_AUTHENTICATED_RETAINED_EVENTS",
+            },
+            "authority": {
+                "send": False,
+                "muse": False,
+                "provider_mutation": False,
+                "payment": False,
+                "revenue": False,
+            },
+        }
+        receipt = digest(canonical(semantic_basis))
+        findings = stale_findings(body_text, state)
+        header = render(state, evaluation_time, event_digest, receipt)
+        return {
+            **semantic_basis,
+            "semantic_receipt_sha256": receipt,
+            "current_state_markdown": header,
+            "stale_body_findings": findings,
+            "patch_plan": patch(body_text, header, findings),
+        }
+
+    return compile_state
 
 
-def compile_from_json(data: bytes | str, *, body_text: str, evaluation_time: str) -> dict[str, Any]:
-    packet = strict_json_loads(data)
-    return compile_state(packet, body_text=body_text, evaluation_time=evaluation_time)
+compile_state = _bind_compile_state()
+del _bind_compile_state
 
 
-def verify_artifact(
-    packet_data: bytes | str,
-    artifact_data: bytes | str,
-    *,
-    body_text: str,
-    evaluation_time: str,
-) -> bool:
-    expected = compile_from_json(packet_data, body_text=body_text, evaluation_time=evaluation_time)
-    actual = strict_json_loads(artifact_data)
-    if not isinstance(actual, dict):
-        raise ContractError("artifact must be object")
-    if canonical_bytes(actual) != canonical_bytes(expected):
-        raise ContractError("artifact does not exactly replay")
-    return True
+def _bind_compile_from_json():
+    strict_loads = strict_json_loads
+    compile_bound = compile_state
+
+    def compile_from_json(data: bytes | str, *, body_text: str, evaluation_time: str) -> dict[str, Any]:
+        packet = strict_loads(data)
+        return compile_bound(packet, body_text=body_text, evaluation_time=evaluation_time)
+
+    return compile_from_json
+
+
+compile_from_json = _bind_compile_from_json()
+del _bind_compile_from_json
+
+
+def _bind_verify_artifact():
+    compile_bound = compile_from_json
+    strict_loads = strict_json_loads
+    canonical = canonical_bytes
+    contract_error = ContractError
+
+    def verify_artifact(
+        packet_data: bytes | str,
+        artifact_data: bytes | str,
+        *,
+        body_text: str,
+        evaluation_time: str,
+    ) -> bool:
+        expected = compile_bound(packet_data, body_text=body_text, evaluation_time=evaluation_time)
+        actual = strict_loads(artifact_data)
+        if not isinstance(actual, dict):
+            raise contract_error("artifact must be object")
+        if canonical(actual) != canonical(expected):
+            raise contract_error("artifact does not exactly replay")
+        return True
+
+    return verify_artifact
+
+
+verify_artifact = _bind_verify_artifact()
+del _bind_verify_artifact
+
