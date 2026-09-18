@@ -65,6 +65,34 @@ class StrictJsonTests(unittest.TestCase):
         with self.assertRaises(ContractError):
             strict_loads('{"a":NaN}')
 
+    def test_saved_ingress_keeps_original_validation(self):
+        saved_loads = module_under_test.strict_loads
+        saved_load = module_under_test.strict_load
+        original_json_loads = module_under_test.json.loads
+        original_reject_constant = module_under_test._reject_constant
+        original_error = module_under_test.ContractError
+        original_strict_loads = module_under_test.strict_loads
+
+        def later_binding(*_args, **_kwargs):
+            raise AssertionError("later module binding was reached")
+
+        try:
+            module_under_test.json.loads = later_binding
+            module_under_test._reject_constant = later_binding
+            module_under_test.ContractError = RuntimeError
+            module_under_test.strict_loads = later_binding
+
+            with self.assertRaises(original_error):
+                saved_loads('{"a":1,"a":2}')
+            with self.assertRaises(original_error):
+                saved_loads('{"a":NaN}')
+            self.assertEqual(saved_load(ROOT / "fixtures.json"), FIXTURES)
+        finally:
+            module_under_test.json.loads = original_json_loads
+            module_under_test._reject_constant = original_reject_constant
+            module_under_test.ContractError = original_error
+            module_under_test.strict_loads = original_strict_loads
+
     def test_bool_int_alias_rejected(self):
         with self.assertRaises(ContractError):
             evaluate_reconciliation_case(
