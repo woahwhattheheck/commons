@@ -1,0 +1,38 @@
+{
+  "schema": "co-hcpf-hcbs-quality-research-ledger/v1",
+  "pursuit_id": "CO-HCPF-HCBS-QUALITY-258",
+  "production_authority": false,
+  "sources": [
+    {
+      "id": "public-listing-20260909",
+      "class": "RESEARCH_CORROBORATION",
+      "url": "https://governmentbidders.com/government_bids/detail/NBD15676047667392625.htm?ak=c14c5",
+      "supports": ["solicitation_id", "amended_status", "proposal_deadline", "buyer_listing"]
+    },
+    {
+      "id": "appendix-a-public-copy-20260909",
+      "class": "RESEARCH_CORROBORATION",
+      "url": "https://govtribe.com/file/government-file/appendix-a-administrative-information-dot-docx-14",
+      "supports": ["inquiry_deadline", "proposal_deadline", "box_submission", "sole_point_of_contact", "offeror_requirements"]
+    },
+    {
+      "id": "rfp-public-copy-20260909",
+      "class": "RESEARCH_CORROBORATION",
+      "url": "https://govtribe.com/file/government-file/rfp-2026000258-hcbs-survey-admin-dot-docx",
+      "supports": ["survey_scope", "prime_experience", "budget", "evaluation", "hipaa_accessibility"]
+    },
+    {
+      "id": "appendix-b-public-copy-20260909",
+      "class": "RESEARCH_CORROBORATION",
+      "url": "https://govtribe.com/file/government-file/appendix-b-draft-contract-dot-pdf-18",
+      "supports": ["subcontract_approval", "contract_duration", "records", "funding_contingency"]
+    },
+    {
+      "id": "pricing-public-copy-20260909",
+      "class": "RESEARCH_CORROBORATION",
+      "url": "https://govtribe.com/file/government-file/appendix-e-pricing-worksheet-dot-xlsx-1",
+      "supports": ["fixed_deliverables", "per_survey_rates", "workshare_seams"]
+    }
+  ],
+  "production_buyer_source_roots": []
+}
