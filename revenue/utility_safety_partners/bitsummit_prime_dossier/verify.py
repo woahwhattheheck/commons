@@ -206,7 +206,7 @@ def verify_payload(payload: dict) -> dict:
         _require(len(gates) == len(set(gates)), f"{item_id}: duplicate gate")
         _require(set(gates) <= hard_gate_set, f"{item_id}: unknown hard gate")
         covered_gates.update(gates)
-        _require(type(item.get("claim")) is str and item["claim"].strip(), f"{item_id}: claim required")
+        _require(type(item.get("claim")) is str and item["claim"].strip(), f"{item_id}: statement missing or empty")
         _require(type(item.get("limitations")) is str and item["limitations"].strip(), f"{item_id}: limitations required")
         _require(type(item.get("marketing_claim")) is bool, f"{item_id}: marketing_claim must be bool")
         publisher = item.get("publisher")
