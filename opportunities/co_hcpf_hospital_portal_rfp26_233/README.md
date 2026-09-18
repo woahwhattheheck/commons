@@ -25,7 +25,7 @@ HCPF's September 8 Q&A says:
 - HCPF will consider the experience of the proposed team, including proposed subcontractors, for the organizational-experience evaluation.
 - The prime remains responsible for performance, subcontracting rules, and approvals.
 
-The compiler therefore keeps **team capability**, **individual key personnel**, and **prime-only controls** separate. Partner evidence can satisfy team or individual-personnel gates, but never Colorado VSS/legal status, price approval, signatory authority, or the teaming agreement itself. If a partner-only gate is necessary, a source-owned owner-side teaming agreement is required before the lane can become response-ready for owner review.
+The compiler therefore keeps **team capability**, **individual key personnel**, a **source-owned proposed-personnel roster**, and **prime-only controls** separate. Each personnel evidence descriptor carries a canonical `subject_person_id`; each required role is source-bound to one distinct proposed person; only evidence whose subject exactly matches that role assignment can satisfy the personnel gate. Partner evidence can satisfy team or person-bound gates, but never Colorado VSS/legal status, price approval, signatory authority, or the teaming agreement itself. If a partner-only gate is necessary, a source-owned owner-side teaming agreement is required before the lane can become response-ready for owner review.
 
 ## Security / accessibility truth
 
@@ -40,14 +40,15 @@ Accessibility is substantive: current State standard is WCAG 2.1 AA. A new digit
 1. discovery/corroboration from controlling buyer authority;
 2. a stable internal pursuit id from mutable buyer solicitation generations;
 3. source-owned **full buyer-source-set descriptors** from runtime labels;
-4. source-owned qualification descriptors from runtime evidence claims;
-5. team/partner evidence from owner-only prime controls.
+4. source-owned **full proposed-roster descriptors** from caller-proposed identities;
+5. source-owned qualification descriptors, including person-bound personnel evidence, from runtime evidence claims;
+6. team/partner evidence from owner-only prime controls.
 
-A future buyer source root pins the entire reviewed generation: exact source-set digest, solicitation id, effective time, proposal/inquiry deadlines, submission route, pricing generation, annual cap, funded years, and total cap. Reusing a trusted SHA while changing any of those facts does not admit the row.
+A future buyer source root pins the entire reviewed generation: exact source-set digest, solicitation id, effective time, proposal/inquiry deadlines, submission route, pricing generation, annual cap, funded years, and total cap. A separate source-owned roster root pins the exact proposed people assigned to Project Lead, Project Manager, Web App Lead, and Quality Lead. Reusing a trusted SHA while changing any of those facts or identities does not admit the row.
 
 Production roots are empty until exact current official bytes are retained. The safe production state is therefore `HOLD_MISSING_BUYER_SOURCE / RESEARCH_HOLD`.
 
-Public compile APIs are closure-built over a reviewed engine/strict-loader generation; ordinary post-import rebinding of module globals does not replace the production generation. The Python process/source remains trusted; this is not a claim against arbitrary bytecode or closure-cell mutation.
+Public compile APIs are closure-built over a reviewed engine/strict-loader generation; ordinary post-import rebinding of module globals does not replace the production generation. The direct-object API first creates one bounded compiler-owned exact-JSON snapshot, and every trust check, state decision, receipt field, and input digest reads only that detached generation. The Python process/source remains trusted; this is not a claim against arbitrary bytecode or closure-cell mutation.
 
 ## External authority ceiling
 
