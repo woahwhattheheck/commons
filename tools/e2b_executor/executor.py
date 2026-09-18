@@ -1,10 +1,14 @@
 from __future__ import annotations
 
 import hashlib
+import io
 import json
 import os
 import re
 import shlex
+import stat
+import tarfile
+import zipfile
 from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
 from typing import Any, Callable, Mapping, Sequence
@@ -36,6 +40,14 @@ _MAX_ARGV = 64
 _MAX_ARG_CHARS = 8192
 _MAX_EXCERPT_CHARS = 4096
 _MAX_TIMEOUT_SECONDS = 3600
+MAX_JOB_PACKET_BYTES = 1 * 1024 * 1024
+MAX_SOURCE_ARCHIVE_BYTES = 64 * 1024 * 1024
+MAX_MANIFEST_ENTRIES = 8192
+MAX_ARCHIVE_MEMBERS = 10_000
+MAX_ARCHIVE_MEMBER_BYTES = 32 * 1024 * 1024
+MAX_ARCHIVE_UNCOMPRESSED_BYTES = 256 * 1024 * 1024
+MAX_JOB_JSON_DEPTH = 32
+MAX_JOB_JSON_NODES = 100_000
 
 _ARCHIVE_REMOTE = "/tmp/e2b-exact-head-source.archive"
 _MANIFEST_REMOTE = "/tmp/e2b-exact-head-manifest.json"
@@ -89,15 +101,154 @@ def _sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-def _sha256_file(path: Path) -> str:
+def _strict_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    out: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in out:
+            raise JobValidationError(f"duplicate JSON key: {key}")
+        out[key] = value
+    return out
+
+
+def _reject_constant(value: str) -> None:
+    raise JobValidationError(f"non-finite JSON number rejected: {value}")
+
+
+def _strict_float(value: str) -> float:
+    try:
+        parsed = float(value)
+    except (OverflowError, ValueError) as exc:
+        raise JobValidationError("invalid JSON float") from exc
+    if not (float("-inf") < parsed < float("inf")):
+        raise JobValidationError("non-finite JSON number rejected")
+    return parsed
+
+
+def _check_json_shape(value: Any) -> None:
+    remaining = MAX_JOB_JSON_NODES
+    stack: list[tuple[Any, int]] = [(value, 0)]
+    while stack:
+        item, depth = stack.pop()
+        remaining -= 1
+        if remaining < 0 or depth > MAX_JOB_JSON_DEPTH:
+            raise JobValidationError("job JSON structure exceeds limits")
+        if isinstance(item, dict):
+            stack.extend((child, depth + 1) for child in item.values())
+        elif isinstance(item, list):
+            stack.extend((child, depth + 1) for child in item)
+
+
+def parse_job_packet_text(text: str) -> Mapping[str, Any]:
+    if not isinstance(text, str):
+        raise JobValidationError("job JSON must be text")
+    try:
+        encoded = text.encode("utf-8")
+    except UnicodeEncodeError as exc:
+        raise JobValidationError("job JSON must be valid UTF-8") from exc
+    if len(encoded) > MAX_JOB_PACKET_BYTES:
+        raise JobValidationError("job JSON exceeds byte limit")
+    try:
+        value = json.loads(
+            text,
+            object_pairs_hook=_strict_object,
+            parse_constant=_reject_constant,
+            parse_float=_strict_float,
+        )
+    except JobValidationError:
+        raise
+    except (json.JSONDecodeError, RecursionError, ValueError, TypeError) as exc:
+        raise JobValidationError(f"invalid job JSON: {exc}") from exc
+    _check_json_shape(value)
+    if not isinstance(value, Mapping):
+        raise JobValidationError("job packet must be an object")
+    return value
+
+
+def _read_archive_bounded(path: Path) -> tuple[bytes, str]:
+    flags = os.O_RDONLY | getattr(os, "O_CLOEXEC", 0) | getattr(os, "O_NOFOLLOW", 0)
+    try:
+        fd = os.open(path, flags)
+    except OSError as exc:
+        raise JobValidationError("archive_path must name a readable regular non-symlink file") from exc
     digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        while True:
-            chunk = handle.read(1024 * 1024)
-            if not chunk:
-                break
-            digest.update(chunk)
-    return digest.hexdigest()
+    payload = bytearray()
+    try:
+        with os.fdopen(fd, "rb", closefd=True) as handle:
+            if not stat.S_ISREG(os.fstat(handle.fileno()).st_mode):
+                raise JobValidationError("archive_path must name a regular file")
+            while True:
+                chunk = handle.read(min(1024 * 1024, MAX_SOURCE_ARCHIVE_BYTES + 1 - len(payload)))
+                if not chunk:
+                    break
+                payload.extend(chunk)
+                if len(payload) > MAX_SOURCE_ARCHIVE_BYTES:
+                    raise JobValidationError("source archive exceeds byte limit")
+                digest.update(chunk)
+    except Exception:
+        raise
+    return bytes(payload), digest.hexdigest()
+
+
+def _safe_archive_path(raw: str) -> bool:
+    if not raw or len(raw) > 4096:
+        return False
+    posix = PurePosixPath(raw)
+    return not posix.is_absolute() and all(part not in {"", ".", ".."} for part in posix.parts)
+
+
+def _account_archive_member(size: int, count: int, total: int) -> tuple[int, int]:
+    count += 1
+    if count > MAX_ARCHIVE_MEMBERS:
+        raise JobValidationError("archive member count exceeds limit")
+    if isinstance(size, bool) or not isinstance(size, int) or size < 0:
+        raise JobValidationError("archive member size is invalid")
+    if size > MAX_ARCHIVE_MEMBER_BYTES:
+        raise JobValidationError("archive member exceeds uncompressed byte limit")
+    total += size
+    if total > MAX_ARCHIVE_UNCOMPRESSED_BYTES:
+        raise JobValidationError("archive total uncompressed bytes exceed limit")
+    return count, total
+
+
+def _preflight_archive_bytes(payload: bytes) -> None:
+    count = 0
+    total = 0
+    try:
+        with tarfile.open(fileobj=io.BytesIO(payload), mode="r:*") as archive:
+            for member in archive:
+                if (
+                    not _safe_archive_path(member.name)
+                    or member.issym()
+                    or member.islnk()
+                    or not (member.isfile() or member.isdir())
+                ):
+                    raise JobValidationError("archive contains unsafe tar member")
+                count, total = _account_archive_member(
+                    member.size if member.isfile() else 0, count, total
+                )
+        return
+    except JobValidationError:
+        raise
+    except (tarfile.TarError, OSError, EOFError):
+        pass
+
+    try:
+        with zipfile.ZipFile(io.BytesIO(payload)) as archive:
+            for info in archive.infolist():
+                mode = (info.external_attr >> 16) & 0o170000
+                if (
+                    not _safe_archive_path(info.filename)
+                    or mode not in (0, 0o040000, 0o100000)
+                ):
+                    raise JobValidationError("archive contains unsafe zip member")
+                count, total = _account_archive_member(
+                    0 if info.is_dir() else info.file_size, count, total
+                )
+        return
+    except JobValidationError:
+        raise
+    except (zipfile.BadZipFile, OSError, EOFError) as exc:
+        raise JobValidationError("source archive must be a valid tar or zip archive") from exc
 
 
 def _require_exact_keys(value: Mapping[str, Any], allowed: set[str], where: str) -> None:
@@ -178,6 +329,8 @@ def validate_job(packet: Mapping[str, Any]) -> JobSpec:
     raw_manifest = packet.get("manifest", [])
     if not isinstance(raw_manifest, list):
         raise JobValidationError("manifest must be a list when supplied")
+    if len(raw_manifest) > MAX_MANIFEST_ENTRIES:
+        raise JobValidationError(f"manifest must contain at most {MAX_MANIFEST_ENTRIES} entries")
     manifest: list[ManifestEntry] = []
     seen_paths: set[str] = set()
     for index, raw in enumerate(raw_manifest):
@@ -312,6 +465,9 @@ import zipfile
 
 src = pathlib.Path(sys.argv[1])
 dst = pathlib.Path(sys.argv[2])
+max_members = int(sys.argv[3])
+max_member_bytes = int(sys.argv[4])
+max_total_bytes = int(sys.argv[5])
 dst.mkdir(parents=True, exist_ok=True)
 
 def safe(name):
@@ -320,10 +476,21 @@ def safe(name):
         part not in ("", ".", "..") for part in p.parts
     )
 
+def account(size, count, total):
+    count += 1
+    if count > max_members:
+        raise SystemExit(95)
+    if size < 0 or size > max_member_bytes:
+        raise SystemExit(96)
+    total += size
+    if total > max_total_bytes:
+        raise SystemExit(97)
+    return count, total
+
 if tarfile.is_tarfile(src):
+    count = total = 0
     with tarfile.open(src, "r:*") as tf:
-        members = tf.getmembers()
-        for member in members:
+        for member in tf:
             if (
                 not safe(member.name)
                 or member.issym()
@@ -331,16 +498,20 @@ if tarfile.is_tarfile(src):
                 or not (member.isfile() or member.isdir())
             ):
                 raise SystemExit(91)
+            count, total = account(member.size if member.isfile() else 0, count, total)
+    with tarfile.open(src, "r:*") as tf:
         tf.extractall(dst)
 elif zipfile.is_zipfile(src):
+    count = total = 0
     with zipfile.ZipFile(src) as zf:
         infos = zf.infolist()
         for info in infos:
             if not safe(info.filename):
                 raise SystemExit(92)
             mode = (info.external_attr >> 16) & 0o170000
-            if mode == 0o120000:
+            if mode not in (0, 0o040000, 0o100000):
                 raise SystemExit(93)
+            count, total = account(0 if info.is_dir() else info.file_size, count, total)
         zf.extractall(dst)
 else:
     raise SystemExit(94)
@@ -427,16 +598,14 @@ def execute_job(
     """
     job = validate_job(packet)
     archive = Path(job.archive_path)
-    if not archive.is_file() or archive.is_symlink():
-        raise JobValidationError(
-            "archive_path must name an existing regular non-symlink file"
-        )
-    local_digest = _sha256_file(archive)
+    if archive.is_symlink():
+        raise JobValidationError("archive_path must not be a symlink")
+    archive_bytes, local_digest = _read_archive_bounded(archive)
     if local_digest != job.source_archive_sha256:
         raise JobValidationError(
             "local source archive digest does not match source_archive_sha256"
         )
-    archive_bytes = archive.read_bytes()
+    _preflight_archive_bytes(archive_bytes)
 
     env = os.environ if environ is None else environ
     api_key = env.get("E2B_API_KEY", "")
@@ -495,7 +664,13 @@ def execute_job(
             "SAFE_EXTRACT",
             _SAFE_EXTRACT_SCRIPT,
             min(job.sandbox_timeout_seconds, 180),
-            args=[_ARCHIVE_REMOTE, _WORKSPACE_REMOTE],
+            args=[
+                _ARCHIVE_REMOTE,
+                _WORKSPACE_REMOTE,
+                str(MAX_ARCHIVE_MEMBERS),
+                str(MAX_ARCHIVE_MEMBER_BYTES),
+                str(MAX_ARCHIVE_UNCOMPRESSED_BYTES),
+            ],
         )
 
         if job.manifest:
