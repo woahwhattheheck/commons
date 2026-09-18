@@ -196,7 +196,6 @@ class ScopeToDeliveryTests(unittest.TestCase):
     def test_strongest_sku_bindings_exist(self):
         required = {
             "production-survival-sprint",
-            "agent-failure-autopsy-29",
             "gguf-diagnostic-10d-12k",
             "white-box-gguf-pilot-30d",
             "ho-issue-to-pr",

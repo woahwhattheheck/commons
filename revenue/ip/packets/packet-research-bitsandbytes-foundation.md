@@ -31,15 +31,15 @@ ANALYSIS: Cross-check a cleared quantization evaluation with Commons reproducibi
 
 ### Trust-cache and production-survival reliability (`reliability-trust`, `SHIPPED_ON_MAIN`)
 
-- `ground/TRUST.md` sha256 `9847b90c425233be58ce13c86c51a51fb863c16504d6ba8a6369bba561f170f2` (2962 bytes)
-- `trust.html` sha256 `bf43285ef200165671840ae4201fba2fd4aeb2ca445526da9502e1079f284af0` (7120 bytes)
-- `host/trust_cache.py` sha256 `586b9f4146a8c4f7445fe904e9080eeeef527e4548dee5585140530c10608363` (8035 bytes)
-- `p/bernays-production-survival-operating-system-20260826-01.md` sha256 `f66c06297b7400c68e2e95d17233e1f8a315999f37d6a95c8f75d9ab984eb34f` (1611 bytes)
+- `ground/TRUST.md` sha256 `c7531bd2ece7f30c09d243004e4cf7126325d2e82059bf42f296321867fa0e2c` (3460 bytes)
+- `trust.html` sha256 `975414b1c197a3689869141317a434720ec3fd860834e5901c3e0456eec0e56e` (8693 bytes)
+- `host/trust_cache.py` sha256 `b93cfd39eda6b683ea8d1357d124670e418d319d9f8df9b0e7d6faae0b653e62` (8279 bytes)
+- `p/bernays-production-survival-operating-system-20260826-01.md` sha256 `a5c463a406ac00c297a6859164c8f98cdb86d40d4fb6da6561dad57019100657` (1632 bytes)
 
 ### Public evidence record and required-reading corpus (`evidence-record`, `SHIPPED_ON_MAIN`)
 
-- `evidence/README.md` sha256 `c23d0b482e84507e8212fac65320f6f529b7fd383d5cec3d17ed9fa12849503c` (2012 bytes)
-- `ground/03_EVIDENCE_ANNEX.md` sha256 `2b94d30faa059699e0faf0935da759035dc8035958d0cb888e474f19e07546c8` (4197 bytes)
+- `evidence/README.md` sha256 `5ec472f58475d3245b002bc3a693fce84058e4b127ec4a6c3793782034fc9b90` (2685 bytes)
+- `ground/03_EVIDENCE_ANNEX.md` sha256 `15bf2f8da1bba829240683e258c20e4cfaabad958d9595520ddad37c987ac43d` (4714 bytes)
 
 ## Stated funding (not expected value)
 
@@ -66,14 +66,3 @@ Draft a method note separating bitsandbytes and GGUF quantization claims before 
 `RESEARCHED_NOT_CONTACTED` — not a numeric forecast.
 
 submission_status: `NOT_APPLICABLE`. award_status: `NOT_AWARDED`. cash_received_usd: `0`. contacted: `false`. partnership_claimed: `false`.
-## Live cash
-
-Verified product pages only — no invented Stripe links.
-- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
-- [$199 referral diagnostic](../../../referral-intake-completeness.html)
-- [$199 repair diagnostic](../../../repair-booking-preflight.html)
-- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
-
-## Contest product (titanmcp)
-
-Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.
