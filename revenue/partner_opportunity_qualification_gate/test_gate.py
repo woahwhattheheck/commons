@@ -199,6 +199,43 @@ class QualificationGateTests(unittest.TestCase):
         p = packet(); p["partners"][0]["gate_dispositions"][1] = {"gate_id": "three-refs", "state": "SATISFIED", "evidence_refs": [ref("sam", "b")]}
         with self.assertRaises(QualificationError): compile_qualification(p)
 
+    def test_gate_disposition_rejects_valid_plus_unbound_extra(self):
+        p = packet()
+        p["sources"].append(
+            src(
+                "other-proof",
+                "PARTNER_EVIDENCE",
+                "d",
+                "https://partner.example/other-proof",
+                subject_partner="Example MSP",
+            )
+        )
+        p["partners"][0]["gate_dispositions"][0]["evidence_refs"].append(ref("other-proof", "d"))
+        with self.assertRaises(QualificationError):
+            compile_qualification(p)
+
+    def test_gate_disposition_rejects_valid_plus_gate_bound_wrong_kind_extra(self):
+        p = packet()
+        p["hard_gates"][0]["source_refs"].append(ref("reg", "c"))
+        p["partners"][0]["gate_dispositions"][0]["evidence_refs"].append(ref("reg", "c"))
+        with self.assertRaises(QualificationError):
+            compile_qualification(p)
+
+    def test_registration_complete_rejects_valid_plus_partner_evidence_extra(self):
+        p = packet()
+        p["partners"][0]["registration"]["evidence_refs"].append(ref("sam", "b"))
+        with self.assertRaises(QualificationError):
+            compile_qualification(p)
+
+    def test_old_bundle_rejects_after_gate_provenance_removal(self):
+        p = packet()
+        out = compile_qualification(p)
+        receipt = make_receipt(p, out)
+        q = copy.deepcopy(p)
+        q["hard_gates"][0]["source_refs"] = [ref("rfp", "a")]
+        with self.assertRaises(QualificationError):
+            verify_bundle(q, out, receipt)
+
     def test_duplicate_gate_rejected(self):
         p = packet(); p["hard_gates"].append(copy.deepcopy(p["hard_gates"][0]))
         with self.assertRaises(QualificationError): compile_qualification(p)
