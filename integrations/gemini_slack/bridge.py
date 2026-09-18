@@ -313,13 +313,77 @@ def chunks(text: str, limit: int = SLACK_TEXT_LIMIT) -> Iterable[str]:
         yield remaining
 
 
-class SlackSink:
-    def __init__(self, web_client: Any) -> None:
+
+def _slack_mapping(value: Any) -> dict[str, Any]:
+    if isinstance(value, dict):
+        return value
+    data = getattr(value, "data", None)
+    if isinstance(data, dict):
+        return data
+    try:
+        mapped = dict(value)
+    except (TypeError, ValueError):
+        return {}
+    return mapped if isinstance(mapped, dict) else {}
+
+
+class InternalSlackScope:
+    """Fail-closed proof that a destination is local to the authenticated workspace."""
+
+    def __init__(self, web_client: Any, team_id: str) -> None:
+        if not isinstance(team_id, str) or not team_id:
+            raise BridgeError("slack_internal_scope_missing_team")
         self.web_client = web_client
+        self.team_id = team_id
+
+    def require_channel(self, channel: str) -> None:
+        if not isinstance(channel, str) or not channel:
+            raise BridgeError("slack_internal_scope_invalid_channel")
+        try:
+            response = self.web_client.conversations_info(
+                channel=channel,
+                include_num_members=False,
+            )
+        except Exception as exc:
+            raise BridgeError("slack_internal_scope_unverified") from exc
+        payload = _slack_mapping(response)
+        info = payload.get("channel")
+        if not isinstance(info, dict) or str(info.get("id") or "") != channel:
+            raise BridgeError("slack_internal_scope_unverified")
+        if any(
+            bool(info.get(name))
+            for name in (
+                "is_shared",
+                "is_ext_shared",
+                "is_org_shared",
+                "is_pending_ext_shared",
+            )
+        ):
+            raise BridgeError("slack_internal_scope_shared_channel")
+        if not bool(info.get("is_im")) and info.get("is_member") is not True:
+            raise BridgeError("slack_internal_scope_not_member")
+        for name in ("context_team_id", "team_id"):
+            value = info.get(name)
+            if value not in (None, "") and str(value) != self.team_id:
+                raise BridgeError("slack_internal_scope_cross_team")
+        host = info.get("conversation_host_id")
+        if isinstance(host, str) and host.startswith("T") and host != self.team_id:
+            raise BridgeError("slack_internal_scope_cross_team")
+        shared_team_ids = info.get("shared_team_ids")
+        if isinstance(shared_team_ids, list) and any(
+            str(value) != self.team_id for value in shared_team_ids if value
+        ):
+            raise BridgeError("slack_internal_scope_cross_team")
+
+class SlackSink:
+    def __init__(self, web_client: Any, scope: InternalSlackScope) -> None:
+        self.web_client = web_client
+        self.scope = scope
 
     def post(self, channel: str, thread_ts: str, peer: str, text: str) -> None:
-        # Check the whole reply before chunking so no partial refused post escapes.
+        # Check the whole reply and destination before any provider mutation.
         require_publication(text)
+        self.scope.require_channel(channel)
         pieces = list(chunks(text)) or ["(empty reply)"]
         for index, piece in enumerate(pieces):
             heading = f"*{peer}*\n" if index == 0 else f"*{peer} (continued)*\n"
@@ -511,7 +575,11 @@ def serve(args: argparse.Namespace) -> int:
     web_client = WebClient(token=bot_token)
     identity = web_client.auth_test()
     bot_user_id = identity.get("user_id")
-    sink = SlackSink(web_client)
+    team_id = identity.get("team_id")
+    if not isinstance(team_id, str) or not team_id:
+        raise BridgeError("auth.test missing team_id")
+    scope = InternalSlackScope(web_client, team_id)
+    sink = SlackSink(web_client, scope)
     bridge = GeminiSlackBridge(gateway, store, sink, delivery_deadline=args.delivery_deadline)
     executor = ThreadPoolExecutor(max_workers=args.workers, thread_name_prefix="gemini-slack")
     socket_client = SocketModeClient(app_token=app_token, web_client=web_client)
@@ -527,6 +595,8 @@ def serve(args: argparse.Namespace) -> int:
             return
         client.send_socket_mode_response(SocketModeResponse(envelope_id=request.envelope_id))
         payload = request.payload or {}
+        if payload.get("team_id") != team_id:
+            return
         event = payload.get("event") or {}
         event_id = payload.get("event_id")
         if not isinstance(event_id, str) or not isinstance(event, dict) or not _is_supported_slack_event(event):
