@@ -4162,7 +4162,7 @@ def _completion_merge_is_ancestor(merge_sha):
     return landed.returncode == 0
 
 
-def _completion_marker_for_closed_issue(issue, operation_id):
+def _completion_marker_for_closed_issue(issue):
     """Return strongest same-repo main-merge evidence, or None when unproven."""
     number = issue.get("number")
     if not isinstance(number, int) or isinstance(number, bool):
@@ -4174,6 +4174,9 @@ def _completion_marker_for_closed_issue(issue, operation_id):
         return None
     issue = canonical_issue
     if issue.get("state") != "closed" or issue.get("state_reason") != "completed":
+        return None
+    operation_id = completion_projection.stable_operation_id_from_issue(issue)
+    if not operation_id:
         return None
     timeline = _gh_api(
         "https://api.github.com/repos/woahwhattheheck/commons/issues/%s/timeline?per_page=100"
@@ -4234,21 +4237,15 @@ def _handle_completion_issue_event(ev):
         return 0
     if action != "closed":
         return 0
-    operation_id = completion_projection.stable_operation_id_from_issue(issue)
-    if not operation_id:
-        print(
-            "COMPLETION_HOLD issue=%s reason=missing_stable_identity" % number,
-            flush=True,
-        )
-        return 0
-    marker = _completion_marker_for_closed_issue(issue, operation_id)
+    marker = _completion_marker_for_closed_issue(issue)
     if marker is None:
         print(
-            "COMPLETION_HOLD id=%s issue=%s reason=no_verified_main_merge"
-            % (operation_id, number),
+            "COMPLETION_HOLD issue=%s reason=no_verified_main_merge_or_identity"
+            % number,
             flush=True,
         )
         return 0
+    operation_id = marker["operation_id"]
     try:
         state = completion_projection.write_marker(
             ROOT, marker, _completion_merge_is_ancestor
