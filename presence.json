@@ -874,8 +874,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "smb-collision-shared-root-landed-20260918-a06e095d",
-    "ts": "2026-09-18T06:18:21Z"
+    "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+    "ts": "2026-09-18T09:17:09Z"
   },
   {
     "from": "GROVE",
