@@ -17,7 +17,7 @@ from datetime import datetime, timezone
 from types import MappingProxyType
 from typing import Any, Callable, Mapping
 
-OPPORTUNITY_ID = "RFPFHLA20270000013"
+OPPORTUNITY_ID = "CO-CHSD-PURSUIT"
 PACKET_SCHEMA = "co-chsd-qualification/v1"
 RECEIPT_SCHEMA = "co-chsd-qualification-receipt/v1"
 MAX_JSON_BYTES = 1_000_000
@@ -93,6 +93,7 @@ def _validate_tree(value: Any) -> None:
     stack = [(value, 0)]
     seen = set()
     nodes = 0
+    utf8_bytes = 0
     while stack:
         current, depth = stack.pop()
         nodes += 1
@@ -111,9 +112,12 @@ def _validate_tree(value: Any) -> None:
             raise QualificationError("floating-point value forbidden")
         if t is str:
             try:
-                current.encode("utf-8", "strict")
+                encoded = current.encode("utf-8", "strict")
             except UnicodeEncodeError as exc:
                 raise QualificationError("invalid Unicode string") from exc
+            utf8_bytes += len(encoded)
+            if utf8_bytes > MAX_JSON_BYTES:
+                raise QualificationError("JSON value exceeds aggregate string-byte limit")
             continue
         if t is list:
             marker = id(current)
@@ -131,6 +135,13 @@ def _validate_tree(value: Any) -> None:
             for key, item in reversed(list(current.items())):
                 if type(key) is not str:
                     raise QualificationError("JSON object key must be string")
+                try:
+                    key_bytes = key.encode("utf-8", "strict")
+                except UnicodeEncodeError as exc:
+                    raise QualificationError("invalid Unicode object key") from exc
+                utf8_bytes += len(key_bytes)
+                if utf8_bytes > MAX_JSON_BYTES:
+                    raise QualificationError("JSON value exceeds aggregate string-byte limit")
                 stack.append((item, depth + 1))
             continue
         raise QualificationError(f"unsupported JSON type: {t.__name__}")
@@ -221,8 +232,7 @@ def _validate_buyer_descriptor(value: Any, label: str) -> dict[str, Any]:
     _sha(row["sha256"], f"{label}.sha256")
     _instant(row["effective_at"], f"{label}.effective_at")
     _instant(row["proposal_deadline"], f"{label}.proposal_deadline")
-    if row["solicitation_id"] != OPPORTUNITY_ID:
-        raise QualificationError(f"{label}.solicitation_id mismatch")
+    _text(row["solicitation_id"], f"{label}.solicitation_id")
     return row
 
 
@@ -329,10 +339,9 @@ def _build_engine(
             admitted_sources.sort(key=lambda row: (row[0], row[1]))
             latest_effective = admitted_sources[-1][0]
             latest = [row for row in admitted_sources if row[0] == latest_effective]
-            deadlines = {row[3] for row in latest}
-            if len(deadlines) != 1:
-                raise QualificationError("conflicting current official buyer generation")
-            current_buyer = latest[-1]
+            if len(latest) != 1:
+                raise QualificationError("ambiguous current official buyer generation")
+            current_buyer = latest[0]
 
         rows = packet["qualification_evidence"]
         if type(rows) is not list:
@@ -369,7 +378,7 @@ def _build_engine(
         partner_prime_gaps = [gate for gate in PRIME_GATES if gate not in satisfied["PARTNER"]]
         teaming_agreement = "teaming_agreement" in satisfied["PARTNER"]
 
-        commercial_posture = "PRIME_CANDIDATE"
+        commercial_posture = "RESEARCH_HOLD"
         state = "HOLD_EVIDENCE"
         reason = "qualification evidence incomplete"
 
@@ -410,15 +419,17 @@ def _build_engine(
                 elif "staffing_operations" in owner_prime_gaps:
                     state = "HOLD_STAFFING_OPERATIONS"
                     reason = "staffing/operations evidence missing"
-            elif "price_approved" in owner_review_gaps:
-                state = "HOLD_PRICE"
-                reason = "owner-approved price evidence missing"
-            elif owner_review_gaps:
-                state = "HOLD_EVIDENCE"
-                reason = "owner signatory evidence missing"
             else:
-                state = "PRIME_READY_FOR_OWNER_REVIEW"
-                reason = "all source-owned buyer and owner qualification evidence is admitted"
+                commercial_posture = "PRIME_CANDIDATE"
+                if "price_approved" in owner_review_gaps:
+                    state = "HOLD_PRICE"
+                    reason = "owner-approved price evidence missing"
+                elif owner_review_gaps:
+                    state = "HOLD_EVIDENCE"
+                    reason = "owner signatory evidence missing"
+                else:
+                    state = "PRIME_READY_FOR_OWNER_REVIEW"
+                    reason = "all source-owned buyer and owner qualification evidence is admitted"
 
         normalized = {
             "schema": PACKET_SCHEMA,
