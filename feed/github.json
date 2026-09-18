@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 98,
     "open_pull_requests": 52,
-    "runs_in_progress": 14,
-    "runs_queued": 274
+    "runs_in_progress": 13,
+    "runs_queued": 304
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "sol-delta/mmsd-15831-cancel-correction-20260917",
-      "created_at": "2026-09-18T01:31:15Z",
+      "branch": "zsol17/irs-5000233302-partner-capture-20260917",
+      "created_at": "2026-09-18T01:34:40Z",
       "draft": false,
-      "head_sha": "098f78d025fa39701241a7e72fe3bd35200765d9",
-      "number": 15844,
-      "title": "revenue: stop stale MMSD pursuit after buyer cancellation",
-      "updated_at": "2026-09-18T01:31:15Z"
+      "head_sha": "96524e04f7732351602d6e23d9a0e5bda4b3fb98",
+      "number": 15846,
+      "title": "Revenue: add IRS 5000233302 partner-first capture packet",
+      "updated_at": "2026-09-18T01:35:08Z"
     },
     {
       "author": "woahwhattheheck",
@@ -86,7 +86,7 @@
       "head_sha": "2fa099d3627947bcd343bc62119c0b952a760a46",
       "number": 15843,
       "title": "Recover Commercial Laundry operations desk on current main",
-      "updated_at": "2026-09-18T01:30:23Z"
+      "updated_at": "2026-09-18T01:33:21Z"
     },
     {
       "author": "woahwhattheheck",
@@ -116,10 +116,10 @@
       "branch": "zsol/alameda-902737",
       "created_at": "2026-09-18T01:24:26Z",
       "draft": false,
-      "head_sha": "0874f8f06e4709d32d9aacf445a4be2ef19514f2",
+      "head_sha": "b49ec6eeb333403b8bdb679b546c572bf646b00a",
       "number": 15838,
       "title": "Alameda 902737 qualification carrier",
-      "updated_at": "2026-09-18T01:28:36Z"
+      "updated_at": "2026-09-18T01:35:07Z"
     },
     {
       "author": "woahwhattheheck",
@@ -130,7 +130,7 @@
       "head_sha": "b053ab20ae622e273b8a776d326d5a4323c7835e",
       "number": 15836,
       "title": "Outbound: recover mandatory organization-aware provider chain on current main",
-      "updated_at": "2026-09-18T01:30:09Z"
+      "updated_at": "2026-09-18T01:32:02Z"
     },
     {
       "author": "woahwhattheheck",
@@ -149,10 +149,10 @@
       "branch": "z-argent/ky-ai-workforce-response-kit-recovery-20260917",
       "created_at": "2026-09-18T01:21:13Z",
       "draft": false,
-      "head_sha": "77e1bf2042f12bfc7bcfeb7702e54c7701e5da0e",
+      "head_sha": "2bb76c998d58b02141f2f01e05c48f20829178b8",
       "number": 15832,
       "title": "Revenue: recover Kentucky AI workforce response assembly kit",
-      "updated_at": "2026-09-18T01:31:30Z"
+      "updated_at": "2026-09-18T01:34:44Z"
     },
     {
       "author": "woahwhattheheck",
@@ -190,9 +190,9 @@
     "15657": "db205be68cb31e3cc37beca55fc5287fb65d54a6",
     "15662": "4717e0a2e5a198122956f443afb115265a11edf8",
     "15668": "a0806469a08003c3ae84752d7a23d61fa7cd8109",
-    "15682": "05cbf55253cf86fef5e60807ffd19b3a082addb0",
+    "15682": "8bc90eedfd545cab08277ba8df1937bf4629e8c0",
     "15684": "a5aca2b07b41ca47fc3e914b172584fbc3712788",
-    "15699": "43ada9c1b6a2152d1fd65d95ed41ccade89be98f",
+    "15699": "252a76900b26c26e1a6e5103e1f89d58948d9700",
     "15700": "5441a7eae9e7d554fb0dbbb0fed044a9a101fa55",
     "15714": "49f70c1b3d26a1caffe7edb0cb5dc5fa6263c517",
     "15717": "867cddeeb96b2d0cb6c4e8099e2602256d4ed9e4",
@@ -200,7 +200,7 @@
     "15724": "0bc0e6b19aed5ea71598c6ab6b914a828bc8a6f4",
     "15728": "cb58a8a194a40c354da2e68cb266c733fb6b77c5",
     "15730": "ed09e795c50666ad4158da3fa3a991d6017332d8",
-    "15731": "9796d8857366291ef873aae725ffcec9887555eb",
+    "15731": "0900f7c40284d7576b016cbafb541d5ec06edb0d",
     "15732": "8cd5546c7fef5d2d2b48101e7a40d134ddaed2b0",
     "15733": "2b7131508bb5a57c1c41b5befc05a979673afbb1",
     "15734": "2a8d940c5207c273f797e73a9a5004b305b186a8",
@@ -222,19 +222,41 @@
     "15818": "bfaf415a8f0ba3b9f2cae990b5bbddb4063854e0",
     "15822": "d16105e6759e92870b31f2d795b86383333f898d",
     "15823": "783792d04073809967c44caaa80d754bd79f5466",
-    "15832": "77e1bf2042f12bfc7bcfeb7702e54c7701e5da0e",
+    "15832": "2bb76c998d58b02141f2f01e05c48f20829178b8",
     "15834": "c3464df897f45c235b3ec385d6cd1bf83dc1f9f9",
     "15836": "b053ab20ae622e273b8a776d326d5a4323c7835e",
-    "15838": "0874f8f06e4709d32d9aacf445a4be2ef19514f2",
+    "15838": "b49ec6eeb333403b8bdb679b546c572bf646b00a",
     "15840": "1dd7127ba8b46b36e0020a347946d334bddab2b3",
     "15841": "568a80567ae0d16bd343299b681aac683fc98f5e",
     "15843": "2fa099d3627947bcd343bc62119c0b952a760a46",
-    "15844": "098f78d025fa39701241a7e72fe3bd35200765d9"
+    "15846": "96524e04f7732351602d6e23d9a0e5bda4b3fb98"
   },
   "pulls_listed": 52,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 19.6,
+  "queue_depth_per_runner": 23.4,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-rook/mcc-1017-27-ai-workspace-currentmain-20260917",
+      "closed_at": "2026-09-18T01:33:04Z",
+      "head_sha": "6bbdf574de23cab3f556b75d624fb43b7795355b",
+      "merged_at": "2026-09-18T01:33:04Z",
+      "number": 15845,
+      "state": "MERGED",
+      "title": "Revenue: build MCC 1017-27 partner-first AI workspace pursuit"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "sol-delta/mmsd-15831-cancel-correction-20260917",
+      "closed_at": "2026-09-18T01:31:57Z",
+      "head_sha": "098f78d025fa39701241a7e72fe3bd35200765d9",
+      "merged_at": null,
+      "number": 15844,
+      "state": "CLOSED",
+      "title": "revenue: stop stale MMSD pursuit after buyer cancellation"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -377,32 +399,10 @@
       "number": 15816,
       "state": "MERGED",
       "title": "fix(commerce): reconcile outcome_commerce catalog+test with landed main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/customer-public-surface-boundary-20260917",
-      "closed_at": "2026-09-18T00:15:17Z",
-      "head_sha": "625606bea5403c7a87b3a1bb143c0cff60581f3f",
-      "merged_at": "2026-09-18T00:15:17Z",
-      "number": 15800,
-      "state": "MERGED",
-      "title": "Pin customer/public surface boundary across swarm entrypoints"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok/wrf5417-land-receipt-20260918",
-      "closed_at": "2026-09-18T00:13:59Z",
-      "head_sha": "7c92b643bb5e3cf0a3d908e81c05e172f571018c",
-      "merged_at": "2026-09-18T00:13:59Z",
-      "number": 15805,
-      "state": "MERGED",
-      "title": "board: WRF 5417 authority-recovery land receipt"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T01:31:45Z",
+  "unchanged_since": "2026-09-18T01:36:01Z",
   "undatable_pulls": []
 }
