@@ -27,13 +27,13 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Compile
         working-directory: competitions/xtech-search10-2026/portfolio_downselect
-        run: python -m py_compile downselect.py test_downselect.py
+        run: python -m py_compile downselect.py whitepaper.py test_downselect.py test_whitepaper.py
       - name: Hostile contract tests
         working-directory: competitions/xtech-search10-2026/portfolio_downselect
-        run: python -m unittest -v test_downselect.py
+        run: python -m unittest -v test_downselect.py test_whitepaper.py
       - name: Hostile contract tests under optimized Python
         working-directory: competitions/xtech-search10-2026/portfolio_downselect
-        run: python -O -m unittest -v test_downselect.py
+        run: python -O -m unittest -v test_downselect.py test_whitepaper.py
       - name: Current portfolio must fail closed
         working-directory: competitions/xtech-search10-2026/portfolio_downselect
         run: |
@@ -51,4 +51,19 @@ jobs:
           assert len(report['retainedEvidenceManifestSha256']) == 64, report
           assert 'does not independently authenticate' in report['evidenceTrustBoundary'], report
           assert len(report['receiptSha256']) == 64, report
+          PY
+      - name: Current white-paper source packet must stay blocked
+        working-directory: competitions/xtech-search10-2026/portfolio_downselect
+        run: |
+          python whitepaper.py portfolio.current.json > /tmp/xtech-whitepaper.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          packet = json.loads(Path('/tmp/xtech-whitepaper.json').read_text())
+          assert packet['releaseState'] == 'BLOCKED_NO_INTERNAL_SELECTION', packet
+          assert packet['selectedCandidateId'] is None, packet
+          assert packet['officialTemplateApplied'] is False, packet
+          assert packet['pageConformanceDetermined'] is False, packet
+          assert packet['submissionAuthorized'] is False, packet
+          assert len(packet['receiptSha256']) == 64, packet
           PY
