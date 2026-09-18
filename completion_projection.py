@@ -15,6 +15,10 @@ import hashlib
 import json
 import os
 import re
+import subprocess
+import sys
+import urllib.error
+import urllib.request
 from pathlib import Path
 from typing import Any, Callable
 
@@ -314,3 +318,135 @@ def is_completed_actionable(meta: dict[str, Any], completed_ids: set[str] | froz
         and str(meta.get("from") or "").upper() == "UNSEATED"
         and str(meta.get("to") or "").upper() == "TABLE"
     )
+
+
+_REPO = "woahwhattheheck/commons"
+_API = "https://api.github.com/repos/" + _REPO
+
+
+def _api_json(url: str):
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "User-Agent": "commons-completion-projection",
+    }
+    token = os.environ.get("GITHUB_TOKEN") or ""
+    if token:
+        headers["Authorization"] = "Bearer " + token
+    req = urllib.request.Request(url, headers=headers)
+    try:
+        with urllib.request.urlopen(req, timeout=30) as response:
+            return json.loads(response.read().decode("utf-8", "replace") or "null")
+    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError, json.JSONDecodeError):
+        return None
+
+
+def _merge_is_ancestor(root: str | os.PathLike[str], merge_sha: str) -> bool:
+    try:
+        proc = subprocess.run(
+            ["git", "merge-base", "--is-ancestor", str(merge_sha or ""), "HEAD"],
+            cwd=root,
+            stdin=subprocess.DEVNULL,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            timeout=10,
+            check=False,
+        )
+    except (OSError, subprocess.TimeoutExpired):
+        return False
+    return proc.returncode == 0
+
+
+def _marker_for_completed_issue(root: str | os.PathLike[str], issue_number: int):
+    issue = _api_json("%s/issues/%s" % (_API, issue_number))
+    if not isinstance(issue, dict):
+        return None
+    if issue.get("state") != "closed" or issue.get("state_reason") != "completed":
+        return None
+    operation_id = stable_operation_id_from_issue(issue)
+    if not operation_id:
+        return None
+    timeline = _api_json("%s/issues/%s/timeline?per_page=100" % (_API, issue_number))
+    if not isinstance(timeline, list):
+        return None
+    candidates = []
+    for event in timeline:
+        if not isinstance(event, dict) or event.get("event") != "cross-referenced":
+            continue
+        source_issue = ((event.get("source") or {}).get("issue") or {})
+        if not isinstance(source_issue, dict) or not source_issue.get("pull_request"):
+            continue
+        if source_issue.get("repository_url") != _API:
+            continue
+        pr_number = source_issue.get("number")
+        if not isinstance(pr_number, int) or isinstance(pr_number, bool):
+            continue
+        pull = _api_json("%s/pulls/%s" % (_API, pr_number))
+        if not isinstance(pull, dict):
+            continue
+        try:
+            marker = build_marker(root, operation_id, issue, pull)
+        except CompletionEvidenceError:
+            continue
+        merge_sha = marker["merge"]["merge_commit_sha"]
+        if not _merge_is_ancestor(root, merge_sha):
+            continue
+        candidates.append(marker)
+    if not candidates:
+        return None
+    candidates.sort(key=lambda row: (row["merge"]["merged_at"], row["merge"]["pr_number"]))
+    return candidates[-1]
+
+
+def handle_github_issue_event(
+    root: str | os.PathLike[str],
+    event_path: str | os.PathLike[str],
+) -> dict[str, Any]:
+    try:
+        event = json.loads(Path(event_path).read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError):
+        return {"state": "HOLD", "reason": "unreadable_event"}
+    action = str(event.get("action") or "")
+    issue = event.get("issue") or {}
+    number = issue.get("number")
+    if not isinstance(number, int) or isinstance(number, bool) or number < 1:
+        return {"state": "HOLD", "reason": "missing_issue_number"}
+    if action == "reopened":
+        removed = remove_markers_for_issue(root, number)
+        return {"state": "REOPENED", "issue": number, "removed": list(removed)}
+    if action != "closed":
+        return {"state": "IGNORED", "issue": number, "action": action}
+    marker = _marker_for_completed_issue(root, number)
+    if marker is None:
+        return {"state": "HOLD", "issue": number, "reason": "no_verified_main_merge_or_identity"}
+    operation_id = marker["operation_id"]
+    try:
+        write = write_marker(
+            root,
+            marker,
+            lambda sha: _merge_is_ancestor(root, sha),
+        )
+    except CompletionEvidenceError:
+        return {"state": "HOLD", "issue": number, "reason": "marker_validation_failed"}
+    return {
+        "state": "COMPLETED",
+        "issue": number,
+        "operation_id": operation_id,
+        "write": write,
+        "pr": marker["merge"]["pr_number"],
+        "merge": marker["merge"]["merge_commit_sha"],
+    }
+
+
+def _main(argv=None) -> int:
+    args = list(sys.argv[1:] if argv is None else argv)
+    if len(args) != 2 or args[0] != "--github-event":
+        print("usage: completion_projection.py --github-event PATH", file=sys.stderr)
+        return 2
+    root = Path(__file__).resolve().parent
+    result = handle_github_issue_event(root, args[1])
+    print("COMPLETION_EVENT " + json.dumps(result, sort_keys=True), flush=True)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(_main())
