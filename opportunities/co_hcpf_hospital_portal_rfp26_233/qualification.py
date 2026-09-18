@@ -43,7 +43,8 @@ SOURCE_KEYS = frozenset(
         "five_year_cap_usd",
     }
 )
-EVIDENCE_KEYS = frozenset({"id", "party", "gate", "sha256"})
+EVIDENCE_KEYS = frozenset({"id", "party", "gate", "subject_person_id", "sha256"})
+ROSTER_KEYS = frozenset({"id", "sha256", "assignments"})
 PARTIES = frozenset({"OWNER", "PARTNER"})
 
 TEAM_GATES = (
@@ -64,6 +65,15 @@ PERSONNEL_GATES = (
     "web_app_lead_qualifications",
     "quality_lead_qualifications",
 )
+PERSONNEL_ROLE_BY_GATE = MappingProxyType(
+    {
+        "project_lead_qualifications": "project_lead",
+        "project_manager_qualifications": "project_manager",
+        "web_app_lead_qualifications": "web_app_lead",
+        "quality_lead_qualifications": "quality_lead",
+    }
+)
+REQUIRED_PERSONNEL_ROLES = tuple(PERSONNEL_ROLE_BY_GATE.values())
 OWNER_CONTROL_GATES = (
     "colorado_vss_legal",
     "teaming_agreement",
@@ -78,6 +88,7 @@ _SHA_RE = re.compile(r"^[0-9a-f]{64}$")
 # Colorado VSS attachment bytes and qualification evidence are retained.
 _PRODUCTION_SOURCE_ROOTS: Mapping[str, Mapping[str, Any]] = MappingProxyType({})
 _PRODUCTION_EVIDENCE_ROOTS: Mapping[str, Mapping[str, Any]] = MappingProxyType({})
+_PRODUCTION_ROSTER_ROOTS: Mapping[str, Mapping[str, Any]] = MappingProxyType({})
 
 
 class QualificationError(ValueError):
@@ -184,6 +195,90 @@ def _validate_tree(
                 stack.append((item, depth + 1))
             continue
         raise _error(f"unsupported JSON type: {t.__name__}")
+
+
+def _snapshot_json(
+    value: Any,
+    *,
+    _max_nodes: int = MAX_JSON_NODES,
+    _max_depth: int = MAX_JSON_DEPTH,
+    _max_safe: int = MAX_SAFE_INT,
+    _max_bytes: int = MAX_JSON_BYTES,
+    _error=QualificationError,
+    _type=type,
+    _id=id,
+    _tuple=tuple,
+) -> Any:
+    """Detach one bounded exact-JSON generation from caller-owned containers.
+
+    The snapshot is the only graph semantic/trust checks may inspect. A caller
+    may mutate its original graph before, during, or after this copy; later
+    admission, receipt, and digest logic all consume only the detached graph.
+    """
+    seen: set[int] = set()
+    nodes = 0
+    utf8_bytes = 0
+
+    def clone(current: Any, depth: int) -> Any:
+        nonlocal nodes, utf8_bytes
+        nodes += 1
+        if nodes > _max_nodes:
+            raise _error("JSON value exceeds node limit")
+        if depth > _max_depth:
+            raise _error("JSON value exceeds depth limit")
+        t = _type(current)
+        if current is None or t is bool:
+            return current
+        if t is int:
+            if abs(current) > _max_safe:
+                raise _error("unsafe JSON integer")
+            return current
+        if t is float:
+            raise _error("floating-point value forbidden")
+        if t is str:
+            try:
+                encoded = current.encode("utf-8", "strict")
+            except UnicodeEncodeError as exc:
+                raise _error("invalid Unicode string") from exc
+            utf8_bytes += len(encoded)
+            if utf8_bytes > _max_bytes:
+                raise _error("JSON value exceeds aggregate string-byte limit")
+            return current
+        if t is list:
+            marker = _id(current)
+            if marker in seen:
+                raise _error("shared/cyclic JSON container")
+            seen.add(marker)
+            try:
+                items = _tuple(current)
+            except RuntimeError as exc:
+                raise _error("input mutated during snapshot") from exc
+            return [clone(item, depth + 1) for item in items]
+        if t is dict:
+            marker = _id(current)
+            if marker in seen:
+                raise _error("shared/cyclic JSON container")
+            seen.add(marker)
+            try:
+                items = _tuple(current.items())
+            except RuntimeError as exc:
+                raise _error("input mutated during snapshot") from exc
+            out: dict[str, Any] = {}
+            for key, item in items:
+                if _type(key) is not str:
+                    raise _error("JSON object key must be string")
+                try:
+                    key_bytes = key.encode("utf-8", "strict")
+                except UnicodeEncodeError as exc:
+                    raise _error("invalid Unicode object key") from exc
+                utf8_bytes += len(key_bytes)
+                if utf8_bytes > _max_bytes:
+                    raise _error("JSON value exceeds aggregate string-byte limit")
+                out[key] = clone(item, depth + 1)
+            return out
+        raise _error(f"unsupported JSON type: {t.__name__}")
+
+    return clone(value, 0)
 
 
 def loads_strict(
@@ -346,6 +441,7 @@ def _validate_evidence_descriptor(
     _sha_fn=_sha,
     _parties=PARTIES,
     _gates=ALL_GATES,
+    _personnel=frozenset(PERSONNEL_GATES),
     _owner_only=frozenset(OWNER_CONTROL_GATES),
     _error=QualificationError,
 ):
@@ -357,7 +453,36 @@ def _validate_evidence_descriptor(
         raise _error(f"{label}.gate invalid")
     if row["party"] == "PARTNER" and row["gate"] in _owner_only:
         raise _error(f"{label}.gate is owner-controlled")
+    subject = row["subject_person_id"]
+    if row["gate"] in _personnel:
+        _text_fn(subject, f"{label}.subject_person_id")
+    elif subject is not None:
+        raise _error(f"{label}.subject_person_id must be null for non-personnel evidence")
     _sha_fn(row["sha256"], f"{label}.sha256")
+    return row
+
+
+def _validate_roster_descriptor(
+    value: Any,
+    label: str,
+    *,
+    _exact=_exact_keys,
+    _keys=ROSTER_KEYS,
+    _roles=REQUIRED_PERSONNEL_ROLES,
+    _text_fn=_text,
+    _sha_fn=_sha,
+    _error=QualificationError,
+):
+    row = _exact(value, _keys, label)
+    _text_fn(row["id"], f"{label}.id")
+    _sha_fn(row["sha256"], f"{label}.sha256")
+    assignments = row["assignments"]
+    _exact(assignments, frozenset(_roles), f"{label}.assignments")
+    people = []
+    for role in _roles:
+        people.append(_text_fn(assignments[role], f"{label}.assignments.{role}"))
+    if len(set(people)) != len(people):
+        raise _error(f"{label}.assignments must bind distinct people to required roles")
     return row
 
 
@@ -387,6 +512,20 @@ def _freeze_evidence_roots(roots: Mapping[str, Mapping[str, Any]]):
     return out
 
 
+def _freeze_roster_roots(roots: Mapping[str, Mapping[str, Any]]):
+    if type(roots) not in (dict, MappingProxyType):
+        raise QualificationError("roster_roots must be a mapping")
+    out = {}
+    for key, value in roots.items():
+        key = _text(key, "roster_roots.id")
+        row = dict(_validate_roster_descriptor(dict(value), f"roster_roots[{key}]"))
+        row["assignments"] = dict(row["assignments"])
+        if row["id"] != key:
+            raise QualificationError("roster root key/id mismatch")
+        out[key] = row
+    return out
+
+
 def _utc_now(_now=datetime.now, _utc=timezone.utc) -> datetime:
     return _now(_utc)
 
@@ -394,19 +533,23 @@ def _utc_now(_now=datetime.now, _utc=timezone.utc) -> datetime:
 def _build_engine(
     source_roots: Mapping[str, Mapping[str, Any]],
     evidence_roots: Mapping[str, Mapping[str, Any]],
+    roster_roots: Mapping[str, Mapping[str, Any]],
     clock: Callable[[], datetime],
 ):
     trusted_sources = _freeze_source_roots(source_roots)
     trusted_evidence = _freeze_evidence_roots(evidence_roots)
+    trusted_rosters = _freeze_roster_roots(roster_roots)
     trusted_clock = clock
 
     # Seal this generation against ordinary module-global rebinding.
+    snapshot_json = _snapshot_json
     validate_tree = _validate_tree
     exact_keys = _exact_keys
     text_fn = _text
     sha_fn = _sha
     source_validator = _validate_source_descriptor
     evidence_validator = _validate_evidence_descriptor
+    roster_validator = _validate_roster_descriptor
     instant_fn = _instant
     canonical_fn = canonical_bytes
     digest_fn = hashlib.sha256
@@ -417,15 +560,24 @@ def _build_engine(
     pursuit_id = PURSUIT_ID
     source_keys = SOURCE_KEYS
     evidence_keys = EVIDENCE_KEYS
+    roster_keys = ROSTER_KEYS
     team_gates = tuple(TEAM_GATES)
     personnel_gates = tuple(PERSONNEL_GATES)
+    personnel_role_by_gate = dict(PERSONNEL_ROLE_BY_GATE)
     owner_control_gates = tuple(OWNER_CONTROL_GATES)
 
     def compile_packet(packet: Any) -> dict[str, Any]:
+        packet = snapshot_json(packet)
         validate_tree(packet)
         packet = exact_keys(
             packet,
-            frozenset({"schema", "pursuit_id", "buyer_source_sets", "qualification_evidence"}),
+            frozenset({
+                "schema",
+                "pursuit_id",
+                "buyer_source_sets",
+                "proposed_roster",
+                "qualification_evidence",
+            }),
             "packet",
         )
         if packet["schema"] != packet_schema:
@@ -465,6 +617,17 @@ def _build_engine(
                 raise QualificationError("ambiguous current official buyer generation")
             current_source = latest[0]
 
+        roster_row = packet["proposed_roster"]
+        current_roster = None
+        if roster_row is not None:
+            roster_row = roster_validator(
+                exact_keys(roster_row, roster_keys, "proposed_roster"),
+                "proposed_roster",
+            )
+            trusted_roster = trusted_rosters.get(roster_row["id"])
+            if trusted_roster is not None and roster_row == trusted_roster:
+                current_roster = roster_row
+
         evidence = packet["qualification_evidence"]
         if type(evidence) is not list:
             raise QualificationError("qualification_evidence must be an array")
@@ -472,6 +635,7 @@ def _build_engine(
         owner_gates = set()
         partner_gates = set()
         admitted_evidence = []
+        matched_personnel: dict[str, tuple[str, str, str]] = {}
         for idx, row in enumerate(evidence):
             row = evidence_validator(
                 exact_keys(row, evidence_keys, f"qualification_evidence[{idx}]"),
@@ -484,11 +648,34 @@ def _build_engine(
             trusted = trusted_evidence.get(eid)
             if trusted is None or row != trusted:
                 continue
+
+            admitted_evidence.append(
+                (
+                    eid,
+                    row["party"],
+                    row["gate"],
+                    row["subject_person_id"] or "",
+                    row["sha256"],
+                )
+            )
+            gate = row["gate"]
+            if gate in personnel_gates:
+                if current_roster is None:
+                    continue
+                role = personnel_role_by_gate[gate]
+                proposed_person = current_roster["assignments"][role]
+                if row["subject_person_id"] != proposed_person:
+                    continue
+                if gate in matched_personnel:
+                    raise QualificationError(
+                        f"multiple admitted personnel evidence bindings for {gate}"
+                    )
+                matched_personnel[gate] = (eid, row["party"], proposed_person)
+
             if row["party"] == "OWNER":
-                owner_gates.add(row["gate"])
+                owner_gates.add(gate)
             else:
-                partner_gates.add(row["gate"])
-            admitted_evidence.append((eid, row["party"], row["gate"], row["sha256"]))
+                partner_gates.add(gate)
 
         now = trusted_clock()
         if not isinstance(now, datetime_type) or now.tzinfo is None:
@@ -545,10 +732,14 @@ def _build_engine(
             else:
                 state = "HOLD_STAFFING_OPERATIONS"
                 reason = "team insurance/staffing/support evidence incomplete"
+        elif current_roster is None:
+            commercial_posture = "QUALIFICATION_HOLD"
+            state = "HOLD_PERSONNEL_ROSTER"
+            reason = "no source-owned proposed-personnel roster is admitted"
         elif personnel_gaps:
             commercial_posture = "QUALIFICATION_HOLD"
             state = "HOLD_PERSONNEL"
-            reason = "required individual key-personnel evidence incomplete"
+            reason = "required evidence is not bound to every proposed key person"
         elif "colorado_vss_legal" not in owner_gates:
             commercial_posture = "QUALIFICATION_HOLD"
             state = "HOLD_REGISTRATION_LEGAL"
@@ -580,6 +771,7 @@ def _build_engine(
             "schema": packet_schema,
             "pursuit_id": pursuit_id,
             "buyer_source_sets": packet["buyer_source_sets"],
+            "proposed_roster": packet["proposed_roster"],
             "qualification_evidence": packet["qualification_evidence"],
         }
         input_digest = digest_fn(canonical_fn(normalized)).hexdigest()
@@ -601,6 +793,24 @@ def _build_engine(
                 "five_year_cap_usd": row["five_year_cap_usd"],
             }
 
+        roster_receipt = None
+        if current_roster is not None:
+            roster_receipt = {
+                "id": current_roster["id"],
+                "sha256": current_roster["sha256"],
+                "assignments": dict(current_roster["assignments"]),
+            }
+        personnel_bindings = [
+            {
+                "gate": gate,
+                "role": personnel_role_by_gate[gate],
+                "evidence_id": binding[0],
+                "party": binding[1],
+                "subject_person_id": binding[2],
+            }
+            for gate, binding in sorted(matched_personnel.items())
+        ]
+
         result = {
             "schema": receipt_schema,
             "pursuit_id": pursuit_id,
@@ -609,8 +819,10 @@ def _build_engine(
             "commercial_posture": commercial_posture,
             "reason": reason,
             "official_source_set": source_receipt,
+            "proposed_roster": roster_receipt,
             "team_gaps": team_gaps,
             "personnel_gaps": personnel_gaps,
+            "personnel_bindings": personnel_bindings,
             "owner_control_gaps": owner_control_gaps,
             "partner_required_gates": partner_required_gates,
             "trusted_teaming_agreement": teaming_agreement,
@@ -639,6 +851,7 @@ def _build_engine(
 _PRODUCTION_ENGINE = _build_engine(
     _PRODUCTION_SOURCE_ROOTS,
     _PRODUCTION_EVIDENCE_ROOTS,
+    _PRODUCTION_ROSTER_ROOTS,
     _utc_now,
 )
 
