@@ -19,6 +19,7 @@ class WhitepaperCompilerTests(unittest.TestCase):
         self.assertIn("## Technical Approach — published weight 40%", result["markdown"])
         self.assertIn("Demonstrated metric", result["markdown"])
         self.assertIn("Transition path", result["markdown"])
+        self.assertNotIn("woahwhattheheck/example", result["markdown"])
         self.assertFalse(result["officialTemplateApplied"])
         self.assertFalse(result["pageConformanceDetermined"])
         self.assertFalse(result["submissionAuthorized"])
