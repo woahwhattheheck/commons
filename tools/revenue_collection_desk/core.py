@@ -319,6 +319,8 @@ def _normalize_claim(value: Any, index: int, as_of_dt: datetime) -> dict[str, An
 
     for eindex, raw_event in enumerate(raw_events):
         event, event_at = _normalize_event(raw_event, f"{label}.events[{eindex}]")
+        if event_at > as_of_dt:
+            raise ContractError(f"{label}: event timestamp exceeds as_of")
         if event["event_id"] in seen_event_ids:
             raise ContractError(f"{label}: duplicate event_id {event['event_id']}")
         seen_event_ids.add(event["event_id"])
@@ -338,6 +340,13 @@ def _normalize_claim(value: Any, index: int, as_of_dt: datetime) -> dict[str, An
                     asserted_hold_until = None
                     asserted_hold_text = None
             if kind == "SETTLED_CASH":
+                if (
+                    event["settlement_currency"] == instrument
+                    and Decimal(event["settlement_amount"]) != amount_dec
+                ):
+                    raise ContractError(
+                        f"{label}: same-instrument settlement must equal immutable claim amount"
+                    )
                 settlement = {
                     "currency": event["settlement_currency"],
                     "amount": event["settlement_amount"],
