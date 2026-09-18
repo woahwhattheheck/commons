@@ -79,7 +79,7 @@ def test_publication_review_requires_complete_current_evidence():
     packet = compile_at(evid=evidence([ev()]))
     row = by_repo(packet, "private-one")
     assert row["state"] == "PUBLICATION_REVIEW"
-    assert row["reasons"] == ["EXPLICIT_PUBLICATION_REVIEW_EVIDENCE_COMPLETE"]
+    assert row["reasons"] == ["SOURCE_TRUSTED_PUBLICATION_REVIEW_EVIDENCE_COMPLETE"]
     assert packet["authority"]["repository_visibility_mutation_authorized"] is False
     assert packet["authority"]["publication_safety_certified"] is False
 
@@ -106,7 +106,7 @@ def test_keep_private_never_requires_public_release_classification():
     row = ev(intent="keep_private", secret="FINDINGS", content="PRIVATE", legal="PRIVATE", owner=True)
     packet = compile_at(evid=evidence([row]))
     assert by_repo(packet, "private-one")["state"] == "KEEP_PRIVATE"
-    assert by_repo(packet, "private-one")["reasons"] == ["OWNER_KEEP_PRIVATE"]
+    assert by_repo(packet, "private-one")["reasons"] == ["CONSERVATIVE_KEEP_PRIVATE"]
 
 
 def test_keep_private_is_conservative_even_without_publication_authority():
