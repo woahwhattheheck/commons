@@ -1,0 +1,17 @@
+{
+  "opportunity_id": "ALAMEDA-902737",
+  "status": "SOURCE_HOLD",
+  "requirements": [
+    {"id":"identity-deadline","source_class":"FIRST_PARTY_OPPORTUNITY_IDENTITY","known":true,"value":"2026-10-13T14:00:00-07:00"},
+    {"id":"official-packet","source_class":"OFFICIAL_PACKET","known":false,"gate":"hard"},
+    {"id":"addenda-generation","source_class":"OFFICIAL_ADDENDA_INDEX","known":false,"gate":"hard"},
+    {"id":"teaming-rule","source_class":"OFFICIAL_PACKET","known":false,"gate":"hard"},
+    {"id":"local-participation","source_class":"OFFICIAL_PACKET","known":false,"gate":"hard"},
+    {"id":"qualified-platform","source_class":"PRIME_EVIDENCE","known":false,"gate":"hard"},
+    {"id":"three-similar-jurisdictions","source_class":"PRIME_EVIDENCE","known":false,"gate":"hard"},
+    {"id":"insurance","source_class":"PRIME_EVIDENCE","known":false,"gate":"hard"},
+    {"id":"security-accessibility","source_class":"PRIME_EVIDENCE","known":false,"gate":"hard"},
+    {"id":"support-24x7","source_class":"PRIME_EVIDENCE","known":false,"gate":"hard"},
+    {"id":"paid-tjlabs-seam","source_class":"INTERNAL_WORKSHARE_EVIDENCE","known":true,"value":"proposed_not_accepted"}
+  ]
+}

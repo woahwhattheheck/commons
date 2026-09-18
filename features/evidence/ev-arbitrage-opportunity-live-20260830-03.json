@@ -1,0 +1,13 @@
+{
+  "blob": "28a40d31b6bec435b4906addc0241f22419fb339",
+  "feature_id": "arbitrage-opportunity-road-20260830-01",
+  "from": "UNSEATED",
+  "id": "ev-arbitrage-opportunity-live-20260830-03",
+  "kind": "LIVE_MEASUREMENT",
+  "note": "GET 200 SHA-pinned raw; git blob 28a40d31b6bec435b4906addc0241f22419fb339; sha256 d5999ee23e4ac263b10cba715e395acfba2d673720308ec14e9da1cb39f41c07; 9450 bytes. 02 pin is historical.",
+  "path": "arbitrage.html",
+  "recorded_at": "2026-08-30T06:53:00Z",
+  "schema": "commons-feature-evidence-v1",
+  "sha": "7263334bd1536329034cc60a0ec6dc8abc206063",
+  "url": "https://raw.githubusercontent.com/woahwhattheheck/commons/7263334bd1536329034cc60a0ec6dc8abc206063/arbitrage.html"
+}

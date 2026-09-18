@@ -1,0 +1,655 @@
+{
+ "captured_utc": "The system cannot accept the date entered.\nEnter the new date: (mm-dd-yy)",
+ "git": {
+  "head": "3f3177b63e1a1755bfffee926af3a0e0b448eb61",
+  "short": "3f3177b",
+  "branch": "archive/desktop-20260801",
+  "dirty": "?? host/pfc_mac_prefix_fab.py",
+  "note": "muhl_builds and titan.gguf are NOT tracked; git covers docs/host only"
+ },
+ "substrate": {
+  "path": "C:/llm/models/titan.gguf",
+  "size": 40028316800,
+  "expected": 40028316800,
+  "size_ok": true,
+  "gguf_magic": "GGUF"
+ },
+ "registry": {
+  "path": "C:/llm/models/titan_circuits.json",
+  "entries": 4949,
+  "sha16": "db53d6f4db65d3d1"
+ },
+ "genome_journals": {
+  "count": 97,
+  "total_bytes": 2685080251,
+  "files": [
+   {
+    "name": "titan_absence_genome.jsonl",
+    "bytes": 1924,
+    "sha16": "7eeb035da601b387"
+   },
+   {
+    "name": "titan_accelerator_genome.jsonl",
+    "bytes": 25182,
+    "sha16": "b91c1e664c45f6c4"
+   },
+   {
+    "name": "titan_aes_genome.jsonl",
+    "bytes": 3280705,
+    "sha16": "02ecb73708be2e4e"
+   },
+   {
+    "name": "titan_alloc_roundtrip_genome.jsonl",
+    "bytes": 16662,
+    "sha16": "204dd241dc88bc66"
+   },
+   {
+    "name": "titan_app_genome.jsonl",
+    "bytes": 313,
+    "sha16": "ec13d2a03cf18bf0"
+   },
+   {
+    "name": "titan_bakegp_genome.jsonl",
+    "bytes": 45272,
+    "sha16": "25804a8ca0de22c7"
+   },
+   {
+    "name": "titan_batch2_genome.jsonl",
+    "bytes": 1707,
+    "sha16": "412705dea4716cc5"
+   },
+   {
+    "name": "titan_batch_genome.jsonl",
+    "bytes": 73083,
+    "sha16": "bcce34e5f42b8128"
+   },
+   {
+    "name": "titan_bounce_genome.jsonl",
+    "bytes": 1922,
+    "sha16": "f9bf47d90dc2f4b6"
+   },
+   {
+    "name": "titan_chaintest_genome.jsonl",
+    "bytes": 105,
+    "sha16": "440893d72badb4bc"
+   },
+   {
+    "name": "titan_clockcounter_genome.jsonl",
+    "bytes": 356,
+    "sha16": "a591d30d406b1951"
+   },
+   {
+    "name": "titan_clockrelocate_genome.jsonl",
+    "bytes": 374,
+    "sha16": "b1bed5182afa0352"
+   },
+   {
+    "name": "titan_collider_genome.jsonl",
+    "bytes": 72086,
+    "sha16": "c1ab2e421c57c3bc"
+   },
+   {
+    "name": "titan_cpu32_genome.jsonl",
+    "bytes": 137727,
+    "sha16": "ab90e432989d0b55"
+   },
+   {
+    "name": "titan_cpu32r_genome.jsonl",
+    "bytes": 273980,
+    "sha16": "0c77bb50fda3d92c"
+   },
+   {
+    "name": "titan_dblinv_genome.jsonl",
+    "bytes": 8536788,
+    "sha16": "8642ac2d2cd4357b"
+   },
+   {
+    "name": "titan_engine_store_genome.jsonl",
+    "bytes": 2257798,
+    "sha16": "8bf47bd3c17efc15"
+   },
+   {
+    "name": "titan_eval_genome.jsonl",
+    "bytes": 9285,
+    "sha16": "c9f8f2a71dff504c"
+   },
+   {
+    "name": "titan_fold_latch_genome.jsonl",
+    "bytes": 6103660,
+    "sha16": "d9c7d03236a79a3a"
+   },
+   {
+    "name": "titan_fold_phys_genome.jsonl",
+    "bytes": 58500906,
+    "sha16": "aebbcad2aad7be3c"
+   },
+   {
+    "name": "titan_full_miner_genome.jsonl",
+    "bytes": 6106805,
+    "sha16": "d7ec14d63b2f51f5"
+   },
+   {
+    "name": "titan_fwdphys_genome.jsonl",
+    "bytes": 21571807,
+    "sha16": "7368cd5ec6329865"
+   },
+   {
+    "name": "titan_fwdring_genome.jsonl",
+    "bytes": 356,
+    "sha16": "2f1b883ea85f4a8d"
+   },
+   {
+    "name": "titan_gen_win_genome.jsonl",
+    "bytes": 6104598,
+    "sha16": "3e94cca24badd1de"
+   },
+   {
+    "name": "titan_genwin_shallow_genome.jsonl",
+    "bytes": 12370359,
+    "sha16": "59a1f705251202d8"
+   },
+   {
+    "name": "titan_genwin_shared_genome.jsonl",
+    "bytes": 10631451,
+    "sha16": "9a5ba4db87836204"
+   },
+   {
+    "name": "titan_golomb_answer_genome.jsonl",
+    "bytes": 49,
+    "sha16": "b6e2da8baabfd4a1"
+   },
+   {
+    "name": "titan_halt_latch_genome.jsonl",
+    "bytes": 2171,
+    "sha16": "0c0ccd1f8fe7ab87"
+   },
+   {
+    "name": "titan_handshake_genome.jsonl",
+    "bytes": 4172,
+    "sha16": "d77df5e40017f5fe"
+   },
+   {
+    "name": "titan_lane_bank_genome.jsonl",
+    "bytes": 1670550865,
+    "sha16": "b81c43b03282bee6"
+   },
+   {
+    "name": "titan_lane_phys_genome.jsonl",
+    "bytes": 18851029,
+    "sha16": "795c213945fdf074"
+   },
+   {
+    "name": "titan_lane_sched_genome.jsonl",
+    "bytes": 13095600,
+    "sha16": "cd8aeee6dc8c9d73"
+   },
+   {
+    "name": "titan_lookup_genome.jsonl",
+    "bytes": 793,
+    "sha16": "45f23744e50e4bf4"
+   },
+   {
+    "name": "titan_mdlconnect_genome.jsonl",
+    "bytes": 7904782,
+    "sha16": "97d2d1ada89776c6"
+   },
+   {
+    "name": "titan_membership_genome.jsonl",
+    "bytes": 1435,
+    "sha16": "c2e063852aaa8715"
+   },
+   {
+    "name": "titan_memocache_genome.jsonl",
+    "bytes": 32835,
+    "sha16": "df3a08162811033b"
+   },
+   {
+    "name": "titan_mid_sched_genome.jsonl",
+    "bytes": 3373979,
+    "sha16": "e291cb9988f92123"
+   },
+   {
+    "name": "titan_mine_shallow_genome.jsonl",
+    "bytes": 11354651,
+    "sha16": "9fe07711b6013597"
+   },
+   {
+    "name": "titan_miner_physical_genome.jsonl",
+    "bytes": 17637033,
+    "sha16": "760398a98f4f269c"
+   },
+   {
+    "name": "titan_miner_split_genome.jsonl",
+    "bytes": 10633580,
+    "sha16": "939ad013f7c0ddb4"
+   },
+   {
+    "name": "titan_model_fab_genome.jsonl",
+    "bytes": 14779093,
+    "sha16": "676dcdb103ffd4ee"
+   },
+   {
+    "name": "titan_model_selfclock_genome.jsonl",
+    "bytes": 23733,
+    "sha16": "3fc66b43ebece69e"
+   },
+   {
+    "name": "titan_muhl_control_genome.20260802_055011.reverted.jsonl",
+    "bytes": 602,
+    "sha16": "907239c6e2abe766"
+   },
+   {
+    "name": "titan_muhl_control_genome.jsonl",
+    "bytes": 4778,
+    "sha16": "1eb605eb37805ae8"
+   },
+   {
+    "name": "titan_muhl_fold_genome.jsonl",
+    "bytes": 6103083,
+    "sha16": "8b108cf183ecb078"
+   },
+   {
+    "name": "titan_nonce_list_genome.jsonl",
+    "bytes": 32921,
+    "sha16": "770f8168720ac896"
+   },
+   {
+    "name": "titan_nonce_map_genome.jsonl",
+    "bytes": 44463,
+    "sha16": "121cd3c0439945fc"
+   },
+   {
+    "name": "titan_nring2_genome.jsonl",
+    "bytes": 3767368,
+    "sha16": "44adb6ac5aed50ea"
+   },
+   {
+    "name": "titan_nring2_run_genome.jsonl",
+    "bytes": 480,
+    "sha16": "3f784c63739b755d"
+   },
+   {
+    "name": "titan_oscall_genome.jsonl",
+    "bytes": 73674,
+    "sha16": "82ff3a84dd6b3d36"
+   },
+   {
+    "name": "titan_oscbank_genome.jsonl",
+    "bytes": 289,
+    "sha16": "b054e2ddcc39f5a5"
+   },
+   {
+    "name": "titan_osccollatz_genome.jsonl",
+    "bytes": 11242,
+    "sha16": "5343f4d47e2eb1e5"
+   },
+   {
+    "name": "titan_oscjunction_genome.jsonl",
+    "bytes": 97,
+    "sha16": "3d309e6658bd0c88"
+   },
+   {
+    "name": "titan_oscphys_genome.jsonl",
+    "bytes": 180,
+    "sha16": "345322ee7bb13182"
+   },
+   {
+    "name": "titan_oscphysstore_genome.jsonl",
+    "bytes": 315,
+    "sha16": "9b6449a66943cf7f"
+   },
+   {
+    "name": "titan_oscspaced_genome.jsonl",
+    "bytes": 28134,
+    "sha16": "2f6c6878bcbbff49"
+   },
+   {
+    "name": "titan_osctight_genome.jsonl",
+    "bytes": 6673,
+    "sha16": "6214d7bdfe58232c"
+   },
+   {
+    "name": "titan_oscwide_genome.jsonl",
+    "bytes": 106366,
+    "sha16": "f6a999e07326a607"
+   },
+   {
+    "name": "titan_oscwire_genome.jsonl",
+    "bytes": 98,
+    "sha16": "4f65f74c8de99796"
+   },
+   {
+    "name": "titan_oscwireall_genome.jsonl",
+    "bytes": 17697,
+    "sha16": "5ea4ff11b486e6e0"
+   },
+   {
+    "name": "titan_pfc_control_genome.20260802_054419.reverted.jsonl",
+    "bytes": 1164,
+    "sha16": "d070490c879b0515"
+   },
+   {
+    "name": "titan_pfc_executor_genome.jsonl",
+    "bytes": 6103395,
+    "sha16": "0fbf5f65d282fec4"
+   },
+   {
+    "name": "titan_pfc_load_genome.jsonl",
+    "bytes": 900,
+    "sha16": "3da7ad1acb2e3f64"
+   },
+   {
+    "name": "titan_pfc_membus_genome.jsonl",
+    "bytes": 432,
+    "sha16": "215e95e8245d3b5b"
+   },
+   {
+    "name": "titan_pfc_mine_clk_genome.jsonl",
+    "bytes": 6108515,
+    "sha16": "cfaa35dcb0f6b429"
+   },
+   {
+    "name": "titan_pfc_miner_genome.jsonl",
+    "bytes": 6105407,
+    "sha16": "3b029ba6969e9fbb"
+   },
+   {
+    "name": "titan_pfc_mmu_genome.jsonl",
+    "bytes": 29657,
+    "sha16": "3601783d7d956bb2"
+   },
+   {
+    "name": "titan_pfc_program_genome.jsonl",
+    "bytes": 2961,
+    "sha16": "e940b3c60d5e85d9"
+   },
+   {
+    "name": "titan_pfcmac_genome.jsonl",
+    "bytes": 5815970,
+    "sha16": "56c665101f25abbc"
+   },
+   {
+    "name": "titan_physprob_prob_collatz_genome.jsonl",
+    "bytes": 202822,
+    "sha16": "1933384493c0eec5"
+   },
+   {
+    "name": "titan_physprob_prob_erdos_straus_genome.jsonl",
+    "bytes": 5714950,
+    "sha16": "f23507ffb5531597"
+   },
+   {
+    "name": "titan_physprob_prob_golomb_genome.jsonl",
+    "bytes": 229908,
+    "sha16": "d875b65e14539508"
+   },
+   {
+    "name": "titan_physprob_prob_lucas_lehmer_genome.jsonl",
+    "bytes": 1394808,
+    "sha16": "88be1eeac82a95bb"
+   },
+   {
+    "name": "titan_physprob_prob_lychrel_genome.jsonl",
+    "bytes": 185766,
+    "sha16": "767bb353e9c8e7cb"
+   },
+   {
+    "name": "titan_physprob_prob_perfect_cuboid_genome.jsonl",
+    "bytes": 1067582,
+    "sha16": "3d79df28ce24405d"
+   },
+   {
+    "name": "titan_physprob_prob_three_cubes_genome.jsonl",
+    "bytes": 5815768,
+    "sha16": "a726492ea6872ba2"
+   },
+   {
+    "name": "titan_problems_genome.jsonl",
+    "bytes": 5366069,
+    "sha16": "8b41762b37b5ff7c"
+   },
+   {
+    "name": "titan_property_genome.jsonl",
+    "bytes": 824843,
+    "sha16": "892da4cc65729796"
+   },
+   {
+    "name": "titan_race_genome.jsonl",
+    "bytes": 6713,
+    "sha16": "a8443b5ebfe58e93"
+   },
+   {
+    "name": "titan_replicas_genome.jsonl",
+    "bytes": 410689629,
+    "sha16": "0a0a84d8da6f7df0"
+   },
+   {
+    "name": "titan_retention_genome.jsonl",
+    "bytes": 1346,
+    "sha16": "49d3522d200d956f"
+   },
+   {
+    "name": "titan_ringpower_genome.jsonl",
+    "bytes": 414,
+    "sha16": "d109159d7ca887f8"
+   },
+   {
+    "name": "titan_ringstart_genome.jsonl",
+    "bytes": 194,
+    "sha16": "20abf7db310d85c4"
+   },
+   {
+    "name": "titan_rx_genome.jsonl",
+    "bytes": 126453,
+    "sha16": "75b37ef609bc6d35"
+   },
+   {
+    "name": "titan_sdc_federation_genome.jsonl",
+    "bytes": 2426,
+    "sha16": "c54d5db132ba9438"
+   },
+   {
+    "name": "titan_sdc_genome.jsonl",
+    "bytes": 260918880,
+    "sha16": "771a1acfe9a38da0"
+   },
+   {
+    "name": "titan_selector_genome.jsonl",
+    "bytes": 2742481,
+    "sha16": "25963c2794ca9097"
+   },
+   {
+    "name": "titan_selfclock_genome.jsonl",
+    "bytes": 35700902,
+    "sha16": "c0b9d7cfd2e9a85f"
+   },
+   {
+    "name": "titan_selfrouted_genome.jsonl",
+    "bytes": 67,
+    "sha16": "2d056e09ad34fbab"
+   },
+   {
+    "name": "titan_seq_pfc_fwd_loop_genome.jsonl",
+    "bytes": 6638845,
+    "sha16": "8dba180f3fefd70d"
+   },
+   {
+    "name": "titan_shortfix_genome.jsonl",
+    "bytes": 88,
+    "sha16": "35ecbe0461099992"
+   },
+   {
+    "name": "titan_signal_osc_genome.jsonl",
+    "bytes": 24129,
+    "sha16": "914e8c6d3d2b6b25"
+   },
+   {
+    "name": "titan_storetest_genome.jsonl",
+    "bytes": 140,
+    "sha16": "fffc7c6f5b2effe9"
+   },
+   {
+    "name": "titan_surfaces_genome.jsonl",
+    "bytes": 11504,
+    "sha16": "0fc58c899368a860"
+   },
+   {
+    "name": "titan_whitebox_zero_genome.jsonl",
+    "bytes": 8673703,
+    "sha16": "1dc48f572253ebdd"
+   },
+   {
+    "name": "titan_win_surface_genome.jsonl",
+    "bytes": 45,
+    "sha16": "a7049ba28adcc927"
+   },
+   {
+    "name": "titan_wirephys_genome.jsonl",
+    "bytes": 1904,
+    "sha16": "1402bcdec546b2d0"
+   }
+  ]
+ },
+ "allocator": {
+  "module": true,
+  "ledger_exists": true,
+  "ledger": {
+   "version": 1,
+   "container": "C:/llm/models/titan.gguf",
+   "container_size": 40028316800,
+   "created_utc": "2026-08-02T13:22:18Z",
+   "reservations": [
+    {
+     "token": "853ed1a279624f52aa8316d43e755c67",
+     "offset": 15822848,
+     "len": 4096,
+     "end": 15826944,
+     "owner": "muhl_alloc",
+     "purpose": "allocator round-trip proof",
+     "state": "released",
+     "utc": "2026-08-02T13:22:18Z",
+     "reserved_utc": "2026-08-02T13:22:18Z",
+     "pid": 12860,
+     "host": "BRYCESLAPTOP",
+     "align": 4096,
+     "probed": true,
+     "committed_utc": "2026-08-02T13:22:18Z",
+     "note": "roundtrip reverted, bytes restored",
+     "released_utc": "2026-08-02T13:22:18Z"
+    },
+    {
+     "token": "ad1b2a43e029417ab95ca7b400964356",
+     "offset": 15822848,
+     "len": 4096,
+     "end": 15826944,
+     "owner": "muhl_alloc",
+     "purpose": "allocator round-trip proof",
+     "state": "released",
+     "utc": "2026-08-02T13:22:38Z",
+     "reserved_utc": "2026-08-02T13:22:38Z",
+     "pid": 29720,
+     "host": "BRYCESLAPTOP",
+     "align": 4096,
+     "probed": true,
+     "committed_utc": "2026-08-02T13:22:38Z",
+     "note": "roundtrip reverted, bytes restored",
+     "released_utc": "2026-08-02T13:22:38Z"
+    },
+    {
+     "token": "14ad85ec795c482d969e515772ddfd76",
+     "offset": 428972454,
+     "len": 3364000,
+     "end": 432336454,
+     "owner": "muhl_ring_bulk_probe",
+     "purpose": "thousands-of-rings capacity probe [2000 x 1682 B slots]",
+     "state": "released",
+     "utc": "2026-08-02T13:24:19Z",
+     "reserved_utc": "2026-08-02T13:24:19Z",
+     "pid": 23704,
+     "host": "BRYCESLAPTOP",
+     "align": 2,
+     "probed": true,
+     "released_utc": "2026-08-02T13:24:19Z"
+    },
+    {
+     "token": "4fc7a1227fe24e83a95e74103e39dc87",
+     "offset": 889793224,
+     "len": 6728000,
+     "end": 896521224,
+     "owner": "muhl_ring_bulk_probe",
+     "purpose": "thousands-of-rings capacity probe [4000 x 1682 B slots]",
+     "state": "released",
+     "utc": "2026-08-02T13:25:01Z",
+     "reserved_utc": "2026-08-02T13:25:01Z",
+     "pid": 17800,
+     "host": "BRYCESLAPTOP",
+     "align": 2,
+     "probed": true,
+     "released_utc": "2026-08-02T13:25:01Z"
+    },
+    {
+     "token": "db5edcd96e7a479f9911a7a87d5043d2",
+     "offset": 428972453,
+     "len": 18233,
+     "end": 428990686,
+     "owner": "muhl_langford_phys_dryrun",
+     "purpose": "clearance probe only",
+     "state": "released",
+     "utc": "2026-08-02T13:39:30Z",
+     "reserved_utc": "2026-08-02T13:39:30Z",
+     "pid": 17728,
+     "host": "BRYCESLAPTOP",
+     "align": 1,
+     "probed": true,
+     "released_utc": "2026-08-02T13:39:30Z"
+    },
+    {
+     "token": "f67c1bafb2cd4155a1b0c8b8258c57d1",
+     "offset": 428972453,
+     "len": 18233,
+     "end": 428990686,
+     "owner": "muhl_langford_phys_dryrun",
+     "purpose": "clearance probe only",
+     "state": "released",
+     "utc": "2026-08-02T13:46:32Z",
+     "reserved_utc": "2026-08-02T13:46:32Z",
+     "pid": 20260,
+     "host": "BRYCESLAPTOP",
+     "align": 1,
+     "probed": true,
+     "released_utc": "2026-08-02T13:46:32Z"
+    }
+   ],
+   "updated_utc": "2026-08-02T13:46:32Z"
+  }
+ },
+ "integrity": {
+  "live_rings": 30,
+  "shorts": 0,
+  "registry_lag": 24,
+  "missing_depth": 56
+ },
+ "governing": {
+  "pfc_preflight.py": "e71f7b59e4daef11",
+  "pfc_foundry.py": "ac2904977fa85e30",
+  "pfc_autofab.py": "eeeb9e6b74a0e01b",
+  "pfc_master_autofab.py": "ab5e6e0f53310f7c",
+  "pfc_meter.py": "b65ab7e4662f27fa",
+  "titan_circuit.py": "d06678967c71b5f6"
+ },
+ "ui": {
+  "path": "C:/Users/lucys/OneDrive/Desktop/Titan/muhl_control.py",
+  "exists": true,
+  "sha16": "ec64d365db333a8e"
+ },
+ "test_entrypoints": [
+  "muhl_test.py",
+  "muhl_test2.py",
+  "run_battery.py",
+  "sdc_checker.py",
+  "sdc_os_checker.py",
+  "pfc_probe_battery.py",
+  "pfc_fold_check.py",
+  "pfc_mine_check.py"
+ ]
+}

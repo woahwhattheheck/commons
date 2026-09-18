@@ -1,0 +1,33 @@
+{
+  "added": "2026-08-30",
+  "capability": "Public evidence-first data licensing and research inquiry door. Inventory and blocked-transfer states are sourced from existing contracts. No archive payload is published and no rights are granted by the page.",
+  "carrier": "CODEX",
+  "claimed_paths": [
+    "data-license.html",
+    "test_data_license.py"
+  ],
+  "dependencies": [],
+  "id": "unique-data-license-door-20260830-01",
+  "name": "Unique data license door",
+  "next_gap": "Do not transfer archive payloads, invent buyers, or mark license or price ready. CI corpus stays BLOCKED_LICENSE_REQUIRED until a recorded license exists.",
+  "owner_subsystem": "commerce",
+  "public_entrypoint": "data-license.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": true
+  },
+  "resource_links": [
+    "commerce.html",
+    "commercial.html",
+    "revenue/ip/whitebox_archive_inventory.json",
+    "revenue/ip/whitebox_archive_license_probe.json",
+    "revenue/data/ci_receipt_corpus.json",
+    "p/codex-unique-data-license-door-20260830-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_data_license.py"
+  ]
+}

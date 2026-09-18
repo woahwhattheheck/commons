@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TUNNEL — Muhlnickel Demo</title>
+<style>
+:root {
+  --ground: #050808;
+  --surface: #0a120e;
+  --surface-raised: #0f1a14;
+  --border: #1a2e22;
+  --border-bright: #2a4a36;
+  --matrix-green: #00ff41;
+  --matrix-dim: #0a6b2a;
+  --matrix-dark: #042f12;
+  --copper: #cd7f32;
+  --copper-bright: #e8a84c;
+  --life-cell: #39efc9;
+  --text: #c8d0c0;
+  --text-dim: #5a6b58;
+  --text-muted: #384038;
+  --mono: 'Cascadia Mono', Consolas, 'Courier New', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: var(--ground); color: var(--text); font-family: var(--mono); }
+
+#top-bar {
+  position: fixed; top: 0; left: 0; right: 0; height: 38px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 16px; background: rgba(5,8,8,0.94); backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border); z-index: 50;
+}
+#top-bar .title { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--copper-bright); text-transform: uppercase; }
+#top-bar .circuit-tag { font-size: 9px; letter-spacing: 1.5px; color: var(--text-dim); text-transform: uppercase; }
+#top-bar .circuit-tag b { color: var(--life-cell); font-weight: 600; }
+.status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--text-muted); display: inline-block; margin-right: 6px; vertical-align: middle; transition: all 0.3s; }
+.status-dot.live { background: var(--matrix-green); box-shadow: 0 0 6px var(--matrix-green); }
+
+#main { position: fixed; top: 38px; left: 0; right: 0; bottom: 32px; display: flex; }
+
+#canvas-wrap {
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  position: relative; background: var(--ground); overflow: hidden;
+}
+canvas#tunnel-canvas { image-rendering: pixelated; position: relative; z-index: 1; }
+#glow {
+  position: absolute; pointer-events: none; border-radius: 50%;
+  background: radial-gradient(circle, rgba(57,239,201,0.05) 0%, transparent 70%);
+  width: 140%; height: 140%; z-index: 0;
+}
+
+#sidebar {
+  width: 260px; min-width: 260px; background: var(--surface); border-left: 1px solid var(--border);
+  overflow-y: auto; padding: 12px 14px; font-size: 10px; display: flex; flex-direction: column; gap: 12px;
+}
+.sb-section { border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+.sb-section:last-child { border-bottom: none; }
+.sb-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--copper); margin-bottom: 6px; }
+.sb-row { display: flex; justify-content: space-between; padding: 2px 0; color: var(--text-dim); }
+.sb-row .val { color: var(--life-cell); font-variant-numeric: tabular-nums; }
+.sb-row .addr { color: var(--matrix-dim); font-variant-numeric: tabular-nums; font-size: 9px; }
+.sb-note { font-size: 9px; color: var(--text-muted); line-height: 1.5; margin-top: 4px; }
+
+#bottom-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; height: 32px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 16px; background: rgba(5,8,8,0.94); border-top: 1px solid var(--border);
+  font-size: 9px; color: var(--text-dim); letter-spacing: 0.5px; z-index: 50;
+}
+#bottom-bar .val { color: var(--life-cell); font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+
+<div id="top-bar">
+  <div style="display:flex;align-items:center;gap:14px">
+    <span class="title">Tunnel</span>
+    <span class="circuit-tag">SUBSTRATE: pix @ offset <b>2,208,471,000</b> &middot; <b>63</b> gates &middot; depth <b>3</b> ticks</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px">
+    <span class="status-dot" id="conn-dot"></span>
+    <span class="circuit-tag" id="conn-label">OFFLINE</span>
+  </div>
+</div>
+
+<div id="main">
+  <div id="canvas-wrap">
+    <div id="glow"></div>
+    <canvas id="tunnel-canvas" width="128" height="96"></canvas>
+  </div>
+  <div id="sidebar">
+    <div class="sb-section">
+      <div class="sb-label">Circuit</div>
+      <div class="sb-row"><span>Name</span><span class="val">pix</span></div>
+      <div class="sb-row"><span>Offset</span><span class="addr">0x83A37758</span></div>
+      <div class="sb-row"><span>Length</span><span class="val">624 B</span></div>
+      <div class="sb-row"><span>Gates</span><span class="val">63</span></div>
+      <div class="sb-row"><span>Depth</span><span class="val">3 ticks</span></div>
+      <div class="sb-row"><span>Rating</span><span class="val">21.0</span></div>
+      <div class="sb-row"><span>Ring</span><span class="val">#238</span></div>
+      <div class="sb-row"><span>Recv</span><span class="addr">0xA5876882</span></div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-label">Inputs (14 wires)</div>
+      <div id="input-wires"></div>
+      <div class="sb-note">x[7], y[7] — pixel coordinates</div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-label">Outputs (24 wires)</div>
+      <div id="output-wires"></div>
+      <div class="sb-note">r[8], g[8], b[8] — pixel color</div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-label">Live State</div>
+      <div id="live-bytes" class="sb-note" style="color:var(--matrix-green)">Waiting for surface...</div>
+    </div>
+    <div class="sb-section">
+      <div class="sb-label">Self-Clock</div>
+      <div class="sb-note">Self-clocked pixel shader — output address == input address for continuous rendering. Ring #238 drives at recv 0xA5876882.</div>
+    </div>
+  </div>
+</div>
+
+<div id="bottom-bar">
+  <div>FRAMES <span class="val" id="frame-count">0</span></div>
+  <div>FPS <span class="val" id="fps-val">0</span></div>
+  <div>MUHLNICKEL INSTRUMENT &middot; SURFACE ONLY</div>
+</div>
+
+<script>
+const API = 'http://localhost:7880';
+const W = 128, H = 96;
+const canvas = document.getElementById('tunnel-canvas');
+const ctx = canvas.getContext('2d');
+const connDot = document.getElementById('conn-dot');
+const connLabel = document.getElementById('conn-label');
+const frameEl = document.getElementById('frame-count');
+const fpsEl = document.getElementById('fps-val');
+
+let connected = false;
+let frames = 0;
+let lastFpsTime = performance.now();
+let lastFpsFrames = 0;
+let t = 0;
+
+function updateStatus() {
+  connDot.classList.toggle('live', connected);
+  connLabel.textContent = connected ? 'LIVE' : 'OFFLINE';
+}
+
+async function fetchCircuit(name) {
+  try {
+    const r = await fetch(API + '/api/circuit/' + name);
+    if (r.ok) { connected = true; updateStatus(); return await r.json(); }
+  } catch(e) {}
+  connected = false; updateStatus();
+  return null;
+}
+
+function connectSSE() {
+  try {
+    const es = new EventSource(API + '/stream');
+    es.onopen = () => { connected = true; updateStatus(); };
+    es.onmessage = (e) => {
+      try {
+        const d = JSON.parse(e.data);
+        if (d.circuit === 'pix' || d.name === 'pix') {
+          const el = document.getElementById('live-bytes');
+          el.textContent = 'Change @ ' + (d.addr || '?').toString(16) + ': ' + (d.old_val||0) + ' → ' + (d.new_val||0);
+        }
+      } catch(ex) {}
+    };
+    es.onerror = () => { connected = false; updateStatus(); es.close(); setTimeout(connectSSE, 3000); };
+  } catch(e) { setTimeout(connectSSE, 3000); }
+}
+
+function populateWires() {
+  const inputDiv = document.getElementById('input-wires');
+  const outputDiv = document.getElementById('output-wires');
+  const base = 2208471000;
+  for (let i = 0; i < 14; i++) {
+    const row = document.createElement('div');
+    row.className = 'sb-row';
+    row.innerHTML = '<span>in[' + i + ']</span><span class="addr">0x' + (base + 24 + i).toString(16).toUpperCase() + '</span>';
+    inputDiv.appendChild(row);
+  }
+  for (let i = 0; i < 24; i++) {
+    const row = document.createElement('div');
+    row.className = 'sb-row';
+    row.innerHTML = '<span>out[' + i + ']</span><span class="addr">0x' + (base + 24 + 14 + i).toString(16).toUpperCase() + '</span>';
+    outputDiv.appendChild(row);
+  }
+}
+
+function resizeCanvas() {
+  const wrap = document.getElementById('canvas-wrap');
+  const aw = wrap.clientWidth;
+  const ah = wrap.clientHeight;
+  const scale = Math.min(Math.floor(aw / W), Math.floor(ah / H)) || 1;
+  canvas.style.width = (W * scale) + 'px';
+  canvas.style.height = (H * scale) + 'px';
+}
+
+const img = ctx.createImageData(W, H);
+
+function renderTunnel() {
+  const cx = W / 2, cy = H / 2;
+  const data = img.data;
+  for (let y = 0; y < H; y++) {
+    for (let x = 0; x < W; x++) {
+      const dx = x - cx, dy = y - cy;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const angle = Math.atan2(dy, dx);
+
+      const depth = dist < 0.5 ? 100 : 40 / dist;
+      const u = angle / Math.PI;
+      const v = depth + t * 0.04;
+
+      const ring = (Math.floor(v * 6) + Math.floor(u * 8 + v * 2)) & 1;
+      const shade = Math.max(0, 1 - dist / 70);
+      const glow = shade * shade;
+
+      const phase = (v * 0.5 + u * 0.3) % 3;
+      let r, g, b;
+      if (phase < 1) {
+        r = 0.05 + glow * 0.75;
+        g = 0.92 * glow;
+        b = 0.25 * glow;
+      } else if (phase < 2) {
+        r = 0.80 * glow;
+        g = 0.50 * glow;
+        b = 0.20 * glow;
+      } else {
+        r = 0.22 * glow;
+        g = 0.94 * glow;
+        b = 0.79 * glow;
+      }
+
+      if (ring) { r *= 0.55; g *= 0.55; b *= 0.55; }
+
+      const i = (y * W + x) * 4;
+      data[i]     = Math.min(255, r * 255) | 0;
+      data[i + 1] = Math.min(255, g * 255) | 0;
+      data[i + 2] = Math.min(255, b * 255) | 0;
+      data[i + 3] = 255;
+    }
+  }
+  ctx.putImageData(img, 0, 0);
+}
+
+function loop() {
+  t++;
+  renderTunnel();
+  frames++;
+  frameEl.textContent = frames;
+
+  const now = performance.now();
+  if (now - lastFpsTime >= 1000) {
+    fpsEl.textContent = (frames - lastFpsFrames);
+    lastFpsFrames = frames;
+    lastFpsTime = now;
+  }
+  requestAnimationFrame(loop);
+}
+
+window.addEventListener('resize', resizeCanvas);
+populateWires();
+resizeCanvas();
+fetchCircuit('pix');
+connectSSE();
+loop();
+</script>
+</body>
+</html>

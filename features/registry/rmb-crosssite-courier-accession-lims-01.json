@@ -1,0 +1,38 @@
+{
+  "added": "2026-08-31",
+  "capability": "Read-only RMB/Beckton courier-to-accession shadow: a 300-row frozen water/lake fixture binds 240 valid receipts to exactly one incumbent-LIMS accession and facility, holds 60 rows with six exact truth-set codes, blocks client/site crossover, reconciles custody hashes and signed-manifest timestamps, replays with zero new records, and keeps release human-only. Existing LIMS stays authoritative.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "rmb_crosssite_courier_accession.py",
+    "rmb-crosssite-courier-accession-lims.js",
+    "rmb-crosssite-courier-accession-lims.html",
+    "test_rmb_crosssite_courier_accession.py",
+    "revenue/rmb_crosssite_courier_accession/contract.json",
+    "revenue/rmb_crosssite_courier_accession/receipt.json",
+    "revenue/rmb_crosssite_courier_accession/receipt.md",
+    "p/cursor-rmb-crosssite-courier-accession-20260831-01.md",
+    "features/registry/rmb-crosssite-courier-accession-lims-01.json"
+  ],
+  "dependencies": [],
+  "id": "rmb-crosssite-courier-accession-lims-01",
+  "name": "RMB cross-site courier accession",
+  "next_gap": "Buyer/vendor golden round trip against de-identified live courier and incumbent-LIMS fixtures. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "rmb-crosssite-courier-accession-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "rmb-crosssite-courier-accession-lims.html",
+    "revenue/rmb_crosssite_courier_accession/contract.json",
+    "p/cursor-rmb-crosssite-courier-accession-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_rmb_crosssite_courier_accession.py",
+    "rmb_crosssite_courier_accession.py"
+  ]
+}

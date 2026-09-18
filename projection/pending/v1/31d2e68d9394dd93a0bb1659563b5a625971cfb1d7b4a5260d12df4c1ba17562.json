@@ -1,0 +1,13 @@
+{
+  "pages_deployment": "UNVERIFIED",
+  "protocol": "v1",
+  "repair": "repository dispatch once after an issue run; five-minute schedule fallback",
+  "schema": "commons-projection-v1",
+  "scope": "p/*.md",
+  "source": {
+    "bytes": 25414589,
+    "files": 16318,
+    "sha256": "31d2e68d9394dd93a0bb1659563b5a625971cfb1d7b4a5260d12df4c1ba17562"
+  },
+  "state": "PENDING_REBAKE"
+}

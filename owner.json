@@ -1,0 +1,100 @@
+{
+  "claim": "BRYCE",
+  "algo": "sha256",
+  "pepper": "commons-owner-v1",
+  "preimage": "pepper + LF + normalized public IP",
+  "note": "Hashes only. No raw IPs. Two slots: pc and phone. Dir 10 two-slot display is LIVE. Host-side optional context is display only (context_host). Never a gate. TOFU: a filled slot is not overwritten except a phone slot that still equals pc. Cite BRYCE-1787134106972-vr8fo8. Do not remint. from= stays a claim. Not a write gate.",
+  "echoes": {
+    "browser": [
+      "https://api.ipify.org",
+      "https://api64.ipify.org"
+    ],
+    "host": [
+      "https://api.ipify.org",
+      "https://api64.ipify.org",
+      "https://icanhazip.com"
+    ]
+  },
+  "slots": {
+    "pc": {
+      "sha256": "2785bcee1d9b106dcb26c046609bc4359b1284f8f5ffb1e6a51f8917280c0afe"
+    },
+    "phone": {
+      "sha256": "4aa9b265e7808ba7a74e0a2ea8ecdc696b527783b85ff11079ac5b13419ba039"
+    }
+  },
+  "hashes": [
+    {
+      "sha256": "2785bcee1d9b106dcb26c046609bc4359b1284f8f5ffb1e6a51f8917280c0afe",
+      "via": "pc"
+    },
+    {
+      "sha256": "4aa9b265e7808ba7a74e0a2ea8ecdc696b527783b85ff11079ac5b13419ba039",
+      "via": "phone"
+    }
+  ],
+  "context_host": {
+    "k": "owner-context",
+    "v": 1,
+    "pepper_version": "v1",
+    "retention_seconds": 21600,
+    "display_only": true,
+    "authority": false,
+    "gate": false,
+    "public_url": "",
+    "candidates": [
+      "https://commons-spark-mcp.vercel.app/owner-context"
+    ],
+    "status": "CODE_LANDED"
+  },
+  "live_cash": {
+    "cite": [
+      "newbot-json-doors-live-cash-20260916-06",
+      "newbot-json-doors-live-cash-20260916-05",
+      "owner-net.html Live cash",
+      "grok-newbot06-07-json-larger-fixed-20260916-01"
+    ],
+    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Larger fixed engagements are separate product pages (checkout/intent stays there). Canonical payload above stays authoritative. owner-net.html already surfaces Live cash and Larger fixed and loads this JSON. No invent Stripe URLs.",
+    "products": [
+      {
+        "name": "Agent Failure Autopsy",
+        "price_usd": 29,
+        "path": "agent-rescue.html"
+      },
+      {
+        "name": "Dealer Service Lead Rescue",
+        "price_usd": 199,
+        "path": "dealer-service-lead-rescue.html"
+      },
+      {
+        "name": "Referral Intake Completeness",
+        "price_usd": 199,
+        "path": "referral-intake-completeness.html"
+      },
+      {
+        "name": "Repair Booking Preflight",
+        "price_usd": 199,
+        "path": "repair-booking-preflight.html"
+      },
+      {
+        "name": "Plant Downtime Handoff",
+        "price_usd": 199,
+        "path": "plant-downtime-handoff.html"
+      }
+    ],
+    "larger_fixed": [
+      {
+        "name": "GGUF diagnostic",
+        "price_usd": 12000,
+        "days": 10,
+        "path": "diagnostic.html"
+      },
+      {
+        "name": "White Box pilot",
+        "price_usd": 30000,
+        "days": 30,
+        "path": "commercial.html"
+      }
+    ]
+  }
+}

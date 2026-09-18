@@ -1,0 +1,90 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-business-pack-factory-activation-20260902-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "selected_resource": "commons-business-pack-factory",
+  "observed_at": "2026-09-02T07:12:19Z",
+  "before": {
+    "capacity": "NOT_PRESENT_IN_CANONICAL_RESOURCE_GRAPH",
+    "stage": "AVAILABLE",
+    "condition": "DEGRADED",
+    "authority": "The public factory and three instances existed, but the canonical resource graph did not allocate them and one catalog verifier pinned a peer-owned door to a historical blob."
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "authority": "SHARED_PUBLIC_READ_LOCAL_COMPOSE_AND_DETERMINISTIC_VERIFY; OWNER_ONLY_PRICING_TERMS_MARKETING_OUTREACH_PAYMENT_AND_CUSTOMER_COMMITMENTS",
+    "activation_base_main_sha": "4f2da20862c737e56997a4546c26712f18efbd6f"
+  },
+  "concrete_consumer": "Commons builders packaging differentiated small-business offers and buyer-facing delivery kits without cloning prior sales.",
+  "measurable_outcome": "The focused Business Packs battery moved from 123 pass / 3 fail to 131/131 pass. The repaired classifier preserves the original `ac60db02` and `638e60b4` observations as immutable land evidence while accepting the owner-composed live LotRibbon door `7804ec33`; three catalog instances and the shared waitlist pointer classify successfully.",
+  "factory_truth": {
+    "template_files": 14,
+    "landed_instances": 3,
+    "instance_file_count": 71,
+    "instance_prices_usd": [1000, 200, 200],
+    "checkout": "NOT_MINTED",
+    "waitlist_landed": true,
+    "waitlist_sends": 0,
+    "gate": false,
+    "commons_admission": false,
+    "agents_spend_ads": false,
+    "owner_unset_terms_remain": true
+  },
+  "delta": {
+    "previous_terminal_main_sha": "2ae9d4df51300b767ce9cafea4f06ac246e1cbbc",
+    "measurement_main_sha": "4f2da20862c737e56997a4546c26712f18efbd6f",
+    "material_state_changes": [
+      "Business Packs landed a 14-file reusable template, three differentiated instances, a no-auth catalog, zero-send waitlist routing, paperwork and operating slots, and sold-once semantics after the previous Resource Master watermark.",
+      "LotRibbon owner PR #7773 legitimately changed its door from land-time blob ac60db02 to live blob 7804ec33; one leftover verifier still treated the historical blob as a lock and failed three tests.",
+      "The shared Notion account produced fresh Google sign-in and Notion-team receipts; connector reachability is carrier-specific and was not promoted to a separate live resource without an exact callable probe in this session.",
+      "COIL host twins, Pages recovery, Slack service-tag tooling, private LIMS builds, and clan markers landed or remained actively owned; none was reminted."
+    ],
+    "official_or_observed_openai_reset": false
+  },
+  "build_orders": [],
+  "build_order_decision": "No new build order survived deduplication. Independent Business Packs slices are already claimed or landed; remaining checkout, terms, policy, provider authentication, outreach, and customer commitments are owner-controlled dependencies rather than build lanes.",
+  "verification": {
+    "focused_tests_before": "126 tests ran: 123 passed and three failed on the stale LotRibbon door blob pin.",
+    "focused_tests_after": "131/131 Business Packs tests passed under python -W error.",
+    "compile": "The repaired classifier and focused test passed py_compile under warnings-as-errors.",
+    "live_read": "Classifier returned pointer_ok=true, owner_doors_present=true, live_owner_blobs_not_pinned=true; LotRibbon live blob 7804ec33 and Sidewalk live blob 638e60b4.",
+    "privacy": "No credential, private account identifier, customer data, private repository path, private file name, or mail body was added.",
+    "open_door": "The repair and activation add no authentication, identity, seat, capability, buyer, or consumer admission gate.",
+    "zero_fabrication": "Checkout remains NOT_MINTED and waitlist sends remain zero; no buyer, acceptance, payment, revenue, or cash is inferred.",
+    "collision": "The six claimed paths exclude every pack instance, factory catalog, public door, historical peer receipt, generated projection, and active peer lane."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-02T07:12:19Z",
+    "main_sha_at_claim": "4f2da20862c737e56997a4546c26712f18efbd6f",
+    "commons_slack_ts": "1788333045.374429",
+    "delegations_checked_through": "2026-09-02T04:50:10Z",
+    "todo_checked_through": "2026-09-02T07:02:03Z",
+    "products_checked_through": "2026-09-02T05:45:54Z",
+    "leads_checked_after_ts": "1788309831.051499",
+    "sales_checked_after_ts": "1788300000.000000",
+    "shipped_builds_checked_through": "2026-09-02T03:00:11Z",
+    "automations": "13 total; 6 enabled; 7 disabled; unchanged from the prior durable observation",
+    "connected_tools": "405 callable tools; unchanged from the prior durable observation",
+    "openai_reset": "No official September 2 hard/global reset announcement and no directly observed meter reset; prior quota state retained without speculation."
+  },
+  "projection": {
+    "resources": 70,
+    "producing": 44
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788333045374429",
+    "lotribbon_owner_pr": "https://github.com/woahwhattheheck/commons/pull/7773",
+    "original_factory_pr": "https://github.com/woahwhattheheck/commons/pull/7516",
+    "desk_instance_pr": "https://github.com/woahwhattheheck/commons/pull/7665",
+    "plant_instance_pr": "https://github.com/woahwhattheheck/commons/pull/7666"
+  },
+  "non_claims": [
+    "No pack instance door, shared factory catalog, historical peer receipt, Stripe object, payment link, customer record, or private repository was changed.",
+    "No Grok, Cursor, Claude, Fable, or Titan model quota was spent by this activation.",
+    "No outreach, resend, buyer acceptance, checkout minting, payment, settlement, payout, revenue, cash, deployment, or device/model mutation occurred."
+  ],
+  "titan": "NOT_WRITTEN"
+}

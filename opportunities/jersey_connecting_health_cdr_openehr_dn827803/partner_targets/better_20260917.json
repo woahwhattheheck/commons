@@ -1,0 +1,139 @@
+{
+  "schema": "jersey-dn827803/partner-target/v1",
+  "operation": "JERSEY-DN827803-BETTER-TEAMING-ZHLT4M8-20260917",
+  "checked_at_utc": "2026-09-17T04:39:42Z",
+  "opportunity": {
+    "notice_id": "DN827803",
+    "buyer": "States of Jersey",
+    "title": "Connecting Health - Clinical Data Repository (CDR) and openEHR",
+    "public_expression_start": "2026-08-28T14:00:00+01:00",
+    "public_expression_end": "2026-09-29T23:30:00+01:00",
+    "official_listing": "https://procontract.due-north.com/SupplierRegistration/GridViewOpportunities?page=1&pageSize=100&sortDirection=Ascending&sortString=EstimatedValue",
+    "controlling_tender_pack_acquired": false,
+    "state": "HOLD_TENDER_PACK_REQUIRED"
+  },
+  "candidate": {
+    "name": "Better",
+    "legal_route_observed": "Better Ltd / United Kingdom office",
+    "domain": "better.care",
+    "public_business_route": "info@better.care",
+    "relationship_state": "CONTACTED_20260913_NO_REPLY_HARD_DNR",
+    "bid_or_interest_claim": false,
+    "prime_claim": false,
+    "first_party_evidence": [
+      {
+        "url": "https://www.better.care/clinical-data-repository/",
+        "supports": [
+          "openEHR-oriented standards-based Clinical Data Repository",
+          "real-time event-driven clinical-data flows",
+          "openEHR REST and FHIR API interoperability",
+          "auditability and traceability",
+          "vendor-independent archetype/template data"
+        ]
+      },
+      {
+        "url": "https://www.better.care/better-platform/",
+        "supports": [
+          "integrated openEHR and FHIR digital-health platform",
+          "semantic interoperability",
+          "Kafka-powered event streaming",
+          "ABAC access controls and audit logging"
+        ]
+      },
+      {
+        "url": "https://www.better.care/about-us/",
+        "supports": [
+          "United Kingdom office in Cardiff",
+          "public business route info@better.care",
+          "international direct and partner delivery",
+          "hospital, government health-system and NHS use evidence"
+        ]
+      },
+      {
+        "url": "https://www.better.care/news/better-and-quantumnexis-partner-to-advance-openehr-driven-digital-health-solutions/",
+        "supports": [
+          "current Better Partner Development Programme",
+          "ability to incorporate external specialist partners around Better Platform delivery"
+        ]
+      }
+    ]
+  },
+  "provider_history": {
+    "source": "Gmail provider history",
+    "thread_id": "1a09af22dc174a2c",
+    "message_id": "1a09af22dc174a2c",
+    "sent_at": "2026-09-13T13:25:57Z",
+    "from": "tokenjunkielabs@gmail.com",
+    "to": "brian.murray@better.care",
+    "subject": "States of Jersey DN827803 — openEHR/CDR specialist teaming",
+    "provider_state": "SENT",
+    "thread_message_count": 1,
+    "reply_state": "NO_REPLY_OBSERVED_20260917",
+    "purpose_summary": "Asked whether Better UK & Ireland was evaluating DN827803 and offered a bounded specialist subcontractor seam around interoperability/transition evidence, interface inventory/reconciliation, migration-parity checks, deterministic acceptance packs and independent readiness verification; explicitly disclaimed CDR/openEHR prime, clinical-safety, platform, patient-data-governance and final-acceptance ownership.",
+    "collision_effect": "HARD_DNR_UNTIL_GENUINE_INBOUND_OR_PROVIDER_EVENT"
+  },
+  "fit": {
+    "route": "TEAMING_ACCEPTANCE_EVIDENCE",
+    "why_candidate_is_plausible": [
+      "The buyer's public notice requires a centralised CDR and an openEHR-compliant platform; Better publicly sells an openEHR CDR/platform.",
+      "The public notice calls for real-time access and interoperability; Better publicly documents event-driven real-time flows plus openEHR/FHIR APIs.",
+      "The buyer's public notice allows joint bids/partnerships where appropriate; Better publicly operates a partner programme.",
+      "Better has a UK entity and a provider-confirmed named recipient was already used on 2026-09-13."
+    ],
+    "unknowns": [
+      "Whether Better is already bidding DN827803.",
+      "Whether Better wants any subcontractor or specialist workshare.",
+      "The controlling tender-pack evaluation, security, clinical-safety, legal, commercial and submission requirements.",
+      "Whether the buyer's final tender rules permit the proposed specialist seam.",
+      "Whether Better can evidence every buyer-specific reference, certification, staffing and contractual gate."
+    ]
+  },
+  "commercial_hypothesis": {
+    "currency": "GBP",
+    "fixed_fee": 18000,
+    "state": "INTERNAL_ONLY_NOT_SENT_NOT_ACCEPTED",
+    "not_offered_to_buyer": true,
+    "not_a_followup_authorization": true,
+    "scope": [
+      "interface conformance and replay/idempotency acceptance evidence",
+      "migration reconciliation and exception-ledger design",
+      "lineage/version/change evidence across agreed transformations",
+      "synthetic duplicate/stale/missing/out-of-order event test pack",
+      "acceptance traceability from agreed technical requirements to inspectable evidence",
+      "blocking-exception ownership/readiness ledger"
+    ],
+    "explicit_exclusions": [
+      "clinical validation or clinical-safety ownership",
+      "production clinical release authority",
+      "buyer submission authority",
+      "Better platform implementation ownership",
+      "live patient-data handling before separately authorized controls",
+      "claims of savings, award, acceptance or booked revenue"
+    ]
+  },
+  "outbound": {
+    "authorized": false,
+    "hard_dnr": true,
+    "muse_request_now": false,
+    "reason": "A materially identical DN827803 Better teaming email was already provider-SENT on 2026-09-13 and has no reply. Do not route around that send through info@better.care or another Better recipient.",
+    "resume_only_after": "GENUINE_INBOUND_OR_PROVIDER_EVENT",
+    "future_protocol_after_resume": [
+      "fresh Slack exact opportunity/domain/recipient/purpose census",
+      "fresh Gmail exact domain/recipient/opportunity census",
+      "Muse exact recipient+intent SELECT/CLEAR",
+      "immediate final Slack+Gmail recensus after Muse",
+      "at most one provider send if still collision-free"
+    ]
+  },
+  "authority_ceiling": {
+    "buyer_contact": false,
+    "portal_login_or_registration": false,
+    "tender_submission": false,
+    "clinical_certification_claim": false,
+    "prime_representation": false,
+    "pricing_commitment_to_jersey": false,
+    "contract_acceptance": false,
+    "payment_claim": false,
+    "revenue_claim": false
+  }
+}

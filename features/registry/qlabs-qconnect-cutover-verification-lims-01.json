@@ -1,0 +1,41 @@
+{
+  "added": "2026-08-31",
+  "capability": "Q Connect cutover verification: an immutable 240-case synthetic manifest accessions 200 valid personal-care/pharma submissions once with the catalog route, holds 40 obsolete-code, wrong-department, missing-field, invalid account/user, shared-credential, or timeout-retry failures with exact reasons, denies shared credentials, never lets obsolete codes enter testing, keeps field/catalog/user provenance, replays with zero duplicates, and requires named human QA. Adapters stay simulated and read-only.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "revenue/qlabs_qconnect_cutover/runner.py",
+    "revenue/qlabs_qconnect_cutover/fixture.json",
+    "revenue/qlabs_qconnect_cutover/source.json",
+    "revenue/qlabs_qconnect_cutover/README.md",
+    "revenue/qlabs_qconnect_cutover/contract.json",
+    "revenue/qlabs_qconnect_cutover/receipt.json",
+    "revenue/qlabs_qconnect_cutover/receipt.md",
+    "test_qlabs_qconnect_cutover.py",
+    "qlabs-qconnect-cutover-verification-lims.html",
+    "qlabs-qconnect-cutover-verification-lims.js",
+    "p/cursor-qlabs-qconnect-cutover-20260831-01.md",
+    "features/registry/qlabs-qconnect-cutover-verification-lims-01.json"
+  ],
+  "dependencies": [],
+  "id": "qlabs-qconnect-cutover-verification-lims-01",
+  "name": "Q Connect cutover verification",
+  "next_gap": "Buyer/vendor golden round trip on de-identified Q Connect catalog, user map, and submissions after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "qlabs-qconnect-cutover-verification-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "qlabs-qconnect-cutover-verification-lims.html",
+    "revenue/qlabs_qconnect_cutover/contract.json",
+    "p/cursor-qlabs-qconnect-cutover-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_qlabs_qconnect_cutover.py",
+    "revenue/qlabs_qconnect_cutover/runner.py"
+  ]
+}

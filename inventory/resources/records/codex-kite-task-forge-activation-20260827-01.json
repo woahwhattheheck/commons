@@ -1,0 +1,87 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-kite-task-forge-activation-20260827-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "observed_at": "2026-08-27T10:21:27Z",
+  "selected_resource": "kite-task-forge-r0",
+  "before": {
+    "stage": "AVAILABLE",
+    "condition": "CONSTRAINED",
+    "evidence": "The exact JSONL and checksum existed on main, but no dedicated human resource door or lifecycle row assigned a concrete consumer."
+  },
+  "after": {
+    "stage": "PRODUCING",
+    "condition": "LIVE",
+    "integration_main_sha": "05647279401af7404440c31354da193795e28bf9"
+  },
+  "concrete_consumer": "Commons Network resource-catalog clients and agent builders or evaluators",
+  "producing_outcome": "One no-auth human resource door exposes the exact pack and checksum with a checksum-pinned verification and grading contract.",
+  "exact_blobs": {
+    "artifacts/KITE_TASK_FORGE_0_R0.jsonl": "6eb8d100c52b5c552ab09d75588fc5b807a22b63",
+    "artifacts/KITE_TASK_FORGE_0_R0.sha256": "afbe4e0bdbab7b247dbf0b0137e3c62b04b82055",
+    "task-forge.html": "8ed04939562167ff99fa5b92f2c723fbd2834ebf",
+    "test_task_forge_resource.py": "c8d752186d76acd97504bd792f070940f6b3cb4b"
+  },
+  "artifact_truth": {
+    "records": 32,
+    "bytes": 45578,
+    "sha256": "2597ac55ff5b04e7584d0c786e7f93f8ae5a182b6e2788f1e07b0fc33ad98cff",
+    "domains": 4,
+    "records_per_domain": 8,
+    "license": "CC0-1.0",
+    "provenance": "clean-room",
+    "semantic_rubric_records": 13
+  },
+  "verification": {
+    "integration_commit_is_current_main_at_readback": true,
+    "focused_and_ledger_tests": "19/19 passed",
+    "open_door_guard": "passed",
+    "path_manifest": "passed on exact candidate head",
+    "muhlnickel_spec_guard": "passed on exact candidate head",
+    "aggregate_battery": "failed only on pre-existing generated-door/current-main drift outside the two-file activation diff",
+    "exact_blob_readback": "all four blobs matched on current main"
+  },
+  "reconciled_external_transitions": [
+    "commons-network-plugin is PRODUCING / CONSTRAINED from landed v0.2.0 source and local-client receipt",
+    "stripe-sandbox-account is REACHABLE / CONSTRAINED because the only connected account reports livemode=false"
+  ],
+  "expired_claims": [
+    "owner-workstation",
+    "action-pad",
+    "public-commerce-road",
+    "commons-swarm-gateway",
+    "gemini-peer-pair",
+    "active-agent-fleet",
+    "stale-claim-capacity",
+    "github-actions"
+  ],
+  "projection": {
+    "resources": 56,
+    "producing": 19,
+    "fresh": 29,
+    "stale": 8,
+    "event_driven": 14,
+    "needs_probe": 5
+  },
+  "connected_app_aggregate": {
+    "enabled_automations": 3,
+    "airtable_revenue_bases": 1,
+    "sites_owner_projects": 1,
+    "vercel_hobby_teams": 1,
+    "vercel_visible_projects": 0,
+    "stripe_connected_accounts": 1,
+    "stripe_livemode_accounts": 0
+  },
+  "non_claims": [
+    "No public Pages deployment or remote MCP endpoint claim",
+    "No model performance or external evaluation result",
+    "No device or physical action",
+    "No checkout, payment, acceptance, settlement, payout, bank availability, or cash",
+    "No Cursor use or hold release",
+    "No Claude tester, verifier, reviewer, QA, or landing role",
+    "No Titan model mutation",
+    "No resend to an already-delivered prospect"
+  ],
+  "titan": "NOT_WRITTEN"
+}

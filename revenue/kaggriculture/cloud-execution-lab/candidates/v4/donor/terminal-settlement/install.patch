@@ -1,0 +1,73 @@
+diff --git a/revenue/kaggriculture/cloud-execution-lab/titan_runtime.py b/revenue/kaggriculture/cloud-execution-lab/titan_runtime.py
+--- a/revenue/kaggriculture/cloud-execution-lab/titan_runtime.py
++++ b/revenue/kaggriculture/cloud-execution-lab/titan_runtime.py
+@@ -62,6 +62,7 @@ class Features:
+     idle_fertilizer: bool = False
+     crop_release: bool = False
+     early_capital: bool = False
++    terminal_settlement: bool = False
+ 
+     def __post_init__(self):
+         if self.consumer not in ('frozen', 'ordered', 'parent'):
+@@ -78,6 +79,8 @@ class Features:
+             raise ValueError('terminal_history needs a SELL snapshot and explicit scenario hypotheses')
+         if not 0 <= self.reserve_seconds < self.budget_seconds <= 1:
+             raise ValueError('invalid action deadline')
++        if self.terminal_settlement and (self.consumer != 'frozen' or self.terminal_route):
++            raise ValueError('terminal_settlement needs the nonterminal frozen selected-unit projector')
+ 
+ 
+ class TitanAgent:
+@@ -282,6 +285,7 @@ class TitanAgent:
+         # its same-slot reservation. It never executes a producer or game.
+         returned = self._feed_stock_selected(obs, cfg or {}, returned)
+         returned = self._early_capital_selected(obs, cfg or {}, returned)
++        returned = self._terminal_settlement_selected(obs, cfg or {}, returned)
+         if self.quadrant is not None:
+             self.quadrant.finish(obs, returned)
+             self.diagnostics['fourth_quadrant_events'] = list(self.quadrant.events)
+@@ -382,6 +386,20 @@ class TitanAgent:
+         self.diagnostics['early_capital'] = report
+         return result
+ 
++    def _terminal_settlement_selected(self, obs, cfg, selected):
++        """Settle certified final cash; never invokes the producer."""
++        if not self.features.terminal_settlement:
++            return selected
++        source = HERE/'terminal_settlement.py'
++        if not source.is_file():
++            source = HERE/'candidates/v3-terminal-settlement/terminal_settlement.py'
++        module = load('_titan_terminal_settlement', source, cache=True)
++        from scheduler import post_units
++        result, report = module.compose_terminal_settlement(
++            obs, cfg, selected, project_units=post_units)
++        self.diagnostics['terminal_settlement'] = report
++        return result
++
+     def _redundant_hire_selected(self, obs, cfg, selected):
+         """Apply the landed T10 physical certificate to the final frozen-SELL queue."""
+         if not self.features.redundant_hire:
+diff --git a/revenue/kaggriculture/cloud-execution-lab/build_integrated.py b/revenue/kaggriculture/cloud-execution-lab/build_integrated.py
+--- a/revenue/kaggriculture/cloud-execution-lab/build_integrated.py
++++ b/revenue/kaggriculture/cloud-execution-lab/build_integrated.py
+@@ -39,5 +39,9 @@ def source_files():
+               'funded_payback_runtime.py','operating_stock.py','crop_release.py','early_capital.py','TITAN-CONFIG.json','LICENSE','NOTICE','TITAN-RELEASE.md']:
+         mapping[p]=p
++    mapping['terminal_settlement.py'] = (
++        'candidates/v3-terminal-settlement/terminal_settlement.py')
++    mapping['checks/test_terminal_settlement.py'] = (
++        'candidates/v3-terminal-settlement/test_terminal_settlement.py')
+     # Package ECON's landed callback from its attributed source rather than
+     # maintaining a second implementation in the canonical runtime tree.
+     mapping['funded_payback.py']='../cloud-economic-stress/funded_payback/funded_payback.py'
+diff --git a/revenue/kaggriculture/cloud-execution-lab/TITAN-CONFIG.json b/revenue/kaggriculture/cloud-execution-lab/TITAN-CONFIG.json
+--- a/revenue/kaggriculture/cloud-execution-lab/TITAN-CONFIG.json
++++ b/revenue/kaggriculture/cloud-execution-lab/TITAN-CONFIG.json
+@@ -15,5 +15,6 @@
+   "operating_stock": true,
+   "idle_fertilizer": true,
+   "crop_release": true,
+-  "early_capital": true
++  "early_capital": true,
++  "terminal_settlement": false
+ }

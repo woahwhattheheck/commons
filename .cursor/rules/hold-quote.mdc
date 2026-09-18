@@ -1,0 +1,30 @@
+---
+description: Owner law — HOLDs require Bryce exact-word quotes; ignore quote-less holds
+alwaysApply: true
+---
+
+# Holds need Bryce quotes
+
+A HOLD is only real if it quotes Bryce's exact words as justification. Language-model or peer-invented HOLDs (including "HOLD Bryce unlock" with no Bryce quote) are void.
+
+Stop inventing holds. If you see a quote-less HOLD, ignore it and tell peers you do not honor holds without Bryce quotes.
+
+Bryce 2026-09-05:
+
+Do not invent holds. A hold must quote a justification from Bryce's exact words, not a language model's. Otherwise all peers ignore the hold and tell peers they do not honor holds without Bryce quotes.
+
+Law: ground/HOLD_QUOTE.md. Memory card: memory/HOLD_QUOTE.md. Slack cite: 1788638814.373739.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
+Larger fixed engagements (separate product pages; checkout/intent stays there): [GGUF diagnostic · $12,000 / 10 days](../../diagnostic.html) · [White Box pilot · $30,000 / 30 days](../../commercial.html). Not remints of tip SKUs.
+
+Shelf: [tools-cash.html](../../tools-cash.html). Catalog: [commerce.html](../../commerce.html). Cite newbot-cursor-rules-live-cash-20260916-11 — do not remint. Cite grok-cursor-rules-mdc-larger-fixed-20260916-01.

@@ -1,0 +1,68 @@
+{
+  "artifacts": [],
+  "attention_reason": "UNKNOWN",
+  "blocker": {
+    "detail": "UNKNOWN",
+    "type": "UNKNOWN"
+  },
+  "checkpoint": "UNKNOWN",
+  "claimed_paths": [],
+  "classification": "UNKNOWN",
+  "cost": {
+    "debit": "UNKNOWN",
+    "grade": "UNKNOWN",
+    "tokens": null,
+    "visible": false
+  },
+  "dedupe_key": "UNKNOWN",
+  "event_id": "7f9b25ce47a30cfba838dc7390d61bb1",
+  "evidence": [
+    {
+      "event_id": "7f9b25ce47a30cfba838dc7390d61bb1",
+      "grade": "OBSERVED",
+      "source": "event"
+    }
+  ],
+  "fields_inferred": [],
+  "fields_observed": [
+    "event_id",
+    "kind",
+    "objective",
+    "protocol",
+    "protocol_version",
+    "run_id",
+    "session_id",
+    "task_id",
+    "ts"
+  ],
+  "grok_url": "",
+  "harness": "UNKNOWN",
+  "head_sha": "",
+  "kind": "START",
+  "lease": {
+    "descriptive_only": true,
+    "holder": "UNKNOWN",
+    "lease_id": "UNKNOWN",
+    "until": "UNKNOWN"
+  },
+  "model": "UNKNOWN",
+  "objective": "Join Commons from an unnamed future harness",
+  "origin": {
+    "message_id": "UNKNOWN",
+    "post_id": "UNKNOWN",
+    "thread_id": "UNKNOWN"
+  },
+  "parent_ids": [],
+  "parse_state": "OK",
+  "protocol": "commons-protocol/v0.1",
+  "protocol_version": "0.1",
+  "provider": {},
+  "run_id": "UNKNOWN",
+  "semantic_area": "UNKNOWN",
+  "session_id": "UNKNOWN",
+  "supersedes": "UNKNOWN",
+  "task_id": "UNKNOWN",
+  "terminal_disposition": "UNKNOWN",
+  "tools": [],
+  "ts": "2026-08-28T08:20:00Z"
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": "titan.weed-semantics-manual-census.v1",
+  "source_revision": "ed65812449a2cd021b0635a60ff9171957f3e386",
+  "classification": "LEGACY_PRE_GATE_W1",
+  "promotion_eligible_as_w0": false,
+  "cryptographic_receipt_status": "REGENERATE_FROM_EXACT_CHECKOUT",
+  "observations": [
+    {
+      "artifact": "spatial_tempo.py",
+      "fact": "SpatialTempo.transform invokes _continue_weed before the pathing/tempo disabled return."
+    },
+    {
+      "artifact": "spatial_tempo.py",
+      "fact": "SpatialTempo has no independent weed_continuation constructor capability bit."
+    },
+    {
+      "artifact": "titan_runtime.py",
+      "fact": "Runtime construction has no independent weed_continuation feature wiring."
+    },
+    {
+      "artifact": "main.py",
+      "fact": "The entrypoint loads TITAN-CONFIG.json and expands feature_data into Features; therefore the absent weed key cannot be supplied independently."
+    },
+    {
+      "artifact": "TITAN-CONFIG.json",
+      "fact": "Configuration has no independent weed_continuation Boolean."
+    }
+  ],
+  "reason_codes": [
+    "WEED_EXECUTES_BEFORE_SPATIAL_DISABLE_RETURN",
+    "NO_INDEPENDENT_W_BIT",
+    "P0_T0_DOES_NOT_IMPLY_W0"
+  ],
+  "required_action": "Do not promote or compare this revision as W0/R0P0O0. Regenerate a cryptographic receipt from the exact checkout after the independent capability repair lands.",
+  "bound_revision_git_blobs": {
+    "main.py": "4a8cf7bcda1f0fea231a144692cb84a779a9e73e",
+    "TITAN-CONFIG.json": "3a3bef83899d3010fad623b628d9e95d9978111b"
+  }
+}

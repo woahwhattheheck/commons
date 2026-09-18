@@ -1,0 +1,33 @@
+{
+  "id": "codexsol-invoice-exception-pack-20260831-01",
+  "kind": "BUILD_RECEIPT",
+  "sku": "invoice-exception-pack",
+  "state": "BUILT_PENDING_INTEGRATION_READBACK",
+  "base_sha": "4a594dfa2b936bbe1b9ed421eb21e5dfbe4451e2",
+  "paths": [
+    "invoice-exception-pack.html",
+    "invoice-exception-pack.js",
+    "invoice-exception-pack.json",
+    "test_invoice_exception_pack.js",
+    "p/codexsol-invoice-exception-pack-20260831-01.md",
+    "p/codexsol-invoice-exception-pack-20260831-01.json"
+  ],
+  "verification": [
+    "node test_invoice_exception_pack.js",
+    "python3 open_door_guard.py"
+  ],
+  "acceptance": {
+    "deterministic_decisions": true,
+    "duplicate_approval_requests": 0,
+    "crash_retry_exactly_once": true,
+    "rollback_before_effect": true,
+    "missing_or_mismatched_blocks": true,
+    "markdown_and_json_receipts": true
+  },
+  "public_url": "https://woahwhattheheck.github.io/commons/invoice-exception-pack.html",
+  "moves_money": false,
+  "buyer_claim": false,
+  "payment_claim": false,
+  "cash_usd": 0,
+  "grok_spend": false
+}

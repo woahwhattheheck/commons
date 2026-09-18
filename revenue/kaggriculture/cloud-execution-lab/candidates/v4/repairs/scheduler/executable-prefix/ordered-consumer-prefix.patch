@@ -1,0 +1,44 @@
+--- a/integrated_selected.py
++++ b/integrated_selected.py
+@@ -70,7 +70,7 @@
+         """
+         now = absolute_step(obs, cfg)
+         tpd = int(cfg.get('turnsPerDay', 24)); board = int(cfg.get('boardSize', 10))
+-        cap = int(cfg.get('shedCapacity', 100)); maximum = int(cfg.get('maxMarketOrdersPerTurn', 10))
++        cap = int(cfg.get('shedCapacity', 100)); maximum = max(1, int(cfg.get('maxMarketOrdersPerTurn', 10)))
+         last = int(cfg.get('episodeSteps', 720))-2
+         end = min(now+self.execution.seller.horizon, last, (now//tpd+1)*tpd-1)
+         route = self.controller.R[self.controller.cur]
+@@ -85,7 +85,7 @@
+                 if step in switches or step >= len(route):
+                     reason = 'route_boundary'; break
+                 action = deepcopy(route[step])
+-                if any(o and o[0] == 'BUY_PRODUCT' for o in action.get('market', [])):
++                if any(o and o[0] == 'BUY_PRODUCT' for o in action.get('market', [])[:maximum]):
+                     reason = 'future_product_purchase_needs_cash_bound'; break
+                 units = [action.get('farmer', ['PASS']), *action.get('hands', [])]
+                 excluded = set()
+@@ -150,6 +150,7 @@
+         try:
+             if not self.production.one_way:
+                 raise ValueError('This continuation adapter requires the pinned one-way producer')
++            maximum = max(1, int(cfg.get('maxMarketOrdersPerTurn', 10)))
+             farm = deepcopy(obs['farms'][int(obs['player'])]); private = deepcopy(obs['private'])
+             atlas._units(m, farm, private, selected, now, int(cfg.get('boardSize', 10)),
+                          int(cfg.get('turnsPerDay',24)), int(cfg.get('shedCapacity',100)),
+@@ -165,13 +166,13 @@
+                     seed_reason = 'selected_plant_requests_exceed_route'
+                 else:
+                     proposed = self.budget.apply(selected, private['seeds'], now, self.controller.cur,
+-                        int(cfg.get('maxMarketOrdersPerTurn',10)))
++                        maximum)
+                     edits = [i for i,(a,b) in enumerate(zip(selected.get('market',[]), proposed.get('market',[]))) if a != b]
+                     # Trimming an earlier buy can activate a later unchanged hire
+                     # or acquisition. Keep that queue intact unless the supplied
+                     # selector establishes the current-market funding case.
+                     dependent = any(o and o[0] in ('HIRE','BUY_LAND','BUY_PRODUCT','BUY_ANIMAL')
+-                                    for i in edits for o in selected['market'][i+1:])
++                                    for i in edits for o in selected['market'][i+1:maximum])
+                     if dependent:
+                         seed_reason = 'later_economic_order'; seeded = deepcopy(selected)
+                         if self.seed_queue_selector is not None:

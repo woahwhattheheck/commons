@@ -1,0 +1,15 @@
+test_atomic_json (__main__.StudyTests.test_atomic_json) ... ok
+test_failures_not_wins_or_pairs (__main__.StudyTests.test_failures_not_wins_or_pairs) ... ok
+test_journal_does_not_hide_complete_corrupt_record (__main__.StudyTests.test_journal_does_not_hide_complete_corrupt_record) ... ok
+test_journal_rejects_changed_contract (__main__.StudyTests.test_journal_rejects_changed_contract) ... ok
+test_journal_rejects_duplicates (__main__.StudyTests.test_journal_rejects_duplicates) ... ok
+test_journal_resume_and_torn_tail (__main__.StudyTests.test_journal_resume_and_torn_tail) ... ok
+test_pair_statistics (__main__.StudyTests.test_pair_statistics) ... ok
+test_seed_sets_declared_disjoint (__main__.StudyTests.test_seed_sets_declared_disjoint) ... ok
+test_source_span_fails_explicitly (__main__.StudyTests.test_source_span_fails_explicitly) ... ok
+test_standalone_has_no_wrapper_import (__main__.StudyTests.test_standalone_has_no_wrapper_import) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.010s
+
+OK

@@ -1,0 +1,42 @@
+{
+  "slack_ts": "1787645274.177269",
+  "kind": "SPECTER_FINAL",
+  "subject": "SPECTER FINAL — a Slack current-main SHA is not current main",
+  "cited_sha": "bef4ba7124424de5aed51e1a9216b216d389a5a7",
+  "cited_sha_role": "ancestor_not_current_head",
+  "already_landed": [
+    "ground/TERMINAL_CATALOG.md",
+    "ground/TERMINAL_CATALOG.json",
+    "ground/WAKE_CONTRACT.md",
+    "ground/BUILD_SWEEP_ACT.md",
+    "ground/MCP_WAKE.json",
+    "host/stranded_map.py",
+    "wake_jobs/specter-watchdog-head-proof-20260825-01.json"
+  ],
+  "do_not_remint": [
+    "PR 2205",
+    "PR 2259",
+    "PR 2269",
+    "PR 2260",
+    "rivet-ship-specter-remainder-20260825-01",
+    "rivet-ship-specter-census-20260825-01",
+    "rivet-ship-terminal-catalog-20260825-01",
+    "rivet-ship-wake-contract-20260825-01",
+    "rivet-ship-build-sweep-act-20260825-01",
+    "ground/TERMINAL_CATALOG.md",
+    "ground/WAKE_CONTRACT.md"
+  ],
+  "idle_resume": "UNMEASURED",
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "hands_off": [
+    "PR 2108",
+    "PR 2205",
+    "DIO titan residual",
+    "commons.mno",
+    "titan.gguf",
+    "named idle bc- resume"
+  ]
+}

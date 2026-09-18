@@ -1,0 +1,15 @@
+{
+  "schema": "scaqmd-p2027-03-observations/v1",
+  "source_url": "https://www.aqmd.gov/docs/default-source/bids/p2027-03.pdf?sfvrsn=98f8637e_2",
+  "raw_source_status": "RAW_BYTES_UNBOUND",
+  "observed_date": "2026-09-16",
+  "observations": [
+    {"id":"SCHEDULE","page":3,"section":"III","fact":"RFP released 2026-09-04; mandatory Zoom bidder conference 2026-10-21 10:00 PT; proposals due 2026-12-04 13:00 PT; conference preregistration requested by close of business 2026-10-20."},
+    {"id":"SCOPE","page":4,"section":"V","fact":"Task-order scope includes development, maintenance, ERP/CRM/CMS, data integration/engineering, modernization, cloud/hybrid, low-code automation, AI/ML/generative AI/NLP/computer vision/intelligent document processing/predictive analytics, subject to security/privacy/accessibility/records/data-governance/responsible-AI controls."},
+    {"id":"AI_TESTING","page":6,"section":"V.7","fact":"Testing scope includes functional/regression/integration/performance/accessibility/API/mobile/security and AI-system evaluation covering accuracy, reliability, bias, explainability, prompt-injection resistance and data leakage."},
+    {"id":"PAST_PROJECTS","page":33,"section":"VI.C","fact":"At least three comparable projects completed in the last five years are required; across them at least one public/regulatory project, one >=$100,000 or >=12 months, and one using a named core platform/technology; client-verifiable references are required."},
+    {"id":"SCORING","page":16,"section":"IX","fact":"Evaluation weights are 20 understanding, 20 technical/management approach, 20 contractor qualifications, 10 similar experience and 30 cost; technical qualification threshold is 56 of 70."},
+    {"id":"MULTI_AWARD","page":18,"section":"IX.G","fact":"South Coast AQMD may select more than one proposer."},
+    {"id":"INDEFINITE","page":19,"section":"X","fact":"Work is defined by individual task order and the actual contract amount is not determined in advance."}
+  ]
+}

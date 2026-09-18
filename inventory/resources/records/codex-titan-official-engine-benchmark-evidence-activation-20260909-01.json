@@ -1,0 +1,136 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-titan-official-engine-benchmark-evidence-activation-20260909-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "selected_resource": "titan-official-engine-benchmark-evidence",
+  "observed_at": "2026-09-09T07:14:44Z",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "UNREGISTERED",
+    "evidence_freshness": "FRESH_CURRENT_MAIN_PR_SLACK_AND_EXACT_BLOB_READBACK"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "authority": "SHARED_ALL_CARRIERS; PUBLIC_AGGREGATE_RECEIPT_READ_AND_COMPARE; EXACT_ENGINE_SOURCE_ARCHIVE_SEED_AND_SEAT_BINDING_REQUIRED; PRIVATE_RAW_BUNDLE_STAYS_PRIVATE; NO_GAME_RERUN_OR_KAGGLE_PROVIDER_WRITE",
+    "holder": "Commons / T08 and TITAN promotion and regression-decision consumers",
+    "activation_base_main_sha": "bbbb6c39608c93011039980e575a2a756c2c44c6"
+  },
+  "concrete_consumer": "The existing T08 and canonical TITAN decision lanes selecting, rejecting or diagnosing source-fixed candidate changes against submitted V1 and exact public opponents.",
+  "measurable_outcome": "The immutable aggregate receipt is now separately routable as producing evidence. It binds 128 completed official-interpreter games to one engine, source archive, submitted-V1 archive, exact opponents, seeds and both seats; records 0 errors and 0 timeouts; and retains paired-margin evidence that exposes a Reyhan relative regression despite aggregate wins.",
+  "production_truth": {
+    "operation_id": "titan-official-fullgame-6705-v1-20260909-01",
+    "source_pr": 11005,
+    "source_head_sha": "8b423189acf382541ec48ebbcd3b65ff4124c70e",
+    "source_merge_sha": "f72efff19ab150b836b1b2463f74cf236111ac76",
+    "source_merge_tree_sha": "56eed1cb0c27d6b5e7b08b8e0060e89dd7f75043",
+    "source_blobs": {
+      "revenue/kaggriculture/cloud-official-benchmark/20260909/OFFICIAL-BENCHMARK-RECEIPT.json": "faeb4338e5ec8bd0d53fe6f3a4e8fda9847183be",
+      "revenue/kaggriculture/cloud-official-benchmark/20260909/README.md": "f55e5aaf49c57f47314a77087204615cf5aa78ed"
+    },
+    "source_sha256": {
+      "revenue/kaggriculture/cloud-official-benchmark/20260909/OFFICIAL-BENCHMARK-RECEIPT.json": "5a9e4abf14e433619929ebc79c78777555735671e1d78357ddd247fe6f23a03c",
+      "revenue/kaggriculture/cloud-official-benchmark/20260909/README.md": "6ba7a4251066c5f4a70f9a761ef099c4c18ea42fd7a7488dd88215e6591a246d"
+    },
+    "engine": "kaggle-environments==1.32.7",
+    "exact_games": 128,
+    "completed": 128,
+    "errors": 0,
+    "timeouts": 0,
+    "current_v2": {
+      "archive_sha256": "6705147ba96fe4c6c3762197f024ff1d47d38004f03d0059055ef4467bb5b88e",
+      "games": 80,
+      "wins": 64,
+      "ties": 16,
+      "losses": 0
+    },
+    "current_v2_vs_submitted_v1": {
+      "games": 16,
+      "wins": 16,
+      "ties": 0,
+      "losses": 0,
+      "mean_terminal_cash_margin": 760.375
+    },
+    "excluded_input": "Kaito was quarantined and not counted because Slack text materialization did not match the ledger source hash.",
+    "private_bundle": "The source receipt retains exact byte and digest designation on the existing private reporting path; this activation does not copy its file identifier or contents into public metadata."
+  },
+  "delta": {
+    "prior_terminal_main_sha": "d574baff8ce05526b256f209d9903687a57ea747",
+    "main_sha_at_claim": "bbbb6c39608c93011039980e575a2a756c2c44c6",
+    "commits_in_delta": 65,
+    "merge_commits_in_delta": 19,
+    "non_merge_commits_in_delta": 46,
+    "changed_paths_in_delta": 148,
+    "remote_branches_observed": 1722,
+    "remote_branch_count_change": 1,
+    "remote_branch_set_digest_sha256": "0a4dd91866cf2d85815e68c3888b3b1c323a084efb4b164dcaeebc60ccd0d544",
+    "open_prs_at_collision_read": [
+      {
+        "number": 10978,
+        "state": "OPEN_DRAFT_NON_MERGEABLE",
+        "ownership": "peer-owned and untouched"
+      }
+    ],
+    "recent_outcomes": "PR #11005 landed the immutable benchmark receipt; #11003, #11006 and #11012 landed in their existing ROADEF, board-replay and Biohub lanes. TITAN source and research/intake work remain actively owned.",
+    "prior_terminal_slack_ts": "1788927897.567469",
+    "latest_preclaim_commons_slack_ts": "1788935912.938549",
+    "commons_claim_slack_ts": "1788937929.677399",
+    "latest_titan_slack_ts": "1788935830.040939",
+    "delegations_state": "no new messages after 1788915444.173389",
+    "todo_state": "no new results after the prior terminal watermark",
+    "shipped_builds_state": "no new results after the prior terminal watermark",
+    "products_state": "no new results after the prior terminal watermark",
+    "leads_state": "no new results after the prior terminal watermark",
+    "sales_state": "no new results after the prior terminal watermark",
+    "connected_tools": "442 callable tools; 427 connected-app tools; 33 Slack tools and 89 GitHub tools; aggregate unchanged",
+    "automations": "Automation inventory was inspected once and the current Resource Master run remains enabled; no exposed automation lifecycle delta was observed.",
+    "provider_observation": "The official daily replay dataset and four repaired Slack file transports are newly reachable, but their existing TITAN research/cloud consumers retain ownership. No provider operation or direct usage-meter reset was performed or observed."
+  },
+  "build_orders": [],
+  "build_order_decision": "No build order was posted. The benchmark product is already complete, the official daily-replay retrieval and transport-repair lanes already have active owners and consumers, and the remaining Biohub, ROADEF, board-replay, GitHub-operation and TITAN source lanes are landed or claimed. A second implementation, audit loop or verifier-only order would duplicate current work.",
+  "verification": {
+    "focused_tests": "Focused resource-ledger assertions bind the new row, exact operation, aggregate counts, source identities and private/public boundary without importing or executing benchmark or TITAN source.",
+    "privacy": "No credential, private account identifier, customer data, private file name, raw evaluator output or private report contents are copied into canonical metadata.",
+    "open_door": "The public aggregate receipt and README are readable from current main without authentication; private raw data is not required for the public aggregate contract.",
+    "zero_fabrication": "Official-interpreter local games remain distinct from hosted score, rank, future performance, quota, submission, prize, payout, revenue and cash.",
+    "collision": "Only ledger, append-only activation record, append-only receipt and focused ledger assertions are owned. Benchmark source, TITAN runtime/config/archive/current-pointer, Biohub, ROADEF and peer draft paths remain off-limits."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-09T07:14:44Z",
+    "prior_terminal_main_sha": "d574baff8ce05526b256f209d9903687a57ea747",
+    "main_sha_at_claim": "bbbb6c39608c93011039980e575a2a756c2c44c6",
+    "prior_terminal_slack_ts": "1788927897.567469",
+    "commons_latest_preclaim_slack_ts": "1788935912.938549",
+    "commons_claim_slack_ts": "1788937929.677399",
+    "titan_latest_slack_ts": "1788935830.040939",
+    "delegations_latest_slack_ts": "1788915444.173389",
+    "todo_state": "no new results after the prior terminal watermark",
+    "shipped_builds_state": "no new results after the prior terminal watermark",
+    "products_state": "no new results after the prior terminal watermark",
+    "leads_state": "no new results after the prior terminal watermark",
+    "sales_state": "no new results after the prior terminal watermark",
+    "connected_tools": "442 callable tools; 427 app tools; unchanged",
+    "automations": "Resource Master remains enabled; no lifecycle change observed",
+    "openai_reset": "No official hard/global reset and no direct meter reset observed; prior quota state retained."
+  },
+  "projection": {
+    "resources": 86,
+    "producing": 58
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788937929677399",
+    "source_pr": "https://github.com/woahwhattheheck/commons/pull/11005",
+    "source_delivery": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788935829492319?thread_ts=1788805908.915009&cid=C0C0Z8AHGP2",
+    "official_release": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+    "prior_terminal_receipt": "p/codex-human-outcomes-input-validator-activation-20260909-01.md"
+  },
+  "non_claims": [
+    "No official benchmark source, TITAN source, runtime, configuration, archive or current pointer was changed by this activation.",
+    "No game was rerun and no provider, Kaggle, credential, deployment, model, quota-spend, reset-purchase or owner-device operation occurred.",
+    "No hosted score, rank, submission, prize, payout, payment, settlement, revenue or cash was claimed."
+  ],
+  "titan": "NOT_WRITTEN"
+}

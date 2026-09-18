@@ -1,0 +1,168 @@
+{
+  "schema": "partner-workshare-public-catalog/v1",
+  "canonical_source": "revenue/human_reply_workshare_kit/core.py",
+  "source_package": "revenue/human_reply_workshare_kit",
+  "source_release": {
+    "pull_request": 15334,
+    "merge_sha": "5b49ee7ee5ff731d1f94ef6d296f944cfd5e529a"
+  },
+  "commercial_state": "PROPOSED_NOT_ACCEPTED",
+  "checkout_available": false,
+  "buyer_acceptance_claimed": false,
+  "contract_claimed": false,
+  "invoice_claimed": false,
+  "payment_claimed": false,
+  "revenue_claimed": false,
+  "contact": {
+    "method": "email",
+    "address": "tokenjunkielabs@gmail.com",
+    "first_contact_rule": "Name the workshare, bounded system/period, delivery window, and acceptance owner. Do not send credentials, production secrets, regulated records, or confidential datasets in first contact."
+  },
+  "truth_boundary": "This is a public proposal menu, not evidence of a buyer, acceptance, award, contract, invoice, payment, receivable, booked revenue, recognized revenue, or delivery outcome. Each engagement is separately scoped.",
+  "packs": [
+    {
+      "pack_id": "DATA_MIGRATION_ACCEPTANCE",
+      "name": "Data Migration + Integration Acceptance Workshare",
+      "commercial_state": "PROPOSED_NOT_ACCEPTED",
+      "positioning": "Independent second-source migration/integration acceptance evidence beside the prime or delivery team; not staffing and not a platform replacement.",
+      "summary": "Bounded legacy-to-target migration reconciliation, interface replay/idempotency, UAT/cutover evidence, and exception closure.",
+      "fixed_fee": {
+        "currency": "USD",
+        "decimals": 2,
+        "min_minor": 1800000,
+        "reference_minor": 3000000,
+        "max_minor": 4500000
+      },
+      "delivery_business_days": {
+        "min": 10,
+        "reference": 15,
+        "max": 25
+      },
+      "deliverables": [
+        "source-to-target field/count/value reconciliation matrix",
+        "interface replay/idempotency evidence for agreed fixtures and failure cases",
+        "exception ledger with owner/disposition and retained evidence references",
+        "UAT/cutover acceptance pack with rerun instructions and immutable source/test receipt"
+      ],
+      "acceptance": [
+        "agreed source/target fixtures reconcile within the written tolerance or remain explicit HOLD exceptions",
+        "named duplicate/replay/failure cases are demonstrated fail-closed",
+        "buyer or prime can rerun the supplied acceptance checks from the documented inputs",
+        "final exception ledger contains no silently dropped rows, interfaces, or unresolved ownership"
+      ],
+      "intake_gates": [
+        "written source/target boundary and authoritative owner for each system",
+        "representative buyer-supplied export/schema plus explicit row/interface bounds",
+        "named acceptance owner and agreed exception/tolerance policy",
+        "non-production fixture path first; production credentials are not required for qualification"
+      ],
+      "exclusions": [
+        "prime/vendor product replacement",
+        "production cutover authority or buyer signatory authority",
+        "open-ended data cleansing or indefinite managed services",
+        "credential harvesting, unsupervised production mutation, or unsupported compliance certification"
+      ],
+      "retained_authority": [
+        "prime/vendor architecture and product commitments",
+        "buyer security, privacy, legal, compliance, and production-access decisions",
+        "buyer acceptance, signature, payment, award, and cutover authority"
+      ]
+    },
+    {
+      "pack_id": "RESPONSIBLE_AI_EVALUATION",
+      "name": "Responsible-AI / LLM Evaluation + Governance Evidence Workshare",
+      "commercial_state": "PROPOSED_NOT_ACCEPTED",
+      "positioning": "Independent bounded evaluation and governance-evidence support beside the buyer or prime; not certification, legal advice, or model-vendor replacement.",
+      "summary": "Bounded model/system evaluation, role-based acceptance testing, governance-evidence mapping, and deterministic evidence-pack delivery.",
+      "fixed_fee": {
+        "currency": "USD",
+        "decimals": 2,
+        "min_minor": 1500000,
+        "reference_minor": 2400000,
+        "max_minor": 4000000
+      },
+      "delivery_business_days": {
+        "min": 10,
+        "reference": 15,
+        "max": 20
+      },
+      "deliverables": [
+        "frozen evaluation matrix binding roles, scenarios, expected behavior, and evidence sources",
+        "deterministic evaluation harness or replay procedure for agreed model/system surfaces",
+        "failure/exception ledger covering safety, reliability, traceability, and governance gaps",
+        "acceptance/governance evidence pack with source/test receipts and rerun instructions"
+      ],
+      "acceptance": [
+        "all agreed scenarios execute or remain explicit HOLD with reproducible failure evidence",
+        "reported findings bind to frozen inputs/model or system revision and evaluator version",
+        "governance mappings cite supplied requirements without claiming certification or legal sufficiency",
+        "buyer or prime can rerun the agreed evaluation procedure and reproduce the evidence packet"
+      ],
+      "intake_gates": [
+        "written evaluation boundary, system/model revision, roles, and success/failure semantics",
+        "buyer-supplied policy/requirement sources or an explicit statement that none are authoritative",
+        "representative non-sensitive fixtures or approved synthetic test data",
+        "named acceptance/governance owner and change-control rule for source/model drift"
+      ],
+      "exclusions": [
+        "model/vendor replacement or open-ended prompt engineering",
+        "legal, regulatory, medical, security, or compliance certification",
+        "guarantees of model safety, accuracy, ROI, approval, or procurement outcome",
+        "production credential custody or autonomous deployment authority"
+      ],
+      "retained_authority": [
+        "buyer/prime model choice, policy interpretation, risk acceptance, and production deployment",
+        "buyer legal/compliance/privacy/security decisions",
+        "buyer acceptance, signature, payment, award, and public claims"
+      ]
+    },
+    {
+      "pack_id": "FINANCIAL_EVIDENCE_RECONCILIATION",
+      "name": "Operational / Financial Evidence Reconciliation Workshare",
+      "commercial_state": "PROPOSED_NOT_ACCEPTED",
+      "positioning": "Independent read-only closed-period evidence reconciliation beside the owner or operator; not bookkeeping, payment execution, fraud adjudication, or an accounting opinion.",
+      "summary": "Read-only reconciliation of a bounded closed period using buyer-retained operational, invoice/settlement, approval, and credit evidence.",
+      "fixed_fee": {
+        "currency": "USD",
+        "decimals": 2,
+        "min_minor": 650000,
+        "reference_minor": 1250000,
+        "max_minor": 2500000
+      },
+      "delivery_business_days": {
+        "min": 5,
+        "reference": 10,
+        "max": 15
+      },
+      "deliverables": [
+        "canonical evidence manifest and normalization/reconciliation rules",
+        "deterministic variance/exception ledger with duplicate, missing, orphan, timing, and mismatch classes",
+        "owner-review packet binding each material exception to retained source evidence",
+        "rerun script/procedure plus close receipt for the bounded period"
+      ],
+      "acceptance": [
+        "all in-scope retained rows are accounted for exactly once or remain explicit HOLD exceptions",
+        "totals and classifications reproduce from the frozen buyer-supplied inputs",
+        "no exception is represented as fraud, savings, recovery, or accounting conclusion without buyer authority",
+        "buyer or prime can rerun the reconciliation and reproduce the owner-review packet"
+      ],
+      "intake_gates": [
+        "one named legal entity, one closed period, one currency, and explicit evidence-source boundary",
+        "buyer-supplied retained exports plus owner mapping for rate/contract/approval authority",
+        "written materiality/tolerance rules or explicit zero-tolerance default",
+        "named owner for exception disposition and acceptance"
+      ],
+      "exclusions": [
+        "payment initiation, accounting/ERP mutation, dispute filing, or provider/carrier contact",
+        "audit opinion, tax/legal/accounting advice, fraud finding, or savings/recovery guarantee",
+        "open-ended bookkeeping, collections, or managed AP/AR services",
+        "production credentials during qualification"
+      ],
+      "retained_authority": [
+        "buyer/provider contract interpretation and accounting policy",
+        "buyer approval, dispute, posting, payment, recovery, and write-off actions",
+        "buyer acceptance, signature, payment, award, and revenue recognition"
+      ]
+    }
+  ]
+}

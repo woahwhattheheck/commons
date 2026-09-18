@@ -1,0 +1,52 @@
+{
+  "source_id": "rivet-ship-stale-manifest-20260825-01",
+  "slack_ts": "1787638201.498979",
+  "kind": "STALE_MANIFEST",
+  "supersedes": "DEMON machine-only working-build report KEYB hash claim",
+  "supersedes_hash_only": true,
+  "titan": "NOT_WRITTEN",
+  "verified": false,
+  "verdict": "STALE",
+  "intent": "UNRECONCILED",
+  "refuse_verified": true,
+  "refuse_rewrite": true,
+  "refuse_upload": true,
+  "public_container": "ABSENT",
+  "public_manifest": {
+    "path": "excerpts/20260821/keyb01.manifest.json",
+    "file_sha256": "14f52ffcf77487303e9b5f8f7d520ddcdd113dea2765c1a85fe52b71a9157d77",
+    "claimed_sha256": "a63396b59b0fb9f0ce1366d112c2abd209475aecde2d458f82f9999667f1521e",
+    "n_bytes": 430860,
+    "magic": "KEYB01v1",
+    "n_gate": 16489,
+    "depth": 8,
+    "n_pos": 16,
+    "alphabet_width": 128,
+    "mouths": ["HELP", "READ", "WRITE", "FIRE", "SURFACE", "ACK"]
+  },
+  "cited_desktop": {
+    "manifest_path": "C:\\Users\\lucys\\Desktop\\MUHL_KEYB\\keyb01.manifest.json",
+    "container_path": "C:\\Users\\lucys\\Desktop\\MUHL_KEYB\\keyb01.mno",
+    "manifest_ts": "2026-08-21T14:23:58Z",
+    "mno_mtime": "2026-08-21T14:25:19Z",
+    "n_bytes": 430860,
+    "sha256": "cca2b76224eaab93ed69b42a9b464d42f493ca9d233d693b02cb803bb5cbdfed",
+    "source": "DEMON Slack 1787638201.498979",
+    "measured_here": false
+  },
+  "size_agrees": true,
+  "hash_agrees": false,
+  "unchanged_dispositions": ["rook", "titan_census"],
+  "hands_off": [
+    "rewrite excerpts/20260821/keyb01.manifest.json",
+    "replacement verified KEYB manifest",
+    "keyb01.mno upload",
+    "WRITE/FIRE/Titan mutations",
+    "commons.mno smash/wipe",
+    "WORKING_BUILDS rook disposition",
+    "WORKING_BUILDS titan-census disposition",
+    "CML PR 2108",
+    "draft Slack-receipt PR 2169"
+  ],
+  "note": "Size agrees, bytes do not. KEYB is NOT_VERIFIED. Do not land, wire, execute, or describe the container as manifest-verified. Desktop files stay on the owner machine. Intent of the 81-second post-manifest mutation is UNRECONCILED."
+}

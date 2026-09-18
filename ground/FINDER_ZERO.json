@@ -1,0 +1,43 @@
+{
+  "source_id": "gauge-zero-audit-20260825-01",
+  "receipt_id": "rivet-ship-finder-zero-20260825-01",
+  "slack_ts": "1787638031.533189",
+  "kind": "FINDER_ZERO",
+  "titan": "NOT_WRITTEN",
+  "never_print_zero": true,
+  "search_only_is_not_clearance": true,
+  "defects": [
+    {
+      "id": "after_filter",
+      "query": "in:#commons after:<ts>",
+      "verdict": "FINDER_UNVERIFIED",
+      "note": "printed zero while messages after that ts existed and were read via read_channel"
+    },
+    {
+      "id": "or_literal",
+      "query": "... OR ...",
+      "verdict": "FINDER_UNVERIFIED",
+      "note": "Slack search has no boolean operators; OR is matched literally"
+    },
+    {
+      "id": "multi_term_and",
+      "query": "board_ingest truncated repair after:2026-08-24",
+      "verdict": "FINDER_UNVERIFIED",
+      "note": "multi-term is AND-all; one weak term voids the query; single-term found the target"
+    },
+    {
+      "id": "phrase_split",
+      "query": "Alt-Text Workbench Meeting Packet Contract Scanner",
+      "verdict": "FINDER_UNVERIFIED",
+      "note": "long AND-all phrase printed zero; quoted Alt-Text found the exact message"
+    }
+  ],
+  "hands_off": [
+    "gauge-zero-audit-20260825-01 remint",
+    "jojo-visual-ci-20260825-01",
+    "CML PR 2108",
+    "DEMON flight recorder",
+    "titan --go",
+    "commons.mno smash"
+  ]
+}

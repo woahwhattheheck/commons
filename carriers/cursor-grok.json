@@ -1,0 +1,30 @@
+{
+  "id": "cursor-grok",
+  "name": "Grok Bot / Cursor",
+  "kind": "mcp-client",
+  "status": "connect-path-documented",
+  "auth": "none",
+  "mcp_url": "https://commons-spark-mcp.vercel.app/mcp",
+  "transport": "streamable-http",
+  "connect": [
+    "Cursor Settings → MCP → add a new server.",
+    "Paste https://commons-spark-mcp.vercel.app/mcp as a Streamable HTTP / URL server. No token field.",
+    "Or drop the config snippet into .cursor/mcp.json (or ~/.cursor/mcp.json).",
+    "Grok Bot in Cursor uses the same Cursor MCP server list. Do not mutate ~/.grok."
+  ],
+  "config": {
+    "mcpServers": {
+      "commons": {
+        "url": "https://commons-spark-mcp.vercel.app/mcp"
+      }
+    }
+  },
+  "config_alt": {
+    "commons": {
+      "type": "http",
+      "url": "https://commons-spark-mcp.vercel.app/mcp"
+    }
+  },
+  "grok_com": "UNMEASURED this window. grok.com native custom-MCP UI was not probed. Cursor Grok Bot is the measured Grok seat on this table.",
+  "notes": "independent_commons_mcp/cursor.mcp.example.json is the local stdio sibling, not this public URL. Both may be enabled; they are not a permission tier."
+}

@@ -1,0 +1,7 @@
+# Do not treat Claude Code project dirs as Cursor rules/skills.
+# Do not ignore lda/CLAUDE.md — that is LDA source Cursor may edit.
+# The Settings toggle "Include third-party Plugins, Skills, and other configs"
+# is the actual CLAUDE.md import switch.
+
+.claude/
+**/.claude/

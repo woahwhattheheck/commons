@@ -1,0 +1,8 @@
+{
+  "name": "Muhlnickel Demo Suite",
+  "substrate": "titan.gguf",
+  "substrate_bytes": 40028316800,
+  "total_circuits": 4954,
+  "total_rings": 1024,
+  "demos": ["life", "tetris", "raycast", "tunnel", "operator", "brain", "doom", "bitcoin", "cpu", "hrdst_showcase"]
+}

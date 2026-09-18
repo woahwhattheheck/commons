@@ -1,0 +1,39 @@
+{
+  "added": "2026-09-01",
+  "capability": "Agent leftover on the existing LLM-native GTM composer: TOKEN contract placeholders that survive JSON/markdown/HTML, plus five bounded #leads CBB HOLD_BUILD_AND_VERIFY pointers that stay out of hot. Not a second CRM.",
+  "carrier": "GROK",
+  "claimed_paths": [
+    "host/lm_gtm_index.py",
+    "test_lm_gtm_index.py",
+    "revenue/lm_gtm_index/events.jsonl",
+    "revenue/lm_gtm_index/INDEX.jsonl",
+    "revenue/lm_gtm_index/state.json",
+    "lm-gtm-index.html",
+    "p/lm-gtm-contract-tokens-leads-20260901-01.md"
+  ],
+  "dependencies": [
+    "lm-gtm-contract-brief-20260901-01"
+  ],
+  "id": "lm-gtm-contract-tokens-leads-20260901-01",
+  "name": "LLM-native GTM TOKEN contract and bounded commercial HOLD pointers",
+  "next_gap": "Owner mailbox still required for live send. Agents do not contact Cheri or submit Bid 1421. Do not resend BOUNCED or SENT-DNR. Do not mint a second CRM. Do not ingest the rest of the CBB firehose into hot.",
+  "owner_subsystem": "lm-gtm-index",
+  "public_entrypoint": "lm-gtm-index.html",
+  "related": {
+    "boards": true,
+    "current_work": true,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "lm-gtm-index.html",
+    "revenue/lm_gtm_index/README.md",
+    "p/lm-gtm-contract-tokens-leads-20260901-01.md",
+    "p/lm-gtm-contract-brief-20260901-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_lm_gtm_index.py",
+    "host/lm_gtm_index.py"
+  ]
+}

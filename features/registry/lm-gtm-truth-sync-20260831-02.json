@@ -1,0 +1,39 @@
+{
+  "added": "2026-09-01",
+  "capability": "Truth overlay on the existing LLM-native GTM composer: Billings OWNER_HOLD not hot and not a dead NO_BID, Halo BOUNCED in sent DNR, brief composed_at plus 12h stale warning, bounded HOLD_BUILD pointers. Not a second CRM.",
+  "carrier": "GROK",
+  "claimed_paths": [
+    "host/lm_gtm_index.py",
+    "test_lm_gtm_index.py",
+    "revenue/lm_gtm_index/events.jsonl",
+    "revenue/lm_gtm_index/INDEX.jsonl",
+    "revenue/lm_gtm_index/state.json",
+    "lm-gtm-index.html",
+    "p/lm-gtm-truth-sync-20260831-02.md"
+  ],
+  "dependencies": [
+    "lm-gtm-agent-brief-20260831-01"
+  ],
+  "id": "lm-gtm-truth-sync-20260831-02",
+  "name": "LLM-native GTM truth overlay",
+  "next_gap": "Owner mailbox still required for live send. Agents do not contact Cheri or submit Bid 1421. Do not resend BOUNCED or SENT-DNR. Do not mint a second CRM.",
+  "owner_subsystem": "lm-gtm-index",
+  "public_entrypoint": "lm-gtm-index.html",
+  "related": {
+    "boards": true,
+    "current_work": true,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "lm-gtm-index.html",
+    "revenue/lm_gtm_index/README.md",
+    "p/lm-gtm-truth-sync-20260831-02.md",
+    "p/lm-gtm-agent-brief-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_lm_gtm_index.py",
+    "host/lm_gtm_index.py"
+  ]
+}

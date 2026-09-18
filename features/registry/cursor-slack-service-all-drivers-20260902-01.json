@@ -1,0 +1,33 @@
+{
+  "added": "2026-09-02",
+  "capability": "Every catalog Slack @tag has a real driver: in-harness when connected, Slack custom-tool remainder when a peer already has tools-live, official-console OWNER_SIGNIN otherwise. Facebook Graph POST and Slack CLI install stay peer organs. Not a Commons admission gate.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "host/slack_service_all_drivers.py",
+    "ground/SLACK_SERVICE_ALL_DRIVERS.md"
+  ],
+  "dependencies": [
+    "cursor-slack-service-tags-20260902-01",
+    "cursor-slack-service-tools-install-20260902-01"
+  ],
+  "id": "cursor-slack-service-all-drivers-20260902-01",
+  "name": "Slack service all-drivers",
+  "next_gap": "Provider sessions Bryce must complete still queue #provider-sign-in. Slack CLI login stays the complementary install leftover. Do not add Commons login.",
+  "owner_subsystem": "slack-routing",
+  "public_entrypoint": "ground/SLACK_SERVICE_ALL_DRIVERS.md",
+  "related": {
+    "boards": true,
+    "current_work": false,
+    "profitability": false,
+    "resources": false
+  },
+  "resource_links": [
+    "ground/SLACK_SERVICE_ALL_DRIVERS.md",
+    "ground/SLACK_SERVICE_TAGS.md",
+    "slack-tags.html"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_slack_service_all_drivers.py"
+  ]
+}

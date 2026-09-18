@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "kind": "HUMAN_OUTCOMES_RAIL_DECISION",
+  "as_of": "2026-08-25",
+  "research": {
+    "model": "Grok 4.6",
+    "reasoning": "xhigh",
+    "session_id": "01a0383b-5c8c-7460-af26-6f2fd4e593c7",
+    "total_tokens": 1574079,
+    "source_rule": "Official primary sources only. Recheck fees and eligibility before activation."
+  },
+  "truth": {
+    "collected_cash_usd": 0,
+    "cash_state": "NOT_LANDED",
+    "buyer_authorization": "UNMEASURED",
+    "banking_only_blocker": false
+  },
+  "recommended_primary": {
+    "provider": "Stripe",
+    "product": "Invoicing Starter with hosted card and US bank payment methods",
+    "reason": "Private hosted invoice, no cart, card/ACH, refunds, and payout to an owner-private bank destination.",
+    "bank_destination_needed_before_buyer_can_pay": "NO_REPORTED_BY_OFFICIAL_SOURCE_RESEARCH",
+    "owner_private_steps": [
+      "choose legal payee and entity type",
+      "complete identity, tax, website/product, support, and statement-descriptor onboarding",
+      "enable live invoice payment methods",
+      "add payout bank only inside Stripe",
+      "issue a live invoice only after a real buyer and signed scope exist"
+    ],
+    "official_sources": [
+      "https://stripe.com/invoicing",
+      "https://stripe.com/invoicing/pricing",
+      "https://docs.stripe.com/invoicing/payment-methods",
+      "https://docs.stripe.com/payouts",
+      "https://docs.stripe.com/refunds",
+      "https://docs.stripe.com/get-started/account/activate"
+    ]
+  },
+  "fallback": {
+    "provider": "Square",
+    "product": "Square Invoices",
+    "reason": "Official invoices, card/ACH, deposit requests, and milestone/payment schedules. Confirm exact US onboarding fields in the owner UI.",
+    "bank_destination_needed_before_buyer_can_pay": "UNKNOWN",
+    "official_sources": [
+      "https://squareup.com/us/en/invoices",
+      "https://squareup.com/us/en/invoices/pricing",
+      "https://squareup.com/payments/ach-payments"
+    ]
+  },
+  "escrow_option": {
+    "provider": "Upwork",
+    "product": "Direct Contracts fixed-price milestones",
+    "use_when": "Buyer accepts Upwork account creation, platform fees, escrow review/hold timing, and identity verification.",
+    "not_primary_reason": "More friction and delay than a private hosted invoice.",
+    "official_sources": [
+      "https://www.upwork.com/direct-contracts/cl",
+      "https://support.upwork.com/hc/en-us/articles/360025040794-Direct-Contracts-bring-a-client-to-Upwork",
+      "https://support.upwork.com/hc/en-us/articles/211063718-How-payments-for-milestones-and-fixed-price-contracts-work"
+    ]
+  },
+  "public_template_fields": [
+    "brand and public contact",
+    "service package name and public price",
+    "generic scope and deliverables",
+    "invoice numbering pattern",
+    "currency and generic payment terms",
+    "generic refund/change-order language",
+    "placeholder buyer labels"
+  ],
+  "never_public": [
+    "SSN, ITIN, EIN, TIN, W-9 contents, tax returns",
+    "date of birth, government ID, selfie or liveness material",
+    "home or legal address when private",
+    "bank routing/account, IBAN, SWIFT, voided check, bank statement",
+    "card number, expiry, CVC, bank login, financial tokens",
+    "processor secret keys, passwords, 2FA seeds",
+    "buyer PII, private contract, questionnaire, customer code or model bytes",
+    "payout destination"
+  ],
+  "bank_details_only_threshold": {
+    "reached": false,
+    "preconditions": [
+      "legal payee/entity and tax identity exist and match",
+      "processor KYC is activated for live charges",
+      "real buyer accepted the SOW/invoice",
+      "hosted invoice or funded milestone exists",
+      "delivery slot is confirmed",
+      "only payout destination remains empty"
+    ],
+    "why_not_reached": [
+      "no buyer authorization",
+      "owner legal payee/entity/tax fields are not known in this public work",
+      "processor account is not measured active",
+      "delivery slot is unbooked"
+    ]
+  }
+}

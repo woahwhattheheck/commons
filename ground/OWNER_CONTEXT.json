@@ -1,0 +1,36 @@
+{
+  "kind": "OWNER_CONTEXT",
+  "subject": "Optional host-side owner-context display digest",
+  "directive": 10,
+  "cite": "BRYCE-1787134106972-vr8fo8",
+  "display_only": true,
+  "authority": false,
+  "gate": false,
+  "pepper_version": "v1",
+  "retention_seconds": 21600,
+  "candidate_host": "https://commons-spark-mcp.vercel.app/owner-context",
+  "already_landed": [
+    "owner-net.html",
+    "owner_net.js",
+    "owner_net.py",
+    "owner.json",
+    "owner.html",
+    "owner.js"
+  ],
+  "do_not_remint": [
+    "BRYCE-1787134106972-vr8fo8",
+    "admin-no-verification-loop-20260819-01",
+    "knock-dir10-owner-net-door-20260819-01",
+    "owner_net.py",
+    "owner.json slots"
+  ],
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "hands_off": [
+    "identity verification",
+    "owner.json slot overwrite",
+    "board_ingest.py"
+  ]
+}

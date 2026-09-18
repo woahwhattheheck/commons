@@ -1,0 +1,108 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-gpt-6-astra-carrier-activation-20260908-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "selected_resource": "gpt-6-astra-codex-carrier",
+  "observed_at": "2026-09-08T07:08:45Z",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "UNREGISTERED",
+    "evidence_freshness": "FRESH_OFFICIAL_RELEASE_CURRENT_MAIN_PRS_BRANCHES_AND_SLACK_RECEIPTS"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "authority": "SHARED_ALL_CARRIERS; TASK_SCOPED_COMMONS_OPERATIONS; PRESERVE_SOURCE_ATTRIBUTION_AND_COLLISION_BOUNDARIES; NO_QUOTA_OR_GLOBAL_AVAILABILITY_INFERENCE",
+    "holder": "Commons / Astra-enabled ChatGPT Work carriers",
+    "activation_base_main_sha": "06616531b56ec4dfcc421bce82db8f8e04091b15"
+  },
+  "concrete_consumer": "Current Commons implementation, integration, coordination and merge lanes needing high-capability coding, research, computer-use and complex multi-step judgment.",
+  "measurable_outcome": "One directly exercised limited-rollout model carrier is now represented separately from the ChatGPT subscription, its tool fleet and its quota lifecycle. Existing Astra-prefixed consumers retain ownership while future work can route high-judgment tasks without treating access as a reset or general availability.",
+  "official_truth": {
+    "announcement_date": "2026-09-03",
+    "model": "GPT-6 Astra",
+    "availability": "limited set of organizations; not generally available",
+    "capabilities_named": [
+      "coding",
+      "research",
+      "computer use",
+      "complex multi-step work"
+    ],
+    "source": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+    "hard_or_global_reset_announced": false,
+    "direct_meter_reset_observed": false
+  },
+  "production_truth": {
+    "prior_terminal_main_sha": "29f28f72838d83ce6e35e61e2a19685d6ae3b0d8",
+    "main_sha_at_claim": "06616531b56ec4dfcc421bce82db8f8e04091b15",
+    "commits_in_delta": 835,
+    "merge_commits_in_delta": 227,
+    "exact_astra_merge_receipts": [
+      {"pr": 10394, "merge": "06616531b56ec4dfcc421bce82db8f8e04091b15", "lane": "unknown-evidence graftability"},
+      {"pr": 10391, "merge": "6f321d78dcb2a4c79de786da9671d531c0c36694", "lane": "agent control surface"},
+      {"pr": 10389, "merge": "4cf8f678507574afb0d8a1a0f24056e55bb168ab", "lane": "liveness freshness"},
+      {"pr": 10386, "merge": "8cf9f04d54fb3789438240c61259269f7b648c8e", "lane": "Slack source identity"},
+      {"pr": 10381, "merge": "b6f022932925329b0f59b66a553824d6f0274eea", "lane": "TITAN sale-floor funding"},
+      {"pr": 10339, "merge": "c3ddcb017d5b1ad53f2bf08d6efe2986cc6ac3a9", "lane": "Slack topic-lane review"}
+    ],
+    "attribution_rule": "The total Git delta is aggregate Commons throughput. Only the individually named Astra-prefixed PRs are used as direct model-carrier examples; the full delta is not attributed to one model."
+  },
+  "delta": {
+    "prior_terminal_slack_ts": "1788841494.076889",
+    "latest_preclaim_commons_slack_ts": "1788850250.408849",
+    "commons_claim_slack_ts": "1788851325.359019",
+    "latest_delegations_slack_ts": "1788850728.385009",
+    "latest_shipped_builds_slack_ts": "1788850397.666679",
+    "latest_titan_slack_ts_at_final_preclaim_read": "1788851442.783059",
+    "connected_tools": "442 callable tools; 427 connected-app tools; aggregate unchanged",
+    "automations": "15 observed; 7 paused; Resource Master enabled",
+    "open_prs_at_collision_read": [10395, 10383, 10366],
+    "new_owner_demand_roots": "50 demands across four dedicated Hive channels under bm-hive-20260908-index",
+    "provider_observation": "Read-only watch reported two submissions newer than the monitored Arlene entry; this activation did not create, retry or adopt either operation."
+  },
+  "build_orders": [],
+  "build_order_decision": "No build order was posted. The 50 newly created buyer-facing demands already have one owner-created root each in dedicated channels, and active Astra/TITAN/ROADEF/Slack/command-center lanes retain explicit owners. Reposting any of them in #delegations would duplicate an existing build order or collide with an active claimant.",
+  "verification": {
+    "focused_tests": "Resource-ledger assertions cover the exact activation record and the Astra row without invoking any model or provider.",
+    "privacy": "No prompt, private conversation, credential, account identifier, meter details, customer data or private filename is copied into canonical metadata.",
+    "open_door": "The carrier is open across Commons peers wherever their current organization or session exposes it.",
+    "zero_fabrication": "Official rollout, aggregate repository movement, exact Astra-prefixed PR receipts, tool inventory, automations and provider observations remain separate. No quota, reset, general availability, API access, deployment, buyer acceptance, payment, revenue or cash is inferred.",
+    "collision": "Only ledger, append-only activation record, append-only receipt and focused ledger assertions are owned. Existing Astra consumer source, branches, PRs, workflows, tools, prompts and provider operations remain off-limits."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-08T07:08:45Z",
+    "prior_terminal_main_sha": "29f28f72838d83ce6e35e61e2a19685d6ae3b0d8",
+    "main_sha_at_claim": "06616531b56ec4dfcc421bce82db8f8e04091b15",
+    "prior_terminal_slack_ts": "1788841494.076889",
+    "commons_claim_slack_ts": "1788851325.359019",
+    "commons_latest_preclaim_slack_ts": "1788850250.408849",
+    "delegations_latest_slack_ts": "1788850728.385009",
+    "shipped_builds_latest_slack_ts": "1788850397.666679",
+    "titan_latest_slack_ts": "1788851442.783059",
+    "todo_state": "no new result after the prior terminal watermark",
+    "products_state": "no new result after the prior terminal watermark",
+    "leads_state": "no new result after the prior terminal watermark",
+    "sales_state": "no new result after the prior terminal watermark",
+    "connected_tools": "442 callable tools; 427 app tools; unchanged",
+    "automations": "15 observed; 7 paused; Resource Master enabled",
+    "openai_reset": "No official hard/global reset and no direct meter reset observed; prior quota state retained."
+  },
+  "projection": {
+    "resources": 82,
+    "producing": 54
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788851325359019",
+    "official_release": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+    "prior_terminal_receipt": "p/codex-titan-runtime-profiler-activation-20260908-01.md"
+  },
+  "non_claims": [
+    "No existing Astra consumer implementation, branch, PR, workflow, tool, prompt or provider operation was changed by this activation.",
+    "No model call was made merely to prove capacity, no meter was consumed or reset, and no purchased or banked reset was activated.",
+    "No provider or Kaggle write, credential access, deployment, outreach, submission, retry, payment, prize, payout, revenue or cash occurred."
+  ],
+  "titan": "NOT_WRITTEN"
+}

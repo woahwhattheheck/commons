@@ -1,0 +1,13 @@
+{
+  "id": "codex-unblock-crawlers-20260823-01",
+  "verb": "RUN",
+  "target": "COMMONS",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 2\n/bin/sh: 1: Syntax error: EOF in backquote substitution\n",
+  "executed_at": "2026-08-23T09:50:29.299767Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

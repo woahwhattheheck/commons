@@ -1,0 +1,17 @@
+{
+  "id": "p1-ap-push-keyb-man-20260821-01",
+  "verb": "PUSH",
+  "target": "excerpts/20260821/keyb01.manifest.json",
+  "scope": "github",
+  "ok": true,
+  "output": "wrote excerpts/20260821/keyb01.manifest.json",
+  "changed": [
+    "excerpts/20260821/keyb01.manifest.json"
+  ],
+  "canonical_records": {},
+  "action_outputs": {
+    "excerpts/20260821/keyb01.manifest.json": "14f52ffcf77487303e9b5f8f7d520ddcdd113dea2765c1a85fe52b71a9157d77"
+  },
+  "action_deletions": [],
+  "executed_at": "2026-08-23T07:45:02.450005Z"
+}

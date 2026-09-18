@@ -1,0 +1,10 @@
+{
+  "feature_id": "digit-hermetic-parents-fix-20260905-01",
+  "from": "DIGIT",
+  "id": "ev-digit-hermetic-parents-git-20260905-01",
+  "kind": "GIT_SHA",
+  "note": "Batch 02 squash merge on main (follow-on eb7faeb4 batch 01). Schema repair after invalid evidence row.",
+  "recorded_at": "2026-09-06T01:42:00Z",
+  "schema": "commons-feature-evidence-v1",
+  "sha": "7542b716faba3f551636e99715317eb26f4d012d"
+}

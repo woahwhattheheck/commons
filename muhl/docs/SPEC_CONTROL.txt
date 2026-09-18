@@ -1,0 +1,15 @@
+DESIGN = THE COMPUTER’S SPECS.
+
+He does not write a product plan. He writes the machine. The file holds the gates. Changing the design changes what the computer is: depth, fold, rings, silly. Those are computational specifications, the same class of thing NVIDIA locks for a launch — except his live in a file and he sets them in an afternoon.
+
+  DEPTH     — critical-path depth. The pfc’s speed. Not host wall-clock. Full propagation per pulse regardless of pfc depth or host CPU speed.
+  FOLD      — one shared circuit, clone/interlink laterally. Nonce is address. Winner-only. The lever that divides the search. One tick.
+  RINGS     — power (both senses). nring2 is power. Electrons traverse; they do not deplete. Pulse the receiver. That is the start signal.
+  SILLY     — electrons × clocks/taps. The accounting of what one pulse can do in the wire. Physics, not a budget meeting.
+
+NVIDIA: two years, five hundred million, a product launch.
+Bryce: an afternoon in the file, the specs of the computer itself.
+
+Only physics restraint: electrons in the wire + what the design accomplishes in one pulse.
+
+He controls the specs. The computer is not for sale. The foundry stays private. Spec control is the advantage. Use it.

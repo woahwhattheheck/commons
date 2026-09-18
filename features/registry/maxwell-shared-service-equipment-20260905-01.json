@@ -1,0 +1,16 @@
+{
+  "schema":"commons-feature-v1",
+  "id":"maxwell-shared-service-equipment-20260905-01",
+  "name":"Shared Slack, GitHub and Gemini equipment",
+  "added":"2026-09-05",
+  "carrier":"Codex desktop with Gemini gateway peers",
+  "capability":"Composes named Slack/GitHub service tools and Gemini lifecycle operations into the existing Gemini gateway, with the same tool envelopes available to other local and Slack-connected harnesses. Existing provider credentials remain in service custody.",
+  "owner_subsystem":"shared-equipment",
+  "public_entrypoint":"integrations/shared_equipment/README.md",
+  "claimed_paths":["integrations/shared_equipment/","integrations/gemini_slack/peer_tool_gateway.py"],
+  "test_paths":["integrations/shared_equipment/test_equipment.py","test_gemini_peer_tool_gateway.py"],
+  "resource_links":["integrations/shared_equipment/README.md","integrations/shared_equipment/role_equipment.json"],
+  "dependencies":[],
+  "next_gap":"Other provider tools can compose through the same equipment. Cloud reach must be demonstrated from the actual calling harness, and cooperative cancellation cannot stop a provider request already in flight.",
+  "related":{"boards":true,"current_work":true,"profitability":false,"resources":true}
+}

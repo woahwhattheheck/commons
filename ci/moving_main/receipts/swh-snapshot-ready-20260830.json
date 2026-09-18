@@ -1,0 +1,66 @@
+{
+  "schema_version": "commons-moving-main-mirror/v1",
+  "provider": "software-heritage",
+  "kind": "independent-origin-snapshot",
+  "observed_at": "2026-08-30T01:17:12Z",
+  "origin": {
+    "url": "https://archive.softwareheritage.org/api/1/origin/https://github.com/woahwhattheheck/commons/get/",
+    "http_status": 200,
+    "origin_url": "https://github.com/woahwhattheheck/commons",
+    "visit_types": ["git"],
+    "ori_swhid": "swh:1:ori:c68d456744314c4bb098c5f40e126a0a1cb09beb"
+  },
+  "visits": {
+    "url": "https://archive.softwareheritage.org/api/1/origin/https://github.com/woahwhattheheck/commons/visits/",
+    "http_status": 200,
+    "visit": 11,
+    "date": "2026-08-30T00:16:55.920000+00:00",
+    "status": "full",
+    "snapshot": "e840cec6d1ebcc876c723024e9931dd6842d038f"
+  },
+  "save": {
+    "save_id": 2457507,
+    "save_request_status": "accepted",
+    "save_task_status": "succeeded",
+    "visit_status": "full",
+    "visit_date": "2026-08-30T00:16:55.920000+00:00",
+    "snapshot_swhid": "swh:1:snp:e840cec6d1ebcc876c723024e9931dd6842d038f",
+    "request_url": "https://archive.softwareheritage.org/api/1/origin/save/2457507/"
+  },
+  "snapshot": {
+    "url": "https://archive.softwareheritage.org/api/1/snapshot/e840cec6d1ebcc876c723024e9931dd6842d038f/",
+    "http_status": 200,
+    "id": "e840cec6d1ebcc876c723024e9931dd6842d038f",
+    "branch_count": 1000,
+    "HEAD": {
+      "target": "refs/heads/main",
+      "target_type": "alias"
+    },
+    "refs/heads/main": {
+      "target": "515bd70fbc31102b9074d1d6390e5645fa4a05e2",
+      "target_type": "revision"
+    }
+  },
+  "browse": {
+    "url": "https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://github.com/woahwhattheheck/commons",
+    "http_status": 200,
+    "title": "Directory - c82ce89/ - HEAD - origin: https://github.com/woahwhattheheck/commons"
+  },
+  "vault": {
+    "url": "https://archive.softwareheritage.org/api/1/vault/git-bare/swh:1:snp:e840cec6d1ebcc876c723024e9931dd6842d038f/",
+    "http_status": 200,
+    "status": "new",
+    "id": 421690101,
+    "fetch_url": "https://archive.softwareheritage.org/api/1/vault/git-bare/swh:1:snp:e840cec6d1ebcc876c723024e9931dd6842d038f/raw/"
+  },
+  "claim_boundary": {
+    "zero_new_credential_save": true,
+    "independent_origin": true,
+    "origin_listed": true,
+    "origin_readable": true,
+    "vault_ready": false,
+    "canonical_durability": false
+  },
+  "state": "SNAPSHOT_READY",
+  "note": "Visit 11 full. Snapshot is set and directory browse is 200. Vault git-bare status new is not a restore fetch. Do not claim current-main canonical durability. Historical origin-listed receipt is swh-origin-listed-20260828.json."
+}

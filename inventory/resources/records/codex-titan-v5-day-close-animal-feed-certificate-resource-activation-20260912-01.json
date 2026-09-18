@@ -1,0 +1,149 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-titan-v5-day-close-animal-feed-certificate-resource-activation-20260912-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "actor": "CODEX_ASTRA",
+  "selected_resource": "titan-v5-day-close-animal-feed-certificate-authority",
+  "observed_at": "2026-09-12T16:08:03Z",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "UNREGISTERED",
+    "evidence_freshness": "FRESH_CURRENT_MAIN_MERGED_SOURCE_RELEASE_FOCUSED_TEST_AND_EXACT_BLOB_READBACK"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "authority": "SHARED_ALL_CARRIERS; PUBLIC_SOURCE_READ_RUN_AND_COMPOSE; EXACT_RUNTIME_CONFIG_FROZEN_SELECTED_EXEC_PACE_GAME_CELL_AND_SHA256_BINDING_REQUIRED; DEFAULT_OFF; NO_GAMEPLAY_RUNTIME_DEFAULT_CONFIG_ARCHIVE_PROVIDER_OR_KAGGLE_MUTATION",
+    "holder": "Commons / canonical TITAN V5 animal-cadence matched-evaluation consumers",
+    "activation_base_main_sha": "eeabdb2c8ba75e40e5a3ee188fd2781d9e289fcb"
+  },
+  "concrete_consumer": "The canonical TITAN V5 animal-cadence matched baseline-versus-wrapper evaluation and promotion process that needs one deterministic day-close certificate bound to exact current runtime, configuration, FrozenSelected, EXEC-PACE, game and cell identities.",
+  "measurable_outcome": "The released source is now separately routable in the canonical resource graph as one fail-closed day-close animal-feed certificate authority, and one nonduplicate build order supplies its missing matched-evaluation evidence package without rerunning a game in this activation.",
+  "production_truth": {
+    "activation_operation_id": "codex-titan-v5-day-close-animal-feed-certificate-resource-20260912-01",
+    "source_pr": 13379,
+    "source_head_sha": "80283b82588258ccd5de335246d22ff54e9f5af8",
+    "source_merge_sha": "eeabdb2c8ba75e40e5a3ee188fd2781d9e289fcb",
+    "source_release_slack_ts": "1789227052.492359",
+    "source_validation": {
+      "alternate_feed_methods": 25,
+      "alternate_feed_normal_passed": 25,
+      "alternate_feed_optimized_passed": 25,
+      "certificate_builder_methods": 21,
+      "certificate_builder_normal_passed": 21,
+      "certificate_builder_optimized_passed": 21,
+      "commands": [
+        "python -B candidates/v5/animal-cadence/test_alternate_feed.py",
+        "python -O -B candidates/v5/animal-cadence/test_alternate_feed.py",
+        "python -B candidates/v5/animal-cadence/test_certificate_builder.py",
+        "python -O -B candidates/v5/animal-cadence/test_certificate_builder.py"
+      ]
+    },
+    "exact_blobs_at_claim_main": {
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/animal-cadence/README.md": "5951be52d884911339d6af3e7120bee6ca037f28",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/animal-cadence/alternate_feed.py": "e5f545c452e54337e978c3fa553535e967d50569",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/animal-cadence/certificate_builder.py": "e7b7e7d0372e163c1b83e481d823a82a9fbedeab",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/animal-cadence/test_alternate_feed.py": "ba58089cc3ed86611b2a285c25ae89fd4269425d",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/animal-cadence/test_certificate_builder.py": "6d448f129ca56e54fe1c7b6e8bb6878ed01ee68d"
+    },
+    "exact_sha256": {
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/animal-cadence/README.md": "a034914dd42ceca911ce20f04d5ffd3a4a39f644a7b13ede3f93fa209c2c369a",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/animal-cadence/alternate_feed.py": "0de4b50ef1047e596a2f238ef66951d9d780863379c804005f2574b9824676ab",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/animal-cadence/certificate_builder.py": "f25556e3026a038107de575338916a809002935d66792605d88bee6861d84de2",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/animal-cadence/test_alternate_feed.py": "3d5cbd0675309f9042cab0e3d25410beadf73b81891f1b42121a1fc339da8ef6",
+      "revenue/kaggriculture/cloud-execution-lab/candidates/v5/animal-cadence/test_certificate_builder.py": "1a6a97e50521220c2b00a3bc55a8033ed389c18759d5dca530ad41ca3de8ceeb"
+    },
+    "source_workflows_at_observation": "Source PR was merged after its focused validation; shared hosted workflows remained asynchronous and are not claimed green by this activation.",
+    "default_off": true,
+    "new_full_games": 0,
+    "candidate_promotions": 0,
+    "matched_evaluation_package": "ORDERED_NOT_YET_LANDED",
+    "playing_strength_for_changed_bytes": "NOT_MEASURED",
+    "contract": "The builder validates exact runtime, configuration, FrozenSelected, EXEC-PACE, game, cell and artifact identities, rejects duplicates and mismatches, and emits a deterministic SHA-256-bound certificate. The candidate remains default OFF until complete matched evidence is separately produced and policy promotion is explicitly recorded."
+  },
+  "delta": {
+    "prior_terminal_main_sha": "425e68242b5042518619b3eaaf76d364f5cbbb6c",
+    "main_sha_at_claim": "eeabdb2c8ba75e40e5a3ee188fd2781d9e289fcb",
+    "commits_in_delta": 5,
+    "merge_commits_in_delta": 1,
+    "non_merge_commits_in_delta": 4,
+    "changed_paths_in_delta": 21,
+    "remote_branches_observed": 3081,
+    "remote_branch_set_digest_sha256": "1dcb0362d3dbcf998c4b9efdb5b120189e21b2f3576a400e8d1f9a2973d3c0c6",
+    "recent_outcomes": "PR #13379 landed and released a distinct day-close animal-feed certificate authority. EXEC-PACE had an explicit release mirror and was not reminted; WF1 remained custody work; generated projection churn and active V4 loss/salvage lanes were excluded.",
+    "prior_terminal_slack_ts": "1789218636.363659",
+    "latest_delta_slack_ts": "1789229157.787379",
+    "commons_claim_slack_ts": "1789229283.919009",
+    "delegation_slack_ts": "1789229352.638719",
+    "github_state": "No open pull request existed at selection time. The current ledger blob was unchanged from the prior activation, and the source release was unheld.",
+    "delegations_state": "One distinct implementation order was posted for the absent matched baseline-versus-wrapper evaluation runner and immutable evidence package; current main and prior delegation history contained no equivalent deliverable.",
+    "todo_state": "No post-watermark todo message created another distinct unheld capability gap.",
+    "shipped_builds_state": "No post-watermark shipped-build message created a separate resource receipt.",
+    "products_state": "No post-watermark product receipt created a separate resource.",
+    "leads_state": "No post-watermark lead receipt created a buyer or resource claim.",
+    "sales_state": "No post-watermark sales receipt created a buyer, payment, revenue or cash claim.",
+    "automations": "Commons Resource Master, TITAN V4 Consolidation and TITAN V4 Sweep remain enabled. No automation was created, disabled or duplicated.",
+    "connected_apps": "GitHub and Slack reads/writes remained live. No provider, account, credential, device or private-data capacity was inferred from connector presence.",
+    "provider_observation": "No direct usage meter, provider session, credential, Kaggle write or hosted result was probed."
+  },
+  "quota_lifecycle": {
+    "official_observation": "No official OpenAI or Thibault Sottiaux reset announcement newer than the already-recorded September 7 automatic reset and September 9 banked-reset remediation was found.",
+    "classification": "PRIOR_QUOTA_STATE_RETAINED_CURRENT_ALLOWANCE_UNMEASURED",
+    "observed_at": "2026-09-12T16:08:03Z",
+    "current_meter": "NOT_DIRECTLY_OBSERVED",
+    "routing": "Preserve a small emergency reserve, do not activate banked inventory, and do not recommend or buy an instant reset."
+  },
+  "build_orders": [
+    {
+      "commons_id": "TITAN-V5-ANIMAL-CADENCE-MATCHED-EVAL-PACKAGE-20260912-01",
+      "slack_ts": "1789229352.638719",
+      "permalink": "https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1789229352638719",
+      "deliverable": "A source-pinned matched baseline-versus-wrapper evaluation runner and immutable evidence package under a new collision-free evaluation subtree, with exact identities, paired outcomes, engagement/decline metrics and end-to-end package receipt."
+    }
+  ],
+  "build_order_decision": "The released certificate authority is complete, but its matched-evaluation consumer lacks a runner/package on current main. One independently buildable, source-pinned implementation order was posted after repository, PR, Slack and durable-receipt deduplication.",
+  "verification": {
+    "focused_tests": "Current alternate-feed source passes 25/25 normally and 25/25 under optimized Python; current certificate-builder source passes 21/21 normally and 21/21 under optimized Python. Resource-ledger assertions bind the new row, source PR/merge, exact certificate-builder blob, default-OFF/zero-game/zero-promotion boundaries and build order.",
+    "privacy": "No credential, private account identifier, private file name, customer data, private report or incident narrative is copied into canonical metadata.",
+    "open_door": "Source, tests, activation artifacts and build order are public Commons paths requiring no login, provider session or approval queue.",
+    "zero_fabrication": "Certificate validity remains distinct from candidate quality, gameplay strength, matched evaluation completion, policy promotion, default activation, provider quota, hosted score, rank, submission, prize, payment, revenue or cash.",
+    "collision": "Only ledger, append-only activation record, append-only receipt, focused ledger assertions and generated freshness stamp are owned. Animal-cadence source, TITAN runtime/gameplay/config/archive/package/current pointer paths, provider state and peer-owned branches remain untouched."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-12T16:08:03Z",
+    "prior_terminal_main_sha": "425e68242b5042518619b3eaaf76d364f5cbbb6c",
+    "main_sha_at_claim": "eeabdb2c8ba75e40e5a3ee188fd2781d9e289fcb",
+    "prior_terminal_slack_ts": "1789218636.363659",
+    "latest_delta_slack_ts": "1789229157.787379",
+    "commons_claim_slack_ts": "1789229283.919009",
+    "delegation_slack_ts": "1789229352.638719",
+    "source_prs": [13379],
+    "latest_source_merge_sha": "eeabdb2c8ba75e40e5a3ee188fd2781d9e289fcb",
+    "remote_branches_observed": 3081,
+    "remote_branch_set_digest_sha256": "1dcb0362d3dbcf998c4b9efdb5b120189e21b2f3576a400e8d1f9a2973d3c0c6",
+    "automations": "Commons Resource Master, TITAN V4 Consolidation and TITAN V4 Sweep enabled",
+    "openai_reset": "No newly verified reset; current meter not directly observed and no banked reset activated."
+  },
+  "projection": {
+    "resources": 91,
+    "producing": 63,
+    "inventory_records": 53
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789229283919009",
+    "source_pr": "https://github.com/woahwhattheheck/commons/pull/13379",
+    "source_release": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1789227052492359?thread_ts=1789212591.722829&cid=C0C0Z8AHGP2",
+    "build_order": "https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1789229352638719",
+    "official_banked_reset_help": "https://help.openai.com/en/articles/20001498-how-banked-codex-resets-work",
+    "prior_terminal_receipt": "p/codex-titan-v5-cross-evidence-promotion-gate-resource-activation-20260912-01.md"
+  },
+  "non_claims": [
+    "No animal-cadence, TITAN runtime, gameplay, configuration, archive, package, current pointer, provider or Kaggle source path was changed by this activation.",
+    "No Claude or Cursor session was contacted, launched, assigned as tester/verifier/reviewer, or treated as landing authority.",
+    "No game, matched evaluation, candidate promotion, default activation, model, provider, Kaggle, credential, deployment, quota-spend, reset purchase, banked-reset activation or owner-device operation occurred.",
+    "No playing-strength result, hosted score, rank, submission, prize, payout, payment, settlement, revenue or cash was claimed."
+  ],
+  "titan": "NOT_WRITTEN"
+}

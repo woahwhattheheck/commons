@@ -1,0 +1,32 @@
+--- a/titan_runtime.py
++++ b/titan_runtime.py
+@@ -491,6 +491,7 @@
+         selected_checkpoint = None
+         seller_checkpoint = None
+         stage = 'cold_start'
++        initialization_completed = False
+         seconds = self.features.budget_seconds-self.features.reserve_seconds-(time.perf_counter()-started)
+         if seconds <= 0:
+             # No current state mutated, but FrozenSelected must still observe the
+@@ -510,6 +511,7 @@
+             with timer:
+                 if not self.ready:
+                     self._initialize()
++                initialization_completed = True
+                 if self.history is not None:
+                     stage = 'history_observation'
+                     self.history.observe(obs)
+@@ -598,7 +600,12 @@
+             self.diagnostics.update(status='deadline_fallback', fallback_stage=stage,
+                                     elapsed_seconds=time.perf_counter()-started,
+                                     act_cpu_seconds=time.process_time()-cpu_started)
+-            output = self._finish_production(obs, output, cfg)
++            # Initialization can stop before controller/consumer binding or
++            # halfway through installing a spatial/quadrant collaborator.
++            # Such an object cannot finalize even the legal fallback. Keep
++            # its public observation queued for the existing reconstruction.
++            if initialization_completed:
++                output = self._finish_production(obs, output, cfg)
+             # Include the reserved fallback/finalizer window in the receipt.
+             self.diagnostics.update(elapsed_seconds=time.perf_counter()-started,
+                                     act_cpu_seconds=time.process_time()-cpu_started)

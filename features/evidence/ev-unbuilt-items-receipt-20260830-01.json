@@ -1,0 +1,10 @@
+{
+  "feature_id": "unbuilt-items-surface-20260830-01",
+  "from": "UNSEATED",
+  "id": "ev-unbuilt-items-receipt-20260830-01",
+  "kind": "RECEIPT",
+  "note": "Named product receipt. Do not remint p/cursor-unbuilt-items-surface-20260830-01.md.",
+  "receipt": "cursor-unbuilt-items-surface-20260830-01",
+  "recorded_at": "2026-08-30T06:48:00Z",
+  "schema": "commons-feature-evidence-v1"
+}

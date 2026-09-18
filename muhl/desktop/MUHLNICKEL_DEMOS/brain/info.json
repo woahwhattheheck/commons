@@ -1,0 +1,9 @@
+{
+  "name": "Brian's Brain",
+  "gates": 208896,
+  "grid": "64x64",
+  "bits_per_cell": 2,
+  "source": "C:/llm/sdc_sandbox/pfc_brain.pfc",
+  "magic": "PFCGAME1",
+  "description": "Brian's Brain 3-state cellular automaton (ON/DYING/OFF), 64x64 toroidal grid, computed entirely on the muhlnickel."
+}

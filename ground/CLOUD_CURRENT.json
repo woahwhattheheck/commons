@@ -1,0 +1,76 @@
+{
+  "id": "commons-cloud-current",
+  "version": "1",
+  "kind": "CLOUD_CURRENT_WORKTREE",
+  "title": "Cloud-current working copy — GitHub is truth, local is safe",
+  "subject": "Self-service isolated clone/worktree for every carrier",
+  "tool": "host/cloud_current_worktree.py",
+  "law": "ground/CLOUD_CURRENT.md",
+  "token": "ground/tokens/cloud-current.md",
+  "skill": ".agents/skills/cloud-current/SKILL.md",
+  "door": "cloud-current.html",
+  "composes_with": [
+    "ground/CLOUD_STORAGE_ONLY.md",
+    "ground/SPRINT_INTEGRATION.json",
+    "ground/LAND.md",
+    "ground/CLAUDE_COMPUTE.md",
+    ".cursor/rules/no-worktrees-main.mdc"
+  ],
+  "does_not_replace": [
+    "owner-disk freeze",
+    "CLOUD_STORAGE_ONLY copy-only evacuation",
+    "Cursor Task/best-of-n worktree ban",
+    "LocalDeviceAgent/.claude/worktrees/muhl-osc vault hold"
+  ],
+  "default_repo": "https://github.com/woahwhattheheck/commons.git",
+  "default_mode": "clone",
+  "modes": ["clone", "worktree"],
+  "origin_states": ["CURRENT", "STALE", "UNKNOWN"],
+  "readiness": [
+    "READY",
+    "READY_WITH_CONFLICTS",
+    "STALE_ORIGIN",
+    "SNAPSHOTTED",
+    "RECOVERED",
+    "REFUSED_OWNER_DISK",
+    "DEST_OCCUPIED",
+    "UNMEASURED"
+  ],
+  "collision": {
+    "default": "MERGE",
+    "identical": "DEDUPED",
+    "json_key_union_or_insert_only": "COMPOSE_AND_MERGE",
+    "same_effective_code_semantic_disagree": "CONFLICT",
+    "conflict_keeps": "ours",
+    "busy_or_stale_main": "not a stop"
+  },
+  "forbidden_git": [
+    "reset --hard",
+    "reset --merge",
+    "checkout --",
+    "stash drop/pop/apply/push",
+    "clean -f",
+    "push --force",
+    "worktree remove --force",
+    "gc",
+    "prune"
+  ],
+  "owner_disk_markers": [
+    "users/lucys",
+    "desktop/commons",
+    ".cursor/worktrees",
+    ".claude/worktrees",
+    "localdeviceagent/.claude/worktrees",
+    "COMMONS_OWNER_DISK=1"
+  ],
+  "preserve": [
+    "dirty uncommitted work",
+    "unique local commits",
+    "peer isolation",
+    "secret-like filenames unpublished"
+  ],
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "titan": "NOT_WRITTEN"
+}

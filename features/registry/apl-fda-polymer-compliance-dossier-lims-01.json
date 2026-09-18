@@ -1,0 +1,37 @@
+{
+  "added": "2026-09-01",
+  "capability": "Associated Polymer Labs FDA polymer compliance dossier LIMS: a frozen 100-submission synthetic fixture reconciles regulated sample, lot, matrix, and intended-use identifiers; creates exactly 80 accessions, controlled routine/non-routine method/version/instrument work orders, provenance-bound raw results, and staged FDA-supporting polymer evidence dossiers; holds 20 predetermined defects without output (8 missing intended-use/regulatory matrix, 4 duplicate IDs, 4 method/matrix mismatches, 4 QC/OOS failures); preserves golden value/unit/qualifier/dossier hashes; replays with zero additions; and permits release only through an authoritative named-human reviewer directory.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "apl_fda_polymer_compliance_dossier_lims.py",
+    "test_apl_fda_polymer_compliance_dossier_lims.py",
+    "apl-fda-polymer-compliance-dossier-lims.html",
+    "revenue/apl_fda_polymer_compliance_dossier_lims/contract.json",
+    "revenue/apl_fda_polymer_compliance_dossier_lims/README.md",
+    "revenue/apl_fda_polymer_compliance_dossier_lims/runner.py",
+    "revenue/apl_fda_polymer_compliance_dossier_lims/receipt.json",
+    "p/apl-fda-polymer-compliance-dossier-lims-01.md"
+  ],
+  "dependencies": [],
+  "id": "apl-fda-polymer-compliance-dossier-lims-01",
+  "name": "APL FDA polymer compliance dossier LIMS",
+  "next_gap": "Buyer-owned de-identified schemas, controlled method/version/instrument catalog, golden result exports, and authorized reviewer directory after synthetic verification. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "apl-fda-polymer-compliance-dossier-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "apl-fda-polymer-compliance-dossier-lims.html",
+    "revenue/apl_fda_polymer_compliance_dossier_lims/contract.json",
+    "p/apl-fda-polymer-compliance-dossier-lims-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_apl_fda_polymer_compliance_dossier_lims.py",
+    "apl_fda_polymer_compliance_dossier_lims.py"
+  ]
+}

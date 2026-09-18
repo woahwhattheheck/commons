@@ -1,0 +1,86 @@
+{
+  "candidate": {
+    "company": "Khemia Software, Inc.",
+    "product": "Omega LIMS",
+    "public_route": "info@khemia.com",
+    "public_website": "https://khemia.com/",
+    "route_purpose": "sales_or_product_inquiry"
+  },
+  "commercial_source": {
+    "duration": "2-4 weeks",
+    "merge_commit": "c46aece4fd95d799110f8e62499e3e7cae232a17",
+    "offer_id": "PILOT_2_TO_4_WEEK",
+    "price_usd": 25000,
+    "pull_request": 14882,
+    "repo": "woahwhattheheck/commons",
+    "state": "PROPOSED_NOT_ACCEPTED",
+    "workshare_modules": [
+      "MIGRATION_EVIDENCE",
+      "INTEGRATION_CONFORMANCE",
+      "UAT_ACCEPTANCE_EVIDENCE",
+      "CUTOVER_REPLAY"
+    ]
+  },
+  "first_party_evidence": [
+    {
+      "claims": [
+        "environmental LIMS for water, soil, air, and waste testing laboratories",
+        "EPA method support and EDD generation",
+        "chain-of-custody tracking",
+        "QC management and batch validation",
+        "instrument integration",
+        "US-based support",
+        "LIMS history dating to 1995"
+      ],
+      "url": "https://khemia.com/environmental-lims/"
+    },
+    {
+      "claims": [
+        "drinking-water, wastewater, and water-reclamation LIMS use cases",
+        "SCADA and historian integration",
+        "source-water and treatment-process monitoring"
+      ],
+      "url": "https://khemia.com/water-utility-lims/"
+    },
+    {
+      "claims": [
+        "sample lifecycle tracking with chain of custody and barcoding",
+        "analytical QC and workflow automation",
+        "instrument interfaces",
+        "document and SOP management",
+        "public sales route info@khemia.com"
+      ],
+      "url": "https://khemia.com/"
+    }
+  ],
+  "opportunity": {
+    "buyer": "New York State Department of Environmental Conservation, Division of Fish & Wildlife",
+    "carrier_merge_commit": "49b9ff6da9f3e7d932d4bc92024e1a4c3244fb69",
+    "carrier_pull_request": 14867,
+    "contract_reporter_number": "2138876",
+    "direct_cots_lims_prime_status": "HOLD",
+    "market_research_only": true,
+    "official_notice_url": "https://www.nyscr.ny.gov/Ads/IFrameDetails/2138876?FromAction=Search",
+    "tracking_issue": 14864
+  },
+  "schema": "nysdec_hcfs_lims.partner_candidate_source.v1",
+  "single_partner_rule": {
+    "alternate_partner_contact_requires_release_or_new_event": true,
+    "parallel_partner_outreach_forbidden": true,
+    "selected_candidate": "Khemia Software, Inc."
+  },
+  "source_checked_utc": "2026-09-17T03:15:00Z",
+  "unresolved_partner_gates": [
+    "NYS OGS or GSA procurement-vehicle status",
+    "hybrid on-premises/cloud production architecture for this requirement",
+    "24x7x365 maintenance and support commitment",
+    "NYS/DEC/ITS security posture for this requirement",
+    "disaster-recovery commitment for this requirement",
+    "warranty and equipment-replacement terms",
+    "comparable NYS government environmental-lab deployments",
+    "exact fit to every retained Hale Creek RFI question",
+    "current implementation capacity and delivery runway",
+    "willingness to pursue or respond to Hale Creek",
+    "willingness to use TJLabs as a paid specialist workshare"
+  ]
+}

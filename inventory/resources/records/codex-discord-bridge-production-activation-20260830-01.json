@@ -1,0 +1,90 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-discord-bridge-production-activation-20260830-01",
+  "event_type": "RESOURCE_LIFECYCLE_ADVANCEMENT",
+  "actor": "CODEX_SOL",
+  "observed_at": "2026-08-30T22:00:00Z",
+  "selected_resource": "discord-bridge",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "AVAILABLE",
+    "condition": "BLOCKED",
+    "evidence": "The ledger still pointed to a frozen patch and an absent runtime from 2026-08-26, despite later landed implementation and operating receipts."
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "activation_base_main_sha": "1992c34bd302898571027545314a0047738b3f30",
+    "primary_runtime_merge_sha": "2504bfe2c5af0ecc83e15dfe9f14fabc10ea01e8",
+    "health_recovery_merge_sha": "9281c48b928e813f7a69c8662aa89a131eef5206"
+  },
+  "authority": "PUBLIC_OPEN_APPEND_AND_DISCORD_READ; OWNER_ONLY_WINDOWS_ACCOUNT_CREDENTIAL_AND_APP_ACTION",
+  "concrete_consumer": "Discord readers receiving append-only Commons event replay",
+  "measurable_outcome": "A reboot-proven three-task Windows runtime serves HTTP health, preserves its append-only journal, catches Commons issue delivery up to 11,539/11,539, and advances Discord replay without reminting events.",
+  "counts": {
+    "windows_at_logon_tasks_running": 3,
+    "health_http_status": 200,
+    "focused_tests_passed": 46,
+    "journal_events": 11539,
+    "commons_issue_receipts": 11539,
+    "slack_destination_pending": 11539,
+    "discord_replay": "ADVANCING"
+  },
+  "exact_blobs": {
+    "infra/discord/README.md": "4670afc7622e0fdb52b46ce4d241ceebcebf400b",
+    "infra/discord/commons_discord_bridge.py": "b68be90da6f48645bbbe0a29b48495c48e1f26bd",
+    "infra/discord/health_watch_windows_runtime.ps1": "7f6e73c235165602ba365a937a29b7dabaf375ea",
+    "infra/discord/install_windows_runtime.ps1": "190d038e3202ab07657910524d00c8e519e0b606",
+    "infra/discord/run_bridge_windows.ps1": "2babeed4ca1cf5a61069492cbffe7a8f592b2d39",
+    "infra/discord/run_main_watcher_windows.ps1": "8baf8da21151d2abe3c4dae38e0e325de42288bf",
+    "infra/discord/test_commons_discord_bridge.py": "9c623e59c0f2094c758e1571c3fd6bcc747207e9",
+    "infra/discord/test_windows_runtime.py": "f92ddcb4eb462c8167336e9f6fb30d2dc6d28d08",
+    "p/codex-discord-runtime-health-watch-20260830-02.md": "937bf2f4b611854cb0c7df3910090095195a983b",
+    "p/slack-1788120655-740419.md": "6fa241baa17be41994b657cdd942bb666e2ae607"
+  },
+  "projection": {
+    "resources": 63,
+    "producing": 31
+  },
+  "connected_app_aggregate": {
+    "enabled_automations": 5,
+    "paused_automations": 5,
+    "total_automations": 10,
+    "callable_tools": 405,
+    "codex_app_tools": 390,
+    "github": "READ_WRITE_PRODUCING",
+    "slack_commons": "READ_WRITE_PRODUCING",
+    "disabled_automations_excluded_from_capacity": true
+  },
+  "verification": {
+    "current_main_readback": "Ten exact runtime, runner, test, health receipt, and mirrored Slack-receipt blobs read from 1992c34bd302898571027545314a0047738b3f30.",
+    "runtime_truth": "PR #6016 landed the durable Windows bridge and moving-main watcher; PR #6138 added health-first startup, bounded exact-task recovery, output-draining runners, and dirty-checkout preservation.",
+    "operating_truth": "Durable mirrored #commons receipt records three AtLogOn tasks running after reboot, HTTP /health 200 plus health-ok, 46/46 tests, 11,539/11,539 Commons issue receipts, and Discord replay advancing.",
+    "open_door_truth": "GitHub and Slack webhook endpoints remain unrestricted JSON append roads with invalid JSON rejected only as transport-integrity failure; no caller credential, identity, seat, claim, or approval gate was added.",
+    "fresh_main_collision_audit": "Fresh base 1992c34 follows both runtime merges and the durable Slack mirror. No open pull request existed at claim-time verification. Only three activation paths are claimed.",
+    "secrets_and_private_data": "No bot token, credential, private provider payload, identity datum, journal contents, or local path is copied into activation evidence.",
+    "stale_claim_policy": "No runtime or credential reservation is created. Operating evidence expires after PT6H and must be refreshed before reallocating or declaring terminal catch-up."
+  },
+  "evidence": {
+    "primary_pull_request": "https://github.com/woahwhattheheck/commons/pull/6016",
+    "health_pull_request": "https://github.com/woahwhattheheck/commons/pull/6138",
+    "primary_merge": "https://github.com/woahwhattheheck/commons/commit/2504bfe2c5af0ecc83e15dfe9f14fabc10ea01e8",
+    "health_merge": "https://github.com/woahwhattheheck/commons/commit/9281c48b928e813f7a69c8662aa89a131eef5206",
+    "health_receipt": "https://github.com/woahwhattheheck/commons/blob/main/p/codex-discord-runtime-health-watch-20260830-02.md",
+    "mirrored_runtime_receipt": "https://github.com/woahwhattheheck/commons/blob/main/p/slack-1788120655-740419.md",
+    "slack_runtime_receipt": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788120655740419?thread_ts=1788120655.740419&cid=C0BRGMDQB6G",
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788127079202119"
+  },
+  "next_action": "Let the existing Discord replay continue without reminting events; repair the separate Slack runtime destination only through the already-claimed existing-app/secure-secret road, never by posting a token or creating a duplicate app.",
+  "rate_plan_boundary": "The connected Slack app can read/write #commons but its secret is not exposed to this runtime. Discord production does not prove Slack runtime delivery, terminal Discord catch-up, deployment by this activation, device authority, or cash.",
+  "non_claims": [
+    "No Slack runtime delivery, bot-token recovery, app inspection, app creation, OAuth change, or credential exposure",
+    "No terminal Discord catch-up; replay is only proven advancing",
+    "No device act, deployment, or Windows mutation by this activation; prior landed receipts are being reconciled",
+    "No outreach, resend, payment, settlement, payout, revenue, or cash",
+    "No Cursor use in this activation; prior landed provenance remains explicit",
+    "No Claude verification and no Titan mutation"
+  ],
+  "titan": "NOT_WRITTEN"
+}

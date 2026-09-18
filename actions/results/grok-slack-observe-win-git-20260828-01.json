@@ -1,0 +1,13 @@
+{
+  "id": "grok-slack-observe-win-git-20260828-01",
+  "verb": "BUILD",
+  "target": "existing-windows-commons-checkout",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: ACTION: not found\n/bin/sh: 2: target:: not found\n/bin/sh: 4: Update: not found\n/bin/sh: 6: Verified: not found\n/bin/sh: 7: Enqueue: not found\n/bin/sh: 8: Observer:: not found\n/bin/sh: 8: .github/workflows/job-watchdog.yml: Permission denied\n/bin/sh: 8: integrations/grok_slack/bridge.py: Permission denied\n/bin/sh: 8: run-handoff.ps1: not found\nFrom https://github.com/woahwhattheheck/commons\n * branch                main       -> FETCH_HEAD\n   1a04f731f..05290b210  main       -> origin/main\nmerge: origin/main. - not something we can merge\n/bin/sh: 11: Restart: not found\n/bin/sh: 13: Never: not found\n/bin/sh: 13: no: not found\n/bin/sh: 15: Prove: not found\n/bin/sh: 17: Write: not found\n/bin/sh: 19: Does: not found\n",
+  "executed_at": "2026-08-29T00:27:18.821158Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

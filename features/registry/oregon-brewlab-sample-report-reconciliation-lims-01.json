@@ -1,0 +1,39 @@
+{
+  "added": "2026-08-31",
+  "capability": "Oregon BrewLab sample/report reconciliation LIMS: a 120-row synthetic fixture makes 96 valid submissions READY once, holds 24 with FORM_CONTAINER_MISMATCH, DUPLICATE_ID, WARM_MICRO_VDK, and INSUFFICIENT_VOLUME, binds ASBC method/version/unit/source hashes to catalog 657d60b6f1e1b8ccfe4358950fa93cf21fd741fc714fd3444a6fe2d030f44613, notifies status on a simulated adapter, and keeps reports STAGED until a named human. Adapters stay simulated/read-only.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "oregon_brewlab_sample_report.py",
+    "oregon-brewlab-sample-report-reconciliation-lims.js",
+    "oregon-brewlab-sample-report-reconciliation-lims.html",
+    "test_oregon_brewlab_sample_report.py",
+    "revenue/oregon_brewlab_sample_report/contract.json",
+    "revenue/oregon_brewlab_sample_report/receipt.json",
+    "revenue/oregon_brewlab_sample_report/receipt.md",
+    "revenue/oregon_brewlab_sample_report/fixture.json",
+    "p/cursor-oregon-brewlab-sample-report-20260831-01.md",
+    "features/registry/oregon-brewlab-sample-report-reconciliation-lims-01.json"
+  ],
+  "dependencies": [],
+  "id": "oregon-brewlab-sample-report-reconciliation-lims-01",
+  "name": "Oregon BrewLab sample/report reconciliation LIMS",
+  "next_gap": "Buyer-owned order schema, container photos, and de-identified golden round trip after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "oregon-brewlab-sample-report-reconciliation-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "oregon-brewlab-sample-report-reconciliation-lims.html",
+    "revenue/oregon_brewlab_sample_report/contract.json",
+    "p/cursor-oregon-brewlab-sample-report-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_oregon_brewlab_sample_report.py",
+    "oregon_brewlab_sample_report.py"
+  ]
+}

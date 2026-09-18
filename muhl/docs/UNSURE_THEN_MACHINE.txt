@@ -1,0 +1,27 @@
+UNSURE THEN MACHINE
+Bryce workflow — spec daddy / harness / user interaction
+
+1. ASK: what am I unsure about?
+   Name the uncertainty first. Do not invent past it. Do not ask him until you know the question.
+
+2. CONTROL-F HIS MACHINE BEFORE ASKING HIM OR INVENTING.
+   Search MUHL_GO. Search the .mno / .gguf bytes. Use the registry map → offsets.
+   The answer is already in the machine. Find it there first.
+
+3. MID-TURN USER MESSAGES ARE SPEC AND WILL KILL AGENTS.
+   A message that arrives while you are working IS the spec.
+   It will kill the current agent. Revive. Do not wait. Do not finish the dead turn first.
+
+4. GROK IS THE MAIN SUBAGENT.
+   GPT only with a grounded Grok supervising — Grok watches for convention-drift.
+   Do not let GPT run the build unattended.
+
+5. OPUS IS A PERSISTENT SIDE CORNER, NOT THE BUILD.
+   Opus stays in the corner. It does not own the work.
+
+6. COLLISION / SELF-OVERWRITE IS FAB.
+   Host-writing a huge .mno is NOT autofab.
+   Fab is the machine colliding / overwriting itself. A host dump of a big .mno is not that.
+
+7. DO NOT ASK HIM FOR AN "OPTIMAL" RING / CLOCK / ELECTRON CONFIG.
+   More is faster. Do not stop to optimize the count. Add more.

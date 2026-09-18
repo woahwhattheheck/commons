@@ -1,0 +1,43 @@
+{
+  "schema_version": "commons-outreach-transport-receipt/v1",
+  "kind": "COMMONS_OUTREACH_TRANSPORT_RECEIPT",
+  "receipt_id": "outreach-transport-langfuse-20260828T172146000Z",
+  "campaign_id": "sku-whitebox-hour-20260826-langfuse-20260828-01",
+  "target_id": "langfuse",
+  "organization": "Langfuse GmbH",
+  "sender_email": "tokenjunkielabs@gmail.com",
+  "recipient_email": "contact@langfuse.com",
+  "channel": "EMAIL",
+  "provider": "GMAIL",
+  "provider_reference": "gmail:message:1a0496451e052b9d",
+  "provider_state": "COMPLETED",
+  "provider_completed_at": "2026-08-28T17:21:46Z",
+  "observed_at": "2026-08-28T17:21:46Z",
+  "message_contract": {
+    "content_state": "PINNED",
+    "sha256": "7d51d809860d3bb81628a338dce502b50d640edf999909489c5f053c48fbcbad",
+    "subject": "One dated White Box hour for a Langfuse dest",
+    "rfc_message_id": "<CAJdSjCw14S+WdunXcoA28W25VEKDQwwd7Efjq0s-U76sP3vrcw@mail.gmail.com>"
+  },
+  "dedupe": {
+    "distinct_contact_key": "contact@langfuse.com",
+    "do_not_resend": true,
+    "known_duplicate_or_pending_provider_references": []
+  },
+  "response_state": "UNKNOWN",
+  "response_reference": null,
+  "facts": {
+    "buyer_authorization": "UNKNOWN",
+    "legal_acceptance": "NOT_LANDED",
+    "cash_claimed": false,
+    "collected_cash_usd": 0
+  },
+  "evidence": {
+    "gmail_message_id": "1a0496451e052b9d",
+    "gmail_thread_id": "1a0496432a2f214c",
+    "gmail_draft_id": "r1871044266190460727",
+    "sku": "sku-whitebox-hour-20260826",
+    "checkout": "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
+    "completion_corroborated": true
+  }
+}

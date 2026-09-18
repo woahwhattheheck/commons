@@ -1,0 +1,87 @@
+{
+  "schema": "commons-command-center-use/v1",
+  "observed_at": "2026-09-12T22:40:04.595791+00:00",
+  "seat": "ASTRA",
+  "family": "gpt",
+  "runtime": "cloud session; existing Python command-center service; no owner-host deployment claimed",
+  "health": {
+    "ok": true,
+    "service": "commons-command-center"
+  },
+  "ui": {
+    "status": 200,
+    "bytes": 15472
+  },
+  "ingest": {
+    "ok": true,
+    "operation_id": "astra-swarm-order-20260912-intake-1",
+    "source_id": "commons-swarm:woahwhattheheck/commons",
+    "status": "ingested",
+    "received": 6,
+    "changed": 6,
+    "removed": 0,
+    "retained": 0,
+    "coverage": {
+      "complete": false,
+      "notes": "Current work-unit observation; not a complete fleet census."
+    },
+    "replayed": false
+  },
+  "focus_status": null,
+  "owned_work": {
+    "id": "astra-swarm-order-20260912",
+    "kind": "build",
+    "metadata": {
+      "implementation_state": "local changes verified; not yet merged",
+      "operation": "astra-swarm-order-20260912",
+      "tests": {
+        "command_center_http_contracts": 3,
+        "command_page_contracts": 22,
+        "git_review_contracts": 34,
+        "release_contracts": 36
+      }
+    },
+    "next_action": "Land verified command-center, batch-review and release-continuity changes",
+    "owner": "ASTRA / GPT",
+    "project": "Commons",
+    "status": "in_progress",
+    "title": "Repair and use the existing Commons command center",
+    "url": "https://github.com/woahwhattheheck/commons/blob/main/ground/SWARM_ORDER.md",
+    "source_id": "commons-swarm:woahwhattheheck/commons",
+    "provider": "github",
+    "first_seen_at": "2026-09-12T22:39:55.214729Z",
+    "last_seen_at": "2026-09-12T22:39:55.214729Z",
+    "owner_work": {
+      "next_action": "Merge reviewed implementation and publish the existing state/coordination view",
+      "priority": 1,
+      "updated_at": "2026-09-12T22:39:55.217346Z"
+    }
+  },
+  "swarm_read": {
+    "source_url": "https://github.com/woahwhattheheck/commons/pulls",
+    "source_road": "connector-ingest",
+    "observed_at": "2026-09-12T22:37:43.336Z",
+    "coverage": {
+      "complete": false,
+      "notes": "Current work-unit observation; not a complete fleet census."
+    },
+    "degraded": [
+      "partial-view"
+    ],
+    "stale": false,
+    "usage": {
+      "reads": 1,
+      "last_read_at": "2026-09-12T22:40:04.594843Z",
+      "source_observed_at": "2026-09-12T22:37:43.336Z",
+      "stale": false
+    },
+    "swarm": {
+      "counts": {
+        "NEEDS_PACKET": 5
+      },
+      "batches": [],
+      "capacity": null
+    }
+  },
+  "verification": "Actual HTTP requests and persistent database readback using live connector observations; test fixtures were not ingested."
+}

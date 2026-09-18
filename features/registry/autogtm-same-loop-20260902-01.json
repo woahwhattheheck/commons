@@ -1,0 +1,35 @@
+{
+  "added": "2026-09-02",
+  "capability": "Same AutoGTM loop as Explee public mechanism and cmn-labs/autogtm eight steps. Paste website, ICP, people, personal draft. Autopilot send refused until mailbox. Explee API 401 is FINDER-FAILED, never a door lock.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "host/autogtm_same_loop.py",
+    "test_autogtm_same_loop.py",
+    "autogtm.html",
+    ".agents/skills/autogtm/SKILL.md",
+    "ground/tokens/autogtm.md",
+    "p/cursor-autogtm-explee-same-loop-20260902-01.md"
+  ],
+  "dependencies": ["website-people-email-book-20260830-01"],
+  "id": "autogtm-same-loop-20260902-01",
+  "name": "AutoGTM same loop",
+  "next_gap": "Owner mailbox and Explee/Exa/Instantly private credentials on an agent surface. Do not invent sent mail, booked demos, or cash.",
+  "owner_subsystem": "autogtm",
+  "public_entrypoint": "autogtm.html",
+  "related": {
+    "boards": true,
+    "current_work": true,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "autogtm.html",
+    ".agents/skills/autogtm/SKILL.md",
+    "p/cursor-autogtm-explee-same-loop-20260902-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_autogtm_same_loop.py",
+    "host/autogtm_same_loop.py"
+  ]
+}

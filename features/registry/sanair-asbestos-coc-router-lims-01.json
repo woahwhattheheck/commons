@@ -1,0 +1,42 @@
+{
+  "added": "2026-08-31",
+  "capability": "SanAir Rapid-TAT asbestos COC router: a working CLI loads 360 frozen synthetic COCs, routes 300 valid orders once into Richmond, Cincinnati, or Boston with field parity and receipt-based TAT clocks, blocks 60 exceptions with exact codes, keeps recipient permissions and amendment lineage, refuses autonomous release, and reproduces audit_sha256 7e90246b6ab1cfaf8b5fac41669f968fa3cd2c8ed8c27381835387ea407483cf. Adapters stay simulated and read-only.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "sanair_asbestos_coc_router.py",
+    "revenue/sanair_asbestos_coc_router/runner.py",
+    "revenue/sanair_asbestos_coc_router/fixture.json",
+    "revenue/sanair_asbestos_coc_router/source.json",
+    "revenue/sanair_asbestos_coc_router/README.md",
+    "revenue/sanair_asbestos_coc_router/contract.json",
+    "revenue/sanair_asbestos_coc_router/receipts/run.json",
+    "revenue/sanair_asbestos_coc_router/receipts/audit.json",
+    "revenue/sanair_asbestos_coc_router/receipts/replay.json",
+    "test_sanair_asbestos_coc_router.py",
+    "sanair-asbestos-coc-router-lims.html",
+    "p/sanair-asbestos-coc-router-lims-01.md",
+    "features/registry/sanair-asbestos-coc-router-lims-01.json"
+  ],
+  "dependencies": [],
+  "id": "sanair-asbestos-coc-router-lims-01",
+  "name": "SanAir Rapid-TAT asbestos COC router",
+  "next_gap": "Buyer-owned de-identified COC / TAT golden files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "sanair-asbestos-coc-router-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "sanair-asbestos-coc-router-lims.html",
+    "revenue/sanair_asbestos_coc_router/contract.json",
+    "p/sanair-asbestos-coc-router-lims-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_sanair_asbestos_coc_router.py",
+    "sanair_asbestos_coc_router.py"
+  ]
+}

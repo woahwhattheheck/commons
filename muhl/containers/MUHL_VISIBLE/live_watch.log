@@ -1,0 +1,21 @@
+LONG-WINDOW DIRECT-I/O WATCH
+  container 103,803,349,384 B  grid 1024 sectors x 4096 B  window 900 s  gap 6.0 s
+  page cache bypassed (FILE_FLAG_NO_BUFFERING)
+
+[   56.6s] pass 10, changes so far 0, file size(s) seen ['103,803,349,384']
+[  119.7s] pass 20, changes so far 0, file size(s) seen ['103,803,349,384']
+[  182.8s] pass 30, changes so far 0, file size(s) seen ['103,803,349,384']
+[  245.8s] pass 40, changes so far 0, file size(s) seen ['103,803,349,384']
+[  309.0s] pass 50, changes so far 0, file size(s) seen ['103,803,349,384']
+[  371.9s] pass 60, changes so far 0, file size(s) seen ['103,803,349,384']
+[  435.0s] pass 70, changes so far 0, file size(s) seen ['103,803,349,384']
+[  498.0s] pass 80, changes so far 0, file size(s) seen ['103,803,349,384']
+[  561.1s] pass 90, changes so far 0, file size(s) seen ['103,803,349,384']
+[  623.9s] pass 100, changes so far 0, file size(s) seen ['103,803,349,384']
+[  686.9s] pass 110, changes so far 0, file size(s) seen ['103,803,349,384']
+[  749.9s] pass 120, changes so far 0, file size(s) seen ['103,803,349,384']
+[  812.8s] pass 130, changes so far 0, file size(s) seen ['103,803,349,384']
+[  875.7s] pass 140, changes so far 0, file size(s) seen ['103,803,349,384']
+
+DONE. passes=144  total changes observed=0  window=900.9 s
+file sizes seen: ['103,803,349,384']

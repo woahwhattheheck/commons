@@ -1,0 +1,11 @@
+1
+00:00:00,123 --> 00:00:06,500
+Keep the <b>original caption source</b> beside the editable transcript.
+
+2
+00:00:06,500 --> 00:00:12,875
+Timestamps carry context. A draft is not a verified recording.
+
+3
+00:00:12,875 --> 00:00:19,250
+State the next action clearly, then preserve the complete handoff.

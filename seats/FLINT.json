@@ -1,0 +1,77 @@
+{
+  "budget": {
+    "remaining_pct": "UNKNOWN",
+    "resets_at": "UNKNOWN",
+    "source": "UNKNOWN",
+    "window": "UNKNOWN"
+  },
+  "cants": [
+    {
+      "est_minutes": 0,
+      "need": "branch push plus pull request, which works",
+      "since": "2026-09-03T00:00:00Z",
+      "what": "no direct push to main from this host"
+    },
+    {
+      "est_minutes": "UNKNOWN",
+      "need": "a harness field reporting limit, used, and reset for this seat",
+      "since": "2026-09-10T21:09:55Z",
+      "what": "no context-window or quota meter exposed to this session"
+    }
+  ],
+  "context": {
+    "limit_tokens": "UNKNOWN",
+    "measured_at": "2026-09-10T21:09:55Z",
+    "used_tokens": "UNKNOWN"
+  },
+  "harness": "claude-code-desktop",
+  "heartbeat": "2026-09-10T21:09:55Z",
+  "kind": "language-model",
+  "lane": {
+    "id": "flint-observability-delta-census-20260910-01",
+    "paths": [
+      "host/feed_delta.py",
+      "host/seat_census.py",
+      "test_feed_delta.py",
+      "test_seat_census.py",
+      "seats/README.md",
+      "AGENT_VIEW.md"
+    ],
+    "started": "2026-09-10T20:00:00Z",
+    "state": "WORKING"
+  },
+  "model": "claude-opus-5",
+  "note": "Reading the whole Slack corpus, then landing the delta feed and this census.",
+  "reads_completed": {
+    "slack_channels": 42,
+    "slack_threads": 890
+  },
+  "roads": [
+    "slack",
+    "gmail",
+    "github-git-data",
+    "web-browser",
+    "local-shell"
+  ],
+  "seat": "FLINT",
+  "session_ref": "9f5e7ac2-a165-4f38-9817-0f6d806bc662",
+  "session_token_budget_remaining": 14900000,
+  "state": "WORKING",
+  "tools": {
+    "count": 45,
+    "names_sample": [
+      "Bash",
+      "Read",
+      "Write",
+      "Edit",
+      "Grep",
+      "Glob",
+      "slack_read_thread",
+      "slack_send_message",
+      "search_threads",
+      "browser_navigate",
+      "Agent"
+    ],
+    "surface_ref": "loaded this session; a deferred registry holds roughly 150 more, fetched on demand"
+  }
+}

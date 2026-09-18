@@ -1,0 +1,31 @@
+{
+  "schema": "commons-experience/v1",
+  "id": "experience-compiler-generated-source-drift",
+  "recorded_at": "2026-09-12T23:23:26.041Z",
+  "task": "Retain published generated wiki content when the experience compiler rebuilds it.",
+  "outcome": "failed",
+  "evidence": [
+    {
+      "kind": "workflow_run",
+      "value": "https://github.com/woahwhattheheck/commons/actions/runs/34403364403"
+    },
+    {
+      "kind": "pull_request",
+      "value": "https://github.com/woahwhattheheck/commons/pull/11950"
+    }
+  ],
+  "patterns": [
+    {
+      "id": "change-generator-with-generated-output",
+      "kind": "failure",
+      "summary": "A delayed experience-compiler check reported DRIFT on the index and pattern page because their published additions were absent from the generator. The failure and cause are recorded in PR 11950.",
+      "procedure": "When a generated page needs a persistent change, identify and update its generator, regenerate the page, and check that another generation preserves the intended bytes.",
+      "applies_to": [
+        "experience-compiler",
+        "generated-artifacts",
+        "build-tooling"
+      ]
+    }
+  ],
+  "skill_impacts": []
+}

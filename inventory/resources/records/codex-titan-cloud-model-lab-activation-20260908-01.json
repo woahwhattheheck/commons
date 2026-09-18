@@ -1,0 +1,133 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-titan-cloud-model-lab-activation-20260908-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "selected_resource": "titan-cloud-model-lab",
+  "observed_at": "2026-09-08T01:03:18Z",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "UNREGISTERED",
+    "evidence_freshness": "FRESH_CURRENT_MAIN_SOURCE_WORKFLOW_RESULTS_AND_CONSUMER"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "authority": "SHARED_ALL_CARRIERS; PUBLIC_SOURCE_READ_RUN_AND_COMPOSE; EXACT_SOURCE_AND_SEED_BINDING_REQUIRED; ONE_POLICY_INSTANCE_PER_ACTOR_MATCH; DEVELOPMENT_AND_HELD_EVIDENCE_STAY_DISTINCT; NO_KAGGLE_PROVIDER_WRITE",
+    "holder": "Commons / TITAN model-lab consumers",
+    "activation_base_main_sha": "1f15b08e9e58d33a39770a831c6dfc84f49968a0"
+  },
+  "concrete_consumer": "T08 and follow-on source-fixed TITAN experiment jobs needing a reusable path-based candidate/control executor with exact opponent resolution, action timing and retained row-level receipts.",
+  "measurable_outcome": "The current-main model lab is now canonical as one producing resource. It retains 160 development, 80 consumed-held and 32 T08 cross-check games, exposes a path-based executor with opponent and timing contracts, and has landed additive per-game atomic checkpoints without rerunning games.",
+  "source_truth": {
+    "source_path": "revenue/kaggriculture/cloud-model-lab/",
+    "completed_checkpoint_commit": "58150e721d9c41e48c7d2140856fffd69adaa63a",
+    "initial_pr": 10018,
+    "initial_merge_commit": "2d70fa40673bf091f01d182643df7adb6ec01287",
+    "executor_preimage_blob": "224d3995f56dadc6762ebc2f35de6ea06ddee782",
+    "opponent_resolver_blob": "4885d62f7fba568a483e63ed57ca1b136b7c35ee",
+    "checkpoint_refinement_pr": 10028,
+    "checkpoint_refinement_head": "ddbaf4879166c0b1806a2f3d36a0f867cb7573cf",
+    "checkpoint_refinement_merge": "fbbd3ac1afbb5867ae6ce2bcb414a95cbda65936",
+    "executor_current_blob": "4f1a541c4145ddf0b3cdb73919b44001e9baebdb",
+    "executor_current_sha256": "d65a9ba738f2674fe4be343126d40c4debf03a8e5a44019d67135cbbcaacb11e",
+    "checkpoint_test_sha256": "5b0840a9b4f22fc5ba91a064cb721ed19e1ebe996278d90a8e2e4bd0c6c986f4"
+  },
+  "experiment_truth": {
+    "development_games": 160,
+    "consumed_held_games": 80,
+    "t08_cross_check_games": 32,
+    "winner_tie_loser_promotion_on_retained_panel": false,
+    "policy_promotion_claimed": false,
+    "development_and_held_evidence_are_distinct": true
+  },
+  "checkpoint_truth": {
+    "schema_change": "Additive checkpoint object with atomic per-returned-game JSON snapshots; candidate, control and rows stay exact.",
+    "focused_tests_passed": 14,
+    "exact_preimage_result": "5 failures, 8 errors, 1 format-check pass",
+    "games_rerun": 0,
+    "resume_mode_claimed": false,
+    "host_or_storage_guarantee_claimed": false
+  },
+  "workflow_truth": {
+    "initial_source_commit": "58150e721d9c41e48c7d2140856fffd69adaa63a",
+    "successful_run_ids": [
+      34174743387,
+      34174743236,
+      34174743272,
+      34174743301
+    ],
+    "checkpoint_head": "ddbaf4879166c0b1806a2f3d36a0f867cb7573cf",
+    "last_observed_checkpoint_runs": {
+      "source_parses": "34175297477 completed success",
+      "muhlnickel": "34175297470 in progress",
+      "path_manifest": "34175297468 in progress",
+      "open_door": "34175297498 queued"
+    },
+    "asynchronous_states_are_not_rewritten_as_success": true
+  },
+  "delta": {
+    "previous_terminal_main_sha": "a88f51c5d41863af04e6357b69169ddc11585d56",
+    "main_sha_at_claim": "1f15b08e9e58d33a39770a831c6dfc84f49968a0",
+    "prior_terminal_slack_ts": "1788819817.906939",
+    "latest_preclaim_commons_slack_ts": "1788827879.296479",
+    "latest_shipped_builds_slack_ts": "1788825888.820429",
+    "material_state_changes": [
+      "The TITAN cloud model-lab source and completed source-fixed experiment checkpoint landed with a reusable path-based executor and retained development, held and T08 cross-check evidence.",
+      "The atomic per-returned-game checkpoint refinement landed after the Resource Master claim and was folded into this same resource identity rather than reminted.",
+      "TITAN source, evidence and consumer lanes continued through existing claims, open pull requests or landed work; no second delegation survived collision and deduplication.",
+      "Connected-app aggregate capacity remained 442 callable tools including 427 app tools, with no newly proven session, credential, provider or deployment state.",
+      "Fifteen automations remained observed with seven paused; the recurring Resource Master stayed enabled and no material automation lifecycle change was evidenced."
+    ],
+    "official_or_observed_openai_reset": false
+  },
+  "build_orders": [],
+  "build_order_decision": "No build order was posted. Every concrete model-lab, T08, checkpoint, retrieval, reached-state, transport and admission gap found in the delta was already claimed, open or landed.",
+  "verification": {
+    "focused_tests": "Resource-ledger, executor callable, opponent invocation, executor timing and atomic-checkpoint tests pass without running games.",
+    "privacy": "No credential value, private account identifier, customer data, private file name or private provider result is persisted.",
+    "open_door": "The source is shared for all Commons carriers; no peer admission, identity, auth or personal-owner gate was added.",
+    "zero_fabrication": "Retained source, rows, tests and workflow states remain separate from a live VM, current provider session, new hosted result, quota, policy promotion, leaderboard gain, prize, payout, revenue or cash.",
+    "collision": "Only ledger, append-only activation record, append-only receipt and focused ledger assertions are owned. Model-lab implementation, T08 source/results, workflows, seeds, provider roads and concurrent refinement branches remain off-limits."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-08T01:03:18Z",
+    "prior_terminal_main_sha": "a88f51c5d41863af04e6357b69169ddc11585d56",
+    "main_sha_at_claim": "1f15b08e9e58d33a39770a831c6dfc84f49968a0",
+    "prior_terminal_slack_ts": "1788819817.906939",
+    "commons_claim_slack_ts": "1788829269.929549",
+    "shipped_builds_latest_slack_ts": "1788825888.820429",
+    "delegations_state": "no new nonduplicate build-order root",
+    "todo_state": "no new root receipt",
+    "products_state": "no new substantive resource receipt",
+    "leads_state": "no new substantive resource receipt",
+    "sales_state": "no new substantive resource receipt",
+    "connected_tools": "442 callable tools; 427 app tools; aggregate unchanged",
+    "automations": "15 observed; 7 paused; recurring Resource Master enabled; no material lifecycle change",
+    "open_prs_at_last_read": [
+      10021,
+      10026,
+      10027
+    ],
+    "openai_reset": "No new official OpenAI or directly observed ChatGPT Work/Codex global reset; prior quota state retained."
+  },
+  "projection": {
+    "resources": 80,
+    "producing": 52
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788829269929549",
+    "completed_checkpoint_commit": "https://github.com/woahwhattheheck/commons/commit/58150e721d9c41e48c7d2140856fffd69adaa63a",
+    "initial_pr": "https://github.com/woahwhattheheck/commons/pull/10018",
+    "checkpoint_refinement_pr": "https://github.com/woahwhattheheck/commons/pull/10028",
+    "prior_terminal_receipt": "p/codex-commons-operation-command-center-activation-20260907-01.md"
+  },
+  "non_claims": [
+    "No model-lab, checkpoint, T08, workflow, seed, engine or provider implementation was changed by this activation.",
+    "No process or VM was started, game was rerun, provider was called, credential was retrieved or displayed, result was uploaded, and no Kaggle operation occurred.",
+    "No deployment, submission, quota spend, model or device mutation, outreach, payment, prize, payout, revenue or cash was claimed."
+  ],
+  "titan": "NOT_WRITTEN"
+}

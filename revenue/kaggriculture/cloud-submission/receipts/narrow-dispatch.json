@@ -1,0 +1,34 @@
+{
+  "operation_id": "titan-kaggriculture-frontier-20260907-01",
+  "observed_at": "2026-09-07T09:56:21.660761+00:00",
+  "artifact_sha256": "79b407d699b5fd39e7b396de8b6fc79b2bc2fb99f427f7e2e7ecd25fbc71fb0b",
+  "artifact_bytes": 57711,
+  "before": {
+    "limits": {
+      "numToday": 1,
+      "numTotal": 1,
+      "numAllowedNow": 4
+    },
+    "matching_submissions": [],
+    "recent_submissions": [
+      {
+        "ref": 56069424,
+        "totalBytes": 12539,
+        "date": "2026-09-07T05:13:26.923Z",
+        "description": "TokenJunkieLabs Farm Manager v1; standalone offline policy, 28-animal and 10-hand limits. Source release 2dc9d9f9.",
+        "fileName": "submission.tar.gz",
+        "publicScore": "707.9",
+        "status": "COMPLETE",
+        "submittedBy": "tokenjunkielabs",
+        "submittedByRef": "tokenjunkielabs",
+        "teamName": "Bryce Muhlnickel",
+        "url": "/code/tokenjunkielabs/tokenjunkielabs-farm-manager?scriptVersionId=347872961"
+      }
+    ]
+  },
+  "status": "RECONCILE_REQUIRED",
+  "destination_host": "www.googleapis.com",
+  "destination_url_sha256": "32c4ca80dc67afa1d2d06d2c8a74d6decd2933c4fc2652dd1c6a7953d5420b01",
+  "exception_type": "ConnectionError",
+  "http_status": null
+}

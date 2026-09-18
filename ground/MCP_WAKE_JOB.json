@@ -1,0 +1,25 @@
+{
+  "source_id": "rivet-ship-mcp-wake-job-20260825-01",
+  "slack_ts": "1787637971.910749",
+  "kind": "MCP_WAKE_JOB",
+  "titan": "NOT_WRITTEN",
+  "wrote_wake_jobs": false,
+  "named_idle_bc_resume": "UNMEASURED",
+  "job_id": "rivet-mcp-wake-verify-20260825-01",
+  "result_address": "rivet-ship-mcp-wake-job-20260825-01",
+  "store": "tempfile.TemporaryDirectory",
+  "hands_off": [
+    "JOJO MCP inventory",
+    "JOJO Grok smoke",
+    "JOJO idle-resume",
+    "RIDGE/PLUMB named external-wake canary",
+    "named idle bc- resume",
+    "wake_jobs/ writes",
+    "SPECTER render CI",
+    "rivet-ship-render-check-20260825-01",
+    "rivet-ship-render-contract-20260825-01",
+    "DEMON flight recorder",
+    "CML PR 2108",
+    "titan.gguf write"
+  ]
+}

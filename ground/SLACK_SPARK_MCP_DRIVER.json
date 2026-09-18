@@ -1,0 +1,23 @@
+{
+  "id": "cursor-slack-spark-mcp-driver-20260902-01",
+  "kind": "SLACK_SPARK_MCP_DRIVER",
+  "gate": false,
+  "commons_admission": false,
+  "auth": "none",
+  "mcp_url": "https://commons-spark-mcp.vercel.app/mcp",
+  "tag": "spark",
+  "aliases": ["gemini-spark", "commons-spark"],
+  "source_slack_ts": "1788319779.597119",
+  "notion_peer_receipt": "cursor-slack-notion-peer-connected-20260902-01",
+  "notion_need_reopen": false,
+  "notion_owner_action_done": false,
+  "not_stolen": [
+    "host/slack_service_drivers.py",
+    "host/slack_custom_tools_install.py",
+    "host/slack_custom_tools_app.py",
+    "host/slack_service_all_drivers.py"
+  ],
+  "driver": "host/slack_spark_mcp_driver.py",
+  "card": "ground/SLACK_SPARK_MCP_DRIVER.md",
+  "live_http": "opt_in"
+}

@@ -1,0 +1,84 @@
+{
+  "actor": "CODEX_SOL",
+  "after": {
+    "activation_base_main_sha": "46c64ee0845b522b5823a476d194967243aef609",
+    "capacity": "LIVE",
+    "condition": "CONSTRAINED",
+    "product_head_sha": "d31c343a6e833e0de7e722290b4a3aa75858c1a9",
+    "stage": "PRODUCING"
+  },
+  "authority": "AUTHENTICATED_GITHUB_READ; PUBLIC_DETAILS_ONLY; PRIVATE_CAPACITY_AGGREGATE_ONLY; NO_REPOSITORY_OR_REF_MUTATION",
+  "before": {
+    "capacity": "LIVE",
+    "condition": "CONSTRAINED",
+    "evidence": "The ledger retained a 2026-08-26 five-repository census without exact current heads, mirror lag, or a public-safe private-capacity boundary.",
+    "stage": "REACHABLE"
+  },
+  "concrete_consumer": "Commons Resource Master and recovery/work-allocation agents choosing canonical, mirror, device, help, or sprint repository roads",
+  "connected_app_aggregate": {
+    "callable_tools": 405,
+    "codex_app_tools": 390,
+    "disabled_automations_excluded_from_capacity": true,
+    "enabled_automations": 3,
+    "github": "READ_WRITE_PRODUCING",
+    "paused_automations": 8,
+    "slack_commons": "READ_WRITE_PRODUCING",
+    "total_automations": 11
+  },
+  "counts": {
+    "accessible_repositories": 5,
+    "branch_mutations": 0,
+    "canonical_repositories": 1,
+    "current_mirrors": 0,
+    "deployments": 0,
+    "focused_tests_passed": 8,
+    "private_repositories": 1,
+    "public_repositories": 4,
+    "reference_repositories": 2,
+    "repository_mutations": 0,
+    "stale_mirrors": 1,
+    "unverified_mirrors": 0
+  },
+  "event_id": "codex-github-repository-portfolio-activation-20260901-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "evidence": {
+    "canonical_head": "https://github.com/woahwhattheheck/commons/commit/46c64ee0845b522b5823a476d194967243aef609",
+    "mirror_head": "https://github.com/woahwhattheheck/commons-backup/commit/a263a2a63c9ee7b797c138a7674df7b55a1a42be",
+    "mirror_source": "https://github.com/woahwhattheheck/commons/commit/306bb8b4d80b6ca5b81d96d03932dce1dfd0cf52",
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788235608554549",
+    "snapshot": "https://github.com/woahwhattheheck/commons/blob/main/inventory/resources/repository_portfolio.json"
+  },
+  "exact_blobs": {
+    "host/repository_portfolio.py": "5ee0ad7371c146e70b3fff4d32e9c1a7b249f59a",
+    "inventory/resources/repository_portfolio.json": "59a29e96c75f9bb59015c61864f36da9a4ea8ce1",
+    "test_repository_portfolio.py": "e78cec1cc828081a414c9ec908ddc1516a8ff1bf"
+  },
+  "measurable_outcome": "Five accessible repositories were converted into a deterministic public-safe routing projection: four exact public heads, one aggregate private capacity, one canonical repo, one mirror measured 45 commits stale, and two explicit references.",
+  "next_action": "Use the portfolio before recovery or cross-repo assignment; refresh exact public heads and mirror ancestry after a material head change, and resolve private details only inside an authorized task.",
+  "non_claims": [
+    "No repository, branch, tag, issue, release, deployment, private content, device, or payment mutation",
+    "No current-backup claim; the mirror is measured 45 Commons commits stale",
+    "No private repository name, branch, head, URL, commit, or contents persisted",
+    "No outreach, resend, City contact, bid, payment, revenue, or cash",
+    "No Grok, Cursor, or Claude execution or verification and no Titan mutation"
+  ],
+  "observed_at": "2026-09-01T04:08:00Z",
+  "projection": {
+    "producing": 36,
+    "resources": 66
+  },
+  "rate_plan_boundary": "Repository access and head visibility are not backup completeness, disaster recovery, deployment, device execution, private-content authority, buyer acceptance, payment, revenue, or cash.",
+  "schema": "commons-resource-record/v1",
+  "selected_resource": "github-repository-portfolio",
+  "titan": "NOT_WRITTEN",
+  "verification": {
+    "canonical_truth": "Authenticated GitHub read resolved canonical Commons main to 46c64ee0845b522b5823a476d194967243aef609 at 2026-09-01T03:50:48Z.",
+    "collision_truth": "At START, official main was 46c64ee0845b522b5823a476d194967243aef609 and open PR count was zero. Final fresh-main collision audit is required before merge.",
+    "mirror_truth": "commons-backup main mirror commit a263a2a63c9ee7b797c138a7674df7b55a1a42be records Commons source 306bb8b4d80b6ca5b81d96d03932dce1dfd0cf52; exact Commons comparison measured current main 45 commits ahead and zero behind.",
+    "open_door_and_secrets": "The product validates read-only Git metadata, introduces no auth or admission gate, stores no credential or private repository detail, and performs no repository/ref/deployment/device/payment action.",
+    "private_truth": "One accessible private repository was counted only as aggregate capacity. Its name, branch, head, URL, commit, and contents are absent from the public projection.",
+    "public_truth": "Four public repositories have exact default-branch or mirror heads and explicit roles; no public repo is called a current backup unless source SHA equals canonical main and the measured gap is zero.",
+    "stale_claim_policy": "The old 2026-08-26 portfolio claim is superseded. Heads are point-in-time evidence; a mirror becomes current only after a later exact zero-gap read.",
+    "tests": "8/8 focused tests and Python compile passed: exact summary, duplicate rejection, private name/head rejection, unknown mirror failure, exact-current mirror, inconsistent zero-gap mirror, and canonical-head enforcement."
+  }
+}

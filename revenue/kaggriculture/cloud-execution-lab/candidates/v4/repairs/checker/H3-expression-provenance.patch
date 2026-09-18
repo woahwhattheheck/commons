@@ -1,0 +1,324 @@
+# TITAN V4 checker donor hardening patch H3 — precise expression/reflection alias closure
+#
+# Apply after H 89ac8ed12b53d1d41649732e8e349f3ce532b69b.
+# SUPERSEDES/RETIRES H2 4219a4042805c7f83f243b8e8812f59d0d3fd470.
+# Donor only. No carrier/ref/workflow/merge authority.
+#
+# H3 closes protected identity preserved by identity-returning syntax while NOT
+# treating arbitrary uses such as `x = self.compute()` as aliases of self.
+# Supported provenance forms are deliberately finite and auditable:
+#   - direct protected name / self.features;
+#   - if-expressions and and/or (which return an operand);
+#   - named expressions;
+#   - tuple/list/dict literal subscripts (constant index/key exactly, otherwise
+#     conservatively union literal members that could be returned);
+#   - exact getattr/object.__getattribute__(root, "features") for Features object;
+#   - module globals()/locals() exact protected-class lookup via []/.get/__getitem__.
+# Dynamic/ambiguous protected provenance fails closed only when it is bound or
+# used as a protected mutation/proxy receiver.
+
+diff --git a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/check_v4_plumbing.py b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/check_v4_plumbing.py
+--- a/revenue/kaggriculture/cloud-execution-lab/candidates/v3/check_v4_plumbing.py
++++ b/revenue/kaggriculture/cloud-execution-lab/candidates/v3/check_v4_plumbing.py
+@@
+ def protected_object_alias_reason(fn,root_members,feature_members):
+@@
+     def kind(expr,before=None):
+         amap=aliases if before is None else before
+         if isinstance(expr,ast.Name):
+             if expr.id=='self':
+                 return 'root'
+             return amap.get(expr.id)
+         if isinstance(expr,ast.Attribute) and expr.attr=='features':
+             base=kind(expr.value,before)
+             if base=='root':
+                 return 'feature'
+         return None
++
++    def possible_kinds(expr,before=None):
++        """Return protected identities an expression can itself evaluate to."""
++        direct=kind(expr,before)
++        if direct in {'root','feature'}:
++            return {direct}
++        if isinstance(expr,ast.NamedExpr):
++            return possible_kinds(expr.value,before)
++        if isinstance(expr,ast.IfExp):
++            return possible_kinds(expr.body,before)|possible_kinds(expr.orelse,before)
++        if isinstance(expr,ast.BoolOp):
++            out=set()
++            for value in expr.values:
++                out.update(possible_kinds(value,before))
++            return out
++        if isinstance(expr,ast.Subscript) and isinstance(expr.value,(ast.Tuple,ast.List)):
++            elts=expr.value.elts
++            if isinstance(expr.slice,ast.Constant) and type(expr.slice.value) is int:
++                idx=expr.slice.value
++                if -len(elts)<=idx<len(elts):
++                    return possible_kinds(elts[idx],before)
++                return set()
++            out=set()
++            for item in elts:
++                out.update(possible_kinds(item,before))
++            return out
++        if isinstance(expr,ast.Subscript) and isinstance(expr.value,ast.Dict):
++            if isinstance(expr.slice,ast.Constant):
++                wanted=expr.slice.value
++                for key,value in zip(expr.value.keys,expr.value.values):
++                    if isinstance(key,ast.Constant) and key.value==wanted:
++                        return possible_kinds(value,before)
++                return set()
++            out=set()
++            for value in expr.value.values:
++                out.update(possible_kinds(value,before))
++            return out
++        if isinstance(expr,ast.Call) and len(expr.args)>=2:
++            # getattr(root, "features") / object.__getattribute__(root,"features")
++            is_getattr=isinstance(expr.func,ast.Name) and expr.func.id=='getattr'
++            is_obj_getattr=(
++                isinstance(expr.func,ast.Attribute)
++                and isinstance(expr.func.value,ast.Name)
++                and expr.func.value.id=='object'
++                and expr.func.attr=='__getattribute__'
++            )
++            if is_getattr or is_obj_getattr:
++                if isinstance(expr.args[1],ast.Constant) and expr.args[1].value=='features':
++                    if 'root' in possible_kinds(expr.args[0],before):
++                        return {'feature'}
++        return set()
+@@
+     def proxy_escape(expr,before=None):
+         if (isinstance(expr,ast.Call) and isinstance(expr.func,ast.Name)
+                 and expr.func.id=='vars' and len(expr.args)==1 and not expr.keywords):
+-            return kind(expr.args[0],before) in {'root','feature'}
++            return bool(possible_kinds(expr.args[0],before))
+         return (
+             isinstance(expr,ast.Attribute) and expr.attr=='__dict__'
+-            and kind(expr.value,before) in {'root','feature'}
++            and bool(possible_kinds(expr.value,before))
+         )
+@@
+         if isinstance(n,ast.Attribute) and isinstance(n.ctx,(ast.Store,ast.Del)):
+-            owner=kind(n.value)
+-            if owner=='root' and n.attr in root_members:
++            owners=possible_kinds(n.value)
++            if 'root' in owners and n.attr in root_members:
+                 return f'protected root-object alias mutation {n.attr}'
+-            if owner=='feature' and n.attr in feature_members:
++            if 'feature' in owners and n.attr in feature_members:
+                 return f'protected feature-object alias mutation {n.attr}'
+@@
+             if isinstance(n.func,ast.Name) and n.func.id in {'setattr','delattr'} and len(n.args)>=2:
+-                owner=kind(n.args[0])
+-                if owner in {'root','feature'}:
++                owners=possible_kinds(n.args[0])
++                if owners:
+                     name=member(n.args[1])
+                     if name is None:
+                         return 'dynamic member mutation through protected object alias'
+-                    if owner=='root' and name in root_members:
++                    if 'root' in owners and name in root_members:
+                         return f'protected root-object alias {n.func.id} {name}'
+-                    if owner=='feature' and name in feature_members:
++                    if 'feature' in owners and name in feature_members:
+                         return f'protected feature-object alias {n.func.id} {name}'
+@@
+-                owner=kind(n.args[0])
+-                if owner in {'root','feature'}:
++                owners=possible_kinds(n.args[0])
++                if owners:
+                     name=member(n.args[1])
+                     if name is None:
+                         return 'dynamic object.*attr through protected object alias'
+-                    if owner=='root' and name in root_members:
++                    if 'root' in owners and name in root_members:
+                         return f'protected root-object alias object.*attr {name}'
+-                    if owner=='feature' and name in feature_members:
++                    if 'feature' in owners and name in feature_members:
+                         return f'protected feature-object alias object.*attr {name}'
+@@
+             owner=kind(n.value,before)
++            if owner is None:
++                possible=possible_kinds(n.value,before)
++                if len(possible)>1:
++                    return 'ambiguous protected object expression alias'
++                owner=next(iter(possible),None)
+             if owner is not None:
+@@
+                 owner=kind(n.value)
++                if owner is None:
++                    possible=possible_kinds(n.value)
++                    if len(possible)>1:
++                        return 'ambiguous protected annotated expression alias'
++                    owner=next(iter(possible),None)
+                 if owner is not None:
+@@
+             owner=kind(n.value)
++            if owner is None:
++                possible=possible_kinds(n.value)
++                if len(possible)>1:
++                    return 'ambiguous protected walrus expression alias'
++                owner=next(iter(possible),None)
+             if owner is not None:
+@@
+ def module_class_alias_mutation_reason(tree,features,agent,keys,agent_protected):
+@@
+     def kind(expr,before=None):
+         amap=aliases if before is None else before
+         return amap.get(expr.id) if isinstance(expr,ast.Name) else None
++
++    def module_lookup(expr):
++        """Exact globals()/locals() lookup of a protected class name."""
++        def namespace_call(node):
++            return (
++                isinstance(node,ast.Call) and isinstance(node.func,ast.Name)
++                and node.func.id in {'globals','locals'} and not node.args and not node.keywords
++            )
++        if isinstance(expr,ast.Subscript) and namespace_call(expr.value):
++            if isinstance(expr.slice,ast.Constant) and expr.slice.value in {'Features','TitanAgent'}:
++                return expr.slice.value
++        if isinstance(expr,ast.Call) and len(expr.args)==1 and not expr.keywords:
++            if (
++                isinstance(expr.func,ast.Attribute) and expr.func.attr in {'get','__getitem__'}
++                and namespace_call(expr.func.value)
++                and isinstance(expr.args[0],ast.Constant)
++                and expr.args[0].value in {'Features','TitanAgent'}
++            ):
++                return expr.args[0].value
++        return None
++
++    def possible_kinds(expr,before=None):
++        direct=kind(expr,before)
++        if direct in protected_by_kind:
++            return {direct}
++        reflected=module_lookup(expr)
++        if reflected:
++            return {reflected}
++        if isinstance(expr,ast.NamedExpr):
++            return possible_kinds(expr.value,before)
++        if isinstance(expr,ast.IfExp):
++            return possible_kinds(expr.body,before)|possible_kinds(expr.orelse,before)
++        if isinstance(expr,ast.BoolOp):
++            out=set()
++            for value in expr.values:
++                out.update(possible_kinds(value,before))
++            return out
++        if isinstance(expr,ast.Subscript) and isinstance(expr.value,(ast.Tuple,ast.List)):
++            elts=expr.value.elts
++            if isinstance(expr.slice,ast.Constant) and type(expr.slice.value) is int:
++                idx=expr.slice.value
++                if -len(elts)<=idx<len(elts):
++                    return possible_kinds(elts[idx],before)
++                return set()
++            out=set()
++            for item in elts:
++                out.update(possible_kinds(item,before))
++            return out
++        if isinstance(expr,ast.Subscript) and isinstance(expr.value,ast.Dict):
++            if isinstance(expr.slice,ast.Constant):
++                wanted=expr.slice.value
++                for key,value in zip(expr.value.keys,expr.value.values):
++                    if isinstance(key,ast.Constant) and key.value==wanted:
++                        return possible_kinds(value,before)
++                return set()
++            out=set()
++            for value in expr.value.values:
++                out.update(possible_kinds(value,before))
++            return out
++        return set()
+@@
+-            if (
+-                isinstance(n,ast.Attribute) and isinstance(n.ctx,(ast.Store,ast.Del))
+-                and isinstance(n.value,ast.Name)
+-            ):
+-                owner=aliases.get(n.value.id)
+-                if owner and n.attr in protected_by_kind[owner]:
+-                    return f'{owner} protected member mutation through class alias {n.value.id}.{n.attr}'
+-            if isinstance(n,ast.Call) and len(n.args)>=2 and isinstance(n.args[0],ast.Name):
+-                owner=aliases.get(n.args[0].id)
+-                if owner:
++            if isinstance(n,ast.Attribute) and isinstance(n.ctx,(ast.Store,ast.Del)):
++                owners=possible_kinds(n.value)
++                for owner in owners:
++                    if n.attr in protected_by_kind[owner]:
++                        return f'{owner} protected member mutation through class alias expression'
++            if isinstance(n,ast.Call) and len(n.args)>=2:
++                owners=possible_kinds(n.args[0])
++                if owners:
+                     name=member(n.args[1])
+                     direct=isinstance(n.func,ast.Name) and n.func.id in {'setattr','delattr'}
+                     reflective=(
+                         isinstance(n.func,ast.Attribute)
+                         and isinstance(n.func.value,ast.Name)
+                         and n.func.value.id in {'type','object'}
+                         and n.func.attr in {'__setattr__','__delattr__'}
+                     )
+                     if direct or reflective:
+                         if name is None:
+-                            return f'{owner} dynamic protected member mutation through class alias'
+-                        if name in protected_by_kind[owner]:
+-                            return f'{owner} protected member monkeypatch through class alias {name}'
++                            return 'dynamic protected member mutation through class alias expression'
++                        for owner in owners:
++                            if name in protected_by_kind[owner]:
++                                return f'{owner} protected member monkeypatch through class alias expression {name}'
+@@
+             owner=kind(stmt.value,before)
++            if owner is None:
++                possible=possible_kinds(stmt.value,before)
++                if len(possible)>1:
++                    return 'ambiguous protected class expression alias'
++                owner=next(iter(possible),None)
+@@
+             if stmt.value is not None:
+                 owner=kind(stmt.value,before)
++                if owner is None:
++                    possible=possible_kinds(stmt.value,before)
++                    if len(possible)>1:
++                        return 'ambiguous protected class annotated expression alias'
++                    owner=next(iter(possible),None)
+                 if owner:
+@@
+ def self_test():
+@@
++    root_expr_alias=ast.parse('class A:\n def act(self):\n  s=(self,)[0]\n  s.act=evil\n').body[0].body[0]
++    try: mutation_scan([root_expr_alias],('r04_x',))
++    except SystemExit: pass
++    else: fail('root expression-alias method-shadow poison false-passed')
++
++    feature_expr_alias=ast.parse('class A:\n def act(self):\n  f=(self.features,)[0]\n  setattr(f,"r04_x",True)\n').body[0].body[0]
++    try: mutation_scan([feature_expr_alias],('r04_x',))
++    except SystemExit: pass
++    else: fail('feature expression-alias poison false-passed')
++
++    # Guard H3 itself against over-taint: a call using self is not identity-preserving.
++    benign_transform=ast.parse('class A:\n def act(self):\n  x=self.compute()\n  x=other\n  return x\n').body[0].body[0]
++    req(protected_object_alias_reason(benign_transform,{'features','act'},{'r04_x'}) is None,
++        'non-identity self call was over-tainted as protected alias')
++
++    class_expr_tree=ast.parse(
++        'class Features:\n pass\n'
++        'class TitanAgent:\n def act(self):\n  pass\n'
++        '_F=(Features,)[0]\n'
++        'setattr(_F,"__bool__",evil)\n'
++    )
++    _f=class_expr_tree.body[0]; _a=class_expr_tree.body[1]
++    req(module_class_alias_mutation_reason(class_expr_tree,_f,_a,('r04_x',),{'act'}) is not None,
++        'Features expression-alias monkeypatch poison false-passed')
++
++    class_store_tree=ast.parse(
++        'class Features:\n pass\n'
++        'class TitanAgent:\n def act(self):\n  pass\n'
++        '(Features,)[0].__bool__=evil\n'
++    )
++    _f=class_store_tree.body[0]; _a=class_store_tree.body[1]
++    req(module_class_alias_mutation_reason(class_store_tree,_f,_a,('r04_x',),{'act'}) is not None,
++        'Features expression direct-Store monkeypatch poison false-passed')
++
++    class_reflect_tree=ast.parse(
++        'class Features:\n pass\n'
++        'class TitanAgent:\n def act(self):\n  pass\n'
++        'setattr(globals()["Features"],"__bool__",evil)\n'
++    )
++    _f=class_reflect_tree.body[0]; _a=class_reflect_tree.body[1]
++    req(module_class_alias_mutation_reason(class_reflect_tree,_f,_a,('r04_x',),{'act'}) is not None,
++        'Features globals() reflection monkeypatch poison false-passed')

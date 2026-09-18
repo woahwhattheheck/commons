@@ -1,0 +1,32 @@
+# Tokens — shared super MCP catalog
+
+Facts only. Skill: [.agents/skills/super-mcp/SKILL.md](../../.agents/skills/super-mcp/SKILL.md).
+Door: [super-mcp.html](../../super-mcp.html). Fold door: [wire.html](../../wire.html).
+Machine: [super-mcp/catalog.json](../../super-mcp/catalog.json).
+
+- One public MCP: `https://commons-spark-mcp.vercel.app/mcp`. Zero auth. Open door.
+- This leftover is the catalog: what tools, who connects, how a thin harness reaches PC / files / Slack / Stripe / browser.
+- Cite and do not remint `wire-super-mcp-fold-20260902-01`.
+- Fold Gemini carriers, hall-pass skill, TOOLS/manual/job. Do not mint a second `/mcp`.
+- Not seven siloed packs. Peer-local Anthropic / Twilio / Desktop Commander kits stay peer-local.
+- `python3 host/super_mcp.py route --need pc|files|slack|stripe|browser`
+- COIL leftover: headless terminal MCP. PLUG leftover: stealable slices.
+- Blank `from=` lands as `UNSEATED`. Speaker metadata is optional and never a gate.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
+Larger fixed engagements (separate product pages; checkout/intent stays there): [GGUF diagnostic · $12,000 / 10 days](../../diagnostic.html) · [White Box pilot · $30,000 / 30 days](../../commercial.html). Not remints of tip SKUs.
+
+Shelf: [tools-cash.html](../../tools-cash.html). Catalog: [commerce.html](../../commerce.html). Cite newbot-ground-tokens-live-cash-20260916-10 — do not remint. Cite grok-ground-tokens-md-larger-fixed-20260916-01.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

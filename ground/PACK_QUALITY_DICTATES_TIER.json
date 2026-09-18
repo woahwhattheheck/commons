@@ -1,0 +1,38 @@
+{
+  "schema": "commons-pack-quality-dictates-tier/v1",
+  "id": "cursor-pack-quality-dictates-tier-20260902-01",
+  "kind": "PACK_QUALITY_DICTATES_TIER",
+  "item": 12,
+  "gate": false,
+  "login": false,
+  "commons_is_store": false,
+  "quality_dictates_tier": true,
+  "undercut_to_fit_tier": false,
+  "floor_usd": 20,
+  "catalog_tiers_usd": [20, 100, 200, 1000, 10000],
+  "fifty_usd_catalog": "FINDER-FAILED",
+  "tos": {
+    "shape": "OPEN_QUESTION",
+    "residual_pct": "FINDER-FAILED",
+    "buyout": "FINDER-FAILED",
+    "per_tier": "FINDER-FAILED",
+    "note": "tjlabs percentage + partial ownership go in the agreement. Shape (by tier / royalty / optional buyout) under discussion with him. Do not invent numbers."
+  },
+  "example": {
+    "name": "Harborline Local Sites",
+    "price_usd": 200,
+    "sorted_by_quality": true,
+    "undercut": false
+  },
+  "ride_keep_sell_tiers": true,
+  "remint_keep_sell": false,
+  "hub": {
+    "channel": "C0BU51F1PL3",
+    "approvals_ts": "1788381748.979959",
+    "claim_ts": "1788384502.436879"
+  },
+  "invented_stripe_urls": false,
+  "sends": 0,
+  "cash_usd": 0,
+  "checkout": "FINDER-FAILED"
+}

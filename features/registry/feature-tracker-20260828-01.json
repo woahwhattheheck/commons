@@ -1,0 +1,38 @@
+{
+  "added": "2026-08-28",
+  "capability": "Evidence-derived shipped-state tracker. Source and live stay separate. Carriers add their own registry files.",
+  "carrier": "GROK",
+  "claimed_paths": [
+    "ground/FEATURE_TRACKER.md",
+    "host/feature_tracker.py",
+    "test_feature_tracker.py",
+    "feature-tracker.html",
+    "feature-tracker.json",
+    "features/README.md",
+    "p/feature-tracker-20260828-01.md"
+  ],
+  "dependencies": [],
+  "id": "feature-tracker-20260828-01",
+  "name": "Feature tracker",
+  "next_gap": "After merge, add a LIVE_MEASUREMENT evidence row citing the Pages URL and the official 40-character main SHA.",
+  "owner_subsystem": "feature-tracker",
+  "public_entrypoint": "feature-tracker.html",
+  "related": {
+    "boards": true,
+    "current_work": true,
+    "profitability": true,
+    "resources": true
+  },
+  "resource_links": [
+    "ground/FEATURE_TRACKER.md",
+    "current-work.html",
+    "resources.html",
+    "boards.html",
+    "ground/PROFITABILITY_BUILD_MAP.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_feature_tracker.py",
+    "host/feature_tracker.py"
+  ]
+}

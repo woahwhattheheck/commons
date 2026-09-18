@@ -1,0 +1,21 @@
+{
+  "id": "example-bounded-packet-template",
+  "label": "CLAUDE_INTERMEDIATE_UNTRUSTED",
+  "kind": "TEMPLATE",
+  "apply": false,
+  "canonical": false,
+  "public_push": false,
+  "spec": "Replace this template. Exact owner/peer spec only. Nothing added.",
+  "input_corpus": "Named files / SHAs / Slack ts the packet may read.",
+  "claimed_paths": [
+    "claude_compute/staging/example-bounded-packet-template/"
+  ],
+  "acceptance_criteria": "Non-Claude adjudicator writes and runs the tests. Claude does not.",
+  "output_directory": "claude_compute/staging/example-bounded-packet-template/",
+  "adjudicator": "RIVET",
+  "adjudicator_family": "non-claude",
+  "adjudicator_named_in_advance": true,
+  "token_use": "opus5_bulk_drafting",
+  "titan": "NOT_WRITTEN",
+  "notes": "Template only. Not a live job. Not current main."
+}

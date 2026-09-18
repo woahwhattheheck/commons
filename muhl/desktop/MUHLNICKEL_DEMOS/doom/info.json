@@ -1,0 +1,70 @@
+{
+  "demo": "DOOM on the Muhlnickel",
+  "description": "First-person DOOM-style game where movement, turning, and collision are computed by stored circuits in titan.gguf. The browser is a pure container (paints + reads keys). The host injects the electron (input bits) and surfaces the output (result bits).",
+  "titan_gguf": "C:/llm/models/titan.gguf",
+  "titan_size_bytes": 40028316800,
+  "circuits": {
+    "doom_move16": {
+      "purpose": "Movement, turning, and wall collision per tick",
+      "tensor": "blk.1.ffn_gate_up_exps.weight",
+      "offset": 2208523324,
+      "len_bytes": 9016,
+      "n_inputs": 76,
+      "n_outputs": 40,
+      "n_gates": 1104,
+      "depth_ticks": 70,
+      "inputs": "px(16) + py(16) + dx(16) + dy(16) + wall_x(1) + wall_y(1) + angle(8) + turn_left(1) + turn_right(1)",
+      "outputs": "new_px(16) + new_py(16) + new_angle(8)"
+    },
+    "doom_map16": {
+      "purpose": "Level geometry lookup -- cell index to wall/empty",
+      "tensor": "blk.1.ffn_gate_up_exps.weight",
+      "offset": 2208532340,
+      "len_bytes": 20636,
+      "n_inputs": 8,
+      "n_outputs": 1,
+      "n_gates": 2576,
+      "depth_ticks": 241,
+      "inputs": "cell_index(8) = cx(4) | cy(4) << 4",
+      "outputs": "is_wall(1)"
+    },
+    "doom_raycast": {
+      "purpose": "Per-column raycast -- full visible-surface computation as one gate net",
+      "tensor": "blk.1.ffn_gate_up_exps.weight",
+      "offset": 2216556372,
+      "len_bytes": 1522956,
+      "n_inputs": 35,
+      "n_outputs": 13,
+      "n_gates": 190360,
+      "depth_ticks": 446,
+      "inputs": "px(10) + py(10) + angle(8) + column(7)",
+      "outputs": "hit_step(6) + texture_u(6) + wall_side(1)",
+      "note": "The render circuit -- stored but not used by the live demo (DDA in the browser is the display crutch for real-time play). The circuit IS the computation; the browser raycast is presentation only."
+    }
+  },
+  "world": {
+    "grid_size": 16,
+    "cell_size": 64,
+    "total_units": 1024,
+    "move_speed": 2,
+    "turn_speed": 2,
+    "start_position": [96, 96, 32]
+  },
+  "host_boundary": {
+    "inject_electron": "Feed keypress-derived input bits into doom_move16 circuit",
+    "surface_output": "Read new_px, new_py, new_angle from circuit output bits",
+    "display_crutch": "Browser-side DDA raycaster for real-time visual presentation (labeled)"
+  },
+  "verification": {
+    "method": "Byte-exact comparison of circuit output vs Python reference implementation",
+    "cases_tested": 3000,
+    "command": "python run.py selftest"
+  },
+  "launch": {
+    "one_click": "run.bat",
+    "command": "python run.py",
+    "url": "http://127.0.0.1:8130/",
+    "controls": "W/S or Up/Down arrows to move, A/D or Left/Right arrows to turn"
+  },
+  "lineage": "Based on build_05 (sdc_doom_server.py) -- the spec-compliant DOOM build where the server ripples the stored circuit and the browser is a pure container."
+}

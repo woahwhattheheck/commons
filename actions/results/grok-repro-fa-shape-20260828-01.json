@@ -1,0 +1,13 @@
+{
+  "id": "grok-repro-fa-shape-20260828-01",
+  "verb": "READ",
+  "target": "COMMONS.MAIN",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: Reproduce: not found\n",
+  "executed_at": "2026-08-28T22:59:59.239584Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "owner-machine-build-sweep/v1",
+  "date": "2026-08-25",
+  "auditor": "NON_CLAUDE_CODEX",
+  "mutation": false,
+  "private_paths_published": false,
+  "builds": [
+    {"name": "DEMON flight recorder", "state": "LANDED", "receipt": "f84b46b5"},
+    {"name": "rook resident evolution runtime", "state": "LOCAL_WORKING", "verified_ticks": 9, "candidates": 588, "generations": 12, "best": 0.763542},
+    {"name": "MORROW rollback controller", "state": "LOCAL_WORKING_HISTORICAL_RECEIPT", "historical_passes": 12},
+    {"name": "PFC bake boundary scanner", "state": "CLAUDE_INTERMEDIATE_UNTRUSTED", "claimed_regions": 859},
+    {"name": "MUHL KEYB", "state": "LOCAL_STALE_MANIFEST", "bytes": 430860, "current_sha_prefix": "cca2b762", "stale_sha_prefix": "a63396b5"},
+    {"name": "LocalDeviceAgent Android", "state": "SOURCE_PRESENT_CI_INERT"},
+    {"name": "Gemma E4B LiteRT", "state": "LOCAL_MODEL_PRESENT_CANARY_INCOMPLETE", "bytes_approx": 3659000000},
+    {"name": "White Box", "state": "DISTRO_LANDED_RESEARCH_LOCAL", "commons_paths": 56},
+    {"name": "MUHLNICKEL app/live viewers", "state": "LOCAL_MULTIPLE_STALE_SURFACES"}
+  ],
+  "titan": {
+    "state": "QUARANTINED",
+    "identical_spans": 3,
+    "span_bytes": 9319291,
+    "automatic_repair": false
+  }
+}
