@@ -120,8 +120,13 @@ def _evaluate(
     return decision
 
 
-def compile_historical(payload: Any, *, as_of: str, _normalize=normalize_packet, _evaluate_fn=_evaluate) -> dict[str, Any]:
-    return _evaluate_fn(_normalize(payload), _utc(as_of, "as_of"), current_process=False)
+def compile_historical(
+    payload: Any, *, as_of: str,
+    _normalize=normalize_packet,
+    _evaluate_fn=_evaluate,
+    _utc_fn=_utc,
+) -> dict[str, Any]:
+    return _evaluate_fn(_normalize(payload), _utc_fn(as_of, "as_of"), current_process=False)
 
 
 def compile_current(payload: Any, _normalize=normalize_packet, _evaluate_fn=_evaluate, _now=_process_utc_now) -> dict[str, Any]:
@@ -130,32 +135,43 @@ def compile_current(payload: Any, _normalize=normalize_packet, _evaluate_fn=_eva
 
 def verify_receipt(
     payload: Any, decision: Any,
-    _normalize=normalize_packet, _evaluate_fn=_evaluate, _now=_process_utc_now,
+    _normalize=normalize_packet,
+    _evaluate_fn=_evaluate,
+    _now=_process_utc_now,
     _authority_factory=_hard_false_authority,
+    _exact=_exact_keys,
+    _decision_keys=DECISION_KEYS,
+    _decision_schema=DECISION_SCHEMA,
+    _digest_fn=_digest,
+    _canonical=canonical_json,
+    _sha=sha256_hex,
+    _utc_fn=_utc,
+    _dict=dict,
+    _err=FirewallError,
 ) -> bool:
     normalized = _normalize(payload)
-    row = _exact_keys(decision, DECISION_KEYS, "decision")
-    if row["schema"] != DECISION_SCHEMA:
-        raise FirewallError("wrong decision schema")
-    supplied = _digest(row["receipt_sha256"], "receipt_sha256")
-    unsigned = dict(row)
+    row = _exact(decision, _decision_keys, "decision")
+    if row["schema"] != _decision_schema:
+        raise _err("wrong decision schema")
+    supplied = _digest_fn(row["receipt_sha256"], "receipt_sha256")
+    unsigned = _dict(row)
     unsigned.pop("receipt_sha256")
-    if sha256_hex(canonical_json(unsigned)) != supplied:
-        raise FirewallError("receipt digest mismatch")
+    if _sha(_canonical(unsigned)) != supplied:
+        raise _err("receipt digest mismatch")
     if row["authority"] != _authority_factory():
-        raise FirewallError("authority ceiling changed")
+        raise _err("authority ceiling changed")
     mode = row["evaluation_mode"]
     if mode not in {"CURRENT_PROCESS", "HISTORICAL_REVIEW_ONLY"}:
-        raise FirewallError("unknown evaluation mode")
+        raise _err("unknown evaluation mode")
     original = _evaluate_fn(
         normalized,
-        _utc(row["evaluated_at"], "evaluated_at"),
+        _utc_fn(row["evaluated_at"], "evaluated_at"),
         current_process=(mode == "CURRENT_PROCESS"),
     )
-    if canonical_json(original) != canonical_json(row):
-        raise FirewallError("semantic receipt mismatch")
+    if _canonical(original) != _canonical(row):
+        raise _err("semantic receipt mismatch")
     if mode == "CURRENT_PROCESS" and row["authorized_to_send"]:
         fresh = _evaluate_fn(normalized, _now(), current_process=True)
         if not fresh["authorized_to_send"]:
-            raise FirewallError("current send authorization is stale")
+            raise _err("current send authorization is stale")
     return True
