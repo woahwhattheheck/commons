@@ -1,0 +1,384 @@
+{
+  "schema": "tjlabs.erp-migration-acceptance-matrix/v1",
+  "cases": [
+    {
+      "expected_decision": "ACCEPT_OWNER_REVIEW_READY",
+      "case": {
+        "schema": "tjlabs.erp-migration-acceptance-case/v1",
+        "case_id": "ready",
+        "batch_id": "batch-ready",
+        "source_record_count": 1200,
+        "target_record_count": 1200,
+        "source_gl_debit_cents": 350000000,
+        "source_gl_credit_cents": 350000000,
+        "target_gl_debit_cents": 350000000,
+        "target_gl_credit_cents": 350000000,
+        "source_ap_cents": 88000000,
+        "target_ap_cents": 88000000,
+        "source_ar_cents": 42000000,
+        "target_ar_cents": 42000000,
+        "assessment_accounts_expected": 27000,
+        "assessment_accounts_loaded": 27000,
+        "assessment_amount_expected_cents": 5000000000,
+        "assessment_amount_loaded_cents": 5000000000,
+        "retained_integrations_expected": [
+          "8x8/Diagenix IVR",
+          "Club Automation",
+          "Dayforce",
+          "ESRI",
+          "Smartsheet"
+        ],
+        "retained_integrations_evidenced": [
+          "8x8/Diagenix IVR",
+          "Club Automation",
+          "Dayforce",
+          "ESRI",
+          "Smartsheet"
+        ],
+        "cutover_rehearsal_complete": true,
+        "first_close_exception_register_present": true
+      }
+    },
+    {
+      "expected_decision": "HOLD_RECORD_COUNT",
+      "case": {
+        "schema": "tjlabs.erp-migration-acceptance-case/v1",
+        "case_id": "record-count",
+        "batch_id": "batch-record-count",
+        "source_record_count": 1200,
+        "target_record_count": 1199,
+        "source_gl_debit_cents": 350000000,
+        "source_gl_credit_cents": 350000000,
+        "target_gl_debit_cents": 350000000,
+        "target_gl_credit_cents": 350000000,
+        "source_ap_cents": 88000000,
+        "target_ap_cents": 88000000,
+        "source_ar_cents": 42000000,
+        "target_ar_cents": 42000000,
+        "assessment_accounts_expected": 27000,
+        "assessment_accounts_loaded": 27000,
+        "assessment_amount_expected_cents": 5000000000,
+        "assessment_amount_loaded_cents": 5000000000,
+        "retained_integrations_expected": [
+          "8x8/Diagenix IVR",
+          "Club Automation",
+          "Dayforce",
+          "ESRI",
+          "Smartsheet"
+        ],
+        "retained_integrations_evidenced": [
+          "8x8/Diagenix IVR",
+          "Club Automation",
+          "Dayforce",
+          "ESRI",
+          "Smartsheet"
+        ],
+        "cutover_rehearsal_complete": true,
+        "first_close_exception_register_present": true
+      }
+    },
+    {
+      "expected_decision": "HOLD_GL_CONTROL_TOTAL",
+      "case": {
+        "schema": "tjlabs.erp-migration-acceptance-case/v1",
+        "case_id": "gl-total",
+        "batch_id": "batch-gl-total",
+        "source_record_count": 1200,
+        "target_record_count": 1200,
+        "source_gl_debit_cents": 350000000,
+        "source_gl_credit_cents": 350000000,
+        "target_gl_debit_cents": 350000000,
+        "target_gl_credit_cents": 349999999,
+        "source_ap_cents": 88000000,
+        "target_ap_cents": 88000000,
+        "source_ar_cents": 42000000,
+        "target_ar_cents": 42000000,
+        "assessment_accounts_expected": 27000,
+        "assessment_accounts_loaded": 27000,
+        "assessment_amount_expected_cents": 5000000000,
+        "assessment_amount_loaded_cents": 5000000000,
+        "retained_integrations_expected": [
+          "8x8/Diagenix IVR",
+          "Club Automation",
+          "Dayforce",
+          "ESRI",
+          "Smartsheet"
+        ],
+        "retained_integrations_evidenced": [
+          "8x8/Diagenix IVR",
+          "Club Automation",
+          "Dayforce",
+          "ESRI",
+          "Smartsheet"
+        ],
+        "cutover_rehearsal_complete": true,
+        "first_close_exception_register_present": true
+      }
+    },
+    {
+      "expected_decision": "HOLD_AP_CONTROL_TOTAL",
+      "case": {
+        "schema": "tjlabs.erp-migration-acceptance-case/v1",
+        "case_id": "ap-total",
+        "batch_id": "batch-ap-total",
+        "source_record_count": 1200,
+        "target_record_count": 1200,
+        "source_gl_debit_cents": 350000000,
+        "source_gl_credit_cents": 350000000,
+        "target_gl_debit_cents": 350000000,
+        "target_gl_credit_cents": 350000000,
+        "source_ap_cents": 88000000,
+        "target_ap_cents": 87999999,
+        "source_ar_cents": 42000000,
+        "target_ar_cents": 42000000,
+        "assessment_accounts_expected": 27000,
+        "assessment_accounts_loaded": 27000,
+        "assessment_amount_expected_cents": 5000000000,
+        "assessment_amount_loaded_cents": 5000000000,
+        "retained_integrations_expected": [
+          "8x8/Diagenix IVR",
+          "Club Automation",
+          "Dayforce",
+          "ESRI",
+          "Smartsheet"
+        ],
+        "retained_integrations_evidenced": [
+          "8x8/Diagenix IVR",
+          "Club Automation",
+          "Dayforce",
+          "ESRI",
+          "Smartsheet"
+        ],
+        "cutover_rehearsal_complete": true,
+        "first_close_exception_register_present": true
+      }
+    },
+    {
+      "expected_decision": "HOLD_AR_CONTROL_TOTAL",
+      "case": {
+        "schema": "tjlabs.erp-migration-acceptance-case/v1",
+        "case_id": "ar-total",
+        "batch_id": "batch-ar-total",
+        "source_record_count": 1200,
+        "target_record_count": 1200,
+        "source_gl_debit_cents": 350000000,
+        "source_gl_credit_cents": 350000000,
+        "target_gl_debit_cents": 350000000,
+        "target_gl_credit_cents": 350000000,
+        "source_ap_cents": 88000000,
+        "target_ap_cents": 88000000,
+        "source_ar_cents": 42000000,
+        "target_ar_cents": 41999999,
+        "assessment_accounts_expected": 27000,
+        "assessment_accounts_loaded": 27000,
+        "assessment_amount_expected_cents": 5000000000,
+        "assessment_amount_loaded_cents": 5000000000,
+        "retained_integrations_expected": [
+          "8x8/Diagenix IVR",
+          "Club Automation",
+          "Dayforce",
+          "ESRI",
+          "Smartsheet"
+        ],
+        "retained_integrations_evidenced": [
+          "8x8/Diagenix IVR",
+          "Club Automation",
+          "Dayforce",
+          "ESRI",
+          "Smartsheet"
+        ],
+        "cutover_rehearsal_complete": true,
+        "first_close_exception_register_present": true
+      }
+    },
+    {
+      "expected_decision": "HOLD_ASSESSMENT_ACCOUNT_COUNT",
+      "case": {
+        "schema": "tjlabs.erp-migration-acceptance-case/v1",
+        "case_id": "assessment-count",
+        "batch_id": "batch-assessment-count",
+        "source_record_count": 1200,
+        "target_record_count": 1200,
+        "source_gl_debit_cents": 350000000,
+        "source_gl_credit_cents": 350000000,
+        "target_gl_debit_cents": 350000000,
+        "target_gl_credit_cents": 350000000,
+        "source_ap_cents": 88000000,
+        "target_ap_cents": 88000000,
+        "source_ar_cents": 42000000,
+        "target_ar_cents": 42000000,
+        "assessment_accounts_expected": 27000,
+        "assessment_accounts_loaded": 26999,
+        "assessment_amount_expected_cents": 5000000000,
+        "assessment_amount_loaded_cents": 5000000000,
+        "retained_integrations_expected": [
+          "8x8/Diagenix IVR",
+          "Club Automation",
+          "Dayforce",
+          "ESRI",
+          "Smartsheet"
+        ],
+        "retained_integrations_evidenced": [
+          "8x8/Diagenix IVR",
+          "Club Automation",
+          "Dayforce",
+          "ESRI",
+          "Smartsheet"
+        ],
+        "cutover_rehearsal_complete": true,
+        "first_close_exception_register_present": true
+      }
+    },
+    {
+      "expected_decision": "HOLD_ASSESSMENT_AMOUNT",
+      "case": {
+        "schema": "tjlabs.erp-migration-acceptance-case/v1",
+        "case_id": "assessment-amount",
+        "batch_id": "batch-assessment-amount",
+        "source_record_count": 1200,
+        "target_record_count": 1200,
+        "source_gl_debit_cents": 350000000,
+        "source_gl_credit_cents": 350000000,
+        "target_gl_debit_cents": 350000000,
+        "target_gl_credit_cents": 350000000,
+        "source_ap_cents": 88000000,
+        "target_ap_cents": 88000000,
+        "source_ar_cents": 42000000,
+        "target_ar_cents": 42000000,
+        "assessment_accounts_expected": 27000,
+        "assessment_accounts_loaded": 27000,
+        "assessment_amount_expected_cents": 5000000000,
+        "assessment_amount_loaded_cents": 4999999999,
+        "retained_integrations_expected": [
+          "8x8/Diagenix IVR",
+          "Club Automation",
+          "Dayforce",
+          "ESRI",
+          "Smartsheet"
+        ],
+        "retained_integrations_evidenced": [
+          "8x8/Diagenix IVR",
+          "Club Automation",
+          "Dayforce",
+          "ESRI",
+          "Smartsheet"
+        ],
+        "cutover_rehearsal_complete": true,
+        "first_close_exception_register_present": true
+      }
+    },
+    {
+      "expected_decision": "HOLD_RETAINED_INTEGRATION",
+      "case": {
+        "schema": "tjlabs.erp-migration-acceptance-case/v1",
+        "case_id": "integration",
+        "batch_id": "batch-integration",
+        "source_record_count": 1200,
+        "target_record_count": 1200,
+        "source_gl_debit_cents": 350000000,
+        "source_gl_credit_cents": 350000000,
+        "target_gl_debit_cents": 350000000,
+        "target_gl_credit_cents": 350000000,
+        "source_ap_cents": 88000000,
+        "target_ap_cents": 88000000,
+        "source_ar_cents": 42000000,
+        "target_ar_cents": 42000000,
+        "assessment_accounts_expected": 27000,
+        "assessment_accounts_loaded": 27000,
+        "assessment_amount_expected_cents": 5000000000,
+        "assessment_amount_loaded_cents": 5000000000,
+        "retained_integrations_expected": [
+          "8x8/Diagenix IVR",
+          "Club Automation",
+          "Dayforce",
+          "ESRI",
+          "Smartsheet"
+        ],
+        "retained_integrations_evidenced": [
+          "Club Automation",
+          "Dayforce",
+          "ESRI",
+          "Smartsheet"
+        ],
+        "cutover_rehearsal_complete": true,
+        "first_close_exception_register_present": true
+      }
+    },
+    {
+      "expected_decision": "HOLD_CUTOVER_REHEARSAL",
+      "case": {
+        "schema": "tjlabs.erp-migration-acceptance-case/v1",
+        "case_id": "cutover",
+        "batch_id": "batch-cutover",
+        "source_record_count": 1200,
+        "target_record_count": 1200,
+        "source_gl_debit_cents": 350000000,
+        "source_gl_credit_cents": 350000000,
+        "target_gl_debit_cents": 350000000,
+        "target_gl_credit_cents": 350000000,
+        "source_ap_cents": 88000000,
+        "target_ap_cents": 88000000,
+        "source_ar_cents": 42000000,
+        "target_ar_cents": 42000000,
+        "assessment_accounts_expected": 27000,
+        "assessment_accounts_loaded": 27000,
+        "assessment_amount_expected_cents": 5000000000,
+        "assessment_amount_loaded_cents": 5000000000,
+        "retained_integrations_expected": [
+          "8x8/Diagenix IVR",
+          "Club Automation",
+          "Dayforce",
+          "ESRI",
+          "Smartsheet"
+        ],
+        "retained_integrations_evidenced": [
+          "8x8/Diagenix IVR",
+          "Club Automation",
+          "Dayforce",
+          "ESRI",
+          "Smartsheet"
+        ],
+        "cutover_rehearsal_complete": false,
+        "first_close_exception_register_present": true
+      }
+    },
+    {
+      "expected_decision": "HOLD_FIRST_CLOSE_READINESS",
+      "case": {
+        "schema": "tjlabs.erp-migration-acceptance-case/v1",
+        "case_id": "first-close",
+        "batch_id": "batch-first-close",
+        "source_record_count": 1200,
+        "target_record_count": 1200,
+        "source_gl_debit_cents": 350000000,
+        "source_gl_credit_cents": 350000000,
+        "target_gl_debit_cents": 350000000,
+        "target_gl_credit_cents": 350000000,
+        "source_ap_cents": 88000000,
+        "target_ap_cents": 88000000,
+        "source_ar_cents": 42000000,
+        "target_ar_cents": 42000000,
+        "assessment_accounts_expected": 27000,
+        "assessment_accounts_loaded": 27000,
+        "assessment_amount_expected_cents": 5000000000,
+        "assessment_amount_loaded_cents": 5000000000,
+        "retained_integrations_expected": [
+          "8x8/Diagenix IVR",
+          "Club Automation",
+          "Dayforce",
+          "ESRI",
+          "Smartsheet"
+        ],
+        "retained_integrations_evidenced": [
+          "8x8/Diagenix IVR",
+          "Club Automation",
+          "Dayforce",
+          "ESRI",
+          "Smartsheet"
+        ],
+        "cutover_rehearsal_complete": true,
+        "first_close_exception_register_present": false
+      }
+    }
+  ]
+}
