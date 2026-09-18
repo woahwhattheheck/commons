@@ -4,8 +4,9 @@
     "engine_git_blob_sha": "7e9adb5c2b532a333df34495727e5728925ad746",
     "search_command": "python research/math-prize-lab/erdos366/erdos366_search.py --bound 1000000000000 --oeis-baseline --pretty",
     "test_command": "python -m unittest -v research/math-prize-lab/erdos366/test_erdos366_search.py",
-    "test_result": "6 tests passed",
-    "tests_git_blob_sha": "6402a046e17188a324eed87e1ecfaf6c33c4e5b1"
+    "test_result": "6 tests passed from repository root",
+    "optimized_test_result": "6 tests passed with real python -O from repository root",
+    "tests_git_blob_sha": "c3f3260d2521176e87beba37e6e1ca66780f0c36"
   },
   "bounded_search": {
     "engine": "erdos366-search-v1",
