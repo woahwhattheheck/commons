@@ -351,6 +351,8 @@ def validate_packet(packet: Any, evaluation_time: str) -> tuple[dict[str, Any], 
                 raise ContractError("supersession generation regressed")
             if event.source_class != target.source_class:
                 raise ContractError("supersession source authority mismatch")
+            if target.kind == "PROVIDER_SENT":
+                raise ContractError("provider send evidence cannot be superseded")
             if target.event_id in superseded:
                 raise ContractError("multiple supersessions of one event")
             superseded.add(target.event_id)
