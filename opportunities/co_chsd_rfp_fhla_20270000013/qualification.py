@@ -76,20 +76,32 @@ def _reject_constant(value: str):
     raise QualificationError(f"non-finite JSON number forbidden: {value}")
 
 
-def _parse_int(value: str) -> int:
+def _parse_int(
+    value: str,
+    *,
+    _max_digits: int = MAX_INT_DIGITS,
+    _max_safe: int = MAX_SAFE_INT,
+) -> int:
     digits = value[1:] if value.startswith("-") else value
-    if not digits or not digits.isdigit() or len(digits) > MAX_INT_DIGITS:
+    if not digits or not digits.isdigit() or len(digits) > _max_digits:
         raise QualificationError("unsafe JSON integer")
     try:
         number = int(value)
     except ValueError as exc:
         raise QualificationError("unsafe JSON integer") from exc
-    if abs(number) > MAX_SAFE_INT:
+    if abs(number) > _max_safe:
         raise QualificationError("unsafe JSON integer")
     return number
 
 
-def _validate_tree(value: Any) -> None:
+def _validate_tree(
+    value: Any,
+    *,
+    _max_nodes: int = MAX_JSON_NODES,
+    _max_depth: int = MAX_JSON_DEPTH,
+    _max_safe: int = MAX_SAFE_INT,
+    _max_bytes: int = MAX_JSON_BYTES,
+) -> None:
     stack = [(value, 0)]
     seen = set()
     nodes = 0
@@ -97,15 +109,15 @@ def _validate_tree(value: Any) -> None:
     while stack:
         current, depth = stack.pop()
         nodes += 1
-        if nodes > MAX_JSON_NODES:
+        if nodes > _max_nodes:
             raise QualificationError("JSON value exceeds node limit")
-        if depth > MAX_JSON_DEPTH:
+        if depth > _max_depth:
             raise QualificationError("JSON value exceeds depth limit")
         t = type(current)
         if current is None or t is bool:
             continue
         if t is int:
-            if abs(current) > MAX_SAFE_INT:
+            if abs(current) > _max_safe:
                 raise QualificationError("unsafe JSON integer")
             continue
         if t is float:
@@ -116,7 +128,7 @@ def _validate_tree(value: Any) -> None:
             except UnicodeEncodeError as exc:
                 raise QualificationError("invalid Unicode string") from exc
             utf8_bytes += len(encoded)
-            if utf8_bytes > MAX_JSON_BYTES:
+            if utf8_bytes > _max_bytes:
                 raise QualificationError("JSON value exceeds aggregate string-byte limit")
             continue
         if t is list:
@@ -147,9 +159,19 @@ def _validate_tree(value: Any) -> None:
         raise QualificationError(f"unsupported JSON type: {t.__name__}")
 
 
-def loads_strict(raw: bytes | str) -> Any:
+def loads_strict(
+    raw: bytes | str,
+    *,
+    _max_bytes: int = MAX_JSON_BYTES,
+    _loads=json.loads,
+    _pairs=_pairs_no_dupes,
+    _float=_reject_float,
+    _integer=_parse_int,
+    _constant=_reject_constant,
+    _validate=_validate_tree,
+) -> Any:
     if type(raw) is bytes:
-        if len(raw) > MAX_JSON_BYTES:
+        if len(raw) > _max_bytes:
             raise QualificationError("JSON input exceeds byte limit")
         try:
             text = raw.decode("utf-8", "strict")
@@ -160,31 +182,36 @@ def loads_strict(raw: bytes | str) -> Any:
             encoded = raw.encode("utf-8", "strict")
         except UnicodeEncodeError as exc:
             raise QualificationError("invalid UTF-8") from exc
-        if len(encoded) > MAX_JSON_BYTES:
+        if len(encoded) > _max_bytes:
             raise QualificationError("JSON input exceeds byte limit")
         text = raw
     else:
         raise QualificationError("JSON input must be bytes or str")
     try:
-        value = json.loads(
+        value = _loads(
             text,
-            object_pairs_hook=_pairs_no_dupes,
-            parse_float=_reject_float,
-            parse_int=_parse_int,
-            parse_constant=_reject_constant,
+            object_pairs_hook=_pairs,
+            parse_float=_float,
+            parse_int=_integer,
+            parse_constant=_constant,
         )
     except QualificationError:
         raise
     except (json.JSONDecodeError, ValueError, OverflowError, RecursionError, UnicodeError) as exc:
         raise QualificationError("invalid JSON") from exc
-    _validate_tree(value)
+    _validate(value)
     return value
 
 
-def canonical_bytes(value: Any) -> bytes:
-    _validate_tree(value)
+def canonical_bytes(
+    value: Any,
+    *,
+    _validate=_validate_tree,
+    _dumps=json.dumps,
+) -> bytes:
+    _validate(value)
     try:
-        return json.dumps(
+        return _dumps(
             value,
             ensure_ascii=False,
             sort_keys=True,
@@ -195,8 +222,8 @@ def canonical_bytes(value: Any) -> bytes:
         raise QualificationError("value is not canonical JSON") from exc
 
 
-def _sha(value: Any, label: str) -> str:
-    if type(value) is not str or _SHA_RE.fullmatch(value) is None:
+def _sha(value: Any, label: str, *, _sha_re=_SHA_RE) -> str:
+    if type(value) is not str or _sha_re.fullmatch(value) is None:
         raise QualificationError(f"{label} must be lowercase SHA-256 hex")
     return value
 
@@ -207,15 +234,22 @@ def _text(value: Any, label: str) -> str:
     return value
 
 
-def _instant(value: Any, label: str) -> datetime:
-    text = _text(value, label)
+def _instant(
+    value: Any,
+    label: str,
+    *,
+    _text_fn=_text,
+    _fromiso=datetime.fromisoformat,
+    _utc=timezone.utc,
+) -> datetime:
+    text = _text_fn(value, label)
     try:
-        dt = datetime.fromisoformat(text.replace("Z", "+00:00"))
+        dt = _fromiso(text.replace("Z", "+00:00"))
     except ValueError as exc:
         raise QualificationError(f"{label} must be ISO-8601") from exc
     if dt.tzinfo is None:
         raise QualificationError(f"{label} must include timezone")
-    return dt.astimezone(timezone.utc)
+    return dt.astimezone(_utc)
 
 
 def _exact_keys(value: Any, keys: set[str], label: str) -> dict[str, Any]:
@@ -224,26 +258,45 @@ def _exact_keys(value: Any, keys: set[str], label: str) -> dict[str, Any]:
     return value
 
 
-def _validate_buyer_descriptor(value: Any, label: str) -> dict[str, Any]:
-    row = _exact_keys(value, BUYER_KEYS, label)
-    _text(row["id"], f"{label}.id")
+def _validate_buyer_descriptor(
+    value: Any,
+    label: str,
+    *,
+    _exact=_exact_keys,
+    _keys=frozenset(BUYER_KEYS),
+    _text_fn=_text,
+    _sha_fn=_sha,
+    _instant_fn=_instant,
+) -> dict[str, Any]:
+    row = _exact(value, set(_keys), label)
+    _text_fn(row["id"], f"{label}.id")
     if row["authority"] != "BUYER_OFFICIAL":
         raise QualificationError(f"{label}.authority must be BUYER_OFFICIAL")
-    _sha(row["sha256"], f"{label}.sha256")
-    _instant(row["effective_at"], f"{label}.effective_at")
-    _instant(row["proposal_deadline"], f"{label}.proposal_deadline")
-    _text(row["solicitation_id"], f"{label}.solicitation_id")
+    _sha_fn(row["sha256"], f"{label}.sha256")
+    _instant_fn(row["effective_at"], f"{label}.effective_at")
+    _instant_fn(row["proposal_deadline"], f"{label}.proposal_deadline")
+    _text_fn(row["solicitation_id"], f"{label}.solicitation_id")
     return row
 
 
-def _validate_evidence_descriptor(value: Any, label: str) -> dict[str, Any]:
-    row = _exact_keys(value, EVIDENCE_KEYS, label)
-    _text(row["id"], f"{label}.id")
-    if row["party"] not in PARTIES:
+def _validate_evidence_descriptor(
+    value: Any,
+    label: str,
+    *,
+    _exact=_exact_keys,
+    _keys=frozenset(EVIDENCE_KEYS),
+    _text_fn=_text,
+    _parties=frozenset(PARTIES),
+    _gates=frozenset(ALL_EVIDENCE_GATES),
+    _sha_fn=_sha,
+) -> dict[str, Any]:
+    row = _exact(value, set(_keys), label)
+    _text_fn(row["id"], f"{label}.id")
+    if row["party"] not in _parties:
         raise QualificationError(f"{label}.party invalid")
-    if row["gate"] not in ALL_EVIDENCE_GATES:
+    if row["gate"] not in _gates:
         raise QualificationError(f"{label}.gate invalid")
-    _sha(row["sha256"], f"{label}.sha256")
+    _sha_fn(row["sha256"], f"{label}.sha256")
     return row
 
 
@@ -296,16 +349,37 @@ def _build_engine(
     trusted_evidence = _freeze_evidence_roots(evidence_roots)
     trusted_clock = clock
 
+    # Seal the reviewed dependency generation against ordinary post-import
+    # module-global rebinding. The Python process remains trusted; this is not
+    # a claim against bytecode/closure-cell mutation.
+    validate_tree = _validate_tree
+    exact_keys = _exact_keys
+    text_fn = _text
+    sha_fn = _sha
+    buyer_validator = _validate_buyer_descriptor
+    evidence_validator = _validate_evidence_descriptor
+    instant_fn = _instant
+    canonical_fn = canonical_bytes
+    digest_fn = hashlib.sha256
+    utc = timezone.utc
+    packet_schema = PACKET_SCHEMA
+    receipt_schema = RECEIPT_SCHEMA
+    opportunity_id = OPPORTUNITY_ID
+    buyer_keys = set(BUYER_KEYS)
+    evidence_keys = set(EVIDENCE_KEYS)
+    prime_gates = tuple(PRIME_GATES)
+    owner_review_gates = tuple(OWNER_REVIEW_GATES)
+
     def compile_packet(packet: Any) -> dict[str, Any]:
-        _validate_tree(packet)
-        packet = _exact_keys(
+        validate_tree(packet)
+        packet = exact_keys(
             packet,
             {"schema", "opportunity_id", "buyer_sources", "qualification_evidence"},
             "packet",
         )
-        if packet["schema"] != PACKET_SCHEMA:
+        if packet["schema"] != packet_schema:
             raise QualificationError("packet schema mismatch")
-        if packet["opportunity_id"] != OPPORTUNITY_ID:
+        if packet["opportunity_id"] != opportunity_id:
             raise QualificationError("opportunity_id mismatch")
 
         sources = packet["buyer_sources"]
@@ -314,24 +388,24 @@ def _build_engine(
         admitted_sources = []
         source_ids = set()
         for idx, source in enumerate(sources):
-            source = _exact_keys(source, BUYER_KEYS, f"buyer_sources[{idx}]")
-            sid = _text(source["id"], f"buyer_sources[{idx}].id")
+            source = exact_keys(source, buyer_keys, f"buyer_sources[{idx}]")
+            sid = text_fn(source["id"], f"buyer_sources[{idx}].id")
             if sid in source_ids:
                 raise QualificationError("duplicate buyer source id")
             source_ids.add(sid)
-            _sha(source["sha256"], f"{sid}.sha256")
+            sha_fn(source["sha256"], f"{sid}.sha256")
 
             # Discovery/nonofficial rows may be retained in the runtime packet,
             # but they never enter controlling buyer authority.
             if source["authority"] != "BUYER_OFFICIAL":
                 continue
 
-            _validate_buyer_descriptor(source, f"buyer_sources[{idx}]")
+            buyer_validator(source, f"buyer_sources[{idx}]")
             trusted = trusted_buyers.get(sid)
             if trusted is None or source != trusted:
                 continue
-            effective = _instant(source["effective_at"], f"{sid}.effective_at")
-            deadline = _instant(source["proposal_deadline"], f"{sid}.proposal_deadline")
+            effective = instant_fn(source["effective_at"], f"{sid}.effective_at")
+            deadline = instant_fn(source["proposal_deadline"], f"{sid}.proposal_deadline")
             admitted_sources.append((effective, sid, source["sha256"], deadline))
 
         current_buyer = None
@@ -350,8 +424,8 @@ def _build_engine(
         satisfied = {"OWNER": set(), "PARTNER": set()}
         admitted_evidence = []
         for idx, row in enumerate(rows):
-            row = _validate_evidence_descriptor(
-                _exact_keys(row, EVIDENCE_KEYS, f"qualification_evidence[{idx}]"),
+            row = evidence_validator(
+                exact_keys(row, evidence_keys, f"qualification_evidence[{idx}]"),
                 f"qualification_evidence[{idx}]",
             )
             eid = row["id"]
@@ -369,13 +443,13 @@ def _build_engine(
         now = trusted_clock()
         if not isinstance(now, datetime) or now.tzinfo is None:
             raise QualificationError("trusted clock must return aware datetime")
-        now = now.astimezone(timezone.utc)
+        now = now.astimezone(utc)
 
-        owner_prime_gaps = [gate for gate in PRIME_GATES if gate not in satisfied["OWNER"]]
+        owner_prime_gaps = [gate for gate in prime_gates if gate not in satisfied["OWNER"]]
         owner_review_gaps = [
-            gate for gate in OWNER_REVIEW_GATES if gate not in satisfied["OWNER"]
+            gate for gate in owner_review_gates if gate not in satisfied["OWNER"]
         ]
-        partner_prime_gaps = [gate for gate in PRIME_GATES if gate not in satisfied["PARTNER"]]
+        partner_prime_gaps = [gate for gate in prime_gates if gate not in satisfied["PARTNER"]]
         teaming_agreement = "teaming_agreement" in satisfied["PARTNER"]
 
         commercial_posture = "RESEARCH_HOLD"
@@ -432,12 +506,12 @@ def _build_engine(
                     reason = "all source-owned buyer and owner qualification evidence is admitted"
 
         normalized = {
-            "schema": PACKET_SCHEMA,
-            "opportunity_id": OPPORTUNITY_ID,
+            "schema": packet_schema,
+            "opportunity_id": opportunity_id,
             "buyer_sources": packet["buyer_sources"],
             "qualification_evidence": packet["qualification_evidence"],
         }
-        input_digest = hashlib.sha256(canonical_bytes(normalized)).hexdigest()
+        input_digest = digest_fn(canonical_fn(normalized)).hexdigest()
         source_receipt = None
         deadline_text = None
         if current_buyer is not None:
@@ -449,8 +523,8 @@ def _build_engine(
             deadline_text = current_buyer[3].isoformat().replace("+00:00", "Z")
 
         result = {
-            "schema": RECEIPT_SCHEMA,
-            "opportunity_id": OPPORTUNITY_ID,
+            "schema": receipt_schema,
+            "opportunity_id": opportunity_id,
             "evaluated_at": now.isoformat().replace("+00:00", "Z"),
             "state": state,
             "commercial_posture": commercial_posture,
@@ -476,7 +550,7 @@ def _build_engine(
             },
         }
         receipt_payload = dict(result)
-        result["receipt_sha256"] = hashlib.sha256(canonical_bytes(receipt_payload)).hexdigest()
+        result["receipt_sha256"] = digest_fn(canonical_fn(receipt_payload)).hexdigest()
         return result
 
     return compile_packet
@@ -490,11 +564,20 @@ _PRODUCTION_ENGINE = _build_engine(
 )
 
 
-def compile_packet(packet: Any) -> dict[str, Any]:
-    """Compile one runtime packet using the reviewed production generation."""
-    return _PRODUCTION_ENGINE(packet)
+def _build_public_api(engine, strict_loader):
+    """Seal the public API over one reviewed production dependency generation."""
+    production_engine = engine
+    loader = strict_loader
+
+    def compile_packet(packet: Any) -> dict[str, Any]:
+        """Compile one runtime packet using the reviewed production generation."""
+        return production_engine(packet)
+
+    def compile_json(raw: bytes | str) -> dict[str, Any]:
+        """Strict raw JSON ingress using the same reviewed generation."""
+        return production_engine(loader(raw))
+
+    return compile_packet, compile_json
 
 
-def compile_json(raw: bytes | str) -> dict[str, Any]:
-    """Strict raw JSON ingress."""
-    return _PRODUCTION_ENGINE(loads_strict(raw))
+compile_packet, compile_json = _build_public_api(_PRODUCTION_ENGINE, loads_strict)
