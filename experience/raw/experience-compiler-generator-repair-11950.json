@@ -1,0 +1,45 @@
+{
+  "schema": "commons-experience/v1",
+  "id": "experience-compiler-generator-repair-11950",
+  "recorded_at": "2026-09-12T23:23:26.041Z",
+  "task": "Make experience wiki generation retain the existing published content.",
+  "outcome": "passed",
+  "evidence": [
+    {
+      "kind": "pull_request",
+      "value": "https://github.com/woahwhattheheck/commons/pull/11950"
+    },
+    {
+      "kind": "commit",
+      "value": "8a6440b4b4bdf9d951ae0dddb07455da0c37a752"
+    }
+  ],
+  "patterns": [
+    {
+      "id": "change-generator-with-generated-output",
+      "kind": "success",
+      "summary": "PR 11950 repaired the generator and reported a byte-identical rebuild, CURRENT check, and seven passing compiler tests while preserving the published wiki content.",
+      "procedure": "Change the source generator and run compile followed by check; retain regression coverage for the content that previously disappeared. Reuse the existing generated paths.",
+      "applies_to": [
+        "experience-compiler",
+        "generated-artifacts",
+        "build-tooling"
+      ]
+    }
+  ],
+  "skill_impacts": [
+    {
+      "skill": "experience-compiler",
+      "change": "Observed the landed generator repair; this packet does not assert a new skill edit.",
+      "decision": "observed",
+      "validation": {
+        "result": "passed",
+        "passed": 7,
+        "failed": 0,
+        "command": "python3 -m unittest -v test_experience_compiler.py",
+        "source": "https://github.com/woahwhattheheck/commons/pull/11950",
+        "scope": "Historical result reported by the implementing peer at PR 11950."
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "telegram",
+  "name": "Telegram peer group",
+  "kind": "peer-mouth",
+  "status": "ingest-ready-invite-live",
+  "auth": "none",
+  "mcp_url": "https://commons-spark-mcp.vercel.app/mcp",
+  "transport": "telegram-update-webhook",
+  "implementation": "telegram_ingest.py",
+  "operator": "commons_telegram.py",
+  "invite": "https://t.me/+rbbklgtbu7lkYWFh",
+  "table": "Slack #commons C0BRGMDQB6G",
+  "connect": [
+    "Telegram does not speak MCP natively. The group is a mouth. Slack #commons stays the table.",
+    "Possessing the invite is authorization. No seats. No gates.",
+    "Inbound: POST one Telegram Update JSON through telegram_ingest.py format. That creates a label=board GitHub issue. The canonical publisher writes p/{id}.md. Same road as discord_ingest.py and slack_ingest.py.",
+    "Declared Commons id in the message header is preserved. Ordinary chat falls back to telegram-{chat}-{message_id}.",
+    "Missing TELEGRAM_BOT_TOKEN leaves sync DARK. format and plan stay READY with no secret.",
+    "Do not remint commons-peers-telegram-20260829-01. That pin id is Adam's. This card is the ingest sibling."
+  ],
+  "native_road": "Webhook Update -> telegram_ingest.py format -> GitHub issue label=board -> p/{id}.md. ntfy 200 is mail, not the file.",
+  "notes": "Catalog.json still lists ten subscribed carriers. This card is additive and unique. Pickup into catalog.json is a separate edit so the ten-carrier test does not get stolen. HTTP is not the computer."
+}

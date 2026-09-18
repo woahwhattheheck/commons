@@ -1,0 +1,28 @@
+---
+description: Quota hold lifted — running Cursor sessions must ship, not idle-stop
+alwaysApply: true
+---
+
+# CURSOR QUOTA HOLD — LIFTED
+
+The earlier Cursor quota hold is lifted for sessions and automations that are already running.
+
+Do not stop because a historical rule reserved Cursor quota for SuperGrok Heavy. If you are in Cursor, finish the work: submit, push, and merge unique changes onto official current main under **woahwhattheheck**. Do not end a run with dirty git, unpushed commits, or a draft-only PR.
+
+Do not create repositories, branches, or PRs on `tokenjunkielabs`.
+
+Do not import or edit Claude Code files (`CLAUDE.md`, `.claude/**`, `~/.claude/**`) to implement this. Cursor-only surfaces: `.cursor/rules`, `.cursor/hooks.json`.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
+Larger fixed engagements (separate product pages; checkout/intent stays there): [GGUF diagnostic · $12,000 / 10 days](../../diagnostic.html) · [White Box pilot · $30,000 / 30 days](../../commercial.html). Not remints of tip SKUs.
+
+Shelf: [tools-cash.html](../../tools-cash.html). Catalog: [commerce.html](../../commerce.html). Cite newbot-cursor-rules-live-cash-20260916-11 — do not remint. Cite grok-cursor-rules-mdc-larger-fixed-20260916-01.

@@ -1,0 +1,76 @@
+{
+  "observed_at": "2026-09-07T10:02:06.659402+00:00",
+  "provider": {
+    "limits": {
+      "numToday": 2,
+      "numTotal": 2,
+      "numAllowedNow": 3
+    },
+    "matching_submissions": [
+      {
+        "ref": 56074364,
+        "totalBytes": 57711,
+        "date": "2026-09-07T10:01:29.190Z",
+        "description": "TITAN \u2014 similarity-gated sales; op titan-kaggriculture-frontier-20260907-01",
+        "fileName": "submission.tar.gz",
+        "submittedBy": "tokenjunkielabs",
+        "submittedByRef": "tokenjunkielabs",
+        "teamName": "Bryce Muhlnickel",
+        "url": "/submissions/56074364/56074364.raw"
+      }
+    ],
+    "recent_submissions": [
+      {
+        "ref": 56074364,
+        "totalBytes": 57711,
+        "date": "2026-09-07T10:01:29.190Z",
+        "description": "TITAN \u2014 similarity-gated sales; op titan-kaggriculture-frontier-20260907-01",
+        "fileName": "submission.tar.gz",
+        "submittedBy": "tokenjunkielabs",
+        "submittedByRef": "tokenjunkielabs",
+        "teamName": "Bryce Muhlnickel",
+        "url": "/submissions/56074364/56074364.raw"
+      },
+      {
+        "ref": 56069424,
+        "totalBytes": 12539,
+        "date": "2026-09-07T05:13:26.923Z",
+        "description": "TokenJunkieLabs Farm Manager v1; standalone offline policy, 28-animal and 10-hand limits. Source release 2dc9d9f9.",
+        "fileName": "submission.tar.gz",
+        "publicScore": "707.9",
+        "status": "COMPLETE",
+        "submittedBy": "tokenjunkielabs",
+        "submittedByRef": "tokenjunkielabs",
+        "teamName": "Bryce Muhlnickel",
+        "url": "/code/tokenjunkielabs/tokenjunkielabs-farm-manager?scriptVersionId=347872961"
+      }
+    ]
+  },
+  "episodes": {
+    "56074364": []
+  },
+  "notebook_status": {
+    "status": "COMPLETE"
+  },
+  "original_notebook_metadata": {
+    "id": 133392698,
+    "ref": "tokenjunkielabs/tokenjunkielabs-farm-manager",
+    "title": "TokenJunkieLabs Farm Manager",
+    "author": "Bryce Muhlnickel",
+    "slug": "tokenjunkielabs-farm-manager",
+    "lastRunTime": "2026-09-04T10:02:38.341Z",
+    "language": "python",
+    "kernelType": "notebook",
+    "isPrivate": false,
+    "enableGpu": false,
+    "enableInternet": true,
+    "competitionDataSources": [
+      "kaggriculture"
+    ],
+    "enableTpu": false,
+    "currentVersionNumber": 2,
+    "dockerImage": "gcr.io/kaggle-images/python@sha256:dafd4ce5668bbf1ad422e4c109e0f18c9623c3a7c7f48b0235f13142755c40b9",
+    "machineShape": "None"
+  },
+  "original_source_sha256": "968ebf4a96de165a76e37db094ae7324bc94145abf2649e090f9f158bd073deb"
+}

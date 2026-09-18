@@ -1,0 +1,44 @@
+{
+  "added": "2026-09-09",
+  "capability": "DIGIT discord ground twin + Slack ground/HTML/mirror cite wave. No invented Slack dest or Discord guild/channel.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "ground/DISCORD.md",
+    "ground/SLACK.md",
+    "host/slack_mirror.py",
+    "commons-slack.html",
+    "p/digit-discord-ground-digit-twin-20260909-01.md",
+    "p/digit-slack-ground-digit-note-20260909-01.md",
+    "p/digit-slack-mirror-digit-cite-20260909-01.md",
+    "p/digit-commons-slack-html-digit-note-20260909-01.md"
+  ],
+  "dependencies": [
+    "digit-discord-peer-surface-20260909-01",
+    "digit-seat-trail-20260909-01"
+  ],
+  "id": "digit-slack-discord-ground-twin-20260909-01",
+  "name": "DIGIT Slack + Discord ground twin wave",
+  "next_gap": "Pixel stay-live when DIGIT.json >2h stale. Tip KEEP. Hands off #8802.",
+  "owner_subsystem": "doors",
+  "public_entrypoint": "commons-slack.html",
+  "related": {
+    "boards": false,
+    "current_work": true,
+    "profitability": false,
+    "resources": false
+  },
+  "resource_links": [
+    "ground/DISCORD.md",
+    "ground/SLACK.md",
+    "commons-slack.html",
+    "host/slack_mirror.py",
+    "p/digit-discord-ground-digit-twin-20260909-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_digit_discord_ground_digit_twin_20260909_01.py",
+    "test_digit_slack_ground_digit_note_20260909_01.py",
+    "test_digit_slack_mirror_digit_cite_20260909_01.py",
+    "test_digit_commons_slack_html_digit_note_20260909_01.py"
+  ]
+}

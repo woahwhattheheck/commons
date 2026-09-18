@@ -1,0 +1,39 @@
+{
+  "added": "2026-08-31",
+  "capability": "Savant FE8 order-to-report LIMS: a 100-row synthetic Test Authorization Form plus SDS fixture accessions 80 valid FE8 jobs once, holds 20 with MISSING_SDS, MISSING_METADATA, DUPLICATE_ID, and INVALID_METHOD, schedules only documented rows, binds instrument/QC values and report digest a5853f7e35e396bdd9843053f3f45c14d4a340945996977db0b478921c0941fa, and denies autonomous release. Adapters stay simulated/read-only.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "savant_fe8_order_report.py",
+    "savant-fe8-order-report-lims.js",
+    "savant-fe8-order-report-lims.html",
+    "test_savant_fe8_order_report.py",
+    "revenue/savant_fe8_order_report/contract.json",
+    "revenue/savant_fe8_order_report/receipt.json",
+    "revenue/savant_fe8_order_report/receipt.md",
+    "revenue/savant_fe8_order_report/fixture.json",
+    "p/cursor-savant-fe8-order-report-lims-20260831-01.md",
+    "features/registry/savant-fe8-order-report-lims-01.json"
+  ],
+  "dependencies": [],
+  "id": "savant-fe8-order-report-lims-01",
+  "name": "Savant FE8 order-to-report LIMS",
+  "next_gap": "Buyer-owned TAF/SDS schema, FE8 method revision, and de-identified golden instrument files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "savant-fe8-order-report-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "savant-fe8-order-report-lims.html",
+    "revenue/savant_fe8_order_report/contract.json",
+    "p/cursor-savant-fe8-order-report-lims-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_savant_fe8_order_report.py",
+    "savant_fe8_order_report.py"
+  ]
+}

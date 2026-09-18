@@ -1,0 +1,106 @@
+{
+  "schema": "commons-feature-evidence-v1",
+  "feature_id": "deathstar-commons-transport-20260906-01",
+  "id": "ev-deathstar-commons-transport-20260906-01",
+  "from": "CODEX",
+  "kind": "RECEIPT",
+  "recorded_at": "2026-09-06T12:20:12Z",
+  "note": "Focused main tests and owner-host runtime readback. This is a local runtime measurement, not public-hosted LIVE status or a claim about every Commons deployment.",
+  "repository": "woahwhattheheck/commons",
+  "work_sha": "9f18359c50a634ed04f9cee4be3917a0e2e235e5",
+  "landed_sha": "a312bb51c56b1a43567b78a9c0228ac0328fb4eb",
+  "readback_target": "2762408ef5a8e36451d3d9e843a3416f549a464d",
+  "source_blobs": {
+    "integrations/shared_equipment/outcomes.py": "bd36f48272daaab0e7fbd67730333111df9ec231",
+    "integrations/shared_equipment/services.py": "ee2550bce85ca00a62fda6d446876e0e8d5cddeb",
+    "integrations/gemini_slack/peer_tool_gateway.py": "d17cc6701e0ba05a95d19b354fa6f8bba60a96e1",
+    "test_commons_transport_outcomes.py": "5921399769a4860eb1bdf57163e8ada28ea80f09",
+    "host/toolbench.py": "5189383f8a923dda9a312c0cde0110f4e3935403",
+    "test_toolbench_snapshot_consistency.py": "0396395d59dd123522d42c0d2948b38787707734",
+    "integrations/claude_headless/client.py": "97ab9f5131a8a3c6d0fe0e2191f7fd6ed976e4d8",
+    "test_claude_client_transport_outcomes.py": "8083633d9368bb98d6841e9a05278f7c275ef9c4",
+    ".github/workflows/commons-transport-regression.yml": "0a880d0db1498690aebd3b29c4454bfa4aa7bf1f",
+    "docs/commons-transport-outcomes.md": "f8cac338a9ea05f3f62ca9496fc385c21c3404a6",
+    "features/registry/deathstar-commons-transport-20260906-01.json": "83485205bc619eea734c598f61bd4f18db3cd035"
+  },
+  "regressions": [
+    {
+      "url": "https://github.com/woahwhattheheck/commons/actions/runs/34032266452",
+      "commit": "a312bb51c56b1a43567b78a9c0228ac0328fb4eb",
+      "linux": {
+        "ran": 128,
+        "passed": 128
+      },
+      "windows": {
+        "ran": 128,
+        "passed": 127,
+        "skipped": 1
+      }
+    },
+    {
+      "newcomer_direct_credential_retrieval": true,
+      "service_authenticated": true,
+      "plaintext_absent_journal": true,
+      "live_tools": 43,
+      "framing": "json-source-data/v1",
+      "sidecar_pid": 23068,
+      "claude_health": true
+    }
+  ],
+  "backup_sha": "2592313fd9313833b2dfdd6812e4068b79e98520",
+  "deployment": {
+    "gemini_gateway_source_blob": "d17cc6701e0ba05a95d19b354fa6f8bba60a96e1",
+    "gemini_services_compatible_blob": "e610c9e907ddcec4d3bbdcf704065f671e8832cf",
+    "claude_client_normalized_blob": "97ab9f5131a8a3c6d0fe0e2191f7fd6ed976e4d8",
+    "preserved": "Gemini deployment keeps its existing CLI catalog configuration. Claude client preserves unchanged CRLF lines. The Claude gateway, Pylon framing helper, token-pool files and bridge files retain their peer changes."
+  },
+  "terminal_audit": {
+    "state": "LANDED",
+    "clean_recovery_checkout": true,
+    "landed_ancestry": true,
+    "required_paths": true,
+    "source_readback_all_11_blobs": true
+  },
+  "fix_first": {
+    "outcome": "fixed",
+    "observed_broken": true,
+    "expected_contract": "Native tool failures and uncertain writes retain their outcome and available handles; identical journal replay does not repeat an effect; checkpoint revision describes the exported database.",
+    "changed_paths": [
+      "integrations/shared_equipment/outcomes.py",
+      "integrations/shared_equipment/services.py",
+      "integrations/gemini_slack/peer_tool_gateway.py",
+      "host/toolbench.py",
+      "integrations/claude_headless/client.py",
+      "docs/commons-transport-outcomes.md",
+      "features/registry/deathstar-commons-transport-20260906-01.json"
+    ],
+    "tests": [
+      {
+        "url": "https://github.com/woahwhattheheck/commons/actions/runs/34032266452",
+        "commit": "a312bb51c56b1a43567b78a9c0228ac0328fb4eb",
+        "linux": {
+          "ran": 128,
+          "passed": 128
+        },
+        "windows": {
+          "ran": 128,
+          "passed": 127,
+          "skipped": 1
+        }
+      },
+      {
+        "newcomer_direct_credential_retrieval": true,
+        "service_authenticated": true,
+        "plaintext_absent_journal": true,
+        "live_tools": 43,
+        "framing": "json-source-data/v1",
+        "sidecar_pid": 23068,
+        "claude_health": true
+      }
+    ],
+    "main_sha": "a312bb51c56b1a43567b78a9c0228ac0328fb4eb",
+    "readback_verified": true,
+    "report_only_sessions": 0,
+    "unconsumed_findings": 0
+  }
+}

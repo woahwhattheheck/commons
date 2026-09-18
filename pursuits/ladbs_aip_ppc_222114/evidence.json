@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "opportunityId": "222114",
+  "evidence": [
+    {"id":"E-OFFICIAL-ID","status":"available","source":"official RAMP URL resolves; exact opportunity ID/title corroborated by RAMP-indexed mirrors","binding":"222114 / 2025AIP007"},
+    {"id":"E-SECONDARY-PACKAGE-INDEX","status":"available","source":"current public RAMP-indexed mirrors","binding":"33-document inventory; not controlling requirement text"},
+    {"id":"E-BASE-RFP-BYTES","status":"missing","source":"controlling package","binding":"base RFP exact bytes"},
+    {"id":"E-ADDENDUM1-BYTES","status":"missing","source":"controlling package","binding":"Addendum 1 exact bytes"},
+    {"id":"E-QA-BYTES","status":"missing","source":"controlling package","binding":"Q&A exact bytes"},
+    {"id":"E-FUNCTECH-MATRIX-BYTES","status":"missing","source":"controlling package","binding":"Appendix 3 exact bytes"},
+    {"id":"E-CONFERENCE-ATTENDANCE","status":"missing","source":"authorized owner records","binding":"attendance/eligibility evidence if controlling RFP confirms mandatory conference"},
+    {"id":"E-RAMP-REGISTRATION","status":"missing","source":"authorized owner records","binding":"current bidder/vendor registration eligibility"},
+    {"id":"E-REFERENCES","status":"missing","source":"authorized owner records","binding":"real comparable references satisfying exact buyer form/threshold"},
+    {"id":"E-INSURANCE","status":"missing","source":"authorized owner/broker records","binding":"actual coverages/limits if required"},
+    {"id":"E-BIP","status":"missing","source":"authorized owner/teaming records","binding":"Business Inclusion Program response evidence"},
+    {"id":"E-CITY-FORMS","status":"missing","source":"authorized owner/legal records","binding":"City affidavits/disclosures/checklist"},
+    {"id":"E-PRICE-AUTH","status":"missing","source":"authorized owner","binding":"approved cost form / commercial commitment"},
+    {"id":"E-SIGN-AUTH","status":"missing","source":"authorized owner","binding":"proposal/signature/submission authorization"},
+    {"id":"E-PRODUCT-PROOF","status":"pending","source":"repository evidence to be curated","binding":"truthful reusable engineering assets only; no municipal deployment claim"},
+    {"id":"E-HOSTING-SECURITY","status":"pending","source":"repository + authorized ops evidence","binding":"actual hosting/security/operations evidence if pursuing prime"},
+    {"id":"E-IMPLEMENTATION-STAFF","status":"missing","source":"authorized owner/team records","binding":"named staffing/availability only if real"}
+  ]
+}

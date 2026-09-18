@@ -1,0 +1,11 @@
+{
+  "blob": "249b16c93ab1303703087fe1ba211661f472b0f4",
+  "feature_id": "cursor-business-pack-paperwork-20260902-01",
+  "from": "UNSEATED",
+  "id": "ev-paperwork-blob-20260902-02",
+  "kind": "BLOB",
+  "note": "Paperwork sheet after state-slot + formation-partner compose on 9ad53205d. Checklist slots kept. Append-only; does not overwrite ev-paperwork-blob-20260902-01.",
+  "path": "packs/_template/paperwork.md",
+  "recorded_at": "2026-09-02T06:02:00Z",
+  "schema": "commons-feature-evidence-v1"
+}

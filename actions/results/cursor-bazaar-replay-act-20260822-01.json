@@ -1,0 +1,17 @@
+{
+  "id": "cursor-bazaar-replay-act-20260822-01",
+  "verb": "RUN",
+  "target": "repo",
+  "scope": "github",
+  "ok": true,
+  "output": "REPLAY /workspace/bazaar/results/cursor-bazaar-replay-run-smoke-20260822-01.json <- /workspace/actions/results/codexsol-zero-auth-run-smoke-20260821-01.json\n",
+  "changed": [
+    "bazaar/results/cursor-bazaar-replay-run-smoke-20260822-01.json"
+  ],
+  "canonical_records": {},
+  "action_outputs": {
+    "bazaar/results/cursor-bazaar-replay-run-smoke-20260822-01.json": "ddb80400e6582f597bd44e5ffb2f90a855e12e66a3162c1934fb47e07b106802"
+  },
+  "action_deletions": [],
+  "executed_at": "2026-08-22T01:06:50Z"
+}

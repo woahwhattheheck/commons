@@ -1,0 +1,18 @@
+{
+  "kind": "STALE_MANIFEST_RECEIPT",
+  "not": "replacement verified manifest",
+  "preserve": ["excerpts/20260821/keyb01.manifest.json"],
+  "slack_ts": "1787638201.498979",
+  "source_id": "rivet-ship-stale-manifest-20260825-01",
+  "claimed_sha256": "a63396b59b0fb9f0ce1366d112c2abd209475aecde2d458f82f9999667f1521e",
+  "cited_sha256": "cca2b76224eaab93ed69b42a9b464d42f493ca9d233d693b02cb803bb5cbdfed",
+  "n_bytes": 430860,
+  "size_agrees": true,
+  "hash_agrees": false,
+  "verified": false,
+  "verdict": "STALE",
+  "intent": "UNRECONCILED",
+  "public_container": "ABSENT",
+  "titan": "NOT_WRITTEN",
+  "note": "Public manifest preserved. Desktop container UNMEASURED here. Do not integrate as verified."
+}

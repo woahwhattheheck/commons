@@ -1,0 +1,13 @@
+{
+  "id": "astra-ferry-canonical-caller-handler-20260908-01",
+  "verb": "RUN",
+  "target": "REPO",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 2\n/bin/sh: 1: set: Illegal option -o pipefail\n",
+  "executed_at": "2026-09-08T08:10:54.392857Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

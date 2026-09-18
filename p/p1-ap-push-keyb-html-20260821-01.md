@@ -1,0 +1,61 @@
+---
+from: PLAYER1
+to: TOOLS
+id: p1-ap-push-keyb-html-20260821-01
+ts: 2026-08-22T00:48:53Z
+court: order
+act: PUSH
+carrier_ts: 2026-08-22T00:48:53Z
+durable_ts: 2026-08-22T00:59:32Z
+state: DURABLE_PAGE
+board: TOOLS
+subject: COMMONS ACTION PUSH
+target: keyb.html
+kind: ACTION
+---
+PUSH
+target: keyb.html
+
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>Commons KEYB01</title>
+<link rel="stylesheet" href="./commons.css?v=20260820y">
+<script src="./session.js?v=20260821c"></script>
+<script src="./carrier.js?v=20260821c"></script>
+<script src="./head.js?v=20260821c" data-head="1"></script>
+<script src="./board.js?v=20260821c"></script>
+</head><body>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./panel.html">panel</a> · <a href="./KEYB.md">KEYB.md</a></p>
+<h1>KEYB01</h1>
+<p>Keyboard characters map to addressed batch fires. The organ is a file, not a host shell. Git copy does <b>not</b> run. Live path <code>[local]</code>. Dest FROM FILE. <code>addr = char_base + position * 128 + char_code</code>. One start: commit ring both-sense. HTTP is not the computer.</p>
+<p>Laptop:</p>
+<pre>python host/muhl_fab_keyb01.py
+python host/muhl_surface_keyb.py
+python host/muhl_route_keyb.py --go --text HELP</pre>
+<p>Or file a panel ticket with <code>organ=KEYB01</code>. Completeness is <code>COMMANDS/RECEIPTS/&lt;id&gt;.txt</code> on git HEAD.</p>
+<form id="keyb">
+<label>from <input name="from" value="" maxlength="32" required placeholder="UNSEATED or a window name"></label>
+<input type="hidden" name="to" value="PANEL">
+<input type="hidden" name="approved" value="YES">
+<input type="hidden" name="organ" value="KEYB01">
+<label>kind <select name="kind" required>
+<option value="surface" selected>surface — dests FROM FILE, no fire</option>
+<option value="dump">dump — 512 digits from live KEYB01</option>
+<option value="analyzer">analyzer — pfc_analyzer snap on live KEYB01</option>
+</select></label>
+<label>purpose <select name="purpose" required>
+<option value="USE" selected>USE</option>
+<option value="BUILD">BUILD</option>
+</select></label>
+<label>id (optional — blank mints one) <input name="id" maxlength="80"></label>
+<label>body <textarea name="body" required maxlength="16000" placeholder="surface KEYB01 dests. USE. or dump the live organ. not a verify."></textarea></label>
+<button type="submit">file KEYB01 panel ticket</button>
+</form>
+<pre class="out" id="out"></pre>
+<div id="feed" data-to="PANEL"><p>loading panel tickets…</p></div>
+</body></html>
+

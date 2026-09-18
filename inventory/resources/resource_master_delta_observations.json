@@ -1,0 +1,95 @@
+{
+  "schema": "commons-resource-master-delta-observations/v1",
+  "previous_watermark": {
+    "observed_at": "2026-09-01T23:46:55Z",
+    "main_sha": "064bc4043dd22c108727ce100a6d1bc14403a827",
+    "slack_channels": {
+      "commons": "1788306415.446399",
+      "delegations": "1788306415.038829",
+      "leads": "1788305367.000000",
+      "products": "1788305367.000000",
+      "sales": "1788305367.000000",
+      "shipped-builds": "1788305367.000000",
+      "todo": "1788305367.000000"
+    }
+  },
+  "current_watermark": {
+    "observed_at": "2026-09-01T23:54:30Z",
+    "main_sha": "c695243f0e3b25b7d48b9551f684434d35a5b5ad",
+    "slack_channels": {
+      "commons": "1788306849.192249",
+      "delegations": "1788306848.732999",
+      "leads": "1788305367.000000",
+      "products": "1788305367.000000",
+      "sales": "1788305367.000000",
+      "shipped-builds": "1788305367.000000",
+      "todo": "1788306156.000000"
+    }
+  },
+  "github_comparison": {
+    "base_sha": "064bc4043dd22c108727ce100a6d1bc14403a827",
+    "head_sha": "c695243f0e3b25b7d48b9551f684434d35a5b5ad",
+    "ahead_by": 2,
+    "changed_paths": [
+      {"path": "challenge.json", "class": "PROJECTION_ONLY"},
+      {"path": "change.md", "class": "PROJECTION_ONLY"},
+      {"path": "fresh.md", "class": "PROJECTION_ONLY"},
+      {"path": "head.json", "class": "PROJECTION_ONLY"},
+      {"path": "llms.txt", "class": "PROJECTION_ONLY"},
+      {"path": "peers.md", "class": "PROJECTION_ONLY"},
+      {"path": "pulse.json", "class": "PROJECTION_ONLY"},
+      {"path": "resources.html", "class": "PROJECTION_ONLY"}
+    ]
+  },
+  "new_pull_requests": [
+    {"number": 7299, "title": "Add KC Water phased laboratory relocation LIMS fixture", "head_sha": "36048f252e8c469571032dc641fe30d3d76dd6a7", "state": "DRAFT", "created_at": "2026-09-01T23:30:26Z"},
+    {"number": 7312, "title": "APL FDA polymer compliance dossier LIMS", "head_sha": "cb15e68a799484160125ee17a7fc2cd43c353eb1", "state": "DRAFT", "created_at": "2026-09-01T23:34:55Z"},
+    {"number": 7313, "title": "Add MGA Alabama materials-program qualification LIMS", "head_sha": "9a67d0886382717cd48b6d689fdab7b24093ea25", "state": "DRAFT", "created_at": "2026-09-01T23:36:01Z"},
+    {"number": 7314, "title": "KCA Kentucky medical cannabis intake LIMS", "head_sha": "0b619b06dc1dacfd77ffe235969c75d1735c1500", "state": "DRAFT", "created_at": "2026-09-01T23:42:15Z"}
+  ],
+  "new_slack_events": [
+    {"source_id": "slack:todo:1788305798.000000", "native_ts": "1788305798.000000", "channel": "todo", "kind": "REPAIR_REQUIRED", "canonical_id": "hartwick-grain-flour-bake-lims-01"},
+    {"source_id": "slack:todo:1788305911.000000", "native_ts": "1788305911.000000", "channel": "todo", "kind": "TESTED_HOLD", "canonical_id": "mga-alabama-materials-program-lims-01"},
+    {"source_id": "slack:delegations:1788306087.000000", "native_ts": "1788306087.000000", "channel": "delegations", "kind": "STEWARD_RECEIPT", "canonical_id": "root-master-sessions-full-rotation-20260901-02"},
+    {"source_id": "slack:todo:1788306156.000000", "native_ts": "1788306156.000000", "channel": "todo", "kind": "TESTED_HOLD", "canonical_id": "kca-ky-medical-cannabis-intake-lims-01"},
+    {"source_id": "slack:delegations:1788306848.732999", "native_ts": "1788306848.732999", "channel": "delegations", "kind": "BUILD_ORDER_ROUTED", "canonical_id": "hartwick-grain-flour-bake-lims-01"}
+  ],
+  "gmail_delta": {
+    "account_role": "shared_business_gmail",
+    "lower_bound": "2026-09-01T23:46:55Z",
+    "observed_through": "2026-09-01T23:54:30Z",
+    "new_receipts": 0,
+    "private_content_persisted": false
+  },
+  "automation_state_changes": [],
+  "plugin_route_changes": [],
+  "previously_routed_order_ids": [
+    "agentmail-first-inbox-road-20260901-01"
+  ],
+  "routed_build_orders": [
+    {
+      "id": "hartwick-grain-flour-bake-lims-01",
+      "state": "ROUTED",
+      "slack_ts": "1788306848.732999",
+      "consumer": "AquaTrace grain/flour/bake laboratory reporting fixture",
+      "source": "aquatrace-lims PR #1 at d2b1a38ac0b9e67e3ceea276d08871ba2651644d",
+      "finish_condition": "Pure synthetic read-only reporting with no authentication, admission, or release-authority enforcement; focused tests, open-door checks, merge and exact readback."
+    }
+  ],
+  "ignored_as_not_new_capacity": [
+    {"id": "main-projection-refresh", "reason": "All eight post-receipt main paths were generated board projections; no product or resource bytes changed."},
+    {"id": "agentmail-order-repeat", "reason": "The AgentMail order was already routed before this watermark and remains unaccepted; it was not reposted."},
+    {"id": "fable-owner-test", "reason": "Owner explicitly removed Fable evaluation from this Resource Master turn."}
+  ],
+  "evidence": {
+    "claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788306849192249",
+    "build_order": "https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1788306848732999",
+    "previous_activation": "https://github.com/woahwhattheheck/commons/commit/064bc4043dd22c108727ce100a6d1bc14403a827",
+    "current_main": "https://github.com/woahwhattheheck/commons/commit/c695243f0e3b25b7d48b9551f684434d35a5b5ad"
+  },
+  "non_claims": [
+    "No private email subject, sender, body, attachment, repository invitation, or message identifier is persisted.",
+    "No Fable or Claude work, model allocation, quota measurement, or peer guidance occurred.",
+    "No Grok submission, prospect outreach, resend, deployment, device action, payment, revenue, settlement, payout, or cash occurred."
+  ]
+}

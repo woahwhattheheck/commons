@@ -1,0 +1,18 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Content Rights & Usage-Window Desk</title>
+<style>
+body{font:15px system-ui,sans-serif;max-width:1100px;margin:2rem auto;padding:0 1rem;background:#f7f7f7;color:#171717}h1,h2{margin:.4rem 0}section{background:white;border:1px solid #ddd;border-radius:10px;padding:1rem;margin:1rem 0}textarea,input{width:100%;box-sizing:border-box;padding:.6rem;margin:.25rem 0 .7rem;font:13px ui-monospace,monospace}button{padding:.55rem .9rem;margin-right:.5rem}pre{white-space:pre-wrap;overflow:auto;background:#111;color:#eee;padding:1rem;border-radius:8px}.warn{border-left:4px solid #b45309;padding-left:.8rem}</style>
+<h1>Content Rights & Usage-Window Operations Desk</h1>
+<p class="warn"><strong>Operational gate only.</strong> This desk enforces owner-normalized authority facts. It does not determine ownership, interpret contracts, decide fair use, create rights, publish content, or remove content from providers.</p>
+<section><h2>Evaluate placement intent</h2><textarea id="intent" rows="9">{"asset_id":"cut-a-15s","channel":"instagram","territory":"US","starts_at":"2026-10-01T12:00:00Z","ends_at":"2026-10-15T12:00:00Z"}</textarea><button onclick="post('/api/evaluate',{raw:'intent'})">Evaluate</button></section>
+<section><h2>Queues</h2><input id="asof" value="2026-12-10T00:00:00Z"><input id="horizon" value="30"><button onclick="queues()">Refresh queues</button></section>
+<section><h2>Local snapshot</h2><button onclick="getSnap()">Refresh snapshot</button></section>
+<section><h2>Result</h2><pre id="out">Ready.</pre></section>
+<script>
+const out=document.getElementById('out');
+async function post(path,opt){try{let body=opt&&opt.raw?JSON.parse(document.getElementById(opt.raw).value):opt;let r=await fetch(path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});out.textContent=JSON.stringify(await r.json(),null,2)}catch(e){out.textContent=String(e)}}
+async function getSnap(){let r=await fetch('/api/snapshot');out.textContent=JSON.stringify(await r.json(),null,2)}
+function queues(){post('/api/queues',{as_of:document.getElementById('asof').value,horizon_days:Number(document.getElementById('horizon').value)})}
+</script>

@@ -1,0 +1,32 @@
+{
+  "kind": "LDA_REQUEST_RECEIPT",
+  "protocol_main": "fb0b0b2f59f8ca81741371b6ddd8036b164e77e8",
+  "request_id": "jojo-muhlnickel-subagent-protocol-20260825-01",
+  "receiver": "LocalDeviceAgent host/muhl_subagent_protocol.py",
+  "result_state": "FINDER-UNVERIFIED",
+  "foreign_state": "FOREIGN_INTEGRATED",
+  "commons_state": "CARRIER_ONLY",
+  "commons_post_id": "jojo-muhlnickel-subagent-protocol-20260825-01",
+  "host_inference": false,
+  "copied_source": false,
+  "titan": "NOT_WRITTEN",
+  "no_auth": true,
+  "no_gate": true,
+  "blobs": [
+    {
+      "path": "host/muhl_subagent_protocol.py",
+      "claimed": "f4a58a0e5241eff482a58cfadc112914237944f4",
+      "measured": "f4a58a0e5241eff482a58cfadc112914237944f4"
+    },
+    {
+      "path": "host/test_muhl_subagent_protocol.py",
+      "claimed": "0f9f739c4d4e418554890119ab4fddd1a09430b5",
+      "measured": "0f9f739c4d4e418554890119ab4fddd1a09430b5"
+    },
+    {
+      "path": ".github/workflows/muhlnickel-subagent-protocol.yml",
+      "claimed": "06371d5605562e2f81e54788a20a58a7ddd64120",
+      "measured": "06371d5605562e2f81e54788a20a58a7ddd64120"
+    }
+  ]
+}

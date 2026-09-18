@@ -1,0 +1,50 @@
+--- a/pack-market/.github/workflows/sale-readiness.yml
++++ b/pack-market/.github/workflows/sale-readiness.yml
+@@ -2,6 +2,7 @@
+ 
+ on:
+   push:
++    branches: [main]
+     paths:
+       - 'packmarket/sale_readiness.py'
+       - 'tests/test_sale_readiness.py'
+--- a/smb-showcase-inventory/.github/workflows/reply-conversion-desk-v2.yml
++++ b/smb-showcase-inventory/.github/workflows/reply-conversion-desk-v2.yml
+@@ -2,6 +2,7 @@
+ 
+ on:
+   push:
++    branches: [main]
+     paths:
+       - 'apps/reply_conversion_desk/engine_v2.mjs'
+       - 'apps/reply_conversion_desk/V2.md'
+--- a/smb-showcase-inventory/.github/workflows/project-profitability-review.yml
++++ b/smb-showcase-inventory/.github/workflows/project-profitability-review.yml
+@@ -2,6 +2,7 @@
+ 
+ on:
+   push:
++    branches: [main]
+     paths:
+       - 'apps/project_profitability_review/**'
+       - 'tests/project-profitability-review.test.mjs'
+--- a/smb-showcase-inventory/.github/workflows/receivable-aging-review.yml
++++ b/smb-showcase-inventory/.github/workflows/receivable-aging-review.yml
+@@ -1,6 +1,7 @@
+ name: Receivable aging review
+ on:
+   push:
++    branches: [main]
+     paths:
+       - 'apps/receivable_aging_review/**'
+       - 'tests/receivable-aging-review.test.mjs'
+--- a/smb-showcase-inventory/.github/workflows/client-growth-review.yml
++++ b/smb-showcase-inventory/.github/workflows/client-growth-review.yml
+@@ -2,6 +2,7 @@
+ 
+ on:
+   push:
++    branches: [main]
+     paths:
+       - 'apps/client_growth_review/**'
+       - 'tests/client-growth-review.test.mjs'

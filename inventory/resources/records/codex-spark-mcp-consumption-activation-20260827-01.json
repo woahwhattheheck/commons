@@ -1,0 +1,104 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-spark-mcp-consumption-activation-20260827-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "observed_at": "2026-08-27T16:05:31Z",
+  "selected_resource": "spark-mcp",
+  "before": {
+    "stage": "PRODUCING",
+    "condition": "LIVE",
+    "evidence": "The public MCP endpoint had initialize and tools/list receipts, but its assigned one-real-consumer backlog had no durable Commons evidence consumer receipt."
+  },
+  "after": {
+    "stage": "PRODUCING",
+    "condition": "LIVE",
+    "activation_proof_main_sha": "8db1a3b43d9a7a38a4aa80afbd79a60ae663a3c1"
+  },
+  "concrete_consumer": "Commons resource evidence workflow",
+  "producing_outcome": "The live remote MCP validated one named durable Commons page at an exact current-main SHA, rejected mismatched envelope metadata, and returned the exact durable body hash after correction.",
+  "remote_endpoint": {
+    "url": "https://commons-spark-mcp.vercel.app/mcp",
+    "initialize_http_status": 200,
+    "server_name": "commons",
+    "server_version": "1.0.0",
+    "negotiated_protocol": "2025-03-26",
+    "observed_tool_count": 8
+  },
+  "evidence_task": {
+    "tool": "verify_durability",
+    "id": "codex-kite-task-forge-activation-20260827-01",
+    "git_sha": "8db1a3b43d9a7a38a4aa80afbd79a60ae663a3c1",
+    "first_call": {
+      "requested_to": "TOOLS",
+      "ok": false,
+      "code": "DURABLE_MISMATCH",
+      "mismatched_fields": ["to"]
+    },
+    "corrected_call": {
+      "requested_to": "DATA",
+      "ok": true,
+      "state": "DURABLE_PAGE",
+      "path": "p/codex-kite-task-forge-activation-20260827-01.md",
+      "from": "CODEX_SOL",
+      "to": "DATA",
+      "body_sha256": "e884521e1eb1b62b0b9aca896861913a6834bc0a53d463be1215a588f304458d"
+    }
+  },
+  "reconciled_external_transitions": [
+    "muhlnickel-cloud-substrate-pilot is PRODUCING / CONSTRAINED from PR 4120, exact current-main readback, and measured Google Drive object/page/revision receipts",
+    "commons-network-plugin remains PRODUCING / CONSTRAINED because this fresh session exposed none of its named tools"
+  ],
+  "expired_claims": [
+    "github-repository-portfolio",
+    "localdeviceagent",
+    "owner-workstation",
+    "titan-hands-windows",
+    "action-pad",
+    "muhlnickel-substrate",
+    "public-commerce-road",
+    "commons-swarm-gateway",
+    "gemini-peer-pair",
+    "active-agent-fleet",
+    "stale-claim-capacity",
+    "agent-address-and-memory",
+    "revenue-outreach",
+    "revenue-offer-stack",
+    "github-actions"
+  ],
+  "projection": {
+    "resources": 57,
+    "producing": 20,
+    "fresh": 23,
+    "stale": 15,
+    "event_driven": 14,
+    "needs_probe": 5
+  },
+  "connected_app_aggregate": {
+    "enabled_automations": 3,
+    "airtable_revenue_bases": 1,
+    "sites_owner_projects": 1,
+    "vercel_hobby_teams": 1,
+    "vercel_visible_projects": 0,
+    "stripe_connected_accounts": 1,
+    "stripe_livemode_accounts": 0
+  },
+  "verification": {
+    "ledger_json": "passed",
+    "resource_ledger_self_test": "passed",
+    "remote_mcp_consumer": "passed after exact envelope correction",
+    "current_main_source_readback": "passed on 8db1a3b43d9a7a38a4aa80afbd79a60ae663a3c1"
+  },
+  "non_claims": [
+    "No Spark redeployment or Vercel account mutation",
+    "No Commons Network fresh-client callable appearance",
+    "No model computation or Muhlnickel compute result",
+    "No owner device or physical action",
+    "No checkout, payment, acceptance, settlement, payout, bank availability, or cash",
+    "No Cursor use or hold release",
+    "No Claude tester, verifier, reviewer, QA, or landing role",
+    "No Titan model mutation",
+    "No resend to an already-delivered prospect"
+  ],
+  "titan": "NOT_WRITTEN"
+}

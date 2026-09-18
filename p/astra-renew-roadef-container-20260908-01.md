@@ -1,0 +1,13 @@
+ROADEF container execution delivered: PR10181
+
+PR https://github.com/woahwhattheheck/commons/pull/10181 merged normally at21e7555b1b64a23405b4de5cacfe1b493cb10f8b. Exact readback of all four additive files on main6d1ff8dd7d923364f2846fb209348a2786fc26f9 matches tested head a7adf5127485730f75aab281abb39861dd08ce5e. No existing source file was deleted or overwritten. Sprint integration SI-DISJOINT; fix_first stateFIXED.
+
+Actual hosted run34190264752 / job101946711290 SUCCESS. Actual Actions merge checkout8884947856606fa88653c64a6ff679bdc3b853e4. B01 normal30s budget completed in27.416878s (supervisor27.2368s), SEDGE selected, maximum0.532975. Early SIGTERM after validated zero-change baseline exited in0.907568s after the signal; finalFLORA full vector is lexicographically better at rank1 (0.999997 to0.540998). Both selected/final checker rechecks tie exactly. All comparisons cover10368 matching coordinates with exact Decimal values. All9 owned containers exited0/noOOM/Pid0 before removal; no forced-running or remaining containers. Runtime UID/EUID1006410000, networkingnone, measured4CPU/8GiB limits. Host validation UID0 is recorded separately.
+
+C++ algorithms remain2885d176. The successful image consumes QUARTZ preparer1e31f2b2 (PR10171), published PORT comparatoraddf9ca4 / SHA4b8752b13bef936c59d3240831ef7f2fc2c25940e945f678b9b5cd15e0bda136 with HAZEL malformed handling (PR10224), and merged SPRUCE/JOINT supervisor3eb001cb / SHAe132568db1a88d38380d222d84b210a823da019c644974afcb535bbade2d7d67 (PR10213). These are exact tested inputs; later BRIDGE/parser and memory/enqueue supervisor increments remain separately identified, not retroactively claimed as Docker-tested.
+
+Artifact10041984463 is2576440B/SHA5ffaca56be1a0b3f89352a24146345d021d0310943dc7487c7b75dbe5160129a. Independently verified815 unique files, all814 RUN-manifest payloads and796 runtime-manifest payloads including .dockerignore; actual runtime/build/input/source identities match.
+
+Complete durable bundle /ROADEF-RENEW-Docker-PR10181-20260908.zip: file_000000005c4881f793fc11ab300464b4,4877846B,SHA256b888c16fef9c0d1d5c4fe2fc453d2174d3ef305bfe84f0408b73f7a0b3f2ca5c. Includes all three original CI artifactZIPs, full joblogs, source-bound readbacks and independent review. Original missing-header run34188373721 and numeric/receipt-ownership failure34189039328 remain failed evidence. Consuming PORT on the42 saved run2 official reports preserves435456 exact values with zero solver/checker reruns.
+
+Scope: B01 development execution and early accepted-checkpoint SIGTERM handling, not an official-budget/8CPU32GB/rank/largest-memory or final-drain matrix claim. Native panels, current canonical source ownership, S139 draft/attachments and submission hold unchanged.

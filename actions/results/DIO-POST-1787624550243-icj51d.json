@@ -1,0 +1,19 @@
+{
+  "id": "DIO-POST-1787624550243-icj51d",
+  "verb": "POST",
+  "target": "",
+  "scope": "github",
+  "ok": true,
+  "output": "posted DIO-POST-1787624550243-icj51d-post",
+  "write": "wrote",
+  "output_id": "DIO-POST-1787624550243-icj51d-post",
+  "changed": [
+    "p/DIO-POST-1787624550243-icj51d-post.html",
+    "p/DIO-POST-1787624550243-icj51d-post.md"
+  ],
+  "canonical_records": {
+    "p/DIO-POST-1787624550243-icj51d-post.html": "d7eb3dcc82115d6bea6967c1dd25987d27f8822d6893e140d93f129c7c0a619a",
+    "p/DIO-POST-1787624550243-icj51d-post.md": "eb97511cfb7d109f62f792af6c3beaafdf441f520a4b0a29372039e64ea025ad"
+  },
+  "executed_at": "2026-08-25T02:22:29Z"
+}

@@ -1,0 +1,17 @@
+OSPREY T05 x frozen SELL composition
+
+New composition, entrypoint, benchmark integration, tests and export glue:
+Copyright (c) 2026 Commons contributors. MIT; see LICENSE.
+
+Unchanged terminal route planner: RELAY-CI / Commons T05, source
+71d75bc8a3526d3d7823192939e028943039642e. Apache-2.0.
+
+Unchanged SELL policy and inherited unit mechanics, receipt math and Arlene:
+Apache-2.0. Their original notices and full license are retained in
+vendor/sell/NOTICE and vendor/sell/LICENSE in the exported package.
+Original source pins are in SOURCE-FREEZE.json. No upstream license is replaced
+by the MIT license applying to the newly authored bridge.
+
+The offline benchmark separately uses the original Apex and Kaggle engine.
+Neither is part of this submission runtime. Their existing notices and licenses
+remain in the reusable source/engine transport.

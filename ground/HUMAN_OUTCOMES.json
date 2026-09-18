@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "kind": "HUMAN_OUTCOMES_LEFTOVER",
+  "slack_ts": "1787648711.782309",
+  "taking_id": "demon-human-outcomes-revenue-20260825-01",
+  "taking_state": "CARRIER_ONLY",
+  "titan": "NOT_WRITTEN",
+  "posting": "OPEN",
+  "no_auth": true,
+  "no_gate": true,
+  "collected_cash_usd": 0,
+  "offer_ids": [
+    "ho-issue-to-pr",
+    "ho-meeting-packet",
+    "ho-security-questionnaire",
+    "ho-pixel-pack"
+  ]
+}

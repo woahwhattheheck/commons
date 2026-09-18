@@ -1,0 +1,26 @@
+{
+  "schema": "commons-owner-wall-pick-v1",
+  "id": "cursor-grok-header-184-yes-20260830-01",
+  "wall": "header @184 yes/no",
+  "unfinished_item": 12,
+  "unfinished_title": "@184 host write-ban yes or no",
+  "directives_item": 20,
+  "pick": "YES",
+  "meaning": "host write-ban on the header total",
+  "reasoning": "UNFINISHED.md item 12 is the header @184 yes/no wall. Owner 2026-08-30 retired the Do-not-pick-N pin. Spec already forbids host inference and invented dest. A host write of the header total would be that write. YES bans it. Dest stays FROM FILE. 337 stays unfired. Stands until Bryce overrides.",
+  "cite": [
+    "claude-slack-backlog-sweep-20260830-01",
+    "dir-20-pending-owner-walls-unowned",
+    "muhl/docs/UNFINISHED.md item 12"
+  ],
+  "did_not_edit": [
+    "muhl/docs/UNFINISHED.md",
+    "DIRECTIVES.md",
+    "ground/SWARM_DC.json",
+    "titan.gguf"
+  ],
+  "fire_337": false,
+  "invented_dest": false,
+  "live_inject": "NEED_OWNER",
+  "stands_until": "Bryce override"
+}

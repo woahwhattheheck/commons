@@ -1,0 +1,37 @@
+{
+  "added": "2026-09-01",
+  "capability": "KC Water phased laboratory relocation LIMS: a frozen 300-submission synthetic fixture routes drinking-water, wastewater, and stormwater accessions across main, temporary, and contingency sites; creates exactly 240 site-and-instrument-bound tests, source-bound results, and staged reports; holds exactly 60 predetermined defects without output (20 duplicate containers, 20 site/method-scope mismatches, and 20 custody/temperature failures); preserves source/value/unit/qualifier hashes; prevents cross-site result attachment; replays with zero additions; and permits release only through an authoritative named-human directory.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "kcwater_phased_lab_relocation_lims.py",
+    "test_kcwater_phased_lab_relocation_lims.py",
+    "kcwater-phased-lab-relocation-lims.html",
+    "revenue/kcwater_phased_lab_relocation_lims/contract.json",
+    "revenue/kcwater_phased_lab_relocation_lims/README.md",
+    "revenue/kcwater_phased_lab_relocation_lims/runner.py",
+    "revenue/kcwater_phased_lab_relocation_lims/receipt.json",
+    "p/kcwater-phased-lab-relocation-lims-01.md"
+  ],
+  "dependencies": [],
+  "id": "kcwater-phased-lab-relocation-lims-01",
+  "name": "KC Water phased laboratory relocation LIMS",
+  "next_gap": "Buyer-owned de-identified schemas, authorized site/instrument route catalog, controlled method/version records, calibration/QC source exports, and named-human release directory after synthetic verification. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "kcwater-phased-lab-relocation-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "kcwater-phased-lab-relocation-lims.html",
+    "revenue/kcwater_phased_lab_relocation_lims/contract.json",
+    "p/kcwater-phased-lab-relocation-lims-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_kcwater_phased_lab_relocation_lims.py",
+    "kcwater_phased_lab_relocation_lims.py"
+  ]
+}

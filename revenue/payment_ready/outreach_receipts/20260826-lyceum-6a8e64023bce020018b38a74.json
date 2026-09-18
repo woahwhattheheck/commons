@@ -1,0 +1,42 @@
+{
+  "schema_version": "commons-outreach-transport-receipt/v1",
+  "kind": "COMMONS_OUTREACH_TRANSPORT_RECEIPT",
+  "receipt_id": "outreach-transport-lyceum-20260826T050135250Z",
+  "campaign_id": "owner-seven-outreach-20260826-01",
+  "target_id": "lyceum",
+  "organization": "Lyceum Technology",
+  "sender_email": "tokenjunkielabs@gmail.com",
+  "recipient_email": "magnus@lyceum.technology",
+  "channel": "EMAIL",
+  "provider": "APOLLO",
+  "provider_reference": "apollo:emailer_message:6a8e64023bce020018b38a74",
+  "provider_state": "COMPLETED",
+  "provider_completed_at": "2026-08-26T05:01:35.250Z",
+  "observed_at": "2026-08-26T05:14:01.083Z",
+  "message_contract": {
+    "content_state": "UNKNOWN_NOT_RECONSTRUCTED",
+    "sha256": null,
+    "prepared_source_reference": null
+  },
+  "dedupe": {
+    "distinct_contact_key": "magnus@lyceum.technology",
+    "do_not_resend": true,
+    "known_duplicate_or_pending_provider_references": []
+  },
+  "response_state": "UNKNOWN",
+  "response_reference": null,
+  "facts": {
+    "buyer_authorization": "UNKNOWN",
+    "legal_acceptance": "NOT_LANDED",
+    "cash_claimed": false,
+    "collected_cash_usd": 0
+  },
+  "evidence": {
+    "apollo_contact_id": "6a8e63d76ad8cf001886aa75",
+    "contact_last_activity_at": "2026-08-26T05:01:35.000Z",
+    "contact_updated_at": "2026-08-26T05:01:35.457Z",
+    "public_slack_ts": "1787721049.906349",
+    "public_slack_permalink": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1787721049906349?thread_ts=1787715281.970159&cid=C0BRGMDQB6G",
+    "completion_corroborated": true
+  }
+}

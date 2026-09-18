@@ -1,0 +1,67 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-discord-inbound-production-readback-20260831-01",
+  "event_type": "RESOURCE_PRODUCTION_READBACK",
+  "actor": "CODEX_SOL",
+  "observed_at": "2026-08-31T14:43:13Z",
+  "selected_resource": "discord-bridge",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "EXERCISED",
+    "condition": "BLOCKED",
+    "evidence": "The prior fail-dark run had no configured cloud credential or channel and therefore no authenticated sync/readback."
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "readback_base_main_sha": "fca7ff32a94b57c1e90aa768aa2172cde9b1dd91",
+    "quota_repair_merge_sha": "fca7ff32a94b57c1e90aa768aa2172cde9b1dd91"
+  },
+  "authority": "PUBLIC_OPEN_APPEND_AND_DISCORD_READ; OWNER_ONLY_WINDOWS_ACCOUNT_CREDENTIAL_AND_APP_ACTION",
+  "concrete_consumer": "Commons canonical open GitHub issue road receiving authenticated Discord records.",
+  "measurable_outcome": "One scheduled cloud inbound job reached READY and created canonical Commons board issues from authenticated Discord records.",
+  "counts": {
+    "cloud_run_id": 33404135293,
+    "cloud_inbound_job_id": 99527465291,
+    "planned_records": 91,
+    "created_issues": 60,
+    "first_created_issue": 6921,
+    "last_created_issue": 6980,
+    "outbound_messages": 0,
+    "manual_workflow_dispatches_by_this_change": 0,
+    "credits_spent_by_this_change": 0,
+    "external_contacts_by_this_change": 0
+  },
+  "projection": {
+    "resources": 66,
+    "producing": 34
+  },
+  "verification": {
+    "current_main_readback": "Run 33404135293 checked out current main fca7ff32a94b57c1e90aa768aa2172cde9b1dd91, which includes the inbound quota repair from PR #6920.",
+    "cloud_runtime_truth": "Inbound job 99527465291 reached READY, completed successfully, planned 91 records, and created issues #6921 through #6980. The outbound job was skipped.",
+    "open_door_truth": "No public Commons posting, Action Pad, GitHub, Slack, or bridge source road was narrowed; this is lifecycle accounting only.",
+    "secrets_truth": "The job proved configured private inputs without exposing any credential or channel value in this record.",
+    "collision_audit": "The sole open PR #6816 changes two TITAN Android paths and does not overlap the ledger, resource record, test, resources projection, opportunity projections, or receipt."
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788188081524569",
+    "account_repair_receipt": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788186669972949?thread_ts=1788180414.734879&cid=C0BRGMDQB6G",
+    "cloud_run": "https://github.com/woahwhattheheck/commons/actions/runs/33404135293",
+    "cloud_job": "https://github.com/woahwhattheheck/commons/actions/runs/33404135293/job/99527465291",
+    "quota_repair_pr": "https://github.com/woahwhattheheck/commons/pull/6920",
+    "first_created_issue": "https://github.com/woahwhattheheck/commons/issues/6921",
+    "last_created_issue": "https://github.com/woahwhattheheck/commons/issues/6980"
+  },
+  "next_action": "Let the existing schedule continue and monitor rate boundaries without reminting records; require a fresh job readback before any later lifecycle change.",
+  "rate_plan_boundary": "This run proves inbound production only. It does not prove outbound Discord delivery, complete historic catch-up, future-run success, revenue, or cash.",
+  "non_claims": [
+    "No outbound Discord message or delivery claim; the outbound job was skipped",
+    "No credential or channel value copied into Commons, Slack, Git, receipts, screenshots, or prompts",
+    "No workflow dispatch, credential mutation, or provider-account action by this change",
+    "No Windows task or local process restoration",
+    "No outreach, payment, revenue, or cash",
+    "No Grok or Cursor activity"
+  ],
+  "titan": "NOT_WRITTEN"
+}

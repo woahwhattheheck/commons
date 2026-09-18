@@ -1,0 +1,141 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-osff-firmware-sbom-grant-packet-resource-activation-20260913-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "actor": "CODEX_ASTRA",
+  "selected_resource": "osff-firmware-sbom-conformance-grant-packet",
+  "observed_at": "2026-09-13T04:05:33Z",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "UNREGISTERED",
+    "evidence_freshness": "FRESH_CURRENT_MAIN_MERGED_SOURCE_PACKET"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "authority": "SHARED_ALL_CARRIERS; PUBLIC_CURRENT_MAIN_READ_REVIEW_AND_COMPOSE; EXACT_PR13541_HEAD_C8E711DFCED98065CA0AE55CE8F578A8C5465D05_PACKET_BLOB_60D234EB07B914DD30BC42CB7959C3C065D84CEE_AND_SHA256_BINDING_REQUIRED; OWNER_ONLY_IDENTITY_LEGAL_SIGNING_EMAIL_AND_SUBMISSION; NO_SPONSOR_CONTACT_SUBMISSION_AWARD_BOOKED_REVENUE_PAYMENT_OR_SPEND_CLAIM",
+    "holder": "Commons / owner OSFF application review and submission decision",
+    "activation_base_main_sha": "bfddf33e924ee684cf76964b770eafbc51f89ebb"
+  },
+  "concrete_consumer": "The owner needs a source-bound application packet to decide whether to submit to the Open-Source Firmware Foundation 2026/2 call before its published September 30, 2026 deadline.",
+  "measurable_outcome": "The merged packet is now separately routable in the canonical graph with exact custody, a six-week €7,500 future-work scope, deterministic acceptance boundaries and an owner-only submission action.",
+  "production_truth": {
+    "activation_operation_id": "codex-osff-firmware-sbom-grant-resource-20260913-01",
+    "source_pr": 13541,
+    "source_branch": "astra/osff-firmware-sbom-grant-20260912",
+    "source_head_sha": "c8e711dfced98065ca0ae55ce8f578a8c5465d05",
+    "source_merge_sha": "0a1457fc707b3adc1ebe9b733fc5fd2e72f1091a",
+    "source_path": "revenue/grants/OSFF_FIRMWARE_SBOM_CONFORMANCE_KIT_2026.md",
+    "source_git_blob": "60d234eb07b914dd30bc42cb7959c3c065d84cee",
+    "source_sha256": "0ed5630e20d9ede8735ba54c665e6e9aadd725824a0b8c05bd93ca27dbfe9ab3",
+    "sponsor": "Open-Source Firmware Foundation",
+    "call": "Small-Scale, High-Impact Firmware Contributions 2026/2",
+    "published_call_open": "2026-07-15",
+    "published_call_close": "2026-09-30",
+    "published_range_eur": {
+      "minimum": 1000,
+      "maximum": 7500
+    },
+    "requested_eur": 7500,
+    "awarded_eur": 0,
+    "booked_revenue_eur": 0,
+    "timeline_weeks": 6,
+    "positive_fixture_floor": 12,
+    "deliverables": [
+      "synthetic PE/uSWID/defragmented conformance fixtures with paired negative mutations",
+      "offline fw-sbom-conformance CLI with stable JSON diagnostics",
+      "source-bound fail-closed tests and byte-stable fixture hashes",
+      "upstream OSFF integration PR or maintainer-approved adjacent repository",
+      "focused python-uswid integration only if a public parsing hook is missing",
+      "local and CI adoption guide that keeps private firmware local"
+    ],
+    "upstream_spec_sha": "abab4b8960787b06d47ae5a748a4bfd1fa94d32d",
+    "source_head_workflows": {
+      "open-door-guard": "QUEUED",
+      "path-manifest": "QUEUED",
+      "muhlnickel-spec-guard": "QUEUED"
+    },
+    "submitted": false,
+    "sponsor_contacted": false,
+    "implementation_started": false,
+    "provider_writes": 0,
+    "contract": "Only the exact public packet is routable. Final identity, legal/signing, email and submission actions remain owner-only. Sponsor acceptance, implementation, award, payment, booked revenue and cash require separate matching receipts."
+  },
+  "delta": {
+    "prior_terminal_main_sha": "543602e54e125b6bf4d2d9ad73eb802627e82f4d",
+    "main_sha_at_claim": "bfddf33e924ee684cf76964b770eafbc51f89ebb",
+    "commits_in_delta": 24,
+    "merge_commits_in_delta": 6,
+    "non_merge_commits_in_delta": 18,
+    "changed_paths_in_delta": 92,
+    "remote_branches_observed": 3021,
+    "remote_branch_set_digest_sha256": "c6ed7b5d3e964ae88b250b9d3bddc3e74d0f5d3d67b8ffb7011aebf8db1f5541",
+    "recent_outcomes": "The delta contains source-bound grant/qualification packets, TITAN V5 corrections and generated projection churn. PR #13541 landed one distinct OSFF packet with an owner review/submission consumer. TITAN losses and consolidation receipts remain held or owner-bound and were not reminted as capacity.",
+    "prior_terminal_slack_ts": "1789262199.620479",
+    "latest_delta_slack_ts": "1789272333.052199",
+    "commons_claim_slack_ts": "1789272333.052199",
+    "github_state": "At claim, current main is bfddf33e924ee684cf76964b770eafbc51f89ebb. PR #13541 is merged at 0a1457fc707b3adc1ebe9b733fc5fd2e72f1091a; its three source-head workflows remain queued and are not claimed green.",
+    "delegations_state": "The existing R-FUNDED-05 source claim produced PR #13541. No new capability gap survived current-main, open-work, #delegations and receipt deduplication.",
+    "todo_state": "No post-watermark todo receipt created a distinct unheld capability gap.",
+    "shipped_builds_state": "No post-watermark shipped-build receipt created a separate resource.",
+    "products_state": "No post-watermark product receipt created a separate resource.",
+    "leads_state": "No post-watermark lead receipt created a buyer, award or resource claim.",
+    "sales_state": "No post-watermark sales receipt created a buyer, payment, revenue or cash claim.",
+    "automations": "The enabled automation inventory exposed no material lifecycle change; no automation was created, disabled or duplicated.",
+    "connected_apps": "GitHub read/write and Slack read/write roads remained live. Slack reads intermittently returned transient rate limits before succeeding. No account, credential, device, customer-data or provider capacity was inferred from connector presence.",
+    "provider_observation": "No direct usage meter, provider session, credential, customer, sponsor, payment, device or deployment surface was probed or mutated."
+  },
+  "quota_lifecycle": {
+    "official_observation": "This wake's single official-source check found no reset announcement newer than the already-recorded September 7 automatic reset.",
+    "classification": "PRIOR_QUOTA_STATE_RETAINED_CURRENT_ALLOWANCE_UNMEASURED",
+    "observed_at": "2026-09-13T04:05:33Z",
+    "current_meter": "NOT_DIRECTLY_OBSERVED",
+    "routing": "Preserve a small emergency reserve, do not activate banked inventory, and do not recommend or buy an instant reset."
+  },
+  "build_orders": [],
+  "build_order_decision": "No build order was posted. The packet is already complete for its present owner decision, while all proposed firmware conformance implementation remains explicitly future work conditional on owner submission and sponsor acceptance.",
+  "verification": {
+    "focused_tests": "The exact current-main packet Git blob and SHA-256 were checked. Assertions bind the new row, PR/head/merge, source path/blob/hash, call dates, €7,500 request, €0 award/booked revenue, six-week timeline, 12-fixture floor, queued workflow truth and no-contact/no-submission/no-implementation boundaries.",
+    "privacy": "No credential, private account identifier, private firmware, customer data, private file name, owner identity detail, email content or incident narrative is copied into canonical metadata.",
+    "open_door": "The packet and activation artifacts are public Commons paths requiring no Commons login, sponsor account, provider session or approval queue for read/review use.",
+    "zero_fabrication": "A complete application packet remains distinct from submission, sponsor acceptance, an award, implementation, delivery, payment, booked revenue or cash.",
+    "collision": "Only ledger, append-only activation record, append-only receipt, focused ledger assertions and generated freshness stamp are owned. The source packet, other grants, revenue lanes, contacts, accounts, provider state, firmware and peer branches remain untouched."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-13T04:05:33Z",
+    "prior_terminal_main_sha": "543602e54e125b6bf4d2d9ad73eb802627e82f4d",
+    "main_sha_at_claim": "bfddf33e924ee684cf76964b770eafbc51f89ebb",
+    "prior_terminal_slack_ts": "1789262199.620479",
+    "latest_delta_slack_ts": "1789272333.052199",
+    "commons_claim_slack_ts": "1789272333.052199",
+    "source_prs": [
+      13541
+    ],
+    "latest_source_merge_sha": "0a1457fc707b3adc1ebe9b733fc5fd2e72f1091a",
+    "remote_branches_observed": 3021,
+    "remote_branch_set_digest_sha256": "c6ed7b5d3e964ae88b250b9d3bddc3e74d0f5d3d67b8ffb7011aebf8db1f5541",
+    "automations": "prior enabled-state watermark retained; no material lifecycle delta observed",
+    "openai_reset": "No newly verified reset; current meter not directly observed and no banked reset activated."
+  },
+  "projection": {
+    "resources": 95,
+    "producing": 67,
+    "inventory_records": 57
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789272333052199",
+    "source_pr": "https://github.com/woahwhattheheck/commons/pull/13541",
+    "source_packet": "https://github.com/woahwhattheheck/commons/blob/bfddf33e924ee684cf76964b770eafbc51f89ebb/revenue/grants/OSFF_FIRMWARE_SBOM_CONFORMANCE_KIT_2026.md",
+    "official_banked_reset_help": "https://help.openai.com/en/articles/20001498-how-banked-codex-resets-work",
+    "prior_terminal_receipt": "p/codex-titan-v5-route-block-b-resource-activation-20260913-01.md"
+  },
+  "non_claims": [
+    "No source packet, sponsor, upstream specification, firmware, customer, provider, account, payment, grant or peer-owned path was changed by this activation.",
+    "No Claude or Cursor session was contacted, launched, assigned as tester/verifier/reviewer, or treated as landing authority.",
+    "No sponsor contact, email, identity, legal/signing, application submission, implementation, deployment, provider, quota, banked-reset, purchased-reset, spend, device or customer operation occurred.",
+    "No sponsor acceptance, award, delivery, payment, settlement, booked revenue or cash was claimed."
+  ],
+  "titan": "NOT_WRITTEN"
+}

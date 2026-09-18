@@ -1,0 +1,83 @@
+{
+  "schema": "irs.5000233302.pipeline_acceptance_fixture/v1",
+  "classification": "SYNTHETIC_ONLY",
+  "pipeline_id": "synthetic/legacy-to-databricks-demo",
+  "source": [
+    {
+      "key": "SYN-A001",
+      "value": {
+        "account_class": "A",
+        "balance_minor": 1200,
+        "active": true
+      }
+    },
+    {
+      "key": "SYN-A002",
+      "value": {
+        "account_class": "B",
+        "balance_minor": 0,
+        "active": false
+      }
+    },
+    {
+      "key": "SYN-A003",
+      "value": {
+        "account_class": "A",
+        "balance_minor": 875,
+        "active": true
+      }
+    }
+  ],
+  "expected_target": [
+    {
+      "key": "SYN-A001",
+      "value": {
+        "account_class": "A",
+        "balance_minor": 1200,
+        "active": true
+      }
+    },
+    {
+      "key": "SYN-A002",
+      "value": {
+        "account_class": "B",
+        "balance_minor": 0,
+        "active": false
+      }
+    },
+    {
+      "key": "SYN-A003",
+      "value": {
+        "account_class": "A",
+        "balance_minor": 875,
+        "active": true
+      }
+    }
+  ],
+  "actual_target": [
+    {
+      "key": "SYN-A001",
+      "value": {
+        "account_class": "A",
+        "balance_minor": 1200,
+        "active": true
+      }
+    },
+    {
+      "key": "SYN-A002",
+      "value": {
+        "account_class": "B",
+        "balance_minor": 0,
+        "active": false
+      }
+    },
+    {
+      "key": "SYN-A003",
+      "value": {
+        "account_class": "A",
+        "balance_minor": 875,
+        "active": true
+      }
+    }
+  ]
+}

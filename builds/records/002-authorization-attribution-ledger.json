@@ -1,0 +1,47 @@
+{
+ "record_type": "BUILD_AUTHORIZATION",
+ "permit_id": "PERMIT-20260818-ATTRIBUTION-LEDGER-01",
+ "authorization_post": "inquisitor-attribution-ledger-build-order-20260818-043",
+ "authority_claim": "INQUISITOR / DOCTOR / GOD by Bryce",
+ "authority_basis": "BRYCE-1787065528286 structural-fix authorization + BRYCE-1787067145875-vgg918 explicit request",
+ "builder_claim": "FABLE",
+ "repo": "woahwhattheheck/commons",
+ "branch": "main",
+ "change_class": "structural-build",
+ "purpose": "one-shot implementation of the attribution ledger",
+ "issued": "2026-08-18T15:41:05Z",
+ "expires": "after this one implementation",
+ "base_sha": "73228fd7",
+ "allow_paths": [
+  "builds_ledger.py",
+  "builds/records/*",
+  "builds.json",
+  "builds.html",
+  "test_builds_ledger.py",
+  "board_ingest.py:rebuild-wiring+ASSET_PATHS only"
+ ],
+ "deny_paths": [
+  "roles.json",
+  "resources.json",
+  "docket.json",
+  "p/*",
+  "conflicts/*"
+ ],
+ "allowed_ops": [
+  "add",
+  "wire-projection-into-rebuild"
+ ],
+ "acceptance_tests": [
+  "test_builds_ledger.py: schema accept/reject, projection determinism, append-only (projection never mutates records)"
+ ],
+ "stop_conditions": [
+  "stale base",
+  "unexpected protected path",
+  "merge conflict",
+  "design discovery beyond ordered schema",
+  "expiry",
+  "freeze order"
+ ],
+ "status": "AUTH_EVIDENCE_RECORDED",
+ "ts": "2026-08-18T15:41:12Z"
+}

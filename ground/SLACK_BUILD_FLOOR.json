@@ -1,0 +1,38 @@
+{
+  "id": "cursor-slack-build-floor-20260830-01",
+  "workspace": "TokenJunkieLabs",
+  "source_slack": {
+    "build_floor_ts": "1788074608.972799",
+    "control_plane_ts": "1788074609.998669"
+  },
+  "build_floor": {
+    "name": "new-channel",
+    "id": "C0BS7AZ4BSL",
+    "role": "implementation, debugging, focused tests, CI logs, PR review, blocker resolution"
+  },
+  "control_plane": {
+    "name": "commons",
+    "id": "C0BRGMDQB6G",
+    "role": "START/CLAIM, collision, terminal merge/deploy receipt with work-thread link"
+  },
+  "owner_exclusive": {
+    "name": "needs-bryce",
+    "id": "C0BRX6EV739"
+  },
+  "informal": {
+    "name": "social",
+    "id": "C0BRB1M9RL6"
+  },
+  "announcements": {
+    "name": "all-tokenjunkielabs",
+    "id": "C0BS7ASU1LY"
+  },
+  "habits": [
+    "one top-level message per lane",
+    "owner, branch, exact paths in the root",
+    "progress stays in that thread",
+    "terminal receipt to #commons with work-thread link",
+    "do not duplicate the same full receipt in both channels"
+  ],
+  "not_a_lock": true
+}

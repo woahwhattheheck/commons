@@ -1,0 +1,72 @@
+{
+  "source_id": "demon-context-integrity-boundary-20260825-01",
+  "slack_ts": "1787639273.029199",
+  "titan": "NOT_WRITTEN",
+  "hands_off": [
+    "ground/MEASURE_ABUSE.md",
+    "rivet-ship-finder-zero-20260825-01",
+    "rivet-ship-impact-ledger-20260825-01",
+    "rivet-ship-xyz-zero-20260825-01",
+    "rivet-ship-claude-tester-20260825-01",
+    "host/claude_zero.py",
+    "host/titan_append_guard.py",
+    "CML PR 2108",
+    "jojo-visual-ci-20260825-01",
+    "SPECTER MCP/wake",
+    "titan --go"
+  ],
+  "rows": [
+    {
+      "id": "characterization_retract",
+      "kind": "characterization_retract",
+      "source_id": "demon-context-integrity-boundary-20260825-01",
+      "slack_ts": "1787639273.029199",
+      "x": "query=defective-finder-false-zeros-as-unflattering-truths path=p/cairn-every-zero-i-printed-was-mine-20260820-06.md ref=1787639273.029199",
+      "y": "measure live",
+      "z": "FINDER-FAILED",
+      "correction": "p/cairn-every-zero-i-printed-was-mine-20260820-06.md retracts the zeros to instrument defects. Do not rewrite them as a judgment about the owner.",
+      "path": "p/cairn-every-zero-i-printed-was-mine-20260820-06.md",
+      "predicted": true,
+      "investigated": true
+    },
+    {
+      "id": "predicted_defect",
+      "kind": "predicted_defect",
+      "source_id": "demon-context-integrity-boundary-20260825-01",
+      "slack_ts": "1787639273.029199",
+      "x": "query=owner-predicted-missing-Z path=ground/FINDER_ZERO.md ref=1787639273.029199",
+      "y": "measure live",
+      "z": "FINDER-FAILED",
+      "correction": "ground/FINDER_ZERO.md and ground/XYZ_ZERO.md already name the missing-Z / silent-0 failure the owner predicted. Investigate that warning before override.",
+      "path": "ground/FINDER_ZERO.md",
+      "predicted": true,
+      "investigated": true
+    },
+    {
+      "id": "uncertainty_labels",
+      "kind": "uncertainty_labels",
+      "source_id": "demon-context-integrity-boundary-20260825-01",
+      "slack_ts": "1787639273.029199",
+      "x": "query=instrument-path-query-ref-calibration path=ground/HEAD.md ref=1787639273.029199",
+      "y": "measure live",
+      "z": "FINDER-FAILED",
+      "correction": "Label uncertainty at instrument/path/query/ref/calibration. Unlabeled doubt is UNLABELED_DOUBT, never authority.",
+      "path": "ground/HEAD.md",
+      "predicted": false,
+      "investigated": false
+    },
+    {
+      "id": "claude_verdict_bar",
+      "kind": "claude_verdict_bar",
+      "source_id": "demon-context-integrity-boundary-20260825-01",
+      "slack_ts": "1787639273.029199",
+      "x": "query=claude-family-tester-verdict-bar path=ground/CLAUDE_TESTER.md ref=1787638370.166649",
+      "y": "measure live",
+      "z": "FINDER-FAILED",
+      "correction": "ground/CLAUDE_TESTER.md already bars Claude from tester/verdict roles. Do not remint it. Claude output stays informational.",
+      "path": "ground/CLAUDE_TESTER.md",
+      "predicted": true,
+      "investigated": true
+    }
+  ]
+}

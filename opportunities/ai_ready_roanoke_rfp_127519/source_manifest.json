@@ -1,0 +1,30 @@
+{
+  "schema": "commons.ai-ready-roanoke-source-manifest/v1",
+  "opportunity_id": "RFP-127519",
+  "checked_at": "2026-09-13T14:20:00Z",
+  "sources": [
+    {
+      "source_id": "rfp-public-mirror-20260831",
+      "document": "AI Ready Roanoke Market Demand, Feasibility Study, and Implementation Recommendations",
+      "authority": "BUYER_DOCUMENT_MIRROR",
+      "buyer_origin": "Botetourt County Economic Development Authority",
+      "transport": "https://govtribe.com/file/government-file/ai-ready-roanoke-rfp-final-dot-pdf",
+      "content_sha256": null,
+      "note": "Buyer-originated RFP content is publicly readable through mirror transport, but exact buyer-hosted PDF bytes were not independently acquired by this carrier. Sufficient for pursuit discovery/teaming architecture; insufficient for submission-ready source authority."
+    },
+    {
+      "source_id": "addendum-1-public-mirror-20260901",
+      "document": "RFP Addendum No. 1",
+      "authority": "BUYER_DOCUMENT_MIRROR",
+      "buyer_origin": "Botetourt County Economic Development Authority",
+      "transport": "https://govtribe.com/file/government-file/rfp-addendum-no-dot-1-dot-pdf-1",
+      "content_sha256": null,
+      "note": "Buyer-originated addendum transported by public mirror; moves questions to 2026-09-25 23:59 ET and proposals to 2026-10-02 23:59 ET. Exact official buyer-hosted bytes remain a submission gate."
+    }
+  ],
+  "current_deadlines": {
+    "questions_due_local": "2026-09-25T23:59:00-04:00",
+    "proposal_due_local": "2026-10-02T23:59:00-04:00",
+    "deadline_authority_source_id": "addendum-1-public-mirror-20260901"
+  }
+}

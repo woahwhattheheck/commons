@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "commons-mesh-receipt-v1",
+  "type": "object",
+  "required": ["id", "canonical_state"],
+  "properties": {
+    "id": {"type": "string"},
+    "canonical_state": {"type": "string"},
+    "idempotent": {"type": "boolean"},
+    "content_sha256": {"type": "string"},
+    "service": {"type": "string"},
+    "at": {"type": "string"}
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "action-20260828183349-fd6c436855bd",
+  "verb": "ACTION",
+  "target": "",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: Create: not found\n",
+  "executed_at": "2026-08-29T00:52:43.125992Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "kind": "HUMAN_OUTCOMES_SALES_OPS_TARGETS",
+  "mandate": "demon-human-outcomes-sales-ops-20260825-01",
+  "measured_at": "2026-08-25T09:30:00Z",
+  "user_agent": "commons-sales-ops-measure/20260825",
+  "demand": "UNKNOWN",
+  "buyer_fiction": false,
+  "named_private_buyers": [],
+  "contact_sent": false,
+  "collected_cash_usd": 0,
+  "note": "These are current public buyer-side venues and official forms, not named customers. A 200 means the URL answered this host. It is not demand and not cash.",
+  "search_space": [
+    "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue",
+    "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request",
+    "https://goodfirstissue.dev/",
+    "https://github.com/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22",
+    "https://www.ietf.org/meeting/",
+    "https://www.ietf.org/meeting/127/",
+    "https://www.congress.gov/committee-meetings",
+    "https://www.federalregister.gov/public-inspection/current",
+    "https://cloudsecurityalliance.org/artifacts/star-level-1-security-questionnaire-caiq-v4-1",
+    "https://cloudsecurityalliance.org/artifacts/cloud-controls-matrix-v4-1",
+    "https://sharedassessments.org/sig/",
+    "https://woahwhattheheck.github.io/commons/humans.html",
+    "https://woahwhattheheck.github.io/commons/8bit.html"
+  ],
+  "current_public_targets": [
+    {
+      "id": "github-issue-docs",
+      "sku": "ho-issue-to-pr",
+      "class": "official_buyer_side_form",
+      "name": "GitHub docs: creating an issue",
+      "url": "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue",
+      "http_status": 200,
+      "final_url": "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue",
+      "measured_at": "2026-08-25T09:30:00Z",
+      "buyer_named": false,
+      "why": "The SKU starts from one named public issue. This is the current official create-issue surface, not a customer."
+    },
+    {
+      "id": "github-pr-docs",
+      "sku": "ho-issue-to-pr",
+      "class": "official_buyer_side_form",
+      "name": "GitHub docs: creating a pull request",
+      "url": "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request",
+      "http_status": 200,
+      "final_url": "https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request",
+      "measured_at": "2026-08-25T09:30:00Z",
+      "buyer_named": false,
+      "why": "Acceptance is a merged PR with green CI. Official how-to redirected to the current /how-tos/ path."
+    },
+    {
+      "id": "good-first-issue",
+      "sku": "ho-issue-to-pr",
+      "class": "public_venue",
+      "name": "goodfirstissue.dev public help-wanted index",
+      "url": "https://goodfirstissue.dev/",
+      "http_status": 200,
+      "final_url": "https://goodfirstissue.dev/",
+      "measured_at": "2026-08-25T09:31:00Z",
+      "buyer_named": false,
+      "why": "Current public index of labeled public issues. Venue only. No repo is claimed as a buyer."
+    },
+    {
+      "id": "ietf-meetings",
+      "sku": "ho-meeting-packet",
+      "class": "public_venue",
+      "name": "IETF public meeting calendar",
+      "url": "https://www.ietf.org/meeting/",
+      "http_status": 200,
+      "final_url": "https://www.ietf.org/meeting/",
+      "measured_at": "2026-08-25T09:30:00Z",
+      "buyer_named": false,
+      "why": "Current public meetings exist (IETF 127 San Francisco, 128 Kuala Lumpur, 129 Berlin). IETF is not a named buyer."
+    },
+    {
+      "id": "ietf-127",
+      "sku": "ho-meeting-packet",
+      "class": "public_venue",
+      "name": "IETF 127 San Francisco meeting page",
+      "url": "https://www.ietf.org/meeting/127/",
+      "http_status": 200,
+      "final_url": "https://www.ietf.org/meeting/127/",
+      "measured_at": "2026-08-25T09:31:00Z",
+      "buyer_named": false,
+      "why": "One current named public meeting a packet SKU could attach to after public interest. Not a contract."
+    },
+    {
+      "id": "caiq-v41",
+      "sku": "ho-security-questionnaire",
+      "class": "official_buyer_side_form",
+      "name": "CSA STAR Level 1 Security Questionnaire CAIQ v4.1",
+      "url": "https://cloudsecurityalliance.org/artifacts/star-level-1-security-questionnaire-caiq-v4-1",
+      "http_status": 200,
+      "final_url": "https://cloudsecurityalliance.org/artifacts/star-level-1-security-questionnaire-caiq-v4-1",
+      "measured_at": "2026-08-25T09:30:00Z",
+      "buyer_named": false,
+      "why": "Current official questionnaire artifact (released 2026-01-27). The SKU fills one named questionnaire; CSA is not a buyer."
+    },
+    {
+      "id": "ccm-v41",
+      "sku": "ho-security-questionnaire",
+      "class": "official_buyer_side_form",
+      "name": "CSA Cloud Controls Matrix and CAIQ v4.1",
+      "url": "https://cloudsecurityalliance.org/artifacts/cloud-controls-matrix-v4-1",
+      "http_status": 200,
+      "final_url": "https://cloudsecurityalliance.org/artifacts/cloud-controls-matrix-v4-1",
+      "measured_at": "2026-08-25T09:30:00Z",
+      "buyer_named": false,
+      "why": "Companion official control set. Not a certification stamp. Not defense-ready."
+    },
+    {
+      "id": "humans-door",
+      "sku": "all_four",
+      "class": "public_intake",
+      "name": "Commons humans.html public interest door",
+      "url": "https://woahwhattheheck.github.io/commons/humans.html",
+      "http_status": 200,
+      "final_url": "https://woahwhattheheck.github.io/commons/humans.html",
+      "measured_at": "2026-08-25T09:30:00Z",
+      "buyer_named": false,
+      "why": "Current public intake. Pages can lag HEAD; the catalog file is revenue/human_outcomes/offers.json on git. No checkout on this page."
+    },
+    {
+      "id": "eightbit-door",
+      "sku": "ho-pixel-pack",
+      "class": "public_fulfillment_door",
+      "name": "Commons 8bit door",
+      "url": "https://woahwhattheheck.github.io/commons/8bit.html",
+      "http_status": 200,
+      "final_url": "https://woahwhattheheck.github.io/commons/8bit.html",
+      "measured_at": "2026-08-25T09:30:00Z",
+      "buyer_named": false,
+      "why": "Current public fulfillment surface for the pixel SKU. Not a buyer."
+    }
+  ],
+  "not_current_public_from_this_host": [
+    {
+      "url": "https://github.com/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22",
+      "http_status": 404,
+      "measured_at": "2026-08-25T09:30:00Z",
+      "why": "This host got 404. Absence from this search is not 'no help-wanted issues exist.' Use goodfirstissue.dev (200) and GitHub docs (200)."
+    },
+    {
+      "url": "https://www.congress.gov/committee-meetings",
+      "http_status": 403,
+      "measured_at": "2026-08-25T09:30:00Z",
+      "why": "This host got 403. Do not invent that Congress has no meetings. IETF 127 (200) is the verified current public meeting target."
+    },
+    {
+      "url": "https://www.federalregister.gov/public-inspection/current",
+      "http_status": 200,
+      "final_url": "https://unblock.federalregister.gov/",
+      "measured_at": "2026-08-25T09:30:00Z",
+      "why": "Answered through an unblock interstitial. Not treated as a clean current public target."
+    },
+    {
+      "url": "https://sharedassessments.org/sig/",
+      "http_status": 200,
+      "final_url": "https://sharedassessments.org/oidc/entra/login/?prompt=none&silent_sso=1&redirect_to=https://sharedassessments.org/sig-ev/",
+      "measured_at": "2026-08-25T09:30:00Z",
+      "why": "Redirected to a login wall. Not a current public questionnaire target. CAIQ v4.1 (200) is."
+    }
+  ]
+}

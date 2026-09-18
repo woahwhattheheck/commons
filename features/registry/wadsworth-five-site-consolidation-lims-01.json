@@ -1,0 +1,35 @@
+{
+  "added": "2026-08-31",
+  "capability": "Wadsworth five-site consolidation namespace and migration-readiness LIMS: a 2,000-bundle synthetic fixture classifies 1,700 READY and 300 predetermined HOLD (100 duplicate namespace IDs, 80 method/version conflicts, 60 broken references, 60 facility/custody mismatches), maps every valid accession/sample/test/result/report/attachment/method/custody object once with originating-site and source hashes, keeps orphans and duplicates at zero, replays with no new mappings, rolls the simulated Harriman store back to the exact baseline, and blocks release without a named human. Adapters stay read-only/simulated. No public-health, GMP, regulatory, clinical, or diagnostic decision.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "wadsworth_five_site_consolidation_lims.py",
+    "test_wadsworth_five_site_consolidation_lims.py",
+    "wadsworth-five-site-consolidation-lims.html",
+    "revenue/wadsworth_five_site_consolidation_lims/contract.json",
+    "p/wadsworth-five-site-consolidation-lims-01.md",
+    "features/registry/wadsworth-five-site-consolidation-lims-01.json"
+  ],
+  "dependencies": [],
+  "id": "wadsworth-five-site-consolidation-lims-01",
+  "name": "Wadsworth five-site consolidation LIMS",
+  "next_gap": "Buyer-owned de-identified five-site master-data exports and Harriman namespace schema after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "wadsworth-five-site-consolidation-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "wadsworth-five-site-consolidation-lims.html",
+    "revenue/wadsworth_five_site_consolidation_lims/contract.json",
+    "p/wadsworth-five-site-consolidation-lims-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_wadsworth_five_site_consolidation_lims.py",
+    "wadsworth_five_site_consolidation_lims.py"
+  ]
+}

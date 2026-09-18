@@ -1,0 +1,14 @@
+--- a/titan_runtime.py
++++ b/titan_runtime.py
+@@ -441,7 +441,10 @@
+         load('sell_priority', source/'sell_priority.py', cache=True)
+         pressure = load('_titan_pressure_priority', source/'pressure_priority.py', cache=True)
+         mechanics = load('_titan_pressure_mechanics', HERE/'mechanics.py', cache=True)
+-        result = pressure.transform(selected, obs, cfg, quote=mechanics.market_price)
++        from stockless_pressure import transform as stockless_transform
++        from scheduler import post_units
++        result = stockless_transform(selected, obs, cfg, pressure=pressure,
++                                     post_units=post_units, quote=mechanics.market_price)
+         self.diagnostics['market_pressure'] = {
+             'enabled': True,
+             'changed': result != selected,

@@ -1,0 +1,13 @@
+{
+  "id": "action-20260916180502-a055758371e3",
+  "verb": "GET",
+  "target": "stripe",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: GET: not found\n",
+  "executed_at": "2026-09-17T07:54:37.120788Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

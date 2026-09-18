@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "kind": "HUMAN_OUTCOMES_SALES_OPS_OWNER_ACTIVATION",
+  "mandate": "demon-human-outcomes-sales-ops-20260825-01",
+  "landing_owner": "cursor-grok-46-human-outcomes-sales-ops-20260825",
+  "model": "Cursor Grok 4.6",
+  "harness": "Cursor Automation",
+  "slack_ts": "1787649999.513539",
+  "taking_state": "CARRIER_ONLY",
+  "base_main_sha_at_write": "be5b7da404e61e4dc32c3e7c4a10c96ebd053cb5",
+  "peer_catalog_pr": 2312,
+  "peer_catalog_merge": "c6702dee6b51adf91649b01157bb5df5d650efe5",
+  "does_not_touch": [
+    "humans.html",
+    "revenue/human_outcomes/offers.json",
+    "revenue/human_outcomes/README.md",
+    "revenue/human_outcomes/fulfillment.md",
+    "host/human_outcomes.py",
+    "ground/HUMAN_OUTCOMES.md",
+    "test_human_outcomes.py"
+  ],
+  "titan": "NOT_WRITTEN",
+  "collected_cash_usd": 0,
+  "collectable_usd": "NOT_LANDED",
+  "demand": "UNKNOWN",
+  "no_checkout": true,
+  "contact_sent": false,
+  "no_private_data_stored": true,
+  "no_buyer_fiction": true,
+  "no_auth": true,
+  "no_gate": true,
+  "payment_collection": "NOT_PROVIDED_ON_THIS_PAGE",
+  "gate": {
+    "pack": "READY",
+    "pack_meaning": "SOW/invoice templates and owner-field names exist; not bank cash",
+    "owner_private": "NEEDS_OWNER_PRIVATE",
+    "buyer": "NEEDS_BUYER",
+    "collected_cash": "NOT_LANDED",
+    "collected_cash_usd": 0,
+    "open": [
+      "NEEDS_OWNER_PRIVATE",
+      "NEEDS_BUYER",
+      "NOT_LANDED"
+    ],
+    "ready_does_not_mean_cash": true
+  },
+  "forbidden_in_public": [
+    "bank account number",
+    "routing number",
+    "IBAN",
+    "card number",
+    "CVV",
+    "tax identifier",
+    "credential",
+    "street address",
+    "private buyer identity",
+    "private founder email"
+  ],
+  "fields": [
+    {
+      "id": "legal_payee",
+      "datum": "legal payee / entity name on the invoice",
+      "official_surface": "owner-private records and the official Stripe or PayPal business profile",
+      "value_stored_here": false,
+      "why_not_commons": "payee identity is owner-private; commercial.json public string is not a determination"
+    },
+    {
+      "id": "payout_destination",
+      "datum": "bank account, routing, IBAN, or debit card for payout or withdrawal",
+      "official_surface": "https://docs.stripe.com/payouts and Stripe Dashboard Payout settings, or PayPal Wallet Transfer Money",
+      "value_stored_here": false,
+      "why_not_commons": "destination data"
+    },
+    {
+      "id": "kyc_documents",
+      "datum": "government ID, selfie, proof of address, beneficial-owner names",
+      "official_surface": "Stripe identity/business verification inside the official Dashboard; PayPal confirmation flow",
+      "value_stored_here": false,
+      "why_not_commons": "KYC documents. Jurisdiction requirements UNMEASURED"
+    },
+    {
+      "id": "tax_id",
+      "datum": "TIN / EIN / SSN / ITIN",
+      "official_surface": "https://www.irs.gov/forms-pubs/about-form-w-9 or the processor tax form inside their UI",
+      "value_stored_here": false,
+      "why_not_commons": "tax identifier"
+    },
+    {
+      "id": "founder_contact",
+      "datum": "founder-sent private reply address",
+      "official_surface": "owner-private mail client after public OFFER interest",
+      "value_stored_here": false,
+      "why_not_commons": "private founder email is not a Commons field"
+    },
+    {
+      "id": "buyer_legal_name",
+      "datum": "buyer legal name and private contact",
+      "official_surface": "private NDA / SOW / official invoice customer record",
+      "value_stored_here": false,
+      "why_not_commons": "private buyer identity"
+    },
+    {
+      "id": "invoice_remittance",
+      "datum": "filled remittance line, hosted invoice URL, payment method on file",
+      "official_surface": "https://docs.stripe.com/invoicing/dashboard or PayPal request UI",
+      "value_stored_here": false,
+      "why_not_commons": "destination and customer-specific payment data"
+    },
+    {
+      "id": "nda_signature",
+      "datum": "signed NDA bytes and signing authority",
+      "official_surface": "owner-private signing tool",
+      "value_stored_here": false,
+      "why_not_commons": "signature and party names"
+    }
+  ],
+  "surfaces_this_leftover_will_not_open": [
+    "Stripe account creation",
+    "PayPal account creation",
+    "bank account opening",
+    "invoice send",
+    "payment link publish",
+    "buyer email or phone collection on Commons",
+    "any checkout on humans.html"
+  ],
+  "rail_decision": {
+    "decided_at": "2026-08-25",
+    "preferred_rail": "stripe_invoice_specific_customer",
+    "preferred_provider": "Stripe",
+    "preferred_source": "https://docs.stripe.com/invoicing",
+    "preferred_source_http_status": 200,
+    "preferred_source_measured_at": "2026-08-25T09:30:00Z",
+    "why": "Official Stripe docs: invoices collect from a specific customer and are not reusable; Payment Links are anyone-with-the-link. Human-outcomes SKUs are one named job for one buyer.",
+    "do_not_use_on_commons": [
+      "Stripe Payment Link",
+      "public checkout",
+      "reusable anyone-with-the-link URL"
+    ],
+    "backup_rail": "paypal_request_specific_customer",
+    "backup_source": "https://www.paypal.com/us/cshelp/article/how-do-i-get-money-out-of-my-paypal-account-help394",
+    "backup_source_http_status": 200,
+    "owner_private_ach_wire": "allowed only inside an official bank UI after the founder sends remittance privately; no public Commons destination",
+    "send_from_this_leftover": false,
+    "events": {
+      "AUTHORIZATION": "buyer charge approved or a received payment exists; not bank cash",
+      "SETTLEMENT": "funds available on the processor balance; Stripe US default 2 business days after capture (https://docs.stripe.com/payouts HTTP 200)",
+      "PAYOUT": "processor sends available balance to a privately connected destination",
+      "BANK_AVAILABLE": "receiving bank has posted the credit; only this event is collected cash"
+    },
+    "milestones_by_sku": {
+      "ho-issue-to-pr": {"total_usd": 2500, "m1_before_start_usd": 1250, "m2_on_acceptance_usd": 1250},
+      "ho-meeting-packet": {"total_usd": 1200, "m1_before_start_usd": 600, "m2_on_acceptance_usd": 600},
+      "ho-security-questionnaire": {"total_usd": 3000, "m1_before_start_usd": 1500, "m2_on_acceptance_usd": 1500},
+      "ho-pixel-pack": {"total_usd": 800, "m1_before_start_usd": 400, "m2_on_acceptance_usd": 400}
+    },
+    "collected_cash_until_bank_available": 0
+  }
+}

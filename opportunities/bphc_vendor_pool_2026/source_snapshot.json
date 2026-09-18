@@ -1,0 +1,95 @@
+{
+  "authority": {
+    "award_or_revenue_claim_authorized": false,
+    "contract_acceptance_authorized": false,
+    "external_contact_authorized": false,
+    "legal_certification_authorized": false,
+    "pricing_commitment_authorized": false,
+    "qualification_assertion_authorized": false,
+    "reference_nomination_authorized": false,
+    "submission_authorized": false
+  },
+  "award_conditions": [
+    "BPHC contract execution before work begins",
+    "Boston Living Wage Ordinance compliance",
+    "Federal SAM exclusion/debarment checks"
+  ],
+  "buyer": "Boston Public Health Commission",
+  "checked_at": "2026-09-13T10:30:00Z",
+  "format": {
+    "file_type": "PDF",
+    "font": "Calibri 12 point",
+    "margins": "one inch",
+    "page_limits": {
+      "dei_approach": 1,
+      "experience_and_qualifications": 2,
+      "organizational_overview_and_mission": 1,
+      "pricing": 1,
+      "selected_track_answers_per_track": 5,
+      "team_and_staffing": 2
+    },
+    "references_outside_page_limit": true,
+    "spacing": "single"
+  },
+  "inclusion_guarantees_work": false,
+  "listing_url": "https://www.boston.gov/bid-listings",
+  "mandatory_vendor_qualifications": [
+    "Expertise and experience in the selected service track(s)",
+    "Previous experience working on public health initiatives, nonprofit projects, or government-funded programs",
+    "Demonstrated ability to manage projects and deliverables effectively",
+    "Two professional references from similar engagements"
+  ],
+  "opportunity_id": "BPHC_CONSULTANT_QUALIFIED_VENDOR_POOL_2026",
+  "pool_term_max_years": 5,
+  "posted_date": "2026-09-01",
+  "preferences": [
+    "Knowledge of or experience with Boston communities",
+    "Online portal or electronic system for submitting and tracking service requests"
+  ],
+  "proposal_due_date": "2026-09-30",
+  "proposal_due_source_text": "Wednesday September 30, 2026 at 5:00 PM EST",
+  "questions_due_source_text": "September 10, 2026 at 5:00 PM",
+  "rfp_pdf_bytes_locally_acquired": false,
+  "rfp_pdf_sha256": null,
+  "rfp_pdf_url": "https://search.boston.gov/sites/default/files/file/2026/09/BPHC_Vendor%20Pool%20RFP%20August%2028th%20Clean%20Final.pdf",
+  "schema": "bphc.vendor_pool.source_snapshot/v1",
+  "source_ambiguities": [
+    "The RFP enumerates four tracks but one instruction says vendors may select one, two, or all three tracks. Owner review is required before interpreting that inconsistency.",
+    "The proposal deadline is printed as 5:00 PM EST even though Boston observes daylight time in September; this gate preserves the source wording and requires owner review before interpreting the deadline instant."
+  ],
+  "submission_email": "RFR@bphc.org",
+  "submission_subject_template": "\"Company Name\" \u2013 Master Vendor Pool",
+  "title": "Consultant Qualified Vendor Pool \u2014 Communications, Research & Evaluation, Strategy & Planning and Grant Writing",
+  "track_questions": {
+    "Communications": [
+      "Describe experience developing and implementing communication strategies.",
+      "Provide examples of relevant communication projects and measurable outcomes or metrics.",
+      "Describe experience communicating with diverse audiences and communities.",
+      "Describe how communication effectiveness is evaluated."
+    ],
+    "Grant Writing": [
+      "Describe experience developing competitive grant applications and relevant funders.",
+      "Provide examples of successful or relevant grant applications, including amount and outcome where supportable.",
+      "Describe the approach to collaborating with program and subject-matter staff.",
+      "Describe how overlapping grant deadlines and priorities are managed."
+    ],
+    "Research, Evaluation & Assessment": [
+      "Describe experience conducting evaluation or public health research.",
+      "Describe research and evaluation methods used.",
+      "Provide examples of similar projects and results.",
+      "Describe how findings are communicated or disseminated to stakeholders."
+    ],
+    "Strategy & Planning": [
+      "Describe experience leading strategic planning processes.",
+      "Provide examples of strategic plans or similar planning engagements.",
+      "Describe the approach to stakeholder engagement.",
+      "Describe how implementation and progress are monitored."
+    ]
+  },
+  "tracks": [
+    "Communications",
+    "Research, Evaluation & Assessment",
+    "Strategy & Planning",
+    "Grant Writing"
+  ]
+}

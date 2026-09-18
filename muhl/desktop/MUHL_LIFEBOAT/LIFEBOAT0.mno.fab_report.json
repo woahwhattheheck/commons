@@ -1,0 +1,45 @@
+{
+  "action": "nring_fab",
+  "kind": "lifeboat0",
+  "path": "C:\\Users\\lucys\\Desktop\\MUHL_LIFEBOAT\\LIFEBOAT0.mno",
+  "len": 6171,
+  "sha256": "f2933b4ef3efa78cc169f74b3127048ec2a1ade5d5818680806c838ecbbce442",
+  "n_gate": 76,
+  "n_wire": 78,
+  "depth": 5,
+  "magic": "LIFEBT01",
+  "n_in": 1,
+  "n_rings": 1,
+  "growth_base": 2074,
+  "payload_off": 2075,
+  "bank": 4096,
+  "cell_base": 166,
+  "inj_base": 165,
+  "clock": 98,
+  "ring0": 99,
+  "cases": [
+    [
+      "fire_take_inject",
+      true
+    ],
+    [
+      "dark_hold",
+      true
+    ],
+    [
+      "one_sense_DC",
+      true
+    ],
+    [
+      "one_writer",
+      true
+    ]
+  ],
+  "status": "WROTE",
+  "protected": {
+    "C:\\Users\\lucys\\Desktop\\MUHL_COMMONS\\commons.mno": "2b9ba52141587a1ffec8a1b04c3bc6706363e06426d09271e8a7cdbd8afddafa",
+    "C:\\Users\\lucys\\Desktop\\MUHL_COMMONS\\table_mail.mno": "c9fd3dedbf417d820c2a0e8b6e30278144d205f1068b36b746cea1614c68f62a",
+    "C:\\Users\\lucys\\Desktop\\MUHLNICKEL_ROOKERY\\ROOKERY0.mno": "1cf1a9f3c1649b82d19fc78440d468483d5d4bd3bff49a3da1cc0179a3f4911d"
+  },
+  "note": "commons/table_mail/ROOKERY0 untouched. Payload bank empty."
+}

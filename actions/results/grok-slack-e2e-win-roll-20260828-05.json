@@ -1,0 +1,13 @@
+{
+  "id": "grok-slack-e2e-win-roll-20260828-05",
+  "verb": "BUILD",
+  "target": "existing-windows-commons-checkout",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: ACTION: not found\n/bin/sh: 2: target:: not found\n/bin/sh: 4: Update: not found\n/bin/sh: 6: PR: not found\n/bin/sh: 7: Blobs:: not found\n/bin/sh: 7: commons_mcp.py: not found\n/bin/sh: 7: .github/workflows/job-watchdog.yml: Permission denied\nFrom https://github.com/woahwhattheheck/commons\n * branch                main       -> FETCH_HEAD\n   be20e0be8..bfe9fa949  main       -> origin/main\nmerge: origin/main. - not something we can merge\n/bin/sh: 10: Restart: not found\n/bin/sh: 12: Prove: not found\n/bin/sh: 13: Never: not found\n/bin/sh: 15: Write: not found\n/bin/sh: 17: Does: not found\n",
+  "executed_at": "2026-08-28T23:00:02.423161Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

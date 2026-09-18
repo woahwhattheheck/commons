@@ -1,0 +1,29 @@
+--- a/revenue/kaggriculture/cloud-execution-lab/scheduler.py
++++ b/revenue/kaggriculture/cloud-execution-lab/scheduler.py
+@@ -63,6 +63,26 @@
+         self.joint=lru_cache(maxsize=8192)(self._joint)
+ 
+     def _single(self, inv, quantity):
++        # Integer market states have exactly representable unit increments.
++        # Accumulate the same float receipts and admitted supply in one pass;
++        # unusual numeric inputs keep the original receipt-helper behavior below.
++        if (type(inv) is int and type(quantity) is int and quantity >= 0
++                and abs(inv) + quantity <= 2**53):
++            cash = 0.0
++            for index in range(quantity):
++                price = float(self.quote(inv))
++                if not math.isfinite(price):
++                    raise ValueError('Non-finite economic input')
++                if (price == 1 and cash.is_integer()
++                        and 0 <= cash <= 2**53 - (quantity - index)):
++                    # At the floor no unit enters market inventory. Remaining
++                    # unit receipts are exact integer additions in this range.
++                    cash += quantity - index
++                    break
++                cash += price
++                if price > 1:
++                    inv += 1
++            return int(cash), inv
+         # Reuse SORREL's repaired receipt interface; admission is derived from
+         # the same exact quote condition, not raw quantity added as supply.
+         cash=receipt_math.sale_receipts([{'step':0,'quantity':quantity,'product':self.item}],lambda _p,_t:inv,lambda _p,i:self.quote(int(i)),0)

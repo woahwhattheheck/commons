@@ -1,0 +1,12 @@
+1
+00:00:00,000 --> 00:00:10,000
+Hook: show the finished result before the setup.
+
+2
+00:00:10,000 --> 00:00:20,000
+Cut the dead setup. Keep only the action the viewer needs.
+
+3
+00:00:20,000 --> 00:00:30,000
+End on the next useful step, not a generic sign-off.
+

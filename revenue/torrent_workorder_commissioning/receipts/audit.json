@@ -1,0 +1,57 @@
+{
+  "audit_sha256": "7d89b0bfe74dbc142d1717c36e292b08ace0c3587ce7b5b1581bfb584701c446",
+  "counts": {
+    "actual": {
+      "autonomous_released": 0,
+      "billing_writes": 0,
+      "duplicate_work_orders": 0,
+      "human_released": 400,
+      "input_rows": 500,
+      "live_lims": 0,
+      "live_reports": 0,
+      "production_writes": 0,
+      "quarantines": 100,
+      "replay_added_quarantines": 0,
+      "replay_added_work_orders": 0,
+      "valid": 400,
+      "work_orders": 400
+    },
+    "expected": {
+      "autonomous_released": 0,
+      "billing_writes": 0,
+      "duplicate_work_orders": 0,
+      "human_released": 400,
+      "input_rows": 500,
+      "live_lims": 0,
+      "live_reports": 0,
+      "production_writes": 0,
+      "quarantines": 100,
+      "replay_added_quarantines": 0,
+      "replay_added_work_orders": 0,
+      "valid": 400,
+      "work_orders": 400
+    },
+    "match": true
+  },
+  "field_digest_sha256": "13bb8802efc12099037ac6e3c4c6d9fe2d51d8310cf7d07e1da173d6e03cc5a3",
+  "fixture_sha256": "99117f784de0d880b9102a0ae86bf5fec1848ae9477d8e281a3c72bd45e48c1b",
+  "lineage_sha256": "e50028e925c1b7d4399a5387a46cab4681813ceb09704d644e2840c57ebc81f7",
+  "matrix_counts": {
+    "AIR": 134,
+    "SOIL": 133,
+    "WATER": 133
+  },
+  "quarantine_code_counts": {
+    "QUARANTINE_COOLER_TEMP_GATE": 10,
+    "QUARANTINE_CUSTODY_GATE": 10,
+    "QUARANTINE_INVALID_MATRIX": 10,
+    "QUARANTINE_MATRIX_CONTAINER_PARITY": 10,
+    "QUARANTINE_MISSING_COLLECTION_DATETIME": 10,
+    "QUARANTINE_MISSING_SAMPLER_SIGNATURE": 10,
+    "QUARANTINE_MISSING_WORK_ORDER_ID": 10,
+    "QUARANTINE_RECEIPT_GATE": 10,
+    "QUARANTINE_TAT_EDD_PARITY": 10,
+    "QUARANTINE_UNMAPPED_FACILITY_ID": 10
+  },
+  "work_order_sha256": "f38fe24243e9b0fcddd156691c69d8ccddcb9a97e5f8e6dbb20afa19ea0fabac"
+}

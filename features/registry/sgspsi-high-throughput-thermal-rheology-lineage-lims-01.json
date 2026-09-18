@@ -1,0 +1,39 @@
+{
+  "added": "2026-08-31",
+  "capability": "SGS PSI high-throughput thermal-rheology lineage LIMS: a 120-request synthetic fixture accessions 90 valid DSC-250/HR-20 jobs once onto reserved autosampler slots, holds 30 with MISSING_LINKAGE, DUPLICATE_CONTAINER, METHOD_INSTRUMENT_MISMATCH, SLOT_COLLISION, and QC_FAILURE, binds source/method/raw-value/unit/report hashes 87f0ed13ee7ab7cbbdb30ef9daec7505c61c22ceb57611efb1f0f6be5c2f9e26, replays with zero extra records, and keeps reports staged pending named approval. Adapters stay simulated/read-only.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "sgspsi_thermal_rheology_lineage.py",
+    "sgspsi-thermal-rheology-lineage-lims.js",
+    "sgspsi-thermal-rheology-lineage-lims.html",
+    "test_sgspsi_thermal_rheology_lineage.py",
+    "revenue/sgspsi_thermal_rheology_lineage/contract.json",
+    "revenue/sgspsi_thermal_rheology_lineage/receipt.json",
+    "revenue/sgspsi_thermal_rheology_lineage/receipt.md",
+    "revenue/sgspsi_thermal_rheology_lineage/fixture.json",
+    "p/cursor-sgspsi-thermal-rheology-lineage-lims-20260831-01.md",
+    "features/registry/sgspsi-high-throughput-thermal-rheology-lineage-lims-01.json"
+  ],
+  "dependencies": [],
+  "id": "sgspsi-high-throughput-thermal-rheology-lineage-lims-01",
+  "name": "SGS PSI thermal-rheology lineage LIMS",
+  "next_gap": "Buyer-owned requirement/form/payment schema, DSC-250/HR-20 method revision, and de-identified golden instrument files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "sgspsi-thermal-rheology-lineage-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "sgspsi-thermal-rheology-lineage-lims.html",
+    "revenue/sgspsi_thermal_rheology_lineage/contract.json",
+    "p/cursor-sgspsi-thermal-rheology-lineage-lims-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_sgspsi_thermal_rheology_lineage.py",
+    "sgspsi_thermal_rheology_lineage.py"
+  ]
+}

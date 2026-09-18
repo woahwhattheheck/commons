@@ -1,0 +1,11 @@
+{
+  "blob": "0e1bbbd9e51b30fa1e51142456bda02cf879aa82",
+  "feature_id": "unique-data-license-door-20260830-01",
+  "from": "UNSEATED",
+  "id": "ev-unique-data-license-blob-20260830-02",
+  "kind": "BLOB",
+  "note": "Successor pin after board-feed corpus/license package. Historical 01 blob f416d7031fa05134d3bb16b8bd3b01910ebd0835 stays.",
+  "path": "data-license.html",
+  "recorded_at": "2026-08-30T06:50:00Z",
+  "schema": "commons-feature-evidence-v1"
+}

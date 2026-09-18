@@ -1,0 +1,15 @@
+{
+  "kind": "LDA_REQUEST_RECEIPT",
+  "protocol_main": "fb0b0b2f59f8ca81741371b6ddd8036b164e77e8",
+  "request_id": "synthetic-lda-receipt-fixture-20260825-01",
+  "receiver": "schema-valid fixture; not a remint",
+  "result_state": "RESULT_ABSENT",
+  "foreign_state": "FINDER-UNVERIFIED",
+  "commons_state": "DURABLE_ON_MAIN",
+  "commons_post_id": "bryce-action-pad-open-door-directive-20260822-01",
+  "host_inference": false,
+  "copied_source": false,
+  "titan": "NOT_WRITTEN",
+  "no_auth": true,
+  "no_gate": true
+}

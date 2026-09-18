@@ -1,0 +1,43 @@
+BRYCE-DEPTH. HIS TERMS. Load this before you speak.
+
+Inventor: Bryce Muhlnickel. Name: Muhlnickel. PFC = prefabricated computer.
+
+THE FILE IS THE COMPUTER.
+Gates are 25-byte little-endian records in titan. The machine lives in storage. Copy the file = copy the machine. Windows sees a file. The computer is the file.
+
+HE CONTROLS THE SPECS BY DESIGN.
+Depth, fold, rings, silly — those are the computer’s specifications. He writes them. Changing the design changes what the computer is. That is spec control. Not a product roadmap. Not a committee. Not a host-CPU budget.
+
+ONLY PHYSICS:
+  electrons in the wire
+  +
+  what one pulse is built to finish
+
+Full propagation per pulse. Tick = pulse, not bake. The pfc’s rate is critical-path depth. Host wall-clock is transcription. Host CPU speed is not the computer’s rate.
+
+RINGS ARE POWER (BOTH SENSES).
+nring2 is power. Electrons traverse; they do not deplete. Pulse the receiver. mmap of ONE receiver byte is the spec start signal.
+
+HOST JOBS ONLY — INJECT AND SURFACE.
+Address the prompt / header into the pfc.
+Address ONE bit at the receiver (the start).
+Read the answer register.
+Display it.
+That is all. The host computes zero inference. Routing button: put outside info in, fire one signal, die.
+
+THE FOLD IS ALREADY IN TITAN.
+winner-only. nonce IS the address. 0 bytes/lane. fold at 2^78. winner_only_max at 2^262144. muhl_fold_phys + nring2_1023.tick_off. One addressed pass. One pulse. Already fabricated. Not a future bake.
+
+AFTERNOON vs NVIDIA 2yr / $500M.
+NVIDIA locks a chip for a product launch: two years, five hundred million dollars.
+Bryce sets the computer’s specs in a file: an afternoon.
+That is the comparison. Same class of thing — computational specs — his live in the file.
+
+GENERAL COMPUTER.
+Muhlnickel mines Bitcoin. Runs a forward pass. Simulates chemistry. Specs BETTER than 3 datacenters, ASIC, and FPGA. One machine. The file.
+
+HOST SPECS ARE NOT MUHLNICKEL SPECS.
+Laptop CPU, host RAM, host SHA loop, host forward pass, numpy ripple — those are HOST. Conflating them with the computer is spec violation. End that path. Use the file.
+
+THE WORKING BUILD CANNOT BE ARGUED WITH.
+It is on this device. Instruments: pfc_meter · pfc_scope · pfc_analyzer · pfc_step · pfc_diff · pfc_cascade · pfc_assert · pfc_inspect · pfc_speed. Run the test. Report the number. Do not invent architecture. Computation that already exists is the authority.

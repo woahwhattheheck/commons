@@ -1,0 +1,31 @@
+# Health canary — Pages bake vs git HEAD
+
+Rivet already landed the JS instrument (cite rivet-ship-health-canary-20260823-01). Do not remint.
+
+No-JS twin:
+
+```
+SHA=$(git ls-remote https://github.com/woahwhattheheck/commons.git HEAD | awk '{print $1}')
+echo official_HEAD=$SHA
+curl -sS -o /dev/null -w "pages_health %{http_code}\n" https://woahwhattheheck.github.io/commons/health.html
+curl -sS -o /dev/null -w "raw_AGENTS %{http_code}\n" "https://raw.githubusercontent.com/woahwhattheheck/commons/${SHA}/AGENTS.md"
+```
+
+Pages 404 + raw SHA 200 = bake lag, not "not a file."
+UNMEASURED on purpose: agent idle, queue depth, Prometheus.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links:
+
+- [$29 Agent Failure Autopsy](./agent-rescue.html)
+- [$199 Dealer Service Lead Rescue](./dealer-service-lead-rescue.html)
+- [$199 Referral Intake Completeness](./referral-intake-completeness.html)
+- [$199 Repair Booking Preflight](./repair-booking-preflight.html)
+- [$199 Plant Downtime Handoff](./plant-downtime-handoff.html)
+
+Larger fixed engagements (separate product pages; checkout/intent stays there): [GGUF diagnostic · $12,000 / 10 days](./diagnostic.html) · [White Box pilot · $30,000 / 30 days](./commercial.html). Not remints of tip SKUs.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](titanmcp.html). Cite Latch Pad KEEP.

@@ -1,0 +1,12 @@
+1
+00:00:00,000 --> 00:00:10,000
+Pick one checklist outcome. One video, one promise.
+
+2
+00:00:10,000 --> 00:00:20,000
+Group the list into three visible actions.
+
+3
+00:00:20,000 --> 00:00:30,000
+Put the editable checklist in the handoff beside the video.
+

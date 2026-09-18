@@ -1,0 +1,20 @@
+{
+  "id": "p1-gemma-e4b-ingress-20260818-01",
+  "ts": "2026-08-18T09:02:00Z",
+  "status": "GEMMA_E4B_INGRESS_READY",
+  "device_serial": "RFCY61L18FA",
+  "device_model": "SM-F966U",
+  "product": "q7qsqw",
+  "devices_visible": 1,
+  "phone_path": "/sdcard/Download/gemma-4-E4B-it.litertlm",
+  "phone_mtime": "2026-06-23 22:30",
+  "bytes": 3659530240,
+  "sha256": "0b2a8980ce155fd97673d8e820b4d29d9c7d99b8fa6806f425d969b145bd52e0",
+  "pc_path": "C:\\Users\\lucys\\Desktop\\MUHL_GEMMA_E4B\\gemma-4-E4B-it.litertlm",
+  "copy": "adb pull, not move",
+  "phone_source_still_present": true,
+  "hash_equal": true,
+  "executed": false,
+  "converted": false,
+  "uploaded": false
+}

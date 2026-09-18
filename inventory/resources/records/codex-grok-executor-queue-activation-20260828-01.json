@@ -1,0 +1,94 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-grok-executor-queue-activation-20260828-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "observed_at": "2026-08-28T10:10:31Z",
+  "selected_resource": "commons-grok-executor-queue",
+  "before": {
+    "stage": "EXERCISED",
+    "condition": "CONSTRAINED",
+    "evidence": "Structural Grok capture existed, but cloud/local requesters still depended on manual session handoffs and no single serialized executor lease road was landed."
+  },
+  "after": {
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "activation_base_main_sha": "3b8040f477113decc20f832f823b9095677b3edd",
+    "product_merge_sha": "38dad71081c1dc2e458004324046cebf4008c03c",
+    "product_head_sha": "bbe00bc5fde8bd35edd096988d3c51bae94c459d"
+  },
+  "concrete_consumer": "Commons cloud/local requesters and healthy authenticated grok.com browser hosts",
+  "producing_outcome": "Current public main extends the existing wake_jobs/JobStore road with durable enqueue, lease, heartbeat, structural capture START, submit-once fencing, typed zero-spend release, bounded failover, output-only crash recovery, verified completion, and originating requester return.",
+  "exact_blobs": {
+    "action_executor.py": "0f32b29400fe054f8bacc4639de5d4ed35d5cb29",
+    "carriers/grokcom-revenue.json": "4c2c173ccef0f004b00e6bdc1adfc053cb0826b7",
+    "integrations/grok_executor_queue.py": "647a6d434be8ee54bebcb24e98149f0caee9f027",
+    "integrations/grokcom_revenue/orchestrator.py": "bf1f2a2fa2e442f8b68f65449f9986857dd66bcc",
+    "plugins/commons-grok-cloud/README.md": "fed2559ab9cf49b7a5876f7c837760c407c0e2c2",
+    "plugins/commons-grok-cloud/skills/commons-grok-cloud/SKILL.md": "7df699cafb975bab585c502c0b19de0792be4e9b",
+    "test_action_executor.py": "edacdb4c93bccb8f702e045696ab20e75790faeb",
+    "test_grok_executor_queue.py": "556bd02a31f63b6fc1ef72adecc073f2ef6d4cb6",
+    "test_grokcom_revenue_orchestrator.py": "93e4ae92910c769621cd5291a921e461640fea70",
+    "wake_jobs/README.md": "66ba42dc5a19e23cab79718270a27a26353230eb"
+  },
+  "expired_claims": [
+    "github-repository-portfolio",
+    "localdeviceagent",
+    "owner-workstation",
+    "titan-hands-windows",
+    "action-pad",
+    "muhlnickel-substrate",
+    "public-commerce-road",
+    "commons-carrier-gateway",
+    "commons-swarm-gateway",
+    "gemini-peer-pair",
+    "active-agent-fleet",
+    "stale-claim-capacity",
+    "agent-address-and-memory",
+    "revenue-outreach",
+    "revenue-offer-stack",
+    "github-actions"
+  ],
+  "projection": {
+    "resources": 59,
+    "producing": 23,
+    "fresh": 24,
+    "stale": 16,
+    "event_driven": 14,
+    "needs_probe": 5
+  },
+  "connected_app_aggregate": {
+    "enabled_automations": 3,
+    "callable_tools": 404,
+    "connected_app_prefixes": 17,
+    "github_repository": "PUBLIC; READ_WRITE_PRODUCING",
+    "slack_commons": "READ_WRITE_PRODUCING",
+    "slack_activation_ts": "1787911777.379739",
+    "disabled_automations_excluded": true
+  },
+  "verification": {
+    "fresh_main_collision_audit": "zero path overlap between nine intervening main commits and ten PR paths",
+    "mergeable_at_merge": true,
+    "reviews": 0,
+    "unresolved_review_threads": 0,
+    "job_watchdog": "success",
+    "open_door_guard": "success",
+    "path_manifest": "success",
+    "muhlnickel_spec_guard": "success",
+    "full_battery": "in progress at merge; accounted, not claimed green",
+    "exact_main_readback": "ten activation paths returned exact blobs on merge SHA",
+    "ledger_json": "parsed before publication"
+  },
+  "evidence": {
+    "pull_request": "https://github.com/woahwhattheheck/commons/pull/4777",
+    "merge": "https://github.com/woahwhattheheck/commons/commit/38dad71081c1dc2e458004324046cebf4008c03c",
+    "slack": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1787911777379739"
+  },
+  "non_claims": [
+    "No actual grok.com prompt submission, token debit, browser success, provider result, or completed queue job",
+    "No deployment, device action, Cursor use, Cursor Grok, Grokbot, local Grok CLI, or Claude verification",
+    "No outreach, duplicate resend, buyer acceptance, payment authorization, settlement, payout, bank availability, revenue, or cash",
+    "No Titan model mutation"
+  ],
+  "titan": "NOT_WRITTEN"
+}

@@ -1,0 +1,116 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-human-outcomes-input-validator-activation-20260909-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "selected_resource": "human-outcomes-input-validator",
+  "observed_at": "2026-09-09T04:11:07Z",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "UNREGISTERED",
+    "evidence_freshness": "FRESH_CURRENT_MAIN_PR_SLACK_AND_DIRECT_READ_ONLY_PROBE"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "authority": "SHARED_ALL_CARRIERS; PUBLIC_SOURCE_READ_RUN_AND_COMPOSE; READ_ONLY_INPUT_MEASUREMENT; FAIL_CLOSED_ON_JSON_ROOT_OR_COLLECTION_SHAPE_ERROR; NO_CUSTOMER_PROVIDER_CHECKOUT_PAYMENT_OR_OUTREACH_WRITE",
+    "holder": "Commons / outcome-commerce and sales operators",
+    "activation_base_main_sha": "641db1651acb9caaf8fc23ec5f825b197c3b6991"
+  },
+  "concrete_consumer": "Commons outcome-commerce and sales operators reading the existing human-outcomes offer pack and public-safe gate.",
+  "measurable_outcome": "The recovered current-main parser is now separately routable as producing capacity. Nineteen focused tests prove stable diagnostics for malformed JSON roots and collections, preserved empty/null defaults and valid measurements, and no-write CLI failure behavior. A direct read-only current-root run returned NOT_LANDED / FINDER-FAILED for eight absent product paths without traceback or cash inference.",
+  "production_truth": {
+    "source_pr": 10961,
+    "source_head_sha": "7308ab907339a18b7d5c87fed8fd63d1fcedd859",
+    "source_merge_sha": "0d19fffe9ceb121519e9880b901f81f857cd046e",
+    "source_merge_tree_sha": "343c4cd8944a4187be559df666113b9a62111c85",
+    "source_blobs": {
+      "host/human_outcomes.py": "2dbb743400f5035fb999c06da4d5f0c7fb5c26e7",
+      "test_human_outcomes_input_shapes.py": "bef953d9caea4210d92a23a46fdbd30ab2322c04"
+    },
+    "source_sha256": {
+      "host/human_outcomes.py": "afad46cea36b0e1d9fd50e7a993dfb7eceb2f04a2f11c661c6e8bf932e2ef9aa",
+      "test_human_outcomes_input_shapes.py": "4e789050130f576bb72962ea7612ea288f15ea60316834914c617579381480a9"
+    },
+    "focused_tests": "19/19",
+    "direct_probe": {
+      "mode": "python3 host/human_outcomes.py --root .",
+      "state": "NOT_LANDED",
+      "z": "FINDER-FAILED",
+      "calibration_ok": true,
+      "present_paths": 3,
+      "absent_product_paths": 8,
+      "traceback": false,
+      "collected_cash_usd": null
+    }
+  },
+  "delta": {
+    "prior_terminal_main_sha": "9b83b3000d248b476c04d94412b2829b0c84f463",
+    "main_sha_at_claim": "641db1651acb9caaf8fc23ec5f825b197c3b6991",
+    "commits_in_delta": 53,
+    "merge_commits_in_delta": 12,
+    "non_merge_commits_in_delta": 41,
+    "changed_paths_in_delta": 130,
+    "remote_branches_observed": 1721,
+    "remote_branch_count_change": -1,
+    "remote_branch_set_digest_sha256": "2bcccaeaa998f8d7f3f5cf814d84885b1c2145c335740162149850187af94316",
+    "open_prs_at_collision_read": [],
+    "prior_terminal_slack_ts": "1788917208.156479",
+    "latest_preclaim_commons_slack_ts": "1788925921.409939",
+    "commons_claim_slack_ts": "1788926994.785209",
+    "delegations_state": "no new messages after 1788915444.173389",
+    "todo_state": "no new results after the prior terminal watermark",
+    "shipped_builds_state": "no new results after the prior terminal watermark",
+    "products_state": "no new results after the prior terminal watermark",
+    "leads_state": "no new results after the prior terminal watermark",
+    "sales_state": "no new results after the prior terminal watermark",
+    "connected_tools": "442 callable tools; 427 connected-app tools; 33 Slack tools and 89 GitHub tools; aggregate unchanged",
+    "automations": "Automation inventory inspected once; the recurring Resource Master remains enabled and no reset or lifecycle change was inferred from schedule presence.",
+    "provider_observation": "No provider operation or direct usage-meter reset was performed or observed. Biohub and TITAN delta lanes retain their existing owners."
+  },
+  "build_orders": [],
+  "build_order_decision": "No build order was posted. The parser repair is already landed and the remaining complete-pack or customer/provider work requires actual source inputs, buyer demand or provider evidence. Biohub, TITAN, Hive and OnePay lanes in the delta already have roots or owners.",
+  "verification": {
+    "focused_tests": "The existing input-shape suite passed 19/19 and the added resource-ledger assertions bind the new row and exact source identities without modifying recovered source.",
+    "privacy": "No customer input, credential, private account identifier, private file name or private report content is copied into canonical metadata.",
+    "open_door": "The validator remains public current-main source and requires no authentication; no login or owner-approval gate was added.",
+    "zero_fabrication": "Malformed-input diagnostics and synthetic fixtures remain distinct from demand, buyer acceptance, checkout, provider payment, settlement, revenue and cash.",
+    "collision": "Only ledger, append-only activation record, append-only receipt and focused ledger assertions are owned. Human-outcomes source and all active Biohub/TITAN paths remain off-limits."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-09T04:11:07Z",
+    "prior_terminal_main_sha": "9b83b3000d248b476c04d94412b2829b0c84f463",
+    "main_sha_at_claim": "641db1651acb9caaf8fc23ec5f825b197c3b6991",
+    "prior_terminal_slack_ts": "1788917208.156479",
+    "commons_latest_preclaim_slack_ts": "1788925921.409939",
+    "commons_claim_slack_ts": "1788926994.785209",
+    "delegations_latest_slack_ts": "1788915444.173389",
+    "todo_state": "no new results after the prior terminal watermark",
+    "shipped_builds_state": "no new results after the prior terminal watermark",
+    "products_state": "no new results after the prior terminal watermark",
+    "leads_state": "no new results after the prior terminal watermark",
+    "sales_state": "no new results after the prior terminal watermark",
+    "connected_tools": "442 callable tools; 427 app tools; unchanged",
+    "automations": "Resource Master remains enabled; no lifecycle change observed",
+    "openai_reset": "No official hard/global reset and no direct meter reset observed; prior quota state retained."
+  },
+  "projection": {
+    "resources": 85,
+    "producing": 57
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788926994785209",
+    "source_pr": "https://github.com/woahwhattheheck/commons/pull/10961",
+    "source_delivery": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788925921409939",
+    "official_release": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+    "prior_terminal_receipt": "p/codex-hive-intake-crm-workflow-activation-20260909-01.md"
+  },
+  "non_claims": [
+    "No recovered human-outcomes source or test file was changed by this activation.",
+    "No complete offer pack, demand, buyer, founder contact, customer data, outreach, checkout, provider event, payment, settlement, payout, revenue or cash was claimed.",
+    "No provider, Kaggle or TITAN write, credential access, deployment, model call, quota spend, reset purchase or owner-device operation occurred."
+  ],
+  "titan": "NOT_WRITTEN"
+}

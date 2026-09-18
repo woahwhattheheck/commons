@@ -1,0 +1,213 @@
+{
+  "provenance": {
+    "ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805315069209",
+    "published_at": null,
+    "observed_at": null,
+    "captured_at": "2026-09-07T20:20:06.234106Z",
+    "note": "Saved live-board references. Provider state and precise source observation times were not supplied; nulls preserve those unknowns."
+  },
+  "records": [
+    {
+      "kind": "session",
+      "subject_id": "gpt-sell",
+      "data": {
+        "url": "https://chatgpt.com/c/6a9ef70e-0f6c-83ea-ae06-e5093d51b5c7",
+        "provider": "ChatGPT",
+        "role": "GPT SELL",
+        "repository": "woahwhattheheck/commons",
+        "path": "revenue/kaggriculture/cloud-execution-lab/",
+        "vm_id": null,
+        "observed_state": "referenced",
+        "next_worker_contract_ref": null
+      }
+    },
+    {
+      "kind": "session",
+      "subject_id": "claude-harvest",
+      "data": {
+        "url": "https://claude.ai/code/session_01Ac3gyomPGcH286FrdER67e",
+        "provider": "Claude",
+        "role": "Harvest refinement",
+        "repository": "woahwhattheheck/commons",
+        "path": "revenue/kaggriculture/cloud-model-lab/",
+        "vm_id": null,
+        "observed_state": "referenced",
+        "next_worker_contract_ref": null
+      }
+    },
+    {
+      "kind": "session",
+      "subject_id": "gpt-t11",
+      "data": {
+        "url": "https://chatgpt.com/c/6a9f137c-2da8-83e9-a6aa-b1c214a182ff",
+        "provider": "ChatGPT",
+        "role": "T11 rule arbitrage",
+        "repository": "woahwhattheheck/commons",
+        "path": "revenue/kaggriculture/cloud-rule-arbitrage/",
+        "thread_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788809873045189",
+        "vm_id": null,
+        "observed_state": "referenced",
+        "next_worker_contract_ref": null
+      }
+    },
+    {
+      "kind": "session",
+      "subject_id": "01a07d73-a79b-7d33-8451-0c1acbc2f000",
+      "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788811626659419",
+      "published_at": "2026-09-07T20:07:06.659419Z",
+      "data": {
+        "url": "https://chatgpt.com/c/6a9f1774-69dc-83e9-a065-88f61de7f0a4",
+        "project_url": "https://chatgpt.com/g/g-p-6a9f15847f708191aff9765e562b65aa/project",
+        "claim_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788811302903069",
+        "provider": "ChatGPT Work",
+        "role": "T14 policy portfolio",
+        "repository": "woahwhattheheck/commons",
+        "path": "revenue/kaggriculture/cloud-policy-portfolio/",
+        "thread_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788810761611259",
+        "vm_id": null,
+        "observed_state": "claimed_in_slack",
+        "next_worker_contract_ref": null
+      }
+    },
+    {
+      "kind": "source",
+      "subject_id": "titan-project-strategy",
+      "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788811626659419",
+      "published_at": "2026-09-07T20:07:06.659419Z",
+      "data": {
+        "source_type": "project",
+        "url": "https://chatgpt.com/g/g-p-6a9f15847f708191aff9765e562b65aa/project",
+        "repository": "woahwhattheheck/commons",
+        "thread_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788810761611259",
+        "observed_state": "referenced",
+        "source_commit": null
+      }
+    },
+    {
+      "kind": "source",
+      "subject_id": "t14-policy-portfolio",
+      "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788810761611259",
+      "data": {
+        "repository": "woahwhattheheck/commons",
+        "path": "revenue/kaggriculture/cloud-policy-portfolio/",
+        "source_commit": "e987ed4eec0c27223de7432a8bce88ff7e062697",
+        "merge_commit": "15e91a6c59aa25b8f5185b3b6b63eec5cad85410",
+        "pull_request": 9927,
+        "reported_state": "landed",
+        "callable": "main.py::agent(obs,cfg)"
+      }
+    },
+    {
+      "kind": "session",
+      "subject_id": "01a07d24-eeb7-7211-97dd-0956000bbb4f",
+      "data": {
+        "url": null,
+        "provider": "ChatGPT Work",
+        "role": "Native command center owner",
+        "repository": "woahwhattheheck/commons",
+        "path": "integrations/command_center/",
+        "vm_id": null,
+        "observed_state": "referenced",
+        "import_path": "integrations.command_center.core.CommandCenter",
+        "schema_ref": "https://github.com/woahwhattheheck/commons/blob/54bd539954d67ed82288e0404411c86f6e2fbe7d/integrations/command_center/equipment.py",
+        "test_branch": "codex/command-center-20260907",
+        "next_worker_contract_ref": null,
+        "consumer_source_commit": "54bd539954d67ed82288e0404411c86f6e2fbe7d"
+      }
+    },
+    {
+      "kind": "source",
+      "subject_id": "t08-selected",
+      "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805908915009",
+      "data": {
+        "repository": "woahwhattheheck/commons",
+        "path": "revenue/kaggriculture/cloud-titan-composition/",
+        "source_commit": "291957d2c9ba0b035d496243775fcf76fef6f38f",
+        "merge_commit": "c533e7ce210dbe77e078e566a71b15b175db0da9",
+        "pull_request": 9898,
+        "reported_state": "landed",
+        "selected_policy_sha256": "32c8610c9827d1686a6f831e2c4b6af4c00d32d2aa04dcf25699d976d6d97dd9"
+      }
+    },
+    {
+      "kind": "source",
+      "subject_id": "t08-integration-v2",
+      "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805908915009",
+      "data": {
+        "repository": "woahwhattheheck/commons",
+        "path": "revenue/kaggriculture/cloud-titan-composition/integration-v2/",
+        "source_commit": "021c0e60cc2af15a6606e51caddb870d1f680482",
+        "merge_commit": "956380f88ea948951bd56a80d69033eb98f8a9e1",
+        "pull_request": 9918,
+        "reported_state": "landed"
+      }
+    },
+    {
+      "kind": "artifact",
+      "subject_id": "github-artifact-10030763484",
+      "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788809087812319",
+      "published_at": "2026-09-07T19:24:47.812319Z",
+      "data": {
+        "provider": "GitHub Actions",
+        "repository": "woahwhattheheck/commons",
+        "artifact_id": 10030763484,
+        "filename": "titan-pinned-source-pack-v2.zip",
+        "sha256": "68f78694fa56976fa1476ffd1d1fb6b3bfd4935392dfd0023a170c7efcd35e62",
+        "byte_size": 558610,
+        "local_path": null,
+        "availability": null,
+        "source_commit": "7f92f6c0f4e3961be8109b2e3dc6da3e4e356d9f"
+      }
+    },
+    {
+      "kind": "artifact",
+      "subject_id": "github-artifact-10005621438",
+      "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788808164750989",
+      "published_at": "2026-09-07T19:09:24.750989Z",
+      "data": {
+        "provider": "GitHub Actions",
+        "repository": "woahwhattheheck/commons",
+        "artifact_id": 10005621438,
+        "filename": "kag-engine-source.zip",
+        "sha256": "06e526df0a87d1d94e60dd0f2ea380aa099a4f0edd40a604a7c5bd274bd189cc",
+        "byte_size": 280148,
+        "local_path": null,
+        "availability": null,
+        "engine_commit": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+        "engine_package_version": "1.32.7"
+      }
+    },
+    {
+      "kind": "artifact",
+      "subject_id": "t08-selected-archive",
+      "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788805908915009",
+      "data": {
+        "repository": "woahwhattheheck/commons",
+        "path": "revenue/kaggriculture/cloud-titan-composition/artifacts/titan-selected.tar.gz",
+        "source_commit": "291957d2c9ba0b035d496243775fcf76fef6f38f",
+        "sha256": "5d3a2bf3878808679820ff7f5a5ca7533c41888366c5dcd358f15ff0213f1f10",
+        "byte_size": 181166,
+        "local_path": null,
+        "availability": null
+      }
+    },
+    {
+      "kind": "operation",
+      "subject_id": "t14-command-center-contract-request-20260907-01",
+      "source_ref": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788811302903069",
+      "published_at": "2026-09-07T20:01:42.903069Z",
+      "data": {
+        "description": "Requested the native command-center import path, schema, and test branch in T14.",
+        "reported_status": "requested",
+        "native_task_id": "01a07d24-eeb7-7211-97dd-0956000bbb4f",
+        "expected_parts": [
+          "import_path",
+          "schema_ref",
+          "test_branch"
+        ],
+        "acknowledgments": [],
+        "provider_operation_id": null
+      }
+    }
+  ]
+}

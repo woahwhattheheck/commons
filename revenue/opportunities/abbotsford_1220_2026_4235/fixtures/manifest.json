@@ -1,0 +1,11 @@
+{
+  "schema": "tjlabs.abbotsford-1220-source-manifest/v1",
+  "bid_number": "RFP 1220-2026-4235",
+  "buyer": "City of Abbotsford",
+  "title": "City of Abbotsford - Digital Waste Collection Calendar & Resident Engagement Platform",
+  "detail_url": "https://abbotsford.bidsandtenders.ca/Module/Tenders/en/Tender/Detail/254ac4d7-b135-44c6-99d9-44203c732790",
+  "closing_utc": "2026-10-07T21:00:00Z",
+  "question_deadline_utc": "2026-09-24T21:00:00Z",
+  "authorized_packet_present": false,
+  "qualification": "HOLD_PACKET_REQUIRED"
+}

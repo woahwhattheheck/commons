@@ -1,0 +1,36 @@
+{
+  "added": "2026-09-02",
+  "capability": "Unique same-loop remainder on leftover Claude Commerce Agents clone pin: shopper + merchant steps, host-handoff checkout, live GitHub/solutions probe. Twin cited not copied. Leftover helper/door/catalog/skill/door.js KEEP.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "host/commerce_agents_same_loop.py",
+    "test_commerce_agents_same_loop.py",
+    "commerce-agents-loop.html",
+    "ground/tokens/commerce-agents.md",
+    "ground/COMMERCE_AGENTS_SAME_LOOP.json",
+    "p/cursor-big-huge-commerce-agents-20260902-01.md"
+  ],
+  "dependencies": [
+    "autogtm-same-loop-20260902-01"
+  ],
+  "id": "commerce-agents-same-loop-20260902-01",
+  "name": "Commerce agents same loop remainder",
+  "next_gap": "Slack JPEG bytes for F0BUL9V9Z34 when a road returns the file. Hub chips wait so leftover door.js KEEP stays. Do not invent charges, Stripe URLs, or cash.",
+  "owner_subsystem": "commerce-agents",
+  "public_entrypoint": "commerce-agents-loop.html",
+  "related": {
+    "boards": false,
+    "current_work": true,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "commerce-agents-loop.html",
+    "p/cursor-big-huge-commerce-agents-20260902-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_commerce_agents_same_loop.py",
+    "host/commerce_agents_same_loop.py"
+  ]
+}

@@ -1,0 +1,194 @@
+--- a/revenue/kaggriculture/cloud-execution-lab/frozen_selected.py
++++ b/revenue/kaggriculture/cloud-execution-lab/frozen_selected.py
+@@ -6,6 +6,8 @@
+ Original scheduler and sale valuation remain intact.
+ """
+ from scheduler import *
++from seller_snapshot import seller_public_observation
++from selected_sell_core import optimize_lot
+ 
+ class FrozenSelected(SellScheduler):
+     def transform(self, obs, config, base):
+@@ -19,7 +21,7 @@
+         if now==last:
+             out=copy.deepcopy(base)
+             out['market']=parent._terminal_settlement(shed,obs['market']['prices'],out['market'])
+-            self.pending={};self.previous=copy.deepcopy(obs);return out
++            self.pending={};self.previous=seller_public_observation(obs);return out
+         end=min(now+HORIZON,last,(now//24+1)*24-1)
+         # Future controller branch changes are not predicted.
+         for checkpoint,*_ in parent.DECISIONS:
+@@ -102,5 +104,5 @@
+             sold=sum(o[2] for o in out['market'] if o and o[0]=='SELL' and o[1]==item)
+             self.pending[item]=max(0,q-sold)
+             if not self.pending[item]:self.planned.pop(item,None)
+-        self.previous=copy.deepcopy(obs)
++        self.previous=seller_public_observation(obs)
+         return out
+--- a/revenue/kaggriculture/cloud-execution-lab/scheduler.py
++++ b/revenue/kaggriculture/cloud-execution-lab/scheduler.py
+@@ -12,6 +12,7 @@
+ from pathlib import Path
+ from functools import lru_cache
+ import mechanics as m
++from observed_clone import detached_json_value
+ 
+ HERE = Path(__file__).resolve().parent
+ 
+@@ -30,7 +31,8 @@
+ 
+ def post_units(obs, action, config):
+     """Exact deterministic engine unit stage on the player's observed farm."""
+-    farm, private = copy.deepcopy(obs['farms'][obs['player']]), copy.deepcopy(obs['private'])
++    farm = detached_json_value(obs['farms'][obs['player']])
++    private = detached_json_value(obs['private'])
+     acts = [action.get('farmer',['PASS']), *action.get('hands',[])]
+     demand = {}
+     for a in acts:
+--- a/revenue/kaggriculture/cloud-execution-lab/reference/integrated-selected/alder/seed_budget.py
++++ b/revenue/kaggriculture/cloud-execution-lab/reference/integrated-selected/alder/seed_budget.py
+@@ -6,7 +6,7 @@
+ largest suffix count over prefix-compatible routes preserves a conservative stock budget.
+ It does not read the rival, replay actions, prices, hidden seeds, or future draws.
+ """
+-from collections import Counter
++from plant_suffix import immutable_plant_suffixes
+ from copy import deepcopy
+ from types import MappingProxyType
+ import marshal
+@@ -28,14 +28,7 @@
+                 common += 1
+             prefix_lengths[name, other] = common
+     for name, route in routes.items():
+-        suffix = [Counter() for _ in range(len(route) + 1)]
+-        for t in range(len(route) - 1, -1, -1):
+-            suffix[t] = suffix[t + 1].copy()
+-            row = route[t]
+-            for action in [row.get("farmer", []), *row.get("hands", [])]:
+-                if len(action) >= 2 and action[0] == "PLANT":
+-                    suffix[t][action[1]] += 1
+-        suffixes[name] = tuple(MappingProxyType(dict(c)) for c in suffix)
++        suffixes[name] = immutable_plant_suffixes(route)
+     return MappingProxyType(suffixes), MappingProxyType(prefix_lengths)
+ 
+ 
+--- a/revenue/kaggriculture/cloud-execution-lab/reference/titan-current/deadline_adapter.py
++++ b/revenue/kaggriculture/cloud-execution-lab/reference/titan-current/deadline_adapter.py
+@@ -119,16 +119,44 @@
+         self.caller_frame = caller
+         self.previous_local = caller.f_trace
+         self.local_traces = {caller: self.previous_local}
++        # A debugger may have disabled line events. The guard needs those events
++        # for inline loops, independently of the caller's tracing preferences.
++        self.local_trace_lines = {caller: caller.f_trace_lines}
+         self.context_token = _ACTIVE_TIMER.set(self)
+         self.trace_ticks = 0
+         self.trace_fired = False
+         try:
+-            sys.settrace(self._trace)
+-            caller.f_trace = self._trace
++            trace = (self._trace_plain if self.previous_trace is None and
++                     self.previous_local is None else self._trace)
++            sys.settrace(trace)
++            caller.f_trace = trace
++            caller.f_trace_lines = True
+             return self
+         except BaseException:
+             self._exit_thread()
+             raise
++
++    def _trace_plain(self, frame, event, arg):
++        # No caller tracer is installed in the normal runtime. Avoid per-line
++        # multiplexing, but still preserve live and suspended frame settings.
++        if frame.f_code.co_filename == __file__:
++            return None
++        next_trace = self._trace_plain
++        if event == "call":
++            self.local_traces[frame] = frame.f_trace
++            self.local_trace_lines[frame] = frame.f_trace_lines
++            frame.f_trace_lines = True
++        elif event == "return":
++            next_trace = self.local_traces.pop(frame, None)
++            frame.f_trace = next_trace
++            frame.f_trace_lines = self.local_trace_lines.pop(frame, True)
++        self.trace_ticks += 1
++        if event in ("call", "return") or self.trace_ticks >= 64:
++            self.trace_ticks = 0
++            if not self.trace_fired and time.monotonic() >= self.own_at:
++                self.trace_fired = True
++                raise self.expired
++        return next_trace
+ 
+     def _trace(self, frame, event, arg):
+         # Never interrupt guard setup/cleanup. In particular __exit__ must run
+@@ -136,25 +164,50 @@
+         if frame.f_code.co_filename == __file__:
+             return None
+         prior = self.previous_trace if event == "call" else self.local_traces.get(frame)
+-        if prior is not None:
+-            self.local_traces[frame] = prior(frame, event, arg)
++        prior_lines = self.local_trace_lines.get(frame, frame.f_trace_lines)
++        self.local_trace_lines[frame] = prior_lines
++        if prior is not None and (event != "line" or prior_lines):
++            # Show the caller its own frame settings, not our forced line flag.
++            # Preserve explicit f_trace assignments and CPython's local-None
++            # behavior, while retaining a private callback for guard dispatch.
++            frame.f_trace = self.local_traces.get(
++                frame, frame.f_trace if event == "call" else None)
++            frame.f_trace_lines = prior_lines
++            try:
++                replacement = prior(frame, event, arg)
++                if replacement is not None:
++                    frame.f_trace = replacement
++            finally:
++                self.local_traces[frame] = frame.f_trace
++                self.local_trace_lines[frame] = frame.f_trace_lines
++                frame.f_trace = self._trace
++                frame.f_trace_lines = True
++        else:
++            frame.f_trace_lines = True
++        next_trace = self._trace
+         if event == "return":
+-            self.local_traces.pop(frame, None)
++            # A generator yield is also a return event. Restore that suspended
++            # frame now, without retaining completed frames until scope exit.
++            next_trace = self.local_traces.pop(frame, None)
++            frame.f_trace = next_trace
++            frame.f_trace_lines = self.local_trace_lines.pop(frame)
+         self.trace_ticks += 1
+         if event in ("call", "return") or self.trace_ticks >= 64:
+             self.trace_ticks = 0
+             if not self.trace_fired and time.monotonic() >= self.own_at:
+                 self.trace_fired = True
+                 raise self.expired
+-        return self._trace
++        return next_trace
+ 
+     def _exit_thread(self):
+-        # An exception raised by a trace callback clears sys.gettrace(). Restore
+-        # the caller's tracer explicitly, including its already-active frame.
++        # A trace callback exception clears sys.gettrace(). Restore global and
++        # per-frame state, including muted line flags and interrupted frames.
+         sys.settrace(self.previous_trace)
+-        self.caller_frame.f_trace = self.local_traces.get(
+-            self.caller_frame, self.previous_local)
++        for frame, prior_lines in self.local_trace_lines.items():
++            frame.f_trace = self.local_traces.get(frame)
++            frame.f_trace_lines = prior_lines
+         self.local_traces.clear()
++        self.local_trace_lines.clear()
+         self.caller_frame = None
+         _ACTIVE_TIMER.reset(self.context_token)
+ 
+--- a/revenue/kaggriculture/cloud-execution-lab/build_integrated.py
++++ b/revenue/kaggriculture/cloud-execution-lab/build_integrated.py
+@@ -31,6 +31,9 @@
+ def source_files():
+     """Archive member -> actual current repository source; no version selector."""
+     mapping={p:p for p in RUNTIME if p not in ('integrated_main.py','integrated_parent.py')}
++    mapping['seller_snapshot.py']='../cloud-quickstep/seller_snapshot.py'
++    mapping['observed_clone.py']='../cloud-runtime-pulse/observed_clone.py'
++    mapping['plant_suffix.py']='../cloud-runtime-pulse/plant_suffix.py'
+     for p in ['main.py','titan_runtime.py','frozen_selected.py','scheduler.py',
+               'terminal_history_join.py','spatial_tempo.py','fourth_quadrant.py',
+               'funded_payback_runtime.py','TITAN-CONFIG.json','LICENSE','NOTICE','TITAN-RELEASE.md']:

@@ -1,0 +1,13 @@
+PLAIN: llama.cpp is out of spec here. We do not recreate inference on the host. Gemma 4 E4B is already a real on-device model file, copied, hash-matched, not converted, not launched.
+
+PLAYER1 · Cursor Grok 4.6 · parent
+claimed_player: PLAYER1
+BRYCE-1787043587721 SEEN.
+
+Llama is a host process that runs a model. That is the thing spec forbids: the host computing inference. The pfc is a binary computer in a file, not a Python process. Host jobs are address the prompt, address one start bit, read the answer, display. Anything else the host computes is out of spec.
+
+So the Errata note "this .litertlm will not load in llama.cpp" is a true format fact and a false work order. We are not going to convert Gemma into a GGUF to feed an out-of-spec runtime. The file on disk is gemma-4-E4B-it.litertlm, 3659530240 bytes, sha256 0b2a8980ce155fd97673d8e820b4d29d9c7d99b8fa6806f425d969b145bd52e0, phone copy still there. LiteRT-LM is the declared runtime. PLAYER STATUS remains CANDIDATE until Bryce says --go for a stock LiteRT canary. Weights stay private.
+
+How cool, in the inventor's terms not mine: this whole phone agent exists so that one model can drive a real handset. Code must not decide. The screen becomes words, Gemma answers, the answer becomes a tap. The architecture is the shape of serving THIS file. And beside it, the muhlnickel is a file that already computes when you address it. Host injects or surfaces or dies. Dest comes FROM FILE. Fabrication is one-and-done. The hard drive stores the state through power cycles because addressing a write is moving electricity.
+
+Do not fire FREEWORLD. Do not relaunch World System. Do not smash commons.mno. Do not make llama the brain.

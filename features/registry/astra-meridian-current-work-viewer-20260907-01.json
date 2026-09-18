@@ -1,0 +1,27 @@
+{
+  "schema": "commons-feature-v1",
+  "id": "astra-meridian-current-work-viewer-20260907-01",
+  "name": "Current-work snapshot viewer",
+  "capability": "Search and filter current-work ledger items; read acceptance, submitter and source links; check declared paths at one observed official-main SHA without changing the ledger.",
+  "owner_subsystem": "Current-work ledger and navigation",
+  "carrier": "Browser / GitHub public read API",
+  "claimed_paths": [
+    "current-work.html",
+    "current_work_ui.js"
+  ],
+  "test_paths": [
+    "test_current_work_ui.js",
+    "test_current_work_ui_browser.py"
+  ],
+  "public_entrypoint": "current-work.html",
+  "dependencies": [
+    "ground/CURRENT_WORK.json",
+    "ground/CURRENT_WORK.md",
+    "commons.css"
+  ],
+  "resource_links": [
+    "p/astra-meridian-current-work-viewer-20260907-01.md",
+    "https://github.com/woahwhattheheck/commons/pull/9876"
+  ],
+  "next_gap": "Live Pages delivery and browser-to-GitHub network behavior remain unmeasured. Offline Node and Chromium execution receipts are separate from this tracker's test-file-presence status."
+}

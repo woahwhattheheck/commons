@@ -1,0 +1,4354 @@
+[
+  {
+    "games": [
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          65408.0,
+          63832.0
+        ],
+        "seed": 2609101001,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          63832.0,
+          65408.0
+        ],
+        "seed": 2609101001,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          116453.0,
+          115268.0
+        ],
+        "seed": 2609101009,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          115268.0,
+          116453.0
+        ],
+        "seed": 2609101009,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          78638.0,
+          77247.0
+        ],
+        "seed": 2609101017,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          77247.0,
+          78638.0
+        ],
+        "seed": 2609101017,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          90124.0,
+          88987.0
+        ],
+        "seed": 2609101025,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          88987.0,
+          90124.0
+        ],
+        "seed": 2609101025,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          66869.0,
+          57462.0
+        ],
+        "seed": 2609101001,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          57462.0,
+          66869.0
+        ],
+        "seed": 2609101001,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          116928.0,
+          113593.0
+        ],
+        "seed": 2609101009,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          113593.0,
+          116928.0
+        ],
+        "seed": 2609101009,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          79022.0,
+          69176.0
+        ],
+        "seed": 2609101017,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          69176.0,
+          79022.0
+        ],
+        "seed": 2609101017,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          92083.0,
+          77598.0
+        ],
+        "seed": 2609101025,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          77598.0,
+          92083.0
+        ],
+        "seed": 2609101025,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          98895.0,
+          86975.0
+        ],
+        "seed": 2609101001,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          86975.0,
+          98895.0
+        ],
+        "seed": 2609101001,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          103237.0,
+          93614.0
+        ],
+        "seed": 2609101009,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          93614.0,
+          103237.0
+        ],
+        "seed": 2609101009,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          100051.0,
+          73550.0
+        ],
+        "seed": 2609101017,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          73550.0,
+          100051.0
+        ],
+        "seed": 2609101017,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          87152.0,
+          69022.0
+        ],
+        "seed": 2609101025,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          69022.0,
+          87152.0
+        ],
+        "seed": 2609101025,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          65946.0,
+          41836.0
+        ],
+        "seed": 2609101001,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          41836.0,
+          65946.0
+        ],
+        "seed": 2609101001,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          94333.0,
+          67482.0
+        ],
+        "seed": 2609101009,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          67482.0,
+          94333.0
+        ],
+        "seed": 2609101009,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          80879.0,
+          57975.0
+        ],
+        "seed": 2609101017,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          57975.0,
+          80879.0
+        ],
+        "seed": 2609101017,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          76799.0,
+          37927.0
+        ],
+        "seed": 2609101025,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          37927.0,
+          76799.0
+        ],
+        "seed": 2609101025,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          70095.0,
+          53746.0
+        ],
+        "seed": 2609101001,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          53746.0,
+          70095.0
+        ],
+        "seed": 2609101001,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          96448.0,
+          67078.0
+        ],
+        "seed": 2609101009,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          67078.0,
+          96448.0
+        ],
+        "seed": 2609101009,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          63241.0,
+          37525.0
+        ],
+        "seed": 2609101017,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          37525.0,
+          63241.0
+        ],
+        "seed": 2609101017,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          102763.0,
+          86909.0
+        ],
+        "seed": 2609101025,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          86909.0,
+          102763.0
+        ],
+        "seed": 2609101025,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          64895.0,
+          64653.0
+        ],
+        "seed": 2609101001,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          64653.0,
+          64895.0
+        ],
+        "seed": 2609101001,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          116287.0,
+          114980.0
+        ],
+        "seed": 2609101009,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          114980.0,
+          116287.0
+        ],
+        "seed": 2609101009,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          78387.0,
+          78078.0
+        ],
+        "seed": 2609101017,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          78078.0,
+          78387.0
+        ],
+        "seed": 2609101017,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          90433.0,
+          89942.0
+        ],
+        "seed": 2609101025,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          89942.0,
+          90433.0
+        ],
+        "seed": 2609101025,
+        "status": "complete"
+      }
+    ],
+    "parse_errors": [],
+    "returncode": 0,
+    "seconds": 781.115,
+    "seeds": [
+      2609101001,
+      2609101009,
+      2609101017,
+      2609101025
+    ],
+    "shard": 0,
+    "stderr_tail": "",
+    "stdout_tail": "{\"opponent\": \"arlene\", \"seed\": 2609101001, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [65408.0, 63832.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101001, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [63832.0, 65408.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101009, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [116453.0, 115268.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101009, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [115268.0, 116453.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101017, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [78638.0, 77247.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101017, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [77247.0, 78638.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101025, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [90124.0, 88987.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101025, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [88987.0, 90124.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101001, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [66869.0, 57462.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101001, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [57462.0, 66869.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101009, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [116928.0, 113593.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101009, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [113593.0, 116928.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101017, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [79022.0, 69176.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101017, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [69176.0, 79022.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101025, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [92083.0, 77598.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101025, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [77598.0, 92083.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101001, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [98895.0, 86975.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101001, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [86975.0, 98895.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101009, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [103237.0, 93614.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101009, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [93614.0, 103237.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101017, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [100051.0, 73550.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101017, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [73550.0, 100051.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101025, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [87152.0, 69022.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101025, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [69022.0, 87152.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101001, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [65946.0, 41836.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101001, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [41836.0, 65946.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101009, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [94333.0, 67482.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101009, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [67482.0, 94333.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101017, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [80879.0, 57975.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101017, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [57975.0, 80879.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101025, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [76799.0, 37927.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101025, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [37927.0, 76799.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101001, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [70095.0, 53746.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101001, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [53746.0, 70095.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101009, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [96448.0, 67078.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101009, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [67078.0, 96448.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101017, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [63241.0, 37525.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101017, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [37525.0, 63241.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101025, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [102763.0, 86909.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101025, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [86909.0, 102763.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101001, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [64895.0, 64653.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101001, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [64653.0, 64895.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101009, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [116287.0, 114980.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101009, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [114980.0, 116287.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101017, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [78387.0, 78078.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101017, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [78078.0, 78387.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101025, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [90433.0, 89942.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101025, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [89942.0, 90433.0], \"failure\": null}\nSUMMARY {\"apex_v7\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 9268.25, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"arlene\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 1322.25, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"cok_v10\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 28184.25, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"kaito_v43\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 16543.5, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"public_bt12\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 21822.25, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"v1_submitted\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 587.25, \"candidate_failures\": 0, \"opponent_failures\": 0}}\n"
+  },
+  {
+    "games": [
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          77447.0,
+          74744.0
+        ],
+        "seed": 2609101002,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          74826.0,
+          77375.0
+        ],
+        "seed": 2609101002,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          98323.0,
+          97096.0
+        ],
+        "seed": 2609101010,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          97096.0,
+          98323.0
+        ],
+        "seed": 2609101010,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          54196.0,
+          52466.0
+        ],
+        "seed": 2609101018,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          52466.0,
+          54196.0
+        ],
+        "seed": 2609101018,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          82580.0,
+          80995.0
+        ],
+        "seed": 2609101026,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          80995.0,
+          82580.0
+        ],
+        "seed": 2609101026,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          94786.0,
+          87855.0
+        ],
+        "seed": 2609101002,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          67098.0,
+          73721.0
+        ],
+        "seed": 2609101002,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          96675.0,
+          95713.0
+        ],
+        "seed": 2609101010,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          95713.0,
+          96675.0
+        ],
+        "seed": 2609101010,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          54769.0,
+          44759.0
+        ],
+        "seed": 2609101018,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          44759.0,
+          54769.0
+        ],
+        "seed": 2609101018,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          82679.0,
+          76876.0
+        ],
+        "seed": 2609101026,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          76876.0,
+          82679.0
+        ],
+        "seed": 2609101026,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          90581.0,
+          89796.0
+        ],
+        "seed": 2609101002,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          91110.0,
+          100339.0
+        ],
+        "seed": 2609101002,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          100700.0,
+          93211.0
+        ],
+        "seed": 2609101010,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          93211.0,
+          100700.0
+        ],
+        "seed": 2609101010,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          66033.0,
+          42445.0
+        ],
+        "seed": 2609101018,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          43675.0,
+          65759.0
+        ],
+        "seed": 2609101018,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          103678.0,
+          90319.0
+        ],
+        "seed": 2609101026,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          90319.0,
+          103678.0
+        ],
+        "seed": 2609101026,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          75979.0,
+          49314.0
+        ],
+        "seed": 2609101002,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          49314.0,
+          75979.0
+        ],
+        "seed": 2609101002,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          152074.0,
+          115737.0
+        ],
+        "seed": 2609101010,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          115737.0,
+          152074.0
+        ],
+        "seed": 2609101010,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          70101.0,
+          43862.0
+        ],
+        "seed": 2609101018,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          43678.0,
+          69582.0
+        ],
+        "seed": 2609101018,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          90599.0,
+          79872.0
+        ],
+        "seed": 2609101026,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          79872.0,
+          90599.0
+        ],
+        "seed": 2609101026,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          114131.0,
+          92700.0
+        ],
+        "seed": 2609101002,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          93963.0,
+          119908.0
+        ],
+        "seed": 2609101002,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          98579.0,
+          66740.0
+        ],
+        "seed": 2609101010,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          66740.0,
+          98579.0
+        ],
+        "seed": 2609101010,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          115403.0,
+          93467.0
+        ],
+        "seed": 2609101018,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          91364.0,
+          107813.0
+        ],
+        "seed": 2609101018,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          86486.0,
+          54404.0
+        ],
+        "seed": 2609101026,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          54404.0,
+          86486.0
+        ],
+        "seed": 2609101026,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          76405.0,
+          75471.0
+        ],
+        "seed": 2609101002,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          76178.0,
+          76652.0
+        ],
+        "seed": 2609101002,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          97251.0,
+          96318.0
+        ],
+        "seed": 2609101010,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          96318.0,
+          97251.0
+        ],
+        "seed": 2609101010,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          54605.0,
+          54503.0
+        ],
+        "seed": 2609101018,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          54503.0,
+          54605.0
+        ],
+        "seed": 2609101018,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          82159.0,
+          81543.0
+        ],
+        "seed": 2609101026,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          81543.0,
+          82159.0
+        ],
+        "seed": 2609101026,
+        "status": "complete"
+      }
+    ],
+    "parse_errors": [],
+    "returncode": 0,
+    "seconds": 798.717,
+    "seeds": [
+      2609101002,
+      2609101010,
+      2609101018,
+      2609101026
+    ],
+    "shard": 1,
+    "stderr_tail": "",
+    "stdout_tail": "{\"opponent\": \"arlene\", \"seed\": 2609101002, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [77447.0, 74744.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101002, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [74826.0, 77375.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101010, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [98323.0, 97096.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101010, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [97096.0, 98323.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101018, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [54196.0, 52466.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101018, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [52466.0, 54196.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101026, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [82580.0, 80995.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101026, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [80995.0, 82580.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101002, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [94786.0, 87855.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101002, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [67098.0, 73721.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101010, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [96675.0, 95713.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101010, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [95713.0, 96675.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101018, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [54769.0, 44759.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101018, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [44759.0, 54769.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101026, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [82679.0, 76876.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101026, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [76876.0, 82679.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101002, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [90581.0, 89796.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101002, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [91110.0, 100339.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101010, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [100700.0, 93211.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101010, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [93211.0, 100700.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101018, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [66033.0, 42445.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101018, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [43675.0, 65759.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101026, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [103678.0, 90319.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101026, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [90319.0, 103678.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101002, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [75979.0, 49314.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101002, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [49314.0, 75979.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101010, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [152074.0, 115737.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101010, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [115737.0, 152074.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101018, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [70101.0, 43862.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101018, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [43678.0, 69582.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101026, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [90599.0, 79872.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101026, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [79872.0, 90599.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101002, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [114131.0, 92700.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101002, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [93963.0, 119908.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101010, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [98579.0, 66740.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101010, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [66740.0, 98579.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101018, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [115403.0, 93467.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101018, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [91364.0, 107813.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101026, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [86486.0, 54404.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101026, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [54404.0, 86486.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101002, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [76405.0, 75471.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101002, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [76178.0, 76652.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101010, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [97251.0, 96318.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101010, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [96318.0, 97251.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101018, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [54605.0, 54503.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101018, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [54503.0, 54605.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101026, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [82159.0, 81543.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101026, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [81543.0, 82159.0], \"failure\": null}\nSUMMARY {\"apex_v7\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 5888.0, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"arlene\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 1792.0, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"cok_v10\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 24950.125, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"kaito_v43\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 12172.75, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"public_bt12\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 26700.375, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"v1_submitted\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 588.75, \"candidate_failures\": 0, \"opponent_failures\": 0}}\n"
+  },
+  {
+    "games": [
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          90010.0,
+          87546.0
+        ],
+        "seed": 2609101003,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          87546.0,
+          90010.0
+        ],
+        "seed": 2609101003,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          52441.0,
+          51665.0
+        ],
+        "seed": 2609101011,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          51665.0,
+          52441.0
+        ],
+        "seed": 2609101011,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          88911.0,
+          87733.0
+        ],
+        "seed": 2609101019,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          87733.0,
+          88911.0
+        ],
+        "seed": 2609101019,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          70596.0,
+          69042.0
+        ],
+        "seed": 2609101027,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          68903.0,
+          70725.0
+        ],
+        "seed": 2609101027,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          85402.0,
+          86245.0
+        ],
+        "seed": 2609101003,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          86245.0,
+          85402.0
+        ],
+        "seed": 2609101003,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          54456.0,
+          43468.0
+        ],
+        "seed": 2609101011,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          43468.0,
+          54456.0
+        ],
+        "seed": 2609101011,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          88373.0,
+          87224.0
+        ],
+        "seed": 2609101019,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          87224.0,
+          88373.0
+        ],
+        "seed": 2609101019,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          70138.0,
+          62401.0
+        ],
+        "seed": 2609101027,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          61696.0,
+          70293.0
+        ],
+        "seed": 2609101027,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          95809.0,
+          76102.0
+        ],
+        "seed": 2609101003,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          76102.0,
+          95809.0
+        ],
+        "seed": 2609101003,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          62788.0,
+          42502.0
+        ],
+        "seed": 2609101011,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          42502.0,
+          62788.0
+        ],
+        "seed": 2609101011,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          99542.0,
+          81151.0
+        ],
+        "seed": 2609101019,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          81151.0,
+          99542.0
+        ],
+        "seed": 2609101019,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          133112.0,
+          128403.0
+        ],
+        "seed": 2609101027,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          128403.0,
+          133112.0
+        ],
+        "seed": 2609101027,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          82035.0,
+          56585.0
+        ],
+        "seed": 2609101003,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          56585.0,
+          82035.0
+        ],
+        "seed": 2609101003,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          81216.0,
+          56197.0
+        ],
+        "seed": 2609101011,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          56197.0,
+          81216.0
+        ],
+        "seed": 2609101011,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          85357.0,
+          59245.0
+        ],
+        "seed": 2609101019,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          59245.0,
+          85357.0
+        ],
+        "seed": 2609101019,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          116162.0,
+          93077.0
+        ],
+        "seed": 2609101027,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          92828.0,
+          116035.0
+        ],
+        "seed": 2609101027,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          111655.0,
+          92686.0
+        ],
+        "seed": 2609101003,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          92686.0,
+          111655.0
+        ],
+        "seed": 2609101003,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          69073.0,
+          50126.0
+        ],
+        "seed": 2609101011,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          50126.0,
+          69073.0
+        ],
+        "seed": 2609101011,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          127375.0,
+          100882.0
+        ],
+        "seed": 2609101019,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          100882.0,
+          127375.0
+        ],
+        "seed": 2609101019,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          113571.0,
+          95822.0
+        ],
+        "seed": 2609101027,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          93490.0,
+          114650.0
+        ],
+        "seed": 2609101027,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          90909.0,
+          89601.0
+        ],
+        "seed": 2609101003,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          89601.0,
+          90909.0
+        ],
+        "seed": 2609101003,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          52429.0,
+          52068.0
+        ],
+        "seed": 2609101011,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          52068.0,
+          52429.0
+        ],
+        "seed": 2609101011,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          89020.0,
+          87943.0
+        ],
+        "seed": 2609101019,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          87943.0,
+          89020.0
+        ],
+        "seed": 2609101019,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          70641.0,
+          69419.0
+        ],
+        "seed": 2609101027,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          69290.0,
+          70770.0
+        ],
+        "seed": 2609101027,
+        "status": "complete"
+      }
+    ],
+    "parse_errors": [],
+    "returncode": 0,
+    "seconds": 802.631,
+    "seeds": [
+      2609101003,
+      2609101011,
+      2609101019,
+      2609101027
+    ],
+    "shard": 2,
+    "stderr_tail": "",
+    "stdout_tail": "{\"opponent\": \"arlene\", \"seed\": 2609101003, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [90010.0, 87546.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101003, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [87546.0, 90010.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101011, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [52441.0, 51665.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101011, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [51665.0, 52441.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101019, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [88911.0, 87733.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101019, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [87733.0, 88911.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101027, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [70596.0, 69042.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101027, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [68903.0, 70725.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101003, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [85402.0, 86245.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101003, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [86245.0, 85402.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101011, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [54456.0, 43468.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101011, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [43468.0, 54456.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101019, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [88373.0, 87224.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101019, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [87224.0, 88373.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101027, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [70138.0, 62401.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101027, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [61696.0, 70293.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101003, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [95809.0, 76102.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101003, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [76102.0, 95809.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101011, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [62788.0, 42502.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101011, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [42502.0, 62788.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101019, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [99542.0, 81151.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101019, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [81151.0, 99542.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101027, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [133112.0, 128403.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101027, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [128403.0, 133112.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101003, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [82035.0, 56585.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101003, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [56585.0, 82035.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101011, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [81216.0, 56197.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101011, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [56197.0, 81216.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101019, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [85357.0, 59245.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101019, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [59245.0, 85357.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101027, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [116162.0, 93077.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101027, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [92828.0, 116035.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101003, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [111655.0, 92686.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101003, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [92686.0, 111655.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101011, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [69073.0, 50126.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101011, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [50126.0, 69073.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101019, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [127375.0, 100882.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101019, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [100882.0, 127375.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101027, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [113571.0, 95822.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101027, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [93490.0, 114650.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101003, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [90909.0, 89601.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101003, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [89601.0, 90909.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101011, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [52429.0, 52068.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101011, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [52068.0, 52429.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101019, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [89020.0, 87943.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101019, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [87943.0, 89020.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101027, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [70641.0, 69419.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101027, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [69290.0, 70770.0], \"failure\": null}\nSUMMARY {\"apex_v7\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 6, \"ties\": 0, \"losses\": 2, \"mean_margin\": 4865.25, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"arlene\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 1526.5, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"cok_v10\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 24931.75, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"kaito_v43\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 15773.25, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"public_bt12\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 20965.875, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"v1_submitted\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 1024.25, \"candidate_failures\": 0, \"opponent_failures\": 0}}\n"
+  },
+  {
+    "games": [
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          158610.0,
+          156382.0
+        ],
+        "seed": 2609101004,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          156382.0,
+          158610.0
+        ],
+        "seed": 2609101004,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          81637.0,
+          79510.0
+        ],
+        "seed": 2609101012,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          79510.0,
+          81637.0
+        ],
+        "seed": 2609101012,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          103837.0,
+          102579.0
+        ],
+        "seed": 2609101020,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          102579.0,
+          103837.0
+        ],
+        "seed": 2609101020,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          106465.0,
+          106138.0
+        ],
+        "seed": 2609101028,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          106138.0,
+          106465.0
+        ],
+        "seed": 2609101028,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          155811.0,
+          150427.0
+        ],
+        "seed": 2609101004,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          150427.0,
+          155811.0
+        ],
+        "seed": 2609101004,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          82901.0,
+          74579.0
+        ],
+        "seed": 2609101012,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          74579.0,
+          82901.0
+        ],
+        "seed": 2609101012,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          99480.0,
+          89333.0
+        ],
+        "seed": 2609101020,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          89333.0,
+          99480.0
+        ],
+        "seed": 2609101020,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          106537.0,
+          105038.0
+        ],
+        "seed": 2609101028,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          105038.0,
+          106537.0
+        ],
+        "seed": 2609101028,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          128169.0,
+          119654.0
+        ],
+        "seed": 2609101004,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          119654.0,
+          128169.0
+        ],
+        "seed": 2609101004,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          138632.0,
+          116206.0
+        ],
+        "seed": 2609101012,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          116206.0,
+          138632.0
+        ],
+        "seed": 2609101012,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          108958.0,
+          92124.0
+        ],
+        "seed": 2609101020,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          92124.0,
+          108958.0
+        ],
+        "seed": 2609101020,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          92491.0,
+          84491.0
+        ],
+        "seed": 2609101028,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          84491.0,
+          92491.0
+        ],
+        "seed": 2609101028,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          146929.0,
+          130369.0
+        ],
+        "seed": 2609101004,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          130369.0,
+          146929.0
+        ],
+        "seed": 2609101004,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          82578.0,
+          55645.0
+        ],
+        "seed": 2609101012,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          55645.0,
+          82578.0
+        ],
+        "seed": 2609101012,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          110808.0,
+          90479.0
+        ],
+        "seed": 2609101020,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          90479.0,
+          110808.0
+        ],
+        "seed": 2609101020,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          81795.0,
+          72290.0
+        ],
+        "seed": 2609101028,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          72342.0,
+          81785.0
+        ],
+        "seed": 2609101028,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          122052.0,
+          107157.0
+        ],
+        "seed": 2609101004,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          107157.0,
+          122052.0
+        ],
+        "seed": 2609101004,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          151270.0,
+          134719.0
+        ],
+        "seed": 2609101012,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          134719.0,
+          151270.0
+        ],
+        "seed": 2609101012,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          102757.0,
+          68099.0
+        ],
+        "seed": 2609101020,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          68099.0,
+          102757.0
+        ],
+        "seed": 2609101020,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          102577.0,
+          75976.0
+        ],
+        "seed": 2609101028,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          75976.0,
+          102577.0
+        ],
+        "seed": 2609101028,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          158648.0,
+          156491.0
+        ],
+        "seed": 2609101004,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          156491.0,
+          158648.0
+        ],
+        "seed": 2609101004,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          81657.0,
+          79952.0
+        ],
+        "seed": 2609101012,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          79952.0,
+          81657.0
+        ],
+        "seed": 2609101012,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          104357.0,
+          103365.0
+        ],
+        "seed": 2609101020,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          103365.0,
+          104357.0
+        ],
+        "seed": 2609101020,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          106981.0,
+          105915.0
+        ],
+        "seed": 2609101028,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          105915.0,
+          106981.0
+        ],
+        "seed": 2609101028,
+        "status": "complete"
+      }
+    ],
+    "parse_errors": [],
+    "returncode": 0,
+    "seconds": 800.96,
+    "seeds": [
+      2609101004,
+      2609101012,
+      2609101020,
+      2609101028
+    ],
+    "shard": 3,
+    "stderr_tail": "",
+    "stdout_tail": "{\"opponent\": \"arlene\", \"seed\": 2609101004, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [158610.0, 156382.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101004, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [156382.0, 158610.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101012, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [81637.0, 79510.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101012, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [79510.0, 81637.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101020, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [103837.0, 102579.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101020, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [102579.0, 103837.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101028, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [106465.0, 106138.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101028, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [106138.0, 106465.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101004, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [155811.0, 150427.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101004, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [150427.0, 155811.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101012, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [82901.0, 74579.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101012, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [74579.0, 82901.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101020, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [99480.0, 89333.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101020, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [89333.0, 99480.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101028, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [106537.0, 105038.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101028, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [105038.0, 106537.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101004, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [128169.0, 119654.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101004, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [119654.0, 128169.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101012, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [138632.0, 116206.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101012, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [116206.0, 138632.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101020, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [108958.0, 92124.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101020, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [92124.0, 108958.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101028, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [92491.0, 84491.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101028, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [84491.0, 92491.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101004, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [146929.0, 130369.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101004, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [130369.0, 146929.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101012, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [82578.0, 55645.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101012, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [55645.0, 82578.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101020, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [110808.0, 90479.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101020, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [90479.0, 110808.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101028, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [81795.0, 72290.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101028, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [72342.0, 81785.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101004, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [122052.0, 107157.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101004, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [107157.0, 122052.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101012, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [151270.0, 134719.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101012, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [134719.0, 151270.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101020, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [102757.0, 68099.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101020, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [68099.0, 102757.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101028, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [102577.0, 75976.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101028, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [75976.0, 102577.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101004, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [158648.0, 156491.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101004, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [156491.0, 158648.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101012, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [81657.0, 79952.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101012, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [79952.0, 81657.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101020, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [104357.0, 103365.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101020, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [103365.0, 104357.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101028, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [106981.0, 105915.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101028, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [105915.0, 106981.0], \"failure\": null}\nSUMMARY {\"apex_v7\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 6338.0, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"arlene\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 1485.0, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"cok_v10\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 18324.0, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"kaito_v43\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 13943.75, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"public_bt12\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 23176.25, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"v1_submitted\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 1480.0, \"candidate_failures\": 0, \"opponent_failures\": 0}}\n"
+  },
+  {
+    "games": [
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          86341.0,
+          85796.0
+        ],
+        "seed": 2609101005,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          85673.0,
+          86454.0
+        ],
+        "seed": 2609101005,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          82465.0,
+          81751.0
+        ],
+        "seed": 2609101013,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          81751.0,
+          82465.0
+        ],
+        "seed": 2609101013,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          78185.0,
+          76666.0
+        ],
+        "seed": 2609101021,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          76666.0,
+          78185.0
+        ],
+        "seed": 2609101021,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          69497.0,
+          68446.0
+        ],
+        "seed": 2609101029,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          68446.0,
+          69497.0
+        ],
+        "seed": 2609101029,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          85704.0,
+          85207.0
+        ],
+        "seed": 2609101005,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          90597.0,
+          91945.0
+        ],
+        "seed": 2609101005,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          82130.0,
+          81455.0
+        ],
+        "seed": 2609101013,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          81455.0,
+          82130.0
+        ],
+        "seed": 2609101013,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          77854.0,
+          73188.0
+        ],
+        "seed": 2609101021,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          73188.0,
+          77854.0
+        ],
+        "seed": 2609101021,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          69320.0,
+          59721.0
+        ],
+        "seed": 2609101029,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          59721.0,
+          69320.0
+        ],
+        "seed": 2609101029,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          75305.0,
+          58174.0
+        ],
+        "seed": 2609101005,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          58174.0,
+          75305.0
+        ],
+        "seed": 2609101005,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          110406.0,
+          99237.0
+        ],
+        "seed": 2609101013,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          99237.0,
+          110406.0
+        ],
+        "seed": 2609101013,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          136339.0,
+          102822.0
+        ],
+        "seed": 2609101021,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          52658.0,
+          65630.0
+        ],
+        "seed": 2609101021,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          140473.0,
+          124021.0
+        ],
+        "seed": 2609101029,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          144585.0,
+          147044.0
+        ],
+        "seed": 2609101029,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          82164.0,
+          50861.0
+        ],
+        "seed": 2609101005,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          42701.0,
+          85434.0
+        ],
+        "seed": 2609101005,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          117453.0,
+          97463.0
+        ],
+        "seed": 2609101013,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          97463.0,
+          117453.0
+        ],
+        "seed": 2609101013,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          71417.0,
+          48702.0
+        ],
+        "seed": 2609101021,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          48702.0,
+          71417.0
+        ],
+        "seed": 2609101021,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          86441.0,
+          62540.0
+        ],
+        "seed": 2609101029,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          62540.0,
+          86441.0
+        ],
+        "seed": 2609101029,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          93788.0,
+          65908.0
+        ],
+        "seed": 2609101005,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          65908.0,
+          93788.0
+        ],
+        "seed": 2609101005,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          100533.0,
+          69309.0
+        ],
+        "seed": 2609101013,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          69309.0,
+          100533.0
+        ],
+        "seed": 2609101013,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          84777.0,
+          54200.0
+        ],
+        "seed": 2609101021,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          55924.0,
+          84615.0
+        ],
+        "seed": 2609101021,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          106570.0,
+          86295.0
+        ],
+        "seed": 2609101029,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          86295.0,
+          106570.0
+        ],
+        "seed": 2609101029,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          86651.0,
+          85705.0
+        ],
+        "seed": 2609101005,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          85592.0,
+          86764.0
+        ],
+        "seed": 2609101005,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          82893.0,
+          81573.0
+        ],
+        "seed": 2609101013,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          81573.0,
+          82893.0
+        ],
+        "seed": 2609101013,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          77435.0,
+          77211.0
+        ],
+        "seed": 2609101021,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          77211.0,
+          77435.0
+        ],
+        "seed": 2609101021,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          69405.0,
+          69006.0
+        ],
+        "seed": 2609101029,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          69006.0,
+          69405.0
+        ],
+        "seed": 2609101029,
+        "status": "complete"
+      }
+    ],
+    "parse_errors": [],
+    "returncode": 0,
+    "seconds": 798.062,
+    "seeds": [
+      2609101005,
+      2609101013,
+      2609101021,
+      2609101029
+    ],
+    "shard": 4,
+    "stderr_tail": "",
+    "stdout_tail": "{\"opponent\": \"arlene\", \"seed\": 2609101005, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [86341.0, 85796.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101005, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [85673.0, 86454.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101013, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [82465.0, 81751.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101013, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [81751.0, 82465.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101021, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [78185.0, 76666.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101021, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [76666.0, 78185.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101029, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [69497.0, 68446.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101029, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [68446.0, 69497.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101005, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [85704.0, 85207.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101005, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [90597.0, 91945.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101013, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [82130.0, 81455.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101013, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [81455.0, 82130.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101021, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [77854.0, 73188.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101021, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [73188.0, 77854.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101029, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [69320.0, 59721.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101029, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [59721.0, 69320.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101005, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [75305.0, 58174.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101005, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [58174.0, 75305.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101013, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [110406.0, 99237.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101013, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [99237.0, 110406.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101021, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [136339.0, 102822.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101021, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [52658.0, 65630.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101029, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [140473.0, 124021.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101029, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [144585.0, 147044.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101005, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [82164.0, 50861.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101005, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [42701.0, 85434.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101013, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [117453.0, 97463.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101013, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [97463.0, 117453.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101021, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [71417.0, 48702.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101021, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [48702.0, 71417.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101029, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [86441.0, 62540.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101029, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [62540.0, 86441.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101005, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [93788.0, 65908.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101005, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [65908.0, 93788.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101013, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [100533.0, 69309.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101013, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [69309.0, 100533.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101021, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [84777.0, 54200.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101021, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [55924.0, 84615.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101029, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [106570.0, 86295.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101029, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [86295.0, 106570.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101005, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [86651.0, 85705.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101005, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [85592.0, 86764.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101013, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [82893.0, 81573.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101013, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [81573.0, 82893.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101021, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [77435.0, 77211.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101021, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [77211.0, 77435.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101029, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [69405.0, 69006.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101029, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [69006.0, 69405.0], \"failure\": null}\nSUMMARY {\"apex_v7\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 3965.625, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"arlene\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 986.75, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"cok_v10\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 25906.0, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"kaito_v43\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 15250.0, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"public_bt12\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 27253.25, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"v1_submitted\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 750.5, \"candidate_failures\": 0, \"opponent_failures\": 0}}\n"
+  },
+  {
+    "games": [
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          93599.0,
+          92847.0
+        ],
+        "seed": 2609101006,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          92847.0,
+          93599.0
+        ],
+        "seed": 2609101006,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          140410.0,
+          139364.0
+        ],
+        "seed": 2609101014,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          139364.0,
+          140410.0
+        ],
+        "seed": 2609101014,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          147691.0,
+          146351.0
+        ],
+        "seed": 2609101022,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          146351.0,
+          147691.0
+        ],
+        "seed": 2609101022,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          101914.0,
+          98815.0
+        ],
+        "seed": 2609101030,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          98815.0,
+          101914.0
+        ],
+        "seed": 2609101030,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          93914.0,
+          91399.0
+        ],
+        "seed": 2609101006,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          91399.0,
+          93914.0
+        ],
+        "seed": 2609101006,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          141632.0,
+          133089.0
+        ],
+        "seed": 2609101014,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          133089.0,
+          141632.0
+        ],
+        "seed": 2609101014,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          147861.0,
+          141249.0
+        ],
+        "seed": 2609101022,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          141249.0,
+          147861.0
+        ],
+        "seed": 2609101022,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          100772.0,
+          96349.0
+        ],
+        "seed": 2609101030,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          96349.0,
+          100772.0
+        ],
+        "seed": 2609101030,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          76161.0,
+          65541.0
+        ],
+        "seed": 2609101006,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          65541.0,
+          76161.0
+        ],
+        "seed": 2609101006,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          101076.0,
+          100108.0
+        ],
+        "seed": 2609101014,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          100108.0,
+          101076.0
+        ],
+        "seed": 2609101014,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          88494.0,
+          73324.0
+        ],
+        "seed": 2609101022,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          73324.0,
+          88494.0
+        ],
+        "seed": 2609101022,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          132358.0,
+          124023.0
+        ],
+        "seed": 2609101030,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          124023.0,
+          132358.0
+        ],
+        "seed": 2609101030,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          85860.0,
+          65333.0
+        ],
+        "seed": 2609101006,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          65411.0,
+          85860.0
+        ],
+        "seed": 2609101006,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          97241.0,
+          75220.0
+        ],
+        "seed": 2609101014,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          75220.0,
+          97241.0
+        ],
+        "seed": 2609101014,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          157459.0,
+          129483.0
+        ],
+        "seed": 2609101022,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          129483.0,
+          157459.0
+        ],
+        "seed": 2609101022,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          99406.0,
+          69541.0
+        ],
+        "seed": 2609101030,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          69541.0,
+          99406.0
+        ],
+        "seed": 2609101030,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          140103.0,
+          110744.0
+        ],
+        "seed": 2609101006,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          110744.0,
+          140103.0
+        ],
+        "seed": 2609101006,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          147099.0,
+          122830.0
+        ],
+        "seed": 2609101014,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          122830.0,
+          147099.0
+        ],
+        "seed": 2609101014,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          128267.0,
+          115671.0
+        ],
+        "seed": 2609101022,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          115671.0,
+          128267.0
+        ],
+        "seed": 2609101022,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          101553.0,
+          67890.0
+        ],
+        "seed": 2609101030,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          67890.0,
+          101553.0
+        ],
+        "seed": 2609101030,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          93991.0,
+          92623.0
+        ],
+        "seed": 2609101006,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          92623.0,
+          93991.0
+        ],
+        "seed": 2609101006,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          140558.0,
+          139970.0
+        ],
+        "seed": 2609101014,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          139970.0,
+          140558.0
+        ],
+        "seed": 2609101014,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          148071.0,
+          147608.0
+        ],
+        "seed": 2609101022,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          147608.0,
+          148071.0
+        ],
+        "seed": 2609101022,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          101544.0,
+          99371.0
+        ],
+        "seed": 2609101030,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          99371.0,
+          101544.0
+        ],
+        "seed": 2609101030,
+        "status": "complete"
+      }
+    ],
+    "parse_errors": [],
+    "returncode": 0,
+    "seconds": 778.27,
+    "seeds": [
+      2609101006,
+      2609101014,
+      2609101022,
+      2609101030
+    ],
+    "shard": 5,
+    "stderr_tail": "",
+    "stdout_tail": "{\"opponent\": \"arlene\", \"seed\": 2609101006, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [93599.0, 92847.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101006, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [92847.0, 93599.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101014, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [140410.0, 139364.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101014, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [139364.0, 140410.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101022, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [147691.0, 146351.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101022, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [146351.0, 147691.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101030, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [101914.0, 98815.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101030, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [98815.0, 101914.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101006, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [93914.0, 91399.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101006, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [91399.0, 93914.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101014, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [141632.0, 133089.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101014, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [133089.0, 141632.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101022, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [147861.0, 141249.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101022, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [141249.0, 147861.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101030, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [100772.0, 96349.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101030, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [96349.0, 100772.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101006, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [76161.0, 65541.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101006, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [65541.0, 76161.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101014, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [101076.0, 100108.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101014, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [100108.0, 101076.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101022, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [88494.0, 73324.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101022, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [73324.0, 88494.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101030, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [132358.0, 124023.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101030, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [124023.0, 132358.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101006, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [85860.0, 65333.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101006, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [65411.0, 85860.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101014, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [97241.0, 75220.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101014, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [75220.0, 97241.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101022, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [157459.0, 129483.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101022, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [129483.0, 157459.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101030, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [99406.0, 69541.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101030, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [69541.0, 99406.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101006, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [140103.0, 110744.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101006, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [110744.0, 140103.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101014, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [147099.0, 122830.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101014, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [122830.0, 147099.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101022, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [128267.0, 115671.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101022, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [115671.0, 128267.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101030, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [101553.0, 67890.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101030, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [67890.0, 101553.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101006, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [93991.0, 92623.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101006, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [92623.0, 93991.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101014, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [140558.0, 139970.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101014, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [139970.0, 140558.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101022, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [148071.0, 147608.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101022, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [147608.0, 148071.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101030, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [101544.0, 99371.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101030, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [99371.0, 101544.0], \"failure\": null}\nSUMMARY {\"apex_v7\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 5523.25, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"arlene\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 1559.25, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"cok_v10\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 25087.5, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"kaito_v43\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 8773.25, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"public_bt12\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 24971.75, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"v1_submitted\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 1148.0, \"candidate_failures\": 0, \"opponent_failures\": 0}}\n"
+  },
+  {
+    "games": [
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          87641.0,
+          86913.0
+        ],
+        "seed": 2609101007,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          86799.0,
+          87745.0
+        ],
+        "seed": 2609101007,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          85781.0,
+          84111.0
+        ],
+        "seed": 2609101015,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          84111.0,
+          85781.0
+        ],
+        "seed": 2609101015,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          82357.0,
+          80097.0
+        ],
+        "seed": 2609101023,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          80097.0,
+          82357.0
+        ],
+        "seed": 2609101023,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          82253.0,
+          81334.0
+        ],
+        "seed": 2609101031,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          81334.0,
+          82253.0
+        ],
+        "seed": 2609101031,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          87014.0,
+          85980.0
+        ],
+        "seed": 2609101007,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          85582.0,
+          87176.0
+        ],
+        "seed": 2609101007,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          84876.0,
+          75620.0
+        ],
+        "seed": 2609101015,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          75620.0,
+          84876.0
+        ],
+        "seed": 2609101015,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          81634.0,
+          78800.0
+        ],
+        "seed": 2609101023,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          78800.0,
+          81634.0
+        ],
+        "seed": 2609101023,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          82015.0,
+          73930.0
+        ],
+        "seed": 2609101031,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          73930.0,
+          82015.0
+        ],
+        "seed": 2609101031,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          94252.0,
+          78637.0
+        ],
+        "seed": 2609101007,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          62437.0,
+          82293.0
+        ],
+        "seed": 2609101007,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          59531.0,
+          37766.0
+        ],
+        "seed": 2609101015,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          37766.0,
+          59531.0
+        ],
+        "seed": 2609101015,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          79733.0,
+          75271.0
+        ],
+        "seed": 2609101023,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          75271.0,
+          79733.0
+        ],
+        "seed": 2609101023,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          79377.0,
+          61673.0
+        ],
+        "seed": 2609101031,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          61673.0,
+          79377.0
+        ],
+        "seed": 2609101031,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          85086.0,
+          62037.0
+        ],
+        "seed": 2609101007,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          62743.0,
+          89077.0
+        ],
+        "seed": 2609101007,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          72488.0,
+          43873.0
+        ],
+        "seed": 2609101015,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          43873.0,
+          72488.0
+        ],
+        "seed": 2609101015,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          73349.0,
+          49440.0
+        ],
+        "seed": 2609101023,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          49440.0,
+          73349.0
+        ],
+        "seed": 2609101023,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          142673.0,
+          129779.0
+        ],
+        "seed": 2609101031,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          129779.0,
+          142673.0
+        ],
+        "seed": 2609101031,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          125177.0,
+          114057.0
+        ],
+        "seed": 2609101007,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          96389.0,
+          111462.0
+        ],
+        "seed": 2609101007,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          70702.0,
+          49461.0
+        ],
+        "seed": 2609101015,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          49461.0,
+          70702.0
+        ],
+        "seed": 2609101015,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          104296.0,
+          77045.0
+        ],
+        "seed": 2609101023,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          77045.0,
+          104296.0
+        ],
+        "seed": 2609101023,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          132132.0,
+          121062.0
+        ],
+        "seed": 2609101031,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          121062.0,
+          132132.0
+        ],
+        "seed": 2609101031,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          87373.0,
+          87091.0
+        ],
+        "seed": 2609101007,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          86987.0,
+          87477.0
+        ],
+        "seed": 2609101007,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          85795.0,
+          85246.0
+        ],
+        "seed": 2609101015,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          85246.0,
+          85795.0
+        ],
+        "seed": 2609101015,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          82401.0,
+          79936.0
+        ],
+        "seed": 2609101023,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          79936.0,
+          82401.0
+        ],
+        "seed": 2609101023,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          82288.0,
+          81779.0
+        ],
+        "seed": 2609101031,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          81779.0,
+          82288.0
+        ],
+        "seed": 2609101031,
+        "status": "complete"
+      }
+    ],
+    "parse_errors": [],
+    "returncode": 0,
+    "seconds": 796.775,
+    "seeds": [
+      2609101007,
+      2609101015,
+      2609101023,
+      2609101031
+    ],
+    "shard": 6,
+    "stderr_tail": "",
+    "stdout_tail": "{\"opponent\": \"arlene\", \"seed\": 2609101007, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [87641.0, 86913.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101007, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [86799.0, 87745.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101015, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [85781.0, 84111.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101015, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [84111.0, 85781.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101023, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [82357.0, 80097.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101023, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [80097.0, 82357.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101031, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [82253.0, 81334.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101031, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [81334.0, 82253.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101007, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [87014.0, 85980.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101007, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [85582.0, 87176.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101015, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [84876.0, 75620.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101015, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [75620.0, 84876.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101023, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [81634.0, 78800.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101023, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [78800.0, 81634.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101031, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [82015.0, 73930.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101031, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [73930.0, 82015.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101007, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [94252.0, 78637.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101007, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [62437.0, 82293.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101015, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [59531.0, 37766.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101015, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [37766.0, 59531.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101023, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [79733.0, 75271.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101023, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [75271.0, 79733.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101031, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [79377.0, 61673.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101031, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [61673.0, 79377.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101007, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [85086.0, 62037.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101007, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [62743.0, 89077.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101015, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [72488.0, 43873.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101015, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [43873.0, 72488.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101023, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [73349.0, 49440.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101023, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [49440.0, 73349.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101031, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [142673.0, 129779.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101031, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [129779.0, 142673.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101007, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [125177.0, 114057.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101007, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [96389.0, 111462.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101015, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [70702.0, 49461.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101015, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [49461.0, 70702.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101023, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [104296.0, 77045.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101023, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [77045.0, 104296.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101031, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [132132.0, 121062.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101031, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [121062.0, 132132.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101007, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [87373.0, 87091.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101007, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [86987.0, 87477.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101015, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [85795.0, 85246.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101015, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [85246.0, 85795.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101023, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [82401.0, 79936.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101023, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [79936.0, 82401.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101031, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [82288.0, 81779.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101031, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [81779.0, 82288.0], \"failure\": null}\nSUMMARY {\"apex_v7\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 5372.25, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"arlene\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 1421.5, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"cok_v10\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 22527.375, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"kaito_v43\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 15416.625, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"public_bt12\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 18164.625, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"v1_submitted\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 977.25, \"candidate_failures\": 0, \"opponent_failures\": 0}}\n"
+  },
+  {
+    "games": [
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          80604.0,
+          78430.0
+        ],
+        "seed": 2609101008,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          78430.0,
+          80604.0
+        ],
+        "seed": 2609101008,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          78047.0,
+          77127.0
+        ],
+        "seed": 2609101016,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          76249.0,
+          78868.0
+        ],
+        "seed": 2609101016,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          65677.0,
+          62013.0
+        ],
+        "seed": 2609101024,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          62013.0,
+          65677.0
+        ],
+        "seed": 2609101024,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          82353.0,
+          81872.0
+        ],
+        "seed": 2609101032,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "arlene",
+        "scores": [
+          81872.0,
+          82353.0
+        ],
+        "seed": 2609101032,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          79568.0,
+          76180.0
+        ],
+        "seed": 2609101008,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          76180.0,
+          79568.0
+        ],
+        "seed": 2609101008,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          77735.0,
+          75805.0
+        ],
+        "seed": 2609101016,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          100992.0,
+          104391.0
+        ],
+        "seed": 2609101016,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          68630.0,
+          41078.0
+        ],
+        "seed": 2609101024,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          41078.0,
+          68630.0
+        ],
+        "seed": 2609101024,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          81892.0,
+          80720.0
+        ],
+        "seed": 2609101032,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "apex_v7",
+        "scores": [
+          80720.0,
+          81892.0
+        ],
+        "seed": 2609101032,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          110928.0,
+          99120.0
+        ],
+        "seed": 2609101008,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          99120.0,
+          110928.0
+        ],
+        "seed": 2609101008,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          80748.0,
+          65025.0
+        ],
+        "seed": 2609101016,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          32806.0,
+          61397.0
+        ],
+        "seed": 2609101016,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          72629.0,
+          47273.0
+        ],
+        "seed": 2609101024,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          47273.0,
+          72629.0
+        ],
+        "seed": 2609101024,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          159079.0,
+          130468.0
+        ],
+        "seed": 2609101032,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "kaito_v43",
+        "scores": [
+          130468.0,
+          159079.0
+        ],
+        "seed": 2609101032,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          117708.0,
+          83215.0
+        ],
+        "seed": 2609101008,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          83215.0,
+          117708.0
+        ],
+        "seed": 2609101008,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          82585.0,
+          54853.0
+        ],
+        "seed": 2609101016,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          47354.0,
+          75834.0
+        ],
+        "seed": 2609101016,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          117460.0,
+          83549.0
+        ],
+        "seed": 2609101024,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          83549.0,
+          117460.0
+        ],
+        "seed": 2609101024,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          83697.0,
+          46104.0
+        ],
+        "seed": 2609101032,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "cok_v10",
+        "scores": [
+          46104.0,
+          83697.0
+        ],
+        "seed": 2609101032,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          100364.0,
+          79706.0
+        ],
+        "seed": 2609101008,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          79706.0,
+          100364.0
+        ],
+        "seed": 2609101008,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          131278.0,
+          103382.0
+        ],
+        "seed": 2609101016,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          95408.0,
+          126076.0
+        ],
+        "seed": 2609101016,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          95099.0,
+          55713.0
+        ],
+        "seed": 2609101024,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          55713.0,
+          95099.0
+        ],
+        "seed": 2609101024,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          140225.0,
+          124079.0
+        ],
+        "seed": 2609101032,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "public_bt12",
+        "scores": [
+          124079.0,
+          140225.0
+        ],
+        "seed": 2609101032,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          80755.0,
+          78227.0
+        ],
+        "seed": 2609101008,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          78227.0,
+          80755.0
+        ],
+        "seed": 2609101008,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          77412.0,
+          77127.0
+        ],
+        "seed": 2609101016,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          76445.0,
+          78154.0
+        ],
+        "seed": 2609101016,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          64753.0,
+          64395.0
+        ],
+        "seed": 2609101024,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          64395.0,
+          64753.0
+        ],
+        "seed": 2609101024,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 0,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          82073.0,
+          81767.0
+        ],
+        "seed": 2609101032,
+        "status": "complete"
+      },
+      {
+        "candidate_seat": 1,
+        "failure": null,
+        "opponent": "v1_submitted",
+        "scores": [
+          81767.0,
+          82073.0
+        ],
+        "seed": 2609101032,
+        "status": "complete"
+      }
+    ],
+    "parse_errors": [],
+    "returncode": 0,
+    "seconds": 813.03,
+    "seeds": [
+      2609101008,
+      2609101016,
+      2609101024,
+      2609101032
+    ],
+    "shard": 7,
+    "stderr_tail": "",
+    "stdout_tail": "{\"opponent\": \"arlene\", \"seed\": 2609101008, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [80604.0, 78430.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101008, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [78430.0, 80604.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101016, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [78047.0, 77127.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101016, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [76249.0, 78868.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101024, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [65677.0, 62013.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101024, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [62013.0, 65677.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101032, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [82353.0, 81872.0], \"failure\": null}\n{\"opponent\": \"arlene\", \"seed\": 2609101032, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [81872.0, 82353.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101008, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [79568.0, 76180.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101008, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [76180.0, 79568.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101016, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [77735.0, 75805.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101016, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [100992.0, 104391.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101024, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [68630.0, 41078.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101024, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [41078.0, 68630.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101032, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [81892.0, 80720.0], \"failure\": null}\n{\"opponent\": \"apex_v7\", \"seed\": 2609101032, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [80720.0, 81892.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101008, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [110928.0, 99120.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101008, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [99120.0, 110928.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101016, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [80748.0, 65025.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101016, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [32806.0, 61397.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101024, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [72629.0, 47273.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101024, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [47273.0, 72629.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101032, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [159079.0, 130468.0], \"failure\": null}\n{\"opponent\": \"kaito_v43\", \"seed\": 2609101032, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [130468.0, 159079.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101008, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [117708.0, 83215.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101008, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [83215.0, 117708.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101016, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [82585.0, 54853.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101016, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [47354.0, 75834.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101024, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [117460.0, 83549.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101024, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [83549.0, 117460.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101032, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [83697.0, 46104.0], \"failure\": null}\n{\"opponent\": \"cok_v10\", \"seed\": 2609101032, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [46104.0, 83697.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101008, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [100364.0, 79706.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101008, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [79706.0, 100364.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101016, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [131278.0, 103382.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101016, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [95408.0, 126076.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101024, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [95099.0, 55713.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101024, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [55713.0, 95099.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101032, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [140225.0, 124079.0], \"failure\": null}\n{\"opponent\": \"public_bt12\", \"seed\": 2609101032, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [124079.0, 140225.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101008, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [80755.0, 78227.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101008, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [78227.0, 80755.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101016, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [77412.0, 77127.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101016, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [76445.0, 78154.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101024, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [64753.0, 64395.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101024, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [64395.0, 64753.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101032, \"candidate_seat\": 0, \"status\": \"complete\", \"scores\": [82073.0, 81767.0], \"failure\": null}\n{\"opponent\": \"v1_submitted\", \"seed\": 2609101032, \"candidate_seat\": 1, \"status\": \"complete\", \"scores\": [81767.0, 82073.0], \"failure\": null}\nSUMMARY {\"apex_v7\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 8694.125, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"arlene\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 2022.125, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"cok_v10\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 33525.75, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"kaito_v43\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 21983.0, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"public_bt12\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 26368.0, \"candidate_failures\": 0, \"opponent_failures\": 0}, \"v1_submitted\": {\"scheduled\": 8, \"completed\": 8, \"failed\": 0, \"wins\": 8, \"ties\": 0, \"losses\": 0, \"mean_margin\": 1047.25, \"candidate_failures\": 0, \"opponent_failures\": 0}}\n"
+  }
+]

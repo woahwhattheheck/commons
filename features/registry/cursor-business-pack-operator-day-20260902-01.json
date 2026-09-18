@@ -1,0 +1,39 @@
+{
+  "added": "2026-09-02",
+  "capability": "Sold packs treat the buyer like an employee. Onboarding, training, and a direct do-X list live in packs/_template/day.md. Paid tjlabs support is contact only, never a Commons seat. Support price stays OWNER_UNSET. Fail-to-profit stays in the runbook, not ads.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "ground/BUSINESS_PACK_OPERATOR.md",
+    "ground/BUSINESS_PACK_OPERATOR.json",
+    "host/business_pack_operator.py",
+    "packs/_template/day.md",
+    "business-packs.html",
+    "test_business_pack_operator.py"
+  ],
+  "dependencies": [
+    "business-pack-keep-sell-20260902-01"
+  ],
+  "id": "cursor-business-pack-operator-day-20260902-01",
+  "name": "Business pack employee-day runbook",
+  "next_gap": "Owner pastes the tjlabs support price and live Payment Link. Fill vertical-specific Do X lines. Do not invent a percent or earnings ads.",
+  "owner_subsystem": "business-packs",
+  "public_entrypoint": "business-packs.html",
+  "related": {
+    "boards": true,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "ground/BUSINESS_PACK_OPERATOR.md",
+    "packs/_template/day.md",
+    "business-packs.html",
+    "ground/BUSINESS_PACKS.md",
+    "ground/SLACK_CONTROL_PLANE.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_business_pack_operator.py",
+    "host/business_pack_operator.py"
+  ]
+}

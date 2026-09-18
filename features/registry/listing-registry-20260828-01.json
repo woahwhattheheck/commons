@@ -1,0 +1,37 @@
+{
+  "added": "2026-08-28",
+  "capability": "Canonical offer-by-surface listing registry. Drafts and packages only. submit is forbidden. EXTERNAL_LIVE stays zero without a receipt.",
+  "carrier": "GROK",
+  "claimed_paths": [
+    "ground/LISTING_REGISTRY.md",
+    "host/listing_registry.py",
+    "listing-registry.html",
+    "revenue/listing_registry/registry.json",
+    "test_listing_registry.py"
+  ],
+  "dependencies": [
+    "profitability-build-map-20260826-01"
+  ],
+  "id": "listing-registry-20260828-01",
+  "name": "Listing registry",
+  "next_gap": "Do not submit, invent buyers, or claim EXTERNAL_LIVE. Keep duplicate=false. Route interest to human_route.",
+  "owner_subsystem": "listing-registry",
+  "public_entrypoint": "listing-registry.html",
+  "related": {
+    "boards": false,
+    "current_work": true,
+    "profitability": true,
+    "resources": true
+  },
+  "resource_links": [
+    "ground/LISTING_REGISTRY.md",
+    "listing-registry.html",
+    "ground/PROFITABILITY_BUILD_MAP.md",
+    "resources.html"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_listing_registry.py",
+    "host/listing_registry.py"
+  ]
+}

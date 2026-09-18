@@ -1,0 +1,478 @@
+{
+  "observed_at": "2026-09-07T18:56:41.650179+00:00",
+  "baseline_observed_at": "2026-09-07T18:04:41.879760+00:00",
+  "raw_sha256": "b675ab3a0477be8cde5b39f2a3515fd413a76808506a0a90841e13bdc67c1630",
+  "submissions": [
+    {
+      "submission": {
+        "ref": 56081391,
+        "totalBytes": 33908,
+        "date": "2026-09-07T17:13:57.233Z",
+        "description": "TITAN — Arlene v14 baseline; op titan-kaggriculture-arlene-20260907-02",
+        "errorDescription": null,
+        "fileName": "submission.tar.gz",
+        "publicScore": "2176.3",
+        "privateScore": null,
+        "status": "COMPLETE",
+        "submittedBy": "tokenjunkielabs",
+        "submittedByRef": "tokenjunkielabs",
+        "teamName": "Bryce Muhlnickel",
+        "url": "/submissions/56081391/56081391.raw"
+      },
+      "record": {
+        "wins": 18,
+        "losses": 2,
+        "ties": 4
+      },
+      "by_seat": {
+        "1": {
+          "wins": 10,
+          "losses": 1,
+          "ties": 0
+        },
+        "0": {
+          "wins": 8,
+          "losses": 1,
+          "ties": 4
+        }
+      },
+      "public_count": 24,
+      "new_public_games": [
+        {
+          "id": 106537849,
+          "createTime": "2026-09-07T18:48:27.501Z",
+          "endTime": "2026-09-07T18:52:34.939Z",
+          "state": "COMPLETED",
+          "type": "EPISODE_TYPE_PUBLIC",
+          "agents": [
+            {
+              "submissionId": 56052830,
+              "reward": 125986,
+              "teamName": "Akshay #2",
+              "teamId": 16739543
+            },
+            {
+              "submissionId": 56081391,
+              "index": 1,
+              "reward": 125865,
+              "teamName": "Bryce Muhlnickel",
+              "teamId": 16846069
+            }
+          ]
+        },
+        {
+          "id": 106536915,
+          "createTime": "2026-09-07T18:44:27.574Z",
+          "endTime": "2026-09-07T18:46:30.918Z",
+          "state": "COMPLETED",
+          "type": "EPISODE_TYPE_PUBLIC",
+          "agents": [
+            {
+              "submissionId": 56081391,
+              "reward": 88662,
+              "teamName": "Bryce Muhlnickel",
+              "teamId": 16846069
+            },
+            {
+              "submissionId": 56078938,
+              "index": 1,
+              "reward": 103697,
+              "teamName": "Junichiro Morita",
+              "teamId": 16631752
+            }
+          ]
+        },
+        {
+          "id": 106535982,
+          "createTime": "2026-09-07T18:40:24.959Z",
+          "endTime": "2026-09-07T18:44:15.919Z",
+          "state": "COMPLETED",
+          "type": "EPISODE_TYPE_PUBLIC",
+          "agents": [
+            {
+              "submissionId": 56081391,
+              "reward": 91753,
+              "teamName": "Bryce Muhlnickel",
+              "teamId": 16846069
+            },
+            {
+              "submissionId": 56056254,
+              "index": 1,
+              "reward": 91753,
+              "teamName": "matsurih",
+              "teamId": 16730288
+            }
+          ]
+        },
+        {
+          "id": 106535042,
+          "createTime": "2026-09-07T18:36:25.506Z",
+          "endTime": "2026-09-07T18:39:31.621Z",
+          "state": "COMPLETED",
+          "type": "EPISODE_TYPE_PUBLIC",
+          "agents": [
+            {
+              "submissionId": 56081391,
+              "reward": 85129,
+              "teamName": "Bryce Muhlnickel",
+              "teamId": 16846069
+            },
+            {
+              "submissionId": 56057378,
+              "index": 1,
+              "reward": 85129,
+              "teamName": "automatylicza",
+              "teamId": 16622454
+            }
+          ]
+        },
+        {
+          "id": 106534823,
+          "createTime": "2026-09-07T18:32:27.063Z",
+          "endTime": "2026-09-07T18:35:29.089Z",
+          "state": "COMPLETED",
+          "type": "EPISODE_TYPE_PUBLIC",
+          "agents": [
+            {
+              "submissionId": 56081391,
+              "reward": 141655,
+              "teamName": "Bryce Muhlnickel",
+              "teamId": 16846069
+            },
+            {
+              "submissionId": 56071717,
+              "index": 1,
+              "reward": 141655,
+              "teamName": "Mert Bayraktar",
+              "teamId": 16669686
+            }
+          ]
+        },
+        {
+          "id": 106534115,
+          "createTime": "2026-09-07T18:32:25.280Z",
+          "endTime": "2026-09-07T18:34:38.854Z",
+          "state": "COMPLETED",
+          "type": "EPISODE_TYPE_PUBLIC",
+          "agents": [
+            {
+              "submissionId": 56081391,
+              "reward": 51022,
+              "teamName": "Bryce Muhlnickel",
+              "teamId": 16846069
+            },
+            {
+              "submissionId": 56043219,
+              "index": 1,
+              "reward": 46355,
+              "teamName": "Hikari_30",
+              "teamId": 16641751
+            }
+          ]
+        },
+        {
+          "id": 106533180,
+          "createTime": "2026-09-07T18:28:24.946Z",
+          "endTime": "2026-09-07T18:30:06.000Z",
+          "state": "COMPLETED",
+          "type": "EPISODE_TYPE_PUBLIC",
+          "agents": [
+            {
+              "submissionId": 56081391,
+              "reward": 57834,
+              "teamName": "Bryce Muhlnickel",
+              "teamId": 16846069
+            },
+            {
+              "submissionId": 56076633,
+              "index": 1,
+              "reward": 57834,
+              "teamName": "Junliang Ye",
+              "teamId": 16716566
+            }
+          ]
+        },
+        {
+          "id": 106532235,
+          "createTime": "2026-09-07T18:24:29.602Z",
+          "endTime": "2026-09-07T18:25:51.999Z",
+          "state": "COMPLETED",
+          "type": "EPISODE_TYPE_PUBLIC",
+          "agents": [
+            {
+              "submissionId": 56069000,
+              "reward": 79913,
+              "teamName": "Ace Team",
+              "teamId": 16682879
+            },
+            {
+              "submissionId": 56081391,
+              "index": 1,
+              "reward": 79916,
+              "teamName": "Bryce Muhlnickel",
+              "teamId": 16846069
+            }
+          ]
+        },
+        {
+          "id": 106531304,
+          "createTime": "2026-09-07T18:20:34.376Z",
+          "endTime": "2026-09-07T18:22:32.047Z",
+          "state": "COMPLETED",
+          "type": "EPISODE_TYPE_PUBLIC",
+          "agents": [
+            {
+              "submissionId": 56022963,
+              "reward": 98050,
+              "teamName": "Dmitry Larko",
+              "teamId": 16623608
+            },
+            {
+              "submissionId": 56081391,
+              "index": 1,
+              "reward": 108592,
+              "teamName": "Bryce Muhlnickel",
+              "teamId": 16846069
+            }
+          ]
+        },
+        {
+          "id": 106530375,
+          "createTime": "2026-09-07T18:16:25.408Z",
+          "endTime": "2026-09-07T18:21:04.846Z",
+          "state": "COMPLETED",
+          "type": "EPISODE_TYPE_PUBLIC",
+          "agents": [
+            {
+              "submissionId": 56031830,
+              "reward": 70957,
+              "teamName": "Bruce Zheng",
+              "teamId": 16729102
+            },
+            {
+              "submissionId": 56081391,
+              "index": 1,
+              "reward": 75089,
+              "teamName": "Bryce Muhlnickel",
+              "teamId": 16846069
+            }
+          ]
+        },
+        {
+          "id": 106529454,
+          "createTime": "2026-09-07T18:12:24.112Z",
+          "endTime": "2026-09-07T18:13:50.849Z",
+          "state": "COMPLETED",
+          "type": "EPISODE_TYPE_PUBLIC",
+          "agents": [
+            {
+              "submissionId": 56081391,
+              "reward": 86023,
+              "teamName": "Bryce Muhlnickel",
+              "teamId": 16846069
+            },
+            {
+              "submissionId": 56008070,
+              "index": 1,
+              "reward": 76630,
+              "teamName": "T Soo",
+              "teamId": 16657728
+            }
+          ]
+        },
+        {
+          "id": 106528530,
+          "createTime": "2026-09-07T18:08:25.300Z",
+          "endTime": "2026-09-07T18:13:05.582Z",
+          "state": "COMPLETED",
+          "type": "EPISODE_TYPE_PUBLIC",
+          "agents": [
+            {
+              "submissionId": 56081031,
+              "reward": 134326,
+              "teamName": "141",
+              "teamId": 16670453
+            },
+            {
+              "submissionId": 56081391,
+              "index": 1,
+              "reward": 140918,
+              "teamName": "Bryce Muhlnickel",
+              "teamId": 16846069
+            }
+          ]
+        },
+        {
+          "id": 106527615,
+          "createTime": "2026-09-07T18:04:28.450Z",
+          "endTime": "2026-09-07T18:07:45.740Z",
+          "state": "COMPLETED",
+          "type": "EPISODE_TYPE_PUBLIC",
+          "agents": [
+            {
+              "submissionId": 56081391,
+              "reward": 134843,
+              "teamName": "Bryce Muhlnickel",
+              "teamId": 16846069
+            },
+            {
+              "submissionId": 55931830,
+              "index": 1,
+              "reward": 119433,
+              "teamName": "Mostafa H",
+              "teamId": 16727544
+            }
+          ]
+        }
+      ],
+      "noncompetitive": [
+        {
+          "id": 106516488,
+          "createTime": "2026-09-07T17:13:57.610Z",
+          "endTime": "2026-09-07T17:18:24.912Z",
+          "state": "COMPLETED",
+          "type": "EPISODE_TYPE_VALIDATION",
+          "agents": [
+            {
+              "submissionId": 56081391,
+              "reward": 63629,
+              "teamName": "Bryce Muhlnickel",
+              "teamId": 16846069
+            },
+            {
+              "submissionId": 56081391,
+              "index": 1,
+              "reward": 64273,
+              "teamName": "Bryce Muhlnickel",
+              "teamId": 16846069
+            }
+          ]
+        }
+      ],
+      "delta_from_checkpoint": {
+        "public_games": 13,
+        "wins": 7,
+        "losses": 2,
+        "ties": 4
+      }
+    },
+    {
+      "submission": {
+        "ref": 56074364,
+        "totalBytes": 57711,
+        "date": "2026-09-07T10:01:29.190Z",
+        "description": "TITAN — similarity-gated sales; op titan-kaggriculture-frontier-20260907-01",
+        "errorDescription": null,
+        "fileName": "submission.tar.gz",
+        "publicScore": "1474.7",
+        "privateScore": null,
+        "status": "COMPLETE",
+        "submittedBy": "tokenjunkielabs",
+        "submittedByRef": "tokenjunkielabs",
+        "teamName": "Bryce Muhlnickel",
+        "url": "/submissions/56074364/56074364.raw"
+      },
+      "record": {
+        "wins": 42,
+        "losses": 31,
+        "ties": 0
+      },
+      "by_seat": {
+        "0": {
+          "wins": 26,
+          "losses": 11,
+          "ties": 0
+        },
+        "1": {
+          "wins": 16,
+          "losses": 20,
+          "ties": 0
+        }
+      },
+      "public_count": 73,
+      "new_public_games": [
+        {
+          "id": 106538247,
+          "createTime": "2026-09-07T18:48:28.373Z",
+          "endTime": "2026-09-07T18:51:14.430Z",
+          "state": "COMPLETED",
+          "type": "EPISODE_TYPE_PUBLIC",
+          "agents": [
+            {
+              "submissionId": 56074364,
+              "reward": 104259,
+              "teamName": "Bryce Muhlnickel",
+              "teamId": 16846069
+            },
+            {
+              "submissionId": 56079649,
+              "index": 1,
+              "reward": 98284,
+              "teamName": "ggmljs",
+              "teamId": 16848220
+            }
+          ]
+        },
+        {
+          "id": 106528690,
+          "createTime": "2026-09-07T18:08:25.672Z",
+          "endTime": "2026-09-07T18:13:24.857Z",
+          "state": "COMPLETED",
+          "type": "EPISODE_TYPE_PUBLIC",
+          "agents": [
+            {
+              "submissionId": 56074364,
+              "reward": 95122,
+              "teamName": "Bryce Muhlnickel",
+              "teamId": 16846069
+            },
+            {
+              "submissionId": 56081076,
+              "index": 1,
+              "reward": 120308,
+              "teamName": "K.THARUN KUMAR",
+              "teamId": 16636756
+            }
+          ]
+        }
+      ],
+      "noncompetitive": [
+        {
+          "id": 106416828,
+          "createTime": "2026-09-07T10:01:29.534Z",
+          "endTime": "2026-09-07T10:03:07.359Z",
+          "state": "COMPLETED",
+          "type": "EPISODE_TYPE_VALIDATION",
+          "agents": [
+            {
+              "submissionId": 56074364,
+              "reward": 61777,
+              "teamName": "Bryce Muhlnickel",
+              "teamId": 16846069
+            },
+            {
+              "submissionId": 56074364,
+              "index": 1,
+              "reward": 61777,
+              "teamName": "Bryce Muhlnickel",
+              "teamId": 16846069
+            }
+          ]
+        }
+      ],
+      "delta_from_checkpoint": {
+        "public_games": 2,
+        "wins": 1,
+        "losses": 1,
+        "ties": 0
+      }
+    }
+  ],
+  "quota": {
+    "numToday": 3,
+    "numTotal": 3,
+    "numAllowedNow": 2
+  },
+  "account_rank": 732,
+  "readback_error": {}
+}

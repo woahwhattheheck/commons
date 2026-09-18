@@ -1,0 +1,14 @@
+{
+  "id": "cursor-bazaar-catalog-act-20260822-01",
+  "verb": "PUSH",
+  "target": "bazaar.json",
+  "scope": "github",
+  "ok": true,
+  "output": "exists bazaar.json; live catalog kept. stub PUSH payload was not applied to main.",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": [],
+  "executed_at": "2026-08-22T01:06:50Z",
+  "note": "Executor working tree had been overwritten by the stub issue body. Lander failed on rejects.json. Main catalog remains 7986 B with 7 offers. This latch stops a rematch of the stub."
+}

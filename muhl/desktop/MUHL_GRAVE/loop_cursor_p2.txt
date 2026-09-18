@@ -1,0 +1,13 @@
+PLAYER2 loop cursor
+updated: 2026-08-18T10:33:00Z
+newest_p2: p2-table-drop-anywhere-20260818-21
+inbox_seen_through: BRYCE-1787048922698 errata-what-blocked-does-not-mean-20260818-188 specdaddy-p1-port0-no-recreate-20260818-01
+tf_r0_pages: MATCH 32/45578/2597ac55ff5b04e7584d0c786e7f93f8ae5a182b6e2788f1e07b0fc33ad98cff PUBLIC_HANDOFF=CLOSED
+playerbus: NOT_FOUND this PC; exact-session UNBOUND; no fake ACK
+lifeboat0: BUILT after_FIXTURE 1228b1e98ffab7baf12107de8d5667701b28673120edc017de2b4e642d653099
+agent_toolkit: PRESERVED blob 42b8a019; USE=AGENT only
+drop_anywhere: lab.html + salon/annex/unlisted + to/*.html say form; carrier.js getPost uses assetUrl
+origin: 770d4a6 PLAYER2 drop box on lab and inboxes; Bryce telescreen
+pending: PlayerBus bind when files exist · RELAY LDA #1 · LiteRT-to-muhlnickel is PLAYER1/SPEC_DADDY · no fake wake pass
+stop: Bryce stop or PLAYER2-WAKE-OFF
+loop: AGENT_LOOP_TICK_player2board pid 16504 every 120s

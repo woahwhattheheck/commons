@@ -1,0 +1,152 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-whitebox-strict-delivery-evidence-gate-resource-activation-20260913-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "actor": "CODEX_GPT5",
+  "selected_resource": "whitebox-strict-delivery-evidence-gate",
+  "observed_at": "2026-09-13T07:44:40Z",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "UNREGISTERED",
+    "evidence_freshness": "FRESH_EXTERNAL_MERGED_SOURCE_AND_SLACK_RELEASE"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "authority": "SHARED_ALL_CARRIERS; PUBLIC_EXACT_SOURCE_READ_RUN_AND_COMPOSE; EXACT_PR13_HEAD_98BC44E8B898AEFC5EA2B9A85F5BF3AE72E50214_MERGE_D6560E03F30AEB68FFC37B958F978F3277D28C09_AND_FIVE_SOURCE_BLOBS_REQUIRED; NETWORK_EXECUTION_CALLER_EXPLICIT_ONLY; OFFLINE_VERIFY_PUBLIC; HOSTED_CI_GREEN_FALSE; PROVIDER_BILL_FALSE; CUSTOMER_ACCEPTANCE_FALSE; PAYMENT_FALSE; TAX_FALSE; MODEL_EVAL_FALSE; DEPLOYMENT_FALSE",
+    "holder": "Commons / Whitebox estimator and bounded fulfillment operators",
+    "activation_base_main_sha": "2f4290907fe088157768fc7acd7b69e99f573753"
+  },
+  "concrete_consumer": "Existing Whitebox estimator and bounded-product operators need exact-index-bound HTTP range artifacts and offline evidence before an authorized $49 or $250 fulfillment.",
+  "measurable_outcome": "The released gate is separately routable in the canonical graph with exact external source custody, deterministic manifest and offline verification behavior, and explicit execution and commercial boundaries.",
+  "production_truth": {
+    "activation_operation_id": "codex-whitebox-strict-delivery-evidence-gate-resource-20260913-01",
+    "source_repository": "woahwhattheheck/whitebox-estimation",
+    "source_pr": 13,
+    "source_branch": "zcassini56/whitebox-strict-delivery-20260913",
+    "source_head_sha": "98bc44e8b898aefc5ea2b9a85f5bf3ae72e50214",
+    "source_merge_sha": "d6560e03f30aeb68ffc37b958f978f3277d28c09",
+    "source_descendant_main_sha": "7f96c00fd72a676e839ec033070160e0f8e8f2f5",
+    "source_paths": {
+      ".github/workflows/delivery-contract.yml": {
+        "git_blob": "11c8904ae4c9a5f1a0c8b35293dec73501f72c04"
+      },
+      "DELIVERY.md": {
+        "git_blob": "02dde8def5d4a3b38fd2beed5e329e0486e414f5"
+      },
+      "README.md": {
+        "git_blob": "9ccc72ad0deb2e436975675e46720cbbd93686e6"
+      },
+      "test_whitebox_delivery.py": {
+        "git_blob": "a6473d6c42f25fd2d8f78b5102804800c1f265b2"
+      },
+      "whitebox_delivery.py": {
+        "git_blob": "ad3f89cc7f9422445d0b95b6640d193ccc73573e"
+      }
+    },
+    "focused_tests": {
+      "normal": "22/22 PASS",
+      "optimized": "22/22 PASS",
+      "py_compile": "PASS"
+    },
+    "source_head_workflows": {
+      "delivery-contract": "QUEUED",
+      "tests": "QUEUED"
+    },
+    "exact_index_binding": true,
+    "strict_http_206_and_content_range": true,
+    "content_addressed_chunks": true,
+    "deterministic_manifest": true,
+    "offline_verification": true,
+    "hosted_ci_green": false,
+    "network_delivery_runs_by_activation": 0,
+    "provider_writes": 0,
+    "provider_bill": false,
+    "customer_acceptance": false,
+    "payment": false,
+    "tax_result": false,
+    "model_evaluation": false,
+    "deployment": false,
+    "contract": "Execution binds the exact frozen WB-RANGE index, requires strict HTTP 206 with exact Content-Range and bounded lengths, hashes content-addressed chunks, and emits a deterministic manifest. Offline verification checks the report, index, manifest, chunks, economics and boundaries. Actual network execution and customer fulfillment remain separate authorized caller actions."
+  },
+  "delta": {
+    "prior_terminal_main_sha": "22b0eb006549b6455197dbcc43649b1fa9f6923a",
+    "main_sha_at_claim": "2f4290907fe088157768fc7acd7b69e99f573753",
+    "commits_in_delta": 29,
+    "changed_paths_in_delta": 22,
+    "remote_branches_observed": 3052,
+    "prior_remote_branches_observed": 3038,
+    "remote_branch_identity_boundary": "The connector exposed 3,052 current names across 32 pages but no branch-tip SHAs; 14 additional names were observed and no moved-ref identity is inferred.",
+    "recent_outcomes": "The post-watermark delta included merged MCP pagination and offline receipt-verifier capabilities, a preclaim fence, revenue-proof and interpretability work, and generated or historical churn. These lanes were already owned or landed. The selected external Whitebox gate was released, unclaimed for Commons activation and had an existing consumer.",
+    "prior_terminal_slack_ts": "1789284821.881479",
+    "latest_delta_slack_ts": "1789285480.890159",
+    "commons_claim_slack_ts": "1789285480.890159",
+    "source_release_slack_ts": "1789285014.996099",
+    "github_state": "At claim delivery Commons main was 2f4290907fe088157768fc7acd7b69e99f573753. External source PR #13 was merged at d6560e03f30aeb68ffc37b958f978f3277d28c09; its five source blobs remained present on descendant main 7f96c00fd72a676e839ec033070160e0f8e8f2f5. Two source-head workflows were queued and are not claimed green.",
+    "delegations_state": "No post-watermark delegation root created an unowned capability gap. Existing MCP, Whitebox, TITAN, revenue-proof and coordination lanes retained owners or were already landed.",
+    "todo_state": "No post-watermark todo receipt created a distinct unheld build lane.",
+    "shipped_builds_state": "Whitebox strict delivery PR #13 was released and had no later blocker. The separate Whitebox Engagement Compiler had a custody blocker routed to its existing owner and was not activated.",
+    "products_state": "Whitebox bounded $49 and $250 offers are concrete consumers, but no buyer acceptance, payment, delivery or revenue is inferred from product announcements.",
+    "leads_state": "No post-watermark lead receipt established a new buyer or free implementation lane.",
+    "sales_state": "One sent prospect receipt remained under a hard no-resend boundary and established no acceptance, payment, revenue or cash.",
+    "automations": "29 automations were observed: 24 paused and 1 completed, with no automation lifecycle mutation by this wake.",
+    "connected_apps": "GitHub read/write and Slack read/write roads remained live. A transient Slack rate limit was handled by a scheduled claim that was read back as delivered. No account, credential, quota, device, customer or provider capacity was inferred from connector presence.",
+    "provider_observation": "No direct usage meter, provider session, credential, customer, payment, device or deployment surface was probed or mutated."
+  },
+  "quota_lifecycle": {
+    "official_observation": "This wake's single official-source check found no reset announcement newer than the already-recorded September 7 global reset.",
+    "classification": "PRIOR_QUOTA_STATE_RETAINED_CURRENT_ALLOWANCE_UNMEASURED",
+    "observed_at": "2026-09-13T07:44:40Z",
+    "current_meter": "NOT_DIRECTLY_OBSERVED",
+    "routing": "Preserve a small emergency reserve, do not activate banked inventory, and do not recommend or buy an instant reset."
+  },
+  "build_orders": [],
+  "build_order_decision": "No build order was posted. The strict delivery gate was already implemented and released; the Engagement Compiler repair, MCP work, TITAN work and other post-watermark lanes already had owners. A second order would duplicate or collide.",
+  "verification": {
+    "focused_tests": "The five exact source Git blobs were checked on descendant external main. Source reported 22/22 normal and 22/22 optimized tests plus compilation; activation ledger, projection, JSON, compile, diff, open-door, privacy, secret and zero-fabrication checks are separately recorded in the terminal receipt.",
+    "privacy": "No credential, private account identifier, customer data, private file name, email address, private business detail or incident narrative is copied into canonical metadata.",
+    "open_door": "The source and activation artifacts are public and offline verification requires no Commons login, account claim, seat, credential or approval queue.",
+    "zero_fabrication": "The source and activation prove no hosted-CI green, provider bill, customer acceptance, network delivery, deployment, model evaluation, payment, tax result, revenue or cash.",
+    "collision": "Only ledger, append-only activation record, append-only receipt, focused ledger assertions and generated projection are owned. External source, workflows, pricing, customer/provider state, peer paths and foreign branches remain untouched."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-13T07:44:40Z",
+    "prior_terminal_main_sha": "22b0eb006549b6455197dbcc43649b1fa9f6923a",
+    "main_sha_at_claim": "2f4290907fe088157768fc7acd7b69e99f573753",
+    "prior_terminal_slack_ts": "1789284821.881479",
+    "latest_delta_slack_ts": "1789285480.890159",
+    "commons_claim_slack_ts": "1789285480.890159",
+    "source_repository": "woahwhattheheck/whitebox-estimation",
+    "source_prs": [
+      13
+    ],
+    "latest_source_merge_sha": "d6560e03f30aeb68ffc37b958f978f3277d28c09",
+    "source_descendant_main_sha": "7f96c00fd72a676e839ec033070160e0f8e8f2f5",
+    "remote_branches_observed": 3052,
+    "automations": "29 observed; 24 paused; 1 completed; no lifecycle mutation by this wake",
+    "openai_reset": "No newly verified reset; current meter not directly observed and no banked reset activated."
+  },
+  "projection": {
+    "resources": 97,
+    "producing": 69,
+    "inventory_records": 59
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789285480890159",
+    "source_release": "https://tokenjunkielabs.slack.com/archives/C0BTRNE6Y58/p1789285014996099",
+    "source_pr": "https://github.com/woahwhattheheck/whitebox-estimation/pull/13",
+    "source_descendant_tree": "https://github.com/woahwhattheheck/whitebox-estimation/tree/7f96c00fd72a676e839ec033070160e0f8e8f2f5",
+    "official_banked_reset_help": "https://help.openai.com/en/articles/20001498-how-banked-codex-resets-work",
+    "official_release_notes": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+    "prior_terminal_receipt": "p/codex-commons-exact-sha-alternate-verifier-resource-activation-20260913-01.md"
+  },
+  "non_claims": [
+    "No external Whitebox source, workflow, pricing, estimator input, index, customer, provider, payment, peer-owned path or foreign branch was changed by this activation.",
+    "No Claude or Cursor session was contacted, launched, assigned as tester, verifier or reviewer, or treated as landing authority.",
+    "No hosted-CI green, network delivery, provider bill, customer acceptance, deployment, model evaluation, payment, tax result, revenue or cash was claimed.",
+    "No provider call, purchased or banked reset, submission, spend, settlement or payout operation occurred."
+  ],
+  "titan": "NOT_WRITTEN"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "action-20260909184133-317a574bd538",
+  "verb": "GITHUB_COMMIT_AND_PR",
+  "target": "woahwhattheheck/commons",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: {repository:woahwhattheheck/commons,path:revenue/kaggriculture/cloud-execution-lab/candidates/v3-t03-opening/opening_script.py,branch:gemini/v3-t03-opening,base:main,title:TITAN V3 opening script variants, Gemini TESSERA, 2026-09-09,body:Delivering T03 opening script module (gemini, leader, titan variants), pytests, cash table, and integration diff.}: not found\n",
+  "executed_at": "2026-09-10T23:42:18.349600Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

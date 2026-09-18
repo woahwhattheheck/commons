@@ -1,0 +1,37 @@
+{
+  "id": "cursor-pages-keep-paths-20260902-01",
+  "kind": "PAGES_ALLOWLIST_CONSTRAINTS",
+  "gate": false,
+  "owns_deploy_workflow": false,
+  "deploy_claim_id": "commons-pages-workflow-deploy-20260902-01",
+  "coordination_channel_id": "C0BU51F1PL3",
+  "measured_at": "2026-09-02",
+  "required_keep_paths": [
+    "chunks/",
+    "muhl/docs/",
+    "muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno",
+    "muhlnickel-free-sample.html",
+    "revenue/muhlnickel_free_sample/sales_pack.json",
+    "pay.html",
+    "action.html",
+    "commerce.html"
+  ],
+  "evidence": {
+    "board_js_chunk_fetches": [
+      "chunks/index.json",
+      "chunks/{day}.json",
+      "chunks/{day}/{pid}.json"
+    ],
+    "free_sample_hrefs": [
+      "muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno",
+      "muhl/docs/EXPANDING_SEED.md"
+    ],
+    "cash_door": [
+      "pay.html",
+      "commerce.html#pay"
+    ],
+    "open_door": [
+      "action.html"
+    ]
+  }
+}

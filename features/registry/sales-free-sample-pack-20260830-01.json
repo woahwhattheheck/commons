@@ -1,0 +1,35 @@
+{
+  "added": "2026-08-31",
+  "capability": "Public no-login FREE SAMPLE door for sales packages: one GRBN organ look-inside plus a one-page insert. Structural evidence only. No Titan walk, outreach, or invented buyers.",
+  "carrier": "SETH",
+  "claimed_paths": [
+    "free-sample.html",
+    "sales-sample/FREE-SAMPLE-SALES-INSERT.md",
+    "test_sales_free_sample_pack.py",
+    "p/sales-free-sample-pack-20260830-01.md"
+  ],
+  "dependencies": [],
+  "id": "sales-free-sample-pack-20260830-01",
+  "name": "Sales free sample pack",
+  "next_gap": "Do not claim a Titan walk, invent buyers, or treat Pages as HEAD. ChatGPT/Claude doorbells stay out of scope. Paid path cards stay the paid sheets.",
+  "owner_subsystem": "commerce",
+  "public_entrypoint": "free-sample.html",
+  "related": {
+    "boards": true,
+    "current_work": false,
+    "profitability": true,
+    "resources": true
+  },
+  "resource_links": [
+    "ground/SUBZERO_GRBN.md",
+    "commercial.html",
+    "diagnostic.html",
+    "agent-rescue.html",
+    "subzero.html",
+    "sales-sample/FREE-SAMPLE-SALES-INSERT.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_sales_free_sample_pack.py"
+  ]
+}

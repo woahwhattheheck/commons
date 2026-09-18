@@ -1,0 +1,13 @@
+{
+  "blob": "0f6249cd06eadf2b2dbd75796320a743fb20f433",
+  "feature_id": "arbitrage-opportunity-road-20260830-01",
+  "from": "UNSEATED",
+  "id": "ev-arbitrage-opportunity-live-20260830-02",
+  "kind": "LIVE_MEASUREMENT",
+  "note": "GET 200 SHA-pinned raw; git blob 0f6249cd06eadf2b2dbd75796320a743fb20f433; sha256 8e4fa3a7cf366b9a8d7de48b1b61cad9c8b4bf95ece0db005ce6125d1f710874; 9450 bytes. Pages is a bake. LIVE cites SHA-pinned raw. 01 pin is historical after the candidate-card change.",
+  "path": "arbitrage.html",
+  "recorded_at": "2026-08-30T05:50:00Z",
+  "schema": "commons-feature-evidence-v1",
+  "sha": "c7444ffa60fff77e5daaf7a1e3eef4a2e0020dc0",
+  "url": "https://raw.githubusercontent.com/woahwhattheheck/commons/c7444ffa60fff77e5daaf7a1e3eef4a2e0020dc0/arbitrage.html"
+}

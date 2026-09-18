@@ -1,0 +1,111 @@
+{
+  "schema_version": 2,
+  "operation_id": "RCAP-DCS-ASSESSMENT-DIRECT-BID-ZNP-20260917",
+  "proposal_state": "PROPOSED_NOT_SUBMITTED_NOT_ACCEPTED",
+  "buyer": "Rural Community Assistance Partnership (RCAP)",
+  "base_offer": {
+    "amount_minor": 2450000,
+    "currency": "USD",
+    "display": "$24,500 fixed",
+    "remote_delivery": true,
+    "travel_included": false,
+    "direct_expenses_anticipated": false,
+    "taxes_included": false,
+    "offer_state": "PROPOSED_NOT_ACCEPTED"
+  },
+  "discovery": {
+    "stakeholder_sessions": 6,
+    "stakeholder_session_minutes": 60,
+    "kickoff_included": true,
+    "final_presentation_minutes": 60,
+    "consolidated_written_clarification_cycles": 1
+  },
+  "schedule": {
+    "estimated_weeks": 4,
+    "starts_after": "kickoff and receipt of mutually agreed access/materials",
+    "stakeholder_availability_assumption_business_days": 10
+  },
+  "base_deliverables": [
+    "confirmed work plan and evidence request",
+    "six-session discovery synthesis",
+    "current-state evidence pack with system/context, data/reporting, DCS-Unanet integration, permissions/auditability, resiliency/scalability and issue-ledger views",
+    "vendor-neutral modernization option decision matrix",
+    "System Summary with prioritized findings, risk/effort/sequence and 90-day decision roadmap",
+    "60-minute findings presentation plus one consolidated written clarification cycle"
+  ],
+  "base_exclusions": [
+    "software implementation",
+    "production changes",
+    "security penetration testing",
+    "legal advice or formal compliance certification",
+    "data migration execution",
+    "software licenses",
+    "vendor selection or negotiation"
+  ],
+  "optional_service": {
+    "name": "Implementation Procurement Readiness Package",
+    "amount_minor": 750000,
+    "currency": "USD",
+    "display": "$7,500 fixed",
+    "included_in_base": false,
+    "accepted": false,
+    "contents": [
+      "prioritized requirements backlog",
+      "evaluation matrix",
+      "vendor-neutral RFI or RFP skeleton",
+      "scripted demonstration scenarios",
+      "acceptance checkpoints"
+    ]
+  },
+  "artifacts": {
+    "pdf_filename": "Token_Junkie_Labs_RCAP_DCS_Assessment_Proposal_2026-09-17.pdf",
+    "pdf_sha256": "86a389a0314f1d4f30f3378f4ec491f7f7955a4a77cee378f7f72682ff5f422f",
+    "pdf_pages": 5,
+    "pdf_visual_verification": "PASS_RENDERED_ALL_5_PAGES",
+    "pdf_published_in_repo": true,
+    "submission_eligible": true,
+    "regeneration_required": false,
+    "ineligibility_reason": null,
+    "proposal_source_sha256": "81577b649507ea45e4733c30dbe2bdc1c8b234a5d96761a3c9573345d8a65b12",
+    "superseded_pdf_sha256": "5ac9ec259979476fdfac66929f51ba9febc8c87a36e2fe069231646ac4bfc2c6",
+    "superseded_pdf_pages": 6,
+    "superseded_pdf_reason": "PRE_POLICY_PDF_CONTAINS_FORBIDDEN_COMMONS_BACKLINK",
+    "docx_filename": "Token_Junkie_Labs_RCAP_DCS_Assessment_Proposal_2026-09-17.docx",
+    "docx_sha256": "28c201eb78cf12f2db7abdba23f406ed47b3f64183aeb2f0214b79c07760c60a",
+    "docx_published_in_repo": false
+  },
+  "experience_truth": {
+    "client_references_invented": false,
+    "authorized_client_references_included": false,
+    "public_work_sample": null,
+    "external_work_sample_included": false,
+    "public_commons_backlink_present": false
+  },
+  "submission": {
+    "exact_recipient_resolved": true,
+    "exact_recipient": "gtodd@rcap.org",
+    "route_source_url": "https://www.rcap.org/careers/rfp-assessment-strategic-planning-services/",
+    "route_observed_on": "2026-09-17",
+    "muse_request_ts": [],
+    "muse_explicit_clearance_observed": false,
+    "muse_clearance_ts": null,
+    "provider_send_performed": false,
+    "provider_message_id": null,
+    "provider_thread_id": null,
+    "provider_sent_at": null,
+    "hard_dnr": false
+  },
+  "commercial_truth": {
+    "proposal_submitted": false,
+    "submission_receipt_confirmed": false,
+    "shortlisted_or_interviewed": false,
+    "selected": false,
+    "agreement_or_sow_executed": false,
+    "coi_sufficiency_confirmed": false,
+    "accepted_offer": false,
+    "award": false,
+    "payment": false,
+    "receivable": false,
+    "revenue": false
+  }
+}

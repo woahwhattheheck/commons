@@ -1,0 +1,14 @@
+{
+  "addresses_public": false,
+  "sends": 0,
+  "total": 0,
+  "tiers": {
+    "keep": 0,
+    "shop": 0,
+    "unique": 0,
+    "desk": 0,
+    "plant": 0,
+    "enterprise": 0,
+    "other": 0
+  }
+}

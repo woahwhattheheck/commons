@@ -1,0 +1,41 @@
+test_all_supported_price_shapes (__main__.ProductFundingTests.test_all_supported_price_shapes) ... ok
+test_capacity_clips_requested_quantity (__main__.ProductFundingTests.test_capacity_clips_requested_quantity) ... ok
+test_default_api_matches_old_source_exactly (__main__.ProductFundingTests.test_default_api_matches_old_source_exactly) ... ok
+test_detached_outputs_and_explicit_fallback (__main__.ProductFundingTests.test_detached_outputs_and_explicit_fallback) ... ok
+test_funded_product_then_hire_both_seats (__main__.ProductFundingTests.test_funded_product_then_hire_both_seats) ... ok
+test_instrumentation_matches_unmodified_market_call (__main__.ProductFundingTests.test_instrumentation_matches_unmodified_market_call) ... ok
+test_missing_inventory_and_malformed_bounds_inputs (__main__.ProductFundingTests.test_missing_inventory_and_malformed_bounds_inputs) ... ok
+test_multiple_product_slots_and_capacity_reuse (__main__.ProductFundingTests.test_multiple_product_slots_and_capacity_reuse) ... ok
+test_negative_inventory_bound_is_not_zero_clamped (__main__.ProductFundingTests.test_negative_inventory_bound_is_not_zero_clamped) ... ok
+test_no_sale_receipts_used_as_funding (__main__.ProductFundingTests.test_no_sale_receipts_used_as_funding) ... ok
+test_nonmonotone_or_unknown_parameters_preserve_original (__main__.ProductFundingTests.test_nonmonotone_or_unknown_parameters_preserve_original) ... ok
+test_other_changes_are_never_seed_certified (__main__.ProductFundingTests.test_other_changes_are_never_seed_certified) ... ok
+test_paired_price_grid (__main__.ProductFundingTests.test_paired_price_grid) ... ok
+test_truncated_product_requires_no_market_input (__main__.ProductFundingTests.test_truncated_product_requires_no_market_input) ... ok
+test_underfunded_hire_still_preserves_fallback (__main__.ProductFundingTests.test_underfunded_hire_still_preserves_fallback) ... ok
+test_unsupported_purchase_and_invalid_quantities (__main__.ProductFundingTests.test_unsupported_purchase_and_invalid_quantities) ... ok
+test_zero_product_and_no_seed_edit (__main__.ProductFundingTests.test_zero_product_and_no_seed_edit) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.167s
+
+OK
+{
+  "schema": "cedar-public-product-funding-v1",
+  "engine_sha256": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+  "original_sha256": "d40225f74f37c564dd5e099637defa9dfcf42941fddc5503b60f18fbd2de2302",
+  "runtime_sha256": "bf6c676f06e8b68328ae17c990bb119324b1b4f73d1cfd2ec61941aea1d7cfbf",
+  "test_sha256": "0f92bc60e6afb32e2efedfa9269ae3cb239ab58f50cd27c4fc2f26a94e8a3ca6",
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+  "tests_run": 17,
+  "failure_count": 0,
+  "error_count": 0,
+  "elapsed_s": 0.17478876399997034,
+  "market_calls": 196,
+  "paired_cases": 97,
+  "certified_pairs": 96,
+  "default_comparisons": 240,
+  "full_games": 0,
+  "game_seeds": []
+}

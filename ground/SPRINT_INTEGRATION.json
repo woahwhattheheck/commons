@@ -1,0 +1,69 @@
+{
+  "id": "commons-sprint-integration",
+  "version": "1",
+  "title": "Sprint integration — merge is the default",
+  "default": "MERGE",
+  "checker": "host/sprint_integration.py",
+  "law": "ground/SPRINT_INTEGRATION.md",
+  "pulse": ".github/workflows/repo-pulse.yml",
+  "skill": ".agents/skills/sprint-integration/SKILL.md",
+  "verdicts": [
+    "CLEAR_TO_MERGE",
+    "COMPOSE_AND_MERGE",
+    "DEDUPED",
+    "CONFLICT"
+  ],
+  "conflict_requires": [
+    "same_effective_code",
+    "semantic_disagreement"
+  ],
+  "not_stopping": {
+    "busy_main": "Parallel commits landing on main are not CONFLICT and not a stop.",
+    "stale_base": "A branch whose base is behind main is not CONFLICT and not a stop.",
+    "unrelated_checks": "Failing or pending checks on other paths or jobs are not CONFLICT and not a stop.",
+    "parallel_branches": "Distinct branches are not collisions. Overlap of paths is measured; disagreement of meaning is measured. Neither busy-ness nor branch count is a collision."
+  },
+  "rules": [
+    {
+      "id": "SI-DISJOINT",
+      "when": "Competing work has no overlapping changed paths.",
+      "verdict": "CLEAR_TO_MERGE"
+    },
+    {
+      "id": "SI-IDENTICAL-BLOB",
+      "when": "An overlapping path has the same git blob hash on both sides.",
+      "verdict": "DEDUPED"
+    },
+    {
+      "id": "SI-ADDITIVE-INSERT",
+      "when": "Same path, original lines untouched or identically replaced; remaining hunks are inserts.",
+      "verdict": "COMPOSE_AND_MERGE"
+    },
+    {
+      "id": "SI-JSON-KEY-UNION",
+      "when": "JSON objects or append-only arrays whose keys/items compose without a scalar disagreement.",
+      "verdict": "COMPOSE_AND_MERGE"
+    },
+    {
+      "id": "SI-SEMANTIC-DISAGREE",
+      "when": "The same original line, JSON key, or non-text blob was changed to different bytes.",
+      "verdict": "CONFLICT"
+    }
+  ],
+  "evidence_required": [
+    "base_sha",
+    "left_sha",
+    "right_sha",
+    "overlapping_paths",
+    "blob_hashes",
+    "rule_ids",
+    "reasons"
+  ],
+  "fixtures": {
+    "disjoint": "CLEAR_TO_MERGE",
+    "identical_blobs": "DEDUPED",
+    "additive_compose": "COMPOSE_AND_MERGE",
+    "semantic_conflict": "CONFLICT"
+  },
+  "owner_rule": "Merge is the default. Parallel branches are not collisions. Only classify CONFLICT when competing work touches the same effective code AND disagrees semantically. If paths differ, merge. If the same paths are byte-identical or semantically compatible, dedupe/compose and merge. Busy main, stale base, or unrelated checks are not stopping conditions."
+}
