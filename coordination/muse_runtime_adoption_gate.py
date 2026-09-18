@@ -735,9 +735,11 @@ def _build_cli(*, read_packet=_read_packet, read_diagnostic=_read_diagnostic, co
             packet = read_packet(args.input)
             if args.command == "compile":
                 result = compile_fn(packet)
-            else:
-                result = verify_fn(packet, read_diagnostic(args.diagnostic))
-            return 0 if args.command == "compile" or result["valid"] else 3
+                return 0 if result["status"] == "ATOMIC_SEQUENCE_OBSERVED" else 3
+            result = verify_fn(packet, read_diagnostic(args.diagnostic))
+            return 0 if (
+                result["valid"] and result["current_status"] == "ATOMIC_SEQUENCE_OBSERVED"
+            ) else 3
         except (error_cls, os_error_cls):
             return 2
 
