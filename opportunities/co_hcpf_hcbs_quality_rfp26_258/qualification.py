@@ -266,6 +266,19 @@ def _build_engine(
     utc = timezone.utc
     trusted_clock = clock
     mapping_proxy = MappingProxyType
+    mapping_type = Mapping
+    builtin_type = type
+    builtin_set = set
+    builtin_sorted = sorted
+    builtin_dict = dict
+    builtin_isinstance = isinstance
+    builtin_frozenset = frozenset
+    builtin_len = len
+    builtin_enumerate = enumerate
+    str_type = str
+    int_type = int
+    dict_type = dict
+    list_type = list
 
     def text(value: Any, label: str) -> str:
         if type(value) is not str or not value or value != value.strip():
