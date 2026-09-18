@@ -206,5 +206,50 @@ class WorkflowSurfaceTests(unittest.TestCase):
 
 
 
+
+    def test_pilot_contract_is_consolidated_into_retained_source_parses(self):
+        """Regress 68>67: pilot proof stays live without a standalone workflow slot."""
+        pilot = Path('.github/workflows/pilot-delivery-renewal-expansion-gate.yml')
+        self.assertFalse(pilot.exists())
+        data = json.loads(Path('ci/workflow-surface.json').read_text(encoding='utf-8'))
+        result = surface.check(Path('.'))
+        self.assertEqual(data['max_active_workflows'], 67)
+        self.assertEqual(result['active'], 67)
+        self.assertEqual(result['status'], 'PASS', result['errors'])
+
+        path = Path('.github/workflows/source-parses.yml')
+        parsed = surface.workflow(path.read_bytes())
+        self.assertIn(
+            'revenue/pilot_delivery_renewal_expansion_gate/**',
+            parsed['on']['push']['paths'],
+        )
+        self.assertIn(
+            'test_pilot_delivery_renewal_expansion_gate.py',
+            parsed['on']['push']['paths'],
+        )
+        job = parsed['jobs']['provider-cost-truth']
+        self.assertEqual(job['strategy']['matrix']['python-version'], ['3.11', '3.13'])
+        commands = '\n'.join(
+            str(step.get('run', '')) for step in job['steps'] if isinstance(step, dict)
+        )
+        self.assertIn('revenue/pilot_delivery_renewal_expansion_gate/common.py', commands)
+        self.assertIn('python -m unittest -v test_pilot_delivery_renewal_expansion_gate', commands)
+        self.assertIn('python -O -m unittest -v test_pilot_delivery_renewal_expansion_gate', commands)
+
+    def test_discord_and_inbox_schedules_are_throttled_with_schedule_only_cancellation(self):
+        """Regress private-runner polling fanout without weakening push/manual behavior."""
+        cases = (
+            ('.github/workflows/commons-discord-cloud.yml', '*/15 * * * *'),
+            ('.github/workflows/inbox-visibility.yml', '3 * * * *'),
+        )
+        for path, expected_cron in cases:
+            with self.subTest(path=path):
+                parsed = surface.workflow(Path(path).read_bytes())
+                self.assertEqual(parsed['on']['schedule'], [{'cron': expected_cron}])
+                self.assertEqual(
+                    parsed['concurrency']['cancel-in-progress'],
+                    "${{ github.event_name == 'schedule' }}",
+                )
+
 if __name__ == '__main__':
     unittest.main()
