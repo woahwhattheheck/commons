@@ -57,6 +57,9 @@ def _build_generation(
     _sha256_generation=sha256_json,
     _canon_time_generation=_canon_time,
     _time_generation=_time,
+    _plain_generation=_plain,
+    _utc_generation=UTC,
+    _error_generation=EstateError,
     _max_age: timedelta = timedelta(days=7),
     _packet_schema: str = PACKET_SCHEMA,
     _secret_clear: str = SECRET_CLEAR,
@@ -148,22 +151,22 @@ def _build_generation(
                 "branch_sha": sha,
             }
 
-        raise EstateError("unreachable evidence intent")
+        raise _error_generation("unreachable evidence intent")
 
     def compile_at(snapshot: Any, evidence: Any, *, now: datetime) -> dict[str, Any]:
         snap = _validate_snapshot_generation(snapshot)
         if now.tzinfo is None or now.utcoffset() is None:
-            raise EstateError("trusted current time must be timezone-aware")
-        current = now.astimezone(UTC)
+            raise _error_generation("trusted current time must be timezone-aware")
+        current = now.astimezone(_utc_generation)
         snap_time = _time_generation(snap["captured_at"], "snapshot.captured_at")
         if snap_time > current or current - snap_time > _max_age:
-            raise EstateError("repository snapshot is stale or from the future")
+            raise _error_generation("repository snapshot is stale or from the future")
 
         evmap = _validate_evidence_generation(evidence, current)
         frozen_evidence = _loads_strict_generation(_canonical_json_generation(evidence))
         frozen_evmap = _validate_evidence_generation(frozen_evidence, current)
         if frozen_evmap != evmap:
-            raise EstateError("evidence changed while being frozen")
+            raise _error_generation("evidence changed while being frozen")
         frozen_evidence["repositories"].sort(key=lambda row: row["repository"].casefold())
 
         names = {repo["name"].casefold() for repo in snap["repositories"]}
@@ -171,7 +174,7 @@ def _build_generation(
             ev["repository"] for key, ev in evmap.items() if key not in names
         )
         if extras:
-            raise EstateError(
+            raise _error_generation(
                 f"evidence references repositories absent from snapshot: {extras}"
             )
 
@@ -207,11 +210,11 @@ def _build_generation(
         return packet
 
     def compile_packet(snapshot: Any, evidence: Any) -> dict[str, Any]:
-        return compile_at(snapshot, evidence, now=clock_now(UTC))
+        return compile_at(snapshot, evidence, now=clock_now(_utc_generation))
 
     def verify_packet(packet: Any, snapshot: Any, evidence: Any) -> bool:
         try:
-            obj = _plain(packet, "packet")
+            obj = _plain_generation(packet, "packet")
             if obj.get("authority") != dict(authority):
                 return False
             receipt = obj.get("packet_sha256")
@@ -226,11 +229,11 @@ def _build_generation(
             if _sha256_generation(unsigned) != receipt:
                 return False
             evaluated = _time_generation(obj.get("evaluated_at"), "packet.evaluated_at")
-            current = clock_now(UTC)
+            current = clock_now(_utc_generation)
             if evaluated > current or current - evaluated > _max_age:
                 return False
             return obj == compile_at(snapshot, evidence, now=evaluated)
-        except (EstateError, TypeError, ValueError):
+        except (_error_generation, TypeError, ValueError):
             return False
 
     return _Generation(
