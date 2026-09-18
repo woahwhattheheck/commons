@@ -44,10 +44,13 @@ class CompletionProjectionTests(unittest.TestCase):
     def tearDown(self):
         self.tmp.cleanup()
 
+    def ancestor(self, merge_sha):
+        return merge_sha == "c" * 40
+
     def test_verified_marker_suppresses_only_exact_actionable_route(self):
         marker = cp.build_marker(self.root, OP, self.issue, self.pr)
-        self.assertEqual("wrote", cp.write_marker(self.root, marker))
-        completed = cp.completed_operation_ids(self.root)
+        self.assertEqual("wrote", cp.write_marker(self.root, marker, self.ancestor))
+        completed = cp.completed_operation_ids(self.root, self.ancestor)
         self.assertEqual(frozenset({OP}), completed)
         self.assertTrue(
             cp.is_completed_actionable(
@@ -123,16 +126,28 @@ class CompletionProjectionTests(unittest.TestCase):
 
     def test_source_mismatch_fails_closed_instead_of_hiding_work(self):
         marker = cp.build_marker(self.root, OP, self.issue, self.pr)
-        cp.write_marker(self.root, marker)
+        cp.write_marker(self.root, marker, self.ancestor)
         self.source.write_text("tampered\n", encoding="utf-8")
-        self.assertEqual(frozenset(), cp.completed_operation_ids(self.root))
+        self.assertEqual(frozenset(), cp.completed_operation_ids(self.root, self.ancestor))
 
     def test_reopen_removes_only_matching_issue_marker(self):
         marker = cp.build_marker(self.root, OP, self.issue, self.pr)
-        cp.write_marker(self.root, marker)
+        cp.write_marker(self.root, marker, self.ancestor)
         self.assertFalse(cp.remove_marker(self.root, OP, 99999))
         self.assertTrue(cp.remove_marker(self.root, OP, 15130))
-        self.assertEqual(frozenset(), cp.completed_operation_ids(self.root))
+        self.assertEqual(frozenset(), cp.completed_operation_ids(self.root, self.ancestor))
+
+    def test_reopen_by_issue_number_survives_edited_or_missing_operation_identity(self):
+        marker = cp.build_marker(self.root, OP, self.issue, self.pr)
+        cp.write_marker(self.root, marker, self.ancestor)
+        edited_issue = {
+            "number": 15130,
+            "title": "Edited after completion",
+            "body": "The old operation field was removed.",
+        }
+        self.assertEqual("", cp.stable_operation_id_from_issue(edited_issue))
+        self.assertEqual((OP,), cp.remove_markers_for_issue(self.root, 15130))
+        self.assertEqual(frozenset(), cp.completed_operation_ids(self.root, self.ancestor))
 
     def test_marker_reader_rejects_tampered_provenance(self):
         marker = cp.build_marker(self.root, OP, self.issue, self.pr)
@@ -140,7 +155,20 @@ class CompletionProjectionTests(unittest.TestCase):
         path = self.root / cp.marker_rel(OP)
         path.parent.mkdir(parents=True)
         path.write_text(json.dumps(marker), encoding="utf-8")
-        self.assertEqual(frozenset(), cp.completed_operation_ids(self.root))
+        self.assertEqual(frozenset(), cp.completed_operation_ids(self.root, self.ancestor))
+
+    def test_nonancestor_marker_fails_closed_at_projection_boundary(self):
+        marker = cp.build_marker(self.root, OP, self.issue, self.pr)
+        path = self.root / cp.marker_rel(OP)
+        path.parent.mkdir(parents=True)
+        path.write_text(json.dumps(marker), encoding="utf-8")
+        self.assertFalse(cp.marker_is_valid(self.root, marker, lambda _sha: False))
+        self.assertEqual(
+            frozenset(),
+            cp.completed_operation_ids(self.root, lambda _sha: False),
+        )
+        with self.assertRaises(cp.CompletionEvidenceError):
+            cp.write_marker(self.root, marker, lambda _sha: False)
 
     def test_marker_binds_git_blob_identity(self):
         marker = cp.build_marker(self.root, OP, self.issue, self.pr)
@@ -162,8 +190,10 @@ class CheckedInPredecessorTests(unittest.TestCase):
             "ccab91f74dfec13e1dcb8228b422e044fbc19e08",
             marker["merge"]["merge_commit_sha"],
         )
-        self.assertTrue(cp.marker_is_valid(root, marker))
-        self.assertIn(OP, cp.completed_operation_ids(root))
+        expected_merge = "ccab91f74dfec13e1dcb8228b422e044fbc19e08"
+        verifier = lambda sha: sha == expected_merge
+        self.assertTrue(cp.marker_is_valid(root, marker, verifier))
+        self.assertIn(OP, cp.completed_operation_ids(root, verifier))
 
     def test_projection_wiring_observes_close_reopen_without_faking_open_receipts(self):
         root = Path(__file__).resolve().parent
@@ -175,7 +205,12 @@ class CheckedInPredecessorTests(unittest.TestCase):
         self.assertIn("github.event.action == 'opened'", workflow)
         self.assertIn('PROJECTION_PROTOCOL = "v2"', publisher)
         self.assertIn("completion_projection.source_paths(ROOT)", publisher)
-        self.assertIn("completion_projection.completed_operation_ids(ROOT)", publisher)
+        self.assertIn(
+            "completion_projection.completed_operation_ids(ROOT, _completion_merge_is_ancestor)",
+            publisher,
+        )
+        self.assertIn("remove_markers_for_issue(ROOT, number)", publisher)
+        self.assertIn("_completion_merge_is_ancestor", publisher)
         self.assertIn('action in ("closed", "reopened")', publisher)
 
 
