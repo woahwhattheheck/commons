@@ -652,6 +652,46 @@ def verify_report(
     return True
 
 
+def _read_json(path: str) -> Any:
+    if path == "-":
+        raw = sys.stdin.read(MAX_JSON_BYTES + 1)
+    else:
+        with Path(path).open("rb") as handle:
+            data = handle.read(MAX_JSON_BYTES + 1)
+        if len(data) > MAX_JSON_BYTES:
+            raise AuditError(f"raw JSON exceeds {MAX_JSON_BYTES} bytes")
+        try:
+            raw = data.decode("utf-8", "strict")
+        except UnicodeError as exc:
+            raise AuditError("JSON file must be strict UTF-8") from exc
+    return loads_strict(raw)
+
+
+def _parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description=__doc__)
+    sub = parser.add_subparsers(dest="command", required=True)
+    compile_cmd = sub.add_parser("compile", help="compile retained audit input")
+    compile_cmd.add_argument("input", help="input JSON file or - for stdin")
+    verify_cmd = sub.add_parser("verify", help="verify an audit report")
+    verify_cmd.add_argument("report", help="report JSON file or - for stdin")
+    return parser
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = _parser().parse_args(argv)
+    try:
+        if args.command == "compile":
+            report = build_report(_read_json(args.input))
+            sys.stdout.buffer.write(canonical_json(report) + b"\n")
+            return 0
+        verify_report(_read_json(args.report))
+        sys.stdout.write('{"valid":true}\n')
+        return 0
+    except (AuditError, OSError, UnicodeError) as exc:
+        sys.stderr.write(f"AUDIT_ERROR: {exc}\n")
+        return 2
+
+
 # Seal the trust-bearing semantic generation into a private globals mapping.
 # Capturing a function object alone is insufficient when that function later
 # resolves helpers through the mutable module namespace. These clones share one
@@ -680,6 +720,9 @@ def _seal_semantic_generation() -> dict[str, Any]:
         "_classify",
         "build_report",
         "verify_report",
+        "_read_json",
+        "_parser",
+        "main",
     )
     private_globals = dict(globals())
     for key_name in (
@@ -745,46 +788,9 @@ normalize_packet = _SEALED_SEMANTIC_GENERATION["normalize_packet"]
 _classify = _SEALED_SEMANTIC_GENERATION["_classify"]
 build_report = _SEALED_SEMANTIC_GENERATION["build_report"]
 verify_report = _SEALED_SEMANTIC_GENERATION["verify_report"]
-
-
-def _read_json(path: str) -> Any:
-    if path == "-":
-        raw = sys.stdin.read(MAX_JSON_BYTES + 1)
-    else:
-        with Path(path).open("rb") as handle:
-            data = handle.read(MAX_JSON_BYTES + 1)
-        if len(data) > MAX_JSON_BYTES:
-            raise AuditError(f"raw JSON exceeds {MAX_JSON_BYTES} bytes")
-        try:
-            raw = data.decode("utf-8", "strict")
-        except UnicodeError as exc:
-            raise AuditError("JSON file must be strict UTF-8") from exc
-    return loads_strict(raw)
-
-
-def _parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description=__doc__)
-    sub = parser.add_subparsers(dest="command", required=True)
-    compile_cmd = sub.add_parser("compile", help="compile retained audit input")
-    compile_cmd.add_argument("input", help="input JSON file or - for stdin")
-    verify_cmd = sub.add_parser("verify", help="verify an audit report")
-    verify_cmd.add_argument("report", help="report JSON file or - for stdin")
-    return parser
-
-
-def main(argv: list[str] | None = None) -> int:
-    args = _parser().parse_args(argv)
-    try:
-        if args.command == "compile":
-            report = build_report(_read_json(args.input))
-            sys.stdout.buffer.write(canonical_json(report) + b"\n")
-            return 0
-        verify_report(_read_json(args.report))
-        sys.stdout.write('{"valid":true}\n')
-        return 0
-    except (AuditError, OSError, UnicodeError) as exc:
-        sys.stderr.write(f"AUDIT_ERROR: {exc}\n")
-        return 2
+_read_json = _SEALED_SEMANTIC_GENERATION["_read_json"]
+_parser = _SEALED_SEMANTIC_GENERATION["_parser"]
+main = _SEALED_SEMANTIC_GENERATION["main"]
 
 
 if __name__ == "__main__":
