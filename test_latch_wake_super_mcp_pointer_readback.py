@@ -69,9 +69,9 @@ class TestLatchWakeSuperMcpPointerReadback(unittest.TestCase):
         self.assertNotIn("buy.stripe.com", wakeup_live)
         self.assertNotIn("buy.stripe.com", live_cash)
         self.assertNotIn("donate.stripe.com", live_cash)
-        self.assertIn("https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g", wakeup)
+
         self.assertIn("https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07", wakeup)
-        self.assertIn("https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g", reach)
+
         self.assertIn("https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07", reach)
         self.assertIn("https://commons-spark-mcp.vercel.app/mcp", leftover)
         self.assertIn("wire.html", leftover)

@@ -11,11 +11,6 @@ Examples:
   python3 integrations/transferable_roles/cli.py advance-obligation ROLE --id ob-1 --status done --evidence-pointer p/example.md --store /tmp/roles
   python3 integrations/transferable_roles/cli.py open-obligations --store /tmp/roles
   python3 integrations/transferable_roles/cli.py open-obligations --cash-only --store /tmp/roles
-  python3 integrations/transferable_roles/cli.py autopsy-case ROLE --case-ref case_001 --store /tmp/roles
-  python3 integrations/transferable_roles/cli.py autopsy-receipt-row ROLE --case-ref case_001 --g2-run-id run_1 --store /tmp/roles
-  python3 integrations/transferable_roles/cli.py autopsy-fulfill-deadline ROLE --usable-evidence-at 2026-09-04T15:00:00-04:00 --store /tmp/roles
-  python3 integrations/transferable_roles/cli.py autopsy-fulfill-validate ROLE --store /tmp/roles
-  python3 integrations/transferable_roles/cli.py autopsy-fulfill-sla ROLE --usable-evidence-at 2026-09-04T15:00:00-04:00 --as-of 2026-09-08T10:00:00-04:00 --store /tmp/roles
   python3 integrations/transferable_roles/cli.py diagnostic-contract ROLE --slug dealer --store /tmp/roles
   python3 integrations/transferable_roles/cli.py diagnostic-receipt ROLE --slug dealer --store /tmp/roles
   python3 integrations/transferable_roles/cli.py diagnostic-fulfill-deadline ROLE --slug dealer --usable-evidence-at 2026-09-04T15:00:00-04:00 --store /tmp/roles
@@ -32,8 +27,6 @@ import json
 import sys
 from pathlib import Path
 
-from autopsy_fulfill import run_deadline, run_sla_status, run_validate
-from autopsy_paid import build_g2_case_from_role, build_receipt_row_from_role
 from diagnostic_contract import load_contract_from_role
 from diagnostic_fulfill import run_deadline as run_diagnostic_deadline
 from diagnostic_fulfill import run_sla_status as run_diagnostic_sla
@@ -129,54 +122,6 @@ def build_parser() -> argparse.ArgumentParser:
     a.add_argument("--status", help="open|done|blocked|deferred")
     a.add_argument("--next-action")
     a.add_argument("--evidence-pointer")
-
-    ac = sub.add_parser(
-        "autopsy-case",
-        help="build G2 case via SPARK case_from_autopsy_offer (Autopsy roles only)",
-    )
-    ac.add_argument("role_id")
-    ac.add_argument("--case-ref", required=True)
-    ac.add_argument("--client-reference-id")
-    ac.add_argument("--sku")
-
-    ar = sub.add_parser(
-        "autopsy-receipt-row",
-        help="build opaque seats case_row via SPARK receipt_row_from_case "
-        "(does not append seats.json)",
-    )
-    ar.add_argument("role_id")
-    ar.add_argument("--case-ref", required=True)
-    ar.add_argument("--client-reference-id")
-    ar.add_argument("--sku")
-    ar.add_argument("--g2-run-id")
-    ar.add_argument("--g2-session-id")
-    ar.add_argument("--payment-observed-at")
-    ar.add_argument("--state", default="UNVERIFIED")
-
-    afd = sub.add_parser(
-        "autopsy-fulfill-deadline",
-        help="compute delivery_due_at via landed fulfillment.next_business_day",
-    )
-    afd.add_argument("role_id")
-    afd.add_argument("--usable-evidence-at", required=True)
-
-    afv = sub.add_parser(
-        "autopsy-fulfill-validate",
-        help="validate intake+report via landed fulfillment.validate_bundle "
-        "(defaults to examples/)",
-    )
-    afv.add_argument("role_id")
-    afv.add_argument("--intake", type=Path)
-    afv.add_argument("--report", type=Path)
-    afv.add_argument("--evidence-root", type=Path)
-
-    afs = sub.add_parser(
-        "autopsy-fulfill-sla",
-        help="OPEN|MISSED Autopsy SLA vs as_of via landed next_business_day",
-    )
-    afs.add_argument("role_id")
-    afs.add_argument("--usable-evidence-at", required=True)
-    afs.add_argument("--as-of", required=True)
 
     dc = sub.add_parser(
         "diagnostic-contract",
@@ -344,8 +289,6 @@ def main(argv: list[str] | None = None) -> int:
                     evidence_pointer=args.evidence_pointer,
                 )
             )
-        elif args.cmd == "autopsy-case":
-            role = store.get(args.role_id)
             _print(
                 build_g2_case_from_role(
                     role,
@@ -354,8 +297,6 @@ def main(argv: list[str] | None = None) -> int:
                     sku=args.sku,
                 )
             )
-        elif args.cmd == "autopsy-receipt-row":
-            role = store.get(args.role_id)
             _print(
                 build_receipt_row_from_role(
                     role,
@@ -368,15 +309,11 @@ def main(argv: list[str] | None = None) -> int:
                     state=args.state,
                 )
             )
-        elif args.cmd == "autopsy-fulfill-deadline":
-            role = store.get(args.role_id)
             _print(
                 run_deadline(
                     role, usable_evidence_at=args.usable_evidence_at
                 )
             )
-        elif args.cmd == "autopsy-fulfill-validate":
-            role = store.get(args.role_id)
             _print(
                 run_validate(
                     role,
@@ -385,8 +322,6 @@ def main(argv: list[str] | None = None) -> int:
                     evidence_root=args.evidence_root,
                 )
             )
-        elif args.cmd == "autopsy-fulfill-sla":
-            role = store.get(args.role_id)
             _print(
                 run_sla_status(
                     role,

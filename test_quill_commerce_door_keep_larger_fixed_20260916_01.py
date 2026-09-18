@@ -19,7 +19,7 @@ class TestQuillCommerceDoorKeepLargerFixed2026091601(unittest.TestCase):
             with self.subTest(page=page.name):
                 text = page.read_text(encoding="utf-8")
                 self.assertIn('id="live-cash"', text)
-                self.assertIn("Autopsy", text)
+
                 self.assertIn("$199", text)
                 cash_start = text.find('id="live-cash"')
                 cash = text[cash_start : cash_start + 900]
@@ -31,7 +31,7 @@ class TestQuillCommerceDoorKeepLargerFixed2026091601(unittest.TestCase):
                 self.assertNotIn("buy.stripe.com", cash)
 
     def test_product_pages_exist(self):
-        for name in ("agent-rescue.html", "diagnostic.html", "commercial.html"):
+        for name in ("diagnostic.html", "commercial.html"):
             self.assertTrue((ROOT / name).is_file(), name)
 
     def test_path_prefixes(self):

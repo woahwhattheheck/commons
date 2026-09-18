@@ -24,11 +24,6 @@
     "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Larger fixed engagements are separate product pages (checkout/intent stays there). Canonical payload above stays authoritative. head.html already surfaces Live cash and Larger fixed (sibling tip door JSON). Bake KEEP via llms_txt write_head_json. No invent Stripe URLs.",
     "products": [
       {
-        "name": "Agent Failure Autopsy",
-        "path": "agent-rescue.html",
-        "price_usd": 29
-      },
-      {
         "name": "Dealer Service Lead Rescue",
         "path": "dealer-service-lead-rescue.html",
         "price_usd": 199
@@ -50,9 +45,9 @@
       }
     ]
   },
-  "observed_at": "2026-09-17T09:19:04Z",
+  "observed_at": "2026-09-18T05:49:52Z",
   "schema": "commons-head-v1",
-  "sha": "88fe667d6740227d93f6fd49edb30abbdd6d3774",
+  "sha": "7862b606fdb6274d600c41e450b459c4293f0f0f",
   "source": "scheduled-pages-bake",
   "status": "BAKED_OBSERVATION"
 }

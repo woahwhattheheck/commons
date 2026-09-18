@@ -1,7 +1,7 @@
 {
   "schema": "commons.workflow-surface.v1",
   "source_commit": "4592104ca9fd37f7546b0b39f01badb83f8a1300",
-  "source_workflows": 434,
+  "source_workflows": 435,
   "max_active_workflows": 67,
   "retained": [
     ".github/workflows/affordable-housing-compliance-demo.yml",
@@ -648,6 +648,12 @@
       "archive": "ci/workflow-recipes/kuro0315-episode-custody.yml",
       "sha256": "39a16b5bc1b62661716f4d9552f536a0ec3079947dca0580cc076d61fa29066f",
       "bytes": 1414
+    },
+    {
+      "source": ".github/workflows/ky-fin-reporting-discovery.yml",
+      "archive": "ci/workflow-recipes/ky-fin-reporting-discovery.yml",
+      "sha256": "cdae4ac81633d4f94efb4648b75fc68713550a3ebd9d27cb6926012fee350b6b",
+      "bytes": 734
     },
     {
       "source": ".github/workflows/lacsd-04252-ap-acceptance.yml",

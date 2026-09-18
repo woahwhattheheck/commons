@@ -19,13 +19,13 @@ import unittest
 ROOT = Path(__file__).resolve().parent
 COMMERCE = ROOT / "revenue" / "outcome_commerce"
 EXAMPLES = COMMERCE / "examples"
-FROZEN_RETAINED_SOURCE_LISTINGS_SHA256 = "1530c4ecaf045a16d068df513145f600c724a1f47df70cb764ebfedf7c829072"
+FROZEN_RETAINED_SOURCE_LISTINGS_SHA256 = "d8d3a7adfbbb650051958ab7d84e385e4a7c5192d2c787ebb08502ef178080e3"
 FROZEN_SOURCE_ADAPTERS_SHA256 = "b2593f52e40c6ab4902660a00dce2304f1767ce3a6a5ee2c963d0dd7a3cd4e67"
 RECORDED_STRIPE_SKUS = (
     {
         "id": "sku-tip-20260826",
         "path": "land/sku-tip-20260826.md",
-        "blob_sha": "7e94f42e9a92e166f614916d63712403f6fc77f7",
+        "blob_sha": "e18c2865cf737eb2c76da23012dd0a890ccca202",
         "kind": "fixed",
         "amount_field": "amount",
         "amount": "5.00",
@@ -43,7 +43,7 @@ RECORDED_STRIPE_SKUS = (
     {
         "id": "sku-seat-20260826",
         "path": "land/sku-seat-20260826.md",
-        "blob_sha": "235c94284c14c179388b5e53b4b9d0f6a8a0dd7d",
+        "blob_sha": "7f7d41a94333a72cbd1f641f0c437557f3a95361",
         "kind": "subscription",
         "amount_field": "amount",
         "amount": "5.00",
@@ -61,7 +61,7 @@ RECORDED_STRIPE_SKUS = (
     {
         "id": "sku-unlock-20260826",
         "path": "land/sku-unlock-20260826.md",
-        "blob_sha": "258734957efc727f46f6315804b6034487e98896",
+        "blob_sha": "e607d3ba7cd24dd542b24a1e8be9e8579d6745ce",
         "kind": "fixed",
         "amount_field": "amount",
         "amount": "5.00",
@@ -79,7 +79,7 @@ RECORDED_STRIPE_SKUS = (
     {
         "id": "sku-monthly-tip-20260826",
         "path": "land/sku-monthly-tip-20260826.md",
-        "blob_sha": "b2c54753a82683a70831588366e35114ad644a65",
+        "blob_sha": "ec94c5a6113ce6de6fd601f8bd438d5e6b117b2f",
         "kind": "subscription",
         "amount_field": "amount",
         "amount": "3.00",
@@ -97,7 +97,7 @@ RECORDED_STRIPE_SKUS = (
     {
         "id": "sku-boost-20260826",
         "path": "land/sku-boost-20260826.md",
-        "blob_sha": "4fd23e7a10e90a5c988f3581d77e83b86e212884",
+        "blob_sha": "885dd967197935ca69cc25482f52fea09d2c5bc3",
         "kind": "subscription",
         "amount_field": "amount",
         "amount": "4.99",
@@ -115,7 +115,7 @@ RECORDED_STRIPE_SKUS = (
     {
         "id": "sku-whitebox-hour-20260826",
         "path": "land/sku-whitebox-hour-20260826.md",
-        "blob_sha": "62625136a9e5abfe77d9e7afa59e8ee67571b33e",
+        "blob_sha": "49cc55559e93595b22bbcef15de6f74ac8e0f3f4",
         "kind": "usage",
         "amount_field": "unit_amount",
         "amount": "250.00",
@@ -133,7 +133,7 @@ RECORDED_STRIPE_SKUS = (
     {
         "id": "sku-muhlnickel-titan-20260826",
         "path": "land/sku-muhlnickel-titan-20260826.md",
-        "blob_sha": "fa4ef433b0b233bb3ddc633c1828957e5d75e453",
+        "blob_sha": "6fb73c5837ac37ec7f48cc6efc12cc98797f12d8",
         "kind": "fixed",
         "amount_field": "amount",
         "amount": "45000.00",
@@ -173,7 +173,7 @@ DIAGNOSTIC_SKUS = (
     {
         "id": "referral-intake-completeness",
         "path": "revenue/referral_intake_completeness/contract.json",
-        "blob_sha": "06bb53685f6aaca69ff08b436771fe115e0aa38b",
+        "blob_sha": "c42254704953b8a91f3cfcaec0045f8af9bbdb2e",
         "page": "referral-intake-completeness.html",
         "url": "https://buy.stripe.com/9B600i98N77b9uFeBk43S0c",
         "commercial_key": "commercial",
@@ -191,18 +191,7 @@ DIAGNOSTIC_SKUS = (
         "window_key": "diagnostic_delivery",
     },
 )
-VERIFIED_AGENT_FAILURE_AUTOPSY = {
-    "id": "agent-failure-autopsy-29",
-    "path": "revenue/agent_failure_autopsy/offer.json",
-    "blob_sha": "f61bb20aa54bec123ec37c8022b1517bde6294aa",
-    "page": "agent-rescue.html",
-    "url": "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
-    "product": "prod_VCevsvv7skWk3e",
-    "price": "price_1UCFbHATH4EDE7XD4NNrjfUe",
-    "plink": "plink_1UCFbLATH4EDE7XDlTunr6iO",
-    "observed_at": "2026-09-05T09:13:12.9504913+00:00",
-    "receipt_sha256": "39ce997a58fe256b11c82963559452ec167bb8c2c7f42c67ad7ce790052e7b42",
-}
+RETIRED_LISTING_IDS = ("agent-failure-autopsy-29", "same-day-agent-survival-proof")
 
 _SPEC = importlib.util.spec_from_file_location(
     "commons_outcome_commerce", ROOT / "host" / "outcome_commerce.py"
@@ -821,8 +810,8 @@ class OutcomeCommerceTests(unittest.TestCase):
         ordered = sorted(funnels, key=lambda ident: funnels[ident]["priority"])
         self.assertEqual(ordered[:3], [
             "sku-tip-20260826",
-            "agent-failure-autopsy-29",
             "sku-monthly-tip-20260826",
+            "production-survival-sprint",
         ])
         by_id = {row["id"]: row for row in listings}
         for listing_id, funnel in funnels.items():
@@ -857,72 +846,14 @@ class OutcomeCommerceTests(unittest.TestCase):
             self.assertEqual(funnel["measurement"]["dom_action"], expected_action)
             self.assertEqual(funnel["measurement"]["first_evidence_state"], expected_first)
         truth = self.catalog["funnel_truth"]
-        self.assertEqual(truth["distinct_targets"], 13)
-        self.assertEqual(truth["delivered_transports"], 18)
+        self.assertEqual(truth["distinct_targets"], 14)
+        self.assertEqual(truth["delivered_transports"], 19)
         self.assertEqual(truth["verified_positive_replies"], 0)
         self.assertEqual(truth["accepted_scopes"], 0)
         self.assertEqual(truth["paid_deliveries"], 0)
         self.assertEqual(truth["collected_cash_usd"], "0.00")
         self.assertEqual(truth["next_edge"], "QUALIFIED_BUYER")
         self.assertIn("p/slack-1787769698-642529.md", truth["source"])
-
-    def test_verified_agent_failure_autopsy_matches_source_page_and_provider_receipt(self) -> None:
-        spec = VERIFIED_AGENT_FAILURE_AUTOPSY
-        page = (ROOT / "agent-rescue.html").read_text(encoding="utf-8")
-        self.assertEqual(page.count(spec["url"]), 2)
-        self.assertNotIn("checkout button will appear only after", page.lower())
-        source_path = ROOT / spec["path"]
-        offer = read_json(source_path)
-        self.assertEqual(git_hash_object(source_path), spec["blob_sha"])
-        self.assertEqual(offer["offer_id"], spec["id"])
-        self.assertEqual(offer["name"], "Agent Failure Autopsy")
-        self.assertEqual(offer["status"], "ACTIVE_VERIFIED")
-        self.assertEqual(offer["price"]["amount"], 29)
-        self.assertEqual(offer["price"]["payment_url"], spec["url"])
-        self.assertEqual(offer["price"]["payment_url_state"], "LIVE_VERIFIED")
-        self.assertEqual(offer["price"]["provider_product_id"], spec["product"])
-        self.assertEqual(offer["price"]["provider_price_id"], spec["price"])
-        self.assertEqual(offer["price"]["provider_payment_link_id"], spec["plink"])
-        self.assertEqual(offer["price"]["verified_at_utc"], spec["observed_at"])
-        self.assertEqual(offer["price"]["provider_receipt_sha256"], spec["receipt_sha256"])
-
-        by_id = {row["id"]: row for row in self.catalog["listings"]}
-        row = by_id[spec["id"]]
-        self.assertEqual(row["source"], {
-            "path": spec["path"],
-            "pointer": "",
-            "offer_id": spec["id"],
-            "blob_sha": spec["blob_sha"],
-            "terms_authority": "source",
-        })
-        self.assertEqual(row["pricing"]["components"][0]["amount"], "29.00")
-        self.assertEqual(row["routes"], {
-            "human": spec["page"],
-            "machine": spec["path"],
-        })
-        self.assertEqual(row["checkout"], {
-            "status": "ACTIVE_CHARGEABLE",
-            "provider": "stripe",
-            "url": spec["url"],
-            "link_active": True,
-            "account_charges_enabled": True,
-            "account_payouts_enabled": True,
-            "capability_evidence": {
-                "reference": (
-                    "provider-receipt-sha256:" + spec["receipt_sha256"]
-                    + "+account-capability-snapshot:2026-08-28T16:10:00Z"
-                ),
-                "observed_at": spec["observed_at"],
-            },
-        })
-        funnel = self.catalog["funnels"][spec["id"]]
-        self.assertEqual(funnel["readiness"], "READY_FOR_CHECKOUT")
-        self.assertEqual(funnel["conversion"]["status"], "ACTIVE_CHARGEABLE")
-        self.assertEqual(funnel["fulfillment"]["deliverables"], offer["delivery"])
-        self.assertEqual(funnel["fulfillment"]["refund"], offer["refund"])
-        ids = set(by_id)
-        self.assertNotIn("same-day-agent-survival-proof", ids)
-        self.assertNotIn("same-day-agent-survival-proof", self.catalog["funnels"])
 
     def test_canonical_catalog_requires_the_complete_funnel_triad(self) -> None:
         candidate = copy.deepcopy(self.catalog)
@@ -1022,8 +953,12 @@ class OutcomeCommerceTests(unittest.TestCase):
             ],
             [spec["path"] for spec in DIAGNOSTIC_SKUS],
         )
-        self.assertIn(
-            VERIFIED_AGENT_FAILURE_AUTOPSY["path"],
+        by_listing_id = {row["id"] for row in self.catalog["listings"]}
+        for retired_id in RETIRED_LISTING_IDS:
+            self.assertNotIn(retired_id, by_listing_id)
+            self.assertNotIn(retired_id, self.catalog["funnels"])
+        self.assertNotIn(
+            "revenue/agent_failure_autopsy/offer.json",
             self.catalog["integration_sources"],
         )
         self.assertEqual(
@@ -1352,7 +1287,7 @@ class OutcomeCommerceTests(unittest.TestCase):
         listing = catalog["listings"][0]
         listing["source_artifact"] = {
             "path": "land/sku-tip-20260826.md",
-            "blob_sha": "7e94f42e9a92e166f614916d63712403f6fc77f7",
+            "blob_sha": "e18c2865cf737eb2c76da23012dd0a890ccca202",
             "terms_authority": "source",
         }
         with self.assertRaises(SchemaError):
@@ -1664,9 +1599,17 @@ var checkout = {
 var snapshot = {
   provider: {
     name: "stripe", livemode: true, charges_enabled: true, payouts_enabled: true,
+    card_payments: "active", transfers: "active",
     currently_due: []
   },
-  inert_duplicate_urls: []
+  inert_duplicate_urls: [],
+  canonical_rails: ids.map(function (id) {
+    return {
+      sku: id, url: checkout.url, link_active: true, livemode: true,
+      exposure: "INTAKE_FIRST",
+      evidence: {reference: "stripe:test", observed_at: "2026-08-30T00:00:00Z"}
+    };
+  })
 };
 var payHrefs = ids.map(function (id) {
   var slot = {innerHTML: ""};
@@ -1821,8 +1764,8 @@ process.stdout.write(JSON.stringify({payHrefs: payHrefs, resolved: resolved, noH
                 or row["target_id"]
             )
         self.assertEqual(len(contacts), truth["distinct_targets"])
-        self.assertEqual(truth["delivered_transports"], 18)
-        self.assertEqual(truth["distinct_targets"], 13)
+        self.assertEqual(truth["delivered_transports"], 19)
+        self.assertEqual(truth["distinct_targets"], 14)
         for target_id, provider_reference in (
             ("metaforms", "apollo:emailer_message:6a8f9759437c7d0010ef8788"),
             ("dexmate", "apollo:emailer_message:6a8f9f8cc46158001490e2f4"),
@@ -1846,13 +1789,14 @@ process.stdout.write(JSON.stringify({payHrefs: payHrefs, resolved: resolved, noH
         self.assertIsNone(upvest[0]["response_reference"])
         self.assertEqual(
             {row["response_state"] for row in receipts},
-            {"UNKNOWN", "NO_REPLY_OBSERVED"},
+            {"UNKNOWN", "NO_REPLY_OBSERVED", "DO_NOT_RESEND"},
         )
         self.assertTrue(all(row["facts"]["legal_acceptance"] == "NOT_LANDED" for row in receipts))
         self.assertTrue(all(row["facts"]["cash_claimed"] is False for row in receipts))
         self.assertTrue(all(row["facts"]["collected_cash_usd"] == 0 for row in receipts))
         self.assertTrue(
-            all(row["facts"]["buyer_authorization"] == "UNKNOWN" for row in receipts)
+            {row["facts"]["buyer_authorization"] for row in receipts}
+            <= {"UNKNOWN", "REJECTED_CONTACT"}
         )
         current = read_json(ROOT / "revenue" / "payment_ready" / "current_receipt.json")
         self.assertEqual(current["facts"]["collected_cash_usd"], 0)
@@ -1865,9 +1809,9 @@ process.stdout.write(JSON.stringify({payHrefs: payHrefs, resolved: resolved, noH
         receipts = sorted(
             (ROOT / "revenue" / "payment_ready" / "outreach_receipts").glob("*.json")
         )
-        self.assertEqual(len(receipts), 18)
-        self.assertEqual(truth["delivered_transports"], 18)
-        self.assertEqual(truth["distinct_targets"], 13)
+        self.assertEqual(len(receipts), 19)
+        self.assertEqual(truth["delivered_transports"], 19)
+        self.assertEqual(truth["distinct_targets"], 14)
         self.assertIn("20260828-langfuse-1a0496451e052b9d.json", truth["source"])
         self.assertIn("20260830-composio-1a053aa4f8a0014a.json", truth["source"])
         self.assertEqual(truth["collected_cash_usd"], "0.00")
@@ -1897,9 +1841,9 @@ process.stdout.write(JSON.stringify({payHrefs: payHrefs, resolved: resolved, noH
 
     def test_composio_hard_dnr_zero_cash_advances_funnel_truth(self) -> None:
         truth = self.catalog["funnel_truth"]
-        self.assertEqual(truth["as_of"], "2026-08-30T17:14:25Z")
-        self.assertEqual(truth["delivered_transports"], 18)
-        self.assertEqual(truth["distinct_targets"], 13)
+        self.assertEqual(truth["as_of"], "2026-09-14T06:06:39Z")
+        self.assertEqual(truth["delivered_transports"], 19)
+        self.assertEqual(truth["distinct_targets"], 14)
         self.assertIn("20260830-composio-1a053aa4f8a0014a.json", truth["source"])
         row = read_json(
             ROOT

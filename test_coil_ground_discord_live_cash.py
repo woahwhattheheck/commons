@@ -4,7 +4,7 @@ from __future__ import annotations
 import unittest
 from pathlib import Path
 DOC = Path(__file__).resolve().parent / "ground" / "DISCORD.md"
-REQUIRED = ["## Live cash","../agent-rescue.html","../dealer-service-lead-rescue.html","../referral-intake-completeness.html","../repair-booking-preflight.html","../plant-downtime-handoff.html","$29 Autopsy","$199 dealer diagnostic"]
+REQUIRED = ["## Live cash","../dealer-service-lead-rescue.html","../referral-intake-completeness.html","../repair-booking-preflight.html","../plant-downtime-handoff.html","$199 dealer diagnostic"]
 class T(unittest.TestCase):
     def test(self):
         t=DOC.read_text(encoding="utf-8")

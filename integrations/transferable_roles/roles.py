@@ -172,8 +172,6 @@ def _forbid_refund_secrets(refund: str) -> str:
 def _role_cash_fields(role: dict[str, Any]) -> dict[str, Any] | None:
     """amount_usd + refund for cash open-obligation rows when tools resolve them.
 
-    autopsy_fulfillment → offer.json price.amount + refund (forbid sk_/rk_/whsec_/
-    prod_/price_/plink_ in refund).
     diagnostic_contract / diagnostic_fulfill → commercial.diagnostic_usd +
     commercial.refund (same forbid).
     Else None. If a matching tool is present but the landed source is unreadable,
@@ -184,19 +182,6 @@ def _role_cash_fields(role: dict[str, Any]) -> dict[str, Any] | None:
         if isinstance(tool, dict) and tool.get("name"):
             names.add(str(tool["name"]).strip())
     root = _commons_root()
-    if "autopsy_fulfillment" in names:
-        path = root / "revenue" / "agent_failure_autopsy" / "offer.json"
-        try:
-            data = json.loads(path.read_text(encoding="utf-8"))
-            amount = int(data["price"]["amount"])
-            refund = _forbid_refund_secrets(data["refund"])
-            return {"amount_usd": amount, "refund": refund}
-        except RoleError:
-            raise
-        except Exception as exc:  # noqa: BLE001 — surface offer bugs fail-closed
-            raise RoleError(
-                f"autopsy_fulfillment present but offer cash fields unreadable: {exc}"
-            ) from exc
     if "diagnostic_contract" in names or "diagnostic_fulfill" in names:
         path = root / "revenue" / "dealer_service_lead_rescue" / "contract.json"
         try:
@@ -338,7 +323,7 @@ class RoleStore:
         Rows for roles that route `payment_capability` stamp
         `payment_capability: true` so mixed CRM + paid stores separate cash work.
         When tools resolve cash fields, cash rows also stamp `amount_usd` and
-        `refund` (autopsy offer price.amount+refund / diagnostic
+        `refund` (diagnostic
         commercial.diagnostic_usd+refund).
         When cash_only is True, keep only rows with payment_capability is True.
         This marker does not establish that payment has occurred.

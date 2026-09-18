@@ -75,19 +75,6 @@ def _passthrough_catalog(value, checkout_authority=None):
     return value
 
 
-def _dummy_checkout_authority(catalog_as_of):
-    authority = control.CHECKOUT_AUTHORITY
-    return {
-        "active": True,
-        "offer_id": authority["offer_id"],
-        "provider": authority["provider"],
-        "public_checkout_page": "agent-rescue.html",
-        "payment_url": authority["payment_url"],
-        "provider_payment_link_id": authority["provider_payment_link_id"],
-        "provider_receipt_sha256": authority["provider_receipt_sha256"],
-        "verified_at_utc": "2026-09-01T00:00:00Z",
-    }
-
 
 def _zero_cash_summary(ledger):
     return {
@@ -111,7 +98,6 @@ class RightNowAwardsIntegrationTests(unittest.TestCase):
             "revenue/payment_ready/outreach_receipts",
             "revenue/human_outcomes",
             "revenue/production_survival",
-            "revenue/agent_failure_autopsy",
         ):
             (root / relative).mkdir(parents=True, exist_ok=True)
 
@@ -121,7 +107,7 @@ class RightNowAwardsIntegrationTests(unittest.TestCase):
                 "collected_cash_usd": 0,
                 "verified_positive_replies": 0,
                 "accepted_scopes": 0,
-                "active_chargeable_checkout": True,
+                "active_chargeable_checkout": False,
             },
             "offers": [
                 {
@@ -131,7 +117,7 @@ class RightNowAwardsIntegrationTests(unittest.TestCase):
                     "price_usd": 29,
                     "delivery_window": "one day",
                     "start_route": "offer.html",
-                    "payment_state": "LIVE_PUBLIC_CHECKOUT_PAGE",
+                    "payment_state": "BUYER_SPECIFIC_HANDOFF_REQUIRED",
                     "next_external_event": "buyer pays",
                     "founder_bottleneck": "confirm",
                     "commons_bottleneck": "deliver",
@@ -153,8 +139,7 @@ class RightNowAwardsIntegrationTests(unittest.TestCase):
         (root / "revenue/right_now/catalog.json").write_text(
             json.dumps(catalog), encoding="utf-8"
         )
-        for name in ("diagnostic_offer.json", "autopsy_offer.json"):
-            (root / "revenue/right_now" / name).write_text("{}", encoding="utf-8")
+        (root / "revenue/right_now/diagnostic_offer.json").write_text("{}", encoding="utf-8")
         (root / "revenue/right_now/settled_awards.json").write_text(
             (ROOT / "revenue/right_now/settled_awards.json").read_text(encoding="utf-8"),
             encoding="utf-8",
@@ -170,8 +155,6 @@ class RightNowAwardsIntegrationTests(unittest.TestCase):
             ),
             encoding="utf-8",
         )
-        (root / "revenue/agent_failure_autopsy/offer.json").write_text("{}", encoding="utf-8")
-        (root / "agent-rescue.html").write_text("<html></html>\n", encoding="utf-8")
         (root / "revenue/smart_outreach/candidates.json").write_text(
             "{}", encoding="utf-8"
         )
@@ -186,9 +169,6 @@ class RightNowAwardsIntegrationTests(unittest.TestCase):
         paths = {
             "CATALOG_PATH": root / "revenue/right_now/catalog.json",
             "DIAGNOSTIC_PATH": root / "revenue/right_now/diagnostic_offer.json",
-            "AUTOPSY_PATH": root / "revenue/right_now/autopsy_offer.json",
-            "AUTOPSY_PROVIDER_PATH": root / "revenue/agent_failure_autopsy/offer.json",
-            "AUTOPSY_PUBLIC_PAGE_PATH": root / "agent-rescue.html",
             "SETTLED_AWARDS_PATH": root / "revenue/right_now/settled_awards.json",
             "SETTLED_CASH_PATH": root / "revenue/right_now/settled_cash.json",
             "OUTREACH_PATH": root / "revenue/smart_outreach/candidates.json",
@@ -206,13 +186,9 @@ class RightNowAwardsIntegrationTests(unittest.TestCase):
             setattr(core, name, value)
         original["validate_catalog"] = control.validate_catalog
         original["_core_validate_catalog"] = core.validate_catalog
-        original["build_checkout_authority"] = control.build_checkout_authority
-        original["_core_build_checkout_authority"] = core.build_checkout_authority
         original["__cash_summarize"] = core.settled_cash.summarize_ledger
         control.validate_catalog = _passthrough_catalog
         core.validate_catalog = _passthrough_catalog
-        control.build_checkout_authority = _dummy_checkout_authority
-        core.build_checkout_authority = _dummy_checkout_authority
         core.settled_cash.summarize_ledger = _zero_cash_summary
         return original
 
@@ -265,25 +241,6 @@ class RightNowAwardsIntegrationTests(unittest.TestCase):
                     control.build_control()
             finally:
                 self.restore(original)
-
-    def test_awards_bind_keeps_checkout_authority_offline(self) -> None:
-        with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory)
-            self.fixture(root)
-            original = self.bind(root)
-            try:
-                value = control.build_control()
-                authority = control.build_checkout_authority("2026-09-05T09:50:00Z")
-                core_authority = control._core.build_checkout_authority(
-                    "2026-09-05T09:50:00Z"
-                )
-            finally:
-                self.restore(original)
-        self.assertEqual(value["truth"]["paid_awards"], 1)
-        self.assertEqual(authority["offer_id"], control.CHECKOUT_AUTHORITY["offer_id"])
-        self.assertEqual(core_authority["payment_url"], authority["payment_url"])
-        self.assertIs(authority["active"], True)
-
 
 if __name__ == "__main__":
     unittest.main()

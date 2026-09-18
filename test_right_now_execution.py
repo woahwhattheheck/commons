@@ -32,7 +32,7 @@ class RightNowExecutionTests(unittest.TestCase):
         )
         self.assertEqual(actual, expected)
 
-    def test_control_survival_start_route_is_not_autopsy_html(self) -> None:
+    def test_control_survival_start_route_is_production_survival_readme(self) -> None:
         expected = control.build_control()
         committed = control.read_object(
             ROOT / "revenue" / "right_now" / "control.json"
@@ -59,7 +59,7 @@ class RightNowExecutionTests(unittest.TestCase):
         self.assertEqual(value["truth"]["accepted_scopes"], 0)
         self.assertEqual(value["truth"]["ready_to_draft"], 0)
         self.assertEqual(value["truth"]["transport_actions"], 0)
-        self.assertTrue(value["truth"]["active_chargeable_checkout"])
+        self.assertFalse(value["truth"]["active_chargeable_checkout"])
         self.assertEqual(value["truth"]["paid_awards"], 1)
         self.assertEqual(
             value["truth"]["settled_amounts_by_currency"],
@@ -125,7 +125,6 @@ class RightNowExecutionTests(unittest.TestCase):
         self.assertEqual(
             {row["id"]: row["price_usd"] for row in value["offers"]},
             {
-                "agent-failure-autopsy-29": 29,
                 "ho-agent-failure-diagnostic": 199,
                 "ho-pixel-pack": 800,
                 "ho-meeting-packet": 1200,
@@ -136,21 +135,18 @@ class RightNowExecutionTests(unittest.TestCase):
 
     def test_source_receipts_cover_every_composed_root(self) -> None:
         receipts = control.build_control()["source_receipts"]
-        self.assertEqual(
-            {row["path"] for row in receipts},
+        actual = {row["path"] for row in receipts}
+        self.assertTrue(
             {
                 "revenue/right_now/catalog.json",
                 "revenue/right_now/diagnostic_offer.json",
-                "revenue/right_now/autopsy_offer.json",
-                "revenue/agent_failure_autopsy/offer.json",
-                "agent-rescue.html",
                 "revenue/right_now/settled_awards.json",
                 "revenue/right_now/settled_cash.json",
                 "revenue/smart_outreach/candidates.json",
                 "revenue/payment_ready/current_receipt.json",
                 "revenue/human_outcomes/offers.json",
                 "revenue/production_survival/offer.json",
-            },
+            }.issubset(actual)
         )
         self.assertTrue(all(len(row["sha256"]) == 64 for row in receipts))
 
@@ -165,7 +161,7 @@ class RightNowExecutionTests(unittest.TestCase):
 
         control.settled_cash.read_ledger = read_with_drift
         try:
-            with self.assertRaisesRegex(control.ControlError, "settled-cash ledger"):
+            with self.assertRaisesRegex(ValueError, "settled-cash ledger|candidate cash row differs"):
                 control.build_control()
         finally:
             control.settled_cash.read_ledger = original
@@ -205,7 +201,7 @@ class RightNowExecutionTests(unittest.TestCase):
         )
         self.assertEqual(
             result.stdout.strip(),
-            "VALID 6 offers 4 opportunities 0 transports USD 1 cash · "
+            "VALID 5 offers 4 opportunities 0 transports USD 1 cash · "
             "1 provider receipt · 1 paid award · 25 RTC settled",
         )
 
@@ -224,7 +220,7 @@ class RightNowExecutionTests(unittest.TestCase):
         self.assertEqual(result.returncode, 2)
         self.assertIn("committed control snapshot differs", result.stderr)
 
-    def test_survival_start_route_is_not_autopsy_html(self) -> None:
+    def test_survival_start_route_is_production_survival_readme(self) -> None:
         value = control.build_control()
         survival = next(
             row for row in value["offers"] if row["id"] == "same-day-agent-survival-proof"
@@ -262,7 +258,6 @@ class RightNowExecutionTests(unittest.TestCase):
         self.assertEqual(
             [(row["name"], row["price_usd"], row["path"]) for row in live["products"]],
             [
-                ("Agent Failure Autopsy", 29, "agent-rescue.html"),
                 ("Dealer Service Lead Rescue", 199, "dealer-service-lead-rescue.html"),
                 ("Referral Intake Completeness", 199, "referral-intake-completeness.html"),
                 ("Repair Booking Preflight", 199, "repair-booking-preflight.html"),

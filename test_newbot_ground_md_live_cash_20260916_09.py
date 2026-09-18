@@ -22,7 +22,6 @@ FILES = [
     "ground/SWARM_SESSION_IDENTITY_CLAIMS.md",
 ]
 PRODUCTS = [
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",

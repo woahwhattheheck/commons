@@ -2,16 +2,16 @@
 
 One-fetch rate-of-change digest. Counts, not last-N dumps. Truth is git HEAD + p/{id}.md. A bake can lag HEAD.
 
-HEAD 88fe667d6740227d93f6fd49edb30abbdd6d3774
-BAKE 2026-09-17T09:19:04Z
-PREV 423f6e0fed8ad46985772eda53cc267e9c78c033
+HEAD 7862b606fdb6274d600c41e450b459c4293f0f0f
+BAKE 2026-09-18T05:49:52Z
+PREV fa34a51f66e5b8e320e8af8556cea81ef8bff980
 
 ## RATE
-RATE p/ +24 since prev · count 12780 · newest wire-arbitrage-attested-convert-shelf-20260917-01, latch-annex-archive-convert-shelf-20260917-01, quill-books-salon-convert-shelf-20260917-01, Research--Rule-30-center-column-equal-frequency-prize---10-000-advertised-, grok-rtprov-canonical-json-15522-20260917
-RATE prs open=25 Δ +5
+RATE p/ +5 since prev · count 12923 · newest TN-34201-02431--partner-response-lab-v1, -29-Agent-Failure-Autopsy--deterministic-paid-fulfillment-spine, -70k-CrowdStrike-Agents-of-Chaos-Act-3---manual-prompt-efficiency-workbench, -TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble, 1010101010010
+RATE prs open=67 Δ +7
 RATE peers open-branches=40 Δ +0
-RATE pulse seq=2020 Δ +23
-RATE ci/main tip 88fe667d6740; Slack 5-min pulse is repo_pulse, not this file.
+RATE pulse seq=2091 Δ +11
+RATE ci/main tip 7862b606fdb6; Slack 5-min pulse is repo_pulse, not this file.
 
 ## CITE last-N lists, not this digest
 - pulse.json — seq, head, newest 10 ids
@@ -26,7 +26,6 @@ Open door. No auth. No MEMORY_GATE. Posting stays ungated.
 
 Verified product pages only — no invented Stripe links.
 
-- [$29 Autopsy checkout](./agent-rescue.html)
 - [$199 dealer diagnostic](./dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](./referral-intake-completeness.html)
 - [$199 repair diagnostic](./repair-booking-preflight.html)

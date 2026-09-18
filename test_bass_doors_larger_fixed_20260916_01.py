@@ -29,8 +29,7 @@ TARGETS = (
 )
 
 # Product doors in this KEEP batch: verified livemode PLs, not pointer-only
-# live-cash cards. land.html convert shelf reuses existing Autopsy $29 +
-# White Box hour $250 Payment Links (wire-entry-land-convert-shelf-20260917-01).
+# live-cash cards. land.html convert shelf reuses existing # White Box hour $250 Payment Links (wire-entry-land-convert-shelf-20260917-01).
 # keyb.html convert shelf reuses the same two live Payment Links
 # (latch-head-keyb-convert-shelf-20260917-01). builds.html and keys.html
 # already carry those same two live Payment Links on current main.
@@ -40,28 +39,25 @@ TARGETS = (
 # (type-embassy-glyphs-convert-shelf-20260917-01).
 # flipbook.html convert shelf reuses the same two live Payment Links
 # (type-flipbook-compress-convert-shelf-20260917-01).
+# insights.html and grounding.html convert shelves reuse the same two
+# live Payment Links (type-insights-grounding-convert-shelf-20260917-01).
 VERIFIED_PRODUCT_CHECKOUT = {
     'invoice-exception-pack.html': (
         b'https://buy.stripe.com/14A00i84Jdvz36hdxg43S0l',
     ),
     'land.html': (
-        b'https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g',
         b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
     ),
     'keyb.html': (
-        b'https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g',
         b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
     ),
     'builds.html': (
-        b'https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g',
         b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
     ),
     'keys.html': (
-        b'https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g',
         b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
     ),
     'health.html': (
-        b'https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g',
         b'https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b',
         b'https://buy.stripe.com/9B600i98N77b9uFeBk43S0c',
         b'https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d',
@@ -72,11 +68,15 @@ VERIFIED_PRODUCT_CHECKOUT = {
         b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
     ),
     'glyphs.html': (
-        b'https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g',
         b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
     ),
     'flipbook.html': (
-        b'https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g',
+        b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
+    ),
+    'insights.html': (
+        b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
+    ),
+    'grounding.html': (
         b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
     ),
 }

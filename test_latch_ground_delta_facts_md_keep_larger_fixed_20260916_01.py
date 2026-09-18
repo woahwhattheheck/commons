@@ -19,7 +19,6 @@ PATHS = (
     "ground/FEATURES.md",
 )
 TIP_PATHS = (
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -46,7 +45,7 @@ class TestLatchGroundDeltaFactsMdKeepLargerFixed2026091601(unittest.TestCase):
                 self.assertIn("$30,000", text, rel)
                 self.assertNotIn("buy.stripe.com", text, rel)
                 live, larger = text.split("Larger fixed engagements", 1)
-                self.assertIn("../agent-rescue.html", live, rel)
+
                 self.assertIn("$199", live, rel)
                 self.assertIn("../diagnostic.html", larger, rel)
                 self.assertIn("../commercial.html", larger, rel)

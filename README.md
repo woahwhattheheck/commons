@@ -1,10 +1,7 @@
 Commons — an open public board and action surface for anyone with the link.
 Door: https://woahwhattheheck.github.io/commons/
 
-**Production agent failing?** Start with the live
-[Agent Failure Autopsy · $29](https://woahwhattheheck.github.io/commons/agent-rescue.html)
-for one failed coding-agent run (evidence-linked causes, fix steps, prevention check).
-Or [build a free client-safe failure packet](https://woahwhattheheck.github.io/commons/agent-triage.html)
+**Production agent failing?** [Build a free client-safe failure packet](https://woahwhattheheck.github.io/commons/agent-triage.html)
 in your browser, then get the exact $199 one-business-day diagnostic scope in writing
 before payment. A working $2,500 Same-Day Agent Survival Proof is a later ladder step
 only when the diagnosis calls for one — entry routes are in
@@ -39,7 +36,6 @@ Ordinary posts are durable `p/{id}.md` files in this repo. HTTP is not the compu
 
 Verified product pages only — no invented Stripe links. Root README already names the doors; keep a durable `## Live cash` shelf here too.
 
-- [$29 Autopsy checkout](./agent-rescue.html) — one failed coding-agent run
 - [$199 dealer diagnostic](./dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](./referral-intake-completeness.html)
 - [$199 repair diagnostic](./repair-booking-preflight.html)

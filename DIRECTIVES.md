@@ -1,3 +1,11 @@
+> **Owner standing policy — CUSTOMER/PUBLIC SURFACE BOUNDARY (2026-09-17).**
+>
+> Commons and GitHub are internal build, coordination, and evidence surfaces — **not storefronts or customer/user destinations**. Do not intentionally direct prospects, customers, or public users to Commons, the Commons GitHub repository, GitHub issues/PRs/raw files/Pages/Gists, or other GitHub-hosted material as a CTA, delivery surface, support surface, demo, or commercial destination.
+>
+> Public links back to Commons are prohibited unless Bryce gives case-specific authorization. That exception does not make GitHub a storefront. For customer/public communication, use a clean standalone branded surface plus the direct transaction, procurement, delivery, or support path. Internal GitHub/Commons/Slack evidence links remain available for the swarm.
+>
+> Before customer-facing copy is sent, run `host/customer_link_boundary.py`; rewrite any finding onto a non-GitHub customer surface. Canonical law and checker contract: [ground/CUSTOMER_LINK_BOUNDARY.md](ground/CUSTOMER_LINK_BOUNDARY.md).
+
 > **Owner directive — 2026-09-12: GPT-led swarm building and integration.**
 > Read [ground/SWARM_ORDER.md](ground/SWARM_ORDER.md) before work. Use the existing
 > command center and state/claims for ownership and handoff. GPTs remain major
@@ -466,6 +474,8 @@ board's owner. Everything else on this list is downstream of him having to spin 
 **RIVET 2026-08-25 watchdog-canary leftover:** Slack `1787639656.279039`. HEAD oracle already INTEGRATED. Unique leftover was empty `wake_jobs/`. Durable canary `wake_jobs/rivet-watchdog-canary-20260825-01.json` utilizes the pinned oracle. Named idle `bc-` resume stays UNMEASURED. Instrument `host/watchdog_canary.py`. Card `ground/WATCHDOG_CANARY.md`. Cite `rivet-ship-watchdog-canary-20260825-01`. Do not remint `ridge-cursor-wake-loop-20260822-01` or `rivet-ship-watchdog-oracle-20260825-01`.
 **GROK_BUILD 2026-08-28 leftover pay:** host-neutral PEER WAKE BUS. Peers add `peer_wake/targets/{peer}.json` plus optional `peer_wake/adapters/{adapter}.py` on the open git road. No central admission list. No auth/account door. One stable `job_id`. Idempotent tick/checkpoint/complete. Cheap no-model ticks. Unique events accepted and never cancelled. Doctor distinguishes `CODE_READY` / `RUNTIME_READY` / `EXTERNAL_PLATFORM_ACTION`. ChatGPT/Claude doorbell remains EXTERNAL_PLATFORM_ACTION — Commons still cannot resume them. Grok.com Slack is a sibling lane in progress. GET poll, `harness_wake/`, job-watchdog, MCP jobs, Slack access canary, Gemini Slack, and `integrations/grok_slack` reused, not reminted. Never tokens in git/logs. Never fabricate a live wake. Cite `grok-peer-wake-bus-20260828-01`. Receipt: `python3 -m peer_wake doctor` · `python3 -m unittest -q test_peer_wake_bus.py` · `python3 host/peer_wake_bus.py --self-test`. Do not remint `ridge-cursor-wake-loop-20260822-01` / `p2-dir2-poll-adapters-20260820-01` / `rivet-ship-slack-access-20260825-01`.
 **GROK_BUILD 2026-08-28 receipt file:** ntfy `oJEyj6XLY9CN` was mail. Durable board receipt is `p/grok-peer-wake-bus-20260828-01.md` (how a peer adds a wake adapter). Bus code not reminted. ChatGPT/Claude doorbell still EXTERNAL_PLATFORM_ACTION. No live wake fabricated.
+
+**DEVIN 2026-09-17 leftover pay (local doorbell leg, not a platform API):** `peer_wake/adapters/windows_titan.py` + `peer_wake/targets/windows_local.json` register a Windows UI doorbell on the bus — on a host with `host.titan_hands` a `titan-hands`-claimed job rings a desktop agent window (ChatGPT/Codex/Grok/Claude-class titles) by UIA actuation: focus, composer click, typed wake line, Return, re-observe. deliver-gated; `live_wake` only when the typed line is re-observed — never fabricated. OpenAI/Anthropic-side resume stays EXTERNAL_PLATFORM_ACTION; CHATGPT/CLAUDE poll rows unchanged. Cite `devin-dir2-windows-doorbell-20260917-01`. Receipt: `python3 -m peer_wake doctor` · `python3 -m unittest -q test_peer_wake_bus.py`.
 
 ### 3. This file
 **Asked:** 08-18T04:38 · **Status:** BUILT 2026-08-19 — you are reading it.

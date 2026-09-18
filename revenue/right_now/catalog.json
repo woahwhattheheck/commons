@@ -8,8 +8,8 @@
     "collected_cash_usd": 1,
     "verified_positive_replies": 0,
     "accepted_scopes": 0,
-    "active_chargeable_checkout": true,
-    "payment_note": "USD 1 of cash is independently evidenced by the Frantic bounty #120 provider receipt recorded in revenue/right_now/settled_cash.json and the merged Sourcey PR #1423; bank availability and withdrawability remain unasserted. The live $29 Agent Failure Autopsy checkout remains active on agent-rescue.html (Payment Link recorded in revenue/agent_failure_autopsy/offer.json; #8889). Other right-now routes stay scope-first with buyer-specific payment handoff. The $2,500 same-day survival proof stays on revenue/production_survival/README.md and is not the agent-rescue page."
+    "active_chargeable_checkout": false,
+    "payment_note": "USD 1 of cash is independently evidenced by the Frantic bounty #120 provider receipt recorded in revenue/right_now/settled_cash.json and the merged Sourcey PR #1423; bank availability and withdrawability remain unasserted. The Agent Failure Autopsy ($29) product was retired on 2026-09-17; no live public checkout remains. All right-now routes stay scope-first with buyer-specific payment handoff. The $2,500 same-day survival proof stays on revenue/production_survival/README.md."
   },
   "ranking_rule": [
     "buyer can state the job now using public or synthetic inputs",
@@ -27,21 +27,6 @@
   "offers": [
     {
       "rank": 1,
-      "id": "agent-failure-autopsy-29",
-      "name": "Agent Failure Autopsy",
-      "price_usd": 29,
-      "delivery_window": "one business day",
-      "buyer_input": "One failure sentence, the coding harness or stack name, and one or more redacted transcript, log, or screenshot artifacts inside the intake boundary.",
-      "deliverable": "An evidence-linked timeline and failure chain, primary and contributing causes with calibrated confidence, adversarial challenge, concrete fix steps only where evidence supports them, and one replay or regression-prevention check.",
-      "start_route": "agent-rescue.html",
-      "source": "revenue/right_now/autopsy_offer.json",
-      "payment_state": "LIVE_PUBLIC_CHECKOUT_PAGE",
-      "next_external_event": "A real buyer pays the live $29 checkout on agent-rescue.html and sends redacted one-run evidence inside the intake boundary.",
-      "founder_bottleneck": "Confirm usable redacted evidence arrived after payment, start the one-business-day clock, and assign fulfillment.",
-      "commons_bottleneck": "Deliver the full-strength autopsy (or refund) against the live offer contract without reminting Stripe."
-    },
-    {
-      "rank": 2,
       "id": "ho-agent-failure-diagnostic",
       "name": "Agent Failure Diagnostic",
       "price_usd": 199,
@@ -56,7 +41,7 @@
       "commons_bottleneck": "Deliver the Markdown and JSON receipt against all five acceptance checks after funding."
     },
     {
-      "rank": 3,
+      "rank": 2,
       "id": "ho-pixel-pack",
       "name": "8-bit / pixel agent pack",
       "price_usd": 800,
@@ -71,7 +56,7 @@
       "commons_bottleneck": "Confirm the art direction and land the four acceptance items."
     },
     {
-      "rank": 4,
+      "rank": 3,
       "id": "ho-meeting-packet",
       "name": "Accessible public-meeting packet",
       "price_usd": 1200,
@@ -86,7 +71,7 @@
       "commons_bottleneck": "Produce the packet before the named date and mark unsupported claims UNMEASURED."
     },
     {
-      "rank": 5,
+      "rank": 4,
       "id": "ho-issue-to-pr",
       "name": "Named issue to a CI-green PR",
       "price_usd": 2500,
@@ -101,7 +86,7 @@
       "commons_bottleneck": "Select a collision-free implementation lane and carry it through merged green CI."
     },
     {
-      "rank": 6,
+      "rank": 5,
       "id": "same-day-agent-survival-proof",
       "name": "Same-Day Agent Survival Proof",
       "price_usd": 2500,
@@ -131,11 +116,6 @@
     ],
     "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Ranking offers and truth above stay canonical. right-now.html already surfaces Live cash / tip-shelf. No invent Stripe URLs. Larger fixed engagements are separate product pages (checkout/intent stays there).",
     "products": [
-      {
-        "name": "Agent Failure Autopsy",
-        "price_usd": 29,
-        "path": "agent-rescue.html"
-      },
       {
         "name": "Dealer Service Lead Rescue",
         "price_usd": 199,

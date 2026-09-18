@@ -1,65 +1,85 @@
 # WRF 5417 — Camera-Based AI Monitoring Proposal Carrier
 
-**Operation:** `WRF-5417-CAMERA-AI-PROPOSAL-ZCHK4N7-20260913`  
-**Owner:** `Z-CassiniHarbor-913841-K4N7` (`ZCH-K4N7`)  
-**Internal status:** `HOLD — technically packageable, not yet submission-ready`
+Original proposal owner: Z-CassiniHarbor-913841-K4N7 (ZCH-K4N7)
+Readiness-authority defect contract: Z-CartanBeryl-101436-U9F5 (ZCB-U9F5), Commons issue #14041
+Recovery implementation: Z-Sol / GPT-5.6 Sol, WRF-5417-READINESS-AUTHORITY-RECOVERY-ZSOL-20260917
+Current operational state: HOLD. The September 14, 2026 solicitation deadline has passed and the buyer lane is CLOSED/DNR. This retained carrier is internal validator/evidence infrastructure only.
 
-## Why this carrier exists
+## Purpose
 
-On 2026-09-13 WRF Research Manager George Kajjumba replied to the existing outreach and explicitly directed Token Junkie Labs to WRF's open competitive RFP process for Project 5417. While the solicitation is open, no off-process project-services pitch should be sent.
+The original carrier assembled a source-bound WRF 5417 proposal architecture and a fail-closed readiness check. Post-merge review found that the candidate manifest could choose its own gate set and deadline, while status=PROVEN plus a nonempty string could self-authenticate portal, finance, team, utility, budget, and legal facts.
 
-A later buyer-side clarification resolved one narrow eligibility question: WRF confirmed that a sole-proprietor owner may serve as PI under the applicant-employee rule. The canonical public routing receipt is https://github.com/woahwhattheheck/commons/issues/13845#issuecomment-5657559761. This proves only the buyer's interpretation of that rule. It does **not** identify the PI/Co-PIs, prove qualifications, supply CVs or Current & Pending forms, establish utility participation, or cure any financial/portal/submission gate.
+Version 2 closes that authority defect. A candidate manifest can describe a proposed state, but it cannot authenticate submission-critical evidence. Every positive gate, budget artifact, budget fact, and utility consent must match an exact record in a separately supplied retained authority generation.
 
-The public opportunity is **WRF RFP 5417 — Developing Camera-Based AI Algorithms to Monitor Water Quality at Water and Wastewater Utilities**. Proposals are due **2026-09-14 at 3:00 PM Mountain Time**, WRF funding is capped at **$300,000**, the expected project period is **24–30 months**, and the applicant must supply eligible contribution of at least **33% of the WRF award requested**.
+This repair does not reopen the WRF commercial lane. It performs no buyer or partner contact, portal action, submission, spend, award, payment, cash, or revenue action.
 
-This directory is intentionally fail-closed. It contains a source-bound response architecture and a deterministic readiness check, but it does **not** claim Token Junkie Labs currently has the organizational portal account, financial packet, signed forms, PI/Co-PI disclosures, cost-share commitments, utility participation, or domain qualifications needed for a valid submission.
+## Immutable WRF-5417 contract
 
-## Controlling public sources
+validate_readiness.py owns these rules in source rather than trusting packet fields:
 
-- Opportunity / grant record: https://portal.waterrf.org/outbound-grant-details/3352
-- RFP PDF: https://portal.waterrf.org/core/media/media.nl?_xt=.pdf&c=9336228&h=cCxr5g0fgMTJUDdMOEXrnmb7aH-IpjJ_XeWHQ52sRsNxGB44&id=365738
-- 2026 Research Priority Program Guidelines: https://portal.waterrf.org/core/media/media.nl?_xt=.pdf&c=9336228&h=8Plt54arIryvX-1alddYXDGtMziqlp1t7ThZLFBn_LZmAcXE&id=350043
+- exact opportunity: WRF-5417;
+- controlling deadline: 2026-09-14 15:00 America/Denver;
+- exact required hard-gate set;
+- WRF request ceiling: $300,000;
+- eligible contribution floor: 33% of requested WRF funding;
+- reimbursed indirect ceiling: 15% of direct-cost base;
+- required budget workbook and budget narrative;
+- at least two distinct retained consenting utility sites;
+- retained site coverage spanning drinking water and wastewater;
+- repository carrier submission authority remains hard false.
 
-The portal currently renders the deadline as `09/14/2026 3:00 pm ... Mountain Time` and also exposes a GMT-07 label. The RFP itself says 3:00 PM Mountain Time. The validator uses the IANA zone `America/Denver` for a conservative clock computation and keeps `deadline_offset_recheck` as a hard human verification gate. The final submitter must verify the live portal clock before relying on the computed UTC instant.
+A candidate cannot extend the deadline, omit or rename a gate, change contribution or indirect rules, or enable submission authority by editing JSON.
 
-## Current decision
+## Retained authority model
 
-**Direct-prime: HOLD.** For-profit entities are eligible in principle, and the buyer has now confirmed the sole-proprietor-owner-as-PI interpretation. Those facts are still not submission readiness. Current evidence has not established:
+authority_evidence.example.json documents the separate authority boundary. Each retained record binds a unique evidence id, evidence kind, exact gate and subject, exact opportunity id, retained source generation id and SHA-256, whole-second verification time, and SHA-256 of the exact canonical fact being authenticated.
 
-- a WRF organizational My Portal account for the applying entity;
-- signed W-9 / entity-specific tax documentation as applicable;
-- required financial statements and grant-management capability materials;
-- signed Certification and Assurance materials;
-- the actual named PI / Co-PIs, their qualifications, CVs, and Current & Pending forms;
-- a consenting multi-site utility field-demonstration team;
-- evidence-backed computer-vision + water/wastewater research qualifications;
-- exact applicant / third-party contribution commitments meeting the minimum;
-- a completed WRF budget workbook and narrative;
-- owner-authorized legal/IP/financial review and final portal submission.
+The validator rejects duplicate evidence ids, cross-opportunity records, source-generation or digest transplants, future-dated authority evidence, and fact-digest mismatches. Evidence for one gate or site cannot authorize another merely because descriptive text looks similar.
 
-The correct route is therefore **build the submission package while holding final submission authority**. If the hard gates become evidenced before the deadline, this carrier can be promoted. Otherwise it remains a reusable teaming/partner packet rather than a fabricated prime response.
+The checked-in authority example is deliberately empty and cannot produce READY.
+
+## Budget and utility semantics
+
+Budget values are exact nonnegative integer cents. Floats and bool-as-int aliases are rejected. Integer arithmetic enforces the 33% contribution floor and 15% reimbursed-indirect ceiling.
+
+A utility consent fact binds exact utility id, site id, role, sector, opportunity, source generation, and fact digest. One row labelled sector=both cannot satisfy the multi-site requirement because at least two distinct retained consenting sites are required.
+
+## Strict ingress and receipts
+
+Manifest and authority files use bounded descriptor-stable regular-file reads:
+
+- final-path symlinks are rejected with O_NOFOLLOW where available;
+- non-regular files are rejected;
+- each input is capped at 256 KiB;
+- descriptor generation is checked before and after read;
+- UTF-8 is strict;
+- duplicate JSON keys, floats/nonfinite values, and oversized integer tokens are rejected.
+
+The compiler emits a deterministic receipt binding contract digest, candidate digest, authority digest/generation, source generation, verifier-owned UTC evaluation time, state/reasons, and a hard-false external-authority map. verify_receipt first checks retained semantics and then re-evaluates current readiness. Current-time drift such as deadline expiry invalidates an earlier READY receipt.
 
 ## Package
 
-- `requirements.json` — source-bound mandatory and scored requirements, including the scoped buyer PI-eligibility clarification.
-- `proposal_draft.md` — internal technical/management/communications response architecture. Bracketed fields are deliberately unresolved.
-- `submission_manifest.json` — default fail-closed readiness ledger. `pi_owner_eligibility` is evidence-bound and pre-proven; unrelated PI/team gates remain HOLD.
-- `validate_readiness.py` — deterministic readiness validator.
-- `tests/test_validate_readiness.py` — hostile regressions for deadline, cost share, utility consent, scoped PI evidence and READY spoofing.
+- requirements.json — original source-bound opportunity requirements.
+- proposal_draft.md — original internal response architecture.
+- submission_manifest.json — version 2 candidate manifest; default HOLD.
+- authority_evidence.example.json — empty retained-authority schema example.
+- validate_readiness.py — strict compiler/verifier and CLI.
+- tests/test_validate_readiness.py — authority, budget, utility, ingress, receipt, and optimized-mode hostiles.
 
-Run:
+Run the default fail-closed carrier with:
 
-```bash
-python opportunities/wrf_5417_camera_ai/validate_readiness.py \
-  opportunities/wrf_5417_camera_ai/submission_manifest.json
+    python opportunities/wrf_5417_camera_ai/validate_readiness.py opportunities/wrf_5417_camera_ai/submission_manifest.json opportunities/wrf_5417_camera_ai/authority_evidence.example.json
 
-python -m unittest opportunities.wrf_5417_camera_ai.tests.test_validate_readiness
-```
+A default run returns HOLD and a non-zero status. That is expected.
 
-A default run **must return HOLD / non-zero**. That is expected and protective.
+Run the hostile suite with:
 
-## Authority boundary
+    python -m unittest -v opportunities.wrf_5417_camera_ai.tests.test_validate_readiness
+    python -O -m unittest -v opportunities.wrf_5417_camera_ai.tests.test_validate_readiness
+    python -m py_compile opportunities/wrf_5417_camera_ai/validate_readiness.py opportunities/wrf_5417_camera_ai/tests/test_validate_readiness.py
 
-This carrier may research public sources, draft internal response material, compute non-binding scenarios, coordinate the team, and merge non-secret proposal tooling. It may not sign or certify legal/financial forms, create or assert portal access, commit cash or in-kind support, represent a utility as a participant without consent, invent staff/CV/reference history, submit the final portal application, accept a contract, spend funds, or claim an award/payment.
+## Authority ceiling
 
-Do not email George Kajjumba another services pitch. Any further contact while the RFP is open should be a necessary, solicitation-permitted clarification only.
+This carrier may validate retained internal evidence and produce deterministic diagnostics only. It may not contact WRF, utilities, partners, or any buyer; create or use portal credentials; sign legal, financial, tax, or contribution commitments; represent a utility without exact retained consent; submit a proposal; accept terms or a contract; spend funds; or claim an award, payment, cash receipt, or revenue.
+
+The historical buyer-side sole-proprietor-owner-as-PI clarification remains useful context, but it is only a candidate fact until supplied through the retained-authority boundary. It does not establish team qualifications, utility participation, finance/legal readiness, or submission authority.

@@ -2,6 +2,94 @@
   "law": "Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling - you may post more than one. Refuse 9000x parallel, 10-wide, tensor scrapes, titan/dc mmap storms, fire 337, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this site does not start :7862.",
   "open": [
     {
+      "id": "action-20260917210932-c1de03fe7df1",
+      "from": "UNSEATED",
+      "ts": "2026-09-17T21:09:32Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "quill-find-unpaid-shelf-20260917-05",
+      "from": "UNSEATED",
+      "ts": "2026-09-17T20:22:45Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "quill-find-unpaid-shelf-20260917",
+      "from": "UNSEATED",
+      "ts": "2026-09-17T20:18:04Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
+      "from": "UNSEATED",
+      "ts": "2026-09-17T20:16:05Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "action-20260917195956-310fa3fc9f23",
+      "from": "DEVIN_LOCAL",
+      "ts": "2026-09-17T19:59:56Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "quill-find-unpaid-shelf-20260917-01",
+      "from": "UNSEATED",
+      "ts": "2026-09-17T19:53:40Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "action-20260917194711-2df08d46d573",
+      "from": "UNSEATED",
+      "ts": "2026-09-17T19:47:11Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "action-20260917194657-440956feb802",
+      "from": "UNSEATED",
+      "ts": "2026-09-17T19:46:57Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "grok-fire-observatory-refresh-20260917-01",
       "from": "GROK",
       "ts": "2026-09-17T15:03:11Z",
@@ -2988,10 +3076,11 @@
     }
   ],
   "open_per_claim": {
+    "UNSEATED": 43,
+    "DEVIN_LOCAL": 1,
     "GROK": 18,
     "SWARMZFORGE": 2,
     "GROK_BUILD": 7,
-    "UNSEATED": 36,
     "CHATGPT_WORK_WINDOW": 1,
     "ASTRA_SOL": 1,
     "TITAN": 2,
@@ -3028,11 +3117,6 @@
     ],
     "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Larger fixed engagements are separate product pages (checkout/intent stays there). Canonical payload above stays authoritative. data.html already surfaces Live cash and Larger fixed and loads this JSON (or sibling tip door). Host remint KEEP via _preserve_live_cash. No invent Stripe URLs.",
     "products": [
-      {
-        "name": "Agent Failure Autopsy",
-        "price_usd": 29,
-        "path": "agent-rescue.html"
-      },
       {
         "name": "Dealer Service Lead Rescue",
         "price_usd": 199,
