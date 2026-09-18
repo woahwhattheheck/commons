@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+import dis
 import hashlib
 import inspect
 import json
@@ -353,6 +354,45 @@ class ResponseKitValidatorTests(unittest.TestCase):
                     validator.__dict__.pop(name, None)
                 else:
                     validator.__dict__[name] = value
+
+    def test_authority_closure_graph_has_zero_live_global_loads(self) -> None:
+        seen: set[int] = set()
+
+        def walk(fn) -> None:
+            if id(fn) in seen:
+                return
+            seen.add(id(fn))
+            live = [
+                instruction.argval
+                for instruction in dis.get_instructions(fn)
+                if instruction.opname == "LOAD_GLOBAL"
+            ]
+            self.assertEqual([], live, f"{fn.__name__} has live globals: {live}")
+            for constant in fn.__code__.co_consts:
+                if isinstance(constant, types.CodeType):
+                    nested_live = [
+                        instruction.argval
+                        for instruction in dis.get_instructions(constant)
+                        if instruction.opname == "LOAD_GLOBAL"
+                    ]
+                    self.assertEqual(
+                        [],
+                        nested_live,
+                        f"{fn.__name__}/{constant.co_name} has live globals: "
+                        f"{nested_live}",
+                    )
+            for cell in fn.__closure__ or ():
+                value = cell.cell_contents
+                if isinstance(value, types.FunctionType):
+                    walk(value)
+
+        for public in (
+            validator.evaluate_manifest,
+            validator.verify_catalog_root,
+            validator._sha256_canonical,
+            validator._index_catalog,
+        ):
+            walk(public)
 
     def test_sealed_canonical_root_matches_checked_in_catalog(self) -> None:
         self.assertEqual(
