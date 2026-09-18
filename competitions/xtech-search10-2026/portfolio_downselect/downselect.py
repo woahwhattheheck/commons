@@ -67,6 +67,7 @@ GLOBAL_FACT_STATES = {"UNKNOWN", "CONFIRMED_TRUE", "CONFIRMED_FALSE"}
 SUPPORT_STATES = {"UNKNOWN", "CLEAR", "BLOCKED"}
 SLOT_STATES = {"UNKNOWN", "AVAILABLE", "CONSUMED_OR_RESERVED"}
 TEMPLATE_STATES = {"UNKNOWN", "BOUND", "MISMATCH"}
+SOURCE_CURRENTNESS_STATES = {"UNKNOWN", "CURRENT", "STALE"}
 OVERLAP_STATES = {"UNKNOWN", "NONE", "POTENTIALLY_SAME", "SUBSTANTIALLY_SAME"}
 EXCLUSIVITY_STATES = {"UNKNOWN", "NOT_EXCLUSIVE", "EXCLUSIVE"}
 EVIDENCE_CLASSES = {"REPO", "OWNER", "PROVIDER", "EXTERNAL_COUNTERPARTY"}
@@ -290,6 +291,14 @@ def _evidence_ref(value: Any, path: str) -> str:
     return value
 
 
+def _claim_text(value: Any, path: str) -> str:
+    if not isinstance(value, str) or not (1 <= len(value) <= 1200):
+        raise ContractError("INVALID_CLAIM_TEXT", path)
+    if any(ord(ch) < 0x20 and ch not in {"\t"} for ch in value):
+        raise ContractError("INVALID_CLAIM_TEXT", path)
+    return value
+
+
 def _repo_name(value: Any, path: str) -> str:
     text = _evidence_ref(value, path)
     if text.count("/") != 1 or text.startswith("/") or text.endswith("/"):
@@ -462,8 +471,9 @@ def _criterion_projection(
     blockers: list[str] = []
     for index, raw in enumerate(items):
         item_path = f"{path}[{index}]"
-        item = _exact(raw, {"claimId", "state", "evidenceRef"}, item_path)
+        item = _exact(raw, {"claimId", "text", "state", "evidenceRef"}, item_path)
         claim_id = _id(item["claimId"], item_path + ".claimId")
+        _claim_text(item["text"], item_path + ".text")
         if claim_id in seen_claim_ids:
             raise ContractError("DUPLICATE_CLAIM_ID", claim_id)
         seen_claim_ids.add(claim_id)
@@ -502,6 +512,7 @@ def _candidate(
             "candidateId",
             "source",
             "priorityArea",
+            "sourceCurrentness",
             "usamrdcExclusive",
             "federalSupportOverlap",
             "criteria",
@@ -521,6 +532,26 @@ def _candidate(
     priority = obj["priorityArea"]
     if priority not in PRIORITY_AREAS:
         raise ContractError("INVALID_PRIORITY_AREA", candidate_id)
+
+    source_currentness = _exact(
+        obj["sourceCurrentness"],
+        {"state", "evidenceRef"},
+        path + ".sourceCurrentness",
+    )
+    source_currentness_state = source_currentness["state"]
+    if source_currentness_state not in SOURCE_CURRENTNESS_STATES:
+        raise ContractError("INVALID_SOURCE_CURRENTNESS", candidate_id)
+    if source_currentness_state == "UNKNOWN":
+        if source_currentness["evidenceRef"] is not None:
+            raise ContractError("UNKNOWN_WITH_EVIDENCE", path + ".sourceCurrentness")
+    else:
+        _consume_evidence(
+            source_currentness["evidenceRef"],
+            binding=f"candidate:{candidate_id}:sourceCurrentness",
+            allowed_classes={"OWNER"},
+            registry=registry,
+            used=used,
+        )
 
     exclusivity = _exact(
         obj["usamrdcExclusive"], {"state", "evidenceRef"}, path + ".usamrdcExclusive"
@@ -609,6 +640,8 @@ def _candidate(
         )
         external_count += 1
 
+    if source_currentness_state != "CURRENT":
+        blockers.append(f"source_generation:{source_currentness_state}")
     if external_count == 0:
         blockers.append("commercial_traction:missing_external_evidence")
     if overlap != "NONE":
