@@ -241,7 +241,7 @@ def validate_input(data: dict[str, Any]) -> dict[str, Any]:
     amount = commercial["proposed_fee_minor"]
     if isinstance(amount, bool) or not isinstance(amount, int) or amount < 0 or amount > 10**9:
         raise ContractError("proposed_fee_minor must be safe nonnegative integer")
-    if commercial["state"] != COMMERCIAL_STATE:
+    if commercial["state"] != "PROPOSED_NOT_ACCEPTED":
         raise ContractError("commercial state cannot self-promote beyond PROPOSED_NOT_ACCEPTED")
 
     return {
@@ -256,7 +256,7 @@ def validate_input(data: dict[str, Any]) -> dict[str, Any]:
         "commercial": {
             "currency": "USD",
             "proposed_fee_minor": amount,
-            "state": COMMERCIAL_STATE,
+            "state": "PROPOSED_NOT_ACCEPTED",
         },
     }
 
@@ -338,7 +338,18 @@ def compile_packet(data: dict[str, Any], *, trusted_packet_sha256: str | None = 
         "domain_authority": domain_authority,
         "controls": normalized["proposed_controls"],
         "commercial": normalized["commercial"],
-        "authority_ceiling": dict(AUTHORITY_CEILING),
+        "authority_ceiling": {
+            "buyer_contact": False,
+            "portal_registration": False,
+            "bid_submission": False,
+            "bidder_qualification": False,
+            "contract_acceptance": False,
+            "award_claim": False,
+            "payment_or_funds": False,
+            "investment_or_trading": False,
+            "accounting_or_compliance_opinion": False,
+            "recognized_revenue": False,
+        },
         "normalized_input_sha256": normalized_digest,
     }
     receipt = {
