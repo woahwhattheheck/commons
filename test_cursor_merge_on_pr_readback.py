@@ -144,7 +144,7 @@ class TestCursorMergeOnPrReadback(unittest.TestCase):
         self.assertIn("cursor-merge-on-pr-readback-20260902-01", text)
         self.assertIn("8b42a78e0", text)
         self.assertIn("22b63e25", text)
-        self.assertIn("5062c29b", text)
+        self.assertIn("0270094d", text)
         self.assertIn("Did **not** remint leftover id", text)
         self.assertIn("Did **not** reopen", text)
         self.assertIn("1788386939.481919", text)
