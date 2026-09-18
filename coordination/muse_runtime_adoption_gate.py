@@ -624,4 +624,13 @@ def _build_api():
     def verify_current(packet: _Any, diagnostic: _Any) -> dict[str, _Any]:
         valid, reason, _expected = verify_artifact(packet, diagnostic)
         now_s = process_now_s()
-        curren
+        current = compile_at(packet, now_s)
+        current_status = current["status"]
+        artifact_status = diagnostic.get("status") if type(diagnostic) is dict else None
+        current_match = bool(valid and artifact_status == current_status)
+        result = {
+            "schema": verify_schema,
+            "valid": current_match,
+            "reason": "CURRENT_STATUS_MATCH" if current_match else reason if not valid else "CURRENT_STATUS_CHANGED",
+            "artifact_status": artifact_status,
+      
