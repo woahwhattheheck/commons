@@ -40,8 +40,14 @@
         "path": "competitions/xtech-search10-2026/sustainproof"
       },
       "priorityArea": "ADAPTIVE_SUSTAINMENT",
-      "usamrdcExclusive": false,
-      "federalSupportOverlap": "UNKNOWN",
+      "usamrdcExclusive": {
+        "state": "UNKNOWN",
+        "evidenceRef": null
+      },
+      "federalSupportOverlap": {
+        "state": "UNKNOWN",
+        "evidenceRef": null
+      },
       "criteria": {
         "introduction": [
           {
@@ -104,8 +110,14 @@
         "path": "competitions/nawcad-acqdoc-acqatlas-2026"
       },
       "priorityArea": "OTHER_VALID_ARMY_NEED",
-      "usamrdcExclusive": false,
-      "federalSupportOverlap": "UNKNOWN",
+      "usamrdcExclusive": {
+        "state": "UNKNOWN",
+        "evidenceRef": null
+      },
+      "federalSupportOverlap": {
+        "state": "UNKNOWN",
+        "evidenceRef": null
+      },
       "criteria": {
         "introduction": [
           {
@@ -158,8 +170,14 @@
         "path": "README.md"
       },
       "priorityArea": "C2_COUNTER_C2_NETWORKS",
-      "usamrdcExclusive": false,
-      "federalSupportOverlap": "UNKNOWN",
+      "usamrdcExclusive": {
+        "state": "UNKNOWN",
+        "evidenceRef": null
+      },
+      "federalSupportOverlap": {
+        "state": "UNKNOWN",
+        "evidenceRef": null
+      },
       "criteria": {
         "introduction": [
           {
