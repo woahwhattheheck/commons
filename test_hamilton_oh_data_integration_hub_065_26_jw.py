@@ -258,13 +258,26 @@ class HamiltonPursuitGateTests(unittest.TestCase):
             )
 
     def test_official_projection_must_exactly_match_retained_bytes(self):
-        ledger = official(BASE_LEDGER)
-        packet = next(item for item in ledger["sources"] if item["id"] == "packet")
-        packet["claims"]["response_deadline"] = "2026-09-17T01:00:00Z"
-        with self.assertRaisesRegex(GateError, "exactly match retained official artifact"):
-            compile_pursuit(
-                ledger, BASE_REQS, BASE_EVIDENCE, now="2026-09-18T01:00:00Z"
-            )
+        cases = (
+            ("deadline", ("claims", "response_deadline"), "2026-09-17T01:00:00Z"),
+            ("timezone-alias", ("observed_at",), "2026-09-17T20:00:00-04:00"),
+            ("bool-int-alias", ("claims", "teaming_rules"), 1),
+            ("bool-float-alias", ("claims", "teaming_rules"), 1.0),
+        )
+        for label, key_path, replacement in cases:
+            with self.subTest(label=label):
+                ledger = official(BASE_LEDGER)
+                packet = next(item for item in ledger["sources"] if item["id"] == "packet")
+                if len(key_path) == 1:
+                    packet[key_path[0]] = replacement
+                else:
+                    packet[key_path[0]][key_path[1]] = replacement
+                with self.assertRaisesRegex(
+                    GateError, "exactly match retained official artifact"
+                ):
+                    compile_pursuit(
+                        ledger, BASE_REQS, BASE_EVIDENCE, now="2026-09-18T01:00:00Z"
+                    )
 
     def test_requirement_text_cannot_mint_owner_prime_satisfaction(self):
         for rid in ("eligibility", "security_compliance", "insurance_legal", "pricing"):
@@ -477,10 +490,23 @@ class HamiltonPursuitGateTests(unittest.TestCase):
             gate.loads_strict('{"x":1,"x":2}')
         with self.assertRaisesRegex(GateError, "non-finite"):
             gate.loads_strict('{"x":NaN}')
+        with self.assertRaisesRegex(GateError, "floating-point"):
+            gate.loads_strict('{"x":1.5}')
         bad = copy.deepcopy(BASE_LEDGER)
         bad["sources"][0]["retrieved"] = 1
         with self.assertRaisesRegex(GateError, "JSON boolean"):
             compile_pursuit(bad, BASE_REQS, BASE_EVIDENCE, now="2026-09-17T07:05:00Z")
+
+    def test_raw_json_resource_failures_are_typed_gate_errors(self):
+        cases = (
+            '{"x":' + ("9" * 5000) + "}",
+            ("[" * 1200) + "0" + ("]" * 1200),
+            '{"x":"' + ("a" * (gate.MAX_JSON_TEXT_BYTES + 1)) + '"}',
+        )
+        for raw in cases:
+            with self.subTest(prefix=raw[:24]):
+                with self.assertRaises(GateError):
+                    gate.loads_strict(raw)
 
     def test_mirror_cannot_control_buyer_fields(self):
         bad = copy.deepcopy(BASE_LEDGER)
