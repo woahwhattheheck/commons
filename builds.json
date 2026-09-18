@@ -1041,22 +1041,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15863,
-   "author": "woahwhattheheck",
-   "title": "Finance: UM 27-0012 payables and merchant reconciliation workshare",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15863",
-   "base_freshness": {
-    "base_sha": "47c9bee18ebfc30ed98782cd57567d45acde94cc",
-    "main_sha": "1ea7897d3ca561f386df87c8c4579d30fed442f0",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 15861,
    "author": "woahwhattheheck",
    "title": "Revenue: current-main partner qualification gate with sealed runway trust roots",
@@ -1271,6 +1255,22 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15761",
    "base_freshness": {
     "base_sha": "f3383d74882c9390b4960c9213ac7e3e0d618d07",
+    "main_sha": "1ea7897d3ca561f386df87c8c4579d30fed442f0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15863,
+   "author": "woahwhattheheck",
+   "title": "Finance: UM 27-0012 payables and merchant reconciliation workshare",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15863",
+   "base_freshness": {
+    "base_sha": "47c9bee18ebfc30ed98782cd57567d45acde94cc",
     "main_sha": "1ea7897d3ca561f386df87c8c4579d30fed442f0",
     "ahead_by": null,
     "behind_by": null,
