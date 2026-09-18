@@ -5,7 +5,14 @@ class SelectionTests(unittest.TestCase):
     def packet(self,**kw):return compile_packet(b(src(**kw)),b(pol()))
     def test_ready(self):
         p=self.packet();self.assertEqual(p['status'],'READY_FOR_ANALYST_QA');self.assertEqual({x['selector_id']:x['value'] for x in p['observations']}['revenue'],'25.5');self.assertEqual([f['code'] for f in p['findings']],['CHECK_PASS'])
-    def test_history(self):self.assertIn('VALUE_CHANGED_PRIOR_FILING',[f['code'] for f in self.packet(changed=True)['findings']])
+    def test_history(self):
+        p=self.packet(changed=True)
+        self.assertIn('VALUE_CHANGED_PRIOR_FILING',[f['code'] for f in p['findings']])
+        assets=next(x for x in p['observations'] if x['selector_id']=='assets')
+        self.assertEqual(assets['prior_values'],['99'])
+        self.assertEqual(assets['prior_observations'],[
+            {'value':'99','filed':'2026-07-15','accession':'A0','form':'10-Q/A'}
+        ])
     def test_ambiguity(self):self.assertEqual(self.packet(amb=True)['status'],'HOLD')
     def test_cutoff(self):self.assertEqual(compile_packet(b(src()),b(pol('2026-07-01')))['status'],'HOLD')
     def test_cik(self):
