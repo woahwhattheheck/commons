@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 105,
-    "open_pull_requests": 54,
-    "runs_in_progress": 10,
-    "runs_queued": 346
+    "open_pull_requests": 55,
+    "runs_in_progress": 11,
+    "runs_queued": 356
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zq2132/umissouri-27-0012-current-main-20260917",
+      "created_at": "2026-09-18T01:46:34Z",
+      "draft": false,
+      "head_sha": "3386afee4cc7a8ab9bab958e3e6e656c7ecf9a0f",
+      "number": 15863,
+      "title": "Finance: UM 27-0012 payables and merchant reconciliation workshare",
+      "updated_at": "2026-09-18T01:46:34Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zferro/partner-qualification-current-main-20260917",
       "created_at": "2026-09-18T01:45:20Z",
       "draft": false,
-      "head_sha": "cd27c67f6a43e0ef010f73918bffdd500d867c8a",
+      "head_sha": "51a123f6efcc8e74419c6b91d94e3b7fa418377a",
       "number": 15861,
       "title": "Revenue: current-main partner qualification gate with sealed runway trust roots",
-      "updated_at": "2026-09-18T01:45:20Z"
+      "updated_at": "2026-09-18T01:46:40Z"
     },
     {
       "author": "woahwhattheheck",
@@ -86,7 +97,7 @@
       "head_sha": "1bc841e9815298565cef6cc80773a0ebab9d04bf",
       "number": 15857,
       "title": "Finance: UM 27-0012 payables and merchant reconciliation workshare",
-      "updated_at": "2026-09-18T01:45:48Z"
+      "updated_at": "2026-09-18T01:46:42Z"
     },
     {
       "author": "woahwhattheheck",
@@ -94,10 +105,10 @@
       "branch": "zsol/mcc-1017-27-deadline-authority-20260917",
       "created_at": "2026-09-18T01:42:52Z",
       "draft": false,
-      "head_sha": "87cf7cb787a1c4572c2bc57e1f061c0583515018",
+      "head_sha": "fdb69407692195a14e689a0c3f5351ed55d8b8a2",
       "number": 15855,
       "title": "MCC 1017-27: bind deadline windows to source authority",
-      "updated_at": "2026-09-18T01:42:52Z"
+      "updated_at": "2026-09-18T01:47:09Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 15836,
       "title": "Outbound: recover mandatory organization-aware provider chain on current main",
       "updated_at": "2026-09-18T01:32:02Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/rwd3-rogers-payapp-owner-packet-20260917",
-      "created_at": "2026-09-18T01:21:32Z",
-      "draft": false,
-      "head_sha": "c3464df897f45c235b3ec385d6cd1bf83dc1f9f9",
-      "number": 15834,
-      "title": "RWD #3 retainage packet: proof-surface fix-forward",
-      "updated_at": "2026-09-18T01:23:31Z"
     }
   ],
   "open_heads": {
@@ -229,13 +229,14 @@
     "15841": "568a80567ae0d16bd343299b681aac683fc98f5e",
     "15843": "2fa099d3627947bcd343bc62119c0b952a760a46",
     "15846": "6fa5893a8358c2e670b7979a197b84730fed7194",
-    "15855": "87cf7cb787a1c4572c2bc57e1f061c0583515018",
+    "15855": "fdb69407692195a14e689a0c3f5351ed55d8b8a2",
     "15857": "1bc841e9815298565cef6cc80773a0ebab9d04bf",
-    "15861": "cd27c67f6a43e0ef010f73918bffdd500d867c8a"
+    "15861": "51a123f6efcc8e74419c6b91d94e3b7fa418377a",
+    "15863": "3386afee4cc7a8ab9bab958e3e6e656c7ecf9a0f"
   },
-  "pulls_listed": 54,
+  "pulls_listed": 55,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 34.6,
+  "queue_depth_per_runner": 32.4,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -405,6 +406,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T01:46:29Z",
+  "unchanged_since": "2026-09-18T01:47:16Z",
   "undatable_pulls": []
 }
