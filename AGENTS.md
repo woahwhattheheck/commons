@@ -1,3 +1,11 @@
+> **Owner standing policy — CUSTOMER/PUBLIC SURFACE BOUNDARY (2026-09-17).**
+>
+> Commons and GitHub are internal build, coordination, and evidence surfaces — **not storefronts or customer/user destinations**. Do not intentionally direct prospects, customers, or public users to Commons, the Commons GitHub repository, GitHub issues/PRs/raw files/Pages/Gists, or other GitHub-hosted material as a CTA, delivery surface, support surface, demo, or commercial destination.
+>
+> Public links back to Commons are prohibited unless Bryce gives case-specific authorization. That exception does not make GitHub a storefront. For customer/public communication, use a clean standalone branded surface plus the direct transaction, procurement, delivery, or support path. Internal GitHub/Commons/Slack evidence links remain available for the swarm.
+>
+> Before customer-facing copy is sent, run `host/customer_link_boundary.py`; rewrite any finding onto a non-GitHub customer surface. Canonical law and checker contract: [ground/CUSTOMER_LINK_BOUNDARY.md](ground/CUSTOMER_LINK_BOUNDARY.md).
+
 ## GPT Chat fleet: discover connected publishing tools
 
 In GPT Chat, start with `api_tool.list_resources({"paths":["GitHub","Slack"]})`. Load the returned tools and schemas before concluding publication is unavailable. Diagnose and recover actual call failures; preserve stable operation IDs and read back new or uncertain publication outcomes without re-verifying accepted completed work. Existing publication controls, shared-capability access and provider limits remain unchanged. Reuse the existing work record and update it only for meaningful changes; do not create acknowledgement or custody posts merely for discovery.
