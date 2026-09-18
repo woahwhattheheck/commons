@@ -1063,6 +1063,29 @@ class RegistryTest(unittest.TestCase):
                 store.close()
 
 
+    def test_raw_slack_web_helper_alias_and_dynamic_access_are_low_level_bypasses(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            (root / "alias.py").write_text(
+                "from integrations.grok_slack.bridge import slack_web_call as send\n"
+                "again = send\n"
+                "def bypass(token, channel):\n"
+                "    return again('chat.postMessage', token, "
+                "{'channel': channel, 'text': 'x'})\n",
+                encoding="utf-8",
+            )
+            (root / "dynamic.py").write_text(
+                "import integrations.grok_slack.bridge as bridge\n"
+                "def bypass(token, channel):\n"
+                "    send = getattr(bridge, 'slack_web_call')\n"
+                "    return send('chat.postMessage', token, "
+                "{'channel': channel, 'text': 'x'})\n",
+                encoding="utf-8",
+            )
+            violations = find_bypasses(root, validate_manifest=False)
+            self.assertIn("alias.py:direct-slack-web-api-helper", violations)
+            self.assertIn("dynamic.py:dynamic-slack-web-api-helper", violations)
+
     def test_raw_slack_web_call_is_provider_send_outside_exempt_bridge(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
