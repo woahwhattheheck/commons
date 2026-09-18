@@ -9,11 +9,15 @@ on:
       - "revenue/multi_framework_evidence_freshness/**"
       - "tests/test_multi_framework_evidence_freshness*.py"
       - "tools/provider_cost_truth/**"
+      - "revenue/pilot_delivery_renewal_expansion_gate/**"
+      - "test_pilot_delivery_renewal_expansion_gate.py"
+      - "test_pilot_delivery_renewal_reload_trust_root.py"
       - ".github/workflows/source-parses.yml"
   pull_request:
     paths:
       - "**/*.py"
       - "**/*.js"
+      - ".github/workflows/pilot-delivery-renewal-expansion-gate.yml"
       - ".github/workflows/source-parses.yml"
 
 permissions:
@@ -140,3 +144,79 @@ jobs:
 
       - name: Optimized Python freshness battery
         run: python -O -B -m unittest discover -s tests -p 'test_multi_framework_evidence_freshness*.py' -v
+
+
+  pilot-delivery-renewal-expansion-gate:
+    name: pilot-delivery-renewal-expansion-gate (${{ matrix.python }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.11', '3.13']
+    steps:
+      - name: Check out exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Detect pilot-renewal proof-surface changes
+        id: scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            base='${{ github.event.pull_request.base.sha }}'
+            head='${{ github.event.pull_request.head.sha }}'
+          else
+            base='${{ github.event.before }}'
+            head='${{ github.sha }}'
+          fi
+          if git diff --name-only "$base" "$head" -- \
+              'revenue/pilot_delivery_renewal_expansion_gate/**' \
+              'test_pilot_delivery_renewal_expansion_gate.py' \
+              'test_pilot_delivery_renewal_reload_trust_root.py' \
+              '.github/workflows/pilot-delivery-renewal-expansion-gate.yml' \
+              '.github/workflows/source-parses.yml' | grep -q .; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set up Python
+        if: steps.scope.outputs.run == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Compile pilot-renewal gate
+        if: steps.scope.outputs.run == 'true'
+        run: >-
+          python -m py_compile
+          revenue/pilot_delivery_renewal_expansion_gate/_trusted_runtime.py
+          revenue/pilot_delivery_renewal_expansion_gate/common.py
+          revenue/pilot_delivery_renewal_expansion_gate/model.py
+          revenue/pilot_delivery_renewal_expansion_gate/engine.py
+          revenue/pilot_delivery_renewal_expansion_gate/test_gate.py
+          test_pilot_delivery_renewal_expansion_gate.py
+          test_pilot_delivery_renewal_reload_trust_root.py
+
+      - name: Contract tests
+        if: steps.scope.outputs.run == 'true'
+        run: >-
+          python -m unittest -v
+          test_pilot_delivery_renewal_expansion_gate
+          test_pilot_delivery_renewal_reload_trust_root
+
+      - name: Optimized contract tests
+        if: steps.scope.outputs.run == 'true'
+        run: >-
+          python -O -m unittest -v
+          test_pilot_delivery_renewal_expansion_gate
+          test_pilot_delivery_renewal_reload_trust_root
