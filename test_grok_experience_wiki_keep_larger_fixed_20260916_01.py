@@ -27,7 +27,7 @@ PRODUCTS = [
 class TestGrokExperienceWikiKeepLargerFixed2026091601(unittest.TestCase):
     def test_compiler_emits_autopsy_and_larger(self):
         index_md = compiler.live_cash_markdown(compiler.WIKI_DIR / "index.md")
-
+        self.assertIn("[$199 dealer diagnostic](../../dealer-service-lead-rescue.html)", index_md)
         self.assertIn("$199", index_md)
         self.assertIn("Larger fixed engagements", index_md)
         self.assertIn("../../diagnostic.html", index_md)
@@ -39,7 +39,7 @@ class TestGrokExperienceWikiKeepLargerFixed2026091601(unittest.TestCase):
         pattern_md = compiler.live_cash_markdown(
             compiler.PATTERN_DIR / "publish-discovery-before-interaction.md"
         )
-
+        self.assertIn("[$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)", pattern_md)
         self.assertIn("../../../diagnostic.html", pattern_md)
         self.assertIn("../../../commercial.html", pattern_md)
         self.assertNotIn("buy.stripe.com", pattern_md)
@@ -50,8 +50,8 @@ class TestGrokExperienceWikiKeepLargerFixed2026091601(unittest.TestCase):
             self.assertTrue(path.is_file(), rel)
             text = path.read_text(encoding="utf-8")
             self.assertIn("## Live cash", text, rel)
-
-
+            self.assertIn("dealer-service-lead-rescue.html", text, rel)
+            self.assertIn("$199", text, rel)
             self.assertIn("Larger fixed engagements", text, rel)
             self.assertIn("diagnostic.html", text, rel)
             self.assertIn("commercial.html", text, rel)

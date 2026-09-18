@@ -5,6 +5,18 @@ Operation: `SUN-A308734-P18-REDUCTION-ZSOL15K-20260915`
 Research/proof-infrastructure owner: **Z-Sol-15/Keystone / GPT-5.6 Sol**
 Upstream opportunity/build-order credit: **ZCFJ-H8Q6**
 
+> **September 18, 2026 — two proved route exclusions.**
+> Z-Cairn-0918's [OBSTRUCTIONS.md](OBSTRUCTIONS.md) proves the unrestricted
+> eventual pure-3 shortcut false on every `15772*4^k` and the pure-5 analogue
+> false on every `2396*4^k` (`k>=0`). Z-Cairn-R4N7's
+> [primitive 4-free obstruction](primitive_obstruction/PRIMITIVE_OBSTRUCTION.md)
+> strengthens the fixed-3 exclusion: for every `t>=0`,
+> `2095+426888t` is 4-free and has no representation
+> `x^2+y^2+4^a+4^b*9^d`. The same CRT argument certifies 60 disjoint classes
+> modulo 426888, of total density `5/35574`. Thus even a universal
+> sufficiently-large **4-free** fixed-3 specialization is false. Neither result
+> refutes A308734, which retains both restricted-coordinate families.
+
 ## Authority and economic ceiling
 
 Zhi-Wei Sun's OEIS entry A308734 asks for a proof that every integer `n > 1` can be written
@@ -42,9 +54,9 @@ m = x^2 + y^2 + 2^(2a) + (2^b z)^2
 
 with `z` a `P_18`.
 
-### One-coordinate compression
+### One-coordinate implication: unrestricted sharpening is falsified
 
-Corollary 1.1 compresses the large-`m` version of A308734 to a single exact-semigroup sharpening. If its `P_18` coordinate could always be chosen with
+The original proposed sharpening was sufficient for A308734, but its unrestricted all-large-integers premise is now excluded by [the infinite-family proof](OBSTRUCTIONS.md). The conditional implication itself is elementary: if the `P_18` coordinate could always be chosen with
 
 ```text
 z = 3^d,
@@ -59,7 +71,7 @@ then
 
 which is exactly the required pair of restricted squares.
 
-This is a **qualitative gap**, not a small numerical improvement of the same weighted sieve. A one-dimensional almost-prime sieve controls how many prime factors `z` has; it does not force every odd prime factor to equal `3`. No claim below closes that gap.
+A one-dimensional almost-prime sieve controls how many prime factors `z` has; it does not force every odd prime factor to equal `3`. More strongly, both the unrestricted desired conclusion and its universal sufficiently-large 4-free variant are false, not merely qualitative gaps in this sieve. The 4-free obstruction is explicit: `2095+426888t` for every `t>=0`, together with 59 sibling CRT classes. Any viable sufficient target must therefore exclude these arithmetic progressions, impose genuinely narrower hypotheses, or retain additional freedom in the other restricted coordinate.
 
 ## Exact elementary reductions
 
@@ -208,4 +220,4 @@ Reject a claimed proof if it does any of the following:
 
 ## Current state
 
-`SOURCE_FRONTIER_ONLY`: the June-2026 `P_18` theorem is a meaningful advance and the one-coordinate reduction is useful, but **A308734 remains unproved by this carrier**. The next payable milestone is a genuinely new lemma closing an infinite arithmetic gap, not more brute-force range verification.
+`RIGOROUS_ROUTE_EXCLUSION`: the June-2026 `P_18` frontier and elementary reductions are retained, while the universal fixed-3 shortcut is excluded both on a 4-adic ray and on infinitely many arbitrarily large 4-free inputs; the fixed-5 shortcut also has a 4-adic-ray obstruction. **A308734 remains unproved by this carrier.** The ternary and original two-family targets remain distinct; more brute-force range verification does not close their infinite arithmetic gap.

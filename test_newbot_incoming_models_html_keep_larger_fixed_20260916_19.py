@@ -21,8 +21,8 @@ class TestNewbotIncomingModelsHtmlKeepLargerFixed2026091619(unittest.TestCase):
     def test_tip_incoming_models_has_autopsy_and_larger(self):
         html = (ROOT / "incoming-models.html").read_text(encoding="utf-8")
         self.assertIn('id="live-cash"', html)
-
-
+        self.assertIn("dealer-service-lead-rescue.html", html)
+        self.assertIn("$199", html)
         self.assertIn("Larger fixed engagements", html)
         for path in LARGER:
             self.assertIn(path, html)
@@ -44,7 +44,7 @@ class TestNewbotIncomingModelsHtmlKeepLargerFixed2026091619(unittest.TestCase):
         self.assertIn("Larger fixed engagements", html)
         self.assertIn("diagnostic.html", html)
         self.assertIn("commercial.html", html)
-
+        self.assertIn("dealer-service-lead-rescue.html", html)
         tip = (ROOT / "incoming-models.html").read_text(encoding="utf-8")
         tip_cash = CASH_RE.search(tip)
         gen_cash = CASH_RE.search(html)

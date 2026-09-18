@@ -1,0 +1,64 @@
+{
+  "operation": "UNC-AP-BATCH-INTEGRITY-ZKESTREL-20260917",
+  "seat": "Z-Kestrel-Finance",
+  "model": "GPT-6 Astra Pro",
+  "scope": "Independent offline AP batch review; no parent-module replacement",
+  "runtime": "3.13.5",
+  "base_commit": "10fb45287a7459a52f3ad96856be4524cf2cd62c",
+  "normal": {
+    "tests": 94,
+    "skips": 0,
+    "returncode": 0
+  },
+  "optimized": {
+    "tests": 94,
+    "skips": 0,
+    "returncode": 0
+  },
+  "compile_returncode": 0,
+  "commands": [
+    "python -W error::ResourceWarning run_batch_tests.py",
+    "python -O -W error::ResourceWarning run_batch_tests.py",
+    "python exercise_batch.py",
+    "python -O exercise_batch.py",
+    "python -m py_compile batch_reconcile.py test_batch_reconcile.py run_batch_tests.py exercise_batch.py"
+  ],
+  "property_normal": {
+    "evidence_class": "SYNTHETIC_LOCAL_EXECUTION",
+    "python": "3.13.5",
+    "optimize": 0,
+    "seed": 20260917,
+    "scenario_count": 250,
+    "permutation_checks": 250,
+    "scenario_seconds": 1.081326,
+    "smoke_invoice_count": 1000,
+    "smoke_input_bytes": 535720,
+    "smoke_elapsed_seconds": 0.264016,
+    "smoke_receipt_sha256": "ed6e20ff03ea4bc29971af820503cbf26925f48f46e4c73620a7cc5cecef396c",
+    "result": "PASS"
+  },
+  "property_optimized": {
+    "evidence_class": "SYNTHETIC_LOCAL_EXECUTION",
+    "python": "3.13.5",
+    "optimize": 1,
+    "seed": 20260917,
+    "scenario_count": 250,
+    "permutation_checks": 250,
+    "scenario_seconds": 1.11433,
+    "smoke_invoice_count": 1000,
+    "smoke_input_bytes": 535720,
+    "smoke_elapsed_seconds": 0.262923,
+    "smoke_receipt_sha256": "ed6e20ff03ea4bc29971af820503cbf26925f48f46e4c73620a7cc5cecef396c",
+    "result": "PASS"
+  },
+  "hosted_ci_executed": false,
+  "production_validation": false,
+  "external_contact": false,
+  "payment_action": false,
+  "source_git_blobs": {
+    "batch_reconcile.py": "9b25c40775f3039f7d7098ab929d97e09632898a",
+    "test_batch_reconcile.py": "8d0a97a3e8c1f01c3a9752a7fe20d35fc04b4a91",
+    "run_batch_tests.py": "7f47eedc09e23476034020101f4e2dc48736d62b",
+    "exercise_batch.py": "310e6a90f24dff0653e935868d705a84e65911f7"
+  }
+}

@@ -1,0 +1,34 @@
+name: UNC AP batch review
+on:
+  pull_request:
+    paths:
+      - 'revenue/opportunities/unc_ap_ai_peoplesoft/**'
+      - '.github/workflows/unc-ap-batch-review.yml'
+      - 'test_unc_ap_ai_peoplesoft_batch.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: revenue/opportunities/unc_ap_ai_peoplesoft
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.13'
+      - name: Parse exact source
+        run: python -m py_compile batch_reconcile.py test_batch_reconcile.py run_batch_tests.py exercise_batch.py
+      - name: Focused tests with non-vacuous discovery
+        run: python -W error::ResourceWarning run_batch_tests.py
+      - name: Real optimized tests including child CLI processes
+        run: python -O -W error::ResourceWarning run_batch_tests.py
+      - name: Deterministic capacity and permutation exercise
+        run: |
+          python exercise_batch.py
+          python -O exercise_batch.py

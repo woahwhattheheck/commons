@@ -25,6 +25,7 @@ jobs:
           ref: ${{ github.event.repository.default_branch }}
           sparse-checkout: |
             pr_collision_notice.py
+            tree_preservation_guard.py
           sparse-checkout-cone-mode: false
           path: listener
       - name: checkout target-branch wake jobs
@@ -39,3 +40,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 listener/pr_collision_notice.py --repo-root target
+      - name: verify exact PR root-tree retention
+        if: ${{ !cancelled() }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 listener/tree_preservation_guard.py

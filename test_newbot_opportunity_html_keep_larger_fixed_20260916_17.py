@@ -23,8 +23,8 @@ class TestNewbotOpportunityHtmlKeepLargerFixed2026091617(unittest.TestCase):
         for name in ("opportunity.html", "proof-to-proposal.html"):
             html = (ROOT / name).read_text(encoding="utf-8")
             self.assertIn('id="live-cash"', html)
-
-
+            self.assertIn("dealer-service-lead-rescue.html", html)
+            self.assertIn("$199", html)
             self.assertIn("Larger fixed engagements", html)
             for path in LARGER:
                 self.assertIn(path, html)
@@ -51,7 +51,7 @@ class TestNewbotOpportunityHtmlKeepLargerFixed2026091617(unittest.TestCase):
             self.assertIn("Larger fixed engagements", html, name)
             self.assertIn("diagnostic.html", html, name)
             self.assertIn("commercial.html", html, name)
-
+            self.assertIn("dealer-service-lead-rescue.html", html, name)
             tip = (ROOT / name).read_text(encoding="utf-8")
             tip_cash = CASH_RE.search(tip)
             gen_cash = CASH_RE.search(html)

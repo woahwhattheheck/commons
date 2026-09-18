@@ -75,3 +75,17 @@ The validator rejects commercial-truth drift, prime-readiness drift, outbound/su
 ## Authority ceiling
 
 No buyer/prime contact is performed by these files. No bid or portal submission, account creation, signature, teaming commitment, OEM/certification/security-clearance/public-sector-past-performance claim, buyer acceptance, award, payment, recognized revenue, spend, or production deployment is asserted. External contact, when separately executed, must use literal provider receipts and preserve the exact payment/acceptance state.
+
+
+## Authority-bound single-writer lease
+
+Duplicate-contact coordination now keys one outbound route by stable `opportunity_id × organization_id × route_id`, rather than display-company or address spelling. Display aliases remain audit text and do not create a second coordination identity.
+
+A target-review packet requires two independently retained objects:
+
+- target authority binds the opportunity, stable organization and route IDs, display labels, generation, capture time and source reference;
+- single-writer lease receipt binds that same opportunity/organization/route identity to an arbiter, positive generation, bounded status, acquisition/expiry times and durable receipt reference.
+
+Both objects are checked against independently supplied SHA-256 roots before use. Only an `ACQUIRED`, unexpired lease can clear the lease control at the packet's review time. Relationship/provider-history observations and the opportunity deadline are also re-evaluated for that review rather than inherited from an older packet. A source whose deadline timezone is unresolved remains `HOLD`.
+
+`READY_FOR_OWNER_TRANSPORT_REVIEW` is a coordination result only. The emitted packet keeps `external_send_authorized`, `submission_authorized`, and `payment_authorized` false.
