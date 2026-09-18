@@ -1,0 +1,1 @@
+{"claim_kind":"MODEL_COST","claim_payload":{"amount_minor":0,"currency":"USD","model":"synthetic-model","product":"synthetic-product"},"generation":1,"issuer":"synthetic-provider","record_id":"synthetic-provider-zero-v1","schema":"evidence-authority/candidate/v1","scope":"MODEL","subject":"acct-redacted"}
