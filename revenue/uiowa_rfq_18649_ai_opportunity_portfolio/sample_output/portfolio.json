@@ -1,0 +1,1045 @@
+{
+  "candidates": [
+    {
+      "benefit_hours_per_year": {
+        "high": 112.95,
+        "likely": 68.0,
+        "low": 26.4,
+        "unit": "staff-hours released per year (recurring)"
+      },
+      "decision_class": "PURSUE",
+      "decision_reason": "benefit is positive across the whole stated range (26.4 - 68.0 - 113.0 h/yr) with inputs available.",
+      "dimension_state": {
+        "expected_benefit": "ASSESSED",
+        "input_availability": "HIGH",
+        "integration_effort": "ASSESSED",
+        "measurable_success": "HIGH",
+        "task_suitability": "HIGH"
+      },
+      "evidence_requests": [],
+      "flags": [],
+      "group": "ESS",
+      "id": "OPP-ESS-01",
+      "labelled_fiction": true,
+      "measurability": "HIGH",
+      "measures": [
+        {
+          "baseline_state": "MEASURED",
+          "baseline_value": "0.62",
+          "cadence": "per release",
+          "collection_effort": "low - derivable from existing release records",
+          "denominator": "releases in the period",
+          "name": "Release notes published within one business day of release",
+          "numerator": "releases with notes published within 1 business day"
+        },
+        {
+          "baseline_state": "MEASURED",
+          "baseline_value": "n/a for manual baseline - manual notes are authored, not edited; recorded as the comparison point, not as zero",
+          "cadence": "per release",
+          "collection_effort": "low - diff of draft against published",
+          "denominator": "drafted lines",
+          "name": "Editor changes per published note",
+          "numerator": "edited lines"
+        }
+      ],
+      "one_time_implementation": {
+        "high": 80.0,
+        "likely": 45.0,
+        "low": 25.0,
+        "unit": "hours (one-time)"
+      },
+      "rank": 3,
+      "rank_note": "",
+      "recurring_context_hours_per_year": {
+        "high": 83.2,
+        "likely": 41.6,
+        "low": 20.8,
+        "note": "context only, at 2080 h/FTE-yr; NOT added to the one-time ledger"
+      },
+      "recurring_maintenance": {
+        "high": 0.04,
+        "likely": 0.02,
+        "low": 0.01,
+        "unit": "FTE-fraction per year (recurring)"
+      },
+      "simple_payback_years": 0.66,
+      "title": "Draft first-pass release notes from merged change records",
+      "unknown_dimensions": [],
+      "use_case": "A delivery lead hand-writes release notes for each student-system release by reading the merged change records. The drafting is language work over records that are already structured and already in one place; a human still edits and approves every note before it is published."
+    },
+    {
+      "benefit_hours_per_year": {
+        "high": 10.4167,
+        "likely": -256.6667,
+        "low": -1041.6667,
+        "unit": "staff-hours released per year (recurring)"
+      },
+      "decision_class": "UNCERTAIN-NET-VALUE",
+      "decision_reason": "benefit range straddles zero (-1041.7 - -256.7 - 10.4 h/yr): on current assumptions this can lose time as easily as save it.",
+      "dimension_state": {
+        "expected_benefit": "ASSESSED",
+        "input_availability": "HIGH",
+        "integration_effort": "ASSESSED",
+        "measurable_success": "MODERATE",
+        "task_suitability": "MODERATE"
+      },
+      "evidence_requests": [
+        "A measured misroute rate and the real downstream cost of a misroute during the registration peak. The whole result turns on this number."
+      ],
+      "flags": [],
+      "group": "ESS",
+      "id": "OPP-ESS-02",
+      "labelled_fiction": true,
+      "measurability": "MODERATE",
+      "measures": [
+        {
+          "baseline_state": "MEASURED",
+          "baseline_value": "0.91",
+          "cadence": "monthly",
+          "collection_effort": "low - re-queue events already logged",
+          "denominator": "tickets routed",
+          "name": "Tickets routed correctly on first assignment",
+          "numerator": "tickets not re-queued"
+        },
+        {
+          "baseline_state": "NOT-BASELINED",
+          "baseline_value": null,
+          "cadence": "monthly",
+          "collection_effort": "medium - arrival timestamps exist, correct-queue confirmation does not",
+          "denominator": "tickets routed",
+          "name": "Median minutes from ticket arrival to correct queue",
+          "numerator": "minutes to correct queue"
+        }
+      ],
+      "one_time_implementation": {
+        "high": 260.0,
+        "likely": 140.0,
+        "low": 80.0,
+        "unit": "hours (one-time)"
+      },
+      "rank": 4,
+      "rank_note": "",
+      "recurring_context_hours_per_year": {
+        "high": 249.6,
+        "likely": 124.8,
+        "low": 62.4,
+        "note": "context only, at 2080 h/FTE-yr; NOT added to the one-time ledger"
+      },
+      "recurring_maintenance": {
+        "high": 0.12,
+        "likely": 0.06,
+        "low": 0.03,
+        "unit": "FTE-fraction per year (recurring)"
+      },
+      "simple_payback_years": "UNKNOWN",
+      "title": "Auto-classify inbound registration support tickets to a routing queue",
+      "unknown_dimensions": [],
+      "use_case": "Front-line staff route incoming registration tickets to the right queue. Routing already takes about two minutes, and a misroute during the registration peak costs far more than it saves, so every suggested route is confirmed by a person before it is applied."
+    },
+    {
+      "benefit_hours_per_year": {
+        "high": 274.0,
+        "likely": 138.25,
+        "low": 37.5,
+        "unit": "staff-hours released per year (recurring)"
+      },
+      "decision_class": "PURSUE",
+      "decision_reason": "benefit is positive across the whole stated range (37.5 - 138.2 - 274.0 h/yr) with inputs available.",
+      "dimension_state": {
+        "expected_benefit": "ASSESSED",
+        "input_availability": "HIGH",
+        "integration_effort": "ASSESSED",
+        "measurable_success": "HIGH",
+        "task_suitability": "HIGH"
+      },
+      "evidence_requests": [],
+      "flags": [
+        "RECURRING-LOAD-EXCEEDS-BENEFIT: recurring upkeep at the likely case is about 374 h/yr of capacity, against 138 h/yr released. These are separate ledgers and are not netted; read both before treating the 0.40-year payback as the whole story."
+      ],
+      "group": "IAM",
+      "id": "OPP-IAM-01",
+      "labelled_fiction": true,
+      "measurability": "HIGH",
+      "measures": [
+        {
+          "baseline_state": "MEASURED",
+          "baseline_value": "0.41",
+          "cadence": "monthly",
+          "collection_effort": "low - contacts already ticketed",
+          "denominator": "denials",
+          "name": "Denied requests followed by a clarification contact",
+          "numerator": "denials followed by a contact within 5 days"
+        },
+        {
+          "baseline_state": "MEASURED",
+          "baseline_value": "0.53",
+          "cadence": "monthly",
+          "collection_effort": "low - request history already linked",
+          "denominator": "resubmissions after a denial",
+          "name": "Resubmitted requests that succeed on the next attempt",
+          "numerator": "successful resubmissions"
+        }
+      ],
+      "one_time_implementation": {
+        "high": 95.0,
+        "likely": 55.0,
+        "low": 30.0,
+        "unit": "hours (one-time)"
+      },
+      "rank": 1,
+      "rank_note": "TIED - not separable on current evidence (benefit intervals overlap with OPP-RIS-01)",
+      "recurring_context_hours_per_year": {
+        "high": 624.0,
+        "likely": 374.4,
+        "low": 208.0,
+        "note": "context only, at 2080 h/FTE-yr; NOT added to the one-time ledger"
+      },
+      "recurring_maintenance": {
+        "high": 0.3,
+        "likely": 0.18,
+        "low": 0.1,
+        "unit": "FTE-fraction per year (recurring)"
+      },
+      "simple_payback_years": 0.4,
+      "title": "Explain access-request denials in plain language to the requester",
+      "unknown_dimensions": [],
+      "use_case": "When an access request is denied, the requester currently receives an entitlement code. An analyst writes a plain-language explanation on request. The explanation is short and easy to build, but it depends on an entitlement vocabulary that changes continuously as applications are onboarded and roles are restructured."
+    },
+    {
+      "benefit_hours_per_year": "UNKNOWN",
+      "decision_class": "BLOCKED-UNKNOWN",
+      "decision_reason": "cannot be ranked: expected_benefit, input_availability not assessed. Absent evidence is held as UNKNOWN, not scored as zero.",
+      "dimension_state": {
+        "expected_benefit": "UNKNOWN",
+        "input_availability": "UNKNOWN",
+        "integration_effort": "ASSESSED",
+        "measurable_success": "MODERATE",
+        "task_suitability": "HIGH"
+      },
+      "evidence_requests": [
+        "Are prior quarterly access-review records retained, and can two consecutive quarters be compared?",
+        "How many application owners certify each quarter, and how long does a certification take today?"
+      ],
+      "flags": [],
+      "group": "IAM",
+      "id": "OPP-IAM-02",
+      "labelled_fiction": true,
+      "measurability": "MODERATE",
+      "measures": [
+        {
+          "baseline_state": "NOT-BASELINED",
+          "baseline_value": null,
+          "cadence": "quarterly",
+          "collection_effort": "unknown until the review records are located",
+          "denominator": "reviews due",
+          "name": "Access reviews certified by the quarter deadline",
+          "numerator": "reviews certified on time"
+        }
+      ],
+      "one_time_implementation": {
+        "high": 200.0,
+        "likely": 110.0,
+        "low": 60.0,
+        "unit": "hours (one-time)"
+      },
+      "rank": null,
+      "rank_note": "UNRANKED - pending expected_benefit, input_availability",
+      "recurring_context_hours_per_year": {
+        "high": 312.0,
+        "likely": 166.4,
+        "low": 83.2,
+        "note": "context only, at 2080 h/FTE-yr; NOT added to the one-time ledger"
+      },
+      "recurring_maintenance": {
+        "high": 0.15,
+        "likely": 0.08,
+        "low": 0.04,
+        "unit": "FTE-fraction per year (recurring)"
+      },
+      "simple_payback_years": "UNKNOWN",
+      "title": "Draft quarterly access-review summaries for application owners",
+      "unknown_dimensions": [
+        "expected_benefit",
+        "input_availability"
+      ],
+      "use_case": "Application owners certify entitlements each quarter. A drafted summary of what changed since the last review would shorten the certification. Whether the prior review records are retrievable in a usable form is not currently known to anyone we could ask, so the size of the task is not known either."
+    },
+    {
+      "benefit_hours_per_year": {
+        "high": 322.625,
+        "likely": 222.88,
+        "low": 138.0,
+        "unit": "staff-hours released per year (recurring)"
+      },
+      "decision_class": "PURSUE-BUT-EFFORT-HEAVY",
+      "decision_reason": "positive benefit (138.0 - 222.9 - 322.6 h/yr) but input availability is LOW: the required inputs have to be assembled before any of it is reachable.",
+      "dimension_state": {
+        "expected_benefit": "ASSESSED",
+        "input_availability": "LOW",
+        "integration_effort": "ASSESSED",
+        "measurable_success": "MODERATE",
+        "task_suitability": "HIGH"
+      },
+      "evidence_requests": [
+        "How often sponsor terms are reissued, which sets the recurring corpus-refresh load.",
+        "Whether a single authoritative copy of each sponsor policy exists, and who owns it."
+      ],
+      "flags": [
+        "RECURRING-LOAD-EXCEEDS-BENEFIT: recurring upkeep at the likely case is about 250 h/yr of capacity, against 223 h/yr released. These are separate ledgers and are not netted; read both before treating the 1.88-year payback as the whole story."
+      ],
+      "group": "RIS",
+      "id": "OPP-RIS-01",
+      "labelled_fiction": true,
+      "measurability": "MODERATE",
+      "measures": [
+        {
+          "baseline_state": "MEASURED",
+          "baseline_value": "0.74",
+          "cadence": "monthly",
+          "collection_effort": "low - dates already recorded",
+          "denominator": "setups in the period",
+          "name": "Award setups completed within target days of terms receipt",
+          "numerator": "setups within target"
+        },
+        {
+          "baseline_state": "NOT-BASELINED",
+          "baseline_value": null,
+          "cadence": "monthly",
+          "collection_effort": "medium - review corrections are not recorded today",
+          "denominator": "checklist items produced",
+          "name": "Checklist items corrected at review",
+          "numerator": "corrected items"
+        }
+      ],
+      "one_time_implementation": {
+        "high": 700.0,
+        "likely": 420.0,
+        "low": 260.0,
+        "unit": "hours (one-time)"
+      },
+      "rank": 1,
+      "rank_note": "TIED - not separable on current evidence (benefit intervals overlap with OPP-IAM-01)",
+      "recurring_context_hours_per_year": {
+        "high": 457.6,
+        "likely": 249.6,
+        "low": 124.8,
+        "note": "context only, at 2080 h/FTE-yr; NOT added to the one-time ledger"
+      },
+      "recurring_maintenance": {
+        "high": 0.22,
+        "likely": 0.12,
+        "low": 0.06,
+        "unit": "FTE-fraction per year (recurring)"
+      },
+      "simple_payback_years": 1.88,
+      "title": "Summarise sponsor policy documents into award-setup checklists",
+      "unknown_dimensions": [],
+      "use_case": "Award setup staff read sponsor terms and produce a setup checklist. The reading is genuine language work over long documents, but the policy corpus is scattered across shared drives and a website, with more than one version of the same policy in circulation and no retrieval layer over any of it."
+    },
+    {
+      "benefit_hours_per_year": {
+        "high": -11.0,
+        "likely": -122.2,
+        "low": -346.0,
+        "unit": "staff-hours released per year (recurring)"
+      },
+      "decision_class": "DO-NOT-PURSUE",
+      "decision_reason": "task suitability is LOW: the work is not language-shaped, so an assisted workflow adds a checking step without removing one. The arithmetic agrees independently: even the optimistic bound releases no staff time (-346.0 - -122.2 - -11.0 h/yr).",
+      "dimension_state": {
+        "expected_benefit": "ASSESSED",
+        "input_availability": "HIGH",
+        "integration_effort": "ASSESSED",
+        "measurable_success": "HIGH",
+        "task_suitability": "LOW"
+      },
+      "evidence_requests": [],
+      "flags": [],
+      "group": "RIS",
+      "id": "OPP-RIS-02",
+      "labelled_fiction": true,
+      "measurability": "HIGH",
+      "measures": [
+        {
+          "baseline_state": "MEASURED",
+          "baseline_value": "0.88",
+          "cadence": "per certification period",
+          "collection_effort": "low - already reported",
+          "denominator": "certifications due",
+          "name": "Certifications completed by the period deadline",
+          "numerator": "certifications on time"
+        }
+      ],
+      "one_time_implementation": {
+        "high": 120.0,
+        "likely": 70.0,
+        "low": 40.0,
+        "unit": "hours (one-time)"
+      },
+      "rank": null,
+      "rank_note": "UNRANKED - DO-NOT-PURSUE",
+      "recurring_context_hours_per_year": {
+        "high": 166.4,
+        "likely": 83.2,
+        "low": 41.6,
+        "note": "context only, at 2080 h/FTE-yr; NOT added to the one-time ledger"
+      },
+      "recurring_maintenance": {
+        "high": 0.08,
+        "likely": 0.04,
+        "low": 0.02,
+        "unit": "FTE-fraction per year (recurring)"
+      },
+      "simple_payback_years": "UNKNOWN",
+      "title": "Generate effort-certification reminder narratives",
+      "unknown_dimensions": [],
+      "use_case": "Certifiers receive a reminder naming the periods and projects awaiting certification. The content is entirely determined by fields already in the record; the reminder is a fill-in, not a composition. A deterministic template already does this correctly and needs no checking."
+    }
+  ],
+  "constants": {
+    "composite_weights_if_requested": {
+      "expected_benefit": 0.3,
+      "input_availability": 0.2,
+      "integration_effort": 0.15,
+      "measurable_success": 0.1,
+      "task_suitability": 0.25
+    },
+    "effort_heavy_payback_years": 1.0,
+    "hours_per_fte_year": 2080.0
+  },
+  "content_digest": "sha256:55378eb711f4c79c7bc7968cdb74c81d9c46c5ab6e7dafdc9138e06019bf0425",
+  "decision_class_index": {
+    "BLOCKED-UNKNOWN": [
+      "OPP-IAM-02"
+    ],
+    "DO-NOT-PURSUE": [
+      "OPP-RIS-02"
+    ],
+    "PURSUE": [
+      "OPP-ESS-01",
+      "OPP-IAM-01"
+    ],
+    "PURSUE-BUT-EFFORT-HEAVY": [
+      "OPP-RIS-01"
+    ],
+    "UNCERTAIN-NET-VALUE": [
+      "OPP-ESS-02"
+    ]
+  },
+  "decision_critical_assumptions": [
+    {
+      "assumption": "one_time_implementation_hours",
+      "basis": "ASSUMED",
+      "candidate": "OPP-ESS-01",
+      "changes": [
+        {
+          "bound": "high",
+          "from": {
+            "class": "PURSUE",
+            "rank": 3
+          },
+          "to": {
+            "class": "PURSUE-BUT-EFFORT-HEAVY",
+            "rank": 3
+          },
+          "value": 80.0
+        }
+      ],
+      "decision_critical": true,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "assisted_minutes_per_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-ESS-02",
+      "changes": [
+        {
+          "bound": "high",
+          "from": {
+            "class": "UNCERTAIN-NET-VALUE",
+            "rank": 4
+          },
+          "to": {
+            "class": "DO-NOT-PURSUE",
+            "rank": null
+          },
+          "value": 0.5
+        }
+      ],
+      "decision_critical": true,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "baseline_minutes_per_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-ESS-02",
+      "changes": [
+        {
+          "bound": "low",
+          "from": {
+            "class": "UNCERTAIN-NET-VALUE",
+            "rank": 4
+          },
+          "to": {
+            "class": "DO-NOT-PURSUE",
+            "rank": null
+          },
+          "value": 1.6
+        }
+      ],
+      "decision_critical": true,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "checking_minutes_per_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-ESS-02",
+      "changes": [
+        {
+          "bound": "high",
+          "from": {
+            "class": "UNCERTAIN-NET-VALUE",
+            "rank": 4
+          },
+          "to": {
+            "class": "DO-NOT-PURSUE",
+            "rank": null
+          },
+          "value": 1.9
+        }
+      ],
+      "decision_critical": true,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "repair_minutes_per_reworked_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-ESS-02",
+      "changes": [
+        {
+          "bound": "high",
+          "from": {
+            "class": "UNCERTAIN-NET-VALUE",
+            "rank": 4
+          },
+          "to": {
+            "class": "DO-NOT-PURSUE",
+            "rank": null
+          },
+          "value": 30.0
+        }
+      ],
+      "decision_critical": true,
+      "source": "fixture: the cost of a misroute during peak is invented and is the single number this candidate turns on"
+    },
+    {
+      "assumption": "rework_rate",
+      "basis": "ASSUMED",
+      "candidate": "OPP-ESS-02",
+      "changes": [
+        {
+          "bound": "high",
+          "from": {
+            "class": "UNCERTAIN-NET-VALUE",
+            "rank": 4
+          },
+          "to": {
+            "class": "DO-NOT-PURSUE",
+            "rank": null
+          },
+          "value": 0.14
+        }
+      ],
+      "decision_critical": true,
+      "source": "fixture: no misclassification rate has been measured"
+    },
+    {
+      "assumption": "baseline_minutes_per_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-IAM-01",
+      "changes": [
+        {
+          "bound": "low",
+          "from": {
+            "class": "PURSUE",
+            "rank": 1
+          },
+          "to": {
+            "class": "PURSUE",
+            "rank": 2
+          },
+          "value": 9.0
+        }
+      ],
+      "decision_critical": true,
+      "source": "none recorded"
+    }
+  ],
+  "fiction_notice": "EVERY CANDIDATE, NUMBER, GROUP AND MEASURE BELOW IS FICTION, written to exercise the model. None of it is a University of Iowa finding, none of it came from University systems, and none of it should be quoted as an observation about AIS. Real values replace these once University evidence arrives; the basis field on each assumption records which ones are still invented.",
+  "ledger_note": "Three ledgers are reported separately and are never summed: one-time implementation (hours (one-time)), recurring maintenance (FTE-fraction per year (recurring)), and expected benefit (staff-hours released per year (recurring)). Adding across them raises LedgerUnitError.",
+  "revision_impact": [
+    {
+      "assumption": "one_time_implementation_hours",
+      "basis": "ASSUMED",
+      "candidate": "OPP-ESS-01",
+      "changes": [
+        {
+          "bound": "high",
+          "from": {
+            "class": "PURSUE",
+            "rank": 3
+          },
+          "to": {
+            "class": "PURSUE-BUT-EFFORT-HEAVY",
+            "rank": 3
+          },
+          "value": 80.0
+        }
+      ],
+      "decision_critical": true,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "assisted_minutes_per_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-ESS-02",
+      "changes": [
+        {
+          "bound": "high",
+          "from": {
+            "class": "UNCERTAIN-NET-VALUE",
+            "rank": 4
+          },
+          "to": {
+            "class": "DO-NOT-PURSUE",
+            "rank": null
+          },
+          "value": 0.5
+        }
+      ],
+      "decision_critical": true,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "baseline_minutes_per_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-ESS-02",
+      "changes": [
+        {
+          "bound": "low",
+          "from": {
+            "class": "UNCERTAIN-NET-VALUE",
+            "rank": 4
+          },
+          "to": {
+            "class": "DO-NOT-PURSUE",
+            "rank": null
+          },
+          "value": 1.6
+        }
+      ],
+      "decision_critical": true,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "checking_minutes_per_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-ESS-02",
+      "changes": [
+        {
+          "bound": "high",
+          "from": {
+            "class": "UNCERTAIN-NET-VALUE",
+            "rank": 4
+          },
+          "to": {
+            "class": "DO-NOT-PURSUE",
+            "rank": null
+          },
+          "value": 1.9
+        }
+      ],
+      "decision_critical": true,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "repair_minutes_per_reworked_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-ESS-02",
+      "changes": [
+        {
+          "bound": "high",
+          "from": {
+            "class": "UNCERTAIN-NET-VALUE",
+            "rank": 4
+          },
+          "to": {
+            "class": "DO-NOT-PURSUE",
+            "rank": null
+          },
+          "value": 30.0
+        }
+      ],
+      "decision_critical": true,
+      "source": "fixture: the cost of a misroute during peak is invented and is the single number this candidate turns on"
+    },
+    {
+      "assumption": "rework_rate",
+      "basis": "ASSUMED",
+      "candidate": "OPP-ESS-02",
+      "changes": [
+        {
+          "bound": "high",
+          "from": {
+            "class": "UNCERTAIN-NET-VALUE",
+            "rank": 4
+          },
+          "to": {
+            "class": "DO-NOT-PURSUE",
+            "rank": null
+          },
+          "value": 0.14
+        }
+      ],
+      "decision_critical": true,
+      "source": "fixture: no misclassification rate has been measured"
+    },
+    {
+      "assumption": "baseline_minutes_per_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-IAM-01",
+      "changes": [
+        {
+          "bound": "low",
+          "from": {
+            "class": "PURSUE",
+            "rank": 1
+          },
+          "to": {
+            "class": "PURSUE",
+            "rank": 2
+          },
+          "value": 9.0
+        }
+      ],
+      "decision_critical": true,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "assisted_minutes_per_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-ESS-01",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "baseline_minutes_per_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-ESS-01",
+      "changes": [],
+      "decision_critical": false,
+      "source": "fixture: no timing has been collected from the delivery lead"
+    },
+    {
+      "assumption": "checking_minutes_per_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-ESS-01",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "recurring_maintenance_fte_per_year",
+      "basis": "ASSUMED",
+      "candidate": "OPP-ESS-01",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "repair_minutes_per_reworked_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-ESS-01",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "rework_rate",
+      "basis": "ASSUMED",
+      "candidate": "OPP-ESS-01",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "volume_items_per_year",
+      "basis": "SYNTHETIC-FIXTURE",
+      "candidate": "OPP-ESS-01",
+      "changes": [],
+      "decision_critical": false,
+      "source": "fixture: invented release cadence, replace with the real release log count"
+    },
+    {
+      "assumption": "one_time_implementation_hours",
+      "basis": "ASSUMED",
+      "candidate": "OPP-ESS-02",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "recurring_maintenance_fte_per_year",
+      "basis": "ASSUMED",
+      "candidate": "OPP-ESS-02",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "volume_items_per_year",
+      "basis": "SYNTHETIC-FIXTURE",
+      "candidate": "OPP-ESS-02",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "assisted_minutes_per_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-IAM-01",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "checking_minutes_per_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-IAM-01",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "one_time_implementation_hours",
+      "basis": "ASSUMED",
+      "candidate": "OPP-IAM-01",
+      "changes": [],
+      "decision_critical": false,
+      "source": "fixture: small build - the explanation is short and the denial reason is already structured"
+    },
+    {
+      "assumption": "recurring_maintenance_fte_per_year",
+      "basis": "ASSUMED",
+      "candidate": "OPP-IAM-01",
+      "changes": [],
+      "decision_critical": false,
+      "source": "fixture: the entitlement vocabulary drifts as applications onboard, so upkeep does not decay after go-live"
+    },
+    {
+      "assumption": "repair_minutes_per_reworked_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-IAM-01",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "rework_rate",
+      "basis": "ASSUMED",
+      "candidate": "OPP-IAM-01",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "volume_items_per_year",
+      "basis": "SYNTHETIC-FIXTURE",
+      "candidate": "OPP-IAM-01",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "assisted_minutes_per_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-IAM-02",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "checking_minutes_per_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-IAM-02",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "one_time_implementation_hours",
+      "basis": "ASSUMED",
+      "candidate": "OPP-IAM-02",
+      "changes": [],
+      "decision_critical": false,
+      "source": "fixture: assumes prior review records are retrievable. If they are not, this number is wrong and so is the class."
+    },
+    {
+      "assumption": "recurring_maintenance_fte_per_year",
+      "basis": "ASSUMED",
+      "candidate": "OPP-IAM-02",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "repair_minutes_per_reworked_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-IAM-02",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "rework_rate",
+      "basis": "ASSUMED",
+      "candidate": "OPP-IAM-02",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "assisted_minutes_per_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-RIS-01",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "baseline_minutes_per_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-RIS-01",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "checking_minutes_per_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-RIS-01",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "one_time_implementation_hours",
+      "basis": "ASSUMED",
+      "candidate": "OPP-RIS-01",
+      "changes": [],
+      "decision_critical": false,
+      "source": "fixture: most of this is assembling and de-duplicating the policy corpus, not building the workflow"
+    },
+    {
+      "assumption": "recurring_maintenance_fte_per_year",
+      "basis": "ASSUMED",
+      "candidate": "OPP-RIS-01",
+      "changes": [],
+      "decision_critical": false,
+      "source": "fixture: sponsors reissue terms, so the corpus needs a refresh owner"
+    },
+    {
+      "assumption": "repair_minutes_per_reworked_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-RIS-01",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "rework_rate",
+      "basis": "ASSUMED",
+      "candidate": "OPP-RIS-01",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "volume_items_per_year",
+      "basis": "SYNTHETIC-FIXTURE",
+      "candidate": "OPP-RIS-01",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "assisted_minutes_per_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-RIS-02",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "baseline_minutes_per_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-RIS-02",
+      "changes": [],
+      "decision_critical": false,
+      "source": "fixture: the manual baseline is already near-zero because a template does the work"
+    },
+    {
+      "assumption": "checking_minutes_per_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-RIS-02",
+      "changes": [],
+      "decision_critical": false,
+      "source": "fixture: a generated reminder has to be read before it is sent; the template output does not"
+    },
+    {
+      "assumption": "one_time_implementation_hours",
+      "basis": "ASSUMED",
+      "candidate": "OPP-RIS-02",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "recurring_maintenance_fte_per_year",
+      "basis": "ASSUMED",
+      "candidate": "OPP-RIS-02",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "repair_minutes_per_reworked_item",
+      "basis": "ASSUMED",
+      "candidate": "OPP-RIS-02",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "rework_rate",
+      "basis": "ASSUMED",
+      "candidate": "OPP-RIS-02",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    },
+    {
+      "assumption": "volume_items_per_year",
+      "basis": "SYNTHETIC-FIXTURE",
+      "candidate": "OPP-RIS-02",
+      "changes": [],
+      "decision_critical": false,
+      "source": "none recorded"
+    }
+  ],
+  "schema_version": "uiowa-072-portfolio/1",
+  "unranked": [
+    "OPP-IAM-02",
+    "OPP-RIS-02"
+  ]
+}

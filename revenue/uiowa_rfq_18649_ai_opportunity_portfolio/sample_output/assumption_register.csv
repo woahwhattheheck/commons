@@ -1,0 +1,47 @@
+candidate_id,assumption,basis,source,decision_critical,what_changes_if_it_moves
+OPP-ESS-01,one_time_implementation_hours,ASSUMED,none recorded,YES,"high bound 80: rank 3->3, class PURSUE->PURSUE-BUT-EFFORT-HEAVY"
+OPP-ESS-02,assisted_minutes_per_item,ASSUMED,none recorded,YES,"high bound 0.5: rank 4->unranked, class UNCERTAIN-NET-VALUE->DO-NOT-PURSUE"
+OPP-ESS-02,baseline_minutes_per_item,ASSUMED,none recorded,YES,"low bound 1.6: rank 4->unranked, class UNCERTAIN-NET-VALUE->DO-NOT-PURSUE"
+OPP-ESS-02,checking_minutes_per_item,ASSUMED,none recorded,YES,"high bound 1.9: rank 4->unranked, class UNCERTAIN-NET-VALUE->DO-NOT-PURSUE"
+OPP-ESS-02,repair_minutes_per_reworked_item,ASSUMED,fixture: the cost of a misroute during peak is invented and is the single number this candidate turns on,YES,"high bound 30: rank 4->unranked, class UNCERTAIN-NET-VALUE->DO-NOT-PURSUE"
+OPP-ESS-02,rework_rate,ASSUMED,fixture: no misclassification rate has been measured,YES,"high bound 0.14: rank 4->unranked, class UNCERTAIN-NET-VALUE->DO-NOT-PURSUE"
+OPP-IAM-01,baseline_minutes_per_item,ASSUMED,none recorded,YES,"low bound 9: rank 1->2, class PURSUE->PURSUE"
+OPP-ESS-01,assisted_minutes_per_item,ASSUMED,none recorded,no,no rank or class change within the stated range
+OPP-ESS-01,baseline_minutes_per_item,ASSUMED,fixture: no timing has been collected from the delivery lead,no,no rank or class change within the stated range
+OPP-ESS-01,checking_minutes_per_item,ASSUMED,none recorded,no,no rank or class change within the stated range
+OPP-ESS-01,recurring_maintenance_fte_per_year,ASSUMED,none recorded,no,no rank or class change within the stated range
+OPP-ESS-01,repair_minutes_per_reworked_item,ASSUMED,none recorded,no,no rank or class change within the stated range
+OPP-ESS-01,rework_rate,ASSUMED,none recorded,no,no rank or class change within the stated range
+OPP-ESS-01,volume_items_per_year,SYNTHETIC-FIXTURE,"fixture: invented release cadence, replace with the real release log count",no,no rank or class change within the stated range
+OPP-ESS-02,one_time_implementation_hours,ASSUMED,none recorded,no,no rank or class change within the stated range
+OPP-ESS-02,recurring_maintenance_fte_per_year,ASSUMED,none recorded,no,no rank or class change within the stated range
+OPP-ESS-02,volume_items_per_year,SYNTHETIC-FIXTURE,none recorded,no,no rank or class change within the stated range
+OPP-IAM-01,assisted_minutes_per_item,ASSUMED,none recorded,no,no rank or class change within the stated range
+OPP-IAM-01,checking_minutes_per_item,ASSUMED,none recorded,no,no rank or class change within the stated range
+OPP-IAM-01,one_time_implementation_hours,ASSUMED,fixture: small build - the explanation is short and the denial reason is already structured,no,no rank or class change within the stated range
+OPP-IAM-01,recurring_maintenance_fte_per_year,ASSUMED,"fixture: the entitlement vocabulary drifts as applications onboard, so upkeep does not decay after go-live",no,no rank or class change within the stated range
+OPP-IAM-01,repair_minutes_per_reworked_item,ASSUMED,none recorded,no,no rank or class change within the stated range
+OPP-IAM-01,rework_rate,ASSUMED,none recorded,no,no rank or class change within the stated range
+OPP-IAM-01,volume_items_per_year,SYNTHETIC-FIXTURE,none recorded,no,no rank or class change within the stated range
+OPP-IAM-02,assisted_minutes_per_item,ASSUMED,none recorded,no,no rank or class change within the stated range
+OPP-IAM-02,checking_minutes_per_item,ASSUMED,none recorded,no,no rank or class change within the stated range
+OPP-IAM-02,one_time_implementation_hours,ASSUMED,"fixture: assumes prior review records are retrievable. If they are not, this number is wrong and so is the class.",no,no rank or class change within the stated range
+OPP-IAM-02,recurring_maintenance_fte_per_year,ASSUMED,none recorded,no,no rank or class change within the stated range
+OPP-IAM-02,repair_minutes_per_reworked_item,ASSUMED,none recorded,no,no rank or class change within the stated range
+OPP-IAM-02,rework_rate,ASSUMED,none recorded,no,no rank or class change within the stated range
+OPP-RIS-01,assisted_minutes_per_item,ASSUMED,none recorded,no,no rank or class change within the stated range
+OPP-RIS-01,baseline_minutes_per_item,ASSUMED,none recorded,no,no rank or class change within the stated range
+OPP-RIS-01,checking_minutes_per_item,ASSUMED,none recorded,no,no rank or class change within the stated range
+OPP-RIS-01,one_time_implementation_hours,ASSUMED,"fixture: most of this is assembling and de-duplicating the policy corpus, not building the workflow",no,no rank or class change within the stated range
+OPP-RIS-01,recurring_maintenance_fte_per_year,ASSUMED,"fixture: sponsors reissue terms, so the corpus needs a refresh owner",no,no rank or class change within the stated range
+OPP-RIS-01,repair_minutes_per_reworked_item,ASSUMED,none recorded,no,no rank or class change within the stated range
+OPP-RIS-01,rework_rate,ASSUMED,none recorded,no,no rank or class change within the stated range
+OPP-RIS-01,volume_items_per_year,SYNTHETIC-FIXTURE,none recorded,no,no rank or class change within the stated range
+OPP-RIS-02,assisted_minutes_per_item,ASSUMED,none recorded,no,no rank or class change within the stated range
+OPP-RIS-02,baseline_minutes_per_item,ASSUMED,fixture: the manual baseline is already near-zero because a template does the work,no,no rank or class change within the stated range
+OPP-RIS-02,checking_minutes_per_item,ASSUMED,fixture: a generated reminder has to be read before it is sent; the template output does not,no,no rank or class change within the stated range
+OPP-RIS-02,one_time_implementation_hours,ASSUMED,none recorded,no,no rank or class change within the stated range
+OPP-RIS-02,recurring_maintenance_fte_per_year,ASSUMED,none recorded,no,no rank or class change within the stated range
+OPP-RIS-02,repair_minutes_per_reworked_item,ASSUMED,none recorded,no,no rank or class change within the stated range
+OPP-RIS-02,rework_rate,ASSUMED,none recorded,no,no rank or class change within the stated range
+OPP-RIS-02,volume_items_per_year,SYNTHETIC-FIXTURE,none recorded,no,no rank or class change within the stated range

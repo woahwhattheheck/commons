@@ -1,0 +1,279 @@
+{
+  "schema_version": "uiowa-072-portfolio/1",
+  "fiction_notice": "EVERY CANDIDATE, NUMBER, GROUP AND MEASURE BELOW IS FICTION, written to exercise the model. None of it is a University of Iowa finding, none of it came from University systems, and none of it should be quoted as an observation about AIS. Real values replace these once University evidence arrives; the basis field on each assumption records which ones are still invented.",
+  "groups": {
+    "ESS": "Fictional Enterprise Student Systems group - registration, records, student-facing services.",
+    "RIS": "Fictional Research Information Systems group - awards, effort reporting, sponsor compliance support.",
+    "IAM": "Fictional Identity and Access Management group - accounts, entitlements, access review."
+  },
+  "candidates": [
+    {
+      "id": "OPP-ESS-01",
+      "group": "ESS",
+      "title": "Draft first-pass release notes from merged change records",
+      "use_case": "A delivery lead hand-writes release notes for each student-system release by reading the merged change records. The drafting is language work over records that are already structured and already in one place; a human still edits and approves every note before it is published.",
+      "inputs": {
+        "volume_items_per_year": {"low": 110, "likely": 120, "high": 135},
+        "baseline_minutes_per_item": {"low": 50, "likely": 60, "high": 70},
+        "assisted_minutes_per_item": {"low": 6, "likely": 8, "high": 11},
+        "checking_minutes_per_item": {"low": 12, "likely": 15, "high": 19},
+        "repair_minutes_per_reworked_item": {"low": 12, "likely": 15, "high": 20},
+        "rework_rate": {"low": 0.15, "likely": 0.20, "high": 0.28},
+        "one_time_implementation_hours": {"low": 25, "likely": 45, "high": 80},
+        "recurring_maintenance_fte_per_year": {"low": 0.01, "likely": 0.02, "high": 0.04}
+      },
+      "bases": {
+        "volume_items_per_year": "SYNTHETIC-FIXTURE",
+        "baseline_minutes_per_item": "ASSUMED",
+        "assisted_minutes_per_item": "ASSUMED",
+        "checking_minutes_per_item": "ASSUMED",
+        "repair_minutes_per_reworked_item": "ASSUMED",
+        "rework_rate": "ASSUMED",
+        "one_time_implementation_hours": "ASSUMED",
+        "recurring_maintenance_fte_per_year": "ASSUMED"
+      },
+      "sources": {
+        "volume_items_per_year": "fixture: invented release cadence, replace with the real release log count",
+        "baseline_minutes_per_item": "fixture: no timing has been collected from the delivery lead"
+      },
+      "dimensions": {
+        "task_suitability": {"level": "HIGH", "rationale": "Summarising structured change records into prose is language work with a short, checkable output."},
+        "input_availability": {"level": "HIGH", "rationale": "Change records are already structured, already retained, and already in one system."}
+      },
+      "measures": [
+        {"name": "Release notes published within one business day of release",
+         "numerator": "releases with notes published within 1 business day",
+         "denominator": "releases in the period", "cadence": "per release",
+         "baseline_state": "MEASURED", "baseline_value": "0.62",
+         "collection_effort": "low - derivable from existing release records"},
+        {"name": "Editor changes per published note",
+         "numerator": "edited lines", "denominator": "drafted lines", "cadence": "per release",
+         "baseline_state": "MEASURED", "baseline_value": "n/a for manual baseline - manual notes are authored, not edited; recorded as the comparison point, not as zero",
+         "collection_effort": "low - diff of draft against published"}
+      ],
+      "evidence_requests": []
+    },
+    {
+      "id": "OPP-ESS-02",
+      "group": "ESS",
+      "title": "Auto-classify inbound registration support tickets to a routing queue",
+      "use_case": "Front-line staff route incoming registration tickets to the right queue. Routing already takes about two minutes, and a misroute during the registration peak costs far more than it saves, so every suggested route is confirmed by a person before it is applied.",
+      "inputs": {
+        "volume_items_per_year": {"low": 9500, "likely": 11000, "high": 12500},
+        "baseline_minutes_per_item": {"low": 1.6, "likely": 2.0, "high": 2.3},
+        "assisted_minutes_per_item": {"low": 0.30, "likely": 0.35, "high": 0.50},
+        "checking_minutes_per_item": {"low": 1.25, "likely": 1.45, "high": 1.90},
+        "repair_minutes_per_reworked_item": {"low": 14, "likely": 20, "high": 30},
+        "rework_rate": {"low": 0.05, "likely": 0.08, "high": 0.14},
+        "one_time_implementation_hours": {"low": 80, "likely": 140, "high": 260},
+        "recurring_maintenance_fte_per_year": {"low": 0.03, "likely": 0.06, "high": 0.12}
+      },
+      "bases": {
+        "volume_items_per_year": "SYNTHETIC-FIXTURE",
+        "baseline_minutes_per_item": "ASSUMED",
+        "assisted_minutes_per_item": "ASSUMED",
+        "checking_minutes_per_item": "ASSUMED",
+        "repair_minutes_per_reworked_item": "ASSUMED",
+        "rework_rate": "ASSUMED",
+        "one_time_implementation_hours": "ASSUMED",
+        "recurring_maintenance_fte_per_year": "ASSUMED"
+      },
+      "sources": {
+        "repair_minutes_per_reworked_item": "fixture: the cost of a misroute during peak is invented and is the single number this candidate turns on",
+        "rework_rate": "fixture: no misclassification rate has been measured"
+      },
+      "dimensions": {
+        "task_suitability": {"level": "MODERATE", "rationale": "Classification is a fit, but the baseline task is already very fast, so there is little room to save."},
+        "input_availability": {"level": "HIGH", "rationale": "Ticket text and historical queue assignments are retained and retrievable."}
+      },
+      "measures": [
+        {"name": "Tickets routed correctly on first assignment",
+         "numerator": "tickets not re-queued", "denominator": "tickets routed", "cadence": "monthly",
+         "baseline_state": "MEASURED", "baseline_value": "0.91",
+         "collection_effort": "low - re-queue events already logged"},
+        {"name": "Median minutes from ticket arrival to correct queue",
+         "numerator": "minutes to correct queue", "denominator": "tickets routed", "cadence": "monthly",
+         "baseline_state": "NOT-BASELINED", "baseline_value": null,
+         "collection_effort": "medium - arrival timestamps exist, correct-queue confirmation does not"}
+      ],
+      "evidence_requests": [
+        "A measured misroute rate and the real downstream cost of a misroute during the registration peak. The whole result turns on this number."
+      ]
+    },
+    {
+      "id": "OPP-RIS-01",
+      "group": "RIS",
+      "title": "Summarise sponsor policy documents into award-setup checklists",
+      "use_case": "Award setup staff read sponsor terms and produce a setup checklist. The reading is genuine language work over long documents, but the policy corpus is scattered across shared drives and a website, with more than one version of the same policy in circulation and no retrieval layer over any of it.",
+      "inputs": {
+        "volume_items_per_year": {"low": 400, "likely": 420, "high": 445},
+        "baseline_minutes_per_item": {"low": 44, "likely": 50, "high": 58},
+        "assisted_minutes_per_item": {"low": 5, "likely": 6, "high": 7.5},
+        "checking_minutes_per_item": {"low": 8, "likely": 10, "high": 12.5},
+        "repair_minutes_per_reworked_item": {"low": 15, "likely": 18, "high": 22},
+        "rework_rate": {"low": 0.10, "likely": 0.12, "high": 0.15},
+        "one_time_implementation_hours": {"low": 260, "likely": 420, "high": 700},
+        "recurring_maintenance_fte_per_year": {"low": 0.06, "likely": 0.12, "high": 0.22}
+      },
+      "bases": {
+        "volume_items_per_year": "SYNTHETIC-FIXTURE",
+        "baseline_minutes_per_item": "ASSUMED",
+        "assisted_minutes_per_item": "ASSUMED",
+        "checking_minutes_per_item": "ASSUMED",
+        "repair_minutes_per_reworked_item": "ASSUMED",
+        "rework_rate": "ASSUMED",
+        "one_time_implementation_hours": "ASSUMED",
+        "recurring_maintenance_fte_per_year": "ASSUMED"
+      },
+      "sources": {
+        "one_time_implementation_hours": "fixture: most of this is assembling and de-duplicating the policy corpus, not building the workflow",
+        "recurring_maintenance_fte_per_year": "fixture: sponsors reissue terms, so the corpus needs a refresh owner"
+      },
+      "dimensions": {
+        "task_suitability": {"level": "HIGH", "rationale": "Long-document reading into a short structured checklist is a strong fit."},
+        "input_availability": {"level": "LOW", "rationale": "No single retrievable corpus; contradictory versions of the same policy are in active use. The inputs have to be built before any benefit is reachable."}
+      },
+      "measures": [
+        {"name": "Award setups completed within target days of terms receipt",
+         "numerator": "setups within target", "denominator": "setups in the period", "cadence": "monthly",
+         "baseline_state": "MEASURED", "baseline_value": "0.74",
+         "collection_effort": "low - dates already recorded"},
+        {"name": "Checklist items corrected at review",
+         "numerator": "corrected items", "denominator": "checklist items produced", "cadence": "monthly",
+         "baseline_state": "NOT-BASELINED", "baseline_value": null,
+         "collection_effort": "medium - review corrections are not recorded today"}
+      ],
+      "evidence_requests": [
+        "Whether a single authoritative copy of each sponsor policy exists, and who owns it.",
+        "How often sponsor terms are reissued, which sets the recurring corpus-refresh load."
+      ]
+    },
+    {
+      "id": "OPP-RIS-02",
+      "group": "RIS",
+      "title": "Generate effort-certification reminder narratives",
+      "use_case": "Certifiers receive a reminder naming the periods and projects awaiting certification. The content is entirely determined by fields already in the record; the reminder is a fill-in, not a composition. A deterministic template already does this correctly and needs no checking.",
+      "inputs": {
+        "volume_items_per_year": {"low": 2200, "likely": 2600, "high": 3000},
+        "baseline_minutes_per_item": {"low": 2.2, "likely": 2.8, "high": 3.4},
+        "assisted_minutes_per_item": {"low": 0.5, "likely": 0.7, "high": 1.0},
+        "checking_minutes_per_item": {"low": 2.4, "likely": 3.0, "high": 3.8},
+        "repair_minutes_per_reworked_item": {"low": 8, "likely": 12, "high": 18},
+        "rework_rate": {"low": 0.10, "likely": 0.16, "high": 0.24},
+        "one_time_implementation_hours": {"low": 40, "likely": 70, "high": 120},
+        "recurring_maintenance_fte_per_year": {"low": 0.02, "likely": 0.04, "high": 0.08}
+      },
+      "bases": {
+        "volume_items_per_year": "SYNTHETIC-FIXTURE",
+        "baseline_minutes_per_item": "ASSUMED",
+        "assisted_minutes_per_item": "ASSUMED",
+        "checking_minutes_per_item": "ASSUMED",
+        "repair_minutes_per_reworked_item": "ASSUMED",
+        "rework_rate": "ASSUMED",
+        "one_time_implementation_hours": "ASSUMED",
+        "recurring_maintenance_fte_per_year": "ASSUMED"
+      },
+      "sources": {
+        "checking_minutes_per_item": "fixture: a generated reminder has to be read before it is sent; the template output does not",
+        "baseline_minutes_per_item": "fixture: the manual baseline is already near-zero because a template does the work"
+      },
+      "dimensions": {
+        "task_suitability": {"level": "LOW", "rationale": "The output is fully determined by existing fields. This is a templating problem, not a language problem, and a template is already correct by construction. Adding generation adds a checking step without removing one."},
+        "input_availability": {"level": "HIGH", "rationale": "All fields are in the effort record."}
+      },
+      "measures": [
+        {"name": "Certifications completed by the period deadline",
+         "numerator": "certifications on time", "denominator": "certifications due", "cadence": "per certification period",
+         "baseline_state": "MEASURED", "baseline_value": "0.88",
+         "collection_effort": "low - already reported"}
+      ],
+      "evidence_requests": []
+    },
+    {
+      "id": "OPP-IAM-01",
+      "group": "IAM",
+      "title": "Explain access-request denials in plain language to the requester",
+      "use_case": "When an access request is denied, the requester currently receives an entitlement code. An analyst writes a plain-language explanation on request. The explanation is short and easy to build, but it depends on an entitlement vocabulary that changes continuously as applications are onboarded and roles are restructured.",
+      "inputs": {
+        "volume_items_per_year": {"low": 900, "likely": 1050, "high": 1200},
+        "baseline_minutes_per_item": {"low": 9, "likely": 12, "high": 16},
+        "assisted_minutes_per_item": {"low": 0.5, "likely": 0.8, "high": 1.2},
+        "checking_minutes_per_item": {"low": 1.5, "likely": 2.5, "high": 3.5},
+        "repair_minutes_per_reworked_item": {"low": 5, "likely": 8, "high": 12},
+        "rework_rate": {"low": 0.06, "likely": 0.10, "high": 0.15},
+        "one_time_implementation_hours": {"low": 30, "likely": 55, "high": 95},
+        "recurring_maintenance_fte_per_year": {"low": 0.10, "likely": 0.18, "high": 0.30}
+      },
+      "bases": {
+        "volume_items_per_year": "SYNTHETIC-FIXTURE",
+        "baseline_minutes_per_item": "ASSUMED",
+        "assisted_minutes_per_item": "ASSUMED",
+        "checking_minutes_per_item": "ASSUMED",
+        "repair_minutes_per_reworked_item": "ASSUMED",
+        "rework_rate": "ASSUMED",
+        "one_time_implementation_hours": "ASSUMED",
+        "recurring_maintenance_fte_per_year": "ASSUMED"
+      },
+      "sources": {
+        "one_time_implementation_hours": "fixture: small build - the explanation is short and the denial reason is already structured",
+        "recurring_maintenance_fte_per_year": "fixture: the entitlement vocabulary drifts as applications onboard, so upkeep does not decay after go-live"
+      },
+      "dimensions": {
+        "task_suitability": {"level": "HIGH", "rationale": "Turning a structured denial reason into a short plain-language explanation is a direct fit."},
+        "input_availability": {"level": "HIGH", "rationale": "Denial reasons and entitlement definitions are already structured in the request system."}
+      },
+      "measures": [
+        {"name": "Denied requests followed by a clarification contact",
+         "numerator": "denials followed by a contact within 5 days", "denominator": "denials", "cadence": "monthly",
+         "baseline_state": "MEASURED", "baseline_value": "0.41",
+         "collection_effort": "low - contacts already ticketed"},
+        {"name": "Resubmitted requests that succeed on the next attempt",
+         "numerator": "successful resubmissions", "denominator": "resubmissions after a denial", "cadence": "monthly",
+         "baseline_state": "MEASURED", "baseline_value": "0.53",
+         "collection_effort": "low - request history already linked"}
+      ],
+      "evidence_requests": []
+    },
+    {
+      "id": "OPP-IAM-02",
+      "group": "IAM",
+      "title": "Draft quarterly access-review summaries for application owners",
+      "use_case": "Application owners certify entitlements each quarter. A drafted summary of what changed since the last review would shorten the certification. Whether the prior review records are retrievable in a usable form is not currently known to anyone we could ask, so the size of the task is not known either.",
+      "inputs": {
+        "volume_items_per_year": "UNKNOWN",
+        "baseline_minutes_per_item": "UNKNOWN",
+        "assisted_minutes_per_item": {"low": 2, "likely": 3, "high": 5},
+        "checking_minutes_per_item": {"low": 6, "likely": 9, "high": 14},
+        "repair_minutes_per_reworked_item": {"low": 10, "likely": 15, "high": 25},
+        "rework_rate": {"low": 0.08, "likely": 0.14, "high": 0.22},
+        "one_time_implementation_hours": {"low": 60, "likely": 110, "high": 200},
+        "recurring_maintenance_fte_per_year": {"low": 0.04, "likely": 0.08, "high": 0.15}
+      },
+      "bases": {
+        "assisted_minutes_per_item": "ASSUMED",
+        "checking_minutes_per_item": "ASSUMED",
+        "repair_minutes_per_reworked_item": "ASSUMED",
+        "rework_rate": "ASSUMED",
+        "one_time_implementation_hours": "ASSUMED",
+        "recurring_maintenance_fte_per_year": "ASSUMED"
+      },
+      "sources": {
+        "one_time_implementation_hours": "fixture: assumes prior review records are retrievable. If they are not, this number is wrong and so is the class."
+      },
+      "dimensions": {
+        "task_suitability": {"level": "HIGH", "rationale": "Summarising a change set for a certifier is a good fit - if the change set can be produced."},
+        "input_availability": {"level": "UNKNOWN", "rationale": "Nobody reachable in this assessment knows whether prior access-review records are retained in a form that can be compared quarter to quarter. This is not 'poor availability'; it is unasked."}
+      },
+      "measures": [
+        {"name": "Access reviews certified by the quarter deadline",
+         "numerator": "reviews certified on time", "denominator": "reviews due", "cadence": "quarterly",
+         "baseline_state": "NOT-BASELINED", "baseline_value": null,
+         "collection_effort": "unknown until the review records are located"}
+      ],
+      "evidence_requests": [
+        "Are prior quarterly access-review records retained, and can two consecutive quarters be compared?",
+        "How many application owners certify each quarter, and how long does a certification take today?"
+      ]
+    }
+  ]
+}
