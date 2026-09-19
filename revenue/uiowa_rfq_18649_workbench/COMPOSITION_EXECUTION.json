@@ -1,0 +1,419 @@
+{
+  "schema": "uiowa-workbench-composition-execution/v1",
+  "recorded_at_utc": "2026-09-19T15:15:15.087282+00:00",
+  "seat": "ZZ–Keystone-43CF",
+  "model": "Codex / GPT family (exact model identifier unavailable)",
+  "base_commit": "907f0f3a709571b225404c0b41a87300d5ebb6ca",
+  "donors": [
+    {
+      "owner": "ZZ–Keystone-43CF and ZZ–Trellis",
+      "commit": "c4c305db7944cb305625836d4767d6abcc37ae36",
+      "parents": [
+        "adeeefe4910b3d1c8aa54628053c60efcdb5bbfe",
+        "3ff9f17c677f39a617a3537d8a61c8b1e15085e9",
+        "f91169044bc39b1ef7c99ada29d900932fbd15b6"
+      ],
+      "scope": "PR16145 retained restore/Markdown carrier; consolidates PR16130"
+    },
+    {
+      "owner": "ZZ–KESTREL–RAW17",
+      "commit": "d427fed1188222c8f9b2ef1f9880d12272576f3c",
+      "parents": [
+        "5e49d33e8bab2550bdbbde1939796b04fd6d89a6"
+      ],
+      "scope": "PR16279 frozen original evidence transport donor"
+    },
+    {
+      "owner": "ZZ–KESTREL–47",
+      "commit": "2b1aaacaa67fa931a32e86cc2524ef2bb8877a3a",
+      "parents": [
+        "cf30aade1a0f903116d126b70b5435e35ff83748"
+      ],
+      "scope": "strict decoder and diagnostic-neutral 39-case application-to-HTTP donor"
+    },
+    {
+      "owner": "ZZ–Copper",
+      "commit": "74af58503eaa657283cdb487dfc39181f0cb3aac",
+      "parents": [
+        "77d241d91044c09d6a6ae3681b1629702dbb2d67",
+        "3c8eb90753921bbf4edb289b724723af5496e2fb"
+      ],
+      "scope": "PR16270 query tests/docs; route repair already in base"
+    }
+  ],
+  "source_files": {
+    "revenue/uiowa_rfq_18649_workbench/app.js": {
+      "git_blob": "87110be97624cdb4442263060374ac8c4181dfad",
+      "sha256": "5f03a617fd657cb5ee0dc170938974dd339b5dafbe0c3fb022dd61a52d9f0d31"
+    },
+    "revenue/uiowa_rfq_18649_workbench/browser_acceptance.py": {
+      "git_blob": "acbd81f1bb7268031aaa59450a59e3bd86427158",
+      "sha256": "d123be9c34c98097571416fbf5414d9b967b63ccaced6b9f89e5de4132f2168b"
+    },
+    "revenue/uiowa_rfq_18649_workbench/browser_keyboard_acceptance.py": {
+      "git_blob": "e36a2133e95331ce216263a290925c93ae340133",
+      "sha256": "6b1a86ae6083c617bdbf85a51262cda0153b3ba3fd6252c70d3eff47cc997b93"
+    },
+    "revenue/uiowa_rfq_18649_workbench/browser_resume_acceptance.py": {
+      "git_blob": "89ce8d8f4de148b15ebbf6378217a8b0863f9657",
+      "sha256": "8e241715eeed458cf04675e8f68aea36083066510bda78685b1c31440543aec0"
+    },
+    "revenue/uiowa_rfq_18649_workbench/handoff.js": {
+      "git_blob": "114e6c0bf9041a5dd178ed5b646e6b2069848d7e",
+      "sha256": "0d0a4300d15dc5e8d19a4833cf58e9379406715129d77470253e328d7c5d4710"
+    },
+    "revenue/uiowa_rfq_18649_workbench/handoff_import.js": {
+      "git_blob": "20703283260781e87ef88c7ca0af17b380541f74",
+      "sha256": "919954318e549bacd421353b78faffecd56ec56addd32d2c58e8c6e32b8ab5d8"
+    },
+    "revenue/uiowa_rfq_18649_workbench/handoff_import.test.js": {
+      "git_blob": "75eb45ae6f91f2615d5d2ee82e2130b3e4d0ccbc",
+      "sha256": "fd308692f3e2924f1fa168d82f6a887bb580eed349adc4110e52ff8693162f52"
+    },
+    "revenue/uiowa_rfq_18649_workbench/handoff_review.py": {
+      "git_blob": "70d869b990c6c795870fc1ad58b27c6882d605b8",
+      "sha256": "a50d8a1e7a9dae9c891f6167ec8f8bccf832d80565886231e0653c474619f349"
+    },
+    "revenue/uiowa_rfq_18649_workbench/index.html": {
+      "git_blob": "b8b5e568b0bcf04095263c70e792643c6276bf05",
+      "sha256": "e18f7664b7aab293465e6ef715defb64976ac59fbee4ab61ce25608cfb917c00"
+    },
+    "revenue/uiowa_rfq_18649_workbench/intake_transport_harness.js": {
+      "git_blob": "076fdb562753c7482761a2ff1003bb2c4433c535",
+      "sha256": "377904772008ea56f148733215e4ea2c2c16921074422ac8969c2f06904da605"
+    },
+    "revenue/uiowa_rfq_18649_workbench/server.py": {
+      "git_blob": "78974aeb0c90543d22fc51dfdf7630f1a1db7e28",
+      "sha256": "a74ddab980c97969a3ebddd9dc86f3a3a79dab1ae2fbac51c7afa8d40c44ed33"
+    },
+    "revenue/uiowa_rfq_18649_workbench/style.css": {
+      "git_blob": "93c1bfc40f9d6da9c9b56d6fbf3bb311bcd196c9",
+      "sha256": "5b6b5428a6f3656f1b136c209901ccfe371c1d8695ed2a2937c030b44dc198a7"
+    },
+    "revenue/uiowa_rfq_18649_workbench/test_app.js": {
+      "git_blob": "f03d1c42a787760bf1f039de76092848039f4a01",
+      "sha256": "8840aa027c65d89a9e69e9c7d90f18913c0f9efd84d3036478d09cfd84ee8e02"
+    },
+    "revenue/uiowa_rfq_18649_workbench/test_handoff.js": {
+      "git_blob": "1e07088b7919bb28897df62c950a578d4b491569",
+      "sha256": "71541efb4c966ffe3c36ddc8d389b2bbe7c61fe9272c1e9fa0dc20603d88eaef"
+    },
+    "revenue/uiowa_rfq_18649_workbench/test_handoff_parent_contract.py": {
+      "git_blob": "1957e792f381a2575425b1bba441ca3f2850c5c0",
+      "sha256": "40eddf4b04c5665ccf749e23937ade056234e98728b4a163dc7b00005304d24c"
+    },
+    "revenue/uiowa_rfq_18649_workbench/test_handoff_review.py": {
+      "git_blob": "546eed1c536312142994be6631c01272ef940299",
+      "sha256": "c43f0c8cfa4a7e61eaf4a4d868b98a327558806c73b55d093f97bc8bf5995ecc"
+    },
+    "revenue/uiowa_rfq_18649_workbench/test_input_transport.js": {
+      "git_blob": "cd2f3048deb30447e219af10c4ff2e3848862d42",
+      "sha256": "424af2fdc83ce1f80dc8c2329845bb1de4da92b5fdb1f8450dcbd37c0c424f7e"
+    },
+    "revenue/uiowa_rfq_18649_workbench/test_input_transport.py": {
+      "git_blob": "965ad877a28fe7837f2da62a45dae95dd0f3c7ef",
+      "sha256": "d63b8486a9fbd92eb5bc9431837123889e7c76f593f4840e0ee37129e6ec64c7"
+    },
+    "revenue/uiowa_rfq_18649_workbench/test_intake_transport.py": {
+      "git_blob": "a9cea1541f4e2c0527bdc4a0fa05456fbd0020b4",
+      "sha256": "609130b161a738f5659cb7d28867515cbdf068b52e46300ccf1fe66aa111ed5d"
+    },
+    "revenue/uiowa_rfq_18649_workbench/test_static_queries.py": {
+      "git_blob": "be1a18d9dd19e865f7f51ec55201a872d68bb47c",
+      "sha256": "c6267dc5dcbae4ecea0a3cb97c3539ca7617e718f34d35f2a093b558e392492b"
+    },
+    "revenue/uiowa_rfq_18649_workbench/test_workbench.py": {
+      "git_blob": "3e7a71eb1fec7f662f3dc76d2c94c905375b7553",
+      "sha256": "9d6406286dc66ca47c4da80cd413b5b91549e33a29cb0f12082a7018daaa77ce"
+    },
+    "revenue/uiowa_rfq_18649_workshare/authority_test_helpers.py": {
+      "git_blob": "20b9ca3fbef7d9450be3db6dbb5227f1cd140650",
+      "sha256": "55ca2e2b9f659b7c7eb80e35a85dbbd0b65e71bd51401d2d47868f9ca2ac7762"
+    },
+    "revenue/uiowa_rfq_18649_workshare/authority_tests.py": {
+      "git_blob": "9450a5abf22dfe85c69f81030588cd4fbc10da4d",
+      "sha256": "1598d33e945b897d21af80625b1cc10734a5a1f086e73369440486172693666d"
+    },
+    "revenue/uiowa_rfq_18649_workshare/authority_tests_core.py": {
+      "git_blob": "6ae58086b14a8220353802f387f923afd07b1e08",
+      "sha256": "9c72c375197be48c88261abafc5be874c013afd769daad2b9a767906ea42da96"
+    },
+    "revenue/uiowa_rfq_18649_workshare/authority_tests_verification.py": {
+      "git_blob": "e36ca03ac2dd6502dc9c52d40afdb2921450d730",
+      "sha256": "0de41cee339893b373ef06cff9f1cbb0d1ffbc4f0fd012628ef8e55549a76818"
+    },
+    "revenue/uiowa_rfq_18649_workshare/compiler.py": {
+      "git_blob": "304c0deac31d7eb10dcbb58394bf0b10a30b4960",
+      "sha256": "33c36af0e5ffaac2fa2f8a02cbd7b49228a7ada8a571a96397611bbcc6719a2a"
+    },
+    "revenue/uiowa_rfq_18649_workshare/filesystem_tests.py": {
+      "git_blob": "08806f83233d6cca41976cb0a942281b4d76973b",
+      "sha256": "b80fc3ac03b1da0bcde54d6788c956fff1ba34b75e7a227d35cd174cfd006b0e"
+    },
+    "revenue/uiowa_rfq_18649_workshare/filesystem_tests_cli.py": {
+      "git_blob": "f3054a176c3ce0d2b492e9f0cb3f7555c288ca49",
+      "sha256": "eced29a496897d5e644ee223ea1621945930b7efa867eb4f5f326946f1d4584e"
+    },
+    "revenue/uiowa_rfq_18649_workshare/filesystem_tests_io.py": {
+      "git_blob": "54141cbfac556314c6107882388374265d60bf0d",
+      "sha256": "b5597589f9307d55b523a5b2d108957b62f5b2f6e012c11b4be699471d7c65ea"
+    },
+    "revenue/uiowa_rfq_18649_workshare/fixtures/synthetic_authority.json": {
+      "git_blob": "1d58638c067b35dbdc210365ac3f30d6e72c9548",
+      "sha256": "47a89b2caf4dc0e65402566c20302e8aec11b4d89cfb40f3ef0ee3265216d409"
+    },
+    "revenue/uiowa_rfq_18649_workshare/fixtures/synthetic_packet.json": {
+      "git_blob": "92e38c01c5d45fc7e0172387fce037f611042f26",
+      "sha256": "bff5b197fefa95ce2da821bd26a64ee38c02eb0d573acc575408acfbf676824d"
+    },
+    "revenue/uiowa_rfq_18649_workshare/test_compiler.py": {
+      "git_blob": "986e9c41396d46e3c0d30c07d7e84fad6c6e9d23",
+      "sha256": "6f2cf1f15b95f0fb0b8f01d44104a7257ac302f7376c9d293796051cd3663097"
+    },
+    "revenue/uiowa_rfq_18649_workshare/workshare_assessment.py": {
+      "git_blob": "8390cff50054053fa3d9ed032eb3187a46826abf",
+      "sha256": "bee53508e99364f110fb0242cebb101f978f5bc32939361054f003c521bdafa1"
+    },
+    "revenue/uiowa_rfq_18649_workshare/workshare_authority.py": {
+      "git_blob": "6724f3a8fee866a1dfd3ca16eccb5f4d54df0060",
+      "sha256": "b243ecb7ae1cf90d6a91f24e02c2a617532e0a2893b191276a7ca7dec7130154"
+    },
+    "revenue/uiowa_rfq_18649_workshare/workshare_candidate.py": {
+      "git_blob": "e305842cb5145ab9a6f7de853e47b2af8b03f723",
+      "sha256": "7ff79cd1663ac6c1284455eecd25d5f2e0a0cb4673271c038911dd1d222ed151"
+    },
+    "revenue/uiowa_rfq_18649_workshare/workshare_compile.py": {
+      "git_blob": "aca4ff5f472a161393349ce08c1cdfd425a1f079",
+      "sha256": "49fbde167a93d0e44c48d8be537e47ac85ebc4996bd71ad5bbe33d0c97d27d04"
+    },
+    "revenue/uiowa_rfq_18649_workshare/workshare_constants.py": {
+      "git_blob": "ec65f4f4d5387d6c2546eee98101b34faa61b0bd",
+      "sha256": "5baabb17875aeca2ba508b398b39e35cbe4f2ce610689c0d5f2555124b884747"
+    },
+    "revenue/uiowa_rfq_18649_workshare/workshare_contract.py": {
+      "git_blob": "0c4e2db3f93079ec884c4b43801efae4475cd22d",
+      "sha256": "ad3594d70a87051657a621da4719c8edb2ad7e770df9e1c2ea6f5ffd5d9e4afa"
+    },
+    "revenue/uiowa_rfq_18649_workshare/workshare_core.py": {
+      "git_blob": "bccde66dc95c7b81e25a779a97ac70a70ebc6557",
+      "sha256": "f6bd07ef3d04206d03564325b67705cf9d1b3bf0e8751e723abd694507034068"
+    },
+    "revenue/uiowa_rfq_18649_workshare/workshare_engine.py": {
+      "git_blob": "14cb2e1fc96b1888c4ac8030adeca48889bb0cc7",
+      "sha256": "320c2873a644213bee328f9bff6e2ab89dfcc289354983c634f0c8b32eb75546"
+    },
+    "revenue/uiowa_rfq_18649_workshare/workshare_io.py": {
+      "git_blob": "7dd8aa6478f2cd500ec8f665244c9218231179ec",
+      "sha256": "381f176b1ac92044c6e06baf12192c2f2a0e311da23de8292fc218c9b464b8db"
+    },
+    "revenue/uiowa_rfq_18649_workshare/workshare_read.py": {
+      "git_blob": "99ff2e2abd9117e2e21f9edb9fd7357d06c696c1",
+      "sha256": "4941fe9a62793fbeb0d0e7901ae2ee0d762ac0caa3b8014cd720a6ca6baea175"
+    },
+    "revenue/uiowa_rfq_18649_workshare/workshare_render.py": {
+      "git_blob": "ec2cffb48e0e82557626dba04fbbf02739282322",
+      "sha256": "14e7975dbe20e37a05ef389c6b906423b6fc6e53c0d71b368ce4c204fc928187"
+    },
+    "revenue/uiowa_rfq_18649_workshare/workshare_verify.py": {
+      "git_blob": "41161497cefb189c25fda0dcf9fa33eb8649717a",
+      "sha256": "4d47a908fcf7dec19ecf86d6d149353f077a97c633dbb0c59f4f163e13eeabb7"
+    },
+    "revenue/uiowa_rfq_18649_workshare/workshare_write.py": {
+      "git_blob": "15c1a02d642482d2784fe5bb60b89392387444bc",
+      "sha256": "1f0d78abbf489d49024c716a4ea60d0a365d08f74592ca63600ca2771fad923c"
+    },
+    "test_uiowa_intake_fidelity.py": {
+      "git_blob": "ddae61d88c929b6d26da37358a419fa6c5fb009f",
+      "sha256": "63d7806097bf496e05dce71b409fbf7cc4b0c14050c438bbdc7976b010488c86"
+    },
+    "test_uiowa_workbench_handoff.py": {
+      "git_blob": "3769d26ffa6d076f811ac680631f58ff7792880d",
+      "sha256": "30b6595cedbab3a10c011fe99bbecefff702a73291296f5c89e28a11bb3e280d"
+    },
+    "test_uiowa_workbench_input_transport.py": {
+      "git_blob": "2ae7ffa0d6016ec99b20b27de2a573ab52ec4867",
+      "sha256": "699f63ba93aeb2835faa49721eaa1d854b0245b01e24d14e8f589637aed05770"
+    },
+    "test_uiowa_workbench_static_queries.py": {
+      "git_blob": "7278b9d2aabab580d276b43203e8b3863423ba91",
+      "sha256": "a973f6ec3024dae51b380b7cdb34b87b0e94896b9d5d94b3f6cdeb1d09be8f5a"
+    }
+  },
+  "runtime": {
+    "python": "Python 3.12.14",
+    "node": "v24.19.0"
+  },
+  "executions": [
+    {
+      "id": "http-normal",
+      "argv": [
+        "python3",
+        "-m",
+        "unittest",
+        "-v",
+        "test_workbench.py",
+        "test_input_transport.py",
+        "test_intake_transport.py",
+        "test_static_queries.py"
+      ],
+      "cwd": "revenue/uiowa_rfq_18649_workbench",
+      "returncode": 0,
+      "log_sha256": "536050efd03a2a167d33835c84eb496c370ea99cdaa3edeb7f45f5e7eb3d18ef",
+      "raw_log_published": false,
+      "raw_log_location": "session scratch: http-normal.log",
+      "skipped": 0,
+      "result": "PASS",
+      "unittest_count": 73
+    },
+    {
+      "id": "http-optimized",
+      "argv": [
+        "python3",
+        "-O",
+        "-m",
+        "unittest",
+        "-v",
+        "test_workbench.py",
+        "test_input_transport.py",
+        "test_intake_transport.py",
+        "test_static_queries.py"
+      ],
+      "cwd": "revenue/uiowa_rfq_18649_workbench",
+      "returncode": 0,
+      "log_sha256": "3698487760888fd223838cb8732fb6003ccfc8521cbff21452e7659209fc9bc8",
+      "raw_log_published": false,
+      "raw_log_location": "session scratch: http-optimized.log",
+      "skipped": 0,
+      "result": "PASS",
+      "unittest_count": 73
+    },
+    {
+      "id": "node-contracts",
+      "argv": [
+        "node",
+        "--test",
+        "handoff_import.test.js",
+        "test_handoff.js",
+        "test_app.js",
+        "test_input_transport.js"
+      ],
+      "cwd": "revenue/uiowa_rfq_18649_workbench",
+      "returncode": 0,
+      "log_sha256": "f7e1e9bc1ddb1667ad81e01dac6eed9df914a68a04737f1b716ef476fc81af5f",
+      "raw_log_published": false,
+      "raw_log_location": "session scratch: node-contracts.log",
+      "skipped": 0,
+      "result": "PASS",
+      "node_runner_units": 25,
+      "native_node_tests": 24,
+      "raw17_asserted_transport_cases": 30,
+      "count_note": "The custom RAW17 script is one Node runner unit containing 30 asserted cases; do not add the runner unit to its case count."
+    },
+    {
+      "id": "root-discovery",
+      "argv": [
+        "python3",
+        "-m",
+        "unittest",
+        "-v",
+        "test_uiowa_workbench_handoff.py",
+        "test_uiowa_workbench_input_transport.py",
+        "test_uiowa_intake_fidelity.py",
+        "test_uiowa_workbench_static_queries.py"
+      ],
+      "cwd": ".",
+      "returncode": 0,
+      "log_sha256": "6f21f8cc76c267ec8b1731725c7fb9c721bb15579f94b2f1b47ae44ce8fc2b00",
+      "raw_log_published": false,
+      "raw_log_location": "session scratch: root-discovery.log",
+      "skipped": 0,
+      "result": "PASS",
+      "unittest_count": 43,
+      "count_note": "39 directly loaded intake tests plus four wrapper tests; nested suite counts are recorded by the separate commands, not additional distinct coverage."
+    }
+  ],
+  "browser_verification": {
+    "status": "PASS",
+    "base_commit": "907f0f3a709571b225404c0b41a87300d5ebb6ca",
+    "candidate_commit_status": "Working candidate; this receipt does not establish publication or merge.",
+    "cwd": "/workspace/scratch/43cf957cdeec/keystone-unified",
+    "runtime": {
+      "python": "3.12.14",
+      "browser": "Chromium 131.0.6778.0",
+      "browser_executable": "/workspace/scratch/43cf957cdeec/browser-runtime-131/chromium"
+    },
+    "source_sha256": {
+      "app.js": "5f03a617fd657cb5ee0dc170938974dd339b5dafbe0c3fb022dd61a52d9f0d31",
+      "index.html": "e18f7664b7aab293465e6ef715defb64976ac59fbee4ab61ce25608cfb917c00",
+      "style.css": "5b6b5428a6f3656f1b136c209901ccfe371c1d8695ed2a2937c030b44dc198a7",
+      "server.py": "a74ddab980c97969a3ebddd9dc86f3a3a79dab1ae2fbac51c7afa8d40c44ed33",
+      "handoff.js": "0d0a4300d15dc5e8d19a4833cf58e9379406715129d77470253e328d7c5d4710",
+      "handoff_import.js": "919954318e549bacd421353b78faffecd56ec56addd32d2c58e8c6e32b8ab5d8",
+      "browser_resume_acceptance.py": "8e241715eeed458cf04675e8f68aea36083066510bda78685b1c31440543aec0",
+      "browser_acceptance.py": "d123be9c34c98097571416fbf5414d9b967b63ccaced6b9f89e5de4132f2168b",
+      "browser_keyboard_acceptance.py": "6b1a86ae6083c617bdbf85a51262cda0153b3ba3fd6252c70d3eff47cc997b93"
+    },
+    "app_git_blob": "87110be97624cdb4442263060374ac8c4181dfad",
+    "server_git_blob": "78974aeb0c90543d22fc51dfdf7630f1a1db7e28",
+    "final_runs": [
+      {
+        "command": "PYTHONPATH=/workspace/scratch/43cf957cdeec/browser-test-deps CHROMIUM_EXECUTABLE=/workspace/scratch/43cf957cdeec/browser-runtime-131/chromium python3 revenue/uiowa_rfq_18649_workbench/browser_resume_acceptance.py",
+        "exit_code": 0,
+        "tests": 10,
+        "seconds": 13.229,
+        "result": "OK"
+      },
+      {
+        "command": "PYTHONPATH=/workspace/scratch/43cf957cdeec/browser-test-deps CHROMIUM_EXECUTABLE=/workspace/scratch/43cf957cdeec/browser-runtime-131/chromium python3 revenue/uiowa_rfq_18649_workbench/browser_acceptance.py",
+        "exit_code": 0,
+        "result": "CHROMIUM_OPERATOR_FLOW PASS: 12 cells, keyboard selection, note reset, filter, authority-safe export"
+      },
+      {
+        "command": "PYTHONPATH=/workspace/scratch/43cf957cdeec/browser-test-deps CHROMIUM_EXECUTABLE=/workspace/scratch/43cf957cdeec/browser-runtime-131/chromium python3 revenue/uiowa_rfq_18649_workbench/browser_keyboard_acceptance.py",
+        "exit_code": 0,
+        "tests": 16,
+        "seconds": 5.407,
+        "result": "OK"
+      }
+    ],
+    "scope": "Actual combined HTML/CSS/JS executed in Chromium through set_content and checked-in asset injection. Resume reports use the real parent CompilerAdapter and synthetic fixtures. Fetch timing is controlled. HTTP transport is verified separately; this is not a browser-through-server end-to-end claim.",
+    "earlier_stage": "Before shared saved-draft UTF-8 decoding, resume and operator flow passed. Two keyboard harness reads returned empty inner_text from a collapsed disclosure. Opening that disclosure through actual Tab/Enter preserved all semantic assertions and corrected the harness. Final runs above all use the same post-decoder source hashes.",
+    "source_files_unchanged_after_final_runs_and_screenshot": true,
+    "screenshot": {
+      "path": "/workspace/scratch/43cf957cdeec/iowa-unified-browser.png",
+      "bytes": 178973,
+      "sha256": "866fd78620a494891ecc3d682c123c5c25a9db5160b6691cc572ec59fb91f91f",
+      "visually_reviewed": true,
+      "content": "Real compiler report from synthetic fixtures with two explicitly fictional notes restored. No University findings."
+    },
+    "raw_log_files": null,
+    "raw_log_location": "Final command output retained in this agent tool transcript; no standalone raw log files were created."
+  },
+  "composition_decisions": [
+    "Retain main presentation, keyboard controls, unchanged stylesheet and already-landed query routing.",
+    "One restore control and one shared handoff schema; restore remains bound to exact receipt and complete 12-cell report.",
+    "Preserve original evidence fragments on the wire; share bounded fatal UTF-8 file decoding with saved drafts.",
+    "Preserve asynchronous generation/revision guards and restore successful keyboard inspection focus after installation.",
+    "DOM fixtures support retained presentation; browser fixtures explicitly open collapsed disclosures before reading their visible content.",
+    "Donor execution JSON retained without modification. Historical donor documents are explicitly scoped to donor bytes."
+  ],
+  "scope": {
+    "local_execution": true,
+    "hosted_ci_success_verified": false,
+    "main_integration_verified": false,
+    "current_head_or_main_verified": false,
+    "real_parent_compiler_executed": true,
+    "node_dom_is_test_double": true,
+    "http_transport_is_actual_loopback_server": true,
+    "browser_fetch_is_controlled": true,
+    "browser_native_network_to_server_verified": false,
+    "customer_evidence_used": false,
+    "external_authority_created": false
+  },
+  "limits": [
+    "Recorded source file identities, not an assertion that a later branch head or main was tested. Re-run affected checks if executable inputs change.",
+    "The browser result is the independent agent execution receipt; its raw command output is retained in the tool transcript, not a published raw log.",
+    "The local results do not replace repository-required provider execution or hosted checks.",
+    "The server retains the parent compiler float interface; original lexical transport does not imply arbitrary-precision decimal semantics."
+  ]
+}
