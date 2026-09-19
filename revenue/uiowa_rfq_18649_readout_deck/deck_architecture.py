@@ -886,6 +886,191 @@ def write_csv(path, rows, statement=None):
             w.writerow(r)
 
 
+
+# ---------------------------------------------------------------- fill
+
+# Why this exists: the static template in templates/ is a single worked shape,
+# and a shape silently assumes a count. Filled mechanically against a report
+# carrying TWO high-priority gaps it failed R005 -- the priority-findings slide
+# had one gap slot and one appendix drill-down. "The deliverable is present" is
+# not the same as "the deliverable can be used", and a template an editor
+# cannot fill into a passing deck is a defect in the deliverable.
+#
+# fill_template() sizes the deck to the report instead: one priority-findings
+# claim per high-priority gap, one appendix slide per figure claim, phases read
+# off the roadmap, and an agenda that sums to the declared session exactly. The
+# editor writes prose; the structure is already correct.
+
+MIN_SESSION_MINUTES = len(CORE_SECTIONS)
+_SECTION_WEIGHTS = OrderedDict([
+    ("purpose", 3), ("evidence", 4), ("strengths", 6), ("priority_findings", 10),
+    ("roadmap", 8), ("resources", 6), ("decisions", 8),
+])
+
+
+def _allocate_minutes(session_minutes):
+    """Distribute the session across the core sections so the total is exact.
+
+    R010 fails a deck whose agenda overruns, so an allocator that leaves a
+    rounding remainder would generate decks that fail their own checker.
+    """
+    if not isinstance(session_minutes, int) or session_minutes < MIN_SESSION_MINUTES:
+        raise DeckDataError(
+            "session_minutes must be an integer of at least %d, one per core section, not %r"
+            % (MIN_SESSION_MINUTES, session_minutes))
+    total_weight = sum(_SECTION_WEIGHTS.values())
+    out = OrderedDict()
+    for section, weight in _SECTION_WEIGHTS.items():
+        out[section] = max(1, int(session_minutes * weight // total_weight))
+    # Settle the remainder on the largest section, which is where a minute
+    # matters least, and never below one minute anywhere.
+    drift = session_minutes - sum(out.values())
+    order = sorted(out, key=lambda k: (-_SECTION_WEIGHTS[k], k))
+    i = 0
+    while drift != 0:
+        section = order[i % len(order)]
+        if drift > 0:
+            out[section] += 1
+            drift -= 1
+        elif out[section] > 1:
+            out[section] -= 1
+            drift += 1
+        i += 1
+        if i > 10000:  # unreachable for any session >= MIN_SESSION_MINUTES
+            raise DeckDataError("could not fit %d minutes across %d sections"
+                                % (session_minutes, len(out)))
+    return out
+
+
+def _first_measure(idx, ref):
+    obj = idx.obj(ref) or {}
+    names = sorted(obj.get("measures", {}))
+    return names[0] if names else None
+
+
+def _figure_claim(idx, ctype, ref):
+    """A claim carrying the report's own value, so the generated deck agrees by
+    construction rather than by the editor retyping a number."""
+    name = _first_measure(idx, ref)
+    claim = {"type": ctype, "cites": ref, "text": "REPLACE - say this in one sentence"}
+    if name is not None:
+        m = idx.measure(ref, name)
+        claim.update({"measure": name, "value": m.get("value"), "unit": m.get("unit")})
+    return claim
+
+
+def fill_template(report, session_minutes=45):
+    """Build a structurally valid deck skeleton sized to this report."""
+    idx = ReportIndex(report)
+    minutes = _allocate_minutes(int(session_minutes))
+    slides, appendix = [], []
+    counter = [0]
+
+    def appendix_for(ref, title):
+        counter[0] += 1
+        aid = "S-A%02d" % counter[0]
+        appendix.append({
+            "id": aid, "section": "appendix", "track": "appendix", "minutes": 0,
+            "title": "Appendix - %s" % title,
+            "bullets": ["REPLACE - the exact records behind %s" % ref,
+                        "REPLACE - the sampling basis or limitation"],
+            "claims": [_figure_claim(idx, "evidence" if ref.startswith("EV-") else "gap", ref)],
+            "appendix_support": [],
+            "speaker_notes": ["REPLACE - read the locator, not the conclusion"],
+        })
+        return aid
+
+    def core(section, title, bullets, claims, support, notes):
+        slides.append({
+            "id": "S-%02d" % (CORE_SECTIONS.index(section) + 1), "section": section,
+            "track": "core", "minutes": minutes[section], "title": title,
+            "bullets": bullets, "claims": claims, "appendix_support": support,
+            "speaker_notes": notes,
+        })
+
+    core("purpose", "REPLACE - why we are in this room",
+         ["REPLACE - scope in one line",
+          "REPLACE - what this session decides",
+          "REPLACE - anything unevidenced is shown as UNKNOWN, not estimated"],
+         [], [], ["REPLACE - name the decisions on the last slide up front"])
+
+    ev = [e["id"] for e in report.get("evidence", [])][:3]
+    ev_support = [appendix_for(e, "evidence register") for e in ev[:1]]
+    core("evidence", "REPLACE - what this rests on",
+         ["REPLACE - sources and counts", "REPLACE - sampling basis",
+          "REPLACE - a stated limitation"],
+         [{"type": "evidence", "cites": e, "text": "REPLACE"} for e in ev],
+         ev_support, ["REPLACE - where to go when a number is challenged"])
+
+    strengths = [f for f in idx.findings.values()
+                 if f.get("kind") == "strength" and f.get("validated") is True]
+    s_claims, s_support = [], []
+    for f in strengths:
+        s_claims.append(_figure_claim(idx, "strength", f["id"]))
+        if "measure" in s_claims[-1]:
+            s_support.append(appendix_for(f["id"], "strength detail"))
+    core("strengths", "REPLACE - what is already working",
+         ["REPLACE - the practice worth naming",
+          "REPLACE - why it is the internal model",
+          "REPLACE - any candidate strength held back for lack of corroboration"],
+         s_claims, s_support, ["REPLACE - why an internal model is cheaper than an imported one"])
+
+    # One claim and one drill-down PER high-priority gap. This is the defect the
+    # static template carried: it assumed exactly one.
+    gaps = idx.high_priority_gaps()
+    g_claims, g_support = [], []
+    for f in gaps:
+        g_claims.append(_figure_claim(idx, "gap", f["id"]))
+        if "measure" in g_claims[-1]:
+            g_support.append(appendix_for(f["id"], "priority gap detail"))
+    core("priority_findings", "REPLACE - the gaps worth leadership time",
+         ["REPLACE - the first gap in one line", "REPLACE - the second, if there is one",
+          "REPLACE - state that findings are about the process record, not individuals"],
+         g_claims, g_support, ["REPLACE - which gap to lead with and why",
+                               "REPLACE - a question to put back to the room"])
+
+    phase_claims = [{"type": "phase", "cites": rec, "phase": phase,
+                     "text": "REPLACE"} for rec, phase in idx.rec_phase.items()]
+    r_support = [appendix_for(list(idx.rec_phase)[0], "phase dependencies")] if idx.rec_phase else []
+    core("roadmap", "REPLACE - sequence",
+         ["REPLACE - first window", "REPLACE - second window", "REPLACE - beyond"],
+         phase_claims, r_support,
+         ["REPLACE - describe each phase by the evidence it produces, not a maturity level"])
+
+    res_claims, res_support = [], []
+    for rid in idx.resources:
+        claim = _figure_claim(idx, "resource", rid)
+        res_claims.append(claim)
+        if "measure" in claim:
+            res_support.append(appendix_for(rid, "resource assumptions"))
+    core("resources", "REPLACE - what it costs, and what cannot be costed yet",
+         ["REPLACE - one-time", "REPLACE - recurring",
+          "REPLACE - what stays UNKNOWN and why"],
+         res_claims, res_support,
+         ["REPLACE - name who can supply each missing input, and by when"])
+
+    core("decisions", "REPLACE - what we need from you today",
+         ["REPLACE - decision one", "REPLACE - decision two", "REPLACE - decision three"],
+         [{"type": "decision", "cites": d, "text": "REPLACE - the options"}
+          for d in idx.decisions],
+         [], ["REPLACE - record the chosen option and its owner in the room",
+              "REPLACE - a defer is a legitimate outcome; record what would change it"])
+
+    return {
+        "meta": {
+            "deck_id": "REPLACE-DECK-ID",
+            "report_ref": report["meta"]["report_id"],
+            "title": "REPLACE - readout deck title",
+            "audience": "REPLACE - who is in the room",
+            "session_minutes": int(session_minutes),
+            "fiction_notice": "REPLACE or delete. If any content is synthetic, say so here.",
+            "generated_from": ("Structure generated by deck_architecture.py fill-template from "
+                               "report %s. Every value shown is the report's own; prose marked "
+                               "REPLACE is the editor's." % report["meta"]["report_id"]),
+        },
+        "slides": slides + appendix,
+    }
+
 # ---------------------------------------------------------------- cli
 
 def cmd_check(args):
@@ -929,6 +1114,24 @@ def cmd_render(args):
     return 1 if err else 0
 
 
+def cmd_fill_template(args):
+    report = load_report(args.report)
+    deck = fill_template(report, args.session_minutes)
+    issues = check(report, deck)
+    err = errors(issues)
+    with open(args.out, "w", encoding="utf-8") as fh:
+        json.dump(deck, fh, indent=2, ensure_ascii=False)
+    sys.stdout.write("wrote %s: %d slide(s), %d core minute(s) of a %d minute session\n"
+                     % (args.out, len(deck["slides"]),
+                        sum(sl["minutes"] for sl in deck["slides"] if sl["track"] == "core"),
+                        deck["meta"]["session_minutes"]))
+    sys.stdout.write("structure check: %s (%d error(s), %d warning(s))\n"
+                     % ("FAIL" if err else "PASS", len(err), len(issues) - len(err)))
+    for i in err:
+        sys.stdout.write("  %s %s %s\n" % (i.code, i.slide, i.detail))
+    return 1 if err else 0
+
+
 def cmd_rules(args):
     for code, desc in RULES.items():
         sys.stdout.write("%-32s %s\n" % (code, desc))
@@ -950,6 +1153,14 @@ def main(argv=None):
     r.add_argument("--deck", required=True)
     r.add_argument("--outdir", default="examples")
     r.set_defaults(func=cmd_render)
+
+    f = sub.add_parser("fill-template",
+                       help="generate a deck skeleton sized to a report (one priority-findings "
+                            "claim per high-priority gap, appendix backing for every figure)")
+    f.add_argument("--report", required=True)
+    f.add_argument("--out", required=True)
+    f.add_argument("--session-minutes", type=int, default=45, dest="session_minutes")
+    f.set_defaults(func=cmd_fill_template)
 
     u = sub.add_parser("rules", help="print the rule table")
     u.set_defaults(func=cmd_rules)

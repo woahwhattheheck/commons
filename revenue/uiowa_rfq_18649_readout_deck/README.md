@@ -50,11 +50,12 @@ byte-identical output, and a test asserts it.
 | `data/deck-agreeing-with-broken-roadmap.json` | A deck that agrees with it perfectly. |
 | `data/example-readout-deck.json` | The worked readout deck: 7 core slides + 7 appendix slides, speaker notes on every core slide. |
 | `templates/readout-deck-template.json` | The blank editable template — the reusable structure with the rules written into it. |
+| `examples/generated-deck-skeleton.json` | Output of `fill-template` against the example report. |
 | `examples/readout-deck.md` | Rendered deck, with each slide's claims shown beside the report's values. |
 | `examples/readout-deck-ascii.txt` | ASCII slide frames + track map + open inputs. 78 columns, no color. |
 | `examples/readout-planning-table.csv` | The underlying planning table: one row per claim, deck value beside report value. |
 | `examples/deck-report-agreement.md` | The agreement report for the current deck. |
-| `test_deck_architecture.py` | 65 tests, `unittest`. |
+| `test_deck_architecture.py` | 86 tests, `unittest`. |
 
 Everything in `examples/` is generated. Change the deck or the report and re-run `render`.
 
@@ -161,6 +162,36 @@ nothing in the appendix carried F-004. Challenged on that number in the room, th
 would have had nothing to turn to. The deck was fixed (appendix slide S-A7 added), not the
 rule. That is the rule earning its place.
 
+## Generating the deck instead of hand-filling it
+
+```bash
+python3 deck_architecture.py fill-template --report data/example-report.json \
+                                           --out    my-deck.json
+```
+
+Produces a deck skeleton **sized to that report**: one priority-findings claim and one appendix
+drill-down per high-priority gap, one phase claim per roadmap item, one resource claim per resource
+implication, appendix backing for every figure, and an agenda that sums to the declared session
+exactly. Every figure carries the report's own value, so the deck agrees by construction rather
+than by an editor retyping a number. Prose is marked `REPLACE`.
+
+`--session-minutes N` changes the length; the allocator settles the rounding remainder so the total
+is exact, and a session too short to give each core section one minute is refused rather than
+silently producing an over-running agenda.
+
+### Why this was added
+
+The hand-edit template in `templates/` shipped untested for usability. Bound mechanically to the
+worked report it **failed** `R005_OMITTED_PRIORITY_FINDING`: the priority-findings slide carried
+one gap slot and one appendix drill-down, while the report carries two high-priority gaps. The
+shape silently assumed a count, so an editor with a second priority gap had no indication that
+slots had to be added.
+
+Both halves are fixed: the static template now ships two gap slots with the one-per-gap rule stated
+in its `_README`, and `fill-template` sizes the structure to the report so the assumption cannot
+recur. `test_the_shipped_template_fills_into_a_passing_deck` binds the template to the report and
+asserts zero errors, so the template's usability is asserted rather than assumed.
+
 ## Readable without color
 
 The ASCII view carries agreement state in **marks, not color**:
@@ -212,7 +243,7 @@ documented contract is `read_csv_rows(path)`, which returns `(statement, rows)` 
 ## What is real and what is draft
 
 **Real and working now:** the checker, all 16 rules, the four renderers, the planning table,
-the CLI, the determinism guarantee, and the 65 tests. Run them; the output is the evidence.
+the CLI, the determinism guarantee, and the 86 tests. Run them; the output is the evidence.
 
 **Draft:** the deck structure itself — section list, minute budget (45), readability budget
 (6 bullets / 180 characters per core slide). These are sensible defaults for a leadership

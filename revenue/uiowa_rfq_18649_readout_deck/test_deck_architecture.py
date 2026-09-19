@@ -394,7 +394,7 @@ class TestRenderAndCli(Base):
         try:
             a, b = os.path.join(tmp, "a"), os.path.join(tmp, "b")
             for out in (a, b):
-                rc = da.main(["render", "--report", REPORT_PATH, "--deck", DECK_PATH, "--outdir", out])
+                rc = run_cli_quiet(["render", "--report", REPORT_PATH, "--deck", DECK_PATH, "--outdir", out])
                 self.assertEqual(0, rc)
             for name in sorted(os.listdir(a)):
                 with open(os.path.join(a, name), "rb") as fh:
@@ -408,7 +408,7 @@ class TestRenderAndCli(Base):
     def test_cli_check_exits_zero_on_agreement_and_one_on_drift(self):
         tmp = tempfile.mkdtemp()
         try:
-            self.assertEqual(0, da.main(["check", "--report", REPORT_PATH, "--deck", DECK_PATH]))
+            self.assertEqual(0, run_cli_quiet(["check", "--report", REPORT_PATH, "--deck", DECK_PATH]))
             drifted = copy.deepcopy(self.deck)
             for s in drifted["slides"]:
                 if s["id"] == "S-04":
@@ -416,12 +416,12 @@ class TestRenderAndCli(Base):
             p = os.path.join(tmp, "drifted.json")
             with open(p, "w") as fh:
                 json.dump(drifted, fh)
-            self.assertEqual(1, da.main(["check", "--report", REPORT_PATH, "--deck", p]))
+            self.assertEqual(1, run_cli_quiet(["check", "--report", REPORT_PATH, "--deck", p]))
         finally:
             shutil.rmtree(tmp, ignore_errors=True)
 
     def test_cli_reports_unreadable_input_without_a_traceback(self):
-        self.assertEqual(2, da.main(["check", "--report", "/nonexistent/report.json", "--deck", DECK_PATH]))
+        self.assertEqual(2, run_cli_quiet(["check", "--report", "/nonexistent/report.json", "--deck", DECK_PATH]))
 
     def test_every_rule_code_used_by_the_checker_is_documented(self):
         used = set()
@@ -599,6 +599,144 @@ class TestCsvProvenance(unittest.TestCase):
                             "expected the naive read to take the banner as a header")
             _statement, good = da.read_csv_rows(os.path.join(tmp, name))
             self.assertFalse(any(str(k).startswith("#") for k in good[0].keys()))
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)
+
+
+def run_cli_quiet(argv):
+    import contextlib as _c, io as _io
+    out, err = _io.StringIO(), _io.StringIO()
+    with _c.redirect_stdout(out), _c.redirect_stderr(err):
+        return da.main(argv)
+
+
+def bind_template_to(report, template):
+    """Mechanically bind the hand-edit template to a report: ids, one real
+    measure per figure claim, phases from the roadmap. Prose stays REPLACE.
+    This is what an editor does by hand, done reproducibly so the template's
+    usability can be asserted instead of assumed."""
+    idx = da.ReportIndex(report)
+    template = copy.deepcopy(template)
+    template["meta"]["report_ref"] = report["meta"]["report_id"]
+    for slide in template["slides"]:
+        for claim in slide.get("claims") or []:
+            ref = claim.get("cites")
+            if "measure" in claim:
+                names = sorted((idx.obj(ref) or {}).get("measures", {}))
+                if not names:
+                    continue
+                src = idx.measure(ref, names[0])
+                claim["measure"], claim["value"], claim["unit"] = names[0], src["value"], src["unit"]
+            if claim.get("type") == "phase":
+                claim["phase"] = idx.rec_phase.get(ref, claim.get("phase"))
+    return template
+
+
+class TestTemplateUsability(Base):
+    """A template that cannot be filled into a passing deck is a defect in the
+    deliverable, not a detail of it.
+
+    Found by binding the shipped template to the shipped report: it failed
+    R005_OMITTED_PRIORITY_FINDING, because the priority-findings slide carried
+    one gap slot and one appendix drill-down while the report carries two
+    high-priority gaps. The shape silently assumed a count.
+    """
+
+    def test_the_shipped_template_fills_into_a_passing_deck(self):
+        template = da.load_deck(TEMPLATE_PATH)
+        filled = bind_template_to(self.report, template)
+        issues = da.check(self.report, filled)
+        self.assertEqual([], [i.as_dict() for i in da.errors(issues)])
+
+    def test_the_template_carries_a_gap_slot_for_every_high_priority_gap(self):
+        template = da.load_deck(TEMPLATE_PATH)
+        idx = da.ReportIndex(self.report)
+        slots = set()
+        for slide in template["slides"]:
+            if slide.get("section") == "priority_findings":
+                slots = set(c["cites"] for c in slide.get("claims") or [])
+        self.assertGreaterEqual(len(slots), len(idx.high_priority_gaps()))
+
+
+class TestFillTemplate(Base):
+    def test_generated_deck_passes_every_rule(self):
+        deck = da.fill_template(self.report, 45)
+        issues = da.check(self.report, deck)
+        self.assertEqual([], [i.as_dict() for i in issues])
+
+    def test_priority_findings_are_sized_to_the_report(self):
+        idx = da.ReportIndex(self.report)
+        deck = da.fill_template(self.report, 45)
+        slide = next(s for s in deck["slides"] if s.get("section") == "priority_findings")
+        cited = set(c["cites"] for c in slide["claims"])
+        self.assertEqual(set(f["id"] for f in idx.high_priority_gaps()), cited)
+
+    def test_three_high_priority_gaps_produce_three_claims(self):
+        for f in self.report["findings"]:
+            if f["id"] == "F-004":
+                f["priority"] = "high"
+        deck = da.fill_template(self.report, 45)
+        slide = next(s for s in deck["slides"] if s.get("section") == "priority_findings")
+        self.assertEqual(3, len(slide["claims"]))
+        self.assertEqual([], [i.as_dict() for i in da.errors(da.check(self.report, deck))])
+
+    def test_a_report_with_no_high_priority_gap_still_produces_a_valid_deck(self):
+        for f in self.report["findings"]:
+            f["priority"] = "low"
+        deck = da.fill_template(self.report, 45)
+        slide = next(s for s in deck["slides"] if s.get("section") == "priority_findings")
+        self.assertEqual([], slide["claims"])
+        self.assertEqual([], [i.as_dict() for i in da.errors(da.check(self.report, deck))])
+
+    def test_minutes_sum_exactly_to_the_session_at_many_lengths(self):
+        for session in (7, 12, 20, 30, 45, 60, 90, 120):
+            deck = da.fill_template(self.report, session)
+            core = [s for s in deck["slides"] if s["track"] == "core"]
+            self.assertEqual(session, sum(s["minutes"] for s in core), "session=%d" % session)
+            self.assertTrue(all(s["minutes"] >= 1 for s in core), "session=%d" % session)
+            self.assertNotIn("R010_AGENDA_OVERRUN", err_codes(da.check(self.report, deck)))
+
+    def test_a_session_too_short_to_hold_the_sections_is_refused(self):
+        with self.assertRaises(da.DeckDataError) as cm:
+            da.fill_template(self.report, da.MIN_SESSION_MINUTES - 1)
+        self.assertIn("at least", str(cm.exception))
+
+    def test_a_non_integer_session_is_refused(self):
+        with self.assertRaises(da.DeckDataError):
+            da._allocate_minutes("forty-five")
+
+    def test_generated_values_are_the_reports_own(self):
+        deck = da.fill_template(self.report, 45)
+        idx = da.ReportIndex(self.report)
+        checked = 0
+        for slide in deck["slides"]:
+            for claim in slide["claims"]:
+                if "measure" in claim:
+                    src = idx.measure(claim["cites"], claim["measure"])
+                    self.assertEqual(src["value"], claim["value"])
+                    self.assertEqual(src["unit"], claim["unit"])
+                    checked += 1
+        self.assertGreater(checked, 0)
+
+    def test_an_unknown_measure_is_carried_as_unknown_not_invented(self):
+        deck = da.fill_template(self.report, 45)
+        unknowns = [c for s in deck["slides"] for c in s["claims"]
+                    if "measure" in c and da.is_unknown(c.get("value"))]
+        self.assertTrue(unknowns, "the report carries UNKNOWN measures; the deck must show them")
+        self.assertNotIn("R004_UNKNOWN_FABRICATION", err_codes(da.check(self.report, deck)))
+
+    def test_generation_is_deterministic(self):
+        a = json.dumps(da.fill_template(self.report, 45), sort_keys=True)
+        b = json.dumps(da.fill_template(self.report, 45), sort_keys=True)
+        self.assertEqual(a, b)
+
+    def test_cli_fill_template_writes_a_passing_deck(self):
+        tmp = tempfile.mkdtemp()
+        try:
+            out = os.path.join(tmp, "deck.json")
+            rc = run_cli_quiet(["fill-template", "--report", REPORT_PATH, "--out", out])
+            self.assertEqual(0, rc)
+            self.assertEqual(0, run_cli_quiet(["check", "--report", REPORT_PATH, "--deck", out]))
         finally:
             shutil.rmtree(tmp, ignore_errors=True)
 
