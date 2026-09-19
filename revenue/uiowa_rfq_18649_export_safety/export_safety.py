@@ -255,7 +255,8 @@ def scan_csv(path, lane, rel_path):
 SELF_FIXTURES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fixtures")
 
 
-def scan_tree(root, lane_filter=None, skip_lane=None, include_self_fixtures=False):
+def scan_tree(root, lane_filter=None, skip_lane=None, include_self_fixtures=False,
+               lane_prefix=None):
     findings, files, stats = [], [], {"rows": 0, "cells": 0, "neutralized": 0}
     for dirpath, dirnames, filenames in os.walk(root):
         dirnames[:] = sorted(d for d in dirnames if d != "__pycache__")
@@ -277,6 +278,11 @@ def scan_tree(root, lane_filter=None, skip_lane=None, include_self_fixtures=Fals
             if lane_filter and lane != lane_filter:
                 continue
             if skip_lane and lane == skip_lane:
+                continue
+            # The repository holds many unrelated projects. Auditing them and
+            # reporting the result as a delivery-kit finding would be wrong twice
+            # over: out of scope, and handed to an owner who never asked.
+            if lane_prefix and not lane.startswith(lane_prefix):
                 continue
             file_findings, file_stats = scan_csv(full, lane, rel)
             findings.extend(file_findings)
@@ -372,8 +378,10 @@ def write_report(path, findings, files, stats, root):
             w("\n")
 
 
-def run(root, out_dir, lane_filter=None, skip_lane=None, include_self_fixtures=False):
-    findings, files, stats = scan_tree(root, lane_filter, skip_lane, include_self_fixtures)
+def run(root, out_dir, lane_filter=None, skip_lane=None, include_self_fixtures=False,
+        lane_prefix=None):
+    findings, files, stats = scan_tree(root, lane_filter, skip_lane, include_self_fixtures,
+                                       lane_prefix)
     os.makedirs(out_dir, exist_ok=True)
     with open(os.path.join(out_dir, "findings.json"), "w", encoding="utf-8") as fh:
         json.dump({"root": os.path.basename(os.path.abspath(root)),
@@ -397,12 +405,14 @@ def main(argv=None):
     parser.add_argument("--skip-lane", default=None)
     parser.add_argument("--include-self-fixtures", action="store_true",
                         help="also audit this tool's own deliberately-broken fixtures")
+    parser.add_argument("--lane-prefix", default=None,
+                        help="only audit lanes whose directory name starts with this")
     parser.add_argument("--fail-on", default=None, choices=[HIGH, MEDIUM, LOW, INFO],
                         help="exit 1 if any finding is at or above this severity")
     args = parser.parse_args(argv)
 
     findings, files, stats = run(args.root, args.out, args.lane, args.skip_lane,
-                                 args.include_self_fixtures)
+                                 args.include_self_fixtures, args.lane_prefix)
     counts = {}
     for item in findings:
         counts[item["code"]] = counts.get(item["code"], 0) + 1

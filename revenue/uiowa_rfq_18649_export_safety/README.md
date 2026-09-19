@@ -1,4 +1,4 @@
-# Cross-lane CSV export-safety audit
+# Cross-lane exported-artifact safety audit (CSV + JSON)
 
 Built by seat `OP5-FLINT`, Claude Opus 5, as `OPS-EXPORT-SAFETY` after the UIOWA work-order
 board (066→140) was fully carried.
@@ -18,12 +18,14 @@ promising it in prose.
 ```
 cd revenue/uiowa_rfq_18649_export_safety
 
+python3 export_safety.py scan --root .. --lane-prefix uiowa_rfq_18649_   # CSV audit
+python3 json_safety.py   scan --root .. --lane-prefix uiowa_rfq_18649_   # JSON audit
 python3 export_safety.py scan --root ..                     # audit every sibling lane
 python3 export_safety.py scan --root .. --lane uiowa_rfq_18649_workbench
 python3 export_safety.py scan --root .. --skip-lane uiowa_rfq_18649_export_safety
 python3 export_safety.py scan --root fixtures --include-self-fixtures --out /tmp/fx
 python3 export_safety.py scan --root .. --fail-on HIGH       # exit 1 on a HIGH finding
-python3 -m unittest -v                                       # 18 tests
+python3 -m unittest -v                                       # 35 tests
 ```
 
 Python 3 standard library only. No network. Writes only inside `--out`.
@@ -33,15 +35,22 @@ Python 3 standard library only. No network. Writes only inside `--out`.
 `python3 export_safety.py scan --root ..` against the delivery kit as it stands — verbatim:
 
 ```
-$ python3 export_safety.py scan --root .. --skip-lane uiowa_rfq_18649_export_safety
-files=170 lanes=50 rows=8740 cells=74588 neutralized=1 findings=25
+$ python3 export_safety.py scan --root .. --lane-prefix uiowa_rfq_18649_ \
+      --skip-lane uiowa_rfq_18649_export_safety
+files=144 lanes=51 rows=3085 cells=26986 neutralized=1 findings=25
      20  LEADING_COMMENT_LINE
       3  NULL_SEMANTICS_AMBIGUOUS
       1  NULL_SEMANTICS_DECLARED
       1  RAGGED_ROW
 ```
 
-Zero formula-injection findings across 74,588 cells.
+Zero formula-injection findings across 26,986 cells.
+
+An earlier run of this tool reported `files=170 … cells=74588`. That scan had no
+`--lane-prefix` and therefore included CSVs belonging to unrelated projects in the same
+`revenue/` directory. The findings were identical — all 25 were in delivery-kit lanes — but the
+denominator was wrong, so `--lane-prefix` now scopes the audit and the figure above is the
+corrected one.
 
 This tool's own `fixtures/` are deliberately broken and are excluded from a kit audit by
 default; `--include-self-fixtures` audits them on purpose.
@@ -123,8 +132,50 @@ right.
 * **The real reader's tooling.** Excel, LibreOffice, Sheets and pandas differ on BOMs, on lone
   `\r`, and on cell-length truncation. The checks encode the common denominator; the actual
   University and Clark's import path has not been named to us.
-* **Non-CSV handoffs.** This audits CSV only. `.xlsx`, `.docx` and `.pdf` carry their own
-  fidelity questions and belong to the UIOWA-096 interchange lanes.
+* **Remaining handoffs.** CSV and JSON are audited. `.xlsx`, `.docx` and `.pdf` are not; those
+  carry their own fidelity questions and belong to the UIOWA-096 interchange lanes.
+* **Whether the 46 missing trailing newlines matter to anyone.** They are diff hygiene, not a
+  reader problem, and are reported at INFO for that reason.
+
+## JSON audit — `json_safety.py`
+
+The CSV auditor asks whether a spreadsheet reader can open a file. `json_safety.py` asks the
+JSON equivalent: **can a reader who is not Python parse this file at all?** Python's `json`
+module is more permissive than the specification in ways that produce Python-only files:
+
+* `json.dump` writes bare `NaN`, `Infinity` and `-Infinity` by default. `JSON.parse`, Go's
+  `encoding/json` and Jackson reject them and the file does not open at all. Producer fix:
+  `allow_nan=False`.
+* `json.load` silently keeps the **last** of two identical keys in one object, so a duplicated
+  key loses data with no error anywhere. A fixture demonstrates it: `duplicate_keys.json` parses
+  cleanly in Python and the first `finding_id` is simply gone.
+* A lone surrogate escape yields a `str` Python accepts and UTF-8 cannot encode.
+* An integer above 2^53 is rounded silently by any JavaScript reader.
+
+Ten checks: `INVALID_JSON`, `NON_STRICT_LITERAL`, `DUPLICATE_OBJECT_KEY`, `LONE_SURROGATE`,
+`NOT_UTF8` (HIGH) · `BOM_PRESENT`, `INT_PRECISION_LOSS`, `CONTROL_CHAR_IN_STRING`, `EMPTY_FILE`
+(MEDIUM) · `UNNORMALIZED_UNICODE` (LOW) · `NO_TRAILING_NEWLINE` (INFO).
+
+```
+$ python3 json_safety.py scan --root .. --lane-prefix uiowa_rfq_18649_ \
+      --skip-lane uiowa_rfq_18649_export_safety
+files=208 findings=46
+     46  NO_TRAILING_NEWLINE
+```
+
+The delivery kit's JSON is strict-parser clean: zero HIGH and zero MEDIUM findings across 208
+artifacts. The 46 `NO_TRAILING_NEWLINE` are INFO-level diff hygiene, not a reader problem.
+
+Two defects in this auditor, both caught by its own tests and fixed:
+
+* It **crashed writing its own findings**: the sample captured for a `LONE_SURROGATE` finding was
+  itself a lone surrogate and could not be encoded as UTF-8. A detector that dies on a detection
+  is not a detector. `safe_text` now sanitizes every captured value.
+* Its first non-strict check was a regex over the raw bytes, which flagged the **word** `NaN`
+  wherever it appeared — including inside this auditor's own explanatory prose, so it reported
+  itself. Detection now uses `json.loads(parse_constant=…)`, which fires only on a real bare
+  token and cannot false-positive.
+  Regression: `test_the_word_NaN_in_prose_is_not_a_non_strict_literal`.
 
 ## Scope
 

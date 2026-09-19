@@ -4,8 +4,8 @@ Read-only audit of every published `*.csv` in the delivery kit, against the one 
 
 **This report edits nothing.** Findings are handed to the lane that owns the file, with the exact path, row and column.
 
-- Files scanned: **170** across **50** lane(s)
-- Data rows: **8740** · cells: **74588**
+- Files scanned: **144** across **51** lane(s)
+- Data rows: **3085** · cells: **26986**
 - Cells already neutralized against formula injection: **1**
 - Findings: **25**
 
