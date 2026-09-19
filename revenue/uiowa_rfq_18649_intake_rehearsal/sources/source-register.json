@@ -12,7 +12,9 @@
       "captured_at": "2026-09-18",
       "represented_period": "2026-09-18/2026-09-18",
       "locator_kind": "json_pointer",
-      "description": "branch protection rules, 3 ESS repositories"
+      "description": "branch protection rules, 3 ESS repositories",
+      "custodian_role": "fictional ESS release manager",
+      "authorization_basis": "synthetic configuration export authorized for the rehearsal by the fictional ESS release manager"
     },
     {
       "source_id": "SRC-SYN-ESS-02",
@@ -23,7 +25,9 @@
       "captured_at": "2026-09-18",
       "represented_period": "2026-07-01/2026-09-18",
       "locator_kind": "csv_row",
-      "description": "sampled merged pull requests"
+      "description": "sampled merged pull requests",
+      "custodian_role": "fictional ESS release manager",
+      "authorization_basis": "synthetic change-record sample authorized for the rehearsal by the fictional ESS release manager"
     },
     {
       "source_id": "SRC-SYN-ESS-03",
@@ -34,7 +38,9 @@
       "captured_at": "2026-09-02",
       "represented_period": "2026-08-01/2026-08-31",
       "locator_kind": "csv_row",
-      "description": "August production deployments"
+      "description": "August production deployments",
+      "custodian_role": "fictional ESS operations lead",
+      "authorization_basis": "synthetic deployment log authorized for the rehearsal by the fictional ESS operations lead"
     },
     {
       "source_id": "SRC-SYN-ESS-04",
@@ -45,7 +51,9 @@
       "captured_at": "2026-09-15",
       "represented_period": "2026-01-15/",
       "locator_kind": "heading",
-      "description": "release window standard"
+      "description": "release window standard",
+      "custodian_role": "fictional ESS release manager",
+      "authorization_basis": "published fictional standard; no separate authorization required"
     },
     {
       "source_id": "SRC-SYN-RIS-01",
@@ -56,7 +64,9 @@
       "captured_at": "2026-09-18",
       "represented_period": "2026-07-01/2026-09-18",
       "locator_kind": "csv_row",
-      "description": "sampled RIS production releases"
+      "description": "sampled RIS production releases",
+      "custodian_role": "fictional RIS development lead",
+      "authorization_basis": "synthetic release sample authorized for the rehearsal by the fictional RIS development lead"
     },
     {
       "source_id": "SRC-SYN-RIS-02",
@@ -67,7 +77,9 @@
       "captured_at": "2026-09-02",
       "represented_period": "2026-08-01/2026-08-31",
       "locator_kind": "csv_row",
-      "description": "backup job completion report (no restoration evidence)"
+      "description": "backup job completion report (no restoration evidence)",
+      "custodian_role": "fictional RIS operations lead",
+      "authorization_basis": "synthetic backup job report authorized for the rehearsal by the fictional RIS operations lead"
     },
     {
       "source_id": "SRC-SYN-RIS-03",
@@ -78,7 +90,9 @@
       "captured_at": "2026-09-18",
       "represented_period": "2026-06-01/2026-09-18",
       "locator_kind": "csv_row",
-      "description": "open vulnerability findings and remediation targets"
+      "description": "open vulnerability findings and remediation targets",
+      "custodian_role": "fictional RIS security contact",
+      "authorization_basis": "synthetic scan report authorized for the rehearsal by the fictional RIS security contact"
     },
     {
       "source_id": "SRC-SYN-IAM-01",
@@ -89,7 +103,9 @@
       "captured_at": "2026-09-16",
       "represented_period": "2026-04-01/2026-06-30",
       "locator_kind": "csv_row",
-      "description": "privileged access recertification campaign dispositions"
+      "description": "privileged access recertification campaign dispositions",
+      "custodian_role": "fictional IAM service owner",
+      "authorization_basis": "synthetic campaign export authorized for the rehearsal by the fictional IAM service owner"
     },
     {
       "source_id": "SRC-SYN-IAM-02",
@@ -100,7 +116,9 @@
       "captured_at": "2026-09-15",
       "represented_period": "2026-02-01/",
       "locator_kind": "heading",
-      "description": "privileged access standard"
+      "description": "privileged access standard",
+      "custodian_role": "fictional IAM service owner",
+      "authorization_basis": "published fictional standard; no separate authorization required"
     },
     {
       "source_id": "SRC-SYN-IAM-03",
@@ -111,7 +129,9 @@
       "captured_at": "2026-09-16",
       "represented_period": "2026-08-01/2026-08-31",
       "locator_kind": "csv_row",
-      "description": "IAM configuration changes and recorded reviewers"
+      "description": "IAM configuration changes and recorded reviewers",
+      "custodian_role": "fictional IAM engineering lead",
+      "authorization_basis": "synthetic change export authorized for the rehearsal by the fictional IAM engineering lead"
     },
     {
       "source_id": "SRC-SYN-IAM-04",
@@ -122,7 +142,9 @@
       "captured_at": "2026-09-16",
       "represented_period": "2026-08-21/",
       "locator_kind": "heading",
-      "description": "approved-but-unstarted AI project charter"
+      "description": "approved-but-unstarted AI project charter",
+      "custodian_role": "fictional IAM service owner",
+      "authorization_basis": "approved fictional charter; no separate authorization required"
     },
     {
       "source_id": "SRC-SYN-IAM-05",
@@ -133,7 +155,9 @@
       "captured_at": null,
       "represented_period": "2026-08-01/2026-08-31",
       "locator_kind": "csv_row",
-      "description": "IAM deployment log - REQUESTED IN THE REHEARSAL BUT DELIBERATELY NOT PRESENT ON DISK. This entry exercises the missing-source path: the rehearsal must report it and leave IAM/DEP UNKNOWN, never zero and never a pass."
+      "description": "IAM deployment log - REQUESTED IN THE REHEARSAL BUT DELIBERATELY NOT PRESENT ON DISK. This entry exercises the missing-source path: the rehearsal must report it and leave IAM/DEP UNKNOWN, never zero and never a pass.",
+      "custodian_role": "fictional IAM engineering lead",
+      "authorization_basis": "AUTHORIZATION NOT OBTAINED - the export was requested and never provided"
     }
   ]
 }

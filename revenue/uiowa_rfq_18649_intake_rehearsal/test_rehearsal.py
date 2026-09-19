@@ -135,6 +135,42 @@ class TestShippedCollection(unittest.TestCase):
         self.assertEqual(sorted(counts), sorted(parts))
         self.assertEqual(sum(counts), whole)
 
+    def test_source_register_carries_the_six_acceptance_concepts(self):
+        """Regression for the gap the UIOWA-130 acceptance index found.
+
+        Exhibit criterion 5.1.3 requires a register schema that can identify source,
+        custodian/owner, evidence reference, authorization/provenance,
+        observation/currentness and content digest. This register carried four of six.
+        """
+        arts = R.build_artifacts(self.dataset)
+        with tempfile.TemporaryDirectory() as tmp:
+            R.write_artifacts(arts, tmp)
+            rows = R.read_csv_artifact(os.path.join(tmp, "source_register.csv"))
+        cols = [c.lower() for c in rows[0].keys()]
+        for concept, candidates in {
+            "source": ["source_id"],
+            "custodian_or_owner": ["custodian", "owner"],
+            "evidence_reference": ["path", "locator"],
+            "authorization_or_provenance": ["authorization", "provenance", "authority"],
+            "observation_currentness": ["captured_at", "represented_period"],
+            "content_digest": ["sha256", "digest"],
+        }.items():
+            self.assertTrue(any(any(c in col for c in candidates) for col in cols),
+                            f"no column for {concept}; columns are {cols}")
+
+    def test_custodian_is_a_role_never_a_named_person(self):
+        """Custody has to be attributable without assessing an individual."""
+        for src in self.dataset["sources"]:
+            role = src.get("custodian_role", "")
+            self.assertTrue(role, f"{src['source_id']} has no custodian_role")
+            self.assertIn("fictional", role.lower())
+
+    def test_unobtained_evidence_says_so_in_its_authorization_basis(self):
+        src = next(s for s in self.dataset["sources"]
+                   if s["source_id"] == "SRC-SYN-IAM-05")
+        self.assertIn("NOT OBTAINED", src["authorization_basis"])
+        self.assertEqual(src["resolution"], "UNRESOLVED_MISSING")
+
     def test_nothing_is_presented_as_a_university_finding(self):
         arts = R.build_artifacts(self.dataset)
         for name, text in arts.items():

@@ -427,14 +427,16 @@ def build_artifacts(dataset):
          "directness", "corroboration", "interview_support", "claim", "scope_limit",
          "follow_up"], ev_rows)
 
+    # custodian_role and authorization_basis were added after the UIOWA-130 acceptance
+    # index reported AC-5.1.3 NOT_DEMONSTRATED: the exhibit's 5.1.3 requires a register
+    # schema that can identify custodian/owner and authorization/provenance, and this
+    # register carried neither. A custodian is recorded as a ROLE, never a named person.
+    _REG_COLS = ["source_id", "group", "source_type", "path", "version",
+                 "custodian_role", "authorization_basis", "captured_at",
+                 "represented_period", "locator_kind", "resolution", "content_sha256",
+                 "byte_length", "description"]
     arts["source_register.csv"] = _csv(
-        ["source_id", "group", "source_type", "path", "version", "captured_at",
-         "represented_period", "locator_kind", "resolution", "content_sha256",
-         "byte_length", "description"],
-        [{k: _flat(s.get(k)) for k in
-          ["source_id", "group", "source_type", "path", "version", "captured_at",
-           "represented_period", "locator_kind", "resolution", "content_sha256",
-           "byte_length", "description"]} for s in sources])
+        _REG_COLS, [{k: _flat(s.get(k)) for k in _REG_COLS} for s in sources])
 
     arts["intake_diagnostics.csv"] = _csv(
         ["seq", "severity", "reason_code", "record_kind", "record_id", "locator",

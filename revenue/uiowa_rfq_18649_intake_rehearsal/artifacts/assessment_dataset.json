@@ -1016,9 +1016,11 @@
   "rehearsal": "UIOWA-092 intake-to-assessment integration rehearsal",
   "sources": [
     {
+      "authorization_basis": "synthetic configuration export authorized for the rehearsal by the fictional ESS release manager",
       "byte_length": 831,
       "captured_at": "2026-09-18",
       "content_sha256": "c65b5602be4bfa63a7368a497ded114361d71102baeeebbd14caee1c861268fe",
+      "custodian_role": "fictional ESS release manager",
       "description": "branch protection rules, 3 ESS repositories",
       "group": "ESS",
       "locator_kind": "json_pointer",
@@ -1030,9 +1032,11 @@
       "version": "v2"
     },
     {
+      "authorization_basis": "synthetic change-record sample authorized for the rehearsal by the fictional ESS release manager",
       "byte_length": 610,
       "captured_at": "2026-09-18",
       "content_sha256": "9f16f19b95f8a989b5d5f93b38a0d5923c3f9392d37e7dda3b3963b57a098bc6",
+      "custodian_role": "fictional ESS release manager",
       "description": "sampled merged pull requests",
       "group": "ESS",
       "locator_kind": "csv_row",
@@ -1044,9 +1048,11 @@
       "version": "2026Q3-sample"
     },
     {
+      "authorization_basis": "synthetic deployment log authorized for the rehearsal by the fictional ESS operations lead",
       "byte_length": 999,
       "captured_at": "2026-09-02",
       "content_sha256": "d0bfad3537a57729c3f6ad6c4f0632bc64c27df1502160e77c2fa21843ab6886",
+      "custodian_role": "fictional ESS operations lead",
       "description": "August production deployments",
       "group": "ESS",
       "locator_kind": "csv_row",
@@ -1058,9 +1064,11 @@
       "version": "2026-08"
     },
     {
+      "authorization_basis": "published fictional standard; no separate authorization required",
       "byte_length": 762,
       "captured_at": "2026-09-15",
       "content_sha256": "480fa59d9c273a50bd7c96d3356b92b4899356c68f2e96f94841dfe4acdda0b9",
+      "custodian_role": "fictional ESS release manager",
       "description": "release window standard",
       "group": "ESS",
       "locator_kind": "heading",
@@ -1072,9 +1080,11 @@
       "version": "v3"
     },
     {
+      "authorization_basis": "synthetic campaign export authorized for the rehearsal by the fictional IAM service owner",
       "byte_length": 325,
       "captured_at": "2026-09-16",
       "content_sha256": "10037a573bee1c9ca88c747b59ccb3a2efd5f5f3d8a30e4fc85ffa555605b271",
+      "custodian_role": "fictional IAM service owner",
       "description": "privileged access recertification campaign dispositions",
       "group": "IAM",
       "locator_kind": "csv_row",
@@ -1086,9 +1096,11 @@
       "version": "2026Q2"
     },
     {
+      "authorization_basis": "published fictional standard; no separate authorization required",
       "byte_length": 718,
       "captured_at": "2026-09-15",
       "content_sha256": "7761f395908275c88e46f2cd2762747936cb7a6d357d4fcf091bb1a5d8835228",
+      "custodian_role": "fictional IAM service owner",
       "description": "privileged access standard",
       "group": "IAM",
       "locator_kind": "heading",
@@ -1100,9 +1112,11 @@
       "version": "v4"
     },
     {
+      "authorization_basis": "synthetic change export authorized for the rehearsal by the fictional IAM engineering lead",
       "byte_length": 382,
       "captured_at": "2026-09-16",
       "content_sha256": "bf918583fda3973271486f47c2eb5de9c6743b44c2dbd00c8859ce666f3d151d",
+      "custodian_role": "fictional IAM engineering lead",
       "description": "IAM configuration changes and recorded reviewers",
       "group": "IAM",
       "locator_kind": "csv_row",
@@ -1114,9 +1128,11 @@
       "version": "2026-08"
     },
     {
+      "authorization_basis": "approved fictional charter; no separate authorization required",
       "byte_length": 541,
       "captured_at": "2026-09-16",
       "content_sha256": "3df37653e16895dfd070478ef7ec14deb9357cd7daea3f4aa5697660cab93b09",
+      "custodian_role": "fictional IAM service owner",
       "description": "approved-but-unstarted AI project charter",
       "group": "IAM",
       "locator_kind": "heading",
@@ -1128,9 +1144,11 @@
       "version": "v1"
     },
     {
+      "authorization_basis": "AUTHORIZATION NOT OBTAINED - the export was requested and never provided",
       "byte_length": 0,
       "captured_at": null,
       "content_sha256": "",
+      "custodian_role": "fictional IAM engineering lead",
       "description": "IAM deployment log - REQUESTED IN THE REHEARSAL BUT DELIBERATELY NOT PRESENT ON DISK. This entry exercises the missing-source path: the rehearsal must report it and leave IAM/DEP UNKNOWN, never zero and never a pass.",
       "group": "IAM",
       "locator_kind": "csv_row",
@@ -1142,9 +1160,11 @@
       "version": "2026-08"
     },
     {
+      "authorization_basis": "synthetic release sample authorized for the rehearsal by the fictional RIS development lead",
       "byte_length": 728,
       "captured_at": "2026-09-18",
       "content_sha256": "c8d461b12df80f4b70323ef252656d2f9e836120bc58f84c227683961ddf4456",
+      "custodian_role": "fictional RIS development lead",
       "description": "sampled RIS production releases",
       "group": "RIS",
       "locator_kind": "csv_row",
@@ -1156,9 +1176,11 @@
       "version": "2026Q3-sample"
     },
     {
+      "authorization_basis": "synthetic backup job report authorized for the rehearsal by the fictional RIS operations lead",
       "byte_length": 782,
       "captured_at": "2026-09-02",
       "content_sha256": "a463afa21f4d2a3b2dfe8cf6e705e644bd8fdb7f25d9999588d4626cd737da90",
+      "custodian_role": "fictional RIS operations lead",
       "description": "backup job completion report (no restoration evidence)",
       "group": "RIS",
       "locator_kind": "csv_row",
@@ -1170,9 +1192,11 @@
       "version": "2026-08"
     },
     {
+      "authorization_basis": "synthetic scan report authorized for the rehearsal by the fictional RIS security contact",
       "byte_length": 535,
       "captured_at": "2026-09-18",
       "content_sha256": "38471a186890349a872d3777681fb8987160fe1aef7e5f2c90b458425c4c03fe",
+      "custodian_role": "fictional RIS security contact",
       "description": "open vulnerability findings and remediation targets",
       "group": "RIS",
       "locator_kind": "csv_row",
