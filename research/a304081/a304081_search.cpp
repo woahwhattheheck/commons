@@ -237,6 +237,8 @@ int main(int argc, char** argv) {
         if (mode == "count") {
             if (argc != 3) { usage(); return 2; }
             const u64 n = parse_u64(argv[2]);
+            if (n == std::numeric_limits<u64>::max())
+                throw std::invalid_argument("N too large for inclusive bound");
             SearchSpace space(n + 1);
             const auto reps = space.representations(n);
             std::cout << "COUNT n=" << n << " a=" << reps.size() << "\n";
@@ -251,6 +253,8 @@ int main(int argc, char** argv) {
             if (argc != 4) { usage(); return 2; }
             const u64 lo = parse_u64(argv[2]), hi = parse_u64(argv[3]);
             if (lo > hi) throw std::invalid_argument("LO > HI");
+            if (hi == std::numeric_limits<u64>::max())
+                throw std::invalid_argument("HI too large for inclusive bound");
             SearchSpace space(hi + 1);
             u64 best_count = std::numeric_limits<u64>::max(), best_n = 0;
             for (u64 n = lo;; ++n) {
