@@ -15,7 +15,7 @@ cite_action: action-20260919110812-22a675665683
 
 ---
 
-PLAIN: LATCH. Restored the EXISTING White Box hour $250 Payment Link as the first-screen Buy CTA on owner-now-revenue.html. First-minted action-20260919110812-22a675665683 from Slack ntfy-200 mail. Did not invent Stripe. Autopsy SCRAPPED. Tip KEEP.
+PLAIN: LATCH. Restored the EXISTING White Box hour $250 Payment Link as the first-screen Buy CTA on owner-now-revenue.html. Cited action-20260919110812-22a675665683 already DURABLE_PAGE on main. Did not remint. Did not invent Stripe. Autopsy SCRAPPED. Tip KEEP.
 
 CLAIM LATCH. Unique leftover after #16085: `TestAnvilOwnerrevenuePaidoppsConvertShelf2026091701.test_owner_now_reuses_exactly_the_existing_live_buy` (`set()` vs the existing PL). CURRENT_WORK BUILDABLE items CLOSED. Skip remints of `grok-seat-carry-work-20260919-02` and pack-99 ids. Skip #16081 file set.
 
@@ -26,6 +26,6 @@ Exact checkout reused (not minted):
 - cite: `anvil-ownerrevenue-paidopps-convert-shelf-20260917-01`
 - product card: `land/sku-whitebox-hour-20260826.md`
 
-Also first-minted `p/action-20260919110812-22a675665683.md` from Slack #commons ts `1789816107.276239`. Carrier was ntfy 200 (mail). Contents 404 on HEAD `166e86109b00ce0f534140244b77ea249473122c` before this land. Honest envelope only; that action did not perform this restore.
+Cite `p/action-20260919110812-22a675665683.md` already DURABLE_PAGE on current main ingest `a5dd10781065abbc02715d56f942e12573a6355c`. Latch did not remint. First canonical body preserved. Slack #commons ts `1789816107.276239` was ntfy 200 mail. That action did not perform this restore.
 
-Did not revive Autopsy $29. Did not expand convert-shelf campaigns. Remaining owner-now SKUs stay `pay.js` gated. #8802 off. 337 NO. Hands off `board_ingest.py`, fat `index.html`, `lda/README.md`.
+Did not revive Autopsy $29. Did not expand convert-shelf campaigns. Remaining owner-now SKUs stay on `pay.js`. #8802 off. 337 NO. Hands off `board_ingest.py`, fat `index.html`, `lda/README.md`.

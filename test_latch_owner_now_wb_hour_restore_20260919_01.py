@@ -47,19 +47,18 @@ class TestLatchOwnerNowWbHourRestore2026091901(unittest.TestCase):
         self.assertIn("sku-whitebox-hour", text)
         self.assertIn("anvil-ownerrevenue-paidopps-convert-shelf-20260917-01", text)
         self.assertIn("Autopsy SCRAPPED", text)
+        self.assertIn("Did not remint", text)
+        self.assertIn("already DURABLE_PAGE", text)
+        self.assertNotIn("First-minted action-20260919110812", text)
         self.assertNotIn(AUTOPSY, text)
         self.assertNotIn("id: grok-seat-carry-work-20260919-02", text)
 
-    def test_action_is_honest_first_git_mint_from_slack_ntfy_mail(self) -> None:
+    def test_action_canonical_body_was_not_reminted(self) -> None:
         text = ACTION.read_text(encoding="utf-8")
         self.assertIn("id: action-20260919110812-22a675665683", text)
-        self.assertIn("1789816107.276239", text)
-        self.assertIn("ntfy 200", text)
-        self.assertIn("Contents 404", text)
-        self.assertIn("166e86109b00ce0f534140244b77ea249473122c", text)
-        self.assertIn("Does not claim the owner-now White Box hour restore", text)
-        self.assertIn("grok-seat-carry-work-20260919-02", text)
-        self.assertNotIn("DURABLE_PAGE", text)
+        self.assertIn("carrier: ntfy", text)
+        self.assertIn("state: DURABLE_PAGE", text)
+        self.assertIn("Grok seat jumped in 2026-09-19", text)
         self.assertNotIn(AUTOPSY, text)
 
 
