@@ -14,7 +14,7 @@ Source of the criteria: `uiowa_rfq_18649_workshare/ACCEPTANCE_EXHIBIT.md` @ sha2
 | `NEEDS_ENGAGEMENT_EVIDENCE` | No file in this repository can demonstrate it. It needs a prime, a review window, or real University evidence. |
 | `UNMAPPED` | No binding, or the bound artifacts are not on disk. |
 
-Criterion tally: **DEMONSTRABLE** 11, **PARTIAL** 3, **NOT_DEMONSTRATED** 1, **NEEDS_ENGAGEMENT_EVIDENCE** 2, **UNMAPPED** 0.
+Criterion tally: **DEMONSTRABLE** 11, **PARTIAL** 4, **NOT_DEMONSTRATED** 0, **NEEDS_ENGAGEMENT_EVIDENCE** 2, **UNMAPPED** 0.
 
 ## 1. Acceptance criteria
 
@@ -22,7 +22,7 @@ Criterion tally: **DEMONSTRABLE** 11, **PARTIAL** 3, **NOT_DEMONSTRATED** 1, **N
 | --- | --- | --- | --- |
 | `AC-5.1.1` | 5.1 | **DEMONSTRABLE** | 2 passed, 0 failed, 0 unavailable |
 | `AC-5.1.2` | 5.1 | **DEMONSTRABLE** | 1 passed, 0 failed, 0 unavailable |
-| `AC-5.1.3` | 5.1 | **NOT_DEMONSTRATED** | 0 passed, 2 failed, 0 unavailable |
+| `AC-5.1.3` | 5.1 | **PARTIAL** | 1 passed, 1 failed, 0 unavailable |
 | `AC-5.1.4` | 5.1 | **DEMONSTRABLE** | 2 passed, 0 failed, 0 unavailable |
 | `AC-5.1.5` | 5.1 | **PARTIAL** | 1 passed, 1 failed, 0 unavailable |
 | `AC-5.2.1` | 5.2 | **DEMONSTRABLE** | 1 passed, 0 failed, 0 unavailable |
@@ -57,13 +57,13 @@ Criterion tally: **DEMONSTRABLE** 11, **PARTIAL** 3, **NOT_DEMONSTRATED** 1, **N
 | --- | --- | --- | --- |
 | each evidence row names its source and its cell | `uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv` | **PASS** | 4/4 concepts have a column (cell_area->area, cell_group->group, locator->locator, source->source_id) |
 
-### `AC-5.1.3` — NOT_DEMONSTRATED
+### `AC-5.1.3` — PARTIAL
 
 > the source-register schema can identify source, custodian/owner, evidence reference, authorization/provenance, observation/currentness, and content digest
 
 | Check | Target | Outcome | Observed |
 | --- | --- | --- | --- |
-| rehearsal source register schema | `uiowa_rfq_18649_intake_rehearsal/artifacts/source_register.csv` | **FAIL** | 4/6 concepts have a column (content_digest->content_sha256, evidence_reference->path, observation_currentness->captured_at, source->source_id); NO COLUMN FOR: authorization_or_provenance, custodian_or_owner |
+| rehearsal source register schema | `uiowa_rfq_18649_intake_rehearsal/artifacts/source_register.csv` | **PASS** | 6/6 concepts have a column (authorization_or_provenance->authorization_basis, content_digest->content_sha256, custodian_or_owner->custodian_role, evidence_reference->path, observation_currentness->captured_at, source->source_id) |
 | workshare synthetic evidence register schema | `uiowa_rfq_18649_workshare/methodology/23-synthetic-evidence-register.csv` | **FAIL** | 4/6 concepts have a column (authorization_or_provenance->enumerator_authority, evidence_reference->source_ref, observation_currentness->captured_at, source->evidence_id); NO COLUMN FOR: content_digest, custodian_or_owner |
 
 ### `AC-5.1.4` — DEMONSTRABLE
@@ -202,12 +202,12 @@ Still needs engagement evidence:
 
 ## 3. Deliverable items
 
-Deliverable tally: **DEMONSTRABLE** 14, **PARTIAL** 2, **NOT_DEMONSTRATED** 3, **NEEDS_ENGAGEMENT_EVIDENCE** 1, **UNMAPPED** 0.
+Deliverable tally: **DEMONSTRABLE** 15, **PARTIAL** 2, **NOT_DEMONSTRATED** 2, **NEEDS_ENGAGEMENT_EVIDENCE** 1, **UNMAPPED** 0.
 
 | Item | Section | Status | Text |
 | --- | --- | --- | --- |
 | `DL-4.1.1` | 4.1 | **DEMONSTRABLE** | a 12-cell scope matrix covering ESS, RIS, and IAM across the four technical dimensions |
-| `DL-4.1.2` | 4.1 | **NOT_DEMONSTRATED** | a source-register structure with stable source IDs, source kind, source owner/custodian, |
+| `DL-4.1.2` | 4.1 | **DEMONSTRABLE** | a source-register structure with stable source IDs, source kind, source owner/custodian, |
 | `DL-4.1.3` | 4.1 | **DEMONSTRABLE** | an evidence-request map showing which source classes are expected to support which asses |
 | `DL-4.1.4` | 4.1 | **DEMONSTRABLE** | explicit markers for missing, stale, conflicting, untrusted, or not-yet-authorized evide |
 | `DL-4.1.5` | 4.1 | **DEMONSTRABLE** | the current artifact-generation / authority-generation identifier used by the determinis |
@@ -229,7 +229,7 @@ Deliverable tally: **DEMONSTRABLE** 14, **PARTIAL** 2, **NOT_DEMONSTRATED** 3, *
 
 ## 4. Checked sample delivery packet
 
-`output/sample_packet/` holds **9 files**, each included only because a check against it returned PASS. 3 bound artifact(s) were excluded because their check did not pass; they are listed in `MANIFEST.json` with the reason rather than dropped.
+`output/sample_packet/` holds **9 files**, each included only because a check against it returned PASS. 2 bound artifact(s) were excluded because their check did not pass; they are listed in `MANIFEST.json` with the reason rather than dropped.
 
 ## 5. What this index does not say
 

@@ -130,13 +130,39 @@ class TestIndexIsEarned(unittest.TestCase):
         self.assertGreater(t["NOT_DEMONSTRATED"] + t["PARTIAL"], 0,
                            "no criterion failed - the checks are probably not checking")
 
-    def test_the_register_schema_gap_is_reported_with_the_missing_column_named(self):
-        """A real finding: no single delivered register carries all six concepts."""
+    def test_the_register_schema_gap_names_the_column_that_is_missing(self):
+        """The behaviour under test is the NAMING, not a fixed verdict.
+
+        This assertion used to pin AC-5.1.3 to NOT_DEMONSTRATED, because when the index
+        was first built neither delivered register carried all six concepts. The
+        rehearsal register has since been given custodian_role and authorization_basis
+        in response to exactly this finding, so the criterion is now PARTIAL: one
+        register satisfies it, one does not. Pinning the old verdict would have made the
+        suite fail for a fix, so the test now asserts what the check must always do -
+        name the concept it could not find - and that the criterion is not called
+        satisfied while any bound register still falls short.
+        """
         e = next(x for x in self.index["criteria"] if x["criterion_id"] == "AC-5.1.3")
-        self.assertEqual(e["status"], "NOT_DEMONSTRATED")
+        outcomes = {c["outcome"] for c in e["checks"]}
         blob = " ".join(c["observed"] for c in e["checks"])
-        self.assertIn("NO COLUMN FOR", blob)
-        self.assertIn("custodian_or_owner", blob)
+        if C.FAIL in outcomes:
+            self.assertIn("NO COLUMN FOR", blob)
+            self.assertNotEqual(e["status"], "DEMONSTRABLE",
+                                "a register still falls short, so this is not satisfied")
+        else:
+            self.assertEqual(e["status"], "DEMONSTRABLE")
+        # Whatever the verdict, every check must report how many concepts it found.
+        for c in e["checks"]:
+            self.assertIn("concepts have a column", c["observed"])
+
+    def test_the_rehearsal_register_now_carries_all_six_concepts(self):
+        """The half of AC-5.1.3 this fleet owns and fixed."""
+        e = next(x for x in self.index["criteria"] if x["criterion_id"] == "AC-5.1.3")
+        own = next(c for c in e["checks"]
+                   if "intake_rehearsal" in (c["target"] or ""))
+        self.assertEqual(own["outcome"], C.PASS, own["observed"])
+        self.assertIn("6/6", own["observed"])
+        self.assertIn("custodian_or_owner", own["observed"])
 
     def test_criteria_needing_a_prime_are_never_marked_demonstrable(self):
         for cid in ("AC-5.2.6", "AC-5.3.4"):

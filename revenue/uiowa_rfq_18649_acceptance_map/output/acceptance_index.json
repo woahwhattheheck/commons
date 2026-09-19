@@ -51,8 +51,8 @@
         {
           "kind": "csv_columns_cover",
           "label": "rehearsal source register schema",
-          "observed": "4/6 concepts have a column (content_digest->content_sha256, evidence_reference->path, observation_currentness->captured_at, source->source_id); NO COLUMN FOR: authorization_or_provenance, custodian_or_owner",
-          "outcome": "FAIL",
+          "observed": "6/6 concepts have a column (authorization_or_provenance->authorization_basis, content_digest->content_sha256, custodian_or_owner->custodian_role, evidence_reference->path, observation_currentness->captured_at, source->source_id)",
+          "outcome": "PASS",
           "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/source_register.csv"
         },
         {
@@ -68,8 +68,8 @@
       "package": "Kickoff / evidence-plan acceptance",
       "required_engagement_inputs": [],
       "section": "5.1",
-      "status": "NOT_DEMONSTRATED",
-      "status_basis": "0 passed, 2 failed, 0 unavailable",
+      "status": "PARTIAL",
+      "status_basis": "1 passed, 1 failed, 0 unavailable",
       "text": "the source-register schema can identify source, custodian/owner, evidence reference, authorization/provenance, observation/currentness, and content digest"
     },
     {
@@ -400,14 +400,14 @@
   "criterion_tally": {
     "DEMONSTRABLE": 11,
     "NEEDS_ENGAGEMENT_EVIDENCE": 2,
-    "NOT_DEMONSTRATED": 1,
-    "PARTIAL": 3,
+    "NOT_DEMONSTRATED": 0,
+    "PARTIAL": 4,
     "UNMAPPED": 0
   },
   "deliverable_tally": {
-    "DEMONSTRABLE": 14,
+    "DEMONSTRABLE": 15,
     "NEEDS_ENGAGEMENT_EVIDENCE": 1,
-    "NOT_DEMONSTRATED": 3,
+    "NOT_DEMONSTRATED": 2,
     "PARTIAL": 2,
     "UNMAPPED": 0
   },
@@ -442,8 +442,8 @@
         {
           "kind": "csv_columns_cover",
           "label": "register schema concepts",
-          "observed": "4/6 concepts have a column (content_digest->content_sha256, evidence_reference->path, observation_currentness->captured_at, source->source_id); NO COLUMN FOR: authorization_or_provenance, custodian_or_owner",
-          "outcome": "FAIL",
+          "observed": "6/6 concepts have a column (authorization_or_provenance->authorization_basis, content_digest->content_sha256, custodian_or_owner->custodian_role, evidence_reference->path, observation_currentness->captured_at, source->source_id)",
+          "outcome": "PASS",
           "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/source_register.csv"
         }
       ],
@@ -451,8 +451,8 @@
       "package": "Kickoff evidence plan and source register structure",
       "required_engagement_inputs": [],
       "section": "4.1",
-      "status": "NOT_DEMONSTRATED",
-      "status_basis": "0 passed, 1 failed, 0 unavailable",
+      "status": "DEMONSTRABLE",
+      "status_basis": "1 passed, 0 failed, 0 unavailable",
       "text": "a source-register structure with stable source IDs, source kind, source owner/custodian, authorization/provenance field, observation/currentness field, and source-content digest field"
     },
     {
@@ -683,7 +683,7 @@
         {
           "kind": "file_exists",
           "label": "final source register",
-          "observed": "uiowa_rfq_18649_intake_rehearsal/artifacts/source_register.csv present, 3245 bytes",
+          "observed": "uiowa_rfq_18649_intake_rehearsal/artifacts/source_register.csv present, 4645 bytes",
           "outcome": "PASS",
           "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/source_register.csv"
         }

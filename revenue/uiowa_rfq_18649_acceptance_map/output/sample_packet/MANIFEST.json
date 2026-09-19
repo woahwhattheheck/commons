@@ -3,12 +3,6 @@
   "excluded_because_the_check_did_not_pass": [
     {
       "criterion_id": "AC-5.1.3",
-      "observed": "4/6 concepts have a column (content_digest->content_sha256, evidence_reference->path, observation_currentness->captured_at, source->source_id); NO COLUMN FOR: authorization_or_provenance, custodian_or_owner",
-      "outcome": "FAIL",
-      "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/source_register.csv"
-    },
-    {
-      "criterion_id": "AC-5.1.3",
       "observed": "4/6 concepts have a column (authorization_or_provenance->enumerator_authority, evidence_reference->source_ref, observation_currentness->captured_at, source->evidence_id); NO COLUMN FOR: content_digest, custodian_or_owner",
       "outcome": "FAIL",
       "path": "uiowa_rfq_18649_workshare/methodology/23-synthetic-evidence-register.csv"
@@ -43,6 +37,13 @@
       "packet_file": "uiowa_rfq_18649_intake_rehearsal__artifacts__evidence_register.csv",
       "sha256": "0ecbb799a0febb6509b87e459e0849615bd14f1bcde194191a8ff77186259142",
       "source_path": "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv"
+    },
+    {
+      "criterion_id": "AC-5.1.3",
+      "demonstrates": "rehearsal source register schema",
+      "packet_file": "uiowa_rfq_18649_intake_rehearsal__artifacts__source_register.csv",
+      "sha256": "b3a14aef8a5551cc20f053e7275d9b97bf74e6303c4b8ca833aef1dad86613b3",
+      "source_path": "uiowa_rfq_18649_intake_rehearsal/artifacts/source_register.csv"
     },
     {
       "criterion_id": "AC-5.1.4",
@@ -125,7 +126,7 @@
       "criterion_id": "AC-5.3.1",
       "demonstrates": "one generation identified by artifact digests",
       "packet_file": "uiowa_rfq_18649_intake_rehearsal__artifacts__RUN_DIGEST.json",
-      "sha256": "ddbc5c0f18215dafe5d506c0cd62fe650b0b899c2ebe0bc35e4de213a7efcb15",
+      "sha256": "54a5a88cf914e89614b16bcf08beb32a388c102404d57b35bfd32db3aad23668",
       "source_path": "uiowa_rfq_18649_intake_rehearsal/artifacts/RUN_DIGEST.json"
     },
     {
@@ -146,7 +147,7 @@
       "criterion_id": "AC-5.3.3",
       "demonstrates": "source resolution states are carried through",
       "packet_file": "uiowa_rfq_18649_intake_rehearsal__artifacts__source_register.csv",
-      "sha256": "2eaa16403753892007017e38f66e1f230ebf362f4ba45c85f3d6bc4d73be9a9c",
+      "sha256": "b3a14aef8a5551cc20f053e7275d9b97bf74e6303c4b8ca833aef1dad86613b3",
       "source_path": "uiowa_rfq_18649_intake_rehearsal/artifacts/source_register.csv"
     },
     {

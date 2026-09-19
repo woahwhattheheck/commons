@@ -42,7 +42,7 @@ Python 3 standard library only. No installs, no network.
 cd revenue/uiowa_rfq_18649_acceptance_map
 
 python3 build_index.py --revenue-root .. --out output
-python3 -m unittest test_acceptance_map          # 26 tests
+python3 -m unittest test_acceptance_map          # 27 tests
 python3 exhibit_parser.py ../uiowa_rfq_18649_workshare/ACCEPTANCE_EXHIBIT.md
 ```
 
@@ -58,23 +58,22 @@ exhibit        uiowa_rfq_18649_workshare/ACCEPTANCE_EXHIBIT.md
                sha256 f6bc85c1d7d8f575  status PROPOSED / NOT ACCEPTED
 criteria       17 extracted
   DEMONSTRABLE               11
-  PARTIAL                    3
-  NOT_DEMONSTRATED           1
+  PARTIAL                    4
+  NOT_DEMONSTRATED           0
   NEEDS_ENGAGEMENT_EVIDENCE  2
   UNMAPPED                   0
 deliverables   20 extracted
-  DEMONSTRABLE               14
+  DEMONSTRABLE               15
   PARTIAL                    2
-  NOT_DEMONSTRATED           3
+  NOT_DEMONSTRATED           2
   NEEDS_ENGAGEMENT_EVIDENCE  1
 
-sample packet  9 files included, 3 excluded for not passing
+sample packet  9 files included, 2 excluded for not passing
 written to     output/
 ```
 
 ```
-----------------------------------------------------------------------
-Ran 26 tests in 0.671s
+Ran 27 tests in 0.759s
 
 OK
 ```
@@ -91,12 +90,32 @@ OK
 
 Three findings worth reading:
 
-**`AC-5.1.3` is `NOT_DEMONSTRATED`, and that is a real result.** No single delivered
-source register carries all six required concepts. The rehearsal register has content
-digests and currentness but **no custodian/owner and no authorization/provenance
-column**; the workshare's synthetic evidence register has `enumerator_authority` but
-**no content digest column**. Between them the concepts are covered; neither alone
-satisfies the criterion. That is an actionable schema gap, not a score.
+**`AC-5.1.3` started `NOT_DEMONSTRATED`, and the index is what got it fixed.**
+§5.1.3 requires a register schema that can identify *source, custodian/owner, evidence
+reference, authorization/provenance, observation/currentness, content digest*. On the
+first run **no delivered register carried custodian/owner at all**:
+
+```
+rehearsal register:  4/6 — NO COLUMN FOR: authorization_or_provenance, custodian_or_owner
+workshare register:  4/6 — NO COLUMN FOR: content_digest, custodian_or_owner
+```
+
+The rehearsal register was then given `custodian_role` and `authorization_basis`
+(commit `26a25670`) specifically in response to this finding, and the criterion moved to
+**`PARTIAL`** — one bound register satisfies it at 6/6, one still does not:
+
+```
+rehearsal register:  6/6 — custodian_or_owner->custodian_role,
+                           authorization_or_provenance->authorization_basis
+workshare register:  4/6 — NO COLUMN FOR: content_digest, custodian_or_owner
+```
+
+The remaining shortfall is in **another seat's lane and has been left alone**; it stays
+visible in the index as an open item for whoever owns it. That is the loop an acceptance
+index is for: it named a gap in specific terms, the gap got closed where we had standing
+to close it, and the same command shows the movement against live files. A custodian is
+recorded as a **role**, never a named person — no individual is assessed. The source that
+was never provided carries `AUTHORIZATION NOT OBTAINED` in its basis rather than a blank.
 
 **`AC-5.2.6` and `AC-5.3.4` are `NEEDS_ENGAGEMENT_EVIDENCE`, permanently, until there is
 a prime.** One asks whether prime review comments were incorporated; the other whether
@@ -143,7 +162,7 @@ exclusion list is non-empty.
 | `checks.py` | Nine content-check kinds. Each returns PASS / FAIL / **UNAVAILABLE** — "could not look" is never collapsed into "looked and found it wanting". |
 | `acceptance_map.json` | The bindings: criterion → checks, or criterion → named missing engagement inputs. |
 | `build_index.py` | Runs the checks, derives status, renders the index, assembles the packet. |
-| `test_acceptance_map.py` | 26 tests, including hostile and read-only proofs. |
+| `test_acceptance_map.py` | 27 tests, including hostile and read-only proofs. |
 | `output/` | The committed run against the lanes as they stood at build time. |
 
 ## Working vs. draft
