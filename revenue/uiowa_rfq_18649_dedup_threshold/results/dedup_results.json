@@ -1,0 +1,416 @@
+{
+  "crossovers": {
+    "dict_fromkeys vs list_scan (2x faster)": {
+      "distinct_items": 25,
+      "speedup": 3.366368501974481
+    },
+    "ordered_unique vs list_scan (2x faster)": {
+      "distinct_items": 25,
+      "speedup": 3.009016577354478
+    },
+    "set_aside vs list_scan (2x faster)": {
+      "distinct_items": 25,
+      "speedup": 3.142815616412918
+    }
+  },
+  "duplication_factor": 3,
+  "environment": {
+    "cpu_count_logical": 4,
+    "measured_at_utc": "2026-09-19T14:20:50Z",
+    "memory_probe": "tracemalloc (Python-level allocations only, not process RSS)",
+    "note": "Minimum of counted repeats after one uncounted warmup. Shared container; median reported alongside so noise is visible.",
+    "platform": "Linux-6.18.44-fc-v37-x86_64-with-glibc2.39",
+    "processor_model": "Intel(R) Xeon(R) Processor @ 2.80GHz",
+    "python_implementation": "CPython",
+    "python_version": "3.11.15",
+    "timer": "time.perf_counter"
+  },
+  "hashability": {
+    "dict_fromkeys": {
+      "declared_requires_hashable": true,
+      "error": "TypeError: unhashable type: 'dict'",
+      "works_on_unhashable": false
+    },
+    "list_scan": {
+      "declared_requires_hashable": false,
+      "result_length": 2,
+      "works_on_unhashable": true
+    },
+    "ordered_unique": {
+      "declared_requires_hashable": false,
+      "result_length": 2,
+      "works_on_unhashable": true
+    },
+    "set_aside": {
+      "declared_requires_hashable": true,
+      "error": "TypeError: unhashable type: 'dict'",
+      "works_on_unhashable": false
+    }
+  },
+  "measurements": [
+    {
+      "distinct_items": 10,
+      "input_length": 30,
+      "strategies": {
+        "dict_fromkeys": {
+          "peak_bytes": 600,
+          "samples": 7,
+          "seconds_median": 6.800999926781515e-06,
+          "seconds_min": 6.48300010652747e-06
+        },
+        "list_scan": {
+          "peak_bytes": 232,
+          "samples": 7,
+          "seconds_median": 1.020500030790572e-05,
+          "seconds_min": 6.402000053640222e-06
+        },
+        "ordered_unique": {
+          "peak_bytes": 1056,
+          "samples": 7,
+          "seconds_median": 6.262000169954263e-06,
+          "seconds_min": 6.097999630583217e-06
+        },
+        "set_aside": {
+          "peak_bytes": 960,
+          "samples": 7,
+          "seconds_median": 5.9710000641644e-06,
+          "seconds_min": 5.647999842040008e-06
+        }
+      }
+    },
+    {
+      "distinct_items": 25,
+      "input_length": 75,
+      "strategies": {
+        "dict_fromkeys": {
+          "peak_bytes": 1472,
+          "samples": 7,
+          "seconds_median": 9.856999895418994e-06,
+          "seconds_min": 9.6160001703538e-06
+        },
+        "list_scan": {
+          "peak_bytes": 360,
+          "samples": 7,
+          "seconds_median": 3.469400007816148e-05,
+          "seconds_min": 3.237100008846028e-05
+        },
+        "ordered_unique": {
+          "peak_bytes": 3168,
+          "samples": 7,
+          "seconds_median": 1.0922000001301058e-05,
+          "seconds_min": 1.0757999916677363e-05
+        },
+        "set_aside": {
+          "peak_bytes": 3072,
+          "samples": 7,
+          "seconds_median": 1.0488000043551438e-05,
+          "seconds_min": 1.0299999757990008e-05
+        }
+      }
+    },
+    {
+      "distinct_items": 50,
+      "input_length": 150,
+      "strategies": {
+        "dict_fromkeys": {
+          "peak_bytes": 2592,
+          "samples": 7,
+          "seconds_median": 1.3946999843028607e-05,
+          "seconds_min": 1.3252999906399054e-05
+        },
+        "list_scan": {
+          "peak_bytes": 520,
+          "samples": 7,
+          "seconds_median": 7.101399978637346e-05,
+          "seconds_min": 6.91029999870807e-05
+        },
+        "ordered_unique": {
+          "peak_bytes": 3168,
+          "samples": 7,
+          "seconds_median": 1.3920999663241673e-05,
+          "seconds_min": 1.3685999874724075e-05
+        },
+        "set_aside": {
+          "peak_bytes": 3072,
+          "samples": 7,
+          "seconds_median": 1.3310999747773167e-05,
+          "seconds_min": 1.288799967369414e-05
+        }
+      }
+    },
+    {
+      "distinct_items": 100,
+      "input_length": 300,
+      "strategies": {
+        "dict_fromkeys": {
+          "peak_bytes": 5088,
+          "samples": 7,
+          "seconds_median": 1.9437999981164467e-05,
+          "seconds_min": 1.916899964271579e-05
+        },
+        "list_scan": {
+          "peak_bytes": 968,
+          "samples": 7,
+          "seconds_median": 0.00022818600018581492,
+          "seconds_min": 0.00020903099994029617
+        },
+        "ordered_unique": {
+          "peak_bytes": 11264,
+          "samples": 7,
+          "seconds_median": 2.4152999685611576e-05,
+          "seconds_min": 2.3827999939385336e-05
+        },
+        "set_aside": {
+          "peak_bytes": 11168,
+          "samples": 7,
+          "seconds_median": 2.358599977014819e-05,
+          "seconds_min": 2.3162000161391916e-05
+        }
+      }
+    },
+    {
+      "distinct_items": 200,
+      "input_length": 600,
+      "strategies": {
+        "dict_fromkeys": {
+          "peak_bytes": 10080,
+          "samples": 7,
+          "seconds_median": 3.064099973926204e-05,
+          "seconds_min": 2.9835000077582663e-05
+        },
+        "list_scan": {
+          "peak_bytes": 1704,
+          "samples": 7,
+          "seconds_median": 0.0008126870002342912,
+          "seconds_min": 0.0007770369998070237
+        },
+        "ordered_unique": {
+          "peak_bytes": 11264,
+          "samples": 7,
+          "seconds_median": 3.9138999909482663e-05,
+          "seconds_min": 3.818100003627478e-05
+        },
+        "set_aside": {
+          "peak_bytes": 11168,
+          "samples": 7,
+          "seconds_median": 3.8142999983392656e-05,
+          "seconds_min": 3.775200002564816e-05
+        }
+      }
+    },
+    {
+      "distinct_items": 400,
+      "input_length": 1200,
+      "strategies": {
+        "dict_fromkeys": {
+          "peak_bytes": 19808,
+          "samples": 7,
+          "seconds_median": 5.3126000238989946e-05,
+          "seconds_min": 5.218800015427405e-05
+        },
+        "list_scan": {
+          "peak_bytes": 3304,
+          "samples": 7,
+          "seconds_median": 0.0031326109997280582,
+          "seconds_min": 0.003071245000228373
+        },
+        "ordered_unique": {
+          "peak_bytes": 43840,
+          "samples": 7,
+          "seconds_median": 7.621999975526705e-05,
+          "seconds_min": 7.558399966001161e-05
+        },
+        "set_aside": {
+          "peak_bytes": 43744,
+          "samples": 7,
+          "seconds_median": 7.113499987099203e-05,
+          "seconds_min": 7.071500021993415e-05
+        }
+      }
+    },
+    {
+      "distinct_items": 800,
+      "input_length": 2400,
+      "strategies": {
+        "dict_fromkeys": {
+          "peak_bytes": 39264,
+          "samples": 7,
+          "seconds_median": 0.0001074860001608613,
+          "seconds_min": 9.685699978945195e-05
+        },
+        "list_scan": {
+          "peak_bytes": 6984,
+          "samples": 7,
+          "seconds_median": 0.02434338500006561,
+          "seconds_min": 0.024158292999800324
+        },
+        "ordered_unique": {
+          "peak_bytes": 43840,
+          "samples": 7,
+          "seconds_median": 0.0001307239999732701,
+          "seconds_min": 0.00012913999989905278
+        },
+        "set_aside": {
+          "peak_bytes": 43744,
+          "samples": 7,
+          "seconds_median": 0.00012673699984588893,
+          "seconds_min": 0.00012523099985628505
+        }
+      }
+    },
+    {
+      "distinct_items": 1600,
+      "input_length": 4800,
+      "strategies": {
+        "dict_fromkeys": {
+          "peak_bytes": 78176,
+          "samples": 7,
+          "seconds_median": 0.00019105699993815506,
+          "seconds_min": 0.00018587199974717805
+        },
+        "list_scan": {
+          "peak_bytes": 14408,
+          "samples": 7,
+          "seconds_median": 0.06424187499987966,
+          "seconds_min": 0.04787568599977021
+        },
+        "ordered_unique": {
+          "peak_bytes": 174208,
+          "samples": 7,
+          "seconds_median": 0.00031675999980507186,
+          "seconds_min": 0.0003046580000045651
+        },
+        "set_aside": {
+          "peak_bytes": 174112,
+          "samples": 7,
+          "seconds_median": 0.00030382799968720064,
+          "seconds_min": 0.00029213100015113014
+        }
+      }
+    },
+    {
+      "distinct_items": 3200,
+      "input_length": 9600,
+      "strategies": {
+        "dict_fromkeys": {
+          "peak_bytes": 156000,
+          "samples": 7,
+          "seconds_median": 0.000423988999955327,
+          "seconds_min": 0.0003843979998237046
+        },
+        "list_scan": {
+          "peak_bytes": 26088,
+          "samples": 7,
+          "seconds_median": 0.2276788599997417,
+          "seconds_min": 0.19766822600013256
+        },
+        "ordered_unique": {
+          "peak_bytes": 174208,
+          "samples": 7,
+          "seconds_median": 0.0005639149999296933,
+          "seconds_min": 0.0005173269996703311
+        },
+        "set_aside": {
+          "peak_bytes": 174112,
+          "samples": 7,
+          "seconds_median": 0.0004989009999007976,
+          "seconds_min": 0.0004957779997312173
+        }
+      }
+    }
+  ],
+  "recommendation_reason": "dict_fromkeys and set_aside are faster but raise TypeError on unhashable elements. ordered_unique takes the fast path when it can and falls back per item when it cannot, so it is a drop-in without auditing each site.",
+  "recommended_strategy": "ordered_unique",
+  "repeats": 7,
+  "scan_sites": {
+    "available": true,
+    "input_sizes": "UNKNOWN -- this lane measured the cost curve, not the data these sites actually see.",
+    "scanned_at_utc": "2026-09-19T14:16:25Z",
+    "site_count": 15,
+    "sites": [
+      {
+        "file": "uiowa_rfq_18649_capability_appendix/capability_appendix.py",
+        "line": 345,
+        "source": "if claim[\"capability_area\"] not in areas:"
+      },
+      {
+        "file": "uiowa_rfq_18649_deadline_continuity/continuity.py",
+        "line": 206,
+        "source": "if aid not in bound_required and self._feeds(aid, a, b):"
+      },
+      {
+        "file": "uiowa_rfq_18649_deadline_continuity/continuity.py",
+        "line": 214,
+        "source": "if aid not in discriminating:"
+      },
+      {
+        "file": "uiowa_rfq_18649_prioritization/prioritize.py",
+        "line": 888,
+        "source": "left = [r for r in previous_order if r not in order]"
+      },
+      {
+        "file": "uiowa_rfq_18649_qa_refusal_contract/index.py",
+        "line": 66,
+        "source": "if tok not in seen:"
+      },
+      {
+        "file": "uiowa_rfq_18649_qa_refusal_contract/qa.py",
+        "line": 256,
+        "source": "if eid not in out:"
+      },
+      {
+        "file": "uiowa_rfq_18649_qa_refusal_contract/qa.py",
+        "line": 259,
+        "source": "if eid not in out:"
+      },
+      {
+        "file": "uiowa_rfq_18649_qa_refusal_contract/test_qa.py",
+        "line": 207,
+        "source": "\"ABSENCE_STATED_AS_FACT\" in codes"
+      },
+      {
+        "file": "uiowa_rfq_18649_qa_refusal_contract/test_qa.py",
+        "line": 208,
+        "source": "or \"ABSENCE_NOT_QUALIFIED\" in codes,"
+      },
+      {
+        "file": "uiowa_rfq_18649_readout_deck/deck_architecture.py",
+        "line": 252,
+        "source": "if s.get(\"section\") not in CORE_SECTIONS:"
+      },
+      {
+        "file": "uiowa_rfq_18649_report_visuals/monochrome.py",
+        "line": 45,
+        "source": "if value not in seen:"
+      },
+      {
+        "file": "uiowa_rfq_18649_run_sweep/run_sweep.py",
+        "line": 261,
+        "source": "elif FAIL in outcomes or ERROR in outcomes or TIMEOUT in outcomes:"
+      },
+      {
+        "file": "uiowa_rfq_18649_run_sweep/run_sweep.py",
+        "line": 261,
+        "source": "elif FAIL in outcomes or ERROR in outcomes or TIMEOUT in outcomes:"
+      },
+      {
+        "file": "uiowa_rfq_18649_run_sweep/run_sweep.py",
+        "line": 261,
+        "source": "elif FAIL in outcomes or ERROR in outcomes or TIMEOUT in outcomes:"
+      },
+      {
+        "file": "uiowa_rfq_18649_run_sweep/run_sweep.py",
+        "line": 263,
+        "source": "elif PASS in outcomes:"
+      }
+    ],
+    "source": "/home/user/commons/revenue/uiowa_rfq_18649_capacity_scan/results/kit_scan_results.json"
+  },
+  "schema": "uiowa-ops-dedup-threshold-v1",
+  "strategy_order": [
+    "list_scan",
+    "dict_fromkeys",
+    "set_aside",
+    "ordered_unique"
+  ]
+}
