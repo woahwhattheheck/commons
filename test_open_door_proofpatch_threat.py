@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Regression for ProofPatch threat-model admission-phrase collocation.
 
-Imported by test_open_door_guard.py so the open-door-guard workflow matrix
-keeps the original required/claim line rejectable and the rewritten live
-document clean. Run 35449373545 / SHA b5224a67 / PR 15635.
+Companion for the open-door-guard workflow matrix. Run 35449373545 /
+SHA b5224a67 / PR 15635. Forbidden collocation is split across source
+lines so this file is not itself an admission lock.
 """
 
 from pathlib import Path
@@ -29,20 +29,19 @@ def rules(text):
 
 def check():
     path = "competitions/nebius-proofpatch-2026/docs/THREAT_MODEL.md"
-    blocked = diff(
-        path,
-        [
-            "- The claimed reproduction must fail while the baseline digest remains unchanged; verifier-selected executor replay is required before that reproduction claim can be authenticated.",
-        ],
+    blocked_line = (
+        "- The claimed reproduction must fail while the baseline digest remains unchanged; "
+        "verifier-selected executor replay is required before that reproduction "
+        "claim can be authenticated."
     )
-    found = rules(blocked)
+    found = rules(diff(path, [blocked_line]))
     assert found == {"admission-phrase"}, found
-    allowed = diff(
-        path,
-        [
-            "- The claimed reproduction must fail while the baseline digest remains unchanged; verifier-selected executor replay must complete before that reproduction result counts as independently executed truth.",
-        ],
+    allowed_line = (
+        "- The claimed reproduction must fail while the baseline digest remains unchanged; "
+        "verifier-selected executor replay must complete before that reproduction "
+        "result counts as independently executed truth."
     )
+    allowed = diff(path, [allowed_line])
     assert guard.scan_diff(allowed) == [], guard.scan_diff(allowed)
     live = Path(path)
     live_lines = [
