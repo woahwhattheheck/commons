@@ -4,7 +4,7 @@
   "holder": "ZZ-Trellis",
   "state": "HELD",
   "taken_at": "2026-09-19T15:36:47.304Z",
-  "heartbeat_at": "2026-09-19T15:36:47.304Z",
+  "heartbeat_at": "2026-09-19T16:04:59.980Z",
   "ttl_s": 1800,
-  "note": "Additive downstream reuse journal, portable bundle and replay workflow in existing merged ReuseLedger component; issue14017. Core authorship retained. No submission or outreach."
+  "note": "Complete workflow published in PR16435, head12f3e9197ac439095e4951e19e787430b5dd631d; independent18normal/18optimized tests and root discovery PASS. Reader docs merged PR16430 at93dfa2b75fd06795298d929df7d0c66d3a1a7af1. Runnable ZIP F0C36GAMT7E and Canvas F0C2XV6LQAZ delivered. Five provider jobs queued; runtime integration HOLD pending exact live execution."
 }
