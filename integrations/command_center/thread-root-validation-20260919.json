@@ -1,0 +1,95 @@
+{
+  "actual_baseline_replays": {
+    "contradictory_zero_count": {
+      "complete": true,
+      "read_calls": [
+        {
+          "method": "conversations.history",
+          "payload": {
+            "channel": "CDEMO",
+            "limit": 100
+          }
+        },
+        {
+          "method": "conversations.replies",
+          "payload": {
+            "channel": "CDEMO",
+            "limit": 100,
+            "ts": "1700000000.000001"
+          }
+        }
+      ]
+    },
+    "missing_root": {
+      "complete": true,
+      "read_calls": [
+        {
+          "method": "conversations.history",
+          "payload": {
+            "channel": "CDEMO",
+            "limit": 100
+          }
+        }
+      ]
+    }
+  },
+  "baseline_sources": [
+    {
+      "baseline_git_blob": "7c4609dcd590d24af48957a83a5031753fe6d58e",
+      "component": "slack_threads"
+    },
+    {
+      "baseline_git_blob": "7651faa983becbbbafbccfd5f762cda7e40dcd03",
+      "component": "collectors"
+    },
+    {
+      "baseline_git_blob": "da2ead935ef1cfc6cd95facc1088fea1f6d9e023",
+      "component": "request_budget"
+    }
+  ],
+  "execution": "byte-verified connector source copies in isolated cloud container; not full checkout",
+  "files": [
+    {
+      "bytes": 15605,
+      "git_blob_sha1": "99e50df43efe902763788559270f0cd23253630e",
+      "path": "integrations/command_center/slack_threads.py",
+      "sha256": "b190542d1675900b77b9e2c0e45f81492bdce448b33d000bcc9b691f5ccb9aed"
+    },
+    {
+      "bytes": 29080,
+      "git_blob_sha1": "0c9d58e130a9da3f2d04fa6170348b7bab079d7f",
+      "path": "integrations/command_center/collectors.py",
+      "sha256": "aed6a662cfa41bcc7851d41e980da534c88404d2282c2a6edd753f098d7b5517"
+    },
+    {
+      "bytes": 2861,
+      "git_blob_sha1": "0500f36cfded4fcb5880f91a3691556bee4377f7",
+      "path": "integrations/command_center/slack_thread_root_replay.py",
+      "sha256": "b38d6bfff9e3b24c4713d9b78e0f9328496dfca505214d6883c3b19ffefa8668"
+    },
+    {
+      "bytes": 19626,
+      "git_blob_sha1": "cfaa43a4580c42a4bcac149a987dbf715dbee177",
+      "path": "test_slack_thread_root_context.py",
+      "sha256": "3a3fd3967090727bceef2da8d5ccb1ae8c9187c08262a9070512702167ff4e0b"
+    },
+    {
+      "bytes": 6099,
+      "git_blob_sha1": "da8e5000811280e84abb41b6e1de51183d49a114",
+      "path": "integrations/command_center/THREAD-ROOT-CONTEXT.md",
+      "sha256": "55cf4d7feda0bc25d968ddccd5c34a399bde27450e4bd79b9717cd28b547f768"
+    }
+  ],
+  "limitations": [
+    "Hosted CI not asserted",
+    "Live Slack wrapper not changed",
+    "WorkstreamStore/browser acceptance not run"
+  ],
+  "normal_and_optimized_replay_identical": true,
+  "normal_tests": 47,
+  "operation": "slack-thread-root-context-sundial64-20260919",
+  "optimized_tests": 47,
+  "python": "3.13.5",
+  "replay_sha256": "08ec7901e93eece00a36d89e2bc4462780891e5c02886e6f7d1bc8e6b2caab28",
+  "schema": "commons.thread-root-validation.v1"
+}
