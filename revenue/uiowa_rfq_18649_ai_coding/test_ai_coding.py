@@ -1,18 +1,33 @@
 """Executable UIOWA-076 contract and semantic regression suite (stdlib only)."""
 from __future__ import annotations
+import contextlib
 import copy
+import importlib.util
+import io
 import hashlib
 import json
+import runpy
 import subprocess
 import sys
 import tempfile
+import types
 import unittest
-from decimal import Decimal
+from unittest.mock import patch
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-import ai_coding as a
-import rehearse
+def _load_sibling(name):
+    """Keep aggregate discovery independent of generic sys.modules entries."""
+    path = Path(__file__).resolve().with_name(name + ".py")
+    spec = importlib.util.spec_from_file_location("_uiowa076_test_" + name, path)
+    if spec is None or spec.loader is None:
+        raise ImportError(f"Cannot load test dependency: {path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+a = _load_sibling("ai_coding")
+rehearse = _load_sibling("rehearse")
 
 
 class WorkflowTests(unittest.TestCase):
@@ -39,6 +54,51 @@ class WorkflowTests(unittest.TestCase):
     def reject(self, pattern):
         with self.assertRaisesRegex(a.InputError, pattern):
             self.run_data()
+
+    def test_aggregate_import_ignores_generic_cached_modules(self):
+        unrelated = {name: types.ModuleType(name) for name in ("ai_coding", "rehearse")}
+        original_path = list(sys.path)
+        with patch.dict(sys.modules, unrelated):
+            namespace = runpy.run_path(str(Path(__file__).resolve()), run_name="aggregate_076_probe")
+            self.assertIsNot(namespace["a"], unrelated["ai_coding"])
+            self.assertIsNot(namespace["rehearse"], unrelated["rehearse"])
+            self.assertTrue(callable(namespace["rehearse"].build_fixture))
+            self.assertEqual(Path(namespace["a"].__file__).resolve(), Path(a.__file__).resolve())
+            self.assertIs(sys.modules["ai_coding"], unrelated["ai_coding"])
+            self.assertIs(sys.modules["rehearse"], unrelated["rehearse"])
+        self.assertEqual(sys.path, original_path)
+
+    def test_imported_rehearsal_uses_its_own_analyzer(self):
+        unrelated = types.ModuleType("ai_coding")
+        out = self.base / "embedded-rehearsal"
+        original_path = list(sys.path)
+        stream = io.StringIO()
+        with patch.dict(sys.modules, {"ai_coding": unrelated}), contextlib.redirect_stdout(stream):
+            self.assertEqual(rehearse.main(["--out", str(out)]), 0)
+            self.assertIs(sys.modules["ai_coding"], unrelated)
+        self.assertEqual(sys.path, original_path)
+        self.assertIn("comparable=2 sources=77", stream.getvalue())
+        self.assertTrue((out / "reports/report.json").is_file())
+
+    def test_package_mode_rehearsal_from_repository_root(self):
+        root = Path(__file__).resolve().parents[2]
+        out = self.base / "package-rehearsal"
+        run = subprocess.run([sys.executable, "-m", "revenue.uiowa_rfq_18649_ai_coding.rehearse",
+                              "--out", str(out)], cwd=root, capture_output=True, text=True)
+        self.assertEqual(run.returncode, 0, run.stderr)
+        self.assertIn("comparable=2 sources=77", run.stdout)
+
+    def test_missing_sibling_fails_before_creating_packet(self):
+        isolated = self.base / "isolated"
+        isolated.mkdir()
+        script = isolated / "rehearse.py"
+        script.write_bytes(Path(rehearse.__file__).read_bytes())
+        out = self.base / "missing-analyzer-packet"
+        run = subprocess.run([sys.executable, str(script), "--out", str(out)],
+                             cwd=isolated, capture_output=True, text=True)
+        self.assertEqual(run.returncode, 2)
+        self.assertIn("REHEARSAL ERROR", run.stderr)
+        self.assertFalse(out.exists())
 
     def test_worked_contrasts(self):
         report = self.run_data()

@@ -13,6 +13,48 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "UIOWA-088--editable-PowerPoint-export-and-reviewed-integration--PALISADE-43-",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:58:41Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:57:53Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-132---reconcile-commercial-facts-across-the-complete-proposal",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:53:57Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-118--source-linked-glossary--inline-help--and-worked-interpretation-guide",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:53:07Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-137--evidence-backed-technical-capability-appendix",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:52:59Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:52:39Z"
+    },
+    {
       "from": "GROK_BUILD",
       "id": "grokbuild-uiowa068-pr16169-20260919-01",
       "kind": null,
@@ -20,11 +62,46 @@
       "ts": "2026-09-19T13:50:20Z"
     },
     {
+      "from": "UNSEATED",
+      "id": "UIOWA-124--lossless-reviewer-comment-import-into-the-published-disposition-workf",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:48:26Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-138--exercised-analyst-to-analyst-continuation-packet--ZZ-BOREAL-138Q-",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:48:03Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-134--dependency-driven-six-eight-week-schedule-recovery-scenarios",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:47:20Z"
+    },
+    {
       "from": "GROK",
       "id": "uiowa-084-readback-20260919-01",
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-19T13:45:48Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-103-identifier-mapping",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:44:12Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-103--deterministic-cross-component-identifier-reconciliation",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:44:10Z"
     },
     {
       "from": "UNSEATED",
@@ -74,83 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-19T13:26:46Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-018--student-systems-peer-evidence-and-ESS-discovery-pack",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:26:14Z"
-    },
-    {
-      "from": "GROK",
-      "id": "mcp-gemini-d1695316ebcbb289872cb9e3",
-      "kind": "POST",
-      "to": "TABLE",
-      "ts": "2026-09-19T11:08:21Z"
-    },
-    {
-      "from": "GROK",
-      "id": "action-20260919110812-22a675665683",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-19T11:08:12Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-repair-pixel-unify-room-chips-20260919-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T04:28:33Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-seat-carry-work-20260919-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T04:09:13Z"
-    },
-    {
-      "from": "GROK",
-      "id": "action-20260919040904-a4550c3af759",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-19T04:09:05Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "DO-NOT-CREATE",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T00:56:39Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1550578045432234007",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-18T18:43:34.378000Z"
-    },
-    {
-      "from": "GROK_SEAT_CARRY_BRYCE_VIA_COMMON",
-      "id": "discord-1550578042722721922",
-      "kind": "discord_message",
-      "to": "TABLE",
-      "ts": "2026-09-18T18:43:33.732000Z"
-    },
-    {
-      "from": "GROK",
-      "id": "action-20260918182016-374298f9f3dc",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-18T18:20:16Z"
-    },
-    {
-      "from": "SLEDGE",
-      "id": "sledge-ship-bc241-workflow-env",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T13:33:16Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "78a63e9bcffa655ebb790ec4be57b486729d772592f9110a276dbee2ee023b19",
+  "digest": "a6fdf80fde1916275a90060dccb196d61b1d1b8ea20f6af2cdb09b4e6f244aae",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12967,
-    "pulse_seq": 2136,
-    "sha": "797f59b4f814d2f270ab6792824e9217228ae9d5"
+    "post_count": 12978,
+    "pulse_seq": 2157,
+    "sha": "7faa87138374d7bf680daebbd7f30812ea14b225"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T14:14:54Z",
+  "now": "2026-09-19T15:21:48Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3009,7 +3009,7 @@
       "id": "uiowa-084-readback-20260919-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-19T13:45:48Z"
@@ -3123,7 +3123,7 @@
       "id": "grokbuild-uiowa068-pr16169-20260919-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-19T13:50:20Z"
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "UIOWA-098-integration-carrier-claim---ZZ-Forge",
+          "id": "UIOWA-088--editable-PowerPoint-export-and-reviewed-integration--PALISADE-43-",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "UIOWA-098-integration-carrier-claim---ZZ-Forge",
+      "id": "UIOWA-088--editable-PowerPoint-export-and-reviewed-integration--PALISADE-43-",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T13:39:49Z"
+      "ts": "2026-09-19T13:58:41Z"
     },
     {
       "claim": "VECTOR-RELAY",
@@ -5251,7 +5251,7 @@
       "id": "UIOWA-096--interoperable-evidence-report-handoffs---ZZ-TORQUE-47",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-19T13:36:59Z"

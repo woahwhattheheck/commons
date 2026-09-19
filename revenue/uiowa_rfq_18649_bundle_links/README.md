@@ -97,3 +97,23 @@ This cloud runtime blocked both file and loopback browser navigation with
 is not claimed**. The stdlib unit/integration tests, source-identity checks, and
 19 destination checks did execute. Run the optional harness in the intended
 review environment before claiming browser navigation coverage there.
+
+## Ready-to-open checked example
+
+`checked_example/review.html` is the generated bundle already checked by this
+component, not a separate demo implementation. Copy the entire
+`checked_example/` directory together to retain relative links. Its saved
+`verification.json` is an actual deterministic 19-reference checker result;
+it does not contain or imply browser click/reload evidence.
+
+```sh
+python verify_bundle.py checked_example checked_example/citations.json
+python -m unittest -v test_checked_example
+```
+
+`test_checked_example.py` regenerates the bundle into a temporary directory and
+compares every byte with the published example, then recomputes the saved report.
+Tests never regenerate expected values in place. A sample edit, stale report or
+missing destination is a regression until an operator deliberately rebuilds and
+reviews the sample. `delivery_receipt.json` binds the ready-to-open files and
+records this supplementary execution; the earlier core receipt remains historical.

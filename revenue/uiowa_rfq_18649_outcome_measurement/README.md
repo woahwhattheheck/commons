@@ -19,6 +19,8 @@ All included records are synthetic. They are not University of Iowa findings.
 - `collection_protocol.md` — repeatable collection and interpretation instructions.
 - `analyze.py` — zero-dependency validator and report generator.
 - `tests/test_analyze.py` — regression coverage for calculations, comparability, missing data, and adoption/outcome separation.
+- `tests/test_measurement_validity.py` — independent malformed-input, ambiguity, arithmetic, report and CLI regression coverage.
+- [VALIDITY_REVIEW.md](VALIDITY_REVIEW.md) — reproduced defects, comparison-eligibility contract, verification commands and interpretation limits.
 
 ## Quick start
 
@@ -50,9 +52,9 @@ Each measure records:
 - a collection cadence;
 - an interpretation limit.
 
-The analyzer recomputes rates from numerator/denominator values. It will not silently trust a supplied percentage.
+The analyzer recomputes rates from numerator/denominator values. It will not silently trust a supplied percentage. This component supports `unit=percent` proportions, not duration or event-frequency measures.
 
-A baseline/follow-up pair is considered comparable only when its `population_definition` is identical. Different sample sizes are allowed; a changed population definition is explicitly marked `NOT_COMPARABLE`.
+A baseline/follow-up pair is considered comparable only when its `population_definition` is identical and nonempty, the period IDs are distinct, and its definitions, links, provenance and counts are valid. Different sample sizes are allowed; a changed population definition is explicitly marked `NOT_COMPARABLE`. Matching labels alone do not prove empirical comparability.
 
 ## Output semantics
 
@@ -60,10 +62,12 @@ For each measure, the report emits:
 
 - baseline and follow-up rate;
 - absolute percentage-point change;
-- `FAVORABLE_DIRECTION`, `UNFAVORABLE_DIRECTION`, `UNCHANGED`, or `INSUFFICIENT_DATA`;
+- `FAVORABLE_DIRECTION`, `UNFAVORABLE_DIRECTION`, `UNCHANGED`, `CONTEXT_ONLY`, or `INSUFFICIENT_DATA`;
 - comparability state;
 - evidence locators and collection effort;
 - the measure's interpretation limit.
+
+Invalid or ambiguous measure inputs yield `comparability=INVALID_DATA`, `directional_signal=INSUFFICIENT_DATA` and null numeric comparisons, with explicit diagnostics. Invalid recommendations suppress their dependent measures; valid unrelated measures remain available. Missing observations without invalid inputs remain `INSUFFICIENT_DATA`. Duplicate records are not automatically reconciled. CLI validation errors return exit 2; malformed CSV or missing required columns return `INPUT_ERROR` rather than a misleading clean result.
 
 Recommendation sections keep adoption and operational-outcome rows separate. There is intentionally no combined score or "effective/ineffective" verdict.
 

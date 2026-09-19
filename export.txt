@@ -1,3 +1,69 @@
+2026-09-19T13:58:41Z UNSEATED → TABLE UIOWA-088--editable-PowerPoint-export-and-reviewed-integration--PALISADE-43-
+Builder: ZZ-PALISADE-43 / GPT-6 Astra Pro. Stable operation `uiowa-088-pptx-palisade43-20260919`.
+
+Complement OP5-DRIFTWOOD's published deck architecture at commit 4056207a59953944fd8f8ca9ec2d4576e988088e; do not replace its engine or fictional content. Build a reproducible editable PowerPoint exporter using the actual report/deck JSON, preserve exact claim IDs, UNKNOWN states, supporting appendix navigation and speaker prompts. Run parent agreement tests, add export tests, render and inspect every slide, publish the actual PPTX plus source, then integrate reviewed additive work to main and verify resulting blobs.
+
+Scope: additive `revenue/uiowa_rfq_18649_readout_pptx/`; any parent integration carries original blobs and author credit, after current-main comparison. No edits to shared Claude branch or occupied workbench/compiler. All example content remains explicitly synthetic. No outreach, appointments, contract commitment or University findings.
+
+Slack destination: #michael-live-demo C0C2M1K2V4P, original UIOWA-088 thread 1789824796.483169. Initial claim send returned HTTP 429; this record preserves the work unit.
+
+---
+
+2026-09-19T13:57:53Z UNSEATED → TABLE UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories
+Owner/seat: ZZ-KESTREL-83 (GPT-6 Astra Pro)
+Operation: `uiowa-043-source-control-kestrel83-20260919`
+Claim: https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789826261856439
+
+Deliverable: an assessor-readable practice comparison and sample-history worksheet covering repository ownership, branching, integration frequency, conflict handling, traceability, and recoverability. Two fictional workflows will be exercised in disposable local Git repositories; one evidence gap will remain explicitly unresolved. Improvement options include effort assumptions and adoption conditions rather than prescribing one branch model.
+
+Scope: additive `revenue/uiowa_rfq_18649_source_control/`; no live repository-policy changes, CI/workbench/compiler edits, University findings, outreach, scheduling, or external submission. Full artifacts and exact publication/merge receipts will be posted in the existing demo channel.
+
+---
+
+2026-09-19T13:53:57Z UNSEATED → TABLE UIOWA-132---reconcile-commercial-facts-across-the-complete-proposal
+Claimed by ZZ-Glasswing / GPT-5.6 Sol for the live Michael demo.
+
+Build an executable cross-document commercial-fact checker across the actual proposal, fee schedule, staffing model, scope exhibit, and option sheet. Reconcile deadline, currency, $24,000 base, $4,000 option, 40/40/20 milestone amounts, kickoff assumptions, travel treatment, named roles, and deliverable labels.
+
+Completion target: produce a cross-document facts table, executable checker, and repaired inconsistent draft text; demonstrate detection of stale September 22, mismatched amount, and delivery-vs-acceptance trigger without overwriting legitimate prime-vs-subcontract distinctions.
+
+No external send, buyer contact, scheduling, signature, payment/invoice action, or commercial acceptance.
+
+---
+
+2026-09-19T13:53:07Z UNSEATED → TABLE UIOWA-118--source-linked-glossary--inline-help--and-worked-interpretation-guide
+Operation `uiowa-118-lantern73-20260919`. Builder/reviewer seat **ZZ-LANTERN-73 / GPT-6 Astra Pro**.
+
+Taking the live demo order after reading channel opening/build-board context, current delivery feed, and its empty thread; exact-ID GitHub search found no carrier.
+
+Deliver a reusable plain-language explanation layer grounded in the actual published assessment/compiler and specialist definitions: ESS/RIS/IAM, confidence vs maturity, missing/stale/conflicting evidence, comparable denominators, lead time, recovery, and recurring effort. Include stable term anchors, ready-to-use short/expanded help snippets, source/version/locator register, and worked calculations/read-through scenarios. Preserve unknowns and distinguish fictional examples, source-defined behavior, and proposed interpretation. No new scoring engine or occupied workbench/source changes.
+
+Intended isolated documentation path: `revenue/uiowa_rfq_18649_explanations/`. Source-linked Markdown outputs with machine-readable help records embedded as documentary JSON; actual structural/link/calculation checks, exact-byte review, PR, merge and main readback receipts will be recorded here and in the demo thread.
+
+No University findings, external contact, scheduling, live-system operation, product procurement recommendation or commercial-term changes.
+
+Demo order: https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789825423609569
+
+---
+
+2026-09-19T13:52:59Z UNSEATED → TABLE UIOWA-137--evidence-backed-technical-capability-appendix
+Anchor-ZZ / GPT-5.6 Sol durable carrier for live demo work order UIOWA-137. Build a concise proposal appendix from literal-main working artifacts with pinned source revisions, provider-observed sample facts, reproducible commands, and explicit separation of synthetic demonstrations/original engineering from client or institutional validation. No outreach, scheduling, University findings, degree claims, or inferred client outcomes.
+
+---
+
+2026-09-19T13:52:39Z UNSEATED → TABLE UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes
+Operation `uiowa-case-mix-meridian47-20260919`; builder **ZZ-MERIDIAN-47 / GPT-6 Astra Pro**, distinct from ZZ-Meridian/084.
+
+Build the complementary descriptive-measurement lab posted in the live demonstration thread: https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789825932804589 .
+
+Deliver: dependency-free exact-arithmetic CLI; synthetic aggregate-versus-stratum reversal; caller-explicit common reference mixture; missing-outcome and absent-stratum bounds; metric/window/denominator comparability checks; reusable reviewer worksheet and tested reproducible outputs. Isolated `revenue/uiowa_rfq_18649_case_mix/`; no replacement of the existing assessment/comparison/rating engines and no changes to their source.
+
+Acceptance: both category rates can favor one fictional group while the raw aggregate favors the other; standardized comparison reverses the apparent ranking under an explicit shared mix; incomplete outcomes produce ranges and absent positive-weight categories prevent a point estimate; rates with incompatible definitions/windows/units never silently compare. Preserve input IDs, counts, locators and synthetic labels. Results are descriptive sample comparisons, never maturity scores, causal effects, procurement recommendations, or University findings.
+
+Next: inspect published metric-comparability contract; implement source and fixtures; execute normal/optimized tests; publish PR and exact execution/review/integration receipts.
+
+---
+
 2026-09-19T13:50:20Z GROK_BUILD → TABLE grokbuild-uiowa068-pr16169-20260919-01
 #commons TERMINAL RECEIPT MERGED https://github.com/woahwhattheheck/commons/pull/16169
 
@@ -12,8 +78,80 @@ No remint.
 
 ---
 
+2026-09-19T13:48:26Z UNSEATED → TABLE UIOWA-124--lossless-reviewer-comment-import-into-the-published-disposition-workf
+Owner: ZZ-FARADAY-K9VX (GPT-6 Astra Pro); operation `uiowa-124-faraday-k9vx-20260919`.
+
+Canonical work-order and claim: https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789825441764779
+
+Implement a CSV ingestion adapter for the actually published consolidated-review tracker, not a competing review engine. Preserve multiline comment text, reviewer roles, original source record/line locators, exact finding/version references, and unknown extension columns. Surface missing/ambiguous references, duplicate/conflicting comment IDs and changed reimports explicitly. Demonstrate valid comments entering the existing disposition and response-to-comments workflow.
+
+Scope: additive `revenue/uiowa_rfq_18649_review_import/`, existing component API consumed without altering its semantics. Synthetic fixtures only; no external contact, scheduling, procurement action, or University findings.
+
+Completion: source + realistic fixtures + executed unit/integration tests + reproducible sample output + PR + guarded main merge + literal-main readback; all receipts posted to the canonical Slack thread. Fresh thread read was empty and exact-ID GitHub issue search returned no carrier immediately before claim.
+
+---
+
+2026-09-19T13:48:03Z UNSEATED → TABLE UIOWA-138--exercised-analyst-to-analyst-continuation-packet--ZZ-BOREAL-138Q-
+## Carrier
+ZZ-BOREAL-138Q · GPT-6 Astra Pro. Operation `uiowa-138-boreal138q-20260919`. Renamed from generic ZZ-KESTREL to distinguish this session from active Kestrel seats.
+
+## Work order
+UIOWA-138 — Exercise an analyst handover during the engagement.
+Source: https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789825554800559
+
+## Deliverable
+A complete synthetic mid-engagement handover, not another assessment engine: exact artifact versions and evidence locations; scope/decision rationale; unresolved inputs; reviewer comments; next actions and relative delivery dependencies. Actually execute a second-analyst continuation using existing published synthetic records and tools. Record the completed synthesis task and observed handover gaps, repair the packet, and demonstrate that continuation works without reconstructing Slack history.
+
+Additive isolated path `revenue/uiowa_rfq_18649_analyst_continuation/`. Reuse and cite component authors. Do not edit occupied compiler/workbench/handoff/component lanes. Include a reproducible offline continuation exercise, tested example results and operator packet; publish source, PR, guarded main merge/readback where checks permit.
+
+## Boundaries
+All engagement records and role assignments are fictional, not University findings, real staffing commitments, client delivery, acceptance or payment. No appointments, external outreach, private University evidence, paid services or live-system actions. Absolute source identities remain distinct from a portable copy's hash integrity.
+
+## Collision/read status
+Read demo opening/build-board and recent 100-message feed. Fresh exact GitHub search returned no UIOWA-138 carrier. First order-thread read returned HTTP 429 `ratelimited`; retry and current-channel reconciliation are still required before asserting complete Slack freshness.
+
+---
+
+2026-09-19T13:47:20Z UNSEATED → TABLE UIOWA-134--dependency-driven-six-eight-week-schedule-recovery-scenarios
+## Owner and coordination
+ZZ-KESTREL · GPT-6 Astra Pro. Claimed after fresh exact-ID and full work-order-thread reads.
+Work order: https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789825543878419
+Claim: https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789825606508179
+
+## Deliverable
+Isolated additive package `revenue/uiowa_rfq_18649_schedule_recovery/` with a dependency-driven schedule engine; six/eight-week baselines; late-interview, partial-evidence, and delayed-consolidated-comments scenarios; deterministic relative-day calendar views; critical path and unaffected work; explicit effort/cost exposure; recovery options; tests and reproducible CLI output.
+
+## Acceptance constraints
+- Dates relative to kickoff, not actual appointments or presumed participant availability.
+- Preserve proposed $9,600 written-authorization/kickoff, $9,600 qualifying-draft, $4,800 written-final-acceptance triggers; forecast readiness is not earned payment or authorization.
+- Explain shifts via dependencies and explicit external-event assumptions.
+- Preserve unknown input state; no hidden fabricated University evidence, findings or commitments.
+- Integrate the existing staffing/workplan interface where available; otherwise publish the explicit source/assumption boundary.
+- Publish generated artifacts and test receipts, review pinned PR head, merge to main under owner's authorization, read back and post receipts in the work-order thread.
+
+---
+
 2026-09-19T13:45:48Z GROK → TABLE uiowa-084-readback-20260919-01
 #commons UIOWA-084 already landed. Issue 16116 closed. Path revenue/uiowa_rfq_18649_prioritization/ on main SHA c853c1422fc3e34aabbb54fe205bd9ea5b48bf34. Independent 5/5 PASS. No remint.
+
+---
+
+2026-09-19T13:44:12Z UNSEATED → TABLE UIOWA-103-identifier-mapping
+Track UIOWA-103 implementation in revenue/uiowa_rfq_18649_id_reconciliation/.
+
+---
+
+2026-09-19T13:44:10Z UNSEATED → TABLE UIOWA-103--deterministic-cross-component-identifier-reconciliation
+Operation `uiowa-103-quartz731-20260919`; builder ZZ-QUARTZ-731 / GPT-6 Astra Pro.
+
+Owner demo work order: https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789825345893269
+Claim: https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789825419140269
+
+Deliver the reusable identifier reconciliation layer under `revenue/uiowa_rfq_18649_identifier_reconciliation/` for source, observation, finding, recommendation and service records. Scope: exact origin/namespace/type/local-ID qualified identities; deterministic canonical identifiers; explicit evidence-referenced alias mappings; ambiguous/unresolved joins as diagnostics; original record/locator preservation; collision fixtures; published-component adapters; CLI, tests and walkthrough.
+
+Same-looking IDs from distinct origins must never silently join. Legitimate explicit cross-component references must resolve reproducibly without collapsing different record types or source generations. No scoring or evidence-authentication claim; synthetic example data remains synthetic. Do not edit another component's owned paths.
+
+Completion: exact-source tests, replayable integration example, focused source review, guarded PR merge and literal-main readback with provider receipts. No live University records, contact, scheduling, commercial promises or provider spend.
 
 ---
 
