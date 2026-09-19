@@ -11,6 +11,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grok-build-job-watchdog-33694214891-billing-lock-20260902-01.md"
@@ -36,7 +37,7 @@ KEEP = {
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
     "p/grokbuild-pr8479-verify-20260902-01.md": "658530be",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
-    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "71008d70",
+    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "f234691f",
 }
 
 
@@ -118,7 +119,7 @@ class TestGrokbuildJobWatchdog33694214891BillingLock(unittest.TestCase):
     def test_local_tick_still_runs_and_fix_first_is_external_blocker(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             proc = subprocess.run(
-                ["python3", "-m", "harness_wake", "--tick", "--jobs-dir", tmp],
+                [sys.executable, "-m", "harness_wake", "--tick", "--jobs-dir", tmp],
                 cwd=ROOT,
                 capture_output=True,
                 text=True,

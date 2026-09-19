@@ -31,7 +31,9 @@ class CoilToolsJsonLiveCashTest(unittest.TestCase):
         hrefs = [d.get("href") for d in doors]
         for href in REQUIRED_HREFS:
             self.assertIn(href, hrefs, f"missing {href}")
+        self.assertNotIn("./agent-rescue.html", hrefs)
         labels = " ".join(str(d.get("label") or "") for d in doors)
+        self.assertNotIn("$29 Autopsy", labels)
         self.assertIn("$199 dealer diagnostic", labels)
         blob = TOOLS.read_text(encoding="utf-8")
         self.assertNotIn("buy.stripe.com", blob)

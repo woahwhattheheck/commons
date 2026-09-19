@@ -10,6 +10,7 @@ import re
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 import open_door_guard as guard
 
@@ -67,7 +68,7 @@ class LimsOpenDoorKeepLiftTests(unittest.TestCase):
 
     def test_lims_regression_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", str(LIMS_TEST)],
+            [sys.executable, str(LIMS_TEST)],
             cwd=ROOT,
             text=True,
             capture_output=True,

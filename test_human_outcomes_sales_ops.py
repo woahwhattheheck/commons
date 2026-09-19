@@ -20,8 +20,8 @@ CARRIER_SCRIPT_RE = re.compile(
 CATALOG = {
     "humans.html": "113200f8c2a9e4ce42f2d26242a8fc6d1b89dd0a",
     "revenue/human_outcomes/offers.json": "1b72639aaea1a3d41c0d2419470add5a3ca8d839",
-    "revenue/human_outcomes/README.md": "66c64b6eba9b7aba035223940676bb134590a660",
-    "revenue/human_outcomes/fulfillment.md": "fbaf8be09bc4bc544ea470670f3eb6435ebc5838",
+    "revenue/human_outcomes/README.md": "a027519af6831e4cddd94ca99268f9d49fc4f991",
+    "revenue/human_outcomes/fulfillment.md": "3265ae9963f18bcdf0f88382c569676fa3d79d44",
 }
 REQUIRED_SALES_PATHS = [
     "revenue/human_outcomes/sales_ops/README.md",

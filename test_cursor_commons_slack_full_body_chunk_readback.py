@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-commons-slack-full-body-chunk-readback-20260902-01.md"
@@ -16,14 +17,14 @@ DOOR = ROOT / "commons-slack-chunk.html"
 
 KEEP = {
     "p/cursor-commons-slack-full-body-chunk-20260902-01.md": "94770f41",
-    "host/commons_slack_full_body_chunk.py": "c2b66c4d",
-    "ground/COMMONS_SLACK_FULL_BODY_CHUNK.json": "3dc4d270",
-    "test_commons_slack_full_body_chunk.py": "70d6ed53",
+    "host/commons_slack_full_body_chunk.py": "b132f8bb",
+    "ground/COMMONS_SLACK_FULL_BODY_CHUNK.json": "df1d7af1",
+    "test_commons_slack_full_body_chunk.py": "25174d80",
     "commons-slack-chunk.html": "4d9ebea2",
-    "host/commons_slack_full_body.py": "1a0b2d58",
+    "host/commons_slack_full_body.py": "7a6067d7",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
     "ground/COMMONS_SLACK_FULL_BODY.json": "5b2bf0e0",
-    "test_commons_slack_full_body.py": "c7a57b33",
+    "test_commons_slack_full_body.py": "6a66d3f8",
     "host/slack_mirror.py": "72c0844e",
     "test_slack_mirror.py": "739d5ee8",
     "commons-slack.html": "b7630b56",
@@ -34,7 +35,7 @@ KEEP = {
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/grokbuild-occupancy-landed-work-keep-lift-readback-20260902-01.md": "892bc4c0",
     "hub_pages.py": "673dab89",
-    "door.js": "c06cc197",
+    "door.js": "5899223c",
     "api/mcp.py": "393da756",
     "ground/OWNER_NOW.md": "39a0e0c3",
 }
@@ -48,7 +49,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,
@@ -98,7 +99,7 @@ class TestCursorCommonsSlackFullBodyChunkReadback(unittest.TestCase):
 
     def test_leftover_unique_and_item7_tests_still_pass(self) -> None:
         chunk = subprocess.run(
-            ["python3", "-m", "unittest", "test_commons_slack_full_body_chunk.py"],
+            [sys.executable, "-m", "unittest", "test_commons_slack_full_body_chunk.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -107,7 +108,7 @@ class TestCursorCommonsSlackFullBodyChunkReadback(unittest.TestCase):
         self.assertEqual(chunk.returncode, 0, msg=chunk.stdout + chunk.stderr)
         self.assertIn("Ran 6 tests", chunk.stderr)
         leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_commons_slack_full_body.py"],
+            [sys.executable, "-m", "unittest", "test_commons_slack_full_body.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -116,7 +117,7 @@ class TestCursorCommonsSlackFullBodyChunkReadback(unittest.TestCase):
         self.assertEqual(leftover.returncode, 0, msg=leftover.stdout + leftover.stderr)
         self.assertIn("Ran 7 tests", leftover.stderr)
         mirror = subprocess.run(
-            ["python3", "-m", "unittest", "test_slack_mirror.py"],
+            [sys.executable, "-m", "unittest", "test_slack_mirror.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

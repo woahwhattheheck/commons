@@ -6,6 +6,7 @@ from __future__ import annotations
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/latch-wake-super-mcp-pointer-readback-20260902-01.md"
@@ -16,12 +17,12 @@ REACH = ROOT / "reach.html"
 KEEP = {
     "p/latch-wake-super-mcp-pointer-20260902-01.md": "a35e63c3",
     "wakeup.html": "e83a63a4",
-    "reach.html": "14cc45cc",
+    "reach.html": "827078ec",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
     "wire.html": "623602a7",
-    "ground/WIRE_SUPER_MCP.md": "6a50f614",
+    "ground/WIRE_SUPER_MCP.md": "626b07f7",
     "p/wire-shared-super-mcp-catalog-20260902-01.md": "b6cb27ef",
-    "super-mcp.html": "f04da205",
+    "super-mcp.html": "9deb2201",
     "p/cursor-wire-super-mcp-marketplace-20260902-01.md": "fbc20c0d",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
     "p/latch-hub-eyes-wake-habit-20260902-01.md": "dc83d42c",
@@ -31,7 +32,7 @@ KEEP = {
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
     "api/mcp.py": "393da756",
     "hub_pages.py": "673dab89",
-    "door.js": "de1d570b",
+    "door.js": "5899223c",
     "ground/OWNER_NOW.md": "39a0e0c3",
 }
 
@@ -85,7 +86,7 @@ class TestLatchWakeSuperMcpPointerReadback(unittest.TestCase):
 
     def test_leftover_catalog_tests_still_pass(self) -> None:
         leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_super_mcp.py"],
+            [sys.executable, "-m", "unittest", "test_super_mcp.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

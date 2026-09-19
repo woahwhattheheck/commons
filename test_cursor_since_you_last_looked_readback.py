@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-since-you-last-looked-readback-20260902-01.md"
@@ -18,7 +19,7 @@ KEEP = {
     "p/cursor-since-you-last-looked-20260902-01.md": "003828c9",
     "host/since_you_last_looked.py": "3578783c",
     "ground/SINCE_YOU_LAST_LOOKED.json": "749c8220",
-    "test_since_you_last_looked.py": "da7dc761",
+    "test_since_you_last_looked.py": "aa071309",
     "since-you-last-looked.html": "60b1350e",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "host/landed_work_feed.py": "5a5e5804",
@@ -29,9 +30,9 @@ KEEP = {
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "ground/OWNER_NOW.md": "39a0e0c3",
     "grounding.html": "57f0e62b",
-    "autogtm.html": "dec0ecbe",
+    "autogtm.html": "5c966110",
     "hub_pages.py": "673dab89",
-    "door.js": "c06cc197",
+    "door.js": "5899223c",
     "api/mcp.py": "393da756",
     "repo_pulse.py": "298716e9",
 }
@@ -45,7 +46,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,
@@ -93,7 +94,7 @@ class TestCursorSinceYouLastLookedReadback(unittest.TestCase):
 
     def test_leftover_tests_still_pass(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_since_you_last_looked.py"],
+            [sys.executable, "-m", "unittest", "test_since_you_last_looked.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

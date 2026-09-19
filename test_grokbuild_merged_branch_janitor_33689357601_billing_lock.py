@@ -10,6 +10,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import merged_branch_janitor as janitor
 
 ROOT = Path(__file__).resolve().parent
@@ -100,7 +101,7 @@ class TestGrokbuildMergedBranchJanitor33689357601BillingLock(unittest.TestCase):
         )
         self.assertIn("deleted merged branch", result)
         proc = subprocess.run(
-            ["python3", "-W", "error", "-m", "unittest", "test_merged_branch_janitor.py"],
+            [sys.executable, "-W", "error", "-m", "unittest", "test_merged_branch_janitor.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

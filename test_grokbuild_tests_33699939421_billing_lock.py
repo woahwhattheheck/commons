@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -21,15 +22,15 @@ WORKFLOW = ROOT / ".github/workflows/tests.yml"
 KEEP = {
     ".github/workflows/tests.yml": "57d36525",
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "6a512428",
+    "test_open_door_guard.py": "2e2cc164",
     "fix_first.py": "a57aee1c",
     "p/grokbuild-tests-33694253421-billing-lock-20260902-01.md": "da396946",
     "p/grokbuild-tests-33694246830-billing-lock-20260902-01.md": "b07d6192",
-    "test_grokbuild_tests_33694246830_billing_lock.py": "8da3910b",
+    "test_grokbuild_tests_33694246830_billing_lock.py": "80617e93",
     "p/grokbuild-tests-33689281316-billing-lock-20260902-01.md": "3db0ab2e",
-    "test_grokbuild_tests_33689281316_billing_lock.py": "0b714e35",
+    "test_grokbuild_tests_33689281316_billing_lock.py": "8f146b54",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
-    "test_grokbuild_llms_txt_33699286770_billing_lock.py": "0be8ee39",
+    "test_grokbuild_llms_txt_33699286770_billing_lock.py": "71ad16e0",
     "p/grok-build-llms-txt-33694402716-billing-lock-20260902-01.md": "6a8728e3",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
@@ -64,7 +65,7 @@ class TestGrokbuildTests33699939421BillingLock(unittest.TestCase):
 
     def test_local_failed_step_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", "test_grokbuild_llms_txt_33699286770_billing_lock.py"],
+            [sys.executable, "test_grokbuild_llms_txt_33699286770_billing_lock.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

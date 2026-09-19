@@ -9,6 +9,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -19,9 +20,9 @@ PRIOR = ROOT / "p/grokbuild-source-parses-33699980140-billing-lock-20260903-01.m
 
 KEEP = {
     "p/grokbuild-source-parses-33717733998-billing-lock-20260903-01.md": "4bcbb973",
-    "test_grokbuild_source_parses_33717733998_billing_lock.py": "044abbb4",
+    "test_grokbuild_source_parses_33717733998_billing_lock.py": "bf3a9165",
     "p/grokbuild-source-parses-33699980140-billing-lock-20260903-01.md": "2494f79a",
-    "test_grokbuild_source_parses_33699980140_billing_lock.py": "d7cfcd65",
+    "test_grokbuild_source_parses_33699980140_billing_lock.py": "5c12b52b",
     "source_parses.py": "abba903d",
     "test_source_parses.py": "71e0c9b6",
     ".github/workflows/source-parses.yml": "6bcdbde1",
@@ -73,7 +74,7 @@ class TestGrokbuildInt8589Verify(unittest.TestCase):
 
     def test_leftover_unittest_still_green(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_grokbuild_source_parses_33717733998_billing_lock.py"],
+            [sys.executable, "-m", "unittest", "test_grokbuild_source_parses_33717733998_billing_lock.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -111,7 +112,7 @@ class TestGrokbuildInt8589Verify(unittest.TestCase):
         # Do not claim FIXED until SHA is integrated; EXTERNAL_BLOCKER for hosted ingest is already recorded.
         self.assertIn("INTEGRATED", RECEIPT.read_text(encoding="utf-8"))
         proc = subprocess.run(
-            ["python3", "open_door_guard.py", "--diff", "origin/main", "HEAD"],
+            [sys.executable, "open_door_guard.py", "--diff", "origin/main", "HEAD"],
             cwd=ROOT,
             text=True,
             capture_output=True,

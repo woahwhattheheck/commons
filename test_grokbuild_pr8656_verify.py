@@ -9,6 +9,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 
 ROOT = Path(__file__).resolve().parent
 VERIFY = ROOT / "p/grokbuild-pr8656-verify-20260903-01.md"
@@ -87,7 +88,7 @@ class TestGrokbuildPr8656Verify(unittest.TestCase):
         env = os.environ.copy()
         env.pop("GITHUB_ACTIONS", None)
         rc = subprocess.run(
-            ["python3", "llms_txt.py", "--publish"],
+            [sys.executable, "llms_txt.py", "--publish"],
             cwd=ROOT,
             capture_output=True,
             text=True,

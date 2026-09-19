@@ -16,13 +16,14 @@ from __future__ import annotations
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
-HUB = "12186f65"
+HUB = "673dab89"
 STALE_HUB = "d0bd0e8d"
-BOARDS = "486b13e1"
+BOARDS = "b54177b5"
 STALE_BOARDS = "143730a0"
-AUTOGTM = "1009c4cd"
+AUTOGTM = "5c966110"
 STALE_AUTOGTM = "dbbc96a5"
 ORIGINALS = (
     "test_keep_sell_hub_pages_keep_lift.py",
@@ -91,7 +92,7 @@ class TestGrokbuildTestsBattery34391842490KeepLift(unittest.TestCase):
         for name in ORIGINALS:
             with self.subTest(name=name):
                 proc = subprocess.run(
-                    ["python3", name],
+                    [sys.executable, name],
                     cwd=ROOT,
                     text=True,
                     capture_output=True,

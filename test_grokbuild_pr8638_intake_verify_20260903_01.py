@@ -6,6 +6,7 @@ from __future__ import annotations
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 import open_door_guard as guard
 
@@ -72,7 +73,7 @@ class TestGrokbuildPr8638IntakeVerify(unittest.TestCase):
 
     def test_original_leftover_unittest_still_green(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_grokbuild_owner_net_33723510040_billing_lock"],
+            [sys.executable, "-m", "unittest", "test_grokbuild_owner_net_33723510040_billing_lock"],
             cwd=ROOT,
             text=True,
             capture_output=True,

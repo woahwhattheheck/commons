@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 HELPER = ROOT / "host/what_a_pack_is.py"
@@ -18,15 +19,15 @@ KEEP = {
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "host/pack_quality_dictates_tier.py": "74d36b0a",
     "ground/PACK_QUALITY_DICTATES_TIER.json": "fa45160f",
-    "test_pack_quality_dictates_tier.py": "78e15adf",
+    "test_pack_quality_dictates_tier.py": "5ceadfba",
     "pack-quality-tier.html": "060a304a",
     "p/cursor-pack-quality-dictates-tier-readback-20260902-01.md": "aa5f6bbd",
     "ground/BUSINESS_PACK_KEEP_SELL.json": "4e0e3eb0",
     "host/business_pack_keep_sell.py": "a886d20e",
-    "keep-sell.html": "bffe5663",
+    "keep-sell.html": "b974c9bd",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
-    "host/merge_on_pr.py": "0270094d",
+    "host/merge_on_pr.py": "5062c29b",
     "host/sprint_integration.py": "1ba2002c",
     "p/grok-build-discord-cloud-billing-lock-readback-20260902-01.md": "e14e443b",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
@@ -38,7 +39,7 @@ KEEP = {
     "p/cursor-since-you-last-looked-20260902-01.md": "003828c9",
     "ground/OWNER_NOW.md": "39a0e0c3",
     "hub_pages.py": "673dab89",
-    "door.js": "c06cc197",
+    "door.js": "5899223c",
     "api/mcp.py": "393da756",
 }
 
@@ -51,7 +52,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,
@@ -143,7 +144,7 @@ class TestWhatAPackIs(unittest.TestCase):
 
     def test_leftover_pack_quality_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_pack_quality_dictates_tier.py"],
+            [sys.executable, "-m", "unittest", "test_pack_quality_dictates_tier.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

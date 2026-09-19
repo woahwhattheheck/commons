@@ -149,7 +149,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     dfd = sub.add_parser(
         "diagnostic-fulfill-deadline",
-        help="compute $199 delivery_due_at via landed fulfillment.next_business_day "
+        help="compute $199 delivery_due_at via the one-business-day calendar "
         "after loading contract window",
     )
     dfd.add_argument("role_id")

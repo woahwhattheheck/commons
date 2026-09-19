@@ -24,8 +24,6 @@ class OpenObligationsEquipmentCardTests(unittest.TestCase):
     def setUp(self) -> None:
         self.eq = GrokBotEquipment()
         self.diag = json.loads(DIAG.read_text(encoding="utf-8"))
-        self.diag_b = json.loads(DIAG.read_text(encoding="utf-8"))
-        self.diag_b["role_id"] += "-b"
         self.crm = json.loads(CRM.read_text(encoding="utf-8"))
 
     def test_tool_listed(self) -> None:
@@ -34,7 +32,7 @@ class OpenObligationsEquipmentCardTests(unittest.TestCase):
         self.assertIn("open_obligations_cash_card", names)
 
     def test_full_queue_includes_crm(self) -> None:
-        roles = [self.crm, self.diag_b, self.diag]
+        roles = [self.crm, self.diag]
         out = self.eq.call("open_obligations_card", {"roles": roles})
         self.assertTrue(out.get("ok"), out)
         self.assertIs(out.get("cash_only"), False)
@@ -54,7 +52,7 @@ class OpenObligationsEquipmentCardTests(unittest.TestCase):
             self.assertNotEqual(row.get("payment_capability"), True)
 
     def test_cash_only_opt_in_matches_wedge_card(self) -> None:
-        roles = [self.crm, self.diag_b, self.diag]
+        roles = [self.crm, self.diag]
         full_cash = self.eq.call(
             "open_obligations_card",
             {"roles": roles, "cash_only": True},

@@ -9,6 +9,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -58,7 +59,7 @@ class TestGrokbuildLeftoverIdCensus33723043828BillingLock(unittest.TestCase):
 
     def test_local_failed_step_still_passes(self) -> None:
         unit = subprocess.run(
-            ["python3", "test_work_becomes_automation.py"],
+            [sys.executable, "test_work_becomes_automation.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -67,7 +68,7 @@ class TestGrokbuildLeftoverIdCensus33723043828BillingLock(unittest.TestCase):
         self.assertEqual(unit.returncode, 0, msg=unit.stdout + unit.stderr)
         check = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 str(CENSUS),
                 "--check",
                 "--sha",

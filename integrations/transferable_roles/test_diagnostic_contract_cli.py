@@ -79,6 +79,8 @@ class DiagnosticContractCliTests(unittest.TestCase):
         crm = self.store.create(json.loads(CRM.read_text(encoding="utf-8")))
         with self.assertRaises(RoleError):
             require_diagnostic_contract_tool(crm)
+        with self.assertRaises(RoleError):
+            load_contract_from_role(crm, slug="dealer")
 
     def test_unknown_slug_refuses(self) -> None:
         role = self.store.create(json.loads(DIAG.read_text(encoding="utf-8")))

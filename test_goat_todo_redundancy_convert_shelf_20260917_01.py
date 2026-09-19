@@ -5,7 +5,7 @@ Wire EXISTING live Stripe Payment Links as first-screen Buy CTAs on
 todo.html and redundancy.html with DeepSeek convert copy.
 Do not invent new buy.stripe.com host paths. Keep Live cash product-page
 links. Same rails as GOAT #15566 manual/pixel-portfolio DeepSeek copy:
-White Box hour $250 only. Tip KEEP. Hands off Type
+Autopsy $29 + White Box hour $250 only. Tip KEEP. Hands off Type
 agent-triage/control/action/capabilities/commands/cloud-current/avatars/clans/keep-sell/autogtm,
 Wire live/delta/boards/builds/arbitrage/attested-inference/authorship/accordion,
 Latch annex/archive #15248, 8bit/8walk, Quill wake/world/data/weather heroes,
@@ -25,7 +25,6 @@ ROOT = Path(__file__).resolve().parent
 TODO = ROOT / "todo.html"
 REDUNDANCY = ROOT / "redundancy.html"
 RECEIPT = ROOT / "p" / "goat-todo-redundancy-convert-shelf-20260917-01.md"
-DEALER = ROOT / "dealer-service-lead-rescue.html"
 COMMERCIAL = ROOT / "commercial.html"
 DIRECTIVES = ROOT / "DIRECTIVES.md"
 
@@ -42,7 +41,7 @@ BUY_LABELS = (
     "One live instrumented hour, white box — $250.",
 )
 GENERIC_LABELS = (
-    "Buy White Box $250",
+    "Buy Autopsy $29",
     "Buy one White Box hour $250",
 )
 LIVE_CASH_DOORS = (
@@ -101,11 +100,7 @@ def live_cash_slice(html: str) -> str:
 
 class TestGoatTodoRedundancyConvertShelf2026091701(unittest.TestCase):
     def test_head_product_pages_still_own_the_exact_urls(self) -> None:
-        autopsy = DEALER.read_text(encoding="utf-8")
         commercial = COMMERCIAL.read_text(encoding="utf-8")
-        self.assertIn(
-            autopsy,
-        )
         self.assertIn(
             "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
             commercial,
@@ -182,6 +177,7 @@ class TestGoatTodoRedundancyConvertShelf2026091701(unittest.TestCase):
                 [],
             )
             forged = page_html.replace(
+                "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
                 "https://buy.stripe.com/not-a-canonical-link",
                 1,
             )

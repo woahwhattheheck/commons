@@ -10,6 +10,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import merged_branch_janitor as janitor
 import open_door_guard as guard
 
@@ -34,7 +35,7 @@ KEEP = {
     "hub_pages.py": "673dab89",
     "p/cursor-goat-pages-super-mcp-land-readback-20260902-01.md": "f98887bf",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
-    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "71008d70",
+    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "f234691f",
 }
 
 EVENT_8479 = {
@@ -104,7 +105,7 @@ class TestGrokbuildMergedBranchJanitor33694252910BillingLock(unittest.TestCase):
         )
         self.assertIn("deleted merged branch", result)
         proc = subprocess.run(
-            ["python3", "-W", "error", "-m", "unittest", "test_merged_branch_janitor.py"],
+            [sys.executable, "-W", "error", "-m", "unittest", "test_merged_branch_janitor.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

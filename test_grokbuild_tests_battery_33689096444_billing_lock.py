@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -19,11 +20,11 @@ WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
     ".github/workflows/tests.yml": "57d36525",
-    "test_cursor_merge_on_pr_readback.py": "a667c176",
+    "test_cursor_merge_on_pr_readback.py": "62f3cb55",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
-    "host/merge_on_pr.py": "0270094d",
-    "test_merge_on_pr.py": "55e97cd4",
+    "host/merge_on_pr.py": "5062c29b",
+    "test_merge_on_pr.py": "c2b0212d",
     "host/sprint_integration.py": "1ba2002c",
     "p/grokbuild-tests-33689281316-billing-lock-20260902-01.md": "3db0ab2e",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
@@ -69,7 +70,7 @@ class TestGrokbuildTestsBattery33689096444BillingLock(unittest.TestCase):
             "test_cursor_merge_on_pr_readback.TestCursorMergeOnPrReadback.test_readback_receipt_exists_and_does_not_steal",
         ]
         proc = subprocess.run(
-            ["python3", "-m", "unittest", *local],
+            [sys.executable, "-m", "unittest", *local],
             cwd=ROOT,
             text=True,
             capture_output=True,

@@ -25,8 +25,10 @@ def test_survival_sprint_routes_off_autopsy_page() -> None:
     assert listing["routes"]["human"] == README
     assert listing["routes"]["human"] != AUTOPSY_PAGE
 
-    assert AUTOPSY not in data["funnels"]
-    assert all(x["id"] != AUTOPSY for x in data["listings"])
+    autopsy = data["funnels"][AUTOPSY]
+    assert autopsy["qualification"]["route"] == AUTOPSY_PAGE
+    autopsy_listing = next(x for x in data["listings"] if x["id"] == AUTOPSY)
+    assert autopsy_listing["routes"]["human"] == AUTOPSY_PAGE
 
 
 if __name__ == "__main__":

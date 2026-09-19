@@ -6,6 +6,7 @@ from __future__ import annotations
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grokbuild-pr8422-verify-20260902-01.md"
@@ -13,7 +14,7 @@ PRIOR = ROOT / "p/grok-build-discord-cloud-33689083145-billing-lock-20260902-01.
 
 KEEP = {
     "p/grok-build-discord-cloud-33689083145-billing-lock-20260902-01.md": "6e34f897",
-    "test_grokbuild_discord_cloud_33689083145_billing_lock.py": "76e8ccc6",
+    "test_grokbuild_discord_cloud_33689083145_billing_lock.py": "53ede0dc",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grokbuild-occupancy-landed-work-keep-lift-readback-20260902-01.md": "892bc4c0",
     ".github/workflows/commons-discord-cloud.yml": "90738ad6",
@@ -63,7 +64,7 @@ class TestGrokbuildPr8422Verify(unittest.TestCase):
     def test_original_leftover_tests_still_pass(self) -> None:
         proc = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "-m",
                 "unittest",
                 "test_grokbuild_discord_cloud_33689083145_billing_lock.py",

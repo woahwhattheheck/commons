@@ -9,6 +9,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grok-build-llms-txt-33694402716-billing-lock-20260902-01.md"
@@ -33,13 +34,13 @@ KEEP = {
     "owner_pin.py": "76e19209",
     "test_llms_publish.py": "c07317be",
     "test_llms_pulse.py": "e79f7851",
-    "test_grokbuild_llms_txt_billing_lock.py": "68dd2941",
-    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "ce7b327f",
-    "test_grokbuild_llms_txt_33689083252_billing_lock.py": "f5e06b53",
-    "test_grokbuild_llms_txt_33689096471_billing_lock.py": "73e0a58e",
-    "test_grokbuild_llms_txt_33689281224_billing_lock.py": "d88c817d",
-    "test_grokbuild_llms_txt_33689357433_billing_lock.py": "d0e0b317",
-    "test_grokbuild_llms_txt_33694219034_billing_lock.py": "9d73e3da",
+    "test_grokbuild_llms_txt_billing_lock.py": "9eabfa9c",
+    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "a93e988e",
+    "test_grokbuild_llms_txt_33689083252_billing_lock.py": "22fb6bd9",
+    "test_grokbuild_llms_txt_33689096471_billing_lock.py": "c7bfe6c0",
+    "test_grokbuild_llms_txt_33689281224_billing_lock.py": "ef261b66",
+    "test_grokbuild_llms_txt_33689357433_billing_lock.py": "5e462bcb",
+    "test_grokbuild_llms_txt_33694219034_billing_lock.py": "e52d47ef",
 }
 
 
@@ -129,7 +130,7 @@ class TestGrokbuildLlmsTxt33694402716BillingLock(unittest.TestCase):
         env = os.environ.copy()
         env.pop("GITHUB_ACTIONS", None)
         rc = subprocess.run(
-            ["python3", "llms_txt.py", "--publish"],
+            [sys.executable, "llms_txt.py", "--publish"],
             cwd=ROOT,
             capture_output=True,
             text=True,
@@ -160,7 +161,7 @@ class TestGrokbuildLlmsTxt33694402716BillingLock(unittest.TestCase):
 
         self.addCleanup(restore)
         proc = subprocess.run(
-            ["python3", "llms_txt.py", "--bake-only"],
+            [sys.executable, "llms_txt.py", "--bake-only"],
             cwd=ROOT,
             capture_output=True,
             text=True,

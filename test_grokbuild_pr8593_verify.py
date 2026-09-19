@@ -6,6 +6,7 @@ from __future__ import annotations
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 import open_door_guard as guard
 
@@ -17,10 +18,10 @@ LEFTOVER_TEST = ROOT / "test_grokbuild_pr_collision_notice_33717734032_billing_l
 KEEP = {
     "p/grokbuild-pr-collision-notice-33717734032-billing-lock-20260903-01.md": "a558758f",
     "pr_collision_notice.py": "381d6b9b",
-    "test_pr_collision_notice.py": "a4890883",
+    "test_pr_collision_notice.py": "18a87c08",
     ".github/workflows/pr-collision-notice.yml": "deeeaf57",
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "6a512428",
+    "test_open_door_guard.py": "2e2cc164",
 }
 
 
@@ -70,7 +71,7 @@ class TestGrokbuildPr8593Verify(unittest.TestCase):
     def test_original_leftover_unittest_still_green(self) -> None:
         proc = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "-m",
                 "unittest",
                 "test_grokbuild_pr_collision_notice_33717734032_billing_lock.py",

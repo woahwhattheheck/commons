@@ -73,16 +73,16 @@ class OpenObligationsCashMarkerTests(unittest.TestCase):
         out = json.loads(buf.getvalue())
         rows = out["open_obligations"]
         crm_rows = [r for r in rows if r["role_id"].startswith("role-synthetic-crm")]
-        diag_rows = [
+        diagnostic_rows = [
             r for r in rows if "diagnostic" in r["role_id"]
         ]
         self.assertTrue(crm_rows)
-        self.assertTrue(diag_rows)
+        self.assertTrue(diagnostic_rows)
         for row in crm_rows:
             self.assertNotIn("payment_capability", row)
             self.assertNotIn("amount_usd", row)
             self.assertNotIn("refund", row)
-        for row in diag_rows:
+        for row in diagnostic_rows:
             self.assertIs(row.get("payment_capability"), True)
             self.assertEqual(row.get("amount_usd"), 199)
             self.assertTrue(str(row.get("refund") or "").strip())

@@ -8,6 +8,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 # This receipt records this immutable tree; it does not freeze evolving main.
@@ -27,8 +28,8 @@ KEEP_UNREAD = {
     "p/cursor-harborline-pack-market-render-readback-20260902-01.md": "6efbac54",
     "p/grokbuild-pr8350-verify-20260902-01.md": "538a4d1e",
     "p/grokbuild-owner-now-337-closer-strip-20260902-01.md": "71135011",
-    "ground/OWNER_NOW.md": "39a0e0c3",
-    "autogtm.html": "dec0ecbe",
+    "ground/OWNER_NOW.md": "59b1fd37",
+    "autogtm.html": "9d8b3e85",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
 }
 
@@ -60,7 +61,7 @@ class TestGrokbuildPr8350Run33681923354KeepUnpin(unittest.TestCase):
             self.assertNotEqual(keep.get("door.js"), "1f9e8d14", name)
             self.assertNotEqual(unread.get("hub_pages.py"), "14eeedb0", name)
             self.assertNotEqual(unread.get("door.js"), "1f9e8d14", name)
-        self.assertNotIn('"hub_pages.py": "55bffe39"', SLACK_TEST.read_text(encoding="utf-8"))
+        self.assertNotIn('"hub_pages.py": "673dab89"', SLACK_TEST.read_text(encoding="utf-8"))
         self.assertTrue(git_blob("hub_pages.py").startswith("5ac12648"))
         self.assertFalse(git_blob("hub_pages.py").startswith("14eeedb0"))
         self.assertTrue(git_blob("door.js").startswith("dc59355d"))
@@ -68,7 +69,7 @@ class TestGrokbuildPr8350Run33681923354KeepUnpin(unittest.TestCase):
 
     def test_slack_helper_still_renders_and_refuses_send(self) -> None:
         proc = subprocess.run(
-            ["python3", str(SLACK_HELPER), "--json"],
+            [sys.executable, str(SLACK_HELPER), "--json"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -84,7 +85,7 @@ class TestGrokbuildPr8350Run33681923354KeepUnpin(unittest.TestCase):
         self.assertEqual(payload["sent"], 0)
         self.assertEqual(payload["checkout"], "FINDER-FAILED")
         refused = subprocess.run(
-            ["python3", str(SLACK_HELPER), "--send"],
+            [sys.executable, str(SLACK_HELPER), "--send"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -95,7 +96,7 @@ class TestGrokbuildPr8350Run33681923354KeepUnpin(unittest.TestCase):
         self.assertFalse((ROOT / "marketplace.html").exists())
         self.assertFalse((ROOT / "qualify.html").exists())
         render = subprocess.run(
-            ["python3", str(RENDER_HELPER), "--json"],
+            [sys.executable, str(RENDER_HELPER), "--json"],
             cwd=ROOT,
             text=True,
             capture_output=True,

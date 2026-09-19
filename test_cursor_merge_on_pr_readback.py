@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-merge-on-pr-readback-20260902-01.md"
@@ -16,20 +17,20 @@ DOOR = ROOT / "merge-on-pr.html"
 
 KEEP = {
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
-    "host/merge_on_pr.py": "0270094d",
+    "host/merge_on_pr.py": "5062c29b",
     "ground/MERGE_ON_PR.json": "4e7967dc",
     "merge-on-pr.html": "f1d0c6d9",
-    "test_merge_on_pr.py": "55e97cd4",
+    "test_merge_on_pr.py": "c2b0212d",
     "host/sprint_integration.py": "1ba2002c",
     "ground/SPRINT_INTEGRATION.json": "eba10870",
     "host/pr7915_closed_unmerged.py": "9d56ea0e",
-    "test_pr7915_closed_unmerged.py": "307abd15",
+    "test_pr7915_closed_unmerged.py": "ec14cf1d",
     "p/cursor-pr7915-closed-unmerged-readback-20260902-01.md": "2a7f31a4",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "host/harborline_qualify_live_probe.py": "2c1797b2",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
-    "host/stealable_lanes.py": "524275ce",
-    "ground/STEALABLE_LANES.json": "3627162a",
+    "host/stealable_lanes.py": "60ac60e1",
+    "ground/STEALABLE_LANES.json": "20b0a875",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "p/cursor-pack-quality-dictates-tier-readback-20260902-01.md": "aa5f6bbd",
@@ -37,10 +38,10 @@ KEEP = {
     "p/grok-build-discord-cloud-billing-lock-readback-20260902-01.md": "e14e443b",
     "p/cursor-mcp-get-grounding-readback-20260902-01.md": "4d7bc317",
     "hub_pages.py": "673dab89",
-    "door.js": "c06cc197",
+    "door.js": "5899223c",
     "api/mcp.py": "393da756",
     "ground/OWNER_NOW.md": "39a0e0c3",
-    "autogtm.html": "dec0ecbe",
+    "autogtm.html": "5c966110",
 }
 
 
@@ -52,7 +53,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,
@@ -100,7 +101,7 @@ class TestCursorMergeOnPrReadback(unittest.TestCase):
 
     def test_leftover_tests_still_pass(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_merge_on_pr.py"],
+            [sys.executable, "-m", "unittest", "test_merge_on_pr.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -111,7 +112,7 @@ class TestCursorMergeOnPrReadback(unittest.TestCase):
 
     def test_leftover_sprint_and_pr7915_still_match(self) -> None:
         sprint = subprocess.run(
-            ["python3", "host/sprint_integration.py", "--self-test"],
+            [sys.executable, "host/sprint_integration.py", "--self-test"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -120,7 +121,7 @@ class TestCursorMergeOnPrReadback(unittest.TestCase):
         self.assertEqual(sprint.returncode, 0, msg=sprint.stdout + sprint.stderr)
         self.assertIn("ok disjoint CLEAR_TO_MERGE", sprint.stdout)
         closed = subprocess.run(
-            ["python3", "host/pr7915_closed_unmerged.py", "--json"],
+            [sys.executable, "host/pr7915_closed_unmerged.py", "--json"],
             cwd=ROOT,
             text=True,
             capture_output=True,

@@ -17,7 +17,7 @@ HELPER = ROOT / "host/owner_now_revenue.py"
 
 KEEP = {
     "p/cursor-owner-now-revenue-20260902-01.md": "fe5ba035",
-    "owner-now-revenue.html": "df6e7ac2",
+    "owner-now-revenue.html": "b757c9bf",
     "land/owner-now-revenue-20260902.md": "aa193e21",
     "pay.js": "d5d92b33",
     "ground/OWNER_NOW.md": "39a0e0c3",
@@ -28,7 +28,7 @@ KEEP = {
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-big-things-incoming-shots-20260902-01.md": "60b24eff",
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
-    "autogtm.html": "dec0ecbe",
+    "autogtm.html": "5c966110",
 }
 
 
@@ -55,6 +55,9 @@ class TestOwnerNowRevenueReadbackAck(unittest.TestCase):
         )
         self.assertEqual(packet["verdict"], "ASK_FOR_SALE", packet)
         self.assertEqual(packet["sku_count"], len(packet["ask_for_sale"]))
+        self.assertNotIn(
+            "agent-failure-autopsy-29", {row["sku"] for row in packet["ask_for_sale"]}
+        )
         self.assertFalse(packet["invented_stripe_urls"])
         self.assertEqual(packet["cash_usd"], 0)
         self.assertEqual(packet["sends"], 0)

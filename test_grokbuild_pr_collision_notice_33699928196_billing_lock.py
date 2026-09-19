@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 import pr_collision_notice as notice
 
@@ -25,17 +26,17 @@ KEEP = {
     "test_pr_collision_notice.py": "18a87c08",
     ".github/workflows/pr-collision-notice.yml": "deeeaf57",
     "p/grokbuild-pr-collision-notice-33689085107-billing-lock-20260902-01.md": "594b5e71",
-    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "dd5a89d8",
+    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "1d9883e3",
     "p/grokbuild-pr-collision-notice-33689347426-billing-lock-20260902-01.md": "e92d45af",
-    "test_grokbuild_pr_collision_notice_33689347426_billing_lock.py": "2e51e977",
+    "test_grokbuild_pr_collision_notice_33689347426_billing_lock.py": "dff8bcce",
     "p/grokbuild-pr-collision-notice-33694241061-billing-lock-20260902-01.md": "71afa5e6",
-    "test_grokbuild_pr_collision_notice_33694241061_billing_lock.py": "812b7500",
+    "test_grokbuild_pr_collision_notice_33694241061_billing_lock.py": "06eb6fcc",
     "p/grokbuild-pr-collision-notice-33699600937-billing-lock-20260903-01.md": "0fc75f49",
-    "test_grokbuild_pr_collision_notice_33699600937_billing_lock.py": "cbdf87cf",
+    "test_grokbuild_pr_collision_notice_33699600937_billing_lock.py": "bacd3344",
     "p/grokbuild-open-door-guard-33699286785-billing-lock-20260902-01.md": "d22e0707",
-    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "9be27ad1",
+    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "6933b97c",
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "6a512428",
+    "test_open_door_guard.py": "2e2cc164",
 }
 
 
@@ -64,7 +65,7 @@ class TestGrokbuildPrCollisionNotice33699928196BillingLock(unittest.TestCase):
 
     def test_local_failed_step_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", "test_pr_collision_notice.py"],
+            [sys.executable, "test_pr_collision_notice.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

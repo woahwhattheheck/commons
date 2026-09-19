@@ -11,6 +11,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import muhlnickel_spec_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -24,13 +25,13 @@ WORKFLOW = ROOT / ".github/workflows/muhlnickel-spec-guard.yml"
 KEEP = {
     ".github/workflows/muhlnickel-spec-guard.yml": "132dc670",
     "muhlnickel_spec_guard.py": "8bd147aa",
-    "test_muhlnickel_spec_guard.py": "c023622f",
+    "test_muhlnickel_spec_guard.py": "58829073",
     "p/grok-build-muhlnickel-spec-guard-33689243569-billing-lock-20260902-01.md": "7032fbcf",
-    "test_grokbuild_muhlnickel_spec_guard_33689243569_billing_lock.py": "960b7b4f",
+    "test_grokbuild_muhlnickel_spec_guard_33689243569_billing_lock.py": "a2b9339f",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
-    "test_cursor_merge_on_pr_readback.py": "a667c176",
-    "host/merge_on_pr.py": "0270094d",
+    "test_cursor_merge_on_pr_readback.py": "62f3cb55",
+    "host/merge_on_pr.py": "5062c29b",
     "p/grokbuild-pr8414-verify-20260902-01.md": "587cc1cf",
 }
 
@@ -59,7 +60,7 @@ class TestGrokbuildMuhlnickelSpecGuard33689088442BillingLock(unittest.TestCase):
         page = b"RING\x00DELTA\x00PAGE"
         self.assertFalse(guard.is_python(Path("page-0000.mno.page"), page))
         proc = subprocess.run(
-            ["python3", "muhlnickel_spec_guard.py", "--base", "HEAD^", "--worktree"],
+            [sys.executable, "muhlnickel_spec_guard.py", "--base", "HEAD^", "--worktree"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -71,7 +72,7 @@ class TestGrokbuildMuhlnickelSpecGuard33689088442BillingLock(unittest.TestCase):
 
     def test_peer_leftover_tests_still_pass(self) -> None:
         proc = subprocess.run(
-            ["python3", "test_grokbuild_muhlnickel_spec_guard_33689243569_billing_lock.py"],
+            [sys.executable, "test_grokbuild_muhlnickel_spec_guard_33689243569_billing_lock.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

@@ -6,6 +6,7 @@ import importlib
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 UNPIN_RECEIPT = ROOT / "p/grokbuild-occupancy-landed-work-keep-lift-20260902-01.md"
@@ -15,14 +16,14 @@ SIGNATURE = "337 NO"
 KEEP_UNREAD = {
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
-    "host/stealable_lanes.py": "524275ce",
+    "host/stealable_lanes.py": "60ac60e1",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "p/cursor-landed-work-feed-readback-20260902-01.md": "d37eb307",
     "p/grokbuild-pr8365-terminal-20260902-01.md": "212208a2",
     "p/grokbuild-repair-337-living-clear-20260902-01.md": "1884a299",
     "p/grokbuild-owner-now-337-closer-strip-20260902-01.md": "71135011",
     "ground/OWNER_NOW.md": "39a0e0c3",
-    "autogtm.html": "dec0ecbe",
+    "autogtm.html": "5c966110",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-owner-now-revenue-20260902-01.md": "fe5ba035",
@@ -49,17 +50,17 @@ class GrokbuildOccupancyLandedWorkKeepLiftTest(unittest.TestCase):
         self.assertNotEqual(
             terminal.KEEP.get("test_landed_work_feed_readback.py"), "cb58ab08"
         )
-        self.assertTrue(git_blob("test_stealable_lanes.py").startswith("23a902a9"))
-        self.assertTrue(git_blob("test_landed_work_feed.py").startswith("268a709d"))
+        self.assertTrue(git_blob("test_stealable_lanes.py").startswith("5bd684a3"))
+        self.assertTrue(git_blob("test_landed_work_feed.py").startswith("d05f42c3"))
         self.assertTrue(
-            git_blob("test_landed_work_feed_readback.py").startswith("932df736")
+            git_blob("test_landed_work_feed_readback.py").startswith("ece12c9a")
         )
 
     def test_living_owner_now_stays_clear_of_invented_signature(self) -> None:
         text = CARD.read_text(encoding="utf-8")
         self.assertNotIn(SIGNATURE, text)
         self.assertIn("invented closer was never Bryce law", text)
-        self.assertTrue(git_blob("ground/OWNER_NOW.md").startswith("a17b0afb"))
+        self.assertTrue(git_blob("ground/OWNER_NOW.md").startswith("39a0e0c3"))
 
     def test_lifted_leftover_tests_still_pass(self) -> None:
         for name in (
@@ -71,7 +72,7 @@ class GrokbuildOccupancyLandedWorkKeepLiftTest(unittest.TestCase):
             "test_337_no_signature_absent_from_living_sources.py",
         ):
             proc = subprocess.run(
-                ["python3", "-m", "unittest", name],
+                [sys.executable, "-m", "unittest", name],
                 cwd=ROOT,
                 text=True,
                 capture_output=True,

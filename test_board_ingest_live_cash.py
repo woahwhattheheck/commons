@@ -29,11 +29,20 @@ class BoardIngestLiveCashTests(unittest.TestCase):
         root = board_ingest.live_cash_html()
         nested = board_ingest.live_cash_html(True)
         self.assertIn('id="live-cash"', root)
-        self.assertIn('href="./dealer-service-lead-rescue.html"', root)
-        self.assertIn("$199 dealer", root)
+        for door in (
+            "dealer-service-lead-rescue.html",
+            "referral-intake-completeness.html",
+            "repair-booking-preflight.html",
+            "plant-downtime-handoff.html",
+            "diagnostic.html",
+            "commercial.html",
+        ):
+            self.assertIn('href="./%s"' % door, root)
+            self.assertIn('href="../%s"' % door, nested)
+        self.assertNotIn("agent-rescue.html", root)
+        self.assertNotIn("agent-rescue.html", nested)
+        self.assertNotIn("$29 Autopsy", root)
         self.assertNotIn("buy.stripe.com", root)
-        self.assertIn('href="../dealer-service-lead-rescue.html"', nested)
-        self.assertNotIn('href="./dealer-service-lead-rescue.html"', nested)
         src = inspect.getsource(board_ingest.rebuild_names)
         self.assertIn("live_cash_html()", src)
         src = inspect.getsource(board_ingest.rebuild_by)
@@ -71,8 +80,15 @@ class BoardIngestLiveCashTests(unittest.TestCase):
             text = path.read_text(encoding="utf-8")
             self.assertIn('id="live-cash"', text, path.name)
             section = live_cash_section(text, path.name)
-            self.assertIn(prefix + "dealer-service-lead-rescue.html", section, path.name)
-            self.assertIn("$199 dealer", section, path.name)
+            for door in (
+                "dealer-service-lead-rescue.html",
+                "referral-intake-completeness.html",
+                "repair-booking-preflight.html",
+                "plant-downtime-handoff.html",
+            ):
+                self.assertIn(prefix + door, section, path.name)
+            self.assertNotIn("agent-rescue.html", section)
+            self.assertNotIn("$29 Autopsy", section)
             self.assertNotIn("buy.stripe.com", section)
 
     def test_live_cash_door_ignores_speakable_stripe_posts(self) -> None:

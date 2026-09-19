@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 HELPER = ROOT / "host/since_you_last_looked_readback_ship.py"
@@ -18,10 +19,10 @@ KEEP = {
     "p/cursor-since-you-last-looked-20260902-01.md": "003828c9",
     "host/since_you_last_looked.py": "3578783c",
     "ground/SINCE_YOU_LAST_LOOKED.json": "749c8220",
-    "test_since_you_last_looked.py": "da7dc761",
+    "test_since_you_last_looked.py": "aa071309",
     "since-you-last-looked.html": "60b1350e",
     "p/cursor-since-you-last-looked-readback-20260902-01.md": "bc71c9fe",
-    "test_cursor_since_you_last_looked_readback.py": "15359b66",
+    "test_cursor_since_you_last_looked_readback.py": "4be780b9",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
@@ -42,7 +43,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,

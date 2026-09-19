@@ -15,14 +15,15 @@ import re
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
-CLAUDE_BLOB = "858efbba"
+CLAUDE_BLOB = "2a236007"
 STALE_CLAUDE = "22119134"
-AGENTS_BLOB = "8ca269cd"
+AGENTS_BLOB = "7ec07521"
 STALE_AGENTS = "cdd4b502"
 STALE_AGENTS_SHA = "07109651"
-SAME_LOOP_BLOB = "f45d3a49"
+SAME_LOOP_BLOB = "a1ab8b26"
 STALE_SAME_LOOP = "6ffe17b0"
 CARRIERS = (
     "test_commerce_agents_same_loop.py",
@@ -51,7 +52,7 @@ KEEP_UNREAD = {
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
     "p/cursor-harborline-commerce-compose-keep-lift-20260902-01.md": "668dd5c4",
-    "autogtm.html": "dec0ecbe",
+    "autogtm.html": "5c966110",
 }
 
 
@@ -130,7 +131,7 @@ class TestWireBattery35147646349KeepLift(unittest.TestCase):
         for name in ORIGINALS:
             with self.subTest(name=name):
                 proc = subprocess.run(
-                    ["python3", name],
+                    [sys.executable, name],
                     cwd=ROOT,
                     text=True,
                     capture_output=True,

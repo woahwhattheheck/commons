@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 import pr_collision_notice as notice
 
@@ -27,30 +28,30 @@ KEEP = {
     "test_pr_collision_notice.py": "18a87c08",
     ".github/workflows/pr-collision-notice.yml": "deeeaf57",
     "p/grokbuild-pr-collision-notice-33689085107-billing-lock-20260902-01.md": "594b5e71",
-    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "dd5a89d8",
+    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "1d9883e3",
     "p/grokbuild-pr-collision-notice-33689347426-billing-lock-20260902-01.md": "e92d45af",
-    "test_grokbuild_pr_collision_notice_33689347426_billing_lock.py": "2e51e977",
+    "test_grokbuild_pr_collision_notice_33689347426_billing_lock.py": "dff8bcce",
     "p/grokbuild-pr-collision-notice-33694241061-billing-lock-20260902-01.md": "71afa5e6",
-    "test_grokbuild_pr_collision_notice_33694241061_billing_lock.py": "812b7500",
+    "test_grokbuild_pr_collision_notice_33694241061_billing_lock.py": "06eb6fcc",
     "p/grokbuild-pr-collision-notice-33699600937-billing-lock-20260903-01.md": "0fc75f49",
-    "test_grokbuild_pr_collision_notice_33699600937_billing_lock.py": "cbdf87cf",
+    "test_grokbuild_pr_collision_notice_33699600937_billing_lock.py": "bacd3344",
     "p/grokbuild-pr-collision-notice-33699928196-billing-lock-20260903-01.md": "9b9b45f6",
-    "test_grokbuild_pr_collision_notice_33699928196_billing_lock.py": "e4494f3a",
+    "test_grokbuild_pr_collision_notice_33699928196_billing_lock.py": "213d6560",
     "p/grokbuild-pr-collision-notice-33699939369-billing-lock-20260903-01.md": "3110f1c7",
-    "test_grokbuild_pr_collision_notice_33699939369_billing_lock.py": "8fe0af85",
+    "test_grokbuild_pr_collision_notice_33699939369_billing_lock.py": "b259cc8e",
     "p/grokbuild-pr-collision-notice-33717734032-billing-lock-20260903-01.md": "a558758f",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "5d77b1cd",
+    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "347eb396",
     "p/grokbuild-slack-service-tags-33717615004-billing-lock-20260903-01.md": "f33a76ef",
-    "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "bac16a06",
+    "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "f417e943",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
     "p/grokbuild-pr8525-verify-20260903-01.md": "3e36c93c",
     "p/cursor-wire-catalog-marketplace-latch-readback-rematch-20260903-01.md": "f23e1db8",
-    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "1d586720",
+    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "649265c5",
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "6a512428",
+    "test_open_door_guard.py": "2e2cc164",
     "wire.html": "623602a7",
-    "ground/WIRE_SUPER_MCP.md": "9f1a457b",
+    "ground/WIRE_SUPER_MCP.md": "626b07f7",
     "p/cursor-big-huge-commerce-agents-readback-20260902-01.md": "2a5ce894",
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
 }
@@ -81,7 +82,7 @@ class TestGrokbuildPrCollisionNotice33718116234BillingLock(unittest.TestCase):
 
     def test_local_failed_step_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", "test_pr_collision_notice.py"],
+            [sys.executable, "test_pr_collision_notice.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

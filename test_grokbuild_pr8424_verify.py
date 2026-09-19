@@ -6,6 +6,7 @@ from __future__ import annotations
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grokbuild-pr8424-verify-20260902-01.md"
@@ -13,12 +14,12 @@ PRIOR = ROOT / "p/grokbuild-open-door-guard-33689243568-billing-lock-20260902-01
 
 KEEP = {
     "p/grokbuild-open-door-guard-33689243568-billing-lock-20260902-01.md": "4ab677c5",
-    "test_grokbuild_open_door_guard_33689243568_billing_lock.py": "8f03e8e6",
+    "test_grokbuild_open_door_guard_33689243568_billing_lock.py": "c74f0d40",
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "6a512428",
+    "test_open_door_guard.py": "2e2cc164",
     ".github/workflows/open-door-guard.yml": "ac6c46c4",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
-    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "1b9a943d",
+    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "0275634e",
     "p/grokbuild-pr8408-verify-20260902-01.md": "0a594dda",
     "p/grokbuild-pr8411-verify-20260902-01.md": "642dea64",
 }
@@ -62,7 +63,7 @@ class TestGrokbuildPr8424Verify(unittest.TestCase):
 
     def test_original_leftover_tests_still_pass(self) -> None:
         proc = subprocess.run(
-            ["python3", "test_grokbuild_open_door_guard_33689243568_billing_lock.py"],
+            [sys.executable, "test_grokbuild_open_door_guard_33689243568_billing_lock.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

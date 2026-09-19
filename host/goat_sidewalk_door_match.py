@@ -19,6 +19,7 @@ DOOR_REL = "packs/sidewalk-signal-web-desk-20260902-01/index.html"
 DOOR_BLOB = "638e60b4"
 DOOR_LIVE_CASH_V1 = (
     '<p id="live-cash" class="note"><strong>Live cash</strong> — '
+    '<a href="../../agent-rescue.html">$29 Autopsy</a> · '
     '<a href="../../dealer-service-lead-rescue.html">$199 dealer</a> · '
     '<a href="../../referral-intake-completeness.html">$199 referral</a> · '
     '<a href="../../repair-booking-preflight.html">$199 repair</a> · '
@@ -77,8 +78,8 @@ PAGES_IDS = (
 # except the already-peer-pinned door.
 OBSERVED_AT_LAND = {
     DOOR_REL: DOOR_BLOB,
-    "host/business_pack_desk_instance.py": "a550ae1b",
-    ".github/workflows/pages-deploy.yml": "d3b298c2",
+    "host/business_pack_desk_instance.py": "1029faad",
+    ".github/workflows/pages-deploy.yml": "7bb72d05",
     "pages-deploy.json": "475d5f24",
 }
 THIS_SEAT_DOES_NOT_WRITE = (

@@ -17,7 +17,6 @@ portal action, signature, certification, pricing, award, payment, or revenue.
 from __future__ import annotations
 
 import argparse
-import fcntl
 import hashlib
 import json
 import os
@@ -708,8 +707,11 @@ def _open_regular(path, write=False, exclusive=False):
         st = os.fstat(fd)
         if not stat.S_ISREG(st.st_mode):
             raise Error(f"{path}: not a regular file")
-        fl = fcntl.fcntl(fd, fcntl.F_GETFL)
-        fcntl.fcntl(fd, fcntl.F_SETFL, fl & ~os.O_NONBLOCK)
+        if hasattr(os, "O_NONBLOCK"):
+            import fcntl
+
+            fl = fcntl.fcntl(fd, fcntl.F_GETFL)
+            fcntl.fcntl(fd, fcntl.F_SETFL, fl & ~os.O_NONBLOCK)
         return fd
     except Exception:
         os.close(fd)

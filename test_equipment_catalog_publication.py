@@ -90,7 +90,7 @@ class CatalogPublicationTests(unittest.TestCase):
 
     def test_original_descriptor_and_schema_are_preserved(self):
         card = next(t for t in diagnostic_card_tool_schemas() if t['name'] == 'diagnostic_receipt_card')
-        self.assertIn('receipt.json', card['description'])
+        self.assertIn('$199 diagnostic receipt', card['description'])
         self.assertEqual(card['inputSchema']['properties']['slug'], {'type': 'string'})
         self.assertEqual(card['inputSchema']['required'], ['role', 'slug'])
 

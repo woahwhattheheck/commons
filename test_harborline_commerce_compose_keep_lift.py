@@ -6,6 +6,7 @@ from __future__ import annotations
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-harborline-commerce-compose-keep-lift-20260902-01.md"
@@ -19,7 +20,7 @@ KEEP = {
     "p/cursor-harborline-commerce-compose-20260902-01.md": "45b7d435",
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
     "host/commerce_agents_same_loop.py": "c90f6e50",
-    "test_commerce_agents_same_loop.py": "7a78f224",
+    "test_commerce_agents_same_loop.py": "03426c3c",
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "host/commerce_agents.py": "8d2ddf29",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
@@ -50,7 +51,7 @@ class TestHarborlineCommerceComposeKeepLift(unittest.TestCase):
 
     def test_leftover_compose_tests_pass_after_lift(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_harborline_commerce_compose.py"],
+            [sys.executable, "-m", "unittest", "test_harborline_commerce_compose.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -61,7 +62,7 @@ class TestHarborlineCommerceComposeKeepLift(unittest.TestCase):
 
     def test_unique_pack_leftover_tests_still_pass(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_commerce_agents_same_loop.py"],
+            [sys.executable, "-m", "unittest", "test_commerce_agents_same_loop.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -72,7 +73,7 @@ class TestHarborlineCommerceComposeKeepLift(unittest.TestCase):
 
     def test_compose_json_still_finder_failed(self) -> None:
         proc = subprocess.run(
-            ["python3", str(COMPOSE_HELPER), "--json"],
+            [sys.executable, str(COMPOSE_HELPER), "--json"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -83,7 +84,7 @@ class TestHarborlineCommerceComposeKeepLift(unittest.TestCase):
         self.assertIn("FINDER-FAILED", proc.stdout)
         self.assertNotIn("buy.stripe.com", proc.stdout)
         proc_go = subprocess.run(
-            ["python3", str(COMPOSE_HELPER), "--go"],
+            [sys.executable, str(COMPOSE_HELPER), "--go"],
             cwd=ROOT,
             text=True,
             capture_output=True,

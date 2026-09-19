@@ -6,6 +6,7 @@ from __future__ import annotations
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grokbuild-pr8399-commons-slack-readback-20260902-01.md"
@@ -14,9 +15,9 @@ LEFTOVER = ROOT / "p/grokbuild-pr8399-commons-slack-20260902-01.md"
 KEEP = {
     "p/grokbuild-pr8399-commons-slack-20260902-01.md": "1905dd74",
     "p/grokbuild-stealable-occupancy-keep-match-20260902-01.md": "dc058b13",
-    "test_grokbuild_stealable_occupancy_keep_match.py": "e2bfab42",
+    "test_grokbuild_stealable_occupancy_keep_match.py": "253802cf",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
-    "host/stealable_lanes.py": "524275ce",
+    "host/stealable_lanes.py": "60ac60e1",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
     "p/grokbuild-occupancy-landed-work-keep-lift-20260902-01.md": "67a8a527",
@@ -29,7 +30,7 @@ KEEP = {
     "p/grokbuild-pr8402-verify-20260902-01.md": "3524e382",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "hub_pages.py": "673dab89",
-    "door.js": "c06cc197",
+    "door.js": "5899223c",
     "api/mcp.py": "393da756",
     "ground/OWNER_NOW.md": "39a0e0c3",
 }
@@ -53,7 +54,7 @@ class TestGrokbuildPr8399CommonsSlackReadback(unittest.TestCase):
     def test_leftover_unique_tests_still_pass(self) -> None:
         proc = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "-m",
                 "unittest",
                 "test_grokbuild_stealable_occupancy_keep_match.py",
@@ -68,7 +69,7 @@ class TestGrokbuildPr8399CommonsSlackReadback(unittest.TestCase):
 
     def test_occupancy_leftover_tests_still_pass(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_stealable_lanes_occupancy.py"],
+            [sys.executable, "-m", "unittest", "test_stealable_lanes_occupancy.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -80,7 +81,7 @@ class TestGrokbuildPr8399CommonsSlackReadback(unittest.TestCase):
     def test_leftover_send_go_unrecognized(self) -> None:
         for flag in ("--send", "--go"):
             proc = subprocess.run(
-                ["python3", "host/stealable_lanes.py", flag],
+                [sys.executable, "host/stealable_lanes.py", flag],
                 cwd=ROOT,
                 text=True,
                 capture_output=True,

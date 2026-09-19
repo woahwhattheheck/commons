@@ -82,14 +82,14 @@ def classify_ship() -> dict[str, object]:
     blobs = keep_ok()
     dumped = (ROOT / "marketplace.html").exists()
     leftover = subprocess.run(
-        ["python3", str(ROOT / "host/harborline_pack_market_render.py"), "--json"],
+        [sys.executable, str(ROOT / "host/harborline_pack_market_render.py"), "--json"],
         cwd=ROOT,
         text=True,
         capture_output=True,
         check=False,
     )
     slack = subprocess.run(
-        ["python3", str(ROOT / "host/harborline_pack_market_slack_render.py"), "--json"],
+        [sys.executable, str(ROOT / "host/harborline_pack_market_slack_render.py"), "--json"],
         cwd=ROOT,
         text=True,
         capture_output=True,

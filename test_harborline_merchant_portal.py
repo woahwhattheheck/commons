@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 HELPER = ROOT / "host/harborline_merchant_portal.py"
@@ -15,12 +16,12 @@ COMPOSE_HELPER = ROOT / "host/harborline_commerce_compose.py"
 
 KEEP = {
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
-    "test_cursor_harborline_commerce_compose_keep_lift_readback.py": "6c7fadf6",
+    "test_cursor_harborline_commerce_compose_keep_lift_readback.py": "75bca619",
     "host/harborline_commerce_compose.py": "75128e5d",
     "p/cursor-harborline-commerce-compose-20260902-01.md": "45b7d435",
     "p/cursor-harborline-commerce-compose-keep-lift-20260902-01.md": "668dd5c4",
-    "test_harborline_commerce_compose.py": "20a6e0ff",
-    "test_harborline_commerce_compose_keep_lift.py": "8d788452",
+    "test_harborline_commerce_compose.py": "4d0997c4",
+    "test_harborline_commerce_compose_keep_lift.py": "fb5ce9aa",
     "p/cursor-harborline-commerce-compose-readback-20260902-01.md": "b33e2e24",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "p/cursor-what-a-pack-is-20260902-01.md": "a4e4dd89",
@@ -38,7 +39,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,
@@ -84,7 +85,7 @@ class TestHarborlineMerchantPortal(unittest.TestCase):
         self.assertEqual(packet["sent"], 0)
         self.assertNotIn("buy.stripe.com", proc.stdout)
         leftover = subprocess.run(
-            ["python3", str(COMPOSE_HELPER), "--json"],
+            [sys.executable, str(COMPOSE_HELPER), "--json"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -107,7 +108,7 @@ class TestHarborlineMerchantPortal(unittest.TestCase):
 
     def test_leftover_compose_and_keep_lift_unique_tests_still_pass(self) -> None:
         leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_harborline_commerce_compose.py"],
+            [sys.executable, "-m", "unittest", "test_harborline_commerce_compose.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -117,7 +118,7 @@ class TestHarborlineMerchantPortal(unittest.TestCase):
         self.assertIn("Ran 6 tests", leftover.stderr)
         lift = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "-m",
                 "unittest",
                 "test_harborline_commerce_compose_keep_lift.py",
@@ -131,7 +132,7 @@ class TestHarborlineMerchantPortal(unittest.TestCase):
         self.assertIn("Ran 5 tests", lift.stderr)
         unique = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "-m",
                 "unittest",
                 "test_cursor_harborline_commerce_compose_keep_lift_readback.py",

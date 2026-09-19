@@ -10,6 +10,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import merged_branch_janitor as janitor
 import open_door_guard as guard
 
@@ -41,7 +42,7 @@ KEEP = {
     "p/grokbuild-merged-branch-janitor-33699944798-billing-lock-20260903-01.md": "1fcd7e61",
     "p/grokbuild-merged-branch-janitor-33718131639-billing-lock-20260903-01.md": "010f253e",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "5d77b1cd",
+    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "347eb396",
     "p/grok-build-commons-board-billing-lock-20260903-01.md": "c07bf913",
     "catalog.html": "68b9b066",
     "hub_pages.py": "673dab89",
@@ -120,7 +121,7 @@ class TestGrokbuildMergedBranchJanitor33723861300BillingLock(unittest.TestCase):
         )
         self.assertIn("deleted merged branch", result)
         proc = subprocess.run(
-            ["python3", "-W", "error", "-m", "unittest", "test_merged_branch_janitor.py"],
+            [sys.executable, "-W", "error", "-m", "unittest", "test_merged_branch_janitor.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

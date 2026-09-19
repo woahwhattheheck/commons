@@ -9,6 +9,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -22,9 +23,9 @@ KEEP = {
     "test_source_parses.py": "71e0c9b6",
     ".github/workflows/source-parses.yml": "6bcdbde1",
     "p/grokbuild-source-parses-33689088174-billing-lock-20260902-01.md": "3b13ac02",
-    "test_grokbuild_source_parses_33689088174_billing_lock.py": "88a822b5",
+    "test_grokbuild_source_parses_33689088174_billing_lock.py": "6ac349df",
     "p/grok-build-discord-cloud-33699286743-billing-lock-20260902-01.md": "e8d308ed",
-    "test_grokbuild_discord_cloud_33699286743_billing_lock.py": "0c678c3f",
+    "test_grokbuild_discord_cloud_33699286743_billing_lock.py": "be8205fd",
     "open_door_guard.py": "877e148d",
 }
 
@@ -100,7 +101,7 @@ class TestGrokbuildSourceParses33699980140BillingLock(unittest.TestCase):
 
     def test_local_source_parses_contract_still_green(self) -> None:
         checker = subprocess.run(
-            ["python3", "-m", "unittest", "-v", "test_source_parses.py"],
+            [sys.executable, "-m", "unittest", "-v", "test_source_parses.py"],
             cwd=ROOT,
             capture_output=True,
             text=True,
@@ -108,7 +109,7 @@ class TestGrokbuildSourceParses33699980140BillingLock(unittest.TestCase):
         self.assertEqual(checker.returncode, 0, msg=checker.stdout + checker.stderr)
         self.assertIn("Ran 9 tests", checker.stderr + checker.stdout)
         parse = subprocess.run(
-            ["python3", "source_parses.py"],
+            [sys.executable, "source_parses.py"],
             cwd=ROOT,
             capture_output=True,
             text=True,
@@ -153,7 +154,7 @@ class TestGrokbuildSourceParses33699980140BillingLock(unittest.TestCase):
         }
         self.assertEqual(fix_first.validate(packet)["state"], "EXTERNAL_BLOCKER")
         proc = subprocess.run(
-            ["python3", "fix_first.py", "--json", json.dumps(packet)],
+            [sys.executable, "fix_first.py", "--json", json.dumps(packet)],
             cwd=ROOT,
             text=True,
             capture_output=True,

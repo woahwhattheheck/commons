@@ -7,6 +7,7 @@ import hashlib
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 import open_door_guard as guard
 
@@ -21,7 +22,7 @@ BODY_SHA256 = "be1d666fcbe9a6a95a683b0689656c1c08d62b01346951ac9c0a157434660fb7"
 KEEP = {
     "p/grok-build-discord-cloud-33718131448-billing-lock-20260903-01.md": "861911cb",
     "p/grok-build-discord-cloud-33717741051-billing-lock-20260903-01.md": "b7a4ea0e",
-    "test_grokbuild_discord_cloud_33717741051_billing_lock.py": "b71dd148",
+    "test_grokbuild_discord_cloud_33717741051_billing_lock.py": "0968d5bb",
     ".github/workflows/commons-discord-cloud.yml": "90738ad6",
     "commons_discord.py": "f6f1a374",
     "open_door_guard.py": "877e148d",
@@ -84,7 +85,7 @@ class TestGrokbuildPr8600Verify(unittest.TestCase):
 
     def test_leftover_unittest_still_green(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_grokbuild_discord_cloud_33718131448_billing_lock.py"],
+            [sys.executable, "-m", "unittest", "test_grokbuild_discord_cloud_33718131448_billing_lock.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

@@ -8,6 +8,7 @@ import subprocess
 import unittest
 import urllib.request
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-wire-super-mcp-fold-readback-20260902-01.md"
@@ -18,9 +19,9 @@ LAW = ROOT / "ground/WIRE_SUPER_MCP.md"
 KEEP = {
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
     "wire.html": "623602a7",
-    "ground/WIRE_SUPER_MCP.md": "6a50f614",
+    "ground/WIRE_SUPER_MCP.md": "626b07f7",
     "p/wire-shared-super-mcp-catalog-20260902-01.md": "b6cb27ef",
-    "super-mcp.html": "f04da205",
+    "super-mcp.html": "9deb2201",
     "p/latch-wake-super-mcp-pointer-20260902-01.md": "a35e63c3",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
     "catalog.html": "68b9b066",
@@ -36,7 +37,7 @@ KEEP = {
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
     "api/mcp.py": "393da756",
     "hub_pages.py": "673dab89",
-    "door.js": "de1d570b",
+    "door.js": "5899223c",
     "ground/OWNER_NOW.md": "39a0e0c3",
 }
 
@@ -83,7 +84,7 @@ class TestCursorWireSuperMcpFoldReadback(unittest.TestCase):
 
     def test_leftover_commerce_tests_still_pass(self) -> None:
         leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_commerce_agents.py"],
+            [sys.executable, "-m", "unittest", "test_commerce_agents.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

@@ -6,6 +6,7 @@ from __future__ import annotations
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-big-things-incoming-shots-readback-20260902-01.md"
@@ -23,7 +24,7 @@ KEEP = {
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "p/cursor-incoming-models-hub-payload-readback-20260902-01.md": "2d297673",
     "p/cursor-big-things-incoming-alert-ack-20260902-01.md": "81097728",
-    "autogtm.html": "dec0ecbe",
+    "autogtm.html": "5c966110",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
 }
 
@@ -45,7 +46,7 @@ class TestBigThingsIncomingShotsReadback(unittest.TestCase):
 
     def test_leftover_tests_still_pass(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_big_things_incoming_shots.py"],
+            [sys.executable, "-m", "unittest", "test_big_things_incoming_shots.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

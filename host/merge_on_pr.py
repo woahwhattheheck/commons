@@ -41,7 +41,7 @@ def load_pr7915():
 
 def leftover_sprint_self_test() -> dict[str, Any]:
     proc = subprocess.run(
-        ["python3", str(SPRINT), "--self-test"],
+        [sys.executable, str(SPRINT), "--self-test"],
         cwd=ROOT,
         text=True,
         capture_output=True,

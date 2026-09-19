@@ -31,9 +31,6 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
     def tearDown(self) -> None:
         self._tmp.cleanup()
 
-
-
-
     def test_diagnostic_transfer_then_prove(self) -> None:
         role = self.store.create(json.loads(DIAG.read_text(encoding="utf-8")))
         rid = role["role_id"]
@@ -162,6 +159,48 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         with self.assertRaises(RoleError):
             prove_successor_executes(self.store, role["role_id"])
 
+    def test_cli_prove_handoff(self) -> None:
+        store_dir = self._tmp.name
+        with redirect_stdout(io.StringIO()):
+            rc = roles_cli.main(
+                ["--store", store_dir, "create", "--file", str(DIAG)]
+            )
+        self.assertEqual(rc, 0)
+        rid = "role-synthetic-diagnostic-fulfillment-20260905"
+        with redirect_stdout(io.StringIO()):
+            rc = roles_cli.main(
+                [
+                    "--store",
+                    store_dir,
+                    "equip",
+                    rid,
+                    "--session",
+                    "cli-A",
+                    "--harness",
+                    "hinge",
+                ]
+            )
+        self.assertEqual(rc, 0)
+        cli = FIXTURES.parent / "cli.py"
+        result = subprocess.run(
+            [
+                sys.executable,
+                str(cli),
+                "prove-handoff",
+                rid,
+                "--store",
+                store_dir,
+            ],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+        proof = json.loads(result.stdout)
+        self.assertTrue(proof["ok"])
+        self.assertIn("diagnostic-contract", proof["executes"])
+        self.assertIn("diagnostic-fulfill-sla", proof["executes"])
+        self.assertEqual(proof["executes"]["diagnostic-fulfill-sla"]["diagnostic_usd"], 199)
 
 
 if __name__ == "__main__":

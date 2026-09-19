@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-incoming-models-hub-payload-readback-rematch-20260902-01.md"
@@ -16,7 +17,7 @@ HELPER = ROOT / "host/incoming_models.py"
 
 KEEP = {
     "p/cursor-incoming-models-hub-payload-readback-20260902-01.md": "2d297673",
-    "test_incoming_models_hub_payload_readback.py": "bb89bc37",
+    "test_incoming_models_hub_payload_readback.py": "246e01b2",
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "host/incoming_models.py": "b1963da4",
     "test_incoming_models.py": "d8f2ddbd",
@@ -29,7 +30,7 @@ KEEP = {
     "p/cursor-big-things-incoming-shots-readback-20260902-01.md": "3cabb764",
     "ground/OWNER_NOW.md": "39a0e0c3",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
-    "autogtm.html": "dec0ecbe",
+    "autogtm.html": "5c966110",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "host/harborline_pack_market_render.py": "cc9a3320",
@@ -53,7 +54,7 @@ class TestIncomingModelsHubPayloadReadbackRematch(unittest.TestCase):
 
     def test_leftover_check_still_ok_without_probe(self) -> None:
         proc = subprocess.run(
-            ["python3", str(HELPER), "--check", "--json"],
+            [sys.executable, str(HELPER), "--check", "--json"],
             cwd=ROOT,
             text=True,
             capture_output=True,

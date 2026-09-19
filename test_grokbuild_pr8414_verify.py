@@ -7,6 +7,7 @@ import hashlib
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grokbuild-pr8414-verify-20260902-01.md"
@@ -15,11 +16,11 @@ ORIGINAL = ROOT / "p/cursor-merge-on-pr-20260902-01.md"
 
 KEEP = {
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
-    "test_cursor_merge_on_pr_readback.py": "a667c176",
+    "test_cursor_merge_on_pr_readback.py": "62f3cb55",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
-    "host/merge_on_pr.py": "0270094d",
+    "host/merge_on_pr.py": "5062c29b",
     "ground/MERGE_ON_PR.json": "4e7967dc",
-    "test_merge_on_pr.py": "55e97cd4",
+    "test_merge_on_pr.py": "c2b0212d",
     "merge-on-pr.html": "f1d0c6d9",
     "host/sprint_integration.py": "1ba2002c",
     "host/pr7915_closed_unmerged.py": "9d56ea0e",
@@ -50,7 +51,7 @@ class TestGrokbuildPr8414Verify(unittest.TestCase):
 
     def test_leftover_merge_on_pr_tests_still_pass(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_merge_on_pr.py"],
+            [sys.executable, "-m", "unittest", "test_merge_on_pr.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -75,7 +76,7 @@ class TestGrokbuildPr8414Verify(unittest.TestCase):
         self.assertIn("920d8c03", text)
         self.assertIn("e160b2c3", text)
         self.assertIn("22b63e25", text)
-        self.assertIn("0270094d", text)
+        self.assertIn("5062c29b", text)
         self.assertIn("ALREADY_MERGED_VERIFIED", text)
         self.assertIn("Did not remint leftover", text)
         self.assertIn("Did not reopen #7915", text)

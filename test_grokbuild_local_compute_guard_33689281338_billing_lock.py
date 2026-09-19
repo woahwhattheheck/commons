@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import local_compute_guard as guard
 import open_door_guard as door
 
@@ -24,9 +25,9 @@ KEEP = {
     ".github/workflows/local-compute-guard.yml": "43576548",
     "test_local_compute_guard.py": "b8d65280",
     "p/grokbuild-pr8411-verify-20260902-01.md": "642dea64",
-    "test_grokbuild_pr8411_verify.py": "3b831583",
+    "test_grokbuild_pr8411_verify.py": "c1c37c21",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
-    "host/stealable_lanes.py": "524275ce",
+    "host/stealable_lanes.py": "60ac60e1",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
 }
@@ -55,7 +56,7 @@ class TestGrokbuildLocalComputeGuard33689281338BillingLock(unittest.TestCase):
     def test_local_failed_step_still_passes(self) -> None:
         self.assertEqual(guard.validate(), [])
         proc = subprocess.run(
-            ["python3", "local_compute_guard.py"],
+            [sys.executable, "local_compute_guard.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -64,7 +65,7 @@ class TestGrokbuildLocalComputeGuard33689281338BillingLock(unittest.TestCase):
         self.assertEqual(proc.returncode, 0, msg=proc.stdout + proc.stderr)
         self.assertIn("CLOUD_PRIMARY / SAFE_STANDBY", proc.stdout)
         tests = subprocess.run(
-            ["python3", "-m", "unittest", "test_local_compute_guard"],
+            [sys.executable, "-m", "unittest", "test_local_compute_guard"],
             cwd=ROOT,
             text=True,
             capture_output=True,

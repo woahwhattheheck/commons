@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 HELPER = ROOT / "host/harborline_qualify_live_probe.py"
@@ -15,9 +16,9 @@ READBACK = ROOT / "p/cursor-harborline-qualify-live-probe-readback-20260902-01.m
 
 KEEP = {
     "host/harborline_qualify_live_probe.py": "2c1797b2",
-    "test_harborline_qualify_live_probe.py": "22aa4580",
+    "test_harborline_qualify_live_probe.py": "6fb584bd",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
-    "autogtm.html": "dec0ecbe",
+    "autogtm.html": "5c966110",
     "p/cursor-autogtm-door-live-probe-20260902-01.md": "c71c57a0",
     "p/cursor-explee-qualify-clone-20260902-01.md": "aceb4aead",
     "p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md": "7a8987b5",
@@ -57,7 +58,7 @@ class TestHarborlineQualifyLiveProbeReadback(unittest.TestCase):
 
     def test_leftover_go_still_refused_sent_zero(self) -> None:
         proc = subprocess.run(
-            ["python3", str(HELPER), "--go"],
+            [sys.executable, str(HELPER), "--go"],
             cwd=ROOT,
             text=True,
             capture_output=True,

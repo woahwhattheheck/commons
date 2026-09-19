@@ -124,17 +124,18 @@ class CommercialOfferTests(unittest.TestCase):
         baked = read("llms.txt")
         for exact in (
             "## Commercial",
-            "$199 dealer diagnostic",
             "$2,500 Same-Day Agent Survival Proof",
             "$15,000 five-day Production Survival Sprint",
             "$12,000 GGUF diagnostic",
             "$30,000 White Box pilot",
             "$45,000 Muhlnickel / Titan keep-or-build",
+            "tokenjunkielabs@gmail.com",
             "All SKUs remain sellable",
         ):
             self.assertIn(exact, source)
             self.assertIn(exact, baked)
-        self.assertIn("dealer-service-lead-rescue.html", source)
+        # QUILL: Survival lives on the README, not the retired Autopsy page.
+        self.assertNotIn("agent-rescue.html", source)
         self.assertIn("revenue/production_survival/README.md", source)
         self.assertNotIn("[$2,500 same-day crash-resume proof](%s/agent-rescue.html)" % "https://woahwhattheheck.github.io/commons", source)
 

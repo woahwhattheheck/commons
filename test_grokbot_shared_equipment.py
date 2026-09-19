@@ -76,11 +76,11 @@ class TestGrokBotSharedEquipment(unittest.TestCase):
             "export_role_package_card",
             "import_role_package_card",
             "inspect_role_card",
-            "prove_handoff_card",
             "create_role_card",
-            "normalize_role_card",
-            "get_role_card",
             "list_role_ids_card",
+            "get_role_card",
+            "normalize_role_card",
+            "prove_handoff_card",
         }
         self.assertEqual(names, expected)
         catalog = CombinedCatalog(_FakeCommons())
@@ -161,15 +161,15 @@ class TestGrokBotSharedEquipment(unittest.TestCase):
                     "prompt": "paid case ping",
                     "async": False,
                     "case": {
-                        "offer_id": "sku-autopsy-29",
+                        "offer_id": "ho-issue-to-pr",
                         "case_ref": "case-demo-1",
                         "client_reference_id": "cref-demo",
-                        "sku": "sku-autopsy-29",
+                        "sku": "ho-issue-to-pr",
                     },
                 },
             )
             self.assertEqual(submitted.get("status"), "completed")
-            self.assertEqual(submitted["case"]["offer_id"], "sku-autopsy-29")
+            self.assertEqual(submitted["case"]["offer_id"], "ho-issue-to-pr")
             followed = fx.eq.call(
                 "grokbot_follow_up",
                 {
@@ -197,10 +197,10 @@ class TestGrokBotSharedEquipment(unittest.TestCase):
     def test_paid_case_equipment_helpers(self):
         eq = GrokBotEquipment("http://127.0.0.1:9")
         case = {
-            "offer_id": "dealer-service-lead-rescue",
+            "offer_id": "ho-issue-to-pr",
             "case_ref": "opaque-equip-1",
-            "client_reference_id": "dslr_x_a_v1",
-            "sku": "dealer-service-lead-rescue",
+            "client_reference_id": "cref-equip-1",
+            "sku": "ho-issue-to-pr",
         }
         receipt = eq.call(
             "grokbot_receipt_row_from_case",
@@ -214,28 +214,28 @@ class TestGrokBotSharedEquipment(unittest.TestCase):
         )
         self.assertTrue(receipt.get("ok"))
         row = receipt["case_row"]
+        self.assertEqual(row["offer_id"], "ho-issue-to-pr")
+        self.assertEqual(row["case_ref"], "opaque-equip-1")
         self.assertEqual(row["g2_run_id"], "run_equip_1")
         self.assertEqual(row["g2_session_id"], "sess_equip_1")
         self.assertEqual(row["state"], "UNVERIFIED")
-        bad = eq.call(
-            "grokbot_receipt_row_from_case", {"case": {"offer_id": "x"}}
-        )
+        bad = eq.call("grokbot_receipt_row_from_case", {"case": {"case_ref": ""}})
         self.assertFalse(bad.get("ok"))
         self.assertEqual(bad.get("error"), "invalid_receipt")
 
     def test_paid_case_equipment_live_e2e(self):
-        """Live echo: case dict → submit(case) → receipt bind."""
+        """Live echo: submit(case) → receipt bind."""
         with GrokBotEquipmentFixture() as fx:
             case = {
-                "offer_id": "dealer-service-lead-rescue",
+                "offer_id": "ho-issue-to-pr",
                 "case_ref": "opaque-e2e-1",
-                "client_reference_id": "dslr_x_a_v1",
-                "sku": "dealer-service-lead-rescue",
+                "client_reference_id": "cref-e2e-1",
+                "sku": "ho-issue-to-pr",
             }
             submitted = fx.eq.call(
                 "grokbot_submit",
                 {
-                    "prompt": "e2e diagnostic work",
+                    "prompt": "e2e paid case work",
                     "seat": "SPARK",
                     "async": False,
                     "case": case,
