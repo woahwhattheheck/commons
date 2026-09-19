@@ -5,6 +5,8 @@ import json
 import math
 import os
 import re
+import shutil
+import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable
@@ -77,9 +79,12 @@ def parse_strict_json(raw: str | bytes) -> Any:
             parse_float=_reject_float,
             parse_constant=_reject_constant,
         )
-    except (UnicodeError, json.JSONDecodeError) as exc:
+    except (UnicodeError, json.JSONDecodeError, RecursionError) as exc:
         raise IntakeError(f"invalid JSON: {exc}") from exc
-    _walk_scalar_safety(value, "$")
+    try:
+        _walk_scalar_safety(value, "$")
+    except RecursionError as exc:
+        raise IntakeError("JSON nesting is too deep") from exc
     return value
 
 
@@ -178,7 +183,7 @@ def _utc(value: Any, where: str) -> tuple[str, datetime]:
         raise IntakeError(f"{where}: invalid timestamp") from exc
     if parsed.tzinfo is None or parsed.utcoffset() != timezone.utc.utcoffset(parsed):
         raise IntakeError(f"{where}: UTC required")
-    normalized = parsed.astimezone(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+    normalized = parsed.astimezone(timezone.utc).isoformat(timespec="microseconds").replace("+00:00", "Z")
     return normalized, parsed
 
 
@@ -230,7 +235,7 @@ def _source(row: Any, root_id: str, idx: int) -> tuple[dict[str, Any], datetime,
 
 def _compensation(row: Any, root_id: str, idx: int) -> dict[str, Any]:
     where = f"compensation[{idx}]"
-    row = _exact(row, {"opportunity_id", "kind", "currency", "amount_minor", "terms", "source_ref", "source_sha256"}, where)
+    row = _exact(row, {"opportunity_id", "source_generation", "kind", "currency", "amount_minor", "terms", "source_ref", "source_sha256"}, where)
     if _identifier(row["opportunity_id"], f"{where}.opportunity_id") != root_id:
         raise IntakeError(f"{where}: cross-opportunity transplant")
     kind = _enum(row["kind"], COMPENSATION_KINDS, f"{where}.kind")
@@ -253,6 +258,7 @@ def _compensation(row: Any, root_id: str, idx: int) -> dict[str, Any]:
             raise IntakeError(f"{where}: UNKNOWN must not carry inferred compensation")
     return {
         "opportunity_id": root_id,
+        "source_generation": _identifier(row["source_generation"], f"{where}.source_generation"),
         "kind": kind,
         "currency": currency,
         "amount_minor": amount,
@@ -291,17 +297,24 @@ def _normalize(document: Any) -> tuple[dict[str, Any], dict[str, datetime], list
     if type(comp_raw) is not list or not 1 <= len(comp_raw) <= 16:
         raise IntakeError("compensation: array length 1..16 required")
     compensation = [_compensation(row, oid, i) for i, row in enumerate(comp_raw)]
+    for i, row in enumerate(compensation):
+        if row["source_generation"] not in source_times:
+            raise IntakeError(f"compensation[{i}].source_generation: unknown generation")
 
     acceptance_raw = top["acceptance_route"]
     acceptance = None
     acceptance_time = None
     if acceptance_raw is not None:
-        row = _exact(acceptance_raw, {"opportunity_id", "route", "source_ref", "source_sha256", "observed_at"}, "acceptance_route")
+        row = _exact(acceptance_raw, {"opportunity_id", "source_generation", "route", "source_ref", "source_sha256", "observed_at"}, "acceptance_route")
         if _identifier(row["opportunity_id"], "acceptance_route.opportunity_id") != oid:
             raise IntakeError("acceptance_route: cross-opportunity transplant")
         observed_s, acceptance_time = _utc(row["observed_at"], "acceptance_route.observed_at")
+        generation = _identifier(row["source_generation"], "acceptance_route.source_generation")
+        if generation not in source_times:
+            raise IntakeError("acceptance_route.source_generation: unknown generation")
         acceptance = {
             "opportunity_id": oid,
+            "source_generation": generation,
             "route": _text(row["route"], "acceptance_route.route", 1000),
             "source_ref": _text(row["source_ref"], "acceptance_route.source_ref", 1000),
             "source_sha256": _sha(row["source_sha256"], "acceptance_route.source_sha256"),
@@ -455,16 +468,33 @@ def _state(normalized: dict[str, Any], source_times: dict[str, datetime], eviden
         return "HOLD_INCOMPLETE_EVIDENCE", ["opportunity_class_not_permitted"]
 
     sources = normalized["sources"]
+    by_gen = {row["generation"]: row for row in sources}
+    superseded: set[str] = set()
+    provider_classes = {row["provider_class"] for row in sources}
+    if len(provider_classes) != 1:
+        return "HOLD_EVIDENCE_CONFLICT", ["provider_class_changed_across_generations"]
+    for row in sources:
+        generation = row["generation"]
+        sup = row["supersedes_generation"]
+        if sup is None:
+            continue
+        if sup == generation:
+            return "HOLD_EVIDENCE_CONFLICT", ["generation_self_supersession"]
+        if sup not in by_gen:
+            return "HOLD_EVIDENCE_CONFLICT", ["supersedes_unknown_generation"]
+        if source_times[sup] >= source_times[generation]:
+            return "HOLD_EVIDENCE_CONFLICT", ["supersession_chronology_invalid"]
+        superseded.add(sup)
     if len(sources) > 1:
-        by_gen = {row["generation"]: row for row in sources}
+        roots = [row for row in sources if row["supersedes_generation"] is None]
+        if len(roots) != 1:
+            return "HOLD_EVIDENCE_CONFLICT", ["ambiguous_source_lineage"]
         for row in sources:
-            sup = row["supersedes_generation"]
-            if row["generation"] == active_gen and sup is None:
+            if row["generation"] != roots[0]["generation"] and row["supersedes_generation"] is None:
                 return "HOLD_EVIDENCE_CONFLICT", ["changed_generation_without_supersession"]
-            if sup is not None and sup not in by_gen:
-                return "HOLD_EVIDENCE_CONFLICT", ["supersedes_unknown_generation"]
-            if sup is not None and source_times[sup] >= source_times[row["generation"]]:
-                return "HOLD_EVIDENCE_CONFLICT", ["supersession_chronology_invalid"]
+    terminals = set(by_gen) - superseded
+    if terminals != {active_gen}:
+        return "HOLD_EVIDENCE_CONFLICT", ["active_generation_not_unique_terminal"]
 
     if normalized["blockers"]:
         return "HOLD_DNR_OR_RELATIONSHIP", ["dnr_or_relationship_block"]
@@ -478,10 +508,15 @@ def _state(normalized: dict[str, Any], source_times: dict[str, datetime], eviden
     if active_other_claims:
         return "HOLD_DUPLICATE_CUSTODY", ["active_other_custody"]
 
-    if normalized["acceptance_route"] is None:
+    acceptance = normalized["acceptance_route"]
+    if acceptance is None:
         return "HOLD_NO_ACCEPTANCE_ROUTE", ["no_acceptance_route"]
+    if acceptance["source_generation"] != active_gen:
+        return "HOLD_INCOMPLETE_EVIDENCE", ["acceptance_route_not_bound_to_active_generation"]
 
-    comp = normalized["compensation"]
+    comp = [c for c in normalized["compensation"] if c["source_generation"] == active_gen]
+    if not comp:
+        return "HOLD_INCOMPLETE_EVIDENCE", ["compensation_not_bound_to_active_generation"]
     semantics = {(c["kind"], c["currency"], c["amount_minor"], c["terms"]) for c in comp}
     if len(semantics) > 1:
         return "HOLD_EVIDENCE_CONFLICT", ["compensation_conflict"]
@@ -508,17 +543,20 @@ def compile_document(document: Any, *, clock: Callable[[], datetime] | None = No
     if historical_at is not None:
         if historical_at.tzinfo is None or historical_at.utcoffset() != timezone.utc.utcoffset(historical_at):
             raise IntakeError("historical_at: timezone-aware UTC required")
-        now = historical_at.astimezone(timezone.utc).replace(microsecond=0)
+        now = historical_at.astimezone(timezone.utc)
         historical = True
     else:
         # Current compiler owns the clock and samples only after candidate authentication.
-        now = (clock or (lambda: datetime.now(timezone.utc)))().astimezone(timezone.utc).replace(microsecond=0)
+        clock_value = (clock or (lambda: datetime.now(timezone.utc)))()
+        if clock_value.tzinfo is None:
+            raise IntakeError("clock: timezone-aware time required")
+        now = clock_value.astimezone(timezone.utc)
         historical = False
     state, blockers = _state(normalized, source_times, evidence_times, now, historical)
     record = {
         "schema": "commons.external_opportunity_intake.v1",
         "evaluation_mode": "HISTORICAL_REPLAY" if historical else "CURRENT",
-        "evaluated_at": now.isoformat(timespec="seconds").replace("+00:00", "Z"),
+        "evaluated_at": now.isoformat(timespec="microseconds").replace("+00:00", "Z"),
         "state": state,
         "blockers": blockers,
         "opportunity": normalized,
@@ -548,14 +586,23 @@ def verify_record(record: Any) -> None:
     actual = sha256_hex(canonical_bytes(body))
     if supplied != actual:
         raise IntakeError("record: receipt mismatch")
-    if record["evaluation_mode"] == "HISTORICAL_REPLAY" and record["state"] == READY:
-        raise IntakeError("record: historical replay cannot be current READY")
+
+    normalized, source_times, evidence_times = _normalize(record["opportunity"])
+    if normalized != record["opportunity"]:
+        raise IntakeError("record: opportunity is not canonically normalized")
+    evaluated_s, evaluated = _utc(record["evaluated_at"], "evaluated_at")
+    if evaluated_s != record["evaluated_at"]:
+        raise IntakeError("record: evaluated_at is not canonical")
+    historical = record["evaluation_mode"] == "HISTORICAL_REPLAY"
+    expected_state, expected_blockers = _state(normalized, source_times, evidence_times, evaluated, historical)
+    if record["state"] != expected_state or record["blockers"] != expected_blockers:
+        raise IntakeError("record: derived semantic state mismatch")
 
 
 def render_markdown(record: dict[str, Any]) -> str:
     verify_record(record)
     opp = record["opportunity"]
-    comp = opp["compensation"][0]
+    comp = next(c for c in opp["compensation"] if c["source_generation"] == opp["active_source_generation"])
     if comp["kind"] == "FIXED":
         comp_text = f"{comp['amount_minor']} minor units {comp['currency']}"
     elif comp["kind"] == "NON_FIXED":
@@ -579,20 +626,44 @@ def render_markdown(record: dict[str, Any]) -> str:
 
 def write_bundle(document: Any, output_dir: str | os.PathLike[str], *, clock: Callable[[], datetime] | None = None, historical_at: datetime | None = None) -> dict[str, Any]:
     out = Path(output_dir)
-    try:
-        out.mkdir(parents=True, exist_ok=False)
-    except FileExistsError as exc:
-        raise IntakeError("output directory already exists") from exc
+    # Validate and render completely before reserving the final destination.
     record = compile_document(document, clock=clock, historical_at=historical_at)
     record_bytes = canonical_bytes(record) + b"\n"
     md = render_markdown(record).encode("utf-8")
-    (out / "record.json").write_bytes(record_bytes)
-    (out / "routing.md").write_bytes(md)
     manifest = {
         "schema": "commons.external_opportunity_intake.bundle.v1",
         "record_sha256": sha256_hex(record_bytes),
         "routing_sha256": sha256_hex(md),
         "semantic_receipt_sha256": record["receipt_sha256"],
     }
-    (out / "manifest.json").write_bytes(canonical_bytes(manifest) + b"\n")
-    return record
+    manifest_bytes = canonical_bytes(manifest) + b"\n"
+
+    parent = out.parent
+    parent.mkdir(parents=True, exist_ok=True)
+    stage = Path(tempfile.mkdtemp(prefix=f".{out.name}.stage-", dir=parent))
+    lock = parent / f".{out.name}.publish-lock"
+    lock_fd: int | None = None
+    try:
+        (stage / "record.json").write_bytes(record_bytes)
+        (stage / "routing.md").write_bytes(md)
+        (stage / "manifest.json").write_bytes(manifest_bytes)
+        try:
+            lock_fd = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
+        except FileExistsError as exc:
+            raise IntakeError("output publication is already in progress") from exc
+        if out.exists():
+            raise IntakeError("output directory already exists")
+        # The lock makes this no-replace publication exclusive for cooperating writers.
+        os.rename(stage, out)
+        stage = Path()
+        return record
+    finally:
+        if lock_fd is not None:
+            os.close(lock_fd)
+            try:
+                lock.unlink()
+            except FileNotFoundError:
+                pass
+        if stage and stage.exists() and stage != Path():
+            shutil.rmtree(stage, ignore_errors=True)
+
