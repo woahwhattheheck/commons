@@ -46,6 +46,11 @@ RACE_CASES=['delayed_valid_edit','delayed_invalid_edit','delayed_reset',
  'delayed_same_receipt_replacement','delayed_other_receipt','newer_restore_wins',
  'read_failure','stale_read_failure']
 CASES=list(VALID)+list(INVALID)+SCHEMA_CASES+RACE_CASES
+# Explicit expected contracts, never chosen by observing what happens to pass.
+CONTRACTS={
+ 'historical':{'bom':'accept','invalid_edit_diagnostic':'Notes changed'},
+ 'strict-shared':{'bom':'reject','invalid_edit_diagnostic':'UTF-8'},
+}
 
 SETUP=r'''
 window.byteReview={networkCalls:0,gates:[],jobs:[]};
@@ -119,13 +124,32 @@ async def release(page,index:int,reject:bool=False)->None:
     await page.evaluate('([i,bad]) => bad ? byteReview.gates[i].reject() : byteReview.gates[i].release()',[index,reject])
     await page.evaluate('(i) => byteReview.jobs[i]',index)
 
-async def run_case(page,name:str)->dict:
+async def click_control(page,selector:str)->None:
+    # New presentation wraps import controls in a collapsed native disclosure.
+    # Open actual summaries; never force-click hidden controls or mutate app state.
+    target=page.locator(selector)
+    for _ in range(8):
+        closed=target.locator('xpath=ancestor::details[not(@open)]')
+        if not await closed.count():
+            await target.click()
+            return
+        await closed.first.locator(':scope > summary').first.click()
+    raise AssertionError('Too many closed disclosure ancestors')
+
+async def run_case(page,name:str,contract:str='historical')->dict:
     before=await snapshot(page)
     value=VALID.get(name,'SAVED_SENTINEL')
     draft=await page.evaluate('(note) => byteReview.draft(note)',value)
     raw=json_bytes(draft)
     if name in VALID:
-        if name=='valid_bom': raw=b'\xef\xbb\xbf'+raw
+        if name=='valid_bom':
+            raw=b'\xef\xbb\xbf'+raw
+            if CONTRACTS[contract]['bom']=='reject':
+                await upload(page,raw);await restore(page);after=await snapshot(page)
+                unchanged(before,after)
+                demand('JSON' in after['error'],'Declared BOM rejection did not diagnose invalid JSON')
+                demand(not after['importDisabled'],'Restore button stuck after BOM rejection')
+                return after
         if name=='valid_all_twelve_reordered':
             draft['cell_notes'].reverse();raw=json_bytes(draft)
         await upload(page,raw);await restore(page)
@@ -161,7 +185,7 @@ async def run_case(page,name:str)->dict:
         first=await pending(page,raw,'delayed-first.json')
         if name in ('read_failure','stale_read_failure'):
             if name=='stale_read_failure':
-                await page.click('#resetBtn');before=await snapshot(page)
+                await click_control(page,'#resetBtn');before=await snapshot(page)
             await release(page,first,reject=True);after=await snapshot(page)
             unchanged(before,after)
             demand(bool(after['error'])==(name=='read_failure'),'Wrong stale/read error behavior')
@@ -169,11 +193,13 @@ async def run_case(page,name:str)->dict:
         if name in ('delayed_valid_edit','delayed_invalid_edit'):
             await page.evaluate('() => byteReview.edit("Newer edit must survive")')
             before=await snapshot(page);await release(page,first);after=await snapshot(page)
-            unchanged(before,after);demand('Notes changed' in after['error'],'No intervening-edit diagnostic')
+            unchanged(before,after)
+            expected=CONTRACTS[contract]['invalid_edit_diagnostic'] if name=='delayed_invalid_edit' else 'Notes changed'
+            demand(expected in after['error'],'Declared diagnostic precedence changed: '+after['error'])
             return after
-        if name=='delayed_reset': await page.click('#resetBtn')
+        if name=='delayed_reset': await click_control(page,'#resetBtn')
         elif name=='delayed_same_receipt_replacement':
-            await page.click('#demoBtn');await page.evaluate('() => byteReview.edit("New same-receipt generation")')
+            await click_control(page,'#demoBtn');await page.evaluate('() => byteReview.edit("New same-receipt generation")')
         elif name=='delayed_other_receipt':
             await page.evaluate('() => {const r=syntheticReport();r.receipt_sha256="e".repeat(64);installReport(r);byteReview.edit("Other receipt");}')
         elif name=='newer_restore_wins':
@@ -208,11 +234,14 @@ async def main(args)->int:
     html=shared.HTML if not args.html else re.sub(r'<script\b[^>]*>[\s\S]*?</script\s*>','',args.html.read_text(encoding='utf-8'),flags=re.I)
 
     result={'schema':'zz-kestrel-saved-draft-byte-review/v1','generated_at':datetime.now(timezone.utc).isoformat(),
-      'variant':label,'historical_fixture_base_commit':BASE if not args.candidate else None,'app_git_blob':blob,
+      'variant':label,'contract_profile':args.contract,'expected_contract':CONTRACTS[args.contract],
+      'candidate_commit_as_supplied':args.candidate_commit if args.candidate else None,
+      'historical_fixture_base_commit':BASE if not args.candidate else None,'app_git_blob':blob,
       'app_publication':'TEST_INPUT_ONLY_NOT_A_LIVE_UI_INTEGRATION_CLAIM',
       'source_pins':{name:git_blob(value) for name,value in inputs.items()},
       'runner_git_blob':git_blob(Path(__file__).read_bytes()),
       'dom_sha256':hashlib.sha256(html.encode('utf-8')).hexdigest(),
+      'html_git_blob':git_blob(args.html.read_bytes()) if args.html else None,
       'optimized_python':not __debug__,'environment':{'python':platform.python_version(),'platform':platform.platform()},
       'scope':'Actual Chromium File bytes + exact app/helpers + fixture DOM; not production layout, parent compiler, HTTP, hosted CI or merge.','results':[]}
     async with async_playwright() as p:
@@ -239,7 +268,7 @@ async def main(args)->int:
                     }
                     selectCell('ESS|software_development');el.search.value='ESS';renderMatrix();
                 }''')
-                observed=await asyncio.wait_for(run_case(page,name),timeout=10)
+                observed=await asyncio.wait_for(run_case(page,name,args.contract),timeout=10)
                 demand(observed['networkCalls']==0,'Unexpected network call')
                 demand(not errors,'Page error: '+str(errors))
                 record.update({'pass':True,'observed':observed})
@@ -265,6 +294,9 @@ if __name__=='__main__':
     parser.add_argument('--handoff',type=Path,help='Candidate helper; defaults to handoff.js beside candidate.')
     parser.add_argument('--importer',type=Path,help='Candidate strict parser; defaults to handoff_import.js beside candidate.')
     parser.add_argument('--html',type=Path,help='Optional native DOM; scripts removed, all browser network requests aborted.')
+    parser.add_argument('--contract',choices=CONTRACTS,default='historical',
+                        help='Explicit BOM/diagnostic expectations; does not alter the app or preservation checks.')
+    parser.add_argument('--candidate-commit',help='Optional claimed source commit; actual input blob identities are always recorded.')
     parser.add_argument('--chromium',default='/usr/bin/chromium')
     parser.add_argument('--output',type=Path,required=True)
     raise SystemExit(asyncio.run(main(parser.parse_args())))
