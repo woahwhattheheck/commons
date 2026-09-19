@@ -1,13 +1,13 @@
 {
   "counts": {
-    "open_issues": 187,
-    "open_pull_requests": 98,
-    "runs_in_progress": 17,
-    "runs_queued": 687
+    "open_issues": 186,
+    "open_pull_requests": 99,
+    "runs_in_progress": 14,
+    "runs_queued": 694
   },
   "counts_source": "graphql",
   "degraded": [],
-  "drafts": 7,
+  "drafts": 8,
   "longest_open": [
     {
       "author": "woahwhattheheck",
@@ -51,7 +51,7 @@
       "head_sha": "1c5d3124d105457b83015f767c1628a9905dc080",
       "number": 15635,
       "title": "Recover Nebius ProofPatch evidence-bound coding agent",
-      "updated_at": "2026-09-18T01:07:22Z"
+      "updated_at": "2026-09-19T14:19:14Z"
     },
     {
       "author": "woahwhattheheck",
@@ -66,6 +66,28 @@
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-nacre6t4m/uiowa-135-milestone-packets",
+      "created_at": "2026-09-19T14:19:26Z",
+      "draft": true,
+      "head_sha": "df6d0058feb8d49895dd9b6b250db679792178f9",
+      "number": 16287,
+      "title": "UIOWA-135: source-bound milestone delivery packets and synthetic rehearsal",
+      "updated_at": "2026-09-19T14:19:26Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz/lantern73-uiowa118",
+      "created_at": "2026-09-19T14:19:14Z",
+      "draft": false,
+      "head_sha": "e7c0760356293e0da38d60131ecd7263ab699cb8",
+      "number": 16286,
+      "title": "UIOWA-118: source-linked plain-language glossary and reusable help",
+      "updated_at": "2026-09-19T14:19:14Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -98,17 +120,6 @@
       "number": 16281,
       "title": "UIOWA-129: DST-safe timestamp adapter with real delivery-calculator integration",
       "updated_at": "2026-09-19T14:17:10Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/helix-uiowa087-validity-20260919",
-      "created_at": "2026-09-19T14:17:00Z",
-      "draft": false,
-      "head_sha": "d267cc23173660308ef87c88dcdcc492e664a042",
-      "number": 16280,
-      "title": "fix(uiowa-087): prevent invalid evidence from yielding favorable outcomes",
-      "updated_at": "2026-09-19T14:17:00Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 16271,
       "title": "Sample precision: preserve denominators and unknown outcomes in analyst rate summaries",
       "updated_at": "2026-09-19T14:12:52Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/copper-workbench-static-query-20260919",
-      "created_at": "2026-09-19T14:12:36Z",
-      "draft": false,
-      "head_sha": "77d241d91044c09d6a6ae3681b1629702dbb2d67",
-      "number": 16270,
-      "title": "Workbench: restore query-bearing demo launches with HTTP regression coverage",
-      "updated_at": "2026-09-19T14:18:34Z"
     }
   ],
   "open_heads": {
@@ -272,15 +272,27 @@
     "16275": "42309e9d8b20bafae9af6747fda69323569a3228",
     "16278": "a19006c5b979197d6f05553244b5faccbd89cffd",
     "16279": "5e49d33e8bab2550bdbbde1939796b04fd6d89a6",
-    "16280": "d267cc23173660308ef87c88dcdcc492e664a042",
     "16281": "0a44ac9a1b7a6f8c37de81eba809f9caa238c9ba",
     "16283": "a2abe1adc85d057d811770bd6b0bbcd8baf2797c",
-    "16284": "b0f724ba47b052efbde930be608c308df5bf3a9b"
+    "16284": "b0f724ba47b052efbde930be608c308df5bf3a9b",
+    "16286": "e7c0760356293e0da38d60131ecd7263ab699cb8",
+    "16287": "df6d0058feb8d49895dd9b6b250db679792178f9"
   },
-  "pulls_listed": 98,
+  "pulls_listed": 99,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 40.4,
+  "queue_depth_per_runner": 49.6,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/helix-uiowa087-validity-20260919",
+      "closed_at": "2026-09-19T14:19:50Z",
+      "head_sha": "d267cc23173660308ef87c88dcdcc492e664a042",
+      "merged_at": "2026-09-19T14:19:50Z",
+      "number": 16280,
+      "state": "MERGED",
+      "title": "fix(uiowa-087): prevent invalid evidence from yielding favorable outcomes"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -434,21 +446,10 @@
       "number": 15953,
       "state": "CLOSED",
       "title": "E2B exact-head executor for off-owner-machine test receipts"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa-063-basalt73-recovery",
-      "closed_at": "2026-09-19T13:57:32Z",
-      "head_sha": "98aef73ab14e8af576f78f98b098a81ef05fcacc",
-      "merged_at": "2026-09-19T13:57:32Z",
-      "number": 16214,
-      "state": "MERGED",
-      "title": "UIOWA-063: retry-aware recovery timing and evidence-preserving replay"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T14:19:08Z",
+  "unchanged_since": "2026-09-19T14:20:14Z",
   "undatable_pulls": []
 }
