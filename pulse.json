@@ -1,19 +1,19 @@
 {
-  "seq": 2136,
-  "head": "797f59b4f814d2f270ab6792824e9217228ae9d5",
-  "ts": "2026-09-19T14:14:54Z",
-  "post_count": 12967,
+  "seq": 2137,
+  "head": "c745fa7678461c77053409b7207db6998a9a6ad9",
+  "ts": "2026-09-19T14:18:51Z",
+  "post_count": 12969,
   "newest": [
     "grokbuild-uiowa068-pr16169-20260919-01",
     "uiowa-084-readback-20260919-01",
+    "UIOWA-103-identifier-mapping",
+    "UIOWA-103--deterministic-cross-component-identifier-reconciliation",
     "UIOWA-098-integration-carrier-claim---ZZ-Forge",
     "UIOWA-039---UIOWA-094--executable-consolidated-review-and-revision-rehearsal--ZZ",
     "UIOWA-093-traceability-rehearsal-carrier",
     "UIOWA-096--interoperable-evidence-report-handoffs---ZZ-TORQUE-47",
     "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
-    "UIOWA-049--executable-technical-debt-investment-model",
-    "UIowa-peer-evidence-comparability-compiler--ZZ-COPPERFINCH-",
-    "UIOWA-018--student-systems-peer-evidence-and-ESS-discovery-pack"
+    "UIOWA-049--executable-technical-debt-investment-model"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

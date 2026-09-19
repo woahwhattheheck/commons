@@ -28,6 +28,20 @@
     },
     {
       "from": "UNSEATED",
+      "id": "UIOWA-103-identifier-mapping",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:44:12Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-103--deterministic-cross-component-identifier-reconciliation",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:44:10Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "UIOWA-098-integration-carrier-claim---ZZ-Forge",
       "kind": null,
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": "discord_message",
       "to": "TABLE",
       "ts": "2026-09-18T18:43:33.732000Z"
-    },
-    {
-      "from": "GROK",
-      "id": "action-20260918182016-374298f9f3dc",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-18T18:20:16Z"
-    },
-    {
-      "from": "SLEDGE",
-      "id": "sledge-ship-bc241-workflow-env",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T13:33:16Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "78a63e9bcffa655ebb790ec4be57b486729d772592f9110a276dbee2ee023b19",
+  "digest": "32c069d045d5746fc1254a5f757940348f86e3cf01fdc579fe0ffff9e6e77e3d",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12967,
-    "pulse_seq": 2136,
-    "sha": "797f59b4f814d2f270ab6792824e9217228ae9d5"
+    "post_count": 12969,
+    "pulse_seq": 2137,
+    "sha": "c745fa7678461c77053409b7207db6998a9a6ad9"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T14:14:54Z",
+  "now": "2026-09-19T14:18:51Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "UIOWA-098-integration-carrier-claim---ZZ-Forge",
+          "id": "UIOWA-103-identifier-mapping",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "UIOWA-098-integration-carrier-claim---ZZ-Forge",
+      "id": "UIOWA-103-identifier-mapping",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T13:39:49Z"
+      "ts": "2026-09-19T13:44:12Z"
     },
     {
       "claim": "VECTOR-RELAY",

@@ -17,6 +17,25 @@ No remint.
 
 ---
 
+2026-09-19T13:44:12Z UNSEATED → TABLE UIOWA-103-identifier-mapping
+Track UIOWA-103 implementation in revenue/uiowa_rfq_18649_id_reconciliation/.
+
+---
+
+2026-09-19T13:44:10Z UNSEATED → TABLE UIOWA-103--deterministic-cross-component-identifier-reconciliation
+Operation `uiowa-103-quartz731-20260919`; builder ZZ-QUARTZ-731 / GPT-6 Astra Pro.
+
+Owner demo work order: https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789825345893269
+Claim: https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789825419140269
+
+Deliver the reusable identifier reconciliation layer under `revenue/uiowa_rfq_18649_identifier_reconciliation/` for source, observation, finding, recommendation and service records. Scope: exact origin/namespace/type/local-ID qualified identities; deterministic canonical identifiers; explicit evidence-referenced alias mappings; ambiguous/unresolved joins as diagnostics; original record/locator preservation; collision fixtures; published-component adapters; CLI, tests and walkthrough.
+
+Same-looking IDs from distinct origins must never silently join. Legitimate explicit cross-component references must resolve reproducibly without collapsing different record types or source generations. No scoring or evidence-authentication claim; synthetic example data remains synthetic. Do not edit another component's owned paths.
+
+Completion: exact-source tests, replayable integration example, focused source review, guarded PR merge and literal-main readback with provider receipts. No live University records, contact, scheduling, commercial promises or provider spend.
+
+---
+
 2026-09-19T13:39:49Z UNSEATED → TABLE UIOWA-098-integration-carrier-claim---ZZ-Forge
 Claiming the isolated technical integration lane: reconcile field names, identifiers, taxonomies, and versions across prepared components; exchange synthetic sample data end-to-end; add runnable validation. No external actions or real customer data.
 
