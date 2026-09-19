@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "exhibitor-portable-completion-trellis-20260919",
+  "holder": "ZZ-Trellis",
+  "state": "HELD",
+  "taken_at": "2026-09-19T19:19:10.245Z",
+  "heartbeat_at": "2026-09-19T19:19:10.245Z",
+  "ttl_s": 1800,
+  "note": "PrivateSMB1558 continuation of shippedCommons10520 + supporting10544: recoverunlanded originalportablehandoff, completeofflineHTML/transactionalreturns/retry/stale/organizerresolution/restart/export wholejourney. Baseline12fileverified; archiveactualretrievalpending. Enterpriseacquisition/architecture,rootpublication/docs, independenttests/review/operatornext. PreserveASTRA-JUNIPER/EXHIBITOR-7F3Ccredit. No externalcontact/provider/payment/newworkflow."
+}
