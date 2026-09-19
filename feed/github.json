@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 189,
-    "open_pull_requests": 154,
-    "runs_in_progress": 12,
-    "runs_queued": 1191
+    "open_issues": 188,
+    "open_pull_requests": 157,
+    "runs_in_progress": 14,
+    "runs_queued": 1205
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,61 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zz/keyframe9d7e-soundness-reader-20260919",
+      "created_at": "2026-09-19T15:47:46Z",
+      "draft": false,
+      "head_sha": "87415d6431ca607aacbec7f9c8a5effc7e5b8682",
+      "number": 16418,
+      "title": "Publish standalone sample-soundness reader guide and observed operator results",
+      "updated_at": "2026-09-19T15:47:46Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-kestrel6d9fr3-uiowa108-output-donor",
+      "created_at": "2026-09-19T15:47:14Z",
+      "draft": false,
+      "head_sha": "7c69f5a029e0e21c40d99c9ffc050ee04eb3b162",
+      "number": 16417,
+      "title": "UIOWA-108: retain non-destructive output repair and independent replay",
+      "updated_at": "2026-09-19T15:47:14Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-meridian-h6k9/uiowa051-integration-20260919",
+      "created_at": "2026-09-19T15:47:06Z",
+      "draft": false,
+      "head_sha": "0824cf6fa8d2d08bf70c31b100cdbcdb8327bf4f",
+      "number": 16416,
+      "title": "UIOWA-051: complete secure-design evidence interchange and usable change rehearsal",
+      "updated_at": "2026-09-19T15:47:06Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-basalt-v3l6-uiowa071-readout-20260919",
+      "created_at": "2026-09-19T15:46:52Z",
+      "draft": false,
+      "head_sha": "f3786bdc32b901fb94f1ea693dd29c4720a8e7d8",
+      "number": 16415,
+      "title": "UIOWA-071: publish the executed evidence-change operator walkthrough",
+      "updated_at": "2026-09-19T15:46:52Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-halyard-d62/uiowa062-delivery-flow",
+      "created_at": "2026-09-19T15:44:59Z",
+      "draft": false,
+      "head_sha": "2201f47e5a9b66ca12eb8feab2648f1cc87a5570",
+      "number": 16413,
+      "title": "UIOWA-062: complete offline delivery-flow assessment and worked operator kit",
+      "updated_at": "2026-09-19T15:44:59Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "swarm-zz/a91c-r6-review-migration-guide",
       "created_at": "2026-09-19T15:44:29Z",
       "draft": false,
@@ -76,28 +131,6 @@
       "number": 16412,
       "title": "UIOWA-039: deliver source-bound register migration operator guide",
       "updated_at": "2026-09-19T15:44:29Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/zz-harborglass23r-transport-readout-20260919",
-      "created_at": "2026-09-19T15:43:24Z",
-      "draft": false,
-      "head_sha": "c5cf4ade6a63fc25bbfc387d7a19397c69f83be0",
-      "number": 16411,
-      "title": "UIOWA-031: source-bound worked transport example for the live demo",
-      "updated_at": "2026-09-19T15:43:24Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa048-helio-c72a-20260919",
-      "created_at": "2026-09-19T15:42:27Z",
-      "draft": false,
-      "head_sha": "c9f9380793a2b4867187efff5cfa60e5dcef005d",
-      "number": 16410,
-      "title": "UIOWA-048: executable documentation-usability review and operator rehearsal",
-      "updated_at": "2026-09-19T15:42:27Z"
     },
     {
       "author": "woahwhattheheck",
@@ -130,7 +163,7 @@
       "head_sha": "ba1757c8d6e460e884d34c1480d6ec188d2eed3a",
       "number": 16406,
       "title": "UIOWA-114: recover question-card generator with reference and export integrity",
-      "updated_at": "2026-09-19T15:38:20Z"
+      "updated_at": "2026-09-19T15:46:10Z"
     },
     {
       "author": "woahwhattheheck",
@@ -142,39 +175,6 @@
       "number": 16404,
       "title": "UIOWA-107: worked preparation choices and six-case operator walkthrough",
       "updated_at": "2026-09-19T15:35:30Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/zz-kestrel62d-uiowa029-20260919",
-      "created_at": "2026-09-19T15:33:05Z",
-      "draft": false,
-      "head_sha": "f19b0074be03409abed2d384bd2587c6d2e88da4",
-      "number": 16401,
-      "title": "UIOWA-029: integrate horizon method, repair uncertainty states, and add editable-input workflow",
-      "updated_at": "2026-09-19T15:33:05Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "work/uiowa107-astra-rivet-20260919",
-      "created_at": "2026-09-19T15:33:00Z",
-      "draft": false,
-      "head_sha": "f85af6742cb155326cdf76a9caae491d10264593",
-      "number": 16400,
-      "title": "UIOWA-107: finite quantities and six-case deadline preparation rehearsal",
-      "updated_at": "2026-09-19T15:33:00Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zz-ibis93c-handoff-duplicates-20260919",
-      "branch": "zz-heliotrope-k3q7-handoff-reader-20260919",
-      "created_at": "2026-09-19T15:32:55Z",
-      "draft": false,
-      "head_sha": "1d03cc0c89778c81f7976ec274a04836066ff25d",
-      "number": 16399,
-      "title": "feat(uiowa): portable multi-draft review reader with real-parent and browser tests",
-      "updated_at": "2026-09-19T15:32:55Z"
     }
   ],
   "open_heads": {
@@ -302,7 +302,7 @@
     "16353": "0f85aae42713cc0a5ba7acebd41c0c2704551f2e",
     "16355": "86042e099f22db00be9ce3351e1f799341414e60",
     "16356": "3dac1cbc961beebe84faa64a02146427270227e7",
-    "16359": "74f5cda47068e4fde074e13be83270ee17113b35",
+    "16359": "b2453240265b680162156c8f8220a227eff4bf2e",
     "16362": "80303d7178b17695f90b3ba1bc938ecbcbe91a51",
     "16363": "29e3d3d0bda9571144fa31c55185742d9ffd49ef",
     "16365": "5bcda15b53a779d7c1e39072973dac2713175e81",
@@ -329,14 +329,50 @@
     "16406": "ba1757c8d6e460e884d34c1480d6ec188d2eed3a",
     "16407": "45439a3b1fe0abb7a8c724fe8041132c3406ee67",
     "16409": "83962c6bfac10177a1639eb2b2f5e3c7f1331bef",
-    "16410": "c9f9380793a2b4867187efff5cfa60e5dcef005d",
-    "16411": "c5cf4ade6a63fc25bbfc387d7a19397c69f83be0",
-    "16412": "614f17f3754bd33e67076257fede84a4dd744e8a"
+    "16412": "614f17f3754bd33e67076257fede84a4dd744e8a",
+    "16413": "2201f47e5a9b66ca12eb8feab2648f1cc87a5570",
+    "16415": "f3786bdc32b901fb94f1ea693dd29c4720a8e7d8",
+    "16416": "0824cf6fa8d2d08bf70c31b100cdbcdb8327bf4f",
+    "16417": "7c69f5a029e0e21c40d99c9ffc050ee04eb3b162",
+    "16418": "87415d6431ca607aacbec7f9c8a5effc7e5b8682"
   },
-  "pulls_listed": 154,
+  "pulls_listed": 157,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 99.2,
+  "queue_depth_per_runner": 86.1,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-faraday-io-da397452-operator-guide",
+      "closed_at": "2026-09-19T15:47:02Z",
+      "head_sha": "a32f438558064e543fcecbb121baef7e52d209f1",
+      "merged_at": "2026-09-19T15:47:02Z",
+      "number": 16414,
+      "state": "MERGED",
+      "title": "UIOWA-064: deliver executed output-preservation operator guide"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-harborglass23r-transport-readout-20260919",
+      "closed_at": "2026-09-19T15:46:19Z",
+      "head_sha": "c5cf4ade6a63fc25bbfc387d7a19397c69f83be0",
+      "merged_at": "2026-09-19T15:46:19Z",
+      "number": 16411,
+      "state": "MERGED",
+      "title": "UIOWA-031: source-bound worked transport example for the live demo"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/uiowa048-helio-c72a-20260919",
+      "closed_at": "2026-09-19T15:45:11Z",
+      "head_sha": "c9f9380793a2b4867187efff5cfa60e5dcef005d",
+      "merged_at": "2026-09-19T15:45:10Z",
+      "number": 16410,
+      "state": "MERGED",
+      "title": "UIOWA-048: executable documentation-usability review and operator rehearsal"
+    },
     {
       "author": "woahwhattheheck",
       "base": "zz/sextant47-sample-soundness-20260919",
@@ -461,28 +497,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "swarm/zz-celadon-r9-staging-replay-20260919",
-      "closed_at": "2026-09-19T15:26:47Z",
-      "head_sha": "35d90a9d8204fe4efd0950f091e7b83a808c1201",
-      "merged_at": "2026-09-19T15:26:47Z",
-      "number": 16381,
-      "state": "MERGED",
-      "title": "UIOWA-064: independent staging-failure replay with executable negative controls"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa124-rehearsal-readout-keystone-k4j9",
-      "closed_at": "2026-09-19T15:26:31Z",
-      "head_sha": "7913ff82caeb81ad5d7de326f8752c3f43695857",
-      "merged_at": "2026-09-19T15:26:31Z",
-      "number": 16384,
-      "state": "MERGED",
-      "title": "docs(uiowa124): seven executed reviewer-import outcomes for the demo"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "z-costaqua/15926-provider-observed-truth-20260917",
       "closed_at": "2026-09-19T15:25:19Z",
       "head_sha": "250a6d3ecdc1c152cf4d57307df85fc02de1702a",
@@ -490,21 +504,10 @@
       "number": 15942,
       "state": "MERGED",
       "title": "Recover delivery-state repair with optimized proof and runnable walkthrough"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa108-meridianq7-readout",
-      "closed_at": "2026-09-19T15:23:19Z",
-      "head_sha": "9438fca47aa4bdaf36bdbff71a2c58dd6dec18ca",
-      "merged_at": "2026-09-19T15:23:19Z",
-      "number": 16374,
-      "state": "MERGED",
-      "title": "UIOWA-108: land the worked contractor-transition operator readout"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T15:44:36Z",
+  "unchanged_since": "2026-09-19T15:48:09Z",
   "undatable_pulls": []
 }
