@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 190,
-    "open_pull_requests": 122,
-    "runs_in_progress": 14,
-    "runs_queued": 872
+    "open_pull_requests": 124,
+    "runs_in_progress": 12,
+    "runs_queued": 887
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -66,6 +66,39 @@
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-sapphire-63e1-uiowa100-run-evidence",
+      "created_at": "2026-09-19T14:46:51Z",
+      "draft": false,
+      "head_sha": "9659aa85043c6b03a5b81f2fe28ee243f58a0a69",
+      "number": 16330,
+      "title": "UIOWA-100: preserve sample execution evidence and prior operator results",
+      "updated_at": "2026-09-19T14:46:51Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-thistle-7c91-search-provenance-repair",
+      "created_at": "2026-09-19T14:46:49Z",
+      "draft": false,
+      "head_sha": "75b791dbc19e809c0273e7624defb54e2c833078",
+      "number": 16329,
+      "title": "UIOWA-127: bind evidence search to source bytes and exact record IDs",
+      "updated_at": "2026-09-19T14:46:49Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-trellis/uiowa-014-peer-cohort-20260919",
+      "created_at": "2026-09-19T14:46:20Z",
+      "draft": false,
+      "head_sha": "73732d79040c263a623504636b9c7eb3b1c7a60e",
+      "number": 16328,
+      "title": "UIOWA-014: publish source-backed peer cohort and staffing comparability rationale",
+      "updated_at": "2026-09-19T14:46:20Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -142,39 +175,6 @@
       "number": 16319,
       "title": "UIOWA-109: integrated release-to-recovery demonstration with source-bound evidence",
       "updated_at": "2026-09-19T14:39:03Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-ibis93c-handoff-duplicates-20260919",
-      "created_at": "2026-09-19T14:39:03Z",
-      "draft": false,
-      "head_sha": "459c90ad8bb4627363be2039115f40717c72545d",
-      "number": 16318,
-      "title": "fix(uiowa): keep duplicate handoffs from clearing pending review",
-      "updated_at": "2026-09-19T14:44:05Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-astra-quartz/uiowa-126-visual-states-20260919",
-      "created_at": "2026-09-19T14:35:40Z",
-      "draft": false,
-      "head_sha": "7a710b90554e2bf0428ad506a2893e8cc0a12981",
-      "number": 16265,
-      "title": "UIOWA-126: preserve evidence and numeric-availability states in actual workbench rendering",
-      "updated_at": "2026-09-19T14:36:57Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz-lodestone47-rating-integrity-20260919",
-      "created_at": "2026-09-19T14:35:39Z",
-      "draft": false,
-      "head_sha": "c94723133cc6052b51a06a677f9dfc9240b4e65a",
-      "number": 16317,
-      "title": "UIOWA-022: preserve settings and service-level report integrity",
-      "updated_at": "2026-09-19T14:35:39Z"
     }
   ],
   "open_heads": {
@@ -194,7 +194,7 @@
     "15724": "d281fe366864f16b72f2e0de4f2ca8de0c882285",
     "15730": "6de2ebe497af6feefec3ec9ffeba848a89f87fce",
     "15731": "0900f7c40284d7576b016cbafb541d5ec06edb0d",
-    "15732": "8cd5546c7fef5d2d2b48101e7a40d134ddaed2b0",
+    "15732": "b229fa33e3ac899010b105d1d3c01c727d6062b7",
     "15751": "b87f58434b653ee8bed28b8c85bbe3eb49d95905",
     "15756": "a4421fda4c77dd988fd2ff75d8d07e15f13d5f8c",
     "15758": "3f6c365bc02476ed9ecaab888d4faf07b0a8b6fc",
@@ -274,7 +274,6 @@
     "16283": "a2abe1adc85d057d811770bd6b0bbcd8baf2797c",
     "16286": "0c9326dabff786f06cb2de6590534e745cb14fe7",
     "16287": "df6d0058feb8d49895dd9b6b250db679792178f9",
-    "16288": "91a29c34783a9ae4c0fbcfd826e60ebbe3dd9774",
     "16289": "fad7e3dbbc61dc4f110395c408c8a9fe1c0629ad",
     "16290": "2001e7c1c350fe56a0276ad234f5d687ce9865ca",
     "16291": "598c7b3e4b012625a9309e14126acbeb541601d1",
@@ -299,12 +298,26 @@
     "16324": "895f0bff9f569268f628e08a7a2bcb0f1b5b3bfd",
     "16325": "f693abe5578f6ed9e56634fbae5eafcc631b0d31",
     "16326": "5406ef6ca6c75eccf18434a0b809069911326e3f",
-    "16327": "fefde600866ed34492aee8c7bba64a2eaecdea4c"
+    "16327": "fefde600866ed34492aee8c7bba64a2eaecdea4c",
+    "16328": "73732d79040c263a623504636b9c7eb3b1c7a60e",
+    "16329": "75b791dbc19e809c0273e7624defb54e2c833078",
+    "16330": "9659aa85043c6b03a5b81f2fe28ee243f58a0a69"
   },
-  "pulls_listed": 122,
+  "pulls_listed": 124,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 62.3,
+  "queue_depth_per_runner": 73.9,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "sol-z/bounded-canonical-json-20260917",
+      "branch": "zz-quartzline/bounded-json-proof-20260919",
+      "closed_at": "2026-09-19T14:46:28Z",
+      "head_sha": "91a29c34783a9ae4c0fbcfd826e60ebbe3dd9774",
+      "merged_at": "2026-09-19T14:46:28Z",
+      "number": 16288,
+      "state": "MERGED",
+      "title": "test: independent canonical JSON compatibility proof for #15732"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -451,17 +464,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "ac-513-workshare-register-schema-20260919",
-      "closed_at": "2026-09-19T14:17:34Z",
-      "head_sha": "5bb2be121a5161f31ddb3a366c5d03cbe46bfd8d",
-      "merged_at": "2026-09-19T14:17:34Z",
-      "number": 16277,
-      "state": "MERGED",
-      "title": "UIOWA: close AC-5.1.3 workshare register custody schema"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "swarm-zz/uiowa-076-copperfin73-ai-coding",
       "closed_at": "2026-09-19T14:09:00Z",
       "head_sha": "914ad778708a4d87045b16e35683f6d7a730029d",
@@ -473,6 +475,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T14:45:50Z",
+  "unchanged_since": "2026-09-19T14:47:01Z",
   "undatable_pulls": []
 }
