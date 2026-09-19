@@ -145,10 +145,10 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1789844314.998379")
+        self.assertEqual(catalog["slack_ts"], "1789855095.683589")
         self.assertEqual(
             catalog["source_id"],
-            "codex-uiowa-source-relationship-graph-resource-activation-20260919-01",
+            "codex-grantfox-fwc26-workfeed-compiler-resource-activation-20260919-01",
         )
         self.assertIn(
             "codex-commons-context-dispatch-compiler-resource-activation-20260913-01",
@@ -351,10 +351,10 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-uiowa-source-relationship-graph-resource-activation-20260919-01.json",
+            "codex-grantfox-fwc26-workfeed-compiler-resource-activation-20260919-01.json",
         )
         self.assertIn(
-            "inventory/resources/records/codex-uiowa-source-relationship-graph-resource-activation-20260919-01.json",
+            "inventory/resources/records/codex-grantfox-fwc26-workfeed-compiler-resource-activation-20260919-01.json",
             raw.get("record_sources") or [],
         )
         with open(current_activation_path, encoding="utf-8") as handle:
@@ -366,41 +366,41 @@ class TestResourceLedger(unittest.TestCase):
         )
         self.assertEqual(
             current_activation["selected_resource"],
-            "uiowa-source-relationship-graph",
+            "grantfox-fwc26-workfeed-compiler",
         )
-        self.assertEqual(current_activation["projection"]["resources"], 103)
-        self.assertEqual(current_activation["projection"]["producing"], 75)
-        self.assertEqual(current_activation["projection"]["inventory_records"], 65)
+        self.assertEqual(current_activation["projection"]["resources"], 104)
+        self.assertEqual(current_activation["projection"]["producing"], 76)
+        self.assertEqual(current_activation["projection"]["inventory_records"], 66)
         self.assertEqual(
             current_activation["production_truth"]["source_repository"],
             "woahwhattheheck/commons",
         )
-        self.assertEqual(current_activation["production_truth"]["source_pr"], 16448)
+        self.assertEqual(current_activation["production_truth"]["source_pr"], 16472)
         self.assertEqual(
             current_activation["production_truth"]["source_merge_sha"],
-            "28f2a5e67dbc49f94835e19a9ab688ca5d38d85d",
+            "9331d682f6098d9b980eee14641070cd1f3ea111",
         )
         self.assertEqual(
             set(current_activation["production_truth"]["source_paths"]),
             {
-                "revenue/uiowa_rfq_18649_source_graph/README.md",
-                "revenue/uiowa_rfq_18649_source_graph/examples/graph.html",
-                "revenue/uiowa_rfq_18649_source_graph/graph.py",
-                "revenue/uiowa_rfq_18649_source_graph/test_graph.py",
+                "tools/grantfox_fwc26_workfeed/README.md",
+                "tools/grantfox_fwc26_workfeed/__init__.py",
+                "tools/grantfox_fwc26_workfeed/compile.py",
+                "tools/grantfox_fwc26_workfeed/tests/test_compile.py",
             },
         )
         self.assertEqual(
             current_activation["production_truth"]["source_paths"]
-            ["revenue/uiowa_rfq_18649_source_graph/graph.py"],
-            "b40b6f60c753db8e92d373a01834ab35ab76791f",
+            ["tools/grantfox_fwc26_workfeed/compile.py"],
+            "8a28aee8749f75a2ea53fd484e96f2a5b027bbae",
         )
         self.assertEqual(
             current_activation["production_truth"]["maximum_state"],
-            "OFFLINE_PORTABLE_SOURCE_RELATIONSHIP_GRAPH_READY",
+            "OFFLINE_CREATE_EXCLUSIVE_WORKFEED_COMPILER_READY",
         )
         self.assertEqual(
             current_activation["production_truth"]["focused_tests"]["source_suite"],
-            "6/6 PASS NORMAL_AND_OPTIMIZED",
+            "18/18 PASS NORMAL_AND_OPTIMIZED",
         )
         self.assertEqual(current_activation["production_truth"]["provider_writes"], 0)
         self.assertFalse(current_activation["production_truth"]["customer_contact"])
