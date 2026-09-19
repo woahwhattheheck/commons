@@ -1,6 +1,6 @@
 {
-  "seq": 2156,
-  "ts": "2026-09-19T15:20:38Z",
+  "seq": 2157,
+  "ts": "2026-09-19T15:21:48Z",
   "n": 113,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -790,11 +790,11 @@
     },
     {
       "to": "TABLE",
-      "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
+      "id": "UIOWA-088--editable-PowerPoint-export-and-reviewed-integration--PALISADE-43-",
       "from": "UNSEATED",
-      "ts": "2026-09-19T13:57:53Z",
-      "href": "./p/UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories.html",
-      "seq": 2155
+      "ts": "2026-09-19T13:58:41Z",
+      "href": "./p/UIOWA-088--editable-PowerPoint-export-and-reviewed-integration--PALISADE-43-.html",
+      "seq": 2157
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
