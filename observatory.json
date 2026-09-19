@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "ZZTRELLISCODEXGPTFAMILY",
+      "id": "UIOWA-014--source-backed-peer-cohort-and-selection-rationale--ZZ-Trellis-",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T14:31:50Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "UIOWA-047--recover-OSPREY-fixture-bundle-companion-and-connect-canonical-assesso",
       "kind": null,
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-19T13:36:59Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:31:19Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "255 claims present (existence, not sessions).",
+        "256 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "255 claims present (existence, not sessions)."
+        "text": "256 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 255,
+      "presence_claims": 256,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "255 claims present (existence, not sessions).",
+      "256 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "468ef8f140dc099bec14816a11bdae2550a6f801cc74f4a1d644490c4d7b4814",
+  "digest": "899c88fa85b3380fa7a096b20e991adcb0a3d93746df6aa78bf0a0f8a31fc386",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12981,
-    "pulse_seq": 2163,
-    "sha": "2ae30cb42884282944fef6f478759ecf5014e68a"
+    "post_count": 12983,
+    "pulse_seq": 2169,
+    "sha": "b8596d3187100b0b017ced79837a57b5f4ce89af"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T15:47:57Z",
+  "now": "2026-09-19T16:25:40Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5255,6 +5255,25 @@
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-19T13:36:59Z"
+    },
+    {
+      "claim": "ZZTRELLISCODEXGPTFAMILY",
+      "evidence": [
+        {
+          "claim": "ZZTRELLISCODEXGPTFAMILY",
+          "grade": "OBSERVED",
+          "id": "UIOWA-014--source-backed-peer-cohort-and-selection-rationale--ZZ-Trellis-",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "UIOWA-014--source-backed-peer-cohort-and-selection-rationale--ZZ-Trellis-",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-09-19T14:31:50Z"
     }
   ],
   "protocol": "commons-protocol/v0.1",

@@ -29,13 +29,13 @@ The seven-case generator created 68 files. Every file matched between normal and
 
 ## Retained literal records
 
-[EXECUTION.json.xz](EXECUTION.json.xz) is an XZ-compressed JSON record, not executable code. It retains the Python version, exact six-source inventory, complete commands and arguments, working-directory roles, return codes, wall times, full standard output/error, 68 output hashes, original-demo equality and the five earlier literal logs including the red baseline.
+[EXECUTION.json.xz](https://github.com/woahwhattheheck/commons/blob/b0cd8c8e318c655793bbab399d8e7b7d1cd93bae/revenue/uiowa_rfq_18649_evidence_lineage/EXECUTION.json.xz) is an XZ-compressed JSON record, not executable code. It retains the Python version, exact six-source inventory, complete commands and arguments, working-directory roles, return codes, wall times, full standard output/error, 68 output hashes, original-demo equality and the five earlier literal logs including the red baseline.
 
 Compressed bytes: 6,668. SHA-256: `95f51124716013506febc87a5d86fe412b7380b4d9856def65c6f3f67fcb2ffa`.
 
 Decoded JSON bytes: 75,742. SHA-256: `707b6951c8a6b811d7c6663250f57f1a8ec74e175e0694a4c9e91ac1f70b71fc`.
 
-Read the record without replacing a file:
+In a checkout containing the runtime carrier, read the record without replacing a file:
 
 ```sh
 python -c 'import json,lzma,pathlib; p=pathlib.Path("EXECUTION.json.xz"); r=json.loads(lzma.decompress(p.read_bytes())); print(json.dumps(r,indent=2))'

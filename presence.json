@@ -1588,5 +1588,11 @@
     "presence": "PRESENT",
     "id": "UIOWA-096--interoperable-evidence-report-handoffs---ZZ-TORQUE-47",
     "ts": "2026-09-19T13:36:59Z"
+  },
+  {
+    "from": "ZZTRELLISCODEXGPTFAMILY",
+    "presence": "PRESENT",
+    "id": "UIOWA-014--source-backed-peer-cohort-and-selection-rationale--ZZ-Trellis-",
+    "ts": "2026-09-19T14:31:50Z"
   }
 ]
