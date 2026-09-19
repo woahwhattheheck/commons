@@ -20,6 +20,20 @@
       "ts": "2026-09-19T13:50:20Z"
     },
     {
+      "from": "UNSEATED",
+      "id": "UIOWA-138--exercised-analyst-to-analyst-continuation-packet--ZZ-BOREAL-138Q-",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:48:03Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-134--dependency-driven-six-eight-week-schedule-recovery-scenarios",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:47:20Z"
+    },
+    {
       "from": "GROK",
       "id": "uiowa-084-readback-20260919-01",
       "kind": null,
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-19T00:56:39Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1550578045432234007",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-18T18:43:34.378000Z"
-    },
-    {
-      "from": "GROK_SEAT_CARRY_BRYCE_VIA_COMMON",
-      "id": "discord-1550578042722721922",
-      "kind": "discord_message",
-      "to": "TABLE",
-      "ts": "2026-09-18T18:43:33.732000Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "55be16b267a59a237785f38c7e404c99ae7a14d814813f579b6e2e11244a5c96",
+  "digest": "efed2209646f528e763802f6c4664cedc97dbac1826a89eef2145563850d62a4",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12969,
-    "pulse_seq": 2142,
-    "sha": "11e43518dd5789ae2bb770b658d87ff1c3d39633"
+    "post_count": 12971,
+    "pulse_seq": 2143,
+    "sha": "5b346460b3a29363ca5cb447547b87ce733c7d5e"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T14:38:27Z",
+  "now": "2026-09-19T14:40:26Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "UIOWA-103-identifier-mapping",
+          "id": "UIOWA-138--exercised-analyst-to-analyst-continuation-packet--ZZ-BOREAL-138Q-",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "UIOWA-103-identifier-mapping",
+      "id": "UIOWA-138--exercised-analyst-to-analyst-continuation-packet--ZZ-BOREAL-138Q-",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T13:44:12Z"
+      "ts": "2026-09-19T13:48:03Z"
     },
     {
       "claim": "VECTOR-RELAY",
