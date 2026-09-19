@@ -39,7 +39,31 @@ present. This is an evidence state, not a regulatory or operational verdict.
 - `fixture_specifications.md` — boundary-case specifications for the three fictional services.
 - `refresh_lifecycle.md` — lifecycle and evidence diagram.
 - `interview_guide.md` — discovery prompts tied to the catalog.
-- `tests/test_assessor.py` — regression tests for evidence-state behavior.
+- `tests/test_assessor.py` — retained regression tests for evidence-state behavior.
+- `test_discovery.py` — component-root collection and missing-suite checks.
+- `tests/test_cleanup_evidence.py` — cleanup declarations and CLI evidence preservation.
+- `tests/test_catalog_input.py` — catalog shape, dates, duration types and CLI input errors.
+
+## Catalog input boundaries
+
+The catalog must be a JSON object with an exact `YYYY-MM-DD` `as_of` date
+and a `datasets` array of JSON objects. A malformed row is reported by its
+zero-based index, not silently dropped from the report. An empty array remains
+supported. Missing optional evidence in a valid object is still assessed as
+`UNKNOWN`; this check is not full JSON Schema enforcement.
+
+Calendar-date fields do not accept timestamps, week dates or strings with
+trailing text. An unusable optional refresh or cleanup-verification date stays
+`UNKNOWN`; an unusable required `as_of` rejects the catalog. Boolean values do
+not stand in for integer day counts: a boolean cadence is unknown, and a boolean
+retention duration follows the existing invalid-supplied-value catalog check.
+An actual integer zero-day retention remains valid.
+
+Input read/decoding errors and rejected catalog structures or required dates
+produce a readable CLI error and exit code 2 before a report is emitted or an
+existing output file is changed.
+The library raises `ValueError` for malformed catalog structure. Exit code 0 still
+means a report was generated, not that every assessment check was evidenced.
 
 ## Run
 
@@ -76,7 +100,7 @@ temporary copy and verifies that the missing suite is detected. The checks use
 standard-library `unittest` assertions, which remain active under `python3 -O`.
 They neither change assessment behavior nor rewrite the source catalog.
 
-Repair validation on Python 3.13.5: before the package marker, root discovery
+Discovery repair #16299 validation on Python 3.13.5: before the package marker, root discovery
 collected zero tests while explicit `tests/` discovery passed seven. After this
 repair, root discovery passed eleven tests (seven retained behavioral checks
 plus four discovery checks) in both normal and optimized Python. This is local

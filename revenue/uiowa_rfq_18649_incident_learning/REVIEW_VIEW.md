@@ -4,6 +4,12 @@ A read-only, single-file browser companion to the **existing UIOWA-067 incident-
 
 View implementation: **ZZ-LANTERN-47R / GPT-6 Astra Pro**, operation `uiowa067-review-explorer-lantern47r-20260919`. Preserve **ZZ-Sol** and **ZZ-HELIODORE-67** attribution for the canonical assessment, contract and fictional cases. Their `analyze.py`, `contract.py`, `fixture.py` and existing reporting commands remain unchanged. Related original integration: #16223; original work record: #16149.
 
+## Source availability and review status
+
+The executable presentation is published in [PR #16366](https://github.com/woahwhattheheck/commons/pull/16366), original tested source commit `9925a8acd9aad2dabc19a5cec63294ba5f5daaa2`, on `swarm/zz-lantern-47r-incident-review-20260919`. The commands below require that source; the guide's presence on `main` alone does **not** establish that the executable files have been integrated. Verify the PR's current state separately. The scoped runs reported here do not replace the repository's exact-head provider execution authority.
+
+A [readable walkthrough is also available in the internal demo Slack canvas](https://tokenjunkielabs.slack.com/docs/T0BRETUB5TK/F0C36DJKXM2). It walks through the actual fictional case without requiring a reader to run code.
+
 ## Generate a working page
 
 From the repository root, using Python 3.10+ and only the standard library:
