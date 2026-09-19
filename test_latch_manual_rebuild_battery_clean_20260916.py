@@ -25,6 +25,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 import manual_build
+import sys
 
 ROOT = Path(__file__).resolve().parent
 KEEP_LIFT = ROOT / "test_grokbuild_tests_battery_34395174679_keep_lift.py"
@@ -106,7 +107,7 @@ class LatchManualRebuildBatteryCleanTests(unittest.TestCase):
 
     def test_keep_lift_file_leaves_manual_tracked_clean(self) -> None:
         keep = subprocess.run(
-            ["python3", "./" + KEEP_LIFT.name],
+            [sys.executable, "./" + KEEP_LIFT.name],
             cwd=ROOT,
             text=True,
             capture_output=True,

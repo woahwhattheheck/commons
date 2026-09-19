@@ -138,7 +138,7 @@ def load_job_packet_bytes(raw: bytes | bytearray) -> dict[str, Any]:
         )
     except JobValidationError:
         raise
-    except (json.JSONDecodeError, UnicodeDecodeError) as exc:
+    except (ValueError, UnicodeError, RecursionError) as exc:
         raise JobValidationError(f"invalid job JSON: {exc}") from exc
 
     stack: list[tuple[Any, int]] = [(parsed, 1)]
@@ -328,7 +328,24 @@ def _provider_run(sandbox: Any, command: str, timeout: int, *, cwd: str | None =
     kwargs: dict[str, Any] = {"timeout": timeout}
     if cwd is not None:
         kwargs["cwd"] = cwd
-    return sandbox.commands.run(command, **kwargs)
+    try:
+        return sandbox.commands.run(command, **kwargs)
+    except Exception as exc:
+        # The synchronous SDK raises a result-bearing exception for nonzero
+        # command exits. Preserve its output, but never treat a transport error
+        # (or a malformed zero-exit exception) as successful execution.
+        try:
+            from e2b import CommandExitException  # type: ignore
+        except ImportError:
+            raise exc
+        if not isinstance(exc, CommandExitException):
+            raise
+        exit_code = getattr(exc, "exit_code", None)
+        if type(exit_code) is not int or exit_code == 0:
+            raise ProviderExecutionError(
+                "provider command-exit exception omitted nonzero integer exit_code"
+            ) from exc
+        return exc
 
 
 def _checked_internal_stage(
@@ -343,7 +360,7 @@ def _checked_internal_stage(
     argv = ["python", "-c", marker + script, *args]
     result = _provider_run(sandbox, shlex.join(argv), timeout)
     exit_code = getattr(result, "exit_code", None)
-    if exit_code != 0:
+    if type(exit_code) is not int or exit_code != 0:
         stderr = _result_text(getattr(result, "stderr", ""))
         raise ProviderExecutionError(
             f"{stage} failed with exit_code={exit_code}: {stderr[:512]}"
@@ -605,6 +622,9 @@ def execute_job(
             )
 
         command_receipts: list[dict[str, Any]] = []
+        # Attach before execution: later exceptions must not erase earlier
+        # completed commands, even when the failed command has no result.
+        base["commands"] = command_receipts
         for order, command in enumerate(job.commands):
             result = _provider_run(
                 sandbox,
@@ -621,7 +641,6 @@ def execute_job(
             command_receipts.append(command_receipt)
             if command_receipt["exit_code"] != 0:
                 break
-        base["commands"] = command_receipts
         base["green"] = (
             len(command_receipts) == len(job.commands)
             and all(item["exit_code"] == 0 for item in command_receipts)

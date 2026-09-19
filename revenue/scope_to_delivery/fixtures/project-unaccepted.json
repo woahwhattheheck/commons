@@ -158,7 +158,7 @@
     "schema_version": "commons-scope-payment-state/v1"
   },
   "routes": {
-    "human": "agent-rescue.html",
+    "human": "right-now.html",
     "machine": "revenue/production_survival/offer.json"
   },
   "schema_version": "commons-scope-project/v1",

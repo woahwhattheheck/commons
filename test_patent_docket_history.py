@@ -55,7 +55,7 @@ class SourceReceiptHistoryTests(unittest.TestCase):
     def write(self, path, text="source\n"):
         dest = self.root / path
         dest.parent.mkdir(parents=True, exist_ok=True)
-        dest.write_text(text, encoding="utf-8")
+        dest.write_bytes(text.encode("utf-8"))
 
     def commit(self, label):
         stamp = datetime(2026, 1, 1, tzinfo=timezone.utc) + timedelta(seconds=self.clock)
@@ -103,6 +103,8 @@ class SourceReceiptHistoryTests(unittest.TestCase):
     def test_historical_path_framing_preserves_special_names(self):
         for index, name in enumerate(("old name.txt", "tab\tname.txt", "line\nbreak.txt", "\nleading.txt", "caf\u00e9-\u96ea.txt")):
             with self.subTest(name=name):
+                if os.name == "nt" and any(ord(c) < 32 for c in name):
+                    self.skipTest("control characters are not valid NTFS filenames")
                 current = "current-%d.txt" % index
                 self.write(name, "unique source %d\n" % index)
                 created, stamp = self.commit("special creation %d" % index)

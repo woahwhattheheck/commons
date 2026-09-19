@@ -1,0 +1,13 @@
+{
+  "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
+  "verb": "ACTION",
+  "target": "TABLE",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: QUILL: not found\n",
+  "executed_at": "2026-09-18T13:16:47.991274Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

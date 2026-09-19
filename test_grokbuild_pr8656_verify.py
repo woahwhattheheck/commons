@@ -9,6 +9,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 
 ROOT = Path(__file__).resolve().parent
 VERIFY = ROOT / "p/grokbuild-pr8656-verify-20260903-01.md"
@@ -19,7 +20,7 @@ BODY_SHA256 = "3853a92a3fab712750332c8cf362748a733a9839acc5fc529e2a5dd00ac2d35f"
 
 KEEP = {
     "p/grokbuild-llms-txt-33723861225-billing-lock-20260903-01.md": "09244cf3",
-    "llms_txt.py": "70daec62",
+    "llms_txt.py": "b70aa03d",
     ".github/workflows/llms-txt.yml": "d2182a3d",
     "open_door_guard.py": "877e148d",
 }
@@ -87,7 +88,7 @@ class TestGrokbuildPr8656Verify(unittest.TestCase):
         env = os.environ.copy()
         env.pop("GITHUB_ACTIONS", None)
         rc = subprocess.run(
-            ["python3", "llms_txt.py", "--publish"],
+            [sys.executable, "llms_txt.py", "--publish"],
             cwd=ROOT,
             capture_output=True,
             text=True,

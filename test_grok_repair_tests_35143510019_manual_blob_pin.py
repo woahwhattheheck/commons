@@ -17,6 +17,7 @@ from __future__ import annotations
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 KEEP_LIFT = ROOT / "test_grokbuild_tests_battery_34395174679_keep_lift.py"
@@ -61,7 +62,7 @@ class GrokRepairTests35143510019ManualBlobPin(unittest.TestCase):
         before = _git("hash-object", "ground/MANUAL.md")
         self.assertEqual(before.returncode, 0, before.stderr)
         keep = subprocess.run(
-            ["python3", "./" + KEEP_LIFT.name],
+            [sys.executable, "./" + KEEP_LIFT.name],
             cwd=ROOT,
             text=True,
             capture_output=True,

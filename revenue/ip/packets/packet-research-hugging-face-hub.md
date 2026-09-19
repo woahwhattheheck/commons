@@ -31,21 +31,21 @@ ANALYSIS: Evaluate a customer-owned model workflow that attaches Commons provena
 
 ### TITAN Hands computer-use substrate (`titan-hands`, `SHIPPED_ON_MAIN`)
 
-- `docs/TITAN_HANDS.md` sha256 `ecdfcc76ec17fb6d18d19cab03b2ac68f3f4f9bf4c6875cadce0d5935161b6b1` (4469 bytes)
-- `titan-hands.html` sha256 `2c8653a18eebc8dffe63f37c4917efb3432368837e9ae39c394713272159a667` (2808 bytes)
-- `titan-hour.html` sha256 `dcc2690e95385b4605dc7d24c6bd98b7ef8db26d4e1c066757fdc9c166730ba3` (6614 bytes)
-- `host/titan_hands/one_tool.py` sha256 `394fd77a09dc01fbf415fef480a1f867fb2eaec1314c74c7f12c9e555aaace31` (7321 bytes)
-- `host/titan_hands/linux_atspi.py` sha256 `8a7552d1f0221e5a6f1adf01a7d87ff25c942de66c21d372998a0bc538009bb3` (39377 bytes)
-- `p/emissary-titan-hands-features-20260826-01.md` sha256 `8d6dcb2e16365feed2e43ee1f6f5dd7056c9bf428dc3f6a0debc5a41ad1da35b` (1727 bytes)
-- `p/coil-titan-hands-linux-atspi-land-20260827-01.md` sha256 `8d12599140243fef315f9a79a5727d8817cec6c9161545e1a6c353852e5f0f59` (1688 bytes)
+- `docs/TITAN_HANDS.md` sha256 `c2b1f3f8ece662c777e655d40e517c7a642dd07a8b1bbddca55b6de255d10611` (4591 bytes)
+- `titan-hands.html` sha256 `2b48bf876edf8287e7ca5b2b72dc62e034ad1a9b2a43a78af698b8283ee720f4` (3448 bytes)
+- `titan-hour.html` sha256 `4262a97485e67832c30326fd137896e5f374aeacd1306bd15e4c29b159764cae` (8682 bytes)
+- `host/titan_hands/one_tool.py` sha256 `c1a8fa32aaef8fd248f4e62a387b394fc9ae1bc56942089caf91bad18e615e9f` (9095 bytes)
+- `host/titan_hands/linux_atspi.py` sha256 `c2b116c3121bc9e71c14f5eba5842ef507cc259bc772a63d14a0d7373816ef36` (40369 bytes)
+- `p/emissary-titan-hands-features-20260826-01.md` sha256 `7ececa66b7b195e2ae5a0ad6181976d8fa0538263c4ee4872510485769fbc5ec` (1745 bytes)
+- `p/coil-titan-hands-linux-atspi-land-20260827-01.md` sha256 `5ec85c651d5535834f47b4627afefc75ee3378a0e7484051da4503f53e92f1c7` (1727 bytes)
 
 ### Open carrier and distribution roads (`carrier-infrastructure`, `SHIPPED_ON_MAIN`)
 
-- `carrier.js` sha256 `5df2a26164edec15288eaa213d8533b2d26f0e7062009dad088a0d1257b01ef4` (63703 bytes)
-- `distribution.html` sha256 `3ab84fcfa02a9e84ea88aaf4d5f66981756aed70a97546f9af4928d63cb09390` (8427 bytes)
-- `host/distribution.py` sha256 `2ae7a466c9c2ba64b59329e404aaa49c2c94973ec5d432d3d907a095ffd0ef92` (29867 bytes)
-- `ground/DISTRIBUTION.md` sha256 `47823a33df0952378ecf9747d7efa0606a45dd4a46182dc359ee6d9a394f37c3` (3212 bytes)
-- `p/grok-distribution-layer-20260828-01.md` sha256 `79687f5a59620f85af6befd1a4879b88bc7bc8c5ce3d0156bc8176d2486469ec` (1977 bytes)
+- `carrier.js` sha256 `8fa9978c292a0bb3ddd2401f4f9252c7fdee9ef7cca82cdccb45f9e75f9126b7` (65175 bytes)
+- `distribution.html` sha256 `788e3ca735530138f5e97c18f8701d240ae7719f525207049fc6af671b896a8b` (9988 bytes)
+- `host/distribution.py` sha256 `e85efed6c982918eba61d91fc63b58882a560337d9785a1eaac43945624f5763` (30605 bytes)
+- `ground/DISTRIBUTION.md` sha256 `7cdc98cfa3ed5fcee2bb7b1b4a74488e489bb42d8ba769efb9186ff27ab963f8` (3716 bytes)
+- `p/grok-distribution-layer-20260828-01.md` sha256 `fe6028dcb971e4efa0164ff869ec72081c22b2f5b9f147465704556cfda327af` (2017 bytes)
 
 ## Stated funding (not expected value)
 
@@ -75,8 +75,6 @@ submission_status: `NOT_APPLICABLE`. award_status: `NOT_AWARDED`. cash_received_
 ## Live cash
 
 Verified product pages only — no invented Stripe links.
-
-- [$29 Autopsy checkout](../../../agent-rescue.html)
 - [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../../../referral-intake-completeness.html)
 - [$199 repair diagnostic](../../../repair-booking-preflight.html)

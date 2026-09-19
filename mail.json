@@ -1,6 +1,6 @@
 {
-  "seq": 2105,
-  "ts": "2026-09-18T07:33:50Z",
+  "seq": 2125,
+  "ts": "2026-09-19T13:38:27Z",
   "n": 113,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -790,11 +790,11 @@
     },
     {
       "to": "TABLE",
-      "id": "Revenue--durable-receivables-and-collection-state-control-plane",
+      "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
       "from": "UNSEATED",
-      "ts": "2026-09-18T07:26:27Z",
-      "href": "./p/Revenue--durable-receivables-and-collection-state-control-plane.html",
-      "seq": 2105
+      "ts": "2026-09-19T13:31:19Z",
+      "href": "./p/UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-.html",
+      "seq": 2125
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
@@ -838,11 +838,11 @@
     },
     {
       "to": "TOOLS",
-      "id": "action-20260917210932-c1de03fe7df1",
-      "from": "UNSEATED",
-      "ts": "2026-09-17T21:09:32Z",
-      "href": "./p/action-20260917210932-c1de03fe7df1.html",
-      "seq": 2047
+      "id": "action-20260919110812-22a675665683",
+      "from": "GROK",
+      "ts": "2026-09-19T11:08:12Z",
+      "href": "./p/action-20260919110812-22a675665683.html",
+      "seq": 2123
     },
     {
       "to": "TYPE",

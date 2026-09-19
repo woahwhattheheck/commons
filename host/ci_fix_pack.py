@@ -17,13 +17,17 @@ ROOT = Path(__file__).resolve().parent.parent
 PACK = ROOT / "packs" / "ci-fix-99-20260917-01"
 FIXTURE = PACK / "sample" / "fixture"
 CITE = "latch-ci-fix-pack-99-20260917-01"
+CHECKOUT_WIRE_CITE = "latch-ci-fix-pack-99-checkout-wire-20260919-01"
 SKU = "ci-fix-pack-99"
 WORK_ORDER = "WO-CI-FIX-PACK-99"
 PRICE_USD = 99
-CHECKOUT_STATUS = "NOT_MINTED"
+CHECKOUT_STATUS = "LIVE_PAYMENT_LINK"
+BUY_URL = "https://buy.stripe.com/6oU9ASfxb6374alfFo43S0A"
+PLINK_ID = "plink_1UHCnTATH4EDE7XDKQlMOnLh"
 MAILTO = "tokenjunkielabs@gmail.com"
 TURNAROUND = "one business day"
 AUTOPSY_PLINK_PATH = "4gM9AS3Ot8bfeOZ78S43S0g"
+BUY_URL_RE = re.compile(r"https://buy\.stripe\.com/[A-Za-z0-9]+")
 FAIL_RE = re.compile(r"^FAIL:\s+(\S+)", re.M)
 ASSERT_RE = re.compile(r"AssertionError:.*", re.M)
 MODULE_RE = re.compile(r"ModuleNotFoundError: No module named '([^']+)'")
@@ -164,7 +168,9 @@ def run_canary(root: Path | None = None) -> dict[str, Any]:
             "sku": SKU,
             "price_usd": PRICE_USD,
             "checkout": CHECKOUT_STATUS,
-            "stripe_ask": True,
+            "checkout_url": BUY_URL,
+            "plink": PLINK_ID,
+            "stripe_ask": False,
             "invented_stripe": False,
             "autopsy_sold": False,
             "cash_usd": 0,
@@ -192,6 +198,11 @@ def run_canary(root: Path | None = None) -> dict[str, Any]:
         }
 
 
+def _unexpected_buy_urls(text: str) -> list[str]:
+    """Any buy.stripe.com URL other than the existing ci-fix-pack-99 PL."""
+    return sorted({url for url in BUY_URL_RE.findall(text or "") if url != BUY_URL})
+
+
 def manifest(root: Path | None = None) -> dict[str, Any]:
     base = root or ROOT
     pack = base / "packs" / "ci-fix-99-20260917-01"
@@ -200,10 +211,13 @@ def manifest(root: Path | None = None) -> dict[str, Any]:
     return {
         "kind": "CI_FIX_PACK_99",
         "cite": CITE,
+        "checkout_wire_cite": CHECKOUT_WIRE_CITE,
         "work_order": WORK_ORDER,
         "sku": SKU,
         "price_usd": PRICE_USD,
         "checkout": CHECKOUT_STATUS,
+        "checkout_url": BUY_URL,
+        "plink": PLINK_ID,
         "mailto": MAILTO,
         "pack": str(pack.relative_to(base)).replace("\\", "/"),
         "required": list(REQUIRED_PACK_FILES),
@@ -211,9 +225,10 @@ def manifest(root: Path | None = None) -> dict[str, Any]:
             name for name in REQUIRED_PACK_FILES if not (pack / name).is_file()
         ],
         "door_has_mailto": MAILTO in door,
-        "door_invents_stripe": "buy.stripe.com/" in door and "OWNER_PASTE" not in door,
+        "door_has_live_buy": BUY_URL in door and 'id="checkout"' in door,
+        "door_invents_stripe": bool(_unexpected_buy_urls(door) or _unexpected_buy_urls(checkout)),
         "autopsy_plink_present": AUTOPSY_PLINK_PATH in door or AUTOPSY_PLINK_PATH in checkout,
-        "checkout_not_minted": CHECKOUT_STATUS in checkout,
+        "checkout_live": CHECKOUT_STATUS in checkout and BUY_URL in checkout and PLINK_ID in checkout,
         "gate": False,
         "login": False,
     }

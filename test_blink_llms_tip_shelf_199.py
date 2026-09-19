@@ -15,8 +15,8 @@ class BlinkLlmsTipShelf199Test(unittest.TestCase):
         text = LLMS.read_text(encoding="utf-8")
         commercial = text.split("## Fresh")[0]
         self.assertIn("## Commercial", commercial)
-        self.assertIn("agent-rescue.html", commercial)
-        self.assertIn("$29", commercial)
+        self.assertNotIn("agent-rescue.html", commercial)
+        self.assertNotIn("$29", commercial)
         self.assertIn("dealer-service-lead-rescue.html", commercial)
         self.assertIn("referral-intake-completeness.html", commercial)
         self.assertIn("repair-booking-preflight.html", commercial)

@@ -14,8 +14,8 @@ KEEP = {
     "p/grok-build-tests-34387653822-keep-lift-20260909-01.md": "2f9a755a",
     "commons-slack.html": "b7630b56",
     "commons-slack-chunk.html": "4d9ebea2",
-    "host/commons_slack_full_body.py": "1a0b2d58",
-    "host/commons_slack_full_body_chunk.py": "c2b66c4d",
+    "host/commons_slack_full_body.py": "7a6067d7",
+    "host/commons_slack_full_body_chunk.py": "b132f8bb",
 }
 
 

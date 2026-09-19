@@ -22,8 +22,8 @@
     "ground/RESOURCE_LEDGER.md": "c2ebff4ca2c6265835b1a2e3a71a9a683ca64aa2",
     "host/resource_ledger.py": "db37296595ac702a0ae7605cca2399f1423b3904",
     "inventory/resources/README.md": "4b19536f172786127eb22c22cacd0975d7e226cd",
-    "ledger.html": "26bb87c4297ca05b6a50a62f690a8f8b903a2ed4",
-    "resources.html": "4e6e7d0c644a2d978b224b890e78aee0083f7d5a",
+    "ledger.html": "5de02106883e44802741cb6af4f1cfbe11cceea0",
+    "resources.html": "89b8de23d94d9e649ea3545f962aa52c0d5d5995",
     "test_resource_ledger.py": "ed6430b89a877911766a5c48139404f10d660ebf",
     "inventory/resources/records/codex-master-resource-census-20260826-01.json (restored candidate object)": "abd6c7827c4c62bddb041db834cb9c0307593b53"
   },

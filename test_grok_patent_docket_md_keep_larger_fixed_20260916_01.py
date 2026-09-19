@@ -6,11 +6,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 INDEX = ROOT / "ground" / "INVENTION_BURST_INDEX.md"
-PRODUCTS = ("agent-rescue.html", "diagnostic.html", "commercial.html")
+PRODUCTS = ("diagnostic.html", "commercial.html")
 # hist pin 0720ef57 plus later Contest product section; cash successors strip off.
 BASELINE_BLOB = "5de7ae09bc1cbb5c169720967f7c577ff0d8049c"
 SPY_LABEL = "spy-ground-live-cash-v1"
 LARGER_LABEL = "grok-patent-docket-md-keep-larger-fixed-20260916-01"
+RETIRE_LABEL = "anvil-invention-burst-autopsy-retirement-20260918-01"
 
 
 def _load_docket():
@@ -28,7 +29,6 @@ class TestGrokPatentDocketMdKeepLargerFixed2026091601(unittest.TestCase):
     def test_tip_invention_burst_has_autopsy_and_larger(self):
         text = INDEX.read_text(encoding="utf-8")
         self.assertIn("## Live cash", text)
-        self.assertIn("../agent-rescue.html", text)
         self.assertIn("Larger fixed engagements", text)
         self.assertIn("../diagnostic.html", text)
         self.assertIn("../commercial.html", text)
@@ -41,11 +41,13 @@ class TestGrokPatentDocketMdKeepLargerFixed2026091601(unittest.TestCase):
     def test_second_successor_keeps_spy_ground_and_larger(self):
         mod = _load_docket()
         entries = mod.PROVENANCE_SUCCESSORS["ground/INVENTION_BURST_INDEX.md"]
-        self.assertEqual([label for label, _ in entries], [SPY_LABEL, LARGER_LABEL])
+        self.assertEqual(
+            [label for label, _ in entries],
+            [SPY_LABEL, LARGER_LABEL, RETIRE_LABEL],
+        )
         spy = entries[0][1].decode("utf-8")
         larger = entries[1][1].decode("utf-8")
         self.assertIn("## Live cash", spy)
-        self.assertIn("../agent-rescue.html", spy)
         self.assertIn("spy-ground-batch-live-cash-20260905-18", spy)
         self.assertNotIn("Larger fixed engagements", spy)
         self.assertNotIn("diagnostic.html", spy)
@@ -58,12 +60,14 @@ class TestGrokPatentDocketMdKeepLargerFixed2026091601(unittest.TestCase):
         baseline, applied = mod._normalize_provenance_successors(
             "ground/INVENTION_BURST_INDEX.md", raw
         )
-        self.assertEqual(applied, [SPY_LABEL, LARGER_LABEL])
+        self.assertEqual(applied, [LARGER_LABEL, RETIRE_LABEL])
         self.assertEqual(mod._git_blob_oid(baseline), BASELINE_BLOB)
         self.assertNotIn(b"## Live cash", baseline)
         self.assertNotIn(b"diagnostic.html", baseline)
-        self.assertEqual(raw.count(entries[0][1]), 1)
-        self.assertEqual(raw.count(entries[1][1]), 1)
+        raw_lf = raw.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+        self.assertEqual(raw_lf.count(entries[0][1]), 0)
+        self.assertEqual(raw_lf.count(entries[1][1]), 1)
+        self.assertEqual(raw_lf.count(entries[2][1]), 1)
 
     def test_product_pages_exist(self):
         for name in PRODUCTS:

@@ -13,6 +13,7 @@ import json
 import pathlib
 import subprocess
 import unittest
+import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent
 PACK = ROOT / "revenue" / "billings_bid_1421" / "acceptance_runner"
@@ -168,7 +169,7 @@ class BillingsBid1421AcceptanceRunnerTests(unittest.TestCase):
 
     def test_cli_binary_pass(self):
         proc = subprocess.run(
-            ["python3", str(PACK / "runner.py")],
+            [sys.executable, str(PACK / "runner.py")],
             cwd=ROOT,
             check=False,
             capture_output=True,

@@ -4,6 +4,7 @@ import importlib.util
 import json
 import unittest
 from pathlib import Path
+import sys
 
 
 ROOT = Path(__file__).resolve().parent
@@ -41,17 +42,17 @@ class ScopeToDeliveryTests(unittest.TestCase):
         self.assertIn("sku-muhlnickel-titan-20260826", ids)
         self.assertIn("sku-muhlnickel-attested-inference", ids)
         self.assertIn("sku-muhlnickel-generated-token-capacity", ids)
-        self.assertIn("agent-failure-autopsy-29", ids)
+        self.assertNotIn("agent-failure-autopsy-29", ids)
         self.assertEqual(view["funnel_truth"]["accepted_scopes"], 0)
         self.assertEqual(view["funnel_truth"]["paid_deliveries"], 0)
         self.assertEqual(view["funnel_truth"]["collected_cash_usd"], "0.00")
         sprint = next(item for item in view["listings"] if item["id"] == "production-survival-sprint")
         self.assertEqual(sprint["amount"], "15000.00")
         self.assertEqual(sprint["acceptance_row_count"], 1)
-        autopsy = next(item for item in view["listings"] if item["id"] == "agent-failure-autopsy-29")
-        self.assertEqual(autopsy["amount"], "29.00")
-        self.assertEqual(autopsy["family"], "service")
-        self.assertEqual(autopsy["acceptance_row_count"], 1)
+        issue_to_pr = next(item for item in view["listings"] if item["id"] == "ho-issue-to-pr")
+        self.assertEqual(issue_to_pr["amount"], "2500.00")
+        self.assertEqual(issue_to_pr["family"], "service")
+        self.assertEqual(issue_to_pr["acceptance_row_count"], 1)
 
     def test_json_fixtures_reject_floating_point(self):
         for path in (ROOT / "revenue" / "scope_to_delivery").rglob("*.json"):
@@ -163,7 +164,7 @@ class ScopeToDeliveryTests(unittest.TestCase):
         import subprocess
         result = subprocess.run(
             [
-                "python3", "host/scope_to_delivery.py", "project",
+                sys.executable,"host/scope_to_delivery.py", "project",
                 "--agreement", "revenue/scope_to_delivery/fixtures/accepted_agreement.json",
                 "--observations", "revenue/scope_to_delivery/fixtures/accepted_observations.json",
                 "--payment", "revenue/scope_to_delivery/fixtures/payment_authorized.json",
@@ -176,7 +177,7 @@ class ScopeToDeliveryTests(unittest.TestCase):
         payload = json.loads(result.stdout)
         self.assertEqual(payload["delivery_receipt"]["delivered"], True)
         self.assertEqual(payload["payment_state"]["cash_claimed"], False)
-        happy = (ROOT / "revenue/scope_to_delivery/fixtures/synthetic-happy-path.txt").read_bytes()
+        happy = (ROOT / "revenue/scope_to_delivery/fixtures/synthetic-happy-path.txt").read_bytes().replace(b"\r\n", b"\n")
         digest = __import__("hashlib").sha256(happy).hexdigest()
         item = next(row for row in payload["evidence_bundle"]["items"] if row["row_id"] == "happy-path")
         self.assertEqual(item["sha256"], digest)
@@ -195,7 +196,6 @@ class ScopeToDeliveryTests(unittest.TestCase):
     def test_strongest_sku_bindings_exist(self):
         required = {
             "production-survival-sprint",
-            "agent-failure-autopsy-29",
             "gguf-diagnostic-10d-12k",
             "white-box-gguf-pilot-30d",
             "ho-issue-to-pr",

@@ -117,6 +117,37 @@ class ProductLifecycleGuardTests(unittest.TestCase):
             (root / base / "receipt.html").write_text(URL, encoding="utf-8")
         self.assertEqual((), check_repo(root))
 
+    def test_board_html_historical_projection_is_not_scanned(self):
+        td, root = self.make_repo()
+        self.addCleanup(td.cleanup)
+        (root / "board.html").write_text(
+            f"<pre>SHIP historical receipt {URL}</pre>", encoding="utf-8"
+        )
+        (root / "storefront.html").write_text(
+            f'<a data-checkout href="{URL}">buy</a>', encoding="utf-8"
+        )
+        rows = check_repo(root)
+        self.assertEqual(1, len(rows))
+        self.assertEqual("storefront.html", rows[0].path)
+        self.assertEqual("checkout_url", rows[0].kind)
+
+    def test_split_scheme_host_constructor_is_not_ambiguous_prefix(self):
+        td, root = self.make_repo()
+        self.addCleanup(td.cleanup)
+        (root / "host/payment_capability.py").write_text(
+            'def ident(path):\n    return "https://" + "buy.stripe.com" + "/" + path\n',
+            encoding="utf-8",
+        )
+        self.assertEqual((), check_repo(root))
+
+        (root / "host/payment_capability.py").write_text(
+            'PREFIX = "https://buy.stripe.com/"\n',
+            encoding="utf-8",
+        )
+        rows = check_repo(root)
+        self.assertEqual(1, len(rows))
+        self.assertEqual("ambiguous_checkout_url", rows[0].kind)
+
     def test_retiring_is_non_blocking_until_cleanup_composes(self):
         td, root = self.make_repo(registry("RETIRING"), source_present=True)
         self.addCleanup(td.cleanup)

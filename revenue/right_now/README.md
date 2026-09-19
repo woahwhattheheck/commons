@@ -43,15 +43,14 @@ second ledger.
 ## Checkout-authority boundary
 
 `active_chargeable_checkout` is not minted by the right-now catalog. The
-compiler derives that fact from the retained Stripe-verified Autopsy offer in
-`revenue/agent_failure_autopsy/offer.json` plus the buyer-visible
-`agent-rescue.html` checkout anchors. The reviewed authority root pins the exact
-USD 29 offer, Stripe account, product, price, payment-link identity, base payment
-URL, and retained provider receipt digest. The retained offer must remain
-`ACTIVE_VERIFIED`, its provider binding must carry the live-mode evidence, and
-its verification timestamp may not postdate the catalog evidence boundary.
-Every `data-checkout` anchor on the public page must resolve to the pinned base
-payment URL; UTM/query decoration may vary.
+compiler derives that fact from the canonical offer sources plus the
+buyer-visible `data-checkout` anchors on the canonical product pages. The
+reviewed authority root pins each offer's Stripe account, product, price,
+payment-link identity, base payment URL, and retained provider receipt digest.
+A retained offer must be `ACTIVE_VERIFIED`, its provider binding must carry the
+live-mode evidence, and its verification timestamp may not postdate the catalog
+evidence boundary. Every `data-checkout` anchor on the public page must resolve
+to the pinned base payment URL; UTM/query decoration may vary.
 
 The catalog boolean and its `LIVE_PUBLIC_CHECKOUT_PAGE` row are redundant
 assertions only. They must reconcile exactly to that retained authority and no

@@ -8,6 +8,7 @@ import re
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 SKILL = ROOT / ".agents" / "skills" / "google-ai-mode-hall-pass" / "SKILL.md"
@@ -112,7 +113,7 @@ class GoogleAiModeHallPassTests(unittest.TestCase):
 
     def test_skills_check_passes(self):
         result = subprocess.run(
-            ["python3", str(ROOT / "skills" / "check.py")],
+            [sys.executable, str(ROOT / "skills" / "check.py")],
             cwd=ROOT,
             capture_output=True,
             text=True,

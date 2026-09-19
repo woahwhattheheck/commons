@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Predecessor killers for owner-now revenue checkout publication authority.
 
-The public owner-now page may advertise offers and local product cards, but a
-Stripe checkout href is published only by pay.js after the retained provider,
-catalog, and canonical-rail evidence all agree.  Static/noscript HTML must
-therefore remain provider-inert.
+The public owner-now page may advertise offers and local product cards. The
+first-screen Buy CTA reuses the EXISTING White Box hour $250 Payment Link
+already pinned by Anvil convert-shelf. Remaining SKUs stay pay.js gated after
+the retained provider, catalog, and canonical-rail evidence all agree.
+Noscript and Live cash stay provider-inert. Autopsy is SCRAPPED.
 """
 from __future__ import annotations
 
@@ -94,8 +95,30 @@ class OwnerNowRevenueGatedCheckout(unittest.TestCase):
         return next(row for row in snapshot["canonical_rails"] if row.get("sku") == sku)
 
     def test_static_and_noscript_surface_cannot_publish_stripe(self) -> None:
-        self.assertIsNone(STRIPE_HREF.search(self.html))
-        self.assertIsNone(STRIPE_TEXT.search(self.html))
+        whitebox = EXPECTED_RECORDED_URLS["sku-whitebox-hour-20260826"]
+        stripe_hrefs = [
+            href for href in self.parser.hrefs if STRIPE_TEXT.search(href)
+        ]
+        self.assertEqual(set(stripe_hrefs), {whitebox})
+        found_urls = {
+            match.group(0)
+            for match in re.finditer(
+                r"https://(?:buy|donate)\.stripe\.com/[A-Za-z0-9_-]+",
+                self.html,
+                flags=re.I,
+            )
+        }
+        self.assertEqual(found_urls, {whitebox})
+        self.assertNotIn("donate.stripe.com", self.html)
+        shelf = self.html.split('id="buy-now-live-checkout"', 1)[1]
+        for marker in ('id="live-cash"', "<main"):
+            if marker in shelf:
+                shelf = shelf.split(marker, 1)[0]
+                break
+        self.assertIn(whitebox, shelf)
+        self.assertIn("Buy one White Box hour $250", shelf)
+        live_cash = self.html.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
+        self.assertNotIn("buy.stripe.com", live_cash)
         self.assertIn("<noscript>", self.html)
         noscript = self.html.split("<noscript>", 1)[1].split("</noscript>", 1)[0]
         self.assertIsNone(STRIPE_TEXT.search(noscript))

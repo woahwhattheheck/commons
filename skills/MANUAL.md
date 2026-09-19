@@ -11,8 +11,6 @@ Format is literal [Agent Skills](https://agentskills.io/specification) (`SKILL.m
 ## Live cash
 
 Verified product pages only — no invented Stripe links. The one-job door used to omit cash; surface it here too.
-
-- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
 - [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../referral-intake-completeness.html)
 - [$199 repair diagnostic](../repair-booking-preflight.html)
@@ -59,6 +57,7 @@ Shelf: [tools-cash.html](../tools-cash.html) · [commerce.html](../commerce.html
 | Claude Commerce Agents / shopping + merchant blueprint | [commerce-agents](../.agents/skills/commerce-agents/SKILL.md) | — |
 | crawler/fetch blocked / Google AI Mode hall pass | [google-ai-mode-hall-pass](../.agents/skills/google-ai-mode-hall-pass/SKILL.md) | [tokens/google-ai-mode-hall-pass](../ground/tokens/google-ai-mode-hall-pass.md) |
 | shared super MCP / thin-harness residual reach | [super-mcp](../.agents/skills/super-mcp/SKILL.md) | [tokens/super-mcp](../ground/tokens/super-mcp.md) |
+| TypeSafe Jev / typed fast judgment: route, class, score, yes-no | [jev](../.agents/skills/jev/SKILL.md) | — |
 
 Door: [skills.html](../skills.html). Receipt: `python3 skills/check.py`.
 

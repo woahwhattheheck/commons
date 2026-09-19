@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-pack-quality-dictates-tier-readback-20260902-01.md"
@@ -18,17 +19,17 @@ KEEP = {
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "host/pack_quality_dictates_tier.py": "74d36b0a",
     "ground/PACK_QUALITY_DICTATES_TIER.json": "fa45160f",
-    "test_pack_quality_dictates_tier.py": "911cdd3e",
-    "pack-quality-tier.html": "719a9877",
+    "test_pack_quality_dictates_tier.py": "5ceadfba",
+    "pack-quality-tier.html": "060a304a",
     "ground/BUSINESS_PACK_KEEP_SELL.json": "4e0e3eb0",
     "host/business_pack_keep_sell.py": "a886d20e",
-    "keep-sell.html": "aef3fecd",
+    "keep-sell.html": "b974c9bd",
     "p/cursor-since-you-last-looked-20260902-01.md": "003828c9",
     "host/since_you_last_looked.py": "3578783c",
     "p/cursor-since-you-last-looked-readback-20260902-01.md": "bc71c9fe",
     "p/cursor-since-you-last-looked-readback-ship-20260902-01.md": "3d9dacab",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
-    "host/commons_slack_full_body.py": "1a0b2d58",
+    "host/commons_slack_full_body.py": "7a6067d7",
     "host/slack_mirror.py": "72c0844e",
     "slack_ingest.py": "a35169fe",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
@@ -36,9 +37,9 @@ KEEP = {
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
-    "ground/OWNER_NOW.md": "a17b0afb",
-    "hub_pages.py": "12186f65",
-    "door.js": "c06cc197",
+    "ground/OWNER_NOW.md": "39a0e0c3",
+    "hub_pages.py": "673dab89",
+    "door.js": "5899223c",
     "api/mcp.py": "393da756",
 }
 
@@ -51,7 +52,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,
@@ -103,7 +104,7 @@ class TestCursorPackQualityDictatesTierReadback(unittest.TestCase):
 
     def test_leftover_tests_still_pass(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_pack_quality_dictates_tier.py"],
+            [sys.executable, "-m", "unittest", "test_pack_quality_dictates_tier.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

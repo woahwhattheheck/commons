@@ -180,7 +180,7 @@ def write_snapshot(root: str | None = None, *, now: str | None = None) -> dict[s
     snap = snapshot(root, now=now)
     path = os.path.join(root, SNAPSHOT_REL)
     # KEEP tip live_cash across observatory remints (protocol projector rebuild
-    # drops Autopsy/$199 doors landed on tip observatory.json). Paths only.
+    # drops tip doors landed on observatory.json). Paths only.
     prev = _read_json(path, {})
     snap = hub_pages._preserve_live_cash(prev if isinstance(prev, dict) else {}, snap, root)
     payload = json.dumps(snap, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
