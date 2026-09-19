@@ -1,0 +1,31 @@
+{
+  "content_class": "EDITABLE_ASSUMPTION_SET",
+  "label": "These weights are ASSUMPTIONS, not measurements. Nobody at the University set them. They are the first thing to argue about and the first thing to change.",
+  "how_to_read": "Each scenario is one answer to 'what are we optimizing for'. The calculator normalizes each vector to sum 1.0 and prints both what was entered and what was used. If the ranking is the same under all of them, the order does not depend on this argument. If it changes, the weights have to be agreed before the order means anything.",
+  "scenarios": {
+    "baseline": {
+      "weights": {"quality": 0.35, "security": 0.40, "delivery": 0.25},
+      "rationale": "Starting assumption only: security slightly ahead of quality, delivery last. Replace this with the weighting the actual decision-makers agree to."
+    },
+    "security-led": {
+      "weights": {"quality": 0.20, "security": 0.65, "delivery": 0.15},
+      "rationale": "What the list looks like if a security event or an audit finding sets the agenda."
+    },
+    "delivery-led": {
+      "weights": {"quality": 0.25, "security": 0.15, "delivery": 0.60},
+      "rationale": "What the list looks like if the pressure is release throughput ahead of an academic-cycle deadline."
+    },
+    "quality-led": {
+      "weights": {"quality": 0.60, "security": 0.25, "delivery": 0.15},
+      "rationale": "What the list looks like if defect escape rate is the complaint being answered."
+    },
+    "equal": {
+      "weights": {"quality": 1, "security": 1, "delivery": 1},
+      "rationale": "No preference stated. Entered as 1/1/1 rather than 0.333 each to exercise the normalization display."
+    },
+    "security-only-stress": {
+      "weights": {"quality": 0, "security": 1, "delivery": 0},
+      "rationale": "A deliberate corner, not a realistic policy. Quality and delivery carry zero weight, so an item missing only a quality estimate becomes rankable here: the gap is still reported, it just cannot change this order. It also shows a genuine 0 security estimate scoring exactly 0.0 and still being ranked, which is what separates a real zero from a missing estimate."
+    }
+  }
+}

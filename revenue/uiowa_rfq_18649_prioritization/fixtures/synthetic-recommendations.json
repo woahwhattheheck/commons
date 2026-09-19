@@ -1,0 +1,166 @@
+{
+  "content_class": "SYNTHETIC_FIXTURE_NOT_A_UNIVERSITY_FINDING",
+  "label": "FICTION. Written to exercise the prioritization calculator.",
+  "note": "These eleven recommendations, their estimates and the finding IDs they cite are invented. They are internally consistent with the synthetic evidence register in ../../uiowa_rfq_18649_workshare/methodology/23-synthetic-evidence-register.csv so the two fixtures can be read together, but nothing here describes the University of Iowa, any real system, or any real assessment. No estimate below was supplied by anyone at the University.",
+  "scales": {
+    "effects": "0-5. 0 means ASSESSED AND EXPECTED TO HAVE NO EFFECT. It is a real estimate.",
+    "complexity": "1-5. There is no 0: 'no effort' is not a real estimate.",
+    "missing": "Omit the field, or set it to null or \"UNKNOWN\". It stays UNKNOWN and is never read as 0."
+  },
+  "recommendations": [
+    {
+      "recommendation_id": "REC-SYN-IAM-DEP-001",
+      "title": "Reconcile production deployment approvals with the written two-approval procedure",
+      "group": "IAM",
+      "area": "DEP",
+      "finding_ids": ["FND-SYN-IAM-DEP-001"],
+      "effects": {
+        "quality": {"value": 3, "basis": "Fictional: removes the ambiguity about which approval path a change actually took"},
+        "security": {"value": 5, "basis": "Fictional: approval on privileged deployments is the control the conflicting evidence is about"},
+        "delivery": {"value": 3, "basis": "Fictional: a documented exception path is faster than the current case-by-case handling"}
+      },
+      "complexity": {"value": 2, "basis": "Fictional: procedure text plus a change-record field; no platform work"},
+      "notes": "Cites the synthetic register's conflict group CG-SYN-IAM-DEP-01 (procedure requires two approvals; seven of twelve sampled changes record one)."
+    },
+    {
+      "recommendation_id": "REC-SYN-ESS-SD-001",
+      "title": "Extend the required build-and-test status check to the remaining ESS repositories",
+      "group": "ESS",
+      "area": "SD",
+      "finding_ids": ["FND-SYN-ESS-SD-001"],
+      "effects": {
+        "quality": {"value": 5, "basis": "Fictional: the check is the single largest defect filter in the fictional ESS pipeline"},
+        "security": {"value": 2, "basis": "Fictional: catches some dependency problems, but is not a security control"},
+        "delivery": {"value": 3, "basis": "Fictional: fewer post-merge reverts"}
+      },
+      "complexity": {"value": 2, "basis": "Fictional: repository settings plus a short migration window per repository"},
+      "notes": "The strength case: well estimated on every dimension, and stable near the top under most weightings."
+    },
+    {
+      "recommendation_id": "REC-SYN-RIS-SEC-001",
+      "title": "Re-run the privileged-access review and record the result against the published standard",
+      "group": "RIS",
+      "area": "SEC",
+      "finding_ids": ["FND-SYN-RIS-SEC-001"],
+      "effects": {
+        "quality": {"value": 1, "basis": "Fictional: small effect; this is an assurance activity, not a build activity"},
+        "security": {"value": 5, "basis": "Fictional: the standard requires an annual review and no current record exists"},
+        "delivery": {"value": 0, "basis": "ASSESSED: no expected delivery effect. The review runs outside the release path. This is a real estimate of zero, not a missing one."}
+      },
+      "complexity": {"value": 2, "basis": "Fictional: one reviewer, one reporting cycle"},
+      "notes": "Carries a deliberate real 0 so the worksheet can be checked for treating 0 and UNKNOWN as the same thing. They are not."
+    },
+    {
+      "recommendation_id": "REC-SYN-ESS-DEP-001",
+      "title": "Generate ESS release notes from the change records instead of by hand",
+      "group": "ESS",
+      "area": "DEP",
+      "finding_ids": ["FND-SYN-ESS-DEP-002"],
+      "effects": {
+        "quality": {"value": 2, "basis": "Fictional: fewer omissions in the notes themselves"},
+        "security": {"value": 0, "basis": "ASSESSED: no expected security effect. Release notes are a communication artifact. Real estimate of zero."},
+        "delivery": {"value": 4, "basis": "Fictional: removes a manual step from every release"}
+      },
+      "complexity": {"value": 2, "basis": "Fictional: a template plus a report against existing change data"},
+      "notes": "Under a security-only weighting this scores exactly 0.0 and is still ranked. A real zero is a result; a missing estimate is not."
+    },
+    {
+      "recommendation_id": "REC-SYN-IAM-SEC-001",
+      "title": "Consolidate the three group-membership review spreadsheets into one recorded quarterly review",
+      "group": "IAM",
+      "area": "SEC",
+      "finding_ids": ["FND-SYN-IAM-SEC-003"],
+      "effects": {
+        "quality": {"value": 3, "basis": "Fictional: one source removes the reconciliation step between three sheets"},
+        "security": {"value": 4, "basis": "Fictional: makes an unreviewed group visible instead of falling between sheets"},
+        "delivery": {"value": 1, "basis": "Fictional: minor; this work sits outside delivery"}
+      },
+      "complexity": {"value": 3, "basis": "Fictional: three owners have to agree on one format before anything is merged"},
+      "notes": null
+    },
+    {
+      "recommendation_id": "REC-SYN-RIS-SD-001",
+      "title": "Write down the RIS branch and review conventions that are currently held by convention",
+      "group": "RIS",
+      "area": "SD",
+      "finding_ids": ["FND-SYN-RIS-SD-002"],
+      "effects": {
+        "quality": {"value": 3, "basis": "Fictional: new contributors stop guessing"},
+        "security": {"value": 3, "basis": "Fictional: makes the review expectation checkable"},
+        "delivery": {"value": 3, "basis": "Fictional: less rework from mismatched expectations"}
+      },
+      "complexity": {"value": 3, "basis": "Fictional: writing is cheap; agreement across the group is not"},
+      "notes": "Half of the deliberate tie: benefit 3.00 at the baseline weighting from an even 3/3/3 spread."
+    },
+    {
+      "recommendation_id": "REC-SYN-ESS-SEC-001",
+      "title": "Move the ESS shared service account off a static credential",
+      "group": "ESS",
+      "area": "SEC",
+      "finding_ids": ["FND-SYN-ESS-SEC-004"],
+      "effects": {
+        "quality": {"value": 0, "basis": "ASSESSED: no expected quality effect on the software itself. Real estimate of zero."},
+        "security": {"value": 5, "basis": "Fictional: removes a long-lived shared credential"},
+        "delivery": {"value": 4, "basis": "Fictional: also removes the quarterly manual rotation from the release checklist"}
+      },
+      "complexity": {"value": 3, "basis": "Fictional: every consumer of the account has to be found and cut over"},
+      "notes": "The other half of the deliberate tie: benefit 3.00 from a completely different 0/5/4 spread. Same score, different reasons; the tie report shows both."
+    },
+    {
+      "recommendation_id": "REC-SYN-IAM-SD-001",
+      "title": "Replace the manual IAM connector release checklist with a scripted release",
+      "group": "IAM",
+      "area": "SD",
+      "finding_ids": ["FND-SYN-IAM-SD-005"],
+      "effects": {
+        "quality": {"value": 4, "basis": "Fictional: the checklist is where the fictional step-skips happen"},
+        "security": {"value": 4, "basis": "Fictional: a scripted release leaves a record the manual one does not"},
+        "delivery": {"value": 5, "basis": "Fictional: the checklist is the longest manual step in the fictional IAM release"}
+      },
+      "complexity": "UNKNOWN",
+      "notes": "THE GAP. Complexity was never estimated: whether the vendor connector supports a scripted release is itself unknown, and the answer moves the effort between a day and a quarter. Effects are strong, so this item's upper bound reaches the top of the list. It is held out of the ranking, NOT scored 0 and NOT ranked last."
+    },
+    {
+      "recommendation_id": "REC-SYN-RIS-DEP-001",
+      "title": "Document the RIS maintenance-window handoff between the on-call and platform rotations",
+      "group": "RIS",
+      "area": "DEP",
+      "finding_ids": ["FND-SYN-RIS-DEP-006"],
+      "effects": {
+        "quality": 1,
+        "security": null,
+        "delivery": 2
+      },
+      "complexity": 4,
+      "notes": "A second gap, of a different kind. The security effect was never estimated, so this is unranked too, but its best possible score still does not reach the top of the list: the missing estimate is real and is still not what is holding up the decision."
+    },
+    {
+      "recommendation_id": "REC-SYN-ESS-AI-001",
+      "title": "Inventory where the ESS group already uses assistive code generation",
+      "group": "ESS",
+      "area": "AI",
+      "finding_ids": ["FND-SYN-ESS-AI-007"],
+      "effects": {
+        "quality": {"basis": "Not estimated. Whether assistive generation currently helps or hurts ESS code quality is exactly what the inventory is meant to find out, so entering a number here would be inventing the answer."},
+        "security": {"value": 2, "basis": "Fictional: knowing where it is used is a precondition for any review of it"},
+        "delivery": {"value": 3, "basis": "Fictional: the inventory is short and unblocks the other AI-readiness work"}
+      },
+      "complexity": {"value": 1, "basis": "Fictional: a survey and a repository scan"},
+      "notes": "Demonstrates weight-dependent materiality: unranked under any weighting that values quality, ranked under the security-only stress weighting where the missing quality estimate cannot change the order. The estimate is reported as missing in both cases."
+    },
+    {
+      "recommendation_id": "REC-SYN-IAM-AI-001",
+      "title": "Define an approval path for AI-assisted changes to IAM configuration",
+      "group": "IAM",
+      "area": "AI",
+      "finding_ids": [],
+      "effects": {
+        "quality": 2,
+        "security": 3,
+        "delivery": 1
+      },
+      "complexity": 4,
+      "notes": "Deliberately carries no finding_ids. It ranks normally but is reported as not traceable to a finding, which is a gap in the recommendation, not in the arithmetic."
+    }
+  ]
+}
