@@ -14,7 +14,14 @@ from pathlib import Path
 from typing import Any
 
 GROUPS = ('ESS', 'RIS', 'IAM')
-DIMENSIONS = ('software_development', 'security', 'deployment', 'ai_readiness')
+DIMENSIONS_BY_REPORT_SCHEMA = {
+    # The app's built-in demo is explicitly NOT compiler output. Its original
+    # spelling must not be promoted into the parent compiler's vocabulary.
+    'SYNTHETIC_UI_DEMO_NOT_COMPILER_OUTPUT':
+        ('software_development', 'security', 'deployment', 'ai_readiness'),
+    'uiowa-rfq18649-workshare-report/v2':
+        ('software', 'security', 'deployment', 'ai_readiness'),
+}
 AUTHORITY_FIELDS = ('buyer_approved', 'prime_approved', 'current_evidence_review_authority',
                     'submission_authorized', 'signature_authorized',
                     'invoice_or_payment_authorized', 'recognized_revenue')
@@ -108,7 +115,12 @@ def audit_pair(report: Any, handoff: Any) -> list[dict[str, str]]:
         for key in AUTHORITY_FIELDS:
             if authority.get(key) is not False:
                 note('HANDOFF_AUTHORITY_NOT_FALSE', '/handoff/authority/' + key)
-    expected = {(g, d) for g in GROUPS for d in DIMENSIONS}
+    schema = report.get('schema')
+    dimensions = DIMENSIONS_BY_REPORT_SCHEMA.get(schema) if isinstance(schema, str) else None
+    if dimensions is None:
+        note('REPORT_SCHEMA_UNSUPPORTED', '/report/schema')
+        return findings
+    expected = {(g, d) for g in GROUPS for d in dimensions}
     def index_rows(rows, name):
         indexed = {}
         if not isinstance(rows, list):
