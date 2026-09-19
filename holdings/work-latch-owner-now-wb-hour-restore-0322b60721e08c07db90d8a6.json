@@ -1,8 +1,8 @@
 {
- "heartbeat_at": "2026-09-19T11:13:55Z",
+ "heartbeat_at": "2026-09-19T11:31:31Z",
  "holder": "LATCH / cursor-grok-4.6-xhigh bc-d5aa5fbc",
  "key": "work-latch-owner-now-wb-hour-restore-0322b60721e08c07db90d8a6",
- "note": "operation=latch owner-now wb hour restore | restore EXISTING White Box hour PL on owner-now-revenue.html; first-mint action-20260919110812-22a675665683",
+ "note": "operation=latch owner-now wb hour restore | rebased; action already on main; CTA restore unique",
  "schema": "commons-change-holding/v1",
  "state": "HELD",
  "taken_at": "2026-09-19T11:13:55Z",
