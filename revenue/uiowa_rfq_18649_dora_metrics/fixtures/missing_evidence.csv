@@ -1,0 +1,3 @@
+deployment_id,service,window_start,window_end,environment,deployed_at,commit_id,committed_at,successful_change_at,requires_immediate_intervention,failure_detected_at,recovery_completed_at,is_unplanned_rework,rework_cause,notes
+MISS-001,example-service,2026-09-01T00:00:00Z,2026-09-08T00:00:00Z,production,2026-09-02T12:00:00Z,,,2026-09-02T12:00:00Z,false,,,false,,synthetic missing commit linkage
+MISS-002,example-service,2026-09-01T00:00:00Z,2026-09-08T00:00:00Z,production,2026-09-04T12:00:00Z,c2,2026-09-04T10:00:00Z,2026-09-04T12:00:00Z,false,,,false,,synthetic measured change
