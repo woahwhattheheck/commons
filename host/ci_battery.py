@@ -153,7 +153,8 @@ def main(argv: list[str] | None = None) -> int:
     file_hashes = {}
     scope = {"kind": "selected" if requested else "full", "requested": requested,
              "shard_index": args.shard_index, "shard_count": args.shard_count,
-             "discovered_files": len(discovered), "planned_files": len(selected)}
+             "discovered_files": len(discovered), "planned_files": len(selected),
+             "fail_fast": args.fail_fast}
     if args.shard_count > 1:
         scope["kind"] = "selected-shard" if requested else "shard"
     dirty = None
