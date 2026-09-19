@@ -87,48 +87,126 @@ def _req(raw: dict, key: str, mid: str):
     return raw[key]
 
 
+def _finite_number(value: Any, field: str) -> None:
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        raise MeasureError(f"{field} must be a finite number, not a boolean or string")
+    try:
+        finite = math.isfinite(value)
+    except OverflowError:
+        finite = False
+    if not finite:
+        raise MeasureError(f"{field} must be finite and within the numeric calculation range")
+
+
+def _count(value: Any, field: str, *, allow_none: bool = True) -> None:
+    if value is None and allow_none:
+        return
+    if type(value) is not int or value < 0:
+        raise MeasureError(f"{field} must be a non-negative integer or null")
+    _finite_number(value, field)
+
+
+def _nonempty_text(value: Any, field: str) -> None:
+    if not isinstance(value, str) or not value.strip():
+        raise MeasureError(f"{field} must be non-empty text")
+
+
+def validate_measure(m: Measure) -> None:
+    """Shared checks for JSON input and direct public-API callers.
+
+    Missing measurements remain None: shape validation does not fill them in
+    or convert them into observed zero. Numeric validation is not evidence
+    that the measurements or the declared sampling design are true.
+    """
+    if not isinstance(m, Measure):
+        raise MeasureError("every measure must be a Measure instance")
+    _nonempty_text(m.id, "id")
+    _nonempty_text(m.label, f"measure {m.id!r} label")
+    if m.kind not in ("PROPORTION", "MEDIAN", "COUNT"):
+        raise MeasureError(f"measure {m.id!r} has unknown kind {m.kind!r}")
+    if m.sampling not in SAMPLING_KINDS:
+        raise MeasureError(f"measure {m.id!r} has unknown sampling {m.sampling!r}")
+    if m.scope not in SCOPES:
+        raise MeasureError(f"measure {m.id!r} has unknown scope {m.scope!r}")
+    for name in ("numerator", "denominator", "stated_total"):
+        _count(getattr(m, name), f"measure {m.id!r} {name}")
+    if (m.numerator is not None and m.denominator is not None
+            and m.numerator > m.denominator):
+        raise MeasureError(f"measure {m.id!r} has numerator greater than denominator")
+    if type(m.reported_decimals) is not int or m.reported_decimals < 0:
+        raise MeasureError(f"measure {m.id!r} reported_decimals must be a non-negative integer")
+    if m.reported_value is not None:
+        _finite_number(m.reported_value, f"measure {m.id!r} reported_value")
+        if (m.kind == "PROPORTION" and m.presentation == "PERCENT"
+                and not 0 <= m.reported_value <= 100):
+            raise MeasureError(f"measure {m.id!r} reported_value must be between 0 and 100 percent")
+        if m.kind == "COUNT":
+            _count(m.reported_value, f"measure {m.id!r} reported_value")
+    if not isinstance(m.unit, str):
+        raise MeasureError(f"measure {m.id!r} unit must be text")
+    if m.observations is not None:
+        if not isinstance(m.observations, list):
+            raise MeasureError(f"measure {m.id!r} observations must be a list or null")
+        for i, value in enumerate(m.observations):
+            _finite_number(value, f"measure {m.id!r} observations[{i}]")
+    if m.components is not None:
+        if not isinstance(m.components, dict):
+            raise MeasureError(f"measure {m.id!r} components must be an object or null")
+        for name, value in m.components.items():
+            _nonempty_text(name, f"measure {m.id!r} component name")
+            _count(value, f"measure {m.id!r} component {name!r}")
+
+    if m.kind == "PROPORTION":
+        _validate_proportion(m)
+    elif m.inference is not None or m.claim != "DESCRIPTIVE":
+        raise MeasureError("claim and inference fields require kind PROPORTION")
+
+
+def _unique_object(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise MeasureError(f"duplicate JSON member {key!r}; no last-value-wins interpretation")
+        result[key] = value
+    return result
+
+
+def _nonfinite_constant(value):
+    raise MeasureError(f"non-finite JSON number {value!r} is not a recorded measurement")
+
+
 def load_measures(path: str) -> list[Measure]:
     with open(path, encoding="utf-8") as fh:
-        raw = json.load(fh)
-    if not isinstance(raw, dict) or raw.get("synthetic") is not True:
+        raw = json.load(fh, object_pairs_hook=_unique_object,
+                        parse_constant=_nonfinite_constant)
+    if not isinstance(raw, dict):
+        raise MeasureError("the measure set must be a JSON object")
+    if raw.get("synthetic") is not True:
         raise MeasureError("the measure set must be explicitly marked synthetic:true")
-    if not isinstance(raw.get("measures", []), list):
+    items = _req(raw, "measures", "<set>")
+    if not isinstance(items, list):
         raise MeasureError("measures must be a list")
     out = []
-    for item in raw.get("measures", []):
+    seen = set()
+    for item in items:
         if not isinstance(item, dict):
-            raise MeasureError("each measure must be an object")
-        mid = item.get("id") or "<unnamed>"
-        kind = _req(item, "kind", mid)
-        if kind not in ("PROPORTION", "MEDIAN", "COUNT"):
-            raise MeasureError(f"measure {mid!r} has unknown kind {kind!r}")
-        sampling = item.get("sampling", "UNKNOWN")
-        if sampling not in SAMPLING_KINDS:
-            raise MeasureError(f"measure {mid!r} has unknown sampling {sampling!r}")
-        scope = item.get("scope", "SAMPLE")
-        if scope not in SCOPES:
-            raise MeasureError(f"measure {mid!r} has unknown scope {scope!r}")
-        denominator = item.get("denominator")
-        numerator = item.get("numerator")
-        measure = Measure(
-            id=mid, label=_req(item, "label", mid), kind=kind,
-            numerator=numerator, denominator=denominator,
-            reported_value=item.get("reported_value"),
-            reported_decimals=item.get("reported_decimals", 0),
-            observations=item.get("observations"),
-            sampling=sampling, scope=scope,
-            components=item.get("components"),
-            stated_total=item.get("stated_total"),
-            unit=item.get("unit", ""),
-            presentation=item.get("presentation", "PERCENT"),
-            claim=item.get("claim", "DESCRIPTIVE"),
-            population=item.get("population", ""),
-            inference=item.get("inference"))
-        if measure.kind == "PROPORTION":
-            _validate_proportion(measure)
-        elif measure.inference is not None or measure.claim != "DESCRIPTIVE":
-            raise MeasureError("claim and inference fields require kind PROPORTION")
-        out.append(measure)
+            raise MeasureError("every entry in measures must be a JSON object")
+        # Preserve the existing single-unnamed-record convention, while refusing
+        # duplicate identities which would make finding attribution ambiguous.
+        mid = item.get("id", "<unnamed>")
+        # Copy declared fields rather than freeze another independent list.
+        # A companion method repair may extend Measure; its fields must survive
+        # input loading. Unknown annotation keys retain the previous behavior.
+        field_names = {field.name for field in dataclasses.fields(Measure) if field.init}
+        values = {key: value for key, value in item.items() if key in field_names}
+        values.update(id=mid, label=_req(item, "label", str(mid)),
+                      kind=_req(item, "kind", str(mid)))
+        m = Measure(**values)
+        validate_measure(m)
+        if m.id in seen:
+            raise MeasureError(f"duplicate measure id {m.id!r}")
+        seen.add(m.id)
+        out.append(m)
     return sorted(out, key=lambda m: m.id)
 
 
@@ -240,15 +318,25 @@ def _check_zero_claim(m: Measure) -> list[Finding]:
     return out
 
 
-def check(measures: list[Measure]) -> list[Finding]:
+def check(measures: list[Measure], *, min_denominator: int | None = None) -> list[Finding]:
+    threshold = MIN_DENOMINATOR_FOR_RATE if min_denominator is None else min_denominator
+    if type(threshold) is not int or threshold < 1:
+        raise MeasureError("min_denominator must be a positive integer")
+    if not isinstance(measures, list):
+        raise MeasureError("measures must be a list")
+    if not measures:
+        return [Finding("EMPTY_MEASURE_SET", ERROR, "<set>",
+                        "no measures were supplied; no measure was checked",
+                        "supply the intended records; an empty input is not a soundness pass")]
     out: list[Finding] = []
+    seen = set()
     for m in measures:
-        if m.kind not in ("PROPORTION", "MEDIAN", "COUNT"):
-            raise MeasureError("unknown measure kind")
-        if m.kind != "PROPORTION" and (m.inference is not None or m.claim != "DESCRIPTIVE"):
-            raise MeasureError("claim and inference fields require kind PROPORTION")
+        validate_measure(m)
+        if m.id in seen:
+            raise MeasureError(f"duplicate measure id {m.id!r}")
+        seen.add(m.id)
         if m.kind == "PROPORTION":
-            out.extend(_check_proportion(m))
+            out.extend(_check_proportion(m, min_denominator=threshold))
         elif m.kind == "MEDIAN":
             out.extend(_check_median(m))
         if m.components is not None or m.stated_total is not None:
@@ -256,7 +344,7 @@ def check(measures: list[Measure]) -> list[Finding]:
     return sorted(out, key=lambda f: f.sort_key())
 
 
-def _check_proportion(m: Measure) -> list[Finding]:
+def _check_proportion(m: Measure, *, min_denominator: int | None = None) -> list[Finding]:
     _validate_proportion(m)
     out: list[Finding] = []
 
@@ -286,7 +374,8 @@ def _check_proportion(m: Measure) -> list[Finding]:
     if m.presentation == "PERCENT":
         step = resolvable_step_pp(m.denominator)
 
-        if m.denominator < MIN_DENOMINATOR_FOR_RATE:
+        threshold = MIN_DENOMINATOR_FOR_RATE if min_denominator is None else min_denominator
+        if m.denominator < threshold:
             out.append(Finding(
                 "DENOMINATOR_TOO_SMALL", ERROR, m.id,
                 f"a percentage from {m.denominator} observations invites the reader to "
@@ -298,9 +387,10 @@ def _check_proportion(m: Measure) -> list[Finding]:
             # Only checked when the measure is large enough to be stated as a rate at
             # all. Below that, DENOMINATOR_TOO_SMALL already covers it, and two
             # findings for one defect makes the counts untrustworthy.
-            implied_resolution = 10.0 ** (-m.reported_decimals)
+            implied_resolution = (0.0 if m.reported_decimals > 308
+                                  else 10.0 ** (-m.reported_decimals))
             if implied_resolution < step / 2.0:
-                rounded = round(100.0 * m.numerator / m.denominator)
+                rounded = round((m.numerator / m.denominator) * 100.0)
                 # A decimal place on a small sample is a stronger claim than a whole
                 # percent, so it is the error and the whole percent is the warning.
                 severity = ERROR if m.reported_decimals > 0 else WARN
