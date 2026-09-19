@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 179,
-    "open_pull_requests": 81,
-    "runs_in_progress": 13,
-    "runs_queued": 519
+    "open_pull_requests": 82,
+    "runs_in_progress": 14,
+    "runs_queued": 526
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,28 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "swarm-zz/uiowa-103-cirrus-conformance-20260919",
+      "created_at": "2026-09-19T14:02:09Z",
+      "draft": false,
+      "head_sha": "d85a04ef105a1e09e452037cff310e2712ae0488",
+      "number": 16248,
+      "title": "UIOWA-103: incremental-import identity conformance and mutation proof",
+      "updated_at": "2026-09-19T14:02:09Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/uiowa-070-deltaweir63",
+      "created_at": "2026-09-19T14:02:00Z",
+      "draft": false,
+      "head_sha": "c046b826b3d31d77cad9434fda87fb071fe6fbef",
+      "number": 16247,
+      "title": "UIOWA-070: seasonal capacity and shared-dependency planning kit",
+      "updated_at": "2026-09-19T14:02:00Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "swarm-zz/uiowa-073-copperfinch-k73a",
       "created_at": "2026-09-19T14:01:12Z",
       "draft": false,
@@ -76,17 +98,6 @@
       "number": 16244,
       "title": "UIOWA-073: runnable knowledge-readiness lab, source-linked rehearsal and worksheet",
       "updated_at": "2026-09-19T14:01:12Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-fix-framework-crosswalk-duplicate-test",
-      "created_at": "2026-09-19T14:01:11Z",
-      "draft": false,
-      "head_sha": "bd9faf8d4a301885abdcdd654ed04d272850c199",
-      "number": 16243,
-      "title": "tests(uiowa): exercise duplicate framework-locator guard",
-      "updated_at": "2026-09-19T14:01:11Z"
     },
     {
       "author": "woahwhattheheck",
@@ -108,7 +119,7 @@
       "head_sha": "848a2bf2c8945468d4293063610040e33dc3b85b",
       "number": 16238,
       "title": "UIOWA-079: executable AI lifecycle and observability assessment",
-      "updated_at": "2026-09-19T13:58:40Z"
+      "updated_at": "2026-09-19T14:02:09Z"
     },
     {
       "author": "woahwhattheheck",
@@ -127,10 +138,10 @@
       "branch": "swarm-zz/uiowa-078-kestrel-v78-ai-economics",
       "created_at": "2026-09-19T13:58:06Z",
       "draft": true,
-      "head_sha": "af864a779343086002065ab50db2738ba423a4b1",
+      "head_sha": "37c24acb58a66b9e88ca11ca8a1d3c361a845639",
       "number": 16235,
       "title": "UIOWA-078: AI workflow economics, sensitivity and reproducible evidence kit",
-      "updated_at": "2026-09-19T13:58:06Z"
+      "updated_at": "2026-09-19T14:03:10Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 16229,
       "title": "UIOWA-063: executable release-recovery evidence assessment and tabletop kit",
       "updated_at": "2026-09-19T14:00:42Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "anchor-zz/uiowa-137-capability-appendix-20260919",
-      "created_at": "2026-09-19T13:56:18Z",
-      "draft": false,
-      "head_sha": "c14962fd2e57de5b5f676add77fbb819b878486f",
-      "number": 16228,
-      "title": "UIOWA-137: evidence-backed technical capability appendix",
-      "updated_at": "2026-09-19T13:56:18Z"
     }
   ],
   "open_heads": {
@@ -253,17 +253,29 @@
     "16229": "c9177e39fa62cfbcedffc095447a56a35ebfe2c5",
     "16231": "85e86e534442916313a544d12ce5f71619e12ff0",
     "16234": "96df74b7385ee5792cfd237c02d4526b706970b2",
-    "16235": "af864a779343086002065ab50db2738ba423a4b1",
+    "16235": "37c24acb58a66b9e88ca11ca8a1d3c361a845639",
     "16236": "5f3f1ce67d8b745118a002ea65a6915349d0a1f3",
     "16238": "848a2bf2c8945468d4293063610040e33dc3b85b",
     "16241": "8cc0e4a7aab1f20e3d2cda84ea3808e509ce781f",
-    "16243": "bd9faf8d4a301885abdcdd654ed04d272850c199",
-    "16244": "fed50b13ad533461ddc85585fba7e9a6ba9cf269"
+    "16244": "fed50b13ad533461ddc85585fba7e9a6ba9cf269",
+    "16247": "c046b826b3d31d77cad9434fda87fb071fe6fbef",
+    "16248": "d85a04ef105a1e09e452037cff310e2712ae0488"
   },
-  "pulls_listed": 81,
+  "pulls_listed": 82,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 39.9,
+  "queue_depth_per_runner": 37.6,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-fix-framework-crosswalk-duplicate-test",
+      "closed_at": "2026-09-19T14:02:31Z",
+      "head_sha": "bd9faf8d4a301885abdcdd654ed04d272850c199",
+      "merged_at": "2026-09-19T14:02:30Z",
+      "number": 16243,
+      "state": "MERGED",
+      "title": "tests(uiowa): exercise duplicate framework-locator guard"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -417,21 +429,10 @@
       "number": 16201,
       "state": "MERGED",
       "title": "UIOWA-054: executable service-identity lifecycle assessment kit"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "solstice-zz/actions-merge-train-15958-final",
-      "branch": "review/cormorant52r-16152-latest-attempts",
-      "closed_at": "2026-09-19T13:52:25Z",
-      "head_sha": "11d62710e2deba1d7af8931bd5e5e164f41ba5d7",
-      "merged_at": null,
-      "number": 16193,
-      "state": "CLOSED",
-      "title": "CI review delta: retain distinct latest-run holds and 36-pair regressions"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T14:01:53Z",
+  "unchanged_since": "2026-09-19T14:03:25Z",
   "undatable_pulls": []
 }
