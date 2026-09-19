@@ -40,7 +40,7 @@ Python 3 standard library only. No installs, no network.
 cd revenue/uiowa_rfq_18649_vocabulary_crosswalk
 
 python3 reconcile.py --revenue-root .. --out output
-python3 -m unittest test_vocabulary           # 24 tests
+python3 -m unittest test_vocabulary           # 32 tests
 python3 scan_vocabulary.py ..                 # raw observations only
 ```
 
@@ -70,10 +70,71 @@ written to     output/
 ```
 
 ```
-Ran 24 tests in 0.063s
+Ran 32 tests in 0.083s
 
 OK
 ```
+
+## Is MY join affected? (`join_safety.py`)
+
+A reconciliation report says the vocabularies disagree. It does not say whether *your*
+join is affected. Give this two CSVs and it answers, with the rows at stake.
+
+```bash
+python3 join_safety.py --revenue-root .. \
+    --left  uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv \
+    --right uiowa_rfq_18649_synthetic_collection/coverage_matrix.csv
+```
+
+**The pair that caused the real incident:**
+
+```
+left   uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv
+right  uiowa_rfq_18649_synthetic_collection/coverage_matrix.csv
+
+VERDICT: NORMALISE_FIRST   (36 row(s) at risk)
+
+  group  SAFE
+         all terms resolve and both sides use the same spellings
+
+  area   NORMALISE_FIRST
+         every term resolves, but 36 row(s) are spelled differently on the two sides; a join on the raw column drops them silently. Join on the canonical value instead
+         only on the left:  ['AI', 'AI readiness', 'DEP', 'Deployment and operations', 'SD', 'SEC', 'Security', 'Software development']
+         only on the right: ['ai_readiness', 'deployment_operations', 'security', 'software_development']
+```
+
+Groups agree; only the area spellings differ — which is exactly the shape of the bug
+that reported that lane as 9 of 12 cells. **36 rows at risk**, named on both sides.
+
+**A pair that cannot be joined at all yet:**
+
+```
+left   uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv
+right  uiowa_rfq_18649_outcome_measurement/measure_register.csv
+
+VERDICT: UNSAFE   (2 row(s) at risk)
+
+  group  NOT_COMPARABLE
+         no group column found on the right file
+
+  area   UNSAFE
+         1 term(s) covering 2 row(s) do not resolve; joining would require guessing what they mean
+         only on the left:  ['AI', 'AI readiness', 'DEP', 'Deployment and operations', 'SD', 'SEC', 'Security', 'Software development']
+         only on the right: ['operational_reliability', 'security', 'software_delivery']
+         [UNRESOLVED_CONCEPT] right 'operational_reliability' (2 rows) - Is operational_reliability intended as the DEP practice area, or as an outcome measured across areas? Joining on it is unsafe until the owning lane answers.
+```
+
+Four verdicts, and `UNSAFE` outranks the rest so one unresolved term is never masked by
+an otherwise tidy comparison:
+
+| Verdict | Meaning |
+|---|---|
+| `SAFE` | Every term resolves and both sides use the same spellings. |
+| `NORMALISE_FIRST` | Every term resolves, but the sides spell them differently — a raw join drops rows **silently**. Join on the canonical value. |
+| `UNSAFE` | At least one term does not resolve. Joining would guess. The terms and the questions owed are named. |
+| `NOT_COMPARABLE` | A slot is missing from one side. An absent column never reads as agreement. |
+
+`UNSAFE` exits **0**, not non-zero: it is the finding, not a failure of the tool.
 
 ## The rule: declared mappings, never guesses
 
@@ -142,8 +203,9 @@ A guard that fires on a description of itself teaches you to switch it off.
 |---|---|
 | `scan_vocabulary.py` | Read-only scan; records every term with file, column and row count. |
 | `crosswalk.json` | The declared mappings, each with a kind, a basis, and a question where one is owed. |
+| `join_safety.py` | Answers whether two specific files can be joined, and what it costs if not. |
 | `reconcile.py` | Applies the crosswalk, reports collisions and patterns, writes the outputs. |
-| `test_vocabulary.py` | 24 tests, including the read-only digest proof and the count-conservation proof. |
+| `test_vocabulary.py` | 32 tests, including the read-only digest proof and the count-conservation proof. |
 | `output/` | The committed run against the tree as it stood at build time. |
 
 ## Working vs. draft

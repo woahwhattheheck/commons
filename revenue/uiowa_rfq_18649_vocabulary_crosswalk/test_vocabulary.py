@@ -300,3 +300,101 @@ class TestOutputs(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
+
+
+class TestJoinSafety(unittest.TestCase):
+    """Can these two files actually be joined? The 'so what' of the crosswalk."""
+
+    def setUp(self):
+        import join_safety
+        self.JS = join_safety
+        self.cw = load_crosswalk()
+
+    def _csv(self, tmp, name, header, rows):
+        path = os.path.join(tmp, name)
+        with open(path, "w", encoding="utf-8", newline="\n") as fh:
+            fh.write(header + "\n")
+            for r in rows:
+                fh.write(r + "\n")
+        return path
+
+    def test_identical_spellings_are_safe(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            a = self._csv(tmp, "a.csv", "group,area", ["ESS,SD", "RIS,SEC"])
+            b = self._csv(tmp, "b.csv", "group,area", ["ESS,SD", "RIS,SEC"])
+            rep = self.JS.assess(a, b, self.cw)
+            self.assertEqual(rep["overall_verdict"], self.JS.SAFE)
+            self.assertEqual(rep["rows_at_risk"], 0)
+
+    def test_different_spellings_of_the_same_areas_need_normalising(self):
+        """The real case: a raw join here drops rows without saying so."""
+        with tempfile.TemporaryDirectory() as tmp:
+            a = self._csv(tmp, "a.csv", "group,area", ["ESS,SD", "RIS,SEC"])
+            b = self._csv(tmp, "b.csv", "group,assessment_area",
+                          ["ESS,software_development", "RIS,security"])
+            rep = self.JS.assess(a, b, self.cw)
+            self.assertEqual(rep["overall_verdict"], self.JS.NORMALISE)
+            self.assertEqual(rep["rows_at_risk"], 4)
+            area = next(s for s in rep["slots"] if s["slot"] == "area")
+            self.assertIn("software_development", area["right_only"])
+
+    def test_an_unresolved_term_makes_the_join_unsafe_and_names_it(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            a = self._csv(tmp, "a.csv", "group,area", ["ESS,SD"])
+            b = self._csv(tmp, "b.csv", "group,area",
+                          ["ESS,operational_reliability", "ESS,operational_reliability"])
+            rep = self.JS.assess(a, b, self.cw)
+            self.assertEqual(rep["overall_verdict"], self.JS.UNSAFE)
+            area = next(s for s in rep["slots"] if s["slot"] == "area")
+            names = {u["term"] for u in area["unresolved"]}
+            self.assertEqual(names, {"operational_reliability"})
+            self.assertEqual(area["unresolved"][0]["rows"], 2)
+            self.assertTrue(area["unresolved"][0]["question"])
+
+    def test_unsafe_outranks_normalise(self):
+        """One unresolved term must not be masked by an otherwise tidy comparison."""
+        with tempfile.TemporaryDirectory() as tmp:
+            a = self._csv(tmp, "a.csv", "group,area", ["ESS,SD", "ESS,SEC"])
+            b = self._csv(tmp, "b.csv", "group,area",
+                          ["ESS,software_development", "ESS,operational_reliability"])
+            rep = self.JS.assess(a, b, self.cw)
+            self.assertEqual(rep["overall_verdict"], self.JS.UNSAFE)
+
+    def test_a_missing_slot_is_not_comparable_rather_than_safe(self):
+        """An absent column must never read as agreement."""
+        with tempfile.TemporaryDirectory() as tmp:
+            a = self._csv(tmp, "a.csv", "group,area", ["ESS,SD"])
+            b = self._csv(tmp, "b.csv", "area", ["SD"])
+            rep = self.JS.assess(a, b, self.cw)
+            grp = next(s for s in rep["slots"] if s["slot"] == "group")
+            self.assertEqual(grp["verdict"], self.JS.NOT_COMPARABLE)
+            self.assertNotEqual(rep["overall_verdict"], self.JS.SAFE)
+
+    def test_the_real_pair_that_caused_the_false_failure(self):
+        """intake_rehearsal vs synthetic_collection - the actual incident."""
+        left = os.path.join(REVENUE, "uiowa_rfq_18649_intake_rehearsal",
+                            "artifacts", "assessment_matrix.csv")
+        right = os.path.join(REVENUE, "uiowa_rfq_18649_synthetic_collection",
+                             "coverage_matrix.csv")
+        if not (os.path.isfile(left) and os.path.isfile(right)):
+            self.skipTest("both lanes are not present in this tree")
+        rep = self.JS.assess(left, right, self.cw)
+        self.assertEqual(rep["overall_verdict"], self.JS.NORMALISE)
+        self.assertGreater(rep["rows_at_risk"], 0)
+        grp = next(s for s in rep["slots"] if s["slot"] == "group")
+        self.assertEqual(grp["verdict"], self.JS.SAFE,
+                         "the groups agree; only the area spellings differ")
+
+    def test_cli_reports_and_exits_zero_for_an_unsafe_pair(self):
+        """UNSAFE is a finding to report, not a crash."""
+        with tempfile.TemporaryDirectory() as tmp:
+            a = self._csv(tmp, "a.csv", "group,area", ["ESS,SD"])
+            b = self._csv(tmp, "b.csv", "group,area", ["ESS,operational_reliability"])
+            self.assertEqual(self.JS.main(["--left", a, "--right", b,
+                                           "--crosswalk", CROSSWALK_PATH]), 0)
+
+    def test_cli_exits_2_on_a_missing_file(self):
+        self.assertEqual(
+            self.JS.main(["--left", "nope_a.csv", "--right", "nope_b.csv",
+                          "--crosswalk", CROSSWALK_PATH,
+                          "--revenue-root", REVENUE]), 2)
