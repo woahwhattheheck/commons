@@ -1,7 +1,7 @@
 {
  "lanes": [
   {"canonical":15840,"chain":[15811,15840],"content_keys":["10ace36f5f61f2d9"],"families":[],"lane":"lane-15811","open":[15811,15840],"state":"OPEN","title":"CI: rejoin pilot-renewal trust repair with 67-slot workflow recovery"},
-  {"canonical":15797,"chain":[15645,15797],"content_keys":["47acce249358712d"],"families":[],"lane":"lane-15645","open":[15645,15797],"state":"OPEN","title":"Hamilton: rejoin retained-evidence gate with exact projection and strict ingress"},
+  {"canonical":16152,"chain":[16152,16193],"content_keys":["b6515f2cf6908b65","c75452dae3da2604"],"families":["COMMONS-CI-STARVATION-MERGE-TRAIN-20260917-ZSOL"],"lane":"lane-16152","open":[16152],"state":"OPEN","title":"CI review delta: retain distinct latest-run holds and 36-pair regressions"},
   {"canonical":15949,"chain":[15949,15999],"content_keys":["05defcf6a6875d51"],"families":[],"lane":"lane-15949","open":[15949],"state":"OPEN","title":"CI: current-main 68→67 workflow budget repair"},
   {"canonical":15880,"chain":[15876,15880],"content_keys":["ca75b0eb7559c999","e89e936465197d7f"],"families":["PRODUCT-LIFECYCLE-STRUCTURED-WAKE-CLOSURE-ZSOL17"],"lane":"lane-15876","open":[],"state":"MERGED","title":"revenue: close structured lifecycle guard bypasses"},
   {"canonical":15834,"chain":[15808,15834],"content_keys":[],"families":[],"lane":"lane-15808","open":[],"state":"MERGED","title":"RWD #3 retainage packet: proof-surface fix-forward"},
@@ -9,8 +9,9 @@
   {"canonical":15825,"chain":[15819,15825],"content_keys":["cd4f6bcfa49cdbb9"],"families":[],"lane":"lane-15819","open":[],"state":"CLOSED","title":"CI: rejoin 264/day cron floor recovery onto current main"}
  ],
  "note": "lanes with two or more members; an open pull request row without a lane field is a lane of its own",
- "observed_at": "2026-09-19T13:21:18Z",
+ "observed_at": "2026-09-19T16:47:27Z",
  "recent_closed": [
+  {"closed_at":"2026-09-19T13:52:25Z","content_key":"c75452dae3da2604","created_at":"2026-09-19T13:49:19Z","head":"11d62710e2deba1d7af8931bd5e5e164f41ba5d7","links":[16152],"markers":[],"number":16193,"state":"CLOSED","title":"CI review delta: retain distinct latest-run holds and 36-pair regressions"},
   {"closed_at":"2026-09-18T07:39:35Z","content_key":"UNKNOWN","created_at":"2026-09-18T07:31:10Z","head":"626eb3925717460635371cc0cbc5860eebafa99c","links":[],"markers":[],"number":15999,"state":"MERGED","title":"CI: current-main 68→67 workflow budget repair"},
   {"closed_at":"2026-09-18T02:17:32Z","content_key":"ca75b0eb7559c999","created_at":"2026-09-18T02:10:02Z","head":"43ef1cfcdb22835ad169b4ffe906bf33f84017a0","links":[],"markers":["PRODUCT-LIFECYCLE-STRUCTURED-WAKE-CLOSURE-ZSOL17"],"number":15880,"state":"MERGED","title":"revenue: close structured lifecycle guard bypasses"},
   {"closed_at":"2026-09-18T02:10:13Z","content_key":"e89e936465197d7f","created_at":"2026-09-18T02:04:37Z","head":"8d1228e6d37d2b716e0f250e5fd422f532f1cb9f","links":[15880],"markers":[],"number":15876,"state":"CLOSED","title":"revenue: close structured lifecycle guard bypasses"},
