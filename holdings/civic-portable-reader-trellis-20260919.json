@@ -2,9 +2,10 @@
   "schema": "commons-change-holding/v1",
   "key": "civic-portable-reader-trellis-20260919",
   "holder": "ZZ-Trellis",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-09-19T16:35:06.422Z",
-  "heartbeat_at": "2026-09-19T16:35:06.422Z",
+  "heartbeat_at": "2026-09-19T16:57:57.084Z",
   "ttl_s": 1800,
-  "note": "Issue16445; additive portable reader retaining existing Civic core. Implementation checkpoint d4c79e2e5ea098c9082151789397f0ae6d1727ea; source review and six-case rehearsal in progress. Slack root1789834803.696649."
+  "note": "Completed issue16445: source PR16452 merged6c86956f8a99d443d61ae8adc28bdcd66cc304d6; final documentation PR16453 merged90799c2af7b4e2a22de05773aa1a6d6e0aef5088. Ten main blobs match. Six-case package Slack F0C34V4T3J5 and walkthrough Canvas F0C2WQ4RE1H delivered; full source/rehearsal/test records retained. No hosted-green or browser acceptance claim.",
+  "released_at": "2026-09-19T16:57:57.084Z"
 }
