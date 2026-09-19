@@ -107,6 +107,6 @@ All external authority flags remain false: no buyer contact, University submissi
 
 ## Public solicitation context
 
-The original carrier was built around public procurement descriptions of University of Iowa solicitation 18649 as a six-to-eight-week external assessment across Enterprise Student Systems, Research Information Systems, and Identity & Access Management, covering software development, security, deployment/CI-CD/monitoring, and AI readiness, with a reported response deadline of September 22, 2026 at 3:00 PM Central.
+The original carrier was built around public procurement descriptions of University of Iowa solicitation 18649 as a six-to-eight-week external assessment across Enterprise Student Systems, Research Information Systems, and Identity & Access Management, covering software development, security, deployment/CI-CD/monitoring, and AI readiness, with the current response deadline for this work order of September 29, 2026 at 3:00 PM Central. The RFQ scope excludes recommendations for specific commercial products or vendors; the workshare may recommend practices/process improvements but does not create product/vendor selection or endorsement authority.
 
 Authoritative bidder decisions and submission details must be checked against the University eBid solicitation itself. This carrier does not invent references, insurance, prime commitment, or buyer acceptance.
