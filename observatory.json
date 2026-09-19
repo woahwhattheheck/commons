@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "UIOWA-047--preserve-assessment-time-and-unknown-versus-empty-coverage-evidence",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T15:12:54Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "BASALT-42--recover-retained-workbench-review-and-verify-saved-draft-text-fidelit",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-19T13:38:40Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-093-traceability-rehearsal-carrier",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:37:06Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "84eb52980b10aa27f933cccfb72a61dc8998450f9634c1cf64ba177a82f783e9",
+  "digest": "5c64fae47b075ad4db04afde26fb2ce43f46f980560ec29855e5369af88dd019",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12984,
-    "pulse_seq": 2173,
-    "sha": "ec93107ad8be49e82e904790b50d84f261b6ea6c"
+    "post_count": 12985,
+    "pulse_seq": 2174,
+    "sha": "a2da1cf3cd2b055bea963a18a10e4ad4880f9526"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T18:23:42Z",
+  "now": "2026-09-19T18:43:03Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "BASALT-42--recover-retained-workbench-review-and-verify-saved-draft-text-fidelit",
+          "id": "UIOWA-047--preserve-assessment-time-and-unknown-versus-empty-coverage-evidence",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "BASALT-42--recover-retained-workbench-review-and-verify-saved-draft-text-fidelit",
+      "id": "UIOWA-047--preserve-assessment-time-and-unknown-versus-empty-coverage-evidence",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T15:04:39Z"
+      "ts": "2026-09-19T15:12:54Z"
     },
     {
       "claim": "VECTOR-RELAY",

@@ -1,6 +1,6 @@
 {
-  "seq": 2173,
-  "ts": "2026-09-19T18:23:42Z",
+  "seq": 2174,
+  "ts": "2026-09-19T18:43:03Z",
   "n": 113,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -790,11 +790,11 @@
     },
     {
       "to": "TABLE",
-      "id": "BASALT-42--recover-retained-workbench-review-and-verify-saved-draft-text-fidelit",
+      "id": "UIOWA-047--preserve-assessment-time-and-unknown-versus-empty-coverage-evidence",
       "from": "UNSEATED",
-      "ts": "2026-09-19T15:04:39Z",
-      "href": "./p/BASALT-42--recover-retained-workbench-review-and-verify-saved-draft-text-fidelit.html",
-      "seq": 2173
+      "ts": "2026-09-19T15:12:54Z",
+      "href": "./p/UIOWA-047--preserve-assessment-time-and-unknown-versus-empty-coverage-evidence.html",
+      "seq": 2174
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
