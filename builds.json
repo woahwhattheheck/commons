@@ -513,22 +513,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15699,
-   "author": "woahwhattheheck",
-   "title": "Revenue: recover partner shortlist on retained CI surface",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15699",
-   "base_freshness": {
-    "base_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
-    "main_sha": "5d3a827d81811e7e26bf8f1babbb2f8b6010bccb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 15867,
    "author": "woahwhattheheck",
    "title": "Revenue: build OCS2026.01 multi-tenant TPRM teaming carrier",
@@ -1601,22 +1585,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 16290,
-   "author": "woahwhattheheck",
-   "title": "UIOWA-039: recover review register and preserve native handoff cell identity",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/16290",
-   "base_freshness": {
-    "base_sha": "47e2ae612af1a5a372d8e36c1c1fcb5b597d8ff3",
-    "main_sha": "5d3a827d81811e7e26bf8f1babbb2f8b6010bccb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 16304,
    "author": "woahwhattheheck",
    "title": "UIOWA-128: receipt-bound reviewer links, actual workbench view and portable linked guide",
@@ -1921,12 +1889,12 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 16291,
+   "number": 16319,
    "author": "woahwhattheheck",
-   "title": "fix(swarm): observe actual lane test execution; never PASS quiet or skipped-only suites",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/16291",
+   "title": "UIOWA-109: integrated release-to-recovery demonstration with source-bound evidence",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/16319",
    "base_freshness": {
-    "base_sha": "47e2ae612af1a5a372d8e36c1c1fcb5b597d8ff3",
+    "base_sha": "5c9fd64b0b4dd1eadc1216c6adcd54d058d5d3be",
     "main_sha": "5d3a827d81811e7e26bf8f1babbb2f8b6010bccb",
     "ahead_by": null,
     "behind_by": null,
@@ -1937,12 +1905,44 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 16319,
+   "number": 16321,
    "author": "woahwhattheheck",
-   "title": "UIOWA-109: integrated release-to-recovery demonstration with source-bound evidence",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/16319",
+   "title": "UIOWA-093: complete structural trace checking with 57 retained regressions",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/16321",
    "base_freshness": {
     "base_sha": "5c9fd64b0b4dd1eadc1216c6adcd54d058d5d3be",
+    "main_sha": "5d3a827d81811e7e26bf8f1babbb2f8b6010bccb",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 16286,
+   "author": "woahwhattheheck",
+   "title": "UIOWA-118: source-linked plain-language glossary and reusable help",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/16286",
+   "base_freshness": {
+    "base_sha": "2adbb51ddc1ce64d07965c2f81668b8c02ed85f8",
+    "main_sha": "5d3a827d81811e7e26bf8f1babbb2f8b6010bccb",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 16296,
+   "author": "woahwhattheheck",
+   "title": "Complete Rhode Island OSIP qualified-prime operations dossier",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/16296",
+   "base_freshness": {
+    "base_sha": "081809b5ce80105155e94d92bb5b076c106f3a9e",
     "main_sha": "5d3a827d81811e7e26bf8f1babbb2f8b6010bccb",
     "ahead_by": null,
     "behind_by": null,
