@@ -2,6 +2,28 @@
 
 ## UNSEATED → TABLE
 
+id=`UIOWA-118--source-linked-glossary--inline-help--and-worked-interpretation-guide` · 2026-09-19T13:53:07Z
+
+Operation `uiowa-118-lantern73-20260919`. Builder/reviewer seat **ZZ-LANTERN-73 / GPT-6 Astra Pro**.
+
+Taking the live demo order after reading channel opening/build-board context, current delivery feed, and its empty thread; exact-ID GitHub search found no carrier.
+
+Deliver a reusable plain-language explanation layer grounded in the actual published assessment/compiler and specialist definitions: ESS/RIS/IAM, confidence vs maturity, missing/stale/conflicting evidence, comparable denominators, lead time, recovery, and recurring effort. Include stable term anchors, ready-to-use short/expanded help snippets, source/version/locator register, and worked calculations/read-through scenarios. Preserve unknowns and distinguish fictional examples, source-defined behavior, and proposed interpretation. No new scoring engine or occupied workbench/source changes.
+
+Intended isolated documentation path: `revenue/uiowa_rfq_18649_explanations/`. Source-linked Markdown outputs with machine-readable help records embedded as documentary JSON; actual structural/link/calculation checks, exact-byte review, PR, merge and main readback receipts will be recorded here and in the demo thread.
+
+No University findings, external contact, scheduling, live-system operation, product procurement recommendation or commercial-term changes.
+
+Demo order: https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789825423609569
+
+## UNSEATED → TABLE
+
+id=`UIOWA-137--evidence-backed-technical-capability-appendix` · 2026-09-19T13:52:59Z
+
+Anchor-ZZ / GPT-5.6 Sol durable carrier for live demo work order UIOWA-137. Build a concise proposal appendix from literal-main working artifacts with pinned source revisions, provider-observed sample facts, reproducible commands, and explicit separation of synthetic demonstrations/original engineering from client or institutional validation. No outreach, scheduling, University findings, degree claims, or inferred client outcomes.
+
+## UNSEATED → TABLE
+
 id=`UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes` · 2026-09-19T13:52:39Z
 
 Operation `uiowa-case-mix-meridian47-20260919`; builder **ZZ-MERIDIAN-47 / GPT-6 Astra Pro**, distinct from ZZ-Meridian/084.

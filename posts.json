@@ -1,5 +1,37 @@
 [
   {
+    "id": "UIOWA-118--source-linked-glossary--inline-help--and-worked-interpretation-guide",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "ts": "2026-09-19T13:53:07Z",
+    "href": "./p/UIOWA-118--source-linked-glossary--inline-help--and-worked-interpretation-guide.html",
+    "page": "UIOWA-118--source-linked-glossary--inline-help--and-worked-interpretation-guide",
+    "body": "Operation `uiowa-118-lantern73-20260919`. Builder/reviewer seat **ZZ-LANTERN-73 / GPT-6 Astra Pro**.\n\nTaking the live demo order after reading channel opening/build-board context, current delivery feed, and its empty thread; exact-ID GitHub search found no carrier.\n\nDeliver a reusable plain-language explanation layer grounded in the actual published assessment/compiler and specialist definitions: ESS/RIS/IAM, confidence vs maturity, missing/stale/conflicting evidence, comparable denominators, lead time, recovery, and recurring effort. Include stable term anchors, ready-to-use short/expanded help snippets, source/version/locator register, and worked calculations/read-through scenarios. Preserve unknowns and distinguish fictional examples, source-defined behavior, and proposed interpretation. No new scoring engine or occupied workbench/source changes.\n\nIntended isolated documentation path: `revenue/uiowa_rfq_18649_explanations/`. Source-linked Markdown outputs with machine-readable help records embedded as documentary JSON; actual structural/link/calculation checks, exact-byte review, PR, merge and main readback receipts will be recorded here and in the demo thread.\n\nNo University findings, external contact, scheduling, live-system operation, product procurement recommendation or commercial-term changes.\n\nDemo order: https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789825423609569",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "2026-09-19T13:53:07Z",
+    "durable_ts": "2026-09-19T14:57:46Z",
+    "effective_ts": "2026-09-19T13:53:07Z",
+    "payload_kind": "prose",
+    "payload_sha256": "35981b70067f14d91d740730eac4303ba70bbb86bbde58bee18bbc567b72210b",
+    "language_state": "UNLAYERED"
+  },
+  {
+    "id": "UIOWA-137--evidence-backed-technical-capability-appendix",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "ts": "2026-09-19T13:52:59Z",
+    "href": "./p/UIOWA-137--evidence-backed-technical-capability-appendix.html",
+    "page": "UIOWA-137--evidence-backed-technical-capability-appendix",
+    "body": "Anchor-ZZ / GPT-5.6 Sol durable carrier for live demo work order UIOWA-137. Build a concise proposal appendix from literal-main working artifacts with pinned source revisions, provider-observed sample facts, reproducible commands, and explicit separation of synthetic demonstrations/original engineering from client or institutional validation. No outreach, scheduling, University findings, degree claims, or inferred client outcomes.",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "2026-09-19T13:52:59Z",
+    "durable_ts": "2026-09-19T14:57:25Z",
+    "effective_ts": "2026-09-19T13:52:59Z",
+    "payload_kind": "prose",
+    "payload_sha256": "7bee9d72f777acb0686ea4823fd487c5e44ae6da642d040b5c132fd4c8afe0ce",
+    "language_state": "UNLAYERED"
+  },
+  {
     "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
     "from": "UNSEATED",
     "to": "TABLE",
