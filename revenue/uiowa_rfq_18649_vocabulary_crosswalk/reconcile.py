@@ -40,7 +40,8 @@ MULTI_SEPARATORS = SV.MULTI_SEPARATORS
 
 RESOLVED_KINDS = ("EXACT_VARIANT", "DECLARED_JUDGMENT", "SCOPE_VALUE",
                   "GRANULARITY_MISMATCH")
-UNRESOLVED_KINDS = ("COMPOUND", "AMBIGUOUS", "UNRESOLVED_CONCEPT", "UNMAPPED")
+UNRESOLVED_KINDS = ("COMPOUND", "CROSS_SLOT_PACKED", "SCOPE_VALUE_AREA", "AMBIGUOUS",
+                    "UNRESOLVED_CONCEPT", "UNMAPPED")
 
 
 def classify(term, slot, crosswalk):
@@ -52,6 +53,23 @@ def classify(term, slot, crosswalk):
             "kind": declared["kind"], "basis": declared["basis"],
             "question": declared.get("question", ""),
         }
+    if ":" in term:
+        halves = [h.strip() for h in term.split(":") if h.strip()]
+        if len(halves) == 2:
+            a = crosswalk["group"].get(halves[0]), crosswalk["area"].get(halves[1])
+            if all(d and d.get("canonical") for d in a):
+                return {
+                    "term": term, "slot": slot, "canonical": None,
+                    "kind": "CROSS_SLOT_PACKED",
+                    "basis": (f"packs a group ({halves[0]}) and an area ({halves[1]}) "
+                              "into one field; both halves are declared terms in "
+                              "different slots. Not split - splitting changes the row's "
+                              "cardinality, and the packed value is a different thing "
+                              "from either half."),
+                    "question": ("Should a packed group:area value be joined as a "
+                                 "group, as an area, or as a composite key?"),
+                    "parts": halves,
+                }
     if any(sep in term for sep in MULTI_SEPARATORS):
         parts = [p.strip() for p in term.replace(";", "|").split("|") if p.strip()]
         mapped, unmapped = [], []
@@ -117,6 +135,7 @@ def reconcile(root, crosswalk, skip_lanes=DEFAULT_SKIP):
                                        "this crosswalk keeps separate"),
                 })
     notes = [n for n in (slash_taxonomy_note(records),) if n]
+    key_collisions = key_name_collisions(observations)
     return {
         "_banner": BANNER,
         "canonical": crosswalk["canonical"],
@@ -133,8 +152,44 @@ def reconcile(root, crosswalk, skip_lanes=DEFAULT_SKIP):
         },
         "terms": records,
         "collisions": collisions,
+        "key_name_collisions": key_collisions,
         "observations": observations,
     }
+
+
+def key_name_collisions(observations):
+    """Report key/column names that carry disjoint value sets in different lanes.
+
+    Found when the scan was extended to JSON: the key `dimension` holds
+    ai_readiness/deployment/security/software in one lane and delivery/quality/security
+    in another, where the second set is scoring dimensions, not assessment areas. A
+    column name is therefore not a reliable indicator of what a column holds, which is
+    why this package matches header names exactly and still reports the overlap.
+    """
+    by_key = {}
+    for o in observations:
+        by_key.setdefault(o["column"].strip().lower(), {}).setdefault(
+            o["lane"], set()).add(o["term"])
+    out = []
+    for key, lanes in sorted(by_key.items()):
+        if len(lanes) < 2:
+            continue
+        disjoint = []
+        names = sorted(lanes)
+        for i, a in enumerate(names):
+            for b in names[i + 1:]:
+                if not (lanes[a] & lanes[b]):
+                    disjoint.append((a, b))
+        if disjoint:
+            out.append({
+                "key": key,
+                "lane_pairs_with_no_shared_value": [list(p) for p in disjoint[:8]],
+                "values_by_lane": {ln: sorted(v) for ln, v in sorted(lanes.items())},
+                "finding": (f"the key {key!r} carries value sets with no overlap between "
+                            "at least two lanes, so the key name alone does not "
+                            "establish what the column holds"),
+            })
+    return out
 
 
 def slash_taxonomy_note(records):
@@ -251,6 +306,14 @@ def render(report):
         a("")
         a(f"*Question for that lane:* {note['question']}")
         a("")
+    if report.get("key_name_collisions"):
+        a("## 4c. Key names that do not mean one thing")
+        a("")
+        for kc in report["key_name_collisions"]:
+            a(f"- **`{kc['key']}`** — {kc['finding']}.")
+            for lane, vals in sorted(kc["values_by_lane"].items()):
+                a(f"    - `{lane}`: {', '.join('`' + v + '`' for v in vals[:8])}")
+        a("")
     a("## 5. What this package will not do")
     a("")
     a("- **No fuzzy matching of any kind.** An undeclared term is `UNMAPPED`, never "
@@ -318,6 +381,8 @@ def main(argv=None):
     for note in report.get("patterns", []):
         print(f"pattern        {note['pattern']}: {note['term_count']} terms / "
               f"{note['row_count']} rows in {', '.join(note['lanes'])}")
+    print(f"key collisions {len(report.get('key_name_collisions', []))} key name(s) "
+          f"carrying disjoint value sets across lanes")
     print(f"written to     {args.out}/")
     return 0
 

@@ -44,13 +44,75 @@ def _is_placeholder(value):
     return value.startswith("<") or value.endswith(">") or value in {"-", "n/a", "N/A"}
 
 
-def scan(root, skip_lanes=()):
+def _walk_json(node, keys, out, path="$"):
+    """Collect values held under group/area-ish keys, recording the JSON path."""
+    if isinstance(node, dict):
+        for key, value in node.items():
+            here = f"{path}.{key}"
+            if (key.strip().lower() in keys and isinstance(value, str)):
+                term = value.strip()
+                if term and len(term) <= MAX_TERM_LEN and not _is_placeholder(term):
+                    out.append((key, term, path))
+            _walk_json(value, keys, out, here)
+    elif isinstance(node, list):
+        for i, value in enumerate(node):
+            _walk_json(value, keys, out, f"{path}[{i}]")
+
+
+def scan_json(root, skip_lanes=()):
+    """Scan .json fixtures for the same vocabulary.
+
+    Added after the CSV-only scan was found to miss whole spelling sets: one lane
+    carries OPS/SDLC in JSON and nothing else in the tree uses either. Reporting a
+    vocabulary survey that had only read half the file formats would have understated
+    the disagreement.
+    """
+    observations = []
+    for lane in sorted(os.listdir(root)):
+        if not lane.startswith(LANE_PREFIX) or lane in skip_lanes:
+            continue
+        lane_path = os.path.join(root, lane)
+        if not os.path.isdir(lane_path):
+            continue
+        for dirpath, dirnames, files in os.walk(lane_path):
+            dirnames[:] = sorted(d for d in dirnames if d != "__pycache__")
+            for fn in sorted(files):
+                if not fn.endswith(".json"):
+                    continue
+                path = os.path.join(dirpath, fn)
+                try:
+                    with open(path, encoding="utf-8") as fh:
+                        doc = json.load(fh)
+                except (OSError, ValueError, UnicodeDecodeError):
+                    continue
+                for slot, keys in (("group", GROUP_COLUMNS), ("area", AREA_COLUMNS)):
+                    found = []
+                    _walk_json(doc, keys, found)
+                    counts = {}
+                    for key, term, _ in found:
+                        counts[(key, term)] = counts.get((key, term), 0) + 1
+                    for (key, term), n in sorted(counts.items()):
+                        observations.append({
+                            "slot": slot, "term": term, "lane": lane,
+                            "file": os.path.relpath(path, root).replace(os.sep, "/"),
+                            "column": key, "rows": n,
+                            "compound": any(sep in term for sep in MULTI_SEPARATORS),
+                        })
+    return observations
+
+
+def scan(root, skip_lanes=(), formats=("csv", "json")):
     """Return observations of every group/area term in the tree under `root`.
 
     skip_lanes lets this package exclude its own output and any lane that merely
     copies another's artifacts, so one file is not counted as two sources of truth.
     """
     observations = []
+    if "json" in formats:
+        observations.extend(scan_json(root, skip_lanes))
+    if "csv" not in formats:
+        return sorted(observations,
+                      key=lambda o: (o["slot"], o["term"], o["file"], o["column"]))
     for lane in sorted(os.listdir(root)):
         if not lane.startswith(LANE_PREFIX) or lane in skip_lanes:
             continue

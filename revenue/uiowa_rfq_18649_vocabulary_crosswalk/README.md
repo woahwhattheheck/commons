@@ -11,7 +11,7 @@ evidence rather than a duplicate of someone's lane.
 
 ## The problem, measured
 
-41 files in the tree carry an assessment-area column and they do not agree on what the
+94 files across 30 lanes carry a group or assessment-area field and they do not agree on what the
 four areas are called:
 
 | Vocabulary | Used by |
@@ -40,7 +40,7 @@ Python 3 standard library only. No installs, no network.
 cd revenue/uiowa_rfq_18649_vocabulary_crosswalk
 
 python3 reconcile.py --revenue-root .. --out output
-python3 -m unittest test_vocabulary           # 32 tests
+python3 -m unittest test_vocabulary           # 44 tests
 python3 scan_vocabulary.py ..                 # raw observations only
 ```
 
@@ -52,25 +52,28 @@ directory.
 ```
 VOCABULARY RECONCILIATION over synthetic RFQ-18649 fixtures. Terms are reported as observed; mappings are declared, never guessed. Nothing here is a University of Iowa finding, and no lane is scored, ranked or certified.
 
-scanned        55 files in 21 lanes, 325 observations
-distinct terms 53
+scanned        95 files in 30 lanes, 517 observations
+distinct terms 76
   EXACT_VARIANT          15
-  DECLARED_JUDGMENT      6
-  SCOPE_VALUE            2
+  DECLARED_JUDGMENT      8
+  SCOPE_VALUE            3
   GRANULARITY_MISMATCH   3
   COMPOUND               7
+  CROSS_SLOT_PACKED      5
+  SCOPE_VALUE_AREA       1
   AMBIGUOUS              1
   UNRESOLVED_CONCEPT     2
-  UNMAPPED               17
-resolved       26
-need a decision 27
+  UNMAPPED               31
+resolved       29
+need a decision 47
 collisions     3 term group(s) that resemble each other but do not resolve together
 pattern        slash_joined_prose_terms: 16 terms / 18 rows in uiowa_rfq_18649_workbench
+key collisions 4 key name(s) carrying disjoint value sets across lanes
 written to     output/
 ```
 
 ```
-Ran 32 tests in 0.083s
+Ran 44 tests in 0.679s
 
 OK
 ```
@@ -205,7 +208,7 @@ A guard that fires on a description of itself teaches you to switch it off.
 | `crosswalk.json` | The declared mappings, each with a kind, a basis, and a question where one is owed. |
 | `join_safety.py` | Answers whether two specific files can be joined, and what it costs if not. |
 | `reconcile.py` | Applies the crosswalk, reports collisions and patterns, writes the outputs. |
-| `test_vocabulary.py` | 32 tests, including the read-only digest proof and the count-conservation proof. |
+| `test_vocabulary.py` | 44 tests, including the read-only digest proof and the count-conservation proof. |
 | `output/` | The committed run against the tree as it stood at build time. |
 
 ## Working vs. draft
@@ -218,7 +221,7 @@ term may be dropped from the totals to tidy the report).
 - Column detection is an exact lowercased header match against two small sets. A column
   naming a group or area under a header not in those sets is **not found** — the scan
   under-reports rather than guessing which columns mean what.
-- Only `.csv` is scanned. JSON and Markdown fixtures also carry these terms.
+- `.csv` and `.json` are scanned. Markdown fixtures also carry these terms and are not read.
 - The canonical set is the dominant `SD/SEC/DEP/AI` vocabulary because it is the most
   widely used, **not** because it is correct. That choice is itself reviewable.
 - Every `DECLARED_JUDGMENT` is one seat's reading and is meant to be argued with.

@@ -7,7 +7,9 @@
     "GRANULARITY_MISMATCH": "The term is finer-grained than the canonical. Mapped to its parent, but rows are NOT interchangeable with parent rows.",
     "COMPOUND": "One cell naming several areas at once. Parts are recorded; the cell is NOT split into independent rows.",
     "AMBIGUOUS": "Could serve more than one canonical term. Deliberately not mapped.",
-    "UNRESOLVED_CONCEPT": "Names a concept this package will not equate with any canonical term. Needs the owning lane to decide."
+    "UNRESOLVED_CONCEPT": "Names a concept this package will not equate with any canonical term. Needs the owning lane to decide.",
+    "CROSS_SLOT_PACKED": "One value packing a group and an area into one field. Both halves are declared terms in different slots; the value is reported, not split, because splitting changes the row's cardinality.",
+    "SCOPE_VALUE_AREA": "A legitimate value naming every area rather than one. Not a mis-spelling; must not be joined as a single area."
   },
   "canonical": {
     "area": {
@@ -107,6 +109,23 @@
       "kind": "UNRESOLVED_CONCEPT",
       "basis": "reliability of a service in operation is an OUTCOME; deployment and operations is a PRACTICE area. Equating them would fabricate agreement between two lanes that may be measuring different things.",
       "question": "Is operational_reliability intended as the DEP practice area, or as an outcome measured across areas? Joining on it is unsafe until the owning lane answers."
+    },
+    "OPS": {
+      "canonical": "DEP",
+      "kind": "DECLARED_JUDGMENT",
+      "basis": "read as an abbreviation of operations, i.e. the deployment and operations area; no other lane in the tree uses OPS",
+      "question": "Does OPS mean the deployment-and-operations area, or operations only?"
+    },
+    "SDLC": {
+      "canonical": "SD",
+      "kind": "DECLARED_JUDGMENT",
+      "basis": "software development life cycle, read as the software development area; no other lane in the tree uses SDLC",
+      "question": "Does SDLC denote the same area the RFQ calls software development?"
+    },
+    "ALL": {
+      "canonical": null,
+      "kind": "SCOPE_VALUE_AREA",
+      "basis": "names every area rather than one; a legitimate value, not a mis-spelling, but it must not be joined as if it were a single area"
     }
   },
   "group": {
@@ -184,6 +203,11 @@
       "kind": "UNRESOLVED_CONCEPT",
       "basis": "a fictional service name with no declared parent group in the tree",
       "question": "Which of ESS/RIS/IAM owns the fictional 'synthetic-registration' service?"
+    },
+    "ALL": {
+      "canonical": "CROSS_GROUP",
+      "kind": "SCOPE_VALUE",
+      "basis": "names every group rather than one"
     }
   }
 }

@@ -398,3 +398,110 @@ class TestJoinSafety(unittest.TestCase):
             self.JS.main(["--left", "nope_a.csv", "--right", "nope_b.csv",
                           "--crosswalk", CROSSWALK_PATH,
                           "--revenue-root", REVENUE]), 2)
+
+
+class TestJsonScanAndPackedValues(unittest.TestCase):
+    """Added after the CSV-only scan was found to miss whole spelling sets."""
+
+    def setUp(self):
+        self.cw = load_crosswalk()
+
+    def test_json_fixtures_are_scanned(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            lane = os.path.join(tmp, SV.LANE_PREFIX + "j")
+            os.makedirs(lane)
+            with open(os.path.join(lane, "f.json"), "w", encoding="utf-8") as fh:
+                json.dump({"rows": [{"group": "ESS", "area": "SDLC"},
+                                    {"group": "RIS", "area": "OPS"}]}, fh)
+            obs = SV.scan(tmp)
+            self.assertEqual({o["term"] for o in obs},
+                             {"ESS", "RIS", "SDLC", "OPS"})
+            self.assertTrue(all(o["file"].endswith(".json") for o in obs))
+
+    def test_nested_json_paths_are_reached(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            lane = os.path.join(tmp, SV.LANE_PREFIX + "j")
+            os.makedirs(lane)
+            with open(os.path.join(lane, "f.json"), "w", encoding="utf-8") as fh:
+                json.dump({"a": {"b": [{"c": {"area": "SEC"}}]}}, fh)
+            self.assertEqual({o["term"] for o in SV.scan(tmp)}, {"SEC"})
+
+    def test_unparseable_json_is_skipped_not_fatal(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            lane = os.path.join(tmp, SV.LANE_PREFIX + "j")
+            os.makedirs(lane)
+            with open(os.path.join(lane, "bad.json"), "w", encoding="utf-8") as fh:
+                fh.write("{ not json")
+            with open(os.path.join(lane, "ok.json"), "w", encoding="utf-8") as fh:
+                json.dump({"area": "SD"}, fh)
+            self.assertEqual({o["term"] for o in SV.scan(tmp)}, {"SD"})
+
+    def test_csv_only_scan_still_available_and_misses_json(self):
+        """The limitation this change closed, pinned so it cannot silently return."""
+        with tempfile.TemporaryDirectory() as tmp:
+            lane = os.path.join(tmp, SV.LANE_PREFIX + "j")
+            os.makedirs(lane)
+            with open(os.path.join(lane, "f.json"), "w", encoding="utf-8") as fh:
+                json.dump({"area": "SDLC"}, fh)
+            self.assertEqual(SV.scan(tmp, formats=("csv",)), [])
+            self.assertTrue(SV.scan(tmp, formats=("json",)))
+
+    def test_a_packed_group_area_value_is_reported_not_split(self):
+        rec = R.classify("ESS:DEP", "area", self.cw)
+        self.assertEqual(rec["kind"], "CROSS_SLOT_PACKED")
+        self.assertIsNone(rec["canonical"])
+        self.assertEqual(rec["parts"], ["ESS", "DEP"])
+        self.assertIn("changes the row's cardinality", rec["basis"])
+
+    def test_a_colon_value_whose_halves_are_not_declared_stays_unmapped(self):
+        """The packed class is verified structurally, not assumed from the colon."""
+        rec = R.classify("WIDGET:THING", "area", self.cw)
+        self.assertEqual(rec["kind"], "UNMAPPED")
+
+    def test_all_is_a_scope_value_not_an_area(self):
+        rec = R.classify("ALL", "area", self.cw)
+        self.assertIsNone(rec["canonical"])
+        self.assertEqual(rec["kind"], "SCOPE_VALUE_AREA")
+
+    def test_ops_and_sdlc_are_declared_judgments_with_questions(self):
+        for term, canon in (("OPS", "DEP"), ("SDLC", "SD")):
+            rec = R.classify(term, "area", self.cw)
+            self.assertEqual(rec["canonical"], canon)
+            self.assertEqual(rec["kind"], "DECLARED_JUDGMENT")
+            self.assertTrue(rec["question"])
+
+
+class TestKeyNameCollisions(unittest.TestCase):
+    def test_a_key_with_disjoint_value_sets_is_reported(self):
+        obs = [
+            {"column": "dimension", "lane": "lane_a", "term": "ai_readiness",
+             "slot": "area", "rows": 1},
+            {"column": "dimension", "lane": "lane_b", "term": "quality",
+             "slot": "area", "rows": 1},
+        ]
+        found = R.key_name_collisions(obs)
+        self.assertEqual(len(found), 1)
+        self.assertEqual(found[0]["key"], "dimension")
+        self.assertIn(["lane_a", "lane_b"],
+                      found[0]["lane_pairs_with_no_shared_value"])
+
+    def test_a_key_with_shared_values_is_not_reported(self):
+        obs = [
+            {"column": "group", "lane": "lane_a", "term": "ESS", "slot": "group",
+             "rows": 1},
+            {"column": "group", "lane": "lane_b", "term": "ESS", "slot": "group",
+             "rows": 1},
+        ]
+        self.assertEqual(R.key_name_collisions(obs), [])
+
+    def test_a_key_used_by_one_lane_only_is_not_a_collision(self):
+        obs = [{"column": "area", "lane": "lane_a", "term": "SD", "slot": "area",
+                "rows": 1}]
+        self.assertEqual(R.key_name_collisions(obs), [])
+
+    def test_the_real_tree_reports_key_collisions(self):
+        report = R.reconcile(REVENUE, load_crosswalk())
+        self.assertTrue(report["key_name_collisions"])
+        for kc in report["key_name_collisions"]:
+            self.assertTrue(kc["lane_pairs_with_no_shared_value"])
+            self.assertGreaterEqual(len(kc["values_by_lane"]), 2)
