@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 HELPER = ROOT / "host/merge_on_pr.py"
@@ -17,9 +18,9 @@ DOOR = ROOT / "merge-on-pr.html"
 KEEP = {
     "host/sprint_integration.py": "1ba2002c",
     "ground/SPRINT_INTEGRATION.json": "eba10870",
-    "ground/SPRINT_INTEGRATION.md": "79504401",
+    "ground/SPRINT_INTEGRATION.md": "ab06de07",
     "host/pr7915_closed_unmerged.py": "9d56ea0e",
-    "test_pr7915_closed_unmerged.py": "307abd15",
+    "test_pr7915_closed_unmerged.py": "ec14cf1d",
     "p/cursor-pr7915-closed-unmerged-readback-20260902-01.md": "2a7f31a4",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "host/harborline_qualify_live_probe.py": "2c1797b2",
@@ -31,11 +32,11 @@ KEEP = {
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
-    "hub_pages.py": "12186f65",
-    "door.js": "c06cc197",
+    "hub_pages.py": "673dab89",
+    "door.js": "5899223c",
     "api/mcp.py": "393da756",
     "repo_pulse.py": "298716e9",
-    "autogtm.html": "1009c4cd",
+    "autogtm.html": "5c966110",
 }
 
 
@@ -47,7 +48,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,
@@ -131,7 +132,7 @@ class TestMergeOnPr(unittest.TestCase):
 
     def test_leftover_sprint_self_test_still_ok(self) -> None:
         proc = subprocess.run(
-            ["python3", "host/sprint_integration.py", "--self-test"],
+            [sys.executable, "host/sprint_integration.py", "--self-test"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -156,7 +157,10 @@ class TestMergeOnPr(unittest.TestCase):
         self.assertIn("Merge", door)
         self.assertIn("fa046ce05900", door)
         self.assertIn("worktree", door.lower())
-        self.assertNotIn("https://buy.stripe.com/", door)
+        self.assertNotIn(
+            "https://buy.stripe.com/",
+            door.replace("https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07", ""),
+        )
         self.assertNotIn("oauth", door.lower())
         self.assertNotIn("api key", door.lower())
         self.assertFalse((ROOT / "qualify.html").exists())

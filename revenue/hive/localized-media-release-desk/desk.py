@@ -53,19 +53,32 @@ def required(v):
         seen.add(k); out.append(dict(zip(("locale","territory","kind"),k)))
     return sorted(out,key=lambda r:(r["locale"],r["territory"],r["kind"]))
 def read_file(path):
-    flags=os.O_RDONLY|(getattr(os,"O_NOFOLLOW",0)); fd=os.open(os.fspath(path),flags)
+    """Read a bounded, producer-complete input; reject observed concurrent changes.
+
+    Descriptor metadata and EOF checks are not an atomic filesystem snapshot.
+    Callers must keep inputs quiescent for ingestion/verification.
+    """
+    nonblock=getattr(os,"O_NONBLOCK",0)
+    if not nonblock: raise InvalidState("nonblocking input acquisition unsupported on this host")
+    path=os.fspath(path)
+    flags=os.O_RDONLY|nonblock|getattr(os,"O_NOFOLLOW",0)|getattr(os,"O_CLOEXEC",0)
+    fd=os.open(path,flags)
     try:
         st=os.fstat(fd)
         if not stat.S_ISREG(st.st_mode): raise InvalidState("not a regular file")
-        if st.st_size>MAX: raise InvalidState("artifact exceeds size cap")
-        chunks=[]; read=0
+        if st.st_size<0 or st.st_size>MAX: raise InvalidState("artifact exceeds size cap")
+        def identity(s):
+            return (s.st_dev,s.st_ino,s.st_mode,s.st_size,s.st_mtime_ns,s.st_ctime_ns)
+        before=identity(st); chunks=[]; read=0
         while read<st.st_size:
             x=os.read(fd,min(1024*1024,st.st_size-read))
-            if not x: break
+            if not x: raise InvalidState("file changed/truncated while reading")
             chunks.append(x); read+=len(x)
+        # Probe even an initially empty file, but never chase a growing producer.
+        if os.read(fd,1): raise InvalidState("file grew while reading")
+        if identity(os.fstat(fd))!=before: raise InvalidState("file changed while reading")
         data=b"".join(chunks)
-        if len(data)!=st.st_size: raise InvalidState("file changed/truncated while reading")
-        return data,sha(data),len(data),os.path.basename(os.fspath(path))
+        return data,sha(data),len(data),os.path.basename(path)
     finally: os.close(fd)
 def _open_dir_nofollow(path):
     """Open an absolute directory by walking every component without symlink traversal."""

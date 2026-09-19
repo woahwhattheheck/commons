@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "operation_id": "RCAP-DCS-ASSESSMENT-DIRECT-BID-ZNP-20260917",
   "buyer": "Rural Community Assistance Partnership (RCAP)",
   "title": "CRM System Assessment and Strategic Planning Services",
@@ -57,8 +57,10 @@
   "submission": {
     "format": "PDF by email",
     "named_contact": "Griffin Todd, Data & IT Manager",
-    "exact_email_resolved": false,
-    "exact_email": null,
+    "exact_email_resolved": true,
+    "exact_email": "gtodd@rcap.org",
+    "route_source_url": "https://www.rcap.org/careers/rfp-assessment-strategic-planning-services/",
+    "route_observed_on": "2026-09-17",
     "route_must_not_be_guessed": true
   },
   "authority": {
@@ -76,5 +78,5 @@
     "booked_revenue": false,
     "recognized_revenue": false
   },
-  "strongest_state": "PROPOSAL_READY_ROUTE_UNRESOLVED_NOT_SUBMITTED"
+  "strongest_state": "ROUTE_RESOLVED_SUBMISSION_PACKET_READY_NOT_SUBMITTED"
 }

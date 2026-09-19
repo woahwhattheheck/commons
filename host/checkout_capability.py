@@ -26,7 +26,6 @@ BUY_HOST_PATH_RE = re.compile(r"https?://buy\.stripe\.com/([A-Za-z0-9_-]+)", re.
 DONATE_HOST_PATH_RE = re.compile(r"https?://donate\.stripe\.com/([A-Za-z0-9_-]+)", re.I)
 PAY_CONVERT_SHELF_LIVE_BUYS = frozenset(
     {
-        "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
         "https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e",
         "https://buy.stripe.com/28E9AS70F6378qB2SC43S0w",
         "https://buy.stripe.com/14AfZg1Gl3UZ7mxfFo43S0x",
@@ -35,7 +34,6 @@ PAY_CONVERT_SHELF_LIVE_BUYS = frozenset(
 )
 COMMERCE_CONVERT_SHELF_LIVE_BUYS = frozenset(
     {
-        "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
         "https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b",
         "https://buy.stripe.com/9B600i98N77b9uFeBk43S0c",
         "https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d",
@@ -46,9 +44,11 @@ COMMERCE_CONVERT_SHELF_LIVE_BUYS = frozenset(
         "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
     }
 )
+WHITEBOX_HOUR_CHECKOUT = "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07"
 CONVERT_SHELF_LIVE_BUYS = {
     "pay.html": PAY_CONVERT_SHELF_LIVE_BUYS,
     "commerce.html": COMMERCE_CONVERT_SHELF_LIVE_BUYS,
+    "owner-now-revenue.html": frozenset({WHITEBOX_HOUR_CHECKOUT}),
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -57,9 +57,9 @@ TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
         "https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04",
         "https://buy.stripe.com/bJe28qacR4Z3gX7bp843S05",
         "https://buy.stripe.com/3cIfZgacRezDfT39h043S06",
+        WHITEBOX_HOUR_CHECKOUT,
     }
 )
-WHITEBOX_HOUR_CHECKOUT = "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07"
 PAY_CONVERT_SHELF_LIVE_CHECKOUTS = (
     PAY_CONVERT_SHELF_LIVE_BUYS | TIPS_CONVERT_SHELF_LIVE_CHECKOUTS | {WHITEBOX_HOUR_CHECKOUT}
 )
@@ -431,7 +431,7 @@ def html_stripe_url_errors(name: str, text: str) -> list[str]:
     """tips/pay/commerce convert shelves reuse existing Stripe URLs; Type product buys stay exact."""
     if name == "tips.html":
         found = live_stripe_checkout_urls(text)
-        if found != TIPS_CONVERT_SHELF_LIVE_CHECKOUTS:
+        if found != TIPS_CONVERT_SHELF_LIVE_CHECKOUTS | {WHITEBOX_HOUR_CHECKOUT}:
             return [
                 "%s convert shelf must reuse exactly the existing tip-shelf Stripe URLs"
                 % name

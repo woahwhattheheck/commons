@@ -10,6 +10,7 @@ import re
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 import open_door_guard as guard
 
@@ -22,7 +23,7 @@ LIVE = {
     "open_door_guard.py": "877e148d",
     "test_open_door_guard_production_lims_release.py": "08142804",
     "p/grok-repair-tests-lims-odg-keep-lift-20260909-01.md": "a3c7ea0b",
-    "open_door_guard_core.py": "861958e9",
+    "open_door_guard_core.py": "977abc2f",
 }
 
 
@@ -67,7 +68,7 @@ class LimsOpenDoorKeepLiftTests(unittest.TestCase):
 
     def test_lims_regression_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", str(LIMS_TEST)],
+            [sys.executable, str(LIMS_TEST)],
             cwd=ROOT,
             text=True,
             capture_output=True,

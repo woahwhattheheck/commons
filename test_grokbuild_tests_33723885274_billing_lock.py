@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -21,11 +22,11 @@ KEEP = {
     "p/grokbuild-tests-33718131413-billing-lock-20260903-01.md": "9fa188cb",
     "p/grokbuild-tests-33718116260-billing-lock-20260903-01.md": "70db3e2a",
     "p/grokbuild-leftover-id-census-33723043828-billing-lock-20260903-01.md": "e135862e",
-    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "4d5f069a",
+    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "79066cb5",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
-    "catalog.html": "71c0c5fd",
-    "hub_pages.py": "7bc61c8b",
-    ".github/workflows/tests.yml": "fd94b65c",
+    "catalog.html": "68b9b066",
+    "hub_pages.py": "673dab89",
+    ".github/workflows/tests.yml": "57d36525",
     "open_door_guard.py": "877e148d",
     "fix_first.py": "a57aee1c",
 }
@@ -49,14 +50,18 @@ class TestGrokbuildTests33723885274BillingLock(unittest.TestCase):
         self.assertIn("name: tests", yml)
         self.assertIn("battery:", yml)
         self.assertIn("the whole battery, one failure fails the run", yml)
-        self.assertIn("find . -maxdepth 1 -type f -name 'test_*.py'", yml)
+        self.assertIn(
+            "find . -maxdepth 1 -type f \( -name 'test_*.py' -o -name 'test_*.js' \) -print",
+            yml,
+        )
+        self.assertIn("find infra -type f -name 'test_*.py' -print", yml)
         self.assertNotIn("billing", yml.lower())
         self.assertNotIn("if: false", yml)
         self.assertNotIn("continue-on-error", yml)
 
     def test_local_failed_step_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", "test_subject_keep.py"],
+            [sys.executable, "test_subject_keep.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

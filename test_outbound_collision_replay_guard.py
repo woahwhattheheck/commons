@@ -370,7 +370,10 @@ class GuardTests(unittest.TestCase):
             before = ledger_raw()
             real.write_bytes(before)
             req.write_bytes(raw_request(before))
-            link.symlink_to(real)
+            try:
+                link.symlink_to(real)
+            except OSError as exc:
+                self.skipTest(f"platform cannot create symlinks: {exc}")
             self.assertEqual(_cli(["transition", str(link), str(req), "--ledger-out", str(out), "--receipt", str(receipt)]), 2)
 
 

@@ -149,7 +149,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     dfd = sub.add_parser(
         "diagnostic-fulfill-deadline",
-        help="compute $199 delivery_due_at via landed fulfillment.next_business_day "
+        help="compute $199 delivery_due_at via the one-business-day calendar "
         "after loading contract window",
     )
     dfd.add_argument("role_id")
@@ -287,46 +287,6 @@ def main(argv: list[str] | None = None) -> int:
                     status=args.status,
                     next_action=args.next_action,
                     evidence_pointer=args.evidence_pointer,
-                )
-            )
-            _print(
-                build_g2_case_from_role(
-                    role,
-                    case_ref=args.case_ref,
-                    client_reference_id=args.client_reference_id,
-                    sku=args.sku,
-                )
-            )
-            _print(
-                build_receipt_row_from_role(
-                    role,
-                    case_ref=args.case_ref,
-                    client_reference_id=args.client_reference_id,
-                    sku=args.sku,
-                    g2_run_id=args.g2_run_id,
-                    g2_session_id=args.g2_session_id,
-                    payment_observed_at=args.payment_observed_at,
-                    state=args.state,
-                )
-            )
-            _print(
-                run_deadline(
-                    role, usable_evidence_at=args.usable_evidence_at
-                )
-            )
-            _print(
-                run_validate(
-                    role,
-                    intake=args.intake,
-                    report=args.report,
-                    evidence_root=args.evidence_root,
-                )
-            )
-            _print(
-                run_sla_status(
-                    role,
-                    usable_evidence_at=args.usable_evidence_at,
-                    as_of=args.as_of,
                 )
             )
         elif args.cmd == "diagnostic-contract":

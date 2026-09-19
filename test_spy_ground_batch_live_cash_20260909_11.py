@@ -5,6 +5,6 @@ FILES=['ground/SUBZERO_GTM.md', 'ground/SUBZERO_HDVS.md', 'ground/SUBZERO_HOPF.m
 class X(unittest.TestCase):
     def test_all(self):
         for rel in FILES:
-            t=(ROOT/rel).read_text(); self.assertIn('## Live cash', t, rel); self.assertIn('agent-rescue.html', t, rel)
+            t=(ROOT/rel).read_text(); self.assertIn('## Live cash', t, rel); self.assertNotIn('agent-rescue.html', t, rel)
 if __name__=='__main__':
     unittest.main()

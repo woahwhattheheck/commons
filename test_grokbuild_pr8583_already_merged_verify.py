@@ -6,6 +6,7 @@ from __future__ import annotations
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grokbuild-pr8583-already-merged-verify-20260903-01.md"
@@ -14,7 +15,7 @@ ORIGINAL_TEST = ROOT / "test_grokbuild_main_range_verify_33717084528_billing_loc
 
 KEEP = {
     "p/grokbuild-main-range-verify-33717084528-billing-lock-20260903-01.md": "2b0fd9c9",
-    "test_grokbuild_main_range_verify_33717084528_billing_lock.py": "dc173cae",
+    "test_grokbuild_main_range_verify_33717084528_billing_lock.py": "76349d08",
     "open_door_guard.py": "877e148d",
 }
 
@@ -58,7 +59,7 @@ class TestGrokbuildPr8583AlreadyMergedVerify(unittest.TestCase):
     def test_original_leftover_battery_still_passes(self) -> None:
         proc = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "-m",
                 "unittest",
                 "test_grokbuild_main_range_verify_33717084528_billing_lock.py",

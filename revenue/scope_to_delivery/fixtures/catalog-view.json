@@ -1,7 +1,7 @@
 {
   "schema_version": "commons-scope-catalog/v1",
   "kind": "SCOPE_TO_DELIVERY_CATALOG",
-  "listing_count": 21,
+  "listing_count": 20,
   "listings": [
     {
       "id": "production-survival-sprint",
@@ -28,7 +28,7 @@
       "acceptance_row_count": 1,
       "refund_text": "UNKNOWN",
       "routes": {
-        "human": "agent-rescue.html",
+        "human": "right-now.html",
         "machine": "revenue/production_survival/offer.json"
       },
       "readiness": "READY_FOR_QUALIFICATION"
@@ -458,38 +458,6 @@
         "machine": "revenue/repair_booking_preflight/contract.json"
       },
       "readiness": "BLOCKED_PROVIDER_CAPABILITY"
-    },
-    {
-      "id": "agent-failure-autopsy-29",
-      "name": "Agent Failure Autopsy",
-      "state": "PUBLIC_OFFER",
-      "currency": "USD",
-      "amount": "29.00",
-      "family": "service",
-      "in_scope": [
-        "an evidence-linked timeline and failure chain with the first meaningful divergence marked",
-        "primary and contributing causes with calibrated confidence",
-        "an adversarial challenge of each causal explanation against plausible alternatives",
-        "concrete prompt, configuration, or code fix steps only where the supplied evidence supports them",
-        "one replay or regression-prevention check"
-      ],
-      "out_of_scope": [
-        "repository-access",
-        "production-access",
-        "code-implementation",
-        "live-deployment",
-        "ongoing-monitoring",
-        "incident-response",
-        "credentials",
-        "unredacted-secrets"
-      ],
-      "acceptance_row_count": 1,
-      "refund_text": "Refund USD 29 when the accepted artifacts cannot support a defensible diagnosis after the included clarification, when a legitimate one-run case cannot fit the intake boundary, when quarantined evidence remains unusable after the slice opportunity, when a seemingly usable case does not survive adversarial review, or when a defensible diagnosis cannot be delivered within the recorded one-business-day window. Never rush an unsupported diagnosis to meet the clock.",
-      "routes": {
-        "human": "agent-rescue.html",
-        "machine": "revenue/agent_failure_autopsy/offer.json"
-      },
-      "readiness": "READY_FOR_CHECKOUT"
     }
   ],
   "funnel_truth": {

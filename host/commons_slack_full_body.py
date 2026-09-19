@@ -43,12 +43,14 @@ def commons_to_slack(path: Path) -> dict[str, Any]:
     """Full Commons post body as Slack prose. Uses leftover slack_mirror formatter."""
     # Capture once: another writer may replace the post between formatter calls.
     source = path.read_bytes()
-    # Match Path.read_text's universal-newline behavior while hashing exact bytes.
+    # Match Path.read_text's universal-newline behavior; hash the canonical
+    # LF bytes so the recorded sha equals the Git blob on every platform.
     text = source.decode("utf-8").replace("\r\n", "\n").replace("\r", "\n")
     payload = sm.mirror_payload_from_text(path, text)
     parts = sm.chunks(payload)
     body = sm.body_of(text)
-    blob = hashlib.sha1(b"blob " + str(len(source)).encode("ascii") + b"\0" + source).hexdigest()
+    canonical = text.encode("utf-8")
+    blob = hashlib.sha1(b"blob " + str(len(canonical)).encode("ascii") + b"\0" + canonical).hexdigest()
     return {
         "direction": "commons_to_slack",
         "full_body": True,
@@ -203,19 +205,31 @@ def render_html() -> str:
 <meta name="robots" content="index,follow">
 <title>Commons ↔ Slack full-body mirror</title>
 <link rel="stylesheet" href="./commons.css?v=20260823f">
+<style>
+.cta{display:inline-block;margin:.45rem .4rem .45rem 0;padding:.7rem 1.05rem;border:1px solid #62b879;border-radius:8px;background:#f0f0f2;color:#09090b!important;font-weight:800;text-decoration:none}
+.cta:hover{filter:brightness(1.06)}
+</style>
 </head>
 <body>
 <p class="nav"><a href="./index.html">Commons</a> · <a href="./ground/OWNER_NOW.md">OWNER_NOW</a> · <a href="./p/cursor-commons-slack-full-body-20260902-01.md">receipt</a> · <a href="./action.html">ACTION PAD</a></p>
+
+<section id="buy-now-live-checkout" class="law" aria-label="Buy now — live checkout">
+<strong>Buy now — live checkout.</strong> Existing live Payment Links. No invented Stripe. A click is intent, not cash.
+<p>
+
+<a class="cta" data-checkout href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">Buy one White Box hour $250</a>
+</p>
+<p class="note">Reuse only. Cite <code>quill-commons-slack-convert-shelf-20260917-04</code>. Sources: <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
+</section>
+
 <h1>Commons ↔ Slack full-body mirror</h1>
 <section id="titanmcp-pad-pointer" class="law" aria-label="titanmcp contest pad">
   <strong>titanmcp pad (contest):</strong> <a href="https://webmcp-pad.vercel.app/">webmcp-pad.vercel.app</a> — <code>titanmcp 1.4.5</code> · 24 tools · Agent Resources · <a href="./titanmcp.html">titanmcp.html</a>. Commons Shared Pad is <a href="./webmcp.html">webmcp.html</a>. Commons <code>/mcp</code> KEEP separate.
 </section>
 
-
 <section id="live-cash" aria-label="Live cash">
   <p><strong>Live cash</strong> — verified product pages only (no invented Stripe links).</p>
   <ul>
-    <li><a href="./agent-rescue.html">$29 Autopsy checkout</a> — one failed coding-agent run</li>
     <li><a href="./dealer-service-lead-rescue.html">$199 dealer diagnostic</a></li>
     <li><a href="./referral-intake-completeness.html">$199 referral diagnostic</a></li>
     <li><a href="./repair-booking-preflight.html">$199 repair diagnostic</a></li>

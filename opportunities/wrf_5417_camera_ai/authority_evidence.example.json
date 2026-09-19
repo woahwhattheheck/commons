@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "opportunity_id": "WRF-5417",
+  "authority_generation": "wrf-5417-authority/empty-example",
+  "source_generation": {
+    "id": "wrf-5417-retained-source/example",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "observed_at": "2026-09-13T13:00:00Z"
+  },
+  "records": []
+}

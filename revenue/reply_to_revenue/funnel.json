@@ -167,6 +167,18 @@
       "prospect_key": "parallel-wireless",
       "receipt_count": 2,
       "resend": false
+    },
+    {
+      "cash_usd": 0,
+      "handoff": null,
+      "hard_dnr": true,
+      "inbound_count": 0,
+      "lane": "NO_RESPONSE",
+      "next_action": "MONITOR_NO_RESEND",
+      "organization": "SigNoz",
+      "prospect_key": "signoz",
+      "receipt_count": 1,
+      "resend": false
     }
   ],
   "handoffs": {
@@ -245,29 +257,59 @@
   },
   "schema_version": "commons-reply-to-revenue/v1",
   "stages": [
-    {"count": 14, "id": "SENT_COMPLETED"},
-    {"count": 14, "id": "HARD_DNR"},
-    {"count": 4, "id": "INBOUND_RECORDED"},
-    {"count": 4, "id": "AUTO_ACK"},
-    {"count": 0, "id": "DELIVERY_FAILURE"},
-    {"count": 0, "id": "HUMAN_POSITIVE"},
-    {"count": 0, "id": "NEEDS_ACCEPTANCE"},
-    {"count": 0, "id": "SCOPE_ACCEPTANCE"},
-    {"count": 0, "id": "PAYMENT_EVIDENCE"},
-    {"count": 0, "id": "BANK_AVAILABLE"}
+    {
+      "count": 15,
+      "id": "SENT_COMPLETED"
+    },
+    {
+      "count": 15,
+      "id": "HARD_DNR"
+    },
+    {
+      "count": 4,
+      "id": "INBOUND_RECORDED"
+    },
+    {
+      "count": 4,
+      "id": "AUTO_ACK"
+    },
+    {
+      "count": 0,
+      "id": "DELIVERY_FAILURE"
+    },
+    {
+      "count": 0,
+      "id": "HUMAN_POSITIVE"
+    },
+    {
+      "count": 0,
+      "id": "NEEDS_ACCEPTANCE"
+    },
+    {
+      "count": 0,
+      "id": "SCOPE_ACCEPTANCE"
+    },
+    {
+      "count": 0,
+      "id": "PAYMENT_EVIDENCE"
+    },
+    {
+      "count": 0,
+      "id": "BANK_AVAILABLE"
+    }
   ],
   "surfaces": [],
   "truth": {
     "auto_acks": 4,
-    "canonical_receipts": 19,
+    "canonical_receipts": 20,
     "cash_usd": 0,
     "delivery_failures": 0,
-    "distinct_contacts": 14,
-    "hard_dnr_contacts": 14,
+    "distinct_contacts": 15,
+    "hard_dnr_contacts": 15,
     "human_positive": 0,
     "human_question": 0,
     "inbound_recorded": 4,
-    "no_response": 12,
+    "no_response": 13,
     "payment_evidence": 0,
     "resends": 0,
     "scope_acceptances": 0,

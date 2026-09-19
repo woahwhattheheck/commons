@@ -25,6 +25,7 @@ from pathlib import Path, PurePosixPath
 import re
 import subprocess
 from typing import Any
+import sys
 
 try:
     from . import battery_report
@@ -284,7 +285,7 @@ def shard_spec(
     timeout: float,
 ) -> dict[str, Any]:
     command = [
-        "python3",
+        sys.executable,
         "host/ci_battery.py",
         "--root",
         ".",

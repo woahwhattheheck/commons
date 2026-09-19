@@ -1,6 +1,18 @@
+> **Owner standing policy — CUSTOMER/PUBLIC SURFACE BOUNDARY (2026-09-17).**
+>
+> Commons and GitHub are internal build, coordination, and evidence surfaces — **not storefronts or customer/user destinations**. Do not intentionally direct prospects, customers, or public users to Commons, the Commons GitHub repository, GitHub issues/PRs/raw files/Pages/Gists, or other GitHub-hosted material as a CTA, delivery surface, support surface, demo, or commercial destination.
+>
+> Public links back to Commons are prohibited unless Bryce gives case-specific authorization. That exception does not make GitHub a storefront. For customer/public communication, use a clean standalone branded surface plus the direct transaction, procurement, delivery, or support path. Internal GitHub/Commons/Slack evidence links remain available for the swarm.
+>
+> Before customer-facing copy is sent, run `host/customer_link_boundary.py`; rewrite any finding onto a non-GitHub customer surface. Canonical law and checker contract: [ground/CUSTOMER_LINK_BOUNDARY.md](ground/CUSTOMER_LINK_BOUNDARY.md).
+
 ## GPT Chat fleet: discover connected publishing tools
 
-In GPT Chat, start with `api_tool.list_resources({"paths":["GitHub","Slack"]})`. Load the returned tools and schemas before concluding publication is unavailable. Diagnose and recover actual call failures; preserve stable operation IDs and read back new or uncertain publication outcomes without re-verifying accepted completed work. Existing publication controls, shared-capability access and provider limits remain unchanged. Reuse the existing work record and update it only for meaningful changes; do not create acknowledgement or custody posts merely for discovery.
+Before concluding GitHub or Slack publication is unavailable, inspect the complete connected-tool surface actually exposed by the current harness. If `api_tool.list_resources` exists, start with unfiltered `api_tool.list_resources({"paths":["GitHub","Slack"]})`. If that interface is absent, unavailable, or errors during discovery, do **not** treat that as a capability verdict: inspect the harness's complete available/dynamic/deferred tool inventory (for example an `ALL_TOOLS`-style registry, plugin/resource discovery, or equivalent) and load the GitHub/Slack action schemas from there. Do not assume one particular discovery API name must exist.
+
+For GitHub, explicitly look for write primitives including `create_blob`, `create_tree`, `create_commit`, `create_branch`, `update_ref`, `create_file`, `update_file`, `create_pull_request`, and `merge_pull_request`; for Slack, look for `send_message`, `create_conversation`, `edit_message`, and related writes. Separate `tool not discovered`, `connector not authenticated`, `provider account lacks permission`, `repository/workspace policy blocked the operation`, and `typed operation failed`; never collapse those states into "I can't publish." When available, use harmless profile/installation/workspace/repository-permission reads to distinguish those states before a capability claim. This is diagnostic only and does not add an admission or permission gate to Commons.
+
+Keep the capability-preflight receipt in the current session; do not post tool counts, authentication diagnostics, or capability enumeration to Slack or Commons unless that diagnostic is itself operationally relevant. Then perform the requested write, retry a typed connector failure once when appropriate, preserve stable operation IDs, and read back new or uncertain publication outcomes without re-verifying accepted completed work. Existing publication controls, shared-capability access and provider limits remain unchanged. Reuse the existing work record and update it only for meaningful changes; do not create acknowledgement or custody posts merely for discovery.
 
 > **Owner directive — 2026-09-12: GPT-led swarm building and integration.**
 > Read [ground/SWARM_ORDER.md](ground/SWARM_ORDER.md) before work. Use the existing
@@ -251,7 +263,7 @@ Agents and humans can buy the existing rungs without waiting for a JavaScript re
 - [$199 referral diagnostic](./referral-intake-completeness.html) — tip-shelf product page
 - [$199 repair diagnostic](./repair-booking-preflight.html) — tip-shelf product page
 - [$199 plant diagnostic](./plant-downtime-handoff.html) — tip-shelf product page
-- [$2,500 same-day crash-resume proof](./revenue/production_survival/README.md) — refund if the agreed proof window is missed (do not use agent-rescue.html for Survival).
+- [$2,500 same-day crash-resume proof](./revenue/production_survival/README.md) — refund if the agreed proof window is missed (do not use agent-rescue.html for Survival — it retired with the $29 Autopsy SKU on 2026-09-17).
 - [$15,000 five-day recovery sprint](./revenue/production_survival/README.md) — bounded implementation with a durable receipt.
 - [$12,000 GGUF diagnostic](./diagnostic.html) — diagnosis before a larger engagement.
 - [$30,000 White Box pilot](./commercial.html) — 30 days for one customer-owned GGUF model family.

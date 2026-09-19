@@ -223,11 +223,6 @@
     "commerce": "./commerce.html",
     "doors": [
       {
-        "href": "./agent-rescue.html",
-        "label": "$29 Autopsy checkout",
-        "sku": "agent-failure-autopsy-29"
-      },
-      {
         "href": "./dealer-service-lead-rescue.html",
         "label": "$199 dealer diagnostic",
         "sku": "dealer-service-lead-rescue"
