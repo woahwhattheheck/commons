@@ -4,10 +4,13 @@ const state = {
   report: null, cells: [], selectedKey: null, notes: new Map(), dispositions: new Map(),
   generation: 0, editRevision: 0, draftLoadSequence: 0
 };
+// Only one prior review is parked, in this tab's memory. Counters deliberately
+// remain in state: restoring old counters could revive an obsolete async draft.
+const sampleSession = { active: false, prior: null };
 const el = Object.fromEntries([
   "candidateFile","authorityFile","inspectBtn","demoBtn","resetBtn","error","summary","search",
   "statusFilter","matrix","detail","disposition","note","exportBtn","exportStatus",
-  "handoffFile","importDraftBtn","markdownBtn"
+  "handoffFile","importDraftBtn","markdownBtn","demoResetBtn","demoExitBtn","demoStatus"
 ].map(id => [id, document.getElementById(id)]));
 
 function keyFor(cell) { return `${cell.group}|${cell.dimension}`; }
@@ -169,6 +172,84 @@ function resetWorkbench() {
   setError("");
 }
 
+function updateSampleControls() {
+  el.demoResetBtn.disabled = !sampleSession.active;
+  el.demoExitBtn.disabled = !sampleSession.active;
+  el.resetBtn.disabled = sampleSession.active;
+  if (sampleSession.active) {
+    el.inspectBtn.disabled = sampleSession.prior !== null;
+    el.demoStatus.textContent = "Synthetic sample active — UI only, not compiler output. " +
+      "Reset changes only sample notes, dispositions, selection and filters; downloaded files are untouched. " +
+      (sampleSession.prior
+        ? "Your prior review is parked in this tab. Leave sample to restore it before inspecting replacement evidence."
+        : "Leave sample returns to an empty workbench. No prior review is parked.");
+  } else {
+    el.demoStatus.textContent = "Synthetic sample is not active. Loading it temporarily parks your current review in this tab. " +
+      "Export important work before closing or reloading the page; this is not persistent storage.";
+  }
+}
+
+function captureReview() {
+  if (!state.report) return null;
+  return {
+    report: structuredClone(state.report),
+    notes: new Map(state.notes), dispositions: new Map(state.dispositions),
+    selectedKey: state.selectedKey, search: el.search.value,
+    status: el.statusFilter.value, exported: el.exportStatus.textContent,
+    error: el.error.textContent
+  };
+}
+
+function startSyntheticSample() {
+  if (!sampleSession.active) sampleSession.prior = captureReview();
+  sampleSession.active = true;
+  setError("");
+  // rebuildStatuses normally preserves the selected filter. A rehearsal reset
+  // must instead show the full known sample, even after a three-cell filter.
+  el.statusFilter.value = "";
+  installReport(syntheticReport());
+  updateSampleControls();
+}
+
+function resetSyntheticSample() {
+  if (sampleSession.active) startSyntheticSample();
+}
+
+function leaveSyntheticSample() {
+  if (!sampleSession.active) return;
+  const prior = sampleSession.prior;
+  sampleSession.active = false;
+  sampleSession.prior = null;
+  if (prior) {
+    // installReport advances generation/draftLoadSequence. Never rewind these
+    // to the parked review's values, even when the receipt is identical.
+    installReport(prior.report);
+    state.notes = new Map(prior.notes);
+    state.dispositions = new Map(prior.dispositions);
+    el.search.value = prior.search;
+    el.statusFilter.value = prior.status;
+    if (prior.selectedKey) selectCell(prior.selectedKey);
+    else renderMatrix();
+    el.exportStatus.textContent = prior.exported;
+    setError(prior.error);
+  } else resetWorkbench();
+  updateSampleControls();
+  // The clicked leave button is now disabled; move focus to a live control.
+  el.demoBtn.focus();
+}
+
+function clearActiveWorkbench() {
+  // Preserve a parked review even if this function is called outside the button.
+  if (sampleSession.active && sampleSession.prior) {
+    setError("Leave the synthetic sample to restore your prior review before clearing it.");
+    return;
+  }
+  sampleSession.active = false;
+  sampleSession.prior = null;
+  resetWorkbench();
+  updateSampleControls();
+}
+
 async function readJsonFile(input, label) {
   const file = input.files?.[0];
   if (!file) throw new Error(`${label} file is required.`);
@@ -180,6 +261,13 @@ async function readJsonFile(input, label) {
 }
 
 async function inspectFiles() {
+  if (sampleSession.active && sampleSession.prior) {
+    setError("Leave the synthetic sample to restore your prior review before inspecting replacement evidence.");
+    return;
+  }
+  sampleSession.active = false;
+  sampleSession.prior = null;
+  updateSampleControls();
   // A replacement attempt invalidates the prior generation immediately. If file
   // parsing, transport, or compiler inspection fails, stale notes/export authority
   // must not remain actionable under the guise of the attempted new import.
@@ -280,8 +368,10 @@ function exportMarkdown() {
 }
 
 el.inspectBtn.addEventListener("click", inspectFiles);
-el.demoBtn.addEventListener("click", () => { setError(""); installReport(syntheticReport()); });
-el.resetBtn.addEventListener("click", resetWorkbench);
+el.demoBtn.addEventListener("click", startSyntheticSample);
+el.demoResetBtn.addEventListener("click", resetSyntheticSample);
+el.demoExitBtn.addEventListener("click", leaveSyntheticSample);
+el.resetBtn.addEventListener("click", clearActiveWorkbench);
 el.search.addEventListener("input", renderMatrix);
 el.statusFilter.addEventListener("change", renderMatrix);
 el.note.addEventListener("input", () => {
@@ -294,5 +384,5 @@ el.exportBtn.addEventListener("click", exportDraft);
 el.markdownBtn.addEventListener("click", exportMarkdown);
 el.importDraftBtn.addEventListener("click", importDraft);
 
-resetWorkbench();
-if (new URLSearchParams(location.search).get("demo") === "1") installReport(syntheticReport());
+clearActiveWorkbench();
+if (new URLSearchParams(location.search).get("demo") === "1") startSyntheticSample();
