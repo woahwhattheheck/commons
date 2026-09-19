@@ -46,13 +46,15 @@ byte-identical output, and a test asserts it.
 |---|---|
 | `deck_architecture.py` | The engine: loader, report index, 16-rule agreement checker, four renderers, CLI. |
 | `data/example-report.json` | The synthetic example report. **Source of truth** for the worked story. |
+| `data/broken-roadmap-report.json` | Deliberately impossible roadmap, shipped so the catch is reproducible. |
+| `data/deck-agreeing-with-broken-roadmap.json` | A deck that agrees with it perfectly. |
 | `data/example-readout-deck.json` | The worked readout deck: 7 core slides + 7 appendix slides, speaker notes on every core slide. |
 | `templates/readout-deck-template.json` | The blank editable template — the reusable structure with the rules written into it. |
 | `examples/readout-deck.md` | Rendered deck, with each slide's claims shown beside the report's values. |
 | `examples/readout-deck-ascii.txt` | ASCII slide frames + track map + open inputs. 78 columns, no color. |
 | `examples/readout-planning-table.csv` | The underlying planning table: one row per claim, deck value beside report value. |
 | `examples/deck-report-agreement.md` | The agreement report for the current deck. |
-| `test_deck_architecture.py` | 56 tests, `unittest`. |
+| `test_deck_architecture.py` | 65 tests, `unittest`. |
 
 Everything in `examples/` is generated. Change the deck or the report and re-run `render`.
 
@@ -92,10 +94,58 @@ without hunting.
 | R014_DECISION_UNLINKED | A decision resolves to a recommendation whose phase agrees. |
 | R015_REPORT_MISMATCH | The deck's `report_ref` is the report being checked against. |
 | R016_AGENDA_UNDERRUN | Core minutes use a reasonable share of the session. *(warning)* |
+| R017_ROADMAP_DEPENDENCY_UNDECLARED | A roadmap declaring no prerequisites is NOT ASSESSED, never coherent. *(warning)* |
+| R018_ROADMAP_PREREQ_AFTER_DEPENDENT | No roadmap prerequisite sits in a later phase than its dependent. |
+| R019_ROADMAP_DEPENDENCY_CYCLE | The roadmap's prerequisite graph is acyclic. |
+| R020_ROADMAP_DANGLING_DEPENDENCY | Every declared prerequisite resolves to a recommendation on the roadmap. |
 
 A failed check also stamps the rendered Markdown deck: **"Deck-to-report agreement: FAILED —
 do not present it until the disagreements below are resolved."** A drifted deck cannot render
 as a clean handout.
+
+### R017-R020 were added after a demonstrated hole in this checker
+
+The first sixteen rules verify that the deck matches the report. They say nothing about whether
+the **report's own plan is possible** — and a deck that faithfully presents an impossible plan is
+still an impossible plan in front of leadership.
+
+Demonstrated against the landed commit, not hypothesised. `R-004` ("extend the approval and
+restoration practice to the remaining groups") was moved from `180+` into `0-90` — before `R-001`
+establishes the practice and before `R-002` exercises restoration — and the deck was updated to
+match, exactly as a diligent editor would. Verbatim, before these rules existed:
+
+```
+Result: PASS - 0 error(s), 0 warning(s).
+exit=0
+```
+
+Sixteen rules, all green, on a plan that cannot be executed. Worse, the deck **already said so**:
+appendix slide S-A4 reads *"R-004 depends on R-001 and R-002 having reported, which is why it sits
+at 180+."* That dependency existed only as prose in a speaker note, and the report format had no
+field to hold it, so no rule could ever check it. **A claim in a bullet is decoration; the same
+claim in a field is a check.**
+
+Fixed by making `depends_on` a real field on roadmap items and adding R017-R020. Same pair, after:
+
+```
+Result: FAIL - 1 error(s), 0 warning(s).
+
+| error | R018_ROADMAP_PREREQ_AFTER_DEPENDENT | R-004 | R-004 is scheduled in 0-90 but its
+  prerequisite R-002 is scheduled in 90-180, which is later; the plan cannot be executed in
+  that order |
+exit=1
+```
+
+The broken report and its agreeing deck ship as first-class artifacts —
+`data/broken-roadmap-report.json` and `data/deck-agreeing-with-broken-roadmap.json` — so the catch
+is reproducible rather than described, and `test_a_deck_agreeing_with_an_impossible_plan_does_not_pass`
+asserts that **every other rule stays green on that pair**: the deck really does agree, and that was
+never enough.
+
+**The guardrail inside the fix:** a roadmap that declares no `depends_on` at all reports
+`NOT ASSESSED`, never "coherent" (R017). An empty list `[]` means "considered, none" and is a
+different, accepted answer. Silence is not a clean bill of health — the same rule this lane already
+applies to UNKNOWN measures.
 
 ### The checker found a real hole in the worked example
 
@@ -144,7 +194,7 @@ the slide rather than hidden behind one.
 ## What is real and what is draft
 
 **Real and working now:** the checker, all 16 rules, the four renderers, the planning table,
-the CLI, the determinism guarantee, and the 56 tests. Run them; the output is the evidence.
+the CLI, the determinism guarantee, and the 65 tests. Run them; the output is the evidence.
 
 **Draft:** the deck structure itself — section list, minute budget (45), readability budget
 (6 bullets / 180 characters per core slide). These are sensible defaults for a leadership

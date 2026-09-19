@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "deck_id": "COHERENCE-DEMO-DECK",
+    "report_ref": "COHERENCE-DEMO-REPORT",
+    "fiction_notice": "FICTION. Northgate State University does not exist. These artifacts exist only to exercise the coherence checker. Nothing here is a University of Iowa finding, recommendation or plan."
+  },
+  "slides": [
+    {
+      "id": "S-05",
+      "section": "roadmap",
+      "track": "core",
+      "title": "Sequence",
+      "minutes": 8,
+      "bullets": [
+        "0-90: establish the approval record (R-001) and the routing table (R-003).",
+        "90-180: exercise restoration (R-002).",
+        "180+: extend to the remaining groups (R-004)."
+      ],
+      "claims": [
+        {
+          "type": "phase",
+          "cites": "R-001",
+          "phase": "0-90",
+          "text": "first phase"
+        },
+        {
+          "type": "phase",
+          "cites": "R-003",
+          "phase": "0-90",
+          "text": "first phase"
+        },
+        {
+          "type": "phase",
+          "cites": "R-002",
+          "phase": "90-180",
+          "text": "second phase"
+        },
+        {
+          "type": "phase",
+          "cites": "R-004",
+          "phase": "180+",
+          "text": "last phase"
+        }
+      ],
+      "appendix_support": [
+        "S-A4"
+      ],
+      "speaker_notes": [
+        "Say what each phase produces as evidence, not a maturity level."
+      ]
+    },
+    {
+      "id": "S-A4",
+      "section": "appendix",
+      "track": "appendix",
+      "title": "Appendix - phase dependencies",
+      "minutes": 0,
+      "bullets": [
+        "R-004 depends on R-001 and R-002 having reported, which is why it sits at 180+.",
+        "R-002 depends on R-001 because the approval record is what the restore is verified against.",
+        "R-001 and R-003 touch different systems, so they run in parallel in 0-90."
+      ],
+      "claims": [
+        {
+          "type": "phase",
+          "cites": "R-004",
+          "phase": "180+",
+          "text": "last"
+        }
+      ],
+      "appendix_support": [],
+      "speaker_notes": [
+        "If leadership wants R-004 pulled forward, name what evidence would be missing."
+      ]
+    }
+  ]
+}

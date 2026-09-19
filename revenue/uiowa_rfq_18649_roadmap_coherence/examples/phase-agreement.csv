@@ -1,0 +1,5 @@
+rec,report_phase,plan_phase,deck_phase_claims,report_depends_on,plan_depends_on,agree
+R-001,0-90,0-90,S-05=0-90,,,yes
+R-002,90-180,90-180,S-05=90-180,R-001,R-001,yes
+R-003,0-90,0-90,S-05=0-90,,,yes
+R-004,180+,180+,S-05=180+;S-A4=180+,R-001;R-002,R-001;R-002,yes

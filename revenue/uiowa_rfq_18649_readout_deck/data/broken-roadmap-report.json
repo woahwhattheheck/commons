@@ -1,10 +1,11 @@
 {
   "meta": {
     "report_id": "AIS-ASSESS-EXAMPLE-2026",
-    "title": "Administrative Information Systems assessment - example report (SYNTHETIC)",
+    "title": "DELIBERATELY BROKEN example report - R-004 scheduled before its prerequisites (SYNTHETIC)",
     "status": "draft-example",
     "fiction_notice": "FICTION. Northgate State University does not exist. Every finding, figure, record and locator below is invented to exercise the deck-agreement engine. Nothing here is a University of Iowa finding or a real assessment result.",
-    "assessed_window": "fictional 2026-01-01 .. 2026-06-30"
+    "assessed_window": "fictional 2026-01-01 .. 2026-06-30",
+    "broken_on_purpose": "Shipped as a first-class artifact, not described. R-004 extends the approval and restoration practice to the remaining groups, and is scheduled in 0-90 -- before R-001 establishes the practice and before R-002 exercises restoration. Before rules R017-R020 existed, this report and a deck agreeing with it produced 'PASS - 0 error(s), 0 warning(s)'."
   },
   "groups": [
     {
@@ -247,7 +248,7 @@
       },
       {
         "rec": "R-004",
-        "phase": "180+",
+        "phase": "0-90",
         "depends_on": [
           "R-001",
           "R-002"

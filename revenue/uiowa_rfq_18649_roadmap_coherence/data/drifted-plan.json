@@ -1,0 +1,61 @@
+{
+  "meta": {
+    "set_id": "COHERENCE-DEMO-PLAN",
+    "horizon_phases": [
+      "0-90",
+      "90-180",
+      "180+"
+    ],
+    "fiction_notice": "FICTION. Northgate State University does not exist. These artifacts exist only to exercise the coherence checker. Nothing here is a University of Iowa finding, recommendation or plan.",
+    "broken_on_purpose": "W-4 moved to 180+; the report still says R-002 is in 90-180."
+  },
+  "items": [
+    {
+      "id": "W-1",
+      "rec": "R-001",
+      "title": "Record the approver pair",
+      "proposed_phase": "0-90",
+      "prerequisites": [],
+      "effort": {}
+    },
+    {
+      "id": "W-2",
+      "rec": "R-001",
+      "title": "Enforce the rule in the pipeline",
+      "proposed_phase": "0-90",
+      "prerequisites": [
+        "W-1"
+      ],
+      "effort": {}
+    },
+    {
+      "id": "W-3",
+      "rec": "R-003",
+      "title": "Record alert routing owners",
+      "proposed_phase": "0-90",
+      "prerequisites": [],
+      "effort": {}
+    },
+    {
+      "id": "W-4",
+      "rec": "R-002",
+      "title": "Restoration exercise",
+      "proposed_phase": "180+",
+      "prerequisites": [
+        "W-2"
+      ],
+      "effort": {}
+    },
+    {
+      "id": "W-5",
+      "rec": "R-004",
+      "title": "Extend to remaining groups",
+      "proposed_phase": "180+",
+      "prerequisites": [
+        "W-2",
+        "W-4"
+      ],
+      "effort": {}
+    }
+  ]
+}

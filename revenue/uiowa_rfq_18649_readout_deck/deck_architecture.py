@@ -74,6 +74,10 @@ RULES = OrderedDict([
     ("R014_DECISION_UNLINKED", "A decision resolves to a recommendation whose phase agrees with the decision's."),
     ("R015_REPORT_MISMATCH", "The deck's report_ref is the report it is being checked against."),
     ("R016_AGENDA_UNDERRUN", "Core slide minutes use a reasonable share of the declared session (advisory)."),
+    ("R017_ROADMAP_DEPENDENCY_UNDECLARED", "A roadmap that declares no prerequisites is reported as NOT ASSESSED, never as coherent."),
+    ("R018_ROADMAP_PREREQ_AFTER_DEPENDENT", "No roadmap prerequisite sits in a later phase than the item that depends on it."),
+    ("R019_ROADMAP_DEPENDENCY_CYCLE", "The roadmap's prerequisite graph is acyclic."),
+    ("R020_ROADMAP_DANGLING_DEPENDENCY", "Every declared prerequisite resolves to a recommendation on the roadmap."),
 ])
 
 
@@ -209,6 +213,91 @@ def _core_slides(deck):
 def _appendix_slides(deck):
     return [s for s in deck["slides"] if s.get("track") == "appendix"]
 
+
+
+
+def roadmap_dependency_checks(report):
+    """Is the report's own roadmap possible?
+
+    Added after a demonstrated hole: the deck checker verified a deck against a
+    report whose roadmap put R-004 ("extend the practice to the remaining
+    groups") BEFORE the recommendations that establish the practice, and
+    reported PASS with zero findings. Deck-to-report agreement says nothing
+    about whether the report's plan can happen, and a deck that faithfully
+    presents an impossible plan is still an impossible plan in front of
+    leadership.
+
+    The dependency was in the deck all along -- as prose on appendix slide S-A4.
+    A claim in a bullet is decoration; the same claim in a field is a check.
+    """
+    issues = []
+    roadmap = report.get("roadmap", {})
+    phases = [p["id"] for p in roadmap.get("phases", [])]
+    pidx = dict((p, n) for n, p in enumerate(phases))
+    items = roadmap.get("items", [])
+    rec_phase = dict((i["rec"], i.get("phase")) for i in items)
+    declared = dict((i["rec"], i.get("depends_on")) for i in items)
+
+    # Absence of declared dependencies is NOT ASSESSED, never a pass. A roadmap
+    # nobody expressed prerequisites for has not been shown to be coherent.
+    if not any(d is not None for d in declared.values()):
+        issues.append(Issue("R017_ROADMAP_DEPENDENCY_UNDECLARED", WARN, "-",
+                            "no roadmap item declares depends_on, so roadmap dependency coherence "
+                            "is NOT ASSESSED; that is not the same as coherent"))
+        return issues
+
+    edges = OrderedDict((rec, list(declared.get(rec) or [])) for rec in rec_phase)
+    for rec, deps in edges.items():
+        for dep in deps:
+            if dep not in rec_phase:
+                issues.append(Issue("R020_ROADMAP_DANGLING_DEPENDENCY", ERROR, rec,
+                                    "%s declares a prerequisite %r that is not on the roadmap"
+                                    % (rec, dep)))
+
+    # Cycle detection, so an impossible loop is named rather than scheduled.
+    WHITE, GREY, BLACK = 0, 1, 2
+    colour = dict((r, WHITE) for r in edges)
+    stack = []
+
+    def visit(node):
+        colour[node] = GREY
+        stack.append(node)
+        for nxt in sorted(d for d in edges.get(node, []) if d in edges):
+            if colour[nxt] == GREY:
+                return stack[stack.index(nxt):] + [nxt]
+            if colour[nxt] == WHITE:
+                found = visit(nxt)
+                if found:
+                    return found
+        stack.pop()
+        colour[node] = BLACK
+        return None
+
+    cycle = None
+    for node in sorted(edges):
+        if colour[node] == WHITE:
+            cycle = visit(node)
+            if cycle:
+                break
+    if cycle:
+        issues.append(Issue("R019_ROADMAP_DEPENDENCY_CYCLE", ERROR, " -> ".join(cycle),
+                            "roadmap prerequisite cycle: %s" % " -> ".join(cycle)))
+        return issues
+
+    for rec, deps in edges.items():
+        here = pidx.get(rec_phase.get(rec))
+        if here is None:
+            continue
+        for dep in deps:
+            there = pidx.get(rec_phase.get(dep))
+            if there is None:
+                continue
+            if there > here:
+                issues.append(Issue("R018_ROADMAP_PREREQ_AFTER_DEPENDENT", ERROR, rec,
+                                    "%s is scheduled in %s but its prerequisite %s is scheduled in "
+                                    "%s, which is later; the plan cannot be executed in that order"
+                                    % (rec, rec_phase[rec], dep, rec_phase[dep])))
+    return issues
 
 def check(report, deck):
     """Return the full issue list. Empty error list means the deck agrees."""
@@ -385,6 +474,10 @@ def check(report, deck):
         if f["id"] not in core_cited:
             issues.append(Issue("R005_OMITTED_PRIORITY_FINDING", ERROR, "-",
                                 "high-priority gap %s (%s) is not on any core slide" % (f["id"], f.get("statement", ""))))
+
+    # R017-R020 -- is the report's own roadmap possible? A deck that agrees with
+    # an impossible plan is still presenting an impossible plan.
+    issues.extend(roadmap_dependency_checks(report))
 
     # R009 -- appendix slides nobody can reach.
     reachable = set()

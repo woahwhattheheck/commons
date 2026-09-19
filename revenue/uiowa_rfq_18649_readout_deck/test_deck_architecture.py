@@ -22,6 +22,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPORT_PATH = os.path.join(HERE, "data", "example-report.json")
 DECK_PATH = os.path.join(HERE, "data", "example-readout-deck.json")
 TEMPLATE_PATH = os.path.join(HERE, "templates", "readout-deck-template.json")
+BROKEN_REPORT = os.path.join(HERE, "data", "broken-roadmap-report.json")
+BROKEN_DECK = os.path.join(HERE, "data", "deck-agreeing-with-broken-roadmap.json")
 
 
 def codes(issues):
@@ -431,6 +433,81 @@ class TestRenderAndCli(Base):
             mutate(deck, report)
             used |= codes(da.check(report, deck))
         self.assertTrue(used <= set(da.RULES), "undocumented rule codes: %s" % (used - set(da.RULES)))
+
+
+class TestRoadmapCoherence(Base):
+    """Rules R017-R020, added after a demonstrated hole.
+
+    The deck checker used to report PASS with zero findings on a report whose
+    roadmap scheduled R-004 ("extend the practice to the remaining groups")
+    before the recommendations that establish the practice. Deck-to-report
+    agreement says nothing about whether the report's plan is possible, and the
+    dependency was sitting in appendix slide S-A4 as prose the whole time.
+    """
+
+    def test_the_shipped_broken_fixture_really_is_impossible(self):
+        report = da.load_report(BROKEN_REPORT)
+        phases = [p["id"] for p in report["roadmap"]["phases"]]
+        pidx = dict((p, n) for n, p in enumerate(phases))
+        by_rec = dict((i["rec"], i) for i in report["roadmap"]["items"])
+        self.assertLess(pidx[by_rec["R-004"]["phase"]], pidx[by_rec["R-002"]["phase"]],
+                        "the broken fixture must actually place R-004 before R-002")
+
+    def test_prerequisite_scheduled_after_its_dependent_is_caught(self):
+        issues = da.check(da.load_report(BROKEN_REPORT), da.load_deck(BROKEN_DECK))
+        self.assertIn("R018_ROADMAP_PREREQ_AFTER_DEPENDENT", err_codes(issues))
+        detail = " ".join(i.detail for i in da.errors(issues))
+        self.assertIn("R-004", detail)
+        self.assertIn("R-002", detail)
+
+    def test_a_deck_agreeing_with_an_impossible_plan_does_not_pass(self):
+        # The regression that matters: every other rule is green on this pair.
+        issues = da.check(da.load_report(BROKEN_REPORT), da.load_deck(BROKEN_DECK))
+        other = err_codes(issues) - set(["R018_ROADMAP_PREREQ_AFTER_DEPENDENT"])
+        self.assertEqual(set(), other, "only the roadmap rule should fire; the deck does agree")
+        self.assertTrue(da.errors(issues), "agreement with an impossible plan is not a pass")
+
+    def test_undeclared_dependencies_are_not_assessed_rather_than_coherent(self):
+        for item in self.report["roadmap"]["items"]:
+            item.pop("depends_on", None)
+        issues = da.check(self.report, self.deck)
+        self.assertIn("R017_ROADMAP_DEPENDENCY_UNDECLARED", codes(issues))
+        detail = " ".join(i.detail for i in issues)
+        self.assertIn("NOT ASSESSED", detail)
+
+    def test_an_empty_dependency_list_is_a_considered_answer(self):
+        # [] means "looked at, none". It must not trigger the not-assessed rule.
+        for item in self.report["roadmap"]["items"]:
+            item["depends_on"] = []
+        issues = da.check(self.report, self.deck)
+        self.assertNotIn("R017_ROADMAP_DEPENDENCY_UNDECLARED", codes(issues))
+        self.assertEqual(set(), err_codes(issues))
+
+    def test_roadmap_dependency_cycle_is_caught(self):
+        by_rec = dict((i["rec"], i) for i in self.report["roadmap"]["items"])
+        by_rec["R-001"]["depends_on"] = ["R-004"]
+        issues = da.check(self.report, self.deck)
+        self.assertIn("R019_ROADMAP_DEPENDENCY_CYCLE", err_codes(issues))
+
+    def test_dangling_roadmap_dependency_is_caught(self):
+        by_rec = dict((i["rec"], i) for i in self.report["roadmap"]["items"])
+        by_rec["R-004"]["depends_on"] = ["R-001", "R-404"]
+        issues = da.check(self.report, self.deck)
+        self.assertIn("R020_ROADMAP_DANGLING_DEPENDENCY", err_codes(issues))
+
+    def test_a_prerequisite_in_the_same_phase_is_allowed(self):
+        # R-001 and R-004 both in 0-90 is sequencing inside a window, not an error.
+        by_rec = dict((i["rec"], i) for i in self.report["roadmap"]["items"])
+        by_rec["R-004"]["depends_on"] = ["R-001"]
+        by_rec["R-004"]["phase"] = by_rec["R-001"]["phase"]
+        issues = da.check(self.report, self.deck)
+        self.assertNotIn("R018_ROADMAP_PREREQ_AFTER_DEPENDENT", err_codes(issues))
+
+    def test_the_corrected_shipped_report_is_coherent(self):
+        issues = da.check(self.report, self.deck)
+        for code in ("R017_ROADMAP_DEPENDENCY_UNDECLARED", "R018_ROADMAP_PREREQ_AFTER_DEPENDENT",
+                     "R019_ROADMAP_DEPENDENCY_CYCLE", "R020_ROADMAP_DANGLING_DEPENDENCY"):
+            self.assertNotIn(code, codes(issues))
 
 
 if __name__ == "__main__":

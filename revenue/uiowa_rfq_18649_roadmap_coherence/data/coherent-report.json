@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "report_id": "COHERENCE-DEMO-REPORT",
+    "title": "Coherence demo report (SYNTHETIC)",
+    "fiction_notice": "FICTION. Northgate State University does not exist. These artifacts exist only to exercise the coherence checker. Nothing here is a University of Iowa finding, recommendation or plan."
+  },
+  "roadmap": {
+    "dependency_note": "depends_on is the machine-checkable form of a dependency. An empty list means considered and none; a roadmap with NO depends_on fields at all has not been assessed, which is not the same as coherent.",
+    "phases": [
+      {
+        "id": "0-90"
+      },
+      {
+        "id": "90-180"
+      },
+      {
+        "id": "180+"
+      }
+    ],
+    "items": [
+      {
+        "rec": "R-001",
+        "phase": "0-90",
+        "depends_on": []
+      },
+      {
+        "rec": "R-002",
+        "phase": "90-180",
+        "depends_on": [
+          "R-001"
+        ]
+      },
+      {
+        "rec": "R-003",
+        "phase": "0-90",
+        "depends_on": []
+      },
+      {
+        "rec": "R-004",
+        "phase": "180+",
+        "depends_on": [
+          "R-001",
+          "R-002"
+        ]
+      }
+    ]
+  }
+}

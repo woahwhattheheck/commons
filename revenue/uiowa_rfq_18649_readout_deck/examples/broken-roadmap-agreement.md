@@ -2,9 +2,11 @@
 
 Deck `AIS-READOUT-EXAMPLE-2026` checked against report `AIS-ASSESS-EXAMPLE-2026`.
 
-**Result: PASS** - 0 error(s), 0 warning(s).
+**Result: FAIL** - 1 error(s), 0 warning(s).
 
-No disagreements. Every figure on a slide equals the report's value, every high-priority gap reaches a core slide, and every main-body figure is backed by an appendix slide carrying the same id.
+| Severity | Rule | Slide | Detail |
+|---|---|---|---|
+| error | R018_ROADMAP_PREREQ_AFTER_DEPENDENT | R-004 | R-004 is scheduled in 0-90 but its prerequisite R-002 is scheduled in 90-180, which is later; the plan cannot be executed in that order |
 
 ## Rules applied
 
