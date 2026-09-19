@@ -1,0 +1,129 @@
+[
+  {
+    "capture_complete": false,
+    "capture_sha256": "452b3f58ec0fe457934f5e51583e50e720a1fb875e00f8d9da8370b796bd59c6",
+    "diagnostics": [],
+    "messages_observed": 3,
+    "pages_read": 2,
+    "reader_complete": false,
+    "reason": "thread_evidence_changed",
+    "requested_reads": 2,
+    "root_state": "RESOLVED",
+    "scenario": "changed_message",
+    "unused_reads": 0
+  },
+  {
+    "capture_complete": true,
+    "capture_sha256": "cd652549c278d40d604659490eeec90159b69cbaae97e862dcb5eaf447077c9c",
+    "diagnostics": [],
+    "messages_observed": 3,
+    "pages_read": 2,
+    "reader_complete": true,
+    "reason": null,
+    "requested_reads": 2,
+    "root_state": "RESOLVED",
+    "scenario": "complete",
+    "unused_reads": 0
+  },
+  {
+    "capture_complete": false,
+    "capture_sha256": "beae6a069bbe96626e696073af40810032bb950b39411bd7cdb7d7265858431b",
+    "diagnostics": [],
+    "messages_observed": 1,
+    "pages_read": 0,
+    "reader_complete": false,
+    "reason": "root_metadata_conflict",
+    "requested_reads": 0,
+    "root_state": "CONFLICT",
+    "scenario": "conflicting_root",
+    "unused_reads": 0
+  },
+  {
+    "capture_complete": false,
+    "capture_sha256": "0dbbf8c4296a2fe53050baf025cb98fd3081807a679d28a0802f5743692007fd",
+    "diagnostics": [],
+    "messages_observed": 2,
+    "pages_read": 2,
+    "reader_complete": false,
+    "reason": "reply_evidence_mismatch",
+    "requested_reads": 2,
+    "root_state": "RESOLVED",
+    "scenario": "count_mismatch",
+    "unused_reads": 0
+  },
+  {
+    "capture_complete": false,
+    "capture_sha256": "d0590e80d51ac3ce055ac24dfcbcef2c3b657c97e6bd70c94fdbe68feec008b7",
+    "diagnostics": [
+      {
+        "code": "capture_response_missing",
+        "index": 1
+      }
+    ],
+    "messages_observed": 2,
+    "pages_read": 1,
+    "reader_complete": false,
+    "reason": "read_failed",
+    "requested_reads": 2,
+    "root_state": "RESOLVED",
+    "scenario": "missing_page",
+    "unused_reads": 0
+  },
+  {
+    "capture_complete": false,
+    "capture_sha256": "264383134da653b8b0f416fb49112b4e18cf4e1e8e19c5c9b9c6b2f7ca2f7827",
+    "diagnostics": [],
+    "messages_observed": 2,
+    "pages_read": 1,
+    "reader_complete": false,
+    "reason": "page_limit",
+    "requested_reads": 1,
+    "root_state": "RESOLVED",
+    "scenario": "page_limit",
+    "unused_reads": 1
+  },
+  {
+    "capture_complete": false,
+    "capture_sha256": "b995150e961ca5b59b85e984cc4c41bcc0bca5fe639d7e8f9e700704d8c3c3da",
+    "diagnostics": [],
+    "messages_observed": 1,
+    "pages_read": 0,
+    "reader_complete": false,
+    "reason": "root_metadata_missing",
+    "requested_reads": 0,
+    "root_state": "UNKNOWN",
+    "scenario": "unknown_root",
+    "unused_reads": 0
+  },
+  {
+    "capture_complete": false,
+    "capture_sha256": "c8b454d63eb7156b1a36517b9f22db684fc8acdb5dad755969d9404c483cc9de",
+    "diagnostics": [],
+    "messages_observed": 3,
+    "pages_read": 2,
+    "reader_complete": true,
+    "reason": null,
+    "requested_reads": 2,
+    "root_state": "RESOLVED",
+    "scenario": "unused_page",
+    "unused_reads": 1
+  },
+  {
+    "capture_complete": false,
+    "capture_sha256": "d4798c4af0d3440414143d728288a3e584bfcb8ee9ec7e388edcca0797750156",
+    "diagnostics": [
+      {
+        "code": "capture_request_mismatch",
+        "index": 0
+      }
+    ],
+    "messages_observed": 0,
+    "pages_read": 0,
+    "reader_complete": false,
+    "reason": "read_failed",
+    "requested_reads": 1,
+    "root_state": "RESOLVED",
+    "scenario": "wrong_child",
+    "unused_reads": 1
+  }
+]

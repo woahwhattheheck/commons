@@ -1,0 +1,68 @@
+{
+  "captured_at": "2026-01-01T00:00:00Z",
+  "channel_id": "CDEMO",
+  "classification": "SYNTHETIC_REHEARSAL",
+  "max_pages": 2,
+  "page_size": 2,
+  "reads": [
+    {
+      "method": "conversations.replies",
+      "payload": {
+        "channel": "CDEMO",
+        "limit": 2,
+        "ts": "1700000000.000001"
+      },
+      "response": {
+        "has_more": true,
+        "messages": [
+          {
+            "latest_reply": "1700000020.000003",
+            "reply_count": 2,
+            "text": "FICTION: original work order",
+            "ts": "1700000000.000001"
+          },
+          {
+            "text": "FICTION: Rowan already took source review",
+            "thread_ts": "1700000000.000001",
+            "ts": "1700000010.000002"
+          }
+        ],
+        "ok": true,
+        "response_metadata": {
+          "next_cursor": "fixture-page-2"
+        }
+      }
+    },
+    {
+      "method": "conversations.replies",
+      "payload": {
+        "channel": "CDEMO",
+        "cursor": "fixture-page-2",
+        "limit": 2,
+        "ts": "1700000000.000001"
+      },
+      "response": {
+        "messages": [
+          {
+            "permalink": "https://fixture.slack.com/archives/CDEMO/p1700000020000003?thread_ts=1700000000.000001&cid=CDEMO",
+            "subtype": "thread_broadcast",
+            "text": "FICTION: review requested",
+            "thread_ts": "1700000000.000001",
+            "ts": "1700000020.000003"
+          }
+        ],
+        "ok": true,
+        "response_metadata": {
+          "next_cursor": ""
+        }
+      }
+    }
+  ],
+  "schema": "commons.slack-context-capture.v1",
+  "selected_message": {
+    "permalink": "https://fixture.slack.com/archives/CDEMO/p1700000020000003?thread_ts=1700000000.000001&cid=CDEMO",
+    "subtype": "thread_broadcast",
+    "text": "FICTION: review requested",
+    "ts": "1700000020.000003"
+  }
+}
