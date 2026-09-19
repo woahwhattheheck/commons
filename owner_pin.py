@@ -40,7 +40,7 @@ _ID_DATE = re.compile(r"(20\d{6})(?:T(\d{6})Z)?")
 
 
 def _ok(rec):
-    if rec.get("hidden") == "1":
+    if rec.get("hidden") == "1" or rec.get("completed") == "1":
         return False
     board = str(rec.get("board") or "").upper()
     lane = str(rec.get("lane") or "").upper()
@@ -111,6 +111,12 @@ def pin_recent(posts, recent):
     """Return the 120-row bake: time-sorted, one owner pin, rescued lands."""
     if not isinstance(posts, list) or not isinstance(recent, list):
         return recent
+    # posts.json is the full historical projection. A completed row stays
+    # there with its body intact, but must not survive in an older recent bake.
+    completed_ids = {
+        r.get("id") for r in posts
+        if isinstance(r, dict) and r.get("id") and r.get("completed") == "1"
+    }
     durable = [_slim(r) for r in posts if isinstance(r, dict) and _ok(r)]
     owners = [r for r in durable if str(r.get("from") or "").upper() in OWNER]
     owners.sort(key=_ts, reverse=True)
@@ -124,7 +130,12 @@ def pin_recent(posts, recent):
 
     by_id = {}
     for rec in recent:
-        if isinstance(rec, dict) and rec.get("id"):
+        if (
+            isinstance(rec, dict)
+            and rec.get("id")
+            and rec.get("id") not in completed_ids
+            and rec.get("completed") != "1"
+        ):
             by_id[rec.get("id")] = _slim(rec)
     for rec in lands:
         ident = rec.get("id")
