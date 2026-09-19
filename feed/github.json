@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 189,
-    "open_pull_requests": 145,
-    "runs_in_progress": 11,
-    "runs_queued": 1167
+    "open_pull_requests": 152,
+    "runs_in_progress": 17,
+    "runs_queued": 1189
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,101 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "work/uiowa107-walkthrough-astra-rivet-20260919",
+      "created_at": "2026-09-19T15:35:30Z",
+      "draft": false,
+      "head_sha": "a09a574ba74d9a268fe4aab7fb3fb4468f0ca084",
+      "number": 16404,
+      "title": "UIOWA-107: worked preparation choices and six-case operator walkthrough",
+      "updated_at": "2026-09-19T15:35:30Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-kestrel73/delivery-binding-audit-20260919",
+      "created_at": "2026-09-19T15:34:25Z",
+      "draft": false,
+      "head_sha": "b0663d23790e78f044cb1a4f350f983512960432",
+      "number": 16403,
+      "title": "Retain independent delivery binding and evidence-order audit after #15942",
+      "updated_at": "2026-09-19T15:34:45Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "quartz-c17/uiowa-actual-compiler-rehearsal-20260919",
+      "created_at": "2026-09-19T15:33:24Z",
+      "draft": false,
+      "head_sha": "c10438119ab0d3619eabe4ee0375796d74ddaee9",
+      "number": 16402,
+      "title": "UIOWA: runnable actual-compiler to recipient transport delivery",
+      "updated_at": "2026-09-19T15:33:24Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-kestrel62d-uiowa029-20260919",
+      "created_at": "2026-09-19T15:33:05Z",
+      "draft": false,
+      "head_sha": "f19b0074be03409abed2d384bd2587c6d2e88da4",
+      "number": 16401,
+      "title": "UIOWA-029: integrate horizon method, repair uncertainty states, and add editable-input workflow",
+      "updated_at": "2026-09-19T15:33:05Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "work/uiowa107-astra-rivet-20260919",
+      "created_at": "2026-09-19T15:33:00Z",
+      "draft": false,
+      "head_sha": "f85af6742cb155326cdf76a9caae491d10264593",
+      "number": 16400,
+      "title": "UIOWA-107: finite quantities and six-case deadline preparation rehearsal",
+      "updated_at": "2026-09-19T15:33:00Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "zz-ibis93c-handoff-duplicates-20260919",
+      "branch": "zz-heliotrope-k3q7-handoff-reader-20260919",
+      "created_at": "2026-09-19T15:32:55Z",
+      "draft": false,
+      "head_sha": "1d03cc0c89778c81f7976ec274a04836066ff25d",
+      "number": 16399,
+      "title": "feat(uiowa): portable multi-draft review reader with real-parent and browser tests",
+      "updated_at": "2026-09-19T15:32:55Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-astra-relay/uiowa093b-operator-guide-20260919",
+      "created_at": "2026-09-19T15:31:04Z",
+      "draft": false,
+      "head_sha": "5559bb173e2d0a900998d9a1de3838e26cb86dad",
+      "number": 16398,
+      "title": "UIOWA-093B: publish the executed ten-lane operator guide",
+      "updated_at": "2026-09-19T15:31:04Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/uiowa047-evidence-kestrelr9c4-20260919",
+      "created_at": "2026-09-19T15:30:21Z",
+      "draft": false,
+      "head_sha": "650d258693f0d479bf17d12fc0eb2abb31631dd8",
+      "number": 16397,
+      "title": "UIOWA-047: preserve assessment-time and unknown coverage semantics",
+      "updated_at": "2026-09-19T15:30:21Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "swarm/zz-harborglass23r-register-bridge-20260919",
       "created_at": "2026-09-19T15:29:26Z",
       "draft": false,
-      "head_sha": "a7c480bbc9f6af6ead4faceed995ba2cf8ed7f39",
+      "head_sha": "f559a1fa0f96ef7ef70b0ce2e9f618057ed3f16b",
       "number": 16395,
       "title": "Recover UIOWA-023/031 strict, lossless register transport and native-table bridge",
-      "updated_at": "2026-09-19T15:29:26Z"
+      "updated_at": "2026-09-19T15:34:20Z"
     },
     {
       "author": "woahwhattheheck",
@@ -87,94 +175,6 @@
       "number": 16394,
       "title": "UIOWA-015: source-scoped peer delivery pack, UC recovery and 53-test replay",
       "updated_at": "2026-09-19T15:28:12Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-quartz-4e72/uiowa042-delivery-20260919",
-      "created_at": "2026-09-19T15:27:53Z",
-      "draft": false,
-      "head_sha": "3d017ec2025ab33bb86b0fb1fbc1230f5f03fcac",
-      "number": 16392,
-      "title": "UIOWA-042: complete traceability kit and repair revision/lineage closure",
-      "updated_at": "2026-09-19T15:27:53Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zz/sextant47-sample-soundness-20260919",
-      "branch": "zz/keyframe9d7e-soundness-contract-20260919",
-      "created_at": "2026-09-19T15:27:27Z",
-      "draft": false,
-      "head_sha": "437880981178aa3360797a9e3aee3c3826692d5f",
-      "number": 16391,
-      "title": "Compose sample-soundness input validation with SEXTANT's reviewed method",
-      "updated_at": "2026-09-19T15:27:27Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "swarm/zz-quartz-m7r4-completion-history-20260919",
-      "branch": "swarmzz/completion-thin-board-thalweg62f9-20260919",
-      "created_at": "2026-09-19T15:26:31Z",
-      "draft": false,
-      "head_sha": "722d683289e868567f4b49063bc1ad5f596b2e81",
-      "number": 16389,
-      "title": "board: prevent standalone thin renderer from resurrecting completed work",
-      "updated_at": "2026-09-19T15:26:31Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/zz-kestrel47-uiowa071-main-20260919",
-      "created_at": "2026-09-19T15:25:17Z",
-      "draft": false,
-      "head_sha": "d88a429bb86eb96536b885a787dc2ae43863458e",
-      "number": 16387,
-      "title": "UIOWA-071: integrate AI-use inventory with package-safe imports and composition tests",
-      "updated_at": "2026-09-19T15:25:17Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "swarm-zz/slack-thread-root-context-sundial64",
-      "branch": "zz-chert6b21/slack-root-observation-donor-20260919",
-      "created_at": "2026-09-19T15:24:05Z",
-      "draft": false,
-      "head_sha": "df2eca854164d6e6f4706838eeec3d57b85132c7",
-      "number": 16385,
-      "title": "fix(command-center): retain all observed Slack root evidence (#16326 donor)",
-      "updated_at": "2026-09-19T15:24:05Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "codex/zz-lattice-framer-source-generation",
-      "created_at": "2026-09-19T15:23:09Z",
-      "draft": true,
-      "head_sha": "27449dfa4a3dd022348feea1d350fd0f52739c57",
-      "number": 16383,
-      "title": "Align Framer runtime with recovered sources without upgrading qualification or budget",
-      "updated_at": "2026-09-19T15:23:09Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zsol/partner-shortlist-budget-recovery-20260917",
-      "branch": "zz/osprey-r2-shortlist-empty-requirements-20260919",
-      "created_at": "2026-09-19T15:22:56Z",
-      "draft": false,
-      "head_sha": "87d36e128a9923402353e3ef35f06a84b9e9cce9",
-      "number": 16382,
-      "title": "fix(shortlist): empty-requirement repair donor for #15699",
-      "updated_at": "2026-09-19T15:22:56Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-kestrel-paper6c42/uiowa136-render-review-20260919",
-      "created_at": "2026-09-19T15:21:05Z",
-      "draft": false,
-      "head_sha": "335ee98857748dfc4f42b792c9e9ea68b8015c48",
-      "number": 16379,
-      "title": "UIOWA-136: exact rendered-page review and independent navigation replay",
-      "updated_at": "2026-09-19T15:27:59Z"
     }
   ],
   "open_heads": {
@@ -227,7 +227,7 @@
     "16012": "a08d73c13394cf6f1719befdb168065ec94381c8",
     "16015": "5c4e04aeccb9a02035cf0775750669180dde5521",
     "16047": "e5f30b4978379740e7631c4e33fd849878ff53e6",
-    "16070": "e932d0b41af5ce74522c83681d7fe9ee109775d7",
+    "16070": "345ab503e4dfd460b15350bd0a34fe34a1221b9d",
     "16073": "253fcfa5935b08b0f63b14d7120fbbbf096ec62d",
     "16081": "7d5f250e6fac05b5d3e3a39022260e10f3329c82",
     "16134": "0d788098b9da196cab9efe387707672a86622516",
@@ -270,9 +270,8 @@
     "16283": "4b2f40bdff508b590615182f7f826c813e51d64a",
     "16287": "df6d0058feb8d49895dd9b6b250db679792178f9",
     "16289": "fad7e3dbbc61dc4f110395c408c8a9fe1c0629ad",
-    "16290": "0973e6893c4bcf4cdd17fad096eea5d82d29d663",
+    "16290": "7084d13f4231113a8a69ab35108c7802e84d315f",
     "16291": "598c7b3e4b012625a9309e14126acbeb541601d1",
-    "16297": "4691a9720686a6f30a9c689df761fa4579418621",
     "16298": "7f61f32b8f1737db8ae143b15fcea43b0b14a509",
     "16300": "128606cf7042f391fc67f6f4c89360febc9aa54d",
     "16301": "4da53363a20ba1d92caacc8601a022b12bb5fdfc",
@@ -288,7 +287,7 @@
     "16324": "895f0bff9f569268f628e08a7a2bcb0f1b5b3bfd",
     "16325": "f693abe5578f6ed9e56634fbae5eafcc631b0d31",
     "16326": "5406ef6ca6c75eccf18434a0b809069911326e3f",
-    "16327": "fefde600866ed34492aee8c7bba64a2eaecdea4c",
+    "16327": "292c2d7d4ff1ee15b98bb739e3362e18e10fe85b",
     "16328": "410a5faa6983bfa3ada485b5617b0e80007129da",
     "16329": "75b791dbc19e809c0273e7624defb54e2c833078",
     "16330": "e450d92a0e14fbddae91129d9747ee8aab509973",
@@ -316,18 +315,48 @@
     "16379": "335ee98857748dfc4f42b792c9e9ea68b8015c48",
     "16382": "87d36e128a9923402353e3ef35f06a84b9e9cce9",
     "16383": "27449dfa4a3dd022348feea1d350fd0f52739c57",
-    "16385": "df2eca854164d6e6f4706838eeec3d57b85132c7",
+    "16385": "a57b60cbae9ae937d860a90bbf3d7ff5c293ae85",
     "16387": "d88a429bb86eb96536b885a787dc2ae43863458e",
     "16389": "722d683289e868567f4b49063bc1ad5f596b2e81",
     "16391": "437880981178aa3360797a9e3aee3c3826692d5f",
     "16392": "3d017ec2025ab33bb86b0fb1fbc1230f5f03fcac",
     "16394": "93f5df0a8d00bc7e2b010ea7f95f0a45f47754f6",
-    "16395": "a7c480bbc9f6af6ead4faceed995ba2cf8ed7f39"
+    "16395": "f559a1fa0f96ef7ef70b0ce2e9f618057ed3f16b",
+    "16397": "650d258693f0d479bf17d12fc0eb2abb31631dd8",
+    "16398": "5559bb173e2d0a900998d9a1de3838e26cb86dad",
+    "16399": "1d03cc0c89778c81f7976ec274a04836066ff25d",
+    "16400": "f85af6742cb155326cdf76a9caae491d10264593",
+    "16401": "f19b0074be03409abed2d384bd2587c6d2e88da4",
+    "16402": "c10438119ab0d3619eabe4ee0375796d74ddaee9",
+    "16403": "b0663d23790e78f044cb1a4f350f983512960432",
+    "16404": "a09a574ba74d9a268fe4aab7fb3fb4468f0ca084"
   },
-  "pulls_listed": 145,
+  "pulls_listed": 152,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 106.1,
+  "queue_depth_per_runner": 69.9,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz/traceforge-uiowa015-research-20260919",
+      "closed_at": "2026-09-19T15:31:41Z",
+      "head_sha": "3265c69641f60efff05d2240a3b56b0161231008",
+      "merged_at": "2026-09-19T15:31:41Z",
+      "number": 16396,
+      "state": "MERGED",
+      "title": "UIOWA-015: integrate complete peer research and facilitator walkthrough (docs only)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/async14-browser-review-20260919",
+      "closed_at": "2026-09-19T15:29:59Z",
+      "head_sha": "4691a9720686a6f30a9c689df761fa4579418621",
+      "merged_at": "2026-09-19T15:29:59Z",
+      "number": 16297,
+      "state": "MERGED",
+      "title": "test(uiowa): recover browser timing review and saved-draft UTF-8 repair evidence"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -470,32 +499,10 @@
       "number": 16369,
       "state": "MERGED",
       "title": "UIOWA-035: integrate editable matrix, lossless exports and strict input handling"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa100-retained-review-kestrel-q9f2",
-      "closed_at": "2026-09-19T15:16:30Z",
-      "head_sha": "5888bcf68f67361b393e412a2bb1930df3dfbc93",
-      "merged_at": "2026-09-19T15:16:30Z",
-      "number": 16372,
-      "state": "MERGED",
-      "title": "UIOWA-100: recover independent integrity regressions and exact replay donor"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "swarm-zz/uiowa124-faraday-k9vx",
-      "branch": "swarm-zz/uiowa124-duplicate-diagnostics-keystone-k4j9",
-      "closed_at": "2026-09-19T15:15:50Z",
-      "head_sha": "718358e4d709a6a3b2eefb467d931e271331ffed",
-      "merged_at": "2026-09-19T15:15:50Z",
-      "number": 16364,
-      "state": "MERGED",
-      "title": "fix(uiowa124): retain native duplicate validation diagnostics"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T15:29:43Z",
+  "unchanged_since": "2026-09-19T15:35:33Z",
   "undatable_pulls": []
 }
