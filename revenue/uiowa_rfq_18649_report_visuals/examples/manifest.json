@@ -1,0 +1,79 @@
+{
+  "disclaimer": "SYNTHETIC EXAMPLE - fictional groups and fictional evidence. Not a University of Iowa finding.",
+  "files": [
+    {
+      "name": "contrast-audit.txt",
+      "sha256": "185bff0b2e954971b1d7fb6f01b27945fb8c1f500283bb50ac4d9f00a254e722"
+    },
+    {
+      "name": "cross-group.print.svg",
+      "sha256": "d006741f707563e026f5d27d4baef8cfe7a843dc74c65d58888f1d9a902727d6"
+    },
+    {
+      "name": "cross-group.screen.svg",
+      "sha256": "c0ff2339ecc8e5995611307be3ff568f86146236d3e5ac3a6625af181da829b3"
+    },
+    {
+      "name": "evidence-coverage-table.md",
+      "sha256": "19cfe6b1b176eebf896ff744023efa4f62333480f1dd2ad617c4bd146dc687dd"
+    },
+    {
+      "name": "evidence-coverage.print.svg",
+      "sha256": "8c1368590b529955dcdabc5f59d47f574c8b3cd7c686c6441078a342aef3ee86"
+    },
+    {
+      "name": "evidence-coverage.screen.svg",
+      "sha256": "1f97befd40644304e13a16f50901225cdff5f9b20757a2663d28fb7855b8209b"
+    },
+    {
+      "name": "matrix-table.md",
+      "sha256": "243c4d7f2dda920a4276432ffef1f70a43164541dd849dd39a4fbb1cc14de875"
+    },
+    {
+      "name": "matrix.print.svg",
+      "sha256": "c21cec08ce0e35b02268917ce74e348e0f2047cd31820966c6485f2db0e6c708"
+    },
+    {
+      "name": "matrix.screen.svg",
+      "sha256": "39b3057ba6fa94aacf4e193c0163c69da2928e3d0644e9ccce42c82d5d48b994"
+    },
+    {
+      "name": "roadmap-table.md",
+      "sha256": "18b568b0372186374719e6b0c04e0397aea0c796e04fe50a40007b6a4efdea39"
+    },
+    {
+      "name": "roadmap.print.svg",
+      "sha256": "5ef627e063b75e060297704cf8fee37a609938b3f146379937dd8eb804606a36"
+    },
+    {
+      "name": "roadmap.screen.svg",
+      "sha256": "1f523a4969e6c44890551e9436f5943cd45c067ecda71e66da95cd7421fe72bb"
+    },
+    {
+      "name": "text-alternatives.md",
+      "sha256": "dcdc06165f0f05de1263b73add43c0adfa9c96aca0e6544f9fe8cc888d0680ae"
+    }
+  ],
+  "note": "Deterministic output. Same input plus same command yields identical bytes.",
+  "source_title": "Example Assessment (synthetic)",
+  "themes": [
+    "print",
+    "screen"
+  ],
+  "totals": {
+    "band_counts": {
+      "DEVELOPING": 2,
+      "ESTABLISHED": 4,
+      "GAP": 1,
+      "INSUFFICIENT_EVIDENCE": 2,
+      "STRENGTH": 1,
+      "UNASSESSED": 2
+    },
+    "cells_expected": 12,
+    "cells_missing": 0,
+    "cells_supplied": 12,
+    "insufficient_evidence": 2,
+    "not_assessed": 2,
+    "rated": 8
+  }
+}
