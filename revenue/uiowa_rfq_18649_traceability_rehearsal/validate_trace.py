@@ -100,14 +100,16 @@ def _reports(root, statement_ids, issues):
                 for number, raw in enumerate(stream, 1):
                     lines += 1
                     if fence:
-                        stripped = raw.strip()
-                        if (stripped.startswith(fence[0] * len(fence))
-                                and not stripped.strip(fence[0])):
+                        # Leading indentation is syntax, not disposable space.
+                        # A tab/four-space false closer must remain code content.
+                        closer = re.fullmatch(r" {0,3}(`{3,}|~{3,})[ \t]*", raw.rstrip("\r\n"))
+                        if (closer and closer.group(1)[0] == fence[0]
+                                and len(closer.group(1)) >= len(fence)):
                             fence = ""
                         continue
                     text, inside_comment = _uncomment(raw, inside_comment)
                     stripped = text.strip()
-                    fenced = re.match(r"^\s{0,3}(`{3,}|~{3,})", text)
+                    fenced = re.match(r"^ {0,3}(`{3,}|~{3,})", text)
                     if fenced:
                         active, fence = None, fenced.group(1)
                         continue
