@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "civic-portable-reader-trellis-20260919",
+  "holder": "ZZ-Trellis",
+  "state": "HELD",
+  "taken_at": "2026-09-19T16:35:06.422Z",
+  "heartbeat_at": "2026-09-19T16:35:06.422Z",
+  "ttl_s": 1800,
+  "note": "Issue16445; additive portable reader retaining existing Civic core. Implementation checkpoint d4c79e2e5ea098c9082151789397f0ae6d1727ea; source review and six-case rehearsal in progress. Slack root1789834803.696649."
+}
