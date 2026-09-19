@@ -36,6 +36,36 @@ class ImpactTests(unittest.TestCase):
     def node(self, nid, report=None):
         return next(x for x in (report or self.report())["artifacts"] if x["artifact_id"] == nid)
 
+    def test_scope_binding_required_for_complete_dependency_interpretation(self):
+        del self.g["scope"]
+        report = self.report()
+        self.assertIn("unbound_dependency_scope", [d["code"] for d in report["diagnostics"]])
+        self.assertTrue(all(a["mapping_incomplete"] for a in report["artifacts"]))
+
+    def test_wrong_graph_scope_refused(self):
+        self.g["scope"]["purpose"] = "another engagement"
+        with self.assertRaisesRegex(m.InputError, "dependency scope"):
+            self.report()
+
+    def test_text_preview_and_truncation_explicit(self):
+        change = self.row("POLICY")["text_change"]
+        self.assertIn("urgent exceptions", change["after_preview"])
+        self.assertFalse(change["truncated"])
+        self.b["sources"][0]["text"] = "a" * 3000
+        change = self.row("POLICY")["text_change"]
+        self.assertTrue(change["truncated"])
+        self.assertEqual(len(change["after_preview"]), 2048)
+
+    def test_digest_change_does_not_invent_text_preview(self):
+        self.assertIsNone(self.row("DIGEST")["text_change"])
+
+    def test_frozen_inputs_and_receipts_match_generator(self):
+        for filename, generated in zip(("before.json", "after.json", "dependencies.json"), (self.a, self.b, self.g)):
+            self.assertEqual(m.load_json(HERE / "fixtures" / filename), generated)
+        receipt = m.load_json(HERE / "examples" / "receipt.json")
+        self.assertEqual(m.digest(self.report()), receipt["synthetic"]["report_sha256"])
+        self.assertEqual(m.render_markdown(self.report()), (HERE / "examples" / "report.md").read_text(encoding="utf-8"))
+
     def test_all_eight_classifications(self):
         self.assertEqual(self.report()["counts"], {"text_changed": 1, "metadata_only": 1,
             "comparison_unavailable": 1, "unchanged": 1, "removed": 1, "added": 1,

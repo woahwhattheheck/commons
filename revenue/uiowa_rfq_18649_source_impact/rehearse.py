@@ -48,7 +48,7 @@ def synthetic_case():
     rows["RATING"]["interpretation"]["claim"] = "Synthetic analyst narrowed the claim; source did not change."
     rows["DIGEST"]["content"]["sha256"] = "b" * 64
     after["sources"] = [s for s in after["sources"] if s["id"] != "RETIRED"] + [source("NEW", "Synthetic newly inventoried source.\n")]
-    graph = {"schema": impact.GRAPH, "namespace": before["namespace"], "coverage": "complete",
+    graph = {"schema": impact.GRAPH, "namespace": before["namespace"], "coverage": "complete", "scope": copy.deepcopy(before["scope"]),
              "provenance": {"synthetic": True, "notice": "Complete only for this explicitly fictional dependency set."},
              "artifacts": [artifact("worksheet", "worksheet", [{"source_id": "POLICY"}, {"source_id": "INTERVIEW"}]),
                            artifact("mapping", "mapping", [{"artifact_id": "worksheet"}, {"source_id": "CATALOG"}]),
@@ -75,7 +75,7 @@ def authority_case(path=AUTHORITY):
     rows["ESS-SW-01"]["content"]["sha256"] = hashlib.sha256(b"fictional replacement bytes").hexdigest()
     rows["RIS-SEC-01"]["metadata"]["source_ref"] += "#corrected-locator"
     rows["IAM-DEP-01"]["interpretation"]["claim"] += " Synthetic analyst clarification."
-    graph = {"schema": impact.GRAPH, "namespace": before["namespace"], "coverage": "partial",
+    graph = {"schema": impact.GRAPH, "namespace": before["namespace"], "coverage": "partial", "scope": copy.deepcopy(before["scope"]),
              "provenance": {"synthetic": True, "notice": "Illustrative review links, not a survey of all existing artifact dependencies."},
              "artifacts": [artifact("authority-worksheet", "worksheet", [{"source_id": "ESS-SW-01"}, {"source_id": "RIS-SEC-01"}]),
                            artifact("authority-mapping", "mapping", [{"artifact_id": "authority-worksheet"}, {"source_id": "IAM-DEP-01"}]),

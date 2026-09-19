@@ -149,7 +149,7 @@ def compare_source(sid, before, after, before_complete, after_complete):
            "after_revision": after["revision"] if after else None,
            "before_fingerprint": fingerprint(before) if before else None,
            "after_fingerprint": fingerprint(after) if after else None,
-           "metadata_changes": {}, "interpretation_changes": {}, "revision_changed": False, "text_comparison": "unavailable"}
+           "metadata_changes": {}, "interpretation_changes": {}, "revision_changed": False, "text_comparison": "unavailable", "text_change": None}
     if before is None or after is None:
         established = before_complete if before is None else after_complete
         row["change_type"] = ("added" if before is None else "removed") if established else "comparison_unavailable"
@@ -168,6 +168,10 @@ def compare_source(sid, before, after, before_complete, after_complete):
         both_text = before.get("text") is not None and after.get("text") is not None
         equal = a["sha256"] == b["sha256"]
         row["text_comparison"] = ("equal" if equal else "different") if both_text else "unavailable"
+        if not equal and both_text:
+            row["text_change"] = {"before_preview": before["text"][:2048], "after_preview": after["text"][:2048],
+                                  "truncated": len(before["text"]) > 2048 or len(after["text"]) > 2048,
+                                  "limit_characters_per_side": 2048}
         if not equal:
             row["change_type"] = "text_changed" if both_text else "content_changed"
             row["reason"] = "Exact UTF-8 text differs." if both_text else "Comparable declared content digests differ; source text was not inspected."
@@ -184,7 +188,7 @@ def compare_source(sid, before, after, before_complete, after_complete):
 
 
 def validate_graph(graph, namespace):
-    _fields(graph, {"schema", "namespace", "coverage", "artifacts"}, {"provenance"}, "dependencies")
+    _fields(graph, {"schema", "namespace", "coverage", "artifacts"}, {"provenance", "scope"}, "dependencies")
     _require(graph["schema"] == GRAPH, "unsupported dependency schema")
     _require(graph["namespace"] == namespace, "dependency namespace mismatch")
     _require(graph["coverage"] in ("complete", "partial"), "dependency coverage must be complete or partial")
@@ -244,11 +248,16 @@ def analyze(before, after, graph):
     _require(canonical(before["scope"]) == canonical(after["scope"]), "source scope mismatch")
     _require(_time(after["captured_at"]) >= _time(before["captured_at"]), "snapshots are in reverse chronological order")
     nodes = validate_graph(graph, before["namespace"])
+    if "scope" in graph:
+        _require(canonical(graph["scope"]) == canonical(before["scope"]), "dependency scope mismatch")
     changes = [compare_source(s, old.get(s), new.get(s), before["coverage"] == "complete",
                               after["coverage"] == "complete") for s in sorted(set(old) | set(new))]
     change_map = {r["source_id"]: r for r in changes}
     source_users, dependents, diagnostics = defaultdict(list), defaultdict(list), []
     bad_nodes = set()
+    if "scope" not in graph:
+        diagnostics.append({"code": "unbound_dependency_scope", "detail": "Bind dependencies to the manifest scope before relying on the queue."})
+        bad_nodes.update(nodes)
     for nid, node in sorted(nodes.items()):
         for ref in node["depends_on"]:
             if "source_id" in ref:
@@ -359,8 +368,8 @@ def render_markdown(report):
         lines.append("| " + " | ".join(map(_cell, (r["artifact_id"], r["kind"], r["action"], ", ".join(c["source_id"] for c in r["causes"])))) + " |")
     lines += ["", "## Exact field changes and dependency witnesses", ""]
     for r in report["source_changes"]:
-        if r["metadata_changes"] or r["interpretation_changes"] or r["revision_changed"]:
-            lines += [f"### {_cell(r['source_id'])}", "", "    " + canonical({k: r[k] for k in ("metadata_changes", "interpretation_changes", "before_revision", "after_revision", "revision_changed")}), ""]
+        if r["metadata_changes"] or r["interpretation_changes"] or r["revision_changed"] or r["text_change"]:
+            lines += [f"### {_cell(r['source_id'])}", "", "    " + canonical({k: r[k] for k in ("metadata_changes", "interpretation_changes", "before_revision", "after_revision", "revision_changed", "text_change")}), ""]
     for r in report["artifacts"]:
         for cause in r["causes"]:
             lines.append("- " + _cell(" → ".join(cause["path"])) + " (" + cause["change_type"] + ")")
