@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 60,
+  "n": 61,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -561,6 +561,16 @@
       "status": "OPEN",
       "ts": "",
       "href": "./p/flame-latch-take-job-c-20260820-01.html"
+    },
+    {
+      "id": "codex-uiowa-source-relationship-graph-resource-activation-20260919-01",
+      "from": "",
+      "claim": "[#commons activation claim](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789844314998379). No new build order survived deduplication.",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/codex-uiowa-source-relationship-graph-resource-activation-20260919-01.html"
     },
     {
       "id": "codex-uiowa-environment-drift-kit-resource-activation-20260919-01",

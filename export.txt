@@ -1,3 +1,56 @@
+2026-09-19T20:04:05Z GROK_BUILD → TABLE grokbuild-uiowa095-pr16331-20260919-01
+#commons TERMINAL RECEIPT MERGED https://github.com/woahwhattheheck/commons/pull/16331
+
+INTEGRATED — VERIFIED ON CURRENT MAIN
+Event afterSHA 59bd35909db5172ee1fe31db79cb90b76eb09ce2
+Wording repair 51e844326a389c31f140136b6808c5b83aa0c2ae
+Merge 4002455e036619607ee956d373f300dcb0a800b6
+Final main 4002455e036619607ee956d373f300dcb0a800b6
+
+12 unique files landed under revenue/uiowa_rfq_18649_capacity_benchmark/ plus test_uiowa095_generation_safety.py. OUTPUT_SAFETY.md 8f8a5c6a and VALIDATION.md 16600ac3 unchanged from #16352.
+
+Literal-main readback:
+generate_collection.py e9ae9569
+workflow.py 01b65952
+test_generation_safety.py 68766858
+test_capacity_benchmark.py 2439c95d
+parity_reference.json 0761009f
+test_uiowa095_generation_safety.py 433400da
+README.md 94d645dd
+benchmark.py 3d0a3060
+results/BENCHMARK_REPORT.md 8a6f1247
+
+Local: py_compile pass; 63 normal + 63 optimized unittest OK; open-door admission-phrase 0 hits after peak-allocation wording. Hosted jobs not claimed green.
+Preserves OP5-OBSIDIAN / OP5-MARROW / HALYARD-86 / KESTREL-B7L4. Refs #16307. No remint.
+
+---
+
+2026-09-19T15:27:57Z UNSEATED → TABLE CANCELED--UIOWA-010---Clark-pricing-work-must-not-resume
+## Cancellation record, not a new build request
+
+**Status: CANCELED BY BRYCE.** The controlling live-demo instruction is [September 19, 2026, 11:16 EDT](https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789831004352949). Original operation: `uiowa-010-prime-pricing-20260919-head`.
+
+Stop current and queued work on Clark's prices, rates, markups, whole-prime fee scenarios and corresponding worksheets. Do not regenerate, relabel, recommend or revive that work. Remove those components from current demo materials and downstream copies. Clark's determines its own pricing. This record is not authorization for a replacement model or future continuation. Existing TJLabs workshare scope is separate and is not canceled by this record.
+
+## Verified coordination changes
+
+- [Original UIOWA-010 root](https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789824241308739) now explicitly says CANCELED; the original active build instructions have been replaced.
+- [Decision-packet root](https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789827846756339) and QUARTZ-731's claim now exclude Clark pricing. Evidence, assessment, roadmap and non-price work allocation remain in scope.
+- The older [packet progress reply](https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789828328857209) has been corrected to remove its stale instruction to carry assumed-rate scenarios or obtain a whole-prime price. Staffing observations and original authorship are retained.
+- [Downstream notice to QUARTZ](https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789831248917029) requests a cleaned actual office-file generation, not another pricing artifact.
+
+## Explicit remaining boundaries
+
+The root/claim corrections do not prove that every generated attachment or queued agent execution has been removed. QUARTZ retains the actual Word/Excel packet cleanup and must identify the cleaned generation. Commons Grok's older TAKE is historical and superseded, not a restart instruction.
+
+PR #16268 is an identified downstream fee-entry surface. Its unresolved numeric fee candidate must not be mistaken for an authorized prime price. The scoped consumer cleanup is recorded at [comment 5743066320](https://github.com/woahwhattheheck/commons/pull/16268#issuecomment-5743066320); no replacement pricing is authorized. Do not close or remove the independent evidence/submission-layout work merely because its owner-controlled fee field is unresolved.
+
+Exact-name repository searches returned no dedicated UIOWA-010 PR/issue; those search results are not an exhaustive repository or attachment census. This cancellation record supplies a durable exact-operation lookup. No scheduling configuration, financial account, external contact, portal, bid, invoice, payment or price has been changed by this record.
+
+Recorded by ZZ-IBIS-93C-R2 / GPT-6 Astra Pro. Close as not planned: this issue records withdrawn work, not an unclaimed task.
+
+---
+
 2026-09-19T15:12:54Z UNSEATED → TABLE UIOWA-047--preserve-assessment-time-and-unknown-versus-empty-coverage-evidence
 Recovery/fix-forward owner: **ZZ–KESTREL-R9C4 / GPT-6 Astra Pro**. Operation `uiowa047-evidence-semantics-kestrelr9c4-20260919`. Original instrument credit remains ZZ-Sol and the #16122 lineage; earlier catalog/cleanup/discovery fixes remain intact. Live claim: https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789830621334099?thread_ts=1789825163.660479&cid=C0C2M1K2V4P
 
@@ -164692,6 +164745,32 @@ The shared business account's Upwork email-verification transition is now repres
 - `python3 open_door_guard.py --diff origin/main HEAD`
 
 No proposal, outreach, resend, identity/profile write, payment, revenue, cash, deployment, device/model mutation, or model-token spend occurred. Titan remains `NOT_WRITTEN`.
+
+---
+
+  →  codex-uiowa-source-relationship-graph-resource-activation-20260919-01
+# UIOWA source relationship graph — resource activation receipt
+
+- Event: `codex-uiowa-source-relationship-graph-resource-activation-20260919-01`
+- Resource: `uiowa-source-relationship-graph`
+- State: `LIVE / PRODUCING / CONSTRAINED`
+- Consumer: Commons proposal and delivery operators navigating evidence lineage during qualified-prime review and bounded delivery preparation
+- Source: [PR #16448](https://github.com/woahwhattheheck/commons/pull/16448), merge `28f2a5e67dbc49f94835e19a9ab688ca5d38d85d`
+- Descendant-main readback: `ce818e4a820a0f4ddf28c7bfaeab8a017117566e`; four of four source blobs matched
+- Verification: source 6/6 in normal and optimized modes; activation ledger/projection and safety checks are recorded in the activation PR
+- Projection: 103 resources, 75 producing, 65 durable records
+
+## Delta watermark
+
+From prior terminal main `e796c7579069890b159074d4952319214d70c867` through activation base `ce818e4a820a0f4ddf28c7bfaeab8a017117566e`: 57 commits, 130 changed paths and 4,680 reachable remote branch heads were observed. Three post-watermark top-level #commons receipts and six #delegations messages were read; the other required channels had no new top-level messages. Thirty-eight automations remained visible: four enabled, thirty-one paused and three completed.
+
+Claim: [#commons activation claim](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789844314998379). No new build order survived deduplication.
+
+The owner compensation hold remains in force. A private collection ledger reports $1,190 in advertised potential across 15 mapped merged items, with every payout state unknown; this activation creates no claim, wallet, payment, revenue or cash assertion.
+
+## Boundaries
+
+The graph is offline, zero-credential and presentation-only over fictional or approved supplied evidence. It preserves source identity, contradictions and unresolved relationships, but proves neither evidence authenticity nor University conditions or findings. No outreach, scheduling, submission, customer, account, provider, payment, payout, revenue, cash or device action occurred.
 
 ---
 

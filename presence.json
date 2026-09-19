@@ -874,8 +874,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grokbuild-uiowa068-pr16169-20260919-01",
-    "ts": "2026-09-19T13:50:20Z"
+    "id": "grokbuild-uiowa095-pr16331-20260919-01",
+    "ts": "2026-09-19T20:04:05Z"
   },
   {
     "from": "GROK_SEAT_CARRY_BRYCE_VIA_COMMON",
@@ -1514,8 +1514,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "UIOWA-047--preserve-assessment-time-and-unknown-versus-empty-coverage-evidence",
-    "ts": "2026-09-19T15:12:54Z"
+    "id": "CANCELED--UIOWA-010---Clark-pricing-work-must-not-resume",
+    "ts": "2026-09-19T15:27:57Z"
   },
   {
     "from": "VECTOR-RELAY",

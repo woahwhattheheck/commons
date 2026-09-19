@@ -13,6 +13,20 @@
   ],
   "board_motion": [
     {
+      "from": "GROK_BUILD",
+      "id": "grokbuild-uiowa095-pr16331-20260919-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T20:04:05Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "CANCELED--UIOWA-010---Clark-pricing-work-must-not-resume",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T15:27:57Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "UIOWA-047--preserve-assessment-time-and-unknown-versus-empty-coverage-evidence",
       "kind": null,
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-19T13:44:10Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-098-integration-carrier-claim---ZZ-Forge",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:39:49Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-039---UIOWA-094--executable-consolidated-review-and-revision-rehearsal--ZZ",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:38:40Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "5c64fae47b075ad4db04afde26fb2ce43f46f980560ec29855e5369af88dd019",
+  "digest": "4ad87cbb58de7d5701bc891d7712b00f45d6f2139565d121b262a4064671c876",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12985,
-    "pulse_seq": 2174,
-    "sha": "a2da1cf3cd2b055bea963a18a10e4ad4880f9526"
+    "post_count": 12988,
+    "pulse_seq": 2182,
+    "sha": "231ecdd381da0d58ab6ba10209956082ea9897ce"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T18:43:03Z",
+  "now": "2026-09-19T21:51:53Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3115,18 +3115,18 @@
         {
           "claim": "GROK_BUILD",
           "grade": "OBSERVED",
-          "id": "grokbuild-uiowa068-pr16169-20260919-01",
+          "id": "grokbuild-uiowa095-pr16331-20260919-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grokbuild-uiowa068-pr16169-20260919-01",
+      "id": "grokbuild-uiowa095-pr16331-20260919-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T13:50:20Z"
+      "ts": "2026-09-19T20:04:05Z"
     },
     {
       "claim": "GROK_SEAT_CARRY_BRYCE_VIA_COMMON",
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "UIOWA-047--preserve-assessment-time-and-unknown-versus-empty-coverage-evidence",
+          "id": "CANCELED--UIOWA-010---Clark-pricing-work-must-not-resume",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "UIOWA-047--preserve-assessment-time-and-unknown-versus-empty-coverage-evidence",
+      "id": "CANCELED--UIOWA-010---Clark-pricing-work-must-not-resume",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T15:12:54Z"
+      "ts": "2026-09-19T15:27:57Z"
     },
     {
       "claim": "VECTOR-RELAY",
