@@ -1,0 +1,14 @@
+SOURCE-ID: SRC-002
+TITLE: Fictional ESS enrollment integration run, 2026-08-14
+CAPTURED: 2026-08-14
+SYNTHETIC: yes - fabricated for rehearsal, not a University of Iowa record
+---
+[anchor: case ENR-17 / run 2026-08-14]
+Case ENR-17 exercises the add/drop persistence round trip described by AC-3.
+Result: passed. The enrollment state read back identical after confirmation
+and after re-entry to the workflow.
+
+QUANTITY covered_acceptance_criteria=1 count
+QUANTITY cases_executed=1 count
+
+Not exercised in this run: waitlist promotion, concurrent-session editing.

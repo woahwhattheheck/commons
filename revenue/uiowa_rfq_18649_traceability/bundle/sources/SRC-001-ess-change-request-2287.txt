@@ -1,0 +1,13 @@
+SOURCE-ID: SRC-001
+TITLE: Fictional ESS enrollment change request 2287
+CAPTURED: 2026-08-11
+SYNTHETIC: yes - fabricated for rehearsal, not a University of Iowa record
+---
+[anchor: section 2 acceptance criteria]
+AC-1  A selected course appears in the student's pending cart within one refresh.
+AC-3  The selected course and the resulting enrollment state remain consistent
+      through submission, confirmation and re-entry to the workflow.
+AC-4  A dropped course is removed from the downstream schedule view.
+
+Scope note: this request covers the standard add/drop path only. Waitlist
+promotion is handled by a separate fictional request and is not covered here.

@@ -1,0 +1,11 @@
+SOURCE-ID: SRC-003
+TITLE: Fictional ESS registrar acceptance note
+CAPTURED: 2026-08-15
+SYNTHETIC: yes - fabricated for rehearsal, not a University of Iowa record
+---
+[anchor: criterion AC-3 / 2026-08-15]
+The fictional business representative for the registrar function reviewed the
+ENR-17 result against criterion AC-3 and accepted the covered behaviour.
+
+Acceptance is recorded against AC-3 only. AC-1 and AC-4 were accepted in an
+earlier cycle that is outside this rehearsal packet.

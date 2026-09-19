@@ -1,0 +1,11 @@
+SOURCE-ID: SRC-004
+TITLE: Fictional RIS reporting handoff design
+CAPTURED: 2026-07-30
+SYNTHETIC: yes - fabricated for rehearsal, not a University of Iowa record
+---
+[anchor: interface section 4]
+Section 4 states the intended behaviour: a proposal whose status becomes
+Approved is expected to appear in the downstream award-reporting extract on
+the next scheduled run.
+
+This document states intent. It records no observation of the behaviour.

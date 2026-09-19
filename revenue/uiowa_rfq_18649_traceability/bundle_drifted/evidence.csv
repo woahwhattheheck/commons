@@ -1,0 +1,9 @@
+evidence_id,service,source_type,source_id,locator,observation,evidence_state,quantities
+E-001,ESS,requirement,SRC-001,section 2 acceptance criteria,"Acceptance criterion AC-3 requires enrollment state to stay consistent through the workflow",current,
+E-002,ESS,test_result,SRC-002,case ENR-17 / run 2026-08-14,"The persistence round trip passed for the covered add/drop scenario",current,covered_acceptance_criteria=1 count
+E-003,ESS,acceptance_record,SRC-003,criterion AC-3 / 2026-08-15,"A business representative accepted the covered behaviour against AC-3",current,
+E-004,RIS,design_record,SRC-004,interface section 4,"Approved proposal status is intended to reach the downstream reporting extract",current,
+E-005,RIS,test_inventory,SRC-005,row reporting-contract-04,"Contract compatibility is covered; the inventory lists no end-to-end propagation scenario",current,end_to_end_propagation_scenarios=0 count
+E-006,RIS,interview_note,SRC-006,Q12 / statement 3,"Participant describes periodic manual checking and identifies no retained example",interview_only,retained_examples_identified=0 count
+E-007,IAM,test_result,SRC-007,scenario PROF-09 / consumer A,"One representative dependent application reflected the profile update",current,consumers_verified=1 count
+E-008,IAM,inventory,SRC-008,rows 1-7,"Seven dependent applications are listed; propagation evidence is attached for one",current,dependent_applications=7 count;consumers_with_propagation_evidence=1 count;propagation_outcome_for_remaining_consumers=UNKNOWN count

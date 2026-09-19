@@ -1,0 +1,16 @@
+SOURCE-ID: SRC-005
+TITLE: Fictional RIS test inventory
+CAPTURED: 2026-08-20
+SYNTHETIC: yes - fabricated for rehearsal, not a University of Iowa record
+---
+[anchor: row reporting-contract-04]
+Row reporting-contract-04 checks contract compatibility for the proposal-status
+interface: field presence and type compatibility. It stops at the interface
+boundary and does not follow a record into the reporting extract.
+
+QUANTITY contract_compatibility_scenarios=3 count
+QUANTITY end_to_end_propagation_scenarios=0 count
+
+The zero above is a counted zero: the inventory was read in full and contains
+no row of that kind. It is not a statement about work performed outside this
+inventory.

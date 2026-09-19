@@ -1,0 +1,11 @@
+SOURCE-ID: SRC-007
+TITLE: Fictional IAM directory profile propagation run PROF-09
+CAPTURED: 2026-08-18
+SYNTHETIC: yes - fabricated for rehearsal, not a University of Iowa record
+---
+[anchor: scenario PROF-09 / consumer A]
+Scenario PROF-09 updated a fictional directory profile attribute and confirmed
+that dependent application "Consumer A" reflected the change within the
+scheduled sync window.
+
+QUANTITY consumers_verified=1 count

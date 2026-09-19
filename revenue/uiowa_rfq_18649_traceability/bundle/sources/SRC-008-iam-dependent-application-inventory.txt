@@ -1,0 +1,16 @@
+SOURCE-ID: SRC-008
+TITLE: Fictional IAM dependent-application inventory
+CAPTURED: 2026-08-18
+SYNTHETIC: yes - fabricated for rehearsal, not a University of Iowa record
+---
+[anchor: rows 1-7]
+Seven fictional dependent applications consume the directory profile:
+Consumer A, B, C, D, E, F, G.
+
+Propagation evidence is attached for Consumer A only. For B through G the
+inventory records no propagation evidence either way -- the check was not
+performed during the rehearsal and no prior result was supplied.
+
+QUANTITY dependent_applications=7 count
+QUANTITY consumers_with_propagation_evidence=1 count
+QUANTITY propagation_outcome_for_remaining_consumers=UNKNOWN count

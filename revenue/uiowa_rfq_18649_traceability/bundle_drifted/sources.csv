@@ -1,0 +1,9 @@
+source_id,title,path,sha256,captured,synthetic
+SRC-001,Fictional ESS enrollment change request 2287,sources/SRC-001-ess-change-request-2287.txt,8d66850fd7a01b518ee701cd093fe405d07ad2a190cf67390b6f5eb764fa3214,2026-08-11,yes
+SRC-002,Fictional ESS enrollment integration run 2026-08-14,sources/SRC-002-ess-integration-run-2026-08-14.txt,bb06eaa160b3a50b53695293906b3efca43f10a9a4350b10f858498e89b1a895,2026-08-14,yes
+SRC-003,Fictional ESS registrar acceptance note,sources/SRC-003-ess-acceptance-note-2026-08-15.txt,90f58878c4d2b0dcb465d9d2bdd948c6129e41b817d9524a8702cd87b88aff05,2026-08-15,yes
+SRC-004,Fictional RIS reporting handoff design,sources/SRC-004-ris-reporting-handoff-design.txt,1e0d2484e3b8a7e4623bdec7028b2d04155175018429d0aa52971d03255abc43,2026-07-30,yes
+SRC-005,Fictional RIS test inventory,sources/SRC-005-ris-test-inventory.txt,c6908cd6d72535df967f70fdabff635c2f98beedf83108fc4b0656079d808662,2026-08-20,yes
+SRC-006,Fictional RIS interview note Q12,sources/SRC-006-ris-interview-note-q12.txt,020e9b8799496331488681f7b643eec277ee3b710f5149f752cf628b47af6495,2026-08-21,yes
+SRC-007,Fictional IAM propagation run PROF-09,sources/SRC-007-iam-propagation-run-prof-09.txt,d171d90c413c16caf7081ec630622fe7dec09fae422252333de0cfa6ab1fb0ab,2026-08-18,yes
+SRC-008,Fictional IAM dependent-application inventory,sources/SRC-008-iam-dependent-application-inventory.txt,6f35e64d6cfc4bc9a75d8d6f894ce1ba552f6cc57a9bec836f1ff65983f353f9,2026-08-18,yes

@@ -1,0 +1,7 @@
+statement_id,report_location,statement_summary,recommendation_ids,finding_ids,evidence_ids,asserts_polarity,asserts_quantity,limitation_ack,finding_digest,statement_digest
+S-001,executive-summary.md#supported-strength;final-report.md#1-ess,ESS retains a requirement-to-acceptance chain for one covered behaviour,,F-001,E-001;E-002;E-003,strength,E-002.covered_acceptance_criteria=1,yes,F-001=4eecb010bde3ea4c,ac98ee7b03c321a2
+S-002,executive-summary.md#consequential-gap;final-report.md#2-ris,RIS packet retains no end-to-end propagation evidence,R-001,F-002,E-004;E-005;E-006,gap,E-005.end_to_end_propagation_scenarios=0,yes,F-002=ae41cb9edae7f6a2,30e6a85f9cea9eac
+S-003,executive-summary.md#uncertainty-boundary;final-report.md#3-iam,IAM propagation evidence covers one of seven listed consumers,R-002,F-003,E-007;E-008,mixed,E-008.dependent_applications=7,yes,F-003=8bc4568a8a1d1c15,230075d41a7f9659
+S-004,final-report.md#recommendation-1,Retain one representative RIS propagation example on material change,R-001,F-002,E-004;E-005;E-006,gap,,yes,F-002=ae41cb9edae7f6a2,9001555de907192d
+S-005,final-report.md#recommendation-2,State which IAM consumers the representative evidence covers,R-002,F-003,E-007;E-008,mixed,,yes,F-003=8bc4568a8a1d1c15,de74223cc3dc39ac
+S-006,final-report.md#3-iam,Propagation outcome for the remaining IAM consumers is not established,,F-003,E-008,mixed,E-008.propagation_outcome_for_remaining_consumers=UNKNOWN,yes,F-003=8bc4568a8a1d1c15,f56e3634157d4f3b

@@ -1,0 +1,15 @@
+SOURCE-ID: SRC-006
+TITLE: Fictional RIS interview note, question 12
+CAPTURED: 2026-08-21
+SYNTHETIC: yes - fabricated for rehearsal, not a University of Iowa record
+---
+[anchor: Q12 / statement 3]
+Participant: "we do look at the extract after a big status change, but I
+couldn't point you at a saved example of it."
+
+Classification: availability_only. The participant describes a practice and
+states that no retained artefact was identified. This establishes that a
+retained example was not produced during the rehearsal; it establishes nothing
+about whether the practice occurs.
+
+QUANTITY retained_examples_identified=0 count
