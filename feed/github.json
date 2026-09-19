@@ -2,15 +2,92 @@
   "counts": {
     "open_issues": 189,
     "open_pull_requests": 145,
-    "runs_in_progress": 12,
-    "runs_queued": 1156
+    "runs_in_progress": 11,
+    "runs_queued": 1167
   },
   "counts_source": "graphql",
-  "degraded": [
-    "pulls-partial"
-  ],
+  "degraded": [],
   "drafts": 11,
+  "longest_open": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-atlasforge/swarmops-current-freshness-20260917",
+      "created_at": "2026-09-17T18:46:46Z",
+      "draft": false,
+      "head_sha": "96be91936b40e03845096e93d906cc9b5d6f1865",
+      "number": 15613,
+      "title": "SwarmOps: harden current semantic readiness verification",
+      "updated_at": "2026-09-18T08:06:51Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zeta-sol/pilot-renewal-expansion-gate-20260917",
+      "created_at": "2026-09-17T19:00:55Z",
+      "draft": false,
+      "head_sha": "df5666d5a47cad829f07c142285053277e1470c7",
+      "number": 15629,
+      "title": "Revenue: gate pilot delivery into renewal/expansion review",
+      "updated_at": "2026-09-19T14:49:25Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol-1447/arc3-sage-unanimous-reachability-14735",
+      "created_at": "2026-09-17T19:02:30Z",
+      "draft": false,
+      "head_sha": "9d94a9eadd3734f86753709b954e7a38385157f9",
+      "number": 15631,
+      "title": "ARC3 SAGE: close exact-evidence ambiguity and abstract lookahead (#14735)",
+      "updated_at": "2026-09-19T14:55:38Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/partner-qual-clean-current-main-20260917",
+      "created_at": "2026-09-17T19:07:58Z",
+      "draft": false,
+      "head_sha": "a13fa73e10612ed8f1d07feda42afd624a33e891",
+      "number": 15640,
+      "title": "Revenue: recover partner qualification gate on clean current main",
+      "updated_at": "2026-09-19T15:24:12Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-z/pilot-renewal-reseal-clock-fix-15641",
+      "created_at": "2026-09-17T19:11:45Z",
+      "draft": false,
+      "head_sha": "1cda939013aa6b574abf6f549665e0d51d946eeb",
+      "number": 15643,
+      "title": "Fix pilot-renewal receipt reseal and current-clock authority",
+      "updated_at": "2026-09-19T14:58:34Z"
+    }
+  ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-harborglass23r-register-bridge-20260919",
+      "created_at": "2026-09-19T15:29:26Z",
+      "draft": false,
+      "head_sha": "a7c480bbc9f6af6ead4faceed995ba2cf8ed7f39",
+      "number": 16395,
+      "title": "Recover UIOWA-023/031 strict, lossless register transport and native-table bridge",
+      "updated_at": "2026-09-19T15:29:26Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz/traceforge-uiowa015-source-context-20260919",
+      "created_at": "2026-09-19T15:28:12Z",
+      "draft": false,
+      "head_sha": "93f5df0a8d00bc7e2b010ea7f95f0a45f47754f6",
+      "number": 16394,
+      "title": "UIOWA-015: source-scoped peer delivery pack, UC recovery and 53-test replay",
+      "updated_at": "2026-09-19T15:28:12Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -32,17 +109,6 @@
       "number": 16391,
       "title": "Compose sample-soundness input validation with SEXTANT's reviewed method",
       "updated_at": "2026-09-19T15:27:27Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/zz-lantern47r-incident-review-guide-20260919",
-      "created_at": "2026-09-19T15:26:53Z",
-      "draft": false,
-      "head_sha": "1f1a39ee3096930d11cf64bf3586b74143307157",
-      "number": 16390,
-      "title": "UIOWA-067: deliver the complete incident-review walkthrough without runtime promotion",
-      "updated_at": "2026-09-19T15:26:53Z"
     },
     {
       "author": "woahwhattheheck",
@@ -109,17 +175,6 @@
       "number": 16379,
       "title": "UIOWA-136: exact rendered-page review and independent navigation replay",
       "updated_at": "2026-09-19T15:27:59Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "gpt/zz-rivet8f31-uiowa029-independent-review-20260919",
-      "created_at": "2026-09-19T15:19:46Z",
-      "draft": false,
-      "head_sha": "3463de8e634e283ef70bc3d5a224a03503c4f7a9",
-      "number": 16378,
-      "title": "UIOWA-029: independent horizon-boundary replay and worked interpretation",
-      "updated_at": "2026-09-19T15:27:49Z"
     }
   ],
   "open_heads": {
@@ -249,7 +304,7 @@
     "16353": "0f85aae42713cc0a5ba7acebd41c0c2704551f2e",
     "16355": "86042e099f22db00be9ce3351e1f799341414e60",
     "16356": "3dac1cbc961beebe84faa64a02146427270227e7",
-    "16359": "d8002243aaed4ca1e7a5fbc4ba2abb88ca895800",
+    "16359": "74f5cda47068e4fde074e13be83270ee17113b35",
     "16362": "80303d7178b17695f90b3ba1bc938ecbcbe91a51",
     "16363": "29e3d3d0bda9571144fa31c55185742d9ffd49ef",
     "16365": "5bcda15b53a779d7c1e39072973dac2713175e81",
@@ -264,14 +319,26 @@
     "16385": "df2eca854164d6e6f4706838eeec3d57b85132c7",
     "16387": "d88a429bb86eb96536b885a787dc2ae43863458e",
     "16389": "722d683289e868567f4b49063bc1ad5f596b2e81",
-    "16390": "1f1a39ee3096930d11cf64bf3586b74143307157",
     "16391": "437880981178aa3360797a9e3aee3c3826692d5f",
-    "16392": "3d017ec2025ab33bb86b0fb1fbc1230f5f03fcac"
+    "16392": "3d017ec2025ab33bb86b0fb1fbc1230f5f03fcac",
+    "16394": "93f5df0a8d00bc7e2b010ea7f95f0a45f47754f6",
+    "16395": "a7c480bbc9f6af6ead4faceed995ba2cf8ed7f39"
   },
-  "pulls_listed": 144,
-  "pulls_listing": "PARTIAL",
-  "queue_depth_per_runner": 96.3,
+  "pulls_listed": 145,
+  "pulls_listing": "COMPLETE",
+  "queue_depth_per_runner": 106.1,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-lantern47r-incident-review-guide-20260919",
+      "closed_at": "2026-09-19T15:29:28Z",
+      "head_sha": "1f1a39ee3096930d11cf64bf3586b74143307157",
+      "merged_at": "2026-09-19T15:29:28Z",
+      "number": 16390,
+      "state": "MERGED",
+      "title": "UIOWA-067: deliver the complete incident-review walkthrough without runtime promotion"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -425,21 +492,10 @@
       "number": 16364,
       "state": "MERGED",
       "title": "fix(uiowa124): retain native duplicate validation diagnostics"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-kestrel-vector91/source-binding-walkthrough-20260919",
-      "closed_at": "2026-09-19T15:11:21Z",
-      "head_sha": "5fbf0985bee62c18bc4bc5d5dd9c995614d38999",
-      "merged_at": "2026-09-19T15:11:21Z",
-      "number": 16361,
-      "state": "MERGED",
-      "title": "Explain five executed deployment-source decisions for operators"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T15:28:14Z",
+  "unchanged_since": "2026-09-19T15:29:43Z",
   "undatable_pulls": []
 }
