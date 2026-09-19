@@ -208,9 +208,15 @@ def assess(packet: dict[str, Any]) -> dict[str, Any]:
                 f"{trace_id}: invalid reproducibility status")
         repro_refs = references(reproducibility.get("evidence_refs"), evidence, "reproducibility")
         require(repro_state == "unknown" or bool(repro_refs), "non-unknown reproducibility requires references")
-        if repro_state != "observed_match":
-            ask("REPRODUCIBILITY_REVIEW", "reproducibility",
-                "What comparable input/artifact records and conditions demonstrate a repeatable build?", repro_refs)
+        # Even the strongest supplied label needs a human corroboration disposition.
+        # A source reference alone is not independent artifact comparison.
+        ask("REPRODUCIBILITY_REVIEW", "reproducibility",
+            "What comparable input/artifact records and conditions corroborate this supplied reproducibility account?", repro_refs)
+        def execution_coverage(subset: list[dict[str, Any]]) -> dict[str, int]:
+            counts = Counter(row["execution_measure"] for row in subset)
+            return {state: counts[state] for state in ("complete", "censored", "unknown")}
+        failed = [row for row in results if row["result"] == "failure"]
+        repeated = [row for row in results if row["attempt"] > 1]
         queue_union, exec_union = union_seconds(queues), union_seconds(executions)
         active_union = union_seconds(queues + executions)
         window = (cutoff - requested).total_seconds()
@@ -219,10 +225,16 @@ def assess(packet: dict[str, Any]) -> dict[str, Any]:
         reports.append({"id": trace_id, "group": trace["group"], "service": service,
                         "requested_at": trace["requested_at"], "attempts": results,
                         "stage_matrix": stages, "evidence_register": rows,
-                        "reproducibility": reproducibility, "follow_up": questions,
+                        "reproducibility": reproducibility,
+                        "reproducibility_corroboration": {
+                            "status": "NOT_ESTABLISHED_BY_TOOL", "evidence_refs": repro_refs,
+                            "reason": "Supplied labels and locators are retained; the tool does not independently compare artifacts."},
+                        "follow_up": questions,
                         "metrics": {"attempt_count": len(results),
                             "failed_attempt_count": sum(row["result"] == "failure" for row in results),
                             "repeat_attempt_count": sum(row["attempt"] > 1 for row in results),
+                            "failed_execution_measure_counts": execution_coverage(failed),
+                            "repeat_execution_measure_counts": execution_coverage(repeated),
                             "queue_measure_counts": dict(sorted(Counter(row["queue_measure"] for row in results).items())),
                             "execution_measure_counts": dict(sorted(Counter(row["execution_measure"] for row in results).items())),
                             "observation_window_seconds": window,
@@ -265,7 +277,8 @@ def markdown(report: dict[str, Any]) -> str:
         lines += ["", "| Stage | Records | Results | Coverage | Evidence |", "|---|---:|---|---|---|"]
         lines += [f"| {row['stage']} | {row['record_count']} | {escape(row['results'])} | {row['coverage']} | {escape(', '.join(row['evidence_refs']))} |"
                   for row in trace["stage_matrix"]]
-        lines += ["", "### Follow-up", "", "| Code / subject | Question | Evidence |", "|---|---|---|"]
+        lines += ["", "Reproducibility corroboration: " + escape(trace["reproducibility_corroboration"]["status"]),
+                  "", "### Follow-up", "", "| Code / subject | Question | Evidence |", "|---|---|---|"]
         lines += [f"| {escape(row['code'] + ' / ' + row['subject'])} | {escape(row['question'])} | {escape(', '.join(row['evidence_refs']))} |"
                   for row in trace["follow_up"]]
         lines += ["", "### Evidence locators", ""]
