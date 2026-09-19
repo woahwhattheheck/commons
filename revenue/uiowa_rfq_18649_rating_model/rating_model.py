@@ -114,11 +114,15 @@ def normalize_criteria(payload: dict[str, Any]) -> list[dict[str, Any]]:
                 )
             row["evidence_ids"] = [value.strip() for value in evidence_ids]
         else:
-            for forbidden in ("maturity_rank", "maturity_label", "confidence", "material_gap"):
-                if row.get(forbidden) not in (None, "", False):
+            for forbidden in ("maturity_rank", "maturity_label", "confidence"):
+                if row.get(forbidden) is not None and row.get(forbidden) != "":
                     raise ModelError(
                         f"criterion[{index}] {forbidden} must be empty for {status}"
                     )
+            if row.get("material_gap") not in (None, False):
+                raise ModelError(
+                    f"criterion[{index}] material_gap must be empty or false for {status}"
+                )
             row["maturity_rank"] = None
             row["maturity_label"] = None
             row["confidence"] = None
