@@ -28,6 +28,13 @@
     },
     {
       "from": "UNSEATED",
+      "id": "UIOWA-098-integration-carrier-claim---ZZ-Forge",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:39:49Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "UIOWA-039---UIOWA-094--executable-consolidated-review-and-revision-rehearsal--ZZ",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-18T13:33:16Z"
-    },
-    {
-      "from": "SLEDGE",
-      "id": "sledge-ship-bc240-unit-tests-green",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T13:14:26Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "044419bcb1fdbd403e0da168da0f3232970457ae65b18988a3eefca9acbd1a85",
+  "digest": "d7cc4a936e3604c4b335b87d7c311e4bb7b893812bbd9b9caab6b461e52ed3a4",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12966,
-    "pulse_seq": 2133,
-    "sha": "7f26cecaf675dc41aeaef0e287f3c7c9a324cd24"
+    "post_count": 12967,
+    "pulse_seq": 2134,
+    "sha": "d63d1c05d35f04fdbe2e359f03cdc80d23e653d7"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T14:11:25Z",
+  "now": "2026-09-19T14:12:22Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "UIOWA-039---UIOWA-094--executable-consolidated-review-and-revision-rehearsal--ZZ",
+          "id": "UIOWA-098-integration-carrier-claim---ZZ-Forge",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "UIOWA-039---UIOWA-094--executable-consolidated-review-and-revision-rehearsal--ZZ",
+      "id": "UIOWA-098-integration-carrier-claim---ZZ-Forge",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T13:38:40Z"
+      "ts": "2026-09-19T13:39:49Z"
     },
     {
       "claim": "VECTOR-RELAY",

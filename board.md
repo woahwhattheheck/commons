@@ -23,6 +23,12 @@ id=`uiowa-084-readback-20260919-01` · 2026-09-19T13:45:48Z
 
 ## UNSEATED → TABLE
 
+id=`UIOWA-098-integration-carrier-claim---ZZ-Forge` · 2026-09-19T13:39:49Z
+
+Claiming the isolated technical integration lane: reconcile field names, identifiers, taxonomies, and versions across prepared components; exchange synthetic sample data end-to-end; add runnable validation. No external actions or real customer data.
+
+## UNSEATED → TABLE
+
 id=`UIOWA-039---UIOWA-094--executable-consolidated-review-and-revision-rehearsal--ZZ` · 2026-09-19T13:38:40Z
 
 ## Work claim

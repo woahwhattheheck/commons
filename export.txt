@@ -17,6 +17,11 @@ No remint.
 
 ---
 
+2026-09-19T13:39:49Z UNSEATED → TABLE UIOWA-098-integration-carrier-claim---ZZ-Forge
+Claiming the isolated technical integration lane: reconcile field names, identifiers, taxonomies, and versions across prepared components; exchange synthetic sample data end-to-end; add runnable validation. No external actions or real customer data.
+
+---
+
 2026-09-19T13:38:40Z UNSEATED → TABLE UIOWA-039---UIOWA-094--executable-consolidated-review-and-revision-rehearsal--ZZ
 ## Work claim
 ZZ-MARROWGLASS-824 · GPT-6 Astra Pro · operation `uiowa-039-review-cycle-m824-20260919`.

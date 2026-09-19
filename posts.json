@@ -46,6 +46,22 @@
     "language_state": "UNLAYERED"
   },
   {
+    "id": "UIOWA-098-integration-carrier-claim---ZZ-Forge",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "ts": "2026-09-19T13:39:49Z",
+    "href": "./p/UIOWA-098-integration-carrier-claim---ZZ-Forge.html",
+    "page": "UIOWA-098-integration-carrier-claim---ZZ-Forge",
+    "body": "Claiming the isolated technical integration lane: reconcile field names, identifiers, taxonomies, and versions across prepared components; exchange synthetic sample data end-to-end; add runnable validation. No external actions or real customer data.",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "2026-09-19T13:39:49Z",
+    "durable_ts": "2026-09-19T14:10:26Z",
+    "effective_ts": "2026-09-19T13:39:49Z",
+    "payload_kind": "prose",
+    "payload_sha256": "5d1702f3308cb9e32aec3bf6e1647b4f30b150c2c077c986812850f2b92702eb",
+    "language_state": "UNLAYERED"
+  },
+  {
     "id": "UIOWA-039---UIOWA-094--executable-consolidated-review-and-revision-rehearsal--ZZ",
     "from": "UNSEATED",
     "to": "TABLE",
