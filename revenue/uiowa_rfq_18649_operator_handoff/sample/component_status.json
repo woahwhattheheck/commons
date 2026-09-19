@@ -1,0 +1,1252 @@
+{
+  "survey_root": "/tmp/claude-0/-home-user/6e551c41-37c5-5a0b-95f1-fb4584e151a7/scratchpad/finalBBWi",
+  "generated_at_utc": "2026-09-19T14:02:46Z",
+  "python": "3.11.15",
+  "executed_checks": true,
+  "timeout_s": 90,
+  "manifest_version": "1.0",
+  "counts": {
+    "WORKING": 25,
+    "DRAFT": 7,
+    "MISSING": 6,
+    "UNMAPPED": 2
+  },
+  "components": [
+    {
+      "phase": "kickoff",
+      "phase_title": "Kickoff and mobilization",
+      "component": "uiowa_rfq_18649_operator_handoff",
+      "role": "This handoff: the six-phase guide, the component verifier, and the UNKNOWN register. Start here.",
+      "present": true,
+      "status": "WORKING",
+      "reason": "executed 1 test file(s) here, 24 tests ran, all passed",
+      "kind": "executable",
+      "check_files": [
+        "test_verify_kit.py"
+      ],
+      "tests_ran": 24,
+      "inventory": {
+        "files": 23,
+        "py_files": 7,
+        "doc_files": 9,
+        "data_files": 6,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "test_verify_kit.py",
+          "command": "python3 -m unittest test_verify_kit  (cwd=.)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 2.88,
+          "tests_ran": 24,
+          "missing_module": null,
+          "output_tail": "........................\n----------------------------------------------------------------------\nRan 24 tests in 2.815s\n\nOK"
+        }
+      ]
+    },
+    {
+      "phase": "kickoff",
+      "phase_title": "Kickoff and mobilization",
+      "component": "uiowa_rfq_18649_mobilization",
+      "role": "Eight-week and six-week plan shapes, coordination forms, scope-confirmation agenda.",
+      "present": true,
+      "status": "DRAFT",
+      "reason": "document component: 2 document/data files and no executable code; completeness of prose is not machine-checkable and needs a human read",
+      "kind": "document",
+      "check_files": [],
+      "tests_ran": 0,
+      "inventory": {
+        "files": 2,
+        "py_files": 0,
+        "doc_files": 2,
+        "data_files": 0,
+        "declared_requirements": []
+      },
+      "runs": []
+    },
+    {
+      "phase": "kickoff",
+      "phase_title": "Kickoff and mobilization",
+      "component": "uiowa_rfq_18649_workshare",
+      "role": "Carrier record and evidence-authority boundary for the whole workstream.",
+      "present": true,
+      "status": "WORKING",
+      "reason": "executed 2 test file(s) here, 34 tests ran, all passed",
+      "kind": "executable",
+      "check_files": [
+        "methodology/test_validate_23_evidence_register.py",
+        "test_compiler.py"
+      ],
+      "tests_ran": 34,
+      "inventory": {
+        "files": 36,
+        "py_files": 24,
+        "doc_files": 9,
+        "data_files": 3,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "methodology/test_validate_23_evidence_register.py",
+          "command": "python3 -m unittest test_validate_23_evidence_register  (cwd=methodology)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.07,
+          "tests_ran": 5,
+          "missing_module": null,
+          "output_tail": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.005s\n\nOK"
+        },
+        {
+          "test_file": "test_compiler.py",
+          "command": "python3 -m unittest test_compiler  (cwd=.)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.68,
+          "tests_ran": 29,
+          "missing_module": null,
+          "output_tail": ".............................\n----------------------------------------------------------------------\nRan 29 tests in 0.549s\n\nOK"
+        }
+      ]
+    },
+    {
+      "phase": "kickoff",
+      "phase_title": "Kickoff and mobilization",
+      "component": "uiowa_rfq_18649_build_board",
+      "role": "Assessment context notes used to brief the team.",
+      "present": true,
+      "status": "DRAFT",
+      "reason": "document component: 3 document/data files and no executable code; completeness of prose is not machine-checkable and needs a human read",
+      "kind": "document",
+      "check_files": [],
+      "tests_ran": 0,
+      "inventory": {
+        "files": 3,
+        "py_files": 0,
+        "doc_files": 2,
+        "data_files": 1,
+        "declared_requirements": []
+      },
+      "runs": []
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_synthetic_collection",
+      "role": "Fictional AIS evidence corpus; the safe input for every rehearsal.",
+      "present": true,
+      "status": "WORKING",
+      "reason": "executed 1 test file(s) here, 5 tests ran, all passed",
+      "kind": "executable",
+      "check_files": [
+        "tests/test_collection.py"
+      ],
+      "tests_ran": 5,
+      "inventory": {
+        "files": 16,
+        "py_files": 2,
+        "doc_files": 11,
+        "data_files": 3,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "tests/test_collection.py",
+          "command": "python3 -m unittest test_collection  (cwd=tests)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.07,
+          "tests_ran": 5,
+          "missing_module": null,
+          "output_tail": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.002s\n\nOK"
+        }
+      ]
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_intake_rehearsal",
+      "role": "Intake-to-assessment rehearsal; malformed-input handling.",
+      "present": true,
+      "status": "WORKING",
+      "reason": "executed 1 test file(s) here, 31 tests ran, all passed",
+      "kind": "executable",
+      "check_files": [
+        "test_rehearsal.py"
+      ],
+      "tests_ran": 31,
+      "inventory": {
+        "files": 25,
+        "py_files": 3,
+        "doc_files": 5,
+        "data_files": 17,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "test_rehearsal.py",
+          "command": "python3 -m unittest test_rehearsal  (cwd=.)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.26,
+          "tests_ran": 31,
+          "missing_module": null,
+          "output_tail": "0ecbb799a0fe...\n  source_register.csv: digest 48ded2e84ba5... != recorded 2eaa16403753...\n.SYNTHETIC REHEARSAL OUTPUT - every organization, document, number and quotation below is fictional, authored for the UIOWA-092 integration rehearsal. Nothing here is a University of Iowa record, measurement, or finding.\n\ncollection      COLL-SYN-092-A (as of 2026-09-19)\nsources         11/12 resolved\nobservations    16 accepted\ninterviews      5 excerpts, 4 contributing support\ndiagnostics     0 REJECT, 2 DEGRADE, 1 NOTE\n\ntwelve-cell matrix:\n  ESS  SD   DEMONSTRATED_STRENGTH\n  ESS  SEC  PARTIAL\n  ESS  DEP  MIXED\n  ESS  AI   UNKNOWN\n  RIS  SD   OBSERVED_GAP\n  RIS  SEC  MIXED\n  RIS  DEP  OBSERVED_GAP\n  RIS  AI   PARTIAL\n  IAM  SD   CONFLICT\n  IAM  SEC  DEMONSTRATED_STRENGTH\n  IAM  DEP  UNKNOWN\n  IAM  AI   PARTIAL\n\nstate tally: DEMONSTRATED_STRENGTH=2, OBSERVED_GAP=2, MIXED=2, CONFLICT=1, PARTIAL=3, UNKNOWN=2\nartifacts written to /tmp/uiowa092-1b9io52w/out/ (6 files + RUN_DIGEST.json)\nREPRODUCIBLE: 6 artifacts match the recorded digests in /tmp/uiowa092-1b9io52w/out/RUN_DIGEST.json\n.................\n----------------------------------------------------------------------\nRan 31 tests in 0.178s\n\nOK"
+        }
+      ]
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_document_extraction",
+      "role": "Locator-preserving extraction from PDF/DOCX/text evidence.",
+      "present": true,
+      "status": "DRAFT",
+      "reason": "check could not run offline: missing dependency 'pypdf' (declared: pypdf>=6,<7)",
+      "kind": "executable",
+      "check_files": [
+        "test_extract.py"
+      ],
+      "tests_ran": 6,
+      "inventory": {
+        "files": 10,
+        "py_files": 3,
+        "doc_files": 3,
+        "data_files": 1,
+        "declared_requirements": [
+          "pypdf>=6,<7"
+        ]
+      },
+      "runs": [
+        {
+          "test_file": "test_extract.py",
+          "command": "python3 -m unittest test_extract  (cwd=.)",
+          "exit_code": 1,
+          "timed_out": false,
+          "duration_s": 0.18,
+          "tests_ran": 6,
+          "missing_module": "pypdf",
+          "output_tail": "tors (test_extract.ExtractionTests.test_pdf_uses_page_locators)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/verify_kit_54fwc9qy/uiowa_rfq_18649_document_extraction/extract.py\", line 253, in extract_pdf\n    from pypdf import PdfReader\nModuleNotFoundError: No module named 'pypdf'\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/tmp/verify_kit_54fwc9qy/uiowa_rfq_18649_document_extraction/test_extract.py\", line 42, in test_pdf_uses_page_locators\n    result = extract.extract(FIXTURES / \"sample.pdf\")\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/verify_kit_54fwc9qy/uiowa_rfq_18649_document_extraction/extract.py\", line 343, in extract\n    segments, warnings = extract_pdf(path)\n                         ^^^^^^^^^^^^^^^^^\n  File \"/tmp/verify_kit_54fwc9qy/uiowa_rfq_18649_document_extraction/extract.py\", line 255, in extract_pdf\n    raise ExtractionError(\nextract.ExtractionError: PDF_BACKEND_UNAVAILABLE: install pypdf>=6,<7\n\n----------------------------------------------------------------------\nRan 6 tests in 0.078s\n\nFAILED (errors=2)"
+        }
+      ]
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_test_data_readiness",
+      "role": "Test-data catalog readiness evidence.",
+      "present": true,
+      "status": "DRAFT",
+      "reason": "check executed and did not pass: 1 of 2 test file(s) failed",
+      "kind": "executable",
+      "check_files": [
+        "test_data_assessor.py",
+        "tests/test_assessor.py"
+      ],
+      "tests_ran": 7,
+      "inventory": {
+        "files": 10,
+        "py_files": 2,
+        "doc_files": 5,
+        "data_files": 3,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "test_data_assessor.py",
+          "command": "python3 -m unittest test_data_assessor  (cwd=.)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.07,
+          "tests_ran": 0,
+          "missing_module": null,
+          "output_tail": "----------------------------------------------------------------------\nRan 0 tests in 0.000s\n\nOK"
+        },
+        {
+          "test_file": "tests/test_assessor.py",
+          "command": "python3 -m unittest test_assessor  (cwd=tests)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.07,
+          "tests_ran": 7,
+          "missing_module": null,
+          "output_tail": ".......\n----------------------------------------------------------------------\nRan 7 tests in 0.001s\n\nOK"
+        }
+      ]
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_secure_guidance",
+      "role": "Secure-development guidance usability evidence.",
+      "present": true,
+      "status": "WORKING",
+      "reason": "executed 1 test file(s) here, 8 tests ran, all passed",
+      "kind": "executable",
+      "check_files": [
+        "test_assess_guidance.py"
+      ],
+      "tests_ran": 8,
+      "inventory": {
+        "files": 7,
+        "py_files": 2,
+        "doc_files": 3,
+        "data_files": 2,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "test_assess_guidance.py",
+          "command": "python3 -m unittest test_assess_guidance  (cwd=.)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.08,
+          "tests_ran": 8,
+          "missing_module": null,
+          "output_tail": "........\n----------------------------------------------------------------------\nRan 8 tests in 0.004s\n\nOK"
+        }
+      ]
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_security_event_review",
+      "role": "Security-event review and ownership evidence.",
+      "present": true,
+      "status": "WORKING",
+      "reason": "executed 1 test file(s) here, 9 tests ran, all passed",
+      "kind": "executable",
+      "check_files": [
+        "test_assess_security_events.py"
+      ],
+      "tests_ran": 9,
+      "inventory": {
+        "files": 7,
+        "py_files": 2,
+        "doc_files": 3,
+        "data_files": 2,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "test_assess_security_events.py",
+          "command": "python3 -m unittest test_assess_security_events  (cwd=.)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.08,
+          "tests_ran": 9,
+          "missing_module": null,
+          "output_tail": ".........\n----------------------------------------------------------------------\nRan 9 tests in 0.004s\n\nOK"
+        }
+      ]
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_observability",
+      "role": "Observability and service-objective evidence.",
+      "present": true,
+      "status": "WORKING",
+      "reason": "executed 1 test file(s) here, 5 tests ran, all passed",
+      "kind": "executable",
+      "check_files": [
+        "test_observability.py"
+      ],
+      "tests_ran": 5,
+      "inventory": {
+        "files": 5,
+        "py_files": 2,
+        "doc_files": 2,
+        "data_files": 1,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "test_observability.py",
+          "command": "python3 -m unittest test_observability  (cwd=.)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.07,
+          "tests_ran": 5,
+          "missing_module": null,
+          "output_tail": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.001s\n\nOK"
+        }
+      ]
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_recovery_evidence",
+      "role": "Backup completion vs demonstrated restoration.",
+      "present": true,
+      "status": "WORKING",
+      "reason": "executed 2 test file(s) here, 57 tests ran, all passed",
+      "kind": "executable",
+      "check_files": [
+        "test_assess_recovery.py",
+        "test_recovery_evidence.py"
+      ],
+      "tests_ran": 57,
+      "inventory": {
+        "files": 13,
+        "py_files": 4,
+        "doc_files": 4,
+        "data_files": 5,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "test_assess_recovery.py",
+          "command": "python3 -m unittest test_assess_recovery  (cwd=.)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.07,
+          "tests_ran": 7,
+          "missing_module": null,
+          "output_tail": ".......\n----------------------------------------------------------------------\nRan 7 tests in 0.002s\n\nOK"
+        },
+        {
+          "test_file": "test_recovery_evidence.py",
+          "command": "python3 -m unittest test_recovery_evidence  (cwd=.)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.11,
+          "tests_ran": 50,
+          "missing_module": null,
+          "output_tail": ".....................................error: cannot read estate file /tmp/verify_kit_6e27_pyp/uiowa_rfq_18649_recovery_evidence/nope.json: [Errno 2] No such file or directory: '/tmp/verify_kit_6e27_pyp/uiowa_rfq_18649_recovery_evidence/nope.json'\n.............\n----------------------------------------------------------------------\nRan 50 tests in 0.031s\n\nOK"
+        }
+      ]
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_incident_learning",
+      "role": "Incident timelines, postmortems, corrective-action follow-through.",
+      "present": true,
+      "status": "DRAFT",
+      "reason": "document component: 2 document/data files and no executable code; completeness of prose is not machine-checkable and needs a human read",
+      "kind": "document",
+      "check_files": [],
+      "tests_ran": 0,
+      "inventory": {
+        "files": 2,
+        "py_files": 0,
+        "doc_files": 1,
+        "data_files": 1,
+        "declared_requirements": []
+      },
+      "runs": []
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_release_provenance",
+      "role": "Deployment record traced to artifact digest and approval evidence.",
+      "present": true,
+      "status": "WORKING",
+      "reason": "executed 1 test file(s) here, 34 tests ran, all passed",
+      "kind": "executable",
+      "check_files": [
+        "test_provenance.py"
+      ],
+      "tests_ran": 34,
+      "inventory": {
+        "files": 9,
+        "py_files": 3,
+        "doc_files": 4,
+        "data_files": 2,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "test_provenance.py",
+          "command": "python3 -m unittest test_provenance  (cwd=.)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.67,
+          "tests_ran": 34,
+          "missing_module": null,
+          "output_tail": "..................................\n----------------------------------------------------------------------\nRan 34 tests in 0.584s\n\nOK"
+        }
+      ]
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_handoff",
+      "role": "Development-to-operations handoff packet evidence.",
+      "present": true,
+      "status": "WORKING",
+      "reason": "executed 1 test file(s) here, 6 tests ran, all passed",
+      "kind": "executable",
+      "check_files": [
+        "tests/test_handoff.py"
+      ],
+      "tests_ran": 6,
+      "inventory": {
+        "files": 7,
+        "py_files": 2,
+        "doc_files": 2,
+        "data_files": 3,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "tests/test_handoff.py",
+          "command": "python3 -m unittest test_handoff  (cwd=tests)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.07,
+          "tests_ran": 6,
+          "missing_module": null,
+          "output_tail": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.002s\n\nOK"
+        }
+      ]
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_ai_use_inventory",
+      "role": "Current AI use: active vs informal experiment vs planned.",
+      "present": true,
+      "status": "WORKING",
+      "reason": "executed 1 test file(s) here, 43 tests ran, all passed",
+      "kind": "executable",
+      "check_files": [
+        "test_inventory.py"
+      ],
+      "tests_ran": 43,
+      "inventory": {
+        "files": 11,
+        "py_files": 4,
+        "doc_files": 2,
+        "data_files": 5,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "test_inventory.py",
+          "command": "python3 -m unittest test_inventory  (cwd=.)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.17,
+          "tests_ran": 43,
+          "missing_module": null,
+          "output_tail": "...........................................\n----------------------------------------------------------------------\nRan 43 tests in 0.092s\n\nOK"
+        }
+      ]
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_knowledge_readiness",
+      "role": "AI knowledge and data readiness evidence.",
+      "present": false,
+      "status": "MISSING",
+      "reason": "no directory for this component exists under the survey root",
+      "kind": "unbuilt",
+      "check_files": [],
+      "tests_ran": 0,
+      "inventory": {
+        "files": 0,
+        "py_files": 0,
+        "doc_files": 0,
+        "data_files": 0,
+        "declared_requirements": []
+      },
+      "runs": []
+    },
+    {
+      "phase": "analysis",
+      "phase_title": "Analysis",
+      "component": "uiowa_rfq_18649_rating_model",
+      "role": "Area rating with an explicit decision table.",
+      "present": true,
+      "status": "WORKING",
+      "reason": "executed 1 test file(s) here, 7 tests ran, all passed",
+      "kind": "executable",
+      "check_files": [
+        "test_rating_model.py"
+      ],
+      "tests_ran": 7,
+      "inventory": {
+        "files": 8,
+        "py_files": 2,
+        "doc_files": 1,
+        "data_files": 5,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "test_rating_model.py",
+          "command": "python3 -m unittest test_rating_model  (cwd=.)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.07,
+          "tests_ran": 7,
+          "missing_module": null,
+          "output_tail": ".......\n----------------------------------------------------------------------\nRan 7 tests in 0.002s\n\nOK"
+        }
+      ]
+    },
+    {
+      "phase": "analysis",
+      "phase_title": "Analysis",
+      "component": "uiowa_rfq_18649_prioritization",
+      "role": "Recommendation prioritization with visible weights and sensitivity.",
+      "present": true,
+      "status": "WORKING",
+      "reason": "executed 1 test file(s) here, 48 tests ran, all passed",
+      "kind": "executable",
+      "check_files": [
+        "test_prioritize.py"
+      ],
+      "tests_ran": 48,
+      "inventory": {
+        "files": 12,
+        "py_files": 2,
+        "doc_files": 4,
+        "data_files": 6,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "test_prioritize.py",
+          "command": "python3 -m unittest test_prioritize  (cwd=.)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.33,
+          "tests_ran": 48,
+          "missing_module": null,
+          "output_tail": "[prioritize] weighting 'inline': 9 ranked, 2 held for missing estimates (2 decision-blocking) out of 11.\n[prioritize] weighting 'inline': 9 ranked, 2 held for missing estimates (1 decision-blocking) out of 11.\n..[prioritize] weighting 'baseline': 8 ranked, 3 held for missing estimates (2 decision-blocking) out of 11.\n[prioritize] sensitivity: top item stable = False; crossover sweep on 'security' found 17 reorder(s).\n..............................................\n----------------------------------------------------------------------\nRan 48 tests in 0.244s\n\nOK"
+        }
+      ]
+    },
+    {
+      "phase": "analysis",
+      "phase_title": "Analysis",
+      "component": "uiowa_rfq_18649_delivery_metrics",
+      "role": "Delivery metric calculation, data dictionary, interpretation notes.",
+      "present": true,
+      "status": "WORKING",
+      "reason": "executed 1 test file(s) here, 6 tests ran, all passed",
+      "kind": "executable",
+      "check_files": [
+        "test_calculator.py"
+      ],
+      "tests_ran": 6,
+      "inventory": {
+        "files": 5,
+        "py_files": 2,
+        "doc_files": 2,
+        "data_files": 1,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "test_calculator.py",
+          "command": "python3 -m unittest test_calculator  (cwd=.)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.08,
+          "tests_ran": 6,
+          "missing_module": null,
+          "output_tail": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.005s\n\nOK"
+        }
+      ]
+    },
+    {
+      "phase": "analysis",
+      "phase_title": "Analysis",
+      "component": "uiowa_rfq_18649_outcome_measurement",
+      "role": "Adoption vs operational outcome, kept separate.",
+      "present": true,
+      "status": "WORKING",
+      "reason": "executed 1 test file(s) here, 6 tests ran, all passed",
+      "kind": "executable",
+      "check_files": [
+        "tests/test_analyze.py"
+      ],
+      "tests_ran": 6,
+      "inventory": {
+        "files": 7,
+        "py_files": 2,
+        "doc_files": 2,
+        "data_files": 3,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "tests/test_analyze.py",
+          "command": "python3 -m unittest test_analyze  (cwd=tests)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.07,
+          "tests_ran": 6,
+          "missing_module": null,
+          "output_tail": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.003s\n\nOK"
+        }
+      ]
+    },
+    {
+      "phase": "analysis",
+      "phase_title": "Analysis",
+      "component": "uiowa_rfq_18649_workbench",
+      "role": "Local analyst surface over the workshare compiler.",
+      "present": true,
+      "status": "DRAFT",
+      "reason": "check executed and did not pass: 1 of 2 test file(s) failed",
+      "kind": "executable",
+      "check_files": [
+        "framework_crosswalk/test_framework_crosswalk.py",
+        "test_workbench.py"
+      ],
+      "tests_ran": 11,
+      "inventory": {
+        "files": 21,
+        "py_files": 5,
+        "doc_files": 6,
+        "data_files": 7,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "framework_crosswalk/test_framework_crosswalk.py",
+          "command": "python3 -m unittest test_framework_crosswalk  (cwd=framework_crosswalk)",
+          "exit_code": 1,
+          "timed_out": false,
+          "duration_s": 0.06,
+          "tests_ran": 2,
+          "missing_module": null,
+          "output_tail": "F.\n======================================================================\nFAIL: test_duplicate_locator_is_rejected (test_framework_crosswalk.FrameworkCrosswalkTests.test_duplicate_locator_is_rejected)\n----------------------------------------------------------------------\nvalidate_framework_crosswalk.ValidationError: crosswalk is unexpectedly small: 2 rows\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/tmp/verify_kit_1j275bvx/uiowa_rfq_18649_workbench/framework_crosswalk/test_framework_crosswalk.py\", line 41, in test_duplicate_locator_is_rejected\n    with self.assertRaisesRegex(ValidationError, \"duplicate framework locator\"):\nAssertionError: \"duplicate framework locator\" does not match \"crosswalk is unexpectedly small: 2 rows\"\n\n----------------------------------------------------------------------\nRan 2 tests in 0.003s\n\nFAILED (failures=1)"
+        },
+        {
+          "test_file": "test_workbench.py",
+          "command": "python3 -m unittest test_workbench  (cwd=.)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.62,
+          "tests_ran": 9,
+          "missing_module": null,
+          "output_tail": "s........\n----------------------------------------------------------------------\nRan 9 tests in 0.522s\n\nOK (skipped=1)"
+        }
+      ]
+    },
+    {
+      "phase": "analysis",
+      "phase_title": "Analysis",
+      "component": "uiowa_rfq_18649_capacity_benchmark",
+      "role": "Workflow capacity benchmark; measured vs estimated.",
+      "present": false,
+      "status": "MISSING",
+      "reason": "no directory for this component exists under the survey root",
+      "kind": "unbuilt",
+      "check_files": [],
+      "tests_ran": 0,
+      "inventory": {
+        "files": 0,
+        "py_files": 0,
+        "doc_files": 0,
+        "data_files": 0,
+        "declared_requirements": []
+      },
+      "runs": []
+    },
+    {
+      "phase": "analysis",
+      "phase_title": "Analysis",
+      "component": "uiowa_rfq_18649_ai_opportunity_portfolio",
+      "role": "AI task suitability, benefit, integration effort.",
+      "present": true,
+      "status": "WORKING",
+      "reason": "executed 1 test file(s) here, 39 tests ran, all passed",
+      "kind": "executable",
+      "check_files": [
+        "test_opportunity_portfolio.py"
+      ],
+      "tests_ran": 39,
+      "inventory": {
+        "files": 8,
+        "py_files": 2,
+        "doc_files": 2,
+        "data_files": 4,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "test_opportunity_portfolio.py",
+          "command": "python3 -m unittest test_opportunity_portfolio  (cwd=.)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 1.25,
+          "tests_ran": 39,
+          "missing_module": null,
+          "output_tail": "........PORTFOLIO DATA ERROR: OPP-ESS-01: input 'volume_items_per_year' is missing likely, high. Partial ranges are not completed with defaults.\n...............................\n----------------------------------------------------------------------\nRan 39 tests in 1.180s\n\nOK"
+        }
+      ]
+    },
+    {
+      "phase": "analysis",
+      "phase_title": "Analysis",
+      "component": "uiowa_rfq_18649_ai_policy_to_workflow",
+      "role": "Policy-to-workflow assessment (NIST AI RMF as reference only).",
+      "present": true,
+      "status": "WORKING",
+      "reason": "executed 1 test file(s) here, 36 tests ran, all passed",
+      "kind": "executable",
+      "check_files": [
+        "test_policy_matrix.py"
+      ],
+      "tests_ran": 36,
+      "inventory": {
+        "files": 13,
+        "py_files": 2,
+        "doc_files": 4,
+        "data_files": 7,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "test_policy_matrix.py",
+          "command": "python3 -m unittest test_policy_matrix  (cwd=.)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.08,
+          "tests_ran": 36,
+          "missing_module": null,
+          "output_tail": "......................FIXTURE ERROR: missing input file: /tmp/uiowa074-fgtgj0b9/tasks.json\n.FICTIONAL DATA. Example State University is an invented organization. No record here describes the University of Iowa or any real institution, policy, system, or person.\ncells=15 assessed=10 not_assessed=4 blocked=1 gaps=3 strengths=5\nCAUTION: 4 of 15 cells were never assessed. Gap and strength counts below describe ONLY the 10 assessed cells. Do not read '3 gaps' as '3 gaps exist' -- unexamined ground is not clean ground.\nCAUTION: 1 cells cannot be resolved until the University answers a blocking interpretation question. They are excluded from gap and strength counts; their provisional reading is kept in reading_if_unblocked.\nwrote matrix.csv matrix.md open_questions.csv findings.json -> /tmp/uiowa074-out-5l9kkfn2\n.............\n----------------------------------------------------------------------\nRan 36 tests in 0.020s\n\nOK"
+        }
+      ]
+    },
+    {
+      "phase": "analysis",
+      "phase_title": "Analysis",
+      "component": "uiowa_rfq_18649_adoption_readiness",
+      "role": "Organizational adoption readiness; never rates individuals.",
+      "present": true,
+      "status": "WORKING",
+      "reason": "executed 1 test file(s) here, 49 tests ran, all passed",
+      "kind": "executable",
+      "check_files": [
+        "test_readiness.py"
+      ],
+      "tests_ran": 49,
+      "inventory": {
+        "files": 14,
+        "py_files": 2,
+        "doc_files": 3,
+        "data_files": 9,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "test_readiness.py",
+          "command": "python3 -m unittest test_readiness  (cwd=.)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.13,
+          "tests_ran": 49,
+          "missing_module": null,
+          "output_tail": "..................................teams assessed: 3   rejected records: 0   rejected options: 0\n  T-ESS    contributors=7   state=5/6 unknown=1  established=2 emerging=2 absent=1  options=5  evidence_requests=1\n  T-IAM    contributors=2   state=0/6 unknown=6  established=0 emerging=0 absent=0  options=0  evidence_requests=6\n  T-RIS    contributors=5   state=5/6 unknown=1  established=1 emerging=3 absent=1  options=6  evidence_requests=1\ndiagnostics: 0 error(s); sequencing open questions: 3\ncontent digest: 9a125e4e1bfca78387f5efa4ced28cb6932bba34bd957fc1e163ff3693790db2\noutputs in /tmp/tmpn9_4pvgd\n...............\n----------------------------------------------------------------------\nRan 49 tests in 0.054s\n\nOK"
+        }
+      ]
+    },
+    {
+      "phase": "analysis",
+      "phase_title": "Analysis",
+      "component": "uiowa_rfq_18649_ai_integration",
+      "role": "Integration and portability readiness patterns.",
+      "present": false,
+      "status": "MISSING",
+      "reason": "no directory for this component exists under the survey root",
+      "kind": "unbuilt",
+      "check_files": [],
+      "tests_ran": 0,
+      "inventory": {
+        "files": 0,
+        "py_files": 0,
+        "doc_files": 0,
+        "data_files": 0,
+        "declared_requirements": []
+      },
+      "runs": []
+    },
+    {
+      "phase": "analysis",
+      "phase_title": "Analysis",
+      "component": "uiowa_rfq_18649_ai_eval_kit",
+      "role": "AI usefulness evaluation tasks with known answers.",
+      "present": true,
+      "status": "WORKING",
+      "reason": "executed 1 test file(s) here, 29 tests ran, all passed",
+      "kind": "executable",
+      "check_files": [
+        "test_eval_kit.py"
+      ],
+      "tests_ran": 29,
+      "inventory": {
+        "files": 12,
+        "py_files": 3,
+        "doc_files": 2,
+        "data_files": 7,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "test_eval_kit.py",
+          "command": "python3 -m unittest test_eval_kit  (cwd=.)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.1,
+          "tests_ran": 29,
+          "missing_module": null,
+          "output_tail": ".............................\n----------------------------------------------------------------------\nRan 29 tests in 0.030s\n\nOK"
+        }
+      ]
+    },
+    {
+      "phase": "draft_review",
+      "phase_title": "Draft review",
+      "component": "uiowa_rfq_18649_traceability_rehearsal",
+      "role": "Evidence to finding to recommendation to report-line trace validator.",
+      "present": true,
+      "status": "WORKING",
+      "reason": "no unittest suite; documented runner `python3 validate_trace.py` was executed here and exited 0 with output",
+      "kind": "runner",
+      "check_files": [],
+      "tests_ran": 0,
+      "inventory": {
+        "files": 8,
+        "py_files": 1,
+        "doc_files": 3,
+        "data_files": 4,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "(documented runner)",
+          "command": "python3 validate_trace.py",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.03,
+          "tests_ran": 0,
+          "is_runner": true,
+          "produced_output": true,
+          "missing_module": null,
+          "output_tail": "evidence=8 findings=3 recommendations=2 statements=5\ntrace validation: PASS"
+        }
+      ]
+    },
+    {
+      "phase": "draft_review",
+      "phase_title": "Draft review",
+      "component": "uiowa_rfq_18649_doc_usability",
+      "role": "Reviewer usability method and worksheets.",
+      "present": true,
+      "status": "DRAFT",
+      "reason": "document component: 6 document/data files and no executable code; completeness of prose is not machine-checkable and needs a human read",
+      "kind": "document",
+      "check_files": [],
+      "tests_ran": 0,
+      "inventory": {
+        "files": 6,
+        "py_files": 0,
+        "doc_files": 3,
+        "data_files": 3,
+        "declared_requirements": []
+      },
+      "runs": []
+    },
+    {
+      "phase": "draft_review",
+      "phase_title": "Draft review",
+      "component": "uiowa_rfq_18649_qa_kit",
+      "role": "Evidence-backed discussion and Q&A kit.",
+      "present": false,
+      "status": "MISSING",
+      "reason": "no directory for this component exists under the survey root",
+      "kind": "unbuilt",
+      "check_files": [],
+      "tests_ran": 0,
+      "inventory": {
+        "files": 0,
+        "py_files": 0,
+        "doc_files": 0,
+        "data_files": 0,
+        "declared_requirements": []
+      },
+      "runs": []
+    },
+    {
+      "phase": "draft_review",
+      "phase_title": "Draft review",
+      "component": "uiowa_rfq_18649_interchange",
+      "role": "CSV/JSON/doc interchange verification for review handoffs.",
+      "present": false,
+      "status": "MISSING",
+      "reason": "no directory for this component exists under the survey root",
+      "kind": "unbuilt",
+      "check_files": [],
+      "tests_ran": 0,
+      "inventory": {
+        "files": 0,
+        "py_files": 0,
+        "doc_files": 0,
+        "data_files": 0,
+        "declared_requirements": []
+      },
+      "runs": []
+    },
+    {
+      "phase": "final_delivery",
+      "phase_title": "Final delivery",
+      "component": "uiowa_rfq_18649_report_structure",
+      "role": "RFQ-aligned final-report structure.",
+      "present": true,
+      "status": "WORKING",
+      "reason": "executed 1 test file(s) here, 55 tests ran, all passed",
+      "kind": "executable",
+      "check_files": [
+        "test_report_structure.py"
+      ],
+      "tests_ran": 55,
+      "inventory": {
+        "files": 14,
+        "py_files": 3,
+        "doc_files": 3,
+        "data_files": 8,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "test_report_structure.py",
+          "command": "python3 -m unittest test_report_structure  (cwd=.)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.17,
+          "tests_ran": 55,
+          "missing_module": null,
+          "output_tail": "atched : \"non-compliant\"\n  in      : The service is non-compliant and we recommend purchasing a new tool.\n  why     : States a compliance determination. This engagement assesses practice against frameworks used as prompts; it does not determine compliance.\n  rewrite : Describe the observed practice and the gap against the referenced clause, e.g. 'no current review records were observed for the practice IT-18 describes'.\n\n[PP-01] product_procurement  /tmp/tmpz8l534kk/drifted.md:1\n  matched : \"we recommend purchasing\"\n  in      : The service is non-compliant and we recommend purchasing a new tool.\n  why     : Recommends a purchase. Procurement is outside this engagement.\n  rewrite : State the capability the group needs and the decision it has to make; leave selection and purchase to the University's own process.\n\nSCOPE GUARD - UIOWA RFQ 18649 final report\n==============================================================\nflagged: 0   neutralized: 0\n  audit_verdict            0\n  individual_evaluation    0\n  product_procurement      0\n\nPASS - no scope drift detected.\n............s\n----------------------------------------------------------------------\nRan 55 tests in 0.081s\n\nOK (skipped=1)"
+        }
+      ]
+    },
+    {
+      "phase": "final_delivery",
+      "phase_title": "Final delivery",
+      "component": "uiowa_rfq_18649_report_visuals",
+      "role": "Accessible visual language; unassessed stays distinct.",
+      "present": true,
+      "status": "WORKING",
+      "reason": "executed 1 test file(s) here, 60 tests ran, all passed",
+      "kind": "executable",
+      "check_files": [
+        "test_report_visuals.py"
+      ],
+      "tests_ran": 60,
+      "inventory": {
+        "files": 24,
+        "py_files": 8,
+        "doc_files": 6,
+        "data_files": 2,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "test_report_visuals.py",
+          "command": "python3 -m unittest test_report_visuals  (cwd=.)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.17,
+          "tests_ran": 60,
+          "missing_module": null,
+          "output_tail": "---\n43 checks, 43 pass, 0 fail\n\n.redundant-encoding contract OK: colour, shape, texture, border and label are each independently sufficient to name a band; every not-a-rating state stays >= 3:1 from every rating after colour is removed.\n.input rejected: document: missing required field 'disclaimer'\n.no such data file: /nonexistent/nope.json\n.SYNTHETIC EXAMPLE - fictional groups and fictional evidence. Not a University of Iowa finding.\nrendered 13 files into /tmp/tmpwv4wf1bs\n  185bff0b2e95  contrast-audit.txt\n  d006741f7075  cross-group.print.svg\n  c0ff2339ecc8  cross-group.screen.svg\n  19cfe6b1b176  evidence-coverage-table.md\n  8c1368590b52  evidence-coverage.print.svg\n  1f97befd4064  evidence-coverage.screen.svg\n  243c4d7f2dda  matrix-table.md\n  c21cec08ce0e  matrix.print.svg\n  39b3057ba6fa  matrix.screen.svg\n  18b568b03721  roadmap-table.md\n  5ef627e063b7  roadmap.print.svg\n  1f523a4969e6  roadmap.screen.svg\n  dcdc06165f0f  text-alternatives.md\n\n8 of 12 cells rated; 2 insufficient evidence; 2 not assessed; 0 no record supplied.\n........................................................\n----------------------------------------------------------------------\nRan 60 tests in 0.083s\n\nOK"
+        }
+      ]
+    },
+    {
+      "phase": "final_delivery",
+      "phase_title": "Final delivery",
+      "component": "uiowa_rfq_18649_integration",
+      "role": "Field-name and taxonomy reconciliation across components.",
+      "present": true,
+      "status": "WORKING",
+      "reason": "no unittest suite; documented runner `python3 integrate_tabular.py --repo /home/user/commons --out /tmp/verify_kit_out_b8truv0b/integration.json` was executed here and exited 0 with output",
+      "kind": "runner",
+      "check_files": [],
+      "tests_ran": 0,
+      "inventory": {
+        "files": 3,
+        "py_files": 2,
+        "doc_files": 0,
+        "data_files": 1,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "(documented runner)",
+          "command": "python3 integrate_tabular.py --repo /home/user/commons --out /tmp/verify_kit_out_b8truv0b/integration.json",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.05,
+          "tests_ran": 0,
+          "is_runner": true,
+          "produced_output": true,
+          "missing_module": null,
+          "output_tail": "PASS records=15 components=2"
+        }
+      ]
+    },
+    {
+      "phase": "final_delivery",
+      "phase_title": "Final delivery",
+      "component": "uiowa_rfq_18649_closeout",
+      "role": "Evidence lifecycle and 30-day post-completion closeout templates.",
+      "present": true,
+      "status": "WORKING",
+      "reason": "executed 1 test file(s) here, 7 tests ran, all passed",
+      "kind": "executable",
+      "check_files": [
+        "test_closeout.py"
+      ],
+      "tests_ran": 7,
+      "inventory": {
+        "files": 13,
+        "py_files": 2,
+        "doc_files": 4,
+        "data_files": 7,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "test_closeout.py",
+          "command": "python3 -m unittest test_closeout  (cwd=.)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.07,
+          "tests_ran": 7,
+          "missing_module": null,
+          "output_tail": ".......\n----------------------------------------------------------------------\nRan 7 tests in 0.001s\n\nOK"
+        }
+      ]
+    },
+    {
+      "phase": "readout",
+      "phase_title": "Optional readout",
+      "component": "uiowa_rfq_18649_readout_deck",
+      "role": "Deck architecture that agrees with the example report.",
+      "present": true,
+      "status": "WORKING",
+      "reason": "executed 1 test file(s) here, 56 tests ran, all passed",
+      "kind": "executable",
+      "check_files": [
+        "test_deck_architecture.py"
+      ],
+      "tests_ran": 56,
+      "inventory": {
+        "files": 10,
+        "py_files": 2,
+        "doc_files": 4,
+        "data_files": 4,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "test_deck_architecture.py",
+          "command": "python3 -m unittest test_deck_architecture  (cwd=.)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.12,
+          "tests_ran": 56,
+          "missing_module": null,
+          "output_tail": " | Every core slide carries at least one speaker-note prompt. |\n| R012_DETAIL_IN_MAIN_BODY | Core slides stay inside the executive readability budget. |\n| R013_UNRESOLVED_MEASURE | A cited measure name exists on the cited report object. |\n| R014_DECISION_UNLINKED | A decision resolves to a recommendation whose phase agrees with the decision's. |\n| R015_REPORT_MISMATCH | The deck's report_ref is the report it is being checked against. |\n| R016_AGENDA_UNDERRUN | Core slide minutes use a reasonable share of the declared session (advisory). |\n\n.INPUT ERROR: file not found: /nonexistent/report.json\n....wrote /tmp/tmpluk6e9vs/a/readout-deck.md\nwrote /tmp/tmpluk6e9vs/a/readout-deck-ascii.txt\nwrote /tmp/tmpluk6e9vs/a/deck-report-agreement.md\nwrote /tmp/tmpluk6e9vs/a/readout-planning-table.csv\nagreement: PASS (0 error(s), 0 warning(s))\nwrote /tmp/tmpluk6e9vs/b/readout-deck.md\nwrote /tmp/tmpluk6e9vs/b/readout-deck-ascii.txt\nwrote /tmp/tmpluk6e9vs/b/deck-report-agreement.md\nwrote /tmp/tmpluk6e9vs/b/readout-planning-table.csv\nagreement: PASS (0 error(s), 0 warning(s))\n.............................\n----------------------------------------------------------------------\nRan 56 tests in 0.048s\n\nOK"
+        }
+      ]
+    },
+    {
+      "phase": "readout",
+      "phase_title": "Optional readout",
+      "component": "uiowa_rfq_18649_qa_kit",
+      "role": "Q&A answers substantiated from supplied evidence.",
+      "present": false,
+      "status": "MISSING",
+      "reason": "no directory for this component exists under the survey root",
+      "kind": "unbuilt",
+      "check_files": [],
+      "tests_ran": 0,
+      "inventory": {
+        "files": 0,
+        "py_files": 0,
+        "doc_files": 0,
+        "data_files": 0,
+        "declared_requirements": []
+      },
+      "runs": []
+    },
+    {
+      "phase": "unassigned",
+      "phase_title": "Unassigned (discovered on disk)",
+      "component": "uiowa_rfq_18649_acceptance_map",
+      "role": "discovered after this manifest was written; assign it to a phase",
+      "present": true,
+      "status": "UNMAPPED",
+      "reason": "lane found on disk but not placed in any phase by the manifest; underlying observation: check executed and did not pass: 1 of 1 test file(s) failed",
+      "kind": "executable",
+      "check_files": [
+        "test_acceptance_map.py"
+      ],
+      "tests_ran": 12,
+      "inventory": {
+        "files": 20,
+        "py_files": 4,
+        "doc_files": 5,
+        "data_files": 11,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "test_acceptance_map.py",
+          "command": "python3 -m unittest test_acceptance_map  (cwd=.)",
+          "exit_code": 1,
+          "timed_out": false,
+          "duration_s": 0.09,
+          "tests_ran": 12,
+          "missing_module": null,
+          "output_tail": "-------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/verify_kit__n961388/uiowa_rfq_18649_acceptance_map/test_acceptance_map.py\", line 273, in setUpClass\n    with open(os.path.join(cls.tmp, \"acceptance_index.json\"), encoding=\"utf-8\") as fh:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/tmp/uiowa130-wt3ja032/acceptance_index.json'\n\n======================================================================\nFAIL: test_deleting_a_bound_artifact_never_leaves_it_demonstrable (test_acceptance_map.TestHostileAndReadOnly.test_deleting_a_bound_artifact_never_leaves_it_demonstrable)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/verify_kit__n961388/uiowa_rfq_18649_acceptance_map/test_acceptance_map.py\", line 243, in test_deleting_a_bound_artifact_never_leaves_it_demonstrable\n    self.assertTrue(os.path.isfile(target))\nAssertionError: False is not true\n\n----------------------------------------------------------------------\nRan 12 tests in 0.021s\n\nFAILED (failures=1, errors=5)"
+        }
+      ]
+    },
+    {
+      "phase": "unassigned",
+      "phase_title": "Unassigned (discovered on disk)",
+      "component": "uiowa_rfq_18649_traceability",
+      "role": "discovered after this manifest was written; assign it to a phase",
+      "present": true,
+      "status": "UNMAPPED",
+      "reason": "lane found on disk but not placed in any phase by the manifest; underlying observation: executed 1 test file(s) here, 34 tests ran, all passed",
+      "kind": "executable",
+      "check_files": [
+        "test_trace_check.py"
+      ],
+      "tests_ran": 34,
+      "inventory": {
+        "files": 35,
+        "py_files": 3,
+        "doc_files": 22,
+        "data_files": 10,
+        "declared_requirements": []
+      },
+      "runs": [
+        {
+          "test_file": "test_trace_check.py",
+          "command": "python3 -m unittest test_trace_check  (cwd=.)",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.22,
+          "tests_ran": 34,
+          "missing_module": null,
+          "output_tail": "..................................\n----------------------------------------------------------------------\nRan 34 tests in 0.146s\n\nOK"
+        }
+      ]
+    }
+  ]
+}
