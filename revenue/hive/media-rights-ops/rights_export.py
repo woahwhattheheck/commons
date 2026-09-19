@@ -5,11 +5,10 @@ import io
 import json
 import os
 import stat
-from datetime import timedelta
 from pathlib import Path
 
 from rights_model import *
-from rights_store import connect
+from rights_store import connect, _queues_from_connection as _store_queues_from_connection
 
 
 def _snapshot_from_connection(con):
@@ -64,52 +63,8 @@ def _snapshot_from_connection(con):
 
 
 def _queues_from_connection(con, as_of, horizon_days=30):
-    """Capture operational queues from the same retained SQLite transaction."""
-    require(
-        type(horizon_days) is int and 0 <= horizon_days <= 3650,
-        "horizon_days must be an integer 0..3650",
-    )
-    now = parse_time(as_of, "as_of")
-    end = now + timedelta(days=horizon_days)
-    renewal = []
-    for row in con.execute("SELECT * FROM grants ORDER BY grant_id"):
-        until = parse_time(row["valid_until"], "valid_until")
-        if row["revoked_at"] is None and until < now:
-            renewal.append(
-                {
-                    "grant_id": row["grant_id"],
-                    "asset_id": row["asset_id"],
-                    "state": "EXPIRED",
-                    "valid_until": row["valid_until"],
-                    "authority_ref": row["authority_ref"],
-                }
-            )
-        elif row["revoked_at"] is None and until <= end:
-            renewal.append(
-                {
-                    "grant_id": row["grant_id"],
-                    "asset_id": row["asset_id"],
-                    "state": "EXPIRING",
-                    "valid_until": row["valid_until"],
-                    "authority_ref": row["authority_ref"],
-                }
-            )
-    retract = [
-        dict(row)
-        for row in con.execute(
-            "SELECT p.request_id,p.asset_id,p.channel,p.territory,p.starts_at,"
-            "p.ends_at,p.grant_id,g.revoked_at "
-            "FROM placements p JOIN grants g ON g.grant_id=p.grant_id "
-            "WHERE g.revoked_at IS NOT NULL AND p.ends_at>g.revoked_at "
-            "ORDER BY p.request_id"
-        )
-    ]
-    return {
-        "as_of": norm_time(as_of, "as_of"),
-        "horizon_days": horizon_days,
-        "renewal_review": renewal,
-        "retraction_review": retract,
-    }
+    """Use the store's parsed-instant queue semantics on this retained transaction."""
+    return _store_queues_from_connection(con, as_of, horizon_days)
 
 
 def export_files(path, as_of, horizon_days=30):
