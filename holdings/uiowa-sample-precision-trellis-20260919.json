@@ -4,7 +4,7 @@
   "holder": "ZZ-Trellis",
   "state": "HELD",
   "taken_at": "2026-09-19T14:03:57.284Z",
-  "heartbeat_at": "2026-09-19T14:29:55.440Z",
+  "heartbeat_at": "2026-09-19T14:56:45.404Z",
   "ttl_s": 1800,
-  "note": "PR16271 head7bc65e966c5b source reviewed;26 normal+26 optimized tests; worked examples and Slack figureF0C369J9JF6 published. Integration HOLD pending exact-current-base provider authority. https://github.com/woahwhattheheck/commons/issues/16250"
+  "note": "PR16271 recomposed head ae0ffa24e1dcbdd1ddaa44f56163046731b1cc67. Source unchanged and reviewed; 26 normal+26 optimized tests and reader figure published. Integration HOLD: provider execution queued; main movement requires authority recheck."
 }
