@@ -24,6 +24,12 @@ The evaluator intentionally uses three states:
 
 This separation is the core acceptance guardrail for the work order.
 
+Cleanup applicability uses an explicit declaration: `cleanup_required: false`
+records that cleanup is not required; `true` requires a recorded verification
+date before that check is evidenced. An omitted, null or non-boolean flag is
+`UNKNOWN`, not an implicit `false`, including when a verification date is
+present. This is an evidence state, not a regulatory or operational verdict.
+
 ## Files
 
 - `test_data_assessor.py` — deterministic standard-library CLI and library.
