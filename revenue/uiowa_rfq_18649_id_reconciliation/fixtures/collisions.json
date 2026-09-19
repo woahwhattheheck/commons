@@ -1,0 +1,97 @@
+{
+  "description": "Synthetic collision fixture proving that matching local IDs from different component namespaces remain distinct for every supported identity kind.",
+  "links": [],
+  "records": [
+    {
+      "kind": "source",
+      "label": "synthetic source in component-a",
+      "namespace": "component-a",
+      "notes": "collision fixture only",
+      "original_id": "SRC-001",
+      "source_path": "synthetic://component-a/source/SRC-001",
+      "source_revision": "synthetic-fixture-v1"
+    },
+    {
+      "kind": "observation",
+      "label": "synthetic observation in component-a",
+      "namespace": "component-a",
+      "notes": "collision fixture only",
+      "original_id": "E-001",
+      "source_path": "synthetic://component-a/observation/E-001",
+      "source_revision": "synthetic-fixture-v1"
+    },
+    {
+      "kind": "finding",
+      "label": "synthetic finding in component-a",
+      "namespace": "component-a",
+      "notes": "collision fixture only",
+      "original_id": "F-001",
+      "source_path": "synthetic://component-a/finding/F-001",
+      "source_revision": "synthetic-fixture-v1"
+    },
+    {
+      "kind": "recommendation",
+      "label": "synthetic recommendation in component-a",
+      "namespace": "component-a",
+      "notes": "collision fixture only",
+      "original_id": "R-001",
+      "source_path": "synthetic://component-a/recommendation/R-001",
+      "source_revision": "synthetic-fixture-v1"
+    },
+    {
+      "kind": "service",
+      "label": "synthetic service in component-a",
+      "namespace": "component-a",
+      "notes": "collision fixture only",
+      "original_id": "ESS",
+      "source_path": "synthetic://component-a/service/ESS",
+      "source_revision": "synthetic-fixture-v1"
+    },
+    {
+      "kind": "source",
+      "label": "synthetic source in component-b",
+      "namespace": "component-b",
+      "notes": "collision fixture only",
+      "original_id": "SRC-001",
+      "source_path": "synthetic://component-b/source/SRC-001",
+      "source_revision": "synthetic-fixture-v1"
+    },
+    {
+      "kind": "observation",
+      "label": "synthetic observation in component-b",
+      "namespace": "component-b",
+      "notes": "collision fixture only",
+      "original_id": "E-001",
+      "source_path": "synthetic://component-b/observation/E-001",
+      "source_revision": "synthetic-fixture-v1"
+    },
+    {
+      "kind": "finding",
+      "label": "synthetic finding in component-b",
+      "namespace": "component-b",
+      "notes": "collision fixture only",
+      "original_id": "F-001",
+      "source_path": "synthetic://component-b/finding/F-001",
+      "source_revision": "synthetic-fixture-v1"
+    },
+    {
+      "kind": "recommendation",
+      "label": "synthetic recommendation in component-b",
+      "namespace": "component-b",
+      "notes": "collision fixture only",
+      "original_id": "R-001",
+      "source_path": "synthetic://component-b/recommendation/R-001",
+      "source_revision": "synthetic-fixture-v1"
+    },
+    {
+      "kind": "service",
+      "label": "synthetic service in component-b",
+      "namespace": "component-b",
+      "notes": "collision fixture only",
+      "original_id": "ESS",
+      "source_path": "synthetic://component-b/service/ESS",
+      "source_revision": "synthetic-fixture-v1"
+    }
+  ],
+  "schema_version": "uiowa-id-map/v1"
+}
