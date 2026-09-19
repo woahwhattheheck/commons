@@ -20,6 +20,8 @@ STATIC_FILES = {
     "/": ("index.html", "text/html; charset=utf-8"),
     "/index.html": ("index.html", "text/html; charset=utf-8"),
     "/app.js": ("app.js", "text/javascript; charset=utf-8"),
+    "/review_navigation.js": ("review_navigation.js", "text/javascript; charset=utf-8"),
+    "/review_navigation.css": ("review_navigation.css", "text/css; charset=utf-8"),
     "/style.css": ("style.css", "text/css; charset=utf-8"),
 }
 
