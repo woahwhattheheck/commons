@@ -65,23 +65,30 @@ class KeyboardAcceptance(unittest.TestCase):
             self.page.keyboard.press("Shift+Tab" if reverse else "Tab")
         self.fail(f"Keyboard could not reach {selector}")
 
+    def open_import(self):
+        if not self.page.locator("#importPanel").get_attribute("open") == "":
+            self.tab_to("#importPanel > summary", reverse=True)
+            self.page.keyboard.press("Enter")
+
     def load_demo(self):
+        self.open_import()
         self.tab_to("#demoBtn")
         self.page.keyboard.press("Enter")
         self.assertEqual(self.page.locator(".cell").count(), 12)
 
     def select_first(self, key="Enter"):
-        self.tab_to(".cell:first-child")
+        self.tab_to(".cell:nth-of-type(1)")
         self.page.keyboard.press(key)
         self.assertEqual(self.page.evaluate("document.activeElement.id"), "selectedCellHeading")
 
     def test_keyboard_review_and_download(self):
         self.load_demo()
         self.select_first()
+        self.tab_to(".technical-details > summary")
+        self.page.keyboard.press("Enter")
         self.page.keyboard.press("Tab")
         self.assertEqual(self.page.evaluate("document.activeElement.id"), "detail")
-        self.page.keyboard.press("Tab")
-        self.assertEqual(self.page.evaluate("document.activeElement.id"), "disposition")
+        self.tab_to("#disposition")
         self.page.keyboard.press("ArrowDown")
         self.page.keyboard.press("Tab")
         self.assertEqual(self.page.evaluate("document.activeElement.id"), "note")
@@ -107,7 +114,8 @@ class KeyboardAcceptance(unittest.TestCase):
 
     def test_failed_import_restores_its_keyboard_invoker(self):
         self.load_demo()
-        self.tab_to("#inspectBtn", reverse=True)
+        self.open_import()
+        self.tab_to("#inspectBtn")
         self.page.keyboard.press("Enter")
         self.page.wait_for_function("!document.getElementById('inspectBtn').disabled")
         self.assertEqual(self.page.evaluate("document.activeElement.id"), "inspectBtn")
@@ -179,14 +187,15 @@ class KeyboardAcceptance(unittest.TestCase):
 
     def test_rerender_preserves_focused_matrix_button(self):
         self.load_demo()
-        self.tab_to(".cell:first-child")
+        self.tab_to(".cell:nth-of-type(1)")
         self.page.evaluate("renderMatrix()")
         self.assertEqual(self.page.evaluate("document.activeElement.dataset.key"), "ESS|software_development")
 
     def test_reset_clears_accessible_selection(self):
         self.load_demo()
         self.select_first()
-        self.tab_to("#resetBtn", reverse=True)
+        self.open_import()
+        self.tab_to("#resetBtn")
         self.page.keyboard.press("Enter")
         self.assertEqual(self.page.locator("#selectedCellHeading").inner_text(), "No cell selected")
         self.assertTrue(self.page.locator("#backToCellBtn").is_disabled())
@@ -206,9 +215,9 @@ class KeyboardAcceptance(unittest.TestCase):
     def test_skip_link_is_first_and_targets_focusable_heading(self):
         self.page.keyboard.press("Tab")
         self.assertEqual(self.page.evaluate("document.activeElement.textContent"), "Skip to assessment matrix")
-        self.assertEqual(self.page.locator("#matrix-heading").get_attribute("tabindex"), "-1")
+        self.assertEqual(self.page.locator("#summary-heading").get_attribute("tabindex"), "-1")
         self.page.keyboard.press("Enter")
-        self.assertEqual(self.page.evaluate("document.activeElement.id"), "matrix-heading")
+        self.assertEqual(self.page.evaluate("document.activeElement.id"), "summary-heading")
 
     def test_cell_and_form_controls_have_context(self):
         self.load_demo()
@@ -223,8 +232,8 @@ class KeyboardAcceptance(unittest.TestCase):
         for mode in ("light", "dark", "forced"):
             with self.subTest(mode=mode):
                 self.page.emulate_media(color_scheme="dark" if mode == "dark" else "light", forced_colors="active" if mode == "forced" else "none")
-                self.tab_to(".cell:first-child")
-                outline = self.page.locator(".cell:first-child").evaluate("e => ({width:getComputedStyle(e).outlineWidth, style:getComputedStyle(e).outlineStyle})")
+                self.tab_to(".cell:nth-of-type(1)")
+                outline = self.page.locator(".cell:nth-of-type(1)").evaluate("e => ({width:getComputedStyle(e).outlineWidth, style:getComputedStyle(e).outlineStyle})")
                 self.assertEqual(outline, {"width": "3px", "style": "solid"})
 
     def test_repeated_keyboard_review_has_no_trap(self):
@@ -251,3 +260,4 @@ class KeyboardAcceptance(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
+
