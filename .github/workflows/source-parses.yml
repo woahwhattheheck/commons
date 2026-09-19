@@ -6,6 +6,7 @@ on:
     branches:
       - main
     paths:
+      - "competitions/arc-agi-3-2026/**"
       - "revenue/multi_framework_evidence_freshness/**"
       - "tests/test_multi_framework_evidence_freshness*.py"
       - "competitions/nebius-proofpatch-2026/**"
@@ -110,6 +111,20 @@ jobs:
             python3 exercise_batch.py
             python3 -O exercise_batch.py
           )
+
+      - name: Verify ARC3 SAGE evidence-scope contract when present
+        shell: bash
+        run: |
+          if [ -f competitions/arc-agi-3-2026/test_planner_evidence_scope.py ]; then
+            (
+              cd competitions/arc-agi-3-2026
+              python3 -m unittest -v test_sage_symbolic_planner.py test_sage_evidence_reachability.py test_planner_evidence_scope.py
+              python3 -O -m unittest -v test_sage_symbolic_planner.py test_sage_evidence_reachability.py test_planner_evidence_scope.py
+              python3 planner_benchmark.py
+              python3 planner_scope_benchmark.py
+              python3 -m py_compile sage_symbolic_planner.py test_sage_symbolic_planner.py test_sage_evidence_reachability.py test_planner_evidence_scope.py planner_scope_benchmark.py
+            )
+          fi
 
   provider-cost-truth:
     name: provider-cost-truth (${{ matrix.python-version }})
