@@ -1,0 +1,15 @@
+tool,lane,classification,emits_contract_status,dead_nonzero_exits,unresolved_exits,raises_uncaught,finding_code,severity,detail
+t_contract.py,.,INDETERMINATE,True,0,1,False,RUNTIME_DECLARED_STATUS,INFO,"exit value is not statically resolvable, but the tool emits a KIT-STATUS line, so a runner reads its status rather than inferring one"
+t_crash_only.py,.,REPORT_ONLY,False,0,0,True,NO_SIGNAL_PATH,MEDIUM,cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout
+t_crash_only.py,.,REPORT_ONLY,False,0,0,True,CRASH_AS_SIGNAL,LOW,"the only non-zero exit available is an uncaught exception; a crash says the tool broke, not that the subject has findings"
+t_crash_only.py,.,REPORT_ONLY,False,0,0,True,NO_CONTRACT_LINE,INFO,"emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone"
+t_dead_gate.py,.,REPORT_ONLY,False,1,0,False,NO_SIGNAL_PATH,MEDIUM,cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout
+t_dead_gate.py,.,REPORT_ONLY,False,1,0,False,DEAD_GATE,HIGH,1 non-zero exit(s) sit in unreachable code; a grep-based check would report this tool as gated
+t_dead_gate.py,.,REPORT_ONLY,False,1,0,False,NO_CONTRACT_LINE,INFO,"emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone"
+t_dynamic.py,.,INDETERMINATE,False,0,1,False,UNRESOLVED_EXIT,MEDIUM,1 exit value(s) could not be resolved statically; not assumed to be a gate and not assumed to be report-only
+t_dynamic.py,.,INDETERMINATE,False,0,1,False,NO_CONTRACT_LINE,INFO,"emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone"
+t_false_clean.py,.,REPORT_ONLY,False,0,0,False,FALSE_CLEAN,HIGH,"prints failure vocabulary (broken, error, fail) but always exits 0, so a runner records a clean result for a run that reported a problem"
+t_false_clean.py,.,REPORT_ONLY,False,0,0,False,NO_CONTRACT_LINE,INFO,"emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone"
+t_gate.py,.,GATE,False,0,0,False,NO_CONTRACT_LINE,INFO,"emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone"
+t_report_only.py,.,REPORT_ONLY,False,0,0,False,NO_SIGNAL_PATH,MEDIUM,cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout
+t_report_only.py,.,REPORT_ONLY,False,0,0,False,NO_CONTRACT_LINE,INFO,"emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone"

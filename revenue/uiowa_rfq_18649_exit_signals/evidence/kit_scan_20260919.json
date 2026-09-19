@@ -1,0 +1,3025 @@
+{
+  "entrypoints": [
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "CRASH_AS_SIGNAL",
+          "detail": "the only non-zero exit available is an uncaught exception; a crash says the tool broke, not that the subject has findings",
+          "remedy": "distinguish INPUT_ERROR (code 2) from FINDINGS (code 1)",
+          "severity": "LOW"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_integration",
+      "raises_uncaught": true,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_integration/integrate_tabular.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "CRASH_AS_SIGNAL",
+          "detail": "the only non-zero exit available is an uncaught exception; a crash says the tool broke, not that the subject has findings",
+          "remedy": "distinguish INPUT_ERROR (code 2) from FINDINGS (code 1)",
+          "severity": "LOW"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_workbench",
+      "raises_uncaught": true,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_workbench/browser_acceptance.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "error"
+      ],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_workbench",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_workbench/server.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "CRASH_AS_SIGNAL",
+          "detail": "the only non-zero exit available is an uncaught exception; a crash says the tool broke, not that the subject has findings",
+          "remedy": "distinguish INPUT_ERROR (code 2) from FINDINGS (code 1)",
+          "severity": "LOW"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_workbench",
+      "raises_uncaught": true,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_workbench/test_workbench.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_workbench",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_workbench/framework_crosswalk/test_framework_crosswalk.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "fail"
+      ],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_workbench",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_workbench/framework_crosswalk/validate_framework_crosswalk.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_release_provenance",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_release_provenance/make_fixtures.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "error"
+      ],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_release_provenance",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_release_provenance/provenance.py",
+      "unresolved_exits": 1
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_release_provenance",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_release_provenance/test_provenance.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_document_extraction",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_document_extraction/extract.py",
+      "unresolved_exits": 1
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_document_extraction",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_document_extraction/make_synthetic_corpus.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_document_extraction",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_document_extraction/test_extract.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "fail",
+        "missing",
+        "reject"
+      ],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_exec_summary",
+      "raises_uncaught": false,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_exec_summary/build_summary.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_exec_summary",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_exec_summary/test_exec_summary.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "CRASH_AS_SIGNAL",
+          "detail": "the only non-zero exit available is an uncaught exception; a crash says the tool broke, not that the subject has findings",
+          "remedy": "distinguish INPUT_ERROR (code 2) from FINDINGS (code 1)",
+          "severity": "LOW"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "raises_uncaught": true,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_output_agreement/make_bundle.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "INDETERMINATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "UNRESOLVED_EXIT",
+          "detail": "2 exit value(s) could not be resolved statically; not assumed to be a gate and not assumed to be report-only",
+          "remedy": "exit with a literal contract code, or emit a KIT-STATUS line a runner can read instead of inferring",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "raises_uncaught": true,
+      "reason": "2 exit value(s) could not be resolved statically; not assumed to be a gate and not assumed to be report-only",
+      "tool": "uiowa_rfq_18649_output_agreement/output_agreement.py",
+      "unresolved_exits": 2
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_output_agreement/test_output_agreement.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "INDETERMINATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "error"
+      ],
+      "findings": [
+        {
+          "code": "UNRESOLVED_EXIT",
+          "detail": "1 exit value(s) could not be resolved statically; not assumed to be a gate and not assumed to be report-only",
+          "remedy": "exit with a literal contract code, or emit a KIT-STATUS line a runner can read instead of inferring",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_report_structure",
+      "raises_uncaught": true,
+      "reason": "1 exit value(s) could not be resolved statically; not assumed to be a gate and not assumed to be report-only",
+      "tool": "uiowa_rfq_18649_report_structure/report_structure.py",
+      "unresolved_exits": 1
+    },
+    {
+      "classification": "INDETERMINATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "UNRESOLVED_EXIT",
+          "detail": "1 exit value(s) could not be resolved statically; not assumed to be a gate and not assumed to be report-only",
+          "remedy": "exit with a literal contract code, or emit a KIT-STATUS line a runner can read instead of inferring",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_report_structure",
+      "raises_uncaught": true,
+      "reason": "1 exit value(s) could not be resolved statically; not assumed to be a gate and not assumed to be report-only",
+      "tool": "uiowa_rfq_18649_report_structure/scope_guard.py",
+      "unresolved_exits": 1
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_report_structure",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_report_structure/test_report_structure.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "error",
+        "reject"
+      ],
+      "findings": [
+        {
+          "code": "FALSE_CLEAN",
+          "detail": "prints failure vocabulary (error, reject) but always exits 0, so a runner records a clean result for a run that reported a problem",
+          "remedy": "return a non-zero code on the same condition, or wrap the tool with wrap.py and declare a fallback rule",
+          "severity": "HIGH"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_adoption_readiness",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_adoption_readiness/readiness.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "CRASH_AS_SIGNAL",
+          "detail": "the only non-zero exit available is an uncaught exception; a crash says the tool broke, not that the subject has findings",
+          "remedy": "distinguish INPUT_ERROR (code 2) from FINDINGS (code 1)",
+          "severity": "LOW"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_adoption_readiness",
+      "raises_uncaught": true,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_adoption_readiness/test_readiness.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "INDETERMINATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "error"
+      ],
+      "findings": [
+        {
+          "code": "UNRESOLVED_EXIT",
+          "detail": "1 exit value(s) could not be resolved statically; not assumed to be a gate and not assumed to be report-only",
+          "remedy": "exit with a literal contract code, or emit a KIT-STATUS line a runner can read instead of inferring",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_roadmap_dependencies",
+      "raises_uncaught": false,
+      "reason": "1 exit value(s) could not be resolved statically; not assumed to be a gate and not assumed to be report-only",
+      "tool": "uiowa_rfq_18649_roadmap_dependencies/depcheck.py",
+      "unresolved_exits": 1
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "CRASH_AS_SIGNAL",
+          "detail": "the only non-zero exit available is an uncaught exception; a crash says the tool broke, not that the subject has findings",
+          "remedy": "distinguish INPUT_ERROR (code 2) from FINDINGS (code 1)",
+          "severity": "LOW"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_roadmap_dependencies",
+      "raises_uncaught": true,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_roadmap_dependencies/test_depcheck.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "CRASH_AS_SIGNAL",
+          "detail": "the only non-zero exit available is an uncaught exception; a crash says the tool broke, not that the subject has findings",
+          "remedy": "distinguish INPUT_ERROR (code 2) from FINDINGS (code 1)",
+          "severity": "LOW"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_rating_model",
+      "raises_uncaught": true,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_rating_model/rating_model.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_rating_model",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_rating_model/test_rating_model.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "error",
+        "fail"
+      ],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_scope_change",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_scope_change/scope_change.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_scope_change",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_scope_change/test_scope_change.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "error"
+      ],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_recovery_evidence",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_recovery_evidence/assess_recovery.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_recovery_evidence",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_recovery_evidence/recovery_evidence.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_recovery_evidence",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_recovery_evidence/test_assess_recovery.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_recovery_evidence",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_recovery_evidence/test_recovery_evidence.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "not found"
+      ],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_acceptance_map",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_acceptance_map/build_index.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_acceptance_map",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_acceptance_map/exhibit_parser.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_acceptance_map",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_acceptance_map/test_acceptance_map.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "CRASH_AS_SIGNAL",
+          "detail": "the only non-zero exit available is an uncaught exception; a crash says the tool broke, not that the subject has findings",
+          "remedy": "distinguish INPUT_ERROR (code 2) from FINDINGS (code 1)",
+          "severity": "LOW"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_test_data_readiness",
+      "raises_uncaught": true,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_test_data_readiness/test_data_assessor.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_test_data_readiness",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_test_data_readiness/tests/test_assessor.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "error"
+      ],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_ai_policy_to_workflow",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_ai_policy_to_workflow/policy_matrix.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "CRASH_AS_SIGNAL",
+          "detail": "the only non-zero exit available is an uncaught exception; a crash says the tool broke, not that the subject has findings",
+          "remedy": "distinguish INPUT_ERROR (code 2) from FINDINGS (code 1)",
+          "severity": "LOW"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_ai_policy_to_workflow",
+      "raises_uncaught": true,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_ai_policy_to_workflow/test_policy_matrix.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "mismatch"
+      ],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_ai_eval_kit",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_ai_eval_kit/eval_kit.py",
+      "unresolved_exits": 1
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_ai_eval_kit",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_ai_eval_kit/test_eval_kit.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_traceability_rehearsal",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_traceability_rehearsal/validate_trace.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "INDETERMINATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "error"
+      ],
+      "findings": [
+        {
+          "code": "UNRESOLVED_EXIT",
+          "detail": "1 exit value(s) could not be resolved statically; not assumed to be a gate and not assumed to be report-only",
+          "remedy": "exit with a literal contract code, or emit a KIT-STATUS line a runner can read instead of inferring",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_outcome_measurement",
+      "raises_uncaught": false,
+      "reason": "1 exit value(s) could not be resolved statically; not assumed to be a gate and not assumed to be report-only",
+      "tool": "uiowa_rfq_18649_outcome_measurement/analyze.py",
+      "unresolved_exits": 1
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_outcome_measurement",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_outcome_measurement/tests/test_analyze.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "error"
+      ],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_synthetic_collection",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_synthetic_collection/validate_collection.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_synthetic_collection",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_synthetic_collection/tests/test_collection.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_ai_opportunity_portfolio",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_ai_opportunity_portfolio/opportunity_portfolio.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "CRASH_AS_SIGNAL",
+          "detail": "the only non-zero exit available is an uncaught exception; a crash says the tool broke, not that the subject has findings",
+          "remedy": "distinguish INPUT_ERROR (code 2) from FINDINGS (code 1)",
+          "severity": "LOW"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_ai_opportunity_portfolio",
+      "raises_uncaught": true,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_ai_opportunity_portfolio/test_opportunity_portfolio.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "INDETERMINATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "UNRESOLVED_EXIT",
+          "detail": "2 exit value(s) could not be resolved statically; not assumed to be a gate and not assumed to be report-only",
+          "remedy": "exit with a literal contract code, or emit a KIT-STATUS line a runner can read instead of inferring",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_traceability",
+      "raises_uncaught": true,
+      "reason": "2 exit value(s) could not be resolved statically; not assumed to be a gate and not assumed to be report-only",
+      "tool": "uiowa_rfq_18649_traceability/audit_self_sealing.py",
+      "unresolved_exits": 2
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_traceability",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_traceability/test_audit_self_sealing.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_traceability",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_traceability/test_trace_check.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "error",
+        "fail",
+        "missing"
+      ],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_traceability",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_traceability/trace_check.py",
+      "unresolved_exits": 3
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_deadline_continuity",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_deadline_continuity/continuity.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "CRASH_AS_SIGNAL",
+          "detail": "the only non-zero exit available is an uncaught exception; a crash says the tool broke, not that the subject has findings",
+          "remedy": "distinguish INPUT_ERROR (code 2) from FINDINGS (code 1)",
+          "severity": "LOW"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_deadline_continuity",
+      "raises_uncaught": true,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_deadline_continuity/test_continuity.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "CRASH_AS_SIGNAL",
+          "detail": "the only non-zero exit available is an uncaught exception; a crash says the tool broke, not that the subject has findings",
+          "remedy": "distinguish INPUT_ERROR (code 2) from FINDINGS (code 1)",
+          "severity": "LOW"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_operator_handoff",
+      "raises_uncaught": true,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_operator_handoff/render_guide.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "CRASH_AS_SIGNAL",
+          "detail": "the only non-zero exit available is an uncaught exception; a crash says the tool broke, not that the subject has findings",
+          "remedy": "distinguish INPUT_ERROR (code 2) from FINDINGS (code 1)",
+          "severity": "LOW"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_operator_handoff",
+      "raises_uncaught": true,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_operator_handoff/test_verify_kit.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "missing"
+      ],
+      "findings": [
+        {
+          "code": "FALSE_CLEAN",
+          "detail": "prints failure vocabulary (missing) but always exits 0, so a runner records a clean result for a run that reported a problem",
+          "remedy": "return a non-zero code on the same condition, or wrap the tool with wrap.py and declare a fallback rule",
+          "severity": "HIGH"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_operator_handoff",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_operator_handoff/verify_kit.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_operator_handoff",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_operator_handoff/fixtures/minikit/uiowa_rfq_18649_alpha/test_rollup.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_operator_handoff",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_operator_handoff/fixtures/minikit/uiowa_rfq_18649_bravo/test_parser.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_ai_use_inventory",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_ai_use_inventory/interview_guide.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_ai_use_inventory",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_ai_use_inventory/inventory.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_ai_use_inventory",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_ai_use_inventory/test_inventory.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "CRASH_AS_SIGNAL",
+          "detail": "the only non-zero exit available is an uncaught exception; a crash says the tool broke, not that the subject has findings",
+          "remedy": "distinguish INPUT_ERROR (code 2) from FINDINGS (code 1)",
+          "severity": "LOW"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_secure_guidance",
+      "raises_uncaught": true,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_secure_guidance/assess_guidance.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_secure_guidance",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_secure_guidance/test_assess_guidance.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "discarded",
+        "error",
+        "invalid"
+      ],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_ai_integration",
+      "raises_uncaught": false,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_ai_integration/build_kit.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "fail",
+        "violation"
+      ],
+      "findings": [
+        {
+          "code": "FALSE_CLEAN",
+          "detail": "prints failure vocabulary (fail, violation) but always exits 0, so a runner records a clean result for a run that reported a problem",
+          "remedy": "return a non-zero code on the same condition, or wrap the tool with wrap.py and declare a fallback rule",
+          "severity": "HIGH"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_ai_integration",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_ai_integration/demo_swap.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_ai_integration",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_ai_integration/test_ai_integration.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "INDETERMINATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "UNRESOLVED_EXIT",
+          "detail": "1 exit value(s) could not be resolved statically; not assumed to be a gate and not assumed to be report-only",
+          "remedy": "exit with a literal contract code, or emit a KIT-STATUS line a runner can read instead of inferring",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_closeout",
+      "raises_uncaught": true,
+      "reason": "1 exit value(s) could not be resolved statically; not assumed to be a gate and not assumed to be report-only",
+      "tool": "uiowa_rfq_18649_closeout/closeout.py",
+      "unresolved_exits": 1
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_closeout",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_closeout/test_closeout.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_bid_pack",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_bid_pack/bid_pack.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_bid_pack",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_bid_pack/test_bid_pack.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "reject"
+      ],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "raises_uncaught": false,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_intake_rehearsal/rehearse_intake.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "CRASH_AS_SIGNAL",
+          "detail": "the only non-zero exit available is an uncaught exception; a crash says the tool broke, not that the subject has findings",
+          "remedy": "distinguish INPUT_ERROR (code 2) from FINDINGS (code 1)",
+          "severity": "LOW"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "raises_uncaught": true,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_intake_rehearsal/test_rehearsal.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_capacity_feasibility",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_capacity_feasibility/capacity_roadmap.py",
+      "unresolved_exits": 1
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "CRASH_AS_SIGNAL",
+          "detail": "the only non-zero exit available is an uncaught exception; a crash says the tool broke, not that the subject has findings",
+          "remedy": "distinguish INPUT_ERROR (code 2) from FINDINGS (code 1)",
+          "severity": "LOW"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_capacity_feasibility",
+      "raises_uncaught": true,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_capacity_feasibility/test_capacity_roadmap.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "INDETERMINATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "UNRESOLVED_EXIT",
+          "detail": "4 exit value(s) could not be resolved statically; not assumed to be a gate and not assumed to be report-only",
+          "remedy": "exit with a literal contract code, or emit a KIT-STATUS line a runner can read instead of inferring",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_capacity_benchmark",
+      "raises_uncaught": true,
+      "reason": "4 exit value(s) could not be resolved statically; not assumed to be a gate and not assumed to be report-only",
+      "tool": "uiowa_rfq_18649_capacity_benchmark/benchmark.py",
+      "unresolved_exits": 4
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "CRASH_AS_SIGNAL",
+          "detail": "the only non-zero exit available is an uncaught exception; a crash says the tool broke, not that the subject has findings",
+          "remedy": "distinguish INPUT_ERROR (code 2) from FINDINGS (code 1)",
+          "severity": "LOW"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_capacity_benchmark",
+      "raises_uncaught": true,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_capacity_benchmark/generate_collection.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_capacity_benchmark",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_capacity_benchmark/test_capacity_benchmark.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "error"
+      ],
+      "findings": [
+        {
+          "code": "FALSE_CLEAN",
+          "detail": "prints failure vocabulary (error) but always exits 0, so a runner records a clean result for a run that reported a problem",
+          "remedy": "return a non-zero code on the same condition, or wrap the tool with wrap.py and declare a fallback rule",
+          "severity": "HIGH"
+        },
+        {
+          "code": "CRASH_AS_SIGNAL",
+          "detail": "the only non-zero exit available is an uncaught exception; a crash says the tool broke, not that the subject has findings",
+          "remedy": "distinguish INPUT_ERROR (code 2) from FINDINGS (code 1)",
+          "severity": "LOW"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_capacity_benchmark",
+      "raises_uncaught": true,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_capacity_benchmark/workflow.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "error"
+      ],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_delivery_metrics",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_delivery_metrics/calculator.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_delivery_metrics",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_delivery_metrics/test_calculator.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "CRASH_AS_SIGNAL",
+          "detail": "the only non-zero exit available is an uncaught exception; a crash says the tool broke, not that the subject has findings",
+          "remedy": "distinguish INPUT_ERROR (code 2) from FINDINGS (code 1)",
+          "severity": "LOW"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_security_event_review",
+      "raises_uncaught": true,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_security_event_review/assess_security_events.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_security_event_review",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_security_event_review/test_assess_security_events.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "error"
+      ],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_filesystem_safety",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_filesystem_safety/fs_safety.py",
+      "unresolved_exits": 1
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_filesystem_safety",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_filesystem_safety/test_fsaudit.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "broken",
+        "fail",
+        "insufficient",
+        "missing",
+        "reject"
+      ],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_report_visuals",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_report_visuals/render_report_visuals.py",
+      "unresolved_exits": 1
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_report_visuals",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_report_visuals/test_report_visuals.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "CRASH_AS_SIGNAL",
+          "detail": "the only non-zero exit available is an uncaught exception; a crash says the tool broke, not that the subject has findings",
+          "remedy": "distinguish INPUT_ERROR (code 2) from FINDINGS (code 1)",
+          "severity": "LOW"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_observability",
+      "raises_uncaught": true,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_observability/observability.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_observability",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_observability/test_observability.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "error",
+        "missing"
+      ],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_prioritization",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_prioritization/prioritize.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_prioritization",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_prioritization/test_prioritize.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "error"
+      ],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_workshare",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_workshare/compiler.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_workshare",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_workshare/test_compiler.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_workshare",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_workshare/methodology/test_validate_23_evidence_register.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "error"
+      ],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_workshare",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_workshare/methodology/validate_23_evidence_register.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "INDETERMINATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "UNRESOLVED_EXIT",
+          "detail": "2 exit value(s) could not be resolved statically; not assumed to be a gate and not assumed to be report-only",
+          "remedy": "exit with a literal contract code, or emit a KIT-STATUS line a runner can read instead of inferring",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_handoff",
+      "raises_uncaught": true,
+      "reason": "2 exit value(s) could not be resolved statically; not assumed to be a gate and not assumed to be report-only",
+      "tool": "uiowa_rfq_18649_handoff/handoff.py",
+      "unresolved_exits": 2
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_handoff",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_handoff/tests/test_handoff.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_capability_appendix",
+      "raises_uncaught": false,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_capability_appendix/capability_appendix.py",
+      "unresolved_exits": 3
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "CRASH_AS_SIGNAL",
+          "detail": "the only non-zero exit available is an uncaught exception; a crash says the tool broke, not that the subject has findings",
+          "remedy": "distinguish INPUT_ERROR (code 2) from FINDINGS (code 1)",
+          "severity": "LOW"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_capability_appendix",
+      "raises_uncaught": true,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_capability_appendix/test_capability_appendix.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "fail"
+      ],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_qa_refusal_contract",
+      "raises_uncaught": false,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_qa_refusal_contract/cli.py",
+      "unresolved_exits": 2
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_qa_refusal_contract",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_qa_refusal_contract/test_qa.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "error",
+        "fail"
+      ],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_question_cards",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_question_cards/question_cards.py",
+      "unresolved_exits": 1
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_question_cards",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_question_cards/test_question_cards.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_contractor_transition",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_contractor_transition/test_transition.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_contractor_transition",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_contractor_transition/transition.py",
+      "unresolved_exits": 1
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "fail"
+      ],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_economics_resource_adapters",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_economics_resource_adapters/check_contract.py",
+      "unresolved_exits": 1
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "conflict"
+      ],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_economics_resource_adapters",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_economics_resource_adapters/integrate.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_economics_resource_adapters",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_economics_resource_adapters/test_check_contract.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "CRASH_AS_SIGNAL",
+          "detail": "the only non-zero exit available is an uncaught exception; a crash says the tool broke, not that the subject has findings",
+          "remedy": "distinguish INPUT_ERROR (code 2) from FINDINGS (code 1)",
+          "severity": "LOW"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_economics_resource_adapters",
+      "raises_uncaught": true,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_economics_resource_adapters/test_integrate.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "error",
+        "fail"
+      ],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_milestone_packets",
+      "raises_uncaught": false,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_milestone_packets/milestone_packets.py",
+      "unresolved_exits": 1
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_milestone_packets",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_milestone_packets/test_milestone_packets.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_readout_deck",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_readout_deck/deck_architecture.py",
+      "unresolved_exits": 1
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "CRASH_AS_SIGNAL",
+          "detail": "the only non-zero exit available is an uncaught exception; a crash says the tool broke, not that the subject has findings",
+          "remedy": "distinguish INPUT_ERROR (code 2) from FINDINGS (code 1)",
+          "severity": "LOW"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_readout_deck",
+      "raises_uncaught": true,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_readout_deck/test_deck_architecture.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "error"
+      ],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_ai_decision_case",
+      "raises_uncaught": true,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "uiowa_rfq_18649_ai_decision_case/ai_decision_case.py",
+      "unresolved_exits": 4
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": "uiowa_rfq_18649_ai_decision_case",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "uiowa_rfq_18649_ai_decision_case/test_ai_decision_case.py",
+      "unresolved_exits": 0
+    }
+  ],
+  "provenance": {
+    "branch": "claude/multi-agent-slack-demo-4ikzfs",
+    "commit": "03fa2f987df4326ca4db115e24336c220c5b9260",
+    "corrections": [
+      "A crude pre-scan grep for sys.exit(<nonzero literal>) reported 20 gates / 85 always-zero over 105 entrypoints, and that count was posted to the board before scan.py existed. It was WRONG: it did not resolve sys.exit(main()) into main()'s return values, so it misclassified real gates as report-only.",
+      "An earlier run of scan.py itself over-reported NO_CONTRACT_LINE, because it looked for the literal string KIT-STATUS and so missed tools that emit the line via contract.emit(). Fixed; figures here come from the corrected scanner."
+    ],
+    "method": "read-only shallow clone; scan.py AST only; nothing executed or imported",
+    "scanned_on": "2026-09-19",
+    "scope": "top-level lanes named uiowa_rfq_18649_*"
+  },
+  "snapshot_note": "Point-in-time snapshot. Branch claude/multi-agent-slack-demo-4ikzfs at commit 03fa2f987df4326ca4db115e24336c220c5b9260, read-only shallow clone, scanned 2026-09-19. The branch moves continuously; re-run the command in the README for current figures.",
+  "summary": {
+    "by_classification": {
+      "GATE": 37,
+      "INDETERMINATE": 9,
+      "REPORT_ONLY": 69
+    },
+    "dead_gate_count": 0,
+    "entrypoints": 115,
+    "false_clean_count": 4,
+    "finding_counts": {
+      "CRASH_AS_SIGNAL": 23,
+      "FALSE_CLEAN": 4,
+      "NO_CONTRACT_LINE": 115,
+      "NO_SIGNAL_PATH": 65,
+      "UNRESOLVED_EXIT": 9
+    },
+    "gate_count": 37,
+    "indeterminate_count": 9,
+    "lanes": 47,
+    "non_entrypoint_files_skipped": 74,
+    "report_only_count": 69,
+    "root": "/tmp/claude-0/commons_ro/revenue"
+  }
+}

@@ -1,0 +1,216 @@
+{
+  "entrypoints": [
+    {
+      "classification": "INDETERMINATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": true,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "RUNTIME_DECLARED_STATUS",
+          "detail": "exit value is not statically resolvable, but the tool emits a KIT-STATUS line, so a runner reads its status rather than inferring one",
+          "remedy": "none; this is the intended shape",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": ".",
+      "raises_uncaught": false,
+      "reason": "1 exit value(s) could not be resolved statically; not assumed to be a gate and not assumed to be report-only",
+      "tool": "t_contract.py",
+      "unresolved_exits": 1
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "CRASH_AS_SIGNAL",
+          "detail": "the only non-zero exit available is an uncaught exception; a crash says the tool broke, not that the subject has findings",
+          "remedy": "distinguish INPUT_ERROR (code 2) from FINDINGS (code 1)",
+          "severity": "LOW"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": ".",
+      "raises_uncaught": true,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "t_crash_only.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 1,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "DEAD_GATE",
+          "detail": "1 non-zero exit(s) sit in unreachable code; a grep-based check would report this tool as gated",
+          "remedy": "remove the dead branch or restore the path that reaches it",
+          "severity": "HIGH"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": ".",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "t_dead_gate.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "INDETERMINATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "UNRESOLVED_EXIT",
+          "detail": "1 exit value(s) could not be resolved statically; not assumed to be a gate and not assumed to be report-only",
+          "remedy": "exit with a literal contract code, or emit a KIT-STATUS line a runner can read instead of inferring",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": ".",
+      "raises_uncaught": false,
+      "reason": "1 exit value(s) could not be resolved statically; not assumed to be a gate and not assumed to be report-only",
+      "tool": "t_dynamic.py",
+      "unresolved_exits": 1
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [
+        "broken",
+        "error",
+        "fail"
+      ],
+      "findings": [
+        {
+          "code": "FALSE_CLEAN",
+          "detail": "prints failure vocabulary (broken, error, fail) but always exits 0, so a runner records a clean result for a run that reported a problem",
+          "remedy": "return a non-zero code on the same condition, or wrap the tool with wrap.py and declare a fallback rule",
+          "severity": "HIGH"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": ".",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "t_false_clean.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "GATE",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": ".",
+      "raises_uncaught": false,
+      "reason": "a non-zero exit is reachable from the entrypoint",
+      "tool": "t_gate.py",
+      "unresolved_exits": 0
+    },
+    {
+      "classification": "REPORT_ONLY",
+      "dead_nonzero_exits": 0,
+      "emits_contract_status": false,
+      "failure_vocabulary_printed": [],
+      "findings": [
+        {
+          "code": "NO_SIGNAL_PATH",
+          "detail": "cannot return non-zero under any input; indistinguishable from a clean run by anything except a human reading stdout",
+          "remedy": "adopt contract.emit(), or wrap the tool with wrap.py",
+          "severity": "MEDIUM"
+        },
+        {
+          "code": "NO_CONTRACT_LINE",
+          "detail": "emits no KIT-STATUS line, so a runner must infer meaning from the exit code alone",
+          "remedy": "call contract.emit() before returning",
+          "severity": "INFO"
+        }
+      ],
+      "has_main_guard": true,
+      "lane": ".",
+      "raises_uncaught": false,
+      "reason": "no reachable non-zero exit path was found",
+      "tool": "t_report_only.py",
+      "unresolved_exits": 0
+    }
+  ],
+  "snapshot_note": "",
+  "summary": {
+    "by_classification": {
+      "GATE": 1,
+      "INDETERMINATE": 2,
+      "REPORT_ONLY": 4
+    },
+    "dead_gate_count": 1,
+    "entrypoints": 7,
+    "false_clean_count": 1,
+    "finding_counts": {
+      "CRASH_AS_SIGNAL": 1,
+      "DEAD_GATE": 1,
+      "FALSE_CLEAN": 1,
+      "NO_CONTRACT_LINE": 6,
+      "NO_SIGNAL_PATH": 3,
+      "RUNTIME_DECLARED_STATUS": 1,
+      "UNRESOLVED_EXIT": 1
+    },
+    "gate_count": 1,
+    "indeterminate_count": 2,
+    "lanes": 1,
+    "non_entrypoint_files_skipped": 0,
+    "report_only_count": 4,
+    "root": "fixtures"
+  }
+}
