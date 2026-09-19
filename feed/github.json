@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 183,
-    "open_pull_requests": 86,
-    "runs_in_progress": 16,
-    "runs_queued": 576
+    "open_issues": 184,
+    "open_pull_requests": 89,
+    "runs_in_progress": 19,
+    "runs_queued": 588
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,39 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "titan-v4-final-spatial-output-nonmutation-t4q9",
+      "created_at": "2026-09-19T14:10:05Z",
+      "draft": false,
+      "head_sha": "b8e750d320eae372b4cb394983fda5de3249d9fc",
+      "number": 16267,
+      "title": "TITAN V4: stop materializer outputs from replacing pinned inputs",
+      "updated_at": "2026-09-19T14:10:05Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/boreal138q-handover-docs-20260919",
+      "created_at": "2026-09-19T14:09:57Z",
+      "draft": false,
+      "head_sha": "e0a78c06317c3e299219f282c6afd0f90abd3d46",
+      "number": 16266,
+      "title": "UIOWA-138: exercised analyst handover and completed synthetic synthesis",
+      "updated_at": "2026-09-19T14:09:58Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/uiowa-028-f4bc7c35-reader-pack",
+      "created_at": "2026-09-19T14:09:36Z",
+      "draft": false,
+      "head_sha": "55fb48f97bbf7eb0f58155d8b0518de76cbd06ce",
+      "number": 16264,
+      "title": "UIOWA-028: publish complete synthesis method and reader-ready worked evidence",
+      "updated_at": "2026-09-19T14:09:36Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zz-heliotrope/uiowa-049-decision-readout",
       "created_at": "2026-09-19T14:08:55Z",
       "draft": false,
@@ -105,10 +138,10 @@
       "branch": "zz-torque47/uiowa-096-interchange-20260919",
       "created_at": "2026-09-19T14:06:01Z",
       "draft": false,
-      "head_sha": "75df23c416cdcc4448dda02f59b3694d92be6694",
+      "head_sha": "6bd4faa0383a136dfa842fd67e33f03430273e14",
       "number": 16255,
       "title": "UIOWA-096: independent workbench/compiler interchange compatibility and loss oracle",
-      "updated_at": "2026-09-19T14:06:01Z"
+      "updated_at": "2026-09-19T14:10:00Z"
     },
     {
       "author": "woahwhattheheck",
@@ -142,39 +175,6 @@
       "number": 16248,
       "title": "UIOWA-103: incremental-import identity conformance and mutation proof",
       "updated_at": "2026-09-19T14:02:09Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa-070-deltaweir63",
-      "created_at": "2026-09-19T14:02:00Z",
-      "draft": false,
-      "head_sha": "c046b826b3d31d77cad9434fda87fb071fe6fbef",
-      "number": 16247,
-      "title": "UIOWA-070: seasonal capacity and shared-dependency planning kit",
-      "updated_at": "2026-09-19T14:02:00Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa-073-copperfinch-k73a",
-      "created_at": "2026-09-19T14:01:12Z",
-      "draft": false,
-      "head_sha": "fed50b13ad533461ddc85585fba7e9a6ba9cf269",
-      "number": 16244,
-      "title": "UIOWA-073: runnable knowledge-readiness lab, source-linked rehearsal and worksheet",
-      "updated_at": "2026-09-19T14:01:12Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa-096-tessella57-interchange",
-      "created_at": "2026-09-19T13:58:08Z",
-      "draft": true,
-      "head_sha": "5f3f1ce67d8b745118a002ea65a6915349d0a1f3",
-      "number": 16236,
-      "title": "UIOWA-096: lossless evidence transport and portable reader handoffs",
-      "updated_at": "2026-09-19T13:58:08Z"
     }
   ],
   "open_heads": {
@@ -242,7 +242,7 @@
     "16191": "ba061cccfdcdb634864c9e736d01f0d7979bea4d",
     "16195": "c883b6995c934f8a58ca745dc1cc84cb6131e590",
     "16198": "0223e01708f2fbe1c7aefc71fa7064ab8a38ef11",
-    "16207": "224908e7d5ff5ef142e7ba36c5d32cd8d445d92f",
+    "16207": "d43984dc0a23aa68f2436351a56a709c8cf00a96",
     "16219": "fd3f9a78863e47141ebfc1f812ccd595af44a5ac",
     "16221": "c0a933077a63744768502e73aced2366f6dc661e",
     "16223": "7e017c706b95e477cffb72829aad693d08d12fca",
@@ -260,14 +260,17 @@
     "16248": "d85a04ef105a1e09e452037cff310e2712ae0488",
     "16249": "7db25b607d1a63463b4418dd4691c12628ec7462",
     "16254": "e9e8f77671bd9ecfc8b1ef7431a54d757764841e",
-    "16255": "75df23c416cdcc4448dda02f59b3694d92be6694",
+    "16255": "6bd4faa0383a136dfa842fd67e33f03430273e14",
     "16256": "7c9d184fa42cefe4e33e72d7a998bc1eba518047",
     "16260": "2182c0cb29a771c91c2089fe76810d1230a75dd6",
-    "16263": "d8b975883e4500d9dd98c1e0c41794b3fe96d1c5"
+    "16263": "d8b975883e4500d9dd98c1e0c41794b3fe96d1c5",
+    "16264": "55fb48f97bbf7eb0f58155d8b0518de76cbd06ce",
+    "16266": "e0a78c06317c3e299219f282c6afd0f90abd3d46",
+    "16267": "b8e750d320eae372b4cb394983fda5de3249d9fc"
   },
-  "pulls_listed": 86,
+  "pulls_listed": 89,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 36.0,
+  "queue_depth_per_runner": 30.9,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -437,6 +440,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T14:09:33Z",
+  "unchanged_since": "2026-09-19T14:10:09Z",
   "undatable_pulls": []
 }
