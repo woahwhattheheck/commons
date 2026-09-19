@@ -80,10 +80,12 @@ def classify_execution(evidence: GrantFoxExecutionEvidence) -> dict:
         return _result(evidence, NEEDS_REFRESH)
 
     if application_state in {"rejected", "withdrawn", "ineligible"}:
+        if assignment_state != "unassigned":
+            return _result(evidence, NEEDS_REFRESH)
         return _result(evidence, RESEARCH_ONLY)
 
     if application_state == "not_submitted":
-        if assignment_state.startswith("assigned_"):
+        if assignment_state != "unassigned":
             return _result(evidence, NEEDS_REFRESH)
         return _result(evidence, APPLICATION_REQUIRED)
 
