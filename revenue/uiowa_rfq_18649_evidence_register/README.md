@@ -54,6 +54,16 @@ This order's three additions are new columns: `source_id`, `excerpt_locator`, `p
 The document-level attributes it names — owner, supplied date, version, document location — live on
 the manifest, and a test asserts they are **not** duplicated onto the register.
 
+### Current UIOWA-023 custody fields
+
+The current common 023 register adds `custodian_or_owner` and `content_digest` after `source_ref`.
+The native 031 packet materializes those field names from the one authoritative manifest row:
+`custodian_or_owner == manifest.owner` and
+`content_digest == "sha256:" + manifest.sha256`.
+Validation rejects nonblank values that drift from the manifest. This reconciles the current common
+register contract without moving document location, version, supplied-date, owner, or digest
+authority out of the manifest. GRANITE's six fictional source documents remain byte-identical.
+
 ## Locators that actually resolve
 
 A locator nobody can follow is not a locator, so all four forms are resolved against the real bytes:
