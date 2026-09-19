@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "scenario_id": "fictional-ais-improvement-roadmap",
+  "data_kind": "synthetic",
+  "planning_basis": "Entirely fictional preparation example. Day zero is a relative planning origin, not a meeting or an agreed kickoff. Duration bounds use calendar days and effort/capacity bounds use whole person-hours. No University fact, commitment, rating or resource approval is asserted.",
+  "findings": [
+    {"id":"F-ESS","summary":"Fictional release records do not consistently retain verification evidence.","source_refs":["synthetic-evidence.md#ess-release-records"]},
+    {"id":"F-RIS","summary":"Fictional recovery notes lack a repeatable end-to-end business verification exercise.","source_refs":["synthetic-evidence.md#ris-recovery-records"]},
+    {"id":"F-IAM","summary":"Fictional event reviews record discussion but not consistent follow-through.","source_refs":["synthetic-evidence.md#iam-review-records"]},
+    {"id":"F-AI","summary":"Fictional AI experiment has no measured repair effort or repeatable evaluation yet.","source_refs":["synthetic-evidence.md#ai-experiment-records"]}
+  ],
+  "recommendations": [
+    {
+      "id":"R-01","title":"Establish release-evidence baseline","group":"ESS","owner_role":"Delivery-practice lead",
+      "finding_ids":["F-ESS"],"depends_on":[],"not_before_day":0,"duration_days":{"low":10,"high":20},
+      "effort_hours":{"low":24,"high":40},"effort_phase":"0-90","preferred_phase":"0-90",
+      "outcome":"A repeatable release record retains the change, verification result and responsible service role.",
+      "acceptance_evidence":"Review three fictional release examples against the agreed record fields; later collect actual examples during the engagement.",
+      "assumptions":["Existing change-record tooling can retain the fields without product procurement.","Named role has 24–40 whole person-hours available in this phase."],
+      "maturity_hypothesis":{"baseline":1,"target":2,"rationale":"A documented and repeated release practice may support a one-level progression.","evidence_needed":"Actual baseline assessment, repeated use, sampled outcomes and reviewer interpretation; dates alone prove no progression."}
+    },
+    {
+      "id":"R-02","title":"Rehearse service recovery and verification","group":"RIS","owner_role":"Service-reliability lead",
+      "finding_ids":["F-RIS"],"depends_on":["R-01"],"not_before_day":60,"duration_days":{"low":20,"high":40},
+      "effort_hours":{"low":70,"high":90},"effort_phase":"0-90","preferred_phase":"0-90",
+      "outcome":"An isolated rehearsal demonstrates restoration of the fictional submission workflow, not merely completed backups.",
+      "acceptance_evidence":"Retained rehearsal timeline, dependencies, business verification and unresolved conditions; no live recovery action is performed by this kit.",
+      "assumptions":["A representative rehearsal environment is available by relative day 60.","The supplied 40–60-hour role capacity is insufficient for this 70–90-hour allocation; the roadmap needs resourcing or scope revision."],
+      "maturity_hypothesis":{"baseline":1,"target":2,"rationale":"A repeated and evidenced restoration practice may improve operational maturity by one level.","evidence_needed":"Actual restoration evidence, recurring ownership, documented environment differences and a later repeat exercise."}
+    },
+    {
+      "id":"R-03","title":"Close the event-review action loop","group":"IAM","owner_role":"Identity-operations lead",
+      "finding_ids":["F-IAM"],"depends_on":[],"not_before_day":0,"duration_days":{"low":15,"high":30},
+      "effort_hours":{"low":25,"high":35},"effort_phase":"0-90","preferred_phase":"0-90",
+      "outcome":"Review actions have ownership roles, dispositions and evidence of follow-through.",
+      "acceptance_evidence":"Trace two fictional review actions from observation to resolution evidence, preserving unresolved disagreement.",
+      "assumptions":["This team can work independently of the release-baseline task; shared staff are still reviewed separately."],
+      "maturity_hypothesis":{"baseline":2,"target":3,"rationale":"Evidence of repeated follow-through may support a one-level progression from a documented practice.","evidence_needed":"Real review histories and recurrence evidence, not counts of meetings or individual employee scores."}
+    },
+    {
+      "id":"R-04","title":"Review cross-group rehearsal lessons","group":"Department","owner_role":"Service-reliability lead",
+      "finding_ids":["F-RIS","F-IAM"],"depends_on":["R-02","R-03"],"not_before_day":0,"duration_days":{"low":20,"high":30},
+      "effort_hours":{"low":30,"high":50},"effort_phase":"90-180","preferred_phase":"0-90",
+      "outcome":"A shared improvement backlog preserves group-specific context and recurring conditions.",
+      "acceptance_evidence":"Evidence-linked review dispositions and a verified change in at least one repeated rehearsal.",
+      "assumptions":["Both prerequisites finish before this review starts.","The earliest start is day 80–100, so the preferred first phase is uncertain rather than guaranteed."],
+      "maturity_hypothesis":{"baseline":1,"target":2,"rationale":"Systematic cross-group learning is a one-level improvement hypothesis, not an average of group ratings.","evidence_needed":"Actual common findings, sustained review records and observable operational effects."}
+    },
+    {
+      "id":"R-05","title":"Demonstrate a sustained operating cadence","group":"Department","owner_role":"Delivery-practice lead",
+      "finding_ids":["F-ESS","F-RIS","F-IAM"],"depends_on":["R-04"],"not_before_day":180,"duration_days":{"low":20,"high":40},
+      "effort_hours":{"low":50,"high":60},"effort_phase":"180+","preferred_phase":"180+",
+      "outcome":"Repeated cycles retain decisions and show whether the selected practices help quality and reliability.",
+      "acceptance_evidence":"Compare repeated evidence-backed cycles, including a counterexample and a justified change in approach.",
+      "assumptions":["This package starts no earlier than day 180 so repeated-use evidence can be collected.","Only the stated whole person-hours are modeled; recurring workload beyond this package remains a separate estimate."],
+      "maturity_hypothesis":{"baseline":1,"target":3,"rationale":"Documented practice followed by repeated, evidenced operation is a two-level aspiration requiring separate validation.","evidence_needed":"Actual baseline, appropriate behavior anchors, sustained execution and outcomes; no automatic maturity uplift is calculated."}
+    },
+    {
+      "id":"R-06","title":"Bound a useful AI-workflow experiment","group":"ESS","owner_role":"AI-workflow lead",
+      "finding_ids":["F-AI"],"depends_on":["R-01"],"not_before_day":90,"duration_days":null,
+      "effort_hours":null,"effort_phase":null,"preferred_phase":"90-180",
+      "outcome":"A bounded offline experiment identifies usefulness, repair effort and maintainability before expansion.",
+      "acceptance_evidence":"An agreed synthetic task set, repeatable evaluations and recorded repair effort; no model service is called by this kit.",
+      "assumptions":["Duration, effort and baseline are genuinely unknown; zero is not substituted.","A named owner role is proposed, not a staffing commitment."],
+      "maturity_hypothesis":{"baseline":null,"target":2,"rationale":"A target can be discussed, but improvement size is not assessable until baseline evidence exists.","evidence_needed":"Actual workflow inventory, baseline capability and measured experiment outcomes."}
+    },
+    {
+      "id":"R-07","title":"Decide whether to broaden the AI workflow","group":"Department","owner_role":"AI-workflow lead",
+      "finding_ids":["F-AI"],"depends_on":["R-06"],"not_before_day":180,"duration_days":{"low":10,"high":20},
+      "effort_hours":{"low":30,"high":45},"effort_phase":"180+","preferred_phase":"180+",
+      "outcome":"The organization chooses continuation, revision or retirement from the experiment's evidence.",
+      "acceptance_evidence":"Retain the evidence-backed decision, operating burden and unresolved comparison limits.",
+      "assumptions":["An unknown prerequisite finish means this item's upper timing bound remains unknown.","Dependency independence never proves that enough specialist capacity exists."],
+      "maturity_hypothesis":{"baseline":null,"target":2,"rationale":"No improvement level is inferred from completing a pilot or holding a decision meeting.","evidence_needed":"Validated baseline and sustained practice evidence after any adopted change."}
+    }
+  ],
+  "role_capacity": [
+    {"owner_role":"Delivery-practice lead","phase":"0-90","hours":{"low":60,"high":80},"basis":"Fictional allocation for this preparation scenario, not a University staffing fact."},
+    {"owner_role":"Delivery-practice lead","phase":"180+","hours":{"low":80,"high":100},"basis":"Fictional allocation covering only the stated work package."},
+    {"owner_role":"Service-reliability lead","phase":"0-90","hours":{"low":40,"high":60},"basis":"Deliberately constrained fictional capacity demonstrates a plan needing revision."},
+    {"owner_role":"Service-reliability lead","phase":"90-180","hours":{"low":80,"high":100},"basis":"Fictional available whole person-hours after ordinary service work."},
+    {"owner_role":"Identity-operations lead","phase":"0-90","hours":{"low":50,"high":80},"basis":"Fictional capacity assumption for the action-loop work."},
+    {"owner_role":"AI-workflow lead","phase":"90-180","hours":null,"basis":"Capacity not estimated; collect role availability rather than assuming free effort."},
+    {"owner_role":"AI-workflow lead","phase":"180+","hours":null,"basis":"Capacity not estimated; any later allocation requires actual engagement inputs."}
+  ]
+}
