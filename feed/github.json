@@ -1,13 +1,13 @@
 {
   "counts": {
-    "open_issues": 114,
-    "open_pull_requests": 58,
-    "runs_in_progress": 4,
-    "runs_queued": 70
+    "open_issues": 152,
+    "open_pull_requests": 65,
+    "runs_in_progress": 17,
+    "runs_queued": 194
   },
   "counts_source": "graphql",
   "degraded": [],
-  "drafts": 1,
+  "drafts": 3,
   "longest_open": [
     {
       "author": "woahwhattheheck",
@@ -69,13 +69,90 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "cursor/latch-owner-now-wb-hour-restore-ff1c",
-      "created_at": "2026-09-19T11:18:08Z",
+      "branch": "uiowa-067-incident-learning-zzsol",
+      "created_at": "2026-09-19T13:40:11Z",
       "draft": false,
-      "head_sha": "75dc598cf6ddba6d212fa3ad00adcce9992ffda3",
-      "number": 16087,
-      "title": "Restore existing White Box hour Buy CTA on owner-now-revenue.html",
-      "updated_at": "2026-09-19T11:18:08Z"
+      "head_sha": "1ab8a347816dea420e2606102efd19dbd77134cf",
+      "number": 16150,
+      "title": "UIOWA-067: add incident learning assessment kit",
+      "updated_at": "2026-09-19T13:40:11Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/uiowa-017-copperfinch-b92e-20260919",
+      "created_at": "2026-09-19T13:39:39Z",
+      "draft": false,
+      "head_sha": "b37425ccf84d36840f14187118caf9866450ccf7",
+      "number": 16147,
+      "title": "UIOWA-017: research-administration peer pack and interview matrix",
+      "updated_at": "2026-09-19T13:39:39Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/anvil87-outcomes-20260919",
+      "created_at": "2026-09-19T13:39:29Z",
+      "draft": false,
+      "head_sha": "2cd9d4fb682917abbb6f9b96de2524e1d154a1c8",
+      "number": 16146,
+      "title": "UIOWA-087: improvement outcome-measurement pack",
+      "updated_at": "2026-09-19T13:39:29Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/zz-keystone-43cf-draft-resume",
+      "created_at": "2026-09-19T13:39:29Z",
+      "draft": true,
+      "head_sha": "3ff9f17c677f39a617a3537d8a61c8b1e15085e9",
+      "number": 16145,
+      "title": "Iowa workbench: resume saved drafts and preserve newer analyst work",
+      "updated_at": "2026-09-19T13:39:29Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/uiowa-078-orbit27-ai-economics",
+      "created_at": "2026-09-19T13:38:13Z",
+      "draft": true,
+      "head_sha": "0d788098b9da196cab9efe387707672a86622516",
+      "number": 16134,
+      "title": "UIOWA-078: AI workflow economics, uncertainty and break-even calculator",
+      "updated_at": "2026-09-19T13:38:13Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-trellis/uiowa-workbench-handoff-20260919",
+      "created_at": "2026-09-19T13:37:25Z",
+      "draft": false,
+      "head_sha": "f91169044bc39b1ef7c99ada29d900932fbd15b6",
+      "number": 16130,
+      "title": "Iowa workbench: resume receipt-bound analyst reviews and export readable handoffs",
+      "updated_at": "2026-09-19T13:38:34Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "anchor-zz/uiowa-022-rating-composition-20260919",
+      "created_at": "2026-09-19T13:37:05Z",
+      "draft": false,
+      "head_sha": "8da309031526eb31293c82af2d53392f7fea9f14",
+      "number": 16126,
+      "title": "UIOWA-022: compose ratings without hiding uncertainty",
+      "updated_at": "2026-09-19T13:39:49Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/anvil50-handoff-20260919",
+      "created_at": "2026-09-19T13:32:46Z",
+      "draft": false,
+      "head_sha": "413837a89ac300e21979355a28c468e1e89c6a68",
+      "number": 16110,
+      "title": "UIOWA-050: development-to-operations handoff toolkit",
+      "updated_at": "2026-09-19T13:38:38Z"
     },
     {
       "author": "woahwhattheheck",
@@ -98,83 +175,6 @@
       "number": 16073,
       "title": "fix: freeze repo-estate transitive validator generation",
       "updated_at": "2026-09-18T22:58:07Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol-entitlement-binding-post16068-fix-20260918",
-      "created_at": "2026-09-18T22:27:13Z",
-      "draft": false,
-      "head_sha": "e932d0b41af5ce74522c83681d7fe9ee109775d7",
-      "number": 16070,
-      "title": "Fix Revenue Collection Desk entitlement economics after #16068",
-      "updated_at": "2026-09-18T22:50:21Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-quill-crosswalk/erdos-prize-crosswalk-high-value-20260918",
-      "created_at": "2026-09-18T14:49:53Z",
-      "draft": false,
-      "head_sha": "e5f30b4978379740e7631c4e33fd849878ff53e6",
-      "number": 16047,
-      "title": "Research: add high-value Erd\u0151s prize crosswalk",
-      "updated_at": "2026-09-18T17:02:01Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-copperleaf/actions-auditor-classifier-generation-15756",
-      "created_at": "2026-09-18T07:42:48Z",
-      "draft": false,
-      "head_sha": "5c4e04aeccb9a02035cf0775750669180dde5521",
-      "number": 16015,
-      "title": "Harden stale Actions queue auditor classifier generation",
-      "updated_at": "2026-09-18T10:51:42Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "znf-k7p4/outreach-firewall-commercial-binding-20260918",
-      "created_at": "2026-09-18T07:41:12Z",
-      "draft": false,
-      "head_sha": "a08d73c13394cf6f1719befdb168065ec94381c8",
-      "number": 16012,
-      "title": "Fix outreach firewall commercial authority binding",
-      "updated_at": "2026-09-18T10:38:48Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-fenwick-r8/e2b-truth-narrow-main-20260918",
-      "created_at": "2026-09-18T07:35:29Z",
-      "draft": false,
-      "head_sha": "0109cf93e012b1fe4c9a93aaeb9f37e26482a593",
-      "number": 16007,
-      "title": "E2B executor: truth-narrow commit provenance on current main",
-      "updated_at": "2026-09-18T10:49:01Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zcost/pilot-budget-ky-rfi-current-main-finalizer-20260918",
-      "created_at": "2026-09-18T06:50:50Z",
-      "draft": false,
-      "head_sha": "7e7e8af26d481f78de8ecad7e525a43c1a338b10",
-      "number": 15970,
-      "title": "CI + revenue: current-main pilot budget repair and Kentucky reporting recovery",
-      "updated_at": "2026-09-18T08:47:43Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-blackglass/actions-merge-train-15946",
-      "created_at": "2026-09-18T06:40:45Z",
-      "draft": false,
-      "head_sha": "288f1a3b73d9e07b7c55180c0c696ac0b95480ad",
-      "number": 15958,
-      "title": "CI: recover provider-starvation-aware merge train",
-      "updated_at": "2026-09-19T03:35:25Z"
     }
   ],
   "open_heads": {
@@ -235,180 +235,187 @@
     "16070": "e932d0b41af5ce74522c83681d7fe9ee109775d7",
     "16073": "253fcfa5935b08b0f63b14d7120fbbbf096ec62d",
     "16081": "7d5f250e6fac05b5d3e3a39022260e10f3329c82",
-    "16087": "75dc598cf6ddba6d212fa3ad00adcce9992ffda3"
+    "16110": "413837a89ac300e21979355a28c468e1e89c6a68",
+    "16126": "8da309031526eb31293c82af2d53392f7fea9f14",
+    "16130": "f91169044bc39b1ef7c99ada29d900932fbd15b6",
+    "16134": "0d788098b9da196cab9efe387707672a86622516",
+    "16145": "3ff9f17c677f39a617a3537d8a61c8b1e15085e9",
+    "16146": "2cd9d4fb682917abbb6f9b96de2524e1d154a1c8",
+    "16147": "b37425ccf84d36840f14187118caf9866450ccf7",
+    "16150": "1ab8a347816dea420e2606102efd19dbd77134cf"
   },
-  "pulls_listed": 58,
+  "pulls_listed": 65,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 17.5,
+  "queue_depth_per_runner": 11.4,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "codex/resource-master-ci-fix-pack-99-activation-20260919-01",
-      "closed_at": "2026-09-19T10:44:20Z",
-      "head_sha": "973fd4d2d08044049617fbb8bc8f86997b526e2b",
-      "merged_at": "2026-09-19T10:44:20Z",
-      "number": 16086,
+      "branch": "swarm/zz-semaphore-uiowa-064-20260919-01",
+      "closed_at": "2026-09-19T13:39:15Z",
+      "head_sha": "400177f95a49760160702336867ccdb2b7628ae1",
+      "merged_at": "2026-09-19T13:39:15Z",
+      "number": 16142,
       "state": "MERGED",
-      "title": "Activate CI Fix Pack 99 payment road"
+      "title": "feat(uiowa): software delivery metrics calculator (UIOWA-064)"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "cursor/latch-cifix99-checkout-seat-20260919-05cd",
-      "closed_at": "2026-09-19T07:39:23Z",
-      "head_sha": "e14704bbb570d92f020a2d3a4deeec55eb17edfe",
-      "merged_at": "2026-09-19T07:39:23Z",
-      "number": 16085,
-      "state": "MERGED",
-      "title": "LATCH: wire existing ci-fix-pack-99 Payment Link into pack door"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "chatgpt-pages-speed-retired-agent-rescue-20260919",
-      "closed_at": "2026-09-19T06:36:31Z",
-      "head_sha": "fdc811456acf84ae4e5de3011c987cfccdaac0ed",
+      "branch": "swarm-zz/uiowa-070-heliotrope-20260919",
+      "closed_at": "2026-09-19T13:39:02Z",
+      "head_sha": "9770af72d4e5d3124f12df08110961aaed62041a",
       "merged_at": null,
-      "number": 16084,
+      "number": 16119,
       "state": "CLOSED",
-      "title": "tests: drop retired Agent Rescue speed case"
+      "title": "UIOWA-070: executable seasonal capacity and dependency planning kit"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-grokbuild/restore-door-mounts-head-bust-20260919",
-      "closed_at": "2026-09-19T04:38:09Z",
-      "head_sha": "2f4785925d49159a14d1b2aff9e1d3ef31df7ddc",
-      "merged_at": "2026-09-19T04:38:08Z",
-      "number": 16083,
+      "branch": "swarm-zz-solstice-uiowa-060-security-event-review-20260919",
+      "closed_at": "2026-09-19T13:38:58Z",
+      "head_sha": "25939b5a906dd457f8a53a15149a5525c514e4d3",
+      "merged_at": "2026-09-19T13:38:58Z",
+      "number": 16136,
       "state": "MERGED",
-      "title": "fix: restore current-work/whisper mounts and commit-stable Pages bust"
+      "title": "feat(uiowa): add security-event review evidence kit"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "grok/repair-pixel-unify-room-chips-20260919",
-      "closed_at": "2026-09-19T04:27:40Z",
-      "head_sha": "d63ec2171e765825dc98b93e7fbc031c30817041",
-      "merged_at": "2026-09-19T04:27:40Z",
-      "number": 16082,
+      "branch": "uiowa-047-test-data-zzsol",
+      "closed_at": "2026-09-19T13:37:41Z",
+      "head_sha": "51b5d99b94c78f4e5f135eaedc41ee6dc531a3b9",
+      "merged_at": "2026-09-19T13:37:41Z",
+      "number": 16122,
       "state": "MERGED",
-      "title": "fix: restore pixel-unify accessible room chips"
+      "title": "UIOWA-047: add test-data readiness assessment kit"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-sol/windows-canonical-binary-io-20260918",
-      "closed_at": "2026-09-19T03:31:48Z",
-      "head_sha": "e45ef7a257f661547c81a1e34bf7926baeac4c7e",
-      "merged_at": "2026-09-19T03:31:48Z",
-      "number": 16079,
+      "branch": "uiowa-065-observability-zzsol",
+      "closed_at": "2026-09-19T13:37:06Z",
+      "head_sha": "7ed02aeba6ffd638e83a3838442759e4c15f2b84",
+      "merged_at": "2026-09-19T13:37:06Z",
+      "number": 16118,
       "state": "MERGED",
-      "title": "fix: preserve canonical bytes on Windows low-level I/O"
+      "title": "UIOWA-065: add observability assessment kit"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-sol-1142/primitive-root-tail-20260918",
-      "closed_at": "2026-09-19T01:40:09Z",
-      "head_sha": "643e663a0aebd58acb48ade9ebc80c07c3e0122b",
-      "merged_at": "2026-09-19T01:40:09Z",
-      "number": 16080,
+      "branch": "zz-sol-uiowa-032-doc-extraction-20260919",
+      "closed_at": "2026-09-19T13:36:47Z",
+      "head_sha": "7b4efd514d562f536f96324df93b8ee1a352e75f",
+      "merged_at": "2026-09-19T13:36:47Z",
+      "number": 16120,
       "state": "MERGED",
-      "title": "research: extend Erd\u0151s 1142 primitive-root tail sieve"
+      "title": "UIOWA-032: locator-preserving document extraction"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "anvil/retirement-portability-reconcile",
-      "closed_at": "2026-09-19T01:27:53Z",
-      "head_sha": "7b95028a25c73d9e6ea50166437fc7335cfc10e0",
-      "merged_at": "2026-09-19T01:27:53Z",
-      "number": 16064,
+      "branch": "swarm-zz-keystone-uiowa-045-20260919",
+      "closed_at": "2026-09-19T13:35:05Z",
+      "head_sha": "9a80959884ebb48545d468359cd62efb2802e74a",
+      "merged_at": "2026-09-19T13:35:05Z",
+      "number": 16115,
       "state": "MERGED",
-      "title": "reconcile: swarm-mail routing/page restore + owner-now ship pins + gtm index regen"
+      "title": "UIOWA-045: add testing portfolio and release-confidence instrument"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-sol891/erdos891-primorial-bound-20260918",
-      "closed_at": "2026-09-19T00:30:22Z",
-      "head_sha": "52726b21af9bfba245d9a0de2ef6c9245f3f5dc0",
-      "merged_at": "2026-09-19T00:30:22Z",
-      "number": 16075,
+      "branch": "uiowa-020-framework-crosswalk-zzsol",
+      "closed_at": "2026-09-19T13:34:10Z",
+      "head_sha": "7872ec30f84b9a31e946513323c07cfc4bc851fd",
+      "merged_at": "2026-09-19T13:34:10Z",
+      "number": 16104,
       "state": "MERGED",
-      "title": "Erdos 891: add primorial witness lower bound"
+      "title": "UIOWA-020: add primary NIST framework crosswalk"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "anvil/autopsy-boilerplate-sweep",
-      "closed_at": "2026-09-19T00:27:43Z",
-      "head_sha": "e169c777c862c09242a83e5dce62db4928497827",
-      "merged_at": "2026-09-19T00:27:43Z",
-      "number": 16029,
+      "branch": "swarm-zz-sol/uiowa-041-sdlc-workflow",
+      "closed_at": "2026-09-19T13:32:18Z",
+      "head_sha": "182e1995ef723b827867724946cf21837ec3af97",
+      "merged_at": "2026-09-19T13:32:18Z",
+      "number": 16102,
       "state": "MERGED",
-      "title": "purge: sweep retired Autopsy boilerplate \u2014 1371 files (docs, orphan shelf li, registries, CI filters)"
+      "title": "UIOWA-041: add SDLC workflow evidence assets"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsol406g/erdos406-general-sieve-count-20260918",
-      "closed_at": "2026-09-18T23:34:34Z",
-      "head_sha": "30f045c0d14c6e6ba63e1e8006fab5c1f737510c",
-      "merged_at": "2026-09-18T23:34:34Z",
-      "number": 16074,
+      "branch": "swarm/zz-semaphore-uiowa-023-20260919-01",
+      "closed_at": "2026-09-19T13:32:11Z",
+      "head_sha": "ba8c931d6b5eff66a5e332f431a74bb954a29dd3",
+      "merged_at": "2026-09-19T13:32:11Z",
+      "number": 16107,
       "state": "MERGED",
-      "title": "research: prove Erd\u0151s 406 general sieve survivor count"
+      "title": "docs(uiowa): evidence confidence and provenance method (UIOWA-023)"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "research/14998-pressure-trace-counterexample-zsol",
-      "closed_at": "2026-09-18T22:47:21Z",
-      "head_sha": "2b7131508bb5a57c1c41b5befc05a979673afbb1",
+      "branch": "swarm-zz-solstice-uiowa-019-reliability-peer-pack-20260919",
+      "closed_at": "2026-09-19T13:32:00Z",
+      "head_sha": "163800e3915b6c8255aa878d9225ccdcacd36b6d",
+      "merged_at": "2026-09-19T13:32:00Z",
+      "number": 16101,
+      "state": "MERGED",
+      "title": "docs(uiowa): add deployment reliability peer evidence"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz-uiowa-020-framework-crosswalk-20260919",
+      "closed_at": "2026-09-19T13:31:52Z",
+      "head_sha": "e51bee396746a9f632d46663ceaac7f3f7b44700",
       "merged_at": null,
-      "number": 15733,
+      "number": 16103,
       "state": "CLOSED",
-      "title": "research: prove pressure-trace consistency blocker for #14998"
+      "title": "UIOWA-020: add primary framework crosswalk"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "devinlocal/rejoin-pressure-trace-15733-20260918",
-      "closed_at": "2026-09-18T22:47:17Z",
-      "head_sha": "f91d666af58b125b5da80640d0768cd377546876",
-      "merged_at": null,
-      "number": 16063,
-      "state": "CLOSED",
-      "title": "rejoin(commons#15733): pressure-trace counterexample carrier onto current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "sol18-ridgway-16063-current-main",
-      "closed_at": "2026-09-18T22:46:24Z",
-      "head_sha": "a213bede14d16afdd6eb611fdd805bd4df970edd",
-      "merged_at": "2026-09-18T22:46:24Z",
-      "number": 16069,
+      "branch": "zz-glasswing-uiowa-005-scope-acceptance-20260919",
+      "closed_at": "2026-09-19T13:30:39Z",
+      "head_sha": "e8884fbba0680b779e79ed52caeb799d84da45e3",
+      "merged_at": "2026-09-19T13:30:39Z",
+      "number": 16098,
       "state": "MERGED",
-      "title": "rejoin: pressure-trace counterexample carrier on current main"
+      "title": "UIOWA-005: correct scope and acceptance exhibit"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-sol-cashier/repo-estate-postmerge-16003-20260918",
-      "closed_at": "2026-09-18T22:40:45Z",
-      "head_sha": "57851a1b908e65b9a6bd49aa56329e1c096bd15a",
-      "merged_at": null,
-      "number": 16022,
-      "state": "CLOSED",
-      "title": "Repository estate rationalizer fix-forward"
+      "branch": "swarm-zz-keystone-uiowa-013-20260919",
+      "closed_at": "2026-09-19T13:30:22Z",
+      "head_sha": "773934de6c3cd565b02218254cc176b5a8843669",
+      "merged_at": "2026-09-19T13:30:22Z",
+      "number": 16095,
+      "state": "MERGED",
+      "title": "UIOWA-013: add Iowa AI strategy and data-use context"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz-sol/uiowa-011-ais-context",
+      "closed_at": "2026-09-19T13:27:35Z",
+      "head_sha": "e0f358a7ab12fcd9b8b1a029c01355cb38cad614",
+      "merged_at": "2026-09-19T13:27:34Z",
+      "number": 16093,
+      "state": "MERGED",
+      "title": "UIOWA-011: map AIS, ESS, RIS, and IAM public responsibilities"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T11:30:27Z",
+  "unchanged_since": "2026-09-19T13:40:18Z",
   "undatable_pulls": []
 }
