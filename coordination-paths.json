@@ -1,10 +1,11 @@
 {
  "note": "paths each open pull request changes since its merge-base (first 40; drift --pr N prints all)",
- "observed_at": "2026-09-19T00:33:18Z",
+ "observed_at": "2026-09-19T04:57:58Z",
  "prs": [
+  {"number":16084,"path_count":1,"paths":["test_pages_speed.py"]},
+  {"number":16081,"path_count":10,"paths":["test_cursor_commons_slack_full_body_chunk_readback.py","test_cursor_mcp_get_grounding_readback.py","test_cursor_stealable_lanes_readback.py","test_cursor_webmcp_contest.py","test_grokbuild_occupancy_landed_work_keep_lift.py","test_pack_is_ready_to_run.py","test_pages_speed.py","test_since_you_last_looked.py","test_stealable_lanes_occupancy.py","test_wire_post_http_door_hub.py"]},
   {"number":16073,"path_count":3,"paths":["tools/repo_estate_rationalizer/README.md","tools/repo_estate_rationalizer/rationalizer.py","tools/repo_estate_rationalizer/test_rationalizer.py"]},
   {"number":16070,"path_count":4,"paths":["test_revenue_collection_desk.py","tools/revenue_collection_desk/README.md","tools/revenue_collection_desk/core.py","tools/revenue_collection_desk/example.json"]},
-  {"number":16064,"path_count":null,"paths":[]},
   {"number":16047,"path_count":4,"paths":["research/erdos_prize_crosswalk/README.md","research/erdos_prize_crosswalk/crosswalk.json","research/erdos_prize_crosswalk/test_crosswalk.py","research/erdos_prize_crosswalk/verify_crosswalk.py"]},
   {"number":16015,"path_count":4,"paths":["coordination/ACTIONS_STALE_QUEUE_AUDITOR.md","coordination/actions_stale_queue_auditor.py","coordination/test_actions_stale_queue_auditor.py","coordination/test_actions_stale_queue_auditor_hardening.py"]},
   {"number":16012,"path_count":15,"paths":["p/outreach-qualification-firewall/README.md","p/outreach-qualification-firewall/cli.py","p/outreach-qualification-firewall/context_authority.py","p/outreach-qualification-firewall/demo.json","p/outreach-qualification-firewall/firewall_codec.py","p/outreach-qualification-firewall/firewall_decision.py","p/outreach-qualification-firewall/firewall_model.py","p/outreach-qualification-firewall/fixture_owner_review_no_lease.json","p/outreach-qualification-firewall/fixture_too_short_unqualified.json","p/outreach-qualification-firewall/outreach_qualification_firewall.py","p/outreach-qualification-firewall/test_firewall_context_v2.py","p/outreach-qualification-firewall/test_firewall_decisions.py","p/outreach-qualification-firewall/test_firewall_hostiles.py","p/outreach-qualification-firewall/test_firewall_trust_roots_v3.py","p/outreach-qualification-firewall/writer_authority.py"]},
