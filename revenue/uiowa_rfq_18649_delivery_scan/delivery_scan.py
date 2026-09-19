@@ -79,6 +79,12 @@ except ImportError as exc:  # pragma: no cover - environment problem, not logic
 
 DEFAULT_PATTERNS = ("*.md",)
 
+# Directories whose contents are this screen's OWN output. A findings report
+# necessarily quotes the sentences it flagged, so scanning it re-flags every
+# finding and inflates the next run - the cry-wolf problem arriving by
+# recursion. A report about drift is not delivery prose.
+DEFAULT_EXCLUDE_DIRS = ("out", "__pycache__")
+
 
 @dataclass
 class LaneResult:
@@ -113,7 +119,8 @@ class ScanResult:
 
 
 def iter_files(root: str, lane_glob: str = "uiowa_rfq_18649_*",
-               patterns: Sequence[str] = DEFAULT_PATTERNS) -> list[tuple[str, str]]:
+               patterns: Sequence[str] = DEFAULT_PATTERNS,
+               exclude_dirs: Sequence[str] = DEFAULT_EXCLUDE_DIRS) -> list[tuple[str, str]]:
     """(lane, path) for every matching file. Sorted, so a run is reproducible."""
     import fnmatch
     out: list[tuple[str, str]] = []
@@ -124,7 +131,7 @@ def iter_files(root: str, lane_glob: str = "uiowa_rfq_18649_*",
         if not os.path.isdir(lane_dir) or not fnmatch.fnmatch(lane, lane_glob):
             continue
         for dirpath, dirnames, filenames in os.walk(lane_dir):
-            dirnames[:] = sorted(d for d in dirnames if d != "__pycache__")
+            dirnames[:] = sorted(d for d in dirnames if d not in exclude_dirs)
             for fn in sorted(filenames):
                 if any(fnmatch.fnmatch(fn, p) for p in patterns):
                     out.append((lane, os.path.join(dirpath, fn)))
@@ -132,9 +139,10 @@ def iter_files(root: str, lane_glob: str = "uiowa_rfq_18649_*",
 
 
 def scan_tree(root: str, lane_glob: str = "uiowa_rfq_18649_*",
-              patterns: Sequence[str] = DEFAULT_PATTERNS) -> ScanResult:
+              patterns: Sequence[str] = DEFAULT_PATTERNS,
+              exclude_dirs: Sequence[str] = DEFAULT_EXCLUDE_DIRS) -> ScanResult:
     res = ScanResult(root=root)
-    for lane, path in iter_files(root, lane_glob, patterns):
+    for lane, path in iter_files(root, lane_glob, patterns, exclude_dirs):
         lr = res.lanes.setdefault(lane, LaneResult(lane=lane))
         rel = os.path.relpath(path, root)
         try:

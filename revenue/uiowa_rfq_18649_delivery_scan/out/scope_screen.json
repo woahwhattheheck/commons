@@ -1,10 +1,10 @@
 {
   "status": "READ_ONLY_SCREEN_NOT_A_COMPLIANCE_CLAIM",
   "disclaimer": "This is a **screen, not a proof.** A lane with no flags means the screen found nothing it knows how to look for -- it cannot read intent, and a determined author can write drift it will not catch. No score, percentage or pass/fail is assigned to any lane, and nothing here is a compliance claim about anybody's code. Every flag is a question for that lane's owner, not a defect ruling.",
-  "lanes_scanned": 51,
-  "files_scanned": 202,
+  "lanes_scanned": 57,
+  "files_scanned": 196,
   "total_flags": 2,
-  "total_neutralized": 20,
+  "total_neutralized": 23,
   "files_unreadable": [],
   "flags": [
     {

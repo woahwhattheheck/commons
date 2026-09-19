@@ -71,7 +71,31 @@ sentence **verbatim** — a paraphrase would only test the fix against text writ
 `DriftStillCaughtTests` re-asserts all three drift classes so the precision work cannot have
 quietly cost recall.
 
-Latest run over the tree as it stands: **51 lanes, 202 files, 2 flags, 20 neutralized** — see
+## Then it flagged itself
+
+Landing this lane pushed the live count from 2 to 9. All seven new flags were **this lane's own
+documentation** — the table above quotes six forbidden sentences verbatim, and `out/scope_screen.md`
+necessarily quotes every sentence it flagged.
+
+That is the cry-wolf problem arriving by recursion, and it is inherent to any reporting tool in this
+class: a findings report cites the thing it found. Three fixes, each principled rather than an
+exception carved out for this lane:
+
+- **Markdown blockquotes are cited material by definition** — a `>` line is someone else's words.
+- **A double-quoted span is a citation, not an assertion.** `the README notes "material weakness"`
+  reports a phrase; it does not render a verdict. A test asserts that blanking quotes does **not**
+  blank drift in the surrounding sentence.
+- **The screen skips its own `out/` directory by default** (overridable). A report about drift is
+  not delivery prose.
+
+Plus a `forbid`/`prohibit`/`disallow` safe-context family, because "the three deliverables this RFQ
+**forbids** — audit/compliance verdicts, individual performance evaluation, product procurement" is a
+sentence declaring the boundary, and the guard had no pattern for that phrasing.
+
+`SelfReferenceTests` closes the loop: one test scans **this README** and asserts zero flags. If the
+guard cannot read its own documentation without flagging it, the hardening is not finished.
+
+Latest run over the tree as it stands: **57 lanes, 196 files, 2 flags, 23 neutralized** — see
 `out/scope_screen.md`.
 
 ## The one finding I am not dismissing

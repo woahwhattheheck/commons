@@ -123,6 +123,63 @@ class RealDeliveredSentenceTests(unittest.TestCase):
         self.assertEqual([], flags(text))
 
 
+class SelfReferenceTests(unittest.TestCase):
+    """A findings report quotes what it flagged. It must not re-flag itself."""
+
+    def test_blockquoted_evidence_is_not_flagged(self):
+        text = ('The rating model uses a defined audit-severity term:\n\n'
+                '> "A service can have many strong observations and one material weakness '
+                'in a critical practice."\n\n'
+                'That is a wording note, not a defect.\n')
+        self.assertEqual([], flags(text))
+
+    def test_quoted_evidence_inside_a_sentence_is_not_flagged(self):
+        text = ('Ten flags were the literal string from the CLI test - '
+                '"The service is non-compliant and we recommend purchasing a new tool." - '
+                'captured into two verification logs.')
+        self.assertEqual([], flags(text))
+
+    def test_quoting_does_not_hide_drift_in_the_surrounding_prose(self):
+        """Blanking quotes must not blank the sentence around them."""
+        text = ('The vendor said "everything is fine", but the group is non-compliant '
+                'and we recommend purchasing a replacement.')
+        self.assertEqual({sg.AUDIT_VERDICT, sg.PRODUCT_PROCUREMENT}, classes(text))
+
+    def test_scan_excludes_its_own_output_directory_by_default(self):
+        with tempfile.TemporaryDirectory() as td:
+            lane = os.path.join(td, "uiowa_rfq_18649_delivery_scan")
+            os.makedirs(os.path.join(lane, "out"))
+            with open(os.path.join(lane, "out", "scope_screen.md"), "w", encoding="utf-8") as f:
+                f.write("- matched: non-compliant\n- sentence: the service is non-compliant.\n")
+            with open(os.path.join(lane, "README.md"), "w", encoding="utf-8") as f:
+                f.write("A screen over the tree.\n")
+            res = ds.scan_tree(td)
+            self.assertEqual(1, res.files_scanned, "out/ should not be scanned")
+            self.assertEqual(0, res.total_flags)
+
+    def test_output_directory_can_be_scanned_when_explicitly_asked(self):
+        with tempfile.TemporaryDirectory() as td:
+            lane = os.path.join(td, "uiowa_rfq_18649_delivery_scan")
+            os.makedirs(os.path.join(lane, "out"))
+            with open(os.path.join(lane, "out", "scope_screen.md"), "w", encoding="utf-8") as f:
+                f.write("The service is non-compliant.\n")
+            res = ds.scan_tree(td, exclude_dirs=("__pycache__",))
+            self.assertEqual(1, res.files_scanned)
+            self.assertEqual(1, res.total_flags)
+
+    def test_this_lanes_own_readme_is_clean(self):
+        """This README quotes six false-positive sentences verbatim. If the guard
+        cannot read its own documentation without flagging it, the hardening is
+        incomplete."""
+        readme = os.path.join(HERE, "README.md")
+        if not os.path.exists(readme):
+            self.skipTest("README not present next to the module")
+        with open(readme, encoding="utf-8") as f:
+            hits = sg.flagged(sg.scan_text(f.read(), "README.md"))
+        self.assertEqual([], hits,
+                         "\n".join(f"[{h.rule_id}] line {h.line}: {h.matched!r}" for h in hits))
+
+
 class DriftStillCaughtTests(unittest.TestCase):
     """Hardening must not cost recall."""
 

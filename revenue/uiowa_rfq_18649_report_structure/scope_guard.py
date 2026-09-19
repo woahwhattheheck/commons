@@ -245,6 +245,11 @@ SAFE_CONTEXTS: tuple[str, ...] = (
     # following list separator within the same clause.
     r"\bno\b[^.]{0,80}?,\s*(?:or\s+)?\w+",
     r"\bdoes\s+not\s+(?:cover|address|extend\s+to)\b",
+    # A sentence saying something is forbidden is declaring the boundary, not
+    # crossing it: "the three deliverables this RFQ forbids - audit/compliance
+    # verdicts, individual performance evaluation, product procurement".
+    r"\bforbid\w*\b|\bprohibit\w*\b|\bdisallow\w*\b|\bbanned\b|\bbars?\b",
+    r"\bmust\s+stay\s+out\s+of\b|\bstays?\s+out\s+of\s+scope\b",
 )
 
 _SAFE_RE = tuple(re.compile(p, re.IGNORECASE) for p in SAFE_CONTEXTS)
@@ -307,6 +312,18 @@ _CODE_SPAN = re.compile(r"`[^`\n]{1,120}`")
 # line is left alone, because that is a list bullet, not emphasis.
 _EMPHASIS = re.compile(r"(?<!^)(\*{1,3})(\w[^*\n]{0,80}?)(\*{1,3})", re.MULTILINE)
 
+# A markdown blockquote is, by definition, someone else's words being cited.
+# A findings report that quotes the sentence it flagged would otherwise flag
+# itself - which is the same cry-wolf failure this whole hardening pass exists
+# to fix, arriving by recursion.
+_BLOCKQUOTE = re.compile(r"^\s*>+\s?")
+
+# Likewise a double-quoted span. In assessment prose, quoted text is evidence
+# being cited, not a claim being made: `the README notes "material weakness"`
+# reports a phrase, it does not assert a verdict. Blanked to the same width so
+# offsets hold.
+_QUOTED_SPAN = re.compile(r"[\"\u201c][^\"\u201d\n]{1,200}[\"\u201d]")
+
 
 def strip_non_prose(text: str) -> str:
     """Blank out fenced code blocks and inline code spans, preserving layout."""
@@ -326,6 +343,13 @@ def strip_non_prose(text: str) -> str:
         # Then unwrap emphasis, padding to preserve width.
         cleaned = _EMPHASIS.sub(
             lambda m: " " * len(m.group(1)) + m.group(2) + " " * len(m.group(3)), cleaned)
+        # A blockquote line is cited material; blank its body, keep its width.
+        bq = _BLOCKQUOTE.match(cleaned)
+        if bq:
+            out.append(" " * len(cleaned))
+            continue
+        # Quoted spans are citations, not assertions.
+        cleaned = _QUOTED_SPAN.sub(lambda m: " " * len(m.group(0)), cleaned)
         out.append(cleaned)
     return "\n".join(out)
 
