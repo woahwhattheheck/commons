@@ -702,6 +702,7 @@ def _open_regular(path, write=False, exclusive=False):
     flags |= getattr(os, "O_CLOEXEC", 0)
     flags |= getattr(os, "O_NOFOLLOW", 0)
     flags |= getattr(os, "O_NONBLOCK", 0)
+    flags |= getattr(os, "O_BINARY", 0)
     fd = os.open(path, flags, 0o644 if write else 0)
     try:
         st = os.fstat(fd)
