@@ -173,10 +173,24 @@ async function readJsonFile(input, label) {
   const file = input.files?.[0];
   if (!file) throw new Error(`${label} file is required.`);
   if (file.size > 1024 * 1024) throw new Error(`${label} file exceeds 1 MiB browser intake limit.`);
+  // File.text() replaces invalid UTF-8. Decode the bytes strictly instead, and
+  // retain the original JSON text: a parse/stringify round trip loses duplicate
+  // members, rounds integers and can turn overflow/underflow into null/zero.
+  let contents;
+  try {
+    const bytes = await file.arrayBuffer();
+    if (bytes.byteLength > 1024 * 1024) throw new Error("size");
+    // Keep a BOM visible so JSON syntax validation rejects it rather than quietly
+    // changing the original document. Valid U+FFFD characters remain valid data.
+    contents = new TextDecoder("utf-8", { fatal: true, ignoreBOM: true }).decode(bytes);
+  } catch {
+    throw new Error(`${label} must be readable strict UTF-8 within the 1 MiB intake limit.`);
+  }
   let value;
-  try { value = JSON.parse(await file.text()); } catch { throw new Error(`${label} is not valid JSON.`); }
+  try { value = JSON.parse(contents); } catch { throw new Error(`${label} is not valid JSON.`); }
   if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error(`${label} must be a JSON object.`);
-  return value;
+  // The parsed object is a shape check only; the server sees the untouched text.
+  return contents;
 }
 
 async function inspectFiles() {
@@ -191,10 +205,16 @@ async function inspectFiles() {
       readJsonFile(el.candidateFile, "Candidate"), readJsonFile(el.authorityFile, "Authority")
     ]);
     if (generation !== state.generation) return;
+    // Each segment has already been checked as one complete JSON object. Retain
+    // its exact text inside the existing envelope; never reserialize its values.
+    const body = `{"candidate":${candidate},"authority":${authority}}`;
+    if (new TextEncoder().encode(body).byteLength > 2 * 1024 * 1024) {
+      throw new Error("Combined evidence request exceeds the 2 MiB server intake limit.");
+    }
     const response = await fetch("/api/inspect", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ candidate, authority }),
+      body,
       credentials: "same-origin",
       cache: "no-store"
     });

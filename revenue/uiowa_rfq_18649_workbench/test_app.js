@@ -44,7 +44,8 @@ function deferred() {
 
 function jsonFile(value) {
   const contents = JSON.stringify(value);
-  return { size: Buffer.byteLength(contents), text: async () => contents };
+  const blob = new Blob([contents]);
+  return { size: blob.size, text: () => blob.text(), arrayBuffer: () => blob.arrayBuffer() };
 }
 
 function delayedFile(value) {
@@ -101,7 +102,7 @@ function harness() {
   const sandbox = {
     document: { getElementById: id => elements.get(id) || null, createElement: tag => new Element(tag), body },
     Option: function (label, value) { const option = new Element("option"); option.textContent = label; option.value = value; return option; },
-    Blob, TextEncoder, URLSearchParams, location: { search: "" },
+    Blob, TextEncoder, TextDecoder, URLSearchParams, location: { search: "" },
     URL: {
       createObjectURL(blob) { const url = `blob:node-test-${++nextObjectUrl}`; objectUrls.set(url, blob); return url; },
       revokeObjectURL(url) { objectUrls.delete(url); }
