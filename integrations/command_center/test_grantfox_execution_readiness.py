@@ -88,6 +88,21 @@ class GrantFoxExecutionReadinessTests(unittest.TestCase):
         self.assertEqual(result["verdict"], RESEARCH_ONLY)
         self.assertTrue(result["research_allowed"])
 
+    def test_rejected_application_with_assignment_needs_refresh(self):
+        result = classify_execution(
+            self.evidence(
+                application_state="rejected",
+                assignment_state="assigned_current_contributor",
+            )
+        )
+        self.assertEqual(result["verdict"], NEEDS_REFRESH)
+
+    def test_pending_assignment_without_application_needs_refresh(self):
+        result = classify_execution(
+            self.evidence(application_state="not_submitted", assignment_state="pending")
+        )
+        self.assertEqual(result["verdict"], NEEDS_REFRESH)
+
     def test_open_pr_overlap_wins_over_provider_state(self):
         result = classify_execution(
             self.evidence(
