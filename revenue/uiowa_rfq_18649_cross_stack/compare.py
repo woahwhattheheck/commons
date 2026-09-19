@@ -331,9 +331,9 @@ def spreadsheet_text(value: Any) -> str:
 def comparison_csv(report: dict[str, Any]) -> str:
     output = io.StringIO(newline="")
     writer = csv.writer(output, lineterminator="\n")
-    writer.writerow(["pair_id", "left_id", "right_id", "area", "verdict", "left_support", "right_support", "context", "distinct_provenance_clusters", "shared_provenance_clusters", "measurement_status", "delta_fraction", "input_sha256"])
+    writer.writerow(["synthetic", "as_of", "pair_id", "left_id", "right_id", "area", "verdict", "left_support", "right_support", "context", "distinct_provenance_clusters", "shared_provenance_clusters", "measurement_status", "delta_fraction", "input_sha256"])
     for r in report["pairs"]:
-        writer.writerow([spreadsheet_text(v) for v in (r["id"], r["left"]["id"], r["right"]["id"], r["left"]["area"], r["verdict"], r["left_support"]["state"], r["right_support"]["state"], r["context"]["state"], r["distinct_provenance_clusters"], ";".join(r["shared_provenance_clusters"]), r["measurement"]["state"], r["measurement"]["delta_fraction"], report["input_sha256"])])
+        writer.writerow([spreadsheet_text(v) for v in (report["synthetic"], report["as_of"], r["id"], r["left"]["id"], r["right"]["id"], r["left"]["area"], r["verdict"], r["left_support"]["state"], r["right_support"]["state"], r["context"]["state"], r["distinct_provenance_clusters"], ";".join(r["shared_provenance_clusters"]), r["measurement"]["state"], r["measurement"]["delta_fraction"], report["input_sha256"])])
     return output.getvalue()
 
 
