@@ -60,6 +60,26 @@ class EvidenceRegisterTests(unittest.TestCase):
         errors = validator.validate(path)
         self.assertTrue(any("stale evidence cannot be HIGH" in e for e in errors))
 
+    def test_custodian_or_owner_cannot_be_blank(self):
+        path = self._mutated_copy(lambda rows: rows[0].update(custodian_or_owner=""))
+        errors = validator.validate(path)
+        self.assertTrue(any("custodian_or_owner must not be blank" in e for e in errors))
+
+    def test_content_digest_cannot_be_blank(self):
+        path = self._mutated_copy(lambda rows: rows[0].update(content_digest=""))
+        errors = validator.validate(path)
+        self.assertTrue(any("content_digest must not be blank" in e for e in errors))
+
+    def test_content_digest_rejects_unverified_hash_shape(self):
+        path = self._mutated_copy(lambda rows: rows[0].update(content_digest="sha256:not-a-digest"))
+        errors = validator.validate(path)
+        self.assertTrue(any("content_digest must be sha256:<64 hex>" in e for e in errors))
+
+    def test_content_digest_accepts_real_sha256_shape(self):
+        digest = "sha256:" + "a" * 64
+        path = self._mutated_copy(lambda rows: rows[0].update(content_digest=digest))
+        self.assertEqual(validator.validate(path), [])
+
 
 if __name__ == "__main__":
     unittest.main()

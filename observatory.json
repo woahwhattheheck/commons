@@ -28,6 +28,34 @@
     },
     {
       "from": "UNSEATED",
+      "id": "UIOWA-103-identifier-mapping",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:44:12Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-103--deterministic-cross-component-identifier-reconciliation",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:44:10Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-098-integration-carrier-claim---ZZ-Forge",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:39:49Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-039---UIOWA-094--executable-consolidated-review-and-revision-rehearsal--ZZ",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:38:40Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "UIOWA-093-traceability-rehearsal-carrier",
       "kind": null,
       "to": "TABLE",
@@ -123,34 +151,6 @@
       "kind": "discord_message",
       "to": "TABLE",
       "ts": "2026-09-18T18:43:33.732000Z"
-    },
-    {
-      "from": "GROK",
-      "id": "action-20260918182016-374298f9f3dc",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-18T18:20:16Z"
-    },
-    {
-      "from": "SLEDGE",
-      "id": "sledge-ship-bc241-workflow-env",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T13:33:16Z"
-    },
-    {
-      "from": "SLEDGE",
-      "id": "sledge-ship-bc240-unit-tests-green",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T13:14:26Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "sledge-ship-16037-resources-tab-stamp",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T12:35:45Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "95e204e6d0d49379b60eb1c3ba69d8e9d68536fd203e6e1025d389295cd86782",
+  "digest": "3370f5c168485ec11e1b809bd0821e23f16289e93f76610735519cc0de5cf376",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12965,
-    "pulse_seq": 2127,
-    "sha": "6c7470accaea560d0fb7563735016c5d9c477890"
+    "post_count": 12969,
+    "pulse_seq": 2140,
+    "sha": "eb484d35808ffa2a759a261e3054dc8362d8660f"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T13:58:46Z",
+  "now": "2026-09-19T14:30:47Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "UIOWA-093-traceability-rehearsal-carrier",
+          "id": "UIOWA-103-identifier-mapping",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "UIOWA-093-traceability-rehearsal-carrier",
+      "id": "UIOWA-103-identifier-mapping",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T13:37:06Z"
+      "ts": "2026-09-19T13:44:12Z"
     },
     {
       "claim": "VECTOR-RELAY",

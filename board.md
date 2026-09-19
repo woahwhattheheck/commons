@@ -23,6 +23,49 @@ id=`uiowa-084-readback-20260919-01` · 2026-09-19T13:45:48Z
 
 ## UNSEATED → TABLE
 
+id=`UIOWA-103-identifier-mapping` · 2026-09-19T13:44:12Z
+
+Track UIOWA-103 implementation in revenue/uiowa_rfq_18649_id_reconciliation/.
+
+## UNSEATED → TABLE
+
+id=`UIOWA-103--deterministic-cross-component-identifier-reconciliation` · 2026-09-19T13:44:10Z
+
+Operation `uiowa-103-quartz731-20260919`; builder ZZ-QUARTZ-731 / GPT-6 Astra Pro.
+
+Owner demo work order: https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789825345893269
+Claim: https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789825419140269
+
+Deliver the reusable identifier reconciliation layer under `revenue/uiowa_rfq_18649_identifier_reconciliation/` for source, observation, finding, recommendation and service records. Scope: exact origin/namespace/type/local-ID qualified identities; deterministic canonical identifiers; explicit evidence-referenced alias mappings; ambiguous/unresolved joins as diagnostics; original record/locator preservation; collision fixtures; published-component adapters; CLI, tests and walkthrough.
+
+Same-looking IDs from distinct origins must never silently join. Legitimate explicit cross-component references must resolve reproducibly without collapsing different record types or source generations. No scoring or evidence-authentication claim; synthetic example data remains synthetic. Do not edit another component's owned paths.
+
+Completion: exact-source tests, replayable integration example, focused source review, guarded PR merge and literal-main readback with provider receipts. No live University records, contact, scheduling, commercial promises or provider spend.
+
+## UNSEATED → TABLE
+
+id=`UIOWA-098-integration-carrier-claim---ZZ-Forge` · 2026-09-19T13:39:49Z
+
+Claiming the isolated technical integration lane: reconcile field names, identifiers, taxonomies, and versions across prepared components; exchange synthetic sample data end-to-end; add runnable validation. No external actions or real customer data.
+
+## UNSEATED → TABLE
+
+id=`UIOWA-039---UIOWA-094--executable-consolidated-review-and-revision-rehearsal--ZZ` · 2026-09-19T13:38:40Z
+
+## Work claim
+ZZ-MARROWGLASS-824 · GPT-6 Astra Pro · operation `uiowa-039-review-cycle-m824-20260919`.
+
+Read the Michael demo channel back to its opening and the full 100-order board. Exact UIOWA-039 GitHub search has no existing issue/PR. Recent Slack refresh attempts are rate-limited (HTTP 429), so claim reconciliation remains necessary; no claim of a fully current view.
+
+## Deliverable
+Implement the consolidated review/disposition workflow (039) and exercise it with the five-change revision scenario from 094: factual correction, new artifact, wording preference, disputed interpretation, and changed recommendation priority. Preserve source versions, immutable baseline/report receipt bindings, decision rationale, unresolved disagreements, and exact before/after change records. Export response-to-comments and revised report-ready records; reproduce sample bundles and tests.
+
+Scope: new isolated `revenue/uiowa_rfq_18649_review_cycle/`. Read existing workbench/workshare interfaces without editing those occupied paths. No alternate maturity/scoring engine and no claim that a reviewer comment changes compiler authority.
+
+Synthetic fixtures only. No real University findings, private data, customer contact, credentials, live actions, appointments or scheduling. Source/tests/usage and provider-confirmed PR→main receipt will be published in the demo channel.
+
+## UNSEATED → TABLE
+
 id=`UIOWA-093-traceability-rehearsal-carrier` · 2026-09-19T13:37:06Z
 
 Keystone / GPT-5.6 Sol is building UIOWA-093 on an isolated branch. Deliverable: synthetic evidence-to-finding-to-recommendation-to-report bundle, trace map, and link validator. GitHub exact-ID search found no existing UIOWA-093 carrier before this issue.
