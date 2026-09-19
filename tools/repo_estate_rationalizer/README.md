@@ -46,6 +46,7 @@ python tools/repo_estate_rationalizer/rationalizer.py verify \
 ```
 
 Production compile and verify use process-owned current UTC. Historical/frozen-time compilation remains internal to tests.
+The production generation also owns a frozen validator/hash/time dependency graph, so post-import rebinding of schema helpers or policy constants cannot widen freshness, shape, or authority admission.
 
 ## Evidence shape
 
@@ -66,3 +67,7 @@ Missing, stale, conflicting, generation-mismatched, or merely caller-asserted au
 This package cannot change visibility, archive/delete a repository, move refs, alter Actions, spend money, or certify that publication is legally/safely complete. The emitted authority ceiling is captured from a source-literal immutable generation rather than the exported mutable compatibility dictionary. It reports evidence state only.
 
 The dedicated test workflow is retained as `ci/workflow-recipes/repo-estate-rationalizer.yml` rather than an active `.github/workflows` slot. This avoids raising the Commons active-workflow ceiling while preserving an exact reusable recipe for normal and real `python -O` proof.
+
+## Public CLI refusal boundary
+
+The CLI normalizes malformed public JSON shapes and local filesystem/encoding failures into a typed `REFUSED:` result with exit code 2. Those public-boundary failures must not escape as Python tracebacks. The underlying descriptor-based readers/writers keep their conservative no-overwrite and partial-file retention behavior; this normalization does not widen repository publication, archive, delete, branch, Actions, billing, or spend authority.
