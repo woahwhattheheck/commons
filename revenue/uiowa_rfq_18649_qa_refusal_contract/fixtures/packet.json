@@ -1,0 +1,445 @@
+{
+  "label": "SYNTHETIC -- FICTIONAL EVIDENCE. Every organisation, person, document, number and quotation in this file is invented for rehearsal. Nothing here is a University of Iowa finding, and nothing here should be presented as one.",
+  "synthetic": true,
+  "assessment_scope": {
+    "description": "What this fictional engagement actually looked at. Absence claims are checked against this list, so the kit cannot report 'we found no evidence' about an area it never entered.",
+    "groups": [
+      "ESS",
+      "RIS",
+      "IAM"
+    ],
+    "areas": [
+      "SD",
+      "SEC",
+      "DEP",
+      "AI"
+    ],
+    "areas_examined": [
+      "ESS:SD",
+      "ESS:SEC",
+      "ESS:DEP",
+      "ESS:AI",
+      "RIS:SD",
+      "RIS:SEC",
+      "RIS:DEP",
+      "RIS:AI",
+      "IAM:SD",
+      "IAM:SEC",
+      "IAM:DEP"
+    ],
+    "deliberately_not_examined": [
+      "IAM:AI"
+    ],
+    "period": "2025-09-01 to 2026-08-31",
+    "method": "document review plus five practitioner interviews; sampling, not census"
+  },
+  "evidence": [
+    {
+      "id": "E-001",
+      "kind": "record_extract",
+      "group": "ESS",
+      "area": "SD",
+      "title": "ESS change log extract, 44 sampled changes",
+      "locator": "synthetic/ess/change-log-2026-06.csv rows 12-55",
+      "coverage": "partial",
+      "excerpt": "Of 44 sampled changes, 41 record an independent reviewer distinct from the author prior to release. 3 record the author as sole approver, each flagged as an out-of-hours fix.",
+      "note": "SYNTHETIC. Sample of 44; the total change population for the period is not stated in the supplied material."
+    },
+    {
+      "id": "E-002",
+      "kind": "interview",
+      "group": "ESS",
+      "area": "SD",
+      "title": "Interview, ESS release engineer",
+      "locator": "synthetic/interviews/ess-release-eng.md lines 40-58",
+      "coverage": "single_instance",
+      "excerpt": "\"Two people on anything that ships. It is the one rule nobody argues about. If it is three in the morning you can self-approve, but you write it up the next day.\"",
+      "note": "SYNTHETIC. One practitioner's account; records what was said, not an independent measurement."
+    },
+    {
+      "id": "E-003",
+      "kind": "document",
+      "group": "ESS",
+      "area": "SD",
+      "title": "ESS pull-request template",
+      "locator": "synthetic/ess/PULL_REQUEST_TEMPLATE.md",
+      "coverage": "partial",
+      "excerpt": "Reviewer sign-off checkbox is required and blocks merge. Out-of-hours self-approval requires a written follow-up within one business day.",
+      "note": "SYNTHETIC. Shows the mechanism exists; does not show the rate at which it is honoured."
+    },
+    {
+      "id": "E-004",
+      "kind": "record_extract",
+      "group": "RIS",
+      "area": "DEP",
+      "title": "RIS backup job report, 90 days",
+      "locator": "synthetic/ris/backup-summary-2026-08.csv",
+      "coverage": "partial",
+      "excerpt": "Nightly backup jobs for 6 research storage volumes: 265 of 270 scheduled runs completed successfully over 90 days. 5 failures, each retried successfully the following night.",
+      "note": "SYNTHETIC. Records that backup jobs completed. Says nothing about whether the resulting media can be restored."
+    },
+    {
+      "id": "E-005",
+      "kind": "document_set",
+      "group": "RIS",
+      "area": "DEP",
+      "title": "RIS runbook set, 14 runbooks",
+      "locator": "synthetic/ris/runbooks/ (14 files)",
+      "coverage": "partial",
+      "excerpt": "Reviewed end to end for any record of a completed restoration exercise. 4 runbooks describe a restore procedure; none records the procedure having been carried out.",
+      "note": "SYNTHETIC. This item is a SEARCH SCOPE record: it documents what was examined, which is what an absence claim rests on."
+    },
+    {
+      "id": "E-006",
+      "kind": "record_extract",
+      "group": "RIS",
+      "area": "DEP",
+      "title": "RIS change records, 9 records in period",
+      "locator": "synthetic/ris/change-records-2025-09_2026-08.csv",
+      "coverage": "partial",
+      "excerpt": "Reviewed for any change raised to perform, schedule or document a restoration test. None of the 9 records references a restoration exercise.",
+      "note": "SYNTHETIC. Second SEARCH SCOPE record for the same absence claim."
+    },
+    {
+      "id": "E-007",
+      "kind": "interview",
+      "group": "RIS",
+      "area": "DEP",
+      "title": "Interview, RIS operations lead",
+      "locator": "synthetic/interviews/ris-ops-lead.md lines 88-95",
+      "coverage": "single_instance",
+      "excerpt": "\"Honestly we have never had to restore one of these, so a restore drill has never made it onto the schedule. I would want two days to do it properly.\"",
+      "note": "SYNTHETIC. This is positive evidence that the statement was made. It is not a record of a restoration exercise, and it is not independent confirmation that none occurred."
+    },
+    {
+      "id": "E-008",
+      "kind": "document",
+      "group": "ESS",
+      "area": "SEC",
+      "title": "ESS security review checklist",
+      "locator": "synthetic/ess/security-review-checklist.md section 4",
+      "coverage": "partial",
+      "position": "rotation_quarterly",
+      "excerpt": "Section 4: service credentials and API keys are rotated on a quarterly cycle; rotation is recorded in the credential register.",
+      "note": "SYNTHETIC. A document describing an intended practice."
+    },
+    {
+      "id": "E-009",
+      "kind": "interview",
+      "group": "ESS",
+      "area": "SEC",
+      "title": "Interview, ESS senior developer",
+      "locator": "synthetic/interviews/ess-senior-dev.md lines 120-131",
+      "coverage": "single_instance",
+      "position": "rotation_ad_hoc",
+      "excerpt": "\"The checklist says quarterly. In practice we rotate when somebody leaves or when something breaks. I think the last full pass was well over a year ago.\"",
+      "note": "SYNTHETIC. Directly contradicts E-008 on the same practice. Both are retained; neither is treated as the finding."
+    },
+    {
+      "id": "E-010",
+      "kind": "register",
+      "group": "ALL",
+      "area": "ALL",
+      "title": "Evidence coverage register",
+      "locator": "synthetic/registers/coverage.csv",
+      "coverage": "complete",
+      "excerpt": "11 of the 12 group-by-area cells were examined in this engagement. IAM x AI readiness was not examined: it was descoped at kickoff and no evidence was requested or supplied for it.",
+      "note": "SYNTHETIC. Coverage of the register itself is complete: it accounts for all 12 cells, including the one that was not examined."
+    },
+    {
+      "id": "E-011",
+      "kind": "document",
+      "group": "ESS",
+      "area": "SEC",
+      "title": "ESS access-control standard",
+      "locator": "synthetic/ess/access-control-standard.md",
+      "coverage": "partial",
+      "excerpt": "Defines role-based access tiers for the three production services in scope, with named owners for each tier and a documented quarterly access review.",
+      "note": "SYNTHETIC. Records that a written standard exists. No testing of whether the standard is followed was performed."
+    }
+  ],
+  "answers": [
+    {
+      "id": "A-001",
+      "subject": "ESS change review -- the packet's clearest strength",
+      "question_variants": [
+        "What is the strongest software delivery practice we found?",
+        "How good is change review in ESS?",
+        "Does ESS get changes independently reviewed before release?",
+        "What is the evidence behind the ESS software delivery strength?"
+      ],
+      "claims": [
+        {
+          "claim_type": "OBSERVED_PRESENT",
+          "text": "In the 44 ESS changes sampled, 41 carried a recorded independent reviewer distinct from the author before release, and the 3 exceptions were out-of-hours fixes flagged as such (E-001). The two-reviewer rule is described consistently by a release engineer (E-002) and is encoded as a merge-blocking gate in the pull-request template (E-003). Because the sample is 44 changes out of a population the supplied material does not state, this supports a practice observed in that sample rather than a rate across the service.",
+          "evidence_ids": [
+            "E-001",
+            "E-002",
+            "E-003"
+          ],
+          "area": "ESS:SD"
+        }
+      ]
+    },
+    {
+      "id": "A-002",
+      "subject": "RIS backup vs demonstrated restoration -- the packet's clearest gap",
+      "question_variants": [
+        "Has RIS tested restoring from backup?",
+        "Can RIS actually recover a research storage volume?",
+        "What is the evidence on RIS restoration and disaster recovery?",
+        "Are the RIS backups any good?"
+      ],
+      "claims": [
+        {
+          "claim_type": "OBSERVED_PRESENT",
+          "text": "RIS nightly backup jobs completed on 265 of 270 scheduled runs across 6 research storage volumes over 90 days, with the 5 failures each retried successfully the following night (E-004). That is evidence that the backup jobs ran.",
+          "evidence_ids": [
+            "E-004"
+          ],
+          "area": "RIS:DEP"
+        },
+        {
+          "claim_type": "ABSENT_IN_SEARCHED",
+          "text": "We found no record of a completed restoration exercise. The 14 RIS runbooks were reviewed end to end (E-005) and the 9 change records in the period were reviewed for any restoration test (E-006); 4 runbooks describe a restore procedure and none records it having been carried out. This is a statement about the material reviewed. It is not a finding that RIS cannot restore a volume, and it is not a finding that no restoration has ever taken place -- only that nothing in the material supplied records one.",
+          "evidence_ids": [],
+          "searched_evidence_ids": [
+            "E-005",
+            "E-006"
+          ],
+          "search_scope": "RIS runbook set (14 documents) and RIS change records (9 records), period 2025-09-01 to 2026-08-31",
+          "area": "RIS:DEP"
+        },
+        {
+          "claim_type": "OBSERVED_PRESENT",
+          "text": "In interview, the RIS operations lead stated that a restore drill has not been scheduled and estimated two days to do one properly (E-007). This records what was said. It is an account from one practitioner, not a record of the exercise and not independent confirmation of its absence.",
+          "evidence_ids": [
+            "E-007"
+          ],
+          "area": "RIS:DEP"
+        }
+      ]
+    },
+    {
+      "id": "A-003",
+      "subject": "Evidence coverage across the twelve cells",
+      "question_variants": [
+        "How much evidence do we have for each group?",
+        "Is evidence coverage even across the three groups?",
+        "Which areas were examined and which were not?",
+        "What does the coverage register say?"
+      ],
+      "claims": [
+        {
+          "claim_type": "OBSERVED_PRESENT",
+          "text": "The coverage register accounts for all 12 group-by-area cells and records that 11 were examined in this engagement (E-010). Evidence depth is not uniform across those 11: ESS software delivery rests on three independent items, while several cells rest on a single interview.",
+          "evidence_ids": [
+            "E-010"
+          ],
+          "area": "ALL"
+        }
+      ]
+    },
+    {
+      "id": "A-004",
+      "subject": "Observed practices that control frameworks commonly ask about",
+      "question_variants": [
+        "Which of our practices would a control framework care about?",
+        "What security practices did you actually observe in ESS?",
+        "What do we have written down for access control?"
+      ],
+      "claims": [
+        {
+          "claim_type": "OBSERVED_PRESENT",
+          "text": "Three practices were observed in ESS: a merge-blocking independent review gate in the pull-request template (E-003), recorded independent review on 41 of 44 sampled changes (E-001), and a written access-control standard defining role-based tiers with named owners (E-011). These are the kinds of practice control frameworks commonly ask about. Observing that a practice exists is not the same as testing whether a control operates, and no control testing was performed in this engagement.",
+          "evidence_ids": [
+            "E-001",
+            "E-003",
+            "E-011"
+          ],
+          "area": "ESS:SEC"
+        }
+      ]
+    },
+    {
+      "id": "A-005",
+      "subject": "ESS secret rotation -- evidence that disagrees with itself",
+      "question_variants": [
+        "How are secrets and API keys rotated in ESS?",
+        "What is the credential rotation practice?",
+        "How often are service credentials rotated?"
+      ],
+      "claims": [
+        {
+          "claim_type": "CONTESTED",
+          "text": "The evidence disagrees with itself here, and the disagreement was not reconciled. The ESS security review checklist states that service credentials and API keys are rotated quarterly and recorded in a credential register (E-008). A senior developer describes rotation as ad hoc in practice -- triggered by a departure or a breakage -- and puts the last full pass at well over a year ago (E-009). Both accounts are retained. A written standard and a practitioner describing the same practice differently is a useful signal in its own right, and collapsing it to either side would discard it. The credential register that would settle it was not supplied.",
+          "evidence_ids": [
+            "E-008",
+            "E-009"
+          ],
+          "area": "ESS:SEC"
+        }
+      ]
+    },
+    {
+      "id": "A-006",
+      "subject": "IAM AI readiness -- the cell that was never examined",
+      "question_variants": [
+        "Is IAM ready for AI?",
+        "What is IAM's AI readiness?",
+        "How prepared is the identity and access management group for AI adoption?",
+        "Why is there nothing about IAM AI readiness in the report?"
+      ],
+      "claims": [
+        {
+          "claim_type": "NOT_ASSESSED",
+          "text": "IAM AI readiness was not assessed. It was descoped at kickoff and was not examined, so nothing is established about it in either direction -- neither that the group is prepared nor that it is unprepared. It is shown as not assessed rather than folded in with the areas where we looked and came up empty, because those are different situations that would otherwise read identically.",
+          "evidence_ids": [],
+          "searched_evidence_ids": [],
+          "area": "IAM:AI"
+        }
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "id": "B-001",
+      "subject": "Peer comparison and percentile ranking",
+      "trigger_terms": [
+        "peer",
+        "peers",
+        "percentile",
+        "quartile",
+        "benchmark",
+        "benchmarked",
+        "institutions",
+        "universities",
+        "cohort",
+        "ranking",
+        "nationally",
+        "industry"
+      ],
+      "question_variants": [
+        "Where do we rank against peer institutions?",
+        "What percentile are we in compared to other universities?",
+        "How do we benchmark against our peers nationally?",
+        "Are we above or below the industry average?"
+      ],
+      "cannot": "This assessment cannot place the University in a percentile, a quartile or a ranking against peer institutions. There is no number of that kind in this engagement, and one cannot be produced from the evidence collected.",
+      "requires": "Producing that figure would require a peer dataset: the same questions, asked the same way, of a named set of comparable institutions, over a comparable period, with matched definitions and matched denominators. Without a distribution there is no position in it.",
+      "why_this_instrument_cannot": "This engagement collected evidence from one organisation. A single organisation has no percentile. Any comparative figure offered here would be an impression dressed as a measurement, and the fastest way to lose a leadership audience is to give them a number that turns out to have been invented.",
+      "can_say_instead": [
+        "A-001",
+        "A-002"
+      ]
+    },
+    {
+      "id": "B-002",
+      "subject": "Ranking the groups against each other",
+      "trigger_terms": [
+        "worst",
+        "weakest",
+        "poorest",
+        "laggard",
+        "laggards",
+        "underperforming",
+        "league",
+        "rank",
+        "ranked"
+      ],
+      "question_variants": [
+        "Which team is the worst?",
+        "Which of the three groups is weakest?",
+        "Who is falling behind?",
+        "Rank the groups from strongest to weakest."
+      ],
+      "cannot": "This assessment cannot tell you which team is worst. It has no basis for ordering ESS, RIS and IAM against one another, and it does not score teams.",
+      "requires": "An ordering would require matched evidence: the same areas examined to the same depth in each group, with the same definitions and the same denominators, over the same period. This engagement has none of those things -- coverage is uneven by design, and one cell was never examined at all.",
+      "why_this_instrument_cannot": "Evidence depth is not uniform across the groups, so any ranking would partly measure where we happened to look rather than how the groups actually operate. A group with thin evidence would appear weak because it is thinly evidenced. That is a property of the assessment, not of the team -- and presenting it as a ranking would hand leadership a conclusion about people that the evidence is about documents.",
+      "can_say_instead": [
+        "A-003",
+        "A-002"
+      ]
+    },
+    {
+      "id": "B-003",
+      "subject": "Compliance verdicts, audit outcomes and certification",
+      "trigger_terms": [
+        "compliant",
+        "compliance",
+        "audit",
+        "audited",
+        "auditor",
+        "certified",
+        "certification",
+        "attestation",
+        "regulatory",
+        "verdict",
+        "nist",
+        "ferpa",
+        "hipaa",
+        "soc2",
+        "iso27001"
+      ],
+      "question_variants": [
+        "Does this make us compliant?",
+        "Will we pass an audit on the back of this?",
+        "Are we compliant with the NIST framework?",
+        "Can we use this as evidence of certification?",
+        "Will an auditor sign off on this?"
+      ],
+      "cannot": "This assessment cannot issue a compliance verdict. It produces no pass, no fail, no certification and no attestation, and it is not an audit.",
+      "requires": "A compliance determination would require an audit against a named control framework: defined control objectives, a complete population rather than a sample, tested evidence for each control, and an auditor with the standing to issue an opinion. This engagement sampled documents and interviewed five practitioners.",
+      "why_this_instrument_cannot": "The difference is not rigour, it is standing and method. An assessment describes practices as it found them; an audit tests controls against a framework and someone signs their name to the result. Presenting assessment output as an audit outcome exposes the institution twice -- once if a real audit disagrees, and once for having claimed it.",
+      "can_say_instead": [
+        "A-004",
+        "A-005"
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "id": "G-001",
+      "subject": "Cost of the AI tooling in use",
+      "question_variants": [
+        "What does the AI tooling cost us?",
+        "What is the annual licence spend on AI tools?",
+        "How much are we paying for these AI assistants?",
+        "What is the budget impact of the AI tools?"
+      ],
+      "what_is_missing": "Recorded licence, infrastructure and support cost for the AI tooling in use, with the billing basis and the period.",
+      "why_it_cannot_be_inferred": "Cost cannot be derived from usage evidence. The packet records that tools are used and by whom; it does not record what they are billed at. Published per-seat list pricing is not what an institution pays, and inferring a figure from it would put a number in a leadership deck that no invoice supports.",
+      "requested_evidence": [
+        {
+          "artifact": "FY26 software licence schedule lines covering the AI tooling",
+          "held_by": "AIS procurement",
+          "would_settle": "the recurring licence cost component and its billing basis"
+        },
+        {
+          "artifact": "Cloud inference and hosting cost export for the relevant subscriptions, 12 months",
+          "held_by": "the cloud account owner",
+          "would_settle": "the variable infrastructure component and its volume sensitivity"
+        }
+      ]
+    },
+    {
+      "id": "G-002",
+      "subject": "Staffing allocation per service",
+      "question_variants": [
+        "How many people work on each service?",
+        "What is the FTE allocation across the three groups?",
+        "How is staffing split between the teams?",
+        "Do we have enough staff for this?"
+      ],
+      "what_is_missing": "FTE allocation per service for the assessed period, and whether allocations are funded positions or informal splits.",
+      "why_it_cannot_be_inferred": "Interview headcounts are recollections, and the packet contains no staffing record to check them against. Counting the names that appear in change logs measures who committed, not who is allocated, and would systematically undercount everyone whose work does not land in version control.",
+      "requested_evidence": [
+        {
+          "artifact": "Position allocation report by service for the assessed period",
+          "held_by": "AIS business office",
+          "would_settle": "funded FTE per service, and therefore whether an effort estimate is feasible"
+        }
+      ]
+    }
+  ]
+}

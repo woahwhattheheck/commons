@@ -1,0 +1,194 @@
+{
+  "label": "SYNTHETIC AND DELIBERATELY BROKEN. Test fixture only. Every record here violates the kit's contract on purpose, so the tests can prove the guards fire instead of asserting that they exist. Never use this as an example of how to author a packet.",
+  "synthetic": true,
+
+  "assessment_scope": {
+    "groups": ["ESS", "RIS"],
+    "areas": ["SD", "DEP"],
+    "areas_examined": ["ESS:SD", "ESS:DEP", "RIS:SD"],
+    "deliberately_not_examined": ["RIS:DEP"],
+    "period": "2025-09-01 to 2026-08-31"
+  },
+
+  "evidence": [
+    {
+      "id": "E-101",
+      "kind": "document",
+      "group": "ESS",
+      "area": "SD",
+      "title": "ESS review policy",
+      "locator": "synthetic/broken/policy.md",
+      "coverage": "partial",
+      "position": "review_required",
+      "excerpt": "SYNTHETIC. A policy document."
+    },
+    {
+      "id": "E-102",
+      "kind": "interview",
+      "group": "ESS",
+      "area": "SD",
+      "title": "ESS interview",
+      "locator": "synthetic/broken/interview.md",
+      "coverage": "partial",
+      "position": "review_required",
+      "excerpt": "SYNTHETIC. Agrees with E-101 -- deliberately, so a CONTESTED claim citing both can be caught as not actually contested."
+    }
+  ],
+
+  "answers": [
+    {
+      "id": "D-001",
+      "subject": "DEFECT: absence stated as a fact about the University",
+      "question_variants": ["Is there disaster recovery testing in ESS deployment?"],
+      "claims": [
+        {
+          "claim_type": "ABSENT_IN_SEARCHED",
+          "text": "There is no disaster recovery testing. ESS does not test recovery and never has.",
+          "evidence_ids": [],
+          "searched_evidence_ids": ["E-101"],
+          "search_scope": "ESS policy documents",
+          "area": "ESS:DEP"
+        }
+      ]
+    },
+    {
+      "id": "D-002",
+      "subject": "DEFECT: absence claim with no named search scope",
+      "question_variants": ["What about ESS deployment automation coverage?"],
+      "claims": [
+        {
+          "claim_type": "ABSENT_IN_SEARCHED",
+          "text": "We found no evidence of deployment automation in the material reviewed.",
+          "evidence_ids": [],
+          "searched_evidence_ids": [],
+          "area": "ESS:DEP"
+        }
+      ]
+    },
+    {
+      "id": "D-003",
+      "subject": "DEFECT: absence reported in an area the engagement never entered",
+      "question_variants": ["What did you find about RIS deployment practice?"],
+      "claims": [
+        {
+          "claim_type": "ABSENT_IN_SEARCHED",
+          "text": "We found no record of a deployment pipeline in the documents reviewed.",
+          "evidence_ids": [],
+          "searched_evidence_ids": ["E-101"],
+          "search_scope": "documents reviewed",
+          "area": "RIS:DEP"
+        }
+      ]
+    },
+    {
+      "id": "D-004",
+      "subject": "DEFECT: NOT_ASSESSED worded as though a search happened",
+      "question_variants": ["What is the position on RIS deployment readiness?"],
+      "claims": [
+        {
+          "claim_type": "NOT_ASSESSED",
+          "text": "We found no evidence of deployment readiness at RIS.",
+          "evidence_ids": [],
+          "searched_evidence_ids": [],
+          "area": "RIS:DEP"
+        }
+      ]
+    },
+    {
+      "id": "D-005",
+      "subject": "DEFECT: positive claim citing nothing",
+      "question_variants": ["How strong is the ESS software delivery capability?"],
+      "claims": [
+        {
+          "claim_type": "OBSERVED_PRESENT",
+          "text": "ESS software delivery capability is strong and well established.",
+          "evidence_ids": [],
+          "area": "ESS:SD"
+        }
+      ]
+    },
+    {
+      "id": "D-006",
+      "subject": "DEFECT: citation to evidence that is not in the packet",
+      "question_variants": ["What does the ESS release cadence record show?"],
+      "claims": [
+        {
+          "claim_type": "OBSERVED_PRESENT",
+          "text": "The ESS release cadence record shows weekly releases (E-999).",
+          "evidence_ids": ["E-999"],
+          "area": "ESS:SD"
+        }
+      ]
+    },
+    {
+      "id": "D-007",
+      "subject": "DEFECT: CONTESTED whose evidence does not actually disagree",
+      "question_variants": ["Is the ESS review policy followed in practice?"],
+      "claims": [
+        {
+          "claim_type": "CONTESTED",
+          "text": "The evidence conflicts on whether the ESS review policy is followed.",
+          "evidence_ids": ["E-101", "E-102"],
+          "area": "ESS:SD"
+        }
+      ]
+    },
+    {
+      "id": "D-008",
+      "subject": "DEFECT: overclaimed coverage on partial evidence",
+      "question_variants": ["Do ESS teams follow the review policy consistently?"],
+      "claims": [
+        {
+          "claim_type": "OBSERVED_PRESENT",
+          "text": "All teams always follow the review policy, on every change, fully.",
+          "evidence_ids": ["E-101"],
+          "area": "ESS:SD"
+        }
+      ]
+    },
+    {
+      "id": "D-009",
+      "subject": "DEFECT: verdict and ranking language inside a claim",
+      "question_variants": ["What is the ESS security posture conclusion?"],
+      "claims": [
+        {
+          "claim_type": "OBSERVED_PRESENT",
+          "text": "ESS is compliant and would be ranked against peers in the top percentile.",
+          "evidence_ids": ["E-101"],
+          "area": "ESS:SD"
+        }
+      ]
+    }
+  ],
+
+  "boundaries": [
+    {
+      "id": "D-B01",
+      "subject": "DEFECT: a boundary that deflects instead of answering",
+      "trigger_terms": ["percentile"],
+      "question_variants": ["What percentile are we in?"],
+      "cannot": "That is outside the scope of this engagement.",
+      "requires": "",
+      "can_say_instead": []
+    },
+    {
+      "id": "D-B02",
+      "subject": "DEFECT: a trigger term common enough to misfire",
+      "trigger_terms": ["review"],
+      "question_variants": ["Is this reviewed?"],
+      "cannot": "This assessment cannot issue that finding.",
+      "requires": "It would require evidence that was not collected.",
+      "can_say_instead": ["D-005"]
+    }
+  ],
+
+  "gaps": [
+    {
+      "id": "D-G01",
+      "subject": "DEFECT: a declared gap that names no evidence request",
+      "question_variants": ["What is the annual hosting spend for ESS?"],
+      "what_is_missing": "Hosting cost records.",
+      "requested_evidence": []
+    }
+  ]
+}
