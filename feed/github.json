@@ -1,13 +1,13 @@
 {
   "counts": {
-    "open_issues": 190,
-    "open_pull_requests": 133,
-    "runs_in_progress": 12,
-    "runs_queued": 1048
+    "open_issues": 191,
+    "open_pull_requests": 137,
+    "runs_in_progress": 14,
+    "runs_queued": 1071
   },
   "counts_source": "graphql",
   "degraded": [],
-  "drafts": 7,
+  "drafts": 8,
   "longest_open": [
     {
       "author": "woahwhattheheck",
@@ -69,6 +69,72 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "swarm-zz/uiowa100-retained-review-kestrel-q9f2",
+      "created_at": "2026-09-19T15:15:28Z",
+      "draft": false,
+      "head_sha": "5888bcf68f67361b393e412a2bb1930df3dfbc93",
+      "number": 16372,
+      "title": "UIOWA-100: recover independent integrity regressions and exact replay donor",
+      "updated_at": "2026-09-19T15:15:28Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-quartz-731/roadmap-oracle-20260919",
+      "created_at": "2026-09-19T15:15:25Z",
+      "draft": true,
+      "head_sha": "7a129b223ba3270b65ac1d9f9846b0f7cb190816",
+      "number": 16371,
+      "title": "UIOWA-115: retain independent roadmap graph oracle and native 085 adapter",
+      "updated_at": "2026-09-19T15:15:25Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-caesura-5812f333-aidt-source-qualification-20260919",
+      "created_at": "2026-09-19T15:14:14Z",
+      "draft": false,
+      "head_sha": "57bde4459b28cc3d4c6f322d2b2dc1575c4e9bed",
+      "number": 16370,
+      "title": "AIDT: source-bound workshare and prime-evidence packet",
+      "updated_at": "2026-09-19T15:14:14Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-kestrel-v9-uiowa035-integrity-20260919",
+      "created_at": "2026-09-19T15:13:41Z",
+      "draft": false,
+      "head_sha": "a1c3d2b35e1dbc3c174601c1130555f07671e70c",
+      "number": 16369,
+      "title": "UIOWA-035: integrate editable matrix, lossless exports and strict input handling",
+      "updated_at": "2026-09-19T15:13:41Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-kestrel-m7q2/aidt-delivery-plan-20260919",
+      "created_at": "2026-09-19T15:13:19Z",
+      "draft": false,
+      "head_sha": "66730c01ad758125b30a2a2d8eabd62542898c07",
+      "number": 16368,
+      "title": "AIDT: migration cutover and interoperability delivery plans with executed example",
+      "updated_at": "2026-09-19T15:13:19Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-lantern-47r-incident-review-20260919",
+      "created_at": "2026-09-19T15:12:13Z",
+      "draft": false,
+      "head_sha": "9925a8acd9aad2dabc19a5cec63294ba5f5daaa2",
+      "number": 16366,
+      "title": "UIOWA-067: offline incident-review explorer and complete-evidence exports",
+      "updated_at": "2026-09-19T15:12:13Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "swarm-zz/uiowa124-cirrus-q73-native-acceptance",
       "created_at": "2026-09-19T15:10:59Z",
       "draft": false,
@@ -76,17 +142,6 @@
       "number": 16365,
       "title": "test(uiowa): independent real-parent acceptance and source-bound receipts (UIOWA-124)",
       "updated_at": "2026-09-19T15:10:59Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "swarm-zz/uiowa124-faraday-k9vx",
-      "branch": "swarm-zz/uiowa124-duplicate-diagnostics-keystone-k4j9",
-      "created_at": "2026-09-19T15:10:48Z",
-      "draft": false,
-      "head_sha": "718358e4d709a6a3b2eefb467d931e271331ffed",
-      "number": 16364,
-      "title": "fix(uiowa124): retain native duplicate validation diagnostics",
-      "updated_at": "2026-09-19T15:10:48Z"
     },
     {
       "author": "woahwhattheheck",
@@ -113,68 +168,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zz-kestrel-vector91/source-binding-walkthrough-20260919",
-      "created_at": "2026-09-19T15:08:45Z",
-      "draft": false,
-      "head_sha": "5fbf0985bee62c18bc4bc5d5dd9c995614d38999",
-      "number": 16361,
-      "title": "Explain five executed deployment-source decisions for operators",
-      "updated_at": "2026-09-19T15:10:27Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "swarm/zz-kestrel-r9v6-uiowa108-completion-integrity",
       "created_at": "2026-09-19T15:06:41Z",
       "draft": false,
       "head_sha": "d8002243aaed4ca1e7a5fbc4ba2abb88ca895800",
       "number": 16359,
       "title": "UIOWA-108: integrate contractor-transition kit and completion-integrity repair",
-      "updated_at": "2026-09-19T15:06:41Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/zz-kestrel-q9d-uiowa038-walkthrough-20260919",
-      "created_at": "2026-09-19T15:04:26Z",
-      "draft": false,
-      "head_sha": "3dac1cbc961beebe84faa64a02146427270227e7",
-      "number": 16356,
-      "title": "UIOWA-038: land the readable worked recommendation review",
-      "updated_at": "2026-09-19T15:07:07Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-kestrel-exec31/arc3-independent-review-20260919",
-      "created_at": "2026-09-19T15:03:21Z",
-      "draft": false,
-      "head_sha": "86042e099f22db00be9ce3351e1f799341414e60",
-      "number": 16355,
-      "title": "ARC3: publish independent temporal/action review and reproducible evidence",
-      "updated_at": "2026-09-19T15:03:21Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-copperfinch-82d6/report-visuals-full-text-20260919",
-      "created_at": "2026-09-19T15:01:55Z",
-      "draft": true,
-      "head_sha": "206552d92cbd76da2ed9aa81dfd05f86a7519266",
-      "number": 16353,
-      "title": "Report visuals: preserve complete text with content-sized layouts",
-      "updated_at": "2026-09-19T15:01:55Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa084-integrity-meridian47-20260919",
-      "created_at": "2026-09-19T14:59:46Z",
-      "draft": false,
-      "head_sha": "9da22b32e02344ec634badb8d42f3ef1d77f70e7",
-      "number": 16349,
-      "title": "fix(uiowa084): preserve ranking semantics while validating inputs and report publication",
-      "updated_at": "2026-09-19T14:59:46Z"
+      "updated_at": "2026-09-19T15:13:53Z"
     }
   ],
   "open_heads": {
@@ -268,7 +268,7 @@
     "16278": "a19006c5b979197d6f05553244b5faccbd89cffd",
     "16279": "d427fed1188222c8f9b2ef1f9880d12272576f3c",
     "16281": "0a44ac9a1b7a6f8c37de81eba809f9caa238c9ba",
-    "16283": "a2abe1adc85d057d811770bd6b0bbcd8baf2797c",
+    "16283": "4b2f40bdff508b590615182f7f826c813e51d64a",
     "16287": "df6d0058feb8d49895dd9b6b250db679792178f9",
     "16289": "fad7e3dbbc61dc4f110395c408c8a9fe1c0629ad",
     "16290": "0973e6893c4bcf4cdd17fad096eea5d82d29d663",
@@ -282,7 +282,7 @@
     "16309": "eaa29d8cce87928c4aab92321be3099966d69473",
     "16312": "14e7900b18db700ed597744a721540068449fdf6",
     "16317": "c94723133cc6052b51a06a677f9dfc9240b4e65a",
-    "16318": "3524ef793443dd0e2d8f2f5f27bd57a0e6dabe9f",
+    "16318": "39fc01bf522d60a042906bae1c4db8d45dc5cf7a",
     "16319": "bf37c706860821f1f6b1139fab81e5444d3786ee",
     "16320": "ff9a08f04298e68a371f54f5b1f414d090755ebb",
     "16321": "41a041c742afa62e6a96da9a5410061f791dff87",
@@ -290,7 +290,7 @@
     "16325": "f693abe5578f6ed9e56634fbae5eafcc631b0d31",
     "16326": "5406ef6ca6c75eccf18434a0b809069911326e3f",
     "16327": "fefde600866ed34492aee8c7bba64a2eaecdea4c",
-    "16328": "f9f21f53b85ca8190a2e42fb66acfc7d0fabe62e",
+    "16328": "410a5faa6983bfa3ada485b5617b0e80007129da",
     "16329": "75b791dbc19e809c0273e7624defb54e2c833078",
     "16330": "e450d92a0e14fbddae91129d9747ee8aab509973",
     "16331": "77f2774a38de51d0a43bae6ade1fed9a231dc55a",
@@ -302,20 +302,46 @@
     "16347": "4ce71b059e57ecb991f902968e674a74de978a35",
     "16348": "eed458ddaf41db867a4b56a24a4222618b1abb1f",
     "16349": "9da22b32e02344ec634badb8d42f3ef1d77f70e7",
-    "16353": "206552d92cbd76da2ed9aa81dfd05f86a7519266",
+    "16353": "bc9e21204bac173b96b1a5d6d5cb48f7505725dd",
     "16355": "86042e099f22db00be9ce3351e1f799341414e60",
     "16356": "3dac1cbc961beebe84faa64a02146427270227e7",
     "16359": "d8002243aaed4ca1e7a5fbc4ba2abb88ca895800",
-    "16361": "5fbf0985bee62c18bc4bc5d5dd9c995614d38999",
     "16362": "222bfc7a252b2ab66260d977aec16c86331db48c",
     "16363": "29e3d3d0bda9571144fa31c55185742d9ffd49ef",
-    "16364": "718358e4d709a6a3b2eefb467d931e271331ffed",
-    "16365": "5bcda15b53a779d7c1e39072973dac2713175e81"
+    "16365": "5bcda15b53a779d7c1e39072973dac2713175e81",
+    "16366": "9925a8acd9aad2dabc19a5cec63294ba5f5daaa2",
+    "16368": "66730c01ad758125b30a2a2d8eabd62542898c07",
+    "16369": "a1c3d2b35e1dbc3c174601c1130555f07671e70c",
+    "16370": "57bde4459b28cc3d4c6f322d2b2dc1575c4e9bed",
+    "16371": "7a129b223ba3270b65ac1d9f9846b0f7cb190816",
+    "16372": "5888bcf68f67361b393e412a2bb1930df3dfbc93"
   },
-  "pulls_listed": 133,
+  "pulls_listed": 137,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 87.3,
+  "queue_depth_per_runner": 76.5,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "swarm-zz/uiowa124-faraday-k9vx",
+      "branch": "swarm-zz/uiowa124-duplicate-diagnostics-keystone-k4j9",
+      "closed_at": "2026-09-19T15:15:50Z",
+      "head_sha": "718358e4d709a6a3b2eefb467d931e271331ffed",
+      "merged_at": "2026-09-19T15:15:50Z",
+      "number": 16364,
+      "state": "MERGED",
+      "title": "fix(uiowa124): retain native duplicate validation diagnostics"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-kestrel-vector91/source-binding-walkthrough-20260919",
+      "closed_at": "2026-09-19T15:11:21Z",
+      "head_sha": "5fbf0985bee62c18bc4bc5d5dd9c995614d38999",
+      "merged_at": "2026-09-19T15:11:21Z",
+      "number": 16361,
+      "state": "MERGED",
+      "title": "Explain five executed deployment-source decisions for operators"
+    },
     {
       "author": "woahwhattheheck",
       "base": "tooling/quartz-m7r4-full-source-target-20260919",
@@ -458,32 +484,10 @@
       "number": 16335,
       "state": "MERGED",
       "title": "UIOWA-093: retain source-bound checker review and six measured coverage gaps"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-ibis93c-iam-primary-recovery-20260919",
-      "closed_at": "2026-09-19T14:58:09Z",
-      "head_sha": "c5dab1dee999993f80ac00a4851d1fa3d8526f9a",
-      "merged_at": "2026-09-19T14:58:09Z",
-      "number": 16342,
-      "state": "MERGED",
-      "title": "docs(uiowa): recover IAM federation sources and interview evidence"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "swarmz/titan-v5-wheat-carry-14337-20260917",
-      "branch": "swarmzz/titan-wheat-count-contract-thalweg62f9-20260919",
-      "closed_at": "2026-09-19T14:58:09Z",
-      "head_sha": "57bcb2e93a4a2f03995dc84ac58536738cb2fb48",
-      "merged_at": "2026-09-19T14:58:09Z",
-      "number": 16340,
-      "state": "MERGED",
-      "title": "TITAN: exact integer helper counts with source-bound replay (#15761 follow-up)"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T15:11:09Z",
+  "unchanged_since": "2026-09-19T15:16:03Z",
   "undatable_pulls": []
 }
