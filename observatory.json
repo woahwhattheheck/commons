@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "UIOWA-047--recover-OSPREY-fixture-bundle-companion-and-connect-canonical-assesso",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T14:08:16Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "UIOWA-106--enrollment-period-ESS-IAM-cross-component-demonstration--MARLSTONE-59",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-19T13:31:19Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-049--executable-technical-debt-investment-model",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:29:32Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "86716aa2c164d9c09f16bd402eb77befd7f5a2155d29bc111d1842779429e331",
+  "digest": "5b930da4b102cdc1e98399c59488fb6a06a220ea15ea58ca15a6fb4c53b3abe0",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12980,
-    "pulse_seq": 2160,
-    "sha": "eb650844b42a5a246e8adb65a2bc2a72712da0f1"
+    "post_count": 12981,
+    "pulse_seq": 2161,
+    "sha": "04cae9d81798faf70ef5b3aedd4fef76c5e892a6"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T15:39:26Z",
+  "now": "2026-09-19T15:41:24Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "UIOWA-106--enrollment-period-ESS-IAM-cross-component-demonstration--MARLSTONE-59",
+          "id": "UIOWA-047--recover-OSPREY-fixture-bundle-companion-and-connect-canonical-assesso",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "UIOWA-106--enrollment-period-ESS-IAM-cross-component-demonstration--MARLSTONE-59",
+      "id": "UIOWA-047--recover-OSPREY-fixture-bundle-companion-and-connect-canonical-assesso",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T14:01:31Z"
+      "ts": "2026-09-19T14:08:16Z"
     },
     {
       "claim": "VECTOR-RELAY",
