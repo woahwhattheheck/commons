@@ -1,0 +1,70 @@
+{
+  "absent": [],
+  "by_state": {
+    "UIOWA-071|CONFLICTING|UNRESOLVED": 1,
+    "UIOWA-071|NO_EVIDENCE_OBSERVED|NOT_EVIDENCED": 3,
+    "UIOWA-071|SUPPORTING|LOW": 4,
+    "UIOWA-071|SUPPORTING|MODERATE": 2,
+    "UIOWA-107|NO_EVIDENCE_OBSERVED|NOT_EVIDENCED": 2,
+    "UIOWA-107|SUPPORTING|LOW": 3,
+    "UIOWA-107|SUPPORTING|MODERATE": 2,
+    "UIOWA-108|EVIDENCE_OF_ABSENCE|LOW": 2,
+    "UIOWA-108|NO_EVIDENCE_OBSERVED|NOT_EVIDENCED": 2,
+    "UIOWA-108|SUPPORTING|MODERATE": 2
+  },
+  "csv": "out/projected_register.csv",
+  "declared": [
+    {
+      "direction": "neutral: none of the three is made to look better or worse than the source says",
+      "id": "DIV-071-01",
+      "order": "UIOWA-071",
+      "preserved_as": "the source classification is written verbatim into scope_limit, so the distinction survives at row level even though the enum cannot hold it",
+      "register_target": [
+        "NO_EVIDENCE_OBSERVED",
+        "NOT_EVIDENCED"
+      ],
+      "source_values": [
+        "PLANNED_USE",
+        "UNSUPPORTED_CLAIM",
+        "UNKNOWN"
+      ],
+      "why": "The register's evidence_state enum has one value for 'nothing observed'. The inventory distinguishes a use that has not started, a use asserted with nothing behind it, and a record too incomplete to classify. Those are three different next actions."
+    },
+    {
+      "direction": "neutral: ASSUMED is not promoted to SUPPORTING on the strength of having a number",
+      "id": "DIV-107-01",
+      "order": "UIOWA-107",
+      "preserved_as": "the source basis is written verbatim into scope_limit",
+      "register_target": [
+        "NO_EVIDENCE_OBSERVED",
+        "NOT_EVIDENCED"
+      ],
+      "source_values": [
+        "ASSUMED",
+        "UNKNOWN"
+      ],
+      "why": "A working figure with nothing behind it and no figure at all are different states. The register cannot separate them."
+    }
+  ],
+  "declared_count": 2,
+  "rows": 23,
+  "skipped": [],
+  "status": "CONFORMANT",
+  "survivals": [
+    {
+      "id": "SURV-108-01",
+      "order": "UIOWA-108",
+      "why": "The register carries EVIDENCE_OF_ABSENCE separately from NO_EVIDENCE_OBSERVED, which is exactly the unresolved-ownership versus missing-evidence distinction 108 makes. Nothing is lost, and the register's own rule then requires universe_definition, enumerator_authority and completeness_basis, which the packet can supply."
+    },
+    {
+      "id": "SURV-071-02",
+      "order": "UIOWA-071",
+      "why": "A record declared PLANNED that arrives carrying output projects to CONFLICTING, and the register then forces UNRESOLVED confidence plus a conflict_group. The status/evidence mismatch survives intact."
+    }
+  ],
+  "undeclared": [],
+  "validator": "uiowa_rfq_18649_workshare/methodology/validate_23_evidence_register.py",
+  "validator_exit": 0,
+  "validator_stderr": "",
+  "validator_stdout": "OK rows=23 observations=23 findings=23"
+}

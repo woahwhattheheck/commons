@@ -1,0 +1,35 @@
+{
+  "note": "Semantic losses that occur when this seat's lane outputs are projected into the UIOWA-023 evidence register. Each one is declared because the register has no enum that carries the distinction. An undeclared collapse fails conformance.py.",
+  "declared": [
+    {
+      "id": "DIV-071-01",
+      "order": "UIOWA-071",
+      "source_values": ["PLANNED_USE", "UNSUPPORTED_CLAIM", "UNKNOWN"],
+      "register_target": ["NO_EVIDENCE_OBSERVED", "NOT_EVIDENCED"],
+      "why": "The register's evidence_state enum has one value for 'nothing observed'. The inventory distinguishes a use that has not started, a use asserted with nothing behind it, and a record too incomplete to classify. Those are three different next actions.",
+      "preserved_as": "the source classification is written verbatim into scope_limit, so the distinction survives at row level even though the enum cannot hold it",
+      "direction": "neutral: none of the three is made to look better or worse than the source says"
+    },
+    {
+      "id": "DIV-107-01",
+      "order": "UIOWA-107",
+      "source_values": ["ASSUMED", "UNKNOWN"],
+      "register_target": ["NO_EVIDENCE_OBSERVED", "NOT_EVIDENCED"],
+      "why": "A working figure with nothing behind it and no figure at all are different states. The register cannot separate them.",
+      "preserved_as": "the source basis is written verbatim into scope_limit",
+      "direction": "neutral: ASSUMED is not promoted to SUPPORTING on the strength of having a number"
+    }
+  ],
+  "verified_survivals": [
+    {
+      "id": "SURV-108-01",
+      "order": "UIOWA-108",
+      "why": "The register carries EVIDENCE_OF_ABSENCE separately from NO_EVIDENCE_OBSERVED, which is exactly the unresolved-ownership versus missing-evidence distinction 108 makes. Nothing is lost, and the register's own rule then requires universe_definition, enumerator_authority and completeness_basis, which the packet can supply."
+    },
+    {
+      "id": "SURV-071-02",
+      "order": "UIOWA-071",
+      "why": "A record declared PLANNED that arrives carrying output projects to CONFLICTING, and the register then forces UNRESOLVED confidence plus a conflict_group. The status/evidence mismatch survives intact."
+    }
+  ]
+}
