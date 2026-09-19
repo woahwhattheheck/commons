@@ -12,15 +12,18 @@ from .workflow import *  # noqa:F401,F403
 def compile_capture(raw):
     capture = normalize_capture(raw)
     workflows = [workflow_result(w, capture["repository"], capture["head_sha"]) for w in capture["workflows"]]
-    seen = {}
+    # A rerun changes its attempt, not its workflow identity. Check both latest
+    # and replaced attempts so one run cannot satisfy multiple required groups.
+    run_workflows = {}
     for workflow in workflows:
         for row in workflow["latest_attempts"] + workflow["replaced_attempts"]:
-            key = (row["run_id"], row["run_attempt"])
-            if key in seen:
+            run_id = row["run_id"]
+            previous_workflow = run_workflows.get(run_id)
+            if previous_workflow is not None and previous_workflow != workflow["name"]:
                 raise EvidenceError(
-                    f"run_id/run_attempt appears in multiple workflows: {seen[key]!r}, {workflow['name']!r}"
+                    f"run_id appears in multiple workflows: {previous_workflow!r}, {workflow['name']!r}"
                 )
-            seen[key] = workflow["name"]
+            run_workflows[run_id] = workflow["name"]
 
     reasons = []
     if capture["topology"]["state"] != "CURRENT":
