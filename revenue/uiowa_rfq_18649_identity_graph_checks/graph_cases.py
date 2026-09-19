@@ -144,7 +144,12 @@ def check_case(mapper, case):
             raise AssertionError("source revision, original payload or provenance changed during grouping")
     if canonical(report["equivalences"]) != canonical(sorted(case["document"]["equivalences"], key=lambda row: row["decision_id"])):
         raise AssertionError("decision reason, locator or extension was lost")
+    expected_links = {row["link_id"]: row for row in case["document"]["links"]}
+    if len(report["links"]) != len(expected_links) or {row["link_id"] for row in report["links"]} != set(expected_links):
+        raise AssertionError("reference checks cannot pass after dropping or inventing links")
     for row in report["links"]:
+        if canonical(row["original"]) != canonical(expected_links[row["link_id"]]):
+            raise AssertionError("the requested reference was changed before resolution")
         expectation = case["link_statuses"].get(row["link_id"])
         if expectation and (row["from"]["status"], row["to"]["status"], row["status"]) != expectation:
             raise AssertionError("equivalence changed revision-specific reference resolution")
