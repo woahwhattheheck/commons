@@ -10,11 +10,11 @@ from __future__ import annotations
 import argparse
 import csv
 import json
-import math
+import html
+from fractions import Fraction
 import sys
 from dataclasses import dataclass, asdict
 from pathlib import Path
-from typing import Any
 
 
 MEASURE_CLASSES = {"adoption", "outcome"}
@@ -48,9 +48,39 @@ class Comparison:
     interpretation_limit: str
 
 
-def read_csv(path: str) -> list[dict[str, str]]:
+REC_FIELDS = ("recommendation_id", "assessment_area", "title", "intended_change")
+MEASURE_FIELDS = (
+    "measure_id", "recommendation_id", "assessment_area", "measure_class",
+    "measure_name", "numerator_definition", "denominator_definition", "unit",
+    "direction", "evidence_source", "collection_cadence", "interpretation_limit",
+)
+OBS_FIELDS = (
+    "measure_id", "period_id", "period_role", "numerator", "denominator",
+    "population_definition", "evidence_locator",
+)
+
+
+def read_csv(path: str, required_fields: tuple[str, ...] = ()) -> list[dict[str, str]]:
+    """Preserve field contents; reject layouts that DictReader would silently lose."""
     with Path(path).open("r", encoding="utf-8-sig", newline="") as handle:
-        return list(csv.DictReader(handle))
+        reader = csv.DictReader(handle, strict=True)
+        try:
+            headers = reader.fieldnames
+            if not headers or any(not h.strip() for h in headers):
+                raise ValueError(f"{path}: missing or blank CSV header")
+            if len(headers) != len(set(headers)):
+                raise ValueError(f"{path}: duplicate CSV header")
+            missing = sorted(set(required_fields) - set(headers))
+            if missing:
+                raise ValueError(f"{path}: missing required columns: {', '.join(missing)}")
+            rows = []
+            for row in reader:
+                if None in row or any(value is None for value in row.values()):
+                    raise ValueError(f"{path}: CSV row width mismatch ending at line {reader.line_num}")
+                rows.append(row)
+            return rows
+        except csv.Error as exc:
+            raise ValueError(f"{path}: CSV parse error at line {reader.line_num}: {exc}") from exc
 
 
 def parse_nonnegative_int(raw: str, *, field: str, key: str, findings: list[Finding]) -> int | None:
@@ -90,7 +120,7 @@ def unique_by(rows: list[dict[str, str]], key_name: str, findings: list[Finding]
     for index, row in enumerate(rows, start=2):
         key = (row.get(key_name) or "").strip()
         if not key:
-            findings.append(Finding("ERROR", "MISSING_ID", f"{key_name} missing at CSV line {index}"))
+            findings.append(Finding("ERROR", "MISSING_ID", f"{key_name} missing at CSV record {index - 1}"))
             continue
         if key in result:
             findings.append(Finding("ERROR", "DUPLICATE_ID", f"Duplicate {key_name}: {key}", key))
@@ -110,164 +140,146 @@ def validate_and_compare(
     register: list[dict[str, str]],
     observations: list[dict[str, str]],
 ) -> tuple[list[Finding], list[Comparison]]:
-    findings: list[Finding] = []
-    recs = unique_by(recommendations, "recommendation_id", findings)
-    measures = unique_by(register, "measure_id", findings)
+    """Validate every supplied record before deriving eligible comparisons.
 
+    Diagnostics are scoped by record kind and ID. An invalid observation or
+    definition suppresses its measure, not valid unrelated measures. An invalid
+    recommendation suppresses all measures that refer to it. The raw source
+    rows remain the caller's evidence; duplicates are not silently reconciled.
+    """
+    rec_findings: list[Finding] = []
+    recs = unique_by(recommendations, "recommendation_id", rec_findings)
+    if not recommendations:
+        rec_findings.append(Finding("ERROR", "EMPTY_RECOMMENDATIONS", "No recommendation definitions"))
     for rec_id, row in recs.items():
-        required(row, ("assessment_area", "title", "intended_change"), rec_id, findings)
+        required(row, REC_FIELDS[1:], rec_id, rec_findings)
+    invalid_recs = {f.key for f in rec_findings if f.level == "ERROR"}
 
+    findings: list[Finding] = []
+    measures = unique_by(register, "measure_id", findings)
+    ambiguous_measures = {f.key for f in findings if f.code == "DUPLICATE_ID"}
+    if not register:
+        findings.append(Finding("ERROR", "EMPTY_REGISTER", "No measure definitions"))
+    efforts: dict[str, int | None] = {}
     for measure_id, row in measures.items():
-        required(
-            row,
-            (
-                "recommendation_id",
-                "assessment_area",
-                "measure_class",
-                "measure_name",
-                "numerator_definition",
-                "denominator_definition",
-                "unit",
-                "direction",
-                "evidence_source",
-                "collection_cadence",
-                "interpretation_limit",
-            ),
-            measure_id,
-            findings,
-        )
+        required(row, MEASURE_FIELDS[1:], measure_id, findings)
         rec_id = (row.get("recommendation_id") or "").strip()
         if rec_id and rec_id not in recs:
             findings.append(Finding("ERROR", "BROKEN_RECOMMENDATION_LINK", f"Unknown recommendation {rec_id}", measure_id))
-        cls = (row.get("measure_class") or "").strip()
-        if cls and cls not in MEASURE_CLASSES:
-            findings.append(Finding("ERROR", "INVALID_MEASURE_CLASS", f"Expected one of {sorted(MEASURE_CLASSES)}", measure_id))
-        direction = (row.get("direction") or "").strip()
-        if direction and direction not in DIRECTIONS:
-            findings.append(Finding("ERROR", "INVALID_DIRECTION", f"Expected one of {sorted(DIRECTIONS)}", measure_id))
-        parse_effort(row.get("estimated_minutes_per_cycle", ""), measure_id, findings)
+        elif rec_id in invalid_recs:
+            findings.append(Finding("ERROR", "INVALID_RECOMMENDATION", f"Recommendation {rec_id} has invalid or ambiguous metadata", measure_id))
+        for field, choices, code in (
+            ("measure_class", MEASURE_CLASSES, "INVALID_MEASURE_CLASS"),
+            ("direction", DIRECTIONS, "INVALID_DIRECTION"),
+            ("unit", {"percent"}, "UNSUPPORTED_UNIT"),
+        ):
+            value = (row.get(field) or "").strip()
+            if value and value not in choices:
+                findings.append(Finding("ERROR", code, f"{field} must be one of {sorted(choices)}", measure_id))
+        efforts[measure_id] = parse_effort(row.get("estimated_minutes_per_cycle", ""), measure_id, findings)
+    invalid_measures = {f.key for f in findings if f.level == "ERROR"}
+    findings = rec_findings + findings
 
     grouped: dict[str, dict[str, dict[str, str]]] = {}
-    seen_period_keys: set[tuple[str, str]] = set()
-    for line_number, row in enumerate(observations, start=2):
+    counts: dict[tuple[str, str], tuple[int | None, int | None]] = {}
+    duplicate_roles: set[tuple[str, str]] = set()
+    for record_number, row in enumerate(observations, start=1):
         measure_id = (row.get("measure_id") or "").strip()
         role = (row.get("period_role") or "").strip()
         key = f"{measure_id}:{role or '?'}"
-        required(
-            row,
-            ("measure_id", "period_id", "period_role", "numerator", "denominator", "population_definition", "evidence_locator"),
-            key,
-            findings,
-        )
+        local: list[Finding] = []
+        required(row, tuple(f for f in OBS_FIELDS if f not in {"numerator", "denominator"}), key, local)
+        num = parse_nonnegative_int(row.get("numerator", ""), field="numerator", key=key, findings=local)
+        den = parse_nonnegative_int(row.get("denominator", ""), field="denominator", key=key, findings=local)
+        if den == 0:
+            local.append(Finding("ERROR", "ZERO_DENOMINATOR", "Denominator cannot be zero", key))
+        if num is not None and den not in (None, 0) and num > den:
+            local.append(Finding("ERROR", "NUMERATOR_EXCEEDS_DENOMINATOR", "Numerator exceeds denominator", key))
         if measure_id not in measures:
-            findings.append(Finding("ERROR", "UNKNOWN_MEASURE", f"Observation references unknown measure {measure_id}", key))
-            continue
+            local.append(Finding("ERROR", "UNKNOWN_MEASURE", f"Observation references unknown measure {measure_id}", key))
         if role not in PERIOD_ROLES:
-            findings.append(Finding("ERROR", "INVALID_PERIOD_ROLE", f"Expected baseline or followup at line {line_number}", key))
-            continue
+            local.append(Finding("ERROR", "INVALID_PERIOD_ROLE", f"Expected baseline or followup at CSV record {record_number}", key))
         period_key = (measure_id, role)
-        if period_key in seen_period_keys:
-            findings.append(Finding("ERROR", "DUPLICATE_PERIOD_ROLE", f"Duplicate {role} row for {measure_id}", key))
-            continue
-        seen_period_keys.add(period_key)
-        grouped.setdefault(measure_id, {})[role] = row
+        if period_key in counts:
+            duplicate_roles.add(period_key)
+            local.append(Finding("ERROR", "DUPLICATE_PERIOD_ROLE", f"Duplicate {role} row for {measure_id}; no row is selected as authoritative", key))
+        if any(f.level == "ERROR" for f in local) and measure_id in measures:
+            invalid_measures.add(measure_id)
+        findings.extend(local)
+        if measure_id in measures and role in PERIOD_ROLES and period_key not in counts:
+            grouped.setdefault(measure_id, {})[role] = row
+            counts[period_key] = (num, den)
 
     comparisons: list[Comparison] = []
-    for measure_id, measure in measures.items():
+    for measure_id, measure in sorted(measures.items()):
         pair = grouped.get(measure_id, {})
-        baseline = pair.get("baseline")
-        followup = pair.get("followup")
-
-        if baseline is None:
-            findings.append(Finding("WARNING", "BASELINE_MISSING", "No baseline observation", measure_id))
-        if followup is None:
-            findings.append(Finding("WARNING", "FOLLOWUP_MISSING", "No follow-up observation", measure_id))
+        baseline, followup = pair.get("baseline"), pair.get("followup")
+        for role, row in (("baseline", baseline), ("followup", followup)):
+            if row is None:
+                findings.append(Finding("WARNING", f"{role.upper()}_MISSING", f"No {role} observation", measure_id))
+        if baseline is not None and followup is not None:
+            b_period = (baseline.get("period_id") or "").strip()
+            f_period = (followup.get("period_id") or "").strip()
+            if b_period and b_period == f_period:
+                findings.append(Finding("ERROR", "SAME_PERIOD", "Baseline and follow-up require distinct period_id values", measure_id))
+                invalid_measures.add(measure_id)
 
         b_rate = f_rate = change = None
-        comparability = "INSUFFICIENT_DATA"
-        signal = "INSUFFICIENT_DATA"
+        comparability, signal = "INSUFFICIENT_DATA", "INSUFFICIENT_DATA"
         b_evidence = (baseline or {}).get("evidence_locator", "")
         f_evidence = (followup or {}).get("evidence_locator", "")
+        if (measure_id, "baseline") in duplicate_roles:
+            b_evidence = ""
+        if (measure_id, "followup") in duplicate_roles:
+            f_evidence = ""
 
-        if baseline is not None and followup is not None:
-            b_num = parse_nonnegative_int(baseline.get("numerator", ""), field="baseline numerator", key=measure_id, findings=findings)
-            b_den = parse_nonnegative_int(baseline.get("denominator", ""), field="baseline denominator", key=measure_id, findings=findings)
-            f_num = parse_nonnegative_int(followup.get("numerator", ""), field="followup numerator", key=measure_id, findings=findings)
-            f_den = parse_nonnegative_int(followup.get("denominator", ""), field="followup denominator", key=measure_id, findings=findings)
-
-            if b_den == 0:
-                findings.append(Finding("ERROR", "ZERO_DENOMINATOR", "Baseline denominator cannot be zero", measure_id))
-            if f_den == 0:
-                findings.append(Finding("ERROR", "ZERO_DENOMINATOR", "Follow-up denominator cannot be zero", measure_id))
-            if b_num is not None and b_den not in (None, 0) and b_num > b_den:
-                findings.append(Finding("ERROR", "NUMERATOR_EXCEEDS_DENOMINATOR", "Baseline numerator exceeds denominator", measure_id))
-            if f_num is not None and f_den not in (None, 0) and f_num > f_den:
-                findings.append(Finding("ERROR", "NUMERATOR_EXCEEDS_DENOMINATOR", "Follow-up numerator exceeds denominator", measure_id))
-
-            same_population = (
-                (baseline.get("population_definition") or "").strip()
-                == (followup.get("population_definition") or "").strip()
-            )
-            if not same_population:
+        if measure_id in invalid_measures:
+            comparability = "INVALID_DATA"
+        elif baseline is not None and followup is not None:
+            if baseline["population_definition"].strip() != followup["population_definition"].strip():
                 comparability = "NOT_COMPARABLE"
-                findings.append(
-                    Finding(
-                        "WARNING",
-                        "POPULATION_CHANGED",
-                        "Baseline and follow-up population definitions differ; direct rate comparison is suppressed",
-                        measure_id,
-                    )
-                )
-            elif None not in (b_num, b_den, f_num, f_den) and b_den and f_den and b_num <= b_den and f_num <= f_den:
+                findings.append(Finding("WARNING", "POPULATION_CHANGED", "Baseline and follow-up population definitions differ; direct rate comparison is suppressed", measure_id))
+            else:
+                # Validation above proves finite, nonnegative integer proportions.
+                # Fraction avoids intermediate overflow and tolerance-based sign loss.
+                b_num, b_den = counts[(measure_id, "baseline")]
+                f_num, f_den = counts[(measure_id, "followup")]
+                b_exact = Fraction(100 * b_num, b_den)
+                f_exact = Fraction(100 * f_num, f_den)
+                b_rate, f_rate, change = float(b_exact), float(f_exact), float(f_exact - b_exact)
                 comparability = "COMPARABLE"
-                b_rate = 100.0 * b_num / b_den
-                f_rate = 100.0 * f_num / f_den
-                change = f_rate - b_rate
-                direction = (measure.get("direction") or "").strip()
-                if math.isclose(b_rate, f_rate, rel_tol=0.0, abs_tol=1e-12):
+                direction = measure["direction"].strip()
+                if b_exact == f_exact:
                     signal = "UNCHANGED"
-                elif direction == "higher_better":
-                    signal = "FAVORABLE_DIRECTION" if f_rate > b_rate else "UNFAVORABLE_DIRECTION"
-                elif direction == "lower_better":
-                    signal = "FAVORABLE_DIRECTION" if f_rate < b_rate else "UNFAVORABLE_DIRECTION"
-                else:
+                elif direction == "context_only":
                     signal = "CONTEXT_ONLY"
+                else:
+                    favorable = (f_exact > b_exact) == (direction == "higher_better")
+                    signal = "FAVORABLE_DIRECTION" if favorable else "UNFAVORABLE_DIRECTION"
 
-        comparisons.append(
-            Comparison(
-                measure_id=measure_id,
-                recommendation_id=(measure.get("recommendation_id") or "").strip(),
-                assessment_area=(measure.get("assessment_area") or "").strip(),
-                measure_class=(measure.get("measure_class") or "").strip(),
-                measure_name=(measure.get("measure_name") or "").strip(),
-                baseline_rate_pct=b_rate,
-                followup_rate_pct=f_rate,
-                absolute_change_pp=change,
-                comparability=comparability,
-                directional_signal=signal,
-                baseline_evidence=b_evidence,
-                followup_evidence=f_evidence,
-                collection_effort_minutes=parse_effort(
-                    measure.get("estimated_minutes_per_cycle", ""),
-                    measure_id,
-                    [],
-                ),
-                interpretation_limit=(measure.get("interpretation_limit") or "").strip(),
-            )
-        )
+        ambiguous = measure_id in ambiguous_measures
+        comparisons.append(Comparison(
+            measure_id=measure_id,
+            recommendation_id="" if ambiguous else (measure.get("recommendation_id") or "").strip(),
+            assessment_area="" if ambiguous else (measure.get("assessment_area") or "").strip(),
+            measure_class="" if ambiguous else (measure.get("measure_class") or "").strip(),
+            measure_name="Ambiguous measure definition" if ambiguous else (measure.get("measure_name") or "").strip(),
+            baseline_rate_pct=b_rate, followup_rate_pct=f_rate, absolute_change_pp=change,
+            comparability=comparability, directional_signal=signal,
+            baseline_evidence=b_evidence, followup_evidence=f_evidence,
+            collection_effort_minutes=None if ambiguous else efforts[measure_id],
+            interpretation_limit="Resolve duplicate measure definitions before interpretation." if ambiguous else (measure.get("interpretation_limit") or "").strip(),
+        ))
 
     by_rec: dict[str, set[str]] = {}
-    for measure in measures.values():
-        by_rec.setdefault((measure.get("recommendation_id") or "").strip(), set()).add(
-            (measure.get("measure_class") or "").strip()
-        )
-    for rec_id in recs:
+    for measure_id, measure in measures.items():
+        if measure_id not in ambiguous_measures:
+            by_rec.setdefault((measure.get("recommendation_id") or "").strip(), set()).add((measure.get("measure_class") or "").strip())
+    for rec_id in sorted(recs):
         classes = by_rec.get(rec_id, set())
-        if "adoption" not in classes:
-            findings.append(Finding("WARNING", "ADOPTION_MEASURE_MISSING", "Recommendation has no adoption measure", rec_id))
-        if "outcome" not in classes:
-            findings.append(Finding("WARNING", "OUTCOME_MEASURE_MISSING", "Recommendation has no operational outcome measure", rec_id))
-
+        for cls, code in (("adoption", "ADOPTION_MEASURE_MISSING"), ("outcome", "OUTCOME_MEASURE_MISSING")):
+            if cls not in classes:
+                findings.append(Finding("WARNING", code, f"Recommendation has no {cls} measure", rec_id))
     return findings, comparisons
 
 
@@ -276,7 +288,14 @@ def _fmt(value: float | None) -> str:
 
 
 def _fmt_pp(value: float | None) -> str:
-    return "—" if value is None else f"{value:+.2f} pp"
+    if value is None:
+        return "—"
+    return f"{value:+.3g} pp" if 0 < abs(value) < 0.005 else f"{value:+.2f} pp"
+
+
+def _cell(value: str) -> str:
+    """Render source text without turning embedded pipes/newlines into table syntax."""
+    return html.escape(value, quote=False).replace("|", "&#124;").replace("\r\n", "\n").replace("\r", "\n").replace("\n", "<br>")
 
 
 def render_markdown(
@@ -284,7 +303,13 @@ def render_markdown(
     comparisons: list[Comparison],
     findings: list[Finding],
 ) -> str:
-    rec_map = {row["recommendation_id"]: row for row in recommendations if row.get("recommendation_id")}
+    rec_map = {}
+    for row in recommendations:
+        rec_id = (row.get("recommendation_id") or "").strip()
+        if rec_id in rec_map:
+            rec_map[rec_id] = {"title": "Ambiguous recommendation", "intended_change": "Resolve duplicate recommendation definitions."}
+        else:
+            rec_map[rec_id] = row
     out = [
         "# Synthetic improvement outcome-measurement report",
         "",
@@ -296,13 +321,13 @@ def render_markdown(
     for comparison in comparisons:
         grouped.setdefault(comparison.recommendation_id, []).append(comparison)
 
-    for rec_id, rows in grouped.items():
+    for rec_id, rows in sorted(grouped.items()):
         rec = rec_map.get(rec_id, {})
         out.extend(
             [
-                f"## {rec_id} — {rec.get('title', 'Unknown recommendation')}",
+                f"## {_cell(rec_id)} — {_cell(rec.get('title', 'Unknown recommendation'))}",
                 "",
-                f"**Intended change:** {rec.get('intended_change', '')}",
+                f"**Intended change:** {_cell(rec.get('intended_change', ''))}",
                 "",
                 "| Class | Measure | Baseline | Follow-up | Change | Comparability | Directional signal | Effort/cycle |",
                 "| --- | --- | ---: | ---: | ---: | --- | --- | ---: |",
@@ -311,21 +336,24 @@ def render_markdown(
         for row in sorted(rows, key=lambda r: (r.measure_class, r.measure_id)):
             effort = "—" if row.collection_effort_minutes is None else f"{row.collection_effort_minutes} min"
             out.append(
-                f"| {row.measure_class} | {row.measure_id}: {row.measure_name} | "
+                f"| {_cell(row.measure_class)} | {_cell(row.measure_id)}: {_cell(row.measure_name)} | "
                 f"{_fmt(row.baseline_rate_pct)} | {_fmt(row.followup_rate_pct)} | "
                 f"{_fmt_pp(row.absolute_change_pp)} | {row.comparability} | "
                 f"{row.directional_signal} | {effort} |"
             )
+        out.extend(["", "### Evidence locators", "", "| Measure | Baseline source | Follow-up source |", "| --- | --- | --- |"])
+        for row in sorted(rows, key=lambda r: r.measure_id):
+            out.append(f"| {_cell(row.measure_id)} | {_cell(row.baseline_evidence) or 'Missing or ambiguous'} | {_cell(row.followup_evidence) or 'Missing or ambiguous'} |")
         out.extend(["", "### Interpretation limits", ""])
         for row in sorted(rows, key=lambda r: r.measure_id):
-            out.append(f"- **{row.measure_id}:** {row.interpretation_limit}")
+            out.append(f"- **{_cell(row.measure_id)}:** {_cell(row.interpretation_limit)}")
         out.append("")
 
     out.extend(["## Validation findings", ""])
     if findings:
         for finding in findings:
-            key = f" [{finding.key}]" if finding.key else ""
-            out.append(f"- **{finding.level} {finding.code}**{key}: {finding.message}")
+            key = f" [{_cell(finding.key)}]" if finding.key else ""
+            out.append(f"- **{finding.level} {finding.code}**{key}: {_cell(finding.message)}")
     else:
         out.append("- No structural or comparability findings.")
 
@@ -359,9 +387,17 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
-    recs = read_csv(args.recommendations)
-    register = read_csv(args.register)
-    observations = read_csv(args.measurements)
+    try:
+        recs = read_csv(args.recommendations, REC_FIELDS)
+        register = read_csv(args.register, MEASURE_FIELDS)
+        observations = read_csv(args.measurements, OBS_FIELDS)
+    except (OSError, UnicodeError, ValueError) as exc:
+        finding = Finding("ERROR", "INPUT_ERROR", str(exc))
+        if args.command == "validate" and args.json_output:
+            print(json.dumps({"findings": [asdict(finding)], "comparisons": []}, indent=2, sort_keys=True))
+        else:
+            print(f"ERROR INPUT_ERROR: {exc}", file=sys.stderr)
+        return 2
     findings, comparisons = validate_and_compare(recs, register, observations)
 
     if args.command == "validate":

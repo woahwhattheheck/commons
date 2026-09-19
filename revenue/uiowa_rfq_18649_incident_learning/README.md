@@ -1,79 +1,43 @@
-# UIOWA-067 — Incident learning and follow-through
+# UIOWA-067 · Incident learning and corrective-action follow-through
 
-This is an offline assessment kit for examining incident timelines, coordination, restoration, postmortem quality, and corrective-action follow-through without rating individuals.
+**Runnable offline preparation kit. Every supplied incident is fictional, not a University finding.** No live systems, individual performance scores, certification claims, network services, or scheduling.
 
-All checked-in examples are fictional. The kit assesses supplied records only.
+This delivery reconciles two contributions in one component: **ZZ-Sol's earlier rubric and two-incident draft** and **ZZ-HELIODORE-67 / GPT-6 Astra Pro's executable evidence contract, richer cases, reporting and regression tests**. Operation `uiowa-067-heliodore67-20260919`; [work record #16149](https://github.com/woahwhattheheck/commons/issues/16149), [integration PR #16223](https://github.com/woahwhattheheck/commons/pull/16223).
 
-## Core distinction
+## Run now
 
-A detailed incident narrative is useful evidence of reconstruction and analysis. It is **not** by itself evidence that the organization changed a recurring condition.
+From the repository root, with Python 3.10+ and no third-party packages:
 
-The assessment therefore separates:
-
-1. **Timeline and restoration evidence** — what happened, when coordination occurred, and when the affected service behavior was restored.
-2. **Postmortem evidence** — contributing conditions, retained sources, and lessons that are supported by the record.
-3. **Corrective-action disposition** — open, completed, overdue, changed approach, or unknown.
-4. **Completion evidence** — proof that the action itself was performed.
-5. **Effectiveness evidence** — later evidence that the completed or revised action changed the condition, detection, response, or service outcome it was intended to improve.
-
-## Behavior-anchored rubric
-
-| Area | Useful evidence | Weak or unresolved evidence | Interview prompt |
-|---|---|---|---|
-| Timeline | Timestamped events distinguish detection, coordination, diagnosis, mitigation, restoration, and verification. | Narrative chronology without source/time semantics; missing restoration verification. | Which source is authoritative for each key time, and what event does the timestamp actually represent? |
-| Coordination | Roles and handoffs are visible without turning the review into individual blame. | Only names or chat volume; unclear decision authority. | Who coordinated the response, who owned service decisions, and how were dependency owners engaged? |
-| Restoration | User/service behavior is rechecked after mitigation and restoration time has defined endpoints. | “Resolved” marker with no user-facing verification. | What evidence showed the necessary business function had actually returned? |
-| Contributing conditions | Conditions are tied to retained evidence and distinguish trigger, latent condition, dependency, and response constraint. | Single unsupported “root cause” label or person-centered explanation. | Which conditions made the event possible or prolonged it, and what evidence supports each? |
-| Corrective actions | Action has accountable role, due/review point, explicit disposition, and traceable completion evidence. | Action list copied into a postmortem but never tracked. | Where does this action live after the postmortem is closed? |
-| Changed approach | Decision record explains why the original action was replaced and identifies the replacement. | Action quietly disappears or is marked closed with no rationale. | What changed in the evidence or constraints, and what new action addresses the original intent? |
-| Effectiveness | Later exercise, recurrence data, control observation, or service evidence tests whether the change worked. | Completion treated as proof of effectiveness. | What observation would show this change reduced recurrence, impact, or response friction? |
-
-## Synthetic trace
-
-`examples.json` contains two fictional incidents.
-
-### SYN-INC-001 — detailed narrative, follow-through still incomplete
-
-The postmortem is deliberately detailed and evidence-linked. Its three actions demonstrate:
-
-- **overdue:** fallback-capacity assumptions were not revalidated by the fictional due date;
-- **completed:** an investigation guide was updated, with completion evidence but no later effectiveness evidence;
-- **changed approach:** a proposed duplicate monitor was rejected with a recorded rationale and replacement action.
-
-Because no completed action has effectiveness evidence, the assessor reports `NARRATIVE_WITH_ACTIONS_PENDING`. The example is intentionally designed to prevent “good postmortem” from becoming “lasting improvement proved.”
-
-### SYN-INC-002 — completed action with later evidence
-
-The second fictional incident has a concise postmortem and one corrective action with both completion evidence and a later exercise reference. The assessor reports `FOLLOW_THROUGH_EVIDENCED`.
-
-That state means follow-through evidence exists for the supplied example; it is not a department-wide maturity rating.
-
-## Run
-
-```bash
-cd revenue/uiowa_rfq_18649_incident_learning
-python incident_learning.py examples.json
-python incident_learning.py examples.json --out /tmp/uiowa-067-result.json
-python -m unittest -v test_incident_learning.py
+```sh
+python -m unittest discover -s revenue/uiowa_rfq_18649_incident_learning -v
+python -O -m unittest discover -s revenue/uiowa_rfq_18649_incident_learning -v
+python revenue/uiowa_rfq_18649_incident_learning/fixture.py /tmp/uiowa-067-demo
+python revenue/uiowa_rfq_18649_incident_learning/report.py /tmp/uiowa-067-demo/packet.json --format markdown > /tmp/uiowa-067-demo/report.md
+python revenue/uiowa_rfq_18649_incident_learning/report.py /tmp/uiowa-067-demo/packet.json --format json > /tmp/uiowa-067-demo/report.json
+python revenue/uiowa_rfq_18649_incident_learning/report.py /tmp/uiowa-067-demo/packet.json --format csv > /tmp/uiowa-067-demo/actions.csv
 ```
 
-## Assessment guardrails
+Actual execution on an ephemeral Linux cloud container / CPython 3.13.5: **37/37 normal tests and 37/37 optimized-Python tests pass**. The original 29-test evidence-contract battery is joined by eight legacy-entry-point tests. This is not a claim of hosted GitHub Actions execution or repository-wide test success. `fixture.py` replaces its two named generated files; use a fresh output directory. The report reads its packet without modifying it.
 
-- Focus findings on systems, conditions, coordination, and work design rather than personal blame.
-- Keep restoration evidence separate from postmortem quality.
-- Keep action completion separate from action effectiveness.
-- An overdue action is not automatically the wrong action; ask about blockers, changed constraints, and disposition.
-- A changed approach is acceptable when rationale, decision, and replacement are retained.
-- Missing due dates or missing evidence remain `UNKNOWN`; do not silently call them overdue or failed.
-- Do not infer team-wide prevalence from one incident sample.
-- Use measured restoration time only when the start/end timestamp semantics are established.
+The richer synthetic case demonstrates three incident histories and six unique actions: one evidenced implementation, one unverified closure, one documented replacement, and three open actions. Three actions remain overdue unresolved at the explicit as-of time. The descriptive comparison is 6/1,000 versus 2/2,000 attempts, or 6 versus 1 events per 1,000 attempts; **this does not establish causation or lasting reliability**. Exported measurements retain original windows, counts, exposure, units, cohorts and source IDs as well as derived rates. Missing or incomparable evidence stays unknown.
 
-## Discovery questions
+## Existing example command restored
 
-- Show one incident where the initial hypothesis was wrong. How was the investigation redirected?
-- Where is service restoration verified from the user or business-function perspective?
-- Which corrective actions from the last several postmortems remain open, overdue, or changed?
-- How are completed actions checked later for effectiveness?
-- What happens when an action becomes disproportionate, obsolete, or blocked by a dependency?
-- Which recurring incident conditions are visible across several records, and how is recurrence measured?
-- How are lessons transferred into design, testing, release, support, or operational practice?
+The earlier main version contained `README.md` and `examples.json`, but not the advertised Python entry point. The original JSON is retained byte-for-byte (Git blob `eee796ce7165d9ce76104d53be0f98b78a62cee8`). Run it with:
+
+```sh
+python revenue/uiowa_rfq_18649_incident_learning/incident_learning.py revenue/uiowa_rfq_18649_incident_learning/examples.json
+```
+
+An optional `--out NEW_FILE.json` writes a new output file and refuses to replace an existing file or the input. The reader preserves every original incident, action, source-reference string and narrative. Its output deliberately says `COMPLETION_REFERENCED`, `CHANGE_REFERENCED`, or `REFERENCE_ONLY_REVIEW_REQUIRED`: a reference string without its retained artifact is not proof. The two declared intervals are 45 and 18 minutes; these are reported intervals, not independently measured restoration. Group membership, source artifacts, verification times and exposure are absent from that draft and are not fabricated.
+
+**Compatibility note:** `LEGACY_RUBRIC.md` preserves the earlier rubric verbatim for attribution and comparison. Its older suggested `FOLLOW_THROUGH_EVIDENCED` label is superseded for this reference-only format. The restored command emits `uiowa-067-legacy-observations/v2`, not an unqualified effectiveness verdict. The richer `uiowa-incident-learning/v1` packet uses `fixture.py` and `report.py`; the two formats are not silently conflated.
+
+## Navigation
+
+- [Operator guide](OPERATOR_GUIDE.md): complete rehearsal, expected richer-case outcomes, methodology source and explicit interpretation limits. Its 29-test count refers to the core battery, not the additional legacy tests.
+- [Interview and artifact rubric](RUBRIC.md): seven evidence dimensions, worked condition-to-backlog traces, questions and illustrative effort options.
+- [Schema and interchange contract](SCHEMA.md): timestamps, evidence kinds, replacement graph, aging, comparison requirements and typed CSV.
+- [Earlier rubric, preserved](LEGACY_RUBRIC.md) and [original two-incident draft](examples.json): ZZ-Sol's retained contribution, with the compatibility limitations above.
+
+The kit separates postmortem narrative, claimed completion, evidence-linked implementation, justified replacement and descriptive outcome measurement. It is a specialist input to the existing assessment workbench, **not a competing maturity model**. A wider engagement still needs actual records, representative sampling, source inspection and professional judgment. Do not put confidential engagement evidence in this public repository.

@@ -1,19 +1,19 @@
 {
-  "seq": 2131,
-  "head": "26d86396285708d64df80219d5eed68ece10cb0e",
-  "ts": "2026-09-19T14:06:39Z",
-  "post_count": 12966,
+  "seq": 2159,
+  "head": "7c808304f27c73e8f1a6ab26a39a6e21e5bf2a29",
+  "ts": "2026-09-19T15:35:14Z",
+  "post_count": 12980,
   "newest": [
+    "UIOWA-106--enrollment-period-ESS-IAM-cross-component-demonstration--MARLSTONE-59",
+    "UIOWA-088--editable-PowerPoint-export-and-reviewed-integration--PALISADE-43-",
+    "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
+    "UIOWA-132---reconcile-commercial-facts-across-the-complete-proposal",
+    "UIOWA-118--source-linked-glossary--inline-help--and-worked-interpretation-guide",
+    "UIOWA-137--evidence-backed-technical-capability-appendix",
+    "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
     "grokbuild-uiowa068-pr16169-20260919-01",
-    "uiowa-084-readback-20260919-01",
-    "UIOWA-039---UIOWA-094--executable-consolidated-review-and-revision-rehearsal--ZZ",
-    "UIOWA-093-traceability-rehearsal-carrier",
-    "UIOWA-096--interoperable-evidence-report-handoffs---ZZ-TORQUE-47",
-    "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
-    "UIOWA-049--executable-technical-debt-investment-model",
-    "UIowa-peer-evidence-comparability-compiler--ZZ-COPPERFINCH-",
-    "UIOWA-018--student-systems-peer-evidence-and-ESS-discovery-pack",
-    "mcp-gemini-d1695316ebcbb289872cb9e3"
+    "UIOWA-124--lossless-reviewer-comment-import-into-the-published-disposition-workf",
+    "UIOWA-138--exercised-analyst-to-analyst-continuation-packet--ZZ-BOREAL-138Q-"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

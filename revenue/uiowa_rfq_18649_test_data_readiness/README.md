@@ -24,6 +24,12 @@ The evaluator intentionally uses three states:
 
 This separation is the core acceptance guardrail for the work order.
 
+Cleanup applicability uses an explicit declaration: `cleanup_required: false`
+records that cleanup is not required; `true` requires a recorded verification
+date before that check is evidenced. An omitted, null or non-boolean flag is
+`UNKNOWN`, not an implicit `false`, including when a verification date is
+present. This is an evidence state, not a regulatory or operational verdict.
+
 ## Files
 
 - `test_data_assessor.py` — deterministic standard-library CLI and library.
@@ -33,7 +39,31 @@ This separation is the core acceptance guardrail for the work order.
 - `fixture_specifications.md` — boundary-case specifications for the three fictional services.
 - `refresh_lifecycle.md` — lifecycle and evidence diagram.
 - `interview_guide.md` — discovery prompts tied to the catalog.
-- `tests/test_assessor.py` — regression tests for evidence-state behavior.
+- `tests/test_assessor.py` — retained regression tests for evidence-state behavior.
+- `test_discovery.py` — component-root collection and missing-suite checks.
+- `tests/test_cleanup_evidence.py` — cleanup declarations and CLI evidence preservation.
+- `tests/test_catalog_input.py` — catalog shape, dates, duration types and CLI input errors.
+
+## Catalog input boundaries
+
+The catalog must be a JSON object with an exact `YYYY-MM-DD` `as_of` date
+and a `datasets` array of JSON objects. A malformed row is reported by its
+zero-based index, not silently dropped from the report. An empty array remains
+supported. Missing optional evidence in a valid object is still assessed as
+`UNKNOWN`; this check is not full JSON Schema enforcement.
+
+Calendar-date fields do not accept timestamps, week dates or strings with
+trailing text. An unusable optional refresh or cleanup-verification date stays
+`UNKNOWN`; an unusable required `as_of` rejects the catalog. Boolean values do
+not stand in for integer day counts: a boolean cadence is unknown, and a boolean
+retention duration follows the existing invalid-supplied-value catalog check.
+An actual integer zero-day retention remains valid.
+
+Input read/decoding errors and rejected catalog structures or required dates
+produce a readable CLI error and exit code 2 before a report is emitted or an
+existing output file is changed.
+The library raises `ValueError` for malformed catalog structure. Exit code 0 still
+means a report was generated, not that every assessment check was evidenced.
 
 ## Run
 
@@ -46,6 +76,36 @@ python3 -m unittest -v tests/test_assessor.py
 ```
 
 The default output is Markdown. JSON output preserves the same checks and evidence states for later report tooling.
+
+## Test discovery
+
+Run the full component suite from this directory:
+
+```bash
+python3 -m unittest discover -v
+python3 -O -m unittest discover -v
+```
+
+`test_data_assessor.py` is the application, not a test suite, despite its
+`test_` prefix. Do not classify the component by executing that module through
+`unittest` alone. The behavioral tests live in `tests/test_assessor.py`;
+`tests/__init__.py` makes that directory importable for component-root discovery.
+The original direct test command above remains supported. To run only the
+behavioral suite, use `python3 -m unittest discover -s tests -v`.
+
+`test_discovery.py` stays at the component root and checks, in fresh normal and
+optimized Python processes, that every retained behavioral case is collected
+exactly once. Its negative control removes the behavioral test file only in a
+temporary copy and verifies that the missing suite is detected. The checks use
+standard-library `unittest` assertions, which remain active under `python3 -O`.
+They neither change assessment behavior nor rewrite the source catalog.
+
+Discovery repair #16299 validation on Python 3.13.5: before the package marker, root discovery
+collected zero tests while explicit `tests/` discovery passed seven. After this
+repair, root discovery passed eleven tests (seven retained behavioral checks
+plus four discovery checks) in both normal and optimized Python. This is local
+execution evidence, not a hosted CI or whole-repository pass. Original UIOWA-047
+implementation credit is unchanged; the discovery repair is by ZZ-ASTRA-FORGE.
 
 ## Synthetic rehearsal
 
