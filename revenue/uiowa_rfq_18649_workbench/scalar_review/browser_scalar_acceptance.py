@@ -79,7 +79,29 @@ class ScalarNoteBrowserTests(unittest.TestCase):
  def test_ascii_escaped_low_surrogate_is_rejected_without_note_loss(self):
   self.assert_rejected('Before \udfff after')
  def test_invalid_last_cell_preserves_all_twelve_notes_atomically(self):
-  self.assert_rejected('Final cell \ud800',11)
+  baseline=self.draft()
+  options=('UNREVIEWED','NEEDS_EVIDENCE','DISCUSS_WITH_PRIME','TECHNICAL_DRAFT_NOTE')
+  for index,row in enumerate(baseline['cell_notes']):
+   row['analyst_note']=f'Retained original note {index} café 🧪'
+   row['disposition']=options[index % len(options)]
+  self.restore(baseline)
+  expect(self.page.locator('#error')).to_be_empty()
+  self.page.locator('.cell').nth(4).click()
+  before=self.draft()
+  incoming=copy.deepcopy(before)
+  # Every preceding row differs. A validate-as-you-apply implementation would
+  # visibly corrupt earlier notes before the final invalid row is encountered.
+  for index,row in enumerate(incoming['cell_notes'][:-1]):
+   row['analyst_note']=f'Incoming replacement {index} must not be applied'
+   row['disposition']=options[(index + 1) % len(options)]
+   self.assertNotEqual(row['analyst_note'],before['cell_notes'][index]['analyst_note'])
+   self.assertNotEqual(row['disposition'],before['cell_notes'][index]['disposition'])
+  incoming['cell_notes'][-1]['analyst_note']='Invalid final note \ud800'
+  self.restore(incoming)
+  self.assertRegex(self.page.locator('#error').inner_text(),r'Unicode scalar|unpaired surrogate')
+  self.assertEqual(self.draft(),before,'Rejected final row must preserve the entire original review')
+  expect(self.page.locator('#note')).to_have_value(before['cell_notes'][4]['analyst_note'])
+  expect(self.page.locator('#disposition')).to_have_value(before['cell_notes'][4]['disposition'])
  def test_valid_twelve_cell_restoration_and_actual_downloads(self):
   before=self.draft();good=copy.deepcopy(before)
   for i,row in enumerate(good['cell_notes']):
