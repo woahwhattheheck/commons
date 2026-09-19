@@ -145,10 +145,10 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1789833517.730819")
+        self.assertEqual(catalog["slack_ts"], "1789844314.998379")
         self.assertEqual(
             catalog["source_id"],
-            "codex-uiowa-environment-drift-kit-resource-activation-20260919-01",
+            "codex-uiowa-source-relationship-graph-resource-activation-20260919-01",
         )
         self.assertIn(
             "codex-commons-context-dispatch-compiler-resource-activation-20260913-01",
@@ -351,10 +351,10 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-uiowa-environment-drift-kit-resource-activation-20260919-01.json",
+            "codex-uiowa-source-relationship-graph-resource-activation-20260919-01.json",
         )
         self.assertIn(
-            "inventory/resources/records/codex-uiowa-environment-drift-kit-resource-activation-20260919-01.json",
+            "inventory/resources/records/codex-uiowa-source-relationship-graph-resource-activation-20260919-01.json",
             raw.get("record_sources") or [],
         )
         with open(current_activation_path, encoding="utf-8") as handle:
@@ -366,43 +366,41 @@ class TestResourceLedger(unittest.TestCase):
         )
         self.assertEqual(
             current_activation["selected_resource"],
-            "uiowa-environment-drift-kit",
+            "uiowa-source-relationship-graph",
         )
-        self.assertEqual(current_activation["projection"]["resources"], 102)
-        self.assertEqual(current_activation["projection"]["producing"], 74)
-        self.assertEqual(current_activation["projection"]["inventory_records"], 64)
+        self.assertEqual(current_activation["projection"]["resources"], 103)
+        self.assertEqual(current_activation["projection"]["producing"], 75)
+        self.assertEqual(current_activation["projection"]["inventory_records"], 65)
         self.assertEqual(
             current_activation["production_truth"]["source_repository"],
             "woahwhattheheck/commons",
         )
-        self.assertEqual(current_activation["production_truth"]["source_pr"], 16168)
+        self.assertEqual(current_activation["production_truth"]["source_pr"], 16448)
         self.assertEqual(
             current_activation["production_truth"]["source_merge_sha"],
-            "1a48bdc8972d84fbcae94f57b5219099d598ad2c",
+            "28f2a5e67dbc49f94835e19a9ab688ca5d38d85d",
         )
         self.assertEqual(
             set(current_activation["production_truth"]["source_paths"]),
             {
-                "revenue/uiowa_rfq_18649_environment_drift/FACILITATOR.md",
-                "revenue/uiowa_rfq_18649_environment_drift/README.md",
-                "revenue/uiowa_rfq_18649_environment_drift/drift.py",
-                "revenue/uiowa_rfq_18649_environment_drift/synthetic-report.md",
-                "revenue/uiowa_rfq_18649_environment_drift/synthetic.json",
-                "revenue/uiowa_rfq_18649_environment_drift/test_drift.py",
+                "revenue/uiowa_rfq_18649_source_graph/README.md",
+                "revenue/uiowa_rfq_18649_source_graph/examples/graph.html",
+                "revenue/uiowa_rfq_18649_source_graph/graph.py",
+                "revenue/uiowa_rfq_18649_source_graph/test_graph.py",
             },
         )
         self.assertEqual(
             current_activation["production_truth"]["source_paths"]
-            ["revenue/uiowa_rfq_18649_environment_drift/drift.py"],
-            "a952c1a5034fd5c2ea98f02578f16774243c0c6f",
+            ["revenue/uiowa_rfq_18649_source_graph/graph.py"],
+            "b40b6f60c753db8e92d373a01834ab35ab76791f",
         )
         self.assertEqual(
             current_activation["production_truth"]["maximum_state"],
-            "OFFLINE_SYNTHETIC_REHEARSAL_READY",
+            "OFFLINE_PORTABLE_SOURCE_RELATIONSHIP_GRAPH_READY",
         )
         self.assertEqual(
             current_activation["production_truth"]["focused_tests"]["source_suite"],
-            "32/32 PASS NORMAL_AND_OPTIMIZED",
+            "6/6 PASS NORMAL_AND_OPTIMIZED",
         )
         self.assertEqual(current_activation["production_truth"]["provider_writes"], 0)
         self.assertFalse(current_activation["production_truth"]["customer_contact"])

@@ -25,6 +25,7 @@
   "priority_queue": [],
   "production_write": false,
   "record_sources": [
+    "inventory/resources/records/codex-uiowa-source-relationship-graph-resource-activation-20260919-01.json",
     "inventory/resources/records/codex-uiowa-environment-drift-kit-resource-activation-20260919-01.json",
     "inventory/resources/records/codex-whitebox-hour-direct-checkout-road-resource-activation-20260919-01.json",
     "inventory/resources/records/codex-ci-fix-pack-99-payment-road-resource-activation-20260919-01.json",
@@ -101,15 +102,15 @@
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1789833517.730819",
+  "slack_ts": "1789844314.998379",
   "snapshot": {
-    "base_main_sha": "93dfa2b75fd06795298d929df7d0c66d3a1a7af1",
-    "observed_at": "2026-09-19T15:58:00Z",
+    "base_main_sha": "ce818e4a820a0f4ddf28c7bfaeab8a017117566e",
+    "observed_at": "2026-09-19T19:05:00Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-uiowa-environment-drift-kit-resource-activation-20260919-01",
+  "source_id": "codex-uiowa-source-relationship-graph-resource-activation-20260919-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -118,8 +119,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — UIOWA environment drift kit",
+  "subject": "MASTER RESOURCE LEDGER — UIOWA source relationship graph",
   "supersedes_source_ids": [
+    "codex-uiowa-source-relationship-graph-resource-activation-20260919-01",
     "codex-uiowa-environment-drift-kit-resource-activation-20260919-01",
     "codex-whitebox-hour-direct-checkout-road-resource-activation-20260919-01",
     "codex-ci-fix-pack-99-payment-road-resource-activation-20260919-01",
@@ -184,6 +186,27 @@
     "demon-live-compute-board-20260825-01"
   ],
   "surfaces": [
+    {
+      "assigned_backlog": "Use the offline graph to navigate approved evidence from recommendation through findings, observations or citations, and exact source identities while keeping contradictions and unresolved links visible.",
+      "auth_surface": "Current-main standard-library graph compiler and portable offline HTML; zero-credential and read-only over supplied evidence.",
+      "authority": "INTERNAL_PROPOSAL_AND_DELIVERY_PREPARATION_ONLY; NO_LIVE_UNIVERSITY_SYSTEM_ACCESS; NO_UNIVERSITY_FINDING_AUTHENTICITY_CLAIM; NO_OUTREACH_SCHEDULING_SUBMISSION_PAYMENT_OR_PROVIDER_WRITE",
+      "capacity": "LIVE",
+      "condition": "CONSTRAINED",
+      "consumer": "Commons proposal and delivery operators navigating evidence lineage during qualified-prime review and bounded delivery preparation.",
+      "evidence_ts": "2026-09-19T19:05:00Z",
+      "exact_safe_probe": "PR #16448 merged at 28f2a5e67dbc49f94835e19a9ab688ca5d38d85d; four current-main source blobs matched and 6/6 focused tests passed in normal and optimized modes.",
+      "holder": "UIOWA-104 source custody / Commons proposal and delivery operators",
+      "kind": "DELIVERY_TOOL",
+      "last_receipt": "codex-uiowa-source-relationship-graph-resource-activation-20260919-01",
+      "last_used_at": "2026-09-19T19:05:00Z",
+      "name": "uiowa-source-relationship-graph",
+      "next_action": "Render the portable graph only from an approved evidence bundle, preserve exact source IDs and unresolved or contradictory edges, and use it as a navigation aid rather than an authenticity or finding authority.",
+      "rate_plan_boundary": "Offline stdlib execution needs no provider quota. A relationship graph is not evidence authenticity, a University finding, live-system access, buyer acceptance, award, payment, revenue, cash, or permission to contact or schedule anyone.",
+      "source": "Commons PR #16448; revenue/uiowa_rfq_18649_source_graph/",
+      "stage": "PRODUCING",
+      "stale_after": "next graph-contract, source-identity, accepted-workshare, evidence-boundary, or owner-policy change",
+      "value": "Portable recommendation-to-source lineage with visible contradictions and unresolved evidence relationships"
+    },
     {
       "assigned_backlog": "Use the offline synthetic packet to rehearse evidence-bound environment comparisons and produce deterministic Markdown or JSON; replace synthetic observations only with approved supplied records.",
       "auth_surface": "Current-main standard-library CLI and editable versioned packet; offline and zero-credential.",
