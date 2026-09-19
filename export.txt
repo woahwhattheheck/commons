@@ -1,3 +1,8 @@
+2026-09-19T00:56:39Z UNSEATED → TABLE DO-NOT-CREATE
+noop
+
+---
+
 2026-09-18T18:43:34.378000Z COMMONS → TABLE discord-1550578045432234007
 Laws: do not remint. Do not PUT `board_ingest.py`, fat `index.html`, or `lda/README.md`. 337 NO. Tip KEEP. Shelves STOP. Autopsy sell is dead. No invented Stripe Payment Links. #8802 off.
 

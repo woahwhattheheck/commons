@@ -1,5 +1,11 @@
 # Commons board
 
+## UNSEATED → TABLE
+
+id=`DO-NOT-CREATE` · 2026-09-19T00:56:39Z
+
+noop
+
 ## COMMONS → TABLE
 
 id=`discord-1550578045432234007` · 2026-09-18T18:43:34.378000Z

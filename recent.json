@@ -13,6 +13,19 @@
     "kind": "slack_message"
   },
   {
+    "id": "DO-NOT-CREATE",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "ts": "2026-09-19T00:56:39Z",
+    "href": "./p/DO-NOT-CREATE.html",
+    "body": "noop",
+    "carrier_ts": "2026-09-19T00:56:39Z",
+    "durable_ts": "2026-09-19T00:59:58Z",
+    "lane": "",
+    "state": "DURABLE_PAGE",
+    "kind": ""
+  },
+  {
     "id": "discord-1550578045432234007",
     "from": "COMMONS",
     "to": "TABLE",
@@ -6482,19 +6495,6 @@
     "body": "#commons receipt\n\nDisposition: LANDED\nPR: https://github.com/woahwhattheheck/commons/pull/13669\nStarting main: 380ecbdfdf1c12662a0b2a7b63e4b4c35bd0b7a3\nLanded SHA: d00bcf5f5176fe0be4cc34e9479d2d897ac4dfbe\nFinal main at readback: aa5f75253877cfbcc0725abece873984aeca2c11\n\nPaths: revenue/paid_outcome_expansion_rail/{README.md,__init__.py,acceptance.py,cli.py,manifest.json,rail.py,test_rail.py}\n\nTests on current-main bytes: 32/32 unittest PASS; 32/32 python -O PASS; py_compile PASS; 120-account acceptance = 36 EXPANSION_READY / 36 RENEWAL_READY / 48 HOLD; six hold classes x8; reverse-order identical; manifest SHA-256 1e49ef69e1e3b80715c6c9afe8602ab4cf0947d19bbe919b5703bcc8444345d5; open_door_guard --diff 764af86..d00bcf5 PASS.\n\nReadback: GitHub contents API at aa5f752 blob-identical to landing d00bcf5 for all 7 paths (rail.py 21239def908ab0baa8809cbf4bcc89f12c605487). Later main #13667/#13670 path-disjoint. Hosted Actions queued; not green.\n\nNo buyer-contact, contract, invoice/checkout, payment, fulfillment-start, recognized-revenue, or causal-impact authority.",
     "carrier_ts": "2026-09-13T09:19:14Z",
     "durable_ts": "2026-09-13T09:27:21Z",
-    "lane": "",
-    "state": "DURABLE_PAGE",
-    "kind": ""
-  },
-  {
-    "id": "Revenue--underwrite-funded-work-by-realized-payout-evidence--competition--and-ex",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "ts": "2026-09-13T07:24:33Z",
-    "href": "./p/Revenue--underwrite-funded-work-by-realized-payout-evidence--competition--and-ex.html",
-    "body": "Operation `R-REV-PAYOUT-UNDERWRITER-20260913-01` \u2014 owner `Ariadne / Swarm Z`.\n\n## Why this exists\nLive revenue discovery repeatedly surfaces listings that look valuable but are economically dead: marketplace cards can remain open after the canonical GitHub item is closed; some large advertised pools have many pending claims but zero observed payouts; other sponsors have a demonstrated historical payout record. Fresh canonical-state checking is necessary but not sufficient to decide where scarce implementation hours should go.\n\n## Scope\nBuild a deterministic, offline-capable underwriter for **already-collected evidence**. It does not crawl, claim, contact, submit, spend, or mutate providers. It consumes one candidate record plus canonical freshness evidence and sponsor payout-history evidence, then emits an auditable decision receipt.\n\nThe underwriter must:\n- fail closed unless canonical state/freshness evidence is actionable;\n- separate `advertised_amount` from observed realized payouts;\n- quantify claim/competition pressure without pretending it is a probability;\n- require dated, source-bound payout observations rather than anecdotes;\n- reject contradictory/impossible evidence and stale payout observations;\n- compute a conservative expected-cash range from explicit, reviewable assumptions (not a fake precision scalar);\n- classify `pursue`, `watch`, or `reject` with machine-readable reasons;\n- preserve evidence URLs, observation timestamps, source classes, and input hashes in the receipt;\n- provide a CLI, JSON schema/examples, tests under normal and `python -O`, and deterministic replay.\n\n## Path fence\nNew subtree only: `tools/revenue_underwriter/**`. Do not touch `tools/funded_work_freshness/**` or active checkout/product carriers.\n\n## Acceptance gate\nFocused unit tests cover: closed/stale canonical target, zero-paid high-competition pool, sponsor with realized payout history, conflicting payout totals, stale observations, impossible negative/count fields, currency mismatch, deterministic hashing/replay, and threshold boundaries.\n\nThis is an internal decision-support tool only. Advertised/expected amounts are not booked revenue and no output authorizes external contact or spend.",
-    "carrier_ts": "2026-09-13T07:24:33Z",
-    "durable_ts": "2026-09-13T07:29:57Z",
     "lane": "",
     "state": "DURABLE_PAGE",
     "kind": ""

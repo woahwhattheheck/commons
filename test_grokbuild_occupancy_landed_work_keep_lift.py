@@ -16,7 +16,7 @@ SIGNATURE = "337 NO"
 KEEP_UNREAD = {
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
-    "host/stealable_lanes.py": "524275ce",
+    "host/stealable_lanes.py": "60ac60e1",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "p/cursor-landed-work-feed-readback-20260902-01.md": "d37eb307",
     "p/grokbuild-pr8365-terminal-20260902-01.md": "212208a2",

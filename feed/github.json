@@ -1,8 +1,8 @@
 {
   "counts": {
     "open_issues": 114,
-    "open_pull_requests": 58,
-    "runs_in_progress": 5,
+    "open_pull_requests": 57,
+    "runs_in_progress": 4,
     "runs_queued": 70
   },
   "counts_source": "graphql",
@@ -90,14 +90,14 @@
     },
     {
       "author": "woahwhattheheck",
-      "base": "anvil/autopsy-boilerplate-sweep",
+      "base": "main",
       "branch": "anvil/retirement-portability-reconcile",
       "created_at": "2026-09-18T20:20:49Z",
       "draft": false,
-      "head_sha": "67cd29d34d9468c3e6e1b3bd5a5e0a827e9fbad9",
+      "head_sha": "f688246c0c51616cb786e06ccca291f6cd1980fb",
       "number": 16064,
       "title": "reconcile: swarm-mail routing/page restore + owner-now ship pins + gtm index regen",
-      "updated_at": "2026-09-18T22:16:09Z"
+      "updated_at": "2026-09-19T00:53:20Z"
     },
     {
       "author": "woahwhattheheck",
@@ -109,17 +109,6 @@
       "number": 16047,
       "title": "Research: add high-value Erd\u0151s prize crosswalk",
       "updated_at": "2026-09-18T17:02:01Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "anvil/autopsy-boilerplate-sweep",
-      "created_at": "2026-09-18T09:54:24Z",
-      "draft": false,
-      "head_sha": "e169c777c862c09242a83e5dce62db4928497827",
-      "number": 16029,
-      "title": "purge: sweep retired Autopsy boilerplate \u2014 1371 files (docs, orphan shelf li, registries, CI filters)",
-      "updated_at": "2026-09-18T23:32:01Z"
     },
     {
       "author": "woahwhattheheck",
@@ -175,6 +164,17 @@
       "number": 15958,
       "title": "CI: recover provider-starvation-aware merge train",
       "updated_at": "2026-09-18T08:17:47Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol17/e2b-executor-15922-20260918-r2",
+      "created_at": "2026-09-18T06:32:11Z",
+      "draft": false,
+      "head_sha": "76a838d99f33d6acee4b73e7c833cd4da80f8caa",
+      "number": 15953,
+      "title": "E2B exact-head executor for off-owner-machine test receipts",
+      "updated_at": "2026-09-18T08:02:24Z"
     }
   ],
   "open_heads": {
@@ -231,16 +231,37 @@
     "16007": "0109cf93e012b1fe4c9a93aaeb9f37e26482a593",
     "16012": "a08d73c13394cf6f1719befdb168065ec94381c8",
     "16015": "5c4e04aeccb9a02035cf0775750669180dde5521",
-    "16029": "e169c777c862c09242a83e5dce62db4928497827",
     "16047": "e5f30b4978379740e7631c4e33fd849878ff53e6",
-    "16064": "67cd29d34d9468c3e6e1b3bd5a5e0a827e9fbad9",
+    "16064": "f688246c0c51616cb786e06ccca291f6cd1980fb",
     "16070": "e932d0b41af5ce74522c83681d7fe9ee109775d7",
     "16073": "253fcfa5935b08b0f63b14d7120fbbbf096ec62d"
   },
-  "pulls_listed": 58,
+  "pulls_listed": 57,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 14.0,
+  "queue_depth_per_runner": 17.5,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol891/erdos891-primorial-bound-20260918",
+      "closed_at": "2026-09-19T00:30:22Z",
+      "head_sha": "52726b21af9bfba245d9a0de2ef6c9245f3f5dc0",
+      "merged_at": "2026-09-19T00:30:22Z",
+      "number": 16075,
+      "state": "MERGED",
+      "title": "Erdos 891: add primorial witness lower bound"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "anvil/autopsy-boilerplate-sweep",
+      "closed_at": "2026-09-19T00:27:43Z",
+      "head_sha": "e169c777c862c09242a83e5dce62db4928497827",
+      "merged_at": "2026-09-19T00:27:43Z",
+      "number": 16029,
+      "state": "MERGED",
+      "title": "purge: sweep retired Autopsy boilerplate \u2014 1371 files (docs, orphan shelf li, registries, CI filters)"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -383,32 +404,10 @@
       "number": 16065,
       "state": "MERGED",
       "title": "research: Erd\u0151s 686 k=5 centered-quintic reduction"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "sledge/open-work-regen-3a588b",
-      "closed_at": "2026-09-18T20:08:24Z",
-      "head_sha": "8676e94ba4a0c9b21e3a078e8d19ed5beeb3b014",
-      "merged_at": "2026-09-18T20:08:24Z",
-      "number": 16062,
-      "state": "MERGED",
-      "title": "ground: regenerate open-work projection on fixed extractor @3a588b762"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "anvil/autopsy-boilerplate-sweep",
-      "branch": "anvil/retirement-portability-reconcile",
-      "closed_at": "2026-09-18T19:57:10Z",
-      "head_sha": "1980a9edc2ea5db42e4875dd02bc13c05b056801",
-      "merged_at": "2026-09-18T19:57:10Z",
-      "number": 16056,
-      "state": "MERGED",
-      "title": "retirement+portability: reconcile autopsy sweep residue, Windows-safe opens, convert-shelf restore, stale-pin repair"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T23:42:19Z",
+  "unchanged_since": "2026-09-19T01:08:01Z",
   "undatable_pulls": []
 }

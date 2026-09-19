@@ -3,11 +3,11 @@
 
 Wire EXISTING live Stripe Payment Link URLs onto agent-triage.html and
 agent-control.html. Copy the payment-capability.html Buy now shelf
-(same nine URLs, same labels, same section id). Do not invent new
+(same eight URLs, same labels, same section id). Do not invent new
 buy.stripe.com host paths. Tip KEEP relative #live-cash doors stay.
 Hands off Wire tools/toolbench, Latch #15248, Goat tips/titan-hour/
 agent-ops/mcp/invoice/pay-tipshelf, Quill, Type prior convert chain,
-and #8802.
+and #8802. Retired Autopsy checkout is not on this shelf.
 """
 from __future__ import annotations
 
@@ -98,7 +98,7 @@ def shelf_list_items(html: str) -> list[str]:
 class TestTypeAgentTriageControlConvertShelf2026091701(unittest.TestCase):
     def test_both_html_files_reuse_exactly_the_existing_live_buys(self) -> None:
         source_items = shelf_list_items(PAYMENT.read_text(encoding="utf-8"))
-        self.assertEqual(len(source_items), 9)
+        self.assertEqual(len(source_items), 8)
         for page in PAGES:
             with self.subTest(page=page.name):
                 html = page.read_text(encoding="utf-8")

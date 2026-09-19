@@ -35,7 +35,10 @@ class TitanV5D2RecoveryStatusTests(unittest.TestCase):
 
     def test_root_source_truth_cannot_lag_authenticated_nested_receipt(self):
         status = current_status()
+        # Inputs-ready-before-source is a separate earlier gate. Drop both
+        # root flags so the nested-receipt mismatch is the observed error.
         status["source_authority_verified"] = False
+        status["execution_inputs_ready"] = False
         with self.assertRaisesRegex(
             validator.RecoveryStatusError,
             "root/nested source_authority_verified mismatch",
