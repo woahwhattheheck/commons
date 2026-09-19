@@ -223,6 +223,7 @@ void usage() {
               << "  a304081_search self-test\n"
               << "  a304081_search count N\n"
               << "  a304081_search scan LO HI\n"
+              << "  a304081_search verify-range LO HI\n"
               << "  a304081_search random TRIALS LO HI SEED [SKIP]\n"
               << "  a304081_search sample TRIALS LO HI SEED [SKIP]\n";
 }
@@ -271,6 +272,32 @@ int main(int argc, char** argv) {
             }
             std::cout << "SCAN_DONE lo=" << lo << " hi=" << hi
                       << " best_n=" << best_n << " best_a=" << best_count << "\n";
+            return 0;
+        }
+
+        if (mode == "verify-range") {
+            if (argc != 4) { usage(); return 2; }
+            const u64 lo = parse_u64(argv[2]), hi = parse_u64(argv[3]);
+            if (lo > hi) throw std::invalid_argument("LO > HI");
+            if (hi == std::numeric_limits<u64>::max())
+                throw std::invalid_argument("HI too large for inclusive bound");
+            SearchSpace space(hi + 1);
+            u64 hardest_n = 0, hardest_prefix = 0;
+            for (u64 n = lo;; ++n) {
+                const auto [found, tested] = space.has_representation(n);
+                if (!found && n > 7) {
+                    std::cout << "COUNTEREXAMPLE n=" << n
+                              << " tested_offsets=" << tested << "\n";
+                    return 1;
+                }
+                if (tested > hardest_prefix) {
+                    hardest_prefix = tested; hardest_n = n;
+                }
+                if (n == hi) break;
+            }
+            std::cout << "RANGE_DONE lo=" << lo << " hi=" << hi
+                      << " count=" << (hi-lo+1) << " hardest_n=" << hardest_n
+                      << " hardest_prefix=" << hardest_prefix << "\n";
             return 0;
         }
 
