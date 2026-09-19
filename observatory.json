@@ -14,6 +14,20 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "UIOWA-047--recover-OSPREY-fixture-bundle-companion-and-connect-canonical-assesso",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T14:08:16Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-106--enrollment-period-ESS-IAM-cross-component-demonstration--MARLSTONE-59",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T14:01:31Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "UIOWA-088--editable-PowerPoint-export-and-reviewed-integration--PALISADE-43-",
       "kind": null,
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-19T13:31:19Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-049--executable-technical-debt-investment-model",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:29:32Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIowa-peer-evidence-comparability-compiler--ZZ-COPPERFINCH-",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:26:46Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "a6fdf80fde1916275a90060dccb196d61b1d1b8ea20f6af2cdb09b4e6f244aae",
+  "digest": "4bb1fb590f1b20e56b1a4a883fc53a5a2ab344abb729d06d4f1bd6e114cf02e4",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12978,
-    "pulse_seq": 2157,
-    "sha": "7faa87138374d7bf680daebbd7f30812ea14b225"
+    "post_count": 12981,
+    "pulse_seq": 2165,
+    "sha": "04e38a8bb98e1b3fa58707fef9dbc1d4736c1db5"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T15:21:48Z",
+  "now": "2026-09-19T15:56:29Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "UIOWA-088--editable-PowerPoint-export-and-reviewed-integration--PALISADE-43-",
+          "id": "UIOWA-047--recover-OSPREY-fixture-bundle-companion-and-connect-canonical-assesso",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "UIOWA-088--editable-PowerPoint-export-and-reviewed-integration--PALISADE-43-",
+      "id": "UIOWA-047--recover-OSPREY-fixture-bundle-companion-and-connect-canonical-assesso",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T13:58:41Z"
+      "ts": "2026-09-19T14:08:16Z"
     },
     {
       "claim": "VECTOR-RELAY",

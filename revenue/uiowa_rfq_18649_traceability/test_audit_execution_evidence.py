@@ -268,7 +268,8 @@ class ExecutionReceiptValidationTests(unittest.TestCase):
     def receipt(self):
         return dict(selected=1, tests_run=1, skipped=0, failures=0, errors=0,
                     expected_failures=0, unexpected_successes=0, successful=True,
-                    optimization=sys.flags.optimize)
+                    optimization=sys.flags.optimize, skipped_test_cases=0,
+                    skipped_case_events=0, skipped_fixtures=0, skipped_subtests=0, passed_subtests=0)
 
     def read(self, receipt, code=0):
         with tempfile.TemporaryDirectory() as tmp:

@@ -74,14 +74,60 @@ import json
 import sys
 import unittest
 
+class ExecutionResult(unittest.TextTestResult):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.active_test = None
+        self.skipped_test_cases = 0
+        self.skipped_case_events = 0
+        self.active_case_skipped = False
+        self.skipped_fixtures = 0
+        self.skipped_subtests = 0
+        self.passed_subtests = 0
+
+    def startTest(self, test):
+        self.active_test = test
+        self.active_case_skipped = False
+        super().startTest(test)
+
+    def stopTest(self, test):
+        try:
+            super().stopTest(test)
+        finally:
+            self.active_test = None
+
+    def addSkip(self, test, reason):
+        # unittest records fixture and subtest skips alongside case skips.
+        # Only a skip of the active case can be subtracted from testsRun.
+        if test is self.active_test:
+            self.skipped_case_events += 1
+            if not self.active_case_skipped:
+                self.skipped_test_cases += 1
+                self.active_case_skipped = True
+        elif self.active_test is None:
+            self.skipped_fixtures += 1
+        else:
+            self.skipped_subtests += 1
+        super().addSkip(test, reason)
+
+    def addSubTest(self, test, subtest, err):
+        if err is None:
+            self.passed_subtests += 1
+        super().addSubTest(test, subtest, err)
+
 receipt_path, names = sys.argv[1], sys.argv[2:]
 suite = unittest.defaultTestLoader.loadTestsFromNames(names)
 selected = suite.countTestCases()
-result = unittest.TextTestRunner(verbosity=1).run(suite)
+result = unittest.TextTestRunner(verbosity=1, resultclass=ExecutionResult).run(suite)
 receipt = {
     "selected": selected,
     "tests_run": result.testsRun,
     "skipped": len(result.skipped),
+    "skipped_test_cases": result.skipped_test_cases,
+    "skipped_case_events": result.skipped_case_events,
+    "skipped_fixtures": result.skipped_fixtures,
+    "skipped_subtests": result.skipped_subtests,
+    "passed_subtests": result.passed_subtests,
     "failures": len(result.failures),
     "errors": len(result.errors),
     "expected_failures": len(result.expectedFailures),
@@ -94,7 +140,9 @@ with open(receipt_path, "w", encoding="utf-8") as stream:
 raise SystemExit(0 if result.wasSuccessful() else 1)
 """
 _COUNT_FIELDS = ("selected", "tests_run", "skipped", "failures", "errors",
-                 "expected_failures", "unexpected_successes")
+                 "expected_failures", "unexpected_successes",
+                 "skipped_test_cases", "skipped_case_events", "skipped_fixtures", "skipped_subtests",
+                 "passed_subtests")
 
 
 def _read_execution_receipt(path, returncode):
@@ -111,6 +159,17 @@ def _read_execution_receipt(path, returncode):
         raise ValueError("invalid unittest receipt field: successful")
     if receipt["optimization"] != sys.flags.optimize:
         raise ValueError("child optimization differs from the auditor")
+    if receipt["skipped"] != sum(receipt[k] for k in
+                                ("skipped_case_events", "skipped_fixtures", "skipped_subtests")):
+        raise ValueError("skip event totals disagree")
+    if receipt["skipped_case_events"] < receipt["skipped_test_cases"]:
+        raise ValueError("fewer case skip events than skipped cases")
+    if bool(receipt["skipped_case_events"]) != bool(receipt["skipped_test_cases"]):
+        raise ValueError("case skip events and skipped cases disagree")
+    if receipt["skipped_test_cases"] > receipt["tests_run"]:
+        raise ValueError("skipped case count exceeds started cases")
+    if not receipt["tests_run"] and (receipt["skipped_subtests"] or receipt["passed_subtests"]):
+        raise ValueError("subtest events require a started case")
     failed = any(receipt[k] for k in ("failures", "errors", "unexpected_successes"))
     if receipt["successful"] != (not failed):
         raise ValueError("unittest success disagrees with measured failures")
@@ -147,11 +206,13 @@ def run_suite(workdir, test_files, timeout):
             out["execution"] = execution
             if not execution["successful"]:
                 out["state"] = "TESTS_NOT_GREEN"
-            elif execution["tests_run"] <= execution["skipped"]:
-                # setUpClass skips may have skipped > tests_run; do not invent
-                # a negative count, or confuse selection with body execution.
+            elif (execution["tests_run"] <= execution["skipped_test_cases"]
+                  and not execution["passed_subtests"]):
+                # Fixture/subtest events are not skipped test cases. Preserve
+                # completed subtests even when their parent later skips.
                 out["state"] = "NO_TESTS_EXECUTED"
-            elif execution["skipped"] or execution["expected_failures"]:
+            elif (execution["skipped"] or execution["expected_failures"]
+                  or execution["tests_run"] != execution["selected"]):
                 out["state"] = "PARTIAL_TEST_COVERAGE"
             else:
                 out["state"] = "CLEAN"
