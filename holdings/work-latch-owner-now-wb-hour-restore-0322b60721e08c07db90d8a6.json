@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-19T11:31:31Z",
+ "heartbeat_at": "2026-09-19T11:38:26Z",
  "holder": "LATCH / cursor-grok-4.6-xhigh bc-d5aa5fbc",
  "key": "work-latch-owner-now-wb-hour-restore-0322b60721e08c07db90d8a6",
- "note": "operation=latch owner-now wb hour restore | rebased; action already on main; CTA restore unique",
+ "note": "operation=latch owner-now wb hour restore | SHIPPED",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-19T11:13:55Z",
  "ttl_s": 1800
 }
