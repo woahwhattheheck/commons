@@ -1,10 +1,11 @@
-import csv
+import sys
 import unittest
 from pathlib import Path
 
-import run_rehearsal
-
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+
+import run_rehearsal  # noqa: E402
 
 
 class PolicyPracticeRehearsalTests(unittest.TestCase):
