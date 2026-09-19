@@ -160,6 +160,80 @@ appear in both the executive summary and the report body. **T112** compares the
 normalised paragraph text across every location, so the summary cannot soften or
 sharpen a claim the body makes.
 
+## Cross-lane audit: finding checks that have stopped checking
+
+`audit_self_sealing.py` applies this lane's central rule — *recording an
+expected value is a deliberate act, never a side effect of running the check* —
+to every landed RFQ-18649 lane at once.
+
+```bash
+python3 audit_self_sealing.py /path/to/revenue                 # all lanes
+python3 audit_self_sealing.py /path/to/revenue --only <lane>   # one lane
+python3 audit_self_sealing.py /path/to/revenue --format json
+```
+
+The defect it hunts is an integrity check whose expected value is written by
+the same run that verifies it. A manifest that rewrites its own `sha256` to
+match whatever the suite just produced is a hash that can never fail: it reports
+PASS whether or not the artefact drifted. Nothing shows up red, which is exactly
+why these survive.
+
+Detection is **behavioural first**. The auditor copies every lane into a shared
+scratch tree, hashes the whole tree, runs each lane's own suite there, and
+hashes again. A tracked file the suite rewrote is non-hermetic; if that file
+also carried digest values and those values *changed*, the check is
+self-sealing. A static scan for "digest computed and written into the manifest
+it verifies" runs alongside and is labelled advisory — a static hit is a place
+to look, not a verdict.
+
+**It never touches the repository.** Two copies are made, one to run in and one
+pristine to restore from, and `test_the_audited_tree_is_byte_identical_afterwards`
+asserts the audited tree is unchanged afterwards. A tool that mutates other
+seats' work while hunting for suites that mutate things would be self-refuting.
+
+### Observed run — 2026-09-19, 44 lanes
+
+```
+SELF_SEALING           uiowa_rfq_18649_document_extraction
+    rewritten  .../fixtures/manifest.json   <- DIGEST REWRITTEN
+    rewritten  .../fixtures/sample.docx
+
+summary: CLEAN=36  NO_TESTS=6  SELF_SEALING=1  TESTS_NOT_GREEN=1
+```
+
+One self-sealing check across 44 lanes, and it is the one a human had already
+found by hand. That is the point: the hand-found instance is now a check that
+runs over every lane, including ones that land later.
+
+### Two false positives it produced first, and what changed
+
+Both were the tool's fault and both are regression-tested in
+`test_audit_self_sealing.py`, because **a tool that manufactures findings is the
+same defect class as one that hides them.**
+
+1. **Isolating a lane broke a legitimate sibling read.** The first version
+   copied each lane alone and reported `uiowa_rfq_18649_acceptance_map` as six
+   failures. That suite reads `ACCEPTANCE_EXHIBIT.md` from a *sibling* lane, and
+   the isolation had deleted the file it pointed at. The isolation model
+   changed, not the verdict; the lane audits CLEAN in a shared tree.
+2. **A deliberately broken fixture was read as a defect.** The operator-handoff
+   kit ships a minikit whose README says outright: *"Status: production ready.
+   All checks green. That claim is false and is here on purpose: the verifier
+   must contradict a README that asserts a component works."* Test suites under
+   a `fixtures/` path are that lane's data, not its suite, and are now excluded.
+
+### Limits, stated
+
+- Only lanes with a runnable `test_*.py` are audited behaviourally; six lanes
+  have no tests and are reported as `NO_TESTS`, which is a coverage gap, not a
+  pass.
+- A self-sealing check that never runs under `unittest` will not be caught.
+- The static scan is a tripwire with false positives by construction.
+- `TESTS_NOT_GREEN` says a suite did not return zero **on the tree as checked
+  out**. A failure whose fix is merged elsewhere but not yet on this branch will
+  show here; that is a branch-freshness fact, not a defect in the lane.
+
+
 ## What is real, what is draft
 
 | | state |
@@ -169,6 +243,7 @@ sharpen a claim the body makes.
 | `bundle_drifted/` | **working fixture** — the deliberately broken case |
 | `TRACE_MAP.md` | **generated** from `bundle/`; a test fails if it goes stale |
 | Rule catalogue (30 rules) | **working**; T201 is advisory by design |
+| `audit_self_sealing.py` | **working** — 10 tests; behavioural detection, static scan advisory |
 | The `{narrative}` paragraph contract | **draft convention** — it works, but a real report would need this agreed with whoever writes the prose |
 
 ## What is still UNKNOWN
@@ -205,6 +280,8 @@ and re-run, never modified.
 | `trace_check.py` | the checker; `--register`, `--seal`, `--rules`, `--format text\|json\|markdown` |
 | `schema.py` | field contract, id formats, rule catalogue, digest functions |
 | `test_trace_check.py` | 34 tests, including every hostile case above |
+| `audit_self_sealing.py` | cross-lane auditor for self-sealing / non-hermetic checks |
+| `test_audit_self_sealing.py` | 10 tests, including the two false positives it once produced |
 | `bundle/` | the clean miniature report bundle, with real source files in `sources/` |
 | `bundle_drifted/` | the same bundle with one record edited after the fact |
 | `TRACE_MAP.md` | generated statement → finding → citation → source map |
