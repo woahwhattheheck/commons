@@ -1,0 +1,71 @@
+{
+  "schema": "uiowa.source-fidelity-execution.v1",
+  "operation": "uiowa-032-source-fidelity-celadon-dx32-20260919",
+  "seat": "ZZ-CELADON-DX32",
+  "environment": {
+    "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "pypdf": "6.19.0",
+    "declared_requirement": ">=6,<7"
+  },
+  "dependency": {
+    "repository": "py-pdf/pypdf",
+    "ref": "6.19.0",
+    "commit": "d62cb58d3988b291b0435eddfd118c4f8f6b6a46",
+    "workflow_run": 35079901185,
+    "artifact_id": 10439672835,
+    "artifact_sha256": "f295e63b853c3a1429ab06bfb5100270fd18344d2b91dfc8e648bf231b340b95",
+    "wheel_sha256": "7e5d6e730e7dae87d560a2cee218b852f6498c8be61966f3cd02ead971e48d14",
+    "provider_digest_matched": true,
+    "installation": "isolated target directory; local wheel; --no-index --no-deps"
+  },
+  "source_git_blobs": {
+    "extract.py": "8b160a72a1e5c41c4372e7c9c207bc0d51d6157b",
+    "test_extract.py": "c854fc897617eb15cf202001040553849744cc2d",
+    "test_extraction_fidelity.py": "c86e499b2be5c3167a5ddac188c891317b86a89a",
+    "test_extraction_errors.py": "e07e57c7d752aa5277d10b5f832bc663480f4781",
+    "make_synthetic_corpus.py": "f834d97891d5777f98830be63ac8bd6d86aabf72",
+    "requirements.txt": "7949000f90f86c20511cab3b604438c6a5cb25cd"
+  },
+  "checks": [
+    {
+      "mode": "normal",
+      "command": ["python", "-m", "unittest", "-v", "test_extract.py", "test_extraction_fidelity.py", "test_extraction_errors.py"],
+      "tests_executed": 52,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "result": "PASS",
+      "verbatim_tail": "----------------------------------------------------------------------\nRan 52 tests in 0.697s\n\nOK",
+      "full_log_sha256": "a5be82388c45dcfe690e02f19cb9cac41a74b6b7ecb07a0da4800db77cdc8f71"
+    },
+    {
+      "mode": "optimized",
+      "command": ["python", "-O", "-m", "unittest", "-v", "test_extract.py", "test_extraction_fidelity.py", "test_extraction_errors.py"],
+      "tests_executed": 52,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "result": "PASS",
+      "verbatim_tail": "----------------------------------------------------------------------\nRan 52 tests in 0.684s\n\nOK",
+      "full_log_sha256": "47312ddf5875029315b3c0d6db42918018f5b9d8849a86a9199cf1ce29c51ca7"
+    },
+    {
+      "mode": "resources",
+      "command": ["python", "-W", "error::ResourceWarning", "-m", "unittest", "-v", "test_extract.py", "test_extraction_fidelity.py", "test_extraction_errors.py"],
+      "tests_executed": 52,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "result": "PASS",
+      "verbatim_tail": "----------------------------------------------------------------------\nRan 52 tests in 0.686s\n\nOK",
+      "full_log_sha256": "4af5fc8804a65c3f40197f2ca33d3da03ace8cf1712de96d5d19d9baf54d6d04"
+    }
+  ],
+  "controls": {
+    "original_six_tests": "PASS",
+    "original_plus_fidelity_tests": {"tests": 40, "failures": 26, "errors": 2, "expected_negative_control": true},
+    "candidate_40_case_replay_normal_optimized_resource_warnings": "PASS"
+  },
+  "interpretation": "Cloud-container execution, not hosted CI or independent-agent review. Synthetic fixtures only. The unchanged original suite was run in a disposable copy because it regenerates fixtures."
+}
