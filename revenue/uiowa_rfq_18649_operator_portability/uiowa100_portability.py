@@ -306,6 +306,46 @@ print(json.dumps(report, sort_keys=True, ensure_ascii=False))
 '''
 
 
+def _run_recorded(argv: list[str], *, cwd: Path, environment: dict[str, str],
+                  timeout_s: int, record: dict) -> subprocess.CompletedProcess:
+    """Retain the attempt even when subprocess.run cannot return a process result.
+
+    ATTEMPTED does not assert that the child started. None is an unknown exit code,
+    never an invented successful exit. TimeoutExpired may contain bytes even with
+    text=True; keep those exact bytes as hex alongside a readable UTF-8 rendering.
+    """
+    record.update({"state": "ATTEMPTED", "exit_code": None,
+                   "stdout": "", "stderr": ""})
+
+    def retain_streams(stdout: str | bytes | None, stderr: str | bytes | None) -> None:
+        for name, value in (("stdout", stdout), ("stderr", stderr)):
+            if isinstance(value, bytes):
+                record[name + "_bytes_hex"] = value.hex()
+                record[name] = value.decode("utf-8", errors="backslashreplace")
+            else:
+                record[name] = "" if value is None else value
+
+    try:
+        proc = subprocess.run(argv, cwd=cwd, env=environment, capture_output=True,
+                              text=True, timeout=timeout_s, check=False)
+    except subprocess.TimeoutExpired as exc:
+        record.update({"state": "TIMED_OUT", "timeout_s": exc.timeout,
+                       "error_type": type(exc).__name__, "error": str(exc)})
+        retain_streams(exc.output, exc.stderr)
+        raise
+    except OSError as exc:
+        record.update({"state": "LAUNCH_ERROR", "error_type": type(exc).__name__,
+                       "error": str(exc)})
+        raise
+    except (ValueError, subprocess.SubprocessError) as exc:
+        record.update({"state": "PROCESS_ERROR", "error_type": type(exc).__name__,
+                       "error": str(exc)})
+        raise
+    record.update({"state": "EXITED", "exit_code": proc.returncode})
+    retain_streams(proc.stdout, proc.stderr)
+    return proc
+
+
 def rehearse(root: Path, output: Path) -> dict:
     root = root.resolve()
     package = verify(root)
@@ -317,13 +357,13 @@ def rehearse(root: Path, output: Path) -> dict:
     commands: list[dict] = []
 
     def execute(label: str, argv: list[str], cwd: Path) -> subprocess.CompletedProcess:
-        proc = subprocess.run(python + argv, cwd=cwd, env=environment,
-                              capture_output=True, text=True, timeout=60, check=False)
-        shown = [part.replace(str(root), "{ROOT}").replace(str(output), "{OUT}")
+        shown = [part.replace(str(output), "{OUT}").replace(str(root), "{ROOT}")
                  for part in argv]
-        commands.append({"step": label, "argv": ["python3"] + python[1:] + shown,
-                         "cwd": "{ROOT}/" + str(cwd.relative_to(root)),
-                         "exit_code": proc.returncode, "stdout": proc.stdout, "stderr": proc.stderr})
+        record = {"step": label, "argv": ["python3"] + python[1:] + shown,
+                  "cwd": "{ROOT}/" + str(cwd.relative_to(root))}
+        commands.append(record)
+        proc = _run_recorded(python + argv, cwd=cwd, environment=environment,
+                             timeout_s=60, record=record)
         if proc.returncode:
             raise PortabilityError(f"{label} exited {proc.returncode}: {proc.stderr.strip()}")
         return proc
@@ -364,7 +404,9 @@ def rehearse(root: Path, output: Path) -> dict:
             handle.write(canonical(receipt))
         text = ("# Synthetic operator rehearsal\n\n" + receipt["state"] + "\n\n"
                 "This is tool execution, not University findings or engagement approval.\n\n"
-                + "\n".join(f"- {r['step']}: exit {r['exit_code']}" for r in commands)
+                + "\n".join(f"- {r['step']}: {r['state']}; "
+                            + (f"exit {r['exit_code']}" if r['exit_code'] is not None
+                               else "no exit code available") for r in commands)
                 + "\n\nBrowser rendering: NOT_RUN. Actual compiler and adapter execution is recorded above.\n"
                 + ("\nFailure: " + receipt["error"] + "\n" if "error" in receipt else ""))
         with (output / "REHEARSAL.md").open("x", encoding="utf-8") as handle:
@@ -373,45 +415,69 @@ def rehearse(root: Path, output: Path) -> dict:
 
 
 def acceptance(root: Path, output: Path, revision: str) -> dict:
-    """Two independent unpack locations must produce identical report bytes."""
+    """Two independent unpack locations must produce identical report bytes.
+
+    Failed attempts retain acceptance-failure.json; acceptance.json is success-only.
+    The failure artifact is diagnostic evidence, not a partial acceptance certificate.
+    """
     output.mkdir(parents=False, exist_ok=False)
-    first = pack(root, output / "operator-kit.zip", revision)
-    second = pack(root, output / "repeat-kit.zip", revision)
-    if first != second:
-        raise PortabilityError("repeat packaging was not byte-identical")
-    results = []
-    invocations = []
-    for name in ("operator-one", "operator-two"):
-        location = (output / name).resolve()
-        run_output = (output / (name + "-run")).resolve()
-        unpack(output / "operator-kit.zip", location)
-        python = [sys.executable] + (["-O"] if sys.flags.optimize else [])
-        argv = python + [str(location / SELF), "rehearse", "--root", str(location),
-                         "--out", str(run_output)]
-        environment = {k: v for k, v in os.environ.items() if k not in ("PYTHONPATH", "PYTHONHOME")}
-        environment["PYTHONDONTWRITEBYTECODE"] = "1"
-        proc = subprocess.run(argv, cwd=location, env=environment, capture_output=True,
-                              text=True, timeout=300, check=False)
-        invocations.append({"operator": name, "entrypoint": SELF, "exit_code": proc.returncode,
-                            "runner_sha256": digest(read_member(location, SELF))})
-        if proc.returncode:
-            raise PortabilityError(f"packaged {name} runner exited {proc.returncode}: {proc.stderr.strip()}")
-        result = strict_json(proc.stdout.encode("utf-8"))
-        if not isinstance(result, dict) or result.get("state") != "PASS_PORTABLE_SYNTHETIC_REHEARSAL":
-            raise PortabilityError(f"packaged {name} runner did not report rehearsal success")
-        if strict_json((run_output / "receipt.json").read_bytes()) != result:
-            raise PortabilityError(f"packaged {name} stdout and durable receipt disagree")
-        results.append(result)
-    if results[0]["outputs"] != results[1]["outputs"]:
-        raise PortabilityError("second operator reports were not byte-identical")
-    receipt = {"schema": SCHEMA, "state": "PASS_TWO_OPERATOR_REPRODUCTION",
-               "package": first, "source_revision": revision,
-               "outputs": results[0]["outputs"], "inspection": results[0]["inspection"],
-               "commands_per_operator": len(results[0]["commands"]),
+    invocations: list[dict] = []
+    failure = {"schema": SCHEMA, "state": "RUNNING", "synthetic_only": True,
+               "source_revision": revision, "stage": "PACKAGING",
                "packaged_runner_invocations": invocations,
                "browser_acceptance": "NOT_RUN", "engagement_completion": "NOT_ESTABLISHED"}
-    (output / "acceptance.json").write_bytes(canonical(receipt))
-    return receipt
+    try:
+        first = pack(root, output / "operator-kit.zip", revision)
+        second = pack(root, output / "repeat-kit.zip", revision)
+        if first != second:
+            raise PortabilityError("repeat packaging was not byte-identical")
+        failure["package"] = first
+        results = []
+        for name in ("operator-one", "operator-two"):
+            failure["stage"] = "UNPACKING_" + name.upper().replace("-", "_")
+            location = (output / name).resolve()
+            run_output = (output / (name + "-run")).resolve()
+            unpack(output / "operator-kit.zip", location)
+            python = [sys.executable] + (["-O"] if sys.flags.optimize else [])
+            argv = python + [str(location / SELF), "rehearse", "--root", str(location),
+                             "--out", str(run_output)]
+            environment = {k: v for k, v in os.environ.items() if k not in ("PYTHONPATH", "PYTHONHOME")}
+            environment["PYTHONDONTWRITEBYTECODE"] = "1"
+            shown = [part.replace(str(run_output), "{OUT}").replace(str(location), "{ROOT}")
+                     for part in argv[1:]]
+            invocation = {"operator": name, "entrypoint": SELF,
+                          "argv": ["python3"] + shown, "cwd": "{ROOT}",
+                          "runner_sha256": digest(read_member(location, SELF))}
+            invocations.append(invocation)
+            failure["stage"] = "RUNNING_" + name.upper().replace("-", "_")
+            proc = _run_recorded(argv, cwd=location, environment=environment,
+                                 timeout_s=300, record=invocation)
+            if proc.returncode:
+                raise PortabilityError(f"packaged {name} runner exited {proc.returncode}: {proc.stderr.strip()}")
+            result = strict_json(proc.stdout.encode("utf-8"))
+            if not isinstance(result, dict) or result.get("state") != "PASS_PORTABLE_SYNTHETIC_REHEARSAL":
+                raise PortabilityError(f"packaged {name} runner did not report rehearsal success")
+            if strict_json((run_output / "receipt.json").read_bytes()) != result:
+                raise PortabilityError(f"packaged {name} stdout and durable receipt disagree")
+            results.append(result)
+        failure["stage"] = "COMPARING_OUTPUTS"
+        if results[0]["outputs"] != results[1]["outputs"]:
+            raise PortabilityError("second operator reports were not byte-identical")
+        receipt = {"schema": SCHEMA, "state": "PASS_TWO_OPERATOR_REPRODUCTION",
+                   "package": first, "source_revision": revision,
+                   "outputs": results[0]["outputs"], "inspection": results[0]["inspection"],
+                   "commands_per_operator": len(results[0]["commands"]),
+                   "packaged_runner_invocations": invocations,
+                   "browser_acceptance": "NOT_RUN", "engagement_completion": "NOT_ESTABLISHED"}
+        failure["stage"] = "PUBLISHING_SUCCESS_RECEIPT"
+        with (output / "acceptance.json").open("xb") as handle:
+            handle.write(canonical(receipt))
+        return receipt
+    except (OSError, ValueError, KeyError, zipfile.BadZipFile, subprocess.SubprocessError) as exc:
+        failure.update({"state": "FAIL", "error_type": type(exc).__name__, "error": str(exc)})
+        with (output / "acceptance-failure.json").open("xb") as handle:
+            handle.write(canonical(failure))
+        raise PortabilityError(str(exc)) from exc
 
 
 def main(argv: list[str] | None = None) -> int:
