@@ -318,6 +318,28 @@ class IntakeTests(unittest.TestCase):
             write_bundle(base(), out, clock=lambda: NOW)
             self.assertTrue(out.exists())
 
+    def test_competing_creator_cannot_be_overwritten(self):
+        with tempfile.TemporaryDirectory() as td:
+            out = Path(td) / "bundle"
+            original_mkdir = Path.mkdir
+            raced = False
+
+            def racing_mkdir(path, *args, **kwargs):
+                nonlocal raced
+                if path == out and not raced:
+                    raced = True
+                    original_mkdir(path, *args, **kwargs)
+                    raise FileExistsError("simulated competing creator")
+                return original_mkdir(path, *args, **kwargs)
+
+            with patch.object(Path, "mkdir", racing_mkdir):
+                with self.assertRaises(IntakeError):
+                    write_bundle(base(), out, clock=lambda: NOW)
+
+            self.assertTrue(out.is_dir())
+            self.assertEqual(list(out.iterdir()), [])
+            self.assertEqual(list(Path(td).glob(".bundle.stage-*")), [])
+
     def test_cli_compile_verify_and_hostile_tamper(self):
         from revenue.external_opportunity_intake import cli as cli_module
         with tempfile.TemporaryDirectory() as td:
