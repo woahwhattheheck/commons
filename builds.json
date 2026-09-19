@@ -1553,22 +1553,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 16145,
-   "author": "woahwhattheheck",
-   "title": "Iowa workbench: restore saved reviews and export readable handoffs",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/16145",
-   "base_freshness": {
-    "base_sha": "92fecdaf18b4c700f14e4859f502fb7f240433cd",
-    "main_sha": "9ffd29245a629e7d3a9ff56c8eb1d3dd1c6cfc39",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 16312,
    "author": "woahwhattheheck",
    "title": "fix(uiowa): recover capacity benchmark with non-destructive generation",
@@ -1937,12 +1921,28 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 16306,
+   "number": 16291,
    "author": "woahwhattheheck",
-   "title": "UIOWA-050: complete nested schema and independent interchange conformance",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/16306",
+   "title": "fix(swarm): observe actual lane test execution; never PASS quiet or skipped-only suites",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/16291",
    "base_freshness": {
-    "base_sha": "081809b5ce80105155e94d92bb5b076c106f3a9e",
+    "base_sha": "47e2ae612af1a5a372d8e36c1c1fcb5b597d8ff3",
+    "main_sha": "9ffd29245a629e7d3a9ff56c8eb1d3dd1c6cfc39",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15699,
+   "author": "woahwhattheheck",
+   "title": "Revenue: recover partner shortlist on retained CI surface",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15699",
+   "base_freshness": {
+    "base_sha": "e468cafe1adb382e772858297aa6f0cedfbbac7f",
     "main_sha": "9ffd29245a629e7d3a9ff56c8eb1d3dd1c6cfc39",
     "ahead_by": null,
     "behind_by": null,
