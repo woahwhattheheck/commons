@@ -1,0 +1,53 @@
+lane,stored_in,file,line,claimed,measured,verdict,basis,reason
+uiowa_rfq_18649_acceptance_map,uiowa_rfq_18649_acceptance_map,uiowa_rfq_18649_acceptance_map/README.md,176,33,33,AGREES,suite:test_acceptance_map.py,matches the measured run
+uiowa_rfq_18649_ai_decision_case,uiowa_rfq_18649_ai_decision_case,uiowa_rfq_18649_ai_decision_case/README.md,161,34,34,AGREES,suite:test_ai_decision_case.py,matches the measured run
+uiowa_rfq_18649_ai_opportunity_portfolio,uiowa_rfq_18649_ai_opportunity_portfolio,uiowa_rfq_18649_ai_opportunity_portfolio/README.md,147,39,39,AGREES,suite:test_opportunity_portfolio.py,matches the measured run
+uiowa_rfq_18649_ai_use_inventory,uiowa_rfq_18649_ai_use_inventory,uiowa_rfq_18649_ai_use_inventory/README.md,161,43,43,AGREES,suite:test_inventory.py,matches the measured run
+uiowa_rfq_18649_bid_pack,uiowa_rfq_18649_bid_pack,uiowa_rfq_18649_bid_pack/README.md,64,35,35,AGREES,suite:test_bid_pack.py,matches the measured run
+uiowa_rfq_18649_bid_pack,uiowa_rfq_18649_bid_pack,uiowa_rfq_18649_bid_pack/README.md,185,35,35,AGREES,lane_total,matches the measured run
+uiowa_rfq_18649_capacity_benchmark,uiowa_rfq_18649_capacity_benchmark,uiowa_rfq_18649_capacity_benchmark/README.md,58,36,36,AGREES,suite:test_capacity_benchmark.py,matches the measured run
+uiowa_rfq_18649_capacity_feasibility,uiowa_rfq_18649_capacity_feasibility,uiowa_rfq_18649_capacity_feasibility/README.md,42,51,51,AGREES,suite:test_capacity_roadmap.py,matches the measured run
+uiowa_rfq_18649_capacity_feasibility,uiowa_rfq_18649_capacity_feasibility,uiowa_rfq_18649_capacity_feasibility/README.md,167,51,51,AGREES,lane_total,matches the measured run
+uiowa_rfq_18649_contractor_transition,uiowa_rfq_18649_contractor_transition,uiowa_rfq_18649_contractor_transition/README.md,140,34,34,AGREES,suite:test_transition.py,matches the measured run
+uiowa_rfq_18649_deadline_continuity,uiowa_rfq_18649_deadline_continuity,uiowa_rfq_18649_deadline_continuity/README.md,131,42,42,AGREES,suite:test_continuity.py,matches the measured run
+uiowa_rfq_18649_filesystem_safety,uiowa_rfq_18649_filesystem_safety,uiowa_rfq_18649_filesystem_safety/README.md,47,24,24,AGREES,lane_total,matches the measured run
+uiowa_rfq_18649_filesystem_safety,uiowa_rfq_18649_filesystem_safety,uiowa_rfq_18649_filesystem_safety/README.md,153,24,24,AGREES,suite:test_fsaudit.py,matches the measured run
+uiowa_rfq_18649_milestone_packets,uiowa_rfq_18649_milestone_packets,uiowa_rfq_18649_milestone_packets/README.md,135,55,55,AGREES,lane_total,matches the measured run
+uiowa_rfq_18649_milestone_packets,uiowa_rfq_18649_milestone_packets,uiowa_rfq_18649_milestone_packets/README.md,178,55,55,AGREES,suite:test_milestone_packets.py,matches the measured run
+uiowa_rfq_18649_output_agreement,uiowa_rfq_18649_output_agreement,uiowa_rfq_18649_output_agreement/README.md,144,41,41,AGREES,lane_total,matches the measured run
+uiowa_rfq_18649_print_pagination,uiowa_rfq_18649_print_pagination,uiowa_rfq_18649_print_pagination/README.md,194,39,39,AGREES,lane_total,matches the measured run
+uiowa_rfq_18649_prioritization,uiowa_rfq_18649_prioritization,uiowa_rfq_18649_prioritization/README.md,16,48,48,AGREES,lane_total,matches the measured run
+uiowa_rfq_18649_recovery_evidence,uiowa_rfq_18649_recovery_evidence,uiowa_rfq_18649_recovery_evidence/README.md,91,7,"[7, 50, 57]",AGREES,multi_suite,matches one of the lane's measured suites
+uiowa_rfq_18649_report_structure,uiowa_rfq_18649_report_structure,uiowa_rfq_18649_report_structure/README.md,161,55,55,AGREES,lane_total,matches the measured run
+uiowa_rfq_18649_report_visuals,uiowa_rfq_18649_report_visuals,uiowa_rfq_18649_report_visuals/README.md,165,90,90,AGREES,suite:test_report_visuals.py,matches the measured run
+uiowa_rfq_18649_scope_change,uiowa_rfq_18649_scope_change,uiowa_rfq_18649_scope_change/README.md,16,48,48,AGREES,lane_total,matches the measured run
+uiowa_rfq_18649_traceability,uiowa_rfq_18649_traceability,uiowa_rfq_18649_traceability/README.md,335,34,"[10, 22, 34, 66]",AGREES,multi_suite,matches one of the lane's measured suites
+uiowa_rfq_18649_traceability,uiowa_rfq_18649_traceability,uiowa_rfq_18649_traceability/README.md,340,10,"[10, 22, 34, 66]",AGREES,multi_suite,matches one of the lane's measured suites
+uiowa_rfq_18649_traceability,uiowa_rfq_18649_traceability,uiowa_rfq_18649_traceability/README.md,377,34,34,AGREES,suite:test_trace_check.py,matches the measured run
+uiowa_rfq_18649_traceability,uiowa_rfq_18649_traceability,uiowa_rfq_18649_traceability/README.md,379,10,10,AGREES,suite:test_audit_self_sealing.py,matches the measured run
+uiowa_rfq_18649_bid_pack,uiowa_rfq_18649_bid_pack,uiowa_rfq_18649_bid_pack/README.md,239,27,35,CONTRADICTED,lane_total,documentation states 27; the run sweep measured 35
+uiowa_rfq_18649_intake_rehearsal,uiowa_rfq_18649_intake_rehearsal,uiowa_rfq_18649_intake_rehearsal/README.md,144,30,34,CONTRADICTED,suite:test_rehearsal.py,documentation states 30; the run sweep measured 34
+uiowa_rfq_18649_operator_handoff,uiowa_rfq_18649_operator_handoff,uiowa_rfq_18649_operator_handoff/README.md,75,22,30,CONTRADICTED,suite:test_verify_kit.py,documentation states 22; the run sweep measured 30
+uiowa_rfq_18649_readout_deck,uiowa_rfq_18649_readout_deck,uiowa_rfq_18649_readout_deck/README.md,57,65,56,CONTRADICTED,suite:test_deck_architecture.py,documentation states 65; the run sweep measured 56
+uiowa_rfq_18649_readout_deck,uiowa_rfq_18649_readout_deck,uiowa_rfq_18649_readout_deck/README.md,215,65,56,CONTRADICTED,lane_total,documentation states 65; the run sweep measured 56
+uiowa_rfq_18649_traceability,uiowa_rfq_18649_traceability,uiowa_rfq_18649_traceability/README.md,381,24,22,CONTRADICTED,suite:test_audit_assertions.py,documentation states 24; the run sweep measured 22
+uiowa_rfq_18649_base_fee_economics,uiowa_rfq_18649_base_fee_economics,uiowa_rfq_18649_base_fee_economics/README.md,132,52,,UNVERIFIABLE,no_measurement,uiowa_rfq_18649_base_fee_economics does not appear in the run sweep
+uiowa_rfq_18649_base_fee_economics,uiowa_rfq_18649_base_fee_economics,uiowa_rfq_18649_base_fee_economics/README.md,142,52,,UNVERIFIABLE,no_measurement,uiowa_rfq_18649_base_fee_economics does not appear in the run sweep
+uiowa_rfq_18649_bid_pack,uiowa_rfq_18649_bid_pack,uiowa_rfq_18649_bid_pack/README.md,65,35,,UNVERIFIABLE,named_suite_not_measured,"sentence names test_packcheck.py, which the run sweep did not measure"
+uiowa_rfq_18649_claim_audit,uiowa_rfq_18649_claim_audit,uiowa_rfq_18649_claim_audit/README.md,84,28,,UNVERIFIABLE,no_measurement,uiowa_rfq_18649_claim_audit does not appear in the run sweep
+uiowa_rfq_18649_dedup_threshold,uiowa_rfq_18649_dedup_threshold,uiowa_rfq_18649_dedup_threshold/README.md,29,19,,UNVERIFIABLE,no_measurement,uiowa_rfq_18649_dedup_threshold does not appear in the run sweep
+uiowa_rfq_18649_delivery_scan,uiowa_rfq_18649_delivery_scan,uiowa_rfq_18649_delivery_scan/README.md,70,55,,UNVERIFIABLE,no_measurement,uiowa_rfq_18649_delivery_scan does not appear in the run sweep
+uiowa_rfq_18649_import_safety,uiowa_rfq_18649_import_safety,uiowa_rfq_18649_import_safety/README.md,56,0,,UNVERIFIABLE,no_measurement,uiowa_rfq_18649_import_safety does not appear in the run sweep
+uiowa_rfq_18649_kelvin_conformance,uiowa_rfq_18649_kelvin_conformance,uiowa_rfq_18649_kelvin_conformance/README.md,100,23,,UNVERIFIABLE,no_measurement,uiowa_rfq_18649_kelvin_conformance does not appear in the run sweep
+uiowa_rfq_18649_labeling_integrity,uiowa_rfq_18649_labeling_integrity,uiowa_rfq_18649_labeling_integrity/README.md,23,22,,UNVERIFIABLE,no_measurement,uiowa_rfq_18649_labeling_integrity does not appear in the run sweep
+uiowa_rfq_18649_labeling_integrity,uiowa_rfq_18649_labeling_integrity,uiowa_rfq_18649_labeling_integrity/README.md,92,22,,UNVERIFIABLE,no_measurement,uiowa_rfq_18649_labeling_integrity does not appear in the run sweep
+uiowa_rfq_18649_maturity_anchors,uiowa_rfq_18649_maturity_anchors,uiowa_rfq_18649_maturity_anchors/README.md,117,48,,UNVERIFIABLE,no_measurement,uiowa_rfq_18649_maturity_anchors does not appear in the run sweep
+uiowa_rfq_18649_maturity_anchors,uiowa_rfq_18649_maturity_anchors,uiowa_rfq_18649_maturity_anchors/README.md,123,48,,UNVERIFIABLE,no_measurement,uiowa_rfq_18649_maturity_anchors does not appear in the run sweep
+uiowa_rfq_18649_roadmap_coherence,uiowa_rfq_18649_roadmap_coherence,uiowa_rfq_18649_roadmap_coherence/README.md,63,36,,UNVERIFIABLE,no_measurement,uiowa_rfq_18649_roadmap_coherence does not appear in the run sweep
+uiowa_rfq_18649_roadmap_coherence,uiowa_rfq_18649_roadmap_coherence,uiowa_rfq_18649_roadmap_coherence/README.md,143,36,,UNVERIFIABLE,no_measurement,uiowa_rfq_18649_roadmap_coherence does not appear in the run sweep
+uiowa_rfq_18649_sample_soundness,uiowa_rfq_18649_sample_soundness,uiowa_rfq_18649_sample_soundness/README.md,98,26,,UNVERIFIABLE,no_measurement,uiowa_rfq_18649_sample_soundness does not appear in the run sweep
+uiowa_rfq_18649_test_proof_audit,uiowa_rfq_18649_test_proof_audit,uiowa_rfq_18649_test_proof_audit/README.md,81,24,,UNVERIFIABLE,no_measurement,uiowa_rfq_18649_test_proof_audit does not appear in the run sweep
+uiowa_rfq_18649_traceability,uiowa_rfq_18649_traceability,uiowa_rfq_18649_traceability/README.md,268,696,"[10, 22, 34, 66]",UNVERIFIABLE,multi_suite,lane has 3 suites and the sentence names none; cannot attribute the claim to one
+uiowa_rfq_18649_traceability,uiowa_rfq_18649_traceability,uiowa_rfq_18649_traceability/README.md,341,24,"[10, 22, 34, 66]",UNVERIFIABLE,multi_suite,lane has 3 suites and the sentence names none; cannot attribute the claim to one
+uiowa_rfq_18649_unknown_propagation,uiowa_rfq_18649_unknown_propagation,uiowa_rfq_18649_unknown_propagation/README.md,14,46,,UNVERIFIABLE,no_measurement,uiowa_rfq_18649_unknown_propagation does not appear in the run sweep
+uiowa_rfq_18649_vocabulary_crosswalk,uiowa_rfq_18649_vocabulary_crosswalk,uiowa_rfq_18649_vocabulary_crosswalk/README.md,211,44,,UNVERIFIABLE,no_measurement,uiowa_rfq_18649_vocabulary_crosswalk does not appear in the run sweep

@@ -18,7 +18,7 @@ cd revenue/uiowa_rfq_18649_delivery_scan
 python3 delivery_scan.py --root ..                  # console report
 python3 delivery_scan.py --root .. --out out/       # md + csv + json artifacts
 python3 delivery_scan.py --root .. --fail-on-flag   # exit 1 on any flag
-python3 -m unittest -v test_delivery_scan.py        # 30 tests
+python3 -m unittest -v test_delivery_scan.py        # 36 tests
 ```
 
 `--fail-on-flag` is **off by default**. This screens other people's lanes and has no business
@@ -124,7 +124,7 @@ have not touched that lane.
 
 ```
 delivery_scan.py         the screen: walk, scan, report (md + csv + json)
-test_delivery_scan.py    30 tests, incl. 6 verbatim delivered sentences as regressions
+test_delivery_scan.py    36 tests, incl. 6 verbatim delivered sentences as regressions
 out/scope_screen.*       the real scan over the delivered tree
 ```
 
