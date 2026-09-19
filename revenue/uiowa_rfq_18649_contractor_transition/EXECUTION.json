@@ -1,0 +1,174 @@
+{
+  "executed": {
+    "normal": {
+      "field_panel": {
+        "command": "python -B completion_field_panel.py",
+        "exit_code": 0,
+        "result": {
+          "cases": 264,
+          "classified": 240,
+          "clean_control_closed": true,
+          "closed_with_issues": [],
+          "controlled_bad_input": 24,
+          "exceptions": [],
+          "matched": true,
+          "python_optimized": false
+        }
+      },
+      "targeted_panel": {
+        "command": "python -B completion_probe.py",
+        "exit_code": 0,
+        "result": {
+          "cases": 12,
+          "expected_closed": [
+            "clean_control"
+          ],
+          "expected_open": [
+            "missing_date",
+            "blank_date",
+            "impossible_date",
+            "unparseable_date",
+            "unknown_action",
+            "duplicate_change",
+            "broken_change_reference",
+            "successor_is_application",
+            "invalid_successor_record",
+            "missing_action",
+            "list_locator"
+          ],
+          "matched": 12,
+          "python_optimized": false
+        }
+      },
+      "unittest": {
+        "command": "python -B -m unittest test_transition test_completion_integrity",
+        "exit_code": 0,
+        "log": "................................................................................\n----------------------------------------------------------------------\nRan 80 tests in 9.712s\n\nOK\n",
+        "skips": 0,
+        "tests_run": 80
+      }
+    },
+    "optimized": {
+      "field_panel": {
+        "command": "python -B -O completion_field_panel.py",
+        "exit_code": 0,
+        "result": {
+          "cases": 264,
+          "classified": 240,
+          "clean_control_closed": true,
+          "closed_with_issues": [],
+          "controlled_bad_input": 24,
+          "exceptions": [],
+          "matched": true,
+          "python_optimized": true
+        }
+      },
+      "targeted_panel": {
+        "command": "python -B -O completion_probe.py",
+        "exit_code": 0,
+        "result": {
+          "cases": 12,
+          "expected_closed": [
+            "clean_control"
+          ],
+          "expected_open": [
+            "missing_date",
+            "blank_date",
+            "impossible_date",
+            "unparseable_date",
+            "unknown_action",
+            "duplicate_change",
+            "broken_change_reference",
+            "successor_is_application",
+            "invalid_successor_record",
+            "missing_action",
+            "list_locator"
+          ],
+          "matched": 12,
+          "python_optimized": true
+        }
+      },
+      "unittest": {
+        "command": "python -B -O -m unittest test_transition test_completion_integrity",
+        "exit_code": 0,
+        "log": "................................................................................\n----------------------------------------------------------------------\nRan 80 tests in 25.408s\n\nOK\n",
+        "skips": 0,
+        "tests_run": 80
+      }
+    }
+  },
+  "execution_surface": "ephemeral cloud container; not GitHub Actions",
+  "limits": [
+    "Counts are distinct cases per mode, not summed into unique tests across normal/optimized runs.",
+    "A syntactically valid declared date does not establish that an event happened.",
+    "No live account, credential, evidence-locator resolution or University assessment was performed.",
+    "No full-checkout test pass, hosted CI result or swarm_review READY status is claimed.",
+    "Tests exercise supplied synthetic packets, not completeness of all required offboarding actions."
+  ],
+  "model": "GPT-6 Astra Pro",
+  "operation": "uiowa108-completion-integrity-kestrel-r9v6-20260919",
+  "original_builder": "OP5-KELVIN (Claude Opus 5)",
+  "original_source_commit": "051dbeb00349d28ffe607469136ebd5c921c63da",
+  "recorded_at_utc": "2026-09-19T15:02:43.420563+00:00",
+  "runtime": "CPython 3.13.5",
+  "schema": "uiowa108-completion-execution-v1",
+  "scope": "isolated contractor-transition source, tests and fictional fixtures; not full repository suite",
+  "seat": "ZZ-KESTREL-R9V6",
+  "source_files": {
+    "completion_field_panel.py": {
+      "bytes": 2978,
+      "git_blob_sha": "494cad29c2184741502ed255c9d5d49fbba3f2b5",
+      "sha256": "36858d5107266d7026c94896560e2705f004dbea4d24ee09ddc7a3bde18f3f91"
+    },
+    "completion_probe.py": {
+      "bytes": 3354,
+      "git_blob_sha": "f50a3c9f147a6e250a3d719fdf723f2ad99cc5cd",
+      "sha256": "5ad96731c240fcb88c76e2770b8a93765023a05407a648ad32d1097c7e303a2f"
+    },
+    "fixtures/contractor_transition.json": {
+      "bytes": 4364,
+      "git_blob_sha": "0939e7cd6c72920acc7a576d9e2070390c0b66a9",
+      "sha256": "82279c46faad01be365ac9b67fb2bba01b7cf3fb0ea0c35a655fd2ada3d5642d"
+    },
+    "fixtures/contractor_transition_unsafe.json": {
+      "bytes": 2466,
+      "git_blob_sha": "3640946cb019df27d5c457fb57399b4f72919a44",
+      "sha256": "de0b9e6014f6048809f6802c7c1fdf58d0574e30ceeee43e4de446a94f9294d4"
+    },
+    "sample_output/transition_items.csv": {
+      "bytes": 1818,
+      "git_blob_sha": "9dfbfdf8fe891f0105c6f91e0a3163526b3ef525",
+      "sha256": "7aa120231773f4a3f4a1fcef4a5853b9be424ccbf175af49765ef1e7b333aef7"
+    },
+    "sample_output/transition_report.json": {
+      "bytes": 3830,
+      "git_blob_sha": "9188819f31f8552b8194fb0dcc28df9e658a657c",
+      "sha256": "fc7f8db72e0d5736e0d0669ea1fa2280058d33145836a05179968a51665375f1"
+    },
+    "sample_output/transition_report.md": {
+      "bytes": 3175,
+      "git_blob_sha": "baf63c61c4b7b2909edc60ae21d9f7c4b1467e53",
+      "sha256": "93f3cec6a7ddd9763ab1e4d252602e7093714a5388b423cef6f6a25b1c0be36e"
+    },
+    "scenario.py": {
+      "bytes": 13970,
+      "git_blob_sha": "18603f0bc26be7bfcd36ea71e9f1da811fbd1b42",
+      "sha256": "9fcfff1ba7605228b7696378af8de4f2a9cf967ea972e727f9b2b6be28836d7f"
+    },
+    "test_completion_integrity.py": {
+      "bytes": 17981,
+      "git_blob_sha": "89b336a399ed9a488f3fa97654044c6e6f465042",
+      "sha256": "a8dd8dc94ed7dab46bb4b3082032918a8f4db2861048f6add24ae82d304b00d0"
+    },
+    "test_transition.py": {
+      "bytes": 14321,
+      "git_blob_sha": "47f7bcdd0f54e1c04396dc6e1b1c58a5a9fb9248",
+      "sha256": "3a5bd21d6080398421c33aa34adeb213e2578e50e496ea37bd475f5f0aa64809"
+    },
+    "transition.py": {
+      "bytes": 16388,
+      "git_blob_sha": "68efdf3a7a09757f861e9b3e506de1bc148f8ca5",
+      "sha256": "4d1859f0ef2f3485826fc238b4939ab4c9c9fb8f9bada878d008748960622ce2"
+    }
+  }
+}
