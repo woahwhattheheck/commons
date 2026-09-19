@@ -19,7 +19,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-SCHEMA = "uiowa-rfq18649-review-cycle/v1"
+SCHEMA = "uiowa-rfq18649-review-register/v1"
 OUTPUT_SCHEMA = "uiowa-rfq18649-review-response-draft/v1"
 HANDOFF_SCHEMA = "uiowa-rfq18649-analyst-handoff-draft/v1"
 MAX_BYTES = 4 * 1024 * 1024
