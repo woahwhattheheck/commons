@@ -1,0 +1,74 @@
+[
+  {
+    "task_id": "TSK-01",
+    "name": "Author application code with an AI coding assistant",
+    "description": "A developer uses an IDE-integrated assistant to draft or complete code in a supported institutional application.",
+    "frequency": "daily",
+    "accountable_role": "Application Developer (supervised by Engineering Manager, Enterprise Applications)",
+    "systems_touched": ["source repository", "IDE assistant (vendor-hosted)"]
+  },
+  {
+    "task_id": "TSK-02",
+    "name": "Review a change that contains AI-generated code",
+    "description": "A second engineer reviews a pull request whose author has indicated AI assistance was used.",
+    "frequency": "daily",
+    "accountable_role": "Change Reviewer of record",
+    "systems_touched": ["source repository", "CI pipeline"]
+  },
+  {
+    "task_id": "TSK-03",
+    "name": "Triage an incoming support ticket using AI summarization",
+    "description": "Service desk staff use an AI summary of a long ticket thread to decide routing and priority.",
+    "frequency": "daily",
+    "accountable_role": "Service Desk Lead",
+    "systems_touched": ["ticketing system", "vendor summarization feature"]
+  },
+  {
+    "task_id": "TSK-04",
+    "name": "Draft user-facing documentation with an AI assistant",
+    "description": "Staff draft help articles or release notes with AI assistance before human edit and publication.",
+    "frequency": "weekly",
+    "accountable_role": "Documentation Owner (unit-level)",
+    "systems_touched": ["documentation platform", "vendor assistant"]
+  },
+  {
+    "task_id": "TSK-05",
+    "name": "Assemble a data extract used as AI prompt or retrieval context",
+    "description": "An engineer pulls records from an institutional system to supply as context to an AI feature.",
+    "frequency": "monthly",
+    "accountable_role": "Data Steward (unit-level)",
+    "systems_touched": ["institutional data warehouse", "retrieval index"]
+  },
+  {
+    "task_id": "TSK-06",
+    "name": "Evaluate and onboard a new AI vendor tool",
+    "description": "A unit requests a new AI-capable product; security, privacy, and contract review run before access is granted.",
+    "frequency": "quarterly",
+    "accountable_role": "Procurement Liaison with Information Security review",
+    "systems_touched": ["procurement workflow", "vendor review register"]
+  },
+  {
+    "task_id": "TSK-07",
+    "name": "Approve a release containing AI-assisted changes",
+    "description": "A named approver signs off a deployment that includes changes authored with AI assistance.",
+    "frequency": "biweekly",
+    "accountable_role": "Release Approver of record",
+    "systems_touched": ["release management system", "CI pipeline"]
+  },
+  {
+    "task_id": "TSK-08",
+    "name": "Handle AI prompt and response logs that may contain institutional data",
+    "description": "Application and vendor logs capture prompt text and model output; someone must classify, retain, and dispose of them.",
+    "frequency": "continuous",
+    "accountable_role": "System Owner",
+    "systems_touched": ["application log store", "vendor console"]
+  },
+  {
+    "task_id": "TSK-09",
+    "name": "Notice and respond to a vendor model or version change",
+    "description": "A vendor silently changes the underlying model or version; someone must notice and decide whether to re-test dependent workflows.",
+    "frequency": "irregular (vendor-driven)",
+    "accountable_role": "Platform Engineering (practice observed; no role is named for this task in any policy reviewed)",
+    "systems_touched": ["vendor release notes", "internal regression suite"]
+  }
+]

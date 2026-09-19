@@ -1,0 +1,126 @@
+[
+  {
+    "evidence_id": "EV-001",
+    "task_id": "TSK-02",
+    "policy_id": "POL-AI-01",
+    "kind": "artifact",
+    "locator": "FICTIONAL: example-state/web-portal .github/pull_request_template.md section 4, AI-assistance disclosure checkbox; inspected in 14 of 14 merged PRs sampled 2026-08-03 to 2026-08-28",
+    "observed_date": "2026-08-28",
+    "observer_role": "Assessor",
+    "note": "The checkbox is present and filled in every sampled PR. This is a directly inspected artifact, not a claim."
+  },
+  {
+    "evidence_id": "EV-002",
+    "task_id": "TSK-02",
+    "policy_id": "POL-SEC-07",
+    "kind": "config",
+    "locator": "FICTIONAL: branch protection on example-state/web-portal main requires check 'sdlc/named-reviewer' and 1 approving review; configuration exported 2026-08-29",
+    "observed_date": "2026-08-29",
+    "observer_role": "Assessor",
+    "note": "Merge is blocked without a named human reviewer. Enforced by configuration rather than by convention."
+  },
+  {
+    "evidence_id": "EV-003",
+    "task_id": "TSK-02",
+    "policy_id": "POL-AI-04",
+    "kind": "artifact",
+    "locator": "FICTIONAL: review comments in 9 of 14 sampled PRs carry a 'verified against ticket acceptance criteria' note naming what the reviewer checked",
+    "observed_date": "2026-08-28",
+    "observer_role": "Assessor",
+    "note": "The team already does what the DRAFT guideline would require. The practice is real; the mandate behind it is not yet in force."
+  },
+  {
+    "evidence_id": "EV-004",
+    "task_id": "TSK-01",
+    "policy_id": "POL-AI-01",
+    "kind": "interview",
+    "locator": "FICTIONAL: group interview, Enterprise Applications team, 2026-08-12",
+    "observed_date": "2026-08-12",
+    "observer_role": "Assessor",
+    "note": "Developers state they never paste institutional data into the assistant. Nothing was found that corroborates or contradicts this. It stays an assertion."
+  },
+  {
+    "evidence_id": "EV-005",
+    "task_id": "TSK-01",
+    "policy_id": "POL-DATA-03",
+    "kind": "none",
+    "checked": true,
+    "locator": "FICTIONAL: assessor searched assistant admin console, IDE policy configuration, and DLP rule set 2026-08-19 for any control restricting data classes in assistant prompts; none present",
+    "observed_date": "2026-08-19",
+    "observer_role": "Assessor",
+    "note": "Somebody looked. The control is absent. This is a gap, not an unknown."
+  },
+  {
+    "evidence_id": "EV-006",
+    "task_id": "TSK-08",
+    "policy_id": "POL-SEC-07",
+    "kind": "none",
+    "checked": true,
+    "locator": "FICTIONAL: assessor reviewed log retention configuration for the three applications with AI features 2026-08-21; prompt and response text is written to the default application log store with retention set to 'indefinite'",
+    "observed_date": "2026-08-21",
+    "observer_role": "Assessor",
+    "note": "SEC-07 requires defined retention for application logs. The AI prompt and response stream has none. Looked, absent, gap."
+  },
+  {
+    "evidence_id": "EV-007",
+    "task_id": "TSK-08",
+    "policy_id": "POL-DATA-03",
+    "kind": "none",
+    "checked": true,
+    "locator": "FICTIONAL: assessor requested the data classification assigned to the AI prompt and response log store 2026-08-21; no classification has been assigned and no steward is recorded",
+    "observed_date": "2026-08-21",
+    "observer_role": "Assessor",
+    "note": "Two separate active policies both reach this task and neither is practiced. The gap is in practice, not in the policy library."
+  },
+  {
+    "evidence_id": "EV-008",
+    "task_id": "TSK-06",
+    "policy_id": "POL-AI-02",
+    "kind": "record",
+    "locator": "FICTIONAL: vendor review register entries VR-2026-014, VR-2026-019, VR-2026-023, each with security and privacy sign-off dated before access was provisioned",
+    "observed_date": "2026-08-26",
+    "observer_role": "Assessor",
+    "note": "Three complete review records inspected end to end. Procurement path works for net-new AI products."
+  },
+  {
+    "evidence_id": "EV-009",
+    "task_id": "TSK-09",
+    "policy_id": null,
+    "kind": "artifact",
+    "locator": "FICTIONAL: Platform Engineering wiki page 'vendor model watch', dated entries 2026-04-02 and 2026-07-15 each recording a model version change, the regression suite re-run, and the outcome",
+    "observed_date": "2026-08-26",
+    "observer_role": "Assessor",
+    "note": "Real, documented, repeated practice with no policy behind it and no named accountable role. It survives because two specific engineers maintain it."
+  },
+  {
+    "evidence_id": "EV-010",
+    "task_id": "TSK-03",
+    "policy_id": "POL-AI-01",
+    "kind": "interview",
+    "locator": "FICTIONAL: interview, Service Desk Lead, 2026-08-14",
+    "observed_date": "2026-08-14",
+    "observer_role": "Assessor",
+    "note": "Staff state that AI ticket summaries are read against the original thread before routing. No ticket record captures whether that happened, so it cannot be corroborated."
+  },
+  {
+    "evidence_id": "EV-011",
+    "task_id": "TSK-05",
+    "policy_id": "POL-DATA-03",
+    "kind": "related_artifact",
+    "locator": "FICTIONAL: data extract request form DX-REQ rev 2022-04, 6 completed submissions inspected for 2026; form captures requester, system, and data class but has no field for AI prompt or retrieval use",
+    "observed_date": "2026-08-20",
+    "observer_role": "Assessor",
+    "note": "The form is used and the data class is recorded, which implies the handling duty is being met. It predates AI use, so whether it covers this task at all is exactly the open question."
+  },
+  {
+    "evidence_id": "EV-012",
+    "task_id": "TSK-07",
+    "policy_id": "POL-SEC-07",
+    "kind": "none",
+    "checked": false,
+    "locator": "FICTIONAL: walkthrough of the release approval record was scheduled for 2026-08-25 and did not take place; no substitute evidence was gathered",
+    "observed_date": "2026-08-25",
+    "observer_role": "Assessor",
+    "note": "This is the load-bearing case. A record exists saying the work was PLANNED. Nobody looked. It must resolve to UNKNOWN, not to a gap -- an unfinished schedule is not a finding about the University."
+  }
+]

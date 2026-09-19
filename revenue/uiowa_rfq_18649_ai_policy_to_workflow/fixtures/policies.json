@@ -1,0 +1,57 @@
+[
+  {
+    "policy_id": "POL-AI-01",
+    "title": "Generative AI Acceptable Use Standard",
+    "status": "active",
+    "effective_date": "2025-11-03",
+    "owner_role": "Office of the CIO - AI Governance Lead",
+    "source_doc": "FICTIONAL: Example State University Policy Manual, chapter 18.4",
+    "scope_note": "Applies to all staff use of generative AI in the course of University work. Silent on student-employee supervision.",
+    "rmf_functions": ["GOVERN"],
+    "applies_to_tasks": ["TSK-01", "TSK-02", "TSK-03", "TSK-04"]
+  },
+  {
+    "policy_id": "POL-DATA-03",
+    "title": "Institutional Data Classification and Handling Standard",
+    "status": "active",
+    "effective_date": "2023-07-01",
+    "owner_role": "Institutional Data Governance Council",
+    "source_doc": "FICTIONAL: Example State University Policy Manual, chapter 11.2",
+    "scope_note": "Predates institutional AI use. Defines data classes and handling duties for storage and transmission; does not name prompt text or retrieval context.",
+    "rmf_functions": ["MAP"],
+    "applies_to_tasks": ["TSK-01", "TSK-05", "TSK-08"]
+  },
+  {
+    "policy_id": "POL-AI-02",
+    "title": "AI Tool Procurement and Vendor Review Procedure",
+    "status": "active",
+    "effective_date": "2026-01-15",
+    "owner_role": "Procurement Services with Information Security Office",
+    "source_doc": "FICTIONAL: Example State University Procurement Procedure AI-02",
+    "scope_note": "Requires security, privacy, and accessibility review before a new AI product is licensed. Ambiguous about AI features added to products already under contract.",
+    "rmf_functions": ["GOVERN", "MANAGE"],
+    "applies_to_tasks": ["TSK-06"]
+  },
+  {
+    "policy_id": "POL-SEC-07",
+    "title": "Secure Development Lifecycle Standard",
+    "status": "active",
+    "effective_date": "2024-09-09",
+    "owner_role": "Information Security Office",
+    "source_doc": "FICTIONAL: Example State University Security Standard SEC-07",
+    "scope_note": "Requires named human review of every change, approval of record for every release, and defined retention for application logs.",
+    "rmf_functions": ["MANAGE"],
+    "applies_to_tasks": ["TSK-02", "TSK-07", "TSK-08"]
+  },
+  {
+    "policy_id": "POL-AI-04",
+    "title": "AI Output Review and Accountability Guideline",
+    "status": "draft",
+    "effective_date": null,
+    "owner_role": "AI Governance Working Group",
+    "source_doc": "FICTIONAL: draft circulated 2026-06-20, not ratified as of assessment window",
+    "scope_note": "Draft. Would require the human who accepts AI output to record what they verified. Not in force; binds nothing today.",
+    "rmf_functions": ["MEASURE"],
+    "applies_to_tasks": ["TSK-02", "TSK-03", "TSK-04"]
+  }
+]
