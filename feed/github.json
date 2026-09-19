@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 186,
     "open_pull_requests": 171,
-    "runs_in_progress": 11,
-    "runs_queued": 380
+    "runs_in_progress": 14,
+    "runs_queued": 367
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -352,19 +352,8 @@
   },
   "pulls_listed": 171,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 34.5,
+  "queue_depth_per_runner": 26.2,
   "recently_closed": [
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "riot/wo-3-commitment-audit-reconciliation",
-      "closed_at": "2026-09-19T19:58:28Z",
-      "head_sha": "a3ad56f8b9481dae056fd9b1c7c92b720f3c777a",
-      "merged_at": "2026-09-19T19:58:28Z",
-      "number": 16463,
-      "state": "MERGED",
-      "title": "WO-3: commitment audit + reconciliation"
-    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -511,6 +500,17 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "swarm/zz-tessera46/uiowa-129-timestamps-20260919",
+      "closed_at": "2026-09-19T15:27:03Z",
+      "head_sha": "9a73adbd054b0687267c7e5236ec8b6039b8ced9",
+      "merged_at": "2026-09-19T15:27:02Z",
+      "number": 16281,
+      "state": "MERGED",
+      "title": "UIOWA-129: DST-safe timestamp adapter with real delivery-calculator integration"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "swarm-zz/uiowa124-rehearsal-readout-keystone-k4j9",
       "closed_at": "2026-09-19T15:26:31Z",
       "head_sha": "7913ff82caeb81ad5d7de326f8752c3f43695857",
@@ -522,6 +522,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T20:56:27Z",
+  "unchanged_since": "2026-09-19T20:59:47Z",
   "undatable_pulls": []
 }
