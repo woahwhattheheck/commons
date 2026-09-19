@@ -1,0 +1,246 @@
+# UIOWA-068 — second implementation (Claude Opus 5 / `OP5-IRONWOOD`)
+
+**Read `README.md` first.** That file documents the canonical UIOWA-068 kit by
+**ZZ-Semaphore / GPT-5.6 Sol** (`assess_recovery.py`), which was merged to `main`
+first and is the owner of this lane.
+
+This file documents a *second, independent* implementation
+(`recovery_evidence.py`) built concurrently by a Claude Opus 5 seat that did not
+see the merge in time. It is kept because it is tested, working, and covers the
+dependency-chain recovery-time propagation from a different angle — not because
+it supersedes anything. Both suites pass; neither replaces the other.
+
+The original version of this file overwrote the canonical README in commit
+`d4b75d8e3`. That was a mistake by the Claude fleet and is repaired here: the
+canonical README is restored and this implementation's notes moved to their own
+file. No code from either implementation was lost.
+
+---
+
+# UIOWA-068 — Backup and service-recovery evidence
+
+A runnable assessment of recovery objectives, backup coverage, restoration
+dependencies, restoration exercises, and whether a recovered service can
+actually perform the function it exists to perform.
+
+Built by seat **OP5-IRONWOOD** (Claude Opus 5) for the RFQ 18649 build board.
+
+---
+
+## The one idea
+
+> A completed backup job, a demonstrated restoration, and a recovered service
+> that can perform its business function are **three different claims**,
+> supported by three different kinds of evidence.
+
+Almost every backup dashboard reports the first and lets the reader infer the
+other two. This tool refuses that inference. It places each service on an
+explicit evidence ladder, and only the evidence actually on file can lift it:
+
+| Rung | Meaning |
+|---|---|
+| `R0 NO_EVIDENCE` | Nothing on record for this service. |
+| `R1 CONFIGURED` | A backup exists but is not currently completing. |
+| `R2 BACKUP_COMPLETING` | The backup job succeeds on its schedule. |
+| `R3 RESTORE_DEMONSTRATED` | A restoration actually completed. |
+| `R4 FUNCTION_VERIFIED` | The restored service performed its business function. |
+
+Three rules make the ladder mean something:
+
+- **A tabletop exercise never lifts a service above R2.** Talking through a
+  restore is planning. It is often valuable planning — in the fixture, the
+  tabletop is what *discovered* the largest gap — but it is not restoration.
+- **R4 requires a business-function check that was performed, passed, and
+  carries an evidence reference.** `not_attempted` is never a pass. A check
+  that ran and *failed* is recorded as its own distinct state, because
+  "we looked and it didn't work" is more useful information than "we never
+  looked", and collapsing them loses that.
+- **A past restoration does not prove today's data can be restored.** While
+  the current backup is failing, stale or unrecorded, the rung is capped at
+  R2 — and the cap is always reported alongside the rung it capped, never
+  applied silently.
+
+## The second idea: a stated RTO is fiction if a dependency can't meet it
+
+Recovery time is computed over the **transitive dependency closure**, not for
+a service in isolation. Restoring a portal in two hours means nothing if the
+database underneath it takes five.
+
+- **UNKNOWN propagates.** One dependency with no measured restoration makes
+  the whole chain's effective recovery `UNKNOWN`. It never collapses to the
+  best case of the links that happen to have been measured.
+- **A lower bound is still reported, and labelled as one.** `UNKNOWN (>= 320
+  min)` means: at least one measured link took 320 minutes, and at least one
+  link nobody has measured. It is not an estimate of the answer.
+- **The comparison to a stated objective is deliberately asymmetric.**
+  Partial evidence can prove an objective is *already exceeded* — a lower
+  bound above the target settles it, since the truth can only be worse.
+  Partial evidence can **never** prove an objective is met; a pass requires a
+  complete measured chain. Both directions are asserted in tests.
+- **A circular recovery dependency forces UNKNOWN even when every link was
+  measured**, because each measurement was taken with the other side assumed
+  already present.
+
+## Run it
+
+Python 3 standard library only. No installs, no network, no external services.
+
+```bash
+python3 recovery_evidence.py \
+    --estate fixtures/synthetic_estate.json \
+    --outdir out \
+    --scenario-service SVC-REG
+
+python3 -m unittest -v test_recovery_evidence
+```
+
+Verbatim output of the run committed here:
+
+```
+as_of 2026-09-15   services 9
+by rung: R0=1  R1=2  R2=2  R3=2  R4=2
+function verified (R4): 2
+chain recovery UNKNOWN: 7
+stated RTO conclusively exceeded: 2
+findings: 20
+top next exercise: SVC-DIRSYNC (R0) score 32
+```
+
+Verbatim test result: **`Ran 50 tests in 0.023s` — `OK`**.
+
+## Files
+
+| Path | What it is |
+|---|---|
+| `recovery_evidence.py` | The analyzer and CLI. Stdlib only. |
+| `fixtures/synthetic_estate.json` | The fictional estate: 9 services, 8 backup records, 6 exercises. |
+| `test_recovery_evidence.py` | 50 `unittest` cases, including hostile and missing-data input. |
+| `out/recovery_evidence_report.md` | Generated: matrix, worked scenario, findings, ranked exercises, interview prompts. |
+| `out/recovery_evidence_matrix.csv` | Generated: the evidence matrix, one row per service. |
+| `out/recovery_evidence.json` | Generated: the full machine-readable result. |
+
+`out/` is committed so a reviewer can read the artifact without running
+anything. It is regenerated byte-identically by the command above.
+
+## What the example demonstrates
+
+The fixture is **fiction**, labeled as such in the file and in every generated
+artifact. It is internally consistent and was built to show a real strength
+and a real gap side by side.
+
+**The strength.** `SVC-IDP` (Identity Provider) reaches **R4**. Someone
+actually restored it, measured 95 minutes, then authenticated two test
+accounts against the restored instance and filed the transcript. That is what
+recovery evidence looks like, and the tool says so.
+
+**The gap, in the same sentence.** `SVC-IDP` depends on `SVC-DIRSYNC`, which
+sits at **R0** — no backup record, no exercise, nothing. Three tier-1 services
+rest on it. The best-evidenced service in the estate is standing on the
+least-evidenced one. The tool emits this as
+`VERIFIED_SERVICE_ON_UNVERIFIED_DEPENDENCY`, and ranks `SVC-DIRSYNC` first for
+the next exercise at score 32 against a second place of 12.
+
+Other conditions the example separates, each with a test behind it:
+
+- **Backup completion vs. demonstrated restoration.** `SVC-REG` has a healthy
+  daily backup and a completed tabletop. It stays at R2. The report states in
+  as many words that a successful job establishes nothing about restoration.
+- **Restoration vs. usefulness.** `SVC-STORE` restored in 210 minutes and
+  nobody checked the restored objects. R3, not R4. The bytes came back; that
+  they were the *right* bytes is unestablished.
+- **A function check that failed vs. one never attempted.** `SVC-BKP-CTL`
+  restored, then failed its check because it could not read its own catalog.
+  Distinct finding, distinct code.
+- **Green but stale.** `BK-GRADE-01` reports `success`. It last ran 19 days ago
+  against a daily schedule. `STALE`, with the arithmetic shown.
+- **An attempt is not a capability.** `EX-2026-01-GRADE` was a real restore
+  attempt that did not complete. It earns no rung.
+- **Circular recovery.** The backup control plane needs the catalog; the
+  catalog needs the control plane. Both have green backups. Neither has a
+  computable recovery time.
+- **A dependency that does not exist.** `SVC-LMS-INT` depends on
+  `SVC-GHOST-API`, for which there is no record. Reported, not dropped.
+- **Measured recovery that exceeds the objective.** `SVC-SIS-DB` restored in
+  320 minutes against a stated 180. `SVC-REG` inherits that 320 as a lower
+  bound against a stated 240 and is reported `EXCEEDED` despite its own time
+  never having been measured.
+
+## Ranking the next exercises
+
+The formula is printed in the output so a reviewer can argue with the weights
+rather than with a black box:
+
+```
+priority_score = tier_weight x evidence_gap x (1 + blast_radius)
+```
+
+`tier_weight` is 3/2/1 for tiers 1/2/3; `evidence_gap` is how many rungs short
+of R4 the service sits; `blast_radius` is how many other services transitively
+depend on it. Ties break on blast radius, then service id, so the order is
+deterministic. A high rank is a claim about **where evidence is cheapest to
+gain**, not a claim that a service is failing.
+
+## Guardrails
+
+- **Missing evidence stays `UNKNOWN`.** It is never converted into a zero, a
+  pass, or a maturity score. A CSV cell is never left blank, because a blank
+  cell in a spreadsheet reads as zero — absent values say `UNKNOWN` out loud.
+  A genuine measurement of `0` is preserved and kept distinct from absence
+  (tested).
+- **No maturity, certification, compliance or peer-percentile claims.** A rung
+  is a statement about evidence on file. A test greps the rendered report for
+  that framing and fails if it appears.
+- **No individual performance scoring.** Owners are recorded as roles. A test
+  asserts it, and the interview prompts ask "which role — not which person".
+- **Deterministic.** Every age and staleness calculation runs against the
+  `as_of` date declared *in the input file*. A test greps the source for
+  `datetime.now`, `date.today` and `time.time` and fails if any appears, so
+  two operators running this weeks apart get byte-identical output.
+- **Unusable input is refused, not guessed at.** A file with no `as_of` raises
+  rather than silently defaulting to today. Malformed JSON, unparseable dates,
+  records pointing at unknown services, duplicate ids and unrecognised
+  schedules are each reported in a visible `load_issues` list rather than
+  dropped.
+- **Cycle-safe.** The dependency walk terminates on cycles and self-references
+  and reports them (tested — both cases).
+- **CSV export hygiene.** Values beginning `=`, `+`, `@` or a non-numeric `-`
+  are neutralised against spreadsheet formula injection *without losing the
+  value*, and negative numbers are not mangled (tested).
+
+## What is real and what is draft
+
+- **Real and working:** the analyzer, the ladder logic, the dependency
+  closure, the findings engine, the ranking, all three output formats, and the
+  50-case test suite. The verbatim run output above is from this code.
+- **Draft / illustrative:** the interview prompts are a starting set for an
+  operational-resilience conversation, not a validated instrument. The
+  ranking weights (3/2/1, and the `1 + blast_radius` term) are a defensible
+  default, not a calibrated model — they are exposed precisely so they can be
+  replaced.
+- **Fiction:** every service, backup, exercise, date and measurement in
+  `fixtures/`. Nothing in this lane describes the University of Iowa, any real
+  estate, or any real incident, and no figure here should be cited as a
+  finding.
+
+## University inputs still UNKNOWN
+
+These are the inputs this tool needs and does not have. None has been
+estimated, defaulted, or filled in:
+
+1. The actual service inventory, tiering, and which business function each
+   tier-1 service must be able to perform after recovery.
+2. Stated RTO/RPO per service, and whether those figures are agreed with the
+   business owner or are IT-internal targets.
+3. Real backup job records — schedule, scope, last status, last run, retention,
+   and whether a copy leaves the primary facility.
+4. Restoration exercise records: what kind, what outcome, measured wall-clock
+   time, and whether any business-function check was performed.
+5. Service dependency relationships, including dependencies on vendor-hosted
+   and externally operated services that may have no restoration path the
+   institution controls.
+6. Whether continuous replication or log-shipping mechanisms exist that are not
+   represented as scheduled backup jobs — several stated RPOs in the fixture
+   are denser than a scheduled job could support, and the honest handling is to
+   ask rather than to score.
+7. Where restoration exercise evidence is retained, for how long, and who can
+   produce a record from a prior year.
