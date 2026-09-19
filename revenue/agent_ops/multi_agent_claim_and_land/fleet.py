@@ -22,6 +22,9 @@ SKIP_DIRS = {"__pycache__", ".pytest_cache", ".mypy_cache", ".ruff_cache", ".git
 SKIP_SUFFIXES = (".pyc", ".pyo", ".pyd", ".so", ".egg-info")
 SKIP_FILES = {".DS_Store"}
 
+# Escape hatch for a seat deliberately amending work it landed itself.
+FORCE = os.environ.get("FLEET_FORCE") == "1"
+
 
 def _now():
     return datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -96,6 +99,22 @@ def taken():
     return 0
 
 
+def _owned_paths(seat):
+    """Paths this seat has landed before -- it may overwrite its own work."""
+    with Lock(LOCK):
+        return set(_load().get("owned", {}).get(seat, []))
+
+
+def _record_owned(seat, paths):
+    with Lock(LOCK):
+        d = _load()
+        d.setdefault("owned", {}).setdefault(seat, [])
+        for p in paths:
+            if p not in d["owned"][seat]:
+                d["owned"][seat].append(p)
+        _save(d)
+
+
 def _run(cmd, cwd=REPO, check=True):
     p = subprocess.run(cmd, cwd=cwd, shell=True, capture_output=True, text=True)
     if check and p.returncode != 0:
@@ -116,7 +135,10 @@ def land(seat, message):
                 # Fast-forward onto live main when possible; main moves under us
                 # because a second swarm is merging into it continuously.
                 _run("git merge --ff-only origin/main", check=False)
-                paths = []
+                # Plan the write BEFORE touching the repo. The gate below has
+                # to be able to refuse without leaving a dirty working tree --
+                # a refusal that half-applies is worse than no gate at all.
+                plan = []
                 for dirpath, dirnames, files in os.walk(src):
                     # Seats run their tests inside staging, so the tree is
                     # littered with build droppings by the time we land. git
@@ -127,11 +149,48 @@ def land(seat, message):
                         if fn.endswith(SKIP_SUFFIXES) or fn in SKIP_FILES:
                             continue
                         full = os.path.join(dirpath, fn)
-                        rel = os.path.relpath(full, src)
-                        dest = os.path.join(REPO, rel)
-                        os.makedirs(os.path.dirname(dest), exist_ok=True)
-                        shutil.copy2(full, dest)
-                        paths.append(rel)
+                        plan.append((full, os.path.relpath(full, src)))
+                paths = [rel for _, rel in plan]
+                # PRE-PUSH FRESHNESS GATE.
+                #
+                # A claim check at claim time protects nothing if the build
+                # takes ten minutes: OP5-IRONWOOD claimed UIOWA-068 on an
+                # honest, current read, built for ten minutes while another
+                # swarm merged the same order, and landed into their lane --
+                # overwriting their README and their authorship line. The stop
+                # order reached it after it had already committed. An agent
+                # between "tests pass" and "push" is not reachable, so the last
+                # look has to happen HERE, inside the lock, immediately before
+                # the irreversible step.
+                #
+                # Rule: a seat may create new files freely, and may overwrite a
+                # file it landed itself. Overwriting a file that already exists
+                # on live main and belongs to someone else is a clobber and is
+                # refused.
+                owned = _owned_paths(seat)
+                clobbers = [
+                    p for p in paths
+                    if p not in owned and subprocess.run(
+                        f"git cat-file -e origin/main:'{p}'", cwd=REPO,
+                        shell=True, capture_output=True,
+                    ).returncode == 0
+                ]
+                if clobbers and not FORCE:
+                    print("LAND-REFUSED: these paths already exist on live main "
+                          "and were not landed by this seat:")
+                    for p in clobbers:
+                        print(f"  CLOBBER {p}")
+                    print("Another seat landed this lane while you were building. "
+                          "Rename your files, or take a different lane. "
+                          "Re-run with FLEET_FORCE=1 only if you are deliberately "
+                          "amending your own work.")
+                    return 3
+
+                for full, rel in plan:
+                    dest = os.path.join(REPO, rel)
+                    os.makedirs(os.path.dirname(dest), exist_ok=True)
+                    shutil.copy2(full, dest)
+
                 _run("git add -A " + " ".join(f"'{p}'" for p in paths))
                 if not _run("git diff --cached --name-only", check=False):
                     print("NOTHING-TO-LAND: no diff after copy")
@@ -158,6 +217,7 @@ def land(seat, message):
                     time.sleep(2 ** (pa + 1))
                 if not pushed:
                     raise RuntimeError("push failed after retries: " + p.stderr)
+                _record_owned(seat, paths)
                 print(f"LANDED {sha}")
                 print(f"URL https://github.com/woahwhattheheck/commons/commit/{sha}")
                 print("FILES " + " ".join(paths))

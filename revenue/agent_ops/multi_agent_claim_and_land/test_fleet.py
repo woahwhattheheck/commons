@@ -71,6 +71,22 @@ class ClaimLedgerTest(unittest.TestCase):
         self.assertIn("claim", kinds)
         self.assertIn("landed", kinds)
 
+    def test_seat_may_overwrite_paths_it_landed_itself(self):
+        # The gate must not lock a seat out of amending its own work.
+        self.fleet._record_owned("SEAT-A", ["lane/thing.py"])
+        self.assertIn("lane/thing.py", self.fleet._owned_paths("SEAT-A"))
+
+    def test_ownership_is_per_seat(self):
+        # SEAT-B must not inherit SEAT-A's right to overwrite.
+        self.fleet._record_owned("SEAT-A", ["lane/thing.py"])
+        self.assertNotIn("lane/thing.py", self.fleet._owned_paths("SEAT-B"))
+
+    def test_ownership_records_are_deduplicated(self):
+        self.fleet._record_owned("SEAT-A", ["lane/thing.py"])
+        self.fleet._record_owned("SEAT-A", ["lane/thing.py"])
+        owned = self.fleet._load()["owned"]["SEAT-A"]
+        self.assertEqual(owned.count("lane/thing.py"), 1)
+
     def test_land_refuses_an_empty_staging_directory(self):
         # A seat that built nothing must not produce an empty commit that
         # looks like delivered work.
