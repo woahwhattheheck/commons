@@ -170,9 +170,10 @@ def main() -> int:
                                  document_name=args.document.name, prior=prior, validate_text=native.text)
         # Native validation and bundle generation happen before writing any output.
         bundle = None
-        if args.apply_open:
-            if not prepared["cycle"]["comments"]:
-                raise ImportFormatError("no new native comments; no empty review revision was created")
+        # An entirely unresolved import still has valuable source diagnostics.
+        # A duplicate-only or empty import is a no-op, not another draft revision.
+        # In all three cases retain the preparation without claiming application.
+        if args.apply_open and prepared["cycle"]["comments"]:
             bundle = native.build_bundle(report, report, document, prepared["cycle"])
         args.out.mkdir(parents=True, exist_ok=False)
         (args.out / "preparation.json").write_bytes(canonical(prepared) + b"\n")
