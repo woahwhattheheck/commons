@@ -7,8 +7,10 @@ Stdlib-only so the artifact can be checked in a bare Python environment.
 from __future__ import annotations
 
 import csv
+import re
 import sys
 from collections import Counter
+from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -54,17 +56,63 @@ class ValidationError(Exception):
     pass
 
 
+def _read_rows(path: Path) -> list[tuple[int, dict[str, str]]]:
+    """Reject ambiguous CSV before building dictionaries; retain physical line ends."""
+    try:
+        with path.open("r", encoding="utf-8", newline="") as handle:
+            reader = csv.reader(handle, strict=True)
+            header = next(reader, [])
+            if any(not name.strip() for name in header):
+                raise ValidationError("empty column name")
+            if len(header) != len(set(header)):
+                raise ValidationError("duplicate column names")
+            missing = REQUIRED_COLUMNS - set(header)
+            if missing:
+                raise ValidationError(f"missing columns: {sorted(missing)}")
+            rows = []
+            for values in reader:
+                # Preserve DictReader's existing treatment of completely blank lines.
+                if not values:
+                    continue
+                if len(values) != len(header):
+                    raise ValidationError(
+                        f"line {reader.line_num}: expected {len(header)} fields, "
+                        f"found {len(values)}"
+                    )
+                rows.append((reader.line_num, dict(zip(header, values))))
+            return rows
+    except (OSError, UnicodeError, csv.Error) as exc:
+        raise ValidationError(f"cannot read crosswalk {path}: {exc}") from exc
+
+
+def _validate_source_url(source_url: str, line_no: int) -> None:
+    """Validate a declared HTTPS NIST hostname, not URL authenticity or availability."""
+    if any(c.isspace() or ord(c) < 32 or ord(c) == 127 or c == "\\" for c in source_url):
+        raise ValidationError(f"line {line_no}: invalid HTTPS source URL {source_url!r}")
+    try:
+        parsed = urlparse(source_url)
+        hostname = (parsed.hostname or "").removesuffix(".")
+        port = parsed.port  # Property access also validates malformed or out-of-range ports.
+        if (parsed.scheme != "https" or not hostname or parsed.username is not None
+                or parsed.password is not None or parsed.netloc.endswith(":") or port == 0):
+            raise ValueError("invalid scheme, hostname, credentials, or port")
+    except ValueError as exc:
+        raise ValidationError(f"line {line_no}: invalid HTTPS source URL {source_url!r}") from exc
+    valid_dns = len(hostname) <= 253 and all(
+        re.fullmatch(r"[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?", label)
+        for label in hostname.split(".")
+    )
+    if not valid_dns or not (hostname == "nist.gov" or hostname.endswith(".nist.gov")):
+        raise ValidationError(
+            f"line {line_no}: primary source is not on a NIST domain: {source_url!r}"
+        )
+
+
 def validate(path: Path) -> dict[str, object]:
     if not path.is_file():
         raise ValidationError(f"crosswalk not found: {path}")
 
-    with path.open("r", encoding="utf-8", newline="") as handle:
-        reader = csv.DictReader(handle)
-        columns = set(reader.fieldnames or [])
-        missing = REQUIRED_COLUMNS - columns
-        if missing:
-            raise ValidationError(f"missing columns: {sorted(missing)}")
-        rows = list(reader)
+    rows = _read_rows(path)
 
     if len(rows) < 40:
         raise ValidationError(f"crosswalk is unexpectedly small: {len(rows)} rows")
@@ -73,7 +121,7 @@ def validate(path: Path) -> dict[str, object]:
     area_counts: Counter[str] = Counter()
     seen_keys: set[tuple[str, str, str]] = set()
 
-    for line_no, row in enumerate(rows, start=2):
+    for line_no, row in rows:
         framework = row["framework"].strip()
         version = row["version"].strip()
         locator = row["locator"].strip()
@@ -101,13 +149,15 @@ def validate(path: Path) -> dict[str, object]:
             )
 
         source_url = row["source_url"].strip()
-        parsed = urlparse(source_url)
-        if parsed.scheme != "https" or not parsed.netloc:
-            raise ValidationError(f"line {line_no}: invalid HTTPS source URL {source_url!r}")
-        if "nist.gov" not in parsed.netloc:
-            raise ValidationError(
-                f"line {line_no}: primary source is not on a NIST domain: {source_url!r}"
-            )
+        _validate_source_url(source_url, line_no)
+
+        publication_date = row["publication_date"].strip()
+        try:
+            if not re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}", publication_date):
+                raise ValueError("expected YYYY-MM-DD")
+            date.fromisoformat(publication_date)
+        except ValueError as exc:
+            raise ValidationError(f"line {line_no}: invalid publication_date {publication_date!r}") from exc
 
         for field in (
             "source_concept",
