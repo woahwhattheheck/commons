@@ -43,11 +43,39 @@ def find_tests(lane):
     return out
 
 
-def run_tests(lane, timeout):
-    """Run a lane's tests from inside the lane, so its relative paths resolve."""
+def dirty_paths(repo, lane):
+    """Tracked files under `lane` that differ from HEAD, per git."""
+    rel = os.path.relpath(lane, repo)
+    p = subprocess.run(f"git status --porcelain -- '{rel}'", cwd=repo,
+                       shell=True, capture_output=True, text=True)
+    return sorted(
+        line[3:].strip() for line in p.stdout.splitlines() if line[3:].strip()
+    )
+
+
+def restore(repo, paths):
+    if not paths:
+        return
+    subprocess.run("git checkout -- " + " ".join(f"'{p}'" for p in paths),
+                   cwd=repo, shell=True, capture_output=True, text=True)
+
+
+def run_tests(lane, timeout, repo=None):
+    """Run a lane's tests from inside the lane, so its relative paths resolve.
+
+    Tests run IN PLACE rather than in a copy, because several lanes bind to
+    repo-relative paths and would fail spuriously somewhere else. The cost is
+    that a non-hermetic suite -- one that writes into its own tracked fixtures
+    -- leaves the working tree dirty. Verifying something must not modify it,
+    so we snapshot what git considers dirty before and after, restore anything
+    the run touched, and report the lane as non-hermetic. That turns a
+    recurring cleanup chore into a measured property of the lane.
+    """
     tests = find_tests(lane)
     if not tests:
         return {"status": "NO-TESTS", "detail": "no test_*.py in lane", "tests": 0}
+
+    before = dirty_paths(repo, lane) if repo else []
 
     total, failures, skipped, details = 0, 0, 0, []
     for t in tests:
@@ -105,15 +133,23 @@ def run_tests(lane, timeout):
             details.append({"file": rel, "not_a_test": False, "ok": False,
                             "ran": 0, "seconds": 0, "tail": f"ERROR {e}"})
 
+    wrote = []
+    if repo:
+        after = dirty_paths(repo, lane)
+        wrote = [p for p in after if p not in before]
+        restore(repo, wrote)
+
     if failures == 0 and total == 0 and skipped:
         # Every glob hit was a non-test file; the lane genuinely has no suite.
         return {"status": "NO-TESTS", "detail": "matched files are not test modules",
-                "tests": 0, "skipped": skipped, "files": details}
+                "tests": 0, "skipped": skipped, "files": details,
+                "non_hermetic": wrote}
     return {
         "status": "PASS" if failures == 0 else "FAIL",
         "tests": total,
         "skipped": skipped,
         "files": details,
+        "non_hermetic": wrote,
     }
 
 
@@ -126,11 +162,18 @@ def main():
     args = ap.parse_args()
 
     lanes = find_lanes(args.root, args.glob)
+    # Whole-run snapshot. Per-lane restore is not sufficient on its own:
+    # several lanes here execute OTHER lanes' commands as part of their own
+    # verification (a capability appendix that runs each claim's demonstration,
+    # a command index that executes what it indexes). So lane B's run can
+    # re-dirty lane A after A was already restored. Snapshot once at the start
+    # and sweep once at the end.
+    run_before = dirty_paths(args.root, args.root)
     results, passed, failed, untested, total_tests = [], 0, 0, 0, 0
 
     for lane in lanes:
         name = os.path.basename(lane)
-        r = run_tests(lane, args.timeout)
+        r = run_tests(lane, args.timeout, repo=args.root)
         r["lane"] = name
         results.append(r)
         total_tests += r.get("tests", 0)
@@ -146,10 +189,28 @@ def main():
                 print(f"          └─ {d['file']}: {d['tail']}")
             elif d.get("not_a_test"):
                 print(f"          └─ {d['file']}: skipped, not a test module")
+        if r.get("non_hermetic"):
+            print(f"          └─ NON-HERMETIC: run modified "
+                  f"{len(r['non_hermetic'])} tracked file(s), restored: "
+                  + ", ".join(os.path.basename(p) for p in r["non_hermetic"]))
 
     print("-" * 78)
+    nonherm = [r["lane"] for r in results if r.get("non_hermetic")]
     print(f"lanes={len(lanes)}  pass={passed}  fail={failed}  no-tests={untested}  "
-          f"tests-executed={total_tests}")
+          f"tests-executed={total_tests}  non-hermetic={len(nonherm)}")
+    if nonherm:
+        print("non-hermetic lanes (wrote into tracked files; restored): "
+              + " ".join(nonherm))
+
+    # Final sweep: anything dirty now that was clean when we started belongs to
+    # this run, not to the working tree, and must not survive verification.
+    leftover = [p for p in dirty_paths(args.root, args.root) if p not in run_before]
+    if leftover:
+        restore(args.root, leftover)
+        still = [p for p in dirty_paths(args.root, args.root) if p not in run_before]
+        print(f"run-level sweep: restored {len(leftover)} file(s) left dirty by "
+              f"cross-lane execution" + (f"; {len(still)} could NOT be restored: "
+              + " ".join(still) if still else ""))
 
     if args.json:
         with open(args.json, "w") as f:
