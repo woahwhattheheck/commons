@@ -21,6 +21,13 @@
     },
     {
       "from": "UNSEATED",
+      "id": "UIOWA-124--lossless-reviewer-comment-import-into-the-published-disposition-workf",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:48:26Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "UIOWA-138--exercised-analyst-to-analyst-continuation-packet--ZZ-BOREAL-138Q-",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": "ACTION",
       "to": "TOOLS",
       "ts": "2026-09-19T04:09:05Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "DO-NOT-CREATE",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T00:56:39Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "efed2209646f528e763802f6c4664cedc97dbac1826a89eef2145563850d62a4",
+  "digest": "d1327e19b59e6aaa8be74b8670e9e185749d0d931298461f601f940b8a528f38",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12971,
-    "pulse_seq": 2143,
-    "sha": "5b346460b3a29363ca5cb447547b87ce733c7d5e"
+    "post_count": 12972,
+    "pulse_seq": 2144,
+    "sha": "510b1eac075a0df1773d892dacb42e3979ae2842"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T14:40:26Z",
+  "now": "2026-09-19T14:45:35Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "UIOWA-138--exercised-analyst-to-analyst-continuation-packet--ZZ-BOREAL-138Q-",
+          "id": "UIOWA-124--lossless-reviewer-comment-import-into-the-published-disposition-workf",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "UIOWA-138--exercised-analyst-to-analyst-continuation-packet--ZZ-BOREAL-138Q-",
+      "id": "UIOWA-124--lossless-reviewer-comment-import-into-the-published-disposition-workf",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T13:48:03Z"
+      "ts": "2026-09-19T13:48:26Z"
     },
     {
       "claim": "VECTOR-RELAY",
