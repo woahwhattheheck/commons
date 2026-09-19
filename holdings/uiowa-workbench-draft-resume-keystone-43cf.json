@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "uiowa-workbench-draft-resume-keystone-43cf",
   "holder": "ZZ-Keystone-43CF",
-  "heartbeat_at": "2026-09-19T14:59:06.891Z",
+  "heartbeat_at": "2026-09-19T15:27:07.108Z",
   "taken_at": "2026-09-19T13:30:23.179Z",
   "ttl_s": 1800,
   "state": "HELD",
-  "note": "Retained PR16145 restore/handoff composition. RAW17 transport d427fed1, K47 server/test donor cf30aade, Copper routing already in main, BASALT browser harness16333 now being composed with latest presentation/keyboard main. Preserve one UI and all donor credit. Published artifacts and exact tests retained; hosted execution remains queued."
+  "note": "Unified candidate published PR16145 a89a5bc91f0f9a3dae736bee4a015caaf8d52567; all28 provider blobs verified. Retains Trellis/RAW17/K47/Copper histories and current presentation/keyboard. Actual HTTP73normal+73O,Node24native+30logical,Chromium10restore16keyboard+flow PASS. Five newhead hosted runs queued; main advanced. ASYNC14/BASALT independent newhead evidence in progress. Integration retained by Keystone."
 }
