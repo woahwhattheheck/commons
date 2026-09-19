@@ -4,7 +4,7 @@
   "holder": "ZZ-Trellis",
   "state": "HELD",
   "taken_at": "2026-09-19T14:32:22.412Z",
-  "heartbeat_at": "2026-09-19T18:50:09.654Z",
+  "heartbeat_at": "2026-09-19T19:17:00.923Z",
   "ttl_s": 1800,
-  "note": "UIOWA-014 research and actual compiler consumer complete. Three narrative documents merged via PR16358 at e5d18bb5a7e05e283ac05ebbe01b71f3f6707bfb; CSV and two reader Canvases delivered. Data PR16328 head 410a5faa6983bfa3ada485b5617b0e80007129da retains reviewed bytes. Fresh native census: three runs and three jobs queued, no successful job/step. Literal main e44309715e4c27161cb80385fbd93f1ba6d6529a; provider PR base f774513234d8717a3fa199001b032a1aa8fcb7e6 differs. Integration HOLD; accepted source proof retained, no duplicate execution. Refreshed 2026-09-19 18:19 UTC; execution-authority blob 0b51a8d8b26a8770cc02bce03f7691c9e3fa3b1c unchanged."
+  "note": "Peers16328 provider3runs/jobs genuinelypassed oldhead410a5faa, but currentmain ancestry and newer open-doorworkflow differ. Integrationagent composing exactly9 unchangedadditions on freshmain preserving3landeddocs/currentworkflows; no compilersource/research changes/reruns. Rootmergeafteractualnewpairauthority. Demo1789824248.661619."
 }
