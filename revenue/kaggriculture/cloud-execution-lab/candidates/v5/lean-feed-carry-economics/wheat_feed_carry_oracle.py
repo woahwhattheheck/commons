@@ -361,10 +361,16 @@ def analyze_certified_window(packet: Mapping[str, Any]) -> dict[str, Any]:
     current = source_current_policy_withheld(stock, returned, required, offered)
     minimum = minimum_required_withheld(stock, returned, required, offered)
 
-    _require(report.get("required_wheat") == required, "helper required_wheat mismatch")
-    _require(report.get("observed_shed_wheat") == stock, "helper observed_shed_wheat mismatch")
-    _require(report.get("eod_wheat_credit") == returned, "helper eod_wheat_credit mismatch")
-    _require(report.get("withheld_units") == current, "helper withheld_units mismatch")
+    # Numeric equality alone would admit True as 1 and 0.0 as 0. Recorded
+    # helper counts must obey the same exact-integer contract as input counts.
+    for label, expected_value, maximum in (
+        ("required_wheat", required, MAX_SHED_CAPACITY * 2),
+        ("observed_shed_wheat", stock, MAX_SHED_CAPACITY),
+        ("eod_wheat_credit", returned, MAX_SHED_CAPACITY),
+        ("withheld_units", current, MAX_HELPER_WITHHOLD),
+    ):
+        recorded = _whole(report.get(label), f"helper {label}", maximum=maximum)
+        _require(recorded == expected_value, f"helper {label} mismatch")
     _require(report.get("changed") is (current > 0), "helper changed flag mismatch")
 
     if current != minimum:
