@@ -1,0 +1,65 @@
+{
+  "schema": "commons-resource-event/v1",
+  "event_id": "codex-uiowa-source-relationship-graph-resource-activation-20260919-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "observed_at": "2026-09-19T19:05:00Z",
+  "actor": "Commons Resource Master / Codex",
+  "selected_resource": "uiowa-source-relationship-graph",
+  "concrete_consumer": "Commons proposal and delivery operators navigating evidence lineage during qualified-prime review and bounded delivery preparation",
+  "measurable_outcome": "The merged offline graph is canonical producing resource metadata with deterministic portable rendering and no live-system, customer, provider, or payment mutation.",
+  "before": {"capacity":"LIVE","stage":"MERGED_UNCATALOGED","condition":"CONSTRAINED","holder":"UIOWA-104","consumer":"UNROUTED_IN_CANONICAL_RESOURCE_GRAPH"},
+  "after": {"capacity":"LIVE","stage":"PRODUCING","condition":"CONSTRAINED","holder":"UIOWA-104 source custody / Commons proposal and delivery operators","consumer":"Internal proposal and delivery evidence navigation"},
+  "production_truth": {
+    "source_repository": "woahwhattheheck/commons",
+    "source_pr": 16448,
+    "source_merge_sha": "28f2a5e67dbc49f94835e19a9ab688ca5d38d85d",
+    "source_descendant_main_sha": "ce818e4a820a0f4ddf28c7bfaeab8a017117566e",
+    "source_paths": {
+      "revenue/uiowa_rfq_18649_source_graph/README.md": "447a9e693d7956066dc1243ac2a366a3e32b0a5a",
+      "revenue/uiowa_rfq_18649_source_graph/examples/graph.html": "40b7001beaae54b4bff6d975afbf18fce55341cf",
+      "revenue/uiowa_rfq_18649_source_graph/graph.py": "b40b6f60c753db8e92d373a01834ab35ab76791f",
+      "revenue/uiowa_rfq_18649_source_graph/test_graph.py": "f10d25c5129d26eea6378236213dd0149356f5a8"
+    },
+    "focused_tests": {"source_suite":"6/6 PASS NORMAL_AND_OPTIMIZED","resource_ledger":"23/23 PASS NORMAL_AND_OPTIMIZED","resource_projection":"18/18 PASS NORMAL_AND_OPTIMIZED"},
+    "maximum_state": "OFFLINE_PORTABLE_SOURCE_RELATIONSHIP_GRAPH_READY",
+    "live_system_access": false,
+    "university_finding": false,
+    "customer_contact": false,
+    "buyer_acceptance": false,
+    "payment_observed": false,
+    "revenue_recognition": false,
+    "current_cash_claim": false,
+    "scheduling_action": false,
+    "provider_writes": 0
+  },
+  "delta": {
+    "prior_terminal_main_sha": "e796c7579069890b159074d4952319214d70c867",
+    "activation_base_main_sha": "ce818e4a820a0f4ddf28c7bfaeab8a017117566e",
+    "commits_in_delta": 57,
+    "changed_paths_in_delta": 130,
+    "remote_branches_observed": 4680,
+    "prior_terminal_slack_ts": "1789833911.096459",
+    "latest_delta_slack_ts": "1789844314.998379",
+    "slack_top_level_messages": {"commons":3,"delegations":6,"todo":0,"shipped_builds":0,"products":0,"leads":0,"sales":0},
+    "automations": "Thirty-eight visible: four enabled, thirty-one paused and three completed; no lifecycle mutation.",
+    "github_state": "Fifty-seven current-main commits and 130 changed paths were reconciled from the prior terminal SHA; the selected merged source lane was unclaimed and absent from the canonical resource graph.",
+    "compensation_state": "New external microbounty work is held. A private collection ledger reports $1,190 advertised potential across 15 mapped merged items, with all payout states unknown; no claim, wallet, payment, revenue, or cash state is inferred."
+  },
+  "verification": {
+    "privacy": "No credential, private account identifier, customer data, private file name, or live University data is persisted.",
+    "open_door": "The package is offline, zero-credential, standard-library only, and produces portable HTML.",
+    "zero_fabrication": "Graph relationships over fictional or supplied evidence are not University findings, evidence authenticity, acceptance, award, payment, revenue, or cash.",
+    "collision": "Only canonical ledger, current projection, assertions and append-only activation records are owned; source, demo, compensation, outreach, payment and active claimed lanes remain read-only."
+  },
+  "build_order_decision": "No build order posted; fresh capability lanes were already claimed, and the owner compensation hold is a collection boundary rather than a new implementation lane.",
+  "build_orders": [],
+  "quota_lifecycle": {"official_observation":"Single official-source check found no quota reset newer than the recorded September 7 automatic reset.","classification":"PRIOR_QUOTA_STATE_RETAINED_CURRENT_ALLOWANCE_UNMEASURED","current_meter":"NOT_DIRECTLY_OBSERVED","banked_reset_activated":false},
+  "projection": {"resources":103,"producing":75,"inventory_records":65},
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789844314998379",
+    "source_pr": "https://github.com/woahwhattheheck/commons/pull/16448",
+    "official_release_notes": "https://help.openai.com/en/articles/6825453/chatgpt-release-notes"
+  },
+  "next_watermark": {"observed_at":"2026-09-19T19:05:00Z","activation_base_main_sha":"ce818e4a820a0f4ddf28c7bfaeab8a017117566e","latest_delta_slack_ts":"1789844314.998379","source_merge_sha":"28f2a5e67dbc49f94835e19a9ab688ca5d38d85d","remote_branches_observed":4680},
+  "non_claims": ["No live-system access, University finding, evidence-authenticity claim, submission, outreach, scheduling, provider write, buyer acceptance, payment, payout, revenue or cash is claimed."]
+}
