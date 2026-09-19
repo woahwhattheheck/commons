@@ -13,6 +13,27 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "UIOWA-049--executable-technical-debt-investment-model",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:29:32Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIowa-peer-evidence-comparability-compiler--ZZ-COPPERFINCH-",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:26:46Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-018--student-systems-peer-evidence-and-ESS-discovery-pack",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:26:14Z"
+    },
+    {
       "from": "GROK",
       "id": "mcp-gemini-d1695316ebcbb289872cb9e3",
       "kind": "POST",
@@ -130,27 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-18T07:47:53Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T07:46:48Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T07:42:33Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Repository-estate--private-repo-cost---public-CI-migration-rationalizer",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T07:33:37Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "688e6c69b73c1404f457ee1242e8a25c02662f677f3a6e01cfb862bcc86bcc7b",
+  "digest": "6fb215c44551249595ed2323096006469caa7a446de9a1e0ff003ebe5fe11f0f",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12956,
-    "pulse_seq": 2123,
-    "sha": "a5dd10781065abbc02715d56f942e12573a6355c"
+    "post_count": 12960,
+    "pulse_seq": 2124,
+    "sha": "5da7ee4e185248dcf511c53920592e47981d41f0"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T11:30:08Z",
+  "now": "2026-09-19T13:35:45Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3009,7 +3009,7 @@
       "id": "mcp-gemini-d1695316ebcbb289872cb9e3",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-19T11:08:21Z"
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "DO-NOT-CREATE",
+          "id": "UIOWA-049--executable-technical-debt-investment-model",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "DO-NOT-CREATE",
+      "id": "UIOWA-049--executable-technical-debt-investment-model",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T00:56:39Z"
+      "ts": "2026-09-19T13:29:32Z"
     },
     {
       "claim": "VECTOR-RELAY",
