@@ -10,7 +10,7 @@ import json
 import math
 import statistics
 import sys
-from collections import Counter
+from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -44,7 +44,10 @@ def timestamp(value: Any, label: str) -> datetime:
 
 
 def canonical(value: Any) -> str:
-    return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), allow_nan=False)
+    try:
+        return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), allow_nan=False)
+    except (ValueError, TypeError) as exc:
+        raise InputError(f"noncanonical JSON value: {exc}") from exc
 
 
 def loads(data: str) -> dict[str, Any]:
@@ -58,8 +61,13 @@ def loads(data: str) -> dict[str, Any]:
     def invalid_constant(value: str) -> None:
         raise InputError(f"nonfinite JSON number: {value}")
 
+    def finite_float(value: str) -> float:
+        result = float(value)
+        require(math.isfinite(result), "nonfinite JSON number")
+        return result
+
     try:
-        result = json.loads(data, object_pairs_hook=pairs, parse_constant=invalid_constant)
+        result = json.loads(data, object_pairs_hook=pairs, parse_constant=invalid_constant, parse_float=finite_float)
     except json.JSONDecodeError as exc:
         raise InputError(f"invalid JSON: {exc.msg} at line {exc.lineno}") from exc
     require(isinstance(result, dict), "packet: object required")
@@ -74,6 +82,7 @@ def check_refs(refs: Any, sources: dict[str, Any], label: str, required: bool = 
 
 
 def validate(packet: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any], list[dict[str, Any]], int]:
+    require(isinstance(packet, dict), "packet: object required")
     require(type(packet.get("schema_version")) is int and packet["schema_version"] == 1, "schema_version must be 1")
     require(type(packet.get("synthetic")) is bool, "synthetic: explicit boolean required")
     for key in ("sources", "incidents", "notifications"):
@@ -190,10 +199,13 @@ def analyze(packet: dict[str, Any]) -> dict[str, Any]:
     obs = packet["observation"]
     start, end = timestamp(obs["start"], "start"), timestamp(obs["end"], "end")
     selected = [n for n in notifications if start <= timestamp(n["at"], n["id"]) < end]
+    by_incident: dict[str | None, list[dict[str, Any]]] = defaultdict(list)
+    for notification in selected:
+        by_incident[notification["incident_id"]].append(notification)
     rows, recommendations = [], []
     for iid, inc in sorted(incidents.items()):
         detected = timestamp(inc["detected_at"], iid)
-        linked = [n for n in selected if n["incident_id"] == iid]
+        linked = by_incident[iid]
         resolved = timestamp(inc["resolved_at"], iid) if inc["resolved_at"] else None
         if not linked and not (detected < end and (resolved is None or resolved >= start)):
             continue
@@ -223,18 +235,24 @@ def analyze(packet: dict[str, Any]) -> dict[str, Any]:
             escalation_state = "overdue_as_of_end" if coverage == "complete" else "unknown"
         repeated = [n for n in linked if n["kind"] == "repeat"]
         triage = [n["triage_seconds"] for n in repeated if n["triage_seconds"] is not None]
+        known_triage = sum(triage)
+        require(math.isfinite(known_triage), f"{iid}: nonfinite triage aggregate")
+        evidence = (inc["source_refs"] + inc["owner_source_refs"] + inc["actionability_source_refs"]
+                    + inc["runbook"]["source_refs"] + inc["escalation"]["source_refs"]
+                    + (response["source_refs"] if response else [])
+                    + [ref for n in linked for ref in n["source_refs"]])
         row = {"id": iid, "group": inc["group"], "service": inc["service"],
                "cohort": "new_detection" if detected >= start else "carry_in",
                "notification_ids": [n["id"] for n in linked], "notification_count": len(linked),
                "repeat_count": len(repeated), "escalation_notification_count": sum(n["kind"] == "escalation" for n in linked),
-               "known_repeat_triage_seconds": sum(triage), "repeat_triage_observed_count": len(triage),
+               "known_repeat_triage_seconds": known_triage, "repeat_triage_observed_count": len(triage),
                "owner_state": inc["owner_state"], "owner_role": inc["owner_role"],
                "actionability": inc["actionability"], "runbook_use": inc["runbook"]["use"],
                "response_state": state, "lifecycle_coverage": coverage,
                "response_seconds": (at - detected).total_seconds() if state == "observed" else None,
                "ack_seconds": (ack - detected).total_seconds() if ack is not None and ack < end else None,
                "censor_seconds": (end - detected).total_seconds() if state == "right_censored" else None,
-               "escalation_state": escalation_state, "source_refs": sorted(set(inc["source_refs"] + [r for n in linked for r in n["source_refs"]]))}
+               "escalation_state": escalation_state, "source_refs": sorted(set(evidence))}
         rows.append(row)
         options = []
         if inc["owner_state"] in {"unowned", "unknown"}:
@@ -291,6 +309,7 @@ def analyze(packet: dict[str, Any]) -> dict[str, Any]:
             "Only explicitly linked incidents are grouped; matching fingerprints never establish identity.",
             "Repeated notifications are not automatically wasted work; escalations remain separate.",
             "Observed-only response medians exclude unresolved/unknown and carry-in records; they can be biased downward.",
+            "Useful-response time uses the supplied first documented action; partial histories may conceal earlier actions.",
             "Complete lifecycle export is not a complete census of all service incidents; recall is not estimable.",
             "Actionability and runbook-use labels are supplied interpretations with references, not independently verified facts.",
             "Effort ranges are proposed planning assumptions; no savings, staffing commitment, peer rank or maturity score is inferred."]}
@@ -302,7 +321,7 @@ def md(value: Any) -> str:
 
 def render(report: dict[str, Any]) -> str:
     out = ["# Alert usefulness and response readiness", "", report["label"], "",
-           f"Evidence digest: `{report['normalized_evidence_sha256']}`", "",
+           f"Evidence digest: `{report['normalized_evidence_sha256256']}`", "",
            f"Observation: {report['observation']['start']} to {report['observation']['end']} (end excluded).", "",
            "## Counts", "", "| Measure | Count |", "|---|---:|"]
     out += [f"| {md(k)} | {v} |" for k, v in report["counts"].items()]
@@ -312,9 +331,9 @@ def render(report: dict[str, Any]) -> str:
     for group, values in report["groups"].items():
         metric = values["first_meaningful_response"]
         out.append(f"| {group} | {metric['eligible_count']} | {metric['observed_count']} | {metric['median_seconds'] if metric['median_seconds'] is not None else 'UNKNOWN'} | {md(values['response_states'])} |")
-    out += ["", "## Incident review", "", "| Incident | Group | Notifications / repeats | Owner | Runbook use | Response | Escalation | Evidence |", "|---|---|---|---|---|---|---|---|"]
+    out += ["", "## Incident review", "", "| Incident | Group | Notifications / repeats | Owner | Runbook use | Response | ACK / useful seconds | Escalation | Evidence |", "|---|---|---|---|---|---|---|---|---|"]
     for row in report["incidents"]:
-        out.append("| " + " | ".join(md(x) for x in (row["id"], row["group"], f"{row['notification_count']} / {row['repeat_count']}", row["owner_state"], row["runbook_use"], row["response_state"] + " / " + row["cohort"], row["escalation_state"], ", ".join(row["source_refs"]))) + " |")
+        out.append("| " + " | ".join(md(x) for x in (row["id"], row["group"], f"{row['notification_count']} / {row['repeat_count']}", row["owner_state"], row["runbook_use"], row["response_state"] + " / " + row["cohort"], f"{row['ack_seconds'] if row['ack_seconds'] is not None else 'UNKNOWN'} / {row['response_seconds'] if row['response_seconds'] is not None else 'UNKNOWN'}", row["escalation_state"], ", ".join(row["source_refs"]))) + " |")
     out += ["", "## Unlinked notifications", "", "These are not merged or counted as proven separate incidents."]
     out += [f"- {md(n['id'])}: {md(n['service'])}, {md(n['at'])}; evidence {md(n['source_refs'])}." for n in report["unlinked_notifications"]]
     if not report["unlinked_notifications"]:
@@ -371,7 +390,7 @@ def main(argv: list[str] | None = None) -> int:
     try:
         report = analyze(loads(args.input.read_text(encoding="utf-8-sig")))
         export(report, args.out_dir)
-    except (InputError, OSError, TypeError, OverflowError) as exc:
+    except (InputError, OSError, TypeError, OverflowError, UnicodeError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 2
     print(json.dumps({"label": report["label"], "counts": report["counts"], "output": str(args.out_dir)}, ensure_ascii=False))
