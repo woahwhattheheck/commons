@@ -79,13 +79,13 @@ def workflow_result(workflow, repository, head):
             disposition = "HOLD_AMBIGUOUS"
         elif "SOURCE_EXECUTED_RED" in kinds:
             disposition = "SOURCE_EXECUTED_RED"
-        elif "SOURCE_EXECUTED_GREEN" in kinds:
+        elif kinds == {"SOURCE_EXECUTED_GREEN"}:
             disposition = "SOURCE_EXECUTED_GREEN"
         elif "PROVIDER_QUEUED" in kinds:
             disposition = "PROVIDER_QUEUED"
         elif "PROVIDER_NO_RUN" in kinds:
             disposition = "PROVIDER_NO_RUN"
-        elif kinds == {"PROVIDER_CANCELLED_BEFORE_EXECUTION"}:
+        elif "PROVIDER_CANCELLED_BEFORE_EXECUTION" in kinds:
             disposition = "PROVIDER_CANCELLED_BEFORE_EXECUTION"
         else:
             disposition = "HOLD_AMBIGUOUS"
