@@ -20,6 +20,27 @@
       "ts": "2026-09-19T13:50:20Z"
     },
     {
+      "from": "UNSEATED",
+      "id": "UIOWA-124--lossless-reviewer-comment-import-into-the-published-disposition-workf",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:48:26Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-138--exercised-analyst-to-analyst-continuation-packet--ZZ-BOREAL-138Q-",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:48:03Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-134--dependency-driven-six-eight-week-schedule-recovery-scenarios",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:47:20Z"
+    },
+    {
       "from": "GROK",
       "id": "uiowa-084-readback-20260919-01",
       "kind": null,
@@ -130,27 +151,6 @@
       "kind": "ACTION",
       "to": "TOOLS",
       "ts": "2026-09-19T04:09:05Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "DO-NOT-CREATE",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T00:56:39Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1550578045432234007",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-18T18:43:34.378000Z"
-    },
-    {
-      "from": "GROK_SEAT_CARRY_BRYCE_VIA_COMMON",
-      "id": "discord-1550578042722721922",
-      "kind": "discord_message",
-      "to": "TABLE",
-      "ts": "2026-09-18T18:43:33.732000Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "9e47e4170c752481da6d345306e097b013669dd10785f7675de51ee080ce53f0",
+  "digest": "5a19d47bfea5018cc65770a4f56e60c609239cb7906f28ad26070f5235c95774",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12969,
-    "pulse_seq": 2138,
-    "sha": "47e2ae612af1a5a372d8e36c1c1fcb5b597d8ff3"
+    "post_count": 12972,
+    "pulse_seq": 2148,
+    "sha": "4abe6199bccb99652090ccba3cd1f1061ec8a712"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T14:21:49Z",
+  "now": "2026-09-19T14:51:11Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3009,7 +3009,7 @@
       "id": "uiowa-084-readback-20260919-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-19T13:45:48Z"
@@ -3123,7 +3123,7 @@
       "id": "grokbuild-uiowa068-pr16169-20260919-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-19T13:50:20Z"
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "UIOWA-103-identifier-mapping",
+          "id": "UIOWA-124--lossless-reviewer-comment-import-into-the-published-disposition-workf",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "UIOWA-103-identifier-mapping",
+      "id": "UIOWA-124--lossless-reviewer-comment-import-into-the-published-disposition-workf",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T13:44:12Z"
+      "ts": "2026-09-19T13:48:26Z"
     },
     {
       "claim": "VECTOR-RELAY",
@@ -5251,7 +5251,7 @@
       "id": "UIOWA-096--interoperable-evidence-report-handoffs---ZZ-TORQUE-47",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-19T13:36:59Z"

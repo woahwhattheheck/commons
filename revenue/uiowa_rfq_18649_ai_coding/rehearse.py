@@ -3,9 +3,20 @@
 from __future__ import annotations
 import argparse
 import hashlib
+import importlib.util
 import json
 from pathlib import Path
-import ai_coding
+
+
+def _load_analyzer():
+    """Load this component's sibling, without global path or module aliases."""
+    path = Path(__file__).resolve().with_name("ai_coding.py")
+    spec = importlib.util.spec_from_file_location("_uiowa076_rehearsal_analyzer", path)
+    if spec is None or spec.loader is None:
+        raise ImportError(f"Cannot load local analyzer: {path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 def build_fixture(base: Path) -> Path:
@@ -93,10 +104,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--out", type=Path, required=True, help="New or empty rehearsal directory")
     args = parser.parse_args(argv)
     try:
+        ai_coding = _load_analyzer()
         path = build_fixture(args.out)
         report = ai_coding.load_report(path)
         ai_coding.write_outputs(report, args.out / "reports")
-    except (ValueError, OSError) as exc:
+    except (ValueError, OSError, ImportError) as exc:
         parser.exit(2, f"REHEARSAL ERROR: {exc}\n")
     print(f"OK changes={len(report['changes'])} pairs={len(report['comparisons'])} "
           f"comparable={sum(p['comparable'] for p in report['comparisons'])} sources={len(report['evidence'])}")

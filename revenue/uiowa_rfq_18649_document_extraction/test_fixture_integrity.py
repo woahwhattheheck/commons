@@ -21,6 +21,12 @@ if SPEC is None or SPEC.loader is None:
     raise RuntimeError('Cannot load fixture generator')
 corpus = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(corpus)
+EXTRACT_SPEC = importlib.util.spec_from_file_location(NAME + '_extract', HERE / 'extract.py')
+if EXTRACT_SPEC is None or EXTRACT_SPEC.loader is None:
+    raise RuntimeError('Cannot load original extraction interface')
+extract = importlib.util.module_from_spec(EXTRACT_SPEC)
+sys.modules[EXTRACT_SPEC.name] = extract
+EXTRACT_SPEC.loader.exec_module(extract)
 
 # Independent expectations: generation does not write or recompute these constants.
 PINS = {
@@ -132,17 +138,23 @@ class FixtureIntegrityTests(unittest.TestCase):
         self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
         self.assertEqual(inventory(lane), before)
 
-    def test_no_backend_runs_non_pdf_tests_and_explicit_missing_backend_contract(self):
+    def test_no_backend_runs_non_pdf_tests_and_preserves_skips(self):
         # -I -S strips PYTHONPATH and site packages. Add only this component explicitly.
         code = ('import sys,unittest; sys.path.insert(0,sys.argv[1]); '
-                'suite=unittest.defaultTestLoader.loadTestsFromNames(["test_extract","test_integrity"]); '
+                'suite=unittest.defaultTestLoader.loadTestsFromNames(["test_extract"]); '
                 'r=unittest.TextTestRunner(verbosity=2).run(suite); '
-                'raise SystemExit(0 if r.wasSuccessful() and len(r.skipped)==3 else 1)')
+                'raise SystemExit(0 if r.wasSuccessful() and len(r.skipped)==2 else 1)')
         proc = subprocess.run([sys.executable, *(['-O'] if sys.flags.optimize else []), '-I', '-S', '-c', code, str(HERE)],
                               capture_output=True, text=True, timeout=30)
         self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
-        self.assertIn('test_missing_pdf_backend_has_named_error', proc.stderr)
-        self.assertIn('skipped=3', proc.stderr)
+        self.assertIn('skipped=2', proc.stderr)
+
+    def test_missing_pdf_backend_has_named_error(self):
+        source = self.root / "synthetic.pdf"
+        corpus._write_minimal_pdf(source, ["Synthetic dependency contract."])
+        with patch.dict(sys.modules, {"pypdf": None}):
+            with self.assertRaisesRegex(extract.ExtractionError, "PDF_BACKEND_UNAVAILABLE"):
+                extract.extract(source)
 
 
 if __name__ == '__main__':
