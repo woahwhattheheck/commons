@@ -3,12 +3,31 @@
 const state = { report: null, cells: [], selectedKey: null, notes: new Map(), dispositions: new Map() };
 const el = Object.fromEntries([
   "candidateFile","authorityFile","inspectBtn","demoBtn","resetBtn","error","summary","search",
-  "statusFilter","matrix","detail","disposition","note","exportBtn","exportStatus"
+  "statusFilter","matrix","detail","disposition","note","exportBtn","exportStatus",
+  "matrixStatus","selectedCellHeading","backToCellBtn"
 ].map(id => [id, document.getElementById(id)]));
 
 function keyFor(cell) { return `${cell.group}|${cell.dimension}`; }
 function text(value) { return value == null ? "—" : String(value); }
 function setError(message="") { el.error.textContent = message; }
+
+function cellLabel(cell) {
+  const labels = {
+    software_development: "Software development", security: "Security",
+    deployment: "Deployment", ai_readiness: "AI readiness"
+  };
+  return `${cell.group} / ${labels[cell.dimension] || cell.dimension}`;
+}
+
+function returnToSelectedCell() {
+  const target = [...el.matrix.querySelectorAll(".cell")]
+    .find(button => button.dataset.key === state.selectedKey);
+  if (target) target.focus();
+  else if (state.report) {
+    el.search.focus();
+    el.matrixStatus.textContent = "The selected cell is outside the current filters. Clear or change the filters to return to it; its notes are retained.";
+  }
+}
 
 function syntheticReport() {
   const groups = ["ESS", "RIS", "IAM"];
@@ -62,6 +81,8 @@ function installReport(report) {
   rebuildStatuses();
   renderMatrix();
   el.detail.textContent = "Select a cell.";
+  el.selectedCellHeading.textContent = "No cell selected";
+  el.backToCellBtn.disabled = true;
 }
 
 function renderSummary() {
@@ -100,13 +121,18 @@ function visibleCells() {
 }
 
 function renderMatrix() {
+  const active = document.activeElement;
+  const focusedKey = el.matrix.contains(active) ? active.dataset.key : null;
+  const cells = visibleCells();
   el.matrix.replaceChildren();
-  for (const cell of visibleCells()) {
+  for (const cell of cells) {
     const key = keyFor(cell);
     const button = document.createElement("button");
     button.type = "button";
     button.className = "cell";
     button.dataset.key = key;
+    button.setAttribute("aria-controls", "detailPanel");
+    button.setAttribute("aria-label", `${cellLabel(cell)}: ${cell.status}. Open evidence and analyst notes.`);
     button.setAttribute("aria-current", state.selectedKey === key ? "true" : "false");
     const group = document.createElement("strong"); group.textContent = cell.group;
     const dimension = document.createElement("span"); dimension.textContent = cell.dimension;
@@ -116,6 +142,17 @@ function renderMatrix() {
     el.matrix.append(button);
   }
   el.matrix.dataset.renderedCells = String(el.matrix.childElementCount);
+  const hiddenSelection = state.selectedKey && !cells.some(cell => keyFor(cell) === state.selectedKey);
+  el.matrixStatus.textContent = cells.length
+    ? `${cells.length} of ${state.cells.length} assessment cells shown.`
+    : "No cells match. Clear or change the search and status filters.";
+  if (hiddenSelection) el.matrixStatus.textContent += " Selected-cell details and notes remain below, outside the current filters.";
+  // Rendering must not silently throw keyboard focus back to the page body.
+  if (focusedKey) {
+    const replacement = [...el.matrix.querySelectorAll(".cell")]
+      .find(button => button.dataset.key === focusedKey);
+    (replacement || el.search).focus();
+  }
 }
 
 function selectCell(key) {
@@ -123,19 +160,16 @@ function selectCell(key) {
   if (!cell) return;
   state.selectedKey = key;
   renderMatrix();
-  el.detail.textContent = JSON.stringify({
-    group: cell.group,
-    dimension: cell.dimension,
-    status: cell.status,
-    maturity: cell.maturity,
-    confidence_bp: cell.confidence_bp,
-    source_ids: cell.source_ids || [],
-    reason_codes: cell.reason_codes || []
-  }, null, 2);
+  // Retain every supplied evidence field, including source digests and extensions.
+  // textContent keeps the record literal; this is not HTML or an assessment rewrite.
+  el.detail.textContent = JSON.stringify(cell, null, 2);
+  el.selectedCellHeading.textContent = cellLabel(cell);
+  el.backToCellBtn.disabled = false;
   el.note.disabled = false;
   el.disposition.disabled = false;
   el.note.value = state.notes.get(key) || "";
   el.disposition.value = state.dispositions.get(key) || "UNREVIEWED";
+  el.selectedCellHeading.focus();
 }
 
 function resetWorkbench() {
@@ -143,7 +177,10 @@ function resetWorkbench() {
   state.notes = new Map(); state.dispositions = new Map();
   el.summary.replaceChildren(); el.matrix.replaceChildren();
   el.matrix.dataset.renderedCells = "0";
+  el.matrixStatus.textContent = "No report loaded. Import evidence or load the synthetic UI demo.";
   el.detail.textContent = "Select a cell.";
+  el.selectedCellHeading.textContent = "No cell selected";
+  el.backToCellBtn.disabled = true;
   el.search.value = ""; el.search.disabled = true;
   el.statusFilter.replaceChildren(new Option("All statuses", "")); el.statusFilter.disabled = true;
   el.note.value = ""; el.note.disabled = true;
@@ -163,6 +200,7 @@ async function readJsonFile(input, label) {
 }
 
 async function inspectFiles() {
+  const restoreInvokerFocus = document.activeElement === el.inspectBtn;
   // A replacement attempt invalidates the prior generation immediately. If file
   // parsing, transport, or compiler inspection fails, stale notes/export authority
   // must not remain actionable under the guise of the attempted new import.
@@ -183,7 +221,12 @@ async function inspectFiles() {
     if (!response.ok) throw new Error(payload.error || `Inspection failed (${response.status}).`);
     installReport(payload.report);
   } catch (err) { setError(err instanceof Error ? err.message : String(err)); }
-  finally { el.inspectBtn.disabled = false; }
+  finally {
+    el.inspectBtn.disabled = false;
+    // Disabling the active native button can move focus to BODY. Do not steal
+    // focus back if the operator deliberately moved to another control meanwhile.
+    if (restoreInvokerFocus && document.activeElement === document.body) el.inspectBtn.focus();
+  }
 }
 
 function exportDraft() {
@@ -233,6 +276,7 @@ el.statusFilter.addEventListener("change", renderMatrix);
 el.note.addEventListener("input", () => { if (state.selectedKey) state.notes.set(state.selectedKey, el.note.value); });
 el.disposition.addEventListener("change", () => { if (state.selectedKey) state.dispositions.set(state.selectedKey, el.disposition.value); });
 el.exportBtn.addEventListener("click", exportDraft);
+el.backToCellBtn.addEventListener("click", returnToSelectedCell);
 
 resetWorkbench();
 if (new URLSearchParams(location.search).get("demo") === "1") installReport(syntheticReport());
