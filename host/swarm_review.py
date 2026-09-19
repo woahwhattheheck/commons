@@ -563,11 +563,15 @@ def verify_live(git, github, number):
     return subject, decision(git, subject, pull["reviews"])
 
 
+def packet_stub(number, state, reason):
+    return {"number": number, "review": {"state": state, "reason": reason},
+            "review_template": {}, "diff": "", "diff_truncated": False}
+
+
 def closed_packet(number, pull):
     reason = "PR is no longer open"
     state = "ALREADY_PRESENT" if pull.get("merged") else "UNKNOWN"
-    return {"number": number, "review": {"state": state, "reason": reason},
-            "review_template": {}, "diff": "", "diff_truncated": False}
+    return packet_stub(number, state, reason)
 
 
 def main(argv=None):
@@ -596,7 +600,14 @@ def main(argv=None):
                 if pull.get("state") != "open" or pull.get("merged"):
                     entries.append(closed_packet(number, pull))
                     continue
-                subject, verdict = verify_live(git, github, number)
+                try:
+                    subject, verdict = verify_live(git, github, number)
+                except ValueError as exc:
+                    reason = str(exc)[:300]
+                    if "executable PR head must contain current main" not in reason:
+                        raise
+                    entries.append(packet_stub(number, "UNKNOWN", reason))
+                    continue
                 diff = git.out("diff", "--no-ext-diff", "--no-textconv",
                                subject["merge_base"], subject["head"], "--", *subject["paths"])
                 entries.append({**subject, "review": verdict,

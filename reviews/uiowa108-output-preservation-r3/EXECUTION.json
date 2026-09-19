@@ -1,0 +1,166 @@
+{
+  "canonical_pr": 16359,
+  "executions": [
+    {
+      "command": "UIOWA108_COMPONENT=<patched-component> python -B reviews/uiowa108-output-preservation-r3/regressions.py",
+      "errors": 0,
+      "exit_code": 0,
+      "failures": 0,
+      "log": "normal.log",
+      "log_digest": {
+        "bytes": 3737,
+        "git_blob": "065be2a377ba36951fd391691c45cfb86d0cf070",
+        "sha256": "780cb451b8620a6995f9790f06b02d17d1c15a600ec897ccb2959c1701a452c6"
+      },
+      "optimization": 0,
+      "skips": 0,
+      "tests_run": 29
+    },
+    {
+      "command": "UIOWA108_COMPONENT=<patched-component> PYTHONOPTIMIZE=1 python -B -O reviews/uiowa108-output-preservation-r3/regressions.py",
+      "errors": 0,
+      "exit_code": 0,
+      "failures": 0,
+      "log": "optimized.log",
+      "log_digest": {
+        "bytes": 3737,
+        "git_blob": "56c6f6f3e9a050c1e85351e60279f1b4b53ac34d",
+        "sha256": "a7417ea6438d81ec53746fd54d82da472b1fbb2e3b740cf25df121afd9671159"
+      },
+      "optimization": 1,
+      "skips": 0,
+      "tests_run": 29
+    }
+  ],
+  "kind": "independent_predecessor_io_patch_execution",
+  "limits": [
+    "No independent replay of original 80/87-method suite is claimed here.",
+    "Predecessor plus focused I/O patch only; R9V6/Meridian composition remains separate.",
+    "CLI source files were in a stable isolated directory; this is not an attested or adversarial runtime identity guarantee.",
+    "No hosted CI, automated READY, main runtime integration, atomic directory installation, or live University result is claimed."
+  ],
+  "model": "GPT-6 Astra Pro",
+  "operation": "uiowa108-independent-review-kestrel6d9fr3-20260919",
+  "original_fixture_cli_parity": {
+    "exact": {
+      "artifacts": {
+        "transition_items.csv": "9dfbfdf8fe891f0105c6f91e0a3163526b3ef525",
+        "transition_report.json": "9188819f31f8552b8194fb0dcc28df9e658a657c",
+        "transition_report.md": "baf63c61c4b7b2909edc60ae21d9f7c4b1467e53"
+      },
+      "returncode": 1,
+      "stderr": "items=6 completed=2 unresolved=2 no_evidence=2 closed=False issues=0\n"
+    },
+    "repaired": {
+      "artifacts": {
+        "transition_items.csv": "9dfbfdf8fe891f0105c6f91e0a3163526b3ef525",
+        "transition_report.json": "9188819f31f8552b8194fb0dcc28df9e658a657c",
+        "transition_report.md": "baf63c61c4b7b2909edc60ae21d9f7c4b1467e53"
+      },
+      "returncode": 1,
+      "stderr": "items=6 completed=2 unresolved=2 no_evidence=2 closed=False issues=0\n"
+    }
+  },
+  "patch_reconstruction": {
+    "apply_exit": 0,
+    "byte_identical_to_tested_source": true,
+    "check_exit": 0
+  },
+  "predecessor_commit": "d8002243aaed4ca1e7a5fbc4ba2abb88ca895800",
+  "predecessor_observations": [
+    {
+      "case": "direct",
+      "created": [
+        "out/transition_items.csv",
+        "out/transition_report.md"
+      ],
+      "input_preserved": false,
+      "prior_files_preserved": false,
+      "returncode": 0,
+      "stderr": "items=1 completed=1 unresolved=0 no_evidence=0 closed=True issues=0\n",
+      "traceback": false
+    },
+    {
+      "case": "symlink",
+      "created": [
+        "out/transition_items.csv",
+        "out/transition_report.md"
+      ],
+      "input_preserved": false,
+      "prior_files_preserved": false,
+      "returncode": 0,
+      "stderr": "items=1 completed=1 unresolved=0 no_evidence=0 closed=True issues=0\n",
+      "traceback": false
+    },
+    {
+      "case": "hardlink",
+      "created": [
+        "out/transition_items.csv",
+        "out/transition_report.md"
+      ],
+      "input_preserved": false,
+      "prior_files_preserved": false,
+      "returncode": 0,
+      "stderr": "items=1 completed=1 unresolved=0 no_evidence=0 closed=True issues=0\n",
+      "traceback": false
+    },
+    {
+      "case": "existing-sentinel",
+      "created": [
+        "out/transition_items.csv",
+        "out/transition_report.md"
+      ],
+      "input_preserved": true,
+      "prior_files_preserved": false,
+      "returncode": 0,
+      "stderr": "items=1 completed=1 unresolved=0 no_evidence=0 closed=True issues=0\n",
+      "traceback": false
+    },
+    {
+      "case": "output-file",
+      "created": [],
+      "input_preserved": true,
+      "prior_files_preserved": true,
+      "returncode": 1,
+      "stderr": "Traceback (most recent call last):\n  File \"/mnt/data/uiowa108_review/exact/transition.py\", line 377, in <module>\n    raise SystemExit(main())\n                     ~~~~^^\n  File \"/mnt/data/uiowa108_review/exact/transition.py\", line 356, in main\n    os.makedirs(args.outdir, exist_ok=True)\n    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen os>\", line 228, in makedirs\nFileExistsError: [Errno 17] File exists: '/tmp/tmpo4tv1zca/out'\n",
+      "traceback": true
+    }
+  ],
+  "published_inputs": {
+    "output_preservation.patch": {
+      "bytes": 5226,
+      "git_blob": "59c11da1a9b504920133dd6cb703259e5f0e942a",
+      "sha256": "cc8d3956fad68b48680c4710ed59327fe72d7a7cf69c610f9ed25d5832e3d09f"
+    },
+    "regressions.py": {
+      "bytes": 14850,
+      "git_blob": "c687deb5e53f563cd67028de1d7118a8dc4b6ca1",
+      "sha256": "fb044c83552ac453336175deb9d6e9912d8ed4cffbfd6050fc4227bfa58a0d92"
+    }
+  },
+  "python": "3.13.5",
+  "seat": "ZZ-KESTREL-6D9F-R3",
+  "source": {
+    "fixture": {
+      "bytes": 4364,
+      "git_blob": "0939e7cd6c72920acc7a576d9e2070390c0b66a9",
+      "sha256": "82279c46faad01be365ac9b67fb2bba01b7cf3fb0ea0c35a655fd2ada3d5642d"
+    },
+    "scenario.py": {
+      "bytes": 13970,
+      "git_blob": "18603f0bc26be7bfcd36ea71e9f1da811fbd1b42",
+      "sha256": "9fcfff1ba7605228b7696378af8de4f2a9cf967ea972e727f9b2b6be28836d7f"
+    },
+    "transition.py.before": {
+      "bytes": 16388,
+      "git_blob": "68efdf3a7a09757f861e9b3e506de1bc148f8ca5",
+      "sha256": "4d1859f0ef2f3485826fc238b4939ab4c9c9fb8f9bada878d008748960622ce2"
+    },
+    "transition.py.patched": {
+      "bytes": 19998,
+      "git_blob": "0b40b199251c4c630b4a1dda2c365a8944332d58",
+      "sha256": "06aec3c66a9e0d2799dd10307e6e209aac90816f4081ab2cae60c7fa1e9c7e5c"
+    }
+  },
+  "synthetic": true
+}

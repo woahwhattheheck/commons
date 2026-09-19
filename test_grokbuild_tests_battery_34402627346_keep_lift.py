@@ -26,6 +26,7 @@ from unittest.mock import patch
 import board_ingest
 import builds_ledger
 import hub_pages
+import sys
 
 ROOT = Path(__file__).resolve().parent
 ORIGINALS = (
@@ -129,7 +130,7 @@ class TestGrokbuildTestsBattery34402627346KeepLift(unittest.TestCase):
         for name in ORIGINALS:
             with self.subTest(name=name):
                 proc = subprocess.run(
-                    ["python3", name],
+                    [sys.executable, name],
                     cwd=ROOT,
                     text=True,
                     capture_output=True,

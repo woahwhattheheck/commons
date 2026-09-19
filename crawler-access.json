@@ -52,11 +52,6 @@
     "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Larger fixed engagements are separate product pages (checkout/intent stays there). Canonical transport/map payload above stays authoritative. index.html already surfaces Live cash and advertises this JSON as the Commons transport map (machine alternate). Commerce machine_entries remain authoritative for outcome commerce catalogs. No invent Stripe URLs.",
     "products": [
       {
-        "name": "Agent Failure Autopsy",
-        "price_usd": 29,
-        "path": "agent-rescue.html"
-      },
-      {
         "name": "Dealer Service Lead Rescue",
         "price_usd": 199,
         "path": "dealer-service-lead-rescue.html"

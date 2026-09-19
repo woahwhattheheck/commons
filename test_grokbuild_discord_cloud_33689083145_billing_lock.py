@@ -9,6 +9,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -31,7 +32,7 @@ KEEP = {
     "test_discord_mirror.py": "45043494",
     "infra/discord/test_commons_discord_bridge.py": "9c623e59",
     "infra/discord/test_windows_runtime.py": "158feb48",
-    ".github/workflows/commons-discord-cloud.yml": "6f1c1479",
+    ".github/workflows/commons-discord-cloud.yml": "90738ad6",
 }
 
 
@@ -97,7 +98,7 @@ class TestGrokbuildDiscordCloud33689083145BillingLock(unittest.TestCase):
     def test_discord_battery_and_format_still_pass(self) -> None:
         proc = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "-m",
                 "unittest",
                 "test_commons_discord.py",
@@ -114,7 +115,7 @@ class TestGrokbuildDiscordCloud33689083145BillingLock(unittest.TestCase):
         self.assertIn("Ran 34 tests", proc.stderr)
         fmt = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "commons_discord.py",
                 "to-discord",
                 "format",
@@ -130,7 +131,7 @@ class TestGrokbuildDiscordCloud33689083145BillingLock(unittest.TestCase):
 
     def test_adjacent_item6_leftover_tests_still_pass(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_merge_on_pr.py"],
+            [sys.executable, "-m", "unittest", "test_merge_on_pr.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -169,7 +170,7 @@ class TestGrokbuildDiscordCloud33689083145BillingLock(unittest.TestCase):
         result = fix_first.validate(packet)
         self.assertEqual(result["state"], "EXTERNAL_BLOCKER")
         proc = subprocess.run(
-            ["python3", "fix_first.py", "--json", json.dumps(packet)],
+            [sys.executable, "fix_first.py", "--json", json.dumps(packet)],
             cwd=ROOT,
             text=True,
             capture_output=True,

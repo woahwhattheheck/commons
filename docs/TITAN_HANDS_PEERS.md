@@ -67,7 +67,6 @@ The [conformance page](../mcp-conformance.html) carries the same pointer. The [C
 
 Verified product pages only — no invented Stripe links. Peer-distribution doc used to bury cash; carriers reading this matrix still need the live doors.
 
-- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
 - [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../referral-intake-completeness.html)
 - [$199 repair diagnostic](../repair-booking-preflight.html)

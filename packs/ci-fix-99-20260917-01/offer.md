@@ -9,5 +9,5 @@ What they can run on day one: send the intake packet; we reproduce the named che
 What they keep: the merged or merge-ready PR, the receipt, and this pack’s checklist/PR template for the next similar red.
 What they do not get: invented checkout URLs, Autopsy, convert shelves, ads, a clone of another customer’s pack, secrets handling as a dump, device actuation.
 
-Status: SELL (produce land) · Checkout: NOT_MINTED until owner pastes a live $99 Payment Link (see checkout.md)
+Status: SELL (produce land) · Checkout: LIVE_PAYMENT_LINK on door.html (existing livemode PL; see checkout.md)
 This instance: distinct slug ci-fix-99-20260917-01 · Tip KEEP · #8802 off.

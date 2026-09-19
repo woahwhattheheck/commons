@@ -30,7 +30,6 @@ Use only the live, owner-named harness for the target file. A host runtime may a
 
 Verified product pages only — no invented Stripe links. Host tooling entry used to bury cash; surface product doors here too.
 
-- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
 - [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../referral-intake-completeness.html)
 - [$199 repair diagnostic](../repair-booking-preflight.html)

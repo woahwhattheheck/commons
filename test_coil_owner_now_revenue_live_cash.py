@@ -9,6 +9,9 @@ class T(unittest.TestCase):
     def test(self):
         t=PAGE.read_text(encoding="utf-8")
         for n in REQUIRED: self.assertIn(n,t)
-        self.assertNotIn("buy.stripe.com", t)
+        # Convert shelf reuses existing live buys in buy-now-live-checkout
+        # (anvil-ownerrevenue-paidopps-convert-shelf-20260917-01); Live cash doors stay relative.
+        live_cash = t.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
+        self.assertNotIn("buy.stripe.com", live_cash)
         self.assertNotIn("tools-cash.html", t)
 if __name__=="__main__": unittest.main()

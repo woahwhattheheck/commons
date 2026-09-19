@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -20,10 +21,10 @@ WORKFLOW = ROOT / ".github/workflows/tests.yml"
 KEEP = {
     ".github/workflows/tests.yml": "57d36525",
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "6a512428",
+    "test_open_door_guard.py": "2e2cc164",
     "fix_first.py": "a57aee1c",
     "p/grokbuild-open-door-guard-33699286785-billing-lock-20260902-01.md": "d22e0707",
-    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "5a189dec",
+    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "d6bf412e",
     "p/grokbuild-tests-33694253421-billing-lock-20260902-01.md": "da396946",
     "p/grokbuild-open-door-guard-33699607387-billing-lock-20260903-01.md": "32f69eaf",
     "p/grokbuild-open-door-guard-33699940644-billing-lock-20260903-01.md": "38fc515e",
@@ -49,7 +50,11 @@ class TestGrokbuildTests33699928050BillingLock(unittest.TestCase):
         self.assertIn("name: tests", yml)
         self.assertIn("battery:", yml)
         self.assertIn("the whole battery, one failure fails the run", yml)
-        self.assertIn("find . -maxdepth 1 -type f -name 'test_*.py'", yml)
+        self.assertIn(
+            "find . -maxdepth 1 -type f \( -name 'test_*.py' -o -name 'test_*.js' \) -print",
+            yml,
+        )
+        self.assertIn("find infra -type f -name 'test_*.py' -print", yml)
         self.assertNotIn("billing", yml.lower())
         self.assertNotIn("if: false", yml)
         self.assertNotIn("continue-on-error", yml)
@@ -57,7 +62,7 @@ class TestGrokbuildTests33699928050BillingLock(unittest.TestCase):
     def test_local_failed_step_still_passes(self) -> None:
         proc = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "-m",
                 "unittest",
                 "test_grokbuild_open_door_guard_33699286785_billing_lock.py",
@@ -70,7 +75,7 @@ class TestGrokbuildTests33699928050BillingLock(unittest.TestCase):
         self.assertEqual(proc.returncode, 0, msg=proc.stdout + proc.stderr)
         self.assertIn("Ran 4 tests", proc.stderr)
         guard_proc = subprocess.run(
-            ["python3", "test_open_door_guard.py"],
+            [sys.executable, "test_open_door_guard.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

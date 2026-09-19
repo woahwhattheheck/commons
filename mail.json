@@ -1,6 +1,6 @@
 {
-  "seq": 2112,
-  "ts": "2026-09-18T13:40:21Z",
+  "seq": 2165,
+  "ts": "2026-09-19T15:56:29Z",
   "n": 113,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -790,11 +790,11 @@
     },
     {
       "to": "TABLE",
-      "id": "sledge-ship-bc241-workflow-env",
-      "from": "SLEDGE",
-      "ts": "2026-09-18T13:33:16Z",
-      "href": "./p/sledge-ship-bc241-workflow-env.html",
-      "seq": 2112
+      "id": "UIOWA-047--recover-OSPREY-fixture-bundle-companion-and-connect-canonical-assesso",
+      "from": "UNSEATED",
+      "ts": "2026-09-19T14:08:16Z",
+      "href": "./p/UIOWA-047--recover-OSPREY-fixture-bundle-companion-and-connect-canonical-assesso.html",
+      "seq": 2161
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
@@ -838,11 +838,11 @@
     },
     {
       "to": "TOOLS",
-      "id": "action-20260917210932-c1de03fe7df1",
-      "from": "UNSEATED",
-      "ts": "2026-09-17T21:09:32Z",
-      "href": "./p/action-20260917210932-c1de03fe7df1.html",
-      "seq": 2047
+      "id": "action-20260919110812-22a675665683",
+      "from": "GROK",
+      "ts": "2026-09-19T11:08:12Z",
+      "href": "./p/action-20260919110812-22a675665683.html",
+      "seq": 2123
     },
     {
       "to": "TYPE",

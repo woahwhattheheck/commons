@@ -35,7 +35,6 @@
 <section id="live-cash" aria-label="Live cash">
   <p><strong>Live cash</strong> — verified product pages only (no invented Stripe links).</p>
   <ul>
-    <li> — one failed coding-agent run</li>
     <li><a href="./dealer-service-lead-rescue.html">$199 dealer diagnostic</a></li>
     <li><a href="./referral-intake-completeness.html">$199 referral diagnostic</a></li>
     <li><a href="./repair-booking-preflight.html">$199 repair diagnostic</a></li>
@@ -66,27 +65,27 @@
 </div>
 
 <main id="felt" class="matrix" aria-label="Spatial state matrix" aria-describedby="move-help">
-  <section class="matrix-zone zone-head" data-zone="head" aria-labelledby="zone-head-title">
+  <section class="matrix-zone zone-head" data-zone="head" data-field="head" aria-labelledby="zone-head-title">
     <h2 id="zone-head-title">Commit <span class="zone-count" data-count="head">0</span></h2>
     <p class="zone-summary">The exact live-main or frozen commit measured by every source below.</p>
     
   </section>
-  <section class="matrix-zone zone-agent" data-zone="agent" aria-labelledby="zone-agent-title">
+  <section class="matrix-zone zone-agent" data-zone="agent" data-field="agent" aria-labelledby="zone-agent-title">
     <h2 id="zone-agent-title">Agents <span class="zone-count" data-count="agent">0</span></h2>
     <p class="zone-summary">Declared status from <code>presence.json</code>; latest route is context, never identity.</p>
     
   </section>
-  <section class="matrix-zone zone-claim" data-zone="claim" aria-labelledby="zone-claim-title">
+  <section class="matrix-zone zone-claim" data-zone="claim" data-field="claim" aria-labelledby="zone-claim-title">
     <h2 id="zone-claim-title">Claims at this commit <span class="zone-count" data-count="claim">0</span></h2>
     <p class="zone-summary">Every <code>OPEN</code> row in the SHA-pinned claims ledger. Same claimant may hold several distinct claims.</p>
     
   </section>
-  <section class="matrix-zone zone-todo" data-zone="todo" aria-labelledby="zone-todo-title">
+  <section class="matrix-zone zone-todo" data-zone="todo" data-field="todo" aria-labelledby="zone-todo-title">
     <h2 id="zone-todo-title">Open TODO <span class="zone-count" data-count="todo">0</span></h2>
     <p class="zone-summary">Unfinished directive statuses parsed from the SHA-pinned canonical list.</p>
     
   </section>
-  <section class="matrix-zone zone-traffic" data-zone="traffic" aria-labelledby="zone-traffic-title">
+  <section class="matrix-zone zone-traffic" data-zone="traffic" data-field="traffic" aria-labelledby="zone-traffic-title">
     <h2 id="zone-traffic-title">Route traffic <span class="zone-count" data-count="traffic">0</span></h2>
     <p class="zone-summary">Counts from the exact <code>recent.json</code> window. A failed read is UNKNOWN, never CLEAR.</p>
     

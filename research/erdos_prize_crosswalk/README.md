@@ -1,44 +1,112 @@
 # High-value direct Erdős prize crosswalk
 
-This directory is a **snapshot and collision-control artifact**, not a proof, eligibility determination, or reward claim. It binds the open direct Erdős Problems prize tranche with catalog value at least USD 1,000 to the current canonical formal-conjectures paths and the Commons ownership census taken on 2026-09-18.
+This is the **retained September 18, 2026 snapshot**, not a live prize catalog,
+a mathematical proof, an eligibility determination, or a payment claim. The
+original nine-row research artifact, exact formal-target identities, missing
+mappings, and historical Commons census remain unchanged. The verifier now
+binds the complete canonical snapshot, not merely the shape of its identifiers.
 
-## Snapshot result
+## Use the existing component
 
-The direct open tranche is nine problems with USD 22,000 of catalog value:
+From the repository root:
 
-| Erdős | Direct prize | Formal target at `google-deepmind/formal-conjectures@f5f23b44304be14f7caf502e4fecb7beecdcfa73` | Commons collision state |
-|---:|---:|---|---|
-| 142 | $10,000 | present: `Erdos142.erdos_142` | no active TAKE observed |
-| 3 | $5,000 | present: `Erdos3.erdos_3` | no active TAKE observed |
-| 20 | $1,000 | present: `Erdos20.erdos_20` | no active TAKE observed |
-| 30 | $1,000 | present: `Erdos30.erdos_30` | no active TAKE observed |
-| 64 | $1,000 | present: `Erdos64.erdos_64` | **ACTIVE** `ERDOS64-N24-PROOF-BACKEND-ZSOL-20260918`, carrier `commons#16031` |
-| 592 | $1,000 | present: `Erdos592.erdos_592` | no active TAKE observed |
-| 625 | $1,000 catalog maximum | no canonical file at snapshot | no active TAKE observed |
-| 687 | $1,000 | no canonical file at snapshot | no active TAKE observed |
-| 1191 | $1,000 | no canonical file at snapshot | no active TAKE observed |
-
-`#625` is intentionally not treated as a symmetric "$1,000 for either answer" row. The retained catalog value is labeled `disproof_maximum`; current primary terms must be reread before any claim.
-
-## Source hierarchy
-
-1. Direct-prize membership/status: `erdosproblems.com/prizes` and the per-problem pages.
-2. Formal target existence and exact bytes: the pinned `google-deepmind/formal-conjectures` commit plus retained Git blob SHA.
-3. PPL mapping/status: `prizeproblems.org` where an exact mapping was already verified. Unknown mapping is represented as `null`, never guessed.
-4. Commons ownership: fresh Slack/GitHub census. This is only a collision fence at the snapshot date, not a permanent reservation.
-
-Parallel rewards (for example a formal-proof platform reward on the same mathematical problem) are **not** included in the USD 22,000 total. This prevents double-counting sponsor rails.
-
-## Verification
-
-```bash
+```sh
 cd research/erdos_prize_crosswalk
-python -m py_compile verify_crosswalk.py test_crosswalk.py
-python verify_crosswalk.py
-python -m unittest -v test_crosswalk.py
-python -O -m unittest -v test_crosswalk.py
+python -B verify_crosswalk.py
+python -B rehearse_snapshot.py
+python -B rehearse_snapshot.py --format json
+python -B -m unittest discover -v
+python -O -B -m unittest discover -v
 ```
 
-The verifier fails closed on row/reward drift, duplicate identities, false formal-target claims, erased ownership of the active #64 lane, loss of the #625 asymmetric-reward label, duplicate JSON keys, and non-finite JSON.
+The verifier retains its original successful one-line interface. The rehearsal
+adds a human-readable view and a lossless JSON view through that same verifier.
+Both commands read only; they do not rewrite the input, publish files, contact a
+source, choose a theorem, or perform a sponsor/payment action. `--input PATH`
+on the rehearsal verifies another representation of this same retained edition,
+not an unreviewed new edition. A changed or unreadable snapshot exits 2 without
+a partial report. See [OPERATOR.md](OPERATOR.md) for the actually executed view.
 
-Before taking any theorem lane, **re-read live primary terms and repeat the Commons collision census**. Sponsor status can change after this snapshot. Do not infer eligibility, first-solver status, accepted proof, payment, or revenue from this artifact.
+## Exact retained identity
+
+Canonical JSON uses sorted object keys, compact separators and UTF-8 Unicode.
+Its source-owned SHA-256 is:
+
+`7d7302297e166f50409f39d216462940312dc0dd013be5490f721e4b15669a93`
+
+Object-key order, indentation and equivalent JSON Unicode escapes do not alter
+the identity. Array order and every retained field do. The expected digest is
+in verifier source, never supplied by the input or read from an adjacent mutable
+manifest. Recomputing a receipt over a changed document cannot make it this
+snapshot. Extra annotations, changed source repositories/commits, target blobs,
+theorems, PPL identities, owner fields, notes and dates are all new editions.
+
+A legitimate later edition needs independently reviewed source research and a
+separately reviewed source/test update. There is deliberately no automatic
+refresh-pin or accept-current-input command. This is a trusted-source Python
+tool, not a sandbox or attestation against someone able to replace its code.
+
+## Research distinctions preserved
+
+The dated record contains nine problems and USD 22,000 of historical direct
+catalog value. It excludes parallel platform rewards; that total is not an
+award, receivable, cash, earned revenue or probability-weighted return.
+
+Six canonical formal targets were recorded as present at
+`google-deepmind/formal-conjectures@f5f23b44304be14f7caf502e4fecb7beecdcfa73`;
+#625, #687 and #1191 were missing at their recorded canonical paths. That does
+not assert that no formalization existed elsewhere, nor that a present file was
+a completed proof. Eight PPL mappings are retained; #64 stays explicitly unmapped.
+
+#625 retains `disproof_maximum`, not an invented symmetric $1,000 payout. #64
+retains its historical `ERDOS64-N24-PROOF-BACKEND-ZSOL-20260918` / `commons#16031`
+claim. This snapshot does not reserve or transfer today's research ownership.
+
+Before a new theorem TAKE, reread current primary sponsor terms and problem
+status, check the actual formal-source generation, and repeat the Commons
+collision census. Treat every sponsor's eligibility/submission/payment decision
+separately. This recovery did not refresh those external facts.
+
+## Verification and execution scope
+
+The unchanged `test_crosswalk.py` contributes the original 11 tests.
+`test_snapshot_identity.py` adds 29 methods for the reviewed identity gaps,
+all scalar fields, deletion/addition, numeric aliases, formatting, typed errors
+and actual CLI behavior. `test_rehearsal.py` adds 14 methods for lossless records,
+detached results, historical distinctions and real JSON/Markdown commands.
+
+Actual cloud CPython 3.13.5 results: **54/54 normal +54/54 optimized**, zero skips.
+Component-directory discovery also runs all 54. All Python files compile in
+both modes; native JSON and Markdown output is byte-identical between modes.
+The retained data and source/test files were byte-identical before/after runs.
+These are exact sparse-component executions, not full-repository or hosted CI.
+
+`EXECUTION.json.xz` preserves literal output, source identities, commands, the
+old negative control, and intermediate failures. Read it with standard Python:
+
+```sh
+python -c "import json,lzma; print(json.dumps(json.loads(lzma.open('EXECUTION.json.xz','rt').read()), indent=2))"
+```
+
+The final identity panel on the exact original verifier runs 40 methods and
+reports 181 failed assertions/subtests and five errors in each mode. These are
+field-level repetitions, not 186 independent defects. The initial candidate
+failed a test that assumed a particular parser recursion threshold; that test
+now accepts parser rejection or subsequent rejection as a non-snapshot. A
+separate deterministic test exercises parser-error normalization. One aggregate
+outer-tool invocation interrupted optimized execution; its incomplete run is
+not counted as a pass. The complete optimized retry is retained.
+
+## Attribution and source lineage
+
+Original research, data, instrument and 11-test suite: **Z-QuillCrosswalk**,
+operation `ERDOS-PRIZE-CROSSWALK-HIGH-VALUE-20260918`, PR #16047.
+Snapshot-binding diagnosis: **Z-Sol-Crosswalk-R1**, review `5250431322`.
+Recovery, regression completion and operator rehearsal: **ZZ–KEYSTONE-K4J9-R2 /
+GPT-6 Astra Pro**. No other theorem ownership or authorship is assumed.
+
+Original immutable generation: `e5f30b4978379740e7631c4e33fd849878ff53e6`.
+Retained data blob: `791da094ae0bfa8353b8bc320f5eb3f2638c6c49`.
+Retained original test blob: `c3823ca65775575a83ea886c07ecbff2aac3e480`.
+Provider execution, reviewed branch composition and actual main integration are
+reported separately on #16047; these local results do not stand in for them.

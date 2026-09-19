@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed structural verifier for the snapshot crosswalk.
+"""Verify the exact retained snapshot, independent of JSON object-key order.
 
 This deliberately verifies the retained snapshot, not live sponsor currentness.
 Re-check primary sources before any theorem TAKE, submission, or reward claim.
@@ -49,7 +49,9 @@ def load_strict(path: Path) -> dict:
             object_pairs_hook=pairs,
             parse_constant=reject_constant,
         )
-    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+    except CrosswalkError:
+        raise
+    except (OSError, UnicodeError, ValueError, RecursionError) as exc:
         fail(f"cannot load strict JSON: {exc}")
 
 
@@ -165,8 +167,20 @@ def verify(doc: dict) -> str:
     if p625.get("reward_scope") != "disproof_maximum":
         fail("#625 USD 1,000 value must remain labeled as the disproof-side maximum")
 
-    canonical = json.dumps(doc, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()
-    return hashlib.sha256(canonical).hexdigest()
+    # This is an immutable research snapshot, not a caller-defined new edition.
+    # Keep the full canonical identity in trusted source; deriving the expected
+    # identity from crosswalk.json would simply bless whatever input was changed.
+    try:
+        canonical = json.dumps(
+            doc, ensure_ascii=False, sort_keys=True, separators=(",", ":"),
+            allow_nan=False,
+        ).encode("utf-8")
+    except (TypeError, ValueError, UnicodeError, RecursionError) as exc:
+        fail(f"snapshot is not canonical JSON: {exc}")
+    digest = hashlib.sha256(canonical).hexdigest()
+    if digest != "7d7302297e166f50409f39d216462940312dc0dd013be5490f721e4b15669a93":
+        fail("snapshot identity drift; a new edition requires separately reviewed source")
+    return digest
 
 
 def main(argv: list[str]) -> int:

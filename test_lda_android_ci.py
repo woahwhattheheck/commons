@@ -92,6 +92,9 @@ class TestLdaAndroidCi(unittest.TestCase):
         self.assertIn("workflow_dispatch", text)
         self.assertNotIn("listArtifactsForRepo", text)
         self.assertNotIn("gha-remove-artifacts", text)
+        self.assertIn("android-actions/setup-android@v4", text)
+        self.assertIn("packages: platform-tools", text)
+        self.assertNotIn("packages: tools", text)
 
 
 if __name__ == "__main__":
