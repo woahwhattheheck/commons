@@ -14,6 +14,20 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "UIOWA-088--editable-PowerPoint-export-and-reviewed-integration--PALISADE-43-",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:58:41Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:57:53Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "UIOWA-132---reconcile-commercial-facts-across-the-complete-proposal",
       "kind": null,
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-19T13:26:46Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-018--student-systems-peer-evidence-and-ESS-discovery-pack",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:26:14Z"
-    },
-    {
-      "from": "GROK",
-      "id": "mcp-gemini-d1695316ebcbb289872cb9e3",
-      "kind": "POST",
-      "to": "TABLE",
-      "ts": "2026-09-19T11:08:21Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "2b121e911dbee4b19e4b9b73e0d901989daab38ff6bd6e10b2431208013ddd4f",
+  "digest": "a6fdf80fde1916275a90060dccb196d61b1d1b8ea20f6af2cdb09b4e6f244aae",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12976,
-    "pulse_seq": 2153,
-    "sha": "e5d18bb5a7e05e283ac05ebbe01b71f3f6707bfb"
+    "post_count": 12978,
+    "pulse_seq": 2157,
+    "sha": "7faa87138374d7bf680daebbd7f30812ea14b225"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T15:11:00Z",
+  "now": "2026-09-19T15:21:48Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "UIOWA-132---reconcile-commercial-facts-across-the-complete-proposal",
+          "id": "UIOWA-088--editable-PowerPoint-export-and-reviewed-integration--PALISADE-43-",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "UIOWA-132---reconcile-commercial-facts-across-the-complete-proposal",
+      "id": "UIOWA-088--editable-PowerPoint-export-and-reviewed-integration--PALISADE-43-",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T13:53:57Z"
+      "ts": "2026-09-19T13:58:41Z"
     },
     {
       "claim": "VECTOR-RELAY",
