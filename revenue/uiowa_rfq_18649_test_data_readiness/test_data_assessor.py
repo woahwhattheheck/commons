@@ -160,14 +160,27 @@ def evaluate_dataset(dataset: Dict[str, Any], as_of: date) -> Dict[str, Any]:
                 )
             )
 
-    cleanup_required = bool(dataset.get("cleanup_required"))
-    cleanup_verified = _date(dataset.get("cleanup_last_verified"))
-    if not cleanup_required:
+    # Only explicit booleans declare whether cleanup applies. Absence is not False.
+    cleanup_required = dataset.get("cleanup_required")
+    cleanup_verified = (
+        _date(dataset.get("cleanup_last_verified")) if cleanup_required is True else None
+    )
+    if cleanup_required is False:
         checks.append(
             _check(
                 "cleanup",
                 EVIDENCED,
                 "Catalog marks cleanup as not required for this fixture.",
+            )
+        )
+    elif cleanup_required is not True:
+        checks.append(
+            _check(
+                "cleanup",
+                UNKNOWN,
+                "No reliable boolean cleanup_required declaration supplied.",
+                "Record whether cleanup is required; an omitted declaration does not "
+                "establish that cleanup is unnecessary.",
             )
         )
     elif cleanup_verified is None:
