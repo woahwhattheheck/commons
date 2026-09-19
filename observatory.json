@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "UIOWA-132---reconcile-commercial-facts-across-the-complete-proposal",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:53:57Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "UIOWA-118--source-linked-glossary--inline-help--and-worked-interpretation-guide",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": "POST",
       "to": "TABLE",
       "ts": "2026-09-19T11:08:21Z"
-    },
-    {
-      "from": "GROK",
-      "id": "action-20260919110812-22a675665683",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-19T11:08:12Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "e822732441309ec0a346bea036ba7291ec0e10ea5bce6408d2d055870b8a6dac",
+  "digest": "276a210113fecd97b177cec91be3c475de7fc364db5f86414c994264a4f718f6",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12975,
-    "pulse_seq": 2151,
-    "sha": "907f0f3a709571b225404c0b41a87300d5ebb6ca"
+    "post_count": 12976,
+    "pulse_seq": 2152,
+    "sha": "2e6c9c5dc629034634c0112cf15cde6544c391b0"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T14:59:50Z",
+  "now": "2026-09-19T15:02:05Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "UIOWA-118--source-linked-glossary--inline-help--and-worked-interpretation-guide",
+          "id": "UIOWA-132---reconcile-commercial-facts-across-the-complete-proposal",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "UIOWA-118--source-linked-glossary--inline-help--and-worked-interpretation-guide",
+      "id": "UIOWA-132---reconcile-commercial-facts-across-the-complete-proposal",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T13:53:07Z"
+      "ts": "2026-09-19T13:53:57Z"
     },
     {
       "claim": "VECTOR-RELAY",

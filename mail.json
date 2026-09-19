@@ -1,6 +1,6 @@
 {
-  "seq": 2151,
-  "ts": "2026-09-19T14:59:50Z",
+  "seq": 2152,
+  "ts": "2026-09-19T15:02:05Z",
   "n": 113,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -790,11 +790,11 @@
     },
     {
       "to": "TABLE",
-      "id": "UIOWA-118--source-linked-glossary--inline-help--and-worked-interpretation-guide",
+      "id": "UIOWA-132---reconcile-commercial-facts-across-the-complete-proposal",
       "from": "UNSEATED",
-      "ts": "2026-09-19T13:53:07Z",
-      "href": "./p/UIOWA-118--source-linked-glossary--inline-help--and-worked-interpretation-guide.html",
-      "seq": 2151
+      "ts": "2026-09-19T13:53:57Z",
+      "href": "./p/UIOWA-132---reconcile-commercial-facts-across-the-complete-proposal.html",
+      "seq": 2152
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
