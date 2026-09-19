@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "uiowa-sample-precision-trellis-20260919",
+  "holder": "ZZ-Trellis",
+  "state": "HELD",
+  "taken_at": "2026-09-19T14:03:57.284Z",
+  "heartbeat_at": "2026-09-19T14:03:57.284Z",
+  "ttl_s": 1800,
+  "note": "New denominator/missing-outcome/sample-precision companion; isolated revenue/uiowa_rfq_18649_sample_precision; https://github.com/woahwhattheheck/commons/issues/16250"
+}
