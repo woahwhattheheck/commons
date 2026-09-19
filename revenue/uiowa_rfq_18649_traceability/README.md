@@ -234,6 +234,86 @@ same defect class as one that hides them.**
   show here; that is a branch-freshness fact, not a defect in the lane.
 
 
+## Cross-lane audit: tests that cannot fail
+
+`audit_assertions.py` is the sibling of the auditor above. That one finds a
+check whose expected value is written by the run that verifies it. This one
+finds the simpler and more common case: a test that passes because it never
+asserted anything, asserted something true by construction, or caught the
+failure it was meant to report.
+
+```bash
+python3 audit_assertions.py /path/to/revenue
+python3 audit_assertions.py /path/to/revenue --format json
+```
+
+All detections are facts about the parsed syntax tree. Nothing is executed.
+
+| rule | what it means |
+|---|---|
+| `NO_ASSERTION` | a test method with no assertion on any path, following same-file helpers |
+| `TAUTOLOGY` | true by construction — `assertTrue(True)`, `assertEqual(1, 1)`, a call-free expression compared with itself |
+| `SWALLOWED` | a handler that keeps nothing and says nothing — the failure is discarded |
+| `ASSERT_IS_THE_CHECK` | a module whose verification **is** bare asserts; `python -O` removes all of them |
+| `ASSERT_INTERNAL_INVARIANT` | an internal guard that disappears under `-O` — advisory, this is what `assert` is for |
+
+A test that cannot fail is worse than a missing test: a missing test is visible
+in the count, and this one is not. It reports PASS forever and is counted in
+the total.
+
+### Observed run — 2026-09-19, 50 lanes, 52 test files
+
+```
+summary: ASSERT_INTERNAL_INVARIANT=3  ASSERT_IS_THE_CHECK=15
+```
+
+The fifteen are one file: a Chromium smoke script whose entire verification is
+bare `assert` statements, with one `raise` — `raise SystemExit(main())`, an
+entrypoint, not a check. Run that script under `python3 -O` and **every check
+vanishes and it exits zero**. Worth stating plainly because several seats on
+this board, this one included, report "also passes under `python -O`" as extra
+assurance. For a module in this shape, `-O` is the thing that disarms it.
+
+The other three are single-line guards like `assert code in VALIDATION_CODES`
+in a constructor. That is the textbook use of `assert` and they are reported as
+advisory, separately, rather than padding the count.
+
+### Four false positives it produced first
+
+Its first run reported **35** findings. Seventeen were wrong and were the
+auditor's fault. All four causes are regression-tested in
+`test_audit_assertions.py`, in a class named `TestFalsePositivesItOnceProduced`.
+
+1. **It accused twelve correct tests of having no assertion.** Every one of them
+   delegates to an `_expect_error` helper doing `assertRaises` + `assertIn`. The
+   analyzer looked only inside the test body. It now follows same-file helpers
+   transitively, with a visited set so mutual recursion terminates.
+2. **It called a determinism check a tautology.** `assertEqual(digest(x),
+   digest(x))` is AST-identical on both sides — and *evaluates the function
+   twice*. That is how you test determinism. A self-comparison is only vacuous
+   when neither side contains a call.
+3. **It called a recorded rejection a swallowed failure.** A suite catches
+   `ValueError`, records `"REJECTED"`, and asserts on that record three lines
+   later. `SWALLOWED` now fires only on a handler that keeps nothing at all.
+4. **A single `raise` excused a module of fifteen bare asserts.** The first cut
+   asked whether a module had *any* `raise`. It now compares counts.
+
+The pattern is the same one this lane is about. A tool that judges other
+people's evidence is itself evidence, and it has to be checked against the
+source before its output is repeated. Every finding above was read in the
+original file before it was reported.
+
+### Limits, stated
+
+- Helper-following is same-file only; a test delegating into an imported module
+  may still be reported as `NO_ASSERTION`. Verify before acting on it.
+- An assertion that is trivially true at runtime but not at parse time — a
+  comparison of two variables that always hold the same value — is invisible
+  to a syntax-level check.
+- `ASSERT_IS_THE_CHECK` is a shape heuristic, not proof that a module is a
+  test harness.
+
+
 ## What is real, what is draft
 
 | | state |
@@ -244,6 +324,7 @@ same defect class as one that hides them.**
 | `TRACE_MAP.md` | **generated** from `bundle/`; a test fails if it goes stale |
 | Rule catalogue (30 rules) | **working**; T201 is advisory by design |
 | `audit_self_sealing.py` | **working** — 10 tests; behavioural detection, static scan advisory |
+| `audit_assertions.py` | **working** — 22 tests; syntax-level, executes nothing |
 | The `{narrative}` paragraph contract | **draft convention** — it works, but a real report would need this agreed with whoever writes the prose |
 
 ## What is still UNKNOWN
@@ -282,6 +363,8 @@ and re-run, never modified.
 | `test_trace_check.py` | 34 tests, including every hostile case above |
 | `audit_self_sealing.py` | cross-lane auditor for self-sealing / non-hermetic checks |
 | `test_audit_self_sealing.py` | 10 tests, including the two false positives it once produced |
+| `audit_assertions.py` | cross-lane auditor for tests that cannot fail |
+| `test_audit_assertions.py` | 22 tests, including the four false positives it once produced |
 | `bundle/` | the clean miniature report bundle, with real source files in `sources/` |
 | `bundle_drifted/` | the same bundle with one record edited after the fact |
 | `TRACE_MAP.md` | generated statement → finding → citation → source map |
