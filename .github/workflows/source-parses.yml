@@ -77,6 +77,15 @@ jobs:
             )
           fi
 
+      - name: Verify provider-starvation merge-train advisory when present
+        shell: bash
+        run: |
+          if [ -d ci/actions_merge_train ]; then
+            python3 -m py_compile ci/actions_merge_train/*.py
+            python3 -m unittest -v ci.actions_merge_train.test_train ci.actions_merge_train.test_cli
+            python3 -O -m unittest -v ci.actions_merge_train.test_train ci.actions_merge_train.test_cli
+          fi
+
       - name: Verify Slack mirror durable-delivery contract when present
         shell: bash
         run: |
