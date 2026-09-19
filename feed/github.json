@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 189,
-    "open_pull_requests": 128,
-    "runs_in_progress": 17,
-    "runs_queued": 912
+    "open_pull_requests": 129,
+    "runs_in_progress": 16,
+    "runs_queued": 914
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -66,6 +66,17 @@
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-quartz-v9n2-uiowa100-reproducibility",
+      "created_at": "2026-09-19T14:52:35Z",
+      "draft": false,
+      "head_sha": "e6a98a71f24ad3674f41d50e3c384fe00542b15c",
+      "number": 16337,
+      "title": "UIOWA-100: reproducible verifier artifacts without losing raw execution evidence",
+      "updated_at": "2026-09-19T14:52:35Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -164,17 +175,6 @@
       "number": 16328,
       "title": "UIOWA-014: publish source-backed peer cohort and staffing comparability rationale",
       "updated_at": "2026-09-19T14:47:41Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz/osprey86c1-uiowa047-reconcile-20260919",
-      "created_at": "2026-09-19T14:44:59Z",
-      "draft": false,
-      "head_sha": "fefde600866ed34492aee8c7bba64a2eaecdea4c",
-      "number": 16327,
-      "title": "UIOWA-047: recover fixture companion and connect canonical assessment",
-      "updated_at": "2026-09-19T14:44:59Z"
     }
   ],
   "open_heads": {
@@ -305,11 +305,12 @@
     "16333": "91ff87b96444394b9c7b29820b3e8946f22333c0",
     "16334": "ba6b2c585a7c819541b83336fbe2968926194d1b",
     "16335": "26ac7e08fbc2d0651e77d791e2c3279cb2b9e3f8",
-    "16336": "133b4db43b87bf3a9f4f8f9f2d65ec60ee2a6ebe"
+    "16336": "133b4db43b87bf3a9f4f8f9f2d65ec60ee2a6ebe",
+    "16337": "e6a98a71f24ad3674f41d50e3c384fe00542b15c"
   },
-  "pulls_listed": 128,
+  "pulls_listed": 129,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 53.6,
+  "queue_depth_per_runner": 57.1,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -479,6 +480,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T14:52:28Z",
+  "unchanged_since": "2026-09-19T14:52:41Z",
   "undatable_pulls": []
 }
