@@ -6,6 +6,7 @@ import argparse
 import copy
 import csv
 import hashlib
+import io
 import json
 import sys
 from pathlib import Path
@@ -19,8 +20,9 @@ else:
 DELIVERY_FIELDS = ("commit_at", "deployed_at", "recovered_at")
 
 
-def read_rows(path: Path) -> tuple[list[str], list[dict[str, str]]]:
-    with path.open(encoding="utf-8", newline="") as stream:
+def _parse_rows(data: bytes) -> tuple[list[str], list[dict[str, str]]]:
+    """Parse a retained byte snapshot; preserve embedded CSV newline values."""
+    with io.StringIO(data.decode("utf-8"), newline="") as stream:
         reader = csv.DictReader(stream, strict=True)
         fields = reader.fieldnames or []
         if not fields or any(not field.strip() for field in fields) or len(set(fields)) != len(fields):
@@ -31,6 +33,11 @@ def read_rows(path: Path) -> tuple[list[str], list[dict[str, str]]]:
                 raise InputError(f"CSV record {index}: field count differs from header")
             rows.append(row)
     return fields, rows
+
+
+def read_rows(path: Path) -> tuple[list[str], list[dict[str, str]]]:
+    """Retain the existing public return contract for callers."""
+    return _parse_rows(path.read_bytes())
 
 
 def convert_rows(rows: list[dict], *, timestamp_fields: tuple[str, ...] = DELIVERY_FIELDS,
@@ -106,13 +113,16 @@ def main(argv: list[str] | None = None) -> int:
             raise InputError("source, output and audit must be distinct paths")
         if args.output.exists() or args.audit.exists():
             raise InputError("output/audit already exists; choose new paths to avoid stale or overwritten evidence")
-        fields, rows = read_rows(args.csv_path)
+        # Parse and hash the same bytes even if the export is refreshed while
+        # conversion is in progress. This is provenance, not a file lock.
+        source_bytes = args.csv_path.read_bytes()
+        fields, rows = _parse_rows(source_bytes)
         timestamps = tuple(args.fields.split(","))
         required = tuple(args.required.split(",")) if args.required else ()
         if not {args.id_field, *timestamps} <= set(fields):
             raise InputError("the CSV header is missing an explicitly mapped ID/timestamp column")
         report = convert_rows(rows, timestamp_fields=timestamps, required_fields=required, id_field=args.id_field)
-        report["input_file_sha256"] = hashlib.sha256(args.csv_path.read_bytes()).hexdigest()
+        report["input_file_sha256"] = hashlib.sha256(source_bytes).hexdigest()
         with args.audit.open("x", encoding="utf-8", newline="") as stream:
             stream.write(json.dumps(report, ensure_ascii=False, sort_keys=True, indent=2, allow_nan=False) + "\n")
         if report["status"] != "ready":

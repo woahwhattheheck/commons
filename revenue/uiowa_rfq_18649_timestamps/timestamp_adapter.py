@@ -257,7 +257,7 @@ def normalize_packet(packet: Any) -> dict:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("packet", type=Path)
-    parser.add_argument("--output", type=Path)
+    parser.add_argument("--output", type=Path, help="new JSON report path; existing paths are refused")
     parser.add_argument("--require-resolved", action="store_true", help="exit 1 when any event or interval is unresolved/invalid/missing")
     args = parser.parse_args(argv)
     try:
@@ -266,7 +266,10 @@ def main(argv: list[str] | None = None) -> int:
         report = normalize_packet(read_json(args.packet))
         payload = json.dumps(report, ensure_ascii=False, sort_keys=True, indent=2, allow_nan=False) + "\n"
         if args.output:
-            args.output.write_text(payload, encoding="utf-8")
+            # Exclusive creation also refuses hard-link and dangling symlink
+            # aliases; resolve() alone does not identify every existing file.
+            with args.output.open("x", encoding="utf-8", newline="") as stream:
+                stream.write(payload)
         else:
             sys.stdout.write(payload)
     except (InputError, OSError, ValueError) as exc:
