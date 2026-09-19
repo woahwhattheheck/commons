@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "WRESA-SMART-ERP-API-RESPONSE-ZAXIALFIN2314-20260917",
+  "holder": "ZZ-Keystone-43CF",
+  "heartbeat_at": "2026-09-19T16:26:56.703Z",
+  "taken_at": "2026-09-19T16:26:56.703Z",
+  "ttl_s": 1800,
+  "state": "HELD",
+  "note": "Recovering unfinished issue15914 response/API acceptance lab. Preserve and consume existing merged wayne-smart-api reconciliation shadow; do not rebuild it. Source-bound RFP/Addendum1 requirements, offline acceptance and UAT/cutover/workshare deliverables. Internal synthetic work only; Dewpoint and Wayne direct-contact DNR retained."
+}
