@@ -221,8 +221,14 @@ async function importDraft() {
     const file = el.handoffFile.files?.[0];
     if (!file) throw new Error("Choose a saved draft handoff JSON file.");
     if (file.size > 1024 * 1024) throw new Error("Saved draft exceeds the 1 MiB intake limit.");
-    const contents = await file.text();
+    let bytes;
+    try { bytes = await file.arrayBuffer(); }
+    catch { throw new Error("Saved draft file could not be read."); }
     if (generation !== state.generation || sequence !== state.draftLoadSequence) return;
+    if (bytes.byteLength > 1024 * 1024) throw new Error("Saved draft exceeds the 1 MiB intake limit.");
+    let contents;
+    try { contents = new TextDecoder("utf-8", { fatal: true }).decode(bytes); }
+    catch { throw new Error("Saved draft must be valid UTF-8; current notes are unchanged."); }
     if (editRevision !== state.editRevision) {
       throw new Error("Notes changed while the draft was loading. Restore again if you want to replace them.");
     }
