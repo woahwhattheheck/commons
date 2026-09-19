@@ -1,0 +1,659 @@
+{
+  "findings": [
+    {
+      "detail": "test_json_is_serialisable() asserts nothing; it passes unless one of its calls raises",
+      "kind": "SMOKE_TEST_NO_ASSERTION",
+      "lane": "uiowa_rfq_18649_run_sweep",
+      "line": 419,
+      "name": "test_json_is_serialisable",
+      "path": "test_run_sweep.py",
+      "severity": "REVIEW"
+    },
+    {
+      "detail": "no test methods found and no sibling suite imported; a discovery runner collects this file and reports OK",
+      "kind": "NO_TESTS_COLLECTED",
+      "lane": "uiowa_rfq_18649_test_data_readiness",
+      "line": 1,
+      "name": "",
+      "path": "test_data_assessor.py",
+      "severity": "DEFECT"
+    }
+  ],
+  "metrics": [
+    {
+      "assertions": 68,
+      "guards": 1,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_acceptance_map",
+      "modules": 3,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 33
+    },
+    {
+      "assertions": 101,
+      "guards": 3,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_adoption_readiness",
+      "modules": 1,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 49
+    },
+    {
+      "assertions": 66,
+      "guards": 6,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_ai_decision_case",
+      "modules": 5,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 34
+    },
+    {
+      "assertions": 104,
+      "guards": 7,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_ai_eval_kit",
+      "modules": 2,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 29
+    },
+    {
+      "assertions": 110,
+      "guards": 10,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_ai_integration",
+      "modules": 13,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 46
+    },
+    {
+      "assertions": 81,
+      "guards": 4,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_ai_opportunity_portfolio",
+      "modules": 1,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 39
+    },
+    {
+      "assertions": 86,
+      "guards": 3,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_ai_policy_to_workflow",
+      "modules": 1,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 36
+    },
+    {
+      "assertions": 96,
+      "guards": 2,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_ai_use_inventory",
+      "modules": 3,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 43
+    },
+    {
+      "assertions": 110,
+      "guards": 14,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_base_fee_economics",
+      "modules": 4,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 52
+    },
+    {
+      "assertions": 145,
+      "guards": 8,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_bid_pack",
+      "modules": 4,
+      "suite_aggregators": [],
+      "test_files": 2,
+      "test_methods": 62
+    },
+    {
+      "assertions": 0,
+      "guards": 0,
+      "has_negative_case": false,
+      "lane": "uiowa_rfq_18649_build_board",
+      "modules": 0,
+      "suite_aggregators": [],
+      "test_files": 0,
+      "test_methods": 0
+    },
+    {
+      "assertions": 66,
+      "guards": 1,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_capability_appendix",
+      "modules": 1,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 39
+    },
+    {
+      "assertions": 73,
+      "guards": 9,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_capacity_benchmark",
+      "modules": 3,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 36
+    },
+    {
+      "assertions": 91,
+      "guards": 5,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_capacity_feasibility",
+      "modules": 1,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 51
+    },
+    {
+      "assertions": 42,
+      "guards": 0,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_capacity_scan",
+      "modules": 2,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 24
+    },
+    {
+      "assertions": 14,
+      "guards": 4,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_closeout",
+      "modules": 1,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 7
+    },
+    {
+      "assertions": 65,
+      "guards": 3,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_contractor_transition",
+      "modules": 2,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 34
+    },
+    {
+      "assertions": 76,
+      "guards": 7,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_deadline_continuity",
+      "modules": 2,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 42
+    },
+    {
+      "assertions": 20,
+      "guards": 5,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_delivery_metrics",
+      "modules": 1,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 6
+    },
+    {
+      "assertions": 56,
+      "guards": 0,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_delivery_scan",
+      "modules": 1,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 36
+    },
+    {
+      "assertions": 0,
+      "guards": 0,
+      "has_negative_case": false,
+      "lane": "uiowa_rfq_18649_doc_usability",
+      "modules": 0,
+      "suite_aggregators": [],
+      "test_files": 0,
+      "test_methods": 0
+    },
+    {
+      "assertions": 19,
+      "guards": 3,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_document_extraction",
+      "modules": 2,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 6
+    },
+    {
+      "assertions": 196,
+      "guards": 12,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_economics_resource_adapters",
+      "modules": 5,
+      "suite_aggregators": [],
+      "test_files": 3,
+      "test_methods": 102
+    },
+    {
+      "assertions": 76,
+      "guards": 6,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_exec_summary",
+      "modules": 5,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 42
+    },
+    {
+      "assertions": 39,
+      "guards": 0,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_export_safety",
+      "modules": 1,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 18
+    },
+    {
+      "assertions": 45,
+      "guards": 1,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_filesystem_safety",
+      "modules": 2,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 24
+    },
+    {
+      "assertions": 17,
+      "guards": 3,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_handoff",
+      "modules": 1,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 6
+    },
+    {
+      "assertions": 0,
+      "guards": 0,
+      "has_negative_case": false,
+      "lane": "uiowa_rfq_18649_incident_learning",
+      "modules": 0,
+      "suite_aggregators": [],
+      "test_files": 0,
+      "test_methods": 0
+    },
+    {
+      "assertions": 89,
+      "guards": 2,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "modules": 2,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 34
+    },
+    {
+      "assertions": 0,
+      "guards": 5,
+      "has_negative_case": false,
+      "lane": "uiowa_rfq_18649_integration",
+      "modules": 2,
+      "suite_aggregators": [],
+      "test_files": 0,
+      "test_methods": 0
+    },
+    {
+      "assertions": 112,
+      "guards": 15,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_milestone_packets",
+      "modules": 6,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 55
+    },
+    {
+      "assertions": 0,
+      "guards": 0,
+      "has_negative_case": false,
+      "lane": "uiowa_rfq_18649_mobilization",
+      "modules": 0,
+      "suite_aggregators": [],
+      "test_files": 0,
+      "test_methods": 0
+    },
+    {
+      "assertions": 19,
+      "guards": 4,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_observability",
+      "modules": 1,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 5
+    },
+    {
+      "assertions": 86,
+      "guards": 0,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_operator_handoff",
+      "modules": 3,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 37
+    },
+    {
+      "assertions": 21,
+      "guards": 1,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_outcome_measurement",
+      "modules": 1,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 6
+    },
+    {
+      "assertions": 78,
+      "guards": 9,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "modules": 2,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 41
+    },
+    {
+      "assertions": 72,
+      "guards": 3,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_print_pagination",
+      "modules": 1,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 39
+    },
+    {
+      "assertions": 188,
+      "guards": 12,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_prioritization",
+      "modules": 1,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 50
+    },
+    {
+      "assertions": 82,
+      "guards": 7,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_qa_refusal_contract",
+      "modules": 4,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 57
+    },
+    {
+      "assertions": 81,
+      "guards": 3,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_question_cards",
+      "modules": 1,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 40
+    },
+    {
+      "assertions": 29,
+      "guards": 4,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_rating_model",
+      "modules": 1,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 7
+    },
+    {
+      "assertions": 89,
+      "guards": 4,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_readout_deck",
+      "modules": 1,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 56
+    },
+    {
+      "assertions": 142,
+      "guards": 6,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_recovery_evidence",
+      "modules": 2,
+      "suite_aggregators": [],
+      "test_files": 2,
+      "test_methods": 57
+    },
+    {
+      "assertions": 64,
+      "guards": 7,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_release_provenance",
+      "modules": 2,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 34
+    },
+    {
+      "assertions": 129,
+      "guards": 18,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_release_recovery_case",
+      "modules": 2,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 54
+    },
+    {
+      "assertions": 97,
+      "guards": 2,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_report_structure",
+      "modules": 2,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 55
+    },
+    {
+      "assertions": 195,
+      "guards": 19,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_report_visuals",
+      "modules": 8,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 90
+    },
+    {
+      "assertions": 93,
+      "guards": 1,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_roadmap_dependencies",
+      "modules": 1,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 47
+    },
+    {
+      "assertions": 80,
+      "guards": 0,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_run_sweep",
+      "modules": 1,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 36
+    },
+    {
+      "assertions": 149,
+      "guards": 9,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_scope_change",
+      "modules": 1,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 48
+    },
+    {
+      "assertions": 12,
+      "guards": 3,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_secure_guidance",
+      "modules": 1,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 8
+    },
+    {
+      "assertions": 20,
+      "guards": 3,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_security_event_review",
+      "modules": 1,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 9
+    },
+    {
+      "assertions": 10,
+      "guards": 1,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_synthetic_collection",
+      "modules": 1,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 5
+    },
+    {
+      "assertions": 22,
+      "guards": 0,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_test_data_readiness",
+      "modules": 0,
+      "suite_aggregators": [],
+      "test_files": 2,
+      "test_methods": 7
+    },
+    {
+      "assertions": 95,
+      "guards": 5,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_traceability",
+      "modules": 4,
+      "suite_aggregators": [],
+      "test_files": 3,
+      "test_methods": 68
+    },
+    {
+      "assertions": 0,
+      "guards": 0,
+      "has_negative_case": false,
+      "lane": "uiowa_rfq_18649_traceability_rehearsal",
+      "modules": 1,
+      "suite_aggregators": [],
+      "test_files": 0,
+      "test_methods": 0
+    },
+    {
+      "assertions": 42,
+      "guards": 0,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_uncertainty_lint",
+      "modules": 2,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 33
+    },
+    {
+      "assertions": 114,
+      "guards": 3,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_unknown_propagation",
+      "modules": 1,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 46
+    },
+    {
+      "assertions": 70,
+      "guards": 0,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_vocabulary_crosswalk",
+      "modules": 3,
+      "suite_aggregators": [],
+      "test_files": 1,
+      "test_methods": 32
+    },
+    {
+      "assertions": 31,
+      "guards": 7,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_workbench",
+      "modules": 3,
+      "suite_aggregators": [],
+      "test_files": 2,
+      "test_methods": 11
+    },
+    {
+      "assertions": 7,
+      "guards": 29,
+      "has_negative_case": true,
+      "lane": "uiowa_rfq_18649_workshare",
+      "modules": 22,
+      "suite_aggregators": [
+        {
+          "path": "test_compiler.py",
+          "runs": [
+            "authority_tests_core",
+            "authority_tests_verification",
+            "filesystem_tests_cli",
+            "filesystem_tests_io"
+          ]
+        }
+      ],
+      "test_files": 2,
+      "test_methods": 5
+    }
+  ],
+  "summary": {
+    "assertions": 4180,
+    "by_kind": {
+      "NO_TESTS_COLLECTED": 1,
+      "SMOKE_TEST_NO_ASSERTION": 1
+    },
+    "defects": 1,
+    "findings_total": 2,
+    "lanes_audited": 61,
+    "lanes_clean": 59,
+    "lanes_with_findings": 2,
+    "review_items": 1,
+    "test_files": 64,
+    "test_methods": 1968
+  }
+}

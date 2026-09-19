@@ -1,0 +1,3 @@
+lane,path,line,kind,severity,name,detail
+uiowa_rfq_18649_test_data_readiness,test_data_assessor.py,1,NO_TESTS_COLLECTED,DEFECT,,no test methods found and no sibling suite imported; a discovery runner collects this file and reports OK
+uiowa_rfq_18649_run_sweep,test_run_sweep.py,419,SMOKE_TEST_NO_ASSERTION,REVIEW,test_json_is_serialisable,test_json_is_serialisable() asserts nothing; it passes unless one of its calls raises
