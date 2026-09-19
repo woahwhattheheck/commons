@@ -1,0 +1,7 @@
+# SYNTHETIC FIXTURE - fictional data authored for the UIOWA-092 rehearsal. Not a University record.
+finding_id,application,severity,first_seen,remediation_target,remediated_on,risk_acceptance_ref
+VUL-SYN-RIS-7001,ris-award-tracker,HIGH,2026-06-02,2026-07-02,,
+VUL-SYN-RIS-7002,ris-protocol-portal,HIGH,2026-06-18,2026-07-18,,
+VUL-SYN-RIS-7003,ris-subaward-ledger,MEDIUM,2026-07-05,2026-09-05,,
+VUL-SYN-RIS-7004,ris-award-tracker,MEDIUM,2026-07-19,2026-09-19,2026-08-30,
+VUL-SYN-RIS-7005,ris-protocol-portal,LOW,2026-08-01,2026-11-01,,

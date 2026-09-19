@@ -1,0 +1,7 @@
+# SYNTHETIC FIXTURE - fictional data authored for the UIOWA-092 rehearsal. Not a University record.
+# Campaign IAM-SYN-RECERT-2026Q2 - closed 2026-06-30. Accounts in scope: 102.
+disposition,account_count,has_named_owner,has_expiry
+retained_confirmed,71,true,
+revoked,19,true,
+reduced_scope,8,true,
+exception_open,4,true,true

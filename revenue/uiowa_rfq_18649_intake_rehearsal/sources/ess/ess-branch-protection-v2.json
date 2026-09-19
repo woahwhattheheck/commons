@@ -1,0 +1,12 @@
+{
+  "_synthetic": "SYNTHETIC FIXTURE - fictional data authored for the UIOWA-092 rehearsal. Not a University record.",
+  "export_name": "ess-branch-protection-v2",
+  "exported_from": "fictional source-control platform, ESS organization",
+  "repositories": [
+    {"repo": "ess-app-alpha", "default_branch": "main", "require_pull_request": true, "required_approving_reviews": 1, "required_status_checks": ["build-and-test"]},
+    {"repo": "ess-app-beta", "default_branch": "main", "require_pull_request": true, "required_approving_reviews": 1, "required_status_checks": ["build-and-test"]},
+    {"repo": "ess-app-gamma", "default_branch": "main", "require_pull_request": true, "required_approving_reviews": 1, "required_status_checks": ["build-and-test"]}
+  ],
+  "repositories_in_export": 3,
+  "repositories_in_group_inventory": 3
+}

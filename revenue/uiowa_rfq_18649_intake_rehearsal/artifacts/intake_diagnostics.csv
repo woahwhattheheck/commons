@@ -1,0 +1,5 @@
+# SYNTHETIC REHEARSAL OUTPUT - every organization, document, number and quotation below is fictional, authored for the UIOWA-092 integration rehearsal. Nothing here is a University of Iowa record, measurement, or finding.
+seq,severity,reason_code,record_kind,record_id,locator,detail,effect,reason_description
+1,NOTE,INT_NO_CLAIM,interview,INT-SYN-IAM-03,OBS-SYN-IAM-DEP-001,excerpt offers to produce an artifact but makes no claim about practice,contributes no support; the cited evidence remains outstanding,Excerpt establishes availability only and contributes no support.
+2,DEGRADE,OBS_UNRESOLVED_SOURCE,observation,OBS-SYN-IAM-DEP-001,SRC-SYN-IAM-05#whole file,cited source is UNRESOLVED_MISSING,citation retained but carries no evidentiary weight,Observation cites a source that did not resolve to readable bytes.
+3,DEGRADE,SRC_MISSING,source,SRC-SYN-IAM-05,iam/iam-deploy-log-2026-08.csv,"declared in the register, not present on disk",retained as UNRESOLVED; cannot support any observation,Declared source file is not present at its path.

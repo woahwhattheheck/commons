@@ -1,0 +1,1194 @@
+{
+  "_synthetic": "SYNTHETIC REHEARSAL OUTPUT - every organization, document, number and quotation below is fictional, authored for the UIOWA-092 integration rehearsal. Nothing here is a University of Iowa record, measurement, or finding.",
+  "areas": {
+    "AI": "AI readiness",
+    "DEP": "Deployment and operations",
+    "SD": "Software development",
+    "SEC": "Security"
+  },
+  "as_of": "2026-09-19",
+  "cell_states": [
+    "DEMONSTRATED_STRENGTH",
+    "OBSERVED_GAP",
+    "MIXED",
+    "CONFLICT",
+    "PARTIAL",
+    "UNKNOWN"
+  ],
+  "collection_id": "COLL-SYN-092-A",
+  "counts": {
+    "diagnostics": {
+      "DEGRADE": 2,
+      "NOTE": 1,
+      "REJECT": 0
+    },
+    "interview_excerpts": 5,
+    "interview_excerpts_contributing_support": 4,
+    "observations_accepted": 16,
+    "sources_declared": 12,
+    "sources_resolved": 11
+  },
+  "diagnostics": [
+    {
+      "detail": "excerpt offers to produce an artifact but makes no claim about practice",
+      "effect": "contributes no support; the cited evidence remains outstanding",
+      "locator": "OBS-SYN-IAM-DEP-001",
+      "reason_code": "INT_NO_CLAIM",
+      "reason_description": "Excerpt establishes availability only and contributes no support.",
+      "record_id": "INT-SYN-IAM-03",
+      "record_kind": "interview",
+      "seq": 1,
+      "severity": "NOTE"
+    },
+    {
+      "detail": "cited source is UNRESOLVED_MISSING",
+      "effect": "citation retained but carries no evidentiary weight",
+      "locator": "SRC-SYN-IAM-05#whole file",
+      "reason_code": "OBS_UNRESOLVED_SOURCE",
+      "reason_description": "Observation cites a source that did not resolve to readable bytes.",
+      "record_id": "OBS-SYN-IAM-DEP-001",
+      "record_kind": "observation",
+      "seq": 2,
+      "severity": "DEGRADE"
+    },
+    {
+      "detail": "declared in the register, not present on disk",
+      "effect": "retained as UNRESOLVED; cannot support any observation",
+      "locator": "iam/iam-deploy-log-2026-08.csv",
+      "reason_code": "SRC_MISSING",
+      "reason_description": "Declared source file is not present at its path.",
+      "record_id": "SRC-SYN-IAM-05",
+      "record_kind": "source",
+      "seq": 3,
+      "severity": "DEGRADE"
+    }
+  ],
+  "groups": [
+    "ESS",
+    "RIS",
+    "IAM"
+  ],
+  "interview_excerpts": [
+    {
+      "area": "SEC",
+      "artifact_offered": false,
+      "conducted_on": "2026-09-16",
+      "establishes": "practice_claim",
+      "excerpt": "We review application access every quarter. I am confident it happens but I would have to ask someone else where the completed reviews are filed.",
+      "group": "ESS",
+      "interview_id": "INT-SYN-ESS-01",
+      "participant_role": "fictional ESS application administrator",
+      "supports_observation": "OBS-SYN-ESS-SEC-001"
+    },
+    {
+      "area": "SEC",
+      "artifact_offered": true,
+      "conducted_on": "2026-09-16",
+      "establishes": "practice_claim",
+      "excerpt": "The second-quarter recertification closed on schedule. Four accounts could not be actioned in the window; each is carrying a named owner and an expiry date.",
+      "group": "IAM",
+      "interview_id": "INT-SYN-IAM-01",
+      "participant_role": "fictional IAM service owner",
+      "supports_observation": "OBS-SYN-IAM-SEC-001"
+    },
+    {
+      "area": "SD",
+      "artifact_offered": false,
+      "conducted_on": "2026-09-17",
+      "establishes": "practice_claim",
+      "excerpt": "Every configuration change gets reviewed by a second engineer before it goes out. That is just how we work.",
+      "group": "IAM",
+      "interview_id": "INT-SYN-IAM-02",
+      "participant_role": "fictional IAM engineer",
+      "supports_observation": "OBS-SYN-IAM-SD-002"
+    },
+    {
+      "area": "DEP",
+      "artifact_offered": false,
+      "conducted_on": "2026-09-17",
+      "establishes": "availability_only",
+      "excerpt": "We can pull the deployment log for you, I just have not had a chance to export it yet.",
+      "group": "IAM",
+      "interview_id": "INT-SYN-IAM-03",
+      "participant_role": "fictional IAM engineer",
+      "supports_observation": "OBS-SYN-IAM-DEP-001"
+    },
+    {
+      "area": "AI",
+      "artifact_offered": false,
+      "conducted_on": "2026-09-17",
+      "establishes": "practice_claim",
+      "excerpt": "A couple of us have used an assistant to generate test data for the subaward work. It is not something the team has adopted and nobody has written it down anywhere.",
+      "group": "RIS",
+      "interview_id": "INT-SYN-RIS-01",
+      "participant_role": "fictional RIS developer",
+      "supports_observation": "OBS-SYN-RIS-AI-001"
+    }
+  ],
+  "matrix": [
+    {
+      "area": "SD",
+      "area_label": "Software development",
+      "basis": "Direct artifact evidence from independent observations across source types change_record, configuration_export.",
+      "cell_id": "CELL-ESS-SD",
+      "follow_up": [
+        "Confirm the repository inventory is complete before any group-wide statement.",
+        "Widen the sample or request the full merge history for the period."
+      ],
+      "group": "ESS",
+      "group_label": "ESS (fictional enterprise student systems group)",
+      "observation_count": 2,
+      "observation_ids": [
+        "OBS-SYN-ESS-SD-001",
+        "OBS-SYN-ESS-SD-002"
+      ],
+      "outstanding_evidence": [],
+      "state": "DEMONSTRATED_STRENGTH",
+      "usable_source_ids": [
+        "SRC-SYN-ESS-01",
+        "SRC-SYN-ESS-02"
+      ]
+    },
+    {
+      "area": "SEC",
+      "area_label": "Security",
+      "basis": "Support is interview statement only (OBS-SYN-ESS-SEC-001). The practice is stated, not demonstrated; no artifact was produced.",
+      "cell_id": "CELL-ESS-SEC",
+      "follow_up": [
+        "Request one completed quarterly review with its date and the reviewing role."
+      ],
+      "group": "ESS",
+      "group_label": "ESS (fictional enterprise student systems group)",
+      "observation_count": 1,
+      "observation_ids": [
+        "OBS-SYN-ESS-SEC-001"
+      ],
+      "outstanding_evidence": [],
+      "state": "PARTIAL",
+      "usable_source_ids": []
+    },
+    {
+      "area": "DEP",
+      "area_label": "Deployment and operations",
+      "basis": "Direct evidence supports both a strength and a shortfall in this area; both are reported rather than netted against each other.",
+      "cell_id": "CELL-ESS-DEP",
+      "follow_up": [
+        "Ask whether exceptions are recorded in a separate system, or whether these were unexcepted.",
+        "Confirm whether the log is the authoritative record or a secondary copy."
+      ],
+      "group": "ESS",
+      "group_label": "ESS (fictional enterprise student systems group)",
+      "observation_count": 2,
+      "observation_ids": [
+        "OBS-SYN-ESS-DEP-001",
+        "OBS-SYN-ESS-DEP-002"
+      ],
+      "outstanding_evidence": [],
+      "state": "MIXED",
+      "usable_source_ids": [
+        "SRC-SYN-ESS-03",
+        "SRC-SYN-ESS-04"
+      ]
+    },
+    {
+      "area": "AI",
+      "area_label": "AI readiness",
+      "basis": "No evidence was supplied for this cell.",
+      "cell_id": "CELL-ESS-AI",
+      "follow_up": [],
+      "group": "ESS",
+      "group_label": "ESS (fictional enterprise student systems group)",
+      "observation_count": 0,
+      "observation_ids": [],
+      "outstanding_evidence": [],
+      "state": "UNKNOWN",
+      "usable_source_ids": []
+    },
+    {
+      "area": "SD",
+      "area_label": "Software development",
+      "basis": "Direct artifact evidence of a shortfall against a stated expectation (OBS-SYN-RIS-SD-001, OBS-SYN-RIS-SD-002).",
+      "cell_id": "CELL-RIS-SD",
+      "follow_up": [
+        "Ask whether test evidence is held outside the release record, and for which releases.",
+        "Ask whether this was an exception, a data-entry error, or a normal practice."
+      ],
+      "group": "RIS",
+      "group_label": "RIS (fictional research information systems group)",
+      "observation_count": 2,
+      "observation_ids": [
+        "OBS-SYN-RIS-SD-001",
+        "OBS-SYN-RIS-SD-002"
+      ],
+      "outstanding_evidence": [],
+      "state": "OBSERVED_GAP",
+      "usable_source_ids": [
+        "SRC-SYN-RIS-01"
+      ]
+    },
+    {
+      "area": "SEC",
+      "area_label": "Security",
+      "basis": "Direct evidence supports both a strength and a shortfall in this area; both are reported rather than netted against each other.",
+      "cell_id": "CELL-RIS-SEC",
+      "follow_up": [
+        "Ask where overdue findings are escalated and whether any acceptance exists off-report.",
+        "Confirm scan coverage against the application inventory."
+      ],
+      "group": "RIS",
+      "group_label": "RIS (fictional research information systems group)",
+      "observation_count": 2,
+      "observation_ids": [
+        "OBS-SYN-RIS-SEC-001",
+        "OBS-SYN-RIS-SEC-002"
+      ],
+      "outstanding_evidence": [],
+      "state": "MIXED",
+      "usable_source_ids": [
+        "SRC-SYN-RIS-03"
+      ]
+    },
+    {
+      "area": "DEP",
+      "area_label": "Deployment and operations",
+      "basis": "Direct artifact evidence of a shortfall against a stated expectation (OBS-SYN-RIS-DEP-001).",
+      "cell_id": "CELL-RIS-DEP",
+      "follow_up": [
+        "Request the date and outcome of the most recent restoration test, if one exists."
+      ],
+      "group": "RIS",
+      "group_label": "RIS (fictional research information systems group)",
+      "observation_count": 1,
+      "observation_ids": [
+        "OBS-SYN-RIS-DEP-001"
+      ],
+      "outstanding_evidence": [],
+      "state": "OBSERVED_GAP",
+      "usable_source_ids": [
+        "SRC-SYN-RIS-02"
+      ]
+    },
+    {
+      "area": "AI",
+      "area_label": "AI readiness",
+      "basis": "Support is interview statement only (OBS-SYN-RIS-AI-001). The practice is stated, not demonstrated; no artifact was produced.",
+      "cell_id": "CELL-RIS-AI",
+      "follow_up": [
+        "Ask what inputs were used and whether any team-level guidance exists."
+      ],
+      "group": "RIS",
+      "group_label": "RIS (fictional research information systems group)",
+      "observation_count": 1,
+      "observation_ids": [
+        "OBS-SYN-RIS-AI-001"
+      ],
+      "outstanding_evidence": [],
+      "state": "PARTIAL",
+      "usable_source_ids": []
+    },
+    {
+      "area": "SD",
+      "area_label": "Software development",
+      "basis": "Sources disagree about the same claim (conflict group IAM-SD-REVIEW). The disagreement is retained rather than resolved by the tool.",
+      "cell_id": "CELL-IAM-SD",
+      "follow_up": [
+        "Ask whether review is recorded outside this export for the other three changes.",
+        "Reconcile the stated practice with the three changes that record no reviewer."
+      ],
+      "group": "IAM",
+      "group_label": "IAM (fictional identity and access management group)",
+      "observation_count": 2,
+      "observation_ids": [
+        "OBS-SYN-IAM-SD-001",
+        "OBS-SYN-IAM-SD-002"
+      ],
+      "outstanding_evidence": [],
+      "state": "CONFLICT",
+      "usable_source_ids": [
+        "SRC-SYN-IAM-03"
+      ]
+    },
+    {
+      "area": "SEC",
+      "area_label": "Security",
+      "basis": "Direct artifact evidence, corroborated across more than one source type (OBS-SYN-IAM-SEC-001).",
+      "cell_id": "CELL-IAM-SEC",
+      "follow_up": [
+        "Request the next campaign's export to confirm the four exceptions closed at expiry."
+      ],
+      "group": "IAM",
+      "group_label": "IAM (fictional identity and access management group)",
+      "observation_count": 1,
+      "observation_ids": [
+        "OBS-SYN-IAM-SEC-001"
+      ],
+      "outstanding_evidence": [],
+      "state": "DEMONSTRATED_STRENGTH",
+      "usable_source_ids": [
+        "SRC-SYN-IAM-01",
+        "SRC-SYN-IAM-02"
+      ]
+    },
+    {
+      "area": "DEP",
+      "area_label": "Deployment and operations",
+      "basis": "Evidence was identified but none of it resolved to readable material (OBS-SYN-IAM-DEP-001). Nothing is established about this area in either direction.",
+      "cell_id": "CELL-IAM-DEP",
+      "follow_up": [
+        "Re-request the August deployment export, or agree an alternative record."
+      ],
+      "group": "IAM",
+      "group_label": "IAM (fictional identity and access management group)",
+      "observation_count": 1,
+      "observation_ids": [
+        "OBS-SYN-IAM-DEP-001"
+      ],
+      "outstanding_evidence": [
+        "SRC-SYN-IAM-05"
+      ],
+      "state": "UNKNOWN",
+      "usable_source_ids": []
+    },
+    {
+      "area": "AI",
+      "area_label": "AI readiness",
+      "basis": "Direct evidence establishes context or intent but does not demonstrate a practice in operation.",
+      "cell_id": "CELL-IAM-AI",
+      "follow_up": [
+        "Ask what would trigger a start and who would own an evaluation."
+      ],
+      "group": "IAM",
+      "group_label": "IAM (fictional identity and access management group)",
+      "observation_count": 1,
+      "observation_ids": [
+        "OBS-SYN-IAM-AI-001"
+      ],
+      "outstanding_evidence": [],
+      "state": "PARTIAL",
+      "usable_source_ids": [
+        "SRC-SYN-IAM-04"
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "area": "DEP",
+      "claim": "August production deployments and rollbacks are recorded against deployment identifiers in a single log, giving a usable deployment history.",
+      "count_assertion": {
+        "denominator": 14,
+        "numerator": 14,
+        "unit": "deployments carrying an identifier"
+      },
+      "direction": "STRENGTH",
+      "follow_up": "Confirm whether the log is the authoritative record or a secondary copy.",
+      "group": "ESS",
+      "locators": [
+        {
+          "content_sha256": "d0bfad3537a57729c3f6ad6c4f0632bc64c27df1502160e77c2fa21843ab6886",
+          "locator": "rows 1-14",
+          "path": "ess/ess-deploy-log-2026-08.csv",
+          "resolution": "RESOLVED",
+          "source_id": "SRC-SYN-ESS-03",
+          "version": "2026-08"
+        }
+      ],
+      "observation_id": "OBS-SYN-ESS-DEP-001",
+      "scope_limit": "One month of one fictional group's deployments.",
+      "source_refs": [
+        {
+          "locator": "rows 1-14",
+          "source_id": "SRC-SYN-ESS-03"
+        }
+      ],
+      "support": {
+        "corroboration": "SINGLE_SOURCE",
+        "directness": "DIRECT",
+        "interview_support": [],
+        "source_types": [
+          "system_log"
+        ],
+        "unusable_sources": [],
+        "usable_sources": [
+          "SRC-SYN-ESS-03"
+        ]
+      }
+    },
+    {
+      "area": "DEP",
+      "claim": "Six of fourteen August deployments landed outside the Tuesday/Thursday window defined by the release standard, and three of those six carry no documented exception.",
+      "count_assertion": {
+        "denominator": 6,
+        "numerator": 3,
+        "unit": "out-of-window deployments without a documented exception",
+        "whole": 14
+      },
+      "direction": "GAP",
+      "follow_up": "Ask whether exceptions are recorded in a separate system, or whether these were unexcepted.",
+      "group": "ESS",
+      "locators": [
+        {
+          "content_sha256": "d0bfad3537a57729c3f6ad6c4f0632bc64c27df1502160e77c2fa21843ab6886",
+          "locator": "rows 3,6,9,12,13,14",
+          "path": "ess/ess-deploy-log-2026-08.csv",
+          "resolution": "RESOLVED",
+          "source_id": "SRC-SYN-ESS-03",
+          "version": "2026-08"
+        },
+        {
+          "content_sha256": "480fa59d9c273a50bd7c96d3356b92b4899356c68f2e96f94841dfe4acdda0b9",
+          "locator": "#2-out-of-window-releases",
+          "path": "ess/ess-release-window-policy-v3.md",
+          "resolution": "RESOLVED",
+          "source_id": "SRC-SYN-ESS-04",
+          "version": "v3"
+        }
+      ],
+      "observation_id": "OBS-SYN-ESS-DEP-002",
+      "scope_limit": "August only; the standard's exception process may be recorded elsewhere.",
+      "source_refs": [
+        {
+          "locator": "rows 3,6,9,12,13,14",
+          "source_id": "SRC-SYN-ESS-03"
+        },
+        {
+          "locator": "#2-out-of-window-releases",
+          "source_id": "SRC-SYN-ESS-04"
+        }
+      ],
+      "support": {
+        "corroboration": "MULTI_TYPE",
+        "directness": "DIRECT",
+        "interview_support": [],
+        "source_types": [
+          "policy",
+          "system_log"
+        ],
+        "unusable_sources": [],
+        "usable_sources": [
+          "SRC-SYN-ESS-03",
+          "SRC-SYN-ESS-04"
+        ]
+      }
+    },
+    {
+      "area": "SD",
+      "claim": "All three repositories in the ESS export require a pull request with at least one approving review and a passing build-and-test status check before merge to the default branch.",
+      "count_assertion": {
+        "denominator": 3,
+        "numerator": 3,
+        "unit": "repositories with required review and status check",
+        "whole": 3
+      },
+      "direction": "STRENGTH",
+      "follow_up": "Confirm the repository inventory is complete before any group-wide statement.",
+      "group": "ESS",
+      "locators": [
+        {
+          "content_sha256": "c65b5602be4bfa63a7368a497ded114361d71102baeeebbd14caee1c861268fe",
+          "locator": "/repositories",
+          "path": "ess/ess-branch-protection-v2.json",
+          "resolution": "RESOLVED",
+          "source_id": "SRC-SYN-ESS-01",
+          "version": "v2"
+        }
+      ],
+      "observation_id": "OBS-SYN-ESS-SD-001",
+      "scope_limit": "Three fictional repositories; export reflects configuration on 2026-09-18 only.",
+      "source_refs": [
+        {
+          "locator": "/repositories",
+          "source_id": "SRC-SYN-ESS-01"
+        }
+      ],
+      "support": {
+        "corroboration": "SINGLE_SOURCE",
+        "directness": "DIRECT",
+        "interview_support": [],
+        "source_types": [
+          "configuration_export"
+        ],
+        "unusable_sources": [],
+        "usable_sources": [
+          "SRC-SYN-ESS-01"
+        ]
+      }
+    },
+    {
+      "area": "SD",
+      "claim": "Every sampled merged pull request recorded at least one approving review and a passing status check; none was merged without review.",
+      "count_assertion": {
+        "denominator": 8,
+        "numerator": 8,
+        "unit": "sampled pull requests with an approving review"
+      },
+      "direction": "STRENGTH",
+      "follow_up": "Widen the sample or request the full merge history for the period.",
+      "group": "ESS",
+      "locators": [
+        {
+          "content_sha256": "9f16f19b95f8a989b5d5f93b38a0d5923c3f9392d37e7dda3b3963b57a098bc6",
+          "locator": "rows 1-8",
+          "path": "ess/ess-pull-request-sample-2026Q3.csv",
+          "resolution": "RESOLVED",
+          "source_id": "SRC-SYN-ESS-02",
+          "version": "2026Q3-sample"
+        }
+      ],
+      "observation_id": "OBS-SYN-ESS-SD-002",
+      "scope_limit": "Eight sampled pull requests from 2026Q3; not a census.",
+      "source_refs": [
+        {
+          "locator": "rows 1-8",
+          "source_id": "SRC-SYN-ESS-02"
+        }
+      ],
+      "support": {
+        "corroboration": "SINGLE_SOURCE",
+        "directness": "DIRECT",
+        "interview_support": [],
+        "source_types": [
+          "change_record"
+        ],
+        "unusable_sources": [],
+        "usable_sources": [
+          "SRC-SYN-ESS-02"
+        ]
+      }
+    },
+    {
+      "area": "SEC",
+      "claim": "A participant states that application access is reviewed quarterly.",
+      "count_assertion": null,
+      "direction": "STRENGTH",
+      "follow_up": "Request one completed quarterly review with its date and the reviewing role.",
+      "group": "ESS",
+      "locators": [],
+      "observation_id": "OBS-SYN-ESS-SEC-001",
+      "scope_limit": "Interview statement only. No completed review was produced, and no artifact was offered.",
+      "source_refs": [],
+      "support": {
+        "corroboration": "NO_ARTIFACT",
+        "directness": "INDIRECT",
+        "interview_support": [
+          "INT-SYN-ESS-01"
+        ],
+        "source_types": [],
+        "unusable_sources": [],
+        "usable_sources": []
+      }
+    },
+    {
+      "area": "AI",
+      "claim": "An approved project charter records intent to evaluate an access-request triage assistant and states that no implementation, data provision or evaluation has occurred.",
+      "count_assertion": null,
+      "direction": "NEUTRAL",
+      "follow_up": "Ask what would trigger a start and who would own an evaluation.",
+      "group": "IAM",
+      "locators": [
+        {
+          "content_sha256": "3df37653e16895dfd070478ef7ec14deb9357cd7daea3f4aa5697660cab93b09",
+          "locator": "#current-state",
+          "path": "iam/iam-ai-project-charter-v1.md",
+          "resolution": "RESOLVED",
+          "source_id": "SRC-SYN-IAM-04",
+          "version": "v1"
+        }
+      ],
+      "observation_id": "OBS-SYN-IAM-AI-001",
+      "scope_limit": "Charter evidences intent only. Planned use, distinct from active or informal use.",
+      "source_refs": [
+        {
+          "locator": "#current-state",
+          "source_id": "SRC-SYN-IAM-04"
+        }
+      ],
+      "support": {
+        "corroboration": "SINGLE_SOURCE",
+        "directness": "DIRECT",
+        "interview_support": [],
+        "source_types": [
+          "document"
+        ],
+        "unusable_sources": [],
+        "usable_sources": [
+          "SRC-SYN-IAM-04"
+        ]
+      }
+    },
+    {
+      "area": "DEP",
+      "claim": "A deployment log for IAM services was requested and identified in the source register, but the export was not provided during the rehearsal window.",
+      "count_assertion": null,
+      "direction": "NEUTRAL",
+      "follow_up": "Re-request the August deployment export, or agree an alternative record.",
+      "group": "IAM",
+      "locators": [
+        {
+          "content_sha256": "",
+          "locator": "whole file",
+          "path": "iam/iam-deploy-log-2026-08.csv",
+          "resolution": "UNRESOLVED_MISSING",
+          "source_id": "SRC-SYN-IAM-05",
+          "version": "2026-08"
+        }
+      ],
+      "observation_id": "OBS-SYN-IAM-DEP-001",
+      "scope_limit": "No deployment evidence was obtained for this group. Nothing about IAM deployment practice is established either way.",
+      "source_refs": [
+        {
+          "locator": "whole file",
+          "source_id": "SRC-SYN-IAM-05"
+        }
+      ],
+      "support": {
+        "corroboration": "NO_ARTIFACT",
+        "directness": "NONE",
+        "interview_support": [],
+        "source_types": [],
+        "unusable_sources": [
+          "SRC-SYN-IAM-05"
+        ],
+        "usable_sources": []
+      }
+    },
+    {
+      "area": "SD",
+      "claim": "One of four sampled IAM configuration changes records a reviewer and a review evidence reference; the other three record neither.",
+      "conflict_group": "IAM-SD-REVIEW",
+      "count_assertion": {
+        "denominator": 4,
+        "numerator": 1,
+        "unit": "sampled changes recording a reviewer"
+      },
+      "direction": "GAP",
+      "follow_up": "Ask whether review is recorded outside this export for the other three changes.",
+      "group": "IAM",
+      "locators": [
+        {
+          "content_sha256": "bf918583fda3973271486f47c2eb5de9c6743b44c2dbd00c8859ce666f3d151d",
+          "locator": "rows 1-4",
+          "path": "iam/iam-change-review-export-2026-08.csv",
+          "resolution": "RESOLVED",
+          "source_id": "SRC-SYN-IAM-03",
+          "version": "2026-08"
+        }
+      ],
+      "observation_id": "OBS-SYN-IAM-SD-001",
+      "scope_limit": "Four sampled August changes across three fictional services.",
+      "source_refs": [
+        {
+          "locator": "rows 1-4",
+          "source_id": "SRC-SYN-IAM-03"
+        }
+      ],
+      "support": {
+        "corroboration": "SINGLE_SOURCE",
+        "directness": "DIRECT",
+        "interview_support": [],
+        "source_types": [
+          "configuration_export"
+        ],
+        "unusable_sources": [],
+        "usable_sources": [
+          "SRC-SYN-IAM-03"
+        ]
+      }
+    },
+    {
+      "area": "SD",
+      "claim": "A participant states that every configuration change is reviewed by a second engineer before release.",
+      "conflict_group": "IAM-SD-REVIEW",
+      "count_assertion": null,
+      "direction": "STRENGTH",
+      "follow_up": "Reconcile the stated practice with the three changes that record no reviewer.",
+      "group": "IAM",
+      "locators": [],
+      "observation_id": "OBS-SYN-IAM-SD-002",
+      "scope_limit": "Interview statement only; it is not reconciled with the change export.",
+      "source_refs": [],
+      "support": {
+        "corroboration": "NO_ARTIFACT",
+        "directness": "INDIRECT",
+        "interview_support": [
+          "INT-SYN-IAM-02"
+        ],
+        "source_types": [],
+        "unusable_sources": [],
+        "usable_sources": []
+      }
+    },
+    {
+      "area": "SEC",
+      "claim": "The 2026Q2 privileged access recertification closed with all 102 in-scope accounts dispositioned: 71 retained, 19 revoked, 8 scope-reduced and 4 open exceptions, each exception carrying a named owner and an expiry as the standard requires.",
+      "count_assertion": {
+        "parts": [
+          71,
+          19,
+          8,
+          4
+        ],
+        "unit": "in-scope privileged accounts dispositioned",
+        "whole": 102
+      },
+      "direction": "STRENGTH",
+      "follow_up": "Request the next campaign's export to confirm the four exceptions closed at expiry.",
+      "group": "IAM",
+      "locators": [
+        {
+          "content_sha256": "10037a573bee1c9ca88c747b59ccb3a2efd5f5f3d8a30e4fc85ffa555605b271",
+          "locator": "rows 1-4",
+          "path": "iam/iam-recert-campaign-2026Q2.csv",
+          "resolution": "RESOLVED",
+          "source_id": "SRC-SYN-IAM-01",
+          "version": "2026Q2"
+        },
+        {
+          "content_sha256": "7761f395908275c88e46f2cd2762747936cb7a6d357d4fcf091bb1a5d8835228",
+          "locator": "#1-recertification",
+          "path": "iam/iam-privileged-access-standard-v4.md",
+          "resolution": "RESOLVED",
+          "source_id": "SRC-SYN-IAM-02",
+          "version": "v4"
+        }
+      ],
+      "observation_id": "OBS-SYN-IAM-SEC-001",
+      "scope_limit": "One campaign, one quarter. Exception expiry dates were not independently checked against the accounts.",
+      "source_refs": [
+        {
+          "locator": "rows 1-4",
+          "source_id": "SRC-SYN-IAM-01"
+        },
+        {
+          "locator": "#1-recertification",
+          "source_id": "SRC-SYN-IAM-02"
+        }
+      ],
+      "support": {
+        "corroboration": "MULTI_TYPE",
+        "directness": "DIRECT",
+        "interview_support": [
+          "INT-SYN-IAM-01"
+        ],
+        "source_types": [
+          "policy",
+          "system_export"
+        ],
+        "unusable_sources": [],
+        "usable_sources": [
+          "SRC-SYN-IAM-01",
+          "SRC-SYN-IAM-02"
+        ]
+      }
+    },
+    {
+      "area": "AI",
+      "claim": "A participant describes informal individual use of an assistant to generate test data, not adopted by the team and not documented anywhere.",
+      "count_assertion": null,
+      "direction": "NEUTRAL",
+      "follow_up": "Ask what inputs were used and whether any team-level guidance exists.",
+      "group": "RIS",
+      "locators": [],
+      "observation_id": "OBS-SYN-RIS-AI-001",
+      "scope_limit": "Interview statement only. Informal experimentation, distinct from active adopted use.",
+      "source_refs": [],
+      "support": {
+        "corroboration": "NO_ARTIFACT",
+        "directness": "INDIRECT",
+        "interview_support": [
+          "INT-SYN-RIS-01"
+        ],
+        "source_types": [],
+        "unusable_sources": [],
+        "usable_sources": []
+      }
+    },
+    {
+      "area": "DEP",
+      "claim": "The August report evidences backup job completion for two applications but records no restoration exercise for any date, so recoverability is not demonstrated.",
+      "count_assertion": {
+        "denominator": 10,
+        "numerator": 0,
+        "unit": "backup job records carrying a restoration exercise"
+      },
+      "direction": "GAP",
+      "follow_up": "Request the date and outcome of the most recent restoration test, if one exists.",
+      "group": "RIS",
+      "locators": [
+        {
+          "content_sha256": "a463afa21f4d2a3b2dfe8cf6e705e644bd8fdb7f25d9999588d4626cd737da90",
+          "locator": "column restore_exercise_performed, rows 1-10",
+          "path": "ris/ris-backup-job-report-2026-08.csv",
+          "resolution": "RESOLVED",
+          "source_id": "SRC-SYN-RIS-02",
+          "version": "2026-08"
+        }
+      ],
+      "observation_id": "OBS-SYN-RIS-DEP-001",
+      "scope_limit": "Backup completion is evidenced; restoration is unevidenced rather than shown to fail.",
+      "source_refs": [
+        {
+          "locator": "column restore_exercise_performed, rows 1-10",
+          "source_id": "SRC-SYN-RIS-02"
+        }
+      ],
+      "support": {
+        "corroboration": "SINGLE_SOURCE",
+        "directness": "DIRECT",
+        "interview_support": [],
+        "source_types": [
+          "system_log"
+        ],
+        "unusable_sources": [],
+        "usable_sources": [
+          "SRC-SYN-RIS-02"
+        ]
+      }
+    },
+    {
+      "area": "SD",
+      "claim": "Five of nine sampled RIS production releases record no test evidence reference.",
+      "count_assertion": {
+        "denominator": 9,
+        "numerator": 5,
+        "unit": "sampled releases without a test evidence reference"
+      },
+      "direction": "GAP",
+      "follow_up": "Ask whether test evidence is held outside the release record, and for which releases.",
+      "group": "RIS",
+      "locators": [
+        {
+          "content_sha256": "c8d461b12df80f4b70323ef252656d2f9e836120bc58f84c227683961ddf4456",
+          "locator": "rows 2,4,5,7,9",
+          "path": "ris/ris-release-sample-2026Q3.csv",
+          "resolution": "RESOLVED",
+          "source_id": "SRC-SYN-RIS-01",
+          "version": "2026Q3-sample"
+        }
+      ],
+      "observation_id": "OBS-SYN-RIS-SD-001",
+      "scope_limit": "Nine sampled releases across three fictional applications; not a census.",
+      "source_refs": [
+        {
+          "locator": "rows 2,4,5,7,9",
+          "source_id": "SRC-SYN-RIS-01"
+        }
+      ],
+      "support": {
+        "corroboration": "SINGLE_SOURCE",
+        "directness": "DIRECT",
+        "interview_support": [],
+        "source_types": [
+          "change_record"
+        ],
+        "unusable_sources": [],
+        "usable_sources": [
+          "SRC-SYN-RIS-01"
+        ]
+      }
+    },
+    {
+      "area": "SD",
+      "claim": "One sampled release recorded one approval where the release record itself states two are required.",
+      "count_assertion": {
+        "denominator": 9,
+        "numerator": 1,
+        "unit": "sampled releases below the recorded approval requirement"
+      },
+      "direction": "GAP",
+      "follow_up": "Ask whether this was an exception, a data-entry error, or a normal practice.",
+      "group": "RIS",
+      "locators": [
+        {
+          "content_sha256": "c8d461b12df80f4b70323ef252656d2f9e836120bc58f84c227683961ddf4456",
+          "locator": "row 5",
+          "path": "ris/ris-release-sample-2026Q3.csv",
+          "resolution": "RESOLVED",
+          "source_id": "SRC-SYN-RIS-01",
+          "version": "2026Q3-sample"
+        }
+      ],
+      "observation_id": "OBS-SYN-RIS-SD-002",
+      "scope_limit": "Single release REL-SYN-RIS-3005; the approval requirement is read from the same record.",
+      "source_refs": [
+        {
+          "locator": "row 5",
+          "source_id": "SRC-SYN-RIS-01"
+        }
+      ],
+      "support": {
+        "corroboration": "SINGLE_SOURCE",
+        "directness": "DIRECT",
+        "interview_support": [],
+        "source_types": [
+          "change_record"
+        ],
+        "unusable_sources": [],
+        "usable_sources": [
+          "SRC-SYN-RIS-01"
+        ]
+      }
+    },
+    {
+      "area": "SEC",
+      "claim": "A current vulnerability scan report exists, dated within the month of the rehearsal, with per-finding remediation targets.",
+      "count_assertion": {
+        "denominator": 5,
+        "numerator": 5,
+        "unit": "findings carrying a remediation target"
+      },
+      "direction": "STRENGTH",
+      "follow_up": "Confirm scan coverage against the application inventory.",
+      "group": "RIS",
+      "locators": [
+        {
+          "content_sha256": "38471a186890349a872d3777681fb8987160fe1aef7e5f2c90b458425c4c03fe",
+          "locator": "rows 1-5",
+          "path": "ris/ris-vuln-scan-2026-09.csv",
+          "resolution": "RESOLVED",
+          "source_id": "SRC-SYN-RIS-03",
+          "version": "2026-09"
+        }
+      ],
+      "observation_id": "OBS-SYN-RIS-SEC-001",
+      "scope_limit": "One report covering three fictional applications.",
+      "source_refs": [
+        {
+          "locator": "rows 1-5",
+          "source_id": "SRC-SYN-RIS-03"
+        }
+      ],
+      "support": {
+        "corroboration": "SINGLE_SOURCE",
+        "directness": "DIRECT",
+        "interview_support": [],
+        "source_types": [
+          "scan_report"
+        ],
+        "unusable_sources": [],
+        "usable_sources": [
+          "SRC-SYN-RIS-03"
+        ]
+      }
+    },
+    {
+      "area": "SEC",
+      "claim": "Three of five scan findings are past their recorded remediation target as of 2026-09-19 and none carries a risk acceptance reference.",
+      "count_assertion": {
+        "denominator": 5,
+        "numerator": 3,
+        "unit": "findings past remediation target without risk acceptance"
+      },
+      "direction": "GAP",
+      "follow_up": "Ask where overdue findings are escalated and whether any acceptance exists off-report.",
+      "group": "RIS",
+      "locators": [
+        {
+          "content_sha256": "38471a186890349a872d3777681fb8987160fe1aef7e5f2c90b458425c4c03fe",
+          "locator": "rows 1,2,3",
+          "path": "ris/ris-vuln-scan-2026-09.csv",
+          "resolution": "RESOLVED",
+          "source_id": "SRC-SYN-RIS-03",
+          "version": "2026-09"
+        }
+      ],
+      "observation_id": "OBS-SYN-RIS-SEC-002",
+      "scope_limit": "Five findings in one report; remediation may be tracked in another system.",
+      "source_refs": [
+        {
+          "locator": "rows 1,2,3",
+          "source_id": "SRC-SYN-RIS-03"
+        }
+      ],
+      "support": {
+        "corroboration": "SINGLE_SOURCE",
+        "directness": "DIRECT",
+        "interview_support": [],
+        "source_types": [
+          "scan_report"
+        ],
+        "unusable_sources": [],
+        "usable_sources": [
+          "SRC-SYN-RIS-03"
+        ]
+      }
+    }
+  ],
+  "rehearsal": "UIOWA-092 intake-to-assessment integration rehearsal",
+  "sources": [
+    {
+      "byte_length": 831,
+      "captured_at": "2026-09-18",
+      "content_sha256": "c65b5602be4bfa63a7368a497ded114361d71102baeeebbd14caee1c861268fe",
+      "description": "branch protection rules, 3 ESS repositories",
+      "group": "ESS",
+      "locator_kind": "json_pointer",
+      "path": "ess/ess-branch-protection-v2.json",
+      "represented_period": "2026-09-18/2026-09-18",
+      "resolution": "RESOLVED",
+      "source_id": "SRC-SYN-ESS-01",
+      "source_type": "configuration_export",
+      "version": "v2"
+    },
+    {
+      "byte_length": 610,
+      "captured_at": "2026-09-18",
+      "content_sha256": "9f16f19b95f8a989b5d5f93b38a0d5923c3f9392d37e7dda3b3963b57a098bc6",
+      "description": "sampled merged pull requests",
+      "group": "ESS",
+      "locator_kind": "csv_row",
+      "path": "ess/ess-pull-request-sample-2026Q3.csv",
+      "represented_period": "2026-07-01/2026-09-18",
+      "resolution": "RESOLVED",
+      "source_id": "SRC-SYN-ESS-02",
+      "source_type": "change_record",
+      "version": "2026Q3-sample"
+    },
+    {
+      "byte_length": 999,
+      "captured_at": "2026-09-02",
+      "content_sha256": "d0bfad3537a57729c3f6ad6c4f0632bc64c27df1502160e77c2fa21843ab6886",
+      "description": "August production deployments",
+      "group": "ESS",
+      "locator_kind": "csv_row",
+      "path": "ess/ess-deploy-log-2026-08.csv",
+      "represented_period": "2026-08-01/2026-08-31",
+      "resolution": "RESOLVED",
+      "source_id": "SRC-SYN-ESS-03",
+      "source_type": "system_log",
+      "version": "2026-08"
+    },
+    {
+      "byte_length": 762,
+      "captured_at": "2026-09-15",
+      "content_sha256": "480fa59d9c273a50bd7c96d3356b92b4899356c68f2e96f94841dfe4acdda0b9",
+      "description": "release window standard",
+      "group": "ESS",
+      "locator_kind": "heading",
+      "path": "ess/ess-release-window-policy-v3.md",
+      "represented_period": "2026-01-15/",
+      "resolution": "RESOLVED",
+      "source_id": "SRC-SYN-ESS-04",
+      "source_type": "policy",
+      "version": "v3"
+    },
+    {
+      "byte_length": 325,
+      "captured_at": "2026-09-16",
+      "content_sha256": "10037a573bee1c9ca88c747b59ccb3a2efd5f5f3d8a30e4fc85ffa555605b271",
+      "description": "privileged access recertification campaign dispositions",
+      "group": "IAM",
+      "locator_kind": "csv_row",
+      "path": "iam/iam-recert-campaign-2026Q2.csv",
+      "represented_period": "2026-04-01/2026-06-30",
+      "resolution": "RESOLVED",
+      "source_id": "SRC-SYN-IAM-01",
+      "source_type": "system_export",
+      "version": "2026Q2"
+    },
+    {
+      "byte_length": 718,
+      "captured_at": "2026-09-15",
+      "content_sha256": "7761f395908275c88e46f2cd2762747936cb7a6d357d4fcf091bb1a5d8835228",
+      "description": "privileged access standard",
+      "group": "IAM",
+      "locator_kind": "heading",
+      "path": "iam/iam-privileged-access-standard-v4.md",
+      "represented_period": "2026-02-01/",
+      "resolution": "RESOLVED",
+      "source_id": "SRC-SYN-IAM-02",
+      "source_type": "policy",
+      "version": "v4"
+    },
+    {
+      "byte_length": 382,
+      "captured_at": "2026-09-16",
+      "content_sha256": "bf918583fda3973271486f47c2eb5de9c6743b44c2dbd00c8859ce666f3d151d",
+      "description": "IAM configuration changes and recorded reviewers",
+      "group": "IAM",
+      "locator_kind": "csv_row",
+      "path": "iam/iam-change-review-export-2026-08.csv",
+      "represented_period": "2026-08-01/2026-08-31",
+      "resolution": "RESOLVED",
+      "source_id": "SRC-SYN-IAM-03",
+      "source_type": "configuration_export",
+      "version": "2026-08"
+    },
+    {
+      "byte_length": 541,
+      "captured_at": "2026-09-16",
+      "content_sha256": "3df37653e16895dfd070478ef7ec14deb9357cd7daea3f4aa5697660cab93b09",
+      "description": "approved-but-unstarted AI project charter",
+      "group": "IAM",
+      "locator_kind": "heading",
+      "path": "iam/iam-ai-project-charter-v1.md",
+      "represented_period": "2026-08-21/",
+      "resolution": "RESOLVED",
+      "source_id": "SRC-SYN-IAM-04",
+      "source_type": "document",
+      "version": "v1"
+    },
+    {
+      "byte_length": 0,
+      "captured_at": null,
+      "content_sha256": "",
+      "description": "IAM deployment log - REQUESTED IN THE REHEARSAL BUT DELIBERATELY NOT PRESENT ON DISK. This entry exercises the missing-source path: the rehearsal must report it and leave IAM/DEP UNKNOWN, never zero and never a pass.",
+      "group": "IAM",
+      "locator_kind": "csv_row",
+      "path": "iam/iam-deploy-log-2026-08.csv",
+      "represented_period": "2026-08-01/2026-08-31",
+      "resolution": "UNRESOLVED_MISSING",
+      "source_id": "SRC-SYN-IAM-05",
+      "source_type": "system_log",
+      "version": "2026-08"
+    },
+    {
+      "byte_length": 728,
+      "captured_at": "2026-09-18",
+      "content_sha256": "c8d461b12df80f4b70323ef252656d2f9e836120bc58f84c227683961ddf4456",
+      "description": "sampled RIS production releases",
+      "group": "RIS",
+      "locator_kind": "csv_row",
+      "path": "ris/ris-release-sample-2026Q3.csv",
+      "represented_period": "2026-07-01/2026-09-18",
+      "resolution": "RESOLVED",
+      "source_id": "SRC-SYN-RIS-01",
+      "source_type": "change_record",
+      "version": "2026Q3-sample"
+    },
+    {
+      "byte_length": 782,
+      "captured_at": "2026-09-02",
+      "content_sha256": "a463afa21f4d2a3b2dfe8cf6e705e644bd8fdb7f25d9999588d4626cd737da90",
+      "description": "backup job completion report (no restoration evidence)",
+      "group": "RIS",
+      "locator_kind": "csv_row",
+      "path": "ris/ris-backup-job-report-2026-08.csv",
+      "represented_period": "2026-08-01/2026-08-31",
+      "resolution": "RESOLVED",
+      "source_id": "SRC-SYN-RIS-02",
+      "source_type": "system_log",
+      "version": "2026-08"
+    },
+    {
+      "byte_length": 535,
+      "captured_at": "2026-09-18",
+      "content_sha256": "38471a186890349a872d3777681fb8987160fe1aef7e5f2c90b458425c4c03fe",
+      "description": "open vulnerability findings and remediation targets",
+      "group": "RIS",
+      "locator_kind": "csv_row",
+      "path": "ris/ris-vuln-scan-2026-09.csv",
+      "represented_period": "2026-06-01/2026-09-18",
+      "resolution": "RESOLVED",
+      "source_id": "SRC-SYN-RIS-03",
+      "source_type": "scan_report",
+      "version": "2026-09"
+    }
+  ],
+  "unknown_inputs": [
+    "Which real University applications, platforms and shared services are in RFQ scope, and who owns each lifecycle stage - UNKNOWN.",
+    "Which real records the University can release as evidence, in what form, and with what retention constraint - UNKNOWN.",
+    "Which roles are available for interview and in what window - UNKNOWN.",
+    "Whether the four assessment areas map to the University's own internal division of work - UNKNOWN.",
+    "Every quantity in this package is fictional. No real deployment count, account count, finding count or release count has been observed - UNKNOWN."
+  ]
+}

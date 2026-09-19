@@ -1,0 +1,11 @@
+# SYNTHETIC FIXTURE - fictional data authored for the UIOWA-092 rehearsal. Not a University record.
+release_id,application,released_on,test_evidence_ref,approvals_recorded,approvals_required
+REL-SYN-RIS-3001,ris-award-tracker,2026-07-09,TEST-SYN-RIS-0091,2,2
+REL-SYN-RIS-3002,ris-award-tracker,2026-07-23,,2,2
+REL-SYN-RIS-3003,ris-protocol-portal,2026-08-06,TEST-SYN-RIS-0092,2,2
+REL-SYN-RIS-3004,ris-protocol-portal,2026-08-13,,2,2
+REL-SYN-RIS-3005,ris-subaward-ledger,2026-08-20,,1,2
+REL-SYN-RIS-3006,ris-award-tracker,2026-08-27,TEST-SYN-RIS-0093,2,2
+REL-SYN-RIS-3007,ris-protocol-portal,2026-09-03,,2,2
+REL-SYN-RIS-3008,ris-subaward-ledger,2026-09-10,TEST-SYN-RIS-0094,2,2
+REL-SYN-RIS-3009,ris-award-tracker,2026-09-17,,2,2

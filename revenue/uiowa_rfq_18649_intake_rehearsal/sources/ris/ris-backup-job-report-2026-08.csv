@@ -1,0 +1,13 @@
+# SYNTHETIC FIXTURE - fictional data authored for the UIOWA-092 rehearsal. Not a University record.
+# This report records BACKUP JOB COMPLETION only. It contains no restoration evidence.
+job_date,application,job_result,bytes_written,restore_exercise_performed
+2026-08-01,ris-award-tracker,SUCCESS,41203847,false
+2026-08-08,ris-award-tracker,SUCCESS,41337120,false
+2026-08-15,ris-award-tracker,SUCCESS,41419006,false
+2026-08-22,ris-award-tracker,SUCCESS,41502993,false
+2026-08-29,ris-award-tracker,SUCCESS,41588410,false
+2026-08-01,ris-protocol-portal,SUCCESS,12884901,false
+2026-08-08,ris-protocol-portal,SUCCESS,12901337,false
+2026-08-15,ris-protocol-portal,FAILED,0,false
+2026-08-22,ris-protocol-portal,SUCCESS,12944180,false
+2026-08-29,ris-protocol-portal,SUCCESS,12977002,false

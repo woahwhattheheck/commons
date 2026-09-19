@@ -1,0 +1,139 @@
+{
+  "_synthetic": "SYNTHETIC FIXTURE - declared source register for the UIOWA-092 rehearsal. Every entry is fictional. Not a University record.",
+  "collection_id": "COLL-SYN-092-A",
+  "as_of": "2026-09-19",
+  "sources": [
+    {
+      "source_id": "SRC-SYN-ESS-01",
+      "group": "ESS",
+      "source_type": "configuration_export",
+      "path": "ess/ess-branch-protection-v2.json",
+      "version": "v2",
+      "captured_at": "2026-09-18",
+      "represented_period": "2026-09-18/2026-09-18",
+      "locator_kind": "json_pointer",
+      "description": "branch protection rules, 3 ESS repositories"
+    },
+    {
+      "source_id": "SRC-SYN-ESS-02",
+      "group": "ESS",
+      "source_type": "change_record",
+      "path": "ess/ess-pull-request-sample-2026Q3.csv",
+      "version": "2026Q3-sample",
+      "captured_at": "2026-09-18",
+      "represented_period": "2026-07-01/2026-09-18",
+      "locator_kind": "csv_row",
+      "description": "sampled merged pull requests"
+    },
+    {
+      "source_id": "SRC-SYN-ESS-03",
+      "group": "ESS",
+      "source_type": "system_log",
+      "path": "ess/ess-deploy-log-2026-08.csv",
+      "version": "2026-08",
+      "captured_at": "2026-09-02",
+      "represented_period": "2026-08-01/2026-08-31",
+      "locator_kind": "csv_row",
+      "description": "August production deployments"
+    },
+    {
+      "source_id": "SRC-SYN-ESS-04",
+      "group": "ESS",
+      "source_type": "policy",
+      "path": "ess/ess-release-window-policy-v3.md",
+      "version": "v3",
+      "captured_at": "2026-09-15",
+      "represented_period": "2026-01-15/",
+      "locator_kind": "heading",
+      "description": "release window standard"
+    },
+    {
+      "source_id": "SRC-SYN-RIS-01",
+      "group": "RIS",
+      "source_type": "change_record",
+      "path": "ris/ris-release-sample-2026Q3.csv",
+      "version": "2026Q3-sample",
+      "captured_at": "2026-09-18",
+      "represented_period": "2026-07-01/2026-09-18",
+      "locator_kind": "csv_row",
+      "description": "sampled RIS production releases"
+    },
+    {
+      "source_id": "SRC-SYN-RIS-02",
+      "group": "RIS",
+      "source_type": "system_log",
+      "path": "ris/ris-backup-job-report-2026-08.csv",
+      "version": "2026-08",
+      "captured_at": "2026-09-02",
+      "represented_period": "2026-08-01/2026-08-31",
+      "locator_kind": "csv_row",
+      "description": "backup job completion report (no restoration evidence)"
+    },
+    {
+      "source_id": "SRC-SYN-RIS-03",
+      "group": "RIS",
+      "source_type": "scan_report",
+      "path": "ris/ris-vuln-scan-2026-09.csv",
+      "version": "2026-09",
+      "captured_at": "2026-09-18",
+      "represented_period": "2026-06-01/2026-09-18",
+      "locator_kind": "csv_row",
+      "description": "open vulnerability findings and remediation targets"
+    },
+    {
+      "source_id": "SRC-SYN-IAM-01",
+      "group": "IAM",
+      "source_type": "system_export",
+      "path": "iam/iam-recert-campaign-2026Q2.csv",
+      "version": "2026Q2",
+      "captured_at": "2026-09-16",
+      "represented_period": "2026-04-01/2026-06-30",
+      "locator_kind": "csv_row",
+      "description": "privileged access recertification campaign dispositions"
+    },
+    {
+      "source_id": "SRC-SYN-IAM-02",
+      "group": "IAM",
+      "source_type": "policy",
+      "path": "iam/iam-privileged-access-standard-v4.md",
+      "version": "v4",
+      "captured_at": "2026-09-15",
+      "represented_period": "2026-02-01/",
+      "locator_kind": "heading",
+      "description": "privileged access standard"
+    },
+    {
+      "source_id": "SRC-SYN-IAM-03",
+      "group": "IAM",
+      "source_type": "configuration_export",
+      "path": "iam/iam-change-review-export-2026-08.csv",
+      "version": "2026-08",
+      "captured_at": "2026-09-16",
+      "represented_period": "2026-08-01/2026-08-31",
+      "locator_kind": "csv_row",
+      "description": "IAM configuration changes and recorded reviewers"
+    },
+    {
+      "source_id": "SRC-SYN-IAM-04",
+      "group": "IAM",
+      "source_type": "document",
+      "path": "iam/iam-ai-project-charter-v1.md",
+      "version": "v1",
+      "captured_at": "2026-09-16",
+      "represented_period": "2026-08-21/",
+      "locator_kind": "heading",
+      "description": "approved-but-unstarted AI project charter"
+    },
+    {
+      "source_id": "SRC-SYN-IAM-05",
+      "group": "IAM",
+      "source_type": "system_log",
+      "path": "iam/iam-deploy-log-2026-08.csv",
+      "version": "2026-08",
+      "captured_at": null,
+      "represented_period": "2026-08-01/2026-08-31",
+      "locator_kind": "csv_row",
+      "description": "IAM deployment log - REQUESTED IN THE REHEARSAL BUT DELIBERATELY NOT PRESENT ON DISK. This entry exercises the missing-source path: the rehearsal must report it and leave IAM/DEP UNKNOWN, never zero and never a pass."
+    }
+  ]
+}

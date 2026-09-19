@@ -1,0 +1,302 @@
+{
+  "_synthetic": "SYNTHETIC FIXTURE - analyst observation records for the UIOWA-092 rehearsal. Every statement is fictional and none is a University finding.",
+  "observations": [
+    {
+      "observation_id": "OBS-SYN-ESS-SD-001",
+      "group": "ESS",
+      "area": "SD",
+      "direction": "STRENGTH",
+      "claim": "All three repositories in the ESS export require a pull request with at least one approving review and a passing build-and-test status check before merge to the default branch.",
+      "scope_limit": "Three fictional repositories; export reflects configuration on 2026-09-18 only.",
+      "source_refs": [
+        {
+          "source_id": "SRC-SYN-ESS-01",
+          "locator": "/repositories"
+        }
+      ],
+      "count_assertion": {
+        "numerator": 3,
+        "denominator": 3,
+        "whole": 3,
+        "unit": "repositories with required review and status check"
+      },
+      "follow_up": "Confirm the repository inventory is complete before any group-wide statement."
+    },
+    {
+      "observation_id": "OBS-SYN-ESS-SD-002",
+      "group": "ESS",
+      "area": "SD",
+      "direction": "STRENGTH",
+      "claim": "Every sampled merged pull request recorded at least one approving review and a passing status check; none was merged without review.",
+      "scope_limit": "Eight sampled pull requests from 2026Q3; not a census.",
+      "source_refs": [
+        {
+          "source_id": "SRC-SYN-ESS-02",
+          "locator": "rows 1-8"
+        }
+      ],
+      "count_assertion": {
+        "numerator": 8,
+        "denominator": 8,
+        "unit": "sampled pull requests with an approving review"
+      },
+      "follow_up": "Widen the sample or request the full merge history for the period."
+    },
+    {
+      "observation_id": "OBS-SYN-ESS-DEP-001",
+      "group": "ESS",
+      "area": "DEP",
+      "direction": "STRENGTH",
+      "claim": "August production deployments and rollbacks are recorded against deployment identifiers in a single log, giving a usable deployment history.",
+      "scope_limit": "One month of one fictional group's deployments.",
+      "source_refs": [
+        {
+          "source_id": "SRC-SYN-ESS-03",
+          "locator": "rows 1-14"
+        }
+      ],
+      "count_assertion": {
+        "numerator": 14,
+        "denominator": 14,
+        "unit": "deployments carrying an identifier"
+      },
+      "follow_up": "Confirm whether the log is the authoritative record or a secondary copy."
+    },
+    {
+      "observation_id": "OBS-SYN-ESS-DEP-002",
+      "group": "ESS",
+      "area": "DEP",
+      "direction": "GAP",
+      "claim": "Six of fourteen August deployments landed outside the Tuesday/Thursday window defined by the release standard, and three of those six carry no documented exception.",
+      "scope_limit": "August only; the standard's exception process may be recorded elsewhere.",
+      "source_refs": [
+        {
+          "source_id": "SRC-SYN-ESS-03",
+          "locator": "rows 3,6,9,12,13,14"
+        },
+        {
+          "source_id": "SRC-SYN-ESS-04",
+          "locator": "#2-out-of-window-releases"
+        }
+      ],
+      "count_assertion": {
+        "numerator": 3,
+        "denominator": 6,
+        "whole": 14,
+        "unit": "out-of-window deployments without a documented exception"
+      },
+      "follow_up": "Ask whether exceptions are recorded in a separate system, or whether these were unexcepted."
+    },
+    {
+      "observation_id": "OBS-SYN-ESS-SEC-001",
+      "group": "ESS",
+      "area": "SEC",
+      "direction": "STRENGTH",
+      "claim": "A participant states that application access is reviewed quarterly.",
+      "scope_limit": "Interview statement only. No completed review was produced, and no artifact was offered.",
+      "source_refs": [],
+      "follow_up": "Request one completed quarterly review with its date and the reviewing role."
+    },
+    {
+      "observation_id": "OBS-SYN-RIS-SD-001",
+      "group": "RIS",
+      "area": "SD",
+      "direction": "GAP",
+      "claim": "Five of nine sampled RIS production releases record no test evidence reference.",
+      "scope_limit": "Nine sampled releases across three fictional applications; not a census.",
+      "source_refs": [
+        {
+          "source_id": "SRC-SYN-RIS-01",
+          "locator": "rows 2,4,5,7,9"
+        }
+      ],
+      "count_assertion": {
+        "numerator": 5,
+        "denominator": 9,
+        "unit": "sampled releases without a test evidence reference"
+      },
+      "follow_up": "Ask whether test evidence is held outside the release record, and for which releases."
+    },
+    {
+      "observation_id": "OBS-SYN-RIS-SD-002",
+      "group": "RIS",
+      "area": "SD",
+      "direction": "GAP",
+      "claim": "One sampled release recorded one approval where the release record itself states two are required.",
+      "scope_limit": "Single release REL-SYN-RIS-3005; the approval requirement is read from the same record.",
+      "source_refs": [
+        {
+          "source_id": "SRC-SYN-RIS-01",
+          "locator": "row 5"
+        }
+      ],
+      "count_assertion": {
+        "numerator": 1,
+        "denominator": 9,
+        "unit": "sampled releases below the recorded approval requirement"
+      },
+      "follow_up": "Ask whether this was an exception, a data-entry error, or a normal practice."
+    },
+    {
+      "observation_id": "OBS-SYN-RIS-DEP-001",
+      "group": "RIS",
+      "area": "DEP",
+      "direction": "GAP",
+      "claim": "The August report evidences backup job completion for two applications but records no restoration exercise for any date, so recoverability is not demonstrated.",
+      "scope_limit": "Backup completion is evidenced; restoration is unevidenced rather than shown to fail.",
+      "source_refs": [
+        {
+          "source_id": "SRC-SYN-RIS-02",
+          "locator": "column restore_exercise_performed, rows 1-10"
+        }
+      ],
+      "count_assertion": {
+        "numerator": 0,
+        "denominator": 10,
+        "unit": "backup job records carrying a restoration exercise"
+      },
+      "follow_up": "Request the date and outcome of the most recent restoration test, if one exists."
+    },
+    {
+      "observation_id": "OBS-SYN-RIS-SEC-001",
+      "group": "RIS",
+      "area": "SEC",
+      "direction": "STRENGTH",
+      "claim": "A current vulnerability scan report exists, dated within the month of the rehearsal, with per-finding remediation targets.",
+      "scope_limit": "One report covering three fictional applications.",
+      "source_refs": [
+        {
+          "source_id": "SRC-SYN-RIS-03",
+          "locator": "rows 1-5"
+        }
+      ],
+      "count_assertion": {
+        "numerator": 5,
+        "denominator": 5,
+        "unit": "findings carrying a remediation target"
+      },
+      "follow_up": "Confirm scan coverage against the application inventory."
+    },
+    {
+      "observation_id": "OBS-SYN-RIS-SEC-002",
+      "group": "RIS",
+      "area": "SEC",
+      "direction": "GAP",
+      "claim": "Three of five scan findings are past their recorded remediation target as of 2026-09-19 and none carries a risk acceptance reference.",
+      "scope_limit": "Five findings in one report; remediation may be tracked in another system.",
+      "source_refs": [
+        {
+          "source_id": "SRC-SYN-RIS-03",
+          "locator": "rows 1,2,3"
+        }
+      ],
+      "count_assertion": {
+        "numerator": 3,
+        "denominator": 5,
+        "unit": "findings past remediation target without risk acceptance"
+      },
+      "follow_up": "Ask where overdue findings are escalated and whether any acceptance exists off-report."
+    },
+    {
+      "observation_id": "OBS-SYN-RIS-AI-001",
+      "group": "RIS",
+      "area": "AI",
+      "direction": "NEUTRAL",
+      "claim": "A participant describes informal individual use of an assistant to generate test data, not adopted by the team and not documented anywhere.",
+      "scope_limit": "Interview statement only. Informal experimentation, distinct from active adopted use.",
+      "source_refs": [],
+      "follow_up": "Ask what inputs were used and whether any team-level guidance exists."
+    },
+    {
+      "observation_id": "OBS-SYN-IAM-SD-001",
+      "group": "IAM",
+      "area": "SD",
+      "direction": "GAP",
+      "claim": "One of four sampled IAM configuration changes records a reviewer and a review evidence reference; the other three record neither.",
+      "scope_limit": "Four sampled August changes across three fictional services.",
+      "source_refs": [
+        {
+          "source_id": "SRC-SYN-IAM-03",
+          "locator": "rows 1-4"
+        }
+      ],
+      "count_assertion": {
+        "numerator": 1,
+        "denominator": 4,
+        "unit": "sampled changes recording a reviewer"
+      },
+      "conflict_group": "IAM-SD-REVIEW",
+      "follow_up": "Ask whether review is recorded outside this export for the other three changes."
+    },
+    {
+      "observation_id": "OBS-SYN-IAM-SD-002",
+      "group": "IAM",
+      "area": "SD",
+      "direction": "STRENGTH",
+      "claim": "A participant states that every configuration change is reviewed by a second engineer before release.",
+      "scope_limit": "Interview statement only; it is not reconciled with the change export.",
+      "source_refs": [],
+      "conflict_group": "IAM-SD-REVIEW",
+      "follow_up": "Reconcile the stated practice with the three changes that record no reviewer."
+    },
+    {
+      "observation_id": "OBS-SYN-IAM-SEC-001",
+      "group": "IAM",
+      "area": "SEC",
+      "direction": "STRENGTH",
+      "claim": "The 2026Q2 privileged access recertification closed with all 102 in-scope accounts dispositioned: 71 retained, 19 revoked, 8 scope-reduced and 4 open exceptions, each exception carrying a named owner and an expiry as the standard requires.",
+      "scope_limit": "One campaign, one quarter. Exception expiry dates were not independently checked against the accounts.",
+      "source_refs": [
+        {
+          "source_id": "SRC-SYN-IAM-01",
+          "locator": "rows 1-4"
+        },
+        {
+          "source_id": "SRC-SYN-IAM-02",
+          "locator": "#1-recertification"
+        }
+      ],
+      "count_assertion": {
+        "parts": [
+          71,
+          19,
+          8,
+          4
+        ],
+        "whole": 102,
+        "unit": "in-scope privileged accounts dispositioned"
+      },
+      "follow_up": "Request the next campaign's export to confirm the four exceptions closed at expiry."
+    },
+    {
+      "observation_id": "OBS-SYN-IAM-DEP-001",
+      "group": "IAM",
+      "area": "DEP",
+      "direction": "NEUTRAL",
+      "claim": "A deployment log for IAM services was requested and identified in the source register, but the export was not provided during the rehearsal window.",
+      "scope_limit": "No deployment evidence was obtained for this group. Nothing about IAM deployment practice is established either way.",
+      "source_refs": [
+        {
+          "source_id": "SRC-SYN-IAM-05",
+          "locator": "whole file"
+        }
+      ],
+      "follow_up": "Re-request the August deployment export, or agree an alternative record."
+    },
+    {
+      "observation_id": "OBS-SYN-IAM-AI-001",
+      "group": "IAM",
+      "area": "AI",
+      "direction": "NEUTRAL",
+      "claim": "An approved project charter records intent to evaluate an access-request triage assistant and states that no implementation, data provision or evaluation has occurred.",
+      "scope_limit": "Charter evidences intent only. Planned use, distinct from active or informal use.",
+      "source_refs": [
+        {
+          "source_id": "SRC-SYN-IAM-04",
+          "locator": "#current-state"
+        }
+      ],
+      "follow_up": "Ask what would trigger a start and who would own an evaluation."
+    }
+  ]
+}

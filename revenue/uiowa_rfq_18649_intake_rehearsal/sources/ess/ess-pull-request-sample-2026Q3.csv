@@ -1,0 +1,10 @@
+# SYNTHETIC FIXTURE - fictional data authored for the UIOWA-092 rehearsal. Not a University record.
+pr_id,repo,merged_on,approving_reviews,status_check_passed,merged_without_review
+PR-SYN-ESS-4101,ess-app-alpha,2026-07-08,1,true,false
+PR-SYN-ESS-4102,ess-app-alpha,2026-07-22,2,true,false
+PR-SYN-ESS-4103,ess-app-beta,2026-08-03,1,true,false
+PR-SYN-ESS-4104,ess-app-beta,2026-08-14,1,true,false
+PR-SYN-ESS-4105,ess-app-gamma,2026-08-19,1,true,false
+PR-SYN-ESS-4106,ess-app-gamma,2026-09-02,1,true,false
+PR-SYN-ESS-4107,ess-app-alpha,2026-09-09,2,true,false
+PR-SYN-ESS-4108,ess-app-beta,2026-09-15,1,true,false

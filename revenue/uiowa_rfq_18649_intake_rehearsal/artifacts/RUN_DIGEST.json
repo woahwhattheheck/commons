@@ -1,0 +1,12 @@
+{
+  "_synthetic": "SYNTHETIC REHEARSAL OUTPUT - every organization, document, number and quotation below is fictional, authored for the UIOWA-092 integration rehearsal. Nothing here is a University of Iowa record, measurement, or finding.",
+  "artifact_sha256": {
+    "REHEARSAL_REPORT.md": "aae6947b884b77c7b3a16db0fe44c55fda1e94cdaeb1cb859d2b2f74b5ce2a51",
+    "assessment_dataset.json": "829242dbf58c108f06aeba9764f7330a527d932d1fa410cabf6abb0b2b048e5b",
+    "assessment_matrix.csv": "4bd8d83e3851c064011520e53b3594de23f1817e5c69cbae6b69bbe878308f29",
+    "evidence_register.csv": "0ecbb799a0febb6509b87e459e0849615bd14f1bcde194191a8ff77186259142",
+    "intake_diagnostics.csv": "1bad30f90fddf22182be54d977e6dd93315ad3d0318432cd5fb954a5646755fe",
+    "source_register.csv": "2eaa16403753892007017e38f66e1f230ebf362f4ba45c85f3d6bc4d73be9a9c"
+  },
+  "note": "sha256 of each artifact as written. RUN_DIGEST.json excludes itself so that a second operator's run can be compared byte for byte."
+}

@@ -1,0 +1,60 @@
+{
+  "_synthetic": "SYNTHETIC FIXTURE - fictional interview excerpts authored for the UIOWA-092 rehearsal. No real person was interviewed. Not a University record.",
+  "excerpts": [
+    {
+      "interview_id": "INT-SYN-ESS-01",
+      "group": "ESS",
+      "area": "SEC",
+      "participant_role": "fictional ESS application administrator",
+      "conducted_on": "2026-09-16",
+      "supports_observation": "OBS-SYN-ESS-SEC-001",
+      "establishes": "practice_claim",
+      "artifact_offered": false,
+      "excerpt": "We review application access every quarter. I am confident it happens but I would have to ask someone else where the completed reviews are filed."
+    },
+    {
+      "interview_id": "INT-SYN-IAM-01",
+      "group": "IAM",
+      "area": "SEC",
+      "participant_role": "fictional IAM service owner",
+      "conducted_on": "2026-09-16",
+      "supports_observation": "OBS-SYN-IAM-SEC-001",
+      "establishes": "practice_claim",
+      "artifact_offered": true,
+      "excerpt": "The second-quarter recertification closed on schedule. Four accounts could not be actioned in the window; each is carrying a named owner and an expiry date."
+    },
+    {
+      "interview_id": "INT-SYN-IAM-02",
+      "group": "IAM",
+      "area": "SD",
+      "participant_role": "fictional IAM engineer",
+      "conducted_on": "2026-09-17",
+      "supports_observation": "OBS-SYN-IAM-SD-002",
+      "establishes": "practice_claim",
+      "artifact_offered": false,
+      "excerpt": "Every configuration change gets reviewed by a second engineer before it goes out. That is just how we work."
+    },
+    {
+      "interview_id": "INT-SYN-RIS-01",
+      "group": "RIS",
+      "area": "AI",
+      "participant_role": "fictional RIS developer",
+      "conducted_on": "2026-09-17",
+      "supports_observation": "OBS-SYN-RIS-AI-001",
+      "establishes": "practice_claim",
+      "artifact_offered": false,
+      "excerpt": "A couple of us have used an assistant to generate test data for the subaward work. It is not something the team has adopted and nobody has written it down anywhere."
+    },
+    {
+      "interview_id": "INT-SYN-IAM-03",
+      "group": "IAM",
+      "area": "DEP",
+      "participant_role": "fictional IAM engineer",
+      "conducted_on": "2026-09-17",
+      "supports_observation": "OBS-SYN-IAM-DEP-001",
+      "establishes": "availability_only",
+      "artifact_offered": false,
+      "excerpt": "We can pull the deployment log for you, I just have not had a chance to export it yet."
+    }
+  ]
+}
