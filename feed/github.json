@@ -1,81 +1,26 @@
 {
   "counts": {
-    "open_issues": 114,
-    "open_pull_requests": 58,
-    "runs_in_progress": 4,
-    "runs_queued": 70
+    "open_issues": 126,
+    "open_pull_requests": 59,
+    "runs_in_progress": 20,
+    "runs_queued": 94
   },
   "counts_source": "graphql",
-  "degraded": [],
-  "drafts": 1,
-  "longest_open": [
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-atlasforge/swarmops-current-freshness-20260917",
-      "created_at": "2026-09-17T18:46:46Z",
-      "draft": false,
-      "head_sha": "96be91936b40e03845096e93d906cc9b5d6f1865",
-      "number": 15613,
-      "title": "SwarmOps: harden current semantic readiness verification",
-      "updated_at": "2026-09-18T08:06:51Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zeta-sol/pilot-renewal-expansion-gate-20260917",
-      "created_at": "2026-09-17T19:00:55Z",
-      "draft": false,
-      "head_sha": "df5666d5a47cad829f07c142285053277e1470c7",
-      "number": 15629,
-      "title": "Revenue: gate pilot delivery into renewal/expansion review",
-      "updated_at": "2026-09-17T20:37:49Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol-1447/arc3-sage-unanimous-reachability-14735",
-      "created_at": "2026-09-17T19:02:30Z",
-      "draft": false,
-      "head_sha": "db0e8838d61cd6133154bf2008aefb5b94fc5acd",
-      "number": 15631,
-      "title": "ARC3 SAGE: close exact-evidence ambiguity and abstract lookahead (#14735)",
-      "updated_at": "2026-09-17T22:46:11Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-proofforge/proofpatch-recovery-20260917",
-      "created_at": "2026-09-17T19:04:10Z",
-      "draft": false,
-      "head_sha": "1c5d3124d105457b83015f767c1628a9905dc080",
-      "number": 15635,
-      "title": "Recover Nebius ProofPatch evidence-bound coding agent",
-      "updated_at": "2026-09-18T01:07:22Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/partner-qual-clean-current-main-20260917",
-      "created_at": "2026-09-17T19:07:58Z",
-      "draft": false,
-      "head_sha": "a13fa73e10612ed8f1d07feda42afd624a33e891",
-      "number": 15640,
-      "title": "Revenue: recover partner qualification gate on clean current main",
-      "updated_at": "2026-09-18T02:13:19Z"
-    }
+  "degraded": [
+    "pulls-partial"
   ],
+  "drafts": 1,
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "cursor/latch-owner-now-wb-hour-restore-ff1c",
-      "created_at": "2026-09-19T11:18:08Z",
+      "branch": "uiowa-020-framework-crosswalk-zzsol",
+      "created_at": "2026-09-19T13:31:07Z",
       "draft": false,
-      "head_sha": "75dc598cf6ddba6d212fa3ad00adcce9992ffda3",
-      "number": 16087,
-      "title": "Restore existing White Box hour Buy CTA on owner-now-revenue.html",
-      "updated_at": "2026-09-19T11:18:08Z"
+      "head_sha": "699aa083cf52af7ce135c6e107d94af9de5dc49e",
+      "number": 16104,
+      "title": "UIOWA-020: add primary NIST framework crosswalk",
+      "updated_at": "2026-09-19T13:32:19Z"
     },
     {
       "author": "woahwhattheheck",
@@ -152,7 +97,7 @@
       "head_sha": "0109cf93e012b1fe4c9a93aaeb9f37e26482a593",
       "number": 16007,
       "title": "E2B executor: truth-narrow commit provenance on current main",
-      "updated_at": "2026-09-18T10:49:01Z"
+      "updated_at": "2026-09-19T13:27:26Z"
     },
     {
       "author": "woahwhattheheck",
@@ -235,12 +180,122 @@
     "16070": "e932d0b41af5ce74522c83681d7fe9ee109775d7",
     "16073": "253fcfa5935b08b0f63b14d7120fbbbf096ec62d",
     "16081": "7d5f250e6fac05b5d3e3a39022260e10f3329c82",
-    "16087": "75dc598cf6ddba6d212fa3ad00adcce9992ffda3"
+    "16104": "699aa083cf52af7ce135c6e107d94af9de5dc49e"
   },
   "pulls_listed": 58,
-  "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 17.5,
+  "pulls_listing": "PARTIAL",
+  "queue_depth_per_runner": 4.7,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz-sol/uiowa-041-sdlc-workflow",
+      "closed_at": "2026-09-19T13:32:18Z",
+      "head_sha": "182e1995ef723b827867724946cf21837ec3af97",
+      "merged_at": "2026-09-19T13:32:18Z",
+      "number": 16102,
+      "state": "MERGED",
+      "title": "UIOWA-041: add SDLC workflow evidence assets"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-semaphore-uiowa-023-20260919-01",
+      "closed_at": "2026-09-19T13:32:11Z",
+      "head_sha": "ba8c931d6b5eff66a5e332f431a74bb954a29dd3",
+      "merged_at": "2026-09-19T13:32:11Z",
+      "number": 16107,
+      "state": "MERGED",
+      "title": "docs(uiowa): evidence confidence and provenance method (UIOWA-023)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz-solstice-uiowa-019-reliability-peer-pack-20260919",
+      "closed_at": "2026-09-19T13:32:00Z",
+      "head_sha": "163800e3915b6c8255aa878d9225ccdcacd36b6d",
+      "merged_at": "2026-09-19T13:32:00Z",
+      "number": 16101,
+      "state": "MERGED",
+      "title": "docs(uiowa): add deployment reliability peer evidence"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz-uiowa-020-framework-crosswalk-20260919",
+      "closed_at": "2026-09-19T13:31:52Z",
+      "head_sha": "e51bee396746a9f632d46663ceaac7f3f7b44700",
+      "merged_at": null,
+      "number": 16103,
+      "state": "CLOSED",
+      "title": "UIOWA-020: add primary framework crosswalk"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-glasswing-uiowa-005-scope-acceptance-20260919",
+      "closed_at": "2026-09-19T13:30:39Z",
+      "head_sha": "e8884fbba0680b779e79ed52caeb799d84da45e3",
+      "merged_at": "2026-09-19T13:30:39Z",
+      "number": 16098,
+      "state": "MERGED",
+      "title": "UIOWA-005: correct scope and acceptance exhibit"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz-keystone-uiowa-013-20260919",
+      "closed_at": "2026-09-19T13:30:22Z",
+      "head_sha": "773934de6c3cd565b02218254cc176b5a8843669",
+      "merged_at": "2026-09-19T13:30:22Z",
+      "number": 16095,
+      "state": "MERGED",
+      "title": "UIOWA-013: add Iowa AI strategy and data-use context"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz-sol/uiowa-011-ais-context",
+      "closed_at": "2026-09-19T13:27:35Z",
+      "head_sha": "e0f358a7ab12fcd9b8b1a029c01355cb38cad614",
+      "merged_at": "2026-09-19T13:27:34Z",
+      "number": 16093,
+      "state": "MERGED",
+      "title": "UIOWA-011: map AIS, ESS, RIS, and IAM public responsibilities"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/resource-master-whitebox-hour-checkout-road-activation-20260919-01",
+      "closed_at": "2026-09-19T13:14:40Z",
+      "head_sha": "fcb79056c2fc52e370c2c2ba4bfc4503a55623c1",
+      "merged_at": "2026-09-19T13:14:40Z",
+      "number": 16089,
+      "state": "MERGED",
+      "title": "Activate White Box hour direct checkout road"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "titan-v4-salvage-12019-final-spatial-guard",
+      "closed_at": "2026-09-19T12:31:03Z",
+      "head_sha": "2dd08f7c32940d39a66e6248c2d64371315ba70f",
+      "merged_at": "2026-09-19T12:31:03Z",
+      "number": 16088,
+      "state": "MERGED",
+      "title": "TITAN V4: recover #12019 final SpatialTempo guard on current ABI"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/latch-owner-now-wb-hour-restore-ff1c",
+      "closed_at": "2026-09-19T11:38:00Z",
+      "head_sha": "5efd6315e893123f0cbcf144904f1e2e5aaeae95",
+      "merged_at": "2026-09-19T11:38:00Z",
+      "number": 16087,
+      "state": "MERGED",
+      "title": "Restore existing White Box hour Buy CTA on owner-now-revenue.html"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -295,120 +350,10 @@
       "number": 16082,
       "state": "MERGED",
       "title": "fix: restore pixel-unify accessible room chips"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/windows-canonical-binary-io-20260918",
-      "closed_at": "2026-09-19T03:31:48Z",
-      "head_sha": "e45ef7a257f661547c81a1e34bf7926baeac4c7e",
-      "merged_at": "2026-09-19T03:31:48Z",
-      "number": 16079,
-      "state": "MERGED",
-      "title": "fix: preserve canonical bytes on Windows low-level I/O"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol-1142/primitive-root-tail-20260918",
-      "closed_at": "2026-09-19T01:40:09Z",
-      "head_sha": "643e663a0aebd58acb48ade9ebc80c07c3e0122b",
-      "merged_at": "2026-09-19T01:40:09Z",
-      "number": 16080,
-      "state": "MERGED",
-      "title": "research: extend Erd\u0151s 1142 primitive-root tail sieve"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "anvil/retirement-portability-reconcile",
-      "closed_at": "2026-09-19T01:27:53Z",
-      "head_sha": "7b95028a25c73d9e6ea50166437fc7335cfc10e0",
-      "merged_at": "2026-09-19T01:27:53Z",
-      "number": 16064,
-      "state": "MERGED",
-      "title": "reconcile: swarm-mail routing/page restore + owner-now ship pins + gtm index regen"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol891/erdos891-primorial-bound-20260918",
-      "closed_at": "2026-09-19T00:30:22Z",
-      "head_sha": "52726b21af9bfba245d9a0de2ef6c9245f3f5dc0",
-      "merged_at": "2026-09-19T00:30:22Z",
-      "number": 16075,
-      "state": "MERGED",
-      "title": "Erdos 891: add primorial witness lower bound"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "anvil/autopsy-boilerplate-sweep",
-      "closed_at": "2026-09-19T00:27:43Z",
-      "head_sha": "e169c777c862c09242a83e5dce62db4928497827",
-      "merged_at": "2026-09-19T00:27:43Z",
-      "number": 16029,
-      "state": "MERGED",
-      "title": "purge: sweep retired Autopsy boilerplate \u2014 1371 files (docs, orphan shelf li, registries, CI filters)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol406g/erdos406-general-sieve-count-20260918",
-      "closed_at": "2026-09-18T23:34:34Z",
-      "head_sha": "30f045c0d14c6e6ba63e1e8006fab5c1f737510c",
-      "merged_at": "2026-09-18T23:34:34Z",
-      "number": 16074,
-      "state": "MERGED",
-      "title": "research: prove Erd\u0151s 406 general sieve survivor count"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "research/14998-pressure-trace-counterexample-zsol",
-      "closed_at": "2026-09-18T22:47:21Z",
-      "head_sha": "2b7131508bb5a57c1c41b5befc05a979673afbb1",
-      "merged_at": null,
-      "number": 15733,
-      "state": "CLOSED",
-      "title": "research: prove pressure-trace consistency blocker for #14998"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "devinlocal/rejoin-pressure-trace-15733-20260918",
-      "closed_at": "2026-09-18T22:47:17Z",
-      "head_sha": "f91d666af58b125b5da80640d0768cd377546876",
-      "merged_at": null,
-      "number": 16063,
-      "state": "CLOSED",
-      "title": "rejoin(commons#15733): pressure-trace counterexample carrier onto current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "sol18-ridgway-16063-current-main",
-      "closed_at": "2026-09-18T22:46:24Z",
-      "head_sha": "a213bede14d16afdd6eb611fdd805bd4df970edd",
-      "merged_at": "2026-09-18T22:46:24Z",
-      "number": 16069,
-      "state": "MERGED",
-      "title": "rejoin: pressure-trace counterexample carrier on current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol-cashier/repo-estate-postmerge-16003-20260918",
-      "closed_at": "2026-09-18T22:40:45Z",
-      "head_sha": "57851a1b908e65b9a6bd49aa56329e1c096bd15a",
-      "merged_at": null,
-      "number": 16022,
-      "state": "CLOSED",
-      "title": "Repository estate rationalizer fix-forward"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T11:30:27Z",
+  "unchanged_since": "2026-09-19T13:32:47Z",
   "undatable_pulls": []
 }
