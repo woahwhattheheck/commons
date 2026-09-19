@@ -86,7 +86,7 @@ unknowns rather than a made-up low readiness score.
 
 **Not modeled:** distributed propagation, caching, session invalidation,
 reconciliation latency, shared accounts, nested groups, multiple concurrent
-roles, approval workflows, or real privilege semantics. Absence of a role in the
+roles, sequential sign-off processes, or real privilege semantics. Absence of a role in the
 reference output does not establish that access was revoked in any system.
 
 **Evidence to request:** the actual effective-time/propagation contract, the
