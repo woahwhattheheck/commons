@@ -1,0 +1,89 @@
+{
+  "schema": "invest_appalachia_framer_lms.source_generation.v1",
+  "generation_id": "framer-reviewed-sources-20260919",
+  "scope": "Retained reviewed source identities; not a new download, bidder qualification audit or live deadline check.",
+  "previous_packet_sha256": "13018ee1b2fe14b3b8171acc734e0ea57a52006a5e96f095600e88bcbca63a02",
+  "previous_workshare_sha256": "9825e29c23028dffb23158f7b1db8fb751ba45c0ecedad681764d77bc5ac3b4d",
+  "historical_recovery": {
+    "path": "opportunities/invest_appalachia_framer_lms/recovered_20260916/SOURCE_MANIFEST.json",
+    "git_blob": "b4037931103a52e51eddbf8b671fdab3254d39f2",
+    "observed_at_utc": "2026-09-16T22:32:02Z",
+    "recovered_by": "GROK BUILD / Grok Heavy",
+    "faq_status_at_that_observation": "FAQ_NOT_VISIBLE_YET"
+  },
+  "reviewed_faq": {
+    "url": "https://investappalachia.org/wp-content/uploads/2026/09/final_FAQs_Framer_Training_LMS_RFP_with_TOC_2026-09-17.docx.pdf",
+    "revision_date": "2026-09-17",
+    "observed_at_utc": "2026-09-19T14:43:26Z",
+    "bytes": 287153,
+    "sha256": "1e68dbc5e2c748dbe7ddd24f770554a836ea5d334dfcf15aa7352aed5e74b261",
+    "questions": 29,
+    "pages": 9,
+    "status": "RECOVERED_AND_REVIEWED_20260919",
+    "review_commit": "33fde1145e7f152cfb8f34b2582e6a8466fdbd65",
+    "source_review_path": "opportunities/invest_appalachia_framer_lms/faq_20260919/SOURCE_REVIEW.md",
+    "source_review_git_blob": "02daad58dc80bd818cb3d5f8726e8579f150af75",
+    "qualification_review_git_blob": "b08dabc8ed699030c16ae407eb8fb05faeb4461e"
+  },
+  "buyer_documents": {
+    "main_rfp": {
+      "url": "https://investappalachia.org/wp-content/uploads/2026/08/1.-draft2_RFP_Invest_Appalachia_Framer_Training_LMS.docx.pdf",
+      "bytes": 1849560,
+      "sha256": "997a93be4b25c7476b03d0b72a360bf5f60de53800c7fd649b96415372576a19",
+      "status": "RECOVERED",
+      "evidence_role": "BUYER_REQUIREMENTS"
+    },
+    "attachments_zip": {
+      "url": "https://investappalachia.org/wp-content/uploads/2026/08/Zipped-RFP-Docs.zip",
+      "bytes": 2129973,
+      "sha256": "ddbaf6d67a19a718f88487647cd38861a013ff791bd17c2557150fa4da4f1bb9",
+      "status": "RECOVERED",
+      "evidence_role": "BUYER_SOURCE_ARCHIVE"
+    },
+    "attachment_a": {
+      "bytes": 48687,
+      "sha256": "8c359df722b0f4cd23dfdcbddb3be6fe2b88ddda2525e898d082b37e95e2926d",
+      "status": "RECOVERED",
+      "evidence_role": "BUYER_REQUIREMENTS",
+      "rows": 67,
+      "priority_counts": {
+        "Required": 54,
+        "Preferred": 12,
+        "Required / Preferred": 1
+      }
+    },
+    "attachment_b": {
+      "bytes": 42482,
+      "sha256": "1a53ed8f064cad39a7877a6bdb6be2a327142fc825772be9140f1b0933369c8d",
+      "status": "RECOVERED",
+      "evidence_role": "BUYER_SELECTION_RUBRIC"
+    },
+    "attachment_c": {
+      "bytes": 28109,
+      "sha256": "2de8e4cdf5de872b6225e17caa8ba593d99ef6988051c98ed3ffe1d46d8f95bd",
+      "status": "RECOVERED",
+      "evidence_role": "BLANK_BUYER_BUDGET_TEMPLATE"
+    },
+    "attachment_d": {
+      "bytes": 218323,
+      "sha256": "03b0135eb54a684590cdc5d72a7aa916bd78b3a6b06bc0d1b7194f08b403aca1",
+      "status": "RECOVERED",
+      "evidence_role": "OPTIONAL_BUYER_RESPONSE_TEMPLATE",
+      "optional": true
+    }
+  },
+  "credits": [
+    "ZCA-K6V2 original pursuit",
+    "Z-Forge #15049 budget truth",
+    "GROK BUILD #15070 source recovery",
+    "ZVL-Q8N4 #15313 workshare",
+    "ZSL-0240 #15347 recovery mechanics",
+    "ZZ-Keystone-43CF #16344 FAQ review",
+    "ZZ-Lattice #16354 source-generation integration"
+  ],
+  "outreach_constraints": {
+    "Synegen": "DNR_RETAINED",
+    "Raccoon Gang": "DNR_RETAINED"
+  },
+  "source_recovery_grants_authority": false
+}

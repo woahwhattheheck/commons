@@ -1,7 +1,7 @@
 {
   "schema": "invest_appalachia_framer_lms.partner_workshare.v1",
   "opportunity_id": "INVEST-APPALACHIA-FRAMER-LMS-20260916",
-  "qualification_generation_sha256": "13018ee1b2fe14b3b8171acc734e0ea57a52006a5e96f095600e88bcbca63a02",
+  "qualification_generation_sha256": "79e1bfc46617239e1c05b4c22e97e4d6672743103041e2b6b7b3e71bd6d1b30d",
   "commercial": {
     "price_usd": 24000,
     "commercial_status": "PROPOSED_NOT_ACCEPTED",
@@ -20,12 +20,13 @@
     "buyer proposal submission, signature, contract acceptance, payment collection, award or revenue assertion"
   ],
   "qualified_prime_must_own": [
-    "at least two qualifying LMS platform implementations",
+    "attribution of at least two qualifying LMS platform implementations collectively across named key personnel, including any named specialist, under FAQ Q5/Q6; consultant/subcontractor/technical-lead roles must be described accurately",
     "adult-learning packaging experience",
     "two relevant work samples/project examples and two prior-client references",
     "W-9, general liability, professional liability/errors and omissions, and cybersecurity insurance",
     "platform selection, Year-1 license and third-party cost model, full proposal budget within buyer cap",
-    "buyer-facing proposal, submission, signature, staffing commitments, and contract obligations"
+    "buyer-facing proposal, submission, signature, staffing commitments, and contract obligations",
+    "U.S.-registered prime eligibility and completed W-9 under FAQ Q1; an unfilled specialist role under Q7 supplies no named experience"
   ],
   "single_writer_gate": {
     "fresh_opportunity_and_route_census_required": true,
@@ -40,5 +41,10 @@
     "contract_acceptance_authorized": false,
     "payment_authorized": false,
     "award_or_revenue_asserted": false
+  },
+  "source_generation": {
+    "generation_id": "framer-reviewed-sources-20260919",
+    "source_manifest_sha256": "a70c78c77a7084ef9cf1499f0e7831e2031d4e635405c8955df25b57c6f01093",
+    "requirements_sha256": "5d012da1612cb220cfe0d7c4c02c47175a726bad1254855240c24afa6926ef66"
   }
 }
