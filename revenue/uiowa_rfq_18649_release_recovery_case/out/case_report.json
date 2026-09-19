@@ -1,0 +1,414 @@
+{
+  "as_of": "2026-09-18T12:00:00+00:00",
+  "case_id": "SYN-109-ESS-RELEASE-01",
+  "data_class": "synthetic",
+  "environment": {
+    "deployed_sha256": "d426ab8848408bb33d44192697e932f94b76d007f22bec5bd4fa033a17a53a0c",
+    "deployed_version": "fictional-2.3.0",
+    "deployment_environment": "ess-prod",
+    "deployment_id": "DEP-1",
+    "environment_difference": true,
+    "passed_environments": [
+      "ess-stage"
+    ],
+    "verifications": [
+      {
+        "artifact_version": "fictional-2.3.0",
+        "environment": "ess-stage",
+        "outcome": "PASSED",
+        "same_environment_as_deployment": false,
+        "verification_id": "VER-STAGE"
+      },
+      {
+        "artifact_version": "fictional-2.3.0",
+        "environment": "ess-prod",
+        "outcome": "FAILED",
+        "same_environment_as_deployment": true,
+        "verification_id": "VER-PROD"
+      }
+    ]
+  },
+  "fiction_notice": "SYNTHETIC / FICTIONAL. Every service, environment, release, digest, date and measurement in this file was invented for artifact review. Nothing here describes the University of Iowa, any real service, any real release, or any real incident. Do not cite any figure in this file as a finding.",
+  "findings": [
+    {
+      "cites": [
+        "DEP-1"
+      ],
+      "class": "gap",
+      "code": "ENVIRONMENT_DIFFERENCE",
+      "component": "environment",
+      "detail": "every PASSED verification ran in ['ess-stage'], but the release was deployed to 'ess-prod'; a pass in another environment is not evidence about the environment that actually ran the release",
+      "subject": "ess-prod"
+    },
+    {
+      "cites": [
+        "EVT-RIS-DEPVERIFY"
+      ],
+      "class": "gap",
+      "code": "UNORDERABLE_EVENT",
+      "component": "cross-component",
+      "detail": "event 'EVT-RIS-DEPVERIFY' (dependency_verification) has no observed timestamp; it stays UNKNOWN and is excluded from ordering checks. It is NOT placed at the start of the timeline and NOT treated as satisfied",
+      "subject": "EVT-RIS-DEPVERIFY"
+    },
+    {
+      "cites": [
+        "EVT-RIS-DEPVERIFY"
+      ],
+      "class": "gap",
+      "code": "UNSUPPORTED_RECOVERY_CLAIM",
+      "component": "recovery",
+      "detail": "service 'SVC-RIS' claims dependency 'SVC-ESS' was verified, but the claim is not carried by a verification record (no observed verification time); the claim is reported unsupported and does not raise the status",
+      "subject": "SVC-RIS:dependency:SVC-ESS"
+    }
+  ],
+  "interpretation_boundary": {
+    "agreement_is_not_correctness": true,
+    "backup_completion_is_restoration_proof": false,
+    "exit_zero_is_not_a_release_approval": true,
+    "individual_performance_rated": false,
+    "live_restore_performed": false,
+    "maturity_or_confidence_score_emitted": false,
+    "missing_evidence_is_a_pass": false,
+    "missing_evidence_is_failure": false,
+    "university_finding": false
+  },
+  "provenance": {
+    "linked": true,
+    "trace": [
+      "DEP-1 -> ART-1",
+      "ART-1 -> BLD-1",
+      "BLD-1 -> SRC-1"
+    ]
+  },
+  "recovery": {
+    "assessment_id": "SYN-109-ESS-RELEASE-01-RECOVERY",
+    "services": [
+      {
+        "backup_status": "EVIDENCED",
+        "business_function": "An employee can open and submit a self-service request",
+        "business_verification": "EVIDENCED",
+        "dependencies": [
+          "SVC-IAM"
+        ],
+        "dependency_verification": "EVIDENCED",
+        "exercise_id": "EX-SYN-ESS-01",
+        "gaps": [],
+        "last_successful_backup_at": "2026-09-17T21:30:00+00:00",
+        "name": "Synthetic employee self-service",
+        "observed_rpo_minutes": 50,
+        "observed_rto_minutes": 50,
+        "restoration_status": "DEMONSTRATED",
+        "rpo_result": "MEETS_TARGET",
+        "rto_result": "MEETS_TARGET",
+        "service_id": "SVC-ESS",
+        "target_rpo_minutes": 60,
+        "target_rto_minutes": 120
+      },
+      {
+        "backup_status": "UNKNOWN",
+        "business_function": "Authenticate users to in-scope services",
+        "business_verification": "NOT_EVIDENCED",
+        "dependencies": [],
+        "dependency_verification": "NOT_APPLICABLE",
+        "exercise_id": null,
+        "gaps": [
+          "backup completion not evidenced: source 'EV-SYN-IAM-BACKUP' is interview evidence; without artifact corroboration it remains UNKNOWN",
+          "no restoration exercise recorded; restoration is NOT_DEMONSTRATED, which is an absence of evidence and not a failed exercise"
+        ],
+        "last_successful_backup_at": "2026-09-17T20:45:00+00:00",
+        "name": "Synthetic sign-in",
+        "observed_rpo_minutes": null,
+        "observed_rto_minutes": null,
+        "restoration_status": "NOT_DEMONSTRATED",
+        "rpo_result": "UNKNOWN",
+        "rto_result": "UNKNOWN",
+        "service_id": "SVC-IAM",
+        "target_rpo_minutes": 60,
+        "target_rto_minutes": 60
+      },
+      {
+        "backup_status": "EVIDENCED",
+        "business_function": "Submit and route a research administration packet",
+        "business_verification": "NOT_EVIDENCED",
+        "dependencies": [
+          "SVC-ESS"
+        ],
+        "dependency_verification": "UNKNOWN",
+        "exercise_id": "EX-SYN-RIS-01",
+        "gaps": [
+          "dependency SVC-ESS verification claimed but unsupported: no observed verification time",
+          "business-function verification was not attempted in the records; it stays NOT_EVIDENCED"
+        ],
+        "last_successful_backup_at": "2026-09-17T21:00:00+00:00",
+        "name": "Synthetic research submission",
+        "observed_rpo_minutes": 80,
+        "observed_rto_minutes": 80,
+        "restoration_status": "PARTIAL",
+        "rpo_result": "EXCEEDS_TARGET",
+        "rto_result": "MEETS_TARGET",
+        "service_id": "SVC-RIS",
+        "target_rpo_minutes": 60,
+        "target_rto_minutes": 120
+      }
+    ]
+  },
+  "status": "GAPS",
+  "summary": {
+    "contradiction_count": 0,
+    "finding_codes": [
+      "ENVIRONMENT_DIFFERENCE",
+      "UNORDERABLE_EVENT",
+      "UNSUPPORTED_RECOVERY_CLAIM"
+    ],
+    "gap_count": 3,
+    "restoration_demonstrated": 1,
+    "restoration_not_demonstrated": 1,
+    "restoration_partial": 1,
+    "services_total": 3
+  },
+  "timeline": {
+    "agreement_matrix": [
+      {
+        "agreement": "AGREES",
+        "asserted_at": "2026-09-17T15:20:00+00:00",
+        "asserting_component": "provenance",
+        "asserting_path": "case.release.build.finished",
+        "event_id": "EVT-BUILD-FINISHED",
+        "event_kind": "build_finished",
+        "register_observed_at": "2026-09-17T15:20:00+00:00"
+      },
+      {
+        "agreement": "AGREES",
+        "asserted_at": "2026-09-17T15:00:00+00:00",
+        "asserting_component": "provenance",
+        "asserting_path": "case.release.build.started",
+        "event_id": "EVT-BUILD-STARTED",
+        "event_kind": "build_started",
+        "register_observed_at": "2026-09-17T15:00:00+00:00"
+      },
+      {
+        "agreement": "AGREES",
+        "asserted_at": "2026-09-17T22:00:00+00:00",
+        "asserting_component": "provenance",
+        "asserting_path": "case.release.deployment.deployed",
+        "event_id": "EVT-DEPLOY",
+        "event_kind": "deployment",
+        "register_observed_at": "2026-09-17T22:00:00+00:00"
+      },
+      {
+        "agreement": "AGREES",
+        "asserted_at": "2026-09-17T22:20:00+00:00",
+        "asserting_component": "recovery",
+        "asserting_path": "case.recovery.services[0].exercise.disruption",
+        "event_id": "EVT-DISRUPT",
+        "event_kind": "disruption",
+        "register_observed_at": "2026-09-17T22:20:00+00:00"
+      },
+      {
+        "agreement": "AGREES",
+        "asserted_at": "2026-09-17T22:20:00+00:00",
+        "asserting_component": "recovery",
+        "asserting_path": "case.recovery.services[2].exercise.disruption",
+        "event_id": "EVT-DISRUPT",
+        "event_kind": "disruption",
+        "register_observed_at": "2026-09-17T22:20:00+00:00"
+      },
+      {
+        "agreement": "NO_ASSERTION",
+        "asserted_at": null,
+        "asserting_component": "recovery",
+        "asserting_path": "case.recovery.services[0].backup.last_successful",
+        "event_id": "EVT-ESS-BACKUP",
+        "event_kind": "backup_completed",
+        "register_observed_at": "2026-09-17T21:30:00+00:00"
+      },
+      {
+        "agreement": "NO_ASSERTION",
+        "asserted_at": null,
+        "asserting_component": "recovery",
+        "asserting_path": "case.recovery.services[0].exercise.business_verification",
+        "event_id": "EVT-ESS-BIZVERIFY",
+        "event_kind": "business_verification",
+        "register_observed_at": "2026-09-17T23:25:00+00:00"
+      },
+      {
+        "agreement": "AGREES",
+        "asserted_at": "2026-09-17T22:55:00+00:00",
+        "asserting_component": "recovery",
+        "asserting_path": "case.recovery.services[0].exercise.dependency_results[0].verified",
+        "event_id": "EVT-ESS-DEPVERIFY",
+        "event_kind": "dependency_verification",
+        "register_observed_at": "2026-09-17T22:55:00+00:00"
+      },
+      {
+        "agreement": "NO_ASSERTION",
+        "asserted_at": null,
+        "asserting_component": "recovery",
+        "asserting_path": "case.recovery.services[0].exercise.restored_data_as_of",
+        "event_id": "EVT-ESS-PIT",
+        "event_kind": "restored_data_as_of",
+        "register_observed_at": "2026-09-17T21:30:00+00:00"
+      },
+      {
+        "agreement": "AGREES",
+        "asserted_at": "2026-09-17T23:10:00+00:00",
+        "asserting_component": "recovery",
+        "asserting_path": "case.recovery.services[0].exercise.restore_completed",
+        "event_id": "EVT-ESS-RESTORE",
+        "event_kind": "restore_completed",
+        "register_observed_at": "2026-09-17T23:10:00+00:00"
+      },
+      {
+        "agreement": "NO_ASSERTION",
+        "asserted_at": null,
+        "asserting_component": "recovery",
+        "asserting_path": "case.recovery.services[1].backup.last_successful",
+        "event_id": "EVT-IAM-BACKUP",
+        "event_kind": "backup_completed",
+        "register_observed_at": "2026-09-17T20:45:00+00:00"
+      },
+      {
+        "agreement": "NO_ASSERTION",
+        "asserted_at": null,
+        "asserting_component": "recovery",
+        "asserting_path": "case.recovery.services[2].backup.last_successful",
+        "event_id": "EVT-RIS-BACKUP",
+        "event_kind": "backup_completed",
+        "register_observed_at": "2026-09-17T21:00:00+00:00"
+      },
+      {
+        "agreement": "NO_ASSERTION",
+        "asserted_at": null,
+        "asserting_component": "recovery",
+        "asserting_path": "case.recovery.services[2].exercise.dependency_results[0].verified",
+        "event_id": "EVT-RIS-DEPVERIFY",
+        "event_kind": "dependency_verification",
+        "register_observed_at": null
+      },
+      {
+        "agreement": "NO_ASSERTION",
+        "asserted_at": null,
+        "asserting_component": "recovery",
+        "asserting_path": "case.recovery.services[2].exercise.restored_data_as_of",
+        "event_id": "EVT-RIS-PIT",
+        "event_kind": "restored_data_as_of",
+        "register_observed_at": "2026-09-17T21:00:00+00:00"
+      },
+      {
+        "agreement": "AGREES",
+        "asserted_at": "2026-09-17T23:40:00+00:00",
+        "asserting_component": "recovery",
+        "asserting_path": "case.recovery.services[2].exercise.restore_completed",
+        "event_id": "EVT-RIS-RESTORE",
+        "event_kind": "restore_completed",
+        "register_observed_at": "2026-09-17T23:40:00+00:00"
+      },
+      {
+        "agreement": "AGREES",
+        "asserted_at": "2026-09-17T14:00:00+00:00",
+        "asserting_component": "provenance",
+        "asserting_path": "case.release.source.approved",
+        "event_id": "EVT-SRC-APPROVED",
+        "event_kind": "source_approved",
+        "register_observed_at": "2026-09-17T14:00:00+00:00"
+      },
+      {
+        "agreement": "AGREES",
+        "asserted_at": "2026-09-17T22:15:00+00:00",
+        "asserting_component": "environment",
+        "asserting_path": "case.verifications[1].performed",
+        "event_id": "EVT-VERIFY-PROD",
+        "event_kind": "verification",
+        "register_observed_at": "2026-09-17T22:15:00+00:00"
+      },
+      {
+        "agreement": "AGREES",
+        "asserted_at": "2026-09-17T16:00:00+00:00",
+        "asserting_component": "environment",
+        "asserting_path": "case.verifications[0].performed",
+        "event_id": "EVT-VERIFY-STAGE",
+        "event_kind": "verification",
+        "register_observed_at": "2026-09-17T16:00:00+00:00"
+      }
+    ],
+    "events_total": 17,
+    "events_with_known_time": 16,
+    "ordering_checks": [
+      {
+        "earlier": "EVT-SRC-APPROVED",
+        "later": "EVT-DEPLOY",
+        "result": "HOLDS",
+        "rule": "APPROVAL_BEFORE_DEPLOY",
+        "scope": "release",
+        "why": "source approval must not postdate the deployment it authorised (UIOWA-057 rule)"
+      },
+      {
+        "earlier": "EVT-BUILD-FINISHED",
+        "later": "EVT-DEPLOY",
+        "result": "HOLDS",
+        "rule": "BUILD_BEFORE_DEPLOY",
+        "scope": "release",
+        "why": "the deployed artifact must have finished building before it was deployed"
+      },
+      {
+        "earlier": "EVT-BUILD-STARTED",
+        "later": "EVT-BUILD-FINISHED",
+        "result": "HOLDS",
+        "rule": "BUILD_SPAN",
+        "scope": "release",
+        "why": "a build cannot finish before it started"
+      },
+      {
+        "earlier": "EVT-DEPLOY",
+        "later": "EVT-VERIFY-PROD",
+        "result": "HOLDS",
+        "rule": "DEPLOY_BEFORE_VERIFY",
+        "scope": "release",
+        "why": "a verification OF THE DEPLOYED ENVIRONMENT cannot precede the deployment; a verification in another environment has no ordering relation to it"
+      },
+      {
+        "earlier": "EVT-ESS-DEPVERIFY",
+        "later": "EVT-ESS-BIZVERIFY",
+        "result": "HOLDS",
+        "rule": "DEPENDENCY_BEFORE_BUSINESS",
+        "scope": "service:SVC-ESS",
+        "why": "a business function cannot be verified before the dependency it needs"
+      },
+      {
+        "earlier": "EVT-DISRUPT",
+        "later": "EVT-ESS-RESTORE",
+        "result": "HOLDS",
+        "rule": "DISRUPTION_BEFORE_RESTORE",
+        "scope": "service:SVC-ESS",
+        "why": "a restore cannot complete before the disruption that required it"
+      },
+      {
+        "earlier": "EVT-ESS-PIT",
+        "later": "EVT-DISRUPT",
+        "result": "HOLDS",
+        "rule": "RPO_POINT_BEFORE_DISRUPTION",
+        "scope": "service:SVC-ESS",
+        "why": "restored data cannot be newer than the disruption (that is the RPO model)"
+      },
+      {
+        "earlier": "EVT-DISRUPT",
+        "later": "EVT-RIS-RESTORE",
+        "result": "HOLDS",
+        "rule": "DISRUPTION_BEFORE_RESTORE",
+        "scope": "service:SVC-RIS",
+        "why": "a restore cannot complete before the disruption that required it"
+      },
+      {
+        "earlier": "EVT-RIS-PIT",
+        "later": "EVT-DISRUPT",
+        "result": "HOLDS",
+        "rule": "RPO_POINT_BEFORE_DISRUPTION",
+        "scope": "service:SVC-RIS",
+        "why": "restored data cannot be newer than the disruption (that is the RPO model)"
+      }
+    ],
+    "unorderable_events": [
+      "EVT-RIS-DEPVERIFY"
+    ]
+  }
+}

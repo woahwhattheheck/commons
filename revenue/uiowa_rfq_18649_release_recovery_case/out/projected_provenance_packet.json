@@ -1,0 +1,180 @@
+{
+  "artifacts": [
+    {
+      "build_id": "BLD-1",
+      "evidence_id": "EV-SYN-ARTIFACT",
+      "id": "ART-1",
+      "local_path": null,
+      "sha256": "d426ab8848408bb33d44192697e932f94b76d007f22bec5bd4fa033a17a53a0c",
+      "version": "fictional-2.3.0"
+    }
+  ],
+  "builds": [
+    {
+      "builder_id": "synthetic/build-platform",
+      "evidence_id": "EV-SYN-BUILD",
+      "finished_at": "2026-09-17T15:20:00+00:00",
+      "id": "BLD-1",
+      "input_coverage": "declared_complete",
+      "materials": [],
+      "observed_repository": "https://example.invalid/fictional-ess-service",
+      "observed_revision": "69a1fe6909363e03fd8bd246d3312bf1dfd5afb0",
+      "recipe_sha256": null,
+      "recipe_uri": null,
+      "source_id": "SRC-1",
+      "started_at": "2026-09-17T15:00:00+00:00"
+    }
+  ],
+  "data_class": "synthetic",
+  "deployments": [
+    {
+      "artifact_id": "ART-1",
+      "environment": "ess-prod",
+      "evidence_id": "EV-SYN-DEPLOY",
+      "id": "DEP-1",
+      "observed_at": "2026-09-17T22:00:00+00:00",
+      "observed_sha256": "d426ab8848408bb33d44192697e932f94b76d007f22bec5bd4fa033a17a53a0c",
+      "observed_version": "fictional-2.3.0"
+    }
+  ],
+  "evidence": [
+    {
+      "captured_at": "2026-09-18T09:00:00+00:00",
+      "id": "EV-SYN-APPROVAL",
+      "kind": "synthetic",
+      "locator": "synthetic-records.md#approval",
+      "owner_role": "Service change coordinator"
+    },
+    {
+      "captured_at": "2026-09-18T09:00:00+00:00",
+      "id": "EV-SYN-ARTIFACT",
+      "kind": "synthetic",
+      "locator": "synthetic-records.md#artifact",
+      "owner_role": "Release custodian"
+    },
+    {
+      "captured_at": "2026-09-18T09:00:00+00:00",
+      "id": "EV-SYN-BUILD",
+      "kind": "synthetic",
+      "locator": "synthetic-records.md#build",
+      "owner_role": "Build-platform maintainer"
+    },
+    {
+      "captured_at": "2026-09-18T09:00:00+00:00",
+      "id": "EV-SYN-DEPLOY",
+      "kind": "synthetic",
+      "locator": "synthetic-records.md#deployment",
+      "owner_role": "Service operations owner"
+    },
+    {
+      "captured_at": "2026-09-18T09:00:00+00:00",
+      "id": "EV-SYN-DISRUPT",
+      "kind": "synthetic",
+      "locator": "synthetic-records.md#disruption",
+      "owner_role": "Service operations owner"
+    },
+    {
+      "captured_at": "2026-09-18T09:00:00+00:00",
+      "id": "EV-SYN-ESS-BACKUP",
+      "kind": "synthetic",
+      "locator": "synthetic-records.md#ess-backup",
+      "owner_role": "Enterprise Applications team"
+    },
+    {
+      "captured_at": "2026-09-18T09:00:00+00:00",
+      "id": "EV-SYN-ESS-BIZVERIFY",
+      "kind": "synthetic",
+      "locator": "synthetic-records.md#ess-bizverify",
+      "owner_role": "Enterprise Applications team"
+    },
+    {
+      "captured_at": "2026-09-18T09:00:00+00:00",
+      "id": "EV-SYN-ESS-DEPVERIFY",
+      "kind": "synthetic",
+      "locator": "synthetic-records.md#ess-depverify",
+      "owner_role": "Enterprise Applications team"
+    },
+    {
+      "captured_at": "2026-09-18T09:00:00+00:00",
+      "id": "EV-SYN-ESS-RESTORE",
+      "kind": "synthetic",
+      "locator": "synthetic-records.md#ess-restore",
+      "owner_role": "Enterprise Applications team"
+    },
+    {
+      "captured_at": "2026-09-18T09:00:00+00:00",
+      "id": "EV-SYN-IAM-BACKUP",
+      "kind": "interview",
+      "locator": "synthetic-records.md#iam-backup-interview",
+      "owner_role": "Identity and Access team"
+    },
+    {
+      "captured_at": "2026-09-18T09:00:00+00:00",
+      "id": "EV-SYN-IAM-BIZVERIFY",
+      "kind": "synthetic",
+      "locator": "synthetic-records.md#iam-bizverify",
+      "owner_role": "Identity and Access team"
+    },
+    {
+      "captured_at": "2026-09-18T09:00:00+00:00",
+      "id": "EV-SYN-IAM-RESTORE",
+      "kind": "synthetic",
+      "locator": "synthetic-records.md#iam-restore",
+      "owner_role": "Identity and Access team"
+    },
+    {
+      "captured_at": "2026-09-18T09:00:00+00:00",
+      "id": "EV-SYN-RIS-BACKUP",
+      "kind": "synthetic",
+      "locator": "synthetic-records.md#ris-backup",
+      "owner_role": "Research Information team"
+    },
+    {
+      "captured_at": "2026-09-18T09:00:00+00:00",
+      "id": "EV-SYN-RIS-BIZVERIFY",
+      "kind": "synthetic",
+      "locator": "synthetic-records.md#ris-bizverify",
+      "owner_role": "Research Information team"
+    },
+    {
+      "captured_at": "2026-09-18T09:00:00+00:00",
+      "id": "EV-SYN-RIS-DEPVERIFY",
+      "kind": "synthetic",
+      "locator": "synthetic-records.md#ris-depverify",
+      "owner_role": "Research Information team"
+    },
+    {
+      "captured_at": "2026-09-18T09:00:00+00:00",
+      "id": "EV-SYN-RIS-RESTORE",
+      "kind": "synthetic",
+      "locator": "synthetic-records.md#ris-restore",
+      "owner_role": "Research Information team"
+    },
+    {
+      "captured_at": "2026-09-18T09:00:00+00:00",
+      "id": "EV-SYN-VERIFY-PROD",
+      "kind": "synthetic",
+      "locator": "synthetic-records.md#verify-prod",
+      "owner_role": "Service operations owner"
+    },
+    {
+      "captured_at": "2026-09-18T09:00:00+00:00",
+      "id": "EV-SYN-VERIFY-STAGE",
+      "kind": "synthetic",
+      "locator": "synthetic-records.md#verify-stage",
+      "owner_role": "Release custodian"
+    }
+  ],
+  "packet_id": "SYN-109-ESS-RELEASE-01-provenance",
+  "schema_version": 1,
+  "sources": [
+    {
+      "approval_evidence_id": "EV-SYN-APPROVAL",
+      "approved_at": "2026-09-17T14:00:00+00:00",
+      "approved_revision": "69a1fe6909363e03fd8bd246d3312bf1dfd5afb0",
+      "id": "SRC-1",
+      "repository": "https://example.invalid/fictional-ess-service",
+      "revision": "69a1fe6909363e03fd8bd246d3312bf1dfd5afb0"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "assessment_id": "SYN-109-ESS-RELEASE-01-RECOVERY",
+  "services": [
+    {
+      "backup": {
+        "evidence_id": "EV-SYN-ESS-BACKUP",
+        "last_successful_at": "2026-09-17T21:30:00+00:00"
+      },
+      "business_function": "An employee can open and submit a self-service request",
+      "dependencies": [
+        "SVC-IAM"
+      ],
+      "exercise": {
+        "business_verification_evidence_id": "EV-SYN-ESS-BIZVERIFY",
+        "business_verified_at": "2026-09-17T23:25:00+00:00",
+        "dependency_results": [
+          {
+            "dependency_id": "SVC-IAM",
+            "evidence_id": "EV-SYN-ESS-DEPVERIFY",
+            "verified_at": "2026-09-17T22:55:00+00:00"
+          }
+        ],
+        "disruption_at": "2026-09-17T22:20:00+00:00",
+        "exercise_id": "EX-SYN-ESS-01",
+        "restore_completed_at": "2026-09-17T23:10:00+00:00",
+        "restored_data_as_of": "2026-09-17T21:30:00+00:00"
+      },
+      "name": "Synthetic employee self-service",
+      "service_id": "SVC-ESS",
+      "target_rpo_minutes": 60,
+      "target_rto_minutes": 120
+    },
+    {
+      "backup": {
+        "evidence_id": "EV-SYN-IAM-BACKUP",
+        "last_successful_at": "2026-09-17T20:45:00+00:00"
+      },
+      "business_function": "Authenticate users to in-scope services",
+      "dependencies": [],
+      "exercise": null,
+      "name": "Synthetic sign-in",
+      "service_id": "SVC-IAM",
+      "target_rpo_minutes": 60,
+      "target_rto_minutes": 60
+    },
+    {
+      "backup": {
+        "evidence_id": "EV-SYN-RIS-BACKUP",
+        "last_successful_at": "2026-09-17T21:00:00+00:00"
+      },
+      "business_function": "Submit and route a research administration packet",
+      "dependencies": [
+        "SVC-ESS"
+      ],
+      "exercise": {
+        "business_verification_evidence_id": null,
+        "business_verified_at": null,
+        "dependency_results": [
+          {
+            "dependency_id": "SVC-ESS",
+            "evidence_id": "EV-SYN-RIS-DEPVERIFY",
+            "verified_at": null
+          }
+        ],
+        "disruption_at": "2026-09-17T22:20:00+00:00",
+        "exercise_id": "EX-SYN-RIS-01",
+        "restore_completed_at": "2026-09-17T23:40:00+00:00",
+        "restored_data_as_of": "2026-09-17T21:00:00+00:00"
+      },
+      "name": "Synthetic research submission",
+      "service_id": "SVC-RIS",
+      "target_rpo_minutes": 60,
+      "target_rto_minutes": 120
+    }
+  ],
+  "synthetic": true
+}

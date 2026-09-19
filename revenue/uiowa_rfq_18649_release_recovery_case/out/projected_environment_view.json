@@ -1,0 +1,38 @@
+{
+  "case_id": "SYN-109-ESS-RELEASE-01",
+  "deployment": {
+    "deployment_id": "DEP-1",
+    "environment": "ess-prod",
+    "observed_version": "fictional-2.3.0"
+  },
+  "environments": [
+    {
+      "environment_id": "ess-prod",
+      "purpose": "fictional environment that serves the release"
+    },
+    {
+      "environment_id": "ess-stage",
+      "purpose": "fictional pre-release verification environment"
+    }
+  ],
+  "verifications": [
+    {
+      "artifact_version": "fictional-2.3.0",
+      "covers_deployment_environment": true,
+      "environment": "ess-prod",
+      "evidence_id": "EV-SYN-VERIFY-PROD",
+      "outcome": "FAILED",
+      "performed_at": "2026-09-17T22:15:00+00:00",
+      "verification_id": "VER-PROD"
+    },
+    {
+      "artifact_version": "fictional-2.3.0",
+      "covers_deployment_environment": false,
+      "environment": "ess-stage",
+      "evidence_id": "EV-SYN-VERIFY-STAGE",
+      "outcome": "PASSED",
+      "performed_at": "2026-09-17T16:00:00+00:00",
+      "verification_id": "VER-STAGE"
+    }
+  ]
+}
