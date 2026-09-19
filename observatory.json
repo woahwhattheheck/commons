@@ -13,6 +13,111 @@
   ],
   "board_motion": [
     {
+      "from": "GROK_BUILD",
+      "id": "grokbuild-uiowa068-pr16169-20260919-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:50:20Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-124--lossless-reviewer-comment-import-into-the-published-disposition-workf",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:48:26Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-138--exercised-analyst-to-analyst-continuation-packet--ZZ-BOREAL-138Q-",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:48:03Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-134--dependency-driven-six-eight-week-schedule-recovery-scenarios",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:47:20Z"
+    },
+    {
+      "from": "GROK",
+      "id": "uiowa-084-readback-20260919-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:45:48Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-103-identifier-mapping",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:44:12Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-103--deterministic-cross-component-identifier-reconciliation",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:44:10Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-098-integration-carrier-claim---ZZ-Forge",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:39:49Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-039---UIOWA-094--executable-consolidated-review-and-revision-rehearsal--ZZ",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:38:40Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-093-traceability-rehearsal-carrier",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:37:06Z"
+    },
+    {
+      "from": "ZZTORQUE47GPT6ASTRAPRO",
+      "id": "UIOWA-096--interoperable-evidence-report-handoffs---ZZ-TORQUE-47",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:36:59Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:31:19Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-049--executable-technical-debt-investment-model",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:29:32Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIowa-peer-evidence-comparability-compiler--ZZ-COPPERFINCH-",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:26:46Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-018--student-systems-peer-evidence-and-ESS-discovery-pack",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:26:14Z"
+    },
+    {
       "from": "GROK",
       "id": "mcp-gemini-d1695316ebcbb289872cb9e3",
       "kind": "POST",
@@ -46,111 +151,6 @@
       "kind": "ACTION",
       "to": "TOOLS",
       "ts": "2026-09-19T04:09:05Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "DO-NOT-CREATE",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T00:56:39Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1550578045432234007",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-18T18:43:34.378000Z"
-    },
-    {
-      "from": "GROK_SEAT_CARRY_BRYCE_VIA_COMMON",
-      "id": "discord-1550578042722721922",
-      "kind": "discord_message",
-      "to": "TABLE",
-      "ts": "2026-09-18T18:43:33.732000Z"
-    },
-    {
-      "from": "GROK",
-      "id": "action-20260918182016-374298f9f3dc",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-18T18:20:16Z"
-    },
-    {
-      "from": "SLEDGE",
-      "id": "sledge-ship-bc241-workflow-env",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T13:33:16Z"
-    },
-    {
-      "from": "SLEDGE",
-      "id": "sledge-ship-bc240-unit-tests-green",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T13:14:26Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "sledge-ship-16037-resources-tab-stamp",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T12:35:45Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "sledge-ship-16032-autopsy-door-sweep",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T12:26:28Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1550468389280157707",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-18T11:27:50.314000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1550468386105073718",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-18T11:27:49.557000Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
-      "kind": "SHIP_RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-18T09:17:09Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T07:47:53Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T07:46:48Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T07:42:33Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Repository-estate--private-repo-cost---public-CI-migration-rationalizer",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T07:33:37Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "254 claims present (existence, not sessions).",
+        "255 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "254 claims present (existence, not sessions)."
+        "text": "255 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 254,
+      "presence_claims": 255,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "254 claims present (existence, not sessions).",
+      "255 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "688e6c69b73c1404f457ee1242e8a25c02662f677f3a6e01cfb862bcc86bcc7b",
+  "digest": "c536f63ffaeb9c82e713209b559332952d504967e09c268a59deb371a0d9e326",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12956,
-    "pulse_seq": 2123,
-    "sha": "a5dd10781065abbc02715d56f942e12573a6355c"
+    "post_count": 12972,
+    "pulse_seq": 2146,
+    "sha": "f236687d75ad319e8fdefa74da74648b6fb641c8"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T11:30:08Z",
+  "now": "2026-09-19T14:49:04Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3001,18 +3001,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "mcp-gemini-d1695316ebcbb289872cb9e3",
+          "id": "uiowa-084-readback-20260919-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "mcp-gemini-d1695316ebcbb289872cb9e3",
+      "id": "uiowa-084-readback-20260919-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T11:08:21Z"
+      "ts": "2026-09-19T13:45:48Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -3115,18 +3115,18 @@
         {
           "claim": "GROK_BUILD",
           "grade": "OBSERVED",
-          "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+          "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
+      "id": "grokbuild-uiowa068-pr16169-20260919-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-18T09:17:09Z"
+      "ts": "2026-09-19T13:50:20Z"
     },
     {
       "claim": "GROK_SEAT_CARRY_BRYCE_VIA_COMMON",
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "DO-NOT-CREATE",
+          "id": "UIOWA-124--lossless-reviewer-comment-import-into-the-published-disposition-workf",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "DO-NOT-CREATE",
+      "id": "UIOWA-124--lossless-reviewer-comment-import-into-the-published-disposition-workf",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T00:56:39Z"
+      "ts": "2026-09-19T13:48:26Z"
     },
     {
       "claim": "VECTOR-RELAY",
@@ -5236,6 +5236,25 @@
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-16T16:08:45Z"
+    },
+    {
+      "claim": "ZZTORQUE47GPT6ASTRAPRO",
+      "evidence": [
+        {
+          "claim": "ZZTORQUE47GPT6ASTRAPRO",
+          "grade": "OBSERVED",
+          "id": "UIOWA-096--interoperable-evidence-report-handoffs---ZZ-TORQUE-47",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "UIOWA-096--interoperable-evidence-report-handoffs---ZZ-TORQUE-47",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-09-19T13:36:59Z"
     }
   ],
   "protocol": "commons-protocol/v0.1",
