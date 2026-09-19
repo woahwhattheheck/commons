@@ -25,6 +25,7 @@
   "priority_queue": [],
   "production_write": false,
   "record_sources": [
+    "inventory/resources/records/codex-grantfox-fwc26-workfeed-compiler-resource-activation-20260919-01.json",
     "inventory/resources/records/codex-uiowa-source-relationship-graph-resource-activation-20260919-01.json",
     "inventory/resources/records/codex-uiowa-environment-drift-kit-resource-activation-20260919-01.json",
     "inventory/resources/records/codex-whitebox-hour-direct-checkout-road-resource-activation-20260919-01.json",
@@ -102,15 +103,15 @@
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1789844314.998379",
+  "slack_ts": "1789855095.683589",
   "snapshot": {
-    "base_main_sha": "ce818e4a820a0f4ddf28c7bfaeab8a017117566e",
-    "observed_at": "2026-09-19T19:05:00Z",
+    "base_main_sha": "b8f5cd7adbcbca8df75b5dc1033cbce60d7631aa",
+    "observed_at": "2026-09-19T21:56:00Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-uiowa-source-relationship-graph-resource-activation-20260919-01",
+  "source_id": "codex-grantfox-fwc26-workfeed-compiler-resource-activation-20260919-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -119,8 +120,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — UIOWA source relationship graph",
+  "subject": "MASTER RESOURCE LEDGER — GrantFox FWC26 workfeed compiler",
   "supersedes_source_ids": [
+    "codex-grantfox-fwc26-workfeed-compiler-resource-activation-20260919-01",
     "codex-uiowa-source-relationship-graph-resource-activation-20260919-01",
     "codex-uiowa-environment-drift-kit-resource-activation-20260919-01",
     "codex-whitebox-hour-direct-checkout-road-resource-activation-20260919-01",
@@ -186,6 +188,27 @@
     "demon-live-compute-board-20260825-01"
   ],
   "surfaces": [
+    {
+      "assigned_backlog": "Compile supplied GrantFox/FWC26 issue snapshots into deterministic JSON and Markdown queues, preserving assignment, claim-step, reward-evidence and security-sensitive boundaries before operators choose work.",
+      "auth_surface": "Current-main standard-library offline compiler with create-exclusive outputs; no provider, network, wallet or account access.",
+      "authority": "ADVISORY_OFFLINE_QUEUE_COMPILATION_ONLY; NO_APPLICATION_CLAIM_ASSIGNMENT_CONTACT_WALLET_PAYMENT_OR_UPSTREAM_MUTATION_AUTHORITY",
+      "capacity": "LIVE",
+      "condition": "CONSTRAINED",
+      "consumer": "Commons and Swarm ZZ operators triaging the evidence-backed GrantFox/FWC26 workfeed without conflating eligibility, assignment or discretionary rewards.",
+      "evidence_ts": "2026-09-19T21:56:00Z",
+      "exact_safe_probe": "PR #16472 merged at 9331d682f6098d9b980eee14641070cd1f3ea111 and PR #16474 broadened security-sensitive triage at b8f5cd7adbcbca8df75b5dc1033cbce60d7631aa; four current-main source blobs matched and 18/18 focused tests passed in normal and optimized modes.",
+      "holder": "GrantFox FWC26 compiler source custody / Commons and Swarm ZZ queue operators",
+      "kind": "COORDINATION_TOOL",
+      "last_receipt": "codex-grantfox-fwc26-workfeed-compiler-resource-activation-20260919-01",
+      "last_used_at": "2026-09-19T21:56:00Z",
+      "name": "grantfox-fwc26-workfeed-compiler",
+      "next_action": "Compile fresh supplied issue snapshots into a new output directory, then hand the resulting rows to their existing project threads without applying, contacting maintainers or mutating provider state.",
+      "rate_plan_boundary": "Offline stdlib execution needs no provider quota. READY is not assignment; MAYBE REWARDED is not a guaranteed amount; a wallet-ready Slack declaration is not independently verified payout, settlement, revenue or cash.",
+      "source": "Commons PR #16472; tools/grantfox_fwc26_workfeed/",
+      "stage": "PRODUCING",
+      "stale_after": "next campaign-label, provider-assignment, queue-schema, reward-evidence or owner-policy change",
+      "value": "Deterministic, create-exclusive FWC26 issue queue with explicit false authority flags and safe eligibility states"
+    },
     {
       "assigned_backlog": "Use the offline graph to navigate approved evidence from recommendation through findings, observations or citations, and exact source identities while keeping contradictions and unresolved links visible.",
       "auth_surface": "Current-main standard-library graph compiler and portable offline HTML; zero-credential and read-only over supplied evidence.",
