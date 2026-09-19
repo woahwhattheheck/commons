@@ -321,7 +321,7 @@ def md(value: Any) -> str:
 
 def render(report: dict[str, Any]) -> str:
     out = ["# Alert usefulness and response readiness", "", report["label"], "",
-           f"Evidence digest: `{report['normalized_evidence_sha256256']}`", "",
+           f"Evidence digest: `{report['normalized_evidence_sha256']}`", "",
            f"Observation: {report['observation']['start']} to {report['observation']['end']} (end excluded).", "",
            "## Counts", "", "| Measure | Count |", "|---|---:|"]
     out += [f"| {md(k)} | {v} |" for k, v in report["counts"].items()]
