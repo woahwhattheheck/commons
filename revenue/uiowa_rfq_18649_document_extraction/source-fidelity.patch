@@ -1,0 +1,75 @@
+--- a/revenue/uiowa_rfq_18649_document_extraction/extract.py
++++ b/revenue/uiowa_rfq_18649_document_extraction/extract.py
+@@ -28,6 +28,7 @@
+ MAX_BYTES = 50 * 1024 * 1024
+ W_NS = "http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+ NS = {"w": W_NS}
++MC_NS = "http://schemas.openxmlformats.org/markup-compatibility/2006"
+ 
+ 
+ class ExtractionError(Exception):
+@@ -176,8 +177,25 @@
+     return _extract_text_bytes(_read_snapshot(path))
+ 
+ 
++def _docx_has_alternate_content(element: ET.Element) -> bool:
++    """Detect unresolved alternatives only in the accepted body-text view.
++
++    Do not guess which application-specific Choice a renderer would select.
++    Deleted/moved-from text and omitted drawings cannot contaminate current prose.
++    """
++    if element.tag in {f"{{{W_NS}}}{name}" for name in ("del", "moveFrom", "drawing", "pict", "object")}:
++        return False
++    if element.tag == f"{{{MC_NS}}}AlternateContent":
++        return True
++    return any(_docx_has_alternate_content(child) for child in element)
++
++
+ def _docx_paragraph_text(p: ET.Element) -> str:
+     # Extract an explicitly declared accepted-text view, without modifying OOXML.
++    # Withhold the entire affected paragraph: deleting just the ambiguous span
++    # could manufacture a different quotation from the text surrounding the gap.
++    if _docx_has_alternate_content(p):
++        return ""
+     parts: list[str] = []
+ 
+     def visit(node: ET.Element) -> None:
+@@ -185,6 +203,8 @@
+             return
+         if node.tag == f"{{{W_NS}}}t":
+             parts.append(node.text or "")
++        elif node.tag == f"{{{W_NS}}}noBreakHyphen":
++            parts.append("\u2011")
+         elif node.tag == f"{{{W_NS}}}tab":
+             parts.append("\t")
+         elif node.tag in {f"{{{W_NS}}}br", f"{{{W_NS}}}cr"}:
+@@ -282,6 +302,11 @@
+ 
+ 
+ def _docx_table_text(table: ET.Element, warnings: list[str], locator: str) -> str:
++    # A blanked cell must not look like a genuinely empty value; withhold the
++    # affected table rather than retain a misleading partial row-major quotation.
++    if _docx_has_alternate_content(table):
++        warnings.append(f"DOCX_ALTERNATE_CONTENT_NOT_EXTRACTED:{locator}; entire table withheld; inspect original")
++        return ""
+     # Row/cell revision markers need grid reconstruction, not just text filtering.
+     # Withhold the affected table rather than label ambiguous stored text as current.
+     structural_revisions = (
+@@ -370,6 +395,17 @@
+     stack: list[str] = []
+     for child, locator in _docx_blocks(body, warnings):
+         if child.tag == f"{{{W_NS}}}p":
++            if _docx_has_alternate_content(child):
++                warning = f"DOCX_ALTERNATE_CONTENT_NOT_EXTRACTED:{locator}; entire paragraph withheld; inspect original"
++                warnings.append(warning)
++                level = _docx_outline_level(child, styles, warnings)
++                if level is not None:
++                    stack = _heading_path_update(stack, level, "(unresolved heading)")
++                segments.append(Segment(
++                    segment_id=f"docx-{len(segments)+1:04d}", kind="unreadable",
++                    locator=locator, text="", heading_path=list(stack), warnings=[warning],
++                ))
++                continue
+             value = _docx_paragraph_text(child)
+             if not value:
+                 continue
