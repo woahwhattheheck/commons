@@ -1,0 +1,13 @@
+criterion_id,area,service,assessment_status,maturity_rank,maturity_label,evidence_pattern,cap_reason
+DEV-01,development,ESS,assessed,4,"Repeatable",repeatable_practice,"no outcome measure is supplied; knowing the practice runs is not knowing it works"
+DEV-02,development,RIS,assessed,2,"Defined on paper",policy_only_claim,"the intended practice is stated, but nothing records the work itself. The strongest evidence supplied is policy or procedure document. A document states an intention. It is not evidence that anything happened, and a second document is not evidence either."
+SEC-01,security,IAM,assessed,5,"Measured and adjusted",repeatable_practice,"top of the scale; every anchor is evidenced"
+SEC-02,security,RIS,assessed,3,"Practised",isolated_success,"one instance is evidenced; nothing shows the practice repeating across a stated window"
+DEP-01,deployment,ESS,assessed,3,"Practised",repeatable_practice,"repeated records exist but none covers more than one person or service, so the practice cannot yet be distinguished from one individual's habit"
+DEP-02,deployment,RIS,assessed,3,"Practised",repeatable_practice,"repetition is evidenced but no departures from the procedure are recorded anywhere; a process with no visible exceptions is usually one whose exceptions are not being written down"
+DEP-03,deployment,IAM,insufficient_evidence,NULL,"We looked; what was supplied does not support any level.",missing_evidence,"no evidence was supplied, so no level is supportable"
+AI-01,ai_readiness,ESS,assessed,4,"Repeatable",repeatable_practice,"an outcome measure is cited but its definition, period or denominator is not given, so it cannot be read"
+AI-02,ai_readiness,RIS,not_applicable,NULL,"This practice does not apply to how the group operates. Nothing is missing.",not_applicable,"not on the scale"
+AI-03,ai_readiness,IAM,unassessed,NULL,"Outside the agreed scope for this criterion. Not a level.",unassessed,"not on the scale"
+AI-04,ai_readiness,ESS,assessed,4,"Repeatable",repeatable_practice,"the measure exists and is defined, but no change is evidenced as following from it; measuring is not adjusting"
+DEV-03,development,IAM,assessed,1,"Absent",policy_only_claim,"no evidence states an intended practice that more than one person recognises; the descriptions supplied do not agree with each other"

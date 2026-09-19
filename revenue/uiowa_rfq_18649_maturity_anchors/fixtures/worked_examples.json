@@ -1,0 +1,96 @@
+{
+  "title": "Worked examples: one scale, four assessment areas",
+  "disclaimer": "SYNTHETIC EXAMPLES using OUR PROPOSED ANCHOR FRAMEWORK. Fictional groups, fictional evidence. Not University of Iowa findings, not an industry standard, not a certification scale.",
+  "criteria": [
+    {
+      "criterion_id": "DEV-01", "area": "development", "service": "ESS",
+      "notes": "REPEATABLE PRACTICE. Code review runs across the team over a stated window, with exceptions written down.",
+      "evidence": [
+        {"kind": "policy_document", "locator": "ESS engineering standard v3.1 s4 (fictional)", "note": "requires one reviewer on every change"},
+        {"kind": "repeated_instances", "locator": "Sampled merge records, 24 fictional changes, Jan-Mar window", "instances": 24, "covers_multiple_actors": true, "exceptions_recorded": true, "note": "3 of 24 carry a recorded exception with a stated reason"}
+      ]
+    },
+    {
+      "criterion_id": "DEV-02", "area": "development", "service": "RIS",
+      "notes": "POLICY-ONLY CLAIM. Three documents, zero records of the work. The cap is the point: volume of paperwork does not move the level.",
+      "evidence": [
+        {"kind": "policy_document", "locator": "RIS development handbook v2 (fictional)"},
+        {"kind": "policy_document", "locator": "RIS branching guide (fictional)"},
+        {"kind": "policy_document", "locator": "RIS review checklist template (fictional)"},
+        {"kind": "interview_statement", "locator": "Interview, RIS lead, fictional", "note": "describes the intended practice confidently"}
+      ]
+    },
+    {
+      "criterion_id": "SEC-01", "area": "security", "service": "IAM",
+      "notes": "MEASURED AND ADJUSTED. An outcome measure with a stated denominator, reviewed, and a change evidenced as following from it.",
+      "evidence": [
+        {"kind": "policy_document", "locator": "IAM access review procedure v5 (fictional)"},
+        {"kind": "repeated_instances", "locator": "Access review records, 4 fictional quarterly cycles", "instances": 4, "covers_multiple_actors": true, "exceptions_recorded": true},
+        {"kind": "outcome_measure", "locator": "Fictional access-review completion measure, Q1-Q4", "measure_defined": true, "change_evidenced": true, "note": "definition, period and denominator all stated; cadence changed from annual to quarterly after Q2 showed stale entitlements"}
+      ]
+    },
+    {
+      "criterion_id": "SEC-02", "area": "security", "service": "RIS",
+      "notes": "ISOLATED SUCCESS. One real, well-evidenced instance. Genuine, and not yet a practice.",
+      "evidence": [
+        {"kind": "single_instance", "locator": "Dependency remediation record, one fictional incident", "instances": 1, "note": "followable from finding to fix"}
+      ]
+    },
+    {
+      "criterion_id": "DEP-01", "area": "deployment", "service": "ESS",
+      "notes": "CAPPED BELOW 4. Repetition is evidenced, but every record belongs to one engineer, so the practice cannot be told apart from one person's habit.",
+      "evidence": [
+        {"kind": "policy_document", "locator": "ESS release procedure v2 (fictional)"},
+        {"kind": "repeated_instances", "locator": "Release records, 11 fictional releases", "instances": 11, "covers_multiple_actors": false, "exceptions_recorded": true}
+      ]
+    },
+    {
+      "criterion_id": "DEP-02", "area": "deployment", "service": "RIS",
+      "notes": "CAPPED BELOW 4 for the other reason: repetition across people, but no exception is recorded anywhere across 18 releases.",
+      "evidence": [
+        {"kind": "repeated_instances", "locator": "Release records, 18 fictional releases", "instances": 18, "covers_multiple_actors": true, "exceptions_recorded": false}
+      ]
+    },
+    {
+      "criterion_id": "DEP-03", "area": "deployment", "service": "IAM",
+      "notes": "MISSING EVIDENCE. Assessed, nothing supplied. Not level 1.",
+      "evidence": []
+    },
+    {
+      "criterion_id": "AI-01", "area": "ai_readiness", "service": "ESS",
+      "notes": "CAPPED BELOW 5. The measure is cited but its denominator is never stated, so it cannot be read.",
+      "evidence": [
+        {"kind": "repeated_instances", "locator": "Assisted-change records, 9 fictional changes", "instances": 9, "covers_multiple_actors": true, "exceptions_recorded": true},
+        {"kind": "outcome_measure", "locator": "Fictional productivity claim in a slide", "measure_defined": false, "change_evidenced": false}
+      ]
+    },
+    {
+      "criterion_id": "AI-02", "area": "ai_readiness", "service": "RIS",
+      "notes": "NOT APPLICABLE. A fact about how this fictional group operates, not a gap in our evidence.",
+      "assessment_status": "not_applicable",
+      "applicability_reason": "This fictional group runs no model or data pipeline of its own; the criterion has no subject here.",
+      "evidence": []
+    },
+    {
+      "criterion_id": "AI-03", "area": "ai_readiness", "service": "IAM",
+      "notes": "UNASSESSED. Outside the agreed scope for this fictional group in this round.",
+      "assessment_status": "unassessed",
+      "evidence": []
+    },
+    {
+      "criterion_id": "AI-04", "area": "ai_readiness", "service": "ESS",
+      "notes": "CAPPED BELOW 5 for the other reason: the measure is properly defined, but nothing changed as a result of it.",
+      "evidence": [
+        {"kind": "repeated_instances", "locator": "Review records, 6 fictional cycles", "instances": 6, "covers_multiple_actors": true, "exceptions_recorded": true},
+        {"kind": "outcome_measure", "locator": "Fictional acceptance-rate measure, stated definition/period/denominator", "measure_defined": true, "change_evidenced": false}
+      ]
+    },
+    {
+      "criterion_id": "DEV-03", "area": "development", "service": "IAM",
+      "notes": "LEVEL 1. A procedure exists nowhere and descriptions disagree.",
+      "evidence": [
+        {"kind": "interview_statement", "locator": "Interviews, two fictional IAM engineers", "note": "the two descriptions of the intended practice do not match"}
+      ]
+    }
+  ]
+}

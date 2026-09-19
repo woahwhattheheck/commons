@@ -1,0 +1,142 @@
+{
+  "_framework": "Maturity ranks come from OUR PROPOSED anchor framework (UIOWA-021), not from a standard and not from University findings.",
+  "_note": "Input records for the UIOWA-022 rating model, using that model's declared field names. maturity_rank is null for every status that is not a level.",
+  "criteria": [
+    {
+      "area": "development",
+      "assessment_status": "assessed",
+      "criterion_id": "DEV-01",
+      "evidence_ids": [
+        "ESS engineering standard v3.1 s4 (fictional)",
+        "Sampled merge records, 24 fictional changes, Jan-Mar window"
+      ],
+      "maturity_label": "Repeatable",
+      "maturity_rank": 4,
+      "service": "ESS"
+    },
+    {
+      "area": "development",
+      "assessment_status": "assessed",
+      "criterion_id": "DEV-02",
+      "evidence_ids": [
+        "RIS development handbook v2 (fictional)",
+        "RIS branching guide (fictional)",
+        "RIS review checklist template (fictional)",
+        "Interview, RIS lead, fictional"
+      ],
+      "maturity_label": "Defined on paper",
+      "maturity_rank": 2,
+      "service": "RIS"
+    },
+    {
+      "area": "security",
+      "assessment_status": "assessed",
+      "criterion_id": "SEC-01",
+      "evidence_ids": [
+        "IAM access review procedure v5 (fictional)",
+        "Access review records, 4 fictional quarterly cycles",
+        "Fictional access-review completion measure, Q1-Q4"
+      ],
+      "maturity_label": "Measured and adjusted",
+      "maturity_rank": 5,
+      "service": "IAM"
+    },
+    {
+      "area": "security",
+      "assessment_status": "assessed",
+      "criterion_id": "SEC-02",
+      "evidence_ids": [
+        "Dependency remediation record, one fictional incident"
+      ],
+      "maturity_label": "Practised",
+      "maturity_rank": 3,
+      "service": "RIS"
+    },
+    {
+      "area": "deployment",
+      "assessment_status": "assessed",
+      "criterion_id": "DEP-01",
+      "evidence_ids": [
+        "ESS release procedure v2 (fictional)",
+        "Release records, 11 fictional releases"
+      ],
+      "maturity_label": "Practised",
+      "maturity_rank": 3,
+      "service": "ESS"
+    },
+    {
+      "area": "deployment",
+      "assessment_status": "assessed",
+      "criterion_id": "DEP-02",
+      "evidence_ids": [
+        "Release records, 18 fictional releases"
+      ],
+      "maturity_label": "Practised",
+      "maturity_rank": 3,
+      "service": "RIS"
+    },
+    {
+      "area": "deployment",
+      "assessment_status": "insufficient_evidence",
+      "criterion_id": "DEP-03",
+      "evidence_ids": [],
+      "maturity_label": "We looked; what was supplied does not support any level.",
+      "maturity_rank": null,
+      "service": "IAM"
+    },
+    {
+      "area": "ai_readiness",
+      "assessment_status": "assessed",
+      "criterion_id": "AI-01",
+      "evidence_ids": [
+        "Assisted-change records, 9 fictional changes",
+        "Fictional productivity claim in a slide"
+      ],
+      "maturity_label": "Repeatable",
+      "maturity_rank": 4,
+      "service": "ESS"
+    },
+    {
+      "area": "ai_readiness",
+      "assessment_status": "not_applicable",
+      "criterion_id": "AI-02",
+      "evidence_ids": [],
+      "maturity_label": "This practice does not apply to how the group operates. Nothing is missing.",
+      "maturity_rank": null,
+      "service": "RIS"
+    },
+    {
+      "area": "ai_readiness",
+      "assessment_status": "unassessed",
+      "criterion_id": "AI-03",
+      "evidence_ids": [],
+      "maturity_label": "Outside the agreed scope for this criterion. Not a level.",
+      "maturity_rank": null,
+      "service": "IAM"
+    },
+    {
+      "area": "ai_readiness",
+      "assessment_status": "assessed",
+      "criterion_id": "AI-04",
+      "evidence_ids": [
+        "Review records, 6 fictional cycles",
+        "Fictional acceptance-rate measure, stated definition/period/denominator"
+      ],
+      "maturity_label": "Repeatable",
+      "maturity_rank": 4,
+      "service": "ESS"
+    },
+    {
+      "area": "development",
+      "assessment_status": "assessed",
+      "criterion_id": "DEV-03",
+      "evidence_ids": [
+        "Interviews, two fictional IAM engineers"
+      ],
+      "maturity_label": "Absent",
+      "maturity_rank": 1,
+      "service": "IAM"
+    }
+  ],
+  "disclaimer": "SYNTHETIC EXAMPLES using OUR PROPOSED ANCHOR FRAMEWORK. Fictional groups, fictional evidence. Not University of Iowa findings, not an industry standard, not a certification scale."
+}
