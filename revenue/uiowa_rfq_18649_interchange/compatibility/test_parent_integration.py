@@ -16,6 +16,12 @@ sys.path.insert(0, str(HERE))
 from contract import audit_pair, compare_json, loads_exact
 
 
+def _run_python(*arguments: str) -> subprocess.CompletedProcess:
+    """Execute the real child at this suite's optimization level, not default 0."""
+    command = [sys.executable, *(['-O'] * sys.flags.optimize), *arguments]
+    return subprocess.run(command, check=True, text=True, capture_output=True, timeout=30)
+
+
 class ParentCompilerWorkbenchTests(unittest.TestCase):
     def test_public_compiler_to_actual_workbench_keeps_report_and_draft_consistent(self):
         revenue = HERE.parents[1]
@@ -26,14 +32,13 @@ class ParentCompilerWorkbenchTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             report = root / 'parent-report.json'
-            compile_run = subprocess.run([
-                sys.executable, str(parent / 'compiler.py'), 'compile',
+            compile_run = _run_python(
+                str(parent / 'compiler.py'), 'compile',
                 str(parent / 'fixtures/synthetic_packet.json'),
                 str(parent / 'fixtures/synthetic_authority.json'), str(report)
-            ], check=True, text=True, capture_output=True, timeout=30)
+            )
             self.assertIn('HOLD_TRUSTED_AUTHORITY_REQUIRED', compile_run.stdout)
-            verify = subprocess.run([sys.executable, str(parent / 'compiler.py'), 'verify', str(report)],
-                                    check=True, text=True, capture_output=True, timeout=30)
+            verify = _run_python(str(parent / 'compiler.py'), 'verify', str(report))
             self.assertIn('UNTRUSTED_INTEGRITY_ONLY', verify.stdout)
             capture = root / 'capture'
             subprocess.run(['node', str(HERE / 'capture_workbench.cjs'), str(app), str(capture), str(report)],
