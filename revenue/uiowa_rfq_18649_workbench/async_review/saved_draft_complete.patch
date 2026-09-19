@@ -1,0 +1,58 @@
+--- a/revenue/uiowa_rfq_18649_workbench/app.js
++++ b/revenue/uiowa_rfq_18649_workbench/app.js
+@@ -221,11 +221,16 @@
+     const file = el.handoffFile.files?.[0];
+     if (!file) throw new Error("Choose a saved draft handoff JSON file.");
+     if (file.size > 1024 * 1024) throw new Error("Saved draft exceeds the 1 MiB intake limit.");
+-    const contents = await file.text();
++    const bytes = await file.arrayBuffer();
+     if (generation !== state.generation || sequence !== state.draftLoadSequence) return;
+     if (editRevision !== state.editRevision) {
+       throw new Error("Notes changed while the draft was loading. Restore again if you want to replace them.");
+     }
++    // File.text() substitutes malformed UTF-8. Decode bytes strictly before
++    // replacing any notes so corrupt input cannot become a successful restore.
++    let contents;
++    try { contents = new TextDecoder("utf-8", { fatal: true }).decode(bytes); }
++    catch { throw new Error("Saved draft is not valid UTF-8. Existing notes were not changed."); }
+     const restored = HandoffImport.parseDraft(contents, report);
+     // Validation completes before either map is replaced. Failed imports preserve
+     // the active report and every note, disposition, selection and filter.
+--- a/revenue/uiowa_rfq_18649_workbench/test_app.js
++++ b/revenue/uiowa_rfq_18649_workbench/test_app.js
+@@ -45,10 +45,13 @@
+ function jsonFile(value) {
+   const contents = JSON.stringify(value);
+-  return { size: Buffer.byteLength(contents), text: async () => contents };
++  return { size: Buffer.byteLength(contents), text: async () => contents,
++    arrayBuffer: async () => Uint8Array.from(Buffer.from(contents, "utf8")).buffer };
+ }
+ 
+ function delayedFile(value) {
+   const wait = deferred();
+   const contents = JSON.stringify(value);
+-  return { file: { size: Buffer.byteLength(contents), text: () => wait.promise }, finish: () => wait.resolve(contents) };
++  return { file: { size: Buffer.byteLength(contents), text: () => wait.promise,
++    arrayBuffer: () => wait.promise.then(text => Uint8Array.from(Buffer.from(text, "utf8")).buffer) },
++    finish: () => wait.resolve(contents) };
+ }
+@@ -103,3 +106,3 @@
+     Option: function (label, value) { const option = new Element("option"); option.textContent = label; option.value = value; return option; },
+-    Blob, TextEncoder, URLSearchParams, location: { search: "" },
++    Blob, TextEncoder, TextDecoder, URLSearchParams, location: { search: "" },
+     URL: {
+--- a/revenue/uiowa_rfq_18649_workbench/browser_resume_acceptance.py
++++ b/revenue/uiowa_rfq_18649_workbench/browser_resume_acceptance.py
+@@ -153,9 +153,9 @@
+     def begin_delayed_restore(self, draft):
+-        # Hold the browser's actual File.text await, then resolve it explicitly.
++        # Hold the browser's actual File.arrayBuffer await, then resolve it explicitly.
+         # No wall-clock sleep is needed to create a deterministic race.
+         self.page.evaluate("""() => {
+-            const original = File.prototype.text;
+-            File.prototype.text = function () {
++            const original = File.prototype.arrayBuffer;
++            File.prototype.arrayBuffer = function () {
+                 if (this.name !== 'delayed-draft.json') return original.call(this);
+                 return new Promise(resolve => {
+                     window.__releaseDraftRead = () => original.call(this).then(resolve);
