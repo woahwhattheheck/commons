@@ -3,6 +3,7 @@
 These check emitted artifacts against source bytes and the retained compiler.
 They are not browser execution, accessibility certification, or a core re-audit.
 """
+import base64
 import hashlib
 from html.parser import HTMLParser
 import json
@@ -88,11 +89,11 @@ class HandoffTests(unittest.TestCase):
         manifest["files"][name] = sha((folder / name).read_bytes())
         path.write_text(json.dumps(manifest, ensure_ascii=False, sort_keys=True, separators=(",", ":")) + "\n", encoding="utf-8")
 
-    def run_cli(self, *args):
+    def run_cli(self, *args, cwd=ROOT):
         env = dict(os.environ); env.pop("PYTHONPATH", None)
-        flags = ["-O"] if sys.flags.optimize else []
+        flags = ["-" + "O" * sys.flags.optimize] if sys.flags.optimize else []
         return subprocess.run([sys.executable, "-B", *flags, "-m", "civic_ledger.handoff", *map(str, args)],
-                              cwd=ROOT, env=env, capture_output=True, text=True, timeout=20)
+                              cwd=cwd, env=env, capture_output=True, text=True, timeout=20)
 
     def test_canonical_four_files_remain_byte_identical_to_retained_core(self):
         folder = self.export()
@@ -120,14 +121,24 @@ class HandoffTests(unittest.TestCase):
         folder = self.export()
         reader = (folder / "reader.html").read_text(encoding="utf-8")
         markup = ReaderMarkup(reader)
-        hrefs = {attrs.get("href", "").split("#")[0] for tag, attrs in markup.tags if tag == "a"}
+        downloads = {attrs["download"]: attrs["href"] for tag, attrs in markup.tags
+                     if tag == "a" and "download" in attrs}
+        expected_downloads = set(CANONICAL_FILES) | {"workspace.json", "0001.txt", "0002.txt", "0003.txt"}
+        self.assertEqual(set(downloads), expected_downloads)
+        decoded = {}
+        for name, href in downloads.items():
+            prefix, encoded = href.split(",", 1)
+            self.assertEqual(prefix, "data:application/octet-stream;base64")
+            decoded[name] = base64.b64decode(encoded, validate=True)
+        for name in (*CANONICAL_FILES, "workspace.json"):
+            self.assertEqual(decoded[name], (folder / name).read_bytes(), name)
         ids = {attrs["id"] for _, attrs in markup.tags if "id" in attrs}
         by_id = {}
         for number, (doc_id, _, _, original) in enumerate(self.source_inputs, 1):
             expected = original.replace("\r\n", "\n").replace("\r", "\n").encode()
             relative = f"sources/{number:04d}.txt"
             self.assertEqual((folder / relative).read_bytes(), expected)
-            self.assertIn(relative, hrefs)
+            self.assertEqual(decoded[Path(relative).name], expected)
             self.assertIn(f"source-{number:04d}", ids)
             by_id[doc_id] = (number, expected)
         for anchor in evidence_values(self.compiled(folder)):
@@ -193,6 +204,12 @@ class HandoffTests(unittest.TestCase):
         result = self.run_cli("verify", "--output-dir", output)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertEqual(handoff.verify_handoff(output)["classification"], "unspecified")
+        # The documented -B invocation must work with only the copied package.
+        before = {p.relative_to(output).as_posix() for p in output.rglob("*") if p.is_file()}
+        result = self.run_cli("verify", "--output-dir", ".", cwd=output)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertTrue(json.loads(result.stdout)["ok"])
+        self.assertEqual(before, {p.relative_to(output).as_posix() for p in output.rglob("*") if p.is_file()})
 
     def test_source_snapshot_tampering_is_rejected(self):
         folder = self.export()
