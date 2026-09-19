@@ -1,13 +1,13 @@
 {
   "counts": {
     "open_issues": 188,
-    "open_pull_requests": 165,
-    "runs_in_progress": 13,
-    "runs_queued": 1253
+    "open_pull_requests": 166,
+    "runs_in_progress": 14,
+    "runs_queued": 1255
   },
   "counts_source": "graphql",
   "degraded": [],
-  "drafts": 13,
+  "drafts": 12,
   "longest_open": [
     {
       "author": "woahwhattheheck",
@@ -66,6 +66,17 @@
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/zz-cedar-q81-mcp-audit-report-20260919",
+      "created_at": "2026-09-19T16:06:07Z",
+      "draft": false,
+      "head_sha": "82be8db3d9763c6b3f3d21a5c1be3d24bbde8dbd",
+      "number": 16438,
+      "title": "MCP audit: readable reports that distinguish capture checks from receipt integrity",
+      "updated_at": "2026-09-19T16:06:07Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -159,22 +170,11 @@
       "base": "zz-chert6b21/slack-root-observation-donor-20260919",
       "branch": "zz-osprey47/slack-context-inspector-20260919",
       "created_at": "2026-09-19T15:56:05Z",
-      "draft": true,
+      "draft": false,
       "head_sha": "fa7167b9853ca684a421ade35ea2c32a5a5be7eb",
       "number": 16425,
       "title": "feat(command-center): runnable captured-context inspector on the canonical root reader",
-      "updated_at": "2026-09-19T16:04:48Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/zz-hemlock84/uiowa129-rehearsal-binding-20260919",
-      "created_at": "2026-09-19T15:52:18Z",
-      "draft": false,
-      "head_sha": "60d9c5e9da0a0a396138a0efd621a7911acf21f3",
-      "number": 16423,
-      "title": "fix(uiowa129): make rehearsal receipts identify the source and fixtures actually executed",
-      "updated_at": "2026-09-19T16:05:12Z"
+      "updated_at": "2026-09-19T16:06:10Z"
     }
   ],
   "open_heads": {
@@ -332,7 +332,7 @@
     "16412": "614f17f3754bd33e67076257fede84a4dd744e8a",
     "16413": "2201f47e5a9b66ca12eb8feab2648f1cc87a5570",
     "16416": "7e9cd8bd4b89be1aa0faee987819d6e18f84aea7",
-    "16419": "b57e8258168f450fc0ce7a2f65894cd5fa7f7ca9",
+    "16419": "271d997303b621375b493f75b9d64c0e47eabe1a",
     "16423": "60d9c5e9da0a0a396138a0efd621a7911acf21f3",
     "16425": "fa7167b9853ca684a421ade35ea2c32a5a5be7eb",
     "16426": "f78d502cfa3686b85327c3b29ff880288f82d633",
@@ -342,11 +342,12 @@
     "16432": "cce7b5f2867dacfb8552709f1d3dbfec917b8970",
     "16434": "507a490240cd8ccaad2a9503ec78911159c8f62b",
     "16435": "12f3e9197ac439095e4951e19e787430b5dd631d",
-    "16436": "9f7d99310782196a80601e50169c28b53696f60c"
+    "16436": "9f7d99310782196a80601e50169c28b53696f60c",
+    "16438": "82be8db3d9763c6b3f3d21a5c1be3d24bbde8dbd"
   },
-  "pulls_listed": 165,
+  "pulls_listed": 166,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 96.4,
+  "queue_depth_per_runner": 89.6,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -516,6 +517,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T16:05:45Z",
+  "unchanged_since": "2026-09-19T16:06:29Z",
   "undatable_pulls": []
 }
