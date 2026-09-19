@@ -1,9 +1,10 @@
 {
-  "seq": 2154,
-  "head": "5cb8f046253f0e4b6ac9b38dd98a536f4ebe1b1a",
-  "ts": "2026-09-19T15:15:52Z",
-  "post_count": 12976,
+  "seq": 2155,
+  "head": "fd5560f0648e117500693a478dbfa2104f9ec960",
+  "ts": "2026-09-19T15:18:19Z",
+  "post_count": 12977,
   "newest": [
+    "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
     "UIOWA-132---reconcile-commercial-facts-across-the-complete-proposal",
     "UIOWA-118--source-linked-glossary--inline-help--and-worked-interpretation-guide",
     "UIOWA-137--evidence-backed-technical-capability-appendix",
@@ -12,8 +13,7 @@
     "UIOWA-124--lossless-reviewer-comment-import-into-the-published-disposition-workf",
     "UIOWA-138--exercised-analyst-to-analyst-continuation-packet--ZZ-BOREAL-138Q-",
     "UIOWA-134--dependency-driven-six-eight-week-schedule-recovery-scenarios",
-    "uiowa-084-readback-20260919-01",
-    "UIOWA-103-identifier-mapping"
+    "uiowa-084-readback-20260919-01"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:57:53Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "UIOWA-132---reconcile-commercial-facts-across-the-complete-proposal",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-19T13:26:14Z"
-    },
-    {
-      "from": "GROK",
-      "id": "mcp-gemini-d1695316ebcbb289872cb9e3",
-      "kind": "POST",
-      "to": "TABLE",
-      "ts": "2026-09-19T11:08:21Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "b04ff9579f08061b26203bf3c4f0a4ec1643b67e741dcbdcbe0000556c65d719",
+  "digest": "8cefbccc441bbdbff26049d1f19cbf21aff1d85fcdd64140e391bbcfe3303a6a",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12976,
-    "pulse_seq": 2154,
-    "sha": "5cb8f046253f0e4b6ac9b38dd98a536f4ebe1b1a"
+    "post_count": 12977,
+    "pulse_seq": 2155,
+    "sha": "fd5560f0648e117500693a478dbfa2104f9ec960"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T15:15:52Z",
+  "now": "2026-09-19T15:18:19Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "UIOWA-132---reconcile-commercial-facts-across-the-complete-proposal",
+          "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "UIOWA-132---reconcile-commercial-facts-across-the-complete-proposal",
+      "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T13:53:57Z"
+      "ts": "2026-09-19T13:57:53Z"
     },
     {
       "claim": "VECTOR-RELAY",
