@@ -15,6 +15,7 @@ import hashlib
 import json
 import os
 import re
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Callable
 
@@ -23,15 +24,58 @@ STATE = "COMPLETED"
 MARKER_DIR = "completion/operations"
 ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 HEX40_RE = re.compile(r"^[0-9a-f]{40}$")
+TIMESTAMP_RE = re.compile(
+    r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$"
+)
+MAX_MARKER_BYTES = 64 * 1024
 CLOSING_RE_TEMPLATE = (
-    r"(?im)\b(?:close[sd]?|fix(?:e[sd])?|resolve[sd]?)\s+"
-    r"(?:https://github\.com/woahwhattheheck/commons/issues/|"
-    r"woahwhattheheck/commons)?#?%s\b"
+    r"(?im)\b(?:close[sd]?|fix(?:e[sd])?|resolve[sd]?)\s*:?\s+"
+    r"(?:#|woahwhattheheck/commons#|"
+    r"https://github\.com/woahwhattheheck/commons/issues/)%s\b"
 )
 
 
 class CompletionEvidenceError(ValueError):
     """Completion evidence is absent, ambiguous, or not strong enough."""
+
+
+def _timestamp(value: Any) -> datetime:
+    """Validate an explicit timezone and compare instants, never string order."""
+    if not isinstance(value, str) or not TIMESTAMP_RE.fullmatch(value):
+        raise CompletionEvidenceError("invalid completion timestamp")
+    try:
+        return datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except (ValueError, OverflowError) as exc:
+        raise CompletionEvidenceError("invalid completion timestamp") from exc
+
+
+def _unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    row: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in row:
+            raise CompletionEvidenceError("duplicate marker field")
+        row[key] = value
+    return row
+
+
+def _reject_constant(value: str) -> None:
+    raise CompletionEvidenceError("non-finite marker value: " + value)
+
+
+def _read_marker(path: Path) -> Any:
+    """One malformed record must not abort the entire live board projection."""
+    try:
+        with path.open("rb") as handle:
+            data = handle.read(MAX_MARKER_BYTES + 1)
+        if len(data) > MAX_MARKER_BYTES:
+            return None
+        return json.loads(
+            data.decode("utf-8"),
+            object_pairs_hook=_unique_object,
+            parse_constant=_reject_constant,
+        )
+    except (OSError, UnicodeError, ValueError, RecursionError):
+        return None
 
 
 def _clean_id(operation_id: str) -> str:
@@ -102,14 +146,15 @@ def build_marker(
     pull_request: dict[str, Any],
 ) -> dict[str, Any]:
     operation_id = _clean_id(operation_id)
+    if not isinstance(issue, dict) or not isinstance(pull_request, dict):
+        raise CompletionEvidenceError("completion evidence must be objects")
     issue_number = issue.get("number")
     if not isinstance(issue_number, int) or isinstance(issue_number, bool) or issue_number < 1:
         raise CompletionEvidenceError("invalid issue number")
     if issue.get("state") != "closed" or issue.get("state_reason") != "completed":
         raise CompletionEvidenceError("issue is not canonically completed")
-    closed_at = str(issue.get("closed_at") or "")
-    if not closed_at:
-        raise CompletionEvidenceError("completed issue lacks closed_at")
+    closed_at = issue.get("closed_at")
+    closed_instant = _timestamp(closed_at)
 
     pr_number = pull_request.get("number")
     if not isinstance(pr_number, int) or isinstance(pr_number, bool) or pr_number < 1:
@@ -117,13 +162,14 @@ def build_marker(
     if pull_request.get("merged") is not True:
         raise CompletionEvidenceError("pull request is not merged")
     base = pull_request.get("base") or {}
-    if str(base.get("ref") or "") != "main":
+    if not isinstance(base, dict) or str(base.get("ref") or "") != "main":
         raise CompletionEvidenceError("pull request did not merge to main")
-    merged_at = str(pull_request.get("merged_at") or "")
+    merged_at = pull_request.get("merged_at")
+    merged_instant = _timestamp(merged_at)
     merge_commit_sha = str(pull_request.get("merge_commit_sha") or "").lower()
     if not merged_at or not HEX40_RE.fullmatch(merge_commit_sha):
         raise CompletionEvidenceError("merged pull request lacks immutable merge evidence")
-    if merged_at > closed_at:
+    if merged_instant > closed_instant:
         raise CompletionEvidenceError("merge happened after canonical completion")
     if not closing_keyword_mentions_issue(str(pull_request.get("body") or ""), issue_number):
         raise CompletionEvidenceError("pull request does not explicitly close canonical issue")
@@ -176,7 +222,7 @@ def write_marker(
     path = Path(root) / marker_rel(operation_id)
     path.parent.mkdir(parents=True, exist_ok=True)
     text = json.dumps(marker, indent=2, sort_keys=True) + "\n"
-    if path.is_file() and path.read_text(encoding="utf-8") == text:
+    if path.is_file() and path.read_bytes() == text.encode("utf-8"):
         return "unchanged"
     path.write_text(text, encoding="utf-8")
     return "wrote"
@@ -191,10 +237,7 @@ def remove_marker(
     path = Path(root) / marker_rel(operation_id)
     if not path.is_file():
         return False
-    try:
-        row = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, UnicodeError, json.JSONDecodeError):
-        return False
+    row = _read_marker(path)
     issue = row.get("issue") if isinstance(row, dict) else None
     if not isinstance(issue, dict) or issue.get("number") != issue_number:
         return False
@@ -220,10 +263,7 @@ def remove_markers_for_issue(
     removed: list[str] = []
     for rel in source_paths(root):
         path = Path(root) / rel
-        try:
-            row = json.loads(path.read_text(encoding="utf-8"))
-        except (OSError, UnicodeError, json.JSONDecodeError):
-            continue
+        row = _read_marker(path)
         issue = row.get("issue") if isinstance(row, dict) else None
         if not isinstance(issue, dict) or issue.get("number") != issue_number:
             continue
@@ -257,11 +297,9 @@ def marker_is_valid(
         number = issue.get("number")
         if not isinstance(number, int) or isinstance(number, bool) or number < 1:
             return False
-        closed_at = str(issue.get("closed_at") or "")
-        if not closed_at:
-            return False
-        merged_at = str(merge.get("merged_at") or "")
-        if merge.get("base") != "main" or not merged_at or merged_at > closed_at:
+        closed_instant = _timestamp(issue.get("closed_at"))
+        merged_instant = _timestamp(merge.get("merged_at"))
+        if merge.get("base") != "main" or merged_instant > closed_instant:
             return False
         merge_commit_sha = str(merge.get("merge_commit_sha") or "").lower()
         if not HEX40_RE.fullmatch(merge_commit_sha):
@@ -276,12 +314,12 @@ def marker_is_valid(
         pr_number = merge.get("pr_number")
         if not isinstance(pr_number, int) or isinstance(pr_number, bool) or pr_number < 1:
             return False
-        if issue.get("url") not in {
+        if not isinstance(issue.get("url"), str) or issue["url"] not in {
             "https://github.com/woahwhattheheck/commons/issues/%s" % number,
             "https://api.github.com/repos/woahwhattheheck/commons/issues/%s" % number,
         }:
             return False
-        if merge.get("url") not in {
+        if not isinstance(merge.get("url"), str) or merge["url"] not in {
             "https://github.com/woahwhattheheck/commons/pull/%s" % pr_number,
             "https://api.github.com/repos/woahwhattheheck/commons/pulls/%s" % pr_number,
         }:
@@ -299,12 +337,11 @@ def completed_operation_ids(
     completed: set[str] = set()
     for rel in source_paths(root):
         path = Path(root) / rel
-        try:
-            row = json.loads(path.read_text(encoding="utf-8"))
-        except (OSError, UnicodeError, json.JSONDecodeError):
-            continue
+        row = _read_marker(path)
         if marker_is_valid(root, row, ancestor_verifier):
-            completed.add(str(row["operation_id"]))
+            # Renamed/duplicate files cannot stand in for the canonical marker.
+            if rel == marker_rel(row["operation_id"]):
+                completed.add(str(row["operation_id"]))
     return frozenset(completed)
 
 
