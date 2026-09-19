@@ -1,13 +1,13 @@
 {
   "counts": {
     "open_issues": 190,
-    "open_pull_requests": 116,
-    "runs_in_progress": 15,
-    "runs_queued": 799
+    "open_pull_requests": 120,
+    "runs_in_progress": 14,
+    "runs_queued": 824
   },
   "counts_source": "graphql",
   "degraded": [],
-  "drafts": 9,
+  "drafts": 8,
   "longest_open": [
     {
       "author": "woahwhattheheck",
@@ -40,7 +40,7 @@
       "head_sha": "d90af6c790a66b8844d689b042f57ea26e07f3b2",
       "number": 15631,
       "title": "ARC3 SAGE: close exact-evidence ambiguity and abstract lookahead (#14735)",
-      "updated_at": "2026-09-19T14:37:07Z"
+      "updated_at": "2026-09-19T14:39:06Z"
     },
     {
       "author": "woahwhattheheck",
@@ -48,10 +48,10 @@
       "branch": "z-proofforge/proofpatch-recovery-20260917",
       "created_at": "2026-09-17T19:04:10Z",
       "draft": false,
-      "head_sha": "1c5d3124d105457b83015f767c1628a9905dc080",
+      "head_sha": "b5224a67495cec7956ed2ed1682275fff749d0e6",
       "number": 15635,
       "title": "Recover Nebius ProofPatch evidence-bound coding agent",
-      "updated_at": "2026-09-19T14:19:14Z"
+      "updated_at": "2026-09-19T14:38:44Z"
     },
     {
       "author": "woahwhattheheck",
@@ -66,6 +66,50 @@
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-copper-r61/uiowa093-trace-checker-20260919",
+      "created_at": "2026-09-19T14:39:23Z",
+      "draft": false,
+      "head_sha": "d74367c09d27cdecb03017c12d58d3f112bca336",
+      "number": 16321,
+      "title": "UIOWA-093: complete structural trace checking with 57 retained regressions",
+      "updated_at": "2026-09-19T14:39:23Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/astra-forge-uiowa076-source-trace",
+      "created_at": "2026-09-19T14:39:05Z",
+      "draft": false,
+      "head_sha": "ff9a08f04298e68a371f54f5b1f414d090755ebb",
+      "number": 16320,
+      "title": "fix(uiowa-076): preserve evidence bindings and unknown comparison context",
+      "updated_at": "2026-09-19T14:39:05Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/uiowa-109-copperfin-r7-release-recovery",
+      "created_at": "2026-09-19T14:39:03Z",
+      "draft": false,
+      "head_sha": "bf37c706860821f1f6b1139fab81e5444d3786ee",
+      "number": 16319,
+      "title": "UIOWA-109: integrated release-to-recovery demonstration with source-bound evidence",
+      "updated_at": "2026-09-19T14:39:03Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-ibis93c-handoff-duplicates-20260919",
+      "created_at": "2026-09-19T14:39:03Z",
+      "draft": false,
+      "head_sha": "2822e7ca2888eaa6c1d40c4c782c54b1ba1b90e1",
+      "number": 16318,
+      "title": "fix(uiowa): keep duplicate handoffs from clearing pending review",
+      "updated_at": "2026-09-19T14:39:03Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -130,58 +174,14 @@
       "head_sha": "eaa29d8cce87928c4aab92321be3099966d69473",
       "number": 16309,
       "title": "UIOWA-032: source-snapshot and locator-fidelity repair",
-      "updated_at": "2026-09-19T14:38:20Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/sable6d4f-uiowa032-source-custody",
-      "created_at": "2026-09-19T14:28:25Z",
-      "draft": true,
-      "head_sha": "af735022942a16c8bb2dc926f6d7f219fd8bfc49",
-      "number": 16308,
-      "title": "UIOWA-032: preserve source-byte custody and wrapped Word evidence",
-      "updated_at": "2026-09-19T14:37:15Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-rookbridge6v2p/uiowa050-schema-conformance-20260919",
-      "created_at": "2026-09-19T14:27:11Z",
-      "draft": false,
-      "head_sha": "2adcd8c5bd240aa44f8dd1e59afc17d37d82a485",
-      "number": 16306,
-      "title": "UIOWA-050: complete nested schema and independent interchange conformance",
-      "updated_at": "2026-09-19T14:27:11Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa-064-kestrel6d9f-boundary-repair",
-      "created_at": "2026-09-19T14:27:10Z",
-      "draft": false,
-      "head_sha": "6496d2bc1f63b982dfb5aac43e716801ff228275",
-      "number": 16305,
-      "title": "UIOWA-064: preserve recovery uncertainty and unify validated input paths",
-      "updated_at": "2026-09-19T14:38:11Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/rivet-uiowa128-navigation-20260919",
-      "created_at": "2026-09-19T14:26:52Z",
-      "draft": false,
-      "head_sha": "ea14a5c4bdb6a478546aee99a74d3b0d31a2c1a8",
-      "number": 16304,
-      "title": "UIOWA-128: receipt-bound reviewer links, actual workbench view and portable linked guide",
-      "updated_at": "2026-09-19T14:26:52Z"
+      "updated_at": "2026-09-19T14:39:14Z"
     }
   ],
   "open_heads": {
     "15613": "96be91936b40e03845096e93d906cc9b5d6f1865",
     "15629": "df5666d5a47cad829f07c142285053277e1470c7",
     "15631": "d90af6c790a66b8844d689b042f57ea26e07f3b2",
-    "15635": "1c5d3124d105457b83015f767c1628a9905dc080",
+    "15635": "b5224a67495cec7956ed2ed1682275fff749d0e6",
     "15640": "a13fa73e10612ed8f1d07feda42afd624a33e891",
     "15643": "a2fa8782444b9c245b3660e8457c8775c29c51b3",
     "15645": "15ae09ec683c40d481bccccb3dd963e5c01539d5",
@@ -238,7 +238,7 @@
     "16152": "91a0d2287b6c1a6d6b7460302f0fa953eaf74d4b",
     "16156": "93d82f935488fe794a66a1a6892a8b166f74bb4f",
     "16175": "4f9fdb429ab9e907745dbfe730c7e39a2da7e988",
-    "16191": "ba061cccfdcdb634864c9e736d01f0d7979bea4d",
+    "16191": "e0666deee2c7cf6df8aeb21eff56499c78eb409e",
     "16195": "c883b6995c934f8a58ca745dc1cc84cb6131e590",
     "16198": "0223e01708f2fbe1c7aefc71fa7064ab8a38ef11",
     "16207": "59d94dfa2d1441aa05bfe89a9bd6d8256bbf6f36",
@@ -279,7 +279,7 @@
     "16289": "fad7e3dbbc61dc4f110395c408c8a9fe1c0629ad",
     "16290": "2001e7c1c350fe56a0276ad234f5d687ce9865ca",
     "16291": "598c7b3e4b012625a9309e14126acbeb541601d1",
-    "16296": "138fb8b3eb1983232f7bcea348ec777d979cd032",
+    "16296": "1d5e5d9d368c955c53b96df2fdf3d804977010a1",
     "16297": "29eab0c93eda34dba6f7df3d5c9bb88feb10dd0a",
     "16298": "7f61f32b8f1737db8ae143b15fcea43b0b14a509",
     "16300": "128606cf7042f391fc67f6f4c89360febc9aa54d",
@@ -288,16 +288,20 @@
     "16304": "ea14a5c4bdb6a478546aee99a74d3b0d31a2c1a8",
     "16305": "6496d2bc1f63b982dfb5aac43e716801ff228275",
     "16306": "2adcd8c5bd240aa44f8dd1e59afc17d37d82a485",
-    "16308": "af735022942a16c8bb2dc926f6d7f219fd8bfc49",
+    "16308": "6e100036233515dce282a1394904a3de5ec1856d",
     "16309": "eaa29d8cce87928c4aab92321be3099966d69473",
     "16312": "14e7900b18db700ed597744a721540068449fdf6",
     "16313": "01e228f2f72c14a1dcf8b0cda6620f66303714b2",
     "16314": "f1d31ce74bf770adf949489f52c672a38546fcc8",
-    "16317": "c94723133cc6052b51a06a677f9dfc9240b4e65a"
+    "16317": "c94723133cc6052b51a06a677f9dfc9240b4e65a",
+    "16318": "2822e7ca2888eaa6c1d40c4c782c54b1ba1b90e1",
+    "16319": "bf37c706860821f1f6b1139fab81e5444d3786ee",
+    "16320": "ff9a08f04298e68a371f54f5b1f414d090755ebb",
+    "16321": "d74367c09d27cdecb03017c12d58d3f112bca336"
   },
-  "pulls_listed": 116,
+  "pulls_listed": 120,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 53.3,
+  "queue_depth_per_runner": 58.9,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -467,6 +471,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T14:38:36Z",
+  "unchanged_since": "2026-09-19T14:40:47Z",
   "undatable_pulls": []
 }
