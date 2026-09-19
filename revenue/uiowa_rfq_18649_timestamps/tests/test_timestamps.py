@@ -182,7 +182,15 @@ class PacketTests(unittest.TestCase):
             out = Path(td)/"result.json"
             cmd = [sys.executable, str(ROOT/"timestamp_adapter.py"), str(ROOT/"fixtures/timeline_cases.json"), "--output", str(out)]
             self.assertEqual(subprocess.run(cmd, capture_output=True).returncode, 0)
+            before_report = out.read_bytes()
+            # Reports are evidence: repeating a destination is now an I/O error,
+            # not permission to replace it. Test unresolved exit 1 on a new path.
+            self.assertEqual(subprocess.run(cmd+["--require-resolved"], capture_output=True).returncode, 2)
+            self.assertEqual(out.read_bytes(), before_report)
+            unresolved_out = Path(td)/"unresolved-result.json"
+            cmd[-1] = str(unresolved_out)
             self.assertEqual(subprocess.run(cmd+["--require-resolved"], capture_output=True).returncode, 1)
+            self.assertEqual(json.loads(unresolved_out.read_text())["source_packet"], self.packet)
             self.assertEqual(json.loads(out.read_text())["source_packet"], self.packet)
             source = Path(td)/"source.json"
             source.write_text('{"schema_version":1,"events":[]}')
