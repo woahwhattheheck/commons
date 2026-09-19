@@ -1,0 +1,190 @@
+{
+  "meta": {
+    "set_id": "AIS-ROADMAP-ITEMS-SYNTHETIC",
+    "horizon_phases": [
+      "0-90",
+      "90-180",
+      "180+"
+    ],
+    "fiction_notice": "FICTION. Northgate State University does not exist. Every item, estimate and prerequisite below is invented to exercise the dependency and capacity engine. Nothing here is a University of Iowa finding, recommendation, or plan.",
+    "effort_unit": "staff-hours",
+    "effort_source": "SYNTHETIC-FIXTURE. In a real engagement these ranges come from the effort estimator (UIOWA-086) and the opportunity portfolio (UIOWA-072); this file is the swappable input contract, not a second estimator.",
+    "phase_source": "SYNTHETIC-FIXTURE. proposed_phase mirrors the shape the phased-roadmap lane (UIOWA-085) emits. This lane checks it; it does not author it."
+  },
+  "items": [
+    {
+      "id": "RM-01",
+      "rec": "R-001",
+      "title": "Record the approver pair on every IAM deployment",
+      "proposed_phase": "0-90",
+      "prerequisites": [],
+      "owner_role": "iam_service_owner",
+      "effort": {
+        "iam_service_owner": {
+          "low": 24,
+          "likely": 40,
+          "high": 64
+        },
+        "pipeline_engineer": {
+          "low": 32,
+          "likely": 48,
+          "high": 80
+        }
+      }
+    },
+    {
+      "id": "RM-02",
+      "rec": "R-001",
+      "title": "Enforce the two-approval rule in the deployment pipeline",
+      "proposed_phase": "0-90",
+      "prerequisites": [
+        "RM-01"
+      ],
+      "owner_role": "pipeline_engineer",
+      "effort": {
+        "pipeline_engineer": {
+          "low": 56,
+          "likely": 96,
+          "high": 104
+        },
+        "iam_service_owner": {
+          "low": 8,
+          "likely": 16,
+          "high": 24
+        }
+      }
+    },
+    {
+      "id": "RM-03",
+      "rec": "R-003",
+      "title": "Record a named routing owner for each ESS service alert",
+      "proposed_phase": "0-90",
+      "prerequisites": [],
+      "owner_role": "monitoring_owner",
+      "effort": {
+        "monitoring_owner": {
+          "low": 12,
+          "likely": 16,
+          "high": 28
+        }
+      }
+    },
+    {
+      "id": "RM-04",
+      "rec": "R-003",
+      "title": "Review the routing table at each ESS service change",
+      "proposed_phase": "90-180",
+      "prerequisites": [
+        "RM-03"
+      ],
+      "owner_role": "monitoring_owner",
+      "effort": {
+        "monitoring_owner": {
+          "low": 8,
+          "likely": 12,
+          "high": 20
+        }
+      }
+    },
+    {
+      "id": "RM-05",
+      "rec": "R-002",
+      "title": "Inventory critical RIS datasets and agree a restore target",
+      "proposed_phase": "0-90",
+      "prerequisites": [],
+      "owner_role": "ris_service_owner",
+      "effort": {
+        "ris_service_owner": {
+          "low": 16,
+          "likely": 24,
+          "high": 40
+        },
+        "infra_operations": {
+          "low": 8,
+          "likely": 16,
+          "high": 32
+        }
+      }
+    },
+    {
+      "id": "RM-06",
+      "rec": "R-002",
+      "title": "Run one documented restoration exercise per critical dataset",
+      "proposed_phase": "90-180",
+      "prerequisites": [
+        "RM-05"
+      ],
+      "owner_role": "infra_operations",
+      "effort": {
+        "infra_operations": {
+          "low": "UNKNOWN",
+          "likely": "UNKNOWN",
+          "high": "UNKNOWN"
+        },
+        "ris_service_owner": {
+          "low": 16,
+          "likely": 24,
+          "high": 40
+        }
+      },
+      "effort_note": "Restoration effort cannot be estimated until RM-05 supplies dataset sizes and the restore target. It stays UNKNOWN; it is not zero."
+    },
+    {
+      "id": "RM-07",
+      "rec": "R-002",
+      "title": "Record the measured recovery time and publish it with the backup report",
+      "proposed_phase": "90-180",
+      "prerequisites": [
+        "RM-06"
+      ],
+      "owner_role": "ris_service_owner",
+      "effort": {
+        "ris_service_owner": {
+          "low": 8,
+          "likely": 12,
+          "high": 20
+        }
+      }
+    },
+    {
+      "id": "RM-08",
+      "rec": "R-004",
+      "title": "Extend the approval-record practice to the remaining service groups",
+      "proposed_phase": "180+",
+      "prerequisites": [
+        "RM-02",
+        "RM-07"
+      ],
+      "owner_role": "change_management_lead",
+      "effort": {
+        "change_management_lead": {
+          "low": 40,
+          "likely": 64,
+          "high": 110
+        },
+        "pipeline_engineer": {
+          "low": 24,
+          "likely": 40,
+          "high": 72
+        }
+      }
+    },
+    {
+      "id": "RM-09",
+      "rec": "R-004",
+      "title": "Publish a combined practice note covering approvals and restoration",
+      "proposed_phase": "180+",
+      "prerequisites": [
+        "RM-08"
+      ],
+      "owner_role": "change_management_lead",
+      "effort": {
+        "change_management_lead": {
+          "low": 12,
+          "likely": 20,
+          "high": 32
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "meta": {
+    "assumption_set_id": "AIS-CAPACITY-SYNTHETIC",
+    "unit": "staff-hours available to this programme per phase window",
+    "fiction_notice": "FICTION. These are invented planning assumptions for a fictional organisation, not anyone's real availability.",
+    "no_individuals_notice": "Capacity is stated per ROLE and per relative phase window only. No named individual, no calendar date, and no personal availability commitment appears in this file or in any output. The loader rejects a capacity record that carries a person-like field.",
+    "basis": "ASSUMED. Editable: change any number here and every scenario recomputes."
+  },
+  "scenarios": [
+    {
+      "id": "constrained",
+      "label": "Constrained - current allocation only",
+      "effort_point": "high",
+      "capacity_multiplier": 0.75,
+      "note": "Work is squeezed into existing duties and estimates land at the high end."
+    },
+    {
+      "id": "expected",
+      "label": "Expected - planned allocation",
+      "effort_point": "likely",
+      "capacity_multiplier": 1.0,
+      "note": "The planning case: allocation as assumed, estimates at the likely point."
+    },
+    {
+      "id": "invested",
+      "label": "Invested - additional allocation approved",
+      "effort_point": "low",
+      "capacity_multiplier": 1.4,
+      "note": "Additional time is approved and estimates land at the low end."
+    }
+  ],
+  "roles": {
+    "iam_service_owner": {
+      "0-90": 90,
+      "90-180": 90,
+      "180+": 60
+    },
+    "pipeline_engineer": {
+      "0-90": 140,
+      "90-180": 140,
+      "180+": 100
+    },
+    "monitoring_owner": {
+      "0-90": 40,
+      "90-180": 40,
+      "180+": 24
+    },
+    "ris_service_owner": {
+      "0-90": 60,
+      "90-180": 60,
+      "180+": 40
+    },
+    "infra_operations": {
+      "0-90": 48,
+      "90-180": 64,
+      "180+": 48
+    },
+    "change_management_lead": {
+      "0-90": 40,
+      "90-180": 60,
+      "180+": 160
+    }
+  }
+}

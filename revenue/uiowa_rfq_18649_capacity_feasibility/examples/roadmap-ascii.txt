@@ -1,0 +1,297 @@
++============================================================================+
+| DEPENDENCY GRAPH                                                           |
++============================================================================+
+| Level = dependency depth. Items on one level with no path between          |
+| them can genuinely run in parallel; that is checked, not assumed.          |
++----------------------------------------------------------------------------+
+|   L0  RM-01  Record the approver pair on every   (no prerequisites)        |
+|   L0  RM-03  Record a named routing owner for e  (no prerequisites)        |
+|   L0  RM-05  Inventory critical RIS datasets an  (no prerequisites)        |
+|        parallel: RM-01, RM-03, RM-05                                       |
+|                                                                            |
+|   L1  RM-02  Enforce the two-approval rule in t  <- RM-01                  |
+|   L1  RM-04  Review the routing table at each E  <- RM-03                  |
+|   L1  RM-06  Run one documented restoration exe  <- RM-05                  |
+|        parallel: RM-02, RM-04, RM-06                                       |
+|                                                                            |
+|   L2  RM-07  Record the measured recovery time   <- RM-06                  |
+|                                                                            |
+|   L3  RM-08  Extend the approval-record practic  <- RM-02, RM-07           |
+|                                                                            |
+|   L4  RM-09  Publish a combined practice note c  <- RM-08                  |
+|                                                                            |
+| TRACKS (chains that never touch each other)                                |
+|   RM-01 + RM-02 + RM-05 + RM-06 + RM-07 + RM-08 + RM-09                    |
+|   RM-03 + RM-04                                                            |
++============================================================================+
+
+
++============================================================================+
+| SCENARIO: constrained  (Constrained - current allocation only)             |
+| estimates at the 'high' point, capacity x0.75                              |
++============================================================================+
+| LEGEND  = within capacity   ! over capacity   | capacity line              |
+|         . unused capacity   marks only, no colour                          |
++============================================================================+
+| PLAN AS PROPOSED   verdict: INFEASIBLE                                     |
++----------------------------------------------------------------------------+
+|   0-90                                                                     |
+|      RM-01  Record the approver pair on every IAM de                       |
+|      RM-02  Enforce the two-approval rule in the dep  after RM-01          |
+|      RM-03  Record a named routing owner for each ES                       |
+|      RM-05  Inventory critical RIS datasets and agre                       |
+|   90-180                                                                   |
+|      RM-04  Review the routing table at each ESS ser  after RM-03          |
+|      RM-06  Run one documented restoration exercise   after RM-05          |
+|      RM-07  Record the measured recovery time and pu  after RM-06          |
+|   180+                                                                     |
+|      RM-08  Extend the approval-record practice to t  after RM-02, RM-07   |
+|      RM-09  Publish a combined practice note coverin  after RM-08          |
++----------------------------------------------------------------------------+
+|   phase   role                   capacity  demand  result                  |
+|   180+    change_management_lead   120.0   142.0  SHORT by 22.0 h          |
+|                                  [========================|!!!!]           |
+|   0-90    iam_service_owner         67.5    88.0  SHORT by 20.5 h          |
+|                                  [=====================|!!!!!!!]           |
+|   0-90    infra_operations          36.0    32.0  ok, 4.0 h spare          |
+|                                  [=========================...|]           |
+|   90-180  infra_operations          48.0     0.0  UNKNOWN (+1 unestimated) |
+|                                  [............................|]           |
+|   0-90    monitoring_owner          30.0    28.0  ok, 2.0 h spare          |
+|                                  [==========================..|]           |
+|   90-180  monitoring_owner          30.0    20.0  ok, 10.0 h spare         |
+|                                  [===================.........|]           |
+|   0-90    pipeline_engineer        105.0   184.0  SHORT by 79.0 h          |
+|                                  [================|!!!!!!!!!!!!]           |
+|   180+    pipeline_engineer         75.0    72.0  ok, 3.0 h spare          |
+|                                  [===========================.|]           |
+|   0-90    ris_service_owner         45.0    40.0  ok, 5.0 h spare          |
+|                                  [=========================...|]           |
+|   90-180  ris_service_owner         45.0    60.0  SHORT by 15.0 h          |
+|                                  [=====================|!!!!!!!]           |
++============================================================================+
+| CAPACITY-FEASIBLE RESEQUENCING   verdict: INFEASIBLE                       |
++----------------------------------------------------------------------------+
+|   0-90                                                                     |
+|      RM-01  Record the approver pair on every IAM de                       |
+|      RM-03  Record a named routing owner for each ES                       |
+|      RM-05  Inventory critical RIS datasets and agre                       |
+|   90-180                                                                   |
+|      RM-02  Enforce the two-approval rule in the dep  after RM-01          |
+|      RM-04  Review the routing table at each ESS ser  after RM-03          |
+|      RM-06  Run one documented restoration exercise   after RM-05          |
+|   180+                                                                     |
+|      RM-07  Record the measured recovery time and pu  after RM-06          |
+|      RM-08  Extend the approval-record practice to t  after RM-02, RM-07   |
+|   BEYOND_HORIZON                                                           |
+|      RM-09  Publish a combined practice note coverin  after RM-08          |
++----------------------------------------------------------------------------+
+|   phase   role                   capacity  demand  result                  |
+|   180+    change_management_lead   120.0   110.0  ok, 10.0 h spare         |
+|                                  [==========================..|]           |
+|   0-90    iam_service_owner         67.5    64.0  ok, 3.5 h spare          |
+|                                  [===========================.|]           |
+|   90-180  iam_service_owner         67.5    24.0  ok, 43.5 h spare         |
+|                                  [==========..................|]           |
+|   0-90    infra_operations          36.0    32.0  ok, 4.0 h spare          |
+|                                  [=========================...|]           |
+|   90-180  infra_operations          48.0     0.0  UNKNOWN (+1 unestimated) |
+|                                  [............................|]           |
+|   0-90    monitoring_owner          30.0    28.0  ok, 2.0 h spare          |
+|                                  [==========================..|]           |
+|   90-180  monitoring_owner          30.0    20.0  ok, 10.0 h spare         |
+|                                  [===================.........|]           |
+|   0-90    pipeline_engineer        105.0    80.0  ok, 25.0 h spare         |
+|                                  [=====================.......|]           |
+|   90-180  pipeline_engineer        105.0   104.0  ok, 1.0 h spare          |
+|                                  [============================|]           |
+|   180+    pipeline_engineer         75.0    72.0  ok, 3.0 h spare          |
+|                                  [===========================.|]           |
+|   0-90    ris_service_owner         45.0    40.0  ok, 5.0 h spare          |
+|                                  [=========================...|]           |
+|   90-180  ris_service_owner         45.0    40.0  ok, 5.0 h spare          |
+|                                  [=========================...|]           |
+|   180+    ris_service_owner         30.0    20.0  ok, 10.0 h spare         |
+|                                  [===================.........|]           |
++============================================================================+
+| WHAT THE RESOURCE RANGE CHANGED                                            |
++----------------------------------------------------------------------------+
+|   RM-02  0-90 -> 90-180   (role capacity)                                  |
+|   RM-07  90-180 -> 180+   (role capacity)                                  |
+|   RM-09  180+ -> BEYOND_HORIZON   (no phase in the horizon has capacity fo |
++============================================================================+
+
+
++============================================================================+
+| SCENARIO: expected  (Expected - planned allocation)                        |
+| estimates at the 'likely' point, capacity x1.0                             |
++============================================================================+
+| LEGEND  = within capacity   ! over capacity   | capacity line              |
+|         . unused capacity   marks only, no colour                          |
++============================================================================+
+| PLAN AS PROPOSED   verdict: INFEASIBLE                                     |
++----------------------------------------------------------------------------+
+|   0-90                                                                     |
+|      RM-01  Record the approver pair on every IAM de                       |
+|      RM-02  Enforce the two-approval rule in the dep  after RM-01          |
+|      RM-03  Record a named routing owner for each ES                       |
+|      RM-05  Inventory critical RIS datasets and agre                       |
+|   90-180                                                                   |
+|      RM-04  Review the routing table at each ESS ser  after RM-03          |
+|      RM-06  Run one documented restoration exercise   after RM-05          |
+|      RM-07  Record the measured recovery time and pu  after RM-06          |
+|   180+                                                                     |
+|      RM-08  Extend the approval-record practice to t  after RM-02, RM-07   |
+|      RM-09  Publish a combined practice note coverin  after RM-08          |
++----------------------------------------------------------------------------+
+|   phase   role                   capacity  demand  result                  |
+|   180+    change_management_lead   160.0    84.0  ok, 76.0 h spare         |
+|                                  [===============.............|]           |
+|   0-90    iam_service_owner         90.0    56.0  ok, 34.0 h spare         |
+|                                  [=================...........|]           |
+|   0-90    infra_operations          48.0    16.0  ok, 32.0 h spare         |
+|                                  [=========...................|]           |
+|   90-180  infra_operations          64.0     0.0  UNKNOWN (+1 unestimated) |
+|                                  [............................|]           |
+|   0-90    monitoring_owner          40.0    16.0  ok, 24.0 h spare         |
+|                                  [===========.................|]           |
+|   90-180  monitoring_owner          40.0    12.0  ok, 28.0 h spare         |
+|                                  [========....................|]           |
+|   0-90    pipeline_engineer        140.0   144.0  SHORT by 4.0 h           |
+|                                  [===========================|!]           |
+|   180+    pipeline_engineer        100.0    40.0  ok, 60.0 h spare         |
+|                                  [===========.................|]           |
+|   0-90    ris_service_owner         60.0    24.0  ok, 36.0 h spare         |
+|                                  [===========.................|]           |
+|   90-180  ris_service_owner         60.0    36.0  ok, 24.0 h spare         |
+|                                  [=================...........|]           |
++============================================================================+
+| CAPACITY-FEASIBLE RESEQUENCING   verdict: UNKNOWN                          |
++----------------------------------------------------------------------------+
+|   0-90                                                                     |
+|      RM-01  Record the approver pair on every IAM de                       |
+|      RM-03  Record a named routing owner for each ES                       |
+|      RM-05  Inventory critical RIS datasets and agre                       |
+|   90-180                                                                   |
+|      RM-02  Enforce the two-approval rule in the dep  after RM-01          |
+|      RM-04  Review the routing table at each ESS ser  after RM-03          |
+|      RM-06  Run one documented restoration exercise   after RM-05          |
+|      RM-07  Record the measured recovery time and pu  after RM-06          |
+|   180+                                                                     |
+|      RM-08  Extend the approval-record practice to t  after RM-02, RM-07   |
+|      RM-09  Publish a combined practice note coverin  after RM-08          |
++----------------------------------------------------------------------------+
+|   phase   role                   capacity  demand  result                  |
+|   180+    change_management_lead   160.0    84.0  ok, 76.0 h spare         |
+|                                  [===============.............|]           |
+|   0-90    iam_service_owner         90.0    40.0  ok, 50.0 h spare         |
+|                                  [============................|]           |
+|   90-180  iam_service_owner         90.0    16.0  ok, 74.0 h spare         |
+|                                  [=====.......................|]           |
+|   0-90    infra_operations          48.0    16.0  ok, 32.0 h spare         |
+|                                  [=========...................|]           |
+|   90-180  infra_operations          64.0     0.0  UNKNOWN (+1 unestimated) |
+|                                  [............................|]           |
+|   0-90    monitoring_owner          40.0    16.0  ok, 24.0 h spare         |
+|                                  [===========.................|]           |
+|   90-180  monitoring_owner          40.0    12.0  ok, 28.0 h spare         |
+|                                  [========....................|]           |
+|   0-90    pipeline_engineer        140.0    48.0  ok, 92.0 h spare         |
+|                                  [==========..................|]           |
+|   90-180  pipeline_engineer        140.0    96.0  ok, 44.0 h spare         |
+|                                  [===================.........|]           |
+|   180+    pipeline_engineer        100.0    40.0  ok, 60.0 h spare         |
+|                                  [===========.................|]           |
+|   0-90    ris_service_owner         60.0    24.0  ok, 36.0 h spare         |
+|                                  [===========.................|]           |
+|   90-180  ris_service_owner         60.0    36.0  ok, 24.0 h spare         |
+|                                  [=================...........|]           |
++============================================================================+
+| WHAT THE RESOURCE RANGE CHANGED                                            |
++----------------------------------------------------------------------------+
+|   RM-02  0-90 -> 90-180   (role capacity)                                  |
++============================================================================+
+
+
++============================================================================+
+| SCENARIO: invested  (Invested - additional allocation approved)            |
+| estimates at the 'low' point, capacity x1.4                                |
++============================================================================+
+| LEGEND  = within capacity   ! over capacity   | capacity line              |
+|         . unused capacity   marks only, no colour                          |
++============================================================================+
+| PLAN AS PROPOSED   verdict: UNKNOWN                                        |
++----------------------------------------------------------------------------+
+|   0-90                                                                     |
+|      RM-01  Record the approver pair on every IAM de                       |
+|      RM-02  Enforce the two-approval rule in the dep  after RM-01          |
+|      RM-03  Record a named routing owner for each ES                       |
+|      RM-05  Inventory critical RIS datasets and agre                       |
+|   90-180                                                                   |
+|      RM-04  Review the routing table at each ESS ser  after RM-03          |
+|      RM-06  Run one documented restoration exercise   after RM-05          |
+|      RM-07  Record the measured recovery time and pu  after RM-06          |
+|   180+                                                                     |
+|      RM-08  Extend the approval-record practice to t  after RM-02, RM-07   |
+|      RM-09  Publish a combined practice note coverin  after RM-08          |
++----------------------------------------------------------------------------+
+|   phase   role                   capacity  demand  result                  |
+|   180+    change_management_lead   224.0    52.0  ok, 172.0 h spare        |
+|                                  [======......................|]           |
+|   0-90    iam_service_owner        126.0    32.0  ok, 94.0 h spare         |
+|                                  [=======.....................|]           |
+|   0-90    infra_operations          67.2     8.0  ok, 59.2 h spare         |
+|                                  [===.........................|]           |
+|   90-180  infra_operations          89.6     0.0  UNKNOWN (+1 unestimated) |
+|                                  [............................|]           |
+|   0-90    monitoring_owner          56.0    12.0  ok, 44.0 h spare         |
+|                                  [======......................|]           |
+|   90-180  monitoring_owner          56.0     8.0  ok, 48.0 h spare         |
+|                                  [====........................|]           |
+|   0-90    pipeline_engineer        196.0    88.0  ok, 108.0 h spare        |
+|                                  [=============...............|]           |
+|   180+    pipeline_engineer        140.0    24.0  ok, 116.0 h spare        |
+|                                  [=====.......................|]           |
+|   0-90    ris_service_owner         84.0    16.0  ok, 68.0 h spare         |
+|                                  [=====.......................|]           |
+|   90-180  ris_service_owner         84.0    24.0  ok, 60.0 h spare         |
+|                                  [========....................|]           |
++============================================================================+
+| CAPACITY-FEASIBLE RESEQUENCING   verdict: UNKNOWN                          |
++----------------------------------------------------------------------------+
+|   0-90                                                                     |
+|      RM-01  Record the approver pair on every IAM de                       |
+|      RM-02  Enforce the two-approval rule in the dep  after RM-01          |
+|      RM-03  Record a named routing owner for each ES                       |
+|      RM-05  Inventory critical RIS datasets and agre                       |
+|   90-180                                                                   |
+|      RM-04  Review the routing table at each ESS ser  after RM-03          |
+|      RM-06  Run one documented restoration exercise   after RM-05          |
+|      RM-07  Record the measured recovery time and pu  after RM-06          |
+|   180+                                                                     |
+|      RM-08  Extend the approval-record practice to t  after RM-02, RM-07   |
+|      RM-09  Publish a combined practice note coverin  after RM-08          |
++----------------------------------------------------------------------------+
+|   phase   role                   capacity  demand  result                  |
+|   180+    change_management_lead   224.0    52.0  ok, 172.0 h spare        |
+|                                  [======......................|]           |
+|   0-90    iam_service_owner        126.0    32.0  ok, 94.0 h spare         |
+|                                  [=======.....................|]           |
+|   0-90    infra_operations          67.2     8.0  ok, 59.2 h spare         |
+|                                  [===.........................|]           |
+|   90-180  infra_operations          89.6     0.0  UNKNOWN (+1 unestimated) |
+|                                  [............................|]           |
+|   0-90    monitoring_owner          56.0    12.0  ok, 44.0 h spare         |
+|                                  [======......................|]           |
+|   90-180  monitoring_owner          56.0     8.0  ok, 48.0 h spare         |
+|                                  [====........................|]           |
+|   0-90    pipeline_engineer        196.0    88.0  ok, 108.0 h spare        |
+|                                  [=============...............|]           |
+|   180+    pipeline_engineer        140.0    24.0  ok, 116.0 h spare        |
+|                                  [=====.......................|]           |
+|   0-90    ris_service_owner         84.0    16.0  ok, 68.0 h spare         |
+|                                  [=====.......................|]           |
+|   90-180  ris_service_owner         84.0    24.0  ok, 60.0 h spare         |
+|                                  [========....................|]           |
++============================================================================+
+
