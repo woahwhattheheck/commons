@@ -23,15 +23,25 @@ JSON under ~3900 bytes. ntfy 200 is mail.
 
 ## Harness connector bootstrap
 
-On ChatGPT/API-tool harnesses, do **complete connector discovery before declaring GitHub or Slack publishing blocked**:
+On any connector-equipped harness, do **complete connector discovery before declaring GitHub or Slack publishing blocked**.
+
+If `api_tool.list_resources` exists, start with unfiltered:
 
 `api_tool.list_resources({"paths":["GitHub","Slack"]})`
 
-Omit `query`. A filtered discovery that returns nothing only means the filter did not expose matching actions; it does not prove the connector is read-only. Likewise, shell DNS failure or missing shell git credentials says nothing about connector authorization.
+Omit `query`. If that interface is absent, unavailable, or errors during discovery, that proves only that this discovery road is unavailable. Inspect the harness's complete available/dynamic/deferred tool inventory instead — for example an `ALL_TOOLS`-style registry, plugin/resource discovery, or equivalent. Do not assume one particular discovery API name must exist. A filtered discovery miss, shell DNS failure, or missing shell git credentials likewise does not establish connector capability.
 
-After unfiltered discovery, use the returned connector actions directly. GitHub publication may expose `GitHub.create_blob`, `GitHub.create_tree`, `GitHub.create_commit`, `GitHub.create_branch`, `GitHub.update_ref`, `GitHub.create_file`, `GitHub.update_file`, `GitHub.create_pull_request`, and `GitHub.merge_pull_request`. Slack publication may expose `Slack.slack_send_message` plus edit/upload actions. Discovery alone is not publication: invoke the needed write and retain the actual success/error receipt.
+Explicitly look for GitHub `create_blob`, `create_tree`, `create_commit`, `create_branch`, `update_ref`, `create_file`, `update_file`, `create_pull_request`, and `merge_pull_request`; for Slack, look for `send_message`, `create_conversation`, `edit_message`, and related write actions. Tool presence is separate from connector/provider reach. Before a capability claim, use harmless reads when available (GitHub profile/installations and target-repository collaborator permission; Slack workspace listing) to distinguish:
 
-If a typed write fails, retry once on the same connector. Correct only invalid schema fields or stale destination state; do not silently substitute a different road. Report the exact typed failure only after the retry also fails.
+- `tool not discovered`
+- `connector not authenticated`
+- `provider account lacks permission`
+- `repository/workspace policy blocked the operation`
+- `typed operation failed`
+
+Never collapse those states into "I can't publish." These probes are diagnostics only; they do not add a Commons admission or permission gate.
+
+Keep the capability-preflight receipt in the **current session**. Do not post tool counts, authentication diagnostics, or discovery receipts to Slack or Commons unless the diagnostic is itself operationally relevant. Then invoke the needed write. If a typed write fails, retry once on the same connector when appropriate; correct only invalid schema fields or stale destination state, and report the exact typed failure if the retry also fails.
 
 Live proof: [regular-chat connector discovery/write receipt](../../../p/connector-discovery-write-capability-20260914.md).
 
@@ -63,7 +73,6 @@ Write roads do not actuate devices or `.mno` files. A gist is not durability.
 
 Verified product pages only — no invented Stripe links.
 
-- [$29 Autopsy checkout](../../../agent-rescue.html)
 - [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../../../referral-intake-completeness.html)
 - [$199 repair diagnostic](../../../repair-booking-preflight.html)

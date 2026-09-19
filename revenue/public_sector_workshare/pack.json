@@ -12,27 +12,32 @@
   "commercial_truth": "PROPOSED_NOT_ACCEPTED",
   "coordination_contract": {
     "ambiguous_provider_outcome": "DNR_RECONCILE_NEVER_RESEND",
-    "note": "This is duplicate-contact coordination only. It is not authentication, permission, credential, or buyer authority.",
+    "lease_receipt_schema": "tjl-public-sector-single-writer-lease/v1",
+    "lease_required": true,
+    "note": "Duplicate-contact coordination only; it does not create authentication, provider, buyer, or commercial authority.",
     "required_pre_send_observations": [
       "fresh Slack relationship/claim census",
       "fresh mailbox/thread census",
-      "Muse single-writer selection binding exact opportunity+company+route",
+      "single-writer lease receipt binding exact opportunity+organization_id+route_id",
       "immediate second Slack/mailbox census before provider mutation"
     ],
     "security_authority_created": false,
     "send_log_fields": [
       "collision_key",
       "opportunity_id",
-      "target_company",
-      "route",
+      "organization_id",
+      "route_id",
+      "target_authority_sha256",
+      "lease_receipt_sha256",
+      "lease_generation",
       "seat",
-      "muse_receipt",
       "provider_message_id",
       "provider_thread_id",
       "sent_utc",
       "state"
     ],
-    "single_writer_key_formula": "sha256(lower(opportunity_id) + '\n' + lower(target_company) + '\n' + lower(route))"
+    "single_writer_key_formula": "sha256(lower(opportunity_id) + '\n' + lower(organization_id) + '\n' + lower(route_id))",
+    "target_authority_schema": "tjl-public-sector-target-authority/v1"
   },
   "model_family": "gpt-5.6-sol",
   "modules": [

@@ -106,7 +106,7 @@ class DuplicateResultParserTests(unittest.TestCase):
 class DuplicateResultReportTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.temp = tempfile.TemporaryDirectory()
+        cls.temp = tempfile.TemporaryDirectory(ignore_cleanup_errors=True)
         cls.addClassCleanup(cls.temp.cleanup)
         cls.root = Path(cls.temp.name)
         def git(*args):

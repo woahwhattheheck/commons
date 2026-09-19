@@ -9,7 +9,6 @@ import urllib.request
 from typing import Any
 
 from integrations.grokbot_control.paid_case import (
-    case_from_autopsy_offer,
     receipt_from_g2_submit,
     receipt_row_from_case,
 )
@@ -179,12 +178,6 @@ class GrokBotEquipment:
                 {},
             ),
             _schema(
-                "grokbot_case_from_autopsy_offer",
-                "Build a G2 case dict from Autopsy offer.json + opaque case_ref. Local helper; does not call :8881.",
-                {"case_ref": "string"},
-                {"client_reference_id": "string", "sku": "string"},
-            ),
-            _schema(
                 "grokbot_receipt_row_from_case",
                 "Build an opaque seats case_row from a G2 case. Pass submit_response to bind run_id/session_id via receipt_from_g2_submit; otherwise optional g2_run_id/g2_session_id. Local helper; does not call :8881.",
                 {"case": "object"},
@@ -250,16 +243,6 @@ class GrokBotEquipment:
             return self._request("GET", "/v1/pools")
         if name == "grokbot_health":
             return self._request("GET", "/health")
-        if name == "grokbot_case_from_autopsy_offer":
-            try:
-                case = case_from_autopsy_offer(
-                    case_ref=args["case_ref"],
-                    client_reference_id=args.get("client_reference_id"),
-                    sku=args.get("sku"),
-                )
-            except (ValueError, TypeError, KeyError):
-                return {"ok": False, "error": "invalid_case"}
-            return {"ok": True, "case": case}
         if name == "grokbot_receipt_row_from_case":
             try:
                 if args.get("submit_response") is not None:

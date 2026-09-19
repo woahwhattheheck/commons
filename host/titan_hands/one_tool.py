@@ -26,10 +26,12 @@ from .lanes import (
     BrowserServer,
     FilesServer,
     GitServer,
+    LaneError,
     ShellServer,
     SlackServer,
 )
 from .linux_atspi import LinuxHandsServer
+from .routes import HandsRoutes
 
 
 PIXEL_PAYLOAD_KEYS = frozenset(
@@ -110,6 +112,45 @@ class BrokerTarget:
         return None
 
 
+def slack_lane_server(routes: HandsRoutes | None = None) -> SlackServer:
+    """Slack lane wired to the real HTTP path when a bot token is visible.
+
+    Without a token the bare lane stays typed TRANSPORT_UNCONFIGURED, the same
+    as before this wiring existed. ``capabilities`` keeps gating ``online`` off
+    the same env check, so an unconfigured process never reports a lie.
+    """
+    routes = routes or HandsRoutes()
+    token = str(
+        routes.environ.get("COMMONS_SLACK_BOT_TOKEN")
+        or routes.environ.get("SLACK_BOT_TOKEN")
+        or ""
+    ).strip()
+    if not token:
+        return SlackServer()
+
+    def _post(text: str) -> Mapping[str, Any]:
+        result = routes.handle("slack", {"op": "post", "text": text})
+        if not result.get("ok"):
+            raise LaneError(
+                "SLACK_FAILED",
+                str(result.get("message") or "slack post failed"),
+                channel=result.get("channel"),
+            )
+        return result.get("slack") or {}
+
+    def _history() -> list[Mapping[str, Any]]:
+        result = routes.handle("slack", {"op": "read", "limit": 200})
+        if not result.get("ok"):
+            raise LaneError(
+                "SLACK_FAILED",
+                str(result.get("message") or "slack history failed"),
+                channel=result.get("channel"),
+            )
+        return list((result.get("slack") or {}).get("messages") or [])
+
+    return SlackServer(history=_history, post=_post)
+
+
 def default_factories(broker: TitanHandsBroker) -> dict[str, Callable[[], HandsServer]]:
     return {
         "windows": lambda: BrokerTarget(broker, "windows"),
@@ -118,7 +159,7 @@ def default_factories(broker: TitanHandsBroker) -> dict[str, Callable[[], HandsS
         "linux": LinuxHandsServer,
         "files": FilesServer,
         "git": GitServer,
-        "slack": SlackServer,
+        "slack": slack_lane_server,
         "board": BoardServer,
         "shell": ShellServer,
         "browser": BrowserServer,

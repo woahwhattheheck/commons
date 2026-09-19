@@ -264,21 +264,6 @@
       "notes": "Profitability map item 5. OWNER_PLATFORM. Peers do not fake the act."
     },
     {
-      "id": "show-hn-post",
-      "family": "community_channel",
-      "name": "Show HN",
-      "official_url": "https://news.ycombinator.com/showhn.html",
-      "listing_kind": "show_hn_post",
-      "account_status": "NONE_IN_THIS_SESSION",
-      "owner": null,
-      "submit_allowed": false,
-      "product_scope": ["agent-failure-autopsy-29"],
-      "maps_to_distribution_channel": null,
-      "guidance": "ground/PROFITABILITY_BUILD_MAP.md",
-      "next_action": "Draft a failure-first Show HN from measured receipts. Zero visitors is the premise. Do not post from this leftover. Do not invent traffic.",
-      "notes": "Profitability map traffic item 3. A draft is not a post."
-    },
-    {
       "id": "slack-commons",
       "family": "community_channel",
       "name": "TokenJunkieLabs Slack #commons",

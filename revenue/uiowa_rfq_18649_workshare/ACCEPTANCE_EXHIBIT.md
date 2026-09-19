@@ -5,11 +5,12 @@
 **Technical workshare:** TokenJunkieLabs / TJLabs  
 **Commercial status:** **PROPOSED / NOT ACCEPTED**  
 **Base workshare:** **$24,000 fixed**  
-**Optional final-readout support:** **$4,000 only if separately authorized in writing**
+**Optional final-readout support:** **$4,000 only if separately authorized in writing**  
+**Current RFQ response deadline:** **September 29, 2026, 3:00 PM Central**
 
 This exhibit turns the existing commercial workshare into an artifact-level handoff a prospective prime can inspect before deciding whether to commit. It is a planning and acceptance aid, not a University submission, subcontract, purchase order, invoice, award, teaming signature, or representation that Clark's Consulting has accepted the workshare.
 
-The controlling RFQ, amendments, Q&A, eBid instructions, prime commitments, and any executed agreement supersede this exhibit wherever they differ.
+The controlling RFQ, amendments, Q&A, eBid instructions, prime commitments, and any executed agreement supersede this exhibit wherever they differ. The controlling scope also excludes recommendations for specific commercial products or vendors; prime direction or ordinary change control does not independently create product/vendor recommendation authority.
 
 ## 1. Workshare objective
 
@@ -70,7 +71,7 @@ TJLabs delivers a draft package containing, to the extent supported by authorize
 - populated evidence register;
 - deterministic 12-cell maturity/gap matrix or explicit HOLD states where authority is missing, stale, conflicting, or incomplete;
 - draft technical findings tied to source IDs and the applicable assessment cell;
-- prioritized, phased roadmap inputs suitable for prime review;
+- prioritized, phased practice/process roadmap inputs suitable for prime review, excluding recommendations for specific commercial products or vendors;
 - reproducibility/currentness receipt material for the compiled technical package;
 - a limitations/dependencies section identifying unresolved evidence gaps, source conflicts, stale observations, and scope assumptions;
 - a change log identifying material changes from the kickoff frame.
@@ -93,7 +94,11 @@ TJLabs does not silently convert missing evidence into a positive score or remov
 
 ### 4.4 Optional $4,000 final-readout support
 
-The optional final-readout support is **not included in the $24,000 base workshare** and does not begin automatically. It requires a separate written authorization defining the requested readout/support activity, timing, participants, and any additional inputs. The prospective prime retains final presentation and University-facing authority.
+The optional final-readout support is **not included in the $24,000 base workshare** and does not begin automatically. It requires a separate written authorization defining the requested readout/support activity, timing, participants, and any additional inputs. The prospective prime retains final presentation and University-facing authority, subject to the controlling RFQ boundary that excludes recommendations for specific commercial products or vendors.
+
+### 4.5 RFQ product/vendor recommendation exclusion
+
+The assessment may recommend practices, process improvements, governance changes, evidence controls, and phased implementation priorities. It must **not** recommend, rank, shortlist, endorse, select, or prescribe a specific commercial product or vendor. Prime direction, routine change control, or optional-readout authorization cannot widen this boundary. Only a formal amendment to the controlling solicitation could change it, and any such amendment would require a fresh scope review before TJLabs work changed.
 
 ## 5. Artifact acceptance criteria
 
@@ -117,7 +122,7 @@ The draft package conforms when all of the following are true:
 2. the report covers the full 12-cell assessment frame, using explicit HOLD states for unsupported cells rather than implied completion;
 3. missing, stale, conflicting, or untrusted evidence is visibly bounded and cannot silently promote a cell to a supported state;
 4. source-universe/currentness checks and deterministic recompilation checks complete for the delivered draft generation, or the package explicitly reports the exact blocker preventing a current trusted result;
-5. draft findings and roadmap inputs remain within the technical workshare and do not claim bidder submission, contract, legal/compliance certification, award, or final University-facing recommendation authority;
+5. draft findings and roadmap inputs remain within the technical workshare and do not claim bidder submission, contract, legal/compliance certification, award, final University-facing recommendation authority, or authority to recommend/endorse a specific commercial product or vendor;
 6. prime review comments received during the agreed review window are either incorporated when they correct TJLabs artifact nonconformance, or recorded as a bounded decision/open item when they require prime judgment, new evidence, or scope change.
 
 A draft artifact that fails these criteria is subject to the cure mechanism below; that conformance review does not convert the existing draft **delivery** payment trigger into an acceptance trigger.
@@ -158,10 +163,12 @@ The $24,000 base workshare does not silently expand to cover materially new scop
 - substantial new interview programs or repeated interview cycles;
 - onsite work or travel;
 - implementation/remediation engineering rather than assessment and roadmap support;
-- procurement, legal, audit, certification, insurance, or regulatory opinions;
+- procurement/vendor selection, recommendations or endorsements for specific commercial products/vendors, legal, audit, certification, insurance, or regulatory opinions;
 - external tooling or services that require spend not already authorized;
 - University-facing submission ownership or bidder communications;
 - the optional final-readout support described in Section 4.4.
+
+The specific-product/vendor recommendation exclusion is a controlling RFQ scope boundary, not a normal change-control item. It cannot be added merely because the prime asks for it; only a formal controlling-solicitation amendment could reopen that question.
 
 A small correction to a TJLabs-authored artifact that fails an agreed acceptance criterion is not treated as a new scope item merely because it occurs during acceptance review.
 
@@ -189,7 +196,7 @@ Operational evidence should be handled using the minimum necessary content and s
 - eBid submission and compliance with submission instructions;
 - prime qualifications, references, insurance, representations, and contracting;
 - final methodology choices and professional judgment;
-- benchmarking conclusions and final recommendations;
+- benchmarking conclusions and final in-scope practice/process recommendations; specific commercial product/vendor recommendations remain excluded by the RFQ;
 - staffing, interviews, onsite promises, travel, and integrated schedule;
 - final University-facing narrative, presentation, and readout;
 - signing/accepting any subcontract or commercial authorization.
@@ -204,10 +211,11 @@ Nothing in this file authorizes or represents:
 
 - contact with the University or any buyer on the prime's behalf;
 - submission of a bid or response;
+- recommendation, ranking, shortlist, endorsement, selection, or prescription of a specific commercial product or vendor;
 - signature, contract, award, teaming commitment, or subcontract acceptance;
 - travel, spend, procurement, or external service purchase;
 - invoice issuance, payment request, payment settlement, cash receipt, or recognized revenue;
 - publication of real customer/University evidence;
 - a guarantee of award, schedule outcome, assessment result, or recommendation.
 
-The current public RFQ response context in the carrier reports September 22, 2026 at 3:00 PM Central as the response deadline. The University eBid solicitation and its amendments remain the final authority for bidder deadlines and requirements.
+The current RFQ response context for this work order reports September 29, 2026 at 3:00 PM Central as the response deadline. The University eBid solicitation and its amendments remain the final authority for bidder deadlines and requirements.

@@ -3,11 +3,11 @@
 
 Wire EXISTING live Stripe Payment Link URLs onto agent-triage.html and
 agent-control.html. Copy the payment-capability.html Buy now shelf
-(same nine URLs, same labels, same section id). Do not invent new
+(same eight URLs, same labels, same section id). Do not invent new
 buy.stripe.com host paths. Tip KEEP relative #live-cash doors stay.
 Hands off Wire tools/toolbench, Latch #15248, Goat tips/titan-hour/
 agent-ops/mcp/invoice/pay-tipshelf, Quill, Type prior convert chain,
-and #8802.
+and #8802. Retired Autopsy checkout is not on this shelf.
 """
 from __future__ import annotations
 
@@ -23,7 +23,6 @@ PAYMENT = ROOT / "payment-capability.html"
 RECEIPT = ROOT / "p" / "type-agent-triage-control-convert-shelf-20260917-01.md"
 
 ALLOWED_LIVE_BUY_URLS = (
-    "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
     "https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b",
     "https://buy.stripe.com/9B600i98N77b9uFeBk43S0c",
     "https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d",
@@ -39,7 +38,6 @@ BUY_HOST_PATH = re.compile(
     re.IGNORECASE,
 )
 SHELF_LABELS = (
-    ("Agent Failure Autopsy", "$29"),
     ("Dealer Service Lead Rescue", "$199"),
     ("Referral Intake Completeness", "$199"),
     ("Repair Booking Preflight", "$199"),
@@ -50,7 +48,6 @@ SHELF_LABELS = (
     ("White Box hour", "$250"),
 )
 RELATIVE_DOORS = (
-    "./agent-rescue.html",
     "./dealer-service-lead-rescue.html",
     "./referral-intake-completeness.html",
     "./repair-booking-preflight.html",
@@ -62,7 +59,6 @@ RELATIVE_DOORS = (
     "./commercial.html",
 )
 LIVE_CASH_DOORS = (
-    "./agent-rescue.html",
     "./dealer-service-lead-rescue.html",
     "./referral-intake-completeness.html",
     "./repair-booking-preflight.html",
@@ -102,7 +98,7 @@ def shelf_list_items(html: str) -> list[str]:
 class TestTypeAgentTriageControlConvertShelf2026091701(unittest.TestCase):
     def test_both_html_files_reuse_exactly_the_existing_live_buys(self) -> None:
         source_items = shelf_list_items(PAYMENT.read_text(encoding="utf-8"))
-        self.assertEqual(len(source_items), 9)
+        self.assertEqual(len(source_items), 8)
         for page in PAGES:
             with self.subTest(page=page.name):
                 html = page.read_text(encoding="utf-8")
@@ -145,7 +141,6 @@ class TestTypeAgentTriageControlConvertShelf2026091701(unittest.TestCase):
         for url in ALLOWED_LIVE_BUY_URLS:
             self.assertIn(url, text)
         for name in (
-            "agent-rescue.html",
             "dealer-service-lead-rescue.html",
             "referral-intake-completeness.html",
             "repair-booking-preflight.html",

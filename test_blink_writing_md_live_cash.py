@@ -8,8 +8,8 @@ class T(unittest.TestCase):
     def test_live_cash(self) -> None:
         text = (ROOT / "WRITING.md").read_text(encoding="utf-8")
         self.assertIn("## Live cash", text)
-        self.assertIn("agent-rescue.html", text)
-        self.assertIn("$29", text)
+        self.assertNotIn("agent-rescue.html", text)
+        self.assertNotIn("$29", text)
         self.assertIn("dealer-service-lead-rescue.html", text)
         self.assertIn("$199", text)
         self.assertNotIn("buy.stripe.com", text)

@@ -1,7 +1,6 @@
 """Create-exclusive CLI for procurement Q&A answer delta artifacts."""
 from __future__ import annotations
 import argparse
-import fcntl
 import json
 import os
 from pathlib import Path
@@ -15,13 +14,17 @@ def _open_regular(path: str, *, write=False, exclusive=False):
     if exclusive:
         flags |= os.O_EXCL
     flags |= getattr(os, "O_CLOEXEC", 0) | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_NONBLOCK", 0)
+    flags |= getattr(os, "O_BINARY", 0)
     fd = os.open(path, flags, 0o644 if write else 0)
     try:
         st = os.fstat(fd)
         if not stat.S_ISREG(st.st_mode):
             raise Error(f"{path}: regular file required")
-        current = fcntl.fcntl(fd, fcntl.F_GETFL)
-        fcntl.fcntl(fd, fcntl.F_SETFL, current & ~os.O_NONBLOCK)
+        if hasattr(os, "O_NONBLOCK"):
+            import fcntl
+
+            current = fcntl.fcntl(fd, fcntl.F_GETFL)
+            fcntl.fcntl(fd, fcntl.F_SETFL, current & ~os.O_NONBLOCK)
         return fd
     except Exception:
         os.close(fd)

@@ -161,7 +161,7 @@ class VerifierTests(unittest.TestCase):
         self.assertTrue(json.loads(verify.stdout)["receipt_valid"])
 
     def test_obvious_provider_mutators_and_credential_url_are_rejected(self):
-        for argv in (["git", "push"], ["gh", "pr", "merge", "1"], ["curl", "https://example.invalid"], ["npm", "publish"], ["python3", "-m", "twine", "upload", "dist/*"]):
+        for argv in (["git", "push"], ["gh", "pr", "merge", "1"], ["curl", "https://example.invalid"], ["npm", "publish"], [sys.executable, "-m", "twine", "upload", "dist/*"]):
             with self.subTest(argv=argv), self.assertRaises(v.VerifyError):
                 v._reject_obvious_provider_mutator(list(argv))
         with self.assertRaisesRegex(v.VerifyError, "credentials"):

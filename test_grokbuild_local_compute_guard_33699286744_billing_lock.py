@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import local_compute_guard as guard
 import open_door_guard as odg
 
@@ -28,9 +29,9 @@ KEEP = {
     "p/grokbuild-local-compute-guard-33694402730-billing-lock-20260902-01.md": "eb6f1406",
     "p/grokbuild-local-compute-guard-33699601000-billing-lock-20260903-01.md": "da198a83",
     "p/grokbuild-local-compute-guard-33699607453-billing-lock-20260903-01.md": "5d89a9bf",
-    "test_grokbuild_local_compute_guard_33694402730_billing_lock.py": "818b54d2",
-    "test_grokbuild_local_compute_guard_33699601000_billing_lock.py": "3c0deb88",
-    "test_grokbuild_local_compute_guard_33699607453_billing_lock.py": "3ce970d8",
+    "test_grokbuild_local_compute_guard_33694402730_billing_lock.py": "95f577cf",
+    "test_grokbuild_local_compute_guard_33699601000_billing_lock.py": "7521785c",
+    "test_grokbuild_local_compute_guard_33699607453_billing_lock.py": "92d77e77",
     "p/grok-build-discord-cloud-33699286743-billing-lock-20260902-01.md": "e8d308ed",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "local_compute_guard.py": "6be242af",
@@ -64,7 +65,7 @@ class TestGrokbuildLocalComputeGuard33699286744BillingLock(unittest.TestCase):
     def test_local_failed_step_still_passes(self) -> None:
         self.assertEqual(guard.validate(), [])
         proc = subprocess.run(
-            ["python3", "local_compute_guard.py"],
+            [sys.executable, "local_compute_guard.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -73,7 +74,7 @@ class TestGrokbuildLocalComputeGuard33699286744BillingLock(unittest.TestCase):
         self.assertEqual(proc.returncode, 0, msg=proc.stdout + proc.stderr)
         self.assertIn("CLOUD_PRIMARY / SAFE_STANDBY", proc.stdout)
         tests = subprocess.run(
-            ["python3", "-m", "unittest", "test_local_compute_guard"],
+            [sys.executable, "-m", "unittest", "test_local_compute_guard"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -180,7 +181,7 @@ class TestGrokbuildLocalComputeGuard33699286744BillingLock(unittest.TestCase):
         }
         self.assertEqual(fix_first.validate(packet)["state"], "EXTERNAL_BLOCKER")
         proc = subprocess.run(
-            ["python3", "fix_first.py", "--json", __import__("json").dumps(packet)],
+            [sys.executable, "fix_first.py", "--json", __import__("json").dumps(packet)],
             cwd=ROOT,
             text=True,
             capture_output=True,

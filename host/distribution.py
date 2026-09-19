@@ -650,7 +650,7 @@ def write_export(root: Path | None = None) -> dict[str, Path]:
     }
     for key, path in paths.items():
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(_canonical(bundle[key]), encoding="utf-8")
+        path.write_bytes(_canonical(bundle[key]).encode("utf-8"))
     return paths
 
 

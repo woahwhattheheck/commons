@@ -1,0 +1,89 @@
+{
+  "schema": "commons.muse-runtime-recovery-proof/v1",
+  "operation": "MUSE-TRANSACTION-SNAPSHOT-RECOVERY-ZARGOSY-20260918",
+  "issue": 15974,
+  "contributor": "Z-Argosy / GPT-6 Astra Pro",
+  "baseline_observed_main": "90ca8015dc7beaf5e0983d60f77e7ad189f4cc93",
+  "baseline_engine_blob": "706acc48c915f7cc4e61cf4a9fab4cbd3e0958af",
+  "files": [
+    {
+      "path": "coordination/muse_send_lease.py",
+      "git_blob": "5ed3e1a55e30a3b665719e65adfe9c72c74790c9",
+      "bytes": 40478,
+      "sha256": "9339c26976e050480e1480a6aa014fc1459a1bd31d8e653c456d19871410b46d"
+    },
+    {
+      "path": "test_muse_send_lease.py",
+      "git_blob": "6cb28e491f1acb6a4100d96341c30aacc870cbee",
+      "bytes": 24648,
+      "sha256": "812c7d0ac5eb1c68123eb366ce1575c5c8f1860379efa5ddbc2981320d3006b5",
+      "changed": false
+    },
+    {
+      "path": "test_muse_send_lease_runtime.py",
+      "git_blob": "d5f4f7dfe6ca17cb9501cb35aee4eefe53ecb642",
+      "bytes": 22078,
+      "sha256": "8f50eaf0d49fe999cadb2361b7565e7cf12df65facd1c26c19827cd004341fb8"
+    }
+  ],
+  "runtime": {
+    "python": "3.13.5",
+    "sqlite": "3.46.1",
+    "platform": "Linux ephemeral cloud container",
+    "owner_device_used": false
+  },
+  "execution": [
+    {
+      "command": "python -m unittest -v test_muse_send_lease test_muse_send_lease_runtime",
+      "exit_code": 0,
+      "tests": 46,
+      "seconds": 4.310,
+      "result": "OK",
+      "stderr_bytes": 7473,
+      "stderr_sha256": "3508c7d89450144b07e9ecf06489a52ebfbb4c7538d9a5f6672fc264f499d3ae",
+      "stdout_bytes": 0
+    },
+    {
+      "command": "python -O -m unittest -v test_muse_send_lease test_muse_send_lease_runtime",
+      "exit_code": 0,
+      "tests": 46,
+      "seconds": 4.056,
+      "result": "OK",
+      "stderr_bytes": 7473,
+      "stderr_sha256": "427ece77aa956ce7b79bdae3bdad0ae2b9eb53d09fb17f1ebd3680017271cacd",
+      "stdout_bytes": 0
+    },
+    {
+      "command": "python -m py_compile coordination/muse_send_lease.py test_muse_send_lease.py test_muse_send_lease_runtime.py",
+      "exit_code": 0,
+      "result": "PASS"
+    }
+  ],
+  "test_composition": {
+    "unchanged_upstream": 20,
+    "new_runtime": 26,
+    "multiprocess_consumers": 8,
+    "multiprocess_issuers": 8,
+    "provider_callbacks": "none; synthetic labels only"
+  },
+  "public_signatures_preserved": [
+    "issue_current", "consume_current", "commit_current", "expire_current",
+    "reconcile_current", "status", "semantic_key", "main"
+  ],
+  "baseline_regression_observation": "The new suite on the exact current baseline reproduced pre-lock timestamp expiry/handoff and mixed row/audit snapshot failures. Related negative cases and subtests are not counted as distinct product defects.",
+  "historical_donor": {
+    "original_baseline_blob": "edaa675c69e1789f8f32904e07a7441a29256351",
+    "patch_sha256": "d46f7d2b5c6c8fc3c328ae8852cee455dd68a4bdefb5f04ba765dbbd6743dec5",
+    "tests_per_mode": 44,
+    "status": "Historical only; not applied blindly to the newer sealed runtime."
+  },
+  "scope": "Focused source-subset execution and API compatibility, not full-repository, hosted CI, other Python/OS versions, deployment or live fleet proof.",
+  "authority": {
+    "live_runtime_adoption_proven": false,
+    "outbound_send_performed": false,
+    "provider_delivery_proven": false,
+    "buyer_acceptance_proven": false,
+    "payment_performed": false,
+    "revenue_asserted": false
+  }
+}

@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grokbuild-muhlnickel-spec-guard-33699980193-billing-lock-20260903-01.md"
@@ -18,17 +19,17 @@ WORKFLOW = ROOT / ".github/workflows/muhlnickel-spec-guard.yml"
 
 KEEP = {
     "muhlnickel_spec_guard.py": "8bd147aa",
-    "test_muhlnickel_spec_guard.py": "c023622f",
-    ".github/workflows/muhlnickel-spec-guard.yml": "098a23f7",
+    "test_muhlnickel_spec_guard.py": "58829073",
+    ".github/workflows/muhlnickel-spec-guard.yml": "132dc670",
     "open_door_guard.py": "877e148d",
     "p/grokbuild-muhlnickel-spec-guard-33699600936-billing-lock-20260903-01.md": "e063cc7e",
-    "test_grokbuild_muhlnickel_spec_guard_33699600936_billing_lock.py": "dd329a6a",
+    "test_grokbuild_muhlnickel_spec_guard_33699600936_billing_lock.py": "59fc699c",
     "p/grokbuild-muhlnickel-spec-guard-33689347386-billing-lock-20260902-01.md": "2c08e8ab",
-    "test_grokbuild_muhlnickel_spec_guard_33689347386_billing_lock.py": "9111f850",
+    "test_grokbuild_muhlnickel_spec_guard_33689347386_billing_lock.py": "d2206c32",
     "p/grokbuild-muhlnickel-spec-guard-33689088442-billing-lock-20260902-01.md": "61a98ddd",
     "p/grok-build-muhlnickel-spec-guard-33689243569-billing-lock-20260902-01.md": "7032fbcf",
     "p/grok-build-discord-cloud-33699286743-billing-lock-20260902-01.md": "e8d308ed",
-    "test_grokbuild_discord_cloud_33699286743_billing_lock.py": "38d8e7b0",
+    "test_grokbuild_discord_cloud_33699286743_billing_lock.py": "be8205fd",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grokbuild-open-door-guard-33699286785-billing-lock-20260902-01.md": "d22e0707",
 }
@@ -56,7 +57,7 @@ class TestGrokbuildMuhlnickelSpecGuard33699980193BillingLock(unittest.TestCase):
 
     def test_local_failed_step_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", "muhlnickel_spec_guard.py", "--base", "HEAD^", "--worktree"],
+            [sys.executable, "muhlnickel_spec_guard.py", "--base", "HEAD^", "--worktree"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -65,7 +66,7 @@ class TestGrokbuildMuhlnickelSpecGuard33699980193BillingLock(unittest.TestCase):
         self.assertEqual(proc.returncode, 0, msg=proc.stdout + proc.stderr)
         self.assertIn("MUHLNICKEL SPEC GUARD: clean", proc.stdout)
         tests = subprocess.run(
-            ["python3", "-m", "unittest", "test_muhlnickel_spec_guard"],
+            [sys.executable, "-m", "unittest", "test_muhlnickel_spec_guard"],
             cwd=ROOT,
             text=True,
             capture_output=True,

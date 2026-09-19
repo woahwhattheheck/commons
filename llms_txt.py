@@ -27,13 +27,12 @@ CHANGE_NEWEST = 5
 
 # Preserve the approved BASS section from e3bd058d through every digest bake.
 # Larger-fixed KEEP (grok-change-md-keep-larger-fixed-20260916-01) is additive —
-# do not remint the Autopsy/$199 bullets.
+# do not remint the $199 bullets.
 CHANGE_LIVE_CASH = """
 ## Live cash
 
 Verified product pages only — no invented Stripe links.
 
-- [$29 Autopsy checkout](./agent-rescue.html)
 - [$199 dealer diagnostic](./dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](./referral-intake-completeness.html)
 - [$199 repair diagnostic](./repair-booking-preflight.html)
@@ -160,17 +159,31 @@ def git_head():
 
 
 
-def _preserve_live_cash(prev, doc):
-    """Keep tip Autopsy/$199 (+ Larger fixed) product doors across projection rebakes.
+def _preserve_live_cash(prev, doc, root=None):
+    """Keep tip $199 (+ Larger fixed) product doors across projection rebakes.
 
     Scheduled llms_txt bakes rewrite head.json / pulse.json observation fields.
     Without this KEEP, machine readers lose checkout product paths after a land.
     Paths only — never invent Stripe Payment Links.
+    Retired products (deleted checkout page) are not resurrected.
     """
     if not isinstance(prev, dict) or not isinstance(doc, dict):
         return doc
     live = prev.get("live_cash")
     if isinstance(live, dict) and live.get("products"):
+        if root is not None:
+            live = dict(live)
+            for key in ("products", "larger_fixed"):
+                items = live.get(key)
+                if isinstance(items, list):
+                    live[key] = [
+                        item for item in items
+                        if not isinstance(item, dict)
+                        or not item.get("path")
+                        or os.path.isfile(os.path.join(root, item["path"]))
+                    ]
+            if not live.get("products") and not live.get("larger_fixed"):
+                return doc
         doc["live_cash"] = live
     return doc
 
@@ -207,7 +220,7 @@ def write_head_json(sha, observed_at, path=None):
     if not isinstance(prev, dict):
         prev = {}
     doc = head_document(sha, observed_at)
-    doc = _preserve_live_cash(prev, doc)
+    doc = _preserve_live_cash(prev, doc, ROOT)
     with open(path, "w", encoding="utf-8") as f:
         f.write(json.dumps(doc, indent=2, sort_keys=True) + "\n")
     return doc
@@ -317,7 +330,7 @@ def write_head_pulse(rows, path=None, head=None):
         "instruction": prev.get("instruction")
         or "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses.",
     }
-    pulse = _preserve_live_cash(prev, pulse)
+    pulse = _preserve_live_cash(prev, pulse, ROOT)
     with open(path, "w", encoding="utf-8") as f:
         f.write(json.dumps(pulse, indent=2) + "\n")
     return True
@@ -674,7 +687,6 @@ def main(publish_mesh=True):
         "",
         "## Commercial",
         "",
-        "- [$29 Agent Failure Autopsy](https://woahwhattheheck.github.io/commons/agent-rescue.html): one failed coding-agent run — evidence-linked causes, fix steps, and a prevention check within one business day after usable, in-cap evidence arrives.",
         "- [$199 dealer diagnostic](%s/dealer-service-lead-rescue.html)" % BASE,
         "- [$199 referral diagnostic](%s/referral-intake-completeness.html)" % BASE,
         "- [$199 repair diagnostic](%s/repair-booking-preflight.html)" % BASE,

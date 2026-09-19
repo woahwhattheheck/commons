@@ -7,6 +7,7 @@ import hashlib
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grokbuild-pr8421-verify-20260902-01.md"
@@ -15,11 +16,11 @@ ORIGINAL = ROOT / "p/grok-build-llms-txt-billing-lock-20260902-01.md"
 
 KEEP = {
     "p/grok-build-llms-txt-33689096471-billing-lock-20260902-01.md": "e739b9cd",
-    "test_grokbuild_llms_txt_33689096471_billing_lock.py": "fbd781aa",
+    "test_grokbuild_llms_txt_33689096471_billing_lock.py": "c7bfe6c0",
     "p/grok-build-llms-txt-billing-lock-20260902-01.md": "cf9c9f40",
     "p/grok-build-llms-txt-33687829181-billing-lock-20260902-01.md": "3183564c",
     ".github/workflows/llms-txt.yml": "d2182a3d",
-    "llms_txt.py": "70daec62",
+    "llms_txt.py": "b70aa03d",
 }
 
 BODY_SHA256 = "28435b5fe13a8af234f3ea96e8d74c914235eef42d568b7a349b812c4456aa64"
@@ -47,7 +48,7 @@ class TestGrokbuildPr8421Verify(unittest.TestCase):
 
     def test_leftover_33689096471_tests_still_pass(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_grokbuild_llms_txt_33689096471_billing_lock.py"],
+            [sys.executable, "-m", "unittest", "test_grokbuild_llms_txt_33689096471_billing_lock.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

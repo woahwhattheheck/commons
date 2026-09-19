@@ -19,8 +19,8 @@ for this entry SKU.
 
 There is **no dedicated Commons HTML sell page** for Same-Day Agent Survival
 Proof after ASTRA #8889 put Agent Failure Autopsy ($29) on
-[`agent-rescue.html`](../../agent-rescue.html). Do not send Survival Proof
-buyers to that page for a $2,500 Buy button.
+`agent-rescue.html` (retired with that SKU on 2026-09-17). Do not send
+Survival Proof buyers to that page for a $2,500 Buy button.
 
 Entry routes (see [`offer.json`](./offer.json) `public_entry_routes` and
 [`INTAKE.md`](./INTAKE.md)):
@@ -50,8 +50,6 @@ customer proof or collected revenue.
 ## Live cash
 
 Verified Commons product pages only — no invented Stripe links. Survival Proof ($2,500) has **no** dedicated HTML sell page; do not send buyers to Autopsy for that SKU.
-
-- [$29 Autopsy checkout](../../agent-rescue.html) — one failed coding-agent run (separate SKU)
 - [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../../referral-intake-completeness.html)
 - [$199 repair diagnostic](../../repair-booking-preflight.html)

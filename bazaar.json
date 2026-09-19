@@ -188,11 +188,6 @@
     "note": "Optional paid diagnostics with live public checkout on product pages. Larger fixed engagements are separate product pages (checkout/intent stays there). Bazaar FREE_COLONY_COMPUTE catalog stays. No invent Stripe URLs.",
     "products": [
       {
-        "name": "Agent Failure Autopsy",
-        "price_usd": 29,
-        "path": "agent-rescue.html"
-      },
-      {
         "name": "Dealer Service Lead Rescue",
         "price_usd": 199,
         "path": "dealer-service-lead-rescue.html"

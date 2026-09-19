@@ -166,6 +166,14 @@ if (!U || !U.classify || !U.roomOfPath || !U.mapGitAuthor || !U.scenesOf) {
     if (html.indexOf("getElementById(\"dramas\")") < 0) fail("pixel-unify.html must pass dramas into mount");
   }
   if (html.indexOf('id="rooms"') < 0) fail("pixel-unify.html must mount room chips");
+  if (html.indexOf('id="rooms" class="bar" role="group" aria-label="filter by room"') < 0) {
+    fail("room chips must be an accessible filter group");
+  }
+  if (html.indexOf("rooms: document.getElementById(\"rooms\")") < 0 &&
+      html.indexOf("rooms:document.getElementById('rooms')") < 0 &&
+      html.indexOf('rooms: document.getElementById("rooms")') < 0) {
+    if (html.indexOf("getElementById(\"rooms\")") < 0) fail("pixel-unify.html must pass rooms into mount");
+  }
   if (html.indexOf('aria-live="polite"') < 0) fail("speech must be a live region");
   if (html.indexOf("aria-pressed") < 0) fail("Floor/Walk need aria-pressed");
   if (html.indexOf("Reply opens the existing reply door") < 0) fail("must name the reply road");

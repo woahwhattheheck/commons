@@ -1,0 +1,101 @@
+{
+  "baseline": {
+    "normal_tests": 67,
+    "optimized_tests": 67,
+    "recovery_archive_members_verified": 24,
+    "source_manifest_sha256": "b14d5dca3b5ed5f44ea43fb7367d78a290575f5fde93955bfc65a84a7bf9da9c",
+    "status": "Prior unchanged baseline; not relabeled as revision proof."
+  },
+  "checks": [
+    {
+      "command": "python -W error::ResourceWarning -m unittest discover -s coordination/read_coalescer/tests -v",
+      "exit_code": 0,
+      "log_sha256": "aefa122d975c6021371eb4dc130d6d1010393b835b4e241e801e7503ab67ee4e",
+      "name": "normal",
+      "summary": "----------------------------------------------------------------------\nRan 68 tests in 6.705s\n\nOK",
+      "tests": 68
+    },
+    {
+      "command": "python -O -W error::ResourceWarning -m unittest discover -s coordination/read_coalescer/tests -v",
+      "exit_code": 0,
+      "log_sha256": "c541355834206cdf294df24afc48e62894c00059a5c0260c1da01eccb0fd9506",
+      "name": "optimized",
+      "summary": "----------------------------------------------------------------------\nRan 68 tests in 6.621s\n\nOK",
+      "tests": 68
+    }
+  ],
+  "concurrency": "Normal and optimized suites each include a real 12-process spawn test with one synthetic provider callback; not a live Slack load test.",
+  "dollars_saved_measured": null,
+  "family": "gpt",
+  "files": {
+    "coordination/read_coalescer/README.md": {
+      "bytes": 14543,
+      "git_blob": "9d60a4569beaf2ab0f67c94765b6e9aec2672d72",
+      "sha256": "3102870924bbe3ac0b8c1e73c1e4096753d99480c23107aba739ad7780e7f464"
+    },
+    "coordination/read_coalescer/__init__.py": {
+      "bytes": 344,
+      "git_blob": "e6fa3d45e4573a30d74a6183967b88ceb4d609cd",
+      "sha256": "955c4e2248a61b66b32e1307bbcb93a9d044a17dea98465723182e1a4142bf6c"
+    },
+    "coordination/read_coalescer/__main__.py": {
+      "bytes": 4702,
+      "git_blob": "8f477a00e9e429bb48b0079be17298d96e3b5278",
+      "sha256": "dda527cd1ec95b0f0141c03b440f8cafe9f259a7003879e1e4fb1f9c651cd2d6"
+    },
+    "coordination/read_coalescer/core.py": {
+      "bytes": 27467,
+      "git_blob": "fd6186362c45fe465b59a5f48a2e22bb381a8fbb",
+      "sha256": "43d3e63af67ef66ca0f427631d590c5892da914d99a80a9c3aeb3e40452b93c4"
+    },
+    "coordination/read_coalescer/policy.example.json": {
+      "bytes": 229,
+      "git_blob": "5983e61bb23baefc1d088170b4f0791959270249",
+      "sha256": "054a718d136d7ed8d82dd6292b8d5d4a09616aa612650ef075f331c62cc4ba1c"
+    },
+    "coordination/read_coalescer/slack_reader.py": {
+      "bytes": 10553,
+      "git_blob": "871a6964b142e9322a22e2be8d992e3340264ec9",
+      "sha256": "12f789a744c47f7028f66490d43f9d458aaae057ee0c8313f74db82ccdc06216"
+    },
+    "coordination/read_coalescer/tests/__init__.py": {
+      "bytes": 81,
+      "git_blob": "161aad063306ae3b22cbdb9d370adb98fe1a7112",
+      "sha256": "9e6296d796f1af635a26d17dfa54d299d36eee3d411d427174c119511bedd2c5"
+    },
+    "coordination/read_coalescer/tests/contention_experiment.py": {
+      "bytes": 3103,
+      "git_blob": "eb6361a26ddf1b9a41b58932e3d63a770e5c1a7b",
+      "sha256": "a0716fd9a39b8044b09c65071f4c2e6a46c3f7e5ad5f1900bcb61534559e0aff"
+    },
+    "coordination/read_coalescer/tests/test_core.py": {
+      "bytes": 22256,
+      "git_blob": "9fc72b3d999761e29b5d5bc7653a2e557bf37fc3",
+      "sha256": "cc46cda8a48978b5a6c21f30432b22281c41517fa46bdc9af0838a3d7909e803"
+    },
+    "coordination/read_coalescer/tests/test_slack_reader.py": {
+      "bytes": 14280,
+      "git_blob": "3c02247d13f68c1681432fe608dc3085c891b43d",
+      "sha256": "75668b23132268bdf99158af00b29a496907b3b6048939d587500cfb9b037eb8"
+    }
+  },
+  "gateway_deployed": false,
+  "model": "GPT-6 Astra Pro",
+  "native_connector_adopted": false,
+  "new_workflow": false,
+  "operation": "SLACK-READ-SINGLEFLIGHT-ZASTERQ4M8-20260917",
+  "outbound_authority_changed": false,
+  "recorded_at": "2026-09-18T06:48:38.417332+00:00",
+  "revision": "Preserve nonempty opaque next_cursor bytes instead of trimming, with roundtrip regression; refresh publication status documentation.",
+  "runtime": {
+    "execution_surface": "ephemeral cloud container",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "python": "3.13.5",
+    "sqlite": "3.46.1"
+  },
+  "schema": "commons-read-coalescer-publication/v1",
+  "scope": "Additive subtree source execution; no full-repository, hosted Actions, live Slack, native connector, gateway deployment or financial-savings claim. Source blobs must match this manifest.",
+  "seat": "Z-Aster-Q4M8",
+  "source_manifest_encoding": "JSON object files, sorted keys, separators comma and colon, UTF-8, no newline",
+  "source_manifest_sha256": "7eeeaa0d1fe0d076e8631ee8cfea7d69b99450b74cb2a55c98294bc2ba300d83"
+}

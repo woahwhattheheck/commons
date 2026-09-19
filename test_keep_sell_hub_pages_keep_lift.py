@@ -12,20 +12,21 @@ import importlib
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 HREF = 'href="./keep-sell.html"'
 TITLE = ">KEEP vs SELL</a>"
 COPY = "Factory classification ledger. Marketing stays Bryce. No invented Stripe URLs."
-HUB_BLOB = "12186f65"
+HUB_BLOB = "673dab89"
 STALE_HUB = "7a8f24d5"
-BOARDS_BLOB = "486b13e1"
+BOARDS_BLOB = "b54177b5"
 STALE_BOARDS = "a44e8e3e"
 
 KEEP_UNREAD = {
-    "autogtm.html": "1009c4cd",
-    "door.js": "c06cc197",
-    "ground/OWNER_NOW.md": "a17b0afb",
+    "autogtm.html": "5c966110",
+    "door.js": "5899223c",
+    "ground/OWNER_NOW.md": "39a0e0c3",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "p/cursor-pack-is-ready-to-run-20260902-01.md": "897b00ba",
     "test_keep_sell_board_projection.py": "48a06148",
@@ -89,7 +90,7 @@ class KeepSellHubPagesKeepLiftTest(unittest.TestCase):
     def test_projection_and_commerce_leftover_now_pass(self) -> None:
         proc = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "-m",
                 "unittest",
                 "test_keep_sell_board_projection.py",

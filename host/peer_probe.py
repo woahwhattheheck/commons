@@ -9,7 +9,7 @@ Input is a JSON object on stdin (or ``--input PATH``)::
       "observed_at": "2026-09-01T08:00:00Z",
       "roads": [
         {"id": "python", "kind": "command",
-         "argv": ["python3", "-c", "print('READY')"],
+         "argv": [sys.executable, "-c", "print('READY')"],
          "timeout_seconds": 2}
       ],
       "claimed_cants": [

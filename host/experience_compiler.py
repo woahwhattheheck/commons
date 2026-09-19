@@ -56,7 +56,6 @@ def live_cash_markdown(path: Path) -> str:
         "\n"
         "Verified product pages only — no invented Stripe links.\n"
         "\n"
-        f"- [$29 Autopsy checkout]({prefix}/agent-rescue.html)\n"
         f"- [$199 dealer diagnostic]({prefix}/dealer-service-lead-rescue.html)\n"
         f"- [$199 referral diagnostic]({prefix}/referral-intake-completeness.html)\n"
         f"- [$199 repair diagnostic]({prefix}/repair-booking-preflight.html)\n"

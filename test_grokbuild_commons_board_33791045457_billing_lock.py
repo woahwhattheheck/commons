@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -19,9 +20,9 @@ PRIOR_RUN = ROOT / "p/grok-build-commons-board-33723893937-billing-lock-20260903
 WORKFLOW = ROOT / ".github/workflows/commons-board.yml"
 
 KEEP = {
-    ".github/workflows/commons-board.yml": "c9da64cb",
-    "board_ingest.py": "a8a5f52c",
-    "open_door_guard.py": "877e148d",
+    ".github/workflows/commons-board.yml": "ce1c2867",
+    "board_ingest.py": "7c6c5b8c",
+    "open_door_guard.py": "4b053e43",
     "fix_first.py": "a57aee1c",
     "p/grok-build-commons-board-billing-lock-20260903-01.md": "c07bf913",
     "p/grok-build-commons-board-33723893937-billing-lock-20260903-01.md": "3549efa3",
@@ -119,7 +120,7 @@ class TestGrokbuildCommonsBoard33791045457BillingLock(unittest.TestCase):
             "test_fix_first.py",
         ):
             unit = subprocess.run(
-                ["python3", "-m", "unittest", mod, "-q"],
+                [sys.executable, "-m", "unittest", mod, "-q"],
                 cwd=ROOT,
                 text=True,
                 capture_output=True,

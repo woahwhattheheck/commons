@@ -15,6 +15,7 @@ from __future__ import annotations
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 import host.experience_compiler as compiler
 
@@ -44,14 +45,14 @@ class TestGrokbuildExperienceCompilerWikiDrift34403364403(unittest.TestCase):
         ]
         self.assertEqual(INDEX.read_text(encoding="utf-8"), index)
         self.assertEqual(PATTERN.read_text(encoding="utf-8"), pattern)
-        self.assertIn("[$29 Autopsy checkout](../../agent-rescue.html)", index)
+        self.assertIn("[$199 dealer diagnostic](../../dealer-service-lead-rescue.html)", index)
         self.assertIn("Cite Latch Pad KEEP", index)
-        self.assertIn("[$29 Autopsy checkout](../../../agent-rescue.html)", pattern)
+        self.assertIn("[$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)", pattern)
         self.assertIn("Cite Latch Pad KEEP", pattern)
 
     def test_check_and_existing_compiler_contracts_pass(self) -> None:
         check = subprocess.run(
-            ["python3", "host/experience_compiler.py", "check"],
+            [sys.executable, "host/experience_compiler.py", "check"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -60,7 +61,7 @@ class TestGrokbuildExperienceCompilerWikiDrift34403364403(unittest.TestCase):
         self.assertEqual(check.returncode, 0, msg=check.stdout + check.stderr)
         self.assertIn("CURRENT 4 records 7 outputs", check.stdout)
         unit = subprocess.run(
-            ["python3", "-m", "unittest", "-v", "test_experience_compiler.py"],
+            [sys.executable, "-m", "unittest", "-v", "test_experience_compiler.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -72,7 +73,7 @@ class TestGrokbuildExperienceCompilerWikiDrift34403364403(unittest.TestCase):
         before_index = INDEX.read_text(encoding="utf-8")
         before_pattern = PATTERN.read_text(encoding="utf-8")
         rc = subprocess.run(
-            ["python3", "host/experience_compiler.py", "compile"],
+            [sys.executable, "host/experience_compiler.py", "compile"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -81,11 +82,11 @@ class TestGrokbuildExperienceCompilerWikiDrift34403364403(unittest.TestCase):
         self.assertEqual(rc.returncode, 0, msg=rc.stdout + rc.stderr)
         self.assertEqual(before_index, INDEX.read_text(encoding="utf-8"))
         self.assertEqual(before_pattern, PATTERN.read_text(encoding="utf-8"))
-        self.assertTrue(git_blob("experience/wiki/index.md").startswith("427cab45"))
+        self.assertTrue(git_blob("experience/wiki/index.md").startswith("30d9a111"))
         self.assertTrue(
             git_blob(
                 "experience/wiki/patterns/publish-discovery-before-interaction.md"
-            ).startswith("04ae47a4")
+            ).startswith("5428a52b")
         )
 
     def test_receipt_and_open_door(self) -> None:
@@ -98,7 +99,7 @@ class TestGrokbuildExperienceCompilerWikiDrift34403364403(unittest.TestCase):
             self.assertNotIn("Authorization", text)
             self.assertNotIn("buy.stripe.com", text)
         guard = subprocess.run(
-            ["python3", "open_door_guard.py", "--diff-file", "-"],
+            [sys.executable, "open_door_guard.py", "--diff-file", "-"],
             cwd=ROOT,
             text=True,
             input=subprocess.check_output(
