@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 189,
+    "open_issues": 190,
     "open_pull_requests": 152,
-    "runs_in_progress": 17,
-    "runs_queued": 1186
+    "runs_in_progress": 15,
+    "runs_queued": 1187
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,17 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zz-kestrel-p9n/uiowa053-integration-20260919",
+      "created_at": "2026-09-19T15:40:23Z",
+      "draft": false,
+      "head_sha": "45439a3b1fe0abb7a8c724fe8041132c3406ee67",
+      "number": 16407,
+      "title": "UIOWA-053: complete lifecycle evidence review, scoped repair and operator rehearsal",
+      "updated_at": "2026-09-19T15:40:23Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "swarm/zz-lantern-8j2q/uiowa114-delivery-20260919",
       "created_at": "2026-09-19T15:38:20Z",
       "draft": true,
@@ -76,17 +87,6 @@
       "number": 16406,
       "title": "UIOWA-114: recover question-card generator with reference and export integrity",
       "updated_at": "2026-09-19T15:38:20Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/uiowa047-readout-kestrelr9c4-20260919",
-      "created_at": "2026-09-19T15:37:38Z",
-      "draft": false,
-      "head_sha": "fcff970d388b7e08945a624b69de5ce9772ae1b2",
-      "number": 16405,
-      "title": "UIOWA-047: source-bound operator rehearsal and executed readout",
-      "updated_at": "2026-09-19T15:37:38Z"
     },
     {
       "author": "woahwhattheheck",
@@ -212,7 +212,7 @@
     "15840": "1dd7127ba8b46b36e0020a347946d334bddab2b3",
     "15843": "61b90f87acb3ae59853e2095300f7ceeb676d8ed",
     "15865": "d6ba9099718fab8b308daeab7c7b57d1e97aa786",
-    "15866": "81a9ace9e033bc5b7c841eff8efd6117725c789f",
+    "15866": "a0868fe0b363046ef8743aa52c750aaa88aa7f20",
     "15867": "7353c760d9f4c8a3d9f9ceeb1e753f93887c5067",
     "15875": "6c2b11996ab4ad34059e8203261bcc0255ce4124",
     "15877": "a4672c41352745889717172e08616533a542467a",
@@ -287,7 +287,7 @@
     "16324": "895f0bff9f569268f628e08a7a2bcb0f1b5b3bfd",
     "16325": "f693abe5578f6ed9e56634fbae5eafcc631b0d31",
     "16326": "5406ef6ca6c75eccf18434a0b809069911326e3f",
-    "16327": "292c2d7d4ff1ee15b98bb739e3362e18e10fe85b",
+    "16327": "2a82476188484b808e4b9bf1650de11154ee1932",
     "16328": "410a5faa6983bfa3ada485b5617b0e80007129da",
     "16329": "75b791dbc19e809c0273e7624defb54e2c833078",
     "16330": "e450d92a0e14fbddae91129d9747ee8aab509973",
@@ -316,7 +316,7 @@
     "16382": "87d36e128a9923402353e3ef35f06a84b9e9cce9",
     "16383": "542c8d04bbd9643c58655aa16ad3daac2c250fc3",
     "16385": "a57b60cbae9ae937d860a90bbf3d7ff5c293ae85",
-    "16387": "d88a429bb86eb96536b885a787dc2ae43863458e",
+    "16387": "d614c1f581205dc92c9a570b4d4a068819a3d13b",
     "16389": "722d683289e868567f4b49063bc1ad5f596b2e81",
     "16391": "d1c04b63ae752586373d78bd1d3b5dcb0f98262b",
     "16392": "3d017ec2025ab33bb86b0fb1fbc1230f5f03fcac",
@@ -328,13 +328,24 @@
     "16400": "f85af6742cb155326cdf76a9caae491d10264593",
     "16401": "f19b0074be03409abed2d384bd2587c6d2e88da4",
     "16404": "a09a574ba74d9a268fe4aab7fb3fb4468f0ca084",
-    "16405": "fcff970d388b7e08945a624b69de5ce9772ae1b2",
-    "16406": "ba1757c8d6e460e884d34c1480d6ec188d2eed3a"
+    "16406": "ba1757c8d6e460e884d34c1480d6ec188d2eed3a",
+    "16407": "45439a3b1fe0abb7a8c724fe8041132c3406ee67"
   },
   "pulls_listed": 152,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 69.8,
+  "queue_depth_per_runner": 79.1,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/uiowa047-readout-kestrelr9c4-20260919",
+      "closed_at": "2026-09-19T15:40:45Z",
+      "head_sha": "fcff970d388b7e08945a624b69de5ce9772ae1b2",
+      "merged_at": "2026-09-19T15:40:44Z",
+      "number": 16405,
+      "state": "MERGED",
+      "title": "UIOWA-047: source-bound operator rehearsal and executed readout"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -488,21 +499,10 @@
       "number": 16373,
       "state": "MERGED",
       "title": "UIOWA-129: recover source-preserving report I/O and byte-bound CSV provenance"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/zz-caesura-5812f333-aidt-source-qualification-20260919",
-      "closed_at": "2026-09-19T15:18:15Z",
-      "head_sha": "57bde4459b28cc3d4c6f322d2b2dc1575c4e9bed",
-      "merged_at": null,
-      "number": 16370,
-      "state": "CLOSED",
-      "title": "[Superseded] AIDT source-bound workshare and prime-evidence packet"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T15:39:37Z",
+  "unchanged_since": "2026-09-19T15:41:39Z",
   "undatable_pulls": []
 }
