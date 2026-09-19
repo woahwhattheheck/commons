@@ -146,6 +146,23 @@ class Packet:
     manifest: list = field(default_factory=list)
     register: list = field(default_factory=list)
 
+    def __post_init__(self) -> None:
+        """Materialize current-023 custody mirrors only when the native row lacks them.
+
+        The manifest remains authoritative. Existing nonblank values are never
+        rewritten here, so validation can detect drift instead of healing it.
+        """
+        docs = {d.get("source_id", ""): d for d in self.manifest}
+        for row in self.register:
+            doc = docs.get(row.get("source_id", ""))
+            if doc is None:
+                continue
+            if not (row.get("custodian_or_owner") or "").strip():
+                row["custodian_or_owner"] = doc.get("owner", "")
+            if not (row.get("content_digest") or "").strip():
+                digest = (doc.get("sha256") or "").strip()
+                row["content_digest"] = ("sha256:" + digest) if digest else ""
+
     def document(self, source_id: str) -> dict | None:
         return next((d for d in self.manifest if d.get("source_id") == source_id), None)
 
