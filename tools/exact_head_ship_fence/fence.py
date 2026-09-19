@@ -79,6 +79,9 @@ def _load_generation():
     raw_compile = namespace["compile_current"]
     raw_verify = namespace["verify_current"]
     raw_render = namespace["render_markdown"]
+    raw_array = namespace["_arr"]
+    raw_sha = namespace["_sha"]
+    raw_name = namespace["_name"]
     clock = namespace["_CURRENT_CLOCK"]
     authority_literal = dict(_AUTHORITY_LITERAL)
     pattern_type = type(namespace["SHA"])
@@ -139,17 +142,19 @@ def _load_generation():
                 raise error(f"core runtime member changed: {label}")
 
     def reviewer_guard(snapshot: Any) -> None:
-        if type(snapshot) is not dict or type(snapshot.get("reviews")) is not list:
-            return
-        current_head = snapshot.get("current_pr_head")
-        if type(current_head) is not str:
-            return
+        if type(snapshot) is not dict:
+            return  # The core supplies the canonical root-schema error.
+        # Apply the existing core limits/types before comparisons or casefold.
+        # This guard must not walk an oversized list or invoke non-JSON methods.
+        rows = raw_array(snapshot.get("reviews"), "reviews", 64)
+        current_head = raw_sha(snapshot.get("current_pr_head"), "current_pr_head")
         seen: set[str] = set()
-        for row in snapshot["reviews"]:
-            if type(row) is not dict or row.get("head_sha") != current_head:
-                continue
-            reviewer = row.get("reviewer")
-            if type(reviewer) is not str:
+        for index, row in enumerate(rows):
+            if type(row) is not dict:
+                continue  # Full row-schema validation remains in the core.
+            head = raw_sha(row.get("head_sha"), f"reviews[{index}].head_sha")
+            reviewer = raw_name(row.get("reviewer"), f"reviews[{index}].reviewer")
+            if head != current_head:
                 continue
             identity = reviewer.casefold()
             if identity in seen:
