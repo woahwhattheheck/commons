@@ -1,0 +1,364 @@
+{
+  "disclaimer": "Structural matches, not proven defects. CONFIRMED_SHAPE means the code really has the shape described; whether it costs anything depends on input sizes this scanner cannot see. measured_cost is a real figure ONLY where UIOWA-095 measured that pattern. This is not a score of any lane, seat or person.",
+  "environment": {
+    "platform": "Linux-6.18.44-fc-v37-x86_64-with-glibc2.39",
+    "python_version": "3.11.15",
+    "scanned_at_utc": "2026-09-19T14:16:25Z"
+  },
+  "files_scanned": 202,
+  "files_unscannable": 0,
+  "finding_count": 25,
+  "findings": [
+    {
+      "column": 11,
+      "confidence": "CONFIRMED_SHAPE",
+      "detail": "Membership test against the list 'areas' inside a loop: O(len(list)) per iteration. A set gives the same answer in O(1).",
+      "file": "uiowa_rfq_18649_capability_appendix/capability_appendix.py",
+      "line": 345,
+      "measured_cost": "UNKNOWN -- shape matched, cost not measured",
+      "pattern": "P1_list_membership_in_loop",
+      "source": "if claim[\"capability_area\"] not in areas:"
+    },
+    {
+      "column": 11,
+      "confidence": "CANDIDATE",
+      "detail": "Substring scan of the str parameter 'report_text' once per iteration. Whether this is the quadratic depends on how large the caller's string is, which a source-only scanner cannot see: the value arrives across a function boundary. Needs a human look.",
+      "file": "uiowa_rfq_18649_capacity_benchmark/benchmark.py",
+      "line": 250,
+      "measured_cost": {
+        "measured_in": "revenue/uiowa_rfq_18649_capacity_benchmark/results/BENCHMARK_REPORT.md",
+        "result": "22.55x elapsed-time reduction after repair; baseline stage grew ~13,000x across a 128x workload increase (quadratic)",
+        "workload": "3,000 statements against a 631,500-character report (synthetic)"
+      },
+      "pattern": "P1_substring_scan_in_loop",
+      "source": "if sid not in report_text:"
+    },
+    {
+      "column": 19,
+      "confidence": "CONFIRMED_SHAPE",
+      "detail": "A whole file is read and decoded, then sliced. Elapsed time and peak memory track total file size rather than the slice; a bounded read returns the same characters.",
+      "file": "uiowa_rfq_18649_capacity_benchmark/test_capacity_benchmark.py",
+      "line": 115,
+      "measured_cost": {
+        "measured_in": "revenue/uiowa_rfq_18649_capacity_benchmark/results/BENCHMARK_REPORT.md",
+        "result": "4.15x elapsed-time reduction after repair; peak memory stops tracking the largest document in the collection",
+        "workload": "600 documents / 55 MB of synthetic evidence, largest 1.4 MB"
+      },
+      "pattern": "P2_read_all_then_slice",
+      "source": "head = p.read_text(encoding=\"utf-8\")[:wf.LABEL_WINDOW_CHARS]"
+    },
+    {
+      "column": 11,
+      "confidence": "CONFIRMED_SHAPE",
+      "detail": "Substring scan of 'report_text' once per iteration, where that name holds text read from a file. When the loop count grows with the text -- as it does when the text is generated from the very items being looked up -- this is quadratic in characters scanned. This is the exact shape UIOWA-095 measured at 22.55x.",
+      "file": "uiowa_rfq_18649_capacity_benchmark/workflow.py",
+      "line": 196,
+      "measured_cost": {
+        "measured_in": "revenue/uiowa_rfq_18649_capacity_benchmark/results/BENCHMARK_REPORT.md",
+        "result": "22.55x elapsed-time reduction after repair; baseline stage grew ~13,000x across a 128x workload increase (quadratic)",
+        "workload": "3,000 statements against a 631,500-character report (synthetic)"
+      },
+      "pattern": "P1_substring_scan_in_loop",
+      "source": "if sid not in report_text:"
+    },
+    {
+      "column": 11,
+      "confidence": "CONFIRMED_SHAPE",
+      "detail": "Substring scan of 'report_text' once per iteration, where that name holds text read from a file. When the loop count grows with the text -- as it does when the text is generated from the very items being looked up -- this is quadratic in characters scanned. This is the exact shape UIOWA-095 measured at 22.55x.",
+      "file": "uiowa_rfq_18649_capacity_benchmark/workflow.py",
+      "line": 251,
+      "measured_cost": {
+        "measured_in": "revenue/uiowa_rfq_18649_capacity_benchmark/results/BENCHMARK_REPORT.md",
+        "result": "22.55x elapsed-time reduction after repair; baseline stage grew ~13,000x across a 128x workload increase (quadratic)",
+        "workload": "3,000 statements against a 631,500-character report (synthetic)"
+      },
+      "pattern": "P1_substring_scan_in_loop",
+      "source": "if sid not in report_text:"
+    },
+    {
+      "column": 11,
+      "confidence": "CONFIRMED_SHAPE",
+      "detail": "A whole file is read and decoded, then sliced. Elapsed time and peak memory track total file size rather than the slice; a bounded read returns the same characters.",
+      "file": "uiowa_rfq_18649_capacity_benchmark/workflow.py",
+      "line": 273,
+      "measured_cost": {
+        "measured_in": "revenue/uiowa_rfq_18649_capacity_benchmark/results/BENCHMARK_REPORT.md",
+        "result": "4.15x elapsed-time reduction after repair; peak memory stops tracking the largest document in the collection",
+        "workload": "600 documents / 55 MB of synthetic evidence, largest 1.4 MB"
+      },
+      "pattern": "P2_read_all_then_slice",
+      "source": "return path.read_text(encoding=\"utf-8\")[:LABEL_WINDOW_CHARS]"
+    },
+    {
+      "column": 23,
+      "confidence": "CONFIRMED_SHAPE",
+      "detail": "Membership test against the list 'bound_required' inside a loop: O(len(list)) per iteration. A set gives the same answer in O(1).",
+      "file": "uiowa_rfq_18649_deadline_continuity/continuity.py",
+      "line": 206,
+      "measured_cost": "UNKNOWN -- shape matched, cost not measured",
+      "pattern": "P1_list_membership_in_loop",
+      "source": "if aid not in bound_required and self._feeds(aid, a, b):"
+    },
+    {
+      "column": 23,
+      "confidence": "CONFIRMED_SHAPE",
+      "detail": "Membership test against the list 'discriminating' inside a loop: O(len(list)) per iteration. A set gives the same answer in O(1).",
+      "file": "uiowa_rfq_18649_deadline_continuity/continuity.py",
+      "line": 214,
+      "measured_cost": "UNKNOWN -- shape matched, cost not measured",
+      "pattern": "P1_list_membership_in_loop",
+      "source": "if aid not in discriminating:"
+    },
+    {
+      "column": 24,
+      "confidence": "CANDIDATE",
+      "detail": "A file read inside a loop whose path expression does not reference any loop variable, so the same file may be re-read on every iteration. Hoisting it out of the loop would read it once.",
+      "file": "uiowa_rfq_18649_milestone_packets/resolve.py",
+      "line": 107,
+      "measured_cost": "UNKNOWN -- shape matched, cost not measured",
+      "pattern": "P3_same_file_reread_in_loop",
+      "source": "chunk = fh.read(READ_CHUNK)"
+    },
+    {
+      "column": 33,
+      "confidence": "CANDIDATE",
+      "detail": "Substring scan of the str parameter 'name' once per iteration. Whether this is the quadratic depends on how large the caller's string is, which a source-only scanner cannot see: the value arrives across a function boundary. Needs a human look.",
+      "file": "uiowa_rfq_18649_output_agreement/output_agreement.py",
+      "line": 249,
+      "measured_cost": {
+        "measured_in": "revenue/uiowa_rfq_18649_capacity_benchmark/results/BENCHMARK_REPORT.md",
+        "result": "22.55x elapsed-time reduction after repair; baseline stage grew ~13,000x across a 128x workload increase (quadratic)",
+        "workload": "3,000 statements against a 631,500-character report (synthetic)"
+      },
+      "pattern": "P1_substring_scan_in_loop",
+      "source": "source = REGISTER if \"recommendation\" in name else MATRIX"
+    },
+    {
+      "column": 49,
+      "confidence": "CONFIRMED_SHAPE",
+      "detail": "Membership test against the list 'order' inside a loop: O(len(list)) per iteration. A set gives the same answer in O(1).",
+      "file": "uiowa_rfq_18649_prioritization/prioritize.py",
+      "line": 888,
+      "measured_cost": "UNKNOWN -- shape matched, cost not measured",
+      "pattern": "P1_list_membership_in_loop",
+      "source": "left = [r for r in previous_order if r not in order]"
+    },
+    {
+      "column": 11,
+      "confidence": "CONFIRMED_SHAPE",
+      "detail": "Membership test against the list 'seen' inside a loop: O(len(list)) per iteration. A set gives the same answer in O(1).",
+      "file": "uiowa_rfq_18649_qa_refusal_contract/index.py",
+      "line": 66,
+      "measured_cost": "UNKNOWN -- shape matched, cost not measured",
+      "pattern": "P1_list_membership_in_loop",
+      "source": "if tok not in seen:"
+    },
+    {
+      "column": 19,
+      "confidence": "CONFIRMED_SHAPE",
+      "detail": "Membership test against the list 'out' inside a loop: O(len(list)) per iteration. A set gives the same answer in O(1).",
+      "file": "uiowa_rfq_18649_qa_refusal_contract/qa.py",
+      "line": 256,
+      "measured_cost": "UNKNOWN -- shape matched, cost not measured",
+      "pattern": "P1_list_membership_in_loop",
+      "source": "if eid not in out:"
+    },
+    {
+      "column": 19,
+      "confidence": "CONFIRMED_SHAPE",
+      "detail": "Membership test against the list 'out' inside a loop: O(len(list)) per iteration. A set gives the same answer in O(1).",
+      "file": "uiowa_rfq_18649_qa_refusal_contract/qa.py",
+      "line": 259,
+      "measured_cost": "UNKNOWN -- shape matched, cost not measured",
+      "pattern": "P1_list_membership_in_loop",
+      "source": "if eid not in out:"
+    },
+    {
+      "column": 16,
+      "confidence": "CONFIRMED_SHAPE",
+      "detail": "Membership test against the list 'codes' inside a loop: O(len(list)) per iteration. A set gives the same answer in O(1).",
+      "file": "uiowa_rfq_18649_qa_refusal_contract/test_qa.py",
+      "line": 207,
+      "measured_cost": "UNKNOWN -- shape matched, cost not measured",
+      "pattern": "P1_list_membership_in_loop",
+      "source": "\"ABSENCE_STATED_AS_FACT\" in codes"
+    },
+    {
+      "column": 19,
+      "confidence": "CONFIRMED_SHAPE",
+      "detail": "Membership test against the list 'codes' inside a loop: O(len(list)) per iteration. A set gives the same answer in O(1).",
+      "file": "uiowa_rfq_18649_qa_refusal_contract/test_qa.py",
+      "line": 208,
+      "measured_cost": "UNKNOWN -- shape matched, cost not measured",
+      "pattern": "P1_list_membership_in_loop",
+      "source": "or \"ABSENCE_NOT_QUALIFIED\" in codes,"
+    },
+    {
+      "column": 11,
+      "confidence": "CONFIRMED_SHAPE",
+      "detail": "Membership test against the list 'CORE_SECTIONS' inside a loop: O(len(list)) per iteration. A set gives the same answer in O(1).",
+      "file": "uiowa_rfq_18649_readout_deck/deck_architecture.py",
+      "line": 252,
+      "measured_cost": "UNKNOWN -- shape matched, cost not measured",
+      "pattern": "P1_list_membership_in_loop",
+      "source": "if s.get(\"section\") not in CORE_SECTIONS:"
+    },
+    {
+      "column": 11,
+      "confidence": "CONFIRMED_SHAPE",
+      "detail": "Membership test against the list 'seen' inside a loop: O(len(list)) per iteration. A set gives the same answer in O(1).",
+      "file": "uiowa_rfq_18649_report_visuals/monochrome.py",
+      "line": 45,
+      "measured_cost": "UNKNOWN -- shape matched, cost not measured",
+      "pattern": "P1_list_membership_in_loop",
+      "source": "if value not in seen:"
+    },
+    {
+      "column": 13,
+      "confidence": "CONFIRMED_SHAPE",
+      "detail": "Membership test against the list 'outcomes' inside a loop: O(len(list)) per iteration. A set gives the same answer in O(1).",
+      "file": "uiowa_rfq_18649_run_sweep/run_sweep.py",
+      "line": 261,
+      "measured_cost": "UNKNOWN -- shape matched, cost not measured",
+      "pattern": "P1_list_membership_in_loop",
+      "source": "elif FAIL in outcomes or ERROR in outcomes or TIMEOUT in outcomes:"
+    },
+    {
+      "column": 33,
+      "confidence": "CONFIRMED_SHAPE",
+      "detail": "Membership test against the list 'outcomes' inside a loop: O(len(list)) per iteration. A set gives the same answer in O(1).",
+      "file": "uiowa_rfq_18649_run_sweep/run_sweep.py",
+      "line": 261,
+      "measured_cost": "UNKNOWN -- shape matched, cost not measured",
+      "pattern": "P1_list_membership_in_loop",
+      "source": "elif FAIL in outcomes or ERROR in outcomes or TIMEOUT in outcomes:"
+    },
+    {
+      "column": 54,
+      "confidence": "CONFIRMED_SHAPE",
+      "detail": "Membership test against the list 'outcomes' inside a loop: O(len(list)) per iteration. A set gives the same answer in O(1).",
+      "file": "uiowa_rfq_18649_run_sweep/run_sweep.py",
+      "line": 261,
+      "measured_cost": "UNKNOWN -- shape matched, cost not measured",
+      "pattern": "P1_list_membership_in_loop",
+      "source": "elif FAIL in outcomes or ERROR in outcomes or TIMEOUT in outcomes:"
+    },
+    {
+      "column": 13,
+      "confidence": "CONFIRMED_SHAPE",
+      "detail": "Membership test against the list 'outcomes' inside a loop: O(len(list)) per iteration. A set gives the same answer in O(1).",
+      "file": "uiowa_rfq_18649_run_sweep/run_sweep.py",
+      "line": 263,
+      "measured_cost": "UNKNOWN -- shape matched, cost not measured",
+      "pattern": "P1_list_membership_in_loop",
+      "source": "elif PASS in outcomes:"
+    },
+    {
+      "column": 30,
+      "confidence": "CONFIRMED_SHAPE",
+      "detail": "A whole file is read and decoded, then sliced. Elapsed time and peak memory track total file size rather than the slice; a bounded read returns the same characters.",
+      "file": "uiowa_rfq_18649_synthetic_collection/validate_collection.py",
+      "line": 48,
+      "measured_cost": {
+        "measured_in": "revenue/uiowa_rfq_18649_capacity_benchmark/results/BENCHMARK_REPORT.md",
+        "result": "4.15x elapsed-time reduction after repair; peak memory stops tracking the largest document in the collection",
+        "workload": "600 documents / 55 MB of synthetic evidence, largest 1.4 MB"
+      },
+      "pattern": "P2_read_all_then_slice",
+      "source": "if \"SYNTHETIC\" not in path.read_text(encoding=\"utf-8\")[:500].upper():"
+    },
+    {
+      "column": 11,
+      "confidence": "CONFIRMED_SHAPE",
+      "detail": "Substring scan of 'report' once per iteration, where that name holds text read from a file. When the loop count grows with the text -- as it does when the text is generated from the very items being looked up -- this is quadratic in characters scanned. This is the exact shape UIOWA-095 measured at 22.55x.",
+      "file": "uiowa_rfq_18649_traceability_rehearsal/validate_trace.py",
+      "line": 49,
+      "measured_cost": {
+        "measured_in": "revenue/uiowa_rfq_18649_capacity_benchmark/results/BENCHMARK_REPORT.md",
+        "result": "22.55x elapsed-time reduction after repair; baseline stage grew ~13,000x across a 128x workload increase (quadratic)",
+        "workload": "3,000 statements against a 631,500-character report (synthetic)"
+      },
+      "pattern": "P1_substring_scan_in_loop",
+      "source": "if sid not in report:"
+    },
+    {
+      "column": 16,
+      "confidence": "CANDIDATE",
+      "detail": "A file read inside a loop whose path expression does not reference any loop variable, so the same file may be re-read on every iteration. Hoisting it out of the loop would read it once.",
+      "file": "uiowa_rfq_18649_workshare/workshare_read.py",
+      "line": 32,
+      "measured_cost": "UNKNOWN -- shape matched, cost not measured",
+      "pattern": "P3_same_file_reread_in_loop",
+      "source": "chunk = os.read(fd, min(65_536, max_bytes + 1 - total))"
+    }
+  ],
+  "findings_by_pattern": {
+    "P1_list_membership_in_loop": 15,
+    "P1_substring_scan_in_loop": 5,
+    "P2_read_all_then_slice": 3,
+    "P3_same_file_reread_in_loop": 2
+  },
+  "lane_glob": "uiowa_rfq_18649_*",
+  "lane_names": [
+    "uiowa_rfq_18649_acceptance_map",
+    "uiowa_rfq_18649_adoption_readiness",
+    "uiowa_rfq_18649_ai_decision_case",
+    "uiowa_rfq_18649_ai_eval_kit",
+    "uiowa_rfq_18649_ai_integration",
+    "uiowa_rfq_18649_ai_opportunity_portfolio",
+    "uiowa_rfq_18649_ai_policy_to_workflow",
+    "uiowa_rfq_18649_ai_use_inventory",
+    "uiowa_rfq_18649_bid_pack",
+    "uiowa_rfq_18649_build_board",
+    "uiowa_rfq_18649_capability_appendix",
+    "uiowa_rfq_18649_capacity_benchmark",
+    "uiowa_rfq_18649_capacity_feasibility",
+    "uiowa_rfq_18649_closeout",
+    "uiowa_rfq_18649_contractor_transition",
+    "uiowa_rfq_18649_deadline_continuity",
+    "uiowa_rfq_18649_delivery_metrics",
+    "uiowa_rfq_18649_delivery_scan",
+    "uiowa_rfq_18649_doc_usability",
+    "uiowa_rfq_18649_document_extraction",
+    "uiowa_rfq_18649_economics_resource_adapters",
+    "uiowa_rfq_18649_exec_summary",
+    "uiowa_rfq_18649_filesystem_safety",
+    "uiowa_rfq_18649_handoff",
+    "uiowa_rfq_18649_incident_learning",
+    "uiowa_rfq_18649_intake_rehearsal",
+    "uiowa_rfq_18649_integration",
+    "uiowa_rfq_18649_milestone_packets",
+    "uiowa_rfq_18649_mobilization",
+    "uiowa_rfq_18649_observability",
+    "uiowa_rfq_18649_operator_handoff",
+    "uiowa_rfq_18649_outcome_measurement",
+    "uiowa_rfq_18649_output_agreement",
+    "uiowa_rfq_18649_print_pagination",
+    "uiowa_rfq_18649_prioritization",
+    "uiowa_rfq_18649_qa_refusal_contract",
+    "uiowa_rfq_18649_question_cards",
+    "uiowa_rfq_18649_rating_model",
+    "uiowa_rfq_18649_readout_deck",
+    "uiowa_rfq_18649_recovery_evidence",
+    "uiowa_rfq_18649_release_provenance",
+    "uiowa_rfq_18649_report_structure",
+    "uiowa_rfq_18649_report_visuals",
+    "uiowa_rfq_18649_roadmap_dependencies",
+    "uiowa_rfq_18649_run_sweep",
+    "uiowa_rfq_18649_scope_change",
+    "uiowa_rfq_18649_secure_guidance",
+    "uiowa_rfq_18649_security_event_review",
+    "uiowa_rfq_18649_synthetic_collection",
+    "uiowa_rfq_18649_test_data_readiness",
+    "uiowa_rfq_18649_traceability",
+    "uiowa_rfq_18649_traceability_rehearsal",
+    "uiowa_rfq_18649_vocabulary_crosswalk",
+    "uiowa_rfq_18649_workbench",
+    "uiowa_rfq_18649_workshare"
+  ],
+  "lanes_scanned": 55,
+  "revenue_root": "/home/user/commons/revenue",
+  "scan_seconds": 0.9742584649998207,
+  "schema": "uiowa-ops-perf-scan-kit-v1",
+  "unscannable": []
+}
