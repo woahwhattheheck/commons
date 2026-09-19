@@ -109,7 +109,7 @@ class IntakeTests(unittest.TestCase):
             compile_at(doc)
 
     def test_future_evidence(self):
-        doc = base(); doc["sources"][0]["observed_at"] = "2026-09-19T20:00:01Z"
+        doc = base(); doc["sources"][0]["observed_at"] = "2026-09-19T20:00:01Z"; doc["acceptance_route"]["observed_at"] = "2026-09-19T20:00:02Z"
         self.assertEqual(compile_at(doc)["state"], "HOLD_FUTURE_EVIDENCE")
 
     def test_publication_after_observation_rejected(self):
@@ -134,6 +134,7 @@ class IntakeTests(unittest.TestCase):
         doc["sources"][1]["supersedes_generation"] = "g1"
         doc["compensation"][0]["source_generation"] = "g2"
         doc["acceptance_route"]["source_generation"] = "g2"
+        doc["acceptance_route"]["observed_at"] = "2026-09-19T19:31:00Z"
         self.assertEqual(compile_at(doc)["state"], READY)
 
     def test_cross_opportunity_transplant_rejected(self):
@@ -255,6 +256,7 @@ class IntakeTests(unittest.TestCase):
         doc["active_source_generation"] = "g2"
         doc["compensation"][0]["source_generation"] = "g2"
         doc["acceptance_route"]["source_generation"] = "g2"
+        doc["acceptance_route"]["observed_at"] = "2026-09-19T19:31:00Z"
         self.assertEqual(compile_at(doc)["state"], "HOLD_EVIDENCE_CONFLICT")
 
     def test_provider_class_cannot_change_across_generations(self):
@@ -264,6 +266,7 @@ class IntakeTests(unittest.TestCase):
         doc["active_source_generation"] = "g2"
         doc["compensation"][0]["source_generation"] = "g2"
         doc["acceptance_route"]["source_generation"] = "g2"
+        doc["acceptance_route"]["observed_at"] = "2026-09-19T19:31:00Z"
         self.assertEqual(compile_at(doc)["state"], "HOLD_EVIDENCE_CONFLICT")
 
     def test_compensation_and_acceptance_bind_active_generation(self):
@@ -272,6 +275,7 @@ class IntakeTests(unittest.TestCase):
         doc["sources"].append(g2); doc["active_source_generation"] = "g2"
         self.assertEqual(compile_at(doc)["state"], "HOLD_INCOMPLETE_EVIDENCE")
         doc["acceptance_route"]["source_generation"] = "g2"
+        doc["acceptance_route"]["observed_at"] = "2026-09-19T19:31:00Z"
         self.assertEqual(compile_at(doc)["state"], "HOLD_INCOMPLETE_EVIDENCE")
         doc["compensation"][0]["source_generation"] = "g2"
         self.assertEqual(compile_at(doc)["state"], READY)
@@ -360,6 +364,29 @@ class IntakeTests(unittest.TestCase):
             with self.assertRaises(SystemExit) as cm, redirect_stdout(io.StringIO()):
                 cli_module.main(["verify", str(bad)])
             self.assertEqual(cm.exception.code, 2)
+
+
+    def test_invalid_utf8_is_intake_error(self):
+        with self.assertRaises(IntakeError):
+            parse_strict_json(b"{\\xff}")
+
+    def test_acceptance_route_cannot_predate_bound_generation(self):
+        doc = base()
+        doc["acceptance_route"]["observed_at"] = "2026-09-19T18:59:59Z"
+        with self.assertRaises(IntakeError):
+            compile_at(doc)
+
+    def test_incomplete_generation_bundle_still_renders_hold(self):
+        doc = base()
+        g2 = {**copy.deepcopy(doc["sources"][0]), "generation":"g2", "observed_at":"2026-09-19T19:30:00Z", "source_sha256":A, "supersedes_generation":"g1"}
+        doc["sources"].append(g2)
+        doc["active_source_generation"] = "g2"
+        with tempfile.TemporaryDirectory() as td:
+            out = Path(td) / "bundle"
+            record = write_bundle(doc, out, clock=lambda: NOW)
+            self.assertEqual(record["state"], "HOLD_INCOMPLETE_EVIDENCE")
+            self.assertIn("NO ACTIVE-GENERATION COMPENSATION EVIDENCE", (out / "routing.md").read_text())
+            verify_record(parse_strict_json((out / "record.json").read_bytes()))
 
 
 if __name__ == "__main__":
