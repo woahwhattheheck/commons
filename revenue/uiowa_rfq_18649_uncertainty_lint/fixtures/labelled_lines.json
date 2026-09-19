@@ -1,0 +1,278 @@
+{
+  "note": "Hand-labelled ground truth for the uncertainty lint. The 24 'corpus' lines are VERBATIM from real landed artifacts under revenue/uiowa_rfq_18649_* and were read individually before labelling. The 10 'constructed' lines are authored, and are labelled as such, because the real corpus contains only one true positive -- which makes recall unmeasurable from the corpus alone. Precision and recall are reported separately for the two origins in the README so the constructed cases cannot flatter the corpus result.",
+  "label_definition": "TRUE_POSITIVE = the sentence states an absence as a property of an assessed entity (a service, group or team) rather than as a property of the evidence or the search. FALSE_POSITIVE = anything else, including correct evidence-scoped wording, statements about software, records, fixtures and documents, hedged statements, and quotations.",
+  "lines": [
+    {
+      "id": "corpus-01",
+      "origin": "corpus",
+      "source": "uiowa_rfq_18649_recovery_evidence/out/recovery_evidence_report.md:80",
+      "label": "TRUE_POSITIVE",
+      "why": "subject is the assessed service; absence reads as a property of it, in a severity-rated findings row",
+      "text": "| RF-005 | high | `SVC-DIRSYNC` | Directory Synchronization Service has no backup record and no restoration evidence of any kind. |"
+    },
+    {
+      "id": "corpus-02",
+      "origin": "corpus",
+      "source": "uiowa_rfq_18649_output_agreement/README.md:59",
+      "label": "FALSE_POSITIVE",
+      "why": "subject is the checker",
+      "text": "| `UNKNOWN_COUNT_SET` | A prose claim counting a set the checker has no definition for (warning). |"
+    },
+    {
+      "id": "corpus-03",
+      "origin": "corpus",
+      "source": "uiowa_rfq_18649_workbench/README.md:31",
+      "label": "FALSE_POSITIVE",
+      "why": "subject is an HTTP endpoint",
+      "text": "three static assets plus `/` and one bounded `POST /api/inspect` endpoint. It has no"
+    },
+    {
+      "id": "corpus-04",
+      "origin": "corpus",
+      "source": "uiowa_rfq_18649_readout_deck/README.md:132",
+      "label": "FALSE_POSITIVE",
+      "why": "subject is the report: already evidence-scoped, the correct form",
+      "text": "Where the report has no evidence, the measure's value is the literal string `\"UNKNOWN\"` with a"
+    },
+    {
+      "id": "corpus-05",
+      "origin": "corpus",
+      "source": "uiowa_rfq_18649_workbench/README.md:10",
+      "label": "FALSE_POSITIVE",
+      "why": "subject is software",
+      "text": "`verify_report_integrity` surfaces. There is no HTTP field, CLI switch, or browser"
+    },
+    {
+      "id": "corpus-06",
+      "origin": "corpus",
+      "source": "uiowa_rfq_18649_synthetic_collection/interviews/interview_excerpts.md:11",
+      "label": "FALSE_POSITIVE",
+      "why": "explicitly refuses to resolve the absence; the correct handling",
+      "text": "Assessment handling: this does not prove that production-derived data exists or does not exist. ESS-SEC-002 remains UNKNOWN."
+    },
+    {
+      "id": "corpus-07",
+      "origin": "corpus",
+      "source": "uiowa_rfq_18649_prioritization/DATA_DICTIONARY.md:62",
+      "label": "FALSE_POSITIVE",
+      "why": "subject is an estimate field",
+      "text": "form is the useful one - it records *why* there is no estimate:"
+    },
+    {
+      "id": "corpus-08",
+      "origin": "corpus",
+      "source": "uiowa_rfq_18649_workshare/peer_research/17-source-register.md:44",
+      "label": "FALSE_POSITIVE",
+      "why": "scoped to the selected passage",
+      "text": "**Date/version:** undated service/organization page. **Event date:** restructuring has no date in the selected passage."
+    },
+    {
+      "id": "corpus-09",
+      "origin": "corpus",
+      "source": "uiowa_rfq_18649_prioritization/examples/baseline-worksheet.md:21",
+      "label": "FALSE_POSITIVE",
+      "why": "subject is a rating scale",
+      "text": "Scales: expected effect 0-5; implementation complexity 1-5 (there is no zero -- \"no effort\" is not a real estimate). A blank estimate is **UNKNOWN**,"
+    },
+    {
+      "id": "corpus-10",
+      "origin": "corpus",
+      "source": "uiowa_rfq_18649_recovery_evidence/README-OP5-IRONWOOD-second-implementation.md:239",
+      "label": "FALSE_POSITIVE",
+      "why": "hedged with 'may'",
+      "text": "and externally operated services that may have no restoration path the"
+    },
+    {
+      "id": "corpus-11",
+      "origin": "corpus",
+      "source": "uiowa_rfq_18649_build_board/45-testing-portfolio.md:25",
+      "label": "FALSE_POSITIVE",
+      "why": "'no evidence that' is the evidence-scoped form",
+      "text": "| ESS | Fictional enrollment status update reaches a downstream reporting consumer | Partial | Covered | **Gap** | Contract compatibility exists, but there is no evidence that the complete propagation path works. |"
+    },
+    {
+      "id": "corpus-12",
+      "origin": "corpus",
+      "source": "uiowa_rfq_18649_build_board/13-ai-context.md:140",
+      "label": "FALSE_POSITIVE",
+      "why": "subject is a guidance document",
+      "text": "| Chat lifecycle | Older guidance lacks the newer common six-month supported-chat rule | Use the July/August 2026 retention sources |"
+    },
+    {
+      "id": "corpus-13",
+      "origin": "corpus",
+      "source": "uiowa_rfq_18649_synthetic_collection/releases/release_examples.md:21",
+      "label": "FALSE_POSITIVE",
+      "why": "subject is a change record and it is scoped 'in the corpus'",
+      "text": "Both fictional changes restore service. EC-IAM-007 links follow-up review REV-IAM-E007. EC-IAM-006 has no equivalent artifact in the corpus."
+    },
+    {
+      "id": "corpus-14",
+      "origin": "corpus",
+      "source": "uiowa_rfq_18649_workbench/19-reliability-peer-pack.md:26",
+      "label": "FALSE_POSITIVE",
+      "why": "a documented property of a published risk tier, from a cited public source",
+      "text": "Its risk/impact guidance sets minimum lead times of **10 business days for Risk 1**; Risks 4 and 5 have no minimum lead time."
+    },
+    {
+      "id": "corpus-15",
+      "origin": "corpus",
+      "source": "uiowa_rfq_18649_prioritization/DATA_DICTIONARY.md:103",
+      "label": "FALSE_POSITIVE",
+      "why": "subject is a data field",
+      "text": "For unranked items it says which field has no estimate and what the bound is."
+    },
+    {
+      "id": "corpus-16",
+      "origin": "corpus",
+      "source": "uiowa_rfq_18649_report_structure/README.md:92",
+      "label": "FALSE_POSITIVE",
+      "why": "subject is a file",
+      "text": "because there is no upstream file to verify against yet; that is stated, not hidden."
+    },
+    {
+      "id": "corpus-17",
+      "origin": "corpus",
+      "source": "uiowa_rfq_18649_release_provenance/interview-worksheet.md:31",
+      "label": "FALSE_POSITIVE",
+      "why": "quoted, and the quote is evidence-scoped",
+      "text": "Synthetic example B supports: \"The provided export omits b1, preventing a source-to-build-to-artifact trace.\""
+    },
+    {
+      "id": "corpus-18",
+      "origin": "corpus",
+      "source": "uiowa_rfq_18649_test_data_readiness/fixture_specifications.md:48",
+      "label": "FALSE_POSITIVE",
+      "why": "subject is a test fixture; explicitly kept UNKNOWN",
+      "text": "The checked-in rehearsal intentionally lacks ownership and refresh evidence. Those conditions remain **UNKNOWN**; they are not described as failed maintenance."
+    },
+    {
+      "id": "corpus-19",
+      "origin": "corpus",
+      "source": "uiowa_rfq_18649_ai_policy_to_workflow/WORKFLOW_EXAMPLES.md:107",
+      "label": "FALSE_POSITIVE",
+      "why": "subject is the assessor",
+      "text": "The assessor has no basis to pick. Picking would mean inventing University"
+    },
+    {
+      "id": "corpus-20",
+      "origin": "corpus",
+      "source": "uiowa_rfq_18649_workshare/README.md:55",
+      "label": "FALSE_POSITIVE",
+      "why": "subject is the CLI",
+      "text": "The CLI has no trusted-root input and no clock input. `compile` produces `UNTRUSTED_INSPECTION`;"
+    },
+    {
+      "id": "corpus-21",
+      "origin": "corpus",
+      "source": "uiowa_rfq_18649_deadline_continuity/sample_output/continuity_report.md:57",
+      "label": "FALSE_POSITIVE",
+      "why": "subject is a set of inputs",
+      "text": "- Unanswerable because these inputs have no upper bound: `ASM-002`"
+    },
+    {
+      "id": "corpus-22",
+      "origin": "corpus",
+      "source": "uiowa_rfq_18649_bid_pack/sample_output/documents/03-firm-qualifications.md:1",
+      "label": "FALSE_POSITIVE",
+      "why": "a fiction disclaimer, which must say a thing does not exist",
+      "text": "<!-- SYNTHETIC FIXTURE - FICTION. Northgate Assessment Partners LLC does not exist. No content in this pack is a representation about any real bidder. -->"
+    },
+    {
+      "id": "corpus-23",
+      "origin": "corpus",
+      "source": "uiowa_rfq_18649_ai_policy_to_workflow/WORKFLOW_EXAMPLES.md:92",
+      "label": "FALSE_POSITIVE",
+      "why": "subject is an intake form",
+      "text": "The form has no field for AI prompt or retrieval use, because it predates"
+    },
+    {
+      "id": "corpus-24",
+      "origin": "corpus",
+      "source": "uiowa_rfq_18649_question_cards/README.md:104",
+      "label": "FALSE_POSITIVE",
+      "why": "states the rule itself",
+      "text": "the supplied material is not evidence the practice does not happen*. Missing it is an error,"
+    },
+    {
+      "id": "c1",
+      "origin": "constructed",
+      "source": "authored for this fixture",
+      "label": "TRUE_POSITIVE",
+      "why": "service id as subject",
+      "text": "SVC-PAYROLL has no documented rollback procedure."
+    },
+    {
+      "id": "c2",
+      "origin": "constructed",
+      "source": "authored for this fixture",
+      "label": "TRUE_POSITIVE",
+      "why": "group code as subject",
+      "text": "ESS has no incident review practice."
+    },
+    {
+      "id": "c3",
+      "origin": "constructed",
+      "source": "authored for this fixture",
+      "label": "TRUE_POSITIVE",
+      "why": "named group as subject",
+      "text": "The RIS team has no restoration testing."
+    },
+    {
+      "id": "c4",
+      "origin": "constructed",
+      "source": "authored for this fixture",
+      "label": "TRUE_POSITIVE",
+      "why": "'the <name> service' as subject",
+      "text": "The identity service lacks a documented escalation path."
+    },
+    {
+      "id": "c5",
+      "origin": "constructed",
+      "source": "authored for this fixture",
+      "label": "FALSE_POSITIVE",
+      "why": "the evidence-scoped rewrite of c1",
+      "text": "We found no documented rollback procedure for SVC-PAYROLL in the 12 runbooks supplied."
+    },
+    {
+      "id": "c6",
+      "origin": "constructed",
+      "source": "authored for this fixture",
+      "label": "FALSE_POSITIVE",
+      "why": "subject is the runbook set",
+      "text": "The RIS runbook set has no restoration procedure."
+    },
+    {
+      "id": "c7",
+      "origin": "constructed",
+      "source": "authored for this fixture",
+      "label": "FALSE_POSITIVE",
+      "why": "conditional",
+      "text": "If ESS has no incident review practice, the finding would change."
+    },
+    {
+      "id": "c8",
+      "origin": "constructed",
+      "source": "authored for this fixture",
+      "label": "FALSE_POSITIVE",
+      "why": "quoting the forbidden form in order to forbid it",
+      "text": "The rule forbids writing `ESS has no incident review practice`."
+    },
+    {
+      "id": "c9",
+      "origin": "constructed",
+      "source": "authored for this fixture",
+      "label": "FALSE_POSITIVE",
+      "why": "subject is the assessment",
+      "text": "The assessment has no evidence of restoration testing at RIS."
+    },
+    {
+      "id": "c10",
+      "origin": "constructed",
+      "source": "authored for this fixture",
+      "label": "FALSE_POSITIVE",
+      "why": "not assessed, correctly worded",
+      "text": "IAM AI readiness was not assessed; there is no finding in either direction."
+    }
+  ]
+}
