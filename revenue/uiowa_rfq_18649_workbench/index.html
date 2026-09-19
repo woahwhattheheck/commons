@@ -59,11 +59,16 @@
     <section class="panel" aria-labelledby="export-heading">
       <h2 id="export-heading">4. Draft review handoff</h2>
       <p>Export binds notes to the immutable compiler receipt and explicitly keeps every external authority flag false.</p>
+      <p>To resume, inspect the same evidence package, then restore its saved draft. Restoration replaces all current notes; export them first if you need to keep them. A draft for another receipt will leave your current notes intact.</p>
+      <label>Saved draft JSON <input id="handoffFile" type="file" accept="application/json,.json"></label>
+      <button id="restoreBtn" type="button" disabled>Restore saved draft notes</button>
       <button id="exportBtn" type="button" disabled>Export draft handoff JSON</button>
+      <button id="markdownBtn" type="button" disabled>Export readable review Markdown</button>
       <p id="exportStatus" class="muted" aria-live="polite"></p>
     </section>
   </main>
 
+  <script src="/handoff.js" defer></script>
   <script src="/app.js" defer></script>
 </body>
 </html>

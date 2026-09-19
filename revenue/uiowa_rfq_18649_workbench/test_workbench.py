@@ -75,6 +75,10 @@ class WorkbenchHTTPTests(unittest.TestCase):
         self.assertEqual(status, 200)
         self.assertIn(b"RFQ 18649", body)
         self.assertIn("default-src 'self'", headers["Content-Security-Policy"])
+        status, headers, body = self.request("GET", "/handoff.js")
+        self.assertEqual(status, 200)
+        self.assertIn("text/javascript", headers["Content-Type"])
+        self.assertIn(b"WorkbenchHandoff", body)
         self.assertEqual(self.request("GET", "/../server.py")[0], 404)
         self.assertEqual(self.request("GET", "/api/inspect")[0], 404)
 
