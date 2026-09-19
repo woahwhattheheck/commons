@@ -11,6 +11,7 @@ on:
       - "revenue/kaggriculture/cloud-execution-lab/spatial_tempo.py"
       - "revenue/multi_framework_evidence_freshness/**"
       - "tests/test_multi_framework_evidence_freshness*.py"
+      - "competitions/nebius-proofpatch-2026/**"
       - "tools/provider_cost_truth/**"
       - "revenue/pilot_delivery_renewal_expansion_gate/**"
       - "test_pilot_delivery_renewal_expansion_gate.py"
@@ -86,6 +87,20 @@ jobs:
           if [ -f host/slack_mirror_state.py ] && [ -f test_slack_mirror_delivery.py ]; then
             python3 -m unittest -v test_slack_mirror test_slack_mirror_state test_slack_mirror_delivery test_slack_mirror_receipt_commit
             python3 -O -m unittest -v test_slack_mirror test_slack_mirror_state test_slack_mirror_delivery test_slack_mirror_receipt_commit
+          fi
+
+      - name: Verify Nebius ProofPatch trust split when present
+        shell: bash
+        run: |
+          if [ -d competitions/nebius-proofpatch-2026 ]; then
+            (
+              cd competitions/nebius-proofpatch-2026
+              python3 -m unittest -v test_proofpatch test_hardening
+              python3 -O -m unittest -v test_proofpatch test_hardening
+              python3 proofpatch.py demo > /tmp/proofpatch.json
+              python3 proofpatch.py verify /tmp/proofpatch.json | grep STRUCTURAL_EVIDENCE_VERIFIED
+              python3 proofpatch.py demo-verify | grep EXECUTOR_REPLAY_VERIFIED
+            )
           fi
 
       - name: Verify recovered AP batch review without another workflow slot
