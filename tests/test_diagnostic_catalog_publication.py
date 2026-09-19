@@ -47,11 +47,7 @@ class DiagnosticCatalogPublicationTests(unittest.TestCase):
     def setUp(self):
         self.cards = self.schemas()
         self.receipt = next(card for card in self.cards
-                            if card["name"] == "autopsy_receipt_card")
-
-    def test_identifier_is_code_and_keeps_the_documented_state(self):
-        self.assertIn("Default state `UNVERIFIED`.", self.receipt["description"])
-        self.assertEqual(self.receipt["description"].count("`"), 2)
+                            if card["name"] == "diagnostic_receipt_card")
 
     def test_receipt_description_passes_existing_checker(self):
         self.assertTrue(require_publication(self.receipt["description"])["allowed"])
@@ -66,68 +62,41 @@ class DiagnosticCatalogPublicationTests(unittest.TestCase):
                     self.assertEqual(json.loads(body)["tools"], self.cards)
                     self.assertTrue(require_publication(body)["allowed"])
 
-    def test_original_description_reproduces_the_reported_rule(self):
-        original = self.receipt["description"].replace("`UNVERIFIED`", "UNVERIFIED")
-        for body in (original, json.dumps({**self.receipt, "description": original})):
-            with self.subTest(serialized=body.startswith("{")):
-                decision = check_publication(body)
-                self.assertFalse(decision["allowed"])
-                self.assertEqual(decision["rule"], "general_disagreement")
-
-    def test_original_diagnostic_family_reproduces_the_rule(self):
-        old_cards = copy.deepcopy(self.cards)
-        next(c for c in old_cards if c["name"] == "autopsy_receipt_card")[
-            "description"] = self.receipt["description"].replace("`UNVERIFIED`", "UNVERIFIED")
-        decision = check_publication(json.dumps({"tools": old_cards}))
-        self.assertFalse(decision["allowed"])
-        self.assertEqual(decision["rule"], "general_disagreement")
-
     def test_input_contract_remains_exact(self):
         self.assertEqual(self.receipt["inputSchema"], {
             "type": "object",
             "properties": {
                 "role": {"type": "object"},
-                "case_ref": {"type": "string"},
-                "client_reference_id": {"type": "string"},
-                "sku": {"type": "string"},
-                "g2_run_id": {"type": "string"},
-                "g2_session_id": {"type": "string"},
-                "payment_observed_at": {"type": "string"},
-                "state": {"type": "string"},
+                "slug": {"type": "string"},
             },
-            "required": ["role", "case_ref"],
+            "required": ["role", "slug"],
         })
 
-    def test_handler_keeps_default_and_explicit_state_values(self):
+    def test_handler_forwards_slug_without_mutating_args(self):
         calls = []
 
         def record(role, **kwargs):
             calls.append((role, kwargs))
-            return {"state": kwargs["state"]}
+            return {"slug": kwargs["slug"]}
 
         modules = {
             "roles": SimpleNamespace(RoleError=ValueError),
-            "autopsy_paid": SimpleNamespace(build_receipt_row_from_role=record),
+            "diagnostic_receipt": SimpleNamespace(load_receipt_from_role=record),
         }
         namespace = {"Any": Any, "_load_transferable_roles_mod": modules.__getitem__}
         handler = load_function(EQUIPMENT / "diagnostic_equipment_cards.py",
                                 "call_diagnostic_card", namespace)
-        cases = ({}, {"state": None}, {"state": ""}, {"state": "UNVERIFIED"},
-                 {"state": "PAID"}, {"state": "custom_state"})
-        expected = ("UNVERIFIED", "UNVERIFIED", "UNVERIFIED", "UNVERIFIED",
-                    "PAID", "custom_state")
-        for extra, state in zip(cases, expected):
-            with self.subTest(extra=extra):
+        for slug in ("dealer", "referral", "plant"):
+            with self.subTest(slug=slug):
                 role = {"role_id": "fixture-role"}
-                args = {"role": role, "case_ref": "fixture-case", **extra}
+                args = {"role": role, "slug": slug}
                 original = copy.deepcopy(args)
-                result = handler("autopsy_receipt_card", args)
-                self.assertEqual(result, {"ok": True, "card": {"state": state}})
-                self.assertEqual(calls[-1][1]["state"], state)
-                self.assertEqual(calls[-1][1]["case_ref"], "fixture-case")
+                result = handler("diagnostic_receipt_card", args)
+                self.assertEqual(result, {"ok": True, "card": {"slug": slug}})
+                self.assertEqual(calls[-1][1]["slug"], slug)
                 self.assertIs(calls[-1][0], role)
                 self.assertEqual(args, original)
-        self.assertEqual(len(calls), len(cases))
+        self.assertEqual(len(calls), 3)
 
 
 if __name__ == "__main__":

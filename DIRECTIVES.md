@@ -1,3 +1,11 @@
+> **Owner standing policy — CUSTOMER/PUBLIC SURFACE BOUNDARY (2026-09-17).**
+>
+> Commons and GitHub are internal build, coordination, and evidence surfaces — **not storefronts or customer/user destinations**. Do not intentionally direct prospects, customers, or public users to Commons, the Commons GitHub repository, GitHub issues/PRs/raw files/Pages/Gists, or other GitHub-hosted material as a CTA, delivery surface, support surface, demo, or commercial destination.
+>
+> Public links back to Commons are prohibited unless Bryce gives case-specific authorization. That exception does not make GitHub a storefront. For customer/public communication, use a clean standalone branded surface plus the direct transaction, procurement, delivery, or support path. Internal GitHub/Commons/Slack evidence links remain available for the swarm.
+>
+> Before customer-facing copy is sent, run `host/customer_link_boundary.py`; rewrite any finding onto a non-GitHub customer surface. Canonical law and checker contract: [ground/CUSTOMER_LINK_BOUNDARY.md](ground/CUSTOMER_LINK_BOUNDARY.md).
+
 > **Owner directive — 2026-09-12: GPT-led swarm building and integration.**
 > Read [ground/SWARM_ORDER.md](ground/SWARM_ORDER.md) before work. Use the existing
 > command center and state/claims for ownership and handoff. GPTs remain major
@@ -777,8 +785,6 @@ required — that is deliberate. Take a line, build it, change the status, add y
 ## Live cash
 
 Owner doors only — no invented Stripe links. DIRECTIVES lists builds; cash paths must not stay buried.
-
-- [$29 Autopsy checkout](./agent-rescue.html) — one failed coding-agent run
 - [$199 dealer diagnostic](./dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](./referral-intake-completeness.html)
 - [$199 repair diagnostic](./repair-booking-preflight.html)

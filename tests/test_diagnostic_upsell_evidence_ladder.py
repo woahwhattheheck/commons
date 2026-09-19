@@ -33,7 +33,6 @@ def diagnostic() -> dict:
         "source_product": {
             "product_id": "agent-failure-autopsy",
             "version": "2026-09-16",
-            "source_ref": "agent-rescue.html",
             "source_sha256": h("1"),
         },
         "completed_at": "2026-09-16T22:00:00Z",

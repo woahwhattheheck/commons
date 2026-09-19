@@ -5,7 +5,7 @@ import unittest
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 PAGES = ['glyphs.html', 'program.html', 'accordion.html', 'breath.html', 'foldbook.html', 'loop.html', 'flipbook.html', 'swarm.html', 'world.html', 'data.html']
-REQUIRED = ['id="live-cash"', "./agent-rescue.html", "./dealer-service-lead-rescue.html", "./referral-intake-completeness.html", "./repair-booking-preflight.html", "./plant-downtime-handoff.html", "$29 Autopsy", "$199 dealer diagnostic"]
+REQUIRED = ['id="live-cash"', "./dealer-service-lead-rescue.html", "./referral-intake-completeness.html", "./repair-booking-preflight.html", "./plant-downtime-handoff.html", "$199 dealer diagnostic"]
 class LatchCompressionDoorsLiveCashTest(unittest.TestCase):
     def test_all(self) -> None:
         for name in PAGES:

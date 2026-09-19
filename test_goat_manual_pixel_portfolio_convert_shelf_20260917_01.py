@@ -23,12 +23,10 @@ ROOT = Path(__file__).resolve().parent
 MANUAL = ROOT / "manual.html"
 PIXEL = ROOT / "pixel-portfolio.html"
 RECEIPT = ROOT / "p" / "goat-manual-pixel-portfolio-convert-shelf-20260917-01.md"
-AGENT_RESCUE = ROOT / "agent-rescue.html"
 COMMERCIAL = ROOT / "commercial.html"
 
 ALLOWED_LIVE_BUY_URLS = frozenset(
     {
-        "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
         "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
     }
 )
@@ -37,7 +35,6 @@ BUY_HOST_PATH = re.compile(
     re.IGNORECASE,
 )
 BUY_LABELS = (
-    "See what broke in one failed agent run — $29.",
     "One live instrumented hour, white box — $250.",
 )
 GENERIC_LABELS = (
@@ -45,7 +42,6 @@ GENERIC_LABELS = (
     "Buy one White Box hour $250",
 )
 LIVE_CASH_DOORS = (
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -101,12 +97,7 @@ def live_cash_slice(html: str) -> str:
 
 class TestGoatManualPixelPortfolioConvertShelf2026091701(unittest.TestCase):
     def test_head_product_pages_still_own_the_exact_urls(self) -> None:
-        autopsy = AGENT_RESCUE.read_text(encoding="utf-8")
         commercial = COMMERCIAL.read_text(encoding="utf-8")
-        self.assertIn(
-            "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
-            autopsy,
-        )
         self.assertIn(
             "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
             commercial,
@@ -171,7 +162,7 @@ class TestGoatManualPixelPortfolioConvertShelf2026091701(unittest.TestCase):
                 [],
             )
             forged = page_html.replace(
-                "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
+                "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
                 "https://buy.stripe.com/not-a-canonical-link",
                 1,
             )

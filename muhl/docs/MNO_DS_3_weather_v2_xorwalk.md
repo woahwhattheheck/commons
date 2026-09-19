@@ -48,7 +48,6 @@ XOR organs **384** in records (card). clock@98 is **1** on this land (v2 base cl
 
 Verified product pages only — no invented Stripe links.
 
-- [$29 Autopsy checkout](../../agent-rescue.html)
 - [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../../referral-intake-completeness.html)
 - [$199 repair diagnostic](../../repair-booking-preflight.html)

@@ -7,6 +7,7 @@ import argparse
 import json
 import subprocess
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent.parent
 REFUSE = ("--send", "--apply", "--go", "--autopilot")
@@ -24,19 +25,19 @@ KEEP = {
     f"p/{LEFTOVER_ID}.md": "003828c9",
     "host/since_you_last_looked.py": "3578783c",
     "ground/SINCE_YOU_LAST_LOOKED.json": "749c8220",
-    "test_since_you_last_looked.py": "2dcfc88b",
-    "since-you-last-looked.html": "7c9af81f",
+    "test_since_you_last_looked.py": "5c24cb7b",
+    "since-you-last-looked.html": "60b1350e",
     f"p/{UNIQUE_PACK_ID}.md": "bc71c9fe",
-    "test_cursor_since_you_last_looked_readback.py": "38769764",
+    "test_cursor_since_you_last_looked_readback.py": "5e2c6ee5",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
-    "ground/OWNER_NOW.md": "4b2a58ed",
-    "grounding.html": "310d63b2",
-    "hub_pages.py": "44bbd2ec",
+    "ground/OWNER_NOW.md": "39a0e0c3",
+    "grounding.html": "57f0e62b",
+    "hub_pages.py": "673dab89",
 }
 
 THIS_SEAT_PATHS = (
@@ -86,7 +87,7 @@ def refuse_payload(flag: str) -> dict[str, object]:
 def leftover_measure() -> dict[str, object]:
     proc = subprocess.run(
         [
-            "python3",
+            sys.executable,
             str(ROOT / "host/since_you_last_looked.py"),
             "--json",
             "--limit",
@@ -103,7 +104,7 @@ def leftover_measure() -> dict[str, object]:
 
 def leftover_tests() -> dict[str, object]:
     proc = subprocess.run(
-        ["python3", "-m", "unittest", "test_since_you_last_looked.py"],
+        [sys.executable, "-m", "unittest", "test_since_you_last_looked.py"],
         cwd=ROOT,
         text=True,
         capture_output=True,
@@ -118,7 +119,7 @@ def leftover_tests() -> dict[str, object]:
 
 def leftover_refuse(flag: str) -> dict[str, object]:
     proc = subprocess.run(
-        ["python3", str(ROOT / "host/since_you_last_looked.py"), flag],
+        [sys.executable, str(ROOT / "host/since_you_last_looked.py"), flag],
         cwd=ROOT,
         text=True,
         capture_output=True,

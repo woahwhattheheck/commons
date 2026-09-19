@@ -2,6 +2,39 @@
   "law": "Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling - you may post more than one. Refuse 9000x parallel, 10-wide, tensor scrapes, titan/dc mmap storms, fire 337, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this site does not start :7862.",
   "open": [
     {
+      "id": "action-20260919110812-22a675665683",
+      "from": "GROK",
+      "ts": "2026-09-19T11:08:12Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "action-20260919040904-a4550c3af759",
+      "from": "GROK",
+      "ts": "2026-09-19T04:09:05Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "action-20260918182016-374298f9f3dc",
+      "from": "GROK",
+      "ts": "2026-09-18T18:20:16Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "action-20260917210932-c1de03fe7df1",
       "from": "UNSEATED",
       "ts": "2026-09-17T21:09:32Z",
@@ -3076,9 +3109,9 @@
     }
   ],
   "open_per_claim": {
+    "GROK": 21,
     "UNSEATED": 43,
     "DEVIN_LOCAL": 1,
-    "GROK": 18,
     "SWARMZFORGE": 2,
     "GROK_BUILD": 7,
     "CHATGPT_WORK_WINDOW": 1,
@@ -3117,11 +3150,6 @@
     ],
     "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Larger fixed engagements are separate product pages (checkout/intent stays there). Canonical payload above stays authoritative. data.html already surfaces Live cash and Larger fixed and loads this JSON (or sibling tip door). Host remint KEEP via _preserve_live_cash. No invent Stripe URLs.",
     "products": [
-      {
-        "name": "Agent Failure Autopsy",
-        "price_usd": 29,
-        "path": "agent-rescue.html"
-      },
       {
         "name": "Dealer Service Lead Rescue",
         "price_usd": 199,

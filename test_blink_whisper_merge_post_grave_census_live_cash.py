@@ -11,15 +11,11 @@ class T(unittest.TestCase):
         for name in HTML:
             text = (ROOT / name).read_text(encoding="utf-8")
             self.assertIn('id="live-cash"', text, name)
-            self.assertIn("agent-rescue.html", text, name)
-            self.assertIn("$29", text, name)
             self.assertIn("dealer-service-lead-rescue.html", text, name)
     def test_md(self) -> None:
         for name in MD:
             text = (ROOT / name).read_text(encoding="utf-8")
             self.assertIn("## Live cash", text, name)
-            self.assertIn("agent-rescue.html", text, name)
-            self.assertIn("$29", text, name)
             self.assertIn("dealer-service-lead-rescue.html", text, name)
 if __name__ == "__main__":
     unittest.main()

@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 import pr_collision_notice as notice
 
@@ -24,37 +25,37 @@ WORKFLOW = ROOT / ".github/workflows/pr-collision-notice.yml"
 KEEP = {
     "pr_collision_notice.py": "381d6b9b",
     "test_pr_collision_notice.py": "18a87c08",
-    ".github/workflows/pr-collision-notice.yml": "1c2ebcd5",
+    ".github/workflows/pr-collision-notice.yml": "deeeaf57",
     "p/grokbuild-pr-collision-notice-33689085107-billing-lock-20260902-01.md": "594b5e71",
-    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "e850c579",
+    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "db973ec1",
     "p/grokbuild-pr-collision-notice-33689347426-billing-lock-20260902-01.md": "e92d45af",
-    "test_grokbuild_pr_collision_notice_33689347426_billing_lock.py": "92d06e74",
+    "test_grokbuild_pr_collision_notice_33689347426_billing_lock.py": "238bcbd7",
     "p/grokbuild-pr-collision-notice-33694241061-billing-lock-20260902-01.md": "71afa5e6",
-    "test_grokbuild_pr_collision_notice_33694241061_billing_lock.py": "4deeeae9",
+    "test_grokbuild_pr_collision_notice_33694241061_billing_lock.py": "782d53d1",
     "p/grokbuild-pr-collision-notice-33699600937-billing-lock-20260903-01.md": "0fc75f49",
-    "test_grokbuild_pr_collision_notice_33699600937_billing_lock.py": "959bc058",
+    "test_grokbuild_pr_collision_notice_33699600937_billing_lock.py": "717d5a20",
     "p/grokbuild-pr-collision-notice-33699928196-billing-lock-20260903-01.md": "9b9b45f6",
-    "test_grokbuild_pr_collision_notice_33699928196_billing_lock.py": "2433a310",
+    "test_grokbuild_pr_collision_notice_33699928196_billing_lock.py": "d1728ca5",
     "p/grokbuild-pr-collision-notice-33699939369-billing-lock-20260903-01.md": "3110f1c7",
-    "test_grokbuild_pr_collision_notice_33699939369_billing_lock.py": "c1bc606c",
+    "test_grokbuild_pr_collision_notice_33699939369_billing_lock.py": "9dd461a1",
     "p/grokbuild-main-range-verify-33717084528-billing-lock-20260903-01.md": "2b0fd9c9",
-    "test_grokbuild_main_range_verify_33717084528_billing_lock.py": "dc173cae",
+    "test_grokbuild_main_range_verify_33717084528_billing_lock.py": "76349d08",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "297f868b",
+    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "347eb396",
     "p/grokbuild-slack-service-tags-33717615004-billing-lock-20260903-01.md": "f33a76ef",
-    "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "5aa976c0",
+    "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "f417e943",
     "p/grokbuild-open-door-guard-33717733987-billing-lock-20260903-01.md": "a0af1282",
-    "test_grokbuild_open_door_guard_33717733987_billing_lock.py": "001dc280",
+    "test_grokbuild_open_door_guard_33717733987_billing_lock.py": "8b0ced19",
     "p/grok-build-job-watchdog-33717741080-billing-lock-20260903-01.md": "f3afb926",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
-    "test_grokbuild_llms_txt_33699286770_billing_lock.py": "21037a27",
+    "test_grokbuild_llms_txt_33699286770_billing_lock.py": "71ad16e0",
     "p/grokbuild-pr8525-verify-20260903-01.md": "3e36c93c",
     "p/cursor-wire-catalog-marketplace-latch-readback-rematch-20260903-01.md": "f23e1db8",
-    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "905a7922",
+    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "649265c5",
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "6a512428",
-    "wire.html": "3f030862",
-    "ground/WIRE_SUPER_MCP.md": "9f1a457b",
+    "test_open_door_guard.py": "2e2cc164",
+    "wire.html": "623602a7",
+    "ground/WIRE_SUPER_MCP.md": "626b07f7",
     "p/cursor-big-huge-commerce-agents-readback-20260902-01.md": "2a5ce894",
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
 }
@@ -79,13 +80,13 @@ class TestGrokbuildPrCollisionNotice33717734032BillingLock(unittest.TestCase):
         self.assertNotIn("schedule:", yml)
         self.assertIn("ref: ${{ github.event.pull_request.base.sha }}", yml)
         self.assertNotIn("github.event.pull_request.head.sha", yml)
-        self.assertIn("python3 pr_collision_notice.py", yml)
+        self.assertIn("python3 listener/pr_collision_notice.py", yml)
         self.assertNotIn("if: false", yml)
         self.assertNotIn("billing", yml.lower())
 
     def test_local_failed_step_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", "test_pr_collision_notice.py"],
+            [sys.executable, "test_pr_collision_notice.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -93,7 +94,7 @@ class TestGrokbuildPrCollisionNotice33717734032BillingLock(unittest.TestCase):
         )
         out = (proc.stdout or "") + (proc.stderr or "")
         self.assertEqual(proc.returncode, 0, msg=out)
-        self.assertIn("Ran 4 tests", out)
+        self.assertIn("Ran 11 tests", out)
         self.assertIn("OK", out)
         rows = notice.find_pr_overlaps(
             10,

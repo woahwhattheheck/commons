@@ -57,6 +57,20 @@ PROVENANCE_SUCCESSORS = {
                 "Not remints of tip SKUs.\n"
             ).encode("utf-8"),
         ),
+        (
+            "anvil-invention-burst-autopsy-retirement-20260918-01",
+            (
+                "\n## Live cash\n\n"
+                "Verified product pages only — no invented Stripe links.\n\n"
+                "- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)\n"
+                "- [$199 referral diagnostic](../referral-intake-completeness.html)\n"
+                "- [$199 repair diagnostic](../repair-booking-preflight.html)\n"
+                "- [$199 plant diagnostic](../plant-downtime-handoff.html)\n\n"
+                "Shelf: [tools-cash.html](../tools-cash.html). Catalog: "
+                "[commerce.html](../commerce.html). Cite "
+                "spy-ground-batch-live-cash-20260905-18 — do not remint.\n"
+            ).encode("utf-8"),
+        ),
     ),
     "GRANTS.md": (
         (
@@ -80,6 +94,19 @@ PROVENANCE_SUCCESSORS = {
                 "[GGUF diagnostic · $12,000 / 10 days](./diagnostic.html) · "
                 "[White Box pilot · $30,000 / 30 days](./commercial.html). "
                 "Not remints of tip SKUs.\n"
+            ).encode("utf-8"),
+        ),
+        (
+            "anvil-grants-autopsy-retirement-20260918-01",
+            (
+                "\n## Live cash\n\n"
+                "Verified product pages only — no invented Stripe links.\n\n"
+                "- [$199 dealer diagnostic](./dealer-service-lead-rescue.html)\n"
+                "- [$199 referral diagnostic](./referral-intake-completeness.html)\n"
+                "- [$199 repair diagnostic](./repair-booking-preflight.html)\n"
+                "- [$199 plant diagnostic](./plant-downtime-handoff.html)\n\n"
+                "Shelf: [tools-cash.html](./tools-cash.html) · "
+                "[commerce.html](./commerce.html).\n\n"
             ).encode("utf-8"),
         ),
     ),
@@ -141,6 +168,7 @@ def _git_blob_oid(data: bytes) -> str:
 
 
 def _normalize_provenance_successors(path: str, data: bytes) -> tuple[bytes, list[str]]:
+    data = data.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
     applied: list[str] = []
     for label, successor in PROVENANCE_SUCCESSORS.get(path, ()):
         count = data.count(successor)

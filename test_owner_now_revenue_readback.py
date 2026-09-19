@@ -16,17 +16,17 @@ HELPER = ROOT / "host/owner_now_revenue.py"
 
 KEEP = {
     "p/cursor-owner-now-revenue-20260902-01.md": "fe5ba035",
-    "owner-now-revenue.html": "ccdf3185",
+    "owner-now-revenue.html": "df6e7ac2",
     "land/owner-now-revenue-20260902.md": "aa193e21",
     "pay.js": "d5d92b33",
-    "ground/OWNER_NOW.md": "a17b0afb",
+    "ground/OWNER_NOW.md": "39a0e0c3",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "p/cursor-incoming-models-hub-payload-readback-20260902-01.md": "2d297673",
     "p/cursor-big-things-incoming-shots-20260902-01.md": "60b24eff",
     "p/cursor-big-things-incoming-shots-readback-20260902-01.md": "3cabb764",
-    "autogtm.html": "1009c4cd",
+    "autogtm.html": "5c966110",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
 }
 
@@ -58,7 +58,9 @@ class TestOwnerNowRevenueReadback(unittest.TestCase):
         packet = json.loads(proc.stdout)
         self.assertEqual(packet["verdict"], "ASK_FOR_SALE", packet)
         self.assertEqual(packet["sku_count"], len(packet["ask_for_sale"]))
-        self.assertIn("agent-failure-autopsy-29", {row["sku"] for row in packet["ask_for_sale"]})
+        self.assertNotIn(
+            "agent-failure-autopsy-29", {row["sku"] for row in packet["ask_for_sale"]}
+        )
         self.assertTrue(packet["chargeable"])
         self.assertFalse(packet["invented_stripe_urls"])
         self.assertEqual(packet["cash_usd"], 0)
@@ -69,7 +71,7 @@ class TestOwnerNowRevenueReadback(unittest.TestCase):
 
     def test_leftover_tests_still_pass(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_owner_now_revenue.py"],
+            [sys.executable, "-m", "unittest", "test_owner_now_revenue.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

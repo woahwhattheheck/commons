@@ -22,7 +22,6 @@ RECEIPT = ROOT / "p" / "type-resources-catalog-convert-shelf-20260917-01.md"
 
 ALLOWED_LIVE_BUY_URLS = frozenset(
     {
-        "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
         "https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b",
         "https://buy.stripe.com/9B600i98N77b9uFeBk43S0c",
         "https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d",
@@ -38,7 +37,6 @@ BUY_HOST_PATH = re.compile(
     re.IGNORECASE,
 )
 SHELF_LABELS = (
-    ("Agent Failure Autopsy", "$29"),
     ("Dealer Service Lead Rescue", "$199"),
     ("Referral Intake Completeness", "$199"),
     ("Repair Booking Preflight", "$199"),
@@ -49,7 +47,6 @@ SHELF_LABELS = (
     ("White Box hour", "$250"),
 )
 RELATIVE_DOORS = (
-    "./agent-rescue.html",
     "./dealer-service-lead-rescue.html",
     "./referral-intake-completeness.html",
     "./repair-booking-preflight.html",
@@ -117,7 +114,6 @@ class TestTypeResourcesCatalogConvertShelf2026091701(unittest.TestCase):
         for url in ALLOWED_LIVE_BUY_URLS:
             self.assertIn(url, text)
         for name in (
-            "agent-rescue.html",
             "dealer-service-lead-rescue.html",
             "referral-intake-completeness.html",
             "repair-booking-preflight.html",

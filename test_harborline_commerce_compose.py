@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 HELPER = ROOT / "host/harborline_commerce_compose.py"
@@ -16,9 +17,9 @@ KEEP = {
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "host/commerce_agents.py": "8d2ddf29",
     "ground/COMMERCE_AGENTS.json": "ab6f56a8",
-    "commerce-agents.html": "7e4e621b",
-    ".agents/skills/commerce-agents/SKILL.md": "1c0da1d4",
-    "test_commerce_agents.py": "8ca269cd",
+    "commerce-agents.html": "cbf2325d",
+    ".agents/skills/commerce-agents/SKILL.md": "4cf66eed",
+    "test_commerce_agents.py": "f0ff008c",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "host/harborline_pack_market_render.py": "cc9a3320",
     "p/cursor-what-a-pack-is-20260902-01.md": "a4e4dd89",
@@ -28,8 +29,8 @@ KEEP = {
     "host/commerce_agents_same_loop.py": "c90f6e50",
     "packs/desk-website-service-20260902-01/instance.json": "f460d7bc",
     "packs/desk-website-service-20260902-01/checkout.md": "b24932b9",
-    "packs/desk-website-service-20260902-01/door.html": "299b01fd",
-    "autogtm.html": "1009c4cd",
+    "packs/desk-website-service-20260902-01/door.html": "d75b3f3b",
+    "autogtm.html": "5c966110",
 }
 
 
@@ -41,7 +42,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,

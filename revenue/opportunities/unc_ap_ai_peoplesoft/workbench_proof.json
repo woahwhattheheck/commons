@@ -1,0 +1,98 @@
+{
+  "schema": "unc.ap-review-proof/v1",
+  "seat": "Z-Fenwick-R8",
+  "model": "GPT-6 Astra Pro",
+  "base_main": "6f790e094d98ee5565a87fb161c829ccf71bceef",
+  "environment": "ephemeral cloud POSIX; Python 3.13.5",
+  "scope": "116 focused cases: 71 workbench +23 supplementary source +22 existing Cairn; not whole main package or repository",
+  "commands": [
+    {
+      "command": "python -B -m unittest -v test_ap_review.py test_fenwick_source_admission.py test_cairn_batch_identity.py",
+      "exit_code": 0,
+      "tests": 116,
+      "seconds": 12.461
+    },
+    {
+      "command": "python -O -B -m unittest -v test_ap_review.py test_fenwick_source_admission.py test_cairn_batch_identity.py",
+      "exit_code": 0,
+      "tests": 116,
+      "seconds": 12.004
+    }
+  ],
+  "compile": "PASS for six selected Python files",
+  "cli_build_and_verify_against_original": "PASS",
+  "synthetic_report_receipt": "a32c082fbefdafd473835740c97dce0c8db11d4d0cdaaa54d70d7c0993b88375",
+  "source_files": {
+    "revenue/opportunities/unc_ap_ai_peoplesoft/REVIEW_WORKBENCH.md": {
+      "bytes": 8437,
+      "git_blob": "f843a3832cee3f52b9b1dded8caf35427f9899bd",
+      "sha256": "c2f9ad419717ce63767509043b66a61e7b80beea52fc082d84fc4abee2e3befa"
+    },
+    "revenue/opportunities/unc_ap_ai_peoplesoft/ap_review.py": {
+      "bytes": 19894,
+      "git_blob": "bf0ddbfa5790f2e47256c347b98bb2384035975b",
+      "sha256": "5a973d8e0c002c97dcbc4f0b569e84b6dd09ea3b6dbcd5e98bc7a87803141599"
+    },
+    "revenue/opportunities/unc_ap_ai_peoplesoft/examples/review_intake.json": {
+      "bytes": 3606,
+      "git_blob": "f466fcf4d12acc390c4a1bff73dc34e2406f3bee",
+      "sha256": "d0d4bf4e21ef37bca9729fe6ff85fdab4916902ba09b01654ffffbb702e3ac61"
+    },
+    "revenue/opportunities/unc_ap_ai_peoplesoft/source_ledger.json": {
+      "bytes": 387,
+      "git_blob": "6c9668a310862804a52b3e5efdd782069d5f9b2e",
+      "sha256": "76f84ffe0f6811e39b61577e282110751fc840b1fd04d27bbceace41f70ee111"
+    },
+    "revenue/opportunities/unc_ap_ai_peoplesoft/test_ap_review.py": {
+      "bytes": 20474,
+      "git_blob": "506ec3c0d1379215d71554f2ca10541b81b5b021",
+      "sha256": "25481e277e8d5c7f620ec431f8677e64ded59af3fcddbc7a2a40d9e9660795ba"
+    },
+    "revenue/opportunities/unc_ap_ai_peoplesoft/test_cairn_batch_identity.py": {
+      "bytes": 7712,
+      "git_blob": "3adaa00271072cde490a7564aa22f100a622c566",
+      "sha256": "5c2e3911d1a2d5981cd736c738a18762c0463fc17842877a914b75e861798e9b"
+    },
+    "revenue/opportunities/unc_ap_ai_peoplesoft/test_fenwick_source_admission.py": {
+      "bytes": 6095,
+      "git_blob": "792b15a3cb4afc7b75a250379b7e70188ee90b62",
+      "sha256": "b3f1d68c011e7128db2c9b0bf30efa14cd975810da0aace4238c7fcffa5d89f4"
+    },
+    "revenue/opportunities/unc_ap_ai_peoplesoft/unc_ap_ai.py": {
+      "bytes": 275,
+      "git_blob": "bf021ad98d43e256cdc9c625bbfb0753dcc4b7c0",
+      "sha256": "098d44b1ec22c527d407789e1d150c7226821d87abebf0794a748696427dab03"
+    },
+    "revenue/opportunities/unc_ap_ai_peoplesoft/unc_ap_ai_v2.py": {
+      "bytes": 25046,
+      "git_blob": "e61413a5e8ac1e0f411e8493ccac14550f1d8357",
+      "sha256": "abd387aa8153fb6a8d589fab3af9967ab0bb6e8b6c96d7b49c4521a4f903261e"
+    }
+  },
+  "logs": {
+    "zfr8-final-normal.log": {
+      "bytes": 12123,
+      "sha256": "a002b7c9cafb81801384e3bfa3bd7a94770d696288102d9e6b69abc63a8586c6"
+    },
+    "zfr8-final-optimized.log": {
+      "bytes": 12123,
+      "sha256": "d6442fc680aec95f4cd0123eb3dc797a2ac384dae08af676e7f7233edb0c9663"
+    }
+  },
+  "preserved_main_surfaces": [
+    "unc_ap_ai_v2.py",
+    "unc_ap_ai.py",
+    "source_ledger.json",
+    "test_unc_ap_ai.py",
+    "test_unc_retry_metadata.py",
+    "test_cairn_batch_identity.py",
+    "batch implementation and generation verifier",
+    "existing root proof hooks"
+  ],
+  "new_workflow": false,
+  "hosted_execution_claimed": false,
+  "browser_visual_review_claimed": false,
+  "provider_authentication_claimed": false,
+  "buyer_source_admission_claimed": false,
+  "payment_or_revenue_claimed": false
+}

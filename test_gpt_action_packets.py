@@ -92,7 +92,7 @@ class GptActionPacketTests(unittest.TestCase):
         )
         self.assertEqual(
             nxt.stdout.strip(),
-            "Keep inbound doors live (agent-triage.html, agent-rescue.html, "
+            "Keep inbound doors live (agent-triage.html, "
             "tokenjunkielabs@gmail.com). Do not resend held prospects. "
             "Founder still must evidence a chargeable processor path.",
         )

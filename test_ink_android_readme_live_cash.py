@@ -1,4 +1,4 @@
-"""Hermetic: android/README.md surfaces live Autopsy + $199 product doors."""
+"""Hermetic: android/README.md surfaces live $199 product doors."""
 
 from __future__ import annotations
 
@@ -9,7 +9,6 @@ ROOT = pathlib.Path(__file__).resolve().parent
 README = ROOT / "android" / "README.md"
 
 PRODUCT_MARKERS = (
-    "../agent-rescue.html",
     "../dealer-service-lead-rescue.html",
     "../referral-intake-completeness.html",
     "../repair-booking-preflight.html",

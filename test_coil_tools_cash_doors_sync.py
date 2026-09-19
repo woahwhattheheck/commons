@@ -14,7 +14,7 @@ SHELF = ROOT / "tools-cash.html"
 
 # product pages (not nav)
 PRODUCT_RE = re.compile(
-    r'href="(\./(?:agent-rescue|dealer-service-lead-rescue|referral-intake-completeness|repair-booking-preflight|plant-downtime-handoff)\.html)"'
+    r'href="(\./(?:dealer-service-lead-rescue|referral-intake-completeness|repair-booking-preflight|plant-downtime-handoff)\.html)"'
 )
 
 
@@ -25,7 +25,7 @@ class CoilToolsCashDoorsSyncTest(unittest.TestCase):
         self.assertIsInstance(cash, dict)
         doors = cash.get("doors")
         self.assertIsInstance(doors, list)
-        self.assertGreaterEqual(len(doors), 5)
+        self.assertGreaterEqual(len(doors), 4)
         hrefs = [d["href"] for d in doors]
         self.assertEqual(len(hrefs), len(set(hrefs)), "duplicate cash door href")
         shelf = SHELF.read_text(encoding="utf-8")

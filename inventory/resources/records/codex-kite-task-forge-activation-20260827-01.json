@@ -20,7 +20,7 @@
   "exact_blobs": {
     "artifacts/KITE_TASK_FORGE_0_R0.jsonl": "6eb8d100c52b5c552ab09d75588fc5b807a22b63",
     "artifacts/KITE_TASK_FORGE_0_R0.sha256": "afbe4e0bdbab7b247dbf0b0137e3c62b04b82055",
-    "task-forge.html": "8ed04939562167ff99fa5b92f2c723fbd2834ebf",
+    "task-forge.html": "7184de0bafd598287cdfc0192f88b5611a4ecbf8",
     "test_task_forge_resource.py": "c8d752186d76acd97504bd792f070940f6b3cb4b"
   },
   "artifact_truth": {

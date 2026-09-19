@@ -2,8 +2,7 @@
 """sledge-fleetworkorder-imagedrop-convert-shelf-20260917-01 — convert shelves.
 
 Wire EXISTING live Stripe Payment Links as first-screen Buy CTAs on
-fleet-work-order.html and image-drop.html. Thin shelf only: Autopsy $29 and
-White Box hour $250. Copy character-exact from avatars.html. Do not
+fleet-work-order.html and image-drop.html. Thin shelf only: White Box hour $250. Copy character-exact from avatars.html. Do not
 invent new buy.stripe.com host paths. Do not wire the nine-link shelf.
 Keep Live cash product-page links. Match avatars.html thin CTA style.
 Tip KEEP. HTTPS-exact enroll. Hands off already-shelved convert pairs;
@@ -21,25 +20,21 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent
-FLEET = ROOT / "fleet-work-order.html"
 IMAGEDROP = ROOT / "image-drop.html"
 RECEIPT = ROOT / "p" / "sledge-fleetworkorder-imagedrop-convert-shelf-20260917-01.md"
 
 ALLOWED_LIVE_BUY_URLS = frozenset(
     {
-        "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
         "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
     }
 )
 BUY_HTTPS_URL = re.compile(r"https://buy\.stripe\.com/[A-Za-z0-9_-]+")
 HTTP_BUY_DUP = re.compile(r"http://buy\.stripe\.com/", re.IGNORECASE)
-HTTP_DUP_HREF = "http://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g"
+HTTP_DUP_HREF = "http://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07"
 BUY_LABELS = (
-    "Buy Autopsy $29",
     "Buy one White Box hour $250",
 )
 LIVE_CASH_DOORS = (
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -47,19 +42,14 @@ LIVE_CASH_DOORS = (
 )
 # Per-page extra live-cash markers that must survive the shelf insert.
 LIVE_CASH_EXTRA = {
-    "fleet-work-order.html": (
-        "Larger fixed engagements",
-        "diagnostic.html",
-        "commercial.html",
-    ),
     "image-drop.html": (
         "Larger fixed engagements",
         "diagnostic.html",
         "commercial.html",
     ),
 }
-PAGES = (FLEET, IMAGEDROP)
-ALLOWLIST_PAGES = ("fleet-work-order.html", "image-drop.html")
+PAGES = (IMAGEDROP,)
+ALLOWLIST_PAGES = ("image-drop.html",)
 CITE = "sledge-fleetworkorder-imagedrop-convert-shelf-20260917-01"
 BODY_FOLD_MAX = 2200
 NINE_LINK_EXCLUDED = (
@@ -174,6 +164,7 @@ EXISTING_CONVERT_SHELF_KEYS = (
     "the-world.html",
 )
 FENCED_PAGES = (
+    "fleet-work-order.html",
     "flipbook.html",
     "compress.html",
     "program.html",
@@ -405,7 +396,6 @@ class TestSledgeFleetworkorderImagedropConvertShelf2026091701(unittest.TestCase)
         for name in (
             "fleet-work-order.html",
             "image-drop.html",
-            "agent-rescue.html",
             "commercial.html",
             "diagnostic.html",
         ):
@@ -440,7 +430,7 @@ class TestSledgeFleetworkorderImagedropConvertShelf2026091701(unittest.TestCase)
                 ALLOWED_LIVE_BUY_URLS,
             )
             forged = page_html.replace(
-                "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
+                "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
                 "https://buy.stripe.com/not-a-canonical-link",
                 1,
             )
@@ -450,7 +440,7 @@ class TestSledgeFleetworkorderImagedropConvertShelf2026091701(unittest.TestCase)
             )
             poisoned = (
                 page_html
-                + '<a href="http://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">dup</a>'
+                + '<a href="http://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">dup</a>'
             )
             self.assertEqual(live_buy_urls(poisoned), ALLOWED_LIVE_BUY_URLS)
             self.assertEqual(
@@ -464,7 +454,7 @@ class TestSledgeFleetworkorderImagedropConvertShelf2026091701(unittest.TestCase)
                 ["%s %s" % (name, http_error)],
             )
             http_only = page_html.replace(
-                "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
+                "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
                 HTTP_DUP_HREF,
                 1,
             )

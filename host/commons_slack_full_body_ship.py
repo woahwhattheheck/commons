@@ -7,6 +7,7 @@ import argparse
 import json
 import subprocess
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent.parent
 REFUSE = ("--send", "--apply", "--go", "--autopilot")
@@ -19,12 +20,12 @@ THIS_SEAT = "bc-7e34a47c"
 
 KEEP = {
     f"p/{LEFTOVER_ID}.md": "86f4eddc",
-    "host/commons_slack_full_body.py": "d5338810",
-    "test_commons_slack_full_body.py": "a06fbfca",
-    "ground/COMMONS_SLACK_FULL_BODY.json": "eece8b1a",
-    "ground/COMMONS_SLACK_FULL_BODY.md": "9203dd5b",
-    "commons-slack.html": "16a25386",
-    "host/slack_mirror.py": "95d6aff3",
+    "host/commons_slack_full_body.py": "7a6067d7",
+    "test_commons_slack_full_body.py": "6a66d3f8",
+    "ground/COMMONS_SLACK_FULL_BODY.json": "5b2bf0e0",
+    "ground/COMMONS_SLACK_FULL_BODY.md": "456ed9a6",
+    "commons-slack.html": "b7630b56",
+    "host/slack_mirror.py": "72c0844e",
     "slack_ingest.py": "a35169fe",
     "test_slack_mirror.py": "739d5ee8",
 }
@@ -74,7 +75,7 @@ def refuse_payload(flag: str) -> dict[str, object]:
 
 def leftover_measure() -> dict[str, object]:
     proc = subprocess.run(
-        ["python3", str(ROOT / "host/commons_slack_full_body.py"), "--json"],
+        [sys.executable, str(ROOT / "host/commons_slack_full_body.py"), "--json"],
         cwd=ROOT,
         text=True,
         capture_output=True,
@@ -86,7 +87,7 @@ def leftover_measure() -> dict[str, object]:
 
 def leftover_tests() -> dict[str, object]:
     proc = subprocess.run(
-        ["python3", "-m", "unittest", "test_commons_slack_full_body.py"],
+        [sys.executable, "-m", "unittest", "test_commons_slack_full_body.py"],
         cwd=ROOT,
         text=True,
         capture_output=True,
@@ -101,7 +102,7 @@ def leftover_tests() -> dict[str, object]:
 
 def leftover_refuse(flag: str) -> dict[str, object]:
     proc = subprocess.run(
-        ["python3", str(ROOT / "host/commons_slack_full_body.py"), flag],
+        [sys.executable, str(ROOT / "host/commons_slack_full_body.py"), flag],
         cwd=ROOT,
         text=True,
         capture_output=True,

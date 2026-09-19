@@ -14,8 +14,6 @@ class BassAgentsLiveCashTest(unittest.TestCase):
     def test_tip_shelf_doors(self) -> None:
         text = AGENTS.read_text(encoding="utf-8")
         self.assertIn("## Commercial ladder", text)
-        self.assertIn("agent-rescue.html", text)
-        self.assertIn("$29", text)
         self.assertIn("dealer-service-lead-rescue.html", text)
         self.assertIn("referral-intake-completeness.html", text)
         self.assertIn("repair-booking-preflight.html", text)

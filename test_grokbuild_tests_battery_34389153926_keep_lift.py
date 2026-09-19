@@ -16,6 +16,7 @@ import re
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 KEEP_RE = re.compile(r"^KEEP\s*=\s*\{", re.M)
@@ -110,7 +111,7 @@ class TestGrokbuildTestsBattery34389153926KeepLift(unittest.TestCase):
     def test_autogtm_live_cash_door_stays_open(self) -> None:
         text = (ROOT / "autogtm.html").read_text(encoding="utf-8")
         self.assertIn('id="live-cash"', text)
-        self.assertIn("agent-rescue.html", text)
+        self.assertIn("dealer-service-lead-rescue.html", text)
         self.assertNotIn('type="password"', text)
         self.assertNotIn("Authorization", text)
 
@@ -131,7 +132,7 @@ class TestGrokbuildTestsBattery34389153926KeepLift(unittest.TestCase):
         for name in ORIGINALS:
             with self.subTest(name=name):
                 proc = subprocess.run(
-                    ["python3", name],
+                    [sys.executable, name],
                     cwd=ROOT,
                     text=True,
                     capture_output=True,

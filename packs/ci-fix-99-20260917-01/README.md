@@ -28,6 +28,6 @@ See `intake.md` and the door form. Required: public repo URL, failing Actions ru
 
 ## Checkout
 
-`NOT_MINTED`. Livemode GET `/v1/payment_links` on Token Junkie Labs had **no** existing $99 CI-fix Payment Link. Do not invent one. Mail intent: `mailto:tokenjunkielabs@gmail.com`. Stripe ask if no PL.
+Live Payment Link on `door.html` (existing livemode PL, sku `ci-fix-pack-99`). See `checkout.md`. Do not mint another. Mail intake: `mailto:tokenjunkielabs@gmail.com`.
 
 Autopsy is SCRAPPED — do not sell it on this pack. Tip KEEP. #8802 off. Never Bryce-as-buyer.
