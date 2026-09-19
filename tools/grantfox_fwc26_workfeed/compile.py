@@ -70,6 +70,8 @@ class Candidate:
     state: str
     labels: tuple[str, ...]
     assignees: tuple[str, ...]
+    observed_claimants: tuple[str, ...]
+    open_pull_requests: tuple[str, ...]
     status: str
     reward_class: str
     explicit_reward_mentions: tuple[str, ...]
@@ -88,6 +90,8 @@ class Candidate:
             "state": self.state,
             "labels": list(self.labels),
             "assignees": list(self.assignees),
+            "observed_claimants": list(self.observed_claimants),
+            "open_pull_requests": list(self.open_pull_requests),
             "status": self.status,
             "reward_class": self.reward_class,
             "explicit_reward_mentions": list(self.explicit_reward_mentions),
@@ -166,6 +170,43 @@ def _assignees(record: dict[str, Any]) -> tuple[str, ...]:
     return tuple(result)
 
 
+def _observed_claimants(record: dict[str, Any]) -> tuple[str, ...]:
+    raw = record.get("claimant_comments") or record.get("claim_comments") or []
+    if not isinstance(raw, list):
+        raise WorkfeedError("claimant_comments must be a list")
+    result: list[str] = []
+    for item in raw:
+        if isinstance(item, str):
+            claimant = item.strip()
+        elif isinstance(item, dict):
+            user = item.get("user")
+            if isinstance(user, dict):
+                user = user.get("login")
+            claimant = str(user or item.get("login") or "").strip()
+        else:
+            raise WorkfeedError("claimant_comments entries must be strings or objects")
+        if claimant and claimant not in result:
+            result.append(claimant)
+    return tuple(result)
+
+
+def _open_pull_requests(record: dict[str, Any]) -> tuple[str, ...]:
+    raw = record.get("open_pull_requests") or record.get("open_prs") or []
+    if not isinstance(raw, list):
+        raise WorkfeedError("open_pull_requests must be a list")
+    result: list[str] = []
+    for item in raw:
+        if isinstance(item, str):
+            value = item.strip()
+        elif isinstance(item, dict):
+            value = str(item.get("url") or item.get("html_url") or item.get("number") or "").strip()
+        else:
+            raise WorkfeedError("open_pull_requests entries must be strings or objects")
+        if value and value not in result:
+            result.append(value)
+    return tuple(result)
+
+
 def _commands(body: str) -> tuple[str, ...]:
     found: list[str] = []
     for command in re.findall(r"`([^`\n]+)`", body):
@@ -186,6 +227,8 @@ def classify(record: dict[str, Any]) -> Candidate:
     body = str(record.get("body") or "")
     labels = _labels(record)
     assignees = _assignees(record)
+    observed_claimants = _observed_claimants(record)
+    open_pull_requests = _open_pull_requests(record)
 
     if not isinstance(title, str) or not title.strip():
         raise WorkfeedError(f"{key}: title is required")
@@ -215,6 +258,14 @@ def classify(record: dict[str, Any]) -> Candidate:
     elif assignees:
         status = "ASSIGNED"
         reason = "already assigned to: " + ", ".join(assignees)
+    elif observed_claimants or open_pull_requests:
+        status = "CLAIMED_OR_PR_OPEN"
+        pieces: list[str] = []
+        if observed_claimants:
+            pieces.append("observed claimant(s): " + ", ".join(observed_claimants))
+        if open_pull_requests:
+            pieces.append("open PR(s): " + ", ".join(open_pull_requests))
+        reason = "; ".join(pieces)
     elif claim_required:
         status = "CLAIM_REQUIRED"
         reason = "issue text describes an application/assignment step"
@@ -231,6 +282,8 @@ def classify(record: dict[str, Any]) -> Candidate:
         state=state,
         labels=labels,
         assignees=assignees,
+        observed_claimants=observed_claimants,
+        open_pull_requests=open_pull_requests,
         status=status,
         reward_class=reward_class,
         explicit_reward_mentions=explicit_mentions,
@@ -251,7 +304,7 @@ def compile_records(records: Iterable[dict[str, Any]]) -> list[Candidate]:
         seen.add(candidate.key)
         candidates.append(candidate)
 
-    rank = {"READY": 0, "CLAIM_REQUIRED": 1, "ASSIGNED": 2, "INELIGIBLE": 3}
+    rank = {"READY": 0, "CLAIM_REQUIRED": 1, "CLAIMED_OR_PR_OPEN": 2, "ASSIGNED": 3, "INELIGIBLE": 4}
     candidates.sort(
         key=lambda c: (
             rank[c.status],
@@ -279,6 +332,7 @@ def render_markdown(candidates: Iterable[Candidate]) -> str:
         "",
         f"- READY: {counts.get('READY', 0)}",
         f"- CLAIM_REQUIRED: {counts.get('CLAIM_REQUIRED', 0)}",
+        f"- CLAIMED_OR_PR_OPEN: {counts.get('CLAIMED_OR_PR_OPEN', 0)}",
         f"- ASSIGNED: {counts.get('ASSIGNED', 0)}",
         f"- INELIGIBLE: {counts.get('INELIGIBLE', 0)}",
         "",
