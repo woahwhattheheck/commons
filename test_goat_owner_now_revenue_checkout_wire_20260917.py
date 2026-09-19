@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""GOAT owner-now source carrier retained; post-merge checkout authority is gated.
+"""GOAT owner-now source carrier retained; remaining SKUs stay pay.js gated.
 
-GOAT keeps source/product/link-discovery credit from PR #15364.  The static and
-noscript Stripe publication it introduced was stopped after merge.  This module
-reuses the post-merge predecessor suite so the original carrier filename stays a
-retained proof surface without re-authorizing the stopped behavior.
+GOAT keeps source/product/link-discovery credit from PR #15364. Noscript and
+gated slots stay provider-inert. The first-screen Buy CTA reuses the EXISTING
+White Box hour $250 Payment Link pinned by Anvil convert-shelf. Autopsy is
+SCRAPPED. This module reuses the predecessor suite so the original carrier
+filename stays a retained proof surface.
 """
 from __future__ import annotations
 

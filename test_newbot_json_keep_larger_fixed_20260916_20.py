@@ -16,7 +16,6 @@ ROOT = Path(__file__).resolve().parent
 CLAIM = "newbot-json-keep-larger-fixed-20260916-20"
 DOORS = ("pulse.json", "share.json", "lanes.json", "orient.json", "wakeups.json")
 PRODUCTS = [
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -30,7 +29,6 @@ def _live_cash_fixture():
         "cite": [CLAIM],
         "note": "fixture keep larger_fixed",
         "products": [
-            {"name": "Agent Failure Autopsy", "price_usd": 29, "path": "agent-rescue.html"},
             {
                 "name": "Dealer Service Lead Rescue",
                 "price_usd": 199,
@@ -102,6 +100,8 @@ class TestNewbotJsonKeepLargerFixed2026091620(unittest.TestCase):
         self.addCleanup(temp.cleanup)
         root = Path(temp.name)
         gen.ROOT = str(root)
+        for page in PRODUCTS + list(LARGER):
+            (root / page).write_text("<html>fixture</html>", encoding="utf-8")
 
         def git(*args):
             return subprocess.run(

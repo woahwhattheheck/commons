@@ -12,7 +12,6 @@ import llms_txt
 ROOT = Path(__file__).resolve().parent
 CLAIM = "grok-change-md-keep-larger-fixed-20260916-01"
 PRODUCTS = (
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -26,7 +25,7 @@ class TestGrokChangeMdKeepLargerFixed2026091601(unittest.TestCase):
     def test_change_live_cash_constant_has_autopsy_and_larger(self):
         block = llms_txt.CHANGE_LIVE_CASH
         self.assertIn("## Live cash", block)
-        self.assertIn("./agent-rescue.html", block)
+
         self.assertIn("$199", block)
         self.assertIn("Larger fixed engagements", block)
         self.assertIn("./diagnostic.html", block)
@@ -38,7 +37,7 @@ class TestGrokChangeMdKeepLargerFixed2026091601(unittest.TestCase):
     def test_tip_change_md_has_autopsy_and_larger(self):
         text = (ROOT / "change.md").read_text(encoding="utf-8")
         self.assertIn("## Live cash", text)
-        self.assertIn("./agent-rescue.html", text)
+
         self.assertIn("Larger fixed engagements", text)
         self.assertIn("./diagnostic.html", text)
         self.assertIn("./commercial.html", text)
@@ -64,7 +63,7 @@ class TestGrokChangeMdKeepLargerFixed2026091601(unittest.TestCase):
             root=root,
         )
         self.assertIn("## Live cash", text)
-        self.assertIn("./agent-rescue.html", text)
+
         self.assertIn("Larger fixed engagements", text)
         self.assertIn("./diagnostic.html", text)
         self.assertIn("./commercial.html", text)

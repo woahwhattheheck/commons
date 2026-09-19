@@ -3,6 +3,7 @@ from __future__ import annotations
 import copy
 import importlib.util
 import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -186,8 +187,8 @@ class RightNowExecutionTests(unittest.TestCase):
 
     def test_cli_is_deterministic_and_read_only(self) -> None:
         command = [sys.executable, str(ROOT / "host" / "right_now_revenue.py"), "compile"]
-        first = subprocess.run(command, cwd=ROOT, check=True, capture_output=True, text=True)
-        second = subprocess.run(command, cwd=ROOT, check=True, capture_output=True, text=True)
+        first = subprocess.run(command, cwd=ROOT, check=True, capture_output=True, text=True, errors="replace")
+        second = subprocess.run(command, cwd=ROOT, check=True, capture_output=True, text=True, errors="replace")
         self.assertEqual(first.stdout, second.stdout)
         self.assertEqual(json.loads(first.stdout), control.build_control())
 
@@ -198,6 +199,8 @@ class RightNowExecutionTests(unittest.TestCase):
             check=True,
             capture_output=True,
             text=True,
+            encoding="utf-8",
+            env={**os.environ, "PYTHONIOENCODING": "utf-8"},
         )
         self.assertEqual(
             result.stdout.strip(),
@@ -216,6 +219,8 @@ class RightNowExecutionTests(unittest.TestCase):
                 cwd=ROOT,
                 capture_output=True,
                 text=True,
+                encoding="utf-8",
+                env={**os.environ, "PYTHONIOENCODING": "utf-8"},
             )
         self.assertEqual(result.returncode, 2)
         self.assertIn("committed control snapshot differs", result.stderr)

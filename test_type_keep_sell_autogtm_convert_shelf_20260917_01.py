@@ -2,8 +2,7 @@
 """type-keep-sell-autogtm-convert-shelf-20260917-01 — convert shelves.
 
 Wire EXISTING live Stripe Payment Links as first-screen Buy CTAs on
-keep-sell.html and autogtm.html. Thin shelf only: Autopsy $29 and
-White Box hour $250. Do not invent new buy.stripe.com host paths.
+keep-sell.html and autogtm.html. Thin shelf only: White Box hour $250. Do not invent new buy.stripe.com host paths.
 Do not wire the nine-link shelf. Keep Live cash product-page links.
 Match live.html / avatars.html thin CTA style. Tip KEEP. Hands off
 Wire Muse+arbitrage/attested-inference, Latch annex/archive, Goat
@@ -25,7 +24,6 @@ RECEIPT = ROOT / "p" / "type-keep-sell-autogtm-convert-shelf-20260917-01.md"
 
 ALLOWED_LIVE_BUY_URLS = frozenset(
     {
-        "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
         "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
     }
 )
@@ -34,11 +32,9 @@ BUY_HOST_PATH = re.compile(
     re.IGNORECASE,
 )
 BUY_LABELS = (
-    "Buy Autopsy $29",
     "Buy one White Box hour $250",
 )
 LIVE_CASH_DOORS = (
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -150,7 +146,6 @@ class TestTypeKeepSellAutogtmConvertShelf2026091701(unittest.TestCase):
         for name in (
             "keep-sell.html",
             "autogtm.html",
-            "agent-rescue.html",
             "commercial.html",
             "diagnostic.html",
         ):

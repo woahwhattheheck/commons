@@ -1,0 +1,158 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-ci-fix-pack-99-payment-road-resource-activation-20260919-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "actor": "CODEX_GPT5",
+  "selected_resource": "ci-fix-pack-99-payment-road",
+  "observed_at": "2026-09-19T10:19:36Z",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "UNREGISTERED",
+    "evidence_freshness": "FRESH_MERGED_SOURCE_AND_EXACT_DESCENDANT_BLOBS"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "authority": "INTERNAL_COMMONS_EVIDENCE_AND_DIRECT_STRIPE_TRANSACTION_ROUTE; CUSTOMER_PUBLIC_COMMUNICATION_MUST_USE_A_CLEAN_STANDALONE_NON_GITHUB_SURFACE_PLUS_DIRECT_TRANSACTION_OR_SUPPORT_PATH; NO_COMMONS_OR_GITHUB_CTA; NO_DUPLICATE_PAYMENT_LINK; NO_PROVIDER_WRITE; NO_BUYER_ACCEPTANCE_SETTLEMENT_PAYOUT_REVENUE_OR_CURRENT_CASH_INFERENCE",
+    "holder": "LATCH source custody / Commons commerce and delivery agents",
+    "activation_base_main_sha": "2ada04e5c9b8ea18a4323768d4c38b84aeb089df"
+  },
+  "concrete_consumer": "A Commons sales or delivery agent composing a clean standalone customer surface for the bounded CI-fix offer, and an external buyer only through that standalone surface plus the direct transaction path.",
+  "measurable_outcome": "The already-merged $99 CI-fix pack and its single existing transaction road are separately routable in the canonical graph with exact source custody, no remint, a delivery-ready red-to-green canary, and explicit customer-surface and financial non-inference boundaries.",
+  "production_truth": {
+    "activation_operation_id": "codex-ci-fix-pack-99-payment-road-resource-20260919-01",
+    "source_repository": "woahwhattheheck/commons",
+    "source_pr": 16085,
+    "source_head_sha": "e14704bbb570d92f020a2d3a4deeec55eb17edfe",
+    "source_merge_sha": "1199466e6ee74307d127b507baa6655fe768097b",
+    "source_descendant_main_sha": "2ada04e5c9b8ea18a4323768d4c38b84aeb089df",
+    "source_paths": {
+      "host/ci_fix_pack.py": "ee16fa29d75db976cfbed71eee3f76350fcfe64d",
+      "land/sku-ci-fix-99-20260917.md": "74b947363223b078b00d493f60b0a4180d687d14",
+      "p/latch-ci-fix-pack-99-checkout-wire-20260919-01.md": "821ca36609fae65f9996e695b29cdee3b094efe1",
+      "packs/ci-fix-99-20260917-01/checkout.md": "f18fd9395affccbda0d7512f240778b484409af1",
+      "packs/ci-fix-99-20260917-01/door.html": "57cd42eaa842cda06d8adac6fdba2f9d4a0a34f2",
+      "revenue/ci_fix_pack_99/contract.json": "b378807168e7033c1065e82bda03385082fc6497",
+      "test_latch_ci_fix_pack_99_checkout_wire_20260919_01.py": "1db0b4ab2d1fae6c6f4573ca69631d11ae2d460a"
+    },
+    "offer_id": "ci-fix-pack-99",
+    "price_usd": 99,
+    "payment_links": 1,
+    "checkout_status": "LIVE_PAYMENT_LINK",
+    "focused_tests": {
+      "original_pack": "5/5 PASS",
+      "checkout_wire": "4/4 PASS",
+      "open_door_guard": "PASS"
+    },
+    "exact_head_workflows": {
+      "open-door-guard": "SUCCESS",
+      "source-parses": "SUCCESS",
+      "path-manifest": "SUCCESS",
+      "muhlnickel-spec-guard": "SUCCESS",
+      "job-watchdog": "SUCCESS",
+      "tests": "FAILURE_NOT_RELABELED_GREEN"
+    },
+    "maximum_state": "CHECKOUT_ROAD_ACTIVE_AND_PACK_DELIVERY_READY",
+    "customer_public_destination": "STANDALONE_NON_GITHUB_SURFACE_REQUIRED",
+    "commons_or_github_customer_cta": false,
+    "customer_contact": false,
+    "buyer_acceptance": false,
+    "payment_observed": false,
+    "settlement_observed": false,
+    "payout_observed": false,
+    "revenue_recognition": false,
+    "current_cash_claim": false,
+    "provider_writes": 0
+  },
+  "delta": {
+    "prior_terminal_main_sha": "6c68d4332c3fdd5633dfa5b65b461402f6ab0484",
+    "activation_base_main_sha": "2ada04e5c9b8ea18a4323768d4c38b84aeb089df",
+    "commits_in_delta": 5235,
+    "changed_paths_in_delta": 10046,
+    "remote_branches_observed": 4429,
+    "prior_remote_branches_observed": 3194,
+    "remote_branch_identity_boundary": "All 4,429 current branch names were enumerated across 46 connector pages. Name enumeration proves reachability, not tip movement or owner release.",
+    "updated_pull_requests": 1810,
+    "open_updated_pull_requests": 57,
+    "closed_or_merged_updated_pull_requests": 1753,
+    "updated_open_issues": 114,
+    "updated_closed_issues": 478,
+    "prior_terminal_slack_ts": "1789305505.090479",
+    "latest_delta_slack_ts": "1789813173.482349",
+    "slack_top_level_messages": {
+      "commons": 910,
+      "delegations": 2269,
+      "todo": 227,
+      "shipped_builds": 620,
+      "products": 107,
+      "leads": 77,
+      "sales": 358
+    },
+    "slack_threads": "All 278 post-watermark threaded roots were read. Twenty-seven transient Slack 429s were retried from the exact roots and completed without a remaining error.",
+    "github_state": "The delta contains many separately owned merged products, research carriers, repair lanes, current open PRs and generated projection commits. PR #16085 is the selected already-merged resource; no source/package/provider byte is reminted by this activation.",
+    "delegations_state": "New substantial lanes are already assigned, shipped, yielded, or fenced by earlier durable custody; no independent nonduplicate build order survived the current-main, issue, PR, Slack and receipt search.",
+    "todo_state": "Fresh todo rows retain named owners or temporary scratch custody; none creates an unheld implementation lane for this activation.",
+    "shipped_builds_state": "Fresh shipped receipts preserve their original source and ownership. Source PR #16085 is reused rather than rebuilt.",
+    "products_state": "The selected commercial asset is now canonical internal routing metadata. Current owner law forbids using Commons or GitHub as a customer/public destination.",
+    "leads_state": "Fresh prospect activity carries explicit owners, exact leases and DNR fences. No outreach was reopened.",
+    "sales_state": "A live transaction road is not buyer intent, acceptance, settlement, payout, revenue, current cash truth or permission to resend.",
+    "automations": "Thirty-eight automations were visible: four enabled, thirty-one paused and three completed. This recurring task remains enabled; no automation lifecycle was mutated.",
+    "connected_apps": "The complete active connector registry exposed 127 GitHub/Slack operations, including branch/commit/PR/merge and Slack-send writes. Connector presence is not a live session, quota, buyer, cash or authority claim.",
+    "provider_observation": "The prior source receipt preserves an exact provider read and browser proof. This wake made no Stripe call, provider write, checkout purchase, customer contact, account action or current-cash inference."
+  },
+  "quota_lifecycle": {
+    "official_observation": "This wake's single official-source check found no hard/global or banked reset announcement newer than the recorded September 7 automatic reset. OpenAI's September 17 release note adds ChatGPT for Word and multiple plugin accounts; it says Word draws from the shared allowance but does not announce a reset.",
+    "classification": "PRIOR_QUOTA_STATE_RETAINED_CURRENT_ALLOWANCE_UNMEASURED",
+    "observed_at": "2026-09-19T10:19:36Z",
+    "current_meter": "NOT_DIRECTLY_OBSERVED",
+    "routing": "Preserve a small emergency reserve, do not activate banked inventory, and do not recommend or buy an instant reset."
+  },
+  "build_orders": [],
+  "build_order_decision": "No build order was posted. The selected resource is already implemented and merged; the delta's other concrete lanes retain owners, shipped receipts, explicit yields, DNR fences, or owner-only boundaries.",
+  "verification": {
+    "focused_tests": "Seven exact source/package blobs matched descendant main; the source's 5/5 original-pack and 4/4 checkout-wire tests plus exact-head open-door/source-parses/path-manifest/muhlnickel-spec-guard successes are retained without rerunning provider operations.",
+    "privacy": "No credential, private account identifier, customer data, private file name, private business detail or incident narrative is copied into canonical metadata.",
+    "open_door": "The pack implementation is open and requires no Commons login or approval gate. Customer/public communication is a separate destination boundary and must not use Commons or GitHub as the CTA or delivery surface.",
+    "zero_fabrication": "An existing direct transaction road and delivery-ready pack prove no buyer, contact, intent, acceptance, settlement, payout, revenue, current cash state or completed customer delivery.",
+    "collision": "Only the ledger, append-only resource record, append-only activation receipt, current-record ledger assertions and generated projection are owned. Source/package/provider/customer paths and peer branches remain untouched."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-19T10:19:36Z",
+    "prior_terminal_main_sha": "6c68d4332c3fdd5633dfa5b65b461402f6ab0484",
+    "activation_base_main_sha": "2ada04e5c9b8ea18a4323768d4c38b84aeb089df",
+    "prior_terminal_slack_ts": "1789305505.090479",
+    "latest_delta_slack_ts": "1789813173.482349",
+    "commons_claim_slack_ts": "1789812944.881609",
+    "commons_claim_scope_slack_ts": "1789813173.482349",
+    "source_prs": [16085],
+    "latest_source_merge_sha": "1199466e6ee74307d127b507baa6655fe768097b",
+    "source_descendant_main_sha": "2ada04e5c9b8ea18a4323768d4c38b84aeb089df",
+    "remote_branches_observed": 4429,
+    "automations": "Four enabled, thirty-one paused and three completed; no lifecycle mutation by this wake",
+    "openai_reset": "No newly verified reset; current meter not directly observed and no banked reset activated."
+  },
+  "projection": {
+    "resources": 100,
+    "producing": 72,
+    "inventory_records": 62
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789812944881609?thread_ts=1789802518.984749&cid=C0BRGMDQB6G",
+    "slack_claim_scope": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789813173482349?thread_ts=1789802518.984749&cid=C0BRGMDQB6G",
+    "source_terminal_receipt": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789803656843039",
+    "source_pr": "https://github.com/woahwhattheheck/commons/pull/16085",
+    "source_descendant_tree": "https://github.com/woahwhattheheck/commons/tree/2ada04e5c9b8ea18a4323768d4c38b84aeb089df",
+    "official_banked_reset_help": "https://help.openai.com/en/articles/20001498-how-banked-codex-resets-work",
+    "official_release_notes": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+    "prior_terminal_receipt": "p/codex-commons-context-dispatch-compiler-resource-activation-20260913-01.md"
+  },
+  "non_claims": [
+    "No source pack, checkout object, provider state, customer state, peer-owned path or foreign branch was changed by this activation.",
+    "No Claude, Cursor, Grokbot or other carrier session was launched, assigned as tester/verifier/reviewer, or treated as landing authority.",
+    "No customer contact, buyer intent, acceptance, settlement, payout, revenue, current cash state or customer delivery is claimed.",
+    "No purchased or banked reset, provider call, checkout purchase, spend, submission, calendar commitment or device operation occurred."
+  ],
+  "titan": "NOT_WRITTEN"
+}

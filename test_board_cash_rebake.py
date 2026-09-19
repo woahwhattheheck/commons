@@ -20,7 +20,6 @@ PUBLISHERS = {
     "claims.html": hub_pages.rebuild_claims,
 }
 PRODUCTS = (
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -30,7 +29,7 @@ LARGER_FIXED = (
     "diagnostic.html",
     "commercial.html",
 )
-# LIVE_CASH_PRODUCTS_HTML lists Autopsy/$199 then Larger fixed. Exact href
+# LIVE_CASH_PRODUCTS_HTML lists $199/$199 then Larger fixed. Exact href
 # order is the rebuild contract: extras would hide a remint wipe.
 CASH_HREFS = tuple("./" + name for name in PRODUCTS + LARGER_FIXED)
 
@@ -57,7 +56,7 @@ class BoardCashRebakeTests(unittest.TestCase):
         self.assertEqual(text.count('id="live-cash"'), 1)
         section = re.search(r'<section\b[^>]*\bid="live-cash"[^>]*>.*?</section>', text, re.S).group()
         self.assertEqual(re.findall(r'href="([^\"]+)"', section), list(CASH_HREFS))
-        self.assertIn("$29 Autopsy", section)
+
         self.assertIn("$199 dealer diagnostic", section)
         self.assertIn("Larger fixed engagements", section)
         self.assertIn("GGUF diagnostic · $12,000 / 10 days", section)
@@ -66,7 +65,7 @@ class BoardCashRebakeTests(unittest.TestCase):
         self.assertNotIn("buy.stripe.com", section)
         if convert_shelf:
             self.assertIn('id="buy-now-live-checkout"', text)
-            self.assertIn("https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g", text)
+
             self.assertIn("https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07", text)
             self.assertGreater(
                 text.find('id="live-cash"'),

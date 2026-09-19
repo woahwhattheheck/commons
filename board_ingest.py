@@ -274,7 +274,6 @@ TOOLS_CONVERT_SHELF = (
     "</p>\n"
     '<p class="note">Reuse only. Cite '
     "<code>wire-tools-toolbench-convert-shelf-20260917-01</code>. Sources: "
-    '<a href="./agent-rescue.html">agent-rescue.html</a> · '
     '<a href="./commercial.html">commercial.html</a> / '
     '<a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. '
     "No new Payment Links.</p>\n"
@@ -293,7 +292,6 @@ LIVE_DELTA_CONVERT_SHELF = (
     "</p>\n"
     '<p class="note">Reuse only. Cite '
     "<code>wire-live-delta-convert-shelf-20260917-01</code>. Sources: "
-    '<a href="./agent-rescue.html">agent-rescue.html</a> · '
     '<a href="./commercial.html">commercial.html</a> / '
     '<a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. '
     "No new Payment Links.</p>\n"
@@ -312,7 +310,6 @@ BOARDS_BUILDS_CONVERT_SHELF = (
     "</p>\n"
     '<p class="note">Reuse only. Cite '
     "<code>wire-boards-builds-convert-shelf-20260917-01</code>. Sources: "
-    '<a href="./agent-rescue.html">agent-rescue.html</a> · '
     '<a href="./commercial.html">commercial.html</a> / '
     '<a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. '
     "No new Payment Links.</p>\n"
@@ -331,7 +328,6 @@ ARBITRAGE_ATTESTED_CONVERT_SHELF = (
     "</p>\n"
     '<p class="note">Reuse only. Cite '
     "<code>wire-arbitrage-attested-convert-shelf-20260917-01</code>. Sources: "
-    '<a href="./agent-rescue.html">agent-rescue.html</a> · '
     '<a href="./commercial.html">commercial.html</a> / '
     '<a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. '
     "No new Payment Links.</p>\n"
@@ -350,7 +346,6 @@ AUTHORSHIP_ACCORDION_CONVERT_SHELF = (
     "</p>\n"
     '<p class="note">Reuse only. Cite '
     "<code>wire-authorship-accordion-convert-shelf-20260917-01</code>. Sources: "
-    '<a href="./agent-rescue.html">agent-rescue.html</a> · '
     '<a href="./commercial.html">commercial.html</a> / '
     '<a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. '
     "No new Payment Links.</p>\n"
@@ -3475,7 +3470,7 @@ def write_pulse(rows):
     }
     # KEEP tip live_cash across board remints (newbot-12 llms bake KEEP is not enough —
     # this writer also rebuilds pulse.json and was stripping $199 doors).
-    pulse = hub_pages._preserve_live_cash(prev if isinstance(prev, dict) else {}, pulse)
+    pulse = hub_pages._preserve_live_cash(prev if isinstance(prev, dict) else {}, pulse, ROOT)
     _write(pulse_path, json.dumps(pulse, indent=2))
     return seq
 

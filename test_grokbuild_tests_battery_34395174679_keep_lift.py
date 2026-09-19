@@ -22,6 +22,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 import manual_build
+import sys
 
 ROOT = Path(__file__).resolve().parent
 POINTER = (
@@ -106,7 +107,7 @@ class TestGrokbuildTestsBattery34395174679KeepLift(unittest.TestCase):
         for name in ORIGINALS:
             with self.subTest(name=name):
                 proc = subprocess.run(
-                    ["python3", name],
+                    [sys.executable, name],
                     cwd=ROOT,
                     text=True,
                     capture_output=True,

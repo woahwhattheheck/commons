@@ -29,11 +29,17 @@ class PatentDocketProvenanceSuccessorTests(unittest.TestCase):
         expected = {
             "ground/INVENTION_BURST_INDEX.md": (
                 self.docket["inventor_provenance"]["blob_sha"],
-                ["spy-ground-live-cash-v1"],
+                [
+                    "grok-patent-docket-md-keep-larger-fixed-20260916-01",
+                    "anvil-invention-burst-autopsy-retirement-20260918-01",
+                ],
             ),
             "GRANTS.md": (
                 self.docket["status_provenance"]["blob_sha"],
-                ["bass-grants-live-cash-v2"],
+                [
+                    "grok-grants-md-keep-larger-fixed-20260916-01",
+                    "anvil-grants-autopsy-retirement-20260918-01",
+                ],
             ),
         }
         for path, (blob_sha, labels) in expected.items():

@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 FORGED = '\n<a href="https://buy.stripe.com/forged_owner_now_bypass">forged</a>\n'
-EXPECTED = "owner-now-revenue.html must keep Stripe URLs out of static HTML"
+EXPECTED = "owner-now-revenue.html convert shelf must reuse exactly the existing live buy.stripe.com URLs"
 
 
 def _load(name: str):

@@ -60,18 +60,12 @@ class TestGrokBotSharedEquipment(unittest.TestCase):
             "grokbot_events",
             "grokbot_pools",
             "grokbot_health",
-            "grokbot_case_from_autopsy_offer",
             "grokbot_receipt_row_from_case",
             "diagnostic_contract_card",
             "diagnostic_receipt_card",
             "diagnostic_fulfill_deadline_card",
             "diagnostic_fulfill_sla_card",
-            "autopsy_fulfill_deadline_card",
-            "autopsy_fulfill_sla_card",
-            "autopsy_case_card",
-            "autopsy_receipt_card",
             "open_obligations_cash_card",
-            "autopsy_fulfill_validate_card",
             "open_obligations_card",
             "advance_obligation_card",
             "equip_role_card",
@@ -82,6 +76,10 @@ class TestGrokBotSharedEquipment(unittest.TestCase):
             "export_role_package_card",
             "import_role_package_card",
             "inspect_role_card",
+            "create_role_card",
+            "list_role_ids_card",
+            "get_role_card",
+            "normalize_role_card",
             "prove_handoff_card",
         }
         self.assertEqual(names, expected)
@@ -163,15 +161,15 @@ class TestGrokBotSharedEquipment(unittest.TestCase):
                     "prompt": "paid case ping",
                     "async": False,
                     "case": {
-                        "offer_id": "sku-autopsy-29",
+                        "offer_id": "ho-issue-to-pr",
                         "case_ref": "case-demo-1",
                         "client_reference_id": "cref-demo",
-                        "sku": "sku-autopsy-29",
+                        "sku": "ho-issue-to-pr",
                     },
                 },
             )
             self.assertEqual(submitted.get("status"), "completed")
-            self.assertEqual(submitted["case"]["offer_id"], "sku-autopsy-29")
+            self.assertEqual(submitted["case"]["offer_id"], "ho-issue-to-pr")
             followed = fx.eq.call(
                 "grokbot_follow_up",
                 {
@@ -198,17 +196,12 @@ class TestGrokBotSharedEquipment(unittest.TestCase):
 
     def test_paid_case_equipment_helpers(self):
         eq = GrokBotEquipment("http://127.0.0.1:9")
-        built = eq.call(
-            "grokbot_case_from_autopsy_offer",
-            {
-                "case_ref": "opaque-equip-1",
-                "client_reference_id": "afa29_x_a_v1",
-            },
-        )
-        self.assertTrue(built.get("ok"))
-        case = built["case"]
-        self.assertEqual(case["case_ref"], "opaque-equip-1")
-        self.assertEqual(case["offer_id"], "agent-failure-autopsy-29")
+        case = {
+            "offer_id": "ho-issue-to-pr",
+            "case_ref": "opaque-equip-1",
+            "client_reference_id": "cref-equip-1",
+            "sku": "ho-issue-to-pr",
+        }
         receipt = eq.call(
             "grokbot_receipt_row_from_case",
             {
@@ -221,29 +214,28 @@ class TestGrokBotSharedEquipment(unittest.TestCase):
         )
         self.assertTrue(receipt.get("ok"))
         row = receipt["case_row"]
+        self.assertEqual(row["offer_id"], "ho-issue-to-pr")
+        self.assertEqual(row["case_ref"], "opaque-equip-1")
         self.assertEqual(row["g2_run_id"], "run_equip_1")
         self.assertEqual(row["g2_session_id"], "sess_equip_1")
         self.assertEqual(row["state"], "UNVERIFIED")
-        bad = eq.call("grokbot_case_from_autopsy_offer", {"case_ref": ""})
+        bad = eq.call("grokbot_receipt_row_from_case", {"case": {"case_ref": ""}})
         self.assertFalse(bad.get("ok"))
-        self.assertEqual(bad.get("error"), "invalid_case")
+        self.assertEqual(bad.get("error"), "invalid_receipt")
 
     def test_paid_case_equipment_live_e2e(self):
-        """Live echo: case_from_autopsy_offer → submit(case) → receipt bind."""
+        """Live echo: submit(case) → receipt bind."""
         with GrokBotEquipmentFixture() as fx:
-            built = fx.eq.call(
-                "grokbot_case_from_autopsy_offer",
-                {
-                    "case_ref": "opaque-e2e-1",
-                    "client_reference_id": "afa29_x_a_v1",
-                },
-            )
-            self.assertTrue(built.get("ok"))
-            case = built["case"]
+            case = {
+                "offer_id": "ho-issue-to-pr",
+                "case_ref": "opaque-e2e-1",
+                "client_reference_id": "cref-e2e-1",
+                "sku": "ho-issue-to-pr",
+            }
             submitted = fx.eq.call(
                 "grokbot_submit",
                 {
-                    "prompt": "e2e autopsy work",
+                    "prompt": "e2e paid case work",
                     "seat": "SPARK",
                     "async": False,
                     "case": case,
@@ -284,16 +276,11 @@ class TestGrokBotSharedEquipment(unittest.TestCase):
         self.assertEqual(g2["pool_id"], "grokbot")
         self.assertIn("grokbot_submit", g2["equipment_tools"])
         self.assertIn("grokbot_health", g2["equipment_tools"])
-        self.assertIn("grokbot_case_from_autopsy_offer", g2["equipment_tools"])
         self.assertIn("grokbot_receipt_row_from_case", g2["equipment_tools"])
         self.assertIn("diagnostic_contract_card", g2["equipment_tools"])
         self.assertIn("diagnostic_receipt_card", g2["equipment_tools"])
         self.assertIn("diagnostic_fulfill_deadline_card", g2["equipment_tools"])
         self.assertIn("diagnostic_fulfill_sla_card", g2["equipment_tools"])
-        self.assertIn("autopsy_fulfill_deadline_card", g2["equipment_tools"])
-        self.assertIn("autopsy_fulfill_sla_card", g2["equipment_tools"])
-        self.assertIn("autopsy_case_card", g2["equipment_tools"])
-        self.assertIn("autopsy_receipt_card", g2["equipment_tools"])
         self.assertIn("open_obligations_cash_card", g2["equipment_tools"])
 
 

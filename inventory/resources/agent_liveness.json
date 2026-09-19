@@ -2191,8 +2191,8 @@
   "schema": "commons-agent-receipt-liveness/v1",
   "source_blobs": {
     "claims.json": "28cb2774e17774052ecda2768d915d2a82d82941",
-    "lastseen.json": "65e0cc8f0c4fe3e87581fb7c7f966b0a3cb87166",
-    "presence.json": "c875bbfcb9b2fc7043cf63351f133df5a95747be"
+    "lastseen.json": "8e9701c04a463281ac2509fffc6a479d36c7ec06",
+    "presence.json": "e1a78590db4955801bf549f796003d4018fdf0a8"
   },
   "source_commit": "9181f47d38ab1800911d44a181a1048f1e7a411a",
   "summary": {

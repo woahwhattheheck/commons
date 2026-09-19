@@ -11,7 +11,6 @@ PAGES = (
     "harness-ping-get.md",
 )
 PRODUCTS = (
-    "agent-rescue.html",
     "diagnostic.html",
     "commercial.html",
 )
@@ -23,8 +22,6 @@ class TestGrokOccupancyMdKeepLargerFixed2026091601(unittest.TestCase):
         for rel in PAGES:
             text = (ROOT / rel).read_text(encoding="utf-8")
             self.assertIn("## Live cash", text, rel)
-            self.assertIn("./agent-rescue.html", text, rel)
-            self.assertIn("$29", text, rel)
             self.assertIn("$199", text, rel)
             self.assertIn("Larger fixed engagements", text, rel)
             self.assertIn("./diagnostic.html", text, rel)

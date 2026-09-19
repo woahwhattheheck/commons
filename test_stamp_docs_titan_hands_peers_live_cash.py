@@ -1,4 +1,4 @@
-"""Tip docs/TITAN_HANDS_PEERS.md surfaces live Autopsy + $199 cash doors."""
+"""Tip docs/TITAN_HANDS_PEERS.md surfaces live $199 cash doors."""
 from __future__ import annotations
 
 import pathlib
@@ -16,10 +16,10 @@ class StampDocsTitanHandsPeersLiveCashTest(unittest.TestCase):
     def test_live_cash_section_exists(self):
         self.assertIn("## Live cash", self.text)
 
-    def test_autopsy_29_on_agent_rescue(self):
-        self.assertIn("$29", self.text)
-        self.assertIn("Autopsy", self.text)
-        self.assertIn("agent-rescue.html", self.text)
+    def test_retired_autopsy_not_resurrected(self):
+        self.assertNotIn("$29", self.text)
+        self.assertNotIn("Autopsy", self.text)
+        self.assertNotIn("agent-rescue.html", self.text)
 
     def test_four_199_product_doors(self):
         for path in (

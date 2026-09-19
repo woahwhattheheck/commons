@@ -45,14 +45,14 @@
     {
       "id": "same-day-crash-resume",
       "title": "$2,500 same-day crash-resume proof",
-      "page": "agent-rescue.html",
+      "page": "revenue/production_survival/marketplaces.md",
       "price_usd": 2500,
       "verticals": ["retail", "telecom"]
     },
     {
       "id": "five-day-recovery",
       "title": "$15,000 five-day recovery sprint",
-      "page": "agent-rescue.html",
+      "page": "revenue/production_survival/marketplaces.md",
       "price_usd": 15000,
       "verticals": ["retail"]
     },

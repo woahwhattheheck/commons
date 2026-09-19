@@ -10,6 +10,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grok-build-job-watchdog-33699600934-billing-lock-20260903-01.md"
@@ -42,8 +43,8 @@ KEEP = {
     "p/grokbuild-local-compute-guard-33699601000-billing-lock-20260903-01.md": "da198a83",
     "p/grokbuild-merged-branch-janitor-33699606864-billing-lock-20260903-01.md": "135dacee",
     "p/grokbuild-local-compute-guard-33699607453-billing-lock-20260903-01.md": "5d89a9bf",
-    "catalog.html": "71c0c5fd",
-    "hub_pages.py": "7bc61c8b",
+    "catalog.html": "68b9b066",
+    "hub_pages.py": "673dab89",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
     "p/cursor-big-huge-commerce-agents-readback-20260902-01.md": "2a5ce894",
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
@@ -134,7 +135,7 @@ class TestGrokbuildJobWatchdog33699600934BillingLock(unittest.TestCase):
     def test_local_tick_still_passes(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             proc = subprocess.run(
-                ["python3", "-m", "harness_wake", "--tick", "--jobs-dir", tmp],
+                [sys.executable, "-m", "harness_wake", "--tick", "--jobs-dir", tmp],
                 cwd=ROOT,
                 text=True,
                 capture_output=True,

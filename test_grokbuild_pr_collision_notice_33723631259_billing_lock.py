@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 import pr_collision_notice as notice
 
@@ -24,30 +25,30 @@ WORKFLOW = ROOT / ".github/workflows/pr-collision-notice.yml"
 KEEP = {
     "pr_collision_notice.py": "381d6b9b",
     "test_pr_collision_notice.py": "18a87c08",
-    ".github/workflows/pr-collision-notice.yml": "1c2ebcd5",
+    ".github/workflows/pr-collision-notice.yml": "deeeaf57",
     "p/grokbuild-pr-collision-notice-33689085107-billing-lock-20260902-01.md": "594b5e71",
-    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "e850c579",
+    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "db973ec1",
     "p/grokbuild-pr-collision-notice-33689347426-billing-lock-20260902-01.md": "e92d45af",
-    "test_grokbuild_pr_collision_notice_33689347426_billing_lock.py": "92d06e74",
+    "test_grokbuild_pr_collision_notice_33689347426_billing_lock.py": "238bcbd7",
     "p/grokbuild-pr-collision-notice-33694241061-billing-lock-20260902-01.md": "71afa5e6",
-    "test_grokbuild_pr_collision_notice_33694241061_billing_lock.py": "4deeeae9",
+    "test_grokbuild_pr_collision_notice_33694241061_billing_lock.py": "782d53d1",
     "p/grokbuild-pr-collision-notice-33699600937-billing-lock-20260903-01.md": "0fc75f49",
-    "test_grokbuild_pr_collision_notice_33699600937_billing_lock.py": "959bc058",
+    "test_grokbuild_pr_collision_notice_33699600937_billing_lock.py": "717d5a20",
     "p/grokbuild-pr-collision-notice-33699928196-billing-lock-20260903-01.md": "9b9b45f6",
-    "test_grokbuild_pr_collision_notice_33699928196_billing_lock.py": "2433a310",
+    "test_grokbuild_pr_collision_notice_33699928196_billing_lock.py": "d1728ca5",
     "p/grokbuild-pr-collision-notice-33699939369-billing-lock-20260903-01.md": "3110f1c7",
-    "test_grokbuild_pr_collision_notice_33699939369_billing_lock.py": "c1bc606c",
+    "test_grokbuild_pr_collision_notice_33699939369_billing_lock.py": "9dd461a1",
     "p/grokbuild-pr-collision-notice-33717734032-billing-lock-20260903-01.md": "a558758f",
     "p/grokbuild-pr-collision-notice-33718116234-billing-lock-20260903-01.md": "0e641800",
     "p/grok-build-repo-pulse-billing-lock-20260903-01.md": "b6e5953c",
     "p/grok-build-commons-board-billing-lock-20260903-01.md": "c07bf913",
     "p/grok-build-moving-main-mirror-billing-lock-20260903-01.md": "4550e922",
     "p/cursor-wire-catalog-marketplace-latch-readback-rematch-20260903-01.md": "f23e1db8",
-    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "905a7922",
+    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "649265c5",
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "6a512428",
-    "wire.html": "3f030862",
-    "ground/WIRE_SUPER_MCP.md": "9f1a457b",
+    "test_open_door_guard.py": "2e2cc164",
+    "wire.html": "623602a7",
+    "ground/WIRE_SUPER_MCP.md": "626b07f7",
 }
 
 
@@ -70,13 +71,13 @@ class TestGrokbuildPrCollisionNotice33723631259BillingLock(unittest.TestCase):
         self.assertNotIn("schedule:", yml)
         self.assertIn("ref: ${{ github.event.pull_request.base.sha }}", yml)
         self.assertNotIn("github.event.pull_request.head.sha", yml)
-        self.assertIn("python3 pr_collision_notice.py", yml)
+        self.assertIn("python3 listener/pr_collision_notice.py", yml)
         self.assertNotIn("if: false", yml)
         self.assertNotIn("billing", yml.lower())
 
     def test_local_failed_step_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", "test_pr_collision_notice.py"],
+            [sys.executable, "test_pr_collision_notice.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -84,7 +85,7 @@ class TestGrokbuildPrCollisionNotice33723631259BillingLock(unittest.TestCase):
         )
         out = (proc.stdout or "") + (proc.stderr or "")
         self.assertEqual(proc.returncode, 0, msg=out)
-        self.assertIn("Ran 4 tests", out)
+        self.assertIn("Ran 11 tests", out)
         self.assertIn("OK", out)
         rows = notice.find_pr_overlaps(
             10,

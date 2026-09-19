@@ -8,6 +8,7 @@ import subprocess
 import tempfile
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grokbuild-pr8539-verify-20260903-01.md"
@@ -76,7 +77,7 @@ class TestGrokbuildPr8539Verify(unittest.TestCase):
     def test_leftover_tick_still_passes(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             proc = subprocess.run(
-                ["python3", "-m", "harness_wake", "--tick", "--jobs-dir", tmp],
+                [sys.executable, "-m", "harness_wake", "--tick", "--jobs-dir", tmp],
                 cwd=ROOT,
                 text=True,
                 capture_output=True,
@@ -90,7 +91,7 @@ class TestGrokbuildPr8539Verify(unittest.TestCase):
 
     def test_leftover_unittest_still_green(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_grokbuild_job_watchdog_33699607332_billing_lock.py"],
+            [sys.executable, "-m", "unittest", "test_grokbuild_job_watchdog_33699607332_billing_lock.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

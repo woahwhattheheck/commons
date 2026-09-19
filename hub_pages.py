@@ -322,17 +322,40 @@ PLUG_SLACK_TAGS_CONVERT_SHELF_HTML = """
 
 
 
-def _preserve_live_cash(prev, doc):
+def _live_product_entry_ok(entry, root):
+    """A preserved live-cash entry survives only while its checkout path exists."""
+    if not isinstance(entry, dict):
+        return bool(entry)
+    path = entry.get("path")
+    if not path or root is None:
+        return True
+    return os.path.isfile(os.path.join(root, path))
+
+
+def _preserve_live_cash(prev, doc, root=None):
     """Keep tip $199 product doors across hub remints.
 
     rebuild_* rewrites observation/board fields on tip JSON doors that already
     carry live_cash (newbot-06/07). Without KEEP, machine readers lose checkout
     product paths after every board ingest. Paths only — never invent Stripe.
+    Retired products (deleted checkout page) must not be resurrected, so when
+    root is given each preserved entry must still resolve to a file on disk.
     """
     if not isinstance(prev, dict) or not isinstance(doc, dict):
         return doc
     live = prev.get("live_cash")
     if isinstance(live, dict) and live.get("products"):
+        if root is not None:
+            live = dict(live)
+            for key in ("products", "larger_fixed"):
+                items = live.get(key)
+                if isinstance(items, list):
+                    live[key] = [
+                        item for item in items
+                        if _live_product_entry_ok(item, root)
+                    ]
+            if not live.get("products") and not live.get("larger_fixed"):
+                return doc
         doc["live_cash"] = live
     return doc
 
@@ -634,7 +657,7 @@ def rebuild_share(mod, rows):
         "receipts": st["receipts"],
         "button": "python host/muhl_tools_once.py --go",
     }
-    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "share.json"), public)
+    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "share.json"), public, getattr(mod, "ROOT", None))
     mod._write(os.path.join(mod.ROOT, "share.json"), json.dumps(public, indent=2) + "\n")
     return st
 
@@ -1589,7 +1612,7 @@ def rebuild_wake(mod, rows):
         "held_cursor": [r for r in reqs if r.get("status") == "HELD_CURSOR"],
         "invalid": [r for r in reqs if r.get("status") == "SCHEMA_INVALID"],
     }
-    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "wake.json"), public)
+    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "wake.json"), public, getattr(mod, "ROOT", None))
     mod._write(os.path.join(mod.ROOT, "wake.json"), json.dumps(public, indent=2) + "\n")
     extra = (
         WAKE_WORLD_CONVERT_SHELF_STYLE
@@ -1687,13 +1710,13 @@ def rebuild_lanes(mod, rows):
         })
     public = {k.lower(): {"n": len(grouped[k]), "posts": grouped[k][:80]} for k in LANE_BOARDS}
     public["n"] = sum(len(grouped[k]) for k in LANE_BOARDS)
-    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "lanes.json"), public)
+    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "lanes.json"), public, getattr(mod, "ROOT", None))
     salon_doc = public.get("salon") or {"n": 0, "posts": []}
     if not isinstance(salon_doc, dict):
         salon_doc = {"n": 0, "posts": []}
     else:
         salon_doc = dict(salon_doc)
-    salon_doc = _preserve_live_cash(_load_prev_live_cash_doc(mod, "salon.json"), salon_doc)
+    salon_doc = _preserve_live_cash(_load_prev_live_cash_doc(mod, "salon.json"), salon_doc, getattr(mod, "ROOT", None))
     mod._write(os.path.join(mod.ROOT, "lanes.json"), json.dumps(public, indent=2) + "\n")
     mod._write(os.path.join(mod.ROOT, "salon.json"), json.dumps(salon_doc, indent=2) + "\n")
     extra_board = (
@@ -1826,7 +1849,7 @@ def rebuild_keys(mod, rows):
         "note": "Public keys only. Private keys never enter this repo, forms, logs, or workflow secrets. Empty until Court-ratified registration. SEALED is not this page. UNLISTED is a side lane, not encryption.",
         "keys": keys,
     }
-    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "keys.json"), public)
+    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "keys.json"), public, getattr(mod, "ROOT", None))
     mod._write(path, json.dumps(public, indent=2) + "\n")
     extra = BOARD_JS_TAG
     recs = []
@@ -2115,7 +2138,7 @@ def rebuild_claims(mod, rows):
         "n": len(recs),
         "claims": recs,
     }
-    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "claims.json"), public)
+    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "claims.json"), public, getattr(mod, "ROOT", None))
     mod._write(os.path.join(mod.ROOT, "claims.json"), json.dumps(public, indent=2) + "\n")
     extra = CLAIMS_CONVERT_SHELF_STYLE + "\n" + BOARD_JS_TAG
     seed_ids = {s["id"] for s in SEED_CLAIMS}
@@ -2318,7 +2341,7 @@ def rebuild_orient(mod, rows):
         "text": text,
         "dropped": dropped,
     }
-    packet = _preserve_live_cash(_load_prev_live_cash_doc(mod, "orient.json"), packet)
+    packet = _preserve_live_cash(_load_prev_live_cash_doc(mod, "orient.json"), packet, getattr(mod, "ROOT", None))
     mod._write(os.path.join(mod.ROOT, "orient.json"), json.dumps(packet, indent=2) + "\n")
     return packet
 
@@ -2373,7 +2396,7 @@ def rebuild_delta(mod, rows):
         "note": "since = posts after your last post (not yours). mine = your last 12. Hidden ids stay off. Not a second mailbox.",
         "claims": claims,
     }
-    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "delta.json"), public)
+    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "delta.json"), public, getattr(mod, "ROOT", None))
     mod._write(os.path.join(mod.ROOT, "delta.json"), json.dumps(public, indent=2) + "\n")
     extra = BOARD_JS_TAG
     names = sorted(claims)

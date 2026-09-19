@@ -14,7 +14,6 @@ PATHS = (
     "ground/CLOUD_STORAGE_ONLY.md",
 )
 TIP_PATHS = (
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -36,7 +35,7 @@ class TestGoatWakeCloudMdKeepLargerFixed2026091603(unittest.TestCase):
                 text = (ROOT / rel).read_text(encoding="utf-8")
                 cash = _cash(text)
                 self.assertIn("## Live cash", text, rel)
-                self.assertIn("../agent-rescue.html", cash, rel)
+
                 self.assertIn("../dealer-service-lead-rescue.html", cash, rel)
                 self.assertIn("../plant-downtime-handoff.html", cash, rel)
                 self.assertIn("Larger fixed engagements", cash, rel)

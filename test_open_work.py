@@ -143,6 +143,45 @@ class OpenWorkContract(unittest.TestCase):
         self.assertEqual(row["class"], "DEAD_CLAIM")
         self.assertEqual(row["receipt"], "404")
 
+    def test_prose_and_search_strings_are_not_work_markers(self):
+        self.assertEqual(
+            ow.extract_work_ids(
+                "the purchasing-paperwork order unclaimed; current-main"
+            ),
+            [],
+        )
+        self.assertEqual(
+            ow.extract_work_ids(
+                "search for `estimate approval invoice contractor work order change-order`"
+            ),
+            [],
+        )
+        self.assertEqual(ow.extract_work_ids("work order change-order"), [])
+        self.assertEqual(
+            ow.extract_work_ids("WORK ORDER real-marker-work-20260830-01"),
+            ["real-marker-work-20260830-01"],
+        )
+        self.assertEqual(
+            ow.extract_work_ids("OWNER LAND ORDER real-land-work-20260830-01"),
+            ["real-land-work-20260830-01"],
+        )
+        self.assertEqual(
+            ow.extract_work_ids("Work order open-door-main-push-report-20260830-01."),
+            ["open-door-main-push-report-20260830-01"],
+        )
+        self.assertEqual(
+            ow.extract_work_ids("work order `quoted-lower-work-20260830-01` done"),
+            ["quoted-lower-work-20260830-01"],
+        )
+        self.assertEqual(
+            ow.extract_work_ids("work\torder: lowercase-sep-work-20260830-01"),
+            ["lowercase-sep-work-20260830-01"],
+        )
+        self.assertEqual(
+            ow.extract_work_ids("owner land order= lowercase-eq-work-20260830-01"),
+            ["lowercase-eq-work-20260830-01"],
+        )
+
     def test_work_order_after_structural_window_is_not_omitted(self):
         body = "\n".join(["context line %s" % index for index in range(20)])
         parsed = ow.parse_structured_record(

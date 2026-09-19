@@ -42,10 +42,10 @@ PLANT_HELPER = "host/business_pack_plant_instance.py"
 # Land-time observations from leftover helper land e4f87e40 / PR #7770.
 # Not live pins: TALLY may change sidewalk door and the shared desk helper.
 OBSERVED_AT_LAND = {
-    "host/business_pack_desk_instance.py": "a550ae1b",
-    "packs/lotribbon-greetings-20260902-01/index.html": "7804ec33",
-    "packs/sidewalk-signal-web-desk-20260902-01/index.html": "638e60b4",
-    "packs/desk-website-service-20260902-01/door.html": "d3d6fcc7",
+    "host/business_pack_desk_instance.py": "1029faad",
+    "packs/lotribbon-greetings-20260902-01/index.html": "8afd749b",
+    "packs/sidewalk-signal-web-desk-20260902-01/index.html": "9db77016",
+    "packs/desk-website-service-20260902-01/door.html": "d75b3f3b",
 }
 EXPECTED_BLOBS = {
     "p/cursor-business-pack-sold-once-badge-pointer-20260902-01.md": "1cc11a5f",

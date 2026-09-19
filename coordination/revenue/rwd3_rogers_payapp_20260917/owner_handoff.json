@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "operation_id": "RWD3-ROGERS-PAYAPP-RETAINAGE-OWNER-PACKET-ZSOL-20260917",
+  "product": {
+    "repository": "woahwhattheheck/smb-showcase-inventory",
+    "carrier_pr": 1043,
+    "name": "Pay Application + Retainage Sprint",
+    "offer_status": "PROPOSED_NOT_ACCEPTED",
+    "price_minor_usd": 1250000,
+    "target_business_days": 10,
+    "scope": "ONE_LEGAL_ENTITY_ONE_PROJECT_ONE_PAY_CYCLE"
+  },
+  "candidate_scopes": [
+    {"candidate_id":"RWD3-TACORA-WTP-PR5-FINAL","project_ref":"RWD3-TACORA-WTP-PUMP","public_pay_request":"5-Final","public_amount_minor_usd":3576203,"public_retainage_release_explicit":true},
+    {"candidate_id":"RWD3-GARDNER-POND-PR2-FINAL","project_ref":"RWD3-GARDNER-POND-WATER-LINE","public_pay_request":"2-Final","public_amount_minor_usd":3352381,"public_retainage_release_explicit":true}
+  ],
+  "scope_policy": {
+    "must_not_combine_projects": true,
+    "selected_candidate": null
+  },
+  "required_owner_inputs_before_fixed_scope_review": [
+    "COMPLETE_SCHEDULE_OF_VALUES",
+    "CURRENT_WORK_EVIDENCE",
+    "APPROVED_CHANGE_ORDER_EVIDENCE",
+    "PRIOR_CERTIFICATION_EVIDENCE",
+    "PRIOR_PAYMENT_EVIDENCE",
+    "PREDECESSOR_LINEAGE_EVIDENCE",
+    "RETAINAGE_POLICY_EVIDENCE",
+    "SOV_LINE_COUNT",
+    "COMBINED_APPLICATION_EVIDENCE_PAYMENT_ROW_COUNT"
+  ],
+  "external_action_state": "NOT_SELECTED_OR_AUTHORIZED",
+  "customer_surface_url": null,
+  "commercial_claims_observed": {
+    "error": false,
+    "savings": false,
+    "buyer_need": false,
+    "budget": false,
+    "urgency": false,
+    "intent_to_buy": false
+  }
+}

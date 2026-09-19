@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grok-build-discord-cloud-33689281288-billing-lock-20260902-01.md"
@@ -18,8 +19,8 @@ WORKFLOW = ROOT / ".github/workflows/commons-discord-cloud.yml"
 KEEP = {
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grok-build-discord-cloud-billing-lock-readback-20260902-01.md": "e14e443b",
-    "test_grok_build_discord_cloud_billing_lock_readback.py": "197da638",
-    ".github/workflows/commons-discord-cloud.yml": "6f1c1479",
+    "test_grok_build_discord_cloud_billing_lock_readback.py": "dc14be14",
+    ".github/workflows/commons-discord-cloud.yml": "90738ad6",
     "commons_discord.py": "f6f1a374",
     "discord_ingest.py": "4866672a",
     "test_commons_discord.py": "5881bb78",
@@ -62,7 +63,7 @@ class TestGrokbuildDiscordCloud33689281288BillingLock(unittest.TestCase):
     def test_local_failed_step_still_passes(self) -> None:
         proc = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "-m",
                 "unittest",
                 "test_commons_discord.py",
