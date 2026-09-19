@@ -156,7 +156,9 @@ def load_components():
         blob = hashlib.sha1(b"blob " + str(len(raw)).encode() + b"\0" + raw).hexdigest()
         spec = importlib.util.spec_from_file_location("uiowa109_" + name, path)
         module = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(module)
+        # Execute the same buffer that the receipt hashes; a valid old bytecode
+        # cache must not silently substitute another source generation.
+        exec(compile(raw, str(path), "exec"), module.__dict__)
         modules[name] = module
         bindings[name] = {"path": "revenue/" + relative, "git_blob": blob,
                           "tested_git_blob": expected, "tested_baseline": BASELINE,
@@ -343,7 +345,7 @@ def main(argv=None):
             (args.output / "SHA256SUMS.json").write_text(json.dumps(hashes, indent=2, sort_keys=True) + "\n", encoding="utf-8")
         print(json.dumps(report["summary"], indent=2, sort_keys=True))
         return 0
-    except (ValueError, TypeError, KeyError, OSError, RecursionError, OverflowError) as exc:
+    except (ValueError, TypeError, KeyError, OSError, RecursionError, OverflowError, SyntaxError, ImportError) as exc:
         print("release-recovery-case: " + str(exc), file=sys.stderr)
         return 2
 
