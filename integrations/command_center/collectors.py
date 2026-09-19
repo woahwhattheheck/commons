@@ -243,6 +243,7 @@ class LiveCollectors:
                 "title": text(row.get("title"), 500), "status": status,
                 "owner": row.get("user", {}).get("login"), "project": repo,
                 "created_at": timestamp(row.get("created_at")),
+                "created_at": timestamp(row.get("created_at")),
                 "updated_at": timestamp(row.get("updated_at")),
                 "activity_observed_at": timestamp(row.get("updated_at")), "url": url,
                 "summary": text(row.get("body")), "next_action": None,
