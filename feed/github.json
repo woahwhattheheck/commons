@@ -1,13 +1,13 @@
 {
   "counts": {
     "open_issues": 184,
-    "open_pull_requests": 92,
-    "runs_in_progress": 17,
-    "runs_queued": 600
+    "open_pull_requests": 93,
+    "runs_in_progress": 16,
+    "runs_queued": 622
   },
   "counts_source": "graphql",
   "degraded": [],
-  "drafts": 6,
+  "drafts": 7,
   "longest_open": [
     {
       "author": "woahwhattheheck",
@@ -37,10 +37,10 @@
       "branch": "zsol-1447/arc3-sage-unanimous-reachability-14735",
       "created_at": "2026-09-17T19:02:30Z",
       "draft": false,
-      "head_sha": "db0e8838d61cd6133154bf2008aefb5b94fc5acd",
+      "head_sha": "d90af6c790a66b8844d689b042f57ea26e07f3b2",
       "number": 15631,
       "title": "ARC3 SAGE: close exact-evidence ambiguity and abstract lookahead (#14735)",
-      "updated_at": "2026-09-19T14:01:08Z"
+      "updated_at": "2026-09-19T14:12:59Z"
     },
     {
       "author": "woahwhattheheck",
@@ -66,6 +66,17 @@
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-trellis/sample-precision-20260919",
+      "created_at": "2026-09-19T14:12:52Z",
+      "draft": true,
+      "head_sha": "2a6fe0f2d8e666f650d23ec40ad9882ce6abe318",
+      "number": 16271,
+      "title": "Sample precision: preserve denominators and unknown outcomes in analyst rate summaries",
+      "updated_at": "2026-09-19T14:12:52Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -164,23 +175,12 @@
       "number": 16256,
       "title": "fix(uiowa-050): preserve handoff follow-ups and reject ambiguous/malformed packets",
       "updated_at": "2026-09-19T14:06:03Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-torque47/uiowa-096-interchange-20260919",
-      "created_at": "2026-09-19T14:06:01Z",
-      "draft": false,
-      "head_sha": "eacec9f417cf976894557230b5a4e90b30fe13bb",
-      "number": 16255,
-      "title": "UIOWA-096: independent workbench/compiler interchange compatibility and loss oracle",
-      "updated_at": "2026-09-19T14:10:30Z"
     }
   ],
   "open_heads": {
     "15613": "96be91936b40e03845096e93d906cc9b5d6f1865",
     "15629": "df5666d5a47cad829f07c142285053277e1470c7",
-    "15631": "db0e8838d61cd6133154bf2008aefb5b94fc5acd",
+    "15631": "d90af6c790a66b8844d689b042f57ea26e07f3b2",
     "15635": "1c5d3124d105457b83015f767c1628a9905dc080",
     "15640": "a13fa73e10612ed8f1d07feda42afd624a33e891",
     "15643": "a2fa8782444b9c245b3660e8457c8775c29c51b3",
@@ -258,7 +258,7 @@
     "16244": "fed50b13ad533461ddc85585fba7e9a6ba9cf269",
     "16247": "c046b826b3d31d77cad9434fda87fb071fe6fbef",
     "16248": "d85a04ef105a1e09e452037cff310e2712ae0488",
-    "16249": "7db25b607d1a63463b4418dd4691c12628ec7462",
+    "16249": "9116da1db3134c550e34569aaa741ad6da086021",
     "16254": "e9e8f77671bd9ecfc8b1ef7431a54d757764841e",
     "16255": "eacec9f417cf976894557230b5a4e90b30fe13bb",
     "16256": "7c9d184fa42cefe4e33e72d7a998bc1eba518047",
@@ -269,11 +269,12 @@
     "16267": "b8e750d320eae372b4cb394983fda5de3249d9fc",
     "16268": "368d027b2f711110df963b336798349170da6467",
     "16269": "664682a39d54424da7e87877307e79e8a1cf6402",
-    "16270": "77d241d91044c09d6a6ae3681b1629702dbb2d67"
+    "16270": "77d241d91044c09d6a6ae3681b1629702dbb2d67",
+    "16271": "2a6fe0f2d8e666f650d23ec40ad9882ce6abe318"
   },
-  "pulls_listed": 92,
+  "pulls_listed": 93,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 35.3,
+  "queue_depth_per_runner": 38.9,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -443,6 +444,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T14:12:40Z",
+  "unchanged_since": "2026-09-19T14:13:14Z",
   "undatable_pulls": []
 }
