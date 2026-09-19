@@ -1,0 +1,2658 @@
+{
+  "artifact": "cross-lane reproducibility audit",
+  "counts": {
+    "FAILED": 13,
+    "REPRODUCIBLE": 36,
+    "UNKNOWN": 8,
+    "VARIES": 4
+  },
+  "lanes": [
+    {
+      "commands": [
+        {
+          "command": "python3 build_index.py --revenue-root .. --out output",
+          "detail": "the documented command exited 2 and wrote nothing new: EXHIBIT NOT FOUND: ../uiowa_rfq_18649_workshare/ACCEPTANCE_EXHIBIT.md",
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "owner_reason": "the command reads above its own lane and this audit copies each lane in isolation",
+          "probable_owner": "harness",
+          "redirects": [],
+          "references_outside_lane": true,
+          "returncode": 2,
+          "verdict": "FAILED"
+        },
+        {
+          "command": "python3 -m unittest test_acceptance_map",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python3 exhibit_parser.py ../uiowa_rfq_18649_workshare/ACCEPTANCE_EXHIBIT.md",
+          "detail": "the documented command exited 1 and wrote nothing new: FileNotFoundError: [Errno 2] No such file or directory: '../uiowa_rfq_18649_workshare/ACCEPTANCE_EXHIBIT.md'",
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "owner_reason": "the command reads above its own lane and this audit copies each lane in isolation",
+          "probable_owner": "harness",
+          "redirects": [],
+          "references_outside_lane": true,
+          "returncode": 1,
+          "verdict": "FAILED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_acceptance_map",
+      "note": "",
+      "verdict": "FAILED"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 readiness.py",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 14,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 readiness.py --instrument-only",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 14,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 6,
+          "command": "python3 readiness.py --teams fixtures/hostile_teams.json --outdir out_hostile",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 20,
+          "matches_committed_artifacts": false,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 6,
+          "command": "python3 readiness.py --catalog fixtures/hostile_catalog.json --outdir out_badplan",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 20,
+          "matches_committed_artifacts": false,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest -v test_readiness",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_adoption_readiness",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 ai_decision_case.py --case fixtures/beneficial.json",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 18,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 ai_decision_case.py --case fixtures/unfavourable.json --sweep",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 18,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 ai_decision_case.py --case fixtures/undecidable.json --format json",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 18,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 ai_decision_case.py --case fixtures/beneficial.json --set analyst_hourly_cost=40 --diff",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 18,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest test_ai_decision_case -v",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_ai_decision_case",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 eval_kit.py validate",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 12,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 eval_kit.py report",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 12,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 eval_kit.py check-digest",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 12,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest -v",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_ai_eval_kit",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 build_kit.py",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 24,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 1,
+          "command": "python3 demo_swap.py",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 24,
+          "matches_committed_artifacts": false,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest -v test_ai_integration",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_ai_integration",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 opportunity_portfolio.py",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 8,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 2,
+          "command": "python3 opportunity_portfolio.py --composite",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 8,
+          "matches_committed_artifacts": false,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 opportunity_portfolio.py --candidates mine.json --out /tmp/run",
+          "detail": "the documented command exited 1 and wrote nothing new: FileNotFoundError: [Errno 2] No such file or directory: 'mine.json'",
+          "owner_reason": "absolute paths were redirected; the failure may be a consequence of that",
+          "probable_owner": "harness",
+          "redirects": [
+            {
+              "original": "/tmp/run",
+              "redirected_to": "_audit_redirect/run"
+            }
+          ],
+          "returncode": 1,
+          "verdict": "FAILED"
+        },
+        {
+          "command": "python3 -m unittest test_opportunity_portfolio -v",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_ai_opportunity_portfolio",
+      "note": "",
+      "verdict": "FAILED"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 policy_matrix.py",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 13,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 4,
+          "command": "python3 policy_matrix.py --fixtures fixtures --out /tmp/out",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 17,
+          "matches_committed_artifacts": false,
+          "redirects": [
+            {
+              "original": "/tmp/out",
+              "redirected_to": "_audit_redirect/out"
+            }
+          ],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest test_policy_matrix -v",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_ai_policy_to_workflow",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 4,
+          "command": "python3 inventory.py --input fixtures/synthetic_ai_use.json --outdir out",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 15,
+          "matches_committed_artifacts": false,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 inventory.py --input fixtures/synthetic_ai_use.json --print",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 11,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 inventory.py --input fixtures/synthetic_ai_use_hostile.json --print",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 11,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 interview_guide.py --guide",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 11,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 interview_guide.py --probes fixtures/synthetic_ai_use.json",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 11,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest -v test_inventory",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_ai_use_inventory",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 3,
+          "command": "python3 analyze.py --resolve WP5.correction_hours=14,22,40",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 10,
+          "matches_committed_artifacts": false,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 analyze.py",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 10,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 analyze.py --check",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 10,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest test_cost_model",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_base_fee_economics",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 1,
+          "command": "python3 bid_pack.py --manifest fixtures/manifest.json --out sample_output",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 36,
+          "matches_committed_artifacts": false,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 18,
+          "command": "python3 bid_pack.py --manifest fixtures/manifest.json --out /tmp/x --strict",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 54,
+          "matches_committed_artifacts": false,
+          "redirects": [
+            {
+              "original": "/tmp/x",
+              "redirected_to": "_audit_redirect/x"
+            }
+          ],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 packcheck.py sample_output/proposal.pdf sample_output/proposal.docx",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 36,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest test_bid_pack test_packcheck -v",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_bid_pack",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [],
+      "lane": "uiowa_rfq_18649_build_board",
+      "note": "no README.md, so no documented command to run; not assessed",
+      "verdict": "UNKNOWN"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 1,
+          "command": "python3 capability_appendix.py record --observed-on 2026-09-19",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 15,
+          "matches_committed_artifacts": false,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 4,
+          "command": "python3 capability_appendix.py build --outdir out",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 15,
+          "matches_committed_artifacts": false,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest -v test_capability_appendix",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_capability_appendix",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "command": "python3 -m unittest discover -v",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        },
+        {
+          "causes": {
+            "results/BENCHMARK_REPORT.md": "timestamp_like",
+            "results/benchmark_results.csv": "timestamp_like",
+            "results/benchmark_results.json": "timestamp_like",
+            "results/environment.json": "timestamp_like"
+          },
+          "command": "python3 benchmark.py",
+          "differing_files": [
+            "results/BENCHMARK_REPORT.md",
+            "results/benchmark_results.csv",
+            "results/benchmark_results.json",
+            "results/environment.json"
+          ],
+          "exit_code": 0,
+          "files_compared": 9,
+          "matches_committed_artifacts": false,
+          "only_in_first_run": [],
+          "only_in_second_run": [],
+          "redirects": [],
+          "verdict": "VARIES"
+        },
+        {
+          "causes": {
+            "results/benchmark_results.csv": "timestamp_like",
+            "results/benchmark_results.json": "timestamp_like",
+            "results/environment.json": "timestamp_like"
+          },
+          "command": "python3 benchmark.py --sizes small",
+          "differing_files": [
+            "results/benchmark_results.csv",
+            "results/benchmark_results.json",
+            "results/environment.json"
+          ],
+          "exit_code": 1,
+          "files_compared": 9,
+          "matches_committed_artifacts": false,
+          "only_in_first_run": [],
+          "only_in_second_run": [],
+          "redirects": [],
+          "verdict": "VARIES"
+        },
+        {
+          "artifacts_written": 206,
+          "command": "python3 generate_collection.py --profile medium --out /tmp/c",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 215,
+          "matches_committed_artifacts": false,
+          "redirects": [
+            {
+              "original": "/tmp/c",
+              "redirected_to": "_audit_redirect/c"
+            }
+          ],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 workflow.py /tmp/c --mode optimized --out /tmp/out",
+          "detail": "the documented command exited 1 and wrote nothing new: WorkflowError: required input is missing: manifest.json",
+          "owner_reason": "absolute paths were redirected; the failure may be a consequence of that",
+          "probable_owner": "harness",
+          "redirects": [
+            {
+              "original": "/tmp/c",
+              "redirected_to": "_audit_redirect/c"
+            },
+            {
+              "original": "/tmp/out",
+              "redirected_to": "_audit_redirect/out"
+            }
+          ],
+          "returncode": 1,
+          "verdict": "FAILED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_capacity_benchmark",
+      "note": "",
+      "verdict": "VARIES"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 capacity_roadmap.py check --items data/roadmap-items.json --capacity data/capacity-assumptions.json",
+          "exit_code": 1,
+          "exit_is_a_finding_signal": true,
+          "files_compared": 9,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 capacity_roadmap.py plan --items data/roadmap-items.json --capacity data/capacity-assumptions.json --outdir examples",
+          "exit_code": 1,
+          "exit_is_a_finding_signal": true,
+          "files_compared": 9,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 capacity_roadmap.py rules",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 9,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest -v test_capacity_roadmap",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_capacity_feasibility",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "command": "python3 -m unittest discover -v",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        },
+        {
+          "causes": {
+            "results/kit_scan_results.json": "unclassified"
+          },
+          "command": "python3 scan_kit.py --revenue ../ --out results",
+          "differing_files": [
+            "results/kit_scan_results.json"
+          ],
+          "exit_code": 0,
+          "files_compared": 6,
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "matches_committed_artifacts": false,
+          "only_in_first_run": [],
+          "only_in_second_run": [],
+          "redirects": [],
+          "references_outside_lane": true,
+          "verdict": "VARIES"
+        },
+        {
+          "command": "python3 scan_hotspots.py <any-directory>",
+          "detail": "uses shell redirection or chaining, which this audit does not run through a shell",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_capacity_scan",
+      "note": "",
+      "verdict": "VARIES"
+    },
+    {
+      "commands": [
+        {
+          "command": "python -m unittest -v test_closeout.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        },
+        {
+          "artifacts_written": 2,
+          "command": "python closeout.py sample/engagement.json sample/evidence_inventory.csv sample/disposition_log.csv --as-of 2026-12-21 --json-out /tmp/uiowa-closeout.json --md-out /tmp/uiowa-closeout.md",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 15,
+          "matches_committed_artifacts": false,
+          "redirects": [
+            {
+              "original": "/tmp/uiowa-closeout.json",
+              "redirected_to": "_audit_redirect/uiowa-closeout.json"
+            },
+            {
+              "original": "/tmp/uiowa-closeout.md",
+              "redirected_to": "_audit_redirect/uiowa-closeout.md"
+            }
+          ],
+          "verdict": "REPRODUCIBLE"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_closeout",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 3,
+          "command": "python3 transition.py --input fixtures/contractor_transition.json --outdir out",
+          "exit_code": 1,
+          "exit_is_a_finding_signal": true,
+          "files_compared": 12,
+          "matches_committed_artifacts": false,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 transition.py --input fixtures/contractor_transition.json --print",
+          "detail": "the documented command exited 1 and wrote nothing new: items=6 completed=2 unresolved=2 no_evidence=2 closed=False issues=0",
+          "owner_reason": "the command as documented did not run here",
+          "probable_owner": "lane",
+          "redirects": [],
+          "returncode": 1,
+          "verdict": "FAILED"
+        },
+        {
+          "command": "python3 transition.py --input fixtures/contractor_transition_unsafe.json",
+          "detail": "the documented command exited 3 and wrote nothing new:   POSSIBLE_REAL_ID_NUMBER SYN-APP-003.note -- a nine-digit run is the shape of a real university ID",
+          "owner_reason": "the command as documented did not run here",
+          "probable_owner": "lane",
+          "redirects": [],
+          "returncode": 3,
+          "verdict": "FAILED"
+        },
+        {
+          "command": "python3 -m unittest -v test_transition",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_contractor_transition",
+      "note": "",
+      "verdict": "FAILED"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 4,
+          "command": "python3 continuity.py --input fixtures/ris_deadline_scenario.json --outdir out",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 13,
+          "matches_committed_artifacts": false,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 continuity.py --input fixtures/ris_deadline_scenario.json --print",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 9,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest -v test_continuity",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_deadline_continuity",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [],
+      "lane": "uiowa_rfq_18649_delivery_metrics",
+      "note": "no README.md, so no documented command to run; not assessed",
+      "verdict": "UNKNOWN"
+    },
+    {
+      "commands": [
+        {
+          "command": "python3 delivery_scan.py --root ..",
+          "detail": "the documented command exited 1 and wrote nothing new: This screen reuses the UIOWA-082 guard rather than reimplementing it.",
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "owner_reason": "the command reads above its own lane and this audit copies each lane in isolation",
+          "probable_owner": "harness",
+          "redirects": [],
+          "references_outside_lane": true,
+          "returncode": 1,
+          "verdict": "FAILED"
+        },
+        {
+          "command": "python3 delivery_scan.py --root .. --out out/",
+          "detail": "the documented command exited 1 and wrote nothing new: This screen reuses the UIOWA-082 guard rather than reimplementing it.",
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "owner_reason": "the command reads above its own lane and this audit copies each lane in isolation",
+          "probable_owner": "harness",
+          "redirects": [],
+          "references_outside_lane": true,
+          "returncode": 1,
+          "verdict": "FAILED"
+        },
+        {
+          "command": "python3 delivery_scan.py --root .. --fail-on-flag",
+          "detail": "the documented command exited 1 and wrote nothing new: This screen reuses the UIOWA-082 guard rather than reimplementing it.",
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "owner_reason": "the command reads above its own lane and this audit copies each lane in isolation",
+          "probable_owner": "harness",
+          "redirects": [],
+          "references_outside_lane": true,
+          "returncode": 1,
+          "verdict": "FAILED"
+        },
+        {
+          "command": "python3 -m unittest -v test_delivery_scan.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_delivery_scan",
+      "note": "",
+      "verdict": "FAILED"
+    },
+    {
+      "commands": [],
+      "lane": "uiowa_rfq_18649_doc_usability",
+      "note": "README documents no runnable command; not assessed. This is not a pass.",
+      "verdict": "UNKNOWN"
+    },
+    {
+      "commands": [
+        {
+          "command": "python -m pip install -r requirements.txt",
+          "detail": "environment or network command",
+          "verdict": "SKIPPED"
+        },
+        {
+          "artifacts_written": 2,
+          "command": "python make_synthetic_corpus.py",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 10,
+          "matches_committed_artifacts": false,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python extract.py fixtures/sample.pdf > /tmp/sample-pdf.json",
+          "detail": "uses shell redirection or chaining, which this audit does not run through a shell",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python extract.py fixtures/sample.docx > /tmp/sample-docx.json",
+          "detail": "uses shell redirection or chaining, which this audit does not run through a shell",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python extract.py fixtures/sample.txt > /tmp/sample-text.json",
+          "detail": "uses shell redirection or chaining, which this audit does not run through a shell",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python -m unittest -v test_extract.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python extract.py fixtures/sample.pdf",
+          "detail": "the documented command exited 1 and wrote nothing new: pyo3_runtime.PanicException: Python API call failed",
+          "owner_reason": "the command as documented did not run here",
+          "probable_owner": "lane",
+          "redirects": [],
+          "returncode": 1,
+          "verdict": "FAILED"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python extract.py fixtures/sample.docx",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 10,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python extract.py fixtures/sample.txt",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 10,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_document_extraction",
+      "note": "",
+      "verdict": "FAILED"
+    },
+    {
+      "commands": [
+        {
+          "command": "python3 integrate.py",
+          "detail": "the documented command exited 2 and wrote nothing new: INTEGRATION ERROR: recommendation register not found at /tmp/ra_a_m9gtc26o/lane/fixtures/register.fallback.json",
+          "owner_reason": "the command as documented did not run here",
+          "probable_owner": "lane",
+          "redirects": [],
+          "returncode": 2,
+          "verdict": "FAILED"
+        },
+        {
+          "command": "python3 -m unittest discover -p \"test_*.py\"",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 check_contract.py --explain resource",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 20,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 check_contract.py --resource your_086_output.json",
+          "detail": "the documented command exited 2 and wrote nothing new: UNUSABLE: your_086_output.json not found",
+          "owner_reason": "the command as documented did not run here",
+          "probable_owner": "lane",
+          "redirects": [],
+          "returncode": 2,
+          "verdict": "FAILED"
+        },
+        {
+          "command": "python3 check_contract.py --economics your_078_output.json",
+          "detail": "the documented command exited 2 and wrote nothing new: UNUSABLE: your_078_output.json not found",
+          "owner_reason": "the command as documented did not run here",
+          "probable_owner": "lane",
+          "redirects": [],
+          "returncode": 2,
+          "verdict": "FAILED"
+        },
+        {
+          "command": "python3 check_contract.py --portfolio your_072_output.json",
+          "detail": "the documented command exited 2 and wrote nothing new: UNUSABLE: your_072_output.json not found",
+          "owner_reason": "the command as documented did not run here",
+          "probable_owner": "lane",
+          "redirects": [],
+          "returncode": 2,
+          "verdict": "FAILED"
+        },
+        {
+          "command": "python3 check_contract.py --resource your.json --json",
+          "detail": "the documented command exited 2 and wrote nothing new: UNUSABLE: your.json not found",
+          "owner_reason": "the command as documented did not run here",
+          "probable_owner": "lane",
+          "redirects": [],
+          "returncode": 2,
+          "verdict": "FAILED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_economics_resource_adapters",
+      "note": "",
+      "verdict": "FAILED"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 build_summary.py",
+          "exit_code": 1,
+          "exit_is_a_finding_signal": true,
+          "files_compared": 13,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest -v test_exec_summary",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_exec_summary",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "causes": {
+            "examples/findings.json": "unclassified"
+          },
+          "command": "python3 export_safety.py scan --root ..",
+          "differing_files": [
+            "examples/findings.json"
+          ],
+          "exit_code": 0,
+          "files_compared": 14,
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "matches_committed_artifacts": false,
+          "only_in_first_run": [],
+          "only_in_second_run": [],
+          "redirects": [],
+          "references_outside_lane": true,
+          "verdict": "VARIES"
+        },
+        {
+          "causes": {
+            "examples/findings.json": "unclassified"
+          },
+          "command": "python3 export_safety.py scan --root .. --lane uiowa_rfq_18649_workbench",
+          "differing_files": [
+            "examples/findings.json"
+          ],
+          "exit_code": 0,
+          "files_compared": 14,
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "matches_committed_artifacts": false,
+          "only_in_first_run": [],
+          "only_in_second_run": [],
+          "redirects": [],
+          "references_outside_lane": true,
+          "verdict": "VARIES"
+        },
+        {
+          "causes": {
+            "examples/findings.json": "unclassified"
+          },
+          "command": "python3 export_safety.py scan --root .. --skip-lane uiowa_rfq_18649_export_safety",
+          "differing_files": [
+            "examples/findings.json"
+          ],
+          "exit_code": 0,
+          "files_compared": 14,
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "matches_committed_artifacts": false,
+          "only_in_first_run": [],
+          "only_in_second_run": [],
+          "redirects": [],
+          "references_outside_lane": true,
+          "verdict": "VARIES"
+        },
+        {
+          "artifacts_written": 3,
+          "command": "python3 export_safety.py scan --root fixtures --include-self-fixtures --out /tmp/fx",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 17,
+          "matches_committed_artifacts": false,
+          "redirects": [
+            {
+              "original": "/tmp/fx",
+              "redirected_to": "_audit_redirect/fx"
+            }
+          ],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "causes": {
+            "examples/findings.json": "unclassified"
+          },
+          "command": "python3 export_safety.py scan --root .. --fail-on HIGH",
+          "differing_files": [
+            "examples/findings.json"
+          ],
+          "exit_code": 0,
+          "files_compared": 14,
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "matches_committed_artifacts": false,
+          "only_in_first_run": [],
+          "only_in_second_run": [],
+          "redirects": [],
+          "references_outside_lane": true,
+          "verdict": "VARIES"
+        },
+        {
+          "command": "python3 -m unittest -v",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_export_safety",
+      "note": "",
+      "verdict": "VARIES"
+    },
+    {
+      "commands": [
+        {
+          "command": "python3 fs_safety.py --root /path/to/revenue --lane-prefix uiowa_rfq_18649 --output-dir examples/live_snapshot",
+          "detail": "the documented command exited 2 and wrote nothing new: ERROR: not a directory: /tmp/ra_a_dr131emz/lane/_audit_redirect/revenue",
+          "owner_reason": "an absolute path in the documented command was redirected into the copy and the command expected the original shape; re-run it by hand to judge",
+          "probable_owner": "harness",
+          "redirects": [
+            {
+              "original": "/path/to/revenue",
+              "redirected_to": "_audit_redirect/revenue"
+            }
+          ],
+          "returncode": 2,
+          "verdict": "FAILED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_filesystem_safety",
+      "note": "",
+      "verdict": "FAILED"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python handoff.py validate examples/planned_release.json",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 7,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python handoff.py render examples/planned_release.json",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 7,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python handoff.py validate examples/urgent_maintenance.json",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 7,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python -m unittest discover -s tests -v",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_handoff",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "command": "python incident_learning.py examples.json",
+          "detail": "script 'incident_learning.py' is not in this lane",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python incident_learning.py examples.json --out /tmp/uiowa-067-result.json",
+          "detail": "script 'incident_learning.py' is not in this lane",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python -m unittest -v test_incident_learning.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_incident_learning",
+      "note": "every documented command was skipped; not assessed. This is not a pass.",
+      "verdict": "UNKNOWN"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 rehearse_intake.py --collection sources --out artifacts",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 25,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 rehearse_intake.py --collection sources --out artifacts --check-digest",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 25,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest test_rehearsal",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        },
+        {
+          "artifacts_written": 4,
+          "command": "python3 rehearse_intake.py --collection sources --out artifacts --extra-collection ../uiowa_rfq_18649_synthetic_collection",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 25,
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "matches_committed_artifacts": false,
+          "redirects": [],
+          "references_outside_lane": true,
+          "verdict": "REPRODUCIBLE"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [],
+      "lane": "uiowa_rfq_18649_integration",
+      "note": "no README.md, so no documented command to run; not assessed",
+      "verdict": "UNKNOWN"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 milestone_packets.py fixtures/engagement.json --artifact-root fixtures/artifacts --output-dir examples --as-of 2026-11-25",
+          "exit_code": 1,
+          "exit_is_a_finding_signal": true,
+          "files_compared": 32,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest test_milestone_packets -v",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python3 -O -m unittest test_milestone_packets",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_milestone_packets",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [],
+      "lane": "uiowa_rfq_18649_mobilization",
+      "note": "README documents no runnable command; not assessed. This is not a pass.",
+      "verdict": "UNKNOWN"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python observability.py examples.json",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 5,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 1,
+          "command": "python observability.py examples.json --out /tmp/uiowa-065-result.json",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 6,
+          "matches_committed_artifacts": false,
+          "redirects": [
+            {
+              "original": "/tmp/uiowa-065-result.json",
+              "redirected_to": "_audit_redirect/uiowa-065-result.json"
+            }
+          ],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python -m unittest -v test_observability.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_observability",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "command": "python3 -m unittest test_verify_kit",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 verify_kit.py --root fixtures/minikit --manifest fixtures/minikit_manifest.json",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 26,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "causes": {
+            "sample/component_status.json": "unclassified",
+            "sample/verification_log.md": "unclassified"
+          },
+          "command": "python3 verify_kit.py --root ../ --timeout 90 --out-json sample/component_status.json --out-csv sample/component_status.csv --out-md sample/verification_log.md",
+          "differing_files": [
+            "sample/component_status.json",
+            "sample/verification_log.md"
+          ],
+          "exit_code": 0,
+          "files_compared": 26,
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "matches_committed_artifacts": false,
+          "only_in_first_run": [],
+          "only_in_second_run": [],
+          "redirects": [],
+          "references_outside_lane": true,
+          "verdict": "VARIES"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 render_guide.py --status sample/component_status.json --out OPERATOR_GUIDE.md",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 26,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "causes": {
+            "COMMAND_INDEX.md": "unclassified",
+            "sample/command_index.json": "unclassified"
+          },
+          "command": "python3 command_index.py --root ../ --out COMMAND_INDEX.md --out-json sample/command_index.json",
+          "differing_files": [
+            "COMMAND_INDEX.md",
+            "sample/command_index.json"
+          ],
+          "exit_code": 0,
+          "files_compared": 26,
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "matches_committed_artifacts": false,
+          "only_in_first_run": [],
+          "only_in_second_run": [],
+          "redirects": [],
+          "references_outside_lane": true,
+          "verdict": "VARIES"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_operator_handoff",
+      "note": "",
+      "verdict": "VARIES"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python analyze.py validate --recommendations recommendations.csv --register measure_register.csv --measurements examples/measurements.csv",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 7,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python analyze.py report --recommendations recommendations.csv --register measure_register.csv --measurements examples/measurements.csv",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 7,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python -m unittest discover -s tests -v",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_outcome_measurement",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 output_agreement.py fixtures/consistent",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 48,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 output_agreement.py fixtures/mismatched/count_mismatch",
+          "exit_code": 1,
+          "exit_is_a_finding_signal": true,
+          "files_compared": 48,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 4,
+          "command": "python3 output_agreement.py fixtures/mismatched/state_mismatch --regenerate /tmp/fixed",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 52,
+          "matches_committed_artifacts": false,
+          "redirects": [
+            {
+              "original": "/tmp/fixed",
+              "redirected_to": "_audit_redirect/fixed"
+            }
+          ],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 make_bundle.py",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 48,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest -v test_output_agreement.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 printreport.py",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 24,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 6,
+          "command": "python3 printreport.py --document fixtures/report_document.json --out /tmp/out",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 30,
+          "matches_committed_artifacts": false,
+          "redirects": [
+            {
+              "original": "/tmp/out",
+              "redirected_to": "_audit_redirect/out"
+            }
+          ],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest test_printreport -v",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_print_pagination",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 prioritize.py",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 12,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 3,
+          "command": "python3 prioritize.py --weights baseline --json-out out.json --csv-out out.csv --markdown-out out.md",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 15,
+          "matches_committed_artifacts": false,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 prioritize.py --weights quality-led",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 12,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 prioritize.py --weights \"quality=0.1,security=0.8,delivery=0.1\"",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 12,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 prioritize.py --sweep-dimension delivery --sweep-steps 200",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 12,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest -v test_prioritize.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python3 -O -m unittest test_prioritize.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_prioritization",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 cli.py audit",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 8,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 cli.py drill",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 8,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 cli.py ask \"Has RIS tested restoring from backup?\"",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 8,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 cli.py ask \"Which team is the worst?\"",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 8,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 cli.py ask \"What is the uptime SLA for the student information system?\"",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 8,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 cli.py ask \"Which team is the worst?\" --json",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 8,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 cli.py explain \"what is the mean time to recovery for RIS\"",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 8,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 cli.py claim-types",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 8,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest test_qa.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_qa_refusal_contract",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 question_cards.py build",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 11,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 question_cards.py check",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 11,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 3,
+          "command": "python3 question_cards.py check --observations observations_hostile.json --out /tmp/h",
+          "exit_code": 1,
+          "exit_is_a_finding_signal": true,
+          "files_compared": 14,
+          "matches_committed_artifacts": false,
+          "redirects": [
+            {
+              "original": "/tmp/h",
+              "redirected_to": "_audit_redirect/h"
+            }
+          ],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 question_cards.py search --query \"role:iam_administrator\"",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 11,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 question_cards.py search --query \"type:ABSENT_EVIDENCE inventory\"",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 11,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 question_cards.py search --query \"OBS-ESS-SEC-07\"",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 11,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 question_cards.py verify-export",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 11,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest -v",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_question_cards",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [],
+      "lane": "uiowa_rfq_18649_rating_model",
+      "note": "no README.md, so no documented command to run; not assessed",
+      "verdict": "UNKNOWN"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 deck_architecture.py check --report data/example-report.json --deck data/example-readout-deck.json",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 13,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 deck_architecture.py render --report data/example-report.json --deck data/example-readout-deck.json --outdir examples",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 13,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 deck_architecture.py rules",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 13,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest -v test_deck_architecture",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_readout_deck",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 3,
+          "command": "python assess_recovery.py fixtures/synthetic_recovery_records.json --json-output /tmp/uiowa-068-report.json --csv-output /tmp/uiowa-068-matrix.csv --markdown-output /tmp/uiowa-068-scenario.md",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 16,
+          "matches_committed_artifacts": false,
+          "redirects": [
+            {
+              "original": "/tmp/uiowa-068-report.json",
+              "redirected_to": "_audit_redirect/uiowa-068-report.json"
+            },
+            {
+              "original": "/tmp/uiowa-068-matrix.csv",
+              "redirected_to": "_audit_redirect/uiowa-068-matrix.csv"
+            },
+            {
+              "original": "/tmp/uiowa-068-scenario.md",
+              "redirected_to": "_audit_redirect/uiowa-068-scenario.md"
+            }
+          ],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python -m unittest -v test_assess_recovery.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_recovery_evidence",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python provenance.py fixtures.json --case complete --artifact-root . --format markdown",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 9,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python provenance.py fixtures.json --case missing-build --format markdown",
+          "exit_code": 1,
+          "exit_is_a_finding_signal": true,
+          "files_compared": 9,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python provenance.py fixtures.json --case digest-mismatch --format json",
+          "exit_code": 1,
+          "exit_is_a_finding_signal": true,
+          "files_compared": 9,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python provenance.py --schema",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 9,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python -m unittest -v test_provenance.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_release_provenance",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 release_recovery_case.py case.json --format markdown",
+          "exit_code": 1,
+          "exit_is_a_finding_signal": true,
+          "files_compared": 19,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 release_recovery_case.py fixtures/clean.json --format json",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 19,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 release_recovery_case.py fixtures/timeline-disagreement.json",
+          "exit_code": 1,
+          "exit_is_a_finding_signal": true,
+          "files_compared": 19,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 release_recovery_case.py fixtures/ordering-inversion.json --format csv",
+          "exit_code": 1,
+          "exit_is_a_finding_signal": true,
+          "files_compared": 19,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 release_recovery_case.py case.json --json-output out/case_report.json --csv-output out/agreement_matrix.csv --markdown-output out/case_report.md --emit-provenance out/projected_provenance_packet.json --emit-recovery out/projected_recovery_records.json --emit-environment out/projected_environment_view.json",
+          "exit_code": 1,
+          "exit_is_a_finding_signal": true,
+          "files_compared": 19,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 release_recovery_case.py --schema",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 19,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 make_fixtures.py",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 19,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest -v test_release_recovery_case.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_release_recovery_case",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 report_structure.py --check",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 14,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 report_structure.py --verify-workbench ../..",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 14,
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "references_outside_lane": true,
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 report_structure.py --scope-guard",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 14,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest -v test_report_structure.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 report_structure.py --render-template examples/report_template.md --render-sample examples/report_sample.md --render-map-csv examples/content_map.csv",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 14,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 scope_guard.py path/to/draft.md --show-neutralized",
+          "detail": "the documented command exited 1 and wrote nothing new: FileNotFoundError: [Errno 2] No such file or directory: 'path/to/draft.md'",
+          "owner_reason": "the command as documented did not run here",
+          "probable_owner": "lane",
+          "redirects": [],
+          "returncode": 1,
+          "verdict": "FAILED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_report_structure",
+      "note": "",
+      "verdict": "FAILED"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 render_report_visuals.py",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 37,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 render_report_visuals.py --audit",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 37,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 render_report_visuals.py --check-encoding",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 37,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest test_report_visuals",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_report_visuals",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 depcheck.py --outdir out_consistent",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 16,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 depcheck.py --roadmap fixtures/roadmap_inconsistent.json --outdir out_inconsistent --rehearse-repairs",
+          "exit_code": 1,
+          "exit_is_a_finding_signal": true,
+          "files_compared": 16,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 4,
+          "command": "python3 depcheck.py --roadmap fixtures/hostile_roadmap.json --outdir out_hostile",
+          "exit_code": 1,
+          "exit_is_a_finding_signal": true,
+          "files_compared": 20,
+          "matches_committed_artifacts": false,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest -v test_depcheck",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_roadmap_dependencies",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "command": "python3 run_sweep.py --root /path/to/repo --observed-on 2026-09-19 --outdir out",
+          "detail": "the documented command exited 2 and wrote nothing new: error: root /tmp/ra_a_1d1vfdeg/lane/_audit_redirect/repo does not exist",
+          "owner_reason": "an absolute path in the documented command was redirected into the copy and the command expected the original shape; re-run it by hand to judge",
+          "probable_owner": "harness",
+          "redirects": [
+            {
+              "original": "/path/to/repo",
+              "redirected_to": "_audit_redirect/repo"
+            }
+          ],
+          "returncode": 2,
+          "verdict": "FAILED"
+        },
+        {
+          "command": "python3 -m unittest -v test_run_sweep",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_run_sweep",
+      "note": "",
+      "verdict": "FAILED"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 scope_change.py",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 8,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 3,
+          "command": "python3 scope_change.py --json-out out.json --csv-out out.csv --markdown-out out.md",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 11,
+          "matches_committed_artifacts": false,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 scope_change.py --sweep-role lead_reviewer",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 8,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest -v test_scope_change.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python3 -O -m unittest test_scope_change.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_scope_change",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 assess_guidance.py fixtures/synthetic_guidance_packet.json --csv-out examples/guidance-usability.csv --md-out examples/discussion-pack.md",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 7,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest -v test_assess_guidance.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python3 -O -m unittest -v test_assess_guidance.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_secure_guidance",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 1,
+          "command": "python3 assess_security_events.py fixtures/synthetic_events.json --json-out /tmp/uiowa060-assessment.json --csv-out examples/security-event-evidence-matrix.csv --md-out examples/event-to-resolution-timeline.md",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 8,
+          "matches_committed_artifacts": false,
+          "redirects": [
+            {
+              "original": "/tmp/uiowa060-assessment.json",
+              "redirected_to": "_audit_redirect/uiowa060-assessment.json"
+            }
+          ],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest -v test_assess_security_events.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python3 -O -m unittest -v test_assess_security_events.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_security_event_review",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [],
+      "lane": "uiowa_rfq_18649_synthetic_collection",
+      "note": "README documents no runnable command; not assessed. This is not a pass.",
+      "verdict": "UNKNOWN"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 test_data_assessor.py fixtures/catalog.synthetic.json",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 10,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 1,
+          "command": "python3 test_data_assessor.py fixtures/catalog.synthetic.json --format json --output report.json",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 11,
+          "matches_committed_artifacts": false,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest -v tests/test_assessor.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_test_data_readiness",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 trace_check.py bundle",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 39,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 trace_check.py bundle_drifted",
+          "exit_code": 1,
+          "exit_is_a_finding_signal": true,
+          "files_compared": 39,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 trace_check.py bundle --format markdown",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 39,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 trace_check.py bundle --format json",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 39,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 trace_check.py bundle --rules",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 39,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest test_trace_check -v",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 trace_check.py bundle --register",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 39,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 trace_check.py bundle --seal",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 39,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 audit_self_sealing.py /path/to/revenue",
+          "detail": "the documented command exited 1 and wrote nothing new: FileNotFoundError: [Errno 2] No such file or directory: '/tmp/ra_a_bymk1s9o/lane/_audit_redirect/revenue'",
+          "owner_reason": "an absolute path in the documented command was redirected into the copy and the command expected the original shape; re-run it by hand to judge",
+          "probable_owner": "harness",
+          "redirects": [
+            {
+              "original": "/path/to/revenue",
+              "redirected_to": "_audit_redirect/revenue"
+            }
+          ],
+          "returncode": 1,
+          "verdict": "FAILED"
+        },
+        {
+          "command": "python3 audit_self_sealing.py /path/to/revenue --only <lane>",
+          "detail": "uses shell redirection or chaining, which this audit does not run through a shell",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python3 audit_self_sealing.py /path/to/revenue --format json",
+          "detail": "the documented command exited 1 and wrote nothing new: FileNotFoundError: [Errno 2] No such file or directory: '/tmp/ra_a_ior07ze6/lane/_audit_redirect/revenue'",
+          "owner_reason": "an absolute path in the documented command was redirected into the copy and the command expected the original shape; re-run it by hand to judge",
+          "probable_owner": "harness",
+          "redirects": [
+            {
+              "original": "/path/to/revenue",
+              "redirected_to": "_audit_redirect/revenue"
+            }
+          ],
+          "returncode": 1,
+          "verdict": "FAILED"
+        },
+        {
+          "command": "python3 audit_assertions.py /path/to/revenue",
+          "detail": "the documented command exited 1 and wrote nothing new: FileNotFoundError: [Errno 2] No such file or directory: '/tmp/ra_a_ifj6bos9/lane/_audit_redirect/revenue'",
+          "owner_reason": "an absolute path in the documented command was redirected into the copy and the command expected the original shape; re-run it by hand to judge",
+          "probable_owner": "harness",
+          "redirects": [
+            {
+              "original": "/path/to/revenue",
+              "redirected_to": "_audit_redirect/revenue"
+            }
+          ],
+          "returncode": 1,
+          "verdict": "FAILED"
+        },
+        {
+          "command": "python3 audit_assertions.py /path/to/revenue --format json",
+          "detail": "the documented command exited 1 and wrote nothing new: FileNotFoundError: [Errno 2] No such file or directory: '/tmp/ra_a_m7xeime4/lane/_audit_redirect/revenue'",
+          "owner_reason": "an absolute path in the documented command was redirected into the copy and the command expected the original shape; re-run it by hand to judge",
+          "probable_owner": "harness",
+          "redirects": [
+            {
+              "original": "/path/to/revenue",
+              "redirected_to": "_audit_redirect/revenue"
+            }
+          ],
+          "returncode": 1,
+          "verdict": "FAILED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_traceability",
+      "note": "",
+      "verdict": "FAILED"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python validate_trace.py .",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 8,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_traceability_rehearsal",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "command": "python3 cli.py scan <dir>",
+          "detail": "uses shell redirection or chaining, which this audit does not run through a shell",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python3 cli.py scan <dir> --all",
+          "detail": "uses shell redirection or chaining, which this audit does not run through a shell",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python3 cli.py scan <dir> --json",
+          "detail": "uses shell redirection or chaining, which this audit does not run through a shell",
+          "verdict": "SKIPPED"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 cli.py score",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 5,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 cli.py explain",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 5,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest test_lint.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_uncertainty_lint",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 scan_unknowns.py --root ..",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 11,
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "references_outside_lane": true,
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 scan_unknowns.py --root fixtures --lane-prefix lane_ --crosswalk \"\"",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 11,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest -v test_scan_unknowns.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python3 -O -m unittest test_scan_unknowns.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_unknown_propagation",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 5,
+          "command": "python3 reconcile.py --revenue-root .. --out output",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 11,
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "matches_committed_artifacts": false,
+          "redirects": [],
+          "references_outside_lane": true,
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest test_vocabulary",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 scan_vocabulary.py ..",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 11,
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "references_outside_lane": true,
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 join_safety.py --revenue-root .. --left uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv --right uiowa_rfq_18649_synthetic_collection/coverage_matrix.csv",
+          "detail": "the documented command exited 2 and wrote nothing new: FILE NOT FOUND: ../uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "owner_reason": "the command reads above its own lane and this audit copies each lane in isolation",
+          "probable_owner": "harness",
+          "redirects": [],
+          "references_outside_lane": true,
+          "returncode": 2,
+          "verdict": "FAILED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_vocabulary_crosswalk",
+      "note": "",
+      "verdict": "FAILED"
+    },
+    {
+      "commands": [
+        {
+          "command": "python3 server.py --port 8765",
+          "detail": "starts a server",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python3 -m py_compile server.py test_workbench.py browser_acceptance.py",
+          "detail": "starts a server",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python3 -m unittest -v test_workbench.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python3 -O -m unittest -v test_workbench.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python3 browser_acceptance.py",
+          "detail": "the documented command exited 1 and wrote nothing new: ModuleNotFoundError: No module named 'playwright'",
+          "owner_reason": "a dependency is not installed in this container",
+          "probable_owner": "environment",
+          "redirects": [],
+          "returncode": 1,
+          "verdict": "FAILED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_workbench",
+      "note": "",
+      "verdict": "FAILED"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 1,
+          "command": "python compiler.py compile fixtures/synthetic_packet.json fixtures/synthetic_authority.json /tmp/uiowa-report.json",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 37,
+          "matches_committed_artifacts": false,
+          "redirects": [
+            {
+              "original": "/tmp/uiowa-report.json",
+              "redirected_to": "_audit_redirect/uiowa-report.json"
+            }
+          ],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python compiler.py verify /tmp/uiowa-report.json",
+          "detail": "the documented command exited 2 and wrote nothing new: ERROR: cannot open input safely: /tmp/ra_a_0f9ut3fe/lane/_audit_redirect/uiowa-report.json: No such file or directory",
+          "owner_reason": "an absolute path in the documented command was redirected into the copy and the command expected the original shape; re-run it by hand to judge",
+          "probable_owner": "harness",
+          "redirects": [
+            {
+              "original": "/tmp/uiowa-report.json",
+              "redirected_to": "_audit_redirect/uiowa-report.json"
+            }
+          ],
+          "returncode": 2,
+          "verdict": "FAILED"
+        },
+        {
+          "command": "python compiler.py render /tmp/uiowa-report.json /tmp/uiowa-report.md",
+          "detail": "the documented command exited 2 and wrote nothing new: ERROR: cannot open input safely: /tmp/ra_a_n9dzfwiw/lane/_audit_redirect/uiowa-report.json: No such file or directory",
+          "owner_reason": "an absolute path in the documented command was redirected into the copy and the command expected the original shape; re-run it by hand to judge",
+          "probable_owner": "harness",
+          "redirects": [
+            {
+              "original": "/tmp/uiowa-report.json",
+              "redirected_to": "_audit_redirect/uiowa-report.json"
+            },
+            {
+              "original": "/tmp/uiowa-report.md",
+              "redirected_to": "_audit_redirect/uiowa-report.md"
+            }
+          ],
+          "returncode": 2,
+          "verdict": "FAILED"
+        },
+        {
+          "command": "python -m unittest -v test_compiler.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python -O -m unittest -v test_compiler.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_workshare",
+      "note": "",
+      "verdict": "FAILED"
+    }
+  ],
+  "lanes_audited": 61,
+  "method": "Each command documented in a lane's own README is run twice, in separate processes, with PYTHONHASHSEED=0 and 1, on two private copies at two different absolute paths. The full resulting trees are byte-compared. Nothing runs against the tree itself.",
+  "pattern": "uiowa_rfq_18649_*",
+  "unknown_notice": "UNKNOWN means no documented command could be run. It is not a pass, and it is not a finding against the lane."
+}
