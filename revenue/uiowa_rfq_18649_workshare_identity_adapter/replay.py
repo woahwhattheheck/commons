@@ -5,14 +5,20 @@ from __future__ import annotations
 import argparse
 from copy import deepcopy
 import hashlib
+import importlib.util
 import json
 from pathlib import Path
 import sys
 
-try:
+if __package__:
     from . import adapter as a
-except ImportError:
-    import adapter as a
+else:
+    _path = Path(__file__).resolve().with_name("adapter.py")
+    _spec = importlib.util.spec_from_file_location("_uiowa_workshare_native_adapter", _path)
+    if _spec is None or _spec.loader is None:
+        raise RuntimeError("Cannot load sibling adapter")
+    a = importlib.util.module_from_spec(_spec)
+    _spec.loader.exec_module(a)
 
 HERE = Path(__file__).resolve().parent
 PARENT_FIXTURE = HERE.parent / "uiowa_rfq_18649_workshare/fixtures/synthetic_authority.json"
