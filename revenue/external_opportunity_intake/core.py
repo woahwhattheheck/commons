@@ -70,9 +70,9 @@ def _reject_constant(value: str) -> Any:
 
 
 def parse_strict_json(raw: str | bytes) -> Any:
-    if isinstance(raw, bytes):
-        raw = raw.decode("utf-8", "strict")
     try:
+        if isinstance(raw, bytes):
+            raw = raw.decode("utf-8", "strict")
         value = json.loads(
             raw,
             object_pairs_hook=_pairs,
@@ -312,6 +312,8 @@ def _normalize(document: Any) -> tuple[dict[str, Any], dict[str, datetime], list
         generation = _identifier(row["source_generation"], "acceptance_route.source_generation")
         if generation not in source_times:
             raise IntakeError("acceptance_route.source_generation: unknown generation")
+        if acceptance_time < source_times[generation]:
+            raise IntakeError("acceptance_route: observation before source generation")
         acceptance = {
             "opportunity_id": oid,
             "source_generation": generation,
@@ -602,8 +604,10 @@ def verify_record(record: Any) -> None:
 def render_markdown(record: dict[str, Any]) -> str:
     verify_record(record)
     opp = record["opportunity"]
-    comp = next(c for c in opp["compensation"] if c["source_generation"] == opp["active_source_generation"])
-    if comp["kind"] == "FIXED":
+    comp = next((c for c in opp["compensation"] if c["source_generation"] == opp["active_source_generation"]), None)
+    if comp is None:
+        comp_text = "NO ACTIVE-GENERATION COMPENSATION EVIDENCE"
+    elif comp["kind"] == "FIXED":
         comp_text = f"{comp['amount_minor']} minor units {comp['currency']}"
     elif comp["kind"] == "NON_FIXED":
         comp_text = comp["terms"]
