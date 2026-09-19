@@ -3,12 +3,14 @@ from __future__ import annotations
 import copy
 import json
 import os
+import tempfile
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 import pytest
 
 from tools.repo_estate_rationalizer import rationalizer as rr
+from tools.repo_estate_rationalizer import schema as rr_schema
 
 NOW = datetime(2026, 9, 18, 7, 35, 0, tzinfo=UTC)
 SHA = "a" * 40
@@ -279,6 +281,23 @@ def test_exported_policy_globals_cannot_widen_captured_generation(monkeypatch):
     assert packet["authority"]["publication_safety_certified"] is False
 
 
+def test_schema_dependency_rebinding_cannot_widen_captured_generation(monkeypatch):
+    generation = test_generation()
+    stale = evidence([ev(observed="2026-09-01T00:00:00Z")])
+
+    monkeypatch.setattr(rr_schema, "_fresh", lambda *_args: True)
+    monkeypatch.setattr(rr_schema, "MAX_EVIDENCE_AGE", timedelta(days=9999))
+    monkeypatch.setattr(rr_schema, "VISIBILITY", {"public", "private", "forged"})
+    monkeypatch.setattr(rr_schema, "INTENTS", {"keep_private", "review_public", "review_archive", "publish_now"})
+
+    packet = generation.compile_at(snapshot(), stale, now=NOW)
+    row = by_repo(packet, "private-one")
+    assert row["state"] == "HOLD"
+    assert "SECRET_SCAN_NOT_CURRENT_CLEAR" in row["reasons"]
+    assert "OPEN_WORK_SNAPSHOT_STALE" in row["reasons"]
+    assert "DEPENDENCY_SNAPSHOT_STALE" in row["reasons"]
+
+
 def test_evidence_row_order_is_receipt_independent():
     repos = [
         {"name": "alpha", "visibility": "private", "archived": False, "default_branch": "main", "default_branch_sha": SHA},
@@ -433,8 +452,92 @@ def _optimized_smoke():
         raise RuntimeError("optimized smoke: live fixture count")
     if sum(x["visibility"] == "private" for x in snap["repositories"]) != 15:
         raise RuntimeError("optimized smoke: live private count")
+
+    with tempfile.TemporaryDirectory(prefix="estate-cli-opt-") as tmp:
+        root = Path(tmp)
+        snap_path = root / "snapshot.json"
+        evidence_path = root / "evidence.json"
+        out_path = root / "packet.json"
+        markdown_path = root / "packet.md"
+        malformed = snapshot()
+        malformed["repositories"][1]["visibility"] = []
+        snap_path.write_text(json.dumps(malformed), encoding="utf-8")
+        evidence_path.write_text(json.dumps(evidence()), encoding="utf-8")
+        rc = rr.main([
+            "compile",
+            "--snapshot", str(snap_path),
+            "--evidence", str(evidence_path),
+            "--out", str(out_path),
+            "--markdown", str(markdown_path),
+        ])
+        if rc != 2 or out_path.exists():
+            raise RuntimeError("optimized smoke: malformed CLI shape escaped refusal")
+
+        snap_path.write_text(json.dumps(snapshot()), encoding="utf-8")
+        parent = root / "not-a-directory"
+        parent.write_text("retained-parent", encoding="utf-8")
+        rc = rr.main([
+            "compile",
+            "--snapshot", str(snap_path),
+            "--evidence", str(evidence_path),
+            "--out", str(parent / "packet.json"),
+            "--markdown", str(markdown_path),
+        ])
+        if rc != 2 or parent.read_text(encoding="utf-8") != "retained-parent":
+            raise RuntimeError("optimized smoke: local I/O fault escaped refusal")
+
     print("OPTIMIZED_REPO_ESTATE_SMOKE_PASS")
 
 
 if __name__ == "__main__":
     _optimized_smoke()
+
+def test_cli_invalid_json_shape_type_error_is_refusal(tmp_path, capsys):
+    snap = snapshot()
+    snap["repositories"][1]["visibility"] = []
+    snap_path = tmp_path / "snapshot.json"
+    evidence_path = tmp_path / "evidence.json"
+    out_path = tmp_path / "packet.json"
+    markdown_path = tmp_path / "packet.md"
+    snap_path.write_text(json.dumps(snap), encoding="utf-8")
+    evidence_path.write_text(json.dumps(evidence()), encoding="utf-8")
+
+    rc = rr.main([
+        "compile",
+        "--snapshot", str(snap_path),
+        "--evidence", str(evidence_path),
+        "--out", str(out_path),
+        "--markdown", str(markdown_path),
+    ])
+
+    captured = capsys.readouterr()
+    assert rc == 2
+    assert "REFUSED:" in captured.err
+    assert "Traceback" not in captured.err
+    assert not out_path.exists()
+
+
+def test_cli_output_parent_file_oserror_is_refusal(tmp_path, capsys):
+    snap_path = tmp_path / "snapshot.json"
+    evidence_path = tmp_path / "evidence.json"
+    parent = tmp_path / "not-a-directory"
+    markdown_path = tmp_path / "packet.md"
+    snap_path.write_text(json.dumps(snapshot()), encoding="utf-8")
+    evidence_path.write_text(json.dumps(evidence()), encoding="utf-8")
+    parent.write_text("retained-parent", encoding="utf-8")
+
+    rc = rr.main([
+        "compile",
+        "--snapshot", str(snap_path),
+        "--evidence", str(evidence_path),
+        "--out", str(parent / "packet.json"),
+        "--markdown", str(markdown_path),
+    ])
+
+    captured = capsys.readouterr()
+    assert rc == 2
+    assert "REFUSED:" in captured.err
+    assert "Traceback" not in captured.err
+    assert parent.read_text(encoding="utf-8") == "retained-parent"
+    assert not markdown_path.exists()
+
