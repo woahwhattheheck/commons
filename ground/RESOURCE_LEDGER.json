@@ -25,6 +25,7 @@
   "priority_queue": [],
   "production_write": false,
   "record_sources": [
+    "inventory/resources/records/codex-whitebox-hour-direct-checkout-road-resource-activation-20260919-01.json",
     "inventory/resources/records/codex-ci-fix-pack-99-payment-road-resource-activation-20260919-01.json",
     "inventory/resources/records/codex-commons-context-dispatch-compiler-resource-activation-20260913-01.json",
     "inventory/resources/records/codex-cross-family-offering-bundle-composer-resource-activation-20260913-01.json",
@@ -99,15 +100,15 @@
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1789813173.482349",
+  "slack_ts": "1789823103.266949",
   "snapshot": {
-    "base_main_sha": "2ada04e5c9b8ea18a4323768d4c38b84aeb089df",
-    "observed_at": "2026-09-19T10:19:36Z",
+    "base_main_sha": "c011a606171249e37cd5809bfbcb42d537d3cca1",
+    "observed_at": "2026-09-19T13:05:53Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-ci-fix-pack-99-payment-road-resource-activation-20260919-01",
+  "source_id": "codex-whitebox-hour-direct-checkout-road-resource-activation-20260919-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -116,8 +117,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — bounded provenance-bound Commons context dispatch packets",
+  "subject": "MASTER RESOURCE LEDGER — White Box hour direct checkout road",
   "supersedes_source_ids": [
+    "codex-whitebox-hour-direct-checkout-road-resource-activation-20260919-01",
     "codex-ci-fix-pack-99-payment-road-resource-activation-20260919-01",
     "codex-commons-context-dispatch-compiler-resource-activation-20260913-01",
     "codex-cross-family-offering-bundle-composer-resource-activation-20260913-01",
@@ -180,6 +182,27 @@
     "demon-live-compute-board-20260825-01"
   ],
   "surfaces": [
+    {
+      "assigned_backlog": "Route the existing White Box hour offer only through the standalone owner-now customer surface and its exact direct transaction path; preserve no-resend and owner-only payment/account boundaries.",
+      "auth_surface": "Standalone owner-now-revenue customer page plus one existing direct Stripe Payment Link; Commons, GitHub and Slack are internal evidence and coordination surfaces only.",
+      "authority": "INTERNAL_COMMONS_ROUTING_AND_EXISTING_DIRECT_TRANSACTION_ROAD; NO_COMMONS_GITHUB_OR_SLACK_CUSTOMER_CTA; NO_DUPLICATE_PAYMENT_LINK; NO_PROVIDER_WRITE; NO_SCHEDULING; NO_BUYER_ACCEPTANCE_SETTLEMENT_PAYOUT_REVENUE_OR_CURRENT_CASH_INFERENCE",
+      "capacity": "LIVE",
+      "condition": "CONSTRAINED",
+      "consumer": "Commons sales and delivery agents composing a collision-clean standalone customer route, and an external buyer only through the existing standalone owner-now surface plus direct transaction/support path.",
+      "evidence_ts": "2026-09-19T11:38:00Z",
+      "exact_safe_probe": "PR #16087 head/merge 5efd6315e893123f0cbcf144904f1e2e5aaeae95 is an ancestor of descendant main c011a606171249e37cd5809bfbcb42d537d3cca1; eight source/evidence blobs matched; 54 focused tests and exact-head open-door/source-parses/path-manifest/muhlnickel-spec-guard/capability-entrypoints/job-watchdog workflows passed.",
+      "holder": "LATCH source custody / Commons sales and delivery agents",
+      "kind": "COMMERCIAL_ASSET",
+      "last_receipt": "codex-whitebox-hour-direct-checkout-road-resource-activation-20260919-01",
+      "last_used_at": "2026-09-19T11:38:00Z",
+      "name": "whitebox-hour-direct-checkout-road",
+      "next_action": "When a collision-clean buyer route exists, use the standalone owner-now surface and exact existing direct transaction path; after attributable acceptance/payment evidence, deliver the bounded White Box hour and retain direct delivery/support receipts.",
+      "rate_plan_boundary": "One $250 White Box hour offer and one existing Payment Link. Link presence is not buyer intent, acceptance, settlement, payout, recognized revenue, current cash truth, permission to resend, or permission to schedule Bryce.",
+      "source": "Commons PR #16087; owner-now-revenue.html; land/sku-whitebox-hour-20260826.md; p/latch-owner-now-wb-hour-restore-20260919-01.md",
+      "stage": "PRODUCING",
+      "stale_after": "next offer, checkout, provider-status, customer-link-boundary, delivery-contract, no-resend, scheduling-law, or owner-law change",
+      "value": "$250 bounded White Box hour offer with an exact standalone customer CTA and an existing direct transaction road"
+    },
     {
       "assigned_backlog": "Reuse the single existing ci-fix-pack-99 checkout object; admit delivery only from usable intake and attributable transaction/acceptance evidence; never reopen already-fenced outreach.",
       "auth_surface": "Current-main package evidence plus the existing direct Stripe Payment Link; customer/public communication must use a clean standalone non-GitHub surface and the direct transaction/support path.",
