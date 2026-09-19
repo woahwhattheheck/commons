@@ -1,0 +1,12 @@
+{
+  "note": "SYNTHETIC / FICTIONAL FIXTURE. Hand-written observations paired with rejection_demo_register.json. BAD-04 is absent on purpose; BAD-05 records a real non-zero exit; BAD-06 records a digest that deliberately does not match the file, standing in for an artifact edited after it was demonstrated.",
+  "observed_on": "2026-09-19",
+  "observations": [
+    {"claim_id": "BAD-01", "observed_on": "2026-09-19", "cwd": ".", "command": "python3 capability_appendix.py", "status": "ran", "exit_code": 0, "output_verbatim": "usage shown", "file_digests": {}},
+    {"claim_id": "BAD-02", "observed_on": "2026-09-19", "cwd": ".", "command": "python3 capability_appendix.py", "status": "ran", "exit_code": 0, "output_verbatim": "usage shown", "file_digests": {}},
+    {"claim_id": "BAD-03", "observed_on": "2026-09-19", "cwd": ".", "command": "python3 capability_appendix.py", "status": "ran", "exit_code": 0, "output_verbatim": "usage shown", "file_digests": {}},
+    {"claim_id": "BAD-05", "observed_on": "2026-09-19", "cwd": ".", "command": "python3 capability_appendix.py", "status": "ran", "exit_code": 2, "output_verbatim": "error: cannot read claim register", "file_digests": {}},
+    {"claim_id": "BAD-06", "observed_on": "2026-09-19", "cwd": ".", "command": "python3 capability_appendix.py", "status": "ran", "exit_code": 0, "output_verbatim": "usage shown", "file_digests": {"capability_appendix.py": "sha256:0000000000000000000000000000000000000000000000000000000000000000"}},
+    {"claim_id": "BAD-07", "observed_on": "2026-09-19", "cwd": ".", "command": "python3 some_other_script.py", "status": "ran", "exit_code": 0, "output_verbatim": "usage shown", "file_digests": {}}
+  ]
+}

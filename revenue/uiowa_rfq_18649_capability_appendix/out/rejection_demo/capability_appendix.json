@@ -1,0 +1,249 @@
+{
+  "prepared_by_seat": "OP5-IRONWOOD (rejection demonstration fixture)",
+  "budget": {
+    "pages_allowed": 2,
+    "words_per_page": 500,
+    "words_allowed": 1000,
+    "words_used": 247,
+    "over_by": 0,
+    "within_budget": true,
+    "estimated_pages": 0.49
+  },
+  "demonstrated": [],
+  "not_demonstrated": [
+    {
+      "claim_id": "BAD-01",
+      "capability_area": "language: marketing adjective",
+      "statement": "A robust and seamlessly integrated evidence platform.",
+      "business_use": "Handles evidence.",
+      "artifact_dir": ".",
+      "artifact_paths": [
+        "capability_appendix.py"
+      ],
+      "demonstration": {
+        "cwd": ".",
+        "command": "python3 capability_appendix.py"
+      },
+      "contributing_seat": "fixture",
+      "bind_detail": {
+        "artifact_count": 1,
+        "missing_artifacts": [],
+        "language_violations": [
+          "marketing language:seamlessly",
+          "marketing language:robust"
+        ],
+        "command_targets": [
+          "capability_appendix.py"
+        ],
+        "observed_on": "2026-09-19",
+        "exit_code": 0,
+        "output_verbatim": "usage shown",
+        "drifted": []
+      },
+      "blockers": [
+        "wording rejected (marketing language: 'seamlessly'; marketing language: 'robust')"
+      ],
+      "demonstrated": false,
+      "_digests": {}
+    },
+    {
+      "claim_id": "BAD-02",
+      "capability_area": "language: certification and guarantee",
+      "statement": "Delivers a certified, compliant record set with guaranteed retention.",
+      "business_use": "Satisfies the requirement.",
+      "artifact_dir": ".",
+      "artifact_paths": [
+        "capability_appendix.py"
+      ],
+      "demonstration": {
+        "cwd": ".",
+        "command": "python3 capability_appendix.py"
+      },
+      "contributing_seat": "fixture",
+      "bind_detail": {
+        "artifact_count": 1,
+        "missing_artifacts": [],
+        "language_violations": [
+          "prohibited certification or guarantee language:certified",
+          "prohibited certification or guarantee language:compliant",
+          "prohibited certification or guarantee language:guaranteed"
+        ],
+        "command_targets": [
+          "capability_appendix.py"
+        ],
+        "observed_on": "2026-09-19",
+        "exit_code": 0,
+        "output_verbatim": "usage shown",
+        "drifted": []
+      },
+      "blockers": [
+        "wording rejected (prohibited certification or guarantee language: 'certified'; prohibited certification or guarantee language: 'compliant'; prohibited certification or guarantee language: 'guaranteed')"
+      ],
+      "demonstrated": false,
+      "_digests": {}
+    },
+    {
+      "claim_id": "BAD-03",
+      "capability_area": "binding: missing artifact",
+      "statement": "Evidence records are indexed by an offline tool.",
+      "business_use": "A reviewer can locate any record from its identifier.",
+      "artifact_dir": ".",
+      "artifact_paths": [
+        "capability_appendix.py",
+        "tool_that_does_not_exist.py"
+      ],
+      "demonstration": {
+        "cwd": ".",
+        "command": "python3 capability_appendix.py"
+      },
+      "contributing_seat": "fixture",
+      "bind_detail": {
+        "artifact_count": 2,
+        "missing_artifacts": [
+          "tool_that_does_not_exist.py"
+        ],
+        "language_violations": [],
+        "command_targets": [
+          "capability_appendix.py"
+        ],
+        "observed_on": "2026-09-19",
+        "exit_code": 0,
+        "output_verbatim": "usage shown",
+        "drifted": []
+      },
+      "blockers": [
+        "artifact file(s) not found: tool_that_does_not_exist.py"
+      ],
+      "demonstrated": false,
+      "_digests": {}
+    },
+    {
+      "claim_id": "BAD-04",
+      "capability_area": "binding: no observed run",
+      "statement": "Report sections are checked against the requested scope.",
+      "business_use": "An empty section is visible before the report is circulated.",
+      "artifact_dir": ".",
+      "artifact_paths": [
+        "capability_appendix.py"
+      ],
+      "demonstration": {
+        "cwd": ".",
+        "command": "python3 capability_appendix.py"
+      },
+      "contributing_seat": "fixture",
+      "bind_detail": {
+        "artifact_count": 1,
+        "missing_artifacts": [],
+        "language_violations": [],
+        "command_targets": [
+          "capability_appendix.py"
+        ]
+      },
+      "blockers": [
+        "no observed run recorded for this claim"
+      ],
+      "demonstrated": false,
+      "_digests": {}
+    },
+    {
+      "claim_id": "BAD-05",
+      "capability_area": "binding: demonstration failed",
+      "statement": "Source links in an exported bundle are checked before delivery.",
+      "business_use": "A broken citation is found before a client finds it.",
+      "artifact_dir": ".",
+      "artifact_paths": [
+        "capability_appendix.py"
+      ],
+      "demonstration": {
+        "cwd": ".",
+        "command": "python3 capability_appendix.py"
+      },
+      "contributing_seat": "fixture",
+      "bind_detail": {
+        "artifact_count": 1,
+        "missing_artifacts": [],
+        "language_violations": [],
+        "command_targets": [
+          "capability_appendix.py"
+        ],
+        "observed_on": "2026-09-19",
+        "exit_code": 2,
+        "output_verbatim": "error: cannot read claim register",
+        "drifted": []
+      },
+      "blockers": [
+        "demonstration exited 2"
+      ],
+      "demonstrated": false,
+      "_digests": {}
+    },
+    {
+      "claim_id": "BAD-06",
+      "capability_area": "binding: artifact changed after demonstration",
+      "statement": "Measurements are recomputed from dated records on each run.",
+      "business_use": "A figure in the report can be regenerated from its inputs.",
+      "artifact_dir": ".",
+      "artifact_paths": [
+        "capability_appendix.py"
+      ],
+      "demonstration": {
+        "cwd": ".",
+        "command": "python3 capability_appendix.py"
+      },
+      "contributing_seat": "fixture",
+      "bind_detail": {
+        "artifact_count": 1,
+        "missing_artifacts": [],
+        "language_violations": [],
+        "command_targets": [
+          "capability_appendix.py"
+        ],
+        "observed_on": "2026-09-19",
+        "exit_code": 0,
+        "output_verbatim": "usage shown",
+        "drifted": [
+          "capability_appendix.py"
+        ]
+      },
+      "blockers": [
+        "artifact changed since it was demonstrated: capability_appendix.py. The recorded run no longer describes these bytes."
+      ],
+      "demonstrated": false,
+      "_digests": {
+        "capability_appendix.py": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    },
+    {
+      "claim_id": "BAD-07",
+      "capability_area": "binding: instruction points elsewhere",
+      "statement": "A reviewer can reproduce each result from the stated command.",
+      "business_use": "The instruction in the document is the instruction that works.",
+      "artifact_dir": ".",
+      "artifact_paths": [
+        "capability_appendix.py"
+      ],
+      "demonstration": {
+        "cwd": ".",
+        "command": "python3 some_other_script.py"
+      },
+      "contributing_seat": "fixture",
+      "bind_detail": {
+        "artifact_count": 1,
+        "missing_artifacts": [],
+        "language_violations": [],
+        "command_targets": [
+          "some_other_script.py"
+        ],
+        "observed_on": "2026-09-19",
+        "exit_code": 0,
+        "output_verbatim": "usage shown",
+        "drifted": []
+      },
+      "blockers": [
+        "demonstration command invokes some_other_script.py, which the claim does not cite"
+      ],
+      "demonstrated": false,
+      "_digests": {}
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "register_note": "Each entry is a capability CLAIM. A claim is not a capability until the generator binds it to artifact files that exist, a recorded run that this seat actually observed, and file digests that still match. Claims that fail any bind are printed in a separate 'Not demonstrated' section with the missing element named. Nothing in this file is an assertion about the University of Iowa, and no entry is a certification, compliance determination, or comparison against another supplier.",
+  "schema_version": "1.0",
+  "prepared_for": "RFQ 18649 proposal appendix (draft)",
+  "prepared_by_seat": "OP5-IRONWOOD",
+  "page_budget": {"pages": 2, "words_per_page": 500},
+
+  "claims": [
+    {
+      "claim_id": "CAP-01",
+      "capability_area": "evidence organization",
+      "statement": "Engagement evidence is held as an itemised inventory in which every item carries a disposition, a retention date, and a written confirmation record, and the completeness of that record set is checked by a program rather than by reading it.",
+      "business_use": "At closeout a client asks what you held, what was returned or destroyed, and on what date. This answers that from records instead of from memory, and the check fails if an item is missing one of those fields.",
+      "artifact_dir": "revenue/uiowa_rfq_18649_closeout",
+      "artifact_paths": [
+        "revenue/uiowa_rfq_18649_closeout/closeout.py",
+        "revenue/uiowa_rfq_18649_closeout/test_closeout.py",
+        "revenue/uiowa_rfq_18649_closeout/evidence_inventory_template.csv",
+        "revenue/uiowa_rfq_18649_closeout/disposition_log_template.csv"
+      ],
+      "demonstration": {
+        "cwd": "revenue/uiowa_rfq_18649_closeout",
+        "command": "python3 -m unittest test_closeout"
+      },
+      "contributing_seat": "ZZ-Lattice (GPT-5.6 Sol)",
+      "reported_commit": "c853c1422fc3e34aabbb54fe205bd9ea5b48bf34",
+      "reported_commit_status": "reported in channel; not independently verified by this seat"
+    },
+    {
+      "claim_id": "CAP-02",
+      "capability_area": "traceability",
+      "statement": "Every statement in a finished report can be followed back through the finding it rests on to the source record and evidence file it came from, and a link that does not resolve fails the check instead of passing quietly.",
+      "business_use": "When a reviewer disputes one sentence in a report, the underlying record can be produced in one step rather than reconstructed. The same check catches a citation that broke when a source was renamed.",
+      "artifact_dir": "revenue/uiowa_rfq_18649_traceability_rehearsal",
+      "artifact_paths": [
+        "revenue/uiowa_rfq_18649_traceability_rehearsal/validate_trace.py",
+        "revenue/uiowa_rfq_18649_traceability_rehearsal/trace-map.csv",
+        "revenue/uiowa_rfq_18649_traceability_rehearsal/evidence.csv",
+        "revenue/uiowa_rfq_18649_traceability_rehearsal/findings.csv",
+        "revenue/uiowa_rfq_18649_traceability_rehearsal/recommendations.csv",
+        "revenue/uiowa_rfq_18649_traceability_rehearsal/final-report.md"
+      ],
+      "demonstration": {
+        "cwd": "revenue/uiowa_rfq_18649_traceability_rehearsal",
+        "command": "python3 validate_trace.py"
+      },
+      "contributing_seat": "ZZ-Sol (GPT-5.6 Sol)",
+      "reported_commit": "6152c82071626faa95e119fbf2a35304bcf401e9",
+      "reported_commit_status": "reported in channel; not independently verified by this seat"
+    },
+    {
+      "claim_id": "CAP-03",
+      "capability_area": "comparison",
+      "statement": "Delivery measurements are computed per service from dated records, and each figure is reported together with the measurement window and the number of records it was derived from.",
+      "business_use": "Two teams' delivery figures are only comparable if both came from a stated window over a stated record count. Publishing the window next to the number is what makes a later comparison defensible.",
+      "artifact_dir": "revenue/uiowa_rfq_18649_delivery_metrics",
+      "artifact_paths": [
+        "revenue/uiowa_rfq_18649_delivery_metrics/calculator.py",
+        "revenue/uiowa_rfq_18649_delivery_metrics/test_calculator.py",
+        "revenue/uiowa_rfq_18649_delivery_metrics/64-data-dictionary.md"
+      ],
+      "demonstration": {
+        "cwd": "revenue/uiowa_rfq_18649_delivery_metrics",
+        "command": "python3 -m unittest test_calculator"
+      },
+      "contributing_seat": "ZZ-Semaphore (GPT-5.6 Sol)",
+      "reported_commit": "92fecdaf18b4c700f14e4859f502fb7f240433cd",
+      "reported_commit_status": "reported in channel; not independently verified by this seat"
+    },
+    {
+      "claim_id": "CAP-04",
+      "capability_area": "comparison",
+      "statement": "Assessment output separates a completed process step from evidence that the step produced its intended result, and evidence that was never supplied stays marked unknown instead of being counted as a passing value.",
+      "business_use": "A record set that is half populated otherwise reads as a clean result. Keeping unknowns visible is what stops a partial submission from being mistaken for a favourable finding, and it names the specific input still needed.",
+      "artifact_dir": "revenue/uiowa_rfq_18649_recovery_evidence",
+      "artifact_paths": [
+        "revenue/uiowa_rfq_18649_recovery_evidence/recovery_evidence.py",
+        "revenue/uiowa_rfq_18649_recovery_evidence/test_recovery_evidence.py",
+        "revenue/uiowa_rfq_18649_recovery_evidence/fixtures/synthetic_estate.json"
+      ],
+      "demonstration": {
+        "cwd": "revenue/uiowa_rfq_18649_recovery_evidence",
+        "command": "python3 -m unittest test_recovery_evidence"
+      },
+      "contributing_seat": "OP5-IRONWOOD (Claude Opus 5)",
+      "reported_commit": "d4b75d8e31aeabbe1a81e19ffbe83436a6f1344b",
+      "reported_commit_status": "reported in channel; not independently verified by this seat"
+    },
+    {
+      "claim_id": "CAP-05",
+      "capability_area": "report preparation",
+      "statement": "A final report is assembled from a defined section structure that is checked against the requested scope, so a section with no supporting content is reported as empty rather than filled with generic text.",
+      "business_use": "A reviewer can see which parts of the report are backed by collected material and which are still awaiting it, before the document is circulated rather than after.",
+      "artifact_dir": "revenue/uiowa_rfq_18649_report_structure",
+      "artifact_paths": [
+        "revenue/uiowa_rfq_18649_report_structure/report_structure.py",
+        "revenue/uiowa_rfq_18649_report_structure/scope_guard.py",
+        "revenue/uiowa_rfq_18649_report_structure/test_report_structure.py"
+      ],
+      "demonstration": {
+        "cwd": "revenue/uiowa_rfq_18649_report_structure",
+        "command": "python3 -m unittest test_report_structure"
+      },
+      "contributing_seat": "OP5-GRANITE (Claude Opus 5)",
+      "reported_commit": "reported in channel as landed; exact squash not captured by this seat",
+      "reported_commit_status": "not independently verified by this seat"
+    },
+    {
+      "claim_id": "CAP-06",
+      "capability_area": "evidence organization",
+      "statement": "A multi-team evidence collection covers every assessment area for every group, with an indexed manifest and a coverage matrix stating which cells have supporting records.",
+      "business_use": "Before fieldwork begins, the gaps in a collection are visible as empty cells rather than discovered during synthesis.",
+      "artifact_dir": "revenue/uiowa_rfq_18649_synthetic_collection",
+      "artifact_paths": [
+        "revenue/uiowa_rfq_18649_synthetic_collection/evidence_manifest.json",
+        "revenue/uiowa_rfq_18649_synthetic_collection/facts.json",
+        "revenue/uiowa_rfq_18649_synthetic_collection/coverage_matrix.csv"
+      ],
+      "demonstration": {
+        "cwd": "revenue/uiowa_rfq_18649_synthetic_collection",
+        "command": "(no executable entry point identified by this seat)"
+      },
+      "contributing_seat": "ZZ-Sol (GPT-5.6 Sol)",
+      "reported_commit": "9323193054f48c0173ad2c85da5d065b8c23f41b",
+      "reported_commit_status": "reported in channel; not independently verified by this seat",
+      "claim_note": "Retained deliberately. The artifacts exist and were located, but this seat did not observe a run, so the claim cannot be printed as a capability. It appears in the Not demonstrated section, which is the behaviour this generator exists to guarantee."
+    }
+  ]
+}

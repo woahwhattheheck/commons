@@ -1,0 +1,246 @@
+{
+  "prepared_by_seat": "OP5-IRONWOOD",
+  "budget": {
+    "pages_allowed": 2,
+    "words_per_page": 500,
+    "words_allowed": 1000,
+    "words_used": 631,
+    "over_by": 0,
+    "within_budget": true,
+    "estimated_pages": 1.26
+  },
+  "demonstrated": [
+    {
+      "claim_id": "CAP-01",
+      "capability_area": "evidence organization",
+      "statement": "Engagement evidence is held as an itemised inventory in which every item carries a disposition, a retention date, and a written confirmation record, and the completeness of that record set is checked by a program rather than by reading it.",
+      "business_use": "At closeout a client asks what you held, what was returned or destroyed, and on what date. This answers that from records instead of from memory, and the check fails if an item is missing one of those fields.",
+      "artifact_dir": "revenue/uiowa_rfq_18649_closeout",
+      "artifact_paths": [
+        "revenue/uiowa_rfq_18649_closeout/closeout.py",
+        "revenue/uiowa_rfq_18649_closeout/test_closeout.py",
+        "revenue/uiowa_rfq_18649_closeout/evidence_inventory_template.csv",
+        "revenue/uiowa_rfq_18649_closeout/disposition_log_template.csv"
+      ],
+      "demonstration": {
+        "cwd": "revenue/uiowa_rfq_18649_closeout",
+        "command": "python3 -m unittest test_closeout"
+      },
+      "contributing_seat": "ZZ-Lattice (GPT-5.6 Sol)",
+      "reported_commit": "c853c1422fc3e34aabbb54fe205bd9ea5b48bf34",
+      "reported_commit_status": "reported in channel; not independently verified by this seat",
+      "bind_detail": {
+        "artifact_count": 4,
+        "missing_artifacts": [],
+        "language_violations": [],
+        "command_targets": [
+          "test_closeout.py"
+        ],
+        "observed_on": "2026-09-19",
+        "exit_code": 0,
+        "output_verbatim": ".......\n----------------------------------------------------------------------\nRan 7 tests in 0.001s\n\nOK",
+        "drifted": []
+      },
+      "blockers": [],
+      "demonstrated": true,
+      "_digests": {
+        "revenue/uiowa_rfq_18649_closeout/closeout.py": "sha256:e5319385fe0f9aa7cca5d537c2626df53c28699697371f1df9b89bd163514f63",
+        "revenue/uiowa_rfq_18649_closeout/test_closeout.py": "sha256:2dee14394e08a1b23eb3f2e95d5b98200220ed9d999884ac98e2fc2bc09fcfea",
+        "revenue/uiowa_rfq_18649_closeout/evidence_inventory_template.csv": "sha256:adf3bdf549a2d9e2848a2d6b7e527776804fa49e64faa866a203c13c6e45ef61",
+        "revenue/uiowa_rfq_18649_closeout/disposition_log_template.csv": "sha256:6607a787cb20e56b252a4f1f322371016e00735c9fa6d61e2f0a82d669f0cc7e"
+      }
+    },
+    {
+      "claim_id": "CAP-02",
+      "capability_area": "traceability",
+      "statement": "Every statement in a finished report can be followed back through the finding it rests on to the source record and evidence file it came from, and a link that does not resolve fails the check instead of passing quietly.",
+      "business_use": "When a reviewer disputes one sentence in a report, the underlying record can be produced in one step rather than reconstructed. The same check catches a citation that broke when a source was renamed.",
+      "artifact_dir": "revenue/uiowa_rfq_18649_traceability_rehearsal",
+      "artifact_paths": [
+        "revenue/uiowa_rfq_18649_traceability_rehearsal/validate_trace.py",
+        "revenue/uiowa_rfq_18649_traceability_rehearsal/trace-map.csv",
+        "revenue/uiowa_rfq_18649_traceability_rehearsal/evidence.csv",
+        "revenue/uiowa_rfq_18649_traceability_rehearsal/findings.csv",
+        "revenue/uiowa_rfq_18649_traceability_rehearsal/recommendations.csv",
+        "revenue/uiowa_rfq_18649_traceability_rehearsal/final-report.md"
+      ],
+      "demonstration": {
+        "cwd": "revenue/uiowa_rfq_18649_traceability_rehearsal",
+        "command": "python3 validate_trace.py"
+      },
+      "contributing_seat": "ZZ-Sol (GPT-5.6 Sol)",
+      "reported_commit": "6152c82071626faa95e119fbf2a35304bcf401e9",
+      "reported_commit_status": "reported in channel; not independently verified by this seat",
+      "bind_detail": {
+        "artifact_count": 6,
+        "missing_artifacts": [],
+        "language_violations": [],
+        "command_targets": [
+          "validate_trace.py"
+        ],
+        "observed_on": "2026-09-19",
+        "exit_code": 0,
+        "output_verbatim": "evidence=8 findings=3 recommendations=2 statements=5\ntrace validation: PASS",
+        "drifted": []
+      },
+      "blockers": [],
+      "demonstrated": true,
+      "_digests": {
+        "revenue/uiowa_rfq_18649_traceability_rehearsal/validate_trace.py": "sha256:f5ca901e7fb70d566431f45284d7f4fdeb0fe4535eef2df4c4c87549a0cb49cb",
+        "revenue/uiowa_rfq_18649_traceability_rehearsal/trace-map.csv": "sha256:bbe7052c8154bae0c012763a50852df275522b526c034399d0299bbeb6c6509f",
+        "revenue/uiowa_rfq_18649_traceability_rehearsal/evidence.csv": "sha256:13600c35976d9fe21191873aa1277fda69ce21ad9cfbfc12192e42887e168605",
+        "revenue/uiowa_rfq_18649_traceability_rehearsal/findings.csv": "sha256:45e6599cf58f14996ab3e7b23016814e1340f3e0bcf6d7c62655ff218e4f1baf",
+        "revenue/uiowa_rfq_18649_traceability_rehearsal/recommendations.csv": "sha256:a4cf8873db7b8ef9d96abe6b97fdefde1632d7848b0a18a01f5193434969b1db",
+        "revenue/uiowa_rfq_18649_traceability_rehearsal/final-report.md": "sha256:3e18371ec00776fa6a985c7983bcb76d8105fb0f81bc49c963822bd4c21ab8f2"
+      }
+    },
+    {
+      "claim_id": "CAP-03",
+      "capability_area": "comparison",
+      "statement": "Delivery measurements are computed per service from dated records, and each figure is reported together with the measurement window and the number of records it was derived from.",
+      "business_use": "Two teams' delivery figures are only comparable if both came from a stated window over a stated record count. Publishing the window next to the number is what makes a later comparison defensible.",
+      "artifact_dir": "revenue/uiowa_rfq_18649_delivery_metrics",
+      "artifact_paths": [
+        "revenue/uiowa_rfq_18649_delivery_metrics/calculator.py",
+        "revenue/uiowa_rfq_18649_delivery_metrics/test_calculator.py",
+        "revenue/uiowa_rfq_18649_delivery_metrics/64-data-dictionary.md"
+      ],
+      "demonstration": {
+        "cwd": "revenue/uiowa_rfq_18649_delivery_metrics",
+        "command": "python3 -m unittest test_calculator"
+      },
+      "contributing_seat": "ZZ-Semaphore (GPT-5.6 Sol)",
+      "reported_commit": "92fecdaf18b4c700f14e4859f502fb7f240433cd",
+      "reported_commit_status": "reported in channel; not independently verified by this seat",
+      "bind_detail": {
+        "artifact_count": 3,
+        "missing_artifacts": [],
+        "language_violations": [],
+        "command_targets": [
+          "test_calculator.py"
+        ],
+        "observed_on": "2026-09-19",
+        "exit_code": 0,
+        "output_verbatim": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.006s\n\nOK",
+        "drifted": []
+      },
+      "blockers": [],
+      "demonstrated": true,
+      "_digests": {
+        "revenue/uiowa_rfq_18649_delivery_metrics/calculator.py": "sha256:ec5dfa1199af2840b666c18d275d85d47c4000f0bca4a93b4f425cd9f66bb48a",
+        "revenue/uiowa_rfq_18649_delivery_metrics/test_calculator.py": "sha256:8024e03c039082f47d5fdadaf317bfdee56bd094a004cfb0a6a595be71fed33e",
+        "revenue/uiowa_rfq_18649_delivery_metrics/64-data-dictionary.md": "sha256:2745d956996e89f88f8a0fd1a881259a49aaf4b92f4a905acf17dca2765e064d"
+      }
+    },
+    {
+      "claim_id": "CAP-04",
+      "capability_area": "comparison",
+      "statement": "Assessment output separates a completed process step from evidence that the step produced its intended result, and evidence that was never supplied stays marked unknown instead of being counted as a passing value.",
+      "business_use": "A record set that is half populated otherwise reads as a clean result. Keeping unknowns visible is what stops a partial submission from being mistaken for a favourable finding, and it names the specific input still needed.",
+      "artifact_dir": "revenue/uiowa_rfq_18649_recovery_evidence",
+      "artifact_paths": [
+        "revenue/uiowa_rfq_18649_recovery_evidence/recovery_evidence.py",
+        "revenue/uiowa_rfq_18649_recovery_evidence/test_recovery_evidence.py",
+        "revenue/uiowa_rfq_18649_recovery_evidence/fixtures/synthetic_estate.json"
+      ],
+      "demonstration": {
+        "cwd": "revenue/uiowa_rfq_18649_recovery_evidence",
+        "command": "python3 -m unittest test_recovery_evidence"
+      },
+      "contributing_seat": "OP5-IRONWOOD (Claude Opus 5)",
+      "reported_commit": "d4b75d8e31aeabbe1a81e19ffbe83436a6f1344b",
+      "reported_commit_status": "reported in channel; not independently verified by this seat",
+      "bind_detail": {
+        "artifact_count": 3,
+        "missing_artifacts": [],
+        "language_violations": [],
+        "command_targets": [
+          "test_recovery_evidence.py"
+        ],
+        "observed_on": "2026-09-19",
+        "exit_code": 0,
+        "output_verbatim": ".....................................error: cannot read estate file /home/user/commons/revenue/uiowa_rfq_18649_recovery_evidence/nope.json: [Errno 2] No such file or directory: '/home/user/commons/revenue/uiowa_rfq_18649_recovery_evidence/nope.json'\n.............\n----------------------------------------------------------------------\nRan 50 tests in 0.031s\n\nOK",
+        "drifted": []
+      },
+      "blockers": [],
+      "demonstrated": true,
+      "_digests": {
+        "revenue/uiowa_rfq_18649_recovery_evidence/recovery_evidence.py": "sha256:df6aa1efad78bb38847d5a7c0410f3d334e4708a3bb303e64f8a681e317e1c8c",
+        "revenue/uiowa_rfq_18649_recovery_evidence/test_recovery_evidence.py": "sha256:fc8966538e4ba094fdf0bc5cc8cf38298c09018473d1705b97c914fce43ea23e",
+        "revenue/uiowa_rfq_18649_recovery_evidence/fixtures/synthetic_estate.json": "sha256:2210ca910e7c7be06d0068e7c25e53a47312520ceb3d0a8b2e43c58a04a97302"
+      }
+    },
+    {
+      "claim_id": "CAP-05",
+      "capability_area": "report preparation",
+      "statement": "A final report is assembled from a defined section structure that is checked against the requested scope, so a section with no supporting content is reported as empty rather than filled with generic text.",
+      "business_use": "A reviewer can see which parts of the report are backed by collected material and which are still awaiting it, before the document is circulated rather than after.",
+      "artifact_dir": "revenue/uiowa_rfq_18649_report_structure",
+      "artifact_paths": [
+        "revenue/uiowa_rfq_18649_report_structure/report_structure.py",
+        "revenue/uiowa_rfq_18649_report_structure/scope_guard.py",
+        "revenue/uiowa_rfq_18649_report_structure/test_report_structure.py"
+      ],
+      "demonstration": {
+        "cwd": "revenue/uiowa_rfq_18649_report_structure",
+        "command": "python3 -m unittest test_report_structure"
+      },
+      "contributing_seat": "OP5-GRANITE (Claude Opus 5)",
+      "reported_commit": "reported in channel as landed; exact squash not captured by this seat",
+      "reported_commit_status": "not independently verified by this seat",
+      "bind_detail": {
+        "artifact_count": 3,
+        "missing_artifacts": [],
+        "language_violations": [],
+        "command_targets": [
+          "test_report_structure.py"
+        ],
+        "observed_on": "2026-09-19",
+        "exit_code": 0,
+        "output_verbatim": "..........................................SCOPE GUARD - UIOWA RFQ 18649 final report\n==============================================================\nflagged: 2   neutralized: 0\n  audit_verdict            1\n  individual_evaluation    0\n  product_procurement      1\n\nFAIL - scope drift detected:\n\n[AV-01] audit_verdict  /tmp/tmp90xr62z4/drifted.md:1\n  matched : \"non-compliant\"\n  in      : The service is non-compliant and we recommend purchasing a new tool.\n  why     : States a compliance determination. This engagement assesses practice against frameworks used as prompts; it does not determine compliance.\n  rewrite : Describe the observed practice and the gap against the referenced clause, e.g. 'no current review records were observed for the practice IT-18 describes'.\n\n[PP-01] product_procurement  /tmp/tmp90xr62z4/drifted.md:1\n  matched : \"we recommend purchasing\"\n  in      : The service is non-compliant and we recommend purchasing a new tool.\n  why     : Recommends a purchase. Procurement is outside this engagement.\n  rewrite : State the capability the group needs and the decision it has to make; leave selection and purchase to the University's own process.\n\nSCOPE GUARD - UIOWA RFQ 18649 final report\n==============================================================\nflagged: 0   neutralized: 0\n  audit_verdict            0\n  individual_evaluation    0\n  product_procurement      0\n\nPASS - no scope drift detected.\n.............\n----------------------------------------------------------------------\nRan 55 tests in 0.147s\n\nOK",
+        "drifted": []
+      },
+      "blockers": [],
+      "demonstrated": true,
+      "_digests": {
+        "revenue/uiowa_rfq_18649_report_structure/report_structure.py": "sha256:f7a6674a4c57677d0d2978d57c9a4b5e1c07b3bf99f5fe9528dc2814505774a6",
+        "revenue/uiowa_rfq_18649_report_structure/scope_guard.py": "sha256:72d64630e8b1304474afbf278ef614404c299f7e8fce1df165a0951ee7de064c",
+        "revenue/uiowa_rfq_18649_report_structure/test_report_structure.py": "sha256:5f69b2729ab8c4d773cc2c47c2b64a9fd876e14b58f000232499766a1bbd1fdd"
+      }
+    }
+  ],
+  "not_demonstrated": [
+    {
+      "claim_id": "CAP-06",
+      "capability_area": "evidence organization",
+      "statement": "A multi-team evidence collection covers every assessment area for every group, with an indexed manifest and a coverage matrix stating which cells have supporting records.",
+      "business_use": "Before fieldwork begins, the gaps in a collection are visible as empty cells rather than discovered during synthesis.",
+      "artifact_dir": "revenue/uiowa_rfq_18649_synthetic_collection",
+      "artifact_paths": [
+        "revenue/uiowa_rfq_18649_synthetic_collection/evidence_manifest.json",
+        "revenue/uiowa_rfq_18649_synthetic_collection/facts.json",
+        "revenue/uiowa_rfq_18649_synthetic_collection/coverage_matrix.csv"
+      ],
+      "demonstration": {
+        "cwd": "revenue/uiowa_rfq_18649_synthetic_collection",
+        "command": "(no executable entry point identified by this seat)"
+      },
+      "contributing_seat": "ZZ-Sol (GPT-5.6 Sol)",
+      "reported_commit": "9323193054f48c0173ad2c85da5d065b8c23f41b",
+      "reported_commit_status": "reported in channel; not independently verified by this seat",
+      "claim_note": "Retained deliberately. The artifacts exist and were located, but this seat did not observe a run, so the claim cannot be printed as a capability. It appears in the Not demonstrated section, which is the behaviour this generator exists to guarantee.",
+      "bind_detail": {
+        "artifact_count": 3,
+        "missing_artifacts": [],
+        "language_violations": [],
+        "command_targets": [],
+        "observed_on": "2026-09-19"
+      },
+      "blockers": [
+        "demonstration was not run: no executable demonstration command declared"
+      ],
+      "demonstrated": false,
+      "_digests": {}
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+claim_id,capability_area,demonstrated,artifact_dir,artifact_count,command,observed_on,exit_code,blockers
+CAP-01,evidence organization,yes,revenue/uiowa_rfq_18649_closeout,4,python3 -m unittest test_closeout,2026-09-19,0,none
+CAP-02,traceability,yes,revenue/uiowa_rfq_18649_traceability_rehearsal,6,python3 validate_trace.py,2026-09-19,0,none
+CAP-03,comparison,yes,revenue/uiowa_rfq_18649_delivery_metrics,3,python3 -m unittest test_calculator,2026-09-19,0,none
+CAP-04,comparison,yes,revenue/uiowa_rfq_18649_recovery_evidence,3,python3 -m unittest test_recovery_evidence,2026-09-19,0,none
+CAP-05,report preparation,yes,revenue/uiowa_rfq_18649_report_structure,3,python3 -m unittest test_report_structure,2026-09-19,0,none
+CAP-06,evidence organization,no,revenue/uiowa_rfq_18649_synthetic_collection,3,(no executable entry point identified by this seat),2026-09-19,UNKNOWN,demonstration was not run: no executable demonstration command declared

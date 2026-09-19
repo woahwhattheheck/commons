@@ -1,0 +1,8 @@
+claim_id,capability_area,demonstrated,artifact_dir,artifact_count,command,observed_on,exit_code,blockers
+BAD-01,language: marketing adjective,no,.,1,python3 capability_appendix.py,2026-09-19,0,wording rejected (marketing language: 'seamlessly'; marketing language: 'robust')
+BAD-02,language: certification and guarantee,no,.,1,python3 capability_appendix.py,2026-09-19,0,wording rejected (prohibited certification or guarantee language: 'certified'; prohibited certification or guarantee language: 'compliant'; prohibited certification or guarantee language: 'guaranteed')
+BAD-03,binding: missing artifact,no,.,2,python3 capability_appendix.py,2026-09-19,0,artifact file(s) not found: tool_that_does_not_exist.py
+BAD-04,binding: no observed run,no,.,1,python3 capability_appendix.py,UNKNOWN,UNKNOWN,no observed run recorded for this claim
+BAD-05,binding: demonstration failed,no,.,1,python3 capability_appendix.py,2026-09-19,2,demonstration exited 2
+BAD-06,binding: artifact changed after demonstration,no,.,1,python3 capability_appendix.py,2026-09-19,0,artifact changed since it was demonstrated: capability_appendix.py. The recorded run no longer describes these bytes.
+BAD-07,binding: instruction points elsewhere,no,.,1,python3 some_other_script.py,2026-09-19,0,"demonstration command invokes some_other_script.py, which the claim does not cite"
