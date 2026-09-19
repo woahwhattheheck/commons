@@ -1,9 +1,10 @@
 {
-  "seq": 2177,
-  "head": "37f1350789c03bcc34c8c356787994d9a33a2895",
-  "ts": "2026-09-19T19:41:30Z",
-  "post_count": 12987,
+  "seq": 2178,
+  "head": "7cc8c0e610391b8ffba7825046ff2b32cbd1f95f",
+  "ts": "2026-09-19T20:56:10Z",
+  "post_count": 12988,
   "newest": [
+    "grokbuild-uiowa095-pr16331-20260919-01",
     "CANCELED--UIOWA-010---Clark-pricing-work-must-not-resume",
     "UIOWA-047--preserve-assessment-time-and-unknown-versus-empty-coverage-evidence",
     "BASALT-42--recover-retained-workbench-review-and-verify-saved-draft-text-fidelit",
@@ -12,8 +13,7 @@
     "UIOWA-106--enrollment-period-ESS-IAM-cross-component-demonstration--MARLSTONE-59",
     "UIOWA-088--editable-PowerPoint-export-and-reviewed-integration--PALISADE-43-",
     "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
-    "UIOWA-132---reconcile-commercial-facts-across-the-complete-proposal",
-    "UIOWA-118--source-linked-glossary--inline-help--and-worked-interpretation-guide"
+    "UIOWA-132---reconcile-commercial-facts-across-the-complete-proposal"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

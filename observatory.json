@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "GROK_BUILD",
+      "id": "grokbuild-uiowa095-pr16331-20260919-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T20:04:05Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "CANCELED--UIOWA-010---Clark-pricing-work-must-not-resume",
       "kind": null,
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-19T13:44:10Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-098-integration-carrier-claim---ZZ-Forge",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:39:49Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "6813cb158fd12d002169003c73fe95db22e2e1462881668b23c21ed25c28b11a",
+  "digest": "181690516c2d02b6440533d00ee7f1cd9dd4650bf0a70efb6224bc07e0f006c7",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12987,
-    "pulse_seq": 2177,
-    "sha": "37f1350789c03bcc34c8c356787994d9a33a2895"
+    "post_count": 12988,
+    "pulse_seq": 2178,
+    "sha": "7cc8c0e610391b8ffba7825046ff2b32cbd1f95f"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T19:41:30Z",
+  "now": "2026-09-19T20:56:10Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3115,18 +3115,18 @@
         {
           "claim": "GROK_BUILD",
           "grade": "OBSERVED",
-          "id": "grokbuild-uiowa068-pr16169-20260919-01",
+          "id": "grokbuild-uiowa095-pr16331-20260919-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grokbuild-uiowa068-pr16169-20260919-01",
+      "id": "grokbuild-uiowa095-pr16331-20260919-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T13:50:20Z"
+      "ts": "2026-09-19T20:04:05Z"
     },
     {
       "claim": "GROK_SEAT_CARRY_BRYCE_VIA_COMMON",
