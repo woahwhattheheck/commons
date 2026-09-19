@@ -20,6 +20,10 @@ PORTFOLIO_PACKET_SCHEMA = "tjlabs.nm-ocs-tprm.portfolio-packet.v1"
 
 _ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,63}$")
 _SHA_RE = re.compile(r"^[0-9a-f]{64}$")
+_UTC_RE = re.compile(
+    r"[0-9]{4}-[0-9]{2}-[0-9]{2}[Tt][0-9]{2}:[0-9]{2}:[0-9]{2}"
+    r"(?:\.[0-9]+)?Z"
+)
 _CONTROL_STATUS = {"SATISFIED", "GAP", "UNKNOWN"}
 _EVENT_KIND = {
     "VULNERABILITY",
@@ -56,6 +60,8 @@ def _sha(value: Any) -> str:
 def _exact_keys(value: Any, expected: set[str], where: str) -> dict[str, Any]:
     if type(value) is not dict:
         raise ValidationError(f"{where} must be object")
+    if any(type(key) is not str for key in value):
+        raise ValidationError(f"{where} keys must be strings")
     got = set(value)
     if got != expected:
         raise ValidationError(
@@ -83,7 +89,7 @@ def _sha256(value: Any, where: str) -> str:
 
 
 def _utc(value: Any, where: str) -> str:
-    if type(value) is not str or len(value) > 40 or not value.endswith("Z"):
+    if type(value) is not str or len(value) > 40 or not _UTC_RE.fullmatch(value):
         raise ValidationError(f"{where} must be RFC3339 UTC Z timestamp")
     try:
         parsed = datetime.fromisoformat(value[:-1] + "+00:00")
@@ -94,8 +100,13 @@ def _utc(value: Any, where: str) -> str:
     return value
 
 
-def _utc_instant(value: str) -> datetime:
-    return datetime.fromisoformat(value[:-1] + "+00:00")
+def _utc_instant(value: str) -> tuple[datetime, str]:
+    # _utc has validated a maximum 40-character Z timestamp. That leaves at
+    # most 19 fractional digits. Compare all of them instead of letting
+    # datetime silently truncate sub-microsecond evidence chronology.
+    whole, separator, fraction = value[:-1].partition(".")
+    second = datetime.fromisoformat(whole + "+00:00")
+    return second, (fraction if separator else "").ljust(19, "0")
 
 
 def _factor(value: Any, where: str) -> int:
@@ -162,7 +173,7 @@ def normalize_assessment(payload: Any) -> dict[str, Any]:
             raise ValidationError("duplicate control identity")
         seen_controls.add(key)
         status = c["status"]
-        if status not in _CONTROL_STATUS:
+        if type(status) is not str or status not in _CONTROL_STATUS:
             raise ValidationError(f"controls[{i}].status unsupported")
         evidence = c["evidence_sha256"]
         if evidence is not None:
@@ -197,7 +208,7 @@ def normalize_assessment(payload: Any) -> dict[str, Any]:
         seen_events.add(event_id)
         observed = _utc(e["observed_at"], f"monitoring_events[{i}].observed_at")
         kind = e["kind"]
-        if kind not in _EVENT_KIND:
+        if type(kind) is not str or kind not in _EVENT_KIND:
             raise ValidationError(f"monitoring_events[{i}].kind unsupported")
         severity = e["severity"]
         if type(severity) is not int or severity < 0 or severity > 4:
@@ -293,9 +304,9 @@ def verify_assessment_packet(packet: Any) -> bool:
         return False
     try:
         expected = compile_assessment(packet["source"])
-    except ValidationError:
+        return _canonical_bytes(packet) == _canonical_bytes(expected)
+    except (ValidationError, TypeError, ValueError, OverflowError, RecursionError):
         return False
-    return _canonical_bytes(packet) == _canonical_bytes(expected)
 
 
 def compile_portfolio(payload: Any) -> dict[str, Any]:
@@ -363,6 +374,6 @@ def verify_portfolio_packet(packet: Any) -> bool:
             "assessments": [p["source"] for p in packet["assessments"]],
         }
         expected = compile_portfolio(source)
-    except (KeyError, TypeError, ValidationError):
+        return _canonical_bytes(packet) == _canonical_bytes(expected)
+    except (KeyError, TypeError, ValueError, OverflowError, RecursionError):
         return False
-    return _canonical_bytes(packet) == _canonical_bytes(expected)
