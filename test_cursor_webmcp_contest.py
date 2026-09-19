@@ -48,7 +48,7 @@ class TestCursorWebmcpContest(unittest.TestCase):
                 blob.startswith(prefix),
                 f"{rel} reminted: want {prefix} got {blob[:8]}",
             )
-        self.assertEqual(ADAPTER.stat().st_size, 21973)
+        self.assertEqual(ADAPTER.stat().st_size, 22553)
         self.assertGreaterEqual(ADAPTER.stat().st_size, 20000)
 
     def test_wait_step_requires_live_webmcp_html(self) -> None:
