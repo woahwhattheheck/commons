@@ -1,0 +1,17 @@
+test_archive_pin_checked_independently_of_parts (test_restore.RestoreTests.test_archive_pin_checked_independently_of_parts) ... ok
+test_corruption_rejected_without_output_creation (test_restore.RestoreTests.test_corruption_rejected_without_output_creation) ... ok
+test_exact_archive_inventory_and_read_only_verification (test_restore.RestoreTests.test_exact_archive_inventory_and_read_only_verification) ... ok
+test_existing_output_never_overwritten (test_restore.RestoreTests.test_existing_output_never_overwritten) ... ok
+test_extract_all_files_byte_identically (test_restore.RestoreTests.test_extract_all_files_byte_identically) ... ok
+test_inventory_pin_checked_independently_of_archive (test_restore.RestoreTests.test_inventory_pin_checked_independently_of_archive) ... ok
+test_missing_parent_not_created (test_restore.RestoreTests.test_missing_parent_not_created) ... ok
+test_missing_part_rejected (test_restore.RestoreTests.test_missing_part_rejected) ... ok
+test_swapped_equal_length_parts_rejected (test_restore.RestoreTests.test_swapped_equal_length_parts_rejected) ... ok
+test_symlink_part_is_not_followed (test_restore.RestoreTests.test_symlink_part_is_not_followed) ... ok
+test_truncated_part_rejected (test_restore.RestoreTests.test_truncated_part_rejected) ... ok
+test_unexpected_member_paths_rejected (test_restore.RestoreTests.test_unexpected_member_paths_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.023s
+
+OK

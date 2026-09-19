@@ -1,0 +1,269 @@
+v22.16.0
+TAP version 13
+# Subtest: selected JavaScript assets compile and expose the draft-import API
+ok 1 - selected JavaScript assets compile and expose the draft-import API
+  ---
+  duration_ms: 4.958858
+  type: 'test'
+  ...
+# Subtest: successful inspection renders 12 cells and exits busy state
+ok 2 - successful inspection renders 12 cells and exits busy state
+  ---
+  duration_ms: 3.34242
+  type: 'test'
+  ...
+# Subtest: reset while file reads are pending prevents any request
+ok 3 - reset while file reads are pending prevents any request
+  ---
+  duration_ms: 1.013197
+  type: 'test'
+  ...
+# Subtest: reset after request dispatch rejects its late successful report
+ok 4 - reset after request dispatch rejects its late successful report
+  ---
+  duration_ms: 0.970693
+  type: 'test'
+  ...
+# Subtest: demo and its edited notes survive an older inspection success
+ok 5 - demo and its edited notes survive an older inspection success
+  ---
+  duration_ms: 2.050752
+  type: 'test'
+  ...
+# Subtest: old request error cannot stain newer demo state
+ok 6 - old request error cannot stain newer demo state
+  ---
+  duration_ms: 1.566201
+  type: 'test'
+  ...
+# Subtest: old finally cannot enable inspect while a newer request is pending
+ok 7 - old finally cannot enable inspect while a newer request is pending
+  ---
+  duration_ms: 1.491598
+  type: 'test'
+  ...
+# Subtest: out-of-order inspections preserve the newest report
+ok 8 - out-of-order inspections preserve the newest report
+  ---
+  duration_ms: 1.165818
+  type: 'test'
+  ...
+# Subtest: reset while response JSON is pending suppresses the decoded report
+ok 9 - reset while response JSON is pending suppresses the decoded report
+  ---
+  duration_ms: 1.666112
+  type: 'test'
+  ...
+# Subtest: export/import round trip preserves Unicode notes and all false flags
+ok 10 - export/import round trip preserves Unicode notes and all false flags
+  ---
+  duration_ms: 3.444614
+  type: 'test'
+  ...
+# Subtest: 4000 UTF-16 code unit note round trips without truncation
+ok 11 - 4000 UTF-16 code unit note round trips without truncation
+  ---
+  duration_ms: 2.522052
+  type: 'test'
+  ...
+# Subtest: failed draft validation preserves selection, filters, notes and report
+ok 12 - failed draft validation preserves selection, filters, notes and report
+  ---
+  duration_ms: 1.677689
+  type: 'test'
+  ...
+# Subtest: editing notes while draft file is pending preserves the intervening edit
+ok 13 - editing notes while draft file is pending preserves the intervening edit
+  ---
+  duration_ms: 1.044925
+  type: 'test'
+  ...
+# Subtest: reset during draft read preserves the empty workbench
+ok 14 - reset during draft read preserves the empty workbench
+  ---
+  duration_ms: 0.953588
+  type: 'test'
+  ...
+# Subtest: same-receipt new generation rejects an older draft read
+ok 15 - same-receipt new generation rejects an older draft read
+  ---
+  duration_ms: 1.842698
+  type: 'test'
+  ...
+# Subtest: latest of two simultaneous draft reads wins deterministically
+ok 16 - latest of two simultaneous draft reads wins deterministically
+  ---
+  duration_ms: 1.413462
+  type: 'test'
+  ...
+# Subtest: duplicate draft JSON keys are rejected without partial note replacement
+ok 17 - duplicate draft JSON keys are rejected without partial note replacement
+  ---
+  duration_ms: 1.254532
+  type: 'test'
+  ...
+# Subtest: compiler-style software dimension matches by identity, not synthetic demo spelling
+ok 18 - compiler-style software dimension matches by identity, not synthetic demo spelling
+  ---
+  duration_ms: 1.222072
+  type: 'test'
+  ...
+# Subtest: Candidate top-level duplicate is rejected before any inspection transport
+ok 19 - Candidate top-level duplicate is rejected before any inspection transport
+  ---
+  duration_ms: 1.163034
+  type: 'test'
+  ...
+# Subtest: Candidate nested duplicate is rejected before any inspection transport
+ok 20 - Candidate nested duplicate is rejected before any inspection transport
+  ---
+  duration_ms: 1.102001
+  type: 'test'
+  ...
+# Subtest: Candidate escaped equivalent duplicate is rejected before any inspection transport
+ok 21 - Candidate escaped equivalent duplicate is rejected before any inspection transport
+  ---
+  duration_ms: 0.914589
+  type: 'test'
+  ...
+# Subtest: Authority top-level duplicate is rejected before any inspection transport
+ok 22 - Authority top-level duplicate is rejected before any inspection transport
+  ---
+  duration_ms: 0.764783
+  type: 'test'
+  ...
+# Subtest: Authority nested duplicate is rejected before any inspection transport
+ok 23 - Authority nested duplicate is rejected before any inspection transport
+  ---
+  duration_ms: 0.845805
+  type: 'test'
+  ...
+# Subtest: Authority escaped equivalent duplicate is rejected before any inspection transport
+ok 24 - Authority escaped equivalent duplicate is rejected before any inspection transport
+  ---
+  duration_ms: 1.090715
+  type: 'test'
+  ...
+# Subtest: finite numeric values and escaped text survive strict evidence intake
+ok 25 - finite numeric values and escaped text survive strict evidence intake
+  ---
+  duration_ms: 1.864121
+  type: 'test'
+  ...
+# Subtest: rejected evidence input clears prior notes and keeps export disabled
+ok 26 - rejected evidence input clears prior notes and keeps export disabled
+  ---
+  duration_ms: 1.059648
+  type: 'test'
+  ...
+# Subtest: Candidate overflowing numeric input is not normalized into null
+ok 27 - Candidate overflowing numeric input is not normalized into null
+  ---
+  duration_ms: 0.90196
+  type: 'test'
+  ...
+# Subtest: Candidate malformed UTF-8 is rejected instead of replacing source text
+ok 28 - Candidate malformed UTF-8 is rejected instead of replacing source text
+  ---
+  duration_ms: 0.982161
+  type: 'test'
+  ...
+# Subtest: Authority overflowing numeric input is not normalized into null
+ok 29 - Authority overflowing numeric input is not normalized into null
+  ---
+  duration_ms: 2.007476
+  type: 'test'
+  ...
+# Subtest: Authority malformed UTF-8 is rejected instead of replacing source text
+ok 30 - Authority malformed UTF-8 is rejected instead of replacing source text
+  ---
+  duration_ms: 0.89534
+  type: 'test'
+  ...
+# Subtest: file I/O failure is identified and does not dispatch a request
+ok 31 - file I/O failure is identified and does not dispatch a request
+  ---
+  duration_ms: 0.91539
+  type: 'test'
+  ...
+# Subtest: oversized evidence is rejected before bytes are read
+ok 32 - oversized evidence is rejected before bytes are read
+  ---
+  duration_ms: 0.860507
+  type: 'test'
+  ...
+# Subtest: restores every cell independent of export row order without mutating the report
+ok 33 - restores every cell independent of export row order without mutating the report
+  ---
+  duration_ms: 3.56183
+  type: 'test'
+  ...
+# Subtest: supports the existing synthetic demo dimension and requires its exact marker
+ok 34 - supports the existing synthetic demo dimension and requires its exact marker
+  ---
+  duration_ms: 1.95656
+  type: 'test'
+  ...
+# Subtest: requires exact report receipt, mode, aggregate, and synthetic context
+ok 35 - requires exact report receipt, mode, aggregate, and synthetic context
+  ---
+  duration_ms: 1.87708
+  type: 'test'
+  ...
+# Subtest: rejects duplicate JSON keys including escaped spellings and nested cells
+ok 36 - rejects duplicate JSON keys including escaped spellings and nested cells
+  ---
+  duration_ms: 0.503659
+  type: 'test'
+  ...
+# Subtest: rejects missing or unknown properties at every schema level
+ok 37 - rejects missing or unknown properties at every schema level
+  ---
+  duration_ms: 1.256304
+  type: 'test'
+  ...
+# Subtest: rejects every non-false authority flag including false-looking strings and numbers
+ok 38 - rejects every non-false authority flag including false-looking strings and numbers
+  ---
+  duration_ms: 6.459839
+  type: 'test'
+  ...
+# Subtest: rejects unknown, repeated, missing, and status-mismatched cells
+ok 39 - rejects unknown, repeated, missing, and status-mismatched cells
+  ---
+  duration_ms: 0.850983
+  type: 'test'
+  ...
+# Subtest: validates dispositions and note bounds before returning any state
+ok 40 - validates dispositions and note bounds before returning any state
+  ---
+  duration_ms: 1.037034
+  type: 'test'
+  ...
+# Subtest: enforces UTF-8 byte size and a bounded parse depth
+ok 41 - enforces UTF-8 byte size and a bounded parse depth
+  ---
+  duration_ms: 2.14258
+  type: 'test'
+  ...
+# Subtest: rejects malformed JSON, trailing text and non-finite JSON values
+ok 42 - rejects malformed JSON, trailing text and non-finite JSON values
+  ---
+  duration_ms: 1.196624
+  type: 'test'
+  ...
+# Subtest: requires an active untrusted report with unique cell identities
+ok 43 - requires an active untrusted report with unique cell identities
+  ---
+  duration_ms: 0.75597
+  type: 'test'
+  ...
+1..43
+# tests 43
+# suites 0
+# pass 43
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 110.541051
