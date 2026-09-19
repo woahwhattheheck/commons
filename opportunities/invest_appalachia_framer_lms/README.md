@@ -6,9 +6,11 @@ Internal proposal-readiness and teaming carrier for Commons issue #14857.
 
 `PRIME_HOLD / TEAMING_ROUTE_OPEN_INTERNAL`.
 
-The official RFP is due **2026-09-22 5:00 PM ET**, capped at **$60,000** inclusive of Year-1 implementation/license costs, with work expected **2026-10-13 through 2027-04-30**. The main RFP is recovered from the buyer's official site. The linked ZIP containing Attachments A-D is publicly linked but has not yet been materialized by the available browser connector, so attachment-dependent technical/platform/pricing claims remain HOLD. The buyer page also schedules an FAQ for September 16, but the live page checked that morning still exposed no FAQ link/content; no absent FAQ is treated as evidence of no change.
+The official RFP is due **2026-09-22 5:00 PM ET**, capped at **$60,000** inclusive of Year-1 implementation/license costs, with work expected **2026-10-13 through 2027-04-30**. Public source availability has advanced: [Attachments A-D were recovered on September 16](recovered_20260916/README.md), and the buyer's [September 17 FAQ is now recovered and mapped](faq_20260919/README.md). That package covers all 29 FAQ answers, the 67-row functional inventory, named-team qualification implications, proposed configuration/acceptance scenarios, and content/cost dependencies.
 
-The retained current proposal generation is deliberately **unpriced**: its zero dollar fields are placeholders, Attachment C is not retained, and no platform is selected. The receipt therefore reports `proposal_budget_state=HOLD_UNPRICED_ATTACHMENTS_INCOMPLETE` and `proposal_budget_within_cap=false`. A positive within-cap assertion requires a later reviewed priced generation bound to the actual admitted buyer budget structure; zero placeholders are never treated as budget evidence.
+The executable proposal and workshare remain older source-bound generations. Their attachment-status fields, missing credentials and placeholder prices have not been silently promoted by source recovery. See [the current readiness reconciliation](faq_20260919/QUALIFICATION_AND_READINESS.md) before interpreting those legacy fields. FAQ Q6 permits the two-platform experience requirement to be demonstrated collectively by named key personnel, including a named specialist; this changes the evidence route, not the retained qualification result.
+
+The retained current proposal generation is deliberately **unpriced**: its zero dollar fields are placeholders, its generation does not incorporate the recovered Attachment C, and no platform is selected. The receipt therefore reports `proposal_budget_state=HOLD_UNPRICED_ATTACHMENTS_INCOMPLETE` and `proposal_budget_within_cap=false`. A positive within-cap assertion requires a later reviewed priced generation bound to the actual admitted buyer budget structure; zero placeholders are never treated as budget evidence.
 
 ## Prime blockers
 
@@ -43,3 +45,4 @@ Focused tests: `python -m unittest -v tests.test_invest_appalachia_framer_lms_wo
 ## Authority ceiling
 
 Internal research/drafting/testing only. Buyer/partner contact, proposal submission, signature, contract acceptance, spend, payment, award and revenue authority remain false. The receipt deliberately marks deadline currentness non-authoritative; any action requires a fresh deadline/source check plus fresh route dedupe and Muse single-writer adjudication immediately before send.
+

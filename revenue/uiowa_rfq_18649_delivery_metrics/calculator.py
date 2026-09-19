@@ -12,7 +12,7 @@ import csv
 import json
 import statistics
 import sys
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable
@@ -47,7 +47,7 @@ def _parse_time(value: str, field: str, deployment_id: str) -> datetime | None:
         ) from exc
     if parsed.tzinfo is None or parsed.utcoffset() is None:
         raise DataError(f"{deployment_id}: {field} must include a UTC offset")
-    return parsed.astimezone(timezone.utc)
+    return _utc_datetime(parsed, field, deployment_id)
 
 
 def _parse_bool(value: str, field: str, deployment_id: str) -> bool | None:
@@ -61,6 +61,54 @@ def _parse_bool(value: str, field: str, deployment_id: str) -> bool | None:
     raise DataError(f"{deployment_id}: {field} must be true, false, or blank")
 
 
+def _utc_datetime(value: datetime, field: str, record: str) -> datetime:
+    """Normalize both CSV and programmatic timestamps before elapsed arithmetic."""
+    if not isinstance(value, datetime):
+        raise DataError(f"{record}: {field} must be a datetime")
+    if value.tzinfo is None or value.utcoffset() is None:
+        raise DataError(f"{record}: {field} must include a UTC offset")
+    try:
+        return value.astimezone(timezone.utc)
+    except (ValueError, OverflowError) as exc:
+        raise DataError(f"{record}: {field} cannot be represented in UTC") from exc
+
+
+def _normalize_deployment(deployment: Deployment) -> Deployment:
+    """Apply one data contract to CSV rows and adapters calling calculate()."""
+    if not isinstance(deployment, Deployment):
+        raise DataError("each deployment must be a Deployment instance")
+    for field in ("deployment_id", "service"):
+        value = getattr(deployment, field)
+        if not isinstance(value, str) or not value.strip():
+            raise DataError(f"deployment: {field} is required and must be text")
+    record = deployment.deployment_id.strip()
+    for field in ("intervention_required", "unplanned_rework"):
+        value = getattr(deployment, field)
+        if value is not None and type(value) is not bool:
+            raise DataError(f"{record}: {field} must be bool or None")
+    if not isinstance(deployment.notes, str):
+        raise DataError(f"{record}: notes must be text")
+    deployed = _utc_datetime(deployment.deployed_at, "deployed_at", record)
+    committed = (
+        _utc_datetime(deployment.commit_at, "commit_at", record)
+        if deployment.commit_at is not None else None
+    )
+    recovered = (
+        _utc_datetime(deployment.recovered_at, "recovered_at", record)
+        if deployment.recovered_at is not None else None
+    )
+    if committed is not None and committed > deployed:
+        raise DataError(f"{record}: commit_at occurs after deployed_at")
+    if recovered is not None and recovered < deployed:
+        raise DataError(f"{record}: recovered_at occurs before deployed_at")
+    if deployment.intervention_required is False and recovered is not None:
+        raise DataError(f"{record}: recovered_at supplied while intervention_required=false")
+    return replace(
+        deployment, deployment_id=record, service=deployment.service.strip(),
+        commit_at=committed, deployed_at=deployed, recovered_at=recovered,
+    )
+
+
 def load_deployments(path: Path) -> list[Deployment]:
     required = {
         "deployment_id", "service", "commit_at", "deployed_at",
@@ -70,12 +118,23 @@ def load_deployments(path: Path) -> list[Deployment]:
     seen: set[str] = set()
 
     with path.open("r", encoding="utf-8", newline="") as handle:
-        reader = csv.DictReader(handle)
-        missing = required - set(reader.fieldnames or [])
+        reader = csv.DictReader(handle, strict=True)
+        headers = reader.fieldnames or []
+        if any(not name.strip() for name in headers):
+            raise DataError("CSV column names must not be blank")
+        if len(headers) != len(set(headers)):
+            raise DataError("duplicate CSV column names")
+        missing = required - set(headers)
         if missing:
             raise DataError(f"missing CSV columns: {sorted(missing)}")
 
         for row_num, row in enumerate(reader, start=2):
+            # Explicit blanks are unknown data; absent/extra cells are malformed rows.
+            if None in row:
+                raise DataError(f"row {row_num}: more values than CSV column names")
+            absent = sorted(name for name, value in row.items() if value is None)
+            if absent:
+                raise DataError(f"row {row_num}: missing CSV cells: {absent}")
             deployment_id = row["deployment_id"].strip()
             if not deployment_id:
                 raise DataError(f"row {row_num}: deployment_id is required")
@@ -99,17 +158,8 @@ def load_deployments(path: Path) -> list[Deployment]:
                 row["unplanned_rework"], "unplanned_rework", deployment_id
             )
 
-            if commit_at is not None and commit_at > deployed_at:
-                raise DataError(f"{deployment_id}: commit_at occurs after deployed_at")
-            if recovered_at is not None and recovered_at < deployed_at:
-                raise DataError(f"{deployment_id}: recovered_at occurs before deployed_at")
-            if intervention is False and recovered_at is not None:
-                raise DataError(
-                    f"{deployment_id}: recovered_at supplied while intervention_required=false"
-                )
-
             deployments.append(
-                Deployment(
+                _normalize_deployment(Deployment(
                     deployment_id=deployment_id,
                     service=service,
                     commit_at=commit_at,
@@ -118,7 +168,7 @@ def load_deployments(path: Path) -> list[Deployment]:
                     recovered_at=recovered_at,
                     unplanned_rework=rework,
                     notes=row["notes"].strip(),
-                )
+                ))
             )
     return deployments
 
@@ -137,6 +187,16 @@ def _coverage(*, eligible: int, used: int, missing: int) -> dict:
     return {"status": status, "eligible": eligible, "used": used, "missing": missing}
 
 
+def _recovery_coverage(*, eligible: int, used: int, missing: int,
+                       eligibility_unknown: int) -> dict:
+    # Keep unknown failure classification OUT of the known-failure denominator.
+    coverage = _coverage(eligible=eligible, used=used, missing=missing)
+    coverage["eligibility_unknown"] = eligibility_unknown
+    if eligibility_unknown:
+        coverage["status"] = "PARTIAL"
+    return coverage
+
+
 def _median_mean(values: list[float]) -> tuple[float | None, float | None]:
     if not values:
         return None, None
@@ -150,14 +210,20 @@ def calculate(
     window_end: datetime,
     service: str | None = None,
 ) -> dict:
-    if window_start.tzinfo is None or window_end.tzinfo is None:
-        raise DataError("window timestamps must be timezone-aware")
-    window_start = window_start.astimezone(timezone.utc)
-    window_end = window_end.astimezone(timezone.utc)
+    window_start = _utc_datetime(window_start, "window_start", "arguments")
+    window_end = _utc_datetime(window_end, "window_end", "arguments")
     if window_start >= window_end:
         raise DataError("window_start must be before window_end")
 
-    rows = [d for d in deployments if window_start <= d.deployed_at < window_end]
+    rows: list[Deployment] = []
+    seen: set[str] = set()
+    for deployment in deployments:
+        d = _normalize_deployment(deployment)
+        if d.deployment_id in seen:
+            raise DataError(f"duplicate deployment_id: {d.deployment_id}")
+        seen.add(d.deployment_id)
+        if window_start <= d.deployed_at < window_end:
+            rows.append(d)
     services = sorted({d.service for d in rows})
     if service is not None:
         rows = [d for d in rows if d.service == service]
@@ -232,10 +298,11 @@ def calculate(
                 "unit": "hours",
                 "median": recovery_median,
                 "mean": recovery_mean,
-                "coverage": _coverage(
+                "coverage": _recovery_coverage(
                     eligible=len(failed),
                     used=len(recovery_values),
                     missing=recovery_missing,
+                    eligibility_unknown=failed_missing,
                 ),
             },
             "change_fail_rate": {
@@ -290,15 +357,14 @@ def main(argv: list[str] | None = None) -> int:
             window_end=_required_time(args.window_end, "window_end"),
             service=args.service,
         )
-    except (DataError, OSError) as exc:
+        payload = json.dumps(report, indent=2, sort_keys=True) + "\n"
+        if args.output:
+            args.output.write_text(payload, encoding="utf-8")
+        else:
+            sys.stdout.write(payload)
+    except (DataError, OSError, UnicodeError, csv.Error) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 2
-
-    payload = json.dumps(report, indent=2, sort_keys=True) + "\n"
-    if args.output:
-        args.output.write_text(payload, encoding="utf-8")
-    else:
-        sys.stdout.write(payload)
     return 0
 
 

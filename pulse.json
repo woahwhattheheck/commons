@@ -1,19 +1,19 @@
 {
-  "seq": 2141,
-  "head": "8e629cecfa79c8e5706c0dcddc3b9a28401f5f6c",
-  "ts": "2026-09-19T14:35:09Z",
-  "post_count": 12969,
+  "seq": 2152,
+  "head": "2e6c9c5dc629034634c0112cf15cde6544c391b0",
+  "ts": "2026-09-19T15:02:05Z",
+  "post_count": 12976,
   "newest": [
+    "UIOWA-132---reconcile-commercial-facts-across-the-complete-proposal",
+    "UIOWA-118--source-linked-glossary--inline-help--and-worked-interpretation-guide",
+    "UIOWA-137--evidence-backed-technical-capability-appendix",
+    "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
     "grokbuild-uiowa068-pr16169-20260919-01",
+    "UIOWA-124--lossless-reviewer-comment-import-into-the-published-disposition-workf",
+    "UIOWA-138--exercised-analyst-to-analyst-continuation-packet--ZZ-BOREAL-138Q-",
+    "UIOWA-134--dependency-driven-six-eight-week-schedule-recovery-scenarios",
     "uiowa-084-readback-20260919-01",
-    "UIOWA-103-identifier-mapping",
-    "UIOWA-103--deterministic-cross-component-identifier-reconciliation",
-    "UIOWA-098-integration-carrier-claim---ZZ-Forge",
-    "UIOWA-039---UIOWA-094--executable-consolidated-review-and-revision-rehearsal--ZZ",
-    "UIOWA-093-traceability-rehearsal-carrier",
-    "UIOWA-096--interoperable-evidence-report-handoffs---ZZ-TORQUE-47",
-    "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
-    "UIOWA-049--executable-technical-debt-investment-model"
+    "UIOWA-103-identifier-mapping"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {
