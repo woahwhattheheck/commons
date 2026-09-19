@@ -8,16 +8,17 @@
 
 | Framework | Version used | Publication | Primary source | Status for this assessment | Revalidation rule |
 |---|---|---|---|---|---|
-| NIST Secure Software Development Framework (SSDF) | v1.1, NIST SP 800-218 | 2022-02-03 | https://csrc.nist.gov/pubs/sp/800/218/final and https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-218.pdf | Current published SSDF baseline used here. The crosswalk cites SSDF practice identifiers (PO, PS, PW, RV). | Check the CSRC publication page at kickoff and before the final report for revisions or superseding publications. |
+| NIST Secure Software Development Framework (SSDF) | v1.1, NIST SP 800-218 | 2022-02-03 | https://csrc.nist.gov/pubs/sp/800/218/final and https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-218.pdf | Current **final** SSDF baseline used here. The crosswalk cites SSDF practice identifiers (PO, PS, PW, RV). | Check the CSRC publication page at kickoff and before the final report for revisions or superseding publications. |
 | NIST Cybersecurity Framework (CSF) | 2.0, NIST CSWP 29 | 2024-02-26 | https://csrc.nist.gov/pubs/cswp/29/the-nist-cybersecurity-framework-csf-20/final and https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf | Current published CSF baseline used here. The crosswalk uses Core Functions/Categories plus the Profile and Tier concepts. | Check the CSRC publication page at kickoff and before the final report. |
 | NIST AI Risk Management Framework (AI RMF) | 1.0, NIST AI 100-1 | 2023-01-26 | https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10 and https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf | Current released AI RMF baseline used here. NIST's AI RMF site states that AI RMF 1.0 is being revised in 2026; therefore the framework must be revalidated before delivery. | Recheck https://www.nist.gov/itl/ai-risk-management-framework at kickoff and before any final deliverable. If a successor is released, record both the version used for evidence collection and any transition impact. |
 
-## Supplemental AI reference
+## Version watch and conditional supplements
 
-NIST published the **Generative AI Profile (NIST AI 600-1)** in July 2024:
-https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence
-
-It may be useful when an assessed workflow actually uses generative AI, but it is **not** treated as a universal baseline for all AI-readiness questions in this crosswalk. Applicability must be established from the specific ESS, RIS, IAM, or shared-service use case.
+| Publication | Status checked 2026-09-19 | Use in this assessment |
+|---|---|---|
+| NIST SP 800-218 Rev. 1 / SSDF v1.2 | **Initial Public Draft**, released 2025-12-17; comment period closed 2026-01-30. https://csrc.nist.gov/pubs/sp/800/218/r1/ipd | Monitor for finalization. Do **not** silently substitute the draft for the final v1.1 baseline. If a final successor appears during delivery, document the transition impact explicitly. |
+| NIST SP 800-218A, Secure Software Development Practices for Generative AI and Dual-Use Foundation Models | **Final**, released 2024-07-26. https://csrc.nist.gov/pubs/sp/800/218/a/final | Conditional supplement only when the assessed activity includes GenAI or dual-use foundation-model development within the profile's scope. It does not establish that Iowa performs such development. |
+| NIST AI 600-1, Generative AI Profile | **Final**, released 2024-07-26. https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence | Conditional supplement only when discovery confirms an in-scope generative-AI use case; not a universal AI-readiness baseline. |
 
 ## Interpretation boundaries
 
