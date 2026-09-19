@@ -1,9 +1,13 @@
 "use strict";
 
-const state = { report: null, cells: [], selectedKey: null, notes: new Map(), dispositions: new Map() };
+const state = {
+  report: null, cells: [], selectedKey: null, notes: new Map(), dispositions: new Map(),
+  generation: 0, editRevision: 0, draftLoadSequence: 0
+};
 const el = Object.fromEntries([
   "candidateFile","authorityFile","inspectBtn","demoBtn","resetBtn","error","summary","search",
-  "statusFilter","matrix","detail","disposition","note","exportBtn","exportStatus"
+  "statusFilter","matrix","detail","disposition","note","exportBtn","exportStatus",
+  "handoffFile","importDraftBtn","markdownBtn"
 ].map(id => [id, document.getElementById(id)]));
 
 function keyFor(cell) { return `${cell.group}|${cell.dimension}`; }
@@ -44,6 +48,10 @@ function installReport(report) {
   }
   if (report.mode !== "UNTRUSTED_INSPECTION") throw new Error("Workbench accepts untrusted inspection reports only.");
   if (report.trust?.current_evidence_review_authority !== false) throw new Error("Report unexpectedly carries current review authority.");
+  WorkbenchHandoff.buildDraft(report);
+  state.generation++;
+  state.editRevision = 0;
+  state.draftLoadSequence++;
   state.report = report;
   state.cells = report.assessment_matrix.slice();
   state.selectedKey = null;
@@ -57,6 +65,9 @@ function installReport(report) {
   el.search.disabled = false;
   el.statusFilter.disabled = false;
   el.exportBtn.disabled = false;
+  el.importDraftBtn.disabled = false;
+  el.markdownBtn.disabled = false;
+  el.inspectBtn.disabled = false;
   el.exportStatus.textContent = "";
   renderSummary();
   rebuildStatuses();
@@ -139,6 +150,9 @@ function selectCell(key) {
 }
 
 function resetWorkbench() {
+  state.generation++;
+  state.editRevision = 0;
+  state.draftLoadSequence++;
   state.report = null; state.cells = []; state.selectedKey = null;
   state.notes = new Map(); state.dispositions = new Map();
   el.summary.replaceChildren(); el.matrix.replaceChildren();
@@ -149,6 +163,9 @@ function resetWorkbench() {
   el.note.value = ""; el.note.disabled = true;
   el.disposition.value = "UNREVIEWED"; el.disposition.disabled = true;
   el.exportBtn.disabled = true; el.exportStatus.textContent = "";
+  el.importDraftBtn.disabled = true;
+  el.markdownBtn.disabled = true;
+  el.inspectBtn.disabled = false;
   setError("");
 }
 
@@ -167,11 +184,13 @@ async function inspectFiles() {
   // parsing, transport, or compiler inspection fails, stale notes/export authority
   // must not remain actionable under the guise of the attempted new import.
   resetWorkbench();
+  const generation = state.generation;
   el.inspectBtn.disabled = true;
   try {
     const [candidate, authority] = await Promise.all([
       readJsonFile(el.candidateFile, "Candidate"), readJsonFile(el.authorityFile, "Authority")
     ]);
+    if (generation !== state.generation) return;
     const response = await fetch("/api/inspect", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -180,49 +199,84 @@ async function inspectFiles() {
       cache: "no-store"
     });
     const payload = await response.json().catch(() => ({}));
+    if (generation !== state.generation) return;
     if (!response.ok) throw new Error(payload.error || `Inspection failed (${response.status}).`);
     installReport(payload.report);
-  } catch (err) { setError(err instanceof Error ? err.message : String(err)); }
-  finally { el.inspectBtn.disabled = false; }
+  } catch (err) {
+    if (generation === state.generation) setError(err instanceof Error ? err.message : String(err));
+  } finally {
+    if (generation === state.generation) el.inspectBtn.disabled = false;
+  }
+}
+
+async function importDraft() {
+  if (!state.report) return;
+  const report = state.report;
+  const generation = state.generation;
+  const editRevision = state.editRevision;
+  const sequence = ++state.draftLoadSequence;
+  el.importDraftBtn.disabled = true;
+  setError("");
+  try {
+    const file = el.handoffFile.files?.[0];
+    if (!file) throw new Error("Choose a saved draft handoff JSON file.");
+    if (file.size > 1024 * 1024) throw new Error("Saved draft exceeds the 1 MiB intake limit.");
+    const contents = await file.text();
+    if (generation !== state.generation || sequence !== state.draftLoadSequence) return;
+    if (editRevision !== state.editRevision) {
+      throw new Error("Notes changed while the draft was loading. Restore again if you want to replace them.");
+    }
+    const restored = HandoffImport.parseDraft(contents, report);
+    // Validation completes before either map is replaced. Failed imports preserve
+    // the active report and every note, disposition, selection and filter.
+    state.notes = restored.notes;
+    state.dispositions = restored.dispositions;
+    state.editRevision++;
+    const key = state.selectedKey || keyFor(state.cells.find(cell =>
+      state.notes.get(keyFor(cell)) || state.dispositions.get(keyFor(cell)) !== "UNREVIEWED"
+    ) || state.cells[0]);
+    selectCell(key);
+    el.exportStatus.textContent = "Saved draft restored for this report. All 12 cell notes and dispositions replaced; no approval authority is created.";
+  } catch (err) {
+    if (generation === state.generation && sequence === state.draftLoadSequence) {
+      setError(err instanceof Error ? err.message : String(err));
+    }
+  } finally {
+    if (generation === state.generation && sequence === state.draftLoadSequence) {
+      el.importDraftBtn.disabled = !state.report;
+    }
+  }
+}
+
+// Export projection from Trellis's handoff continuity work (PR #16130).
+function downloadText(contents, extension, contentType) {
+  const blob = new Blob([contents], { type: contentType });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `uiowa-rfq18649-draft-handoff-${state.report.receipt_sha256.slice(0, 12)}.${extension}`;
+  document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 0);
 }
 
 function exportDraft() {
   if (!state.report) return;
-  const cellNotes = state.cells.map(cell => {
-    const key = keyFor(cell);
-    return {
-      group: cell.group,
-      dimension: cell.dimension,
-      compiler_status: cell.status,
-      disposition: state.dispositions.get(key) || "UNREVIEWED",
-      analyst_note: state.notes.get(key) || ""
-    };
-  });
-  const handoff = {
-    schema: "uiowa-rfq18649-analyst-handoff-draft/v1",
-    status: "DRAFT_NON_AUTHORITATIVE",
-    report_receipt_sha256: state.report.receipt_sha256,
-    report_mode: state.report.mode,
-    aggregate_state: state.report.aggregate_state,
-    synthetic_demo: state.report.synthetic_demo === true,
-    cell_notes: cellNotes,
-    authority: {
-      buyer_approved: false,
-      prime_approved: false,
-      current_evidence_review_authority: false,
-      submission_authorized: false,
-      signature_authorized: false,
-      invoice_or_payment_authorized: false,
-      recognized_revenue: false
-    }
-  };
-  const blob = new Blob([JSON.stringify(handoff, null, 2) + "\n"], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = `uiowa-rfq18649-draft-handoff-${state.report.receipt_sha256.slice(0, 12)}.json`;
-  document.body.append(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-  el.exportStatus.textContent = "Draft handoff exported. It carries no approval or payment authority.";
+  try {
+    const handoff = WorkbenchHandoff.buildDraft(state.report, state.notes, state.dispositions);
+    downloadText(JSON.stringify(handoff, null, 2) + "\n", "json", "application/json");
+    setError("");
+    el.exportStatus.textContent = "Draft handoff exported. It carries no approval or payment authority.";
+  } catch (err) { setError(err instanceof Error ? err.message : String(err)); }
+}
+
+function exportMarkdown() {
+  if (!state.report) return;
+  try {
+    const handoff = WorkbenchHandoff.buildDraft(state.report, state.notes, state.dispositions);
+    downloadText(WorkbenchHandoff.renderMarkdown(state.report, handoff), "md", "text/markdown;charset=utf-8");
+    setError("");
+    el.exportStatus.textContent = "Readable draft exported with evidence references and open follow-ups.";
+  } catch (err) { setError(err instanceof Error ? err.message : String(err)); }
 }
 
 el.inspectBtn.addEventListener("click", inspectFiles);
@@ -230,9 +284,15 @@ el.demoBtn.addEventListener("click", () => { setError(""); installReport(synthet
 el.resetBtn.addEventListener("click", resetWorkbench);
 el.search.addEventListener("input", renderMatrix);
 el.statusFilter.addEventListener("change", renderMatrix);
-el.note.addEventListener("input", () => { if (state.selectedKey) state.notes.set(state.selectedKey, el.note.value); });
-el.disposition.addEventListener("change", () => { if (state.selectedKey) state.dispositions.set(state.selectedKey, el.disposition.value); });
+el.note.addEventListener("input", () => {
+  if (state.selectedKey) { state.notes.set(state.selectedKey, el.note.value); state.editRevision++; }
+});
+el.disposition.addEventListener("change", () => {
+  if (state.selectedKey) { state.dispositions.set(state.selectedKey, el.disposition.value); state.editRevision++; }
+});
 el.exportBtn.addEventListener("click", exportDraft);
+el.markdownBtn.addEventListener("click", exportMarkdown);
+el.importDraftBtn.addEventListener("click", importDraft);
 
 resetWorkbench();
 if (new URLSearchParams(location.search).get("demo") === "1") installReport(syntheticReport());
