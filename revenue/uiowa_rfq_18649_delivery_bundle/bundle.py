@@ -21,6 +21,7 @@ from pathlib import Path
 SCHEMA = "uiowa-rfq18649-delivery-bundle/v1"
 HANDOFF_SCHEMA = "uiowa-rfq18649-analyst-handoff-draft/v1"
 DEMO_SCHEMA = "SYNTHETIC_UI_DEMO_NOT_COMPILER_OUTPUT"
+COMPILER_REPORT_SCHEMA = "uiowa-rfq18649-workshare-report/v2"
 SCOPE = "BYTE_INTEGRITY_AND_HANDOFF_CROSS_REFERENCES_ONLY"
 AUTHORITY_KEYS = (
     "buyer_approved", "prime_approved", "current_evidence_review_authority",
@@ -29,6 +30,10 @@ AUTHORITY_KEYS = (
 )
 CELLS = frozenset((g, d) for g in ("ESS", "RIS", "IAM") for d in (
     "software_development", "security", "deployment", "ai_readiness"))
+# The parent compiler v2 uses "software"; the existing UI demo uses the long key.
+# Keep CELLS as the legacy/demo public constant and preserve the input bytes.
+COMPILER_CELLS = frozenset((g, d) for g in ("ESS", "RIS", "IAM") for d in (
+    "software", "security", "deployment", "ai_readiness"))
 DISPOSITIONS = frozenset(("UNREVIEWED", "NEEDS_EVIDENCE", "DISCUSS_WITH_PRIME",
                           "TECHNICAL_DRAFT_NOTE"))
 MEMBERS = frozenset(("report.json", "handoff.json", "README.txt", "manifest.json"))
@@ -102,8 +107,8 @@ def parse_object(data: bytes, label: str) -> dict:
     return obj
 
 
-def matrix(rows, label: str) -> dict:
-    require(isinstance(rows, list) and len(rows) == len(CELLS),
+def matrix(rows, label: str, *, expected_cells: frozenset = CELLS) -> dict:
+    require(isinstance(rows, list) and len(rows) == len(expected_cells),
             "CELL_COVERAGE", f"{label} must contain all 12 assessment cells")
     result = {}
     for row in rows:
@@ -112,7 +117,7 @@ def matrix(rows, label: str) -> dict:
         require(isinstance(group, str) and isinstance(dimension, str),
                 "CELL_SHAPE", f"{label}: group and dimension must be strings")
         key = (group, dimension)
-        require(key in CELLS and key not in result, "CELL_COVERAGE",
+        require(key in expected_cells and key not in result, "CELL_COVERAGE",
                 f"{label}: unknown or duplicate assessment cell")
         result[key] = row
     return result
@@ -154,9 +159,23 @@ def validate_pair(report_bytes: bytes, handoff_bytes: bytes) -> dict:
             "REPORT_BINDING", "Handoff receipt, mode, and aggregate must match this report")
     require(handoff.get("synthetic_demo") is synthetic, "SYNTHETIC_LABEL",
             "Handoff must preserve the report's synthetic classification")
-    cells = matrix(report.get("assessment_matrix"), "report")
-    notes = matrix(handoff.get("cell_notes"), "handoff")
-    for key in CELLS:
+    # Named schemas have exact cell vocabularies. Unknown non-demo schemas
+    # retain the legacy external-report road, while also accepting one complete
+    # canonical grid. Neither a union of vocabularies nor key rewriting is used.
+    # This is shape compatibility only, never compiler semantic verification.
+    rows = report.get("assessment_matrix")
+    if report["schema"] == COMPILER_REPORT_SCHEMA:
+        expected_cells = COMPILER_CELLS
+    elif synthetic:
+        expected_cells = CELLS
+    elif isinstance(rows, list) and any(
+            isinstance(row, dict) and row.get("dimension") == "software" for row in rows):
+        expected_cells = COMPILER_CELLS
+    else:
+        expected_cells = CELLS
+    cells = matrix(rows, "report", expected_cells=expected_cells)
+    notes = matrix(handoff.get("cell_notes"), "handoff", expected_cells=expected_cells)
+    for key in expected_cells:
         status = cells[key].get("status")
         require(isinstance(status, str) and bool(status)
                 and notes[key].get("compiler_status") == status,

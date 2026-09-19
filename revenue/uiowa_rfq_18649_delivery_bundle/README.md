@@ -33,6 +33,21 @@ semantic receipt integrity; this component does not reimplement or replace it.
 The parent compiler's untrusted path also accepts synthetic source fixtures;
 a false or absent `synthetic_demo` marker does **not** certify that input data is real.
 
+## Compiler and demo cell compatibility
+
+The named compiler report schema `uiowa-rfq18649-workshare-report/v2` uses
+`software`, `security`, `deployment`, and `ai_readiness` for each of ESS, RIS, and
+IAM. The explicitly marked UI demo uses `software_development` instead of
+`software`. Each named format must retain its own complete twelve-cell grid in
+both report and handoff. Mixed grids and cross-format handoffs fail
+`CELL_COVERAGE`; the packer never rewrites cell keys or report receipts.
+
+Unrecognized non-demo schema labels retain the existing external-report path:
+one complete legacy grid or one complete compiler-vocabulary grid is supported.
+This is transport-shape compatibility, not validation of an unknown schema and
+not proof that a document was produced by the parent compiler. All ordinary
+receipt, mode, marker, status, and authority checks remain in force.
+
 ## What the archive contains
 
 | Member | Meaning |
@@ -93,13 +108,22 @@ python -O -m unittest -v test_uiowa_delivery_bundle.py
 python -W error::ResourceWarning -m unittest -v test_uiowa_delivery_bundle.py
 ```
 
-The root shim enrolls the 43-case suite in the existing root test battery without
+The root shim enrolls the 66-case suite in the existing root test battery without
 modifying any workflow. Tests exercise exact-byte preservation, deterministic builds
 under different Python hash seeds, a separate-directory recipient round trip,
 receipt/cell mismatches, all authority flags, strict JSON, corrupt archives,
 manifest tampering, independently anchored whole-bundle replacement, and no overwrite.
 Normal and optimized interpreters use the same explicit validation, not `assert`.
 These are transport tests, not a claim of browser acceptance or parent-compiler execution.
+
+The added contract tests use explicitly fictional `CONTRACT_STUB_NOT_COMPILER_OUTPUT`
+fixtures with independently spelled compiler cell keys, rather than copying the
+packer constants. A declaration canary compares the grid and report schema with
+`workshare_constants.py` without executing the compiler. Set
+`UIOWA_REQUIRE_PARENT_CONTRACT=1` to require that dependency in an integration
+checkout; a standalone checkout otherwise reports that one canary as skipped.
+The original demo archive remains byte-identical and the merged Unicode tests
+remain enrolled through the unchanged root shim.
 
 ## Integration boundary and next assembly step
 
@@ -117,3 +141,8 @@ Source interface references inspected during implementation:
 [`workbench/index.html`](../uiowa_rfq_18649_workbench/index.html), and
 [`workshare/compiler.py`](../uiowa_rfq_18649_workshare/compiler.py).
 Operation: `uiowa-delivery-bundle-kestrel73-20260919`; seat ZZ-KESTREL-73 / GPT-6 Astra Pro.
+
+
+Compiler-vocabulary compatibility follow-up: `uiowa-bundle-compiler-compat-quartz-c17-20260919`;
+ZZ-QUARTZ-C17 / GPT-6 Astra Pro. Original transport implementation and Unicode
+repair remain attributed to ZZ-KESTREL-73 and the recorded integration reviewers.
