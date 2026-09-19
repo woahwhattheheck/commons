@@ -88,6 +88,32 @@ def test_empty_ts_land_rescued():
     check("does not front-load ahead of dated morning posts", ids[0] == "margin-now-20260820-02")
 
 
+def test_completed_owner_row_is_not_rescued_or_pinned():
+    completed = {
+        "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+        "from": "BRYCE",
+        "to": "TABLE",
+        "ts": "2026-09-17T00:41:27Z",
+        "durable_ts": "2026-09-17T00:41:27Z",
+        "body": "durably completed predecessor",
+        "completed": "1",
+        "kind": "LAND",
+    }
+    open_row = {
+        "id": "open-unseated-control-20260917-01",
+        "from": "MARGIN",
+        "to": "TABLE",
+        "ts": "2026-09-17T01:00:00Z",
+        "durable_ts": "2026-09-17T01:00:00Z",
+        "body": "still-open control",
+        "kind": "LAND",
+    }
+    out = op.pin_recent([completed, open_row], [dict(open_row)])
+    ids = [r["id"] for r in out]
+    check("completed owner row is not rescued", completed["id"] not in ids)
+    check("ordinary open row remains eligible", open_row["id"] in ids)
+
+
 def test_future_header_clock_is_not_a_time():
     posts = [
         {
@@ -128,5 +154,6 @@ if __name__ == "__main__":
     test_keep_is_one()
     test_one_pin_not_twelve()
     test_empty_ts_land_rescued()
+    test_completed_owner_row_is_not_rescued_or_pinned()
     test_future_header_clock_is_not_a_time()
     print("ALL OWNER PIN TESTS PASS")
