@@ -159,7 +159,7 @@ Each row's evidence request is original preparation analysis, not a statement th
 | J4 | 9 | X | Auditor/prime confirmation of ten final report copies. |
 | J5 | 9 | X | Auditor/prime confirmation of final PDF delivery. |
 | K1, K1a | 9 | P | Respondent's custody role and top three public custody clients/assets when applicable. |
-| K2 | 9 | P | Respondent custody-related disciplinary disclosures, if applicable. |
+| K2 | 9 | P | If the respondent provides custody, disclose whether any legal, regulatory or disciplinary action has ever been taken against it. |
 | K3 | 9 | P | Explicit custody outsourcing answer and provider identity. |
 | K4 | 9 | X | Applicable outsourced custodian's legal/regulatory/disciplinary disclosures. |
 | L1 | 9 | P | Alternate participant channels and daily hours. |
