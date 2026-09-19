@@ -1,5 +1,6 @@
 "use strict";
 
+let reviewNavigation = null;
 const state = { report: null, cells: [], selectedKey: null, notes: new Map(), dispositions: new Map() };
 const el = Object.fromEntries([
   "candidateFile","authorityFile","inspectBtn","demoBtn","resetBtn","error","summary","search",
@@ -62,6 +63,7 @@ function installReport(report) {
   rebuildStatuses();
   renderMatrix();
   el.detail.textContent = "Select a cell.";
+  reviewNavigation?.setReport(report);
 }
 
 function renderSummary() {
@@ -150,6 +152,7 @@ function resetWorkbench() {
   el.disposition.value = "UNREVIEWED"; el.disposition.disabled = true;
   el.exportBtn.disabled = true; el.exportStatus.textContent = "";
   setError("");
+  reviewNavigation?.setReport(null);
 }
 
 async function readJsonFile(input, label) {
@@ -233,6 +236,19 @@ el.statusFilter.addEventListener("change", renderMatrix);
 el.note.addEventListener("input", () => { if (state.selectedKey) state.notes.set(state.selectedKey, el.note.value); });
 el.disposition.addEventListener("change", () => { if (state.selectedKey) state.dispositions.set(state.selectedKey, el.disposition.value); });
 el.exportBtn.addEventListener("click", exportDraft);
+
+reviewNavigation = globalThis.UIowaReviewNavigation?.attach({
+  clearSelection: () => {
+    state.selectedKey = null; renderMatrix();
+    el.detail.textContent = "No cell selected: resolve the review link below.";
+    el.note.value = ""; el.note.disabled = true;
+    el.disposition.value = "UNREVIEWED"; el.disposition.disabled = true;
+  },
+  selectCell: key => {
+    el.search.value = ""; el.statusFilter.value = "";
+    selectCell(key);
+  }
+}) || null;
 
 resetWorkbench();
 if (new URLSearchParams(location.search).get("demo") === "1") installReport(syntheticReport());
