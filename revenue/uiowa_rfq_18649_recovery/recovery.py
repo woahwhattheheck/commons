@@ -56,7 +56,7 @@ def stamp(value: Any, where: str, nullable: bool = False) -> datetime | None:
         require(int(value[-5:-3]) <= 23 and int(value[-2:]) <= 59, f"{where}: invalid UTC offset")
     try:
         return datetime.fromisoformat(value.replace("Z", "+00:00")).astimezone(timezone.utc)
-    except ValueError as exc:
+    except (ValueError, OverflowError) as exc:
         raise ValueError(f"{where}: invalid timestamp") from exc
 
 

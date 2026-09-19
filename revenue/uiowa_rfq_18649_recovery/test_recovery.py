@@ -236,6 +236,24 @@ class RecoveryTests(unittest.TestCase):
         self.cfg["target_minutes"] = 15
         self.assertEqual(self.report()["attempts"][0]["target_result"], "missed")
 
+    def test_utc_normalization_outside_supported_calendar_is_rejected(self):
+        for value in ("0001-01-01T00:00:00+01:00", "9999-12-31T23:59:59-01:00"):
+            with self.subTest(value=value):
+                self.run["times"]["failure"] = value
+                with self.assertRaisesRegex(ValueError, "invalid timestamp"):
+                    self.report()
+
+    def test_cli_calendar_overflow_has_validation_exit_not_traceback(self):
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "input.json"
+            for value in ("0001-01-01T00:00:00+01:00", "9999-12-31T23:59:59-01:00"):
+                self.packet["as_of"] = value
+                path.write_text(json.dumps(self.packet))
+                result = self.cli(path)
+                self.assertEqual(result.returncode, 2)
+                self.assertIn("invalid timestamp", result.stderr)
+                self.assertNotIn("Traceback", result.stderr)
+
     def cli(self, *args):
         return subprocess.run([sys.executable, *(["-O"] if sys.flags.optimize else []),
                                str(ROOT / "recovery.py"), *map(str, args)],
@@ -270,7 +288,7 @@ class RecoveryTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             output = Path(d) / "report.json"
             result = self.cli(ROOT / "example.json", "--output", output, "--format", "json")
-            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.returncode, 0)
             self.assertEqual(json.loads(output.read_text())["counts"]["scenarios"], 2)
             self.assertFalse(list(Path(d).glob(".recovery-*")))
 
