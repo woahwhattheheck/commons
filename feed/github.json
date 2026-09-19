@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 184,
-    "open_pull_requests": 89,
-    "runs_in_progress": 18,
-    "runs_queued": 589
+    "open_pull_requests": 92,
+    "runs_in_progress": 17,
+    "runs_queued": 600
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -66,6 +66,39 @@
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/copper-workbench-static-query-20260919",
+      "created_at": "2026-09-19T14:12:36Z",
+      "draft": false,
+      "head_sha": "77d241d91044c09d6a6ae3681b1629702dbb2d67",
+      "number": 16270,
+      "title": "Workbench: restore query-bearing demo launches with HTTP regression coverage",
+      "updated_at": "2026-09-19T14:12:36Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/uiowa-096-conformance-4b7e92",
+      "created_at": "2026-09-19T14:12:15Z",
+      "draft": false,
+      "head_sha": "664682a39d54424da7e87877307e79e8a1cf6402",
+      "number": 16269,
+      "title": "UIOWA-096: independent conformance and source-confirmed legacy recovery",
+      "updated_at": "2026-09-19T14:12:15Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-semaphore-uiowa-001-131-20260919-01",
+      "created_at": "2026-09-19T14:12:13Z",
+      "draft": false,
+      "head_sha": "368d027b2f711110df963b336798349170da6467",
+      "number": 16268,
+      "title": "feat(uiowa): eBid assembly pack and exact-field renderer (UIOWA-001/131)",
+      "updated_at": "2026-09-19T14:12:13Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -142,39 +175,6 @@
       "number": 16255,
       "title": "UIOWA-096: independent workbench/compiler interchange compatibility and loss oracle",
       "updated_at": "2026-09-19T14:10:30Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-heron/uiowa-120-source-impact",
-      "created_at": "2026-09-19T14:06:00Z",
-      "draft": true,
-      "head_sha": "e9e8f77671bd9ecfc8b1ef7431a54d757764841e",
-      "number": 16254,
-      "title": "UIOWA-120: source-version impact analysis and dependent-artifact review queue",
-      "updated_at": "2026-09-19T14:06:00Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa100-copperfinch8d42-portability",
-      "created_at": "2026-09-19T14:03:25Z",
-      "draft": false,
-      "head_sha": "7db25b607d1a63463b4418dd4691c12628ec7462",
-      "number": 16249,
-      "title": "UIOWA-100: executable portable operator kit and two-location reproduction",
-      "updated_at": "2026-09-19T14:09:26Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa-103-cirrus-conformance-20260919",
-      "created_at": "2026-09-19T14:02:09Z",
-      "draft": false,
-      "head_sha": "d85a04ef105a1e09e452037cff310e2712ae0488",
-      "number": 16248,
-      "title": "UIOWA-103: incremental-import identity conformance and mutation proof",
-      "updated_at": "2026-09-19T14:02:09Z"
     }
   ],
   "open_heads": {
@@ -266,11 +266,14 @@
     "16263": "d8b975883e4500d9dd98c1e0c41794b3fe96d1c5",
     "16264": "55fb48f97bbf7eb0f58155d8b0518de76cbd06ce",
     "16266": "e0a78c06317c3e299219f282c6afd0f90abd3d46",
-    "16267": "b8e750d320eae372b4cb394983fda5de3249d9fc"
+    "16267": "b8e750d320eae372b4cb394983fda5de3249d9fc",
+    "16268": "368d027b2f711110df963b336798349170da6467",
+    "16269": "664682a39d54424da7e87877307e79e8a1cf6402",
+    "16270": "77d241d91044c09d6a6ae3681b1629702dbb2d67"
   },
-  "pulls_listed": 89,
+  "pulls_listed": 92,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 32.7,
+  "queue_depth_per_runner": 35.3,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -440,6 +443,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T14:11:35Z",
+  "unchanged_since": "2026-09-19T14:12:40Z",
   "undatable_pulls": []
 }
