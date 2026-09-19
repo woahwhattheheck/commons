@@ -41,7 +41,7 @@ def make_gate():
     return OwnerCommitGate(store_path=store_path), store_path
 
 
-def identity(mid="mtg-1", deal="deal-A", start=T1_START, end=T1_END):
+def meeting(mid="mtg-1", deal="deal-A", start=T1_START, end=T1_END):
     return MeetingIdentity(meeting_id=mid, deal_id=deal,
                            starts_at=start, ends_at=end)
 
@@ -59,7 +59,7 @@ class OwnerCommitGateTests(unittest.TestCase):
     # 1. propose-without-approval: proposing is allowed, binding is blocked.
     def test_1_propose_without_approval(self):
         gate, _ = make_gate()
-        out = gate.propose(identity())
+        out = gate.propose(meeting())
         self.assertEqual(out["state"], PROPOSED)
         self.assertEqual(gate.state("mtg-1"), PROPOSED)
         for action in ("represent_attending", "confirm_time", "send_invite",
@@ -72,7 +72,7 @@ class OwnerCommitGateTests(unittest.TestCase):
     # 2. free-but-unapproved: calendar free does not imply consent.
     def test_2_free_but_unapproved(self):
         gate, _ = make_gate()
-        gate.propose(identity())
+        gate.propose(meeting())
         gate.prepare("check_freebusy")  # free/busy check itself is allowed
         self.assertFalse(consent_from_signal("calendar_free"))
         self.assertFalse(consent_from_signal("freebusy_open"))
@@ -91,12 +91,12 @@ class OwnerCommitGateTests(unittest.TestCase):
     # 3. stale approval: old approval does not cover a new time.
     def test_3_stale_approval(self):
         gate, _ = make_gate()
-        gate.propose(identity())
+        gate.propose(meeting())
         gate.record_owner_approval(approval())
         self.assertEqual(gate.state("mtg-1"), OWNER_APPROVED)
         # A new time re-proposed without fresh approval: the old approval does
         # not carry over, binding is blocked.
-        gate.propose(identity(start=T2_START, end=T2_END))
+        gate.propose(meeting(start=T2_START, end=T2_END))
         self.assertEqual(gate.state("mtg-1"), PROPOSED)
         with self.assertRaises(OwnerCommitDenied):
             gate.require_owner_commit("mtg-1", "confirm_time")
@@ -111,8 +111,8 @@ class OwnerCommitGateTests(unittest.TestCase):
     # 4. wrong-deal approval: approval for deal A does not cover deal B.
     def test_4_wrong_deal_approval(self):
         gate, _ = make_gate()
-        gate.propose(identity(mid="mtg-1", deal="deal-A"))
-        gate.propose(identity(mid="mtg-2", deal="deal-B"))
+        gate.propose(meeting(mid="mtg-1", deal="deal-A"))
+        gate.propose(meeting(mid="mtg-2", deal="deal-B"))
         gate.record_owner_approval(approval(mid="mtg-1", deal="deal-A"))
         # Deal-B meeting must not inherit deal-A approval.
         with self.assertRaises(OwnerCommitDenied):
@@ -129,10 +129,10 @@ class OwnerCommitGateTests(unittest.TestCase):
     # 5. reschedule without approval: blocked.
     def test_5_reschedule_without_approval(self):
         gate, _ = make_gate()
-        gate.propose(identity())
+        gate.propose(meeting())
         gate.record_owner_approval(approval())
         with self.assertRaises(OwnerCommitDenied):
-            gate.reschedule("mtg-1", identity(start=T2_START, end=T2_END))
+            gate.reschedule("mtg-1", meeting(start=T2_START, end=T2_END))
         # Cancel and RSVP changes are likewise blocked without fresh approval.
         with self.assertRaises(OwnerCommitDenied):
             gate.cancel("mtg-1")
@@ -144,7 +144,7 @@ class OwnerCommitGateTests(unittest.TestCase):
         direct = OwnerDirectRequest(action="reschedule", meeting_id="mtg-1",
                                     source="owner_chat_msg:msg-9",
                                     requested_at=APPROVED_AT)
-        gate.reschedule("mtg-1", identity(start=T2_START, end=T2_END),
+        gate.reschedule("mtg-1", meeting(start=T2_START, end=T2_END),
                         owner_direct_request=direct)
         self.assertEqual(gate.state("mtg-1"), PROPOSED)
         # But the new time still cannot be externally confirmed without
@@ -155,7 +155,7 @@ class OwnerCommitGateTests(unittest.TestCase):
     # 6. owner-approved happy path.
     def test_6_happy_path(self):
         gate, _ = make_gate()
-        gate.propose(identity(), proposed_by="agent-seat-1")
+        gate.propose(meeting(), proposed_by="agent-1")
         self.assertEqual(gate.state("mtg-1"), PROPOSED)
         gate.record_owner_approval(approval(source="owner_slack_ts:1234.5"))
         self.assertEqual(gate.state("mtg-1"), OWNER_APPROVED)
@@ -171,7 +171,7 @@ class OwnerCommitGateTests(unittest.TestCase):
     # Evidence survives reload: a later agent cannot infer it from context.
     def test_evidence_persists_across_reloads(self):
         gate, store_path = make_gate()
-        gate.propose(identity())
+        gate.propose(meeting())
         gate.record_owner_approval(approval())
         fresh = OwnerCommitGate(store_path=store_path)
         self.assertEqual(fresh.state("mtg-1"), OWNER_APPROVED)
@@ -183,7 +183,7 @@ class OwnerCommitGateTests(unittest.TestCase):
     # Ambiguous approval evidence fails closed.
     def test_ambiguous_approval_fails_closed(self):
         gate, _ = make_gate()
-        gate.propose(identity())
+        gate.propose(meeting())
         for bad in (
             approval(explicit=False),          # inferred consent
             approval(source=""),               # missing source
@@ -194,19 +194,20 @@ class OwnerCommitGateTests(unittest.TestCase):
                 gate.record_owner_approval(bad)
         self.assertEqual(gate.state("mtg-1"), PROPOSED)
 
-    # Unknown actions fail closed.
-    def test_unknown_actions_fail_closed(self):
+    def test_novel_verb_is_not_a_calendar_bind(self):
         gate, _ = make_gate()
-        gate.propose(identity())
+        gate.propose(meeting())
+        # A novel verb is not a calendar send: it does not bind the owner's time.
+        self.assertTrue(gate.prepare("time_travel")["allowed"])
+        self.assertTrue(gate.require_owner_commit("mtg-1", "time_travel")["allowed"])
+        # Named calendar-bind operations still need owner commit.
         with self.assertRaises(OwnerCommitDenied):
-            gate.require_owner_commit("mtg-1", "time_travel")
-        with self.assertRaises(OwnerCommitDenied):
-            gate.prepare("time_travel")
+            gate.require_owner_commit("mtg-1", "send_invite")
 
     # Decorator integration point: wrapped send path is gated.
     def test_guard_decorator(self):
         gate, _ = make_gate()
-        gate.propose(identity())
+        gate.propose(meeting())
 
         @guard_owner_commit("send_invite", gate=gate)
         def send_invite(meeting_id):

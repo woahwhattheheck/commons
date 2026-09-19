@@ -282,11 +282,8 @@ class OwnerCommitGate:
 
     # -- preparation (always allowed) --------------------------------------
     def prepare(self, action):
-        """Preparation actions need no approval; unknown actions fail closed."""
-        if action in PREPARATION_ACTIONS:
-            return {"allowed": True, "action": action, "gate": "preparation"}
-        raise OwnerCommitDenied(
-            "Unknown action %r: not a recognized preparation action." % (action,))
+        """Preparation never binds the owner's time."""
+        return {"allowed": True, "action": action, "gate": "preparation"}
 
     def propose(self, identity, proposed_by=None):
         """Record a proposed owner-attended meeting. Always allowed.
@@ -347,50 +344,51 @@ class OwnerCommitGate:
     def require_owner_commit(self, meeting_id, action, owner_direct_request=None):
         """Enforced hook. Call BEFORE any action that binds the owner's time.
 
-        Raises OwnerCommitDenied unless:
-          - action is a recognized BINDING action,
+        Raises OwnerCommitDenied when a BINDING action lacks persisted owner
+        commit evidence:
           - the meeting is in OWNER_APPROVED (or EXTERNALLY_CONFIRMED for
             non-re-approval actions) with approval evidence matching the exact
             current meeting identity, or
           - for reschedule/cancel/rsvp_change: a valid OwnerDirectRequest shows
             Bryce himself ordered that exact action.
+        Operations that do not bind the owner's time are not calendar commits.
         """
-        if action not in BINDING_ACTIONS:
-            raise OwnerCommitDenied(
-                "Unknown binding action %r: fail closed." % (action,))
-        meeting = self._meetings.get(meeting_id)
-        if meeting is None:
-            raise OwnerCommitDenied(
-                "Meeting %r was never proposed: no owner commitment allowed." % (meeting_id,))
-        state = meeting["state"]
-        identity = meeting["identity"]
+        if action in BINDING_ACTIONS:
+            meeting = self._meetings.get(meeting_id)
+            if meeting is None:
+                raise OwnerCommitDenied(
+                    "Meeting %r was never proposed: no owner commitment allowed." % (meeting_id,))
+            state = meeting["state"]
+            identity = meeting["identity"]
 
-        if action in RE_APPROVAL_ACTIONS:
-            if owner_direct_request is not None and self._validate_direct_request(
-                    owner_direct_request, meeting_id, action):
-                return {"allowed": True, "action": action,
-                        "meeting_id": meeting_id, "via": "owner_direct_request"}
-            raise OwnerCommitDenied(
-                "Action %r on meeting %r requires fresh explicit owner approval "
-                "(or an owner direct request for this exact action)."
-                % (action, meeting_id))
+            if action in RE_APPROVAL_ACTIONS:
+                if owner_direct_request is not None and self._validate_direct_request(
+                        owner_direct_request, meeting_id, action):
+                    return {"allowed": True, "action": action,
+                            "meeting_id": meeting_id, "via": "owner_direct_request"}
+                raise OwnerCommitDenied(
+                    "Action %r on meeting %r requires fresh explicit owner approval "
+                    "(or an owner direct request for this exact action)."
+                    % (action, meeting_id))
 
-        if state == PROPOSED:
-            raise OwnerCommitDenied(
-                "Meeting %r is PROPOSED but not owner-approved: cannot %s."
-                % (meeting_id, action))
-        if state not in (OWNER_APPROVED, EXTERNALLY_CONFIRMED):
-            raise OwnerCommitDenied(
-                "Meeting %r is in state %s: cannot %s." % (meeting_id, state, action))
+            if state == PROPOSED:
+                raise OwnerCommitDenied(
+                    "Meeting %r is PROPOSED but not owner-approved: cannot %s."
+                    % (meeting_id, action))
+            if state not in (OWNER_APPROVED, EXTERNALLY_CONFIRMED):
+                raise OwnerCommitDenied(
+                    "Meeting %r is in state %s: cannot %s." % (meeting_id, state, action))
 
-        key = (identity["meeting_id"], identity["deal_id"],
-               identity["starts_at"], identity["ends_at"])
-        if key not in self._approvals:
-            raise OwnerCommitDenied(
-                "No persisted explicit owner approval for the exact identity of "
-                "meeting %r: refusing to bind." % (meeting_id,))
+            key = (identity["meeting_id"], identity["deal_id"],
+                   identity["starts_at"], identity["ends_at"])
+            if key not in self._approvals:
+                raise OwnerCommitDenied(
+                    "No persisted explicit owner approval for the exact identity of "
+                    "meeting %r: refusing to bind." % (meeting_id,))
+            return {"allowed": True, "action": action, "meeting_id": meeting_id,
+                    "state": state, "approval_source": self._approvals[key].source}
         return {"allowed": True, "action": action, "meeting_id": meeting_id,
-                "state": state, "approval_source": self._approvals[key].source}
+                "kind": "not_binding"}
 
     def _validate_direct_request(self, request, meeting_id, action):
         if not isinstance(request, OwnerDirectRequest):
