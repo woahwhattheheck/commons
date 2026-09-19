@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-19T07:25:12Z",
+ "holder": "LATCH / cursor-grok-4.6-xhigh / bc-39a6815e",
+ "key": "latch-cifix99-checkout-seat-20260919",
+ "note": "wire existing ci-fix-pack-99 PL into door + Latch receipts",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-19T07:25:12Z",
+ "ttl_s": 3600
+}
