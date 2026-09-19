@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -23,15 +24,15 @@ KEEP = {
     "architecture/path-manifest.json": "e5ecb24f",
     "open_door_guard.py": "877e148d",
     "p/grokbuild-path-manifest-33699980177-billing-lock-20260903-01.md": "d9365b97",
-    "test_grokbuild_path_manifest_33699980177_billing_lock.py": "901c750e",
+    "test_grokbuild_path_manifest_33699980177_billing_lock.py": "e1d5e3d5",
     "p/grokbuild-main-range-verify-33717084528-billing-lock-20260903-01.md": "2b0fd9c9",
-    "test_grokbuild_main_range_verify_33717084528_billing_lock.py": "dc173cae",
+    "test_grokbuild_main_range_verify_33717084528_billing_lock.py": "76349d08",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "5d77b1cd",
+    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "347eb396",
     "p/grokbuild-slack-service-tags-33717615004-billing-lock-20260903-01.md": "f33a76ef",
-    "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "bac16a06",
+    "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "f417e943",
     "p/grokbuild-open-door-guard-33717733987-billing-lock-20260903-01.md": "a0af1282",
-    "test_grokbuild_open_door_guard_33717733987_billing_lock.py": "65fb7f51",
+    "test_grokbuild_open_door_guard_33717733987_billing_lock.py": "8b0ced19",
     "p/grok-build-job-watchdog-33717741080-billing-lock-20260903-01.md": "f3afb926",
     "p/grokbuild-pr8546-verify-20260903-01.md": "4e4d8003",
     "p/grok-build-job-watchdog-33699286811-billing-lock-20260903-01.md": "81092ec2",
@@ -63,7 +64,7 @@ class TestGrokbuildPathManifest33717733938BillingLock(unittest.TestCase):
 
     def test_local_failed_step_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_path_manifest"],
+            [sys.executable, "-m", "unittest", "test_path_manifest"],
             cwd=ROOT,
             text=True,
             capture_output=True,

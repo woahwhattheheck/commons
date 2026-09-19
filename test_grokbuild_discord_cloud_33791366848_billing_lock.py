@@ -9,6 +9,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -32,37 +33,37 @@ WORKFLOW = ROOT / ".github/workflows/commons-discord-cloud.yml"
 KEEP = {
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grok-build-discord-cloud-billing-lock-readback-20260902-01.md": "e14e443b",
-    "test_grok_build_discord_cloud_billing_lock_readback.py": "2e1620c4",
+    "test_grok_build_discord_cloud_billing_lock_readback.py": "dc14be14",
     "p/grok-build-discord-cloud-33689083145-billing-lock-20260902-01.md": "6e34f897",
     "p/grok-build-discord-cloud-33689281288-billing-lock-20260902-01.md": "89fdbcf0",
     "p/grok-build-discord-cloud-33694219370-billing-lock-20260902-01.md": "9dcc171b",
-    "test_grokbuild_discord_cloud_33694219370_billing_lock.py": "e6f4be64",
+    "test_grokbuild_discord_cloud_33694219370_billing_lock.py": "2c2d165f",
     "p/grok-build-discord-cloud-33699286743-billing-lock-20260902-01.md": "e8d308ed",
-    "test_grokbuild_discord_cloud_33699286743_billing_lock.py": "0c678c3f",
+    "test_grokbuild_discord_cloud_33699286743_billing_lock.py": "be8205fd",
     "p/grok-build-discord-cloud-33699607389-billing-lock-20260903-01.md": "0a4e42d4",
-    "test_grokbuild_discord_cloud_33699607389_billing_lock.py": "46005022",
+    "test_grokbuild_discord_cloud_33699607389_billing_lock.py": "43b513d7",
     "p/grok-build-discord-cloud-33699945007-billing-lock-20260903-01.md": "2d62ec88",
-    "test_grokbuild_discord_cloud_33699945007_billing_lock.py": "12612925",
+    "test_grokbuild_discord_cloud_33699945007_billing_lock.py": "811c2928",
     "p/grok-build-discord-cloud-33699986516-billing-lock-20260903-01.md": "a29c05fc",
-    "test_grokbuild_discord_cloud_33699986516_billing_lock.py": "3172362c",
+    "test_grokbuild_discord_cloud_33699986516_billing_lock.py": "98c160c9",
     "p/grok-build-discord-cloud-33717741051-billing-lock-20260903-01.md": "b7a4ea0e",
-    "test_grokbuild_discord_cloud_33717741051_billing_lock.py": "b71dd148",
+    "test_grokbuild_discord_cloud_33717741051_billing_lock.py": "0968d5bb",
     "p/grok-build-discord-cloud-33718131448-billing-lock-20260903-01.md": "861911cb",
     "p/grok-build-discord-cloud-33723595201-billing-lock-20260903-01.md": "5f1426b3",
     "p/grok-build-discord-cloud-33723638521-billing-lock-20260903-01.md": "8d414404",
     "p/grok-build-discord-cloud-33723861224-billing-lock-20260903-01.md": "707298ba",
     "p/grok-discord-cloud-dark-20260831-01.md": "cdbad10b",
     "p/grokbuild-slack-service-tags-33717615004-billing-lock-20260903-01.md": "f33a76ef",
-    "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "bac16a06",
+    "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "f417e943",
     "p/grokbuild-slack-service-tags-33741230551-billing-lock-20260903-01.md": "1e1d7999",
-    "test_grokbuild_slack_service_tags_33741230551_billing_lock.py": "febc2d1a",
+    "test_grokbuild_slack_service_tags_33741230551_billing_lock.py": "935d816e",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "5d77b1cd",
+    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "347eb396",
     "p/grok-build-job-watchdog-33717741080-billing-lock-20260903-01.md": "f3afb926",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
     "p/grokbuild-llms-txt-33791642614-billing-lock-20260903-01.md": "06329978",
     "p/grok-build-live-mirror-commons-33791064118-billing-lock-20260903-01.md": "d213e6f4",
-    "test_grokbuild_live_mirror_commons_33791064118_billing_lock.py": "445e5f80",
+    "test_grokbuild_live_mirror_commons_33791064118_billing_lock.py": "b040428b",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "p/grok-build-repo-pulse-billing-lock-20260903-01.md": "b6e5953c",
     "p/grok-build-moving-main-mirror-billing-lock-20260903-01.md": "4550e922",
@@ -70,9 +71,9 @@ KEEP = {
     "p/grok-build-owner-net-33723510040-billing-lock-20260903-01.md": "6a2c8239",
     "test_grokbuild_owner_net_33723510040_billing_lock.py": "b4a7a5dc",
     "p/grokbuild-leftover-id-census-33723043828-billing-lock-20260903-01.md": "e135862e",
-    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "ed237a30",
+    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "79066cb5",
     "p/grokbuild-staleness-alarm-33767754124-billing-lock-20260903-01.md": "49d0ad65",
-    "test_grokbuild_staleness_alarm_33767754124_billing_lock.py": "4bde0e5d",
+    "test_grokbuild_staleness_alarm_33767754124_billing_lock.py": "4a5b2472",
     "p/grokbuild-resources-tab-freshness-33767588782-billing-lock-20260903-01.md": "eca6f65c",
     "test_grokbuild_resources_tab_freshness_33767588782_billing_lock.py": "e6860e19",
     "commons_discord.py": "f6f1a374",
@@ -224,7 +225,7 @@ class TestGrokbuildDiscordCloud33791366848BillingLock(unittest.TestCase):
     def test_discord_battery_and_format_still_pass(self) -> None:
         proc = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "-m",
                 "unittest",
                 "test_commons_discord.py",
@@ -241,7 +242,7 @@ class TestGrokbuildDiscordCloud33791366848BillingLock(unittest.TestCase):
         self.assertIn("Ran 34 tests", proc.stderr)
         fmt = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "commons_discord.py",
                 "to-discord",
                 "format",
@@ -294,7 +295,7 @@ class TestGrokbuildDiscordCloud33791366848BillingLock(unittest.TestCase):
         result = fix_first.validate(packet)
         self.assertEqual(result["state"], "EXTERNAL_BLOCKER")
         proc = subprocess.run(
-            ["python3", "fix_first.py", "--json", json.dumps(packet)],
+            [sys.executable, "fix_first.py", "--json", json.dumps(packet)],
             cwd=ROOT,
             text=True,
             capture_output=True,

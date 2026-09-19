@@ -26,7 +26,7 @@ KEEP = {
     "p/cursor-incoming-models-hub-payload-readback-20260902-01.md": "2d297673",
     "p/cursor-big-things-incoming-shots-20260902-01.md": "60b24eff",
     "p/cursor-big-things-incoming-shots-readback-20260902-01.md": "3cabb764",
-    "autogtm.html": "dec0ecbe",
+    "autogtm.html": "5c966110",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
 }
 
@@ -58,6 +58,9 @@ class TestOwnerNowRevenueReadback(unittest.TestCase):
         packet = json.loads(proc.stdout)
         self.assertEqual(packet["verdict"], "ASK_FOR_SALE", packet)
         self.assertEqual(packet["sku_count"], len(packet["ask_for_sale"]))
+        self.assertNotIn(
+            "agent-failure-autopsy-29", {row["sku"] for row in packet["ask_for_sale"]}
+        )
         self.assertTrue(packet["chargeable"])
         self.assertFalse(packet["invented_stripe_urls"])
         self.assertEqual(packet["cash_usd"], 0)
@@ -68,7 +71,7 @@ class TestOwnerNowRevenueReadback(unittest.TestCase):
 
     def test_leftover_tests_still_pass(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_owner_now_revenue.py"],
+            [sys.executable, "-m", "unittest", "test_owner_now_revenue.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

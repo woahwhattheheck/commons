@@ -7,6 +7,7 @@ import hashlib
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 VERIFY = ROOT / "p/grokbuild-pr8609-already-merged-20260903-01.md"
@@ -15,9 +16,9 @@ BODY_SHA256 = "b9d6ba80cfc4dde7b44042c450857a25ac2e991d98444a892b69eb3e7a34904d"
 
 KEEP = {
     "p/grokbuild-pr8584-verify-20260903-01.md": "80fa5f50",
-    "test_grokbuild_pr8584_verify.py": "e660beab",
+    "test_grokbuild_pr8584_verify.py": "5230a9ae",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "5d77b1cd",
+    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "347eb396",
     "open_door_guard.py": "877e148d",
     "wakeup.py": "c284ff5e",
     "test_wakeup_reliability.py": "aca39ab4",
@@ -69,7 +70,7 @@ class TestGrokbuildPr8609AlreadyMerged(unittest.TestCase):
 
     def test_prior_verify_unittest_still_green(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_grokbuild_pr8584_verify.py"],
+            [sys.executable, "-m", "unittest", "test_grokbuild_pr8584_verify.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

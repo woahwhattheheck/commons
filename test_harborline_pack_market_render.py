@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 HELPER = ROOT / "host/harborline_pack_market_render.py"
@@ -16,7 +17,7 @@ KEEP = {
     "ground/OWNER_NOW.md": "39a0e0c3",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "host/harborline_qualify_live_probe.py": "2c1797b2",
-    "test_harborline_qualify_live_probe.py": "22aa4580",
+    "test_harborline_qualify_live_probe.py": "6fb584bd",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
     "p/cursor-big-things-incoming-shots-20260902-01.md": "60b24eff",
     "p/cursor-big-things-incoming-shots-readback-20260902-01.md": "3cabb764",
@@ -24,8 +25,8 @@ KEEP = {
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-owner-now-revenue-20260902-01.md": "fe5ba035",
     "owner-now-revenue.html": "df6e7ac2",
-    "autogtm.html": "dec0ecbe",
-    "packs/desk-website-service-20260902-01/door.html": "299b01fd",
+    "autogtm.html": "5c966110",
+    "packs/desk-website-service-20260902-01/door.html": "d75b3f3b",
     "p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md": "7a8987b5",
 }
 
@@ -38,7 +39,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,

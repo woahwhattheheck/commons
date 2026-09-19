@@ -21,6 +21,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 ORIGINALS = (
@@ -98,7 +99,7 @@ class TestGrokbuildTestsBattery34406500391KeepLift(unittest.TestCase):
         for name in ORIGINALS:
             with self.subTest(name=name):
                 proc = subprocess.run(
-                    ["python3", name],
+                    [sys.executable, name],
                     cwd=ROOT,
                     text=True,
                     capture_output=True,

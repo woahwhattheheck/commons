@@ -214,7 +214,7 @@ def _validate_references(refs: dict[str, Any], refs_raw: bytes):
             _text(rule["source_url"], rwhere + ".source_url")
             _text(rule["fact"], rwhere + ".fact")
         programs[pid] = program
-    return programs, digest(refs_raw)
+    return programs, digest(canon(refs))
 
 
 def _reference_currentness(refs: dict[str, Any], program: dict[str, Any], evaluated_dt: datetime):

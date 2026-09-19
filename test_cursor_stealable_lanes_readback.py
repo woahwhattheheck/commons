@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-stealable-lanes-roles-readback-20260902-01.md"
@@ -17,12 +18,12 @@ DOOR = ROOT / "stealable-lanes.html"
 
 KEEP = {
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
-    "host/stealable_lanes.py": "524275ce",
+    "host/stealable_lanes.py": "60ac60e1",
     "ground/STEALABLE_ROLES.json": "ab601590",
-    "ground/STEALABLE_ROLES.md": "66f4feda",
-    "test_stealable_lanes.py": "4b90b09b",
-    "ground/STEALABLE_LANES.json": "3627162a",
-    "ground/STEALABLE_LANES.md": "3743d4f5",
+    "ground/STEALABLE_ROLES.md": "10f0f82b",
+    "test_stealable_lanes.py": "5bd684a3",
+    "ground/STEALABLE_LANES.json": "20b0a875",
+    "ground/STEALABLE_LANES.md": "a065c748",
     "stealable-lanes.html": "18d0ae64",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "lanes.json": "1c4569ef",
@@ -32,9 +33,9 @@ KEEP = {
     "p/cursor-landed-work-feed-readback-20260902-01.md": "d37eb307",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
-    "autogtm.html": "dec0ecbe",
+    "autogtm.html": "5c966110",
     "hub_pages.py": "673dab89",
-    "door.js": "c06cc197",
+    "door.js": "5899223c",
     "api/mcp.py": "393da756",
     "ground/OWNER_NOW.md": "39a0e0c3",
 }
@@ -48,7 +49,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,
@@ -87,7 +88,7 @@ class TestCursorStealableLanesReadback(unittest.TestCase):
 
     def test_leftover_tests_still_pass(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_stealable_lanes.py"],
+            [sys.executable, "-m", "unittest", "test_stealable_lanes.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

@@ -8,6 +8,7 @@ import os
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grokbuild-pr8407-verify-20260902-01.md"
@@ -18,9 +19,9 @@ WORKFLOW = ROOT / ".github/workflows/llms-txt.yml"
 
 KEEP = {
     "p/grok-build-llms-txt-billing-lock-20260902-01.md": "cf9c9f40",
-    "test_grokbuild_llms_txt_billing_lock.py": "68dd2941",
+    "test_grokbuild_llms_txt_billing_lock.py": "9eabfa9c",
     "p/grok-build-llms-txt-33687829181-billing-lock-20260902-01.md": "3183564c",
-    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "ce7b327f",
+    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "a93e988e",
     "p/grokbuild-pr8402-verify-20260902-01.md": "3524e382",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
@@ -64,7 +65,7 @@ class TestGrokbuildPr8407Verify(unittest.TestCase):
         env = os.environ.copy()
         env.pop("GITHUB_ACTIONS", None)
         rc = subprocess.run(
-            ["python3", "llms_txt.py", "--publish"],
+            [sys.executable, "llms_txt.py", "--publish"],
             cwd=ROOT,
             capture_output=True,
             text=True,

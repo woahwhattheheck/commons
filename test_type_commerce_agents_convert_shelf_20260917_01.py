@@ -106,6 +106,7 @@ class TestTypeCommerceAgentsConvertShelf2026091701(unittest.TestCase):
                 self.assertIn('id="live-cash"', html)
                 cash = html.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
                 self.assertNotIn("buy.stripe.com", cash)
+                self.assertNotIn("./agent-rescue.html", cash)
                 self.assertIsNone(re.search(r"\blogin\b", shelf, flags=re.I))
                 self.assertNotIn("live Stripe URLs", html)
                 self.assertNotIn(">Pay ", html)
@@ -117,7 +118,7 @@ class TestTypeCommerceAgentsConvertShelf2026091701(unittest.TestCase):
         for url in ALLOWED_LIVE_BUY_URLS:
             self.assertIn(url, text)
         for name in (
-            "dealer-service-lead-rescue.html",
+                    "dealer-service-lead-rescue.html",
             "referral-intake-completeness.html",
             "repair-booking-preflight.html",
             "plant-downtime-handoff.html",

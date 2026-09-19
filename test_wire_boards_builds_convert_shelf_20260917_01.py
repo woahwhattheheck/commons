@@ -34,7 +34,6 @@ BUY_HOST_PATH = re.compile(
     re.IGNORECASE,
 )
 BUY_LABELS = (
-    "Buy White Box $250",
     "Buy one White Box hour $250",
 )
 PRODUCT_PAGES = (
@@ -83,6 +82,7 @@ class TestWireBoardsBuildsConvertShelf2026091701(unittest.TestCase):
                 live_cash = html.split('id="live-cash"', 1)[1]
                 live_cash = live_cash.split("</section>", 1)[0]
                 self.assertNotIn("buy.stripe.com", live_cash)
+                self.assertNotIn("agent-rescue.html", live_cash)
                 self.assertIn("Larger fixed engagements", html)
                 self.assertIn("diagnostic.html", html)
                 self.assertIn("commercial.html", html)

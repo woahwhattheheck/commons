@@ -22,6 +22,7 @@ FILES = [
     "ringdelta_measured.json",
 ]
 REQUIRED_PATHS = [
+    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -43,6 +44,8 @@ class NewbotJsonDoorsLiveCash06Test(unittest.TestCase):
             paths = [p.get("path") for p in products]
             for req in REQUIRED_PATHS:
                 self.assertIn(req, paths, f"{name} missing {req}")
+            autopsy = next(p for p in products if p["path"] == "agent-rescue.html")
+            self.assertEqual(autopsy.get("price_usd"), 29)
             blob = path.read_text(encoding="utf-8")
             self.assertNotIn("buy.stripe.com", blob)
             self.assertNotIn("plink_", blob)

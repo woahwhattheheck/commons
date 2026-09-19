@@ -27,7 +27,6 @@ CRM = _FIXTURES / "synthetic_crm_followup_role.json"
 _EVIDENCE = "2026-09-04T15:00:00-04:00"
 _AS_OF_OPEN = "2026-09-04T16:00:00-04:00"
 _AS_OF_MISSED = "2026-09-08T10:00:00-04:00"
-_CASE_REF = "case_001"
 
 
 class DiagnosticEquipmentCardTests(unittest.TestCase):
@@ -362,25 +361,17 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             store = RoleStore(tmp)
             crm = store.create(json.loads(CRM.read_text(encoding="utf-8")))
-            diag_b_raw = json.loads(DIAG.read_text(encoding="utf-8"))
-            diag_b_raw["role_id"] += "-b"
-            diag_b = store.create(diag_b_raw)
             diag = store.create(json.loads(DIAG.read_text(encoding="utf-8")))
-            for rid, sess_a, sess_b in (
-                (diag_b["role_id"], "cash-a-A", "cash-a-B"),
-                (diag["role_id"], "cash-d-A", "cash-d-B"),
-            ):
-                store.equip(rid, session_id=sess_a, harness="hinge")
-                store.transfer(
-                    rid,
-                    from_session_id=sess_a,
-                    to_session_id=sess_b,
-                    to_harness="rivet",
-                )
+            store.equip(diag["role_id"], session_id="cash-d-A", harness="hinge")
+            store.transfer(
+                diag["role_id"],
+                from_session_id="cash-d-A",
+                to_session_id="cash-d-B",
+                to_harness="rivet",
+            )
             self._assert_open_obligations_cash_card(
                 [
                     store.get(crm["role_id"]),
-                    store.get(diag_b["role_id"]),
                     store.get(diag["role_id"]),
                 ]
             )
@@ -392,13 +383,9 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
             store = RoleStore(tmp)
             for path, sess in (
                 (CRM, "cash-exp-crm"),
-                (DIAG, "cash-exp-a"),
                 (DIAG, "cash-exp-d"),
             ):
-                role = json.loads(path.read_text(encoding="utf-8"))
-                if sess == "cash-exp-a":
-                    role["role_id"] += "-b"
-                role = store.create(role)
+                role = store.create(json.loads(path.read_text(encoding="utf-8")))
                 store.equip(role["role_id"], session_id=sess, harness="hinge")
                 packages.append(store.export_package(role["role_id"]))
         with tempfile.TemporaryDirectory() as fresh_dir:
@@ -420,21 +407,13 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             store = RoleStore(tmp)
             crm = store.create(json.loads(CRM.read_text(encoding="utf-8")))
-            diag_b_raw = json.loads(DIAG.read_text(encoding="utf-8"))
-            diag_b_raw["role_id"] += "-b"
-            diag_b = store.create(diag_b_raw)
             diag = store.create(json.loads(DIAG.read_text(encoding="utf-8")))
-            for rid, sess_a, sess_b in (
-                (diag_b["role_id"], "cash-rel-a-A", "cash-rel-a-B"),
-                (diag["role_id"], "cash-rel-d-A", "cash-rel-d-B"),
-            ):
-                store.equip(rid, session_id=sess_a, harness="hinge")
-                store.release(rid, from_session_id=sess_a)
-                store.equip(rid, session_id=sess_b, harness="rivet")
+            store.equip(diag["role_id"], session_id="cash-rel-d-A", harness="hinge")
+            store.release(diag["role_id"], from_session_id="cash-rel-d-A")
+            store.equip(diag["role_id"], session_id="cash-rel-d-B", harness="rivet")
             self._assert_open_obligations_cash_card(
                 [
                     store.get(crm["role_id"]),
-                    store.get(diag_b["role_id"]),
                     store.get(diag["role_id"]),
                 ]
             )

@@ -36,7 +36,7 @@ def load_catalog(path: Path | None = None) -> dict[str, Any]:
 
 def leftover_quality() -> dict[str, Any]:
     proc = subprocess.run(
-        ["python3", str(QUALITY), "--json"],
+        [sys.executable, str(QUALITY), "--json"],
         cwd=ROOT,
         text=True,
         capture_output=True,

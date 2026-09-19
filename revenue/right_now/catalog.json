@@ -97,8 +97,8 @@
       "source": "revenue/production_survival/offer.json#/entry_offer",
       "payment_state": "BUYER_SPECIFIC_HANDOFF_REQUIRED",
       "next_external_event": "A real buyer starts from revenue/production_survival/README.md with the one-sentence failure and agrees to a start window.",
-      "founder_bottleneck": "Do not route Survival Proof buyers to agent-rescue.html. Accept the exact sentence and window from revenue/production_survival/README.md, then issue a buyer-specific payment handoff.",
-      "commons_bottleneck": "Reserve one delivery window and build the accepted proof after funding."
+      "founder_bottleneck": "Do not route Survival Proof buyers to agent-rescue.html (retired with the $29 Autopsy on 2026-09-17). Accept the exact sentence and window from revenue/production_survival/README.md, then issue a buyer-specific payment handoff.",
+      "commons_bottleneck": "Reserve one delivery window and build the accepted proof after funding; agent-rescue.html is retired with the Autopsy SKU."
     }
   ],
   "preserved_long_horizon_routes": [

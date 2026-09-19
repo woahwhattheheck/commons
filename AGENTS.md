@@ -263,7 +263,7 @@ Agents and humans can buy the existing rungs without waiting for a JavaScript re
 - [$199 referral diagnostic](./referral-intake-completeness.html) — tip-shelf product page
 - [$199 repair diagnostic](./repair-booking-preflight.html) — tip-shelf product page
 - [$199 plant diagnostic](./plant-downtime-handoff.html) — tip-shelf product page
-- [$2,500 same-day crash-resume proof](./revenue/production_survival/README.md) — refund if the agreed proof window is missed (do not use agent-rescue.html for Survival).
+- [$2,500 same-day crash-resume proof](./revenue/production_survival/README.md) — refund if the agreed proof window is missed (do not use agent-rescue.html for Survival — it retired with the $29 Autopsy SKU on 2026-09-17).
 - [$15,000 five-day recovery sprint](./revenue/production_survival/README.md) — bounded implementation with a durable receipt.
 - [$12,000 GGUF diagnostic](./diagnostic.html) — diagnosis before a larger engagement.
 - [$30,000 White Box pilot](./commercial.html) — 30 days for one customer-owned GGUF model family.

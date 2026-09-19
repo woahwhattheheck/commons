@@ -169,6 +169,11 @@
       "id": "super-mcp",
       "job": "shared super MCP / thin-harness residual reach",
       "token": "ground/tokens/super-mcp.md"
+    },
+    {
+      "id": "jev",
+      "job": "TypeSafe Jev / typed fast judgment: route, class, score, yes-no",
+      "token": ""
     }
   ],
   "live_cash": {

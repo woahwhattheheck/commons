@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -26,16 +27,16 @@ KEEP = {
     "host/path_manifest.py": "dcc94697",
     ".github/workflows/path-manifest.yml": "33685fa1",
     "architecture/path-manifest.json": "e5ecb24f",
-    "test_grokbuild_path_manifest_33694214802_billing_lock.py": "1f8d9999",
+    "test_grokbuild_path_manifest_33694214802_billing_lock.py": "f63e43fd",
     "p/grokbuild-path-manifest-33694214802-billing-lock-20260902-01.md": "d9331b17",
-    "test_grokbuild_pr8415_path_manifest_33689243555.py": "b8145e2a",
+    "test_grokbuild_pr8415_path_manifest_33689243555.py": "eeca0bf5",
     "p/grokbuild-pr8415-path-manifest-33689243555-20260902-01.md": "3c72cd09",
-    "test_grokbuild_llms_txt_33699286770_billing_lock.py": "0be8ee39",
+    "test_grokbuild_llms_txt_33699286770_billing_lock.py": "71ad16e0",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
     "p/grokbuild-pr8479-verify-20260902-01.md": "658530be",
     "p/grokbuild-open-door-guard-33699286785-billing-lock-20260902-01.md": "d22e0707",
-    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "9be27ad1",
+    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "d6bf412e",
 }
 
 
@@ -63,7 +64,7 @@ class TestGrokbuildPathManifest33699939404BillingLock(unittest.TestCase):
 
     def test_local_failed_step_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_path_manifest"],
+            [sys.executable, "-m", "unittest", "test_path_manifest"],
             cwd=ROOT,
             text=True,
             capture_output=True,

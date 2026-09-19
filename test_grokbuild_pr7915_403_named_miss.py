@@ -14,7 +14,7 @@ HELPER = ROOT / "host/pr7915_closed_unmerged.py"
 
 KEEP_UNREAD = {
     "host/pr7915_closed_unmerged.py": "9d56ea0e",
-    "autogtm.html": "dec0ecbe",
+    "autogtm.html": "5c966110",
     "p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md": "7a8987b5",
     "p/cursor-pr7915-closed-unmerged-readback-20260902-01.md": "2a7f31a4",
     "p/cursor-pr7915-harborline-readbacks-ack-20260902-01.md": "7082ab78",

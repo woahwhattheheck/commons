@@ -8,6 +8,7 @@ import subprocess
 import unittest
 import urllib.request
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-webmcp-contest-20260903-01.md"
@@ -23,13 +24,13 @@ KEEP = {
     "stage_spark_mcp_bundle.py": "548ef02b",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
     "wire.html": "623602a7",
-    "ground/WIRE_SUPER_MCP.md": "6a50f614",
+    "ground/WIRE_SUPER_MCP.md": "626b07f7",
     "p/cursor-wire-shared-super-mcp-catalog-readback-20260902-01.md": "593d54bc",
     "p/cursor-wire-super-mcp-marketplace-readback-20260902-01.md": "448eda52",
     "p/latch-wake-super-mcp-pointer-readback-20260902-01.md": "250907c9",
     "p/cursor-webmcp-judge-url-20260903-01.md": "eb52debf",
     "hub_pages.py": "673dab89",
-    "door.js": "de1d570b",
+    "door.js": "5899223c",
 }
 
 
@@ -60,7 +61,7 @@ class TestCursorWebmcpContest(unittest.TestCase):
 
     def test_leftover_door_tests_still_pass(self) -> None:
         leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_webmcp_door.py"],
+            [sys.executable, "-m", "unittest", "test_webmcp_door.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

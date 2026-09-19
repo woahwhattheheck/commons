@@ -8,6 +8,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grokbuild-stealable-occupancy-keep-match-20260902-01.md"
@@ -26,9 +27,9 @@ KEEP_UNREAD = {
     "p/grok-build-pr8353-caec56f3-terminal-20260902-01.md": "7e8db90d",
     "ground/OWNER_NOW.md": "39a0e0c3",
     "hub_pages.py": "673dab89",
-    "door.js": "c06cc197",
+    "door.js": "5899223c",
     "api/mcp.py": "393da756",
-    "autogtm.html": "dec0ecbe",
+    "autogtm.html": "5c966110",
 }
 
 
@@ -42,9 +43,9 @@ class TestGrokbuildStealableOccupancyKeepMatch(unittest.TestCase):
     def test_occupancy_keep_no_longer_freezes_stale_stealable_test(self) -> None:
         occ = importlib.import_module("test_stealable_lanes_occupancy")
         self.assertNotEqual(occ.KEEP.get("test_stealable_lanes.py"), "721adc44")
-        self.assertTrue(git_blob("test_stealable_lanes.py").startswith("4b90b09b"))
+        self.assertTrue(git_blob("test_stealable_lanes.py").startswith("1b9ef2a9"))
         occupancy = subprocess.run(
-            ["python3", "-m", "unittest", "test_stealable_lanes_occupancy.py"],
+            [sys.executable, "-m", "unittest", "test_stealable_lanes_occupancy.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -53,7 +54,7 @@ class TestGrokbuildStealableOccupancyKeepMatch(unittest.TestCase):
         self.assertEqual(occupancy.returncode, 0, msg=occupancy.stdout + occupancy.stderr)
         self.assertIn("Ran 4 tests", occupancy.stderr)
         leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_stealable_lanes.py"],
+            [sys.executable, "-m", "unittest", "test_stealable_lanes.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -70,7 +71,7 @@ class TestGrokbuildStealableOccupancyKeepMatch(unittest.TestCase):
                 f"{rel} reminted: want {prefix} got {blob[:8]}",
             )
         check = subprocess.run(
-            ["python3", str(HELPER), "--check"],
+            [sys.executable, str(HELPER), "--check"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -80,7 +81,7 @@ class TestGrokbuildStealableOccupancyKeepMatch(unittest.TestCase):
         self.assertIn("ok", check.stdout)
         payload = json.loads(
             subprocess.run(
-                ["python3", str(HELPER), "--json"],
+                [sys.executable, str(HELPER), "--json"],
                 cwd=ROOT,
                 text=True,
                 capture_output=True,
@@ -92,7 +93,7 @@ class TestGrokbuildStealableOccupancyKeepMatch(unittest.TestCase):
         self.assertEqual(payload["sends"], 0)
         for flag in ("--send", "--go"):
             refused = subprocess.run(
-                ["python3", str(HELPER), flag],
+                [sys.executable, str(HELPER), flag],
                 cwd=ROOT,
                 text=True,
                 capture_output=True,

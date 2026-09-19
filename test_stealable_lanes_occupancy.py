@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-stealable-lanes-occupancy-20260902-01.md"
@@ -14,11 +15,11 @@ LEFTOVER = ROOT / "p/cursor-stealable-lanes-roles-20260902-01.md"
 
 KEEP = {
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
-    "host/stealable_lanes.py": "524275ce",
+    "host/stealable_lanes.py": "60ac60e1",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "hub_pages.py": "673dab89",
-    "door.js": "c06cc197",
+    "door.js": "5899223c",
     "api/mcp.py": "393da756",
 }
 
@@ -50,7 +51,7 @@ class TestStealableLanesOccupancy(unittest.TestCase):
             )
         )
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_stealable_lanes.py"],
+            [sys.executable, "-m", "unittest", "test_stealable_lanes.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

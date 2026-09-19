@@ -16,6 +16,7 @@ _FIXTURES = (
     / "fixtures"
 )
 DIAG = _FIXTURES / "synthetic_diagnostic_fulfillment_role.json"
+CRM = _FIXTURES / "synthetic_crm_followup_role.json"
 
 
 class ListRoleIdsEquipmentCardTests(unittest.TestCase):
@@ -24,8 +25,7 @@ class ListRoleIdsEquipmentCardTests(unittest.TestCase):
     def setUp(self) -> None:
         self.eq = GrokBotEquipment()
         self.diag = json.loads(DIAG.read_text(encoding="utf-8"))
-        self.diag_b = json.loads(DIAG.read_text(encoding="utf-8"))
-        self.diag_b["role_id"] += "-b"
+        self.crm = json.loads(CRM.read_text(encoding="utf-8"))
 
     def test_tool_listed(self) -> None:
         names = {t["name"] for t in self.eq.tools()}
@@ -34,12 +34,12 @@ class ListRoleIdsEquipmentCardTests(unittest.TestCase):
     def test_list_role_ids_card_ok(self) -> None:
         out = self.eq.call(
             "list_role_ids_card",
-            {"roles": [self.diag, self.diag_b]},
+            {"roles": [self.diag, self.crm]},
         )
         self.assertTrue(out.get("ok"), out)
         ids = out["role_ids"]
         self.assertIn(self.diag["role_id"], ids)
-        self.assertIn(self.diag_b["role_id"], ids)
+        self.assertIn(self.crm["role_id"], ids)
         self.assertEqual(len(ids), 2)
 
     def test_duplicate_role_id_refuses(self) -> None:

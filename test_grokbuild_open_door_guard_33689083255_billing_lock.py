@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -20,22 +21,22 @@ READBACK = ROOT / "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md"
 
 KEEP = {
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "6a512428",
+    "test_open_door_guard.py": "2e2cc164",
     ".github/workflows/open-door-guard.yml": "ac6c46c4",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
-    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "1b9a943d",
+    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "cce1aef4",
     "p/grokbuild-open-door-guard-33689243568-billing-lock-20260902-01.md": "4ab677c5",
-    "test_grokbuild_open_door_guard_33689243568_billing_lock.py": "8f03e8e6",
+    "test_grokbuild_open_door_guard_33689243568_billing_lock.py": "b112ea4c",
     "p/grokbuild-open-door-guard-33689088100-billing-lock-20260902-01.md": "2d8ebb0c",
-    "test_grokbuild_open_door_guard_33689088100_billing_lock.py": "19d2b854",
+    "test_grokbuild_open_door_guard_33689088100_billing_lock.py": "c614bce9",
     "p/grokbuild-open-door-guard-33689357297-billing-lock-20260902-01.md": "261c9cf6",
-    "test_grokbuild_open_door_guard_33689357297_billing_lock.py": "926b5851",
+    "test_grokbuild_open_door_guard_33689357297_billing_lock.py": "8f54ce2b",
     "p/grokbuild-open-door-guard-33689281182-billing-lock-20260902-01.md": "41bcb27d",
-    "test_grokbuild_open_door_guard_33689281182_billing_lock.py": "cfb0566f",
+    "test_grokbuild_open_door_guard_33689281182_billing_lock.py": "ece4585a",
     "p/grokbuild-occupancy-landed-work-keep-lift-20260902-01.md": "67a8a527",
-    "test_grokbuild_occupancy_landed_work_keep_lift.py": "6c960797",
+    "test_grokbuild_occupancy_landed_work_keep_lift.py": "be959782",
     "p/grokbuild-occupancy-landed-work-keep-lift-readback-20260902-01.md": "892bc4c0",
-    "test_grokbuild_occupancy_landed_work_keep_lift_readback.py": "a755f1ca",
+    "test_grokbuild_occupancy_landed_work_keep_lift_readback.py": "4ab88f0d",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
     "host/stealable_lanes.py": "524275ce",
@@ -60,7 +61,7 @@ class TestGrokbuildOpenDoorGuard33689083255BillingLock(unittest.TestCase):
 
     def test_prior_33689281182_leftover_tests_still_pass(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_grokbuild_open_door_guard_33689281182_billing_lock"],
+            [sys.executable, "-m", "unittest", "test_grokbuild_open_door_guard_33689281182_billing_lock"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -71,7 +72,7 @@ class TestGrokbuildOpenDoorGuard33689083255BillingLock(unittest.TestCase):
 
     def test_local_failed_step_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", "test_open_door_guard.py"],
+            [sys.executable, "test_open_door_guard.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -92,7 +93,7 @@ class TestGrokbuildOpenDoorGuard33689083255BillingLock(unittest.TestCase):
         parent = "f078829d8a45fefe9d501fed55bfe330056f1335"
         fail_sha = "de52301ba37a900f184bc790c97a336832409091"
         diff = subprocess.run(
-            ["python3", "open_door_guard.py", "--diff", parent, fail_sha],
+            [sys.executable, "open_door_guard.py", "--diff", parent, fail_sha],
             cwd=ROOT,
             text=True,
             capture_output=True,

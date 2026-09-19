@@ -1,31 +1,31 @@
 #!/usr/bin/env python3
-"""Hermetic pin: opaque case receipt rows preserve opaque G2 case identifiers."""
+"""Hermetic pin: opaque seats receipt row preserves opaque G2 case identifiers."""
 
 from __future__ import annotations
 
-import json
 import unittest
-from pathlib import Path
 
 from integrations.grokbot_control.paid_case import (
     receipt_from_g2_submit,
     receipt_row_from_case,
 )
 
-ROOT = Path(__file__).resolve().parent
-OFFER_ID = "dealer-service-lead-rescue"
 
-
-def _case(case_ref: str, client_reference_id: str | None = None) -> dict:
-    case = {"offer_id": OFFER_ID, "case_ref": case_ref, "sku": OFFER_ID}
-    if client_reference_id is not None:
-        case["client_reference_id"] = client_reference_id
-    return case
+def _case(case_ref: str, **extra):
+    return {
+        "offer_id": "ho-issue-to-pr",
+        "case_ref": case_ref,
+        "sku": "ho-issue-to-pr",
+        **extra,
+    }
 
 
 class TestPaidCaseReceiptSurface(unittest.TestCase):
     def test_receipt_row_from_case_round_trip(self):
-        case = _case("opaque-case-7", client_reference_id="afa29_x_a_v1")
+        case = _case(
+            "opaque-case-7",
+            client_reference_id="cref-case-7",
+        )
         row = receipt_row_from_case(
             case,
             g2_run_id="run_abc",
@@ -33,10 +33,10 @@ class TestPaidCaseReceiptSurface(unittest.TestCase):
             payment_observed_at="2026-09-05T22:00:00Z",
             state="PAYMENT_OBSERVED_STANDBY_INTAKE",
         )
-        self.assertEqual(row["offer_id"], OFFER_ID)
+        self.assertEqual(row["offer_id"], "ho-issue-to-pr")
         self.assertEqual(row["case_ref"], "opaque-case-7")
-        self.assertEqual(row["sku"], OFFER_ID)
-        self.assertEqual(row["client_reference_id"], "afa29_x_a_v1")
+        self.assertEqual(row["sku"], "ho-issue-to-pr")
+        self.assertEqual(row["client_reference_id"], "cref-case-7")
         self.assertEqual(row["g2_run_id"], "run_abc")
         self.assertEqual(row["g2_session_id"], "sess_xyz")
         self.assertEqual(row["payment_observed_at"], "2026-09-05T22:00:00Z")
@@ -70,7 +70,10 @@ class TestPaidCaseReceiptSurface(unittest.TestCase):
             receipt_row_from_case(case, g2_run_id="")
 
     def test_receipt_from_g2_submit(self):
-        case = _case("opaque-from-submit", client_reference_id="afa29_x_a_v1")
+        case = _case(
+            "opaque-from-submit",
+            client_reference_id="cref-from-submit",
+        )
         row = receipt_from_g2_submit(
             case,
             {"run_id": "run_from_submit", "session_id": "sess_from_submit"},

@@ -14,8 +14,8 @@ class HuskHostReadmeLiveCashTest(unittest.TestCase):
     def test_host_readme_live_cash(self) -> None:
         text = HOST.read_text(encoding="utf-8")
         self.assertIn("## Live cash", text)
-        self.assertIn("Autopsy", text)
-        self.assertIn("$29", text)
+        self.assertNotIn("Autopsy", text)
+        self.assertNotIn("$29", text)
         for m in PRODUCT:
             self.assertIn(m, text)
         self.assertNotIn("buy.stripe.com", text)

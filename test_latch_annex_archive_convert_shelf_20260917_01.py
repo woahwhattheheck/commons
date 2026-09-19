@@ -137,6 +137,7 @@ class TestLatchAnnexArchiveConvertShelf2026091701(unittest.TestCase):
             for html, name in ((annex, "annex.html"), (archive, "archive.html")):
                 with self.subTest(rebake=name):
                     self.assertEqual(live_buy_urls(html), ALLOWED_LIVE_BUY_URLS, name)
+                    self.assertNotIn("Buy Autopsy $29", html)
                     self.assertIn("Buy one White Box hour $250", html)
                     self.assertIn('class="cta"', html)
                     gen_cash = html.split('id="live-cash"', 1)[1]
@@ -158,7 +159,7 @@ class TestLatchAnnexArchiveConvertShelf2026091701(unittest.TestCase):
         for name in (
             "annex.html",
             "archive.html",
-            "commercial.html",
+                    "commercial.html",
             "diagnostic.html",
         ):
             self.assertTrue((ROOT / name).is_file(), name)

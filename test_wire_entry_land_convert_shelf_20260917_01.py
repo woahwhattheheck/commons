@@ -35,7 +35,6 @@ BUY_HOST_PATH = re.compile(
     re.IGNORECASE,
 )
 BUY_LABELS = (
-    "Buy White Box $250",
     "Buy one White Box hour $250",
 )
 LIVE_CASH_DOORS = (
@@ -105,6 +104,7 @@ class TestWireEntryLandConvertShelf2026091701(unittest.TestCase):
         source = RENDERER.read_text(encoding="utf-8")
         self.assertIn("ENTRY_CONVERT_SHELF_HTML", source)
         self.assertIn('id="buy-now-live-checkout"', source)
+        self.assertNotIn("Buy Autopsy $29", source)
         self.assertIn("Buy one White Box hour $250", source)
         self.assertIn("wire-entry-land-convert-shelf-20260917-01", source)
         found = live_buy_urls(hub_pages.ENTRY_CONVERT_SHELF_HTML)
@@ -131,6 +131,7 @@ class TestWireEntryLandConvertShelf2026091701(unittest.TestCase):
             hub_pages.rebuild_entry(mod, [])
             rendered = Path(td, "entry.html").read_text(encoding="utf-8")
             self.assertEqual(live_buy_urls(rendered), ALLOWED_LIVE_BUY_URLS)
+            self.assertNotIn("Buy Autopsy $29", rendered)
             self.assertIn("Buy one White Box hour $250", rendered)
             self.assertIn('class="cta"', rendered)
             gen_cash = rendered.split('id="live-cash"', 1)[1]

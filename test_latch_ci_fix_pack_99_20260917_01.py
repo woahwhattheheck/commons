@@ -18,6 +18,8 @@ CONTRACT = ROOT / "revenue" / "ci_fix_pack_99" / "contract.json"
 ENGINE = ROOT / "host" / "ci_fix_pack.py"
 CITE = "latch-ci-fix-pack-99-20260917-01"
 AUTOPSY = "4gM9AS3Ot8bfeOZ78S43S0g"
+BUY_URL = "https://buy.stripe.com/6oU9ASfxb6374alfFo43S0A"
+PLINK = "plink_1UHCnTATH4EDE7XDKQlMOnLh"
 REQUIRED = (
     "README.md",
     "offer.md",
@@ -59,26 +61,32 @@ class TestLatchCiFixPack99(unittest.TestCase):
         self.assertIn("NOT_MINTED", text)
         self.assertNotIn(AUTOPSY, text)
 
-    def test_checkout_not_minted_stripe_ask(self) -> None:
+    def test_checkout_live_existing_payment_link(self) -> None:
         checkout = (PACK / "checkout.md").read_text(encoding="utf-8")
         sku = SKU.read_text(encoding="utf-8")
-        self.assertIn("NOT_MINTED", checkout)
-        self.assertIn("Stripe ask if no PL", checkout)
+        self.assertIn("LIVE_PAYMENT_LINK", checkout)
+        self.assertIn(BUY_URL, checkout)
+        self.assertIn(PLINK, checkout)
         self.assertIn("tokenjunkielabs@gmail.com", checkout)
-        self.assertNotIn("buy.stripe.com/", checkout)
         self.assertNotIn(AUTOPSY, checkout)
-        self.assertIn("NOT_MINTED", sku)
-        self.assertNotIn("buy.stripe.com/", sku)
+        self.assertNotIn("NOT_MINTED", checkout)
+        self.assertIn(BUY_URL, sku)
+        self.assertIn(PLINK, sku)
+        self.assertNotIn("NOT_MINTED", sku)
         contract = json.loads(CONTRACT.read_text(encoding="utf-8"))
         self.assertEqual(contract["commercial"]["pack_usd"], 99)
-        self.assertEqual(contract["commercial"]["checkout"], "NOT_MINTED")
-        self.assertTrue(contract["commercial"]["stripe_ask_if_no_pl"])
+        self.assertEqual(contract["commercial"]["checkout"], BUY_URL)
+        self.assertEqual(contract["commercial"]["plink"], PLINK)
+        self.assertFalse(contract["commercial"]["stripe_ask_if_no_pl"])
         self.assertEqual(contract["commercial"]["cash_usd"], 0)
         self.assertFalse(contract["requires_login"])
 
     def test_door_is_sellable_without_convert_shelf(self) -> None:
         door = (PACK / "door.html").read_text(encoding="utf-8")
-        self.assertIn("NOT_MINTED", door)
+        self.assertIn(BUY_URL, door)
+        self.assertIn(PLINK, door)
+        self.assertIn('id="checkout"', door)
+        self.assertIn("Buy $99 CI-red fix pack", door)
         self.assertIn("tokenjunkielabs@gmail.com", door)
         self.assertIn("one business day", door)
         self.assertIn("Public repository URL", door)
@@ -86,10 +94,12 @@ class TestLatchCiFixPack99(unittest.TestCase):
         self.assertIn("Red check name", door)
         self.assertIn("SCRAPPED", door)
         self.assertIn(CITE, door)
-        self.assertIn("id=\"titanmcp-pad-pointer\"", door)
-        self.assertNotIn("buy.stripe.com", door)
+        self.assertIn('id="titanmcp-pad-pointer"', door)
+        self.assertNotIn("NOT_MINTED", door)
         self.assertNotIn(AUTOPSY, door)
-        self.assertNotIn("id=\"buy-now-live-checkout\"", door)
+        self.assertNotIn('id="buy-now-live-checkout"', door)
+        self.assertEqual(door.count("buy.stripe.com/"), 2)
+        self.assertIn("6oU9ASfxb6374alfFo43S0A", door)
 
     def test_templates_name_the_deliverable(self) -> None:
         blob = "\n".join(
@@ -124,7 +134,9 @@ class TestLatchCiFixPack99(unittest.TestCase):
         receipt = mod.run_canary(ROOT)
         self.assertEqual(receipt["cite"], CITE)
         self.assertEqual(receipt["price_usd"], 99)
-        self.assertEqual(receipt["checkout"], "NOT_MINTED")
+        self.assertEqual(receipt["checkout"], "LIVE_PAYMENT_LINK")
+        self.assertEqual(receipt["checkout_url"], BUY_URL)
+        self.assertEqual(receipt["plink"], PLINK)
         self.assertEqual(receipt["cash_usd"], 0)
         self.assertIsNone(receipt["buyer"])
         self.assertFalse(receipt["bryce_as_buyer"])
@@ -146,6 +158,11 @@ class TestLatchCiFixPack99(unittest.TestCase):
         cli = json.loads(proc.stdout)
         self.assertTrue(cli["green"]["green"])
         self.assertFalse(cli["red"]["green"])
+        manifest = mod.manifest(ROOT)
+        self.assertTrue(manifest["door_has_live_buy"])
+        self.assertTrue(manifest["checkout_live"])
+        self.assertFalse(manifest["door_invents_stripe"])
+        self.assertFalse(manifest["autopsy_plink_present"])
 
 
 if __name__ == "__main__":

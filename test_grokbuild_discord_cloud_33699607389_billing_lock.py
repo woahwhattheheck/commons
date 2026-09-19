@@ -9,6 +9,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -23,17 +24,17 @@ WORKFLOW = ROOT / ".github/workflows/commons-discord-cloud.yml"
 KEEP = {
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grok-build-discord-cloud-billing-lock-readback-20260902-01.md": "e14e443b",
-    "test_grok_build_discord_cloud_billing_lock_readback.py": "2e1620c4",
+    "test_grok_build_discord_cloud_billing_lock_readback.py": "dc14be14",
     "p/grok-build-discord-cloud-33689083145-billing-lock-20260902-01.md": "6e34f897",
     "p/grok-build-discord-cloud-33689281288-billing-lock-20260902-01.md": "89fdbcf0",
     "p/grok-build-discord-cloud-33694219370-billing-lock-20260902-01.md": "9dcc171b",
-    "test_grokbuild_discord_cloud_33694219370_billing_lock.py": "e6f4be64",
+    "test_grokbuild_discord_cloud_33694219370_billing_lock.py": "2c2d165f",
     "p/grok-build-discord-cloud-33699286743-billing-lock-20260902-01.md": "e8d308ed",
-    "test_grokbuild_discord_cloud_33699286743_billing_lock.py": "0c678c3f",
+    "test_grokbuild_discord_cloud_33699286743_billing_lock.py": "be8205fd",
     "p/grok-discord-cloud-dark-20260831-01.md": "cdbad10b",
     "p/grokbuild-pr8525-verify-20260903-01.md": "3e36c93c",
     "p/cursor-wire-catalog-marketplace-latch-readback-rematch-20260903-01.md": "f23e1db8",
-    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "1d586720",
+    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "649265c5",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
     "p/grokbuild-open-door-guard-33699286785-billing-lock-20260902-01.md": "d22e0707",
     "p/grok-build-job-watchdog-33699286811-billing-lock-20260903-01.md": "81092ec2",
@@ -128,7 +129,7 @@ class TestGrokbuildDiscordCloud33699607389BillingLock(unittest.TestCase):
     def test_discord_battery_and_format_still_pass(self) -> None:
         proc = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "-m",
                 "unittest",
                 "test_commons_discord.py",
@@ -145,7 +146,7 @@ class TestGrokbuildDiscordCloud33699607389BillingLock(unittest.TestCase):
         self.assertIn("Ran 34 tests", proc.stderr)
         fmt = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "commons_discord.py",
                 "to-discord",
                 "format",
@@ -161,7 +162,7 @@ class TestGrokbuildDiscordCloud33699607389BillingLock(unittest.TestCase):
 
     def test_adjacent_item6_leftover_tests_still_pass(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_merge_on_pr.py", "test_path_manifest.py"],
+            [sys.executable, "-m", "unittest", "test_merge_on_pr.py", "test_path_manifest.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -202,7 +203,7 @@ class TestGrokbuildDiscordCloud33699607389BillingLock(unittest.TestCase):
         result = fix_first.validate(packet)
         self.assertEqual(result["state"], "EXTERNAL_BLOCKER")
         proc = subprocess.run(
-            ["python3", "fix_first.py", "--json", json.dumps(packet)],
+            [sys.executable, "fix_first.py", "--json", json.dumps(packet)],
             cwd=ROOT,
             text=True,
             capture_output=True,

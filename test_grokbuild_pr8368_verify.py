@@ -8,6 +8,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 HELPER = ROOT / "host/harborline_pack_market_render_ship.py"
@@ -50,7 +51,7 @@ class TestGrokbuildPr8368Verify(unittest.TestCase):
 
     def test_ship_helper_still_ships_standalone_store(self) -> None:
         proc = subprocess.run(
-            ["python3", str(HELPER), "--json"],
+            [sys.executable, str(HELPER), "--json"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -65,7 +66,7 @@ class TestGrokbuildPr8368Verify(unittest.TestCase):
         self.assertEqual(payload["sent"], 0)
         self.assertEqual(payload["checkout"], "FINDER-FAILED")
         leftover = subprocess.run(
-            ["python3", str(LEFTOVER_HELPER), "--json"],
+            [sys.executable, str(LEFTOVER_HELPER), "--json"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -75,7 +76,7 @@ class TestGrokbuildPr8368Verify(unittest.TestCase):
         leftover_payload = json.loads(leftover.stdout)
         self.assertEqual(leftover_payload["verdict"], "RENDER")
         refused = subprocess.run(
-            ["python3", str(HELPER), "--send"],
+            [sys.executable, str(HELPER), "--send"],
             cwd=ROOT,
             text=True,
             capture_output=True,

@@ -220,6 +220,7 @@ class DistributionLayerTests(unittest.TestCase):
         self.assertEqual(self.mod.classify_offer(self.listings["sku-tip-20260826"]), "micro_sku")
         self.assertEqual(self.mod.classify_offer(self.listings["sku-muhlnickel-generated-token-capacity"]), "micro_sku")
         self.assertEqual(self.mod.classify_offer(self.listings["ho-issue-to-pr"]), "bounded_service")
+        self.assertEqual(self.mod.classify_offer(self.listings["dealer-service-lead-rescue"]), "bounded_service")
         self.assertEqual(self.mod.classify_offer(self.listings["sku-muhlnickel-attested-inference"]), "bounded_service")
         self.assertEqual(self.mod.classify_offer(self.listings["gguf-diagnostic-10d-12k"]), "high_ticket_service")
         self.assertEqual(self.mod.classify_offer(self.listings["sku-whitebox-hour-20260826"]), "expertise_hour")

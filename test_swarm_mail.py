@@ -91,6 +91,12 @@ class SwarmMailManifestTests(unittest.TestCase):
             self.assertEqual(mail.route_sku(sku)["inbox_id"], "swarm-sales")
         codex = next(item for item in manifest["inboxes"] if item["inbox_id"] == "codex-sales")
         self.assertNotIn("agent-failure-autopsy-29", codex["sku_ids"])
+        self.assertEqual(
+            mail.route_sku("gguf-diagnostic-10d-12k")["inbox_id"],
+            "codex-sales",
+        )
+        with self.assertRaises(mail.SwarmMailError):
+            mail.route_sku("agent-failure-autopsy-29")
         for sku in routed:
             route = mail.route_sku(sku)
             self.assertEqual(route["sku_id"], sku)
@@ -254,6 +260,18 @@ class SwarmMailRuntimeTests(unittest.TestCase):
             )
 
     def executable(self, name: str, source: str = "#!/bin/sh\ncat >/dev/null\n") -> Path:
+        if os.name == "nt":
+            path = self.root / f"{name}.cmd"
+            if source.startswith("#!") and "python" in source.split("\n", 1)[0]:
+                script = self.root / f"{name}.py"
+                script.write_text(source.split("\n", 1)[1], encoding="utf-8")
+                path.write_text(
+                    f'@echo off\r\n"{sys.executable}" "{script}" %*\r\n',
+                    encoding="utf-8",
+                )
+            else:
+                path.write_text("@echo off\r\nmore >NUL\r\nexit /b 0\r\n", encoding="utf-8")
+            return path.resolve()
         path = self.root / name
         path.write_text(source, encoding="utf-8")
         path.chmod(0o700)
@@ -312,7 +330,8 @@ class SwarmMailRuntimeTests(unittest.TestCase):
             mail.open_db(ROOT / "private-mail.sqlite3")
 
     def test_database_permissions_and_redacted_status(self) -> None:
-        self.assertEqual(oct(os.stat(self.db_path).st_mode & 0o777), "0o600")
+        if os.name != "nt":
+            self.assertEqual(oct(os.stat(self.db_path).st_mode & 0o777), "0o600")
         status = mail.redacted_status(self.connection)
         self.assertEqual(status["counts"]["measured_inboxes"], 0)
         self.assertNotIn("@", json.dumps(status))

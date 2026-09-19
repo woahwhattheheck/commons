@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grokbuild-slack-service-tags-33717615004-billing-lock-20260903-01.md"
@@ -25,9 +26,9 @@ KEEP = {
     "p/cursor-slack-service-tags-20260902-01.md": "4e8382f1",
     "p/cursor-slack-service-tags-peer-pointer-20260902-01.md": "6b13ba9a",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "5d77b1cd",
+    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "347eb396",
     "p/grokbuild-main-range-verify-33717084528-billing-lock-20260903-01.md": "2b0fd9c9",
-    "test_grokbuild_main_range_verify_33717084528_billing_lock.py": "dc173cae",
+    "test_grokbuild_main_range_verify_33717084528_billing_lock.py": "76349d08",
     "p/grokbuild-pr8546-verify-20260903-01.md": "4e4d8003",
     "p/grok-build-job-watchdog-33699286811-billing-lock-20260903-01.md": "81092ec2",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
@@ -108,7 +109,7 @@ class TestGrokbuildSlackServiceTags33717615004BillingLock(unittest.TestCase):
     def test_local_tag_contract_still_passes(self) -> None:
         tests = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "-m",
                 "unittest",
                 "test_slack_service_tag_worker.py",
@@ -122,7 +123,7 @@ class TestGrokbuildSlackServiceTags33717615004BillingLock(unittest.TestCase):
         self.assertEqual(tests.returncode, 0, msg=tests.stdout + tests.stderr)
         self.assertIn("Ran 21 tests", tests.stderr)
         poll = subprocess.run(
-            ["python3", "host/slack_service_tag_worker.py", "--poll"],
+            [sys.executable, "host/slack_service_tag_worker.py", "--poll"],
             cwd=ROOT,
             text=True,
             capture_output=True,

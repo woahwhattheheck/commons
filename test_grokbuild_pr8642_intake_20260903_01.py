@@ -6,6 +6,7 @@ from __future__ import annotations
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 import open_door_guard as guard
 
@@ -18,11 +19,11 @@ PRIOR = ROOT / "p/grokbuild-open-door-guard-33718116356-billing-lock-20260903-01
 
 KEEP = {
     "p/grokbuild-open-door-guard-33723631068-billing-lock-20260903-01.md": "ba9914fd",
-    "test_grokbuild_open_door_guard_33723631068_billing_lock.py": "c6541ffb",
+    "test_grokbuild_open_door_guard_33723631068_billing_lock.py": "84203928",
     "p/grok-build-repo-pulse-billing-lock-20260903-01.md": "b6e5953c",
     "p/grokbuild-open-door-guard-33718116356-billing-lock-20260903-01.md": "25781cf5",
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "6a512428",
+    "test_open_door_guard.py": "2e2cc164",
     ".github/workflows/open-door-guard.yml": "ac6c46c4",
 }
 
@@ -79,7 +80,7 @@ class TestGrokbuildPr8642Intake(unittest.TestCase):
     def test_original_leftover_unittest_still_green(self) -> None:
         proc = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "-m",
                 "unittest",
                 "test_grokbuild_open_door_guard_33723631068_billing_lock",

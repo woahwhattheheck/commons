@@ -42,6 +42,7 @@ assert(H.cleanPath("./recent.json?v=1") === "recent.json", "cleanPath strips ./ 
 assert(H.pagesUrl("recent.json") === "./recent.json", "pagesUrl is visit-stable");
 assert(H.pagesUrl("recent.json", true) === "./recent.json", "boolean true no longer mints Date.now()");
 assert(H.pagesUrl("recent.json", "15918d7cc") === "./recent.json?v=20260830a", "commit-stable token bust is allowed");
+assert(H.pagesUrl("recent.json", "20260830a") === "./recent.json?v=20260830a", "asset stamp token passes through");
 assert(H.fetchCacheMode("./recent.json") === "no-cache", "site assets revalidate");
 assert(H.fetchCacheMode("https://ntfy.sh/woahwhattheheck-commons-fresh/json?poll=1") === "no-store", "live ntfy stays no-store");
 assert(H.safePath("../secret") === "", "safePath refuses ..");

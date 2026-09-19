@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 ACK = ROOT / "p/cursor-pr7915-harborline-readbacks-ack-20260902-01.md"
@@ -16,11 +17,11 @@ KEEP = {
     "p/cursor-pr7915-closed-unmerged-readback-20260902-01.md": "2a7f31a4",
     "p/cursor-harborline-qualify-live-probe-readback-20260902-01.md": "c2532b3d",
     "host/pr7915_closed_unmerged.py": "9d56ea0e",
-    "test_harborline_qualify_live_probe_readback.py": "2cd2beac",
+    "test_harborline_qualify_live_probe_readback.py": "a6a09e0c",
     "host/harborline_qualify_live_probe.py": "2c1797b2",
-    "test_harborline_qualify_live_probe.py": "22aa4580",
+    "test_harborline_qualify_live_probe.py": "6fb584bd",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
-    "autogtm.html": "dec0ecbe",
+    "autogtm.html": "5c966110",
     "p/cursor-autogtm-door-live-probe-20260902-01.md": "c71c57a0",
     "p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md": "7a8987b5",
     "p/cursor-explee-qualify-clone-20260902-01.md": "aceb4aead",
@@ -68,7 +69,7 @@ class TestPr7915HarborlineReadbacksAck(unittest.TestCase):
     def test_reopen_merge_go_still_refused_sent_zero(self) -> None:
         for flag in ("--reopen", "--merge", "--go"):
             proc = subprocess.run(
-                ["python3", str(HELPER), flag],
+                [sys.executable, str(HELPER), flag],
                 cwd=ROOT,
                 text=True,
                 capture_output=True,

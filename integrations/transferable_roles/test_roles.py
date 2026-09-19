@@ -15,7 +15,6 @@ from roles import RoleError, RoleStore, SECRET_FIELD_NAMES
 import cli as roles_cli
 
 FIXTURE = Path(__file__).resolve().parent / "fixtures" / "synthetic_crm_followup_role.json"
-
 DIAGNOSTIC_FIXTURE = (
     Path(__file__).resolve().parent
     / "fixtures"
@@ -641,10 +640,54 @@ class TransferableRoleTests(unittest.TestCase):
             )
             self.assertEqual(g2["session_id"], "cli-import-sess")
 
+    def test_list_open_obligations_rows_then_advance_drops(self) -> None:
+        raw = json.loads(DIAGNOSTIC_FIXTURE.read_text(encoding="utf-8"))
+        role = self.store.create(raw)
+        rows = self.store.list_open_obligations()
+        self.assertEqual(len(rows), 5)
+        self.assertEqual(
+            [r["obligation_id"] for r in rows],
+            ["ob-deadline", "ob-diagnose", "ob-intake", "ob-settle", "ob-sla"],
+        )
+        for row in rows:
+            self.assertEqual(row["role_id"], role["role_id"])
+            self.assertEqual(row["purpose"], role["purpose"])
+            self.assertTrue(row.get("synthetic"))
+            self.assertIn("label", row)
+            self.assertIn("summary", row)
+            self.assertIn("next_action", row)
+        settle = next(r for r in rows if r["obligation_id"] == "ob-settle")
+        self.assertIn("evidence_pointer", settle)
 
+        self.store.advance_obligation(role["role_id"], "ob-intake", status="done")
+        after = self.store.list_open_obligations()
+        self.assertEqual(len(after), 4)
+        self.assertNotIn("ob-intake", [r["obligation_id"] for r in after])
 
-
-
+    def test_cli_open_obligations(self) -> None:
+        store_dir = self._tmp.name
+        with redirect_stdout(io.StringIO()):
+            rc = roles_cli.main(
+                [
+                    "--store",
+                    store_dir,
+                    "create",
+                    "--file",
+                    str(DIAGNOSTIC_FIXTURE),
+                ]
+            )
+        self.assertEqual(rc, 0)
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            rc = roles_cli.main(["--store", store_dir, "open-obligations"])
+        self.assertEqual(rc, 0)
+        out = json.loads(buf.getvalue())
+        self.assertIn("open_obligations", out)
+        self.assertEqual(len(out["open_obligations"]), 5)
+        self.assertEqual(
+            out["open_obligations"][0]["role_id"],
+            "role-synthetic-diagnostic-fulfillment-20260905",
+        )
 
     def test_diagnostic_fixture_create_open_obligations_and_live_checkouts(self) -> None:
         raw = json.loads(DIAGNOSTIC_FIXTURE.read_text(encoding="utf-8"))

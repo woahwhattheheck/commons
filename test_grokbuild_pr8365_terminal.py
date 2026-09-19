@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 HELPER = ROOT / "host/landed_work_feed.py"
@@ -33,7 +34,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,
@@ -53,15 +54,15 @@ class TestGrokbuildPr8365Terminal(unittest.TestCase):
     def test_leftover_tests_keep_lifted_after_337_remint(self) -> None:
         self.assertNotEqual(KEEP.get("test_landed_work_feed.py"), "1c35b970")
         self.assertNotEqual(KEEP.get("test_landed_work_feed_readback.py"), "cb58ab08")
-        self.assertTrue(git_blob("test_landed_work_feed.py").startswith("55edf425"))
+        self.assertTrue(git_blob("test_landed_work_feed.py").startswith("d05f42c3"))
         self.assertTrue(
-            git_blob("test_landed_work_feed_readback.py").startswith("ac39d344")
+            git_blob("test_landed_work_feed_readback.py").startswith("ece12c9a")
         )
         self.assertTrue(
             git_blob("p/grokbuild-pr8365-terminal-20260902-01.md").startswith("212208a2")
         )
         leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_landed_work_feed.py"],
+            [sys.executable, "-m", "unittest", "test_landed_work_feed.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -69,7 +70,7 @@ class TestGrokbuildPr8365Terminal(unittest.TestCase):
         )
         self.assertEqual(leftover.returncode, 0, msg=leftover.stdout + leftover.stderr)
         readback = subprocess.run(
-            ["python3", "-m", "unittest", "test_landed_work_feed_readback.py"],
+            [sys.executable, "-m", "unittest", "test_landed_work_feed_readback.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

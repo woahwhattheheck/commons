@@ -9,6 +9,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grokbuild-staleness-alarm-33767754124-billing-lock-20260903-01.md"
@@ -23,9 +24,9 @@ KEEP = {
     "open_door_guard.py": "877e148d",
     "p/solder-staleness-alarm-landed-20260823-01.md": "58e2ffec",
     "p/grokbuild-harness-wakeup-33741135628-billing-lock-20260903-01.md": "07fd32a5",
-    "test_grokbuild_harness_wakeup_33741135628_billing_lock.py": "5c3e23fa",
+    "test_grokbuild_harness_wakeup_33741135628_billing_lock.py": "3ab887e3",
     "p/grokbuild-slack-service-tags-33741230551-billing-lock-20260903-01.md": "1e1d7999",
-    "test_grokbuild_slack_service_tags_33741230551_billing_lock.py": "febc2d1a",
+    "test_grokbuild_slack_service_tags_33741230551_billing_lock.py": "935d816e",
     "p/grokbuild-resources-tab-freshness-33767588782-billing-lock-20260903-01.md": "eca6f65c",
     "test_grokbuild_resources_tab_freshness_33767588782_billing_lock.py": "e6860e19",
 }
@@ -100,7 +101,7 @@ class TestGrokbuildStalenessAlarm33767754124BillingLock(unittest.TestCase):
 
     def test_local_alarm_contract_still_passes(self) -> None:
         tests = subprocess.run(
-            ["python3", "test_staleness_alarm.py"],
+            [sys.executable, "test_staleness_alarm.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -110,7 +111,7 @@ class TestGrokbuildStalenessAlarm33767754124BillingLock(unittest.TestCase):
         self.assertIn("Ran 8 tests", tests.stderr)
         send = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "host_offload/staleness_alarm.py",
                 "--sync",
                 "sync.json",

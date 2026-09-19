@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-pack-is-ready-to-run-readback-20260902-01.md"
@@ -18,7 +19,7 @@ KEEP = {
     "p/cursor-pack-is-ready-to-run-20260902-01.md": "897b00ba",
     "host/pack_is_ready_to_run.py": "aab508cf",
     "ground/PACK_IS_READY_TO_RUN.json": "69a67ee1",
-    "test_pack_is_ready_to_run.py": "a9a8f3fc",
+    "test_pack_is_ready_to_run.py": "fdad3111",
     "pack-is-ready-to-run.html": "ca38f755",
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "host/pack_quality_dictates_tier.py": "74d36b0a",
@@ -26,13 +27,13 @@ KEEP = {
     "pack-quality-tier.html": "060a304a",
     "p/cursor-pack-quality-dictates-tier-readback-20260902-01.md": "aa5f6bbd",
     "p/cursor-what-a-pack-is-20260902-01.md": "a4e4dd89",
-    "host/what_a_pack_is.py": "3de395af",
+    "host/what_a_pack_is.py": "14df3b8d",
     "ground/WHAT_A_PACK_IS.json": "2f473414",
-    "test_what_a_pack_is.py": "1377aeff",
-    "what-a-pack-is.html": "bf421274",
+    "test_what_a_pack_is.py": "9e13acf0",
+    "what-a-pack-is.html": "963184e3",
     "p/cursor-commons-slack-full-body-chunk-20260902-01.md": "94770f41",
     "p/cursor-commons-slack-full-body-chunk-readback-20260902-01.md": "364ae3a4",
-    "host/commons_slack_full_body.py": "1a0b2d58",
+    "host/commons_slack_full_body.py": "7a6067d7",
     "host/slack_mirror.py": "72c0844e",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
@@ -44,7 +45,7 @@ KEEP = {
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "ground/BUSINESS_PACK_KEEP_SELL.json": "4e0e3eb0",
     "hub_pages.py": "673dab89",
-    "door.js": "c06cc197",
+    "door.js": "5899223c",
     "api/mcp.py": "393da756",
     "ground/OWNER_NOW.md": "39a0e0c3",
 }
@@ -58,7 +59,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,
@@ -117,7 +118,7 @@ class TestCursorPackIsReadyToRunReadback(unittest.TestCase):
 
     def test_leftover_unique_and_parallel_tests_still_pass(self) -> None:
         leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_pack_is_ready_to_run.py"],
+            [sys.executable, "-m", "unittest", "test_pack_is_ready_to_run.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -126,7 +127,7 @@ class TestCursorPackIsReadyToRunReadback(unittest.TestCase):
         self.assertEqual(leftover.returncode, 0, msg=leftover.stdout + leftover.stderr)
         self.assertIn("Ran 5 tests", leftover.stderr)
         quality = subprocess.run(
-            ["python3", "-m", "unittest", "test_pack_quality_dictates_tier.py"],
+            [sys.executable, "-m", "unittest", "test_pack_quality_dictates_tier.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -135,7 +136,7 @@ class TestCursorPackIsReadyToRunReadback(unittest.TestCase):
         self.assertEqual(quality.returncode, 0, msg=quality.stdout + quality.stderr)
         self.assertIn("Ran 5 tests", quality.stderr)
         parallel = subprocess.run(
-            ["python3", "-m", "unittest", "test_what_a_pack_is.py"],
+            [sys.executable, "-m", "unittest", "test_what_a_pack_is.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

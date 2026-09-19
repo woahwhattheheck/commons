@@ -7,6 +7,7 @@ import hashlib
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grokbuild-pr8415-path-manifest-33689243555-20260902-01.md"
@@ -15,9 +16,9 @@ ORIGINAL = ROOT / "p/grok-build-llms-txt-33687829181-billing-lock-20260902-01.md
 
 KEEP = {
     "p/grokbuild-pr8411-verify-20260902-01.md": "642dea64",
-    "test_grokbuild_pr8411_verify.py": "3b831583",
+    "test_grokbuild_pr8411_verify.py": "c1c37c21",
     "p/grok-build-llms-txt-33687829181-billing-lock-20260902-01.md": "3183564c",
-    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "ce7b327f",
+    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "a93e988e",
     "p/grok-build-llms-txt-billing-lock-20260902-01.md": "cf9c9f40",
     ".github/workflows/llms-txt.yml": "d2182a3d",
     "llms_txt.py": "b70aa03d",
@@ -48,7 +49,7 @@ class TestGrokbuildPr8415PathManifest(unittest.TestCase):
 
     def test_8411_leftover_tests_still_pass(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_grokbuild_pr8411_verify"],
+            [sys.executable, "-m", "unittest", "test_grokbuild_pr8411_verify"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -59,7 +60,7 @@ class TestGrokbuildPr8415PathManifest(unittest.TestCase):
 
     def test_path_manifest_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_path_manifest"],
+            [sys.executable, "-m", "unittest", "test_path_manifest"],
             cwd=ROOT,
             text=True,
             capture_output=True,

@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-big-huge-commerce-agents-readback-20260902-01.md"
@@ -16,20 +17,20 @@ HELPER = ROOT / "host/commerce_agents_same_loop.py"
 KEEP = {
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
     "host/commerce_agents_same_loop.py": "c90f6e50",
-    "test_commerce_agents_same_loop.py": "7a78f224",
+    "test_commerce_agents_same_loop.py": "c8c8d5e8",
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "host/commerce_agents.py": "8d2ddf29",
     "ground/COMMERCE_AGENTS.json": "ab6f56a8",
     "commerce-agents.html": "cbf2325d",
-    ".agents/skills/commerce-agents/SKILL.md": "1c0da1d4",
-    "test_commerce_agents.py": "6b5d5928",
+    ".agents/skills/commerce-agents/SKILL.md": "4cf66eed",
+    "test_commerce_agents.py": "f0ff008c",
     "p/cursor-claude-commerce-agents-readback-20260902-01.md": "0153924f",
     "p/cursor-harborline-commerce-compose-readback-20260902-01.md": "b33e2e24",
     "p/cursor-harborline-commerce-compose-20260902-01.md": "45b7d435",
     "host/harborline_commerce_compose.py": "75128e5d",
     "p/cursor-harborline-commerce-compose-keep-lift-20260902-01.md": "668dd5c4",
     "p/cursor-explee-skills-adopt-20260902-01.md": "20db155c",
-    "autogtm.html": "dec0ecbe",
+    "autogtm.html": "5c966110",
 }
 
 
@@ -41,7 +42,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,
@@ -91,7 +92,7 @@ class TestCursorBigHugeCommerceAgentsReadback(unittest.TestCase):
 
     def test_remainder_tests_still_pass(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_commerce_agents_same_loop.py"],
+            [sys.executable, "-m", "unittest", "test_commerce_agents_same_loop.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

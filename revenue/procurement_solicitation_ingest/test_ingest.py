@@ -250,6 +250,8 @@ class T(unittest.TestCase):
             self.assertIn("HOLD:", c.stderr)
 
     def test_fifo_compile_does_not_hang(self):
+        if not hasattr(os, "mkfifo"):
+            self.skipTest("platform has no mkfifo")
         with tempfile.TemporaryDirectory() as d:
             fifo = Path(d) / "pack.json"
             os.mkfifo(fifo, 0o600)

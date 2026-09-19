@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -19,14 +20,14 @@ GOAT = ROOT / "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md"
 
 KEEP = {
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "6a512428",
+    "test_open_door_guard.py": "2e2cc164",
     ".github/workflows/open-door-guard.yml": "ac6c46c4",
     "p/grokbuild-open-door-guard-33689347393-billing-lock-20260902-01.md": "c845c720",
-    "test_grokbuild_open_door_guard_33689347393_billing_lock.py": "c86d012e",
+    "test_grokbuild_open_door_guard_33689347393_billing_lock.py": "41ac2662",
     "p/grokbuild-open-door-guard-33689357297-billing-lock-20260902-01.md": "261c9cf6",
-    "test_grokbuild_open_door_guard_33689357297_billing_lock.py": "926b5851",
+    "test_grokbuild_open_door_guard_33689357297_billing_lock.py": "8f54ce2b",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
-    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "71008d70",
+    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "d9e4bb08",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/latch-hub-eyes-wake-habit-20260902-01.md": "dc83d42c",
 }
@@ -49,7 +50,7 @@ class TestGrokbuildOpenDoorGuard33694253452BillingLock(unittest.TestCase):
 
     def test_local_failed_step_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", "test_open_door_guard.py"],
+            [sys.executable, "test_open_door_guard.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -74,7 +75,7 @@ class TestGrokbuildOpenDoorGuard33694253452BillingLock(unittest.TestCase):
         ]
         self.assertEqual(guard.scan_added(receipt_added), [])
         failed = subprocess.run(
-            ["python3", "open_door_guard.py", "--diff", "5467954d", "1fb31f62"],
+            [sys.executable, "open_door_guard.py", "--diff", "5467954d", "1fb31f62"],
             cwd=ROOT,
             text=True,
             capture_output=True,

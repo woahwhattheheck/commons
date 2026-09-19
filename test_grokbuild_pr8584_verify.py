@@ -11,6 +11,7 @@ import unittest
 from pathlib import Path
 
 import wakeup
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grokbuild-pr8584-verify-20260903-01.md"
@@ -21,7 +22,7 @@ WORKFLOW = ROOT / ".github/workflows/harness-wakeup.yml"
 
 KEEP = {
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "5d77b1cd",
+    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "347eb396",
     "p/grokbuild-pr8546-verify-20260903-01.md": "4e4d8003",
     ".github/workflows/harness-wakeup.yml": "813043ab",
     "wakeup.py": "c284ff5e",
@@ -114,7 +115,7 @@ class TestGrokbuildPr8584Verify(unittest.TestCase):
 
     def test_leftover_unittest_still_green(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_grokbuild_harness_wakeup_33717474657_billing_lock.py"],
+            [sys.executable, "-m", "unittest", "test_grokbuild_harness_wakeup_33717474657_billing_lock.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

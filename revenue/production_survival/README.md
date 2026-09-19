@@ -19,8 +19,8 @@ for this entry SKU.
 
 There is **no dedicated Commons HTML sell page** for Same-Day Agent Survival
 Proof after ASTRA #8889 put Agent Failure Autopsy ($29) on
-[`agent-rescue.html`](../../agent-rescue.html). Do not send Survival Proof
-buyers to that page for a $2,500 Buy button.
+`agent-rescue.html` (retired with that SKU on 2026-09-17). Do not send
+Survival Proof buyers to that page for a $2,500 Buy button.
 
 Entry routes (see [`offer.json`](./offer.json) `public_entry_routes` and
 [`INTAKE.md`](./INTAKE.md)):

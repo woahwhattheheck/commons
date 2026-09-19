@@ -7,7 +7,10 @@ SETTLED_CASH evidence.
 from __future__ import annotations
 
 from datetime import datetime, timezone
-from decimal import Decimal, InvalidOperation
+from decimal import (
+    Context, Decimal, Inexact, InvalidOperation, MAX_EMAX, MIN_EMIN,
+    Overflow, ROUND_HALF_EVEN, Rounded, localcontext,
+)
 import hashlib
 import json
 import re
@@ -437,7 +440,6 @@ def _normalize_claim(value: Any, index: int, as_of_dt: datetime) -> dict[str, An
 
     if state is None:
         raise ContractError(f"{label}: missing financial lifecycle")
-
     if state == STATE_SETTLED:
         next_action = "DONE"
     elif state == STATE_CLOSED:
@@ -507,16 +509,40 @@ def _normalize_claim(value: Any, index: int, as_of_dt: datetime) -> dict[str, An
     result["claim_receipt_sha256"] = sha256_value(result)
     return result
 
+def _sum_exact(values: list[Decimal]) -> Decimal:
+    """Sum validated positive amounts without inheriting the caller's context.
+
+    At the finest input exponent, each coefficient uses at most ``width``
+    digits. Adding n nonnegative coefficients needs no more than
+    width + digits(n) digits, including every carry. Do not cap this at a
+    currency scale or convert through float/int strings: the input contract
+    allows large integers and up to eighteen fractional places.
+    """
+    if not values:
+        return Decimal(0)
+    parts = [value.as_tuple() for value in values]
+    exponent = min(part.exponent for part in parts)
+    width = max(len(part.digits) + part.exponent - exponent for part in parts)
+    context = Context(
+        prec=max(1, width + len(str(len(values)))),
+        rounding=ROUND_HALF_EVEN, Emin=MIN_EMIN, Emax=MAX_EMAX,
+        capitals=1, clamp=0, flags=[],
+        traps=[Inexact, Rounded, InvalidOperation, Overflow],
+    )
+    with localcontext(context):
+        return sum(values, Decimal(0))
+
+
 def _totals(claims: list[dict[str, Any]]) -> tuple[dict[str, Any], dict[str, str]]:
     instruments = sorted({claim["instrument"] for claim in claims})
     totals: dict[str, Any] = {}
     for instrument in instruments:
-        buckets = {
-            "accepted_outstanding": Decimal(0),
-            "accepted_unconfirmed": Decimal(0),
-            "asserted_hold": Decimal(0),
-            "available_not_settled": Decimal(0),
-            "disputed": Decimal(0),
+        buckets: dict[str, list[Decimal]] = {
+            "accepted_outstanding": [],
+            "accepted_unconfirmed": [],
+            "asserted_hold": [],
+            "available_not_settled": [],
+            "disputed": [],
         }
         for claim in claims:
             if claim["instrument"] != instrument:
@@ -524,25 +550,28 @@ def _totals(claims: list[dict[str, Any]]) -> tuple[dict[str, Any], dict[str, str
             amount = Decimal(claim["amount"])
             if claim["state"] == STATE_ACCEPTED:
                 if claim["entitlement_confirmed"]:
-                    buckets["accepted_outstanding"] += amount
+                    buckets["accepted_outstanding"].append(amount)
                 else:
-                    buckets["accepted_unconfirmed"] += amount
+                    buckets["accepted_unconfirmed"].append(amount)
             elif claim["state"] == STATE_ASSERTED:
-                buckets["asserted_hold"] += amount
+                buckets["asserted_hold"].append(amount)
             elif claim["state"] == STATE_AVAILABLE:
-                buckets["available_not_settled"] += amount
+                buckets["available_not_settled"].append(amount)
             elif claim["state"] == STATE_DISPUTED:
-                buckets["disputed"] += amount
-        totals[instrument] = {key: _decimal_text(value) for key, value in buckets.items()}
+                buckets["disputed"].append(amount)
+        totals[instrument] = {
+            key: _decimal_text(_sum_exact(values)) for key, values in buckets.items()
+        }
 
-    settled: dict[str, Decimal] = {}
+    settled: dict[str, list[Decimal]] = {}
     for claim in claims:
         item = claim["settlement"]
         if item is None:
             continue
-        settled.setdefault(item["currency"], Decimal(0))
-        settled[item["currency"]] += Decimal(item["amount"])
-    return totals, {key: _decimal_text(settled[key]) for key in sorted(settled)}
+        settled.setdefault(item["currency"], []).append(Decimal(item["amount"]))
+    return totals, {
+        key: _decimal_text(_sum_exact(settled[key])) for key in sorted(settled)
+    }
 
 def _markdown(claims: list[dict[str, Any]], as_of: str) -> str:
     action_order = {

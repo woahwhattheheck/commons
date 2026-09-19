@@ -11,6 +11,7 @@ import unittest
 import urllib.error
 import urllib.request
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 LEFTOVER = ROOT / "p/cursor-webmcp-contest-20260903-01.md"
@@ -62,7 +63,7 @@ class TestCursorWebmcpShip(unittest.TestCase):
 
     def test_leftover_door_count_stays_four(self) -> None:
         leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_webmcp_door.py"],
+            [sys.executable, "-m", "unittest", "test_webmcp_door.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -77,7 +78,7 @@ class TestCursorWebmcpShip(unittest.TestCase):
         self.assertIn("NAMED_VERCEL_NOT_FOUND", src)
         self.assertIn("https://commons-spark-mcp.vercel.app/mcp", src)
         proc = subprocess.run(
-            ["python3", str(CANARY)],
+            [sys.executable, str(CANARY)],
             cwd=ROOT,
             text=True,
             capture_output=True,

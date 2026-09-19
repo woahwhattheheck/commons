@@ -57,7 +57,6 @@ Step A in `PATH_TO_PROFIT.txt` (dry `muhl_fold_tick_add.py`) is the old fold-phy
 
 Verified product pages only — no invented Stripe links.
 
-- [$29 Autopsy checkout](../../agent-rescue.html)
 - [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../../referral-intake-completeness.html)
 - [$199 repair diagnostic](../../repair-booking-preflight.html)

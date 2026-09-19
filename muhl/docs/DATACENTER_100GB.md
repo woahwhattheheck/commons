@@ -154,7 +154,6 @@ Last replica @99,999,998,067: wire `11111111`×32 both senses, carry/pub `00`; A
 
 Verified product pages only — no invented Stripe links.
 
-- [$29 Autopsy checkout](../../agent-rescue.html)
 - [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../../referral-intake-completeness.html)
 - [$199 repair diagnostic](../../repair-booking-preflight.html)

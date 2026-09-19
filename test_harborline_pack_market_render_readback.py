@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-harborline-pack-market-render-readback-20260902-01.md"
@@ -27,7 +28,7 @@ KEEP = {
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "host/harborline_qualify_live_probe.py": "2c1797b2",
-    "autogtm.html": "dec0ecbe",
+    "autogtm.html": "5c966110",
 }
 
 
@@ -48,7 +49,7 @@ class TestHarborlinePackMarketRenderReadback(unittest.TestCase):
 
     def test_leftover_json_still_renders_without_commons_store(self) -> None:
         proc = subprocess.run(
-            ["python3", str(HELPER), "--json"],
+            [sys.executable, str(HELPER), "--json"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -67,7 +68,7 @@ class TestHarborlinePackMarketRenderReadback(unittest.TestCase):
 
     def test_leftover_send_refused(self) -> None:
         proc = subprocess.run(
-            ["python3", str(HELPER), "--send"],
+            [sys.executable, str(HELPER), "--send"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -81,7 +82,7 @@ class TestHarborlinePackMarketRenderReadback(unittest.TestCase):
 
     def test_leftover_tests_still_pass(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_harborline_pack_market_render.py"],
+            [sys.executable, "-m", "unittest", "test_harborline_pack_market_render.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

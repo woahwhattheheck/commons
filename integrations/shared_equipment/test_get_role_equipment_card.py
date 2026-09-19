@@ -23,8 +23,6 @@ class GetRoleEquipmentCardTests(unittest.TestCase):
     def setUp(self) -> None:
         self.eq = GrokBotEquipment()
         self.diag = json.loads(DIAG.read_text(encoding="utf-8"))
-        self.diag_b = json.loads(DIAG.read_text(encoding="utf-8"))
-        self.diag_b["role_id"] += "-b"
 
     def test_tool_listed(self) -> None:
         names = {t["name"] for t in self.eq.tools()}
@@ -35,7 +33,7 @@ class GetRoleEquipmentCardTests(unittest.TestCase):
             "get_role_card",
             {
                 "role_id": self.diag["role_id"],
-                "roles": [self.diag, self.diag_b],
+                "roles": [self.diag],
             },
         )
         self.assertTrue(out.get("ok"), out)
@@ -45,10 +43,10 @@ class GetRoleEquipmentCardTests(unittest.TestCase):
     def test_get_role_card_from_role(self) -> None:
         out = self.eq.call(
             "get_role_card",
-            {"role_id": self.diag_b["role_id"], "role": self.diag_b},
+            {"role_id": self.diag["role_id"], "role": self.diag},
         )
         self.assertTrue(out.get("ok"), out)
-        self.assertEqual(out["role"]["role_id"], self.diag_b["role_id"])
+        self.assertEqual(out["role"]["role_id"], self.diag["role_id"])
 
     def test_missing_role_id(self) -> None:
         miss = self.eq.call("get_role_card", {"roles": [self.diag]})

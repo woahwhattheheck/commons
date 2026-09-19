@@ -32,31 +32,31 @@ ANALYSIS: Public carrier, evidence, and RINGDELTA receipts may relate to softwar
 
 ### Open carrier and distribution roads (`carrier-infrastructure`, `SHIPPED_ON_MAIN`)
 
-- `carrier.js` sha256 `5df2a26164edec15288eaa213d8533b2d26f0e7062009dad088a0d1257b01ef4` (63703 bytes)
-- `distribution.html` sha256 `3ab84fcfa02a9e84ea88aaf4d5f66981756aed70a97546f9af4928d63cb09390` (8427 bytes)
-- `host/distribution.py` sha256 `2ae7a466c9c2ba64b59329e404aaa49c2c94973ec5d432d3d907a095ffd0ef92` (29867 bytes)
-- `ground/DISTRIBUTION.md` sha256 `47823a33df0952378ecf9747d7efa0606a45dd4a46182dc359ee6d9a394f37c3` (3212 bytes)
-- `p/grok-distribution-layer-20260828-01.md` sha256 `79687f5a59620f85af6befd1a4879b88bc7bc8c5ce3d0156bc8176d2486469ec` (1977 bytes)
+- `carrier.js` sha256 `8fa9978c292a0bb3ddd2401f4f9252c7fdee9ef7cca82cdccb45f9e75f9126b7` (65175 bytes)
+- `distribution.html` sha256 `788e3ca735530138f5e97c18f8701d240ae7719f525207049fc6af671b896a8b` (9988 bytes)
+- `host/distribution.py` sha256 `e85efed6c982918eba61d91fc63b58882a560337d9785a1eaac43945624f5763` (30605 bytes)
+- `ground/DISTRIBUTION.md` sha256 `7cdc98cfa3ed5fcee2bb7b1b4a74488e489bb42d8ba769efb9186ff27ab963f8` (3716 bytes)
+- `p/grok-distribution-layer-20260828-01.md` sha256 `fe6028dcb971e4efa0164ff869ec72081c22b2f5b9f147465704556cfda327af` (2017 bytes)
 
 ### Public evidence record and required-reading corpus (`evidence-record`, `SHIPPED_ON_MAIN`)
 
-- `evidence/README.md` sha256 `c23d0b482e84507e8212fac65320f6f529b7fd383d5cec3d17ed9fa12849503c` (2012 bytes)
-- `ground/03_EVIDENCE_ANNEX.md` sha256 `2b94d30faa059699e0faf0935da759035dc8035958d0cb888e474f19e07546c8` (4197 bytes)
+- `evidence/README.md` sha256 `5ec472f58475d3245b002bc3a693fce84058e4b127ec4a6c3793782034fc9b90` (2685 bytes)
+- `ground/03_EVIDENCE_ANNEX.md` sha256 `15bf2f8da1bba829240683e258c20e4cfaabad958d9595520ddad37c987ac43d` (4714 bytes)
 
 ### RINGDELTA Muhlnickel-native lossless organ (`ringdelta-muhlnickel`, `SHIPPED_ON_MAIN`)
 
-- `ground/RINGDELTA.md` sha256 `fd3805866e6bcd18728a4ae311a6643b11ef158ff16b935c5ff73247983e7441` (3016 bytes)
-- `ground/RINGDELTA.json` sha256 `276817af90a9a3b8f34a1e9d535d299e1a5a7a97e3af7d0f5f3a3df93ba2f910` (1560 bytes)
-- `ringdelta.html` sha256 `eccd00d9c5259d8fa992f9906c2b36b233cc0f41aa4227a7d488011773f73218` (3783 bytes)
-- `host/ringdelta.py` sha256 `4262d2cfa81e58026636c240e7878b804781354352cb229e3c14a963ebfbb600` (8543 bytes)
+- `ground/RINGDELTA.md` sha256 `e4a33566ea890168dc8c77ebe0d01863f04ce6387d516c8606821dae4942f8c1` (3539 bytes)
+- `ground/RINGDELTA.json` sha256 `dd4b64d49f2461aea37aa6698c60a62693047dab0cdc75f90c0ffb89ce45fad6` (1611 bytes)
+- `ringdelta.html` sha256 `f0c9703fe36637521566071eb407f23981042d743803c6d34306eb90e15c9def` (5356 bytes)
+- `host/ringdelta.py` sha256 `c6cb0f8d319fe85c5637b631bf283f17694b78b05f5af145dce4a90a73edf543` (8796 bytes)
 - `excerpts/20260828/ringdelta_xor8.mno` sha256 `46fb0cf0c46df7d2afa4957ebb01e66af7604cde3583753ab0f5dc1095f606fa` (300 bytes)
 
 ### Trust-cache and production-survival reliability (`reliability-trust`, `SHIPPED_ON_MAIN`)
 
-- `ground/TRUST.md` sha256 `9847b90c425233be58ce13c86c51a51fb863c16504d6ba8a6369bba561f170f2` (2962 bytes)
-- `trust.html` sha256 `bf43285ef200165671840ae4201fba2fd4aeb2ca445526da9502e1079f284af0` (7120 bytes)
-- `host/trust_cache.py` sha256 `586b9f4146a8c4f7445fe904e9080eeeef527e4548dee5585140530c10608363` (8035 bytes)
-- `p/bernays-production-survival-operating-system-20260826-01.md` sha256 `f66c06297b7400c68e2e95d17233e1f8a315999f37d6a95c8f75d9ab984eb34f` (1611 bytes)
+- `ground/TRUST.md` sha256 `c7531bd2ece7f30c09d243004e4cf7126325d2e82059bf42f296321867fa0e2c` (3460 bytes)
+- `trust.html` sha256 `975414b1c197a3689869141317a434720ec3fd860834e5901c3e0456eec0e56e` (8693 bytes)
+- `host/trust_cache.py` sha256 `b93cfd39eda6b683ea8d1357d124670e418d319d9f8df9b0e7d6faae0b653e62` (8279 bytes)
+- `p/bernays-production-survival-operating-system-20260826-01.md` sha256 `a5c463a406ac00c297a6859164c8f98cdb86d40d4fb6da6561dad57019100657` (1632 bytes)
 
 ## Stated funding (not expected value)
 

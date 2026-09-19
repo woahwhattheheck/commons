@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md"
@@ -17,15 +18,15 @@ KEEP = {
     "p/cursor-harborline-commerce-compose-keep-lift-20260902-01.md": "668dd5c4",
     "p/cursor-harborline-commerce-compose-20260902-01.md": "45b7d435",
     "host/harborline_commerce_compose.py": "75128e5d",
-    "test_harborline_commerce_compose.py": "20a6e0ff",
-    "test_harborline_commerce_compose_keep_lift.py": "8d788452",
+    "test_harborline_commerce_compose.py": "4d0997c4",
+    "test_harborline_commerce_compose_keep_lift.py": "75479447",
     "p/cursor-claude-commerce-agents-readback-20260902-01.md": "0153924f",
     "p/cursor-harborline-commerce-compose-readback-20260902-01.md": "b33e2e24",
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "host/commerce_agents.py": "8d2ddf29",
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
     "host/commerce_agents_same_loop.py": "c90f6e50",
-    "test_commerce_agents_same_loop.py": "7a78f224",
+    "test_commerce_agents_same_loop.py": "c8c8d5e8",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
 }
 
@@ -38,7 +39,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,
@@ -99,7 +100,7 @@ class TestCursorHarborlineCommerceComposeKeepLiftReadback(unittest.TestCase):
 
     def test_keep_lift_and_compose_tests_still_pass(self) -> None:
         lift = subprocess.run(
-            ["python3", "-m", "unittest", "test_harborline_commerce_compose_keep_lift.py"],
+            [sys.executable, "-m", "unittest", "test_harborline_commerce_compose_keep_lift.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -108,7 +109,7 @@ class TestCursorHarborlineCommerceComposeKeepLiftReadback(unittest.TestCase):
         self.assertEqual(lift.returncode, 0, msg=lift.stdout + lift.stderr)
         self.assertIn("Ran 5 tests", lift.stderr)
         leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_harborline_commerce_compose.py"],
+            [sys.executable, "-m", "unittest", "test_harborline_commerce_compose.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

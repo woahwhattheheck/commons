@@ -7,13 +7,14 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 HELPER = ROOT / "host/harborline_qualify_live_probe.py"
 
 KEEP = {
     "p/cursor-explee-qualify-clone-20260902-01.md": "aceb4aead",
-    "autogtm.html": "dec0ecbe",
+    "autogtm.html": "5c966110",
     "p/cursor-autogtm-door-live-probe-20260902-01.md": "c71c57a0",
     "p/cursor-explee-skills-adopt-20260902-01.md": "20db155c",
     "host/explee_autogtm_local.py": "5407261c",
@@ -22,7 +23,7 @@ KEEP = {
     "p/cursor-autogtm-peer-ack-lead-landed-readback-20260902-01.md": "d3be87c2",
     "p/cursor-autogtm-peer-readback-ack-20260902-01.md": "d9d1008e",
     "p/cursor-autogtm-explee-same-loop-20260902-01.md": "c437f4d6",
-    "packs/desk-website-service-20260902-01/door.html": "299b01fd",
+    "packs/desk-website-service-20260902-01/door.html": "d75b3f3b",
     "p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md": "7a8987b5",
 }
 
@@ -35,7 +36,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,

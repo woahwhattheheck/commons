@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -25,12 +26,12 @@ KEEP = {
     ".github/workflows/path-manifest.yml": "33685fa1",
     "architecture/path-manifest.json": "e5ecb24f",
     "p/grokbuild-pr8415-path-manifest-33689243555-20260902-01.md": "3c72cd09",
-    "test_grokbuild_pr8415_path_manifest_33689243555.py": "b8145e2a",
+    "test_grokbuild_pr8415_path_manifest_33689243555.py": "eeca0bf5",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
-    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "71008d70",
+    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "d9e4bb08",
     "p/grokbuild-pr8479-verify-20260902-01.md": "658530be",
     "p/grokbuild-open-door-guard-33694243180-billing-lock-20260902-01.md": "4d7812f8",
-    "test_grokbuild_open_door_guard_33694243180_billing_lock.py": "8337be41",
+    "test_grokbuild_open_door_guard_33694243180_billing_lock.py": "bca82049",
 }
 
 
@@ -51,7 +52,7 @@ class TestGrokbuildPathManifest33694214802BillingLock(unittest.TestCase):
 
     def test_local_failed_step_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_path_manifest"],
+            [sys.executable, "-m", "unittest", "test_path_manifest"],
             cwd=ROOT,
             text=True,
             capture_output=True,

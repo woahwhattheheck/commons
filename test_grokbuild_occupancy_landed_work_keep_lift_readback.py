@@ -6,6 +6,7 @@ from __future__ import annotations
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grokbuild-occupancy-landed-work-keep-lift-readback-20260902-01.md"
@@ -13,7 +14,7 @@ LEFTOVER = ROOT / "p/grokbuild-occupancy-landed-work-keep-lift-20260902-01.md"
 
 KEEP = {
     "p/grokbuild-occupancy-landed-work-keep-lift-20260902-01.md": "67a8a527",
-    "test_grokbuild_occupancy_landed_work_keep_lift.py": "6c960797",
+    "test_grokbuild_occupancy_landed_work_keep_lift.py": "be959782",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "host/stealable_lanes.py": "524275ce",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
@@ -30,14 +31,14 @@ KEEP = {
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "ground/OWNER_NOW.md": "39a0e0c3",
-    "test_stealable_lanes.py": "4b90b09b",
-    "test_stealable_lanes_occupancy.py": "c1b2d2c0",
-    "test_landed_work_feed.py": "55edf425",
-    "test_landed_work_feed_readback.py": "ac39d344",
+    "test_stealable_lanes.py": "5bd684a3",
+    "test_stealable_lanes_occupancy.py": "aa6531fd",
+    "test_landed_work_feed.py": "d05f42c3",
+    "test_landed_work_feed_readback.py": "ece12c9a",
     "hub_pages.py": "673dab89",
-    "door.js": "c06cc197",
+    "door.js": "5899223c",
     "api/mcp.py": "393da756",
-    "autogtm.html": "dec0ecbe",
+    "autogtm.html": "5c966110",
 }
 
 
@@ -59,7 +60,7 @@ class TestGrokbuildOccupancyLandedWorkKeepLiftReadback(unittest.TestCase):
     def test_leftover_unique_tests_still_pass(self) -> None:
         proc = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "-m",
                 "unittest",
                 "test_grokbuild_occupancy_landed_work_keep_lift.py",
@@ -74,7 +75,7 @@ class TestGrokbuildOccupancyLandedWorkKeepLiftReadback(unittest.TestCase):
 
     def test_occupancy_leftover_tests_still_pass(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_stealable_lanes_occupancy.py"],
+            [sys.executable, "-m", "unittest", "test_stealable_lanes_occupancy.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -85,7 +86,7 @@ class TestGrokbuildOccupancyLandedWorkKeepLiftReadback(unittest.TestCase):
 
     def test_leftover_send_unrecognized_or_refused(self) -> None:
         proc = subprocess.run(
-            ["python3", "host/stealable_lanes.py", "--send"],
+            [sys.executable, "host/stealable_lanes.py", "--send"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -95,7 +96,7 @@ class TestGrokbuildOccupancyLandedWorkKeepLiftReadback(unittest.TestCase):
         combined = (proc.stdout + proc.stderr).lower()
         self.assertIn("unrecognized arguments", combined)
         feed = subprocess.run(
-            ["python3", "host/landed_work_feed.py", "--send"],
+            [sys.executable, "host/landed_work_feed.py", "--send"],
             cwd=ROOT,
             text=True,
             capture_output=True,

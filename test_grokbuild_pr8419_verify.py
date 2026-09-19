@@ -7,6 +7,7 @@ import hashlib
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grokbuild-pr8419-verify-20260902-01.md"
@@ -15,7 +16,7 @@ ORIGINAL = ROOT / "p/cursor-merge-on-pr-20260902-01.md"
 
 KEEP = {
     "p/grokbuild-pr-collision-notice-33689085107-billing-lock-20260902-01.md": "594b5e71",
-    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "dd5a89d8",
+    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "db973ec1",
     "pr_collision_notice.py": "381d6b9b",
     "test_pr_collision_notice.py": "18a87c08",
     ".github/workflows/pr-collision-notice.yml": "deeeaf57",
@@ -48,7 +49,7 @@ class TestGrokbuildPr8419Verify(unittest.TestCase):
 
     def test_leftover_collision_notice_tests_still_pass(self) -> None:
         proc = subprocess.run(
-            ["python3", "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py"],
+            [sys.executable, "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

@@ -7,6 +7,7 @@ import hashlib
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grokbuild-pr8414-terminal-20260902-01.md"
@@ -15,12 +16,12 @@ ORIGINAL = ROOT / "p/cursor-merge-on-pr-readback-20260902-01.md"
 
 KEEP = {
     "p/grokbuild-pr8414-verify-20260902-01.md": "587cc1cf",
-    "test_grokbuild_pr8414_verify.py": "5d71175b",
+    "test_grokbuild_pr8414_verify.py": "e935691e",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
-    "test_cursor_merge_on_pr_readback.py": "a667c176",
+    "test_cursor_merge_on_pr_readback.py": "bfb611db",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
-    "host/merge_on_pr.py": "0270094d",
-    "test_merge_on_pr.py": "55e97cd4",
+    "host/merge_on_pr.py": "5062c29b",
+    "test_merge_on_pr.py": "c2b0212d",
     "host/sprint_integration.py": "1ba2002c",
 }
 
@@ -49,7 +50,7 @@ class TestGrokbuildPr8414Terminal(unittest.TestCase):
 
     def test_8420_leftover_tests_still_pass(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_grokbuild_pr8414_verify"],
+            [sys.executable, "-m", "unittest", "test_grokbuild_pr8414_verify"],
             cwd=ROOT,
             text=True,
             capture_output=True,

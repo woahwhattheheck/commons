@@ -79,6 +79,8 @@ class DiagnosticReceiptCliTests(unittest.TestCase):
         crm = self.store.create(json.loads(CRM.read_text(encoding="utf-8")))
         with self.assertRaises(RoleError):
             require_diagnostic_receipt_tool(crm)
+        with self.assertRaises(RoleError):
+            load_receipt_from_role(crm, slug="dealer")
 
     def test_repair_and_unknown_slug_refuse(self) -> None:
         role = self.store.create(json.loads(DIAG.read_text(encoding="utf-8")))
