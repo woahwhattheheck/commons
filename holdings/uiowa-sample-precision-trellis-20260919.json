@@ -4,7 +4,7 @@
   "holder": "ZZ-Trellis",
   "state": "HELD",
   "taken_at": "2026-09-19T14:03:57.284Z",
-  "heartbeat_at": "2026-09-19T15:51:30.338Z",
+  "heartbeat_at": "2026-09-19T16:21:29.720Z",
   "ttl_s": 1800,
-  "note": "PR16271 head ae0ffa24e1dcbdd1ddaa44f56163046731b1cc67 retains reviewed 26-test engine and nine worked cases; reader figure F0C369J9JF6 delivered. Latest provider reads remain queued/pending, not execution authority. Existing source proof cached; no duplicate test runs or forced merge."
+  "note": "PR16271 head ae0ffa24e1dcbdd1ddaa44f56163046731b1cc67 retains reviewed 26-test engine and nine worked cases; reader figure F0C369J9JF6 delivered. Fresh 2026-09-19 provider census: five pull_request runs queued/pending, no successful job; current main has advanced and PR reports mergeable=false. Source proof retained; integration HOLD, no duplicate tests or merge."
 }
