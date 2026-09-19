@@ -16,6 +16,8 @@ on:
       - ".github/workflows/commons-discord-cloud.yml"
       - "revenue/opportunities/unc_ap_ai_peoplesoft/**"
       - "test_unc_ap_ai_peoplesoft_batch.py"
+      - "competitions/emergent-builderfest-2026/onewriter/**"
+      - "test_onewriter_emergent_builderfest.py"
   pull_request:
     paths:
       - "**/*.py"
@@ -24,6 +26,8 @@ on:
       - ".github/workflows/commons-discord-cloud.yml"
       - "revenue/opportunities/unc_ap_ai_peoplesoft/**"
       - "test_unc_ap_ai_peoplesoft_batch.py"
+      - "competitions/emergent-builderfest-2026/onewriter/**"
+      - "test_onewriter_emergent_builderfest.py"
 
 permissions:
   contents: read
@@ -42,6 +46,9 @@ jobs:
         run: |
           python3 -m unittest -v test_source_parses.py test_discord_push_scope.py
           python3 -O -m unittest -v test_discord_push_scope.py
+
+      - name: Verify OneWriter retained contract
+        run: python3 -m unittest -v test_onewriter_emergent_builderfest.py
 
 
       - name: Verify bid-owner cockpit regression and retained I/O
