@@ -24,7 +24,7 @@ def main() -> int:
         html = (ROOT / "index.html").read_text()
         # Enterprise browser policy in some ChatGPT sandboxes blocks navigation entirely.
         # set_content + explicit checked-in assets still executes the exact UI bytes in Chromium.
-        html = html.replace('<link rel="stylesheet" href="/style.css">', '').replace('<script src="/app.js" defer></script>', '')
+        html = html.replace('<link rel="stylesheet" href="/style.css">', '').replace('<script src="/handoff.js" defer></script>', '').replace('<script src="/app.js" defer></script>', '')
 
         with sync_playwright() as p:
             browser = p.chromium.launch(
@@ -35,6 +35,7 @@ def main() -> int:
             page = browser.new_page(accept_downloads=True)
             page.set_content(html, wait_until="load")
             page.add_style_tag(content=(ROOT / "style.css").read_text())
+            page.add_script_tag(content=(ROOT / "handoff.js").read_text())
             page.add_script_tag(content=(ROOT / "app.js").read_text())
             page.get_by_role("button", name="Load synthetic UI demo").click()
             assert page.locator("#matrix").get_attribute("data-rendered-cells") == "12"
@@ -74,6 +75,9 @@ def main() -> int:
             page.locator("#search").fill("security")
             assert page.locator("#matrix").get_attribute("data-rendered-cells") == "3"
             page.locator("#search").fill("")
+            page.locator(".cell").first.click()
+            page.locator("#note").fill("Resume this analyst question after evidence review.")
+            page.locator("#disposition").select_option("NEEDS_EVIDENCE")
 
             with page.expect_download() as download_info:
                 page.get_by_role("button", name="Export draft handoff JSON").click()
@@ -92,9 +96,36 @@ def main() -> int:
                 "recognized_revenue": False,
             }
             assert len(handoff["cell_notes"]) == 12
+            page.get_by_role("button", name="Load synthetic UI demo").click()
+            page.locator(".cell").first.click()
+            assert page.locator("#note").input_value() == ""
+            page.locator("#handoffFile").set_input_files(str(path))
+            page.get_by_role("button", name="Restore saved draft notes").click()
+            page.get_by_text("Restored all 12 cell notes for the matching report. Compiler evidence is unchanged.").wait_for()
+            assert page.locator("#note").input_value() == "Resume this analyst question after evidence review."
+            assert page.locator("#disposition").input_value() == "NEEDS_EVIDENCE"
+
+            mismatch = dict(handoff, report_receipt_sha256="a" * 64)
+            mismatch_path = td_path / "mismatched-draft.json"
+            mismatch_path.write_text(json.dumps(mismatch))
+            page.locator("#handoffFile").set_input_files(str(mismatch_path))
+            page.get_by_role("button", name="Restore saved draft notes").click()
+            page.locator("#error").get_by_text("Draft handoff does not match", exact=False).wait_for()
+            assert page.locator("#note").input_value() == "Resume this analyst question after evidence review."
+
+            with page.expect_download() as markdown_download_info:
+                page.get_by_role("button", name="Export readable review Markdown").click()
+            markdown_download = markdown_download_info.value
+            markdown_path = td_path / markdown_download.suggested_filename
+            markdown_download.save_as(markdown_path)
+            markdown = markdown_path.read_text()
+            assert markdown.count("\n### ") == 12
+            assert handoff["report_receipt_sha256"] in markdown
+            assert "Resume this analyst question" in markdown
+            assert "Open follow-ups" in markdown
             browser.close()
 
-    print("CHROMIUM_OPERATOR_FLOW PASS: 12 cells, keyboard selection, note reset, filter, authority-safe export")
+    print("CHROMIUM_OPERATOR_FLOW PASS: 12 cells, selection, reset, filter, export/restore, mismatch preservation, readable handoff")
     return 0
 
 
