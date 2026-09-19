@@ -111,8 +111,8 @@ def permutation(adapter: Callable[[dict], Projection]) -> None:
 
 
 def original_spelling(adapter: Callable[[dict], Projection]) -> None:
-    data = {"records": [record("a:b", "source", "c", value=1),
-                        record("a", "source", "b:c", value=2),
+    data = {"records": [record("a:source:b", "source", "c", value=1),
+                        record("a", "source", "b:source:c", value=2),
                         record("literal", "source", "é", value=3),
                         record("literal", "source", "e\u0301", value=4),
                         record("literal", "source", "SRC", value=5),
