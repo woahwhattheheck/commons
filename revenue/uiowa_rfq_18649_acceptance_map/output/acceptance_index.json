@@ -1,0 +1,835 @@
+{
+  "_banner": "ARTIFACT CONFORMANCE EVIDENCE ONLY. The workshare this index refers to is PROPOSED / NOT ACCEPTED. Nothing here represents that the University of Iowa accepted any conclusion, that a subcontract was executed, or that any payment occurred. Supporting fixtures are synthetic and are not University findings.",
+  "criteria": [
+    {
+      "checks": [
+        {
+          "kind": "csv_covers_cells",
+          "label": "twelve-cell frame in the rehearsal matrix",
+          "observed": "all 12 cells present across 12 rows",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv"
+        },
+        {
+          "kind": "csv_covers_cells",
+          "label": "twelve-cell frame in the 091 coverage matrix",
+          "observed": "all 12 cells present across 12 rows",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_synthetic_collection/coverage_matrix.csv"
+        }
+      ],
+      "criterion_id": "AC-5.1.1",
+      "ordinal": 1,
+      "package": "Kickoff / evidence-plan acceptance",
+      "required_engagement_inputs": [],
+      "section": "5.1",
+      "status": "DEMONSTRABLE",
+      "status_basis": "2 passed, 0 failed, 0 unavailable",
+      "text": "the scope matrix explicitly covers all three identified system groups and all four technical dimensions"
+    },
+    {
+      "checks": [
+        {
+          "kind": "csv_columns_cover",
+          "label": "each evidence row names its source and its cell",
+          "observed": "4/4 concepts have a column (cell_area->area, cell_group->group, locator->locator, source->source_id)",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv"
+        }
+      ],
+      "criterion_id": "AC-5.1.2",
+      "ordinal": 2,
+      "package": "Kickoff / evidence-plan acceptance",
+      "required_engagement_inputs": [],
+      "section": "5.1",
+      "status": "DEMONSTRABLE",
+      "status_basis": "1 passed, 0 failed, 0 unavailable",
+      "text": "requested source classes are mapped to assessment cells rather than collected without purpose"
+    },
+    {
+      "checks": [
+        {
+          "kind": "csv_columns_cover",
+          "label": "rehearsal source register schema",
+          "observed": "4/6 concepts have a column (content_digest->content_sha256, evidence_reference->path, observation_currentness->captured_at, source->source_id); NO COLUMN FOR: authorization_or_provenance, custodian_or_owner",
+          "outcome": "FAIL",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/source_register.csv"
+        },
+        {
+          "kind": "csv_columns_cover",
+          "label": "workshare synthetic evidence register schema",
+          "observed": "4/6 concepts have a column (authorization_or_provenance->enumerator_authority, evidence_reference->source_ref, observation_currentness->captured_at, source->evidence_id); NO COLUMN FOR: content_digest, custodian_or_owner",
+          "outcome": "FAIL",
+          "target": "uiowa_rfq_18649_workshare/methodology/23-synthetic-evidence-register.csv"
+        }
+      ],
+      "criterion_id": "AC-5.1.3",
+      "ordinal": 3,
+      "package": "Kickoff / evidence-plan acceptance",
+      "required_engagement_inputs": [],
+      "section": "5.1",
+      "status": "NOT_DEMONSTRATED",
+      "status_basis": "0 passed, 2 failed, 0 unavailable",
+      "text": "the source-register schema can identify source, custodian/owner, evidence reference, authorization/provenance, observation/currentness, and content digest"
+    },
+    {
+      "checks": [
+        {
+          "kind": "csv_field_has_values",
+          "label": "unsupported cells carry an explicit state",
+          "observed": "observed ['CONFLICT', 'DEMONSTRATED_STRENGTH', 'MIXED', 'OBSERVED_GAP', 'PARTIAL', 'UNKNOWN']",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv"
+        },
+        {
+          "kind": "text_contains_all",
+          "label": "the report states what UNKNOWN does not mean",
+          "observed": "all 1 required phrase(s) present",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/REHEARSAL_REPORT.md"
+        }
+      ],
+      "criterion_id": "AC-5.1.4",
+      "ordinal": 4,
+      "package": "Kickoff / evidence-plan acceptance",
+      "required_engagement_inputs": [],
+      "section": "5.1",
+      "status": "DEMONSTRABLE",
+      "status_basis": "2 passed, 0 failed, 0 unavailable",
+      "text": "missing or unavailable evidence is represented as a gap/HOLD dependency, not a fabricated observation"
+    },
+    {
+      "checks": [
+        {
+          "kind": "text_contains_all",
+          "label": "University-owned inputs are listed as UNKNOWN",
+          "observed": "all 1 required phrase(s) present",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/README.md"
+        },
+        {
+          "kind": "text_contains_all",
+          "label": "prime-owned dependencies are separately identified",
+          "observed": "phrase(s) absent: ['prime-owned']",
+          "outcome": "FAIL",
+          "target": "uiowa_rfq_18649_intake_rehearsal/README.md"
+        }
+      ],
+      "criterion_id": "AC-5.1.5",
+      "ordinal": 5,
+      "package": "Kickoff / evidence-plan acceptance",
+      "required_engagement_inputs": [
+        "The prime's own dependency list. This lane can show University-owned inputs; the prime-owned half needs the prime."
+      ],
+      "section": "5.1",
+      "status": "PARTIAL",
+      "status_basis": "1 passed, 1 failed, 0 unavailable",
+      "text": "known prime-owned and buyer/University-owned dependencies are separately identified."
+    },
+    {
+      "checks": [
+        {
+          "kind": "csv_columns_cover",
+          "label": "conclusions carry source id + locator + version",
+          "observed": "5/5 concepts have a column (conclusion->observation_id, digest->content_sha256, locator->locator, source->source_id, version->source_version)",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv"
+        }
+      ],
+      "criterion_id": "AC-5.2.1",
+      "ordinal": 1,
+      "package": "Draft technical package acceptance",
+      "required_engagement_inputs": [],
+      "section": "5.2",
+      "status": "DEMONSTRABLE",
+      "status_basis": "1 passed, 0 failed, 0 unavailable",
+      "text": "every populated technical conclusion can be traced to one or more source IDs in the delivered evidence register"
+    },
+    {
+      "checks": [
+        {
+          "kind": "csv_covers_cells",
+          "label": "all twelve cells present",
+          "observed": "all 12 cells present across 12 rows",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv"
+        },
+        {
+          "kind": "csv_field_has_values",
+          "label": "explicit HOLD-equivalent states are used",
+          "observed": "observed ['CONFLICT', 'DEMONSTRATED_STRENGTH', 'MIXED', 'OBSERVED_GAP', 'PARTIAL', 'UNKNOWN']",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv"
+        }
+      ],
+      "criterion_id": "AC-5.2.2",
+      "ordinal": 2,
+      "package": "Draft technical package acceptance",
+      "required_engagement_inputs": [],
+      "section": "5.2",
+      "status": "DEMONSTRABLE",
+      "status_basis": "2 passed, 0 failed, 0 unavailable",
+      "text": "the report covers the full 12-cell assessment frame, using explicit HOLD states for unsupported cells rather than implied completion"
+    },
+    {
+      "checks": [
+        {
+          "kind": "no_silent_promotion",
+          "label": "outstanding evidence cannot read as supported",
+          "observed": "1 row(s) carry outstanding evidence; none claims ['DEMONSTRATED_STRENGTH']",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv"
+        },
+        {
+          "kind": "csv_field_has_values",
+          "label": "conflicting evidence stays visible as conflict",
+          "observed": "observed ['CONFLICT', 'DEMONSTRATED_STRENGTH', 'MIXED', 'OBSERVED_GAP', 'PARTIAL', 'UNKNOWN']",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv"
+        },
+        {
+          "kind": "file_exists",
+          "label": "malformed-input diagnostics are delivered",
+          "observed": "uiowa_rfq_18649_intake_rehearsal/artifacts/intake_diagnostics.csv present, 1047 bytes",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/intake_diagnostics.csv"
+        }
+      ],
+      "criterion_id": "AC-5.2.3",
+      "ordinal": 3,
+      "package": "Draft technical package acceptance",
+      "required_engagement_inputs": [],
+      "section": "5.2",
+      "status": "DEMONSTRABLE",
+      "status_basis": "3 passed, 0 failed, 0 unavailable",
+      "text": "missing, stale, conflicting, or untrusted evidence is visibly bounded and cannot silently promote a cell to a supported state"
+    },
+    {
+      "checks": [
+        {
+          "kind": "command_exit_zero",
+          "label": "deterministic recompilation of the delivered generation",
+          "observed": "exit 0; REPRODUCIBLE: 6 artifacts match the recorded digests in artifacts/RUN_DIGEST.json",
+          "outcome": "PASS",
+          "target": "python3 rehearse_intake.py --collection sources --out artifacts --check-digest"
+        }
+      ],
+      "criterion_id": "AC-5.2.4",
+      "ordinal": 4,
+      "package": "Draft technical package acceptance",
+      "required_engagement_inputs": [],
+      "section": "5.2",
+      "status": "DEMONSTRABLE",
+      "status_basis": "1 passed, 0 failed, 0 unavailable",
+      "text": "source-universe/currentness checks and deterministic recompilation checks complete for the delivered draft generation, or the package explicitly reports the exact blocker preventing a current trusted result"
+    },
+    {
+      "checks": [
+        {
+          "kind": "text_excludes_all",
+          "label": "no authority the workshare does not hold",
+          "observed": "none of the 5 forbidden phrases appear",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/REHEARSAL_REPORT.md"
+        },
+        {
+          "kind": "text_contains_all",
+          "label": "scope limits are stated in the delivered report",
+          "observed": "all 2 required phrase(s) present",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/REHEARSAL_REPORT.md"
+        }
+      ],
+      "criterion_id": "AC-5.2.5",
+      "ordinal": 5,
+      "package": "Draft technical package acceptance",
+      "required_engagement_inputs": [],
+      "section": "5.2",
+      "status": "DEMONSTRABLE",
+      "status_basis": "2 passed, 0 failed, 0 unavailable",
+      "text": "draft findings and roadmap inputs remain within the technical workshare and do not claim bidder submission, contract, legal/compliance certification, award, final University-facing recommendation authority, or authority to recommend/endorse a specific commercial product or vendor"
+    },
+    {
+      "checks": [],
+      "criterion_id": "AC-5.2.6",
+      "ordinal": 6,
+      "package": "Draft technical package acceptance",
+      "required_engagement_inputs": [
+        "A prospective prime, an agreed review window, and actual review comments. No file in this repository can demonstrate that comments were incorporated or recorded, because no comments have been received.",
+        "UIOWA-094 builds the review/revision workflow; a rehearsal of it is not evidence that a real prime review occurred."
+      ],
+      "section": "5.2",
+      "status": "NEEDS_ENGAGEMENT_EVIDENCE",
+      "status_basis": "no artifact in this repository can demonstrate this criterion",
+      "text": "prime review comments received during the agreed review window are either incorporated when they correct TJLabs artifact nonconformance, or recorded as a bounded decision/open item when they require prime judgment, new evidence, or scope change."
+    },
+    {
+      "checks": [
+        {
+          "kind": "json_keys_present",
+          "label": "one generation identified by artifact digests",
+          "observed": "key(s) present: ['artifact_sha256']",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/RUN_DIGEST.json"
+        },
+        {
+          "kind": "file_exists",
+          "label": "change log for the delivered generation",
+          "observed": "uiowa_rfq_18649_intake_rehearsal/artifacts/CHANGE_LOG.md not present",
+          "outcome": "FAIL",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/CHANGE_LOG.md"
+        }
+      ],
+      "criterion_id": "AC-5.3.1",
+      "ordinal": 1,
+      "package": "Final technical package acceptance",
+      "required_engagement_inputs": [
+        "A change log across generations requires more than one delivered generation. Only one exists."
+      ],
+      "section": "5.3",
+      "status": "PARTIAL",
+      "status_basis": "1 passed, 1 failed, 0 unavailable",
+      "text": "the delivered evidence register, technical matrix, findings/roadmap inputs, limitations, change log, and reproducibility/currentness material identify one coherent final generation"
+    },
+    {
+      "checks": [
+        {
+          "kind": "csv_columns_cover",
+          "label": "supported conclusions resolve to the evidence universe",
+          "observed": "3/3 concepts have a column (conclusion->observation_id, resolution->source_resolution, source->source_id)",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv"
+        }
+      ],
+      "criterion_id": "AC-5.3.2",
+      "ordinal": 2,
+      "package": "Final technical package acceptance",
+      "required_engagement_inputs": [],
+      "section": "5.3",
+      "status": "DEMONSTRABLE",
+      "status_basis": "1 passed, 0 failed, 0 unavailable",
+      "text": "every supported technical conclusion remains traceable to the delivered evidence universe"
+    },
+    {
+      "checks": [
+        {
+          "kind": "no_silent_promotion",
+          "label": "unresolved evidence is not rewritten as verified",
+          "observed": "1 row(s) carry outstanding evidence; none claims ['DEMONSTRATED_STRENGTH', 'OBSERVED_GAP']",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv"
+        },
+        {
+          "kind": "csv_field_has_values",
+          "label": "source resolution states are carried through",
+          "observed": "observed ['RESOLVED', 'UNRESOLVED_MISSING']",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/source_register.csv"
+        }
+      ],
+      "criterion_id": "AC-5.3.3",
+      "ordinal": 3,
+      "package": "Final technical package acceptance",
+      "required_engagement_inputs": [],
+      "section": "5.3",
+      "status": "DEMONSTRABLE",
+      "status_basis": "2 passed, 0 failed, 0 unavailable",
+      "text": "unresolved missing/stale/conflicting/untrusted evidence remains explicit rather than being rewritten as verified evidence"
+    },
+    {
+      "checks": [],
+      "criterion_id": "AC-5.3.4",
+      "ordinal": 4,
+      "package": "Final technical package acceptance",
+      "required_engagement_inputs": [
+        "An acceptance review by the prospective prime. Nothing in this repository can show that a nonconformance was identified and cured, because no acceptance review has taken place."
+      ],
+      "section": "5.3",
+      "status": "NEEDS_ENGAGEMENT_EVIDENCE",
+      "status_basis": "no artifact in this repository can demonstrate this criterion",
+      "text": "corrections for genuine TJLabs artifact nonconformance identified during acceptance review have been applied or a specific unresolved blocker has been documented"
+    },
+    {
+      "checks": [
+        {
+          "kind": "text_excludes_all",
+          "label": "no claim of University acceptance, subcontract or payment",
+          "observed": "none of the 7 forbidden phrases appear",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/REHEARSAL_REPORT.md"
+        },
+        {
+          "kind": "text_contains_all",
+          "label": "the exhibit itself records PROPOSED / NOT ACCEPTED",
+          "observed": "all 1 required phrase(s) present",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_workshare/ACCEPTANCE_EXHIBIT.md"
+        }
+      ],
+      "criterion_id": "AC-5.3.5",
+      "ordinal": 5,
+      "package": "Final technical package acceptance",
+      "required_engagement_inputs": [],
+      "section": "5.3",
+      "status": "DEMONSTRABLE",
+      "status_basis": "2 passed, 0 failed, 0 unavailable",
+      "text": "the final package contains no unsupported representation that the University accepted a conclusion, that Clark's Consulting has executed a subcontract, or that payment/revenue occurred"
+    },
+    {
+      "checks": [
+        {
+          "kind": "text_contains_all",
+          "label": "delivered material separates working from draft",
+          "observed": "all 2 required phrase(s) present",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/README.md"
+        }
+      ],
+      "criterion_id": "AC-5.3.6",
+      "ordinal": 6,
+      "package": "Final technical package acceptance",
+      "required_engagement_inputs": [
+        "'What changed from draft' needs a draft and a final generation. Only one generation exists, so the changed-since-draft half of this criterion is not demonstrable yet."
+      ],
+      "section": "5.3",
+      "status": "PARTIAL",
+      "status_basis": "1 passed, 0 failed, 0 unavailable; part of this criterion still needs engagement evidence",
+      "text": "the prime can independently identify what is complete, what remains held, what changed from draft, and which decisions remain prime-owned."
+    }
+  ],
+  "criterion_tally": {
+    "DEMONSTRABLE": 11,
+    "NEEDS_ENGAGEMENT_EVIDENCE": 2,
+    "NOT_DEMONSTRATED": 1,
+    "PARTIAL": 3,
+    "UNMAPPED": 0
+  },
+  "deliverable_tally": {
+    "DEMONSTRABLE": 14,
+    "NEEDS_ENGAGEMENT_EVIDENCE": 1,
+    "NOT_DEMONSTRATED": 3,
+    "PARTIAL": 2,
+    "UNMAPPED": 0
+  },
+  "deliverables": [
+    {
+      "checks": [
+        {
+          "kind": "csv_covers_cells",
+          "label": "twelve-cell frame",
+          "observed": "all 12 cells present across 12 rows",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv"
+        },
+        {
+          "kind": "csv_covers_cells",
+          "label": "twelve-cell frame",
+          "observed": "all 12 cells present across 12 rows",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_synthetic_collection/coverage_matrix.csv"
+        }
+      ],
+      "deliverable_id": "DL-4.1.1",
+      "package": "Kickoff evidence plan and source register structure",
+      "required_engagement_inputs": [],
+      "section": "4.1",
+      "status": "DEMONSTRABLE",
+      "status_basis": "2 passed, 0 failed, 0 unavailable",
+      "text": "a 12-cell scope matrix covering ESS, RIS, and IAM across the four technical dimensions"
+    },
+    {
+      "checks": [
+        {
+          "kind": "csv_columns_cover",
+          "label": "register schema concepts",
+          "observed": "4/6 concepts have a column (content_digest->content_sha256, evidence_reference->path, observation_currentness->captured_at, source->source_id); NO COLUMN FOR: authorization_or_provenance, custodian_or_owner",
+          "outcome": "FAIL",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/source_register.csv"
+        }
+      ],
+      "deliverable_id": "DL-4.1.2",
+      "package": "Kickoff evidence plan and source register structure",
+      "required_engagement_inputs": [],
+      "section": "4.1",
+      "status": "NOT_DEMONSTRATED",
+      "status_basis": "0 passed, 1 failed, 0 unavailable",
+      "text": "a source-register structure with stable source IDs, source kind, source owner/custodian, authorization/provenance field, observation/currentness field, and source-content digest field"
+    },
+    {
+      "checks": [
+        {
+          "kind": "csv_columns_cover",
+          "label": "source class mapped to the cell it supports",
+          "observed": "4/4 concepts have a column (cell_area->area, cell_group->group, source->source_id, source_class->source_path)",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv"
+        }
+      ],
+      "deliverable_id": "DL-4.1.3",
+      "package": "Kickoff evidence plan and source register structure",
+      "required_engagement_inputs": [],
+      "section": "4.1",
+      "status": "DEMONSTRABLE",
+      "status_basis": "1 passed, 0 failed, 0 unavailable",
+      "text": "an evidence-request map showing which source classes are expected to support which assessment cells"
+    },
+    {
+      "checks": [
+        {
+          "kind": "csv_field_has_values",
+          "label": "missing state marked",
+          "observed": "observed ['CONFLICT', 'DEMONSTRATED_STRENGTH', 'MIXED', 'OBSERVED_GAP', 'PARTIAL', 'UNKNOWN']",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv"
+        },
+        {
+          "kind": "file_exists",
+          "label": "untrusted/malformed input markers",
+          "observed": "uiowa_rfq_18649_intake_rehearsal/artifacts/intake_diagnostics.csv present, 1047 bytes",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/intake_diagnostics.csv"
+        }
+      ],
+      "deliverable_id": "DL-4.1.4",
+      "package": "Kickoff evidence plan and source register structure",
+      "required_engagement_inputs": [],
+      "section": "4.1",
+      "status": "DEMONSTRABLE",
+      "status_basis": "2 passed, 0 failed, 0 unavailable",
+      "text": "explicit markers for missing, stale, conflicting, untrusted, or not-yet-authorized evidence"
+    },
+    {
+      "checks": [
+        {
+          "kind": "json_keys_present",
+          "label": "generation identifier",
+          "observed": "key(s) present: ['artifact_sha256']",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/RUN_DIGEST.json"
+        }
+      ],
+      "deliverable_id": "DL-4.1.5",
+      "package": "Kickoff evidence plan and source register structure",
+      "required_engagement_inputs": [],
+      "section": "4.1",
+      "status": "DEMONSTRABLE",
+      "status_basis": "1 passed, 0 failed, 0 unavailable",
+      "text": "the current artifact-generation / authority-generation identifier used by the deterministic carrier"
+    },
+    {
+      "checks": [
+        {
+          "kind": "text_contains_all",
+          "label": "outstanding input list",
+          "observed": "all 1 required phrase(s) present",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/README.md"
+        }
+      ],
+      "deliverable_id": "DL-4.1.6",
+      "package": "Kickoff evidence plan and source register structure",
+      "required_engagement_inputs": [
+        "The prime-owned half of the dependency list."
+      ],
+      "section": "4.1",
+      "status": "PARTIAL",
+      "status_basis": "1 passed, 0 failed, 0 unavailable; part of this criterion still needs engagement evidence",
+      "text": "a dependency list for prime or University inputs that remain outstanding."
+    },
+    {
+      "checks": [
+        {
+          "kind": "file_exists",
+          "label": "populated evidence register",
+          "observed": "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv present, 9158 bytes",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv"
+        }
+      ],
+      "deliverable_id": "DL-4.2.1",
+      "package": "Draft technical work package",
+      "required_engagement_inputs": [],
+      "section": "4.2",
+      "status": "DEMONSTRABLE",
+      "status_basis": "1 passed, 0 failed, 0 unavailable",
+      "text": "populated evidence register"
+    },
+    {
+      "checks": [
+        {
+          "kind": "csv_covers_cells",
+          "label": "twelve-cell frame",
+          "observed": "all 12 cells present across 12 rows",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv"
+        },
+        {
+          "kind": "csv_field_has_values",
+          "label": "explicit HOLD-equivalent state",
+          "observed": "observed ['CONFLICT', 'DEMONSTRATED_STRENGTH', 'MIXED', 'OBSERVED_GAP', 'PARTIAL', 'UNKNOWN']",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv"
+        }
+      ],
+      "deliverable_id": "DL-4.2.2",
+      "package": "Draft technical work package",
+      "required_engagement_inputs": [],
+      "section": "4.2",
+      "status": "DEMONSTRABLE",
+      "status_basis": "2 passed, 0 failed, 0 unavailable",
+      "text": "deterministic 12-cell maturity/gap matrix or explicit HOLD states where authority is missing, stale, conflicting, or incomplete"
+    },
+    {
+      "checks": [
+        {
+          "kind": "csv_columns_cover",
+          "label": "finding tied to source id + cell",
+          "observed": "4/4 concepts have a column (cell_area->area, cell_group->group, finding->claim, source->source_id)",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv"
+        }
+      ],
+      "deliverable_id": "DL-4.2.3",
+      "package": "Draft technical work package",
+      "required_engagement_inputs": [],
+      "section": "4.2",
+      "status": "DEMONSTRABLE",
+      "status_basis": "1 passed, 0 failed, 0 unavailable",
+      "text": "draft technical findings tied to source IDs and the applicable assessment cell"
+    },
+    {
+      "checks": [
+        {
+          "kind": "file_exists",
+          "label": "prioritized roadmap inputs (UIOWA-084 lane)",
+          "observed": "uiowa_rfq_18649_prioritization/recommendations.synthetic.csv present, 1405 bytes",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_prioritization/recommendations.synthetic.csv"
+        }
+      ],
+      "deliverable_id": "DL-4.2.4",
+      "package": "Draft technical work package",
+      "required_engagement_inputs": [],
+      "section": "4.2",
+      "status": "DEMONSTRABLE",
+      "status_basis": "1 passed, 0 failed, 0 unavailable",
+      "text": "prioritized, phased practice/process roadmap inputs suitable for prime review, excluding recommendations for specific commercial products or vendors"
+    },
+    {
+      "checks": [
+        {
+          "kind": "command_exit_zero",
+          "label": "deterministic recompilation",
+          "observed": "exit 0; REPRODUCIBLE: 6 artifacts match the recorded digests in artifacts/RUN_DIGEST.json",
+          "outcome": "PASS",
+          "target": ""
+        }
+      ],
+      "deliverable_id": "DL-4.2.5",
+      "package": "Draft technical work package",
+      "required_engagement_inputs": [],
+      "section": "4.2",
+      "status": "DEMONSTRABLE",
+      "status_basis": "1 passed, 0 failed, 0 unavailable",
+      "text": "reproducibility/currentness receipt material for the compiled technical package"
+    },
+    {
+      "checks": [
+        {
+          "kind": "text_contains_all",
+          "label": "limitations and dependencies stated",
+          "observed": "all 2 required phrase(s) present",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/REHEARSAL_REPORT.md"
+        }
+      ],
+      "deliverable_id": "DL-4.2.6",
+      "package": "Draft technical work package",
+      "required_engagement_inputs": [],
+      "section": "4.2",
+      "status": "DEMONSTRABLE",
+      "status_basis": "1 passed, 0 failed, 0 unavailable",
+      "text": "a limitations/dependencies section identifying unresolved evidence gaps, source conflicts, stale observations, and scope assumptions"
+    },
+    {
+      "checks": [
+        {
+          "kind": "file_exists",
+          "label": "change log from kickoff frame",
+          "observed": "uiowa_rfq_18649_intake_rehearsal/artifacts/CHANGE_LOG.md not present",
+          "outcome": "FAIL",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/CHANGE_LOG.md"
+        }
+      ],
+      "deliverable_id": "DL-4.2.7",
+      "package": "Draft technical work package",
+      "required_engagement_inputs": [
+        "A kickoff frame to change FROM. Only one generation exists."
+      ],
+      "section": "4.2",
+      "status": "NOT_DEMONSTRATED",
+      "status_basis": "0 passed, 1 failed, 0 unavailable",
+      "text": "a change log identifying material changes from the kickoff frame."
+    },
+    {
+      "checks": [
+        {
+          "kind": "file_exists",
+          "label": "final evidence register",
+          "observed": "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv present, 9158 bytes",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv"
+        },
+        {
+          "kind": "file_exists",
+          "label": "final source register",
+          "observed": "uiowa_rfq_18649_intake_rehearsal/artifacts/source_register.csv present, 3245 bytes",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/source_register.csv"
+        }
+      ],
+      "deliverable_id": "DL-4.3.1",
+      "package": "Final technical work package",
+      "required_engagement_inputs": [],
+      "section": "4.3",
+      "status": "DEMONSTRABLE",
+      "status_basis": "2 passed, 0 failed, 0 unavailable",
+      "text": "final evidence register for the evidence universe actually authorized and received"
+    },
+    {
+      "checks": [
+        {
+          "kind": "csv_covers_cells",
+          "label": "twelve-cell frame",
+          "observed": "all 12 cells present across 12 rows",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv"
+        },
+        {
+          "kind": "no_silent_promotion",
+          "label": "HOLD states not promoted",
+          "observed": "1 row(s) carry outstanding evidence; none claims ['DEMONSTRATED_STRENGTH']",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv"
+        }
+      ],
+      "deliverable_id": "DL-4.3.2",
+      "package": "Final technical work package",
+      "required_engagement_inputs": [],
+      "section": "4.3",
+      "status": "DEMONSTRABLE",
+      "status_basis": "2 passed, 0 failed, 0 unavailable",
+      "text": "final deterministic 12-cell technical matrix with supported states and explicit HOLD states where evidence authority remains insufficient"
+    },
+    {
+      "checks": [
+        {
+          "kind": "file_exists",
+          "label": "reconciled roadmap inputs (UIOWA-084 lane)",
+          "observed": "uiowa_rfq_18649_prioritization/recommendations.synthetic.csv present, 1405 bytes",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_prioritization/recommendations.synthetic.csv"
+        }
+      ],
+      "deliverable_id": "DL-4.3.3",
+      "package": "Final technical work package",
+      "required_engagement_inputs": [
+        "Reconciliation against real prime review."
+      ],
+      "section": "4.3",
+      "status": "PARTIAL",
+      "status_basis": "1 passed, 0 failed, 0 unavailable; part of this criterion still needs engagement evidence",
+      "text": "reconciled technical findings and prioritized roadmap matrices/inputs within TJLabs' workshare"
+    },
+    {
+      "checks": [
+        {
+          "kind": "file_exists",
+          "label": "limitations / unresolved-dependency register",
+          "observed": "uiowa_rfq_18649_intake_rehearsal/artifacts/intake_diagnostics.csv present, 1047 bytes",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/intake_diagnostics.csv"
+        }
+      ],
+      "deliverable_id": "DL-4.3.4",
+      "package": "Final technical work package",
+      "required_engagement_inputs": [],
+      "section": "4.3",
+      "status": "DEMONSTRABLE",
+      "status_basis": "1 passed, 0 failed, 0 unavailable",
+      "text": "final limitations, unresolved-dependency, and evidence-conflict register"
+    },
+    {
+      "checks": [
+        {
+          "kind": "file_exists",
+          "label": "final artifact change log",
+          "observed": "uiowa_rfq_18649_intake_rehearsal/artifacts/CHANGE_LOG.md not present",
+          "outcome": "FAIL",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/CHANGE_LOG.md"
+        }
+      ],
+      "deliverable_id": "DL-4.3.5",
+      "package": "Final technical work package",
+      "required_engagement_inputs": [
+        "A prior generation to diff against."
+      ],
+      "section": "4.3",
+      "status": "NOT_DEMONSTRATED",
+      "status_basis": "0 passed, 1 failed, 0 unavailable",
+      "text": "final artifact change log"
+    },
+    {
+      "checks": [
+        {
+          "kind": "command_exit_zero",
+          "label": "deterministic recompilation",
+          "observed": "exit 0; REPRODUCIBLE: 6 artifacts match the recorded digests in artifacts/RUN_DIGEST.json",
+          "outcome": "PASS",
+          "target": ""
+        },
+        {
+          "kind": "json_keys_present",
+          "label": "currentness receipt",
+          "observed": "key(s) present: ['artifact_sha256']",
+          "outcome": "PASS",
+          "target": "uiowa_rfq_18649_intake_rehearsal/artifacts/RUN_DIGEST.json"
+        }
+      ],
+      "deliverable_id": "DL-4.3.6",
+      "package": "Final technical work package",
+      "required_engagement_inputs": [],
+      "section": "4.3",
+      "status": "DEMONSTRABLE",
+      "status_basis": "2 passed, 0 failed, 0 unavailable",
+      "text": "currentness/reproducibility verification material for the delivered generation"
+    },
+    {
+      "checks": [],
+      "deliverable_id": "DL-4.3.7",
+      "package": "Final technical work package",
+      "required_engagement_inputs": [
+        "An acceptance review by the prospective prime. No nonconformance has been raised, so no correction can be evidenced."
+      ],
+      "section": "4.3",
+      "status": "NEEDS_ENGAGEMENT_EVIDENCE",
+      "status_basis": "no artifact in this repository can demonstrate this criterion",
+      "text": "corrections to genuine nonconformance in TJLabs-authored artifacts identified during acceptance review."
+    }
+  ],
+  "exhibit": {
+    "commercial_status": "PROPOSED / NOT ACCEPTED",
+    "criteria_extracted": 17,
+    "deliverable_items_extracted": 20,
+    "digest_sha256": "f6bc85c1d7d8f575180b6272f1d557f6e009c5b7126633368ce11775e195813f",
+    "path": "uiowa_rfq_18649_workshare/ACCEPTANCE_EXHIBIT.md"
+  },
+  "index": "UIOWA-130 acceptance criteria to artifact index",
+  "statuses": [
+    "DEMONSTRABLE",
+    "PARTIAL",
+    "NOT_DEMONSTRATED",
+    "NEEDS_ENGAGEMENT_EVIDENCE",
+    "UNMAPPED"
+  ]
+}

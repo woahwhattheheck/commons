@@ -1,0 +1,8 @@
+# ARTIFACT CONFORMANCE EVIDENCE ONLY. The workshare this index refers to is PROPOSED / NOT ACCEPTED. Nothing here represents that the University of Iowa accepted any conclusion, that a subcontract was executed, or that any payment occurred. Supporting fixtures are synthetic and are not University findings.
+criterion_id,section,status,missing_input
+AC-5.1.5,5.1,PARTIAL,The prime's own dependency list. This lane can show University-owned inputs; the prime-owned half needs the prime.
+AC-5.2.6,5.2,NEEDS_ENGAGEMENT_EVIDENCE,"A prospective prime, an agreed review window, and actual review comments. No file in this repository can demonstrate that comments were incorporated or recorded, because no comments have been received."
+AC-5.2.6,5.2,NEEDS_ENGAGEMENT_EVIDENCE,UIOWA-094 builds the review/revision workflow; a rehearsal of it is not evidence that a real prime review occurred.
+AC-5.3.1,5.3,PARTIAL,A change log across generations requires more than one delivered generation. Only one exists.
+AC-5.3.4,5.3,NEEDS_ENGAGEMENT_EVIDENCE,"An acceptance review by the prospective prime. Nothing in this repository can show that a nonconformance was identified and cured, because no acceptance review has taken place."
+AC-5.3.6,5.3,PARTIAL,"'What changed from draft' needs a draft and a final generation. Only one generation exists, so the changed-since-draft half of this criterion is not demonstrable yet."

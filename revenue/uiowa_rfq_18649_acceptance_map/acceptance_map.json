@@ -1,0 +1,930 @@
+{
+  "_note": "Bindings from ACCEPTANCE_EXHIBIT.md criteria to artifacts actually on disk. Read-only: this package never writes into another seat's lane. Paths are relative to revenue/. A criterion with no automatable check carries required_engagement_inputs instead, and is reported as NEEDS_ENGAGEMENT_EVIDENCE - never as satisfied.",
+  "bindings": {
+    "AC-5.1.1": {
+      "checks": [
+        {
+          "kind": "csv_covers_cells",
+          "label": "twelve-cell frame in the rehearsal matrix",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+            "group_field": "group",
+            "area_field": "area",
+            "groups": [
+              "ESS",
+              "RIS",
+              "IAM"
+            ],
+            "areas": [
+              "SD",
+              "SEC",
+              "DEP",
+              "AI"
+            ]
+          }
+        },
+        {
+          "kind": "csv_covers_cells",
+          "label": "twelve-cell frame in the 091 coverage matrix",
+          "params": {
+            "path": "uiowa_rfq_18649_synthetic_collection/coverage_matrix.csv",
+            "group_field": "service",
+            "area_field": "assessment_area",
+            "groups": [
+              "ESS",
+              "RIS",
+              "IAM"
+            ],
+            "areas": [
+              "software_development",
+              "security",
+              "deployment_operations",
+              "ai_readiness"
+            ]
+          }
+        }
+      ]
+    },
+    "AC-5.1.2": {
+      "checks": [
+        {
+          "kind": "csv_columns_cover",
+          "label": "each evidence row names its source and its cell",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv",
+            "requirements": {
+              "source": [
+                "source_id"
+              ],
+              "cell_group": [
+                "group"
+              ],
+              "cell_area": [
+                "area"
+              ],
+              "locator": [
+                "locator"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "AC-5.1.3": {
+      "checks": [
+        {
+          "kind": "csv_columns_cover",
+          "label": "rehearsal source register schema",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/source_register.csv",
+            "requirements": {
+              "source": [
+                "source_id",
+                "evidence_id"
+              ],
+              "custodian_or_owner": [
+                "custodian",
+                "owner",
+                "steward"
+              ],
+              "evidence_reference": [
+                "path",
+                "source_ref",
+                "locator",
+                "reference"
+              ],
+              "authorization_or_provenance": [
+                "authority",
+                "authoriz",
+                "provenance",
+                "enumerator"
+              ],
+              "observation_currentness": [
+                "captured_at",
+                "recency",
+                "observed",
+                "represented_period"
+              ],
+              "content_digest": [
+                "sha256",
+                "digest",
+                "checksum",
+                "hash"
+              ]
+            }
+          }
+        },
+        {
+          "kind": "csv_columns_cover",
+          "label": "workshare synthetic evidence register schema",
+          "params": {
+            "path": "uiowa_rfq_18649_workshare/methodology/23-synthetic-evidence-register.csv",
+            "requirements": {
+              "source": [
+                "source_id",
+                "evidence_id"
+              ],
+              "custodian_or_owner": [
+                "custodian",
+                "owner",
+                "steward"
+              ],
+              "evidence_reference": [
+                "path",
+                "source_ref",
+                "locator",
+                "reference"
+              ],
+              "authorization_or_provenance": [
+                "authority",
+                "authoriz",
+                "provenance",
+                "enumerator"
+              ],
+              "observation_currentness": [
+                "captured_at",
+                "recency",
+                "observed",
+                "represented_period"
+              ],
+              "content_digest": [
+                "sha256",
+                "digest",
+                "checksum",
+                "hash"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "AC-5.1.4": {
+      "checks": [
+        {
+          "kind": "csv_field_has_values",
+          "label": "unsupported cells carry an explicit state",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+            "field": "state",
+            "must_include": [
+              "UNKNOWN"
+            ]
+          }
+        },
+        {
+          "kind": "text_contains_all",
+          "label": "the report states what UNKNOWN does not mean",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/REHEARSAL_REPORT.md",
+            "needles": [
+              "it is not a statement that the practice is absent"
+            ]
+          }
+        }
+      ]
+    },
+    "AC-5.1.5": {
+      "checks": [
+        {
+          "kind": "text_contains_all",
+          "label": "University-owned inputs are listed as UNKNOWN",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/README.md",
+            "needles": [
+              "University inputs still UNKNOWN"
+            ]
+          }
+        },
+        {
+          "kind": "text_contains_all",
+          "label": "prime-owned dependencies are separately identified",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/README.md",
+            "needles": [
+              "prime-owned"
+            ]
+          }
+        }
+      ],
+      "required_engagement_inputs": [
+        "The prime's own dependency list. This lane can show University-owned inputs; the prime-owned half needs the prime."
+      ]
+    },
+    "AC-5.2.1": {
+      "checks": [
+        {
+          "kind": "csv_columns_cover",
+          "label": "conclusions carry source id + locator + version",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv",
+            "requirements": {
+              "conclusion": [
+                "observation_id"
+              ],
+              "source": [
+                "source_id"
+              ],
+              "locator": [
+                "locator"
+              ],
+              "version": [
+                "version"
+              ],
+              "digest": [
+                "sha256"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "AC-5.2.2": {
+      "checks": [
+        {
+          "kind": "csv_covers_cells",
+          "label": "all twelve cells present",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+            "group_field": "group",
+            "area_field": "area",
+            "groups": [
+              "ESS",
+              "RIS",
+              "IAM"
+            ],
+            "areas": [
+              "SD",
+              "SEC",
+              "DEP",
+              "AI"
+            ]
+          }
+        },
+        {
+          "kind": "csv_field_has_values",
+          "label": "explicit HOLD-equivalent states are used",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+            "field": "state",
+            "must_include": [
+              "UNKNOWN"
+            ]
+          }
+        }
+      ]
+    },
+    "AC-5.2.3": {
+      "checks": [
+        {
+          "kind": "no_silent_promotion",
+          "label": "outstanding evidence cannot read as supported",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+            "outstanding_field": "outstanding_evidence",
+            "state_field": "state",
+            "supported_states": [
+              "DEMONSTRATED_STRENGTH"
+            ]
+          }
+        },
+        {
+          "kind": "csv_field_has_values",
+          "label": "conflicting evidence stays visible as conflict",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+            "field": "state",
+            "must_include": [
+              "CONFLICT"
+            ]
+          }
+        },
+        {
+          "kind": "file_exists",
+          "label": "malformed-input diagnostics are delivered",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/intake_diagnostics.csv"
+          }
+        }
+      ]
+    },
+    "AC-5.2.4": {
+      "checks": [
+        {
+          "kind": "command_exit_zero",
+          "label": "deterministic recompilation of the delivered generation",
+          "params": {
+            "cwd": "uiowa_rfq_18649_intake_rehearsal",
+            "timeout": 120,
+            "argv": [
+              "python3",
+              "rehearse_intake.py",
+              "--collection",
+              "sources",
+              "--out",
+              "artifacts",
+              "--check-digest"
+            ]
+          }
+        }
+      ]
+    },
+    "AC-5.2.5": {
+      "checks": [
+        {
+          "kind": "text_excludes_all",
+          "label": "no authority the workshare does not hold",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/REHEARSAL_REPORT.md",
+            "needles": [
+              "we recommend purchasing",
+              "certified compliant",
+              "the University has accepted",
+              "award has been made",
+              "contract is executed"
+            ]
+          }
+        },
+        {
+          "kind": "text_contains_all",
+          "label": "scope limits are stated in the delivered report",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/REHEARSAL_REPORT.md",
+            "needles": [
+              "no maturity score",
+              "University of Iowa finding"
+            ]
+          }
+        }
+      ]
+    },
+    "AC-5.2.6": {
+      "checks": [],
+      "required_engagement_inputs": [
+        "A prospective prime, an agreed review window, and actual review comments. No file in this repository can demonstrate that comments were incorporated or recorded, because no comments have been received.",
+        "UIOWA-094 builds the review/revision workflow; a rehearsal of it is not evidence that a real prime review occurred."
+      ]
+    },
+    "AC-5.3.1": {
+      "checks": [
+        {
+          "kind": "json_keys_present",
+          "label": "one generation identified by artifact digests",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/RUN_DIGEST.json",
+            "keys": [
+              "artifact_sha256"
+            ]
+          }
+        },
+        {
+          "kind": "file_exists",
+          "label": "change log for the delivered generation",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/CHANGE_LOG.md"
+          }
+        }
+      ],
+      "required_engagement_inputs": [
+        "A change log across generations requires more than one delivered generation. Only one exists."
+      ]
+    },
+    "AC-5.3.2": {
+      "checks": [
+        {
+          "kind": "csv_columns_cover",
+          "label": "supported conclusions resolve to the evidence universe",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv",
+            "requirements": {
+              "conclusion": [
+                "observation_id"
+              ],
+              "source": [
+                "source_id"
+              ],
+              "resolution": [
+                "resolution"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "AC-5.3.3": {
+      "checks": [
+        {
+          "kind": "no_silent_promotion",
+          "label": "unresolved evidence is not rewritten as verified",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+            "outstanding_field": "outstanding_evidence",
+            "state_field": "state",
+            "supported_states": [
+              "DEMONSTRATED_STRENGTH",
+              "OBSERVED_GAP"
+            ]
+          }
+        },
+        {
+          "kind": "csv_field_has_values",
+          "label": "source resolution states are carried through",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/source_register.csv",
+            "field": "resolution",
+            "must_include": [
+              "UNRESOLVED_MISSING"
+            ]
+          }
+        }
+      ]
+    },
+    "AC-5.3.4": {
+      "checks": [],
+      "required_engagement_inputs": [
+        "An acceptance review by the prospective prime. Nothing in this repository can show that a nonconformance was identified and cured, because no acceptance review has taken place."
+      ]
+    },
+    "AC-5.3.5": {
+      "checks": [
+        {
+          "kind": "text_excludes_all",
+          "label": "no claim of University acceptance, subcontract or payment",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/REHEARSAL_REPORT.md",
+            "needles": [
+              "university accepted",
+              "university has accepted",
+              "subcontract executed",
+              "executed subcontract",
+              "payment received",
+              "invoice approved",
+              "revenue recognized"
+            ]
+          }
+        },
+        {
+          "kind": "text_contains_all",
+          "label": "the exhibit itself records PROPOSED / NOT ACCEPTED",
+          "params": {
+            "path": "uiowa_rfq_18649_workshare/ACCEPTANCE_EXHIBIT.md",
+            "needles": [
+              "PROPOSED / NOT ACCEPTED"
+            ]
+          }
+        }
+      ]
+    },
+    "AC-5.3.6": {
+      "checks": [
+        {
+          "kind": "text_contains_all",
+          "label": "delivered material separates working from draft",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/README.md",
+            "needles": [
+              "Working and tested",
+              "Draft"
+            ]
+          }
+        }
+      ],
+      "required_engagement_inputs": [
+        "'What changed from draft' needs a draft and a final generation. Only one generation exists, so the changed-since-draft half of this criterion is not demonstrable yet."
+      ]
+    }
+  },
+  "deliverable_bindings": {
+    "DL-4.1.1": {
+      "checks": [
+        {
+          "kind": "csv_covers_cells",
+          "label": "twelve-cell frame",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+            "group_field": "group",
+            "area_field": "area",
+            "groups": [
+              "ESS",
+              "RIS",
+              "IAM"
+            ],
+            "areas": [
+              "SD",
+              "SEC",
+              "DEP",
+              "AI"
+            ]
+          }
+        },
+        {
+          "kind": "csv_covers_cells",
+          "label": "twelve-cell frame",
+          "params": {
+            "path": "uiowa_rfq_18649_synthetic_collection/coverage_matrix.csv",
+            "group_field": "service",
+            "area_field": "assessment_area",
+            "groups": [
+              "ESS",
+              "RIS",
+              "IAM"
+            ],
+            "areas": [
+              "software_development",
+              "security",
+              "deployment_operations",
+              "ai_readiness"
+            ]
+          }
+        }
+      ]
+    },
+    "DL-4.1.2": {
+      "checks": [
+        {
+          "kind": "csv_columns_cover",
+          "label": "register schema concepts",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/source_register.csv",
+            "requirements": {
+              "source": [
+                "source_id",
+                "evidence_id"
+              ],
+              "custodian_or_owner": [
+                "custodian",
+                "owner",
+                "steward"
+              ],
+              "evidence_reference": [
+                "path",
+                "source_ref",
+                "locator",
+                "reference"
+              ],
+              "authorization_or_provenance": [
+                "authority",
+                "authoriz",
+                "provenance",
+                "enumerator"
+              ],
+              "observation_currentness": [
+                "captured_at",
+                "recency",
+                "observed",
+                "represented_period"
+              ],
+              "content_digest": [
+                "sha256",
+                "digest",
+                "checksum",
+                "hash"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "DL-4.1.3": {
+      "checks": [
+        {
+          "kind": "csv_columns_cover",
+          "label": "source class mapped to the cell it supports",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv",
+            "requirements": {
+              "source": [
+                "source_id"
+              ],
+              "source_class": [
+                "source_path",
+                "source_resolution"
+              ],
+              "cell_group": [
+                "group"
+              ],
+              "cell_area": [
+                "area"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "DL-4.1.4": {
+      "checks": [
+        {
+          "kind": "csv_field_has_values",
+          "label": "missing state marked",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+            "field": "state",
+            "must_include": [
+              "UNKNOWN",
+              "CONFLICT"
+            ]
+          }
+        },
+        {
+          "kind": "file_exists",
+          "label": "untrusted/malformed input markers",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/intake_diagnostics.csv"
+          }
+        }
+      ]
+    },
+    "DL-4.1.5": {
+      "checks": [
+        {
+          "kind": "json_keys_present",
+          "label": "generation identifier",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/RUN_DIGEST.json",
+            "keys": [
+              "artifact_sha256"
+            ]
+          }
+        }
+      ]
+    },
+    "DL-4.1.6": {
+      "checks": [
+        {
+          "kind": "text_contains_all",
+          "label": "outstanding input list",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/README.md",
+            "needles": [
+              "University inputs still UNKNOWN"
+            ]
+          }
+        }
+      ],
+      "required_engagement_inputs": [
+        "The prime-owned half of the dependency list."
+      ]
+    },
+    "DL-4.2.1": {
+      "checks": [
+        {
+          "kind": "file_exists",
+          "label": "populated evidence register",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv"
+          }
+        }
+      ]
+    },
+    "DL-4.2.2": {
+      "checks": [
+        {
+          "kind": "csv_covers_cells",
+          "label": "twelve-cell frame",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+            "group_field": "group",
+            "area_field": "area",
+            "groups": [
+              "ESS",
+              "RIS",
+              "IAM"
+            ],
+            "areas": [
+              "SD",
+              "SEC",
+              "DEP",
+              "AI"
+            ]
+          }
+        },
+        {
+          "kind": "csv_field_has_values",
+          "label": "explicit HOLD-equivalent state",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+            "field": "state",
+            "must_include": [
+              "UNKNOWN"
+            ]
+          }
+        }
+      ]
+    },
+    "DL-4.2.3": {
+      "checks": [
+        {
+          "kind": "csv_columns_cover",
+          "label": "finding tied to source id + cell",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv",
+            "requirements": {
+              "finding": [
+                "claim"
+              ],
+              "source": [
+                "source_id"
+              ],
+              "cell_group": [
+                "group"
+              ],
+              "cell_area": [
+                "area"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "DL-4.2.4": {
+      "checks": [
+        {
+          "kind": "file_exists",
+          "label": "prioritized roadmap inputs (UIOWA-084 lane)",
+          "params": {
+            "path": "uiowa_rfq_18649_prioritization/recommendations.synthetic.csv"
+          }
+        }
+      ]
+    },
+    "DL-4.2.5": {
+      "checks": [
+        {
+          "kind": "command_exit_zero",
+          "label": "deterministic recompilation",
+          "params": {
+            "cwd": "uiowa_rfq_18649_intake_rehearsal",
+            "timeout": 120,
+            "argv": [
+              "python3",
+              "rehearse_intake.py",
+              "--collection",
+              "sources",
+              "--out",
+              "artifacts",
+              "--check-digest"
+            ]
+          }
+        }
+      ]
+    },
+    "DL-4.2.6": {
+      "checks": [
+        {
+          "kind": "text_contains_all",
+          "label": "limitations and dependencies stated",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/REHEARSAL_REPORT.md",
+            "needles": [
+              "What this rehearsal does not establish",
+              "still UNKNOWN"
+            ]
+          }
+        }
+      ]
+    },
+    "DL-4.2.7": {
+      "checks": [
+        {
+          "kind": "file_exists",
+          "label": "change log from kickoff frame",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/CHANGE_LOG.md"
+          }
+        }
+      ],
+      "required_engagement_inputs": [
+        "A kickoff frame to change FROM. Only one generation exists."
+      ]
+    },
+    "DL-4.3.1": {
+      "checks": [
+        {
+          "kind": "file_exists",
+          "label": "final evidence register",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv"
+          }
+        },
+        {
+          "kind": "file_exists",
+          "label": "final source register",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/source_register.csv"
+          }
+        }
+      ]
+    },
+    "DL-4.3.2": {
+      "checks": [
+        {
+          "kind": "csv_covers_cells",
+          "label": "twelve-cell frame",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+            "group_field": "group",
+            "area_field": "area",
+            "groups": [
+              "ESS",
+              "RIS",
+              "IAM"
+            ],
+            "areas": [
+              "SD",
+              "SEC",
+              "DEP",
+              "AI"
+            ]
+          }
+        },
+        {
+          "kind": "no_silent_promotion",
+          "label": "HOLD states not promoted",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+            "outstanding_field": "outstanding_evidence",
+            "state_field": "state",
+            "supported_states": [
+              "DEMONSTRATED_STRENGTH"
+            ]
+          }
+        }
+      ]
+    },
+    "DL-4.3.3": {
+      "checks": [
+        {
+          "kind": "file_exists",
+          "label": "reconciled roadmap inputs (UIOWA-084 lane)",
+          "params": {
+            "path": "uiowa_rfq_18649_prioritization/recommendations.synthetic.csv"
+          }
+        }
+      ],
+      "required_engagement_inputs": [
+        "Reconciliation against real prime review."
+      ]
+    },
+    "DL-4.3.4": {
+      "checks": [
+        {
+          "kind": "file_exists",
+          "label": "limitations / unresolved-dependency register",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/intake_diagnostics.csv"
+          }
+        }
+      ]
+    },
+    "DL-4.3.5": {
+      "checks": [
+        {
+          "kind": "file_exists",
+          "label": "final artifact change log",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/CHANGE_LOG.md"
+          }
+        }
+      ],
+      "required_engagement_inputs": [
+        "A prior generation to diff against."
+      ]
+    },
+    "DL-4.3.6": {
+      "checks": [
+        {
+          "kind": "command_exit_zero",
+          "label": "deterministic recompilation",
+          "params": {
+            "cwd": "uiowa_rfq_18649_intake_rehearsal",
+            "timeout": 120,
+            "argv": [
+              "python3",
+              "rehearse_intake.py",
+              "--collection",
+              "sources",
+              "--out",
+              "artifacts",
+              "--check-digest"
+            ]
+          }
+        },
+        {
+          "kind": "json_keys_present",
+          "label": "currentness receipt",
+          "params": {
+            "path": "uiowa_rfq_18649_intake_rehearsal/artifacts/RUN_DIGEST.json",
+            "keys": [
+              "artifact_sha256"
+            ]
+          }
+        }
+      ]
+    },
+    "DL-4.3.7": {
+      "checks": [],
+      "required_engagement_inputs": [
+        "An acceptance review by the prospective prime. No nonconformance has been raised, so no correction can be evidenced."
+      ]
+    }
+  }
+}

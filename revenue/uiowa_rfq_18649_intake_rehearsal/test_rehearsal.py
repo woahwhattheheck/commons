@@ -348,6 +348,26 @@ class TestMalformedInputHandling(unittest.TestCase):
             self.assertTrue(d["effect"].strip())
             self.assertTrue(d["reason_description"].strip())
 
+    def test_unrecognized_external_manifest_shape_is_reported_not_merged_as_zero(self):
+        """Found by the UIOWA-130 acceptance index against the real 091 collection.
+
+        A manifest that parses but carries none of the keys this adapter reads used to
+        merge zero records in silence, which reads identically to 'the external corpus
+        added nothing'. Those are different facts and the operator must be told which.
+        """
+        with tempfile.TemporaryDirectory() as tmp:
+            with open(os.path.join(tmp, "evidence_manifest.json"), "w",
+                      encoding="utf-8") as fh:
+                json.dump({"collection_id": "COLL-OTHER", "documents": [],
+                           "authority": "synthetic", "title": "another shape"}, fh)
+            dataset, _ = R.run(COLLECTION, extra_collection=tmp)
+            self.assertIsNotNone(dataset)
+            self.assertIn("COLLECTION_SHAPE_UNRECOGNIZED", codes(dataset))
+            row = next(d for d in dataset["diagnostics"]
+                       if d["reason_code"] == "COLLECTION_SHAPE_UNRECOGNIZED")
+            self.assertIn("documents", row["detail"])
+            self.assertEqual(len(dataset["matrix"]), 12)
+
     def test_absent_external_collection_is_noted_and_the_run_continues(self):
         dataset, _ = R.run(COLLECTION, extra_collection=os.path.join(HERE, "no-such-dir"))
         self.assertIsNotNone(dataset)

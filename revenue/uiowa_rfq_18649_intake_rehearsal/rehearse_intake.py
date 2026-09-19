@@ -555,9 +555,23 @@ def run(collection_root, extra_collection=None):
                           ext_manifest, "manifest did not parse",
                           "external collection not merged; rehearsal continued on its own corpus")
             else:
-                register["sources"].extend(ext.get("sources", []))
-                obs_records.extend(ext.get("observations", []))
-                excerpts.extend(ext.get("interview_excerpts", []))
+                # Found by the UIOWA-130 acceptance index: the UIOWA-091 collection's
+                # evidence_manifest.json carries none of these keys, so this adapter
+                # merged zero records and said nothing. An adapter that silently
+                # imports nothing is exactly the silent-zero failure this package
+                # exists to prevent, so an unrecognized shape is now a diagnostic.
+                wanted = ("sources", "observations", "interview_excerpts")
+                present = [k for k in wanted if isinstance(ext.get(k), list)]
+                if not present:
+                    diags.add("COLLECTION_SHAPE_UNRECOGNIZED", "collection",
+                              os.path.basename(extra_collection), ext_manifest,
+                              "manifest has none of " + ", ".join(wanted)
+                              + "; top-level keys: " + ", ".join(sorted(ext)[:8]),
+                              "nothing merged; rehearsal continued on its own corpus")
+                else:
+                    register["sources"].extend(ext.get("sources", []))
+                    obs_records.extend(ext.get("observations", []))
+                    excerpts.extend(ext.get("interview_excerpts", []))
 
     sources = resolve_sources(collection_root, register, diags)
     declared_obs_ids = {r.get("observation_id") for r in obs_records}

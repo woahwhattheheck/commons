@@ -79,6 +79,7 @@ REASON_CODES = {
     "INT_UNKNOWN_ESTABLISHES": (DEGRADE, "Excerpt declares an 'establishes' value outside the vocabulary."),
     "COLLECTION_UNAVAILABLE": (NOTE,    "An external collection was requested but no manifest was found."),
     "COLLECTION_UNREADABLE":  (DEGRADE, "External collection manifest was found but could not be parsed."),
+    "COLLECTION_SHAPE_UNRECOGNIZED": (DEGRADE, "External collection manifest parsed but carries none of the keys this adapter reads."),
     "MANIFEST_UNPARSEABLE":   (REJECT,  "An input manifest is not valid JSON."),
 }
 
