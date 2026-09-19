@@ -1,0 +1,91 @@
+{
+  "measures_checked": 10,
+  "min_denominator_for_rate": 8,
+  "passed": false,
+  "findings": [
+    {
+      "code": "FALSE_PRECISION",
+      "severity": "error",
+      "measure_id": "M-SYN-001",
+      "message": "reported to 1 decimal place(s), implying a resolution of 0.1 percentage points, but 12 observations can only resolve steps of 8.33 points",
+      "restatement": "7 of 12 (about 58%)"
+    },
+    {
+      "code": "SAMPLE_STATED_AS_POPULATION",
+      "severity": "error",
+      "measure_id": "M-SYN-001",
+      "message": "this is phrased about the population but the sample is CONVENIENCE; a convenience sample does not license a statement about everything",
+      "restatement": "of the 12 sampled change records with a single approval examined, 7 ..."
+    },
+    {
+      "code": "DENOMINATOR_TOO_SMALL",
+      "severity": "error",
+      "measure_id": "M-SYN-002",
+      "message": "a percentage from 4 observations invites the reader to generalise from 4 observations; one record changing moves this figure by 25.0 percentage points",
+      "restatement": "3 of 4 services with a documented runbook"
+    },
+    {
+      "code": "PERCENTAGE_WITHOUT_DENOMINATOR",
+      "severity": "error",
+      "measure_id": "M-SYN-003",
+      "message": "a proportion is reported with no denominator; the reader cannot tell whether it came from 4 records or 4,000, and an absent denominator is not the same as a large one",
+      "restatement": "state the denominator, or report the numerator as a count"
+    },
+    {
+      "code": "ZERO_OBSERVED_AS_ABSENCE",
+      "severity": "error",
+      "measure_id": "M-SYN-004",
+      "message": "zero occurrences in 8 observations is not evidence that the rate is zero; it is consistent with a rate as high as about 37.5%",
+      "restatement": "0 of 8 observed; consistent with an underlying rate up to about 37.5%"
+    },
+    {
+      "code": "MEDIAN_OF_TOO_FEW",
+      "severity": "error",
+      "measure_id": "M-SYN-005",
+      "message": "a median of 2 observation(s) is the observation(s) themselves dressed as a statistic",
+      "restatement": "list the 2.5, 9 hours observed"
+    },
+    {
+      "code": "COMPONENT_UNKNOWN",
+      "severity": "error",
+      "measure_id": "M-SYN-007",
+      "message": "component(s) suppressed were never recorded, so the total cannot be checked; they are not treated as zero",
+      "restatement": "record the missing component(s) or report the total as UNKNOWN"
+    },
+    {
+      "code": "COMPONENT_SUM_MISMATCH",
+      "severity": "error",
+      "measure_id": "M-SYN-008",
+      "message": "components total 11 but the stated total is 12",
+      "restatement": "reconcile to 11 or correct the components"
+    },
+    {
+      "code": "EMPTY_DENOMINATOR",
+      "severity": "error",
+      "measure_id": "M-SYN-009",
+      "message": "the denominator is zero: nothing was observed, so no proportion exists",
+      "restatement": "report UNKNOWN; zero observations is not zero percent"
+    },
+    {
+      "code": "NUMERATOR_UNKNOWN",
+      "severity": "error",
+      "measure_id": "M-SYN-010",
+      "message": "the denominator is 20 but the numerator was never recorded; this measure stays UNKNOWN rather than defaulting to zero",
+      "restatement": ""
+    },
+    {
+      "code": "FALSE_PRECISION",
+      "severity": "warning",
+      "measure_id": "M-SYN-004",
+      "message": "reported to 0 decimal place(s), implying a resolution of 1 percentage points, but 8 observations can only resolve steps of 12.50 points",
+      "restatement": "0 of 8 (about 0%)"
+    },
+    {
+      "code": "MEDIAN_OF_FEW",
+      "severity": "warning",
+      "measure_id": "M-SYN-006",
+      "message": "a median of 4 observations carries a wide spread (1 to 11 days)",
+      "restatement": "median over n=4, range 1-11 days"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+sample soundness
+========================================================================
+measures checked : 4
+result           : PASS  (0 error, 0 warning)
+
+  Every measure states a denominator, claims no more precision than its
+  data can resolve, and is scoped to what was actually examined.

@@ -1,0 +1,40 @@
+sample soundness
+========================================================================
+measures checked : 10
+result           : FAIL  (10 error, 2 warning)
+
+  [error] FALSE_PRECISION  M-SYN-001
+      reported to 1 decimal place(s), implying a resolution of 0.1 percentage points, but 12 observations can only resolve steps of 8.33 points
+      say instead: 7 of 12 (about 58%)
+  [error] SAMPLE_STATED_AS_POPULATION  M-SYN-001
+      this is phrased about the population but the sample is CONVENIENCE; a convenience sample does not license a statement about everything
+      say instead: of the 12 sampled change records with a single approval examined, 7 ...
+  [error] DENOMINATOR_TOO_SMALL  M-SYN-002
+      a percentage from 4 observations invites the reader to generalise from 4 observations; one record changing moves this figure by 25.0 percentage points
+      say instead: 3 of 4 services with a documented runbook
+  [error] PERCENTAGE_WITHOUT_DENOMINATOR  M-SYN-003
+      a proportion is reported with no denominator; the reader cannot tell whether it came from 4 records or 4,000, and an absent denominator is not the same as a large one
+      say instead: state the denominator, or report the numerator as a count
+  [error] ZERO_OBSERVED_AS_ABSENCE  M-SYN-004
+      zero occurrences in 8 observations is not evidence that the rate is zero; it is consistent with a rate as high as about 37.5%
+      say instead: 0 of 8 observed; consistent with an underlying rate up to about 37.5%
+  [error] MEDIAN_OF_TOO_FEW  M-SYN-005
+      a median of 2 observation(s) is the observation(s) themselves dressed as a statistic
+      say instead: list the 2.5, 9 hours observed
+  [error] COMPONENT_UNKNOWN  M-SYN-007
+      component(s) suppressed were never recorded, so the total cannot be checked; they are not treated as zero
+      say instead: record the missing component(s) or report the total as UNKNOWN
+  [error] COMPONENT_SUM_MISMATCH  M-SYN-008
+      components total 11 but the stated total is 12
+      say instead: reconcile to 11 or correct the components
+  [error] EMPTY_DENOMINATOR  M-SYN-009
+      the denominator is zero: nothing was observed, so no proportion exists
+      say instead: report UNKNOWN; zero observations is not zero percent
+  [error] NUMERATOR_UNKNOWN  M-SYN-010
+      the denominator is 20 but the numerator was never recorded; this measure stays UNKNOWN rather than defaulting to zero
+  [warning] FALSE_PRECISION  M-SYN-004
+      reported to 0 decimal place(s), implying a resolution of 1 percentage points, but 8 observations can only resolve steps of 12.50 points
+      say instead: 0 of 8 (about 0%)
+  [warning] MEDIAN_OF_FEW  M-SYN-006
+      a median of 4 observations carries a wide spread (1 to 11 days)
+      say instead: median over n=4, range 1-11 days
