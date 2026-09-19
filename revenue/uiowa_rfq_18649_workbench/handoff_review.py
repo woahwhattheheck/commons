@@ -232,7 +232,7 @@ def reconcile(report: Any, handoffs: list[tuple[str, Any]]) -> dict[str, Any]:
             raise ReviewError("labels must be unique ASCII identifiers of 1-64 characters")
         notes = _handoff_notes(document, report, cells)
         reviewed[label] = notes
-n        normalized = dict(document, cell_notes=[notes[key] for key in CELLS])
+        normalized = dict(document, cell_notes=[notes[key] for key in CELLS])
         content_sha = digest(normalized)
         inputs.append({"label": label, "normalized_handoff_sha256": content_sha})
         content_groups.setdefault(content_sha, []).append(label)
