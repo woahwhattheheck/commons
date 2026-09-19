@@ -514,6 +514,64 @@ def render_markdown(report, plan, deck, findings):
     return "\n".join(out) + "\n"
 
 
+
+
+# ---------------------------------------------------------------- provenance
+
+# Why this exists: the Markdown and ASCII outputs of this lane carried their
+# provenance notice; the CSVs did not. A CSV is the most portable artifact here
+# and the one most likely to be lifted out of the bundle and opened alone --
+# which is exactly how a fictional number ends up quoted as a real finding.
+#
+# The requirement is a PROVENANCE statement, not a fiction label. A real
+# measurement must not be stamped synthetic, and an artifact whose source says
+# nothing must not be stamped either way: it is reported as undeclared.
+
+PROVENANCE_PREFIX = "# PROVENANCE: "
+UNDECLARED_PROVENANCE = ("PROVENANCE NOT DECLARED IN SOURCE. Do not treat these rows as "
+                         "real or as synthetic until the source declares which.")
+
+
+def provenance_statement(*metas):
+    """An explicit provenance wins; a fiction notice implies synthetic; silence
+    is reported as undeclared rather than assumed in either direction."""
+    for meta in metas:
+        if isinstance(meta, dict) and str(meta.get("provenance", "")).strip():
+            return " ".join(str(meta["provenance"]).split())
+    for meta in metas:
+        if isinstance(meta, dict) and str(meta.get("fiction_notice", "")).strip():
+            return "SYNTHETIC. " + " ".join(str(meta["fiction_notice"]).split())
+    return UNDECLARED_PROVENANCE
+
+
+def write_provenance(fh, statement):
+    """One banner line, then the header row. A '#' first line is the convention
+    the rest of the kit uses, and read_csv_rows() below strips it, so the banner
+    cannot break machine parsing."""
+    fh.write(PROVENANCE_PREFIX + statement.replace("\r", " ").replace("\n", " ") + "\n")
+
+
+def read_csv_rows(path):
+    """The documented reader contract for these CSVs.
+
+    Returns (provenance_statement_or_None, list_of_dict_rows). Leading '#' lines
+    are metadata, not data; everything after them parses as ordinary CSV.
+    """
+    with open(path, "r", newline="", encoding="utf-8") as fh:
+        lines = fh.read().split("\n")
+    statement, start = None, 0
+    for i, line in enumerate(lines):
+        if line.startswith("#"):
+            if statement is None and line.startswith(PROVENANCE_PREFIX):
+                statement = line[len(PROVENANCE_PREFIX):].strip()
+            start = i + 1
+        else:
+            break
+    body = "\n".join(lines[start:])
+    return statement, list(csv.DictReader(body.splitlines()))
+
+
+
 def write_csv(path, report, plan, deck, rec_phase_rule="last"):
     rv = report_view(report)
     pv = plan_view(plan, rec_phase_rule)
@@ -521,6 +579,8 @@ def write_csv(path, report, plan, deck, rec_phase_rule="last"):
     for sid, rec, phase in deck_phase_claims(deck):
         claims.setdefault(rec, []).append("%s=%s" % (sid, phase))
     with open(path, "w", newline="", encoding="utf-8") as fh:
+        write_provenance(fh, provenance_statement(
+            report.get("meta", {}), (plan or {}).get("meta", {}), (deck or {}).get("meta", {})))
         w = csv.writer(fh)
         w.writerow(["rec", "report_phase", "plan_phase", "deck_phase_claims",
                     "report_depends_on", "plan_depends_on", "agree"])

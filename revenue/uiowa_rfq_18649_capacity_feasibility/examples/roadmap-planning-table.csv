@@ -1,3 +1,4 @@
+# PROVENANCE: SYNTHETIC. FICTION. Northgate State University does not exist. Every item, estimate and prerequisite below is invented to exercise the dependency and capacity engine. Nothing here is a University of Iowa finding, recommendation, or plan.
 scenario,effort_point,capacity_multiplier,item,rec,title,owner_role,level,prerequisites,proposed_phase,scheduled_phase,moved_reason,effort_unknown
 constrained,high,0.75,RM-01,R-001,Record the approver pair on every IAM deployment,iam_service_owner,0,,0-90,0-90,,
 constrained,high,0.75,RM-02,R-001,Enforce the two-approval rule in the deployment pipeline,pipeline_engineer,1,RM-01,0-90,90-180,role capacity,

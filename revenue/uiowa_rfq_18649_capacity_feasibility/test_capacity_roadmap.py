@@ -468,9 +468,7 @@ class TestOutputs(Base):
         tmp = tempfile.mkdtemp()
         try:
             run_cli(["plan", "--items", ITEMS, "--capacity", CAPACITY, "--outdir", tmp])
-            import csv as _csv
-            with open(os.path.join(tmp, "roadmap-planning-table.csv"), encoding="utf-8") as fh:
-                rows = list(_csv.DictReader(fh))
+            _prov, rows = cr.read_csv_rows(os.path.join(tmp, "roadmap-planning-table.csv"))
             self.assertEqual(len(self.items["items"]) * len(self.capacity["scenarios"]), len(rows))
             self.assertTrue(any(r["scheduled_phase"] == cr.BEYOND_HORIZON for r in rows))
             self.assertTrue(any(r["effort_unknown"] for r in rows))
@@ -516,6 +514,95 @@ class TestOutputs(Base):
         static, _graph, results = cr.run(self.items, self.capacity)
         used = codes(cr.all_findings(static, results))
         self.assertTrue(used <= set(cr.RULES), "undocumented codes: %s" % (used - set(cr.RULES)))
+
+
+def GENERATE(outdir):
+    run_cli(["plan", "--items", ITEMS, "--capacity", CAPACITY, "--outdir", outdir])
+
+
+class TestCsvProvenance(unittest.TestCase):
+    """A CSV is the artifact most likely to be opened alone, away from the
+    README that says the numbers are fictional. These assert the banner is
+    there, that it does not break machine parsing, and that an undeclared
+    source is reported as undeclared rather than guessed in either direction.
+    """
+
+    def test_explicit_provenance_wins_over_a_fiction_notice(self):
+        got = cr.provenance_statement({"provenance": "MEASURED 2026-06-01, run log RL-12",
+                                        "fiction_notice": "FICTION."})
+        self.assertEqual("MEASURED 2026-06-01, run log RL-12", got)
+        self.assertNotIn("SYNTHETIC", got)
+
+    def test_a_fiction_notice_implies_synthetic(self):
+        got = cr.provenance_statement({"fiction_notice": "FICTION. Nothing here is real."})
+        self.assertTrue(got.startswith("SYNTHETIC."))
+
+    def test_silence_is_reported_as_undeclared_not_stamped_either_way(self):
+        got = cr.provenance_statement({}, {"title": "x"})
+        self.assertEqual(cr.UNDECLARED_PROVENANCE, got)
+        self.assertNotIn("SYNTHETIC", got)
+        self.assertIn("NOT DECLARED", got)
+
+    def test_an_explicit_declaration_wins_wherever_it_appears(self):
+        # An explicit provenance is the stronger statement, so it outranks an
+        # implied one even when it comes from a later source. Stamping a
+        # measured artifact SYNTHETIC because some other meta mentioned fiction
+        # would be as wrong as the reverse.
+        got = cr.provenance_statement({}, {"fiction_notice": "FICTION. b"}, {"provenance": "c"})
+        self.assertEqual("c", got)
+        self.assertNotIn("SYNTHETIC", got)
+
+    def test_newlines_cannot_break_the_banner_out_of_one_line(self):
+        import io as _io
+        buf = _io.StringIO()
+        cr.write_provenance(buf, "line one\nline two\r\nline three")
+        self.assertEqual(1, buf.getvalue().count("\n"))
+
+    def test_every_generated_csv_carries_the_banner_on_line_one(self):
+        tmp = tempfile.mkdtemp()
+        try:
+            GENERATE(tmp)
+            found = [n for n in sorted(os.listdir(tmp)) if n.endswith(".csv")]
+            self.assertTrue(found, "the generator should produce at least one CSV")
+            for name in found:
+                with open(os.path.join(tmp, name), encoding="utf-8") as fh:
+                    first = fh.readline()
+                self.assertTrue(first.startswith(cr.PROVENANCE_PREFIX),
+                                "%s line 1 is %r" % (name, first[:60]))
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)
+
+    def test_the_documented_reader_returns_the_banner_and_the_rows(self):
+        tmp = tempfile.mkdtemp()
+        try:
+            GENERATE(tmp)
+            for name in sorted(n for n in os.listdir(tmp) if n.endswith(".csv")):
+                statement, rows = cr.read_csv_rows(os.path.join(tmp, name))
+                self.assertTrue(statement, "%s carries no provenance statement" % name)
+                self.assertTrue(rows, "%s parsed to zero rows" % name)
+                for row in rows:
+                    for key in row:
+                        self.assertFalse(str(key).startswith("#"),
+                                         "%s: the banner leaked into the header" % name)
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)
+
+    def test_a_naive_reader_would_misparse_which_is_why_the_contract_exists(self):
+        # Documents the cost of the banner honestly: csv.DictReader straight at
+        # the file takes the banner as the header. read_csv_rows is the contract.
+        import csv as _csv
+        tmp = tempfile.mkdtemp()
+        try:
+            GENERATE(tmp)
+            name = sorted(n for n in os.listdir(tmp) if n.endswith(".csv"))[0]
+            with open(os.path.join(tmp, name), encoding="utf-8") as fh:
+                naive = list(_csv.DictReader(fh))
+            self.assertTrue(any(str(k).startswith("#") for k in (naive[0].keys() if naive else [])),
+                            "expected the naive read to take the banner as a header")
+            _statement, good = cr.read_csv_rows(os.path.join(tmp, name))
+            self.assertFalse(any(str(k).startswith("#") for k in good[0].keys()))
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)
 
 
 if __name__ == "__main__":

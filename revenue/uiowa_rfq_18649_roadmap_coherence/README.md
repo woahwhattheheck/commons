@@ -119,6 +119,24 @@ Both lanes pass their own checkers. The disagreement is real and is left reporte
 auto-corrected: which reading the report intends is a decision for whoever owns the report, and the
 tool does not make it.
 
+## CSV provenance
+
+Every CSV this lane writes carries a provenance statement as line 1:
+
+```
+# PROVENANCE: SYNTHETIC. FICTION. ...
+```
+
+A CSV is the most portable artifact here and the one most likely to be opened away from this
+README. The statement is taken from the source data's `meta.provenance`, or implied from a
+`meta.fiction_notice`; a source that declares neither produces
+`PROVENANCE NOT DECLARED IN SOURCE`, never a guess in either direction — the requirement is a
+provenance statement, not a fiction label, and a real measurement must not be stamped synthetic.
+
+The banner is a `#` line, so a reader that takes line 1 as the header will misparse. The
+documented contract is `read_csv_rows(path)`, which returns `(statement, rows)` and strips leading
+`#` metadata lines. A test asserts the naive read misparses and the contract does not.
+
 ## What is real and what is draft
 
 **Working now:** the thirteen rules, the graph checks, the prose parser, the three renderers, the

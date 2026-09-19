@@ -143,6 +143,24 @@ unused. A legend is printed at the top of every scenario.
 Every line is exactly 78 characters and pure ASCII; a test asserts the width, the ASCII-only
 property, and the absence of terminal colour escapes.
 
+## CSV provenance
+
+Every CSV this lane writes carries a provenance statement as line 1:
+
+```
+# PROVENANCE: SYNTHETIC. FICTION. ...
+```
+
+A CSV is the most portable artifact here and the one most likely to be opened away from this
+README. The statement is taken from the source data's `meta.provenance`, or implied from a
+`meta.fiction_notice`; a source that declares neither produces
+`PROVENANCE NOT DECLARED IN SOURCE`, never a guess in either direction — the requirement is a
+provenance statement, not a fiction label, and a real measurement must not be stamped synthetic.
+
+The banner is a `#` line, so a reader that takes line 1 as the header will misparse. The
+documented contract is `read_csv_rows(path)`, which returns `(statement, rows)` and strips leading
+`#` metadata lines. A test asserts the naive read misparses and the contract does not.
+
 ## What is real and what is draft
 
 **Real and working now:** the graph algorithms, all fifteen rules, both planners, the renderers,

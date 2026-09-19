@@ -1,3 +1,4 @@
+# PROVENANCE: SYNTHETIC. FICTION. Northgate State University does not exist. Every item, estimate and prerequisite below is invented to exercise the dependency and capacity engine. Nothing here is a University of Iowa finding, recommendation, or plan.
 scenario,view,role,phase,capacity,demand_known,unknown_items,verdict,shortfall,headroom
 constrained,proposed,change_management_lead,0-90,30.0,0.0,,FEASIBLE,,30.0
 constrained,proposed,change_management_lead,90-180,45.0,0.0,,FEASIBLE,,45.0

@@ -1,3 +1,4 @@
+# PROVENANCE: SYNTHETIC. FICTION. Built only to exercise the deck-agreement engine against the example report. Not a University of Iowa readout and not a real assessment result.
 slide_id,section,track,minutes,title,claim_index,claim_type,cites,cited_kind,measure,deck_value,report_value,unit,agreement,appendix_support,evidence
 S-01,purpose,core,3,Why we are in this room,,,,,,,,,NO-CLAIMS,,
 S-02,evidence,core,4,What this rests on,0,evidence,EV-004,evidence,,,,,LINK-ONLY,S-A1,
