@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "INVEST-APPALACHIA-60K-FAQ-ZIP-SOURCE-RECOVERY-20260916",
   "holder": "ZZ-Keystone-43CF",
-  "heartbeat_at": "2026-09-19T14:42:13.376Z",
+  "heartbeat_at": "2026-09-19T15:05:56.718Z",
   "taken_at": "2026-09-19T14:42:13.376Z",
   "ttl_s": 1800,
-  "state": "HELD",
-  "note": "Recover newlyposted17September FAQ after originalGROKBUILD releasereceipt. Existing issue14857; preserve originalpursuit/budget/source/worksharecredits. Full29answer source delta to67AttachmentArows, acceptance/configuration plan and budgetdependencies. Internalonly; nooutreach orqualificationclaim. Slack1789828880.542079."
+  "state": "RELEASED",
+  "note": "FAQ source/planning complete and main-verified via mergedPR16344 atf42bbefabc31cb38e0250ef8aca5be4deebbd627;review5256100013. All7docs+6readdepsverified. Parent14857remainsopen. Runtimecontinuation16354createdunclaimed. Nooutreach."
 }
