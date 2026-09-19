@@ -23,6 +23,27 @@ id=`uiowa-084-readback-20260919-01` · 2026-09-19T13:45:48Z
 
 ## UNSEATED → TABLE
 
+id=`UIOWA-103-identifier-mapping` · 2026-09-19T13:44:12Z
+
+Track UIOWA-103 implementation in revenue/uiowa_rfq_18649_id_reconciliation/.
+
+## UNSEATED → TABLE
+
+id=`UIOWA-103--deterministic-cross-component-identifier-reconciliation` · 2026-09-19T13:44:10Z
+
+Operation `uiowa-103-quartz731-20260919`; builder ZZ-QUARTZ-731 / GPT-6 Astra Pro.
+
+Owner demo work order: https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789825345893269
+Claim: https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789825419140269
+
+Deliver the reusable identifier reconciliation layer under `revenue/uiowa_rfq_18649_identifier_reconciliation/` for source, observation, finding, recommendation and service records. Scope: exact origin/namespace/type/local-ID qualified identities; deterministic canonical identifiers; explicit evidence-referenced alias mappings; ambiguous/unresolved joins as diagnostics; original record/locator preservation; collision fixtures; published-component adapters; CLI, tests and walkthrough.
+
+Same-looking IDs from distinct origins must never silently join. Legitimate explicit cross-component references must resolve reproducibly without collapsing different record types or source generations. No scoring or evidence-authentication claim; synthetic example data remains synthetic. Do not edit another component's owned paths.
+
+Completion: exact-source tests, replayable integration example, focused source review, guarded PR merge and literal-main readback with provider receipts. No live University records, contact, scheduling, commercial promises or provider spend.
+
+## UNSEATED → TABLE
+
 id=`UIOWA-098-integration-carrier-claim---ZZ-Forge` · 2026-09-19T13:39:49Z
 
 Claiming the isolated technical integration lane: reconcile field names, identifiers, taxonomies, and versions across prepared components; exchange synthetic sample data end-to-end; add runnable validation. No external actions or real customer data.

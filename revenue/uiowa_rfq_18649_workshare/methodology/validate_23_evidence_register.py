@@ -10,11 +10,11 @@ from pathlib import Path
 
 REQUIRED = {
     "evidence_id", "observation_id", "finding_id", "group", "area",
-    "source_type", "source_ref", "captured_at", "represented_period",
-    "claim", "scope_limit", "directness", "recency", "representativeness",
-    "corroboration", "evidence_state", "confidence", "conflict_group",
-    "universe_definition", "enumerator_authority", "completeness_basis",
-    "follow_up",
+    "source_type", "source_ref", "custodian_or_owner", "content_digest",
+    "captured_at", "represented_period", "claim", "scope_limit", "directness",
+    "recency", "representativeness", "corroboration", "evidence_state",
+    "confidence", "conflict_group", "universe_definition",
+    "enumerator_authority", "completeness_basis", "follow_up",
 }
 GROUPS = {"ESS", "RIS", "IAM"}
 AREAS = {"SD", "SEC", "DEP", "AI"}
@@ -30,10 +30,13 @@ STATES = {
     "SUPPORTING", "CONFLICTING", "EVIDENCE_OF_ABSENCE", "NO_EVIDENCE_OBSERVED"
 }
 CONFIDENCE = {"HIGH", "MODERATE", "LOW", "UNRESOLVED", "NOT_EVIDENCED"}
+UNKNOWN_CUSTODIAN = "UNKNOWN_SYNTHETIC_CUSTODIAN"
+NOT_RETAINED_DIGEST = "NOT_RETAINED_SYNTHETIC_SOURCE"
 
 EV_RE = re.compile(r"^EV-SYN-(ESS|RIS|IAM)-(SD|SEC|DEP|AI)-[A-Z]+-[0-9]{3}$")
 OBS_RE = re.compile(r"^OBS-SYN-(ESS|RIS|IAM)-(SD|SEC|DEP|AI)-[0-9]{3}$")
 FND_RE = re.compile(r"^FND-SYN-(ESS|RIS|IAM)-(SD|SEC|DEP|AI)-[0-9]{3}$")
+SHA256_RE = re.compile(r"^sha256:[0-9a-fA-F]{64}$")
 
 
 def _enum(row_num, field, value, allowed, errors):
@@ -76,11 +79,22 @@ def validate(path: Path) -> list[str]:
             _enum(row_num, "confidence", row["confidence"], CONFIDENCE, errors)
 
             for field in (
-                "source_type", "source_ref", "captured_at", "represented_period",
-                "claim", "scope_limit", "follow_up"
+                "source_type", "source_ref", "custodian_or_owner", "content_digest",
+                "captured_at", "represented_period", "claim", "scope_limit", "follow_up"
             ):
                 if not row[field].strip():
                     errors.append(f"row {row_num}: {field} must not be blank")
+
+            content_digest = row["content_digest"].strip()
+            if (
+                content_digest
+                and content_digest != NOT_RETAINED_DIGEST
+                and not SHA256_RE.fullmatch(content_digest)
+            ):
+                errors.append(
+                    f"row {row_num}: content_digest must be sha256:<64 hex> "
+                    f"or {NOT_RETAINED_DIGEST}"
+                )
 
             if row["recency"] == "STALE" and row["confidence"] == "HIGH":
                 errors.append(f"row {row_num}: stale evidence cannot be HIGH confidence")
