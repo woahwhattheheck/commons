@@ -651,10 +651,22 @@ def write_bundle(document: Any, output_dir: str | os.PathLike[str], *, clock: Ca
             lock_fd = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
         except FileExistsError as exc:
             raise IntakeError("output publication is already in progress") from exc
-        if out.exists():
-            raise IntakeError("output directory already exists")
-        # The lock makes this no-replace publication exclusive for cooperating writers.
-        os.rename(stage, out)
+        # Reserve the final destination atomically.  A check-then-rename is
+        # insufficient here: POSIX rename may replace an empty directory created
+        # by a non-cooperating writer between the existence check and rename.
+        try:
+            out.mkdir()
+        except FileExistsError as exc:
+            raise IntakeError("output directory already exists") from exc
+        published = False
+        try:
+            for name in ("record.json", "routing.md", "manifest.json"):
+                os.rename(stage / name, out / name)
+            published = True
+        finally:
+            if not published:
+                shutil.rmtree(out, ignore_errors=True)
+        shutil.rmtree(stage)
         stage = Path()
         return record
     finally:
