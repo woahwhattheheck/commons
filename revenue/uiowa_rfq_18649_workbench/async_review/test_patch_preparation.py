@@ -5,6 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 import prepare_native_fixture_patch as native
+import make_saved_draft_fix as reference
 
 ROOT = Path(__file__).resolve().parent
 
@@ -36,9 +37,15 @@ class PatchPreparationTests(unittest.TestCase):
             original = (ROOT / 'composed_app.js').read_bytes()
             self.assertEqual(native.git_blob(original), '808a89401a7978c4897feb351aee231adcba8dd6')
             path.write_bytes(original)
-            subprocess.run(['git','apply','--check',str(ROOT/'saved_draft_utf8.patch')],cwd=root,check=True,capture_output=True)
-            subprocess.run(['git','apply',str(ROOT/'saved_draft_utf8.patch')],cwd=root,check=True,capture_output=True)
-            self.assertEqual(path.read_bytes(), (ROOT/'fixed_app.js').read_bytes())
+            expected, patch = reference.derive(original)
+            retained = (ROOT/'saved_draft_complete.patch').read_text().split('--- a/revenue/uiowa_rfq_18649_workbench/test_app.js')[0]
+            self.assertEqual(patch, retained)
+            patch_path = root/'reference.patch'
+            patch_path.write_bytes(patch.encode('utf-8'))
+            subprocess.run(['git','apply','--check',str(patch_path)],cwd=root,check=True,capture_output=True)
+            subprocess.run(['git','apply',str(patch_path)],cwd=root,check=True,capture_output=True)
+            self.assertEqual(path.read_bytes(), expected)
+            self.assertEqual(native.git_blob(expected), reference.FIXED_BLOB)
 
     def test_normal_and_delayed_node_doubles_return_exact_bytes(self):
         source = native.rewrite('test_app.js', NODE_SEAMS)
@@ -84,7 +91,7 @@ class PatchPreparationTests(unittest.TestCase):
 
     def test_repair_only_touches_saved_import(self):
         before = (ROOT/'composed_app.js').read_text()
-        after = (ROOT/'fixed_app.js').read_text()
+        after = reference.derive((ROOT/'composed_app.js').read_bytes())[0].decode('utf-8')
         left,rest=before.split('async function importDraft()',1)
         new_left,new_rest=after.split('async function importDraft()',1)
         self.assertEqual(left,new_left)
