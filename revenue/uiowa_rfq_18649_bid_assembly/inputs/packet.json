@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "title": "Bid assembly | Technical review draft",
+  "source": {
+    "filename": "COMMERCIAL.md",
+    "sha256": "90eb2c80bd1063bc87359e0ee69989dc1f7dc390cf7e66bf9591d15cfa885f86",
+    "git_blob_sha": "b6e9ca58984c15d96b497f3bb51000992fdb9b5f",
+    "repository_path": "revenue/uiowa_rfq_18649_workshare/COMMERCIAL.md",
+    "retrieved_on": "2026-09-19"
+  },
+  "requirements": [
+    {
+      "id": "proposal",
+      "locator": "p.2; attribute 9, p.9",
+      "requirement": "Required proposal upload; complete prime narrative has not been supplied.",
+      "status": "PARTIAL"
+    },
+    {
+      "id": "financials",
+      "locator": "p.2; attribute 19, p.11",
+      "requirement": "Required audited statements and annual reports for the preceding two years. None supplied.",
+      "status": "MISSING"
+    },
+    {
+      "id": "references",
+      "locator": "attribute 10, p.9",
+      "requirement": "Three references with genuine organization and contact information. None supplied.",
+      "status": "MISSING"
+    },
+    {
+      "id": "team",
+      "locator": "attributes 9 and 11, pp.9-10",
+      "requirement": "Named management and consultants, qualifications and involvement. None supplied.",
+      "status": "MISSING"
+    },
+    {
+      "id": "fee",
+      "locator": "attribute 9, p.9",
+      "requirement": "Prime fixed fee includes the scope and expected expenses; subcontract workshare is not this fee.",
+      "status": "MISSING"
+    },
+    {
+      "id": "exceptions",
+      "locator": "attribute 15, p.11",
+      "requirement": "No-exceptions language can constitute certification. Do not auto-fill an affirmative answer.",
+      "status": "REVIEW_REQUIRED"
+    },
+    {
+      "id": "agency-docs",
+      "locator": "p.2, Bid Attachments; attribute 16, p.11",
+      "requirement": "Agency PSA/travel addendum and standard terms are reference documents, not invented bidder evidence.",
+      "status": "REFERENCE_ONLY"
+    }
+  ]
+}
