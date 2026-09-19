@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 187,
     "open_pull_requests": 171,
-    "runs_in_progress": 17,
-    "runs_queued": 701
+    "runs_in_progress": 15,
+    "runs_queued": 614
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -40,7 +40,7 @@
       "head_sha": "9d94a9eadd3734f86753709b954e7a38385157f9",
       "number": 15631,
       "title": "ARC3 SAGE: close exact-evidence ambiguity and abstract lookahead (#14735)",
-      "updated_at": "2026-09-19T14:55:38Z"
+      "updated_at": "2026-09-19T19:23:34Z"
     },
     {
       "author": "woahwhattheheck",
@@ -352,7 +352,7 @@
   },
   "pulls_listed": 171,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 41.2,
+  "queue_depth_per_runner": 40.9,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -368,13 +368,101 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zz-trellis/lloyds-mortgage-recon-20260919",
-      "closed_at": "2026-09-19T18:55:27Z",
-      "head_sha": "e392b75b35ffa0e5fcb97fa1e028a393475ee271",
-      "merged_at": null,
-      "number": 16457,
-      "state": "CLOSED",
-      "title": "Superseded by private SMB #1557: complete mortgage case reconciliation workflow"
+      "branch": "quartz-c17/uiowa-actual-compiler-rehearsal-20260919",
+      "closed_at": "2026-09-19T15:37:39Z",
+      "head_sha": "c10438119ab0d3619eabe4ee0375796d74ddaee9",
+      "merged_at": "2026-09-19T15:37:39Z",
+      "number": 16402,
+      "state": "MERGED",
+      "title": "UIOWA: runnable actual-compiler to recipient transport delivery"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-kestrel73/delivery-binding-audit-20260919",
+      "closed_at": "2026-09-19T15:35:56Z",
+      "head_sha": "b0663d23790e78f044cb1a4f350f983512960432",
+      "merged_at": "2026-09-19T15:35:56Z",
+      "number": 16403,
+      "state": "MERGED",
+      "title": "Retain independent delivery binding and evidence-order audit after #15942"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz/traceforge-uiowa015-research-20260919",
+      "closed_at": "2026-09-19T15:31:41Z",
+      "head_sha": "3265c69641f60efff05d2240a3b56b0161231008",
+      "merged_at": "2026-09-19T15:31:41Z",
+      "number": 16396,
+      "state": "MERGED",
+      "title": "UIOWA-015: integrate complete peer research and facilitator walkthrough (docs only)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/async14-browser-review-20260919",
+      "closed_at": "2026-09-19T15:29:59Z",
+      "head_sha": "4691a9720686a6f30a9c689df761fa4579418621",
+      "merged_at": "2026-09-19T15:29:59Z",
+      "number": 16297,
+      "state": "MERGED",
+      "title": "test(uiowa): recover browser timing review and saved-draft UTF-8 repair evidence"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-lantern47r-incident-review-guide-20260919",
+      "closed_at": "2026-09-19T15:29:28Z",
+      "head_sha": "1f1a39ee3096930d11cf64bf3586b74143307157",
+      "merged_at": "2026-09-19T15:29:28Z",
+      "number": 16390,
+      "state": "MERGED",
+      "title": "UIOWA-067: deliver the complete incident-review walkthrough without runtime promotion"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-quartz-731/roadmap-worked-review-20260919",
+      "closed_at": "2026-09-19T15:28:02Z",
+      "head_sha": "e11a62838fe203affbc6f6bd9e919c3dfde3bcb4",
+      "merged_at": "2026-09-19T15:28:02Z",
+      "number": 16377,
+      "state": "MERGED",
+      "title": "UIOWA roadmap: land four-case facilitator review instrument"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz-lodestone47r8-rating-reader-20260919",
+      "closed_at": "2026-09-19T15:27:20Z",
+      "head_sha": "763c93ecfab94c24749cb598f39d2ac290fe852d",
+      "merged_at": "2026-09-19T15:27:20Z",
+      "number": 16386,
+      "state": "MERGED",
+      "title": "UIOWA-022: add executed five-case analyst walkthrough"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-tessera46/uiowa-129-timestamps-20260919",
+      "closed_at": "2026-09-19T15:27:03Z",
+      "head_sha": "9a73adbd054b0687267c7e5236ec8b6039b8ced9",
+      "merged_at": "2026-09-19T15:27:02Z",
+      "number": 16281,
+      "state": "MERGED",
+      "title": "UIOWA-129: DST-safe timestamp adapter with real delivery-calculator integration"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-celadon-r9-staging-replay-20260919",
+      "closed_at": "2026-09-19T15:26:47Z",
+      "head_sha": "35d90a9d8204fe4efd0950f091e7b83a808c1201",
+      "merged_at": "2026-09-19T15:26:47Z",
+      "number": 16381,
+      "state": "MERGED",
+      "title": "UIOWA-064: independent staging-failure replay with executable negative controls"
     },
     {
       "author": "woahwhattheheck",
@@ -430,98 +518,10 @@
       "number": 16373,
       "state": "MERGED",
       "title": "UIOWA-129: recover source-preserving report I/O and byte-bound CSV provenance"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-kestrel-m7q2/aidt-delivery-plan-20260919",
-      "closed_at": "2026-09-19T15:17:36Z",
-      "head_sha": "66730c01ad758125b30a2a2d8eabd62542898c07",
-      "merged_at": "2026-09-19T15:17:36Z",
-      "number": 16368,
-      "state": "MERGED",
-      "title": "AIDT: migration cutover and interoperability delivery plans with executed example"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/zz-kestrel-v9-uiowa035-integrity-20260919",
-      "closed_at": "2026-09-19T15:16:59Z",
-      "head_sha": "a1c3d2b35e1dbc3c174601c1130555f07671e70c",
-      "merged_at": "2026-09-19T15:16:59Z",
-      "number": 16369,
-      "state": "MERGED",
-      "title": "UIOWA-035: integrate editable matrix, lossless exports and strict input handling"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa100-retained-review-kestrel-q9f2",
-      "closed_at": "2026-09-19T15:16:30Z",
-      "head_sha": "5888bcf68f67361b393e412a2bb1930df3dfbc93",
-      "merged_at": "2026-09-19T15:16:30Z",
-      "number": 16372,
-      "state": "MERGED",
-      "title": "UIOWA-100: recover independent integrity regressions and exact replay donor"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "swarm-zz/uiowa124-faraday-k9vx",
-      "branch": "swarm-zz/uiowa124-duplicate-diagnostics-keystone-k4j9",
-      "closed_at": "2026-09-19T15:15:50Z",
-      "head_sha": "718358e4d709a6a3b2eefb467d931e271331ffed",
-      "merged_at": "2026-09-19T15:15:50Z",
-      "number": 16364,
-      "state": "MERGED",
-      "title": "fix(uiowa124): retain native duplicate validation diagnostics"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-kestrel-vector91/source-binding-walkthrough-20260919",
-      "closed_at": "2026-09-19T15:11:21Z",
-      "head_sha": "5fbf0985bee62c18bc4bc5d5dd9c995614d38999",
-      "merged_at": "2026-09-19T15:11:21Z",
-      "number": 16361,
-      "state": "MERGED",
-      "title": "Explain five executed deployment-source decisions for operators"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "tooling/quartz-m7r4-full-source-target-20260919",
-      "branch": "tooling/quartz-m7r4-event-patch-fragment-20260919",
-      "closed_at": "2026-09-19T15:08:42Z",
-      "head_sha": "d9e12cc1f0bc4c2874f3de3130746e4fdea27879",
-      "merged_at": null,
-      "number": 16360,
-      "state": "CLOSED",
-      "title": "TOOLING ONLY: apply completion-event patch to complete source for #16289"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-trellis/uiowa-014-research-docs-20260919",
-      "closed_at": "2026-09-19T15:07:29Z",
-      "head_sha": "a4c5ab5cb146e0cf38d2e1d4b1f9679323e0abc3",
-      "merged_at": "2026-09-19T15:07:29Z",
-      "number": 16358,
-      "state": "MERGED",
-      "title": "UIOWA-014: land peer methodology and actual comparison narrative"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/halyard86-uiowa095-operator-notes",
-      "closed_at": "2026-09-19T15:05:52Z",
-      "head_sha": "5a96f2930744d9cc83880c20d0f825b1eed68ab5",
-      "merged_at": "2026-09-19T15:05:52Z",
-      "number": 16352,
-      "state": "MERGED",
-      "title": "UIOWA-095: publish operator preservation guide and executed repair evidence"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T19:22:34Z",
+  "unchanged_since": "2026-09-19T19:42:09Z",
   "undatable_pulls": []
 }
