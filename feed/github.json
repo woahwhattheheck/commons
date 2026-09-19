@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 172,
-    "open_pull_requests": 68,
-    "runs_in_progress": 15,
-    "runs_queued": 305
+    "open_pull_requests": 73,
+    "runs_in_progress": 17,
+    "runs_queued": 346
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,90 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "swarm/anvil101-component-catalog-20260919",
+      "created_at": "2026-09-19T13:51:13Z",
+      "draft": false,
+      "head_sha": "4479a19b6ddf92fc2b7169fe8ee0714d007ad285",
+      "number": 16203,
+      "title": "UIOWA-101: verified component entry-point catalog",
+      "updated_at": "2026-09-19T13:51:13Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/uiowa-054-quartz7n4",
+      "created_at": "2026-09-19T13:51:02Z",
+      "draft": false,
+      "head_sha": "3008283dd9ae994dc1d484478d8bab30b0af5cdc",
+      "number": 16201,
+      "title": "UIOWA-054: executable service-identity lifecycle assessment kit",
+      "updated_at": "2026-09-19T13:51:02Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/copperfinch-peer-evidence-20260919",
+      "created_at": "2026-09-19T13:50:18Z",
+      "draft": false,
+      "head_sha": "61413ae2d02c076dbf711c3c21e0893793d8266e",
+      "number": 16198,
+      "title": "UIowa: source-linked peer evidence comparability compiler and rehearsal",
+      "updated_at": "2026-09-19T13:50:18Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-trellis/uiowa-083-themes-20260919",
+      "created_at": "2026-09-19T13:50:09Z",
+      "draft": false,
+      "head_sha": "20c0367d07a50a798a0b6ce7041f0cf431648b17",
+      "number": 16196,
+      "title": "UIOWA-083: reusable cross-group theme pack and three evidence-linked narratives",
+      "updated_at": "2026-09-19T13:50:09Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/uiowa-033-orbit47-evidence-lineage",
+      "created_at": "2026-09-19T13:49:58Z",
+      "draft": false,
+      "head_sha": "3ad5cd41a20124eb74428400de58dfaa4ae4154d",
+      "number": 16195,
+      "title": "UIOWA-033: executable evidence duplicate/version reconciliation and citation impact",
+      "updated_at": "2026-09-19T13:49:58Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "solstice-zz/actions-merge-train-15958-final",
+      "branch": "review/cormorant52r-16152-latest-attempts",
+      "created_at": "2026-09-19T13:49:19Z",
+      "draft": false,
+      "head_sha": "c5654c330d349c6fb98c6f455c897251c34c539e",
+      "number": 16193,
+      "title": "CI review delta: retain distinct latest-run holds and 36-pair regressions",
+      "updated_at": "2026-09-19T13:49:19Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/quartz-report-diff-20260919",
+      "created_at": "2026-09-19T13:49:09Z",
+      "draft": false,
+      "head_sha": "ba061cccfdcdb634864c9e736d01f0d7979bea4d",
+      "number": 16191,
+      "title": "UIOWA: verified report revision diff and 12-cell review impact (ZZ-QUARTZ)",
+      "updated_at": "2026-09-19T13:49:09Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zz-kestrel-9a1a5dca/uiowa-049-debt",
       "created_at": "2026-09-19T13:48:31Z",
       "draft": false,
       "head_sha": "d50b57c6ac658fe4e110ad500a7101949edafb3b",
       "number": 16189,
       "title": "UIOWA-049: dependency-aware technical-debt investment calculator",
-      "updated_at": "2026-09-19T13:48:31Z"
+      "updated_at": "2026-09-19T13:50:29Z"
     },
     {
       "author": "woahwhattheheck",
@@ -86,7 +163,7 @@
       "head_sha": "1d868fb685c159716efc5c6a757b03de432e419c",
       "number": 16184,
       "title": "UIOWA-018: deliver student-systems peer context and ESS discovery pack",
-      "updated_at": "2026-09-19T13:47:57Z"
+      "updated_at": "2026-09-19T13:50:55Z"
     },
     {
       "author": "woahwhattheheck",
@@ -94,87 +171,10 @@
       "branch": "swarm-zz/uiowa-046-kestrel83-20260919",
       "created_at": "2026-09-19T13:45:57Z",
       "draft": false,
-      "head_sha": "89663eff20e3161677e79e08d3a14147cbca744c",
+      "head_sha": "4f9fdb429ab9e907745dbfe730c7e39a2da7e988",
       "number": 16175,
       "title": "UIOWA-046: test reliability and feedback-latency analysis kit",
-      "updated_at": "2026-09-19T13:45:57Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-kestrel47-handoff-review-20260919",
-      "created_at": "2026-09-19T13:45:53Z",
-      "draft": false,
-      "head_sha": "33e0de7c9bf641ff5e583bd9fde60b5ddd3cacb4",
-      "number": 16174,
-      "title": "feat(uiowa): receipt-bound multi-analyst review reconciliation",
-      "updated_at": "2026-09-19T13:45:53Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa-061-basalt-environment-drift",
-      "created_at": "2026-09-19T13:44:27Z",
-      "draft": false,
-      "head_sha": "87ee4ee6111dedf32e688bbb76f238a2eefc7d45",
-      "number": 16168,
-      "title": "UIOWA-061: executable environment consistency and drift assessment kit",
-      "updated_at": "2026-09-19T13:48:08Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa-delivery-bundle-kestrel73-20260919",
-      "created_at": "2026-09-19T13:43:34Z",
-      "draft": false,
-      "head_sha": "62196db447b7c0ade5c108d86ec19b71b3337f7f",
-      "number": 16160,
-      "title": "feat(uiowa): reproducible analyst handoff bundles with 41 transport tests",
-      "updated_at": "2026-09-19T13:43:34Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/zz-kestrel73-uiowa017-change-cases-20260919",
-      "created_at": "2026-09-19T13:42:00Z",
-      "draft": false,
-      "head_sha": "93d82f935488fe794a66a1a6892a8b166f74bb4f",
-      "number": 16156,
-      "title": "UIOWA-017: RIS integration/change cases and traceable interview evidence requests",
-      "updated_at": "2026-09-19T13:42:00Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "solstice-zz/actions-merge-train-15958-final",
-      "created_at": "2026-09-19T13:40:27Z",
-      "draft": false,
-      "head_sha": "88c1233afea677f48d09377e3e8fe81b160c5878",
-      "number": 16152,
-      "title": "CI: close merge-train completeness, import, and binary-I/O gaps",
-      "updated_at": "2026-09-19T13:47:59Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "codex/zz-keystone-43cf-draft-resume",
-      "created_at": "2026-09-19T13:39:29Z",
-      "draft": true,
-      "head_sha": "3ff9f17c677f39a617a3537d8a61c8b1e15085e9",
-      "number": 16145,
-      "title": "Iowa workbench: resume saved drafts and preserve newer analyst work",
-      "updated_at": "2026-09-19T13:39:29Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa-078-orbit27-ai-economics",
-      "created_at": "2026-09-19T13:38:13Z",
-      "draft": true,
-      "head_sha": "0d788098b9da196cab9efe387707672a86622516",
-      "number": 16134,
-      "title": "UIOWA-078 companion: formula workbook and independent economics acceptance oracle",
-      "updated_at": "2026-09-19T13:40:33Z"
+      "updated_at": "2026-09-19T13:49:12Z"
     }
   ],
   "open_heads": {
@@ -228,7 +228,6 @@
     "15953": "76a838d99f33d6acee4b73e7c833cd4da80f8caa",
     "15958": "288f1a3b73d9e07b7c55180c0c696ac0b95480ad",
     "15970": "7e7e8af26d481f78de8ecad7e525a43c1a338b10",
-    "16007": "39973588c9ad957221652e0e61dda4a728e7907b",
     "16012": "a08d73c13394cf6f1719befdb168065ec94381c8",
     "16015": "5c4e04aeccb9a02035cf0775750669180dde5521",
     "16047": "e5f30b4978379740e7631c4e33fd849878ff53e6",
@@ -241,16 +240,66 @@
     "16152": "88c1233afea677f48d09377e3e8fe81b160c5878",
     "16156": "93d82f935488fe794a66a1a6892a8b166f74bb4f",
     "16160": "62196db447b7c0ade5c108d86ec19b71b3337f7f",
-    "16168": "87ee4ee6111dedf32e688bbb76f238a2eefc7d45",
     "16174": "33e0de7c9bf641ff5e583bd9fde60b5ddd3cacb4",
-    "16175": "89663eff20e3161677e79e08d3a14147cbca744c",
+    "16175": "4f9fdb429ab9e907745dbfe730c7e39a2da7e988",
     "16184": "1d868fb685c159716efc5c6a757b03de432e419c",
-    "16189": "d50b57c6ac658fe4e110ad500a7101949edafb3b"
+    "16189": "d50b57c6ac658fe4e110ad500a7101949edafb3b",
+    "16191": "ba061cccfdcdb634864c9e736d01f0d7979bea4d",
+    "16193": "c5654c330d349c6fb98c6f455c897251c34c539e",
+    "16195": "3ad5cd41a20124eb74428400de58dfaa4ae4154d",
+    "16196": "20c0367d07a50a798a0b6ce7041f0cf431648b17",
+    "16198": "61413ae2d02c076dbf711c3c21e0893793d8266e",
+    "16201": "3008283dd9ae994dc1d484478d8bab30b0af5cdc",
+    "16203": "4479a19b6ddf92fc2b7169fe8ee0714d007ad285"
   },
-  "pulls_listed": 68,
+  "pulls_listed": 73,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 20.3,
+  "queue_depth_per_runner": 20.4,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "anchor-zz/uiowa-100-operator-handoff-20260919",
+      "closed_at": "2026-09-19T13:50:52Z",
+      "head_sha": "584426544f975dce21925a262f933a3d8864124c",
+      "merged_at": "2026-09-19T13:50:52Z",
+      "number": 16194,
+      "state": "MERGED",
+      "title": "UIOWA-100: add engagement-ready operator handoff"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grok/issue-16125",
+      "closed_at": "2026-09-19T13:50:20Z",
+      "head_sha": "b809887926bc42d0819e1cbdf788d4d222f0b913",
+      "merged_at": "2026-09-19T13:50:20Z",
+      "number": 16197,
+      "state": "MERGED",
+      "title": "UIOWA-096: typed evidence/report interchange transport"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-fenwick-r8/e2b-truth-narrow-main-20260918",
+      "closed_at": "2026-09-19T13:49:56Z",
+      "head_sha": "39973588c9ad957221652e0e61dda4a728e7907b",
+      "merged_at": "2026-09-19T13:49:56Z",
+      "number": 16007,
+      "state": "MERGED",
+      "title": "E2B executor: bounded archive execution and durable failure receipts"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/uiowa-061-basalt-environment-drift",
+      "closed_at": "2026-09-19T13:49:38Z",
+      "head_sha": "f56eb54a0cfc79df82deaa3e9f829d6d3b9fd76b",
+      "merged_at": "2026-09-19T13:49:38Z",
+      "number": 16168,
+      "state": "MERGED",
+      "title": "UIOWA-061: executable environment consistency and drift assessment kit"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -371,54 +420,10 @@
       "number": 16146,
       "state": "MERGED",
       "title": "UIOWA-087: improvement outcome-measurement pack"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "anchor-zz/uiowa-022-rating-composition-20260919",
-      "closed_at": "2026-09-19T13:40:48Z",
-      "head_sha": "a8792d17f80867cf608d68bbd8789985a65c2473",
-      "merged_at": "2026-09-19T13:40:48Z",
-      "number": 16126,
-      "state": "MERGED",
-      "title": "UIOWA-022: compose ratings without hiding uncertainty"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/anvil50-handoff-20260919",
-      "closed_at": "2026-09-19T13:40:35Z",
-      "head_sha": "413837a89ac300e21979355a28c468e1e89c6a68",
-      "merged_at": "2026-09-19T13:40:35Z",
-      "number": 16110,
-      "state": "MERGED",
-      "title": "UIOWA-050: development-to-operations handoff toolkit"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/zz-semaphore-uiowa-064-20260919-01",
-      "closed_at": "2026-09-19T13:39:15Z",
-      "head_sha": "400177f95a49760160702336867ccdb2b7628ae1",
-      "merged_at": "2026-09-19T13:39:15Z",
-      "number": 16142,
-      "state": "MERGED",
-      "title": "feat(uiowa): software delivery metrics calculator (UIOWA-064)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa-070-heliotrope-20260919",
-      "closed_at": "2026-09-19T13:39:02Z",
-      "head_sha": "9770af72d4e5d3124f12df08110961aaed62041a",
-      "merged_at": null,
-      "number": 16119,
-      "state": "CLOSED",
-      "title": "UIOWA-070: executable seasonal capacity and dependency planning kit"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T13:49:03Z",
+  "unchanged_since": "2026-09-19T13:51:15Z",
   "undatable_pulls": []
 }
