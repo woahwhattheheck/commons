@@ -1,0 +1,20 @@
+{
+  "synthetic": true,
+  "finding_evidence_roles": {
+    "F-001": {
+      "E-001": "supporting",
+      "E-002": "supporting",
+      "E-003": "supporting"
+    },
+    "F-002": {
+      "E-004": "supporting",
+      "E-005": "supporting",
+      "E-006": "counter_evidence"
+    },
+    "F-003": {
+      "E-007": "supporting",
+      "E-008": "context"
+    }
+  },
+  "note": "E-006 is counter-evidence to a broad interpretation that no checking occurs; F-002 itself is carefully limited to missing retained end-to-end evidence."
+}
