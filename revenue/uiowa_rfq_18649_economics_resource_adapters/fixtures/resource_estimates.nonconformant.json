@@ -1,0 +1,51 @@
+{
+  "schema_version": "uiowa-086-resource-estimate/1",
+  "fiction_notice": "DELIBERATELY BROKEN FIXTURE - FICTION. Every defect here is one a component author could plausibly ship by accident, so the checker's output can be demonstrated rather than described. Not a University file and not anybody's real component output.",
+  "work_items": [
+    {
+      "work_item_id": "WI-BAD-WORDS-001",
+      "label": "Effort recorded in words",
+      "recommendation_ids": ["REC-SYN-ESS-SD-001"],
+      "one_time_effort_hours": "high",
+      "recurring_effort_fte_per_year": {"low": 0.01, "likely": 0.02, "high": 0.04}
+    },
+    {
+      "work_item_id": "WI-BAD-PARTIAL-002",
+      "label": "Range missing its middle bound",
+      "recommendation_ids": ["REC-SYN-ESS-SD-001"],
+      "one_time_effort_hours": {"low": 20, "high": 60},
+      "recurring_effort_fte_per_year": {"low": 0.01, "likely": 0.02, "high": 0.04}
+    },
+    {
+      "work_item_id": "WI-BAD-BOOL-003",
+      "label": "Boolean where a number belongs",
+      "recommendation_ids": ["REC-SYN-IAM-SD-001"],
+      "one_time_effort_hours": {"low": 5, "likely": 10, "high": 20},
+      "recurring_effort_fte_per_year": true
+    },
+    {
+      "work_item_id": "WI-BAD-INVERTED-004",
+      "label": "Bounds the wrong way round",
+      "recommendation_ids": ["REC-SYN-IAM-SD-001"],
+      "one_time_effort_hours": {"low": 90, "likely": 40, "high": 15},
+      "recurring_effort_fte_per_year": {"low": 0.01, "likely": 0.02, "high": 0.04}
+    },
+    {
+      "work_item_id": "WI-BAD-WORDS-001",
+      "label": "Same identifier as the first record",
+      "recommendation_ids": ["REC-SYN-RIS-SD-001"],
+      "one_time_effort_hours": {"low": 1, "likely": 2, "high": 3},
+      "recurring_effort_fte_per_year": {"low": 0.01, "likely": 0.02, "high": 0.04}
+    },
+    {
+      "work_item_id": "WI-EXTENSION-005",
+      "label": "Carries fields the contract does not name, including cash",
+      "recommendation_ids": ["REC-SYN-RIS-SD-001"],
+      "one_time_effort_hours": 40,
+      "recurring_effort_fte_per_year": {"low": 0.01, "likely": 0.02, "high": 0.04},
+      "one_time_cash": {"low": 1000, "likely": 2000, "high": 4000},
+      "vendor_quote_reference": "Q-2026-0417",
+      "confidence": "medium"
+    }
+  ]
+}

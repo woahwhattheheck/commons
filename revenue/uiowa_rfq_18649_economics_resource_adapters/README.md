@@ -11,8 +11,19 @@ deterministic (no clock, no RNG, sorted traversal).
 
 ```
 python3 integrate.py
-python3 -m unittest test_integrate -v
+python3 -m unittest discover -p "test_*.py"     # 78 tests across the lane
 ```
+
+**Component authors — check your output before you land:**
+
+```
+python3 check_contract.py --explain  resource       # print the contract
+python3 check_contract.py --resource  your_086_output.json
+python3 check_contract.py --economics your_078_output.json
+python3 check_contract.py --portfolio your_072_output.json
+python3 check_contract.py --resource  your.json --json    # machine-readable
+```
+Exit status: `0` conformant, `1` non-conformant, `2` unusable input.
 
 Run from a staging copy, before this lane sits next to the others under `revenue/`:
 
@@ -122,7 +133,7 @@ just no longer counted.
 
 **Real and working:** the five typed ledgers, all three adapters, the merge with conflict
 detection, the three-view accounting, the UNKNOWN handling, all four output writers, and the
-45-test suite. The integrator runs against two components genuinely on `main` and produces the
+78-test suite (45 integration, 33 conformance checker). The integrator runs against two components genuinely on `main` and produces the
 files in `sample_output/`.
 
 **Draft / placeholder:** every number in `fixtures/`. The contract fixtures are shaped like
@@ -142,6 +153,42 @@ assertion. The recommendation register and portfolio are themselves synthetic co
    whether the screening figure or the build-up is right. The tool will not decide it.
 7. **Currency and any escalation assumption** — carried as declared by the economics component
    (`USD`, flat). This lane does not convert, inflate or discount.
+
+## `check_contract.py` — making the contract checkable by someone else
+
+The 105 receipt promised that when UIOWA-086 and UIOWA-078 land, pointing the adapters at their
+real output would say immediately whether the declared contract held. That promise initially
+rested on tests exercising fixtures written by the same hand as the adapter — which proves the
+adapter agrees with its author's guess, not that the contract is checkable by anybody else. This
+closes that gap.
+
+It reports a field-by-field verdict with exact JSON paths, **and** what the file would actually
+do once adapted — which of the five ledgers populate, which land as UNKNOWN, which records end up
+unmapped. A seat can see the downstream consequence of a schema choice before committing to it.
+
+**It fails on what breaks a join:** an estimate written in words, a partial range, a boolean where
+a number belongs, inverted bounds, a duplicate identifier, cash with no declared currency. Each
+failure names the record and the path, so it is fixable without reading the adapter source.
+
+**It tolerates what is harmless.** Unknown keys are reported as **carried extensions**, not
+errors — refusing a field somebody took the trouble to emit is hostile, and UIOWA-102's own
+completion criterion is that unsupported fields survive as explicit extensions rather than
+disappearing. A field belonging to a *different* component's contract (a cash figure in a
+resource file) is carried with a note saying which contract owns it and why it is not read here.
+A point estimate warns rather than fails.
+
+**The checker's own promise is tested.** `test_a_conformant_verdict_means_the_adapter_accepts_the_file`
+asserts that CONFORMANT implies the real adapter runs the file — a checker that waves a file
+through and then has the adapter refuse it is worse than no checker, because it sends a seat away
+believing their output works. There is also a self-check: if the rules all pass but the adapter
+still refuses, the output says *"the checker found no problem but the real adapter refused it —
+that is a checker bug"* rather than reporting a silent pass.
+`test_checker_self_reports_if_it_disagrees_with_the_adapter` proves that path fires.
+
+`fixtures/resource_estimates.nonconformant.json` and `fixtures/economics.nonconformant.json` are
+**deliberately broken fixtures** — every defect is one a component author could plausibly ship by
+accident, so the checker's output can be demonstrated rather than described. On the broken
+resource file it reports 5 fail, 1 warn, 3 info and exits 1.
 
 ## Handoff
 

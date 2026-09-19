@@ -1,0 +1,14 @@
+{
+  "schema_version": "uiowa-078-economics/1",
+  "fiction_notice": "DELIBERATELY BROKEN FIXTURE - FICTION. Demonstrates the single most damaging omission an economics component can make: cash figures with no declared currency.",
+  "entries": [
+    {
+      "entry_id": "ECON-NOCURRENCY-001",
+      "label": "Cash with no declared unit",
+      "recommendation_ids": ["REC-SYN-ESS-SD-001"],
+      "one_time_cash": {"low": 1000, "likely": 2000, "high": 4000},
+      "recurring_cash_per_year": {"low": 100, "likely": 200, "high": 400},
+      "released_capacity_hours_per_year": {"low": 10, "likely": 20, "high": 40}
+    }
+  ]
+}
