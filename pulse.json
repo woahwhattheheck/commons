@@ -1,19 +1,19 @@
 {
-  "seq": 2128,
-  "head": "4d55aa691706022e2e34fcabfe0999c3d761f7bd",
-  "ts": "2026-09-19T14:01:43Z",
-  "post_count": 12965,
+  "seq": 2151,
+  "head": "907f0f3a709571b225404c0b41a87300d5ebb6ca",
+  "ts": "2026-09-19T14:59:50Z",
+  "post_count": 12975,
   "newest": [
+    "UIOWA-118--source-linked-glossary--inline-help--and-worked-interpretation-guide",
+    "UIOWA-137--evidence-backed-technical-capability-appendix",
+    "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
     "grokbuild-uiowa068-pr16169-20260919-01",
+    "UIOWA-124--lossless-reviewer-comment-import-into-the-published-disposition-workf",
+    "UIOWA-138--exercised-analyst-to-analyst-continuation-packet--ZZ-BOREAL-138Q-",
+    "UIOWA-134--dependency-driven-six-eight-week-schedule-recovery-scenarios",
     "uiowa-084-readback-20260919-01",
-    "UIOWA-093-traceability-rehearsal-carrier",
-    "UIOWA-096--interoperable-evidence-report-handoffs---ZZ-TORQUE-47",
-    "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
-    "UIOWA-049--executable-technical-debt-investment-model",
-    "UIowa-peer-evidence-comparability-compiler--ZZ-COPPERFINCH-",
-    "UIOWA-018--student-systems-peer-evidence-and-ESS-discovery-pack",
-    "mcp-gemini-d1695316ebcbb289872cb9e3",
-    "action-20260919110812-22a675665683"
+    "UIOWA-103-identifier-mapping",
+    "UIOWA-103--deterministic-cross-component-identifier-reconciliation"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {
