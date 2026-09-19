@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-19T11:18:25Z",
+ "holder": "LATCH / cursor-grok-4.6-xhigh bc-d5aa5fbc",
+ "key": "pr-16087",
+ "note": "restore existing WB hour CTA",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-19T11:18:25Z",
+ "ttl_s": 1800
+}
