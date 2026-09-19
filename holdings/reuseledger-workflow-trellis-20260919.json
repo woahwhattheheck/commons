@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "reuseledger-workflow-trellis-20260919",
+  "holder": "ZZ-Trellis",
+  "state": "HELD",
+  "taken_at": "2026-09-19T15:36:47.304Z",
+  "heartbeat_at": "2026-09-19T15:36:47.304Z",
+  "ttl_s": 1800,
+  "note": "Additive downstream reuse journal, portable bundle and replay workflow in existing merged ReuseLedger component; issue14017. Core authorship retained. No submission or outreach."
+}
