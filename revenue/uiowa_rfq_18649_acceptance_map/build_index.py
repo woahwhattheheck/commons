@@ -151,6 +151,45 @@ def authored_prose(index):
     return "\n".join(parts)
 
 
+PACKET_MARKER = "UIOWA-130 checked sample delivery packet"
+
+
+class UnsafePacketDirectory(Exception):
+    """Raised rather than recursively deleting a directory we cannot prove is ours."""
+
+
+def _clear_our_packet_dir(packet_dir):
+    """Remove a previous packet, but only one this tool can prove it wrote.
+
+    Reported by seat OP5-MARROW's destructive-call screen, which classified the old
+    unconditional shutil.rmtree here as REVIEW_REQUIRED because its path descends from
+    --out, an argv value. The screen was right: `--out <somewhere real>` would have
+    recursively deleted `<somewhere real>/sample_packet` with no check that this tool
+    created it. A rebuild now refuses unless the directory is empty or carries our own
+    MANIFEST.json marker, so an unrelated directory that happens to share the name is
+    never destroyed.
+    """
+    if not os.path.isdir(packet_dir):
+        return
+    entries = os.listdir(packet_dir)
+    if not entries:
+        os.rmdir(packet_dir)
+        return
+    manifest = os.path.join(packet_dir, "MANIFEST.json")
+    if os.path.isfile(manifest):
+        try:
+            with open(manifest, encoding="utf-8") as fh:
+                if json.load(fh).get("packet") == PACKET_MARKER:
+                    shutil.rmtree(packet_dir)
+                    return
+        except (ValueError, OSError):
+            pass
+    raise UnsafePacketDirectory(
+        f"{packet_dir} exists and is not recognisably a packet this tool wrote "
+        f"(no MANIFEST.json carrying {PACKET_MARKER!r}); refusing to delete "
+        f"{len(entries)} item(s). Choose a different --out, or remove it yourself.")
+
+
 def sample_packet(index, revenue_root, out_dir):
     """Assemble a packet from artifacts that verification actually showed demonstrable.
 
@@ -158,8 +197,7 @@ def sample_packet(index, revenue_root, out_dir):
     the strength of being mentioned in a map.
     """
     packet_dir = os.path.join(out_dir, "sample_packet")
-    if os.path.isdir(packet_dir):
-        shutil.rmtree(packet_dir)
+    _clear_our_packet_dir(packet_dir)
     os.makedirs(packet_dir)
     included, skipped = [], []
     for entry in index["criteria"]:
@@ -185,7 +223,7 @@ def sample_packet(index, revenue_root, out_dir):
     skipped.sort(key=lambda r: (r["criterion_id"], r["path"]))
     manifest = {
         "_banner": BANNER,
-        "packet": "UIOWA-130 checked sample delivery packet",
+        "packet": PACKET_MARKER,
         "rule": "a file is included only when a check against it returned PASS",
         "exhibit_digest_sha256": index["exhibit"]["digest_sha256"],
         "included": included,
@@ -315,7 +353,11 @@ def main(argv=None):
 
     index = build(args.revenue_root, exhibit, args.map)
     os.makedirs(args.out, exist_ok=True)
-    manifest = sample_packet(index, args.revenue_root, args.out)
+    try:
+        manifest = sample_packet(index, args.revenue_root, args.out)
+    except UnsafePacketDirectory as exc:
+        print(f"REFUSED: {exc}", file=sys.stderr)
+        return 3
 
     with open(os.path.join(args.out, "acceptance_index.json"), "w",
               encoding="utf-8", newline="\n") as fh:

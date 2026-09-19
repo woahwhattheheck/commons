@@ -290,6 +290,76 @@ class TestHostileAndReadOnly(unittest.TestCase):
         self.assertEqual(changed, [], f"the index modified other lanes: {changed}")
 
 
+class TestPacketDirectoryIsNotBlindlyDeleted(unittest.TestCase):
+    """Reported by seat OP5-MARROW's destructive-call screen against this lane.
+
+    sample_packet() used to shutil.rmtree an --out-derived path unconditionally. The
+    screen classified it REVIEW_REQUIRED because the path descends from argv, and it
+    was right. These tests pin the refusal so the hazard cannot come back.
+    """
+
+    def _index(self):
+        return build_real()
+
+    def test_rebuilding_over_our_own_packet_succeeds(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            idx = self._index()
+            B.sample_packet(idx, REVENUE, tmp)
+            first = sorted(os.listdir(os.path.join(tmp, "sample_packet")))
+            B.sample_packet(idx, REVENUE, tmp)
+            self.assertEqual(sorted(os.listdir(os.path.join(tmp, "sample_packet"))), first)
+
+    def test_refuses_to_delete_a_directory_it_did_not_write(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            victim = os.path.join(tmp, "sample_packet")
+            os.makedirs(victim)
+            keep = os.path.join(victim, "IMPORTANT.txt")
+            with open(keep, "w", encoding="utf-8") as fh:
+                fh.write("irreplaceable client evidence")
+            with self.assertRaises(B.UnsafePacketDirectory):
+                B.sample_packet(self._index(), REVENUE, tmp)
+            self.assertTrue(os.path.isfile(keep), "the foreign file was deleted")
+            with open(keep, encoding="utf-8") as fh:
+                self.assertEqual(fh.read(), "irreplaceable client evidence")
+
+    def test_refuses_when_the_marker_manifest_is_unreadable(self):
+        """An unparseable manifest is not proof of ownership."""
+        with tempfile.TemporaryDirectory() as tmp:
+            victim = os.path.join(tmp, "sample_packet")
+            os.makedirs(victim)
+            with open(os.path.join(victim, "MANIFEST.json"), "w", encoding="utf-8") as fh:
+                fh.write("{ not json")
+            with self.assertRaises(B.UnsafePacketDirectory):
+                B.sample_packet(self._index(), REVENUE, tmp)
+            self.assertTrue(os.path.isfile(os.path.join(victim, "MANIFEST.json")))
+
+    def test_refuses_when_the_manifest_belongs_to_a_different_tool(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            victim = os.path.join(tmp, "sample_packet")
+            os.makedirs(victim)
+            with open(os.path.join(victim, "MANIFEST.json"), "w", encoding="utf-8") as fh:
+                json.dump({"packet": "some other tool's packet"}, fh)
+            with self.assertRaises(B.UnsafePacketDirectory):
+                B.sample_packet(self._index(), REVENUE, tmp)
+
+    def test_an_empty_directory_is_safe_to_reuse(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            os.makedirs(os.path.join(tmp, "sample_packet"))
+            manifest = B.sample_packet(self._index(), REVENUE, tmp)
+            self.assertTrue(manifest["included"])
+
+    def test_cli_exits_3_instead_of_raising(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            victim = os.path.join(tmp, "sample_packet")
+            os.makedirs(victim)
+            with open(os.path.join(victim, "keep.txt"), "w", encoding="utf-8") as fh:
+                fh.write("x")
+            rc = B.main(["--revenue-root", REVENUE, "--exhibit", EXHIBIT,
+                         "--map", MAP, "--out", tmp])
+            self.assertEqual(rc, 3)
+            self.assertTrue(os.path.isfile(os.path.join(victim, "keep.txt")))
+
+
 class TestOutputsAndPacket(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

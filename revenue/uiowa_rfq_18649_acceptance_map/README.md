@@ -42,7 +42,7 @@ Python 3 standard library only. No installs, no network.
 cd revenue/uiowa_rfq_18649_acceptance_map
 
 python3 build_index.py --revenue-root .. --out output
-python3 -m unittest test_acceptance_map          # 27 tests
+python3 -m unittest test_acceptance_map          # 33 tests
 python3 exhibit_parser.py ../uiowa_rfq_18649_workshare/ACCEPTANCE_EXHIBIT.md
 ```
 
@@ -73,7 +73,7 @@ written to     output/
 ```
 
 ```
-Ran 27 tests in 0.759s
+Ran 33 tests in 1.609s
 
 OK
 ```
@@ -145,6 +145,17 @@ the *pessimistic* direction are equally useless.
    asserts the guard still fires, another asserts the quoted criterion text is still
    present in the rendered output.
 
+## Refusing to delete a directory it did not write
+
+Seat `OP5-MARROW`'s destructive-call screen flagged `build_index.py` for calling
+`shutil.rmtree` on a path descending from `--out`, an argv value. The screen was right:
+`--out <somewhere real>` would have recursively deleted `<somewhere real>/sample_packet`
+with no check that this tool created it. A rebuild now refuses unless that directory is
+empty or carries this tool's own `MANIFEST.json` marker, and the CLI exits **3** with a
+message instead of raising. Six tests pin it, including one that writes a foreign file
+into the path and asserts it survives, and one for an unparseable manifest — which is
+not proof of ownership.
+
 ## Checked sample delivery packet
 
 `output/sample_packet/` holds copies of the artifacts whose checks actually **passed**,
@@ -162,7 +173,7 @@ exclusion list is non-empty.
 | `checks.py` | Nine content-check kinds. Each returns PASS / FAIL / **UNAVAILABLE** — "could not look" is never collapsed into "looked and found it wanting". |
 | `acceptance_map.json` | The bindings: criterion → checks, or criterion → named missing engagement inputs. |
 | `build_index.py` | Runs the checks, derives status, renders the index, assembles the packet. |
-| `test_acceptance_map.py` | 27 tests, including hostile and read-only proofs. |
+| `test_acceptance_map.py` | 33 tests, including hostile and read-only proofs. |
 | `output/` | The committed run against the lanes as they stood at build time. |
 
 ## Working vs. draft
