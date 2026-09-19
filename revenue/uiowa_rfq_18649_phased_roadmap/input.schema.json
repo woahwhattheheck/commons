@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UIOWA-085 capacity and uncertainty scenario, version 1",
+  "description": "Offline planning assumptions. Runtime additionally rejects duplicate JSON keys, checks low <= high, unique record IDs and role/phase pairs, resolvable references and an acyclic prerequisite graph. Runtime integers must decode as Python integers; use whole-number JSON literals, not 1.0.",
+  "type": "object",
+  "required": ["schema_version", "scenario_id", "data_kind", "planning_basis", "findings", "recommendations", "role_capacity"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "scenario_id": {"$ref": "#/$defs/text"},
+    "data_kind": {"enum": ["synthetic", "engagement_draft"]},
+    "planning_basis": {"$ref": "#/$defs/text"},
+    "findings": {"type": "array", "items": {"$ref": "#/$defs/finding"}},
+    "recommendations": {"type": "array", "items": {"$ref": "#/$defs/recommendation"}},
+    "role_capacity": {"type": "array", "items": {"$ref": "#/$defs/capacity"}}
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "text": {"type": "string", "pattern": "\\S"},
+    "strings": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/text"}},
+    "phase": {"enum": ["0-90", "90-180", "180+"]},
+    "optional_phase": {"enum": ["0-90", "90-180", "180+", null]},
+    "range": {
+      "oneOf": [
+        {"type": "null"},
+        {"type": "object", "required": ["low", "high"], "additionalProperties": false,
+         "properties": {"low": {"type": "integer", "minimum": 0}, "high": {"type": "integer", "minimum": 0}}}
+      ]
+    },
+    "level": {"type": ["integer", "null"], "minimum": 1, "maximum": 5},
+    "finding": {
+      "type": "object", "required": ["id", "summary", "source_refs"],
+      "properties": {"id": {"$ref": "#/$defs/text"}, "summary": {"$ref": "#/$defs/text"}, "source_refs": {"$ref": "#/$defs/strings", "minItems": 1}},
+      "additionalProperties": true
+    },
+    "recommendation": {
+      "type": "object",
+      "required": ["id", "title", "group", "owner_role", "finding_ids", "depends_on", "not_before_day", "duration_days", "effort_hours", "outcome", "acceptance_evidence", "assumptions", "maturity_hypothesis"],
+      "properties": {
+        "id": {"$ref": "#/$defs/text"}, "title": {"$ref": "#/$defs/text"},
+        "group": {"$ref": "#/$defs/text"}, "owner_role": {"$ref": "#/$defs/text"},
+        "finding_ids": {"$ref": "#/$defs/strings", "minItems": 1}, "depends_on": {"$ref": "#/$defs/strings"},
+        "not_before_day": {"type": "integer", "minimum": 0},
+        "duration_days": {"$ref": "#/$defs/range"}, "effort_hours": {"$ref": "#/$defs/range"},
+        "effort_phase": {"$ref": "#/$defs/optional_phase"}, "preferred_phase": {"$ref": "#/$defs/optional_phase"},
+        "outcome": {"$ref": "#/$defs/text"}, "acceptance_evidence": {"$ref": "#/$defs/text"}, "assumptions": {"$ref": "#/$defs/strings"},
+        "maturity_hypothesis": {
+          "type": "object", "required": ["baseline", "target", "rationale", "evidence_needed"],
+          "properties": {"baseline": {"$ref": "#/$defs/level"}, "target": {"$ref": "#/$defs/level"}, "rationale": {"$ref": "#/$defs/text"}, "evidence_needed": {"$ref": "#/$defs/text"}},
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "capacity": {
+      "type": "object", "required": ["owner_role", "phase", "hours", "basis"],
+      "properties": {"owner_role": {"$ref": "#/$defs/text"}, "phase": {"$ref": "#/$defs/phase"}, "hours": {"$ref": "#/$defs/range"}, "basis": {"$ref": "#/$defs/text"}},
+      "additionalProperties": true
+    }
+  }
+}
