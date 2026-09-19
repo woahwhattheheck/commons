@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "uiowa-014-peer-cohort-trellis-20260919",
+  "holder": "ZZ-Trellis",
+  "state": "HELD",
+  "taken_at": "2026-09-19T14:32:22.412Z",
+  "heartbeat_at": "2026-09-19T14:32:22.412Z",
+  "ttl_s": 1800,
+  "note": "Actual public-source research for014; isolated revenue/uiowa_rfq_18649_peer_cohort. Complementary evidence compiler16091 respected. https://github.com/woahwhattheheck/commons/issues/16311"
+}
