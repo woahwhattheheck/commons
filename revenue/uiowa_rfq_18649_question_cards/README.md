@@ -23,7 +23,8 @@ python3 question_cards.py check --observations observations_hostile.json --out /
 python3 question_cards.py search --query "role:iam_administrator"
 python3 question_cards.py search --query "type:ABSENT_EVIDENCE inventory"
 python3 question_cards.py search --query "OBS-ESS-SEC-07"
-python3 -m unittest -v                                       # 35 tests
+python3 question_cards.py verify-export                      # prove cards.csv re-imports intact
+python3 -m unittest -v                                       # 40 tests
 ```
 
 Python 3 standard library only (developed on 3.11). No pip install, no network, no model is
@@ -37,7 +38,7 @@ data/observations_hostile.json 11 deliberately broken records, one per rule
 data/sources.json              source register: id -> label, exact locator, as-of date
 data/interview_register.json   roles and planned sessions (fiction; nothing booked)
 examples/                      generated: cards.json, cards.csv, question_cards.md
-test_question_cards.py         35 unittest tests
+test_question_cards.py         40 unittest tests
 ```
 
 ## Why this is a generator, not a list of good questions
@@ -155,9 +156,26 @@ role — so a reviewer runs one sitting — and exposes the inputs 113 would ran
 That third row is why the card is worth an hour: the same question has three different
 consequences, and the reviewer can see all three before asking it.
 
-`cards.csv` is spreadsheet-safe: formula-like values are marked as literal text rather than
-executed, NULL (`\N`), empty string and a literal `"NA"` stay three distinct states, and a test
-asserts no exported cell begins `=`, `+` or `@`.
+`cards.csv` is spreadsheet-safe **and lossless**: formula-like values are marked as literal text
+rather than executed, NULL (`\N`), empty string and a literal `"NA"` stay three distinct states,
+no exported cell begins `=`, `+` or `@`, and `decode_cell` is the exact inverse of `csv_cell` so a
+reader who re-imports the file gets the original values back.
+
+```
+$ python3 question_cards.py verify-export
+export round trip OK: 10 row(s) re-import byte-identical (cards.csv)
+```
+
+### A defect in this lane's first landing, fixed rather than left
+
+The first commit shipped `csv_cell` with **no inverse**. `cards.csv` was safe to *open* and lossy
+to *re-import*: a reader got a stray leading apostrophe on every neutralized value and the literal
+two characters `\N` where a NULL was. For a deliverable whose whole point is being usable by a
+reader without the producing environment, "safe to open" is only half the requirement —
+neutralized-and-flagged is only honest if it is also reversible. Fixed with `decode_cell`,
+`read_cards_csv`, a `verify-export` command that hashes every row before export and after
+re-import, and four tests including `test_neutralized_cell_is_lossy_WITHOUT_the_decoder`, which
+documents the defect so it cannot quietly come back.
 
 ## University inputs still UNKNOWN
 

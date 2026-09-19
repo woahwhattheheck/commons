@@ -47,6 +47,7 @@ Python 3 standard library only. No network. No model is called.
 
 import argparse
 import csv
+import hashlib
 import json
 import os
 import re
@@ -326,7 +327,15 @@ class CardIndex:
 
 def csv_cell(value):
     """Spreadsheet-safe and reversible: NULL is \\N, an empty string is empty,
-    and a formula-like value is marked as literal text rather than executed."""
+    and a formula-like value is marked as literal text rather than executed.
+
+    ``decode_cell`` is its exact inverse. Shipping the encoder without the
+    decoder -- which is what this lane did when it first landed -- leaves a CSV
+    that is safe to open and lossy to re-import: the reader gets a stray
+    leading apostrophe on a neutralized value and the literal two characters
+    ``\\N`` where a NULL was. Neutralized-and-flagged is only honest if it is
+    also reversible.
+    """
     if value is None:
         return NULL_TOKEN
     text = norm(str(value))
@@ -335,6 +344,45 @@ def csv_cell(value):
     if text.startswith("\\"):
         text = "\\" + text
     return text
+
+
+def decode_cell(text):
+    """Exact inverse of csv_cell. Escape order is reversed on purpose."""
+    if text == NULL_TOKEN:
+        return None
+    if text.startswith("\\"):
+        text = text[1:]
+    if text.startswith("'"):
+        text = text[1:]
+    return norm(text)
+
+
+def read_cards_csv(path):
+    """Re-import a cards.csv into the same row shape write_cards_csv wrote."""
+    with open(path, "r", encoding="utf-8", newline="") as handle:
+        reader = csv.reader(handle)
+        header = next(reader)
+        if header != CARD_COLUMNS:
+            raise ValueError(f"unexpected header: {header!r}")
+        return [{name: decode_cell(cell) for name, cell in zip(CARD_COLUMNS, cells)}
+                for cells in reader]
+
+
+def card_csv_row(card):
+    """The flat row write_cards_csv emits for one card -- shared by the writer and
+    by verify-export, so the round-trip check cannot drift from what is written."""
+    row = {name: card.get(name) for name in CARD_COLUMNS}
+    row["possible_answers"] = " | ".join(o["answer"] for o in card["outcome_map"])
+    row["open_findings"] = ";".join(card["open_findings"])
+    row["source_ids"] = ";".join(card["source_ids"])
+    row["source_locators"] = ";".join(card["source_locators"])
+    return {k: (norm(str(v)) if isinstance(v, str) else v) for k, v in row.items()}
+
+
+def row_hash(row):
+    canonical = json.dumps({k: row.get(k) for k in CARD_COLUMNS},
+                           ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
 def md_cell(value):
@@ -349,11 +397,7 @@ def write_cards_csv(path, cards):
         writer = csv.writer(handle, lineterminator="\n")
         writer.writerow(CARD_COLUMNS)
         for card in cards:
-            row = dict(card)
-            row["possible_answers"] = " | ".join(o["answer"] for o in card["outcome_map"])
-            row["open_findings"] = ";".join(card["open_findings"])
-            row["source_ids"] = ";".join(card["source_ids"])
-            row["source_locators"] = ";".join(card["source_locators"])
+            row = card_csv_row(card)
             writer.writerow([csv_cell(row.get(name)) for name in CARD_COLUMNS])
 
 
@@ -440,7 +484,8 @@ def build(data_dir, out_dir, observations_file="observations.json"):
 def main(argv=None):
     root = os.path.dirname(os.path.abspath(__file__))
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    parser.add_argument("command", choices=["build", "check", "search"])
+    parser.add_argument("command",
+                        choices=["build", "check", "search", "verify-export"])
     parser.add_argument("--data", default=os.path.join(root, "data"))
     parser.add_argument("--observations", default="observations.json")
     parser.add_argument("--out", default=os.path.join(root, "examples"))
@@ -459,6 +504,24 @@ def main(argv=None):
         for card in hits:
             print(f"  {card['card_id']}  [{card['session_id']}/{card['ask_role']}]  "
                   f"{card['question'][:96]}")
+        return 0
+
+    if args.command == "verify-export":
+        # Prove the exported CSV survives a reader's round trip instead of
+        # asserting it: hash every row before export and after re-import.
+        bundle = load_bundle(args.data, args.observations)
+        cards, _, _ = build_cards(bundle)
+        path = os.path.join(args.out, "cards.csv")
+        write_cards_csv(path, cards)
+        before = [row_hash(card_csv_row(c)) for c in cards]
+        after = [row_hash(r) for r in read_cards_csv(path)]
+        bad = [i for i, (a, b) in enumerate(zip(before, after)) if a != b]
+        if len(before) != len(after) or bad:
+            print(f"EXPORT ROUND TRIP FAILED on {len(bad)} row(s): "
+                  + ", ".join(cards[i]["card_id"] for i in bad))
+            return 1
+        print(f"export round trip OK: {len(before)} row(s) re-import byte-identical "
+              f"({os.path.basename(path)})")
         return 0
 
     cards, diagnostics, coverage = build(args.data, args.out, args.observations)

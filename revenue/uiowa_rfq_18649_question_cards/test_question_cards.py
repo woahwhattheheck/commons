@@ -207,6 +207,45 @@ class Rendering(unittest.TestCase):
             for cell in line:
                 self.assertFalse(cell.startswith(("=", "+", "@")), cell[:40])
 
+    def test_decode_cell_is_the_exact_inverse_of_csv_cell(self):
+        for value in ["=SUM(A1:A9)", "+1-2", "@cmd", "-5", "ordinary", "", "NA",
+                      "\\N", "'already quoted", "José Álvarez — em dash", "田中 さくら"]:
+            self.assertEqual(qc.decode_cell(qc.csv_cell(value)), qc.norm(value), repr(value))
+        self.assertIsNone(qc.decode_cell(qc.csv_cell(None)))
+
+    def test_neutralized_cell_is_lossy_WITHOUT_the_decoder(self):
+        """Why the decoder exists. This lane first landed with csv_cell and no
+        inverse, so a reader re-importing cards.csv got a stray leading
+        apostrophe on every neutralized value and the literal characters \\N
+        where a NULL was. Neutralized-and-flagged is only honest if it is also
+        reversible."""
+        raw = qc.csv_cell("=SUM(A1:A9)")
+        self.assertNotEqual(raw, "=SUM(A1:A9)")          # safe to open
+        self.assertEqual(qc.decode_cell(raw), "=SUM(A1:A9)")  # and lossless to re-import
+        self.assertEqual(qc.csv_cell(None), "\\N")
+        self.assertIsNone(qc.decode_cell("\\N"))
+
+    def test_every_generated_row_re_imports_byte_identical(self):
+        """Proof, not assertion: hash each row before export and after re-import."""
+        with tempfile.TemporaryDirectory() as tmp:
+            cards, _, _ = qc.build_cards(qc.load_bundle(DATA))
+            path = os.path.join(tmp, "cards.csv")
+            qc.write_cards_csv(path, cards)
+            before = [qc.row_hash(qc.card_csv_row(c)) for c in cards]
+            after = [qc.row_hash(r) for r in qc.read_cards_csv(path)]
+        self.assertEqual(before, after)
+        self.assertEqual(len(before), 10)
+
+    def test_null_absence_caveat_comes_back_as_null_not_as_the_sentinel_text(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            cards, _, _ = qc.build_cards(qc.load_bundle(DATA))
+            path = os.path.join(tmp, "cards.csv")
+            qc.write_cards_csv(path, cards)
+            rows = {r["card_id"]: r for r in qc.read_cards_csv(path)}
+        self.assertIsNone(rows["QC-ESS-DEP-01"]["absence_caveat"])
+        self.assertIsNotNone(rows["QC-IAM-SEC-03"]["absence_caveat"])
+        self.assertIn("not evidence", qc.fold(rows["QC-IAM-SEC-03"]["absence_caveat"]))
+
     def test_markdown_shows_coverage_and_the_fiction_notice(self):
         with tempfile.TemporaryDirectory() as tmp:
             qc.build(DATA, tmp)
@@ -266,6 +305,11 @@ class CommandLine(unittest.TestCase):
     def test_check_exits_zero_on_the_real_register(self):
         with tempfile.TemporaryDirectory() as tmp:
             rc = qc.main(["check", "--data", DATA, "--out", tmp])
+        self.assertEqual(rc, 0)
+
+    def test_verify_export_exits_zero(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            rc = qc.main(["verify-export", "--data", DATA, "--out", tmp])
         self.assertEqual(rc, 0)
 
 
