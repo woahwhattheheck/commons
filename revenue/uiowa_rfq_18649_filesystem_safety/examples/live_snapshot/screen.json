@@ -235,6 +235,26 @@
       "call": "open(mode='w')",
       "classification": "WRITE_TO_CALLER_PATH",
       "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_ai_decision_case",
+      "line": 117,
+      "module": "uiowa_rfq_18649_ai_decision_case/ai_decision_case.py",
+      "target": "os.path.join(args.out, 'explanation.md')",
+      "why": "writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "WRITE_TO_CALLER_PATH",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_ai_decision_case",
+      "line": 119,
+      "module": "uiowa_rfq_18649_ai_decision_case/ai_decision_case.py",
+      "target": "os.path.join(args.out, 'decision.json')",
+      "why": "writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "WRITE_TO_CALLER_PATH",
+      "kind": "WRITE",
       "lane": "uiowa_rfq_18649_ai_eval_kit",
       "line": 427,
       "module": "uiowa_rfq_18649_ai_eval_kit/eval_kit.py",
@@ -710,6 +730,36 @@
       "module": "uiowa_rfq_18649_bid_pack/test_bid_pack.py",
       "target": "empty",
       "why": "in a test module; 'empty' has an assignment that could not be traced"
+    },
+    {
+      "call": "shutil.rmtree",
+      "classification": "TEST_CONTEXT",
+      "kind": "DESTRUCTIVE",
+      "lane": "uiowa_rfq_18649_bid_pack",
+      "line": 45,
+      "module": "uiowa_rfq_18649_bid_pack/test_packcheck.py",
+      "target": "cls.tmp",
+      "why": "in a test module; target is attribute cls.tmp, not traced"
+    },
+    {
+      "call": "open(mode='wb')",
+      "classification": "TEST_CONTEXT",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_bid_pack",
+      "line": 259,
+      "module": "uiowa_rfq_18649_bid_pack/test_packcheck.py",
+      "target": "path",
+      "why": "in a test module; 'path' has an assignment that could not be traced"
+    },
+    {
+      "call": "open(mode='wb')",
+      "classification": "TEST_CONTEXT",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_bid_pack",
+      "line": 285,
+      "module": "uiowa_rfq_18649_bid_pack/test_packcheck.py",
+      "target": "broken",
+      "why": "in a test module; 'broken' has an assignment that could not be traced"
     },
     {
       "call": "open(mode='w')",
@@ -1202,6 +1252,76 @@
       "why": "in a test module; 'path' has an assignment that could not be traced"
     },
     {
+      "call": "open(mode='w')",
+      "classification": "WRITE_TO_CALLER_PATH",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_delivery_scan",
+      "line": 227,
+      "module": "uiowa_rfq_18649_delivery_scan/delivery_scan.py",
+      "target": "md",
+      "why": "writes to a caller-supplied path; 'md' is assigned from external input. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "WRITE_TO_CALLER_PATH",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_delivery_scan",
+      "line": 235,
+      "module": "uiowa_rfq_18649_delivery_scan/delivery_scan.py",
+      "target": "path",
+      "why": "writes to a caller-supplied path; 'path' is assigned from external input. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "WRITE_TO_CALLER_PATH",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_delivery_scan",
+      "line": 254,
+      "module": "uiowa_rfq_18649_delivery_scan/delivery_scan.py",
+      "target": "path",
+      "why": "writes to a caller-supplied path; 'path' is assigned from external input. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "TEST_CONTEXT",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_delivery_scan",
+      "line": 201,
+      "module": "uiowa_rfq_18649_delivery_scan/test_delivery_scan.py",
+      "target": "os.path.join(d, name)",
+      "why": "in a test module; writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "TEST_CONTEXT",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_delivery_scan",
+      "line": 277,
+      "module": "uiowa_rfq_18649_delivery_scan/test_delivery_scan.py",
+      "target": "os.path.join(d, 'README.md')",
+      "why": "in a test module; writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "TEST_CONTEXT",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_delivery_scan",
+      "line": 244,
+      "module": "uiowa_rfq_18649_delivery_scan/test_delivery_scan.py",
+      "target": "bad",
+      "why": "in a test module; 'bad' is assigned from module-local values"
+    },
+    {
+      "call": "open(mode='wb')",
+      "classification": "TEST_CONTEXT",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_delivery_scan",
+      "line": 261,
+      "module": "uiowa_rfq_18649_delivery_scan/test_delivery_scan.py",
+      "target": "os.path.join(d, 'weird.md')",
+      "why": "in a test module; path is joined from module-local parts"
+    },
+    {
       "call": "subprocess.run",
       "classification": "TEST_CONTEXT",
       "kind": "OPAQUE_SUBPROCESS",
@@ -1280,6 +1400,176 @@
       "module": "uiowa_rfq_18649_exec_summary/build_summary.py",
       "target": "path",
       "why": "writes to a caller-supplied path; 'path' is assigned from external input. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "WRITE_TO_CALLER_PATH",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_export_safety",
+      "line": 307,
+      "module": "uiowa_rfq_18649_export_safety/export_safety.py",
+      "target": "path",
+      "why": "writes to a caller-supplied path; target is the function parameter 'path' -- the caller chooses what gets removed. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "WRITE_TO_CALLER_PATH",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_export_safety",
+      "line": 322,
+      "module": "uiowa_rfq_18649_export_safety/export_safety.py",
+      "target": "path",
+      "why": "writes to a caller-supplied path; target is the function parameter 'path' -- the caller chooses what gets removed. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "WRITE_TO_CALLER_PATH",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_export_safety",
+      "line": 366,
+      "module": "uiowa_rfq_18649_export_safety/export_safety.py",
+      "target": "os.path.join(out_dir, 'findings.json')",
+      "why": "writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep"
+    },
+    {
+      "call": "open(mode='wb')",
+      "classification": "TEST_CONTEXT",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_export_safety",
+      "line": 104,
+      "module": "uiowa_rfq_18649_export_safety/test_export_safety.py",
+      "target": "bad",
+      "why": "in a test module; 'bad' is assigned from module-local values"
+    },
+    {
+      "call": "open(mode='wb')",
+      "classification": "TEST_CONTEXT",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_export_safety",
+      "line": 113,
+      "module": "uiowa_rfq_18649_export_safety/test_export_safety.py",
+      "target": "path",
+      "why": "in a test module; 'path' is assigned from module-local values"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "TEST_CONTEXT",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_export_safety",
+      "line": 123,
+      "module": "uiowa_rfq_18649_export_safety/test_export_safety.py",
+      "target": "path",
+      "why": "in a test module; 'path' has an assignment that could not be traced"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "SELF_SCOPED",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_filesystem_safety",
+      "line": 49,
+      "module": "uiowa_rfq_18649_filesystem_safety/fs_safety.py",
+      "target": "target",
+      "why": "write target is caller-supplied, but the function resolves the path and raises on one outside its directory (heuristic)"
+    },
+    {
+      "call": "open(mode='wb')",
+      "classification": "TEST_CONTEXT",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_filesystem_safety",
+      "line": 165,
+      "module": "uiowa_rfq_18649_filesystem_safety/test_fsaudit.py",
+      "target": "os.path.join(lane, 'bad.py')",
+      "why": "in a test module; path is joined from module-local parts"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "TEST_CONTEXT",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_filesystem_safety",
+      "line": 275,
+      "module": "uiowa_rfq_18649_filesystem_safety/test_fsaudit.py",
+      "target": "os.path.join(lane, 'm.py')",
+      "why": "in a test module; path is joined from module-local parts"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "SELF_SCOPED",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_filesystem_safety",
+      "line": 11,
+      "module": "uiowa_rfq_18649_filesystem_safety/fixtures/lane_clean/tool_clean.py",
+      "target": "target",
+      "why": "write target is caller-supplied, but the function resolves the path and raises on one outside its directory (heuristic)"
+    },
+    {
+      "call": "shutil.rmtree",
+      "classification": "REVIEW_REQUIRED",
+      "kind": "DESTRUCTIVE",
+      "lane": "uiowa_rfq_18649_filesystem_safety",
+      "line": 12,
+      "module": "uiowa_rfq_18649_filesystem_safety/fixtures/lane_external/test_sample_cleanup.py",
+      "target": "supplied_path",
+      "why": "target is the function parameter 'supplied_path' -- the caller chooses what gets removed"
+    },
+    {
+      "call": "shutil.rmtree",
+      "classification": "TEST_CONTEXT",
+      "kind": "DESTRUCTIVE",
+      "lane": "uiowa_rfq_18649_filesystem_safety",
+      "line": 17,
+      "module": "uiowa_rfq_18649_filesystem_safety/fixtures/lane_external/test_sample_cleanup.py",
+      "target": "scratch",
+      "why": "in a test module; 'scratch' is assigned from module-local values"
+    },
+    {
+      "call": "shutil.rmtree",
+      "classification": "REVIEW_REQUIRED",
+      "kind": "DESTRUCTIVE",
+      "lane": "uiowa_rfq_18649_filesystem_safety",
+      "line": 13,
+      "module": "uiowa_rfq_18649_filesystem_safety/fixtures/lane_external/tool_argv.py",
+      "target": "workspace",
+      "why": "target is the function parameter 'workspace' -- the caller chooses what gets removed"
+    },
+    {
+      "call": "shutil.rmtree",
+      "classification": "REVIEW_REQUIRED",
+      "kind": "DESTRUCTIVE",
+      "lane": "uiowa_rfq_18649_filesystem_safety",
+      "line": 17,
+      "module": "uiowa_rfq_18649_filesystem_safety/fixtures/lane_external/tool_argv.py",
+      "target": "sys.argv[1]",
+      "why": "target comes from sys.argv, which is external input"
+    },
+    {
+      "call": "os.remove",
+      "classification": "REVIEW_REQUIRED",
+      "kind": "DESTRUCTIVE",
+      "lane": "uiowa_rfq_18649_filesystem_safety",
+      "line": 21,
+      "module": "uiowa_rfq_18649_filesystem_safety/fixtures/lane_external/tool_argv.py",
+      "target": "os.path.join(root, name)",
+      "why": "path is joined from externally controlled parts"
+    },
+    {
+      "call": "subprocess.run",
+      "classification": "UNDETERMINED",
+      "kind": "OPAQUE_SUBPROCESS",
+      "lane": "uiowa_rfq_18649_filesystem_safety",
+      "line": 6,
+      "module": "uiowa_rfq_18649_filesystem_safety/fixtures/lane_opaque/tool_shell.py",
+      "target": "['python3', '-m', 'unittest', 'discover']",
+      "why": "shells out; what runs inside is not visible to this screen"
+    },
+    {
+      "call": "shutil.rmtree",
+      "classification": "SELF_SCOPED",
+      "kind": "DESTRUCTIVE",
+      "lane": "uiowa_rfq_18649_filesystem_safety",
+      "line": 11,
+      "module": "uiowa_rfq_18649_filesystem_safety/fixtures/lane_self_scoped/tool_temp.py",
+      "target": "scratch",
+      "why": "'scratch' is assigned from module-local values"
     },
     {
       "call": "open(mode='w')",
@@ -1570,6 +1860,176 @@
       "module": "uiowa_rfq_18649_output_agreement/output_agreement.py",
       "target": "os.path.join(path, 'recommendations.csv')",
       "why": "writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep"
+    },
+    {
+      "call": "open(mode='wb')",
+      "classification": "WRITE_TO_CALLER_PATH",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_print_pagination",
+      "line": 835,
+      "module": "uiowa_rfq_18649_print_pagination/printreport.py",
+      "target": "path",
+      "why": "writes to a caller-supplied path; target is the function parameter 'path' -- the caller chooses what gets removed. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "WRITE_TO_CALLER_PATH",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_print_pagination",
+      "line": 996,
+      "module": "uiowa_rfq_18649_print_pagination/printreport.py",
+      "target": "os.path.join(out_dir, 'inspection_%s_%s.md' % (stem, mode))",
+      "why": "writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "WRITE_TO_CALLER_PATH",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_print_pagination",
+      "line": 1009,
+      "module": "uiowa_rfq_18649_print_pagination/printreport.py",
+      "target": "os.path.join(out_dir, 'inspection_%s_%s.json' % (stem, mode))",
+      "why": "writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep"
+    },
+    {
+      "call": "shutil.rmtree",
+      "classification": "TEST_CONTEXT",
+      "kind": "DESTRUCTIVE",
+      "lane": "uiowa_rfq_18649_print_pagination",
+      "line": 216,
+      "module": "uiowa_rfq_18649_print_pagination/test_printreport.py",
+      "target": "out",
+      "why": "in a test module; 'out' is assigned from module-local values"
+    },
+    {
+      "call": "shutil.rmtree",
+      "classification": "TEST_CONTEXT",
+      "kind": "DESTRUCTIVE",
+      "lane": "uiowa_rfq_18649_print_pagination",
+      "line": 232,
+      "module": "uiowa_rfq_18649_print_pagination/test_printreport.py",
+      "target": "out",
+      "why": "in a test module; 'out' is assigned from module-local values"
+    },
+    {
+      "call": "shutil.rmtree",
+      "classification": "TEST_CONTEXT",
+      "kind": "DESTRUCTIVE",
+      "lane": "uiowa_rfq_18649_print_pagination",
+      "line": 247,
+      "module": "uiowa_rfq_18649_print_pagination/test_printreport.py",
+      "target": "out",
+      "why": "in a test module; 'out' is assigned from module-local values"
+    },
+    {
+      "call": "shutil.rmtree",
+      "classification": "TEST_CONTEXT",
+      "kind": "DESTRUCTIVE",
+      "lane": "uiowa_rfq_18649_print_pagination",
+      "line": 261,
+      "module": "uiowa_rfq_18649_print_pagination/test_printreport.py",
+      "target": "out",
+      "why": "in a test module; 'out' is assigned from module-local values"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "TEST_CONTEXT",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_print_pagination",
+      "line": 267,
+      "module": "uiowa_rfq_18649_print_pagination/test_printreport.py",
+      "target": "path",
+      "why": "in a test module; 'path' has an assignment that could not be traced"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "TEST_CONTEXT",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_print_pagination",
+      "line": 279,
+      "module": "uiowa_rfq_18649_print_pagination/test_printreport.py",
+      "target": "path",
+      "why": "in a test module; 'path' has an assignment that could not be traced"
+    },
+    {
+      "call": "shutil.rmtree",
+      "classification": "TEST_CONTEXT",
+      "kind": "DESTRUCTIVE",
+      "lane": "uiowa_rfq_18649_print_pagination",
+      "line": 376,
+      "module": "uiowa_rfq_18649_print_pagination/test_printreport.py",
+      "target": "out",
+      "why": "in a test module; 'out' is assigned from module-local values"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "TEST_CONTEXT",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_print_pagination",
+      "line": 380,
+      "module": "uiowa_rfq_18649_print_pagination/test_printreport.py",
+      "target": "path",
+      "why": "in a test module; 'path' has an assignment that could not be traced"
+    },
+    {
+      "call": "shutil.rmtree",
+      "classification": "TEST_CONTEXT",
+      "kind": "DESTRUCTIVE",
+      "lane": "uiowa_rfq_18649_print_pagination",
+      "line": 387,
+      "module": "uiowa_rfq_18649_print_pagination/test_printreport.py",
+      "target": "out",
+      "why": "in a test module; 'out' is assigned from module-local values"
+    },
+    {
+      "call": "shutil.rmtree",
+      "classification": "TEST_CONTEXT",
+      "kind": "DESTRUCTIVE",
+      "lane": "uiowa_rfq_18649_print_pagination",
+      "line": 405,
+      "module": "uiowa_rfq_18649_print_pagination/test_printreport.py",
+      "target": "out",
+      "why": "in a test module; 'out' is assigned from module-local values"
+    },
+    {
+      "call": "open(mode='wb')",
+      "classification": "TEST_CONTEXT",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_print_pagination",
+      "line": 227,
+      "module": "uiowa_rfq_18649_print_pagination/test_printreport.py",
+      "target": "path",
+      "why": "in a test module; 'path' is assigned from module-local values"
+    },
+    {
+      "call": "os.remove",
+      "classification": "TEST_CONTEXT",
+      "kind": "DESTRUCTIVE",
+      "lane": "uiowa_rfq_18649_print_pagination",
+      "line": 281,
+      "module": "uiowa_rfq_18649_print_pagination/test_printreport.py",
+      "target": "path",
+      "why": "in a test module; 'path' has an assignment that could not be traced"
+    },
+    {
+      "call": "os.remove",
+      "classification": "TEST_CONTEXT",
+      "kind": "DESTRUCTIVE",
+      "lane": "uiowa_rfq_18649_print_pagination",
+      "line": 382,
+      "module": "uiowa_rfq_18649_print_pagination/test_printreport.py",
+      "target": "path",
+      "why": "in a test module; 'path' has an assignment that could not be traced"
+    },
+    {
+      "call": "os.remove",
+      "classification": "TEST_CONTEXT",
+      "kind": "DESTRUCTIVE",
+      "lane": "uiowa_rfq_18649_print_pagination",
+      "line": 269,
+      "module": "uiowa_rfq_18649_print_pagination/test_printreport.py",
+      "target": "path",
+      "why": "in a test module; 'path' has an assignment that could not be traced"
     },
     {
       "call": "open(mode='w')",
@@ -2102,6 +2562,66 @@
       "why": "writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep"
     },
     {
+      "call": "subprocess.run",
+      "classification": "UNDETERMINED",
+      "kind": "OPAQUE_SUBPROCESS",
+      "lane": "uiowa_rfq_18649_run_sweep",
+      "line": 206,
+      "module": "uiowa_rfq_18649_run_sweep/run_sweep.py",
+      "target": "command",
+      "why": "shells out; what runs inside is not visible to this screen"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "WRITE_TO_CALLER_PATH",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_run_sweep",
+      "line": 347,
+      "module": "uiowa_rfq_18649_run_sweep/run_sweep.py",
+      "target": "path",
+      "why": "writes to a caller-supplied path; target is the function parameter 'path' -- the caller chooses what gets removed. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "WRITE_TO_CALLER_PATH",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_run_sweep",
+      "line": 521,
+      "module": "uiowa_rfq_18649_run_sweep/run_sweep.py",
+      "target": "json_path",
+      "why": "writes to a caller-supplied path; 'json_path' is assigned from external input. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "WRITE_TO_CALLER_PATH",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_run_sweep",
+      "line": 526,
+      "module": "uiowa_rfq_18649_run_sweep/run_sweep.py",
+      "target": "md_path",
+      "why": "writes to a caller-supplied path; 'md_path' is assigned from external input. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep"
+    },
+    {
+      "call": "shutil.rmtree",
+      "classification": "TEST_CONTEXT",
+      "kind": "DESTRUCTIVE",
+      "lane": "uiowa_rfq_18649_run_sweep",
+      "line": 68,
+      "module": "uiowa_rfq_18649_run_sweep/test_run_sweep.py",
+      "target": "self.root",
+      "why": "in a test module; self.root is assigned from values this module created"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "TEST_CONTEXT",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_run_sweep",
+      "line": 75,
+      "module": "uiowa_rfq_18649_run_sweep/test_run_sweep.py",
+      "target": "full",
+      "why": "in a test module; writes to a caller-supplied path; 'full' is assigned from external input. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep"
+    },
+    {
       "call": "open(mode='w')",
       "classification": "WRITE_TO_CALLER_PATH",
       "kind": "WRITE",
@@ -2190,6 +2710,26 @@
       "module": "uiowa_rfq_18649_traceability/audit_self_sealing.py",
       "target": "dst",
       "why": "'dst' has no assignment visible in this function"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "TEST_CONTEXT",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_traceability",
+      "line": 24,
+      "module": "uiowa_rfq_18649_traceability/test_audit_assertions.py",
+      "target": "path",
+      "why": "in a test module; writes to a caller-supplied path; target is the function parameter 'path' -- the caller chooses what gets removed. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep"
+    },
+    {
+      "call": "shutil.rmtree",
+      "classification": "TEST_CONTEXT",
+      "kind": "DESTRUCTIVE",
+      "lane": "uiowa_rfq_18649_traceability",
+      "line": 33,
+      "module": "uiowa_rfq_18649_traceability/test_audit_assertions.py",
+      "target": "self.root",
+      "why": "in a test module; self.root is assigned from values this module created"
     },
     {
       "call": "open(mode='w')",
@@ -2353,6 +2893,86 @@
     },
     {
       "call": "subprocess.run",
+      "classification": "TEST_CONTEXT",
+      "kind": "OPAQUE_SUBPROCESS",
+      "lane": "uiowa_rfq_18649_uncertainty_lint",
+      "line": 226,
+      "module": "uiowa_rfq_18649_uncertainty_lint/test_lint.py",
+      "target": "[sys.executable, os.path.join(HERE, 'cli.py')] + list(args)",
+      "why": "shells out; what runs inside is not visible to this screen"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "WRITE_TO_CALLER_PATH",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_vocabulary_crosswalk",
+      "line": 287,
+      "module": "uiowa_rfq_18649_vocabulary_crosswalk/reconcile.py",
+      "target": "os.path.join(args.out, 'vocabulary_report.json')",
+      "why": "writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "WRITE_TO_CALLER_PATH",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_vocabulary_crosswalk",
+      "line": 290,
+      "module": "uiowa_rfq_18649_vocabulary_crosswalk/reconcile.py",
+      "target": "os.path.join(args.out, 'term_crosswalk.csv')",
+      "why": "writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "WRITE_TO_CALLER_PATH",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_vocabulary_crosswalk",
+      "line": 294,
+      "module": "uiowa_rfq_18649_vocabulary_crosswalk/reconcile.py",
+      "target": "os.path.join(args.out, 'needs_a_decision.csv')",
+      "why": "writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "WRITE_TO_CALLER_PATH",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_vocabulary_crosswalk",
+      "line": 298,
+      "module": "uiowa_rfq_18649_vocabulary_crosswalk/reconcile.py",
+      "target": "os.path.join(args.out, 'observations.csv')",
+      "why": "writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "WRITE_TO_CALLER_PATH",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_vocabulary_crosswalk",
+      "line": 302,
+      "module": "uiowa_rfq_18649_vocabulary_crosswalk/reconcile.py",
+      "target": "os.path.join(args.out, 'VOCABULARY_REPORT.md')",
+      "why": "writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "TEST_CONTEXT",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_vocabulary_crosswalk",
+      "line": 278,
+      "module": "uiowa_rfq_18649_vocabulary_crosswalk/test_vocabulary.py",
+      "target": "bad",
+      "why": "in a test module; 'bad' is assigned from module-local values"
+    },
+    {
+      "call": "open(mode='w')",
+      "classification": "TEST_CONTEXT",
+      "kind": "WRITE",
+      "lane": "uiowa_rfq_18649_vocabulary_crosswalk",
+      "line": 294,
+      "module": "uiowa_rfq_18649_vocabulary_crosswalk/test_vocabulary.py",
+      "target": "os.path.join(lane, 'w.csv')",
+      "why": "in a test module; path is joined from a part that could not be traced"
+    },
+    {
+      "call": "subprocess.run",
       "classification": "UNDETERMINED",
       "kind": "OPAQUE_SUBPROCESS",
       "lane": "uiowa_rfq_18649_workshare",
@@ -2434,13 +3054,14 @@
   ],
   "lane_prefix": "uiowa_rfq_18649",
   "root": "/home/user/commons/revenue",
-  "snapshot_commit": "fee74a99db6dd4edb0d43b9962452414419b009f",
-  "snapshot_note": "Snapshot of the live engagement tree at commons commit fee74a99db6dd4edb0d43b9962452414419b009f, taken 2026-09-19. Other seats land continuously, so re-run the screen rather than trusting this file. Absolute paths are this machine's.",
+  "snapshot_commit": "685d11dbcd83b1e91298b401e8149bf3894d2956",
+  "snapshot_note": "Snapshot of the live engagement tree at commons commit 685d11dbcd83b1e91298b401e8149bf3894d2956, 2026-09-19. The tree moves continuously; re-run rather than trusting this file.",
   "summary": {
-    "findings": 243,
+    "findings": 305,
     "lanes_by_status": {
       "uiowa_rfq_18649_acceptance_map": "REVIEW_REQUIRED",
       "uiowa_rfq_18649_adoption_readiness": "WRITE_TO_CALLER_PATH",
+      "uiowa_rfq_18649_ai_decision_case": "WRITE_TO_CALLER_PATH",
       "uiowa_rfq_18649_ai_eval_kit": "WRITE_TO_CALLER_PATH",
       "uiowa_rfq_18649_ai_integration": "WRITE_TO_CALLER_PATH",
       "uiowa_rfq_18649_ai_opportunity_portfolio": "WRITE_TO_CALLER_PATH",
@@ -2450,13 +3071,17 @@
       "uiowa_rfq_18649_capability_appendix": "UNDETERMINED",
       "uiowa_rfq_18649_capacity_benchmark": "REVIEW_REQUIRED",
       "uiowa_rfq_18649_capacity_feasibility": "WRITE_TO_CALLER_PATH",
+      "uiowa_rfq_18649_capacity_scan": "CLEAN",
       "uiowa_rfq_18649_closeout": "CLEAN",
       "uiowa_rfq_18649_contractor_transition": "WRITE_TO_CALLER_PATH",
       "uiowa_rfq_18649_deadline_continuity": "WRITE_TO_CALLER_PATH",
       "uiowa_rfq_18649_delivery_metrics": "CLEAN",
+      "uiowa_rfq_18649_delivery_scan": "WRITE_TO_CALLER_PATH",
       "uiowa_rfq_18649_document_extraction": "TEST_CONTEXT",
       "uiowa_rfq_18649_economics_resource_adapters": "WRITE_TO_CALLER_PATH",
       "uiowa_rfq_18649_exec_summary": "WRITE_TO_CALLER_PATH",
+      "uiowa_rfq_18649_export_safety": "WRITE_TO_CALLER_PATH",
+      "uiowa_rfq_18649_filesystem_safety": "REVIEW_REQUIRED",
       "uiowa_rfq_18649_handoff": "CLEAN",
       "uiowa_rfq_18649_intake_rehearsal": "WRITE_TO_CALLER_PATH",
       "uiowa_rfq_18649_integration": "CLEAN",
@@ -2465,6 +3090,7 @@
       "uiowa_rfq_18649_operator_handoff": "UNDETERMINED",
       "uiowa_rfq_18649_outcome_measurement": "CLEAN",
       "uiowa_rfq_18649_output_agreement": "WRITE_TO_CALLER_PATH",
+      "uiowa_rfq_18649_print_pagination": "WRITE_TO_CALLER_PATH",
       "uiowa_rfq_18649_prioritization": "WRITE_TO_CALLER_PATH",
       "uiowa_rfq_18649_qa_refusal_contract": "TEST_CONTEXT",
       "uiowa_rfq_18649_question_cards": "WRITE_TO_CALLER_PATH",
@@ -2475,6 +3101,7 @@
       "uiowa_rfq_18649_report_structure": "UNDETERMINED",
       "uiowa_rfq_18649_report_visuals": "WRITE_TO_CALLER_PATH",
       "uiowa_rfq_18649_roadmap_dependencies": "WRITE_TO_CALLER_PATH",
+      "uiowa_rfq_18649_run_sweep": "UNDETERMINED",
       "uiowa_rfq_18649_scope_change": "WRITE_TO_CALLER_PATH",
       "uiowa_rfq_18649_secure_guidance": "CLEAN",
       "uiowa_rfq_18649_security_event_review": "CLEAN",
@@ -2482,21 +3109,23 @@
       "uiowa_rfq_18649_test_data_readiness": "CLEAN",
       "uiowa_rfq_18649_traceability": "UNDETERMINED",
       "uiowa_rfq_18649_traceability_rehearsal": "CLEAN",
+      "uiowa_rfq_18649_uncertainty_lint": "TEST_CONTEXT",
+      "uiowa_rfq_18649_vocabulary_crosswalk": "WRITE_TO_CALLER_PATH",
       "uiowa_rfq_18649_workbench": "CLEAN",
       "uiowa_rfq_18649_workshare": "UNDETERMINED"
     },
-    "lanes_scanned": 45,
+    "lanes_scanned": 54,
     "modules_by_status": {
-      "CLEAN": 113,
-      "REVIEW_REQUIRED": 2,
-      "SELF_SCOPED": 2,
-      "TEST_CONTEXT": 27,
-      "UNDETERMINED": 7,
-      "WRITE_TO_CALLER_PATH": 24
+      "CLEAN": 127,
+      "REVIEW_REQUIRED": 4,
+      "SELF_SCOPED": 5,
+      "TEST_CONTEXT": 36,
+      "UNDETERMINED": 9,
+      "WRITE_TO_CALLER_PATH": 29
     },
-    "modules_scanned": 175,
-    "review_required": 3,
-    "undetermined": 17
+    "modules_scanned": 210,
+    "review_required": 7,
+    "undetermined": 19
   },
   "unparseable": []
 }

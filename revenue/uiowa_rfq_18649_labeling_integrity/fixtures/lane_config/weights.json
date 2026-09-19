@@ -1,0 +1,7 @@
+{
+  "schema": "assessment-weights/v1",
+  "description": "Weighting definitions and thresholds. Configuration, not records.",
+  "weights": {"security": 0.4, "delivery": 0.3, "quality": 0.3},
+  "thresholds": {"demonstrated": 0.7, "partial": 0.4},
+  "vocabulary": ["DEMONSTRATED_STRENGTH", "PARTIAL", "OBSERVED_GAP", "UNKNOWN"]
+}

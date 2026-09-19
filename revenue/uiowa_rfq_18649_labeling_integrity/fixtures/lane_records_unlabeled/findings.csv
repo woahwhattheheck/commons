@@ -1,0 +1,4 @@
+finding_id,service,area,state,statement
+F-SYN-001,ESS,software_delivery,DEMONSTRATED_STRENGTH,Review records cover every sampled change
+F-SYN-002,RIS,deployment,OBSERVED_GAP,No rebuild evidence was supplied
+F-SYN-003,IAM,deployment,UNKNOWN,Evidence requested and not received

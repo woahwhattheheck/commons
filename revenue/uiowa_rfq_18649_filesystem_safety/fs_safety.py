@@ -34,7 +34,16 @@ DISCLAIMER = (
     "an AST. No safety score is produced and no lane is marked compliant."
 )
 
-CSV_COLUMNS = ["lane", "module", "line", "kind", "call", "classification", "target", "why"]
+CSV_COLUMNS = ["provenance", "lane", "module", "line", "kind", "call",
+               "classification", "target", "why"]
+
+# OP5-MARROW's fiction-labeling screen flagged this file's own CSV output for
+# stating nothing about what it is. It is NOT synthetic -- it is a real scan of
+# real committed source -- so a "SYNTHETIC" label would be false. What it needed
+# was a provenance statement, and a column travels with the file when a sibling
+# README does not.
+CSV_PROVENANCE = ("REAL - static scan of committed source by fs_safety.py; "
+                  "not synthetic")
 
 
 def write_output(output_dir: str, relative_path: str, text: str) -> str:
@@ -57,7 +66,7 @@ def render_csv(reports: list) -> str:
     writer.writeheader()
     for report in reports:
         for f in report.findings:
-            row = f.to_json()
+            row = dict(f.to_json(), provenance=CSV_PROVENANCE)
             writer.writerow({k: row[k] for k in CSV_COLUMNS})
     return buf.getvalue()
 

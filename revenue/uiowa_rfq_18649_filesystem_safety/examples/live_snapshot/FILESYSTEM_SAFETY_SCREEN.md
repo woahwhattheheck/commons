@@ -1,16 +1,15 @@
 # Filesystem-safety screen - live snapshot
 
-> Snapshot at commons commit `fee74a99db6dd4edb0d43b9962452414419b009f`, 2026-09-19. The tree moves continuously;
-> re-run the screen rather than trusting this file.
+> Snapshot at commons commit `685d11dbcd83b1e91298b401e8149bf3894d2956`, 2026-09-19. Re-run rather than trusting this file.
 
 > This is a SCREEN, not a proof. CLEAN means the screen found nothing it could see -- it does not mean the module is safe. Dynamic dispatch, getattr, C extensions and anything inside a subprocess are invisible to an AST. No safety score is produced and no lane is marked compliant.
 
 Scanned: `/home/user/commons/revenue`
 
-- modules scanned: **175** across **45** lanes
-- findings: **243**
-- `REVIEW_REQUIRED`: **3**
-- `UNDETERMINED`: **17**
+- modules scanned: **210** across **54** lanes
+- findings: **305**
+- `REVIEW_REQUIRED`: **7**
+- `UNDETERMINED`: **19**
 
 `REVIEW_REQUIRED` means exactly one thing here: **this tool can remove, move, rename or truncate a path the caller names.** Writing where you asked it to write is reported separately.
 
@@ -18,12 +17,12 @@ Scanned: `/home/user/commons/revenue`
 
 | status | modules |
 | --- | --- |
-| `CLEAN` | 113 |
-| `REVIEW_REQUIRED` | 2 |
-| `SELF_SCOPED` | 2 |
-| `TEST_CONTEXT` | 27 |
-| `UNDETERMINED` | 7 |
-| `WRITE_TO_CALLER_PATH` | 24 |
+| `CLEAN` | 127 |
+| `REVIEW_REQUIRED` | 4 |
+| `SELF_SCOPED` | 5 |
+| `TEST_CONTEXT` | 36 |
+| `UNDETERMINED` | 9 |
+| `WRITE_TO_CALLER_PATH` | 29 |
 
 `UNPARSEABLE` is listed separately and is never counted as CLEAN: a module the screen could not read is not a module it cleared.
 
@@ -34,8 +33,10 @@ Scanned: `/home/user/commons/revenue`
 | `uiowa_rfq_18649_acceptance_map` | `REVIEW_REQUIRED` |
 | `uiowa_rfq_18649_capability_appendix` | `UNDETERMINED` |
 | `uiowa_rfq_18649_capacity_benchmark` | `REVIEW_REQUIRED` |
+| `uiowa_rfq_18649_filesystem_safety` | `REVIEW_REQUIRED` |
 | `uiowa_rfq_18649_operator_handoff` | `UNDETERMINED` |
 | `uiowa_rfq_18649_report_structure` | `UNDETERMINED` |
+| `uiowa_rfq_18649_run_sweep` | `UNDETERMINED` |
 | `uiowa_rfq_18649_traceability` | `UNDETERMINED` |
 | `uiowa_rfq_18649_workshare` | `UNDETERMINED` |
 
@@ -48,6 +49,10 @@ Each of these removes, moves or overwrites a path chosen by the caller, by argv,
 | `uiowa_rfq_18649_acceptance_map` | `uiowa_rfq_18649_acceptance_map/build_index.py:176` | `os.rmdir` | `packet_dir` | target is the function parameter 'packet_dir' -- the caller chooses what gets removed |
 | `uiowa_rfq_18649_acceptance_map` | `uiowa_rfq_18649_acceptance_map/build_index.py:183` | `shutil.rmtree` | `packet_dir` | target is the function parameter 'packet_dir' -- the caller chooses what gets removed |
 | `uiowa_rfq_18649_capacity_benchmark` | `uiowa_rfq_18649_capacity_benchmark/generate_collection.py:112` | `shutil.rmtree` | `root` | target is the function parameter 'root' -- the caller chooses what gets removed |
+| `uiowa_rfq_18649_filesystem_safety` | `uiowa_rfq_18649_filesystem_safety/fixtures/lane_external/test_sample_cleanup.py:12` | `shutil.rmtree` | `supplied_path` | target is the function parameter 'supplied_path' -- the caller chooses what gets removed |
+| `uiowa_rfq_18649_filesystem_safety` | `uiowa_rfq_18649_filesystem_safety/fixtures/lane_external/tool_argv.py:13` | `shutil.rmtree` | `workspace` | target is the function parameter 'workspace' -- the caller chooses what gets removed |
+| `uiowa_rfq_18649_filesystem_safety` | `uiowa_rfq_18649_filesystem_safety/fixtures/lane_external/tool_argv.py:17` | `shutil.rmtree` | `sys.argv[1]` | target comes from sys.argv, which is external input |
+| `uiowa_rfq_18649_filesystem_safety` | `uiowa_rfq_18649_filesystem_safety/fixtures/lane_external/tool_argv.py:21` | `os.remove` | `os.path.join(root, name)` | path is joined from externally controlled parts |
 
 ## UNDETERMINED - the screen could not trace the target
 
@@ -57,11 +62,13 @@ Reported as its own class on purpose. A screen that cannot tell does not get to 
 | --- | --- | --- | --- | --- |
 | `uiowa_rfq_18649_acceptance_map` | `uiowa_rfq_18649_acceptance_map/checks.py:190` | `subprocess.run` | `params['argv']` | shells out; what runs inside is not visible to this screen |
 | `uiowa_rfq_18649_capability_appendix` | `uiowa_rfq_18649_capability_appendix/capability_appendix.py:177` | `subprocess.run` | `command.split()` | shells out; what runs inside is not visible to this screen |
+| `uiowa_rfq_18649_filesystem_safety` | `uiowa_rfq_18649_filesystem_safety/fixtures/lane_opaque/tool_shell.py:6` | `subprocess.run` | `['python3', '-m', 'unittest', 'discover']` | shells out; what runs inside is not visible to this screen |
 | `uiowa_rfq_18649_operator_handoff` | `uiowa_rfq_18649_operator_handoff/verify_kit.py:144` | `subprocess.run` | `att['cmd']` | shells out; what runs inside is not visible to this screen |
 | `uiowa_rfq_18649_operator_handoff` | `uiowa_rfq_18649_operator_handoff/verify_kit.py:195` | `subprocess.run` | `cmd` | shells out; what runs inside is not visible to this screen |
 | `uiowa_rfq_18649_report_structure` | `uiowa_rfq_18649_report_structure/report_structure.py:719` | `open(mode='w')` | `a.render_template` | target is attribute a.render_template, not traced |
 | `uiowa_rfq_18649_report_structure` | `uiowa_rfq_18649_report_structure/report_structure.py:725` | `open(mode='w')` | `a.render_sample` | target is attribute a.render_sample, not traced |
 | `uiowa_rfq_18649_report_structure` | `uiowa_rfq_18649_report_structure/report_structure.py:730` | `open(mode='w')` | `a.render_map_csv` | target is attribute a.render_map_csv, not traced |
+| `uiowa_rfq_18649_run_sweep` | `uiowa_rfq_18649_run_sweep/run_sweep.py:206` | `subprocess.run` | `command` | shells out; what runs inside is not visible to this screen |
 | `uiowa_rfq_18649_traceability` | `uiowa_rfq_18649_traceability/audit_self_sealing.py:72` | `subprocess.run` | `[sys.executable, '-m', 'unittest'] + mods` | shells out; what runs inside is not visible to this screen |
 | `uiowa_rfq_18649_traceability` | `uiowa_rfq_18649_traceability/audit_self_sealing.py:113` | `os.remove` | `dst` | 'dst' has no assignment visible in this function |
 | `uiowa_rfq_18649_workshare` | `uiowa_rfq_18649_workshare/filesystem_tests_cli.py:49` | `subprocess.run` | `[sys.executable, str(HERE / 'compiler.py'), '...` | shells out; what runs inside is not visible to this screen |
@@ -88,6 +95,8 @@ Normal for every CLI here: they all take an output option. Listed so an operator
 | `uiowa_rfq_18649_adoption_readiness` | `uiowa_rfq_18649_adoption_readiness/readiness.py:969` | `open(mode='w')` | `instrument_path` | writes to a caller-supplied path; 'instrument_path' is assigned from external input. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_adoption_readiness` | `uiowa_rfq_18649_adoption_readiness/readiness.py:982` | `open(mode='w')` | `os.path.join(args.outdir, 'readiness_assessme...` | writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_adoption_readiness` | `uiowa_rfq_18649_adoption_readiness/readiness.py:989` | `open(mode='w')` | `os.path.join(args.outdir, 'readiness_report.md')` | writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
+| `uiowa_rfq_18649_ai_decision_case` | `uiowa_rfq_18649_ai_decision_case/ai_decision_case.py:117` | `open(mode='w')` | `os.path.join(args.out, 'explanation.md')` | writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
+| `uiowa_rfq_18649_ai_decision_case` | `uiowa_rfq_18649_ai_decision_case/ai_decision_case.py:119` | `open(mode='w')` | `os.path.join(args.out, 'decision.json')` | writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_ai_eval_kit` | `uiowa_rfq_18649_ai_eval_kit/eval_kit.py:427` | `open(mode='w')` | `path` | writes to a caller-supplied path; target is the function parameter 'path' -- the caller chooses what gets removed. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_ai_eval_kit` | `uiowa_rfq_18649_ai_eval_kit/interchange.py:152` | `open(mode='w')` | `path` | writes to a caller-supplied path; target is the function parameter 'path' -- the caller chooses what gets removed. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_ai_eval_kit` | `uiowa_rfq_18649_ai_eval_kit/interchange.py:187` | `open(mode='w')` | `path` | writes to a caller-supplied path; target is the function parameter 'path' -- the caller chooses what gets removed. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
@@ -127,11 +136,17 @@ Normal for every CLI here: they all take an output option. Listed so an operator
 | `uiowa_rfq_18649_deadline_continuity` | `uiowa_rfq_18649_deadline_continuity/continuity.py:333` | `open(mode='w')` | `path` | writes to a caller-supplied path; target is the function parameter 'path' -- the caller chooses what gets removed. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_deadline_continuity` | `uiowa_rfq_18649_deadline_continuity/continuity.py:469` | `open(mode='w')` | `os.path.join(args.outdir, 'continuity_analysi...` | writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_deadline_continuity` | `uiowa_rfq_18649_deadline_continuity/continuity.py:471` | `open(mode='w')` | `os.path.join(args.outdir, 'continuity_report....` | writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
+| `uiowa_rfq_18649_delivery_scan` | `uiowa_rfq_18649_delivery_scan/delivery_scan.py:227` | `open(mode='w')` | `md` | writes to a caller-supplied path; 'md' is assigned from external input. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
+| `uiowa_rfq_18649_delivery_scan` | `uiowa_rfq_18649_delivery_scan/delivery_scan.py:235` | `open(mode='w')` | `path` | writes to a caller-supplied path; 'path' is assigned from external input. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
+| `uiowa_rfq_18649_delivery_scan` | `uiowa_rfq_18649_delivery_scan/delivery_scan.py:254` | `open(mode='w')` | `path` | writes to a caller-supplied path; 'path' is assigned from external input. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_economics_resource_adapters` | `uiowa_rfq_18649_economics_resource_adapters/integrate.py:371` | `open(mode='w')` | `path` | writes to a caller-supplied path; target is the function parameter 'path' -- the caller chooses what gets removed. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_economics_resource_adapters` | `uiowa_rfq_18649_economics_resource_adapters/integrate.py:388` | `open(mode='w')` | `path` | writes to a caller-supplied path; target is the function parameter 'path' -- the caller chooses what gets removed. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_economics_resource_adapters` | `uiowa_rfq_18649_economics_resource_adapters/integrate.py:506` | `open(mode='w')` | `path` | writes to a caller-supplied path; target is the function parameter 'path' -- the caller chooses what gets removed. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_economics_resource_adapters` | `uiowa_rfq_18649_economics_resource_adapters/integrate.py:564` | `open(mode='w')` | `os.path.join(args.out, 'integrated.json')` | writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_exec_summary` | `uiowa_rfq_18649_exec_summary/build_summary.py:25` | `open(mode='w')` | `path` | writes to a caller-supplied path; 'path' is assigned from external input. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
+| `uiowa_rfq_18649_export_safety` | `uiowa_rfq_18649_export_safety/export_safety.py:307` | `open(mode='w')` | `path` | writes to a caller-supplied path; target is the function parameter 'path' -- the caller chooses what gets removed. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
+| `uiowa_rfq_18649_export_safety` | `uiowa_rfq_18649_export_safety/export_safety.py:322` | `open(mode='w')` | `path` | writes to a caller-supplied path; target is the function parameter 'path' -- the caller chooses what gets removed. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
+| `uiowa_rfq_18649_export_safety` | `uiowa_rfq_18649_export_safety/export_safety.py:366` | `open(mode='w')` | `os.path.join(out_dir, 'findings.json')` | writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_intake_rehearsal` | `uiowa_rfq_18649_intake_rehearsal/rehearse_intake.py:636` | `open(mode='w')` | `os.path.join(out_dir, RUN_DIGEST_NAME)` | writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_intake_rehearsal` | `uiowa_rfq_18649_intake_rehearsal/rehearse_intake.py:627` | `open(mode='w')` | `os.path.join(out_dir, name)` | writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_operator_handoff` | `uiowa_rfq_18649_operator_handoff/render_guide.py:227` | `open(mode='w')` | `args.out` | writes to a caller-supplied path; target comes from args.out, a command-line option. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
@@ -142,6 +157,9 @@ Normal for every CLI here: they all take an output option. Listed so an operator
 | `uiowa_rfq_18649_output_agreement` | `uiowa_rfq_18649_output_agreement/output_agreement.py:193` | `open(mode='w')` | `os.path.join(path, 'presentation.json')` | writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_output_agreement` | `uiowa_rfq_18649_output_agreement/output_agreement.py:182` | `open(mode='w')` | `os.path.join(path, 'matrix.csv')` | writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_output_agreement` | `uiowa_rfq_18649_output_agreement/output_agreement.py:187` | `open(mode='w')` | `os.path.join(path, 'recommendations.csv')` | writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
+| `uiowa_rfq_18649_print_pagination` | `uiowa_rfq_18649_print_pagination/printreport.py:835` | `open(mode='wb')` | `path` | writes to a caller-supplied path; target is the function parameter 'path' -- the caller chooses what gets removed. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
+| `uiowa_rfq_18649_print_pagination` | `uiowa_rfq_18649_print_pagination/printreport.py:996` | `open(mode='w')` | `os.path.join(out_dir, 'inspection_%s_%s.md' %...` | writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
+| `uiowa_rfq_18649_print_pagination` | `uiowa_rfq_18649_print_pagination/printreport.py:1009` | `open(mode='w')` | `os.path.join(out_dir, 'inspection_%s_%s.json'...` | writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_prioritization` | `uiowa_rfq_18649_prioritization/prioritize.py:1075` | `open(mode='w')` | `path` | writes to a caller-supplied path; target is the function parameter 'path' -- the caller chooses what gets removed. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_prioritization` | `uiowa_rfq_18649_prioritization/prioritize.py:1538` | `open(mode='w')` | `args.json_out` | writes to a caller-supplied path; target comes from args.json_out, a command-line option. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_prioritization` | `uiowa_rfq_18649_prioritization/prioritize.py:1544` | `open(mode='w')` | `args.markdown_out` | writes to a caller-supplied path; target comes from args.markdown_out, a command-line option. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
@@ -163,11 +181,19 @@ Normal for every CLI here: they all take an output option. Listed so an operator
 | `uiowa_rfq_18649_roadmap_dependencies` | `uiowa_rfq_18649_roadmap_dependencies/depcheck.py:936` | `open(mode='w')` | `os.path.join(outdir, 'dependency_report.md')` | writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_roadmap_dependencies` | `uiowa_rfq_18649_roadmap_dependencies/depcheck.py:984` | `open(mode='w')` | `os.path.join(args.outdir, 'proposed_roadmap.j...` | writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_roadmap_dependencies` | `uiowa_rfq_18649_roadmap_dependencies/depcheck.py:989` | `open(mode='w')` | `os.path.join(args.outdir, 'rehearsal_report.md')` | writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
+| `uiowa_rfq_18649_run_sweep` | `uiowa_rfq_18649_run_sweep/run_sweep.py:347` | `open(mode='w')` | `path` | writes to a caller-supplied path; target is the function parameter 'path' -- the caller chooses what gets removed. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
+| `uiowa_rfq_18649_run_sweep` | `uiowa_rfq_18649_run_sweep/run_sweep.py:521` | `open(mode='w')` | `json_path` | writes to a caller-supplied path; 'json_path' is assigned from external input. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
+| `uiowa_rfq_18649_run_sweep` | `uiowa_rfq_18649_run_sweep/run_sweep.py:526` | `open(mode='w')` | `md_path` | writes to a caller-supplied path; 'md_path' is assigned from external input. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_scope_change` | `uiowa_rfq_18649_scope_change/scope_change.py:902` | `open(mode='w')` | `path` | writes to a caller-supplied path; target is the function parameter 'path' -- the caller chooses what gets removed. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_scope_change` | `uiowa_rfq_18649_scope_change/scope_change.py:1191` | `open(mode='w')` | `args.json_out` | writes to a caller-supplied path; target comes from args.json_out, a command-line option. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_scope_change` | `uiowa_rfq_18649_scope_change/scope_change.py:1202` | `open(mode='w')` | `args.markdown_out` | writes to a caller-supplied path; target comes from args.markdown_out, a command-line option. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_traceability` | `uiowa_rfq_18649_traceability/trace_check.py:438` | `open(mode='w')` | `path` | writes to a caller-supplied path; 'path' is assigned from external input. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_traceability` | `uiowa_rfq_18649_traceability/trace_check.py:468` | `open(mode='w')` | `path` | writes to a caller-supplied path; 'path' is assigned from external input. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
+| `uiowa_rfq_18649_vocabulary_crosswalk` | `uiowa_rfq_18649_vocabulary_crosswalk/reconcile.py:287` | `open(mode='w')` | `os.path.join(args.out, 'vocabulary_report.json')` | writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
+| `uiowa_rfq_18649_vocabulary_crosswalk` | `uiowa_rfq_18649_vocabulary_crosswalk/reconcile.py:290` | `open(mode='w')` | `os.path.join(args.out, 'term_crosswalk.csv')` | writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
+| `uiowa_rfq_18649_vocabulary_crosswalk` | `uiowa_rfq_18649_vocabulary_crosswalk/reconcile.py:294` | `open(mode='w')` | `os.path.join(args.out, 'needs_a_decision.csv')` | writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
+| `uiowa_rfq_18649_vocabulary_crosswalk` | `uiowa_rfq_18649_vocabulary_crosswalk/reconcile.py:298` | `open(mode='w')` | `os.path.join(args.out, 'observations.csv')` | writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
+| `uiowa_rfq_18649_vocabulary_crosswalk` | `uiowa_rfq_18649_vocabulary_crosswalk/reconcile.py:302` | `open(mode='w')` | `os.path.join(args.out, 'VOCABULARY_REPORT.md')` | writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 
 ## TEST_CONTEXT - inside a test module
 
@@ -209,6 +235,9 @@ Test suites legitimately create and remove their own temp trees. Listed for comp
 | `uiowa_rfq_18649_bid_pack` | `uiowa_rfq_18649_bid_pack/test_bid_pack.py:315` | `open(mode='w')` | `mpath` | in a test module; 'mpath' has an assignment that could not be traced |
 | `uiowa_rfq_18649_bid_pack` | `uiowa_rfq_18649_bid_pack/test_bid_pack.py:385` | `open(mode='w')` | `src` | in a test module; 'src' has an assignment that could not be traced |
 | `uiowa_rfq_18649_bid_pack` | `uiowa_rfq_18649_bid_pack/test_bid_pack.py:328` | `open(mode='w')` | `empty` | in a test module; 'empty' has an assignment that could not be traced |
+| `uiowa_rfq_18649_bid_pack` | `uiowa_rfq_18649_bid_pack/test_packcheck.py:45` | `shutil.rmtree` | `cls.tmp` | in a test module; target is attribute cls.tmp, not traced |
+| `uiowa_rfq_18649_bid_pack` | `uiowa_rfq_18649_bid_pack/test_packcheck.py:259` | `open(mode='wb')` | `path` | in a test module; 'path' has an assignment that could not be traced |
+| `uiowa_rfq_18649_bid_pack` | `uiowa_rfq_18649_bid_pack/test_packcheck.py:285` | `open(mode='wb')` | `broken` | in a test module; 'broken' has an assignment that could not be traced |
 | `uiowa_rfq_18649_capability_appendix` | `uiowa_rfq_18649_capability_appendix/test_capability_appendix.py:240` | `shutil.rmtree` | `self.tmp` | in a test module; self.tmp is assigned from values this module created |
 | `uiowa_rfq_18649_capability_appendix` | `uiowa_rfq_18649_capability_appendix/test_capability_appendix.py:347` | `shutil.rmtree` | `self.tmp` | in a test module; self.tmp is assigned from values this module created |
 | `uiowa_rfq_18649_capability_appendix` | `uiowa_rfq_18649_capability_appendix/test_capability_appendix.py:372` | `os.unlink` | `self.script` | in a test module; self.script is assigned from values this module created |
@@ -240,9 +269,19 @@ Test suites legitimately create and remove their own temp trees. Listed for comp
 | `uiowa_rfq_18649_deadline_continuity` | `uiowa_rfq_18649_deadline_continuity/test_continuity.py:301` | `subprocess.run` | `[sys.executable, os.path.join(HERE, 'continui...` | shells out; what runs inside is not visible to this screen |
 | `uiowa_rfq_18649_deadline_continuity` | `uiowa_rfq_18649_deadline_continuity/test_continuity.py:325` | `os.unlink` | `path` | in a test module; 'path' has an assignment that could not be traced |
 | `uiowa_rfq_18649_deadline_continuity` | `uiowa_rfq_18649_deadline_continuity/test_continuity.py:339` | `os.unlink` | `path` | in a test module; 'path' has an assignment that could not be traced |
+| `uiowa_rfq_18649_delivery_scan` | `uiowa_rfq_18649_delivery_scan/test_delivery_scan.py:201` | `open(mode='w')` | `os.path.join(d, name)` | in a test module; writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
+| `uiowa_rfq_18649_delivery_scan` | `uiowa_rfq_18649_delivery_scan/test_delivery_scan.py:277` | `open(mode='w')` | `os.path.join(d, 'README.md')` | in a test module; writes to a caller-supplied path; path is joined from externally controlled parts. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
+| `uiowa_rfq_18649_delivery_scan` | `uiowa_rfq_18649_delivery_scan/test_delivery_scan.py:244` | `open(mode='w')` | `bad` | in a test module; 'bad' is assigned from module-local values |
+| `uiowa_rfq_18649_delivery_scan` | `uiowa_rfq_18649_delivery_scan/test_delivery_scan.py:261` | `open(mode='wb')` | `os.path.join(d, 'weird.md')` | in a test module; path is joined from module-local parts |
 | `uiowa_rfq_18649_document_extraction` | `uiowa_rfq_18649_document_extraction/test_extract.py:56` | `subprocess.run` | `[sys.executable, str(HERE / 'extract.py'), st...` | shells out; what runs inside is not visible to this screen |
 | `uiowa_rfq_18649_economics_resource_adapters` | `uiowa_rfq_18649_economics_resource_adapters/test_check_contract.py:269` | `open(mode='w')` | `bad` | in a test module; 'bad' is assigned from module-local values |
 | `uiowa_rfq_18649_economics_resource_adapters` | `uiowa_rfq_18649_economics_resource_adapters/test_integrate.py:425` | `open(mode='w')` | `bad` | in a test module; 'bad' is assigned from module-local values |
+| `uiowa_rfq_18649_export_safety` | `uiowa_rfq_18649_export_safety/test_export_safety.py:104` | `open(mode='wb')` | `bad` | in a test module; 'bad' is assigned from module-local values |
+| `uiowa_rfq_18649_export_safety` | `uiowa_rfq_18649_export_safety/test_export_safety.py:113` | `open(mode='wb')` | `path` | in a test module; 'path' is assigned from module-local values |
+| `uiowa_rfq_18649_export_safety` | `uiowa_rfq_18649_export_safety/test_export_safety.py:123` | `open(mode='w')` | `path` | in a test module; 'path' has an assignment that could not be traced |
+| `uiowa_rfq_18649_filesystem_safety` | `uiowa_rfq_18649_filesystem_safety/test_fsaudit.py:165` | `open(mode='wb')` | `os.path.join(lane, 'bad.py')` | in a test module; path is joined from module-local parts |
+| `uiowa_rfq_18649_filesystem_safety` | `uiowa_rfq_18649_filesystem_safety/test_fsaudit.py:275` | `open(mode='w')` | `os.path.join(lane, 'm.py')` | in a test module; path is joined from module-local parts |
+| `uiowa_rfq_18649_filesystem_safety` | `uiowa_rfq_18649_filesystem_safety/fixtures/lane_external/test_sample_cleanup.py:17` | `shutil.rmtree` | `scratch` | in a test module; 'scratch' is assigned from module-local values |
 | `uiowa_rfq_18649_intake_rehearsal` | `uiowa_rfq_18649_intake_rehearsal/test_rehearsal.py:45` | `shutil.rmtree` | `self.tmp` | in a test module; self.tmp is assigned from values this module created |
 | `uiowa_rfq_18649_intake_rehearsal` | `uiowa_rfq_18649_intake_rehearsal/test_rehearsal.py:51` | `open(mode='w')` | `path` | in a test module; writes to a caller-supplied path; 'path' is assigned from external input. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_intake_rehearsal` | `uiowa_rfq_18649_intake_rehearsal/test_rehearsal.py:233` | `os.remove` | `os.path.join(sb.root, 'iam', 'iam-recert-camp...` | in a test module; path is joined from a part that could not be traced |
@@ -256,6 +295,20 @@ Test suites legitimately create and remove their own temp trees. Listed for comp
 | `uiowa_rfq_18649_operator_handoff` | `uiowa_rfq_18649_operator_handoff/test_verify_kit.py:313` | `shutil.rmtree` | `cls.tmp` | in a test module; target is attribute cls.tmp, not traced |
 | `uiowa_rfq_18649_operator_handoff` | `uiowa_rfq_18649_operator_handoff/test_verify_kit.py:336` | `subprocess.run` | `[sys.executable, os.path.join(HERE, 'verify_k...` | shells out; what runs inside is not visible to this screen |
 | `uiowa_rfq_18649_operator_handoff` | `uiowa_rfq_18649_operator_handoff/test_verify_kit.py:45` | `open(mode='w')` | `p` | in a test module; writes to a caller-supplied path; 'p' is assigned from external input. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
+| `uiowa_rfq_18649_print_pagination` | `uiowa_rfq_18649_print_pagination/test_printreport.py:216` | `shutil.rmtree` | `out` | in a test module; 'out' is assigned from module-local values |
+| `uiowa_rfq_18649_print_pagination` | `uiowa_rfq_18649_print_pagination/test_printreport.py:232` | `shutil.rmtree` | `out` | in a test module; 'out' is assigned from module-local values |
+| `uiowa_rfq_18649_print_pagination` | `uiowa_rfq_18649_print_pagination/test_printreport.py:247` | `shutil.rmtree` | `out` | in a test module; 'out' is assigned from module-local values |
+| `uiowa_rfq_18649_print_pagination` | `uiowa_rfq_18649_print_pagination/test_printreport.py:261` | `shutil.rmtree` | `out` | in a test module; 'out' is assigned from module-local values |
+| `uiowa_rfq_18649_print_pagination` | `uiowa_rfq_18649_print_pagination/test_printreport.py:267` | `open(mode='w')` | `path` | in a test module; 'path' has an assignment that could not be traced |
+| `uiowa_rfq_18649_print_pagination` | `uiowa_rfq_18649_print_pagination/test_printreport.py:279` | `open(mode='w')` | `path` | in a test module; 'path' has an assignment that could not be traced |
+| `uiowa_rfq_18649_print_pagination` | `uiowa_rfq_18649_print_pagination/test_printreport.py:376` | `shutil.rmtree` | `out` | in a test module; 'out' is assigned from module-local values |
+| `uiowa_rfq_18649_print_pagination` | `uiowa_rfq_18649_print_pagination/test_printreport.py:380` | `open(mode='w')` | `path` | in a test module; 'path' has an assignment that could not be traced |
+| `uiowa_rfq_18649_print_pagination` | `uiowa_rfq_18649_print_pagination/test_printreport.py:387` | `shutil.rmtree` | `out` | in a test module; 'out' is assigned from module-local values |
+| `uiowa_rfq_18649_print_pagination` | `uiowa_rfq_18649_print_pagination/test_printreport.py:405` | `shutil.rmtree` | `out` | in a test module; 'out' is assigned from module-local values |
+| `uiowa_rfq_18649_print_pagination` | `uiowa_rfq_18649_print_pagination/test_printreport.py:227` | `open(mode='wb')` | `path` | in a test module; 'path' is assigned from module-local values |
+| `uiowa_rfq_18649_print_pagination` | `uiowa_rfq_18649_print_pagination/test_printreport.py:281` | `os.remove` | `path` | in a test module; 'path' has an assignment that could not be traced |
+| `uiowa_rfq_18649_print_pagination` | `uiowa_rfq_18649_print_pagination/test_printreport.py:382` | `os.remove` | `path` | in a test module; 'path' has an assignment that could not be traced |
+| `uiowa_rfq_18649_print_pagination` | `uiowa_rfq_18649_print_pagination/test_printreport.py:269` | `os.remove` | `path` | in a test module; 'path' has an assignment that could not be traced |
 | `uiowa_rfq_18649_prioritization` | `uiowa_rfq_18649_prioritization/test_prioritize.py:804` | `subprocess.run` | `[sys.executable, os.path.join(HERE, 'prioriti...` | shells out; what runs inside is not visible to this screen |
 | `uiowa_rfq_18649_prioritization` | `uiowa_rfq_18649_prioritization/test_prioritize.py:815` | `subprocess.run` | `[sys.executable, '-O', '-m', 'unittest', 'tes...` | shells out; what runs inside is not visible to this screen |
 | `uiowa_rfq_18649_prioritization` | `uiowa_rfq_18649_prioritization/test_prioritize.py:694` | `os.unlink` | `path` | in a test module; 'path' has an assignment that could not be traced |
@@ -285,9 +338,13 @@ Test suites legitimately create and remove their own temp trees. Listed for comp
 | `uiowa_rfq_18649_report_structure` | `uiowa_rfq_18649_report_structure/test_report_structure.py:457` | `open(mode='w')` | `clean` | in a test module; 'clean' is assigned from module-local values |
 | `uiowa_rfq_18649_report_visuals` | `uiowa_rfq_18649_report_visuals/test_report_visuals.py:513` | `os.unlink` | `path` | in a test module; 'path' has an assignment that could not be traced |
 | `uiowa_rfq_18649_report_visuals` | `uiowa_rfq_18649_report_visuals/test_report_visuals.py:544` | `open(mode='w')` | `bad` | in a test module; 'bad' is assigned from module-local values |
+| `uiowa_rfq_18649_run_sweep` | `uiowa_rfq_18649_run_sweep/test_run_sweep.py:68` | `shutil.rmtree` | `self.root` | in a test module; self.root is assigned from values this module created |
+| `uiowa_rfq_18649_run_sweep` | `uiowa_rfq_18649_run_sweep/test_run_sweep.py:75` | `open(mode='w')` | `full` | in a test module; writes to a caller-supplied path; 'full' is assigned from external input. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_scope_change` | `uiowa_rfq_18649_scope_change/test_scope_change.py:692` | `subprocess.run` | `[sys.executable, os.path.join(HERE, 'scope_ch...` | shells out; what runs inside is not visible to this screen |
 | `uiowa_rfq_18649_scope_change` | `uiowa_rfq_18649_scope_change/test_scope_change.py:701` | `subprocess.run` | `[sys.executable, '-O', '-m', 'unittest', 'tes...` | shells out; what runs inside is not visible to this screen |
 | `uiowa_rfq_18649_scope_change` | `uiowa_rfq_18649_scope_change/test_scope_change.py:636` | `os.unlink` | `path` | in a test module; 'path' has an assignment that could not be traced |
+| `uiowa_rfq_18649_traceability` | `uiowa_rfq_18649_traceability/test_audit_assertions.py:24` | `open(mode='w')` | `path` | in a test module; writes to a caller-supplied path; target is the function parameter 'path' -- the caller chooses what gets removed. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
+| `uiowa_rfq_18649_traceability` | `uiowa_rfq_18649_traceability/test_audit_assertions.py:33` | `shutil.rmtree` | `self.root` | in a test module; self.root is assigned from values this module created |
 | `uiowa_rfq_18649_traceability` | `uiowa_rfq_18649_traceability/test_audit_self_sealing.py:32` | `open(mode='w')` | `path` | in a test module; writes to a caller-supplied path; target is the function parameter 'path' -- the caller chooses what gets removed. Normal for a CLI with an output option -- confirm it cannot be pointed at evidence you must keep |
 | `uiowa_rfq_18649_traceability` | `uiowa_rfq_18649_traceability/test_audit_self_sealing.py:55` | `shutil.rmtree` | `self.root` | in a test module; self.root is assigned from values this module created |
 | `uiowa_rfq_18649_traceability` | `uiowa_rfq_18649_traceability/test_trace_check.py:39` | `shutil.rmtree` | `self.tmp` | in a test module; self.tmp is assigned from values this module created |
@@ -302,6 +359,9 @@ Test suites legitimately create and remove their own temp trees. Listed for comp
 | `uiowa_rfq_18649_traceability` | `uiowa_rfq_18649_traceability/test_trace_check.py:171` | `open(mode='a')` | `self.path('sources.csv')` | in a test module; target is the result of self.path(), not traced |
 | `uiowa_rfq_18649_traceability` | `uiowa_rfq_18649_traceability/test_trace_check.py:185` | `open(mode='a')` | `p` | in a test module; 'p' has an assignment that could not be traced |
 | `uiowa_rfq_18649_traceability` | `uiowa_rfq_18649_traceability/test_trace_check.py:284` | `open(mode='a')` | `self.path('findings.csv')` | in a test module; target is the result of self.path(), not traced |
+| `uiowa_rfq_18649_uncertainty_lint` | `uiowa_rfq_18649_uncertainty_lint/test_lint.py:226` | `subprocess.run` | `[sys.executable, os.path.join(HERE, 'cli.py')...` | shells out; what runs inside is not visible to this screen |
+| `uiowa_rfq_18649_vocabulary_crosswalk` | `uiowa_rfq_18649_vocabulary_crosswalk/test_vocabulary.py:278` | `open(mode='w')` | `bad` | in a test module; 'bad' is assigned from module-local values |
+| `uiowa_rfq_18649_vocabulary_crosswalk` | `uiowa_rfq_18649_vocabulary_crosswalk/test_vocabulary.py:294` | `open(mode='w')` | `os.path.join(lane, 'w.csv')` | in a test module; path is joined from a part that could not be traced |
 
 ## SELF_SCOPED - the module created the path it removes
 
@@ -311,6 +371,9 @@ A verifier cleaning up its own scratch copy lands here. This is the shape you wa
 | --- | --- | --- | --- | --- |
 | `uiowa_rfq_18649_ai_eval_kit` | `uiowa_rfq_18649_ai_eval_kit/eval_kit.py:630` | `shutil.rmtree` | `tmp` | 'tmp' is assigned from module-local values |
 | `uiowa_rfq_18649_ai_integration` | `uiowa_rfq_18649_ai_integration/demo_swap.py:166` | `open(mode='w')` | `'out/swap_receipt.json'` | target is a literal in this module |
+| `uiowa_rfq_18649_filesystem_safety` | `uiowa_rfq_18649_filesystem_safety/fs_safety.py:49` | `open(mode='w')` | `target` | write target is caller-supplied, but the function resolves the path and raises on one outside its directory (heuristic) |
+| `uiowa_rfq_18649_filesystem_safety` | `uiowa_rfq_18649_filesystem_safety/fixtures/lane_clean/tool_clean.py:11` | `open(mode='w')` | `target` | write target is caller-supplied, but the function resolves the path and raises on one outside its directory (heuristic) |
+| `uiowa_rfq_18649_filesystem_safety` | `uiowa_rfq_18649_filesystem_safety/fixtures/lane_self_scoped/tool_temp.py:11` | `shutil.rmtree` | `scratch` | 'scratch' is assigned from module-local values |
 | `uiowa_rfq_18649_milestone_packets` | `uiowa_rfq_18649_milestone_packets/packets.py:99` | `open(mode='w')` | `target` | write target is caller-supplied, but the function resolves the path and raises on one outside its directory (heuristic) |
 | `uiowa_rfq_18649_operator_handoff` | `uiowa_rfq_18649_operator_handoff/verify_kit.py:216` | `shutil.rmtree` | `outdir` | 'outdir' is assigned from module-local values |
 | `uiowa_rfq_18649_operator_handoff` | `uiowa_rfq_18649_operator_handoff/verify_kit.py:279` | `shutil.rmtree` | `tmp` | 'tmp' is assigned from module-local values |

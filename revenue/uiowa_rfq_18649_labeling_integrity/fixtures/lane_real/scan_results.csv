@@ -1,0 +1,4 @@
+provenance,check_id,service,area,state,statement
+REAL - measured from committed source; not synthetic,C-001,ESS,deployment,assessed,Module count measured at scan time
+REAL - measured from committed source; not synthetic,C-002,RIS,deployment,assessed,Module count measured at scan time
+REAL - measured from committed source; not synthetic,C-003,IAM,software_delivery,assessed,Module count measured at scan time

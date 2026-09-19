@@ -1,0 +1,91 @@
+{
+  "artifacts": [
+    {
+      "label_offset": 20,
+      "lane": "fixtures",
+      "path": "README.md",
+      "reason": "documentation explains the kit; it presents no records",
+      "record_ids_sample": [],
+      "shape": "DOCUMENTATION",
+      "status": "DISCLOSED"
+    },
+    {
+      "label_offset": 3813,
+      "lane": "lane_buried",
+      "path": "lane_buried/report.md",
+      "reason": "carries 25 record identifier(s) and 0 populated row(s) with assessment vocabulary; disclosure appears at byte 3813, past the first 1500 bytes a reader sees",
+      "record_ids_sample": [
+        "F"
+      ],
+      "shape": "RECORDS",
+      "status": "LABEL_BURIED"
+    },
+    {
+      "label_offset": null,
+      "lane": "lane_config",
+      "path": "lane_config/weights.json",
+      "reason": "reads as schema/vocabulary/weights rather than records; a fiction label is not expected here",
+      "record_ids_sample": [],
+      "shape": "CONFIGURATION",
+      "status": "UNLABELED_CONFIG_SHAPED"
+    },
+    {
+      "label_offset": 0,
+      "lane": "lane_real",
+      "path": "lane_real/scan_results.csv",
+      "reason": "carries 3 record identifier(s) and 3 populated row(s) with assessment vocabulary; disclosure at byte 0",
+      "record_ids_sample": [
+        "C"
+      ],
+      "shape": "RECORDS",
+      "status": "DISCLOSED"
+    },
+    {
+      "label_offset": 0,
+      "lane": "lane_records_labeled",
+      "path": "lane_records_labeled/findings.csv",
+      "reason": "carries 3 record identifier(s) and 3 populated row(s) with assessment vocabulary; disclosure at byte 0",
+      "record_ids_sample": [
+        "F"
+      ],
+      "shape": "RECORDS",
+      "status": "DISCLOSED"
+    },
+    {
+      "label_offset": null,
+      "lane": "lane_records_unlabeled",
+      "path": "lane_records_unlabeled/findings.csv",
+      "reason": "carries 3 record identifier(s) and 3 populated row(s) with assessment vocabulary; the file states nowhere whether its contents are synthetic or real",
+      "record_ids_sample": [
+        "F"
+      ],
+      "shape": "RECORDS",
+      "status": "UNDISCLOSED_PROVENANCE"
+    }
+  ],
+  "disclaimer": "This screen reports whether an artifact DISCLOSES that it is invented. It cannot tell whether the content is in fact synthetic, and it does not assert that any file contains a real University finding. Shape classification is heuristic. No lane is scored or marked compliant.",
+  "header_bytes": 1500,
+  "root": "/home/user/fleet/staging/OP5-MARROW/revenue/uiowa_rfq_18649_labeling_integrity/fixtures",
+  "summary": {
+    "artifacts_examined": 6,
+    "by_status": {
+      "DISCLOSED": 3,
+      "LABEL_BURIED": 1,
+      "UNDISCLOSED_PROVENANCE": 1,
+      "UNLABELED_CONFIG_SHAPED": 1
+    },
+    "lanes_by_worst_status": {
+      "fixtures": "DISCLOSED",
+      "lane_buried": "LABEL_BURIED",
+      "lane_config": "UNLABELED_CONFIG_SHAPED",
+      "lane_real": "DISCLOSED",
+      "lane_records_labeled": "DISCLOSED",
+      "lane_records_unlabeled": "UNDISCLOSED_PROVENANCE"
+    },
+    "lanes_needing_a_label": [
+      "lane_buried",
+      "lane_records_unlabeled"
+    ],
+    "needs_a_label": 2
+  }
+}
