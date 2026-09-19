@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 188,
     "open_pull_requests": 172,
-    "runs_in_progress": 13,
-    "runs_queued": 911
+    "runs_in_progress": 12,
+    "runs_queued": 850
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -259,7 +259,7 @@
     "16260": "f3dab31e57379f419f64712072e9e3c5ebc4b2b4",
     "16265": "7a710b90554e2bf0428ad506a2893e8cc0a12981",
     "16266": "e0a78c06317c3e299219f282c6afd0f90abd3d46",
-    "16267": "fb6e4d9b8007f44a7898d91d31b02256f7dba83d",
+    "16267": "940f1624fadb6e3b52462b1860f41da6ce72bc26",
     "16268": "368d027b2f711110df963b336798349170da6467",
     "16269": "0be2a3692c625a216141ba0f319d2ed292737238",
     "16270": "74af58503eaa657283cdb487dfc39181f0cb3aac",
@@ -353,7 +353,7 @@
   },
   "pulls_listed": 172,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 70.1,
+  "queue_depth_per_runner": 70.8,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -380,24 +380,57 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zz-trellis/civic-portable-docs-20260919",
-      "closed_at": "2026-09-19T16:55:56Z",
-      "head_sha": "af6703f929b9444ec39607a36f027a16244c7dc4",
-      "merged_at": "2026-09-19T16:55:56Z",
-      "number": 16453,
+      "branch": "zz-rivet82/uiowa-050-handoff-correctness-20260919",
+      "closed_at": "2026-09-19T15:02:42Z",
+      "head_sha": "3cd3eac1a77933c7c4d6e867e4bde3e1abca9a70",
+      "merged_at": "2026-09-19T15:02:42Z",
+      "number": 16256,
       "state": "MERGED",
-      "title": "docs: Civic portable reader guide, worked cases and literal execution"
+      "title": "fix(uiowa-050): complete robust handoff validation and operator report delivery"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zz-trellis/civic-portable-reader-20260919",
-      "closed_at": "2026-09-19T16:49:09Z",
-      "head_sha": "a53de1ca9d59f73c6801871073b0e7770bb35e44",
-      "merged_at": "2026-09-19T16:49:09Z",
-      "number": 16452,
+      "branch": "uiowa-056-kestrel731-interview",
+      "closed_at": "2026-09-19T15:02:21Z",
+      "head_sha": "9692bfc874a8ff6576853e41384eca9eb027658d",
+      "merged_at": "2026-09-19T15:02:21Z",
+      "number": 16314,
       "state": "MERGED",
-      "title": "Civic Action Ledger: portable reader with retained source evidence"
+      "title": "UIOWA-056: standalone maintenance interview and worked rehearsal"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "swarm-zz/uiowa100-copperfinch8d42-portability",
+      "branch": "swarm-zz/uiowa100-rivet9h6p-execution-receipts",
+      "closed_at": "2026-09-19T14:58:56Z",
+      "head_sha": "2ad4c9854c4b232162635584d554edd55b5ad424",
+      "merged_at": "2026-09-19T14:58:56Z",
+      "number": 16345,
+      "state": "MERGED",
+      "title": "UIOWA-100: retain failed execution attempts and partial-output receipts"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "quartz-c17/uiowa-bundle-compiler-compat-20260919",
+      "closed_at": "2026-09-19T14:58:56Z",
+      "head_sha": "133b4db43b87bf3a9f4f8f9f2d65ec60ee2a6ebe",
+      "merged_at": "2026-09-19T14:58:56Z",
+      "number": 16336,
+      "state": "MERGED",
+      "title": "UIOWA transport: accept compiler-v2 cells without changing demo bytes"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-copper-r61/uiowa093-review-evidence-20260919",
+      "closed_at": "2026-09-19T14:58:32Z",
+      "head_sha": "26ac7e08fbc2d0651e77d791e2c3279cb2b9e3f8",
+      "merged_at": "2026-09-19T14:58:32Z",
+      "number": 16335,
+      "state": "MERGED",
+      "title": "UIOWA-093: retain source-bound checker review and six measured coverage gaps"
     },
     {
       "author": "woahwhattheheck",
@@ -409,6 +442,17 @@
       "number": 16342,
       "state": "MERGED",
       "title": "docs(uiowa): recover IAM federation sources and interview evidence"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "swarmz/titan-v5-wheat-carry-14337-20260917",
+      "branch": "swarmzz/titan-wheat-count-contract-thalweg62f9-20260919",
+      "closed_at": "2026-09-19T14:58:09Z",
+      "head_sha": "57bcb2e93a4a2f03995dc84ac58536738cb2fb48",
+      "merged_at": "2026-09-19T14:58:09Z",
+      "number": 16340,
+      "state": "MERGED",
+      "title": "TITAN: exact integer helper counts with source-bound replay (#15761 follow-up)"
     },
     {
       "author": "woahwhattheheck",
@@ -475,54 +519,10 @@
       "number": 16306,
       "state": "MERGED",
       "title": "UIOWA-050: complete nested schema and independent interchange conformance"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "codex/zz-keystone-43cf-osip-dossier",
-      "closed_at": "2026-09-19T14:47:19Z",
-      "head_sha": "1d5e5d9d368c955c53b96df2fdf3d804977010a1",
-      "merged_at": "2026-09-19T14:47:19Z",
-      "number": 16296,
-      "state": "MERGED",
-      "title": "Complete Rhode Island OSIP qualified-prime operations dossier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "sol-z/bounded-canonical-json-20260917",
-      "branch": "zz-quartzline/bounded-json-proof-20260919",
-      "closed_at": "2026-09-19T14:46:28Z",
-      "head_sha": "91a29c34783a9ae4c0fbcfd826e60ebbe3dd9774",
-      "merged_at": "2026-09-19T14:46:28Z",
-      "number": 16288,
-      "state": "MERGED",
-      "title": "test: independent canonical JSON compatibility proof for #15732"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-proofforge/proofpatch-recovery-20260917",
-      "closed_at": "2026-09-19T14:44:52Z",
-      "head_sha": "b5224a67495cec7956ed2ed1682275fff749d0e6",
-      "merged_at": "2026-09-19T14:44:52Z",
-      "number": 15635,
-      "state": "MERGED",
-      "title": "Recover Nebius ProofPatch evidence-bound coding agent"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa047-cleanup-astra-forge",
-      "closed_at": "2026-09-19T14:43:35Z",
-      "head_sha": "8953c66defb15f00821c44a1d84f03c1db5cc8a7",
-      "merged_at": "2026-09-19T14:43:35Z",
-      "number": 16323,
-      "state": "MERGED",
-      "title": "fix(uiowa-047): keep absent cleanup declarations unknown"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T18:23:57Z",
+  "unchanged_since": "2026-09-19T18:43:21Z",
   "undatable_pulls": []
 }
