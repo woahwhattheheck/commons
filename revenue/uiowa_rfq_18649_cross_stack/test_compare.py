@@ -219,6 +219,12 @@ class CalibrationTests(unittest.TestCase):
                 with self.assertRaises(compare.InputError):
                     compare.load(path)
 
+    def test_synthetic_label_and_as_of_survive_csv_export(self):
+        rows = list(csv.DictReader(io.StringIO(compare.comparison_csv(compare.analyze(self.packet)))))
+        self.assertEqual(len(rows), 12)
+        self.assertTrue(all(row["synthetic"] == "True" for row in rows))
+        self.assertTrue(all(row["as_of"] == "2026-09-19" for row in rows))
+
     def test_csv_formula_like_labels_are_literal(self):
         self.packet["pairs"][0]["id"] = "=1+1"
         csv_text = compare.comparison_csv(compare.analyze(self.packet))
@@ -245,6 +251,7 @@ class CalibrationTests(unittest.TestCase):
             with (path / "context-worksheet.csv").open(newline="") as stream:
                 rows = list(csv.DictReader(stream))
             self.assertEqual(len(rows), 48)
+            self.assertTrue(all(row["synthetic"] == "True" for row in rows))
             with self.assertRaises(FileExistsError):
                 examples.write_example(path)
 
