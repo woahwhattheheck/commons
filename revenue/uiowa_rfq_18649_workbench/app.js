@@ -268,7 +268,9 @@ async function inspectFiles() {
   } catch (err) { setError(err instanceof Error ? err.message : String(err)); }
   finally {
     el.inspectBtn.disabled = false;
-    if (restoreInvokerFocus && document.activeElement === document.body) el.inspectBtn.focus();
+    if (restoreInvokerFocus && document.activeElement === document.body) {
+      (state.report ? document.getElementById("summary-heading") : el.inspectBtn).focus();
+    }
   }
 }
 
@@ -312,7 +314,11 @@ function exportDraft() {
 }
 
 el.inspectBtn.addEventListener("click", inspectFiles);
-el.demoBtn.addEventListener("click", () => { setError(""); installReport(syntheticReport()); });
+el.demoBtn.addEventListener("click", () => {
+  const restoreInvokerFocus = document.activeElement === el.demoBtn;
+  setError(""); installReport(syntheticReport());
+  if (restoreInvokerFocus) document.getElementById("summary-heading").focus();
+});
 el.resetBtn.addEventListener("click", resetWorkbench);
 el.search.addEventListener("input", renderMatrix);
 el.statusFilter.addEventListener("change", renderMatrix);
