@@ -1,54 +1,127 @@
-"""Convert a rendered SVG to true monochrome, so the claim can be tested.
+"""Remove hue from report SVG paint without rewriting evidence or references.
 
-UIOWA-126 asks that readers distinguish these states "in color, monochrome, and
-exported output". A promise that a figure "would still work in black and white"
-is untestable. So the colour is actually removed: every hex value in the
-document is replaced with its WCAG luminance-preserving grey, producing a real
-artifact a reviewer can open, print, and compare.
+The package emits hex paint in SVG presentation attributes. Only those actual
+attributes are converted; visible text, descriptions, source metadata, element
+IDs and local fragment references retain their bytes. The original luminance
+calculation and separation report are unchanged.
 
-This is the same transform a monochrome printer or a fully colour-blind reader
-applies, so `figure.mono.svg` is not an approximation of the worst case -- it is
-the worst case, on disk.
-
-What survives the conversion is exactly what this package treats as
-load-bearing: shape, texture, border style and the written label. What does not
-survive is hue. That is the point.
-
-Python 3 standard library only.
+This converter intentionally rejects unsupported paint syntax, stylesheets and
+DTD declarations rather than claiming a complete monochrome export for content
+it did not inspect. It is not a universal simulation of printers or vision.
+Python 3 standard library only. No network or external entity resolution.
 """
-
 from __future__ import annotations
 
 import re
+from xml.parsers import expat
 
 import contrast
 
-# Matches #rgb and #rrggbb inside attribute values.
-_HEX = re.compile(r'#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})\b')
+_HEX = re.compile(r"#[0-9a-fA-F]{3}(?:[0-9a-fA-F]{3})?\Z")
+_PAINT = frozenset(("fill", "stroke", "color", "stop-color", "flood-color",
+                    "lighting-color", "solid-color"))
+_ATTR = re.compile(rb'''(?<!\S)([A-Za-z_][\w.:-]*)\s*=\s*(["'])(.*?)\2''', re.S)
+_LOCAL_PAINT = re.compile(r"url\(\s*#[A-Za-z_][\w:.-]*\s*\)\Z")
+
+
+class UnsupportedPaint(ValueError):
+    """The SVG uses paint this report-specific converter cannot certify."""
+
+
+def _colour(value: str) -> str | None:
+    value = value.strip()
+    if _HEX.fullmatch(value):
+        return value
+    if value.lower() in ("black", "white"):
+        return "#000000" if value.lower() == "black" else "#FFFFFF"
+    if value in ("none", "currentColor", "inherit") or _LOCAL_PAINT.fullmatch(value):
+        return None
+    raise UnsupportedPaint(f"unsupported SVG paint {value!r}; use hex presentation attributes")
+
+
+def _paint_spans(svg_text: str) -> tuple[bytes, list[tuple[int, int, str]]]:
+    """Find colour value spans in parsed start tags, never in arbitrary text.
+
+    Expat supplies UTF-8 byte offsets and skips comments/CDATA for this handler.
+    The lexical scan is confined to each validated start tag and retains every
+    byte outside the changed paint values. It is not a document-wide colour
+    substitution. Malformed XML and DTDs fail before any output is produced.
+    """
+    if not isinstance(svg_text, str):
+        raise TypeError("SVG source must be a string")
+    raw = svg_text.encode("utf-8")
+    parser = expat.ParserCreate(encoding="utf-8")
+    spans: list[tuple[int, int, str]] = []
+    root_seen = False
+
+    def start(name, attrs):
+        nonlocal root_seen
+        if not root_seen:
+            if name.rsplit(":", 1)[-1] != "svg":
+                raise ValueError("expected an SVG document")
+            root_seen = True
+        if name.rsplit(":", 1)[-1] == "style" or attrs.get("style", "").strip():
+            raise UnsupportedPaint("stylesheets and inline CSS are not supported; use presentation attributes")
+        begin = parser.CurrentByteIndex
+        end = begin
+        quote = 0
+        while end < len(raw):
+            value = raw[end]
+            if quote:
+                if value == quote:
+                    quote = 0
+            elif value in (34, 39):
+                quote = value
+            elif value == 62:
+                break
+            end += 1
+        for match in _ATTR.finditer(raw, begin, end):
+            attribute = match.group(1).decode("ascii")
+            if attribute not in _PAINT:
+                continue
+            colour = _colour(attrs[attribute])
+            if colour is not None:
+                spans.append((match.start(3), match.end(3), colour))
+
+    def reject_doctype(*args):
+        raise UnsupportedPaint("DTD declarations are not supported")
+
+    def instruction(target, data):
+        if target.lower() == "xml-stylesheet":
+            raise UnsupportedPaint("external stylesheets are not supported")
+
+    parser.StartElementHandler = start
+    parser.StartDoctypeDeclHandler = reject_doctype
+    parser.ProcessingInstructionHandler = instruction
+    parser.Parse(raw, True)
+    return raw, spans
 
 
 def to_monochrome(svg_text: str) -> str:
-    """Replace every colour in an SVG document with its grayscale equivalent."""
-    def swap(match: re.Match) -> str:
-        try:
-            return contrast.to_grayscale(match.group(0))
-        except contrast.ColorError:  # pragma: no cover - regex already constrains this
-            return match.group(0)
-    return _HEX.sub(swap, svg_text)
+    """Convert supported paint values; preserve all non-paint source bytes."""
+    raw, spans = _paint_spans(svg_text)
+    pieces = []
+    last = 0
+    for start, end, colour in spans:
+        pieces.extend((raw[last:start], contrast.to_grayscale(colour).encode("ascii")))
+        last = end
+    pieces.append(raw[last:])
+    return b"".join(pieces).decode("utf-8")
 
 
 def colours_in(svg_text: str) -> list[str]:
-    """Every distinct colour a document uses, uppercased and normalised."""
+    """Distinct supported paint colours, excluding text and fragment IDs."""
+    _, spans = _paint_spans(svg_text)
     seen: list[str] = []
-    for raw in _HEX.findall(svg_text):
-        value = contrast.to_hex(contrast.parse_hex(raw))
+    for _, _, colour in spans:
+        value = contrast.to_hex(contrast.parse_hex(colour))
         if value not in seen:
             seen.append(value)
     return seen
 
 
 def is_monochrome(svg_text: str) -> bool:
-    """True when no colour in the document carries any hue at all."""
+    """Whether supported paint has no hue; unsupported formats raise."""
     for value in colours_in(svg_text):
         r, g, b = contrast.parse_hex(value)
         if not (r == g == b):
