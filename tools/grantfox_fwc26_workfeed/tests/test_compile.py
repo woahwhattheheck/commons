@@ -69,6 +69,35 @@ class WorkfeedTests(unittest.TestCase):
         self.assertEqual(item.status, "CLAIMED_OR_PR_OPEN")
         self.assertEqual(item.open_pull_requests, ("https://github.com/StableRoute-Org/Stableroute-backend/pull/572",))
 
+    def test_active_swarm_claim_blocks_duplicate_take(self):
+        item = classify(issue(coordination_claims=[{"owner": "ZZ-Sol-Kestrel"}]))
+        self.assertEqual(item.status, "SWARM_TAKEN")
+        self.assertEqual(item.coordination_owners, ("ZZ-Sol-Kestrel",))
+
+    def test_stale_snapshot_blocks_ready(self):
+        item = classify(
+            issue(observed_at="2026-09-19T17:00:00-04:00"),
+            fresh_after="2026-09-19T17:30:00-04:00",
+        )
+        self.assertEqual(item.status, "STALE_EVIDENCE")
+        self.assertIn("older than", item.reason)
+
+    def test_missing_observed_at_is_stale_when_floor_requested(self):
+        item = classify(issue(), fresh_after="2026-09-19T17:30:00-04:00")
+        self.assertEqual(item.status, "STALE_EVIDENCE")
+        self.assertIn("no observed_at", item.reason)
+
+    def test_fresh_snapshot_remains_ready(self):
+        item = classify(
+            issue(observed_at="2026-09-19T17:31:00-04:00"),
+            fresh_after="2026-09-19T17:30:00-04:00",
+        )
+        self.assertEqual(item.status, "READY")
+
+    def test_naive_freshness_timestamp_refused(self):
+        with self.assertRaisesRegex(WorkfeedError, "timezone offset"):
+            classify(issue(observed_at="2026-09-19T17:31:00"), fresh_after="2026-09-19T17:30:00-04:00")
+
     def test_malformed_coordination_fields_refused(self):
         with self.assertRaisesRegex(WorkfeedError, "claimant_comments must be a list"):
             classify(issue(claimant_comments={"user": "alice"}))
@@ -131,6 +160,7 @@ class WorkfeedTests(unittest.TestCase):
             out = root / "out"
             main([str(source), "--out-dir", str(out)])
             payload = json.loads((out / "queue.json").read_text(encoding="utf-8"))
+            self.assertIsNone(payload["evidence_fresh_after"])
             self.assertEqual(
                 payload["authority"],
                 {

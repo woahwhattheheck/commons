@@ -39,12 +39,16 @@ JSON array or JSONL. Minimal object:
 }
 ```
 
-`labels` may also contain GitHub-style objects with `name`; `assignees` may contain objects with `login`. `claimant_comments` (or `claim_comments`) and `open_pull_requests` (or `open_prs`) are optional observed coordination inputs; any supplied claimant or open PR blocks `READY`.
+`labels` may also contain GitHub-style objects with `name`; `assignees` may contain objects with `login`. `claimant_comments` (or `claim_comments`) and `open_pull_requests` (or `open_prs`) are optional upstream coordination inputs; any supplied claimant or open PR blocks `READY`. `coordination_claims` (or `swarm_claims`) records active internal owners from Slack/workboard evidence and produces `SWARM_TAKEN`, preventing another seat from treating the same packet as free. `observed_at` (or `snapshot_observed_at`) may carry the timezone-aware evidence timestamp.
 
 ## Run
 
 ```bash
 python -m tools.grantfox_fwc26_workfeed.compile issues.json --out-dir /tmp/gfox-feed
+
+# Optional hard freshness floor: missing/older observed_at snapshots are not routable.
+python -m tools.grantfox_fwc26_workfeed.compile issues.json --out-dir /tmp/gfox-feed-fresh \\
+  --fresh-after 2026-09-19T17:30:00-04:00
 ```
 
 Outputs:
@@ -61,4 +65,4 @@ python -m unittest discover -s tools/grantfox_fwc26_workfeed/tests -v
 python -O -m unittest discover -s tools/grantfox_fwc26_workfeed/tests -v
 ```
 
-The tests cover campaign label gating, assignment state, claim-step detection, observed claimant/open-PR blocking, discretionary-vs-explicit reward evidence, command extraction, security-sensitive marking, hostile duplicate keys, malformed coordination fields, invalid URLs/issue numbers, authority flags, and create-exclusive output.
+The tests cover campaign label gating, assignment state, claim-step detection, observed claimant/open-PR blocking, active swarm-owner collision blocking, timezone-aware freshness floors, discretionary-vs-explicit reward evidence, command extraction, security-sensitive marking, hostile duplicate keys, malformed coordination fields, invalid URLs/issue numbers, authority flags, and create-exclusive output.

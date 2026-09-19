@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+from datetime import datetime
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Iterable
@@ -80,6 +81,8 @@ class Candidate:
     assignees: tuple[str, ...]
     observed_claimants: tuple[str, ...]
     open_pull_requests: tuple[str, ...]
+    coordination_owners: tuple[str, ...]
+    observed_at: str | None
     status: str
     reward_class: str
     explicit_reward_mentions: tuple[str, ...]
@@ -100,6 +103,8 @@ class Candidate:
             "assignees": list(self.assignees),
             "observed_claimants": list(self.observed_claimants),
             "open_pull_requests": list(self.open_pull_requests),
+            "coordination_owners": list(self.coordination_owners),
+            "observed_at": self.observed_at,
             "status": self.status,
             "reward_class": self.reward_class,
             "explicit_reward_mentions": list(self.explicit_reward_mentions),
@@ -215,6 +220,39 @@ def _open_pull_requests(record: dict[str, Any]) -> tuple[str, ...]:
     return tuple(result)
 
 
+def _coordination_owners(record: dict[str, Any]) -> tuple[str, ...]:
+    raw = record.get("coordination_claims") or record.get("swarm_claims") or []
+    if not isinstance(raw, list):
+        raise WorkfeedError("coordination_claims must be a list")
+    result: list[str] = []
+    for item in raw:
+        if isinstance(item, str):
+            owner = item.strip()
+        elif isinstance(item, dict):
+            owner = str(item.get("owner") or item.get("session") or item.get("user") or "").strip()
+        else:
+            raise WorkfeedError("coordination_claims entries must be strings or objects")
+        if owner and owner not in result:
+            result.append(owner)
+    return tuple(result)
+
+
+def _parse_iso8601(value: Any, field: str) -> datetime | None:
+    if value in (None, ""):
+        return None
+    if not isinstance(value, str):
+        raise WorkfeedError(f"{field} must be an ISO-8601 timestamp string")
+    text = value.strip()
+    normalized = text[:-1] + "+00:00" if text.endswith("Z") else text
+    try:
+        parsed = datetime.fromisoformat(normalized)
+    except ValueError as exc:
+        raise WorkfeedError(f"{field} must be a valid ISO-8601 timestamp") from exc
+    if parsed.tzinfo is None:
+        raise WorkfeedError(f"{field} must include a timezone offset")
+    return parsed
+
+
 def _commands(body: str) -> tuple[str, ...]:
     found: list[str] = []
     for command in re.findall(r"`([^`\n]+)`", body):
@@ -226,7 +264,7 @@ def _commands(body: str) -> tuple[str, ...]:
     return tuple(found)
 
 
-def classify(record: dict[str, Any]) -> Candidate:
+def classify(record: dict[str, Any], *, fresh_after: str | None = None) -> Candidate:
     repo, number = _repo_number(record)
     key = f"{repo}#{number}"
     title = record.get("title")
@@ -237,6 +275,13 @@ def classify(record: dict[str, Any]) -> Candidate:
     assignees = _assignees(record)
     observed_claimants = _observed_claimants(record)
     open_pull_requests = _open_pull_requests(record)
+    coordination_owners = _coordination_owners(record)
+    observed_at_value = record.get("observed_at", record.get("snapshot_observed_at"))
+    observed_at_dt = _parse_iso8601(observed_at_value, f"{key}: observed_at")
+    fresh_after_dt = _parse_iso8601(fresh_after, "fresh_after") if fresh_after else None
+    stale_evidence = fresh_after_dt is not None and (
+        observed_at_dt is None or observed_at_dt < fresh_after_dt
+    )
 
     if not isinstance(title, str) or not title.strip():
         raise WorkfeedError(f"{key}: title is required")
@@ -263,6 +308,12 @@ def classify(record: dict[str, Any]) -> Candidate:
     elif missing:
         status = "INELIGIBLE"
         reason = "missing required campaign labels: " + ", ".join(sorted(missing))
+    elif stale_evidence:
+        status = "STALE_EVIDENCE"
+        if observed_at_dt is None:
+            reason = f"snapshot has no observed_at; freshness floor is {fresh_after}"
+        else:
+            reason = f"snapshot observed_at {observed_at_value} is older than freshness floor {fresh_after}"
     elif assignees:
         status = "ASSIGNED"
         reason = "already assigned to: " + ", ".join(assignees)
@@ -274,6 +325,9 @@ def classify(record: dict[str, Any]) -> Candidate:
         if open_pull_requests:
             pieces.append("open PR(s): " + ", ".join(open_pull_requests))
         reason = "; ".join(pieces)
+    elif coordination_owners:
+        status = "SWARM_TAKEN"
+        reason = "active swarm coordination owner(s): " + ", ".join(coordination_owners)
     elif claim_required:
         status = "CLAIM_REQUIRED"
         reason = "issue text describes an application/assignment step"
@@ -292,6 +346,8 @@ def classify(record: dict[str, Any]) -> Candidate:
         assignees=assignees,
         observed_claimants=observed_claimants,
         open_pull_requests=open_pull_requests,
+        coordination_owners=coordination_owners,
+        observed_at=str(observed_at_value) if observed_at_value not in (None, "") else None,
         status=status,
         reward_class=reward_class,
         explicit_reward_mentions=explicit_mentions,
@@ -302,17 +358,25 @@ def classify(record: dict[str, Any]) -> Candidate:
     )
 
 
-def compile_records(records: Iterable[dict[str, Any]]) -> list[Candidate]:
+def compile_records(records: Iterable[dict[str, Any]], *, fresh_after: str | None = None) -> list[Candidate]:
     seen: set[str] = set()
     candidates: list[Candidate] = []
     for record in records:
-        candidate = classify(record)
+        candidate = classify(record, fresh_after=fresh_after)
         if candidate.key in seen:
             raise WorkfeedError(f"duplicate issue key: {candidate.key}")
         seen.add(candidate.key)
         candidates.append(candidate)
 
-    rank = {"READY": 0, "CLAIM_REQUIRED": 1, "CLAIMED_OR_PR_OPEN": 2, "ASSIGNED": 3, "INELIGIBLE": 4}
+    rank = {
+        "READY": 0,
+        "CLAIM_REQUIRED": 1,
+        "SWARM_TAKEN": 2,
+        "CLAIMED_OR_PR_OPEN": 3,
+        "ASSIGNED": 4,
+        "STALE_EVIDENCE": 5,
+        "INELIGIBLE": 6,
+    }
     candidates.sort(
         key=lambda c: (
             rank[c.status],
@@ -340,8 +404,10 @@ def render_markdown(candidates: Iterable[Candidate]) -> str:
         "",
         f"- READY: {counts.get('READY', 0)}",
         f"- CLAIM_REQUIRED: {counts.get('CLAIM_REQUIRED', 0)}",
+        f"- SWARM_TAKEN: {counts.get('SWARM_TAKEN', 0)}",
         f"- CLAIMED_OR_PR_OPEN: {counts.get('CLAIMED_OR_PR_OPEN', 0)}",
         f"- ASSIGNED: {counts.get('ASSIGNED', 0)}",
+        f"- STALE_EVIDENCE: {counts.get('STALE_EVIDENCE', 0)}",
         f"- INELIGIBLE: {counts.get('INELIGIBLE', 0)}",
         "",
         "## Queue",
@@ -362,10 +428,11 @@ def render_markdown(candidates: Iterable[Candidate]) -> str:
     return "\n".join(lines).rstrip() + "\n"
 
 
-def write_outputs(candidates: list[Candidate], out_dir: Path) -> None:
+def write_outputs(candidates: list[Candidate], out_dir: Path, *, fresh_after: str | None = None) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
     payload = {
         "schema_version": 1,
+        "evidence_fresh_after": fresh_after,
         "authority": {
             "claims_issues": False,
             "assigns_issues": False,
@@ -387,13 +454,17 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument("input", type=Path, help="JSON array or JSONL issue snapshot file")
     parser.add_argument("--out-dir", type=Path, required=True, help="exclusive output directory")
+    parser.add_argument(
+        "--fresh-after",
+        help="optional ISO-8601 freshness floor; older or missing observed_at snapshots become STALE_EVIDENCE",
+    )
     args = parser.parse_args(argv)
 
     if args.out_dir.exists():
         raise WorkfeedError(f"output directory already exists: {args.out_dir}")
 
-    candidates = compile_records(_read_records(args.input))
-    write_outputs(candidates, args.out_dir)
+    candidates = compile_records(_read_records(args.input), fresh_after=args.fresh_after)
+    write_outputs(candidates, args.out_dir, fresh_after=args.fresh_after)
     return 0
 
 
