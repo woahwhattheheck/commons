@@ -1,0 +1,106 @@
+{
+  "content_class": "SYNTHETIC_ASSUMPTION_SET_NOT_A_UNIVERSITY_BASELINE",
+  "label": "FICTION. Six invented practice profiles. Every 'evidence assumption' below was written to exercise the method. None was observed anywhere, and none describes the University of Iowa.",
+  "profiles": [
+    {
+      "profile_id": "PROF-SYN-ESS-SD-01",
+      "assessment_area": "software_development",
+      "group": "ESS",
+      "practice": "Peer review before merge",
+      "assessment_status": "assessed",
+      "evidence_assumptions": [
+        {
+          "kind": "procedure_document",
+          "statement": "A written standard requires peer review before merge",
+          "basis": "ASSUMED for this worked example. Modelled on the kind of document an engagement would request; no such document was read."
+        },
+        {
+          "kind": "single_observed_instance",
+          "statement": "One repository shows a branch rule requiring a review",
+          "basis": "ASSUMED. One repository's configuration, which is an instance and not a pattern."
+        }
+      ],
+      "capacity_note": "Two engineers available for improvement work alongside delivery.",
+      "shared_services": []
+    },
+    {
+      "profile_id": "PROF-SYN-RIS-SEC-01",
+      "assessment_area": "security",
+      "group": "RIS",
+      "practice": "Privileged access review",
+      "assessment_status": "assessed",
+      "evidence_assumptions": [
+        {
+          "kind": "policy_document",
+          "statement": "A published standard requires an annual privileged-access review",
+          "basis": "ASSUMED. A policy stating an intent; no review record is assumed to exist."
+        }
+      ],
+      "capacity_note": "One part-time reviewer; no dedicated security engineering capacity.",
+      "shared_services": ["central identity service"]
+    },
+    {
+      "profile_id": "PROF-SYN-IAM-DEP-01",
+      "assessment_area": "deployment",
+      "group": "IAM",
+      "practice": "Production deployment approval",
+      "assessment_status": "assessed",
+      "evidence_assumptions": [
+        {
+          "kind": "procedure_document",
+          "statement": "A procedure requires two approvals for production deployment",
+          "basis": "ASSUMED. Written procedure only."
+        },
+        {
+          "kind": "repeated_instances",
+          "statement": "A sample of changes over one month shows approvals recorded on each",
+          "basis": "ASSUMED. Repeated instances across a window, which is what separates level 4 from level 3."
+        }
+      ],
+      "capacity_note": "Shared platform team; deployment tooling is centrally operated.",
+      "shared_services": ["central deployment pipeline"]
+    },
+    {
+      "profile_id": "PROF-SYN-ESS-AI-01",
+      "assessment_area": "ai_readiness",
+      "group": "ESS",
+      "practice": "Governance of assistive code generation",
+      "assessment_status": "unassessed",
+      "evidence_assumptions": [],
+      "capacity_note": "Not yet examined.",
+      "shared_services": []
+    },
+    {
+      "profile_id": "PROF-SYN-RIS-AI-01",
+      "assessment_area": "ai_readiness",
+      "group": "RIS",
+      "practice": "Review of AI-assisted analysis outputs",
+      "assessment_status": "assessed",
+      "evidence_assumptions": [
+        {
+          "kind": "single_observed_instance",
+          "statement": "One team records a reviewer sign-off on an AI-assisted output",
+          "basis": "ASSUMED. A single instance: it happened once, which is not the same as it repeats."
+        }
+      ],
+      "capacity_note": "Limited: one analyst, part time.",
+      "shared_services": []
+    },
+    {
+      "profile_id": "PROF-SYN-IAM-SEC-01",
+      "assessment_area": "security",
+      "group": "IAM",
+      "practice": "Group membership review",
+      "assessment_status": "assessed",
+      "evidence_assumptions": [
+        {
+          "kind": "single_observed_instance",
+          "statement": "One quarterly review is recorded in a spreadsheet",
+          "basis": "ASSUMED. One recorded review."
+        }
+      ],
+      "capacity_note": "Three owners across three separate spreadsheets.",
+      "shared_services": ["central identity service"]
+    }
+  ]
+}

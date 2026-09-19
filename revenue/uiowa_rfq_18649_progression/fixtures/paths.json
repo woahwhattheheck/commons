@@ -1,0 +1,255 @@
+{
+  "content_class": "SYNTHETIC_ASSUMPTION_SET_NOT_A_UNIVERSITY_BASELINE",
+  "label": "FICTION. Eleven invented candidate paths. Six are feasible; five are deliberately written to be refused, so the refusals are demonstrated rather than described.",
+  "paths": [
+    {
+      "path_id": "PATH-SYN-SD-01",
+      "profile_id": "PROF-SYN-ESS-SD-01",
+      "variant": "direct",
+      "target_level": 4,
+      "rationale": "The practice exists in one place; the gap is consistency, so the work is making it repeat and be recorded.",
+      "steps": [
+        {
+          "step_id": "SD-01-A",
+          "capability_change": "Apply the branch rule requiring review to the remaining repositories",
+          "produces_evidence_kind": "repeated_instances",
+          "observable_advancement": "Every repository in the group returns a branch-protection export showing the review requirement",
+          "effort_person_days": 4,
+          "effort_basis": "ASSUMED: configuration per repository plus a short migration window",
+          "skills_needed": ["repository administration"],
+          "prerequisites": []
+        },
+        {
+          "step_id": "SD-01-B",
+          "capability_change": "Record review outcomes so a month of merges can be sampled",
+          "produces_evidence_kind": "repeated_instances",
+          "observable_advancement": "A one-month sample of merges each shows a recorded reviewer distinct from the author",
+          "effort_person_days": 3,
+          "effort_basis": "ASSUMED: reporting against existing merge data",
+          "skills_needed": ["reporting"],
+          "prerequisites": ["SD-01-A"]
+        }
+      ]
+    },
+    {
+      "path_id": "PATH-SYN-SEC-01",
+      "profile_id": "PROF-SYN-RIS-SEC-01",
+      "variant": "direct",
+      "target_level": 3,
+      "rationale": "A published standard with no review record is a documented practice, not a practised one. The next level is doing it once and recording it.",
+      "steps": [
+        {
+          "step_id": "SEC-01-A",
+          "capability_change": "Run the privileged-access review the standard already requires, and record the result",
+          "produces_evidence_kind": "single_observed_instance",
+          "observable_advancement": "A dated review record exists naming the accounts reviewed and the decisions taken",
+          "effort_person_days": 5,
+          "effort_basis": "ASSUMED: one reviewer, one cycle",
+          "skills_needed": ["identity administration"],
+          "prerequisites": []
+        }
+      ]
+    },
+    {
+      "path_id": "PATH-SYN-SEC-02",
+      "profile_id": "PROF-SYN-RIS-SEC-01",
+      "variant": "limited_capacity",
+      "target_level": 3,
+      "rationale": "Same destination with one part-time reviewer: narrow the first review to the highest-privilege accounts rather than attempting the whole estate, so the practice starts rather than stalling.",
+      "steps": [
+        {
+          "step_id": "SEC-02-A",
+          "capability_change": "Review only the highest-privilege account tier this cycle, with the scope written down",
+          "produces_evidence_kind": "single_observed_instance",
+          "observable_advancement": "A dated review record exists, stating its own scope limit and the tier covered",
+          "effort_person_days": 2,
+          "effort_basis": "ASSUMED: a narrower population than SEC-01-A",
+          "skills_needed": ["identity administration"],
+          "prerequisites": []
+        }
+      ]
+    },
+    {
+      "path_id": "PATH-SYN-DEP-01",
+      "profile_id": "PROF-SYN-IAM-DEP-01",
+      "variant": "direct",
+      "target_level": 5,
+      "rationale": "Approvals are already consistent and recorded. The remaining level is about whether the control achieves anything measurable, not about doing more of it.",
+      "steps": [
+        {
+          "step_id": "DEP-01-A",
+          "capability_change": "Define the outcome the approval control is meant to produce, and how it would be measured",
+          "produces_evidence_kind": "procedure_document",
+          "observable_advancement": "A written measure definition exists naming the numerator, denominator and observation window",
+          "effort_person_days": 2,
+          "effort_basis": "ASSUMED",
+          "skills_needed": ["measurement design"],
+          "prerequisites": []
+        },
+        {
+          "step_id": "DEP-01-B",
+          "capability_change": "Measure the outcome over a stated window and report it with its denominator",
+          "produces_evidence_kind": "outcome_measurement",
+          "observable_advancement": "A report states the measured value, the window, the denominator, and the count of changes whose outcome is unknown",
+          "effort_person_days": 6,
+          "effort_basis": "ASSUMED: one reporting cycle over existing change records",
+          "skills_needed": ["measurement design", "reporting"],
+          "prerequisites": ["DEP-01-A"]
+        }
+      ]
+    },
+    {
+      "path_id": "PATH-SYN-AI-01",
+      "profile_id": "PROF-SYN-RIS-AI-01",
+      "variant": "limited_capacity",
+      "target_level": 4,
+      "rationale": "One analyst, part time. The route is to make the existing single sign-off repeat on a defined trigger rather than to build a review programme.",
+      "steps": [
+        {
+          "step_id": "AI-01-A",
+          "capability_change": "Define the trigger that requires a reviewer sign-off on an AI-assisted output",
+          "produces_evidence_kind": "procedure_document",
+          "observable_advancement": "A written trigger exists that a third party could apply to a given output and get the same answer",
+          "effort_person_days": 1,
+          "effort_basis": "ASSUMED",
+          "skills_needed": ["analysis"],
+          "prerequisites": []
+        },
+        {
+          "step_id": "AI-01-B",
+          "capability_change": "Apply the trigger across a quarter and retain the sign-offs",
+          "produces_evidence_kind": "repeated_instances",
+          "observable_advancement": "A quarter's outputs each carry a sign-off or a recorded reason the trigger did not apply",
+          "effort_person_days": "UNKNOWN",
+          "effort_basis": "NOT ESTIMATED: depends on how many outputs the trigger catches, which is not knowable until the trigger is written in AI-01-A.",
+          "skills_needed": ["analysis"],
+          "prerequisites": ["AI-01-A"]
+        }
+      ]
+    },
+    {
+      "path_id": "PATH-SYN-SEC-06",
+      "profile_id": "PROF-SYN-IAM-SEC-01",
+      "variant": "shared_service",
+      "target_level": 4,
+      "rationale": "Three owners keep three spreadsheets. Rather than asking them to agree a format, take the membership data from the shared identity service they all already use.",
+      "steps": [
+        {
+          "step_id": "SEC-06-A",
+          "capability_change": "Review group membership from the shared service's export on a quarterly cycle, replacing the three spreadsheets",
+          "produces_evidence_kind": "repeated_instances",
+          "observable_advancement": "Two consecutive quarters each produce a review record derived from the shared export, covering every group in scope",
+          "effort_person_days": 7,
+          "effort_basis": "ASSUMED: two cycles plus the cutover from three spreadsheets",
+          "skills_needed": ["identity administration", "reporting"],
+          "prerequisites": ["EXTERNAL:the central identity service exposes a membership export"]
+        }
+      ]
+    },
+    {
+      "path_id": "PATH-SYN-SEC-03",
+      "profile_id": "PROF-SYN-RIS-SEC-01",
+      "variant": "direct",
+      "target_level": 4,
+      "rationale": "REFUSAL CASE, written deliberately. Proposes reaching consistent practice by writing more documents.",
+      "steps": [
+        {
+          "step_id": "SEC-03-A",
+          "capability_change": "Write a detailed privileged-access review procedure",
+          "produces_evidence_kind": "procedure_document",
+          "observable_advancement": "The procedure is published",
+          "effort_person_days": 10,
+          "effort_basis": "ASSUMED",
+          "skills_needed": ["policy authoring"],
+          "prerequisites": []
+        },
+        {
+          "step_id": "SEC-03-B",
+          "capability_change": "Write a supporting standard and a RACI matrix",
+          "produces_evidence_kind": "policy_document",
+          "observable_advancement": "Both documents are published and approved",
+          "effort_person_days": 12,
+          "effort_basis": "ASSUMED",
+          "skills_needed": ["policy authoring"],
+          "prerequisites": []
+        }
+      ]
+    },
+    {
+      "path_id": "PATH-SYN-SEC-04",
+      "profile_id": "PROF-SYN-RIS-SEC-01",
+      "variant": "direct",
+      "target_level": 5,
+      "rationale": "REFUSAL CASE. Proposes going from a policy document to measured outcomes in one plan.",
+      "steps": [
+        {
+          "step_id": "SEC-04-A",
+          "capability_change": "Stand up a fully measured privileged-access review programme",
+          "produces_evidence_kind": "outcome_measurement",
+          "observable_advancement": "A measured report exists",
+          "effort_person_days": 40,
+          "effort_basis": "ASSUMED",
+          "skills_needed": ["identity administration", "measurement design"],
+          "prerequisites": []
+        }
+      ]
+    },
+    {
+      "path_id": "PATH-SYN-AI-02",
+      "profile_id": "PROF-SYN-ESS-AI-01",
+      "variant": "direct",
+      "target_level": 3,
+      "rationale": "REFUSAL CASE. Plans a route from a practice nobody has assessed.",
+      "steps": [
+        {
+          "step_id": "AI-02-A",
+          "capability_change": "Introduce a review step for assistive code generation",
+          "produces_evidence_kind": "single_observed_instance",
+          "observable_advancement": "One reviewed output is recorded",
+          "effort_person_days": 5,
+          "effort_basis": "ASSUMED",
+          "skills_needed": ["engineering"],
+          "prerequisites": []
+        }
+      ]
+    },
+    {
+      "path_id": "PATH-SYN-SEC-05",
+      "profile_id": "PROF-SYN-IAM-SEC-01",
+      "variant": "direct",
+      "target_level": 4,
+      "rationale": "REFUSAL CASE. The evidence kind is right, but one step's completion is not checkable.",
+      "steps": [
+        {
+          "step_id": "SEC-05-A",
+          "capability_change": "Improve the group review process and raise awareness across owners",
+          "produces_evidence_kind": "repeated_instances",
+          "observable_advancement": "",
+          "effort_person_days": 6,
+          "effort_basis": "ASSUMED",
+          "skills_needed": ["identity administration"],
+          "prerequisites": []
+        }
+      ]
+    },
+    {
+      "path_id": "PATH-SYN-SD-02",
+      "profile_id": "PROF-SYN-ESS-SD-01",
+      "variant": "direct",
+      "target_level": 4,
+      "rationale": "REFUSAL CASE. A step depends on work no step in the path delivers, and it is not declared external.",
+      "steps": [
+        {
+          "step_id": "SD-02-A",
+          "capability_change": "Sample a month of merges for recorded reviewers",
+          "produces_evidence_kind": "repeated_instances",
+          "observable_advancement": "A one-month sample shows a recorded reviewer on each merge",
+          "effort_person_days": 3,
+          "effort_basis": "ASSUMED",
+          "skills_needed": ["reporting"],
+          "prerequisites": ["SD-02-Z"]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,743 @@
+{
+  "content_class": "SYNTHETIC_ASSUMPTION_SET_NOT_A_UNIVERSITY_BASELINE",
+  "counts_by_verdict": {
+    "BASELINE_UNKNOWN": 1,
+    "FEASIBLE": 6,
+    "REFUSED_ASPIRATIONAL_JUMP": 1,
+    "REFUSED_EVIDENCE_CAP": 1,
+    "REFUSED_NO_OBSERVABLE": 1,
+    "REFUSED_UNMET_PREREQUISITE": 1
+  },
+  "coverage": {
+    "areas_with_a_feasible_path": [
+      "ai_readiness",
+      "deployment",
+      "security",
+      "software_development"
+    ],
+    "areas_without_a_feasible_path": [],
+    "assessment_areas": [
+      "software_development",
+      "security",
+      "deployment",
+      "ai_readiness"
+    ]
+  },
+  "limits": [
+    "Every profile here is a synthetic assumption set. None describes the University of Iowa's practice, and no output may be presented as a University baseline or finding.",
+    "A FEASIBLE verdict means the path's evidence kind can reach the target level and every step is observable. It is not a prediction that the work will succeed, and not a commitment to deliver it.",
+    "Effort figures are stated assumptions. Where a step is unestimated the total is reported as a floor, never completed to a round number.",
+    "No individual, team or unit is rated anywhere in this output."
+  ],
+  "paths": [
+    {
+      "assessment_area": "software_development",
+      "baseline": {
+        "assessment_status": "assessed",
+        "basis": "the strongest stated evidence is 'single_observed_instance', which supports up to level 3. This is what the ASSUMED evidence supports, not an observation of any real practice.",
+        "evidence_needed_to_establish": [],
+        "maturity_label": "practised",
+        "maturity_rank": 3,
+        "supporting_evidence": [
+          {
+            "basis": "ASSUMED for this worked example. Modelled on the kind of document an engagement would request; no such document was read.",
+            "kind": "procedure_document",
+            "statement": "A written standard requires peer review before merge",
+            "supports_up_to_level": 2
+          },
+          {
+            "basis": "ASSUMED. One repository's configuration, which is an instance and not a pattern.",
+            "kind": "single_observed_instance",
+            "statement": "One repository shows a branch rule requiring a review",
+            "supports_up_to_level": 3
+          }
+        ]
+      },
+      "content_class": "SYNTHETIC_ASSUMPTION_SET_NOT_A_UNIVERSITY_BASELINE",
+      "effort_is_partial": false,
+      "effort_person_days_known": 7,
+      "effort_statement": "7 person-days across 2 of 2 steps",
+      "effort_unestimated_steps": [],
+      "evidence_ceiling_of_this_path": 4,
+      "external_prerequisites": [],
+      "group": "ESS",
+      "level_gain": 1,
+      "observable_advancement": [
+        {
+          "observable": "Every repository in the group returns a branch-protection export showing the review requirement",
+          "step_id": "SD-01-A"
+        },
+        {
+          "observable": "A one-month sample of merges each shows a recorded reviewer distinct from the author",
+          "step_id": "SD-01-B"
+        }
+      ],
+      "path_id": "PATH-SYN-SD-01",
+      "practice": "Peer review before merge",
+      "profile_id": "PROF-SYN-ESS-SD-01",
+      "rationale": "The practice exists in one place; the gap is consistency, so the work is making it repeat and be recorded.",
+      "reason": "Level 3 (practised) to level 4 (consistent). The steps produce repeated_instances, which supports up to level 4, so the target is earned by the evidence rather than asserted.",
+      "skills_needed": [
+        "reporting",
+        "repository administration"
+      ],
+      "steps": [
+        {
+          "capability_change": "Apply the branch rule requiring review to the remaining repositories",
+          "effort_basis": "ASSUMED: configuration per repository plus a short migration window",
+          "effort_person_days": 4,
+          "observable_advancement": "Every repository in the group returns a branch-protection export showing the review requirement",
+          "prerequisites": [],
+          "produces_evidence_kind": "repeated_instances",
+          "skills_needed": [
+            "repository administration"
+          ],
+          "step_id": "SD-01-A",
+          "supports_up_to_level": 4
+        },
+        {
+          "capability_change": "Record review outcomes so a month of merges can be sampled",
+          "effort_basis": "ASSUMED: reporting against existing merge data",
+          "effort_person_days": 3,
+          "observable_advancement": "A one-month sample of merges each shows a recorded reviewer distinct from the author",
+          "prerequisites": [
+            "SD-01-A"
+          ],
+          "produces_evidence_kind": "repeated_instances",
+          "skills_needed": [
+            "reporting"
+          ],
+          "step_id": "SD-01-B",
+          "supports_up_to_level": 4
+        }
+      ],
+      "target_label": "consistent",
+      "target_level": 4,
+      "variant": "direct",
+      "verdict": "FEASIBLE"
+    },
+    {
+      "assessment_area": "security",
+      "baseline": {
+        "assessment_status": "assessed",
+        "basis": "the strongest stated evidence is 'policy_document', which supports up to level 2. This is what the ASSUMED evidence supports, not an observation of any real practice.",
+        "evidence_needed_to_establish": [],
+        "maturity_label": "documented",
+        "maturity_rank": 2,
+        "supporting_evidence": [
+          {
+            "basis": "ASSUMED. A policy stating an intent; no review record is assumed to exist.",
+            "kind": "policy_document",
+            "statement": "A published standard requires an annual privileged-access review",
+            "supports_up_to_level": 2
+          }
+        ]
+      },
+      "content_class": "SYNTHETIC_ASSUMPTION_SET_NOT_A_UNIVERSITY_BASELINE",
+      "effort_is_partial": false,
+      "effort_person_days_known": 5,
+      "effort_statement": "5 person-days across 1 of 1 steps",
+      "effort_unestimated_steps": [],
+      "evidence_ceiling_of_this_path": 3,
+      "external_prerequisites": [],
+      "group": "RIS",
+      "level_gain": 1,
+      "observable_advancement": [
+        {
+          "observable": "A dated review record exists naming the accounts reviewed and the decisions taken",
+          "step_id": "SEC-01-A"
+        }
+      ],
+      "path_id": "PATH-SYN-SEC-01",
+      "practice": "Privileged access review",
+      "profile_id": "PROF-SYN-RIS-SEC-01",
+      "rationale": "A published standard with no review record is a documented practice, not a practised one. The next level is doing it once and recording it.",
+      "reason": "Level 2 (documented) to level 3 (practised). The steps produce single_observed_instance, which supports up to level 3, so the target is earned by the evidence rather than asserted.",
+      "skills_needed": [
+        "identity administration"
+      ],
+      "steps": [
+        {
+          "capability_change": "Run the privileged-access review the standard already requires, and record the result",
+          "effort_basis": "ASSUMED: one reviewer, one cycle",
+          "effort_person_days": 5,
+          "observable_advancement": "A dated review record exists naming the accounts reviewed and the decisions taken",
+          "prerequisites": [],
+          "produces_evidence_kind": "single_observed_instance",
+          "skills_needed": [
+            "identity administration"
+          ],
+          "step_id": "SEC-01-A",
+          "supports_up_to_level": 3
+        }
+      ],
+      "target_label": "practised",
+      "target_level": 3,
+      "variant": "direct",
+      "verdict": "FEASIBLE"
+    },
+    {
+      "assessment_area": "security",
+      "baseline": {
+        "assessment_status": "assessed",
+        "basis": "the strongest stated evidence is 'policy_document', which supports up to level 2. This is what the ASSUMED evidence supports, not an observation of any real practice.",
+        "evidence_needed_to_establish": [],
+        "maturity_label": "documented",
+        "maturity_rank": 2,
+        "supporting_evidence": [
+          {
+            "basis": "ASSUMED. A policy stating an intent; no review record is assumed to exist.",
+            "kind": "policy_document",
+            "statement": "A published standard requires an annual privileged-access review",
+            "supports_up_to_level": 2
+          }
+        ]
+      },
+      "content_class": "SYNTHETIC_ASSUMPTION_SET_NOT_A_UNIVERSITY_BASELINE",
+      "effort_is_partial": false,
+      "effort_person_days_known": 2,
+      "effort_statement": "2 person-days across 1 of 1 steps",
+      "effort_unestimated_steps": [],
+      "evidence_ceiling_of_this_path": 3,
+      "external_prerequisites": [],
+      "group": "RIS",
+      "level_gain": 1,
+      "observable_advancement": [
+        {
+          "observable": "A dated review record exists, stating its own scope limit and the tier covered",
+          "step_id": "SEC-02-A"
+        }
+      ],
+      "path_id": "PATH-SYN-SEC-02",
+      "practice": "Privileged access review",
+      "profile_id": "PROF-SYN-RIS-SEC-01",
+      "rationale": "Same destination with one part-time reviewer: narrow the first review to the highest-privilege accounts rather than attempting the whole estate, so the practice starts rather than stalling.",
+      "reason": "Level 2 (documented) to level 3 (practised). The steps produce single_observed_instance, which supports up to level 3, so the target is earned by the evidence rather than asserted.",
+      "skills_needed": [
+        "identity administration"
+      ],
+      "steps": [
+        {
+          "capability_change": "Review only the highest-privilege account tier this cycle, with the scope written down",
+          "effort_basis": "ASSUMED: a narrower population than SEC-01-A",
+          "effort_person_days": 2,
+          "observable_advancement": "A dated review record exists, stating its own scope limit and the tier covered",
+          "prerequisites": [],
+          "produces_evidence_kind": "single_observed_instance",
+          "skills_needed": [
+            "identity administration"
+          ],
+          "step_id": "SEC-02-A",
+          "supports_up_to_level": 3
+        }
+      ],
+      "target_label": "practised",
+      "target_level": 3,
+      "variant": "limited_capacity",
+      "verdict": "FEASIBLE"
+    },
+    {
+      "assessment_area": "deployment",
+      "baseline": {
+        "assessment_status": "assessed",
+        "basis": "the strongest stated evidence is 'repeated_instances', which supports up to level 4. This is what the ASSUMED evidence supports, not an observation of any real practice.",
+        "evidence_needed_to_establish": [],
+        "maturity_label": "consistent",
+        "maturity_rank": 4,
+        "supporting_evidence": [
+          {
+            "basis": "ASSUMED. Written procedure only.",
+            "kind": "procedure_document",
+            "statement": "A procedure requires two approvals for production deployment",
+            "supports_up_to_level": 2
+          },
+          {
+            "basis": "ASSUMED. Repeated instances across a window, which is what separates level 4 from level 3.",
+            "kind": "repeated_instances",
+            "statement": "A sample of changes over one month shows approvals recorded on each",
+            "supports_up_to_level": 4
+          }
+        ]
+      },
+      "content_class": "SYNTHETIC_ASSUMPTION_SET_NOT_A_UNIVERSITY_BASELINE",
+      "effort_is_partial": false,
+      "effort_person_days_known": 8,
+      "effort_statement": "8 person-days across 2 of 2 steps",
+      "effort_unestimated_steps": [],
+      "evidence_ceiling_of_this_path": 5,
+      "external_prerequisites": [],
+      "group": "IAM",
+      "level_gain": 1,
+      "observable_advancement": [
+        {
+          "observable": "A written measure definition exists naming the numerator, denominator and observation window",
+          "step_id": "DEP-01-A"
+        },
+        {
+          "observable": "A report states the measured value, the window, the denominator, and the count of changes whose outcome is unknown",
+          "step_id": "DEP-01-B"
+        }
+      ],
+      "path_id": "PATH-SYN-DEP-01",
+      "practice": "Production deployment approval",
+      "profile_id": "PROF-SYN-IAM-DEP-01",
+      "rationale": "Approvals are already consistent and recorded. The remaining level is about whether the control achieves anything measurable, not about doing more of it.",
+      "reason": "Level 4 (consistent) to level 5 (measured). The steps produce outcome_measurement, which supports up to level 5, so the target is earned by the evidence rather than asserted.",
+      "skills_needed": [
+        "measurement design",
+        "reporting"
+      ],
+      "steps": [
+        {
+          "capability_change": "Define the outcome the approval control is meant to produce, and how it would be measured",
+          "effort_basis": "ASSUMED",
+          "effort_person_days": 2,
+          "observable_advancement": "A written measure definition exists naming the numerator, denominator and observation window",
+          "prerequisites": [],
+          "produces_evidence_kind": "procedure_document",
+          "skills_needed": [
+            "measurement design"
+          ],
+          "step_id": "DEP-01-A",
+          "supports_up_to_level": 2
+        },
+        {
+          "capability_change": "Measure the outcome over a stated window and report it with its denominator",
+          "effort_basis": "ASSUMED: one reporting cycle over existing change records",
+          "effort_person_days": 6,
+          "observable_advancement": "A report states the measured value, the window, the denominator, and the count of changes whose outcome is unknown",
+          "prerequisites": [
+            "DEP-01-A"
+          ],
+          "produces_evidence_kind": "outcome_measurement",
+          "skills_needed": [
+            "measurement design",
+            "reporting"
+          ],
+          "step_id": "DEP-01-B",
+          "supports_up_to_level": 5
+        }
+      ],
+      "target_label": "measured",
+      "target_level": 5,
+      "variant": "direct",
+      "verdict": "FEASIBLE"
+    },
+    {
+      "assessment_area": "ai_readiness",
+      "baseline": {
+        "assessment_status": "assessed",
+        "basis": "the strongest stated evidence is 'single_observed_instance', which supports up to level 3. This is what the ASSUMED evidence supports, not an observation of any real practice.",
+        "evidence_needed_to_establish": [],
+        "maturity_label": "practised",
+        "maturity_rank": 3,
+        "supporting_evidence": [
+          {
+            "basis": "ASSUMED. A single instance: it happened once, which is not the same as it repeats.",
+            "kind": "single_observed_instance",
+            "statement": "One team records a reviewer sign-off on an AI-assisted output",
+            "supports_up_to_level": 3
+          }
+        ]
+      },
+      "content_class": "SYNTHETIC_ASSUMPTION_SET_NOT_A_UNIVERSITY_BASELINE",
+      "effort_is_partial": true,
+      "effort_person_days_known": 1,
+      "effort_statement": "1 person-days across 1 of 2 steps; 1 step(s) unestimated (AI-01-B), so this is a FLOOR, not a total",
+      "effort_unestimated_steps": [
+        "AI-01-B"
+      ],
+      "evidence_ceiling_of_this_path": 4,
+      "external_prerequisites": [],
+      "group": "RIS",
+      "level_gain": 1,
+      "observable_advancement": [
+        {
+          "observable": "A written trigger exists that a third party could apply to a given output and get the same answer",
+          "step_id": "AI-01-A"
+        },
+        {
+          "observable": "A quarter's outputs each carry a sign-off or a recorded reason the trigger did not apply",
+          "step_id": "AI-01-B"
+        }
+      ],
+      "path_id": "PATH-SYN-AI-01",
+      "practice": "Review of AI-assisted analysis outputs",
+      "profile_id": "PROF-SYN-RIS-AI-01",
+      "rationale": "One analyst, part time. The route is to make the existing single sign-off repeat on a defined trigger rather than to build a review programme.",
+      "reason": "Level 3 (practised) to level 4 (consistent). The steps produce repeated_instances, which supports up to level 4, so the target is earned by the evidence rather than asserted.",
+      "skills_needed": [
+        "analysis"
+      ],
+      "steps": [
+        {
+          "capability_change": "Define the trigger that requires a reviewer sign-off on an AI-assisted output",
+          "effort_basis": "ASSUMED",
+          "effort_person_days": 1,
+          "observable_advancement": "A written trigger exists that a third party could apply to a given output and get the same answer",
+          "prerequisites": [],
+          "produces_evidence_kind": "procedure_document",
+          "skills_needed": [
+            "analysis"
+          ],
+          "step_id": "AI-01-A",
+          "supports_up_to_level": 2
+        },
+        {
+          "capability_change": "Apply the trigger across a quarter and retain the sign-offs",
+          "effort_basis": "NOT ESTIMATED: depends on how many outputs the trigger catches, which is not knowable until the trigger is written in AI-01-A.",
+          "effort_person_days": null,
+          "observable_advancement": "A quarter's outputs each carry a sign-off or a recorded reason the trigger did not apply",
+          "prerequisites": [
+            "AI-01-A"
+          ],
+          "produces_evidence_kind": "repeated_instances",
+          "skills_needed": [
+            "analysis"
+          ],
+          "step_id": "AI-01-B",
+          "supports_up_to_level": 4
+        }
+      ],
+      "target_label": "consistent",
+      "target_level": 4,
+      "variant": "limited_capacity",
+      "verdict": "FEASIBLE"
+    },
+    {
+      "assessment_area": "security",
+      "baseline": {
+        "assessment_status": "assessed",
+        "basis": "the strongest stated evidence is 'single_observed_instance', which supports up to level 3. This is what the ASSUMED evidence supports, not an observation of any real practice.",
+        "evidence_needed_to_establish": [],
+        "maturity_label": "practised",
+        "maturity_rank": 3,
+        "supporting_evidence": [
+          {
+            "basis": "ASSUMED. One recorded review.",
+            "kind": "single_observed_instance",
+            "statement": "One quarterly review is recorded in a spreadsheet",
+            "supports_up_to_level": 3
+          }
+        ]
+      },
+      "content_class": "SYNTHETIC_ASSUMPTION_SET_NOT_A_UNIVERSITY_BASELINE",
+      "effort_is_partial": false,
+      "effort_person_days_known": 7,
+      "effort_statement": "7 person-days across 1 of 1 steps",
+      "effort_unestimated_steps": [],
+      "evidence_ceiling_of_this_path": 4,
+      "external_prerequisites": [
+        "EXTERNAL:the central identity service exposes a membership export"
+      ],
+      "group": "IAM",
+      "level_gain": 1,
+      "observable_advancement": [
+        {
+          "observable": "Two consecutive quarters each produce a review record derived from the shared export, covering every group in scope",
+          "step_id": "SEC-06-A"
+        }
+      ],
+      "path_id": "PATH-SYN-SEC-06",
+      "practice": "Group membership review",
+      "profile_id": "PROF-SYN-IAM-SEC-01",
+      "rationale": "Three owners keep three spreadsheets. Rather than asking them to agree a format, take the membership data from the shared identity service they all already use.",
+      "reason": "Level 3 (practised) to level 4 (consistent). The steps produce repeated_instances, which supports up to level 4, so the target is earned by the evidence rather than asserted.",
+      "skills_needed": [
+        "identity administration",
+        "reporting"
+      ],
+      "steps": [
+        {
+          "capability_change": "Review group membership from the shared service's export on a quarterly cycle, replacing the three spreadsheets",
+          "effort_basis": "ASSUMED: two cycles plus the cutover from three spreadsheets",
+          "effort_person_days": 7,
+          "observable_advancement": "Two consecutive quarters each produce a review record derived from the shared export, covering every group in scope",
+          "prerequisites": [
+            "EXTERNAL:the central identity service exposes a membership export"
+          ],
+          "produces_evidence_kind": "repeated_instances",
+          "skills_needed": [
+            "identity administration",
+            "reporting"
+          ],
+          "step_id": "SEC-06-A",
+          "supports_up_to_level": 4
+        }
+      ],
+      "target_label": "consistent",
+      "target_level": 4,
+      "variant": "shared_service",
+      "verdict": "FEASIBLE"
+    },
+    {
+      "assessment_area": "security",
+      "baseline": {
+        "assessment_status": "assessed",
+        "basis": "the strongest stated evidence is 'policy_document', which supports up to level 2. This is what the ASSUMED evidence supports, not an observation of any real practice.",
+        "evidence_needed_to_establish": [],
+        "maturity_label": "documented",
+        "maturity_rank": 2,
+        "supporting_evidence": [
+          {
+            "basis": "ASSUMED. A policy stating an intent; no review record is assumed to exist.",
+            "kind": "policy_document",
+            "statement": "A published standard requires an annual privileged-access review",
+            "supports_up_to_level": 2
+          }
+        ]
+      },
+      "content_class": "SYNTHETIC_ASSUMPTION_SET_NOT_A_UNIVERSITY_BASELINE",
+      "evidence_ceiling_of_this_path": 2,
+      "evidence_kind_needed": [
+        "repeated_instances",
+        "outcome_measurement"
+      ],
+      "group": "RIS",
+      "level_gain": 2,
+      "path_id": "PATH-SYN-SEC-03",
+      "practice": "Privileged access review",
+      "profile_id": "PROF-SYN-RIS-SEC-01",
+      "rationale": "REFUSAL CASE, written deliberately. Proposes reaching consistent practice by writing more documents.",
+      "reason": "Refused: these steps produce policy_document, procedure_document, which supports up to level 2. Level 4 needs evidence of a kind this path never creates. Effort cannot buy the difference -- the cap is about the kind of evidence, not its volume.",
+      "steps": [
+        {
+          "capability_change": "Write a detailed privileged-access review procedure",
+          "effort_basis": "ASSUMED",
+          "effort_person_days": 10,
+          "observable_advancement": "The procedure is published",
+          "prerequisites": [],
+          "produces_evidence_kind": "procedure_document",
+          "skills_needed": [
+            "policy authoring"
+          ],
+          "step_id": "SEC-03-A",
+          "supports_up_to_level": 2
+        },
+        {
+          "capability_change": "Write a supporting standard and a RACI matrix",
+          "effort_basis": "ASSUMED",
+          "effort_person_days": 12,
+          "observable_advancement": "Both documents are published and approved",
+          "prerequisites": [],
+          "produces_evidence_kind": "policy_document",
+          "skills_needed": [
+            "policy authoring"
+          ],
+          "step_id": "SEC-03-B",
+          "supports_up_to_level": 2
+        }
+      ],
+      "target_label": "consistent",
+      "target_level": 4,
+      "variant": "direct",
+      "verdict": "REFUSED_EVIDENCE_CAP"
+    },
+    {
+      "assessment_area": "security",
+      "baseline": {
+        "assessment_status": "assessed",
+        "basis": "the strongest stated evidence is 'policy_document', which supports up to level 2. This is what the ASSUMED evidence supports, not an observation of any real practice.",
+        "evidence_needed_to_establish": [],
+        "maturity_label": "documented",
+        "maturity_rank": 2,
+        "supporting_evidence": [
+          {
+            "basis": "ASSUMED. A policy stating an intent; no review record is assumed to exist.",
+            "kind": "policy_document",
+            "statement": "A published standard requires an annual privileged-access review",
+            "supports_up_to_level": 2
+          }
+        ]
+      },
+      "content_class": "SYNTHETIC_ASSUMPTION_SET_NOT_A_UNIVERSITY_BASELINE",
+      "group": "RIS",
+      "level_gain": 3,
+      "path_id": "PATH-SYN-SEC-04",
+      "practice": "Privileged access review",
+      "profile_id": "PROF-SYN-RIS-SEC-01",
+      "rationale": "REFUSAL CASE. Proposes going from a policy document to measured outcomes in one plan.",
+      "reason": "Refused: level 2 to level 5 is a gain of 3, beyond the 2-level maximum this method will plan. A longer jump is an aspiration, not a path; split it and plan the first 2 levels.",
+      "steps": [
+        {
+          "capability_change": "Stand up a fully measured privileged-access review programme",
+          "effort_basis": "ASSUMED",
+          "effort_person_days": 40,
+          "observable_advancement": "A measured report exists",
+          "prerequisites": [],
+          "produces_evidence_kind": "outcome_measurement",
+          "skills_needed": [
+            "identity administration",
+            "measurement design"
+          ],
+          "step_id": "SEC-04-A",
+          "supports_up_to_level": 5
+        }
+      ],
+      "target_label": "measured",
+      "target_level": 5,
+      "variant": "direct",
+      "verdict": "REFUSED_ASPIRATIONAL_JUMP"
+    },
+    {
+      "assessment_area": "ai_readiness",
+      "baseline": {
+        "assessment_status": "unassessed",
+        "basis": "assessment_status is 'unassessed', so no level is computed. Not level 1: an unassessed practice is an open question, not a weak one.",
+        "evidence_needed_to_establish": [
+          "an assessment of this practice, with stated evidence"
+        ],
+        "maturity_label": null,
+        "maturity_rank": null,
+        "supporting_evidence": []
+      },
+      "content_class": "SYNTHETIC_ASSUMPTION_SET_NOT_A_UNIVERSITY_BASELINE",
+      "group": "ESS",
+      "level_gain": null,
+      "path_id": "PATH-SYN-AI-02",
+      "practice": "Governance of assistive code generation",
+      "profile_id": "PROF-SYN-ESS-AI-01",
+      "rationale": "REFUSAL CASE. Plans a route from a practice nobody has assessed.",
+      "reason": "No path is produced. The baseline is not established: assessment_status is 'unassessed', so no level is computed. Not level 1: an unassessed practice is an open question, not a weak one. A route needs a starting point, and inventing one would be the unverified baseline this method must not present as fact.",
+      "steps": [
+        {
+          "capability_change": "Introduce a review step for assistive code generation",
+          "effort_basis": "ASSUMED",
+          "effort_person_days": 5,
+          "observable_advancement": "One reviewed output is recorded",
+          "prerequisites": [],
+          "produces_evidence_kind": "single_observed_instance",
+          "skills_needed": [
+            "engineering"
+          ],
+          "step_id": "AI-02-A",
+          "supports_up_to_level": 3
+        }
+      ],
+      "target_label": "practised",
+      "target_level": 3,
+      "variant": "direct",
+      "verdict": "BASELINE_UNKNOWN",
+      "what_would_unblock_it": [
+        "an assessment of this practice, with stated evidence"
+      ]
+    },
+    {
+      "assessment_area": "security",
+      "baseline": {
+        "assessment_status": "assessed",
+        "basis": "the strongest stated evidence is 'single_observed_instance', which supports up to level 3. This is what the ASSUMED evidence supports, not an observation of any real practice.",
+        "evidence_needed_to_establish": [],
+        "maturity_label": "practised",
+        "maturity_rank": 3,
+        "supporting_evidence": [
+          {
+            "basis": "ASSUMED. One recorded review.",
+            "kind": "single_observed_instance",
+            "statement": "One quarterly review is recorded in a spreadsheet",
+            "supports_up_to_level": 3
+          }
+        ]
+      },
+      "content_class": "SYNTHETIC_ASSUMPTION_SET_NOT_A_UNIVERSITY_BASELINE",
+      "evidence_ceiling_of_this_path": 4,
+      "group": "IAM",
+      "level_gain": 1,
+      "path_id": "PATH-SYN-SEC-05",
+      "practice": "Group membership review",
+      "profile_id": "PROF-SYN-IAM-SEC-01",
+      "rationale": "REFUSAL CASE. The evidence kind is right, but one step's completion is not checkable.",
+      "reason": "Refused: step(s) SEC-05-A state no observable advancement. A step whose completion nobody can check is not a plan, and it is not made into one by writing TBD.",
+      "steps": [
+        {
+          "capability_change": "Improve the group review process and raise awareness across owners",
+          "effort_basis": "ASSUMED",
+          "effort_person_days": 6,
+          "observable_advancement": null,
+          "prerequisites": [],
+          "produces_evidence_kind": "repeated_instances",
+          "skills_needed": [
+            "identity administration"
+          ],
+          "step_id": "SEC-05-A",
+          "supports_up_to_level": 4
+        }
+      ],
+      "target_label": "consistent",
+      "target_level": 4,
+      "variant": "direct",
+      "verdict": "REFUSED_NO_OBSERVABLE"
+    },
+    {
+      "assessment_area": "software_development",
+      "baseline": {
+        "assessment_status": "assessed",
+        "basis": "the strongest stated evidence is 'single_observed_instance', which supports up to level 3. This is what the ASSUMED evidence supports, not an observation of any real practice.",
+        "evidence_needed_to_establish": [],
+        "maturity_label": "practised",
+        "maturity_rank": 3,
+        "supporting_evidence": [
+          {
+            "basis": "ASSUMED for this worked example. Modelled on the kind of document an engagement would request; no such document was read.",
+            "kind": "procedure_document",
+            "statement": "A written standard requires peer review before merge",
+            "supports_up_to_level": 2
+          },
+          {
+            "basis": "ASSUMED. One repository's configuration, which is an instance and not a pattern.",
+            "kind": "single_observed_instance",
+            "statement": "One repository shows a branch rule requiring a review",
+            "supports_up_to_level": 3
+          }
+        ]
+      },
+      "content_class": "SYNTHETIC_ASSUMPTION_SET_NOT_A_UNIVERSITY_BASELINE",
+      "evidence_ceiling_of_this_path": 4,
+      "group": "ESS",
+      "level_gain": 1,
+      "path_id": "PATH-SYN-SD-02",
+      "practice": "Peer review before merge",
+      "profile_id": "PROF-SYN-ESS-SD-01",
+      "rationale": "REFUSAL CASE. A step depends on work no step in the path delivers, and it is not declared external.",
+      "reason": "Refused: prerequisite(s) SD-02-Z are named by a step but produced by no step in this path. Either add the step or declare the prerequisite external with an 'EXTERNAL:' prefix so it is visibly somebody else's to deliver.",
+      "steps": [
+        {
+          "capability_change": "Sample a month of merges for recorded reviewers",
+          "effort_basis": "ASSUMED",
+          "effort_person_days": 3,
+          "observable_advancement": "A one-month sample shows a recorded reviewer on each merge",
+          "prerequisites": [
+            "SD-02-Z"
+          ],
+          "produces_evidence_kind": "repeated_instances",
+          "skills_needed": [
+            "reporting"
+          ],
+          "step_id": "SD-02-A",
+          "supports_up_to_level": 4
+        }
+      ],
+      "target_label": "consistent",
+      "target_level": 4,
+      "variant": "direct",
+      "verdict": "REFUSED_UNMET_PREREQUISITE"
+    }
+  ],
+  "scale": {
+    "evidence_kind_caps": {
+      "outcome_measurement": 5,
+      "policy_document": 2,
+      "procedure_document": 2,
+      "repeated_instances": 4,
+      "single_observed_instance": 3
+    },
+    "levels": {
+      "1": "ad hoc",
+      "2": "documented",
+      "3": "practised",
+      "4": "consistent",
+      "5": "measured"
+    },
+    "source": "Anchor contract from UIOWA-021 (maturity anchors) as declared in the build channel. This module consumes that scale and does not define a second one."
+  }
+}
