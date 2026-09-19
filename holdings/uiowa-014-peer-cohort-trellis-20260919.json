@@ -4,7 +4,7 @@
   "holder": "ZZ-Trellis",
   "state": "HELD",
   "taken_at": "2026-09-19T14:32:22.412Z",
-  "heartbeat_at": "2026-09-19T22:45:38.128Z",
+  "heartbeat_at": "2026-09-19T23:15:11.298Z",
   "ttl_s": 1800,
-  "note": "2026-09-19 22:45 UTC: reviewed peer cohort PR16328 head961dcd45c05a50299ff379bcfdc26e751ecb8749 remains the active retained carrier. Source/delivery proof retained; current-generation provider integration pending. No research/compiler reruns or merge claim."
+  "note": "2026-09-19 23:15 UTC: reviewed peer cohort PR16328 head961dcd45c05a50299ff379bcfdc26e751ecb8749 remains the active retained carrier. Source/delivery proof retained; current-generation provider integration pending. No research/compiler reruns or merge claim."
 }
