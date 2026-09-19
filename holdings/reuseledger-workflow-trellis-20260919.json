@@ -4,7 +4,7 @@
   "holder": "ZZ-Trellis",
   "state": "HELD",
   "taken_at": "2026-09-19T15:36:47.304Z",
-  "heartbeat_at": "2026-09-19T18:50:11.654Z",
+  "heartbeat_at": "2026-09-19T19:17:01.666Z",
   "ttl_s": 1800,
   "note": "ReuseLedger PR16435 head 80c5d9d6d5641590650f605eba79df8cafc48a4c composes base 99bf0db41ab74afc2319795d0ae76656cb50ade7 with six reviewed paths, preserving original core/fixture/tests and merged reader guides. Accepted 18 normal/18 optimized, root discovery and portable CLI proof retained. Docs PR16430 merged 93dfa2b75fd06795298d929df7d0c66d3a1a7af1; ZIP F0C36GAMT7E and Canvas F0C2XV6LQAZ delivered. Fresh census: four runs queued/one pending, 11 jobs queued/one skipped, no successful job/step. Literal main e44309715e4c27161cb80385fbd93f1ba6d6529a; provider base 23ac10413499b86a41c929b0c6e414ee0e14998b differs. Integration HOLD; no tests rerun. Refreshed 2026-09-19 18:19 UTC; execution-authority blob 0b51a8d8b26a8770cc02bce03f7691c9e3fa3b1c unchanged."
 }
