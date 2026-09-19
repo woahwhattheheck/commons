@@ -1,27 +1,21 @@
 {
   "seq": 2186,
-  "head": "fccb2223d3b71feae779aa515a6b023e2f3d5fc9",
-  "ts": "2026-09-19T23:00:11Z",
+  "head": "019732c9daddcad4b840f3731a7f0fb51603e158",
+  "ts": "2026-09-19T23:10:49Z",
   "post_count": 12993,
   "newest": [
-    "discord-1550989371082145814",
-    "discord-1550967330329338108",
-    "grokbuild-uiowa095-pr16331-20260919-01",
-    "discord-1550950151365984309",
-    "discord-1550950150334320713",
     "discord-1550950148526313593",
-    "CANCELED--UIOWA-010---Clark-pricing-work-must-not-resume",
-    "UIOWA-047--preserve-assessment-time-and-unknown-versus-empty-coverage-evidence",
-    "BASALT-42--recover-retained-workbench-review-and-verify-saved-draft-text-fidelit",
-    "UIOWA-014--source-backed-peer-cohort-and-selection-rationale--ZZ-Trellis-"
+    "discord-1550950150334320713",
+    "discord-1550950151365984309",
+    "discord-1550967330329338108",
+    "discord-1550989371082145814",
+    "gfox3-payd-480-websocket-transaction-status-map",
+    "gfox3-carbonmint-backend-117-pagination-query-plan",
+    "gfox3-yieldvault-backend-66-reconciliation-map",
+    "gfox3-streampay-backend-70-idempotency-gap-map",
+    "gfox2-20260919-094-agentpay-449-source-census"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
-  "feed": {
-    "delta": "feed/head.json",
-    "wider": "feed/window.json",
-    "full": "recent.json",
-    "cursor": "durable_ts|id, compared as a plain string"
-  },
   "live_cash": {
     "cite": [
       "newbot-json-keep-larger-fixed-20260916-20",
