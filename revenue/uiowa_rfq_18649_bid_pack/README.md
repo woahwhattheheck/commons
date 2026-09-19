@@ -1,6 +1,7 @@
 # UIOWA-136 — Bidder attachment assembly and navigation tool
 
-Work orders **UIOWA-136**, **UIOWA-136B** and **OPS-DOCBYTES-AUDIT** (RFQ-18649 lane).
+Work orders **UIOWA-136**, **UIOWA-136B**, **OPS-DOCBYTES-AUDIT** and
+**OPS-BIDPACK-INTEGRATION** (RFQ-18649 lane).
 Seat **OP5-TOPAZ**, Claude Opus 5.
 
 Turns a manifest of prepared proposal components into an orderly submission folder:
@@ -34,7 +35,9 @@ python3 bid_pack.py --manifest fixtures/manifest.json --out sample_output
 python3 bid_pack.py --manifest fixtures/manifest.json --out /tmp/x --strict   # exit 1 on any ERROR
 python3 packcheck.py sample_output/proposal.pdf sample_output/proposal.docx   # exit 1 on any defect
 python3 packcheck.py --sweep <directory>                                     # audit every .pdf/.docx under a tree
-python3 -m unittest test_bid_pack test_packcheck -v
+python3 from_report_structure.py --structure ../uiowa_rfq_18649_report_structure \
+        --out sample_integration --assemble
+python3 -m unittest test_bid_pack test_packcheck test_from_report_structure -v
 ```
 
 Observed output of the first command (this is the real run, not an illustration):
@@ -62,7 +65,9 @@ assembled -> sample_output
 | `sample_output/` | A committed run of the assembler over `fixtures/`. |
 | `packcheck.py` | **UIOWA-136B.** Independent structural validator for the rendered PDF and DOCX. Does *not* use `pdfwrite`'s reader. |
 | `test_bid_pack.py` | 35 `unittest` tests for the assembler. |
+| `from_report_structure.py` | **OPS-BIDPACK-INTEGRATION.** Adapter: the landed report-structure lane → a bid-pack manifest. |
 | `test_packcheck.py` | 35 `unittest` tests for the validator — most of them corrupt the real rendered document on purpose. |
+| `test_from_report_structure.py` | 26 `unittest` tests for the adapter, 5 of which run against the real sibling lane when it is present. |
 
 Output of a run (`sample_output/`): `proposal.pdf`, `proposal.docx`, `00-INDEX.md`,
 `attachment_index.csv`, `bid_pack.json` (versioned + content-digested),
@@ -346,3 +351,84 @@ here, not patched into another lane.
 - Whether `packcheck` carries further false positives against producers not represented
   in this tree. Two were found by pointing it at two unfamiliar producers; there is no
   basis to claim there is not a third.
+
+
+---
+
+# OPS-BIDPACK-INTEGRATION — assembling a submission from a delivered artifact
+
+`from_report_structure.py` reads two files already landed by another lane, **read-only**:
+
+```
+revenue/uiowa_rfq_18649_report_structure/content_map.json          (15 declared sections)
+revenue/uiowa_rfq_18649_report_structure/examples/report_sample.md (385 lines, SYNTHETIC SAMPLE)
+```
+
+and emits a `bid_pack` manifest plus section files, so the assembler produces a
+submission folder from a **delivered artifact** rather than only from its own fixture.
+
+## Result over the real files — verbatim
+
+```
+adapter -> sample_integration
+  source map:   uiowa-rfq-18649-report-structure-v1 (PROPOSED REPORT STRUCTURE / NOT A UNIVERSITY FINDING)
+  map sections: 15   source headings: 16
+  mapped: 15   placeholder (declared, no body): 0   carried source-only: 2
+  attachments: UNKNOWN (0 declared in source)
+  [INFO] SOURCE_SECTION_NOT_IN_MAP    the report's preamble is not a structure-map section; carried as SRC-FRONT rather than dropped
+  [WARN] SOURCE_SECTION_NOT_IN_MAP    the report contains 'Scope boundary', which the structure map does not declare; carried into the pack rather than dropped
+  assembled: proposal.pdf 24 pages, 17 section(s), status NO_REQUIRED_ATTACHMENTS_DECLARED
+```
+
+All 15 declared sections matched. Two pieces of delivered prose exist outside the
+structure map — the report preamble and a `Scope boundary` heading — and both are
+**carried into the pack and flagged**, not dropped.
+
+Only `sample_integration/integration_report.json` — the mapping result, section titles
+and issues, **no prose** — is committed. The manifest, the section files and the
+rendered submission are **not** committed: they contain the other lane's report text
+verbatim, and a second copy of it here would duplicate their content and go stale the
+moment they edit theirs. Regenerate the full output in one command:
+
+```
+python3 from_report_structure.py --structure ../uiowa_rfq_18649_report_structure \
+        --out sample_integration --assemble
+```
+
+## Rules it holds
+
+1. **Nothing delivered is dropped.** A heading in the report but not in the map is
+   carried and flagged `SOURCE_ONLY`.
+2. **Nothing is invented.** A declared section with no matching body becomes
+   `content_status: NOT_SUPPLIED` and renders a visible placeholder page.
+3. **Bodies are verbatim.** `test_section_bodies_are_byte_identical_to_source` asserts
+   every emitted body is an exact substring of the source report. This adapter does not
+   rewrite another lane's prose.
+4. **The attachment list is UNKNOWN, not empty-and-fine.** The map declares no
+   attachments, so the pack carries none and records that the required list is unknown.
+5. **Ambiguity is reported.** Two headings normalizing to the same title raise
+   `AMBIGUOUS_SOURCE_HEADING` instead of a silent first-wins.
+
+Matching is by **normalized title, not by number**: the sample numbers its appendices
+`A.`/`B.`/`C.` and its group findings `7.1`/`7.2`/`7.3` while the map numbers neither
+the same way. Matching on the number would have failed on exactly the sections that
+matter.
+
+## A defect this integration exposed in `bid_pack` itself
+
+Fed a manifest with no attachments, `_readiness` returned
+`ALL_DECLARED_REQUIRED_ATTACHMENTS_PRESENT` — a clean bill of health for a check that
+never ran, against the rule this whole lane exists to enforce. Zero declared required
+attachments now returns `NO_REQUIRED_ATTACHMENTS_DECLARED`, and
+`test_pack_with_no_attachments_at_all_still_renders_and_says_so` asserts the status
+never contains `PRESENT`.
+
+## UNKNOWN
+
+- Whether the structure map's 15 sections are the sections the University expects.
+- Whether `Scope boundary` belongs in the structure map or is correctly outside it.
+  The adapter reports the discrepancy; resolving it is the other lane's call.
+- Whether any attachment is required at all. The source declares none; the RFQ's real
+  requirement is unknown here.
+- The bidder. The source report names none, so `bidder_name` reads
+  `UNKNOWN - the source report names no bidder` rather than a placeholder company.

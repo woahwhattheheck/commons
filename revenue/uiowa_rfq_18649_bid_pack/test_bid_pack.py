@@ -413,8 +413,10 @@ class HostileInputTests(TempCase):
         m["attachments"] = []
         _, result = build(self.tmp, manifest=m)
         self.assertEqual(result["readiness"]["required_declared"], 0)
-        # zero DECLARED is an observed fact; it is not a pass, and the note says
-        # the University's actual required list is UNKNOWN
+        # zero DECLARED is an observed fact; it is not a pass. The status must
+        # not read as a clean bill of health for a check that never ran.
+        self.assertEqual(result["readiness"]["status"], "NO_REQUIRED_ATTACHMENTS_DECLARED")
+        self.assertNotIn("PRESENT", result["readiness"]["status"])
         self.assertIn("UNKNOWN", result["readiness"]["note"])
         self.assertTrue(os.path.isfile(os.path.join(self.tmp, "proposal.pdf")))
 

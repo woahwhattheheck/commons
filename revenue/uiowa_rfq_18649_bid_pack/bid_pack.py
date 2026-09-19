@@ -399,11 +399,21 @@ class BidPack(object):
         req = [a for a in attachments if a["required"]]
         present = [a for a in req if a["present"] and a["bytes"]]
         missing = [a["id"] for a in req if not (a["present"] and a["bytes"])]
+        if missing:
+            status = "SUBMISSION_INCOMPLETE"
+        elif not req:
+            # Zero declared required attachments is an OBSERVATION, not a pass.
+            # Reporting it as "all present" reads as a clean bill of health for a
+            # check that never ran -- found when the report-structure adapter fed
+            # this a manifest with no attachment list at all.
+            status = "NO_REQUIRED_ATTACHMENTS_DECLARED"
+        else:
+            status = "ALL_DECLARED_REQUIRED_ATTACHMENTS_PRESENT"
         return {
             "required_declared": len(req),
             "required_present": len(present),
             "required_not_supplied": missing,
-            "status": "SUBMISSION_INCOMPLETE" if missing else "ALL_DECLARED_REQUIRED_ATTACHMENTS_PRESENT",
+            "status": status,
             "note": ("Counts describe declared-vs-present documents in this pack only. "
                      "Whether this list of attachments is the list the University "
                      "actually requires is UNKNOWN."),

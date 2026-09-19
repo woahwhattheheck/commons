@@ -1,0 +1,158 @@
+{
+  "schema": "uiowa-136-bidpack-from-report-structure/1",
+  "source": {
+    "content_map": "../../../../../../commons/revenue/uiowa_rfq_18649_report_structure/content_map.json",
+    "report_sample": "../../../../../../commons/revenue/uiowa_rfq_18649_report_structure/examples/report_sample.md",
+    "map_id": "uiowa-rfq-18649-report-structure-v1",
+    "map_status": "PROPOSED REPORT STRUCTURE / NOT A UNIVERSITY FINDING"
+  },
+  "counts": {
+    "map_sections": 15,
+    "source_headings": 16,
+    "mapped": 15,
+    "map_only_placeholder": 0,
+    "source_only_carried": 2
+  },
+  "sections": [
+    {
+      "id": "SRC-FRONT",
+      "title": "Front matter",
+      "origin": "SOURCE_ONLY",
+      "content_status": "SUPPLIED",
+      "source_heading": null
+    },
+    {
+      "id": "SEC-01",
+      "title": "Executive Summary",
+      "origin": "MAPPED",
+      "content_status": "SUPPLIED",
+      "source_heading": "1. Executive Summary"
+    },
+    {
+      "id": "SEC-02",
+      "title": "Engagement Scope and Assessment Areas",
+      "origin": "MAPPED",
+      "content_status": "SUPPLIED",
+      "source_heading": "2. Engagement Scope and Assessment Areas"
+    },
+    {
+      "id": "SEC-03",
+      "title": "Methodology",
+      "origin": "MAPPED",
+      "content_status": "SUPPLIED",
+      "source_heading": "3. Methodology"
+    },
+    {
+      "id": "SEC-04",
+      "title": "Evidence Standard, Confidence and Limitations",
+      "origin": "MAPPED",
+      "content_status": "SUPPLIED",
+      "source_heading": "4. Evidence Standard, Confidence and Limitations"
+    },
+    {
+      "id": "SEC-05",
+      "title": "Peer and Published-Practice Context",
+      "origin": "MAPPED",
+      "content_status": "SUPPLIED",
+      "source_heading": "5. Peer and Published-Practice Context"
+    },
+    {
+      "id": "SEC-06",
+      "title": "Current-State Matrix",
+      "origin": "MAPPED",
+      "content_status": "SUPPLIED",
+      "source_heading": "6. Current-State Matrix"
+    },
+    {
+      "id": "SEC-07",
+      "title": "Group Findings - Enterprise Systems and Services (ESS)",
+      "origin": "MAPPED",
+      "content_status": "SUPPLIED",
+      "source_heading": "7.1. Group Findings - Enterprise Systems and Services (ESS)"
+    },
+    {
+      "id": "SEC-08",
+      "title": "Group Findings - Research Information Systems (RIS)",
+      "origin": "MAPPED",
+      "content_status": "SUPPLIED",
+      "source_heading": "7.2. Group Findings - Research Information Systems (RIS)"
+    },
+    {
+      "id": "SEC-09",
+      "title": "Group Findings - Identity and Access Management (IAM)",
+      "origin": "MAPPED",
+      "content_status": "SUPPLIED",
+      "source_heading": "7.3. Group Findings - Identity and Access Management (IAM)"
+    },
+    {
+      "id": "SEC-10",
+      "title": "Cross-Cutting Themes",
+      "origin": "MAPPED",
+      "content_status": "SUPPLIED",
+      "source_heading": "8. Cross-Cutting Themes"
+    },
+    {
+      "id": "SEC-11",
+      "title": "Recommendations by Group and Department",
+      "origin": "MAPPED",
+      "content_status": "SUPPLIED",
+      "source_heading": "9. Recommendations by Group and Department"
+    },
+    {
+      "id": "SEC-12",
+      "title": "Prioritization and Phasing",
+      "origin": "MAPPED",
+      "content_status": "SUPPLIED",
+      "source_heading": "10. Prioritization and Phasing"
+    },
+    {
+      "id": "SEC-13",
+      "title": "Appendix A - Supporting Evidence",
+      "origin": "MAPPED",
+      "content_status": "SUPPLIED",
+      "source_heading": "A. Appendix A - Supporting Evidence"
+    },
+    {
+      "id": "SEC-14",
+      "title": "Appendix B - Source and Version Register",
+      "origin": "MAPPED",
+      "content_status": "SUPPLIED",
+      "source_heading": "B. Appendix B - Source and Version Register"
+    },
+    {
+      "id": "SEC-15",
+      "title": "Appendix C - Open Questions and Unresolved Inputs",
+      "origin": "MAPPED",
+      "content_status": "SUPPLIED",
+      "source_heading": "C. Appendix C - Open Questions and Unresolved Inputs"
+    },
+    {
+      "id": "SRC-SCOPE-BOUNDARY",
+      "title": "Scope boundary",
+      "origin": "SOURCE_ONLY",
+      "content_status": "SUPPLIED",
+      "source_heading": "Scope boundary"
+    }
+  ],
+  "attachment_policy": {
+    "declared_in_source": 0,
+    "status": "UNKNOWN",
+    "note": "The report structure map declares no attachments. The required attachment list for RFQ-18649 is UNKNOWN; this pack carries none rather than presenting an empty list as a complete one."
+  },
+  "cross_references": {
+    "markers_found": 0,
+    "note": "The source report does not use this pack's [[ID]] cross-reference markers, so none were resolved. No markers were inserted into another lane's prose."
+  },
+  "issues": [
+    {
+      "code": "SOURCE_SECTION_NOT_IN_MAP",
+      "severity": "INFO",
+      "detail": "the report's preamble is not a structure-map section; carried as SRC-FRONT rather than dropped"
+    },
+    {
+      "code": "SOURCE_SECTION_NOT_IN_MAP",
+      "severity": "WARN",
+      "detail": "the report contains 'Scope boundary', which the structure map does not declare; carried into the pack rather than dropped"
+    }
+  ]
+}
