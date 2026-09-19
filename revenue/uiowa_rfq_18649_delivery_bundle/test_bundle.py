@@ -20,6 +20,20 @@ except ImportError:
     import examples
 
 
+def compiler_contract_pair():
+    """Fictional shape fixture, NOT compiler output or University evidence."""
+    report, handoff = examples.synthetic_pair()
+    report["schema"] = "uiowa-rfq18649-workshare-report/v2"
+    report["fixture_notice"] = "CONTRACT_STUB_NOT_COMPILER_OUTPUT"
+    del report["synthetic_demo"]
+    handoff["synthetic_demo"] = False
+    for rows in (report["assessment_matrix"], handoff["cell_notes"]):
+        for row in rows:
+            if row["dimension"] == "software_development":
+                row["dimension"] = "software"
+    return report, handoff
+
+
 class BundleTests(unittest.TestCase):
     def setUp(self):
         self.report, self.handoff = examples.synthetic_pair()
@@ -275,6 +289,188 @@ class BundleTests(unittest.TestCase):
         self.fails("ARCHIVE_INVALID", bundle.verify_bundle, bad)
 
 
+    def use_compiler_contract(self):
+        self.report, self.handoff = compiler_contract_pair()
+
+    def test_compiler_v2_grid_roundtrip_is_non_authoritative(self):
+        self.use_compiler_contract()
+        receipt = bundle.verify_bundle(self.pack())
+        self.assertIs(receipt["binding"]["synthetic_demo"], False)
+        self.assertIs(receipt["parent_compiler_receipt_recomputed"], False)
+        self.assertEqual(receipt["verification_scope"], bundle.SCOPE)
+        self.assertTrue(all(value is False for value in receipt["authority"].values()))
+        self.assertIn("NOT_COMPILER_OUTPUT", self.report["fixture_notice"])
+
+    def test_compiler_explicit_false_marker_preserved(self):
+        self.use_compiler_contract()
+        self.report["synthetic_demo"] = False
+        receipt = bundle.verify_bundle(self.pack())
+        self.assertIs(receipt["binding"]["synthetic_demo"], False)
+
+    def test_compiler_all_three_software_cells_survive_as_written(self):
+        self.use_compiler_contract()
+        before = copy.deepcopy((self.report, self.handoff))
+        data = self.pack()
+        with zipfile.ZipFile(io.BytesIO(data)) as archive:
+            report = json.loads(archive.read("report.json"))
+            handoff = json.loads(archive.read("handoff.json"))
+        for rows in (report["assessment_matrix"], handoff["cell_notes"]):
+            self.assertEqual({(row["group"], row["dimension"]) for row in rows
+                              if row["dimension"] == "software"},
+                             {("ESS", "software"), ("RIS", "software"), ("IAM", "software")})
+            self.assertNotIn("software_development", {row["dimension"] for row in rows})
+        self.assertEqual((self.report, self.handoff), before)
+
+    def test_compiler_unicode_whitespace_and_receipt_exact_bytes(self):
+        self.use_compiler_contract()
+        self.handoff["cell_notes"][0]["analyst_note"] = "FICTIONAL: café 🙂\nsecond line"
+        report = json.dumps(self.report, ensure_ascii=False, indent=3).encode() + b"\r\n"
+        handoff = json.dumps(self.handoff, ensure_ascii=False, indent=1).encode() + b"\n\n"
+        data = bundle.build_bundle(report, handoff)
+        with zipfile.ZipFile(io.BytesIO(data)) as archive:
+            self.assertEqual(archive.read("report.json"), report)
+            self.assertEqual(archive.read("handoff.json"), handoff)
+        self.assertEqual(bundle.verify_bundle(data)["binding"]["report_receipt_sha256"],
+                         self.report["receipt_sha256"])
+
+    def test_compiler_cell_order_and_determinism(self):
+        self.use_compiler_contract()
+        self.handoff["cell_notes"].reverse()
+        self.report["assessment_matrix"].reverse()
+        first = self.pack()
+        self.assertEqual(first, self.pack())
+        bundle.verify_bundle(first, bundle.sha256(first))
+
+    def test_compiler_schema_rejects_long_grid_even_on_both_inputs(self):
+        self.report["schema"] = "uiowa-rfq18649-workshare-report/v2"
+        del self.report["synthetic_demo"]
+        self.handoff["synthetic_demo"] = False
+        self.pair_fails("CELL_COVERAGE")
+
+    def test_demo_schema_rejects_short_grid_even_on_both_inputs(self):
+        for rows in (self.report["assessment_matrix"], self.handoff["cell_notes"]):
+            for row in rows:
+                if row["dimension"] == "software_development":
+                    row["dimension"] = "software"
+        self.pair_fails("CELL_COVERAGE")
+
+    def test_compiler_mixed_report_grid_rejected_per_group(self):
+        for group in ("ESS", "RIS", "IAM"):
+            with self.subTest(group=group):
+                self.use_compiler_contract()
+                for rows in (self.report["assessment_matrix"], self.handoff["cell_notes"]):
+                    next(row for row in rows if row["group"] == group
+                         and row["dimension"] == "software")["dimension"] = "software_development"
+                self.pair_fails("CELL_COVERAGE")
+
+    def test_compiler_cross_grid_handoff_rejected(self):
+        self.use_compiler_contract()
+        for row in self.handoff["cell_notes"]:
+            if row["dimension"] == "software":
+                row["dimension"] = "software_development"
+        self.pair_fails("CELL_COVERAGE")
+
+    def test_demo_cross_grid_handoff_rejected(self):
+        for row in self.handoff["cell_notes"]:
+            if row["dimension"] == "software_development":
+                row["dimension"] = "software"
+        self.pair_fails("CELL_COVERAGE")
+
+    def test_external_schema_canonical_grid_remains_explicitly_untrusted(self):
+        self.use_compiler_contract()
+        self.report["schema"] = "external-untrusted-report/v1"
+        result = bundle.verify_bundle(self.pack())
+        self.assertIs(result["parent_compiler_receipt_recomputed"], False)
+        self.assertIsNone(result["independent_digest_match"])
+        self.assertIs(result["binding"]["synthetic_demo"], False)
+
+    def test_external_schema_legacy_long_grid_preserved(self):
+        self.report["schema"] = "external-untrusted-report/v1"
+        self.report["synthetic_demo"] = False
+        self.handoff["synthetic_demo"] = False
+        bundle.verify_bundle(self.pack())
+
+    def test_external_schema_cannot_mix_vocabularies(self):
+        self.report["schema"] = "external-untrusted-report/v1"
+        self.report["synthetic_demo"] = False
+        self.handoff["synthetic_demo"] = False
+        self.report["assessment_matrix"][0]["dimension"] = "software"
+        self.handoff["cell_notes"][0]["dimension"] = "software"
+        self.pair_fails("CELL_COVERAGE")
+
+    def test_compiler_missing_duplicate_and_invalid_shape_diagnostics(self):
+        for change, code in (("missing", "CELL_COVERAGE"), ("duplicate", "CELL_COVERAGE"),
+                             ("object", "CELL_SHAPE"), ("dimension", "CELL_SHAPE")):
+            with self.subTest(change=change):
+                self.use_compiler_contract()
+                rows = self.report["assessment_matrix"]
+                if change == "missing":
+                    rows.pop()
+                elif change == "duplicate":
+                    rows[1] = rows[0].copy()
+                elif change == "object":
+                    rows[0] = []
+                else:
+                    rows[0]["dimension"] = []
+                self.pair_fails(code)
+
+    def test_compiler_status_and_authority_boundaries_retained(self):
+        self.use_compiler_contract()
+        self.handoff["cell_notes"][0]["compiler_status"] = "READY"
+        self.pair_fails("CELL_BINDING")
+        for flag in bundle.AUTHORITY_KEYS:
+            self.use_compiler_contract()
+            self.handoff["authority"][flag] = True
+            self.pair_fails("HANDOFF_AUTHORITY")
+
+    def test_named_schema_marker_coherence_still_required(self):
+        self.use_compiler_contract()
+        self.report["synthetic_demo"] = True
+        self.handoff["synthetic_demo"] = True
+        self.pair_fails("SYNTHETIC_LABEL")
+        self.report, self.handoff = examples.synthetic_pair()
+        del self.report["synthetic_demo"]
+        self.handoff["synthetic_demo"] = False
+        self.pair_fails("SYNTHETIC_LABEL")
+
+    def test_demo_archive_digest_is_byte_identical_to_published_fixture(self):
+        self.assertEqual(bundle.sha256(self.pack()),
+                         "e90a6a740e1336c2dfdbd761bec1ef878a5ec3aaf24ca8d6e9987744157b089c")
+
+    def test_legacy_matrix_default_still_uses_demo_cells(self):
+        self.assertEqual(len(bundle.matrix(self.report["assessment_matrix"], "legacy")), 12)
+        self.use_compiler_contract()
+        self.fails("CELL_COVERAGE", bundle.matrix, self.report["assessment_matrix"], "legacy")
+
+    def test_compiler_archive_tamper_requires_revalidation(self):
+        self.use_compiler_contract()
+        original = self.pack()
+        self.handoff["cell_notes"][0]["analyst_note"] = "FICTIONAL revised handoff"
+        updated = self.pack()
+        bundle.verify_bundle(updated)
+        self.fails("ARCHIVE_DIGEST", bundle.verify_bundle, updated, bundle.sha256(original))
+
+    def test_parent_constant_declarations_match_compiler_contract(self):
+        # Declaration check only. This does not run or certify the compiler.
+        import ast
+        parent = Path(__file__).resolve().parents[1] / "uiowa_rfq_18649_workshare" / "workshare_constants.py"
+        if not parent.is_file():
+            if os.environ.get("UIOWA_REQUIRE_PARENT_CONTRACT") == "1":
+                self.fail("parent constant declarations required for contract canary")
+            self.skipTest("parent declarations absent; standalone tests do not verify compiler declarations")
+        values = {}
+        for statement in ast.parse(parent.read_text(encoding="utf-8")).body:
+            if isinstance(statement, ast.Assign):
+                for name in statement.targets:
+                    if isinstance(name, ast.Name) and name.id in {"REPORT_SCHEMA", "GROUPS", "DIMENSIONS"}:
+                        values[name.id] = ast.literal_eval(statement.value)
+        self.assertEqual(values["REPORT_SCHEMA"], bundle.COMPILER_REPORT_SCHEMA)
+        expected = frozenset((g, d) for g in values["GROUPS"] for d in values["DIMENSIONS"])
+        self.assertEqual(expected, bundle.COMPILER_CELLS)
+        report, _ = compiler_contract_pair()
+        self.assertEqual({(row["group"], row["dimension"]) for row in report["assessment_matrix"]}, expected)
+
+
 class CommandTests(unittest.TestCase):
     def run_cli(self, *args, cwd=None):
         return subprocess.run([sys.executable, str(Path(bundle.__file__).resolve()), *map(str, args)],
@@ -334,6 +530,50 @@ class CommandTests(unittest.TestCase):
                 self.assertEqual(p.returncode, 0, p.stderr)
                 results.append(p.stdout)
             self.assertEqual(len(set(results)), 1)
+
+
+    def test_compiler_contract_cli_roundtrip(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            report, handoff = compiler_contract_pair()
+            original = bundle.canonical(report), bundle.canonical(handoff)
+            (root / "report.json").write_bytes(original[0])
+            (root / "handoff.json").write_bytes(original[1])
+            result = self.run_cli("pack", "--report", root / "report.json", "--handoff",
+                                  root / "handoff.json", "--output", root / "out.zip")
+            self.assertEqual(result.returncode, 0, result.stderr)
+            digest = json.loads(result.stdout)["archive_sha256"]
+            checked = self.run_cli("verify", root / "out.zip", "--expected-sha256", digest)
+            self.assertEqual(checked.returncode, 0, checked.stderr)
+            self.assertIs(json.loads(checked.stdout)["binding"]["synthetic_demo"], False)
+            self.assertEqual((root / "report.json").read_bytes(), original[0])
+            self.assertEqual((root / "handoff.json").read_bytes(), original[1])
+
+    def test_compiler_contract_cli_grid_rejection_leaves_no_output(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            report, handoff = compiler_contract_pair()
+            handoff["cell_notes"][0]["dimension"] = "software_development"
+            (root / "report.json").write_bytes(bundle.canonical(report))
+            (root / "handoff.json").write_bytes(bundle.canonical(handoff))
+            result = self.run_cli("pack", "--report", root / "report.json", "--handoff",
+                                  root / "handoff.json", "--output", root / "out.zip")
+            self.assertEqual(result.returncode, 2)
+            self.assertEqual(json.loads(result.stderr)["error"], "CELL_COVERAGE")
+            self.assertFalse((root / "out.zip").exists())
+
+    def test_compiler_contract_hash_seed_determinism(self):
+        script = ("import test_bundle,bundle; r,h=test_bundle.compiler_contract_pair(); "
+                  "print(bundle.sha256(bundle.build_bundle(bundle.canonical(r),bundle.canonical(h))))")
+        observed = []
+        for seed in ("1", "42", "random"):
+            result = subprocess.run([sys.executable, "-c", script],
+                                    cwd=Path(bundle.__file__).parent,
+                                    env=dict(os.environ, PYTHONHASHSEED=seed),
+                                    capture_output=True, text=True, timeout=15)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            observed.append(result.stdout)
+        self.assertEqual(len(set(observed)), 1)
 
 
 if __name__ == "__main__":
