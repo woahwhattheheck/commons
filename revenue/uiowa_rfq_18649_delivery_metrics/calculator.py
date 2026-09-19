@@ -10,6 +10,9 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
+import stat
+import tempfile
 import statistics
 import sys
 from dataclasses import dataclass, replace
@@ -320,7 +323,7 @@ def calculate(
                 "rate": round(rework_rate, 6) if rework_rate is not None else None,
                 "percent": round(rework_rate * 100, 3) if rework_rate is not None else None,
                 "coverage": _coverage(
-                    eligible=len(rows), used=len(rework_known), missing=rework_missing
+                    eligible=len(rows), used=len(rework_known), missing=rework_missing,
                 ),
             },
         },
@@ -341,6 +344,48 @@ def _required_time(value: str, field: str) -> datetime:
     return parsed
 
 
+def _write_report(payload: str, output: Path, source: Path) -> None:
+    """Publish a complete UTF-8 report without truncating its source or old output.
+
+    The CLI operates in an operator-controlled directory. Atomic replacement
+    protects an existing report against write/flush/replace failure; it is not
+    a claim of crash durability or protection against hostile directory swaps.
+    """
+    source_stat = source.stat()
+
+    def check_destination() -> None:
+        if not os.path.samestat(source_stat, source.stat()):
+            raise DataError("input file identity changed during report publication")
+        try:
+            destination = output.lstat()
+        except FileNotFoundError:
+            return
+        if stat.S_ISLNK(destination.st_mode):
+            raise DataError("output must not be a symbolic link")
+        if not stat.S_ISREG(destination.st_mode):
+            raise DataError("output must be a regular file or a new path")
+        if os.path.samestat(source_stat, destination):
+            raise DataError("output must not overwrite the input CSV or its hardlink")
+
+    check_destination()
+    temporary: Path | None = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            mode="w", encoding="utf-8", newline="\n", delete=False,
+            prefix=".uiowa64-report-", suffix=".tmp", dir=output.parent,
+        ) as handle:
+            temporary = Path(handle.name)
+            handle.write(payload)
+            handle.flush()
+            os.fsync(handle.fileno())
+        # Recheck after writing, before making the complete report visible.
+        check_destination()
+        os.replace(temporary, output)
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("csv_path", type=Path)
@@ -359,7 +404,7 @@ def main(argv: list[str] | None = None) -> int:
         )
         payload = json.dumps(report, indent=2, sort_keys=True) + "\n"
         if args.output:
-            args.output.write_text(payload, encoding="utf-8")
+            _write_report(payload, args.output, args.csv_path)
         else:
             sys.stdout.write(payload)
     except (DataError, OSError, UnicodeError, csv.Error) as exc:
