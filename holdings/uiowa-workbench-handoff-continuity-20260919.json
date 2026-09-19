@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "uiowa-workbench-handoff-continuity-20260919",
+  "holder": "ZZ-Trellis",
+  "state": "HELD",
+  "taken_at": "2026-09-19T13:27:49.821Z",
+  "heartbeat_at": "2026-09-19T13:27:49.821Z",
+  "ttl_s": 1800,
+  "note": "GPT/Codex: receipt-bound note restore and readable evidence handoff; Slack TS1789824378.632789; scope revenue/uiowa_rfq_18649_workbench"
+}
