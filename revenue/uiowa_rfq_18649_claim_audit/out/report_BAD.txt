@@ -1,0 +1,74 @@
+claim audit -- fixtures/exec_summary_BAD.md
+========================================================================
+statements examined : 18
+result              : FAIL  (22 error, 1 warning)
+
+  [error] PROMOTIONAL_LANGUAGE  exec_summary_BAD.md:8  (industry best practice)
+      tier A term 'industry best practice': appeals to an unnamed external authority
+      > The delivery practices we reviewed are world-class and reflect industry best practice.
+  [error] PROMOTIONAL_LANGUAGE  exec_summary_BAD.md:8  (world-class)
+      tier A term 'world-class': states a peer comparison this engagement did not make
+      > The delivery practices we reviewed are world-class and reflect industry best practice.
+  [error] PROMOTIONAL_LANGUAGE  exec_summary_BAD.md:9  (comprehensive)
+      tier B term 'comprehensive': asserts completeness without stating coverage
+      > Change approval is robust and the process is comprehensive.
+  [error] PROMOTIONAL_LANGUAGE  exec_summary_BAD.md:9  (robust)
+      tier B term 'robust': evaluative adjective with no magnitude
+      > Change approval is robust and the process is comprehensive.
+  [error] UNSOURCED_CLAIM  exec_summary_BAD.md:10
+      this statement asserts a quantity or a difference and cites no finding; it cannot be traced to anything
+      > 58% of changes receive a single approval.
+  [error] PROMOTIONAL_LANGUAGE  exec_summary_BAD.md:11  (significantly)
+      tier B term 'significantly': intensifier with no magnitude
+      > Deployment has become significantly faster over the review window.
+  [error] UNQUANTIFIED_COMPARATIVE  exec_summary_BAD.md:11  (faster)
+      'faster' claims a difference without stating its size; a delta with no number cannot be checked
+      > Deployment has become significantly faster over the review window.
+  [error] UNSOURCED_CLAIM  exec_summary_BAD.md:11
+      this statement asserts a quantity or a difference and cites no finding; it cannot be traced to anything
+      > Deployment has become significantly faster over the review window.
+  [error] PROMOTIONAL_LANGUAGE  exec_summary_BAD.md:12  (ensures)
+      tier C term 'ensures': asserts a guarantee; needs evidence or a source
+      > The team's engineering culture is exceptional and ensures reliability across the estate.
+  [error] PROMOTIONAL_LANGUAGE  exec_summary_BAD.md:12  (exceptional)
+      tier B term 'exceptional': evaluative adjective with no magnitude
+      > The team's engineering culture is exceptional and ensures reliability across the estate.
+  [error] UNKNOWN_PRESENTED_AS_FINDING  exec_summary_BAD.md:16  (F-SYN-003)
+      this statement asserts a figure while citing F-SYN-003, whose recorded state is UNKNOWN; the citation resolves but cannot support a number
+      > IAM restoration completes in under 4 hours [F-SYN-003].
+  [error] CONTRADICTED_FINDING_CITED_AS_SUPPORT  exec_summary_BAD.md:17  (F-SYN-005)
+      F-SYN-005 is recorded as CONTRADICTED and is cited here in a sentence framed as support
+      > All services have runbooks, as the evidence demonstrates [F-SYN-005].
+  [error] UNQUANTIFIED_COMPARATIVE  exec_summary_BAD.md:18  (improved)
+      'improved' claims a difference without stating its size; a delta with no number cannot be checked
+      > Alert routing has improved.
+  [error] UNSOURCED_CLAIM  exec_summary_BAD.md:18
+      this statement asserts a quantity or a difference and cites no finding; it cannot be traced to anything
+      > Alert routing has improved.
+  [warning] ABSOLUTE_WITHOUT_SOURCE  exec_summary_BAD.md:19  (every)
+      absolute 'every' with no citation; absolutes are the cheapest statement to disprove and the most expensive to withdraw
+      > Every service owner we spoke to was engaged and capable.
+  [error] DANGLING_CITATION  exec_summary_BAD.md:20  (F-SYN-999)
+      'F-SYN-999' is cited but is not in the register
+      > Coverage of the AI inventory is extensive [F-SYN-999].
+  [error] PROMOTIONAL_LANGUAGE  exec_summary_BAD.md:20  (extensive)
+      tier B term 'extensive': asserts breadth without stating coverage
+      > Coverage of the AI inventory is extensive [F-SYN-999].
+  [error] PROMOTIONAL_LANGUAGE  exec_summary_BAD.md:24  (dramatically)
+      tier B term 'dramatically': intensifier with no magnitude
+      > Adopting the recommendations below will dramatically improve operational maturity.
+  [error] PROMOTIONAL_LANGUAGE  exec_summary_BAD.md:25  (seamless)
+      tier A term 'seamless': asserts an absence of friction that was not measured
+      > A seamless, turnkey rollout is achievable within one quarter.
+  [error] PROMOTIONAL_LANGUAGE  exec_summary_BAD.md:25  (turnkey)
+      tier A term 'turnkey': asserts an absence of integration work that was not measured
+      > A seamless, turnkey rollout is achievable within one quarter.
+  [error] PROMOTIONAL_LANGUAGE  exec_summary_BAD.md:26  (guarantee)
+      tier C term 'guarantee': asserts a guarantee; needs evidence or a source
+      > These steps are proven and guarantee a measurable reduction in incident volume.
+  [error] PROMOTIONAL_LANGUAGE  exec_summary_BAD.md:26  (proven)
+      tier C term 'proven': asserts prior proof without naming it
+      > These steps are proven and guarantee a measurable reduction in incident volume.
+  [error] EMPTY_SUPPRESSION  exec_summary_BAD.md:27
+      this line suppresses the audit without giving a reason; a suppression with no recorded justification is an unaudited claim wearing a green check
+      > Prioritisation was straightforward. <!-- audit-ok: -->

@@ -1,0 +1,28 @@
+corpus sweep -- /home/user/commons/revenue
+========================================================================
+files scanned        : 2063
+statements examined  : 121059
+files with findings  : 572
+
+findings by rule:
+  PROMOTIONAL_LANGUAGE               425
+  UNQUANTIFIED_COMPARATIVE           492
+
+most frequent terms:
+  guarantee                          122
+  lower                              111
+  proven                             92
+  stronger                           75
+  guaranteed                         56
+  better                             46
+  higher                             41
+  reduced                            39
+  worse                              39
+  improves                           30
+  mature                             28
+  improved                           27
+  guarantees                         25
+  reduces                            21
+  robust                             19
+
+Corpus mode runs only the rules that need no finding register. These are REVIEW CANDIDATES, not defects. An engineering README is not a client deliverable and should not be held to a leadership-paper standard; the rules are calibrated for the latter.

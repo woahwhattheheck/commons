@@ -1,0 +1,7 @@
+claim audit -- fixtures/exec_summary_GOOD.md
+========================================================================
+statements examined : 23
+result              : PASS  (0 error, 0 warning)
+
+  Every substantive statement carries a citation that resolves to a
+  record able to support it, and no promotional term was found.

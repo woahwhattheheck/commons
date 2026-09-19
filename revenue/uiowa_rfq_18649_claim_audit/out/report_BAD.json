@@ -1,0 +1,214 @@
+{
+  "document": "fixtures/exec_summary_BAD.md",
+  "statements_examined": 18,
+  "passed": false,
+  "findings": [
+    {
+      "code": "PROMOTIONAL_LANGUAGE",
+      "severity": "error",
+      "doc": "exec_summary_BAD.md",
+      "line_no": 8,
+      "message": "tier A term 'industry best practice': appeals to an unnamed external authority",
+      "excerpt": "The delivery practices we reviewed are world-class and reflect industry best practice.",
+      "term": "industry best practice"
+    },
+    {
+      "code": "PROMOTIONAL_LANGUAGE",
+      "severity": "error",
+      "doc": "exec_summary_BAD.md",
+      "line_no": 8,
+      "message": "tier A term 'world-class': states a peer comparison this engagement did not make",
+      "excerpt": "The delivery practices we reviewed are world-class and reflect industry best practice.",
+      "term": "world-class"
+    },
+    {
+      "code": "PROMOTIONAL_LANGUAGE",
+      "severity": "error",
+      "doc": "exec_summary_BAD.md",
+      "line_no": 9,
+      "message": "tier B term 'comprehensive': asserts completeness without stating coverage",
+      "excerpt": "Change approval is robust and the process is comprehensive.",
+      "term": "comprehensive"
+    },
+    {
+      "code": "PROMOTIONAL_LANGUAGE",
+      "severity": "error",
+      "doc": "exec_summary_BAD.md",
+      "line_no": 9,
+      "message": "tier B term 'robust': evaluative adjective with no magnitude",
+      "excerpt": "Change approval is robust and the process is comprehensive.",
+      "term": "robust"
+    },
+    {
+      "code": "UNSOURCED_CLAIM",
+      "severity": "error",
+      "doc": "exec_summary_BAD.md",
+      "line_no": 10,
+      "message": "this statement asserts a quantity or a difference and cites no finding; it cannot be traced to anything",
+      "excerpt": "58% of changes receive a single approval.",
+      "term": ""
+    },
+    {
+      "code": "PROMOTIONAL_LANGUAGE",
+      "severity": "error",
+      "doc": "exec_summary_BAD.md",
+      "line_no": 11,
+      "message": "tier B term 'significantly': intensifier with no magnitude",
+      "excerpt": "Deployment has become significantly faster over the review window.",
+      "term": "significantly"
+    },
+    {
+      "code": "UNQUANTIFIED_COMPARATIVE",
+      "severity": "error",
+      "doc": "exec_summary_BAD.md",
+      "line_no": 11,
+      "message": "'faster' claims a difference without stating its size; a delta with no number cannot be checked",
+      "excerpt": "Deployment has become significantly faster over the review window.",
+      "term": "faster"
+    },
+    {
+      "code": "UNSOURCED_CLAIM",
+      "severity": "error",
+      "doc": "exec_summary_BAD.md",
+      "line_no": 11,
+      "message": "this statement asserts a quantity or a difference and cites no finding; it cannot be traced to anything",
+      "excerpt": "Deployment has become significantly faster over the review window.",
+      "term": ""
+    },
+    {
+      "code": "PROMOTIONAL_LANGUAGE",
+      "severity": "error",
+      "doc": "exec_summary_BAD.md",
+      "line_no": 12,
+      "message": "tier C term 'ensures': asserts a guarantee; needs evidence or a source",
+      "excerpt": "The team's engineering culture is exceptional and ensures reliability across the estate.",
+      "term": "ensures"
+    },
+    {
+      "code": "PROMOTIONAL_LANGUAGE",
+      "severity": "error",
+      "doc": "exec_summary_BAD.md",
+      "line_no": 12,
+      "message": "tier B term 'exceptional': evaluative adjective with no magnitude",
+      "excerpt": "The team's engineering culture is exceptional and ensures reliability across the estate.",
+      "term": "exceptional"
+    },
+    {
+      "code": "UNKNOWN_PRESENTED_AS_FINDING",
+      "severity": "error",
+      "doc": "exec_summary_BAD.md",
+      "line_no": 16,
+      "message": "this statement asserts a figure while citing F-SYN-003, whose recorded state is UNKNOWN; the citation resolves but cannot support a number",
+      "excerpt": "IAM restoration completes in under 4 hours [F-SYN-003].",
+      "term": "F-SYN-003"
+    },
+    {
+      "code": "CONTRADICTED_FINDING_CITED_AS_SUPPORT",
+      "severity": "error",
+      "doc": "exec_summary_BAD.md",
+      "line_no": 17,
+      "message": "F-SYN-005 is recorded as CONTRADICTED and is cited here in a sentence framed as support",
+      "excerpt": "All services have runbooks, as the evidence demonstrates [F-SYN-005].",
+      "term": "F-SYN-005"
+    },
+    {
+      "code": "UNQUANTIFIED_COMPARATIVE",
+      "severity": "error",
+      "doc": "exec_summary_BAD.md",
+      "line_no": 18,
+      "message": "'improved' claims a difference without stating its size; a delta with no number cannot be checked",
+      "excerpt": "Alert routing has improved.",
+      "term": "improved"
+    },
+    {
+      "code": "UNSOURCED_CLAIM",
+      "severity": "error",
+      "doc": "exec_summary_BAD.md",
+      "line_no": 18,
+      "message": "this statement asserts a quantity or a difference and cites no finding; it cannot be traced to anything",
+      "excerpt": "Alert routing has improved.",
+      "term": ""
+    },
+    {
+      "code": "ABSOLUTE_WITHOUT_SOURCE",
+      "severity": "warning",
+      "doc": "exec_summary_BAD.md",
+      "line_no": 19,
+      "message": "absolute 'every' with no citation; absolutes are the cheapest statement to disprove and the most expensive to withdraw",
+      "excerpt": "Every service owner we spoke to was engaged and capable.",
+      "term": "every"
+    },
+    {
+      "code": "DANGLING_CITATION",
+      "severity": "error",
+      "doc": "exec_summary_BAD.md",
+      "line_no": 20,
+      "message": "'F-SYN-999' is cited but is not in the register",
+      "excerpt": "Coverage of the AI inventory is extensive [F-SYN-999].",
+      "term": "F-SYN-999"
+    },
+    {
+      "code": "PROMOTIONAL_LANGUAGE",
+      "severity": "error",
+      "doc": "exec_summary_BAD.md",
+      "line_no": 20,
+      "message": "tier B term 'extensive': asserts breadth without stating coverage",
+      "excerpt": "Coverage of the AI inventory is extensive [F-SYN-999].",
+      "term": "extensive"
+    },
+    {
+      "code": "PROMOTIONAL_LANGUAGE",
+      "severity": "error",
+      "doc": "exec_summary_BAD.md",
+      "line_no": 24,
+      "message": "tier B term 'dramatically': intensifier with no magnitude",
+      "excerpt": "Adopting the recommendations below will dramatically improve operational maturity.",
+      "term": "dramatically"
+    },
+    {
+      "code": "PROMOTIONAL_LANGUAGE",
+      "severity": "error",
+      "doc": "exec_summary_BAD.md",
+      "line_no": 25,
+      "message": "tier A term 'seamless': asserts an absence of friction that was not measured",
+      "excerpt": "A seamless, turnkey rollout is achievable within one quarter.",
+      "term": "seamless"
+    },
+    {
+      "code": "PROMOTIONAL_LANGUAGE",
+      "severity": "error",
+      "doc": "exec_summary_BAD.md",
+      "line_no": 25,
+      "message": "tier A term 'turnkey': asserts an absence of integration work that was not measured",
+      "excerpt": "A seamless, turnkey rollout is achievable within one quarter.",
+      "term": "turnkey"
+    },
+    {
+      "code": "PROMOTIONAL_LANGUAGE",
+      "severity": "error",
+      "doc": "exec_summary_BAD.md",
+      "line_no": 26,
+      "message": "tier C term 'guarantee': asserts a guarantee; needs evidence or a source",
+      "excerpt": "These steps are proven and guarantee a measurable reduction in incident volume.",
+      "term": "guarantee"
+    },
+    {
+      "code": "PROMOTIONAL_LANGUAGE",
+      "severity": "error",
+      "doc": "exec_summary_BAD.md",
+      "line_no": 26,
+      "message": "tier C term 'proven': asserts prior proof without naming it",
+      "excerpt": "These steps are proven and guarantee a measurable reduction in incident volume.",
+      "term": "proven"
+    },
+    {
+      "code": "EMPTY_SUPPRESSION",
+      "severity": "error",
+      "doc": "exec_summary_BAD.md",
+      "line_no": 27,
+      "message": "this line suppresses the audit without giving a reason; a suppression with no recorded justification is an unaudited claim wearing a green check",
+      "excerpt": "Prioritisation was straightforward. <!-- audit-ok: -->",
+      "term": ""
+    }
+  ]
+}

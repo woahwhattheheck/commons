@@ -1,0 +1,32 @@
+{
+  "synthetic": true,
+  "_fiction_notice": "Fictional finding register. No University of Iowa finding, service, measurement or team appears here.",
+  "findings": [
+    {"id": "F-SYN-001", "state": "SUPPORTED",
+     "statement": "58% of sampled ESS change records carry a single approval.",
+     "evidence": ["E-SYN-011", "E-SYN-012"]},
+    {"id": "F-SYN-002", "state": "SUPPORTED",
+     "statement": "RIS median deployment lead time moved from 6.1 days to 4.2 days across the sampled window.",
+     "evidence": ["E-SYN-021"]},
+    {"id": "F-SYN-003", "state": "UNKNOWN",
+     "statement": "IAM restoration time is not established: no restoration exercise is recorded in the supplied evidence.",
+     "evidence": []},
+    {"id": "F-SYN-004", "state": "PARTIAL",
+     "statement": "2 of 9 sampled services have no recorded alert-routing owner.",
+     "evidence": ["E-SYN-031"]},
+    {"id": "F-SYN-005", "state": "CONTRADICTED",
+     "statement": "The stated position that every service has a runbook is contradicted by the supplied inventory.",
+     "evidence": ["E-SYN-041", "E-SYN-042"]},
+    {"id": "F-SYN-006", "state": "SUPPORTED",
+     "statement": "3 of 11 teams report an active AI-assisted workflow with a named output.",
+     "evidence": ["E-SYN-051"]}
+  ],
+  "recommendations": [
+    {"id": "R-SYN-001", "state": "PROPOSED",
+     "statement": "Record an approval owner for each change category."},
+    {"id": "R-SYN-002", "state": "PROPOSED",
+     "statement": "Run one restoration exercise per tier-1 service and record the elapsed time."},
+    {"id": "R-SYN-003", "state": "PROPOSED",
+     "statement": "Assign an alert-routing owner to the 2 services currently without one."}
+  ]
+}
