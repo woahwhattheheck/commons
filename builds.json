@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 84,
+ "n_open_prs": 88,
  "open_prs": [
   {
    "number": 15629,
@@ -1473,22 +1473,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 16229,
-   "author": "woahwhattheheck",
-   "title": "UIOWA-063: executable release-recovery evidence assessment and tabletop kit",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/16229",
-   "base_freshness": {
-    "base_sha": "6c7470accaea560d0fb7563735016c5d9c477890",
-    "main_sha": "9a27c2521ffa943920fba696c26fb0814ae89d58",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 16221,
    "author": "woahwhattheheck",
    "title": "UIOWA-044: executable review-practice assessment and interview kit",
@@ -1569,22 +1553,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 16238,
-   "author": "woahwhattheheck",
-   "title": "UIOWA-079: executable AI lifecycle and observability assessment",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/16238",
-   "base_freshness": {
-    "base_sha": "6c7470accaea560d0fb7563735016c5d9c477890",
-    "main_sha": "9a27c2521ffa943920fba696c26fb0814ae89d58",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 16248,
    "author": "woahwhattheheck",
    "title": "UIOWA-103: incremental-import identity conformance and mutation proof",
@@ -1649,22 +1617,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 16174,
-   "author": "woahwhattheheck",
-   "title": "feat(uiowa): receipt-bound multi-analyst review reconciliation",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/16174",
-   "base_freshness": {
-    "base_sha": "d91a7a5afa25a3f6ad82adff72e4bd7a2c3877d0",
-    "main_sha": "9a27c2521ffa943920fba696c26fb0814ae89d58",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 16235,
    "author": "woahwhattheheck",
    "title": "UIOWA-078: AI workflow economics, sensitivity and reproducible evidence kit",
@@ -1687,6 +1639,118 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/16152",
    "base_freshness": {
     "base_sha": "4c1a4bd447a19fd9c251c4bcdb656828bb7c790a",
+    "main_sha": "9a27c2521ffa943920fba696c26fb0814ae89d58",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 16174,
+   "author": "woahwhattheheck",
+   "title": "feat(uiowa): receipt-bound multi-analyst review reconciliation",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/16174",
+   "base_freshness": {
+    "base_sha": "d91a7a5afa25a3f6ad82adff72e4bd7a2c3877d0",
+    "main_sha": "9a27c2521ffa943920fba696c26fb0814ae89d58",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 16252,
+   "author": "woahwhattheheck",
+   "title": "UIOWA-076: evidence-linked AI coding workflow assessment and executable rehearsal",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/16252",
+   "base_freshness": {
+    "base_sha": "d301fb4b1cf382966cf5f5b2884624d8f95fa2d6",
+    "main_sha": "9a27c2521ffa943920fba696c26fb0814ae89d58",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 16253,
+   "author": "woahwhattheheck",
+   "title": "UIOWA-119: portable citation verifier and checked traceability bundle",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/16253",
+   "base_freshness": {
+    "base_sha": "26d86396285708d64df80219d5eed68ece10cb0e",
+    "main_sha": "9a27c2521ffa943920fba696c26fb0814ae89d58",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 16254,
+   "author": "woahwhattheheck",
+   "title": "UIOWA-120: source-version impact analysis and dependent-artifact review queue",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/16254",
+   "base_freshness": {
+    "base_sha": "26d86396285708d64df80219d5eed68ece10cb0e",
+    "main_sha": "9a27c2521ffa943920fba696c26fb0814ae89d58",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 16255,
+   "author": "woahwhattheheck",
+   "title": "UIOWA-096: independent workbench/compiler interchange compatibility and loss oracle",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/16255",
+   "base_freshness": {
+    "base_sha": "26d86396285708d64df80219d5eed68ece10cb0e",
+    "main_sha": "9a27c2521ffa943920fba696c26fb0814ae89d58",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 16256,
+   "author": "woahwhattheheck",
+   "title": "fix(uiowa-050): preserve handoff follow-ups and reject ambiguous/malformed packets",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/16256",
+   "base_freshness": {
+    "base_sha": "26d86396285708d64df80219d5eed68ece10cb0e",
+    "main_sha": "9a27c2521ffa943920fba696c26fb0814ae89d58",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 16229,
+   "author": "woahwhattheheck",
+   "title": "UIOWA-063: executable release-recovery evidence assessment and tabletop kit",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/16229",
+   "base_freshness": {
+    "base_sha": "6c7470accaea560d0fb7563735016c5d9c477890",
     "main_sha": "9a27c2521ffa943920fba696c26fb0814ae89d58",
     "ahead_by": null,
     "behind_by": null,
