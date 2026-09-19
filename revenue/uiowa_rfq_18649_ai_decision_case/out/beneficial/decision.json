@@ -1,0 +1,124 @@
+{
+  "decision": {
+    "case_id": "CASE-SYN-ESS-CHANGE-MEMO",
+    "verdict": "BENEFICIAL",
+    "reasons": [
+      "the whole declared assumption range keeps net value above zero"
+    ],
+    "headline_generation_speedup_x": 15.75,
+    "net_minutes_per_document": {
+      "low": 70.0,
+      "mid": 82.25,
+      "high": 89.0
+    },
+    "net_money_over_horizon": {
+      "low": 17640.0,
+      "high": 58740.0
+    },
+    "baseline": {
+      "documents": 4,
+      "evidence_gaps": [],
+      "mean_pre_acceptance_minutes": 120.75,
+      "mean_post_acceptance_minutes": 3.0,
+      "mean_generation_minutes": 94.5,
+      "mean_total_minutes": 123.75,
+      "min_total_minutes": 118.0,
+      "max_total_minutes": 128.0,
+      "documents_measured_for_quality": 4,
+      "mean_completeness": 0.96,
+      "fabricated_references_total": 0,
+      "documents_with_fabrications": []
+    },
+    "assisted": {
+      "documents": 4,
+      "evidence_gaps": [],
+      "mean_pre_acceptance_minutes": 39.0,
+      "mean_post_acceptance_minutes": 2.5,
+      "mean_generation_minutes": 6.0,
+      "mean_total_minutes": 41.5,
+      "min_total_minutes": 39.0,
+      "max_total_minutes": 48.0,
+      "documents_measured_for_quality": 4,
+      "mean_completeness": 0.9,
+      "fabricated_references_total": 0,
+      "documents_with_fabrications": []
+    },
+    "quality_risk": false
+  },
+  "explanation_audit": {
+    "passed": true,
+    "problems": [],
+    "checked_lines_rule": "every line stating a quantity must cite a record id, and every cited id must resolve to a record in this case"
+  },
+  "assumption_classification": [
+    {
+      "assumption": "analyst_hourly_cost",
+      "id": "ASM-B-001",
+      "declared_range": [
+        70.0,
+        110.0
+      ],
+      "basis": "ASSUMED",
+      "classification": "SCALES_ONLY",
+      "verdict_at_low": "BENEFICIAL",
+      "verdict_at_high": "BENEFICIAL",
+      "net_money_at_low": [
+        17640.0,
+        58740.0
+      ],
+      "net_money_at_high": [
+        17640.0,
+        58740.0
+      ],
+      "note": "varying this assumption across its own declared range changes the size of the result but never its sign"
+    },
+    {
+      "assumption": "documents_per_month",
+      "id": "ASM-B-002",
+      "declared_range": [
+        18.0,
+        30.0
+      ],
+      "basis": "ASSUMED",
+      "classification": "SCALES_ONLY",
+      "verdict_at_low": "BENEFICIAL",
+      "verdict_at_high": "BENEFICIAL",
+      "net_money_at_low": [
+        17640.0,
+        58740.0
+      ],
+      "net_money_at_high": [
+        17640.0,
+        58740.0
+      ],
+      "note": "varying this assumption across its own declared range changes the size of the result but never its sign"
+    },
+    {
+      "assumption": "evaluation_horizon_months",
+      "id": "ASM-B-003",
+      "declared_range": [
+        12.0,
+        12.0
+      ],
+      "basis": "ASSUMED",
+      "classification": "SCALES_ONLY",
+      "verdict_at_low": "BENEFICIAL",
+      "verdict_at_high": "BENEFICIAL",
+      "net_money_at_low": [
+        17640.0,
+        58740.0
+      ],
+      "net_money_at_high": [
+        17640.0,
+        58740.0
+      ],
+      "note": "varying this assumption across its own declared range changes the size of the result but never its sign"
+    }
+  ],
+  "verdict_margin": {
+    "nominal_verdict": "BENEFICIAL",
+    "flip_delta_minutes": 70.01,
+    "flip_to": "NET_VALUE_UNCERTAIN",
+    "note": "the BENEFICIAL verdict survives a change of 69.98 minutes per assisted document in this direction; beyond that it becomes NET_VALUE_UNCERTAIN"
+  }
+}

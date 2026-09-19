@@ -1,0 +1,14 @@
+{
+  "case_id": "CASE-SYN-MALFORMED",
+  "synthetic": true,
+  "_fiction_notice": "Hostile fixture. Exists only so the loader's failure behaviour is tested rather than assumed.",
+  "workflow": "Deliberately broken case (SYNTHETIC)",
+  "assumptions": [],
+  "documents": [
+    {"id": "DOC-M-1", "variant": "BASELINE", "events": [
+      {"id": "EVT-M-1", "kind": "AUTHOR", "minutes": 10, "day": 1}]}
+  ],
+  "quality_measurements": [
+    {"id": "QM-M-1", "document_id": "DOC-DOES-NOT-EXIST", "required_elements": 5, "correct_elements": 5, "fabricated_references": 0}
+  ]
+}

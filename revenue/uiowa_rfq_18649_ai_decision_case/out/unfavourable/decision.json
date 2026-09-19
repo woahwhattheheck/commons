@@ -1,0 +1,129 @@
+{
+  "decision": {
+    "case_id": "CASE-SYN-RIS-VENDOR-SUMMARY",
+    "verdict": "UNFAVOURABLE",
+    "reasons": [
+      "the whole declared assumption range keeps net value below zero"
+    ],
+    "headline_generation_speedup_x": 22.0,
+    "net_minutes_per_document": {
+      "low": -33.0,
+      "mid": -14.0,
+      "high": -3.0
+    },
+    "net_money_over_horizon": {
+      "low": -21780.0,
+      "high": -756.0
+    },
+    "baseline": {
+      "documents": 4,
+      "evidence_gaps": [],
+      "mean_pre_acceptance_minutes": 109.5,
+      "mean_post_acceptance_minutes": 0.0,
+      "mean_generation_minutes": 88.0,
+      "mean_total_minutes": 109.5,
+      "min_total_minutes": 106.0,
+      "max_total_minutes": 113.0,
+      "documents_measured_for_quality": 4,
+      "mean_completeness": 0.96,
+      "fabricated_references_total": 0,
+      "documents_with_fabrications": []
+    },
+    "assisted": {
+      "documents": 4,
+      "evidence_gaps": [],
+      "mean_pre_acceptance_minutes": 81.75,
+      "mean_post_acceptance_minutes": 41.75,
+      "mean_generation_minutes": 4.0,
+      "mean_total_minutes": 123.5,
+      "min_total_minutes": 116.0,
+      "max_total_minutes": 139.0,
+      "documents_measured_for_quality": 4,
+      "mean_completeness": 0.75,
+      "fabricated_references_total": 8,
+      "documents_with_fabrications": [
+        "DOC-U-A1",
+        "DOC-U-A2",
+        "DOC-U-A3",
+        "DOC-U-A4"
+      ]
+    },
+    "quality_risk": true
+  },
+  "explanation_audit": {
+    "passed": true,
+    "problems": [],
+    "checked_lines_rule": "every line stating a quantity must cite a record id, and every cited id must resolve to a record in this case"
+  },
+  "assumption_classification": [
+    {
+      "assumption": "analyst_hourly_cost",
+      "id": "ASM-U-001",
+      "declared_range": [
+        70.0,
+        110.0
+      ],
+      "basis": "ASSUMED",
+      "classification": "SCALES_ONLY",
+      "verdict_at_low": "UNFAVOURABLE",
+      "verdict_at_high": "UNFAVOURABLE",
+      "net_money_at_low": [
+        -21780.0,
+        -756.0
+      ],
+      "net_money_at_high": [
+        -21780.0,
+        -756.0
+      ],
+      "note": "varying this assumption across its own declared range changes the size of the result but never its sign"
+    },
+    {
+      "assumption": "documents_per_month",
+      "id": "ASM-U-002",
+      "declared_range": [
+        18.0,
+        30.0
+      ],
+      "basis": "ASSUMED",
+      "classification": "SCALES_ONLY",
+      "verdict_at_low": "UNFAVOURABLE",
+      "verdict_at_high": "UNFAVOURABLE",
+      "net_money_at_low": [
+        -21780.0,
+        -756.0
+      ],
+      "net_money_at_high": [
+        -21780.0,
+        -756.0
+      ],
+      "note": "varying this assumption across its own declared range changes the size of the result but never its sign"
+    },
+    {
+      "assumption": "evaluation_horizon_months",
+      "id": "ASM-U-003",
+      "declared_range": [
+        12.0,
+        12.0
+      ],
+      "basis": "ASSUMED",
+      "classification": "SCALES_ONLY",
+      "verdict_at_low": "UNFAVOURABLE",
+      "verdict_at_high": "UNFAVOURABLE",
+      "net_money_at_low": [
+        -21780.0,
+        -756.0
+      ],
+      "net_money_at_high": [
+        -21780.0,
+        -756.0
+      ],
+      "note": "varying this assumption across its own declared range changes the size of the result but never its sign"
+    }
+  ],
+  "verdict_margin": {
+    "nominal_verdict": "UNFAVOURABLE",
+    "flip_delta_minutes": -3.02,
+    "flip_to": "NET_VALUE_UNCERTAIN",
+    "note": "the UNFAVOURABLE verdict survives a change of -2.99 minutes per assisted document in this direction; beyond that it becomes NET_VALUE_UNCERTAIN"
+  }
+}
