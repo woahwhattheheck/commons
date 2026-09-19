@@ -22,6 +22,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+import conformance
 import make_fixtures as mf
 import release_recovery_case as rrc
 
@@ -289,11 +290,20 @@ class TestRecoveryClaimSupport(unittest.TestCase):
         self.assertEqual(svc["restoration_status"], "PARTIAL")
 
     def test_dangling_source_id_downgrades_rather_than_passes(self):
+        """A backup citing an id that does not resolve is not evidenced backup.
+
+        Restoration still reads DEMONSTRATED here, and that is deliberate: it is
+        UIOWA-068's ladder, which excludes backup on purpose because a backup does
+        not demonstrate a restoration. Re-deciding that here would be exactly the
+        cross-component drift this kit exists to prevent. The downgrade lands on
+        `backup_status`, where it belongs.
+        """
         report = rrc.assess(load_fixture("unresolved-source-id"))
         svc = next(s for s in report["recovery"]["services"]
                    if s["service_id"] == "SVC-IAM")
-        self.assertEqual(svc["backup_status"], "UNKNOWN")
-        self.assertNotEqual(svc["restoration_status"], "DEMONSTRATED")
+        self.assertEqual(svc["backup_status"], "PARTIAL")
+        self.assertIn("UNRESOLVED_SOURCE_ID", codes(report))
+        self.assertTrue(any("not evidenced" in g for g in svc["gaps"]))
 
     def test_interview_only_evidence_stays_unknown(self):
         """UIOWA-057's rule, consumed rather than re-litigated."""
@@ -304,7 +314,7 @@ class TestRecoveryClaimSupport(unittest.TestCase):
         report = assess_dict(case)
         svc = next(s for s in report["recovery"]["services"]
                    if s["service_id"] == "SVC-IAM")
-        self.assertEqual(svc["backup_status"], "UNKNOWN")
+        self.assertEqual(svc["backup_status"], "PARTIAL")
         self.assertTrue(any("interview" in g for g in svc["gaps"]))
 
     def test_restoration_status_cannot_be_asserted_by_the_input(self):
@@ -375,7 +385,8 @@ class TestNarrativeCase(unittest.TestCase):
         svc = next(s for s in self.report["recovery"]["services"]
                    if s["service_id"] == "SVC-RIS")
         self.assertEqual(svc["restoration_status"], "PARTIAL")
-        self.assertEqual(svc["dependency_verification"], "UNKNOWN")
+        # UIOWA-068's word for "some dependency verification is missing".
+        self.assertEqual(svc["dependency_verification"], "PARTIAL")
         self.assertTrue(svc["gaps"])
         self.assertIn("UNSUPPORTED_RECOVERY_CLAIM", codes(self.report))
 
@@ -630,7 +641,12 @@ class TestDeterminismAndCli(unittest.TestCase):
         self.assertGreater(len(csv_text.splitlines()), 5)
 
     def test_markdown_escapes_pipes_so_the_table_survives(self):
-        """A pipe in an identifier must not shift every later table column."""
+        """A pipe in an identifier must not shift every later table column.
+
+        Asserted structurally against each table's own header rather than a
+        hard-coded column count, so adding a column cannot silently retire the
+        guard.
+        """
         case = mf.clean_case()
         case["release"]["deployment"]["environment"] = "ess|prod"
         case["environments"][0]["environment_id"] = "ess|prod"
@@ -638,15 +654,153 @@ class TestDeterminismAndCli(unittest.TestCase):
         report = assess_dict(case)
         self.assertEqual(report["findings"], [],
                          "renaming an environment should not create findings")
-        md = rrc.render_markdown(report)
-        rows = [l for l in md.splitlines()
-                if l.startswith("| `VER-") or l.startswith("| `SVC-")]
-        self.assertTrue(rows, "no table rows rendered")
-        for line in rows:
-            # A correctly escaped row has only its own structural pipes.
-            unescaped = line.replace("\\|", "")
-            self.assertIn(unescaped.count("|"), (6, 8),
-                          f"unescaped pipe shifted a row: {line}")
+        # The clean case has an empty findings table, so also render a case that
+        # populates it -- that table renders operator-supplied subjects.
+        piped = mf.narrative_case()
+        piped["release"]["deployment"]["environment"] = "ess|prod"
+        piped["environments"].append(
+            {"environment_id": "ess|prod", "purpose": "fictional piped-name environment"})
+        md = rrc.render_markdown(report) + "\n" + rrc.render_markdown(assess_dict(piped))
+
+        def cells(line):
+            return len(line.replace("\\|", "").split("|"))
+
+        checked, header = 0, None
+        for line in md.splitlines():
+            stripped = line.strip()
+            if not stripped.startswith("|"):
+                header = None
+                continue
+            if set(stripped) <= set("|-: "):      # the |---|---| separator
+                continue
+            if header is None:
+                header = cells(line)
+                continue
+            self.assertEqual(cells(line), header,
+                             f"unescaped pipe shifted a row: {line}")
+            checked += 1
+        self.assertGreater(checked, 8, "too few data rows were checked")
+
+
+class TestRtoSemantics(unittest.TestCase):
+    """RTO runs to business-function verification, not technical restore.
+
+    This was a real shipped defect. It survived the first round because the
+    projections were checked for field NAMES and never executed through
+    UIOWA-068. These assertions pin the semantics directly.
+    """
+
+    def setUp(self):
+        self.report = rrc.assess(rrc.load_case(os.path.join(HERE, "case.json")))
+
+    def test_rto_is_measured_to_business_verification(self):
+        svc = next(s for s in self.report["recovery"]["services"]
+                   if s["service_id"] == "SVC-ESS")
+        # disruption 22:20 -> business verified 23:25 == 65 minutes.
+        self.assertEqual(svc["observed_rto_minutes"], 65)
+        # The technical restore finished at 23:10 == 50 minutes. Reported, not RTO.
+        self.assertEqual(svc["observed_technical_restore_minutes"], 50)
+        self.assertNotEqual(svc["observed_rto_minutes"],
+                            svc["observed_technical_restore_minutes"])
+
+    def test_rto_is_unknown_without_business_verification(self):
+        """A technical restore time must never be promoted into an RTO."""
+        svc = next(s for s in self.report["recovery"]["services"]
+                   if s["service_id"] == "SVC-RIS")
+        self.assertIsNone(svc["observed_rto_minutes"])
+        self.assertEqual(svc["rto_result"], "UNKNOWN")
+        self.assertEqual(svc["observed_technical_restore_minutes"], 80)
+        self.assertTrue(any("NOT" in g and "RTO" in g for g in svc["gaps"]))
+
+
+class TestSiblingConformance(unittest.TestCase):
+    """The harness that would have caught the RTO defect."""
+
+    def test_conforms_against_the_live_siblings(self):
+        if not conformance.siblings_available():
+            self.skipTest("sibling lanes not present next to this one; conformance "
+                          "cannot be established from here and is not assumed")
+        result = conformance.run()
+        self.assertEqual(result["status"], "CONFORMS",
+                         f"divergences: {result['problems']}")
+        self.assertGreater(result["summary"]["comparisons"], 0)
+        self.assertTrue(result["boundary"]["siblings_executed"])
+        self.assertFalse(result["boundary"]["expected_values_hard_coded"])
+
+    def test_absent_sibling_reports_not_run_and_never_conforms(self):
+        """A skip must not be readable as a pass."""
+        original = conformance.PROVENANCE_LANE
+        try:
+            conformance.PROVENANCE_LANE = os.path.join(HERE, "no-such-lane")
+            result = conformance.run()
+        finally:
+            conformance.PROVENANCE_LANE = original
+        self.assertEqual(result["status"], "NOT_RUN")
+        self.assertNotEqual(result["status"], "CONFORMS")
+        self.assertIn("NOT assumed", result["reason"])
+
+    # --- ladder logic. LOOSER and UNDECLARED are not reachable end-to-end
+    # --- without injecting a bug, so they are exercised directly.
+
+    @staticmethod
+    def _pair(field, mine_value, sibling_value):
+        mine = {"recovery": {"services": [{
+            "service_id": "SVC-X", "observed_rpo_minutes": None,
+            "observed_rto_minutes": None, "rpo_result": "UNKNOWN",
+            "rto_result": "UNKNOWN", "backup_status": "EVIDENCED",
+            "restoration_status": "DEMONSTRATED",
+            "dependency_verification": "NOT_APPLICABLE",
+            "business_verification": "EVIDENCED"}]}}
+        mine["recovery"]["services"][0][field] = mine_value
+        theirs = {"services": [dict(mine["recovery"]["services"][0])]}
+        theirs["services"][0][field] = sibling_value
+        return mine, theirs
+
+    def test_looser_claim_than_the_sibling_is_always_a_problem(self):
+        mine, theirs = self._pair("backup_status", "EVIDENCED", "PARTIAL")
+        _rows, problems = conformance.compare_recovery(mine, theirs, "T")
+        self.assertEqual([p["code"] for p in problems], ["LOOSER_THAN_SIBLING"])
+
+    def test_stricter_claim_is_allowed_only_when_declared(self):
+        mine, theirs = self._pair("backup_status", "PARTIAL", "EVIDENCED")
+        rows, problems = conformance.compare_recovery(mine, theirs, "T")
+        self.assertEqual(problems, [])
+        self.assertIn("STRICTER_DECLARED", [r["verdict"] for r in rows])
+
+    def test_undeclared_stricter_divergence_is_a_problem(self):
+        mine, theirs = self._pair("backup_status", "PARTIAL", "EVIDENCED")
+        original = conformance.DECLARED_DIVERGENCES
+        try:
+            conformance.DECLARED_DIVERGENCES = {}
+            _rows, problems = conformance.compare_recovery(mine, theirs, "T")
+        finally:
+            conformance.DECLARED_DIVERGENCES = original
+        self.assertEqual([p["code"] for p in problems], ["UNDECLARED_DIVERGENCE"])
+
+    def test_numeric_disagreement_is_always_a_problem(self):
+        mine, theirs = self._pair("observed_rto_minutes", 50, 65.0)
+        _rows, problems = conformance.compare_recovery(mine, theirs, "T")
+        self.assertEqual([p["code"] for p in problems], ["NUMERIC_DISAGREEMENT"])
+        self.assertIn("50", problems[0]["detail"])
+        self.assertIn("65.0", problems[0]["detail"])
+
+    def test_equal_numbers_of_different_types_agree(self):
+        """int 65 and float 65.0 are the same measurement, not a divergence."""
+        mine, theirs = self._pair("observed_rto_minutes", 65, 65.0)
+        _rows, problems = conformance.compare_recovery(mine, theirs, "T")
+        self.assertEqual(problems, [])
+
+    def test_target_results_are_compared_exactly_not_as_a_ladder(self):
+        """MEETS_TARGET vs UNKNOWN is a disagreement, never 'stricter'."""
+        mine, theirs = self._pair("rto_result", "MEETS_TARGET", "UNKNOWN")
+        _rows, problems = conformance.compare_recovery(mine, theirs, "T")
+        self.assertEqual([p["code"] for p in problems], ["RESULT_DISAGREEMENT"])
+
+    def test_service_missing_from_the_sibling_is_reported(self):
+        mine, theirs = self._pair("backup_status", "EVIDENCED", "EVIDENCED")
+        theirs["services"] = []
+        _rows, problems = conformance.compare_recovery(mine, theirs, "T")
+        self.assertEqual([p["code"] for p in problems], ["SERVICE_MISSING_FROM_SIBLING"])
 
 
 if __name__ == "__main__":

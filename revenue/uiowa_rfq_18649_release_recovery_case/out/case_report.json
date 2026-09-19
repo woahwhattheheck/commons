@@ -96,16 +96,18 @@
         "last_successful_backup_at": "2026-09-17T21:30:00+00:00",
         "name": "Synthetic employee self-service",
         "observed_rpo_minutes": 50,
-        "observed_rto_minutes": 50,
+        "observed_rto_minutes": 65,
+        "observed_technical_restore_minutes": 50,
         "restoration_status": "DEMONSTRATED",
         "rpo_result": "MEETS_TARGET",
         "rto_result": "MEETS_TARGET",
         "service_id": "SVC-ESS",
         "target_rpo_minutes": 60,
-        "target_rto_minutes": 120
+        "target_rto_minutes": 120,
+        "technical_restore_completed_at": "2026-09-17T23:10:00+00:00"
       },
       {
-        "backup_status": "UNKNOWN",
+        "backup_status": "PARTIAL",
         "business_function": "Authenticate users to in-scope services",
         "business_verification": "NOT_EVIDENCED",
         "dependencies": [],
@@ -119,12 +121,14 @@
         "name": "Synthetic sign-in",
         "observed_rpo_minutes": null,
         "observed_rto_minutes": null,
+        "observed_technical_restore_minutes": null,
         "restoration_status": "NOT_DEMONSTRATED",
         "rpo_result": "UNKNOWN",
         "rto_result": "UNKNOWN",
         "service_id": "SVC-IAM",
         "target_rpo_minutes": 60,
-        "target_rto_minutes": 60
+        "target_rto_minutes": 60,
+        "technical_restore_completed_at": null
       },
       {
         "backup_status": "EVIDENCED",
@@ -133,22 +137,25 @@
         "dependencies": [
           "SVC-ESS"
         ],
-        "dependency_verification": "UNKNOWN",
+        "dependency_verification": "PARTIAL",
         "exercise_id": "EX-SYN-RIS-01",
         "gaps": [
-          "dependency SVC-ESS verification claimed but unsupported: no observed verification time",
-          "business-function verification was not attempted in the records; it stays NOT_EVIDENCED"
+          "business-function verification was not attempted in the records; it stays NOT_EVIDENCED",
+          "observed RTO cannot be computed: it runs to business-function verification, which is not recorded here. The technical restore time is reported separately and is NOT an RTO",
+          "dependency SVC-ESS verification claimed but unsupported: no observed verification time"
         ],
         "last_successful_backup_at": "2026-09-17T21:00:00+00:00",
         "name": "Synthetic research submission",
         "observed_rpo_minutes": 80,
-        "observed_rto_minutes": 80,
+        "observed_rto_minutes": null,
+        "observed_technical_restore_minutes": 80,
         "restoration_status": "PARTIAL",
         "rpo_result": "EXCEEDS_TARGET",
-        "rto_result": "MEETS_TARGET",
+        "rto_result": "UNKNOWN",
         "service_id": "SVC-RIS",
         "target_rpo_minutes": 60,
-        "target_rto_minutes": 120
+        "target_rto_minutes": 120,
+        "technical_restore_completed_at": "2026-09-17T23:40:00+00:00"
       }
     ]
   },

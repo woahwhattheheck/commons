@@ -24,11 +24,11 @@
 
 ## 3. Recovery evidence (UIOWA-068 ladder)
 
-| Service | Backup | Restoration | Observed RPO | Observed RTO | Dependencies | Business function |
-|---|---|---|---|---|---|---|
-| `SVC-ESS` | EVIDENCED | **DEMONSTRATED** | 50 min (MEETS_TARGET) | 50 min (MEETS_TARGET) | EVIDENCED | EVIDENCED |
-| `SVC-IAM` | UNKNOWN | **NOT_DEMONSTRATED** | UNKNOWN | UNKNOWN | NOT_APPLICABLE | NOT_EVIDENCED |
-| `SVC-RIS` | EVIDENCED | **PARTIAL** | 80 min (EXCEEDS_TARGET) | 80 min (MEETS_TARGET) | UNKNOWN | NOT_EVIDENCED |
+| Service | Backup | Restoration | Observed RPO | Observed RTO (to business verification) | Technical restore | Dependencies | Business function |
+|---|---|---|---|---|---|---|---|
+| `SVC-ESS` | EVIDENCED | **DEMONSTRATED** | 50 min (MEETS_TARGET) | 65 min (MEETS_TARGET) | 50 min | EVIDENCED | EVIDENCED |
+| `SVC-IAM` | PARTIAL | **NOT_DEMONSTRATED** | UNKNOWN | UNKNOWN | UNKNOWN | NOT_APPLICABLE | NOT_EVIDENCED |
+| `SVC-RIS` | EVIDENCED | **PARTIAL** | 80 min (EXCEEDS_TARGET) | UNKNOWN | 80 min | PARTIAL | NOT_EVIDENCED |
 
 **`SVC-IAM` evidence gaps**
 
@@ -37,8 +37,9 @@
 
 **`SVC-RIS` evidence gaps**
 
-- dependency SVC-ESS verification claimed but unsupported: no observed verification time
 - business-function verification was not attempted in the records; it stays NOT_EVIDENCED
+- observed RTO cannot be computed: it runs to business-function verification, which is not recorded here. The technical restore time is reported separately and is NOT an RTO
+- dependency SVC-ESS verification claimed but unsupported: no observed verification time
 
 ## 4. Timeline agreement
 

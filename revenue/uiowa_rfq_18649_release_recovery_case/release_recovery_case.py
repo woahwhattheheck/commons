@@ -861,6 +861,23 @@ def check_recovery_claims(case, findings):
     evidence. Anything short of that is reported as an unsupported claim and the
     derived status is held down. The status is DERIVED here, never asserted by
     the input -- there is no field an input can set to claim DEMONSTRATED.
+
+    SEMANTICS ARE UIOWA-068'S, NOT NEWLY INVENTED ONES. This was a real defect,
+    found by actually executing `assess_recovery.py` on this kit's projection
+    instead of only matching its field names:
+
+        RTO is measured to BUSINESS-FUNCTION VERIFICATION, not to technical
+        restore completion.
+
+    Measuring to `restore_completed` reports a technical restore time as though
+    it were the recovery time -- precisely the conflation UIOWA-068 exists to
+    prevent. The technical restore instant is still reported, in its own field,
+    so nothing is lost; it just is not called RTO. `conformance.py` executes the
+    sibling tool and fails if these two ever drift apart again.
+
+    Where this kit is STRICTER than UIOWA-068 the divergence is declared in
+    `conformance.py` and checked for direction: stricter is allowed, looser is
+    never allowed.
     """
     services = {s["service_id"]: s for s in case["recovery"]["services"]}
     results = []
@@ -875,7 +892,12 @@ def check_recovery_claims(case, findings):
             "backup_status": "UNKNOWN", "restoration_status": "NOT_DEMONSTRATED",
             "observed_rpo_minutes": None, "rpo_result": "UNKNOWN",
             "observed_rto_minutes": None, "rto_result": "UNKNOWN",
-            "dependency_verification": "NOT_APPLICABLE" if not svc["dependencies"] else "UNKNOWN",
+            # Kept separate from RTO on purpose. A technical restore is not a
+            # business recovery, and collapsing the two is the defect above.
+            "technical_restore_completed_at": None,
+            "observed_technical_restore_minutes": None,
+            "dependency_verification": (
+                "NOT_APPLICABLE" if not svc["dependencies"] else "UNKNOWN"),
             "business_verification": "NOT_EVIDENCED", "gaps": [],
         }
 
@@ -893,9 +915,12 @@ def check_recovery_claims(case, findings):
         if bstate == "EVIDENCED" and btime is not None:
             row["backup_status"] = "EVIDENCED"
         else:
-            row["gaps"].append(f"backup completion not evidenced: {bwhy}"
-                               if bstate != "EVIDENCED"
-                               else "backup completion has no observed timestamp")
+            # UIOWA-068 accepts any non-empty evidence id here; this kit also
+            # requires the id to RESOLVE and not to be interview-only. Stricter.
+            row["backup_status"] = "PARTIAL"
+            row["gaps"].append(
+                f"backup completion not evidenced: {bwhy}" if bstate != "EVIDENCED"
+                else "backup completion has no observed timestamp")
         row["last_successful_backup_at"] = _iso(btime)
 
         ex = svc["exercise"]
@@ -904,6 +929,8 @@ def check_recovery_claims(case, findings):
             row["gaps"].append("no restoration exercise recorded; restoration is "
                                "NOT_DEMONSTRATED, which is an absence of evidence and "
                                "not a failed exercise")
+            if row["backup_status"] == "EVIDENCED":
+                row["gaps"].append("a successful backup does not demonstrate restoration")
             results.append(row)
             continue
         row["exercise_id"] = ex["exercise_id"]
@@ -911,79 +938,30 @@ def check_recovery_claims(case, findings):
         disruption = _resolved_time(case, ex["disruption"])
         restored_pit = _resolved_time(case, ex["restored_data_as_of"])
         restore_done = _resolved_time(case, ex["restore_completed"])
+        row["technical_restore_completed_at"] = _iso(restore_done)
 
         if restore_done is None:
             row["gaps"].append("restore completion has no observed timestamp; "
                                "restoration stays UNKNOWN rather than assumed complete")
 
-        # RPO / RTO are arithmetic over observed records only. Never estimated.
-        if disruption is not None and restored_pit is not None:
-            row["observed_rpo_minutes"] = int((disruption - restored_pit).total_seconds() // 60)
-            if svc["target_rpo_minutes"] is not None:
-                row["rpo_result"] = ("MEETS_TARGET"
-                                     if row["observed_rpo_minutes"] <= svc["target_rpo_minutes"]
-                                     else "EXCEEDS_TARGET")
-        else:
-            row["gaps"].append("observed RPO cannot be computed from the supplied records")
-        if disruption is not None and restore_done is not None:
-            row["observed_rto_minutes"] = int((restore_done - disruption).total_seconds() // 60)
-            if svc["target_rto_minutes"] is not None:
-                row["rto_result"] = ("MEETS_TARGET"
-                                     if row["observed_rto_minutes"] <= svc["target_rto_minutes"]
-                                     else "EXCEEDS_TARGET")
-        else:
-            row["gaps"].append("observed RTO cannot be computed from the supplied records")
-
-        # --- dependency verification claims ---------------------------------
-        if svc["dependencies"]:
-            claimed = {dr["dependency_id"]: dr for dr in ex["dependency_results"]}
-            verified = []
-            for dep_id in svc["dependencies"]:
-                dr = claimed.get(dep_id)
-                if dr is None:
-                    row["gaps"].append(f"dependency {dep_id} has no verification record")
-                    continue
-                state, why = _evidence_support(case, dr["evidence_id"])
-                when = _resolved_time(case, dr["verified"])
-                if state == "EVIDENCED" and when is not None:
-                    verified.append(dep_id)
-                else:
-                    reason = why if state != "EVIDENCED" else "no observed verification time"
-                    findings.append(_finding(
-                        "UNSUPPORTED_RECOVERY_CLAIM", f"{sid}:dependency:{dep_id}",
-                        f"service {sid!r} claims dependency {dep_id!r} was verified, but "
-                        f"the claim is not carried by a verification record ({reason}); "
-                        f"the claim is reported unsupported and does not raise the status",
-                        "recovery", cites=[dr["verified"]["event_id"]]))
-                    row["gaps"].append(f"dependency {dep_id} verification claimed but "
-                                       f"unsupported: {reason}")
-            for dr in ex["dependency_results"]:
-                if dr["dependency_id"] not in svc["dependencies"]:
-                    findings.append(_finding(
-                        "UNDECLARED_DEPENDENCY_RESULT", f"{sid}:{dr['dependency_id']}",
-                        f"service {sid!r} carries a verification result for "
-                        f"{dr['dependency_id']!r}, which it does not declare as a "
-                        f"dependency; the records disagree about the dependency set",
-                        "recovery"))
-            row["dependency_verification"] = (
-                "EVIDENCED" if len(verified) == len(svc["dependencies"]) else "UNKNOWN")
-
-        # --- business-function verification claim ---------------------------
+        # --- business-function verification claim (resolved FIRST: the RTO
+        #     clock and the dependency lateness check both depend on it) -------
+        biz_time = None
         if ex["business_verification"] is None:
             row["gaps"].append("business-function verification was not attempted in the "
                                "records; it stays NOT_EVIDENCED")
         else:
-            ref = ex["business_verification"]
-            event = case["events"].get(ref["event_id"])
-            when = _resolved_time(case, ref)
-            src_id = event["evidence_id"] if event else None
-            state, why = _evidence_support(case, src_id)
-            if event is None:
-                reason = f"event {ref['event_id']!r} is not in the shared event register"
-            elif when is None:
+            bref = ex["business_verification"]
+            bevent = case["events"].get(bref["event_id"])
+            biz_time = _resolved_time(case, bref)
+            bsrc = bevent["evidence_id"] if bevent else None
+            vstate, vwhy = _evidence_support(case, bsrc)
+            if bevent is None:
+                reason = f"event {bref['event_id']!r} is not in the shared event register"
+            elif biz_time is None:
                 reason = "the verification event has no observed timestamp"
-            elif state != "EVIDENCED":
-                reason = why
+            elif vstate != "EVIDENCED":
+                reason = vwhy
             else:
                 reason = None
             if reason is None:
@@ -995,21 +973,90 @@ def check_recovery_claims(case, findings):
                     f"recovery, but the claim is not carried by a verification record "
                     f"({reason}); business_verification is held at NOT_EVIDENCED and "
                     f"restoration cannot reach DEMONSTRATED on this record set",
-                    "recovery", cites=[ref["event_id"]]))
+                    "recovery", cites=[bref["event_id"]]))
                 row["gaps"].append(f"business-function verification claimed but "
                                    f"unsupported: {reason}")
 
-        # --- derived status (never asserted by the input) -------------------
-        complete = (row["backup_status"] == "EVIDENCED"
-                    and restore_done is not None
-                    and row["dependency_verification"] in ("EVIDENCED", "NOT_APPLICABLE")
-                    and row["business_verification"] == "EVIDENCED")
-        if complete:
-            row["restoration_status"] = "DEMONSTRATED"
-        elif restore_done is not None:
-            row["restoration_status"] = "PARTIAL"
+        # --- RPO / RTO: arithmetic over observed records only, never estimated
+        if disruption is not None and restored_pit is not None:
+            row["observed_rpo_minutes"] = int((disruption - restored_pit).total_seconds() // 60)
+            if svc["target_rpo_minutes"] is not None:
+                row["rpo_result"] = ("MEETS_TARGET"
+                                     if row["observed_rpo_minutes"] <= svc["target_rpo_minutes"]
+                                     else "EXCEEDS_TARGET")
         else:
-            row["restoration_status"] = "NOT_DEMONSTRATED"
+            row["gaps"].append("observed RPO cannot be computed from the supplied records")
+
+        # RTO runs to the BUSINESS-FUNCTION verification (UIOWA-068's definition).
+        if disruption is not None and biz_time is not None:
+            row["observed_rto_minutes"] = int((biz_time - disruption).total_seconds() // 60)
+            if svc["target_rto_minutes"] is not None:
+                row["rto_result"] = ("MEETS_TARGET"
+                                     if row["observed_rto_minutes"] <= svc["target_rto_minutes"]
+                                     else "EXCEEDS_TARGET")
+        else:
+            row["gaps"].append("observed RTO cannot be computed: it runs to business-"
+                               "function verification, which is not recorded here. The "
+                               "technical restore time is reported separately and is NOT "
+                               "an RTO")
+        if disruption is not None and restore_done is not None:
+            row["observed_technical_restore_minutes"] = int(
+                (restore_done - disruption).total_seconds() // 60)
+
+        # --- dependency verification claims ---------------------------------
+        if svc["dependencies"]:
+            claimed = {dr["dependency_id"]: dr for dr in ex["dependency_results"]}
+            missing, late = [], []
+            for dep_id in svc["dependencies"]:
+                dr = claimed.get(dep_id)
+                if dr is None:
+                    missing.append(dep_id)
+                    row["gaps"].append(f"dependency {dep_id} has no verification record")
+                    continue
+                state, why = _evidence_support(case, dr["evidence_id"])
+                when = _resolved_time(case, dr["verified"])
+                if state != "EVIDENCED" or when is None:
+                    missing.append(dep_id)
+                    reason = why if state != "EVIDENCED" else "no observed verification time"
+                    findings.append(_finding(
+                        "UNSUPPORTED_RECOVERY_CLAIM", f"{sid}:dependency:{dep_id}",
+                        f"service {sid!r} claims dependency {dep_id!r} was verified, but "
+                        f"the claim is not carried by a verification record ({reason}); "
+                        f"the claim is reported unsupported and does not raise the status",
+                        "recovery", cites=[dr["verified"]["event_id"]]))
+                    row["gaps"].append(f"dependency {dep_id} verification claimed but "
+                                       f"unsupported: {reason}")
+                elif biz_time is not None and when > biz_time:
+                    late.append(dep_id)
+            for dr in ex["dependency_results"]:
+                if dr["dependency_id"] not in svc["dependencies"]:
+                    findings.append(_finding(
+                        "UNDECLARED_DEPENDENCY_RESULT", f"{sid}:{dr['dependency_id']}",
+                        f"service {sid!r} carries a verification result for "
+                        f"{dr['dependency_id']!r}, which it does not declare as a "
+                        f"dependency; the records disagree about the dependency set",
+                        "recovery"))
+            if missing:
+                row["dependency_verification"] = "PARTIAL"
+            elif late:
+                # UIOWA-068's name for it; the ordering rule reports it too.
+                row["dependency_verification"] = "INCONSISTENT"
+                row["gaps"].append("dependency verified after business-function "
+                                   "verification: " + ", ".join(sorted(late)))
+            else:
+                row["dependency_verification"] = "EVIDENCED"
+
+        # --- derived status (never asserted by the input) -------------------
+        # Deliberately matches UIOWA-068: backup evidence is NOT part of this
+        # ladder, because a backup does not demonstrate a restoration. That is
+        # 068's design decision and re-deciding it here would be the drift this
+        # kit exists to prevent.
+        complete = (disruption is not None
+                    and restored_pit is not None
+                    and restore_done is not None
+                    and row["business_verification"] == "EVIDENCED"
+                    and row["dependency_verification"] in ("EVIDENCED", "NOT_APPLICABLE"))
+        row["restoration_status"] = "DEMONSTRATED" if complete else "PARTIAL"
         results.append(row)
     return results
 
@@ -1296,16 +1343,21 @@ def render_markdown(report):
 
     w("## 3. Recovery evidence (UIOWA-068 ladder)")
     w("")
-    w("| Service | Backup | Restoration | Observed RPO | Observed RTO | Dependencies | "
+    # Technical restore gets its own column so a reader cannot mistake it for the
+    # RTO. They are different measurements and the gap between them is the point.
+    w("| Service | Backup | Restoration | Observed RPO | Observed RTO "
+      "(to business verification) | Technical restore | Dependencies | "
       "Business function |")
-    w("|---|---|---|---|---|---|---|")
+    w("|---|---|---|---|---|---|---|---|")
     for svc in report["recovery"]["services"]:
         rpo = ("UNKNOWN" if svc["observed_rpo_minutes"] is None
                else f"{svc['observed_rpo_minutes']} min ({svc['rpo_result']})")
         rto = ("UNKNOWN" if svc["observed_rto_minutes"] is None
                else f"{svc['observed_rto_minutes']} min ({svc['rto_result']})")
+        tech = ("UNKNOWN" if svc["observed_technical_restore_minutes"] is None
+                else f"{svc['observed_technical_restore_minutes']} min")
         w(f"| `{_cell(svc['service_id'])}` | {_cell(svc['backup_status'])} | "
-          f"**{_cell(svc['restoration_status'])}** | {rpo} | {rto} | "
+          f"**{_cell(svc['restoration_status'])}** | {rpo} | {rto} | {tech} | "
           f"{_cell(svc['dependency_verification'])} | "
           f"{_cell(svc['business_verification'])} |")
     w("")

@@ -1,0 +1,1195 @@
+{
+  "boundary": {
+    "expected_values_hard_coded": false,
+    "looser_than_sibling_is_allowed": false,
+    "siblings_executed": true,
+    "stricter_than_sibling_is_allowed": true
+  },
+  "comparisons": [
+    {
+      "case": "SYN-109-ESS-RELEASE-01",
+      "field": "provenance.status",
+      "mine": "LINKED",
+      "service": "-",
+      "sibling": "GAPS",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ESS-RELEASE-01",
+      "field": "observed_rpo_minutes",
+      "mine": 50,
+      "service": "SVC-ESS",
+      "sibling": 50.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ESS-RELEASE-01",
+      "field": "observed_rto_minutes",
+      "mine": 65,
+      "service": "SVC-ESS",
+      "sibling": 65.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ESS-RELEASE-01",
+      "field": "rpo_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-ESS",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ESS-RELEASE-01",
+      "field": "rto_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-ESS",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ESS-RELEASE-01",
+      "field": "backup_status",
+      "mine": "EVIDENCED",
+      "service": "SVC-ESS",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ESS-RELEASE-01",
+      "field": "restoration_status",
+      "mine": "DEMONSTRATED",
+      "service": "SVC-ESS",
+      "sibling": "DEMONSTRATED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ESS-RELEASE-01",
+      "field": "dependency_verification",
+      "mine": "EVIDENCED",
+      "service": "SVC-ESS",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ESS-RELEASE-01",
+      "field": "business_verification",
+      "mine": "EVIDENCED",
+      "service": "SVC-ESS",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ESS-RELEASE-01",
+      "field": "observed_rpo_minutes",
+      "mine": null,
+      "service": "SVC-IAM",
+      "sibling": null,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ESS-RELEASE-01",
+      "field": "observed_rto_minutes",
+      "mine": null,
+      "service": "SVC-IAM",
+      "sibling": null,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ESS-RELEASE-01",
+      "field": "rpo_result",
+      "mine": "UNKNOWN",
+      "service": "SVC-IAM",
+      "sibling": "UNKNOWN",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ESS-RELEASE-01",
+      "field": "rto_result",
+      "mine": "UNKNOWN",
+      "service": "SVC-IAM",
+      "sibling": "UNKNOWN",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ESS-RELEASE-01",
+      "field": "backup_status",
+      "mine": "PARTIAL",
+      "service": "SVC-IAM",
+      "sibling": "EVIDENCED",
+      "verdict": "STRICTER_DECLARED"
+    },
+    {
+      "case": "SYN-109-ESS-RELEASE-01",
+      "field": "restoration_status",
+      "mine": "NOT_DEMONSTRATED",
+      "service": "SVC-IAM",
+      "sibling": "NOT_DEMONSTRATED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ESS-RELEASE-01",
+      "field": "dependency_verification",
+      "mine": "NOT_APPLICABLE",
+      "service": "SVC-IAM",
+      "sibling": "NOT_APPLICABLE",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ESS-RELEASE-01",
+      "field": "business_verification",
+      "mine": "NOT_EVIDENCED",
+      "service": "SVC-IAM",
+      "sibling": "NOT_EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ESS-RELEASE-01",
+      "field": "observed_rpo_minutes",
+      "mine": 80,
+      "service": "SVC-RIS",
+      "sibling": 80.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ESS-RELEASE-01",
+      "field": "observed_rto_minutes",
+      "mine": null,
+      "service": "SVC-RIS",
+      "sibling": null,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ESS-RELEASE-01",
+      "field": "rpo_result",
+      "mine": "EXCEEDS_TARGET",
+      "service": "SVC-RIS",
+      "sibling": "EXCEEDS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ESS-RELEASE-01",
+      "field": "rto_result",
+      "mine": "UNKNOWN",
+      "service": "SVC-RIS",
+      "sibling": "UNKNOWN",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ESS-RELEASE-01",
+      "field": "backup_status",
+      "mine": "EVIDENCED",
+      "service": "SVC-RIS",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ESS-RELEASE-01",
+      "field": "restoration_status",
+      "mine": "PARTIAL",
+      "service": "SVC-RIS",
+      "sibling": "PARTIAL",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ESS-RELEASE-01",
+      "field": "dependency_verification",
+      "mine": "PARTIAL",
+      "service": "SVC-RIS",
+      "sibling": "PARTIAL",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ESS-RELEASE-01",
+      "field": "business_verification",
+      "mine": "NOT_EVIDENCED",
+      "service": "SVC-RIS",
+      "sibling": "NOT_EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-CLEAN",
+      "field": "provenance.status",
+      "mine": "LINKED",
+      "service": "-",
+      "sibling": "GAPS",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-CLEAN",
+      "field": "observed_rpo_minutes",
+      "mine": 80,
+      "service": "SVC-IAM",
+      "sibling": 80.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-CLEAN",
+      "field": "observed_rto_minutes",
+      "mine": 40,
+      "service": "SVC-IAM",
+      "sibling": 40.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-CLEAN",
+      "field": "rpo_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-IAM",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-CLEAN",
+      "field": "rto_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-IAM",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-CLEAN",
+      "field": "backup_status",
+      "mine": "EVIDENCED",
+      "service": "SVC-IAM",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-CLEAN",
+      "field": "restoration_status",
+      "mine": "DEMONSTRATED",
+      "service": "SVC-IAM",
+      "sibling": "DEMONSTRATED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-CLEAN",
+      "field": "dependency_verification",
+      "mine": "NOT_APPLICABLE",
+      "service": "SVC-IAM",
+      "sibling": "NOT_APPLICABLE",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-CLEAN",
+      "field": "business_verification",
+      "mine": "EVIDENCED",
+      "service": "SVC-IAM",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-CLEAN",
+      "field": "observed_rpo_minutes",
+      "mine": 70,
+      "service": "SVC-RIS",
+      "sibling": 70.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-CLEAN",
+      "field": "observed_rto_minutes",
+      "mine": 70,
+      "service": "SVC-RIS",
+      "sibling": 70.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-CLEAN",
+      "field": "rpo_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-RIS",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-CLEAN",
+      "field": "rto_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-RIS",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-CLEAN",
+      "field": "backup_status",
+      "mine": "EVIDENCED",
+      "service": "SVC-RIS",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-CLEAN",
+      "field": "restoration_status",
+      "mine": "DEMONSTRATED",
+      "service": "SVC-RIS",
+      "sibling": "DEMONSTRATED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-CLEAN",
+      "field": "dependency_verification",
+      "mine": "EVIDENCED",
+      "service": "SVC-RIS",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-CLEAN",
+      "field": "business_verification",
+      "mine": "EVIDENCED",
+      "service": "SVC-RIS",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ENVIRONMENT-DIFFERENCE",
+      "field": "provenance.status",
+      "mine": "LINKED",
+      "service": "-",
+      "sibling": "GAPS",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ENVIRONMENT-DIFFERENCE",
+      "field": "observed_rpo_minutes",
+      "mine": 80,
+      "service": "SVC-IAM",
+      "sibling": 80.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ENVIRONMENT-DIFFERENCE",
+      "field": "observed_rto_minutes",
+      "mine": 40,
+      "service": "SVC-IAM",
+      "sibling": 40.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ENVIRONMENT-DIFFERENCE",
+      "field": "rpo_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-IAM",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ENVIRONMENT-DIFFERENCE",
+      "field": "rto_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-IAM",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ENVIRONMENT-DIFFERENCE",
+      "field": "backup_status",
+      "mine": "EVIDENCED",
+      "service": "SVC-IAM",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ENVIRONMENT-DIFFERENCE",
+      "field": "restoration_status",
+      "mine": "DEMONSTRATED",
+      "service": "SVC-IAM",
+      "sibling": "DEMONSTRATED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ENVIRONMENT-DIFFERENCE",
+      "field": "dependency_verification",
+      "mine": "NOT_APPLICABLE",
+      "service": "SVC-IAM",
+      "sibling": "NOT_APPLICABLE",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ENVIRONMENT-DIFFERENCE",
+      "field": "business_verification",
+      "mine": "EVIDENCED",
+      "service": "SVC-IAM",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ENVIRONMENT-DIFFERENCE",
+      "field": "observed_rpo_minutes",
+      "mine": 70,
+      "service": "SVC-RIS",
+      "sibling": 70.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ENVIRONMENT-DIFFERENCE",
+      "field": "observed_rto_minutes",
+      "mine": 70,
+      "service": "SVC-RIS",
+      "sibling": 70.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ENVIRONMENT-DIFFERENCE",
+      "field": "rpo_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-RIS",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ENVIRONMENT-DIFFERENCE",
+      "field": "rto_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-RIS",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ENVIRONMENT-DIFFERENCE",
+      "field": "backup_status",
+      "mine": "EVIDENCED",
+      "service": "SVC-RIS",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ENVIRONMENT-DIFFERENCE",
+      "field": "restoration_status",
+      "mine": "DEMONSTRATED",
+      "service": "SVC-RIS",
+      "sibling": "DEMONSTRATED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ENVIRONMENT-DIFFERENCE",
+      "field": "dependency_verification",
+      "mine": "EVIDENCED",
+      "service": "SVC-RIS",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ENVIRONMENT-DIFFERENCE",
+      "field": "business_verification",
+      "mine": "EVIDENCED",
+      "service": "SVC-RIS",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ID-COLLISION",
+      "field": "provenance.status",
+      "mine": "LINKED",
+      "service": "-",
+      "sibling": "GAPS",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ID-COLLISION",
+      "field": "observed_rpo_minutes",
+      "mine": 80,
+      "service": "SVC-IAM",
+      "sibling": 80.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ID-COLLISION",
+      "field": "observed_rto_minutes",
+      "mine": 40,
+      "service": "SVC-IAM",
+      "sibling": 40.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ID-COLLISION",
+      "field": "rpo_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-IAM",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ID-COLLISION",
+      "field": "rto_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-IAM",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ID-COLLISION",
+      "field": "backup_status",
+      "mine": "EVIDENCED",
+      "service": "SVC-IAM",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ID-COLLISION",
+      "field": "restoration_status",
+      "mine": "DEMONSTRATED",
+      "service": "SVC-IAM",
+      "sibling": "DEMONSTRATED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ID-COLLISION",
+      "field": "dependency_verification",
+      "mine": "NOT_APPLICABLE",
+      "service": "SVC-IAM",
+      "sibling": "NOT_APPLICABLE",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ID-COLLISION",
+      "field": "business_verification",
+      "mine": "EVIDENCED",
+      "service": "SVC-IAM",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ID-COLLISION",
+      "field": "observed_rpo_minutes",
+      "mine": 70,
+      "service": "SVC-RIS",
+      "sibling": 70.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ID-COLLISION",
+      "field": "observed_rto_minutes",
+      "mine": 70,
+      "service": "SVC-RIS",
+      "sibling": 70.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ID-COLLISION",
+      "field": "rpo_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-RIS",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ID-COLLISION",
+      "field": "rto_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-RIS",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ID-COLLISION",
+      "field": "backup_status",
+      "mine": "EVIDENCED",
+      "service": "SVC-RIS",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ID-COLLISION",
+      "field": "restoration_status",
+      "mine": "DEMONSTRATED",
+      "service": "SVC-RIS",
+      "sibling": "DEMONSTRATED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ID-COLLISION",
+      "field": "dependency_verification",
+      "mine": "EVIDENCED",
+      "service": "SVC-RIS",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ID-COLLISION",
+      "field": "business_verification",
+      "mine": "EVIDENCED",
+      "service": "SVC-RIS",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ORDERING-INVERSION",
+      "field": "provenance.status",
+      "mine": "LINKED",
+      "service": "-",
+      "sibling": "GAPS",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-ORDERING-INVERSION",
+      "field": "recovery",
+      "mine": "CONTRADICTIONS",
+      "service": "-",
+      "sibling": "REJECTED: SVC-RIS: restore_completed_at occurs before disruption_at",
+      "verdict": "SIBLING_REJECTED"
+    },
+    {
+      "case": "SYN-109-TIMELINE-DISAGREEMENT",
+      "field": "provenance.status",
+      "mine": "LINKED+CONTRADICTION",
+      "service": "-",
+      "sibling": "GAPS",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-TIMELINE-DISAGREEMENT",
+      "field": "observed_rpo_minutes",
+      "mine": 80,
+      "service": "SVC-IAM",
+      "sibling": 80.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-TIMELINE-DISAGREEMENT",
+      "field": "observed_rto_minutes",
+      "mine": 40,
+      "service": "SVC-IAM",
+      "sibling": 40.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-TIMELINE-DISAGREEMENT",
+      "field": "rpo_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-IAM",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-TIMELINE-DISAGREEMENT",
+      "field": "rto_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-IAM",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-TIMELINE-DISAGREEMENT",
+      "field": "backup_status",
+      "mine": "EVIDENCED",
+      "service": "SVC-IAM",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-TIMELINE-DISAGREEMENT",
+      "field": "restoration_status",
+      "mine": "DEMONSTRATED",
+      "service": "SVC-IAM",
+      "sibling": "DEMONSTRATED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-TIMELINE-DISAGREEMENT",
+      "field": "dependency_verification",
+      "mine": "NOT_APPLICABLE",
+      "service": "SVC-IAM",
+      "sibling": "NOT_APPLICABLE",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-TIMELINE-DISAGREEMENT",
+      "field": "business_verification",
+      "mine": "EVIDENCED",
+      "service": "SVC-IAM",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-TIMELINE-DISAGREEMENT",
+      "field": "observed_rpo_minutes",
+      "mine": 70,
+      "service": "SVC-RIS",
+      "sibling": 70.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-TIMELINE-DISAGREEMENT",
+      "field": "observed_rto_minutes",
+      "mine": 70,
+      "service": "SVC-RIS",
+      "sibling": 70.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-TIMELINE-DISAGREEMENT",
+      "field": "rpo_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-RIS",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-TIMELINE-DISAGREEMENT",
+      "field": "rto_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-RIS",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-TIMELINE-DISAGREEMENT",
+      "field": "backup_status",
+      "mine": "EVIDENCED",
+      "service": "SVC-RIS",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-TIMELINE-DISAGREEMENT",
+      "field": "restoration_status",
+      "mine": "DEMONSTRATED",
+      "service": "SVC-RIS",
+      "sibling": "DEMONSTRATED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-TIMELINE-DISAGREEMENT",
+      "field": "dependency_verification",
+      "mine": "EVIDENCED",
+      "service": "SVC-RIS",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-TIMELINE-DISAGREEMENT",
+      "field": "business_verification",
+      "mine": "EVIDENCED",
+      "service": "SVC-RIS",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNKNOWN-TIMESTAMP",
+      "field": "provenance.status",
+      "mine": "LINKED",
+      "service": "-",
+      "sibling": "GAPS",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNKNOWN-TIMESTAMP",
+      "field": "observed_rpo_minutes",
+      "mine": 80,
+      "service": "SVC-IAM",
+      "sibling": 80.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNKNOWN-TIMESTAMP",
+      "field": "observed_rto_minutes",
+      "mine": 40,
+      "service": "SVC-IAM",
+      "sibling": 40.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNKNOWN-TIMESTAMP",
+      "field": "rpo_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-IAM",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNKNOWN-TIMESTAMP",
+      "field": "rto_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-IAM",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNKNOWN-TIMESTAMP",
+      "field": "backup_status",
+      "mine": "EVIDENCED",
+      "service": "SVC-IAM",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNKNOWN-TIMESTAMP",
+      "field": "restoration_status",
+      "mine": "DEMONSTRATED",
+      "service": "SVC-IAM",
+      "sibling": "DEMONSTRATED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNKNOWN-TIMESTAMP",
+      "field": "dependency_verification",
+      "mine": "NOT_APPLICABLE",
+      "service": "SVC-IAM",
+      "sibling": "NOT_APPLICABLE",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNKNOWN-TIMESTAMP",
+      "field": "business_verification",
+      "mine": "EVIDENCED",
+      "service": "SVC-IAM",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNKNOWN-TIMESTAMP",
+      "field": "observed_rpo_minutes",
+      "mine": 70,
+      "service": "SVC-RIS",
+      "sibling": 70.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNKNOWN-TIMESTAMP",
+      "field": "observed_rto_minutes",
+      "mine": 70,
+      "service": "SVC-RIS",
+      "sibling": 70.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNKNOWN-TIMESTAMP",
+      "field": "rpo_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-RIS",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNKNOWN-TIMESTAMP",
+      "field": "rto_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-RIS",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNKNOWN-TIMESTAMP",
+      "field": "backup_status",
+      "mine": "EVIDENCED",
+      "service": "SVC-RIS",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNKNOWN-TIMESTAMP",
+      "field": "restoration_status",
+      "mine": "DEMONSTRATED",
+      "service": "SVC-RIS",
+      "sibling": "DEMONSTRATED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNKNOWN-TIMESTAMP",
+      "field": "dependency_verification",
+      "mine": "EVIDENCED",
+      "service": "SVC-RIS",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNKNOWN-TIMESTAMP",
+      "field": "business_verification",
+      "mine": "EVIDENCED",
+      "service": "SVC-RIS",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNRESOLVED-SOURCE-ID",
+      "field": "provenance.status",
+      "mine": "LINKED",
+      "service": "-",
+      "sibling": "GAPS",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNRESOLVED-SOURCE-ID",
+      "field": "observed_rpo_minutes",
+      "mine": 80,
+      "service": "SVC-IAM",
+      "sibling": 80.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNRESOLVED-SOURCE-ID",
+      "field": "observed_rto_minutes",
+      "mine": 40,
+      "service": "SVC-IAM",
+      "sibling": 40.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNRESOLVED-SOURCE-ID",
+      "field": "rpo_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-IAM",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNRESOLVED-SOURCE-ID",
+      "field": "rto_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-IAM",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNRESOLVED-SOURCE-ID",
+      "field": "backup_status",
+      "mine": "PARTIAL",
+      "service": "SVC-IAM",
+      "sibling": "EVIDENCED",
+      "verdict": "STRICTER_DECLARED"
+    },
+    {
+      "case": "SYN-109-UNRESOLVED-SOURCE-ID",
+      "field": "restoration_status",
+      "mine": "DEMONSTRATED",
+      "service": "SVC-IAM",
+      "sibling": "DEMONSTRATED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNRESOLVED-SOURCE-ID",
+      "field": "dependency_verification",
+      "mine": "NOT_APPLICABLE",
+      "service": "SVC-IAM",
+      "sibling": "NOT_APPLICABLE",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNRESOLVED-SOURCE-ID",
+      "field": "business_verification",
+      "mine": "EVIDENCED",
+      "service": "SVC-IAM",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNRESOLVED-SOURCE-ID",
+      "field": "observed_rpo_minutes",
+      "mine": 70,
+      "service": "SVC-RIS",
+      "sibling": 70.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNRESOLVED-SOURCE-ID",
+      "field": "observed_rto_minutes",
+      "mine": 70,
+      "service": "SVC-RIS",
+      "sibling": 70.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNRESOLVED-SOURCE-ID",
+      "field": "rpo_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-RIS",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNRESOLVED-SOURCE-ID",
+      "field": "rto_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-RIS",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNRESOLVED-SOURCE-ID",
+      "field": "backup_status",
+      "mine": "EVIDENCED",
+      "service": "SVC-RIS",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNRESOLVED-SOURCE-ID",
+      "field": "restoration_status",
+      "mine": "DEMONSTRATED",
+      "service": "SVC-RIS",
+      "sibling": "DEMONSTRATED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNRESOLVED-SOURCE-ID",
+      "field": "dependency_verification",
+      "mine": "EVIDENCED",
+      "service": "SVC-RIS",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNRESOLVED-SOURCE-ID",
+      "field": "business_verification",
+      "mine": "EVIDENCED",
+      "service": "SVC-RIS",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNSUPPORTED-RECOVERY-CLAIM",
+      "field": "provenance.status",
+      "mine": "LINKED",
+      "service": "-",
+      "sibling": "GAPS",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNSUPPORTED-RECOVERY-CLAIM",
+      "field": "observed_rpo_minutes",
+      "mine": 80,
+      "service": "SVC-IAM",
+      "sibling": 80.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNSUPPORTED-RECOVERY-CLAIM",
+      "field": "observed_rto_minutes",
+      "mine": 40,
+      "service": "SVC-IAM",
+      "sibling": 40.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNSUPPORTED-RECOVERY-CLAIM",
+      "field": "rpo_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-IAM",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNSUPPORTED-RECOVERY-CLAIM",
+      "field": "rto_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-IAM",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNSUPPORTED-RECOVERY-CLAIM",
+      "field": "backup_status",
+      "mine": "EVIDENCED",
+      "service": "SVC-IAM",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNSUPPORTED-RECOVERY-CLAIM",
+      "field": "restoration_status",
+      "mine": "DEMONSTRATED",
+      "service": "SVC-IAM",
+      "sibling": "DEMONSTRATED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNSUPPORTED-RECOVERY-CLAIM",
+      "field": "dependency_verification",
+      "mine": "NOT_APPLICABLE",
+      "service": "SVC-IAM",
+      "sibling": "NOT_APPLICABLE",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNSUPPORTED-RECOVERY-CLAIM",
+      "field": "business_verification",
+      "mine": "EVIDENCED",
+      "service": "SVC-IAM",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNSUPPORTED-RECOVERY-CLAIM",
+      "field": "observed_rpo_minutes",
+      "mine": 70,
+      "service": "SVC-RIS",
+      "sibling": 70.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNSUPPORTED-RECOVERY-CLAIM",
+      "field": "observed_rto_minutes",
+      "mine": 70,
+      "service": "SVC-RIS",
+      "sibling": 70.0,
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNSUPPORTED-RECOVERY-CLAIM",
+      "field": "rpo_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-RIS",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNSUPPORTED-RECOVERY-CLAIM",
+      "field": "rto_result",
+      "mine": "MEETS_TARGET",
+      "service": "SVC-RIS",
+      "sibling": "MEETS_TARGET",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNSUPPORTED-RECOVERY-CLAIM",
+      "field": "backup_status",
+      "mine": "EVIDENCED",
+      "service": "SVC-RIS",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNSUPPORTED-RECOVERY-CLAIM",
+      "field": "restoration_status",
+      "mine": "PARTIAL",
+      "service": "SVC-RIS",
+      "sibling": "PARTIAL",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNSUPPORTED-RECOVERY-CLAIM",
+      "field": "dependency_verification",
+      "mine": "EVIDENCED",
+      "service": "SVC-RIS",
+      "sibling": "EVIDENCED",
+      "verdict": "AGREES"
+    },
+    {
+      "case": "SYN-109-UNSUPPORTED-RECOVERY-CLAIM",
+      "field": "business_verification",
+      "mine": "NOT_EVIDENCED",
+      "service": "SVC-RIS",
+      "sibling": "NOT_EVIDENCED",
+      "verdict": "AGREES"
+    }
+  ],
+  "problems": [],
+  "status": "CONFORMS",
+  "summary": {
+    "comparisons": 146,
+    "declared_divergence_fields": [
+      "backup_status",
+      "business_verification",
+      "dependency_verification",
+      "restoration_status"
+    ],
+    "problems": 0,
+    "verdicts": {
+      "AGREES": 143,
+      "SIBLING_REJECTED": 1,
+      "STRICTER_DECLARED": 2
+    }
+  }
+}

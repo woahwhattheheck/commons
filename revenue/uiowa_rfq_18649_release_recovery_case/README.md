@@ -1,7 +1,7 @@
 # UIOWA-109 — Integrated release-and-recovery case
 
-Seat **OP5-UMBER** (Claude · Opus 5) · work order **UIOWA-109**, *"connect a release
-problem to recovery evidence."*
+Seat **OP5-UMBER** (Claude · Opus 5) · work orders **UIOWA-109** and **UIOWA-109B**,
+*"connect a release problem to recovery evidence."*
 
 Everything in this kit is **FICTIONAL**. `ess-prod`, `SVC-ESS`, `SVC-RIS`, `SVC-IAM`,
 every digest, date and measurement were invented for artifact review. Nothing here
@@ -78,7 +78,13 @@ python3 release_recovery_case.py case.json \
 python3 release_recovery_case.py --schema     # the case contract
 python3 make_fixtures.py                      # regenerate case.json + fixtures/
 python3 -m unittest -v test_release_recovery_case.py
+
+# execute the REAL sibling tools on the projections and compare field by field
+python3 conformance.py
 ```
+
+`conformance.py` exits `0` CONFORMS · `1` DIVERGED · `2` error · `3` NOT_RUN (a
+sibling lane is not present, so conformance is not established and **not assumed**).
 
 **Exit codes** mirror UIOWA-057 so the kits compose: `0` AGREED · `1` GAPS or
 CONTRADICTIONS · `2` malformed input (diagnostic on stderr, **no report emitted**).
@@ -169,6 +175,60 @@ anyone hand-edits a fixture and breaks that property.
 code. **False positives matter as much as misses**: a checker that flags everything
 catches every defect and is worthless.
 
+## Executing the siblings, and the defect that found (UIOWA-109B)
+
+UIOWA-109 landed asserting the projections matched UIOWA-057's and UIOWA-068's
+**field names**. They did. The **semantics** did not:
+
+```python
+# uiowa_rfq_18649_recovery_evidence/assess_recovery.py
+if disruption is not None and business_verified is not None:
+    rto = _minutes(business_verified, disruption)
+```
+
+UIOWA-068 measures RTO to **business-function verification**. This kit measured it
+to **technical restore completion**. On the same events:
+
+| | this kit (before) | UIOWA-068 |
+|---|---|---|
+| `SVC-ESS` RTO | 50 min | **65 min** |
+| `SVC-RIS` RTO | 80 min | **UNKNOWN** (no business verification exists) |
+
+Reporting a technical restore time as RTO is exactly the conflation UIOWA-068
+exists to prevent — and a kit whose entire job is detecting cross-component
+disagreement was carrying one with the component it claims to consume. It survived
+because matching a field list is not running a tool.
+
+**Fixed.** RTO now runs to business-function verification. The technical restore
+instant is still reported, in `technical_restore_completed_at` /
+`observed_technical_restore_minutes` and in its own report column, so nothing is
+lost — it simply is not called RTO. Two vocabulary drifts were corrected at the
+same time: `dependency_verification` now uses UIOWA-068's `PARTIAL` and
+`INCONSISTENT`, and `restoration_status` follows 068's ladder, which deliberately
+**excludes backup evidence** because a backup does not demonstrate a restoration.
+
+`conformance.py` imports the sibling modules from their real files, runs them on
+the projections, and compares every field. Nothing is mocked and no expected value
+is hard-coded — the sibling's live behaviour is the expectation.
+
+| Difference | Verdict |
+|---|---|
+| a numeric field disagrees | always a failure |
+| this kit claims something **stronger** than the sibling | always a failure |
+| this kit claims something **weaker**, and it is declared | allowed |
+| this kit claims something **weaker**, undeclared | failure |
+| the sibling rejects a case this kit called `AGREED` | always a failure (a miss) |
+
+Being stricter is allowed because a conservative reading never manufactures a
+claim; it still has to be written down. Being looser is never allowed. The declared
+divergences are in `DECLARED_DIVERGENCES`: this kit additionally requires a cited
+evidence id to **resolve** and not to be **interview-only** (UIOWA-057's rule),
+where UIOWA-068 accepts any non-empty id.
+
+Current result: **146 field comparisons, 0 problems** — 143 agree, 2 declared
+stricter, 1 sibling rejection this kit also caught. Verified as a live guard:
+reintroducing the RTO defect produces 17 problems and exit 1.
+
 ## The narrative case (`case.json`)
 
 One fictional release carrying every element the order names — a known artifact
@@ -182,12 +242,15 @@ and showing both a strength and a real gap:
   another environment is not evidence about the environment that ran the release.
 - **Strength** — `SVC-ESS` recovers with a complete evidence chain: backup evidenced,
   dependency verified, business function verified → `DEMONSTRATED`, observed RPO
-  50 min and RTO 50 min, both inside target.
+  50 min and RTO **65 min** (technical restore finished at 50 min; the extra 15 is
+  the wait for business-function verification), both inside target.
 - **Gap** — `SVC-RIS` claims its dependency was verified but nobody recorded *when*.
   The claim is reported `UNSUPPORTED_RECOVERY_CLAIM` and the service is held at
-  `PARTIAL`. Its observed RPO of 80 min exceeds its 60 min target.
+  `PARTIAL`. Its observed RPO of 80 min exceeds its 60 min target, and its **RTO is
+  UNKNOWN** — its technical restore took 80 min, but with no business-function
+  verification that number is not an RTO and is not promoted into one.
 - **Honest absence** — `SVC-IAM` was never exercised, and its backup rests on
-  interview evidence only → `backup_status UNKNOWN`, `NOT_DEMONSTRATED`. That is an
+  interview evidence only → `backup_status PARTIAL`, `NOT_DEMONSTRATED`. That is an
   absence of evidence, explicitly *not* a failed exercise.
 
 Note the case is simultaneously **fully traceable and not demonstrably recovered**.
@@ -198,16 +261,18 @@ Collapsing those two into one verdict is the mistake this kit exists to prevent.
 | File | What it is |
 |---|---|
 | `release_recovery_case.py` | the engine: contract, checks, projections, CLI, renderers |
+| `conformance.py` | executes the real sibling tools on the projections and compares field by field |
 | `case.json` | the narrative case (generated) |
 | `fixtures/*.json` | clean control + one fixture per defect class (generated) |
 | `make_fixtures.py` | deterministic regeneration of `case.json` and `fixtures/` |
-| `test_release_recovery_case.py` | 54 `unittest` cases |
+| `test_release_recovery_case.py` | 65 `unittest` cases |
 | `out/*` | sample outputs committed so a reviewer can read them without running anything |
 
 ## Real vs. draft
 
-**Real and working** — the engine, all eight fixtures, the 54-case suite, the three
-projections, the CSV/JSON/Markdown renderers, and the committed `out/` samples. All
+**Real and working** — the engine, all eight fixtures, the 65-case suite, the three
+projections, the conformance harness, the CSV/JSON/Markdown renderers, and the
+committed `out/` samples. All
 of it runs offline on the standard library and is deterministic: every calculation
 is against the case's declared `as_of`, never the wall clock, so two operators on
 different days get byte-identical output (`test_two_runs_are_byte_identical`).
@@ -221,11 +286,15 @@ different days get byte-identical output (`test_two_runs_are_byte_identical`).
   against the live schema, and it fails when a field is injected into a copy. In a
   checkout without the sibling lane it **skips with a stated reason** rather than
   passing silently.
-- The projections are **contract-shaped**, not executed through the sibling tools.
-  They are asserted against those kits' field lists; nobody has yet piped
-  `out/projected_provenance_packet.json` into `provenance.py` and
-  `out/projected_recovery_records.json` into `assess_recovery.py` in one run. That
-  end-to-end pipe is the obvious next step and is **not claimed as done**.
+- The projections are now **executed** through both sibling tools by
+  `conformance.py`, not merely shaped like them — that was UIOWA-109B, and it found
+  the RTO defect above. What is still **not** done: the siblings are driven through
+  their importable API (`provenance.inspect`, `assess_recovery.assess`), not through
+  their command lines, so CLI-only behaviour (exit codes, `--artifact-root` hashing,
+  file output) is not covered by the harness.
+- `conformance.py` compares the fields both kits have in common. UIOWA-057 output
+  that this kit has no counterpart for — its per-check `follow_up` text, its
+  `traces` array — is not compared.
 - The environment component is defined **here**. If a dedicated environment/config
   lane lands later, this view should be re-pointed at it rather than duplicated.
 - `ENVIRONMENT_DIFFERENCE` is classed as a *gap*, not a contradiction: the records
