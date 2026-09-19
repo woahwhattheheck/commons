@@ -1,0 +1,109 @@
+{
+  "_fiction_notice": "EVERY system, workflow, number and organization in this file is FICTIONAL. Harbor Ridge Institute does not exist. These are illustrative fixtures for work order UIOWA-080 and contain no University of Iowa data, findings, systems or measurements.",
+  "_institution": "Harbor Ridge Institute (FICTIONAL)",
+  "_schema": {
+    "workflow_id": "string",
+    "name": "string",
+    "answers": "map of worksheet question_id -> value; omit or use \"unknown\" for not-yet-evidenced",
+    "code_surface_inventory": "map of portability.SURFACES key -> count or \"unknown\"; omitted keys are UNKNOWN, never zero"
+  },
+  "workflows": [
+    {
+      "workflow_id": "HRI-INTAKE-01",
+      "name": "Service request intake triage",
+      "fiction_label": "FICTIONAL",
+      "narrative": "Front-desk intake form. A person is on the page waiting for a routing confirmation. STRENGTH: the pre-AI keyword rule still runs and has been measured on the same items, so a degraded answer genuinely exists and benefit can be stated as a difference. GAP: the integration was built under deadline with no port, so the provider wire shape reaches six request handlers; and whether intake content may be staged into an internal queue has never been answered.",
+      "answers": {
+        "answer_useful_within": "only_in_session",
+        "consequential": false,
+        "degraded_answer_exists": true,
+        "peak_items_per_hour": 240,
+        "reviewer_capacity_items_per_hour": "unknown",
+        "staged_copies_permitted": "unknown",
+        "durable_queue_available": true,
+        "single_owner_for_deadline_and_fallback": true,
+        "payload_contains_restricted_content": true,
+        "baseline_measured": true
+      },
+      "code_surface_inventory": {
+        "direct_call_sites": 6,
+        "wire_shape_reads": 9,
+        "vendor_error_handlers": 4,
+        "prompt_or_param_constructions": 3,
+        "auth_config_points": 2,
+        "sdk_type_imports_outside_adapter": 3,
+        "unit_or_taxonomy_conversions_outside_adapter": 2,
+        "observability_fields_bound_to_vendor_schema": 5
+      }
+    },
+    {
+      "workflow_id": "HRI-ARCHIVE-02",
+      "name": "Retrospective document classification backfill",
+      "fiction_label": "FICTIONAL",
+      "narrative": "Bulk re-classification of a document archive. Nobody is waiting. STRENGTH: built behind a domain port from the start, so exactly one worker touches the capability and a swap can be validated by replaying recorded inputs. GAP: the non-AI baseline was never measured on the same items, so any benefit claim about this workflow is currently unfalsifiable; and the cost of reprocessing the archive when the capability version changes has never been budgeted.",
+      "answers": {
+        "answer_useful_within": "days",
+        "consequential": false,
+        "degraded_answer_exists": true,
+        "peak_items_per_hour": 4000,
+        "reviewer_capacity_items_per_hour": "unknown",
+        "staged_copies_permitted": true,
+        "durable_queue_available": true,
+        "single_owner_for_deadline_and_fallback": true,
+        "payload_contains_restricted_content": false,
+        "baseline_measured": false
+      },
+      "code_surface_inventory": {
+        "direct_call_sites": 1,
+        "wire_shape_reads": 0,
+        "vendor_error_handlers": 0,
+        "prompt_or_param_constructions": 0,
+        "auth_config_points": 1,
+        "sdk_type_imports_outside_adapter": 0,
+        "unit_or_taxonomy_conversions_outside_adapter": 0,
+        "observability_fields_bound_to_vendor_schema": 0
+      }
+    },
+    {
+      "workflow_id": "HRI-AWARD-03",
+      "name": "Award eligibility narrative drafting",
+      "fiction_label": "FICTIONAL",
+      "narrative": "Drafting eligibility narratives that affect a decision about a person. STRENGTH: the unassisted drafting baseline WAS measured, and reviewer capacity was measured on reviewing drafts rather than inferred from the unaided task. GAP: that measurement is exactly what disqualifies the planned design -- peak seasonal volume is more than double measured review capacity. Whether the content may be staged internally is also still unanswered, and most of the code surface was never inventoried.",
+      "answers": {
+        "answer_useful_within": "hours",
+        "consequential": true,
+        "degraded_answer_exists": "unknown",
+        "peak_items_per_hour": 30,
+        "reviewer_capacity_items_per_hour": 12,
+        "staged_copies_permitted": "unknown",
+        "durable_queue_available": false,
+        "single_owner_for_deadline_and_fallback": false,
+        "payload_contains_restricted_content": true,
+        "baseline_measured": true
+      },
+      "code_surface_inventory": {
+        "direct_call_sites": 2,
+        "vendor_error_handlers": 1,
+        "prompt_or_param_constructions": 2,
+        "auth_config_points": 1,
+        "unit_or_taxonomy_conversions_outside_adapter": 0
+      }
+    },
+    {
+      "workflow_id": "HRI-MALFORMED-99",
+      "name": "Deliberately malformed intake record",
+      "fiction_label": "FICTIONAL - hostile-input probe, not a real candidate workflow",
+      "narrative": "Present on purpose. A worksheet filled in wrongly must have OBSERVABLE handling: wrong-typed answers are discarded to UNKNOWN and listed, unexpected keys are named and ignored, and no pattern is reported as supported on the strength of answers that were thrown away.",
+      "answers": {
+        "answer_useful_within": "someday",
+        "consequential": "yes",
+        "peak_items_per_hour": "lots",
+        "favourite_colour": "umber"
+      },
+      "code_surface_inventory": {
+        "direct_call_sites": "unknown",
+        "wire_shape_reads": "not counted yet"
+      }
+    }
+  ]
+}

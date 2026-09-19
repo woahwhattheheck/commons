@@ -1,0 +1,13 @@
+workflow_id,workflow_name,fiction_label,pattern_id,fit,disqualifier_count,caution_count,support_count,blocked_by_unknown,decisive_questions
+HRI-INTAKE-01,Service request intake triage,FICTIONAL,A_SYNCHRONOUS_IN_REQUEST,SUPPORTED_WITH_CAUTIONS,0,1,1,,answer_useful_within|degraded_answer_exists
+HRI-INTAKE-01,Service request intake triage,FICTIONAL,B_ASYNCHRONOUS_QUEUED_BATCH,DISQUALIFIED,1,0,1,staged_copies_permitted,answer_useful_within|staged_copies_permitted
+HRI-INTAKE-01,Service request intake triage,FICTIONAL,C_HUMAN_IN_THE_LOOP_REVIEW,UNDETERMINED,0,1,0,reviewer_capacity_items_per_hour + peak_items_per_hour,consequential|reviewer_capacity_items_per_hour
+HRI-ARCHIVE-02,Retrospective document classification backfill,FICTIONAL,A_SYNCHRONOUS_IN_REQUEST,DISQUALIFIED,1,0,0,,answer_useful_within|degraded_answer_exists
+HRI-ARCHIVE-02,Retrospective document classification backfill,FICTIONAL,B_ASYNCHRONOUS_QUEUED_BATCH,SUPPORTED,0,0,2,,answer_useful_within|staged_copies_permitted
+HRI-ARCHIVE-02,Retrospective document classification backfill,FICTIONAL,C_HUMAN_IN_THE_LOOP_REVIEW,UNDETERMINED,0,2,0,reviewer_capacity_items_per_hour + peak_items_per_hour,consequential|reviewer_capacity_items_per_hour
+HRI-AWARD-03,Award eligibility narrative drafting,FICTIONAL,A_SYNCHRONOUS_IN_REQUEST,DISQUALIFIED,1,3,0,degraded_answer_exists,answer_useful_within|degraded_answer_exists
+HRI-AWARD-03,Award eligibility narrative drafting,FICTIONAL,B_ASYNCHRONOUS_QUEUED_BATCH,UNDETERMINED,0,1,1,staged_copies_permitted,answer_useful_within|staged_copies_permitted
+HRI-AWARD-03,Award eligibility narrative drafting,FICTIONAL,C_HUMAN_IN_THE_LOOP_REVIEW,DISQUALIFIED,1,0,1,,consequential|reviewer_capacity_items_per_hour
+HRI-MALFORMED-99,Deliberately malformed intake record,"FICTIONAL - hostile-input probe, not a real candidate workflow",A_SYNCHRONOUS_IN_REQUEST,UNDETERMINED,0,0,0,answer_useful_within|degraded_answer_exists,answer_useful_within|degraded_answer_exists
+HRI-MALFORMED-99,Deliberately malformed intake record,"FICTIONAL - hostile-input probe, not a real candidate workflow",B_ASYNCHRONOUS_QUEUED_BATCH,UNDETERMINED,0,0,0,answer_useful_within|staged_copies_permitted,answer_useful_within|staged_copies_permitted
+HRI-MALFORMED-99,Deliberately malformed intake record,"FICTIONAL - hostile-input probe, not a real candidate workflow",C_HUMAN_IN_THE_LOOP_REVIEW,UNDETERMINED,0,0,0,consequential|reviewer_capacity_items_per_hour + peak_items_per_hour,consequential|reviewer_capacity_items_per_hour

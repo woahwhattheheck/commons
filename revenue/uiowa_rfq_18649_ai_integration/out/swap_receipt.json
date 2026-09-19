@@ -1,0 +1,378 @@
+{
+  "behavioral_delta_same_code_different_provider": {
+    "auto_routed_a": 3,
+    "auto_routed_b": 2,
+    "calling_code_changed": false,
+    "compared": [
+      "provider ALPHA (healthy)",
+      "provider BETA (healthy)"
+    ],
+    "detail": [
+      {
+        "a": "queue.facilities",
+        "a_reason": "confidence 0.84 at or above floor 0.70: alpha matched token 'thermostat'",
+        "b": "queue.human_review",
+        "b_reason": "confidence 0.66 below floor 0.70; suggested 'facilities'",
+        "doc_id": "doc-4"
+      }
+    ],
+    "differing_doc_ids": [
+      "doc-4"
+    ],
+    "human_review_a": 2,
+    "human_review_b": 3,
+    "items_compared": 5,
+    "items_routed_differently": 1,
+    "so_what": "A provider swap is an adapter-sized CODE change and a re-calibration-sized WORKFLOW change. Any threshold derived from observed accept rates (auto-accept cutoffs, confidence floors, reviewer staffing) must be re-established against the replacement before it is trusted again. Budget the re-calibration, not just the adapter."
+  },
+  "caller_module_sha256_across_all_runs": [
+    "60b0605d44524ef926897797ff59af001d57086816de0415214494e0d5cf4027"
+  ],
+  "caller_unchanged_across_swap": true,
+  "capability_class_definitions": {
+    "hosted-inference-api": "Capability operated by an external party and reached across a network boundary the institution does not control.",
+    "self-operated-model": "Capability operated by the institution on compute it controls; the network boundary is internal."
+  },
+  "capability_classes_exercised": [
+    "hosted-inference-api",
+    "self-operated-model"
+  ],
+  "fiction_notice": "ALPHA and BETA are FICTIONAL capability implementations invented for this demonstration. No commercial product is modelled, named or recommended.",
+  "lines_of_calling_code_changed_to_swap_provider": 0,
+  "runs": [
+    {
+      "caller_module_sha256": "60b0605d44524ef926897797ff59af001d57086816de0415214494e0d5cf4027",
+      "capability_class": "hosted-inference-api",
+      "conformance": {
+        "conformant": true,
+        "findings": []
+      },
+      "decisions": [
+        {
+          "degraded": false,
+          "doc_id": "doc-1",
+          "needs_human_review": true,
+          "queue": "queue.human_review",
+          "reason": "category 'billing' is always reviewed by policy (confidence 0.93: alpha matched token 'declin')"
+        },
+        {
+          "degraded": false,
+          "doc_id": "doc-2",
+          "needs_human_review": false,
+          "queue": "queue.access",
+          "reason": "confidence 0.91 at or above floor 0.70: alpha matched token 'badge'"
+        },
+        {
+          "degraded": false,
+          "doc_id": "doc-3",
+          "needs_human_review": false,
+          "queue": "queue.facilities",
+          "reason": "confidence 0.89 at or above floor 0.70: alpha matched token 'leak'"
+        },
+        {
+          "degraded": false,
+          "doc_id": "doc-4",
+          "needs_human_review": false,
+          "queue": "queue.facilities",
+          "reason": "confidence 0.84 at or above floor 0.70: alpha matched token 'thermostat'"
+        },
+        {
+          "degraded": false,
+          "doc_id": "doc-5",
+          "needs_human_review": true,
+          "queue": "queue.human_review",
+          "reason": "confidence 0.55 below floor 0.70; suggested 'other'"
+        }
+      ],
+      "fail_mode": "none",
+      "run_label": "provider ALPHA (healthy)",
+      "summary": {
+        "auto_routed": 3,
+        "degraded": 0,
+        "items": 5,
+        "queues": [
+          "queue.access",
+          "queue.facilities",
+          "queue.human_review"
+        ],
+        "to_human_review": 2
+      }
+    },
+    {
+      "caller_module_sha256": "60b0605d44524ef926897797ff59af001d57086816de0415214494e0d5cf4027",
+      "capability_class": "self-operated-model",
+      "conformance": {
+        "conformant": true,
+        "findings": []
+      },
+      "decisions": [
+        {
+          "degraded": false,
+          "doc_id": "doc-1",
+          "needs_human_review": true,
+          "queue": "queue.human_review",
+          "reason": "category 'billing' is always reviewed by policy (confidence 0.81: beta rule 'declin')"
+        },
+        {
+          "degraded": false,
+          "doc_id": "doc-2",
+          "needs_human_review": false,
+          "queue": "queue.access",
+          "reason": "confidence 0.88 at or above floor 0.70: beta rule 'badge'"
+        },
+        {
+          "degraded": false,
+          "doc_id": "doc-3",
+          "needs_human_review": false,
+          "queue": "queue.facilities",
+          "reason": "confidence 0.87 at or above floor 0.70: beta rule 'leak'"
+        },
+        {
+          "degraded": false,
+          "doc_id": "doc-4",
+          "needs_human_review": true,
+          "queue": "queue.human_review",
+          "reason": "confidence 0.66 below floor 0.70; suggested 'facilities'"
+        },
+        {
+          "degraded": false,
+          "doc_id": "doc-5",
+          "needs_human_review": true,
+          "queue": "queue.human_review",
+          "reason": "confidence 0.48 below floor 0.70; suggested 'other'"
+        }
+      ],
+      "fail_mode": "none",
+      "run_label": "provider BETA (healthy)",
+      "summary": {
+        "auto_routed": 2,
+        "degraded": 0,
+        "items": 5,
+        "queues": [
+          "queue.access",
+          "queue.facilities",
+          "queue.human_review"
+        ],
+        "to_human_review": 3
+      }
+    },
+    {
+      "caller_module_sha256": "60b0605d44524ef926897797ff59af001d57086816de0415214494e0d5cf4027",
+      "capability_class": "hosted-inference-api",
+      "conformance": {
+        "conformant": null,
+        "findings": [
+          "not run: provider deliberately degraded"
+        ]
+      },
+      "decisions": [
+        {
+          "degraded": true,
+          "doc_id": "doc-1",
+          "needs_human_review": true,
+          "queue": "queue.human_review",
+          "reason": "capability did not answer in budget (alpha did not answer in budget: alpha: deadline exceeded); routed to a person rather than guessed"
+        },
+        {
+          "degraded": true,
+          "doc_id": "doc-2",
+          "needs_human_review": true,
+          "queue": "queue.human_review",
+          "reason": "capability did not answer in budget (alpha did not answer in budget: alpha: deadline exceeded); routed to a person rather than guessed"
+        },
+        {
+          "degraded": true,
+          "doc_id": "doc-3",
+          "needs_human_review": true,
+          "queue": "queue.human_review",
+          "reason": "capability did not answer in budget (alpha did not answer in budget: alpha: deadline exceeded); routed to a person rather than guessed"
+        },
+        {
+          "degraded": true,
+          "doc_id": "doc-4",
+          "needs_human_review": true,
+          "queue": "queue.human_review",
+          "reason": "capability did not answer in budget (alpha did not answer in budget: alpha: deadline exceeded); routed to a person rather than guessed"
+        },
+        {
+          "degraded": true,
+          "doc_id": "doc-5",
+          "needs_human_review": true,
+          "queue": "queue.human_review",
+          "reason": "capability did not answer in budget (alpha did not answer in budget: alpha: deadline exceeded); routed to a person rather than guessed"
+        }
+      ],
+      "fail_mode": "timeout",
+      "run_label": "provider ALPHA (SLOW)",
+      "summary": {
+        "auto_routed": 0,
+        "degraded": 5,
+        "items": 5,
+        "queues": [
+          "queue.human_review"
+        ],
+        "to_human_review": 5
+      }
+    },
+    {
+      "caller_module_sha256": "60b0605d44524ef926897797ff59af001d57086816de0415214494e0d5cf4027",
+      "capability_class": "self-operated-model",
+      "conformance": {
+        "conformant": null,
+        "findings": [
+          "not run: provider deliberately degraded"
+        ]
+      },
+      "decisions": [
+        {
+          "degraded": true,
+          "doc_id": "doc-1",
+          "needs_human_review": true,
+          "queue": "queue.human_review",
+          "reason": "capability unreachable (beta unreachable: beta: node pool draining); capability suggested retry after 120s; routed to a person rather than guessed"
+        },
+        {
+          "degraded": true,
+          "doc_id": "doc-2",
+          "needs_human_review": true,
+          "queue": "queue.human_review",
+          "reason": "capability unreachable (beta unreachable: beta: node pool draining); capability suggested retry after 120s; routed to a person rather than guessed"
+        },
+        {
+          "degraded": true,
+          "doc_id": "doc-3",
+          "needs_human_review": true,
+          "queue": "queue.human_review",
+          "reason": "capability unreachable (beta unreachable: beta: node pool draining); capability suggested retry after 120s; routed to a person rather than guessed"
+        },
+        {
+          "degraded": true,
+          "doc_id": "doc-4",
+          "needs_human_review": true,
+          "queue": "queue.human_review",
+          "reason": "capability unreachable (beta unreachable: beta: node pool draining); capability suggested retry after 120s; routed to a person rather than guessed"
+        },
+        {
+          "degraded": true,
+          "doc_id": "doc-5",
+          "needs_human_review": true,
+          "queue": "queue.human_review",
+          "reason": "capability unreachable (beta unreachable: beta: node pool draining); capability suggested retry after 120s; routed to a person rather than guessed"
+        }
+      ],
+      "fail_mode": "down",
+      "run_label": "provider BETA (UNAVAILABLE)",
+      "summary": {
+        "auto_routed": 0,
+        "degraded": 5,
+        "items": 5,
+        "queues": [
+          "queue.human_review"
+        ],
+        "to_human_review": 5
+      }
+    },
+    {
+      "caller_module_sha256": "60b0605d44524ef926897797ff59af001d57086816de0415214494e0d5cf4027",
+      "capability_class": "hosted-inference-api",
+      "conformance": {
+        "conformant": null,
+        "findings": [
+          "not run: provider deliberately degraded"
+        ]
+      },
+      "decisions": [
+        {
+          "degraded": true,
+          "doc_id": "doc-1",
+          "needs_human_review": true,
+          "queue": "queue.human_review",
+          "reason": "capability answered outside the agreed contract (alpha returned label 'sentiment_positive', outside the institution taxonomy); an unmappable answer is missing evidence, not a low score"
+        },
+        {
+          "degraded": true,
+          "doc_id": "doc-2",
+          "needs_human_review": true,
+          "queue": "queue.human_review",
+          "reason": "capability answered outside the agreed contract (alpha returned label 'sentiment_positive', outside the institution taxonomy); an unmappable answer is missing evidence, not a low score"
+        },
+        {
+          "degraded": true,
+          "doc_id": "doc-3",
+          "needs_human_review": true,
+          "queue": "queue.human_review",
+          "reason": "capability answered outside the agreed contract (alpha returned label 'sentiment_positive', outside the institution taxonomy); an unmappable answer is missing evidence, not a low score"
+        },
+        {
+          "degraded": true,
+          "doc_id": "doc-4",
+          "needs_human_review": true,
+          "queue": "queue.human_review",
+          "reason": "capability answered outside the agreed contract (alpha returned label 'sentiment_positive', outside the institution taxonomy); an unmappable answer is missing evidence, not a low score"
+        },
+        {
+          "degraded": true,
+          "doc_id": "doc-5",
+          "needs_human_review": true,
+          "queue": "queue.human_review",
+          "reason": "capability answered outside the agreed contract (alpha returned label 'sentiment_positive', outside the institution taxonomy); an unmappable answer is missing evidence, not a low score"
+        }
+      ],
+      "fail_mode": "garbage",
+      "run_label": "provider ALPHA (contract violation)",
+      "summary": {
+        "auto_routed": 0,
+        "degraded": 5,
+        "items": 5,
+        "queues": [
+          "queue.human_review"
+        ],
+        "to_human_review": 5
+      }
+    }
+  ],
+  "static_scan_leaky_negative_control": {
+    "distinct_symbols": [
+      "AlphaTimeout",
+      "_AlphaWireClient",
+      "fake_alpha"
+    ],
+    "independent": false,
+    "module": "caller_leaky.py",
+    "violation_count": 5,
+    "violations": [
+      {
+        "line": 13,
+        "symbol": "AlphaTimeout",
+        "text": "from portlib.providers.fake_alpha import AlphaTimeout, _AlphaWireClient  # LEAK 1 + 3"
+      },
+      {
+        "line": 13,
+        "symbol": "_AlphaWireClient",
+        "text": "from portlib.providers.fake_alpha import AlphaTimeout, _AlphaWireClient  # LEAK 1 + 3"
+      },
+      {
+        "line": 13,
+        "symbol": "fake_alpha",
+        "text": "from portlib.providers.fake_alpha import AlphaTimeout, _AlphaWireClient  # LEAK 1 + 3"
+      },
+      {
+        "line": 17,
+        "symbol": "_AlphaWireClient",
+        "text": "client = _AlphaWireClient(fail_mode=fail_mode)                        # LEAK 1"
+      },
+      {
+        "line": 21,
+        "symbol": "AlphaTimeout",
+        "text": "except AlphaTimeout:                                                  # LEAK 3: vendor error taxonomy"
+      }
+    ]
+  },
+  "static_scan_portable_caller": {
+    "distinct_symbols": [],
+    "independent": true,
+    "module": "caller.py",
+    "violation_count": 0,
+    "violations": []
+  }
+}

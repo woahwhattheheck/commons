@@ -1,0 +1,524 @@
+[
+  {
+    "answers": {
+      "answer_useful_within": "only_in_session",
+      "baseline_measured": "yes",
+      "consequential": "no",
+      "degraded_answer_exists": "yes",
+      "durable_queue_available": "yes",
+      "payload_contains_restricted_content": "yes",
+      "peak_items_per_hour": "240",
+      "reviewer_capacity_items_per_hour": "UNKNOWN",
+      "single_owner_for_deadline_and_fallback": "yes",
+      "staged_copies_permitted": "UNKNOWN"
+    },
+    "derived_review_capacity_overrun": "UNKNOWN",
+    "fiction_label": "FICTIONAL",
+    "invalid_answers_discarded": [],
+    "patterns": {
+      "A_SYNCHRONOUS_IN_REQUEST": {
+        "blocked_by_unknown": [],
+        "cautions": [
+          {
+            "question": "payload_contains_restricted_content",
+            "reason": "live records cross the boundary at full fidelity in this pattern"
+          }
+        ],
+        "decisive_questions": [
+          "answer_useful_within",
+          "degraded_answer_exists"
+        ],
+        "disqualifiers": [],
+        "fit": "SUPPORTED_WITH_CAUTIONS",
+        "name": "Synchronous in-request call",
+        "pattern_id": "A_SYNCHRONOUS_IN_REQUEST",
+        "supports": [
+          {
+            "question": "answer_useful_within",
+            "reason": "the answer is only useful inside the session, which is what this pattern is for"
+          }
+        ]
+      },
+      "B_ASYNCHRONOUS_QUEUED_BATCH": {
+        "blocked_by_unknown": [
+          "staged_copies_permitted"
+        ],
+        "cautions": [],
+        "decisive_questions": [
+          "answer_useful_within",
+          "staged_copies_permitted"
+        ],
+        "disqualifiers": [
+          {
+            "question": "answer_useful_within",
+            "reason": "the answer is only useful inside the session; out-of-band completion cannot serve it"
+          }
+        ],
+        "fit": "DISQUALIFIED",
+        "name": "Asynchronous queued / batch processing",
+        "pattern_id": "B_ASYNCHRONOUS_QUEUED_BATCH",
+        "supports": [
+          {
+            "question": "peak_items_per_hour",
+            "reason": "volume is high enough that throughput, not per-item latency, is the right thing to optimize"
+          }
+        ]
+      },
+      "C_HUMAN_IN_THE_LOOP_REVIEW": {
+        "blocked_by_unknown": [
+          "reviewer_capacity_items_per_hour + peak_items_per_hour"
+        ],
+        "cautions": [
+          {
+            "question": "consequential",
+            "reason": "low-stakes reversible output; a review step may cost more than the errors it prevents"
+          }
+        ],
+        "decisive_questions": [
+          "consequential",
+          "reviewer_capacity_items_per_hour"
+        ],
+        "disqualifiers": [],
+        "fit": "UNDETERMINED",
+        "name": "Human-in-the-loop review step",
+        "pattern_id": "C_HUMAN_IN_THE_LOOP_REVIEW",
+        "supports": []
+      }
+    },
+    "patterns_still_live": [
+      "A_SYNCHRONOUS_IN_REQUEST",
+      "C_HUMAN_IN_THE_LOOP_REVIEW"
+    ],
+    "unanswered_questions": [
+      "reviewer_capacity_items_per_hour",
+      "staged_copies_permitted"
+    ],
+    "unexpected_answer_keys_ignored": [],
+    "unresolved_evidence": [
+      {
+        "item": "Measured p50/p95/p99 of the target capability class under the institution's own payload sizes -- UNKNOWN until run.",
+        "pattern_id": "A_SYNCHRONOUS_IN_REQUEST"
+      },
+      {
+        "item": "The surrounding service's current request timeout and connection-pool limits -- UNKNOWN (institution input).",
+        "pattern_id": "A_SYNCHRONOUS_IN_REQUEST"
+      },
+      {
+        "item": "Whether a usable degraded answer exists for each candidate workflow, or only in principle -- UNKNOWN until each workflow owner states it.",
+        "pattern_id": "A_SYNCHRONOUS_IN_REQUEST"
+      },
+      {
+        "item": "Reviewer capacity in items per person-hour for each candidate workflow -- UNKNOWN; must be measured, not estimated from the unaided process, because reviewing a draft and producing one are different tasks.",
+        "pattern_id": "C_HUMAN_IN_THE_LOOP_REVIEW"
+      },
+      {
+        "item": "Who owns the auto-accept threshold -- UNKNOWN (institution input); an unowned threshold moves informally.",
+        "pattern_id": "C_HUMAN_IN_THE_LOOP_REVIEW"
+      },
+      {
+        "item": "Whether reviewer decision records may be retained and reused, and for how long -- UNKNOWN.",
+        "pattern_id": "C_HUMAN_IN_THE_LOOP_REVIEW"
+      },
+      {
+        "item": "Whether the unaided path can still be executed today -- UNKNOWN until someone runs it.",
+        "pattern_id": "C_HUMAN_IN_THE_LOOP_REVIEW"
+      }
+    ],
+    "workflow_id": "HRI-INTAKE-01",
+    "workflow_name": "Service request intake triage"
+  },
+  {
+    "answers": {
+      "answer_useful_within": "days",
+      "baseline_measured": "no",
+      "consequential": "no",
+      "degraded_answer_exists": "yes",
+      "durable_queue_available": "yes",
+      "payload_contains_restricted_content": "no",
+      "peak_items_per_hour": "4000",
+      "reviewer_capacity_items_per_hour": "UNKNOWN",
+      "single_owner_for_deadline_and_fallback": "yes",
+      "staged_copies_permitted": "yes"
+    },
+    "derived_review_capacity_overrun": "UNKNOWN",
+    "fiction_label": "FICTIONAL",
+    "invalid_answers_discarded": [],
+    "patterns": {
+      "A_SYNCHRONOUS_IN_REQUEST": {
+        "blocked_by_unknown": [],
+        "cautions": [],
+        "decisive_questions": [
+          "answer_useful_within",
+          "degraded_answer_exists"
+        ],
+        "disqualifiers": [
+          {
+            "question": "answer_useful_within",
+            "reason": "the answer is not needed in-session, so holding a user request open buys nothing and costs availability"
+          }
+        ],
+        "fit": "DISQUALIFIED",
+        "name": "Synchronous in-request call",
+        "pattern_id": "A_SYNCHRONOUS_IN_REQUEST",
+        "supports": []
+      },
+      "B_ASYNCHRONOUS_QUEUED_BATCH": {
+        "blocked_by_unknown": [],
+        "cautions": [],
+        "decisive_questions": [
+          "answer_useful_within",
+          "staged_copies_permitted"
+        ],
+        "disqualifiers": [],
+        "fit": "SUPPORTED",
+        "name": "Asynchronous queued / batch processing",
+        "pattern_id": "B_ASYNCHRONOUS_QUEUED_BATCH",
+        "supports": [
+          {
+            "question": "answer_useful_within",
+            "reason": "completion-time commitment fits comfortably"
+          },
+          {
+            "question": "peak_items_per_hour",
+            "reason": "volume is high enough that throughput, not per-item latency, is the right thing to optimize"
+          }
+        ]
+      },
+      "C_HUMAN_IN_THE_LOOP_REVIEW": {
+        "blocked_by_unknown": [
+          "reviewer_capacity_items_per_hour + peak_items_per_hour"
+        ],
+        "cautions": [
+          {
+            "question": "consequential",
+            "reason": "low-stakes reversible output; a review step may cost more than the errors it prevents"
+          },
+          {
+            "question": "baseline_measured",
+            "reason": "no measured unassisted-reviewer baseline, so any benefit claim from this pattern would be unfalsifiable"
+          }
+        ],
+        "decisive_questions": [
+          "consequential",
+          "reviewer_capacity_items_per_hour"
+        ],
+        "disqualifiers": [],
+        "fit": "UNDETERMINED",
+        "name": "Human-in-the-loop review step",
+        "pattern_id": "C_HUMAN_IN_THE_LOOP_REVIEW",
+        "supports": []
+      }
+    },
+    "patterns_still_live": [
+      "B_ASYNCHRONOUS_QUEUED_BATCH",
+      "C_HUMAN_IN_THE_LOOP_REVIEW"
+    ],
+    "unanswered_questions": [
+      "reviewer_capacity_items_per_hour"
+    ],
+    "unexpected_answer_keys_ignored": [],
+    "unresolved_evidence": [
+      {
+        "item": "Whether durable queue infrastructure with a monitored dead-letter path already exists and who operates it -- UNKNOWN (institution input).",
+        "pattern_id": "B_ASYNCHRONOUS_QUEUED_BATCH"
+      },
+      {
+        "item": "Acceptable completion-time commitment per candidate workflow -- UNKNOWN until the workflow owner states it; do not infer it from current runtimes.",
+        "pattern_id": "B_ASYNCHRONOUS_QUEUED_BATCH"
+      },
+      {
+        "item": "Retention terms permitted for staged copies of the queued content -- UNKNOWN and must be answered before, not after, build.",
+        "pattern_id": "B_ASYNCHRONOUS_QUEUED_BATCH"
+      },
+      {
+        "item": "Reprocessing budget when the capability version changes -- UNKNOWN.",
+        "pattern_id": "B_ASYNCHRONOUS_QUEUED_BATCH"
+      },
+      {
+        "item": "Reviewer capacity in items per person-hour for each candidate workflow -- UNKNOWN; must be measured, not estimated from the unaided process, because reviewing a draft and producing one are different tasks.",
+        "pattern_id": "C_HUMAN_IN_THE_LOOP_REVIEW"
+      },
+      {
+        "item": "Who owns the auto-accept threshold -- UNKNOWN (institution input); an unowned threshold moves informally.",
+        "pattern_id": "C_HUMAN_IN_THE_LOOP_REVIEW"
+      },
+      {
+        "item": "Whether reviewer decision records may be retained and reused, and for how long -- UNKNOWN.",
+        "pattern_id": "C_HUMAN_IN_THE_LOOP_REVIEW"
+      },
+      {
+        "item": "Whether the unaided path can still be executed today -- UNKNOWN until someone runs it.",
+        "pattern_id": "C_HUMAN_IN_THE_LOOP_REVIEW"
+      }
+    ],
+    "workflow_id": "HRI-ARCHIVE-02",
+    "workflow_name": "Retrospective document classification backfill"
+  },
+  {
+    "answers": {
+      "answer_useful_within": "hours",
+      "baseline_measured": "yes",
+      "consequential": "yes",
+      "degraded_answer_exists": "UNKNOWN",
+      "durable_queue_available": "no",
+      "payload_contains_restricted_content": "yes",
+      "peak_items_per_hour": "30",
+      "reviewer_capacity_items_per_hour": "12",
+      "single_owner_for_deadline_and_fallback": "no",
+      "staged_copies_permitted": "UNKNOWN"
+    },
+    "derived_review_capacity_overrun": "yes",
+    "fiction_label": "FICTIONAL",
+    "invalid_answers_discarded": [],
+    "patterns": {
+      "A_SYNCHRONOUS_IN_REQUEST": {
+        "blocked_by_unknown": [
+          "degraded_answer_exists"
+        ],
+        "cautions": [
+          {
+            "question": "single_owner_for_deadline_and_fallback",
+            "reason": "deadline and fallback are unowned; this is the split-ownership failure this pattern is most exposed to"
+          },
+          {
+            "question": "consequential",
+            "reason": "consequential output with no review step; consider composing with pattern C"
+          },
+          {
+            "question": "payload_contains_restricted_content",
+            "reason": "live records cross the boundary at full fidelity in this pattern"
+          }
+        ],
+        "decisive_questions": [
+          "answer_useful_within",
+          "degraded_answer_exists"
+        ],
+        "disqualifiers": [
+          {
+            "question": "answer_useful_within",
+            "reason": "the answer is not needed in-session, so holding a user request open buys nothing and costs availability"
+          }
+        ],
+        "fit": "DISQUALIFIED",
+        "name": "Synchronous in-request call",
+        "pattern_id": "A_SYNCHRONOUS_IN_REQUEST",
+        "supports": []
+      },
+      "B_ASYNCHRONOUS_QUEUED_BATCH": {
+        "blocked_by_unknown": [
+          "staged_copies_permitted"
+        ],
+        "cautions": [
+          {
+            "question": "durable_queue_available",
+            "reason": "no existing durable queue with an owned dead-letter path; first-integration effort is at the top of the range and ongoing operations are a new burden"
+          }
+        ],
+        "decisive_questions": [
+          "answer_useful_within",
+          "staged_copies_permitted"
+        ],
+        "disqualifiers": [],
+        "fit": "UNDETERMINED",
+        "name": "Asynchronous queued / batch processing",
+        "pattern_id": "B_ASYNCHRONOUS_QUEUED_BATCH",
+        "supports": [
+          {
+            "question": "answer_useful_within",
+            "reason": "completion-time commitment fits comfortably"
+          }
+        ]
+      },
+      "C_HUMAN_IN_THE_LOOP_REVIEW": {
+        "blocked_by_unknown": [],
+        "cautions": [],
+        "decisive_questions": [
+          "consequential",
+          "reviewer_capacity_items_per_hour"
+        ],
+        "disqualifiers": [
+          {
+            "question": "reviewer_capacity_items_per_hour",
+            "reason": "peak volume exceeds measured reviewer capacity, so the review step would become a rubber stamp -- worse than no review, because it manufactures the appearance of oversight"
+          }
+        ],
+        "fit": "DISQUALIFIED",
+        "name": "Human-in-the-loop review step",
+        "pattern_id": "C_HUMAN_IN_THE_LOOP_REVIEW",
+        "supports": [
+          {
+            "question": "consequential",
+            "reason": "the action is consequential, which is the condition this pattern exists for"
+          }
+        ]
+      }
+    },
+    "patterns_still_live": [
+      "B_ASYNCHRONOUS_QUEUED_BATCH"
+    ],
+    "unanswered_questions": [
+      "degraded_answer_exists",
+      "staged_copies_permitted"
+    ],
+    "unexpected_answer_keys_ignored": [],
+    "unresolved_evidence": [
+      {
+        "item": "Whether durable queue infrastructure with a monitored dead-letter path already exists and who operates it -- UNKNOWN (institution input).",
+        "pattern_id": "B_ASYNCHRONOUS_QUEUED_BATCH"
+      },
+      {
+        "item": "Acceptable completion-time commitment per candidate workflow -- UNKNOWN until the workflow owner states it; do not infer it from current runtimes.",
+        "pattern_id": "B_ASYNCHRONOUS_QUEUED_BATCH"
+      },
+      {
+        "item": "Retention terms permitted for staged copies of the queued content -- UNKNOWN and must be answered before, not after, build.",
+        "pattern_id": "B_ASYNCHRONOUS_QUEUED_BATCH"
+      },
+      {
+        "item": "Reprocessing budget when the capability version changes -- UNKNOWN.",
+        "pattern_id": "B_ASYNCHRONOUS_QUEUED_BATCH"
+      }
+    ],
+    "workflow_id": "HRI-AWARD-03",
+    "workflow_name": "Award eligibility narrative drafting"
+  },
+  {
+    "answers": {
+      "answer_useful_within": "UNKNOWN",
+      "baseline_measured": "UNKNOWN",
+      "consequential": "UNKNOWN",
+      "degraded_answer_exists": "UNKNOWN",
+      "durable_queue_available": "UNKNOWN",
+      "payload_contains_restricted_content": "UNKNOWN",
+      "peak_items_per_hour": "UNKNOWN",
+      "reviewer_capacity_items_per_hour": "UNKNOWN",
+      "single_owner_for_deadline_and_fallback": "UNKNOWN",
+      "staged_copies_permitted": "UNKNOWN"
+    },
+    "derived_review_capacity_overrun": "UNKNOWN",
+    "fiction_label": "FICTIONAL - hostile-input probe, not a real candidate workflow",
+    "invalid_answers_discarded": [
+      "answer_useful_within='someday' not in ('only_in_session', 'minutes', 'hours', 'days')",
+      "consequential='yes' is not a boolean",
+      "peak_items_per_hour='lots' is not a number"
+    ],
+    "patterns": {
+      "A_SYNCHRONOUS_IN_REQUEST": {
+        "blocked_by_unknown": [
+          "answer_useful_within",
+          "degraded_answer_exists"
+        ],
+        "cautions": [],
+        "decisive_questions": [
+          "answer_useful_within",
+          "degraded_answer_exists"
+        ],
+        "disqualifiers": [],
+        "fit": "UNDETERMINED",
+        "name": "Synchronous in-request call",
+        "pattern_id": "A_SYNCHRONOUS_IN_REQUEST",
+        "supports": []
+      },
+      "B_ASYNCHRONOUS_QUEUED_BATCH": {
+        "blocked_by_unknown": [
+          "answer_useful_within",
+          "staged_copies_permitted"
+        ],
+        "cautions": [],
+        "decisive_questions": [
+          "answer_useful_within",
+          "staged_copies_permitted"
+        ],
+        "disqualifiers": [],
+        "fit": "UNDETERMINED",
+        "name": "Asynchronous queued / batch processing",
+        "pattern_id": "B_ASYNCHRONOUS_QUEUED_BATCH",
+        "supports": []
+      },
+      "C_HUMAN_IN_THE_LOOP_REVIEW": {
+        "blocked_by_unknown": [
+          "consequential",
+          "reviewer_capacity_items_per_hour + peak_items_per_hour"
+        ],
+        "cautions": [],
+        "decisive_questions": [
+          "consequential",
+          "reviewer_capacity_items_per_hour"
+        ],
+        "disqualifiers": [],
+        "fit": "UNDETERMINED",
+        "name": "Human-in-the-loop review step",
+        "pattern_id": "C_HUMAN_IN_THE_LOOP_REVIEW",
+        "supports": []
+      }
+    },
+    "patterns_still_live": [
+      "A_SYNCHRONOUS_IN_REQUEST",
+      "B_ASYNCHRONOUS_QUEUED_BATCH",
+      "C_HUMAN_IN_THE_LOOP_REVIEW"
+    ],
+    "unanswered_questions": [
+      "answer_useful_within",
+      "baseline_measured",
+      "consequential",
+      "degraded_answer_exists",
+      "durable_queue_available",
+      "payload_contains_restricted_content",
+      "peak_items_per_hour",
+      "reviewer_capacity_items_per_hour",
+      "single_owner_for_deadline_and_fallback",
+      "staged_copies_permitted"
+    ],
+    "unexpected_answer_keys_ignored": [
+      "favourite_colour"
+    ],
+    "unresolved_evidence": [
+      {
+        "item": "Measured p50/p95/p99 of the target capability class under the institution's own payload sizes -- UNKNOWN until run.",
+        "pattern_id": "A_SYNCHRONOUS_IN_REQUEST"
+      },
+      {
+        "item": "The surrounding service's current request timeout and connection-pool limits -- UNKNOWN (institution input).",
+        "pattern_id": "A_SYNCHRONOUS_IN_REQUEST"
+      },
+      {
+        "item": "Whether a usable degraded answer exists for each candidate workflow, or only in principle -- UNKNOWN until each workflow owner states it.",
+        "pattern_id": "A_SYNCHRONOUS_IN_REQUEST"
+      },
+      {
+        "item": "Whether durable queue infrastructure with a monitored dead-letter path already exists and who operates it -- UNKNOWN (institution input).",
+        "pattern_id": "B_ASYNCHRONOUS_QUEUED_BATCH"
+      },
+      {
+        "item": "Acceptable completion-time commitment per candidate workflow -- UNKNOWN until the workflow owner states it; do not infer it from current runtimes.",
+        "pattern_id": "B_ASYNCHRONOUS_QUEUED_BATCH"
+      },
+      {
+        "item": "Retention terms permitted for staged copies of the queued content -- UNKNOWN and must be answered before, not after, build.",
+        "pattern_id": "B_ASYNCHRONOUS_QUEUED_BATCH"
+      },
+      {
+        "item": "Reprocessing budget when the capability version changes -- UNKNOWN.",
+        "pattern_id": "B_ASYNCHRONOUS_QUEUED_BATCH"
+      },
+      {
+        "item": "Reviewer capacity in items per person-hour for each candidate workflow -- UNKNOWN; must be measured, not estimated from the unaided process, because reviewing a draft and producing one are different tasks.",
+        "pattern_id": "C_HUMAN_IN_THE_LOOP_REVIEW"
+      },
+      {
+        "item": "Who owns the auto-accept threshold -- UNKNOWN (institution input); an unowned threshold moves informally.",
+        "pattern_id": "C_HUMAN_IN_THE_LOOP_REVIEW"
+      },
+      {
+        "item": "Whether reviewer decision records may be retained and reused, and for how long -- UNKNOWN.",
+        "pattern_id": "C_HUMAN_IN_THE_LOOP_REVIEW"
+      },
+      {
+        "item": "Whether the unaided path can still be executed today -- UNKNOWN until someone runs it.",
+        "pattern_id": "C_HUMAN_IN_THE_LOOP_REVIEW"
+      }
+    ],
+    "workflow_id": "HRI-MALFORMED-99",
+    "workflow_name": "Deliberately malformed intake record"
+  }
+]

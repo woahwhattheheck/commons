@@ -1,0 +1,20 @@
+{
+  "integration_decision_worksheet.md": {
+    "finding_count": 0,
+    "findings": [],
+    "limitation": "tripwire only; closed capability vocabulary is the real control",
+    "neutral": true
+  },
+  "portability_blast_radius.md": {
+    "finding_count": 0,
+    "findings": [],
+    "limitation": "tripwire only; closed capability vocabulary is the real control",
+    "neutral": true
+  },
+  "reference_patterns.md": {
+    "finding_count": 0,
+    "findings": [],
+    "limitation": "tripwire only; closed capability vocabulary is the real control",
+    "neutral": true
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "rejected_inventories": [
+    {
+      "error": "surface counts must be non-negative integers or UNKNOWN: ['wire_shape_reads']",
+      "handling": "inventory rejected; the workflow keeps NO portability score. It is not scored as zero and not scored as contained.",
+      "workflow_id": "HRI-MALFORMED-99"
+    }
+  ],
+  "scores": [
+    {
+      "band": "PERVASIVE",
+      "band_note": "Swap is a rewrite of the integration, not a substitution.",
+      "counted_surfaces": {
+        "auth_config_points": {
+          "count": 2,
+          "edit_points": 2,
+          "weight": 1
+        },
+        "direct_call_sites": {
+          "count": 6,
+          "edit_points": 6,
+          "weight": 1
+        },
+        "observability_fields_bound_to_vendor_schema": {
+          "count": 5,
+          "edit_points": 5,
+          "weight": 1
+        },
+        "prompt_or_param_constructions": {
+          "count": 3,
+          "edit_points": 3,
+          "weight": 1
+        },
+        "sdk_type_imports_outside_adapter": {
+          "count": 3,
+          "edit_points": 6,
+          "weight": 2
+        },
+        "unit_or_taxonomy_conversions_outside_adapter": {
+          "count": 2,
+          "edit_points": 4,
+          "weight": 2
+        },
+        "vendor_error_handlers": {
+          "count": 4,
+          "edit_points": 4,
+          "weight": 1
+        },
+        "wire_shape_reads": {
+          "count": 9,
+          "edit_points": 9,
+          "weight": 1
+        }
+      },
+      "edit_points": 39,
+      "method": "edit_points = sum(count * weight) over INVENTORIED surfaces only",
+      "system_id": "HRI-INTAKE-01",
+      "total_is_floor": false,
+      "uncounted_surfaces_unknown": [],
+      "unexpected_keys_ignored": []
+    },
+    {
+      "band": "CONTAINED",
+      "band_note": "Swap is an adapter-sized change.",
+      "counted_surfaces": {
+        "auth_config_points": {
+          "count": 1,
+          "edit_points": 1,
+          "weight": 1
+        },
+        "direct_call_sites": {
+          "count": 1,
+          "edit_points": 1,
+          "weight": 1
+        },
+        "observability_fields_bound_to_vendor_schema": {
+          "count": 0,
+          "edit_points": 0,
+          "weight": 1
+        },
+        "prompt_or_param_constructions": {
+          "count": 0,
+          "edit_points": 0,
+          "weight": 1
+        },
+        "sdk_type_imports_outside_adapter": {
+          "count": 0,
+          "edit_points": 0,
+          "weight": 2
+        },
+        "unit_or_taxonomy_conversions_outside_adapter": {
+          "count": 0,
+          "edit_points": 0,
+          "weight": 2
+        },
+        "vendor_error_handlers": {
+          "count": 0,
+          "edit_points": 0,
+          "weight": 1
+        },
+        "wire_shape_reads": {
+          "count": 0,
+          "edit_points": 0,
+          "weight": 1
+        }
+      },
+      "edit_points": 2,
+      "method": "edit_points = sum(count * weight) over INVENTORIED surfaces only",
+      "system_id": "HRI-ARCHIVE-02",
+      "total_is_floor": false,
+      "uncounted_surfaces_unknown": [],
+      "unexpected_keys_ignored": []
+    },
+    {
+      "band": "INSUFFICIENT_EVIDENCE",
+      "band_note": "Some code surfaces were not inventoried. The point total below is a FLOOR over the surfaces that were counted; the real figure can only be higher. No band is assigned.",
+      "counted_surfaces": {
+        "auth_config_points": {
+          "count": 1,
+          "edit_points": 1,
+          "weight": 1
+        },
+        "direct_call_sites": {
+          "count": 2,
+          "edit_points": 2,
+          "weight": 1
+        },
+        "prompt_or_param_constructions": {
+          "count": 2,
+          "edit_points": 2,
+          "weight": 1
+        },
+        "unit_or_taxonomy_conversions_outside_adapter": {
+          "count": 0,
+          "edit_points": 0,
+          "weight": 2
+        },
+        "vendor_error_handlers": {
+          "count": 1,
+          "edit_points": 1,
+          "weight": 1
+        }
+      },
+      "edit_points": 6,
+      "method": "edit_points = sum(count * weight) over INVENTORIED surfaces only",
+      "system_id": "HRI-AWARD-03",
+      "total_is_floor": true,
+      "uncounted_surfaces_unknown": [
+        "observability_fields_bound_to_vendor_schema",
+        "sdk_type_imports_outside_adapter",
+        "wire_shape_reads"
+      ],
+      "unexpected_keys_ignored": []
+    }
+  ]
+}
