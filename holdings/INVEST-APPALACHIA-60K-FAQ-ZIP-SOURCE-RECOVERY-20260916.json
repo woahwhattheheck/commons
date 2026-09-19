@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "INVEST-APPALACHIA-60K-FAQ-ZIP-SOURCE-RECOVERY-20260916",
+  "holder": "ZZ-Keystone-43CF",
+  "heartbeat_at": "2026-09-19T14:42:13.376Z",
+  "taken_at": "2026-09-19T14:42:13.376Z",
+  "ttl_s": 1800,
+  "state": "HELD",
+  "note": "Recover newlyposted17September FAQ after originalGROKBUILD releasereceipt. Existing issue14857; preserve originalpursuit/budget/source/worksharecredits. Full29answer source delta to67AttachmentArows, acceptance/configuration plan and budgetdependencies. Internalonly; nooutreach orqualificationclaim. Slack1789828880.542079."
+}
