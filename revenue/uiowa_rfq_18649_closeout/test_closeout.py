@@ -109,6 +109,21 @@ class CloseoutTests(unittest.TestCase):
         self.assertEqual(report["status"], "FAIL")
         self.assertTrue(any("credential material must not be ingested" in e for e in report["errors"]))
 
+    def test_extra_disposition_kind_is_recorded_without_failing(self):
+        report = evaluate(
+            self.engagement,
+            [inv("E-001"), inv("E-002")],
+            [
+                disp("E-001"),
+                disp("E-002", action="archived_offsite", action_date="2026-12-15"),
+            ],
+            date(2026, 12, 10),
+        )
+        self.assertEqual(report["status"], "PASS")
+        self.assertEqual(report["action_counts"].get("archived_offsite"), 1)
+        self.assertTrue(any("archived_offsite" in w for w in report["warnings"]))
+        self.assertFalse(any("unsupported" in e for e in report["errors"]))
+
 
 if __name__ == "__main__":
     unittest.main()

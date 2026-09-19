@@ -25,7 +25,7 @@ DISPOSITION_COLUMNS = (
     "verified_by", "verification_artifact", "exception_or_instruction_ref", "notes",
 )
 SENSITIVITIES = {"public", "internal", "confidential", "restricted", "credential"}
-ACTIONS = {"returned", "destroyed", "retained_by_instruction", "never_received"}
+NAMED_CLOSEOUT_KINDS = ("returned", "destroyed", "retained_by_instruction", "never_received")
 PROTECTED = {"internal", "confidential", "restricted", "credential"}
 
 
@@ -156,20 +156,20 @@ def evaluate(
             errors.append(f"{eid}: disposition references unknown evidence")
             continue
 
-        action = row["action"]
-        if action not in ACTIONS:
-            errors.append(f"{eid}: unsupported disposition action {action!r}")
-            continue
-
+        disposition_kind = row["action"]
         inv = inv_by_id[eid]
         try:
             received = bool_field(inv["received"], f"{eid}.received")
         except ValidationError:
             continue
 
-        if action == "never_received":
+        if not disposition_kind:
+            errors.append(f"{eid}: disposition row requires a kind")
+            continue
+
+        if disposition_kind == "never_received":
             if received:
-                errors.append(f"{eid}: action never_received conflicts with inventory received=yes")
+                errors.append(f"{eid}: never_received conflicts with inventory received=yes")
             if row["action_date"]:
                 try:
                     parse_date(row["action_date"], f"{eid}.action_date")
@@ -177,11 +177,17 @@ def evaluate(
                     errors.append(str(exc))
             continue
 
+        if disposition_kind not in NAMED_CLOSEOUT_KINDS:
+            warnings.append(
+                f"{eid}: disposition kind {disposition_kind!r} is recorded without a named closeout handler"
+            )
+            continue
+
         if not received:
-            errors.append(f"{eid}: action {action} conflicts with inventory received=no")
+            errors.append(f"{eid}: {disposition_kind} conflicts with inventory received=no")
 
         if not row["action_date"]:
-            errors.append(f"{eid}: action {action} requires action_date")
+            errors.append(f"{eid}: {disposition_kind} requires action_date")
             action_date = None
         else:
             try:
@@ -190,19 +196,19 @@ def evaluate(
                 errors.append(str(exc))
                 action_date = None
 
-        if action in {"returned", "destroyed"}:
+        if disposition_kind == "returned" or disposition_kind == "destroyed":
             if not row["performed_by"]:
-                errors.append(f"{eid}: {action} requires performed_by")
+                errors.append(f"{eid}: {disposition_kind} requires performed_by")
             if not row["verified_by"]:
-                errors.append(f"{eid}: {action} requires verified_by")
+                errors.append(f"{eid}: {disposition_kind} requires verified_by")
             if not row["verification_artifact"]:
-                errors.append(f"{eid}: {action} requires verification_artifact")
+                errors.append(f"{eid}: {disposition_kind} requires verification_artifact")
             if action_date and action_date > due:
                 errors.append(
-                    f"{eid}: {action} on {action_date.isoformat()} is after closeout deadline {due.isoformat()}"
+                    f"{eid}: {disposition_kind} on {action_date.isoformat()} is after closeout deadline {due.isoformat()}"
                 )
 
-        if action == "retained_by_instruction":
+        if disposition_kind == "retained_by_instruction":
             ref = row["exception_or_instruction_ref"] or inv["exception_ref"]
             if not ref:
                 errors.append(
