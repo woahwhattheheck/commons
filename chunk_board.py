@@ -227,6 +227,27 @@ def write_thin_board(feed: list, root: str, chrome: dict) -> dict:
     return index
 
 
+
+def write_current_thin_board(
+    feed: list, root: str, chrome: dict, ancestor_verifier
+) -> dict:
+    """Project current actionable work without changing the historical feed.
+
+    The persisted completed flag is only a cached observation. Reopening,
+    source drift, or missing ancestry must make the card visible again, so use
+    the same current-marker validator and exact route predicate as ingestion.
+    The caller supplies the existing checked-out Git ancestry boundary.
+    """
+    import completion_projection
+
+    completed_ids = completion_projection.completed_operation_ids(root, ancestor_verifier)
+    active = [
+        rec for rec in feed or []
+        if rec and not completion_projection.is_completed_actionable(rec, completed_ids)
+    ]
+    return write_thin_board(active, root, chrome)
+
+
 def render_thin_day_html(
     day: str,
     n: int,
@@ -330,7 +351,7 @@ def main() -> int:
         "board_js": hub_pages.BOARD_JS_TAG,
         "doors": b.doors(),
     }
-    index = write_thin_board(feed, root, chrome)
+    index = write_current_thin_board(feed, root, chrome, b._completion_merge_is_ancestor)
     hub_pages.rebuild_archive(b, rows_from_feed(feed))
     print(
         "chunk_board: n=%s days=%s board_seed=%s day_seed=%s"
