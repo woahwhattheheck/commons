@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 183,
-    "open_pull_requests": 172,
-    "runs_in_progress": 13,
-    "runs_queued": 288
+    "open_issues": 184,
+    "open_pull_requests": 174,
+    "runs_in_progress": 14,
+    "runs_queued": 119
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,28 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zz-kepler-sol/a304081-exact-search-20260919",
+      "created_at": "2026-09-19T23:55:27Z",
+      "draft": false,
+      "head_sha": "7a1147503aacfd57514fe549d38d0ee768e17975",
+      "number": 16507,
+      "title": "research(a304081): exact post-frontier counterexample search",
+      "updated_at": "2026-09-19T23:56:25Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-peregrine-16081-recovery-20260919",
+      "created_at": "2026-09-19T23:23:22Z",
+      "draft": false,
+      "head_sha": "cc70a743cbe6f4462aaf70b8b27f750bf42d336a",
+      "number": 16504,
+      "title": "test: recover stale #16081 contract pins on current main",
+      "updated_at": "2026-09-19T23:23:22Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zz-sol-17-lantern/ciq4-queue-pressure-20260919",
       "created_at": "2026-09-19T22:52:08Z",
       "draft": false,
@@ -108,7 +130,7 @@
       "head_sha": "4966ec6deac6202d0d6431c7b893233924808d96",
       "number": 16483,
       "title": "Preserve reviewed ReuseLedger workflow on a current provider generation",
-      "updated_at": "2026-09-19T22:42:07Z"
+      "updated_at": "2026-09-19T23:17:55Z"
     },
     {
       "author": "woahwhattheheck",
@@ -119,7 +141,7 @@
       "head_sha": "2115e54a88beafff92f762706d681f978e767c41",
       "number": 16482,
       "title": "Preserve reviewed UIOWA sample precision on current main (successor to #16271)",
-      "updated_at": "2026-09-19T22:38:35Z"
+      "updated_at": "2026-09-19T23:17:54Z"
     },
     {
       "author": "woahwhattheheck",
@@ -153,28 +175,6 @@
       "number": 16465,
       "title": "WO-2: owner-meeting-brief gate",
       "updated_at": "2026-09-19T19:59:15Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol-sweep11/media-rights-15965-completion-20260919",
-      "created_at": "2026-09-19T17:18:52Z",
-      "draft": false,
-      "head_sha": "2fe02ef45fc586fcedd1707da53abb8a0ce535f9",
-      "number": 16456,
-      "title": "Complete media-rights precise-time and coherent-read workflow (#15965)",
-      "updated_at": "2026-09-19T17:38:45Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "codex/zz-keystone-43cf-wayne-smart-lab",
-      "created_at": "2026-09-19T17:12:46Z",
-      "draft": false,
-      "head_sha": "7166b76acf4d5db7de524502283d8fd26bb127da",
-      "number": 16455,
-      "title": "Complete Wayne RESA response package and offline API acceptance lab",
-      "updated_at": "2026-09-19T17:23:43Z"
     }
   ],
   "open_heads": {
@@ -349,12 +349,36 @@
     "16483": "4966ec6deac6202d0d6431c7b893233924808d96",
     "16498": "9e9bb0acfe870b0bcc0a41e777930f7448525928",
     "16499": "c437c7af715e5216d7b98d7c82fb4a685391f2ae",
-    "16501": "5006c0604d2d2275c35f7e53c1d569275cc5572b"
+    "16501": "5006c0604d2d2275c35f7e53c1d569275cc5572b",
+    "16504": "cc70a743cbe6f4462aaf70b8b27f750bf42d336a",
+    "16507": "7a1147503aacfd57514fe549d38d0ee768e17975"
   },
-  "pulls_listed": 172,
+  "pulls_listed": 174,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 22.2,
+  "queue_depth_per_runner": 8.5,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-solstice-17/ppl089-qcover-n5-20260919",
+      "closed_at": "2026-09-19T23:54:25Z",
+      "head_sha": "6bd6b10c4aaeef23c738d007b6bd47918919dc3e",
+      "merged_at": "2026-09-19T23:54:25Z",
+      "number": 16506,
+      "state": "MERGED",
+      "title": "research(ppl089): exact q=3 finite theorem through N=5"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-sol-cairn92/ciq3-stale-pin-census-20260919",
+      "closed_at": "2026-09-19T23:03:07Z",
+      "head_sha": "5ae384495ae3fe564a52c57dc602f994dd30df69",
+      "merged_at": "2026-09-19T23:03:07Z",
+      "number": 16503,
+      "state": "MERGED",
+      "title": "CIQ-3: add deterministic battery failure census"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -376,17 +400,6 @@
       "number": 16500,
       "state": "MERGED",
       "title": "docs(grantfox): map PayD #480 realtime status contract"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-sol-helios/ci-battery-fail-fast-20260919",
-      "closed_at": "2026-09-19T22:44:35Z",
-      "head_sha": "2914cdc944166e15e77f3961ede2fb33585323d8",
-      "merged_at": "2026-09-19T22:44:35Z",
-      "number": 16496,
-      "state": "MERGED",
-      "title": "CI: stop hosted battery after first failure"
     },
     {
       "author": "woahwhattheheck",
@@ -468,17 +481,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "sol18-16071-r2",
-      "closed_at": "2026-09-19T22:36:42Z",
-      "head_sha": "f56b8aa89b21ccd646c0b6bcc8de238b549d8ded",
-      "merged_at": null,
-      "number": 16073,
-      "state": "CLOSED",
-      "title": "fix: freeze repo-estate transitive validator generation"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "zz-sol-ashenwing/repo-estate-final-20260919",
       "closed_at": "2026-09-19T22:35:58Z",
       "head_sha": "f9700b5283d4ff3898aaa2477650d7d9c57cc5b4",
@@ -501,17 +503,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zz-solstice/external-opportunity-intake-current-main-20260919",
-      "closed_at": "2026-09-19T22:34:00Z",
-      "head_sha": "d9cf5b6920725f640a94a3f91413505e145e0626",
-      "merged_at": null,
-      "number": 16484,
-      "state": "CLOSED",
-      "title": "Integrate external opportunity intake on current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "swarm-zz/copperfinch-peer-evidence-20260919",
       "closed_at": "2026-09-19T22:33:08Z",
       "head_sha": "0223e01708f2fbe1c7aefc71fa7064ab8a38ef11",
@@ -519,10 +510,21 @@
       "number": 16198,
       "state": "MERGED",
       "title": "UIowa: source-linked peer evidence comparability compiler and rehearsal"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-trellis/reuseledger-workflow-20260919",
+      "closed_at": "2026-09-19T22:25:51Z",
+      "head_sha": "80c5d9d6d5641590650f605eba79df8cafc48a4c",
+      "merged_at": null,
+      "number": 16435,
+      "state": "CLOSED",
+      "title": "ReuseLedger: add declared-reuse journal and portable handoff workflow"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T23:00:25Z",
+  "unchanged_since": "2026-09-19T23:57:32Z",
   "undatable_pulls": []
 }
