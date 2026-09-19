@@ -1,0 +1,69 @@
+{
+  "synthetic": true,
+  "_fiction_notice": "Fictional claims and evidence dates, written to exercise each rule. No University of Iowa record appears here.",
+  "as_of": "2026-09-19",
+  "freshness_days": 180,
+  "min_coverage": 0.60,
+  "evidence": [
+    {"id": "E-SYN-001", "date": "2026-07-08", "label": "deployment log extract"},
+    {"id": "E-SYN-002", "date": "2026-07-09", "label": "deployment log extract"},
+    {"id": "E-SYN-003", "date": "2026-07-10", "label": "deployment log extract"},
+    {"id": "E-SYN-004", "date": "2026-07-11", "label": "deployment log extract"},
+    {"id": "E-SYN-005", "date": "2025-02-14", "label": "monitoring configuration export"},
+    {"id": "E-SYN-006", "date": null, "label": "undated runbook screenshot"},
+    {"id": "E-SYN-007", "date": "2026-10-05", "label": "change ticket"},
+    {"id": "E-SYN-008", "date": "2026-03-02", "label": "incident record"},
+    {"id": "E-SYN-009", "date": "2026-06-20", "label": "incident record"}
+  ],
+  "claims": [
+    {"id": "C-SYN-001", "tense": "PAST",
+     "text": "Over the last 90 days, 3 of 14 deployments were rolled back.",
+     "window_start": "2026-06-22", "window_end": "2026-09-19",
+     "evidence_ids": ["E-SYN-001", "E-SYN-002", "E-SYN-003", "E-SYN-004"]},
+
+    {"id": "C-SYN-002", "tense": "PRESENT",
+     "text": "Services are monitored with routed alerting.",
+     "window_start": "2025-01-01", "window_end": "2025-03-01",
+     "evidence_ids": ["E-SYN-005"]},
+
+    {"id": "C-SYN-003", "tense": "PAST",
+     "text": "During June, two incidents required escalation.",
+     "window_start": "2026-06-01", "window_end": "2026-06-30",
+     "evidence_ids": ["E-SYN-008", "E-SYN-009"]},
+
+    {"id": "C-SYN-004", "tense": "PAST",
+     "text": "Runbooks were current throughout August.",
+     "window_start": "2026-08-01", "window_end": "2026-08-31",
+     "evidence_ids": ["E-SYN-006"]},
+
+    {"id": "C-SYN-005", "tense": "PAST",
+     "text": "September changes followed the approval path.",
+     "window_start": "2026-09-01", "window_end": "2026-09-19",
+     "evidence_ids": ["E-SYN-007"]},
+
+    {"id": "C-SYN-006", "tense": "PAST",
+     "text": "Across the calendar year, escalation held.",
+     "window_start": "2026-01-01", "window_end": "2026-12-31",
+     "evidence_ids": ["E-SYN-009"]},
+
+    {"id": "C-SYN-007", "tense": "PAST",
+     "text": "Between September and August, coverage was stable.",
+     "window_start": "2026-09-01", "window_end": "2026-08-01",
+     "evidence_ids": ["E-SYN-009"]},
+
+    {"id": "C-SYN-008", "tense": "PAST",
+     "text": "Escalation improved over the summer.",
+     "window_start": "2026-06-01", "window_end": "2026-08-31",
+     "evidence_ids": []},
+
+    {"id": "C-SYN-009", "tense": "PAST",
+     "text": "Approval coverage was recorded in June.",
+     "window_start": "2026-06-01", "window_end": "2026-06-30",
+     "evidence_ids": ["E-SYN-999"]},
+
+    {"id": "C-SYN-010", "tense": "PAST",
+     "text": "Since June, escalation has been recorded.",
+     "window_start": "2026-06-01", "window_end": null,
+     "evidence_ids": ["E-SYN-009"]}
+  ]
+}

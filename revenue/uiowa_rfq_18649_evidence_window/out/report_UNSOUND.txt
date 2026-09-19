@@ -1,0 +1,39 @@
+evidence window agreement
+========================================================================
+assessment date (as_of) : 2026-09-19
+claims checked          : 10
+freshness horizon       : 180 days
+minimum window coverage : 60%
+result                  : FAIL  (12 error, 0 warning)
+
+  [error] WINDOW_NOT_COVERED  C-SYN-001
+      the claim describes 90 days but its evidence spans 4 (4% of the window), 2026-07-08..2026-07-11
+      say instead: state the period actually observed: 2026-07-08 to 2026-07-11
+  [error] SINGLE_DATE_SUPPORTS_A_PERIOD  C-SYN-002
+      every cited record is dated 2025-02-14, but the claim describes 60 days
+      say instead: state what was observed on 2025-02-14
+  [error] STALE_EVIDENCE_FOR_PRESENT_TENSE  C-SYN-002
+      this is written in the present tense but its most recent evidence is 582 days old at the assessment date, past the 180-day freshness horizon
+      say instead: write it in the past tense and name the date: as of 2025-02-14, ...
+  [error] EVIDENCE_OUTSIDE_WINDOW  C-SYN-003
+      1 cited record(s) fall outside the stated window 2026-06-01..2026-06-30 (earliest outside: 2026-03-02)
+      say instead: widen the stated window to match the evidence, or drop the out-of-window records from the claim
+  [error] UNDATED_EVIDENCE  C-SYN-004
+      E-SYN-006 carries no date, so it cannot be placed inside or outside this claim's window; it is not assumed to be in window
+      say instead: record the date, or drop the time bound from the claim
+  [error] EVIDENCE_AFTER_ASOF  C-SYN-005
+      evidence dated 2026-10-05 is later than the assessment date 2026-09-19
+  [error] SINGLE_DATE_SUPPORTS_A_PERIOD  C-SYN-006
+      every cited record is dated 2026-06-20, but the claim describes 365 days
+      say instead: state what was observed on 2026-06-20
+  [error] WINDOW_ENDS_AFTER_ASOF  C-SYN-006
+      the window runs to 2026-12-31, past the assessment date 2026-09-19; part of it had not happened when the evidence was collected
+  [error] WINDOW_INVERTED  C-SYN-007
+      the stated window ends 2026-08-01 before it starts 2026-09-01
+  [error] NO_EVIDENCE_CITED  C-SYN-008
+      a time-bounded claim with no evidence cited at all
+  [error] EVIDENCE_NOT_FOUND  C-SYN-009
+      E-SYN-999 is cited by this claim but is not in the evidence set
+  [error] PARTIAL_WINDOW  C-SYN-010
+      only one end of the window is stated, so the period being described is not defined
+      say instead: state both ends, or remove the time bound

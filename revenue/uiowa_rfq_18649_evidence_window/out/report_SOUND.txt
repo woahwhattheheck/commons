@@ -1,0 +1,11 @@
+evidence window agreement
+========================================================================
+assessment date (as_of) : 2026-09-19
+claims checked          : 3
+freshness horizon       : 180 days
+minimum window coverage : 60%
+result                  : PASS  (0 error, 0 warning)
+
+  Every claim's evidence is dated, falls inside the period the
+  claim describes, covers enough of it, and is current enough
+  for the tense it is written in.

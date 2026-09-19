@@ -1,0 +1,128 @@
+{
+  "as_of": "2026-09-19",
+  "claims_checked": 10,
+  "settings": {
+    "freshness_days": 180,
+    "min_coverage": 0.6
+  },
+  "passed": false,
+  "findings": [
+    {
+      "code": "WINDOW_NOT_COVERED",
+      "severity": "error",
+      "claim_id": "C-SYN-001",
+      "message": "the claim describes 90 days but its evidence spans 4 (4% of the window), 2026-07-08..2026-07-11",
+      "restatement": "state the period actually observed: 2026-07-08 to 2026-07-11",
+      "detail": {
+        "window_days": 90,
+        "covered_days": 4,
+        "coverage": 0.044
+      }
+    },
+    {
+      "code": "SINGLE_DATE_SUPPORTS_A_PERIOD",
+      "severity": "error",
+      "claim_id": "C-SYN-002",
+      "message": "every cited record is dated 2025-02-14, but the claim describes 60 days",
+      "restatement": "state what was observed on 2025-02-14",
+      "detail": {
+        "window_days": 60
+      }
+    },
+    {
+      "code": "STALE_EVIDENCE_FOR_PRESENT_TENSE",
+      "severity": "error",
+      "claim_id": "C-SYN-002",
+      "message": "this is written in the present tense but its most recent evidence is 582 days old at the assessment date, past the 180-day freshness horizon",
+      "restatement": "write it in the past tense and name the date: as of 2025-02-14, ...",
+      "detail": {
+        "newest_evidence": "2025-02-14",
+        "age_days": 582
+      }
+    },
+    {
+      "code": "EVIDENCE_OUTSIDE_WINDOW",
+      "severity": "error",
+      "claim_id": "C-SYN-003",
+      "message": "1 cited record(s) fall outside the stated window 2026-06-01..2026-06-30 (earliest outside: 2026-03-02)",
+      "restatement": "widen the stated window to match the evidence, or drop the out-of-window records from the claim",
+      "detail": {
+        "outside": [
+          "2026-03-02"
+        ]
+      }
+    },
+    {
+      "code": "UNDATED_EVIDENCE",
+      "severity": "error",
+      "claim_id": "C-SYN-004",
+      "message": "E-SYN-006 carries no date, so it cannot be placed inside or outside this claim's window; it is not assumed to be in window",
+      "restatement": "record the date, or drop the time bound from the claim",
+      "detail": {
+        "undated": [
+          "E-SYN-006"
+        ]
+      }
+    },
+    {
+      "code": "EVIDENCE_AFTER_ASOF",
+      "severity": "error",
+      "claim_id": "C-SYN-005",
+      "message": "evidence dated 2026-10-05 is later than the assessment date 2026-09-19",
+      "restatement": "",
+      "detail": {
+        "evidence_date": "2026-10-05"
+      }
+    },
+    {
+      "code": "SINGLE_DATE_SUPPORTS_A_PERIOD",
+      "severity": "error",
+      "claim_id": "C-SYN-006",
+      "message": "every cited record is dated 2026-06-20, but the claim describes 365 days",
+      "restatement": "state what was observed on 2026-06-20",
+      "detail": {
+        "window_days": 365
+      }
+    },
+    {
+      "code": "WINDOW_ENDS_AFTER_ASOF",
+      "severity": "error",
+      "claim_id": "C-SYN-006",
+      "message": "the window runs to 2026-12-31, past the assessment date 2026-09-19; part of it had not happened when the evidence was collected",
+      "restatement": "",
+      "detail": {}
+    },
+    {
+      "code": "WINDOW_INVERTED",
+      "severity": "error",
+      "claim_id": "C-SYN-007",
+      "message": "the stated window ends 2026-08-01 before it starts 2026-09-01",
+      "restatement": "",
+      "detail": {}
+    },
+    {
+      "code": "NO_EVIDENCE_CITED",
+      "severity": "error",
+      "claim_id": "C-SYN-008",
+      "message": "a time-bounded claim with no evidence cited at all",
+      "restatement": "",
+      "detail": {}
+    },
+    {
+      "code": "EVIDENCE_NOT_FOUND",
+      "severity": "error",
+      "claim_id": "C-SYN-009",
+      "message": "E-SYN-999 is cited by this claim but is not in the evidence set",
+      "restatement": "",
+      "detail": {}
+    },
+    {
+      "code": "PARTIAL_WINDOW",
+      "severity": "error",
+      "claim_id": "C-SYN-010",
+      "message": "only one end of the window is stated, so the period being described is not defined",
+      "restatement": "state both ends, or remove the time bound",
+      "detail": {}
+    }
+  ]
+}

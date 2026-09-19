@@ -1,0 +1,33 @@
+{
+  "synthetic": true,
+  "_fiction_notice": "Fictional claims carrying the same subject matter as the unsound set, stated within the period their evidence covers.",
+  "as_of": "2026-09-19",
+  "freshness_days": 180,
+  "min_coverage": 0.60,
+  "evidence": [
+    {"id": "E-SYN-101", "date": "2026-06-25", "label": "deployment log extract"},
+    {"id": "E-SYN-102", "date": "2026-07-20", "label": "deployment log extract"},
+    {"id": "E-SYN-103", "date": "2026-08-15", "label": "deployment log extract"},
+    {"id": "E-SYN-104", "date": "2026-09-10", "label": "deployment log extract"},
+    {"id": "E-SYN-105", "date": "2026-08-05", "label": "monitoring configuration export"},
+    {"id": "E-SYN-106", "date": "2026-09-15", "label": "alert routing export"},
+    {"id": "E-SYN-107", "date": "2026-06-03", "label": "incident record"},
+    {"id": "E-SYN-108", "date": "2026-06-28", "label": "incident record"}
+  ],
+  "claims": [
+    {"id": "C-SYN-101", "tense": "PAST",
+     "text": "Between 2026-06-25 and 2026-09-10, 3 of 14 deployments were rolled back.",
+     "window_start": "2026-06-22", "window_end": "2026-09-19",
+     "evidence_ids": ["E-SYN-101", "E-SYN-102", "E-SYN-103", "E-SYN-104"]},
+
+    {"id": "C-SYN-102", "tense": "PRESENT",
+     "text": "Services are monitored with routed alerting.",
+     "window_start": "2026-08-01", "window_end": "2026-09-19",
+     "evidence_ids": ["E-SYN-105", "E-SYN-106"]},
+
+    {"id": "C-SYN-103", "tense": "PAST",
+     "text": "During June, two incidents required escalation.",
+     "window_start": "2026-06-01", "window_end": "2026-06-30",
+     "evidence_ids": ["E-SYN-107", "E-SYN-108"]}
+  ]
+}
