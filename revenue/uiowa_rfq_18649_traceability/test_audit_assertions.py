@@ -111,7 +111,8 @@ class T(unittest.TestCase):
     def test_delegates_to_nothing(self):
         self._record(1)
 """)
-        self.assertEqual(self.rules(f), ["NO_ASSERTION"])
+        # It calls something, so it fails if that raises: SMOKE, not vacuous.
+        self.assertEqual(self.rules(f), ["NO_ASSERTION_SMOKE"])
 
     def test_recursive_helpers_do_not_hang(self):
         f = self.scan_test("""import unittest
@@ -125,7 +126,7 @@ class T(unittest.TestCase):
     def test_mutual(self):
         self._a()
 """)
-        self.assertEqual(self.rules(f), ["NO_ASSERTION"])
+        self.assertEqual(self.rules(f), ["NO_ASSERTION_SMOKE"])
 
     def test_comparing_two_calls_is_a_determinism_check_not_a_tautology(self):
         # assertEqual(f(x), f(x)) EVALUATES f twice. That is exactly how you
@@ -253,6 +254,34 @@ assert 2 == 2
 assert 3 == 3
 """, name="helper.py")
         self.assertEqual(self.rules(f), ["ASSERT_INTERNAL_INVARIANT"])
+
+
+class TestSmokeVersusVacuous(ScanCase):
+    """A test with no assertion is not automatically a test that cannot fail.
+
+    uiowa_rfq_18649_run_sweep has `test_json_is_serialisable`, whose whole body
+    is `json.dumps(self.sweep())`. There is no assertion, and it genuinely
+    fails when the object is not serialisable. Calling that "cannot fail" would
+    be the auditor overstating its own finding -- the same overreach it exists
+    to catch. It is reported as SMOKE: real, but unable to check a value.
+    """
+
+    def test_a_bare_call_is_smoke_not_vacuous(self):
+        f = self.scan_test("""import json, unittest
+class T(unittest.TestCase):
+    def test_json_is_serialisable(self):
+        json.dumps(self.sweep())
+""")
+        self.assertEqual(self.rules(f), ["NO_ASSERTION_SMOKE"])
+
+    def test_a_body_with_no_call_cannot_fail(self):
+        f = self.scan_test("""import unittest
+class T(unittest.TestCase):
+    def test_nothing(self):
+        x = 1 + 1
+        y = x * 2
+""")
+        self.assertEqual(self.rules(f), ["NO_ASSERTION"])
 
 
 class TestRobustness(ScanCase):

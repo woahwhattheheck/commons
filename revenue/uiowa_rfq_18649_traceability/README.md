@@ -198,8 +198,11 @@ SELF_SEALING           uiowa_rfq_18649_document_extraction
     rewritten  .../fixtures/manifest.json   <- DIGEST REWRITTEN
     rewritten  .../fixtures/sample.docx
 
-summary: CLEAN=36  NO_TESTS=6  SELF_SEALING=1  TESTS_NOT_GREEN=1
+summary: CLEAN=46  NO_TESTS=6  SELF_SEALING=1  TESTS_NOT_GREEN=1
 ```
+
+`NO_TESTS` lanes are now **named**, not counted. A number nobody can act on
+hides a coverage gap as effectively as no number at all.
 
 One self-sealing check across 44 lanes, and it is the one a human had already
 found by hand. That is the point: the hand-found instance is now a check that
@@ -251,7 +254,8 @@ All detections are facts about the parsed syntax tree. Nothing is executed.
 
 | rule | what it means |
 |---|---|
-| `NO_ASSERTION` | a test method with no assertion on any path, following same-file helpers |
+| `NO_ASSERTION` | no assertion **and no call** — it cannot fail under any input |
+| `NO_ASSERTION_SMOKE` | no assertion, but a call that can raise: real but unable to check a value (advisory) |
 | `TAUTOLOGY` | true by construction — `assertTrue(True)`, `assertEqual(1, 1)`, a call-free expression compared with itself |
 | `SWALLOWED` | a handler that keeps nothing and says nothing — the failure is discarded |
 | `ASSERT_IS_THE_CHECK` | a module whose verification **is** bare asserts; `python -O` removes all of them |
@@ -261,11 +265,14 @@ A test that cannot fail is worse than a missing test: a missing test is visible
 in the count, and this one is not. It reports PASS forever and is counted in
 the total.
 
-### Observed run — 2026-09-19, 50 lanes, 52 test files
+### Observed run — 2026-09-19, 54 lanes, 61 test files, 1,696 test methods
 
 ```
-summary: ASSERT_INTERNAL_INVARIANT=3  ASSERT_IS_THE_CHECK=15
+summary: ASSERT_INTERNAL_INVARIANT=4  ASSERT_IS_THE_CHECK=15  NO_ASSERTION_SMOKE=1
 ```
+
+`NO_ASSERTION` is **zero**: no test on the tree is vacuous. That is a real
+result about a large body of work built fast by two model families.
 
 The fifteen are one file: a Chromium smoke script whose entire verification is
 bare `assert` statements, with one `raise` — `raise SystemExit(main())`, an
@@ -297,6 +304,13 @@ auditor's fault. All four causes are regression-tested in
    later. `SWALLOWED` now fires only on a handler that keeps nothing at all.
 4. **A single `raise` excused a module of fifteen bare asserts.** The first cut
    asked whether a module had *any* `raise`. It now compares counts.
+5. **It called a working smoke test vacuous.** A later lane landed
+   `test_json_is_serialisable`, whose entire body is `json.dumps(self.sweep())`.
+   No assertion — and it genuinely fails when the object is not serialisable.
+   Reporting that as "cannot fail" would be the auditor overstating its own
+   finding, which is the overreach it exists to catch. `NO_ASSERTION` now
+   requires no assertion **and no call**; everything else is `NO_ASSERTION_SMOKE`,
+   advisory.
 
 The pattern is the same one this lane is about. A tool that judges other
 people's evidence is itself evidence, and it has to be checked against the
@@ -324,7 +338,7 @@ original file before it was reported.
 | `TRACE_MAP.md` | **generated** from `bundle/`; a test fails if it goes stale |
 | Rule catalogue (30 rules) | **working**; T201 is advisory by design |
 | `audit_self_sealing.py` | **working** — 10 tests; behavioural detection, static scan advisory |
-| `audit_assertions.py` | **working** — 22 tests; syntax-level, executes nothing |
+| `audit_assertions.py` | **working** — 24 tests; syntax-level, executes nothing |
 | The `{narrative}` paragraph contract | **draft convention** — it works, but a real report would need this agreed with whoever writes the prose |
 
 ## What is still UNKNOWN
@@ -364,7 +378,7 @@ and re-run, never modified.
 | `audit_self_sealing.py` | cross-lane auditor for self-sealing / non-hermetic checks |
 | `test_audit_self_sealing.py` | 10 tests, including the two false positives it once produced |
 | `audit_assertions.py` | cross-lane auditor for tests that cannot fail |
-| `test_audit_assertions.py` | 22 tests, including the four false positives it once produced |
+| `test_audit_assertions.py` | 24 tests, including the five false positives it once produced |
 | `bundle/` | the clean miniature report bundle, with real source files in `sources/` |
 | `bundle_drifted/` | the same bundle with one record edited after the fact |
 | `TRACE_MAP.md` | generated statement → finding → citation → source map |

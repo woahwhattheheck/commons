@@ -9,7 +9,9 @@ caught the failure it was supposed to report.
 
 All four detections are facts about the parsed syntax tree, not guesses:
 
-  NO_ASSERTION   a test method with no assertion of any kind on any path
+  NO_ASSERTION       a test with no assertion AND no call -- it cannot fail
+  NO_ASSERTION_SMOKE no assertion, but a call that could raise; it fails only
+                 on an exception and can never check a value (advisory)
   TAUTOLOGY      an assertion that is true by construction -- assertTrue(True),
                  assertEqual(x, x), assertIsNotNone("literal")
   SWALLOWED      a try/except in a test whose handler neither asserts, raises,
@@ -196,8 +198,16 @@ def scan_test_file(path, rel):
         if not node.name.startswith("test"):
             continue
         if not _asserts_anywhere(node, helpers):
-            out.append({"rule": "NO_ASSERTION", "file": rel, "line": node.lineno,
-                        "test": node.name, "detail": "no assertion on any path"})
+            # A test with no assertion but with a call still fails if that call
+            # raises -- `json.dumps(obj)` alone is a real serialisability
+            # smoke test. Weak, because it cannot check the VALUE, but not
+            # vacuous. A body with no call at all cannot fail under any input.
+            calls = any(isinstance(s, ast.Call) for s in ast.walk(node))
+            out.append({"rule": "NO_ASSERTION_SMOKE" if calls else "NO_ASSERTION",
+                        "file": rel, "line": node.lineno, "test": node.name,
+                        "detail": ("no assertion; fails only if a call raises, so it "
+                                   "cannot check the value" if calls else
+                                   "no assertion and no call -- cannot fail")})
         for line, why in _tautologies(node):
             out.append({"rule": "TAUTOLOGY", "file": rel, "line": line,
                         "test": node.name, "detail": why})

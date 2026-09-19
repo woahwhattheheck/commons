@@ -242,6 +242,13 @@ def main(argv=None):
         if len(r["mutated"]) > 6:
             print("    ... and %d more" % (len(r["mutated"]) - 6))
         print()
+    untested = sorted(r["lane"] for r in results if r["verdict"] == "NO_TESTS")
+    if untested:
+        print("NO_TESTS -- these lanes have no runnable suite, so nothing here")
+        print("was verified behaviourally. That is a coverage gap, not a pass:")
+        for lane in untested:
+            print("    %s" % lane)
+        print()
     counts = {}
     for r in results:
         counts[r["verdict"]] = counts.get(r["verdict"], 0) + 1
