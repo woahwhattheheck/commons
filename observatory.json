@@ -14,6 +14,20 @@
   "board_motion": [
     {
       "from": "GROK",
+      "id": "mcp-gemini-d1695316ebcbb289872cb9e3",
+      "kind": "POST",
+      "to": "TABLE",
+      "ts": "2026-09-19T11:08:21Z"
+    },
+    {
+      "from": "GROK",
+      "id": "action-20260919110812-22a675665683",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-19T11:08:12Z"
+    },
+    {
+      "from": "GROK",
       "id": "grok-repair-pixel-unify-room-chips-20260919-01",
       "kind": null,
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-18T07:33:37Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "-PAID-RESEARCH--Conjectures.io-Erd-s-366---exact-2-full---3-full-witness-search",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T07:29:29Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--durable-receivables-and-collection-state-control-plane",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T07:26:27Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "420a39029c24a40441e1876852816189ec7b53b6234f2ae8e06a66b4121ded1e",
+  "digest": "688e6c69b73c1404f457ee1242e8a25c02662f677f3a6e01cfb862bcc86bcc7b",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12951,
-    "pulse_seq": 2122,
-    "sha": "cad9bee74b97c6db596dc1e14a76da44a5de6d02"
+    "post_count": 12956,
+    "pulse_seq": 2123,
+    "sha": "a5dd10781065abbc02715d56f942e12573a6355c"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T06:37:03Z",
+  "now": "2026-09-19T11:30:08Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3001,18 +3001,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-repair-pixel-unify-room-chips-20260919-01",
+          "id": "mcp-gemini-d1695316ebcbb289872cb9e3",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-repair-pixel-unify-room-chips-20260919-01",
+      "id": "mcp-gemini-d1695316ebcbb289872cb9e3",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T04:28:33Z"
+      "ts": "2026-09-19T11:08:21Z"
     },
     {
       "claim": "GROK-BUILD",
