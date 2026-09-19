@@ -1,0 +1,44 @@
+[
+  {
+    "errors": 0,
+    "execution_scope": "ephemeral cloud Python; not GitHub Actions or merge authority",
+    "failures": 0,
+    "literal_output": "test_bad_catalog_shapes_are_explicit_errors (__main__.Review047.test_bad_catalog_shapes_are_explicit_errors) ... ok\ntest_cadence_boundaries_at_calendar_extremes (__main__.Review047.test_cadence_boundaries_at_calendar_extremes) ... ok\ntest_chronology_cleanup_cross_product (__main__.Review047.test_chronology_cleanup_cross_product) ... ok\ntest_cli_invalid_input_does_not_truncate_existing_output (__main__.Review047.test_cli_invalid_input_does_not_truncate_existing_output) ... ok\ntest_cli_normal_optimized_and_api_agree (__main__.Review047.test_cli_normal_optimized_and_api_agree) ... ok\ntest_coverage_cross_product_and_no_mutation (__main__.Review047.test_coverage_cross_product_and_no_mutation) ... ok\ntest_coverage_order_and_duplicates_are_not_new_evidence (__main__.Review047.test_coverage_order_and_duplicates_are_not_new_evidence) ... ok\ntest_empty_catalog_is_not_an_evidenced_catalog (__main__.Review047.test_empty_catalog_is_not_an_evidenced_catalog) ... ok\ntest_explicit_not_required_does_not_claim_verification (__main__.Review047.test_explicit_not_required_does_not_claim_verification) ... ok\ntest_incomplete_coverage_has_stable_sorted_diagnostics (__main__.Review047.test_incomplete_coverage_has_stable_sorted_diagnostics) ... ok\ntest_negative_controls_detect_all_three_semantic_regressions (__main__.Review047.test_negative_controls_detect_all_three_semantic_regressions) ... ok\ntest_summary_is_additive_and_order_independent (__main__.Review047.test_summary_is_additive_and_order_independent) ... ok\ntest_unknown_checks_have_actionable_followups (__main__.Review047.test_unknown_checks_have_actionable_followups) ... ok\n\n----------------------------------------------------------------------\nRan 13 tests in 9.517s\n\nOK\n",
+    "operation": "uiowa047-review-harborc9v2-20260919",
+    "optimize": 0,
+    "panels": {
+      "chronology_cleanup_cross_product": 1440,
+      "coverage_cross_product": 676,
+      "detected_negative_controls": 3
+    },
+    "pass": true,
+    "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+    "reviewer": "ZZ-HARBOR-C9V2",
+    "skipped": 0,
+    "source_bytes": 15678,
+    "source_git_blob": "9def5e7e260d19d11e5fbb85b41d74a655cefcd7",
+    "source_sha256": "dfce5da9663a783fa678f70c930318ec9e7663ab35687437876873a66ebc1121",
+    "tests": 13
+  },
+  {
+    "errors": 0,
+    "execution_scope": "ephemeral cloud Python; not GitHub Actions or merge authority",
+    "failures": 0,
+    "literal_output": "test_bad_catalog_shapes_are_explicit_errors (__main__.Review047.test_bad_catalog_shapes_are_explicit_errors) ... ok\ntest_cadence_boundaries_at_calendar_extremes (__main__.Review047.test_cadence_boundaries_at_calendar_extremes) ... ok\ntest_chronology_cleanup_cross_product (__main__.Review047.test_chronology_cleanup_cross_product) ... ok\ntest_cli_invalid_input_does_not_truncate_existing_output (__main__.Review047.test_cli_invalid_input_does_not_truncate_existing_output) ... ok\ntest_cli_normal_optimized_and_api_agree (__main__.Review047.test_cli_normal_optimized_and_api_agree) ... ok\ntest_coverage_cross_product_and_no_mutation (__main__.Review047.test_coverage_cross_product_and_no_mutation) ... ok\ntest_coverage_order_and_duplicates_are_not_new_evidence (__main__.Review047.test_coverage_order_and_duplicates_are_not_new_evidence) ... ok\ntest_empty_catalog_is_not_an_evidenced_catalog (__main__.Review047.test_empty_catalog_is_not_an_evidenced_catalog) ... ok\ntest_explicit_not_required_does_not_claim_verification (__main__.Review047.test_explicit_not_required_does_not_claim_verification) ... ok\ntest_incomplete_coverage_has_stable_sorted_diagnostics (__main__.Review047.test_incomplete_coverage_has_stable_sorted_diagnostics) ... ok\ntest_negative_controls_detect_all_three_semantic_regressions (__main__.Review047.test_negative_controls_detect_all_three_semantic_regressions) ... ok\ntest_summary_is_additive_and_order_independent (__main__.Review047.test_summary_is_additive_and_order_independent) ... ok\ntest_unknown_checks_have_actionable_followups (__main__.Review047.test_unknown_checks_have_actionable_followups) ... ok\n\n----------------------------------------------------------------------\nRan 13 tests in 4.876s\n\nOK\n",
+    "operation": "uiowa047-review-harborc9v2-20260919",
+    "optimize": 1,
+    "panels": {
+      "chronology_cleanup_cross_product": 1440,
+      "coverage_cross_product": 676,
+      "detected_negative_controls": 3
+    },
+    "pass": true,
+    "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+    "reviewer": "ZZ-HARBOR-C9V2",
+    "skipped": 0,
+    "source_bytes": 15678,
+    "source_git_blob": "9def5e7e260d19d11e5fbb85b41d74a655cefcd7",
+    "source_sha256": "dfce5da9663a783fa678f70c930318ec9e7663ab35687437876873a66ebc1121",
+    "tests": 13
+  }
+]
