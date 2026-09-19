@@ -1,0 +1,242 @@
+{
+  "description": "Synthetic reconciliation fixture using identifier shapes and paths actually present in merged RFQ 18649 components on 2026-09-19. It is not University evidence.",
+  "links": [
+    {
+      "basis": "Both records explicitly identify the same NIST SP 800-218 publication; origin identities remain preserved.",
+      "from": {
+        "kind": "source",
+        "namespace": "framework-source-register",
+        "original_id": "NIST SP 800-218"
+      },
+      "link_id": "EQ-SOURCE-SSDF-01",
+      "relation": "equivalent",
+      "to": {
+        "kind": "source",
+        "namespace": "framework-crosswalk",
+        "original_id": "NIST SP 800-218"
+      }
+    },
+    {
+      "basis": "The synthetic fixtures explicitly use ESS as the same assessment service/group label.",
+      "from": {
+        "kind": "service",
+        "namespace": "traceability-rehearsal",
+        "original_id": "ESS"
+      },
+      "link_id": "EQ-SVC-ESS-01",
+      "relation": "equivalent",
+      "to": {
+        "kind": "service",
+        "namespace": "rating-model",
+        "original_id": "ESS"
+      }
+    },
+    {
+      "basis": "The synthetic fixtures explicitly use RIS as the same assessment service/group label.",
+      "from": {
+        "kind": "service",
+        "namespace": "traceability-rehearsal",
+        "original_id": "RIS"
+      },
+      "link_id": "EQ-SVC-RIS-01",
+      "relation": "equivalent",
+      "to": {
+        "kind": "service",
+        "namespace": "rating-model",
+        "original_id": "RIS"
+      }
+    },
+    {
+      "basis": "The synthetic fixtures explicitly use IAM as the same assessment service/group label.",
+      "from": {
+        "kind": "service",
+        "namespace": "traceability-rehearsal",
+        "original_id": "IAM"
+      },
+      "link_id": "EQ-SVC-IAM-01",
+      "relation": "equivalent",
+      "to": {
+        "kind": "service",
+        "namespace": "rating-model",
+        "original_id": "IAM"
+      }
+    },
+    {
+      "basis": "F-001 explicitly lists E-001 among its evidence_ids.",
+      "from": {
+        "kind": "finding",
+        "namespace": "traceability-rehearsal",
+        "original_id": "F-001"
+      },
+      "link_id": "REF-FINDING-EVIDENCE-01",
+      "relation": "references",
+      "to": {
+        "kind": "observation",
+        "namespace": "traceability-rehearsal",
+        "original_id": "E-001"
+      }
+    },
+    {
+      "basis": "R-001 explicitly lists F-002 in linked_findings.",
+      "from": {
+        "kind": "recommendation",
+        "namespace": "traceability-rehearsal",
+        "original_id": "R-001"
+      },
+      "link_id": "REF-RECOMMENDATION-FINDING-01",
+      "relation": "references",
+      "to": {
+        "kind": "finding",
+        "namespace": "traceability-rehearsal",
+        "original_id": "F-002"
+      }
+    }
+  ],
+  "records": [
+    {
+      "kind": "source",
+      "label": "SSDF 1.1 primary publication",
+      "namespace": "framework-source-register",
+      "original_id": "NIST SP 800-218",
+      "source_path": "revenue/uiowa_rfq_18649_workbench/framework_crosswalk/20-source-version-register.csv",
+      "source_revision": "github-blob:2db49fad18fe1f0642bec62ca6f4f38069818f1e"
+    },
+    {
+      "kind": "source",
+      "label": "SSDF publication cited by crosswalk",
+      "namespace": "framework-crosswalk",
+      "original_id": "NIST SP 800-218",
+      "source_path": "revenue/uiowa_rfq_18649_workbench/framework_crosswalk/20-framework-crosswalk.csv",
+      "source_revision": "github-blob:76ab00d1eb1d96274cdfcf49d793bc3a8d5792b0"
+    },
+    {
+      "kind": "observation",
+      "label": "Fictional enrollment change request observation",
+      "namespace": "traceability-rehearsal",
+      "original_id": "E-001",
+      "source_path": "revenue/uiowa_rfq_18649_traceability_rehearsal/evidence.csv",
+      "source_revision": "github-blob:fe11729edc5ec8c0c6e6adbd6238777118acc16d"
+    },
+    {
+      "kind": "observation",
+      "label": "Fictional RIS design-record observation",
+      "namespace": "traceability-rehearsal",
+      "original_id": "E-004",
+      "source_path": "revenue/uiowa_rfq_18649_traceability_rehearsal/evidence.csv",
+      "source_revision": "github-blob:fe11729edc5ec8c0c6e6adbd6238777118acc16d"
+    },
+    {
+      "kind": "observation",
+      "label": "Synthetic rating-model evidence reference",
+      "namespace": "rating-model",
+      "original_id": "SYN-M01",
+      "source_path": "revenue/uiowa_rfq_18649_rating_model/synthetic_case_mixed_services.json",
+      "source_revision": "github-blob:35d5b2f0dc4fdd59a7f8902b8cb069ee499a1f7f"
+    },
+    {
+      "kind": "observation",
+      "label": "Synthetic ESS monitoring event",
+      "namespace": "security-event-review",
+      "original_id": "ESS-MON-001",
+      "source_path": "revenue/uiowa_rfq_18649_security_event_review/fixtures/synthetic_events.json",
+      "source_revision": "github-blob:3d988e919f9c395eeb08f8171f04cafaea3df143"
+    },
+    {
+      "kind": "finding",
+      "label": "Traceable acceptance chain",
+      "namespace": "traceability-rehearsal",
+      "original_id": "F-001",
+      "source_path": "revenue/uiowa_rfq_18649_traceability_rehearsal/findings.csv",
+      "source_revision": "github-blob:f3dfb204685e72510a4c1bf591e72529702020e9"
+    },
+    {
+      "kind": "finding",
+      "label": "Propagation evidence remains incomplete",
+      "namespace": "traceability-rehearsal",
+      "original_id": "F-002",
+      "source_path": "revenue/uiowa_rfq_18649_traceability_rehearsal/findings.csv",
+      "source_revision": "github-blob:f3dfb204685e72510a4c1bf591e72529702020e9"
+    },
+    {
+      "kind": "recommendation",
+      "label": "Retain one RIS end-to-end propagation example",
+      "namespace": "traceability-rehearsal",
+      "original_id": "R-001",
+      "source_path": "revenue/uiowa_rfq_18649_traceability_rehearsal/recommendations.csv",
+      "source_revision": "github-blob:e81ad1fe6cc691ae8b00d47ab3052fca13e4b047"
+    },
+    {
+      "kind": "recommendation",
+      "label": "Connect acceptance evidence to release handoff",
+      "namespace": "outcome-measurement",
+      "original_id": "REC-DEV-01",
+      "source_path": "revenue/uiowa_rfq_18649_outcome_measurement/recommendations.csv",
+      "source_revision": "github-blob:da9b90258aa70798d0d55b1ce115fd331e853c0a"
+    },
+    {
+      "kind": "recommendation",
+      "label": "Establish repeatable security-event review ownership and disposition",
+      "namespace": "outcome-measurement",
+      "original_id": "REC-SEC-01",
+      "source_path": "revenue/uiowa_rfq_18649_outcome_measurement/recommendations.csv",
+      "source_revision": "github-blob:da9b90258aa70798d0d55b1ce115fd331e853c0a"
+    },
+    {
+      "kind": "service",
+      "label": "ESS service label",
+      "namespace": "traceability-rehearsal",
+      "original_id": "ESS",
+      "source_path": "revenue/uiowa_rfq_18649_traceability_rehearsal/evidence.csv",
+      "source_revision": "github-blob:fe11729edc5ec8c0c6e6adbd6238777118acc16d"
+    },
+    {
+      "kind": "service",
+      "label": "RIS service label",
+      "namespace": "traceability-rehearsal",
+      "original_id": "RIS",
+      "source_path": "revenue/uiowa_rfq_18649_traceability_rehearsal/evidence.csv",
+      "source_revision": "github-blob:fe11729edc5ec8c0c6e6adbd6238777118acc16d"
+    },
+    {
+      "kind": "service",
+      "label": "IAM service label",
+      "namespace": "traceability-rehearsal",
+      "original_id": "IAM",
+      "source_path": "revenue/uiowa_rfq_18649_traceability_rehearsal/evidence.csv",
+      "source_revision": "github-blob:fe11729edc5ec8c0c6e6adbd6238777118acc16d"
+    },
+    {
+      "kind": "service",
+      "label": "ESS service label used by mixed-service rating fixture",
+      "namespace": "rating-model",
+      "original_id": "ESS",
+      "source_path": "revenue/uiowa_rfq_18649_rating_model/synthetic_case_mixed_services.json",
+      "source_revision": "github-blob:35d5b2f0dc4fdd59a7f8902b8cb069ee499a1f7f"
+    },
+    {
+      "kind": "service",
+      "label": "RIS service label used by mixed-service rating fixture",
+      "namespace": "rating-model",
+      "original_id": "RIS",
+      "source_path": "revenue/uiowa_rfq_18649_rating_model/synthetic_case_mixed_services.json",
+      "source_revision": "github-blob:35d5b2f0dc4fdd59a7f8902b8cb069ee499a1f7f"
+    },
+    {
+      "kind": "service",
+      "label": "IAM service label used by mixed-service rating fixture",
+      "namespace": "rating-model",
+      "original_id": "IAM",
+      "source_path": "revenue/uiowa_rfq_18649_rating_model/synthetic_case_mixed_services.json",
+      "source_revision": "github-blob:35d5b2f0dc4fdd59a7f8902b8cb069ee499a1f7f"
+    },
+    {
+      "kind": "service",
+      "label": "Fictional ESS service label",
+      "namespace": "security-event-review",
+      "original_id": "ESS-FICTIONAL",
+      "source_path": "revenue/uiowa_rfq_18649_security_event_review/fixtures/synthetic_events.json",
+      "source_revision": "github-blob:3d988e919f9c395eeb08f8171f04cafaea3df143"
+    }
+  ],
+  "schema_version": "uiowa-id-map/v1"
+}
