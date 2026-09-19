@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 190,
-    "open_pull_requests": 120,
-    "runs_in_progress": 14,
-    "runs_queued": 824
+    "open_pull_requests": 121,
+    "runs_in_progress": 13,
+    "runs_queued": 828
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -66,6 +66,17 @@
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-heron/uiowa-120-readable-result",
+      "created_at": "2026-09-19T14:41:08Z",
+      "draft": false,
+      "head_sha": "ac7ef5ee8e7eb28653ef2971c2535fd76214a697",
+      "number": 16322,
+      "title": "UIOWA-120: deliver the worked source-impact report and reader walkthrough",
+      "updated_at": "2026-09-19T14:41:08Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -164,17 +175,6 @@
       "number": 16312,
       "title": "fix(uiowa): recover capacity benchmark with non-destructive generation",
       "updated_at": "2026-09-19T14:31:59Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/zz-celadon-dx32-extraction-fidelity-20260919",
-      "created_at": "2026-09-19T14:29:38Z",
-      "draft": false,
-      "head_sha": "eaa29d8cce87928c4aab92321be3099966d69473",
-      "number": 16309,
-      "title": "UIOWA-032: source-snapshot and locator-fidelity repair",
-      "updated_at": "2026-09-19T14:39:14Z"
     }
   ],
   "open_heads": {
@@ -297,11 +297,12 @@
     "16318": "2822e7ca2888eaa6c1d40c4c782c54b1ba1b90e1",
     "16319": "bf37c706860821f1f6b1139fab81e5444d3786ee",
     "16320": "ff9a08f04298e68a371f54f5b1f414d090755ebb",
-    "16321": "d74367c09d27cdecb03017c12d58d3f112bca336"
+    "16321": "d74367c09d27cdecb03017c12d58d3f112bca336",
+    "16322": "ac7ef5ee8e7eb28653ef2971c2535fd76214a697"
   },
-  "pulls_listed": 120,
+  "pulls_listed": 121,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 58.9,
+  "queue_depth_per_runner": 63.7,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -471,6 +472,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T14:40:47Z",
+  "unchanged_since": "2026-09-19T14:41:13Z",
   "undatable_pulls": []
 }
