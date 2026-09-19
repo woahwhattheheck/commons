@@ -46,6 +46,7 @@ python tools/repo_estate_rationalizer/rationalizer.py verify \
 ```
 
 Production compile and verify use process-owned current UTC. Historical/frozen-time compilation remains internal to tests.
+The production generation also owns a frozen validator/hash/time dependency graph, so post-import rebinding of schema helpers or policy constants cannot widen freshness, shape, or authority admission.
 
 ## Evidence shape
 
