@@ -185,6 +185,34 @@ def snippet(text: str, terms: list[str], radius: int = 95) -> str:
 
 
 
+def _result(record: dict[str, Any], docs: dict[str, dict[str, Any]], terms: list[str],
+            score: float | None, integrity: str) -> dict[str, Any]:
+    return {
+        "record_id": record["record_id"],
+        "record_type": record["record_type"],
+        "score": score,
+        "title": record.get("title", ""),
+        "snippet": snippet(record.get("text", ""), terms),
+        "source_url": record["source_url"],
+        "source_path": record["source_path"],
+        "upstream_blob_sha": record["upstream_blob_sha"],
+        "locator": record["locator"],
+        "linked_ids": list(record.get("linked_ids", [])),
+        "snippet_exact": exact_snippet(record, terms),
+        "record_url": record.get("record_url"),
+        "record_locator": record.get("record_locator"),
+        "underlying_source_url": record.get("underlying_source_url"),
+        "original": copy.deepcopy(record.get("original", {})),
+        "synthetic": record.get("synthetic"),
+        "warnings": list(record.get("warnings", [])),
+        "provenance": dict(record.get("provenance", {"local_bytes_verified": False})),
+        "index_integrity": integrity,
+        "notice": NOTICE,
+        "link_diagnostics": [{"code": "MISSING_LINKED_RECORD", "record_id": link}
+                             for link in record.get("linked_ids", []) if link not in docs],
+    }
+
+
 def search(index: dict[str, Any], query: str, limit: int = 5, record_types: set[str] | None = None) -> list[dict[str, Any]]:
     if not isinstance(index, dict) or index.get("schema") != SCHEMA:
         raise SearchError("unexpected index schema")
@@ -217,30 +245,25 @@ def search(index: dict[str, Any], query: str, limit: int = 5, record_types: set[
         if phrase and phrase in searchable:
             scores[rid] += 1.0
     ranked = sorted(scores, key=lambda rid: (-scores[rid], rid))[:limit]
-    return [{
-        "record_id": rid,
-        "record_type": docs[rid]["record_type"],
-        "score": round(scores[rid], 6),
-        "title": docs[rid].get("title", ""),
-        "snippet": snippet(docs[rid].get("text", ""), terms),
-        "source_url": docs[rid]["source_url"],
-        "source_path": docs[rid]["source_path"],
-        "upstream_blob_sha": docs[rid]["upstream_blob_sha"],
-        "locator": docs[rid]["locator"],
-        "linked_ids": docs[rid].get("linked_ids", []),
-        "snippet_exact": exact_snippet(docs[rid], terms),
-        "record_url": docs[rid].get("record_url"),
-        "record_locator": docs[rid].get("record_locator"),
-        "underlying_source_url": docs[rid].get("underlying_source_url"),
-        "original": copy.deepcopy(docs[rid].get("original", {})),
-        "synthetic": docs[rid].get("synthetic"),
-        "warnings": list(docs[rid].get("warnings", [])),
-        "provenance": dict(docs[rid].get("provenance", {"local_bytes_verified": False})),
-        "index_integrity": "digest_verified" if "content_digest" in index else "legacy_unbound",
-        "notice": NOTICE,
-        "link_diagnostics": [{"code": "MISSING_LINKED_RECORD", "record_id": link}
-                             for link in docs[rid].get("linked_ids", []) if link not in docs],
-    } for rid in ranked]
+    integrity = "digest_verified" if "content_digest" in index else "legacy_unbound"
+    return [_result(docs[rid], docs, terms, round(scores[rid], 6), integrity) for rid in ranked]
+
+
+def lookup(index: dict[str, Any], record_id: str) -> dict[str, Any] | None:
+    """Follow a native ID exactly; do not tokenize, case-fold, alias, or rerank it."""
+    if not isinstance(index, dict) or index.get("schema") != SCHEMA:
+        raise SearchError("unexpected index schema")
+    if not isinstance(record_id, str) or not record_id:
+        raise SearchError("record_id must be a nonempty string")
+    verify_index(index)
+    validate_records(index["documents"])
+    docs = {row["record_id"]: row for row in index["documents"]}
+    if record_id not in docs:
+        return None
+    integrity = "digest_verified" if "content_digest" in index else "legacy_unbound"
+    result = _result(docs[record_id], docs, tokenize(record_id), None, integrity)
+    result["retrieval_mode"] = "exact_id"
+    return result
 
 
 def load_manifest(path: Path) -> list[dict[str, Any]]:
@@ -276,6 +299,9 @@ def main() -> int:
     q.add_argument("query")
     q.add_argument("--limit", type=int, default=5)
     q.add_argument("--type", action="append", dest="types")
+    by_id = sub.add_parser("lookup")
+    by_id.add_argument("index", type=Path)
+    by_id.add_argument("record_id")
     args = ap.parse_args()
     if args.cmd == "build":
         index = build_index(load_manifest(args.manifest))
@@ -285,8 +311,14 @@ def main() -> int:
         if args.index.stat().st_size > MAX_BYTES:
             raise SearchError("index exceeds byte limit")
         index = read_json(args.index.read_bytes())
+        if args.cmd == "lookup":
+            result = lookup(index, args.record_id)
+            print(json.dumps({"status": "found" if result is not None else "not_found",
+                              "record_id": args.record_id, "result": result, "notice": NOTICE},
+                             ensure_ascii=False, indent=2))
+            return 0 if result is not None else 1
         result = search(index, args.query, args.limit, set(args.types) if args.types else None)
-        print(json.dumps({"query": args.query, "results": result}, ensure_ascii=False, indent=2))
+        print(json.dumps({"query": args.query, "results": result, "notice": NOTICE}, ensure_ascii=False, indent=2))
     return 0
 
 if __name__ == "__main__":
