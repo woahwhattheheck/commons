@@ -2,11 +2,11 @@
 """Generate the checked-in synthetic TXT/DOCX/PDF corpus without external packages."""
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import zipfile
 from pathlib import Path
-from xml.sax.saxutils import escape
 
 HERE = Path(__file__).resolve().parent
 OUT = HERE / "fixtures"
@@ -77,38 +77,60 @@ def _write_minimal_docx(path: Path) -> None:
   <w:p><w:r><w:t>Post-incident actions are tracked to closure in this synthetic example.</w:t></w:r></w:p>
   <w:sectPr/>
 </w:body></w:document>"""
-    with zipfile.ZipFile(path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
-        zf.writestr("[Content_Types].xml", content_types)
-        zf.writestr("_rels/.rels", rels)
-        zf.writestr("word/document.xml", document)
+    # Fixed metadata and STORE avoid clock/platform/zlib-dependent fixture bytes.
+    with zipfile.ZipFile(path, "w", compression=zipfile.ZIP_STORED) as zf:
+        for name, text in (("[Content_Types].xml", content_types),
+                           ("_rels/.rels", rels), ("word/document.xml", document)):
+            entry = zipfile.ZipInfo(name, date_time=(1980, 1, 1, 0, 0, 0))
+            entry.create_system = 3
+            entry.external_attr = 0o100644 << 16
+            entry.compress_type = zipfile.ZIP_STORED
+            zf.writestr(entry, text.encode("utf-8"))
 
 
-def main() -> None:
-    OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / "sample.txt").write_text(
-        "# Software Development\n"
-        "Pull requests require an independent review before merge.\n\n"
-        "## Deployment\n"
-        "Rollback evidence is attached to each synthetic release record.\n",
-        encoding="utf-8",
+FIXTURE_NAMES = ("blank.pdf", "sample.docx", "sample.pdf", "sample.txt")
+
+
+def build_corpus(output_dir: Path) -> dict:
+    """Generate only the named synthetic fixtures; never enumerate unrelated files.
+
+    This is an explicit fixture-authoring command, not a verifier. Tests call it
+    inside temporary directories and compare against independently pinned hashes.
+    """
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    (output_dir / "sample.txt").write_bytes(
+        ("# Software Development\n"
+         "Pull requests require an independent review before merge.\n\n"
+         "## Deployment\n"
+         "Rollback evidence is attached to each synthetic release record.\n").encode("utf-8")
     )
-    _write_minimal_docx(OUT / "sample.docx")
+    _write_minimal_docx(output_dir / "sample.docx")
     _write_minimal_pdf(
-        OUT / "sample.pdf",
+        output_dir / "sample.pdf",
         ["Synthetic PDF page one: release checklist.", "Synthetic PDF page two: monitoring evidence."],
     )
-    _write_minimal_pdf(OUT / "blank.pdf", [""])
+    _write_minimal_pdf(output_dir / "blank.pdf", [""])
     manifest = {}
-    for path in sorted(OUT.iterdir()):
-        if path.name == "manifest.json":
-            continue
-        manifest[path.name] = {
-            "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
-            "bytes": path.stat().st_size,
+    for name in FIXTURE_NAMES:
+        raw = (output_dir / name).read_bytes()
+        manifest[name] = {
+            "sha256": hashlib.sha256(raw).hexdigest(),
+            "bytes": len(raw),
             "synthetic": True,
         }
-    (OUT / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    (output_dir / "manifest.json").write_bytes(
+        (json.dumps(manifest, indent=2, sort_keys=True) + "\n").encode("utf-8")
+    )
+    return manifest
+
+
+def main(output_dir: Path | None = None) -> None:
+    build_corpus(OUT if output_dir is None else output_dir)
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output-dir", type=Path, default=OUT,
+                        help="Fixture destination; tests always use temporary directories")
+    main(parser.parse_args().output_dir)

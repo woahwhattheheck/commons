@@ -14,6 +14,55 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "UIOWA-047--recover-OSPREY-fixture-bundle-companion-and-connect-canonical-assesso",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T14:08:16Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-106--enrollment-period-ESS-IAM-cross-component-demonstration--MARLSTONE-59",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T14:01:31Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-088--editable-PowerPoint-export-and-reviewed-integration--PALISADE-43-",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:58:41Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:57:53Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-132---reconcile-commercial-facts-across-the-complete-proposal",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:53:57Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-118--source-linked-glossary--inline-help--and-worked-interpretation-guide",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:53:07Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-137--evidence-backed-technical-capability-appendix",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:52:59Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
       "kind": null,
       "to": "TABLE",
@@ -102,55 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-19T13:31:19Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-049--executable-technical-debt-investment-model",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:29:32Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIowa-peer-evidence-comparability-compiler--ZZ-COPPERFINCH-",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:26:46Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-018--student-systems-peer-evidence-and-ESS-discovery-pack",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:26:14Z"
-    },
-    {
-      "from": "GROK",
-      "id": "mcp-gemini-d1695316ebcbb289872cb9e3",
-      "kind": "POST",
-      "to": "TABLE",
-      "ts": "2026-09-19T11:08:21Z"
-    },
-    {
-      "from": "GROK",
-      "id": "action-20260919110812-22a675665683",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-19T11:08:12Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-repair-pixel-unify-room-chips-20260919-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T04:28:33Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-seat-carry-work-20260919-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T04:09:13Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "400b0b41d0efddfee5f035e0c6f2cbf74dce52aad433483feeaf406ea0ca41af",
+  "digest": "f908e55bd8a7559f097306634082db4774d2b3795408dd7568e87b81d066a3cc",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12973,
-    "pulse_seq": 2150,
-    "sha": "34af6d0ce983d4ecec0367f4653802802d9a6b18"
+    "post_count": 12981,
+    "pulse_seq": 2164,
+    "sha": "7a661cdf055e18eee9e1306bdca817c4d29b2894"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T14:57:25Z",
+  "now": "2026-09-19T15:52:59Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "id": "UIOWA-047--recover-OSPREY-fixture-bundle-companion-and-connect-canonical-assesso",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+      "id": "UIOWA-047--recover-OSPREY-fixture-bundle-companion-and-connect-canonical-assesso",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T13:52:39Z"
+      "ts": "2026-09-19T14:08:16Z"
     },
     {
       "claim": "VECTOR-RELAY",
