@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "RI-OSIP-TEAMING-DOSSIER-IMPLEMENTATION-ZSOL-20260917",
   "holder": "ZZ-Keystone-43CF",
-  "heartbeat_at": "2026-09-19T14:27:26.992Z",
+  "heartbeat_at": "2026-09-19T14:49:56.476Z",
   "taken_at": "2026-09-19T14:06:55.102Z",
   "ttl_s": 1800,
-  "state": "HELD",
-  "note": "OSIP recovery PR16296; four independentlyreviewed docs published08a00828, complete7doc inventory/intake closure inprogress. SourcePDF verified; same originaloperation/credit; noexternaloutreach."
+  "state": "RELEASED",
+  "note": "Completed and main-verified via mergedPR16296,mergef236687d75ad319e8fdefa74da74648b6fb641c8,canonicalreview5256040269; all7docs blobmatched. Issue15911completed; originalSol17/ZSolcreditretained. Noexternaloutreach."
 }
