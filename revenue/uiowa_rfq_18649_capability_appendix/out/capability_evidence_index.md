@@ -80,7 +80,7 @@ trace validation: PASS
 ```
 ......
 ----------------------------------------------------------------------
-Ran 6 tests in 0.006s
+Ran 6 tests in 0.004s
 
 OK
 ```
@@ -111,7 +111,7 @@ OK
 .....................................error: cannot read estate file /home/user/commons/revenue/uiowa_rfq_18649_recovery_evidence/nope.json: [Errno 2] No such file or directory: '/home/user/commons/revenue/uiowa_rfq_18649_recovery_evidence/nope.json'
 .............
 ----------------------------------------------------------------------
-Ran 50 tests in 0.031s
+Ran 50 tests in 0.034s
 
 OK
 ```
@@ -148,13 +148,13 @@ flagged: 2   neutralized: 0
 
 FAIL - scope drift detected:
 
-[AV-01] audit_verdict  /tmp/tmp90xr62z4/drifted.md:1
+[AV-01] audit_verdict  /tmp/tmpw7_954ok/drifted.md:1
   matched : "non-compliant"
   in      : The service is non-compliant and we recommend purchasing a new tool.
   why     : States a compliance determination. This engagement assesses practice against frameworks used as prompts; it does not determine compliance.
   rewrite : Describe the observed practice and the gap against the referenced clause, e.g. 'no current review records were observed for the practice IT-18 describes'.
 
-[PP-01] product_procurement  /tmp/tmp90xr62z4/drifted.md:1
+[PP-01] product_procurement  /tmp/tmpw7_954ok/drifted.md:1
   matched : "we recommend purchasing"
   in      : The service is non-compliant and we recommend purchasing a new tool.
   why     : Recommends a purchase. Procurement is outside this engagement.
@@ -170,7 +170,7 @@ flagged: 0   neutralized: 0
 PASS - no scope drift detected.
 .............
 ----------------------------------------------------------------------
-Ran 55 tests in 0.147s
+Ran 55 tests in 0.104s
 
 OK
 ```
@@ -180,7 +180,7 @@ OK
 | File | Digest at demonstration |
 |---|---|
 | `revenue/uiowa_rfq_18649_report_structure/report_structure.py` | sha256:f7a6674a4c57677d0d2978d57c9a4b5e1c07b3bf99f5fe9528dc2814505774a6 |
-| `revenue/uiowa_rfq_18649_report_structure/scope_guard.py` | sha256:72d64630e8b1304474afbf278ef614404c299f7e8fce1df165a0951ee7de064c |
+| `revenue/uiowa_rfq_18649_report_structure/scope_guard.py` | sha256:23d9201daa3e24b58716d43dfec8a4d730822a6e769abc44e4f389c78db206a8 |
 | `revenue/uiowa_rfq_18649_report_structure/test_report_structure.py` | sha256:5f69b2729ab8c4d773cc2c47c2b64a9fd876e14b58f000232499766a1bbd1fdd |
 
 ## CAP-06 - evidence organization

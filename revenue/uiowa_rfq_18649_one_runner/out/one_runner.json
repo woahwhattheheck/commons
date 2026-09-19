@@ -1,0 +1,1528 @@
+{
+  "observed_on": "2026-09-19",
+  "root": "/home/user/commons/revenue",
+  "summary": {
+    "lanes_seen": 69,
+    "lanes_assessed": 63,
+    "lanes_without_a_suite": 6,
+    "cwd_dependent_lanes": [],
+    "distinct_top_level_modules": 155,
+    "module_collisions": 7,
+    "colliding_modules": [
+      "analyze",
+      "cli",
+      "make_fixtures",
+      "model",
+      "scan",
+      "schema",
+      "sensitivity"
+    ],
+    "shadowed_lanes": [
+      "uiowa_rfq_18649_base_fee_economics",
+      "uiowa_rfq_18649_import_safety",
+      "uiowa_rfq_18649_milestone_packets",
+      "uiowa_rfq_18649_outcome_measurement",
+      "uiowa_rfq_18649_release_recovery_case",
+      "uiowa_rfq_18649_report_visuals",
+      "uiowa_rfq_18649_traceability",
+      "uiowa_rfq_18649_uncertainty_lint"
+    ],
+    "leaking_lanes": [],
+    "leakage_method": "isolated copy per lane; the live tree is never watched",
+    "leakage_assessed": 63,
+    "single_process_safe": false,
+    "cwd_safe": true
+  },
+  "cwd_independence": [
+    {
+      "lane": "uiowa_rfq_18649_acceptance_map",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_adoption_readiness",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_ai_decision_case",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_ai_eval_kit",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_ai_integration",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_ai_opportunity_portfolio",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_ai_policy_to_workflow",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_ai_use_inventory",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_base_fee_economics",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_bid_pack",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_build_board",
+      "status": "NO_SUITE",
+      "from_lane": "UNKNOWN",
+      "from_root": "UNKNOWN",
+      "detail": "no test suite; not assessed"
+    },
+    {
+      "lane": "uiowa_rfq_18649_capability_appendix",
+      "status": "PASS",
+      "from_lane": 1,
+      "from_root": 1,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_capacity_benchmark",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_capacity_feasibility",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_capacity_scan",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_claim_audit",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_claim_guard",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_closeout",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_contractor_transition",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_deadline_continuity",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_dedup_threshold",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_delivery_metrics",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_delivery_scan",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_doc_usability",
+      "status": "NO_SUITE",
+      "from_lane": "UNKNOWN",
+      "from_root": "UNKNOWN",
+      "detail": "no test suite; not assessed"
+    },
+    {
+      "lane": "uiowa_rfq_18649_document_extraction",
+      "status": "PASS",
+      "from_lane": 1,
+      "from_root": 1,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_economics_resource_adapters",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_exec_summary",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_exit_signals",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_export_safety",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_filesystem_safety",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_handoff",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_import_safety",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_incident_learning",
+      "status": "NO_SUITE",
+      "from_lane": "UNKNOWN",
+      "from_root": "UNKNOWN",
+      "detail": "no test suite; not assessed"
+    },
+    {
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_integration",
+      "status": "NO_SUITE",
+      "from_lane": "UNKNOWN",
+      "from_root": "UNKNOWN",
+      "detail": "no test suite; not assessed"
+    },
+    {
+      "lane": "uiowa_rfq_18649_labeling_integrity",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_milestone_packets",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_mobilization",
+      "status": "NO_SUITE",
+      "from_lane": "UNKNOWN",
+      "from_root": "UNKNOWN",
+      "detail": "no test suite; not assessed"
+    },
+    {
+      "lane": "uiowa_rfq_18649_observability",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_operator_handoff",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_outcome_measurement",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_print_pagination",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_prioritization",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_qa_refusal_contract",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_question_cards",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_rating_model",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_readout_deck",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_recovery_evidence",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_release_provenance",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_release_recovery_case",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_report_structure",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_report_visuals",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_roadmap_coherence",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_roadmap_dependencies",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_run_sweep",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_scope_change",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_secure_guidance",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_security_event_review",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_synthetic_collection",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_test_data_readiness",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_test_proof_audit",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_traceability",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_traceability_rehearsal",
+      "status": "NO_SUITE",
+      "from_lane": "UNKNOWN",
+      "from_root": "UNKNOWN",
+      "detail": "no test suite; not assessed"
+    },
+    {
+      "lane": "uiowa_rfq_18649_uncertainty_lint",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_unknown_propagation",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_vocabulary_crosswalk",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_workbench",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    },
+    {
+      "lane": "uiowa_rfq_18649_workshare",
+      "status": "PASS",
+      "from_lane": 0,
+      "from_root": 0,
+      "detail": "same outcome from both working directories",
+      "tail": ""
+    }
+  ],
+  "modules": {
+    "distinct_modules": 155,
+    "collisions": [
+      {
+        "module": "analyze",
+        "lanes": [
+          "uiowa_rfq_18649_base_fee_economics",
+          "uiowa_rfq_18649_outcome_measurement"
+        ],
+        "lane_count": 2
+      },
+      {
+        "module": "cli",
+        "lanes": [
+          "uiowa_rfq_18649_qa_refusal_contract",
+          "uiowa_rfq_18649_uncertainty_lint"
+        ],
+        "lane_count": 2
+      },
+      {
+        "module": "make_fixtures",
+        "lanes": [
+          "uiowa_rfq_18649_release_provenance",
+          "uiowa_rfq_18649_release_recovery_case"
+        ],
+        "lane_count": 2
+      },
+      {
+        "module": "model",
+        "lanes": [
+          "uiowa_rfq_18649_ai_decision_case",
+          "uiowa_rfq_18649_report_visuals"
+        ],
+        "lane_count": 2
+      },
+      {
+        "module": "scan",
+        "lanes": [
+          "uiowa_rfq_18649_exit_signals",
+          "uiowa_rfq_18649_import_safety"
+        ],
+        "lane_count": 2
+      },
+      {
+        "module": "schema",
+        "lanes": [
+          "uiowa_rfq_18649_ai_use_inventory",
+          "uiowa_rfq_18649_milestone_packets",
+          "uiowa_rfq_18649_traceability"
+        ],
+        "lane_count": 3
+      },
+      {
+        "module": "sensitivity",
+        "lanes": [
+          "uiowa_rfq_18649_ai_decision_case",
+          "uiowa_rfq_18649_base_fee_economics"
+        ],
+        "lane_count": 2
+      }
+    ],
+    "collision_count": 7
+  },
+  "crosstalk": [
+    {
+      "module": "analyze",
+      "lanes": [
+        "uiowa_rfq_18649_base_fee_economics",
+        "uiowa_rfq_18649_outcome_measurement"
+      ],
+      "resolved_to": "uiowa_rfq_18649_base_fee_economics/analyze.py",
+      "shadowed": [
+        "uiowa_rfq_18649_outcome_measurement"
+      ],
+      "observations": [
+        {
+          "asked_from": "/home/user/commons/revenue/uiowa_rfq_18649_base_fee_economics",
+          "resolved_to": "/home/user/commons/revenue/uiowa_rfq_18649_base_fee_economics/analyze.py"
+        },
+        {
+          "asked_from": "/home/user/commons/revenue/uiowa_rfq_18649_outcome_measurement",
+          "resolved_to": "/home/user/commons/revenue/uiowa_rfq_18649_base_fee_economics/analyze.py"
+        }
+      ],
+      "detail": "1 lane(s) asked for their own `analyze` and received another lane's file, with no error raised."
+    },
+    {
+      "module": "cli",
+      "lanes": [
+        "uiowa_rfq_18649_qa_refusal_contract",
+        "uiowa_rfq_18649_uncertainty_lint"
+      ],
+      "resolved_to": "uiowa_rfq_18649_qa_refusal_contract/cli.py",
+      "shadowed": [
+        "uiowa_rfq_18649_uncertainty_lint"
+      ],
+      "observations": [
+        {
+          "asked_from": "/home/user/commons/revenue/uiowa_rfq_18649_qa_refusal_contract",
+          "resolved_to": "/home/user/commons/revenue/uiowa_rfq_18649_qa_refusal_contract/cli.py"
+        },
+        {
+          "asked_from": "/home/user/commons/revenue/uiowa_rfq_18649_uncertainty_lint",
+          "resolved_to": "/home/user/commons/revenue/uiowa_rfq_18649_qa_refusal_contract/cli.py"
+        }
+      ],
+      "detail": "1 lane(s) asked for their own `cli` and received another lane's file, with no error raised."
+    },
+    {
+      "module": "make_fixtures",
+      "lanes": [
+        "uiowa_rfq_18649_release_provenance",
+        "uiowa_rfq_18649_release_recovery_case"
+      ],
+      "resolved_to": "uiowa_rfq_18649_release_provenance/make_fixtures.py",
+      "shadowed": [
+        "uiowa_rfq_18649_release_recovery_case"
+      ],
+      "observations": [
+        {
+          "asked_from": "/home/user/commons/revenue/uiowa_rfq_18649_release_provenance",
+          "resolved_to": "/home/user/commons/revenue/uiowa_rfq_18649_release_provenance/make_fixtures.py"
+        },
+        {
+          "asked_from": "/home/user/commons/revenue/uiowa_rfq_18649_release_recovery_case",
+          "resolved_to": "/home/user/commons/revenue/uiowa_rfq_18649_release_provenance/make_fixtures.py"
+        }
+      ],
+      "detail": "1 lane(s) asked for their own `make_fixtures` and received another lane's file, with no error raised."
+    },
+    {
+      "module": "model",
+      "lanes": [
+        "uiowa_rfq_18649_ai_decision_case",
+        "uiowa_rfq_18649_report_visuals"
+      ],
+      "resolved_to": "uiowa_rfq_18649_ai_decision_case/model.py",
+      "shadowed": [
+        "uiowa_rfq_18649_report_visuals"
+      ],
+      "observations": [
+        {
+          "asked_from": "/home/user/commons/revenue/uiowa_rfq_18649_ai_decision_case",
+          "resolved_to": "/home/user/commons/revenue/uiowa_rfq_18649_ai_decision_case/model.py"
+        },
+        {
+          "asked_from": "/home/user/commons/revenue/uiowa_rfq_18649_report_visuals",
+          "resolved_to": "/home/user/commons/revenue/uiowa_rfq_18649_ai_decision_case/model.py"
+        }
+      ],
+      "detail": "1 lane(s) asked for their own `model` and received another lane's file, with no error raised."
+    },
+    {
+      "module": "scan",
+      "lanes": [
+        "uiowa_rfq_18649_exit_signals",
+        "uiowa_rfq_18649_import_safety"
+      ],
+      "resolved_to": "uiowa_rfq_18649_exit_signals/scan.py",
+      "shadowed": [
+        "uiowa_rfq_18649_import_safety"
+      ],
+      "observations": [
+        {
+          "asked_from": "/home/user/commons/revenue/uiowa_rfq_18649_exit_signals",
+          "resolved_to": "/home/user/commons/revenue/uiowa_rfq_18649_exit_signals/scan.py"
+        },
+        {
+          "asked_from": "/home/user/commons/revenue/uiowa_rfq_18649_import_safety",
+          "resolved_to": "/home/user/commons/revenue/uiowa_rfq_18649_exit_signals/scan.py"
+        }
+      ],
+      "detail": "1 lane(s) asked for their own `scan` and received another lane's file, with no error raised."
+    },
+    {
+      "module": "schema",
+      "lanes": [
+        "uiowa_rfq_18649_ai_use_inventory",
+        "uiowa_rfq_18649_milestone_packets",
+        "uiowa_rfq_18649_traceability"
+      ],
+      "resolved_to": "uiowa_rfq_18649_ai_use_inventory/schema.py",
+      "shadowed": [
+        "uiowa_rfq_18649_milestone_packets",
+        "uiowa_rfq_18649_traceability"
+      ],
+      "observations": [
+        {
+          "asked_from": "/home/user/commons/revenue/uiowa_rfq_18649_ai_use_inventory",
+          "resolved_to": "/home/user/commons/revenue/uiowa_rfq_18649_ai_use_inventory/schema.py"
+        },
+        {
+          "asked_from": "/home/user/commons/revenue/uiowa_rfq_18649_milestone_packets",
+          "resolved_to": "/home/user/commons/revenue/uiowa_rfq_18649_ai_use_inventory/schema.py"
+        },
+        {
+          "asked_from": "/home/user/commons/revenue/uiowa_rfq_18649_traceability",
+          "resolved_to": "/home/user/commons/revenue/uiowa_rfq_18649_ai_use_inventory/schema.py"
+        }
+      ],
+      "detail": "2 lane(s) asked for their own `schema` and received another lane's file, with no error raised."
+    },
+    {
+      "module": "sensitivity",
+      "lanes": [
+        "uiowa_rfq_18649_ai_decision_case",
+        "uiowa_rfq_18649_base_fee_economics"
+      ],
+      "resolved_to": "uiowa_rfq_18649_ai_decision_case/sensitivity.py",
+      "shadowed": [
+        "uiowa_rfq_18649_base_fee_economics"
+      ],
+      "observations": [
+        {
+          "asked_from": "/home/user/commons/revenue/uiowa_rfq_18649_ai_decision_case",
+          "resolved_to": "/home/user/commons/revenue/uiowa_rfq_18649_ai_decision_case/sensitivity.py"
+        },
+        {
+          "asked_from": "/home/user/commons/revenue/uiowa_rfq_18649_base_fee_economics",
+          "resolved_to": "/home/user/commons/revenue/uiowa_rfq_18649_ai_decision_case/sensitivity.py"
+        }
+      ],
+      "detail": "1 lane(s) asked for their own `sensitivity` and received another lane's file, with no error raised."
+    }
+  ],
+  "state_leakage": [
+    {
+      "lane": "uiowa_rfq_18649_acceptance_map",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_adoption_readiness",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_ai_decision_case",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_ai_eval_kit",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_ai_integration",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_ai_opportunity_portfolio",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_ai_policy_to_workflow",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_ai_use_inventory",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_base_fee_economics",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_bid_pack",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_build_board",
+      "status": "NO_SUITE",
+      "created": [],
+      "modified": [],
+      "removed": [],
+      "detail": "no test suite; not assessed",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_capability_appendix",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_capacity_benchmark",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_capacity_feasibility",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_capacity_scan",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_claim_audit",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_claim_guard",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_closeout",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_contractor_transition",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_deadline_continuity",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_dedup_threshold",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_delivery_metrics",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_delivery_scan",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_doc_usability",
+      "status": "NO_SUITE",
+      "created": [],
+      "modified": [],
+      "removed": [],
+      "detail": "no test suite; not assessed",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_document_extraction",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_economics_resource_adapters",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_exec_summary",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_exit_signals",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_export_safety",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_filesystem_safety",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_handoff",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_import_safety",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_incident_learning",
+      "status": "NO_SUITE",
+      "created": [],
+      "modified": [],
+      "removed": [],
+      "detail": "no test suite; not assessed",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_integration",
+      "status": "NO_SUITE",
+      "created": [],
+      "modified": [],
+      "removed": [],
+      "detail": "no test suite; not assessed",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_labeling_integrity",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_milestone_packets",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_mobilization",
+      "status": "NO_SUITE",
+      "created": [],
+      "modified": [],
+      "removed": [],
+      "detail": "no test suite; not assessed",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_observability",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_operator_handoff",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_outcome_measurement",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_print_pagination",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_prioritization",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_qa_refusal_contract",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_question_cards",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_rating_model",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_readout_deck",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_recovery_evidence",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_release_provenance",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_release_recovery_case",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_report_structure",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_report_visuals",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_roadmap_coherence",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_roadmap_dependencies",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_run_sweep",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_scope_change",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_secure_guidance",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_security_event_review",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_synthetic_collection",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_test_data_readiness",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_test_proof_audit",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_traceability",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_traceability_rehearsal",
+      "status": "NO_SUITE",
+      "created": [],
+      "modified": [],
+      "removed": [],
+      "detail": "no test suite; not assessed",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_uncertainty_lint",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_unknown_propagation",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_vocabulary_crosswalk",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_workbench",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    },
+    {
+      "lane": "uiowa_rfq_18649_workshare",
+      "status": "PASS",
+      "created": [],
+      "removed": [],
+      "modified": [],
+      "detail": "wrote nothing outside its own directory",
+      "method": "isolated copy"
+    }
+  ],
+  "proposed_fixes": [
+    {
+      "module": "analyze",
+      "lanes": [
+        "uiowa_rfq_18649_base_fee_economics",
+        "uiowa_rfq_18649_outcome_measurement"
+      ],
+      "options": [
+        "rename the module in all but one lane, e.g. `base_fee_economics_analyze.py`",
+        "rename the module in all but one lane, e.g. `outcome_measurement_analyze.py`"
+      ],
+      "alternative": "or give each lane a package directory so the module is reached as `<lane>.analyze`",
+      "owner_decision": "which lane keeps the plain name is for the lane owners; this tool does not choose"
+    },
+    {
+      "module": "cli",
+      "lanes": [
+        "uiowa_rfq_18649_qa_refusal_contract",
+        "uiowa_rfq_18649_uncertainty_lint"
+      ],
+      "options": [
+        "rename the module in all but one lane, e.g. `qa_refusal_contract_cli.py`",
+        "rename the module in all but one lane, e.g. `uncertainty_lint_cli.py`"
+      ],
+      "alternative": "or give each lane a package directory so the module is reached as `<lane>.cli`",
+      "owner_decision": "which lane keeps the plain name is for the lane owners; this tool does not choose"
+    },
+    {
+      "module": "make_fixtures",
+      "lanes": [
+        "uiowa_rfq_18649_release_provenance",
+        "uiowa_rfq_18649_release_recovery_case"
+      ],
+      "options": [
+        "rename the module in all but one lane, e.g. `release_provenance_make_fixtures.py`",
+        "rename the module in all but one lane, e.g. `release_recovery_case_make_fixtures.py`"
+      ],
+      "alternative": "or give each lane a package directory so the module is reached as `<lane>.make_fixtures`",
+      "owner_decision": "which lane keeps the plain name is for the lane owners; this tool does not choose"
+    },
+    {
+      "module": "model",
+      "lanes": [
+        "uiowa_rfq_18649_ai_decision_case",
+        "uiowa_rfq_18649_report_visuals"
+      ],
+      "options": [
+        "rename the module in all but one lane, e.g. `ai_decision_case_model.py`",
+        "rename the module in all but one lane, e.g. `report_visuals_model.py`"
+      ],
+      "alternative": "or give each lane a package directory so the module is reached as `<lane>.model`",
+      "owner_decision": "which lane keeps the plain name is for the lane owners; this tool does not choose"
+    },
+    {
+      "module": "scan",
+      "lanes": [
+        "uiowa_rfq_18649_exit_signals",
+        "uiowa_rfq_18649_import_safety"
+      ],
+      "options": [
+        "rename the module in all but one lane, e.g. `exit_signals_scan.py`",
+        "rename the module in all but one lane, e.g. `import_safety_scan.py`"
+      ],
+      "alternative": "or give each lane a package directory so the module is reached as `<lane>.scan`",
+      "owner_decision": "which lane keeps the plain name is for the lane owners; this tool does not choose"
+    },
+    {
+      "module": "schema",
+      "lanes": [
+        "uiowa_rfq_18649_ai_use_inventory",
+        "uiowa_rfq_18649_milestone_packets",
+        "uiowa_rfq_18649_traceability"
+      ],
+      "options": [
+        "rename the module in all but one lane, e.g. `ai_use_inventory_schema.py`",
+        "rename the module in all but one lane, e.g. `milestone_packets_schema.py`",
+        "rename the module in all but one lane, e.g. `traceability_schema.py`"
+      ],
+      "alternative": "or give each lane a package directory so the module is reached as `<lane>.schema`",
+      "owner_decision": "which lane keeps the plain name is for the lane owners; this tool does not choose"
+    },
+    {
+      "module": "sensitivity",
+      "lanes": [
+        "uiowa_rfq_18649_ai_decision_case",
+        "uiowa_rfq_18649_base_fee_economics"
+      ],
+      "options": [
+        "rename the module in all but one lane, e.g. `ai_decision_case_sensitivity.py`",
+        "rename the module in all but one lane, e.g. `base_fee_economics_sensitivity.py`"
+      ],
+      "alternative": "or give each lane a package directory so the module is reached as `<lane>.sensitivity`",
+      "owner_decision": "which lane keeps the plain name is for the lane owners; this tool does not choose"
+    }
+  ],
+  "note": "A lane with no test suite is not assessed and is excluded from every denominator. Nothing here was repaired."
+}

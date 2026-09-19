@@ -24,13 +24,13 @@ Every capability below is bound to working files in this repository and to a run
 
 *Why it matters:* Two teams' delivery figures are only comparable if both came from a stated window over a stated record count. Publishing the window next to the number is what makes a later comparison defensible.
 
-*Demonstrated by:* `revenue/uiowa_rfq_18649_delivery_metrics` (3 files). Run `python3 -m unittest test_calculator` from that directory; observed 2026-09-19, result `Ran 6 tests in 0.006s - OK`.
+*Demonstrated by:* `revenue/uiowa_rfq_18649_delivery_metrics` (3 files). Run `python3 -m unittest test_calculator` from that directory; observed 2026-09-19, result `Ran 6 tests in 0.004s - OK`.
 
 **CAP-04.** Assessment output separates a completed process step from evidence that the step produced its intended result, and evidence that was never supplied stays marked unknown instead of being counted as a passing value.
 
 *Why it matters:* A record set that is half populated otherwise reads as a clean result. Keeping unknowns visible is what stops a partial submission from being mistaken for a favourable finding, and it names the specific input still needed.
 
-*Demonstrated by:* `revenue/uiowa_rfq_18649_recovery_evidence` (3 files). Run `python3 -m unittest test_recovery_evidence` from that directory; observed 2026-09-19, result `Ran 50 tests in 0.031s - OK`.
+*Demonstrated by:* `revenue/uiowa_rfq_18649_recovery_evidence` (3 files). Run `python3 -m unittest test_recovery_evidence` from that directory; observed 2026-09-19, result `Ran 50 tests in 0.034s - OK`.
 
 ## Report preparation
 
@@ -38,7 +38,7 @@ Every capability below is bound to working files in this repository and to a run
 
 *Why it matters:* A reviewer can see which parts of the report are backed by collected material and which are still awaiting it, before the document is circulated rather than after.
 
-*Demonstrated by:* `revenue/uiowa_rfq_18649_report_structure` (3 files). Run `python3 -m unittest test_report_structure` from that directory; observed 2026-09-19, result `Ran 55 tests in 0.147s - OK`.
+*Demonstrated by:* `revenue/uiowa_rfq_18649_report_structure` (3 files). Run `python3 -m unittest test_report_structure` from that directory; observed 2026-09-19, result `Ran 55 tests in 0.104s - OK`.
 
 ## Not demonstrated
 

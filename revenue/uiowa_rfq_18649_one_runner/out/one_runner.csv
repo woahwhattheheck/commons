@@ -1,0 +1,70 @@
+lane,cwd_independence,from_lane_exit,from_root_exit,state_leakage,files_written_outside_lane,top_level_modules,colliding_modules
+uiowa_rfq_18649_acceptance_map,PASS,0,0,PASS,none,build_index; checks; exhibit_parser,none
+uiowa_rfq_18649_adoption_readiness,PASS,0,0,PASS,none,readiness,none
+uiowa_rfq_18649_ai_decision_case,PASS,0,0,PASS,none,ai_decision_case; case; explain; model; sensitivity,model; sensitivity
+uiowa_rfq_18649_ai_eval_kit,PASS,0,0,PASS,none,eval_kit; interchange,none
+uiowa_rfq_18649_ai_integration,PASS,0,0,PASS,none,build_kit; demo_swap; patterns; portability; unknowns; worksheet,none
+uiowa_rfq_18649_ai_opportunity_portfolio,PASS,0,0,PASS,none,opportunity_portfolio,none
+uiowa_rfq_18649_ai_policy_to_workflow,PASS,0,0,PASS,none,policy_matrix,none
+uiowa_rfq_18649_ai_use_inventory,PASS,0,0,PASS,none,interview_guide; inventory; schema,schema
+uiowa_rfq_18649_base_fee_economics,PASS,0,0,PASS,none,analyze; cost_model; money; sensitivity,analyze; sensitivity
+uiowa_rfq_18649_bid_pack,PASS,0,0,PASS,none,bid_pack; docxwrite; from_report_structure; packcheck; pdfwrite,none
+uiowa_rfq_18649_build_board,NO_SUITE,UNKNOWN,UNKNOWN,NO_SUITE,none,none,none
+uiowa_rfq_18649_capability_appendix,PASS,1,1,PASS,none,capability_appendix,none
+uiowa_rfq_18649_capacity_benchmark,PASS,0,0,PASS,none,benchmark; generate_collection; workflow,none
+uiowa_rfq_18649_capacity_feasibility,PASS,0,0,PASS,none,capacity_roadmap,none
+uiowa_rfq_18649_capacity_scan,PASS,0,0,PASS,none,scan_hotspots; scan_kit,none
+uiowa_rfq_18649_claim_audit,PASS,0,0,PASS,none,claim_audit; rules,none
+uiowa_rfq_18649_claim_guard,PASS,0,0,PASS,none,claim_guard,none
+uiowa_rfq_18649_closeout,PASS,0,0,PASS,none,closeout,none
+uiowa_rfq_18649_contractor_transition,PASS,0,0,PASS,none,scenario; transition,none
+uiowa_rfq_18649_deadline_continuity,PASS,0,0,PASS,none,continuity; intervals,none
+uiowa_rfq_18649_dedup_threshold,PASS,0,0,PASS,none,bench_dedup; dedup,none
+uiowa_rfq_18649_delivery_metrics,PASS,0,0,PASS,none,calculator,none
+uiowa_rfq_18649_delivery_scan,PASS,0,0,PASS,none,delivery_scan,none
+uiowa_rfq_18649_doc_usability,NO_SUITE,UNKNOWN,UNKNOWN,NO_SUITE,none,none,none
+uiowa_rfq_18649_document_extraction,PASS,1,1,PASS,none,extract; make_synthetic_corpus,none
+uiowa_rfq_18649_economics_resource_adapters,PASS,0,0,PASS,none,adapters; check_contract; integrate; ledger_bridge; ledgers; units,none
+uiowa_rfq_18649_exec_summary,PASS,0,0,PASS,none,build_summary; evidence; findings; render; summary,none
+uiowa_rfq_18649_exit_signals,PASS,0,0,PASS,none,audit_kit; contract; report; scan; wrap,scan
+uiowa_rfq_18649_export_safety,PASS,0,0,PASS,none,export_safety; json_safety,none
+uiowa_rfq_18649_filesystem_safety,PASS,0,0,PASS,none,fs_safety; fsaudit,none
+uiowa_rfq_18649_handoff,PASS,0,0,PASS,none,handoff,none
+uiowa_rfq_18649_import_safety,PASS,0,0,PASS,none,importsafety; reproduce; safe_import; scan,scan
+uiowa_rfq_18649_incident_learning,NO_SUITE,UNKNOWN,UNKNOWN,NO_SUITE,none,none,none
+uiowa_rfq_18649_intake_rehearsal,PASS,0,0,PASS,none,intake_schema; rehearse_intake,none
+uiowa_rfq_18649_integration,NO_SUITE,UNKNOWN,UNKNOWN,NO_SUITE,none,adapter_tabular; integrate_tabular,none
+uiowa_rfq_18649_labeling_integrity,PASS,0,0,PASS,none,label_scan; labelcheck,none
+uiowa_rfq_18649_milestone_packets,PASS,0,0,PASS,none,completeness; milestone_packets; packets; resolve; schedule; schema,schema
+uiowa_rfq_18649_mobilization,NO_SUITE,UNKNOWN,UNKNOWN,NO_SUITE,none,none,none
+uiowa_rfq_18649_observability,PASS,0,0,PASS,none,observability,none
+uiowa_rfq_18649_operator_handoff,PASS,0,0,PASS,none,command_index; render_guide; verify_kit,none
+uiowa_rfq_18649_outcome_measurement,PASS,0,0,PASS,none,analyze,analyze
+uiowa_rfq_18649_output_agreement,PASS,0,0,PASS,none,make_bundle; output_agreement,none
+uiowa_rfq_18649_print_pagination,PASS,0,0,PASS,none,printreport,none
+uiowa_rfq_18649_prioritization,PASS,0,0,PASS,none,prioritize,none
+uiowa_rfq_18649_qa_refusal_contract,PASS,0,0,PASS,none,cli; index; qa; uncertainty,cli
+uiowa_rfq_18649_question_cards,PASS,0,0,PASS,none,question_cards,none
+uiowa_rfq_18649_rating_model,PASS,0,0,PASS,none,rating_model,none
+uiowa_rfq_18649_readout_deck,PASS,0,0,PASS,none,deck_architecture,none
+uiowa_rfq_18649_recovery_evidence,PASS,0,0,PASS,none,assess_recovery; recovery_evidence,none
+uiowa_rfq_18649_release_provenance,PASS,0,0,PASS,none,make_fixtures; provenance,make_fixtures
+uiowa_rfq_18649_release_recovery_case,PASS,0,0,PASS,none,make_fixtures; release_recovery_case,make_fixtures
+uiowa_rfq_18649_report_structure,PASS,0,0,PASS,none,report_structure; scope_guard,none
+uiowa_rfq_18649_report_visuals,PASS,0,0,PASS,none,alt_text; contrast; figures; model; monochrome; palette; render_report_visuals; svg,model
+uiowa_rfq_18649_roadmap_coherence,PASS,0,0,PASS,none,roadmap_coherence,none
+uiowa_rfq_18649_roadmap_dependencies,PASS,0,0,PASS,none,depcheck,none
+uiowa_rfq_18649_run_sweep,PASS,0,0,PASS,none,run_sweep,none
+uiowa_rfq_18649_scope_change,PASS,0,0,PASS,none,scope_change,none
+uiowa_rfq_18649_secure_guidance,PASS,0,0,PASS,none,assess_guidance,none
+uiowa_rfq_18649_security_event_review,PASS,0,0,PASS,none,assess_security_events,none
+uiowa_rfq_18649_synthetic_collection,PASS,0,0,PASS,none,validate_collection,none
+uiowa_rfq_18649_test_data_readiness,PASS,0,0,PASS,none,none,none
+uiowa_rfq_18649_test_proof_audit,PASS,0,0,PASS,none,testproof,none
+uiowa_rfq_18649_traceability,PASS,0,0,PASS,none,audit_assertions; audit_self_sealing; schema; trace_check,schema
+uiowa_rfq_18649_traceability_rehearsal,NO_SUITE,UNKNOWN,UNKNOWN,NO_SUITE,none,validate_trace,none
+uiowa_rfq_18649_uncertainty_lint,PASS,0,0,PASS,none,cli; lint,cli
+uiowa_rfq_18649_unknown_propagation,PASS,0,0,PASS,none,scan_unknowns,none
+uiowa_rfq_18649_vocabulary_crosswalk,PASS,0,0,PASS,none,join_safety; reconcile; scan_vocabulary,none
+uiowa_rfq_18649_workbench,PASS,0,0,PASS,none,browser_acceptance; server,none
+uiowa_rfq_18649_workshare,PASS,0,0,PASS,none,authority_test_helpers; authority_tests; authority_tests_core; authority_tests_verification; compiler; filesystem_tests; filesystem_tests_cli; filesystem_tests_io; workshare_assessment; workshare_authority; workshare_candidate; workshare_compile; workshare_constants; workshare_contract; workshare_core; workshare_engine; workshare_io; workshare_read; workshare_render; workshare_verify; workshare_write,none
