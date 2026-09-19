@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 188,
     "open_pull_requests": 172,
-    "runs_in_progress": 18,
-    "runs_queued": 933
+    "runs_in_progress": 13,
+    "runs_queued": 911
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -353,7 +353,7 @@
   },
   "pulls_listed": 172,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 51.8,
+  "queue_depth_per_runner": 70.1,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -398,6 +398,17 @@
       "number": 16452,
       "state": "MERGED",
       "title": "Civic Action Ledger: portable reader with retained source evidence"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-ibis93c-iam-primary-recovery-20260919",
+      "closed_at": "2026-09-19T14:58:09Z",
+      "head_sha": "c5dab1dee999993f80ac00a4851d1fa3d8526f9a",
+      "merged_at": "2026-09-19T14:58:09Z",
+      "number": 16342,
+      "state": "MERGED",
+      "title": "docs(uiowa): recover IAM federation sources and interview evidence"
     },
     {
       "author": "woahwhattheheck",
@@ -508,21 +519,10 @@
       "number": 16323,
       "state": "MERGED",
       "title": "fix(uiowa-047): keep absent cleanup declarations unknown"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa-064-kestrel6d9f-boundary-repair",
-      "closed_at": "2026-09-19T14:42:37Z",
-      "head_sha": "6496d2bc1f63b982dfb5aac43e716801ff228275",
-      "merged_at": "2026-09-19T14:42:37Z",
-      "number": 16305,
-      "state": "MERGED",
-      "title": "UIOWA-064: preserve recovery uncertainty and unify validated input paths"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T18:17:24Z",
+  "unchanged_since": "2026-09-19T18:23:57Z",
   "undatable_pulls": []
 }
