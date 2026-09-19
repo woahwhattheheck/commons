@@ -1,0 +1,852 @@
+{
+  "artifact": "UIOWA-077 organizational AI adoption readiness",
+  "catalog_id": "UIOWA-077-OPTIONS-v1",
+  "content_digest": "9a125e4e1bfca78387f5efa4ced28cb6932bba34bd957fc1e163ff3693790db2",
+  "diagnostics": [],
+  "fiction_notice": "All team records in this run are SYNTHETIC and labelled fiction. No figure here is a measured University value, and no statement here is a University finding.",
+  "instrument_id": "UIOWA-077-AIR-v1",
+  "parameters": {
+    "horizons": [
+      "0-90",
+      "90-180",
+      "180+"
+    ],
+    "min_contributors": 3,
+    "min_indicators_per_dimension": 2,
+    "states": [
+      "ABSENT",
+      "EMERGING",
+      "ESTABLISHED",
+      "UNKNOWN"
+    ]
+  },
+  "rejected_options": [],
+  "rejected_teams": [],
+  "scoring_notice": "This artifact produces capability STATES and COUNTS. It does not produce a composite score, a maturity level, a peer percentile, a certification or compliance claim, or any assessment of an individual employee.",
+  "teams": [
+    {
+      "contributor_count": 7,
+      "coverage": {
+        "absent_of_assessed": 1,
+        "denominator_note": "'of_assessed' counts share the denominator dimensions_with_a_state. UNKNOWN dimensions are excluded from every denominator and are not counted as a shortfall.",
+        "dimensions_defined": 6,
+        "dimensions_unknown": 1,
+        "dimensions_with_a_state": 5,
+        "emerging_of_assessed": 2,
+        "established_of_assessed": 2
+      },
+      "dependency_findings": [],
+      "dimensions": [
+        {
+          "dimension_id": "ai_literacy",
+          "evidence_sources": [
+            "SYNTHETIC interview note: team says people ask in the team channel; no consultable page named",
+            "SYNTHETIC wiki page 'Assistive tools in ESS', last reviewed 2026-04-11",
+            "SYNTHETIC wiki searched for a failure-mode note; none present"
+          ],
+          "indicators_defined": [
+            "LIT-1",
+            "LIT-2",
+            "LIT-3"
+          ],
+          "indicators_observed": [
+            "LIT-1",
+            "LIT-2",
+            "LIT-3"
+          ],
+          "label": "AI literacy",
+          "notes": [],
+          "reason": "resolved_from_indicators",
+          "reason_text": "Resolved from 3 observed indicator(s).",
+          "state": "EMERGING"
+        },
+        {
+          "dimension_id": "practical_training",
+          "evidence_sources": [
+            "SYNTHETIC onboarding checklist v3, section 'assisted ticket triage'",
+            "SYNTHETIC training roster FY-S, sessions 4-6, tasks 'ticket triage' and 'macro drafting'"
+          ],
+          "indicators_defined": [
+            "TRN-1",
+            "TRN-2"
+          ],
+          "indicators_observed": [
+            "TRN-1",
+            "TRN-2"
+          ],
+          "label": "Practical training",
+          "notes": [],
+          "reason": "resolved_from_indicators",
+          "reason_text": "Resolved from 2 observed indicator(s).",
+          "state": "ESTABLISHED"
+        },
+        {
+          "dimension_id": "workflow_fit",
+          "evidence_sources": [],
+          "indicators_defined": [
+            "FIT-1",
+            "FIT-2",
+            "FIT-3"
+          ],
+          "indicators_observed": [],
+          "label": "Workflow fit",
+          "notes": [],
+          "reason": "no_indicator_evidence",
+          "reason_text": "No indicator for this dimension has supplied evidence.",
+          "state": "UNKNOWN"
+        },
+        {
+          "dimension_id": "available_support",
+          "evidence_sources": [
+            "SYNTHETIC escalation matrix page, revision 7",
+            "SYNTHETIC queue routing rule AIHELP-01, owner recorded as a role"
+          ],
+          "indicators_defined": [
+            "SUP-1",
+            "SUP-2"
+          ],
+          "indicators_observed": [
+            "SUP-1",
+            "SUP-2"
+          ],
+          "label": "Available support",
+          "notes": [],
+          "reason": "resolved_from_indicators",
+          "reason_text": "Resolved from 2 observed indicator(s).",
+          "state": "ESTABLISHED"
+        },
+        {
+          "dimension_id": "knowledge_sharing",
+          "evidence_sources": [
+            "SYNTHETIC channel #ess-tips, 22 pinned entries, no review dates",
+            "SYNTHETIC entries inspected; none carries a last-checked date"
+          ],
+          "indicators_defined": [
+            "SHR-1",
+            "SHR-2"
+          ],
+          "indicators_observed": [
+            "SHR-1",
+            "SHR-2"
+          ],
+          "label": "Knowledge sharing",
+          "notes": [],
+          "reason": "resolved_from_indicators",
+          "reason_text": "Resolved from 2 observed indicator(s).",
+          "state": "EMERGING"
+        },
+        {
+          "dimension_id": "evaluation_capacity",
+          "evidence_sources": [
+            "SYNTHETIC change log searched for an evaluation note; none present",
+            "SYNTHETIC interview note: team could not name who can stop an adopted approach",
+            "SYNTHETIC no acceptance check or known-answer set found"
+          ],
+          "indicators_defined": [
+            "EVL-1",
+            "EVL-2",
+            "EVL-3"
+          ],
+          "indicators_observed": [
+            "EVL-1",
+            "EVL-2",
+            "EVL-3"
+          ],
+          "label": "Capacity to evaluate new approaches",
+          "notes": [],
+          "reason": "resolved_from_indicators",
+          "reason_text": "Resolved from 3 observed indicator(s).",
+          "state": "ABSENT"
+        }
+      ],
+      "evidence_requests": [
+        {
+          "dimension_id": "workflow_fit",
+          "dimension_label": "Workflow fit",
+          "outstanding_indicators": [
+            {
+              "artifact_request": "The procedure document showing the step.",
+              "indicator_id": "FIT-1",
+              "prompt": "Which recurring workflows currently include an assisted step, and at which point in the procedure?"
+            },
+            {
+              "artifact_request": "The change note, ticket, or decision record.",
+              "indicator_id": "FIT-2",
+              "prompt": "Where was an assisted step tried and then narrowed or removed?"
+            },
+            {
+              "artifact_request": "The written exclusion and its stated reason.",
+              "indicator_id": "FIT-3",
+              "prompt": "Which steps are explicitly excluded from assistance, and on what basis?"
+            }
+          ],
+          "reason": "no_indicator_evidence",
+          "reason_text": "No indicator for this dimension has supplied evidence.",
+          "team_id": "T-ESS",
+          "validating_evidence": "The artifacts listed below, or a written statement that the practice does not exist here."
+        }
+      ],
+      "gaps": [
+        "ai_literacy",
+        "evaluation_capacity",
+        "knowledge_sharing"
+      ],
+      "plan": [
+        {
+          "capability_gained": "A written evaluation note for any new approach trialled, recording the task, the check applied, the result, and the keep-or-drop decision.",
+          "dependencies": [],
+          "dimension_id": "evaluation_capacity",
+          "dimension_state": "ABSENT",
+          "horizon": "0-90",
+          "observable_indicator": "At least one completed evaluation note exists naming the task, the check applied, and the decision taken.",
+          "option_id": "OPT-EVAL-01",
+          "staff_effort": {
+            "assumption_basis": "Assumes a one-page format agreed once and then reused; excludes the effort of running any particular trial, which belongs to that trial.",
+            "effort_kind": "one_time",
+            "unit": "person_hours",
+            "validating_evidence": "The team's existing change-note or decision-record format, if any, and the recorded effort of adopting the last such format.",
+            "value_high": 16,
+            "value_low": 8
+          }
+        },
+        {
+          "capability_gained": "A shared written boundary the team can cite: what these tools are used for here, what they are not used for, and where to check when a request sits on the line.",
+          "dependencies": [],
+          "dimension_id": "ai_literacy",
+          "dimension_state": "EMERGING",
+          "horizon": "0-90",
+          "observable_indicator": "A dated guidance page exists and at least one ticket or thread cites it when resolving a borderline request.",
+          "option_id": "OPT-LIT-01",
+          "staff_effort": {
+            "assumption_basis": "Assumes one drafting pass by a team lead plus one review round with the team, on a team that already has a place to publish internal guidance. Excludes any institution-wide policy negotiation.",
+            "effort_kind": "one_time",
+            "unit": "person_hours",
+            "validating_evidence": "Time recorded against the two most recent comparable internal guidance pages this unit produced, and confirmation that an internal publishing location already exists.",
+            "value_high": 24,
+            "value_low": 12
+          }
+        },
+        {
+          "capability_gained": "A register where a working approach is written down with the task it applies to, so it is reusable by someone who was not in the conversation.",
+          "dependencies": [],
+          "dimension_id": "knowledge_sharing",
+          "dimension_state": "EMERGING",
+          "horizon": "0-90",
+          "observable_indicator": "Entries exist, each names the task it applies to, and at least one entry was added by someone other than its originator.",
+          "option_id": "OPT-SHR-01",
+          "staff_effort": {
+            "assumption_basis": "Assumes the register is a page in an existing wiki or documentation system and that seeding it uses approaches the team already has in informal circulation.",
+            "effort_kind": "one_time",
+            "unit": "person_hours",
+            "validating_evidence": "A count of approaches currently circulating informally (from the team's own channel history) and the documentation system's existing page-creation process.",
+            "value_high": 14,
+            "value_low": 6
+          }
+        },
+        {
+          "capability_gained": "A review cycle over the register so entries carry a last-checked date and stale entries are corrected or retired rather than silently followed.",
+          "dependencies": [
+            "OPT-SHR-01"
+          ],
+          "dimension_id": "knowledge_sharing",
+          "dimension_state": "EMERGING",
+          "horizon": "90-180",
+          "observable_indicator": "Entries carry a last-checked date, and at least one entry has been corrected or retired as a result of a review.",
+          "option_id": "OPT-SHR-02",
+          "staff_effort": {
+            "assumption_basis": "Assumes a register in the range of twenty to sixty entries and a monthly pass by one reviewer; scales with entry count, not with team size.",
+            "effort_kind": "recurring",
+            "unit": "person_hours_per_month",
+            "validating_evidence": "The actual entry count in the register after it has been in use for one quarter, and the time the first review pass takes when measured.",
+            "value_high": 8,
+            "value_low": 3
+          }
+        },
+        {
+          "capability_gained": "Team-specific guidance covering the data the team actually handles in its own systems, rather than general guidance that leaves the hard cases unresolved.",
+          "dependencies": [
+            "OPT-LIT-01"
+          ],
+          "dimension_id": "ai_literacy",
+          "dimension_state": "EMERGING",
+          "horizon": "180+",
+          "observable_indicator": "Guidance names the team's own systems and data categories, and a previously unresolved borderline case has been decided by reference to it.",
+          "option_id": "OPT-LIT-02",
+          "staff_effort": {
+            "assumption_basis": "Assumes coordination with whoever owns the data-handling rules for the systems in question, and one revision round after the first cases surface.",
+            "effort_kind": "one_time",
+            "unit": "person_hours",
+            "validating_evidence": "Identification of the data-handling rule owner for each system in scope, and the turnaround time that owner has needed on comparable requests.",
+            "value_high": 90,
+            "value_low": 40
+          }
+        }
+      ],
+      "rejected_observations": [],
+      "strengths": [
+        "available_support",
+        "practical_training"
+      ],
+      "team_id": "T-ESS",
+      "team_label": "Enterprise Support Services (synthetic)",
+      "unknown": [
+        "workflow_fit"
+      ]
+    },
+    {
+      "contributor_count": 2,
+      "coverage": {
+        "absent_of_assessed": 0,
+        "denominator_note": "'of_assessed' counts share the denominator dimensions_with_a_state. UNKNOWN dimensions are excluded from every denominator and are not counted as a shortfall.",
+        "dimensions_defined": 6,
+        "dimensions_unknown": 6,
+        "dimensions_with_a_state": 0,
+        "emerging_of_assessed": 0,
+        "established_of_assessed": 0
+      },
+      "dependency_findings": [],
+      "dimensions": [
+        {
+          "dimension_id": "ai_literacy",
+          "evidence_sources": [
+            "SYNTHETIC IAM decision tree, revision 2",
+            "SYNTHETIC IAM standards page, section 'tooling'"
+          ],
+          "indicators_defined": [
+            "LIT-1",
+            "LIT-2",
+            "LIT-3"
+          ],
+          "indicators_observed": [
+            "LIT-1",
+            "LIT-2"
+          ],
+          "label": "AI literacy",
+          "notes": [],
+          "reason": "insufficient_contributors",
+          "reason_text": "Signal comes from 2 contributor(s); the floor for an organizational reading is 3. This is thin evidence, not a low capability.",
+          "state": "UNKNOWN"
+        },
+        {
+          "dimension_id": "practical_training",
+          "evidence_sources": [],
+          "indicators_defined": [
+            "TRN-1",
+            "TRN-2"
+          ],
+          "indicators_observed": [],
+          "label": "Practical training",
+          "notes": [],
+          "reason": "insufficient_contributors",
+          "reason_text": "Signal comes from 2 contributor(s); the floor for an organizational reading is 3. This is thin evidence, not a low capability.",
+          "state": "UNKNOWN"
+        },
+        {
+          "dimension_id": "workflow_fit",
+          "evidence_sources": [],
+          "indicators_defined": [
+            "FIT-1",
+            "FIT-2",
+            "FIT-3"
+          ],
+          "indicators_observed": [],
+          "label": "Workflow fit",
+          "notes": [],
+          "reason": "insufficient_contributors",
+          "reason_text": "Signal comes from 2 contributor(s); the floor for an organizational reading is 3. This is thin evidence, not a low capability.",
+          "state": "UNKNOWN"
+        },
+        {
+          "dimension_id": "available_support",
+          "evidence_sources": [
+            "SYNTHETIC no escalation path located",
+            "SYNTHETIC no named destination located for assisted-workflow questions"
+          ],
+          "indicators_defined": [
+            "SUP-1",
+            "SUP-2"
+          ],
+          "indicators_observed": [
+            "SUP-1",
+            "SUP-2"
+          ],
+          "label": "Available support",
+          "notes": [],
+          "reason": "insufficient_contributors",
+          "reason_text": "Signal comes from 2 contributor(s); the floor for an organizational reading is 3. This is thin evidence, not a low capability.",
+          "state": "UNKNOWN"
+        },
+        {
+          "dimension_id": "knowledge_sharing",
+          "evidence_sources": [],
+          "indicators_defined": [
+            "SHR-1",
+            "SHR-2"
+          ],
+          "indicators_observed": [],
+          "label": "Knowledge sharing",
+          "notes": [],
+          "reason": "insufficient_contributors",
+          "reason_text": "Signal comes from 2 contributor(s); the floor for an organizational reading is 3. This is thin evidence, not a low capability.",
+          "state": "UNKNOWN"
+        },
+        {
+          "dimension_id": "evaluation_capacity",
+          "evidence_sources": [
+            "SYNTHETIC no acceptance check located",
+            "SYNTHETIC one undated trial note, no decision recorded"
+          ],
+          "indicators_defined": [
+            "EVL-1",
+            "EVL-2",
+            "EVL-3"
+          ],
+          "indicators_observed": [
+            "EVL-1",
+            "EVL-2"
+          ],
+          "label": "Capacity to evaluate new approaches",
+          "notes": [],
+          "reason": "insufficient_contributors",
+          "reason_text": "Signal comes from 2 contributor(s); the floor for an organizational reading is 3. This is thin evidence, not a low capability.",
+          "state": "UNKNOWN"
+        }
+      ],
+      "evidence_requests": [
+        {
+          "dimension_id": "ai_literacy",
+          "dimension_label": "AI literacy",
+          "outstanding_indicators": [
+            {
+              "artifact_request": "Any written note of known failure modes for the tasks currently in use.",
+              "indicator_id": "LIT-3",
+              "prompt": "How does the team describe what these tools get wrong on the work you actually do?"
+            }
+          ],
+          "reason": "insufficient_contributors",
+          "reason_text": "Signal comes from 2 contributor(s); the floor for an organizational reading is 3. This is thin evidence, not a low capability.",
+          "team_id": "T-IAM",
+          "validating_evidence": "Responses from at least 3 contributors on this team, or an explicit record that the team is smaller than the floor so its reading stays UNKNOWN by design."
+        },
+        {
+          "dimension_id": "practical_training",
+          "dimension_label": "Practical training",
+          "outstanding_indicators": [
+            {
+              "artifact_request": "Training record or session notes naming the tasks practised.",
+              "indicator_id": "TRN-1",
+              "prompt": "What hands-on practice has the team had on its own recurring tasks, as opposed to a general awareness session?"
+            },
+            {
+              "artifact_request": "Onboarding material that covers the assisted step.",
+              "indicator_id": "TRN-2",
+              "prompt": "How does someone joining the team learn the assisted parts of the workflow?"
+            }
+          ],
+          "reason": "insufficient_contributors",
+          "reason_text": "Signal comes from 2 contributor(s); the floor for an organizational reading is 3. This is thin evidence, not a low capability.",
+          "team_id": "T-IAM",
+          "validating_evidence": "Responses from at least 3 contributors on this team, or an explicit record that the team is smaller than the floor so its reading stays UNKNOWN by design."
+        },
+        {
+          "dimension_id": "workflow_fit",
+          "dimension_label": "Workflow fit",
+          "outstanding_indicators": [
+            {
+              "artifact_request": "The procedure document showing the step.",
+              "indicator_id": "FIT-1",
+              "prompt": "Which recurring workflows currently include an assisted step, and at which point in the procedure?"
+            },
+            {
+              "artifact_request": "The change note, ticket, or decision record.",
+              "indicator_id": "FIT-2",
+              "prompt": "Where was an assisted step tried and then narrowed or removed?"
+            },
+            {
+              "artifact_request": "The written exclusion and its stated reason.",
+              "indicator_id": "FIT-3",
+              "prompt": "Which steps are explicitly excluded from assistance, and on what basis?"
+            }
+          ],
+          "reason": "insufficient_contributors",
+          "reason_text": "Signal comes from 2 contributor(s); the floor for an organizational reading is 3. This is thin evidence, not a low capability.",
+          "team_id": "T-IAM",
+          "validating_evidence": "Responses from at least 3 contributors on this team, or an explicit record that the team is smaller than the floor so its reading stays UNKNOWN by design."
+        },
+        {
+          "dimension_id": "available_support",
+          "dimension_label": "Available support",
+          "outstanding_indicators": [],
+          "reason": "insufficient_contributors",
+          "reason_text": "Signal comes from 2 contributor(s); the floor for an organizational reading is 3. This is thin evidence, not a low capability.",
+          "team_id": "T-IAM",
+          "validating_evidence": "Responses from at least 3 contributors on this team, or an explicit record that the team is smaller than the floor so its reading stays UNKNOWN by design."
+        },
+        {
+          "dimension_id": "knowledge_sharing",
+          "dimension_label": "Knowledge sharing",
+          "outstanding_indicators": [
+            {
+              "artifact_request": "The register, page, or channel, with its actual entries.",
+              "indicator_id": "SHR-1",
+              "prompt": "Where does a useful approach that one person worked out get recorded so others can use it?"
+            },
+            {
+              "artifact_request": "Review or last-checked dates on entries.",
+              "indicator_id": "SHR-2",
+              "prompt": "How is that shared material reviewed or corrected when it stops being right?"
+            }
+          ],
+          "reason": "insufficient_contributors",
+          "reason_text": "Signal comes from 2 contributor(s); the floor for an organizational reading is 3. This is thin evidence, not a low capability.",
+          "team_id": "T-IAM",
+          "validating_evidence": "Responses from at least 3 contributors on this team, or an explicit record that the team is smaller than the floor so its reading stays UNKNOWN by design."
+        },
+        {
+          "dimension_id": "evaluation_capacity",
+          "dimension_label": "Capacity to evaluate new approaches",
+          "outstanding_indicators": [
+            {
+              "artifact_request": "The written decision owner or reversal criterion.",
+              "indicator_id": "EVL-3",
+              "prompt": "Who can stop an approach the team has already adopted, and on what evidence?"
+            }
+          ],
+          "reason": "insufficient_contributors",
+          "reason_text": "Signal comes from 2 contributor(s); the floor for an organizational reading is 3. This is thin evidence, not a low capability.",
+          "team_id": "T-IAM",
+          "validating_evidence": "Responses from at least 3 contributors on this team, or an explicit record that the team is smaller than the floor so its reading stays UNKNOWN by design."
+        }
+      ],
+      "gaps": [],
+      "plan": [],
+      "rejected_observations": [],
+      "strengths": [],
+      "team_id": "T-IAM",
+      "team_label": "Identity and Access Management (synthetic)",
+      "unknown": [
+        "ai_literacy",
+        "available_support",
+        "evaluation_capacity",
+        "knowledge_sharing",
+        "practical_training",
+        "workflow_fit"
+      ]
+    },
+    {
+      "contributor_count": 5,
+      "coverage": {
+        "absent_of_assessed": 1,
+        "denominator_note": "'of_assessed' counts share the denominator dimensions_with_a_state. UNKNOWN dimensions are excluded from every denominator and are not counted as a shortfall.",
+        "dimensions_defined": 6,
+        "dimensions_unknown": 1,
+        "dimensions_with_a_state": 5,
+        "emerging_of_assessed": 3,
+        "established_of_assessed": 1
+      },
+      "dependency_findings": [
+        {
+          "code": "prerequisite_not_in_plan",
+          "detail": "OPT-EVAL-01",
+          "message": "Prerequisite 'OPT-EVAL-01' is not in this team's plan, because the capability it builds is not a gap here. Confirm it is genuinely already satisfied before scheduling 'OPT-EVAL-02'.",
+          "severity": "open_question",
+          "where": "OPT-EVAL-02"
+        },
+        {
+          "code": "prerequisite_not_in_plan",
+          "detail": "OPT-LIT-01",
+          "message": "Prerequisite 'OPT-LIT-01' is not in this team's plan, because the capability it builds is not a gap here. Confirm it is genuinely already satisfied before scheduling 'OPT-FIT-01'.",
+          "severity": "open_question",
+          "where": "OPT-FIT-01"
+        },
+        {
+          "code": "prerequisite_not_in_plan",
+          "detail": "OPT-LIT-01",
+          "message": "Prerequisite 'OPT-LIT-01' is not in this team's plan, because the capability it builds is not a gap here. Confirm it is genuinely already satisfied before scheduling 'OPT-TRN-01'.",
+          "severity": "open_question",
+          "where": "OPT-TRN-01"
+        }
+      ],
+      "dimensions": [
+        {
+          "dimension_id": "ai_literacy",
+          "evidence_sources": [
+            "SYNTHETIC 'RIS assistive tooling scope' page, last reviewed 2026-06-02",
+            "SYNTHETIC 'known failure modes' note listing 4 task-specific failures",
+            "SYNTHETIC decision checklist 'is this task in scope', 9 items"
+          ],
+          "indicators_defined": [
+            "LIT-1",
+            "LIT-2",
+            "LIT-3"
+          ],
+          "indicators_observed": [
+            "LIT-1",
+            "LIT-2",
+            "LIT-3"
+          ],
+          "label": "AI literacy",
+          "notes": [],
+          "reason": "resolved_from_indicators",
+          "reason_text": "Resolved from 3 observed indicator(s).",
+          "state": "ESTABLISHED"
+        },
+        {
+          "dimension_id": "practical_training",
+          "evidence_sources": [
+            "SYNTHETIC no training record found for any hands-on session",
+            "SYNTHETIC onboarding material reviewed; no assisted step described"
+          ],
+          "indicators_defined": [
+            "TRN-1",
+            "TRN-2"
+          ],
+          "indicators_observed": [
+            "TRN-1",
+            "TRN-2"
+          ],
+          "label": "Practical training",
+          "notes": [],
+          "reason": "resolved_from_indicators",
+          "reason_text": "Resolved from 2 observed indicator(s).",
+          "state": "ABSENT"
+        },
+        {
+          "dimension_id": "workflow_fit",
+          "evidence_sources": [
+            "SYNTHETIC procedure 'dataset intake', step 4 marked assisted",
+            "SYNTHETIC procedures searched for a written exclusion; none present",
+            "SYNTHETIC ticket RIS-3312 narrows an assisted step, reason field left blank"
+          ],
+          "indicators_defined": [
+            "FIT-1",
+            "FIT-2",
+            "FIT-3"
+          ],
+          "indicators_observed": [
+            "FIT-1",
+            "FIT-2",
+            "FIT-3"
+          ],
+          "label": "Workflow fit",
+          "notes": [],
+          "reason": "resolved_from_indicators",
+          "reason_text": "Resolved from 3 observed indicator(s).",
+          "state": "EMERGING"
+        },
+        {
+          "dimension_id": "available_support",
+          "evidence_sources": [
+            "SYNTHETIC queue RIS-HELP routing rule"
+          ],
+          "indicators_defined": [
+            "SUP-1",
+            "SUP-2"
+          ],
+          "indicators_observed": [
+            "SUP-1"
+          ],
+          "label": "Available support",
+          "notes": [],
+          "reason": "insufficient_indicator_coverage",
+          "reason_text": "1 of 2 indicators observed; the floor for stating a capability state is 2.",
+          "state": "UNKNOWN"
+        },
+        {
+          "dimension_id": "knowledge_sharing",
+          "evidence_sources": [
+            "SYNTHETIC interview note: team describes a well-used shared approach, but no register was produced when asked",
+            "SYNTHETIC no reviewed or dated shared material located"
+          ],
+          "indicators_defined": [
+            "SHR-1",
+            "SHR-2"
+          ],
+          "indicators_observed": [
+            "SHR-1",
+            "SHR-2"
+          ],
+          "label": "Knowledge sharing",
+          "notes": [
+            "SHR-1: ESTABLISHED downgraded to EMERGING (recollection_only) - the only evidence is an interview statement, not a record."
+          ],
+          "reason": "resolved_from_indicators",
+          "reason_text": "Resolved from 2 observed indicator(s).",
+          "state": "EMERGING"
+        },
+        {
+          "dimension_id": "evaluation_capacity",
+          "evidence_sources": [
+            "SYNTHETIC 12-item known-answer check set with recorded results",
+            "SYNTHETIC interview note: team names a reversal owner verbally; no written decision owner produced",
+            "SYNTHETIC pilot note 'Q1-S extraction trial' with keep/drop decision"
+          ],
+          "indicators_defined": [
+            "EVL-1",
+            "EVL-2",
+            "EVL-3"
+          ],
+          "indicators_observed": [
+            "EVL-1",
+            "EVL-2",
+            "EVL-3"
+          ],
+          "label": "Capacity to evaluate new approaches",
+          "notes": [
+            "EVL-3: ESTABLISHED downgraded to EMERGING (recollection_only) - the only evidence is an interview statement, not a record."
+          ],
+          "reason": "resolved_from_indicators",
+          "reason_text": "Resolved from 3 observed indicator(s).",
+          "state": "EMERGING"
+        }
+      ],
+      "evidence_requests": [
+        {
+          "dimension_id": "available_support",
+          "dimension_label": "Available support",
+          "outstanding_indicators": [
+            {
+              "artifact_request": "The escalation path, if it is written down.",
+              "indicator_id": "SUP-2",
+              "prompt": "What happens to that question when the usual contact is unavailable?"
+            }
+          ],
+          "reason": "insufficient_indicator_coverage",
+          "reason_text": "1 of 2 indicators observed; the floor for stating a capability state is 2.",
+          "team_id": "T-RIS",
+          "validating_evidence": "The artifacts listed below, or a written statement that the practice does not exist here."
+        }
+      ],
+      "gaps": [
+        "evaluation_capacity",
+        "knowledge_sharing",
+        "practical_training",
+        "workflow_fit"
+      ],
+      "plan": [
+        {
+          "capability_gained": "A register where a working approach is written down with the task it applies to, so it is reusable by someone who was not in the conversation.",
+          "dependencies": [],
+          "dimension_id": "knowledge_sharing",
+          "dimension_state": "EMERGING",
+          "horizon": "0-90",
+          "observable_indicator": "Entries exist, each names the task it applies to, and at least one entry was added by someone other than its originator.",
+          "option_id": "OPT-SHR-01",
+          "staff_effort": {
+            "assumption_basis": "Assumes the register is a page in an existing wiki or documentation system and that seeding it uses approaches the team already has in informal circulation.",
+            "effort_kind": "one_time",
+            "unit": "person_hours",
+            "validating_evidence": "A count of approaches currently circulating informally (from the team's own channel history) and the documentation system's existing page-creation process.",
+            "value_high": 14,
+            "value_low": 6
+          }
+        },
+        {
+          "capability_gained": "A scheduled evaluation cycle with a known-answer check set, so a change in output quality is detectable rather than inferred from how the output reads.",
+          "dependencies": [
+            "OPT-EVAL-01"
+          ],
+          "dimension_id": "evaluation_capacity",
+          "dimension_state": "EMERGING",
+          "horizon": "90-180",
+          "observable_indicator": "A check set exists, has been run more than once, and a run has produced a recorded difference that changed a decision.",
+          "option_id": "OPT-EVAL-02",
+          "staff_effort": {
+            "assumption_basis": "Assumes ten to twenty check items drawn from work the team has already completed and whose correct answers are already known; excludes building any new tooling.",
+            "effort_kind": "one_time",
+            "unit": "person_hours",
+            "validating_evidence": "Whether completed work with known-correct answers is retrievable for the tasks in scope, and how long assembling the first ten items actually takes.",
+            "value_high": 48,
+            "value_low": 20
+          }
+        },
+        {
+          "capability_gained": "Two recurring workflows mapped end to end, with the points where assistance is permitted and the points where it is excluded both marked in the procedure.",
+          "dependencies": [
+            "OPT-LIT-01"
+          ],
+          "dimension_id": "workflow_fit",
+          "dimension_state": "EMERGING",
+          "horizon": "90-180",
+          "observable_indicator": "Both procedures show the assisted step and at least one written exclusion with a stated reason.",
+          "option_id": "OPT-FIT-01",
+          "staff_effort": {
+            "assumption_basis": "Assumes the two workflows already have some written procedure to amend rather than being mapped from scratch, and that exclusions can be decided inside the team.",
+            "effort_kind": "one_time",
+            "unit": "person_hours",
+            "validating_evidence": "Whether written procedures exist for the two candidate workflows, and whether any exclusion requires sign-off outside the team.",
+            "value_high": 56,
+            "value_low": 24
+          }
+        },
+        {
+          "capability_gained": "A review cycle over the register so entries carry a last-checked date and stale entries are corrected or retired rather than silently followed.",
+          "dependencies": [
+            "OPT-SHR-01"
+          ],
+          "dimension_id": "knowledge_sharing",
+          "dimension_state": "EMERGING",
+          "horizon": "90-180",
+          "observable_indicator": "Entries carry a last-checked date, and at least one entry has been corrected or retired as a result of a review.",
+          "option_id": "OPT-SHR-02",
+          "staff_effort": {
+            "assumption_basis": "Assumes a register in the range of twenty to sixty entries and a monthly pass by one reviewer; scales with entry count, not with team size.",
+            "effort_kind": "recurring",
+            "unit": "person_hours_per_month",
+            "validating_evidence": "The actual entry count in the register after it has been in use for one quarter, and the time the first review pass takes when measured.",
+            "value_high": 8,
+            "value_low": 3
+          }
+        },
+        {
+          "capability_gained": "Hands-on practice on two of the team's own recurring tasks, with the resulting procedures updated to describe the assisted step.",
+          "dependencies": [
+            "OPT-LIT-01"
+          ],
+          "dimension_id": "practical_training",
+          "dimension_state": "ABSENT",
+          "horizon": "90-180",
+          "observable_indicator": "A training record names the two tasks practised, and both task procedures have been updated to describe the assisted step.",
+          "option_id": "OPT-TRN-01",
+          "staff_effort": {
+            "assumption_basis": "Assumes a team in the range of five to ten contributors, two tasks in scope, preparation by one person and attendance by the rest; assumes no external trainer is engaged.",
+            "effort_kind": "one_time",
+            "unit": "person_hours",
+            "validating_evidence": "The real contributor count for the team, the recorded duration of its last hands-on session of any kind, and whether an external trainer is required by local practice.",
+            "value_high": 70,
+            "value_low": 30
+          }
+        },
+        {
+          "capability_gained": "The mapped workflows instrumented so rework is visible, making it possible to see whether an assisted step reduced total effort or moved it downstream.",
+          "dependencies": [
+            "OPT-EVAL-02",
+            "OPT-FIT-01"
+          ],
+          "dimension_id": "workflow_fit",
+          "dimension_state": "EMERGING",
+          "horizon": "180+",
+          "observable_indicator": "Rework counts for the two workflows are retrievable for a period before and a period after the assisted step was introduced.",
+          "option_id": "OPT-FIT-02",
+          "staff_effort": {
+            "assumption_basis": "Assumes the workflow already passes through a system that can record a rework event; if rework is currently invisible, discovery effort is not included here.",
+            "effort_kind": "one_time",
+            "unit": "person_hours",
+            "validating_evidence": "Whether the systems carrying these workflows already record a reopen, revision, or return-for-correction event, and whether that record is retrievable.",
+            "value_high": 120,
+            "value_low": 50
+          }
+        }
+      ],
+      "rejected_observations": [],
+      "strengths": [
+        "ai_literacy"
+      ],
+      "team_id": "T-RIS",
+      "team_label": "Research Infrastructure Services (synthetic)",
+      "unknown": [
+        "available_support"
+      ]
+    }
+  ]
+}

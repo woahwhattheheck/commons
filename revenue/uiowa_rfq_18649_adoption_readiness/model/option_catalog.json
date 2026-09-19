@@ -1,0 +1,211 @@
+{
+  "catalog_id": "UIOWA-077-OPTIONS-v1",
+  "content_notice": "DRAFT OPTION CONTENT. Effort ranges are planning placeholders, not measured University figures. Every range carries the assumption it rests on and the evidence that would validate or replace it.",
+  "horizons": ["0-90", "90-180", "180+"],
+  "options": [
+    {
+      "option_id": "OPT-LIT-01",
+      "addresses": "ai_literacy",
+      "applies_when": ["ABSENT", "EMERGING"],
+      "horizon": "0-90",
+      "capability_gained": "A shared written boundary the team can cite: what these tools are used for here, what they are not used for, and where to check when a request sits on the line.",
+      "staff_effort": {
+        "value_low": 12,
+        "value_high": 24,
+        "unit": "person_hours",
+        "effort_kind": "one_time",
+        "assumption_basis": "Assumes one drafting pass by a team lead plus one review round with the team, on a team that already has a place to publish internal guidance. Excludes any institution-wide policy negotiation.",
+        "validating_evidence": "Time recorded against the two most recent comparable internal guidance pages this unit produced, and confirmation that an internal publishing location already exists."
+      },
+      "dependencies": [],
+      "observable_indicator": "A dated guidance page exists and at least one ticket or thread cites it when resolving a borderline request."
+    },
+    {
+      "option_id": "OPT-SUP-01",
+      "addresses": "available_support",
+      "applies_when": ["ABSENT", "EMERGING"],
+      "horizon": "0-90",
+      "capability_gained": "A named, non-personal destination for questions about assisted workflows, so the support path does not depend on one individual being reachable.",
+      "staff_effort": {
+        "value_low": 4,
+        "value_high": 10,
+        "unit": "person_hours",
+        "effort_kind": "one_time",
+        "assumption_basis": "Assumes an existing queue or channel can be reused and only needs a routing rule and an announcement; assumes no new tooling is procured.",
+        "validating_evidence": "Confirmation from the service-desk owner that an existing queue can take this traffic, plus the recorded effort of the last routing-rule change."
+      },
+      "dependencies": [],
+      "observable_indicator": "Questions arrive at the named destination rather than as direct messages, and the destination has a recorded owner that is a role, not a person."
+    },
+    {
+      "option_id": "OPT-SHR-01",
+      "addresses": "knowledge_sharing",
+      "applies_when": ["ABSENT", "EMERGING"],
+      "horizon": "0-90",
+      "capability_gained": "A register where a working approach is written down with the task it applies to, so it is reusable by someone who was not in the conversation.",
+      "staff_effort": {
+        "value_low": 6,
+        "value_high": 14,
+        "unit": "person_hours",
+        "effort_kind": "one_time",
+        "assumption_basis": "Assumes the register is a page in an existing wiki or documentation system and that seeding it uses approaches the team already has in informal circulation.",
+        "validating_evidence": "A count of approaches currently circulating informally (from the team's own channel history) and the documentation system's existing page-creation process."
+      },
+      "dependencies": [],
+      "observable_indicator": "Entries exist, each names the task it applies to, and at least one entry was added by someone other than its originator."
+    },
+    {
+      "option_id": "OPT-EVAL-01",
+      "addresses": "evaluation_capacity",
+      "applies_when": ["ABSENT"],
+      "horizon": "0-90",
+      "capability_gained": "A written evaluation note for any new approach trialled, recording the task, the check applied, the result, and the keep-or-drop decision.",
+      "staff_effort": {
+        "value_low": 8,
+        "value_high": 16,
+        "unit": "person_hours",
+        "effort_kind": "one_time",
+        "assumption_basis": "Assumes a one-page format agreed once and then reused; excludes the effort of running any particular trial, which belongs to that trial.",
+        "validating_evidence": "The team's existing change-note or decision-record format, if any, and the recorded effort of adopting the last such format."
+      },
+      "dependencies": [],
+      "observable_indicator": "At least one completed evaluation note exists naming the task, the check applied, and the decision taken."
+    },
+    {
+      "option_id": "OPT-TRN-01",
+      "addresses": "practical_training",
+      "applies_when": ["ABSENT", "EMERGING"],
+      "horizon": "90-180",
+      "capability_gained": "Hands-on practice on two of the team's own recurring tasks, with the resulting procedures updated to describe the assisted step.",
+      "staff_effort": {
+        "value_low": 30,
+        "value_high": 70,
+        "unit": "person_hours",
+        "effort_kind": "one_time",
+        "assumption_basis": "Assumes a team in the range of five to ten contributors, two tasks in scope, preparation by one person and attendance by the rest; assumes no external trainer is engaged.",
+        "validating_evidence": "The real contributor count for the team, the recorded duration of its last hands-on session of any kind, and whether an external trainer is required by local practice."
+      },
+      "dependencies": ["OPT-LIT-01"],
+      "observable_indicator": "A training record names the two tasks practised, and both task procedures have been updated to describe the assisted step."
+    },
+    {
+      "option_id": "OPT-FIT-01",
+      "addresses": "workflow_fit",
+      "applies_when": ["ABSENT", "EMERGING"],
+      "horizon": "90-180",
+      "capability_gained": "Two recurring workflows mapped end to end, with the points where assistance is permitted and the points where it is excluded both marked in the procedure.",
+      "staff_effort": {
+        "value_low": 24,
+        "value_high": 56,
+        "unit": "person_hours",
+        "effort_kind": "one_time",
+        "assumption_basis": "Assumes the two workflows already have some written procedure to amend rather than being mapped from scratch, and that exclusions can be decided inside the team.",
+        "validating_evidence": "Whether written procedures exist for the two candidate workflows, and whether any exclusion requires sign-off outside the team."
+      },
+      "dependencies": ["OPT-LIT-01"],
+      "observable_indicator": "Both procedures show the assisted step and at least one written exclusion with a stated reason."
+    },
+    {
+      "option_id": "OPT-SHR-02",
+      "addresses": "knowledge_sharing",
+      "applies_when": ["EMERGING"],
+      "horizon": "90-180",
+      "capability_gained": "A review cycle over the register so entries carry a last-checked date and stale entries are corrected or retired rather than silently followed.",
+      "staff_effort": {
+        "value_low": 3,
+        "value_high": 8,
+        "unit": "person_hours_per_month",
+        "effort_kind": "recurring",
+        "assumption_basis": "Assumes a register in the range of twenty to sixty entries and a monthly pass by one reviewer; scales with entry count, not with team size.",
+        "validating_evidence": "The actual entry count in the register after it has been in use for one quarter, and the time the first review pass takes when measured."
+      },
+      "dependencies": ["OPT-SHR-01"],
+      "observable_indicator": "Entries carry a last-checked date, and at least one entry has been corrected or retired as a result of a review."
+    },
+    {
+      "option_id": "OPT-EVAL-02",
+      "addresses": "evaluation_capacity",
+      "applies_when": ["EMERGING"],
+      "horizon": "90-180",
+      "capability_gained": "A scheduled evaluation cycle with a known-answer check set, so a change in output quality is detectable rather than inferred from how the output reads.",
+      "staff_effort": {
+        "value_low": 20,
+        "value_high": 48,
+        "unit": "person_hours",
+        "effort_kind": "one_time",
+        "assumption_basis": "Assumes ten to twenty check items drawn from work the team has already completed and whose correct answers are already known; excludes building any new tooling.",
+        "validating_evidence": "Whether completed work with known-correct answers is retrievable for the tasks in scope, and how long assembling the first ten items actually takes."
+      },
+      "dependencies": ["OPT-EVAL-01"],
+      "observable_indicator": "A check set exists, has been run more than once, and a run has produced a recorded difference that changed a decision."
+    },
+    {
+      "option_id": "OPT-LIT-02",
+      "addresses": "ai_literacy",
+      "applies_when": ["EMERGING"],
+      "horizon": "180+",
+      "capability_gained": "Team-specific guidance covering the data the team actually handles in its own systems, rather than general guidance that leaves the hard cases unresolved.",
+      "staff_effort": {
+        "value_low": 40,
+        "value_high": 90,
+        "unit": "person_hours",
+        "effort_kind": "one_time",
+        "assumption_basis": "Assumes coordination with whoever owns the data-handling rules for the systems in question, and one revision round after the first cases surface.",
+        "validating_evidence": "Identification of the data-handling rule owner for each system in scope, and the turnaround time that owner has needed on comparable requests."
+      },
+      "dependencies": ["OPT-LIT-01"],
+      "observable_indicator": "Guidance names the team's own systems and data categories, and a previously unresolved borderline case has been decided by reference to it."
+    },
+    {
+      "option_id": "OPT-TRN-02",
+      "addresses": "practical_training",
+      "applies_when": ["EMERGING"],
+      "horizon": "180+",
+      "capability_gained": "An onboarding module covering the assisted steps, so the capability survives staff turnover instead of leaving with the people who built it.",
+      "staff_effort": {
+        "value_low": 24,
+        "value_high": 60,
+        "unit": "person_hours",
+        "effort_kind": "one_time",
+        "assumption_basis": "Assumes an existing onboarding process to extend rather than create, and that the procedures updated under OPT-TRN-01 are the source material.",
+        "validating_evidence": "Whether a documented onboarding process exists for this team, and the recorded effort of the last module added to it."
+      },
+      "dependencies": ["OPT-TRN-01"],
+      "observable_indicator": "A person who joined after the module existed completes an assisted task without direct coaching."
+    },
+    {
+      "option_id": "OPT-SUP-02",
+      "addresses": "available_support",
+      "applies_when": ["EMERGING"],
+      "horizon": "180+",
+      "capability_gained": "A written escalation path with a role-level owner, so a question that the first destination cannot answer has a defined next step.",
+      "staff_effort": {
+        "value_low": 16,
+        "value_high": 40,
+        "unit": "person_hours",
+        "effort_kind": "one_time",
+        "assumption_basis": "Assumes escalation targets are inside the same organizational unit; a path crossing units would need agreement that is not costed here.",
+        "validating_evidence": "Where questions that the first destination could not answer actually went over the preceding quarter, taken from the queue record."
+      },
+      "dependencies": ["OPT-SUP-01", "OPT-FIT-01"],
+      "observable_indicator": "The escalation path is written, names roles rather than individuals, and has been used at least once with the outcome recorded."
+    },
+    {
+      "option_id": "OPT-FIT-02",
+      "addresses": "workflow_fit",
+      "applies_when": ["EMERGING"],
+      "horizon": "180+",
+      "capability_gained": "The mapped workflows instrumented so rework is visible, making it possible to see whether an assisted step reduced total effort or moved it downstream.",
+      "staff_effort": {
+        "value_low": 50,
+        "value_high": 120,
+        "unit": "person_hours",
+        "effort_kind": "one_time",
+        "assumption_basis": "Assumes the workflow already passes through a system that can record a rework event; if rework is currently invisible, discovery effort is not included here.",
+        "validating_evidence": "Whether the systems carrying these workflows already record a reopen, revision, or return-for-correction event, and whether that record is retrievable."
+      },
+      "dependencies": ["OPT-FIT-01", "OPT-EVAL-02"],
+      "observable_indicator": "Rework counts for the two workflows are retrievable for a period before and a period after the assisted step was introduced."
+    }
+  ]
+}

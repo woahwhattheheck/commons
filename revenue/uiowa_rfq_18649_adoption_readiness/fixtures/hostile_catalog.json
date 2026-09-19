@@ -1,0 +1,85 @@
+{
+  "catalog_id": "UIOWA-077-HOSTILE-OPTIONS-v1",
+  "content_notice": "SYNTHETIC and deliberately broken. Each option exercises one structural or sequencing failure. Run it against fixtures/synthetic_teams.json to see the checks fire.",
+  "options": [
+    {
+      "option_id": "OPT-X-NOOBS",
+      "addresses": "knowledge_sharing",
+      "applies_when": ["EMERGING"],
+      "horizon": "0-90",
+      "capability_gained": "Something is written down somewhere.",
+      "staff_effort": {"value_low": 4, "value_high": 9, "unit": "person_hours", "effort_kind": "one_time", "assumption_basis": "SYNTHETIC placeholder.", "validating_evidence": "SYNTHETIC placeholder."},
+      "dependencies": []
+    },
+    {
+      "option_id": "OPT-X-NOBASIS",
+      "addresses": "evaluation_capacity",
+      "applies_when": ["ABSENT"],
+      "horizon": "0-90",
+      "capability_gained": "An evaluation habit.",
+      "staff_effort": {"value_low": 10, "value_high": 20, "unit": "person_hours", "effort_kind": "one_time"},
+      "dependencies": [],
+      "observable_indicator": "An evaluation note exists."
+    },
+    {
+      "option_id": "OPT-X-EARLY",
+      "addresses": "evaluation_capacity",
+      "applies_when": ["ABSENT"],
+      "horizon": "0-90",
+      "capability_gained": "A scheduled evaluation cycle, scheduled before the thing it needs.",
+      "staff_effort": {"value_low": 10, "value_high": 20, "unit": "person_hours", "effort_kind": "one_time", "assumption_basis": "SYNTHETIC placeholder.", "validating_evidence": "SYNTHETIC placeholder."},
+      "dependencies": ["OPT-X-LATE"],
+      "observable_indicator": "A cycle has run twice."
+    },
+    {
+      "option_id": "OPT-X-LATE",
+      "addresses": "evaluation_capacity",
+      "applies_when": ["ABSENT"],
+      "horizon": "180+",
+      "capability_gained": "The prerequisite, landing after the thing that needs it.",
+      "staff_effort": {"value_low": 8, "value_high": 16, "unit": "person_hours", "effort_kind": "one_time", "assumption_basis": "SYNTHETIC placeholder.", "validating_evidence": "SYNTHETIC placeholder."},
+      "dependencies": [],
+      "observable_indicator": "A format has been agreed."
+    },
+    {
+      "option_id": "OPT-X-LOOP-A",
+      "addresses": "knowledge_sharing",
+      "applies_when": ["EMERGING"],
+      "horizon": "0-90",
+      "capability_gained": "Half of a loop.",
+      "staff_effort": {"value_low": 2, "value_high": 5, "unit": "person_hours", "effort_kind": "one_time", "assumption_basis": "SYNTHETIC placeholder.", "validating_evidence": "SYNTHETIC placeholder."},
+      "dependencies": ["OPT-X-LOOP-B"],
+      "observable_indicator": "Nothing, because this can never start."
+    },
+    {
+      "option_id": "OPT-X-LOOP-B",
+      "addresses": "knowledge_sharing",
+      "applies_when": ["EMERGING"],
+      "horizon": "0-90",
+      "capability_gained": "The other half of a loop.",
+      "staff_effort": {"value_low": 2, "value_high": 5, "unit": "person_hours", "effort_kind": "one_time", "assumption_basis": "SYNTHETIC placeholder.", "validating_evidence": "SYNTHETIC placeholder."},
+      "dependencies": ["OPT-X-LOOP-A"],
+      "observable_indicator": "Nothing, because this can never start."
+    },
+    {
+      "option_id": "OPT-X-GHOSTDEP",
+      "addresses": "ai_literacy",
+      "applies_when": ["EMERGING"],
+      "horizon": "90-180",
+      "capability_gained": "Depends on an option that was never written.",
+      "staff_effort": {"value_low": 6, "value_high": 12, "unit": "person_hours", "effort_kind": "one_time", "assumption_basis": "SYNTHETIC placeholder.", "validating_evidence": "SYNTHETIC placeholder."},
+      "dependencies": ["OPT-DOES-NOT-EXIST"],
+      "observable_indicator": "Never observable."
+    },
+    {
+      "option_id": "OPT-X-UNKNOWNTRIGGER",
+      "addresses": "workflow_fit",
+      "applies_when": ["UNKNOWN"],
+      "horizon": "0-90",
+      "capability_gained": "Tries to plan work against a dimension nobody has evidence for.",
+      "staff_effort": {"value_low": 6, "value_high": 12, "unit": "person_hours", "effort_kind": "one_time", "assumption_basis": "SYNTHETIC placeholder.", "validating_evidence": "SYNTHETIC placeholder."},
+      "dependencies": [],
+      "observable_indicator": "Never observable."
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "instrument_id": "UIOWA-077-AIR-v1",
+  "title": "Organizational AI adoption readiness - interview instrument",
+  "content_notice": "DRAFT INSTRUMENT CONTENT. These prompts are a starting point for operational interviews. Nothing here is a University finding or a measured University figure.",
+  "recording_rule": "Responses are recorded at TEAM granularity with a contributor COUNT only. No individual identity is collected, stored, or attributed. This instrument assesses organizational capability and must never be used to rate a person.",
+  "dimensions": [
+    {
+      "dimension_id": "ai_literacy",
+      "label": "AI literacy",
+      "intent": "Whether the team shares a written, consultable understanding of where these tools belong and where they do not.",
+      "indicators": [
+        {"indicator_id": "LIT-1", "prompt": "Where has the team written down what these tools are used for here, and what they are not used for?", "artifact_request": "The written statement or guidance page, with the date it was last reviewed.", "why_it_matters": "A shared written boundary is what lets two people on the same team answer a borderline request the same way."},
+        {"indicator_id": "LIT-2", "prompt": "When someone is unsure whether a task is appropriate for an assistant, what do they consult before deciding?", "artifact_request": "The page, checklist, or thread they name.", "why_it_matters": "Distinguishes a consultable resource from an individual habit that leaves with the person."},
+        {"indicator_id": "LIT-3", "prompt": "How does the team describe what these tools get wrong on the work you actually do?", "artifact_request": "Any written note of known failure modes for the tasks currently in use.", "why_it_matters": "Naming specific failure modes is the difference between literacy and enthusiasm."}
+      ]
+    },
+    {
+      "dimension_id": "practical_training",
+      "label": "Practical training",
+      "intent": "Whether capability was built on the team's own recurring work, and whether it survives staff turnover.",
+      "indicators": [
+        {"indicator_id": "TRN-1", "prompt": "What hands-on practice has the team had on its own recurring tasks, as opposed to a general awareness session?", "artifact_request": "Training record or session notes naming the tasks practised.", "why_it_matters": "General awareness rarely transfers to the team's actual queue."},
+        {"indicator_id": "TRN-2", "prompt": "How does someone joining the team learn the assisted parts of the workflow?", "artifact_request": "Onboarding material that covers the assisted step.", "why_it_matters": "Capability that exists only in the current staff is a dependency, not a capability."}
+      ]
+    },
+    {
+      "dimension_id": "workflow_fit",
+      "label": "Workflow fit",
+      "intent": "Whether assistance is placed at identified points in real procedures, including where it was deliberately removed.",
+      "indicators": [
+        {"indicator_id": "FIT-1", "prompt": "Which recurring workflows currently include an assisted step, and at which point in the procedure?", "artifact_request": "The procedure document showing the step.", "why_it_matters": "Placement in a written procedure is what makes the practice repeatable by someone else."},
+        {"indicator_id": "FIT-2", "prompt": "Where was an assisted step tried and then narrowed or removed?", "artifact_request": "The change note, ticket, or decision record.", "why_it_matters": "A recorded retreat is strong evidence of real evaluation; its absence can mean nothing was ever checked."},
+        {"indicator_id": "FIT-3", "prompt": "Which steps are explicitly excluded from assistance, and on what basis?", "artifact_request": "The written exclusion and its stated reason.", "why_it_matters": "Exclusions show the boundary is operational rather than aspirational."}
+      ]
+    },
+    {
+      "dimension_id": "available_support",
+      "label": "Available support",
+      "intent": "Whether there is a reachable, non-singular place to take a problem with an assisted workflow.",
+      "indicators": [
+        {"indicator_id": "SUP-1", "prompt": "Who does the team ask when an assisted workflow behaves unexpectedly?", "artifact_request": "The named contact, queue, or routing rule.", "why_it_matters": "Separates a support path from an informally helpful colleague."},
+        {"indicator_id": "SUP-2", "prompt": "What happens to that question when the usual contact is unavailable?", "artifact_request": "The escalation path, if it is written down.", "why_it_matters": "Single-person support is the most common hidden dependency in this area."}
+      ]
+    },
+    {
+      "dimension_id": "knowledge_sharing",
+      "label": "Knowledge sharing",
+      "intent": "Whether something one person learns becomes reusable by the team, and whether it is kept correct.",
+      "indicators": [
+        {"indicator_id": "SHR-1", "prompt": "Where does a useful approach that one person worked out get recorded so others can use it?", "artifact_request": "The register, page, or channel, with its actual entries.", "why_it_matters": "Sharing that happens only in conversation does not survive a staffing change."},
+        {"indicator_id": "SHR-2", "prompt": "How is that shared material reviewed or corrected when it stops being right?", "artifact_request": "Review or last-checked dates on entries.", "why_it_matters": "An unreviewed register becomes a source of confidently wrong practice."}
+      ]
+    },
+    {
+      "dimension_id": "evaluation_capacity",
+      "label": "Capacity to evaluate new approaches",
+      "intent": "Whether the team can tell a genuinely better result from a faster-looking one, and can reverse a decision.",
+      "indicators": [
+        {"indicator_id": "EVL-1", "prompt": "Describe the last new approach the team trialled and how it decided whether to keep it.", "artifact_request": "The evaluation note or decision record.", "why_it_matters": "Trialling without a recorded decision leaves the team unable to explain why it works the way it does."},
+        {"indicator_id": "EVL-2", "prompt": "What would the team check to distinguish a genuinely better result from one that merely arrives faster?", "artifact_request": "The acceptance check or known-answer set, if any exists.", "why_it_matters": "Without an acceptance check, speed is the only thing anyone can actually observe."},
+        {"indicator_id": "EVL-3", "prompt": "Who can stop an approach the team has already adopted, and on what evidence?", "artifact_request": "The written decision owner or reversal criterion.", "why_it_matters": "An adoption nobody can reverse is a commitment, not an evaluation."}
+      ]
+    }
+  ]
+}

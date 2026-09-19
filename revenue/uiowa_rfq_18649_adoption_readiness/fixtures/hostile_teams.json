@@ -1,0 +1,46 @@
+{
+  "fixture_id": "UIOWA-077-HOSTILE-TEAMS-v1",
+  "fiction_notice": "SYNTHETIC and deliberately malformed. Each record here exercises one rejection path. Run it to see the diagnostics; it is not an assessment of anything.",
+  "teams": [
+    {
+      "team_id": "T-BAD-IDENTITY",
+      "team_label": "Record that names a person (synthetic)",
+      "contributor_count": 6,
+      "observations": [
+        {"indicator_id": "LIT-1", "state": "ESTABLISHED", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC page", "employee_id": "E-00417"},
+        {"indicator_id": "LIT-2", "state": "ABSENT", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC page"}
+      ]
+    },
+    {
+      "team_id": "T-BAD-ROSTER",
+      "team_label": "Record with a named roster (synthetic)",
+      "contributor_count": 4,
+      "respondents": ["SYNTHETIC-PERSON-A", "SYNTHETIC-PERSON-B"],
+      "observations": []
+    },
+    {
+      "team_id": "T-BAD-COUNT",
+      "team_label": "Record with an unusable contributor count (synthetic)",
+      "contributor_count": "several",
+      "observations": []
+    },
+    {
+      "team_id": "T-BAD-NOCOUNT",
+      "team_label": "Record with no contributor count at all (synthetic)",
+      "observations": []
+    },
+    {
+      "team_id": "T-PARTIAL",
+      "team_label": "Record with some unusable observations (synthetic)",
+      "contributor_count": 5,
+      "observations": [
+        {"indicator_id": "LIT-1", "state": "ESTABLISHED", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC guidance page"},
+        {"indicator_id": "LIT-2", "state": "ESTABLISHED", "evidence_kind": "artifact", "evidence_source": "   "},
+        {"indicator_id": "LIT-9", "state": "ESTABLISHED", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC page for an indicator that does not exist"},
+        {"indicator_id": "LIT-3", "state": "GOOD", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC page"},
+        {"indicator_id": "TRN-1", "state": "ESTABLISHED", "evidence_kind": "rumour", "evidence_source": "SYNTHETIC corridor conversation"},
+        {"indicator_id": "TRN-2", "state": "ABSENT", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC onboarding material reviewed"}
+      ]
+    }
+  ]
+}

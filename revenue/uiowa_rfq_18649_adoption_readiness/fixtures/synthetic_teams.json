@@ -1,0 +1,72 @@
+{
+  "fixture_id": "UIOWA-077-TEAMS-v1",
+  "fiction_notice": "SYNTHETIC. These three teams, their evidence sources and their locators are FICTION written to exercise the engine. Nothing here is a University team, a University record, or a measured University figure.",
+  "recording_note": "Every record is team-scoped with a contributor count only. No individual identity appears in this file, and the loader rejects any record that carries one.",
+  "teams": [
+    {
+      "team_id": "T-ESS",
+      "team_label": "Enterprise Support Services (synthetic)",
+      "contributor_count": 7,
+      "profile_note": "Strong on training and support because it is a service-desk shaped team with rosters and queues. Has never recorded an evaluation of a new approach.",
+      "observations": [
+        {"indicator_id": "LIT-1", "state": "ESTABLISHED", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC wiki page 'Assistive tools in ESS', last reviewed 2026-04-11"},
+        {"indicator_id": "LIT-2", "state": "EMERGING", "evidence_kind": "interview_statement", "evidence_source": "SYNTHETIC interview note: team says people ask in the team channel; no consultable page named"},
+        {"indicator_id": "LIT-3", "state": "ABSENT", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC wiki searched for a failure-mode note; none present"},
+
+        {"indicator_id": "TRN-1", "state": "ESTABLISHED", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC training roster FY-S, sessions 4-6, tasks 'ticket triage' and 'macro drafting'"},
+        {"indicator_id": "TRN-2", "state": "ESTABLISHED", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC onboarding checklist v3, section 'assisted ticket triage'"},
+
+        {"indicator_id": "SUP-1", "state": "ESTABLISHED", "evidence_kind": "system_record", "evidence_source": "SYNTHETIC queue routing rule AIHELP-01, owner recorded as a role"},
+        {"indicator_id": "SUP-2", "state": "ESTABLISHED", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC escalation matrix page, revision 7"},
+
+        {"indicator_id": "SHR-1", "state": "EMERGING", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC channel #ess-tips, 22 pinned entries, no review dates"},
+        {"indicator_id": "SHR-2", "state": "ABSENT", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC entries inspected; none carries a last-checked date"},
+
+        {"indicator_id": "EVL-1", "state": "ABSENT", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC change log searched for an evaluation note; none present"},
+        {"indicator_id": "EVL-2", "state": "ABSENT", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC no acceptance check or known-answer set found"},
+        {"indicator_id": "EVL-3", "state": "ABSENT", "evidence_kind": "interview_statement", "evidence_source": "SYNTHETIC interview note: team could not name who can stop an adopted approach"}
+      ]
+    },
+    {
+      "team_id": "T-RIS",
+      "team_label": "Research Infrastructure Services (synthetic)",
+      "contributor_count": 5,
+      "profile_note": "Strong literacy and real evaluation habits, but its sharing and reversal practices live in people's heads, and it has no hands-on training record at all.",
+      "observations": [
+        {"indicator_id": "LIT-1", "state": "ESTABLISHED", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC 'RIS assistive tooling scope' page, last reviewed 2026-06-02"},
+        {"indicator_id": "LIT-2", "state": "ESTABLISHED", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC decision checklist 'is this task in scope', 9 items"},
+        {"indicator_id": "LIT-3", "state": "ESTABLISHED", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC 'known failure modes' note listing 4 task-specific failures"},
+
+        {"indicator_id": "TRN-1", "state": "ABSENT", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC no training record found for any hands-on session"},
+        {"indicator_id": "TRN-2", "state": "ABSENT", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC onboarding material reviewed; no assisted step described"},
+
+        {"indicator_id": "FIT-1", "state": "ESTABLISHED", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC procedure 'dataset intake', step 4 marked assisted"},
+        {"indicator_id": "FIT-2", "state": "EMERGING", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC ticket RIS-3312 narrows an assisted step, reason field left blank"},
+        {"indicator_id": "FIT-3", "state": "ABSENT", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC procedures searched for a written exclusion; none present"},
+
+        {"indicator_id": "SUP-1", "state": "ESTABLISHED", "evidence_kind": "system_record", "evidence_source": "SYNTHETIC queue RIS-HELP routing rule"},
+
+        {"indicator_id": "SHR-1", "state": "ESTABLISHED", "evidence_kind": "interview_statement", "evidence_source": "SYNTHETIC interview note: team describes a well-used shared approach, but no register was produced when asked"},
+        {"indicator_id": "SHR-2", "state": "ABSENT", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC no reviewed or dated shared material located"},
+
+        {"indicator_id": "EVL-1", "state": "ESTABLISHED", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC pilot note 'Q1-S extraction trial' with keep/drop decision"},
+        {"indicator_id": "EVL-2", "state": "ESTABLISHED", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC 12-item known-answer check set with recorded results"},
+        {"indicator_id": "EVL-3", "state": "ESTABLISHED", "evidence_kind": "interview_statement", "evidence_source": "SYNTHETIC interview note: team names a reversal owner verbally; no written decision owner produced"}
+      ]
+    },
+    {
+      "team_id": "T-IAM",
+      "team_label": "Identity and Access Management (synthetic)",
+      "contributor_count": 2,
+      "profile_note": "Deliberately below the contributor floor. Its observations look confident, and the engine still refuses to turn two voices into an organizational reading.",
+      "observations": [
+        {"indicator_id": "LIT-1", "state": "ESTABLISHED", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC IAM standards page, section 'tooling'"},
+        {"indicator_id": "LIT-2", "state": "ESTABLISHED", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC IAM decision tree, revision 2"},
+        {"indicator_id": "SUP-1", "state": "ABSENT", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC no named destination located for assisted-workflow questions"},
+        {"indicator_id": "SUP-2", "state": "ABSENT", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC no escalation path located"},
+        {"indicator_id": "EVL-1", "state": "EMERGING", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC one undated trial note, no decision recorded"},
+        {"indicator_id": "EVL-2", "state": "ABSENT", "evidence_kind": "artifact", "evidence_source": "SYNTHETIC no acceptance check located"}
+      ]
+    }
+  ]
+}
