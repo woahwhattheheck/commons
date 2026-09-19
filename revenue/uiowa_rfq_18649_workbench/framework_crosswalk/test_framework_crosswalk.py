@@ -37,7 +37,7 @@ class FrameworkCrosswalkTests(unittest.TestCase):
         )
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "duplicate.csv"
-            path.write_text(header + row + row, encoding="utf-8")
+            path.write_text(header + row * 40, encoding="utf-8")
             with self.assertRaisesRegex(ValidationError, "duplicate framework locator"):
                 validate(path)
 

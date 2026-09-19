@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+from decimal import Decimal
 import hashlib
 import io
 import json
@@ -17,6 +18,7 @@ from typing import Any, Iterable
 FORMAT = "uiowa-json-interchange/v1"
 HEADER = ["pointer", "kind", "value"]
 MAX_DEPTH = 128
+CSV_FIELD_LIMIT = 16 * 1024 * 1024
 
 
 class InterchangeError(ValueError):
@@ -34,6 +36,21 @@ def _pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
 
 def _constant(value: str) -> Any:
     raise InterchangeError(f"non-finite JSON constant: {value}")
+
+
+def _float_token(token: str) -> float:
+    """Reject source precision loss before a binary float can hide it.
+
+    Compare decimal numeric values before/after Python's JSON float rendering;
+    lexical trailing zeroes/exponent spelling are not source-byte identity.
+    """
+    value = float(token)
+    if not math.isfinite(value):
+        raise InterchangeError("non-finite JSON number")
+    if Decimal(token) != Decimal(repr(value)):
+        raise InterchangeError(
+            "JSON floating token would lose precision; retain it as explicit decimal text")
+    return value
 
 
 def _check(value: Any, depth: int = 0) -> None:
@@ -60,10 +77,11 @@ def _check(value: Any, depth: int = 0) -> None:
 def loads(text: str) -> Any:
     """Read JSON with duplicate-key, non-finite and Unicode-scalar checks."""
     try:
-        value = json.loads(text, object_pairs_hook=_pairs, parse_constant=_constant)
+        value = json.loads(text, object_pairs_hook=_pairs, parse_constant=_constant,
+                           parse_float=_float_token)
         _check(value)
         return value
-    except (ValueError, UnicodeError, RecursionError) as exc:
+    except (ValueError, UnicodeError, RecursionError, OverflowError) as exc:
         raise InterchangeError(str(exc)) from exc
 
 
@@ -189,6 +207,8 @@ def from_rows(rows: Iterable[Iterable[str]]) -> Any:
 def write_csv(document: Any, path: str | Path) -> None:
     """Create a standalone UTF-8 CSV; refuse to overwrite an existing file."""
     rows = to_rows(document)
+    if any(len(cell) > CSV_FIELD_LIMIT for row in rows for cell in row):
+        raise InterchangeError("CSV field exceeds supported 16 Mi characters; use JSON")
     with Path(path).open("x", encoding="utf-8", newline="") as stream:
         csv.writer(stream, lineterminator="\r\n").writerows(rows)
 
@@ -198,7 +218,7 @@ def read_csv(path: str | Path) -> Any:
     # format intentionally permits larger notes; keep the change scoped.
     previous = csv.field_size_limit()
     try:
-        csv.field_size_limit(16 * 1024 * 1024)
+        csv.field_size_limit(CSV_FIELD_LIMIT)
         with Path(path).open("r", encoding="utf-8-sig", newline="") as stream:
             return from_rows(csv.reader(stream, strict=True))
     except (csv.Error, UnicodeError) as exc:
@@ -221,6 +241,50 @@ def write_json(document: Any, path: str | Path) -> None:
     text = canonical_json(document) + "\n"
     with Path(path).open("x", encoding="utf-8", newline="\n") as stream:
         stream.write(text)
+
+
+# Public names retained from merged PR #16197. Legacy leaf-only CSV is not
+# guessed: import it only via the source-confirmed recovery companion.
+TransportError = InterchangeError
+load_json = read_json
+
+
+def dump_json(document: Any, path: str | Path) -> Path:
+    write_json(document, path)
+    return Path(path)
+
+
+def write_xlsx(document: Any, path: str | Path) -> Path:
+    try:
+        from .workbook import write_xlsx as writer
+    except ImportError:
+        from workbook import write_xlsx as writer
+    writer(document, path)
+    return Path(path)
+
+
+def read_xlsx(path: str | Path) -> Any:
+    try:
+        from .workbook import read_xlsx as reader
+    except ImportError:
+        from workbook import read_xlsx as reader
+    return reader(path)
+
+
+def project_docx(path: str | Path) -> dict[str, Any]:
+    try:
+        from .projection_io import project_docx as reader
+    except ImportError:
+        from projection_io import project_docx as reader
+    return reader(path)
+
+
+def project_pdf(path: str | Path) -> dict[str, Any]:
+    try:
+        from .projection_io import project_pdf as reader
+    except ImportError:
+        from projection_io import project_pdf as reader
+    return reader(path)
 
 
 def main(argv: list[str] | None = None) -> int:
