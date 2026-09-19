@@ -10,7 +10,6 @@ class T(unittest.TestCase):
         for name in HTML:
             text = (ROOT / name).read_text(encoding="utf-8")
             self.assertIn('id="live-cash"', text, name)
-            self.assertIn("agent-rescue.html", text, name)
             self.assertIn("dealer-service-lead-rescue.html", text, name)
     def test_readme(self) -> None:
         text = (ROOT / "README.md").read_text(encoding="utf-8")
@@ -18,6 +17,5 @@ class T(unittest.TestCase):
         self.assertIn("referral-intake-completeness.html", text)
         self.assertIn("repair-booking-preflight.html", text)
         self.assertIn("plant-downtime-handoff.html", text)
-        self.assertIn("$29", text)
 if __name__ == "__main__":
     unittest.main()

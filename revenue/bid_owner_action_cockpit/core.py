@@ -4,7 +4,7 @@ import hashlib
 import json
 import re
 from collections import defaultdict
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from typing import Any
 
 SCHEMA_VERSION = 1
@@ -309,8 +309,8 @@ def _source_state(opp: dict, policy: dict, as_of: datetime) -> tuple[bool, list[
     if not opp["source"]["complete"]:
         reasons.append("SOURCE_SET_INCOMPLETE")
     captured = parse_utc(opp["source"]["captured_at"], "source captured_at")
-    age = int((as_of - captured).total_seconds() // 60)
-    if age > policy["max_source_age_minutes"]:
+    age = as_of - captured
+    if age > timedelta(minutes=policy["max_source_age_minutes"]):
         reasons.append("SOURCE_STALE")
     return (not reasons, reasons)
 
@@ -421,6 +421,10 @@ def compile_cockpit(packet: Any, policy: Any, *, as_of: datetime) -> dict:
         action_key, req_sha, generation, category, action_label = key
         items = grouped[key]
         group_state = _choose_group_state([item[2] for item in items])
+        # Completed peers cannot inflate live breadth, urgency, or lineage.
+        # Retain their membership only when the entire group is non-actionable.
+        if group_state != "NO_ACTION_PROVEN":
+            items = [item for item in items if item[2] != "NO_ACTION_PROVEN"]
         opp_ids = sorted({item[0]["id"] for item in items})
         deadlines = [parse_utc(item[0]["deadline_utc"], "deadline") for item in items if item[0]["deadline_utc"] is not None]
         earliest = min(deadlines) if deadlines else None

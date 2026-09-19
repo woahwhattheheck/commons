@@ -1,0 +1,121 @@
+id,domain,required,summary,posture
+1,AUDIT_SECURITY,Y,State security-policy compliance,PRIME_PRODUCT_EVIDENCE
+2,AUDIT_SECURITY,Y,Backup/recovery per State regulation,PRIME_PRODUCT_EVIDENCE
+3,AUDIT_SECURITY,Y,Complete timestamped/user audit trail,SPECIALIST_WORKSHARE
+4,AUDIT_SECURITY,Y,Online audit-trail viewing,SPECIALIST_WORKSHARE
+5,AUDIT_SECURITY,Y,Multi-time-zone date/time synchronization,SPECIALIST_WORKSHARE
+6,AUDIT_SECURITY,Y,FIPS 140-2/140-3 encryption for confidential data,PRIME_PRODUCT_EVIDENCE
+7,AUDIT_SECURITY,Y,Cyber-liability insurance,PRIME_PRODUCT_EVIDENCE
+8,AUDIT_SECURITY,Y,Payment-card confidentiality,PRIME_PRODUCT_EVIDENCE
+9,AUDIT_SECURITY,Y,No full PAN storage,PRIME_PRODUCT_EVIDENCE
+10,AUDIT_SECURITY,Y,PCI DSS v4.0.1 shared-responsibility/AOC evidence,PRIME_PRODUCT_EVIDENCE
+11,AUDIT_SECURITY,Y,Current SOC 2 Type II,PRIME_PRODUCT_EVIDENCE
+12,AUDIT_SECURITY,Y,Continental-US data residency,PRIME_PRODUCT_EVIDENCE
+13,AUDIT_SECURITY,Y,Fine-grained access management,PRIME_PRODUCT_EVIDENCE
+14,AUDIT_SECURITY,Y,15-character standard-user password minimum,PRIME_PRODUCT_EVIDENCE
+15,AUDIT_SECURITY,Y,14-day password-expiration notice,PRIME_PRODUCT_EVIDENCE
+16,AUDIT_SECURITY,Y,Configurable password expiration,PRIME_PRODUCT_EVIDENCE
+17,AUDIT_SECURITY,Y,External-user account administration,PRIME_PRODUCT_EVIDENCE
+18,AUDIT_SECURITY,Y,Enterprise SSO or MFA methods,PRIME_PRODUCT_EVIDENCE
+19,AUDIT_SECURITY,Y,Failed-login recording and five-attempt lockout,PRIME_PRODUCT_EVIDENCE
+20,AUDIT_SECURITY,N,Configurable inactivity lock,PRIME_PRODUCT_EVIDENCE
+21,AUDIT_SECURITY,Y,IP-based access restrictions,PRIME_PRODUCT_EVIDENCE
+22,AUDIT_SECURITY,Y,Security-use/breach-attempt reporting,PRIME_PRODUCT_EVIDENCE
+23,AUDIT_SECURITY,Y,Office-location role segmentation,PRIME_PRODUCT_EVIDENCE
+24,AUDIT_SECURITY,Y,AI/ML feature disclosure,PRIME_PRODUCT_EVIDENCE
+25,AUDIT_SECURITY,Y,US-only AI-related data,PRIME_PRODUCT_EVIDENCE
+26,AUDIT_SECURITY,Y,No AI training/storage/sharing of State data externally,PRIME_PRODUCT_EVIDENCE
+27,AUDIT_SECURITY,Y,AI disablement controls,PRIME_PRODUCT_EVIDENCE
+28,AUDIT_SECURITY,Y,AI component ownership/licensing/dependencies,PRIME_PRODUCT_EVIDENCE
+29,AUDIT_SECURITY,Y,State employee vs contractor user types,PRIME_PRODUCT_EVIDENCE
+30,AUDIT_SECURITY,Y,Customizable security roles,PRIME_PRODUCT_EVIDENCE
+31,AUDIT_SECURITY,Y,DR/ransomware recovery with RTO/RPO,PRIME_PRODUCT_EVIDENCE
+32,COMPATIBILITY,Y,Current major-browser support,PRIME_PRODUCT_EVIDENCE
+33,COMPATIBILITY,Y,Desktop/mobile/web cross-platform support,PRIME_PRODUCT_EVIDENCE
+34,COMPATIBILITY,Y,Admin-configurable layouts/fields/workflows,PRIME_PRODUCT_EVIDENCE
+35,COMPATIBILITY,N,State branding on pages,PRIME_PRODUCT_EVIDENCE
+36,COMPATIBILITY,Y,ADA/WCAG 2.1 AA,PRIME_PRODUCT_EVIDENCE
+37,INTERFACES,Y,Automated/on-demand/manual ERP and agency data exchange,SPECIALIST_WORKSHARE
+38,INTERFACES,Y,Data dictionary and ERD,SPECIALIST_WORKSHARE
+39,INTERFACES,Y,Database extraction/transfer connections,SPECIALIST_WORKSHARE
+40,INTERFACES,Y,State payment-card processor interface,GAP_QUESTION
+41,INTERFACES,Y,Cloud hosting model/provider disclosure,PRIME_PRODUCT_EVIDENCE
+42,INTERFACES,Y,Centralized Check 21 image integration,GAP_QUESTION
+43,DASHBOARDS_REPORTING,Y,Group-shared dashboards/reports,SPECIALIST_WORKSHARE
+44,DASHBOARDS_REPORTING,Y,Reporting across all data,SPECIALIST_WORKSHARE
+45,DASHBOARDS_REPORTING,Y,Low-code/no-code reporting,SPECIALIST_WORKSHARE
+46,DASHBOARDS_REPORTING,Y,Customizable dashboard criteria,SPECIALIST_WORKSHARE
+47,DASHBOARDS_REPORTING,N,Predictive/keyword search,SPECIALIST_WORKSHARE
+48,DASHBOARDS_REPORTING,Y,Transaction-history search by attributes,SPECIALIST_WORKSHARE
+49,DASHBOARDS_REPORTING,Y,Scheduled report distribution,SPECIALIST_WORKSHARE
+50,DASHBOARDS_REPORTING,Y,PDF/Excel/HTML report output,SPECIALIST_WORKSHARE
+51,DASHBOARDS_REPORTING,Y,Variance-trend reporting,SPECIALIST_WORKSHARE
+52,DASHBOARDS_REPORTING,Y,Configurable workflows,SPECIALIST_WORKSHARE
+53,DASHBOARDS_REPORTING,Y,ICL reporting across financial institutions,SPECIALIST_WORKSHARE
+54,DASHBOARDS_REPORTING,Y,Batch-summary to transaction drill-down,SPECIALIST_WORKSHARE
+55,DASHBOARDS_REPORTING,Y,Detailed batch inquiry/reporting,SPECIALIST_WORKSHARE
+56,DOCUMENT_SOLUTIONS,Y,Transaction document storage,SPECIALIST_WORKSHARE
+57,DOCUMENT_SOLUTIONS,Y,In-platform document viewing,SPECIALIST_WORKSHARE
+58,DOCUMENT_SOLUTIONS,N,Training/support materials in solution,SPECIALIST_WORKSHARE
+59,DOCUMENT_SOLUTIONS,Y,Selective data/image purge,SPECIALIST_WORKSHARE
+60,FUNCTIONAL,Y,Multiple tender/payment types,PRIME_PRODUCT_EVIDENCE
+61,FUNCTIONAL,Y,Split payments,DEMO_SUPPORTED
+62,FUNCTIONAL,Y,Automated receipt delivery,PRIME_PRODUCT_EVIDENCE
+63,FUNCTIONAL,Y,Receipt regeneration/reprint,PRIME_PRODUCT_EVIDENCE
+64,FUNCTIONAL,Y,Cash-drawer open/close/balance/reconcile,DEMO_SUPPORTED
+65,FUNCTIONAL,Y,Modify starting cash before transactions,DEMO_SUPPORTED
+66,FUNCTIONAL,Y,"Full/partial refunds, voids, reversals, adjustments linked to original",DEMO_SUPPORTED
+67,FUNCTIONAL,Y,Automated fees/tax/discount/rules charges,PRIME_PRODUCT_EVIDENCE
+68,FUNCTIONAL,Y,Configurable rounding with original/adjustment/final audit,DEMO_SUPPORTED
+69,FUNCTIONAL,Y,Multiple locations/business units/departments,PRIME_PRODUCT_EVIDENCE
+70,FUNCTIONAL,Y,ERP customer account/invoice lookup,GAP_QUESTION
+71,FUNCTIONAL,Y,Non-invoiced and account/invoiced payments,PRIME_PRODUCT_EVIDENCE
+72,FUNCTIONAL,Y,Offline payment intake with sync,PRIME_PRODUCT_EVIDENCE
+73,FUNCTIONAL,Y,Low-click high-volume cashier UI,PRIME_PRODUCT_EVIDENCE
+74,FUNCTIONAL,Y,Receipt printer/drawer/card/check-scanner compatibility,PRIME_PRODUCT_EVIDENCE
+75,FUNCTIONAL,N,Barcode-scanner compatibility,PRIME_PRODUCT_EVIDENCE
+76,FUNCTIONAL,N,Kiosk/self-service compatibility,PRIME_PRODUCT_EVIDENCE
+77,FUNCTIONAL,N,Online self-service digital payments,PRIME_PRODUCT_EVIDENCE
+78,FUNCTIONAL,Y,Check 21/RDC electronic check draft delivery,PRIME_PRODUCT_EVIDENCE
+79,FUNCTIONAL,Y,Authorized manual completion when scanner fails,PRIME_PRODUCT_EVIDENCE
+80,FUNCTIONAL,Y,Invoice scan to prepopulate payment,PRIME_PRODUCT_EVIDENCE
+81,FUNCTIONAL,Y,Location-specific branded receipt layouts,PRIME_PRODUCT_EVIDENCE
+82,FUNCTIONAL,N,Interactive tutorials/help,PRIME_PRODUCT_EVIDENCE
+83,FUNCTIONAL,Y,Effective-dated configuration,SPECIALIST_WORKSHARE
+84,FUNCTIONAL,Y,Payment-form restrictions by product/service/accounting rules,SPECIALIST_WORKSHARE
+85,FUNCTIONAL,Y,Correct transaction item/accounting details after cashier error,SPECIALIST_WORKSHARE
+86,FUNCTIONAL,Y,Historical archive retrieval including attachments,SPECIALIST_WORKSHARE
+87,FUNCTIONAL,Y,Period close preventing new posting,SPECIALIST_WORKSHARE
+88,FUNCTIONAL,Y,Returned/dishonored-check flagging,SPECIALIST_WORKSHARE
+89,FUNCTIONAL,Y,Automatic batch close,SPECIALIST_WORKSHARE
+90,FUNCTIONAL,Y,In-app messaging and alerts,SPECIALIST_WORKSHARE
+91,FUNCTIONAL,Y,Copy/edit configuration,SPECIALIST_WORKSHARE
+92,FUNCTIONAL,Y,Batch visibility independent of cashier active status,SPECIALIST_WORKSHARE
+93,FUNCTIONAL,Y,Maintenance/release/security-patch process,SPECIALIST_WORKSHARE
+94,FUNCTIONAL,Y,Payment-form configuration by product/program/accounting rules,SPECIALIST_WORKSHARE
+95,FUNCTIONAL,Y,Payment type with multiple allocation items/distributions,SPECIALIST_WORKSHARE
+96,FUNCTIONAL,Y,Allowable transaction date ranges,SPECIALIST_WORKSHARE
+97,FUNCTIONAL,Y,Deposits from one or more batches/consolidation,DEMO_SUPPORTED
+98,FUNCTIONAL,Y,Separate deposits by tender/bank/location/agency/etc.,SPECIALIST_WORKSHARE
+99,FUNCTIONAL,Y,Configurable batch numbering/naming/open/close/approval,SPECIALIST_WORKSHARE
+100,FUNCTIONAL,Y,Manual/automatic batch open,SPECIALIST_WORKSHARE
+101,FUNCTIONAL,Y,Authorized batch reopen with reason/audit,SPECIALIST_WORKSHARE
+102,FUNCTIONAL,Y,Protect finalized batches from modification,SPECIALIST_WORKSHARE
+103,FUNCTIONAL,Y,Transfer open-batch responsibility,SPECIALIST_WORKSHARE
+104,FUNCTIONAL,Y,Batch status/count/expected/actual/variance,DEMO_SUPPORTED
+105,FUNCTIONAL,Y,Historical batch search across agencies/locations,SPECIALIST_WORKSHARE
+106,FUNCTIONAL,Y,Cashier overage/shortage calculation,DEMO_SUPPORTED
+107,FUNCTIONAL,Y,Reason/explanation threshold for variance,SPECIALIST_WORKSHARE
+108,FUNCTIONAL,Y,Variance-based approvals,SPECIALIST_WORKSHARE
+109,FUNCTIONAL,Y,Distinguish drawer variance from deposit variance,DEMO_SUPPORTED
+110,FUNCTIONAL,Y,Tender totals reconcile to batch total,DEMO_SUPPORTED
+111,FUNCTIONAL,Y,Predefined/configurable accounting distributions and split allocation,DEMO_SUPPORTED
+112,FUNCTIONAL,Y,Restrict distributions by collection point/location/etc.,SPECIALIST_WORKSHARE
+113,FUNCTIONAL,Y,Authorized correction/reallocation after entry,SPECIALIST_WORKSHARE
+114,FINANCIAL_ACCOUNTING,Y,Post transactions to State ERP accounts receivable,GAP_QUESTION
+115,FINANCIAL_ACCOUNTING,Y,Daily/real-time accounting-distribution synchronization,SPECIALIST_WORKSHARE
+116,FINANCIAL_ACCOUNTING,Y,Daily reconciliation summaries,DEMO_SUPPORTED
+117,FINANCIAL_ACCOUNTING,Y,Integrated bank reconciliation or compatible export,SPECIALIST_WORKSHARE
+118,FINANCIAL_ACCOUNTING,Y,Audit every transaction/adjustment/user action,SPECIALIST_WORKSHARE
+119,FINANCIAL_ACCOUNTING,Y,Financial-regulation/policy support,SPECIALIST_WORKSHARE
+120,FINANCIAL_ACCOUNTING,Y,Image Cash Letter reports,SPECIALIST_WORKSHARE

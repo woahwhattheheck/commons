@@ -7,6 +7,7 @@ import hashlib
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 VERIFY = ROOT / "p/grokbuild-pr8601-verify-20260903-01.md"
@@ -19,7 +20,7 @@ BODY_SHA256 = "71982c472209705ebb98df207c5c051a387127cfe739635e2566e31f9a1d7785"
 KEEP = {
     "p/grokbuild-tests-33718116260-billing-lock-20260903-01.md": "70db3e2a",
     "p/grokbuild-tests-33717741059-billing-lock-20260903-01.md": "1b6c3021",
-    ".github/workflows/tests.yml": "fd94b65c",
+    ".github/workflows/tests.yml": "57d36525",
     "open_door_guard.py": "877e148d",
 }
 
@@ -42,7 +43,11 @@ class TestGrokbuildPr8601Verify(unittest.TestCase):
         self.assertIn("name: tests", yml)
         self.assertIn("battery:", yml)
         self.assertIn("the whole battery, one failure fails the run", yml)
-        self.assertIn("find . -maxdepth 1 -type f -name 'test_*.py'", yml)
+        self.assertIn(
+            "find . -maxdepth 1 -type f \\( -name 'test_*.py' -o -name 'test_*.js' \\) -print",
+            yml,
+        )
+        self.assertIn("find infra -type f -name 'test_*.py' -print", yml)
         self.assertNotIn("billing", yml.lower())
         self.assertNotIn("if: false", yml)
         self.assertNotIn("continue-on-error", yml)
@@ -82,7 +87,7 @@ class TestGrokbuildPr8601Verify(unittest.TestCase):
 
     def test_leftover_unittest_still_green(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_grokbuild_tests_33718116260_billing_lock.py"],
+            [sys.executable, "-m", "unittest", "test_grokbuild_tests_33718116260_billing_lock.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

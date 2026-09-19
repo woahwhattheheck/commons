@@ -90,7 +90,7 @@ class ListingRegistryTests(unittest.TestCase):
         surfaces = len(self.surfaces["surfaces"])
         self.assertEqual(self.registry["counts"]["listings"], products * surfaces)
         self.assertEqual(self.registry["counts"]["products"], products)
-        self.assertGreaterEqual(surfaces, 17)
+        self.assertGreaterEqual(surfaces, 16)
 
     def test_honest_counts(self):
         counts = self.registry["counts"]
@@ -175,14 +175,10 @@ class ListingRegistryTests(unittest.TestCase):
         self.assertEqual(row["listing_state"], "SURFACE_LIVE")
         self.assertIs(row["submitted"], False)
 
-        autopsy = self.rows["agent-failure-autopsy-29__commons-service-catalog"]
-        self.assertEqual(autopsy["fit"], "FIT")
-        self.assertEqual(autopsy["published_status"], "SURFACE_PUBLISHED")
-        self.assertEqual(autopsy["chargeability_state"], "ACTIVE_CHARGEABLE")
-        self.assertEqual(
-            autopsy["chargeability"]["url"],
-            "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
-        )
+        dealer = self.rows["dealer-service-lead-rescue__commons-service-catalog"]
+        self.assertEqual(dealer["fit"], "FIT")
+        self.assertEqual(dealer["published_status"], "SURFACE_PUBLISHED")
+        self.assertEqual(dealer["chargeability_state"], "ACTIVE_CHARGEABLE")
 
     def test_external_surface_not_chargeable_even_with_stripe(self):
         row = self.rows["sku-tip-20260826__upwork-project-catalog"]
@@ -205,18 +201,16 @@ class ListingRegistryTests(unittest.TestCase):
         self.assertEqual(row["account_status"], "OWNER_PLATFORM")
         self.assertIn("owner", row["next_action"].lower())
 
-    def test_show_hn_draft_tracks_the_current_autopsy_offer_without_submitting(self):
+    def test_retired_autopsy_offer_produces_no_listing_rows(self):
         rows = [
             row for row in self.registry["listings"]
-            if row["surface_id"] == "show-hn-post"
+            if row["offer_id"] == "agent-failure-autopsy-29"
         ]
-        self.assertTrue(rows)
-        fit = [row for row in rows if row["fit"] == "FIT"]
-        self.assertEqual([row["offer_id"] for row in fit], ["agent-failure-autopsy-29"])
-        self.assertEqual(fit[0]["listing_state"], "BLOCKED_PROVIDER_ACCOUNT")
-        self.assertFalse(fit[0]["submitted"])
+        self.assertEqual(rows, [])
+        surfaces = {row["id"] for row in self.surfaces["surfaces"]}
+        self.assertNotIn("show-hn-post", surfaces)
         asset_ids = {row["id"] for row in self.assets["assets"]}
-        self.assertIn(fit[0]["id"], asset_ids)
+        self.assertFalse(any("agent-failure-autopsy-29" in aid for aid in asset_ids))
 
     def test_assets_ready_match_fit_and_forbid_live_claims(self):
         fit_ids = {r["id"] for r in self.registry["listings"] if r["fit"] == "FIT"}
@@ -251,7 +245,6 @@ class ListingRegistryTests(unittest.TestCase):
     def test_survival_and_autopsy_routes_match_canonical_offers(self):
         expected = {
             "production-survival-sprint": "revenue/production_survival/README.md",
-            "agent-failure-autopsy-29": "agent-rescue.html",
         }
         exported_registry = json.loads((REG / "registry.json").read_text(encoding="utf-8"))
         exported_assets = json.loads((REG / "assets.json").read_text(encoding="utf-8"))

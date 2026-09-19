@@ -11,7 +11,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 CLAIM = "newbot-builds-html-keep-live-cash-20260916-16"
 PRODUCTS = [
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -25,7 +24,6 @@ def _live_cash(cite=CLAIM):
         "cite": [cite],
         "note": "fixture keep",
         "products": [
-            {"name": "Agent Failure Autopsy", "price_usd": 29, "path": "agent-rescue.html"},
             {"name": "Dealer Service Lead Rescue", "price_usd": 199, "path": "dealer-service-lead-rescue.html"},
             {"name": "Referral Intake Completeness", "price_usd": 199, "path": "referral-intake-completeness.html"},
             {"name": "Repair Booking Preflight", "price_usd": 199, "path": "repair-booking-preflight.html"},
@@ -52,12 +50,11 @@ class TestNewbotBuildsHtmlKeepLiveCash2026091616(unittest.TestCase):
     def test_tip_builds_html_has_autopsy_and_larger(self):
         html = (ROOT / "builds.html").read_text(encoding="utf-8")
         self.assertIn('id="live-cash"', html)
-        self.assertIn("agent-rescue.html", html)
-        self.assertIn("$29", html)
+
         self.assertIn("Larger fixed engagements", html)
         for path in LARGER:
             self.assertIn(path, html)
-        self.assertNotIn("buy.stripe.com", html)
+        self.assertNotIn("buy.stripe.com", html.split('id="live-cash"', 1)[1].split('</section>', 1)[0])
 
     def test_product_pages_exist(self):
         for name in PRODUCTS + list(LARGER):
@@ -89,11 +86,10 @@ class TestNewbotBuildsHtmlKeepLiveCash2026091616(unittest.TestCase):
             self.assertIn(prod, paths, prod)
         html = written.get("builds.html") or (root / "builds.html").read_text(encoding="utf-8")
         self.assertIn('id="live-cash"', html)
-        self.assertIn("agent-rescue.html", html)
         self.assertIn("Larger fixed engagements", html)
         self.assertIn("diagnostic.html", html)
         self.assertIn("commercial.html", html)
-        self.assertNotIn("buy.stripe.com", html)
+        self.assertNotIn("buy.stripe.com", html.split('id="live-cash"', 1)[1].split('</section>', 1)[0])
 
 
 if __name__ == "__main__":

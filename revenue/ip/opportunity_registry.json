@@ -39,31 +39,31 @@
       "id": "grants-ledger",
       "path": "revenue/ip/grants_ledger.json",
       "role": "GRANT",
-      "sha256": "043c96e3e94227ce66714f72dfda06bf0c481d92f004c6be0d974029464e8b51"
+      "sha256": "b53f11f4b401814b86b0d2c34d4cf43039b17f1adc43ef5c35956bbebdfca46b"
     },
     {
       "id": "collaboration-targets",
       "path": "revenue/ip/collaboration_targets.json",
       "role": "RESEARCH",
-      "sha256": "b05dc3130c9193656f0a5277ff41dfb75ca3e165bf85ca377f18e7701fcc22c5"
+      "sha256": "53d8c47d78a9f0995f4a8b4fb676c479e03333ee9a3b3253698da23f66e538ed"
     },
     {
       "id": "whitebox-offers",
       "path": "revenue/ip/whitebox_collaboration_offers.json",
       "role": "LICENSING_AND_PILOT",
-      "sha256": "d0f022a33f4b31f2ab523f2e47678ec6771749bbaece2ed859b70a92e5079475"
+      "sha256": "654d5bcac684bc2751032d5859b35aa8cc57aac117a5a98e2bb33089aea34ba6"
     },
     {
       "id": "distribution-channels",
       "path": "revenue/distribution/channels.json",
       "role": "PROCUREMENT",
-      "sha256": "231f6461e38193928db6ecf3d16a675a2454114e8978f38a4d799b31f964a824"
+      "sha256": "a9a71ad1754f47b24d5b28274420a775454041f2ce2511b957939df7970457ae"
     },
     {
       "id": "listing-registry",
       "path": "revenue/listing_registry/registry.json",
       "role": "MARKETPLACE_SURFACES_COMPOSE_NOT_REMINT",
-      "sha256": "0799b1d431dd8074c23f514d1134167267a85798406d352557fa8c05591fae1c"
+      "sha256": "6b43f890e343cc20b39da32fa5b696d2263735ef65d9f407a064e7ba3a6f2675"
     }
   ],
   "capabilities": [
@@ -74,38 +74,38 @@
       "receipts": [
         {
           "path": "docs/TITAN_HANDS.md",
-          "sha256": "ecdfcc76ec17fb6d18d19cab03b2ac68f3f4f9bf4c6875cadce0d5935161b6b1",
-          "bytes": 4469
+          "sha256": "c2b1f3f8ece662c777e655d40e517c7a642dd07a8b1bbddca55b6de255d10611",
+          "bytes": 4591
         },
         {
           "path": "titan-hands.html",
-          "sha256": "2c8653a18eebc8dffe63f37c4917efb3432368837e9ae39c394713272159a667",
-          "bytes": 2808
+          "sha256": "2b48bf876edf8287e7ca5b2b72dc62e034ad1a9b2a43a78af698b8283ee720f4",
+          "bytes": 3448
         },
         {
           "path": "titan-hour.html",
-          "sha256": "dcc2690e95385b4605dc7d24c6bd98b7ef8db26d4e1c066757fdc9c166730ba3",
-          "bytes": 6614
+          "sha256": "4262a97485e67832c30326fd137896e5f374aeacd1306bd15e4c29b159764cae",
+          "bytes": 8682
         },
         {
           "path": "host/titan_hands/one_tool.py",
-          "sha256": "394fd77a09dc01fbf415fef480a1f867fb2eaec1314c74c7f12c9e555aaace31",
-          "bytes": 7321
+          "sha256": "c1a8fa32aaef8fd248f4e62a387b394fc9ae1bc56942089caf91bad18e615e9f",
+          "bytes": 9095
         },
         {
           "path": "host/titan_hands/linux_atspi.py",
-          "sha256": "8a7552d1f0221e5a6f1adf01a7d87ff25c942de66c21d372998a0bc538009bb3",
-          "bytes": 39377
+          "sha256": "c2b116c3121bc9e71c14f5eba5842ef507cc259bc772a63d14a0d7373816ef36",
+          "bytes": 40369
         },
         {
           "path": "p/emissary-titan-hands-features-20260826-01.md",
-          "sha256": "8d6dcb2e16365feed2e43ee1f6f5dd7056c9bf428dc3f6a0debc5a41ad1da35b",
-          "bytes": 1727
+          "sha256": "7ececa66b7b195e2ae5a0ad6181976d8fa0538263c4ee4872510485769fbc5ec",
+          "bytes": 1745
         },
         {
           "path": "p/coil-titan-hands-linux-atspi-land-20260827-01.md",
-          "sha256": "8d12599140243fef315f9a79a5727d8817cec6c9161545e1a6c353852e5f0f59",
-          "bytes": 1688
+          "sha256": "5ec85c651d5535834f47b4627afefc75ee3378a0e7484051da4503f53e92f1c7",
+          "bytes": 1727
         }
       ]
     },
@@ -116,23 +116,23 @@
       "receipts": [
         {
           "path": "ground/RINGDELTA.md",
-          "sha256": "fd3805866e6bcd18728a4ae311a6643b11ef158ff16b935c5ff73247983e7441",
-          "bytes": 3016
+          "sha256": "e4a33566ea890168dc8c77ebe0d01863f04ce6387d516c8606821dae4942f8c1",
+          "bytes": 3539
         },
         {
           "path": "ground/RINGDELTA.json",
-          "sha256": "276817af90a9a3b8f34a1e9d535d299e1a5a7a97e3af7d0f5f3a3df93ba2f910",
-          "bytes": 1560
+          "sha256": "dd4b64d49f2461aea37aa6698c60a62693047dab0cdc75f90c0ffb89ce45fad6",
+          "bytes": 1611
         },
         {
           "path": "ringdelta.html",
-          "sha256": "eccd00d9c5259d8fa992f9906c2b36b233cc0f41aa4227a7d488011773f73218",
-          "bytes": 3783
+          "sha256": "f0c9703fe36637521566071eb407f23981042d743803c6d34306eb90e15c9def",
+          "bytes": 5356
         },
         {
           "path": "host/ringdelta.py",
-          "sha256": "4262d2cfa81e58026636c240e7878b804781354352cb229e3c14a963ebfbb600",
-          "bytes": 8543
+          "sha256": "c6cb0f8d319fe85c5637b631bf283f17694b78b05f5af145dce4a90a73edf543",
+          "bytes": 8796
         },
         {
           "path": "excerpts/20260828/ringdelta_xor8.mno",
@@ -148,28 +148,28 @@
       "receipts": [
         {
           "path": "carrier.js",
-          "sha256": "5df2a26164edec15288eaa213d8533b2d26f0e7062009dad088a0d1257b01ef4",
-          "bytes": 63703
+          "sha256": "8fa9978c292a0bb3ddd2401f4f9252c7fdee9ef7cca82cdccb45f9e75f9126b7",
+          "bytes": 65175
         },
         {
           "path": "distribution.html",
-          "sha256": "3ab84fcfa02a9e84ea88aaf4d5f66981756aed70a97546f9af4928d63cb09390",
-          "bytes": 8427
+          "sha256": "788e3ca735530138f5e97c18f8701d240ae7719f525207049fc6af671b896a8b",
+          "bytes": 9988
         },
         {
           "path": "host/distribution.py",
-          "sha256": "2ae7a466c9c2ba64b59329e404aaa49c2c94973ec5d432d3d907a095ffd0ef92",
-          "bytes": 29867
+          "sha256": "e85efed6c982918eba61d91fc63b58882a560337d9785a1eaac43945624f5763",
+          "bytes": 30605
         },
         {
           "path": "ground/DISTRIBUTION.md",
-          "sha256": "47823a33df0952378ecf9747d7efa0606a45dd4a46182dc359ee6d9a394f37c3",
-          "bytes": 3212
+          "sha256": "7cdc98cfa3ed5fcee2bb7b1b4a74488e489bb42d8ba769efb9186ff27ab963f8",
+          "bytes": 3716
         },
         {
           "path": "p/grok-distribution-layer-20260828-01.md",
-          "sha256": "79687f5a59620f85af6befd1a4879b88bc7bc8c5ce3d0156bc8176d2486469ec",
-          "bytes": 1977
+          "sha256": "fe6028dcb971e4efa0164ff869ec72081c22b2f5b9f147465704556cfda327af",
+          "bytes": 2017
         }
       ]
     },
@@ -180,13 +180,13 @@
       "receipts": [
         {
           "path": "evidence/README.md",
-          "sha256": "c23d0b482e84507e8212fac65320f6f529b7fd383d5cec3d17ed9fa12849503c",
-          "bytes": 2012
+          "sha256": "5ec472f58475d3245b002bc3a693fce84058e4b127ec4a6c3793782034fc9b90",
+          "bytes": 2685
         },
         {
           "path": "ground/03_EVIDENCE_ANNEX.md",
-          "sha256": "2b94d30faa059699e0faf0935da759035dc8035958d0cb888e474f19e07546c8",
-          "bytes": 4197
+          "sha256": "15bf2f8da1bba829240683e258c20e4cfaabad958d9595520ddad37c987ac43d",
+          "bytes": 4714
         }
       ]
     },
@@ -197,13 +197,13 @@
       "receipts": [
         {
           "path": "ground/SWARM.md",
-          "sha256": "98eef6e6a92a30b0cbd76c44ea200f9e83522c1841cc59ca6d277572940fb88c",
-          "bytes": 1565
+          "sha256": "333f3829c70b89b2f3796782c922522dba886a69eecb76a26c37dd6b9ea421b5",
+          "bytes": 2068
         },
         {
           "path": "swarm-mail.html",
-          "sha256": "4c16eb5d0604738d106692c3b4a99006c7268ab16c501fe042e9f45f6f1b7848",
-          "bytes": 6070
+          "sha256": "cbe10b71970eb1e6d7bb41ed129c9c57a646a109d747b2625461829240e3949c",
+          "bytes": 6449
         }
       ]
     },
@@ -214,23 +214,23 @@
       "receipts": [
         {
           "path": "ground/TRUST.md",
-          "sha256": "9847b90c425233be58ce13c86c51a51fb863c16504d6ba8a6369bba561f170f2",
-          "bytes": 2962
+          "sha256": "c7531bd2ece7f30c09d243004e4cf7126325d2e82059bf42f296321867fa0e2c",
+          "bytes": 3460
         },
         {
           "path": "trust.html",
-          "sha256": "bf43285ef200165671840ae4201fba2fd4aeb2ca445526da9502e1079f284af0",
-          "bytes": 7120
+          "sha256": "975414b1c197a3689869141317a434720ec3fd860834e5901c3e0456eec0e56e",
+          "bytes": 8693
         },
         {
           "path": "host/trust_cache.py",
-          "sha256": "586b9f4146a8c4f7445fe904e9080eeeef527e4548dee5585140530c10608363",
-          "bytes": 8035
+          "sha256": "b93cfd39eda6b683ea8d1357d124670e418d319d9f8df9b0e7d6faae0b653e62",
+          "bytes": 8279
         },
         {
           "path": "p/bernays-production-survival-operating-system-20260826-01.md",
-          "sha256": "f66c06297b7400c68e2e95d17233e1f8a315999f37d6a95c8f75d9ab984eb34f",
-          "bytes": 1611
+          "sha256": "a5c463a406ac00c297a6859164c8f98cdb86d40d4fb6da6561dad57019100657",
+          "bytes": 1632
         }
       ]
     },
@@ -241,43 +241,43 @@
       "receipts": [
         {
           "path": "ground/FEATURES.md",
-          "sha256": "bd2b7c314d28529ceaf40fc7368e8ac6a30e9e8807f4affabb4b639560cc8085",
-          "bytes": 1344
+          "sha256": "8a72aa6b200e7e1a2e8355a80e5229ef897ea066e504466a11643bdbac54b21d",
+          "bytes": 2129
         },
         {
           "path": "ground/FEATURE_TRACKER.md",
-          "sha256": "0792cdb75797bb71fa44b1280070b56a06516582ec46d9c9e5c6eff20bebb4b7",
-          "bytes": 4615
+          "sha256": "cd3968d0c3c33a538c9d919176892176fdf17000c1f6dad981da36ba5eb24411",
+          "bytes": 5127
         },
         {
           "path": "host/feature_tracker.py",
-          "sha256": "02b520eb32b2113370d955786c34b52f335ade70902222a4cd5f1f1339c718c0",
-          "bytes": 38400
+          "sha256": "aeada06fa0540bc12e2b9ed9eaafc24ebb367b8897d584c7bf54373c23cfc466",
+          "bytes": 41232
         },
         {
           "path": "test_feature_tracker.py",
-          "sha256": "57a18fe043e0f0d6aac74ec86fafa6a504df62402e6759459a2fe0b5623232da",
-          "bytes": 27984
+          "sha256": "38afed797a17878c788d5b11fddc3eebc1da2aae88428e4f4d8ed219af57dbe1",
+          "bytes": 28490
         },
         {
           "path": "features/registry/feature-tracker-20260828-01.json",
-          "sha256": "210d74192ab08fa9348c87f1ec5e6bf28e72c5c0c517ae44d47478d3cf424f4e",
-          "bytes": 1123
+          "sha256": "733bc99a1af05c4f99596a30bfece1ca133ac9106bc2db6b616f520f28c95f07",
+          "bytes": 1161
         },
         {
           "path": "resources.html",
-          "sha256": "9b999813aff51306977c47ed1a30ad650a60c4bb7e91861fde2c027b0197bc90",
-          "bytes": 16619
+          "sha256": "56ab6c1bbb297675f1228dfd17ade47f47eeb122a0aca936290f39253e437f82",
+          "bytes": 16285
         },
         {
           "path": "ground/RESOURCE_LEDGER.json",
-          "sha256": "b61a3f5c96c19ae205b1ee09a966d3908906935568c513cf1feb29c9eeaac1f5",
-          "bytes": 161041
+          "sha256": "47ed2e17392724fb12eb709216be9c0eee23754a606a5eb05d37c602d1b7a05e",
+          "bytes": 201760
         },
         {
           "path": "host/resource_ledger.py",
-          "sha256": "750441778da389cc2f5a55c674e1c8226d566826bdfbfe8adcd896cbfdb9934c",
-          "bytes": 21801
+          "sha256": "8ae983e3b285c310f05150a948cb5a055077e0c9ed44d78a27e3d93e62fca620",
+          "bytes": 22370
         }
       ]
     }
@@ -309,7 +309,7 @@
       "composed_from": [
         {
           "path": "revenue/ip/grants_ledger.json",
-          "sha256": "043c96e3e94227ce66714f72dfda06bf0c481d92f004c6be0d974029464e8b51"
+          "sha256": "b53f11f4b401814b86b0d2c34d4cf43039b17f1adc43ef5c35956bbebdfca46b"
         }
       ],
       "checked_at": "2026-08-26T20:50:00Z",
@@ -383,7 +383,7 @@
       "composed_from": [
         {
           "path": "revenue/ip/grants_ledger.json",
-          "sha256": "043c96e3e94227ce66714f72dfda06bf0c481d92f004c6be0d974029464e8b51"
+          "sha256": "b53f11f4b401814b86b0d2c34d4cf43039b17f1adc43ef5c35956bbebdfca46b"
         }
       ],
       "checked_at": "2026-08-26T20:50:00Z",
@@ -463,7 +463,7 @@
       "composed_from": [
         {
           "path": "revenue/ip/grants_ledger.json",
-          "sha256": "043c96e3e94227ce66714f72dfda06bf0c481d92f004c6be0d974029464e8b51"
+          "sha256": "b53f11f4b401814b86b0d2c34d4cf43039b17f1adc43ef5c35956bbebdfca46b"
         }
       ],
       "checked_at": "2026-08-26T20:50:00Z",
@@ -538,7 +538,7 @@
       "composed_from": [
         {
           "path": "revenue/ip/opportunity_seed.json",
-          "sha256": "8f9af8f961876b4e33deb7f11d154a5a728423a1ef81ade3299007392436e4c2"
+          "sha256": "6a47674bfc1eee0b3b176dbd2056239dc91733361cf2942ec0d468cfc3c440ee"
         }
       ],
       "checked_at": "2026-08-28T17:15:00Z",
@@ -606,7 +606,7 @@
       "composed_from": [
         {
           "path": "revenue/ip/opportunity_seed.json",
-          "sha256": "8f9af8f961876b4e33deb7f11d154a5a728423a1ef81ade3299007392436e4c2"
+          "sha256": "6a47674bfc1eee0b3b176dbd2056239dc91733361cf2942ec0d468cfc3c440ee"
         }
       ],
       "checked_at": "2026-08-28T17:15:00Z",
@@ -673,7 +673,7 @@
       "composed_from": [
         {
           "path": "revenue/ip/opportunity_seed.json",
-          "sha256": "8f9af8f961876b4e33deb7f11d154a5a728423a1ef81ade3299007392436e4c2"
+          "sha256": "6a47674bfc1eee0b3b176dbd2056239dc91733361cf2942ec0d468cfc3c440ee"
         }
       ],
       "checked_at": "2026-08-28T17:15:00Z",
@@ -736,7 +736,7 @@
       "composed_from": [
         {
           "path": "revenue/ip/collaboration_targets.json",
-          "sha256": "b05dc3130c9193656f0a5277ff41dfb75ca3e165bf85ca377f18e7701fcc22c5"
+          "sha256": "53d8c47d78a9f0995f4a8b4fb676c479e03333ee9a3b3253698da23f66e538ed"
         }
       ],
       "checked_at": "2026-08-26T23:51:02Z",
@@ -798,7 +798,7 @@
       "composed_from": [
         {
           "path": "revenue/ip/collaboration_targets.json",
-          "sha256": "b05dc3130c9193656f0a5277ff41dfb75ca3e165bf85ca377f18e7701fcc22c5"
+          "sha256": "53d8c47d78a9f0995f4a8b4fb676c479e03333ee9a3b3253698da23f66e538ed"
         }
       ],
       "checked_at": "2026-08-26T23:51:02Z",
@@ -860,7 +860,7 @@
       "composed_from": [
         {
           "path": "revenue/ip/collaboration_targets.json",
-          "sha256": "b05dc3130c9193656f0a5277ff41dfb75ca3e165bf85ca377f18e7701fcc22c5"
+          "sha256": "53d8c47d78a9f0995f4a8b4fb676c479e03333ee9a3b3253698da23f66e538ed"
         }
       ],
       "checked_at": "2026-08-26T23:51:02Z",
@@ -922,7 +922,7 @@
       "composed_from": [
         {
           "path": "revenue/ip/collaboration_targets.json",
-          "sha256": "b05dc3130c9193656f0a5277ff41dfb75ca3e165bf85ca377f18e7701fcc22c5"
+          "sha256": "53d8c47d78a9f0995f4a8b4fb676c479e03333ee9a3b3253698da23f66e538ed"
         }
       ],
       "checked_at": "2026-08-26T23:51:02Z",
@@ -984,7 +984,7 @@
       "composed_from": [
         {
           "path": "revenue/ip/collaboration_targets.json",
-          "sha256": "b05dc3130c9193656f0a5277ff41dfb75ca3e165bf85ca377f18e7701fcc22c5"
+          "sha256": "53d8c47d78a9f0995f4a8b4fb676c479e03333ee9a3b3253698da23f66e538ed"
         }
       ],
       "checked_at": "2026-08-26T23:51:02Z",
@@ -1046,7 +1046,7 @@
       "composed_from": [
         {
           "path": "revenue/ip/collaboration_targets.json",
-          "sha256": "b05dc3130c9193656f0a5277ff41dfb75ca3e165bf85ca377f18e7701fcc22c5"
+          "sha256": "53d8c47d78a9f0995f4a8b4fb676c479e03333ee9a3b3253698da23f66e538ed"
         }
       ],
       "checked_at": "2026-08-26T23:51:02Z",
@@ -1108,7 +1108,7 @@
       "composed_from": [
         {
           "path": "revenue/ip/whitebox_collaboration_offers.json",
-          "sha256": "d0f022a33f4b31f2ab523f2e47678ec6771749bbaece2ed859b70a92e5079475"
+          "sha256": "654d5bcac684bc2751032d5859b35aa8cc57aac117a5a98e2bb33089aea34ba6"
         }
       ],
       "checked_at": "2026-08-26T18:00:00Z",
@@ -1171,7 +1171,7 @@
       "composed_from": [
         {
           "path": "revenue/ip/whitebox_collaboration_offers.json",
-          "sha256": "d0f022a33f4b31f2ab523f2e47678ec6771749bbaece2ed859b70a92e5079475"
+          "sha256": "654d5bcac684bc2751032d5859b35aa8cc57aac117a5a98e2bb33089aea34ba6"
         }
       ],
       "checked_at": "2026-08-26T18:00:00Z",
@@ -1234,7 +1234,7 @@
       "composed_from": [
         {
           "path": "revenue/ip/whitebox_collaboration_offers.json",
-          "sha256": "d0f022a33f4b31f2ab523f2e47678ec6771749bbaece2ed859b70a92e5079475"
+          "sha256": "654d5bcac684bc2751032d5859b35aa8cc57aac117a5a98e2bb33089aea34ba6"
         }
       ],
       "checked_at": "2026-08-26T18:00:00Z",
@@ -1297,7 +1297,7 @@
       "composed_from": [
         {
           "path": "revenue/ip/whitebox_collaboration_offers.json",
-          "sha256": "d0f022a33f4b31f2ab523f2e47678ec6771749bbaece2ed859b70a92e5079475"
+          "sha256": "654d5bcac684bc2751032d5859b35aa8cc57aac117a5a98e2bb33089aea34ba6"
         }
       ],
       "checked_at": "2026-08-26T18:00:00Z",
@@ -1360,7 +1360,7 @@
       "composed_from": [
         {
           "path": "revenue/ip/whitebox_collaboration_offers.json",
-          "sha256": "d0f022a33f4b31f2ab523f2e47678ec6771749bbaece2ed859b70a92e5079475"
+          "sha256": "654d5bcac684bc2751032d5859b35aa8cc57aac117a5a98e2bb33089aea34ba6"
         }
       ],
       "checked_at": "2026-08-26T18:00:00Z",
@@ -1423,7 +1423,7 @@
       "composed_from": [
         {
           "path": "titan-hour.html",
-          "sha256": "dcc2690e95385b4605dc7d24c6bd98b7ef8db26d4e1c066757fdc9c166730ba3"
+          "sha256": "4262a97485e67832c30326fd137896e5f374aeacd1306bd15e4c29b159764cae"
         }
       ],
       "checked_at": "2026-08-28T17:15:00Z",
@@ -1485,7 +1485,7 @@
       "composed_from": [
         {
           "path": "revenue/distribution/channels.json",
-          "sha256": "231f6461e38193928db6ecf3d16a675a2454114e8978f38a4d799b31f964a824"
+          "sha256": "a9a71ad1754f47b24d5b28274420a775454041f2ce2511b957939df7970457ae"
         }
       ],
       "checked_at": "2026-08-28T16:10:00Z",
@@ -1549,7 +1549,7 @@
       "composed_from": [
         {
           "path": "revenue/distribution/channels.json",
-          "sha256": "231f6461e38193928db6ecf3d16a675a2454114e8978f38a4d799b31f964a824"
+          "sha256": "a9a71ad1754f47b24d5b28274420a775454041f2ce2511b957939df7970457ae"
         }
       ],
       "checked_at": "2026-08-28T16:10:00Z",
@@ -1613,7 +1613,7 @@
       "composed_from": [
         {
           "path": "revenue/distribution/channels.json",
-          "sha256": "231f6461e38193928db6ecf3d16a675a2454114e8978f38a4d799b31f964a824"
+          "sha256": "a9a71ad1754f47b24d5b28274420a775454041f2ce2511b957939df7970457ae"
         }
       ],
       "checked_at": "2026-08-28T16:10:00Z",

@@ -37,11 +37,6 @@
     "note": "Optional smaller-step paid diagnostics with live checkout on product pages. TERMINAL_CATALOG reconcile truths above stay canonical. ground/index.html and TERMINAL_CATALOG.md already surface Live cash / tip-shelf. No invent Stripe URLs. Larger fixed engagements are separate product pages (checkout/intent stays there).",
     "products": [
       {
-        "name": "Agent Failure Autopsy",
-        "price_usd": 29,
-        "path": "agent-rescue.html"
-      },
-      {
         "name": "Dealer Service Lead Rescue",
         "price_usd": 199,
         "path": "dealer-service-lead-rescue.html"

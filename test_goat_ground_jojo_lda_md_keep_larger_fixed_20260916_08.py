@@ -12,7 +12,6 @@ PATHS = (
     ("ground/LDA_RECEIPT.md", "spy-ground-batch-live-cash-20260905-18"),
 )
 TIP_PATHS = (
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -73,7 +72,7 @@ class TestGoatGroundJojoLdaMdKeepLargerFixed2026091608(unittest.TestCase):
                 text = (ROOT / rel).read_text(encoding="utf-8")
                 cash = _cash(text)
                 self.assertIn("## Live cash", text, rel)
-                self.assertIn("../agent-rescue.html", cash, rel)
+
                 self.assertIn("../dealer-service-lead-rescue.html", cash, rel)
                 self.assertIn("../plant-downtime-handoff.html", cash, rel)
                 self.assertIn("Larger fixed engagements", cash, rel)

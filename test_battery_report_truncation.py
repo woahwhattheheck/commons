@@ -111,7 +111,7 @@ class ParseTruncationTests(unittest.TestCase):
 
 class CliTruncationTests(unittest.TestCase):
     def test_real_git_cli_and_summary_exclude_a_partial_exit(self):
-        with tempfile.TemporaryDirectory() as directory:
+        with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as directory:
             root = Path(directory)
             def git(*args: str) -> str:
                 return subprocess.run(["git", "-C", str(root), *args], check=True,

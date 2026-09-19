@@ -107,7 +107,7 @@ class LlmsTitanPointerRebakeTests(unittest.TestCase):
 
     def test_cash_paid_work_and_navigation_remain(self):
         text = self.bake()
-        for needle in ("$29 Agent Failure Autopsy", "$199 dealer diagnostic",
+        for needle in ("$199 dealer diagnostic",
                        "$199 referral diagnostic", "$199 repair diagnostic",
                        "$199 plant diagnostic", "## Paid work",
                        "paid-opportunities.html", "paid-opportunity-scout-runbook",

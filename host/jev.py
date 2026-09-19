@@ -50,7 +50,7 @@ MAX_QUESTIONS = 500
 
 
 class JevError(Exception):
-    """Typed failure: key-state / HTTP_<status> / TRANSPORT / BAD_REPLY."""
+    """Typed failure: key-state / BAD_KEY / HTTP_<status> / TRANSPORT / BAD_REPLY."""
 
 
 class CREDENTIALW(ctypes.Structure):
@@ -73,6 +73,35 @@ class CREDENTIALW(ctypes.Structure):
 _CRED_TYPE_GENERIC = 1
 
 
+def _header_safe_key(value: str) -> bool:
+    """Bearer material must be nonempty printable ASCII without whitespace."""
+    return isinstance(value, str) and bool(value) and all(
+        0x21 <= ord(char) <= 0x7e for char in value
+    )
+
+
+def _decode_credential_blob(blob: bytes) -> str:
+    """Decode supported generic-vault formats without guessing a key generation.
+
+    Generic credentials have application-defined bytes. UTF-8 ASCII tokens and
+    UTF-16LE tokens are both supported, including trailing NUL terminators.
+    Decoding success alone is insufficient: even-length UTF-8 can decode as
+    unrelated UTF-16 text. Accept only one unambiguous header-safe value; a
+    present empty or malformed record is unreadable, never an absent alias.
+    """
+    candidates = set()
+    for encoding in ("utf-8", "utf-16-le"):
+        try:
+            value = blob.decode(encoding).rstrip("\x00").strip()
+        except UnicodeDecodeError:
+            continue
+        if _header_safe_key(value):
+            candidates.add(value)
+    if len(candidates) != 1:
+        raise JevError("KEY_SOURCE_UNAVAILABLE") from None
+    return candidates.pop()
+
+
 def _cred_read(target: str) -> str:
     """Read a Windows Credential Manager generic credential. Returns '' on miss."""
     if os.name != "nt" or not target:
@@ -83,6 +112,8 @@ def _cred_read(target: str) -> str:
         ctypes.POINTER(ctypes.POINTER(CREDENTIALW)),
     ]
     advapi32.CredReadW.restype = wintypes.BOOL
+    advapi32.CredFree.argtypes = [ctypes.c_void_p]
+    advapi32.CredFree.restype = None
     pcred = ctypes.POINTER(CREDENTIALW)()
     if not advapi32.CredReadW(target, _CRED_TYPE_GENERIC, 0, ctypes.byref(pcred)):
         error = ctypes.get_last_error()
@@ -96,19 +127,14 @@ def _cred_read(target: str) -> str:
         )
     finally:
         advapi32.CredFree(pcred)
-    for enc in ("utf-16-le", "utf-8"):
-        try:
-            text = blob.decode(enc).rstrip("\x00").strip()
-        except UnicodeDecodeError:
-            continue
-        if text:
-            return text
-    return ""
+    return _decode_credential_blob(blob)
 
 
 def _read_key_sources() -> tuple[str, list[tuple[str, str]]]:
     """Read configured key sources; vault read failures are authority failures."""
     env_key = os.environ.get(ENV_KEY, "").strip()
+    if env_key and not _header_safe_key(env_key):
+        raise JevError("KEY_SOURCE_UNAVAILABLE") from None
     vault_keys: list[tuple[str, str]] = []
     for target in CREDVAULT_TARGETS:
         try:
@@ -118,6 +144,8 @@ def _read_key_sources() -> tuple[str, list[tuple[str, str]]]:
             # back to an environment generation we can no longer reconcile.
             raise JevError("KEY_SOURCE_UNAVAILABLE") from None
         if key:
+            if not _header_safe_key(key):
+                raise JevError("KEY_SOURCE_UNAVAILABLE") from None
             vault_keys.append((target, key))
     return env_key, vault_keys
 
@@ -205,6 +233,8 @@ def systemone(state, questions, model=DEFAULT_MODEL, timeout=60, key=None):
     key = key if key is not None else load_key()
     if not key:
         raise JevError("NO_KEY")
+    if not _header_safe_key(key):
+        raise JevError("BAD_KEY") from None
     payload = {"state": state, "model": model, "questions": questions}
     body = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(
@@ -222,7 +252,7 @@ def systemone(state, questions, model=DEFAULT_MODEL, timeout=60, key=None):
             data = json.load(resp)
     except urllib.error.HTTPError as err:
         raise JevError(f"HTTP_{err.code}") from None
-    except urllib.error.URLError as err:
+    except OSError:
         raise JevError("TRANSPORT") from None
     except ValueError as err:
         raise JevError("BAD_REPLY") from None

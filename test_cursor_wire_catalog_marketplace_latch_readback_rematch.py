@@ -8,6 +8,7 @@ import subprocess
 import unittest
 import urllib.request
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-wire-catalog-marketplace-latch-readback-rematch-20260903-01.md"
@@ -22,24 +23,24 @@ KEEP = {
     "p/cursor-wire-shared-super-mcp-catalog-readback-20260902-01.md": "593d54bc",
     "p/cursor-wire-super-mcp-marketplace-readback-20260902-01.md": "448eda52",
     "p/latch-wake-super-mcp-pointer-readback-20260902-01.md": "250907c9",
-    "test_cursor_wire_shared_super_mcp_catalog_readback.py": "96f20d22",
-    "test_cursor_wire_super_mcp_marketplace_readback.py": "e941404e",
-    "test_latch_wake_super_mcp_pointer_readback.py": "4a02823b",
+    "test_cursor_wire_shared_super_mcp_catalog_readback.py": "81da8925",
+    "test_cursor_wire_super_mcp_marketplace_readback.py": "78effe56",
+    "test_latch_wake_super_mcp_pointer_readback.py": "d3d28777",
     "p/wire-shared-super-mcp-catalog-20260902-01.md": "b6cb27ef",
-    "super-mcp.html": "d72c7828",
+    "super-mcp.html": "9deb2201",
     "host/super_mcp.py": "defaf19f",
-    "super-mcp/catalog.json": "a668a320",
+    "super-mcp/catalog.json": "a6b9f09d",
     "test_super_mcp.py": "29cdec41",
     "p/cursor-wire-super-mcp-marketplace-20260902-01.md": "fbc20c0d",
     "host/wire_super_mcp_marketplace.py": "7b408ed9",
     "test_wire_super_mcp_marketplace.py": "42167891",
     ".agents/plugins/marketplace.json": "97875086",
     "p/latch-wake-super-mcp-pointer-20260902-01.md": "a35e63c3",
-    "wakeup.html": "27f8043f",
-    "reach.html": "14cc45cc",
+    "wakeup.html": "e83a63a4",
+    "reach.html": "827078ec",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
-    "wire.html": "3f030862",
-    "ground/WIRE_SUPER_MCP.md": "6a50f614",
+    "wire.html": "623602a7",
+    "ground/WIRE_SUPER_MCP.md": "626b07f7",
     "p/cursor-wire-super-mcp-fold-readback-20260902-01.md": "63b8221d",
     "p/cursor-big-huge-commerce-agents-readback-20260902-01.md": "2a5ce894",
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
@@ -63,7 +64,7 @@ class TestCursorWireCatalogMarketplaceLatchReadbackRematch(unittest.TestCase):
 
     def test_independently_leftover_catalog_tests_14(self) -> None:
         leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_super_mcp.py"],
+            [sys.executable, "-m", "unittest", "test_super_mcp.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -74,7 +75,7 @@ class TestCursorWireCatalogMarketplaceLatchReadbackRematch(unittest.TestCase):
 
     def test_independently_leftover_marketplace_tests_7(self) -> None:
         leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_wire_super_mcp_marketplace.py"],
+            [sys.executable, "-m", "unittest", "test_wire_super_mcp_marketplace.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

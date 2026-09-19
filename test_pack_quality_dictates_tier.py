@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 HELPER = ROOT / "host/pack_quality_dictates_tier.py"
@@ -17,11 +18,11 @@ DOOR = ROOT / "pack-quality-tier.html"
 KEEP = {
     "ground/BUSINESS_PACK_KEEP_SELL.json": "4e0e3eb0",
     "host/business_pack_keep_sell.py": "a886d20e",
-    "keep-sell.html": "aef3fecd",
+    "keep-sell.html": "b974c9bd",
     "p/cursor-since-you-last-looked-20260902-01.md": "003828c9",
     "host/since_you_last_looked.py": "3578783c",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
-    "host/commons_slack_full_body.py": "d5338810",
+    "host/commons_slack_full_body.py": "7a6067d7",
     "host/slack_mirror.py": "72c0844e",
     "slack_ingest.py": "a35169fe",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
@@ -29,9 +30,9 @@ KEEP = {
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
-    "ground/OWNER_NOW.md": "a17b0afb",
-    "hub_pages.py": "12186f65",
-    "door.js": "c06cc197",
+    "ground/OWNER_NOW.md": "39a0e0c3",
+    "hub_pages.py": "673dab89",
+    "door.js": "5899223c",
     "api/mcp.py": "393da756",
 }
 
@@ -44,7 +45,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,

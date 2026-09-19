@@ -79,7 +79,9 @@
       "transport_authorized": false
     },
     {
-      "collision_receipts": [],
+      "collision_receipts": [
+        "revenue/payment_ready/outreach_receipts/20260915-signoz-1a0a32516d82ccb0.json"
+      ],
       "decision": "HOLD_DO_NOT_CONTACT",
       "fit_score": 40,
       "missing": [
@@ -149,9 +151,9 @@
       "start_route": "humans.html#interest"
     },
     {
-      "commons_bottleneck": "Reserve one delivery window and build the accepted proof after funding; keep agent-rescue.html reserved for Autopsy.",
+      "commons_bottleneck": "Reserve one delivery window and build the accepted proof after funding; agent-rescue.html is retired with the Autopsy SKU.",
       "delivery_window": "one agreed business day",
-      "founder_bottleneck": "Do not route Survival Proof buyers to agent-rescue.html (that page is the live $29 Autopsy). Accept the exact sentence and window from revenue/production_survival/README.md, then issue a buyer-specific payment handoff.",
+      "founder_bottleneck": "Do not route Survival Proof buyers to agent-rescue.html (retired with the $29 Autopsy on 2026-09-17). Accept the exact sentence and window from revenue/production_survival/README.md, then issue a buyer-specific payment handoff.",
       "id": "same-day-agent-survival-proof",
       "name": "Same-Day Agent Survival Proof",
       "next_external_event": "A real buyer starts from revenue/production_survival/README.md with the one-sentence failure and agrees to a start window.",
@@ -246,7 +248,7 @@
   "source_receipts": [
     {
       "path": "revenue/right_now/catalog.json",
-      "sha256": "4636ed8991bf8679a71720b544f28ee8bd1992fdc1d246e497b7fade40859866"
+      "sha256": "9d61a2b5ca3a3864e65fcc8b7ba1c5dc1f9b5fbea45f44cc6473df3d495abef2"
     },
     {
       "path": "revenue/right_now/diagnostic_offer.json",
@@ -262,7 +264,7 @@
     },
     {
       "path": "revenue/smart_outreach/candidates.json",
-      "sha256": "35431a4b2f2eeb6453f1da773286f919958d717bba8e0401793f0e451fb89f8b"
+      "sha256": "578f0c54a922d79fb4d1e462dc74fd2c5a4742a035793d5f0d1f47b8ffd01892"
     },
     {
       "path": "revenue/payment_ready/current_receipt.json",
@@ -274,7 +276,7 @@
     },
     {
       "path": "revenue/production_survival/offer.json",
-      "sha256": "4a9af0433bad940797703921b6faf7476d0421a9687f947bda76011a17958569"
+      "sha256": "82d6d2bae4e53664bee8238b4ecd3545884d9795cd2097a8d23fa9df90d875bf"
     },
     {
       "path": "revenue/reply_to_revenue/observations.json",
@@ -355,6 +357,10 @@
     {
       "path": "revenue/payment_ready/outreach_receipts/20260914-nysa-technology-do-not-resend.json",
       "sha256": "1945e22513e06d3600f224d2e5d87a0c38919e2b5ba3bff7eb57db9fd1475082"
+    },
+    {
+      "path": "revenue/payment_ready/outreach_receipts/20260915-signoz-1a0a32516d82ccb0.json",
+      "sha256": "bed1826e2655b639a342912e33e65a1db2a14ad729f4ed4f509bdb8477124b67"
     }
   ],
   "truth": {

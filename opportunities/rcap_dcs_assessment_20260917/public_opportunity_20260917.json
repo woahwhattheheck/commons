@@ -78,5 +78,5 @@
     "booked_revenue": false,
     "recognized_revenue": false
   },
-  "strongest_state": "ROUTE_RESOLVED_SOURCE_READY_PDF_REGEN_REQUIRED_NOT_SUBMITTED"
+  "strongest_state": "ROUTE_RESOLVED_SUBMISSION_PACKET_READY_NOT_SUBMITTED"
 }

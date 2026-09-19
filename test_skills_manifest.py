@@ -8,6 +8,7 @@ import subprocess
 import tempfile
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 SKILLS = ROOT / ".agents" / "skills"
@@ -54,7 +55,7 @@ class SkillsManifestTests(unittest.TestCase):
 
     def test_skills_check_passes(self):
         result = subprocess.run(
-            ["python3", str(CHECK)],
+            [sys.executable, str(CHECK)],
             cwd=ROOT,
             capture_output=True,
             text=True,
@@ -83,7 +84,7 @@ class SkillsManifestTests(unittest.TestCase):
                 CHECK.read_text(encoding="utf-8"), encoding="utf-8"
             )
             result = subprocess.run(
-                ["python3", str(clone / "skills" / "check.py")],
+                [sys.executable, str(clone / "skills" / "check.py")],
                 cwd=clone,
                 capture_output=True,
                 text=True,

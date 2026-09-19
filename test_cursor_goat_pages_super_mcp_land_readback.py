@@ -6,6 +6,7 @@ from __future__ import annotations
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-goat-pages-super-mcp-land-readback-20260902-01.md"
@@ -17,28 +18,28 @@ HUB = ROOT / "hub_pages.py"
 
 KEEP = {
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
-    "catalog.html": "71c0c5fd",
-    "boards.html": "486b13e1",
-    "wire.html": "3f030862",
-    "ground/WIRE_SUPER_MCP.md": "9f1a457b",
+    "catalog.html": "68b9b066",
+    "boards.html": "8458831c",
+    "wire.html": "623602a7",
+    "ground/WIRE_SUPER_MCP.md": "626b07f7",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
     "p/latch-wake-super-mcp-pointer-20260902-01.md": "a35e63c3",
     "p/wire-shared-super-mcp-catalog-20260902-01.md": "b6cb27ef",
-    "super-mcp.html": "412ce905",
-    "hub_pages.py": "12186f65",
-    "door.js": "c06cc197",
+    "super-mcp.html": "9deb2201",
+    "hub_pages.py": "673dab89",
+    "door.js": "5899223c",
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "host/commerce_agents.py": "8d2ddf29",
-    "test_commerce_agents.py": "8ca269cd",
+    "test_commerce_agents.py": "f0ff008c",
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
     "host/commerce_agents_same_loop.py": "c90f6e50",
-    "test_commerce_agents_same_loop.py": "f45d3a49",
+    "test_commerce_agents_same_loop.py": "c8c8d5e8",
     "p/cursor-claude-commerce-agents-readback-20260902-01.md": "0153924f",
     "p/cursor-harborline-commerce-compose-readback-20260902-01.md": "b33e2e24",
     "p/cursor-harborline-commerce-compose-keep-lift-20260902-01.md": "668dd5c4",
     "p/cursor-big-huge-commerce-agents-readback-20260902-01.md": "2a5ce894",
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
-    "ground/OWNER_NOW.md": "a17b0afb",
+    "ground/OWNER_NOW.md": "39a0e0c3",
 }
 
 
@@ -89,7 +90,7 @@ class TestCursorGoatPagesSuperMcpLandReadback(unittest.TestCase):
 
     def test_leftover_commerce_tests_still_pass(self) -> None:
         leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_commerce_agents.py"],
+            [sys.executable, "-m", "unittest", "test_commerce_agents.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -98,7 +99,7 @@ class TestCursorGoatPagesSuperMcpLandReadback(unittest.TestCase):
         self.assertEqual(leftover.returncode, 0, msg=leftover.stdout + leftover.stderr)
         self.assertIn("Ran 5 tests", leftover.stderr)
         remainder = subprocess.run(
-            ["python3", "-m", "unittest", "test_commerce_agents_same_loop.py"],
+            [sys.executable, "-m", "unittest", "test_commerce_agents_same_loop.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

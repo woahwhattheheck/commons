@@ -1,4 +1,5 @@
 import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -65,6 +66,8 @@ class ReviewedRedClosureTests(unittest.TestCase):
             gate.strict_loads(hostile, "hostile")
 
     def test_cli_large_integer_returns_controlled_two_normal_and_optimized(self):
+        if not hasattr(os, "O_NOFOLLOW"):
+            self.skipTest("CLI file custody proof requires O_NOFOLLOW")
         good = dynamic_agreement("ready")
         p = project(good)
         encoded = raw(good)

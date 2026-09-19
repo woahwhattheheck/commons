@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 # This receipt records this immutable tree; it does not freeze evolving main.
@@ -18,10 +19,10 @@ LEFTOVER_TEST = ROOT / "test_harborline_pack_market_render.py"
 
 KEEP = {
     "p/grokbuild-pr8345-terminal-20260902-01.md": "baae9aaf",
-    "test_grokbuild_pr8345_terminal.py": "9967129f",
+    "test_grokbuild_pr8345_terminal.py": "4ea55398",
     "host/harborline_pack_market_render.py": "cc9a3320",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
-    "test_harborline_pack_market_render.py": "5ba443dd",
+    "test_harborline_pack_market_render.py": "e8f8703c",
 }
 
 
@@ -44,7 +45,7 @@ class TestGrokbuildPr8358Verify(unittest.TestCase):
 
     def test_helper_still_renders_standalone(self) -> None:
         proc = subprocess.run(
-            ["python3", str(HELPER), "--json"],
+            [sys.executable, str(HELPER), "--json"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -59,7 +60,7 @@ class TestGrokbuildPr8358Verify(unittest.TestCase):
         self.assertEqual(payload["sent"], 0)
         self.assertEqual(payload["checkout"], "FINDER-FAILED")
         refused = subprocess.run(
-            ["python3", str(HELPER), "--send"],
+            [sys.executable, str(HELPER), "--send"],
             cwd=ROOT,
             text=True,
             capture_output=True,

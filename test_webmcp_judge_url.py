@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 HELPER = ROOT / "host/webmcp_judge_url.py"
@@ -15,11 +16,11 @@ ADAPTER = ROOT / "api/mcp.py"
 
 KEEP = {
     "api/mcp.py": "393da756",
-    "webmcp.html": "1fc25f8b",
+    "webmcp.html": "8bb181e0",
     "p/wire-webmcp-challenge-20260903-01.md": "0e815c6d",
     "p/cursor-webmcp-contest-20260903-01.md": "98fb6b6f",
     "test_webmcp_door.py": "21b6993f",
-    "test_cursor_webmcp_contest.py": "8fa58c49",
+    "test_cursor_webmcp_contest.py": "eebd8db6",
     "vercel.json": "86c5b13a",
 }
 
@@ -32,7 +33,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,
@@ -62,7 +63,7 @@ class TestWebmcpJudgeUrl(unittest.TestCase):
         self.assertEqual(packet["mcp_initialize"]["name"], "commons")
         self.assertEqual(packet["mcp_initialize"]["version"], "1.4.0")
         self.assertEqual(packet["adapter_blob"], "393da756")
-        self.assertEqual(packet["pad_blob"], "1fc25f8b")
+        self.assertEqual(packet["pad_blob"], "8bb181e0")
         self.assertEqual(packet["contest_receipt"], "98fb6b6f")
         self.assertEqual(packet["vercel_team_token"], "FINDER-FAILED")
         self.assertFalse(packet["second_mcp"])
@@ -92,7 +93,7 @@ class TestWebmcpJudgeUrl(unittest.TestCase):
 
     def test_independently_leftover_door_tests_still_pass(self) -> None:
         leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_webmcp_door.py"],
+            [sys.executable, "-m", "unittest", "test_webmcp_door.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

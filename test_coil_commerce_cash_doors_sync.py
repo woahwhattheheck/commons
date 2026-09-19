@@ -14,7 +14,7 @@ TOOLS = ROOT / "tools.json"
 COMMERCE = ROOT / "commerce.html"
 
 PRODUCT_RE = re.compile(
-    r"\./(?:agent-rescue|dealer-service-lead-rescue|referral-intake-completeness|repair-booking-preflight|plant-downtime-handoff)\.html\Z"
+    r"\./(?:dealer-service-lead-rescue|referral-intake-completeness|repair-booking-preflight|plant-downtime-handoff)\.html\Z"
 )
 
 
@@ -63,7 +63,7 @@ class CoilCommerceCashDoorsSyncTest(unittest.TestCase):
 
     def test_off_shelf_cash_link_is_not_evidence(self) -> None:
         html = (
-            '<p id="live-cash"><a href="./agent-rescue.html">outside shelf</a></p>'
+            '<p id="live-cash"><a href="./referral-intake-completeness.html">outside shelf</a></p>'
             '<section id="tip-shelf"><a href="./dealer-service-lead-rescue.html">inside shelf</a></section>'
         )
         self.assertEqual(tip_shelf_cash_hrefs(html), ["./dealer-service-lead-rescue.html"])
@@ -71,13 +71,13 @@ class CoilCommerceCashDoorsSyncTest(unittest.TestCase):
     def test_duplicate_shelf_cash_link_is_preserved_for_parity_failure(self) -> None:
         html = (
             '<section id="tip-shelf">'
-            '<a href="./agent-rescue.html">one</a>'
-            '<a href="./agent-rescue.html">duplicate</a>'
+            '<a href="./referral-intake-completeness.html">one</a>'
+            '<a href="./referral-intake-completeness.html">duplicate</a>'
             '</section>'
         )
         self.assertEqual(
             tip_shelf_cash_hrefs(html),
-            ["./agent-rescue.html", "./agent-rescue.html"],
+            ["./referral-intake-completeness.html", "./referral-intake-completeness.html"],
         )
 
 

@@ -37,7 +37,7 @@ CANDIDATE_SHA = "f080fbbb241a1550b3eb5d94c9041c21cd264d82"
 EXPECTED_BLOBS = {
     f"p/{PIN_LIFT_ID}.md": "da2d1ef5",
     f"p/{POINTER_ID}.md": "1cc11a5f",
-    LEFTOVER_HELPER: "dccd3633",
+    LEFTOVER_HELPER: "b268d766",
 }
 OBSERVED_AT_LAND = {
     TALLY_HELPER: "a550ae1b",
