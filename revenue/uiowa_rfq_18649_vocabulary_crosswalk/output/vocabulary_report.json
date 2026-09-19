@@ -1,0 +1,4393 @@
+{
+  "_banner": "VOCABULARY RECONCILIATION over synthetic RFQ-18649 fixtures. Terms are reported as observed; mappings are declared, never guessed. Nothing here is a University of Iowa finding, and no lane is scored, ranked or certified.",
+  "canonical": {
+    "area": {
+      "AI": "AI readiness",
+      "DEP": "Deployment and operations",
+      "SD": "Software development",
+      "SEC": "Security"
+    },
+    "group": {
+      "CROSS_GROUP": "Applies across groups rather than to one",
+      "ESS": "Enterprise student systems (fictional)",
+      "IAM": "Identity and access management (fictional)",
+      "RIS": "Research information systems (fictional)"
+    }
+  },
+  "collisions": [
+    {
+      "distinct_canonical": [
+        "AI",
+        "None"
+      ],
+      "shared_prefix": "ai",
+      "slot": "area",
+      "terms": [
+        "AI",
+        "AI readiness",
+        "ai_readiness",
+        "ai_readiness|deployment_operations",
+        "ai_readiness|security",
+        "ai_readiness|security|deployment_operations",
+        "ai_readiness|software_development"
+      ],
+      "why_it_matters": "these terms begin with the same word but do not all resolve to the same canonical value, so a join on the raw column would merge rows that this crosswalk keeps separate"
+    },
+    {
+      "distinct_canonical": [
+        "DEP",
+        "None"
+      ],
+      "shared_prefix": "deployment",
+      "slot": "area",
+      "terms": [
+        "Deployment / operations",
+        "Deployment / operations / records",
+        "Deployment and operations",
+        "deployment",
+        "deployment_operations"
+      ],
+      "why_it_matters": "these terms begin with the same word but do not all resolve to the same canonical value, so a join on the raw column would merge rows that this crosswalk keeps separate"
+    },
+    {
+      "distinct_canonical": [
+        "None",
+        "SD"
+      ],
+      "shared_prefix": "software",
+      "slot": "area",
+      "terms": [
+        "Software delivery / deployment",
+        "Software delivery / deployment / security",
+        "Software delivery / governance",
+        "Software delivery / security",
+        "Software development",
+        "software",
+        "software_delivery",
+        "software_development",
+        "software_development|security"
+      ],
+      "why_it_matters": "these terms begin with the same word but do not all resolve to the same canonical value, so a join on the raw column would merge rows that this crosswalk keeps separate"
+    }
+  ],
+  "counts": {
+    "by_kind": {
+      "AMBIGUOUS": 1,
+      "COMPOUND": 7,
+      "DECLARED_JUDGMENT": 6,
+      "EXACT_VARIANT": 15,
+      "GRANULARITY_MISMATCH": 3,
+      "SCOPE_VALUE": 2,
+      "UNMAPPED": 17,
+      "UNRESOLVED_CONCEPT": 2
+    },
+    "distinct_terms": 53,
+    "files_scanned": 55,
+    "lanes_scanned": 21,
+    "needing_a_decision": 27,
+    "observations": 325,
+    "resolved": 26
+  },
+  "kinds": {
+    "AMBIGUOUS": "Could serve more than one canonical term. Deliberately not mapped.",
+    "COMPOUND": "One cell naming several areas at once. Parts are recorded; the cell is NOT split into independent rows.",
+    "DECLARED_JUDGMENT": "Different words, judged equivalent by this package. A reviewer may disagree; the original term is always retained.",
+    "EXACT_VARIANT": "Same words, different case, spacing or separator. Mechanical; safe to accept.",
+    "GRANULARITY_MISMATCH": "The term is finer-grained than the canonical. Mapped to its parent, but rows are NOT interchangeable with parent rows.",
+    "SCOPE_VALUE": "A legitimate value that is not one of the three groups - it describes scope, not a mis-spelling.",
+    "UNRESOLVED_CONCEPT": "Names a concept this package will not equate with any canonical term. Needs the owning lane to decide."
+  },
+  "observations": [
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_ai_use_inventory/sample_output/ai_use_inventory.csv",
+      "lane": "uiowa_rfq_18649_ai_use_inventory",
+      "rows": 10,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_economics_resource_adapters/sample_output/resourcing_table.csv",
+      "lane": "uiowa_rfq_18649_economics_resource_adapters",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "rows": 3,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv",
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/consistent/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/consistent/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_prioritization/examples/baseline-ranked.csv",
+      "lane": "uiowa_rfq_18649_prioritization",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_report_structure/fixtures/synthetic_evidence_register.csv",
+      "lane": "uiowa_rfq_18649_report_structure",
+      "rows": 1,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+      "lane": "uiowa_rfq_18649_report_structure",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_report_structure/fixtures/synthetic_recommendation_register.csv",
+      "lane": "uiowa_rfq_18649_report_structure",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_workshare/methodology/23-synthetic-evidence-register.csv",
+      "lane": "uiowa_rfq_18649_workshare",
+      "rows": 2,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "column": "area_label",
+      "compound": false,
+      "file": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "rows": 3,
+      "slot": "area",
+      "term": "AI readiness"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_workbench/12-policy-context.csv",
+      "lane": "uiowa_rfq_18649_workbench",
+      "rows": 2,
+      "slot": "area",
+      "term": "Access / IAM"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_workbench/12-policy-context.csv",
+      "lane": "uiowa_rfq_18649_workbench",
+      "rows": 1,
+      "slot": "area",
+      "term": "Access / IAM / software delivery"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_workbench/12-policy-context.csv",
+      "lane": "uiowa_rfq_18649_workbench",
+      "rows": 1,
+      "slot": "area",
+      "term": "Access / data governance"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_workbench/12-policy-context.csv",
+      "lane": "uiowa_rfq_18649_workbench",
+      "rows": 1,
+      "slot": "area",
+      "term": "Accessibility / procurement / governance"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_workbench/12-policy-context.csv",
+      "lane": "uiowa_rfq_18649_workbench",
+      "rows": 2,
+      "slot": "area",
+      "term": "Accessibility / software delivery"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_economics_resource_adapters/sample_output/resourcing_table.csv",
+      "lane": "uiowa_rfq_18649_economics_resource_adapters",
+      "rows": 3,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "rows": 3,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv",
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "rows": 5,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/consistent/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/consistent/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_prioritization/examples/baseline-ranked.csv",
+      "lane": "uiowa_rfq_18649_prioritization",
+      "rows": 3,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_report_structure/fixtures/synthetic_evidence_register.csv",
+      "lane": "uiowa_rfq_18649_report_structure",
+      "rows": 4,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+      "lane": "uiowa_rfq_18649_report_structure",
+      "rows": 3,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_report_structure/fixtures/synthetic_recommendation_register.csv",
+      "lane": "uiowa_rfq_18649_report_structure",
+      "rows": 1,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_workshare/methodology/23-synthetic-evidence-register.csv",
+      "lane": "uiowa_rfq_18649_workshare",
+      "rows": 2,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_workbench/12-policy-context.csv",
+      "lane": "uiowa_rfq_18649_workbench",
+      "rows": 1,
+      "slot": "area",
+      "term": "Data classification"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_workbench/12-policy-context.csv",
+      "lane": "uiowa_rfq_18649_workbench",
+      "rows": 1,
+      "slot": "area",
+      "term": "Data classification / software delivery"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_workbench/12-policy-context.csv",
+      "lane": "uiowa_rfq_18649_workbench",
+      "rows": 1,
+      "slot": "area",
+      "term": "Data use / AI readiness"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_workbench/12-policy-context.csv",
+      "lane": "uiowa_rfq_18649_workbench",
+      "rows": 1,
+      "slot": "area",
+      "term": "Deployment / operations"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_workbench/12-policy-context.csv",
+      "lane": "uiowa_rfq_18649_workbench",
+      "rows": 1,
+      "slot": "area",
+      "term": "Deployment / operations / records"
+    },
+    {
+      "column": "area_label",
+      "compound": false,
+      "file": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "rows": 3,
+      "slot": "area",
+      "term": "Deployment and operations"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_workbench/12-policy-context.csv",
+      "lane": "uiowa_rfq_18649_workbench",
+      "rows": 1,
+      "slot": "area",
+      "term": "Records handling / delivery evidence"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_workbench/12-policy-context.csv",
+      "lane": "uiowa_rfq_18649_workbench",
+      "rows": 1,
+      "slot": "area",
+      "term": "Records handling / operations"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_workbench/12-policy-context.csv",
+      "lane": "uiowa_rfq_18649_workbench",
+      "rows": 1,
+      "slot": "area",
+      "term": "Records handling / software delivery"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_economics_resource_adapters/sample_output/resourcing_table.csv",
+      "lane": "uiowa_rfq_18649_economics_resource_adapters",
+      "rows": 3,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "rows": 3,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv",
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "rows": 6,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/consistent/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/consistent/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 4,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_prioritization/examples/baseline-ranked.csv",
+      "lane": "uiowa_rfq_18649_prioritization",
+      "rows": 3,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_report_structure/fixtures/synthetic_evidence_register.csv",
+      "lane": "uiowa_rfq_18649_report_structure",
+      "rows": 6,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+      "lane": "uiowa_rfq_18649_report_structure",
+      "rows": 3,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_report_structure/fixtures/synthetic_recommendation_register.csv",
+      "lane": "uiowa_rfq_18649_report_structure",
+      "rows": 1,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_workshare/methodology/23-synthetic-evidence-register.csv",
+      "lane": "uiowa_rfq_18649_workshare",
+      "rows": 2,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_economics_resource_adapters/sample_output/resourcing_table.csv",
+      "lane": "uiowa_rfq_18649_economics_resource_adapters",
+      "rows": 3,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "rows": 3,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv",
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "rows": 5,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/consistent/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/consistent/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_prioritization/examples/baseline-ranked.csv",
+      "lane": "uiowa_rfq_18649_prioritization",
+      "rows": 3,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_report_structure/fixtures/synthetic_evidence_register.csv",
+      "lane": "uiowa_rfq_18649_report_structure",
+      "rows": 5,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+      "lane": "uiowa_rfq_18649_report_structure",
+      "rows": 3,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_report_structure/fixtures/synthetic_recommendation_register.csv",
+      "lane": "uiowa_rfq_18649_report_structure",
+      "rows": 2,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_workshare/methodology/23-synthetic-evidence-register.csv",
+      "lane": "uiowa_rfq_18649_workshare",
+      "rows": 1,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "column": "area_label",
+      "compound": false,
+      "file": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "rows": 3,
+      "slot": "area",
+      "term": "Security"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_workbench/12-policy-context.csv",
+      "lane": "uiowa_rfq_18649_workbench",
+      "rows": 1,
+      "slot": "area",
+      "term": "Software delivery / deployment"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_workbench/12-policy-context.csv",
+      "lane": "uiowa_rfq_18649_workbench",
+      "rows": 1,
+      "slot": "area",
+      "term": "Software delivery / deployment / security"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_workbench/12-policy-context.csv",
+      "lane": "uiowa_rfq_18649_workbench",
+      "rows": 1,
+      "slot": "area",
+      "term": "Software delivery / governance"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_workbench/12-policy-context.csv",
+      "lane": "uiowa_rfq_18649_workbench",
+      "rows": 1,
+      "slot": "area",
+      "term": "Software delivery / security"
+    },
+    {
+      "column": "area_label",
+      "compound": false,
+      "file": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "rows": 3,
+      "slot": "area",
+      "term": "Software development"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_question_cards/examples/cards.csv",
+      "lane": "uiowa_rfq_18649_question_cards",
+      "rows": 3,
+      "slot": "area",
+      "term": "ai_readiness"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_synthetic_collection/coverage_matrix.csv",
+      "lane": "uiowa_rfq_18649_synthetic_collection",
+      "rows": 3,
+      "slot": "area",
+      "term": "ai_readiness"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_workbench/framework_crosswalk/20-framework-crosswalk.csv",
+      "lane": "uiowa_rfq_18649_workbench",
+      "rows": 9,
+      "slot": "area",
+      "term": "ai_readiness"
+    },
+    {
+      "column": "assessment_area",
+      "compound": true,
+      "file": "uiowa_rfq_18649_workbench/framework_crosswalk/20-framework-crosswalk.csv",
+      "lane": "uiowa_rfq_18649_workbench",
+      "rows": 4,
+      "slot": "area",
+      "term": "ai_readiness|deployment_operations"
+    },
+    {
+      "column": "assessment_area",
+      "compound": true,
+      "file": "uiowa_rfq_18649_workbench/framework_crosswalk/20-framework-crosswalk.csv",
+      "lane": "uiowa_rfq_18649_workbench",
+      "rows": 4,
+      "slot": "area",
+      "term": "ai_readiness|security"
+    },
+    {
+      "column": "assessment_area",
+      "compound": true,
+      "file": "uiowa_rfq_18649_workbench/framework_crosswalk/20-framework-crosswalk.csv",
+      "lane": "uiowa_rfq_18649_workbench",
+      "rows": 1,
+      "slot": "area",
+      "term": "ai_readiness|security|deployment_operations"
+    },
+    {
+      "column": "assessment_area",
+      "compound": true,
+      "file": "uiowa_rfq_18649_workbench/framework_crosswalk/20-framework-crosswalk.csv",
+      "lane": "uiowa_rfq_18649_workbench",
+      "rows": 3,
+      "slot": "area",
+      "term": "ai_readiness|software_development"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_milestone_packets/fixtures/artifacts/draft/evidence-index-v0.9.csv",
+      "lane": "uiowa_rfq_18649_milestone_packets",
+      "rows": 2,
+      "slot": "area",
+      "term": "deployment"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_question_cards/examples/cards.csv",
+      "lane": "uiowa_rfq_18649_question_cards",
+      "rows": 2,
+      "slot": "area",
+      "term": "deployment"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_synthetic_collection/coverage_matrix.csv",
+      "lane": "uiowa_rfq_18649_synthetic_collection",
+      "rows": 3,
+      "slot": "area",
+      "term": "deployment_operations"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_outcome_measurement/measure_register.csv",
+      "lane": "uiowa_rfq_18649_outcome_measurement",
+      "rows": 2,
+      "slot": "area",
+      "term": "operational_reliability"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_outcome_measurement/recommendations.csv",
+      "lane": "uiowa_rfq_18649_outcome_measurement",
+      "rows": 1,
+      "slot": "area",
+      "term": "operational_reliability"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_outcome_measurement/measure_register.csv",
+      "lane": "uiowa_rfq_18649_outcome_measurement",
+      "rows": 2,
+      "slot": "area",
+      "term": "security"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_outcome_measurement/recommendations.csv",
+      "lane": "uiowa_rfq_18649_outcome_measurement",
+      "rows": 1,
+      "slot": "area",
+      "term": "security"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_question_cards/examples/cards.csv",
+      "lane": "uiowa_rfq_18649_question_cards",
+      "rows": 2,
+      "slot": "area",
+      "term": "security"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_synthetic_collection/coverage_matrix.csv",
+      "lane": "uiowa_rfq_18649_synthetic_collection",
+      "rows": 3,
+      "slot": "area",
+      "term": "security"
+    },
+    {
+      "column": "assessment_area",
+      "compound": true,
+      "file": "uiowa_rfq_18649_workbench/framework_crosswalk/20-framework-crosswalk.csv",
+      "lane": "uiowa_rfq_18649_workbench",
+      "rows": 23,
+      "slot": "area",
+      "term": "security|deployment_operations"
+    },
+    {
+      "column": "assessment_area",
+      "compound": true,
+      "file": "uiowa_rfq_18649_workbench/framework_crosswalk/20-framework-crosswalk.csv",
+      "lane": "uiowa_rfq_18649_workbench",
+      "rows": 2,
+      "slot": "area",
+      "term": "security|software_development"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_question_cards/examples/cards.csv",
+      "lane": "uiowa_rfq_18649_question_cards",
+      "rows": 3,
+      "slot": "area",
+      "term": "software"
+    },
+    {
+      "column": "area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_milestone_packets/fixtures/artifacts/draft/evidence-index-v0.9.csv",
+      "lane": "uiowa_rfq_18649_milestone_packets",
+      "rows": 1,
+      "slot": "area",
+      "term": "software_delivery"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_outcome_measurement/measure_register.csv",
+      "lane": "uiowa_rfq_18649_outcome_measurement",
+      "rows": 2,
+      "slot": "area",
+      "term": "software_delivery"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_outcome_measurement/recommendations.csv",
+      "lane": "uiowa_rfq_18649_outcome_measurement",
+      "rows": 1,
+      "slot": "area",
+      "term": "software_delivery"
+    },
+    {
+      "column": "assessment_area",
+      "compound": false,
+      "file": "uiowa_rfq_18649_synthetic_collection/coverage_matrix.csv",
+      "lane": "uiowa_rfq_18649_synthetic_collection",
+      "rows": 3,
+      "slot": "area",
+      "term": "software_development"
+    },
+    {
+      "column": "assessment_area",
+      "compound": true,
+      "file": "uiowa_rfq_18649_workbench/framework_crosswalk/20-framework-crosswalk.csv",
+      "lane": "uiowa_rfq_18649_workbench",
+      "rows": 10,
+      "slot": "area",
+      "term": "software_development|security"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/consistent/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "group",
+      "term": "CROSS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "group",
+      "term": "CROSS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "group",
+      "term": "CROSS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "group",
+      "term": "CROSS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "group",
+      "term": "CROSS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "group",
+      "term": "CROSS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "group",
+      "term": "CROSS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "group",
+      "term": "CROSS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "group",
+      "term": "CROSS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "group",
+      "term": "CROSS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "group",
+      "term": "CROSS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_report_structure/fixtures/synthetic_recommendation_register.csv",
+      "lane": "uiowa_rfq_18649_report_structure",
+      "rows": 1,
+      "slot": "group",
+      "term": "CROSS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_ai_opportunity_portfolio/sample_output/portfolio_ranking.csv",
+      "lane": "uiowa_rfq_18649_ai_opportunity_portfolio",
+      "rows": 2,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_ai_use_inventory/sample_output/ai_use_gaps.csv",
+      "lane": "uiowa_rfq_18649_ai_use_inventory",
+      "rows": 10,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_ai_use_inventory/sample_output/ai_use_inventory.csv",
+      "lane": "uiowa_rfq_18649_ai_use_inventory",
+      "rows": 4,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_build_board/45-testing-portfolio-example.csv",
+      "lane": "uiowa_rfq_18649_build_board",
+      "rows": 3,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_contractor_transition/sample_output/transition_items.csv",
+      "lane": "uiowa_rfq_18649_contractor_transition",
+      "rows": 5,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_doc_usability/examples/synthetic_inventory.csv",
+      "lane": "uiowa_rfq_18649_doc_usability",
+      "rows": 1,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_economics_resource_adapters/sample_output/resourcing_table.csv",
+      "lane": "uiowa_rfq_18649_economics_resource_adapters",
+      "rows": 4,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "rows": 4,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv",
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "rows": 6,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_intake_rehearsal/artifacts/source_register.csv",
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "rows": 4,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_milestone_packets/fixtures/artifacts/draft/evidence-index-v0.9.csv",
+      "lane": "uiowa_rfq_18649_milestone_packets",
+      "rows": 1,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/consistent/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 4,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/consistent/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 4,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 4,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 5,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 4,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 4,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 4,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 4,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 4,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 4,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 4,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_prioritization/examples/baseline-ranked.csv",
+      "lane": "uiowa_rfq_18649_prioritization",
+      "rows": 4,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_question_cards/examples/cards.csv",
+      "lane": "uiowa_rfq_18649_question_cards",
+      "rows": 4,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_report_structure/fixtures/synthetic_evidence_register.csv",
+      "lane": "uiowa_rfq_18649_report_structure",
+      "rows": 6,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+      "lane": "uiowa_rfq_18649_report_structure",
+      "rows": 4,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_report_structure/fixtures/synthetic_recommendation_register.csv",
+      "lane": "uiowa_rfq_18649_report_structure",
+      "rows": 2,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_synthetic_collection/coverage_matrix.csv",
+      "lane": "uiowa_rfq_18649_synthetic_collection",
+      "rows": 4,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_test_data_readiness/catalog_template.csv",
+      "lane": "uiowa_rfq_18649_test_data_readiness",
+      "rows": 1,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_traceability/bundle/evidence.csv",
+      "lane": "uiowa_rfq_18649_traceability",
+      "rows": 3,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_traceability/bundle/findings.csv",
+      "lane": "uiowa_rfq_18649_traceability",
+      "rows": 1,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_traceability/bundle_drifted/evidence.csv",
+      "lane": "uiowa_rfq_18649_traceability",
+      "rows": 3,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_traceability/bundle_drifted/findings.csv",
+      "lane": "uiowa_rfq_18649_traceability",
+      "rows": 1,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_traceability_rehearsal/evidence.csv",
+      "lane": "uiowa_rfq_18649_traceability_rehearsal",
+      "rows": 3,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_traceability_rehearsal/findings.csv",
+      "lane": "uiowa_rfq_18649_traceability_rehearsal",
+      "rows": 1,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_workshare/methodology/23-synthetic-evidence-register.csv",
+      "lane": "uiowa_rfq_18649_workshare",
+      "rows": 3,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_security_event_review/examples/security-event-evidence-matrix.csv",
+      "lane": "uiowa_rfq_18649_security_event_review",
+      "rows": 2,
+      "slot": "group",
+      "term": "ESS-FICTIONAL"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_workbench/41-synthetic-change-trace.csv",
+      "lane": "uiowa_rfq_18649_workbench",
+      "rows": 13,
+      "slot": "group",
+      "term": "ESS-SYN"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_ai_opportunity_portfolio/sample_output/portfolio_ranking.csv",
+      "lane": "uiowa_rfq_18649_ai_opportunity_portfolio",
+      "rows": 2,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_ai_use_inventory/sample_output/ai_use_gaps.csv",
+      "lane": "uiowa_rfq_18649_ai_use_inventory",
+      "rows": 5,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_ai_use_inventory/sample_output/ai_use_inventory.csv",
+      "lane": "uiowa_rfq_18649_ai_use_inventory",
+      "rows": 3,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_build_board/45-testing-portfolio-example.csv",
+      "lane": "uiowa_rfq_18649_build_board",
+      "rows": 1,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_contractor_transition/sample_output/transition_items.csv",
+      "lane": "uiowa_rfq_18649_contractor_transition",
+      "rows": 1,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_doc_usability/examples/synthetic_inventory.csv",
+      "lane": "uiowa_rfq_18649_doc_usability",
+      "rows": 1,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_economics_resource_adapters/sample_output/resourcing_table.csv",
+      "lane": "uiowa_rfq_18649_economics_resource_adapters",
+      "rows": 4,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "rows": 4,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv",
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "rows": 6,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_intake_rehearsal/artifacts/source_register.csv",
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "rows": 5,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_milestone_packets/fixtures/artifacts/draft/evidence-index-v0.9.csv",
+      "lane": "uiowa_rfq_18649_milestone_packets",
+      "rows": 1,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/consistent/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 4,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/consistent/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 4,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 4,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 4,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 4,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 4,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 4,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 4,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 4,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 4,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 4,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 2,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_prioritization/examples/baseline-ranked.csv",
+      "lane": "uiowa_rfq_18649_prioritization",
+      "rows": 4,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_question_cards/examples/cards.csv",
+      "lane": "uiowa_rfq_18649_question_cards",
+      "rows": 3,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_report_structure/fixtures/synthetic_evidence_register.csv",
+      "lane": "uiowa_rfq_18649_report_structure",
+      "rows": 5,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+      "lane": "uiowa_rfq_18649_report_structure",
+      "rows": 4,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_report_structure/fixtures/synthetic_recommendation_register.csv",
+      "lane": "uiowa_rfq_18649_report_structure",
+      "rows": 2,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_synthetic_collection/coverage_matrix.csv",
+      "lane": "uiowa_rfq_18649_synthetic_collection",
+      "rows": 4,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_traceability/bundle/evidence.csv",
+      "lane": "uiowa_rfq_18649_traceability",
+      "rows": 2,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_traceability/bundle/findings.csv",
+      "lane": "uiowa_rfq_18649_traceability",
+      "rows": 1,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_traceability/bundle_drifted/evidence.csv",
+      "lane": "uiowa_rfq_18649_traceability",
+      "rows": 2,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_traceability/bundle_drifted/findings.csv",
+      "lane": "uiowa_rfq_18649_traceability",
+      "rows": 1,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_traceability_rehearsal/evidence.csv",
+      "lane": "uiowa_rfq_18649_traceability_rehearsal",
+      "rows": 2,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_traceability_rehearsal/findings.csv",
+      "lane": "uiowa_rfq_18649_traceability_rehearsal",
+      "rows": 1,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_workshare/methodology/23-synthetic-evidence-register.csv",
+      "lane": "uiowa_rfq_18649_workshare",
+      "rows": 2,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_security_event_review/examples/security-event-evidence-matrix.csv",
+      "lane": "uiowa_rfq_18649_security_event_review",
+      "rows": 2,
+      "slot": "group",
+      "term": "IAM-FICTIONAL"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_ai_opportunity_portfolio/sample_output/portfolio_ranking.csv",
+      "lane": "uiowa_rfq_18649_ai_opportunity_portfolio",
+      "rows": 2,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_ai_use_inventory/sample_output/ai_use_gaps.csv",
+      "lane": "uiowa_rfq_18649_ai_use_inventory",
+      "rows": 4,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_ai_use_inventory/sample_output/ai_use_inventory.csv",
+      "lane": "uiowa_rfq_18649_ai_use_inventory",
+      "rows": 3,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_build_board/45-testing-portfolio-example.csv",
+      "lane": "uiowa_rfq_18649_build_board",
+      "rows": 2,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_doc_usability/examples/synthetic_inventory.csv",
+      "lane": "uiowa_rfq_18649_doc_usability",
+      "rows": 1,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_economics_resource_adapters/sample_output/resourcing_table.csv",
+      "lane": "uiowa_rfq_18649_economics_resource_adapters",
+      "rows": 3,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "rows": 4,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv",
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "rows": 6,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_intake_rehearsal/artifacts/source_register.csv",
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "rows": 3,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_milestone_packets/fixtures/artifacts/draft/evidence-index-v0.9.csv",
+      "lane": "uiowa_rfq_18649_milestone_packets",
+      "rows": 1,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/consistent/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/consistent/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/matrix.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 3,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/recommendations.csv",
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "rows": 1,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_prioritization/examples/baseline-ranked.csv",
+      "lane": "uiowa_rfq_18649_prioritization",
+      "rows": 3,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_question_cards/examples/cards.csv",
+      "lane": "uiowa_rfq_18649_question_cards",
+      "rows": 3,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_report_structure/fixtures/synthetic_evidence_register.csv",
+      "lane": "uiowa_rfq_18649_report_structure",
+      "rows": 5,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+      "lane": "uiowa_rfq_18649_report_structure",
+      "rows": 3,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_report_structure/fixtures/synthetic_recommendation_register.csv",
+      "lane": "uiowa_rfq_18649_report_structure",
+      "rows": 1,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_synthetic_collection/coverage_matrix.csv",
+      "lane": "uiowa_rfq_18649_synthetic_collection",
+      "rows": 4,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_traceability/bundle/evidence.csv",
+      "lane": "uiowa_rfq_18649_traceability",
+      "rows": 3,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_traceability/bundle/findings.csv",
+      "lane": "uiowa_rfq_18649_traceability",
+      "rows": 1,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_traceability/bundle_drifted/evidence.csv",
+      "lane": "uiowa_rfq_18649_traceability",
+      "rows": 3,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_traceability/bundle_drifted/findings.csv",
+      "lane": "uiowa_rfq_18649_traceability",
+      "rows": 1,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_traceability_rehearsal/evidence.csv",
+      "lane": "uiowa_rfq_18649_traceability_rehearsal",
+      "rows": 3,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_traceability_rehearsal/findings.csv",
+      "lane": "uiowa_rfq_18649_traceability_rehearsal",
+      "rows": 1,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "group",
+      "compound": false,
+      "file": "uiowa_rfq_18649_workshare/methodology/23-synthetic-evidence-register.csv",
+      "lane": "uiowa_rfq_18649_workshare",
+      "rows": 2,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_security_event_review/examples/security-event-evidence-matrix.csv",
+      "lane": "uiowa_rfq_18649_security_event_review",
+      "rows": 1,
+      "slot": "group",
+      "term": "RIS-FICTIONAL"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_build_board/45-testing-portfolio-example.csv",
+      "lane": "uiowa_rfq_18649_build_board",
+      "rows": 1,
+      "slot": "group",
+      "term": "Shared"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_intake_rehearsal/sources/iam/iam-change-review-export-2026-08.csv",
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "rows": 2,
+      "slot": "group",
+      "term": "iam-directory"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_intake_rehearsal/sources/iam/iam-change-review-export-2026-08.csv",
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "rows": 1,
+      "slot": "group",
+      "term": "iam-group-service"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_intake_rehearsal/sources/iam/iam-change-review-export-2026-08.csv",
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "rows": 1,
+      "slot": "group",
+      "term": "iam-sso"
+    },
+    {
+      "column": "service",
+      "compound": false,
+      "file": "uiowa_rfq_18649_delivery_metrics/fixtures/synthetic_deployments.csv",
+      "lane": "uiowa_rfq_18649_delivery_metrics",
+      "rows": 8,
+      "slot": "group",
+      "term": "synthetic-registration"
+    }
+  ],
+  "patterns": [
+    {
+      "finding": "These terms use a different taxonomy, not a different spelling of the same one. They name concepts outside the four assessment areas entirely - data classification, records handling, accessibility, procurement, governance - so no canonical assessment area applies.",
+      "lanes": [
+        "uiowa_rfq_18649_workbench"
+      ],
+      "pattern": "slash_joined_prose_terms",
+      "question": "Is this column the four-area assessment taxonomy under other names, or a separate policy-topic taxonomy that should not be joined to it at all?",
+      "row_count": 18,
+      "term_count": 16,
+      "terms": [
+        "Access / IAM",
+        "Access / IAM / software delivery",
+        "Access / data governance",
+        "Accessibility / procurement / governance",
+        "Accessibility / software delivery",
+        "Data classification / software delivery",
+        "Data use / AI readiness",
+        "Deployment / operations",
+        "Deployment / operations / records",
+        "Records handling / delivery evidence",
+        "Records handling / operations",
+        "Records handling / software delivery",
+        "Software delivery / deployment",
+        "Software delivery / deployment / security",
+        "Software delivery / governance",
+        "Software delivery / security"
+      ],
+      "why_not_split": "\" / \" does not carry one meaning in this column. In \"Deployment / operations\" it joins two words of a single concept; in \"Access / IAM / software delivery\" it appears to join separate concepts. Splitting on it would invent an \"Access\" area and destroy \"Deployment and operations\". This package does not split on an ambiguous separator."
+    }
+  ],
+  "terms": [
+    {
+      "basis": "names a cross-group scope; not a mis-spelling of a group",
+      "canonical": "CROSS_GROUP",
+      "columns": [
+        "group"
+      ],
+      "files": [
+        "uiowa_rfq_18649_output_agreement/fixtures/consistent/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/recommendations.csv",
+        "uiowa_rfq_18649_report_structure/fixtures/synthetic_recommendation_register.csv"
+      ],
+      "kind": "SCOPE_VALUE",
+      "lanes": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "question": "",
+      "rows": 12,
+      "slot": "group",
+      "term": "CROSS"
+    },
+    {
+      "basis": "canonical form",
+      "canonical": "ESS",
+      "columns": [
+        "group",
+        "service"
+      ],
+      "files": [
+        "uiowa_rfq_18649_ai_opportunity_portfolio/sample_output/portfolio_ranking.csv",
+        "uiowa_rfq_18649_ai_use_inventory/sample_output/ai_use_gaps.csv",
+        "uiowa_rfq_18649_ai_use_inventory/sample_output/ai_use_inventory.csv",
+        "uiowa_rfq_18649_build_board/45-testing-portfolio-example.csv",
+        "uiowa_rfq_18649_contractor_transition/sample_output/transition_items.csv",
+        "uiowa_rfq_18649_doc_usability/examples/synthetic_inventory.csv",
+        "uiowa_rfq_18649_economics_resource_adapters/sample_output/resourcing_table.csv",
+        "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+        "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv",
+        "uiowa_rfq_18649_intake_rehearsal/artifacts/source_register.csv",
+        "uiowa_rfq_18649_milestone_packets/fixtures/artifacts/draft/evidence-index-v0.9.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/consistent/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/consistent/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/recommendations.csv",
+        "uiowa_rfq_18649_prioritization/examples/baseline-ranked.csv",
+        "uiowa_rfq_18649_question_cards/examples/cards.csv",
+        "uiowa_rfq_18649_report_structure/fixtures/synthetic_evidence_register.csv",
+        "uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+        "uiowa_rfq_18649_report_structure/fixtures/synthetic_recommendation_register.csv",
+        "uiowa_rfq_18649_synthetic_collection/coverage_matrix.csv",
+        "uiowa_rfq_18649_test_data_readiness/catalog_template.csv",
+        "uiowa_rfq_18649_traceability/bundle/evidence.csv",
+        "uiowa_rfq_18649_traceability/bundle/findings.csv",
+        "uiowa_rfq_18649_traceability/bundle_drifted/evidence.csv",
+        "uiowa_rfq_18649_traceability/bundle_drifted/findings.csv",
+        "uiowa_rfq_18649_traceability_rehearsal/evidence.csv",
+        "uiowa_rfq_18649_traceability_rehearsal/findings.csv",
+        "uiowa_rfq_18649_workshare/methodology/23-synthetic-evidence-register.csv"
+      ],
+      "kind": "EXACT_VARIANT",
+      "lanes": [
+        "uiowa_rfq_18649_ai_opportunity_portfolio",
+        "uiowa_rfq_18649_ai_use_inventory",
+        "uiowa_rfq_18649_build_board",
+        "uiowa_rfq_18649_contractor_transition",
+        "uiowa_rfq_18649_doc_usability",
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_intake_rehearsal",
+        "uiowa_rfq_18649_milestone_packets",
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_prioritization",
+        "uiowa_rfq_18649_question_cards",
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_synthetic_collection",
+        "uiowa_rfq_18649_test_data_readiness",
+        "uiowa_rfq_18649_traceability",
+        "uiowa_rfq_18649_traceability_rehearsal",
+        "uiowa_rfq_18649_workshare"
+      ],
+      "question": "",
+      "rows": 151,
+      "slot": "group",
+      "term": "ESS"
+    },
+    {
+      "basis": "origin-qualified spelling of the same fictional group",
+      "canonical": "ESS",
+      "columns": [
+        "service"
+      ],
+      "files": [
+        "uiowa_rfq_18649_security_event_review/examples/security-event-evidence-matrix.csv"
+      ],
+      "kind": "DECLARED_JUDGMENT",
+      "lanes": [
+        "uiowa_rfq_18649_security_event_review"
+      ],
+      "question": "Confirm ESS-FICTIONAL denotes the same fictional group as ESS.",
+      "rows": 2,
+      "slot": "group",
+      "term": "ESS-FICTIONAL"
+    },
+    {
+      "basis": "origin-qualified spelling of the same fictional group; declared explicitly because same-looking values from different origins must not join by resemblance",
+      "canonical": "ESS",
+      "columns": [
+        "group"
+      ],
+      "files": [
+        "uiowa_rfq_18649_workbench/41-synthetic-change-trace.csv"
+      ],
+      "kind": "DECLARED_JUDGMENT",
+      "lanes": [
+        "uiowa_rfq_18649_workbench"
+      ],
+      "question": "Confirm ESS-SYN denotes the same fictional group as ESS.",
+      "rows": 13,
+      "slot": "group",
+      "term": "ESS-SYN"
+    },
+    {
+      "basis": "canonical form",
+      "canonical": "IAM",
+      "columns": [
+        "group",
+        "service"
+      ],
+      "files": [
+        "uiowa_rfq_18649_ai_opportunity_portfolio/sample_output/portfolio_ranking.csv",
+        "uiowa_rfq_18649_ai_use_inventory/sample_output/ai_use_gaps.csv",
+        "uiowa_rfq_18649_ai_use_inventory/sample_output/ai_use_inventory.csv",
+        "uiowa_rfq_18649_build_board/45-testing-portfolio-example.csv",
+        "uiowa_rfq_18649_contractor_transition/sample_output/transition_items.csv",
+        "uiowa_rfq_18649_doc_usability/examples/synthetic_inventory.csv",
+        "uiowa_rfq_18649_economics_resource_adapters/sample_output/resourcing_table.csv",
+        "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+        "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv",
+        "uiowa_rfq_18649_intake_rehearsal/artifacts/source_register.csv",
+        "uiowa_rfq_18649_milestone_packets/fixtures/artifacts/draft/evidence-index-v0.9.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/consistent/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/consistent/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/recommendations.csv",
+        "uiowa_rfq_18649_prioritization/examples/baseline-ranked.csv",
+        "uiowa_rfq_18649_question_cards/examples/cards.csv",
+        "uiowa_rfq_18649_report_structure/fixtures/synthetic_evidence_register.csv",
+        "uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+        "uiowa_rfq_18649_report_structure/fixtures/synthetic_recommendation_register.csv",
+        "uiowa_rfq_18649_synthetic_collection/coverage_matrix.csv",
+        "uiowa_rfq_18649_traceability/bundle/evidence.csv",
+        "uiowa_rfq_18649_traceability/bundle/findings.csv",
+        "uiowa_rfq_18649_traceability/bundle_drifted/evidence.csv",
+        "uiowa_rfq_18649_traceability/bundle_drifted/findings.csv",
+        "uiowa_rfq_18649_traceability_rehearsal/evidence.csv",
+        "uiowa_rfq_18649_traceability_rehearsal/findings.csv",
+        "uiowa_rfq_18649_workshare/methodology/23-synthetic-evidence-register.csv"
+      ],
+      "kind": "EXACT_VARIANT",
+      "lanes": [
+        "uiowa_rfq_18649_ai_opportunity_portfolio",
+        "uiowa_rfq_18649_ai_use_inventory",
+        "uiowa_rfq_18649_build_board",
+        "uiowa_rfq_18649_contractor_transition",
+        "uiowa_rfq_18649_doc_usability",
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_intake_rehearsal",
+        "uiowa_rfq_18649_milestone_packets",
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_prioritization",
+        "uiowa_rfq_18649_question_cards",
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_synthetic_collection",
+        "uiowa_rfq_18649_traceability",
+        "uiowa_rfq_18649_traceability_rehearsal",
+        "uiowa_rfq_18649_workshare"
+      ],
+      "question": "",
+      "rows": 132,
+      "slot": "group",
+      "term": "IAM"
+    },
+    {
+      "basis": "origin-qualified spelling",
+      "canonical": "IAM",
+      "columns": [
+        "service"
+      ],
+      "files": [
+        "uiowa_rfq_18649_security_event_review/examples/security-event-evidence-matrix.csv"
+      ],
+      "kind": "DECLARED_JUDGMENT",
+      "lanes": [
+        "uiowa_rfq_18649_security_event_review"
+      ],
+      "question": "Confirm IAM-FICTIONAL denotes the same fictional group as IAM.",
+      "rows": 2,
+      "slot": "group",
+      "term": "IAM-FICTIONAL"
+    },
+    {
+      "basis": "canonical form",
+      "canonical": "RIS",
+      "columns": [
+        "group",
+        "service"
+      ],
+      "files": [
+        "uiowa_rfq_18649_ai_opportunity_portfolio/sample_output/portfolio_ranking.csv",
+        "uiowa_rfq_18649_ai_use_inventory/sample_output/ai_use_gaps.csv",
+        "uiowa_rfq_18649_ai_use_inventory/sample_output/ai_use_inventory.csv",
+        "uiowa_rfq_18649_build_board/45-testing-portfolio-example.csv",
+        "uiowa_rfq_18649_doc_usability/examples/synthetic_inventory.csv",
+        "uiowa_rfq_18649_economics_resource_adapters/sample_output/resourcing_table.csv",
+        "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+        "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv",
+        "uiowa_rfq_18649_intake_rehearsal/artifacts/source_register.csv",
+        "uiowa_rfq_18649_milestone_packets/fixtures/artifacts/draft/evidence-index-v0.9.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/consistent/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/consistent/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/recommendations.csv",
+        "uiowa_rfq_18649_prioritization/examples/baseline-ranked.csv",
+        "uiowa_rfq_18649_question_cards/examples/cards.csv",
+        "uiowa_rfq_18649_report_structure/fixtures/synthetic_evidence_register.csv",
+        "uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+        "uiowa_rfq_18649_report_structure/fixtures/synthetic_recommendation_register.csv",
+        "uiowa_rfq_18649_synthetic_collection/coverage_matrix.csv",
+        "uiowa_rfq_18649_traceability/bundle/evidence.csv",
+        "uiowa_rfq_18649_traceability/bundle/findings.csv",
+        "uiowa_rfq_18649_traceability/bundle_drifted/evidence.csv",
+        "uiowa_rfq_18649_traceability/bundle_drifted/findings.csv",
+        "uiowa_rfq_18649_traceability_rehearsal/evidence.csv",
+        "uiowa_rfq_18649_traceability_rehearsal/findings.csv",
+        "uiowa_rfq_18649_workshare/methodology/23-synthetic-evidence-register.csv"
+      ],
+      "kind": "EXACT_VARIANT",
+      "lanes": [
+        "uiowa_rfq_18649_ai_opportunity_portfolio",
+        "uiowa_rfq_18649_ai_use_inventory",
+        "uiowa_rfq_18649_build_board",
+        "uiowa_rfq_18649_doc_usability",
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_intake_rehearsal",
+        "uiowa_rfq_18649_milestone_packets",
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_prioritization",
+        "uiowa_rfq_18649_question_cards",
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_synthetic_collection",
+        "uiowa_rfq_18649_traceability",
+        "uiowa_rfq_18649_traceability_rehearsal",
+        "uiowa_rfq_18649_workshare"
+      ],
+      "question": "",
+      "rows": 106,
+      "slot": "group",
+      "term": "RIS"
+    },
+    {
+      "basis": "origin-qualified spelling",
+      "canonical": "RIS",
+      "columns": [
+        "service"
+      ],
+      "files": [
+        "uiowa_rfq_18649_security_event_review/examples/security-event-evidence-matrix.csv"
+      ],
+      "kind": "DECLARED_JUDGMENT",
+      "lanes": [
+        "uiowa_rfq_18649_security_event_review"
+      ],
+      "question": "Confirm RIS-FICTIONAL denotes the same fictional group as RIS.",
+      "rows": 1,
+      "slot": "group",
+      "term": "RIS-FICTIONAL"
+    },
+    {
+      "basis": "names a shared/cross-group scope",
+      "canonical": "CROSS_GROUP",
+      "columns": [
+        "service"
+      ],
+      "files": [
+        "uiowa_rfq_18649_build_board/45-testing-portfolio-example.csv"
+      ],
+      "kind": "SCOPE_VALUE",
+      "lanes": [
+        "uiowa_rfq_18649_build_board"
+      ],
+      "question": "",
+      "rows": 1,
+      "slot": "group",
+      "term": "Shared"
+    },
+    {
+      "basis": "a service inside the IAM group; rows about one service are not interchangeable with rows about the group",
+      "canonical": "IAM",
+      "columns": [
+        "service"
+      ],
+      "files": [
+        "uiowa_rfq_18649_intake_rehearsal/sources/iam/iam-change-review-export-2026-08.csv"
+      ],
+      "kind": "GRANULARITY_MISMATCH",
+      "lanes": [
+        "uiowa_rfq_18649_intake_rehearsal"
+      ],
+      "question": "",
+      "rows": 2,
+      "slot": "group",
+      "term": "iam-directory"
+    },
+    {
+      "basis": "a service inside the IAM group; rows about one service are not interchangeable with rows about the group",
+      "canonical": "IAM",
+      "columns": [
+        "service"
+      ],
+      "files": [
+        "uiowa_rfq_18649_intake_rehearsal/sources/iam/iam-change-review-export-2026-08.csv"
+      ],
+      "kind": "GRANULARITY_MISMATCH",
+      "lanes": [
+        "uiowa_rfq_18649_intake_rehearsal"
+      ],
+      "question": "",
+      "rows": 1,
+      "slot": "group",
+      "term": "iam-group-service"
+    },
+    {
+      "basis": "a service inside the IAM group; rows about one service are not interchangeable with rows about the group",
+      "canonical": "IAM",
+      "columns": [
+        "service"
+      ],
+      "files": [
+        "uiowa_rfq_18649_intake_rehearsal/sources/iam/iam-change-review-export-2026-08.csv"
+      ],
+      "kind": "GRANULARITY_MISMATCH",
+      "lanes": [
+        "uiowa_rfq_18649_intake_rehearsal"
+      ],
+      "question": "",
+      "rows": 1,
+      "slot": "group",
+      "term": "iam-sso"
+    },
+    {
+      "basis": "a fictional service name with no declared parent group in the tree",
+      "canonical": null,
+      "columns": [
+        "service"
+      ],
+      "files": [
+        "uiowa_rfq_18649_delivery_metrics/fixtures/synthetic_deployments.csv"
+      ],
+      "kind": "UNRESOLVED_CONCEPT",
+      "lanes": [
+        "uiowa_rfq_18649_delivery_metrics"
+      ],
+      "question": "Which of ESS/RIS/IAM owns the fictional 'synthetic-registration' service?",
+      "rows": 8,
+      "slot": "group",
+      "term": "synthetic-registration"
+    },
+    {
+      "basis": "canonical form",
+      "canonical": "AI",
+      "columns": [
+        "area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_ai_use_inventory/sample_output/ai_use_inventory.csv",
+        "uiowa_rfq_18649_economics_resource_adapters/sample_output/resourcing_table.csv",
+        "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+        "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/consistent/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/consistent/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/recommendations.csv",
+        "uiowa_rfq_18649_prioritization/examples/baseline-ranked.csv",
+        "uiowa_rfq_18649_report_structure/fixtures/synthetic_evidence_register.csv",
+        "uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+        "uiowa_rfq_18649_report_structure/fixtures/synthetic_recommendation_register.csv",
+        "uiowa_rfq_18649_workshare/methodology/23-synthetic-evidence-register.csv"
+      ],
+      "kind": "EXACT_VARIANT",
+      "lanes": [
+        "uiowa_rfq_18649_ai_use_inventory",
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_intake_rehearsal",
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_prioritization",
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_workshare"
+      ],
+      "question": "",
+      "rows": 70,
+      "slot": "area",
+      "term": "AI"
+    },
+    {
+      "basis": "same words, prose form",
+      "canonical": "AI",
+      "columns": [
+        "area_label"
+      ],
+      "files": [
+        "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv"
+      ],
+      "kind": "EXACT_VARIANT",
+      "lanes": [
+        "uiowa_rfq_18649_intake_rehearsal"
+      ],
+      "question": "",
+      "rows": 3,
+      "slot": "area",
+      "term": "AI readiness"
+    },
+    {
+      "basis": "not declared in crosswalk.json; this package does not guess",
+      "canonical": null,
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_workbench/12-policy-context.csv"
+      ],
+      "kind": "UNMAPPED",
+      "lanes": [
+        "uiowa_rfq_18649_workbench"
+      ],
+      "question": "Which canonical area does 'Access / IAM' denote, if any?",
+      "rows": 2,
+      "slot": "area",
+      "term": "Access / IAM"
+    },
+    {
+      "basis": "not declared in crosswalk.json; this package does not guess",
+      "canonical": null,
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_workbench/12-policy-context.csv"
+      ],
+      "kind": "UNMAPPED",
+      "lanes": [
+        "uiowa_rfq_18649_workbench"
+      ],
+      "question": "Which canonical area does 'Access / IAM / software delivery' denote, if any?",
+      "rows": 1,
+      "slot": "area",
+      "term": "Access / IAM / software delivery"
+    },
+    {
+      "basis": "not declared in crosswalk.json; this package does not guess",
+      "canonical": null,
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_workbench/12-policy-context.csv"
+      ],
+      "kind": "UNMAPPED",
+      "lanes": [
+        "uiowa_rfq_18649_workbench"
+      ],
+      "question": "Which canonical area does 'Access / data governance' denote, if any?",
+      "rows": 1,
+      "slot": "area",
+      "term": "Access / data governance"
+    },
+    {
+      "basis": "not declared in crosswalk.json; this package does not guess",
+      "canonical": null,
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_workbench/12-policy-context.csv"
+      ],
+      "kind": "UNMAPPED",
+      "lanes": [
+        "uiowa_rfq_18649_workbench"
+      ],
+      "question": "Which canonical area does 'Accessibility / procurement / governance' denote, if any?",
+      "rows": 1,
+      "slot": "area",
+      "term": "Accessibility / procurement / governance"
+    },
+    {
+      "basis": "not declared in crosswalk.json; this package does not guess",
+      "canonical": null,
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_workbench/12-policy-context.csv"
+      ],
+      "kind": "UNMAPPED",
+      "lanes": [
+        "uiowa_rfq_18649_workbench"
+      ],
+      "question": "Which canonical area does 'Accessibility / software delivery' denote, if any?",
+      "rows": 2,
+      "slot": "area",
+      "term": "Accessibility / software delivery"
+    },
+    {
+      "basis": "canonical form",
+      "canonical": "DEP",
+      "columns": [
+        "area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_economics_resource_adapters/sample_output/resourcing_table.csv",
+        "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+        "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/consistent/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/consistent/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/recommendations.csv",
+        "uiowa_rfq_18649_prioritization/examples/baseline-ranked.csv",
+        "uiowa_rfq_18649_report_structure/fixtures/synthetic_evidence_register.csv",
+        "uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+        "uiowa_rfq_18649_report_structure/fixtures/synthetic_recommendation_register.csv",
+        "uiowa_rfq_18649_workshare/methodology/23-synthetic-evidence-register.csv"
+      ],
+      "kind": "EXACT_VARIANT",
+      "lanes": [
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_intake_rehearsal",
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_prioritization",
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_workshare"
+      ],
+      "question": "",
+      "rows": 68,
+      "slot": "area",
+      "term": "DEP"
+    },
+    {
+      "basis": "not declared in crosswalk.json; this package does not guess",
+      "canonical": null,
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_workbench/12-policy-context.csv"
+      ],
+      "kind": "UNMAPPED",
+      "lanes": [
+        "uiowa_rfq_18649_workbench"
+      ],
+      "question": "Which canonical area does 'Data classification' denote, if any?",
+      "rows": 1,
+      "slot": "area",
+      "term": "Data classification"
+    },
+    {
+      "basis": "not declared in crosswalk.json; this package does not guess",
+      "canonical": null,
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_workbench/12-policy-context.csv"
+      ],
+      "kind": "UNMAPPED",
+      "lanes": [
+        "uiowa_rfq_18649_workbench"
+      ],
+      "question": "Which canonical area does 'Data classification / software delivery' denote, if any?",
+      "rows": 1,
+      "slot": "area",
+      "term": "Data classification / software delivery"
+    },
+    {
+      "basis": "not declared in crosswalk.json; this package does not guess",
+      "canonical": null,
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_workbench/12-policy-context.csv"
+      ],
+      "kind": "UNMAPPED",
+      "lanes": [
+        "uiowa_rfq_18649_workbench"
+      ],
+      "question": "Which canonical area does 'Data use / AI readiness' denote, if any?",
+      "rows": 1,
+      "slot": "area",
+      "term": "Data use / AI readiness"
+    },
+    {
+      "basis": "not declared in crosswalk.json; this package does not guess",
+      "canonical": null,
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_workbench/12-policy-context.csv"
+      ],
+      "kind": "UNMAPPED",
+      "lanes": [
+        "uiowa_rfq_18649_workbench"
+      ],
+      "question": "Which canonical area does 'Deployment / operations' denote, if any?",
+      "rows": 1,
+      "slot": "area",
+      "term": "Deployment / operations"
+    },
+    {
+      "basis": "not declared in crosswalk.json; this package does not guess",
+      "canonical": null,
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_workbench/12-policy-context.csv"
+      ],
+      "kind": "UNMAPPED",
+      "lanes": [
+        "uiowa_rfq_18649_workbench"
+      ],
+      "question": "Which canonical area does 'Deployment / operations / records' denote, if any?",
+      "rows": 1,
+      "slot": "area",
+      "term": "Deployment / operations / records"
+    },
+    {
+      "basis": "same words, prose form",
+      "canonical": "DEP",
+      "columns": [
+        "area_label"
+      ],
+      "files": [
+        "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv"
+      ],
+      "kind": "EXACT_VARIANT",
+      "lanes": [
+        "uiowa_rfq_18649_intake_rehearsal"
+      ],
+      "question": "",
+      "rows": 3,
+      "slot": "area",
+      "term": "Deployment and operations"
+    },
+    {
+      "basis": "not declared in crosswalk.json; this package does not guess",
+      "canonical": null,
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_workbench/12-policy-context.csv"
+      ],
+      "kind": "UNMAPPED",
+      "lanes": [
+        "uiowa_rfq_18649_workbench"
+      ],
+      "question": "Which canonical area does 'Records handling / delivery evidence' denote, if any?",
+      "rows": 1,
+      "slot": "area",
+      "term": "Records handling / delivery evidence"
+    },
+    {
+      "basis": "not declared in crosswalk.json; this package does not guess",
+      "canonical": null,
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_workbench/12-policy-context.csv"
+      ],
+      "kind": "UNMAPPED",
+      "lanes": [
+        "uiowa_rfq_18649_workbench"
+      ],
+      "question": "Which canonical area does 'Records handling / operations' denote, if any?",
+      "rows": 1,
+      "slot": "area",
+      "term": "Records handling / operations"
+    },
+    {
+      "basis": "not declared in crosswalk.json; this package does not guess",
+      "canonical": null,
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_workbench/12-policy-context.csv"
+      ],
+      "kind": "UNMAPPED",
+      "lanes": [
+        "uiowa_rfq_18649_workbench"
+      ],
+      "question": "Which canonical area does 'Records handling / software delivery' denote, if any?",
+      "rows": 1,
+      "slot": "area",
+      "term": "Records handling / software delivery"
+    },
+    {
+      "basis": "canonical form",
+      "canonical": "SD",
+      "columns": [
+        "area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_economics_resource_adapters/sample_output/resourcing_table.csv",
+        "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+        "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/consistent/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/consistent/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/recommendations.csv",
+        "uiowa_rfq_18649_prioritization/examples/baseline-ranked.csv",
+        "uiowa_rfq_18649_report_structure/fixtures/synthetic_evidence_register.csv",
+        "uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+        "uiowa_rfq_18649_report_structure/fixtures/synthetic_recommendation_register.csv",
+        "uiowa_rfq_18649_workshare/methodology/23-synthetic-evidence-register.csv"
+      ],
+      "kind": "EXACT_VARIANT",
+      "lanes": [
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_intake_rehearsal",
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_prioritization",
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_workshare"
+      ],
+      "question": "",
+      "rows": 72,
+      "slot": "area",
+      "term": "SD"
+    },
+    {
+      "basis": "canonical form",
+      "canonical": "SEC",
+      "columns": [
+        "area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_economics_resource_adapters/sample_output/resourcing_table.csv",
+        "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv",
+        "uiowa_rfq_18649_intake_rehearsal/artifacts/evidence_register.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/consistent/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/consistent/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/recommendations.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/matrix.csv",
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/recommendations.csv",
+        "uiowa_rfq_18649_prioritization/examples/baseline-ranked.csv",
+        "uiowa_rfq_18649_report_structure/fixtures/synthetic_evidence_register.csv",
+        "uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+        "uiowa_rfq_18649_report_structure/fixtures/synthetic_recommendation_register.csv",
+        "uiowa_rfq_18649_workshare/methodology/23-synthetic-evidence-register.csv"
+      ],
+      "kind": "EXACT_VARIANT",
+      "lanes": [
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_intake_rehearsal",
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_prioritization",
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_workshare"
+      ],
+      "question": "",
+      "rows": 80,
+      "slot": "area",
+      "term": "SEC"
+    },
+    {
+      "basis": "same word, title case",
+      "canonical": "SEC",
+      "columns": [
+        "area_label"
+      ],
+      "files": [
+        "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv"
+      ],
+      "kind": "EXACT_VARIANT",
+      "lanes": [
+        "uiowa_rfq_18649_intake_rehearsal"
+      ],
+      "question": "",
+      "rows": 3,
+      "slot": "area",
+      "term": "Security"
+    },
+    {
+      "basis": "not declared in crosswalk.json; this package does not guess",
+      "canonical": null,
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_workbench/12-policy-context.csv"
+      ],
+      "kind": "UNMAPPED",
+      "lanes": [
+        "uiowa_rfq_18649_workbench"
+      ],
+      "question": "Which canonical area does 'Software delivery / deployment' denote, if any?",
+      "rows": 1,
+      "slot": "area",
+      "term": "Software delivery / deployment"
+    },
+    {
+      "basis": "not declared in crosswalk.json; this package does not guess",
+      "canonical": null,
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_workbench/12-policy-context.csv"
+      ],
+      "kind": "UNMAPPED",
+      "lanes": [
+        "uiowa_rfq_18649_workbench"
+      ],
+      "question": "Which canonical area does 'Software delivery / deployment / security' denote, if any?",
+      "rows": 1,
+      "slot": "area",
+      "term": "Software delivery / deployment / security"
+    },
+    {
+      "basis": "not declared in crosswalk.json; this package does not guess",
+      "canonical": null,
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_workbench/12-policy-context.csv"
+      ],
+      "kind": "UNMAPPED",
+      "lanes": [
+        "uiowa_rfq_18649_workbench"
+      ],
+      "question": "Which canonical area does 'Software delivery / governance' denote, if any?",
+      "rows": 1,
+      "slot": "area",
+      "term": "Software delivery / governance"
+    },
+    {
+      "basis": "not declared in crosswalk.json; this package does not guess",
+      "canonical": null,
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_workbench/12-policy-context.csv"
+      ],
+      "kind": "UNMAPPED",
+      "lanes": [
+        "uiowa_rfq_18649_workbench"
+      ],
+      "question": "Which canonical area does 'Software delivery / security' denote, if any?",
+      "rows": 1,
+      "slot": "area",
+      "term": "Software delivery / security"
+    },
+    {
+      "basis": "same words, title case",
+      "canonical": "SD",
+      "columns": [
+        "area_label"
+      ],
+      "files": [
+        "uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv"
+      ],
+      "kind": "EXACT_VARIANT",
+      "lanes": [
+        "uiowa_rfq_18649_intake_rehearsal"
+      ],
+      "question": "",
+      "rows": 3,
+      "slot": "area",
+      "term": "Software development"
+    },
+    {
+      "basis": "same words, snake case",
+      "canonical": "AI",
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_question_cards/examples/cards.csv",
+        "uiowa_rfq_18649_synthetic_collection/coverage_matrix.csv",
+        "uiowa_rfq_18649_workbench/framework_crosswalk/20-framework-crosswalk.csv"
+      ],
+      "kind": "EXACT_VARIANT",
+      "lanes": [
+        "uiowa_rfq_18649_question_cards",
+        "uiowa_rfq_18649_synthetic_collection",
+        "uiowa_rfq_18649_workbench"
+      ],
+      "question": "",
+      "rows": 15,
+      "slot": "area",
+      "term": "ai_readiness"
+    },
+    {
+      "basis": "one cell naming several terms at once; parts ['ai_readiness', 'deployment_operations'] are declared, none are not. The cell is NOT split into independent rows - splitting would assume the separator means 'and' and would double-count the row.",
+      "canonical": null,
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_workbench/framework_crosswalk/20-framework-crosswalk.csv"
+      ],
+      "kind": "COMPOUND",
+      "lanes": [
+        "uiowa_rfq_18649_workbench"
+      ],
+      "parts": [
+        "ai_readiness",
+        "deployment_operations"
+      ],
+      "question": "Should a cell naming several areas count once, or once per area?",
+      "rows": 4,
+      "slot": "area",
+      "term": "ai_readiness|deployment_operations"
+    },
+    {
+      "basis": "one cell naming several terms at once; parts ['ai_readiness', 'security'] are declared, none are not. The cell is NOT split into independent rows - splitting would assume the separator means 'and' and would double-count the row.",
+      "canonical": null,
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_workbench/framework_crosswalk/20-framework-crosswalk.csv"
+      ],
+      "kind": "COMPOUND",
+      "lanes": [
+        "uiowa_rfq_18649_workbench"
+      ],
+      "parts": [
+        "ai_readiness",
+        "security"
+      ],
+      "question": "Should a cell naming several areas count once, or once per area?",
+      "rows": 4,
+      "slot": "area",
+      "term": "ai_readiness|security"
+    },
+    {
+      "basis": "one cell naming several terms at once; parts ['ai_readiness', 'deployment_operations', 'security'] are declared, none are not. The cell is NOT split into independent rows - splitting would assume the separator means 'and' and would double-count the row.",
+      "canonical": null,
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_workbench/framework_crosswalk/20-framework-crosswalk.csv"
+      ],
+      "kind": "COMPOUND",
+      "lanes": [
+        "uiowa_rfq_18649_workbench"
+      ],
+      "parts": [
+        "ai_readiness",
+        "security",
+        "deployment_operations"
+      ],
+      "question": "Should a cell naming several areas count once, or once per area?",
+      "rows": 1,
+      "slot": "area",
+      "term": "ai_readiness|security|deployment_operations"
+    },
+    {
+      "basis": "one cell naming several terms at once; parts ['ai_readiness', 'software_development'] are declared, none are not. The cell is NOT split into independent rows - splitting would assume the separator means 'and' and would double-count the row.",
+      "canonical": null,
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_workbench/framework_crosswalk/20-framework-crosswalk.csv"
+      ],
+      "kind": "COMPOUND",
+      "lanes": [
+        "uiowa_rfq_18649_workbench"
+      ],
+      "parts": [
+        "ai_readiness",
+        "software_development"
+      ],
+      "question": "Should a cell naming several areas count once, or once per area?",
+      "rows": 3,
+      "slot": "area",
+      "term": "ai_readiness|software_development"
+    },
+    {
+      "basis": "the shorter term is read as the deployment half of deployment/operations; a lane using it may or may not intend operations as well",
+      "canonical": "DEP",
+      "columns": [
+        "area",
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_milestone_packets/fixtures/artifacts/draft/evidence-index-v0.9.csv",
+        "uiowa_rfq_18649_question_cards/examples/cards.csv"
+      ],
+      "kind": "DECLARED_JUDGMENT",
+      "lanes": [
+        "uiowa_rfq_18649_milestone_packets",
+        "uiowa_rfq_18649_question_cards"
+      ],
+      "question": "Does 'deployment' in this lane cover operations, or only release execution?",
+      "rows": 4,
+      "slot": "area",
+      "term": "deployment"
+    },
+    {
+      "basis": "same words, snake case",
+      "canonical": "DEP",
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_synthetic_collection/coverage_matrix.csv"
+      ],
+      "kind": "EXACT_VARIANT",
+      "lanes": [
+        "uiowa_rfq_18649_synthetic_collection"
+      ],
+      "question": "",
+      "rows": 3,
+      "slot": "area",
+      "term": "deployment_operations"
+    },
+    {
+      "basis": "reliability of a service in operation is an OUTCOME; deployment and operations is a PRACTICE area. Equating them would fabricate agreement between two lanes that may be measuring different things.",
+      "canonical": null,
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_outcome_measurement/measure_register.csv",
+        "uiowa_rfq_18649_outcome_measurement/recommendations.csv"
+      ],
+      "kind": "UNRESOLVED_CONCEPT",
+      "lanes": [
+        "uiowa_rfq_18649_outcome_measurement"
+      ],
+      "question": "Is operational_reliability intended as the DEP practice area, or as an outcome measured across areas? Joining on it is unsafe until the owning lane answers.",
+      "rows": 3,
+      "slot": "area",
+      "term": "operational_reliability"
+    },
+    {
+      "basis": "same word, lower case",
+      "canonical": "SEC",
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_outcome_measurement/measure_register.csv",
+        "uiowa_rfq_18649_outcome_measurement/recommendations.csv",
+        "uiowa_rfq_18649_question_cards/examples/cards.csv",
+        "uiowa_rfq_18649_synthetic_collection/coverage_matrix.csv"
+      ],
+      "kind": "EXACT_VARIANT",
+      "lanes": [
+        "uiowa_rfq_18649_outcome_measurement",
+        "uiowa_rfq_18649_question_cards",
+        "uiowa_rfq_18649_synthetic_collection"
+      ],
+      "question": "",
+      "rows": 8,
+      "slot": "area",
+      "term": "security"
+    },
+    {
+      "basis": "one cell naming several terms at once; parts ['deployment_operations', 'security'] are declared, none are not. The cell is NOT split into independent rows - splitting would assume the separator means 'and' and would double-count the row.",
+      "canonical": null,
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_workbench/framework_crosswalk/20-framework-crosswalk.csv"
+      ],
+      "kind": "COMPOUND",
+      "lanes": [
+        "uiowa_rfq_18649_workbench"
+      ],
+      "parts": [
+        "security",
+        "deployment_operations"
+      ],
+      "question": "Should a cell naming several areas count once, or once per area?",
+      "rows": 23,
+      "slot": "area",
+      "term": "security|deployment_operations"
+    },
+    {
+      "basis": "one cell naming several terms at once; parts ['security', 'software_development'] are declared, none are not. The cell is NOT split into independent rows - splitting would assume the separator means 'and' and would double-count the row.",
+      "canonical": null,
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_workbench/framework_crosswalk/20-framework-crosswalk.csv"
+      ],
+      "kind": "COMPOUND",
+      "lanes": [
+        "uiowa_rfq_18649_workbench"
+      ],
+      "parts": [
+        "security",
+        "software_development"
+      ],
+      "question": "Should a cell naming several areas count once, or once per area?",
+      "rows": 2,
+      "slot": "area",
+      "term": "security|software_development"
+    },
+    {
+      "basis": "both software_development and software_delivery exist elsewhere in the tree; the bare term cannot be assigned to either without asking",
+      "canonical": null,
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_question_cards/examples/cards.csv"
+      ],
+      "kind": "AMBIGUOUS",
+      "lanes": [
+        "uiowa_rfq_18649_question_cards"
+      ],
+      "question": "Is 'software' here software_development or software_delivery?",
+      "rows": 3,
+      "slot": "area",
+      "term": "software"
+    },
+    {
+      "basis": "read as the same area the RFQ calls software development; 'delivery' and 'development' are not identical words and a lane may mean a narrower thing",
+      "canonical": "SD",
+      "columns": [
+        "area",
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_milestone_packets/fixtures/artifacts/draft/evidence-index-v0.9.csv",
+        "uiowa_rfq_18649_outcome_measurement/measure_register.csv",
+        "uiowa_rfq_18649_outcome_measurement/recommendations.csv"
+      ],
+      "kind": "DECLARED_JUDGMENT",
+      "lanes": [
+        "uiowa_rfq_18649_milestone_packets",
+        "uiowa_rfq_18649_outcome_measurement"
+      ],
+      "question": "Does 'software_delivery' cover development practice, or only the release pipeline?",
+      "rows": 4,
+      "slot": "area",
+      "term": "software_delivery"
+    },
+    {
+      "basis": "same words, snake case",
+      "canonical": "SD",
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_synthetic_collection/coverage_matrix.csv"
+      ],
+      "kind": "EXACT_VARIANT",
+      "lanes": [
+        "uiowa_rfq_18649_synthetic_collection"
+      ],
+      "question": "",
+      "rows": 3,
+      "slot": "area",
+      "term": "software_development"
+    },
+    {
+      "basis": "one cell naming several terms at once; parts ['security', 'software_development'] are declared, none are not. The cell is NOT split into independent rows - splitting would assume the separator means 'and' and would double-count the row.",
+      "canonical": null,
+      "columns": [
+        "assessment_area"
+      ],
+      "files": [
+        "uiowa_rfq_18649_workbench/framework_crosswalk/20-framework-crosswalk.csv"
+      ],
+      "kind": "COMPOUND",
+      "lanes": [
+        "uiowa_rfq_18649_workbench"
+      ],
+      "parts": [
+        "software_development",
+        "security"
+      ],
+      "question": "Should a cell naming several areas count once, or once per area?",
+      "rows": 10,
+      "slot": "area",
+      "term": "software_development|security"
+    }
+  ]
+}

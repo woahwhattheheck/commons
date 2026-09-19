@@ -1,0 +1,189 @@
+{
+  "_note": "DECLARED term mappings for RFQ-18649 group and assessment-area columns. There is no fuzzy matching anywhere in this package: a term absent from this file is reported UNMAPPED, never guessed into the nearest bucket. Every entry carries a kind so a reviewer can accept the mechanical ones and argue only the judgments.",
+  "kinds": {
+    "EXACT_VARIANT": "Same words, different case, spacing or separator. Mechanical; safe to accept.",
+    "DECLARED_JUDGMENT": "Different words, judged equivalent by this package. A reviewer may disagree; the original term is always retained.",
+    "SCOPE_VALUE": "A legitimate value that is not one of the three groups - it describes scope, not a mis-spelling.",
+    "GRANULARITY_MISMATCH": "The term is finer-grained than the canonical. Mapped to its parent, but rows are NOT interchangeable with parent rows.",
+    "COMPOUND": "One cell naming several areas at once. Parts are recorded; the cell is NOT split into independent rows.",
+    "AMBIGUOUS": "Could serve more than one canonical term. Deliberately not mapped.",
+    "UNRESOLVED_CONCEPT": "Names a concept this package will not equate with any canonical term. Needs the owning lane to decide."
+  },
+  "canonical": {
+    "area": {
+      "SD": "Software development",
+      "SEC": "Security",
+      "DEP": "Deployment and operations",
+      "AI": "AI readiness"
+    },
+    "group": {
+      "ESS": "Enterprise student systems (fictional)",
+      "RIS": "Research information systems (fictional)",
+      "IAM": "Identity and access management (fictional)",
+      "CROSS_GROUP": "Applies across groups rather than to one"
+    }
+  },
+  "area": {
+    "SD": {
+      "canonical": "SD",
+      "kind": "EXACT_VARIANT",
+      "basis": "canonical form"
+    },
+    "SEC": {
+      "canonical": "SEC",
+      "kind": "EXACT_VARIANT",
+      "basis": "canonical form"
+    },
+    "DEP": {
+      "canonical": "DEP",
+      "kind": "EXACT_VARIANT",
+      "basis": "canonical form"
+    },
+    "AI": {
+      "canonical": "AI",
+      "kind": "EXACT_VARIANT",
+      "basis": "canonical form"
+    },
+    "software_development": {
+      "canonical": "SD",
+      "kind": "EXACT_VARIANT",
+      "basis": "same words, snake case"
+    },
+    "Software development": {
+      "canonical": "SD",
+      "kind": "EXACT_VARIANT",
+      "basis": "same words, title case"
+    },
+    "security": {
+      "canonical": "SEC",
+      "kind": "EXACT_VARIANT",
+      "basis": "same word, lower case"
+    },
+    "Security": {
+      "canonical": "SEC",
+      "kind": "EXACT_VARIANT",
+      "basis": "same word, title case"
+    },
+    "deployment_operations": {
+      "canonical": "DEP",
+      "kind": "EXACT_VARIANT",
+      "basis": "same words, snake case"
+    },
+    "Deployment and operations": {
+      "canonical": "DEP",
+      "kind": "EXACT_VARIANT",
+      "basis": "same words, prose form"
+    },
+    "ai_readiness": {
+      "canonical": "AI",
+      "kind": "EXACT_VARIANT",
+      "basis": "same words, snake case"
+    },
+    "AI readiness": {
+      "canonical": "AI",
+      "kind": "EXACT_VARIANT",
+      "basis": "same words, prose form"
+    },
+    "deployment": {
+      "canonical": "DEP",
+      "kind": "DECLARED_JUDGMENT",
+      "basis": "the shorter term is read as the deployment half of deployment/operations; a lane using it may or may not intend operations as well",
+      "question": "Does 'deployment' in this lane cover operations, or only release execution?"
+    },
+    "software_delivery": {
+      "canonical": "SD",
+      "kind": "DECLARED_JUDGMENT",
+      "basis": "read as the same area the RFQ calls software development; 'delivery' and 'development' are not identical words and a lane may mean a narrower thing",
+      "question": "Does 'software_delivery' cover development practice, or only the release pipeline?"
+    },
+    "software": {
+      "canonical": null,
+      "kind": "AMBIGUOUS",
+      "basis": "both software_development and software_delivery exist elsewhere in the tree; the bare term cannot be assigned to either without asking",
+      "question": "Is 'software' here software_development or software_delivery?"
+    },
+    "operational_reliability": {
+      "canonical": null,
+      "kind": "UNRESOLVED_CONCEPT",
+      "basis": "reliability of a service in operation is an OUTCOME; deployment and operations is a PRACTICE area. Equating them would fabricate agreement between two lanes that may be measuring different things.",
+      "question": "Is operational_reliability intended as the DEP practice area, or as an outcome measured across areas? Joining on it is unsafe until the owning lane answers."
+    }
+  },
+  "group": {
+    "ESS": {
+      "canonical": "ESS",
+      "kind": "EXACT_VARIANT",
+      "basis": "canonical form"
+    },
+    "RIS": {
+      "canonical": "RIS",
+      "kind": "EXACT_VARIANT",
+      "basis": "canonical form"
+    },
+    "IAM": {
+      "canonical": "IAM",
+      "kind": "EXACT_VARIANT",
+      "basis": "canonical form"
+    },
+    "ESS-SYN": {
+      "canonical": "ESS",
+      "kind": "DECLARED_JUDGMENT",
+      "basis": "origin-qualified spelling of the same fictional group; declared explicitly because same-looking values from different origins must not join by resemblance",
+      "question": "Confirm ESS-SYN denotes the same fictional group as ESS."
+    },
+    "ESS-FICTIONAL": {
+      "canonical": "ESS",
+      "kind": "DECLARED_JUDGMENT",
+      "basis": "origin-qualified spelling of the same fictional group",
+      "question": "Confirm ESS-FICTIONAL denotes the same fictional group as ESS."
+    },
+    "RIS-FICTIONAL": {
+      "canonical": "RIS",
+      "kind": "DECLARED_JUDGMENT",
+      "basis": "origin-qualified spelling",
+      "question": "Confirm RIS-FICTIONAL denotes the same fictional group as RIS."
+    },
+    "IAM-FICTIONAL": {
+      "canonical": "IAM",
+      "kind": "DECLARED_JUDGMENT",
+      "basis": "origin-qualified spelling",
+      "question": "Confirm IAM-FICTIONAL denotes the same fictional group as IAM."
+    },
+    "CROSS": {
+      "canonical": "CROSS_GROUP",
+      "kind": "SCOPE_VALUE",
+      "basis": "names a cross-group scope; not a mis-spelling of a group"
+    },
+    "Shared": {
+      "canonical": "CROSS_GROUP",
+      "kind": "SCOPE_VALUE",
+      "basis": "names a shared/cross-group scope"
+    },
+    "AIS": {
+      "canonical": "CROSS_GROUP",
+      "kind": "SCOPE_VALUE",
+      "basis": "the parent organisation containing all three groups; not itself one of them"
+    },
+    "iam-directory": {
+      "canonical": "IAM",
+      "kind": "GRANULARITY_MISMATCH",
+      "basis": "a service inside the IAM group; rows about one service are not interchangeable with rows about the group"
+    },
+    "iam-sso": {
+      "canonical": "IAM",
+      "kind": "GRANULARITY_MISMATCH",
+      "basis": "a service inside the IAM group; rows about one service are not interchangeable with rows about the group"
+    },
+    "iam-group-service": {
+      "canonical": "IAM",
+      "kind": "GRANULARITY_MISMATCH",
+      "basis": "a service inside the IAM group; rows about one service are not interchangeable with rows about the group"
+    },
+    "synthetic-registration": {
+      "canonical": null,
+      "kind": "UNRESOLVED_CONCEPT",
+      "basis": "a fictional service name with no declared parent group in the tree",
+      "question": "Which of ESS/RIS/IAM owns the fictional 'synthetic-registration' service?"
+    }
+  }
+}
