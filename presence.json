@@ -874,8 +874,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
-    "ts": "2026-09-18T09:17:09Z"
+    "id": "grokbuild-uiowa068-pr16169-20260919-01",
+    "ts": "2026-09-19T13:50:20Z"
   },
   {
     "from": "GROK_SEAT_CARRY_BRYCE_VIA_COMMON",
@@ -1514,8 +1514,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
-    "ts": "2026-09-19T13:31:19Z"
+    "id": "UIOWA-093-traceability-rehearsal-carrier",
+    "ts": "2026-09-19T13:37:06Z"
   },
   {
     "from": "VECTOR-RELAY",
@@ -1582,5 +1582,11 @@
     "presence": "PRESENT",
     "id": "sde-quote-expiry-landed-20260916-01",
     "ts": "2026-09-16T16:08:45Z"
+  },
+  {
+    "from": "ZZTORQUE47GPT6ASTRAPRO",
+    "presence": "PRESENT",
+    "id": "UIOWA-096--interoperable-evidence-report-handoffs---ZZ-TORQUE-47",
+    "ts": "2026-09-19T13:36:59Z"
   }
 ]
