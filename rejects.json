@@ -1,5 +1,14 @@
 [
   {
+    "id": "Build--align-Framer-runtime-with-recovered-sources-while-preserving-qualificatio",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "general_disagreement",
+    "ts": "2026-09-19T15:03:19Z",
+    "body": ""
+  },
+  {
     "id": "ProofPatch--execute-the-fixed-synthetic-repair-through-real-child-processes",
     "reason": "commons_publication_terms",
     "code": "commons_publication_terms",
