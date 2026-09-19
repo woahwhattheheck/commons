@@ -1,0 +1,14 @@
+{
+  "synthetic": true,
+  "links": [
+    {
+      "from": "REC:DEMO-UNSUPPORTED",
+      "from_type": "recommendation",
+      "from_label": "DEMO — recommendation with missing finding support",
+      "to": "MISSING:F-DEMO-999",
+      "to_label": "Missing finding F-DEMO-999",
+      "relation": "recommendation_to_finding",
+      "note": "Deliberately unsupported link used only to prove the graph retains and exposes missing targets."
+    }
+  ]
+}
