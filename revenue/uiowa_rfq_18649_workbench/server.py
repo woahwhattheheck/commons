@@ -172,7 +172,8 @@ class _Handler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:  # noqa: N802
         if self._reject_bad_host():
             return
-        entry = STATIC_FILES.get(self.path)
+        # The UI uses ?demo=1; query parameters are not static path names.
+        entry = STATIC_FILES.get(self.path.partition("?")[0])
         if entry is None:
             self._send_json(404, {"error": "not found"})
             return
