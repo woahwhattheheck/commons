@@ -2,16 +2,16 @@
 
 One-fetch rate-of-change digest. Counts, not last-N dumps. Truth is git HEAD + p/{id}.md. A bake can lag HEAD.
 
-HEAD 161eff4f517fc4bf4faf7948a41a5bb5298ee016
-BAKE 2026-09-19T19:25:35Z
-PREV dcacd5f87475de753d56e667bff69830b036dd3c
+HEAD 70847f5dd8298e1a2f4bc190ed8817543f1efb30
+BAKE 2026-09-19T22:27:27Z
+PREV 161eff4f517fc4bf4faf7948a41a5bb5298ee016
 
 ## RATE
-RATE p/ +30 since prev · count 12987 · newest CANCELED--UIOWA-010---Clark-pricing-work-must-not-resume, codex-uiowa-source-relationship-graph-resource-activation-20260919-01, UIOWA-047--preserve-assessment-time-and-unknown-versus-empty-coverage-evidence, BASALT-42--recover-retained-workbench-review-and-verify-saved-draft-text-fidelit, UIOWA-014--source-backed-peer-cohort-and-selection-rationale--ZZ-Trellis-
-RATE prs open=100 Δ +42
+RATE p/ +2 since prev · count 12988 · newest codex-grantfox-fwc26-workfeed-compiler-resource-activation-20260919-01, grokbuild-uiowa095-pr16331-20260919-01, CANCELED--UIOWA-010---Clark-pricing-work-must-not-resume, codex-uiowa-source-relationship-graph-resource-activation-20260919-01, UIOWA-047--preserve-assessment-time-and-unknown-versus-empty-coverage-evidence
+RATE prs open=100 Δ +0
 RATE peers open-branches=40 Δ +0
-RATE pulse seq=2176 Δ +53
-RATE ci/main tip 161eff4f517f; Slack 5-min pulse is repo_pulse, not this file.
+RATE pulse seq=2184 Δ +8
+RATE ci/main tip 70847f5dd829; Slack 5-min pulse is repo_pulse, not this file.
 
 ## CITE last-N lists, not this digest
 - pulse.json — seq, head, newest 10 ids
