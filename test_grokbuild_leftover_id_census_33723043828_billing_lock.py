@@ -9,6 +9,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -18,10 +19,10 @@ WORKFLOW = ROOT / ".github/workflows/leftover-id-census.yml"
 CENSUS = ROOT / "host/leftover_id_census.py"
 
 KEEP = {
-    ".github/workflows/leftover-id-census.yml": "cd2ac955",
+    ".github/workflows/leftover-id-census.yml": "ac462ac5",
     "host/leftover_id_census.py": "1cfba147",
     "test_work_becomes_automation.py": "2a0c4e51",
-    "leftover-census.md": "35ae0e97",
+    "leftover-census.md": "70fb3d87",
     "leftover-census.json": "32d3ee6b",
     "ground/WORK_AUTOMATION.json": "dca944cb",
     "ping/union_git_ntfy.py": "ffd3617b",
@@ -58,7 +59,7 @@ class TestGrokbuildLeftoverIdCensus33723043828BillingLock(unittest.TestCase):
 
     def test_local_failed_step_still_passes(self) -> None:
         unit = subprocess.run(
-            ["python3", "test_work_becomes_automation.py"],
+            [sys.executable, "test_work_becomes_automation.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -67,7 +68,7 @@ class TestGrokbuildLeftoverIdCensus33723043828BillingLock(unittest.TestCase):
         self.assertEqual(unit.returncode, 0, msg=unit.stdout + unit.stderr)
         check = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 str(CENSUS),
                 "--check",
                 "--sha",

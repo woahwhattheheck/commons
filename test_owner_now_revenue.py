@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import sys
 import unittest
@@ -17,10 +18,10 @@ import owner_now_revenue as onr  # noqa: E402
 
 
 KEEP = {
-    "ground/OWNER_NOW.md": "a17b0afb",
+    "ground/OWNER_NOW.md": "39a0e0c3",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
-    "autogtm.html": "1009c4cd",
+    "autogtm.html": "5c966110",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-autogtm-hub-pages-live-get-readback-20260902-01.md": "c2829fc5",
 }
@@ -34,6 +35,8 @@ CANONICAL = (
     "sku-whitebox-hour-20260826",
     "sku-muhlnickel-titan-20260826",
 )
+
+WHITEBOX_HOUR_CHECKOUT = "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07"
 
 
 def git_blob(rel: str) -> str:
@@ -56,7 +59,7 @@ class TestOwnerNowRevenue(unittest.TestCase):
         self.assertTrue(match["ok"], match)
         self.assertTrue(match["did_not_remint_owner_card"])
         self.assertTrue(match["did_not_remint_leftover"])
-        self.assertTrue(match["owner_now_blob"].startswith("a17b0afb"))
+        self.assertTrue(match["owner_now_blob"].startswith("39a0e0c3"))
         self.assertTrue(match["leftover_blob"].startswith("1b3cd631"))
 
     def test_ask_for_sale_on_current_proven_rails(self) -> None:
@@ -71,7 +74,9 @@ class TestOwnerNowRevenue(unittest.TestCase):
         self.assertEqual(packet["cash_usd"], 0)
         self.assertEqual(packet["sends"], 0)
         self.assertEqual(packet["sku_count"], len(packet["ask_for_sale"]))
-        self.assertIn("agent-failure-autopsy-29", {row["sku"] for row in packet["ask_for_sale"]})
+        self.assertNotIn(
+            "agent-failure-autopsy-29", {row["sku"] for row in packet["ask_for_sale"]}
+        )
         skus = [row["sku"] for row in packet["ask_for_sale"]]
         self.assertEqual(skus[:len(CANONICAL)], list(CANONICAL))
         self.assertEqual(len(skus), len(set(skus)))
@@ -126,7 +131,8 @@ class TestOwnerNowRevenue(unittest.TestCase):
         self.assertIn("348ffcc2a", door)
         self.assertIn("1b3cd631", door)
         self.assertIn("6b8ee988", door)
-        self.assertNotIn("https://buy.stripe.com/", door)
+        for m in re.finditer(r"https://buy\.stripe\.com/[A-Za-z0-9]+", door):
+            self.assertEqual(m.group(0), WHITEBOX_HOUR_CHECKOUT)
         self.assertNotIn("https://donate.stripe.com/", door)
         for sku in CANONICAL:
             self.assertIn('data-sku="%s"' % sku, door)

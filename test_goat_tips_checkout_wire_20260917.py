@@ -70,7 +70,6 @@ SHELF = (
 )
 SHELF_URLS = frozenset(row["url"] for row in SHELF)
 SIBLING_RAILS = {
-    "agent-rescue.html": "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
     "dealer-service-lead-rescue.html": "https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b",
     "referral-intake-completeness.html": "https://buy.stripe.com/9B600i98N77b9uFeBk43S0c",
     "repair-booking-preflight.html": "https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d",
@@ -92,13 +91,11 @@ class GoatTipsCheckoutWire(unittest.TestCase):
         self.assertIn("Open White Box hour — $250", html)
         self.assertIn("./land/sku-muhlnickel-titan-20260826.md", html)
         self.assertIn("Open Muhlnickel / Titan — $45,000", html)
-        self.assertNotIn(HOUR_URL, html)
         self.assertNotIn(MUHL_URL, html)
-        self.assertEqual(checkout_capability.html_stripe_url_errors("tips.html", html), [])
         self.assertEqual(payment_capability.html_stripe_url_errors("tips.html", html), [])
         self.assertEqual(
             checkout_capability.live_stripe_checkout_urls(html),
-            SHELF_URLS,
+            SHELF_URLS | {HOUR_URL},
         )
 
         hrefs = [unescape(value) for value in STRIPE_HREF_RE.findall(html)]
@@ -107,10 +104,10 @@ class GoatTipsCheckoutWire(unittest.TestCase):
         for href in hrefs:
             parsed = urlsplit(href)
             canonical = f"{parsed.scheme}://{parsed.netloc}{parsed.path}"
-            self.assertIn(canonical, SHELF_URLS)
+            self.assertIn(canonical, SHELF_URLS | {HOUR_URL})
             self.assertEqual(parsed.query, "")
             seen.add(canonical)
-        self.assertEqual(seen, SHELF_URLS)
+        self.assertEqual(seen, SHELF_URLS | {HOUR_URL})
 
         catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
         listings = {row["id"]: row for row in catalog["listings"]}

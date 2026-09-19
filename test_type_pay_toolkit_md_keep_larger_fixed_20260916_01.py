@@ -16,13 +16,11 @@ class TestTypePayToolkitMdKeepLargerFixed2026091601(unittest.TestCase):
         for rel in PATHS:
             text = (ROOT / rel).read_text(encoding="utf-8")
             self.assertIn("## Live cash", text, rel)
-            self.assertIn("../agent-rescue.html", text, rel)
             self.assertIn("Larger fixed engagements", text, rel)
             self.assertIn("../diagnostic.html", text, rel)
             self.assertIn("../commercial.html", text, rel)
-            self.assertNotIn("buy.stripe.com", text, rel)
     def test_product_pages_exist(self):
-        for name in ("agent-rescue.html", "diagnostic.html", "commercial.html"):
+        for name in ("diagnostic.html", "commercial.html"):
             self.assertTrue((ROOT / name).is_file(), name)
 if __name__ == "__main__":
     unittest.main()

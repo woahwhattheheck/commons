@@ -16,15 +16,13 @@ class AgentSurvivalDiscoveryTest(unittest.TestCase):
         self.assertIn("agent-triage.html", readme[offer:contract])
         self.assertIn("before payment", readme[offer:contract])
 
-    def test_home_surfaces_scope_first_agent_failure_diagnostic_before_door_grid(self):
+    def test_home_keeps_retired_autopsy_offer_out(self):
         home = (ROOT / "index.html").read_text(encoding="utf-8")
 
-        offer = home.index('id="agent-failure-diagnostic-offer"')
-        door_grid = home.index('id="door-hub"')
-
-        self.assertLess(offer, door_grid)
-        self.assertIn('href="./agent-triage.html"', home[offer:door_grid])
-        self.assertIn("Build the failure packet", home[offer:door_grid])
+        self.assertIn('id="door-hub"', home)
+        self.assertNotIn('id="agent-failure-diagnostic-offer"', home)
+        self.assertNotIn('href="./agent-rescue.html"', home)
+        self.assertNotIn("4gM9AS3Ot8bfeOZ78S43S0g", home)
 
 
 if __name__ == "__main__":

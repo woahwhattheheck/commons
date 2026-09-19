@@ -1,0 +1,13 @@
+{
+  "id": "action-20260917210932-c1de03fe7df1",
+  "verb": "LIST",
+  "target": "slack-dms",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: {limit:50}: not found\n",
+  "executed_at": "2026-09-18T05:32:31.085858Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

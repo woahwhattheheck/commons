@@ -6,6 +6,7 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -118,6 +119,8 @@ class DocketHistoryCompositionTests(unittest.TestCase):
     def test_full_cli_preserves_special_historical_filenames(self):
         for original in ("tab\tname.txt", "line\nbreak.txt", "caf\u00e9-\u96ea.txt"):
             with self.subTest(original=original):
+                if os.name == "nt" and any(ord(c) < 32 for c in original):
+                    self.skipTest("control characters are not valid NTFS filenames")
                 fixture, docket, schema = self.make_case(original)
                 result = self.cli(fixture, docket, schema)
                 self.assertEqual(result.returncode, 0, result.stderr)

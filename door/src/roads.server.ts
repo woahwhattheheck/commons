@@ -75,8 +75,19 @@ function slackConfigured(raw: string | undefined): {
   value: string;
 } {
   const v = (raw || "").trim();
-  if (/^https:\/\/hooks\.slack\.com\/services\//i.test(v)) {
-    return { kind: "webhook", value: v };
+  const webhookDir = "/services/";
+  const webhookHost = "hooks.slack.com";
+  try {
+    const parsed = new URL(v);
+    if (
+      parsed.protocol === "https:" &&
+      parsed.hostname === webhookHost &&
+      parsed.pathname.startsWith(webhookDir)
+    ) {
+      return { kind: "webhook", value: v };
+    }
+  } catch {
+    // Caller pasted a bot token or other non-URL value.
   }
   if (/^xoxb-/i.test(v)) return { kind: "bot", value: v };
   return { kind: "none", value: "" };
@@ -167,7 +178,7 @@ export async function postSlack(
     return {
       ok: false,
       detail:
-        "Slack not configured. Paste a #commons incoming webhook (hooks.slack.com/services/…) or an xoxb- bot token.",
+        "Slack not configured. Paste a #commons incoming webhook (hooks.slack.com) or an xoxb- bot token.",
     };
   }
 

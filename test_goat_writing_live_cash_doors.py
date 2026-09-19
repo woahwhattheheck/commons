@@ -16,7 +16,6 @@ ROOT = Path(__file__).resolve().parent
 PAGE = ROOT / "writing.html"
 
 DOORS = (
-    ("sku-agent-failure-autopsy", "./agent-rescue.html", "Open $29 Autopsy checkout"),
     ("sku-dealer-service-lead-rescue", "./dealer-service-lead-rescue.html", "Open $199 dealer diagnostic"),
     ("sku-referral-intake-completeness", "./referral-intake-completeness.html", "Open $199 referral diagnostic"),
     ("sku-repair-booking-preflight", "./repair-booking-preflight.html", "Open $199 repair diagnostic"),

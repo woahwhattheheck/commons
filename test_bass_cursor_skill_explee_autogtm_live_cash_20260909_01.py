@@ -8,6 +8,6 @@ class T(unittest.TestCase):
     t=PAGE.read_text(encoding="utf-8")
     self.assertIn("## Live cash", t)
     self.assertIn("dealer-service-lead-rescue.html", t)
-    self.assertIn("../../../agent-rescue.html", t)
+    self.assertNotIn("../../../agent-rescue.html", t)
     self.assertNotIn("buy.stripe.com", t)
 if __name__=="__main__": unittest.main()

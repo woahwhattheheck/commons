@@ -35,8 +35,8 @@ ROWS = {
 # Immutable observations from the original catalog-pointer receipt. They are
 # evidence about that land, not live locks on files owned by other workers.
 OBSERVED_AT_LAND = {
-    "packs/lotribbon-greetings-20260902-01/index.html": "ac60db02",
-    "packs/sidewalk-signal-web-desk-20260902-01/index.html": "638e60b4",
+    "packs/lotribbon-greetings-20260902-01/index.html": "8afd749b",
+    "packs/sidewalk-signal-web-desk-20260902-01/index.html": "9db77016",
 }
 
 

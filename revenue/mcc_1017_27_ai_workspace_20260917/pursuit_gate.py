@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 from typing import Any
 
 OPPORTUNITY_ID = "MCC-1017-27"
-SCHEMA = "mcc-1017-27-pursuit-gate/v1"
+SCHEMA = "mcc-1017-27-pursuit-gate/v2"
 _SHA256 = re.compile(r"^[0-9a-f]{64}$")
 _ALLOWED_ROOT = {
     "opportunity_id",
@@ -95,6 +95,34 @@ def _deadline(value: Any) -> datetime:
     return dt.astimezone(timezone.utc)
 
 
+def _deadline_binding(
+    value: Any,
+    *,
+    buyer_digests: set[str],
+    secondary_digests: set[str],
+) -> tuple[datetime, str, bool]:
+    if not isinstance(value, dict) or set(value) != {
+        "at",
+        "authority",
+        "source_sha256",
+    }:
+        raise GateError("deadline binding schema mismatch")
+    when = _deadline(value["at"])
+    digest = value["source_sha256"]
+    if not isinstance(digest, str) or not _SHA256.fullmatch(digest):
+        raise GateError("deadline source digest invalid")
+    authority = value["authority"]
+    if authority == "BUYER_PACKAGE":
+        if digest not in buyer_digests:
+            raise GateError("buyer deadline source is not retained buyer authority")
+        return when, authority, True
+    if authority == "SECONDARY_DISCOVERY":
+        if digest not in secondary_digests:
+            raise GateError("secondary deadline source is not retained discovery evidence")
+        return when, authority, False
+    raise GateError("deadline authority invalid")
+
+
 def _evidence_record(item: Any, expected_kind: str) -> dict[str, Any]:
     if not isinstance(item, dict) or set(item) != {
         "kind",
@@ -126,6 +154,8 @@ def compile_packet(packet: Any, *, evaluated_at: str) -> dict[str, Any]:
         raise GateError("source sets must be lists")
     buyer_records = [_source(x, kind="BUYER_PACKAGE") for x in buyer]
     secondary_records = [_source(x, kind="SECONDARY_DISCOVERY") for x in secondary]
+    buyer_digests = {x["sha256"] for x in buyer_records}
+    secondary_digests = {x["sha256"] for x in secondary_records}
 
     deadlines = p["deadlines"]
     if not isinstance(deadlines, dict) or set(deadlines) != {
@@ -133,10 +163,19 @@ def compile_packet(packet: Any, *, evaluated_at: str) -> dict[str, Any]:
         "response_due",
     }:
         raise GateError("deadline schema mismatch")
-    questions_due = _deadline(deadlines["questions_due"])
-    response_due = _deadline(deadlines["response_due"])
+    questions_due, question_authority, question_authoritative = _deadline_binding(
+        deadlines["questions_due"],
+        buyer_digests=buyer_digests,
+        secondary_digests=secondary_digests,
+    )
+    response_due, response_authority, response_authoritative = _deadline_binding(
+        deadlines["response_due"],
+        buyer_digests=buyer_digests,
+        secondary_digests=secondary_digests,
+    )
     if not questions_due < response_due:
         raise GateError("deadline order invalid")
+    deadline_authority_complete = question_authoritative and response_authoritative
 
     prime = p["prime_evidence"]
     if not isinstance(prime, dict) or set(prime) != {
@@ -203,10 +242,14 @@ def compile_packet(packet: Any, *, evaluated_at: str) -> dict[str, Any]:
 
     buyer_package_present = bool(buyer_records)
     prime_evidence_present = bool(experience) and len(distinct_refs) >= 3
-    direct_prime_ready = buyer_package_present and prime_evidence_present
+    direct_prime_ready = (
+        buyer_package_present and prime_evidence_present and deadline_authority_complete
+    )
 
     if not buyer_package_present:
         state = "HOLD_MISSING_BUYER_PACKAGE"
+    elif not deadline_authority_complete:
+        state = "HOLD_DEADLINE_AUTHORITY"
     elif not prime_evidence_present:
         state = "HOLD_PRIME_QUALIFICATION"
     else:
@@ -220,10 +263,17 @@ def compile_packet(packet: Any, *, evaluated_at: str) -> dict[str, Any]:
         "buyer_package_present": buyer_package_present,
         "buyer_authoritative_source_count": len(buyer_records),
         "secondary_source_count": len(secondary_records),
+        "deadline_authority_complete": deadline_authority_complete,
+        "question_deadline_authority": question_authority,
+        "response_deadline_authority": response_authority,
         "prime_evidence_present": prime_evidence_present,
         "direct_prime_ready": direct_prime_ready,
-        "question_window_open": now < questions_due,
-        "response_window_open": now < response_due,
+        "question_window_open": (
+            now < questions_due if question_authoritative else None
+        ),
+        "response_window_open": (
+            now < response_due if response_authoritative else None
+        ),
         "partner_candidates": partner_rows,
         "workshare": {
             "amount_cents": workshare["amount_cents"],

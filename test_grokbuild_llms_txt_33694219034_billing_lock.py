@@ -7,6 +7,7 @@ import os
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grok-build-llms-txt-33694219034-billing-lock-20260902-01.md"
@@ -29,13 +30,13 @@ KEEP = {
     "p/grok-resources-tab-freshness-billing-lock-20260902-01.md": "ac39fe78",
     "p/grokbuild-pr8402-verify-20260902-01.md": "3524e382",
     ".github/workflows/llms-txt.yml": "d2182a3d",
-    "llms_txt.py": "70daec62",
+    "llms_txt.py": "b70aa03d",
     "owner_pin.py": "76e19209",
     "test_llms_publish.py": "c07317be",
     "test_llms_pulse.py": "e79f7851",
-    "test_grokbuild_llms_txt_billing_lock.py": "9f86a4ef",
-    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "eea1a9f3",
-    "test_grokbuild_llms_txt_33689357433_billing_lock.py": "1f990aef",
+    "test_grokbuild_llms_txt_billing_lock.py": "9eabfa9c",
+    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "a93e988e",
+    "test_grokbuild_llms_txt_33689357433_billing_lock.py": "5e462bcb",
 }
 
 
@@ -127,7 +128,7 @@ class TestGrokbuildLlmsTxt33694219034BillingLock(unittest.TestCase):
         env = os.environ.copy()
         env.pop("GITHUB_ACTIONS", None)
         rc = subprocess.run(
-            ["python3", "llms_txt.py", "--publish"],
+            [sys.executable, "llms_txt.py", "--publish"],
             cwd=ROOT,
             capture_output=True,
             text=True,

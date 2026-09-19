@@ -109,7 +109,6 @@ Coupled live bits same as v2: electron still fwd0/rev0=1. Carry still 0. Field o
 
 Verified product pages only — no invented Stripe links.
 
-- [$29 Autopsy checkout](../../agent-rescue.html)
 - [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../../referral-intake-completeness.html)
 - [$199 repair diagnostic](../../repair-booking-preflight.html)

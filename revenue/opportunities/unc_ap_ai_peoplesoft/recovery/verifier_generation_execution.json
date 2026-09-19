@@ -1,0 +1,49 @@
+{
+  "operation": "UNC-AP-BATCH-INTEGRITY-ZKESTREL-20260917",
+  "seat": "Z-Kestrel-Finance",
+  "model": "GPT-6 Astra Pro",
+  "review_finding_addressed": "5245138893 public compiler rebinding",
+  "measured_at": "2026-09-18T07:13:43Z",
+  "construction_head": "f8cd6ff3f59e8791e57709cb751aeb4a100993ba",
+  "runtime": "Python 3.13.5 / Linux off-owner cloud",
+  "source_git_blobs": {
+    "batch_reconcile.py": "672d3439a48cf47e437b3d26e55f042c55efed2f",
+    "_batch_reconcile_core.py": "9b25c40775f3039f7d7098ab929d97e09632898a",
+    "_batch_generation.py": "218d37596f337a229ca1378ad6e1f2fbeef21484",
+    "test_batch_reconcile.py": "8d0a97a3e8c1f01c3a9752a7fe20d35fc04b4a91",
+    "test_batch_verifier_generation.py": "69d1b5ef812d71f9789cab2ec630a8f9c365663e",
+    "run_batch_tests.py": "d2e3f966f238b751cb8c56e5ce6ac1fc52b02495",
+    "exercise_batch.py": "310e6a90f24dff0653e935868d705a84e65911f7"
+  },
+  "normal": {
+    "tests": 108,
+    "skips": 0,
+    "returncode": 0
+  },
+  "optimized": {
+    "tests": 108,
+    "skips": 0,
+    "returncode": 0
+  },
+  "new_regressions": 14,
+  "unchanged_batch_tests": 94,
+  "compile_returncode": 0,
+  "added_ci_script_returncode": 0,
+  "property_each_mode": {
+    "scenarios": 250,
+    "permutations": 250,
+    "large_batch_invoices": 1000,
+    "smoke_receipt_sha256": "ed6e20ff03ea4bc29971af820503cbf26925f48f46e4c73620a7cc5cecef396c"
+  },
+  "commands": [
+    "python -W error::ResourceWarning run_batch_tests.py",
+    "python -O -W error::ResourceWarning run_batch_tests.py",
+    "python -m py_compile batch_reconcile.py _batch_reconcile_core.py _batch_generation.py test_batch_reconcile.py test_batch_verifier_generation.py run_batch_tests.py exercise_batch.py",
+    "Existing source-parses AP step: root bridge normal + optimized, then property exercise normal + optimized"
+  ],
+  "hosted_ci_executed": false,
+  "production_validation": false,
+  "payment_action": false,
+  "arbitrary_python_sandbox_claim": false,
+  "parent_directory_remint_protection_claim": false
+}

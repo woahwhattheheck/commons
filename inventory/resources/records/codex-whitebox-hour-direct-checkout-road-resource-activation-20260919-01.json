@@ -1,0 +1,148 @@
+{
+  "schema": "commons-resource-event/v1",
+  "event_id": "codex-whitebox-hour-direct-checkout-road-resource-activation-20260919-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "observed_at": "2026-09-19T13:05:53Z",
+  "actor": "Commons Resource Master / Codex",
+  "selected_resource": "whitebox-hour-direct-checkout-road",
+  "concrete_consumer": "Commons sales and delivery agents routing a bounded White Box hour through the standalone owner-now customer surface and existing direct transaction path",
+  "measurable_outcome": "The already-merged standalone customer CTA and delivery contract are now canonical producing resource metadata without reminting source, provider state, or customer contact.",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "MERGED_UNCATALOGED",
+    "condition": "CONSTRAINED",
+    "holder": "LATCH",
+    "consumer": "UNROUTED_IN_CANONICAL_RESOURCE_GRAPH"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "holder": "LATCH source custody / Commons sales and delivery agents",
+    "consumer": "Internal Commons routing and an external buyer only through the standalone owner-now surface plus direct transaction/support path"
+  },
+  "production_truth": {
+    "activation_operation_id": "codex-whitebox-hour-direct-checkout-road-resource-20260919-01",
+    "source_repository": "woahwhattheheck/commons",
+    "source_pr": 16087,
+    "source_head_sha": "5efd6315e893123f0cbcf144904f1e2e5aaeae95",
+    "source_merge_sha": "5efd6315e893123f0cbcf144904f1e2e5aaeae95",
+    "source_descendant_main_sha": "c011a606171249e37cd5809bfbcb42d537d3cca1",
+    "source_paths": {
+      "owner-now-revenue.html": "3d440bc24751e0e8d15d1e577eb8dfabb72f1d19",
+      "p/latch-owner-now-wb-hour-restore-20260919-01.md": "78030f0f6819c8669bd4a73aa72f47c6d8adfbc5",
+      "test_latch_owner_now_wb_hour_restore_20260919_01.py": "7b0f41ef9106243504a0744c54801f4dde97f95d",
+      "test_zeta_owner_now_revenue_gated_checkout_20260917.py": "2a8ec453024f54aa996105c90dbef6d552476d96",
+      "test_goat_owner_now_revenue_checkout_wire_20260917.py": "0d07a7379b28f9229900c32f118db3262301a016",
+      "test_z_kestrel_owner_now_root_enrollment_20260917.py": "6f396aa40abd0bd9e3a5af055ec50bea92f62cab",
+      "p/action-20260919110812-22a675665683.md": "2cc06b82f79e4a3ddfae3e8dcd7b6ff3d92f39d4",
+      "land/sku-whitebox-hour-20260826.md": "49cc55559e93595b22bbcef15de6f74ac8e0f3f4"
+    },
+    "offer_id": "sku-whitebox-hour-20260826",
+    "price_usd": 250,
+    "payment_links": 1,
+    "checkout_status": "EXISTING_DIRECT_PAYMENT_LINK_REUSED",
+    "focused_tests": {
+      "source_suite": "54 PASS",
+      "resource_ledger": "23/23 PASS NORMAL_AND_OPTIMIZED",
+      "resource_projection": "18/18 PASS NORMAL_AND_OPTIMIZED"
+    },
+    "exact_head_workflows": {
+      "open-door-guard": "SUCCESS",
+      "source-parses": "SUCCESS",
+      "path-manifest": "SUCCESS",
+      "muhlnickel-spec-guard": "SUCCESS",
+      "capability-entrypoints": "SUCCESS",
+      "job-watchdog": "SUCCESS",
+      "tests": "FAILURE_NOT_RELABELED_GREEN"
+    },
+    "maximum_state": "STANDALONE_CHECKOUT_ROAD_ACTIVE_AND_HOUR_DELIVERY_READY",
+    "customer_public_destination": "STANDALONE_OWNER_NOW_SURFACE",
+    "commons_github_or_slack_customer_cta": false,
+    "customer_contact": false,
+    "buyer_acceptance": false,
+    "payment_observed": false,
+    "settlement_observed": false,
+    "payout_observed": false,
+    "revenue_recognition": false,
+    "current_cash_claim": false,
+    "scheduling_action": false,
+    "provider_writes": 0
+  },
+  "delta": {
+    "prior_terminal_main_sha": "83d601febbc2b523e225b1f63817ffb11ebbe2d2",
+    "activation_base_main_sha": "c011a606171249e37cd5809bfbcb42d537d3cca1",
+    "commits_in_delta": 17,
+    "changed_paths_in_delta": 142,
+    "remote_branches_observed": 4429,
+    "prior_remote_branches_observed": 4429,
+    "updated_pull_requests": 4,
+    "updated_issues": 0,
+    "prior_terminal_slack_ts": "1789814708.198149",
+    "latest_delta_slack_ts": "1789823103.266949",
+    "slack_top_level_messages": {
+      "commons": 6,
+      "delegations": 0,
+      "todo": 0,
+      "shipped_builds": 1,
+      "products": 0,
+      "leads": 0,
+      "sales": 1
+    },
+    "slack_threads": "Both post-watermark threaded roots and all five replies were read without a remaining pagination or rate-limit error.",
+    "github_state": "PR #16087 is the selected already-merged commercial road. PR #16088 is separately owned TITAN work and remains outside this activation. Generated projection churn was excluded.",
+    "delegations_state": "No new delegation root appeared after the watermark; current implementation lanes retain owners or completed receipts.",
+    "owner_attention": "New owner law forbids scheduling Bryce without first asking him and receiving yes; this activation performs no calendar, invitation, email-thread, call, or scheduling action.",
+    "automations": "Thirty-eight automations were visible: four enabled, thirty-one paused and three completed. This recurring task remains enabled; no automation lifecycle was mutated.",
+    "connected_apps": "The active GitHub/Slack connector registry exposes 127 read and write operations. Connector presence is not quota, buyer, cash, permission, or a live agent claim."
+  },
+  "verification": {
+    "focused_tests": "Source custody records 54 passing focused tests; eight exact source/evidence blobs matched descendant main. Activation ledger/projection and safety checks are run before landing and recorded in the PR and terminal receipt.",
+    "privacy": "No credential, private account identifier, customer data, private file name, private business detail, email-thread content, or incident narrative is copied into canonical metadata.",
+    "open_door": "The internal implementation remains open and requires no Commons admission gate. Buyer communication remains a separate standalone destination boundary.",
+    "zero_fabrication": "An existing CTA and direct transaction road prove no buyer intent, contact, acceptance, settlement, payout, revenue, current cash, completed delivery, or permission to schedule Bryce.",
+    "collision": "Only the ledger, append-only resource record, append-only activation receipt, current-record assertions and generated projection are owned. Source, provider, customer, scheduling, TITAN and peer paths remain untouched."
+  },
+  "build_order_decision": "No build order was posted. No post-watermark delegation gap survived current-main, PR, issue, Slack and receipt deduplication.",
+  "build_orders": [],
+  "quota_lifecycle": {
+    "official_observation": "This wake's single official-source check found no hard/global or banked reset announcement newer than the recorded September 7 automatic reset. The latest September 17 release note concerns ChatGPT for Word and multiple plugin accounts, not a quota reset.",
+    "classification": "PRIOR_QUOTA_STATE_RETAINED_CURRENT_ALLOWANCE_UNMEASURED",
+    "observed_at": "2026-09-19T13:05:53Z",
+    "current_meter": "NOT_DIRECTLY_OBSERVED",
+    "routing": "Preserve a small emergency reserve; do not activate banked inventory or buy/recommend an instant reset."
+  },
+  "projection": {
+    "resources": 101,
+    "producing": 73,
+    "inventory_records": 63
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789823103266949?thread_ts=1789816107.276239&cid=C0BRGMDQB6G",
+    "source_terminal_receipt": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789817928251749?thread_ts=1789816107.276239&cid=C0BRGMDQB6G",
+    "source_pr": "https://github.com/woahwhattheheck/commons/pull/16087",
+    "source_descendant_tree": "https://github.com/woahwhattheheck/commons/tree/c011a606171249e37cd5809bfbcb42d537d3cca1",
+    "official_banked_reset_help": "https://help.openai.com/en/articles/20001498-how-banked-codex-resets-work",
+    "official_release_notes": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+    "prior_terminal_receipt": "p/codex-ci-fix-pack-99-payment-road-resource-activation-20260919-01.md"
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-19T13:05:53Z",
+    "prior_terminal_main_sha": "83d601febbc2b523e225b1f63817ffb11ebbe2d2",
+    "activation_base_main_sha": "c011a606171249e37cd5809bfbcb42d537d3cca1",
+    "prior_terminal_slack_ts": "1789814708.198149",
+    "latest_delta_slack_ts": "1789823103.266949",
+    "source_prs": [16087],
+    "latest_source_merge_sha": "5efd6315e893123f0cbcf144904f1e2e5aaeae95",
+    "source_descendant_main_sha": "c011a606171249e37cd5809bfbcb42d537d3cca1",
+    "remote_branches_observed": 4429,
+    "automations": "Four enabled, thirty-one paused and three completed; no lifecycle mutation by this wake",
+    "openai_reset": "No newly verified reset; current meter not directly observed and no banked reset activated."
+  },
+  "non_claims": [
+    "No source, provider, customer, peer-owned, TITAN, email-thread, calendar or scheduling state was changed by this activation.",
+    "No Cursor, Claude, Grokbot or other carrier session was launched, assigned as tester/verifier/reviewer, or treated as landing authority.",
+    "No customer contact, buyer intent, acceptance, settlement, payout, recognized revenue, current cash state or customer delivery is claimed.",
+    "No purchased or banked reset, provider call, checkout purchase, spend, submission, call, invitation or device operation occurred."
+  ]
+}

@@ -32,9 +32,9 @@ KEEP = {
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "roles.json": "9fb3f2c2",
     "ground/HEAVY_LANES.json": "7849eac9",
-    "autogtm.html": "1009c4cd",
-    "hub_pages.py": "12186f65",
-    "door.js": "c06cc197",
+    "autogtm.html": "5c966110",
+    "hub_pages.py": "673dab89",
+    "door.js": "5899223c",
     "api/mcp.py": "393da756",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
 }
@@ -48,7 +48,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,
@@ -146,7 +146,7 @@ class TestCommonsSlackFullBody(unittest.TestCase):
 
     def test_leftover_slack_mirror_tests_still_pass(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_slack_mirror.py"],
+            [sys.executable, "-m", "unittest", "test_slack_mirror.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

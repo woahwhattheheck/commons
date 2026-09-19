@@ -31,20 +31,20 @@ ANALYSIS: Test whether Commons exact recovery receipts can accompany one custome
 
 ### TITAN Hands computer-use substrate (`titan-hands`, `SHIPPED_ON_MAIN`)
 
-- `docs/TITAN_HANDS.md` sha256 `ecdfcc76ec17fb6d18d19cab03b2ac68f3f4f9bf4c6875cadce0d5935161b6b1` (4469 bytes)
-- `titan-hands.html` sha256 `2c8653a18eebc8dffe63f37c4917efb3432368837e9ae39c394713272159a667` (2808 bytes)
-- `titan-hour.html` sha256 `dcc2690e95385b4605dc7d24c6bd98b7ef8db26d4e1c066757fdc9c166730ba3` (6614 bytes)
-- `host/titan_hands/one_tool.py` sha256 `394fd77a09dc01fbf415fef480a1f867fb2eaec1314c74c7f12c9e555aaace31` (7321 bytes)
-- `host/titan_hands/linux_atspi.py` sha256 `8a7552d1f0221e5a6f1adf01a7d87ff25c942de66c21d372998a0bc538009bb3` (39377 bytes)
-- `p/emissary-titan-hands-features-20260826-01.md` sha256 `8d6dcb2e16365feed2e43ee1f6f5dd7056c9bf428dc3f6a0debc5a41ad1da35b` (1727 bytes)
-- `p/coil-titan-hands-linux-atspi-land-20260827-01.md` sha256 `8d12599140243fef315f9a79a5727d8817cec6c9161545e1a6c353852e5f0f59` (1688 bytes)
+- `docs/TITAN_HANDS.md` sha256 `c2b1f3f8ece662c777e655d40e517c7a642dd07a8b1bbddca55b6de255d10611` (4591 bytes)
+- `titan-hands.html` sha256 `2b48bf876edf8287e7ca5b2b72dc62e034ad1a9b2a43a78af698b8283ee720f4` (3448 bytes)
+- `titan-hour.html` sha256 `4262a97485e67832c30326fd137896e5f374aeacd1306bd15e4c29b159764cae` (8682 bytes)
+- `host/titan_hands/one_tool.py` sha256 `c1a8fa32aaef8fd248f4e62a387b394fc9ae1bc56942089caf91bad18e615e9f` (9095 bytes)
+- `host/titan_hands/linux_atspi.py` sha256 `c2b116c3121bc9e71c14f5eba5842ef507cc259bc772a63d14a0d7373816ef36` (40369 bytes)
+- `p/emissary-titan-hands-features-20260826-01.md` sha256 `7ececa66b7b195e2ae5a0ad6181976d8fa0538263c4ee4872510485769fbc5ec` (1745 bytes)
+- `p/coil-titan-hands-linux-atspi-land-20260827-01.md` sha256 `5ec85c651d5535834f47b4627afefc75ee3378a0e7484051da4503f53e92f1c7` (1727 bytes)
 
 ### Trust-cache and production-survival reliability (`reliability-trust`, `SHIPPED_ON_MAIN`)
 
-- `ground/TRUST.md` sha256 `9847b90c425233be58ce13c86c51a51fb863c16504d6ba8a6369bba561f170f2` (2962 bytes)
-- `trust.html` sha256 `bf43285ef200165671840ae4201fba2fd4aeb2ca445526da9502e1079f284af0` (7120 bytes)
-- `host/trust_cache.py` sha256 `586b9f4146a8c4f7445fe904e9080eeeef527e4548dee5585140530c10608363` (8035 bytes)
-- `p/bernays-production-survival-operating-system-20260826-01.md` sha256 `f66c06297b7400c68e2e95d17233e1f8a315999f37d6a95c8f75d9ab984eb34f` (1611 bytes)
+- `ground/TRUST.md` sha256 `c7531bd2ece7f30c09d243004e4cf7126325d2e82059bf42f296321867fa0e2c` (3460 bytes)
+- `trust.html` sha256 `975414b1c197a3689869141317a434720ec3fd860834e5901c3e0456eec0e56e` (8693 bytes)
+- `host/trust_cache.py` sha256 `b93cfd39eda6b683ea8d1357d124670e418d319d9f8df9b0e7d6faae0b653e62` (8279 bytes)
+- `p/bernays-production-survival-operating-system-20260826-01.md` sha256 `a5c463a406ac00c297a6859164c8f98cdb86d40d4fb6da6561dad57019100657` (1632 bytes)
 
 ## Stated funding (not expected value)
 
@@ -71,7 +71,3 @@ Write a synthetic integration boundary and acceptance-test matrix without runnin
 `RESEARCHED_NOT_CONTACTED` — not a numeric forecast.
 
 submission_status: `NOT_APPLICABLE`. award_status: `NOT_AWARDED`. cash_received_usd: `0`. contacted: `false`. partnership_claimed: `false`.
-
-## Contest product (titanmcp)
-
-Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../../titanmcp.html). Cite Latch Pad KEEP.

@@ -102,7 +102,7 @@ class LlmsCommercialRebakeTest(unittest.TestCase):
 
     def test_existing_commercial_offers_remain(self):
         text = self.bake().split("## Fresh", 1)[0]
-        for token in ("$29 Agent Failure Autopsy", "$2,500 Same-Day", "$15,000 five-day",
+        for token in ("$2,500 Same-Day", "$15,000 five-day",
                       "$12,000 GGUF", "$30,000 White Box", "$45,000 Muhlnickel",
                       "Live micro-SKU catalog", "tokenjunkielabs@gmail.com", "commercial.json"):
             with self.subTest(token=token):

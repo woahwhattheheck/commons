@@ -1,0 +1,613 @@
+{
+  "schema": "uiowa.component-entry-catalog.v1",
+  "snapshot": {
+    "repository": "woahwhattheheck/commons",
+    "revision": "c853c1422fc3e34aabbb54fe205bd9ea5b48bf34",
+    "captured_from_ref": "main",
+    "purpose": "Immutable source snapshot for UIOWA-101 command/path verification. Later main changes require an explicit catalog refresh; they are not silently absorbed."
+  },
+  "status_semantics": {
+    "working": "Executable source exists at the recorded blob SHA; command contract was checked against that source and a synthetic/source-backed sample result is recorded.",
+    "static": "Useful published machine-readable reference with no executable entry point.",
+    "template": "Useful published worksheet/document bundle with no executable entry point.",
+    "incomplete": "Published material advertises or implies an entry point that is absent or not usable in this snapshot."
+  },
+  "caveats": [
+    "This catalog verifies source/path/command contracts and recorded sample evidence; it does not claim every command was re-executed by the catalog builder.",
+    "Synthetic/provider-readback results are not University of Iowa findings.",
+    "A working status is version-bound. Run verify_catalog.py after pulling a newer revision; blob drift is reported rather than silently accepted."
+  ],
+  "entries": [
+    {
+      "id": "local_workbench",
+      "work_order": "UIOWA-workbench",
+      "title": "Local analyst workbench",
+      "status": "working",
+      "kind": "local_web",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_workbench/server.py",
+        "blob_sha": "42ab51cd91e2c196909c69c4f056a2552c158001"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_workbench/README.md",
+        "blob_sha": "75a0f82b3df7a8ca0c5f34d2d24b4adcf8bf84a2"
+      },
+      "command_cwd": "revenue/uiowa_rfq_18649_workbench",
+      "command": "python3 server.py --port 8765",
+      "supported_input": "Loopback HTTP UI; synthetic candidate + authority JSON submitted to the local inspection endpoint.",
+      "produced_output": "Local-only browser workbench and non-authorizing inspection report.",
+      "prerequisites": [
+        "Python 3",
+        "Repository checkout; adjacent workshare carrier import path"
+      ],
+      "contract_markers": [
+        "parser.add_argument(\"--port\"",
+        "127.0.0.1",
+        "UIOWA_WORKBENCH_LOCAL_ONLY"
+      ],
+      "sample_result": {
+        "basis": "source_contract",
+        "summary": "Server binds loopback only and prints UIOWA_WORKBENCH_LOCAL_ONLY http://127.0.0.1:<port>/.",
+        "evidence_path": "revenue/uiowa_rfq_18649_workbench/server.py",
+        "evidence_blob_sha": "42ab51cd91e2c196909c69c4f056a2552c158001"
+      }
+    },
+    {
+      "id": "workshare_compiler",
+      "work_order": "UIOWA-workshare",
+      "title": "Non-authorizing workshare compiler CLI",
+      "status": "working",
+      "kind": "cli",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_workshare/compiler.py",
+        "blob_sha": "304c0deac31d7eb10dcbb58394bf0b10a30b4960"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_workshare/README.md",
+        "blob_sha": "2539f3b7d6cf47d06f496e45823a6dbec7cdda90"
+      },
+      "command_cwd": "revenue/uiowa_rfq_18649_workshare",
+      "command": "python compiler.py compile fixtures/synthetic_packet.json fixtures/synthetic_authority.json /tmp/uiowa-report.json",
+      "supported_input": "Candidate JSON plus authority JSON; public CLI is intentionally non-authorizing.",
+      "produced_output": "Canonical JSON inspection report; verify and render subcommands consume that report.",
+      "prerequisites": [
+        "Python 3",
+        "Synthetic fixture pair or equivalent JSON inputs"
+      ],
+      "contract_markers": [
+        "p_compile = sub.add_parser(",
+        "compile_untrusted_inspection",
+        "verify_report_integrity"
+      ],
+      "sample_result": {
+        "basis": "checked_in_command_contract",
+        "summary": "Compile prints aggregate_state plus receipt_sha256; verify checks report integrity; render emits Markdown.",
+        "evidence_path": "revenue/uiowa_rfq_18649_workshare/README.md",
+        "evidence_blob_sha": "2539f3b7d6cf47d06f496e45823a6dbec7cdda90"
+      }
+    },
+    {
+      "id": "document_extraction",
+      "work_order": "UIOWA-032",
+      "title": "Locator-preserving PDF/DOCX/TXT extraction",
+      "status": "working",
+      "kind": "cli",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_document_extraction/extract.py",
+        "blob_sha": "d275410fe0842426ad32bf9d15da4f69beaba463"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_document_extraction/README.md",
+        "blob_sha": "8d3c53100afb6d882dbad5b587f8bc607e6c7004"
+      },
+      "command_cwd": "revenue/uiowa_rfq_18649_document_extraction",
+      "command": "python extract.py fixtures/sample.pdf",
+      "supported_input": "PDF, DOCX, or UTF-8 text document.",
+      "produced_output": "JSON document record with byte SHA-256, exact source locators, segments, status, and warnings.",
+      "prerequisites": [
+        "Python 3",
+        "pypdf for PDF extraction (`requirements.txt`); DOCX/TXT use stdlib paths"
+      ],
+      "contract_markers": [
+        "parser.add_argument(\"input\"",
+        "PdfReader",
+        "PAGE_NO_EXTRACTABLE_TEXT"
+      ],
+      "sample_result": {
+        "basis": "checked_in_fixture_contract",
+        "summary": "Synthetic corpus contains sample PDF, DOCX, TXT, and an intentionally blank PDF for unreadable/OCR-required handling.",
+        "evidence_path": "revenue/uiowa_rfq_18649_document_extraction/fixtures/manifest.json",
+        "evidence_blob_sha": "e7a2c4798eaef4207c81e72f981e385488488184"
+      }
+    },
+    {
+      "id": "framework_crosswalk",
+      "work_order": "UIOWA-020",
+      "title": "Primary framework crosswalk validator",
+      "status": "working",
+      "kind": "cli",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_workbench/framework_crosswalk/validate_framework_crosswalk.py",
+        "blob_sha": "f3b9bef8c05a8101b761a813ba12d47fad62ef0f"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_workbench/framework_crosswalk/20-adaptation-memo.md",
+        "blob_sha": "00afdcbd8768e9a68273ec05e24487b8a435a6b6"
+      },
+      "command_cwd": "revenue/uiowa_rfq_18649_workbench/framework_crosswalk",
+      "command": "python validate_framework_crosswalk.py",
+      "supported_input": "Framework crosswalk CSV; defaults to the checked-in 20-framework-crosswalk.csv.",
+      "produced_output": "PASS/FAIL structural validation plus row, framework, and assessment-area counts.",
+      "prerequisites": [
+        "Python 3"
+      ],
+      "contract_markers": [
+        "PASS: framework crosswalk is structurally valid",
+        "framework_counts",
+        "area_counts"
+      ],
+      "sample_result": {
+        "basis": "provider_readback",
+        "summary": "Checked-in crosswalk has 64 data rows spanning the three mapped primary frameworks.",
+        "evidence_path": "revenue/uiowa_rfq_18649_workbench/framework_crosswalk/20-framework-crosswalk.csv",
+        "evidence_blob_sha": "76ab00d1eb1d96274cdfcf49d793bc3a8d5792b0",
+        "expected_data_rows": 64
+      }
+    },
+    {
+      "id": "evidence_confidence",
+      "work_order": "UIOWA-023",
+      "title": "Evidence-register confidence validator",
+      "status": "working",
+      "kind": "cli",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_workshare/methodology/validate_23_evidence_register.py",
+        "blob_sha": "c0a71aa8566c89a1ac3dc8fb2b8e67417801c081"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_workshare/methodology/23-evidence-confidence.md",
+        "blob_sha": "864bd6ed9a99d2ed9e0df0ec3e62fca8e77c3e79"
+      },
+      "command_cwd": "revenue/uiowa_rfq_18649_workshare/methodology",
+      "command": "python validate_23_evidence_register.py",
+      "supported_input": "Evidence-register CSV; defaults to the checked-in synthetic register.",
+      "produced_output": "Validation errors or OK row/observation/finding counts.",
+      "prerequisites": [
+        "Python 3"
+      ],
+      "contract_markers": [
+        "OK rows=",
+        "observations=",
+        "findings="
+      ],
+      "sample_result": {
+        "basis": "provider_readback",
+        "summary": "Checked-in synthetic register contains 7 evidence rows.",
+        "evidence_path": "revenue/uiowa_rfq_18649_workshare/methodology/23-synthetic-evidence-register.csv",
+        "evidence_blob_sha": "fc2ef567e3f9b3f5a5031c74994e62c62b1d9c7e",
+        "expected_data_rows": 7
+      }
+    },
+    {
+      "id": "rating_model",
+      "work_order": "UIOWA-022",
+      "title": "Behavior-anchored rating composition model",
+      "status": "working",
+      "kind": "cli",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_rating_model/rating_model.py",
+        "blob_sha": "61d98e53631b684ed390b3b6c66f4870a2ad6dd8"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_rating_model/22-rating-model.md",
+        "blob_sha": "43c001222095fe5c4b6be923818f81e9e938e85b"
+      },
+      "command_cwd": "revenue/uiowa_rfq_18649_rating_model",
+      "command": "python rating_model.py synthetic_case_critical_gap.json --json-out /tmp/rating.json --markdown-out /tmp/rating.md",
+      "supported_input": "Structured synthetic/assessment rating JSON.",
+      "produced_output": "JSON and Markdown composition result with coverage, distribution, confidence, and guardrails.",
+      "prerequisites": [
+        "Python 3"
+      ],
+      "contract_markers": [
+        "parser.add_argument(\"input_json\"",
+        "--json-out",
+        "--markdown-out"
+      ],
+      "sample_result": {
+        "basis": "published_validation_receipt",
+        "summary": "Critical-gap synthetic case composes to critical_gap_present despite high-ranked observations elsewhere; confidence remains separate.",
+        "evidence_path": "revenue/uiowa_rfq_18649_rating_model/synthetic_case_critical_gap.json",
+        "evidence_blob_sha": "9ab19de691876bf5d243621b827205ec225a03b0"
+      }
+    },
+    {
+      "id": "delivery_metrics",
+      "work_order": "UIOWA-064",
+      "title": "Service-scoped delivery metrics calculator",
+      "status": "working",
+      "kind": "cli",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_delivery_metrics/calculator.py",
+        "blob_sha": "13d7a895f5785e9cc7e3a35fc10a851a468547ab"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_delivery_metrics/64-data-dictionary.md",
+        "blob_sha": "0c8c5e467daa89d4aea4173feb748d1330bd56a1"
+      },
+      "command_cwd": "revenue/uiowa_rfq_18649_delivery_metrics",
+      "command": "python calculator.py fixtures/synthetic_deployments.csv --window-start 2026-01-01T00:00:00Z --window-end 2026-01-15T00:00:00Z --service synthetic-registration",
+      "supported_input": "Deployment CSV plus explicit UTC measurement window and optional service filter.",
+      "produced_output": "JSON delivery-metric report including deployment frequency/interval, lead time, recovery, change-failure rate, and rework.",
+      "prerequisites": [
+        "Python 3"
+      ],
+      "contract_markers": [
+        "parser.add_argument(\"csv_path\"",
+        "--window-start",
+        "--window-end",
+        "--service"
+      ],
+      "sample_result": {
+        "basis": "published_validation_receipt",
+        "summary": "8 synthetic deployments over 14 days produced 4.0/week, 46h median interval, 11h median lead time, 3h failed-deployment recovery, CFR 25%, rework 25%.",
+        "evidence_path": "revenue/uiowa_rfq_18649_delivery_metrics/fixtures/synthetic_deployments.csv",
+        "evidence_blob_sha": "8fac02fb9d947deed7df99d563ab05d949127793",
+        "expected_data_rows": 8
+      }
+    },
+    {
+      "id": "observability",
+      "work_order": "UIOWA-065",
+      "title": "Service observability/objective evidence assessor",
+      "status": "working",
+      "kind": "cli",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_observability/observability.py",
+        "blob_sha": "1dced2bc71c08da479b252b27b49fbed360fd754"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_observability/README.md",
+        "blob_sha": "2a4cf7dcff971f46787d6b984f0d59066775da42"
+      },
+      "command_cwd": "revenue/uiowa_rfq_18649_observability",
+      "command": "python observability.py examples.json --out /tmp/uiowa-065-result.json",
+      "supported_input": "JSON packet of synthetic/service objectives, indicators, and measurement evidence.",
+      "produced_output": "JSON findings with SUPPORTED/PARTIAL/UNKNOWN evidence semantics and follow-up questions.",
+      "prerequisites": [
+        "Python 3"
+      ],
+      "contract_markers": [
+        "parser.add_argument(\"packet\"",
+        "--out",
+        "SUPPORTED"
+      ],
+      "sample_result": {
+        "basis": "checked_in_readme_result",
+        "summary": "Documented synthetic run: finding_count=3; SUPPORTED=2; PARTIAL=1; UNKNOWN=0.",
+        "evidence_path": "revenue/uiowa_rfq_18649_observability/README.md",
+        "evidence_blob_sha": "2a4cf7dcff971f46787d6b984f0d59066775da42"
+      }
+    },
+    {
+      "id": "security_event_review",
+      "work_order": "UIOWA-060",
+      "title": "Security-event review evidence assessor",
+      "status": "working",
+      "kind": "cli",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_security_event_review/assess_security_events.py",
+        "blob_sha": "659f2c655f2083f47a97d2a6ff822ade2965c911"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_security_event_review/README.md",
+        "blob_sha": "57fd7c20be41ac0737752042ed6335999229ddaf"
+      },
+      "command_cwd": "revenue/uiowa_rfq_18649_security_event_review",
+      "command": "python3 assess_security_events.py fixtures/synthetic_events.json --json-out /tmp/uiowa060.json --csv-out /tmp/uiowa060.csv --md-out /tmp/uiowa060.md",
+      "supported_input": "JSON security-event evidence packet.",
+      "produced_output": "JSON assessment, CSV evidence matrix, and Markdown event-to-resolution timeline.",
+      "prerequisites": [
+        "Python 3"
+      ],
+      "contract_markers": [
+        "--json-out",
+        "--csv-out",
+        "--md-out"
+      ],
+      "sample_result": {
+        "basis": "checked_in_generated_artifact",
+        "summary": "Synthetic fixture contains 5 events and checked-in generated evidence-matrix/timeline artifacts.",
+        "evidence_path": "revenue/uiowa_rfq_18649_security_event_review/fixtures/synthetic_events.json",
+        "evidence_blob_sha": "3d988e919f9c395eeb08f8171f04cafaea3df143"
+      }
+    },
+    {
+      "id": "test_data_readiness",
+      "work_order": "UIOWA-047",
+      "title": "Test-data readiness assessor",
+      "status": "working",
+      "kind": "cli",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_test_data_readiness/test_data_assessor.py",
+        "blob_sha": "c4e2c12ea37e8dbfd368306976d8e7904a64c594"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_test_data_readiness/README.md",
+        "blob_sha": "b760f813f3ae44cccc95b472943d6a21367c82e3"
+      },
+      "command_cwd": "revenue/uiowa_rfq_18649_test_data_readiness",
+      "command": "python3 test_data_assessor.py fixtures/catalog.synthetic.json --format json --output /tmp/test-data.json",
+      "supported_input": "JSON test-data catalog.",
+      "produced_output": "Markdown or JSON evidence-state assessment; missing inputs remain UNKNOWN.",
+      "prerequisites": [
+        "Python 3"
+      ],
+      "contract_markers": [
+        "parser.add_argument(\"catalog\"",
+        "--format",
+        "UNKNOWN"
+      ],
+      "sample_result": {
+        "basis": "provider_readback",
+        "summary": "Checked-in synthetic catalog exercises 3 datasets across ESS/RIS/IAM-style scenarios without converting missing evidence into a gap.",
+        "evidence_path": "revenue/uiowa_rfq_18649_test_data_readiness/fixtures/catalog.synthetic.json",
+        "evidence_blob_sha": "214a0e4b42d13d02a49e9a5a8b0a8c63962e7a1a"
+      }
+    },
+    {
+      "id": "dev_to_ops_handoff",
+      "work_order": "UIOWA-050",
+      "title": "Development-to-operations handoff validator",
+      "status": "working",
+      "kind": "cli",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_handoff/handoff.py",
+        "blob_sha": "fe1077df8838275708eacfa92bcab3a657261c46"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_handoff/README.md",
+        "blob_sha": "0cceadccaab31016a06a7b7dcaab4b345d11cf50"
+      },
+      "command_cwd": "revenue/uiowa_rfq_18649_handoff",
+      "command": "python handoff.py validate examples/planned_release.json",
+      "supported_input": "Handoff packet JSON.",
+      "produced_output": "Assessment state plus structural errors, evidence/readiness gaps, warnings and contextual information; optional Markdown render.",
+      "prerequisites": [
+        "Python 3"
+      ],
+      "contract_markers": [
+        "subparsers.add_parser(\"validate\"",
+        "subparsers.add_parser(\"render\"",
+        "not release approval"
+      ],
+      "sample_result": {
+        "basis": "provider_readback",
+        "summary": "Planned synthetic case has 2 requirements, 3 evidence items, 4 support/operational readiness links, and zero broken references.",
+        "evidence_path": "revenue/uiowa_rfq_18649_handoff/examples/planned_release.json",
+        "evidence_blob_sha": "d5cd87d5153bf56952249b42b7f2b126823f4617"
+      }
+    },
+    {
+      "id": "outcome_measurement",
+      "work_order": "UIOWA-087",
+      "title": "Recommendation-linked outcome measurement",
+      "status": "working",
+      "kind": "cli",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_outcome_measurement/analyze.py",
+        "blob_sha": "483b47674e265b7c51ce967531c5f31d17ec9d29"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_outcome_measurement/README.md",
+        "blob_sha": "859aa40684bbbcb78adef18ac3097687e3d61fc2"
+      },
+      "command_cwd": "revenue/uiowa_rfq_18649_outcome_measurement",
+      "command": "python analyze.py report --recommendations recommendations.csv --register measure_register.csv --measurements examples/measurements.csv",
+      "supported_input": "Recommendation CSV, measure-register CSV, and baseline/follow-up observations CSV.",
+      "produced_output": "Markdown comparison report that keeps adoption and operational outcomes separate.",
+      "prerequisites": [
+        "Python 3"
+      ],
+      "contract_markers": [
+        "for command in (\"validate\", \"report\")",
+        "POPULATION_CHANGED",
+        "does not establish causality"
+      ],
+      "sample_result": {
+        "basis": "provider_readback",
+        "summary": "Published 12-observation synthetic example yields six baseline/follow-up comparisons; DEV-A1 moves 40%→85% while DEV-O1 moves 25%→10%, without causal attribution.",
+        "evidence_path": "revenue/uiowa_rfq_18649_outcome_measurement/examples/measurements.csv",
+        "evidence_blob_sha": "5103439190f4c86c63aca20d9a8b1cf8909a1d59",
+        "expected_data_rows": 12
+      }
+    },
+    {
+      "id": "prioritization",
+      "work_order": "UIOWA-084",
+      "title": "Recommendation prioritization calculator",
+      "status": "working",
+      "kind": "cli",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_prioritization/prioritize.py",
+        "blob_sha": "007697dd2485f7470107d1962c8f660873b4dd84"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_prioritization/README.md",
+        "blob_sha": "4474b978b786fa4f0263835b5a1f009ff68be587"
+      },
+      "command_cwd": "revenue/uiowa_rfq_18649_prioritization",
+      "command": "python prioritize.py recommendations.synthetic.csv weights.json --out-dir /tmp/uiowa-priority",
+      "supported_input": "Recommendation CSV and explicit JSON weight-profile configuration.",
+      "produced_output": "CSV/Markdown/JSON prioritization views with explicit UNKNOWN handling, ties and sensitivity outputs.",
+      "prerequisites": [
+        "Python 3"
+      ],
+      "contract_markers": [
+        "parser.add_argument(\"recommendations\"",
+        "parser.add_argument(\"weights\"",
+        "tie_epsilon"
+      ],
+      "sample_result": {
+        "basis": "provider_readback",
+        "summary": "Checked-in synthetic input contains 7 recommendation rows for formula/tie/UNKNOWN/sensitivity exercises.",
+        "evidence_path": "revenue/uiowa_rfq_18649_prioritization/recommendations.synthetic.csv",
+        "evidence_blob_sha": "2fa2751292642124d323525a6c5f84ca1f74aad5",
+        "expected_data_rows": 7
+      }
+    },
+    {
+      "id": "traceability_rehearsal",
+      "work_order": "UIOWA-093",
+      "title": "Finding-to-final-report traceability rehearsal",
+      "status": "working",
+      "kind": "cli",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_traceability_rehearsal/validate_trace.py",
+        "blob_sha": "bcd82374aea8b854ce91866a628859b090b8bd7e"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_traceability_rehearsal/README.md",
+        "blob_sha": "e7b07c33d1dcdc33a3fae79477ed416e018df188"
+      },
+      "command_cwd": "revenue/uiowa_rfq_18649_traceability_rehearsal",
+      "command": "python validate_trace.py .",
+      "supported_input": "Directory containing evidence/findings/recommendations CSVs plus report text.",
+      "produced_output": "Traceability PASS/FAIL with counts and unresolved source/report references.",
+      "prerequisites": [
+        "Python 3"
+      ],
+      "contract_markers": [
+        "trace validation: PASS",
+        "executive-summary.md",
+        "final-report.md"
+      ],
+      "sample_result": {
+        "basis": "checked_in_readme_result",
+        "summary": "Documented synthetic run: evidence=8 findings=3 recommendations=2 statements=5; trace validation: PASS.",
+        "evidence_path": "revenue/uiowa_rfq_18649_traceability_rehearsal/README.md",
+        "evidence_blob_sha": "e7b07c33d1dcdc33a3fae79477ed416e018df188"
+      }
+    },
+    {
+      "id": "evidence_closeout",
+      "work_order": "UIOWA-099",
+      "title": "Evidence lifecycle and closeout validator",
+      "status": "working",
+      "kind": "cli",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_closeout/closeout.py",
+        "blob_sha": "8a3b82e89c700d93ed5cdd21ebe2590cf9230b8e"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_closeout/README.md",
+        "blob_sha": "35d222726e9fdd543324773368a9ce36c8c4dd52"
+      },
+      "command_cwd": "revenue/uiowa_rfq_18649_closeout",
+      "command": "python closeout.py sample/engagement.json sample/evidence_inventory.csv sample/disposition_log.csv --as-of 2026-10-01 --json-out /tmp/closeout.json --md-out /tmp/closeout.md",
+      "supported_input": "Engagement JSON, evidence inventory CSV, disposition log CSV, and explicit as-of date.",
+      "produced_output": "JSON/Markdown closeout report accounting for protected evidence and unresolved closeout conditions.",
+      "prerequisites": [
+        "Python 3",
+        "Controlling RFQ/PSA locator must be confirmed before live use of time-bound requirements"
+      ],
+      "contract_markers": [
+        "Validate UIOWA-099 evidence closeout records.",
+        "--as-of",
+        "primary_requirement_locator_status"
+      ],
+      "sample_result": {
+        "basis": "checked_in_generated_artifact",
+        "summary": "Checked-in synthetic sample report has schema uiowa.closeout.v1 and status PASS; the package explicitly keeps the controlling 30-day source locator as a live-use prerequisite.",
+        "evidence_path": "revenue/uiowa_rfq_18649_closeout/sample/closeout_report.json",
+        "evidence_blob_sha": "c49e8d728dc4f8e86371a4385914434d7dfa114b"
+      }
+    },
+    {
+      "id": "integration_interface_map",
+      "work_order": "UIOWA-098",
+      "title": "Cross-component interface map",
+      "status": "static",
+      "kind": "data_contract",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_integration/interface_map.json",
+        "blob_sha": "ac92f730c3d296aa55b1a392935ce3cc9f847f94"
+      },
+      "readme": null,
+      "command_cwd": null,
+      "command": null,
+      "supported_input": "Reference contract describing native IDs/groups and preserved fields for published components.",
+      "produced_output": "Static uiowa-098-interface-map-v1 contract; no executable entry point in this snapshot.",
+      "prerequisites": [
+        "JSON reader or downstream adapter"
+      ],
+      "contract_markers": [],
+      "sample_result": {
+        "basis": "checked_in_contract",
+        "summary": "Map covers delivery_metrics, observability, test_data_readiness, and prioritization while preserving native IDs and missing values.",
+        "evidence_path": "revenue/uiowa_rfq_18649_integration/interface_map.json",
+        "evidence_blob_sha": "ac92f730c3d296aa55b1a392935ce3cc9f847f94"
+      }
+    },
+    {
+      "id": "documentation_usability",
+      "work_order": "UIOWA-048",
+      "title": "Documentation usability kit",
+      "status": "template",
+      "kind": "worksheet_bundle",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_doc_usability/README.md",
+        "blob_sha": "5697126cce1902baf54192e5a75ab88dcfb2bd26"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_doc_usability/README.md",
+        "blob_sha": "5697126cce1902baf54192e5a75ab88dcfb2bd26"
+      },
+      "command_cwd": null,
+      "command": null,
+      "supported_input": "Documentation inventory and task-usability worksheet entries.",
+      "produced_output": "Static method/worked example/templates; no executable CLI in this snapshot.",
+      "prerequisites": [
+        "Spreadsheet/text editor"
+      ],
+      "contract_markers": [],
+      "sample_result": {
+        "basis": "checked_in_worked_example",
+        "summary": "Static bundle includes METHOD.md, WORKED_EXAMPLE.md, a synthetic inventory, and editable CSV templates.",
+        "evidence_path": "revenue/uiowa_rfq_18649_doc_usability/WORKED_EXAMPLE.md",
+        "evidence_blob_sha": "628242ba3423901c139346a2e4ae4565d6413d96"
+      }
+    },
+    {
+      "id": "incident_learning",
+      "work_order": "UIOWA-067",
+      "title": "Incident learning and follow-through",
+      "status": "incomplete",
+      "kind": "advertised_cli_missing",
+      "source": {
+        "path": "revenue/uiowa_rfq_18649_incident_learning/README.md",
+        "blob_sha": "3b3d8843ef023b579c4af3c6158b53d4e3ae8540"
+      },
+      "readme": {
+        "path": "revenue/uiowa_rfq_18649_incident_learning/README.md",
+        "blob_sha": "3b3d8843ef023b579c4af3c6158b53d4e3ae8540"
+      },
+      "command_cwd": "revenue/uiowa_rfq_18649_incident_learning",
+      "command": "python incident_learning.py examples.json",
+      "expected_entrypoint": "revenue/uiowa_rfq_18649_incident_learning/incident_learning.py",
+      "missing_reason": "README advertises incident_learning.py and test_incident_learning.py, but snapshot c853c142 contains only README.md and examples.json in this component directory.",
+      "supported_input": "README describes incident-learning examples.json.",
+      "produced_output": "Not runnable from this snapshot; do not advertise as working until the missing CLI/tests land.",
+      "prerequisites": [
+        "Missing implementation must be published"
+      ],
+      "contract_markers": [],
+      "sample_result": {
+        "basis": "snapshot_gap",
+        "summary": "examples.json is present, but the advertised incident_learning.py entry point is absent.",
+        "evidence_path": "revenue/uiowa_rfq_18649_incident_learning/examples.json",
+        "evidence_blob_sha": "eee796ce7165d9ce76104d53be0f98b78a62cee8"
+      }
+    }
+  ]
+}

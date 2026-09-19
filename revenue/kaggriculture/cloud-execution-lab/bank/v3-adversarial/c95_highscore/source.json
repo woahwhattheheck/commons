@@ -10,10 +10,19 @@
   "packaged_size": 133270,
   "license": "Apache-2.0",
   "license_source": "Kaggle public notebook license panel",
-  "dependencies": ["python-standard-library"],
+  "dependencies": [
+    "python-standard-library"
+  ],
   "runtime_external_dependencies": [],
-  "excluded": ["external replay bytes", "credentials", "weights", "network access"],
+  "excluded": [
+    "external replay bytes",
+    "credentials",
+    "weights",
+    "network access"
+  ],
   "default_enabled": false,
   "public_score_used_for_decision": false,
-  "kaggle_submission": "NOT_PERFORMED"
+  "kaggle_submission": "NOT_PERFORMED",
+  "family": "high-variance",
+  "vendored_as": "c95_highscore"
 }

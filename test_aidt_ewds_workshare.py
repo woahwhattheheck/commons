@@ -52,7 +52,8 @@ class AIDTEWDSWorkshareTests(unittest.TestCase):
         rows = [record("a-1", "alpha"), record("a-2", "beta")]
         receipt = reconcile_migration(rows, list(reversed(rows)))
         self.assertEqual(receipt["decision"], "MIGRATION_RECONCILED")
-        self.assertFalse(receipt["contains_live_pii"])
+        self.assertFalse(receipt["raw_record_payloads_included"])
+        self.assertEqual(receipt["pii_assessment"], "NOT_PERFORMED")
         self.assertFalse(receipt["external_submission_authorized"])
         self.assertTrue(verify_migration_receipt(receipt))
 

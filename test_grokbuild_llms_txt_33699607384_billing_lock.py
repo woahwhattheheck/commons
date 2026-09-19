@@ -9,6 +9,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grok-build-llms-txt-33699607384-billing-lock-20260903-01.md"
@@ -37,26 +38,26 @@ KEEP = {
     "p/cursor-wire-shared-super-mcp-catalog-readback-20260902-01.md": "593d54bc",
     "p/cursor-wire-super-mcp-marketplace-readback-20260902-01.md": "448eda52",
     "p/latch-wake-super-mcp-pointer-readback-20260902-01.md": "250907c9",
-    "wire.html": "3f030862",
-    "ground/WIRE_SUPER_MCP.md": "6a50f614",
+    "wire.html": "623602a7",
+    "ground/WIRE_SUPER_MCP.md": "626b07f7",
     "p/cursor-big-huge-commerce-agents-readback-20260902-01.md": "2a5ce894",
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
     ".github/workflows/llms-txt.yml": "d2182a3d",
-    "llms_txt.py": "70daec62",
+    "llms_txt.py": "b70aa03d",
     "owner_pin.py": "76e19209",
     "test_llms_publish.py": "c07317be",
     "test_llms_pulse.py": "e79f7851",
-    "test_grokbuild_llms_txt_billing_lock.py": "9f86a4ef",
-    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "eea1a9f3",
-    "test_grokbuild_llms_txt_33689083252_billing_lock.py": "d4d74612",
-    "test_grokbuild_llms_txt_33689096471_billing_lock.py": "fbd781aa",
-    "test_grokbuild_llms_txt_33689281224_billing_lock.py": "d1bdab89",
-    "test_grokbuild_llms_txt_33689357433_billing_lock.py": "1f990aef",
-    "test_grokbuild_llms_txt_33694219034_billing_lock.py": "7199b634",
-    "test_grokbuild_llms_txt_33694253456_billing_lock.py": "887dccc5",
-    "test_grokbuild_llms_txt_33694402716_billing_lock.py": "91695732",
-    "test_grokbuild_llms_txt_33699286770_billing_lock.py": "21037a27",
-    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "905a7922",
+    "test_grokbuild_llms_txt_billing_lock.py": "9eabfa9c",
+    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "a93e988e",
+    "test_grokbuild_llms_txt_33689083252_billing_lock.py": "22fb6bd9",
+    "test_grokbuild_llms_txt_33689096471_billing_lock.py": "c7bfe6c0",
+    "test_grokbuild_llms_txt_33689281224_billing_lock.py": "ef261b66",
+    "test_grokbuild_llms_txt_33689357433_billing_lock.py": "5e462bcb",
+    "test_grokbuild_llms_txt_33694219034_billing_lock.py": "e52d47ef",
+    "test_grokbuild_llms_txt_33694253456_billing_lock.py": "605cd0c7",
+    "test_grokbuild_llms_txt_33694402716_billing_lock.py": "76d5e37a",
+    "test_grokbuild_llms_txt_33699286770_billing_lock.py": "71ad16e0",
+    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "649265c5",
 }
 
 
@@ -178,7 +179,7 @@ class TestGrokbuildLlmsTxt33699607384BillingLock(unittest.TestCase):
         env = os.environ.copy()
         env.pop("GITHUB_ACTIONS", None)
         rc = subprocess.run(
-            ["python3", "llms_txt.py", "--publish"],
+            [sys.executable, "llms_txt.py", "--publish"],
             cwd=ROOT,
             capture_output=True,
             text=True,
@@ -209,7 +210,7 @@ class TestGrokbuildLlmsTxt33699607384BillingLock(unittest.TestCase):
 
         self.addCleanup(restore)
         proc = subprocess.run(
-            ["python3", "llms_txt.py", "--bake-only"],
+            [sys.executable, "llms_txt.py", "--bake-only"],
             cwd=ROOT,
             capture_output=True,
             text=True,

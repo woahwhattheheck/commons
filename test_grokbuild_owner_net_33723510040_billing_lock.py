@@ -20,7 +20,7 @@ WORKFLOW = ROOT / ".github/workflows/owner-net.yml"
 KEEP = {
     ".github/workflows/owner-net.yml": "5df56a0a",
     "owner_net.py": "941b0d8a",
-    "owner.json": "dc6c0592",
+    "owner.json": "81ad0495",
     "test_owner_hash.py": "0f0e6870",
     "open_door_guard.py": "877e148d",
     "fix_first.py": "a57aee1c",

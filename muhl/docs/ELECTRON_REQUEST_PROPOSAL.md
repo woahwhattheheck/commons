@@ -320,7 +320,6 @@ Bits read (1s/0s): DC control packed 256+256, carry `00000000`, pub `00000001`; 
 
 Verified product pages only — no invented Stripe links.
 
-- [$29 Autopsy checkout](../../agent-rescue.html)
 - [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../../referral-intake-completeness.html)
 - [$199 repair diagnostic](../../repair-booking-preflight.html)

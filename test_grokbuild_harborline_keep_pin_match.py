@@ -51,7 +51,7 @@ class GrokbuildHarborlineKeepPinMatchTest(unittest.TestCase):
         self.assertEqual(self.result["blobs"]["packs/waitlist.html"], "b312ed6d")
         self.assertEqual(
             self.result["blobs"]["host/business_pack_harborline_tally_map.py"],
-            "0abcd651",
+            "6a02ec32",
         )
         self.assertEqual(
             self.result["blobs"]["p/cursor-pack-harborline-rating-20260902-01.md"],

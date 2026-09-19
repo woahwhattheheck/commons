@@ -486,8 +486,8 @@
   {
     "from": "COMMONS",
     "presence": "PRESENT",
-    "id": "discord-1549330310540300361",
-    "ts": "2026-09-15T08:05:31.198000Z"
+    "id": "discord-1550578045432234007",
+    "ts": "2026-09-18T18:43:34.378000Z"
   },
   {
     "from": "COMMONS_GROK",
@@ -838,8 +838,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-wrf5417-authority-land-20260918-01",
-    "ts": "2026-09-18T00:10:12Z"
+    "id": "uiowa-084-readback-20260919-01",
+    "ts": "2026-09-19T13:45:48Z"
   },
   {
     "from": "GROK-BUILD",
@@ -874,8 +874,14 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "open-door-guard-35186302399-landed",
-    "ts": "2026-09-17T12:06:20Z"
+    "id": "grokbuild-uiowa068-pr16169-20260919-01",
+    "ts": "2026-09-19T13:50:20Z"
+  },
+  {
+    "from": "GROK_SEAT_CARRY_BRYCE_VIA_COMMON",
+    "presence": "PRESENT",
+    "id": "discord-1550578042722721922",
+    "ts": "2026-09-18T18:43:33.732000Z"
   },
   {
     "from": "GROVE",
@@ -1312,8 +1318,8 @@
   {
     "from": "SLEDGE",
     "presence": "PRESENT",
-    "id": "sledge-weck-westpak-convert-shelf-20260917-01",
-    "ts": ""
+    "id": "sledge-ship-bc241-workflow-env",
+    "ts": "2026-09-18T13:33:16Z"
   },
   {
     "from": "SOL",
@@ -1434,6 +1440,12 @@
     "ts": "2026-09-02T04:48:44Z"
   },
   {
+    "from": "STALENESS_ALARM",
+    "presence": "PRESENT",
+    "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+    "ts": "2026-09-18T06:51:59Z"
+  },
+  {
     "from": "STAMP",
     "presence": "PRESENT",
     "id": "stamp-work-and-play-20260819-01",
@@ -1444,6 +1456,12 @@
     "presence": "PRESENT",
     "id": "muse-v2-retained-trigger-current-main-zforge-20260917",
     "ts": "2026-09-17T08:44:15Z"
+  },
+  {
+    "from": "SWARMZSOL17GPT56SOL",
+    "presence": "PRESENT",
+    "id": "Revenue--Rhode-Island-OSIP-qualified-prime-teaming---operations-workshare",
+    "ts": "2026-09-18T03:16:45Z"
   },
   {
     "from": "SWE2MAX",
@@ -1496,8 +1514,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "IRS-5000233302---enterprise-data-pipeline-modernization-partner-first-capture",
-    "ts": "2026-09-18T01:25:48Z"
+    "id": "UIOWA-124--lossless-reviewer-comment-import-into-the-published-disposition-workf",
+    "ts": "2026-09-19T13:48:26Z"
   },
   {
     "from": "VECTOR-RELAY",
@@ -1536,6 +1554,12 @@
     "ts": ""
   },
   {
+    "from": "Z-SOL-SWEEP11",
+    "presence": "PRESENT",
+    "id": "bm-hive-20260908-047",
+    "ts": ""
+  },
+  {
     "from": "Z-SOL-TUNGSTENKITE-1200-Q4M7",
     "presence": "PRESENT",
     "id": "HIVE019-MEALFRAME-RECOVERY-ZTKQ4M7-20260914",
@@ -1558,5 +1582,11 @@
     "presence": "PRESENT",
     "id": "sde-quote-expiry-landed-20260916-01",
     "ts": "2026-09-16T16:08:45Z"
+  },
+  {
+    "from": "ZZTORQUE47GPT6ASTRAPRO",
+    "presence": "PRESENT",
+    "id": "UIOWA-096--interoperable-evidence-report-handoffs---ZZ-TORQUE-47",
+    "ts": "2026-09-19T13:36:59Z"
   }
 ]
