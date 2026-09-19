@@ -140,9 +140,9 @@ class CheckResult:
 
     @property
     def ok(self) -> bool:
-        # Round to 2dp first: a 4.4996 is reported as 4.50 and must not then be
-        # called a failure by a reader comparing the printed number.
-        return round(self.ratio, 2) >= self.minimum
+        # Compare the measured ratio, not its rounded display value.
+        # W3C SC 1.4.3: 4.499 must not become a 4.5 threshold pass.
+        return self.ratio >= self.minimum
 
     def as_dict(self) -> dict:
         return {
