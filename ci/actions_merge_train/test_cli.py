@@ -13,6 +13,8 @@ if str(ROOT) not in sys.path:
 
 from ci.actions_merge_train import cli, core
 from ci.actions_merge_train.test_train import capture
+# Keep boundary cases in the existing source-parses test command.
+from ci.actions_merge_train.test_boundaries import BoundaryTests  # noqa:F401
 
 
 class CliTests(unittest.TestCase):

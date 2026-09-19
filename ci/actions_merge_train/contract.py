@@ -23,7 +23,8 @@ def _load_predecessor() -> tuple[Any, Any]:
     sys.modules[schema_name] = schema_mod
     schema_spec.loader.exec_module(schema_mod)
 
-    prior_schema = sys.modules.get("schema")
+    missing = object()
+    prior_schema = sys.modules.get("schema", missing)
     sys.modules["schema"] = schema_mod
     try:
         truth_spec = importlib.util.spec_from_file_location(truth_name, PRED / "truth.py")
@@ -33,7 +34,7 @@ def _load_predecessor() -> tuple[Any, Any]:
         sys.modules[truth_name] = truth_mod
         truth_spec.loader.exec_module(truth_mod)
     finally:
-        if prior_schema is None:
+        if prior_schema is missing:
             sys.modules.pop("schema", None)
         else:
             sys.modules["schema"] = prior_schema
