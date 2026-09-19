@@ -2,7 +2,7 @@
   "counts": {
     "open_issues": 114,
     "open_pull_requests": 57,
-    "runs_in_progress": 4,
+    "runs_in_progress": 6,
     "runs_queued": 70
   },
   "counts_source": "graphql",
@@ -69,6 +69,17 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "z-sol/windows-canonical-binary-io-20260918",
+      "created_at": "2026-09-19T01:29:22Z",
+      "draft": false,
+      "head_sha": "2f8f629cdd95ad0070da17eaeaf5663718191e05",
+      "number": 16079,
+      "title": "fix: preserve canonical bytes on Windows low-level I/O",
+      "updated_at": "2026-09-19T01:37:38Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "sol18-16071-r2",
       "created_at": "2026-09-18T22:45:29Z",
       "draft": false,
@@ -87,17 +98,6 @@
       "number": 16070,
       "title": "Fix Revenue Collection Desk entitlement economics after #16068",
       "updated_at": "2026-09-18T22:50:21Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "anvil/retirement-portability-reconcile",
-      "created_at": "2026-09-18T20:20:49Z",
-      "draft": false,
-      "head_sha": "f688246c0c51616cb786e06ccca291f6cd1980fb",
-      "number": 16064,
-      "title": "reconcile: swarm-mail routing/page restore + owner-now ship pins + gtm index regen",
-      "updated_at": "2026-09-19T00:53:20Z"
     },
     {
       "author": "woahwhattheheck",
@@ -232,14 +232,25 @@
     "16012": "a08d73c13394cf6f1719befdb168065ec94381c8",
     "16015": "5c4e04aeccb9a02035cf0775750669180dde5521",
     "16047": "e5f30b4978379740e7631c4e33fd849878ff53e6",
-    "16064": "f688246c0c51616cb786e06ccca291f6cd1980fb",
     "16070": "e932d0b41af5ce74522c83681d7fe9ee109775d7",
-    "16073": "253fcfa5935b08b0f63b14d7120fbbbf096ec62d"
+    "16073": "253fcfa5935b08b0f63b14d7120fbbbf096ec62d",
+    "16079": "2f8f629cdd95ad0070da17eaeaf5663718191e05"
   },
   "pulls_listed": 57,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 17.5,
+  "queue_depth_per_runner": 11.7,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "anvil/retirement-portability-reconcile",
+      "closed_at": "2026-09-19T01:27:53Z",
+      "head_sha": "7b95028a25c73d9e6ea50166437fc7335cfc10e0",
+      "merged_at": "2026-09-19T01:27:53Z",
+      "number": 16064,
+      "state": "MERGED",
+      "title": "reconcile: swarm-mail routing/page restore + owner-now ship pins + gtm index regen"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -393,21 +404,10 @@
       "number": 16061,
       "state": "MERGED",
       "title": "TITAN: port forced-feasibility economic floor to current ABI"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/erdos686-len5-20260918",
-      "closed_at": "2026-09-18T20:31:34Z",
-      "head_sha": "ac2dd6026da8057173c248e1550cc01445dd9914",
-      "merged_at": "2026-09-18T20:31:34Z",
-      "number": 16065,
-      "state": "MERGED",
-      "title": "research: Erd\u0151s 686 k=5 centered-quintic reduction"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T01:08:01Z",
+  "unchanged_since": "2026-09-19T01:37:52Z",
   "undatable_pulls": []
 }
