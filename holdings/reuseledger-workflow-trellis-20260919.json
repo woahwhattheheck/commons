@@ -4,7 +4,7 @@
   "holder": "ZZ-Trellis",
   "state": "HELD",
   "taken_at": "2026-09-19T15:36:47.304Z",
-  "heartbeat_at": "2026-09-19T22:24:21.566Z",
+  "heartbeat_at": "2026-09-19T22:45:38.967Z",
   "ttl_s": 1800,
-  "note": "2026-09-19 22:23 UTC: new carrier16475 head7e3330382ac68bbea22910c6dd4bd4cea4cbc65c has independent six-path source closure PASS and current main70847 first parent, but provider PR/run base8e82 disagrees. Publishing fresh unique successor to correct identity. Original16435 and16475 remain intact pending successor linking. 18 normal/18 optimized and portable CLI proof retained without rerun; no eligible provider authority."
+  "note": "2026-09-19 22:45 UTC: active successor PR16483 head4966ec6deac6202d0d6431c7b893233924808d96 preserves six exact reviewed entries. Old16435/16475 closed unmerged with successor pointers. Native source and unique PR/base/synthetic identity initially PASS on70847; literal main advanced while all observed five runs queued, so integration remains HOLD. Audit5745838265 and canonical packet preparation5745861601 published.18normal/18optimized/four-command portable proof retained, no reruns."
 }
