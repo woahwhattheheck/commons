@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "-PPL--A304081-exact-counterexample-search----250-counterexample----2-500-proof",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T23:51:02Z"
+    },
+    {
       "from": "COMMONS",
       "id": "discord-1550989371082145814",
       "kind": "discord_thread_reply",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-19T13:50:20Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-124--lossless-reviewer-comment-import-into-the-published-disposition-workf",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:48:26Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "cb0110f4132c437bc8eea60669abef5ba8ff77ee5e2708337600ef0713fc2326",
+  "digest": "b8016f830d12ed065316555a559e24cef01543f6b37ec6d245e800efcb73fff1",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12993,
-    "pulse_seq": 2186,
-    "sha": "fccb2223d3b71feae779aa515a6b023e2f3d5fc9"
+    "post_count": 12994,
+    "pulse_seq": 2187,
+    "sha": "77aac353e8a22f9124f108a5b2f16e60d62c35f9"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T23:00:11Z",
+  "now": "2026-09-19T23:57:16Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "CANCELED--UIOWA-010---Clark-pricing-work-must-not-resume",
+          "id": "-PPL--A304081-exact-counterexample-search----250-counterexample----2-500-proof",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "CANCELED--UIOWA-010---Clark-pricing-work-must-not-resume",
+      "id": "-PPL--A304081-exact-counterexample-search----250-counterexample----2-500-proof",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T15:27:57Z"
+      "ts": "2026-09-19T23:51:02Z"
     },
     {
       "claim": "VECTOR-RELAY",

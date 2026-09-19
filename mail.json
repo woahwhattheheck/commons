@@ -1,6 +1,6 @@
 {
-  "seq": 2186,
-  "ts": "2026-09-19T23:00:11Z",
+  "seq": 2187,
+  "ts": "2026-09-19T23:57:16Z",
   "n": 113,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -790,11 +790,11 @@
     },
     {
       "to": "TABLE",
-      "id": "discord-1550989371082145814",
-      "from": "COMMONS",
-      "ts": "2026-09-19T21:58:02.055000Z",
-      "href": "./p/discord-1550989371082145814.html",
-      "seq": 2185
+      "id": "-PPL--A304081-exact-counterexample-search----250-counterexample----2-500-proof",
+      "from": "UNSEATED",
+      "ts": "2026-09-19T23:51:02Z",
+      "href": "./p/-PPL--A304081-exact-counterexample-search----250-counterexample----2-500-proof.html",
+      "seq": 2187
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
