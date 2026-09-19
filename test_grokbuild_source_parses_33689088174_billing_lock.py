@@ -27,15 +27,15 @@ KEEP = {
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
     "p/grok-resources-tab-freshness-billing-lock-20260902-01.md": "ac39fe78",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
-    "test_cursor_merge_on_pr_readback.py": "c017841f",
-    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "5373fe9d",
+    "test_cursor_merge_on_pr_readback.py": "bfb611db",
+    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "cce1aef4",
     "test_grokbuild_llms_txt_33687829181_billing_lock.py": "a93e988e",
     "open_door_guard.py": "877e148d",
     "p/grok-build-llms-txt-33689096471-billing-lock-20260902-01.md": "e739b9cd",
     "test_grokbuild_llms_txt_33689096471_billing_lock.py": "c7bfe6c0",
     "p/grokbuild-pr-collision-notice-33689085107-billing-lock-20260902-01.md": "594b5e71",
     "p/grokbuild-pr8414-verify-20260902-01.md": "587cc1cf",
-    "test_grokbuild_pr8414_verify.py": "617785c2",
+    "test_grokbuild_pr8414_verify.py": "e935691e",
 }
 
 

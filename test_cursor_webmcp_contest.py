@@ -23,7 +23,7 @@ KEEP = {
     "api/mcp.py": "393da756",
     "stage_spark_mcp_bundle.py": "548ef02b",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
-    "wire.html": "5f0d0f84",
+    "wire.html": "623602a7",
     "ground/WIRE_SUPER_MCP.md": "626b07f7",
     "p/cursor-wire-shared-super-mcp-catalog-readback-20260902-01.md": "593d54bc",
     "p/cursor-wire-super-mcp-marketplace-readback-20260902-01.md": "448eda52",

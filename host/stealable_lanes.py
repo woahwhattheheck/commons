@@ -25,7 +25,7 @@ SALON_LANES = ROOT / "lanes.json"
 SALON_ROLES = ROOT / "roles.json"
 HEAVY = ROOT / "ground" / "HEAVY_LANES.json"
 
-# KEEP tip Autopsy/$29 + Larger fixed on stealable-lanes.html remint
+# KEEP tip $199 live-cash doors + Larger fixed on stealable-lanes.html remint
 # (newbot-02 additive shelf; render_html lacked #live-cash entirely).
 LIVE_CASH_HTML = """
 <section id="live-cash">

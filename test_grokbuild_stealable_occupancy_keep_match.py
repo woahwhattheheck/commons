@@ -21,7 +21,7 @@ KEEP_UNREAD = {
     "p/grokbuild-occupancy-landed-work-keep-lift-20260902-01.md": "67a8a527",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
-    "host/stealable_lanes.py": "6f6456e4",
+    "host/stealable_lanes.py": "524275ce",
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
     "p/grokbuild-pr8353-stealable-lanes-20260902-01.md": "87bdb237",
     "p/grok-build-pr8353-caec56f3-terminal-20260902-01.md": "7e8db90d",

@@ -63,6 +63,8 @@ LIVE_CASH_LARGER_FIXED = (
         "price_usd": 30000,
     },
 )
+
+
 class ControlError(ValueError):
     """A source artifact violates the revenue control contract."""
 

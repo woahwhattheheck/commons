@@ -3303,9 +3303,9 @@
   "schema": "commons-tool-consumption-index/v1",
   "source_blobs": {
     "commands.json": "7a6dba1803e3a97b29355c0f08710533abaa7e45",
-    "share.json": "3b7029a80e1f4f0f3d0a414c6604898ba3a70da0",
+    "share.json": "69e244db204e8aafbba501487cba895595aa9cde",
     "skills.json": "7f1280ef735a59ecfa29b7a6e5bd7c1631246fb7",
-    "tools.json": "4c3909acd166c8a4590ae34da3c6bc2eaa3ce7a9"
+    "tools.json": "870e772cf7ffe6563486529bebe57b3760b865a0"
   },
   "source_commit": "7ae7902861620b74e8c0ec9c7efeb89de4d66532",
   "summary": {

@@ -24,7 +24,7 @@ PUBLIC_MCP = "https://commons-spark-mcp.vercel.app/mcp"
 
 KEEP = {
     "tools.json": "870e772c",
-    "manual.html": "d38e6e81",
+    "manual.html": "ab3ff2c0",
     "p/coil-tools-super-mcp-fold-20260902-01.md": "6948bdc1",
 }
 

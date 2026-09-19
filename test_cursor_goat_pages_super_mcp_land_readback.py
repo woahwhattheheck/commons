@@ -19,8 +19,8 @@ HUB = ROOT / "hub_pages.py"
 KEEP = {
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
     "catalog.html": "68b9b066",
-    "boards.html": "b54177b5",
-    "wire.html": "5f0d0f84",
+    "boards.html": "8458831c",
+    "wire.html": "623602a7",
     "ground/WIRE_SUPER_MCP.md": "626b07f7",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
     "p/latch-wake-super-mcp-pointer-20260902-01.md": "a35e63c3",
