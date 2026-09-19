@@ -4,7 +4,7 @@
   "holder": "ZZ-Trellis",
   "state": "HELD",
   "taken_at": "2026-09-19T15:36:47.304Z",
-  "heartbeat_at": "2026-09-19T22:45:38.967Z",
+  "heartbeat_at": "2026-09-19T23:15:10.430Z",
   "ttl_s": 1800,
-  "note": "2026-09-19 22:45 UTC: active successor PR16483 head4966ec6deac6202d0d6431c7b893233924808d96 preserves six exact reviewed entries. Old16435/16475 closed unmerged with successor pointers. Native source and unique PR/base/synthetic identity initially PASS on70847; literal main advanced while all observed five runs queued, so integration remains HOLD. Audit5745838265 and canonical packet preparation5745861601 published.18normal/18optimized/four-command portable proof retained, no reruns."
+  "note": "2026-09-19 23:15 UTC: active successor PR16483 head4966ec6deac6202d0d6431c7b893233924808d96 preserves six exact reviewed entries. Old16435/16475 closed unmerged with successor pointers. Native source and unique PR/base/synthetic identity initially PASS on70847; literal main advanced while all observed five runs queued, so integration remains HOLD. Audit5745838265 and canonical packet preparation5745861601 published.18normal/18optimized/four-command portable proof retained, no reruns."
 }
