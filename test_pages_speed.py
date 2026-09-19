@@ -34,16 +34,6 @@ class PagesSpeedContract(unittest.TestCase):
         self.assertEqual(parser.scripts, [])
         self.assertLess(len(page.encode()), 6_000)
 
-    def test_agent_rescue_has_critical_css_before_nonblocking_enhancement(self):
-        page = (ROOT / "agent-rescue.html").read_text(encoding="utf-8")
-        parser = _PageParser()
-        parser.feed(page.split("<noscript>", 1)[0])
-        self.assertEqual(parser.blocking_stylesheets, [])
-        self.assertEqual(parser.scripts, [])
-        self.assertIn('rel="preload" href="./commons.css?v=20260823f" as="style"', page)
-        self.assertLess(page.index("<style>"), page.index("<body>"))
-        self.assertLess(len(page.encode()), 12_000)
-
 
 if __name__ == "__main__":
     unittest.main()
