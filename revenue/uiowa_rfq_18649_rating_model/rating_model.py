@@ -9,6 +9,7 @@ maturity, coverage, confidence, applicability, and material gaps separate.
 from __future__ import annotations
 
 import argparse
+import html
 import json
 from collections import Counter, defaultdict
 from dataclasses import dataclass
@@ -31,14 +32,32 @@ class Settings:
 
     @classmethod
     def from_payload(cls, payload: dict[str, Any]) -> "Settings":
-        raw = payload.get("settings") or {}
-        min_cov = float(raw.get("min_coverage_for_characterization", 0.60))
-        spread = int(raw.get("mixed_maturity_spread", 2))
-        if not 0.0 <= min_cov <= 1.0:
-            raise ModelError("min_coverage_for_characterization must be between 0 and 1")
-        if spread < 1:
-            raise ModelError("mixed_maturity_spread must be >= 1")
-        return cls(min_cov, spread)
+        raw = payload.get("settings", {})
+        if not isinstance(raw, dict):
+            raise ModelError("settings must be an object")
+        allowed = {"min_coverage_for_characterization", "mixed_maturity_spread"}
+        if set(raw) - allowed:
+            raise ModelError("settings contains unsupported fields")
+
+        min_cov = raw.get("min_coverage_for_characterization", 0.60)
+        if (
+            isinstance(min_cov, bool)
+            or not isinstance(min_cov, (int, float))
+            or not 0.0 <= min_cov <= 1.0
+        ):
+            raise ModelError(
+                "min_coverage_for_characterization must be a number between 0 and 1"
+            )
+        spread = raw.get("mixed_maturity_spread", 2)
+        if (
+            isinstance(spread, bool)
+            or not isinstance(spread, (int, float))
+            or spread < 1
+            or (isinstance(spread, float) and not spread.is_integer())
+        ):
+            raise ModelError("mixed_maturity_spread must be an integer >= 1")
+        # JSON Schema integer semantics permit an integral JSON number such as 2.0.
+        return cls(float(min_cov), int(spread))
 
 
 def _require_string(row: dict[str, Any], key: str, index: int) -> str:
@@ -58,7 +77,7 @@ def normalize_criteria(payload: dict[str, Any]) -> list[dict[str, Any]]:
 
     for index, original in enumerate(raw):
         if not isinstance(original, dict):
-            raise ModelError(f"criterion[{index}] must be an object")
+            raise ModelError("criterion[{index}] must be an object".format(index=index))
         row = dict(original)
         criterion_id = _require_string(row, "criterion_id", index)
         if criterion_id in seen:
@@ -235,6 +254,17 @@ def _group_summary(
     }
 
 
+def _service_key(area: str, service: str) -> str:
+    """Injective tuple encoding, retaining existing keys for ordinary names.
+
+    Encode '%' before ':' so literal escape sequences cannot alias encoded
+    delimiters. Preserve Unicode without normalizing distinct identifiers.
+    """
+    def escape(value: str) -> str:
+        return value.replace("%", "%25").replace(":", "%3A")
+    return f"{escape(area)}::{escape(service)}"
+
+
 def compose(payload: dict[str, Any]) -> dict[str, Any]:
     if not isinstance(payload, dict):
         raise ModelError("input must be a JSON object")
@@ -253,11 +283,15 @@ def compose(payload: dict[str, Any]) -> dict[str, Any]:
         for area, group_rows in sorted(by_area.items())
     }
     service_summaries = {
-        f"{area}::{service}": _group_summary(
-            group_rows,
-            settings,
-            group_id=f"{area}::{service}",
-        )
+        _service_key(area, service): {
+            **_group_summary(
+                group_rows,
+                settings,
+                group_id=_service_key(area, service),
+            ),
+            "area": area,
+            "service": service,
+        }
         for (area, service), group_rows in sorted(by_area_service.items())
     }
 
@@ -274,6 +308,7 @@ def compose(payload: dict[str, Any]) -> dict[str, Any]:
             "it does not calculate an arithmetic maturity average."
         ),
         "area_summaries": area_summaries,
+        "service_key_encoding": "percent-colon-v1",
         "service_summaries": service_summaries,
     }
 
@@ -282,11 +317,23 @@ def _pct(value: float | None) -> str:
     return "n/a" if value is None else f"{value * 100:.1f}%"
 
 
+def _markdown_text(value: Any) -> str:
+    """Render source text as text, not Markdown/HTML layout instructions."""
+    text = html.escape(str(value), quote=True)
+    for char, entity in (
+        ("\\", "&#92;"), ("|", "&#124;"), ("`", "&#96;"),
+        ("*", "&#42;"), ("_", "&#95;"), ("[", "&#91;"),
+        ("]", "&#93;"), ("~", "&#126;"),
+    ):
+        text = text.replace(char, entity)
+    return text.replace("\r\n", "\n").replace("\r", "\n").replace("\n", "<br>")
+
+
 def render_markdown(result: dict[str, Any]) -> str:
     lines = [
         "# UIOWA-022 rating composition output",
         "",
-        f"**Model:** {result['model']}",
+        f"**Model:** {_markdown_text(result['model'])}",
         "",
         result["method_statement"],
         "",
@@ -296,40 +343,69 @@ def render_markdown(result: dict[str, Any]) -> str:
         "| --- | --- | ---: | --- | --- | --- | --- |",
     ]
 
-    for area, summary in result["area_summaries"].items():
+    def cells(summary: dict[str, Any]) -> list[str]:
         rng = summary["maturity_range"]
         range_text = "n/a" if rng is None else (
             f"{rng['lowest_rank']}–{rng['highest_rank']} (spread {rng['spread']})"
         )
-        lines.append(
-            "| "
-            + " | ".join(
-                [
-                    area,
-                    summary["composition_status"],
-                    _pct(summary["coverage"]),
-                    range_text,
-                    summary["minimum_confidence"] or "n/a",
-                    ", ".join(summary["critical_gap_ids"]) or "none",
-                    ", ".join(summary["unassessed_ids"]) or "none",
-                ]
-            )
-            + " |"
-        )
+        return [
+            summary["composition_status"],
+            _pct(summary["coverage"]),
+            range_text,
+            summary["minimum_confidence"] or "n/a",
+            ", ".join(summary["critical_gap_ids"]) or "none",
+            ", ".join(summary["unassessed_ids"]) or "none",
+        ]
+
+    def table_row(values: list[str]) -> str:
+        return "| " + " | ".join(_markdown_text(value) for value in values) + " |"
+
+    for area, summary in result["area_summaries"].items():
+        lines.append(table_row([area] + cells(summary)))
 
     lines += [
         "",
-        "## Maturity distributions",
+        "## Service summaries",
         "",
+        "Service differences below are not replaced by the area-level pattern.",
+        "",
+        "| Area | Service | Composition | Coverage | Maturity range | Confidence floor | Critical gaps | Unassessed |",
+        "| --- | --- | --- | ---: | --- | --- | --- | --- |",
     ]
-    for area, summary in result["area_summaries"].items():
+    displayed_services: list[tuple[str, str, dict[str, Any]]] = []
+    for key, summary in result["service_summaries"].items():
+        if "area" in summary and "service" in summary:
+            area_name, service_name = summary["area"], summary["service"]
+        else:
+            # Old saved results did not retain this tuple. Its combined key is
+            # ambiguous when either original name contains '::'. Preserve it
+            # verbatim rather than guessing or inventing recovered identities.
+            area_name = "Unresolved legacy identity"
+            service_name = f"Combined group ID: {summary.get('group_id', key)}"
+        displayed_services.append((area_name, service_name, summary))
+        lines.append(table_row([area_name, service_name] + cells(summary)))
+    if any(area == "Unresolved legacy identity" for area, _, _ in displayed_services):
         lines += [
-            f"### {area}",
             "",
-            f"- by rank: `{json.dumps(summary['maturity_distribution_by_rank'], sort_keys=True)}`",
-            f"- by label: `{json.dumps(summary['maturity_distribution_by_label'], sort_keys=True)}`",
-            f"- confidence: `{json.dumps(summary['confidence_distribution'], sort_keys=True)}`",
-            f"- material gaps: {', '.join(summary['material_gap_ids']) or 'none'}",
+            "Legacy output lacks separate area/service labels. Combined identifiers "
+            "are shown verbatim. Recompose from the original input to confirm identities; "
+            "a prior key collision cannot be recovered from saved summaries.",
+        ]
+
+    lines += ["", "## Maturity and confidence distributions", ""]
+    groups = [(area, summary) for area, summary in result["area_summaries"].items()]
+    groups += [
+        (f"{area} / {service}", summary)
+        for area, service, summary in displayed_services
+    ]
+    for label, summary in groups:
+        lines += [
+            f"### {_markdown_text(label)}",
+            "",
+            f"- by rank: {_markdown_text(json.dumps(summary['maturity_distribution_by_rank'], sort_keys=True, ensure_ascii=False))}",
+            f"- by label: {_markdown_text(json.dumps(summary['maturity_distribution_by_label'], sort_keys=True, ensure_ascii=False))}",
+            f"- confidence: {_markdown_text(json.dumps(summary['confidence_distribution'], sort_keys=True))}",
+            f"- material gaps: {_markdown_text(', '.join(summary['material_gap_ids']) or 'none')}",
             "",
         ]
 
