@@ -106,6 +106,11 @@ class IntakeTests(unittest.TestCase):
         doc = base(); doc["sources"][0]["observed_at"] = "2026-09-19T20:00:01Z"
         self.assertEqual(compile_at(doc)["state"], "HOLD_FUTURE_EVIDENCE")
 
+    def test_publication_after_observation_rejected(self):
+        doc = base(); doc["sources"][0]["published_at"] = "2026-09-19T19:00:01Z"
+        with self.assertRaises(IntakeError):
+            compile_at(doc)
+
     def test_exact_deadline_boundary_then_expired(self):
         doc = base(); doc["sources"][0]["deadline_at"] = "2026-09-19T20:00:00Z"; doc["sources"][0]["deadline_externally_stated"] = True
         self.assertEqual(compile_at(doc)["state"], READY)
@@ -140,7 +145,7 @@ class IntakeTests(unittest.TestCase):
         self.assertEqual(compile_at(doc)["state"], READY)
 
     def test_actioned_and_closed_dominate(self):
-        for kind in ("APPLICATION_SENT", "OFFER_SENT", "DECLINED", "EXTERNAL_CLOSED"):
+        for kind in ("MUSE_ELECTED", "APPLICATION_SENT", "OFFER_SENT", "DECLINED", "EXTERNAL_CLOSED", "EXTERNAL_WITHDRAWN", "EXTERNAL_CANCELLED"):
             doc = base(); doc["actions"] = [{"opportunity_id":"grantfox-flux-182","action_id":"a1","kind":kind,"source_generation":"g1","provider_ref":"provider:1","occurred_at":"2026-09-19T19:10:00Z"}]
             with self.subTest(kind=kind):
                 self.assertEqual(compile_at(doc)["state"], "HOLD_ALREADY_ACTIONED")
