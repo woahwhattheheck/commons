@@ -2,12 +2,12 @@
   "counts": {
     "open_issues": 188,
     "open_pull_requests": 158,
-    "runs_in_progress": 11,
-    "runs_queued": 1210
+    "runs_in_progress": 15,
+    "runs_queued": 1216
   },
   "counts_source": "graphql",
   "degraded": [],
-  "drafts": 12,
+  "drafts": 13,
   "longest_open": [
     {
       "author": "woahwhattheheck",
@@ -69,24 +69,35 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "swarm-zz/uiowa034-capture-kestrel-q9f2",
+      "created_at": "2026-09-19T15:56:33Z",
+      "draft": false,
+      "head_sha": "f78d502cfa3686b85327c3b29ff880288f82d633",
+      "number": 16426,
+      "title": "UIOWA-034: preserve interview disagreement and ship a reproducible capture workflow",
+      "updated_at": "2026-09-19T15:56:33Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "zz-chert6b21/slack-root-observation-donor-20260919",
+      "branch": "zz-osprey47/slack-context-inspector-20260919",
+      "created_at": "2026-09-19T15:56:05Z",
+      "draft": true,
+      "head_sha": "da27b5d123fde36894dd32aa5760b9c61abd0b9c",
+      "number": 16425,
+      "title": "feat(command-center): runnable captured-context inspector on the canonical root reader",
+      "updated_at": "2026-09-19T15:56:05Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "swarm/zz-hemlock84/uiowa129-rehearsal-binding-20260919",
       "created_at": "2026-09-19T15:52:18Z",
       "draft": false,
       "head_sha": "60d9c5e9da0a0a396138a0efd621a7911acf21f3",
       "number": 16423,
       "title": "fix(uiowa129): make rehearsal receipts identify the source and fixtures actually executed",
-      "updated_at": "2026-09-19T15:52:18Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-meridian-h6k9/uiowa051-worked-delivery-20260919",
-      "created_at": "2026-09-19T15:51:58Z",
-      "draft": false,
-      "head_sha": "1141c40d7fa5d7b6b9f70a63c65feda3a7788f4a",
-      "number": 16422,
-      "title": "UIOWA-051: deliver the complete worked secure-design operator readout",
-      "updated_at": "2026-09-19T15:51:58Z"
+      "updated_at": "2026-09-19T15:55:46Z"
     },
     {
       "author": "woahwhattheheck",
@@ -98,17 +109,6 @@
       "number": 16419,
       "title": "Report checker: retain paragraph structure and complete invalid-input scanning",
       "updated_at": "2026-09-19T15:51:27Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz/keyframe9d7e-soundness-reader-20260919",
-      "created_at": "2026-09-19T15:47:46Z",
-      "draft": false,
-      "head_sha": "87415d6431ca607aacbec7f9c8a5effc7e5b8682",
-      "number": 16418,
-      "title": "Publish standalone sample-soundness reader guide and observed operator results",
-      "updated_at": "2026-09-19T15:47:46Z"
     },
     {
       "author": "woahwhattheheck",
@@ -332,15 +332,48 @@
     "16412": "614f17f3754bd33e67076257fede84a4dd744e8a",
     "16413": "2201f47e5a9b66ca12eb8feab2648f1cc87a5570",
     "16416": "0824cf6fa8d2d08bf70c31b100cdbcdb8327bf4f",
-    "16418": "87415d6431ca607aacbec7f9c8a5effc7e5b8682",
     "16419": "b57e8258168f450fc0ce7a2f65894cd5fa7f7ca9",
-    "16422": "1141c40d7fa5d7b6b9f70a63c65feda3a7788f4a",
-    "16423": "60d9c5e9da0a0a396138a0efd621a7911acf21f3"
+    "16423": "60d9c5e9da0a0a396138a0efd621a7911acf21f3",
+    "16425": "da27b5d123fde36894dd32aa5760b9c61abd0b9c",
+    "16426": "f78d502cfa3686b85327c3b29ff880288f82d633"
   },
   "pulls_listed": 158,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 110.0,
+  "queue_depth_per_runner": 81.1,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/async14-unified-acceptance-20260919",
+      "closed_at": "2026-09-19T15:54:29Z",
+      "head_sha": "25c2ac1d5a89550c82da287d9d63d2391fe88b4f",
+      "merged_at": "2026-09-19T15:54:29Z",
+      "number": 16424,
+      "state": "MERGED",
+      "title": "test(uiowa): retain unified saved-review acceptance and explicit byte contracts"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz/keyframe9d7e-soundness-reader-20260919",
+      "closed_at": "2026-09-19T15:54:02Z",
+      "head_sha": "87415d6431ca607aacbec7f9c8a5effc7e5b8682",
+      "merged_at": "2026-09-19T15:54:02Z",
+      "number": 16418,
+      "state": "MERGED",
+      "title": "Publish standalone sample-soundness reader guide and observed operator results"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-meridian-h6k9/uiowa051-worked-delivery-20260919",
+      "closed_at": "2026-09-19T15:53:24Z",
+      "head_sha": "1141c40d7fa5d7b6b9f70a63c65feda3a7788f4a",
+      "merged_at": "2026-09-19T15:53:24Z",
+      "number": 16422,
+      "state": "MERGED",
+      "title": "UIOWA-051: deliver the complete worked secure-design operator readout"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -472,43 +505,10 @@
       "number": 16403,
       "state": "MERGED",
       "title": "Retain independent delivery binding and evidence-order audit after #15942"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz/traceforge-uiowa015-research-20260919",
-      "closed_at": "2026-09-19T15:31:41Z",
-      "head_sha": "3265c69641f60efff05d2240a3b56b0161231008",
-      "merged_at": "2026-09-19T15:31:41Z",
-      "number": 16396,
-      "state": "MERGED",
-      "title": "UIOWA-015: integrate complete peer research and facilitator walkthrough (docs only)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/async14-browser-review-20260919",
-      "closed_at": "2026-09-19T15:29:59Z",
-      "head_sha": "4691a9720686a6f30a9c689df761fa4579418621",
-      "merged_at": "2026-09-19T15:29:59Z",
-      "number": 16297,
-      "state": "MERGED",
-      "title": "test(uiowa): recover browser timing review and saved-draft UTF-8 repair evidence"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-costaqua/15926-provider-observed-truth-20260917",
-      "closed_at": "2026-09-19T15:25:19Z",
-      "head_sha": "250a6d3ecdc1c152cf4d57307df85fc02de1702a",
-      "merged_at": "2026-09-19T15:25:19Z",
-      "number": 15942,
-      "state": "MERGED",
-      "title": "Recover delivery-state repair with optimized proof and runnable walkthrough"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T15:53:10Z",
+  "unchanged_since": "2026-09-19T15:56:41Z",
   "undatable_pulls": []
 }
