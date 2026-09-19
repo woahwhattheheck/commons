@@ -1,1 +1,1 @@
-"""Provider-starvation-aware merge-train advisory package."""
+"""Provider-starvation-aware Actions merge-train advisory package."""
