@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "a2e37116ff6e25788ba38613b4b4aace05f80364eb23f5a95dd13b38d9bfad9c",
+  "digest": "5a19d47bfea5018cc65770a4f56e60c609239cb7906f28ad26070f5235c95774",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -354,8 +354,8 @@
       }
     ],
     "post_count": 12972,
-    "pulse_seq": 2147,
-    "sha": "e336cd54faf740bee12ff7cca709d63bc7452084"
+    "pulse_seq": 2148,
+    "sha": "4abe6199bccb99652090ccba3cd1f1061ec8a712"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T14:50:03Z",
+  "now": "2026-09-19T14:51:11Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3123,7 +3123,7 @@
       "id": "grokbuild-uiowa068-pr16169-20260919-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-19T13:50:20Z"
