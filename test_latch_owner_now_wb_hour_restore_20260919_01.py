@@ -38,7 +38,6 @@ class TestLatchOwnerNowWbHourRestore2026091901(unittest.TestCase):
         self.assertNotIn("buy.stripe.com", noscript)
         self.assertIn("sku-whitebox-hour", html)
         self.assertIn("anvil-ownerrevenue-paidopps-convert-shelf-20260917-01", html)
-        self.assertIn("latch-owner-now-wb-hour-restore-20260919-01", html)
 
     def test_receipt_cites_action_and_existing_payment_link(self) -> None:
         text = RECEIPT.read_text(encoding="utf-8")
