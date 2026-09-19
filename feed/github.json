@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 190,
-    "open_pull_requests": 152,
-    "runs_in_progress": 15,
-    "runs_queued": 1187
+    "open_issues": 189,
+    "open_pull_requests": 153,
+    "runs_in_progress": 13,
+    "runs_queued": 1189
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -66,6 +66,39 @@
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-harborglass23r-transport-readout-20260919",
+      "created_at": "2026-09-19T15:43:24Z",
+      "draft": false,
+      "head_sha": "c5cf4ade6a63fc25bbfc387d7a19397c69f83be0",
+      "number": 16411,
+      "title": "UIOWA-031: source-bound worked transport example for the live demo",
+      "updated_at": "2026-09-19T15:43:24Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/uiowa048-helio-c72a-20260919",
+      "created_at": "2026-09-19T15:42:27Z",
+      "draft": false,
+      "head_sha": "c9f9380793a2b4867187efff5cfa60e5dcef005d",
+      "number": 16410,
+      "title": "UIOWA-048: executable documentation-usability review and operator rehearsal",
+      "updated_at": "2026-09-19T15:42:27Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-kestrel-l9q7/uiowa065-operational-rehearsal-20260919",
+      "created_at": "2026-09-19T15:42:05Z",
+      "draft": false,
+      "head_sha": "83962c6bfac10177a1639eb2b2f5e3c7f1331bef",
+      "number": 16409,
+      "title": "UIOWA-065: trustworthy evidence inputs and nine-case operational rehearsal",
+      "updated_at": "2026-09-19T15:42:05Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -142,39 +175,6 @@
       "number": 16398,
       "title": "UIOWA-093B: publish the executed ten-lane operator guide",
       "updated_at": "2026-09-19T15:31:04Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/uiowa047-evidence-kestrelr9c4-20260919",
-      "created_at": "2026-09-19T15:30:21Z",
-      "draft": false,
-      "head_sha": "650d258693f0d479bf17d12fc0eb2abb31631dd8",
-      "number": 16397,
-      "title": "UIOWA-047: preserve assessment-time and unknown coverage semantics",
-      "updated_at": "2026-09-19T15:30:21Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/zz-harborglass23r-register-bridge-20260919",
-      "created_at": "2026-09-19T15:29:26Z",
-      "draft": false,
-      "head_sha": "f559a1fa0f96ef7ef70b0ce2e9f618057ed3f16b",
-      "number": 16395,
-      "title": "Recover UIOWA-023/031 strict, lossless register transport and native-table bridge",
-      "updated_at": "2026-09-19T15:36:57Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz/traceforge-uiowa015-source-context-20260919",
-      "created_at": "2026-09-19T15:28:12Z",
-      "draft": false,
-      "head_sha": "93f5df0a8d00bc7e2b010ea7f95f0a45f47754f6",
-      "number": 16394,
-      "title": "UIOWA-015: source-scoped peer delivery pack, UC recovery and 53-test replay",
-      "updated_at": "2026-09-19T15:28:12Z"
     }
   ],
   "open_heads": {
@@ -287,7 +287,6 @@
     "16324": "895f0bff9f569268f628e08a7a2bcb0f1b5b3bfd",
     "16325": "f693abe5578f6ed9e56634fbae5eafcc631b0d31",
     "16326": "5406ef6ca6c75eccf18434a0b809069911326e3f",
-    "16327": "2a82476188484b808e4b9bf1650de11154ee1932",
     "16328": "410a5faa6983bfa3ada485b5617b0e80007129da",
     "16329": "75b791dbc19e809c0273e7624defb54e2c833078",
     "16330": "e450d92a0e14fbddae91129d9747ee8aab509973",
@@ -318,7 +317,6 @@
     "16385": "a57b60cbae9ae937d860a90bbf3d7ff5c293ae85",
     "16387": "d614c1f581205dc92c9a570b4d4a068819a3d13b",
     "16389": "722d683289e868567f4b49063bc1ad5f596b2e81",
-    "16391": "d1c04b63ae752586373d78bd1d3b5dcb0f98262b",
     "16392": "3d017ec2025ab33bb86b0fb1fbc1230f5f03fcac",
     "16394": "93f5df0a8d00bc7e2b010ea7f95f0a45f47754f6",
     "16395": "f559a1fa0f96ef7ef70b0ce2e9f618057ed3f16b",
@@ -329,12 +327,37 @@
     "16401": "f19b0074be03409abed2d384bd2587c6d2e88da4",
     "16404": "a09a574ba74d9a268fe4aab7fb3fb4468f0ca084",
     "16406": "ba1757c8d6e460e884d34c1480d6ec188d2eed3a",
-    "16407": "45439a3b1fe0abb7a8c724fe8041132c3406ee67"
+    "16407": "45439a3b1fe0abb7a8c724fe8041132c3406ee67",
+    "16409": "83962c6bfac10177a1639eb2b2f5e3c7f1331bef",
+    "16410": "c9f9380793a2b4867187efff5cfa60e5dcef005d",
+    "16411": "c5cf4ade6a63fc25bbfc387d7a19397c69f83be0"
   },
-  "pulls_listed": 152,
+  "pulls_listed": 153,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 79.1,
+  "queue_depth_per_runner": 91.5,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "zz/sextant47-sample-soundness-20260919",
+      "branch": "zz/keyframe9d7e-soundness-contract-20260919",
+      "closed_at": "2026-09-19T15:43:19Z",
+      "head_sha": "d1c04b63ae752586373d78bd1d3b5dcb0f98262b",
+      "merged_at": "2026-09-19T15:43:19Z",
+      "number": 16391,
+      "state": "MERGED",
+      "title": "Complete sample-soundness input contract and runnable composed kit"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz/osprey86c1-uiowa047-reconcile-20260919",
+      "closed_at": "2026-09-19T15:42:50Z",
+      "head_sha": "2a82476188484b808e4b9bf1650de11154ee1932",
+      "merged_at": "2026-09-19T15:42:50Z",
+      "number": 16327,
+      "state": "MERGED",
+      "title": "UIOWA-047: recover fixture companion and connect canonical assessment"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -477,32 +500,10 @@
       "number": 16374,
       "state": "MERGED",
       "title": "UIOWA-108: land the worked contractor-transition operator readout"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa109-petrel82m-operator-receipt",
-      "closed_at": "2026-09-19T15:22:48Z",
-      "head_sha": "921573649c55f1f4eb6d34df260454e43c1e8f97",
-      "merged_at": "2026-09-19T15:22:48Z",
-      "number": 16380,
-      "state": "MERGED",
-      "title": "UIOWA-109: retain exercised operator walkthrough and exact-source results"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "swarm/zz-tessera46/uiowa-129-timestamps-20260919",
-      "branch": "swarm/zz-hemlock84/uiowa129-evidence-io-20260919",
-      "closed_at": "2026-09-19T15:21:47Z",
-      "head_sha": "c835d48f39f0cf92027d5a6b655bb04ffef7c43d",
-      "merged_at": "2026-09-19T15:21:47Z",
-      "number": 16373,
-      "state": "MERGED",
-      "title": "UIOWA-129: recover source-preserving report I/O and byte-bound CSV provenance"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T15:41:39Z",
+  "unchanged_since": "2026-09-19T15:43:50Z",
   "undatable_pulls": []
 }
