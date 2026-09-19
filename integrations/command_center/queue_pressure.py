@@ -106,8 +106,7 @@ def queue_pressure(state, *, now=None):
             continue
         queued += status == "queued"
         in_progress += status == "in_progress"
-        stamp = _stamp(item.get("activity_observed_at") or item.get("updated_at")
-                       or item.get("created_at"))
+        stamp = _stamp(item.get("created_at"))
         if stamp is None or stamp > observed:
             malformed = True
             continue
