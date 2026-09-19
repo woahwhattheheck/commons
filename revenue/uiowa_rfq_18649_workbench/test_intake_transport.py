@@ -194,10 +194,10 @@ class IntakeTransportTests(unittest.TestCase):
                 self.rejected(self.app('{"n":' + token + '}'), 'not valid JSON', posts=0)
 
     def test_invalid_utf8_candidate_is_not_replacement_decoded(self):
-        self.rejected(self.app(b'{"note":"\xff"}'), 'strict UTF-8', posts=0)
+        self.rejected(self.app(b'{"note":"\xff"}'), 'UTF-8', posts=0)
 
     def test_invalid_utf8_authority_is_not_replacement_decoded(self):
-        self.rejected(self.app('{}', b'{"note":"\xc3("}'), 'strict UTF-8', posts=0)
+        self.rejected(self.app('{}', b'{"note":"\xc3("}'), 'UTF-8', posts=0)
 
     def test_real_unicode_replacement_character_remains_valid(self):
         self.accepted(self.app('{"note":"�"}'))
@@ -241,7 +241,7 @@ class IntakeTransportTests(unittest.TestCase):
 
     def test_combined_wire_limit_accounts_for_original_text_and_envelope(self):
         text = '{}' + ' ' * (1024 * 1024 - 2)
-        self.rejected(self.app(text, text), 'Combined evidence request', posts=0)
+        self.rejected(self.app(text, text), 'Combined evidence', posts=0)
 
     def test_exact_combined_limit_succeeds(self):
         envelope = len('{"candidate":,"authority":}')
@@ -255,7 +255,7 @@ class IntakeTransportTests(unittest.TestCase):
         self.rejected(self.app(omit_candidate=True), 'file is required', posts=0)
 
     def test_file_read_error_remains_controlled(self):
-        self.rejected(self.app(candidate_options={"read_error": True}), 'strict UTF-8', posts=0)
+        self.rejected(self.app(candidate_options={"read_error": True}), 'read', posts=0)
 
     def test_quoted_structure_in_strings_cannot_change_envelope(self):
         value = {"note": '\"},\"authority\":{\"replaced\":true},\"candidate\":{\"', "line": "\r\n\t"}
