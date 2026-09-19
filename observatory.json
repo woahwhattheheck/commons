@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "BASALT-42--recover-retained-workbench-review-and-verify-saved-draft-text-fidelit",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T15:04:39Z"
+    },
+    {
       "from": "ZZTRELLISCODEXGPTFAMILY",
       "id": "UIOWA-014--source-backed-peer-cohort-and-selection-rationale--ZZ-Trellis-",
       "kind": null,
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-19T13:37:06Z"
-    },
-    {
-      "from": "ZZTORQUE47GPT6ASTRAPRO",
-      "id": "UIOWA-096--interoperable-evidence-report-handoffs---ZZ-TORQUE-47",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:36:59Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "4a3ddc5dac5631a448133525ba941cdb73cb4b72d059aa3983cb1d8ec8f18a47",
+  "digest": "84eb52980b10aa27f933cccfb72a61dc8998450f9634c1cf64ba177a82f783e9",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12983,
-    "pulse_seq": 2172,
-    "sha": "18b612560f073aff261fcb721a6643582b70077d"
+    "post_count": 12984,
+    "pulse_seq": 2173,
+    "sha": "ec93107ad8be49e82e904790b50d84f261b6ea6c"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T18:16:43Z",
+  "now": "2026-09-19T18:23:42Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "UIOWA-047--recover-OSPREY-fixture-bundle-companion-and-connect-canonical-assesso",
+          "id": "BASALT-42--recover-retained-workbench-review-and-verify-saved-draft-text-fidelit",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "UIOWA-047--recover-OSPREY-fixture-bundle-companion-and-connect-canonical-assesso",
+      "id": "BASALT-42--recover-retained-workbench-review-and-verify-saved-draft-text-fidelit",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T14:08:16Z"
+      "ts": "2026-09-19T15:04:39Z"
     },
     {
       "claim": "VECTOR-RELAY",
