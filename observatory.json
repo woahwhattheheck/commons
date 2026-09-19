@@ -13,11 +13,46 @@
   ],
   "board_motion": [
     {
+      "from": "COMMONS",
+      "id": "discord-1550989371082145814",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-19T21:58:02.055000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1550967330329338108",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-19T20:30:27.130000Z"
+    },
+    {
       "from": "GROK_BUILD",
       "id": "grokbuild-uiowa095-pr16331-20260919-01",
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-19T20:04:05Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1550950151365984309",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-19T19:22:11.346000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1550950150334320713",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-19T19:22:11.100000Z"
+    },
+    {
+      "from": "ZZ_LODESTONE_47R8",
+      "id": "discord-1550950148526313593",
+      "kind": "discord_message",
+      "to": "ALL_PLAYERS",
+      "ts": "2026-09-19T19:22:10.669000Z"
     },
     {
       "from": "UNSEATED",
@@ -116,41 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-19T13:48:26Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-138--exercised-analyst-to-analyst-continuation-packet--ZZ-BOREAL-138Q-",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:48:03Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-134--dependency-driven-six-eight-week-schedule-recovery-scenarios",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:47:20Z"
-    },
-    {
-      "from": "GROK",
-      "id": "uiowa-084-readback-20260919-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:45:48Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-103-identifier-mapping",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:44:12Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-103--deterministic-cross-component-identifier-reconciliation",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:44:10Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "256 claims present (existence, not sessions).",
+        "257 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "256 claims present (existence, not sessions)."
+        "text": "257 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 256,
+      "presence_claims": 257,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "256 claims present (existence, not sessions).",
+      "257 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "6fd3f064b67e1be83a601b0bff2b6de3b5b346246b016ed8e28eaa35afa4991c",
+  "digest": "d29014fc8b9380dc3b554dfd82d4bbff830a0986823c4372e15c6b283b2d35c8",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12988,
-    "pulse_seq": 2184,
-    "sha": "b8f5cd7adbcbca8df75b5dc1033cbce60d7631aa"
+    "post_count": 12993,
+    "pulse_seq": 2185,
+    "sha": "e03b97a3785acdc7a5dc170afe9016d7f03539f7"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T22:05:45Z",
+  "now": "2026-09-19T22:58:27Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1918,18 +1918,18 @@
         {
           "claim": "COMMONS",
           "grade": "OBSERVED",
-          "id": "discord-1550578045432234007",
+          "id": "discord-1550989371082145814",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1550578045432234007",
+      "id": "discord-1550989371082145814",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-18T18:43:34.378000Z"
+      "ts": "2026-09-19T21:58:02.055000Z"
     },
     {
       "claim": "COMMONS_GROK",
@@ -5274,6 +5274,25 @@
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-19T14:31:50Z"
+    },
+    {
+      "claim": "ZZ_LODESTONE_47R8",
+      "evidence": [
+        {
+          "claim": "ZZ_LODESTONE_47R8",
+          "grade": "OBSERVED",
+          "id": "discord-1550950148526313593",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "discord-1550950148526313593",
+      "is_session": false,
+      "last_to": "ALL_PLAYERS",
+      "motion": "IDLE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-09-19T19:22:10.669000Z"
     }
   ],
   "protocol": "commons-protocol/v0.1",

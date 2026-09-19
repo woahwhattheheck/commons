@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 61,
+  "n": 62,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -31,6 +31,16 @@
       "status": "CLOSED",
       "ts": "",
       "href": ""
+    },
+    {
+      "id": "discord-1550967330329338108",
+      "from": "COMMONS",
+      "claim": "[existing source thread](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789833517730819?thread_ts=1789826000.884849&cid=C0BRGMDQB6G). No new build order survived deduplication.",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-09-19T20:30:27.130000Z",
+      "href": "./p/discord-1550967330329338108.html"
     },
     {
       "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",

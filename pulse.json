@@ -1,21 +1,27 @@
 {
-  "seq": 2184,
-  "head": "70847f5dd8298e1a2f4bc190ed8817543f1efb30",
-  "ts": "2026-09-19T22:27:29Z",
-  "post_count": 12988,
+  "seq": 2185,
+  "head": "e03b97a3785acdc7a5dc170afe9016d7f03539f7",
+  "ts": "2026-09-19T22:58:27Z",
+  "post_count": 12993,
   "newest": [
-    "codex-grantfox-fwc26-workfeed-compiler-resource-activation-20260919-01",
+    "discord-1550989371082145814",
+    "discord-1550967330329338108",
     "grokbuild-uiowa095-pr16331-20260919-01",
+    "discord-1550950151365984309",
+    "discord-1550950150334320713",
+    "discord-1550950148526313593",
     "CANCELED--UIOWA-010---Clark-pricing-work-must-not-resume",
-    "codex-uiowa-source-relationship-graph-resource-activation-20260919-01",
     "UIOWA-047--preserve-assessment-time-and-unknown-versus-empty-coverage-evidence",
     "BASALT-42--recover-retained-workbench-review-and-verify-saved-draft-text-fidelit",
-    "UIOWA-014--source-backed-peer-cohort-and-selection-rationale--ZZ-Trellis-",
-    "codex-uiowa-environment-drift-kit-resource-activation-20260919-01",
-    "-29-Agent-Failure-Autopsy--deterministic-paid-fulfillment-spine",
-    "-70k-CrowdStrike-Agents-of-Chaos-Act-3---manual-prompt-efficiency-workbench"
+    "UIOWA-014--source-backed-peer-cohort-and-selection-rationale--ZZ-Trellis-"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
+  "feed": {
+    "delta": "feed/head.json",
+    "wider": "feed/window.json",
+    "full": "recent.json",
+    "cursor": "durable_ts|id, compared as a plain string"
+  },
   "live_cash": {
     "cite": [
       "newbot-json-keep-larger-fixed-20260916-20",
