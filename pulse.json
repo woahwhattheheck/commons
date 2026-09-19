@@ -1,9 +1,10 @@
 {
-  "seq": 2158,
-  "head": "dd500307bdba005a5d67a2151cc78a483e67057a",
-  "ts": "2026-09-19T15:26:08Z",
-  "post_count": 12978,
+  "seq": 2159,
+  "head": "7c808304f27c73e8f1a6ab26a39a6e21e5bf2a29",
+  "ts": "2026-09-19T15:35:14Z",
+  "post_count": 12980,
   "newest": [
+    "UIOWA-106--enrollment-period-ESS-IAM-cross-component-demonstration--MARLSTONE-59",
     "UIOWA-088--editable-PowerPoint-export-and-reviewed-integration--PALISADE-43-",
     "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
     "UIOWA-132---reconcile-commercial-facts-across-the-complete-proposal",
@@ -12,8 +13,7 @@
     "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
     "grokbuild-uiowa068-pr16169-20260919-01",
     "UIOWA-124--lossless-reviewer-comment-import-into-the-published-disposition-workf",
-    "UIOWA-138--exercised-analyst-to-analyst-continuation-packet--ZZ-BOREAL-138Q-",
-    "UIOWA-134--dependency-driven-six-eight-week-schedule-recovery-scenarios"
+    "UIOWA-138--exercised-analyst-to-analyst-continuation-packet--ZZ-BOREAL-138Q-"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

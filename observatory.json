@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "UIOWA-106--enrollment-period-ESS-IAM-cross-component-demonstration--MARLSTONE-59",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T14:01:31Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "UIOWA-088--editable-PowerPoint-export-and-reviewed-integration--PALISADE-43-",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-19T13:29:32Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIowa-peer-evidence-comparability-compiler--ZZ-COPPERFINCH-",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:26:46Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "15cbc713f3b72706f4fc2cdf7151ebec9660535cdb6a2af49f6c5f4857e10921",
+  "digest": "9d44308027ecf2ed9fff826b8921d40c85cc310b33e534f020d5638c3c3c7cf6",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12978,
-    "pulse_seq": 2158,
-    "sha": "dd500307bdba005a5d67a2151cc78a483e67057a"
+    "post_count": 12980,
+    "pulse_seq": 2159,
+    "sha": "7c808304f27c73e8f1a6ab26a39a6e21e5bf2a29"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T15:26:08Z",
+  "now": "2026-09-19T15:35:14Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "UIOWA-088--editable-PowerPoint-export-and-reviewed-integration--PALISADE-43-",
+          "id": "UIOWA-106--enrollment-period-ESS-IAM-cross-component-demonstration--MARLSTONE-59",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "UIOWA-088--editable-PowerPoint-export-and-reviewed-integration--PALISADE-43-",
+      "id": "UIOWA-106--enrollment-period-ESS-IAM-cross-component-demonstration--MARLSTONE-59",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T13:58:41Z"
+      "ts": "2026-09-19T14:01:31Z"
     },
     {
       "claim": "VECTOR-RELAY",
