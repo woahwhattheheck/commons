@@ -1,0 +1,317 @@
+{
+  "deck_recurring_restated": [
+    {
+      "basis": "fictional estimate: monthly exception review",
+      "fte_per_year": 0.02308,
+      "id": "RES-001",
+      "rec": "R-001",
+      "stated": 4,
+      "unit": "staff-hours per month"
+    },
+    {
+      "basis": "exercise cadence not agreed; not assessed",
+      "fte_per_year": "UNKNOWN",
+      "id": "RES-002",
+      "rec": "R-002",
+      "stated": "UNKNOWN",
+      "unit": "staff-hours per month"
+    },
+    {
+      "basis": "review cadence not agreed; not assessed",
+      "fte_per_year": "UNKNOWN",
+      "id": "RES-003",
+      "rec": "R-003",
+      "stated": "UNKNOWN",
+      "unit": "staff-hours per month"
+    }
+  ],
+  "hours_per_fte_year": 2080.0,
+  "identifier_islands": {
+    "islands": [
+      {
+        "components": [
+          "uiowa_rfq_18649_economics_resource_adapters"
+        ],
+        "convention": "OPP-* / WI-*",
+        "examples": [
+          "WI-DEPLOY-APPROVALS-001",
+          "WI-ESS-RELNOTES-001",
+          "WI-FROM-OPP-ESS-02"
+        ]
+      },
+      {
+        "components": [
+          "uiowa_rfq_18649_economics_resource_adapters"
+        ],
+        "convention": "OTHER",
+        "examples": [
+          "ECON-004"
+        ]
+      },
+      {
+        "components": [
+          "uiowa_rfq_18649_readout_deck"
+        ],
+        "convention": "R-NNN",
+        "examples": [
+          "R-001",
+          "R-002",
+          "R-003"
+        ]
+      },
+      {
+        "components": [
+          "uiowa_rfq_18649_prioritization"
+        ],
+        "convention": "REC-SYN-*",
+        "examples": [
+          "REC-SYN-ESS-AI-001",
+          "REC-SYN-ESS-DEP-001",
+          "REC-SYN-ESS-SD-001"
+        ]
+      }
+    ],
+    "joinable": false,
+    "verdict": "4 identifier conventions observed; components in different islands CANNOT be joined without a human-asserted correspondence. This module reports the split rather than inventing the mapping."
+  },
+  "roadmap_input": {
+    "items": [
+      {
+        "effort": {
+          "UNASSIGNED-ROLE": {
+            "high": 130.0,
+            "likely": 80.0,
+            "low": 45.0
+          }
+        },
+        "effort_complete": true,
+        "effort_note": "",
+        "id": "RM-FROM-REC-SYN-ESS-SD-001",
+        "owner_role": "UNASSIGNED-ROLE",
+        "prerequisites": [],
+        "proposed_phase": "UNKNOWN",
+        "rec": "REC-SYN-ESS-SD-001",
+        "title": "Extend the required build-and-test status check to the remaining ESS repositories"
+      },
+      {
+        "effort": {
+          "UNASSIGNED-ROLE": {
+            "high": 90.0,
+            "likely": 50.0,
+            "low": 30.0
+          }
+        },
+        "effort_complete": true,
+        "effort_note": "",
+        "id": "RM-FROM-REC-SYN-ESS-SEC-001",
+        "owner_role": "UNASSIGNED-ROLE",
+        "prerequisites": [],
+        "proposed_phase": "UNKNOWN",
+        "rec": "REC-SYN-ESS-SEC-001",
+        "title": "Move the ESS shared service account off a static credential"
+      },
+      {
+        "effort": {
+          "UNASSIGNED-ROLE": {
+            "high": 130.0,
+            "likely": 85.0,
+            "low": 55.0
+          }
+        },
+        "effort_complete": true,
+        "effort_note": "",
+        "id": "RM-FROM-REC-SYN-IAM-DEP-001",
+        "owner_role": "UNASSIGNED-ROLE",
+        "prerequisites": [],
+        "proposed_phase": "UNKNOWN",
+        "rec": "REC-SYN-IAM-DEP-001",
+        "title": "Reconcile production deployment approvals with the written two-approval procedure"
+      },
+      {
+        "effort": {
+          "UNASSIGNED-ROLE": {
+            "high": 130.0,
+            "likely": 80.0,
+            "low": 45.0
+          }
+        },
+        "effort_complete": true,
+        "effort_note": "",
+        "id": "RM-FROM-REC-SYN-IAM-SD-001",
+        "owner_role": "UNASSIGNED-ROLE",
+        "prerequisites": [],
+        "proposed_phase": "UNKNOWN",
+        "rec": "REC-SYN-IAM-SD-001",
+        "title": "Replace the manual IAM connector release checklist with a scripted release"
+      },
+      {
+        "effort": {
+          "UNASSIGNED-ROLE": {
+            "high": 360.0,
+            "likely": 220.0,
+            "low": 130.0
+          }
+        },
+        "effort_complete": true,
+        "effort_note": "",
+        "id": "RM-FROM-REC-SYN-IAM-SEC-001",
+        "owner_role": "UNASSIGNED-ROLE",
+        "prerequisites": [],
+        "proposed_phase": "UNKNOWN",
+        "rec": "REC-SYN-IAM-SEC-001",
+        "title": "Consolidate the three group-membership review spreadsheets into one recorded quarterly review"
+      },
+      {
+        "effort": {
+          "UNASSIGNED-ROLE": {
+            "high": 28.0,
+            "likely": 16.0,
+            "low": 10.0
+          }
+        },
+        "effort_complete": true,
+        "effort_note": "",
+        "id": "RM-FROM-REC-SYN-RIS-DEP-001",
+        "owner_role": "UNASSIGNED-ROLE",
+        "prerequisites": [],
+        "proposed_phase": "UNKNOWN",
+        "rec": "REC-SYN-RIS-DEP-001",
+        "title": "Document the RIS maintenance-window handoff between the on-call and platform rotations"
+      },
+      {
+        "effort": {
+          "UNASSIGNED-ROLE": {
+            "high": 34.0,
+            "likely": 20.0,
+            "low": 12.0
+          }
+        },
+        "effort_complete": true,
+        "effort_note": "",
+        "id": "RM-FROM-REC-SYN-RIS-SD-001",
+        "owner_role": "UNASSIGNED-ROLE",
+        "prerequisites": [],
+        "proposed_phase": "UNKNOWN",
+        "rec": "REC-SYN-RIS-SD-001",
+        "title": "Write down the RIS branch and review conventions that are currently held by convention"
+      },
+      {
+        "effort": {
+          "UNASSIGNED-ROLE": {
+            "high": 160.0,
+            "likely": 110.0,
+            "low": 70.0
+          }
+        },
+        "effort_complete": true,
+        "effort_note": "",
+        "id": "RM-FROM-REC-SYN-RIS-SEC-001",
+        "owner_role": "UNASSIGNED-ROLE",
+        "prerequisites": [],
+        "proposed_phase": "UNKNOWN",
+        "rec": "REC-SYN-RIS-SEC-001",
+        "title": "Re-run the privileged-access review and record the result against the published standard"
+      }
+    ],
+    "meta": {
+      "effort_ledger": "hours (one-time implementation)",
+      "effort_unit": "staff-hours",
+      "emitted_by": "uiowa-105c-ledger-bridge",
+      "fiction_notice": "Derived from synthetic component output. Not a University of Iowa finding or plan.",
+      "no_individuals_notice": "Effort is stated per ROLE only. No named individual, no date, no personal availability commitment.",
+      "recurring_ledger_warning": "The receiving lane has no recurring field. Recurring load is returned in `recurring_not_representable`, NOT in `items[].effort`."
+    },
+    "recurring_not_representable": [
+      {
+        "rec": "REC-SYN-ESS-DEP-001",
+        "recurring_effort_fte_per_year": {
+          "high": 0.04,
+          "likely": 0.02,
+          "low": 0.01
+        },
+        "why_it_is_not_in_effort": "the roadmap lane carries no recurring ledger; placing this in `effort` would charge an annual commitment once, inside one phase window"
+      },
+      {
+        "rec": "REC-SYN-ESS-SD-001",
+        "recurring_effort_fte_per_year": {
+          "high": 0.05,
+          "likely": 0.02,
+          "low": 0.01
+        },
+        "why_it_is_not_in_effort": "the roadmap lane carries no recurring ledger; placing this in `effort` would charge an annual commitment once, inside one phase window"
+      },
+      {
+        "rec": "REC-SYN-IAM-DEP-001",
+        "recurring_effort_fte_per_year": {
+          "high": 0.06,
+          "likely": 0.03,
+          "low": 0.02
+        },
+        "why_it_is_not_in_effort": "the roadmap lane carries no recurring ledger; placing this in `effort` would charge an annual commitment once, inside one phase window"
+      },
+      {
+        "rec": "REC-SYN-IAM-SD-001",
+        "recurring_effort_fte_per_year": {
+          "high": 0.05,
+          "likely": 0.02,
+          "low": 0.01
+        },
+        "why_it_is_not_in_effort": "the roadmap lane carries no recurring ledger; placing this in `effort` would charge an annual commitment once, inside one phase window"
+      },
+      {
+        "rec": "REC-SYN-IAM-SEC-001",
+        "recurring_effort_fte_per_year": {
+          "high": 0.22,
+          "likely": 0.12,
+          "low": 0.06
+        },
+        "why_it_is_not_in_effort": "the roadmap lane carries no recurring ledger; placing this in `effort` would charge an annual commitment once, inside one phase window"
+      },
+      {
+        "rec": "REC-SYN-RIS-DEP-001",
+        "recurring_effort_fte_per_year": {
+          "high": 0.01,
+          "likely": 0.005,
+          "low": 0.002
+        },
+        "why_it_is_not_in_effort": "the roadmap lane carries no recurring ledger; placing this in `effort` would charge an annual commitment once, inside one phase window"
+      },
+      {
+        "rec": "REC-SYN-RIS-SD-001",
+        "recurring_effort_fte_per_year": {
+          "high": 0.02,
+          "likely": 0.01,
+          "low": 0.005
+        },
+        "why_it_is_not_in_effort": "the roadmap lane carries no recurring ledger; placing this in `effort` would charge an annual commitment once, inside one phase window"
+      },
+      {
+        "rec": "REC-SYN-RIS-SEC-001",
+        "recurring_effort_fte_per_year": {
+          "high": 0.07,
+          "likely": 0.04,
+          "low": 0.02
+        },
+        "why_it_is_not_in_effort": "the roadmap lane carries no recurring ledger; placing this in `effort` would charge an annual commitment once, inside one phase window"
+      }
+    ],
+    "unestimated": [
+      {
+        "handling": "the roadmap must treat this as UNESTIMATED. It is not zero capacity consumed, and it is not a free item.",
+        "reason": "no contributor supplied this ledger; not reported as zero",
+        "rec": "REC-SYN-ESS-AI-001"
+      },
+      {
+        "handling": "the roadmap must treat this as UNESTIMATED. It is not zero capacity consumed, and it is not a free item.",
+        "reason": "no contributor supplied this ledger; not reported as zero",
+        "rec": "REC-SYN-ESS-DEP-001"
+      },
+      {
+        "handling": "the roadmap must treat this as UNESTIMATED. It is not zero capacity consumed, and it is not a free item.",
+        "reason": "no contributor supplied this ledger; not reported as zero",
+        "rec": "REC-SYN-IAM-AI-001"
+      }
+    ]
+  },
+  "schema_version": "uiowa-105c-bridge/1"
+}

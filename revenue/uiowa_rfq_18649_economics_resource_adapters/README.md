@@ -11,7 +11,7 @@ deterministic (no clock, no RNG, sorted traversal).
 
 ```
 python3 integrate.py
-python3 -m unittest discover -p "test_*.py"     # 78 tests across the lane
+python3 -m unittest discover -p "test_*.py"     # 102 tests across the lane
 ```
 
 **Component authors — check your output before you land:**
@@ -133,7 +133,7 @@ just no longer counted.
 
 **Real and working:** the five typed ledgers, all three adapters, the merge with conflict
 detection, the three-view accounting, the UNKNOWN handling, all four output writers, and the
-78-test suite (45 integration, 33 conformance checker). The integrator runs against two components genuinely on `main` and produces the
+102-test suite (45 integration, 33 conformance checker, 24 ledger bridge). The integrator runs against two components genuinely on `main` and produces the
 files in `sample_output/`.
 
 **Draft / placeholder:** every number in `fixtures/`. The contract fixtures are shaped like
@@ -189,6 +189,32 @@ that is a checker bug"* rather than reporting a silent pass.
 **deliberately broken fixtures** — every defect is one a component author could plausibly ship by
 accident, so the checker's output can be demonstrated rather than described. On the broken
 resource file it reports 5 fail, 1 warn, 3 info and exits 1.
+
+## `ledger_bridge.py` — three seams between landed lanes
+
+Found by scanning 52 landed lanes for numeric resourcing fields (21 files carry them).
+
+**1. `uiowa_rfq_18649_capacity_feasibility` has no recurring ledger.** Its capacity unit is
+"staff-hours available to this programme per phase window" and item effort is one-time
+staff-hours per role; there is no recurring field anywhere in the lane. Its own `effort_source`
+names UIOWA-086 and UIOWA-072 as upstreams, and both emit a recurring ledger. `to_roadmap_effort`
+raises `BridgeRefusal` for any ledger that is not `ONE_TIME_EFFORT`; recurring load comes back in
+`recurring_not_representable` instead. `test_recurring_load_is_refused_for_the_roadmap_effort_field`
+and `test_no_recurring_figure_appears_inside_any_item_effort` hold it.
+
+**2. `uiowa_rfq_18649_readout_deck` states recurring effort in "staff-hours per month".** This
+lane uses FTE-fraction per year. Conversion needs an hours-per-FTE-year constant, so
+`fte_year_to_hours_month` and `hours_month_to_fte_year` take one and refuse without it. The deck's
+`RES-001` value of 4 staff-hours/month restates as 0.02308 FTE/yr; `RES-002` and `RES-003` are
+UNKNOWN and stay UNKNOWN. `recurring_figures_agree` returns AGREE / DIFFER / UNKNOWN.
+
+**3. Three recommendation-id conventions.** `REC-SYN-*` (prioritization, this lane), `R-NNN`
+(readout deck, capacity feasibility), `OPP-*`/`WI-*` (opportunity portfolio, work items).
+`identifier_islands` reports the split and produces no mapping between conventions.
+
+Unestimated recommendations are listed in `unestimated` and are not emitted as items, so the
+roadmap cannot read them as zero capacity consumed. Emitted metadata carries the receiving lane's
+per-role, no-named-individual rule.
 
 ## Handoff
 
