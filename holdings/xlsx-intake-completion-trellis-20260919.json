@@ -2,9 +2,10 @@
   "schema": "commons-change-holding/v1",
   "key": "xlsx-intake-completion-trellis-20260919",
   "holder": "ZZ-Trellis",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-09-19T20:29:55.923Z",
-  "heartbeat_at": "2026-09-19T21:16:42.795Z",
+  "heartbeat_at": "2026-09-19T21:42:28.858Z",
   "ttl_s": 1800,
-  "note": "Private SMB #1343 / draft PR #1561, source freeze e47cd31f1255dd19264283dd6c334f29359fcedd. Independent OOXML, Node/I/O and operator source PASS. First acceptance: 224 Node cases including 36 Python normal + 36 actual-O methods PASS, 42 source pins unchanged. First two operator rehearsals each 16 commands, 12 exit0 and 4 expected exit2; 49 packet members byte-identical across modes. Final proof docs, independent evidence review and unchanged private current-main gates/merge pending. Original Cairn/LF3Q provenance retained. Root finalizer; complete worked package stays in same private repository. Demo1789849734.966479."
+  "note": "COMPLETED: private SMB #1343 closed; PR #1561 merged cef636a071f3a4fdc44415aa4a183f7398a0ab41 after independent review5257761053 and actual unchanged private exact-pair gates5745429820. All28 source pins367881B match literal main. First224Node including36normal/36actual-O Python and two16-command operator journeys PASS;49 packet bytes equal. Full364-member worked ZIP1941413B SHA256be5d3801d9a9475fe542bc75d2c2cd580f7b284d6b730e6203646962c11b2427 retained on private artifact commit23ba42b5149ae0eab20aefc6740b9a19ae9ecd7e, CanvasF0C31P670P8. Original Cairn/LF3Q lineage preserved, complete proof/source delivered, no acceptance reruns. Root now carries separate loan1472.",
+  "released_at": "2026-09-19T21:42:28.858Z"
 }
