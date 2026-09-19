@@ -40,7 +40,7 @@ def main() -> int:
             page.get_by_role("button", name="Load synthetic UI demo").click()
             assert page.locator("#matrix").get_attribute("data-rendered-cells") == "12"
             assert page.locator("#summary").get_by_text("Evidence consistent").count() == 1
-            assert page.locator("#sampleBadge").text_content() == "Synthetic sample Â· UI demonstration"
+            assert page.locator("#sampleBadge").text_content() == "Synthetic sample · UI demonstration"
             assert page.locator(".report-details").get_attribute("open") is None
             assert "HOLD_" not in " ".join(page.locator(".cell .status").all_text_contents())
 

@@ -8,7 +8,7 @@ const el = Object.fromEntries([
 ].map(id => [id, document.getElementById(id)]));
 
 function keyFor(cell) { return `${cell.group}|${cell.dimension}`; }
-function text(value) { return value == null ? "â€”" : String(value); }
+function text(value) { return value == null ? "—" : String(value); }
 function setError(message="") { el.error.textContent = message; }
 
 const groupLabels = { ESS: "Enterprise Student Systems", RIS: "Research Information Systems", IAM: "Identity & Access Management" };
@@ -99,7 +99,7 @@ function renderSummary() {
   const sources = state.report.evidence_authority?.sources || [];
   const syntheticEvidence = sources.length > 0 && sources.every(source => String(source.source_ref || "").startsWith("synthetic://"));
   el.sampleBadge.hidden = false;
-  el.sampleBadge.textContent = state.report.synthetic_demo === true ? "Synthetic sample Â· UI demonstration" : syntheticEvidence ? "Synthetic evidence Â· compiler run" : "Imported evidence package";
+  el.sampleBadge.textContent = state.report.synthetic_demo === true ? "Synthetic sample · UI demonstration" : syntheticEvidence ? "Synthetic evidence · compiler run" : "Imported evidence package";
   el.reportMeta.textContent = JSON.stringify({
     mode: state.report.mode, aggregate_state: state.report.aggregate_state,
     receipt_sha256: state.report.receipt_sha256, trust: state.report.trust,
@@ -184,7 +184,7 @@ function selectCell(key) {
     appendText(card, "span", sourceId, "source-id");
     if (source) {
       appendText(card, "p", source.claim || "Source record available for review.");
-      appendText(card, "small", [source.evidence_kind, source.observed_at?.slice(0, 10)].filter(Boolean).join(" Â· "));
+      appendText(card, "small", [source.evidence_kind, source.observed_at?.slice(0, 10)].filter(Boolean).join(" · "));
       const record = document.createElement("details");
       appendText(record, "summary", "View source record"); appendText(record, "pre", JSON.stringify(source, null, 2)); card.append(record);
     } else appendText(card, "p", state.report.synthetic_demo === true ? "Illustrative source identifier for this UI sample. Import the sample evidence files to inspect the actual compiler output." : "This source identifier is retained in the report; its full record is not included in this view.");
