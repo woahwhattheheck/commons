@@ -1070,6 +1070,21 @@ class CommandCenter:
         state = self._work_store_instance().state()
         state["refresh"] = self._work_refresh_status()
         state["freshness"] = self._work_freshness(state, started, trigger)
+        try:
+            from .queue_pressure import queue_pressure
+            state["queue_pressure"] = queue_pressure(state)
+        except Exception:
+            # Queue pressure is an advisory read. Never take down the work view
+            # because this reducer failed, and never turn a reducer failure into
+            # permission to describe CI as green.
+            state["queue_pressure"] = {
+                "schema": "commons-actions-queue-pressure/v1",
+                "state": "UNKNOWN",
+                "warning": True,
+                "reason": "queue_pressure_reducer_failed",
+                "ci_green_claim_allowed": False,
+                "read_only": True,
+            }
         return state
 
     def swarm_state(self, refresh=False):
