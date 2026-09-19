@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "homeops-durable-journal-trellis-20260919",
   "holder": "ZZ-Trellis",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-09-19T17:39:02.900Z",
-  "heartbeat_at": "2026-09-19T18:10:44.376Z",
+  "heartbeat_at": "2026-09-19T18:24:59.718Z",
   "ttl_s": 1800,
-  "note": "Continue existing HOMEOPS-DURABLE-JOURNAL-6F2C-20260917 and homeops-mcp#2, preserving Obsidian design/product lineage. SQLite journal, retry-safe mutations, restart/concurrency, existing MCP integration, operator backup/recovery. Demo root1789839488.347679. Root integration; enterprise journal. No external household/provider/deployment/submission action. Source PR3 published;79 normal+79 optimized and both3-process/25HTTP/10CLI rehearsals PASS. Final manifest/review/integration and complete worked package now being delivered."
+  "note": "Continue existing HOMEOPS-DURABLE-JOURNAL-6F2C-20260917 and homeops-mcp#2, preserving Obsidian design/product lineage. SQLite journal, retry-safe mutations, restart/concurrency, existing MCP integration, operator backup/recovery. Demo root1789839488.347679. Root integration; enterprise journal. No external household/provider/deployment/submission action. Source PR3 published;79 normal+79 optimized and both3-process/25HTTP/10CLI rehearsals PASS. Final manifest/review/integration and complete worked package now being delivered. Completed PR3 native merge92ed013b29aa1388b07c5a64440306494ebc5ff4;all21 main blobs match reviewed/tested head95089894. Independent review5256976284. Full packageF0C2YAMKKCM and verified CanvasF0C36TL2DQC delivered;issue2closedcompleted."
 }
