@@ -315,7 +315,7 @@ def survey(root, manifest, timeout=120, execute=True, repo_root=None):
                          "underlying observation: " + rec["reason"])
         rows.append(rec)
 
-    return {
+    report = {
         "survey_root": os.path.abspath(root),
         "generated_at_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "python": sys.version.split()[0],
@@ -325,6 +325,63 @@ def survey(root, manifest, timeout=120, execute=True, repo_root=None):
         "counts": {s: sum(1 for r in rows if r["status"] == s)
                    for s in (WORKING, DRAFT, MISSING, UNMAPPED)},
         "components": rows,
+    }
+    report["staleness"] = staleness(report)
+    report["phase_readiness"] = phase_readiness(report, manifest)
+    return report
+
+
+def phase_readiness(report, manifest):
+    """Answer the question a new operator actually asks: can I run this phase today?
+
+    A phase is `ready` only when every component the manifest places in it earned
+    WORKING. `partial` means at least one did and at least one did not. `blocked`
+    means none did. A phase is never called ready because most of it works --
+    a hole in the middle of a phase is what stops an operator, not an average.
+    """
+    by_phase = {}
+    for r in report["components"]:
+        by_phase.setdefault(r["phase"], []).append(r)
+    out = []
+    for phase in sorted(manifest["phases"], key=lambda p: p["order"]):
+        rows = by_phase.get(phase["id"], [])
+        w = [r for r in rows if r["status"] == WORKING]
+        d = [r for r in rows if r["status"] == DRAFT]
+        m = [r for r in rows if r["status"] == MISSING]
+        if rows and not d and not m:
+            state = "ready"
+        elif w:
+            state = "partial"
+        else:
+            state = "blocked"
+        out.append({
+            "phase": phase["id"], "order": phase["order"], "title": phase["title"],
+            "state": state, "working": len(w), "draft": len(d), "missing": len(m),
+            "total": len(rows),
+            "holes": [{"component": r["component"], "status": r["status"], "reason": r["reason"]}
+                      for r in d + m],
+        })
+    return out
+
+
+def staleness(report):
+    """Is the manifest behind the board?
+
+    The lane tree grows continuously. A handoff whose map silently omits new
+    components is worse than one that admits it is behind, so this is surfaced
+    loudly rather than left for the reader to notice in a table.
+    """
+    unmapped = [r["component"] for r in report["components"] if r["status"] == UNMAPPED]
+    return {
+        "stale": bool(unmapped),
+        "unmapped_count": len(unmapped),
+        "unmapped": sorted(unmapped),
+        "message": (
+            "MANIFEST IS BEHIND THE BOARD: %d lane(s) exist on disk that kit_manifest.json "
+            "does not place in any phase (%s). Treat this guide as incomplete until they are "
+            "placed." % (len(unmapped), ", ".join(sorted(unmapped)))
+            if unmapped else
+            "Manifest covers every lane found under the survey root."),
     }
 
 
@@ -354,6 +411,9 @@ def write_md(report, path):
     L.append("- counts: WORKING %d · DRAFT %d · MISSING %d · UNMAPPED %d"
              % (c[WORKING], c[DRAFT], c[MISSING], c[UNMAPPED]))
     L.append("")
+    if report.get("staleness", {}).get("stale"):
+        L.append("> **STALE MANIFEST.** %s" % report["staleness"]["message"])
+        L.append("")
     for r in report["components"]:
         L.append("## %s — %s" % (r["component"], r["status"]))
         L.append("")
@@ -415,6 +475,13 @@ def main(argv=None):
         print("generated   : %s (python %s)" % (report["generated_at_utc"], report["python"]))
         print("counts      : WORKING %d | DRAFT %d | MISSING %d | UNMAPPED %d"
               % (c[WORKING], c[DRAFT], c[MISSING], c[UNMAPPED]))
+        print("")
+        print("phases      : " + " | ".join(
+            "%d %s=%s" % (p["order"], p["phase"], p["state"])
+            for p in report["phase_readiness"]))
+        if report["staleness"]["stale"]:
+            print("")
+            print("!! STALE MANIFEST !! " + report["staleness"]["message"])
         print("")
         print("%-12s %-46s %-9s %s" % ("PHASE", "COMPONENT", "STATUS", "EVIDENCE"))
         for r in report["components"]:

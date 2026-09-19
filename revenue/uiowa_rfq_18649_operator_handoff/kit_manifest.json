@@ -43,6 +43,18 @@
         {
           "lane": "uiowa_rfq_18649_build_board",
           "role": "Assessment context notes used to brief the team."
+        },
+        {
+          "lane": "uiowa_rfq_18649_capability_appendix",
+          "role": "UIOWA-137: proposal capability appendix where no claim prints without a recorded demonstration."
+        },
+        {
+          "lane": "uiowa_rfq_18649_scope_change",
+          "role": "UIOWA-133: scope-change impact calculator; prices a change against the baseline with its assumptions printed next to the answer."
+        },
+        {
+          "lane": "uiowa_rfq_18649_bid_pack",
+          "role": "UIOWA-136: assembles prepared proposal components into a navigable bidder attachment set."
         }
       ]
     },
@@ -109,6 +121,14 @@
         {
           "lane": "uiowa_rfq_18649_knowledge_readiness",
           "role": "AI knowledge and data readiness evidence."
+        },
+        {
+          "lane": "uiowa_rfq_18649_contractor_transition",
+          "role": "UIOWA-108: staff-role changes, application ownership, service identities and runbook updates as one handoff scenario."
+        },
+        {
+          "lane": "uiowa_rfq_18649_question_cards",
+          "role": "UIOWA-114: turns one unresolved observation into the follow-up question that would resolve it."
         }
       ]
     },
@@ -166,6 +186,14 @@
         {
           "lane": "uiowa_rfq_18649_ai_eval_kit",
           "role": "AI usefulness evaluation tasks with known answers."
+        },
+        {
+          "lane": "uiowa_rfq_18649_economics_resource_adapters",
+          "role": "UIOWA-105: joins economics and resource estimates onto the recommendation register, keeping effort, recurring cost, cash cost and released capacity separate."
+        },
+        {
+          "lane": "uiowa_rfq_18649_roadmap_dependencies",
+          "role": "UIOWA-115: graph check over recommendation prerequisites; finds cycles, missing prerequisites and phase inversions."
         }
       ]
     },
@@ -202,6 +230,14 @@
         {
           "lane": "uiowa_rfq_18649_interchange",
           "role": "CSV/JSON/doc interchange verification for review handoffs."
+        },
+        {
+          "lane": "uiowa_rfq_18649_traceability",
+          "role": "UIOWA-093: statement to finding to citation to source bytes, with drift detection; fails loudly on an orphan at any level."
+        },
+        {
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "role": "UIOWA-117: checks the matrix, recommendation register, executive summary and presentation agree with each other."
         }
       ]
     },
@@ -242,6 +278,14 @@
         {
           "lane": "uiowa_rfq_18649_closeout",
           "role": "Evidence lifecycle and 30-day post-completion closeout templates."
+        },
+        {
+          "lane": "uiowa_rfq_18649_acceptance_map",
+          "role": "UIOWA-130: delivery acceptance criteria mapped to the artifacts that actually satisfy them."
+        },
+        {
+          "lane": "uiowa_rfq_18649_milestone_packets",
+          "role": "UIOWA-135: milestone delivery packets; verifies every cited artifact by opening it."
         }
       ]
     },
@@ -262,6 +306,10 @@
         {
           "lane": "uiowa_rfq_18649_qa_kit",
           "role": "Q&A answers substantiated from supplied evidence."
+        },
+        {
+          "lane": "uiowa_rfq_18649_qa_refusal_contract",
+          "role": "UIOWA-089C: what the Q&A kit does when the evidence does NOT support an answer."
         }
       ]
     }

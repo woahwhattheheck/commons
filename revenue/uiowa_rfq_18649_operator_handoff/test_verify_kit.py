@@ -235,6 +235,71 @@ class HostileInputs(unittest.TestCase):
         self.assertEqual(status_of(rep, "uiowa_rfq_18649_silent")["status"], verify_kit.DRAFT)
 
 
+class StalenessAndReadiness(unittest.TestCase):
+    """The two things that make a handoff go stale without anybody noticing."""
+
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp(prefix="vk_stale_")
+
+    def tearDown(self):
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def _lane(self, name, passing=True):
+        body = ("import unittest\n\nclass T(unittest.TestCase):\n    def test_x(self):\n"
+                "        self.assert%s(True)\n" % ("True" if passing else "False"))
+        write_lane(self.tmp, name, {"test_it.py": body})
+
+    def test_a_lane_the_manifest_does_not_know_marks_the_guide_stale(self):
+        self._lane("uiowa_rfq_18649_known")
+        self._lane("uiowa_rfq_18649_surprise")
+        rep = verify_kit.survey(self.tmp, manifest_for(["uiowa_rfq_18649_known"]), timeout=30)
+        self.assertTrue(rep["staleness"]["stale"])
+        self.assertEqual(rep["staleness"]["unmapped"], ["uiowa_rfq_18649_surprise"])
+        self.assertIn("MANIFEST IS BEHIND THE BOARD", rep["staleness"]["message"])
+
+    def test_a_complete_manifest_is_not_stale(self):
+        self._lane("uiowa_rfq_18649_known")
+        rep = verify_kit.survey(self.tmp, manifest_for(["uiowa_rfq_18649_known"]), timeout=30)
+        self.assertFalse(rep["staleness"]["stale"])
+        self.assertEqual(rep["staleness"]["unmapped"], [])
+
+    def test_phase_with_every_component_working_is_ready(self):
+        self._lane("uiowa_rfq_18649_a")
+        self._lane("uiowa_rfq_18649_b")
+        man = manifest_for(["uiowa_rfq_18649_a", "uiowa_rfq_18649_b"])
+        rep = verify_kit.survey(self.tmp, man, timeout=30)
+        self.assertEqual(rep["phase_readiness"][0]["state"], "ready")
+        self.assertEqual(rep["phase_readiness"][0]["holes"], [])
+
+    def test_one_hole_downgrades_a_phase_to_partial_and_names_it(self):
+        # The point of the rule: a phase with 9 working parts and one broken one
+        # is not "90% ready", it is a phase an operator cannot get through.
+        self._lane("uiowa_rfq_18649_a")
+        self._lane("uiowa_rfq_18649_b", passing=False)
+        man = manifest_for(["uiowa_rfq_18649_a", "uiowa_rfq_18649_b"])
+        rep = verify_kit.survey(self.tmp, man, timeout=30)
+        p = rep["phase_readiness"][0]
+        self.assertEqual(p["state"], "partial")
+        self.assertEqual([h["component"] for h in p["holes"]], ["uiowa_rfq_18649_b"])
+
+    def test_phase_with_nothing_working_is_blocked(self):
+        man = manifest_for(["uiowa_rfq_18649_never_built"])
+        rep = verify_kit.survey(self.tmp, man, timeout=30)
+        self.assertEqual(rep["phase_readiness"][0]["state"], "blocked")
+
+    def test_guide_shouts_when_the_manifest_is_behind(self):
+        self._lane("uiowa_rfq_18649_known")
+        self._lane("uiowa_rfq_18649_surprise")
+        man = manifest_for(["uiowa_rfq_18649_known"])
+        rep = verify_kit.survey(self.tmp, man, timeout=30)
+        with open(UNKNOWNS, encoding="utf-8") as fh:
+            unknowns = list(csv.DictReader(fh))
+        text = render_guide.render(man, rep, unknowns)
+        self.assertIn("THIS GUIDE IS INCOMPLETE", text)
+        self.assertIn("uiowa_rfq_18649_surprise", text)
+        self.assertIn("Can I run this phase today?", text)
+
+
 class Outputs(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

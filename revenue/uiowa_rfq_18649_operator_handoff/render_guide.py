@@ -62,6 +62,30 @@ def render(manifest, report, unknowns):
     L.append("- **WORKING %d · DRAFT %d · MISSING %d · UNMAPPED %d**"
              % (c["WORKING"], c["DRAFT"], c["MISSING"], c["UNMAPPED"]))
     L.append("")
+    st = report.get("staleness", {})
+    if st.get("stale"):
+        L.append("> ## ⚠ THIS GUIDE IS INCOMPLETE")
+        L.append("> ")
+        L.append("> %s" % st["message"])
+        L.append("> ")
+        L.append("> Add them to `kit_manifest.json` and regenerate. Until then, the phase")
+        L.append("> tables below do not account for those components.")
+        L.append("")
+    L.append("## Can I run this phase today?")
+    L.append("")
+    L.append("`ready` means every component the manifest places in that phase earned WORKING.")
+    L.append("`partial` means some did and some did not — the holes are named, so you can see")
+    L.append("whether the gap is on your path. A phase is never called ready because most of it")
+    L.append("works: a hole in the middle of a phase is what stops an operator, not an average.")
+    L.append("")
+    L.append("| # | phase | today | working | draft | missing | what is in the way |")
+    L.append("|---|---|---|---|---|---|---|")
+    for p in report.get("phase_readiness", []):
+        holes = ", ".join("`%s` (%s)" % (h["component"].replace("uiowa_rfq_18649_", ""),
+                                         h["status"]) for h in p["holes"]) or "nothing"
+        L.append("| %d | %s | **%s** | %d | %d | %d | %s |" % (
+            p["order"], p["title"], p["state"], p["working"], p["draft"], p["missing"], holes))
+    L.append("")
     L.append("## Refresh the status table before you rely on it")
     L.append("")
     L.append("```bash")

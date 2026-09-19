@@ -98,6 +98,15 @@ belongs to that component's author.
 - **Absent stays absent.** `MISSING` never becomes a zero, a pass, or a score. The
   University-input register is asserted to contain only `UNKNOWN`, and a test forbids it
   growing a score/rating/maturity/percentile/grade column.
+- **The guide admits when it is out of date.** The lane tree grows continuously — it went
+  from 30 directories to 43 during one build of this lane. Whenever a lane exists that
+  `kit_manifest.json` does not place in a phase, the verifier prints `!! STALE MANIFEST !!`
+  with the names and `OPERATOR_GUIDE.md` opens with **⚠ THIS GUIDE IS INCOMPLETE**. It is
+  meant to fire again; that is the signal to place the new lanes and regenerate, and it is
+  strictly better than quietly handing an operator a map with holes in it.
+- **A phase is never "mostly ready".** Phase readiness is `ready` only when *every*
+  component in it earned WORKING. One hole makes it `partial` and the hole is named. An
+  operator is stopped by the one broken step, not by the average.
 - **A failed run is reported as failed,** including when the cause is this harness. The
   first live survey called `uiowa_rfq_18649_integration` a `DRAFT` because this lane
   invoked it with the wrong `--repo` argument; the invocation was fixed and it is now
