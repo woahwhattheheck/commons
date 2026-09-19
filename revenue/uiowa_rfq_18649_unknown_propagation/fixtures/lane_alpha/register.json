@@ -1,0 +1,13 @@
+{
+  "_label": "SYNTHETIC FIXTURE. Lane 'alpha' is the lane that OWNS these estimates.",
+  "recommendations": [
+    {"recommendation_id": "REC-SYN-FIX-001", "title": "Alpha owns this one",
+     "effort_hours": null, "priority": "NEEDS_ESTIMATE", "owner": "alpha"},
+    {"recommendation_id": "REC-SYN-FIX-002", "title": "Unknown effort here too",
+     "effort_hours": "UNKNOWN", "priority": "NEEDS_ESTIMATE", "owner": "alpha"},
+    {"recommendation_id": "REC-SYN-FIX-003", "title": "Fully estimated",
+     "effort_hours": 40, "priority": "HIGH", "owner": "alpha"},
+    {"recommendation_id": "REC-SYN-FIX-004", "title": "Unsettled, stays unsettled",
+     "effort_hours": "UNKNOWN", "priority": "NEEDS_ESTIMATE", "owner": "alpha"}
+  ]
+}

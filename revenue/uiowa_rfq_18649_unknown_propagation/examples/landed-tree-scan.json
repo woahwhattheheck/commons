@@ -1,0 +1,1966 @@
+{
+  "content_class": "READ_ONLY_SCREEN_RESULT_NOT_AN_ASSESSMENT",
+  "counts_by_scope": {
+    "CROSS_LANE": 4,
+    "INTRA_LANE_VARIANT": 3
+  },
+  "counts_by_verdict": {
+    "CONSISTENT": 4,
+    "UNKNOWN_BECAME_ZERO": 0,
+    "UNKNOWN_HARDENED": 0
+  },
+  "coverage": {
+    "alignment_note": "36 of 222 field names appear in more than one lane. The remaining 186 are used by exactly one lane, so no cross-lane check of those values is possible at all -- not because they agree, but because nothing can be compared to them.",
+    "shared_fields": {
+      "area": [
+        "uiowa_rfq_18649_ai_use_inventory",
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_intake_rehearsal",
+        "uiowa_rfq_18649_milestone_packets",
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_prioritization",
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_workshare"
+      ],
+      "basis": [
+        "uiowa_rfq_18649_ai_opportunity_portfolio",
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_scope_change"
+      ],
+      "business_verified_at": [
+        "uiowa_rfq_18649_recovery_evidence",
+        "uiowa_rfq_18649_release_recovery_case"
+      ],
+      "captured_at": [
+        "uiowa_rfq_18649_ai_use_inventory",
+        "uiowa_rfq_18649_release_recovery_case",
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_workshare"
+      ],
+      "claim": [
+        "uiowa_rfq_18649_intake_rehearsal",
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_workshare"
+      ],
+      "completeness_basis": [
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_workshare"
+      ],
+      "confidence": [
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_workshare"
+      ],
+      "conflict_group": [
+        "uiowa_rfq_18649_intake_rehearsal",
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_workshare"
+      ],
+      "corroboration": [
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_workshare"
+      ],
+      "directness": [
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_workshare"
+      ],
+      "disruption_at": [
+        "uiowa_rfq_18649_recovery_evidence",
+        "uiowa_rfq_18649_release_recovery_case"
+      ],
+      "enumerator_authority": [
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_workshare"
+      ],
+      "evidence_refs": [
+        "uiowa_rfq_18649_ai_use_inventory",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "evidence_state": [
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_workshare"
+      ],
+      "finding_refs": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "follow_up": [
+        "uiowa_rfq_18649_intake_rehearsal",
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_workshare"
+      ],
+      "group": [
+        "uiowa_rfq_18649_ai_opportunity_portfolio",
+        "uiowa_rfq_18649_ai_use_inventory",
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_intake_rehearsal",
+        "uiowa_rfq_18649_milestone_packets",
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_prioritization",
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_workshare"
+      ],
+      "horizon": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "last_successful_at": [
+        "uiowa_rfq_18649_recovery_evidence",
+        "uiowa_rfq_18649_release_recovery_case"
+      ],
+      "locator": [
+        "uiowa_rfq_18649_intake_rehearsal",
+        "uiowa_rfq_18649_release_recovery_case"
+      ],
+      "notes": [
+        "uiowa_rfq_18649_ai_use_inventory",
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_prioritization",
+        "uiowa_rfq_18649_scope_change"
+      ],
+      "rank_position": [
+        "uiowa_rfq_18649_ai_opportunity_portfolio",
+        "uiowa_rfq_18649_prioritization"
+      ],
+      "recency": [
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_workshare"
+      ],
+      "representativeness": [
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_workshare"
+      ],
+      "represented_period": [
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_workshare"
+      ],
+      "resource_note": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "restore_completed_at": [
+        "uiowa_rfq_18649_recovery_evidence",
+        "uiowa_rfq_18649_release_recovery_case"
+      ],
+      "restored_data_as_of": [
+        "uiowa_rfq_18649_recovery_evidence",
+        "uiowa_rfq_18649_release_recovery_case"
+      ],
+      "scope_limit": [
+        "uiowa_rfq_18649_intake_rehearsal",
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_workshare"
+      ],
+      "source_ref": [
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_workshare"
+      ],
+      "source_type": [
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_workshare"
+      ],
+      "statement": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "status": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_prioritization",
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_scope_change"
+      ],
+      "title": [
+        "uiowa_rfq_18649_ai_opportunity_portfolio",
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_prioritization",
+        "uiowa_rfq_18649_scope_change"
+      ],
+      "universe_definition": [
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_workshare"
+      ],
+      "verified_at": [
+        "uiowa_rfq_18649_recovery_evidence",
+        "uiowa_rfq_18649_release_recovery_case"
+      ]
+    },
+    "shared_identifiers": {
+      "FND-SYN-ESS-AI-001": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "FND-SYN-ESS-DEP-001": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "FND-SYN-ESS-SD-001": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "FND-SYN-ESS-SEC-001": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "FND-SYN-IAM-AI-001": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "FND-SYN-IAM-DEP-001": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "FND-SYN-IAM-SD-001": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "FND-SYN-IAM-SEC-001": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "FND-SYN-RIS-DEP-001": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "FND-SYN-RIS-SD-001": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "FND-SYN-RIS-SEC-001": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "OPP-ESS-01": [
+        "uiowa_rfq_18649_ai_opportunity_portfolio",
+        "uiowa_rfq_18649_economics_resource_adapters"
+      ],
+      "OPP-ESS-02": [
+        "uiowa_rfq_18649_ai_opportunity_portfolio",
+        "uiowa_rfq_18649_economics_resource_adapters"
+      ],
+      "OPP-IAM-01": [
+        "uiowa_rfq_18649_ai_opportunity_portfolio",
+        "uiowa_rfq_18649_economics_resource_adapters"
+      ],
+      "OPP-IAM-02": [
+        "uiowa_rfq_18649_ai_opportunity_portfolio",
+        "uiowa_rfq_18649_economics_resource_adapters"
+      ],
+      "OPP-RIS-01": [
+        "uiowa_rfq_18649_ai_opportunity_portfolio",
+        "uiowa_rfq_18649_economics_resource_adapters"
+      ],
+      "OPP-RIS-02": [
+        "uiowa_rfq_18649_ai_opportunity_portfolio",
+        "uiowa_rfq_18649_economics_resource_adapters"
+      ],
+      "REC-SYN-CROSS-SEC-001": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "REC-SYN-ESS-AI-001": [
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_prioritization",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "REC-SYN-ESS-DEP-001": [
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_prioritization"
+      ],
+      "REC-SYN-ESS-SD-001": [
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_prioritization",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "REC-SYN-ESS-SEC-001": [
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_prioritization"
+      ],
+      "REC-SYN-IAM-AI-001": [
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_prioritization",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "REC-SYN-IAM-DEP-001": [
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_prioritization",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "REC-SYN-IAM-SD-001": [
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_prioritization"
+      ],
+      "REC-SYN-IAM-SEC-001": [
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_prioritization"
+      ],
+      "REC-SYN-RIS-DEP-001": [
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_prioritization"
+      ],
+      "REC-SYN-RIS-SD-001": [
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_prioritization"
+      ],
+      "REC-SYN-RIS-SEC-001": [
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_prioritization",
+        "uiowa_rfq_18649_report_structure"
+      ]
+    },
+    "single_lane_fields_sample": [
+      "approved_at",
+      "approved_revision",
+      "arithmetic",
+      "artifact_version",
+      "asserted_by",
+      "assumption",
+      "benefit",
+      "benefit_hours_per_year_high",
+      "benefit_hours_per_year_likely",
+      "benefit_hours_per_year_low",
+      "benefits_unsupported",
+      "benefits_with_example",
+      "best_rank",
+      "blocked_by",
+      "calendar_days_added",
+      "classification",
+      "classification_reasons",
+      "complexity",
+      "complexity_basis",
+      "computed_fee",
+      "computed_fee_cents",
+      "computed_vs_published_delta",
+      "computed_vs_published_delta_cents",
+      "coordination_overhead",
+      "coordination_overhead_cents",
+      "coordination_overhead_pct",
+      "count_assertion",
+      "covers_deployment_environment",
+      "decision_class",
+      "decision_critical",
+      "decision_reason",
+      "declared_status",
+      "delivery_estimate",
+      "demoted",
+      "dependencies",
+      "dependency",
+      "detail",
+      "direction",
+      "display_order_is_not_priority",
+      "disposition"
+    ]
+  },
+  "crosswalk_declarations": [
+    {
+      "asserted_by": "OP5-CINDER, from reading both lanes' data dictionaries",
+      "basis": "Both fields hold the item's position in a priority ordering, and both use a distinct marker rather than a number when the item is not ranked. uiowa_rfq_18649_prioritization/DATA_DICTIONARY.md defines 'rank' as null/NOT_RANKED when unranked; the opportunity portfolio's 'rank' is the same concept. The equivalence is asserted on the documented meaning, not on the shared name.",
+      "canonical_field": "rank_position",
+      "members": [
+        {
+          "field": "rank",
+          "lane": "uiowa_rfq_18649_prioritization"
+        },
+        {
+          "field": "rank",
+          "lane": "uiowa_rfq_18649_ai_opportunity_portfolio"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "aligned_field": "status",
+      "detail": "every lane that speaks to this field records an unsettled value, in the same family: INCOMPLETE.",
+      "evidence_summary": [
+        {
+          "example_locator": "row 5",
+          "example_path": "uiowa_rfq_18649_output_agreement/fixtures/consistent/matrix.csv",
+          "file_count": 11,
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "side": "unsettled",
+          "value": "PARTIAL"
+        },
+        {
+          "example_locator": "row 5",
+          "example_path": "uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+          "file_count": 1,
+          "lane": "uiowa_rfq_18649_report_structure",
+          "side": "unsettled",
+          "value": "PARTIAL"
+        }
+      ],
+      "identifier": "FND-SYN-ESS-AI-001",
+      "lanes": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "negative_fixture_path_hint": [],
+      "resolution": "Nothing to resolve: no lane claims a settled value here. Listed so the comparison that was actually performed is visible, rather than only its failures.",
+      "scope": "CROSS_LANE",
+      "scope_detail": "No valued side: no lane records a settled value for this pair, so nothing crossed a boundary and changed.",
+      "unknown_lanes": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "unknown_side": [
+        {
+          "field": "status",
+          "identifier": "FND-SYN-ESS-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 5",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/consistent/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-ESS-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 5",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-ESS-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 5",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-ESS-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 5",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-ESS-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 5",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-ESS-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 5",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-ESS-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 5",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-ESS-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 5",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-ESS-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 5",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-ESS-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 5",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-ESS-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 5",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-ESS-AI-001",
+          "lane": "uiowa_rfq_18649_report_structure",
+          "locator": "row 5",
+          "path": "uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        }
+      ],
+      "unsettled_families": [
+        "INCOMPLETE"
+      ],
+      "valued_lanes": [],
+      "valued_side": [],
+      "verdict": "CONSISTENT"
+    },
+    {
+      "aligned_field": "status",
+      "detail": "every lane that speaks to this field records an unsettled value, in the same family: INCOMPLETE.",
+      "evidence_summary": [
+        {
+          "example_locator": "row 3",
+          "example_path": "uiowa_rfq_18649_output_agreement/fixtures/consistent/matrix.csv",
+          "file_count": 11,
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "side": "unsettled",
+          "value": "PARTIAL"
+        },
+        {
+          "example_locator": "row 3",
+          "example_path": "uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+          "file_count": 1,
+          "lane": "uiowa_rfq_18649_report_structure",
+          "side": "unsettled",
+          "value": "PARTIAL"
+        }
+      ],
+      "identifier": "FND-SYN-ESS-SEC-001",
+      "lanes": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "negative_fixture_path_hint": [],
+      "resolution": "Nothing to resolve: no lane claims a settled value here. Listed so the comparison that was actually performed is visible, rather than only its failures.",
+      "scope": "CROSS_LANE",
+      "scope_detail": "No valued side: no lane records a settled value for this pair, so nothing crossed a boundary and changed.",
+      "unknown_lanes": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "unknown_side": [
+        {
+          "field": "status",
+          "identifier": "FND-SYN-ESS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 3",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/consistent/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-ESS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 3",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-ESS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 3",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-ESS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 3",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-ESS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 3",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-ESS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 3",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-ESS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 3",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-ESS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 3",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-ESS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 3",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-ESS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 3",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-ESS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 3",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-ESS-SEC-001",
+          "lane": "uiowa_rfq_18649_report_structure",
+          "locator": "row 3",
+          "path": "uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        }
+      ],
+      "unsettled_families": [
+        "INCOMPLETE"
+      ],
+      "valued_lanes": [],
+      "valued_side": [],
+      "verdict": "CONSISTENT"
+    },
+    {
+      "aligned_field": "confidence",
+      "detail": "every lane that speaks to this field records an unsettled value, in the same family: INCOMPLETE.",
+      "evidence_summary": [
+        {
+          "example_locator": "row 11",
+          "example_path": "uiowa_rfq_18649_output_agreement/fixtures/consistent/matrix.csv",
+          "file_count": 11,
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "side": "unsettled",
+          "value": "UNRESOLVED"
+        },
+        {
+          "example_locator": "row 11",
+          "example_path": "uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+          "file_count": 1,
+          "lane": "uiowa_rfq_18649_report_structure",
+          "side": "unsettled",
+          "value": "UNRESOLVED"
+        }
+      ],
+      "identifier": "FND-SYN-IAM-DEP-001",
+      "lanes": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "negative_fixture_path_hint": [],
+      "resolution": "Nothing to resolve: no lane claims a settled value here. Listed so the comparison that was actually performed is visible, rather than only its failures.",
+      "scope": "CROSS_LANE",
+      "scope_detail": "No valued side: no lane records a settled value for this pair, so nothing crossed a boundary and changed.",
+      "unknown_lanes": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "unknown_side": [
+        {
+          "field": "confidence",
+          "identifier": "FND-SYN-IAM-DEP-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 11",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/consistent/matrix.csv",
+          "value": "UNRESOLVED",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "confidence",
+          "identifier": "FND-SYN-IAM-DEP-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 11",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/matrix.csv",
+          "value": "UNRESOLVED",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "confidence",
+          "identifier": "FND-SYN-IAM-DEP-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 11",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/matrix.csv",
+          "value": "UNRESOLVED",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "confidence",
+          "identifier": "FND-SYN-IAM-DEP-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 11",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/matrix.csv",
+          "value": "UNRESOLVED",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "confidence",
+          "identifier": "FND-SYN-IAM-DEP-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 11",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/matrix.csv",
+          "value": "UNRESOLVED",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "confidence",
+          "identifier": "FND-SYN-IAM-DEP-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 11",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/matrix.csv",
+          "value": "UNRESOLVED",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "confidence",
+          "identifier": "FND-SYN-IAM-DEP-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 11",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/matrix.csv",
+          "value": "UNRESOLVED",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "confidence",
+          "identifier": "FND-SYN-IAM-DEP-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 11",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/matrix.csv",
+          "value": "UNRESOLVED",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "confidence",
+          "identifier": "FND-SYN-IAM-DEP-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 11",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/matrix.csv",
+          "value": "UNRESOLVED",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "confidence",
+          "identifier": "FND-SYN-IAM-DEP-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 11",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/matrix.csv",
+          "value": "UNRESOLVED",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "confidence",
+          "identifier": "FND-SYN-IAM-DEP-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 11",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/matrix.csv",
+          "value": "UNRESOLVED",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "confidence",
+          "identifier": "FND-SYN-IAM-DEP-001",
+          "lane": "uiowa_rfq_18649_report_structure",
+          "locator": "row 11",
+          "path": "uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+          "value": "UNRESOLVED",
+          "value_class": "INCOMPLETE"
+        }
+      ],
+      "unsettled_families": [
+        "INCOMPLETE"
+      ],
+      "valued_lanes": [],
+      "valued_side": [],
+      "verdict": "CONSISTENT"
+    },
+    {
+      "aligned_field": "status",
+      "detail": "every lane that speaks to this field records an unsettled value, in the same family: INCOMPLETE.",
+      "evidence_summary": [
+        {
+          "example_locator": "row 6",
+          "example_path": "uiowa_rfq_18649_output_agreement/fixtures/consistent/matrix.csv",
+          "file_count": 11,
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "side": "unsettled",
+          "value": "PARTIAL"
+        },
+        {
+          "example_locator": "row 6",
+          "example_path": "uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+          "file_count": 1,
+          "lane": "uiowa_rfq_18649_report_structure",
+          "side": "unsettled",
+          "value": "PARTIAL"
+        }
+      ],
+      "identifier": "FND-SYN-RIS-SD-001",
+      "lanes": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "negative_fixture_path_hint": [],
+      "resolution": "Nothing to resolve: no lane claims a settled value here. Listed so the comparison that was actually performed is visible, rather than only its failures.",
+      "scope": "CROSS_LANE",
+      "scope_detail": "No valued side: no lane records a settled value for this pair, so nothing crossed a boundary and changed.",
+      "unknown_lanes": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "unknown_side": [
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SD-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 6",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/consistent/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SD-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 6",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SD-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 6",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SD-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 6",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SD-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 6",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SD-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 6",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SD-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 6",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SD-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 6",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SD-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 6",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SD-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 6",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SD-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 6",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SD-001",
+          "lane": "uiowa_rfq_18649_report_structure",
+          "locator": "row 6",
+          "path": "uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        }
+      ],
+      "unsettled_families": [
+        "INCOMPLETE"
+      ],
+      "valued_lanes": [],
+      "valued_side": [],
+      "verdict": "CONSISTENT"
+    }
+  ],
+  "intra_lane_variants": [
+    {
+      "aligned_field": "status",
+      "detail": "one lane records an unsettled value while another records a settled one. This may be a legitimate later estimate or it may be a value that was never sourced; nothing in the bytes distinguishes them.",
+      "evidence_summary": [
+        {
+          "example_locator": ".claims[4].asserted_state",
+          "example_path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/presentation.json",
+          "file_count": 1,
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "side": "has a value",
+          "value": "SUPPORTED"
+        },
+        {
+          "example_locator": "row 12",
+          "example_path": "uiowa_rfq_18649_output_agreement/fixtures/consistent/matrix.csv",
+          "file_count": 21,
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "side": "unsettled",
+          "value": "UNKNOWN"
+        },
+        {
+          "example_locator": "row 12",
+          "example_path": "uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+          "file_count": 1,
+          "lane": "uiowa_rfq_18649_report_structure",
+          "side": "unsettled",
+          "value": "UNKNOWN"
+        }
+      ],
+      "identifier": "FND-SYN-IAM-AI-001",
+      "lanes": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "negative_fixture_path_hint": [
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/presentation.json"
+      ],
+      "resolution": "No action implied. Reported for completeness so the screen is not silently filtering its own results.",
+      "scope": "INTRA_LANE_VARIANT",
+      "scope_detail": "Intra-lane variant: every lane holding a value also records the unknown for this same pair elsewhere in its own files. That is one lane's copies differing from each other, which is what a checker's deliberately-broken fixtures look like from outside. Not evidence that an unknown failed to survive a handoff.",
+      "unknown_lanes": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "unknown_side": [
+        {
+          "field": "status",
+          "identifier": "FND-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 12",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/consistent/matrix.csv",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": ".claims[4].asserted_state",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/consistent/presentation.json",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 12",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/matrix.csv",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": ".claims[4].asserted_state",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/presentation.json",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 12",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/matrix.csv",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": ".claims[4].asserted_state",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/presentation.json",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 12",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/matrix.csv",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": ".claims[4].asserted_state",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/presentation.json",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 12",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/matrix.csv",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": ".claims[4].asserted_state",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/presentation.json",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 12",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/matrix.csv",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": ".claims[4].asserted_state",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/presentation.json",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 12",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/matrix.csv",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": ".claims[4].asserted_state",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/presentation.json",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 12",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/matrix.csv",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": ".claims[4].asserted_state",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/presentation.json",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 12",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/matrix.csv",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": ".claims[4].asserted_state",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/presentation.json",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 12",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/matrix.csv",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 12",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/matrix.csv",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": ".claims[4].asserted_state",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/presentation.json",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_report_structure",
+          "locator": "row 12",
+          "path": "uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        }
+      ],
+      "unsettled_families": [
+        "UNKNOWN"
+      ],
+      "valued_lanes": [
+        "uiowa_rfq_18649_output_agreement"
+      ],
+      "valued_side": [
+        {
+          "field": "status",
+          "identifier": "FND-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": ".claims[4].asserted_state",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/presentation.json",
+          "value": "SUPPORTED",
+          "value_class": "KNOWN"
+        }
+      ],
+      "verdict": "UNKNOWN_HARDENED"
+    },
+    {
+      "aligned_field": "status",
+      "detail": "one lane records an unsettled value while another records a settled one. This may be a legitimate later estimate or it may be a value that was never sourced; nothing in the bytes distinguishes them.",
+      "evidence_summary": [
+        {
+          "example_locator": ".claims[1].asserted_state",
+          "example_path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/presentation.json",
+          "file_count": 1,
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "side": "has a value",
+          "value": "SUPPORTED"
+        },
+        {
+          "example_locator": "row 7",
+          "example_path": "uiowa_rfq_18649_output_agreement/fixtures/consistent/matrix.csv",
+          "file_count": 21,
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "side": "unsettled",
+          "value": "PARTIAL"
+        },
+        {
+          "example_locator": "row 7",
+          "example_path": "uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+          "file_count": 1,
+          "lane": "uiowa_rfq_18649_report_structure",
+          "side": "unsettled",
+          "value": "PARTIAL"
+        }
+      ],
+      "identifier": "FND-SYN-RIS-SEC-001",
+      "lanes": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "negative_fixture_path_hint": [
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/presentation.json"
+      ],
+      "resolution": "No action implied. Reported for completeness so the screen is not silently filtering its own results.",
+      "scope": "INTRA_LANE_VARIANT",
+      "scope_detail": "Intra-lane variant: every lane holding a value also records the unknown for this same pair elsewhere in its own files. That is one lane's copies differing from each other, which is what a checker's deliberately-broken fixtures look like from outside. Not evidence that an unknown failed to survive a handoff.",
+      "unknown_lanes": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "unknown_side": [
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 7",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/consistent/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": ".claims[1].asserted_state",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/consistent/presentation.json",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 7",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": ".claims[1].asserted_state",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/presentation.json",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 7",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": ".claims[1].asserted_state",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/presentation.json",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 7",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": ".claims[1].asserted_state",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/presentation.json",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 7",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": ".claims[1].asserted_state",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/presentation.json",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 7",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": ".claims[1].asserted_state",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/presentation.json",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 7",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": ".claims[1].asserted_state",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/presentation.json",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 7",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": ".claims[1].asserted_state",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/presentation.json",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 7",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 7",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": ".claims[1].asserted_state",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/presentation.json",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 7",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": ".claims[1].asserted_state",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/presentation.json",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        },
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SEC-001",
+          "lane": "uiowa_rfq_18649_report_structure",
+          "locator": "row 7",
+          "path": "uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+          "value": "PARTIAL",
+          "value_class": "INCOMPLETE"
+        }
+      ],
+      "unsettled_families": [
+        "INCOMPLETE"
+      ],
+      "valued_lanes": [
+        "uiowa_rfq_18649_output_agreement"
+      ],
+      "valued_side": [
+        {
+          "field": "status",
+          "identifier": "FND-SYN-RIS-SEC-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": ".claims[1].asserted_state",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/presentation.json",
+          "value": "SUPPORTED",
+          "value_class": "KNOWN"
+        }
+      ],
+      "verdict": "UNKNOWN_HARDENED"
+    },
+    {
+      "aligned_field": "horizon",
+      "detail": "one lane records an unsettled value while another records a settled one. This may be a legitimate later estimate or it may be a value that was never sourced; nothing in the bytes distinguishes them.",
+      "evidence_summary": [
+        {
+          "example_locator": ".claims[5].asserted_horizon",
+          "example_path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/presentation.json",
+          "file_count": 1,
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "side": "has a value",
+          "value": "0-90"
+        },
+        {
+          "example_locator": "row 7",
+          "example_path": "uiowa_rfq_18649_output_agreement/fixtures/consistent/recommendations.csv",
+          "file_count": 11,
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "side": "unsettled",
+          "value": "UNKNOWN"
+        },
+        {
+          "example_locator": "row 7",
+          "example_path": "uiowa_rfq_18649_report_structure/fixtures/synthetic_recommendation_register.csv",
+          "file_count": 1,
+          "lane": "uiowa_rfq_18649_report_structure",
+          "side": "unsettled",
+          "value": "UNKNOWN"
+        }
+      ],
+      "identifier": "REC-SYN-IAM-AI-001",
+      "lanes": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "negative_fixture_path_hint": [
+        "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/presentation.json"
+      ],
+      "resolution": "No action implied. Reported for completeness so the screen is not silently filtering its own results.",
+      "scope": "INTRA_LANE_VARIANT",
+      "scope_detail": "Intra-lane variant: every lane holding a value also records the unknown for this same pair elsewhere in its own files. That is one lane's copies differing from each other, which is what a checker's deliberately-broken fixtures look like from outside. Not evidence that an unknown failed to survive a handoff.",
+      "unknown_lanes": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ],
+      "unknown_side": [
+        {
+          "field": "horizon",
+          "identifier": "REC-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 7",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/consistent/recommendations.csv",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "horizon",
+          "identifier": "REC-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 7",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/count_mismatch/recommendations.csv",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "horizon",
+          "identifier": "REC-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 7",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/dangling_id/recommendations.csv",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "horizon",
+          "identifier": "REC-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 7",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/duplicate_id/recommendations.csv",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "horizon",
+          "identifier": "REC-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 7",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_fabricated/recommendations.csv",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "horizon",
+          "identifier": "REC-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 7",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/estimate_mismatch/recommendations.csv",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "horizon",
+          "identifier": "REC-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 7",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/recommendations.csv",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "horizon",
+          "identifier": "REC-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 7",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_mismatch/recommendations.csv",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "horizon",
+          "identifier": "REC-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 7",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/state_mismatch/recommendations.csv",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "horizon",
+          "identifier": "REC-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 7",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unassessed_result_claimed/recommendations.csv",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "horizon",
+          "identifier": "REC-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": "row 7",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/unknown_count_set/recommendations.csv",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "horizon",
+          "identifier": "REC-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_report_structure",
+          "locator": "row 7",
+          "path": "uiowa_rfq_18649_report_structure/fixtures/synthetic_recommendation_register.csv",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        }
+      ],
+      "unsettled_families": [
+        "UNKNOWN"
+      ],
+      "valued_lanes": [
+        "uiowa_rfq_18649_output_agreement"
+      ],
+      "valued_side": [
+        {
+          "field": "horizon",
+          "identifier": "REC-SYN-IAM-AI-001",
+          "lane": "uiowa_rfq_18649_output_agreement",
+          "locator": ".claims[5].asserted_horizon",
+          "path": "uiowa_rfq_18649_output_agreement/fixtures/mismatched/phase_fabricated/presentation.json",
+          "value": "0-90",
+          "value_class": "KNOWN"
+        }
+      ],
+      "verdict": "UNKNOWN_HARDENED"
+    }
+  ],
+  "limits": [
+    "A clean result means this screen found no disagreement in the fields it could align. It is NOT a statement that the artifacts agree.",
+    "Fields are aligned by exact name or by a declared crosswalk entry. No similarity matching is performed, so genuinely equivalent fields with different names are invisible to this screen unless somebody declares the equivalence.",
+    "Only JSON and CSV are read. Values stated in Markdown prose are not compared.",
+    "The screen cannot tell a legitimate later estimate from a value that was never sourced, and does not try.",
+    "No lane, artifact or author is scored, rated, graded or marked compliant by this output."
+  ],
+  "readonly_verification": {
+    "digest_after": "sha256:1fa495b0c532d3dc348ac8d04fffe407e1740827ce809b1bb929f549b6ec695d",
+    "digest_before": "sha256:1fa495b0c532d3dc348ac8d04fffe407e1740827ce809b1bb929f549b6ec695d",
+    "tree_unchanged": true
+  },
+  "totals": {
+    "claims": 6221,
+    "comparable_identifier_field_pairs": 120,
+    "field_names": 222,
+    "field_names_in_multiple_lanes": 36,
+    "field_names_in_one_lane_only": 186,
+    "identifiers": 136,
+    "identifiers_in_multiple_lanes": 29
+  },
+  "unknown_vocabulary_census": {
+    "NEEDS_ESTIMATE": {
+      "family": "UNKNOWN",
+      "lane_count": 1,
+      "lanes": [
+        "uiowa_rfq_18649_prioritization"
+      ]
+    },
+    "NONE": {
+      "family": "UNKNOWN",
+      "lane_count": 2,
+      "lanes": [
+        "uiowa_rfq_18649_prioritization",
+        "uiowa_rfq_18649_scope_change"
+      ]
+    },
+    "NOT QUOTED": {
+      "family": "UNKNOWN",
+      "lane_count": 1,
+      "lanes": [
+        "uiowa_rfq_18649_scope_change"
+      ]
+    },
+    "NOT_RANKED": {
+      "family": "UNKNOWN",
+      "lane_count": 1,
+      "lanes": [
+        "uiowa_rfq_18649_prioritization"
+      ]
+    },
+    "NO_RESOURCING_DATA": {
+      "family": "UNKNOWN",
+      "lane_count": 1,
+      "lanes": [
+        "uiowa_rfq_18649_economics_resource_adapters"
+      ]
+    },
+    "None": {
+      "family": "UNKNOWN",
+      "lane_count": 1,
+      "lanes": [
+        "uiowa_rfq_18649_prioritization"
+      ]
+    },
+    "PARTIAL": {
+      "family": "INCOMPLETE",
+      "lane_count": 3,
+      "lanes": [
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure"
+      ]
+    },
+    "POPULATION_UNKNOWN": {
+      "family": "UNKNOWN",
+      "lane_count": 2,
+      "lanes": [
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_workshare"
+      ]
+    },
+    "UNKNOWN": {
+      "family": "UNKNOWN",
+      "lane_count": 9,
+      "lanes": [
+        "uiowa_rfq_18649_ai_opportunity_portfolio",
+        "uiowa_rfq_18649_ai_use_inventory",
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_milestone_packets",
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_prioritization",
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_scope_change",
+        "uiowa_rfq_18649_workshare"
+      ]
+    },
+    "UNRESOLVED": {
+      "family": "INCOMPLETE",
+      "lane_count": 3,
+      "lanes": [
+        "uiowa_rfq_18649_output_agreement",
+        "uiowa_rfq_18649_report_structure",
+        "uiowa_rfq_18649_workshare"
+      ]
+    },
+    "none": {
+      "family": "UNKNOWN",
+      "lane_count": 2,
+      "lanes": [
+        "uiowa_rfq_18649_ai_opportunity_portfolio",
+        "uiowa_rfq_18649_economics_resource_adapters"
+      ]
+    },
+    "null": {
+      "family": "UNKNOWN",
+      "lane_count": 5,
+      "lanes": [
+        "uiowa_rfq_18649_economics_resource_adapters",
+        "uiowa_rfq_18649_intake_rehearsal",
+        "uiowa_rfq_18649_prioritization",
+        "uiowa_rfq_18649_release_recovery_case",
+        "uiowa_rfq_18649_scope_change"
+      ]
+    }
+  },
+  "unreadable_files": [],
+  "vocabulary_divergence": [
+    {
+      "detail": "field 'benefit' expresses an unsettled value in 2 different ways across the tree",
+      "field": "benefit",
+      "spellings": {
+        "UNKNOWN": [
+          "uiowa_rfq_18649_prioritization"
+        ],
+        "null": [
+          "uiowa_rfq_18649_prioritization"
+        ]
+      }
+    },
+    {
+      "detail": "field 'complexity' expresses an unsettled value in 2 different ways across the tree",
+      "field": "complexity",
+      "spellings": {
+        "UNKNOWN": [
+          "uiowa_rfq_18649_prioritization"
+        ],
+        "null": [
+          "uiowa_rfq_18649_prioritization"
+        ]
+      }
+    },
+    {
+      "detail": "field 'fee' expresses an unsettled value in 2 different ways across the tree",
+      "field": "fee",
+      "spellings": {
+        "NOT QUOTED": [
+          "uiowa_rfq_18649_scope_change"
+        ],
+        "UNKNOWN": [
+          "uiowa_rfq_18649_scope_change"
+        ]
+      }
+    },
+    {
+      "detail": "field 'notes' expresses an unsettled value in 2 different ways across the tree",
+      "field": "notes",
+      "spellings": {
+        "None": [
+          "uiowa_rfq_18649_prioritization"
+        ],
+        "null": [
+          "uiowa_rfq_18649_prioritization"
+        ]
+      }
+    },
+    {
+      "detail": "field 'one_time_cash_state' expresses an unsettled value in 2 different ways across the tree",
+      "field": "one_time_cash_state",
+      "spellings": {
+        "PARTIAL": [
+          "uiowa_rfq_18649_economics_resource_adapters"
+        ],
+        "UNKNOWN": [
+          "uiowa_rfq_18649_economics_resource_adapters"
+        ]
+      }
+    },
+    {
+      "detail": "field 'priority_score' expresses an unsettled value in 2 different ways across the tree",
+      "field": "priority_score",
+      "spellings": {
+        "UNKNOWN": [
+          "uiowa_rfq_18649_prioritization"
+        ],
+        "null": [
+          "uiowa_rfq_18649_prioritization"
+        ]
+      }
+    },
+    {
+      "detail": "field 'rank' expresses an unsettled value in 3 different ways across the tree",
+      "field": "rank",
+      "spellings": {
+        "NOT_RANKED": [
+          "uiowa_rfq_18649_prioritization"
+        ],
+        "UNKNOWN": [
+          "uiowa_rfq_18649_ai_opportunity_portfolio"
+        ],
+        "null": [
+          "uiowa_rfq_18649_prioritization"
+        ]
+      }
+    },
+    {
+      "detail": "field 'recurring_cash_yr_state' expresses an unsettled value in 2 different ways across the tree",
+      "field": "recurring_cash_yr_state",
+      "spellings": {
+        "PARTIAL": [
+          "uiowa_rfq_18649_economics_resource_adapters"
+        ],
+        "UNKNOWN": [
+          "uiowa_rfq_18649_economics_resource_adapters"
+        ]
+      }
+    },
+    {
+      "detail": "field 'released_capacity_hours_yr_state' expresses an unsettled value in 2 different ways across the tree",
+      "field": "released_capacity_hours_yr_state",
+      "spellings": {
+        "PARTIAL": [
+          "uiowa_rfq_18649_economics_resource_adapters"
+        ],
+        "UNKNOWN": [
+          "uiowa_rfq_18649_economics_resource_adapters"
+        ]
+      }
+    },
+    {
+      "detail": "field 'representativeness' expresses an unsettled value in 2 different ways across the tree",
+      "field": "representativeness",
+      "spellings": {
+        "POPULATION_UNKNOWN": [
+          "uiowa_rfq_18649_report_structure",
+          "uiowa_rfq_18649_workshare"
+        ],
+        "UNKNOWN": [
+          "uiowa_rfq_18649_report_structure",
+          "uiowa_rfq_18649_workshare"
+        ]
+      }
+    },
+    {
+      "detail": "field 'resourcing_state' expresses an unsettled value in 2 different ways across the tree",
+      "field": "resourcing_state",
+      "spellings": {
+        "NO_RESOURCING_DATA": [
+          "uiowa_rfq_18649_economics_resource_adapters"
+        ],
+        "PARTIAL": [
+          "uiowa_rfq_18649_economics_resource_adapters"
+        ]
+      }
+    },
+    {
+      "detail": "field 'status' expresses an unsettled value in 3 different ways across the tree",
+      "field": "status",
+      "spellings": {
+        "NEEDS_ESTIMATE": [
+          "uiowa_rfq_18649_prioritization"
+        ],
+        "PARTIAL": [
+          "uiowa_rfq_18649_output_agreement",
+          "uiowa_rfq_18649_report_structure"
+        ],
+        "UNKNOWN": [
+          "uiowa_rfq_18649_output_agreement",
+          "uiowa_rfq_18649_report_structure"
+        ]
+      }
+    }
+  ]
+}

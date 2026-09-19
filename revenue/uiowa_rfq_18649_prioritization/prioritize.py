@@ -173,6 +173,20 @@ def parse_estimate(raw: Any, *, rec_id: str, field: str, lo: int, hi: int):
     return value
 
 
+def _text(raw: Any) -> str:
+    """Read an optional free-text field without turning None into "None".
+
+    `str(None)` is the string "None", which is how a JSON `null` becomes a
+    four-character value that looks like content. The cross-lane UNKNOWN screen
+    in `../uiowa_rfq_18649_unknown_propagation/` caught exactly that in this
+    file's own output: a recommendation with `"notes": null` shipped with
+    `"notes": "None"`. An absent value is an empty string, not a word.
+    """
+    if raw is None:
+        return ""
+    return str(raw).strip()
+
+
 def _estimate_basis(raw: Any) -> str:
     """Pull the human justification out of an estimate object, if one was given."""
     if isinstance(raw, dict):
@@ -202,9 +216,9 @@ class Recommendation:
                 "every recommendation needs a non-empty 'recommendation_id'"
             )
         self.recommendation_id = rec_id.strip()
-        self.title = str(payload.get("title", "")).strip()
-        self.group = str(payload.get("group", "")).strip()
-        self.area = str(payload.get("area", "")).strip()
+        self.title = _text(payload.get("title"))
+        self.group = _text(payload.get("group"))
+        self.area = _text(payload.get("area"))
 
         finding_ids = payload.get("finding_ids", [])
         if isinstance(finding_ids, str):
@@ -256,7 +270,7 @@ class Recommendation:
             hi=COMPLEXITY_MAX,
         )
         self.complexity_basis = _estimate_basis(raw_complexity)
-        self.notes = str(payload.get("notes", "")).strip()
+        self.notes = _text(payload.get("notes"))
 
     # -- convenience -------------------------------------------------------------
 

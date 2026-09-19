@@ -1,0 +1,508 @@
+{
+  "content_class": "READ_ONLY_SCREEN_RESULT_NOT_AN_ASSESSMENT",
+  "counts_by_scope": {
+    "CROSS_LANE": 6,
+    "INTRA_LANE_VARIANT": 0
+  },
+  "counts_by_verdict": {
+    "CONSISTENT": 2,
+    "UNKNOWN_BECAME_ZERO": 1,
+    "UNKNOWN_HARDENED": 3
+  },
+  "coverage": {
+    "alignment_note": "3 of 4 field names appear in more than one lane. The remaining 1 are used by exactly one lane, so no cross-lane check of those values is possible at all -- not because they agree, but because nothing can be compared to them.",
+    "shared_fields": {
+      "effort_hours": [
+        "lane_alpha",
+        "lane_beta"
+      ],
+      "owner": [
+        "lane_alpha",
+        "lane_beta"
+      ],
+      "priority": [
+        "lane_alpha",
+        "lane_beta"
+      ]
+    },
+    "shared_identifiers": {
+      "REC-SYN-FIX-001": [
+        "lane_alpha",
+        "lane_beta"
+      ],
+      "REC-SYN-FIX-002": [
+        "lane_alpha",
+        "lane_beta"
+      ],
+      "REC-SYN-FIX-003": [
+        "lane_alpha",
+        "lane_beta"
+      ],
+      "REC-SYN-FIX-004": [
+        "lane_alpha",
+        "lane_beta"
+      ]
+    },
+    "single_lane_fields_sample": [
+      "title"
+    ]
+  },
+  "crosswalk_declarations": [],
+  "findings": [
+    {
+      "aligned_field": "effort_hours",
+      "detail": "one lane records an unsettled value while another records a literal zero for the same identifier and field. A zero is the one substitution that survives every downstream sum without looking wrong.",
+      "evidence_summary": [
+        {
+          "example_locator": "row 2",
+          "example_path": "lane_beta/rollup.csv",
+          "file_count": 1,
+          "lane": "lane_beta",
+          "side": "has a value",
+          "value": "0"
+        },
+        {
+          "example_locator": ".recommendations[0]",
+          "example_path": "lane_alpha/register.json",
+          "file_count": 1,
+          "lane": "lane_alpha",
+          "side": "unsettled",
+          "value": "null"
+        }
+      ],
+      "identifier": "REC-SYN-FIX-001",
+      "lanes": [
+        "lane_alpha",
+        "lane_beta"
+      ],
+      "negative_fixture_path_hint": [],
+      "resolution": "This screen does not decide which lane is correct. A person with the engagement context has to say whether the value was settled after the unsettled one was recorded, or whether it is still unsettled.",
+      "scope": "CROSS_LANE",
+      "scope_detail": "Cross-lane: a lane records a value for this pair without recording the unknown anywhere in its own files. Something changed across a handoff.",
+      "unknown_lanes": [
+        "lane_alpha"
+      ],
+      "unknown_side": [
+        {
+          "field": "effort_hours",
+          "identifier": "REC-SYN-FIX-001",
+          "lane": "lane_alpha",
+          "locator": ".recommendations[0]",
+          "path": "lane_alpha/register.json",
+          "value": null,
+          "value_class": "UNKNOWN"
+        }
+      ],
+      "unsettled_families": [
+        "UNKNOWN"
+      ],
+      "valued_lanes": [
+        "lane_beta"
+      ],
+      "valued_side": [
+        {
+          "field": "effort_hours",
+          "identifier": "REC-SYN-FIX-001",
+          "lane": "lane_beta",
+          "locator": "row 2",
+          "path": "lane_beta/rollup.csv",
+          "value": "0",
+          "value_class": "ZERO"
+        }
+      ],
+      "verdict": "UNKNOWN_BECAME_ZERO"
+    },
+    {
+      "aligned_field": "priority",
+      "detail": "one lane records an unsettled value while another records a settled one. This may be a legitimate later estimate or it may be a value that was never sourced; nothing in the bytes distinguishes them.",
+      "evidence_summary": [
+        {
+          "example_locator": "row 2",
+          "example_path": "lane_beta/rollup.csv",
+          "file_count": 1,
+          "lane": "lane_beta",
+          "side": "has a value",
+          "value": "LOW"
+        },
+        {
+          "example_locator": ".recommendations[0]",
+          "example_path": "lane_alpha/register.json",
+          "file_count": 1,
+          "lane": "lane_alpha",
+          "side": "unsettled",
+          "value": "NEEDS_ESTIMATE"
+        }
+      ],
+      "identifier": "REC-SYN-FIX-001",
+      "lanes": [
+        "lane_alpha",
+        "lane_beta"
+      ],
+      "negative_fixture_path_hint": [],
+      "resolution": "This screen does not decide which lane is correct. A person with the engagement context has to say whether the value was settled after the unsettled one was recorded, or whether it is still unsettled.",
+      "scope": "CROSS_LANE",
+      "scope_detail": "Cross-lane: a lane records a value for this pair without recording the unknown anywhere in its own files. Something changed across a handoff.",
+      "unknown_lanes": [
+        "lane_alpha"
+      ],
+      "unknown_side": [
+        {
+          "field": "priority",
+          "identifier": "REC-SYN-FIX-001",
+          "lane": "lane_alpha",
+          "locator": ".recommendations[0]",
+          "path": "lane_alpha/register.json",
+          "value": "NEEDS_ESTIMATE",
+          "value_class": "UNKNOWN"
+        }
+      ],
+      "unsettled_families": [
+        "UNKNOWN"
+      ],
+      "valued_lanes": [
+        "lane_beta"
+      ],
+      "valued_side": [
+        {
+          "field": "priority",
+          "identifier": "REC-SYN-FIX-001",
+          "lane": "lane_beta",
+          "locator": "row 2",
+          "path": "lane_beta/rollup.csv",
+          "value": "LOW",
+          "value_class": "KNOWN"
+        }
+      ],
+      "verdict": "UNKNOWN_HARDENED"
+    },
+    {
+      "aligned_field": "effort_hours",
+      "detail": "one lane records an unsettled value while another records a settled one. This may be a legitimate later estimate or it may be a value that was never sourced; nothing in the bytes distinguishes them.",
+      "evidence_summary": [
+        {
+          "example_locator": "row 3",
+          "example_path": "lane_beta/rollup.csv",
+          "file_count": 1,
+          "lane": "lane_beta",
+          "side": "has a value",
+          "value": "120"
+        },
+        {
+          "example_locator": ".recommendations[1]",
+          "example_path": "lane_alpha/register.json",
+          "file_count": 1,
+          "lane": "lane_alpha",
+          "side": "unsettled",
+          "value": "UNKNOWN"
+        }
+      ],
+      "identifier": "REC-SYN-FIX-002",
+      "lanes": [
+        "lane_alpha",
+        "lane_beta"
+      ],
+      "negative_fixture_path_hint": [],
+      "resolution": "This screen does not decide which lane is correct. A person with the engagement context has to say whether the value was settled after the unsettled one was recorded, or whether it is still unsettled.",
+      "scope": "CROSS_LANE",
+      "scope_detail": "Cross-lane: a lane records a value for this pair without recording the unknown anywhere in its own files. Something changed across a handoff.",
+      "unknown_lanes": [
+        "lane_alpha"
+      ],
+      "unknown_side": [
+        {
+          "field": "effort_hours",
+          "identifier": "REC-SYN-FIX-002",
+          "lane": "lane_alpha",
+          "locator": ".recommendations[1]",
+          "path": "lane_alpha/register.json",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        }
+      ],
+      "unsettled_families": [
+        "UNKNOWN"
+      ],
+      "valued_lanes": [
+        "lane_beta"
+      ],
+      "valued_side": [
+        {
+          "field": "effort_hours",
+          "identifier": "REC-SYN-FIX-002",
+          "lane": "lane_beta",
+          "locator": "row 3",
+          "path": "lane_beta/rollup.csv",
+          "value": "120",
+          "value_class": "KNOWN"
+        }
+      ],
+      "verdict": "UNKNOWN_HARDENED"
+    },
+    {
+      "aligned_field": "priority",
+      "detail": "one lane records an unsettled value while another records a settled one. This may be a legitimate later estimate or it may be a value that was never sourced; nothing in the bytes distinguishes them.",
+      "evidence_summary": [
+        {
+          "example_locator": "row 3",
+          "example_path": "lane_beta/rollup.csv",
+          "file_count": 1,
+          "lane": "lane_beta",
+          "side": "has a value",
+          "value": "HIGH"
+        },
+        {
+          "example_locator": ".recommendations[1]",
+          "example_path": "lane_alpha/register.json",
+          "file_count": 1,
+          "lane": "lane_alpha",
+          "side": "unsettled",
+          "value": "NEEDS_ESTIMATE"
+        }
+      ],
+      "identifier": "REC-SYN-FIX-002",
+      "lanes": [
+        "lane_alpha",
+        "lane_beta"
+      ],
+      "negative_fixture_path_hint": [],
+      "resolution": "This screen does not decide which lane is correct. A person with the engagement context has to say whether the value was settled after the unsettled one was recorded, or whether it is still unsettled.",
+      "scope": "CROSS_LANE",
+      "scope_detail": "Cross-lane: a lane records a value for this pair without recording the unknown anywhere in its own files. Something changed across a handoff.",
+      "unknown_lanes": [
+        "lane_alpha"
+      ],
+      "unknown_side": [
+        {
+          "field": "priority",
+          "identifier": "REC-SYN-FIX-002",
+          "lane": "lane_alpha",
+          "locator": ".recommendations[1]",
+          "path": "lane_alpha/register.json",
+          "value": "NEEDS_ESTIMATE",
+          "value_class": "UNKNOWN"
+        }
+      ],
+      "unsettled_families": [
+        "UNKNOWN"
+      ],
+      "valued_lanes": [
+        "lane_beta"
+      ],
+      "valued_side": [
+        {
+          "field": "priority",
+          "identifier": "REC-SYN-FIX-002",
+          "lane": "lane_beta",
+          "locator": "row 3",
+          "path": "lane_beta/rollup.csv",
+          "value": "HIGH",
+          "value_class": "KNOWN"
+        }
+      ],
+      "verdict": "UNKNOWN_HARDENED"
+    },
+    {
+      "aligned_field": "effort_hours",
+      "detail": "every lane that speaks to this field records an unsettled value, in the same family: UNKNOWN.",
+      "evidence_summary": [
+        {
+          "example_locator": ".recommendations[3]",
+          "example_path": "lane_alpha/register.json",
+          "file_count": 1,
+          "lane": "lane_alpha",
+          "side": "unsettled",
+          "value": "UNKNOWN"
+        },
+        {
+          "example_locator": "row 5",
+          "example_path": "lane_beta/rollup.csv",
+          "file_count": 1,
+          "lane": "lane_beta",
+          "side": "unsettled",
+          "value": "UNKNOWN"
+        }
+      ],
+      "identifier": "REC-SYN-FIX-004",
+      "lanes": [
+        "lane_alpha",
+        "lane_beta"
+      ],
+      "negative_fixture_path_hint": [],
+      "resolution": "Nothing to resolve: no lane claims a settled value here. Listed so the comparison that was actually performed is visible, rather than only its failures.",
+      "scope": "CROSS_LANE",
+      "scope_detail": "No valued side: no lane records a settled value for this pair, so nothing crossed a boundary and changed.",
+      "unknown_lanes": [
+        "lane_alpha",
+        "lane_beta"
+      ],
+      "unknown_side": [
+        {
+          "field": "effort_hours",
+          "identifier": "REC-SYN-FIX-004",
+          "lane": "lane_alpha",
+          "locator": ".recommendations[3]",
+          "path": "lane_alpha/register.json",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "effort_hours",
+          "identifier": "REC-SYN-FIX-004",
+          "lane": "lane_beta",
+          "locator": "row 5",
+          "path": "lane_beta/rollup.csv",
+          "value": "UNKNOWN",
+          "value_class": "UNKNOWN"
+        }
+      ],
+      "unsettled_families": [
+        "UNKNOWN"
+      ],
+      "valued_lanes": [],
+      "valued_side": [],
+      "verdict": "CONSISTENT"
+    },
+    {
+      "aligned_field": "priority",
+      "detail": "every lane that speaks to this field records an unsettled value, in the same family: UNKNOWN.",
+      "evidence_summary": [
+        {
+          "example_locator": ".recommendations[3]",
+          "example_path": "lane_alpha/register.json",
+          "file_count": 1,
+          "lane": "lane_alpha",
+          "side": "unsettled",
+          "value": "NEEDS_ESTIMATE"
+        },
+        {
+          "example_locator": "row 5",
+          "example_path": "lane_beta/rollup.csv",
+          "file_count": 1,
+          "lane": "lane_beta",
+          "side": "unsettled",
+          "value": "NOT_ASSESSED"
+        }
+      ],
+      "identifier": "REC-SYN-FIX-004",
+      "lanes": [
+        "lane_alpha",
+        "lane_beta"
+      ],
+      "negative_fixture_path_hint": [],
+      "resolution": "Nothing to resolve: no lane claims a settled value here. Listed so the comparison that was actually performed is visible, rather than only its failures.",
+      "scope": "CROSS_LANE",
+      "scope_detail": "No valued side: no lane records a settled value for this pair, so nothing crossed a boundary and changed.",
+      "unknown_lanes": [
+        "lane_alpha",
+        "lane_beta"
+      ],
+      "unknown_side": [
+        {
+          "field": "priority",
+          "identifier": "REC-SYN-FIX-004",
+          "lane": "lane_alpha",
+          "locator": ".recommendations[3]",
+          "path": "lane_alpha/register.json",
+          "value": "NEEDS_ESTIMATE",
+          "value_class": "UNKNOWN"
+        },
+        {
+          "field": "priority",
+          "identifier": "REC-SYN-FIX-004",
+          "lane": "lane_beta",
+          "locator": "row 5",
+          "path": "lane_beta/rollup.csv",
+          "value": "NOT_ASSESSED",
+          "value_class": "UNKNOWN"
+        }
+      ],
+      "unsettled_families": [
+        "UNKNOWN"
+      ],
+      "valued_lanes": [],
+      "valued_side": [],
+      "verdict": "CONSISTENT"
+    }
+  ],
+  "intra_lane_variants": [],
+  "limits": [
+    "A clean result means this screen found no disagreement in the fields it could align. It is NOT a statement that the artifacts agree.",
+    "Fields are aligned by exact name or by a declared crosswalk entry. No similarity matching is performed, so genuinely equivalent fields with different names are invisible to this screen unless somebody declares the equivalence.",
+    "Only JSON and CSV are read. Values stated in Markdown prose are not compared.",
+    "The screen cannot tell a legitimate later estimate from a value that was never sourced, and does not try.",
+    "No lane, artifact or author is scored, rated, graded or marked compliant by this output."
+  ],
+  "readonly_verification": {
+    "digest_after": "sha256:8c1a2debc70e991bc745e033003b54210d7209a06491465b004e604eecece89e",
+    "digest_before": "sha256:8c1a2debc70e991bc745e033003b54210d7209a06491465b004e604eecece89e",
+    "tree_unchanged": true
+  },
+  "totals": {
+    "claims": 28,
+    "comparable_identifier_field_pairs": 12,
+    "field_names": 4,
+    "field_names_in_multiple_lanes": 3,
+    "field_names_in_one_lane_only": 1,
+    "identifiers": 4,
+    "identifiers_in_multiple_lanes": 4
+  },
+  "unknown_vocabulary_census": {
+    "NEEDS_ESTIMATE": {
+      "family": "UNKNOWN",
+      "lane_count": 1,
+      "lanes": [
+        "lane_alpha"
+      ]
+    },
+    "NOT_ASSESSED": {
+      "family": "UNKNOWN",
+      "lane_count": 1,
+      "lanes": [
+        "lane_beta"
+      ]
+    },
+    "UNKNOWN": {
+      "family": "UNKNOWN",
+      "lane_count": 2,
+      "lanes": [
+        "lane_alpha",
+        "lane_beta"
+      ]
+    },
+    "null": {
+      "family": "UNKNOWN",
+      "lane_count": 1,
+      "lanes": [
+        "lane_alpha"
+      ]
+    }
+  },
+  "unreadable_files": [],
+  "vocabulary_divergence": [
+    {
+      "detail": "field 'effort_hours' expresses an unsettled value in 2 different ways across the tree",
+      "field": "effort_hours",
+      "spellings": {
+        "UNKNOWN": [
+          "lane_alpha",
+          "lane_beta"
+        ],
+        "null": [
+          "lane_alpha"
+        ]
+      }
+    },
+    {
+      "detail": "field 'priority' expresses an unsettled value in 2 different ways across the tree",
+      "field": "priority",
+      "spellings": {
+        "NEEDS_ESTIMATE": [
+          "lane_alpha"
+        ],
+        "NOT_ASSESSED": [
+          "lane_beta"
+        ]
+      }
+    }
+  ]
+}

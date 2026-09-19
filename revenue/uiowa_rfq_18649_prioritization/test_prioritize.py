@@ -150,6 +150,34 @@ class MissingEstimateTests(unittest.TestCase):
                 self.assertIsNone(record["priority_score"])
                 self.assertEqual(record["blocking_unknowns"], ["effects.quality"])
 
+    def test_a_null_text_field_is_empty_not_the_word_None(self):
+        """Regression: `"notes": null` shipped as the string "None".
+
+        `str(None)` is "None" -- four characters that look like content in every
+        downstream CSV, report and cross-lane comparison. The cross-lane UNKNOWN
+        screen found this in this module's own landed output, where
+        REC-SYN-IAM-SEC-001 carried `"notes": "None"`. An absent value is empty.
+        """
+        for field in ("title", "group", "area", "notes"):
+            with self.subTest(field=field):
+                rec = Recommendation(make_rec(**{field: None}))
+                self.assertEqual(getattr(rec, field), "")
+                self.assertNotEqual(getattr(rec, field), "None")
+        # And it survives into the rendered record.
+        record = one(make_rec(notes=None))
+        self.assertEqual(record["notes"], "")
+        self.assertNotIn("None", str(record["notes"]))
+
+    def test_the_shipped_fixture_has_no_None_strings(self):
+        """No artifact generated from the fixture may contain the word None."""
+        recs = load_recommendations(read_json(FIXTURE))
+        result = rank(recs, Weights(BASELINE, name="baseline"))
+        for record in result["ranked"] + result["needs_estimate"]:
+            for field in ("title", "group", "area", "notes"):
+                self.assertNotEqual(record.get(field), "None")
+        for row in to_csv_rows(result):
+            self.assertNotIn("None", row)
+
     def test_unknown_sentinel_refuses_arithmetic_and_truthiness(self):
         """UNKNOWN cannot be coerced into a number by accident.
 

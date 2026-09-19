@@ -1,0 +1,14 @@
+{
+  "_label": "DECLARED field equivalences. Every entry was asserted by a person and carries its basis. Nothing here was inferred by similarity.",
+  "equivalences": [
+    {
+      "canonical_field": "rank_position",
+      "asserted_by": "OP5-CINDER, from reading both lanes' data dictionaries",
+      "basis": "Both fields hold the item's position in a priority ordering, and both use a distinct marker rather than a number when the item is not ranked. uiowa_rfq_18649_prioritization/DATA_DICTIONARY.md defines 'rank' as null/NOT_RANKED when unranked; the opportunity portfolio's 'rank' is the same concept. The equivalence is asserted on the documented meaning, not on the shared name.",
+      "members": [
+        {"lane": "uiowa_rfq_18649_prioritization", "field": "rank"},
+        {"lane": "uiowa_rfq_18649_ai_opportunity_portfolio", "field": "rank"}
+      ]
+    }
+  ]
+}

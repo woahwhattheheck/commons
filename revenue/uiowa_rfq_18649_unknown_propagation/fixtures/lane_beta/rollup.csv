@@ -1,0 +1,5 @@
+recommendation_id,effort_hours,priority,owner
+REC-SYN-FIX-001,0,LOW,beta
+REC-SYN-FIX-002,120,HIGH,beta
+REC-SYN-FIX-003,40,HIGH,beta
+REC-SYN-FIX-004,UNKNOWN,NOT_ASSESSED,beta
