@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 190,
-    "open_pull_requests": 140,
+    "open_pull_requests": 141,
     "runs_in_progress": 13,
-    "runs_queued": 1094
+    "runs_queued": 1106
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -66,6 +66,28 @@
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/uiowa109-petrel82m-operator-receipt",
+      "created_at": "2026-09-19T15:21:38Z",
+      "draft": false,
+      "head_sha": "921573649c55f1f4eb6d34df260454e43c1e8f97",
+      "number": 16380,
+      "title": "UIOWA-109: retain exercised operator walkthrough and exact-source results",
+      "updated_at": "2026-09-19T15:21:38Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-kestrel-paper6c42/uiowa136-render-review-20260919",
+      "created_at": "2026-09-19T15:21:05Z",
+      "draft": false,
+      "head_sha": "335ee98857748dfc4f42b792c9e9ea68b8015c48",
+      "number": 16379,
+      "title": "UIOWA-136: exact rendered-page review and independent navigation replay",
+      "updated_at": "2026-09-19T15:21:05Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -134,17 +156,6 @@
     },
     {
       "author": "woahwhattheheck",
-      "base": "swarm/zz-tessera46/uiowa-129-timestamps-20260919",
-      "branch": "swarm/zz-hemlock84/uiowa129-evidence-io-20260919",
-      "created_at": "2026-09-19T15:16:53Z",
-      "draft": false,
-      "head_sha": "c835d48f39f0cf92027d5a6b655bb04ffef7c43d",
-      "number": 16373,
-      "title": "UIOWA-129: recover source-preserving report I/O and byte-bound CSV provenance",
-      "updated_at": "2026-09-19T15:20:39Z"
-    },
-    {
-      "author": "woahwhattheheck",
       "base": "main",
       "branch": "zz-quartz-731/roadmap-oracle-20260919",
       "created_at": "2026-09-19T15:15:25Z",
@@ -164,17 +175,6 @@
       "number": 16366,
       "title": "UIOWA-067: offline incident-review explorer and complete-evidence exports",
       "updated_at": "2026-09-19T15:12:13Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa124-cirrus-q73-native-acceptance",
-      "created_at": "2026-09-19T15:10:59Z",
-      "draft": false,
-      "head_sha": "5bcda15b53a779d7c1e39072973dac2713175e81",
-      "number": 16365,
-      "title": "test(uiowa): independent real-parent acceptance and source-bound receipts (UIOWA-124)",
-      "updated_at": "2026-09-19T15:10:59Z"
     }
   ],
   "open_heads": {
@@ -233,7 +233,7 @@
     "16081": "7d5f250e6fac05b5d3e3a39022260e10f3329c82",
     "16134": "0d788098b9da196cab9efe387707672a86622516",
     "16139": "ec44fe0b9f1d31041c3cc6ed63567c5f97fbd267",
-    "16145": "c4c305db7944cb305625836d4767d6abcc37ae36",
+    "16145": "a89a5bc91f0f9a3dae736bee4a015caaf8d52567",
     "16152": "5a9350e58434152d1d0752bbdf94b30f48899d38",
     "16175": "4f9fdb429ab9e907745dbfe730c7e39a2da7e988",
     "16191": "93869645138551310da7a83665ebbfaa83cc1371",
@@ -268,13 +268,13 @@
     "16275": "7ad072e1b33ebe1c8b0db8f802da281b9bc1554e",
     "16278": "a19006c5b979197d6f05553244b5faccbd89cffd",
     "16279": "d427fed1188222c8f9b2ef1f9880d12272576f3c",
-    "16281": "0a44ac9a1b7a6f8c37de81eba809f9caa238c9ba",
+    "16281": "389ac406ff1f8c7432661fbd1995fa7f539fd181",
     "16283": "4b2f40bdff508b590615182f7f826c813e51d64a",
     "16287": "df6d0058feb8d49895dd9b6b250db679792178f9",
     "16289": "fad7e3dbbc61dc4f110395c408c8a9fe1c0629ad",
     "16290": "0973e6893c4bcf4cdd17fad096eea5d82d29d663",
     "16291": "598c7b3e4b012625a9309e14126acbeb541601d1",
-    "16297": "29eab0c93eda34dba6f7df3d5c9bb88feb10dd0a",
+    "16297": "4531e724855d646ceb6ef259adb32b3f3ab7a255",
     "16298": "7f61f32b8f1737db8ae143b15fcea43b0b14a509",
     "16300": "128606cf7042f391fc67f6f4c89360febc9aa54d",
     "16301": "4da53363a20ba1d92caacc8601a022b12bb5fdfc",
@@ -312,17 +312,29 @@
     "16365": "5bcda15b53a779d7c1e39072973dac2713175e81",
     "16366": "9925a8acd9aad2dabc19a5cec63294ba5f5daaa2",
     "16371": "7a129b223ba3270b65ac1d9f9846b0f7cb190816",
-    "16373": "c835d48f39f0cf92027d5a6b655bb04ffef7c43d",
     "16374": "9438fca47aa4bdaf36bdbff71a2c58dd6dec18ca",
     "16375": "5d07337cc714b1183c100c1b1f524cc49702849a",
     "16376": "fbaf8825d279eab31d65f0650422b1ba8be351f7",
     "16377": "e11a62838fe203affbc6f6bd9e919c3dfde3bcb4",
-    "16378": "5cf9ac7f90fef4e6c47e3762aab55c17fb29b539"
+    "16378": "5cf9ac7f90fef4e6c47e3762aab55c17fb29b539",
+    "16379": "335ee98857748dfc4f42b792c9e9ea68b8015c48",
+    "16380": "921573649c55f1f4eb6d34df260454e43c1e8f97"
   },
-  "pulls_listed": 140,
+  "pulls_listed": 141,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 84.2,
+  "queue_depth_per_runner": 85.1,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "swarm/zz-tessera46/uiowa-129-timestamps-20260919",
+      "branch": "swarm/zz-hemlock84/uiowa129-evidence-io-20260919",
+      "closed_at": "2026-09-19T15:21:47Z",
+      "head_sha": "c835d48f39f0cf92027d5a6b655bb04ffef7c43d",
+      "merged_at": "2026-09-19T15:21:47Z",
+      "number": 16373,
+      "state": "MERGED",
+      "title": "UIOWA-129: recover source-preserving report I/O and byte-bound CSV provenance"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -476,21 +488,10 @@
       "number": 16256,
       "state": "MERGED",
       "title": "fix(uiowa-050): complete robust handoff validation and operator report delivery"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "uiowa-056-kestrel731-interview",
-      "closed_at": "2026-09-19T15:02:21Z",
-      "head_sha": "9692bfc874a8ff6576853e41384eca9eb027658d",
-      "merged_at": "2026-09-19T15:02:21Z",
-      "number": 16314,
-      "state": "MERGED",
-      "title": "UIOWA-056: standalone maintenance interview and worked rehearsal"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T15:20:49Z",
+  "unchanged_since": "2026-09-19T15:22:06Z",
   "undatable_pulls": []
 }
