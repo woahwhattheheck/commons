@@ -25,6 +25,7 @@
   "priority_queue": [],
   "production_write": false,
   "record_sources": [
+    "inventory/resources/records/codex-ci-fix-pack-99-payment-road-resource-activation-20260919-01.json",
     "inventory/resources/records/codex-commons-context-dispatch-compiler-resource-activation-20260913-01.json",
     "inventory/resources/records/codex-cross-family-offering-bundle-composer-resource-activation-20260913-01.json",
     "inventory/resources/records/codex-whitebox-strict-delivery-evidence-gate-resource-activation-20260913-01.json",
@@ -98,15 +99,15 @@
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1789304964.289899",
+  "slack_ts": "1789813173.482349",
   "snapshot": {
-    "base_main_sha": "099fe811c64e44082cec3b51d086cbecc59a3a8c",
-    "observed_at": "2026-09-13T13:10:45Z",
+    "base_main_sha": "2ada04e5c9b8ea18a4323768d4c38b84aeb089df",
+    "observed_at": "2026-09-19T10:19:36Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-commons-context-dispatch-compiler-resource-activation-20260913-01",
+  "source_id": "codex-ci-fix-pack-99-payment-road-resource-activation-20260919-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -117,6 +118,7 @@
   ],
   "subject": "MASTER RESOURCE LEDGER — bounded provenance-bound Commons context dispatch packets",
   "supersedes_source_ids": [
+    "codex-ci-fix-pack-99-payment-road-resource-activation-20260919-01",
     "codex-commons-context-dispatch-compiler-resource-activation-20260913-01",
     "codex-cross-family-offering-bundle-composer-resource-activation-20260913-01",
     "codex-whitebox-strict-delivery-evidence-gate-resource-activation-20260913-01",
@@ -178,6 +180,27 @@
     "demon-live-compute-board-20260825-01"
   ],
   "surfaces": [
+    {
+      "assigned_backlog": "Reuse the single existing ci-fix-pack-99 checkout object; admit delivery only from usable intake and attributable transaction/acceptance evidence; never reopen already-fenced outreach.",
+      "auth_surface": "Current-main package evidence plus the existing direct Stripe Payment Link; customer/public communication must use a clean standalone non-GitHub surface and the direct transaction/support path.",
+      "authority": "INTERNAL_COMMONS_EVIDENCE_AND_DIRECT_STRIPE_TRANSACTION_ROUTE; NO_COMMONS_OR_GITHUB_CUSTOMER_CTA; NO_DUPLICATE_PAYMENT_LINK; NO_PROVIDER_WRITE; NO_BUYER_ACCEPTANCE_SETTLEMENT_PAYOUT_REVENUE_OR_CURRENT_CASH_INFERENCE",
+      "capacity": "LIVE",
+      "condition": "CONSTRAINED",
+      "consumer": "Commons sales and delivery agents composing a clean standalone customer surface, and an external buyer only through that standalone surface plus the direct transaction path.",
+      "evidence_ts": "2026-09-19T07:40:56Z",
+      "exact_safe_probe": "PR #16085 head e14704bbb570d92f020a2d3a4deeec55eb17edfe merged at 1199466e6ee74307d127b507baa6655fe768097b; seven selected source/package blobs remain exact on descendant main 2ada04e5c9b8ea18a4323768d4c38b84aeb089df; 5/5 original pack tests, 4/4 checkout-wire tests, and exact-head open-door/source-parses/path-manifest/muhlnickel-spec-guard workflows passed.",
+      "holder": "LATCH source custody / Commons commerce and delivery agents",
+      "kind": "COMMERCIAL_ASSET",
+      "last_receipt": "codex-ci-fix-pack-99-payment-road-resource-activation-20260919-01",
+      "last_used_at": "2026-09-19T07:40:56Z",
+      "name": "ci-fix-pack-99-payment-road",
+      "next_action": "When a collision-clean buyer route exists, use a standalone branded surface and the exact direct transaction path; after attributable acceptance/payment evidence, execute the bounded public-repository CI repair and retain delivery receipts.",
+      "rate_plan_boundary": "One $99 offer and one existing Payment Link. Link presence is not buyer intent, acceptance, settlement, payout, revenue, current cash truth, or permission to duplicate-contact a prospect.",
+      "source": "Commons PR #16085; packs/ci-fix-99-20260917-01; revenue/ci_fix_pack_99/contract.json; p/latch-ci-fix-pack-99-checkout-wire-20260919-01.md",
+      "stage": "PRODUCING",
+      "stale_after": "next offer, checkout, provider-status, delivery-contract, customer-link-boundary, or owner-law change",
+      "value": "$99 bounded CI-red fix pack with a reproducible red-to-green repair workflow and an existing direct transaction road"
+    },
     {
       "assigned_backlog": "policy, recovery, payment, legal identity, and live calls only when irreducible",
       "auth_surface": "direct Commons owner instruction",
