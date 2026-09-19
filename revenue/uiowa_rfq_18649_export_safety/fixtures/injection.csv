@@ -1,0 +1,9 @@
+label,value
+formula,=SUM(A1:A9)
+at,@cmd|'/c calc'
+minus_expr,-A1*2
+negative_number,-5
+plus_number,+3.2
+placeholder,-
+long_placeholder,--
+plain,ordinary text
