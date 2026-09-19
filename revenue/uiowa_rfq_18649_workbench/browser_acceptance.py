@@ -9,6 +9,8 @@ covered separately by ``test_workbench.py`` against the actual loopback server.
 from __future__ import annotations
 
 import json
+import os
+import shutil
 import tempfile
 from pathlib import Path
 
@@ -24,17 +26,19 @@ def main() -> int:
         html = (ROOT / "index.html").read_text()
         # Enterprise browser policy in some ChatGPT sandboxes blocks navigation entirely.
         # set_content + explicit checked-in assets still executes the exact UI bytes in Chromium.
-        html = html.replace('<link rel="stylesheet" href="/style.css">', '').replace('<script src="/app.js" defer></script>', '')
+        html = html.replace('<link rel="stylesheet" href="/style.css">', '').replace('<script src="/app.js" defer></script>', '').replace('<script src="/handoff_import.js" defer></script>', '')
 
         with sync_playwright() as p:
+            executable = os.environ.get("CHROMIUM_EXECUTABLE") or shutil.which("chromium")
             browser = p.chromium.launch(
                 headless=True,
-                executable_path="/usr/bin/chromium",
+                **({"executable_path": executable} if executable else {}),
                 args=["--no-sandbox", "--allow-file-access-from-files"],
             )
             page = browser.new_page(accept_downloads=True)
             page.set_content(html, wait_until="load")
             page.add_style_tag(content=(ROOT / "style.css").read_text())
+            page.add_script_tag(content=(ROOT / "handoff_import.js").read_text())
             page.add_script_tag(content=(ROOT / "app.js").read_text())
             page.get_by_role("button", name="Load synthetic UI demo").click()
             assert page.locator("#matrix").get_attribute("data-rendered-cells") == "12"

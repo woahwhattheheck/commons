@@ -1,0 +1,321 @@
+#!/usr/bin/env python3
+"""Chromium regression coverage for receipt-bound draft resumption.
+
+Reports come from the real parent CompilerAdapter and checked-in fixtures. The
+browser executes the checked-in UI assets; only fetch timing is controlled, so
+these checks also run where browser navigation is restricted. Actual HTTP and
+compiler transport coverage lives in test_workbench.py.
+
+Install Playwright and a Chromium browser before running this script. Set
+CHROMIUM_EXECUTABLE to use a specific browser, or let Playwright use its download.
+"""
+from __future__ import annotations
+
+import copy
+import json
+import os
+import re
+import shutil
+import tempfile
+import unittest
+from pathlib import Path
+
+from playwright.sync_api import expect, sync_playwright
+
+from server import CompilerAdapter
+
+
+ROOT = Path(__file__).resolve().parent
+PARENT = ROOT.parent / "uiowa_rfq_18649_workshare"
+AUTHORITY_FLAGS = {
+    "buyer_approved", "prime_approved", "current_evidence_review_authority",
+    "submission_authorized", "signature_authorized",
+    "invoice_or_payment_authorized", "recognized_revenue",
+}
+
+
+class DraftResumeBrowserTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.candidate = json.loads((PARENT / "fixtures/synthetic_packet.json").read_text())
+        cls.authority = json.loads((PARENT / "fixtures/synthetic_authority.json").read_text())
+        # The adapter derives its inspection time from the newest embedded source,
+        # making these genuine compiler reports repeatable across test dates.
+        cls.report = CompilerAdapter().inspect(cls.candidate, cls.authority)
+        alternate = copy.deepcopy(cls.candidate)
+        alternate["source_ids"].remove("ESS-SW-01")
+        alternate_authority = copy.deepcopy(cls.authority)
+        alternate_authority["sources"] = [
+            row for row in alternate_authority["sources"] if row["source_id"] != "ESS-SW-01"
+        ]
+        cls.alternate_report = CompilerAdapter().inspect(alternate, alternate_authority)
+        assert cls.report["receipt_sha256"] != cls.alternate_report["receipt_sha256"]
+        cls.playwright = sync_playwright().start()
+        executable = os.environ.get("CHROMIUM_EXECUTABLE") or shutil.which("chromium")
+        options = {"headless": True, "args": ["--no-sandbox"]}
+        if executable:
+            options["executable_path"] = executable
+        try:
+            cls.browser = cls.playwright.chromium.launch(**options)
+        except Exception:
+            cls.playwright.stop()
+            raise
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.browser.close()
+        cls.playwright.stop()
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.context = self.browser.new_context(accept_downloads=True)
+        self.addCleanup(self.context.close)
+        self.page = self.context.new_page()
+        self.page.set_default_timeout(5000)
+        self.script_errors = []
+        self.page.on("pageerror", lambda error: self.script_errors.append(str(error)))
+        html = (ROOT / "index.html").read_text()
+        html = html.replace('<link rel="stylesheet" href="/style.css">', "")
+        html = re.sub(r'<script src="/(?:handoff_import|app)\.js" defer></script>', "", html)
+        self.page.set_content(html, wait_until="load")
+        self.page.add_style_tag(content=(ROOT / "style.css").read_text())
+        for asset in ("handoff_import.js", "app.js"):
+            self.page.add_script_tag(content=(ROOT / asset).read_text())
+
+    def tearDown(self):
+        self.assertEqual(self.script_errors, [], "UI emitted an uncaught JavaScript error")
+
+    def upload(self, selector, value, name="draft.json"):
+        raw = value if isinstance(value, str) else json.dumps(value, ensure_ascii=False)
+        self.page.locator(selector).set_input_files({
+            "name": name, "mimeType": "application/json", "buffer": raw.encode("utf-8")
+        })
+
+    def upload_package(self):
+        self.upload("#candidateFile", self.candidate, "candidate.json")
+        self.upload("#authorityFile", self.authority, "authority.json")
+
+    def inspect(self, report=None):
+        report = report or self.report
+        self.page.evaluate("""report => {
+            window.__inspectionRequests = [];
+            window.fetch = async (url, options) => {
+                window.__inspectionRequests.push({url, options});
+                return {ok: true, status: 200, json: async () => ({report})};
+            };
+        }""", report)
+        self.upload_package()
+        self.page.locator("#inspectBtn").click()
+        expect(self.page.locator("#matrix")).to_have_attribute("data-rendered-cells", "12")
+        expect(self.page.locator("#summary")).to_contain_text(report["receipt_sha256"])
+        requests = self.page.evaluate("window.__inspectionRequests")
+        self.assertEqual(len(requests), 1)
+        self.assertEqual(requests[0]["url"], "/api/inspect")
+        self.assertEqual(requests[0]["options"]["method"], "POST")
+        self.assertEqual(json.loads(requests[0]["options"]["body"]), {
+            "candidate": self.candidate, "authority": self.authority,
+        })
+
+    def annotate(self, index, note, disposition="NEEDS_EVIDENCE"):
+        self.page.locator(".cell").nth(index).click()
+        self.page.locator("#note").fill(note)
+        self.page.locator("#disposition").select_option(disposition)
+
+    def export(self):
+        with self.page.expect_download() as pending:
+            self.page.locator("#exportBtn").click()
+        downloaded = pending.value
+        destination = Path(self.temp.name) / downloaded.suggested_filename
+        downloaded.save_as(destination)
+        return json.loads(destination.read_text())
+
+    def restore(self, draft):
+        self.upload("#handoffFile", draft)
+        self.page.locator("#importDraftBtn").click()
+        expect(self.page.locator("#importDraftBtn")).to_be_enabled()
+
+    def begin_delayed_restore(self, draft):
+        # Hold the browser's actual File.text await, then resolve it explicitly.
+        # No wall-clock sleep is needed to create a deterministic race.
+        self.page.evaluate("""() => {
+            const original = File.prototype.text;
+            File.prototype.text = function () {
+                if (this.name !== 'delayed-draft.json') return original.call(this);
+                return new Promise(resolve => {
+                    window.__releaseDraftRead = () => original.call(this).then(resolve);
+                });
+            };
+        }""")
+        self.upload("#handoffFile", draft, "delayed-draft.json")
+        self.page.locator("#importDraftBtn").click()
+        self.page.wait_for_function("typeof window.__releaseDraftRead === 'function'")
+
+    def release_draft_read(self):
+        self.page.evaluate("""async () => {
+            await window.__releaseDraftRead();
+            await new Promise(resolve => setTimeout(resolve, 0));
+        }""")
+
+    def begin_delayed_inspection(self):
+        self.upload_package()
+        self.page.evaluate("""() => {
+            window.fetch = () => new Promise(resolve => {
+                window.__releaseInspection = resolve;
+            });
+        }""")
+        self.page.locator("#inspectBtn").click()
+        self.page.wait_for_function("typeof window.__releaseInspection === 'function'")
+
+    def release_inspection(self, report=None, error=None):
+        self.page.evaluate("""async payload => {
+            window.__releaseInspection({
+                ok: payload.error === null,
+                status: payload.error === null ? 200 : 400,
+                json: async () => payload.error === null ? {report: payload.report} : {error: payload.error}
+            });
+            await new Promise(resolve => setTimeout(resolve, 0));
+        }""", {"report": report or self.report, "error": error})
+
+    def assert_no_authority(self, draft):
+        self.assertEqual(draft["status"], "DRAFT_NON_AUTHORITATIVE")
+        self.assertEqual(draft["report_mode"], "UNTRUSTED_INSPECTION")
+        self.assertEqual(set(draft["authority"]), AUTHORITY_FLAGS)
+        for value in draft["authority"].values():
+            self.assertIs(value, False)
+
+    def test_restore_requires_active_report(self):
+        expect(self.page.locator("#importDraftBtn")).to_be_disabled()
+        expect(self.page.locator("#exportBtn")).to_be_disabled()
+        self.inspect()
+        expect(self.page.locator("#importDraftBtn")).to_be_enabled()
+        self.page.locator("#resetBtn").click()
+        expect(self.page.locator("#importDraftBtn")).to_be_disabled()
+        expect(self.page.locator("#matrix")).to_have_attribute("data-rendered-cells", "0")
+
+    def test_all_twelve_cells_roundtrip_by_identity_without_network(self):
+        self.inspect()
+        dispositions = ("UNREVIEWED", "NEEDS_EVIDENCE", "DISCUSS_WITH_PRIME", "TECHNICAL_DRAFT_NOTE")
+        for index in range(12):
+            self.annotate(index, f"Cell {index}: draft café / 観察\nLiteral <b>text</b>", dispositions[index % 4])
+        saved = self.export()
+        self.assert_no_authority(saved)
+        self.assertEqual(len(saved["cell_notes"]), 12)
+        self.assertFalse(saved["synthetic_demo"])
+        self.page.locator("#resetBtn").click()
+        self.inspect()
+        self.assertTrue(all(not row["analyst_note"] for row in self.export()["cell_notes"]))
+        # Order is transport detail: restoration is keyed by group/dimension.
+        reordered = copy.deepcopy(saved)
+        reordered["cell_notes"].reverse()
+        self.restore(reordered)
+        expect(self.page.locator("#error")).to_be_empty()
+        self.assertEqual(self.export(), saved)
+        self.assertEqual(len(self.page.evaluate("window.__inspectionRequests")), 1,
+                         "restoring a local draft must not call the server")
+        for index, cell in enumerate(saved["cell_notes"]):
+            self.page.locator(".cell").nth(index).click()
+            expect(self.page.locator("#note")).to_have_value(cell["analyst_note"])
+            expect(self.page.locator("#disposition")).to_have_value(cell["disposition"])
+
+    def test_invalid_drafts_preserve_existing_notes_and_report(self):
+        self.inspect()
+        self.annotate(0, "Current work must survive rejected restore.", "DISCUSS_WITH_PRIME")
+        baseline = self.export()
+        variants = {}
+        for label, key, value in (
+            ("receipt mismatch", "report_receipt_sha256", "f" * 64),
+            ("mode mismatch", "report_mode", "CURRENT"),
+            ("synthetic mismatch", "synthetic_demo", True),
+            ("aggregate mismatch", "aggregate_state", "READY"),
+        ):
+            variants[label] = {**copy.deepcopy(baseline), key: value}
+        duplicate = copy.deepcopy(baseline)
+        duplicate["cell_notes"][-1] = copy.deepcopy(duplicate["cell_notes"][0])
+        variants["duplicate cell identity"] = duplicate
+        missing = copy.deepcopy(baseline)
+        missing["cell_notes"].pop()
+        variants["missing cell"] = missing
+        status = copy.deepcopy(baseline)
+        status["cell_notes"][0]["compiler_status"] = "READY"
+        variants["compiler status mismatch"] = status
+        authority = copy.deepcopy(baseline)
+        authority["authority"]["prime_approved"] = True
+        variants["authority claim"] = authority
+        long_note = copy.deepcopy(baseline)
+        long_note["cell_notes"][0]["analyst_note"] = "x" * 4001
+        variants["oversized note"] = long_note
+        variants["malformed JSON"] = "{not-json"
+        variants["browser intake limit"] = " " * (1024 * 1024 + 1)
+        for label, draft in variants.items():
+            with self.subTest(label=label):
+                self.restore(draft)
+                expect(self.page.locator("#error")).not_to_be_empty()
+                expect(self.page.locator("#matrix")).to_have_attribute("data-rendered-cells", "12")
+                self.assertEqual(self.export(), baseline)
+
+    def test_draft_from_previous_compiler_generation_cannot_replace_current_work(self):
+        self.inspect()
+        self.annotate(0, "Saved under original evidence.")
+        old_draft = self.export()
+        self.inspect(self.alternate_report)
+        self.annotate(1, "Notes for the changed evidence only.")
+        current = self.export()
+        self.restore(old_draft)
+        expect(self.page.locator("#error")).not_to_be_empty()
+        self.assertEqual(self.export(), current)
+
+    def test_delayed_draft_cannot_overwrite_intervening_note_edit(self):
+        self.inspect()
+        self.annotate(0, "Old saved note.")
+        saved = self.export()
+        self.begin_delayed_restore(saved)
+        self.annotate(0, "New edit while draft file is being read.", "TECHNICAL_DRAFT_NOTE")
+        current = self.export()
+        self.release_draft_read()
+        expect(self.page.locator("#importDraftBtn")).to_be_enabled()
+        self.assertEqual(self.export(), current)
+
+    def test_delayed_draft_cannot_cross_report_replacement(self):
+        self.inspect()
+        self.annotate(0, "Old real-report note.")
+        self.begin_delayed_restore(self.export())
+        self.page.locator("#demoBtn").click()
+        self.annotate(2, "New synthetic-demo note.")
+        current = self.export()
+        self.release_draft_read()
+        self.assertEqual(self.export(), current)
+        self.assertTrue(current["synthetic_demo"])
+
+    def test_delayed_draft_cannot_repopulate_cleared_workbench(self):
+        self.inspect()
+        self.annotate(0, "Saved before clearing.")
+        self.begin_delayed_restore(self.export())
+        self.page.locator("#resetBtn").click()
+        self.release_draft_read()
+        expect(self.page.locator("#matrix")).to_have_attribute("data-rendered-cells", "0")
+        expect(self.page.locator("#exportBtn")).to_be_disabled()
+        expect(self.page.locator("#importDraftBtn")).to_be_disabled()
+        expect(self.page.locator("#note")).to_have_value("")
+
+    def test_delayed_compiler_success_cannot_replace_newer_report_or_notes(self):
+        self.begin_delayed_inspection()
+        self.page.locator("#demoBtn").click()
+        self.annotate(0, "Keep the newer report's note.")
+        current = self.export()
+        self.release_inspection(self.report)
+        self.assertEqual(self.export(), current)
+        expect(self.page.locator("#error")).to_be_empty()
+
+    def test_delayed_compiler_failure_cannot_mark_newer_report_failed(self):
+        self.begin_delayed_inspection()
+        self.page.locator("#demoBtn").click()
+        self.annotate(0, "A stale failure cannot invalidate this report.")
+        current = self.export()
+        self.release_inspection(error="Old inspection failed after its generation was replaced")
+        self.assertEqual(self.export(), current)
+        expect(self.page.locator("#error")).to_be_empty()
+
+
+if __name__ == "__main__":
+    unittest.main(verbosity=2)

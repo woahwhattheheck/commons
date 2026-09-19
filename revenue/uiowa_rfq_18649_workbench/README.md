@@ -28,7 +28,7 @@ python3 server.py --port 8765
 ```
 
 Open `http://127.0.0.1:8765/`. The server binds IPv4 loopback only. It exposes exactly
-three static assets plus `/` and one bounded `POST /api/inspect` endpoint. It has no
+four static assets plus `/` and one bounded `POST /api/inspect` endpoint. It has no
 file-path API, persistence, database, telemetry, external provider calls, arbitrary
 repository serving, trusted-root/current-READY path, or note store. Host, Origin,
 content type, strict JSON shape, duplicate keys and body size are fail-closed.
@@ -43,6 +43,29 @@ content type, strict JSON shape, duplicate keys and body size are fail-closed.
 5. Export a draft handoff JSON. Notes are bound to the report receipt and stay separate
    from the immutable compiler report.
 6. Any new import clears all notes/dispositions before rendering the new generation.
+7. To resume, inspect the original candidate and authority again, choose the saved
+   handoff JSON under **Draft review handoff**, and click **Restore saved draft**.
+   A successful restore replaces all 12 notes and dispositions together. Export
+   current work first if you want to keep both drafts.
+
+Draft restoration runs entirely in the browser. It requires the exact report
+receipt, mode, aggregate state, synthetic-demo marker, and complete set of 12
+cells with unchanged compiler statuses. Unknown keys, duplicate JSON keys,
+duplicate/missing cells, invalid dispositions, notes longer than 4,000 characters,
+files above 1 MiB, and any authority value other than `false` are rejected. A
+rejected restore preserves the current report, notes, dispositions and selection.
+
+Late evidence-inspection responses cannot replace a newer report or a cleared
+workbench. A draft still loading when the report or notes change is discarded;
+retry explicitly if replacement is intended. Nothing is stored in localStorage,
+a server database, or a remote service. Exported drafts may contain sensitive
+analyst notes: keep real engagement files in the agreed private workspace, not
+in this public repository.
+
+Receipt matching binds a draft to a report; it does not authenticate an analyst,
+prove note accuracy, or authorize an assessment. Synthetic UI demo drafts only
+restore into that UI demo. Real compiler reports use the compiler's cell keys
+(including `software`); the importer matches those keys directly.
 
 ## Acceptance commands
 
@@ -51,6 +74,8 @@ python3 -m py_compile server.py test_workbench.py browser_acceptance.py
 python3 -m unittest -v test_workbench.py
 python3 -O -m unittest -v test_workbench.py
 python3 browser_acceptance.py
+node --test handoff_import.test.js
+python3 browser_resume_acceptance.py
 ```
 
 When run inside the full Commons checkout, `test_workbench.py` also consumes the
@@ -58,11 +83,16 @@ parent workshare's checked-in synthetic packet/authority through the real
 `CompilerAdapter`, proving that the operator surface routes through the existing
 untrusted compiler and never a replacement implementation.
 
-`browser_acceptance.py` launches the machine's `/usr/bin/chromium` through Playwright
+`browser_acceptance.py` launches Chromium through Playwright
 and exercises a real operator flow: 12-cell render, keyboard cell selection, notes and
 disposition, mandatory note reset on new import, search/filtering, and downloaded draft
 handoff authority flags. The browser smoke uses the synthetic UI demo; parent-compiler
 integration is covered separately by the real-compiler unittest in a full checkout.
+
+`browser_resume_acceptance.py` uses actual parent-compiler fixtures and Chromium
+to exercise saved-draft round trips, invalid-draft preservation, and late-response
+races. Install Playwright and its Chromium browser before running browser checks;
+both browser checks also support `CHROMIUM_EXECUTABLE=/path/to/chromium`.
 
 ## Scope ceiling
 

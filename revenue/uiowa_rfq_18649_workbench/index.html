@@ -53,17 +53,20 @@
       <label>Analyst note
         <textarea id="note" rows="6" maxlength="4000" disabled placeholder="Draft operator note; never evidence authority."></textarea>
       </label>
-      <p class="muted">Notes are browser-memory only and are reset on every new import, even when a receipt repeats.</p>
+      <p class="muted">Notes stay in browser memory. Every new evidence inspection clears them, even when a receipt repeats. Export before leaving; restore the saved draft after inspecting the same evidence package.</p>
     </section>
 
     <section class="panel" aria-labelledby="export-heading">
       <h2 id="export-heading">4. Draft review handoff</h2>
-      <p>Export binds notes to the immutable compiler receipt and explicitly keeps every external authority flag false.</p>
+      <p>Export binds notes to this report. To resume later, inspect the same evidence package, then restore its saved draft. A successful restore replaces all 12 cell notes and dispositions; a rejected draft leaves your current notes intact.</p>
+      <label>Saved draft handoff JSON <input id="handoffFile" type="file" accept="application/json,.json"></label>
+      <button id="importDraftBtn" type="button" disabled>Restore saved draft</button>
       <button id="exportBtn" type="button" disabled>Export draft handoff JSON</button>
       <p id="exportStatus" class="muted" aria-live="polite"></p>
     </section>
   </main>
 
+  <script src="/handoff_import.js" defer></script>
   <script src="/app.js" defer></script>
 </body>
 </html>
