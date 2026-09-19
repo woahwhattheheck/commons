@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 190,
-    "open_pull_requests": 124,
+    "open_issues": 189,
+    "open_pull_requests": 126,
     "runs_in_progress": 12,
-    "runs_queued": 887
+    "runs_queued": 893
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,39 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "swarm/zz-basalt42r7q-browser-http-acceptance-20260919",
+      "created_at": "2026-09-19T14:48:29Z",
+      "draft": false,
+      "head_sha": "91ff87b96444394b9c7b29820b3e8946f22333c0",
+      "number": 16333,
+      "title": "Iowa workbench: independent Chromium/HTTP acceptance and negative controls",
+      "updated_at": "2026-09-19T14:48:29Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/tern84-reviewer-guide-20260919",
+      "created_at": "2026-09-19T14:47:47Z",
+      "draft": false,
+      "head_sha": "cc2709803672406c1adee70362badd504651794e",
+      "number": 16332,
+      "title": "UIOWA: reproducible twelve-cell evidence revision reviewer guide (TERN-84)",
+      "updated_at": "2026-09-19T14:47:47Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/halyard86-uiowa095-output-safety",
+      "created_at": "2026-09-19T14:47:10Z",
+      "draft": false,
+      "head_sha": "77f2774a38de51d0a43bae6ade1fed9a231dc55a",
+      "number": 16331,
+      "title": "UIOWA-095: recover capacity benchmark and preserve existing output data",
+      "updated_at": "2026-09-19T14:47:10Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "swarm/zz-sapphire-63e1-uiowa100-run-evidence",
       "created_at": "2026-09-19T14:46:51Z",
       "draft": false,
@@ -97,7 +130,7 @@
       "head_sha": "73732d79040c263a623504636b9c7eb3b1c7a60e",
       "number": 16328,
       "title": "UIOWA-014: publish source-backed peer cohort and staffing comparability rationale",
-      "updated_at": "2026-09-19T14:46:20Z"
+      "updated_at": "2026-09-19T14:47:41Z"
     },
     {
       "author": "woahwhattheheck",
@@ -142,39 +175,6 @@
       "number": 16324,
       "title": "UIOWA-119: preserve actual office-render acceptance for TOPAZ's bid fixture",
       "updated_at": "2026-09-19T14:43:15Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-copper-r61/uiowa093-trace-checker-20260919",
-      "created_at": "2026-09-19T14:39:23Z",
-      "draft": false,
-      "head_sha": "d74367c09d27cdecb03017c12d58d3f112bca336",
-      "number": 16321,
-      "title": "UIOWA-093: complete structural trace checking with 57 retained regressions",
-      "updated_at": "2026-09-19T14:39:23Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/astra-forge-uiowa076-source-trace",
-      "created_at": "2026-09-19T14:39:05Z",
-      "draft": false,
-      "head_sha": "ff9a08f04298e68a371f54f5b1f414d090755ebb",
-      "number": 16320,
-      "title": "fix(uiowa-076): preserve evidence bindings and unknown comparison context",
-      "updated_at": "2026-09-19T14:41:29Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa-109-copperfin-r7-release-recovery",
-      "created_at": "2026-09-19T14:39:03Z",
-      "draft": false,
-      "head_sha": "bf37c706860821f1f6b1139fab81e5444d3786ee",
-      "number": 16319,
-      "title": "UIOWA-109: integrated release-to-recovery demonstration with source-bound evidence",
-      "updated_at": "2026-09-19T14:39:03Z"
     }
   ],
   "open_heads": {
@@ -277,7 +277,6 @@
     "16289": "fad7e3dbbc61dc4f110395c408c8a9fe1c0629ad",
     "16290": "2001e7c1c350fe56a0276ad234f5d687ce9865ca",
     "16291": "598c7b3e4b012625a9309e14126acbeb541601d1",
-    "16296": "1d5e5d9d368c955c53b96df2fdf3d804977010a1",
     "16297": "29eab0c93eda34dba6f7df3d5c9bb88feb10dd0a",
     "16298": "7f61f32b8f1737db8ae143b15fcea43b0b14a509",
     "16300": "128606cf7042f391fc67f6f4c89360febc9aa54d",
@@ -301,12 +300,26 @@
     "16327": "fefde600866ed34492aee8c7bba64a2eaecdea4c",
     "16328": "73732d79040c263a623504636b9c7eb3b1c7a60e",
     "16329": "75b791dbc19e809c0273e7624defb54e2c833078",
-    "16330": "9659aa85043c6b03a5b81f2fe28ee243f58a0a69"
+    "16330": "9659aa85043c6b03a5b81f2fe28ee243f58a0a69",
+    "16331": "77f2774a38de51d0a43bae6ade1fed9a231dc55a",
+    "16332": "cc2709803672406c1adee70362badd504651794e",
+    "16333": "91ff87b96444394b9c7b29820b3e8946f22333c0"
   },
-  "pulls_listed": 124,
+  "pulls_listed": 126,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 73.9,
+  "queue_depth_per_runner": 74.4,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/zz-keystone-43cf-osip-dossier",
+      "closed_at": "2026-09-19T14:47:19Z",
+      "head_sha": "1d5e5d9d368c955c53b96df2fdf3d804977010a1",
+      "merged_at": "2026-09-19T14:47:19Z",
+      "number": 16296,
+      "state": "MERGED",
+      "title": "Complete Rhode Island OSIP qualified-prime operations dossier"
+    },
     {
       "author": "woahwhattheheck",
       "base": "sol-z/bounded-canonical-json-20260917",
@@ -442,28 +455,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "swarm-zz/helix-uiowa087-validity-20260919",
-      "closed_at": "2026-09-19T14:19:50Z",
-      "head_sha": "d267cc23173660308ef87c88dcdcc492e664a042",
-      "merged_at": "2026-09-19T14:19:50Z",
-      "number": 16280,
-      "state": "MERGED",
-      "title": "fix(uiowa-087): prevent invalid evidence from yielding favorable outcomes"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "feat/uiowa-119-checked-example-lattice",
-      "closed_at": "2026-09-19T14:17:56Z",
-      "head_sha": "0775ef7767c06041a700808d04cff02737f884d6",
-      "merged_at": "2026-09-19T14:17:56Z",
-      "number": 16276,
-      "state": "MERGED",
-      "title": "UIOWA-119: ship checked example files and stale-result regressions"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "swarm-zz/uiowa-076-copperfin73-ai-coding",
       "closed_at": "2026-09-19T14:09:00Z",
       "head_sha": "914ad778708a4d87045b16e35683f6d7a730029d",
@@ -471,10 +462,21 @@
       "number": 16252,
       "state": "MERGED",
       "title": "UIOWA-076: evidence-linked AI coding workflow assessment and executable rehearsal"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "anchor-zz/uiowa-100-operator-handoff-20260919",
+      "closed_at": "2026-09-19T13:50:52Z",
+      "head_sha": "584426544f975dce21925a262f933a3d8864124c",
+      "merged_at": "2026-09-19T13:50:52Z",
+      "number": 16194,
+      "state": "MERGED",
+      "title": "UIOWA-100: add engagement-ready operator handoff"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T14:47:01Z",
+  "unchanged_since": "2026-09-19T14:49:16Z",
   "undatable_pulls": []
 }
