@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer"><title>Cross-group practice comparison | TJLabs</title>
+<style>@@STYLE@@</style></head><body>
+<a class="skip" href="#comparison">Skip to comparison</a>
+<header><p class="eyebrow">TJLabs / UIOWA-037 / evidence-linked inspection</p>
+<h1>Same outcome.<br>Different operating context.</h1>
+<p class="intro">Compare supplied practice records across ESS, RIS and IAM. Keep local strengths, shared dependencies and dissent in view.</p>
+<div class="provenance"><strong id="provenance"></strong><span id="dataset"></span></div>
+<p class="boundary">These are supplied annotations, not independently verified findings. No maturity score or department-wide conclusion is calculated. A source reused in three groups is not three independent observations.</p></header>
+<main>
+<section class="controls" aria-label="Comparison filters">
+<label>Assessment area<select id="dimension"><option value="all">All areas</option><option value="software">Software</option><option value="security">Security</option><option value="deployment">Deployment</option><option value="ai">AI readiness</option></select></label>
+<label>Record lens<select id="lens"><option value="all">All supplied states</option><option value="shared_gap">Shared-gap records</option><option value="local_gap">Local-gap records</option><option value="strength">Strength records / compare implementations</option><option value="unknown">Unknown records</option><option value="not_applicable">Not-applicable records</option></select></label>
+<label class="search">Find a practice or evidence excerpt<input id="query" type="search" placeholder="For example: review, handoff, business transaction"></label>
+<fieldset><legend>Visible groups</legend><label><input type="checkbox" name="group" value="ESS" checked> ESS</label><label><input type="checkbox" name="group" value="RIS" checked> RIS</label><label><input type="checkbox" name="group" value="IAM" checked> IAM</label></fieldset>
+<button id="reset" type="button">Reset view</button></section>
+<div class="toolbar"><p id="counts" role="status" aria-live="polite"></p><div><button id="expand" type="button">Expand evidence</button><button id="csv" type="button">Export visible CSV</button><button id="json" type="button">Export original JSON (all records)</button></div></div>
+<p class="filter-note">Filters select comparison rows, not evidence within a row. Contrasting states and dissent remain visible. Observation windows must match exactly; an absent group record stays “not supplied.”</p>
+<div class="table-wrap" id="comparison" tabindex="-1"><table><caption>Equivalent practice keys and exact observation windows, with every supplied group record retained.</caption><thead id="head"></thead><tbody id="body"></tbody></table></div>
+<p id="empty" hidden>No comparison rows match this selection. No conclusion about absent practice follows.</p>
+<noscript>This interactive view requires JavaScript. The generated summary.csv and original assessment.json remain available without it.</noscript>
+</main><footer><p>Original source SHA-256: <code id="source-hash"></code></p><p>Offline, self-contained inspection. No remote requests or automatic uploads. Source links open only when selected. Exported CSV is a presentation view with formula-like cells neutralized; original JSON preserves the supplied bytes.</p></footer>
+<script id="comparison-data" type="application/json">@@DATA@@</script>
+<script>@@SCRIPT@@</script></body></html>
