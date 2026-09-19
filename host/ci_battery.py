@@ -178,6 +178,7 @@ def main(argv: list[str] | None = None) -> int:
         ignored_paths = ignored_worktree_paths(root)
         with results.open("wb") as handle:
             record(handle, "checkout_sha", sha, "")
+            record(handle, "battery_scope", json.dumps(scope, sort_keys=True, separators=(",", ":")), "")
             if dirty:
                 print("checkout is dirty; refusing source-linked passing evidence",
                       file=sys.stderr, flush=True)

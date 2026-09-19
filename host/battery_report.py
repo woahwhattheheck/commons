@@ -22,15 +22,16 @@ SCHEMA = "commons-battery-report-v1"
 HEX40 = re.compile(r"[0-9a-f]{40}\Z")
 
 
-def parse_results(raw: bytes | None) -> tuple[str, list[dict], bool, list[str]]:
+def parse_results(raw: bytes | None) -> tuple[str, list[dict], bool, list[str], dict | None]:
     """Read command/path/exit triples, retaining completed records after a stop."""
     problems: list[str] = []
     records: list[dict] = []
     seen_paths: set[str] = set()
     sha = ""
     marker: int | None = None
+    scope: dict | None = None
     if raw is None:
-        return sha, records, False, ["result stream is missing"]
+        return sha, records, False, ["result stream is missing"], scope
     fields = raw.split(b"\0")
     if fields[-1] == b"":
         fields.pop()
@@ -50,6 +51,51 @@ def parse_results(raw: bytes | None) -> tuple[str, list[dict], bool, list[str]]:
                 problems.append("invalid checkout record")
             else:
                 sha = path
+            continue
+        if command == "battery_scope":
+            if index != 3 or scope is not None or code:
+                problems.append("invalid battery scope record")
+                continue
+            try:
+                candidate = json.loads(path)
+            except (json.JSONDecodeError, TypeError, ValueError):
+                problems.append("invalid battery scope JSON")
+                continue
+            expected_scope = {
+                "kind", "requested", "shard_index", "shard_count",
+                "discovered_files", "planned_files", "fail_fast",
+            }
+            valid_integers = all(
+                type(candidate.get(key)) is int and candidate[key] >= 0
+                for key in ("shard_index", "discovered_files", "planned_files")
+            ) if type(candidate) is dict else False
+            valid_count = (
+                type(candidate.get("shard_count")) is int and candidate["shard_count"] >= 1
+            ) if type(candidate) is dict else False
+            requested = candidate.get("requested") if type(candidate) is dict else None
+            expected_kind = None
+            if type(candidate) is dict and valid_count and valid_integers and type(requested) is list:
+                expected_kind = (
+                    "selected-shard" if requested and candidate["shard_count"] > 1
+                    else "selected" if requested
+                    else "shard" if candidate["shard_count"] > 1
+                    else "full"
+                )
+            if (
+                type(candidate) is not dict
+                or set(candidate) != expected_scope
+                or type(candidate.get("fail_fast")) is not bool
+                or type(requested) is not list
+                or not all(type(value) is str for value in requested)
+                or not valid_integers
+                or not valid_count
+                or candidate["shard_index"] >= candidate["shard_count"]
+                or candidate["planned_files"] > candidate["discovered_files"]
+                or candidate.get("kind") != expected_kind
+            ):
+                problems.append("invalid battery scope")
+                continue
+            scope = candidate
             continue
         if command == "battery_complete":
             if path or code not in ("0", "1"):
@@ -78,7 +124,7 @@ def parse_results(raw: bytes | None) -> tuple[str, list[dict], bool, list[str]]:
         problems.append("completion marker is missing")
     elif marker != int(any(row["exit_code"] != 0 for row in records)):
         problems.append("completion marker disagrees with recorded exits")
-    return sha, records, not problems, problems
+    return sha, records, not problems, problems, scope
 
 
 def source_blobs(root: Path, sha: str) -> dict[str, str]:
@@ -105,7 +151,7 @@ def source_blobs(root: Path, sha: str) -> dict[str, str]:
 
 
 def build_report(root: Path, raw: bytes | None, outcome: str, environ: Mapping[str, str]) -> dict:
-    sha, records, complete, problems = parse_results(raw)
+    sha, records, complete, problems, scope = parse_results(raw)
     blobs: dict[str, str] = {}
     if sha:
         try:
@@ -148,6 +194,7 @@ def build_report(root: Path, raw: bytes | None, outcome: str, environ: Mapping[s
         "workflow_outcome": outcome,
         "complete": complete,
         "conclusion": conclusion,
+        "scope": scope,
         "counts": {
             "completed_files": len(records),
             "passed_files": len(records) - failed,
@@ -171,6 +218,18 @@ def summary(report: dict) -> str:
         "Source blobs refer to that commit, not to a later moving main or uncommitted working-tree bytes.",
         "",
     ]
+    scope = report.get("scope")
+    if scope and scope.get("fail_fast"):
+        completed = counts["completed_files"]
+        planned = scope["planned_files"]
+        if completed < planned and counts["failed_files"]:
+            lines += [
+                "Fail-fast mode was enabled; execution intentionally stopped after the first failed file "
+                f"({completed} of {planned} planned files completed).",
+                "",
+            ]
+        else:
+            lines += [f"Fail-fast mode was enabled; {completed} of {planned} planned files completed.", ""]
     failures = [row for row in report["results"] if row["exit_code"] != 0]
     if failures:
         lines += ["| Test file | Exit | Source blob |", "| --- | --- | --- |"]

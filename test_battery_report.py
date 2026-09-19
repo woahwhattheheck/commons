@@ -123,6 +123,8 @@ class BatteryReportTests(unittest.TestCase):
         mismatch = self.raw(("python3", "test_alpha.py", 7), failed=0)
         self.assertEqual(self.build(mismatch, "failure")["conclusion"], "INCOMPLETE")
         self.assertEqual(self.build(self.raw(("python3", "test_alpha.py", 7), failed=1))["conclusion"], "INCOMPLETE")
+        bad_scope = self.raw(("battery_scope", '{"fail_fast":true}', ""))
+        self.assertEqual(self.build(bad_scope)["conclusion"], "INCOMPLETE")
 
     @unittest.skipUnless(os.name == "posix", "fixture filename needs POSIX rules")
     def test_unusual_filename_and_summary_are_lossless_and_escaped(self):
@@ -157,7 +159,7 @@ class BatteryReportTests(unittest.TestCase):
         self.assertNotIn("private-test-value", text + note.read_text(encoding="utf-8") + process.stdout + process.stderr)
 
     @unittest.skipUnless(shutil.which("bash") and shutil.which("node"), "workflow requires Bash and Node")
-    def test_real_workflow_loop_records_exits_and_continues_after_failures(self):
+    def test_real_workflow_fail_fast_records_scope_and_stops_after_first_failure(self):
         (self.root / "test_omega.py").write_text("print('after earlier failure')\n", encoding="utf-8")
         (self.root / "test_node_pass.js").write_text("process.exit(0);\n", encoding="utf-8")
         (self.root / "test_node_fail.js").write_text("process.exit(4);\n", encoding="utf-8")
@@ -174,11 +176,16 @@ class BatteryReportTests(unittest.TestCase):
         data = self.build(path.read_bytes(), "failure")
         self.assertTrue(data["complete"])
         self.assertEqual(data["conclusion"], "FAILED")
-        self.assertEqual(data["counts"], {"completed_files": 5, "passed_files": 3, "failed_files": 2, "unresolved_source_files": 0})
-        codes = {row["path"]: row["exit_code"] for row in data["results"]}
-        self.assertEqual(codes["infra/test_beta.py"], 7)
-        self.assertEqual(codes["test_node_fail.js"], 4)
-        self.assertEqual(codes["test_omega.py"], 0)
+        self.assertEqual(data["scope"]["kind"], "full")
+        self.assertTrue(data["scope"]["fail_fast"])
+        self.assertEqual(data["scope"]["planned_files"], 5)
+        self.assertEqual(data["scope"]["discovered_files"], 5)
+        self.assertEqual(data["counts"], {"completed_files": 1, "passed_files": 0, "failed_files": 1, "unresolved_source_files": 0})
+        self.assertEqual(
+            [(row["path"], row["exit_code"]) for row in data["results"]],
+            [("infra/test_beta.py", 7)],
+        )
+        self.assertIn("Fail-fast mode was enabled", report.summary(data))
 
     @unittest.skipUnless(shutil.which("bash") and shutil.which("node"), "workflow requires Bash and Node")
     def test_real_workflow_success_and_empty_discovery(self):
