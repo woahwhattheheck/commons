@@ -1,0 +1,208 @@
+{
+  "notice": "UI-ONLY FICTIONAL DISPLAY REGRESSION. Not compiler output, University evidence, numeric maturity findings, or an accepted intake schema. Additional statuses and numeric sentinels exercise the renderer only.",
+  "report": {
+    "schema": "SYNTHETIC_UI_DEMO_NOT_COMPILER_OUTPUT",
+    "synthetic_demo": true,
+    "mode": "UNTRUSTED_INSPECTION",
+    "receipt_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "aggregate_state": "HOLD_TRUSTED_AUTHORITY_REQUIRED",
+    "trust": {
+      "authority_root_supplied_out_of_band": false,
+      "current_evidence_review_authority": false
+    },
+    "commercial_terms": {
+      "status": "PROPOSED_NOT_ACCEPTED"
+    },
+    "assessment_matrix": [
+      {
+        "group": "ESS",
+        "dimension": "software",
+        "status": "UNTRUSTED_EVIDENCE_CONSISTENT",
+        "source_ids": [
+          "UI-ONLY-STATE-01"
+        ],
+        "source_record_sha256s": [
+          "0000000000000000000000000000000000000000000000000000000000000000"
+        ],
+        "reason_codes": [
+          "FICTIONAL_DISPLAY_CASE_NOT_COMPILER_EVIDENCE"
+        ],
+        "maturity": 0,
+        "confidence_bp": 0
+      },
+      {
+        "group": "ESS",
+        "dimension": "security",
+        "status": "HOLD_MISSING_EVIDENCE",
+        "source_ids": [
+          "UI-ONLY-STATE-02"
+        ],
+        "source_record_sha256s": [
+          "0000000000000000000000000000000000000000000000000000000000000000"
+        ],
+        "reason_codes": [
+          "FICTIONAL_DISPLAY_CASE_NOT_COMPILER_EVIDENCE"
+        ]
+      },
+      {
+        "group": "ESS",
+        "dimension": "deployment",
+        "status": "UNKNOWN",
+        "source_ids": [
+          "UI-ONLY-STATE-03"
+        ],
+        "source_record_sha256s": [
+          "0000000000000000000000000000000000000000000000000000000000000000"
+        ],
+        "reason_codes": [
+          "FICTIONAL_DISPLAY_CASE_NOT_COMPILER_EVIDENCE"
+        ],
+        "maturity": null,
+        "confidence_bp": null
+      },
+      {
+        "group": "ESS",
+        "dimension": "ai_readiness",
+        "status": "NOT_ASSESSED",
+        "source_ids": [
+          "UI-ONLY-STATE-04"
+        ],
+        "source_record_sha256s": [
+          "0000000000000000000000000000000000000000000000000000000000000000"
+        ],
+        "reason_codes": [
+          "FICTIONAL_DISPLAY_CASE_NOT_COMPILER_EVIDENCE"
+        ],
+        "maturity": null,
+        "confidence_bp": null
+      },
+      {
+        "group": "RIS",
+        "dimension": "software",
+        "status": "NOT_APPLICABLE",
+        "source_ids": [
+          "UI-ONLY-STATE-05"
+        ],
+        "source_record_sha256s": [
+          "0000000000000000000000000000000000000000000000000000000000000000"
+        ],
+        "reason_codes": [
+          "FICTIONAL_DISPLAY_CASE_NOT_COMPILER_EVIDENCE"
+        ],
+        "maturity": null,
+        "confidence_bp": null
+      },
+      {
+        "group": "RIS",
+        "dimension": "security",
+        "status": "HOLD_CONFLICT",
+        "source_ids": [
+          "UI-ONLY-STATE-06"
+        ],
+        "source_record_sha256s": [
+          "0000000000000000000000000000000000000000000000000000000000000000"
+        ],
+        "reason_codes": [
+          "FICTIONAL_DISPLAY_CASE_NOT_COMPILER_EVIDENCE"
+        ],
+        "maturity": null,
+        "confidence_bp": null
+      },
+      {
+        "group": "RIS",
+        "dimension": "deployment",
+        "status": "HOLD_STALE_EVIDENCE",
+        "source_ids": [
+          "UI-ONLY-STATE-07"
+        ],
+        "source_record_sha256s": [
+          "0000000000000000000000000000000000000000000000000000000000000000"
+        ],
+        "reason_codes": [
+          "FICTIONAL_DISPLAY_CASE_NOT_COMPILER_EVIDENCE"
+        ],
+        "maturity": null,
+        "confidence_bp": null
+      },
+      {
+        "group": "RIS",
+        "dimension": "ai_readiness",
+        "status": "UNTRUSTED_EVIDENCE_CONSISTENT",
+        "source_ids": [
+          "UI-ONLY-STATE-08"
+        ],
+        "source_record_sha256s": [
+          "0000000000000000000000000000000000000000000000000000000000000000"
+        ],
+        "reason_codes": [
+          "FICTIONAL_DISPLAY_CASE_NOT_COMPILER_EVIDENCE"
+        ],
+        "maturity": null,
+        "confidence_bp": null
+      },
+      {
+        "group": "IAM",
+        "dimension": "software",
+        "status": "FUTURE_SCHEMA_STATUS",
+        "source_ids": [
+          "UI-ONLY-STATE-09"
+        ],
+        "source_record_sha256s": [
+          "0000000000000000000000000000000000000000000000000000000000000000"
+        ],
+        "reason_codes": [
+          "FICTIONAL_DISPLAY_CASE_NOT_COMPILER_EVIDENCE"
+        ]
+      },
+      {
+        "group": "IAM",
+        "dimension": "security",
+        "status": "HOLD_CONFLICT",
+        "source_ids": [
+          "UI-ONLY-STATE-10"
+        ],
+        "source_record_sha256s": [
+          "0000000000000000000000000000000000000000000000000000000000000000"
+        ],
+        "reason_codes": [
+          "FICTIONAL_DISPLAY_CASE_NOT_COMPILER_EVIDENCE"
+        ],
+        "maturity": 0,
+        "confidence_bp": 0
+      },
+      {
+        "group": "IAM",
+        "dimension": "deployment",
+        "status": "UNTRUSTED_EVIDENCE_CONSISTENT",
+        "source_ids": [
+          "UI-ONLY-STATE-11"
+        ],
+        "source_record_sha256s": [
+          "0000000000000000000000000000000000000000000000000000000000000000"
+        ],
+        "reason_codes": [
+          "FICTIONAL_DISPLAY_CASE_NOT_COMPILER_EVIDENCE"
+        ],
+        "maturity": 3,
+        "confidence_bp": 5000
+      },
+      {
+        "group": "IAM",
+        "dimension": "ai_readiness",
+        "status": "UNKNOWN",
+        "source_ids": [
+          "UI-ONLY-STATE-12"
+        ],
+        "source_record_sha256s": [
+          "0000000000000000000000000000000000000000000000000000000000000000"
+        ],
+        "reason_codes": [
+          "FICTIONAL_DISPLAY_CASE_NOT_COMPILER_EVIDENCE"
+        ],
+        "maturity": false,
+        "confidence_bp": "0"
+      }
+    ],
+    "status_counts": {}
+  }
+}

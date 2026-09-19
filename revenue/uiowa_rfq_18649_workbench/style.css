@@ -24,3 +24,22 @@ pre { white-space: pre-wrap; word-break: break-word; max-height: 25rem; overflow
 textarea { width: min(100%, 60rem); box-sizing: border-box; }
 .muted { opacity: .72; }
 [hidden] { display: none !important; }
+
+/* UIOWA-126: semantic labels, not red/green performance or zero-length bars. */
+.cell .state-label { font-weight: 750; margin-block: .65rem .35rem; }
+.cell .state-explanation, .cell .value-state { font-size: .83rem; line-height: 1.45; }
+.cell .value-state { border-top: 1px solid currentColor; padding-top: .3rem; }
+.cell[data-evidence-state] { border-inline-start-width: 5px; }
+.cell[data-evidence-state="missing"] { border-inline-start-style: dashed; }
+.cell[data-evidence-state="unassessed"] { border-inline-start-style: dotted; }
+.cell[data-evidence-state="inapplicable"] { border-inline-start-style: double; border-inline-start-width: 7px; }
+.cell[data-evidence-state="conflict"] { border-inline-start-style: solid; }
+.cell[data-evidence-state="stale"] { border-inline-start-style: double; }
+.cell[data-evidence-state="unknown"], .cell[data-evidence-state="unrecognized"] { border-inline-start-style: dashed; }
+@media print {
+  .cell[data-evidence-state] { break-inside: avoid; color: #000; background: #fff; border-color: #000; }
+  .cell .state-label, .cell .status, .cell .state-explanation, .cell .value-state { color: #000; opacity: 1; }
+  .cell[aria-current="true"] { outline: none; }
+  .matrix { display: block; }
+  .matrix .cell { display: block; width: 100%; margin-block: .5rem; }
+}

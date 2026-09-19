@@ -10,6 +10,41 @@ function keyFor(cell) { return `${cell.group}|${cell.dimension}`; }
 function text(value) { return value == null ? "—" : String(value); }
 function setError(message="") { el.error.textContent = message; }
 
+
+// Presentation only: these labels never create a compiler state or authority.
+// The parent emits the four explicit inspection states below. Other named
+// states support display-only comparisons; they are not new compiler outputs.
+const CELL_PRESENTATION = Object.freeze({
+  UNTRUSTED_EVIDENCE_CONSISTENT: ["consistent", "[=] Internally consistent", "Supplied records agree; no current review authority."],
+  HOLD_MISSING_EVIDENCE: ["missing", "[?] Missing evidence", "No supporting record in this cell; not a poor-performance finding."],
+  HOLD_CONFLICT: ["conflict", "[!] Conflicting evidence", "Differing records remain unresolved; do not average them into a score."],
+  HOLD_STALE_EVIDENCE: ["stale", "[~] Stale evidence", "Evidence exceeds its configured age window; not a finding about current practice."],
+  NOT_ASSESSED: ["unassessed", "[-] Not assessed", "No assessment outcome is established for this cell."],
+  NOT_APPLICABLE: ["inapplicable", "[/] Not applicable", "Declared outside the applicable assessment; not a zero or a pass."],
+  UNKNOWN: ["unknown", "[?] Unknown", "The supplied status does not establish an outcome."]
+});
+
+function cellPresentation(cell) {
+  const status = cell.status;
+  const row = typeof status === "string" && Object.prototype.hasOwnProperty.call(CELL_PRESENTATION, status)
+    ? CELL_PRESENTATION[status]
+    : ["unrecognized", "[?] Unrecognized status", "Read the original code and evidence; no outcome is inferred."];
+  return { kind: row[0], label: row[1], explanation: row[2] };
+}
+
+function valuePresentation(cell, field) {
+  // Missing, explicit null, false, empty text and numeric zero are not aliases.
+  if (!Object.prototype.hasOwnProperty.call(cell, field)) return "Not supplied (field absent)";
+  const value = cell[field];
+  if (value === null) {
+    return cell.status === "UNTRUSTED_EVIDENCE_CONSISTENT"
+      ? "Not reported in untrusted inspection (null)"
+      : "Not determined (null)";
+  }
+  if (typeof value !== "number" || !Number.isFinite(value)) return "Non-numeric or invalid value; inspect original record";
+  return `Supplied value: ${Object.is(value, -0) ? "-0" : String(value)} (display only)`;
+}
+
 function syntheticReport() {
   const groups = ["ESS", "RIS", "IAM"];
   const dimensions = ["software_development", "security", "deployment", "ai_readiness"];
@@ -71,7 +106,8 @@ function renderSummary() {
     ["Receipt", state.report.receipt_sha256],
     ["Commercial", state.report.commercial_terms?.status || "UNKNOWN"],
     ["Current authority", "false"],
-    ["Synthetic demo", state.report.synthetic_demo === true ? "YES — UI ONLY" : "no"]
+    ["Synthetic demo", state.report.synthetic_demo === true ? "YES — UI ONLY" : "no"],
+    ["Reading guide", "Zero is a supplied numeric value, not missing data. Missing evidence, not assessed, not applicable, stale and conflict remain distinct. Labels and border patterns work without color. Null is not automatically a score or a finding."]
   ];
   el.summary.replaceChildren();
   for (const [k,v] of rows) {
@@ -110,8 +146,14 @@ function renderMatrix() {
     button.setAttribute("aria-current", state.selectedKey === key ? "true" : "false");
     const group = document.createElement("strong"); group.textContent = cell.group;
     const dimension = document.createElement("span"); dimension.textContent = cell.dimension;
-    const status = document.createElement("span"); status.className = "status"; status.textContent = cell.status;
-    button.append(group, dimension, status);
+    const view = cellPresentation(cell);
+    button.dataset.evidenceState = view.kind;
+    const label = document.createElement("span"); label.className = "state-label"; label.textContent = view.label;
+    const status = document.createElement("span"); status.className = "status"; status.textContent = `Source status: ${text(cell.status)}`;
+    const explanation = document.createElement("span"); explanation.className = "state-explanation"; explanation.textContent = view.explanation;
+    const maturity = document.createElement("span"); maturity.className = "value-state"; maturity.textContent = `Maturity: ${valuePresentation(cell, "maturity")}`;
+    const confidence = document.createElement("span"); confidence.className = "value-state"; confidence.textContent = `Confidence (basis points): ${valuePresentation(cell, "confidence_bp")}`;
+    button.append(group, dimension, label, status, explanation, maturity, confidence);
     button.addEventListener("click", () => selectCell(key));
     el.matrix.append(button);
   }
@@ -127,6 +169,12 @@ function selectCell(key) {
     group: cell.group,
     dimension: cell.dimension,
     status: cell.status,
+    display_only: {
+      evidence_state: cellPresentation(cell).label,
+      explanation: cellPresentation(cell).explanation,
+      maturity_availability: valuePresentation(cell, "maturity"),
+      confidence_availability: valuePresentation(cell, "confidence_bp")
+    },
     maturity: cell.maturity,
     confidence_bp: cell.confidence_bp,
     source_ids: cell.source_ids || [],
