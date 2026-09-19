@@ -1,0 +1,295 @@
+{
+  "fiction_notice": "SYNTHETIC / FICTIONAL. Every service, backup job, exercise, date and measurement in this file was invented for artifact review. Nothing here describes the University of Iowa, any real estate, or any real incident. Do not cite any figure in this file as a finding.",
+  "schema_version": "1.0",
+  "as_of": "2026-09-15",
+  "as_of_note": "All staleness and age arithmetic is computed against this declared date, never against the wall clock, so two operators running this on different days get byte-identical output.",
+
+  "services": [
+    {
+      "service_id": "SVC-REG",
+      "name": "Course Registration Portal",
+      "tier": 1,
+      "business_function": "A student can complete a course add/drop and receive a written confirmation.",
+      "owner_role": "Enterprise Applications team",
+      "stated_rto_minutes": 240,
+      "stated_rpo_minutes": 15,
+      "depends_on": ["SVC-IDP", "SVC-SIS-DB"]
+    },
+    {
+      "service_id": "SVC-SIS-DB",
+      "name": "Student Records Database",
+      "tier": 1,
+      "business_function": "Authoritative student records can be read and written, and reads return current committed data.",
+      "owner_role": "Database Services team",
+      "stated_rto_minutes": 180,
+      "stated_rpo_minutes": 15,
+      "depends_on": ["SVC-STORE"]
+    },
+    {
+      "service_id": "SVC-IDP",
+      "name": "Identity Provider (SSO)",
+      "tier": 1,
+      "business_function": "A staff or student account can authenticate and receive a valid application session.",
+      "owner_role": "Identity and Access team",
+      "stated_rto_minutes": 120,
+      "stated_rpo_minutes": 60,
+      "depends_on": ["SVC-DIRSYNC"]
+    },
+    {
+      "service_id": "SVC-DIRSYNC",
+      "name": "Directory Synchronization Service",
+      "tier": 2,
+      "business_function": "Account attribute and group-membership changes propagate to downstream consumers.",
+      "owner_role": "Identity and Access team",
+      "stated_rto_minutes": 480,
+      "stated_rpo_minutes": 1440,
+      "depends_on": []
+    },
+    {
+      "service_id": "SVC-STORE",
+      "name": "Shared Object Store",
+      "tier": 1,
+      "business_function": "Stored objects are retrievable and byte-identical to what was written.",
+      "owner_role": "Storage and Platform team",
+      "stated_rto_minutes": 360,
+      "stated_rpo_minutes": 60,
+      "depends_on": []
+    },
+    {
+      "service_id": "SVC-GRADE",
+      "name": "Grade Submission Service",
+      "tier": 2,
+      "business_function": "An instructor can submit final grades for a section and the submission is durably recorded.",
+      "owner_role": "Enterprise Applications team",
+      "stated_rto_minutes": 480,
+      "stated_rpo_minutes": 60,
+      "depends_on": ["SVC-SIS-DB", "SVC-IDP"]
+    },
+    {
+      "service_id": "SVC-LMS-INT",
+      "name": "LMS Integration Bridge",
+      "tier": 3,
+      "business_function": "Roster and gradebook updates are exchanged with the learning management system.",
+      "owner_role": "Academic Technology team",
+      "stated_rto_minutes": 1440,
+      "stated_rpo_minutes": 1440,
+      "depends_on": ["SVC-GHOST-API"]
+    },
+    {
+      "service_id": "SVC-BKP-CTL",
+      "name": "Backup Control Plane",
+      "tier": 1,
+      "business_function": "Backup and restore jobs can be scheduled, launched and monitored.",
+      "owner_role": "Storage and Platform team",
+      "stated_rto_minutes": 240,
+      "stated_rpo_minutes": 60,
+      "depends_on": ["SVC-VAULT"]
+    },
+    {
+      "service_id": "SVC-VAULT",
+      "name": "Backup Vault and Catalog",
+      "tier": 1,
+      "business_function": "A named backup set can be located in the catalog and its contents streamed back.",
+      "owner_role": "Storage and Platform team",
+      "stated_rto_minutes": 240,
+      "stated_rpo_minutes": 60,
+      "depends_on": ["SVC-BKP-CTL"]
+    }
+  ],
+
+  "backups": [
+    {
+      "backup_id": "BK-REG-01",
+      "service_id": "SVC-REG",
+      "scope": "config_only",
+      "schedule": "daily",
+      "last_job_status": "success",
+      "last_job_at": "2026-09-14",
+      "retention_days": 30,
+      "offsite_copy": true,
+      "notes": "Application configuration and deployment manifests. Application state lives in SVC-SIS-DB."
+    },
+    {
+      "backup_id": "BK-SIS-01",
+      "service_id": "SVC-SIS-DB",
+      "scope": "full",
+      "schedule": "daily",
+      "last_job_status": "success",
+      "last_job_at": "2026-09-15",
+      "retention_days": 35,
+      "offsite_copy": true,
+      "notes": "Nightly full plus transaction log shipping."
+    },
+    {
+      "backup_id": "BK-IDP-01",
+      "service_id": "SVC-IDP",
+      "scope": "full",
+      "schedule": "daily",
+      "last_job_status": "success",
+      "last_job_at": "2026-09-15",
+      "retention_days": 35,
+      "offsite_copy": true,
+      "notes": "Configuration plus signing-key material escrow."
+    },
+    {
+      "backup_id": "BK-STORE-01",
+      "service_id": "SVC-STORE",
+      "scope": "full",
+      "schedule": "weekly",
+      "last_job_status": "success",
+      "last_job_at": "2026-09-12",
+      "retention_days": 90,
+      "offsite_copy": "unknown",
+      "notes": "Whether the weekly copy leaves the primary facility was not established during collection. Left unknown on purpose."
+    },
+    {
+      "backup_id": "BK-GRADE-01",
+      "service_id": "SVC-GRADE",
+      "scope": "full",
+      "schedule": "daily",
+      "last_job_status": "success",
+      "last_job_at": "2026-08-27",
+      "retention_days": 30,
+      "offsite_copy": true,
+      "notes": "Dashboard shows the last run green. The last run is 19 days old against a daily schedule."
+    },
+    {
+      "backup_id": "BK-LMS-01",
+      "service_id": "SVC-LMS-INT",
+      "scope": "config_only",
+      "schedule": "monthly",
+      "last_job_status": "failed",
+      "last_job_at": "2026-09-01",
+      "retention_days": 90,
+      "offsite_copy": false,
+      "notes": "Job has failed on credential expiry."
+    },
+    {
+      "backup_id": "BK-BKPCTL-01",
+      "service_id": "SVC-BKP-CTL",
+      "scope": "full",
+      "schedule": "daily",
+      "last_job_status": "success",
+      "last_job_at": "2026-09-15",
+      "retention_days": 30,
+      "offsite_copy": true,
+      "notes": "Control-plane database and job definitions."
+    },
+    {
+      "backup_id": "BK-VAULT-01",
+      "service_id": "SVC-VAULT",
+      "scope": "full",
+      "schedule": "daily",
+      "last_job_status": "success",
+      "last_job_at": "2026-09-15",
+      "retention_days": 30,
+      "offsite_copy": true,
+      "notes": "Catalog metadata. The catalog is what locates every other backup set."
+    }
+  ],
+
+  "exercises": [
+    {
+      "exercise_id": "EX-2026-03-IDP",
+      "service_id": "SVC-IDP",
+      "date": "2026-03-14",
+      "kind": "full_restore",
+      "outcome": "completed",
+      "measured_restore_complete_minutes": 95,
+      "business_function_check": {
+        "performed": true,
+        "result": "pass",
+        "evidence_ref": "EX-2026-03-IDP/authn-sample-transcript",
+        "description": "Two test accounts authenticated against the restored instance and received valid sessions."
+      },
+      "dependencies_available": [],
+      "dependencies_unavailable": [],
+      "notes": "Restored into an isolated environment. Directory synchronisation was stubbed for the exercise rather than restored."
+    },
+    {
+      "exercise_id": "EX-2026-04-SIS",
+      "service_id": "SVC-SIS-DB",
+      "date": "2026-04-02",
+      "kind": "full_restore",
+      "outcome": "completed",
+      "measured_restore_complete_minutes": 320,
+      "business_function_check": {
+        "performed": true,
+        "result": "pass",
+        "evidence_ref": "EX-2026-04-SIS/record-readwrite-checklist",
+        "description": "Sampled records read back and a test write committed and re-read."
+      },
+      "dependencies_available": ["SVC-STORE"],
+      "dependencies_unavailable": [],
+      "notes": "Completed, but 320 minutes against a stated 180-minute objective."
+    },
+    {
+      "exercise_id": "EX-2026-02-STORE",
+      "service_id": "SVC-STORE",
+      "date": "2026-02-20",
+      "kind": "partial_restore",
+      "outcome": "completed",
+      "measured_restore_complete_minutes": 210,
+      "business_function_check": {
+        "performed": false,
+        "result": "not_attempted",
+        "evidence_ref": null,
+        "description": "Restore completed within the window; no content verification was performed against the restored objects."
+      },
+      "dependencies_available": [],
+      "dependencies_unavailable": [],
+      "notes": "Bytes came back. Nobody checked they were the right bytes."
+    },
+    {
+      "exercise_id": "EX-2026-05-REG",
+      "service_id": "SVC-REG",
+      "date": "2026-05-08",
+      "kind": "tabletop",
+      "outcome": "completed",
+      "measured_restore_complete_minutes": null,
+      "business_function_check": {
+        "performed": false,
+        "result": "not_attempted",
+        "evidence_ref": null,
+        "description": "Discussion-based walkthrough. No system was restored."
+      },
+      "dependencies_available": ["SVC-IDP", "SVC-SIS-DB"],
+      "dependencies_unavailable": ["SVC-DIRSYNC"],
+      "notes": "A useful exercise: the walkthrough is what surfaced that SVC-DIRSYNC has no recovery path. It is still not restoration evidence."
+    },
+    {
+      "exercise_id": "EX-2026-01-GRADE",
+      "service_id": "SVC-GRADE",
+      "date": "2026-01-30",
+      "kind": "full_restore",
+      "outcome": "failed",
+      "measured_restore_complete_minutes": null,
+      "business_function_check": {
+        "performed": false,
+        "result": "not_attempted",
+        "evidence_ref": null,
+        "description": "Restore did not reach a running state; the attempt was abandoned after the maintenance window closed."
+      },
+      "dependencies_available": [],
+      "dependencies_unavailable": ["SVC-SIS-DB"],
+      "notes": "An attempted restoration that did not complete. It is evidence of an attempt, not of a capability."
+    },
+    {
+      "exercise_id": "EX-2026-06-BKPCTL",
+      "service_id": "SVC-BKP-CTL",
+      "date": "2026-06-11",
+      "kind": "full_restore",
+      "outcome": "completed",
+      "measured_restore_complete_minutes": 140,
+      "business_function_check": {
+        "performed": true,
+        "result": "fail",
+        "evidence_ref": "EX-2026-06-BKPCTL/catalog-verify-log",
+        "description": "Control plane started, but could not enumerate backup sets: the catalog it reads lives in SVC-VAULT, which was not available."
+      },
+      "dependencies_available": [],
+      "dependencies_unavailable": ["SVC-VAULT"],
+      "notes": "Restore completed and the function check was run and failed. That is a different and more useful state than 'not attempted'."
+    }
+  ]
+}

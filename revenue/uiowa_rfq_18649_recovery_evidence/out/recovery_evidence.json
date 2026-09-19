@@ -1,0 +1,776 @@
+{
+  "as_of": "2026-09-15",
+  "fiction_notice": "SYNTHETIC / FICTIONAL. Every service, backup job, exercise, date and measurement in this file was invented for artifact review. Nothing here describes the University of Iowa, any real estate, or any real incident. Do not cite any figure in this file as a finding.",
+  "schema_version": "1.0",
+  "ladder": [
+    {
+      "rung": "R0",
+      "label": "NO_EVIDENCE",
+      "meaning": "Nothing on record for this service."
+    },
+    {
+      "rung": "R1",
+      "label": "CONFIGURED",
+      "meaning": "A backup exists but is not currently completing."
+    },
+    {
+      "rung": "R2",
+      "label": "BACKUP_COMPLETING",
+      "meaning": "The backup job succeeds on its schedule."
+    },
+    {
+      "rung": "R3",
+      "label": "RESTORE_DEMONSTRATED",
+      "meaning": "A restoration actually completed."
+    },
+    {
+      "rung": "R4",
+      "label": "FUNCTION_VERIFIED",
+      "meaning": "The restored service performed its business function."
+    }
+  ],
+  "services": [
+    {
+      "service_id": "SVC-BKP-CTL",
+      "name": "Backup Control Plane",
+      "tier": 1,
+      "owner_role": "Storage and Platform team",
+      "business_function": "Backup and restore jobs can be scheduled, launched and monitored.",
+      "depends_on": [
+        "SVC-VAULT"
+      ],
+      "evidence_rung": "R3",
+      "evidence_rung_label": "RESTORE_DEMONSTRATED",
+      "rung_uncapped": "R3",
+      "rung_capped_from": null,
+      "cap_reason": null,
+      "rung_basis": "Restoration demonstrated by EX-2026-06-BKPCTL.",
+      "rung_diagnostics": [
+        "EX-2026-06-BKPCTL restored the service and the business-function check RAN AND FAILED: Control plane started, but could not enumerate backup sets: the catalog it reads lives in SVC-VAULT, which was not available."
+      ],
+      "latest_restore_exercise": "EX-2026-06-BKPCTL",
+      "verifying_exercise": null,
+      "backup_health": "COMPLETING",
+      "backup_health_detail": "Job BK-BKPCTL-01 succeeded 0 day(s) ago on a daily schedule.",
+      "last_backup_age_days": 0,
+      "backup_id": "BK-BKPCTL-01",
+      "offsite_copy": true,
+      "own_measured_restore_minutes": 140,
+      "own_measured_source": "EX-2026-06-BKPCTL",
+      "stated_rto_minutes": 240,
+      "stated_rpo_minutes": 60,
+      "rto_status": "UNKNOWN",
+      "rto_detail": "Cannot be established: Circular recovery dependency across SVC-BKP-CTL, SVC-VAULT: restoration order is undefined, so a chain time cannot be computed even where individual links were measured. A pass requires a complete measured chain.",
+      "rpo_status": "SCHEDULE_DOES_NOT_MEET_RPO",
+      "rpo_detail": "The densest recorded data-scope schedule implies up to 1440 minutes of loss against a stated 60-minute objective. If a continuous or log-shipping mechanism exists it is not in these records -- ask for it rather than assuming either way.",
+      "blast_radius": 1,
+      "chain_members": [
+        "SVC-BKP-CTL",
+        "SVC-VAULT"
+      ],
+      "chain_cycle": [
+        "SVC-BKP-CTL",
+        "SVC-VAULT"
+      ],
+      "chain_missing_records": [],
+      "unmeasured_links": [
+        "SVC-VAULT"
+      ],
+      "effective_recovery_minutes": null,
+      "effective_recovery_status": "UNKNOWN",
+      "chain_lower_bound_minutes": 140,
+      "reason": "Circular recovery dependency across SVC-BKP-CTL, SVC-VAULT: restoration order is undefined, so a chain time cannot be computed even where individual links were measured."
+    },
+    {
+      "service_id": "SVC-DIRSYNC",
+      "name": "Directory Synchronization Service",
+      "tier": 2,
+      "owner_role": "Identity and Access team",
+      "business_function": "Account attribute and group-membership changes propagate to downstream consumers.",
+      "depends_on": [],
+      "evidence_rung": "R0",
+      "evidence_rung_label": "NO_EVIDENCE",
+      "rung_uncapped": "R0",
+      "rung_capped_from": null,
+      "cap_reason": null,
+      "rung_basis": "No backup record and no exercise record.",
+      "rung_diagnostics": [],
+      "latest_restore_exercise": null,
+      "verifying_exercise": null,
+      "backup_health": "NO_RECORD",
+      "backup_health_detail": "No backup record for this service.",
+      "last_backup_age_days": null,
+      "backup_id": null,
+      "offsite_copy": "UNKNOWN",
+      "own_measured_restore_minutes": null,
+      "own_measured_source": null,
+      "stated_rto_minutes": 480,
+      "stated_rpo_minutes": 1440,
+      "rto_status": "UNKNOWN",
+      "rto_detail": "Cannot be established: No measured restoration for SVC-DIRSYNC. The chain time is unknown; the figure below is a lower bound, not an estimate. A pass requires a complete measured chain.",
+      "rpo_status": "UNKNOWN",
+      "rpo_detail": "No data-scope backup record for this service, so the recorded evidence cannot speak to data loss. Service data may reside in a dependency.",
+      "blast_radius": 3,
+      "chain_members": [
+        "SVC-DIRSYNC"
+      ],
+      "chain_cycle": [],
+      "chain_missing_records": [],
+      "unmeasured_links": [
+        "SVC-DIRSYNC"
+      ],
+      "effective_recovery_minutes": null,
+      "effective_recovery_status": "UNKNOWN",
+      "chain_lower_bound_minutes": null,
+      "reason": "No measured restoration for SVC-DIRSYNC. The chain time is unknown; the figure below is a lower bound, not an estimate."
+    },
+    {
+      "service_id": "SVC-GRADE",
+      "name": "Grade Submission Service",
+      "tier": 2,
+      "owner_role": "Enterprise Applications team",
+      "business_function": "An instructor can submit final grades for a section and the submission is durably recorded.",
+      "depends_on": [
+        "SVC-SIS-DB",
+        "SVC-IDP"
+      ],
+      "evidence_rung": "R1",
+      "evidence_rung_label": "CONFIGURED",
+      "rung_uncapped": "R1",
+      "rung_capped_from": null,
+      "cap_reason": null,
+      "rung_basis": "A backup record exists but is not currently completing.",
+      "rung_diagnostics": [
+        "EX-2026-01-GRADE (2026-01-30) was attempted and did not complete (outcome=failed). An attempt is not a demonstrated capability."
+      ],
+      "latest_restore_exercise": null,
+      "verifying_exercise": null,
+      "backup_health": "STALE",
+      "backup_health_detail": "Job BK-GRADE-01 reports success but ran 19 day(s) ago against a daily schedule (tolerance 3 day(s)).",
+      "last_backup_age_days": 19,
+      "backup_id": "BK-GRADE-01",
+      "offsite_copy": true,
+      "own_measured_restore_minutes": null,
+      "own_measured_source": null,
+      "stated_rto_minutes": 480,
+      "stated_rpo_minutes": 60,
+      "rto_status": "UNKNOWN",
+      "rto_detail": "Cannot be established: No measured restoration for SVC-DIRSYNC, SVC-GRADE. The chain time is unknown; the figure below is a lower bound, not an estimate. A pass requires a complete measured chain.",
+      "rpo_status": "SCHEDULE_DOES_NOT_MEET_RPO",
+      "rpo_detail": "The densest recorded data-scope schedule implies up to 1440 minutes of loss against a stated 60-minute objective. If a continuous or log-shipping mechanism exists it is not in these records -- ask for it rather than assuming either way.",
+      "blast_radius": 0,
+      "chain_members": [
+        "SVC-DIRSYNC",
+        "SVC-GRADE",
+        "SVC-IDP",
+        "SVC-SIS-DB",
+        "SVC-STORE"
+      ],
+      "chain_cycle": [],
+      "chain_missing_records": [],
+      "unmeasured_links": [
+        "SVC-DIRSYNC",
+        "SVC-GRADE"
+      ],
+      "effective_recovery_minutes": null,
+      "effective_recovery_status": "UNKNOWN",
+      "chain_lower_bound_minutes": 320,
+      "reason": "No measured restoration for SVC-DIRSYNC, SVC-GRADE. The chain time is unknown; the figure below is a lower bound, not an estimate."
+    },
+    {
+      "service_id": "SVC-IDP",
+      "name": "Identity Provider (SSO)",
+      "tier": 1,
+      "owner_role": "Identity and Access team",
+      "business_function": "A staff or student account can authenticate and receive a valid application session.",
+      "depends_on": [
+        "SVC-DIRSYNC"
+      ],
+      "evidence_rung": "R4",
+      "evidence_rung_label": "FUNCTION_VERIFIED",
+      "rung_uncapped": "R4",
+      "rung_capped_from": null,
+      "cap_reason": null,
+      "rung_basis": "Business function verified by EX-2026-03-IDP (EX-2026-03-IDP/authn-sample-transcript).",
+      "rung_diagnostics": [],
+      "latest_restore_exercise": "EX-2026-03-IDP",
+      "verifying_exercise": "EX-2026-03-IDP",
+      "backup_health": "COMPLETING",
+      "backup_health_detail": "Job BK-IDP-01 succeeded 0 day(s) ago on a daily schedule.",
+      "last_backup_age_days": 0,
+      "backup_id": "BK-IDP-01",
+      "offsite_copy": true,
+      "own_measured_restore_minutes": 95,
+      "own_measured_source": "EX-2026-03-IDP",
+      "stated_rto_minutes": 120,
+      "stated_rpo_minutes": 60,
+      "rto_status": "UNKNOWN",
+      "rto_detail": "Cannot be established: No measured restoration for SVC-DIRSYNC. The chain time is unknown; the figure below is a lower bound, not an estimate. A pass requires a complete measured chain.",
+      "rpo_status": "SCHEDULE_DOES_NOT_MEET_RPO",
+      "rpo_detail": "The densest recorded data-scope schedule implies up to 1440 minutes of loss against a stated 60-minute objective. If a continuous or log-shipping mechanism exists it is not in these records -- ask for it rather than assuming either way.",
+      "blast_radius": 2,
+      "chain_members": [
+        "SVC-DIRSYNC",
+        "SVC-IDP"
+      ],
+      "chain_cycle": [],
+      "chain_missing_records": [],
+      "unmeasured_links": [
+        "SVC-DIRSYNC"
+      ],
+      "effective_recovery_minutes": null,
+      "effective_recovery_status": "UNKNOWN",
+      "chain_lower_bound_minutes": 95,
+      "reason": "No measured restoration for SVC-DIRSYNC. The chain time is unknown; the figure below is a lower bound, not an estimate."
+    },
+    {
+      "service_id": "SVC-LMS-INT",
+      "name": "LMS Integration Bridge",
+      "tier": 3,
+      "owner_role": "Academic Technology team",
+      "business_function": "Roster and gradebook updates are exchanged with the learning management system.",
+      "depends_on": [
+        "SVC-GHOST-API"
+      ],
+      "evidence_rung": "R1",
+      "evidence_rung_label": "CONFIGURED",
+      "rung_uncapped": "R1",
+      "rung_capped_from": null,
+      "cap_reason": null,
+      "rung_basis": "A backup record exists but is not currently completing.",
+      "rung_diagnostics": [],
+      "latest_restore_exercise": null,
+      "verifying_exercise": null,
+      "backup_health": "FAILING",
+      "backup_health_detail": "Most recent recorded job for BK-LMS-01 is 'failed'.",
+      "last_backup_age_days": null,
+      "backup_id": "BK-LMS-01",
+      "offsite_copy": false,
+      "own_measured_restore_minutes": null,
+      "own_measured_source": null,
+      "stated_rto_minutes": 1440,
+      "stated_rpo_minutes": 1440,
+      "rto_status": "UNKNOWN",
+      "rto_detail": "Cannot be established: Dependency record(s) missing from the estate: SVC-GHOST-API. A pass requires a complete measured chain.",
+      "rpo_status": "UNKNOWN",
+      "rpo_detail": "No data-scope backup record for this service, so the recorded evidence cannot speak to data loss. Service data may reside in a dependency.",
+      "blast_radius": 0,
+      "chain_members": [
+        "SVC-GHOST-API",
+        "SVC-LMS-INT"
+      ],
+      "chain_cycle": [],
+      "chain_missing_records": [
+        "SVC-GHOST-API"
+      ],
+      "unmeasured_links": [
+        "SVC-GHOST-API",
+        "SVC-LMS-INT"
+      ],
+      "effective_recovery_minutes": null,
+      "effective_recovery_status": "UNKNOWN",
+      "chain_lower_bound_minutes": null,
+      "reason": "Dependency record(s) missing from the estate: SVC-GHOST-API."
+    },
+    {
+      "service_id": "SVC-REG",
+      "name": "Course Registration Portal",
+      "tier": 1,
+      "owner_role": "Enterprise Applications team",
+      "business_function": "A student can complete a course add/drop and receive a written confirmation.",
+      "depends_on": [
+        "SVC-IDP",
+        "SVC-SIS-DB"
+      ],
+      "evidence_rung": "R2",
+      "evidence_rung_label": "BACKUP_COMPLETING",
+      "rung_uncapped": "R2",
+      "rung_capped_from": null,
+      "cap_reason": null,
+      "rung_basis": "The backup job is completing on schedule.",
+      "rung_diagnostics": [
+        "EX-2026-05-REG (2026-05-08) is a tabletop: it does not demonstrate restoration and cannot lift this service above R2."
+      ],
+      "latest_restore_exercise": null,
+      "verifying_exercise": null,
+      "backup_health": "COMPLETING",
+      "backup_health_detail": "Job BK-REG-01 succeeded 1 day(s) ago on a daily schedule.",
+      "last_backup_age_days": 1,
+      "backup_id": "BK-REG-01",
+      "offsite_copy": true,
+      "own_measured_restore_minutes": null,
+      "own_measured_source": null,
+      "stated_rto_minutes": 240,
+      "stated_rpo_minutes": 15,
+      "rto_status": "EXCEEDED",
+      "rto_detail": "At least 320 minutes of measured restoration in the chain against a stated 240-minute objective. Conclusive despite the remaining unknowns -- the true figure can only be higher.",
+      "rpo_status": "UNKNOWN",
+      "rpo_detail": "No data-scope backup record for this service, so the recorded evidence cannot speak to data loss. Service data may reside in a dependency.",
+      "blast_radius": 0,
+      "chain_members": [
+        "SVC-DIRSYNC",
+        "SVC-IDP",
+        "SVC-REG",
+        "SVC-SIS-DB",
+        "SVC-STORE"
+      ],
+      "chain_cycle": [],
+      "chain_missing_records": [],
+      "unmeasured_links": [
+        "SVC-DIRSYNC",
+        "SVC-REG"
+      ],
+      "effective_recovery_minutes": null,
+      "effective_recovery_status": "UNKNOWN",
+      "chain_lower_bound_minutes": 320,
+      "reason": "No measured restoration for SVC-DIRSYNC, SVC-REG. The chain time is unknown; the figure below is a lower bound, not an estimate."
+    },
+    {
+      "service_id": "SVC-SIS-DB",
+      "name": "Student Records Database",
+      "tier": 1,
+      "owner_role": "Database Services team",
+      "business_function": "Authoritative student records can be read and written, and reads return current committed data.",
+      "depends_on": [
+        "SVC-STORE"
+      ],
+      "evidence_rung": "R4",
+      "evidence_rung_label": "FUNCTION_VERIFIED",
+      "rung_uncapped": "R4",
+      "rung_capped_from": null,
+      "cap_reason": null,
+      "rung_basis": "Business function verified by EX-2026-04-SIS (EX-2026-04-SIS/record-readwrite-checklist).",
+      "rung_diagnostics": [],
+      "latest_restore_exercise": "EX-2026-04-SIS",
+      "verifying_exercise": "EX-2026-04-SIS",
+      "backup_health": "COMPLETING",
+      "backup_health_detail": "Job BK-SIS-01 succeeded 0 day(s) ago on a daily schedule.",
+      "last_backup_age_days": 0,
+      "backup_id": "BK-SIS-01",
+      "offsite_copy": true,
+      "own_measured_restore_minutes": 320,
+      "own_measured_source": "EX-2026-04-SIS",
+      "stated_rto_minutes": 180,
+      "stated_rpo_minutes": 15,
+      "rto_status": "EXCEEDED",
+      "rto_detail": "At least 320 minutes of measured restoration in the chain against a stated 180-minute objective. Conclusive despite the remaining unknowns -- the true figure can only be higher.",
+      "rpo_status": "SCHEDULE_DOES_NOT_MEET_RPO",
+      "rpo_detail": "The densest recorded data-scope schedule implies up to 1440 minutes of loss against a stated 15-minute objective. If a continuous or log-shipping mechanism exists it is not in these records -- ask for it rather than assuming either way.",
+      "blast_radius": 2,
+      "chain_members": [
+        "SVC-SIS-DB",
+        "SVC-STORE"
+      ],
+      "chain_cycle": [],
+      "chain_missing_records": [],
+      "unmeasured_links": [],
+      "effective_recovery_minutes": 320,
+      "effective_recovery_status": "MEASURED",
+      "chain_lower_bound_minutes": 320,
+      "reason": "Every link in the chain has a measured restoration."
+    },
+    {
+      "service_id": "SVC-STORE",
+      "name": "Shared Object Store",
+      "tier": 1,
+      "owner_role": "Storage and Platform team",
+      "business_function": "Stored objects are retrievable and byte-identical to what was written.",
+      "depends_on": [],
+      "evidence_rung": "R3",
+      "evidence_rung_label": "RESTORE_DEMONSTRATED",
+      "rung_uncapped": "R3",
+      "rung_capped_from": null,
+      "cap_reason": null,
+      "rung_basis": "Restoration demonstrated by EX-2026-02-STORE.",
+      "rung_diagnostics": [
+        "EX-2026-02-STORE restored the service but no business-function check was performed (not_attempted). Restoration is demonstrated; usefulness is not."
+      ],
+      "latest_restore_exercise": "EX-2026-02-STORE",
+      "verifying_exercise": null,
+      "backup_health": "COMPLETING",
+      "backup_health_detail": "Job BK-STORE-01 succeeded 3 day(s) ago on a weekly schedule.",
+      "last_backup_age_days": 3,
+      "backup_id": "BK-STORE-01",
+      "offsite_copy": "UNKNOWN",
+      "own_measured_restore_minutes": 210,
+      "own_measured_source": "EX-2026-02-STORE",
+      "stated_rto_minutes": 360,
+      "stated_rpo_minutes": 60,
+      "rto_status": "WITHIN_STATED_RTO",
+      "rto_detail": "Measured chain recovery 210 minutes against a stated 360-minute objective.",
+      "rpo_status": "SCHEDULE_DOES_NOT_MEET_RPO",
+      "rpo_detail": "The densest recorded data-scope schedule implies up to 10080 minutes of loss against a stated 60-minute objective. If a continuous or log-shipping mechanism exists it is not in these records -- ask for it rather than assuming either way.",
+      "blast_radius": 3,
+      "chain_members": [
+        "SVC-STORE"
+      ],
+      "chain_cycle": [],
+      "chain_missing_records": [],
+      "unmeasured_links": [],
+      "effective_recovery_minutes": 210,
+      "effective_recovery_status": "MEASURED",
+      "chain_lower_bound_minutes": 210,
+      "reason": "Every link in the chain has a measured restoration."
+    },
+    {
+      "service_id": "SVC-VAULT",
+      "name": "Backup Vault and Catalog",
+      "tier": 1,
+      "owner_role": "Storage and Platform team",
+      "business_function": "A named backup set can be located in the catalog and its contents streamed back.",
+      "depends_on": [
+        "SVC-BKP-CTL"
+      ],
+      "evidence_rung": "R2",
+      "evidence_rung_label": "BACKUP_COMPLETING",
+      "rung_uncapped": "R2",
+      "rung_capped_from": null,
+      "cap_reason": null,
+      "rung_basis": "The backup job is completing on schedule.",
+      "rung_diagnostics": [],
+      "latest_restore_exercise": null,
+      "verifying_exercise": null,
+      "backup_health": "COMPLETING",
+      "backup_health_detail": "Job BK-VAULT-01 succeeded 0 day(s) ago on a daily schedule.",
+      "last_backup_age_days": 0,
+      "backup_id": "BK-VAULT-01",
+      "offsite_copy": true,
+      "own_measured_restore_minutes": null,
+      "own_measured_source": null,
+      "stated_rto_minutes": 240,
+      "stated_rpo_minutes": 60,
+      "rto_status": "UNKNOWN",
+      "rto_detail": "Cannot be established: Circular recovery dependency across SVC-BKP-CTL, SVC-VAULT: restoration order is undefined, so a chain time cannot be computed even where individual links were measured. A pass requires a complete measured chain.",
+      "rpo_status": "SCHEDULE_DOES_NOT_MEET_RPO",
+      "rpo_detail": "The densest recorded data-scope schedule implies up to 1440 minutes of loss against a stated 60-minute objective. If a continuous or log-shipping mechanism exists it is not in these records -- ask for it rather than assuming either way.",
+      "blast_radius": 1,
+      "chain_members": [
+        "SVC-BKP-CTL",
+        "SVC-VAULT"
+      ],
+      "chain_cycle": [
+        "SVC-BKP-CTL",
+        "SVC-VAULT"
+      ],
+      "chain_missing_records": [],
+      "unmeasured_links": [
+        "SVC-VAULT"
+      ],
+      "effective_recovery_minutes": null,
+      "effective_recovery_status": "UNKNOWN",
+      "chain_lower_bound_minutes": 140,
+      "reason": "Circular recovery dependency across SVC-BKP-CTL, SVC-VAULT: restoration order is undefined, so a chain time cannot be computed even where individual links were measured."
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "RF-001",
+      "code": "CIRCULAR_RECOVERY_DEPENDENCY",
+      "severity": "high",
+      "service_id": "SVC-BKP-CTL",
+      "statement": "Backup Control Plane sits in a circular recovery dependency (SVC-BKP-CTL <-> SVC-VAULT). Each side's measured restoration assumed the other was already available.",
+      "evidence": [
+        "SVC-BKP-CTL",
+        "SVC-VAULT"
+      ]
+    },
+    {
+      "finding_id": "RF-002",
+      "code": "RESTORE_DEMONSTRATED_FUNCTION_UNVERIFIED",
+      "severity": "medium",
+      "service_id": "SVC-BKP-CTL",
+      "statement": "Backup Control Plane has a completed restoration but no passing business-function check. The data came back; whether the service can do its job with it is unestablished.",
+      "evidence": [
+        "EX-2026-06-BKPCTL"
+      ]
+    },
+    {
+      "finding_id": "RF-003",
+      "code": "RPO_UNSUPPORTED_BY_RECORDED_SCHEDULE",
+      "severity": "medium",
+      "service_id": "SVC-BKP-CTL",
+      "statement": "Backup Control Plane: The densest recorded data-scope schedule implies up to 1440 minutes of loss against a stated 60-minute objective. If a continuous or log-shipping mechanism exists it is not in these records -- ask for it rather than assuming either way.",
+      "evidence": [
+        "BK-BKPCTL-01"
+      ]
+    },
+    {
+      "finding_id": "RF-004",
+      "code": "FUNCTION_CHECK_FAILED",
+      "severity": "high",
+      "service_id": "SVC-BKP-CTL",
+      "statement": "Backup Control Plane: EX-2026-06-BKPCTL restored the service and the business-function check RAN AND FAILED: Control plane started, but could not enumerate backup sets: the catalog it reads lives in SVC-VAULT, which was not available.",
+      "evidence": [
+        "EX-2026-06-BKPCTL"
+      ]
+    },
+    {
+      "finding_id": "RF-005",
+      "code": "NO_RECOVERY_EVIDENCE",
+      "severity": "high",
+      "service_id": "SVC-DIRSYNC",
+      "statement": "Directory Synchronization Service has no backup record and no restoration evidence of any kind.",
+      "evidence": [
+        "no backup record",
+        "no exercise record"
+      ]
+    },
+    {
+      "finding_id": "RF-006",
+      "code": "BACKUP_REPORTS_SUCCESS_BUT_IS_STALE",
+      "severity": "high",
+      "service_id": "SVC-GRADE",
+      "statement": "Grade Submission Service: Job BK-GRADE-01 reports success but ran 19 day(s) ago against a daily schedule (tolerance 3 day(s)).",
+      "evidence": [
+        "BK-GRADE-01"
+      ]
+    },
+    {
+      "finding_id": "RF-007",
+      "code": "RPO_UNSUPPORTED_BY_RECORDED_SCHEDULE",
+      "severity": "medium",
+      "service_id": "SVC-GRADE",
+      "statement": "Grade Submission Service: The densest recorded data-scope schedule implies up to 1440 minutes of loss against a stated 60-minute objective. If a continuous or log-shipping mechanism exists it is not in these records -- ask for it rather than assuming either way.",
+      "evidence": [
+        "BK-GRADE-01"
+      ]
+    },
+    {
+      "finding_id": "RF-008",
+      "code": "RESTORE_ATTEMPT_DID_NOT_COMPLETE",
+      "severity": "medium",
+      "service_id": "SVC-GRADE",
+      "statement": "Grade Submission Service: EX-2026-01-GRADE (2026-01-30) was attempted and did not complete (outcome=failed). An attempt is not a demonstrated capability.",
+      "evidence": []
+    },
+    {
+      "finding_id": "RF-009",
+      "code": "VERIFIED_SERVICE_ON_UNVERIFIED_DEPENDENCY",
+      "severity": "high",
+      "service_id": "SVC-IDP",
+      "statement": "Identity Provider (SSO) reaches R4, but depends on SVC-DIRSYNC, which sits at R1 or below. The proven service rests on an unproven foundation.",
+      "evidence": [
+        "SVC-DIRSYNC=R0"
+      ]
+    },
+    {
+      "finding_id": "RF-010",
+      "code": "RPO_UNSUPPORTED_BY_RECORDED_SCHEDULE",
+      "severity": "medium",
+      "service_id": "SVC-IDP",
+      "statement": "Identity Provider (SSO): The densest recorded data-scope schedule implies up to 1440 minutes of loss against a stated 60-minute objective. If a continuous or log-shipping mechanism exists it is not in these records -- ask for it rather than assuming either way.",
+      "evidence": [
+        "BK-IDP-01"
+      ]
+    },
+    {
+      "finding_id": "RF-011",
+      "code": "MISSING_DEPENDENCY_RECORD",
+      "severity": "medium",
+      "service_id": "SVC-LMS-INT",
+      "statement": "LMS Integration Bridge depends on SVC-GHOST-API, for which no record exists in the estate. Recovery time cannot be established.",
+      "evidence": [
+        "SVC-GHOST-API"
+      ]
+    },
+    {
+      "finding_id": "RF-012",
+      "code": "BACKUP_FAILING",
+      "severity": "high",
+      "service_id": "SVC-LMS-INT",
+      "statement": "LMS Integration Bridge: Most recent recorded job for BK-LMS-01 is 'failed'.",
+      "evidence": [
+        "BK-LMS-01"
+      ]
+    },
+    {
+      "finding_id": "RF-013",
+      "code": "STATED_RTO_EXCEEDED_BY_EVIDENCE",
+      "severity": "high",
+      "service_id": "SVC-REG",
+      "statement": "Course Registration Portal: At least 320 minutes of measured restoration in the chain against a stated 240-minute objective. Conclusive despite the remaining unknowns -- the true figure can only be higher.",
+      "evidence": [
+        "chain measurement"
+      ]
+    },
+    {
+      "finding_id": "RF-014",
+      "code": "STATED_RTO_EXCEEDED_BY_EVIDENCE",
+      "severity": "high",
+      "service_id": "SVC-SIS-DB",
+      "statement": "Student Records Database: At least 320 minutes of measured restoration in the chain against a stated 180-minute objective. Conclusive despite the remaining unknowns -- the true figure can only be higher.",
+      "evidence": [
+        "EX-2026-04-SIS"
+      ]
+    },
+    {
+      "finding_id": "RF-015",
+      "code": "RPO_UNSUPPORTED_BY_RECORDED_SCHEDULE",
+      "severity": "medium",
+      "service_id": "SVC-SIS-DB",
+      "statement": "Student Records Database: The densest recorded data-scope schedule implies up to 1440 minutes of loss against a stated 15-minute objective. If a continuous or log-shipping mechanism exists it is not in these records -- ask for it rather than assuming either way.",
+      "evidence": [
+        "BK-SIS-01"
+      ]
+    },
+    {
+      "finding_id": "RF-016",
+      "code": "RESTORE_DEMONSTRATED_FUNCTION_UNVERIFIED",
+      "severity": "medium",
+      "service_id": "SVC-STORE",
+      "statement": "Shared Object Store has a completed restoration but no passing business-function check. The data came back; whether the service can do its job with it is unestablished.",
+      "evidence": [
+        "EX-2026-02-STORE"
+      ]
+    },
+    {
+      "finding_id": "RF-017",
+      "code": "RPO_UNSUPPORTED_BY_RECORDED_SCHEDULE",
+      "severity": "medium",
+      "service_id": "SVC-STORE",
+      "statement": "Shared Object Store: The densest recorded data-scope schedule implies up to 10080 minutes of loss against a stated 60-minute objective. If a continuous or log-shipping mechanism exists it is not in these records -- ask for it rather than assuming either way.",
+      "evidence": [
+        "BK-STORE-01"
+      ]
+    },
+    {
+      "finding_id": "RF-018",
+      "code": "OFFSITE_COPY_UNKNOWN",
+      "severity": "low",
+      "service_id": "SVC-STORE",
+      "statement": "Shared Object Store: whether the backup copy leaves the primary facility was not established. Left UNKNOWN rather than assumed either way.",
+      "evidence": [
+        "BK-STORE-01"
+      ]
+    },
+    {
+      "finding_id": "RF-019",
+      "code": "CIRCULAR_RECOVERY_DEPENDENCY",
+      "severity": "high",
+      "service_id": "SVC-VAULT",
+      "statement": "Backup Vault and Catalog sits in a circular recovery dependency (SVC-BKP-CTL <-> SVC-VAULT). Each side's measured restoration assumed the other was already available.",
+      "evidence": [
+        "SVC-BKP-CTL",
+        "SVC-VAULT"
+      ]
+    },
+    {
+      "finding_id": "RF-020",
+      "code": "RPO_UNSUPPORTED_BY_RECORDED_SCHEDULE",
+      "severity": "medium",
+      "service_id": "SVC-VAULT",
+      "statement": "Backup Vault and Catalog: The densest recorded data-scope schedule implies up to 1440 minutes of loss against a stated 60-minute objective. If a continuous or log-shipping mechanism exists it is not in these records -- ask for it rather than assuming either way.",
+      "evidence": [
+        "BK-VAULT-01"
+      ]
+    }
+  ],
+  "next_exercises": [
+    {
+      "service_id": "SVC-DIRSYNC",
+      "name": "Directory Synchronization Service",
+      "current_rung": "R0",
+      "tier": 2,
+      "tier_weight": 2,
+      "evidence_gap": 4,
+      "blast_radius": 3,
+      "priority_score": 32,
+      "formula": "tier_weight(2) x evidence_gap(4) x (1 + blast_radius(3)) = 32",
+      "recommended_exercise": "Establish a backup record and a named owning role first. An exercise has nothing to restore from until that exists.",
+      "rank": 1
+    },
+    {
+      "service_id": "SVC-STORE",
+      "name": "Shared Object Store",
+      "current_rung": "R3",
+      "tier": 1,
+      "tier_weight": 3,
+      "evidence_gap": 1,
+      "blast_radius": 3,
+      "priority_score": 12,
+      "formula": "tier_weight(3) x evidence_gap(1) x (1 + blast_radius(3)) = 12",
+      "recommended_exercise": "Repeat the restoration and add a business-function check: Stored objects are retrievable and byte-identical to what was written. Record the evidence reference.",
+      "rank": 2
+    },
+    {
+      "service_id": "SVC-VAULT",
+      "name": "Backup Vault and Catalog",
+      "current_rung": "R2",
+      "tier": 1,
+      "tier_weight": 3,
+      "evidence_gap": 2,
+      "blast_radius": 1,
+      "priority_score": 12,
+      "formula": "tier_weight(3) x evidence_gap(2) x (1 + blast_radius(1)) = 12",
+      "recommended_exercise": "Run a restoration exercise and measure wall-clock time to a running service. Record the figure even if it is unflattering.",
+      "rank": 3
+    },
+    {
+      "service_id": "SVC-BKP-CTL",
+      "name": "Backup Control Plane",
+      "current_rung": "R3",
+      "tier": 1,
+      "tier_weight": 3,
+      "evidence_gap": 1,
+      "blast_radius": 1,
+      "priority_score": 6,
+      "formula": "tier_weight(3) x evidence_gap(1) x (1 + blast_radius(1)) = 6",
+      "recommended_exercise": "Repeat the restoration and add a business-function check: Backup and restore jobs can be scheduled, launched and monitored. Record the evidence reference.",
+      "rank": 4
+    },
+    {
+      "service_id": "SVC-GRADE",
+      "name": "Grade Submission Service",
+      "current_rung": "R1",
+      "tier": 2,
+      "tier_weight": 2,
+      "evidence_gap": 3,
+      "blast_radius": 0,
+      "priority_score": 6,
+      "formula": "tier_weight(2) x evidence_gap(3) x (1 + blast_radius(0)) = 6",
+      "recommended_exercise": "Repair the backup job, then restore the first completing set into an isolated environment.",
+      "rank": 5
+    },
+    {
+      "service_id": "SVC-REG",
+      "name": "Course Registration Portal",
+      "current_rung": "R2",
+      "tier": 1,
+      "tier_weight": 3,
+      "evidence_gap": 2,
+      "blast_radius": 0,
+      "priority_score": 6,
+      "formula": "tier_weight(3) x evidence_gap(2) x (1 + blast_radius(0)) = 6",
+      "recommended_exercise": "Run a restoration exercise and measure wall-clock time to a running service. Record the figure even if it is unflattering.",
+      "rank": 6
+    },
+    {
+      "service_id": "SVC-LMS-INT",
+      "name": "LMS Integration Bridge",
+      "current_rung": "R1",
+      "tier": 3,
+      "tier_weight": 1,
+      "evidence_gap": 3,
+      "blast_radius": 0,
+      "priority_score": 3,
+      "formula": "tier_weight(1) x evidence_gap(3) x (1 + blast_radius(0)) = 3",
+      "recommended_exercise": "Repair the backup job, then restore the first completing set into an isolated environment.",
+      "rank": 7
+    }
+  ],
+  "load_issues": [],
+  "counts": {
+    "services": 9,
+    "by_rung": {
+      "R0": 1,
+      "R1": 2,
+      "R2": 2,
+      "R3": 2,
+      "R4": 2
+    },
+    "function_verified": 2,
+    "restoration_demonstrated_or_better": 4,
+    "recovery_time_unknown": 7,
+    "rto_conclusively_exceeded": 2
+  }
+}
