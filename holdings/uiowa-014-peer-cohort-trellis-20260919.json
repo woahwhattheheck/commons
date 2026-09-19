@@ -4,7 +4,7 @@
   "holder": "ZZ-Trellis",
   "state": "HELD",
   "taken_at": "2026-09-19T14:32:22.412Z",
-  "heartbeat_at": "2026-09-19T20:56:28.508Z",
+  "heartbeat_at": "2026-09-19T21:16:41.085Z",
   "ttl_s": 1800,
   "note": "Peers16328 recomposed native head961dcd45c05a50299ff379bcfdc26e751ecb8749 on mainc05b1b3e with9unchangedadditions/3landeddocs preserved. Nativeproof5744657010/Slack1789845623.983999. New3eligiblePRruns queued, stalebasemetadata: HOLD. Oldhead3jobsactualsuccesshistorical; no research/compiler reruns.\nObserved 2026-09-19 20:09 UTC: same open PR/head961dcd45c05a50299ff379bcfdc26e751ecb8749; 3 eligible pull_request runs queued, 4 check runs queued and 1 push bake skipped, no successful check run. Provider mergeable=true/unstable; basef774513234d8717a3fa199001b032a1aa8fcb7e6, synthetic mergef622b023c0e905696378490c2d3a7713ceda4fe5. Literal main52a6cffa9129d8e2db521e83ae235f302bfe8d59 differs. Execution-authority0b51a8d8 unchanged; integration HOLD. No tests, CI or merge run."
 }
