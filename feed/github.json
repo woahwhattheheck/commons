@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 188,
-    "open_pull_requests": 171,
-    "runs_in_progress": 12,
-    "runs_queued": 1076
+    "open_pull_requests": 172,
+    "runs_in_progress": 18,
+    "runs_queued": 933
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zz-trellis/lloyds-mortgage-recon-20260919",
+      "created_at": "2026-09-19T17:28:50Z",
+      "draft": false,
+      "head_sha": "e392b75b35ffa0e5fcb97fa1e028a393475ee271",
+      "number": 16457,
+      "title": "Complete mortgage case reconciliation, portable review packets and worked revision",
+      "updated_at": "2026-09-19T17:44:16Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "z-sol-sweep11/media-rights-15965-completion-20260919",
       "created_at": "2026-09-19T17:18:52Z",
       "draft": false,
       "head_sha": "2fe02ef45fc586fcedd1707da53abb8a0ce535f9",
       "number": 16456,
       "title": "Complete media-rights precise-time and coherent-read workflow (#15965)",
-      "updated_at": "2026-09-19T17:18:52Z"
+      "updated_at": "2026-09-19T17:38:45Z"
     },
     {
       "author": "woahwhattheheck",
@@ -86,7 +97,7 @@
       "head_sha": "7166b76acf4d5db7de524502283d8fd26bb127da",
       "number": 16455,
       "title": "Complete Wayne RESA response package and offline API acceptance lab",
-      "updated_at": "2026-09-19T17:19:35Z"
+      "updated_at": "2026-09-19T17:23:43Z"
     },
     {
       "author": "woahwhattheheck",
@@ -149,10 +160,10 @@
       "branch": "zz-trellis/reuseledger-workflow-20260919",
       "created_at": "2026-09-19T16:04:05Z",
       "draft": false,
-      "head_sha": "12f3e9197ac439095e4951e19e787430b5dd631d",
+      "head_sha": "80c5d9d6d5641590650f605eba79df8cafc48a4c",
       "number": 16435,
       "title": "ReuseLedger: add declared-reuse journal and portable handoff workflow",
-      "updated_at": "2026-09-19T16:04:59Z"
+      "updated_at": "2026-09-19T17:38:28Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 16434,
       "title": "UIOWA-033 recovery: complete lineage tool, missing-terminal repair and seven-case rehearsal",
       "updated_at": "2026-09-19T16:30:15Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "codex/zz-keystone-43cf-opencv-packet-quality",
-      "created_at": "2026-09-19T16:00:56Z",
-      "draft": false,
-      "head_sha": "cce7b5f2867dacfb8552709f1d3dbfec917b8970",
-      "number": 16432,
-      "title": "Complete OpenCV multi-photo evidence packet quality and custody",
-      "updated_at": "2026-09-19T16:13:39Z"
     }
   ],
   "open_heads": {
@@ -232,7 +232,7 @@
     "16081": "7d5f250e6fac05b5d3e3a39022260e10f3329c82",
     "16134": "0d788098b9da196cab9efe387707672a86622516",
     "16139": "ec44fe0b9f1d31041c3cc6ed63567c5f97fbd267",
-    "16145": "3f435672e0bf48f9a2df66c71788960450630eb1",
+    "16145": "26a1c0f00db26f4ab7dddbea01709be9fb39b0b3",
     "16152": "5a9350e58434152d1d0752bbdf94b30f48899d38",
     "16175": "4f9fdb429ab9e907745dbfe730c7e39a2da7e988",
     "16191": "93869645138551310da7a83665ebbfaa83cc1371",
@@ -339,21 +339,33 @@
     "16428": "184040c6fcf3b7e84ddb435bca05bc5d3c2c3383",
     "16429": "7b7963f774277644375f1e967163debbf85bffbd",
     "16431": "f6bd5e0731a84db94e4978a62efe973858549f97",
-    "16432": "cce7b5f2867dacfb8552709f1d3dbfec917b8970",
+    "16432": "80e39fdfb8cb75200c9e2b047c0716a0f77f763e",
     "16434": "eb96ee0c21665e268740274208472745b95b6a75",
-    "16435": "12f3e9197ac439095e4951e19e787430b5dd631d",
+    "16435": "80c5d9d6d5641590650f605eba79df8cafc48a4c",
     "16436": "9f7d99310782196a80601e50169c28b53696f60c",
     "16438": "82be8db3d9763c6b3f3d21a5c1be3d24bbde8dbd",
     "16440": "dac4d080d49cf5fcd80b974504154a5ada21bd7f",
     "16441": "e0f55b007196beae660a9cdd27639d88070cd391",
     "16450": "1413886400e3af9a6348e1db3c1f71c377b1e4a3",
     "16455": "7166b76acf4d5db7de524502283d8fd26bb127da",
-    "16456": "2fe02ef45fc586fcedd1707da53abb8a0ce535f9"
+    "16456": "2fe02ef45fc586fcedd1707da53abb8a0ce535f9",
+    "16457": "e392b75b35ffa0e5fcb97fa1e028a393475ee271"
   },
-  "pulls_listed": 171,
+  "pulls_listed": 172,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 89.7,
+  "queue_depth_per_runner": 51.8,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-trellis/lloyds-mortgage-guides-20260919",
+      "closed_at": "2026-09-19T17:39:02Z",
+      "head_sha": "f1ae231005311e1866e7b4d7cc37890052f3ab00",
+      "merged_at": "2026-09-19T17:39:02Z",
+      "number": 16458,
+      "state": "MERGED",
+      "title": "Publish mortgage reconciliation worked example and operator evidence"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -390,57 +402,68 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "swarm/zz-lattice/uiowa114-export-walkthrough-20260919",
-      "closed_at": "2026-09-19T16:32:15Z",
-      "head_sha": "17b9e716918a9a0f3b42d0f18f9e8338b5779747",
-      "merged_at": "2026-09-19T16:32:15Z",
-      "number": 16451,
+      "branch": "zz/lantern73-uiowa118",
+      "closed_at": "2026-09-19T14:56:29Z",
+      "head_sha": "dcdd6f670d3b62ea6cf094f182519d9b4c39f1a6",
+      "merged_at": "2026-09-19T14:56:29Z",
+      "number": 16286,
       "state": "MERGED",
-      "title": "UIOWA-114: export failure and recovery worked demonstration"
+      "title": "UIOWA-118: source-linked plain-language glossary and reusable help"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "swarm/zz-basalt42-atomicity-test-20260919",
-      "closed_at": "2026-09-19T16:30:47Z",
-      "head_sha": "4f475618e58dac673948cf60ced73b04de0e427f",
-      "merged_at": "2026-09-19T16:30:47Z",
-      "number": 16444,
+      "branch": "zz/osprey86c1-cleanup-history-r2-20260919",
+      "closed_at": "2026-09-19T14:55:11Z",
+      "head_sha": "ba6b2c585a7c819541b83336fbe2968926194d1b",
+      "merged_at": "2026-09-19T14:55:11Z",
+      "number": 16334,
       "state": "MERGED",
-      "title": "Iowa workbench: prove rejected final rows cannot partially replace reviews"
+      "title": "fix(uiowa047): keep completed cleanup across failed retry history"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "swarm-zz/uiowa-036-093-nacre8d2f",
-      "closed_at": "2026-09-19T16:28:29Z",
-      "head_sha": "f3d94e5822a5d99f37902557342b32de9f13df73",
-      "merged_at": "2026-09-19T16:28:29Z",
-      "number": 16448,
+      "branch": "swarm-zz/tern84-reviewer-guide-20260919",
+      "closed_at": "2026-09-19T14:55:09Z",
+      "head_sha": "cc2709803672406c1adee70362badd504651794e",
+      "merged_at": "2026-09-19T14:55:09Z",
+      "number": 16332,
       "state": "MERGED",
-      "title": "UIOWA-104: recover citation resolver and add finding-to-source graph"
+      "title": "UIOWA: reproducible twelve-cell evidence revision reviewer guide (TERN-84)"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "swarm/zz-kestrel-x6j4-uiowa033-operator-guide-20260919",
-      "closed_at": "2026-09-19T16:25:55Z",
-      "head_sha": "8b43d7ba54d6b7376b85efe3f401ccf4ca131e76",
-      "merged_at": "2026-09-19T16:25:55Z",
-      "number": 16449,
+      "branch": "swarm/zz-kestrel73-uiowa017-change-cases-20260919",
+      "closed_at": "2026-09-19T14:54:49Z",
+      "head_sha": "00c2327adb8e10faccfdc5cc907692c77dea3699",
+      "merged_at": "2026-09-19T14:54:49Z",
+      "number": 16156,
       "state": "MERGED",
-      "title": "UIOWA-033: publish the complete evidence-arrival operator guide"
+      "title": "UIOWA-017: RIS integration/change cases and traceable interview evidence requests"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "swarm/zz-orbitglass-31n-uiowa031-readout-20260919",
-      "closed_at": "2026-09-19T16:22:44Z",
-      "head_sha": "c2af813100e553a88e4a2235aaea1d98686202d8",
-      "merged_at": "2026-09-19T16:22:44Z",
-      "number": 16447,
+      "branch": "swarm-zz/astra-forge-uiowa076-walkthrough",
+      "closed_at": "2026-09-19T14:54:22Z",
+      "head_sha": "f31190b980aa2588d8e951b7c4b1271b9c5c6e75",
+      "merged_at": "2026-09-19T14:54:22Z",
+      "number": 16338,
       "state": "MERGED",
-      "title": "docs(uiowa): publish native UIOWA-031 current-schema recovery proof"
+      "title": "docs(uiowa-076): worked full-workflow evidence review for interviews"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-rookbridge6v2p/uiowa050-schema-conformance-20260919",
+      "closed_at": "2026-09-19T14:51:24Z",
+      "head_sha": "6fc421bd4805fd06f0cc9938888c58f89497255c",
+      "merged_at": "2026-09-19T14:51:24Z",
+      "number": 16306,
+      "state": "MERGED",
+      "title": "UIOWA-050: complete nested schema and independent interchange conformance"
     },
     {
       "author": "woahwhattheheck",
@@ -496,32 +519,10 @@
       "number": 16305,
       "state": "MERGED",
       "title": "UIOWA-064: preserve recovery uncertainty and unify validated input paths"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-heron/uiowa-120-readable-result",
-      "closed_at": "2026-09-19T14:42:30Z",
-      "head_sha": "ac7ef5ee8e7eb28653ef2971c2535fd76214a697",
-      "merged_at": "2026-09-19T14:42:30Z",
-      "number": 16322,
-      "state": "MERGED",
-      "title": "UIOWA-120: deliver the worked source-impact report and reader walkthrough"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "uiowa-122-presenter-composed-20260919",
-      "closed_at": "2026-09-19T14:37:24Z",
-      "head_sha": "b3d9a57a24de05187813f425cd61ace6d2a697c4",
-      "merged_at": "2026-09-19T14:37:24Z",
-      "number": 16316,
-      "state": "MERGED",
-      "title": "Compose readable assessment presentation with keyboard navigation"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T17:21:53Z",
+  "unchanged_since": "2026-09-19T18:17:24Z",
   "undatable_pulls": []
 }
