@@ -48,7 +48,13 @@ class DeliveryIntegrationTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         report = json.loads(result.stdout)
         self.assertEqual(report["status"], "passed")
-        self.assertEqual(len(report["dependency_blobs"]), 2)
+        # Receipt coverage now includes the DST input, not only the calculator
+        # and the ordinary deployment fixture. Assert exact identities, not a count.
+        self.assertEqual(set(report["dependency_blobs"]), {
+            "uiowa_rfq_18649_delivery_metrics/calculator.py",
+            "uiowa_rfq_18649_delivery_metrics/fixtures/synthetic_deployments.csv",
+            "uiowa_rfq_18649_timestamps/fixtures/delivery_dst.csv",
+        })
         self.assertTrue(all(report["checks"].values()))
 
 
