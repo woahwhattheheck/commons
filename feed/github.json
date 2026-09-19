@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 186,
     "open_pull_requests": 174,
-    "runs_in_progress": 18,
-    "runs_queued": 260
+    "runs_in_progress": 12,
+    "runs_queued": 245
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -75,7 +75,7 @@
       "head_sha": "42adaea7d99bcdf5a26a0e64068fda21276bc66a",
       "number": 16470,
       "title": "Revenue: external opportunity intake freshness and expiry ledger",
-      "updated_at": "2026-09-19T21:56:41Z"
+      "updated_at": "2026-09-19T21:58:49Z"
     },
     {
       "author": "woahwhattheheck",
@@ -355,8 +355,30 @@
   },
   "pulls_listed": 174,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 14.4,
+  "queue_depth_per_runner": 20.4,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-solstice/grantfox-fwc26-risk-fence-20260919",
+      "closed_at": "2026-09-19T22:01:38Z",
+      "head_sha": "e2f34a34a9c3e588d15b17d04d4bdcf9f14ac7c4",
+      "merged_at": "2026-09-19T22:01:38Z",
+      "number": 16474,
+      "state": "MERGED",
+      "title": "fix: flag secret and fund-safety GrantFox work as security-sensitive"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-solstice/grantfox-fwc26-claim-fence-20260919",
+      "closed_at": "2026-09-19T21:58:25Z",
+      "head_sha": "b2e01c63aa791db0807823645351f38a094bf814",
+      "merged_at": "2026-09-19T21:58:25Z",
+      "number": 16473,
+      "state": "MERGED",
+      "title": "fix: fence active GrantFox claim and PR collisions"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -499,32 +521,10 @@
       "number": 16447,
       "state": "MERGED",
       "title": "docs(uiowa): publish native UIOWA-031 current-schema recovery proof"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/erdos-crosswalk-operator-keystone-k4j9-r2",
-      "closed_at": "2026-09-19T16:15:55Z",
-      "head_sha": "7f75d03b7d695d086b672444216a173d7e7e82a3",
-      "merged_at": "2026-09-19T16:15:55Z",
-      "number": 16443,
-      "state": "MERGED",
-      "title": "docs(research): deliver the worked retained-crosswalk demonstration"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/uiowa047-output-guide-copperfin-q8d6-20260919",
-      "closed_at": "2026-09-19T16:14:19Z",
-      "head_sha": "12c29d0a8213aaf005ad7dbe03d400006355444a",
-      "merged_at": "2026-09-19T16:14:19Z",
-      "number": 16442,
-      "state": "MERGED",
-      "title": "UIOWA-047: worked report-preservation guide and source-bound replay results"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T21:57:33Z",
+  "unchanged_since": "2026-09-19T22:06:26Z",
   "undatable_pulls": []
 }
