@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 58,
+  "n": 61,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -31,6 +31,16 @@
       "status": "CLOSED",
       "ts": "",
       "href": ""
+    },
+    {
+      "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
+      "from": "UNSEATED",
+      "claim": "https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789826261856439",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-09-19T13:57:53Z",
+      "href": "./p/UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories.html"
     },
     {
       "id": "UIOWA-134--dependency-driven-six-eight-week-schedule-recovery-scenarios",
@@ -551,6 +561,26 @@
       "status": "OPEN",
       "ts": "",
       "href": "./p/flame-latch-take-job-c-20260820-01.html"
+    },
+    {
+      "id": "codex-uiowa-source-relationship-graph-resource-activation-20260919-01",
+      "from": "",
+      "claim": "[#commons activation claim](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789844314998379). No new build order survived deduplication.",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/codex-uiowa-source-relationship-graph-resource-activation-20260919-01.html"
+    },
+    {
+      "id": "codex-uiowa-environment-drift-kit-resource-activation-20260919-01",
+      "from": "",
+      "claim": "[existing source thread](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789833517730819?thread_ts=1789826000.884849&cid=C0BRGMDQB6G). No new build order survived deduplication.",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/codex-uiowa-environment-drift-kit-resource-activation-20260919-01.html"
     },
     {
       "id": "codex-pages-exact-path-readback-20260831-01",

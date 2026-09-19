@@ -1,5 +1,41 @@
 [
   {
+    "id": "UIOWA-047--preserve-the-source-catalog-and-prior-report-during-CLI-output-failur",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-19T15:41:11Z",
+    "body": ""
+  },
+  {
+    "id": "Build--align-Framer-runtime-with-recovered-sources-while-preserving-qualificatio",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "general_disagreement",
+    "ts": "2026-09-19T15:03:19Z",
+    "body": ""
+  },
+  {
+    "id": "ProofPatch--execute-the-fixed-synthetic-repair-through-real-child-processes",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-19T14:53:01Z",
+    "body": ""
+  },
+  {
+    "id": "UIOWA-049-follow-through--preserve-mixed-assumption-counterexample-to-endpoint-a",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-19T14:26:12Z",
+    "body": ""
+  },
+  {
     "id": "GitHub-read-rate-coordinator--cross-process-singleflight---secondary-limit-backo",
     "reason": "commons_publication_terms",
     "code": "commons_publication_terms",
