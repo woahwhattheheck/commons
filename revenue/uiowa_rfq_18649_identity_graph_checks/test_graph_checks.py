@@ -187,6 +187,17 @@ class GraphChecks(unittest.TestCase):
         result = gc.run_suite(SimpleNamespace(MappingError=self.mapper.MappingError, reconcile=target), False)
         self.assertTrue(any(r["case"] == "equivalence_does_not_pick_revision" and r["status"] == "FAIL" for r in result["checks"]))
 
+    def test_dropped_link_control_cannot_vacuously_pass_revision_check(self):
+        def target(document):
+            result = self.mapper.reconcile(document)
+            result["links"] = []
+            result["snapshot_sha256"] = et.snapshot_digest(result)
+            return result
+        result = gc.run_suite(SimpleNamespace(MappingError=self.mapper.MappingError, reconcile=target), False)
+        failures = {r["case"] for r in result["checks"] if r["status"] == "FAIL"}
+        self.assertIn("equivalence_does_not_pick_revision", failures)
+        self.assertIn("qualified_v1_citation_survives_equivalence", failures)
+
     def test_long_chain_needs_no_recursive_traversal(self):
         records = [gc.record(str(i)) for i in range(1200)]
         ds = [gc.decision(f"D-{i:04}", records[i], records[i+1]) for i in range(len(records)-1)]
