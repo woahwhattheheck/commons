@@ -1,0 +1,4 @@
+evidence_id,area,group,state,note
+EV-SYN-001,software_delivery,ESS,SUPPORTED,synthetic review record
+EV-SYN-002,deployment,RIS,GAP,no rebuild evidence supplied
+EV-SYN-003,deployment,IAM,UNKNOWN,export requested 2026-10-02

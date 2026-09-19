@@ -1,0 +1,3 @@
+item_id,title,path,declared_version,content_sha256,size_bytes,resolution_state,source,custodian,storage_location,disposition,criteria_ids
+IDX-M2-001,Draft assessment report,draft/draft-assessment-report-v0.9.md,v0.9,25c3deb53bff333c0215d01d35c92e731cce79c382935753d33ae9144887f273,402,RESOLVED,Assessment synthesis (fictional),Delivery lead (fictional role),Engagement share / 02-draft,RETAIN_WITH_DELIVERABLE,C-M2-01
+IDX-M2-002,Draft evidence index,draft/evidence-index-v0.9.csv,v0.9,0be24231b047f670f28f004854f0c5b2674ffe2ad82587ef9ab2a9846184b2c8,222,RESOLVED,Evidence register export (fictional),Fictional client records owner,Client system of record,CLIENT_SYSTEM_OF_RECORD,C-M2-02

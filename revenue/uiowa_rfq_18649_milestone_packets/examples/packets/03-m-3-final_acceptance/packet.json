@@ -1,0 +1,88 @@
+{
+  "acceptance_state": "NOT_REQUESTED",
+  "amount_cents": 960000,
+  "amount_display": "$9,600.00",
+  "as_of": "2026-11-25",
+  "billing_state": "DRAFT_NOT_ISSUED",
+  "draft_stamp": "DRAFT - NOT AN ISSUED INVOICE, NOT A RECORD OF ACCEPTANCE OR PAYMENT",
+  "engagement_id": "ENG-SYN-18649",
+  "findings": [
+    {
+      "code": "E_ARTIFACT_DOES_NOT_OPEN",
+      "item_id": "IDX-M3-002",
+      "message": "final/appendix-evidence-v1.0.csv: UNRESOLVED_MISSING - no file at the cited path; the citation cannot be verified",
+      "milestone_id": "M-3",
+      "severity": "ERROR"
+    },
+    {
+      "code": "E_VERSION_NOT_IDENTIFIABLE",
+      "item_id": "IDX-M3-003",
+      "message": "final/readout-deck-outline.md: opened (sha256 cd71874c4779...) but declared_version is UNKNOWN, so the delivered version cannot be named",
+      "milestone_id": "M-3",
+      "severity": "ERROR"
+    },
+    {
+      "code": "E_MISSING_DISPOSITION",
+      "item_id": "IDX-M3-003",
+      "message": "IDX-M3-003: no disposition decision recorded. The item is not assigned a default; a person must decide retain / return / destroy / client-system.",
+      "milestone_id": "M-3",
+      "severity": "ERROR"
+    },
+    {
+      "code": "W_DEPENDENCY_UNDATED",
+      "item_id": null,
+      "message": "DEP-M3-01: Client confirmation of the accessibility review scope for the final report - open with no agreed date; it cannot be called on time or late",
+      "milestone_id": "M-3",
+      "severity": "WARN"
+    }
+  ],
+  "index": [
+    {
+      "content_sha256": "520b64ba419918d6fed7d0013c8f419fb48a604ebf40f4735ade884af53aebd4",
+      "criteria_ids": "C-M3-01",
+      "custodian": "Delivery lead (fictional role)",
+      "declared_version": "v1.0",
+      "disposition": "RETAIN_WITH_DELIVERABLE",
+      "item_id": "IDX-M3-001",
+      "path": "final/final-report-v1.0.md",
+      "resolution_state": "RESOLVED",
+      "size_bytes": "363",
+      "source": "Assessment synthesis (fictional)",
+      "storage_location": "Engagement share / 03-final",
+      "title": "Final report"
+    },
+    {
+      "content_sha256": "UNKNOWN",
+      "criteria_ids": "C-M3-02",
+      "custodian": "Delivery lead (fictional role)",
+      "declared_version": "v1.0",
+      "disposition": "RETURN_TO_CLIENT",
+      "item_id": "IDX-M3-002",
+      "path": "final/appendix-evidence-v1.0.csv",
+      "resolution_state": "UNRESOLVED_MISSING",
+      "size_bytes": "UNKNOWN",
+      "source": "Evidence register export (fictional)",
+      "storage_location": "Engagement share / 03-final",
+      "title": "Final evidence appendix"
+    },
+    {
+      "content_sha256": "cd71874c47794eead14ad54c4f78bb476b0878e545b723924ea3f8c498f4db1d",
+      "criteria_ids": "",
+      "custodian": "Delivery lead (fictional role)",
+      "declared_version": "UNKNOWN",
+      "disposition": "UNKNOWN",
+      "item_id": "IDX-M3-003",
+      "path": "final/readout-deck-outline.md",
+      "resolution_state": "RESOLVED",
+      "size_bytes": "275",
+      "source": "Readout preparation (fictional)",
+      "storage_location": "Engagement share / 03-final",
+      "title": "Optional readout deck outline"
+    }
+  ],
+  "kind": "FINAL_ACCEPTANCE",
+  "milestone_id": "M-3",
+  "status": "NOT_READY",
+  "submission_state": "NOT_SUBMITTED",
+  "synthetic": true
+}

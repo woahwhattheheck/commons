@@ -1,0 +1,3 @@
+item_id,title,path,declared_version,content_sha256,size_bytes,resolution_state,source,custodian,storage_location,disposition,criteria_ids
+IDX-M1-001,Engagement plan,kickoff/engagement-plan-v1.0.md,v1.0,8a8806f6b5bbeb322b6e7f5599d37da4feea2c0adea32fca2e901ccc48388bb6,404,RESOLVED,Engagement planning (fictional),Delivery lead (fictional role),Engagement share / 01-kickoff,RETAIN_WITH_DELIVERABLE,C-M1-01
+IDX-M1-002,Kickoff minutes,kickoff/kickoff-minutes-2026-10-02.md,v1.0,0574c10907fc9064f0de0cf05dd467a514c53f409f1840918a2b8410eb220235,332,RESOLVED,Kickoff session notes (fictional),Delivery lead (fictional role),Engagement share / 01-kickoff,RETURN_TO_CLIENT,C-M1-02

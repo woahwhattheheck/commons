@@ -1,0 +1,103 @@
+{
+  "as_of": "2026-11-25",
+  "engagement_findings": [
+    {
+      "code": "I_AMOUNTS_CONFIRMED",
+      "item_id": null,
+      "message": "milestone amounts sum to $24,000.00 exactly (2400000 cents), checked in integer cents",
+      "milestone_id": null,
+      "severity": "INFO"
+    }
+  ],
+  "engagement_id": "ENG-SYN-18649",
+  "error_count": 3,
+  "milestones": [
+    {
+      "acceptance_state": "ACCEPTED_RECORDED",
+      "amount": "$4,800.00",
+      "billing_state": "DRAFT_NOT_ISSUED",
+      "findings": [
+        {
+          "code": "I_ACCEPTANCE_ON_RECORD",
+          "item_id": null,
+          "message": "acceptance recorded 2026-10-09 by Fictional client project sponsor (SYNTHETIC) (ref SYN-ACK-M1-0001)",
+          "milestone_id": "M-1",
+          "severity": "INFO"
+        }
+      ],
+      "kind": "KICKOFF",
+      "milestone_id": "M-1",
+      "name": "Kickoff and engagement plan",
+      "status": "READY_TO_SUBMIT_AS_DRAFT",
+      "submission_state": "DELIVERED"
+    },
+    {
+      "acceptance_state": "PENDING",
+      "amount": "$9,600.00",
+      "billing_state": "DRAFT_NOT_ISSUED",
+      "findings": [
+        {
+          "code": "W_DEPENDENCY_OVERDUE",
+          "item_id": null,
+          "message": "DEP-M2-01: IAM deployment log export outstanding; the IAM deployment cell stays UNKNOWN until it arrives - 15 day(s) past the needed-by date (needed by 2026-11-10, as of 2026-11-25)",
+          "milestone_id": "M-2",
+          "severity": "WARN"
+        },
+        {
+          "code": "I_ACCEPTANCE_PENDING",
+          "item_id": null,
+          "message": "delivered; no acceptance record supplied, so acceptance is PENDING. Delivery is not acceptance.",
+          "milestone_id": "M-2",
+          "severity": "INFO"
+        }
+      ],
+      "kind": "DRAFT_DELIVERY",
+      "milestone_id": "M-2",
+      "name": "Draft assessment delivery",
+      "status": "READY_TO_SUBMIT_AS_DRAFT",
+      "submission_state": "DELIVERED"
+    },
+    {
+      "acceptance_state": "NOT_REQUESTED",
+      "amount": "$9,600.00",
+      "billing_state": "DRAFT_NOT_ISSUED",
+      "findings": [
+        {
+          "code": "E_ARTIFACT_DOES_NOT_OPEN",
+          "item_id": "IDX-M3-002",
+          "message": "final/appendix-evidence-v1.0.csv: UNRESOLVED_MISSING - no file at the cited path; the citation cannot be verified",
+          "milestone_id": "M-3",
+          "severity": "ERROR"
+        },
+        {
+          "code": "E_VERSION_NOT_IDENTIFIABLE",
+          "item_id": "IDX-M3-003",
+          "message": "final/readout-deck-outline.md: opened (sha256 cd71874c4779...) but declared_version is UNKNOWN, so the delivered version cannot be named",
+          "milestone_id": "M-3",
+          "severity": "ERROR"
+        },
+        {
+          "code": "E_MISSING_DISPOSITION",
+          "item_id": "IDX-M3-003",
+          "message": "IDX-M3-003: no disposition decision recorded. The item is not assigned a default; a person must decide retain / return / destroy / client-system.",
+          "milestone_id": "M-3",
+          "severity": "ERROR"
+        },
+        {
+          "code": "W_DEPENDENCY_UNDATED",
+          "item_id": null,
+          "message": "DEP-M3-01: Client confirmation of the accessibility review scope for the final report - open with no agreed date; it cannot be called on time or late",
+          "milestone_id": "M-3",
+          "severity": "WARN"
+        }
+      ],
+      "kind": "FINAL_ACCEPTANCE",
+      "milestone_id": "M-3",
+      "name": "Final report and acceptance",
+      "status": "NOT_READY",
+      "submission_state": "NOT_SUBMITTED"
+    }
+  ],
+  "passed": false,
+  "warning_count": 2
+}

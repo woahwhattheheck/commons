@@ -1,0 +1,60 @@
+{
+  "acceptance_state": "PENDING",
+  "amount_cents": 960000,
+  "amount_display": "$9,600.00",
+  "as_of": "2026-11-25",
+  "billing_state": "DRAFT_NOT_ISSUED",
+  "draft_stamp": "DRAFT - NOT AN ISSUED INVOICE, NOT A RECORD OF ACCEPTANCE OR PAYMENT",
+  "engagement_id": "ENG-SYN-18649",
+  "findings": [
+    {
+      "code": "W_DEPENDENCY_OVERDUE",
+      "item_id": null,
+      "message": "DEP-M2-01: IAM deployment log export outstanding; the IAM deployment cell stays UNKNOWN until it arrives - 15 day(s) past the needed-by date (needed by 2026-11-10, as of 2026-11-25)",
+      "milestone_id": "M-2",
+      "severity": "WARN"
+    },
+    {
+      "code": "I_ACCEPTANCE_PENDING",
+      "item_id": null,
+      "message": "delivered; no acceptance record supplied, so acceptance is PENDING. Delivery is not acceptance.",
+      "milestone_id": "M-2",
+      "severity": "INFO"
+    }
+  ],
+  "index": [
+    {
+      "content_sha256": "25c3deb53bff333c0215d01d35c92e731cce79c382935753d33ae9144887f273",
+      "criteria_ids": "C-M2-01",
+      "custodian": "Delivery lead (fictional role)",
+      "declared_version": "v0.9",
+      "disposition": "RETAIN_WITH_DELIVERABLE",
+      "item_id": "IDX-M2-001",
+      "path": "draft/draft-assessment-report-v0.9.md",
+      "resolution_state": "RESOLVED",
+      "size_bytes": "402",
+      "source": "Assessment synthesis (fictional)",
+      "storage_location": "Engagement share / 02-draft",
+      "title": "Draft assessment report"
+    },
+    {
+      "content_sha256": "0be24231b047f670f28f004854f0c5b2674ffe2ad82587ef9ab2a9846184b2c8",
+      "criteria_ids": "C-M2-02",
+      "custodian": "Fictional client records owner",
+      "declared_version": "v0.9",
+      "disposition": "CLIENT_SYSTEM_OF_RECORD",
+      "item_id": "IDX-M2-002",
+      "path": "draft/evidence-index-v0.9.csv",
+      "resolution_state": "RESOLVED",
+      "size_bytes": "222",
+      "source": "Evidence register export (fictional)",
+      "storage_location": "Client system of record",
+      "title": "Draft evidence index"
+    }
+  ],
+  "kind": "DRAFT_DELIVERY",
+  "milestone_id": "M-2",
+  "status": "READY_TO_SUBMIT_AS_DRAFT",
+  "submission_state": "DELIVERED",
+  "synthetic": true
+}

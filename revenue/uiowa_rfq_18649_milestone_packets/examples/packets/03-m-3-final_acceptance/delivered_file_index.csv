@@ -1,0 +1,4 @@
+item_id,title,path,declared_version,content_sha256,size_bytes,resolution_state,source,custodian,storage_location,disposition,criteria_ids
+IDX-M3-001,Final report,final/final-report-v1.0.md,v1.0,520b64ba419918d6fed7d0013c8f419fb48a604ebf40f4735ade884af53aebd4,363,RESOLVED,Assessment synthesis (fictional),Delivery lead (fictional role),Engagement share / 03-final,RETAIN_WITH_DELIVERABLE,C-M3-01
+IDX-M3-002,Final evidence appendix,final/appendix-evidence-v1.0.csv,v1.0,UNKNOWN,UNKNOWN,UNRESOLVED_MISSING,Evidence register export (fictional),Delivery lead (fictional role),Engagement share / 03-final,RETURN_TO_CLIENT,C-M3-02
+IDX-M3-003,Optional readout deck outline,final/readout-deck-outline.md,UNKNOWN,cd71874c47794eead14ad54c4f78bb476b0878e545b723924ea3f8c498f4db1d,275,RESOLVED,Readout preparation (fictional),Delivery lead (fictional role),Engagement share / 03-final,UNKNOWN,

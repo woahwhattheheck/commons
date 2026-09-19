@@ -1,0 +1,197 @@
+{
+  "engagement_id": "ENG-SYN-18649",
+  "title": "SYNTHETIC assessment engagement (fictional) - milestone packet fixture",
+  "synthetic": true,
+  "contract_total": "24,000.00",
+  "milestones": [
+    {
+      "milestone_id": "M-1",
+      "name": "Kickoff and engagement plan",
+      "kind": "KICKOFF",
+      "sequence": 1,
+      "amount": "4,800.00",
+      "due_date": "2026-10-02",
+      "submission_state": "DELIVERED",
+      "delivered_on": "2026-10-02",
+      "acceptance_record": {
+        "recorded_on": "2026-10-09",
+        "recorded_by": "Fictional client project sponsor (SYNTHETIC)",
+        "reference": "SYN-ACK-M1-0001"
+      },
+      "transmittal_note": "Transmitting the engagement plan and kickoff minutes for milestone 1. Both files are listed in the delivered-file index with their versions and content digests.",
+      "invoice_description": "Milestone 1 (kickoff and engagement plan) per the proposed subcontract schedule - 20% of the fixed engagement amount.",
+      "criteria": [
+        {
+          "criterion_id": "C-M1-01",
+          "text": "An engagement plan covering scope, schedule, and evidence handling is delivered.",
+          "evidence_item_ids": ["IDX-M1-001"]
+        },
+        {
+          "criterion_id": "C-M1-02",
+          "text": "A kickoff session is held and minuted.",
+          "evidence_item_ids": ["IDX-M1-002"]
+        }
+      ],
+      "index_items": [
+        {
+          "item_id": "IDX-M1-001",
+          "path": "kickoff/engagement-plan-v1.0.md",
+          "title": "Engagement plan",
+          "declared_version": "v1.0",
+          "source": "Engagement planning (fictional)",
+          "custodian": "Delivery lead (fictional role)",
+          "storage_location": "Engagement share / 01-kickoff",
+          "disposition": "RETAIN_WITH_DELIVERABLE",
+          "criteria_ids": ["C-M1-01"]
+        },
+        {
+          "item_id": "IDX-M1-002",
+          "path": "kickoff/kickoff-minutes-2026-10-02.md",
+          "title": "Kickoff minutes",
+          "declared_version": "v1.0",
+          "source": "Kickoff session notes (fictional)",
+          "custodian": "Delivery lead (fictional role)",
+          "storage_location": "Engagement share / 01-kickoff",
+          "disposition": "RETURN_TO_CLIENT",
+          "criteria_ids": ["C-M1-02"]
+        }
+      ],
+      "dependencies": [
+        {
+          "dependency_id": "DEP-M1-01",
+          "description": "Confirm the three assessment groups in scope",
+          "owner": "Fictional client project sponsor",
+          "needed_by": "2026-10-02",
+          "state": "CLOSED"
+        }
+      ]
+    },
+    {
+      "milestone_id": "M-2",
+      "name": "Draft assessment delivery",
+      "kind": "DRAFT_DELIVERY",
+      "sequence": 2,
+      "amount": "9,600.00",
+      "due_date": "2026-11-14",
+      "submission_state": "DELIVERED",
+      "delivered_on": "2026-11-14",
+      "acceptance_record": null,
+      "transmittal_note": "Transmitting the draft assessment report and its evidence index for review and comment. Comments are requested; nothing in this transmittal records a review outcome.",
+      "invoice_description": "Milestone 2 (draft assessment delivery) per the proposed subcontract schedule - 40% of the fixed engagement amount.",
+      "criteria": [
+        {
+          "criterion_id": "C-M2-01",
+          "text": "A draft assessment report is delivered for client comment.",
+          "evidence_item_ids": ["IDX-M2-001"]
+        },
+        {
+          "criterion_id": "C-M2-02",
+          "text": "An evidence index accompanies the draft so each finding can be traced.",
+          "evidence_item_ids": ["IDX-M2-002"]
+        }
+      ],
+      "index_items": [
+        {
+          "item_id": "IDX-M2-001",
+          "path": "draft/draft-assessment-report-v0.9.md",
+          "title": "Draft assessment report",
+          "declared_version": "v0.9",
+          "source": "Assessment synthesis (fictional)",
+          "custodian": "Delivery lead (fictional role)",
+          "storage_location": "Engagement share / 02-draft",
+          "disposition": "RETAIN_WITH_DELIVERABLE",
+          "criteria_ids": ["C-M2-01"]
+        },
+        {
+          "item_id": "IDX-M2-002",
+          "path": "draft/evidence-index-v0.9.csv",
+          "title": "Draft evidence index",
+          "declared_version": "v0.9",
+          "source": "Evidence register export (fictional)",
+          "custodian": "Fictional client records owner",
+          "storage_location": "Client system of record",
+          "disposition": "CLIENT_SYSTEM_OF_RECORD",
+          "criteria_ids": ["C-M2-02"]
+        }
+      ],
+      "dependencies": [
+        {
+          "dependency_id": "DEP-M2-01",
+          "description": "IAM deployment log export outstanding; the IAM deployment cell stays UNKNOWN until it arrives",
+          "owner": "Fictional IAM group contact",
+          "needed_by": "2026-11-10",
+          "state": "OPEN"
+        }
+      ]
+    },
+    {
+      "milestone_id": "M-3",
+      "name": "Final report and acceptance",
+      "kind": "FINAL_ACCEPTANCE",
+      "sequence": 3,
+      "amount": "9,600.00",
+      "due_date": "2026-12-12",
+      "submission_state": "NOT_SUBMITTED",
+      "delivered_on": null,
+      "acceptance_record": null,
+      "transmittal_note": "Draft transmittal for the final milestone. Not yet sent: the appendix file is not in place and one index row has no disposition decision.",
+      "invoice_description": "Milestone 3 (final report and acceptance) per the proposed subcontract schedule - 40% of the fixed engagement amount.",
+      "criteria": [
+        {
+          "criterion_id": "C-M3-01",
+          "text": "A final report is delivered incorporating dispositions of review comments.",
+          "evidence_item_ids": ["IDX-M3-001"]
+        },
+        {
+          "criterion_id": "C-M3-02",
+          "text": "A final evidence appendix accompanies the report.",
+          "evidence_item_ids": ["IDX-M3-002"]
+        }
+      ],
+      "index_items": [
+        {
+          "item_id": "IDX-M3-001",
+          "path": "final/final-report-v1.0.md",
+          "title": "Final report",
+          "declared_version": "v1.0",
+          "source": "Assessment synthesis (fictional)",
+          "custodian": "Delivery lead (fictional role)",
+          "storage_location": "Engagement share / 03-final",
+          "disposition": "RETAIN_WITH_DELIVERABLE",
+          "criteria_ids": ["C-M3-01"]
+        },
+        {
+          "item_id": "IDX-M3-002",
+          "path": "final/appendix-evidence-v1.0.csv",
+          "title": "Final evidence appendix",
+          "declared_version": "v1.0",
+          "source": "Evidence register export (fictional)",
+          "custodian": "Delivery lead (fictional role)",
+          "storage_location": "Engagement share / 03-final",
+          "disposition": "RETURN_TO_CLIENT",
+          "criteria_ids": ["C-M3-02"],
+          "notes": "Cited in the index but not present at the cited path - this is the gap the fixture is built to demonstrate."
+        },
+        {
+          "item_id": "IDX-M3-003",
+          "path": "final/readout-deck-outline.md",
+          "title": "Optional readout deck outline",
+          "source": "Readout preparation (fictional)",
+          "custodian": "Delivery lead (fictional role)",
+          "storage_location": "Engagement share / 03-final",
+          "criteria_ids": [],
+          "notes": "Deliberately carries no declared_version and no disposition decision."
+        }
+      ],
+      "dependencies": [
+        {
+          "dependency_id": "DEP-M3-01",
+          "description": "Client confirmation of the accessibility review scope for the final report",
+          "owner": null,
+          "needed_by": null,
+          "state": "OPEN"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "acceptance_state": "ACCEPTED_RECORDED",
+  "amount_cents": 480000,
+  "amount_display": "$4,800.00",
+  "as_of": "2026-11-25",
+  "billing_state": "DRAFT_NOT_ISSUED",
+  "draft_stamp": "DRAFT - NOT AN ISSUED INVOICE, NOT A RECORD OF ACCEPTANCE OR PAYMENT",
+  "engagement_id": "ENG-SYN-18649",
+  "findings": [
+    {
+      "code": "I_ACCEPTANCE_ON_RECORD",
+      "item_id": null,
+      "message": "acceptance recorded 2026-10-09 by Fictional client project sponsor (SYNTHETIC) (ref SYN-ACK-M1-0001)",
+      "milestone_id": "M-1",
+      "severity": "INFO"
+    }
+  ],
+  "index": [
+    {
+      "content_sha256": "8a8806f6b5bbeb322b6e7f5599d37da4feea2c0adea32fca2e901ccc48388bb6",
+      "criteria_ids": "C-M1-01",
+      "custodian": "Delivery lead (fictional role)",
+      "declared_version": "v1.0",
+      "disposition": "RETAIN_WITH_DELIVERABLE",
+      "item_id": "IDX-M1-001",
+      "path": "kickoff/engagement-plan-v1.0.md",
+      "resolution_state": "RESOLVED",
+      "size_bytes": "404",
+      "source": "Engagement planning (fictional)",
+      "storage_location": "Engagement share / 01-kickoff",
+      "title": "Engagement plan"
+    },
+    {
+      "content_sha256": "0574c10907fc9064f0de0cf05dd467a514c53f409f1840918a2b8410eb220235",
+      "criteria_ids": "C-M1-02",
+      "custodian": "Delivery lead (fictional role)",
+      "declared_version": "v1.0",
+      "disposition": "RETURN_TO_CLIENT",
+      "item_id": "IDX-M1-002",
+      "path": "kickoff/kickoff-minutes-2026-10-02.md",
+      "resolution_state": "RESOLVED",
+      "size_bytes": "332",
+      "source": "Kickoff session notes (fictional)",
+      "storage_location": "Engagement share / 01-kickoff",
+      "title": "Kickoff minutes"
+    }
+  ],
+  "kind": "KICKOFF",
+  "milestone_id": "M-1",
+  "status": "READY_TO_SUBMIT_AS_DRAFT",
+  "submission_state": "DELIVERED",
+  "synthetic": true
+}
