@@ -1,0 +1,19 @@
+--- a/revenue/uiowa_rfq_18649_workbench/handoff.js
++++ b/revenue/uiowa_rfq_18649_workbench/handoff.js
+@@ -81,6 +81,16 @@
+   function checkedNote(value) {
+     if (typeof value !== "string" || value.length > MAX_NOTE_LENGTH) {
+       throw new Error(`Analyst notes must be strings of at most ${MAX_NOTE_LENGTH} characters.`);
++    }
++    // JSON permits escaped lone UTF-16 surrogates. Blob's UTF-8 conversion
++    // replaces them with U+FFFD, so accepting them would make the JSON and
++    // Markdown handoffs disagree. Iterate code points to keep valid pairs,
++    // literal U+FFFD, combining sequences and all other scalar values intact.
++    for (const character of value) {
++      const codePoint = character.codePointAt(0);
++      if (codePoint >= 0xD800 && codePoint <= 0xDFFF) {
++        throw new Error("Analyst notes must contain valid Unicode scalar values; an unpaired surrogate cannot be exported without changing the text.");
++      }
+     }
+     return value;
+   }

@@ -61,3 +61,7 @@ Hostiles cover replay mutation, source digest tamper, duplicate JSON keys, futur
 Public decisions are often technically available but operationally hard to follow across agendas, revisions, minutes, and later action deadlines. This tool makes the chain visible while preserving where each claim came from. A post-hackathon service can add source connectors and hosted collaboration, but the core evidence contract stays portable and auditable.
 
 Commercial test hypothesis (not a sale or revenue claim): civic associations / local newsrooms / small public bodies could buy a bounded setup + monitoring service around their own public records. Competition submission, deployment, customer contact, and payment remain separate actions.
+
+## Portable source-retaining handoff
+
+The additive [portable reader guide](PORTABLE_READER.md) explains how to carry a workspace, the original exports and retained source lines into an offline reader. [Six worked cases](PORTABLE_WALKTHROUGH.md) show proposals, missing decisions, revised assignments, conflicts and stale evidence. The companion's implementation and integration status are tracked in [PR #16452](https://github.com/woahwhattheheck/commons/pull/16452); documentation publication does not imply executable main integration. The original compiler, CLI and reader remain available as described above.

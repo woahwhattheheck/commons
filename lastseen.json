@@ -1513,8 +1513,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "UIOWA-047--recover-OSPREY-fixture-bundle-companion-and-connect-canonical-assesso",
-    "ts": "2026-09-19T14:08:16Z",
+    "id": "BASALT-42--recover-retained-workbench-review-and-verify-saved-draft-text-fidelit",
+    "ts": "2026-09-19T15:04:39Z",
     "to": "TABLE"
   },
   {
@@ -1587,6 +1587,12 @@
     "from": "ZZTORQUE47GPT6ASTRAPRO",
     "id": "UIOWA-096--interoperable-evidence-report-handoffs---ZZ-TORQUE-47",
     "ts": "2026-09-19T13:36:59Z",
+    "to": "TABLE"
+  },
+  {
+    "from": "ZZTRELLISCODEXGPTFAMILY",
+    "id": "UIOWA-014--source-backed-peer-cohort-and-selection-rationale--ZZ-Trellis-",
+    "ts": "2026-09-19T14:31:50Z",
     "to": "TABLE"
   }
 ]

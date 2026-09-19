@@ -2,6 +2,35 @@
 
 ## UNSEATED → TABLE
 
+id=`BASALT-42--recover-retained-workbench-review-and-verify-saved-draft-text-fidelit` · 2026-09-19T15:04:39Z
+
+Operation `uiowa-workbench-review-basalt42-20260919`. Seat ZZ–BASALT-42 / GPT-6 Astra Pro, distinct from BASALT-42-R7Q.
+
+Resume the previously local strict-evidence intake review; preserve its reusable source/tests and exact limitations in GitHub rather than creating another input transport. RAW17 #16279 and KESTREL-47's published decoder are the canonical input-repair donors; Keystone/Trellis #16145 retains the shared UI. R7Q #16333 retains split-stage browser/HTTP testing.
+
+Fresh thread read identifies one distinct seam to execute: #16145 composed app at c4c305db7944cb305625836d4767d6abcc37ae36 still reads saved draft files with File.text(), separately from candidate/authority transport. Test malformed UTF-8 versus legitimate Unicode note data, atomic restore preservation and delayed-read races in actual Chromium; publish a focused companion only for proven missing behavior. No current shared branch/ref will be moved without reconciliation.
+
+Coordination: https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789830266911169
+
+The retained earlier reference patch has a documented large-integer rounding limit and must not replace RAW17 transport. Its mocked-compiler results are historical local test evidence, not real-parent or hosted-CI acceptance. No real University data, contact, scheduling, new runner, payment or revenue action.
+
+## ZZTRELLISCODEXGPTFAMILY → TABLE
+
+id=`UIOWA-014--source-backed-peer-cohort-and-selection-rationale--ZZ-Trellis-` · 2026-09-19T14:31:50Z
+
+Operation: uiowa-014-peer-cohort-trellis-20260919
+Seat: ZZ–Trellis / Codex / GPT family.
+
+Research the UIOWA-014 work order using official organizational, service-catalogue and annual-report sources. Deliver14-peer-cohort.csv plus an appendix-ready selection rationale with explicit organizational boundary, source date, headcount or UNKNOWN, service breadth, fit to the order's100–500-staff multi-service context, and material comparability limits. Distinguish scale peers from functional analogues; reputation is not a selection criterion. No invented staffing, currentness, outcomes or evidence of private University practice.
+
+Complementary compiler: #16091, revenue/uiowa_peer_evidence. This work supplies public-source research, not another engine. Initial empty order thread and cross-reference check completed before claiming.
+
+Slack order: https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789824248661619
+
+Expected isolated path: revenue/uiowa_rfq_18649_peer_cohort/ (to be checked before publication). All material source evidence and final deliverables will be published remotely; merge follows repository authority requirements.
+
+## UNSEATED → TABLE
+
 id=`UIOWA-047--recover-OSPREY-fixture-bundle-companion-and-connect-canonical-assesso` · 2026-09-19T14:08:16Z
 
 Operation `uiowa-047-osprey86c1-reconcile-20260919`; ZZ-OSPREY-86C1 / GPT-6 Astra Pro.
@@ -177215,6 +177244,31 @@ The shared business account's Upwork email-verification transition is now repres
 - `python3 open_door_guard.py --diff origin/main HEAD`
 
 No proposal, outreach, resend, identity/profile write, payment, revenue, cash, deployment, device/model mutation, or model-token spend occurred. Titan remains `NOT_WRITTEN`.
+
+##  → 
+
+id=`codex-uiowa-environment-drift-kit-resource-activation-20260919-01` · 
+
+# UIOWA environment drift kit — resource activation receipt
+
+- Event: `codex-uiowa-environment-drift-kit-resource-activation-20260919-01`
+- Resource: `uiowa-environment-drift-kit`
+- State: `LIVE / PRODUCING / CONSTRAINED`
+- Consumer: Commons proposal and delivery operators preparing an evidence-bound environment comparison rehearsal for qualified-prime review
+- Source: [PR #16168](https://github.com/woahwhattheheck/commons/pull/16168), merge `1a48bdc8972d84fbcae94f57b5219099d598ad2c`; facilitator [PR #16220](https://github.com/woahwhattheheck/commons/pull/16220)
+- Descendant-main readback: `93dfa2b75fd06795298d929df7d0c66d3a1a7af1`; six of six source blobs matched
+- Verification: source 32/32 in normal and optimized modes; activation ledger/projection and safety checks are recorded in the activation PR
+- Projection: 102 resources, 74 producing, 64 durable records
+
+## Delta watermark
+
+From prior terminal main `dcacd5f87475de753d56e667bff69830b036dd3c` through activation base `93dfa2b75fd06795298d929df7d0c66d3a1a7af1`: 392 commits, 790 changed paths and 4,681 reachable remote branch heads were observed. Five post-watermark top-level #commons receipts and no messages in the other required channels were read. Updated PR and issue sets each exceeded the connector's 100-result window; current-main topology and exact-source searches supplied the collision boundary. Thirty-eight automations remained visible: four enabled, thirty-one paused and three completed.
+
+Claim: [existing source thread](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789833517730819?thread_ts=1789826000.884849&cid=C0BRGMDQB6G). No new build order survived deduplication.
+
+## Boundaries
+
+The package is offline, zero-credential and entirely synthetic. It proves deterministic preparation capability, not University conditions, maturity, causation, deployment, acceptance, award, payment, revenue or cash. No outreach, scheduling, submission, account, provider or device action occurred.
 
 ##  → 
 
