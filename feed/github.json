@@ -1,13 +1,13 @@
 {
   "counts": {
-    "open_issues": 145,
-    "open_pull_requests": 63,
-    "runs_in_progress": 19,
-    "runs_queued": 160
+    "open_issues": 150,
+    "open_pull_requests": 61,
+    "runs_in_progress": 18,
+    "runs_queued": 170
   },
   "counts_source": "graphql",
   "degraded": [],
-  "drafts": 3,
+  "drafts": 2,
   "longest_open": [
     {
       "author": "woahwhattheheck",
@@ -69,17 +69,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "swarm-zz-solstice-uiowa-060-security-event-review-20260919",
-      "created_at": "2026-09-19T13:38:37Z",
-      "draft": false,
-      "head_sha": "25939b5a906dd457f8a53a15149a5525c514e4d3",
-      "number": 16136,
-      "title": "feat(uiowa): add security-event review evidence kit",
-      "updated_at": "2026-09-19T13:38:37Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "swarm-zz/uiowa-078-orbit27-ai-economics",
       "created_at": "2026-09-19T13:38:13Z",
       "draft": true,
@@ -109,17 +98,6 @@
       "number": 16126,
       "title": "UIOWA-022: compose ratings without hiding uncertainty",
       "updated_at": "2026-09-19T13:37:05Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa-070-heliotrope-20260919",
-      "created_at": "2026-09-19T13:36:20Z",
-      "draft": true,
-      "head_sha": "9770af72d4e5d3124f12df08110961aaed62041a",
-      "number": 16119,
-      "title": "UIOWA-070: executable seasonal capacity and dependency planning kit",
-      "updated_at": "2026-09-19T13:36:20Z"
     },
     {
       "author": "woahwhattheheck",
@@ -175,6 +153,28 @@
       "number": 16047,
       "title": "Research: add high-value Erd\u0151s prize crosswalk",
       "updated_at": "2026-09-18T17:02:01Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-copperleaf/actions-auditor-classifier-generation-15756",
+      "created_at": "2026-09-18T07:42:48Z",
+      "draft": false,
+      "head_sha": "5c4e04aeccb9a02035cf0775750669180dde5521",
+      "number": 16015,
+      "title": "Harden stale Actions queue auditor classifier generation",
+      "updated_at": "2026-09-18T10:51:42Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "znf-k7p4/outreach-firewall-commercial-binding-20260918",
+      "created_at": "2026-09-18T07:41:12Z",
+      "draft": false,
+      "head_sha": "a08d73c13394cf6f1719befdb168065ec94381c8",
+      "number": 16012,
+      "title": "Fix outreach firewall commercial authority binding",
+      "updated_at": "2026-09-18T10:38:48Z"
     }
   ],
   "open_heads": {
@@ -236,16 +236,47 @@
     "16073": "253fcfa5935b08b0f63b14d7120fbbbf096ec62d",
     "16081": "7d5f250e6fac05b5d3e3a39022260e10f3329c82",
     "16110": "413837a89ac300e21979355a28c468e1e89c6a68",
-    "16119": "9770af72d4e5d3124f12df08110961aaed62041a",
     "16126": "ac9b596fa39410cf947420a306125c823c625f80",
     "16130": "f91169044bc39b1ef7c99ada29d900932fbd15b6",
-    "16134": "0d788098b9da196cab9efe387707672a86622516",
-    "16136": "25939b5a906dd457f8a53a15149a5525c514e4d3"
+    "16134": "0d788098b9da196cab9efe387707672a86622516"
   },
-  "pulls_listed": 63,
+  "pulls_listed": 61,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 8.4,
+  "queue_depth_per_runner": 9.4,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-semaphore-uiowa-064-20260919-01",
+      "closed_at": "2026-09-19T13:39:15Z",
+      "head_sha": "400177f95a49760160702336867ccdb2b7628ae1",
+      "merged_at": "2026-09-19T13:39:15Z",
+      "number": 16142,
+      "state": "MERGED",
+      "title": "feat(uiowa): software delivery metrics calculator (UIOWA-064)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/uiowa-070-heliotrope-20260919",
+      "closed_at": "2026-09-19T13:39:02Z",
+      "head_sha": "9770af72d4e5d3124f12df08110961aaed62041a",
+      "merged_at": null,
+      "number": 16119,
+      "state": "CLOSED",
+      "title": "UIOWA-070: executable seasonal capacity and dependency planning kit"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz-solstice-uiowa-060-security-event-review-20260919",
+      "closed_at": "2026-09-19T13:38:58Z",
+      "head_sha": "25939b5a906dd457f8a53a15149a5525c514e4d3",
+      "merged_at": "2026-09-19T13:38:58Z",
+      "number": 16136,
+      "state": "MERGED",
+      "title": "feat(uiowa): add security-event review evidence kit"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -377,43 +408,10 @@
       "number": 16093,
       "state": "MERGED",
       "title": "UIOWA-011: map AIS, ESS, RIS, and IAM public responsibilities"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "codex/resource-master-whitebox-hour-checkout-road-activation-20260919-01",
-      "closed_at": "2026-09-19T13:14:40Z",
-      "head_sha": "fcb79056c2fc52e370c2c2ba4bfc4503a55623c1",
-      "merged_at": "2026-09-19T13:14:40Z",
-      "number": 16089,
-      "state": "MERGED",
-      "title": "Activate White Box hour direct checkout road"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "titan-v4-salvage-12019-final-spatial-guard",
-      "closed_at": "2026-09-19T12:31:03Z",
-      "head_sha": "2dd08f7c32940d39a66e6248c2d64371315ba70f",
-      "merged_at": "2026-09-19T12:31:03Z",
-      "number": 16088,
-      "state": "MERGED",
-      "title": "TITAN V4: recover #12019 final SpatialTempo guard on current ABI"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/latch-owner-now-wb-hour-restore-ff1c",
-      "closed_at": "2026-09-19T11:38:00Z",
-      "head_sha": "5efd6315e893123f0cbcf144904f1e2e5aaeae95",
-      "merged_at": "2026-09-19T11:38:00Z",
-      "number": 16087,
-      "state": "MERGED",
-      "title": "Restore existing White Box hour Buy CTA on owner-now-revenue.html"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T13:38:45Z",
+  "unchanged_since": "2026-09-19T13:39:27Z",
   "undatable_pulls": []
 }
