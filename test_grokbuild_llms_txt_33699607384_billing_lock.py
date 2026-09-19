@@ -38,7 +38,7 @@ KEEP = {
     "p/cursor-wire-shared-super-mcp-catalog-readback-20260902-01.md": "593d54bc",
     "p/cursor-wire-super-mcp-marketplace-readback-20260902-01.md": "448eda52",
     "p/latch-wake-super-mcp-pointer-readback-20260902-01.md": "250907c9",
-    "wire.html": "5f0d0f84",
+    "wire.html": "623602a7",
     "ground/WIRE_SUPER_MCP.md": "626b07f7",
     "p/cursor-big-huge-commerce-agents-readback-20260902-01.md": "2a5ce894",
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
@@ -57,7 +57,7 @@ KEEP = {
     "test_grokbuild_llms_txt_33694253456_billing_lock.py": "605cd0c7",
     "test_grokbuild_llms_txt_33694402716_billing_lock.py": "76d5e37a",
     "test_grokbuild_llms_txt_33699286770_billing_lock.py": "71ad16e0",
-    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "d11f2988",
+    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "649265c5",
 }
 
 

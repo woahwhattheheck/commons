@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import copy
 import json
+import os
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
@@ -51,8 +52,34 @@ def ev(name="private-one", *, intent="review_public", sha=SHA, owner=True, secre
     }
 
 
+def test_generation(now=NOW, *, trusted=True):
+    owner_refs = frozenset({"issue:16003#owner"}) if trusted else frozenset()
+    archive_refs = frozenset({"issue:16003#archive"}) if trusted else frozenset()
+
+    def clock_now(tz=None):
+        return now if tz is None else now.astimezone(tz)
+
+    return rr._make_test_generation(
+        trusted_owner_refs=owner_refs,
+        trusted_archive_refs=archive_refs,
+        clock_now=clock_now,
+    )
+
+
 def compile_at(snap=None, evid=None, now=NOW):
-    return rr._compile_at(snap or snapshot(), evid or evidence(), now=now)
+    return test_generation(now).compile_at(
+        snap or snapshot(),
+        evid or evidence(),
+        now=now,
+    )
+
+
+def untrusted_compile_at(snap=None, evid=None, now=NOW):
+    return test_generation(now, trusted=False).compile_at(
+        snap or snapshot(),
+        evid or evidence(),
+        now=now,
+    )
 
 
 def by_repo(packet, name):
@@ -72,7 +99,7 @@ def test_publication_review_requires_complete_current_evidence():
     packet = compile_at(evid=evidence([ev()]))
     row = by_repo(packet, "private-one")
     assert row["state"] == "PUBLICATION_REVIEW"
-    assert row["reasons"] == ["EXPLICIT_PUBLICATION_REVIEW_EVIDENCE_COMPLETE"]
+    assert row["reasons"] == ["SOURCE_TRUSTED_PUBLICATION_REVIEW_EVIDENCE_COMPLETE"]
     assert packet["authority"]["repository_visibility_mutation_authorized"] is False
     assert packet["authority"]["publication_safety_certified"] is False
 
@@ -99,14 +126,14 @@ def test_keep_private_never_requires_public_release_classification():
     row = ev(intent="keep_private", secret="FINDINGS", content="PRIVATE", legal="PRIVATE", owner=True)
     packet = compile_at(evid=evidence([row]))
     assert by_repo(packet, "private-one")["state"] == "KEEP_PRIVATE"
-    assert by_repo(packet, "private-one")["reasons"] == ["OWNER_KEEP_PRIVATE"]
+    assert by_repo(packet, "private-one")["reasons"] == ["CONSERVATIVE_KEEP_PRIVATE"]
 
 
-def test_keep_private_without_owner_authority_holds():
+def test_keep_private_is_conservative_even_without_publication_authority():
     packet = compile_at(evid=evidence([ev(intent="keep_private", owner=False)]))
     row = by_repo(packet, "private-one")
-    assert row["state"] == "HOLD"
-    assert row["reasons"] == ["OWNER_AUTHORITY_NOT_PROVEN"]
+    assert row["state"] == "KEEP_PRIVATE"
+    assert row["reasons"] == ["CONSERVATIVE_KEEP_PRIVATE"]
 
 
 def test_archive_review_requires_explicit_authority_and_no_work_or_consumers():
@@ -127,7 +154,7 @@ def test_archive_open_issue_and_active_claim_each_block():
 
 def test_missing_private_branch_sha_cannot_positive_recommend():
     s = snapshot({"name": "private-one", "visibility": "private", "archived": False, "default_branch": "main", "default_branch_sha": None})
-    packet = rr._compile_at(s, evidence([ev()]), now=NOW)
+    packet = compile_at(snap=s, evid=evidence([ev()]))
     row = by_repo(packet, "private-one")
     assert row["state"] == "HOLD"
     assert "MISSING_CURRENT_BRANCH_SHA" in row["reasons"]
@@ -143,7 +170,7 @@ def test_case_alias_repo_identity_is_rejected_in_snapshot_and_evidence():
 
     e = evidence([ev("private-one"), ev("PRIVATE-ONE")])
     with pytest.raises(rr.EstateError, match="case-aliased"):
-        rr._compile_at(snapshot(), e, now=NOW)
+        compile_at(evid=e)
 
 
 def test_unknown_evidence_repo_is_rejected():
@@ -174,38 +201,102 @@ def test_input_order_independent_and_receipt_stable():
         {"name": "private-one", "visibility": "private", "archived": False, "default_branch": "main", "default_branch_sha": SHA},
         {"name": "public-one", "visibility": "public", "archived": False, "default_branch": "main", "default_branch_sha": SHA2},
     ]
-    a = rr._compile_at(snapshot(*rows), evidence([ev()]), now=NOW)
-    b = rr._compile_at(snapshot(*reversed(rows)), evidence([ev()]), now=NOW)
+    a = untrusted_compile_at(snap=snapshot(*rows), evid=evidence([ev()]))
+    b = untrusted_compile_at(snap=snapshot(*reversed(rows)), evid=evidence([ev()]))
     assert a == b
 
 
-def test_packet_receipt_tamper_detected(monkeypatch):
-    packet = compile_at(evid=evidence([ev()]))
+def test_packet_receipt_tamper_detected():
+    generation = test_generation()
+    packet = generation.compile_at(snapshot(), evidence([ev()]), now=NOW)
     packet["estate"]["private_repository_count"] = 999
-    monkeypatch.setattr(rr, "datetime", type("Clock", (datetime,), {"now": classmethod(lambda cls, tz=None: NOW if tz is None else NOW.astimezone(tz))}))
-    assert rr.verify_packet(packet, snapshot(), evidence([ev()])) is False
+    assert generation.verify_packet(packet, snapshot(), evidence([ev()])) is False
 
 
-def test_verify_recompiles_exact_sources(monkeypatch):
-    packet = compile_at(evid=evidence([ev()]))
-    class Clock(datetime):
-        @classmethod
-        def now(cls, tz=None):
-            return NOW if tz is None else NOW.astimezone(tz)
-    monkeypatch.setattr(rr, "datetime", Clock)
-    assert rr.verify_packet(packet, snapshot(), evidence([ev()])) is True
+def test_verify_recompiles_exact_sources():
+    generation = test_generation(trusted=False)
+    packet = generation.compile_at(snapshot(), evidence([ev()]), now=NOW)
+    assert generation.verify_packet(packet, snapshot(), evidence([ev()])) is True
     drift = snapshot()
     drift["repositories"][1]["default_branch_sha"] = SHA2
-    assert rr.verify_packet(packet, drift, evidence([ev()])) is False
+    assert generation.verify_packet(packet, drift, evidence([ev()])) is False
+
+
+def test_untrusted_generation_rejects_caller_claimed_authority():
+    packet = untrusted_compile_at(evid=evidence([ev()]))
+    row = by_repo(packet, "private-one")
+    assert row["state"] == "HOLD"
+    assert "OWNER_AUTHORITY_NOT_SOURCE_TRUSTED" in row["reasons"]
+
+
+def test_production_surface_rejects_semantic_override_kwargs():
+    with pytest.raises(TypeError):
+        rr.compile_packet(
+            snapshot(),
+            evidence(),
+            _trusted_owner_refs=frozenset({"issue:16003#owner"}),
+        )
+    with pytest.raises(TypeError):
+        rr.verify_packet(
+            compile_at(),
+            snapshot(),
+            evidence(),
+            _clock=datetime,
+        )
+
+
+def test_production_clock_is_captured_before_exported_datetime_rebind(monkeypatch):
+    real_now = datetime.now(UTC).replace(microsecond=0)
+    snap = snapshot()
+    snap["captured_at"] = (real_now - timedelta(minutes=1)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    packet = rr.compile_packet(snap, evidence())
+
+    class PoisonClock:
+        @classmethod
+        def now(cls, tz=None):
+            poisoned = datetime(2099, 1, 1, tzinfo=UTC)
+            return poisoned if tz is None else poisoned.astimezone(tz)
+
+    monkeypatch.setattr(rr, "datetime", PoisonClock)
+    monkeypatch.setattr(rr, "UTC", None)
+    monkeypatch.setattr(rr, "_plain", lambda *_args: {"forged": True})
+    after = rr.compile_packet(snap, evidence())
+    assert by_repo(after, "private-one")["state"] == "HOLD"
+    assert rr.verify_packet(packet, snap, evidence()) is True
+
+
+def test_exported_policy_globals_cannot_widen_captured_generation(monkeypatch):
+    generation = test_generation()
+    monkeypatch.setitem(rr.AUTHORITY, "repository_visibility_mutation_authorized", True)
+    monkeypatch.setitem(rr.AUTHORITY, "publication_safety_certified", True)
+    monkeypatch.setattr(rr, "SECRET_CLEAR", "FINDINGS")
+    monkeypatch.setattr(rr, "PUBLIC_CLASS", "PRIVATE_OR_UNKNOWN")
+    monkeypatch.setattr(rr, "LEGAL_PUBLIC", "UNKNOWN")
+    packet = generation.compile_at(snapshot(), evidence([ev()]), now=NOW)
+    row = by_repo(packet, "private-one")
+    assert row["state"] == "PUBLICATION_REVIEW"
+    assert packet["authority"]["repository_visibility_mutation_authorized"] is False
+    assert packet["authority"]["publication_safety_certified"] is False
+
+
+def test_evidence_row_order_is_receipt_independent():
+    repos = [
+        {"name": "alpha", "visibility": "private", "archived": False, "default_branch": "main", "default_branch_sha": SHA},
+        {"name": "beta", "visibility": "private", "archived": False, "default_branch": "main", "default_branch_sha": SHA2},
+    ]
+    evidence_rows = [ev("alpha", sha=SHA), ev("beta", sha=SHA2)]
+    a = compile_at(snapshot(*repos), evidence(evidence_rows))
+    b = compile_at(snapshot(*reversed(repos)), evidence(list(reversed(evidence_rows))))
+    assert a == b
 
 
 def test_snapshot_stale_or_future_rejected():
     stale = snapshot(); stale["captured_at"] = "2026-09-01T00:00:00Z"
     with pytest.raises(rr.EstateError, match="stale"):
-        rr._compile_at(stale, evidence(), now=NOW)
+        untrusted_compile_at(snap=stale, evid=evidence())
     future = snapshot(); future["captured_at"] = "2026-09-19T00:00:00Z"
     with pytest.raises(rr.EstateError, match="future"):
-        rr._compile_at(future, evidence(), now=NOW)
+        untrusted_compile_at(snap=future, evid=evidence())
 
 
 def test_render_is_advisory_and_contains_no_mutation_authority():
@@ -226,23 +317,69 @@ def test_create_exclusive_and_symlink_refusal(tmp_path):
         rr._read_regular(link)
 
 
+def test_read_regular_parent_symlink_is_refused(tmp_path):
+    real = tmp_path / "real"
+    real.mkdir()
+    (real / "input.json").write_text("{}", encoding="utf-8")
+    link = tmp_path / "link"
+    link.symlink_to(real, target_is_directory=True)
+    with pytest.raises(rr.EstateError):
+        rr._read_regular(link / "input.json")
+
+
+def test_read_regular_swap_to_fifo_fails_without_blocking(tmp_path, monkeypatch):
+    source = tmp_path / "input.json"
+    source.write_text("{}", encoding="utf-8")
+    real_open = rr.os.open
+    swapped = False
+
+    def hostile_open(path, flags, *args, **kwargs):
+        nonlocal swapped
+        if kwargs.get("dir_fd") is not None and path == source.name and not swapped:
+            swapped = True
+            os.unlink(source)
+            os.mkfifo(source)
+        return real_open(path, flags, *args, **kwargs)
+
+    monkeypatch.setattr(rr.os, "open", hostile_open)
+    with pytest.raises(rr.EstateError):
+        rr._read_regular(source)
+    assert swapped
+
+
+def test_write_failure_never_unlinks_foreign_successor(tmp_path, monkeypatch):
+    out = tmp_path / "out.json"
+    real_write = rr.os.write
+    triggered = False
+
+    def hostile_write(fd, data):
+        nonlocal triggered
+        if not triggered:
+            triggered = True
+            os.unlink(out)
+            out.write_text("foreign-successor", encoding="utf-8")
+            raise OSError("injected write failure")
+        return real_write(fd, data)
+
+    monkeypatch.setattr(rr.os, "write", hostile_write)
+    with pytest.raises(OSError, match="injected write failure"):
+        rr._write_exclusive(out, "payload")
+    assert out.read_text(encoding="utf-8") == "foreign-successor"
+
+
 def test_archive_replacement_can_be_none_when_no_consumers():
     row = ev(intent="review_archive", archive=True, replacement=None, replacement_verified=False)
     packet = compile_at(evid=evidence([row]))
     assert by_repo(packet, "private-one")["state"] == "ARCHIVE_REVIEW"
 
 
-def test_visibility_state_drift_recompile_changes_decision(monkeypatch):
-    packet = compile_at(evid=evidence([ev()]))
+def test_visibility_state_drift_recompile_changes_decision():
+    generation = test_generation()
+    packet = generation.compile_at(snapshot(), evidence([ev()]), now=NOW)
     drift = snapshot()
     drift["repositories"][1]["visibility"] = "public"
-    class Clock(datetime):
-        @classmethod
-        def now(cls, tz=None):
-            return NOW if tz is None else NOW.astimezone(tz)
-    monkeypatch.setattr(rr, "datetime", Clock)
-    assert rr.verify_packet(packet, drift, evidence([ev()])) is False
-    rebuilt = rr._compile_at(drift, evidence([ev()]), now=NOW)
+    assert generation.verify_packet(packet, drift, evidence([ev()])) is False
+    rebuilt = generation.compile_at(drift, evidence([ev()]), now=NOW)
     assert by_repo(rebuilt, "private-one")["state"] == "PUBLIC_ALREADY"
 
 
@@ -264,9 +401,15 @@ def _optimized_smoke():
     if by_repo(packet, "private-one")["state"] != "HOLD":
         raise RuntimeError("optimized smoke: private no-evidence hold")
 
+    untrusted = untrusted_compile_at(evid=evidence([ev()]))
+    if by_repo(untrusted, "private-one")["state"] != "HOLD":
+        raise RuntimeError("optimized smoke: caller authority must remain untrusted")
+    if "OWNER_AUTHORITY_NOT_SOURCE_TRUSTED" not in by_repo(untrusted, "private-one")["reasons"]:
+        raise RuntimeError("optimized smoke: missing source-trust authority fence")
+
     published = compile_at(evid=evidence([ev()]))
     if by_repo(published, "private-one")["state"] != "PUBLICATION_REVIEW":
-        raise RuntimeError("optimized smoke: positive evidence review")
+        raise RuntimeError("optimized smoke: source-trusted positive evidence review")
     if published["authority"]["repository_visibility_mutation_authorized"] is not False:
         raise RuntimeError("optimized smoke: authority ceiling")
 

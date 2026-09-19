@@ -24,7 +24,7 @@ KEEP = {
     "test_stealable_lanes.py": "5bd684a3",
     "ground/STEALABLE_LANES.json": "20b0a875",
     "ground/STEALABLE_LANES.md": "a065c748",
-    "stealable-lanes.html": "4626c112",
+    "stealable-lanes.html": "18d0ae64",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "lanes.json": "1c4569ef",
     "roles.json": "9fb3f2c2",

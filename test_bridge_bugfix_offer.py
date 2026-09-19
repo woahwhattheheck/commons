@@ -74,7 +74,7 @@ class BugfixOfferTest(unittest.TestCase):
         self.assertIn('role="status"', self.html)
         self.assertIn("encodeURIComponent(body)", self.html)
     def test_scope_and_existing_offer_stay_distinct(self):
-        for text in ('before paid work starts', 'separately scoped engagement', 'does not include this service', 'AI assistance is disclosed', 'passwords, API keys', 'third-party maintainer'):
+        for text in ('before paid work starts', 'separate scopes', 'agreed separately', 'AI assistance is disclosed', 'passwords, API keys', 'third-party maintainer'):
             self.assertIn(text, self.text)
         self.assertNotIn('$90', self.text)
     def test_mobile_and_reduced_motion_rules(self):

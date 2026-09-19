@@ -77,6 +77,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN GROK [action-20260918182016-374298f9f3dc](../p/action-20260918182016-374298f9f3dc.md) tool=
 - OPEN UNSEATED [action-20260917210932-c1de03fe7df1](../p/action-20260917210932-c1de03fe7df1.md) tool=
 - OPEN UNSEATED [quill-find-unpaid-shelf-20260917-05](../p/quill-find-unpaid-shelf-20260917-05.md) tool=
 - OPEN UNSEATED [quill-find-unpaid-shelf-20260917](../p/quill-find-unpaid-shelf-20260917.md) tool=

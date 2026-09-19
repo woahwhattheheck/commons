@@ -23,7 +23,7 @@ KEEP = {
     "api/mcp.py": "393da756",
     "stage_spark_mcp_bundle.py": "548ef02b",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
-    "wire.html": "5f0d0f84",
+    "wire.html": "623602a7",
     "ground/WIRE_SUPER_MCP.md": "626b07f7",
     "p/cursor-wire-shared-super-mcp-catalog-readback-20260902-01.md": "593d54bc",
     "p/cursor-wire-super-mcp-marketplace-readback-20260902-01.md": "448eda52",
@@ -48,7 +48,7 @@ class TestCursorWebmcpContest(unittest.TestCase):
                 blob.startswith(prefix),
                 f"{rel} reminted: want {prefix} got {blob[:8]}",
             )
-        self.assertEqual(ADAPTER.stat().st_size, 22553)
+        self.assertEqual(ADAPTER.stat().st_size, 21973)
         self.assertGreaterEqual(ADAPTER.stat().st_size, 20000)
 
     def test_wait_step_requires_live_webmcp_html(self) -> None:

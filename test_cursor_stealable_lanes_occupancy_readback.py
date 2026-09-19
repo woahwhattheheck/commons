@@ -20,7 +20,7 @@ KEEP = {
     "host/stealable_lanes.py": "6f6456e4",
     "ground/STEALABLE_LANES.json": "20b0a875",
     "ground/STEALABLE_LANES.md": "a065c748",
-    "stealable-lanes.html": "4626c112",
+    "stealable-lanes.html": "18d0ae64",
     "test_stealable_lanes.py": "5bd684a3",
     "test_stealable_lanes_occupancy.py": "36d26523",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",

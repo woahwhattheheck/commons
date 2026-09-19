@@ -3,7 +3,7 @@
 
 The tool never changes repository visibility, archive state, branches, Actions, or
 billing.  Positive publication/archive recommendations require explicit retained
-owner evidence bound to the exact repository generation being evaluated.
+source-trusted owner evidence bound to the exact repository generation being evaluated; caller assertions alone never establish publication/archive authority.
 """
 from __future__ import annotations
 
