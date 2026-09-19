@@ -1,0 +1,67 @@
+{
+  "authority": "SYNTHETIC_SOFTWARE_VERIFICATION_NOT_UNIVERSITY_FINDINGS",
+  "files": {
+    "calculator.py": {
+      "bytes": 17615,
+      "git_blob_sha1": "bca1a6b315cb23fcf0641c9c0aa524bfecc4c860",
+      "sha256": "3d887520ebc8aac775cc46e55062aff5b20be00993b09334430b9761c61cda92"
+    },
+    "evidence/after.json": {
+      "bytes": 3930,
+      "git_blob_sha1": "d80354cfe6d4d1eb8d2e84fbfb409f9a892b8d8c",
+      "sha256": "6a4af4b88480664043885260a69fb581c26cfec78e012e358c53ba43b1aa0606"
+    },
+    "evidence/before.json": {
+      "bytes": 2540,
+      "git_blob_sha1": "6c467579bbaefd2dbae2807850af57d87dd26099",
+      "sha256": "7567e989b9779725ec598b59a53ccacb8ea9c184e967ddf90aa011539c8b8dcb"
+    },
+    "evidence/test-logs.txt.bz2": {
+      "bytes": 1810,
+      "git_blob_sha1": "d8382a5bf471ecd11f175e8ffbe72183c1a8cfe5",
+      "sha256": "34c430f3b11e1966af2550056a4d913da1bf07bff51c758fb4700552c8eaa4b5"
+    },
+    "fixtures/synthetic_deployments.csv": {
+      "bytes": 1147,
+      "git_blob_sha1": "8fac02fb9d947deed7df99d563ab05d949127793",
+      "sha256": "fc7469008c5b2eba5d41cae13667d376a6d6acedbddf04dceb16ceee363b482d"
+    },
+    "rehearse_coverage.py": {
+      "bytes": 4658,
+      "git_blob_sha1": "d6fa4f2d068c810876105f9239a7b3b1d242c46a",
+      "sha256": "633b18ce13b1297b91da11965dd0a978625f778b677e67debe470a1ed9a4708a"
+    },
+    "test_calculator.py": {
+      "bytes": 4209,
+      "git_blob_sha1": "e452331213f2da935c79099dd91e3d405bc2ed3d",
+      "sha256": "8024e03c039082f47d5fdadaf317bfdee56bd094a004cfb0a6a595be71fed33e"
+    },
+    "test_coverage_contract.py": {
+      "bytes": 19274,
+      "git_blob_sha1": "d10dd781b13271cccca4ed11e1661dee3ac166c1",
+      "sha256": "c3d3afaf228314c26af10f858266c13fa2abe1854bd21460f46ec3874bcb08c3"
+    }
+  },
+  "model": "GPT-6 Astra Pro",
+  "operation": "uiowa064-correctness-copperfinch8d42-20260919",
+  "predecessor_calculator_blob": "13d7a895f5785e9cc7e3a35fc10a851a468547ab",
+  "predecessor_commit": "92fecdaf18b4c700f14e4859f502fb7f240433cd",
+  "python": "3.13.5",
+  "runs": [
+    {
+      "command": "python -m unittest discover -v",
+      "exit_code": 0,
+      "log": "evidence/test-logs.txt.bz2",
+      "result": "OK",
+      "tests_run": 50
+    },
+    {
+      "command": "python -O -m unittest discover -v",
+      "exit_code": 0,
+      "log": "evidence/test-logs.txt.bz2",
+      "result": "OK",
+      "tests_run": 50
+    }
+  ],
+  "seat": "ZZ-COPPERFINCH-8D42"
+}

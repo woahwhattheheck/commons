@@ -1,0 +1,143 @@
+{
+  "authority": "SYNTHETIC_REHEARSAL_NOT_UNIVERSITY_FINDINGS",
+  "observations": {
+    "blank_notes": {
+      "exception": "DataError",
+      "message": "SYN-1: notes is required",
+      "outcome": "RAISED"
+    },
+    "direct_duplicate_deployment": {
+      "exception": "DataError",
+      "message": "duplicate deployment_id: SYN-1",
+      "outcome": "RAISED"
+    },
+    "direct_integer_boolean": {
+      "exception": "DataError",
+      "message": "SYN-1: intervention_required must be bool or None",
+      "outcome": "RAISED"
+    },
+    "direct_negative_lead_time": {
+      "exception": "DataError",
+      "message": "SYN-1: commit_at occurs after deployed_at",
+      "outcome": "RAISED"
+    },
+    "duplicate_csv_header": {
+      "exception": "DataError",
+      "message": "duplicate CSV columns: ['notes']",
+      "outcome": "RAISED"
+    },
+    "extra_csv_cell": {
+      "exception": "DataError",
+      "message": "CSV line 2: row width does not match header",
+      "outcome": "RAISED"
+    },
+    "known_recovery_plus_unknown_eligibility": {
+      "outcome": "RETURNED",
+      "value": {
+        "coverage": {
+          "eligibility_unknown": 1,
+          "eligible": 1,
+          "missing": 0,
+          "status": "PARTIAL",
+          "used": 1
+        },
+        "evidence": {
+          "known_non_failure_count": 0,
+          "missing_recovery_timestamp_ids": [],
+          "observed_recovery_ids": [
+            "SYN-FAILED"
+          ],
+          "recovered_after_cutoff_ids": [],
+          "unknown_failure_classification_ids": [
+            "SYN-UNKNOWN"
+          ]
+        },
+        "mean": 3.0,
+        "median": 3.0,
+        "unit": "hours"
+      }
+    },
+    "late_recovery_explicit_cutoff": {
+      "outcome": "RETURNED",
+      "value": {
+        "coverage": {
+          "eligibility_unknown": 0,
+          "eligible": 2,
+          "missing": 1,
+          "status": "PARTIAL",
+          "used": 1
+        },
+        "evidence": {
+          "known_non_failure_count": 0,
+          "missing_recovery_timestamp_ids": [],
+          "observed_recovery_ids": [
+            "SYN-FAILED"
+          ],
+          "recovered_after_cutoff_ids": [
+            "SYN-LATE"
+          ],
+          "unknown_failure_classification_ids": []
+        },
+        "mean": 3.0,
+        "median": 3.0,
+        "unit": "hours"
+      }
+    },
+    "late_recovery_retrospective": {
+      "outcome": "RETURNED",
+      "value": {
+        "coverage": {
+          "eligibility_unknown": 0,
+          "eligible": 2,
+          "missing": 0,
+          "status": "COMPLETE",
+          "used": 2
+        },
+        "evidence": {
+          "known_non_failure_count": 0,
+          "missing_recovery_timestamp_ids": [],
+          "observed_recovery_ids": [
+            "SYN-FAILED",
+            "SYN-LATE"
+          ],
+          "recovered_after_cutoff_ids": [],
+          "unknown_failure_classification_ids": []
+        },
+        "mean": 183.0,
+        "median": 183.0,
+        "unit": "hours"
+      }
+    },
+    "short_csv_row": {
+      "exception": "DataError",
+      "message": "CSV line 2: row width does not match header",
+      "outcome": "RAISED"
+    },
+    "unknown_eligibility_only": {
+      "outcome": "RETURNED",
+      "value": {
+        "coverage": {
+          "eligibility_unknown": 1,
+          "eligible": 0,
+          "missing": 0,
+          "status": "PARTIAL",
+          "used": 0
+        },
+        "evidence": {
+          "known_non_failure_count": 0,
+          "missing_recovery_timestamp_ids": [],
+          "observed_recovery_ids": [],
+          "recovered_after_cutoff_ids": [],
+          "unknown_failure_classification_ids": [
+            "SYN-UNKNOWN"
+          ]
+        },
+        "mean": null,
+        "median": null,
+        "unit": "hours"
+      }
+    }
+  },
+  "source_git_blob_sha1": "bca1a6b315cb23fcf0641c9c0aa524bfecc4c860",
+  "source_sha256": "3d887520ebc8aac775cc46e55062aff5b20be00993b09334430b9761c61cda92"
+}

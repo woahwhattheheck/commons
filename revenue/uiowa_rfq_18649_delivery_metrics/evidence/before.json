@@ -1,0 +1,107 @@
+{
+  "authority": "SYNTHETIC_REHEARSAL_NOT_UNIVERSITY_FINDINGS",
+  "observations": {
+    "blank_notes": {
+      "outcome": "RETURNED",
+      "value": 1
+    },
+    "direct_duplicate_deployment": {
+      "outcome": "RETURNED",
+      "value": {
+        "deployment_count": 2,
+        "service": "synthetic-service",
+        "window_end_exclusive": "2026-09-15T00:00:00Z",
+        "window_start": "2026-09-01T00:00:00Z"
+      }
+    },
+    "direct_integer_boolean": {
+      "outcome": "RETURNED",
+      "value": {
+        "coverage": {
+          "eligible": 1,
+          "missing": 0,
+          "status": "COMPLETE",
+          "used": 1
+        },
+        "failed_deployments": 0,
+        "known_deployments": 1,
+        "percent": 0.0,
+        "rate": 0.0
+      }
+    },
+    "direct_negative_lead_time": {
+      "outcome": "RETURNED",
+      "value": {
+        "coverage": {
+          "eligible": 1,
+          "missing": 0,
+          "status": "COMPLETE",
+          "used": 1
+        },
+        "mean": -1.0,
+        "median": -1.0,
+        "unit": "hours"
+      }
+    },
+    "duplicate_csv_header": {
+      "outcome": "RETURNED",
+      "value": 1
+    },
+    "extra_csv_cell": {
+      "outcome": "RETURNED",
+      "value": 1
+    },
+    "known_recovery_plus_unknown_eligibility": {
+      "outcome": "RETURNED",
+      "value": {
+        "coverage": {
+          "eligible": 1,
+          "missing": 0,
+          "status": "COMPLETE",
+          "used": 1
+        },
+        "mean": 3.0,
+        "median": 3.0,
+        "unit": "hours"
+      }
+    },
+    "late_recovery_explicit_cutoff": {
+      "outcome": "UNSUPPORTED"
+    },
+    "late_recovery_retrospective": {
+      "outcome": "RETURNED",
+      "value": {
+        "coverage": {
+          "eligible": 2,
+          "missing": 0,
+          "status": "COMPLETE",
+          "used": 2
+        },
+        "mean": 183.0,
+        "median": 183.0,
+        "unit": "hours"
+      }
+    },
+    "short_csv_row": {
+      "exception": "AttributeError",
+      "message": "'NoneType' object has no attribute 'strip'",
+      "outcome": "RAISED"
+    },
+    "unknown_eligibility_only": {
+      "outcome": "RETURNED",
+      "value": {
+        "coverage": {
+          "eligible": 0,
+          "missing": 0,
+          "status": "NOT_OBSERVED",
+          "used": 0
+        },
+        "mean": null,
+        "median": null,
+        "unit": "hours"
+      }
+    }
+  },
+  "source_git_blob_sha1": "13d7a895f5785e9cc7e3a35fc10a851a468547ab",
+  "source_sha256": "ec5dfa1199af2840b666c18d275d85d47c4000f0bca4a93b4f425cd9f66bb48a"
+}
