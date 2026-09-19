@@ -1,0 +1,35 @@
+digraph roadmap {
+  rankdir=LR;
+  node [shape=box, style=rounded, fontname="Helvetica"];
+  edge [fontname="Helvetica"];
+  subgraph "cluster_0-90" {
+    label="0-90";
+    N_R_01 [label="R-01\nlevel 0"];
+    N_R_02 [label="R-02\nlevel 0"];
+    N_R_03 [label="R-03\nlevel 0"];
+  }
+  subgraph "cluster_90-180" {
+    label="90-180";
+    N_R_04 [label="R-04\nlevel 1"];
+    N_R_05 [label="R-05\nlevel 1"];
+    N_R_06 [label="R-06\nlevel 1"];
+    N_R_09 [label="R-09\nlevel 1"];
+    N_R_11 [label="R-11\nlevel 1"];
+  }
+  subgraph "cluster_180+" {
+    label="180+";
+    N_R_07 [label="R-07\nlevel 2"];
+    N_R_08 [label="R-08\nlevel 2"];
+    N_R_10 [label="R-10\nlevel 2"];
+  }
+  N_R_01 -> N_R_04;
+  N_R_02 -> N_R_05;
+  N_R_03 -> N_R_06;
+  N_R_03 -> N_R_09;
+  N_R_03 -> N_R_11;
+  N_R_04 -> N_R_07;
+  N_R_05 -> N_R_07;
+  N_R_06 -> N_R_08;
+  N_R_09 -> N_R_10;
+  N_R_11 -> N_R_10;
+}

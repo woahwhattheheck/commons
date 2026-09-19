@@ -1,0 +1,145 @@
+{
+  "roadmap_id": "RM-INCONSISTENT-v1+proposed-repairs",
+  "fiction_notice": "SYNTHETIC and deliberately inconsistent. Each item exercises one failure the checker must name precisely. Not a University roadmap.",
+  "phases": [
+    {
+      "phase_id": "0-90",
+      "order": 0,
+      "label": "0-90 days"
+    },
+    {
+      "phase_id": "90-180",
+      "order": 1,
+      "label": "90-180 days"
+    },
+    {
+      "phase_id": "180+",
+      "order": 2,
+      "label": "180+ days"
+    }
+  ],
+  "items": [
+    {
+      "item_id": "X-01",
+      "title": "Agree the shared record format",
+      "recommendation_ref": "REC-X-01",
+      "owner_group": "ESS",
+      "phase": "0-90",
+      "prerequisites": []
+    },
+    {
+      "item_id": "X-02",
+      "title": "Adopt the format in the primary queue",
+      "recommendation_ref": "REC-X-02",
+      "owner_group": "ESS",
+      "phase": "90-180",
+      "prerequisites": [
+        "X-01"
+      ]
+    },
+    {
+      "item_id": "X-03",
+      "title": "Report on adoption of the format",
+      "recommendation_ref": "REC-X-03",
+      "owner_group": "ESS",
+      "phase": "90-180",
+      "prerequisites": [
+        "X-02"
+      ]
+    },
+    {
+      "item_id": "X-04",
+      "title": "Depends on something nobody wrote down",
+      "recommendation_ref": "REC-X-04",
+      "owner_group": "RIS",
+      "phase": "90-180",
+      "prerequisites": []
+    },
+    {
+      "item_id": "X-05",
+      "title": "Waits for itself",
+      "recommendation_ref": "REC-X-05",
+      "owner_group": "RIS",
+      "phase": "180+",
+      "prerequisites": []
+    },
+    {
+      "item_id": "X-06",
+      "title": "First leg of a three-way loop",
+      "recommendation_ref": "REC-X-06",
+      "owner_group": "IAM",
+      "phase": "0-90",
+      "prerequisites": [
+        "X-07"
+      ]
+    },
+    {
+      "item_id": "X-07",
+      "title": "Second leg of a three-way loop",
+      "recommendation_ref": "REC-X-07",
+      "owner_group": "IAM",
+      "phase": "0-90",
+      "prerequisites": [
+        "X-08"
+      ]
+    },
+    {
+      "item_id": "X-08",
+      "title": "Third leg of a three-way loop",
+      "recommendation_ref": "REC-X-08",
+      "owner_group": "IAM",
+      "phase": "0-90",
+      "prerequisites": []
+    },
+    {
+      "item_id": "X-09",
+      "title": "Nobody said when this happens",
+      "recommendation_ref": "REC-X-09",
+      "owner_group": "RIS",
+      "prerequisites": []
+    },
+    {
+      "item_id": "X-10",
+      "title": "Waits for the item nobody scheduled",
+      "recommendation_ref": "REC-X-10",
+      "owner_group": "RIS",
+      "phase": "90-180",
+      "prerequisites": [
+        "X-09"
+      ]
+    },
+    {
+      "item_id": "X-11",
+      "title": "Lists the same prerequisite twice and one it already inherits",
+      "recommendation_ref": "REC-X-11",
+      "owner_group": "ESS",
+      "phase": "180+",
+      "prerequisites": [
+        "X-01",
+        "X-02",
+        "X-01"
+      ]
+    },
+    {
+      "item_id": "X-12",
+      "title": "Also waits on the shared format",
+      "recommendation_ref": "REC-X-12",
+      "owner_group": "RIS",
+      "phase": "90-180",
+      "prerequisites": [
+        "X-01"
+      ]
+    },
+    {
+      "item_id": "X-13",
+      "title": "Also waits on the shared format, in a third group",
+      "recommendation_ref": "REC-X-13",
+      "owner_group": "IAM",
+      "phase": "90-180",
+      "prerequisites": [
+        "X-01"
+      ]
+    }
+  ],
+  "proposal_notice": "PROPOSAL, NOT A DECISION. This file is the original roadmap with the mechanically safe repairs applied so the result can be re-checked. Repairs that need a planner's judgement were NOT applied, and where several cuts were equally valid one was chosen deterministically. Read the rehearsal report before adopting any of it."
+}

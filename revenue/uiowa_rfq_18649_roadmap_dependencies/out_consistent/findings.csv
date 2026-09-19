@@ -1,0 +1,10 @@
+severity,code,prerequisite_id,dependent_id,items,message,repair_ops,repairs_needing_a_planner
+open_question,shared_prerequisite,,,R-03; R-06; R-09; R-11,"Item 'R-03' is a prerequisite for 3 other items (R-06, R-09, R-11). It is a chokepoint: if it slips, all of them slip.",,
+info,schedule_slack,,,R-04,"Item 'R-04' is in '90-180'; its prerequisites would allow '0-90'. That is float, not an error - phases carry capacity and timing that the dependency graph does not know about.",,
+info,schedule_slack,,,R-05,"Item 'R-05' is in '90-180'; its prerequisites would allow '0-90'. That is float, not an error - phases carry capacity and timing that the dependency graph does not know about.",,
+info,schedule_slack,,,R-06,"Item 'R-06' is in '90-180'; its prerequisites would allow '0-90'. That is float, not an error - phases carry capacity and timing that the dependency graph does not know about.",,
+info,schedule_slack,,,R-07,"Item 'R-07' is in '180+'; its prerequisites would allow '90-180'. That is float, not an error - phases carry capacity and timing that the dependency graph does not know about.",,
+info,schedule_slack,,,R-08,"Item 'R-08' is in '180+'; its prerequisites would allow '90-180'. That is float, not an error - phases carry capacity and timing that the dependency graph does not know about.",,
+info,schedule_slack,,,R-09,"Item 'R-09' is in '90-180'; its prerequisites would allow '0-90'. That is float, not an error - phases carry capacity and timing that the dependency graph does not know about.",,
+info,schedule_slack,,,R-10,"Item 'R-10' is in '180+'; its prerequisites would allow '90-180'. That is float, not an error - phases carry capacity and timing that the dependency graph does not know about.",,
+info,schedule_slack,,,R-11,"Item 'R-11' is in '90-180'; its prerequisites would allow '0-90'. That is float, not an error - phases carry capacity and timing that the dependency graph does not know about.",,

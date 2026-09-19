@@ -1,0 +1,552 @@
+{
+  "artifact": "UIOWA-115 roadmap dependency consistency check",
+  "content_digest": "39c540bce82749859d1c1b3a2bd8d42b6d6f23ad90b1aa600d6e4d93b0341883",
+  "counts": {
+    "edges": 10,
+    "errors": 4,
+    "info": 7,
+    "items": 13,
+    "open_questions": 1,
+    "unknowns": 3
+  },
+  "edges": [
+    {
+      "dependent_id": "X-02",
+      "prerequisite_id": "X-01"
+    },
+    {
+      "dependent_id": "X-11",
+      "prerequisite_id": "X-01"
+    },
+    {
+      "dependent_id": "X-12",
+      "prerequisite_id": "X-01"
+    },
+    {
+      "dependent_id": "X-13",
+      "prerequisite_id": "X-01"
+    },
+    {
+      "dependent_id": "X-03",
+      "prerequisite_id": "X-02"
+    },
+    {
+      "dependent_id": "X-11",
+      "prerequisite_id": "X-02"
+    },
+    {
+      "dependent_id": "X-08",
+      "prerequisite_id": "X-06"
+    },
+    {
+      "dependent_id": "X-06",
+      "prerequisite_id": "X-07"
+    },
+    {
+      "dependent_id": "X-07",
+      "prerequisite_id": "X-08"
+    },
+    {
+      "dependent_id": "X-10",
+      "prerequisite_id": "X-09"
+    }
+  ],
+  "fiction_notice": "SYNTHETIC and deliberately inconsistent. Each item exercises one failure the checker must name precisely. Not a University roadmap.",
+  "findings": [
+    {
+      "code": "dependency_cycle",
+      "detail": [
+        {
+          "dependent_id": "X-08",
+          "prerequisite_id": "X-06"
+        },
+        {
+          "dependent_id": "X-06",
+          "prerequisite_id": "X-07"
+        },
+        {
+          "dependent_id": "X-07",
+          "prerequisite_id": "X-08"
+        }
+      ],
+      "items": [
+        "X-06",
+        "X-07",
+        "X-08"
+      ],
+      "message": "These 3 items depend on each other in a loop, so none of them can start: X-06 -> X-07 -> X-08. Every edge listed below is an equally valid cut - the checker will not choose which dependency is the wrong one.",
+      "repairs": [
+        {
+          "choice_group": "cycle:X-06|X-07|X-08",
+          "detail": "Remove prerequisite 'X-06' from 'X-08'.",
+          "item_id": "X-08",
+          "mechanical": true,
+          "op": "remove_prerequisite",
+          "prerequisite_id": "X-06"
+        },
+        {
+          "choice_group": "cycle:X-06|X-07|X-08",
+          "detail": "Remove prerequisite 'X-07' from 'X-06'.",
+          "item_id": "X-06",
+          "mechanical": true,
+          "op": "remove_prerequisite",
+          "prerequisite_id": "X-07"
+        },
+        {
+          "choice_group": "cycle:X-06|X-07|X-08",
+          "detail": "Remove prerequisite 'X-08' from 'X-07'.",
+          "item_id": "X-07",
+          "mechanical": true,
+          "op": "remove_prerequisite",
+          "prerequisite_id": "X-08"
+        }
+      ],
+      "severity": "error"
+    },
+    {
+      "code": "missing_prerequisite",
+      "edge": {
+        "dependent_id": "X-04",
+        "prerequisite_id": "X-99"
+      },
+      "message": "Item 'X-04' requires 'X-99', which this roadmap does not define. The reference is not treated as satisfied.",
+      "repairs": [
+        {
+          "detail": "Define 'X-99' as a roadmap item, if the dependency is real.",
+          "item_id": "X-99",
+          "mechanical": false,
+          "op": "define_item"
+        },
+        {
+          "detail": "Or remove the reference to 'X-99' from 'X-04', if it was a typo or a dropped item.",
+          "item_id": "X-04",
+          "mechanical": true,
+          "op": "remove_prerequisite",
+          "prerequisite_id": "X-99"
+        }
+      ],
+      "severity": "error"
+    },
+    {
+      "code": "phase_inversion",
+      "edge": {
+        "dependent_id": "X-03",
+        "prerequisite_id": "X-02"
+      },
+      "message": "Item 'X-03' sits in '0-90' but requires 'X-02', which cannot complete before '90-180'. No execution order satisfies this.",
+      "repairs": [
+        {
+          "detail": "Move 'X-03' to '90-180' - the earliest phase consistent with its prerequisites.",
+          "item_id": "X-03",
+          "mechanical": true,
+          "op": "set_phase",
+          "phase_id": "90-180"
+        },
+        {
+          "detail": "Or move 'X-02' to '0-90' or earlier, if that work can genuinely start sooner.",
+          "item_id": "X-02",
+          "mechanical": false,
+          "op": "set_phase",
+          "phase_id": "0-90"
+        }
+      ],
+      "severity": "error"
+    },
+    {
+      "code": "self_dependency",
+      "edge": {
+        "dependent_id": "X-05",
+        "prerequisite_id": "X-05"
+      },
+      "message": "Item 'X-05' lists itself as a prerequisite, so it can never start.",
+      "repairs": [
+        {
+          "detail": "Remove 'X-05' from its own prerequisites.",
+          "item_id": "X-05",
+          "mechanical": true,
+          "op": "remove_prerequisite",
+          "prerequisite_id": "X-05"
+        }
+      ],
+      "severity": "error"
+    },
+    {
+      "code": "feasibility_unknown",
+      "items": [
+        "X-04"
+      ],
+      "message": "Whether 'X-04' is placed consistently cannot be determined: its own prerequisite list could not be fully read or resolved. This is not the same as being placed correctly.",
+      "severity": "unknown"
+    },
+    {
+      "code": "feasibility_unknown",
+      "items": [
+        "X-10"
+      ],
+      "message": "Whether 'X-10' is placed consistently cannot be determined: something it depends on is unassigned, unresolved or caught in a loop. This is not the same as being placed correctly.",
+      "severity": "unknown"
+    },
+    {
+      "code": "unassigned_phase",
+      "items": [
+        "X-09"
+      ],
+      "message": "Item 'X-09' has no phase. It stays UNASSIGNED; the checker will not place it in the first phase or anywhere else.",
+      "repairs": [
+        {
+          "detail": "A planner must assign a phase to 'X-09'.",
+          "item_id": "X-09",
+          "mechanical": false,
+          "op": "set_phase"
+        }
+      ],
+      "severity": "unknown"
+    },
+    {
+      "code": "shared_prerequisite",
+      "items": [
+        "X-01",
+        "X-02",
+        "X-11",
+        "X-12",
+        "X-13"
+      ],
+      "message": "Item 'X-01' is a prerequisite for 4 other items (X-02, X-11, X-12, X-13). It is a chokepoint: if it slips, all of them slip.",
+      "severity": "open_question"
+    },
+    {
+      "code": "duplicate_prerequisite",
+      "edge": {
+        "dependent_id": "X-11",
+        "prerequisite_id": "X-01"
+      },
+      "message": "Item 'X-11' lists prerequisite 'X-01' more than once; the repeat was removed and reported, not silently collapsed.",
+      "severity": "info"
+    },
+    {
+      "code": "redundant_edge",
+      "edge": {
+        "dependent_id": "X-11",
+        "prerequisite_id": "X-01"
+      },
+      "message": "Item 'X-11' lists 'X-01' directly, but already reaches it through X-02. The direct edge can be removed without changing the plan.",
+      "repairs": [
+        {
+          "detail": "Optional tidy-up: remove 'X-01' from 'X-11'.",
+          "item_id": "X-11",
+          "mechanical": false,
+          "op": "remove_prerequisite",
+          "prerequisite_id": "X-01"
+        }
+      ],
+      "severity": "info"
+    },
+    {
+      "code": "schedule_slack",
+      "items": [
+        "X-02"
+      ],
+      "message": "Item 'X-02' is in '90-180'; its prerequisites would allow '0-90'. That is float, not an error - phases carry capacity and timing that the dependency graph does not know about.",
+      "severity": "info"
+    },
+    {
+      "code": "schedule_slack",
+      "items": [
+        "X-05"
+      ],
+      "message": "Item 'X-05' is in '180+'; its prerequisites would allow '0-90'. That is float, not an error - phases carry capacity and timing that the dependency graph does not know about.",
+      "severity": "info"
+    },
+    {
+      "code": "schedule_slack",
+      "items": [
+        "X-11"
+      ],
+      "message": "Item 'X-11' is in '180+'; its prerequisites would allow '90-180'. That is float, not an error - phases carry capacity and timing that the dependency graph does not know about.",
+      "severity": "info"
+    },
+    {
+      "code": "schedule_slack",
+      "items": [
+        "X-12"
+      ],
+      "message": "Item 'X-12' is in '90-180'; its prerequisites would allow '0-90'. That is float, not an error - phases carry capacity and timing that the dependency graph does not know about.",
+      "severity": "info"
+    },
+    {
+      "code": "schedule_slack",
+      "items": [
+        "X-13"
+      ],
+      "message": "Item 'X-13' is in '90-180'; its prerequisites would allow '0-90'. That is float, not an error - phases carry capacity and timing that the dependency graph does not know about.",
+      "severity": "info"
+    }
+  ],
+  "levels_undetermined": [
+    "X-04",
+    "X-06",
+    "X-07",
+    "X-08"
+  ],
+  "nodes": [
+    {
+      "dependents": [
+        "X-02",
+        "X-11",
+        "X-12",
+        "X-13"
+      ],
+      "earliest_feasible_phase": "0-90",
+      "in_cycle": false,
+      "item_id": "X-01",
+      "level": 0,
+      "owner_group": "ESS",
+      "phase": "0-90",
+      "prerequisites": [],
+      "recommendation_ref": "REC-X-01",
+      "title": "Agree the shared record format"
+    },
+    {
+      "dependents": [
+        "X-03",
+        "X-11"
+      ],
+      "earliest_feasible_phase": "0-90",
+      "in_cycle": false,
+      "item_id": "X-02",
+      "level": 1,
+      "owner_group": "ESS",
+      "phase": "90-180",
+      "prerequisites": [
+        "X-01"
+      ],
+      "recommendation_ref": "REC-X-02",
+      "title": "Adopt the format in the primary queue"
+    },
+    {
+      "dependents": [],
+      "earliest_feasible_phase": "90-180",
+      "in_cycle": false,
+      "item_id": "X-03",
+      "level": 2,
+      "owner_group": "ESS",
+      "phase": "0-90",
+      "prerequisites": [
+        "X-02"
+      ],
+      "recommendation_ref": "REC-X-03",
+      "title": "Report on adoption of the format"
+    },
+    {
+      "dependents": [],
+      "earliest_feasible_phase": "UNKNOWN",
+      "in_cycle": false,
+      "item_id": "X-04",
+      "level": "UNKNOWN",
+      "owner_group": "RIS",
+      "phase": "90-180",
+      "prerequisites": [
+        "X-99"
+      ],
+      "recommendation_ref": "REC-X-04",
+      "title": "Depends on something nobody wrote down"
+    },
+    {
+      "dependents": [],
+      "earliest_feasible_phase": "0-90",
+      "in_cycle": false,
+      "item_id": "X-05",
+      "level": 0,
+      "owner_group": "RIS",
+      "phase": "180+",
+      "prerequisites": [
+        "X-05"
+      ],
+      "recommendation_ref": "REC-X-05",
+      "title": "Waits for itself"
+    },
+    {
+      "dependents": [
+        "X-08"
+      ],
+      "earliest_feasible_phase": "UNKNOWN",
+      "in_cycle": true,
+      "item_id": "X-06",
+      "level": "UNKNOWN",
+      "owner_group": "IAM",
+      "phase": "0-90",
+      "prerequisites": [
+        "X-07"
+      ],
+      "recommendation_ref": "REC-X-06",
+      "title": "First leg of a three-way loop"
+    },
+    {
+      "dependents": [
+        "X-06"
+      ],
+      "earliest_feasible_phase": "UNKNOWN",
+      "in_cycle": true,
+      "item_id": "X-07",
+      "level": "UNKNOWN",
+      "owner_group": "IAM",
+      "phase": "0-90",
+      "prerequisites": [
+        "X-08"
+      ],
+      "recommendation_ref": "REC-X-07",
+      "title": "Second leg of a three-way loop"
+    },
+    {
+      "dependents": [
+        "X-07"
+      ],
+      "earliest_feasible_phase": "UNKNOWN",
+      "in_cycle": true,
+      "item_id": "X-08",
+      "level": "UNKNOWN",
+      "owner_group": "IAM",
+      "phase": "0-90",
+      "prerequisites": [
+        "X-06"
+      ],
+      "recommendation_ref": "REC-X-08",
+      "title": "Third leg of a three-way loop"
+    },
+    {
+      "dependents": [
+        "X-10"
+      ],
+      "earliest_feasible_phase": "0-90",
+      "in_cycle": false,
+      "item_id": "X-09",
+      "level": 0,
+      "owner_group": "RIS",
+      "phase": "UNASSIGNED",
+      "prerequisites": [],
+      "recommendation_ref": "REC-X-09",
+      "title": "Nobody said when this happens"
+    },
+    {
+      "dependents": [],
+      "earliest_feasible_phase": "UNKNOWN",
+      "in_cycle": false,
+      "item_id": "X-10",
+      "level": 1,
+      "owner_group": "RIS",
+      "phase": "90-180",
+      "prerequisites": [
+        "X-09"
+      ],
+      "recommendation_ref": "REC-X-10",
+      "title": "Waits for the item nobody scheduled"
+    },
+    {
+      "dependents": [],
+      "earliest_feasible_phase": "90-180",
+      "in_cycle": false,
+      "item_id": "X-11",
+      "level": 2,
+      "owner_group": "ESS",
+      "phase": "180+",
+      "prerequisites": [
+        "X-01",
+        "X-02"
+      ],
+      "recommendation_ref": "REC-X-11",
+      "title": "Lists the same prerequisite twice and one it already inherits"
+    },
+    {
+      "dependents": [],
+      "earliest_feasible_phase": "0-90",
+      "in_cycle": false,
+      "item_id": "X-12",
+      "level": 1,
+      "owner_group": "RIS",
+      "phase": "90-180",
+      "prerequisites": [
+        "X-01"
+      ],
+      "recommendation_ref": "REC-X-12",
+      "title": "Also waits on the shared format"
+    },
+    {
+      "dependents": [],
+      "earliest_feasible_phase": "0-90",
+      "in_cycle": false,
+      "item_id": "X-13",
+      "level": 1,
+      "owner_group": "IAM",
+      "phase": "90-180",
+      "prerequisites": [
+        "X-01"
+      ],
+      "recommendation_ref": "REC-X-13",
+      "title": "Also waits on the shared format, in a third group"
+    }
+  ],
+  "ordering_notice": "This check reports dependency LEVELS, never a single execution order. Items sharing a level have no dependency path between them and may proceed in parallel. Serialising them would be a loss of real information, not a simplification.",
+  "parallel_groups": [
+    {
+      "items": [
+        "X-01"
+      ],
+      "level": 0,
+      "phase_id": "0-90",
+      "size": 1
+    },
+    {
+      "items": [
+        "X-03"
+      ],
+      "level": 2,
+      "phase_id": "0-90",
+      "size": 1
+    },
+    {
+      "items": [
+        "X-02",
+        "X-10",
+        "X-12",
+        "X-13"
+      ],
+      "level": 1,
+      "phase_id": "90-180",
+      "size": 4
+    },
+    {
+      "items": [
+        "X-05"
+      ],
+      "level": 0,
+      "phase_id": "180+",
+      "size": 1
+    },
+    {
+      "items": [
+        "X-11"
+      ],
+      "level": 2,
+      "phase_id": "180+",
+      "size": 1
+    }
+  ],
+  "phases": [
+    {
+      "label": "0-90 days",
+      "order": 0,
+      "phase_id": "0-90"
+    },
+    {
+      "label": "90-180 days",
+      "order": 1,
+      "phase_id": "90-180"
+    },
+    {
+      "label": "180+ days",
+      "order": 2,
+      "phase_id": "180+"
+    }
+  ],
+  "roadmap_id": "RM-INCONSISTENT-v1"
+}

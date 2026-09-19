@@ -1,0 +1,16 @@
+severity,code,prerequisite_id,dependent_id,items,message,repair_ops,repairs_needing_a_planner
+error,dependency_cycle,,,X-06; X-07; X-08,"These 3 items depend on each other in a loop, so none of them can start: X-06 -> X-07 -> X-08. Every edge listed below is an equally valid cut - the checker will not choose which dependency is the wrong one.",remove_prerequisite,
+error,missing_prerequisite,X-99,X-04,,"Item 'X-04' requires 'X-99', which this roadmap does not define. The reference is not treated as satisfied.",define_item; remove_prerequisite,"Define 'X-99' as a roadmap item, if the dependency is real."
+error,phase_inversion,X-02,X-03,,"Item 'X-03' sits in '0-90' but requires 'X-02', which cannot complete before '90-180'. No execution order satisfies this.",set_phase,"Or move 'X-02' to '0-90' or earlier, if that work can genuinely start sooner."
+error,self_dependency,X-05,X-05,,"Item 'X-05' lists itself as a prerequisite, so it can never start.",remove_prerequisite,
+unknown,feasibility_unknown,,,X-04,Whether 'X-04' is placed consistently cannot be determined: its own prerequisite list could not be fully read or resolved. This is not the same as being placed correctly.,,
+unknown,feasibility_unknown,,,X-10,"Whether 'X-10' is placed consistently cannot be determined: something it depends on is unassigned, unresolved or caught in a loop. This is not the same as being placed correctly.",,
+unknown,unassigned_phase,,,X-09,Item 'X-09' has no phase. It stays UNASSIGNED; the checker will not place it in the first phase or anywhere else.,set_phase,A planner must assign a phase to 'X-09'.
+open_question,shared_prerequisite,,,X-01; X-02; X-11; X-12; X-13,"Item 'X-01' is a prerequisite for 4 other items (X-02, X-11, X-12, X-13). It is a chokepoint: if it slips, all of them slip.",,
+info,duplicate_prerequisite,X-01,X-11,,"Item 'X-11' lists prerequisite 'X-01' more than once; the repeat was removed and reported, not silently collapsed.",,
+info,redundant_edge,X-01,X-11,,"Item 'X-11' lists 'X-01' directly, but already reaches it through X-02. The direct edge can be removed without changing the plan.",remove_prerequisite,Optional tidy-up: remove 'X-01' from 'X-11'.
+info,schedule_slack,,,X-02,"Item 'X-02' is in '90-180'; its prerequisites would allow '0-90'. That is float, not an error - phases carry capacity and timing that the dependency graph does not know about.",,
+info,schedule_slack,,,X-05,"Item 'X-05' is in '180+'; its prerequisites would allow '0-90'. That is float, not an error - phases carry capacity and timing that the dependency graph does not know about.",,
+info,schedule_slack,,,X-11,"Item 'X-11' is in '180+'; its prerequisites would allow '90-180'. That is float, not an error - phases carry capacity and timing that the dependency graph does not know about.",,
+info,schedule_slack,,,X-12,"Item 'X-12' is in '90-180'; its prerequisites would allow '0-90'. That is float, not an error - phases carry capacity and timing that the dependency graph does not know about.",,
+info,schedule_slack,,,X-13,"Item 'X-13' is in '90-180'; its prerequisites would allow '0-90'. That is float, not an error - phases carry capacity and timing that the dependency graph does not know about.",,

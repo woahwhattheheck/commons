@@ -1,0 +1,40 @@
+digraph roadmap {
+  rankdir=LR;
+  node [shape=box, style=rounded, fontname="Helvetica"];
+  edge [fontname="Helvetica"];
+  subgraph "cluster_0-90" {
+    label="0-90";
+    N_X_01 [label="X-01\nlevel 0"];
+    N_X_03 [label="X-03\nlevel 2"];
+    N_X_06 [label="X-06\nlevel UNKNOWN", color="red"];
+    N_X_07 [label="X-07\nlevel UNKNOWN", color="red"];
+    N_X_08 [label="X-08\nlevel UNKNOWN", color="red"];
+  }
+  subgraph "cluster_90-180" {
+    label="90-180";
+    N_X_02 [label="X-02\nlevel 1"];
+    N_X_04 [label="X-04\nlevel UNKNOWN"];
+    N_X_10 [label="X-10\nlevel 1"];
+    N_X_12 [label="X-12\nlevel 1"];
+    N_X_13 [label="X-13\nlevel 1"];
+  }
+  subgraph "cluster_180+" {
+    label="180+";
+    N_X_05 [label="X-05\nlevel 0"];
+    N_X_11 [label="X-11\nlevel 2"];
+  }
+  subgraph "cluster_UNASSIGNED" {
+    label="UNASSIGNED";
+    N_X_09 [label="X-09\nlevel 0"];
+  }
+  N_X_01 -> N_X_02;
+  N_X_01 -> N_X_11;
+  N_X_01 -> N_X_12;
+  N_X_01 -> N_X_13;
+  N_X_02 -> N_X_03;
+  N_X_02 -> N_X_11;
+  N_X_06 -> N_X_08 [color="red"];
+  N_X_07 -> N_X_06 [color="red"];
+  N_X_08 -> N_X_07 [color="red"];
+  N_X_09 -> N_X_10;
+}

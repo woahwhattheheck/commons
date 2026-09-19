@@ -1,0 +1,24 @@
+{
+  "roadmap_id": "RM-CONSISTENT-v1",
+  "fiction_notice": "SYNTHETIC. Every recommendation, phase placement and prerequisite here is FICTION written to exercise the checker. Nothing is a University roadmap, a University recommendation, or a University finding.",
+  "phases": [
+    {"phase_id": "0-90", "order": 0, "label": "0-90 days"},
+    {"phase_id": "90-180", "order": 1, "label": "90-180 days"},
+    {"phase_id": "180+", "order": 2, "label": "180+ days"}
+  ],
+  "items": [
+    {"item_id": "R-01", "title": "Establish a written intake path for new requests", "recommendation_ref": "REC-S-101", "owner_group": "ESS", "phase": "0-90", "prerequisites": []},
+    {"item_id": "R-02", "title": "Publish the service ownership register", "recommendation_ref": "REC-S-102", "owner_group": "RIS", "phase": "0-90", "prerequisites": []},
+    {"item_id": "R-03", "title": "Agree a shared change-record format", "recommendation_ref": "REC-S-103", "owner_group": "IAM", "phase": "0-90", "prerequisites": []},
+
+    {"item_id": "R-04", "title": "Route incoming requests through the intake path", "recommendation_ref": "REC-S-104", "owner_group": "ESS", "phase": "90-180", "prerequisites": ["R-01"]},
+    {"item_id": "R-05", "title": "Assign an owner to every alert rule", "recommendation_ref": "REC-S-105", "owner_group": "RIS", "phase": "90-180", "prerequisites": ["R-02"]},
+    {"item_id": "R-06", "title": "Record changes in the shared format in ESS", "recommendation_ref": "REC-S-106", "owner_group": "ESS", "phase": "90-180", "prerequisites": ["R-03"]},
+    {"item_id": "R-09", "title": "Record changes in the shared format in RIS", "recommendation_ref": "REC-S-109", "owner_group": "RIS", "phase": "90-180", "prerequisites": ["R-03"]},
+    {"item_id": "R-11", "title": "Record changes in the shared format in IAM", "recommendation_ref": "REC-S-111", "owner_group": "IAM", "phase": "90-180", "prerequisites": ["R-03"]},
+
+    {"item_id": "R-07", "title": "Report on intake and ownership together", "recommendation_ref": "REC-S-107", "owner_group": "ESS", "phase": "180+", "prerequisites": ["R-04", "R-05"]},
+    {"item_id": "R-08", "title": "Review change records against incident timelines", "recommendation_ref": "REC-S-108", "owner_group": "ESS", "phase": "180+", "prerequisites": ["R-06"]},
+    {"item_id": "R-10", "title": "Cross-group change review", "recommendation_ref": "REC-S-110", "owner_group": "IAM", "phase": "180+", "prerequisites": ["R-09", "R-11"]}
+  ]
+}

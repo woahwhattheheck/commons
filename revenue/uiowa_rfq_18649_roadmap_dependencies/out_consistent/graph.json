@@ -1,0 +1,356 @@
+{
+  "artifact": "UIOWA-115 roadmap dependency consistency check",
+  "content_digest": "bd046e78095113dad303cd93ae9b701fce85a1f006ce95e09950f4bf95eed205",
+  "counts": {
+    "edges": 10,
+    "errors": 0,
+    "info": 8,
+    "items": 11,
+    "open_questions": 1,
+    "unknowns": 0
+  },
+  "edges": [
+    {
+      "dependent_id": "R-04",
+      "prerequisite_id": "R-01"
+    },
+    {
+      "dependent_id": "R-05",
+      "prerequisite_id": "R-02"
+    },
+    {
+      "dependent_id": "R-06",
+      "prerequisite_id": "R-03"
+    },
+    {
+      "dependent_id": "R-09",
+      "prerequisite_id": "R-03"
+    },
+    {
+      "dependent_id": "R-11",
+      "prerequisite_id": "R-03"
+    },
+    {
+      "dependent_id": "R-07",
+      "prerequisite_id": "R-04"
+    },
+    {
+      "dependent_id": "R-07",
+      "prerequisite_id": "R-05"
+    },
+    {
+      "dependent_id": "R-08",
+      "prerequisite_id": "R-06"
+    },
+    {
+      "dependent_id": "R-10",
+      "prerequisite_id": "R-09"
+    },
+    {
+      "dependent_id": "R-10",
+      "prerequisite_id": "R-11"
+    }
+  ],
+  "fiction_notice": "SYNTHETIC. Every recommendation, phase placement and prerequisite here is FICTION written to exercise the checker. Nothing is a University roadmap, a University recommendation, or a University finding.",
+  "findings": [
+    {
+      "code": "shared_prerequisite",
+      "items": [
+        "R-03",
+        "R-06",
+        "R-09",
+        "R-11"
+      ],
+      "message": "Item 'R-03' is a prerequisite for 3 other items (R-06, R-09, R-11). It is a chokepoint: if it slips, all of them slip.",
+      "severity": "open_question"
+    },
+    {
+      "code": "schedule_slack",
+      "items": [
+        "R-04"
+      ],
+      "message": "Item 'R-04' is in '90-180'; its prerequisites would allow '0-90'. That is float, not an error - phases carry capacity and timing that the dependency graph does not know about.",
+      "severity": "info"
+    },
+    {
+      "code": "schedule_slack",
+      "items": [
+        "R-05"
+      ],
+      "message": "Item 'R-05' is in '90-180'; its prerequisites would allow '0-90'. That is float, not an error - phases carry capacity and timing that the dependency graph does not know about.",
+      "severity": "info"
+    },
+    {
+      "code": "schedule_slack",
+      "items": [
+        "R-06"
+      ],
+      "message": "Item 'R-06' is in '90-180'; its prerequisites would allow '0-90'. That is float, not an error - phases carry capacity and timing that the dependency graph does not know about.",
+      "severity": "info"
+    },
+    {
+      "code": "schedule_slack",
+      "items": [
+        "R-07"
+      ],
+      "message": "Item 'R-07' is in '180+'; its prerequisites would allow '90-180'. That is float, not an error - phases carry capacity and timing that the dependency graph does not know about.",
+      "severity": "info"
+    },
+    {
+      "code": "schedule_slack",
+      "items": [
+        "R-08"
+      ],
+      "message": "Item 'R-08' is in '180+'; its prerequisites would allow '90-180'. That is float, not an error - phases carry capacity and timing that the dependency graph does not know about.",
+      "severity": "info"
+    },
+    {
+      "code": "schedule_slack",
+      "items": [
+        "R-09"
+      ],
+      "message": "Item 'R-09' is in '90-180'; its prerequisites would allow '0-90'. That is float, not an error - phases carry capacity and timing that the dependency graph does not know about.",
+      "severity": "info"
+    },
+    {
+      "code": "schedule_slack",
+      "items": [
+        "R-10"
+      ],
+      "message": "Item 'R-10' is in '180+'; its prerequisites would allow '90-180'. That is float, not an error - phases carry capacity and timing that the dependency graph does not know about.",
+      "severity": "info"
+    },
+    {
+      "code": "schedule_slack",
+      "items": [
+        "R-11"
+      ],
+      "message": "Item 'R-11' is in '90-180'; its prerequisites would allow '0-90'. That is float, not an error - phases carry capacity and timing that the dependency graph does not know about.",
+      "severity": "info"
+    }
+  ],
+  "levels_undetermined": [],
+  "nodes": [
+    {
+      "dependents": [
+        "R-04"
+      ],
+      "earliest_feasible_phase": "0-90",
+      "in_cycle": false,
+      "item_id": "R-01",
+      "level": 0,
+      "owner_group": "ESS",
+      "phase": "0-90",
+      "prerequisites": [],
+      "recommendation_ref": "REC-S-101",
+      "title": "Establish a written intake path for new requests"
+    },
+    {
+      "dependents": [
+        "R-05"
+      ],
+      "earliest_feasible_phase": "0-90",
+      "in_cycle": false,
+      "item_id": "R-02",
+      "level": 0,
+      "owner_group": "RIS",
+      "phase": "0-90",
+      "prerequisites": [],
+      "recommendation_ref": "REC-S-102",
+      "title": "Publish the service ownership register"
+    },
+    {
+      "dependents": [
+        "R-06",
+        "R-09",
+        "R-11"
+      ],
+      "earliest_feasible_phase": "0-90",
+      "in_cycle": false,
+      "item_id": "R-03",
+      "level": 0,
+      "owner_group": "IAM",
+      "phase": "0-90",
+      "prerequisites": [],
+      "recommendation_ref": "REC-S-103",
+      "title": "Agree a shared change-record format"
+    },
+    {
+      "dependents": [
+        "R-07"
+      ],
+      "earliest_feasible_phase": "0-90",
+      "in_cycle": false,
+      "item_id": "R-04",
+      "level": 1,
+      "owner_group": "ESS",
+      "phase": "90-180",
+      "prerequisites": [
+        "R-01"
+      ],
+      "recommendation_ref": "REC-S-104",
+      "title": "Route incoming requests through the intake path"
+    },
+    {
+      "dependents": [
+        "R-07"
+      ],
+      "earliest_feasible_phase": "0-90",
+      "in_cycle": false,
+      "item_id": "R-05",
+      "level": 1,
+      "owner_group": "RIS",
+      "phase": "90-180",
+      "prerequisites": [
+        "R-02"
+      ],
+      "recommendation_ref": "REC-S-105",
+      "title": "Assign an owner to every alert rule"
+    },
+    {
+      "dependents": [
+        "R-08"
+      ],
+      "earliest_feasible_phase": "0-90",
+      "in_cycle": false,
+      "item_id": "R-06",
+      "level": 1,
+      "owner_group": "ESS",
+      "phase": "90-180",
+      "prerequisites": [
+        "R-03"
+      ],
+      "recommendation_ref": "REC-S-106",
+      "title": "Record changes in the shared format in ESS"
+    },
+    {
+      "dependents": [],
+      "earliest_feasible_phase": "90-180",
+      "in_cycle": false,
+      "item_id": "R-07",
+      "level": 2,
+      "owner_group": "ESS",
+      "phase": "180+",
+      "prerequisites": [
+        "R-04",
+        "R-05"
+      ],
+      "recommendation_ref": "REC-S-107",
+      "title": "Report on intake and ownership together"
+    },
+    {
+      "dependents": [],
+      "earliest_feasible_phase": "90-180",
+      "in_cycle": false,
+      "item_id": "R-08",
+      "level": 2,
+      "owner_group": "ESS",
+      "phase": "180+",
+      "prerequisites": [
+        "R-06"
+      ],
+      "recommendation_ref": "REC-S-108",
+      "title": "Review change records against incident timelines"
+    },
+    {
+      "dependents": [
+        "R-10"
+      ],
+      "earliest_feasible_phase": "0-90",
+      "in_cycle": false,
+      "item_id": "R-09",
+      "level": 1,
+      "owner_group": "RIS",
+      "phase": "90-180",
+      "prerequisites": [
+        "R-03"
+      ],
+      "recommendation_ref": "REC-S-109",
+      "title": "Record changes in the shared format in RIS"
+    },
+    {
+      "dependents": [],
+      "earliest_feasible_phase": "90-180",
+      "in_cycle": false,
+      "item_id": "R-10",
+      "level": 2,
+      "owner_group": "IAM",
+      "phase": "180+",
+      "prerequisites": [
+        "R-09",
+        "R-11"
+      ],
+      "recommendation_ref": "REC-S-110",
+      "title": "Cross-group change review"
+    },
+    {
+      "dependents": [
+        "R-10"
+      ],
+      "earliest_feasible_phase": "0-90",
+      "in_cycle": false,
+      "item_id": "R-11",
+      "level": 1,
+      "owner_group": "IAM",
+      "phase": "90-180",
+      "prerequisites": [
+        "R-03"
+      ],
+      "recommendation_ref": "REC-S-111",
+      "title": "Record changes in the shared format in IAM"
+    }
+  ],
+  "ordering_notice": "This check reports dependency LEVELS, never a single execution order. Items sharing a level have no dependency path between them and may proceed in parallel. Serialising them would be a loss of real information, not a simplification.",
+  "parallel_groups": [
+    {
+      "items": [
+        "R-01",
+        "R-02",
+        "R-03"
+      ],
+      "level": 0,
+      "phase_id": "0-90",
+      "size": 3
+    },
+    {
+      "items": [
+        "R-04",
+        "R-05",
+        "R-06",
+        "R-09",
+        "R-11"
+      ],
+      "level": 1,
+      "phase_id": "90-180",
+      "size": 5
+    },
+    {
+      "items": [
+        "R-07",
+        "R-08",
+        "R-10"
+      ],
+      "level": 2,
+      "phase_id": "180+",
+      "size": 3
+    }
+  ],
+  "phases": [
+    {
+      "label": "0-90 days",
+      "order": 0,
+      "phase_id": "0-90"
+    },
+    {
+      "label": "90-180 days",
+      "order": 1,
+      "phase_id": "90-180"
+    },
+    {
+      "label": "180+ days",
+      "order": 2,
+      "phase_id": "180+"
+    }
+  ],
+  "roadmap_id": "RM-CONSISTENT-v1"
+}

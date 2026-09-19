@@ -1,0 +1,18 @@
+{
+  "roadmap_id": "RM-HOSTILE-v1",
+  "fiction_notice": "SYNTHETIC and deliberately malformed. Each record exercises one rejection path. Not an assessment of anything.",
+  "phases": [
+    {"phase_id": "0-90", "order": 0, "label": "0-90 days"},
+    {"phase_id": "90-180", "order": 1, "label": "90-180 days"},
+    {"phase_id": "later", "order": 1, "label": "Duplicate order value"}
+  ],
+  "items": [
+    {"item_id": "H-01", "title": "Fine", "phase": "0-90", "prerequisites": []},
+    {"title": "No identifier at all", "phase": "0-90", "prerequisites": []},
+    {"item_id": "H-01", "title": "Same identifier as the first", "phase": "90-180", "prerequisites": []},
+    {"item_id": "H-03", "title": "Prerequisites supplied as a string", "phase": "90-180", "prerequisites": "H-01"},
+    {"item_id": "H-04", "title": "Phase that the phase list does not define", "phase": "someday", "prerequisites": ["H-01"]},
+    {"item_id": "H-05", "title": "Prerequisite entry that is not a string", "phase": "90-180", "prerequisites": ["H-01", 7]},
+    {"item_id": "H-06", "title": "Phase is present but blank", "phase": "   ", "prerequisites": []}
+  ]
+}
