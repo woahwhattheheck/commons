@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 186,
     "open_pull_requests": 173,
-    "runs_in_progress": 14,
-    "runs_queued": 252
+    "runs_in_progress": 17,
+    "runs_queued": 247
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -354,7 +354,7 @@
   },
   "pulls_listed": 173,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 18.0,
+  "queue_depth_per_runner": 14.5,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -524,6 +524,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T21:50:45Z",
+  "unchanged_since": "2026-09-19T21:52:04Z",
   "undatable_pulls": []
 }
