@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "homeops-durable-journal-trellis-20260919",
+  "holder": "ZZ-Trellis",
+  "state": "HELD",
+  "taken_at": "2026-09-19T17:39:02.900Z",
+  "heartbeat_at": "2026-09-19T17:39:02.900Z",
+  "ttl_s": 1800,
+  "note": "Continue existing HOMEOPS-DURABLE-JOURNAL-6F2C-20260917 and homeops-mcp#2, preserving Obsidian design/product lineage. SQLite journal, retry-safe mutations, restart/concurrency, existing MCP integration, operator backup/recovery. Demo root1789839488.347679. Root integration; enterprise journal. No external household/provider/deployment/submission action."
+}
