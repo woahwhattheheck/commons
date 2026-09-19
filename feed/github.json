@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 189,
     "open_pull_requests": 170,
-    "runs_in_progress": 18,
-    "runs_queued": 1239
+    "runs_in_progress": 13,
+    "runs_queued": 1235
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -68,14 +68,14 @@
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa-036-093-nacre8d2f",
-      "created_at": "2026-09-19T16:22:29Z",
+      "base": "swarm/zz-lantern-8j2q/uiowa114-delivery-20260919",
+      "branch": "swarm/zz-lattice/uiowa114-export-publication-20260919",
+      "created_at": "2026-09-19T16:25:24Z",
       "draft": false,
-      "head_sha": "f3d94e5822a5d99f37902557342b32de9f13df73",
-      "number": 16448,
-      "title": "UIOWA-104: recover citation resolver and add finding-to-source graph",
-      "updated_at": "2026-09-19T16:22:29Z"
+      "head_sha": "1413886400e3af9a6348e1db3c1f71c377b1e4a3",
+      "number": 16450,
+      "title": "UIOWA-114: preserve prior exports and retain full 93-test execution",
+      "updated_at": "2026-09-19T16:25:24Z"
     },
     {
       "author": "woahwhattheheck",
@@ -86,7 +86,7 @@
       "head_sha": "4f475618e58dac673948cf60ced73b04de0e427f",
       "number": 16444,
       "title": "Iowa workbench: prove rejected final rows cannot partially replace reviews",
-      "updated_at": "2026-09-19T16:19:45Z"
+      "updated_at": "2026-09-19T16:29:52Z"
     },
     {
       "author": "woahwhattheheck",
@@ -149,10 +149,10 @@
       "branch": "swarm/zz-kestrel-x6j4-uiowa033-recovery-20260919",
       "created_at": "2026-09-19T16:02:24Z",
       "draft": false,
-      "head_sha": "b0cd8c8e318c655793bbab399d8e7b7d1cd93bae",
+      "head_sha": "eb96ee0c21665e268740274208472745b95b6a75",
       "number": 16434,
       "title": "UIOWA-033 recovery: complete lineage tool, missing-terminal repair and seven-case rehearsal",
-      "updated_at": "2026-09-19T16:18:24Z"
+      "updated_at": "2026-09-19T16:29:15Z"
     },
     {
       "author": "woahwhattheheck",
@@ -192,7 +192,7 @@
     "15721": "f691d4d452180f1df152a4b504b730fa4854f000",
     "15724": "d281fe366864f16b72f2e0de4f2ca8de0c882285",
     "15730": "8efdd09880cc6d37de5122d930091eb90c1409ee",
-    "15731": "6217f11515fdd562b29b20e951a35ad964fc6f7c",
+    "15731": "c5cb49ea087f6884ea21ecdad159447927a3d36e",
     "15732": "b229fa33e3ac899010b105d1d3c01c727d6062b7",
     "15751": "b87f58434b653ee8bed28b8c85bbe3eb49d95905",
     "15756": "a4421fda4c77dd988fd2ff75d8d07e15f13d5f8c",
@@ -226,7 +226,7 @@
     "15970": "7e7e8af26d481f78de8ecad7e525a43c1a338b10",
     "16012": "a08d73c13394cf6f1719befdb168065ec94381c8",
     "16015": "5c4e04aeccb9a02035cf0775750669180dde5521",
-    "16047": "1030447aa336a796a8e6adc10e1f13dd8cf7574f",
+    "16047": "1152ccc37175653f4c4a804a98fb82f0b3fc54dd",
     "16070": "03f77b2bfec02442b59e140fbde2a325a6dc2be3",
     "16073": "f56b8aa89b21ccd646c0b6bcc8de238b549d8ded",
     "16081": "7d5f250e6fac05b5d3e3a39022260e10f3329c82",
@@ -340,19 +340,41 @@
     "16429": "7b7963f774277644375f1e967163debbf85bffbd",
     "16431": "f6bd5e0731a84db94e4978a62efe973858549f97",
     "16432": "cce7b5f2867dacfb8552709f1d3dbfec917b8970",
-    "16434": "b0cd8c8e318c655793bbab399d8e7b7d1cd93bae",
+    "16434": "eb96ee0c21665e268740274208472745b95b6a75",
     "16435": "12f3e9197ac439095e4951e19e787430b5dd631d",
     "16436": "9f7d99310782196a80601e50169c28b53696f60c",
     "16438": "82be8db3d9763c6b3f3d21a5c1be3d24bbde8dbd",
     "16440": "dac4d080d49cf5fcd80b974504154a5ada21bd7f",
     "16441": "e0f55b007196beae660a9cdd27639d88070cd391",
     "16444": "4f475618e58dac673948cf60ced73b04de0e427f",
-    "16448": "f3d94e5822a5d99f37902557342b32de9f13df73"
+    "16450": "1413886400e3af9a6348e1db3c1f71c377b1e4a3"
   },
   "pulls_listed": 170,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 68.8,
+  "queue_depth_per_runner": 95.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/uiowa-036-093-nacre8d2f",
+      "closed_at": "2026-09-19T16:28:29Z",
+      "head_sha": "f3d94e5822a5d99f37902557342b32de9f13df73",
+      "merged_at": "2026-09-19T16:28:29Z",
+      "number": 16448,
+      "state": "MERGED",
+      "title": "UIOWA-104: recover citation resolver and add finding-to-source graph"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-kestrel-x6j4-uiowa033-operator-guide-20260919",
+      "closed_at": "2026-09-19T16:25:55Z",
+      "head_sha": "8b43d7ba54d6b7376b85efe3f401ccf4ca131e76",
+      "merged_at": "2026-09-19T16:25:55Z",
+      "number": 16449,
+      "state": "MERGED",
+      "title": "UIOWA-033: publish the complete evidence-arrival operator guide"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -495,32 +517,10 @@
       "number": 16420,
       "state": "MERGED",
       "title": "UIOWA-032: exercised PDF-error operator guide"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/zz-kestrel6d9fr3-uiowa108-output-donor",
-      "closed_at": "2026-09-19T15:50:45Z",
-      "head_sha": "7c69f5a029e0e21c40d99c9ffc050ee04eb3b162",
-      "merged_at": "2026-09-19T15:50:45Z",
-      "number": 16417,
-      "state": "MERGED",
-      "title": "UIOWA-108: retain non-destructive output repair and independent replay"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/zz-basalt-v3l6-uiowa071-readout-20260919",
-      "closed_at": "2026-09-19T15:48:36Z",
-      "head_sha": "f3786bdc32b901fb94f1ea693dd29c4720a8e7d8",
-      "merged_at": "2026-09-19T15:48:36Z",
-      "number": 16415,
-      "state": "MERGED",
-      "title": "UIOWA-071: publish the executed evidence-change operator walkthrough"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T16:24:56Z",
+  "unchanged_since": "2026-09-19T16:30:13Z",
   "undatable_pulls": []
 }
