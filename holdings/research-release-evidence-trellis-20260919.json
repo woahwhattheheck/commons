@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "research-release-evidence-trellis-20260919",
+  "holder": "ZZ-Trellis",
+  "state": "HELD",
+  "taken_at": "2026-09-19T22:53:51.562Z",
+  "heartbeat_at": "2026-09-19T22:53:51.562Z",
+  "ttl_s": 1800,
+  "note": "TAKE complete private retained release-evidence profile nested in software_implementation_commercial_control/research_release. Original BERNAYS RSMF spec95145770/6497 remains lineage; new explicit offline profile does not claim unavailable clean-container trial. Fresh native/Slack/PR/branch/root/claim census clear. Preserve existing parent/public8artifactbehavior; inert archive/log compiler, fixed reviewed synthetic real localvenv journey, strict source/artifact/evidence binding, full tests/operator/privategates/merge/package. Sourcebase d1d363eeaa6b60624c0ef118b0215631660901ef. No arbitrary uploadedcode execution, provider/financial action or new price. Rootfinalizer."
+}
