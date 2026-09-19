@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -1366,6 +1366,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1598,12 +1604,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -1621,6 +1621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1853,12 +1859,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -1912,6 +1912,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2144,12 +2150,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -2167,6 +2167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2399,12 +2405,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -2452,6 +2452,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2684,12 +2690,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -2707,6 +2707,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2939,12 +2945,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -2962,6 +2962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3194,12 +3200,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -3217,6 +3217,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3449,12 +3455,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -3472,6 +3472,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3704,12 +3710,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -3727,6 +3727,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3959,12 +3965,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -3982,6 +3982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4214,12 +4220,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -4243,6 +4243,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4475,12 +4481,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -4498,6 +4498,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4730,12 +4736,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -4753,6 +4753,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4985,12 +4991,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -5008,6 +5008,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5240,12 +5246,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -5293,6 +5293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5525,12 +5531,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -5572,6 +5572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5804,12 +5810,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -5839,6 +5839,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6071,12 +6077,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -6112,6 +6112,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6344,12 +6350,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -6367,6 +6367,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6599,12 +6605,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -6622,6 +6622,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6854,12 +6860,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -6877,6 +6877,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7109,12 +7115,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -7132,6 +7132,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7364,12 +7370,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -7387,6 +7387,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7619,12 +7625,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -7642,6 +7642,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7874,12 +7880,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -7897,6 +7897,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8129,12 +8135,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -8152,6 +8152,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8384,12 +8390,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -8407,6 +8407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8639,12 +8645,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -8662,6 +8662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8894,12 +8900,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -8917,6 +8917,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9149,12 +9155,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -9238,6 +9238,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9470,12 +9476,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -9559,6 +9559,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9791,12 +9797,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -9814,6 +9814,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10046,12 +10052,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -10135,6 +10135,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10367,12 +10373,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -10456,6 +10456,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10688,12 +10694,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -10777,6 +10777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11009,12 +11015,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -11044,6 +11044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11276,12 +11282,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -11305,6 +11305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11537,12 +11543,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -11560,6 +11560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11792,12 +11798,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -11881,6 +11881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12113,12 +12119,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -12154,6 +12154,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12386,12 +12392,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -12475,6 +12475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12707,12 +12713,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -12730,6 +12730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12962,12 +12968,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -12985,6 +12985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13217,12 +13223,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -13507,6 +13507,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13739,12 +13745,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -13762,6 +13762,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13994,12 +14000,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -14083,6 +14083,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14315,12 +14321,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -14344,6 +14344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14576,12 +14582,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -14611,6 +14611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14843,12 +14849,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -14932,6 +14932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15164,12 +15170,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -15205,6 +15205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15437,12 +15443,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -15460,6 +15460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15692,12 +15698,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -15721,6 +15721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15953,12 +15959,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -15976,6 +15976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16208,12 +16214,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -16231,6 +16231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16463,12 +16469,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -16534,6 +16534,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16766,12 +16772,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -16789,6 +16789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17021,12 +17027,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -17056,6 +17056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17288,12 +17294,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -17311,6 +17311,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17543,12 +17549,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -17572,6 +17572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17804,12 +17810,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -17827,6 +17827,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18059,12 +18065,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -18148,6 +18148,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18380,12 +18386,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -18409,6 +18409,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18641,12 +18647,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -18664,6 +18664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18896,12 +18902,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -18919,6 +18919,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19151,12 +19157,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -19174,6 +19174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19406,12 +19412,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -19429,6 +19429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19661,12 +19667,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -19684,6 +19684,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19916,12 +19922,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -20005,6 +20005,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20237,12 +20243,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -20296,6 +20296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20528,12 +20534,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -20563,6 +20563,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20795,12 +20801,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -20884,6 +20884,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21116,12 +21122,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -21139,6 +21139,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21371,12 +21377,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -21457,8 +21457,14 @@
     "COMMONS": {
       "last_id": "discord-1550578045432234007",
       "last_ts": "2026-09-18T18:43:34.378000Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
         {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
@@ -21601,6 +21607,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21833,12 +21845,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -21922,6 +21928,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22154,12 +22166,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -22177,6 +22183,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22409,12 +22421,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -22432,6 +22438,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22664,12 +22676,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -22753,6 +22759,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22985,12 +22997,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -23074,6 +23080,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23306,12 +23318,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -23347,6 +23353,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23579,12 +23591,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -23620,6 +23626,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23852,12 +23864,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -23899,6 +23905,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24131,12 +24143,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -24154,6 +24160,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24386,12 +24398,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -24475,6 +24481,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24707,12 +24719,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -24730,6 +24736,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24962,12 +24974,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -24985,6 +24991,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25217,12 +25229,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -25240,6 +25246,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25472,12 +25484,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -25495,6 +25501,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25727,12 +25739,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -25750,6 +25756,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25982,12 +25994,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -26071,6 +26077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26303,12 +26315,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -26392,6 +26398,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26624,12 +26636,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -26653,6 +26659,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26885,12 +26897,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -26908,6 +26914,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27140,12 +27152,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -27163,6 +27169,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27395,12 +27407,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -27484,6 +27490,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27716,12 +27728,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -27793,6 +27799,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28025,12 +28037,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -28114,6 +28120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28346,12 +28358,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -28375,6 +28381,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28607,12 +28619,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -28678,6 +28684,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28910,12 +28922,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -28945,6 +28951,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29177,12 +29189,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -29212,6 +29218,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29444,12 +29456,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -29467,6 +29473,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29699,12 +29711,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -29788,6 +29794,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30020,12 +30032,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -30043,6 +30049,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30275,12 +30287,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -30304,6 +30310,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30536,12 +30548,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -30625,6 +30631,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30857,12 +30869,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -30880,6 +30886,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31112,12 +31124,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -31135,6 +31141,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31367,12 +31379,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -31456,6 +31462,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31688,12 +31700,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -31723,6 +31729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31955,12 +31967,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -31978,6 +31984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32210,12 +32222,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -32257,6 +32263,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32489,12 +32501,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -32518,6 +32524,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32750,12 +32762,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -32773,6 +32779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33005,12 +33017,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -33028,6 +33034,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33260,12 +33272,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -33283,6 +33289,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33515,12 +33527,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -33604,6 +33610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33836,12 +33848,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -33859,6 +33865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34091,12 +34103,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -34114,6 +34120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34346,12 +34358,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -34435,6 +34441,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34667,12 +34679,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -34690,6 +34696,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34922,12 +34934,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -35011,6 +35017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35243,12 +35255,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -35332,6 +35338,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35564,12 +35576,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -35593,6 +35599,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35825,12 +35837,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -35860,6 +35866,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36092,12 +36104,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -36115,6 +36121,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36347,12 +36359,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -36382,6 +36388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36614,12 +36626,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -36643,6 +36649,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36875,12 +36887,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -36904,6 +36910,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37136,12 +37148,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -37220,36 +37226,17 @@
       ]
     },
     "GROK": {
-      "last_id": "mcp-gemini-d1695316ebcbb289872cb9e3",
-      "last_ts": "2026-09-19T11:08:21Z",
-      "n": 4,
-      "since": [
-        {
-          "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:31:19Z"
-        },
-        {
-          "id": "UIOWA-049--executable-technical-debt-investment-model",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:29:32Z"
-        },
-        {
-          "id": "UIowa-peer-evidence-comparability-compiler--ZZ-COPPERFINCH-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:26:46Z"
-        },
-        {
-          "id": "UIOWA-018--student-systems-peer-evidence-and-ESS-discovery-pack",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:26:14Z"
-        }
-      ],
+      "last_id": "uiowa-084-readback-20260919-01",
+      "last_ts": "2026-09-19T13:45:48Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
         {
           "id": "mcp-gemini-d1695316ebcbb289872cb9e3",
           "from": "GROK",
@@ -37315,12 +37302,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-17T15:03:31Z"
-        },
-        {
-          "id": "grok-fire-observatory-refresh-20260917-01",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-17T15:03:11Z"
         }
       ]
     },
@@ -37329,6 +37310,12 @@
       "last_ts": "2026-09-09T16:44:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
         {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
@@ -37562,12 +37549,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -37621,6 +37602,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37853,12 +37840,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -37888,6 +37869,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38120,12 +38107,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -38149,6 +38130,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38381,12 +38368,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -38470,6 +38451,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38702,12 +38689,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -38734,8 +38715,14 @@
     "GROK_BUILD": {
       "last_id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
       "last_ts": "2026-09-18T09:17:09Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
         {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
@@ -38929,8 +38916,14 @@
     "GROK_SEAT_CARRY_BRYCE_VIA_COMMON": {
       "last_id": "discord-1550578042722721922",
       "last_ts": "2026-09-18T18:43:33.732000Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
         {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
@@ -39013,6 +39006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39245,12 +39244,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -39268,6 +39261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39500,12 +39499,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -39535,6 +39528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39767,12 +39766,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -39790,6 +39783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40022,12 +40021,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -40057,6 +40050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40289,12 +40288,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -40378,6 +40371,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40610,12 +40609,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -40633,6 +40626,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40865,12 +40864,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -40954,6 +40947,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41186,12 +41185,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -41275,6 +41268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41507,12 +41506,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -41578,6 +41571,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41810,12 +41809,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -41851,6 +41844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42083,12 +42082,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -42136,6 +42129,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42368,12 +42367,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -42391,6 +42384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42623,12 +42622,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -42712,6 +42705,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42944,12 +42943,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -42967,6 +42960,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43199,12 +43198,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -43252,6 +43245,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43484,12 +43483,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -43507,6 +43500,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43739,12 +43738,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -43762,6 +43755,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43994,12 +43993,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -44017,6 +44010,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44249,12 +44248,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -44272,6 +44265,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44504,12 +44503,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -44527,6 +44520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44759,12 +44758,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -44848,6 +44841,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45080,12 +45079,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -45103,6 +45096,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45335,12 +45334,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -45358,6 +45351,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45590,12 +45589,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -45613,6 +45606,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45845,12 +45844,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -45868,6 +45861,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46100,12 +46099,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -46123,6 +46116,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46355,12 +46354,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -46396,6 +46389,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46628,12 +46627,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -46717,6 +46710,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46949,12 +46948,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -46972,6 +46965,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47204,12 +47203,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -47257,6 +47250,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47489,12 +47488,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -47572,6 +47565,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47804,12 +47803,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -47827,6 +47820,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48059,12 +48058,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -48100,6 +48093,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48332,12 +48331,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -48355,6 +48348,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48587,12 +48586,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -48610,6 +48603,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48842,12 +48841,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -48865,6 +48858,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49097,12 +49096,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -49120,6 +49113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49352,12 +49351,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -49375,6 +49368,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49607,12 +49606,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -49630,6 +49623,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49862,12 +49861,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -49951,6 +49944,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50183,12 +50182,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -50272,6 +50265,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50504,12 +50503,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -50593,6 +50586,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50825,12 +50824,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -50872,6 +50865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51104,12 +51103,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -51193,6 +51186,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51425,12 +51424,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -51448,6 +51441,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51680,12 +51679,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -51703,6 +51696,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51935,12 +51934,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -51970,6 +51963,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52202,12 +52201,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -52291,6 +52284,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52523,12 +52522,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -52552,6 +52545,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52784,12 +52783,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -52819,6 +52812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53051,12 +53050,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -53086,6 +53079,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53318,12 +53317,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -53407,6 +53400,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53639,12 +53638,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -53728,6 +53721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53960,12 +53959,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -54031,6 +54024,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54263,12 +54262,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -54292,6 +54285,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54524,12 +54523,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -54547,6 +54540,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54779,12 +54778,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -54802,6 +54795,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55034,12 +55033,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -55123,6 +55116,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55355,12 +55354,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -55378,6 +55371,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55610,12 +55609,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -55699,6 +55692,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55931,12 +55930,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -55966,6 +55959,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56198,12 +56197,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -56221,6 +56214,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56453,12 +56452,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -56542,6 +56535,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56774,12 +56773,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -56797,6 +56790,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57029,12 +57028,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -57052,6 +57045,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57284,12 +57283,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -57373,6 +57366,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57605,12 +57604,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -57625,8 +57618,14 @@
     "SLEDGE": {
       "last_id": "sledge-ship-bc241-workflow-env",
       "last_ts": "2026-09-18T13:33:16Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
         {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
@@ -57787,6 +57786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58019,12 +58024,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -58060,6 +58059,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58292,12 +58297,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -58315,6 +58314,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58547,12 +58552,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -58576,6 +58575,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58808,12 +58813,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -58831,6 +58830,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59063,12 +59068,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -59092,6 +59091,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59324,12 +59329,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -59347,6 +59346,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59579,12 +59584,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -59602,6 +59601,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59834,12 +59839,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -59863,6 +59862,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60095,12 +60100,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -60118,6 +60117,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60350,12 +60355,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -60379,6 +60378,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60611,12 +60616,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -60700,6 +60699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60932,12 +60937,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -60955,6 +60954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61187,12 +61192,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -61210,6 +61209,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61442,12 +61447,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -61465,6 +61464,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61697,12 +61702,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -61732,6 +61731,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61964,12 +61969,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -62053,6 +62052,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62285,12 +62290,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -62374,6 +62373,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62606,12 +62611,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -62692,8 +62691,14 @@
     "STALENESS_ALARM": {
       "last_id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
       "last_ts": "2026-09-18T06:51:59Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
         {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
@@ -62872,6 +62877,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63104,12 +63115,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -63193,6 +63198,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63425,12 +63436,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -63451,8 +63456,14 @@
     "SWARMZSOL17GPT56SOL": {
       "last_id": "Revenue--Rhode-Island-OSIP-qualified-prime-teaming---operations-workshare",
       "last_ts": "2026-09-18T03:16:45Z",
-      "n": 33,
+      "n": 34,
       "since": [
+        {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
         {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
@@ -63667,6 +63678,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63899,12 +63916,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -63922,6 +63933,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64154,12 +64171,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -64183,6 +64194,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64415,12 +64432,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -64504,6 +64515,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64736,12 +64753,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -64825,6 +64836,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65057,12 +65074,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -65140,6 +65151,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65372,12 +65389,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -65431,6 +65442,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65663,12 +65680,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -65752,6 +65763,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65984,12 +66001,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -66070,8 +66081,15 @@
     "UNSEATED": {
       "last_id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
       "last_ts": "2026-09-19T13:31:19Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        }
+      ],
       "mine": [
         {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
@@ -66153,6 +66171,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66385,12 +66409,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -66414,6 +66432,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66646,12 +66670,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -66735,6 +66753,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66967,12 +66991,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -67056,6 +67074,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67288,12 +67312,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -67311,6 +67329,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67543,12 +67567,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -67572,6 +67590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -67804,12 +67828,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -67827,6 +67845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -68059,12 +68083,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -68082,6 +68100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -68314,12 +68338,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -68337,6 +68355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -68569,12 +68593,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -68592,6 +68610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -68824,12 +68848,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [
@@ -68913,6 +68931,12 @@
       "n": 40,
       "since": [
         {
+          "id": "uiowa-084-readback-20260919-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:45:48Z"
+        },
+        {
           "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -69145,12 +69169,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-18T01:45:55Z"
-        },
-        {
-          "id": "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-18T01:44:46Z"
         }
       ],
       "mine": [

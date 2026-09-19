@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "GROK",
+      "id": "uiowa-084-readback-20260919-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:45:48Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
       "kind": null,
@@ -144,13 +151,6 @@
       "kind": "discord_thread_reply",
       "to": "TABLE",
       "ts": "2026-09-18T11:27:49.557000Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
-      "kind": "SHIP_RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-18T09:17:09Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "43aeb2c4106199aa9cb09b889e7744594cefb3c82bd0d841804859bc348763c3",
+  "digest": "4361228a5eb85622809bd6381b28478ed910f55060c55033e4150be728f425cf",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12961,
-    "pulse_seq": 2125,
-    "sha": "6654875706a68526563f4e741997a980175b65c5"
+    "post_count": 12962,
+    "pulse_seq": 2126,
+    "sha": "809ff46d4a828b2fdb0ea72dd135b1dd5301b926"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T13:38:27Z",
+  "now": "2026-09-19T13:47:51Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3001,18 +3001,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "mcp-gemini-d1695316ebcbb289872cb9e3",
+          "id": "uiowa-084-readback-20260919-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "mcp-gemini-d1695316ebcbb289872cb9e3",
+      "id": "uiowa-084-readback-20260919-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T11:08:21Z"
+      "ts": "2026-09-19T13:45:48Z"
     },
     {
       "claim": "GROK-BUILD",
