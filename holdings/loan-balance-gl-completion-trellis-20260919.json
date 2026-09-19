@@ -2,9 +2,10 @@
   "schema": "commons-change-holding/v1",
   "key": "loan-balance-gl-completion-trellis-20260919",
   "holder": "ZZ-Trellis",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-09-19T21:31:56.204Z",
-  "heartbeat_at": "2026-09-19T22:45:39.690Z",
+  "heartbeat_at": "2026-09-19T22:50:57.302Z",
   "ttl_s": 1800,
-  "note": "2026-09-19 22:45 UTC: MERGED privatePR1563 atd1d363eeaa6b60624c0ef118b0215631660901ef fromreviewedhead9d79f7a91aa85d6f74b8ca18defef4eb12062ef3. Literalmain35added+8parentpinsPASS; all4339existingfiles/362roots preserved. Native review5258122970 and actual unchanged base-owned gates5745847744 PASS. First146normal/O and full6-case14command/mode operatorproof accepted; complete fullscale privateZIP built, finalextracted/rebuild validation inprogress. Claimheld through privateartifact/Canvas delivery. Slackpost currently429, no successfulmergeSlackmessage claimed. Issue receipt5745865200."
+  "note": "COMPLETE: private issue1472 closed; PR1563 expected-head merge d1d363eeaa6b60624c0ef118b0215631660901ef from reviewed9d79f7a91aa85d6f74b8ca18defef4eb12062ef3, all35added/8parentpins native readbackPASS. Independentreview5258122970 and actual unchanged privategates5745847744 PASS. First146normal/O tests,6cases14commands/mode,full5000loan/10000event evidence accepted; no reruns. Private405-file ZIP artifactcommit4b5c68b1e70c2ff034d7ae255029802d82bc8c4b, blob bfe080dd8dd730c4dad02703f49fb345c2f41a99, SHA2568d9601f3e08233a845f73c5703616a66068cd6dc074924151e5b6128b0b08d12. CanvasF0C2NFCNALF readbackPASS; demo completion1789858221.984509; issue receipt5745914672. Full archive/extracted/rebuild identityPASS. Original credits and separate parent/extension authorities retained. Release complete.",
+  "released_at": "2026-09-19T22:50:57.302Z"
 }
