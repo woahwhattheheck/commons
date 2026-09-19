@@ -1,0 +1,63 @@
+{
+  "artifact": "presentation_source",
+  "status": "SYNTHETIC - NOT A UNIVERSITY FINDING",
+  "claims": [
+    {
+      "claim_id": "PS-01",
+      "slide_id": "S2",
+      "text": "Three recommendations are proposed for the first 90 days.",
+      "asserted_count": {
+        "of": "near_term_recommendations",
+        "value": 3
+      }
+    },
+    {
+      "claim_id": "PS-02",
+      "slide_id": "S3",
+      "text": "Research-systems access review is documented but not yet demonstrated.",
+      "cites": [
+        "FND-SYN-RIS-SEC-001"
+      ],
+      "asserted_state": {
+        "finding_id": "FND-SYN-RIS-SEC-001",
+        "status": "PARTIAL"
+      }
+    },
+    {
+      "claim_id": "PS-03",
+      "slide_id": "S4",
+      "text": "Establishing where completed reviews are retained sits in the 90-180 day window.",
+      "cites": [
+        "REC-SYN-RIS-SEC-001"
+      ],
+      "asserted_horizon": {
+        "recommendation_id": "REC-SYN-RIS-SEC-001",
+        "horizon": "0-90"
+      }
+    },
+    {
+      "claim_id": "PS-04",
+      "slide_id": "S5",
+      "text": "The repository inventory is a short analyst task.",
+      "cites": [
+        "REC-SYN-ESS-SD-001"
+      ],
+      "asserted_estimate": {
+        "recommendation_id": "REC-SYN-ESS-SD-001",
+        "estimate": "One analyst, estimated under a week."
+      }
+    },
+    {
+      "claim_id": "PS-05",
+      "slide_id": "S6",
+      "text": "AI readiness in IAM was not assessed and is carried as an open question.",
+      "cites": [
+        "FND-SYN-IAM-AI-001"
+      ],
+      "asserted_state": {
+        "finding_id": "FND-SYN-IAM-AI-001",
+        "status": "UNKNOWN"
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+finding_id,group,area,status,confidence,statement
+FND-SYN-ESS-SD-001,ESS,SD,SUPPORTED,MODERATE,Merges to the two sampled ESS repositories require a passing check and an approving review.
+FND-SYN-ESS-SEC-001,ESS,SEC,PARTIAL,LOW,A dependency-scanning step runs; no record of how findings are triaged was observed.
+FND-SYN-ESS-DEP-001,ESS,DEP,SUPPORTED,MODERATE,Production deployments in the sampled window carry a change reference and an approver.
+FND-SYN-ESS-AI-001,ESS,AI,PARTIAL,LOW,Assisted coding tools are in informal use; no group-level review guidance was observed.
+FND-SYN-RIS-SD-001,RIS,SD,PARTIAL,LOW,A documented intake-to-release path exists; the one traced change reviewed after deployment.
+FND-SYN-RIS-SEC-001,RIS,SEC,PARTIAL,LOW,A standard requires annual privileged-access review; no completed record was observed.
+FND-SYN-RIS-DEP-001,RIS,DEP,SUPPORTED,MODERATE,Scheduled maintenance is announced in advance and tracked to a close-out note.
+FND-SYN-IAM-SD-001,IAM,SD,SUPPORTED,MODERATE,Connector changes are developed in version control with peer review recorded.
+FND-SYN-IAM-SEC-001,IAM,SEC,SUPPORTED,HIGH,All 14 accounts in the enumerated privileged population had a second factor at capture time.
+FND-SYN-IAM-DEP-001,IAM,DEP,CONFLICT,UNRESOLVED,Interviews and the change export disagree on emergency-change records; 3 of 14 lack one.
+FND-SYN-IAM-AI-001,IAM,AI,UNKNOWN,NOT_EVIDENCED,Not assessed. No evidence was supplied for AI readiness in IAM.
+FND-SYN-ESS-SD-001,ESS,SD,SUPPORTED,MODERATE,Merges to the two sampled ESS repositories require a passing check and an approving review.

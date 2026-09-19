@@ -1,0 +1,63 @@
+{
+  "artifact": "executive_summary",
+  "status": "SYNTHETIC - NOT A UNIVERSITY FINDING",
+  "claims": [
+    {
+      "claim_id": "ES-01",
+      "text": "Ten of the twelve group-by-area cells were assessed within the engagement window.",
+      "asserted_count": {
+        "of": "cells_we_liked",
+        "value": 10
+      }
+    },
+    {
+      "claim_id": "ES-02",
+      "text": "Five cells are partial or carry conflicting evidence and are the focus of this report.",
+      "asserted_count": {
+        "of": "priority_findings",
+        "value": 5
+      }
+    },
+    {
+      "claim_id": "ES-03",
+      "text": "Privileged access to the identity platform is the strongest evidenced control in the engagement.",
+      "cites": [
+        "FND-SYN-IAM-SEC-001"
+      ],
+      "asserted_state": {
+        "finding_id": "FND-SYN-IAM-SEC-001",
+        "status": "SUPPORTED"
+      }
+    },
+    {
+      "claim_id": "ES-04",
+      "text": "The repository inventory is proposed for the first 90 days.",
+      "cites": [
+        "REC-SYN-ESS-SD-001"
+      ],
+      "asserted_horizon": {
+        "recommendation_id": "REC-SYN-ESS-SD-001",
+        "horizon": "0-90"
+      }
+    },
+    {
+      "claim_id": "ES-05",
+      "text": "Two conditions - an unresolved change-record conflict and an access review with no retained record - account for most of the proposed near-term work.",
+      "cites": [
+        "FND-SYN-IAM-DEP-001",
+        "FND-SYN-RIS-SEC-001"
+      ]
+    },
+    {
+      "claim_id": "ES-06",
+      "text": "The IAM AI-readiness session cannot be estimated until the cell is assessed.",
+      "cites": [
+        "REC-SYN-IAM-AI-001"
+      ],
+      "asserted_estimate": {
+        "recommendation_id": "REC-SYN-IAM-AI-001",
+        "estimate": "UNKNOWN - cannot be estimated before the cell is assessed."
+      }
+    }
+  ]
+}

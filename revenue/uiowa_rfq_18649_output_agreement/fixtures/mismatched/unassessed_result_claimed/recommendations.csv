@@ -1,0 +1,7 @@
+recommendation_id,group,area,finding_refs,horizon,statement,resource_note
+REC-SYN-ESS-SD-001,ESS,SD,FND-SYN-ESS-SD-001,0-90,Produce an authoritative inventory of in-scope ESS repositories and their settings.,"One analyst, estimated under a week."
+REC-SYN-IAM-DEP-001,IAM,DEP,FND-SYN-IAM-DEP-001,0-90,Identify the system of record for emergency identity changes; investigate before changing anything.,Half a day of IAM operations time.
+REC-SYN-CROSS-SEC-001,CROSS,SEC,FND-SYN-RIS-SEC-001;FND-SYN-IAM-SEC-001,0-90,Record which enumerated population each access-review requirement applies to.,Estimated two days across the security and identity groups.
+REC-SYN-RIS-SEC-001,RIS,SEC,FND-SYN-RIS-SEC-001,90-180,Establish where completed privileged-access reviews are retained for research systems.,UNKNOWN - depends on whether a system of record already exists.
+REC-SYN-ESS-AI-001,ESS,AI,FND-SYN-ESS-AI-001,90-180,Decide and write down how generated code is reviewed before it reaches a production branch.,Guidance drafting only.
+REC-SYN-IAM-AI-001,IAM,AI,FND-SYN-IAM-AI-001,UNKNOWN,Hold the AI-readiness session the engagement window did not accommodate.,UNKNOWN - cannot be estimated before the cell is assessed.
