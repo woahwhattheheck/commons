@@ -185,6 +185,36 @@ class PortabilityTests(unittest.TestCase):
         self.assertEqual(receipt["commands"][0]["exit_code"], 2)
         self.assertNotIn("outputs", receipt)
 
+    def test_malformed_trust_is_a_named_contract_failure(self):
+        for value in (None, [], "false"):
+            bad = reference_report()
+            bad["trust"] = value
+            with self.subTest(value=value), self.assertRaisesRegex(p.PortabilityError, "trust record"):
+                p.inspection_assertions(bad)
+
+    def test_packaged_runner_bootstraps_without_host_imports(self):
+        # A complete harness test using explicitly fake parents, not real Iowa acceptance.
+        (self.root / p.SELF).write_bytes(Path(p.__file__).read_bytes())
+        (self.root / p.WORKSHARE / "fixtures/synthetic_packet.json").write_bytes(p.canonical(reference_report()))
+        compiler = """import json, sys
+from pathlib import Path
+if sys.argv[1] == 'compile':
+    Path(sys.argv[4]).write_text(Path(sys.argv[2]).read_text())
+elif sys.argv[1] == 'verify':
+    print('UNTRUSTED_INTEGRITY_ONLY ' + 'b' * 64)
+elif sys.argv[1] == 'render':
+    Path(sys.argv[3]).write_text('# Explicit unit-test stand-in, not an Iowa finding\\n')
+"""
+        (self.root / p.WORKSHARE / "compiler.py").write_text(compiler)
+        (self.root / p.WORKBENCH / "server.py").write_text(
+            "class CompilerAdapter:\n    def inspect(self, candidate, authority):\n        return candidate\n")
+        result = p.acceptance(self.root, self.home / "bootstrap", REVISION)
+        self.assertEqual(result["state"], "PASS_TWO_OPERATOR_REPRODUCTION")
+        self.assertEqual(len(result["packaged_runner_invocations"]), 2)
+        self.assertTrue(all(r["exit_code"] == 0 for r in result["packaged_runner_invocations"]))
+        self.assertEqual(result["commands_per_operator"], 4)
+        self.assertEqual(result["browser_acceptance"], "NOT_RUN")
+
     def test_short_or_missing_revision_rejected(self):
         for revision in ("main", "abcd", "", "g" * 40):
             with self.subTest(revision=revision), self.assertRaises(p.PortabilityError):

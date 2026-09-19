@@ -268,7 +268,9 @@ def inspection_assertions(report: object) -> dict:
         raise PortabilityError("rehearsal must remain public untrusted inspection")
     if report.get("aggregate_state") != "HOLD_TRUSTED_AUTHORITY_REQUIRED":
         raise PortabilityError("untrusted inspection aggregate changed")
-    trust = report.get("trust", {})
+    trust = report.get("trust")
+    if not isinstance(trust, dict):
+        raise PortabilityError("inspection trust record is not an object")
     if any(trust.get(key) is not False for key in (
             "authority_root_supplied_out_of_band", "current_evidence_review_authority")):
         raise PortabilityError("inspection unexpectedly claims review authority")
@@ -378,15 +380,35 @@ def acceptance(root: Path, output: Path, revision: str) -> dict:
     if first != second:
         raise PortabilityError("repeat packaging was not byte-identical")
     results = []
+    invocations = []
     for name in ("operator-one", "operator-two"):
-        unpack(output / "operator-kit.zip", output / name)
-        results.append(rehearse(output / name, output / (name + "-run")))
+        location = (output / name).resolve()
+        run_output = (output / (name + "-run")).resolve()
+        unpack(output / "operator-kit.zip", location)
+        python = [sys.executable] + (["-O"] if sys.flags.optimize else [])
+        argv = python + [str(location / SELF), "rehearse", "--root", str(location),
+                         "--out", str(run_output)]
+        environment = {k: v for k, v in os.environ.items() if k not in ("PYTHONPATH", "PYTHONHOME")}
+        environment["PYTHONDONTWRITEBYTECODE"] = "1"
+        proc = subprocess.run(argv, cwd=location, env=environment, capture_output=True,
+                              text=True, timeout=300, check=False)
+        invocations.append({"operator": name, "entrypoint": SELF, "exit_code": proc.returncode,
+                            "runner_sha256": digest(read_member(location, SELF))})
+        if proc.returncode:
+            raise PortabilityError(f"packaged {name} runner exited {proc.returncode}: {proc.stderr.strip()}")
+        result = strict_json(proc.stdout.encode("utf-8"))
+        if not isinstance(result, dict) or result.get("state") != "PASS_PORTABLE_SYNTHETIC_REHEARSAL":
+            raise PortabilityError(f"packaged {name} runner did not report rehearsal success")
+        if strict_json((run_output / "receipt.json").read_bytes()) != result:
+            raise PortabilityError(f"packaged {name} stdout and durable receipt disagree")
+        results.append(result)
     if results[0]["outputs"] != results[1]["outputs"]:
         raise PortabilityError("second operator reports were not byte-identical")
     receipt = {"schema": SCHEMA, "state": "PASS_TWO_OPERATOR_REPRODUCTION",
                "package": first, "source_revision": revision,
                "outputs": results[0]["outputs"], "inspection": results[0]["inspection"],
                "commands_per_operator": len(results[0]["commands"]),
+               "packaged_runner_invocations": invocations,
                "browser_acceptance": "NOT_RUN", "engagement_completion": "NOT_ESTABLISHED"}
     (output / "acceptance.json").write_bytes(canonical(receipt))
     return receipt
