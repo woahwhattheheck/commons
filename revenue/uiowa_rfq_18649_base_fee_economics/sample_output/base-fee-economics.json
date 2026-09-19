@@ -1,0 +1,261 @@
+{
+  "assumptions": {
+    "admin_overhead_pct": "8",
+    "contingency_pct": "10",
+    "rates": {
+      "admin": {
+        "amount": "45.00",
+        "basis": "ASSUMED",
+        "label": "Administration and coordination",
+        "note": "Illustrative loaded rate for coordination time. NOT an agreed rate card."
+      },
+      "production": {
+        "amount": "70.00",
+        "basis": "ASSUMED",
+        "label": "Production (analysis, build, evidence work)",
+        "note": "Illustrative loaded rate. NOT an agreed rate card. Chosen to match the $70/$85 pair already used in the readout-option model so the two are comparable; it is not evidence that either is correct."
+      },
+      "review": {
+        "amount": "85.00",
+        "basis": "ASSUMED",
+        "label": "Senior review and professional judgement",
+        "note": "Illustrative loaded rate for senior time. NOT an agreed rate card."
+      }
+    }
+  },
+  "cases": {
+    "expected": {
+      "break_even": {
+        "break_even_hours": "UNKNOWN",
+        "case": "expected",
+        "headroom_hours": "UNKNOWN",
+        "planned_hours": "UNKNOWN",
+        "reason": "an effort estimate is missing, so the blended rate and the break-even point cannot be computed"
+      },
+      "contribution_margin": "UNKNOWN",
+      "contribution_margin_pct": "UNKNOWN",
+      "explanation": "The packages that can be costed already total $26,777.52 against a $24,000.00 fee. The missing estimates in WP5 can only add cost, never subtract it, so this case loses at least $2,777.52 whatever those estimates turn out to be. The exact margin is still unknown; the sign of it is not.",
+      "incomplete_packages": [
+        "WP5"
+      ],
+      "known_subtotal": "26777.5200000",
+      "total_cost": "UNKNOWN",
+      "total_hours": "UNKNOWN",
+      "verdict": "LOSS_CERTAIN_DESPITE_UNKNOWNS"
+    },
+    "high": {
+      "break_even": {
+        "break_even_hours": "UNKNOWN",
+        "case": "high",
+        "headroom_hours": "UNKNOWN",
+        "planned_hours": "UNKNOWN",
+        "reason": "an effort estimate is missing, so the blended rate and the break-even point cannot be computed"
+      },
+      "contribution_margin": "UNKNOWN",
+      "contribution_margin_pct": "UNKNOWN",
+      "explanation": "The packages that can be costed already total $38,122.92 against a $24,000.00 fee. The missing estimates in WP5 can only add cost, never subtract it, so this case loses at least $14,122.92 whatever those estimates turn out to be. The exact margin is still unknown; the sign of it is not.",
+      "incomplete_packages": [
+        "WP5"
+      ],
+      "known_subtotal": "38122.9200000",
+      "total_cost": "UNKNOWN",
+      "total_hours": "UNKNOWN",
+      "verdict": "LOSS_CERTAIN_DESPITE_UNKNOWNS"
+    },
+    "low": {
+      "break_even": {
+        "break_even_hours": "UNKNOWN",
+        "case": "low",
+        "headroom_hours": "UNKNOWN",
+        "planned_hours": "UNKNOWN",
+        "reason": "an effort estimate is missing, so the blended rate and the break-even point cannot be computed"
+      },
+      "contribution_margin": "UNKNOWN",
+      "contribution_margin_pct": "UNKNOWN",
+      "explanation": "Costed packages total $20,100.96, leaving $3,899.04 of the fee before this case turns to a loss. Whether it does depends entirely on WP5, which is not estimated. No margin is reported, because any number here would be a guess presented as an answer.",
+      "incomplete_packages": [
+        "WP5"
+      ],
+      "known_subtotal": "20100.9600000",
+      "total_cost": "UNKNOWN",
+      "total_hours": "UNKNOWN",
+      "verdict": "NOT_COMPUTABLE"
+    }
+  },
+  "commercial": {
+    "base_fee": "24000.00",
+    "milestones": [
+      {
+        "amount": "9600.00",
+        "key": "M1",
+        "label": "Written authorization and kickoff",
+        "share_pct": "40"
+      },
+      {
+        "amount": "9600.00",
+        "key": "M2",
+        "label": "Qualifying draft delivered",
+        "share_pct": "40"
+      },
+      {
+        "amount": "4800.00",
+        "key": "M3",
+        "label": "Written final acceptance",
+        "share_pct": "20"
+      }
+    ],
+    "option_fee": "4000.00"
+  },
+  "disclaimer": "SYNTHETIC / PROPOSED. Every hour figure and every rate below is an ASSUMPTION for modelling, not an agreed or observed figure. No University of Iowa data appears here. The $24,000 base, $4,000 option and 40/40/20 milestone split are the proposed commercial facts; everything else is a working estimate.",
+  "reconciliation_errors": [],
+  "resolved_targets": [],
+  "sensitivity": {
+    "conclusion": "No swept scenario is profitable on the evidence available. 10 of 15 lose money regardless of the missing estimates; 5 cannot be decided until those estimates exist.",
+    "counts": {
+      "loss_certain": 10,
+      "margin_computed": 0,
+      "not_computable": 5,
+      "profitable": 0,
+      "total": 15
+    },
+    "profitable_only_at_optimistic_corner": false,
+    "scenarios": [
+      {
+        "case": "low",
+        "floor_cost": "16127.1000000",
+        "margin": "UNKNOWN",
+        "margin_pct": "UNKNOWN",
+        "rate_factor": "0.80",
+        "total_cost": "UNKNOWN",
+        "verdict": "NOT_COMPUTABLE"
+      },
+      {
+        "case": "expected",
+        "floor_cost": "21487.3560000",
+        "margin": "UNKNOWN",
+        "margin_pct": "UNKNOWN",
+        "rate_factor": "0.80",
+        "total_cost": "UNKNOWN",
+        "verdict": "NOT_COMPUTABLE"
+      },
+      {
+        "case": "high",
+        "floor_cost": "30599.3160000",
+        "margin": "UNKNOWN",
+        "margin_pct": "UNKNOWN",
+        "rate_factor": "0.80",
+        "total_cost": "UNKNOWN",
+        "verdict": "LOSS_CERTAIN_DESPITE_UNKNOWNS"
+      },
+      {
+        "case": "low",
+        "floor_cost": "18114.0300000",
+        "margin": "UNKNOWN",
+        "margin_pct": "UNKNOWN",
+        "rate_factor": "0.90",
+        "total_cost": "UNKNOWN",
+        "verdict": "NOT_COMPUTABLE"
+      },
+      {
+        "case": "expected",
+        "floor_cost": "24132.4380000",
+        "margin": "UNKNOWN",
+        "margin_pct": "UNKNOWN",
+        "rate_factor": "0.90",
+        "total_cost": "UNKNOWN",
+        "verdict": "LOSS_CERTAIN_DESPITE_UNKNOWNS"
+      },
+      {
+        "case": "high",
+        "floor_cost": "34361.1180000",
+        "margin": "UNKNOWN",
+        "margin_pct": "UNKNOWN",
+        "rate_factor": "0.90",
+        "total_cost": "UNKNOWN",
+        "verdict": "LOSS_CERTAIN_DESPITE_UNKNOWNS"
+      },
+      {
+        "case": "low",
+        "floor_cost": "20100.9600000",
+        "margin": "UNKNOWN",
+        "margin_pct": "UNKNOWN",
+        "rate_factor": "1.00",
+        "total_cost": "UNKNOWN",
+        "verdict": "NOT_COMPUTABLE"
+      },
+      {
+        "case": "expected",
+        "floor_cost": "26777.5200000",
+        "margin": "UNKNOWN",
+        "margin_pct": "UNKNOWN",
+        "rate_factor": "1.00",
+        "total_cost": "UNKNOWN",
+        "verdict": "LOSS_CERTAIN_DESPITE_UNKNOWNS"
+      },
+      {
+        "case": "high",
+        "floor_cost": "38122.9200000",
+        "margin": "UNKNOWN",
+        "margin_pct": "UNKNOWN",
+        "rate_factor": "1.00",
+        "total_cost": "UNKNOWN",
+        "verdict": "LOSS_CERTAIN_DESPITE_UNKNOWNS"
+      },
+      {
+        "case": "low",
+        "floor_cost": "22087.8900000",
+        "margin": "UNKNOWN",
+        "margin_pct": "UNKNOWN",
+        "rate_factor": "1.10",
+        "total_cost": "UNKNOWN",
+        "verdict": "NOT_COMPUTABLE"
+      },
+      {
+        "case": "expected",
+        "floor_cost": "29422.6020000",
+        "margin": "UNKNOWN",
+        "margin_pct": "UNKNOWN",
+        "rate_factor": "1.10",
+        "total_cost": "UNKNOWN",
+        "verdict": "LOSS_CERTAIN_DESPITE_UNKNOWNS"
+      },
+      {
+        "case": "high",
+        "floor_cost": "41884.7220000",
+        "margin": "UNKNOWN",
+        "margin_pct": "UNKNOWN",
+        "rate_factor": "1.10",
+        "total_cost": "UNKNOWN",
+        "verdict": "LOSS_CERTAIN_DESPITE_UNKNOWNS"
+      },
+      {
+        "case": "low",
+        "floor_cost": "24074.8200000",
+        "margin": "UNKNOWN",
+        "margin_pct": "UNKNOWN",
+        "rate_factor": "1.20",
+        "total_cost": "UNKNOWN",
+        "verdict": "LOSS_CERTAIN_DESPITE_UNKNOWNS"
+      },
+      {
+        "case": "expected",
+        "floor_cost": "32067.6840000",
+        "margin": "UNKNOWN",
+        "margin_pct": "UNKNOWN",
+        "rate_factor": "1.20",
+        "total_cost": "UNKNOWN",
+        "verdict": "LOSS_CERTAIN_DESPITE_UNKNOWNS"
+      },
+      {
+        "case": "high",
+        "floor_cost": "45646.5240000",
+        "margin": "UNKNOWN",
+        "margin_pct": "UNKNOWN",
+        "rate_factor": "1.20",
+        "total_cost": "UNKNOWN",
+        "verdict": "LOSS_CERTAIN_DESPITE_UNKNOWNS"
+      }
+    ]
+  },
+  "title": "Proposed $24,000 base fee - bottom-up economics"
+}

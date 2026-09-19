@@ -1,0 +1,102 @@
+{
+  "title": "Proposed $24,000 base fee - bottom-up economics",
+  "disclaimer": "SYNTHETIC / PROPOSED. Every hour figure and every rate below is an ASSUMPTION for modelling, not an agreed or observed figure. No University of Iowa data appears here. The $24,000 base, $4,000 option and 40/40/20 milestone split are the proposed commercial facts; everything else is a working estimate.",
+  "commercial": {
+    "base_fee": "24000.00",
+    "option_fee": "4000.00",
+    "milestones": [
+      {"key": "M1", "label": "Written authorization and kickoff", "share_pct": 40, "amount": "9600.00"},
+      {"key": "M2", "label": "Qualifying draft delivered", "share_pct": 40, "amount": "9600.00"},
+      {"key": "M3", "label": "Written final acceptance", "share_pct": 20, "amount": "4800.00"}
+    ]
+  },
+  "rates": {
+    "production": {
+      "label": "Production (analysis, build, evidence work)",
+      "amount": "70.00",
+      "basis": "ASSUMED",
+      "note": "Illustrative loaded rate. NOT an agreed rate card. Chosen to match the $70/$85 pair already used in the readout-option model so the two are comparable; it is not evidence that either is correct."
+    },
+    "review": {
+      "label": "Senior review and professional judgement",
+      "amount": "85.00",
+      "basis": "ASSUMED",
+      "note": "Illustrative loaded rate for senior time. NOT an agreed rate card."
+    },
+    "admin": {
+      "label": "Administration and coordination",
+      "amount": "45.00",
+      "basis": "ASSUMED",
+      "note": "Illustrative loaded rate for coordination time. NOT an agreed rate card."
+    }
+  },
+  "rate_assignment": {
+    "production_hours": "production",
+    "review_hours": "review",
+    "correction_hours": "production",
+    "admin_hours": "admin"
+  },
+  "overheads": {
+    "admin_overhead_pct": 8,
+    "contingency_pct": 10,
+    "_note": "Both are proposed assumptions. Admin overhead covers non-billed coordination load; contingency covers re-work not already carried in correction_hours."
+  },
+  "packages": [
+    {
+      "key": "WP1",
+      "name": "Evidence organization and intake",
+      "description": "Receive, register and version the supplied evidence; build the evidence register and source locators.",
+      "milestone": "M1",
+      "effort": {
+        "low":      {"production_hours": 34, "review_hours": 6,  "correction_hours": 3,  "admin_hours": 5, "compute_tooling": "60.00"},
+        "expected": {"production_hours": 42, "review_hours": 8,  "correction_hours": 5,  "admin_hours": 7, "compute_tooling": "80.00"},
+        "high":     {"production_hours": 56, "review_hours": 12, "correction_hours": 9,  "admin_hours": 10, "compute_tooling": "120.00"}
+      }
+    },
+    {
+      "key": "WP2",
+      "name": "Assessment matrix population",
+      "description": "Populate the twelve-cell matrix from the registered evidence, with unassessed and insufficient-evidence cells kept distinct.",
+      "milestone": "M1",
+      "effort": {
+        "low":      {"production_hours": 40, "review_hours": 10, "correction_hours": 4,  "admin_hours": 4, "compute_tooling": "50.00"},
+        "expected": {"production_hours": 52, "review_hours": 14, "correction_hours": 7,  "admin_hours": 6, "compute_tooling": "70.00"},
+        "high":     {"production_hours": 70, "review_hours": 20, "correction_hours": 12, "admin_hours": 9, "compute_tooling": "110.00"}
+      }
+    },
+    {
+      "key": "WP3",
+      "name": "Findings and traceability",
+      "description": "Draft findings, bind each to its exact source version and locator, and build the traceability appendix.",
+      "milestone": "M2",
+      "effort": {
+        "low":      {"production_hours": 44, "review_hours": 14, "correction_hours": 6,  "admin_hours": 4, "compute_tooling": "40.00"},
+        "expected": {"production_hours": 58, "review_hours": 18, "correction_hours": 10, "admin_hours": 6, "compute_tooling": "60.00"},
+        "high":     {"production_hours": 78, "review_hours": 26, "correction_hours": 17, "admin_hours": 9, "compute_tooling": "95.00"}
+      }
+    },
+    {
+      "key": "WP4",
+      "name": "Report production",
+      "description": "Assemble the report: structure, cross-cutting themes, visuals, recommendations and the phased roadmap.",
+      "milestone": "M2",
+      "effort": {
+        "low":      {"production_hours": 38, "review_hours": 12, "correction_hours": 8,  "admin_hours": 4, "compute_tooling": "45.00"},
+        "expected": {"production_hours": 48, "review_hours": 16, "correction_hours": 12, "admin_hours": 6, "compute_tooling": "65.00"},
+        "high":     {"production_hours": 66, "review_hours": 24, "correction_hours": 21, "admin_hours": 9, "compute_tooling": "100.00"}
+      }
+    },
+    {
+      "key": "WP5",
+      "name": "Consolidated review and corrections",
+      "description": "Take one consolidated set of University comments through disposition and produce the corrected report.",
+      "milestone": "M3",
+      "_UNKNOWN_NOTE": "DELIBERATE UNKNOWN, and a realistic one. correction_hours is null in every case because the correction workload depends on the volume of consolidated comments, which is unknown until the draft is reviewed. It is NOT zero. A zero here would inflate margin, which is exactly the error this model refuses to make.",
+      "effort": {
+        "low":      {"production_hours": 12, "review_hours": 8,  "correction_hours": null, "admin_hours": 4, "compute_tooling": "25.00"},
+        "expected": {"production_hours": 16, "review_hours": 10, "correction_hours": null, "admin_hours": 6, "compute_tooling": "35.00"},
+        "high":     {"production_hours": 24, "review_hours": 16, "correction_hours": null, "admin_hours": 9, "compute_tooling": "55.00"}
+      }
+    }
+  ]
+}
