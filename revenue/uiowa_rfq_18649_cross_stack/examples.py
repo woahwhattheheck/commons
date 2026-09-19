@@ -100,6 +100,7 @@ def make_packet() -> tuple[dict, dict[str, str]]:
     a = copy.deepcopy(practices[7]); a["id"] = "ai-v2"; practices.append(a)
     a["outcome"]["version"] = "v2"
     a["outcome"]["criterion"] = "Listed suggestions receive task checking plus a separate data-use review."
+    a.update(claim="unknown", basis="E07 covers task checking, not the additional v2 data-use review; v2 achievement is unknown.")
     pair("09-definition-drift", practices[7], a)
 
     # 10: not-applicable is not a passing or failing result.
@@ -137,11 +138,11 @@ def write_example(destination: Path) -> dict:
     (destination / "comparison.md").write_text(markdown(report), encoding="utf-8")
     with (destination / "context-worksheet.csv").open("w", encoding="utf-8", newline="") as stream:
         writer = csv.writer(stream)
-        writer.writerow(["pair_id", "dimension", "left_context", "right_context", "recorded_treatment", "rationale", "evidence_ids", "follow_up_question", "proposed_owner_role"])
+        writer.writerow(["synthetic", "as_of", "pair_id", "dimension", "left_context", "right_context", "recorded_treatment", "rationale", "evidence_ids", "follow_up_question", "proposed_owner_role"])
         for row in report["pairs"]:
             for dimension in row["context"]["dimensions"]:
                 d = dimension["decision"] or {}
-                writer.writerow([row["id"], dimension["dimension"], dimension["left"], dimension["right"], dimension["state"], d.get("rationale", ""), ";".join(d.get("evidence_ids", [])), "Which dated artifact establishes this context for the sampled service?" if dimension["state"] in ("UNKNOWN", "UNRESOLVED") else "", "assessor / service owner (proposed)"])
+                writer.writerow([packet["synthetic"], packet["as_of"], row["id"], dimension["dimension"], dimension["left"], dimension["right"], dimension["state"], d.get("rationale", ""), ";".join(d.get("evidence_ids", [])), "Which dated artifact establishes this context for the sampled service?" if dimension["state"] in ("UNKNOWN", "UNRESOLVED") else "", "assessor / service owner (proposed)"])
     return report
 
 
