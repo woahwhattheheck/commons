@@ -24,12 +24,14 @@ g++ -O3 -std=c++20 -Wall -Wextra -pedantic a304081_search.cpp -o a304081_search
 ```bash
 ./a304081_search count N
 ./a304081_search scan LO HI
+./a304081_search verify-range LO HI
 ./a304081_search random TRIALS LO HI SEED [SKIP]
 ./a304081_search sample TRIALS LO HI SEED [SKIP]
 ```
 
 - `count` enumerates every admissible `(k,m)` representation for one `n`.
-- `scan` exhaustively counts every integer in an inclusive interval.
+- `scan` exhaustively counts every representation for every integer in an inclusive interval.
+- `verify-range` exhaustively checks every integer in an inclusive interval but short-circuits after its first representation; it is intended for exact frontier extension.
 - `random` uses deterministic SplitMix64 samples (with replacement) and stops
   at the first exact zero; it short-circuits after the first representation.
 - `sample` computes full representation counts for deterministic samples and
