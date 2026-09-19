@@ -6,15 +6,14 @@ import argparse
 import copy
 import csv
 import hashlib
-import importlib.util
 import io
 import json
 import random
 import sys
 import tempfile
 from pathlib import Path
-
-import prioritize
+from types import ModuleType
+from typing import NamedTuple
 
 HERE = Path(__file__).resolve().parent
 BASELINE_BLOB = "007697dd2485f7470107d1962c8f660873b4dd84"
@@ -33,18 +32,65 @@ def require(condition: bool, message: str) -> None:
         raise ValueError(message)
 
 
+class ReplaySnapshot(NamedTuple):
+    """The exact source and fixture bytes used throughout one replay."""
+    baseline: bytes
+    current: bytes
+    recommendations: bytes
+    weights: bytes
+
+
+def _capture(baseline_path: Path) -> ReplaySnapshot:
+    # Path reads happen only here, once per input. Later edits cannot change the
+    # checked baseline, executed source, fixture comparisons or receipt identity.
+    snapshot = ReplaySnapshot(
+        Path(baseline_path).read_bytes(),
+        (HERE / "prioritize.py").read_bytes(),
+        (HERE / "recommendations.synthetic.csv").read_bytes(),
+        (HERE / "weights.json").read_bytes(),
+    )
+    require(git_blob(snapshot.baseline) == BASELINE_BLOB,
+            "baseline does not match the retained Git blob")
+    for name, data in (("recommendations.synthetic.csv", snapshot.recommendations),
+                       ("weights.json", snapshot.weights)):
+        require(git_blob(data) == FIXTURE_BLOBS[name], f"synthetic fixture changed: {name}")
+    return snapshot
+
+
+def _module_from_bytes(name: str, source: bytes) -> ModuleType:
+    """Load these trusted repository source bytes, not a pathname or cached pyc.
+
+    This is execution provenance, not a sandbox. The baseline has a fixed pin;
+    current calculator source is operator-controlled repository code. No identity
+    is inferred from a previously imported module or a later disk read.
+    """
+    module = ModuleType(name)
+    module.__file__ = f"<uiowa084:{name}:{git_blob(source)}>"
+    code = compile(source, module.__file__, "exec", dont_inherit=True,
+                   optimize=sys.flags.optimize)
+    exec(code, module.__dict__)
+    return module
+
+
 def replay(baseline_path: Path, out: Path) -> dict:
-    baseline_bytes = baseline_path.read_bytes()
-    require(git_blob(baseline_bytes) == BASELINE_BLOB, "baseline does not match the retained Git blob")
-    for name, digest in FIXTURE_BLOBS.items():
-        require(git_blob((HERE / name).read_bytes()) == digest, f"synthetic fixture changed: {name}")
+    out = Path(out)
     require(not out.exists() and not out.is_symlink(), "choose a fresh output directory")
-    spec = importlib.util.spec_from_file_location("uiowa084_retained_baseline", baseline_path)
-    require(spec is not None and spec.loader is not None, "cannot load retained baseline")
-    old = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(old)
-    config = prioritize.load_weights(HERE / "weights.json")
-    records = prioritize.load_recommendations(HERE / "recommendations.synthetic.csv")
+    snapshot = _capture(baseline_path)
+    old = _module_from_bytes("uiowa084_retained_baseline", snapshot.baseline)
+    current = _module_from_bytes("uiowa084_current_snapshot", snapshot.current)
+    # The legacy run APIs take file paths. Give them private copies of captured
+    # fixtures, never the live operator files which were validated earlier.
+    with tempfile.TemporaryDirectory(prefix="uiowa084-snapshots-") as temp:
+        inputs = Path(temp)
+        (inputs / "recommendations.synthetic.csv").write_bytes(snapshot.recommendations)
+        (inputs / "weights.json").write_bytes(snapshot.weights)
+        return _replay_captured(snapshot, old, current, inputs, out)
+
+
+def _replay_captured(snapshot: ReplaySnapshot, old: ModuleType,
+                     prioritize: ModuleType, inputs: Path, out: Path) -> dict:
+    config = prioritize.load_weights(inputs / "weights.json")
+    records = prioritize.load_recommendations(inputs / "recommendations.synthetic.csv")
     rng = random.Random(20260919)
     for case in range(250):
         items = copy.deepcopy(records)
@@ -58,8 +104,8 @@ def replay(baseline_path: Path, out: Path) -> dict:
                 f"ranking changed in seeded case {case}")
     with tempfile.TemporaryDirectory(prefix="uiowa084-reference-") as temp:
         temp = Path(temp)
-        original = old.run(HERE / "recommendations.synthetic.csv", HERE / "weights.json", temp / "old")
-        repaired = prioritize.run(HERE / "recommendations.synthetic.csv", HERE / "weights.json", temp / "new")
+        original = old.run(inputs / "recommendations.synthetic.csv", inputs / "weights.json", temp / "old")
+        repaired = prioritize.run(inputs / "recommendations.synthetic.csv", inputs / "weights.json", temp / "new")
         require(original == repaired, "original fixture rows changed")
         original_outputs = {path.name: path.read_bytes() for path in (temp / "old").iterdir()}
         require(len(original_outputs) == 7, "unexpected baseline output count")
@@ -67,7 +113,7 @@ def replay(baseline_path: Path, out: Path) -> dict:
                 "original exported bytes changed")
     # Only now create persistent demonstration artifacts, all with exclusive paths.
     out.mkdir(parents=True, exist_ok=False)
-    rows = list(csv.reader(io.StringIO((HERE / "recommendations.synthetic.csv").read_text(encoding="utf-8"), newline="")))
+    rows = list(csv.reader(io.StringIO((inputs / "recommendations.synthetic.csv").read_text(encoding="utf-8"), newline="")))
     for row in rows[1:]:
         if row[0] == "R006":
             row[3] = "5"
@@ -75,8 +121,8 @@ def replay(baseline_path: Path, out: Path) -> dict:
     changed = out / "security_assumption.synthetic.csv"
     with changed.open("x", encoding="utf-8", newline="") as stream:
         csv.writer(stream).writerows(rows)
-    before = prioritize.run(HERE / "recommendations.synthetic.csv", HERE / "weights.json", out / "baseline")
-    after = prioritize.run(changed, HERE / "weights.json", out / "security_assumption")
+    before = prioritize.run(inputs / "recommendations.synthetic.csv", inputs / "weights.json", out / "baseline")
+    after = prioritize.run(changed, inputs / "weights.json", out / "security_assumption")
     table = []
     for name in config["profiles"]:
         old_row = next(row for row in before[name] if row["id"] == "R006")
@@ -92,7 +138,11 @@ def replay(baseline_path: Path, out: Path) -> dict:
                "unchanged_profile_record_rows": sum(map(len, before.values())),
                "unchanged_output_files": {name: hashlib.sha256(data).hexdigest() for name, data in sorted(original_outputs.items())},
                "baseline_blob": BASELINE_BLOB,
-               "tested_source_blob": git_blob((HERE / "prioritize.py").read_bytes()),
+               "tested_source_blob": git_blob(snapshot.current),
+               "fixture_blobs": {
+                   "recommendations.synthetic.csv": git_blob(snapshot.recommendations),
+                   "weights.json": git_blob(snapshot.weights)},
+               "source_binding": "captured source compiled directly; captured fixtures used throughout",
                "python": sys.version, "optimized": bool(sys.flags.optimize), "change": table}
     with (out / "replay_receipt.json").open("x", encoding="utf-8") as stream:
         json.dump(receipt, stream, indent=2, sort_keys=True, allow_nan=False)
