@@ -763,9 +763,48 @@ def _markdown_values(value: Any) -> Any:
     return value
 
 
+def _readable_result(result: Dict[str, Any]) -> Dict[str, Any]:
+    """Disambiguate colliding displayed targets on a rendering-only copy.
+
+    Both readable exports show system and intent. Where those repeat, use the
+    complete declared identity, never a row number that changes on reordering.
+    JSON and CSV evidence remain untouched. Original unambiguous examples keep
+    their exact output bytes.
+    """
+    rendered = _markdown_values(result)
+    for original, record in zip(result["cases"], rendered["cases"]):
+        counts: Dict[Tuple[str, str], int] = {}
+        for row in original["per_system"]:
+            key = (row["system"], row["intent"])
+            counts[key] = counts.get(key, 0) + 1
+        changed = False
+        for raw, row in zip(original["per_system"], record["per_system"]):
+            if counts[(raw["system"], raw["intent"])] < 2:
+                continue
+            fields = "; ".join(
+                name + "=" + (json.dumps(raw[name], ensure_ascii=False)
+                              if raw[name] else "UNKNOWN")
+                for name in ("entitlement", "environment", "effective_on")
+            )
+            row["system"] = _markdown_values(raw["system"] + " [" + fields + "]")
+            changed = True
+        if changed:
+            record["systems_not_confirmed"] = [
+                row["system"] for row in record["per_system"]
+                if STATUS_RANK[row["status"]] < STATUS_RANK[CONFIRMED_IN_SYSTEM]
+            ]
+            weakest = min(record["per_system"], key=lambda row: STATUS_RANK[row["status"]])
+            record["case_status_basis"] = (
+                f"the weakest system is {weakest['system']} at {weakest['status']}. "
+                "The case status is the weakest system, not an average: an access "
+                "change that reached three systems and missed a fourth has not been made."
+            )
+    return rendered
+
+
 def render_matrix(result: Dict[str, Any]) -> str:
     """The access-lifecycle evidence matrix."""
-    result = _markdown_values(result)
+    result = _readable_result(result)
     out: List[str] = []
     out.append("# Access-lifecycle evidence matrix")
     out.append("")
@@ -890,7 +929,7 @@ def render_matrix(result: Dict[str, Any]) -> str:
 
 def render_scenarios(result: Dict[str, Any]) -> str:
     """Fictional role-change scenarios, written for use in interviews."""
-    result = _markdown_values(result)
+    result = _readable_result(result)
     out: List[str] = []
     out.append("# Fictional role-change scenarios for interviews")
     out.append("")

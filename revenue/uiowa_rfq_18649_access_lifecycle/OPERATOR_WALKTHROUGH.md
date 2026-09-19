@@ -2,7 +2,7 @@
 
 **A fictional practice review, not a University finding.** The question is not whether an offboarding policy exists. It is which declared entitlement changes have supporting system observations, and which still need evidence.
 
-This completes OP5-CINDER's existing human-access lifecycle kit rather than introducing a second assessor. CINDER's six original cases, 43-test suite, matrix, interview scenarios, JSON example and CSV example are retained. ZZ-KESTREL-P9N (GPT-6 Astra Pro) contributed the scoped attribution and chronology repair, input/output preservation, 40 additional tests, and the executable walkthrough below.
+This completes OP5-CINDER's existing human-access lifecycle kit rather than introducing a second assessor. CINDER's six original cases, 43-test suite, matrix, interview scenarios, JSON example and CSV example are retained. ZZ-KESTREL-P9N (GPT-6 Astra Pro) contributed the scoped attribution and chronology repair, input/output preservation, 48 additional tests, and the executable walkthrough below.
 
 ## Start with the readable instruments
 
@@ -42,14 +42,14 @@ From a checkout containing this component:
 
 ```sh
 cd revenue/uiowa_rfq_18649_access_lifecycle
-python -m unittest -v test_access_lifecycle test_lifecycle_boundaries
-python -O -m unittest -v test_access_lifecycle test_lifecycle_boundaries
-python -W error::ResourceWarning -m unittest test_access_lifecycle test_lifecycle_boundaries
+python -m unittest -v test_access_lifecycle test_lifecycle_boundaries test_readable_target_identity
+python -O -m unittest -v test_access_lifecycle test_lifecycle_boundaries test_readable_target_identity
+python -W error::ResourceWarning -m unittest test_access_lifecycle test_lifecycle_boundaries test_readable_target_identity
 python rehearse_lifecycle.py --out rehearsal-normal.json
 python -O rehearse_lifecycle.py --out rehearsal-optimized.json
 ```
 
-Use new output filenames for each run. Expected test result: **83 tests, zero failures** in each mode. Expected rehearsal result: **8 snapshots and 192 attribution variations checked** in each mode. The JSON stores every snapshot's rows and source locators. The rehearsal captures the source and fixture bytes once, executes that captured source, and hashes those same buffers; it does not hash a later disk file and call it the executed source.
+Use new output filenames for each run. Expected test result: **91 tests, zero failures** in each mode. Expected rehearsal result: **8 snapshots and 192 attribution variations checked** in each mode. The JSON stores every snapshot's rows and source locators. The rehearsal captures the source and fixture bytes once, executes that captured source, and hashes those same buffers; it does not hash a later disk file and call it the executed source.
 
 The 192-case audit varies two declared entitlements, grant/revoke intent, record qualification and target ordering. An unqualified record never confirms both targets; a qualified record confirms only its named target. This is a finite tested set, not a universal correctness proof.
 
@@ -84,6 +84,10 @@ python access_lifecycle.py --cases practice.json \
 
 The same entrypoint works as `python -m revenue.uiowa_rfq_18649_access_lifecycle.access_lifecycle` from the repository root. The retained tests execute both forms as real subprocesses.
 
+## Read the identity next to a status
+
+Where a case repeats the same system and intent, the Markdown matrix and interview scenarios append the full entitlement, environment and effective-date identity. That identity also accompanies the follow-up, unconfirmed-target summary and excluded-observation row. It is not a row number and does not change when targets are reordered. Empty values display as `UNKNOWN`, distinct from a literal entitlement named `"UNKNOWN"`. JSON and CSV remain unchanged. This closes the reader-facing issue raised by distinct reviewer ZZ-KESTREL-R9C4 in GitHub review `5256293191`; source-classification behavior was not altered by this rendering-only repair.
+
 ## What the repair refuses to guess
 
 Dates must be calendar-valid, zero-padded `YYYY-MM-DD`; `2026-02-29` and `2026-9-1` are refused. An observation needs a known change/execution checkpoint. A relevant later execution record makes an earlier observation insufficient. An undated relevant execution record leaves ordering unresolved. The existing JSON field `evidence_excluded_as_stale` retains these chronology exclusions with an explicit reason, including unknown checkpoints; the reason is authoritative, not a claim that every excluded record is definitely older.
@@ -100,6 +104,6 @@ Dates have day precision. The compatible same-day rule does not prove within-day
 
 ## Provenance and execution scope
 
-CINDER original source: commit `039dca4cc273e43581b8d68bdde78ac477446030`, blob `58f15b95d34b69c4bc2746d4ef6925e664fd81fe`. Repaired executed source: `c54df187938677bac20586a80878840a06d5d1b8`. The original suite and fixture still match `34523e3cf9f19ee5afac4aabaa11583f7caaea2e` and `d04aca2fae32fce4404b1eb3c60b77c4958fdd63`.
+CINDER original source: commit `039dca4cc273e43581b8d68bdde78ac477446030`, blob `58f15b95d34b69c4bc2746d4ef6925e664fd81fe`. Repaired executed source: `bb1424057cf285c2d32d507afa02d60466321e8b`. The original suite and fixture still match `34523e3cf9f19ee5afac4aabaa11583f7caaea2e` and `d04aca2fae32fce4404b1eb3c60b77c4958fdd63`.
 
 Execution was in an isolated cloud-session component on Python 3.13.5, not Bryce's computer. See [the execution record](EXECUTION_RECORD.md) for commands and source pins. Local passes are not a claim of hosted CI success, full-repository execution, a canonical READY attestation, or main integration. The GitHub PR and provider merge/readback receipts establish publication state separately.
