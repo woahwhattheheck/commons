@@ -1,0 +1,67 @@
+{
+  "content_class": "BASELINE_QUOTED_FROM_REPO_PLUS_LABELLED_ASSUMPTIONS",
+  "commercial": {
+    "source": "../uiowa_rfq_18649_workshare/COMMERCIAL.md and ACCEPTANCE_EXHIBIT.md (PROPOSED / NOT ACCEPTED)",
+    "currency": "USD",
+    "base_workshare_fee": 24000,
+    "optional_readout_fee": 4000,
+    "travel_treatment": "Excluded, and cannot be committed by this carrier. Onsite commitments are the prime's responsibility.",
+    "milestones": [
+      {
+        "name": "Kickoff",
+        "share": "40%",
+        "amount": 9600,
+        "trigger": "written authorization / kickoff"
+      },
+      {
+        "name": "Draft",
+        "share": "40%",
+        "amount": 9600,
+        "trigger": "delivery of the draft technical work package"
+      },
+      {
+        "name": "Final",
+        "share": "20%",
+        "amount": 4800,
+        "trigger": "acceptance of the final technical work package"
+      }
+    ]
+  },
+  "roles": {
+    "evidence_analyst": {
+      "loaded_rate_per_hour": 120,
+      "status": "ASSUMED",
+      "basis": "ASSUMPTION. No rate card exists in the proposal; the base workshare is a fixed fee. This rate is a modelling input for change pricing only."
+    },
+    "assessment_engineer": {
+      "loaded_rate_per_hour": 150,
+      "status": "ASSUMED",
+      "basis": "ASSUMPTION. Set at the implied blended rate so the mid-weight role anchors the model."
+    },
+    "lead_reviewer": {
+      "loaded_rate_per_hour": 195,
+      "status": "ASSUMED",
+      "basis": "ASSUMPTION. Senior review and client-facing work; carries the findings/roadmap judgment the exhibit assigns to TJLabs."
+    }
+  },
+  "effort_model": {
+    "base_package_hours": 160,
+    "coordination_overhead_pct": 8
+  },
+  "schedule": {
+    "baseline_duration_weeks": "six to eight weeks",
+    "basis": "The public solicitation context describes a six-to-eight-week assessment. TJLabs' workshare begins on written authorization/kickoff. All day counts in this worksheet are relative to kickoff; the prime owns the integrated project schedule and every University-facing date."
+  },
+  "assumptions": [
+    "ASSUMPTION: the base package is modelled at 160 hours. The proposal states a fixed $24,000 fee and no hours, so this figure is an inference made solely to give change pricing an anchor. Replace it with a real number and every quote below moves.",
+    "ASSUMPTION: the implied blended rate ($150/h) is consistent with a roughly 40/40/20 mix of evidence_analyst / assessment_engineer / lead_reviewer time, which blends to about $147/h. If the real staffing mix differs, the role rates and the base-hours assumption must be re-reconciled together -- changing one alone silently breaks the other.",
+    "ASSUMPTION: 8% coordination overhead on added work covers re-planning, re-baselining the affected artifacts, and the extra handoffs a mid-engagement change creates. It is not applied to no-charge corrections.",
+    "FACT from the repository: the $24,000 base, the $4,000 separately-authorized readout option, the 40/40/20 milestone split and the travel exclusion are quoted from COMMERCIAL.md. They are PROPOSED and NOT ACCEPTED; quoting them here does not make them agreed.",
+    "BOUNDARY: correcting a TJLabs-authored artifact that fails an agreed acceptance criterion is never a change item, whenever it is raised. This worksheet enforces that rather than leaving it to negotiation."
+  ],
+  "excluded_by_solicitation": [
+    "specific commercial product or vendor recommendations, endorsements, or short-lists",
+    "legal, audit, certification, insurance or regulatory opinions",
+    "procurement or vendor selection"
+  ]
+}

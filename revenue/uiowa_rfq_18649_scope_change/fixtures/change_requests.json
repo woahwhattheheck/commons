@@ -1,0 +1,293 @@
+{
+  "content_class": "SYNTHETIC_FIXTURE_NOT_A_REAL_REQUEST",
+  "label": "FICTION. Eight invented change requests written to exercise the calculator. Nobody has made any of these requests, and no figure derived from them is an offer, an authorization or a commitment.",
+  "change_requests": [
+    {
+      "request_id": "CR-SYN-001",
+      "title": "Add a fourth application/information-system group",
+      "requested_by": "prime (fictional)",
+      "basis": "added_scope",
+      "summary": "Extend the assessment beyond ESS/RIS/IAM to a fourth group, across all four existing dimensions. The acceptance exhibit lists additional system groups as a change-control item, so this is added work rather than a reinterpretation of the agreed frame.",
+      "work_items": [
+        {
+          "task": "Extend the evidence register and collect the new group's records",
+          "role": "evidence_analyst",
+          "hours": 24,
+          "hours_basis": "Fictional: scaled from the per-group effort implied by the existing three-group register."
+        },
+        {
+          "task": "Compile four new assessment cells for the group",
+          "role": "assessment_engineer",
+          "hours": 32,
+          "hours_basis": "Fictional: four cells at the rate the existing twelve were modelled."
+        },
+        {
+          "task": "Draft findings and roadmap inputs for the new group",
+          "role": "lead_reviewer",
+          "hours": 12,
+          "hours_basis": "Fictional."
+        },
+        {
+          "task": "Reproducibility and currentness checks over the extended set",
+          "role": "assessment_engineer",
+          "hours": 6,
+          "hours_basis": "Fictional: the checks run over the whole set, so this is the marginal increase only."
+        }
+      ],
+      "dependencies": [
+        "Prime confirms the fourth group is inside the agreed assessment frame",
+        "Evidence custodian access for the new group",
+        "Interview participants identified by the prime"
+      ],
+      "schedule_effect": {
+        "calendar_days_added": 10,
+        "on_critical_path": true,
+        "note": "The new group's compilation cannot start until its evidence lands, so this extends the draft milestone rather than running beside it."
+      },
+      "notes": "Cleanest example of genuine added scope: four new cells that did not exist in the agreed frame."
+    },
+    {
+      "request_id": "CR-SYN-002",
+      "title": "Run a second interview cycle across all groups",
+      "requested_by": "prime (fictional)",
+      "basis": "added_scope",
+      "summary": "A repeated interview programme after the first cycle closes. Listed in the exhibit's change-control boundary as 'substantial new interview programs or repeated interview cycles'.",
+      "work_items": [
+        {
+          "task": "Prepare second-cycle interview guides against the open questions",
+          "role": "evidence_analyst",
+          "hours": 8,
+          "hours_basis": "Fictional."
+        },
+        {
+          "task": "Attend and record six second-cycle sessions",
+          "role": "evidence_analyst",
+          "hours": 18,
+          "hours_basis": "Fictional: six sessions at roughly three hours including write-up."
+        },
+        {
+          "task": "Integrate new statements into the evidence register",
+          "role": "evidence_analyst",
+          "hours": 14,
+          "hours_basis": "Fictional."
+        },
+        {
+          "task": "Re-run affected cells and reconcile any new conflicts",
+          "role": "assessment_engineer",
+          "hours": 12,
+          "hours_basis": "Fictional: assumes roughly a third of cells are touched."
+        }
+      ],
+      "dependencies": [
+        "Prime schedules participants -- TJLabs does not own interview scheduling or University-facing communication",
+        "First cycle closed so the open questions are known"
+      ],
+      "schedule_effect": {
+        "calendar_days_added": 12,
+        "on_critical_path": true,
+        "note": "Participant availability drives this, and it is outside TJLabs' control. If scheduling slips, the shift lands on the draft milestone."
+      },
+      "notes": "Shows a dependency that belongs to the prime, not to the carrier."
+    },
+    {
+      "request_id": "CR-SYN-003",
+      "title": "Add a fifth analysis dimension across all three groups",
+      "requested_by": "prime (fictional)",
+      "basis": "added_scope",
+      "summary": "Assess a new domain alongside the agreed four dimensions, producing three additional cells. Real added scope -- but it cannot be honestly quoted yet.",
+      "work_items": [
+        {
+          "task": "Define the new dimension's evidence requirements and rubric",
+          "role": "lead_reviewer",
+          "hours": 10,
+          "hours_basis": "Fictional."
+        },
+        {
+          "task": "Extend the register schema and backfill across three groups",
+          "role": "evidence_analyst",
+          "hours": 20,
+          "hours_basis": "Fictional."
+        },
+        {
+          "task": "Compile three new cells",
+          "role": "assessment_engineer",
+          "hours": 18,
+          "hours_basis": "Fictional."
+        },
+        {
+          "task": "Reconcile the new dimension against the existing 12-cell model",
+          "role": "assessment_engineer",
+          "hours": "UNKNOWN",
+          "hours_basis": "NOT ESTIMATED. How much this costs depends on how much evidence the new dimension shares with the existing four, which is not knowable until the rubric is agreed. It could be a few hours of mapping or a re-run of every cell. Putting a number here would be inventing the answer to the question the rubric has not settled."
+        }
+      ],
+      "dependencies": [
+        "Rubric for the new dimension agreed before the reconciliation effort can be sized"
+      ],
+      "schedule_effect": {
+        "calendar_days_added": null,
+        "on_critical_path": true,
+        "note": "Not estimated: the schedule effect turns on the same unresolved reconciliation question as the effort."
+      },
+      "notes": "THE GAP. A wanted change that stays unquoted rather than being quoted around."
+    },
+    {
+      "request_id": "CR-SYN-004",
+      "title": "Deliver the optional final-readout session",
+      "requested_by": "prime (fictional)",
+      "basis": "added_scope",
+      "summary": "The separately-authorized readout support already described in the acceptance exhibit. It is a change-control item because it sits outside the base package, but it is not an unpriced one.",
+      "published_price_ref": "COMMERCIAL.md / ACCEPTANCE_EXHIBIT.md section 4.4 -- optional final-readout support, $4,000 when separately authorized",
+      "published_price": 4000,
+      "work_items": [
+        {
+          "task": "Prepare the readout deck from the final technical package",
+          "role": "lead_reviewer",
+          "hours": 10,
+          "hours_basis": "Fictional."
+        },
+        {
+          "task": "Rehearse and deliver the session",
+          "role": "lead_reviewer",
+          "hours": 4,
+          "hours_basis": "Fictional."
+        },
+        {
+          "task": "Capture and circulate post-session questions",
+          "role": "evidence_analyst",
+          "hours": 4,
+          "hours_basis": "Fictional."
+        }
+      ],
+      "dependencies": [
+        "Final technical work package delivered",
+        "Separate written authorization -- the base workshare does not include this"
+      ],
+      "schedule_effect": {
+        "calendar_days_added": 5,
+        "on_critical_path": false,
+        "note": "Runs after final delivery; does not move the base milestones."
+      },
+      "notes": "Demonstrates deferring to an already-published price instead of deriving a second, different number for the same item."
+    },
+    {
+      "request_id": "CR-SYN-005",
+      "title": "Add one onsite working day",
+      "requested_by": "prime (fictional)",
+      "basis": "added_scope",
+      "summary": "One day of onsite facilitation during evidence collection. Onsite work is explicitly a change-control item, and travel is explicitly excluded from what this carrier can commit.",
+      "work_items": [
+        {
+          "task": "Onsite facilitation, one working day",
+          "role": "lead_reviewer",
+          "hours": 8,
+          "hours_basis": "Fictional: a single working day."
+        },
+        {
+          "task": "Preparation and same-week write-up",
+          "role": "evidence_analyst",
+          "hours": 6,
+          "hours_basis": "Fictional."
+        }
+      ],
+      "dependencies": [
+        "Prime owns the onsite commitment and any University-facing arrangements",
+        "Site access arranged by the prime"
+      ],
+      "schedule_effect": {
+        "calendar_days_added": 2,
+        "on_critical_path": false,
+        "note": "Absorbed into the evidence-collection window; does not extend the draft milestone."
+      },
+      "non_committable_costs": [
+        {
+          "item": "Travel, accommodation and subsistence for the onsite day",
+          "reason": "COMMERCIAL.md excludes travel and states it cannot be committed by this carrier. The labour above is priced; the travel is not, and no figure for it appears in this fee. The prime authorizes travel separately or the day does not happen."
+        }
+      ],
+      "notes": "Shows a real cost that is deliberately absent from the fee rather than estimated into it."
+    },
+    {
+      "request_id": "CR-SYN-006",
+      "title": "Correct two omitted HOLD reasons in the delivered draft matrix",
+      "requested_by": "prime (fictional), during acceptance review",
+      "basis": "deliverable_defect",
+      "failed_criterion": "every unassessed cell states the reason it is on HOLD",
+      "summary": "The delivered draft matrix leaves two of the twelve cells unassessed without stating why. That fails an agreed acceptance criterion, so it is a correction of TJLabs' own nonconformance -- not new work, and not billable, regardless of arriving mid-review.",
+      "work_items": [
+        {
+          "task": "Identify the omitted HOLD reasons and correct the matrix",
+          "role": "assessment_engineer",
+          "hours": 5,
+          "hours_basis": "Fictional."
+        },
+        {
+          "task": "Re-run the consistency check and reissue the artifact",
+          "role": "assessment_engineer",
+          "hours": 2,
+          "hours_basis": "Fictional."
+        }
+      ],
+      "dependencies": [],
+      "schedule_effect": {
+        "calendar_days_added": 1,
+        "on_critical_path": false,
+        "note": "Absorbed into the acceptance-review window."
+      },
+      "notes": "THE BOUNDARY CASE. Real hours, zero charge. The exhibit: a small correction to a TJLabs-authored artifact that fails an agreed acceptance criterion is not a new scope item merely because it occurs during acceptance review."
+    },
+    {
+      "request_id": "CR-SYN-007",
+      "title": "Recommend a specific identity-governance product and provide a vendor short-list",
+      "requested_by": "prime (fictional)",
+      "basis": "excluded_by_solicitation",
+      "exclusion_reference": "ACCEPTANCE_EXHIBIT.md section 7 -- specific commercial product/vendor recommendations are a controlling RFQ scope boundary, not a normal change-control item. Only a formal controlling-solicitation amendment could reopen the question.",
+      "summary": "A request for a named product recommendation and a vendor short-list for the IAM group. This is not expensive, or slow, or difficult. It is outside what the solicitation permits, so it has no price.",
+      "work_items": [
+        {
+          "task": "Market scan and product comparison",
+          "role": "assessment_engineer",
+          "hours": 30,
+          "hours_basis": "Fictional. Shown to make clear the request is being refused on scope, not waved away as trivial."
+        },
+        {
+          "task": "Short-list memo",
+          "role": "lead_reviewer",
+          "hours": 10,
+          "hours_basis": "Fictional."
+        }
+      ],
+      "dependencies": [],
+      "schedule_effect": {
+        "calendar_days_added": null,
+        "on_critical_path": false,
+        "note": "Not scheduled: the request is not quotable, so there is nothing to schedule."
+      },
+      "notes": "THE REFUSAL. Forty hours of perfectly deliverable work that still gets no price, because willingness to pay is not what makes something in scope."
+    },
+    {
+      "request_id": "CR-SYN-008",
+      "title": "Rework the draft findings -- \"they don't read right\"",
+      "requested_by": "prime (fictional), during acceptance review",
+      "basis": "deliverable_defect",
+      "summary": "A general dissatisfaction with the draft findings, raised as a defect but citing no agreed acceptance criterion. Until somebody names the criterion that failed, this is neither a substantiated no-charge cure nor an agreed change.",
+      "work_items": [
+        {
+          "task": "Review and revise the draft findings",
+          "role": "lead_reviewer",
+          "hours": 8,
+          "hours_basis": "Fictional: a rough sizing, not a quote."
+        }
+      ],
+      "dependencies": [
+        "Prime identifies the specific unmet acceptance criterion, or reframes the request as a wording preference"
+      ],
+      "schedule_effect": {
+        "calendar_days_added": null,
+        "on_critical_path": false,
+        "note": "Not estimated until the request is classified."
+      },
+      "notes": "THE AMBIGUOUS ONE, and the most realistic. A vague complaint must not default to free work (which absorbs unlimited rework) or to billable work (which charges for a defect that may be ours). It stops and asks."
+    }
+  ]
+}

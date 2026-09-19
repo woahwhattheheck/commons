@@ -1,0 +1,640 @@
+{
+  "assumption_sensitivity": {
+    "changes_move": true,
+    "cures_stay_zero": true,
+    "interpretation": "The quoted change total moves with the rate assumption, as an estimate should. The no-charge cure total does not move, because it is zero by policy rather than by arithmetic -- there is no rate at which correcting our own nonconformance becomes billable.",
+    "role": "assessment_engineer",
+    "rows": [
+      {
+        "multiplier": 0.8,
+        "no_charge_cure_fee": "$0.00",
+        "not_quotable_count": 1,
+        "quoted_changes": "$23,764.00",
+        "quoted_changes_cents": 2376400,
+        "rate_per_hour": "$120.00"
+      },
+      {
+        "multiplier": 1.0,
+        "no_charge_cure_fee": "$0.00",
+        "not_quotable_count": 1,
+        "quoted_changes": "$25,384.00",
+        "quoted_changes_cents": 2538400,
+        "rate_per_hour": "$150.00"
+      },
+      {
+        "multiplier": 1.25,
+        "no_charge_cure_fee": "$0.00",
+        "not_quotable_count": 1,
+        "quoted_changes": "$27,409.00",
+        "quoted_changes_cents": 2740900,
+        "rate_per_hour": "$187.50"
+      }
+    ]
+  },
+  "result": {
+    "baseline": {
+      "assumptions": [
+        "ASSUMPTION: the base package is modelled at 160 hours. The proposal states a fixed $24,000 fee and no hours, so this figure is an inference made solely to give change pricing an anchor. Replace it with a real number and every quote below moves.",
+        "ASSUMPTION: the implied blended rate ($150/h) is consistent with a roughly 40/40/20 mix of evidence_analyst / assessment_engineer / lead_reviewer time, which blends to about $147/h. If the real staffing mix differs, the role rates and the base-hours assumption must be re-reconciled together -- changing one alone silently breaks the other.",
+        "ASSUMPTION: 8% coordination overhead on added work covers re-planning, re-baselining the affected artifacts, and the extra handoffs a mid-engagement change creates. It is not applied to no-charge corrections.",
+        "FACT from the repository: the $24,000 base, the $4,000 separately-authorized readout option, the 40/40/20 milestone split and the travel exclusion are quoted from COMMERCIAL.md. They are PROPOSED and NOT ACCEPTED; quoting them here does not make them agreed.",
+        "BOUNDARY: correcting a TJLabs-authored artifact that fails an agreed acceptance criterion is never a change item, whenever it is raised. This worksheet enforces that rather than leaving it to negotiation."
+      ],
+      "base_workshare_fee": "$24,000.00",
+      "base_workshare_fee_cents": 2400000,
+      "currency": "USD",
+      "effort_model": {
+        "base_package_hours": 160,
+        "base_package_hours_status": "ASSUMED",
+        "coordination_overhead_pct": 8.0,
+        "implied_blended_rate_per_hour": "$150.00"
+      },
+      "excluded_by_solicitation": [
+        "specific commercial product or vendor recommendations, endorsements, or short-lists",
+        "legal, audit, certification, insurance or regulatory opinions",
+        "procurement or vendor selection"
+      ],
+      "milestones": [
+        {
+          "amount": "$9,600.00",
+          "name": "Kickoff",
+          "share": "40%",
+          "trigger": "written authorization / kickoff"
+        },
+        {
+          "amount": "$9,600.00",
+          "name": "Draft",
+          "share": "40%",
+          "trigger": "delivery of the draft technical work package"
+        },
+        {
+          "amount": "$4,800.00",
+          "name": "Final",
+          "share": "20%",
+          "trigger": "acceptance of the final technical work package"
+        }
+      ],
+      "optional_readout_fee": "$4,000.00",
+      "roles": {
+        "assessment_engineer": {
+          "basis": "ASSUMPTION. Set at the implied blended rate so the mid-weight role anchors the model.",
+          "loaded_rate_per_hour": "$150.00",
+          "status": "ASSUMED"
+        },
+        "evidence_analyst": {
+          "basis": "ASSUMPTION. No rate card exists in the proposal; the base workshare is a fixed fee. This rate is a modelling input for change pricing only.",
+          "loaded_rate_per_hour": "$120.00",
+          "status": "ASSUMED"
+        },
+        "lead_reviewer": {
+          "basis": "ASSUMPTION. Senior review and client-facing work; carries the findings/roadmap judgment the exhibit assigns to TJLabs.",
+          "loaded_rate_per_hour": "$195.00",
+          "status": "ASSUMED"
+        }
+      },
+      "schedule": {
+        "baseline_duration_weeks": "six to eight weeks",
+        "basis": "The public solicitation context describes a six-to-eight-week assessment. TJLabs' workshare begins on written authorization/kickoff. All day counts in this worksheet are relative to kickoff; the prime owns the integrated project schedule and every University-facing date."
+      },
+      "source": "../uiowa_rfq_18649_workshare/COMMERCIAL.md and ACCEPTANCE_EXHIBIT.md (PROPOSED / NOT ACCEPTED)",
+      "travel_treatment": "Excluded, and cannot be committed by this carrier. Onsite commitments are the prime's responsibility."
+    },
+    "content_class": "SYNTHETIC_DRAFT_NOT_A_COMMITMENT",
+    "hours": {
+      "no_charge_cure_hours": 7.0,
+      "quoted_change_hours": 158.0,
+      "unestimated_tasks": [
+        "Reconcile the new dimension against the existing 12-cell model"
+      ]
+    },
+    "integrity": {
+      "all_quotes_reconcile": true,
+      "all_requests_dispositioned": true,
+      "blocked_carry_no_fee": true,
+      "cures_are_all_zero_fee": true,
+      "refusals_carry_no_fee": true,
+      "requests_dispositioned": 8,
+      "requests_in": 8
+    },
+    "quotes": [
+      {
+        "basis": "added_scope",
+        "computed_fee": "$11,793.60",
+        "computed_fee_cents": 1179360,
+        "coordination_overhead": "$873.60",
+        "coordination_overhead_cents": 87360,
+        "coordination_overhead_pct": 8.0,
+        "dependencies": [
+          "Prime confirms the fourth group is inside the agreed assessment frame",
+          "Evidence custodian access for the new group",
+          "Interview participants identified by the prime"
+        ],
+        "disposition": "CHANGE_QUOTE",
+        "fee": "$11,793.60",
+        "fee_basis": "74.0 h of added work priced at the baseline role rates, plus 8% coordination overhead. Proposed estimate against the assumptions printed with this worksheet; not an offer and not an authorization.",
+        "fee_cents": 1179360,
+        "hours_estimated": 74.0,
+        "hours_unestimated_tasks": [],
+        "labour_subtotal": "$10,920.00",
+        "labour_subtotal_cents": 1092000,
+        "non_committable_costs": [],
+        "notes": "Cleanest example of genuine added scope: four new cells that did not exist in the agreed frame.",
+        "price_source": "COMPUTED",
+        "reconciles": true,
+        "reconciliation": "line items $10,920.00 + overhead $873.60 = $11,793.60",
+        "request_id": "CR-SYN-001",
+        "requested_by": "prime (fictional)",
+        "schedule_effect": {
+          "basis": "relative to kickoff; the prime owns the integrated schedule and any University-facing dates",
+          "calendar_days_added": 10,
+          "note": "The new group's compilation cannot start until its evidence lands, so this extends the draft milestone rather than running beside it.",
+          "on_critical_path": true
+        },
+        "status": "PROPOSED_ESTIMATE_NOT_A_COMMITMENT",
+        "summary": "Extend the assessment beyond ESS/RIS/IAM to a fourth group, across all four existing dimensions. The acceptance exhibit lists additional system groups as a change-control item, so this is added work rather than a reinterpretation of the agreed frame.",
+        "title": "Add a fourth application/information-system group",
+        "work_items": [
+          {
+            "arithmetic": "24 h x $120.00/h = $2,880.00",
+            "cost": "$2,880.00",
+            "cost_cents": 288000,
+            "hours": 24.0,
+            "hours_basis": "Fictional: scaled from the per-group effort implied by the existing three-group register.",
+            "rate_per_hour": "$120.00",
+            "role": "evidence_analyst",
+            "task": "Extend the evidence register and collect the new group's records"
+          },
+          {
+            "arithmetic": "32 h x $150.00/h = $4,800.00",
+            "cost": "$4,800.00",
+            "cost_cents": 480000,
+            "hours": 32.0,
+            "hours_basis": "Fictional: four cells at the rate the existing twelve were modelled.",
+            "rate_per_hour": "$150.00",
+            "role": "assessment_engineer",
+            "task": "Compile four new assessment cells for the group"
+          },
+          {
+            "arithmetic": "12 h x $195.00/h = $2,340.00",
+            "cost": "$2,340.00",
+            "cost_cents": 234000,
+            "hours": 12.0,
+            "hours_basis": "Fictional.",
+            "rate_per_hour": "$195.00",
+            "role": "lead_reviewer",
+            "task": "Draft findings and roadmap inputs for the new group"
+          },
+          {
+            "arithmetic": "6 h x $150.00/h = $900.00",
+            "cost": "$900.00",
+            "cost_cents": 90000,
+            "hours": 6.0,
+            "hours_basis": "Fictional: the checks run over the whole set, so this is the marginal increase only.",
+            "rate_per_hour": "$150.00",
+            "role": "assessment_engineer",
+            "task": "Reproducibility and currentness checks over the extended set"
+          }
+        ]
+      },
+      {
+        "basis": "added_scope",
+        "computed_fee": "$7,128.00",
+        "computed_fee_cents": 712800,
+        "coordination_overhead": "$528.00",
+        "coordination_overhead_cents": 52800,
+        "coordination_overhead_pct": 8.0,
+        "dependencies": [
+          "Prime schedules participants -- TJLabs does not own interview scheduling or University-facing communication",
+          "First cycle closed so the open questions are known"
+        ],
+        "disposition": "CHANGE_QUOTE",
+        "fee": "$7,128.00",
+        "fee_basis": "52.0 h of added work priced at the baseline role rates, plus 8% coordination overhead. Proposed estimate against the assumptions printed with this worksheet; not an offer and not an authorization.",
+        "fee_cents": 712800,
+        "hours_estimated": 52.0,
+        "hours_unestimated_tasks": [],
+        "labour_subtotal": "$6,600.00",
+        "labour_subtotal_cents": 660000,
+        "non_committable_costs": [],
+        "notes": "Shows a dependency that belongs to the prime, not to the carrier.",
+        "price_source": "COMPUTED",
+        "reconciles": true,
+        "reconciliation": "line items $6,600.00 + overhead $528.00 = $7,128.00",
+        "request_id": "CR-SYN-002",
+        "requested_by": "prime (fictional)",
+        "schedule_effect": {
+          "basis": "relative to kickoff; the prime owns the integrated schedule and any University-facing dates",
+          "calendar_days_added": 12,
+          "note": "Participant availability drives this, and it is outside TJLabs' control. If scheduling slips, the shift lands on the draft milestone.",
+          "on_critical_path": true
+        },
+        "status": "PROPOSED_ESTIMATE_NOT_A_COMMITMENT",
+        "summary": "A repeated interview programme after the first cycle closes. Listed in the exhibit's change-control boundary as 'substantial new interview programs or repeated interview cycles'.",
+        "title": "Run a second interview cycle across all groups",
+        "work_items": [
+          {
+            "arithmetic": "8 h x $120.00/h = $960.00",
+            "cost": "$960.00",
+            "cost_cents": 96000,
+            "hours": 8.0,
+            "hours_basis": "Fictional.",
+            "rate_per_hour": "$120.00",
+            "role": "evidence_analyst",
+            "task": "Prepare second-cycle interview guides against the open questions"
+          },
+          {
+            "arithmetic": "18 h x $120.00/h = $2,160.00",
+            "cost": "$2,160.00",
+            "cost_cents": 216000,
+            "hours": 18.0,
+            "hours_basis": "Fictional: six sessions at roughly three hours including write-up.",
+            "rate_per_hour": "$120.00",
+            "role": "evidence_analyst",
+            "task": "Attend and record six second-cycle sessions"
+          },
+          {
+            "arithmetic": "14 h x $120.00/h = $1,680.00",
+            "cost": "$1,680.00",
+            "cost_cents": 168000,
+            "hours": 14.0,
+            "hours_basis": "Fictional.",
+            "rate_per_hour": "$120.00",
+            "role": "evidence_analyst",
+            "task": "Integrate new statements into the evidence register"
+          },
+          {
+            "arithmetic": "12 h x $150.00/h = $1,800.00",
+            "cost": "$1,800.00",
+            "cost_cents": 180000,
+            "hours": 12.0,
+            "hours_basis": "Fictional: assumes roughly a third of cells are touched.",
+            "rate_per_hour": "$150.00",
+            "role": "assessment_engineer",
+            "task": "Re-run affected cells and reconcile any new conflicts"
+          }
+        ]
+      },
+      {
+        "basis": "added_scope",
+        "dependencies": [
+          "Rubric for the new dimension agreed before the reconciliation effort can be sized"
+        ],
+        "disposition": "NEEDS_INPUT",
+        "fee": "UNKNOWN",
+        "fee_basis": "Not quoted: Reconcile the new dimension against the existing 12-cell model has no hours estimate. An unestimated task is an open question, not zero effort, and quoting around it would understate the change.",
+        "fee_cents": null,
+        "hours_estimated": 48.0,
+        "hours_unestimated_tasks": [
+          "Reconcile the new dimension against the existing 12-cell model"
+        ],
+        "missing_inputs": [
+          "work_items hours: Reconcile the new dimension against the existing 12-cell model"
+        ],
+        "non_committable_costs": [],
+        "notes": "THE GAP. A wanted change that stays unquoted rather than being quoted around.",
+        "reconciles": true,
+        "request_id": "CR-SYN-003",
+        "requested_by": "prime (fictional)",
+        "schedule_effect": {
+          "basis": "relative to kickoff; the prime owns the integrated schedule and any University-facing dates",
+          "calendar_days_added": null,
+          "note": "Not estimated: the schedule effect turns on the same unresolved reconciliation question as the effort.",
+          "on_critical_path": true
+        },
+        "status": "PROPOSED_ESTIMATE_NOT_A_COMMITMENT",
+        "summary": "Assess a new domain alongside the agreed four dimensions, producing three additional cells. Real added scope -- but it cannot be honestly quoted yet.",
+        "title": "Add a fifth analysis dimension across all three groups",
+        "work_items": [
+          {
+            "arithmetic": "10 h x $195.00/h = $1,950.00",
+            "cost": "$1,950.00",
+            "cost_cents": 195000,
+            "hours": 10.0,
+            "hours_basis": "Fictional.",
+            "rate_per_hour": "$195.00",
+            "role": "lead_reviewer",
+            "task": "Define the new dimension's evidence requirements and rubric"
+          },
+          {
+            "arithmetic": "20 h x $120.00/h = $2,400.00",
+            "cost": "$2,400.00",
+            "cost_cents": 240000,
+            "hours": 20.0,
+            "hours_basis": "Fictional.",
+            "rate_per_hour": "$120.00",
+            "role": "evidence_analyst",
+            "task": "Extend the register schema and backfill across three groups"
+          },
+          {
+            "arithmetic": "18 h x $150.00/h = $2,700.00",
+            "cost": "$2,700.00",
+            "cost_cents": 270000,
+            "hours": 18.0,
+            "hours_basis": "Fictional.",
+            "rate_per_hour": "$150.00",
+            "role": "assessment_engineer",
+            "task": "Compile three new cells"
+          },
+          {
+            "arithmetic": "not computed: hours not estimated. Not priced at zero.",
+            "cost": "UNKNOWN",
+            "cost_cents": null,
+            "hours": null,
+            "hours_basis": "NOT ESTIMATED. How much this costs depends on how much evidence the new dimension shares with the existing four, which is not knowable until the rubric is agreed. It could be a few hours of mapping or a re-run of every cell. Putting a number here would be inventing the answer to the question the rubric has not settled.",
+            "rate_per_hour": "$150.00",
+            "role": "assessment_engineer",
+            "task": "Reconcile the new dimension against the existing 12-cell model"
+          }
+        ]
+      },
+      {
+        "basis": "added_scope",
+        "computed_fee": "$3,466.80",
+        "computed_fee_cents": 346680,
+        "computed_vs_published_delta": "-$533.20",
+        "computed_vs_published_delta_cents": -53320,
+        "coordination_overhead": "$256.80",
+        "coordination_overhead_cents": 25680,
+        "coordination_overhead_pct": 8.0,
+        "dependencies": [
+          "Final technical work package delivered",
+          "Separate written authorization -- the base workshare does not include this"
+        ],
+        "disposition": "CHANGE_QUOTE",
+        "fee": "$4,000.00",
+        "fee_basis": "$4,000.00 \u2014 the price already published for this item (COMMERCIAL.md / ACCEPTANCE_EXHIBIT.md section 4.4 -- optional final-readout support, $4,000 when separately authorized). That figure governs. Bottom-up from 18.0 h at the baseline role rates the same work computes to $3,466.80, a difference of -$533.20; the published price is not re-derived, because a second number for the same item is how a proposal starts contradicting itself across documents. The gap is shown so the published figure can be revisited deliberately if it is wrong.",
+        "fee_cents": 400000,
+        "hours_estimated": 18.0,
+        "hours_unestimated_tasks": [],
+        "labour_subtotal": "$3,210.00",
+        "labour_subtotal_cents": 321000,
+        "non_committable_costs": [],
+        "notes": "Demonstrates deferring to an already-published price instead of deriving a second, different number for the same item.",
+        "price_source": "PUBLISHED",
+        "published_price_ref": "COMMERCIAL.md / ACCEPTANCE_EXHIBIT.md section 4.4 -- optional final-readout support, $4,000 when separately authorized",
+        "reconciles": true,
+        "reconciliation": "published $4,000.00 governs; computed line items $3,210.00 + overhead $256.80 = $3,466.80 (cross-check only)",
+        "request_id": "CR-SYN-004",
+        "requested_by": "prime (fictional)",
+        "schedule_effect": {
+          "basis": "relative to kickoff; the prime owns the integrated schedule and any University-facing dates",
+          "calendar_days_added": 5,
+          "note": "Runs after final delivery; does not move the base milestones.",
+          "on_critical_path": false
+        },
+        "status": "PROPOSED_ESTIMATE_NOT_A_COMMITMENT",
+        "summary": "The separately-authorized readout support already described in the acceptance exhibit. It is a change-control item because it sits outside the base package, but it is not an unpriced one.",
+        "title": "Deliver the optional final-readout session",
+        "work_items": [
+          {
+            "arithmetic": "10 h x $195.00/h = $1,950.00",
+            "cost": "$1,950.00",
+            "cost_cents": 195000,
+            "hours": 10.0,
+            "hours_basis": "Fictional.",
+            "rate_per_hour": "$195.00",
+            "role": "lead_reviewer",
+            "task": "Prepare the readout deck from the final technical package"
+          },
+          {
+            "arithmetic": "4 h x $195.00/h = $780.00",
+            "cost": "$780.00",
+            "cost_cents": 78000,
+            "hours": 4.0,
+            "hours_basis": "Fictional.",
+            "rate_per_hour": "$195.00",
+            "role": "lead_reviewer",
+            "task": "Rehearse and deliver the session"
+          },
+          {
+            "arithmetic": "4 h x $120.00/h = $480.00",
+            "cost": "$480.00",
+            "cost_cents": 48000,
+            "hours": 4.0,
+            "hours_basis": "Fictional.",
+            "rate_per_hour": "$120.00",
+            "role": "evidence_analyst",
+            "task": "Capture and circulate post-session questions"
+          }
+        ]
+      },
+      {
+        "basis": "added_scope",
+        "computed_fee": "$2,462.40",
+        "computed_fee_cents": 246240,
+        "coordination_overhead": "$182.40",
+        "coordination_overhead_cents": 18240,
+        "coordination_overhead_pct": 8.0,
+        "dependencies": [
+          "Prime owns the onsite commitment and any University-facing arrangements",
+          "Site access arranged by the prime"
+        ],
+        "disposition": "CHANGE_QUOTE",
+        "fee": "$2,462.40",
+        "fee_basis": "14.0 h of added work priced at the baseline role rates, plus 8% coordination overhead. Proposed estimate against the assumptions printed with this worksheet; not an offer and not an authorization.",
+        "fee_cents": 246240,
+        "hours_estimated": 14.0,
+        "hours_unestimated_tasks": [],
+        "labour_subtotal": "$2,280.00",
+        "labour_subtotal_cents": 228000,
+        "non_committable_costs": [
+          {
+            "excluded_from_fee": true,
+            "item": "Travel, accommodation and subsistence for the onsite day",
+            "reason": "COMMERCIAL.md excludes travel and states it cannot be committed by this carrier. The labour above is priced; the travel is not, and no figure for it appears in this fee. The prime authorizes travel separately or the day does not happen."
+          }
+        ],
+        "notes": "Shows a real cost that is deliberately absent from the fee rather than estimated into it.",
+        "price_source": "COMPUTED",
+        "reconciles": true,
+        "reconciliation": "line items $2,280.00 + overhead $182.40 = $2,462.40",
+        "request_id": "CR-SYN-005",
+        "requested_by": "prime (fictional)",
+        "schedule_effect": {
+          "basis": "relative to kickoff; the prime owns the integrated schedule and any University-facing dates",
+          "calendar_days_added": 2,
+          "note": "Absorbed into the evidence-collection window; does not extend the draft milestone.",
+          "on_critical_path": false
+        },
+        "status": "PROPOSED_ESTIMATE_NOT_A_COMMITMENT",
+        "summary": "One day of onsite facilitation during evidence collection. Onsite work is explicitly a change-control item, and travel is explicitly excluded from what this carrier can commit.",
+        "title": "Add one onsite working day",
+        "work_items": [
+          {
+            "arithmetic": "8 h x $195.00/h = $1,560.00",
+            "cost": "$1,560.00",
+            "cost_cents": 156000,
+            "hours": 8.0,
+            "hours_basis": "Fictional: a single working day.",
+            "rate_per_hour": "$195.00",
+            "role": "lead_reviewer",
+            "task": "Onsite facilitation, one working day"
+          },
+          {
+            "arithmetic": "6 h x $120.00/h = $720.00",
+            "cost": "$720.00",
+            "cost_cents": 72000,
+            "hours": 6.0,
+            "hours_basis": "Fictional.",
+            "rate_per_hour": "$120.00",
+            "role": "evidence_analyst",
+            "task": "Preparation and same-week write-up"
+          }
+        ]
+      },
+      {
+        "basis": "deliverable_defect",
+        "dependencies": [],
+        "disposition": "NO_CHARGE_CURE",
+        "failed_criterion": "every unassessed cell states the reason it is on HOLD",
+        "fee": "$0.00",
+        "fee_basis": "No charge. This corrects a TJLabs-authored artifact that failed the agreed acceptance criterion \"every unassessed cell states the reason it is on HOLD\". Per the acceptance exhibit, a correction of genuine nonconformance is not a new scope item merely because it occurs during acceptance review. The 7.0 h below is real work at TJLabs' cost; it is reported rather than zeroed so the effort stays visible, and it is not billed.",
+        "fee_cents": 0,
+        "hours_estimated": 7.0,
+        "hours_unestimated_tasks": [],
+        "internal_cost": "$1,050.00",
+        "internal_cost_cents": 105000,
+        "internal_cost_note": "TJLabs' own cost of the cure, shown for internal effort tracking. It is not a charge, not an invoice line, and not part of any total presented to the buyer.",
+        "non_committable_costs": [],
+        "notes": "THE BOUNDARY CASE. Real hours, zero charge. The exhibit: a small correction to a TJLabs-authored artifact that fails an agreed acceptance criterion is not a new scope item merely because it occurs during acceptance review.",
+        "reconciles": true,
+        "request_id": "CR-SYN-006",
+        "requested_by": "prime (fictional), during acceptance review",
+        "schedule_effect": {
+          "basis": "relative to kickoff; the prime owns the integrated schedule and any University-facing dates",
+          "calendar_days_added": 1,
+          "note": "Absorbed into the acceptance-review window.",
+          "on_critical_path": false
+        },
+        "status": "PROPOSED_ESTIMATE_NOT_A_COMMITMENT",
+        "summary": "The delivered draft matrix leaves two of the twelve cells unassessed without stating why. That fails an agreed acceptance criterion, so it is a correction of TJLabs' own nonconformance -- not new work, and not billable, regardless of arriving mid-review.",
+        "title": "Correct two omitted HOLD reasons in the delivered draft matrix",
+        "work_items": [
+          {
+            "arithmetic": "5 h x $150.00/h = $750.00",
+            "cost": "$750.00",
+            "cost_cents": 75000,
+            "hours": 5.0,
+            "hours_basis": "Fictional.",
+            "rate_per_hour": "$150.00",
+            "role": "assessment_engineer",
+            "task": "Identify the omitted HOLD reasons and correct the matrix"
+          },
+          {
+            "arithmetic": "2 h x $150.00/h = $300.00",
+            "cost": "$300.00",
+            "cost_cents": 30000,
+            "hours": 2.0,
+            "hours_basis": "Fictional.",
+            "rate_per_hour": "$150.00",
+            "role": "assessment_engineer",
+            "task": "Re-run the consistency check and reissue the artifact"
+          }
+        ]
+      },
+      {
+        "basis": "excluded_by_solicitation",
+        "dependencies": [],
+        "disposition": "NOT_QUOTABLE",
+        "exclusion_reference": "ACCEPTANCE_EXHIBIT.md section 7 -- specific commercial product/vendor recommendations are a controlling RFQ scope boundary, not a normal change-control item. Only a formal controlling-solicitation amendment could reopen the question.",
+        "fee": "NOT QUOTED",
+        "fee_basis": "No fee is calculated. This request is outside the controlling solicitation's scope boundary, which is not a change-control item. It cannot be added because the prime asks for it; only a formal controlling-solicitation amendment could reopen the question. Effort of roughly 40.0 h is shown so the request is not dismissed as trivial, but it is not for sale at any price.",
+        "fee_cents": null,
+        "hours_estimated": 40.0,
+        "hours_unestimated_tasks": [],
+        "non_committable_costs": [],
+        "notes": "THE REFUSAL. Forty hours of perfectly deliverable work that still gets no price, because willingness to pay is not what makes something in scope.",
+        "reconciles": true,
+        "request_id": "CR-SYN-007",
+        "requested_by": "prime (fictional)",
+        "schedule_effect": {
+          "basis": "relative to kickoff; the prime owns the integrated schedule and any University-facing dates",
+          "calendar_days_added": null,
+          "note": "Not scheduled: the request is not quotable, so there is nothing to schedule.",
+          "on_critical_path": false
+        },
+        "status": "PROPOSED_ESTIMATE_NOT_A_COMMITMENT",
+        "summary": "A request for a named product recommendation and a vendor short-list for the IAM group. This is not expensive, or slow, or difficult. It is outside what the solicitation permits, so it has no price.",
+        "title": "Recommend a specific identity-governance product and provide a vendor short-list",
+        "work_items": [
+          {
+            "arithmetic": "30 h x $150.00/h = $4,500.00",
+            "cost": "$4,500.00",
+            "cost_cents": 450000,
+            "hours": 30.0,
+            "hours_basis": "Fictional. Shown to make clear the request is being refused on scope, not waved away as trivial.",
+            "rate_per_hour": "$150.00",
+            "role": "assessment_engineer",
+            "task": "Market scan and product comparison"
+          },
+          {
+            "arithmetic": "10 h x $195.00/h = $1,950.00",
+            "cost": "$1,950.00",
+            "cost_cents": 195000,
+            "hours": 10.0,
+            "hours_basis": "Fictional.",
+            "rate_per_hour": "$195.00",
+            "role": "lead_reviewer",
+            "task": "Short-list memo"
+          }
+        ]
+      },
+      {
+        "basis": "deliverable_defect",
+        "dependencies": [
+          "Prime identifies the specific unmet acceptance criterion, or reframes the request as a wording preference"
+        ],
+        "disposition": "NEEDS_INPUT",
+        "fee": "UNKNOWN",
+        "fee_basis": "A defect claim needs the agreed acceptance criterion the delivered artifact failed. Without it this is neither a substantiated cure nor an agreed change, and it is not resolved by guessing in either direction.",
+        "fee_cents": null,
+        "hours_estimated": 8.0,
+        "hours_unestimated_tasks": [],
+        "missing_inputs": [
+          "failed_criterion"
+        ],
+        "non_committable_costs": [],
+        "notes": "THE AMBIGUOUS ONE, and the most realistic. A vague complaint must not default to free work (which absorbs unlimited rework) or to billable work (which charges for a defect that may be ours). It stops and asks.",
+        "reconciles": true,
+        "request_id": "CR-SYN-008",
+        "requested_by": "prime (fictional), during acceptance review",
+        "schedule_effect": {
+          "basis": "relative to kickoff; the prime owns the integrated schedule and any University-facing dates",
+          "calendar_days_added": null,
+          "note": "Not estimated until the request is classified.",
+          "on_critical_path": false
+        },
+        "status": "PROPOSED_ESTIMATE_NOT_A_COMMITMENT",
+        "summary": "A general dissatisfaction with the draft findings, raised as a defect but citing no agreed acceptance criterion. Until somebody names the criterion that failed, this is neither a substantiated no-charge cure nor an agreed change.",
+        "title": "Rework the draft findings -- \"they don't read right\"",
+        "work_items": [
+          {
+            "arithmetic": "8 h x $195.00/h = $1,560.00",
+            "cost": "$1,560.00",
+            "cost_cents": 156000,
+            "hours": 8.0,
+            "hours_basis": "Fictional: a rough sizing, not a quote.",
+            "rate_per_hour": "$195.00",
+            "role": "lead_reviewer",
+            "task": "Review and revise the draft findings"
+          }
+        ]
+      }
+    ],
+    "status": "PROPOSED_ESTIMATE_NOT_A_COMMITMENT",
+    "totals": {
+      "baseline_base_fee": "$24,000.00",
+      "baseline_base_fee_cents": 2400000,
+      "baseline_unchanged": true,
+      "combined_if_all_authorized": "$49,384.00",
+      "combined_note": "Arithmetic only. Authorizing every change at once is not proposed, and this figure is not an offer.",
+      "needs_input_count": 2,
+      "no_charge_cure_count": 1,
+      "no_charge_cure_fee": "$0.00",
+      "no_charge_cure_hours": 7.0,
+      "not_quotable_count": 1,
+      "quoted_changes": "$25,384.00",
+      "quoted_changes_cents": 2538400
+    }
+  }
+}
