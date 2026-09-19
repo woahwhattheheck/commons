@@ -152,14 +152,41 @@ function resetWorkbench() {
   setError("");
 }
 
+// Validate the shape, but never use the parsed value as transport data. JSON.parse
+// collapses duplicate keys and rounds large integers; the parent strict parser
+// must receive the original document, not a browser-normalized substitute.
+function validateJsonObjectText(raw, label) {
+  if (typeof raw !== "string") throw new Error(`${label} must be JSON source text.`);
+  let value;
+  try { value = JSON.parse(raw); } catch { throw new Error(`${label} is not valid JSON.`); }
+  if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error(`${label} must be a JSON object.`);
+  return raw;
+}
+
 async function readJsonFile(input, label) {
   const file = input.files?.[0];
   if (!file) throw new Error(`${label} file is required.`);
   if (file.size > 1024 * 1024) throw new Error(`${label} file exceeds 1 MiB browser intake limit.`);
-  let value;
-  try { value = JSON.parse(await file.text()); } catch { throw new Error(`${label} is not valid JSON.`); }
-  if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error(`${label} must be a JSON object.`);
-  return value;
+  const bytes = await file.arrayBuffer();
+  if (bytes.byteLength > 1024 * 1024) throw new Error(`${label} file exceeds 1 MiB browser intake limit.`);
+  let raw;
+  try {
+    // Blob.text() replaces invalid UTF-8. Fatal decoding rejects it instead.
+    // ignoreBOM=true preserves a BOM so JSON validation rejects, not strips, it.
+    raw = new TextDecoder("utf-8", { fatal: true, ignoreBOM: true }).decode(bytes);
+  } catch { throw new Error(`${label} must be valid UTF-8.`); }
+  return validateJsonObjectText(raw, label);
+}
+
+function buildInspectionBody(candidate, authority) {
+  // Each fragment must be one complete object before insertion. This prevents
+  // trailing data from changing the envelope while retaining duplicate members
+  // for server-side rejection. Do not stringify the parsed fragment objects.
+  const body = `{"candidate":${validateJsonObjectText(candidate, "Candidate")},"authority":${validateJsonObjectText(authority, "Authority")}}`;
+  if (new TextEncoder().encode(body).byteLength > 2 * 1024 * 1024) {
+    throw new Error("Combined evidence files and request envelope exceed the 2 MiB server intake limit.");
+  }
+  return body;
 }
 
 async function inspectFiles() {
@@ -175,7 +202,7 @@ async function inspectFiles() {
     const response = await fetch("/api/inspect", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ candidate, authority }),
+      body: buildInspectionBody(candidate, authority),
       credentials: "same-origin",
       cache: "no-store"
     });
