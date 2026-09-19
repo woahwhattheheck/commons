@@ -12,6 +12,9 @@ from copy import deepcopy
 import hashlib
 import json
 import math
+import os
+import string
+import tempfile
 from pathlib import Path
 import sys
 from typing import Any
@@ -93,6 +96,8 @@ def load_json(text: str) -> Any:
         return json.loads(text, object_pairs_hook=_pairs, parse_constant=bad_constant)
     except json.JSONDecodeError as exc:
         raise MappingError(f"invalid JSON at line {exc.lineno}, column {exc.colno}") from exc
+    except RecursionError as exc:
+        raise MappingError("JSON nesting exceeds parser capacity") from exc
 
 
 def _text(value: Any, label: str) -> str:
@@ -300,8 +305,8 @@ def reconcile(document: Any) -> dict[str, Any]:
 def render_markdown(report: dict[str, Any]) -> str:
     def cell(value: Any) -> str:
         # IDs are data, not Markdown/HTML markup or URLs to follow.
-        return (str(value).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-                .replace("|", "&#124;").replace("`", "&#96;").replace("\n", "<br>"))
+        return "".join("<br>" if char == "\n" else f"&#{ord(char)};"
+                       if char in string.punctuation else char for char in str(value))
     summary = report["summary"]
     out = ["# Identity reconciliation — inspection only", "",
            "Original records remain in the JSON output. This is not a maturity rating, finding validation, or approval.", "",
@@ -329,6 +334,48 @@ def render_markdown(report: dict[str, Any]) -> str:
     return "\n".join(out)
 
 
+def _check_report_paths(input_path: Path, output_paths: list[Path]) -> None:
+    """Reject names or existing file identities shared with input/another output."""
+    paths = [input_path, *output_paths]
+    normalized = [path.resolve() for path in paths]
+    if len(normalized) != len(set(normalized)):
+        raise MappingError("input and output paths must be distinct")
+    for index, left in enumerate(paths):
+        for right in paths[index + 1:]:
+            if left.exists() and right.exists() and left.samefile(right):
+                raise MappingError("input and output files must have distinct file identities")
+    for target in output_paths:
+        if target.exists() and not target.is_file():
+            raise MappingError("report output must be a file path")
+
+
+def _publish_reports(reports: list[tuple[Path, str]]) -> None:
+    """Stage every report before replacing destinations; replace each atomically.
+
+    This prevents predictable second-destination failures from publishing a first
+    report. The filesystem does not offer a multi-file transaction: a late
+    replace/IO failure can still leave a partial pair and must return exit 2.
+    Existing report files may be intentionally regenerated; source identities
+    are checked separately. Destination symlinks are replaced, not followed.
+    """
+    staged: list[tuple[Path, Path]] = []
+    try:
+        for target, content in reports:
+            with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", newline="\n",
+                                             prefix=".identity-map-", suffix=".tmp",
+                                             dir=target.parent, delete=False) as stream:
+                temporary = Path(stream.name)
+                staged.append((temporary, target))
+                stream.write(content)
+                stream.flush()
+                os.fsync(stream.fileno())
+        for temporary, target in staged:
+            os.replace(temporary, target)
+    finally:
+        for temporary, _ in staged:
+            temporary.unlink(missing_ok=True)
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("input", type=Path)
@@ -336,19 +383,20 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--markdown", type=Path)
     args = parser.parse_args(argv)
     try:
-        paths = [p.resolve() for p in (args.input, args.output, args.markdown) if p]
-        if len(paths) != len(set(paths)):
-            raise MappingError("input and output paths must be distinct")
+        outputs = [path for path in (args.output, args.markdown) if path is not None]
+        _check_report_paths(args.input, outputs)
         report = reconcile(load_json(args.input.read_text(encoding="utf-8")))
         text = json.dumps(report, ensure_ascii=False, sort_keys=True, indent=2, allow_nan=False) + "\n"
+        reports = []
         if args.output:
-            args.output.write_text(text, encoding="utf-8", newline="\n")
-        else:
-            sys.stdout.write(text)
+            reports.append((args.output, text))
         if args.markdown:
-            args.markdown.write_text(render_markdown(report), encoding="utf-8", newline="\n")
+            reports.append((args.markdown, render_markdown(report)))
+        _publish_reports(reports)
+        if not args.output:
+            sys.stdout.write(text)
         return 1 if report["summary"]["unresolved_links"] else 0
-    except (MappingError, OSError, UnicodeError) as exc:
+    except (MappingError, OSError, UnicodeError, RecursionError) as exc:
         print(f"identity-map: {exc}", file=sys.stderr)
         return 2
 
