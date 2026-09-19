@@ -484,6 +484,15 @@ def render(packet: Any, findings: list[Finding]) -> str:
         f"- **Group:** {metadata.get('group', 'unknown')}",
         f"- **Summary:** {metadata.get('summary', 'unknown')}",
         "",
+        "## Packet context",
+        "",
+        f"- **Packet version:** {_cell(metadata.get('packet_version'))}",
+        f"- **Synthetic declaration:** {_cell(json.dumps(metadata['synthetic']) if type(metadata.get('synthetic')) is bool else metadata.get('synthetic'))}",
+        f"- **Implementation owner role:** {_cell(metadata.get('implementation_owner_role'))}",
+        f"- **Support owner role:** {_cell(metadata.get('support_owner_role'))}",
+        f"- **Release trigger:** {_cell(metadata.get('release_trigger'))}",
+        f"- **Urgency reason:** {_cell(metadata.get('urgency_reason'))}",
+        "",
         "## Requested behavior",
         "",
         str(metadata.get("requested_behavior", "")),
@@ -492,17 +501,20 @@ def render(packet: Any, findings: list[Finding]) -> str:
         "",
         f"- **Before:** {_mapping(packet.get('user_facing_behavior')).get('before', '')}",
         f"- **After:** {_mapping(packet.get('user_facing_behavior')).get('after', '')}",
+        f"- **Affected users:** {_cell(_mapping(packet.get('user_facing_behavior')).get('affected_users'))}",
+        f"- **Communications:** {_cell(_mapping(packet.get('user_facing_behavior')).get('communications'))}",
         "",
         "## Requirement traceability",
         "",
-        "| Requirement | Acceptance criteria | Evidence | Support / operations |",
-        "| --- | --- | --- | --- |",
+        "| Requirement | Statement | Acceptance criteria | Evidence | Support / operations |",
+        "| --- | --- | --- | --- | --- |",
     ]
 
     for requirement in _objects(packet.get("requirements")):
         out.append(
-            "| {rid} | {criteria} | {evidence} | {ready} |".format(
+            "| {rid} | {statement} | {criteria} | {evidence} | {ready} |".format(
                 rid=_cell(requirement.get("id")),
+                statement=_cell(requirement.get("statement")),
                 criteria=_cell(requirement.get("acceptance_criteria")),
                 evidence=_cell(_reference_text(requirement.get("acceptance_evidence"))),
                 ready=_cell(_reference_text(requirement.get("support_readiness"))),
@@ -516,13 +528,14 @@ def render(packet: Any, findings: list[Finding]) -> str:
         out.append("| " + " | ".join(_cell(item.get(key)) for key in
                                      ("id", "kind", "locator", "result", "notes")) + " |")
     out.extend(["", "## Support and operational readiness", "",
-                "| ID | Scope | Item / need | Owner role | Recorded status | Evidence / verification | Follow-up trigger |",
-                "| --- | --- | --- | --- | --- | --- | --- |"])
+                "| ID | Scope | Kind | Item / need | Owner role | Recorded status | Evidence / verification | Follow-up trigger |",
+                "| --- | --- | --- | --- | --- | --- | --- | --- |"])
     for section, label, description, evidence_field in (
             ("support_readiness", "support", "item", "locator"),
             ("operational_needs", "operations", "need", "verification")):
         for item in _objects(packet.get(section)):
-            values = (item.get("id"), label, item.get(description), item.get("owner_role"),
+            values = (item.get("id"), label, item.get("kind") if section == "operational_needs" else "support item",
+                      item.get(description), item.get("owner_role"),
                       item.get("status"), item.get(evidence_field), item.get("follow_up_trigger"))
             out.append("| " + " | ".join(_cell(value) for value in values) + " |")
 
@@ -531,16 +544,25 @@ def render(packet: Any, findings: list[Finding]) -> str:
         out.append(
             f"- **{item.get('id', '?')}** — {item.get('description', '')} "
             f"(scope: {item.get('affected_scope', '')}; owner: {item.get('owner_role', '')}; "
-            f"follow-up: {item.get('follow_up_trigger', '')})"
+            f"follow-up: {item.get('follow_up_trigger', '')}; mitigation: {_cell(item.get('mitigation'))})"
         )
 
-    out.extend(["", "## Documentation", ""])
+    out.extend(["", "## Documentation", "",
+                "| Document | Owner role | Recorded status | Locator | Follow-up trigger |",
+                "| --- | --- | --- | --- | --- |"])
     for item in _objects(packet.get("documentation_updates")):
-        locator = item.get("locator") or item.get("follow_up_trigger") or "not recorded"
-        out.append(
-            f"- **{item.get('document', '?')}** — {item.get('status', 'unknown')}; "
-            f"owner: {item.get('owner_role', 'unknown')}; locator/follow-up: {locator}"
-        )
+        out.append("| " + " | ".join(_cell(item.get(key)) for key in
+                                     ("document", "owner_role", "status", "locator", "follow_up_trigger")) + " |")
+
+    # Recovery is required assessment input and must also reach the operator.
+    # An owner mentioned elsewhere is not a substitute for this section.
+    recovery = _mapping(packet.get("rollback_and_recovery"))
+    out.extend(["", "## Rollback and recovery", ""])
+    for key, label in (("rollback_trigger", "Rollback trigger"),
+                       ("rollback_method", "Rollback method"),
+                       ("data_recovery_notes", "Data recovery notes"),
+                       ("owner_role", "Recovery owner role")):
+        out.append(f"- **{label}:** {_cell(recovery.get(key))}")
 
     out.extend(["", "## Open items", ""])
     open_items = _objects(packet.get("open_items"))
