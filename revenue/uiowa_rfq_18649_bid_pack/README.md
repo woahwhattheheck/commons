@@ -1,6 +1,7 @@
 # UIOWA-136 — Bidder attachment assembly and navigation tool
 
-Work orders **UIOWA-136** and **UIOWA-136B** (RFQ-18649 lane). Seat **OP5-TOPAZ**, Claude Opus 5.
+Work orders **UIOWA-136**, **UIOWA-136B** and **OPS-DOCBYTES-AUDIT** (RFQ-18649 lane).
+Seat **OP5-TOPAZ**, Claude Opus 5.
 
 Turns a manifest of prepared proposal components into an orderly submission folder:
 stable filenames, an attachment index, section/page cross-references, and working
@@ -32,6 +33,7 @@ Python 3 stdlib only. No pip, no network, no `reportlab`, no `python-docx`.
 python3 bid_pack.py --manifest fixtures/manifest.json --out sample_output
 python3 bid_pack.py --manifest fixtures/manifest.json --out /tmp/x --strict   # exit 1 on any ERROR
 python3 packcheck.py sample_output/proposal.pdf sample_output/proposal.docx   # exit 1 on any defect
+python3 packcheck.py --sweep <directory>                                     # audit every .pdf/.docx under a tree
 python3 -m unittest test_bid_pack test_packcheck -v
 ```
 
@@ -60,7 +62,7 @@ assembled -> sample_output
 | `sample_output/` | A committed run of the assembler over `fixtures/`. |
 | `packcheck.py` | **UIOWA-136B.** Independent structural validator for the rendered PDF and DOCX. Does *not* use `pdfwrite`'s reader. |
 | `test_bid_pack.py` | 35 `unittest` tests for the assembler. |
-| `test_packcheck.py` | 27 `unittest` tests for the validator — almost all of them corrupt the real rendered document on purpose. |
+| `test_packcheck.py` | 35 `unittest` tests for the validator — most of them corrupt the real rendered document on purpose. |
 
 Output of a run (`sample_output/`): `proposal.pdf`, `proposal.docx`, `00-INDEX.md`,
 `attachment_index.csv`, `bid_pack.json` (versioned + content-digested),
@@ -258,3 +260,89 @@ possible so the measured defect is the targeted one.
 - No encryption, no incremental updates, no linearization checks.
 - The DOCX side checks package structure and navigation wiring, not schema validity
   against the ECMA-376 XSDs.
+
+
+---
+
+# OPS-DOCBYTES-AUDIT — kit-wide sweep, and two false positives it exposed in `packcheck` itself
+
+`packcheck.py --sweep <dir>` walks a tree and audits every `.pdf` and `.docx` under
+it. Running it across `revenue/` produced two findings, **both of them defects in this
+validator rather than in the files it was pointed at.** Both are fixed, and both now
+have named regression tests.
+
+### Finding 1 — `word/styles.xml` was demanded but is not required
+
+`REQUIRED_PARTS` listed `word/styles.xml` because this lane's own writer emits it.
+OOXML does not require it. The validator reported `document_extraction/fixtures/
+sample.docx`, a valid package from another lane, as `DEFECT required_parts`.
+
+**Fixed by** splitting mandatory parts (`[Content_Types].xml`, `_rels/.rels`, plus the
+main document part **discovered through `_rels/.rels`** rather than hardcoded) from
+conventional ones (`word/styles.xml`, `docProps/core.xml`), which are now reported as a
+**`note`**, never a defect. Tests:
+`test_absent_conventional_part_is_a_note_not_a_defect`,
+`test_main_document_part_is_discovered_not_hardcoded`,
+`test_package_with_no_office_document_relationship_is_caught`.
+
+### Finding 2 — `/Length` was measured against a newline that need not exist
+
+The stream-length check searched for `b"\nendstream"`. The end-of-line before
+`endstream` is optional and is not part of the stream data, so every Flate-compressed
+PDF whose binary data runs straight into the keyword was reported broken — four
+streams in `roadef2026/sedge/method.pdf`.
+
+**Fixed by** measuring the bytes between `stream` and `endstream` and accepting the
+spec-permitted 0, 1 or 2 bytes of end-of-line, and nothing wider. Tests:
+`test_stream_with_no_eol_before_endstream_is_accepted`, and
+`test_falsified_stream_length_is_caught` now falsifies by more than the tolerance so it
+still measures a real mismatch.
+
+### Third change — `CANNOT ASSESS` is now a distinct outcome
+
+`packcheck` reads classic `xref` tables only. A PDF 1.5+ cross-reference stream or
+object stream would previously have been reported as a defect. It now reports
+`CANNOT ASSESS`, the file's verdict becomes `CLEAN/PARTIAL` rather than `CLEAN`, and
+the unassessed count is printed in the sweep table. Test:
+`test_cross_reference_stream_is_reported_as_cannot_assess_not_broken`.
+
+`Report` now carries four outcomes: `ok`, `defect`, `note` (advisory, does not fail the
+file) and `not_run` (including `CANNOT ASSESS`). **A check that did not run is never a
+pass**, and a sweep of a tree containing no documents prints `Nothing was checked. That
+is NOT a pass.`
+
+### Sweep result over `revenue/` — verbatim
+
+```
+document                                                                   checks defects notes unassessed  verdict
+----------------------------------------------------------------------------------------------------------------------
+roadef2026/sedge/method.pdf                                                    16       0     0          0  CLEAN
+uiowa_rfq_18649_bid_pack/sample_output/proposal.docx                            7       0     0          0  CLEAN
+uiowa_rfq_18649_bid_pack/sample_output/proposal.pdf                            17       0     0          0  CLEAN
+uiowa_rfq_18649_document_extraction/fixtures/blank.pdf                         15       0     0          0  CLEAN
+uiowa_rfq_18649_document_extraction/fixtures/sample.docx                        6       0     1          0  CLEAN
+uiowa_rfq_18649_document_extraction/fixtures/sample.pdf                        15       0     0          0  CLEAN
+uiowa_rfq_18649_print_pagination/sample/boundary_citation_split_fixed.pdf      15       0     0          0  CLEAN
+uiowa_rfq_18649_print_pagination/sample/boundary_citation_split_naive.pdf      15       0     0          0  CLEAN
+uiowa_rfq_18649_print_pagination/sample/boundary_orphan_heading_fixed.pdf      15       0     0          0  CLEAN
+uiowa_rfq_18649_print_pagination/sample/boundary_orphan_heading_naive.pdf      15       0     0          0  CLEAN
+uiowa_rfq_18649_print_pagination/sample/report_document_fixed.pdf              15       0     0          0  CLEAN
+uiowa_rfq_18649_print_pagination/sample/report_document_naive.pdf              15       0     0          0  CLEAN
+
+note    uiowa_rfq_18649_document_extraction/fixtures/sample.docx  conventional_parts: absent (not required by OOXML): word/styles.xml, docProps/core.xml
+
+12 file(s) swept, 0 with defect(s).
+```
+
+No file outside `revenue/uiowa_rfq_18649_bid_pack/` was modified. Findings are reported
+here, not patched into another lane.
+
+### UNKNOWN after this audit
+
+- Whether any of these documents **render** correctly. Structure only; appearance is
+  UIOWA-123's lane.
+- Whether the twelve files above are the complete set the University would receive.
+  Only what is on the branch was swept.
+- Whether `packcheck` carries further false positives against producers not represented
+  in this tree. Two were found by pointing it at two unfamiliar producers; there is no
+  basis to claim there is not a third.

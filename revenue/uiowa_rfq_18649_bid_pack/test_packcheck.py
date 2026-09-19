@@ -123,14 +123,48 @@ class CorruptedPdfTests(RenderedCase):
                          len(pdfwrite.read_pdf_pages(self.pdf)))
 
     def test_falsified_stream_length_is_caught(self):
+        # The falsification has to exceed the +/-2 byte end-of-line tolerance,
+        # so flip the leading digit rather than adding one: a one-byte change is
+        # inside the slack the spec itself permits and is not a defect.
         m = re.search(rb"/Length (\d+) >>", self.pdf)
         self.assertIsNotNone(m)
-        n = int(m.group(1))
-        fake = n + 1 if len(str(n + 1)) == len(str(n)) else n - 1
-        broken = self.pdf[:m.start(1)] + str(fake).encode() + self.pdf[m.end(1):]
+        digits = m.group(1)
+        fake = (b"9" if digits[:1] != b"9" else b"1") + digits[1:]
+        broken = self.pdf[:m.start(1)] + fake + self.pdf[m.end(1):]
         self.assertEqual(len(broken), len(self.pdf))
         r = packcheck.check_pdf(broken, "bad /Length")
         self.assertDefect(r, "stream_lengths")
+
+    def test_stream_with_no_eol_before_endstream_is_accepted(self):
+        # Regression: this check used to search for b"\nendstream" and so
+        # reported every Flate-compressed PDF whose binary data runs straight
+        # into the keyword as broken. Found by pointing the tool at another
+        # lane's file, not by a test I wrote first.
+        broken = self.pdf.replace(b"\nendstream", b"endstream")
+        self.assertNotEqual(broken, self.pdf)
+        r = packcheck.check_pdf(broken, "no EOL before endstream")
+        self.assertNotIn("stream_lengths", r.defect_names)
+
+    def test_cross_reference_stream_is_reported_as_cannot_assess_not_broken(self):
+        # A PDF 1.5+ file with a compressed xref stream. This validator reads
+        # classic xref tables only; saying so is the honest outcome, and
+        # calling it a defect would be a false positive against any seat using
+        # a real PDF library.
+        body = (b"%PDF-1.5\n"
+                b"1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n"
+                b"2 0 obj\n<< /Type /Pages /Kids [ 3 0 R ] /Count 1 >>\nendobj\n"
+                b"3 0 obj\n<< /Type /Page /Parent 2 0 R >>\nendobj\n")
+        xref_at = len(body)
+        body += (b"4 0 obj\n<< /Type /XRef /Size 5 /Root 1 0 R /Length 4 >>\n"
+                 b"stream\nABCD\nendstream\nendobj\n")
+        body += b"startxref\n%d\n%%%%EOF\n" % xref_at
+        r = packcheck.check_pdf(body, "xref stream")
+        self.assertIn("startxref", r.unassessed_names)
+        self.assertNotIn("startxref", r.defect_names)
+        self.assertNotIn("xref_offsets_resolve", r.defect_names)
+        self.assertIn("CANNOT ASSESS", "\n".join(r.lines()))
+        # partial coverage is never reported as a full clean bill of health
+        self.assertEqual(r.verdict, "CLEAN/PARTIAL")
 
     def test_reference_to_a_nonexistent_object_is_caught(self):
         r = packcheck.check_pdf(self.sub(rb"/Contents (\d\d) 0 R", b"/Contents 99 0 R"),
@@ -223,12 +257,40 @@ class CorruptedDocxTests(RenderedCase):
                 dst.writestr(info.filename, replace.get(info.filename, blob))
         return out
 
-    def test_missing_required_part_is_caught(self):
-        r = packcheck.check_docx(self.rebuild(drop=("word/styles.xml",)))
-        self.assertDefect(r, "required_parts")
+    def test_missing_mandatory_part_is_caught(self):
+        r = packcheck.check_docx(self.rebuild(drop=("[Content_Types].xml",)))
+        self.assertDefect(r, "mandatory_parts")
+
+    def test_absent_conventional_part_is_a_note_not_a_defect(self):
+        # THE false positive this sub-order exists to fix. word/styles.xml is
+        # not required by OOXML; this lane's writer simply emits it. Demanding
+        # it reported another seat's valid fixture as broken.
+        r = packcheck.check_docx(self.rebuild(
+            drop=("word/styles.xml",),
+            replace={"word/_rels/document.xml.rels":
+                     b'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+                     b'<Relationships xmlns="http://schemas.openxmlformats.org/'
+                     b'package/2006/relationships"/>'}))
+        self.assertNotIn("mandatory_parts", r.defect_names)
+        self.assertNotIn("relationships_resolve", r.defect_names)
+        self.assertIn("conventional_parts", r.note_names)
+        self.assertTrue(r.clean, "a valid package was reported broken: %r" % r.defects)
+
+    def test_main_document_part_is_discovered_not_hardcoded(self):
+        r = packcheck.check_docx(self.docx)
+        detail = dict((n, d) for n, _s, d in r.checks)["main_document_part"]
+        self.assertEqual(detail, "word/document.xml")
+
+    def test_package_with_no_office_document_relationship_is_caught(self):
+        r = packcheck.check_docx(self.rebuild(
+            replace={"_rels/.rels":
+                     b'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+                     b'<Relationships xmlns="http://schemas.openxmlformats.org/'
+                     b'package/2006/relationships"/>'}))
+        self.assertDefect(r, "main_document_part")
 
     def test_relationship_pointing_at_a_missing_part_is_caught(self):
-        # styles.xml is dropped AND the relationship to it is left behind
+        # styles.xml dropped, the relationship to it deliberately left behind
         r = packcheck.check_docx(self.rebuild(drop=("word/styles.xml",)))
         self.assertDefect(r, "relationships_resolve")
 
@@ -289,6 +351,48 @@ class CliTests(RenderedCase):
             rc = packcheck.main([broken])
         self.assertEqual(rc, 1)
         self.assertIn("eof_marker", buf.getvalue())
+
+    def test_sweep_walks_a_tree_and_names_every_file(self):
+        # Sweep a dedicated directory: other tests in this class deliberately
+        # leave corrupted files in self.tmp, and a sweep is order-dependent if
+        # it is pointed at shared scratch space.
+        import contextlib
+        clean = os.path.join(self.tmp, "clean_sweep")
+        os.makedirs(clean, exist_ok=True)
+        shutil.copyfile(os.path.join(self.tmp, "proposal.pdf"),
+                        os.path.join(clean, "proposal.pdf"))
+        shutil.copyfile(self.docx, os.path.join(clean, "proposal.docx"))
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            rc = packcheck.main(["--sweep", clean])
+        text = buf.getvalue()
+        self.assertEqual(rc, 0)
+        self.assertIn("proposal.pdf", text)
+        self.assertIn("proposal.docx", text)
+        self.assertIn("CLEAN", text)
+        self.assertIn("file(s) swept", text)
+
+    def test_sweep_of_a_tree_with_no_documents_says_nothing_was_checked(self):
+        import contextlib
+        empty = os.path.join(self.tmp, "nodocs")
+        os.makedirs(empty, exist_ok=True)
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            rc = packcheck.main(["--sweep", empty])
+        self.assertEqual(rc, 0)
+        self.assertIn("Nothing was checked. That is NOT a pass.", buf.getvalue())
+
+    def test_sweep_exits_nonzero_when_a_swept_file_has_a_defect(self):
+        import contextlib
+        broken_dir = os.path.join(self.tmp, "broken_sweep")
+        os.makedirs(broken_dir, exist_ok=True)
+        with open(os.path.join(broken_dir, "bad.pdf"), "wb") as fh:
+            fh.write(self.pdf[:-60])
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            rc = packcheck.main(["--sweep", broken_dir])
+        self.assertEqual(rc, 1)
+        self.assertIn("DEFECT", buf.getvalue())
 
     def test_cli_with_no_arguments_is_a_usage_error_not_a_pass(self):
         import contextlib

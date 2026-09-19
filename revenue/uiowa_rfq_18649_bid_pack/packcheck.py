@@ -29,6 +29,7 @@ Run:
 
 from __future__ import annotations
 
+import os
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -38,11 +39,28 @@ OK, DEFECT = "OK", "DEFECT"
 
 
 class Report(object):
-    """A checked/unchecked record. Absence of a check is never a pass."""
+    """A checked/unchecked record. Absence of a check is never a pass.
+
+    Four outcomes, and the distinction between the last three is the whole
+    point of this class:
+      ok       -- the check ran and the file satisfied it
+      defect   -- the check ran and the file failed it
+      note     -- an advisory observation; NOT a defect, does not fail the file
+      not_run  -- the check did not run, either because it does not apply or
+                  because this validator CANNOT ASSESS this input. Never a pass.
+
+    `note` exists because of a real false positive: this module used to demand
+    `word/styles.xml` in every .docx -- not because OOXML requires it, but
+    because its sibling writer happens to emit it. It reported another seat's
+    perfectly valid fixture as broken. A false positive against a correct file
+    is worse than a missed defect: it burns the other author's time arguing
+    with the tool. Conventions are notes. Only requirements are defects.
+    """
 
     def __init__(self, target):
         self.target = target
         self.checks = []      # (name, OK|DEFECT, detail)
+        self.notes = []       # (name, detail)
         self.not_run = []     # (name, why)
 
     def ok(self, name, detail=""):
@@ -51,8 +69,15 @@ class Report(object):
     def defect(self, name, detail):
         self.checks.append((name, DEFECT, detail))
 
+    def note(self, name, detail):
+        self.notes.append((name, detail))
+
     def skip(self, name, why):
         self.not_run.append((name, why))
+
+    def unassessed(self, name, why):
+        """This validator cannot evaluate the check on this input."""
+        self.not_run.append((name, "CANNOT ASSESS: " + why))
 
     @property
     def defects(self):
@@ -63,17 +88,38 @@ class Report(object):
         return [n for n, _ in self.defects]
 
     @property
+    def note_names(self):
+        return [n for n, _ in self.notes]
+
+    @property
+    def unassessed_names(self):
+        return [n for n, w in self.not_run if w.startswith("CANNOT ASSESS")]
+
+    @property
     def clean(self):
         return not self.defects
 
+    @property
+    def verdict(self):
+        if self.defects:
+            return "DEFECTS(%d)" % len(self.defects)
+        if not self.checks:
+            return "NOT ASSESSED"
+        if self.unassessed_names:
+            return "CLEAN/PARTIAL"
+        return "CLEAN"
+
     def summary(self):
-        return ("%s: %d check(s) run, %d defect(s), %d not run"
-                % (self.target, len(self.checks), len(self.defects), len(self.not_run)))
+        return ("%s: %d check(s) run, %d defect(s), %d note(s), %d not run"
+                % (self.target, len(self.checks), len(self.defects),
+                   len(self.notes), len(self.not_run)))
 
     def lines(self):
         out = [self.summary()]
         for n, s, d in self.checks:
             out.append("  [%s] %-30s %s" % ("ok " if s == OK else "DEF", n, d))
+        for n, d in self.notes:
+            out.append("  [note] %-28s %s" % (n, d))
         for n, why in self.not_run:
             out.append("  [---] %-30s NOT RUN: %s" % (n, why))
         return out
@@ -119,6 +165,14 @@ def check_pdf(data, target="pdf"):
         return r
     r.ok("objects_present", "%d object(s)" % len(real))
 
+    # PDF 1.5+ may store the cross-reference table as a compressed stream object
+    # and pack objects into object streams. This validator parses neither. That
+    # is a COVERAGE LIMIT, not a defect in the file, and it has to be reported
+    # as CANNOT ASSESS -- reporting it as broken would be a false positive
+    # against every seat using a real PDF library.
+    xref_stream = b"/Type /XRef" in data or b"/Type/XRef" in data
+    obj_stream = b"/Type /ObjStm" in data or b"/Type/ObjStm" in data
+
     sx = re.search(rb"startxref\s+(\d+)\s*%%EOF\s*$", data)
     xref_at = None
     if not sx:
@@ -126,11 +180,19 @@ def check_pdf(data, target="pdf"):
     else:
         xref_at = int(sx.group(1))
         if xref_at >= len(data) or data[xref_at:xref_at + 4] != b"xref":
-            r.defect("startxref",
-                     "startxref %d does not point at an 'xref' keyword" % xref_at)
+            if xref_stream and _OBJ_HEAD.match(data, xref_at):
+                r.unassessed("startxref", "points at a cross-reference stream "
+                             "(PDF 1.5+); this validator reads classic xref tables only")
+            else:
+                r.defect("startxref",
+                         "startxref %d does not point at an 'xref' keyword" % xref_at)
             xref_at = None
         else:
             r.ok("startxref", "offset %d" % xref_at)
+    if obj_stream:
+        r.unassessed("objects_in_object_streams",
+                     "file uses object streams (/ObjStm); objects packed inside "
+                     "them are not visible to this validator")
 
     offsets = {}
     if xref_at is not None:
@@ -169,17 +231,27 @@ def check_pdf(data, target="pdf"):
         r.defect("xref_offsets_resolve", "; ".join(bad[:4]))
     elif offsets:
         r.ok("xref_offsets_resolve", "%d offset(s) land on their object" % len(offsets))
+    elif xref_stream:
+        r.unassessed("xref_offsets_resolve", "cross-reference stream (PDF 1.5+)")
     else:
         r.skip("xref_offsets_resolve", "no in-use xref entries were parsed")
 
     trailer = re.search(rb"trailer\s*<<(.*?)>>\s*startxref", data, re.S)
     tdict = b""
-    if not trailer:
+    if not trailer and xref_stream:
+        # In a 1.5+ file the trailer fields live in the XRef stream's own dict.
+        xr = re.search(rb"<<([^<>]*?/Type\s*/XRef.*?)>>", data, re.S)
+        tdict = xr.group(1) if xr else b""
+        r.unassessed("trailer", "trailer fields are carried in a cross-reference "
+                     "stream dictionary; read for /Root only, not validated")
+    elif not trailer:
         r.defect("trailer", "no trailer dictionary")
     else:
         tdict = trailer.group(1)
         size = re.search(rb"/Size\s+(\d+)", tdict)
-        if not size:
+        if size is None and xref_stream:
+            r.unassessed("trailer_size", "cross-reference stream (PDF 1.5+)")
+        elif not size:
             r.defect("trailer_size", "trailer has no /Size")
         elif int(size.group(1)) <= max(real):
             r.defect("trailer_size", "/Size %s but highest object number is %d"
@@ -189,46 +261,68 @@ def check_pdf(data, target="pdf"):
 
     bodies = _pdf_bodies(data, real)
 
+    # /Length must equal the real stream length.
+    #
+    # The EOL before `endstream` is optional and is NOT part of the data: some
+    # producers write `<data>\nendstream`, some write `<data>endstream`, some
+    # write CRLF. An earlier version of this check searched for b"\nendstream"
+    # and so reported every Flate-compressed PDF whose binary data runs straight
+    # into the keyword as broken -- a false positive found by pointing this tool
+    # at another lane's file. The tolerance below is exactly the spec-permitted
+    # 0, 1 or 2 bytes of end-of-line, and nothing wider.
     wrong, streams = [], 0
     for num, body in bodies.items():
         m = re.search(rb"/Length\s+(\d+)", body)
         if not m:
             continue
-        sm = re.search(rb"stream\r?\n", body)
+        sm = re.search(rb"stream(?:\r\n|\n|\r)", body)
         if not sm:
             wrong.append("obj %d declares /Length but has no stream" % num)
             continue
         streams += 1
-        end = body.find(b"\nendstream", sm.end())
-        if end < 0:
-            wrong.append("obj %d stream is not terminated by endstream" % num)
+        at = body.rfind(b"endstream")
+        if at < sm.end():
+            wrong.append("obj %d stream has no endstream keyword" % num)
             continue
-        actual, declared = end - sm.end(), int(m.group(1))
-        if actual != declared:
-            wrong.append("obj %d /Length %d but stream is %d bytes"
-                         % (num, declared, actual))
+        measured, declared = at - sm.end(), int(m.group(1))
+        slack = measured - declared
+        if slack not in (0, 1, 2):
+            wrong.append("obj %d /Length %d but %d byte(s) sit between stream and "
+                         "endstream" % (num, declared, measured))
     if wrong:
         r.defect("stream_lengths", "; ".join(wrong[:4]))
     else:
-        r.ok("stream_lengths", "%d stream(s) measured" % streams)
+        r.ok("stream_lengths", "%d stream(s) measured (+/-2 bytes of "
+             "permitted end-of-line)" % streams)
 
     dangling = set()
     for num, body in bodies.items():
         for ref in re.findall(rb"(\d+)\s+0\s+R\b", body):
             if int(ref) not in real:
                 dangling.add("obj %d -> %s 0 R (no such object)" % (num, ref.decode()))
-    if dangling:
+    if obj_stream:
+        r.unassessed("references_resolve", "objects may be packed in object "
+                     "streams, so an unresolved reference cannot be distinguished "
+                     "from one this validator simply cannot see")
+    elif dangling:
         r.defect("references_resolve", "; ".join(sorted(dangling)[:4]))
     else:
         r.ok("references_resolve", "all indirect references resolve")
 
     root = re.search(rb"/Root\s+(\d+)\s+0\s+R", tdict)
     if not root:
-        r.defect("catalog", "trailer has no /Root")
+        if xref_stream or obj_stream:
+            r.unassessed("catalog", "no readable /Root outside the compressed "
+                         "cross-reference/object streams")
+        else:
+            r.defect("catalog", "trailer has no /Root")
         return r
     cat = bodies.get(int(root.group(1)), b"")
     if b"/Type /Catalog" not in cat:
-        r.defect("catalog", "/Root %s is not a /Catalog" % root.group(1).decode())
+        if obj_stream:
+            r.unassessed("catalog", "/Root object is not visible outside an object stream")
+        else:
+            r.defect("catalog", "/Root %s is not a /Catalog" % root.group(1).decode())
         return r
     r.ok("catalog", "object %s" % root.group(1).decode())
 
@@ -334,8 +428,36 @@ def check_pdf(data, target="pdf"):
 # DOCX (OOXML package)
 # --------------------------------------------------------------------------
 
-REQUIRED_PARTS = ("[Content_Types].xml", "_rels/.rels",
-                  "word/document.xml", "word/styles.xml")
+# Genuinely mandatory for an OOXML package to be openable: the content-type
+# map, the package relationships, and whatever main document part those
+# relationships point at (discovered, NOT hardcoded).
+MANDATORY_PARTS = ("[Content_Types].xml", "_rels/.rels")
+
+# Conventional, and emitted by this lane's own writer -- but NOT required by
+# OOXML. Absence is a NOTE. Demanding these was a real false positive against
+# another seat's valid fixture; see the Report docstring.
+CONVENTIONAL_PARTS = ("word/styles.xml", "docProps/core.xml")
+
+OFFICE_DOC_REL = "/officeDocument"
+
+
+def _main_document_part(z, names):
+    """Find the main document part through the package relationships.
+
+    Hardcoding 'word/document.xml' is the same author's-assumption mistake that
+    produced the styles.xml false positive: the path is whatever _rels/.rels
+    says it is.
+    """
+    if "_rels/.rels" not in names:
+        return None, "no _rels/.rels"
+    try:
+        root = ET.fromstring(z.read("_rels/.rels"))
+    except ET.ParseError as exc:
+        return None, "_rels/.rels is not well-formed XML (%s)" % exc
+    for rel in root:
+        if rel.get("Type", "").endswith(OFFICE_DOC_REL):
+            return rel.get("Target", "").lstrip("/"), None
+    return None, "package declares no officeDocument relationship"
 
 
 def check_docx(path, target=None):
@@ -357,11 +479,27 @@ def check_docx(path, target=None):
         names = set(z.namelist())
         r.ok("zip_container", "%d part(s)" % len(names))
 
-        gone = [p for p in REQUIRED_PARTS if p not in names]
+        gone = [p for p in MANDATORY_PARTS if p not in names]
         if gone:
-            r.defect("required_parts", "missing: %s" % ", ".join(gone))
+            r.defect("mandatory_parts", "missing: %s" % ", ".join(gone))
         else:
-            r.ok("required_parts")
+            r.ok("mandatory_parts", ", ".join(MANDATORY_PARTS))
+
+        main_part, why = _main_document_part(z, names)
+        if main_part is None:
+            r.defect("main_document_part", why)
+        elif main_part not in names:
+            r.defect("main_document_part",
+                     "relationships point at %r, which is not in the package" % main_part)
+        else:
+            r.ok("main_document_part", main_part)
+
+        absent = [p for p in CONVENTIONAL_PARTS if p not in names]
+        if absent:
+            # NOT a defect. OOXML does not require these; this lane's writer
+            # simply emits them.
+            r.note("conventional_parts",
+                   "absent (not required by OOXML): %s" % ", ".join(absent))
 
         xml_parts = [n for n in names if n.endswith((".xml", ".rels"))]
         malformed = []
@@ -394,12 +532,12 @@ def check_docx(path, target=None):
         else:
             r.ok("relationships_resolve")
 
-        if "word/document.xml" not in names:
-            r.skip("internal_anchors_resolve", "word/document.xml is absent")
-            r.skip("bookmarks_balanced", "word/document.xml is absent")
+        if not main_part or main_part not in names:
+            r.skip("internal_anchors_resolve", "no readable main document part")
+            r.skip("bookmarks_balanced", "no readable main document part")
             return r
 
-        doc = z.read("word/document.xml").decode("utf-8", "replace")
+        doc = z.read(main_part).decode("utf-8", "replace")
         marks = set(re.findall(r'<w:bookmarkStart [^>]*w:name="([^"]+)"', doc))
         links = re.findall(r'<w:hyperlink w:anchor="([^"]+)"', doc)
         dead = sorted({l for l in links if l not in marks})
@@ -424,10 +562,83 @@ def check_docx(path, target=None):
 
 # --------------------------------------------------------------------------
 
+def check_path(path):
+    """Route one path to the right checker, or record that nothing was checked."""
+    if path.lower().endswith(".pdf"):
+        try:
+            with open(path, "rb") as fh:
+                return check_pdf(fh.read(), path)
+        except OSError as exc:
+            rep = Report(path)
+            rep.defect("readable", str(exc))
+            return rep
+    if path.lower().endswith(".docx"):
+        return check_docx(path)
+    rep = Report(path)
+    rep.skip("format", "not a .pdf or .docx; nothing was checked")
+    return rep
+
+
+def sweep(root):
+    """Audit every .pdf/.docx under `root`, in sorted order for reproducibility."""
+    found = []
+    for base, _dirs, files in os.walk(root):
+        for name in sorted(files):
+            if name.lower().endswith((".pdf", ".docx")):
+                found.append(os.path.join(base, name))
+    return [check_path(p) for p in sorted(found)]
+
+
+def sweep_table(reports, root=""):
+    w = max([len(_rel(r.target, root)) for r in reports] + [8])
+    out = ["%-*s  %6s %7s %5s %10s  %s"
+           % (w, "document", "checks", "defects", "notes", "unassessed", "verdict"),
+           "-" * (w + 45)]
+    for r in reports:
+        out.append("%-*s  %6d %7d %5d %10d  %s"
+                   % (w, _rel(r.target, root), len(r.checks), len(r.defects),
+                      len(r.notes), len(r.unassessed_names), r.verdict))
+    return out
+
+
+def _rel(path, root):
+    return os.path.relpath(path, root) if root else path
+
+
 def main(argv=None):
     argv = list(sys.argv[1:] if argv is None else argv)
+    if argv and argv[0] == "--sweep":
+        if len(argv) != 2:
+            sys.stderr.write("usage: packcheck.py --sweep <directory>\n")
+            return 2
+        root = argv[1]
+        reports = sweep(root)
+        if not reports:
+            print("no .pdf or .docx files found under %s" % root)
+            print("Nothing was checked. That is NOT a pass.")
+            return 0
+        for line in sweep_table(reports, root):
+            print(line)
+        defects = [r for r in reports if r.defects]
+        print("")
+        for r in defects:
+            for n, d in r.defects:
+                print("DEFECT  %s  %s: %s" % (_rel(r.target, root), n, d))
+        for r in reports:
+            for n, d in r.notes:
+                print("note    %s  %s: %s" % (_rel(r.target, root), n, d))
+            for n in r.unassessed_names:
+                why = dict(r.not_run)[n]
+                print("unasses %s  %s: %s" % (_rel(r.target, root), n, why))
+        print("\n%d file(s) swept, %d with defect(s)." % (len(reports), len(defects)))
+        print("A clean result means: no structural defect found by these checks. It is "
+              "not a validity, PDF/UA, WCAG or any other conformance claim. Anything "
+              "marked CANNOT ASSESS was not checked and is not a pass.")
+        return 1 if defects else 0
+
     if not argv:
-        sys.stderr.write("usage: packcheck.py <file.pdf|file.docx> [...]\n")
+        sys.stderr.write("usage: packcheck.py <file.pdf|file.docx> [...]\n"
+                         "       packcheck.py --sweep <directory>\n")
         return 2
     reports = []
     for path in argv:
