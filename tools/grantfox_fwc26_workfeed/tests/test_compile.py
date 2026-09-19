@@ -59,6 +59,20 @@ class WorkfeedTests(unittest.TestCase):
         self.assertEqual(item.status, "CLAIM_REQUIRED")
         self.assertTrue(item.claim_required)
 
+    def test_observed_claimant_blocks_ready(self):
+        item = classify(issue(claimant_comments=[{"user": {"login": "alice"}, "body": "I would like to work on this"}]))
+        self.assertEqual(item.status, "CLAIMED_OR_PR_OPEN")
+        self.assertEqual(item.observed_claimants, ("alice",))
+
+    def test_open_pr_blocks_ready(self):
+        item = classify(issue(open_pull_requests=[{"url": "https://github.com/StableRoute-Org/Stableroute-backend/pull/572"}]))
+        self.assertEqual(item.status, "CLAIMED_OR_PR_OPEN")
+        self.assertEqual(item.open_pull_requests, ("https://github.com/StableRoute-Org/Stableroute-backend/pull/572",))
+
+    def test_malformed_coordination_fields_refused(self):
+        with self.assertRaisesRegex(WorkfeedError, "claimant_comments must be a list"):
+            classify(issue(claimant_comments={"user": "alice"}))
+
     def test_missing_campaign_label_is_ineligible(self):
         item = classify(issue(labels=LABELS[:2]))
         self.assertEqual(item.status, "INELIGIBLE")
