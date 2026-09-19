@@ -30,7 +30,7 @@ KEEP = {
     "test_open_door_guard.py": "2e2cc164",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
     "p/grokbuild-open-door-guard-33689243568-billing-lock-20260902-01.md": "4ab677c5",
-    "test_grokbuild_open_door_guard_33689243568_billing_lock.py": "c74f0d40",
+    "test_grokbuild_open_door_guard_33689243568_billing_lock.py": "b112ea4c",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
     "p/grok-resources-tab-freshness-billing-lock-20260902-01.md": "ac39fe78",
@@ -56,7 +56,11 @@ class TestGrokbuildTests33689243523BillingLock(unittest.TestCase):
         self.assertIn("name: tests", yml)
         self.assertIn("battery:", yml)
         self.assertIn("the whole battery, one failure fails the run", yml)
-        self.assertIn("find . -maxdepth 1 -type f -name 'test_*.py'", yml)
+        self.assertIn(
+            "find . -maxdepth 1 -type f \( -name 'test_*.py' -o -name 'test_*.js' \) -print",
+            yml,
+        )
+        self.assertIn("find infra -type f -name 'test_*.py' -print", yml)
         self.assertNotIn("billing", yml.lower())
         self.assertNotIn("if: false", yml)
         self.assertNotIn("continue-on-error", yml)

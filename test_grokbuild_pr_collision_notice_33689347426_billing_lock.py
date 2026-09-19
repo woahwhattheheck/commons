@@ -23,7 +23,7 @@ KEEP = {
     "test_pr_collision_notice.py": "18a87c08",
     ".github/workflows/pr-collision-notice.yml": "deeeaf57",
     "p/grokbuild-pr-collision-notice-33689085107-billing-lock-20260902-01.md": "594b5e71",
-    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "1d9883e3",
+    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "db973ec1",
     "p/grokbuild-pr8409-verify-20260902-01.md": "199cc075",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
@@ -55,7 +55,7 @@ class TestGrokbuildPrCollisionNotice33689347426BillingLock(unittest.TestCase):
         self.assertNotIn("schedule:", yml)
         self.assertIn("ref: ${{ github.event.pull_request.base.sha }}", yml)
         self.assertNotIn("github.event.pull_request.head.sha", yml)
-        self.assertIn("python3 pr_collision_notice.py", yml)
+        self.assertIn("python3 listener/pr_collision_notice.py", yml)
         self.assertNotIn("if: false", yml)
         self.assertNotIn("billing", yml.lower())
 
@@ -69,7 +69,7 @@ class TestGrokbuildPrCollisionNotice33689347426BillingLock(unittest.TestCase):
         )
         out = (proc.stdout or "") + (proc.stderr or "")
         self.assertEqual(proc.returncode, 0, msg=out)
-        self.assertIn("Ran 4 tests", out)
+        self.assertIn("Ran 11 tests", out)
         self.assertIn("OK", out)
         rows = notice.find_pr_overlaps(
             10,

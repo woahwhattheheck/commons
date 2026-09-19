@@ -16,7 +16,7 @@ KEEP = {
     "p/grokbuild-pr8410-verify-20260902-01.md": "4cfe563a",
     "p/grokbuild-pr8401-verify-20260902-01.md": "4d21f9e9",
     "p/grokbuild-pr8399-commons-slack-20260902-01.md": "1905dd74",
-    "host/stealable_lanes.py": "60ac60e1",
+    "host/stealable_lanes.py": "524275ce",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "p/grokbuild-occupancy-landed-work-keep-lift-20260902-01.md": "67a8a527",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",

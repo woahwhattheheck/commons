@@ -63,19 +63,6 @@ LIVE_CASH_LARGER_FIXED = (
         "price_usd": 30000,
     },
 )
-CHECKOUT_AUTHORITY = {
-    "offer_id": "agent-failure-autopsy-29",
-    "name": "Agent Failure Autopsy",
-    "currency": "USD",
-    "amount": 29,
-    "provider": "STRIPE",
-    "provider_account_id": "acct_1U6HI9ATH4EDE7XD",
-    "provider_product_id": "prod_VCevsvv7skWk3e",
-    "provider_price_id": "price_1UCFbHATH4EDE7XD4NNrjfUe",
-    "provider_payment_link_id": "plink_1UCFbLATH4EDE7XDlTunr6iO",
-    "payment_url": "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
-    "provider_receipt_sha256": "39ce997a58fe256b11c82963559452ec167bb8c2c7f42c67ad7ce790052e7b42",
-}
 
 
 class ControlError(ValueError):

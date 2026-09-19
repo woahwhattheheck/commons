@@ -19,18 +19,18 @@
   ],
   "inventor_provenance": {
     "path": "ground/INVENTION_BURST_INDEX.md",
-    "blob_sha": "0720ef5757a0fe416548f898ad8aa12b4ba3ce69",
-    "sha256": "a5431bde1ea74f3e19cca4cbfbe51c20aba55a3f3b1c85a569e83f06c7935a99",
-    "byte_count": 2864,
+    "blob_sha": "5de7ae09bc1cbb5c169720967f7c577ff0d8049c",
+    "sha256": "b685ba33dbdcfd11274f97b102b2c2ea7e67d81bf485faeee530db68b06f69f1",
+    "byte_count": 3155,
     "public_url": "https://github.com/woahwhattheheck/commons/blob/main/ground/INVENTION_BURST_INDEX.md",
     "evidence_key": "inventor-line",
     "statement": "The public invention-burst index names Bryce Muhlnickel as inventor."
   },
   "status_provenance": {
     "path": "GRANTS.md",
-    "blob_sha": "82ed25227ec988515979be28cd95cdf8c72f3411",
-    "sha256": "53a1e9692ae7ec26d65f016fcaddf8373a16c8872153623a94c77f662d16cfa4",
-    "byte_count": 9497,
+    "blob_sha": "34e4baadebb27388137d12c2b7cfa515f88d4672",
+    "sha256": "dabed3a879149b6fcca8132c1ec26c625118ef2e3e784d09704783f0c6b2b13b",
+    "byte_count": 9749,
     "public_url": "https://github.com/woahwhattheheck/commons/blob/main/GRANTS.md",
     "evidence_key": "G10",
     "statement": "GRANTS.md records Bryce's owner report that provisionals are filed. This docket does not publish or independently verify filing receipts or application numbers."

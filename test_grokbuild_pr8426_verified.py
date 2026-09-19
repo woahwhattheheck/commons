@@ -14,7 +14,7 @@ PRIOR = ROOT / "p/grokbuild-tests-33689281316-billing-lock-20260902-01.md"
 
 KEEP = {
     "p/grokbuild-tests-33689281316-billing-lock-20260902-01.md": "3db0ab2e",
-    "test_grokbuild_tests_33689281316_billing_lock.py": "8f146b54",
+    "test_grokbuild_tests_33689281316_billing_lock.py": "70bcf8c5",
     ".github/workflows/tests.yml": "57d36525",
 }
 

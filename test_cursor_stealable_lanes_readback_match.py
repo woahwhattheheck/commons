@@ -20,9 +20,9 @@ DOOR = ROOT / "stealable-lanes.html"
 
 KEEP = {
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
-    "test_cursor_stealable_lanes_readback.py": "c2a40e05",
+    "test_cursor_stealable_lanes_readback.py": "9da3979e",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
-    "host/stealable_lanes.py": "60ac60e1",
+    "host/stealable_lanes.py": "524275ce",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "test_stealable_lanes.py": "5bd684a3",
     "ground/STEALABLE_ROLES.json": "ab601590",

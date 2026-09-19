@@ -21,9 +21,9 @@ WORKFLOW = ROOT / ".github/workflows/tests.yml"
 KEEP = {
     "p/grokbuild-tests-33694253421-billing-lock-20260902-01.md": "da396946",
     "p/grokbuild-tests-33694246830-billing-lock-20260902-01.md": "b07d6192",
-    "test_grokbuild_tests_33694246830_billing_lock.py": "80617e93",
+    "test_grokbuild_tests_33694246830_billing_lock.py": "4d2c2798",
     "p/grokbuild-tests-battery-33689096444-billing-lock-20260902-01.md": "a7ff1feb",
-    "test_grokbuild_tests_battery_33689096444_billing_lock.py": "deffcde6",
+    "test_grokbuild_tests_battery_33689096444_billing_lock.py": "258874cd",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
     "test_grokbuild_llms_txt_33699286770_billing_lock.py": "71ad16e0",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
@@ -54,7 +54,11 @@ class TestGrokbuildTests33699945008BillingLock(unittest.TestCase):
         self.assertIn("name: tests", yml)
         self.assertIn("battery:", yml)
         self.assertIn("the whole battery, one failure fails the run", yml)
-        self.assertIn("find . -maxdepth 1 -type f -name 'test_*.py'", yml)
+        self.assertIn(
+            "find . -maxdepth 1 -type f \( -name 'test_*.py' -o -name 'test_*.js' \) -print",
+            yml,
+        )
+        self.assertIn("find infra -type f -name 'test_*.py' -print", yml)
         self.assertNotIn("billing", yml.lower())
         self.assertNotIn("if: false", yml)
         self.assertNotIn("continue-on-error", yml)

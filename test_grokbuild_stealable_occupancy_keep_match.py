@@ -21,7 +21,7 @@ KEEP_UNREAD = {
     "p/grokbuild-occupancy-landed-work-keep-lift-20260902-01.md": "67a8a527",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
-    "host/stealable_lanes.py": "60ac60e1",
+    "host/stealable_lanes.py": "524275ce",
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
     "p/grokbuild-pr8353-stealable-lanes-20260902-01.md": "87bdb237",
     "p/grok-build-pr8353-caec56f3-terminal-20260902-01.md": "7e8db90d",
@@ -43,7 +43,7 @@ class TestGrokbuildStealableOccupancyKeepMatch(unittest.TestCase):
     def test_occupancy_keep_no_longer_freezes_stale_stealable_test(self) -> None:
         occ = importlib.import_module("test_stealable_lanes_occupancy")
         self.assertNotEqual(occ.KEEP.get("test_stealable_lanes.py"), "721adc44")
-        self.assertTrue(git_blob("test_stealable_lanes.py").startswith("5bd684a3"))
+        self.assertTrue(git_blob("test_stealable_lanes.py").startswith("1b9ef2a9"))
         occupancy = subprocess.run(
             [sys.executable, "-m", "unittest", "test_stealable_lanes_occupancy.py"],
             cwd=ROOT,

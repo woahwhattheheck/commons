@@ -18,14 +18,14 @@ COMPOSE_HELPER = ROOT / "host/harborline_commerce_compose.py"
 KEEP = {
     "p/cursor-harborline-merchant-portal-20260903-01.md": "18f06c0d",
     "host/harborline_merchant_portal.py": "1e82f038",
-    "test_harborline_merchant_portal.py": "1d7bce0f",
+    "test_harborline_merchant_portal.py": "36ff2f06",
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
-    "test_cursor_harborline_commerce_compose_keep_lift_readback.py": "75bca619",
+    "test_cursor_harborline_commerce_compose_keep_lift_readback.py": "64625393",
     "host/harborline_commerce_compose.py": "75128e5d",
     "p/cursor-harborline-commerce-compose-20260902-01.md": "45b7d435",
     "p/cursor-harborline-commerce-compose-keep-lift-20260902-01.md": "668dd5c4",
     "test_harborline_commerce_compose.py": "4d0997c4",
-    "test_harborline_commerce_compose_keep_lift.py": "fb5ce9aa",
+    "test_harborline_commerce_compose_keep_lift.py": "75479447",
     "p/cursor-harborline-commerce-compose-readback-20260902-01.md": "b33e2e24",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "p/cursor-desk-website-harborline-20260902-01.md": "655b9eb1",
@@ -144,7 +144,7 @@ class TestHarborlineOperatorLibrary(unittest.TestCase):
         self.assertIn("cursor-harborline-operator-library-20260903-01", text)
         self.assertIn("1788435385.830849", text)
         self.assertIn("18f06c0d", text)
-        self.assertIn("1e82f038", text)
+        self.assertIn("c54f35e2", text)
         self.assertIn("7155141f", text)
         self.assertIn("75128e5d", text)
         self.assertIn("45b7d435", text)

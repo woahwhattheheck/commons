@@ -26,11 +26,11 @@ KEEP = {
     "test_pr_collision_notice.py": "18a87c08",
     ".github/workflows/pr-collision-notice.yml": "deeeaf57",
     "p/grokbuild-pr-collision-notice-33689085107-billing-lock-20260902-01.md": "594b5e71",
-    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "1d9883e3",
+    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "db973ec1",
     "p/grokbuild-pr-collision-notice-33689347426-billing-lock-20260902-01.md": "e92d45af",
-    "test_grokbuild_pr_collision_notice_33689347426_billing_lock.py": "dff8bcce",
+    "test_grokbuild_pr_collision_notice_33689347426_billing_lock.py": "238bcbd7",
     "p/grokbuild-pr-collision-notice-33694241061-billing-lock-20260902-01.md": "71afa5e6",
-    "test_grokbuild_pr_collision_notice_33694241061_billing_lock.py": "06eb6fcc",
+    "test_grokbuild_pr_collision_notice_33694241061_billing_lock.py": "782d53d1",
     "p/grokbuild-pr8525-verify-20260903-01.md": "3e36c93c",
     "p/cursor-wire-catalog-marketplace-latch-readback-rematch-20260903-01.md": "f23e1db8",
     "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "649265c5",
@@ -62,7 +62,7 @@ class TestGrokbuildPrCollisionNotice33699600937BillingLock(unittest.TestCase):
         self.assertNotIn("schedule:", yml)
         self.assertIn("ref: ${{ github.event.pull_request.base.sha }}", yml)
         self.assertNotIn("github.event.pull_request.head.sha", yml)
-        self.assertIn("python3 pr_collision_notice.py", yml)
+        self.assertIn("python3 listener/pr_collision_notice.py", yml)
         self.assertNotIn("if: false", yml)
         self.assertNotIn("billing", yml.lower())
 
@@ -76,7 +76,7 @@ class TestGrokbuildPrCollisionNotice33699600937BillingLock(unittest.TestCase):
         )
         out = (proc.stdout or "") + (proc.stderr or "")
         self.assertEqual(proc.returncode, 0, msg=out)
-        self.assertIn("Ran 4 tests", out)
+        self.assertIn("Ran 11 tests", out)
         self.assertIn("OK", out)
         rows = notice.find_pr_overlaps(
             10,

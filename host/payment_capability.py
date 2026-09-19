@@ -159,7 +159,6 @@ CONVERT_SHELF_LIVE_BUYS = {
     "titan-hands-free-sample.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "proof-to-proposal.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "the-world.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
-    "fleet-work-order.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "image-drop.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "muhl-train.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "post-http.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,

@@ -23,7 +23,7 @@ KEEP = {
     "test_source_parses.py": "71e0c9b6",
     ".github/workflows/source-parses.yml": "6bcdbde1",
     "p/grokbuild-source-parses-33699980140-billing-lock-20260903-01.md": "2494f79a",
-    "test_grokbuild_source_parses_33699980140_billing_lock.py": "5c12b52b",
+    "test_grokbuild_source_parses_33699980140_billing_lock.py": "aa0c30f3",
     "p/grokbuild-main-range-verify-33717084528-billing-lock-20260903-01.md": "2b0fd9c9",
     "test_grokbuild_main_range_verify_33717084528_billing_lock.py": "76349d08",
     "open_door_guard.py": "877e148d",
@@ -108,7 +108,7 @@ class TestGrokbuildSourceParses33717733998BillingLock(unittest.TestCase):
             text=True,
         )
         self.assertEqual(checker.returncode, 0, msg=checker.stdout + checker.stderr)
-        self.assertIn("Ran 9 tests", checker.stderr + checker.stdout)
+        self.assertIn("Ran 11 tests", checker.stderr + checker.stdout)
         parse = subprocess.run(
             [sys.executable, "source_parses.py"],
             cwd=ROOT,

@@ -28,7 +28,7 @@ KEEP = {
     "p/grokbuild-muhlnickel-spec-guard-33689347386-billing-lock-20260902-01.md": "2c08e8ab",
     "p/grokbuild-muhlnickel-spec-guard-33699600936-billing-lock-20260903-01.md": "e063cc7e",
     "test_grokbuild_muhlnickel_spec_guard_33689243569_billing_lock.py": "a2b9339f",
-    "test_grokbuild_muhlnickel_spec_guard_33689088442_billing_lock.py": "38386aaa",
+    "test_grokbuild_muhlnickel_spec_guard_33689088442_billing_lock.py": "407497ae",
     "test_grokbuild_muhlnickel_spec_guard_33689347386_billing_lock.py": "d2206c32",
     "test_grokbuild_muhlnickel_spec_guard_33699600936_billing_lock.py": "59fc699c",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",

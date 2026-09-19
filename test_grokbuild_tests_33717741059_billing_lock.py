@@ -29,7 +29,7 @@ KEEP = {
     "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "f417e943",
     "p/grok-build-job-watchdog-33717741080-billing-lock-20260903-01.md": "f3afb926",
     "p/grokbuild-open-door-guard-33717733987-billing-lock-20260903-01.md": "a0af1282",
-    "test_grokbuild_open_door_guard_33717733987_billing_lock.py": "ebe11c69",
+    "test_grokbuild_open_door_guard_33717733987_billing_lock.py": "8b0ced19",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "catalog.html": "68b9b066",
     "hub_pages.py": "673dab89",
@@ -56,7 +56,11 @@ class TestGrokbuildTests33717741059BillingLock(unittest.TestCase):
         self.assertIn("name: tests", yml)
         self.assertIn("battery:", yml)
         self.assertIn("the whole battery, one failure fails the run", yml)
-        self.assertIn("find . -maxdepth 1 -type f -name 'test_*.py'", yml)
+        self.assertIn(
+            "find . -maxdepth 1 -type f \( -name 'test_*.py' -o -name 'test_*.js' \) -print",
+            yml,
+        )
+        self.assertIn("find infra -type f -name 'test_*.py' -print", yml)
         self.assertNotIn("billing", yml.lower())
         self.assertNotIn("if: false", yml)
         self.assertNotIn("continue-on-error", yml)
