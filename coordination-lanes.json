@@ -1,7 +1,7 @@
 {
  "lanes": [
   {"canonical":15840,"chain":[15811,15840],"content_keys":["10ace36f5f61f2d9"],"families":[],"lane":"lane-15811","open":[15811,15840],"state":"OPEN","title":"CI: rejoin pilot-renewal trust repair with 67-slot workflow recovery"},
-  {"canonical":15797,"chain":[15382,15645,15797],"content_keys":["47acce249358712d","afeb7304edf3b4fb"],"families":[],"lane":"lane-15382","open":[15645,15797],"state":"OPEN","title":"Hamilton: rejoin retained-evidence gate with exact projection and strict ingress"},
+  {"canonical":15797,"chain":[15645,15797],"content_keys":["47acce249358712d"],"families":[],"lane":"lane-15645","open":[15645,15797],"state":"OPEN","title":"Hamilton: rejoin retained-evidence gate with exact projection and strict ingress"},
   {"canonical":15949,"chain":[15949,15999],"content_keys":["05defcf6a6875d51"],"families":[],"lane":"lane-15949","open":[15949],"state":"OPEN","title":"CI: current-main 68→67 workflow budget repair"},
   {"canonical":15724,"chain":[15655,15724],"content_keys":["efcaf3b71495ee02"],"families":[],"lane":"lane-15655","open":[15724],"state":"OPEN","title":"Close Indiana IOT retained-evidence trust-root defect"},
   {"canonical":15640,"chain":[15612,15640],"content_keys":["43934e7c79baa7ec","6316d285b95aff00"],"families":[],"lane":"lane-15612","open":[15640],"state":"OPEN","title":"Revenue: recover partner qualification gate on clean current main"},
@@ -26,7 +26,7 @@
   {"canonical":15406,"chain":[15403,15406],"content_keys":["01dcaca0f7f2814b"],"families":[],"lane":"lane-15403","open":[],"state":"MERGED","title":"GOAT: clean current-main carrier for pay tip-shelf checkout"}
  ],
  "note": "lanes with two or more members; an open pull request row without a lane field is a lane of its own",
- "observed_at": "2026-09-19T04:57:58Z",
+ "observed_at": "2026-09-19T09:24:09Z",
  "recent_closed": [
   {"closed_at":"2026-09-18T07:39:35Z","content_key":"UNKNOWN","created_at":"2026-09-18T07:31:10Z","head":"626eb3925717460635371cc0cbc5860eebafa99c","links":[],"markers":[],"number":15999,"state":"MERGED","title":"CI: current-main 68→67 workflow budget repair"},
   {"closed_at":"2026-09-18T02:17:32Z","content_key":"ca75b0eb7559c999","created_at":"2026-09-18T02:10:02Z","head":"43ef1cfcdb22835ad169b4ffe906bf33f84017a0","links":[],"markers":["PRODUCT-LIFECYCLE-STRUCTURED-WAKE-CLOSURE-ZSOL17"],"number":15880,"state":"MERGED","title":"revenue: close structured lifecycle guard bypasses"},
@@ -72,8 +72,7 @@
   {"closed_at":"2026-09-17T08:18:24Z","content_key":"1b89a86932c44d48","created_at":"2026-09-17T08:13:22Z","head":"953028459e53ede8ff6e9f2651fea3ca09fc5d8b","links":[],"markers":["PROVIDER-ROUTE-15397-CURRENTMAIN-FINALIZE-ZSOL"],"number":15407,"state":"CLOSED","title":"Retain provider-route authority tests on current main"},
   {"closed_at":"2026-09-17T08:12:08Z","content_key":"UNKNOWN","created_at":"2026-09-17T08:11:07Z","head":"f7f54af0685ca0b7640a478db879671fcdf97338","links":[],"markers":[],"number":15406,"state":"MERGED","title":"GOAT: clean current-main carrier for pay tip-shelf checkout"},
   {"closed_at":"2026-09-17T08:12:42Z","content_key":"01dcaca0f7f2814b","created_at":"2026-09-17T07:46:32Z","head":"c967b4991932b8b1101a4e53d24d46a718486eb3","links":[15406],"markers":[],"number":15403,"state":"CLOSED","title":"GOAT: wire existing tip-shelf Payment Links onto pay.html"},
-  {"closed_at":"2026-09-17T08:18:07Z","content_key":"1b89a86932c44d48","created_at":"2026-09-17T07:34:46Z","head":"7cb915f39c5e4da18ded542d85b87e633f007f29","links":[],"markers":["PROVIDER-ROUTE-AUTHORITY-RETAINED-CI-CLOSURE-ZFA0302"],"number":15397,"state":"CLOSED","title":"Retain provider-route authority tests in Commons battery"},
-  {"closed_at":"2026-09-17T20:13:04Z","content_key":"afeb7304edf3b4fb","created_at":"2026-09-17T07:23:10Z","head":"67ea52d849be72b4c348f7e09356d61e25a17ba2","links":[15645],"markers":[],"number":15382,"state":"CLOSED","title":"Fix Hamilton pursuit evidence, deadline, and semantic receipt authority"}
+  {"closed_at":"2026-09-17T08:18:07Z","content_key":"1b89a86932c44d48","created_at":"2026-09-17T07:34:46Z","head":"7cb915f39c5e4da18ded542d85b87e633f007f29","links":[],"markers":["PROVIDER-ROUTE-AUTHORITY-RETAINED-CI-CLOSURE-ZFA0302"],"number":15397,"state":"CLOSED","title":"Retain provider-route authority tests in Commons battery"}
  ],
  "repo": "woahwhattheheck/commons",
  "schema": "commons-coordination-lanes/v1"
