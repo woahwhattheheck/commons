@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 190,
-    "open_pull_requests": 121,
-    "runs_in_progress": 13,
-    "runs_queued": 828
+    "open_pull_requests": 122,
+    "runs_in_progress": 12,
+    "runs_queued": 833
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -51,7 +51,7 @@
       "head_sha": "b5224a67495cec7956ed2ed1682275fff749d0e6",
       "number": 15635,
       "title": "Recover Nebius ProofPatch evidence-bound coding agent",
-      "updated_at": "2026-09-19T14:38:44Z"
+      "updated_at": "2026-09-19T14:41:16Z"
     },
     {
       "author": "woahwhattheheck",
@@ -66,6 +66,17 @@
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/uiowa047-cleanup-astra-forge",
+      "created_at": "2026-09-19T14:41:21Z",
+      "draft": false,
+      "head_sha": "8953c66defb15f00821c44a1d84f03c1db5cc8a7",
+      "number": 16323,
+      "title": "fix(uiowa-047): keep absent cleanup declarations unknown",
+      "updated_at": "2026-09-19T14:41:21Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -97,7 +108,7 @@
       "head_sha": "ff9a08f04298e68a371f54f5b1f414d090755ebb",
       "number": 16320,
       "title": "fix(uiowa-076): preserve evidence bindings and unknown comparison context",
-      "updated_at": "2026-09-19T14:39:05Z"
+      "updated_at": "2026-09-19T14:41:29Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 16313,
       "title": "UIOWA-032: preserve source bytes, extraction locators, and existing evidence",
       "updated_at": "2026-09-19T14:36:27Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-cadmium-r72f-capacity-output-safety-20260919",
-      "created_at": "2026-09-19T14:31:59Z",
-      "draft": false,
-      "head_sha": "14e7900b18db700ed597744a721540068449fdf6",
-      "number": 16312,
-      "title": "fix(uiowa): recover capacity benchmark with non-destructive generation",
-      "updated_at": "2026-09-19T14:31:59Z"
     }
   ],
   "open_heads": {
@@ -298,11 +298,12 @@
     "16319": "bf37c706860821f1f6b1139fab81e5444d3786ee",
     "16320": "ff9a08f04298e68a371f54f5b1f414d090755ebb",
     "16321": "d74367c09d27cdecb03017c12d58d3f112bca336",
-    "16322": "ac7ef5ee8e7eb28653ef2971c2535fd76214a697"
+    "16322": "ac7ef5ee8e7eb28653ef2971c2535fd76214a697",
+    "16323": "8953c66defb15f00821c44a1d84f03c1db5cc8a7"
   },
-  "pulls_listed": 121,
+  "pulls_listed": 122,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 63.7,
+  "queue_depth_per_runner": 69.4,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -472,6 +473,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T14:41:13Z",
+  "unchanged_since": "2026-09-19T14:41:34Z",
   "undatable_pulls": []
 }
