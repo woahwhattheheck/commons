@@ -25,6 +25,15 @@ The handoff contains the original `ledger.json`, `ledger.csv`, `ledger.md` and `
 
 Open the reader, search for an item, filter its state and follow a citation into the retained document. Compare the cited line with the displayed claim. Inspect change history and all competing decision citations before drawing a conclusion. The canonical exports and workspace remain available for reuse; browser presentation does not replace them.
 
+The included Python package also verifies a copied handoff without the original checkout:
+
+```bash
+cd /path/to/new-meeting-handoff
+python -B -m civic_ledger.handoff verify --output-dir .
+```
+
+Use `-B` for this copied-package command so Python does not add cache files to the handoff's recorded file inventory.
+
 ## What the labels mean
 
 | Label or field | What the existing compiler establishes | What remains unknown |
@@ -70,6 +79,8 @@ Start with `04-competing-decisions/handoff/reader.html`: filter to `HOLD_CONFLIC
 
 To explore a variation, copy a case's input workspace outside its existing handoff, update the fictional snapshot through the original workspace workflow so its digest stays consistent, and export to another new directory. Keep the earlier packet when comparing generations. Do not edit a handoff in place and present the old manifest as describing it.
 
-## Execution status
+## Recorded rehearsal
 
-This guide and rehearsal are a draft until the companion implementation is exercised. No execution counts, browser result, hosted-check result or main integration is asserted here. The generated `INDEX` and a source-bound delivery receipt will carry the observed results after execution.
+The six cases were executed with Python 3.12.14 normally and with real `-O`, including optimized child CLI calls. All 12 export/verify calls in each mode exited zero. All 80 handoff file instances across the six cases, and all six input workspaces, were byte-identical between modes. The included verifier also succeeded from the copied conflict handoff using the `-B` command above.
+
+This execution used original core blob `964cf5231cf4c72390fe9fb30bddc45813ebeac9`, companion blob `bed0659a3b622368f4c7f48b203c1bdd4fc65894`, and rehearsal blob `154760462f30c6a4aa3b13ba5ae8638ce857cd55`. See [PORTABLE_WALKTHROUGH.md](PORTABLE_WALKTHROUGH.md) for the observed decisions and [PORTABLE_EXECUTION.md](PORTABLE_EXECUTION.md) for literal commands, outputs and source identities. This receipt does not assert browser acceptance, hosted-check success or runtime integration; executable publication remains tracked separately in [#16452](https://github.com/woahwhattheheck/commons/pull/16452).
