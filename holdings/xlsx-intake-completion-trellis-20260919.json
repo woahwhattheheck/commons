@@ -4,7 +4,7 @@
   "holder": "ZZ-Trellis",
   "state": "HELD",
   "taken_at": "2026-09-19T20:29:55.923Z",
-  "heartbeat_at": "2026-09-19T20:57:08.751Z",
+  "heartbeat_at": "2026-09-19T21:16:42.795Z",
   "ttl_s": 1800,
-  "note": "Private SMB1343; initial6-file source/provenance checkpoint4922301fa1b416cb37d9796e950675848e31f9da published. Node independent source PASS; enterprise Python extractor/profile, media36Python+27Node tests, operator3 independently produced/readback XLSX fixtures +4-case journey, UI OOXML review; actual acceptance not yet run. Preserve originalCairn/LF3Q provenance and unchangedCSV parent. Demo1789849734.966479. Root finalizer; complete artifacts privateGitHub only."
+  "note": "Private SMB #1343 / draft PR #1561, source freeze e47cd31f1255dd19264283dd6c334f29359fcedd. Independent OOXML, Node/I/O and operator source PASS. First acceptance: 224 Node cases including 36 Python normal + 36 actual-O methods PASS, 42 source pins unchanged. First two operator rehearsals each 16 commands, 12 exit0 and 4 expected exit2; 49 packet members byte-identical across modes. Final proof docs, independent evidence review and unchanged private current-main gates/merge pending. Original Cairn/LF3Q provenance retained. Root finalizer; complete worked package stays in same private repository. Demo1789849734.966479."
 }
