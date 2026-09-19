@@ -1,4 +1,14 @@
 {
+  "duplicate_regression": {
+    "attribution": "Independent witness by ZZ-Trellis; regression implementation/execution by ZZ-KESTREL-R9V6.",
+    "cli_output_bytes_order_invariant": true,
+    "closed_control_order_subcases_per_mode": 6,
+    "cross_subject_order_subcases_per_mode": 48,
+    "cross_target_status_order_subcases_per_mode": 72,
+    "input_immutable": true,
+    "methods": 7,
+    "third_unrelated_item_completed": true
+  },
   "executed": {
     "normal": {
       "field_panel": {
@@ -41,11 +51,11 @@
         }
       },
       "unittest": {
-        "command": "python -B -m unittest test_transition test_completion_integrity",
+        "command": "python -B -m unittest test_transition test_completion_integrity test_duplicate_relations",
         "exit_code": 0,
-        "log": "................................................................................\n----------------------------------------------------------------------\nRan 80 tests in 9.712s\n\nOK\n",
+        "log": ".......................................................................................\n----------------------------------------------------------------------\nRan 87 tests in 12.112s\n\nOK\n",
         "skips": 0,
-        "tests_run": 80
+        "tests_run": 87
       }
     },
     "optimized": {
@@ -89,11 +99,11 @@
         }
       },
       "unittest": {
-        "command": "python -B -O -m unittest test_transition test_completion_integrity",
+        "command": "python -B -O -m unittest test_transition test_completion_integrity test_duplicate_relations",
         "exit_code": 0,
-        "log": "................................................................................\n----------------------------------------------------------------------\nRan 80 tests in 25.408s\n\nOK\n",
+        "log": ".......................................................................................\n----------------------------------------------------------------------\nRan 87 tests in 29.621s\n\nOK\n",
         "skips": 0,
-        "tests_run": 80
+        "tests_run": 87
       }
     }
   },
@@ -109,7 +119,21 @@
   "operation": "uiowa108-completion-integrity-kestrel-r9v6-20260919",
   "original_builder": "OP5-KELVIN (Claude Opus 5)",
   "original_source_commit": "051dbeb00349d28ffe607469136ebd5c921c63da",
-  "recorded_at_utc": "2026-09-19T15:02:43.420563+00:00",
+  "recorded_at_utc": "2026-09-19T15:25:24.036150+00:00",
+  "review_finding": {
+    "original_focused_run": {
+      "command": "python -B -m unittest test_duplicate_relations",
+      "exit_code": 1,
+      "failures_including_subtests": 51,
+      "tests_run": 7
+    },
+    "reference": "https://github.com/woahwhattheheck/commons/pull/16359#pullrequestreview-5256147892",
+    "repaired_behavior": "All matching change occurrences retained; affected targets unsupported independent of record order; unrelated valid items remain completed.",
+    "review_id": 5256147892,
+    "reviewer": "ZZ-Trellis",
+    "source_head": "d8002243aaed4ca1e7a5fbc4ba2abb88ca895800"
+  },
+  "revision": "Trellis cross-target/subject duplicate-occurrence repair",
   "runtime": "CPython 3.13.5",
   "schema": "uiowa108-completion-execution-v1",
   "scope": "isolated contractor-transition source, tests and fictional fixtures; not full repository suite",
@@ -160,15 +184,20 @@
       "git_blob_sha": "89b336a399ed9a488f3fa97654044c6e6f465042",
       "sha256": "a8dd8dc94ed7dab46bb4b3082032918a8f4db2861048f6add24ae82d304b00d0"
     },
+    "test_duplicate_relations.py": {
+      "bytes": 7574,
+      "git_blob_sha": "b84a12271010ce79d7698476171a2072db932c49",
+      "sha256": "ba01d3896a96c2448cb727910c396edd77846fa03220533c879e77ca8820e9f9"
+    },
     "test_transition.py": {
       "bytes": 14321,
       "git_blob_sha": "47f7bcdd0f54e1c04396dc6e1b1c58a5a9fb9248",
       "sha256": "3a5bd21d6080398421c33aa34adeb213e2578e50e496ea37bd475f5f0aa64809"
     },
     "transition.py": {
-      "bytes": 16388,
-      "git_blob_sha": "68efdf3a7a09757f861e9b3e506de1bc148f8ca5",
-      "sha256": "4d1859f0ef2f3485826fc238b4939ab4c9c9fb8f9bada878d008748960622ce2"
+      "bytes": 16868,
+      "git_blob_sha": "a73d2176d37bc34cf2bf0eb6c9e34b7e9bf4213c",
+      "sha256": "7af7e3d6f408bbedb83b8cdeae15e4f75ab8d3f174e33ac44746f090001a7675"
     }
   }
 }

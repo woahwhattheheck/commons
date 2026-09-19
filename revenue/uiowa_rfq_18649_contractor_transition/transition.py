@@ -64,11 +64,18 @@ def _owned_items(index, departing_ref):
     return items
 
 
-def _changes_for(index, target_ref, subject_ref):
+def _changes_for(packet, target_ref, subject_ref):
+    """Retain every matching change occurrence, including duplicate IDs.
+
+    The lookup index deliberately has one entry per ID. It cannot be used as
+    the relationship census: a later duplicate may name another target or
+    subject. Its ID is already invalid, and each matching occurrence must
+    carry that diagnostic into its own item's completion decision. Keep
+    unique IDs in their original deterministic sort order for clean reports.
+    """
     out = []
-    for rid, (kind, record) in sorted(index.items()):
-        if kind != "access_changes":
-            continue
+    for record in sorted(packet.get("access_changes", []),
+                         key=lambda row: row.get("id") or "<missing id>"):
         if record.get("target_ref") != target_ref:
             continue
         if subject_ref and record.get("subject_ref") != subject_ref:
@@ -166,7 +173,7 @@ class TransitionReport(object):
     def _build_items(self):
         items = []
         for rid, kind, record in _owned_items(self.index, self.departing_ref):
-            changes = _changes_for(self.index, rid, self.departing_ref)
+            changes = _changes_for(self.packet, rid, self.departing_ref)
             state, reasons, evidence = classify_item(record, changes, self.dangling_refs, self.invalid_refs)
             items.append(
                 {
