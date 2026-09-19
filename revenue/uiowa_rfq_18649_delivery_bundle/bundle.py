@@ -81,6 +81,19 @@ def parse_object(data: bytes, label: str) -> dict:
     try:
         obj = json.loads(data.decode("utf-8"), object_pairs_hook=unique,
                          parse_constant=finite, parse_float=finite_float)
+        # JSON escapes can decode into unpaired surrogates. Validate all text
+        # before any manifest binding is serialized; fail with a stable error
+        # rather than an uncaught UnicodeEncodeError. Walk iteratively.
+        pending = [obj]
+        while pending:
+            value = pending.pop()
+            if isinstance(value, str):
+                value.encode("utf-8")
+            elif isinstance(value, dict):
+                pending.extend(value.keys())
+                pending.extend(value.values())
+            elif isinstance(value, list):
+                pending.extend(value)
     except BundleError:
         raise
     except (UnicodeError, ValueError, RecursionError) as exc:

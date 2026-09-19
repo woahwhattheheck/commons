@@ -48,7 +48,7 @@ identical archives; JSON whitespace changes intentionally change the archive dig
 Verification does not extract files, invoke a browser, execute contents, or access a network.
 The format rejects duplicate/unknown/missing members, noncanonical metadata,
 trailing bytes, compression, oversized input, malformed JSON, duplicate JSON keys,
-and non-finite numbers. Inputs are limited to 1 MiB each.
+non-finite numbers, and unpaired Unicode surrogates. Inputs are limited to 1 MiB each.
 
 The draft must retain the report receipt, mode, aggregate state, UI-demo marker,
 and all twelve ESS/RIS/IAM-by-assessment-area identities and statuses. Cell order
@@ -93,7 +93,7 @@ python -O -m unittest -v test_uiowa_delivery_bundle.py
 python -W error::ResourceWarning -m unittest -v test_uiowa_delivery_bundle.py
 ```
 
-The root shim enrolls the 41-case suite in the existing root test battery without
+The root shim enrolls the 43-case suite in the existing root test battery without
 modifying any workflow. Tests exercise exact-byte preservation, deterministic builds
 under different Python hash seeds, a separate-directory recipient round trip,
 receipt/cell mismatches, all authority flags, strict JSON, corrupt archives,
