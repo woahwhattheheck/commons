@@ -37,6 +37,7 @@ def _load_sibling(stem: str):
 
 extract = _load_sibling("extract")
 corpus = _load_sibling("make_synthetic_corpus")
+HAS_PYPDF = importlib.util.find_spec("pypdf") is not None
 
 
 class IntegrityTests(unittest.TestCase):
@@ -100,6 +101,7 @@ class IntegrityTests(unittest.TestCase):
     def test_docx_hash_matches_parsed_snapshot_after_source_revision(self):
         self.binding(".docx", "extract_docx")
 
+    @unittest.skipUnless(HAS_PYPDF, "PDF backend absent; missing-backend contract tested separately")
     def test_pdf_hash_matches_parsed_snapshot_after_source_revision(self):
         self.binding(".pdf", "extract_pdf")
 
@@ -308,6 +310,13 @@ class IntegrityTests(unittest.TestCase):
         self.assertEqual(code, 2)
         self.assertEqual(result["status"], "error")
         self.assertEqual(target.read_bytes(), b"previous report")
+
+    def test_missing_pdf_backend_has_named_error(self):
+        source = self.root / "synthetic.pdf"
+        corpus._write_minimal_pdf(source, ["Synthetic dependency contract."])
+        with patch.dict(sys.modules, {"pypdf": None}):
+            with self.assertRaisesRegex(extract.ExtractionError, "PDF_BACKEND_UNAVAILABLE"):
+                extract.extract(source)
 
 
 if __name__ == "__main__":
