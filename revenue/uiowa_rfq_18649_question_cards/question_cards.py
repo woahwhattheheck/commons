@@ -465,18 +465,14 @@ def write_cards_markdown(path, cards, coverage, diagnostics):
 
 
 def build(data_dir, out_dir, observations_file="observations.json"):
-    bundle = load_bundle(data_dir, observations_file)
-    cards, diagnostics, coverage = build_cards(bundle)
-    os.makedirs(out_dir, exist_ok=True)
-    with open(os.path.join(out_dir, "cards.json"), "w", encoding="utf-8") as fh:
-        json.dump({"fiction_notice": bundle["observations"]["fiction_notice"],
-                   "cards": cards, "diagnostics": diagnostics, "coverage": coverage},
-                  fh, ensure_ascii=False, sort_keys=True, indent=2)
-        fh.write("\n")
-    write_cards_csv(os.path.join(out_dir, "cards.csv"), cards)
-    write_cards_markdown(os.path.join(out_dir, "question_cards.md"),
-                         cards, coverage, diagnostics)
-    return cards, diagnostics, coverage
+    if __package__:
+        from .export_publication import build_export
+    else:
+        from export_publication import build_export
+    return build_export(
+        data_dir, out_dir, observations_file,
+        load_bundle=load_bundle, build_cards=build_cards,
+        write_cards_csv=write_cards_csv, write_cards_markdown=write_cards_markdown)
 
 
 # ---------------------------------------------------------------------- CLI --
