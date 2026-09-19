@@ -20,8 +20,12 @@ import json
 import os
 import sys
 
-import schema
-from schema import UNKNOWN
+if __package__:
+    from . import schema
+    from .schema import UNKNOWN
+else:  # Preserve direct-script and lane-local unittest entry points.
+    import schema
+    from schema import UNKNOWN
 
 
 # ---------------------------------------------------------------------------

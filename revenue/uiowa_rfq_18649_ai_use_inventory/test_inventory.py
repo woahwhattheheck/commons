@@ -17,10 +17,14 @@ import sys
 import tempfile
 import unittest
 
-import interview_guide
-import inventory
-import schema
-from schema import UNKNOWN
+if __package__:
+    from . import interview_guide, inventory, schema
+    from .schema import UNKNOWN
+else:  # Retain the original lane-local unittest command.
+    import interview_guide
+    import inventory
+    import schema
+    from schema import UNKNOWN
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CLEAN = os.path.join(HERE, "fixtures", "synthetic_ai_use.json")

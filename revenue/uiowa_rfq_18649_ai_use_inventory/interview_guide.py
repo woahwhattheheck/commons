@@ -25,7 +25,10 @@ import argparse
 import json
 import sys
 
-import schema
+if __package__:
+    from . import schema
+else:  # Preserve direct-script execution.
+    import schema
 
 # What a question is allowed to go after.
 ALLOWED_SEEKS = (
@@ -244,7 +247,10 @@ def main(argv=None):
     args = parser.parse_args(argv)
 
     if args.probes:
-        import inventory
+        if __package__:
+            from . import inventory
+        else:
+            import inventory
         try:
             records, label = inventory.load(args.probes)
         except ValueError as exc:
