@@ -1,13 +1,13 @@
 {
   "counts": {
     "open_issues": 189,
-    "open_pull_requests": 151,
-    "runs_in_progress": 16,
-    "runs_queued": 1192
+    "open_pull_requests": 152,
+    "runs_in_progress": 17,
+    "runs_queued": 1186
   },
   "counts_source": "graphql",
   "degraded": [],
-  "drafts": 11,
+  "drafts": 12,
   "longest_open": [
     {
       "author": "woahwhattheheck",
@@ -69,6 +69,28 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "swarm/zz-lantern-8j2q/uiowa114-delivery-20260919",
+      "created_at": "2026-09-19T15:38:20Z",
+      "draft": true,
+      "head_sha": "ba1757c8d6e460e884d34c1480d6ec188d2eed3a",
+      "number": 16406,
+      "title": "UIOWA-114: recover question-card generator with reference and export integrity",
+      "updated_at": "2026-09-19T15:38:20Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/uiowa047-readout-kestrelr9c4-20260919",
+      "created_at": "2026-09-19T15:37:38Z",
+      "draft": false,
+      "head_sha": "fcff970d388b7e08945a624b69de5ce9772ae1b2",
+      "number": 16405,
+      "title": "UIOWA-047: source-bound operator rehearsal and executed readout",
+      "updated_at": "2026-09-19T15:37:38Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "work/uiowa107-walkthrough-astra-rivet-20260919",
       "created_at": "2026-09-19T15:35:30Z",
       "draft": false,
@@ -76,17 +98,6 @@
       "number": 16404,
       "title": "UIOWA-107: worked preparation choices and six-case operator walkthrough",
       "updated_at": "2026-09-19T15:35:30Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "quartz-c17/uiowa-actual-compiler-rehearsal-20260919",
-      "created_at": "2026-09-19T15:33:24Z",
-      "draft": false,
-      "head_sha": "c10438119ab0d3619eabe4ee0375796d74ddaee9",
-      "number": 16402,
-      "title": "UIOWA: runnable actual-compiler to recipient transport delivery",
-      "updated_at": "2026-09-19T15:33:24Z"
     },
     {
       "author": "woahwhattheheck",
@@ -152,7 +163,7 @@
       "head_sha": "f559a1fa0f96ef7ef70b0ce2e9f618057ed3f16b",
       "number": 16395,
       "title": "Recover UIOWA-023/031 strict, lossless register transport and native-table bridge",
-      "updated_at": "2026-09-19T15:34:20Z"
+      "updated_at": "2026-09-19T15:36:57Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 16394,
       "title": "UIOWA-015: source-scoped peer delivery pack, UC recovery and 53-test replay",
       "updated_at": "2026-09-19T15:28:12Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-quartz-4e72/uiowa042-delivery-20260919",
-      "created_at": "2026-09-19T15:27:53Z",
-      "draft": false,
-      "head_sha": "3d017ec2025ab33bb86b0fb1fbc1230f5f03fcac",
-      "number": 16392,
-      "title": "UIOWA-042: complete traceability kit and repair revision/lineage closure",
-      "updated_at": "2026-09-19T15:27:53Z"
     }
   ],
   "open_heads": {
@@ -270,7 +270,7 @@
     "16283": "4b2f40bdff508b590615182f7f826c813e51d64a",
     "16287": "df6d0058feb8d49895dd9b6b250db679792178f9",
     "16289": "fad7e3dbbc61dc4f110395c408c8a9fe1c0629ad",
-    "16290": "7084d13f4231113a8a69ab35108c7802e84d315f",
+    "16290": "7a17f5b8799b8b89b944520403415d24dff2846b",
     "16291": "598c7b3e4b012625a9309e14126acbeb541601d1",
     "16298": "7f61f32b8f1737db8ae143b15fcea43b0b14a509",
     "16300": "128606cf7042f391fc67f6f4c89360febc9aa54d",
@@ -298,7 +298,7 @@
     "16343": "a0e5620f42a08d9b2cc410d4425a6acf22f4d721",
     "16346": "32af7fac5013e6d19fa62357b4256a35237a77ab",
     "16347": "4ce71b059e57ecb991f902968e674a74de978a35",
-    "16348": "eed458ddaf41db867a4b56a24a4222618b1abb1f",
+    "16348": "2fa5b73353c2af035d9bc36bd3189b40d9c4f439",
     "16349": "9da22b32e02344ec634badb8d42f3ef1d77f70e7",
     "16353": "0f85aae42713cc0a5ba7acebd41c0c2704551f2e",
     "16355": "86042e099f22db00be9ce3351e1f799341414e60",
@@ -307,7 +307,7 @@
     "16362": "80303d7178b17695f90b3ba1bc938ecbcbe91a51",
     "16363": "29e3d3d0bda9571144fa31c55185742d9ffd49ef",
     "16365": "5bcda15b53a779d7c1e39072973dac2713175e81",
-    "16366": "9925a8acd9aad2dabc19a5cec63294ba5f5daaa2",
+    "16366": "330cf0525d69fb043491264490b0fcba713219b0",
     "16371": "7a129b223ba3270b65ac1d9f9846b0f7cb190816",
     "16375": "5d07337cc714b1183c100c1b1f524cc49702849a",
     "16376": "fbaf8825d279eab31d65f0650422b1ba8be351f7",
@@ -318,7 +318,7 @@
     "16385": "a57b60cbae9ae937d860a90bbf3d7ff5c293ae85",
     "16387": "d88a429bb86eb96536b885a787dc2ae43863458e",
     "16389": "722d683289e868567f4b49063bc1ad5f596b2e81",
-    "16391": "437880981178aa3360797a9e3aee3c3826692d5f",
+    "16391": "d1c04b63ae752586373d78bd1d3b5dcb0f98262b",
     "16392": "3d017ec2025ab33bb86b0fb1fbc1230f5f03fcac",
     "16394": "93f5df0a8d00bc7e2b010ea7f95f0a45f47754f6",
     "16395": "f559a1fa0f96ef7ef70b0ce2e9f618057ed3f16b",
@@ -327,13 +327,25 @@
     "16399": "1d03cc0c89778c81f7976ec274a04836066ff25d",
     "16400": "f85af6742cb155326cdf76a9caae491d10264593",
     "16401": "f19b0074be03409abed2d384bd2587c6d2e88da4",
-    "16402": "c10438119ab0d3619eabe4ee0375796d74ddaee9",
-    "16404": "a09a574ba74d9a268fe4aab7fb3fb4468f0ca084"
+    "16404": "a09a574ba74d9a268fe4aab7fb3fb4468f0ca084",
+    "16405": "fcff970d388b7e08945a624b69de5ce9772ae1b2",
+    "16406": "ba1757c8d6e460e884d34c1480d6ec188d2eed3a"
   },
-  "pulls_listed": 151,
+  "pulls_listed": 152,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 74.5,
+  "queue_depth_per_runner": 69.8,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "quartz-c17/uiowa-actual-compiler-rehearsal-20260919",
+      "closed_at": "2026-09-19T15:37:39Z",
+      "head_sha": "c10438119ab0d3619eabe4ee0375796d74ddaee9",
+      "merged_at": "2026-09-19T15:37:39Z",
+      "number": 16402,
+      "state": "MERGED",
+      "title": "UIOWA: runnable actual-compiler to recipient transport delivery"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -487,21 +499,10 @@
       "number": 16370,
       "state": "CLOSED",
       "title": "[Superseded] AIDT source-bound workshare and prime-evidence packet"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-kestrel-m7q2/aidt-delivery-plan-20260919",
-      "closed_at": "2026-09-19T15:17:36Z",
-      "head_sha": "66730c01ad758125b30a2a2d8eabd62542898c07",
-      "merged_at": "2026-09-19T15:17:36Z",
-      "number": 16368,
-      "state": "MERGED",
-      "title": "AIDT: migration cutover and interoperability delivery plans with executed example"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T15:36:19Z",
+  "unchanged_since": "2026-09-19T15:39:37Z",
   "undatable_pulls": []
 }
