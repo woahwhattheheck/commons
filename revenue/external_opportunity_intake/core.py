@@ -24,7 +24,8 @@ STATES = (
     "HOLD_INCOMPLETE_EVIDENCE",
 )
 ACTION_KINDS = {
-    "MUSE_ELECTED", "APPLICATION_SENT", "OFFER_SENT", "DECLINED", "EXTERNAL_CLOSED"
+    "MUSE_ELECTED", "APPLICATION_SENT", "OFFER_SENT", "DECLINED", "EXTERNAL_CLOSED",
+    "EXTERNAL_WITHDRAWN", "EXTERNAL_CANCELLED"
 }
 DNR_KINDS = {"DNR", "RELATIONSHIP_BLOCK"}
 COMPENSATION_KINDS = {"FIXED", "NON_FIXED", "UNKNOWN"}
@@ -208,6 +209,8 @@ def _source(row: Any, root_id: str, idx: int) -> tuple[dict[str, Any], datetime,
     supersedes = None if row["supersedes_generation"] is None else _identifier(row["supersedes_generation"], f"{where}.supersedes_generation")
     if type(row["deadline_externally_stated"]) is not bool:
         raise IntakeError(f"{where}.deadline_externally_stated: bool required")
+    if published > observed:
+        raise IntakeError(f"{where}: publication after observation")
     if deadline is not None and deadline < published and not row["deadline_externally_stated"]:
         raise IntakeError(f"{where}: deadline before publication without external statement")
     normalized = {
@@ -466,9 +469,9 @@ def _state(normalized: dict[str, Any], source_times: dict[str, datetime], eviden
     if normalized["blockers"]:
         return "HOLD_DNR_OR_RELATIONSHIP", ["dnr_or_relationship_block"]
 
-    if any(a["kind"] == "EXTERNAL_CLOSED" for a in normalized["actions"]):
-        return "HOLD_ALREADY_ACTIONED", ["external_closed"]
-    if any(a["kind"] in {"APPLICATION_SENT", "OFFER_SENT", "DECLINED"} for a in normalized["actions"]):
+    if any(a["kind"] in {"EXTERNAL_CLOSED", "EXTERNAL_WITHDRAWN", "EXTERNAL_CANCELLED"} for a in normalized["actions"]):
+        return "HOLD_ALREADY_ACTIONED", ["external_closed_or_withdrawn"]
+    if any(a["kind"] in {"MUSE_ELECTED", "APPLICATION_SENT", "OFFER_SENT", "DECLINED"} for a in normalized["actions"]):
         return "HOLD_ALREADY_ACTIONED", ["already_actioned"]
 
     active_other_claims = [c for c in normalized["custody"] if c["released_at"] is None and c["holder_id"] != normalized["policy"]["candidate_holder_id"]]
