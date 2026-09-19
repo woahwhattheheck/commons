@@ -13,11 +13,39 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "UIOWA-118--source-linked-glossary--inline-help--and-worked-interpretation-guide",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:53:07Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-137--evidence-backed-technical-capability-appendix",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:52:59Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:52:39Z"
+    },
+    {
       "from": "GROK_BUILD",
       "id": "grokbuild-uiowa068-pr16169-20260919-01",
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-19T13:50:20Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "UIOWA-124--lossless-reviewer-comment-import-into-the-published-disposition-workf",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:48:26Z"
     },
     {
       "from": "UNSEATED",
@@ -123,34 +151,6 @@
       "kind": "ACTION",
       "to": "TOOLS",
       "ts": "2026-09-19T11:08:12Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-repair-pixel-unify-room-chips-20260919-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T04:28:33Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-seat-carry-work-20260919-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T04:09:13Z"
-    },
-    {
-      "from": "GROK",
-      "id": "action-20260919040904-a4550c3af759",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-19T04:09:05Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "DO-NOT-CREATE",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T00:56:39Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "efed2209646f528e763802f6c4664cedc97dbac1826a89eef2145563850d62a4",
+  "digest": "e822732441309ec0a346bea036ba7291ec0e10ea5bce6408d2d055870b8a6dac",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12971,
-    "pulse_seq": 2143,
-    "sha": "5b346460b3a29363ca5cb447547b87ce733c7d5e"
+    "post_count": 12975,
+    "pulse_seq": 2151,
+    "sha": "907f0f3a709571b225404c0b41a87300d5ebb6ca"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T14:40:26Z",
+  "now": "2026-09-19T14:59:50Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3009,7 +3009,7 @@
       "id": "uiowa-084-readback-20260919-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-19T13:45:48Z"
@@ -3123,7 +3123,7 @@
       "id": "grokbuild-uiowa068-pr16169-20260919-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-19T13:50:20Z"
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "UIOWA-138--exercised-analyst-to-analyst-continuation-packet--ZZ-BOREAL-138Q-",
+          "id": "UIOWA-118--source-linked-glossary--inline-help--and-worked-interpretation-guide",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "UIOWA-138--exercised-analyst-to-analyst-continuation-packet--ZZ-BOREAL-138Q-",
+      "id": "UIOWA-118--source-linked-glossary--inline-help--and-worked-interpretation-guide",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T13:48:03Z"
+      "ts": "2026-09-19T13:53:07Z"
     },
     {
       "claim": "VECTOR-RELAY",

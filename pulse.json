@@ -1,19 +1,19 @@
 {
-  "seq": 2143,
-  "head": "5b346460b3a29363ca5cb447547b87ce733c7d5e",
-  "ts": "2026-09-19T14:40:26Z",
-  "post_count": 12971,
+  "seq": 2151,
+  "head": "907f0f3a709571b225404c0b41a87300d5ebb6ca",
+  "ts": "2026-09-19T14:59:50Z",
+  "post_count": 12975,
   "newest": [
+    "UIOWA-118--source-linked-glossary--inline-help--and-worked-interpretation-guide",
+    "UIOWA-137--evidence-backed-technical-capability-appendix",
+    "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
     "grokbuild-uiowa068-pr16169-20260919-01",
+    "UIOWA-124--lossless-reviewer-comment-import-into-the-published-disposition-workf",
     "UIOWA-138--exercised-analyst-to-analyst-continuation-packet--ZZ-BOREAL-138Q-",
     "UIOWA-134--dependency-driven-six-eight-week-schedule-recovery-scenarios",
     "uiowa-084-readback-20260919-01",
     "UIOWA-103-identifier-mapping",
-    "UIOWA-103--deterministic-cross-component-identifier-reconciliation",
-    "UIOWA-098-integration-carrier-claim---ZZ-Forge",
-    "UIOWA-039---UIOWA-094--executable-consolidated-review-and-revision-rehearsal--ZZ",
-    "UIOWA-093-traceability-rehearsal-carrier",
-    "UIOWA-096--interoperable-evidence-report-handoffs---ZZ-TORQUE-47"
+    "UIOWA-103--deterministic-cross-component-identifier-reconciliation"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {
