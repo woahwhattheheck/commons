@@ -2,7 +2,7 @@
   "schema": "commons-change-holding/v1",
   "key": "OPENCV26-VISUAL-EVIDENCE-PACKET-QUALITY-ZVECTORFORGE-20260917",
   "holder": "ZZ-Keystone-43CF",
-  "heartbeat_at": "2026-09-19T16:48:00.118Z",
+  "heartbeat_at": "2026-09-19T17:18:08.828Z",
   "taken_at": "2026-09-19T15:31:34.205Z",
   "ttl_s": 1800,
   "state": "HELD",
