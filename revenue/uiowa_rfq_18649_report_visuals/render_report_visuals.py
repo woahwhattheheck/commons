@@ -26,9 +26,10 @@ import alt_text
 import contrast
 import figures
 import model
+import monochrome
 import palette
 
-FIGURE_ORDER = ("matrix", "cross-group", "evidence-coverage", "roadmap")
+FIGURE_ORDER = ("matrix", "cross-group", "evidence-coverage", "roadmap", "states")
 
 
 def check_encoding_contract() -> list[str]:
@@ -51,8 +52,13 @@ def check_encoding_contract() -> list[str]:
         if palette.BANDS[key].rank is None:
             problems.append(f"{key} is a rating but carries no rank")
     for key in palette.NON_RATING_KEYS:
-        if palette.BANDS[key].border != "dashed":
-            problems.append(f"{key} is not a rating but does not use the dashed border")
+        # Solid is reserved for "a value we have". A not-a-rating state wearing
+        # a solid border is the exact visual lie this package exists to stop.
+        if palette.BANDS[key].border == "solid":
+            problems.append(f"{key} is not a rating but wears the solid border reserved "
+                            f"for values we actually have")
+        if palette.BANDS[key].border not in svg_known_borders():
+            problems.append(f"{key}: border {palette.BANDS[key].border!r} is not drawable")
         if palette.BANDS[key].rank is not None:
             problems.append(f"{key} is not a rating but carries rank "
                             f"{palette.BANDS[key].rank}; it would sort onto the scale")
@@ -65,6 +71,16 @@ def check_encoding_contract() -> list[str]:
                 problems.append(
                     f"{nr} vs {rating} is {ratio:.2f}:1 in grayscale, below "
                     f"{contrast.DISTINCT_MIN}:1 - the two would be confusable in print")
+
+    # A measured zero must not wear the same border as an omission, or the
+    # coverage chart silently equates "we counted none" with "we never looked".
+    zero = palette.VALUE_STATES["MEASURED_ZERO"]
+    missing = palette.VALUE_STATES["NOT_RECORDED"]
+    if zero["border"] == missing["border"]:
+        problems.append("measured zero and not-recorded share a border style; a value and "
+                        "an omission would look identical")
+    if zero["border"] != "solid":
+        problems.append("measured zero must use the solid border: it is a value we have")
 
     for b in bands:
         if b.shape not in svg_known_shapes():
@@ -84,6 +100,11 @@ def palette_known_textures():
     return svg.KNOWN_TEXTURES
 
 
+def svg_known_borders():
+    import svg
+    return svg.KNOWN_BORDERS
+
+
 def render_all(matrix, out_dir: str, themes) -> list[tuple[str, str]]:
     """Write every figure for every theme, plus the text bundle and tables."""
     os.makedirs(out_dir, exist_ok=True)
@@ -92,12 +113,17 @@ def render_all(matrix, out_dir: str, themes) -> list[tuple[str, str]]:
     for theme_name in themes:
         for key in FIGURE_ORDER:
             fig = figures.FIGURES[key](matrix, theme_name)
-            name = f"{key}.{theme_name}.svg"
-            path = os.path.join(out_dir, name)
             payload = fig.render()
-            with open(path, "w", encoding="utf-8") as fh:
-                fh.write(payload)
-            written.append((name, hashlib.sha256(payload.encode("utf-8")).hexdigest()))
+            # The colour version and a real monochrome copy of it. The mono file
+            # is not a simulation -- every colour in it has actually been
+            # replaced by its luminance-equivalent grey, so a reviewer checking
+            # "does this work in black and white" can open the answer.
+            for name, body in ((f"{key}.{theme_name}.svg", payload),
+                               (f"{key}.{theme_name}.mono.svg",
+                                monochrome.to_monochrome(payload))):
+                with open(os.path.join(out_dir, name), "w", encoding="utf-8") as fh:
+                    fh.write(body)
+                written.append((name, hashlib.sha256(body.encode("utf-8")).hexdigest()))
 
     bundle = alt_text.alt_text_bundle(matrix)
     for name, payload in (
@@ -203,7 +229,8 @@ def main(argv=None) -> int:
     print()
     print(f"{t['rated']} of {t['cells_expected']} cells rated; "
           f"{t['insufficient_evidence']} insufficient evidence; "
-          f"{t['not_assessed']} not assessed; {t['cells_missing']} no record supplied.")
+          f"{t['not_assessed']} not assessed; {t['not_applicable']} not applicable; "
+          f"{t['contradictory']} sources disagree; {t['cells_missing']} no record supplied.")
     return 0
 
 

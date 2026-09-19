@@ -27,6 +27,7 @@ import alt_text
 import contrast
 import figures
 import model
+import monochrome
 import palette
 import render_report_visuals as cli
 import svg
@@ -171,12 +172,15 @@ class TestUnassessedIsNotALowRating(unittest.TestCase):
         m = build()
         totals = m.totals()
         self.assertEqual(totals["cells_expected"], 12)
-        self.assertEqual(totals["rated"], 8)
-        self.assertEqual(totals["not_assessed"], 2)
+        self.assertEqual(totals["rated"], 7)
+        self.assertEqual(totals["not_assessed"], 1)
         self.assertEqual(totals["insufficient_evidence"], 2)
-        # The 4 unrated cells are absent from `rated`, not folded in as lows.
+        self.assertEqual(totals["not_applicable"], 1)
+        self.assertEqual(totals["contradictory"], 1)
+        # Every unrated cell is absent from `rated`, not folded in as a low.
         self.assertEqual(totals["rated"] + totals["not_assessed"]
-                         + totals["insufficient_evidence"], 12)
+                         + totals["insufficient_evidence"] + totals["not_applicable"]
+                         + totals["contradictory"], 12)
         ess = m.summarize_group("ESS")
         self.assertEqual(ess.rated, 3)
         self.assertEqual(ess.unassessed, 1)
@@ -461,12 +465,16 @@ class TestHostileAndMissingData(unittest.TestCase):
 
     def test_missing_cell_is_reported_never_backfilled(self):
         raw = copy.deepcopy(load_raw())
-        removed = raw["cells"].pop(6)  # the RIS/SEC gap cell
+        # Remove the one real GAP, by lookup rather than by index, so this test
+        # keeps testing the same thing when the fixture is edited.
+        idx = next(i for i, c in enumerate(raw["cells"])
+                   if c["group"] == "RIS" and c["area"] == "SDLC")
+        removed = raw["cells"].pop(idx)
         m = model.Matrix(raw)
         self.assertIn((removed["group"], removed["area"]), m.missing)
         self.assertEqual(m.totals()["cells_missing"], 1)
-        self.assertEqual(m.totals()["rated"], 7)
-        self.assertIsNone(m.cell("RIS", "SEC"))
+        self.assertEqual(m.totals()["rated"], 6)
+        self.assertIsNone(m.cell("RIS", "SDLC"))
         payload = figures.matrix_figure(m, "print").render()
         self.assertIn("no record supplied", payload)
         self.assertIn("no record supplied", alt_text.matrix_alt(m))
@@ -551,11 +559,288 @@ class TestCliAndReproducibility(unittest.TestCase):
             with open(os.path.join(d, "manifest.json"), encoding="utf-8") as fh:
                 manifest = json.load(fh)
             self.assertIn("SYNTHETIC", manifest["disclaimer"])
-            self.assertEqual(manifest["totals"]["not_assessed"], 2)
+            self.assertEqual(manifest["totals"]["not_assessed"], 1)
+            self.assertEqual(manifest["totals"]["contradictory"], 1)
 
     def test_unknown_theme_is_refused(self):
         with self.assertRaises(KeyError):
             figures.matrix_figure(build(), "neon")
+
+
+class TestZeroIsNotMissing(unittest.TestCase):
+    """UIOWA-126: a measured zero is a value; an omission is not.
+
+    The failure this guards against: a count of zero drawn as an empty bar is
+    indistinguishable from "we never recorded this", so a real finding ("zero
+    unresolved items") is filed as a hole in the evidence.
+    """
+
+    def test_omitted_and_zero_parse_to_different_things(self):
+        raw = copy.deepcopy(load_raw())
+        cell = next(c for c in raw["cells"] if c["group"] == "ESS" and c["area"] == "SEC")
+        cell["evidence"] = {"documents": 3, "interviews": 2, "system_records": 0}
+        m = model.Matrix(raw)
+        c = m.cell("ESS", "SEC")
+        self.assertEqual(c.evidence["system_records"], 0)
+        self.assertEqual(c.evidence["observed"], palette.NOT_RECORDED)
+        self.assertIn("system_records", c.measured_zero_kinds)
+        self.assertIn("observed", c.not_recorded_kinds)
+        self.assertNotIn("observed", c.measured_zero_kinds)
+
+    def test_not_recorded_never_becomes_a_zero_in_a_total(self):
+        """Two groups, same evidence kind, same total of 0 -- different facts.
+
+        RIS never recorded observed artifacts. IAM did the walkthrough and
+        found none. Both totals are 0; only one of them is a measurement.
+        """
+        m = build()
+        ris = m.summarize_group("RIS")
+        iam = m.summarize_group("IAM")
+        self.assertEqual(ris.evidence["observed"], 0)
+        self.assertEqual(iam.evidence["observed"], 0)
+        self.assertFalse(ris.recorded["observed"], "an omission was treated as recorded")
+        self.assertTrue(iam.recorded["observed"], "a measurement was treated as missing")
+        # The omission is excluded from the total; the measured zero adds zero.
+        self.assertEqual(ris.evidence_total, sum(
+            v for cell in m.cells.values() if cell.group == "RIS"
+            for v in cell.evidence.values() if isinstance(v, int)))
+
+    def test_partial_recording_is_stated_not_hidden(self):
+        """A group total built from only some areas says so."""
+        ess = build().summarize_group("ESS")
+        self.assertTrue(ess.recorded["observed"])
+        self.assertEqual(ess.missing_counts["observed"], 1)
+        self.assertIn("counts incomplete for observed artifacts", ess.coverage_sentence)
+
+    def test_the_two_states_use_different_borders(self):
+        zero = palette.VALUE_STATES["MEASURED_ZERO"]
+        missing = palette.VALUE_STATES["NOT_RECORDED"]
+        self.assertNotEqual(zero["border"], missing["border"])
+        self.assertEqual(zero["border"], "solid", "a value we have wears the solid border")
+        self.assertEqual(missing["border"], "dashed")
+
+    def test_coverage_chart_draws_both_states_instead_of_nothing(self):
+        payload = figures.evidence_coverage_figure(build(), "print").render()
+        self.assertIn("not recorded", payload, "an omission vanished from the chart")
+        self.assertIn("Obs 0", payload, "a measured zero vanished from the chart")
+        # and they are not drawn the same way
+        self.assertIn('stroke-dasharray="5 3"', payload)
+
+    def test_tables_and_alt_text_say_not_recorded_in_words(self):
+        m = build()
+        self.assertIn("_not recorded_", alt_text.coverage_markdown(m))
+        text = alt_text.evidence_alt(m)
+        self.assertIn("observed artifacts not recorded", text)   # RIS
+        self.assertIn("observed artifacts 0", text)              # IAM, a measured zero
+
+    def test_negative_still_refused_but_zero_accepted(self):
+        raw = copy.deepcopy(load_raw())
+        cell = next(c for c in raw["cells"] if c["group"] == "ESS" and c["area"] == "SDLC")
+        cell["evidence"] = {"documents": 0, "interviews": 3}
+        model.Matrix(raw)  # zero is legal
+        cell["evidence"] = {"documents": -1, "interviews": 3}
+        with self.assertRaises(model.DataError):
+            model.Matrix(raw)
+
+
+class TestNotApplicableIsNotNotAssessed(unittest.TestCase):
+    """A fact about the group's context vs a fact about our evidence."""
+
+    def test_they_are_different_bands_with_different_channels(self):
+        na = palette.BANDS["NOT_APPLICABLE"]
+        ua = palette.BANDS["UNASSESSED"]
+        for attr in ("label", "glyph", "shape", "texture", "fill", "meaning"):
+            self.assertNotEqual(getattr(na, attr), getattr(ua, attr), attr)
+
+    def test_neither_is_a_rating(self):
+        for key in ("NOT_APPLICABLE", "UNASSESSED"):
+            self.assertIsNone(palette.BANDS[key].rank)
+            self.assertFalse(palette.BANDS[key].on_scale)
+
+    def test_not_applicable_with_evidence_is_refused(self):
+        raw = copy.deepcopy(load_raw())
+        cell = next(c for c in raw["cells"] if c["band"] == "NOT_APPLICABLE")
+        cell["evidence_collected"] = True
+        cell["evidence"] = {"documents": 2}
+        with self.assertRaises(model.DataError) as ctx:
+            model.Matrix(raw)
+        self.assertIn("nothing to collect", str(ctx.exception))
+
+    def test_wording_never_implies_a_shortfall(self):
+        m = build()
+        text = alt_text.matrix_alt(m)
+        self.assertIn("does not apply to how this group operates", text)
+        self.assertIn("nothing is missing", text.lower())
+
+    def test_counted_separately_from_not_assessed(self):
+        t = build().totals()
+        self.assertEqual(t["not_applicable"], 1)
+        self.assertEqual(t["not_assessed"], 1)
+        iam = build().summarize_group("IAM")
+        self.assertEqual(iam.not_applicable, 1)
+        self.assertEqual(iam.unassessed, 0)
+
+
+class TestContradictoryEvidence(unittest.TestCase):
+    """Two sources disagreeing is information, not an absence."""
+
+    def test_both_readings_are_retained(self):
+        m = build()
+        cell = m.cell("RIS", "SEC")
+        self.assertEqual(cell.band_key, "CONTRADICTORY")
+        self.assertEqual(len(cell.conflict), 2)
+        payload = figures.matrix_figure(m, "print").render()
+        for reading in cell.conflict:
+            self.assertIn(reading["source"][:20], payload,
+                          "a reading was dropped from the figure")
+        text = alt_text.matrix_alt(m)
+        for reading in cell.conflict:
+            self.assertIn(reading["says"][:24], text)
+
+    def test_it_is_not_averaged_into_a_middle_rating(self):
+        m = build()
+        self.assertIsNone(palette.BANDS["CONTRADICTORY"].rank)
+        self.assertEqual(m.summarize_group("RIS").band_counts["DEVELOPING"], 0)
+        self.assertEqual(m.summarize_group("RIS").contradictory, 1)
+        self.assertNotIn("CONTRADICTORY", palette.ORDINAL_KEYS)
+
+    def test_a_single_reading_is_not_a_conflict(self):
+        raw = copy.deepcopy(load_raw())
+        cell = next(c for c in raw["cells"] if c["band"] == "CONTRADICTORY")
+        cell["conflict"] = [cell["conflict"][0]]
+        with self.assertRaises(model.DataError) as ctx:
+            model.Matrix(raw)
+        self.assertIn("at least two readings", str(ctx.exception))
+
+    def test_a_reading_without_a_source_is_refused(self):
+        raw = copy.deepcopy(load_raw())
+        cell = next(c for c in raw["cells"] if c["band"] == "CONTRADICTORY")
+        del cell["conflict"][0]["source"]
+        with self.assertRaises(model.DataError) as ctx:
+            model.Matrix(raw)
+        self.assertIn("source", str(ctx.exception))
+
+    def test_a_conflict_cannot_be_hidden_under_a_rating(self):
+        """Attaching a conflict to a rating would resolve it silently."""
+        raw = copy.deepcopy(load_raw())
+        target = next(c for c in raw["cells"] if c["band"] == "ESTABLISHED")
+        target["conflict"] = [{"source": "A", "says": "x"}, {"source": "B", "says": "y"}]
+        with self.assertRaises(model.DataError) as ctx:
+            model.Matrix(raw)
+        self.assertIn("both readings stay on the page", str(ctx.exception))
+
+    def test_it_gets_the_only_double_border(self):
+        doubles = [k for k in palette.BAND_ORDER if palette.BANDS[k].border == "double"]
+        self.assertEqual(doubles, ["CONTRADICTORY"])
+
+    def test_the_conflict_stripe_survives_monochrome(self):
+        b = palette.BANDS["CONTRADICTORY"]
+        self.assertGreaterEqual(
+            round(contrast.grayscale_contrast(b.texture_ink, b.fill), 2), 3.0,
+            "the conflict texture disappears in black and white")
+
+
+class TestMonochromeExport(unittest.TestCase):
+    """'Works in monochrome' is proved by removing the colour, not asserted."""
+
+    def test_conversion_actually_removes_all_hue(self):
+        m = build()
+        for key, builder in figures.FIGURES.items():
+            with self.subTest(figure=key):
+                colour = builder(m, "print").render()
+                mono = monochrome.to_monochrome(colour)
+                self.assertFalse(monochrome.is_monochrome(colour),
+                                 "the colour version had no colour to begin with")
+                self.assertTrue(monochrome.is_monochrome(mono))
+                ET.fromstring(mono)  # still a valid document afterwards
+
+    def test_monochrome_keeps_every_word(self):
+        """Colour goes, content stays."""
+        m = build()
+        colour = figures.matrix_figure(m, "print").render()
+        mono = monochrome.to_monochrome(colour)
+        c_text = [el.text for el in ET.fromstring(colour).iter(SVG_NS + "text")]
+        m_text = [el.text for el in ET.fromstring(mono).iter(SVG_NS + "text")]
+        self.assertEqual(c_text, m_text)
+
+    def test_texture_and_border_survive_the_conversion(self):
+        mono = monochrome.to_monochrome(figures.matrix_figure(build(), "print").render())
+        self.assertIn("matrix-tex-UNASSESSED", mono)
+        self.assertIn("matrix-tex-CONTRADICTORY", mono)
+        self.assertIn("stroke-dasharray", mono)
+
+    def test_every_unrated_state_stays_apart_from_every_rating_in_mono(self):
+        fills = {k: palette.BANDS[k].fill for k in palette.BAND_ORDER}
+        for nr in palette.NON_RATING_KEYS:
+            for rating in palette.ORDINAL_KEYS:
+                with self.subTest(pair=f"{nr}/{rating}"):
+                    self.assertGreaterEqual(
+                        round(contrast.grayscale_contrast(fills[nr], fills[rating]), 2), 3.0)
+
+    def test_no_rating_is_ever_the_closest_thing_to_an_unrated_state(self):
+        """Eight fills cannot all sit 3:1 apart -- the luminance range does not
+        contain that many steps. So the question is not "is every pair far
+        apart" (it cannot be) but "is any RATING confusable with a NON-RATING".
+        That one must never happen, and it is what this asserts.
+        """
+        fills = {k: palette.BANDS[k].fill for k in palette.BAND_ORDER}
+        close = [(a, b, r) for a, b, r in monochrome.separation_report(fills) if r < 3.0]
+        self.assertTrue(close, "expected some pairs to be close; see the docstring")
+        for a, b, ratio in close:
+            mixed = (a in palette.ORDINAL_KEYS) != (b in palette.ORDINAL_KEYS)
+            self.assertFalse(mixed,
+                             f"{a} and {b} are only {ratio:.2f}:1 apart in monochrome and one "
+                             f"of them is a rating -- an unrated cell could be read as a score")
+
+    def test_every_close_pair_is_separated_by_three_other_channels(self):
+        """Where fill luminance cannot separate two states, everything else must."""
+        fills = {k: palette.BANDS[k].fill for k in palette.BAND_ORDER}
+        for a, b, ratio in monochrome.separation_report(fills):
+            if ratio >= 3.0:
+                continue
+            ba, bb = palette.BANDS[a], palette.BANDS[b]
+            for channel in ("texture", "shape", "label", "glyph"):
+                self.assertNotEqual(
+                    getattr(ba, channel), getattr(bb, channel),
+                    f"{a} and {b} are {ratio:.2f}:1 apart in monochrome and share "
+                    f"their {channel}; nothing would tell them apart in print")
+
+
+class TestStatesComparisonFixture(unittest.TestCase):
+    """The compact comparison fixture UIOWA-126 asks for."""
+
+    def test_it_shows_every_state(self):
+        payload = figures.states_figure(None, "print").render()
+        for key in palette.BAND_ORDER:
+            self.assertIn(palette.BANDS[key].label, payload, key)
+        for state in palette.VALUE_STATES.values():
+            self.assertIn(state["long_label"], payload)
+        self.assertIn("No record supplied", payload)
+
+    def test_it_says_how_each_state_is_counted(self):
+        payload = figures.states_figure(None, "print").render()
+        self.assertIn("counted as a rating", payload)
+        self.assertIn("excluded from every rating count", payload)
+        self.assertIn("counted as the value 0", payload)
+        self.assertIn("never summed as 0", payload)
+
+    def test_it_needs_no_data_and_carries_no_university_claim(self):
+        payload = figures.states_figure().render()
+        self.assertIn("No University data appears in this figure", payload)
+        self.assertIn("SYNTHETIC", payload)
+
+    def test_its_row_count_matches_the_vocabulary(self):
+        """If a band is added and the fixture is not updated, this fails."""
+        band_rows = [r for r in figures.STATE_ROWS if r[0] == "band"]
+        self.assertEqual([r[1] for r in band_rows], list(palette.BAND_ORDER))
+        value_rows = [r for r in figures.STATE_ROWS if r[0] == "value"]
+        self.assertEqual([r[1] for r in value_rows], list(palette.VALUE_STATES))
+
+    def test_alt_text_covers_the_whole_vocabulary(self):
+        text = alt_text.states_alt()
+        for key in palette.BAND_ORDER:
+            self.assertIn(palette.BANDS[key].label, text)
+        self.assertIn("never summed", text)
 
 
 if __name__ == "__main__":

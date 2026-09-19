@@ -130,10 +130,30 @@ BANDS: dict[str, Band] = {
         "#EFEFEC", "#1A1A1A", "#7A7A74", "#6B6B66",
         "This area was outside the agreed scope for this group. It is not a rating.",
     ),
+    "NOT_APPLICABLE": Band(
+        # Different question from "not assessed". This one is a fact about the
+        # GROUP's context -- the practice does not apply to them -- not a fact
+        # about our evidence. Collapsing the two tells a reader we failed to
+        # look at something that was never there to look at.
+        "NOT_APPLICABLE", None, "Not applicable", "⊘", "slash_circle", "checker", "dashed",
+        "#E4E4DE", "#1A1A1A", "#7A7A73", "#5F5F59",
+        "This practice does not apply to how this group operates. Nothing is missing.",
+    ),
+    "CONTRADICTORY": Band(
+        # The most informative cell on the page and the easiest to lose.
+        # Averaging it invents a confident middle value; dropping it produces
+        # silence. It gets the loudest texture and the only double border.
+        "CONTRADICTORY", None, "Sources disagree", "≠", "opposed", "split_diagonal", "double",
+        "#EDE4D2", "#1A1A1A", "#6B4F16", "#6B4F16",
+        "Two or more sources give different answers. Both readings are kept, unreconciled.",
+    ),
 }
 
 ORDINAL_KEYS = ("STRENGTH", "ESTABLISHED", "DEVELOPING", "GAP")
-NON_RATING_KEYS = ("INSUFFICIENT_EVIDENCE", "UNASSESSED")
+# Everything here answers a DIFFERENT question from "how good is this?".
+# None of them may be ranked, counted or averaged as a low rating.
+NON_RATING_KEYS = ("INSUFFICIENT_EVIDENCE", "UNASSESSED", "NOT_APPLICABLE",
+                   "CONTRADICTORY")
 BAND_ORDER = ORDINAL_KEYS + NON_RATING_KEYS
 
 
@@ -186,6 +206,32 @@ def evidence_kind(key: str) -> dict:
         if k["key"] == key:
             return k
     raise KeyError(f"unknown evidence kind {key!r}; known: {', '.join(EVIDENCE_KEYS)}")
+
+
+# --------------------------------------------------------------------------
+# Value states, for counts rather than bands.
+#
+# The distinction this exists for: a measured ZERO is a real finding ("zero
+# unresolved items") and often a good one. If zero draws as an empty bar it is
+# indistinguishable from "we never recorded this", and a strength is silently
+# filed as a hole. So zero gets a visible token with a SOLID border -- the same
+# border language the ratings use, because it is a value we have -- and an
+# unrecorded count gets a dashed one.
+# --------------------------------------------------------------------------
+NOT_RECORDED = "NOT_RECORDED"
+
+VALUE_STATES = {
+    "MEASURED_ZERO": {
+        "label": "0", "long_label": "Measured zero", "border": "solid",
+        "fill": "#FFFFFF", "ink": "#1A1A1A", "border_ink": "#1A1A1A",
+        "meaning": "A real count of zero. This is a value, not a missing entry.",
+    },
+    "NOT_RECORDED": {
+        "label": "not recorded", "long_label": "Not recorded", "border": "dashed",
+        "fill": "#EFEFEC", "ink": "#1A1A1A", "border_ink": "#6B6B66",
+        "meaning": "No count was supplied for this kind. It is not zero.",
+    },
+}
 
 
 PHASES = (
@@ -253,6 +299,19 @@ def audit_palette(theme_name: str = DEFAULT_THEME) -> list[contrast.CheckResult]
         for rating in ORDINAL_KEYS:
             out.append(contrast.check_grayscale(
                 f"{nr} vs {rating} (no colour)", BANDS[nr].fill, BANDS[rating].fill))
+
+    # The conflict stripe must survive monochrome, or the loudest state on the
+    # page goes quiet exactly where it matters most.
+    contra = BANDS["CONTRADICTORY"]
+    out.append(contrast.check_grayscale("CONTRADICTORY: stripe vs its own fill",
+                                        contra.texture_ink, contra.fill,
+                                        contrast.GRAPHICAL_MIN))
+
+    for state in VALUE_STATES.values():
+        out.append(contrast.check(f"value/{state['long_label']}: text on token", "text",
+                                  state["ink"], state["fill"], contrast.TEXT_MIN))
+        out.append(contrast.check(f"value/{state['long_label']}: border on page", "graphical",
+                                  state["border_ink"], bg, contrast.GRAPHICAL_MIN))
 
     for kind in EVIDENCE_KINDS:
         out.append(contrast.check(f"evidence/{kind['key']}: count on segment", "text",

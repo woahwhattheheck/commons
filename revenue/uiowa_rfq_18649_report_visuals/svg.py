@@ -141,6 +141,19 @@ def mark(shape: str, cx: float, cy: float, size: float, fill: str,
         # ramp. Nothing about it suggests "low".
         return rect(cx - r, cy - max(1.2, r * 0.26), size, max(2.4, r * 0.52),
                     fill=stroke, stroke="none", rx=1)
+    if shape == "slash_circle":
+        # The international "does not apply" mark. Semantically distinct from
+        # "we do not know": this cell was never a question for this group.
+        return (circle(cx, cy, r, fill="none", stroke=stroke, stroke_width=stroke_width * 1.6)
+                + line(cx - r * 0.7, cy + r * 0.7, cx + r * 0.7, cy - r * 0.7,
+                       stroke=stroke, stroke_width=stroke_width * 1.6))
+    if shape == "opposed":
+        # Two triangles pointing at each other: two readings of the same thing,
+        # both retained. Reads as a conflict, not as an absence.
+        return (polygon([(cx - r, cy - r), (cx - r, cy + r), (cx - r * 0.15, cy)],
+                        fill=fill, stroke=stroke, stroke_width=stroke_width)
+                + polygon([(cx + r, cy - r), (cx + r, cy + r), (cx + r * 0.15, cy)],
+                          fill=fill, stroke=stroke, stroke_width=stroke_width))
     if shape in ("pentagon", "hexagon"):
         n = 5 if shape == "pentagon" else 6
         start = -math.pi / 2
@@ -152,14 +165,14 @@ def mark(shape: str, cx: float, cy: float, size: float, fill: str,
 
 
 KNOWN_SHAPES = ("circle", "triangle_up", "triangle_down", "diamond", "square",
-                "bullseye", "dash", "pentagon", "hexagon")
+                "bullseye", "dash", "pentagon", "hexagon", "slash_circle", "opposed")
 
 
 # --------------------------------------------------------------------------
 # Textures
 # --------------------------------------------------------------------------
 KNOWN_TEXTURES = ("solid", "lines_horizontal", "dots", "diagonal_45",
-                  "diagonal_135", "crosshatch")
+                  "diagonal_135", "crosshatch", "checker", "split_diagonal")
 
 
 def pattern_def(pid: str, texture: str, fill: str, ink: str, weight: float = 1.2) -> str:
@@ -182,6 +195,16 @@ def pattern_def(pid: str, texture: str, fill: str, ink: str, weight: float = 1.2
         # hatches at the same angle read as the same texture at a distance.
         body = (rect(0, 0, 8, 8, fill=fill)
                 + path("M0,0 L8,8", stroke=ink, stroke_width=weight))
+    elif texture == "checker":
+        body = (rect(0, 0, 8, 8, fill=fill)
+                + rect(0, 0, 4, 4, fill=ink) + rect(4, 4, 4, 4, fill=ink))
+    elif texture == "split_diagonal":
+        # Bold alternating bands, not fine hatching: this state must stay loud
+        # when the figure is scaled down or exported to monochrome, because a
+        # conflict in the evidence is the most informative cell on the page.
+        body = (rect(0, 0, 8, 8, fill=fill)
+                + polygon([(0, 8), (8, 0), (8, 4), (4, 8)], fill=ink)
+                + polygon([(0, 0), (4, 0), (0, 4)], fill=ink))
     elif texture == "crosshatch":
         body = (rect(0, 0, 8, 8, fill=fill)
                 + path("M0,8 L8,0", stroke=ink, stroke_width=weight * 0.9)
@@ -203,6 +226,33 @@ def arrow_marker(colour: str) -> str:
 # --------------------------------------------------------------------------
 # Document
 # --------------------------------------------------------------------------
+def bordered_rect(x, y, w, h, fill, stroke, weight, style="solid", rx=3) -> str:
+    """One box with a border whose STYLE carries meaning.
+
+        solid   a value we have
+        dashed  a value we do not have
+        double  more than one value, both retained
+
+    The style is a channel in its own right: it survives monochrome export and
+    it survives a reader who cannot resolve the fill texture at small sizes.
+    """
+    if style == "solid":
+        return rect(x, y, w, h, fill=fill, stroke=stroke, stroke_width=weight, rx=rx)
+    if style == "dashed":
+        return rect(x, y, w, h, fill=fill, stroke=stroke, stroke_width=weight,
+                    stroke_dasharray="5 3", rx=rx)
+    if style == "double":
+        inset = max(2.5, weight * 2)
+        return (rect(x, y, w, h, fill=fill, stroke=stroke, stroke_width=weight, rx=rx)
+                + rect(x + inset, y + inset, w - 2 * inset, h - 2 * inset, fill="none",
+                       stroke=stroke, stroke_width=max(0.9, weight * 0.7),
+                       rx=max(1, rx - 1)))
+    raise ValueError(f"unknown border style {style!r}")
+
+
+KNOWN_BORDERS = ("solid", "dashed", "double")
+
+
 class Figure:
     """An SVG document that always carries its own text alternative."""
 

@@ -6,15 +6,15 @@ Each block below is the exact text embedded in the matching SVG's <desc> element
 
 ## Figure 1 - Assessment matrix
 
-SYNTHETIC EXAMPLE - fictional groups and fictional evidence. Not a University of Iowa finding. Assessment matrix: 3 groups by 4 assessment areas, 12 cells. 8 cells carry a rating; 2 had insufficient evidence; 2 were not assessed. Unrated cells describe the evidence available to this review, not the performance of the group, and are excluded from every count of ratings. Enterprise Shared Services (ESS) - Software delivery: established (14 evidence items); Reliability and operations: strength (19 evidence items); Security practices: developing (9 evidence items); AI readiness: not assessed (outside the agreed scope for this group). Research Infrastructure Services (RIS) - Software delivery: developing (8 evidence items); Reliability and operations: established (11 evidence items); Security practices: gap (7 evidence items); AI readiness: insufficient evidence (2 items collected, not enough to support a rating). Identity and Access Management (IAM) - Software delivery: established (10 evidence items); Reliability and operations: insufficient evidence (3 items collected, not enough to support a rating); Security practices: established (15 evidence items); AI readiness: not assessed (outside the agreed scope for this group).
+SYNTHETIC EXAMPLE - fictional groups and fictional evidence. Not a University of Iowa finding. Assessment matrix: 3 groups by 4 assessment areas, 12 cells. 7 cells carry a rating; 2 had insufficient evidence; 1 were not assessed; 1 do not apply to that group; 1 have sources that disagree. Unrated cells describe the evidence available to this review, not the performance of the group, and are excluded from every count of ratings. Enterprise Shared Services (ESS) - Software delivery: established (14 evidence items); Reliability and operations: strength (19 evidence items); Security practices: developing (5 evidence items); AI readiness: not assessed (outside the agreed scope for this group). Research Infrastructure Services (RIS) - Software delivery: gap (7 evidence items); Reliability and operations: established (9 evidence items); Security practices: sources disagree, no single rating is supportable - Change management procedure v4.2 (fictional), section 6.3 says two approvals are required for any production access change; Sampled change records, 12 fictional changes in the review window says seven of twelve record a single approval, with no documented exception. Both readings are kept unreconciled; AI readiness: insufficient evidence (2 items collected, not enough to support a rating). Identity and Access Management (IAM) - Software delivery: established (9 evidence items); Reliability and operations: insufficient evidence (3 items collected, not enough to support a rating); Security practices: established (13 evidence items); AI readiness: not applicable (this practice does not apply to how this group operates; nothing is missing).
 
 ## Figure 2 - Comparison across groups
 
-SYNTHETIC EXAMPLE - fictional groups and fictional evidence. Not a University of Iowa finding. Comparison across groups. Each assessment area is a column; each rating is a horizontal lane, strongest at the top. Two further lanes sit below a dividing rule: insufficient evidence, and not assessed. Those two are not lower ratings - they are statements about the evidence this review holds. Software delivery - Established: ESS, IAM; Developing: RIS. Reliability and operations - Strength: ESS; Established: RIS; Insufficient evidence: IAM. Security practices - Established: IAM; Developing: ESS; Gap: RIS. AI readiness - Insufficient evidence: RIS; Not assessed: ESS, IAM. Group context: ESS is central team, ~40 staff, shared platform; RIS is ~12 staff, grant-funded, bursty demand; IAM is ~9 staff, vendor-hosted core. Groups differ in size, funding and service model; read a difference as a prompt for a question, not as a ranking.
+SYNTHETIC EXAMPLE - fictional groups and fictional evidence. Not a University of Iowa finding. Comparison across groups. Each assessment area is a column; each rating is a horizontal lane, strongest at the top. Two further lanes sit below a dividing rule: insufficient evidence, and not assessed. Those two are not lower ratings - they are statements about the evidence this review holds. Software delivery - Established: ESS, IAM; Gap: RIS. Reliability and operations - Strength: ESS; Established: RIS; Insufficient evidence: IAM. Security practices - Established: IAM; Developing: ESS; Sources disagree: RIS. AI readiness - Insufficient evidence: RIS; Not assessed: ESS; Not applicable: IAM. Group context: ESS is central team, ~40 staff, shared platform; RIS is ~12 staff, grant-funded, bursty demand; IAM is ~9 staff, vendor-hosted core. Groups differ in size, funding and service model; read a difference as a prompt for a question, not as a ranking.
 
 ## Figure 3 - Evidence behind each group
 
-SYNTHETIC EXAMPLE - fictional groups and fictional evidence. Not a University of Iowa finding. Evidence behind each group, as a stacked bar of items collected by kind: documents reviewed, interviews, system records, observed artifacts. Enterprise Shared Services (ESS): 42 items - documents reviewed 10, interviews 9, system records 17, observed artifacts 6. 3 of 4 areas rated; 1 not assessed; 42 evidence items. Research Infrastructure Services (RIS): 28 items - documents reviewed 8, interviews 9, system records 7, observed artifacts 4. 3 of 4 areas rated; 1 with insufficient evidence; 28 evidence items. Identity and Access Management (IAM): 28 items - documents reviewed 8, interviews 7, system records 10, observed artifacts 3. 2 of 4 areas rated; 1 with insufficient evidence; 1 not assessed; 28 evidence items. A longer bar means the area is better evidenced, not that the group performs better. Areas not assessed contribute no evidence and are not shown as zero.
+SYNTHETIC EXAMPLE - fictional groups and fictional evidence. Not a University of Iowa finding. Evidence behind each group, as a stacked bar of items collected by kind: documents reviewed, interviews, system records, observed artifacts. Enterprise Shared Services (ESS): 38 items - documents reviewed 10, interviews 9, system records 14, observed artifacts 5. 3 of 4 areas rated; 1 not assessed; counts incomplete for observed artifacts; 38 evidence items. Research Infrastructure Services (RIS): 24 items - documents reviewed 8, interviews 9, system records 7, observed artifacts not recorded. 2 of 4 areas rated; 1 with insufficient evidence; 1 where sources disagree; 24 evidence items. Identity and Access Management (IAM): 25 items - documents reviewed 8, interviews 7, system records 10, observed artifacts 0. 2 of 4 areas rated; 1 with insufficient evidence; 1 not applicable to this group; 25 evidence items. A longer bar means the area is better evidenced, not that the group performs better. A count of zero is a recorded measurement and is shown as a zero token; a kind nobody recorded is shown as not recorded and is never added to a total as if it were zero. Areas not assessed contribute no evidence.
 
 ## Figure 4 - Phased roadmap
 
@@ -29,8 +29,8 @@ SYNTHETIC EXAMPLE - fictional groups and fictional evidence. Not a University of
 | Group | Software delivery | Reliability and operations | Security practices | AI readiness |
 |---|---|---|---|---|
 | **ESS** Enterprise Shared Services | ● **Established** | ▲ **Strength** | ◆ **Developing** | — **Not assessed** |
-| **RIS** Research Infrastructure Services | ◆ **Developing** | ● **Established** | ▼ **Gap** | ◎ **Insufficient evidence** |
-| **IAM** Identity and Access Management | ● **Established** | ◎ **Insufficient evidence** | ● **Established** | — **Not assessed** |
+| **RIS** Research Infrastructure Services | ▼ **Gap** | ● **Established** | ≠ **Sources disagree** | ◎ **Insufficient evidence** |
+| **IAM** Identity and Access Management | ● **Established** | ◎ **Insufficient evidence** | ● **Established** | ⊘ **Not applicable** |
 
 **Key**
 
@@ -43,6 +43,8 @@ SYNTHETIC EXAMPLE - fictional groups and fictional evidence. Not a University of
 | | | *Below: not ratings.* |
 | ◎ | **Insufficient evidence** | We looked in this area and what we received did not support any rating. |
 | — | **Not assessed** | This area was outside the agreed scope for this group. It is not a rating. |
+| ⊘ | **Not applicable** | This practice does not apply to how this group operates. Nothing is missing. |
+| ≠ | **Sources disagree** | Two or more sources give different answers. Both readings are kept, unreconciled. |
 
 Unrated cells describe the evidence available to this review, not the performance of the group. They are excluded from every count of ratings.
 
@@ -53,11 +55,11 @@ Unrated cells describe the evidence available to this review, not the performanc
 
 | Group | Documents reviewed | Interviews | System records | Observed artifacts | Total | Coverage |
 |---|---|---|---|---|---|---|
-| **ESS** Enterprise Shared Services | 10 | 9 | 17 | 6 | **42** | 3 of 4 areas rated; 1 not assessed; 42 evidence items. |
-| **RIS** Research Infrastructure Services | 8 | 9 | 7 | 4 | **28** | 3 of 4 areas rated; 1 with insufficient evidence; 28 evidence items. |
-| **IAM** Identity and Access Management | 8 | 7 | 10 | 3 | **28** | 2 of 4 areas rated; 1 with insufficient evidence; 1 not assessed; 28 evidence items. |
+| **ESS** Enterprise Shared Services | 10 | 9 | 14 | 5 (1 area(s) uncounted) | **38** | 3 of 4 areas rated; 1 not assessed; counts incomplete for observed artifacts; 38 evidence items. |
+| **RIS** Research Infrastructure Services | 8 | 9 | 7 | _not recorded_ | **24** | 2 of 4 areas rated; 1 with insufficient evidence; 1 where sources disagree; 24 evidence items. |
+| **IAM** Identity and Access Management | 8 | 7 | 10 | 0 | **25** | 2 of 4 areas rated; 1 with insufficient evidence; 1 not applicable to this group; 25 evidence items. |
 
-A larger total means the area is better evidenced, not that the group performs better.
+A larger total means the area is better evidenced, not that the group performs better. A `0` is a recorded count; *not recorded* means no count was supplied and is never added to a total as a zero.
 
 
 ### Example Assessment (synthetic): phased roadmap

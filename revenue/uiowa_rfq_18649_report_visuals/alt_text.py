@@ -34,6 +34,13 @@ def _cell_phrase(cell) -> str:
     if b.key == "INSUFFICIENT_EVIDENCE":
         return (f"insufficient evidence ({cell.evidence_total} items collected, "
                 f"not enough to support a rating)")
+    if b.key == "NOT_APPLICABLE":
+        return ("not applicable (this practice does not apply to how this group "
+                "operates; nothing is missing)")
+    if b.key == "CONTRADICTORY":
+        readings = "; ".join(f"{r['source']} says {r['says']}" for r in cell.conflict)
+        return (f"sources disagree, no single rating is supportable - {readings}. "
+                f"Both readings are kept unreconciled")
     return f"{b.label.lower()} ({cell.evidence_total} evidence items)"
 
 
@@ -44,7 +51,8 @@ def matrix_alt(matrix) -> str:
         f"Assessment matrix: {len(matrix.group_ids)} groups by {len(matrix.area_ids)} "
         f"assessment areas, {t['cells_expected']} cells.",
         f"{t['rated']} cells carry a rating; {t['insufficient_evidence']} had insufficient "
-        f"evidence; {t['not_assessed']} were not assessed"
+        f"evidence; {t['not_assessed']} were not assessed; {t['not_applicable']} do not apply "
+        f"to that group; {t['contradictory']} have sources that disagree"
         + (f"; {t['cells_missing']} have no record supplied." if t["cells_missing"] else "."),
         "Unrated cells describe the evidence available to this review, not the performance "
         "of the group, and are excluded from every count of ratings.",
@@ -95,14 +103,20 @@ def evidence_alt(matrix) -> str:
     ]
     for gid in matrix.group_ids:
         s = matrix.summarize_group(gid)
-        breakdown = ", ".join(
-            f"{palette.evidence_kind(k)['label'].lower()} {s.evidence[k]}"
-            for k in palette.EVIDENCE_KEYS if s.evidence[k]
-        ) or "none"
+        bits = []
+        for k in palette.EVIDENCE_KEYS:
+            label = palette.evidence_kind(k)["label"].lower()
+            if not s.recorded.get(k):
+                bits.append(f"{label} not recorded")      # an omission
+            else:
+                bits.append(f"{label} {s.evidence[k]}")   # a count, including zero
+        breakdown = ", ".join(bits)
         lines.append(f"{s.label} ({gid}): {s.evidence_total} items - {breakdown}. "
                      f"{s.coverage_sentence}")
     lines.append("A longer bar means the area is better evidenced, not that the group performs "
-                 "better. Areas not assessed contribute no evidence and are not shown as zero.")
+                 "better. A count of zero is a recorded measurement and is shown as a zero "
+                 "token; a kind nobody recorded is shown as not recorded and is never added "
+                 "to a total as if it were zero. Areas not assessed contribute no evidence.")
     return " ".join(lines)
 
 
@@ -133,11 +147,39 @@ def roadmap_alt(matrix) -> str:
     return " ".join(lines)
 
 
+def states_alt() -> str:
+    """Text alternative for the comparison fixture. Takes no data by design."""
+    lines = ["SYNTHETIC REFERENCE FIXTURE - defines the visual vocabulary only. No University "
+             "data appears in this figure.",
+             "Every state the report can show, with what it means and how it is counted. No "
+             "two states differ only by colour.",
+             "Ratings, counted as ratings: "
+             + "; ".join(f"{palette.BANDS[k].label} (mark {palette.BANDS[k].glyph}, "
+                         f"{palette.BANDS[k].texture} fill, solid border)"
+                         for k in palette.ORDINAL_KEYS) + ".",
+             "Not ratings, each excluded from every rating count: "
+             + "; ".join(f"{palette.BANDS[k].label} (mark {palette.BANDS[k].glyph}, "
+                         f"{palette.BANDS[k].texture} fill, {palette.BANDS[k].border} border) - "
+                         f"{palette.BANDS[k].meaning}"
+                         for k in palette.NON_RATING_KEYS) + ".",
+             "No record supplied: the input carried no row for this cell. Shown as an empty "
+             "dashed outline, excluded from counts, and reported as a hole in the input.",
+             "Values: measured zero is a real count of zero, shown with a solid border because "
+             "it is a value we have, and counted as the value 0. Not recorded means no count "
+             "was supplied, shown with a dashed border, excluded from totals and never summed "
+             "as if it were zero.",
+             "Border language: solid means a value we have, dashed means a value we do not "
+             "have, double means more than one value with both kept. None of the unrated "
+             "states is a low score."]
+    return " ".join(lines)
+
+
 ALT_BUILDERS = {
     "matrix": matrix_alt,
     "cross-group": cross_group_alt,
     "evidence-coverage": evidence_alt,
     "roadmap": roadmap_alt,
+    "states": lambda _matrix=None: states_alt(),
 }
 
 
@@ -182,11 +224,19 @@ def coverage_markdown(matrix) -> str:
     out.append("|---" * (len(palette.EVIDENCE_KINDS) + 3) + "|")
     for gid in matrix.group_ids:
         s = matrix.summarize_group(gid)
-        counts = " | ".join(str(s.evidence[k]) for k in palette.EVIDENCE_KEYS)
+        # A kind nobody counted prints as words. A blank cell or a `0` here is
+        # the table version of the bug this whole lane exists to fix: it tells
+        # the reader a measurement was taken when none was.
+        counts = " | ".join(
+            (str(s.evidence[k]) if s.recorded.get(k) else "_not recorded_")
+            + (f" ({s.missing_counts[k]} area(s) uncounted)"
+               if s.recorded.get(k) and s.missing_counts.get(k) else "")
+            for k in palette.EVIDENCE_KEYS)
         out.append(f"| **{gid}** {s.label} | {counts} | **{s.evidence_total}** | "
                    f"{s.coverage_sentence} |")
     out += ["", "A larger total means the area is better evidenced, not that the group "
-                "performs better.", ""]
+                "performs better. A `0` is a recorded count; *not recorded* means no count "
+                "was supplied and is never added to a total as a zero.", ""]
     return "\n".join(out)
 
 

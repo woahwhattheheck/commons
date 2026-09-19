@@ -55,9 +55,8 @@ def _band_swatch(fig: svg.Figure, th: dict, b: palette.Band, x: float, y: float,
                  w: float = 26, h: float = 16) -> list[str]:
     """A legend swatch that carries texture, border style AND the shape mark."""
     paint = _band_paint(fig, th, b)
-    dash = "4 3" if b.border == "dashed" else None
-    out = [svg.rect(x, y, w, h, fill=paint, stroke=b.border_ink,
-                    stroke_width=th["border_weight"], stroke_dasharray=dash, rx=2)]
+    out = [svg.bordered_rect(x, y, w, h, paint, b.border_ink, th["border_weight"],
+                             b.border, rx=2)]
     out.append(svg.mark(b.shape, x + w + 13, y + h / 2, 11,
                         b.fill if b.on_scale else "none", b.border_ink, 1.3))
     return out
@@ -150,25 +149,39 @@ def matrix_figure(matrix, theme_name: str = palette.DEFAULT_THEME) -> svg.Figure
                 continue
             b = cell.band
             paint = _band_paint(fig, th, b)
-            dash = "5 3" if b.border == "dashed" else None
-            fig.add(svg.rect(cx + 4, ry + 4, col_w - 12, row_h - 12, fill=paint,
-                             stroke=b.border_ink, stroke_width=th["border_weight"],
-                             stroke_dasharray=dash, rx=3))
+            fig.add(svg.bordered_rect(cx + 4, ry + 4, col_w - 12, row_h - 12, paint,
+                                      b.border_ink, th["border_weight"], b.border, rx=3))
             fig.add(svg.mark(b.shape, cx + 22, ry + 26, 14,
                              b.fill if b.on_scale else "none", b.ink, 1.4))
             fig.add(svg.text(cx + 38, ry + 30, b.label, size=FONT_BODY, fill=b.ink,
                              weight="bold"))
-            detail = (f"{cell.evidence_total} evidence items"
-                      if cell.evidence_collected else "no evidence collected")
-            fig.add(svg.text(cx + 14, ry + 50, detail, size=FONT_SMALL, fill=b.ink))
+            if cell.conflict:
+                # Both readings on the face of the cell. A conflict summarised
+                # to one line is a conflict quietly resolved by the chart.
+                for i, reading in enumerate(cell.conflict[:2]):
+                    fig.add(svg.text(cx + 14, ry + 46 + i * 12,
+                                     f"{reading['source']}: {reading['says']}"[:30],
+                                     size=FONT_SMALL, fill=b.ink))
+            else:
+                detail = (f"{cell.evidence_total} evidence items"
+                          if cell.evidence_collected else "no evidence collected")
+                fig.add(svg.text(cx + 14, ry + 50, detail, size=FONT_SMALL, fill=b.ink))
 
     y = top + head_h + row_h * n_rows + 18
     totals = matrix.totals()
-    fig.add(svg.text(x0, y, (f"{totals['rated']} of {totals['cells_expected']} cells carry a "
-                             f"rating. {totals['insufficient_evidence']} had insufficient "
-                             f"evidence, {totals['not_assessed']} were not assessed"
-                             + (f", {totals['cells_missing']} had no record supplied"
-                                if totals["cells_missing"] else "") + "."),
+    tail = []
+    if totals["insufficient_evidence"]:
+        tail.append(f"{totals['insufficient_evidence']} had insufficient evidence")
+    if totals["not_assessed"]:
+        tail.append(f"{totals['not_assessed']} were not assessed")
+    if totals["not_applicable"]:
+        tail.append(f"{totals['not_applicable']} do not apply to that group")
+    if totals["contradictory"]:
+        tail.append(f"{totals['contradictory']} have sources that disagree")
+    if totals["cells_missing"]:
+        tail.append(f"{totals['cells_missing']} had no record supplied")
+    fig.add(svg.text(x0, y, f"{totals['rated']} of {totals['cells_expected']} cells carry a "
+                            f"rating. " + ("; ".join(tail) + "." if tail else ""),
                      size=FONT_BODY, fill=th["ink"]))
     y += 22
     y = _legend(fig, th, x0, y, grid_w)
@@ -338,6 +351,21 @@ def evidence_coverage_figure(matrix, theme_name: str = palette.DEFAULT_THEME) ->
             for kind in palette.EVIDENCE_KINDS:
                 count = s.evidence[kind["key"]]
                 if count == 0:
+                    # THE bug this order names: a zero drawn as nothing reads
+                    # as "no data". Zero recorded and never recorded are two
+                    # different facts, so each gets its own visible token.
+                    state = (palette.VALUE_STATES["MEASURED_ZERO"]
+                             if s.recorded.get(kind["key"])
+                             else palette.VALUE_STATES["NOT_RECORDED"])
+                    token_w = 30 if state["border"] == "solid" else 86
+                    fig.add(svg.bordered_rect(bx, y + 5, token_w, bar_h - 10, state["fill"],
+                                              state["border_ink"], th["border_weight"],
+                                              state["border"], rx=2))
+                    fig.add(svg.text(bx + token_w / 2, y + 20,
+                                     f"{kind['short']} {state['label']}"
+                                     if state["border"] == "solid" else state["label"],
+                                     size=FONT_SMALL, fill=state["ink"], anchor="middle"))
+                    bx += token_w + 5
                     continue
                 seg_w = count * scale
                 paint = fig.texture_fill(f"ev-{kind['key']}", kind["texture"], kind["fill"],
@@ -488,9 +516,112 @@ def roadmap_figure(matrix, theme_name: str = palette.DEFAULT_THEME) -> svg.Figur
     return fig
 
 
+# --------------------------------------------------------------------------
+# 5. The compact comparison fixture (UIOWA-126)
+# --------------------------------------------------------------------------
+# Every state the report can show, on one page, with what it means and how it
+# is counted. This is the artifact a reviewer actually uses to check that a
+# legend is honest -- and the one that makes the dangerous confusions visible
+# side by side rather than three pages apart:
+#     measured zero   vs  not recorded      (a value vs an omission)
+#     not applicable  vs  not assessed      (their context vs our evidence)
+#     sources disagree vs a middling rating (a conflict vs a conclusion)
+STATE_ROWS = (
+    ("band", "STRENGTH", "counted as a rating"),
+    ("band", "ESTABLISHED", "counted as a rating"),
+    ("band", "DEVELOPING", "counted as a rating"),
+    ("band", "GAP", "counted as a rating"),
+    ("band", "INSUFFICIENT_EVIDENCE", "excluded from every rating count"),
+    ("band", "UNASSESSED", "excluded from every rating count"),
+    ("band", "NOT_APPLICABLE", "excluded; not a gap in our evidence"),
+    ("band", "CONTRADICTORY", "excluded; both readings kept on the page"),
+    ("absent", "NO_RECORD", "excluded; reported as a hole in the input"),
+    ("value", "MEASURED_ZERO", "counted as the value 0"),
+    ("value", "NOT_RECORDED", "excluded from totals; never summed as 0"),
+)
+
+
+def states_figure(matrix=None, theme_name: str = palette.DEFAULT_THEME) -> svg.Figure:
+    """Side-by-side reference for all eleven states. Takes no data by design."""
+    th = _theme(theme_name)
+    row_h = 34
+    x0 = MARGIN
+    sw_x = x0
+    mark_x = x0 + 132
+    label_x = x0 + 168
+    mean_x = x0 + 330
+    count_x = x0 + 700
+    width = int(count_x + 250 + MARGIN)
+    height = int(MARGIN * 2 + 70 + 26 + row_h * len(STATE_ROWS) + 70)
+
+    fig = svg.Figure(width, height, "Report visuals: every state, side by side",
+                     alt_text.states_alt(), th["background"], slug="states")
+
+    y = _header(fig, th, "Every state the report can show",
+                "SYNTHETIC REFERENCE FIXTURE - defines the visual vocabulary only. No "
+                "University data appears in this figure. Colour is never the only "
+                "difference between two rows.",
+                x0, MARGIN + 14)
+    y += 12
+
+    for header, hx in (("Swatch", sw_x), ("Mark", mark_x), ("Name", label_x),
+                       ("What it means", mean_x), ("How it is counted", count_x)):
+        fig.add(svg.text(hx, y, header, size=FONT_SMALL, fill=th["muted"], weight="bold"))
+    y += 8
+    fig.add(svg.line(x0, y, width - MARGIN, y, stroke=th["rule"], stroke_width=1.2))
+    y += 6
+
+    for kind, key, counting in STATE_ROWS:
+        if kind == "band":
+            b = palette.BANDS[key]
+            paint = _band_paint(fig, th, b)
+            fig.add(svg.bordered_rect(sw_x, y + 4, 118, row_h - 12, paint, b.border_ink,
+                                      th["border_weight"], b.border, rx=2))
+            fig.add(svg.mark(b.shape, mark_x + 11, y + 4 + (row_h - 12) / 2, 13,
+                             b.fill if b.on_scale else "none", b.border_ink, 1.4))
+            name, meaning = b.label, b.meaning
+            if not b.on_scale:
+                # Say it in the row itself, not only in a footnote.
+                meaning = meaning + " Not a rating."
+        elif kind == "value":
+            state = palette.VALUE_STATES[key]
+            fig.add(svg.bordered_rect(sw_x, y + 4, 118, row_h - 12, state["fill"],
+                                      state["border_ink"], th["border_weight"],
+                                      state["border"], rx=2))
+            fig.add(svg.text(sw_x + 59, y + 4 + (row_h - 12) / 2 + 4, state["label"],
+                             size=FONT_SMALL, fill=state["ink"], anchor="middle",
+                             weight="bold"))
+            name, meaning = state["long_label"], state["meaning"]
+        else:  # a cell nobody supplied at all
+            fig.add(svg.rect(sw_x, y + 4, 118, row_h - 12, fill="none", stroke=th["rule"],
+                             stroke_width=1.2, stroke_dasharray="2 4", rx=2))
+            fig.add(svg.text(sw_x + 59, y + 4 + (row_h - 12) / 2 + 4, "(empty)",
+                             size=FONT_SMALL, fill=th["muted"], anchor="middle"))
+            name = "No record supplied"
+            meaning = "The input carried no row for this cell. Not a rating."
+
+        fig.add(svg.text(label_x, y + 19, name, size=FONT_BODY, fill=th["ink"], weight="bold"))
+        fig.add(svg.text(mean_x, y + 19, meaning[:66], size=FONT_SMALL, fill=th["muted"]))
+        fig.add(svg.text(count_x, y + 19, counting, size=FONT_SMALL, fill=th["ink"]))
+        y += row_h
+
+    fig.add(svg.line(x0, y + 2, width - MARGIN, y + 2, stroke=th["rule"], stroke_width=1))
+    fig.add(svg.text(x0, y + 22,
+                     "Each row differs from every other in shape, texture, border style and "
+                     "wording, not only in colour. Open the .mono.svg copy to confirm: the "
+                     "colour is genuinely removed there, not simulated.",
+                     size=FONT_SMALL, fill=th["muted"]))
+    fig.add(svg.text(x0, y + 38,
+                     "Solid border: a value we have. Dashed: a value we do not have. Double: "
+                     "more than one value, both kept. None of the unrated states is a low score.",
+                     size=FONT_SMALL, fill=th["muted"]))
+    return fig
+
+
 FIGURES = {
     "matrix": matrix_figure,
     "cross-group": cross_group_figure,
     "evidence-coverage": evidence_coverage_figure,
     "roadmap": roadmap_figure,
+    "states": states_figure,
 }

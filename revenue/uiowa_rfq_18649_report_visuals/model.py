@@ -48,16 +48,20 @@ def _require(mapping: dict, key: str, where: str):
 class Cell:
     """One (group, area) intersection of the twelve-cell matrix."""
 
-    __slots__ = ("group", "area", "band_key", "note", "evidence", "evidence_collected")
+    __slots__ = ("group", "area", "band_key", "note", "evidence", "evidence_collected",
+                 "conflict")
 
     def __init__(self, group: str, area: str, band_key: str, note: str,
-                 evidence: dict, evidence_collected: bool) -> None:
+                 evidence: dict, evidence_collected: bool, conflict=None) -> None:
         self.group = group
         self.area = area
         self.band_key = band_key
         self.note = note
         self.evidence = evidence
         self.evidence_collected = evidence_collected
+        # Both readings of a disagreement, kept side by side. Never reconciled
+        # into one value here -- that is the reviewer's judgement, not ours.
+        self.conflict = conflict or []
 
     @property
     def band(self) -> palette.Band:
@@ -69,7 +73,18 @@ class Cell:
 
     @property
     def evidence_total(self) -> int:
-        return sum(self.evidence.values())
+        """Sums recorded counts only. NOT_RECORDED never contributes a zero."""
+        return sum(v for v in self.evidence.values() if isinstance(v, int))
+
+    @property
+    def not_recorded_kinds(self) -> tuple:
+        return tuple(k for k, v in self.evidence.items() if v == palette.NOT_RECORDED)
+
+    @property
+    def measured_zero_kinds(self) -> tuple:
+        """Kinds explicitly counted as zero. A finding, not a hole."""
+        return tuple(k for k, v in self.evidence.items()
+                     if isinstance(v, int) and v == 0)
 
     @classmethod
     def from_dict(cls, raw: dict, where: str) -> "Cell":
@@ -92,9 +107,19 @@ class Cell:
         if not isinstance(raw_counts, dict):
             raise DataError(f"{where}: 'evidence' must be an object of counts")
         for key in palette.EVIDENCE_KEYS:
-            value = raw_counts.get(key, 0)
+            # Absent from the object entirely means "not recorded", NOT zero.
+            # This is the distinction the whole zero-vs-missing treatment rests
+            # on: a supplied 0 is a measurement, an omission is not.
+            value = raw_counts.get(key, palette.NOT_RECORDED)
+            if value is None:
+                value = palette.NOT_RECORDED
+            if value == palette.NOT_RECORDED:
+                counts[key] = palette.NOT_RECORDED
+                continue
             if isinstance(value, bool) or not isinstance(value, int):
-                raise DataError(f"{where}: evidence/{key} must be a whole number, got {value!r}")
+                raise DataError(
+                    f"{where}: evidence/{key} must be a whole number or "
+                    f"{palette.NOT_RECORDED!r}, got {value!r}")
             if value < 0:
                 raise DataError(f"{where}: evidence/{key} cannot be negative ({value})")
             counts[key] = value
@@ -104,21 +129,52 @@ class Cell:
                 f"{', '.join(palette.EVIDENCE_KEYS)}"
             )
 
-        if not collected and sum(counts.values()) > 0:
+        recorded_total = sum(v for v in counts.values() if isinstance(v, int))
+        if not collected and recorded_total > 0:
             raise DataError(
                 f"{where}: marked evidence_collected=false but carries "
-                f"{sum(counts.values())} evidence items. One of the two is wrong."
+                f"{recorded_total} evidence items. One of the two is wrong."
             )
-        if collected and sum(counts.values()) == 0:
+        if collected and recorded_total == 0:
             raise DataError(
                 f"{where}: marked evidence_collected=true but carries no items. "
                 f"Use evidence_collected=false for an area that was not examined."
             )
 
-        cell = cls(group, area, band_key, raw.get("note", ""), counts, collected)
+        conflict = raw.get("conflict") or []
+        if not isinstance(conflict, list):
+            raise DataError(f"{where}: 'conflict' must be a list of readings")
+
+        cell = cls(group, area, band_key, raw.get("note", ""), counts, collected, conflict)
 
         # A rating has to rest on something. This is the guard that stops an
         # empty row from arriving in the report as a confident finding.
+        if band_key == "CONTRADICTORY":
+            # A disagreement needs at least two readings on the record. One
+            # reading is not a conflict, and an empty conflict would render as
+            # a loud cell with nothing behind it.
+            if len(conflict) < 2:
+                raise DataError(
+                    f"{where}: band 'CONTRADICTORY' needs at least two readings in "
+                    f"'conflict', each naming its source. Got {len(conflict)}.")
+            for i, reading in enumerate(conflict):
+                _require(reading, "source", f"{where}.conflict[{i}]")
+                _require(reading, "says", f"{where}.conflict[{i}]")
+            if not collected:
+                raise DataError(
+                    f"{where}: sources cannot disagree when no evidence was collected.")
+        elif conflict:
+            raise DataError(
+                f"{where}: band {band_key!r} carries a 'conflict' record. A disagreement "
+                f"must not be resolved into a single band -- use 'CONTRADICTORY' so both "
+                f"readings stay on the page.")
+
+        if band_key == "NOT_APPLICABLE" and collected:
+            raise DataError(
+                f"{where}: 'NOT_APPLICABLE' means the practice does not apply to this "
+                f"group, so there is nothing to collect. If evidence exists, this is a "
+                f"different band.")
+
         if cell.is_rating and not collected:
             raise DataError(
                 f"{where}: band {band_key!r} is a rating but no evidence was "
@@ -131,10 +187,13 @@ class GroupSummary:
     """Per-group counts. Ratings and non-ratings never share a bucket."""
 
     __slots__ = ("group", "label", "context", "band_counts", "evidence",
-                 "rated", "insufficient", "unassessed", "areas")
+                 "rated", "insufficient", "unassessed", "areas",
+                 "not_applicable", "contradictory", "recorded", "missing_counts")
 
     def __init__(self, group, label, context, band_counts, evidence,
-                 rated, insufficient, unassessed, areas):
+                 rated, insufficient, unassessed, areas,
+                 not_applicable=0, contradictory=0, recorded=None,
+                 missing_counts=None):
         self.group = group
         self.label = label
         self.context = context
@@ -144,10 +203,30 @@ class GroupSummary:
         self.insufficient = insufficient
         self.unassessed = unassessed
         self.areas = areas
+        self.not_applicable = not_applicable
+        self.contradictory = contradictory
+        # Which kinds have at least one real count. A kind nobody recorded is
+        # not the same as a kind counted at zero.
+        self.recorded = recorded or {k: False for k in palette.EVIDENCE_KEYS}
+        # How many supplied cells left this kind uncounted. A group total can be
+        # "recorded" because one area counted it while three others never did;
+        # saying so is the difference between a total and an honest total.
+        self.missing_counts = missing_counts or {k: 0 for k in palette.EVIDENCE_KEYS}
 
     @property
     def evidence_total(self) -> int:
-        return sum(self.evidence.values())
+        """Sums recorded counts only. NOT_RECORDED never contributes a zero."""
+        return sum(v for v in self.evidence.values() if isinstance(v, int))
+
+    @property
+    def not_recorded_kinds(self) -> tuple:
+        return tuple(k for k, v in self.evidence.items() if v == palette.NOT_RECORDED)
+
+    @property
+    def measured_zero_kinds(self) -> tuple:
+        """Kinds explicitly counted as zero. A finding, not a hole."""
+        return tuple(k for k, v in self.evidence.items()
+                     if isinstance(v, int) and v == 0)
 
     @property
     def coverage_sentence(self) -> str:
@@ -161,6 +240,15 @@ class GroupSummary:
             parts.append(f"{self.insufficient} with insufficient evidence")
         if self.unassessed:
             parts.append(f"{self.unassessed} not assessed")
+        if self.not_applicable:
+            parts.append(f"{self.not_applicable} not applicable to this group")
+        if self.contradictory:
+            parts.append(f"{self.contradictory} where sources disagree")
+        partial = [k for k, n in self.missing_counts.items() if n and self.recorded.get(k)]
+        if partial:
+            parts.append("counts incomplete for "
+                         + ", ".join(palette.evidence_kind(k)["label"].lower()
+                                     for k in sorted(partial)))
         parts.append(f"{self.evidence_total} evidence items")
         return "; ".join(parts) + "."
 
@@ -265,13 +353,21 @@ class Matrix:
     def summarize_group(self, gid: str) -> GroupSummary:
         band_counts = {k: 0 for k in palette.BAND_ORDER}
         evidence = {k: 0 for k in palette.EVIDENCE_KEYS}
+        recorded = {k: False for k in palette.EVIDENCE_KEYS}
+        missing_counts = {k: 0 for k in palette.EVIDENCE_KEYS}
         for aid in self.area_ids:
             cell = self.cell(gid, aid)
             if cell is None:
                 continue
             band_counts[cell.band_key] += 1
             for k, v in cell.evidence.items():
-                evidence[k] += v
+                if isinstance(v, int):
+                    evidence[k] += v
+                    recorded[k] = True
+                elif cell.evidence_collected:
+                    # Only counts as an omission where collection happened at
+                    # all -- an out-of-scope area is not a missing count.
+                    missing_counts[k] += 1
         rated = sum(band_counts[k] for k in palette.ORDINAL_KEYS)
         return GroupSummary(
             group=gid,
@@ -279,10 +375,14 @@ class Matrix:
             context=self.group_context(gid),
             band_counts=band_counts,
             evidence=evidence,
+            recorded=recorded,
+            missing_counts=missing_counts,
             rated=rated,
             insufficient=band_counts["INSUFFICIENT_EVIDENCE"],
             unassessed=band_counts["UNASSESSED"],
             areas=len(self.area_ids),
+            not_applicable=band_counts["NOT_APPLICABLE"],
+            contradictory=band_counts["CONTRADICTORY"],
         )
 
     def totals(self) -> dict:
@@ -296,6 +396,8 @@ class Matrix:
             "rated": sum(counts[k] for k in palette.ORDINAL_KEYS),
             "insufficient_evidence": counts["INSUFFICIENT_EVIDENCE"],
             "not_assessed": counts["UNASSESSED"],
+            "not_applicable": counts["NOT_APPLICABLE"],
+            "contradictory": counts["CONTRADICTORY"],
             "band_counts": counts,
         }
 
