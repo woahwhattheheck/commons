@@ -21,12 +21,14 @@ UNKNOWN = "UNKNOWN"
 VALID_STATES = {EVIDENCED, OBSERVED_GAP, UNKNOWN}
 
 
-def _date(value: str | None) -> date | None:
-    if not value:
+def _date(value: Any) -> date | None:
+    # Catalog dates are calendar dates, not timestamps or arbitrary prefixes.
+    if (not isinstance(value, str) or len(value) != 10
+            or value[4] != "-" or value[7] != "-"):
         return None
     try:
-        return date.fromisoformat(value[:10])
-    except (TypeError, ValueError):
+        return date.fromisoformat(value)
+    except ValueError:
         return None
 
 
@@ -76,7 +78,7 @@ def evaluate_dataset(dataset: Dict[str, Any], as_of: date) -> Dict[str, Any]:
                 "Locate refresh history or record that refresh timing is not currently evidenced.",
             )
         )
-    elif not isinstance(cadence, int) or cadence <= 0:
+    elif isinstance(cadence, bool) or not isinstance(cadence, int) or cadence <= 0:
         checks.append(
             _check(
                 "refresh_freshness",
@@ -160,14 +162,27 @@ def evaluate_dataset(dataset: Dict[str, Any], as_of: date) -> Dict[str, Any]:
                 )
             )
 
-    cleanup_required = bool(dataset.get("cleanup_required"))
-    cleanup_verified = _date(dataset.get("cleanup_last_verified"))
-    if not cleanup_required:
+    # Only explicit booleans declare whether cleanup applies. Absence is not False.
+    cleanup_required = dataset.get("cleanup_required")
+    cleanup_verified = (
+        _date(dataset.get("cleanup_last_verified")) if cleanup_required is True else None
+    )
+    if cleanup_required is False:
         checks.append(
             _check(
                 "cleanup",
                 EVIDENCED,
                 "Catalog marks cleanup as not required for this fixture.",
+            )
+        )
+    elif cleanup_required is not True:
+        checks.append(
+            _check(
+                "cleanup",
+                UNKNOWN,
+                "No reliable boolean cleanup_required declaration supplied.",
+                "Record whether cleanup is required; an omitted declaration does not "
+                "establish that cleanup is unnecessary.",
             )
         )
     elif cleanup_verified is None:
@@ -198,7 +213,7 @@ def evaluate_dataset(dataset: Dict[str, Any], as_of: date) -> Dict[str, Any]:
                 "Record the fixture retention/retirement rule and its owner.",
             )
         )
-    elif not isinstance(retention, int) or retention < 0:
+    elif isinstance(retention, bool) or not isinstance(retention, int) or retention < 0:
         checks.append(
             _check(
                 "retention",
@@ -259,13 +274,18 @@ def evaluate_dataset(dataset: Dict[str, Any], as_of: date) -> Dict[str, Any]:
 
 
 def evaluate_catalog(payload: Dict[str, Any]) -> Dict[str, Any]:
+    if not isinstance(payload, dict):
+        raise ValueError("top-level JSON value must be an object")
     as_of = _date(payload.get("as_of"))
     if as_of is None:
         raise ValueError("catalog requires ISO date field 'as_of'")
     datasets = payload.get("datasets")
     if not isinstance(datasets, list):
         raise ValueError("catalog requires a 'datasets' array")
-    results = [evaluate_dataset(d, as_of) for d in datasets if isinstance(d, dict)]
+    for index, dataset in enumerate(datasets):
+        if not isinstance(dataset, dict):
+            raise ValueError(f"datasets[{index}] must be a JSON object")
+    results = [evaluate_dataset(d, as_of) for d in datasets]
     aggregate = Counter()
     for result in results:
         aggregate.update(result["summary"])
@@ -345,7 +365,10 @@ def main(argv: Iterable[str] | None = None) -> int:
     parser.add_argument("--output", type=Path)
     args = parser.parse_args(list(argv) if argv is not None else None)
 
-    report = evaluate_catalog(load_json(args.catalog))
+    try:
+        report = evaluate_catalog(load_json(args.catalog))
+    except (OSError, ValueError) as exc:
+        parser.error(str(exc))
     if args.format == "json":
         rendered = json.dumps(report, indent=2, sort_keys=True) + "\n"
     else:

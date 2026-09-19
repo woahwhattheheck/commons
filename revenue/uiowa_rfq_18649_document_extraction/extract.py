@@ -28,6 +28,7 @@ SCHEMA = "uiowa.document-extraction.v1"
 MAX_BYTES = 50 * 1024 * 1024
 W_NS = "http://schemas.openxmlformats.org/wordprocessingml/2006/main"
 NS = {"w": W_NS}
+MC_NS = "http://schemas.openxmlformats.org/markup-compatibility/2006"
 
 
 class ExtractionError(Exception):
@@ -176,8 +177,25 @@ def extract_text(path: Path) -> tuple[list[Segment], list[str]]:
     return _extract_text_bytes(_read_snapshot(path))
 
 
+def _docx_has_alternate_content(element: ET.Element) -> bool:
+    """Detect unresolved alternatives only in the accepted body-text view.
+
+    Do not guess which application-specific Choice a renderer would select.
+    Deleted/moved-from text and omitted drawings cannot contaminate current prose.
+    """
+    if element.tag in {f"{{{W_NS}}}{name}" for name in ("del", "moveFrom", "drawing", "pict", "object")}:
+        return False
+    if element.tag == f"{{{MC_NS}}}AlternateContent":
+        return True
+    return any(_docx_has_alternate_content(child) for child in element)
+
+
 def _docx_paragraph_text(p: ET.Element) -> str:
     # Extract an explicitly declared accepted-text view, without modifying OOXML.
+    # Withhold the entire affected paragraph: deleting just the ambiguous span
+    # could manufacture a different quotation from the text surrounding the gap.
+    if _docx_has_alternate_content(p):
+        return ""
     parts: list[str] = []
 
     def visit(node: ET.Element) -> None:
@@ -185,6 +203,8 @@ def _docx_paragraph_text(p: ET.Element) -> str:
             return
         if node.tag == f"{{{W_NS}}}t":
             parts.append(node.text or "")
+        elif node.tag == f"{{{W_NS}}}noBreakHyphen":
+            parts.append("\u2011")
         elif node.tag == f"{{{W_NS}}}tab":
             parts.append("\t")
         elif node.tag in {f"{{{W_NS}}}br", f"{{{W_NS}}}cr"}:
@@ -282,6 +302,11 @@ def _docx_part(zf: zipfile.ZipFile, name: str) -> bytes:
 
 
 def _docx_table_text(table: ET.Element, warnings: list[str], locator: str) -> str:
+    # A blanked cell must not look like a genuinely empty value; withhold the
+    # affected table rather than retain a misleading partial row-major quotation.
+    if _docx_has_alternate_content(table):
+        warnings.append(f"DOCX_ALTERNATE_CONTENT_NOT_EXTRACTED:{locator}; entire table withheld; inspect original")
+        return ""
     # Row/cell revision markers need grid reconstruction, not just text filtering.
     # Withhold the affected table rather than label ambiguous stored text as current.
     structural_revisions = (
@@ -370,6 +395,17 @@ def _extract_docx_bytes(raw: bytes) -> tuple[list[Segment], list[str]]:
     stack: list[str] = []
     for child, locator in _docx_blocks(body, warnings):
         if child.tag == f"{{{W_NS}}}p":
+            if _docx_has_alternate_content(child):
+                warning = f"DOCX_ALTERNATE_CONTENT_NOT_EXTRACTED:{locator}; entire paragraph withheld; inspect original"
+                warnings.append(warning)
+                level = _docx_outline_level(child, styles, warnings)
+                if level is not None:
+                    stack = _heading_path_update(stack, level, "(unresolved heading)")
+                segments.append(Segment(
+                    segment_id=f"docx-{len(segments)+1:04d}", kind="unreadable",
+                    locator=locator, text="", heading_path=list(stack), warnings=[warning],
+                ))
+                continue
             value = _docx_paragraph_text(child)
             if not value:
                 continue
@@ -429,9 +465,19 @@ def _extract_pdf_bytes(raw: bytes) -> tuple[list[Segment], list[str]]:
         if not status:
             raise ExtractionError("PDF_ENCRYPTED_PASSWORD_REQUIRED")
 
+    # Page-tree flattening is lazy in pypdf. Opening the container successfully
+    # does not establish that its page sequence can be enumerated. Validate the
+    # complete sequence before emitting locators or extracting partial content.
+    try:
+        pages = list(reader.pages)
+    except Exception as exc:
+        raise ExtractionError(f"PDF_PAGE_TREE_FAILED:{type(exc).__name__}") from exc
+    if not pages:
+        warnings.append("PDF_NO_PAGES")
+
     segments: list[Segment] = []
     empty_pages = 0
-    for page_no, page in enumerate(reader.pages, start=1):
+    for page_no, page in enumerate(pages, start=1):
         try:
             text = page.extract_text() or ""
         except Exception as exc:
@@ -476,8 +522,8 @@ def _extract_pdf_bytes(raw: bytes) -> tuple[list[Segment], list[str]]:
             )
 
     if empty_pages:
-        warnings.append(f"PDF_PAGES_WITHOUT_EXTRACTABLE_TEXT={empty_pages}/{len(reader.pages)}")
-    if reader.pages and empty_pages == len(reader.pages):
+        warnings.append(f"PDF_PAGES_WITHOUT_EXTRACTABLE_TEXT={empty_pages}/{len(pages)}")
+    if pages and empty_pages == len(pages):
         warnings.append("PDF_TEXT_EXTRACTION_EMPTY_FOR_ALL_PAGES; OCR_REQUIRED_FOR_IMAGE_ONLY_CONTENT")
     return segments, warnings
 

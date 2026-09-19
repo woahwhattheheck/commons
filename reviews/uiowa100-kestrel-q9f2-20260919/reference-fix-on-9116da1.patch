@@ -1,0 +1,50 @@
+--- a/revenue/uiowa_rfq_18649_operator_portability/uiowa100_portability.py
++++ b/revenue/uiowa_rfq_18649_operator_portability/uiowa100_portability.py
+@@ -55,6 +55,11 @@
+ 
+ def digest(raw: bytes) -> str:
+     return hashlib.sha256(raw).hexdigest()
++
++
++def git_blob_digest(raw: bytes) -> str:
++    """Git object ID for the bytes; an identifier, not source authentication."""
++    return hashlib.sha1(b"blob " + str(len(raw)).encode("ascii") + b"\0" + raw).hexdigest()
+ 
+ 
+ def strict_json(raw: bytes) -> object:
+@@ -156,7 +161,7 @@
+         "synthetic_only": True,
+         "scope": "compiler/workbench public inspection runtime; not full engagement completion",
+         "files": [{"path": name, "bytes": len(raw), "sha256": digest(raw),
+-                   "git_blob_sha1": hashlib.sha1(b"blob " + str(len(raw)).encode() + b"\0" + raw).hexdigest()}
++                   "git_blob_sha1": git_blob_digest(raw)}
+                   for name, raw in sorted(files.items())],
+     }
+ 
+@@ -203,6 +208,8 @@
+             raise PortabilityError(f"invalid member size: {name}")
+         if not isinstance(row.get("sha256"), str) or not re.fullmatch(r"[0-9a-f]{64}", row["sha256"]):
+             raise PortabilityError(f"invalid member digest: {name}")
++        if not isinstance(row.get("git_blob_sha1"), str) or not re.fullmatch(r"[0-9a-f]{40}", row["git_blob_sha1"]):
++            raise PortabilityError(f"invalid Git blob digest: {name}")
+         total += size
+     if total > MAX_TOTAL:
+         raise PortabilityError("package exceeds total size bound")
+@@ -219,6 +226,8 @@
+         member = read_member(root, row["path"])
+         if len(member) != row["bytes"] or digest(member) != row["sha256"]:
+             raise PortabilityError(f"member integrity mismatch: {row['path']}")
++        if git_blob_digest(member) != row["git_blob_sha1"]:
++            raise PortabilityError(f"Git blob integrity mismatch: {row['path']}")
+     expected = set(source_closure(root)) | {GUIDE}
+     if expected != {row["path"] for row in rows}:
+         raise PortabilityError("manifest does not describe the complete runtime closure")
+@@ -251,6 +260,8 @@
+             data = archive.read(row["path"])
+             if len(data) != row["bytes"] or digest(data) != row["sha256"]:
+                 raise PortabilityError(f"archive integrity mismatch: {row['path']}")
++            if git_blob_digest(data) != row["git_blob_sha1"]:
++                raise PortabilityError(f"archive Git blob integrity mismatch: {row['path']}")
+             members[row["path"]] = data
+     output.mkdir(parents=False)
+     for name, data in sorted(members.items()):

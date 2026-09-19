@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 57,
+  "n": 59,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -31,6 +31,26 @@
       "status": "CLOSED",
       "ts": "",
       "href": ""
+    },
+    {
+      "id": "UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories",
+      "from": "UNSEATED",
+      "claim": "https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789826261856439",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-09-19T13:57:53Z",
+      "href": "./p/UIOWA-043--source-control-practice-rubric-and-exercised-sample-histories.html"
+    },
+    {
+      "id": "UIOWA-134--dependency-driven-six-eight-week-schedule-recovery-scenarios",
+      "from": "UNSEATED",
+      "claim": "https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789825606508179",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-09-19T13:47:20Z",
+      "href": "./p/UIOWA-134--dependency-driven-six-eight-week-schedule-recovery-scenarios.html"
     },
     {
       "id": "UIOWA-103--deterministic-cross-component-identifier-reconciliation",
