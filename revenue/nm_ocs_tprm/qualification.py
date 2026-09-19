@@ -77,7 +77,7 @@ def normalize(payload: Any) -> dict[str, Any]:
         {"status", "sha256", "source_url"},
         "controlling_packet",
     )
-    if packet["status"] not in _ALLOWED_PACKET:
+    if type(packet["status"]) is not str or packet["status"] not in _ALLOWED_PACKET:
         raise ValidationError("controlling_packet.status invalid")
     packet["sha256"] = _digest_or_none(packet["sha256"], "controlling_packet.sha256")
     if packet["status"] == "VERIFIED" and packet["sha256"] is None:
@@ -92,7 +92,7 @@ def normalize(payload: Any) -> dict[str, Any]:
         {"status", "evidence_sha256", "note"},
         "prime_eligibility",
     )
-    if prime["status"] not in _ALLOWED_PRIME:
+    if type(prime["status"]) is not str or prime["status"] not in _ALLOWED_PRIME:
         raise ValidationError("prime eligibility status invalid")
     prime["evidence_sha256"] = _digest_or_none(
         prime["evidence_sha256"], "prime_eligibility.evidence_sha256"
@@ -103,7 +103,7 @@ def normalize(payload: Any) -> dict[str, Any]:
         raise ValidationError("prime eligibility note invalid")
 
     legal = _exact(p["legal_scope"], {"status", "evidence_sha256"}, "legal_scope")
-    if legal["status"] not in _ALLOWED_LEGAL:
+    if type(legal["status"]) is not str or legal["status"] not in _ALLOWED_LEGAL:
         raise ValidationError("legal_scope.status invalid")
     legal["evidence_sha256"] = _digest_or_none(
         legal["evidence_sha256"], "legal_scope.evidence_sha256"
@@ -191,6 +191,6 @@ def verify_receipt(receipt: Any) -> bool:
         return False
     try:
         expected = compile_qualification(receipt["source"])
-    except ValidationError:
+        return _canonical_bytes(receipt) == _canonical_bytes(expected)
+    except (ValueError, TypeError, RecursionError):
         return False
-    return _canonical_bytes(receipt) == _canonical_bytes(expected)
