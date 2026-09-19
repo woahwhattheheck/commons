@@ -18,11 +18,12 @@ promising it in prose.
 ```
 cd revenue/uiowa_rfq_18649_export_safety
 
-python3 export_safety.py scan --root ..                    # audit every sibling lane
+python3 export_safety.py scan --root ..                     # audit every sibling lane
 python3 export_safety.py scan --root .. --lane uiowa_rfq_18649_workbench
-python3 export_safety.py scan --root fixtures --out /tmp/fx # the self-test corpus
-python3 export_safety.py scan --root .. --fail-on HIGH      # exit 1 on a HIGH finding
-python3 -m unittest -v                                      # 17 tests
+python3 export_safety.py scan --root .. --skip-lane uiowa_rfq_18649_export_safety
+python3 export_safety.py scan --root fixtures --include-self-fixtures --out /tmp/fx
+python3 export_safety.py scan --root .. --fail-on HIGH       # exit 1 on a HIGH finding
+python3 -m unittest -v                                       # 18 tests
 ```
 
 Python 3 standard library only. No network. Writes only inside `--out`.
@@ -32,18 +33,20 @@ Python 3 standard library only. No network. Writes only inside `--out`.
 `python3 export_safety.py scan --root ..` against the delivery kit as it stands — verbatim:
 
 ```
-files=169 lanes=49 rows=8718 cells=74374 neutralized=1 findings=25
+$ python3 export_safety.py scan --root .. --skip-lane uiowa_rfq_18649_export_safety
+files=170 lanes=50 rows=8740 cells=74588 neutralized=1 findings=25
      20  LEADING_COMMENT_LINE
       3  NULL_SEMANTICS_AMBIGUOUS
       1  NULL_SEMANTICS_DECLARED
       1  RAGGED_ROW
 ```
 
-**Zero formula-injection findings across 74,374 cells.** That is a real and creditable result
-for the fleet, and it is worth saying plainly rather than only reporting problems.
+Zero formula-injection findings across 74,588 cells.
 
-The findings that need an owner's decision, each verified by hand against the raw file before
-being written down:
+This tool's own `fixtures/` are deliberately broken and are excluded from a kit audit by
+default; `--include-self-fixtures` audits them on purpose.
+
+Findings, each verified by hand against the raw file before being recorded:
 
 | Severity | Finding | Where |
 |---|---|---|
@@ -68,10 +71,10 @@ plus `OVERLONG_CELL` and `NULL_SEMANTICS_DECLARED` at INFO, and `NEUTRALIZED_OK`
 than flagged — a cell already carrying the apostrophe guard is **correct**, and the auditor
 shows what right looks like as well as what wrong looks like.
 
-## The part worth reading: this auditor's first run was 98% wrong
+## False positives corrected before publication
 
-Its first pass against the real kit reported **199 findings. 195 of them were false positives,
-and both classes were my bug, not any lane's defect.**
+The first pass against the kit reported **199 findings; 195 were false positives**, both classes
+caused by this tool, not by any lane's data.
 
 * **185 × `RAGGED_ROW`.** Several lanes put a provenance notice on line 1 as a `#` comment. I
   took line 1 as the header, so every data row looked ragged. Fixed by skipping comment lines
@@ -82,17 +85,18 @@ and both classes were my bug, not any lane's defect.**
   spreadsheet would actually evaluate: `-5` and `+3.2` are numbers, `-` and `--` are
   placeholders, `-A1*2` is an attack.
 
-I found this because I checked the findings against the raw files before publishing any of
-them. **An auditor that cries wolf against other people's work is worse than no auditor** — the
-second time it is right, nobody is listening. Every false-positive class it has ever produced
-is now pinned by a named test:
-`test_a_leading_comment_line_is_one_finding_not_one_per_row` and
+Both were caught by checking findings against the raw files before publishing them. Each class
+is pinned by a named test: `test_a_leading_comment_line_is_one_finding_not_one_per_row` and
 `test_negative_numbers_and_placeholder_dashes_are_not_injection`.
 
-The same discipline produced the third refinement: a file that uses an explicit `\N` null
-sentinel **has** said which cells were never recorded, so empty-vs-`NA` in it is a
-documentation question (`NULL_SEMANTICS_DECLARED`, INFO), not an ambiguity. Judging both the
-same way would have flagged a correct convention as a defect — including my own.
+A third refinement: a file using an explicit `\N` null sentinel has already stated which cells
+were never recorded, so empty-vs-`NA` in it is a documentation question
+(`NULL_SEMANTICS_DECLARED`, INFO) rather than an ambiguity.
+
+A fourth, found by running the tool from its landed repo path where `--root ..` reaches this
+lane's own `fixtures/`: deliberately-broken test assets were being counted as delivery-kit
+findings. Excluded by default; `test_its_own_broken_fixtures_are_excluded_from_a_kit_audit`
+pins it.
 
 ## Two properties the auditor holds itself to
 

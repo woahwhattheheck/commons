@@ -252,10 +252,22 @@ def scan_csv(path, lane, rel_path):
     return findings, stats
 
 
-def scan_tree(root, lane_filter=None, skip_lane=None):
+SELF_FIXTURES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fixtures")
+
+
+def scan_tree(root, lane_filter=None, skip_lane=None, include_self_fixtures=False):
     findings, files, stats = [], [], {"rows": 0, "cells": 0, "neutralized": 0}
     for dirpath, dirnames, filenames in os.walk(root):
         dirnames[:] = sorted(d for d in dirnames if d != "__pycache__")
+        # This auditor's own fixtures are DELIBERATELY broken -- they are its
+        # self-test corpus. Counting them as delivery-kit findings would report
+        # an injection risk in the kit that is really a test asset, which is the
+        # same cry-wolf failure the rest of this tool exists to avoid. Found by
+        # running the tool from its landed repo path, where --root .. reaches
+        # them. Use --include-self-fixtures to audit them on purpose.
+        if not include_self_fixtures and \
+                os.path.abspath(dirpath).startswith(SELF_FIXTURES):
+            continue
         for name in sorted(filenames):
             if not name.lower().endswith(".csv"):
                 continue
@@ -360,8 +372,8 @@ def write_report(path, findings, files, stats, root):
             w("\n")
 
 
-def run(root, out_dir, lane_filter=None, skip_lane=None):
-    findings, files, stats = scan_tree(root, lane_filter, skip_lane)
+def run(root, out_dir, lane_filter=None, skip_lane=None, include_self_fixtures=False):
+    findings, files, stats = scan_tree(root, lane_filter, skip_lane, include_self_fixtures)
     os.makedirs(out_dir, exist_ok=True)
     with open(os.path.join(out_dir, "findings.json"), "w", encoding="utf-8") as fh:
         json.dump({"root": os.path.basename(os.path.abspath(root)),
@@ -383,11 +395,14 @@ def main(argv=None):
     parser.add_argument("--out", default=os.path.join(here, "examples"))
     parser.add_argument("--lane", default=None, help="audit one lane only")
     parser.add_argument("--skip-lane", default=None)
+    parser.add_argument("--include-self-fixtures", action="store_true",
+                        help="also audit this tool's own deliberately-broken fixtures")
     parser.add_argument("--fail-on", default=None, choices=[HIGH, MEDIUM, LOW, INFO],
                         help="exit 1 if any finding is at or above this severity")
     args = parser.parse_args(argv)
 
-    findings, files, stats = run(args.root, args.out, args.lane, args.skip_lane)
+    findings, files, stats = run(args.root, args.out, args.lane, args.skip_lane,
+                                 args.include_self_fixtures)
     counts = {}
     for item in findings:
         counts[item["code"]] = counts.get(item["code"], 0) + 1

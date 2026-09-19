@@ -55,6 +55,7 @@
     "uiowa_rfq_18649_ai_policy_to_workflow/sample/open_questions.csv",
     "uiowa_rfq_18649_ai_use_inventory/sample_output/ai_use_gaps.csv",
     "uiowa_rfq_18649_ai_use_inventory/sample_output/ai_use_inventory.csv",
+    "uiowa_rfq_18649_base_fee_economics/sample_output/package-costs.csv",
     "uiowa_rfq_18649_bid_pack/sample_output/attachment_index.csv",
     "uiowa_rfq_18649_build_board/45-testing-portfolio-example.csv",
     "uiowa_rfq_18649_capability_appendix/out/capability_claims.csv",
@@ -449,8 +450,8 @@
   ],
   "root": "revenue",
   "stats": {
-    "cells": 74374,
+    "cells": 74588,
     "neutralized": 1,
-    "rows": 8718
+    "rows": 8740
   }
 }

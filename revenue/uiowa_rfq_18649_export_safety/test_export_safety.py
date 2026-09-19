@@ -132,7 +132,7 @@ class AuditorDiscipline(unittest.TestCase):
         Writing those bare would make the report itself an injection vector. An
         auditor that fails its own check has no standing."""
         with tempfile.TemporaryDirectory() as out:
-            es.run(FIXTURES, out)
+            es.run(FIXTURES, out, include_self_fixtures=True)
             findings, _ = es.scan_csv(os.path.join(out, "findings.csv"),
                                       "self", "findings.csv")
         self.assertNotIn("FORMULA_INJECTION", codes(findings))
@@ -151,6 +151,19 @@ class AuditorDiscipline(unittest.TestCase):
                 self.assertEqual(stat.st_mtime_ns, after.st_mtime_ns, name)
                 self.assertEqual(stat.st_size, after.st_size, name)
 
+    def test_its_own_broken_fixtures_are_excluded_from_a_kit_audit(self):
+        """Found by running the tool from its landed repo path: `--root ..`
+        reaches this lane's own fixtures/, and reporting deliberately-broken test
+        assets as delivery-kit findings is the same cry-wolf failure the tool
+        exists to prevent."""
+        with tempfile.TemporaryDirectory() as out:
+            _, files, _ = es.run(HERE, out)
+        self.assertTrue(files, "the lane's real example CSVs should still be scanned")
+        self.assertFalse([f for f in files if f.startswith("fixtures" + os.sep)], files)
+        with tempfile.TemporaryDirectory() as out:
+            _, opted_in, _ = es.run(HERE, out, include_self_fixtures=True)
+        self.assertTrue([f for f in opted_in if f.startswith("fixtures" + os.sep)])
+
     def test_lane_filter_limits_the_scan(self):
         with tempfile.TemporaryDirectory() as workspace, tempfile.TemporaryDirectory() as out:
             shutil.copytree(FIXTURES, os.path.join(workspace, "lane_a"))
@@ -162,7 +175,7 @@ class AuditorDiscipline(unittest.TestCase):
     def test_findings_json_records_what_was_scanned_not_just_what_failed(self):
         """A file list is how a reader tells 'clean' from 'never looked at'."""
         with tempfile.TemporaryDirectory() as out:
-            es.run(FIXTURES, out)
+            es.run(FIXTURES, out, include_self_fixtures=True)
             with open(os.path.join(out, "findings.json"), encoding="utf-8") as fh:
                 payload = json.load(fh)
         self.assertEqual(len(payload["files_scanned"]), 8)
@@ -170,7 +183,7 @@ class AuditorDiscipline(unittest.TestCase):
 
     def test_report_states_that_clean_is_not_a_certification(self):
         with tempfile.TemporaryDirectory() as out:
-            es.run(FIXTURES, out)
+            es.run(FIXTURES, out, include_self_fixtures=True)
             with open(os.path.join(out, "export_safety_report.md"), encoding="utf-8") as fh:
                 text = fh.read()
         self.assertIn("never \"certified\"", text)
@@ -180,6 +193,7 @@ class AuditorDiscipline(unittest.TestCase):
     def test_fail_on_severity_gate(self):
         with tempfile.TemporaryDirectory() as out:
             self.assertEqual(es.main(["scan", "--root", FIXTURES, "--out", out,
+                                      "--include-self-fixtures",
                                       "--fail-on", es.HIGH]), 1)
         with tempfile.TemporaryDirectory() as out:
             clean = os.path.join(out, "clean")
