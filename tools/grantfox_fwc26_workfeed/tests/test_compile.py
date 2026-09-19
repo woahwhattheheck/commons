@@ -85,6 +85,14 @@ class WorkfeedTests(unittest.TestCase):
         item = classify(issue(title="admin settlement authorization guard"))
         self.assertTrue(item.security_sensitive)
 
+    def test_security_sensitive_secret_redaction_detection(self):
+        item = classify(issue(title="Add SDK secret redaction and unsafe logging protections"))
+        self.assertTrue(item.security_sensitive)
+
+    def test_security_sensitive_vault_fund_safety_detection(self):
+        item = classify(issue(title="Add token transfer rollback verification", body="This is fund-safety critical for vault state."))
+        self.assertTrue(item.security_sensitive)
+
     def test_duplicate_issue_key_refused(self):
         with self.assertRaisesRegex(WorkfeedError, "duplicate issue key"):
             compile_records([issue(), issue()])

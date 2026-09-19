@@ -53,6 +53,14 @@ SECURITY_TERMS = (
     "vrf",
     "jury",
     "slashing",
+    "vault",
+    "secret",
+    "keypair",
+    "signature",
+    "private key",
+    "seed phrase",
+    "redaction",
+    "fund-safety",
 )
 
 
