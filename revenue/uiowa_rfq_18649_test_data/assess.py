@@ -98,7 +98,7 @@ def validate(catalog: dict[str, Any]) -> None:
         if catalog["context"] == "synthetic-demo":
             require(f["origin"] == "synthetic", f"{f['id']}: a synthetic demo may contain only synthetic fixtures")
         hours = f["maintenance_hours"]
-        require(hours is None or (type(hours) in (int, float) and math.isfinite(hours) and hours >= 0),
+        require(hours is None or (type(hours) in (int, float) and (type(hours) is int or math.isfinite(hours)) and hours >= 0),
                 f"{f['id']}.maintenance_hours: expected finite nonnegative number or null")
         interval = f["refresh_interval_days"]
         require(interval is None or (type(interval) is int and interval > 0),
@@ -209,8 +209,9 @@ def assess(catalog: dict[str, Any], as_of: str) -> dict[str, Any]:
             note(f, "REFRESH_OVERDUE", "RECORDED", "The latest refresh is older than the supplied refresh interval.",
                  "Refresh and rerun affected cases, or record a revised service-specific interval.", [refresh["evidence_ref"]])
         cleanup = _latest(f["cleanups"], clock)
-        cleaned = bool(cleanup and cleanup["outcome"] == "succeeded" and _backed(cleanup))
-        if cleaned and f["state"] == "active" and (not refresh or instant(cleanup["at"]) >= instant(refresh["at"])):
+        cleaned = bool(cleanup and cleanup["outcome"] == "succeeded" and _backed(cleanup)
+                       and (not refresh or instant(cleanup["at"]) >= instant(refresh["at"])))
+        if cleaned and f["state"] == "active":
             eligible = False
             note(f, "ACTIVE_AFTER_CLEANUP", "CONTRADICTED", "An active fixture is recorded as cleaned without a later refresh.",
                  "Reconcile inventory state or provide a later successful recreation receipt.", [cleanup["evidence_ref"]])
@@ -241,9 +242,16 @@ def assess(catalog: dict[str, Any], as_of: str) -> dict[str, Any]:
                      "Investigate the failed case and capture the resolution and rerun." if status == "failure_recorded"
                      else "Capture a version-aligned run after the demonstrated refresh and before the cutoff.", refs, case["id"])
             observed.append({"id": case["id"], "status": status, "evidence_refs": refs,
-                             "latest_run_at": run["at"] if run else None})
+                             "latest_run_at": run["at"] if run else None,
+                             "latest_run_outcome": run["outcome"] if run else None,
+                             "latest_run_fixture_version": run["fixture_version"] if run else None,
+                             "latest_run_contract_version": run["contract_version"] if run else None})
         results.append({"fixture_id": f["id"], "contract_id": f["contract_id"], "current_evidence_eligible": eligible,
-                        "cases": observed})
+                        "cases": observed, "latest_refresh_at": refresh["at"] if refresh else None,
+                        "latest_cleanup_at": cleanup["at"] if cleanup else None,
+                        "excluded_future_events": sum(instant(e["at"]) > clock
+                            for events in [f["refreshes"], f["cleanups"]] + [case["runs"] for case in f["cases"]]
+                            for e in events)})
     coverage = []
     for c in sorted(catalog["contracts"], key=lambda x: x["id"]):
         for case_id in sorted(c["required_cases"]):
