@@ -16,7 +16,7 @@ Assume the planning model, task text, repository contents, claimed transcript, f
 - Paths are normalized POSIX-relative; traversal and alias spellings are rejected.
 - Schemas reject extra/missing keys, bool-as-int ambiguity, duplicate/out-of-order path sets, and unsupported commands.
 - Commands are structured argv only. Shell metacharacters, URL-bearing tokens, inline Python, package-install modules, and unallowlisted executables are rejected.
-- The claimed reproduction must fail while the baseline digest remains unchanged; verifier-selected executor replay is required before that reproduction claim can be authenticated.
+- The claimed reproduction must fail while the baseline digest remains unchanged; verifier-selected executor replay must complete before that reproduction result counts as independently executed truth.
 - Exact before/after changed-file text is hashed into both roots; declared changes must equal all root differences and may not hide add/delete.
 - Focused test must rerun the exact predecessor killer; regression + replay must be green on the exact patched generation.
 - Receipts are sequence-, task-, repository-, and predecessor-digest-bound, while provenance is explicitly separated from those self-digests.
