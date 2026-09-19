@@ -16,6 +16,22 @@ maturity model, buyer acceptance, a billing decision, or a deployed customer pro
 The included examples are wholly synthetic. No network, provider, scheduling, or
 external-communication operation is present in the application.
 
+## Namespace compatibility update
+
+The event-register schema is now **`uiowa-rfq18649-review-register/v1`**. The old
+`uiowa-rfq18649-review-cycle/v1` name belongs to ORRERY's different receipt-bound
+patch-cycle format. Old register-shaped records require the explicit, non-destructive
+[migration command and worked rehearsal](NAMESPACE_MIGRATION.md); canonical patch
+cycles and mixed envelopes are rejected rather than silently reinterpreted. The
+`compile_cycle` function name and workbench/native intake schemas are unchanged.
+
+[NAMESPACE_VALIDATION.json](NAMESPACE_VALIDATION.json) records R6's 80 normal and
+80 optimized tests (50 retained plus 30 new), source-bound migration verification,
+byte-identical CLI outputs, and actual old/new-engine semantic comparison. Earlier
+validation receipts below are retained historical generations, not expected hashes
+for the corrected namespace. N3's browser work is independently documented in
+[BROWSER_REHEARSAL.md](BROWSER_REHEARSAL.md).
+
 ## Run the complete rehearsal
 
 Python 3.10 or later; standard library only. From this directory:
@@ -29,8 +45,8 @@ python native_handoff.py convert examples/native-workbench-handoff.json \
   --reviewer "Fictional assessor" --out native-intake.json
 python native_handoff.py verify examples/native-workbench-handoff.json \
   native-intake.json --reviewer "Fictional assessor"
-python -m unittest -v test_review_register.py test_native_handoff.py
-python -O -m unittest -v test_review_register.py test_native_handoff.py
+python -m unittest -v test_review_register.py test_native_handoff.py test_register_namespace.py
+python -O -m unittest -v test_review_register.py test_native_handoff.py test_register_namespace.py
 ```
 
 The output path must not exist. Re-running with another directory preserves every
@@ -64,7 +80,7 @@ IDs are stable ASCII strings of at most 120 characters.
 
 | Record | Fields and meaning |
 |---|---|
-| Packet | `schema` = `uiowa-rfq18649-review-cycle/v1`; boolean `synthetic`; `evidence`, `reports`, `comments` arrays |
+| Packet | `schema` = `uiowa-rfq18649-review-register/v1`; boolean `synthetic`; `evidence`, `reports`, `comments` arrays |
 | Evidence | Unique `id`, human-readable `label`, `source_locator`, lowercase whole-file `sha256` |
 | Report | Unique `version`, claimed `receipt_sha256`, `supersedes`, `findings` |
 | Finding | Stable `id`, `cell` containing `group` and `dimension`, `statement`, unique `evidence_refs` |
@@ -200,8 +216,11 @@ Source interface inspected on 2026-09-19:
 
 The implementation is additive in this directory. It does not edit or replace the
 compiler, workbench UI, report-diff tool, delivery-bundle exporter, or other agents'
-lanes. `VALIDATION.json` binds the five executed Python files;
-`REHEARSAL_RESULTS.md` records actual example results and reproducible commands.
-Seventy tests passed normally and under optimization in the cloud container.
+lanes. The retained historical `VALIDATION.json` binds the five originally executed
+Python files; `REHEARSAL_RESULTS.md` records that generation's example results and
+commands. Seventy tests passed normally and under optimization for those exact
+prior objects. R6's namespace-generation results and changed expected digests are
+separately bound in `NAMESPACE_VALIDATION.json` and `NAMESPACE_MIGRATION.md`.
+N3's browser execution remains separately documented in `BROWSER_VALIDATION.json`.
 These results are not repository-wide or hosted-CI success. Provider merge and
 Slack receipts belong to the PR and existing demo thread, not fabricated here.
