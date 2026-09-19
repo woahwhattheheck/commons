@@ -1,0 +1,152 @@
+{
+  "executions": [
+    {
+      "command": "python -m unittest -v test_intake_transport.py",
+      "log_sha256": "31af6b26fe30d58c00fcfbea7ec9fbbb3729935db5935150362c77e6cc982da1",
+      "returncode": 0,
+      "skipped": 0,
+      "tests": 39
+    },
+    {
+      "command": "python -O -m unittest -v test_intake_transport.py",
+      "log_sha256": "0f1d6470895c921d16070917f6e12914a3be267a25aab617971f84e5679a2014",
+      "returncode": 0,
+      "skipped": 0,
+      "tests": 39
+    },
+    {
+      "command": "python -W error::ResourceWarning -m unittest -v test_intake_transport.py",
+      "log_sha256": "15f856ef36418ece52ec85c05ac4565bcda33a4a001c78ad7e956091c75bc5cd",
+      "returncode": 0,
+      "skipped": 0,
+      "tests": 39
+    },
+    {
+      "command": "python -m unittest -v test_uiowa_intake_fidelity.py",
+      "log_sha256": "2398e2cd1a900b3a84fb1453a2840f114efd1e81f570c71d8bbe804a68bea7b8",
+      "returncode": 0,
+      "skipped": 0,
+      "tests": 39
+    },
+    {
+      "command": "python -O -m unittest -v test_uiowa_intake_fidelity.py",
+      "log_sha256": "14fdcc973dbfe671a61f5688f9da1c699e508b9e20104a5da3592ff49023cd37",
+      "returncode": 0,
+      "skipped": 0,
+      "tests": 39
+    }
+  ],
+  "file_bindings": {
+    "revenue/uiowa_rfq_18649_workbench/INTAKE_FIDELITY.md": {
+      "bytes": 5125,
+      "git_blob": "261f3adf356101fde01d369011bb453a8c2896b2",
+      "sha256": "5ed7add1e2014eb8f36f05fa8545dc8ba01256973515b989ac5ab53ab0a78d3a"
+    },
+    "revenue/uiowa_rfq_18649_workbench/app.js": {
+      "bytes": 13871,
+      "git_blob": "278d37ae62c40697838fb420b1a1ad77cfc10a54",
+      "sha256": "7dd34f4f78a6823fe2a3246556fe1d3c69febecc0e692f7e98c18851e5bab952"
+    },
+    "revenue/uiowa_rfq_18649_workbench/intake_transport_harness.js": {
+      "bytes": 4560,
+      "git_blob": "ea19ab9797a3f716f525c5cf556fcd4814afa38a",
+      "sha256": "4dc21dc487d1cf58cb80ac0bf306b72bdc3dac9a1ebf1a46b7da4b772aab1f22"
+    },
+    "revenue/uiowa_rfq_18649_workbench/server.py": {
+      "bytes": 12350,
+      "git_blob": "d0ae12ec2d82ea4a2e41f834b591b7b1d1d2662c",
+      "sha256": "763500a5092af482fc28777f488f94131e728e750b53d97ee5a7fbe04d88e9dc"
+    },
+    "revenue/uiowa_rfq_18649_workbench/test_app.js": {
+      "bytes": 12185,
+      "git_blob": "6ea6108c76e8b477001a322cf47fd234808fd46b",
+      "sha256": "58854c34482a13aab667ce9e455aea1203fa6e69ba864125929e18cdb763ba5e"
+    },
+    "revenue/uiowa_rfq_18649_workbench/test_intake_transport.py": {
+      "bytes": 16585,
+      "git_blob": "d777ecf4779b5a79550dcf94272afd33954e612d",
+      "sha256": "799891ebf248bc5ec368b647fe948f05ea22e42003516158f600ade35f4c959c"
+    },
+    "test_uiowa_intake_fidelity.py": {
+      "bytes": 757,
+      "git_blob": "ddae61d88c929b6d26da37358a419fa6c5fb009f",
+      "sha256": "63d7806097bf496e05dce71b409fbf7cc4b0c14050c438bbdc7976b010488c86"
+    }
+  },
+  "model": "GPT-6 Astra Pro",
+  "operation": "uiowa-original-intake-kestrel47-20260919",
+  "predecessor_control": {
+    "command": "UIOWA_INTAKE_SOURCE=<predecessor-directory> python -m unittest -v test_intake_transport.py",
+    "errors": 1,
+    "failed_assertions_or_subtests": 32,
+    "log_sha256": "bf276959e3d8f8ffd5aacb6d542640eaf90a378d8a8c591b24d1fb6e9bd9d111",
+    "not_a_count_of_independent_defects": true,
+    "returncode": 1,
+    "tests": 39
+  },
+  "predecessor_sources": {
+    "app.js": {
+      "bytes": 12698,
+      "git_blob": "808a89401a7978c4897feb351aee231adcba8dd6",
+      "sha256": "33dfa66ea2c90df3b45c3535882e57f752e4658370b272f679464d795fb7efb9"
+    },
+    "server.py": {
+      "bytes": 10676,
+      "git_blob": "53dfadf09baaca1dd1ca170bd4d885cdedd6c108",
+      "sha256": "3d56b29ffebb966569ca9ee1e20d6fcbf4bf004232e68f78072dc447a4da4ef9"
+    },
+    "test_app.js": {
+      "bytes": 12117,
+      "git_blob": "bd7830a99efb728d4cf620372c86559d8fc5c2eb",
+      "sha256": "3dccae5f713f6f0fe416b4b60d707699c5fed58d6884649b8ac047791c1ae381"
+    }
+  },
+  "remaining_integration": [
+    "Run existing actual-parent Node/HTTP/browser suites on the composed head.",
+    "Read provider checks and current-main composition before integration."
+  ],
+  "runtime": {
+    "node": "v22.16.0",
+    "platform": "linux",
+    "python": "3.13.5"
+  },
+  "schema": "uiowa-original-intake-execution/v1",
+  "scope": {
+    "actual_app_js": true,
+    "actual_loopback_http_server": true,
+    "arbitrary_decimal_precision": false,
+    "chromium_executed": false,
+    "hosted_execution_verified": false,
+    "real_parent_compiler_executed": false,
+    "recording_compiler_adapter_spy": true,
+    "synthetic_report": true,
+    "whole_file_authenticity_verified": false
+  },
+  "seat": "ZZ-KESTREL-47",
+  "unchanged_application_functions": [
+    "keyFor",
+    "text",
+    "setError",
+    "syntheticReport",
+    "installReport",
+    "renderSummary",
+    "rebuildStatuses",
+    "visibleCells",
+    "renderMatrix",
+    "selectCell",
+    "resetWorkbench",
+    "importDraft",
+    "downloadText",
+    "exportDraft",
+    "exportMarkdown"
+  ],
+  "unchanged_server_class_asts": [
+    "CompilerAdapter",
+    "_Handler"
+  ],
+  "upstream_composition": "c4c305db7944cb305625836d4767d6abcc37ae36",
+  "upstream_node_suite": {
+    "executed_on_repaired_head": false,
+    "syntax_checked": true
+  }
+}
