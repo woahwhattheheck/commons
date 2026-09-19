@@ -1,0 +1,105 @@
+{
+  "schema_version": "uiowa-086-resource-estimate/1",
+  "fiction_notice": "CONTRACT FIXTURE - FICTION. This file is shaped like the output of the resource-estimation kit (UIOWA-086) so the adapter can be built and tested before that component lands on main. Every number is invented. When the real kit lands, point --resource-estimates at its output; the adapter tests will say immediately whether the contract held.",
+  "work_items": [
+    {
+      "work_item_id": "WI-ESS-RELNOTES-001",
+      "label": "Automate ESS release-note drafting from change records",
+      "recommendation_ids": ["REC-SYN-ESS-DEP-001"],
+      "one_time_effort_hours": {"low": 60, "likely": 90, "high": 140,
+        "basis": "estimator build-up: pipeline hook, template, review step"},
+      "recurring_effort_fte_per_year": {"low": 0.01, "likely": 0.02, "high": 0.04,
+        "basis": "template upkeep as the change-record schema moves"},
+      "specialist_roles": [
+        {"role": "Release engineering", "one_time_hours": {"low": 40, "likely": 60, "high": 95}},
+        {"role": "Technical writing", "one_time_hours": {"low": 20, "likely": 30, "high": 45}}
+      ],
+      "notes": "Deliberately estimated higher than the opportunity-portfolio screening figure for the same work, so the integrator has a real cross-component disagreement to surface."
+    },
+    {
+      "work_item_id": "WI-TRAIN-ACCESSREV-001",
+      "label": "Access-review training for application owners",
+      "recommendation_ids": ["REC-SYN-RIS-SEC-001", "REC-SYN-IAM-SEC-001"],
+      "one_time_effort_hours": {"low": 70, "likely": 110, "high": 160,
+        "basis": "one curriculum, delivered once to both groups"},
+      "recurring_effort_fte_per_year": {"low": 0.02, "likely": 0.04, "high": 0.07,
+        "basis": "refresh for new owners each year"},
+      "specialist_roles": [
+        {"role": "IAM analyst", "one_time_hours": {"low": 40, "likely": 65, "high": 95}},
+        {"role": "Training", "one_time_hours": {"low": 30, "likely": 45, "high": 65}}
+      ],
+      "notes": "SHARED. Two recommendations need this same curriculum. Building it twice is not the plan and charging the programme twice is not the arithmetic."
+    },
+    {
+      "work_item_id": "WI-PLATFORM-CI-001",
+      "label": "Extend the shared CI status-check configuration",
+      "recommendation_ids": ["REC-SYN-ESS-SD-001", "REC-SYN-IAM-SD-001"],
+      "one_time_effort_hours": {"low": 45, "likely": 80, "high": 130,
+        "basis": "one configuration change covering both groups' repositories"},
+      "recurring_effort_fte_per_year": {"low": 0.01, "likely": 0.02, "high": 0.05,
+        "basis": "check maintenance as repositories are added"},
+      "specialist_roles": [
+        {"role": "Platform engineering", "one_time_hours": {"low": 45, "likely": 80, "high": 130}}
+      ],
+      "notes": "SHARED."
+    },
+    {
+      "work_item_id": "WI-SVCACCT-ROTATE-001",
+      "label": "Move the ESS shared service account to a rotated credential",
+      "recommendation_ids": ["REC-SYN-ESS-SEC-001"],
+      "one_time_effort_hours": {"low": 30, "likely": 50, "high": 90,
+        "basis": "credential store onboarding plus consumer cutover"},
+      "recurring_effort_fte_per_year": {"basis": "depends entirely on whether rotation ends up automated or scheduled by hand, and that has not been decided", "value": null},
+      "specialist_roles": [
+        {"role": "IAM analyst", "one_time_hours": {"low": 18, "likely": 30, "high": 55}}
+      ],
+      "notes": "Recurring load is genuinely unestimated, not zero."
+    },
+    {
+      "work_item_id": "WI-RIS-CONVENTIONS-001",
+      "label": "Write down the RIS branch and review conventions",
+      "recommendation_ids": ["REC-SYN-RIS-SD-001"],
+      "one_time_effort_hours": {"low": 12, "likely": 20, "high": 34,
+        "basis": "documenting what is already practised"},
+      "recurring_effort_fte_per_year": {"low": 0.005, "likely": 0.01, "high": 0.02,
+        "basis": "annual review"},
+      "specialist_roles": [],
+      "notes": ""
+    },
+    {
+      "work_item_id": "WI-DEPLOY-APPROVALS-001",
+      "label": "Reconcile deployment approvals with the written procedure",
+      "recommendation_ids": ["REC-SYN-IAM-DEP-001"],
+      "one_time_effort_hours": {"low": 55, "likely": 85, "high": 130,
+        "basis": "approval gate configuration plus back-reconciliation"},
+      "recurring_effort_fte_per_year": {"low": 0.02, "likely": 0.03, "high": 0.06,
+        "basis": "exception handling"},
+      "specialist_roles": [
+        {"role": "Release engineering", "one_time_hours": {"low": 35, "likely": 55, "high": 85}}
+      ],
+      "notes": ""
+    },
+    {
+      "work_item_id": "WI-RIS-WINDOW-DOC-001",
+      "label": "Document the RIS maintenance-window handoff",
+      "recommendation_ids": ["REC-SYN-RIS-DEP-001", "REC-SYN-ESS-XX-999"],
+      "one_time_effort_hours": {"low": 10, "likely": 16, "high": 28,
+        "basis": "write-up plus one walkthrough"},
+      "recurring_effort_fte_per_year": {"low": 0.002, "likely": 0.005, "high": 0.01,
+        "basis": "update per window change"},
+      "specialist_roles": [],
+      "notes": "Deliberately references REC-SYN-ESS-XX-999, which is not in the register, so the integrator has a dangling reference to report."
+    },
+    {
+      "work_item_id": "WI-UNSCOPED-DISCOVERY-001",
+      "label": "Discovery spike on cross-group entitlement naming",
+      "recommendation_ids": [],
+      "one_time_effort_hours": {"low": 20, "likely": 40, "high": 70,
+        "basis": "timeboxed spike"},
+      "recurring_effort_fte_per_year": {"low": 0, "likely": 0, "high": 0,
+        "basis": "assessed: a spike has no recurring load. This is a real zero, not a missing estimate."},
+      "specialist_roles": [],
+      "notes": "Deliberately tied to no recommendation, so the integrator has an unmapped work item to carry rather than drop."
+    }
+  ]
+}

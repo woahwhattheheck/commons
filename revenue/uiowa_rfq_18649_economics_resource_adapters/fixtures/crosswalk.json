@@ -1,0 +1,16 @@
+{
+  "schema_version": "uiowa-105-crosswalk/1",
+  "notice": "HUMAN-ASSERTED CROSSWALK - FICTION, like everything it joins. Nothing in the opportunity portfolio or the recommendation register states this correspondence. It is written down here, with who asserted it and why, precisely so it is reviewable. A matcher that inferred it from title similarity would be manufacturing traceability. Candidates absent from this file are reported as unmapped, not dropped.",
+  "candidates": {
+    "OPP-ESS-01": {
+      "work_item_id": "WI-ESS-RELNOTES-001",
+      "recommendation_ids": ["REC-SYN-ESS-DEP-001"],
+      "asserted_by": "assessment reviewer (fictional): the portfolio candidate 'draft first-pass release notes from merged change records' and the register recommendation 'generate ESS release notes from the change records' are the same piece of work."
+    },
+    "OPP-IAM-02": {
+      "work_item_id": "WI-IAM-REVIEW-SUMMARY-001",
+      "recommendation_ids": ["REC-SYN-IAM-SEC-001"],
+      "asserted_by": "assessment reviewer (fictional): drafting quarterly access-review summaries supports the recommendation to consolidate the group-membership review spreadsheets. Carried in with its released capacity still UNKNOWN, because the portfolio could not assess it."
+    }
+  }
+}

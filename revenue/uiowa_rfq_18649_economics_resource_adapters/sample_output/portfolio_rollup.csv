@@ -1,0 +1,16 @@
+ledger,view,low,likely,high,state,note
+hours (one-time implementation),portfolio_rollup (each work item once),282.0,471.0,772.0,PARTIAL,floor only: 2 contributor(s) supplied no estimate and are NOT counted as zero
+hours (one-time implementation),sum_of_per_recommendation (shared work repeated),397.0,661.0,1062.0,PARTIAL,floor only: 2 contributor(s) supplied no estimate and are NOT counted as zero
+hours (one-time implementation),shared_work_not_double_counted,115.0,190.0,290.0,DERIVED,amount the per-recommendation view repeats because work is shared; removed from the programme total
+FTE-fraction per year (recurring staff load),portfolio_rollup (each work item once),0.107,0.205,0.4,PARTIAL,floor only: 2 contributor(s) supplied no estimate and are NOT counted as zero
+FTE-fraction per year (recurring staff load),sum_of_per_recommendation (shared work repeated),0.137,0.265,0.52,PARTIAL,floor only: 2 contributor(s) supplied no estimate and are NOT counted as zero
+FTE-fraction per year (recurring staff load),shared_work_not_double_counted,0.03,0.06,0.12,DERIVED,amount the per-recommendation view repeats because work is shared; removed from the programme total
+currency (one-time),portfolio_rollup (each work item once),2400.0,3800.0,6000.0,PARTIAL,floor only: 4 contributor(s) supplied no estimate and are NOT counted as zero
+currency (one-time),sum_of_per_recommendation (shared work repeated),4800.0,7600.0,12000.0,PARTIAL,floor only: 4 contributor(s) supplied no estimate and are NOT counted as zero
+currency (one-time),shared_work_not_double_counted,2400.0,3800.0,6000.0,DERIVED,amount the per-recommendation view repeats because work is shared; removed from the programme total
+currency per year (recurring),portfolio_rollup (each work item once),900.0,1400.0,2200.0,PARTIAL,floor only: 5 contributor(s) supplied no estimate and are NOT counted as zero
+currency per year (recurring),sum_of_per_recommendation (shared work repeated),1800.0,2800.0,4400.0,PARTIAL,floor only: 5 contributor(s) supplied no estimate and are NOT counted as zero
+currency per year (recurring),shared_work_not_double_counted,900.0,1400.0,2200.0,DERIVED,amount the per-recommendation view repeats because work is shared; removed from the programme total
+staff-hours released per year (recurring),portfolio_rollup (each work item once),186.4,363.0,617.95,PARTIAL,floor only: 5 contributor(s) supplied no estimate and are NOT counted as zero
+staff-hours released per year (recurring),sum_of_per_recommendation (shared work repeated),326.4,623.0,1067.95,PARTIAL,floor only: 5 contributor(s) supplied no estimate and are NOT counted as zero
+staff-hours released per year (recurring),shared_work_not_double_counted,140.0,260.0,450.0,DERIVED,amount the per-recommendation view repeats because work is shared; removed from the programme total

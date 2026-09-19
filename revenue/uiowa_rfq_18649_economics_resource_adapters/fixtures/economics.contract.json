@@ -1,0 +1,66 @@
+{
+  "schema_version": "uiowa-078-economics/1",
+  "currency": "USD",
+  "fiction_notice": "CONTRACT FIXTURE - FICTION. Shaped like the output of the AI benefit and operating-cost model (UIOWA-078) so the adapter can be built and tested before that component lands on main. Every figure is invented. This lane does not compute economics; it carries them.",
+  "entries": [
+    {
+      "entry_id": "ECON-001",
+      "work_item_id": "WI-ESS-RELNOTES-001",
+      "label": "ESS release-note drafting",
+      "recommendation_ids": ["REC-SYN-ESS-DEP-001"],
+      "one_time_cash": {"low": 0, "likely": 0, "high": 0,
+        "basis": "assessed: no licence, no hardware, internal effort only. A real zero."},
+      "recurring_cash_per_year": {"low": 0, "likely": 0, "high": 0,
+        "basis": "assessed: no recurring cash. A real zero."},
+      "released_capacity_hours_per_year": null,
+      "assumptions": ["Released capacity for this item is supplied by the opportunity portfolio, not re-derived here."]
+    },
+    {
+      "entry_id": "ECON-002",
+      "work_item_id": "WI-TRAIN-ACCESSREV-001",
+      "label": "Access-review training",
+      "recommendation_ids": ["REC-SYN-RIS-SEC-001", "REC-SYN-IAM-SEC-001"],
+      "one_time_cash": {"low": 2400, "likely": 3800, "high": 6000,
+        "basis": "external trainer for one delivery covering both groups"},
+      "recurring_cash_per_year": {"low": 0, "likely": 0, "high": 0,
+        "basis": "assessed: refresh delivered internally"},
+      "released_capacity_hours_per_year": {"low": 60, "likely": 120, "high": 210,
+        "basis": "shorter review cycles once owners know what they are certifying"},
+      "assumptions": ["One curriculum serves both groups; the benefit is claimed once, not once per recommendation."]
+    },
+    {
+      "entry_id": "ECON-003",
+      "work_item_id": "WI-PLATFORM-CI-001",
+      "label": "Shared CI status check",
+      "recommendation_ids": ["REC-SYN-ESS-SD-001", "REC-SYN-IAM-SD-001"],
+      "one_time_cash": {"low": 0, "likely": 0, "high": 0,
+        "basis": "assessed: existing runners"},
+      "recurring_cash_per_year": {"low": 900, "likely": 1400, "high": 2200,
+        "basis": "additional runner minutes"},
+      "released_capacity_hours_per_year": {"low": 80, "likely": 140, "high": 240,
+        "basis": "fewer manual verification passes"},
+      "assumptions": ["Runner-minute price held flat; no escalation applied."]
+    },
+    {
+      "entry_id": "ECON-004",
+      "label": "Assistive-coding inventory for ESS",
+      "recommendation_ids": ["REC-SYN-ESS-AI-001"],
+      "one_time_cash": {"low": 0, "likely": 0, "high": 0,
+        "basis": "assessed: inventory is internal effort"},
+      "recurring_cash_per_year": {"basis": "depends on whether assistive tooling ends up licensed centrally or per seat, and that has not been decided", "value": null},
+      "released_capacity_hours_per_year": {"basis": "an inventory does not itself release capacity; what it would enable is exactly what the inventory is meant to find out", "value": null},
+      "assumptions": ["Names no work_item_id, so it stands as its own item rather than attaching to shared work."]
+    },
+    {
+      "entry_id": "ECON-005",
+      "work_item_id": "WI-SVCACCT-ROTATE-001",
+      "label": "ESS service-account rotation",
+      "recommendation_ids": ["REC-SYN-ESS-SEC-001"],
+      "one_time_cash": {"low": 0, "likely": 0, "high": 0, "basis": "assessed: existing credential store"},
+      "recurring_cash_per_year": {"low": 0, "likely": 0, "high": 0, "basis": "assessed: no additional licence"},
+      "released_capacity_hours_per_year": {"low": 20, "likely": 35, "high": 55,
+        "basis": "fewer manual credential handovers"},
+      "assumptions": []
+    }
+  ]
+}

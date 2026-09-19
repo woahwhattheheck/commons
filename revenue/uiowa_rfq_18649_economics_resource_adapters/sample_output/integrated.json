@@ -1,0 +1,1979 @@
+{
+  "component_conflicts": [
+    {
+      "ledger": "hours (one-time implementation)",
+      "resolution": "held at UNKNOWN pending a human decision; neither source is silently preferred",
+      "sources": [
+        "uiowa-072-portfolio",
+        "uiowa-086-resource-estimate"
+      ],
+      "values": [
+        "OPP-ESS-01: 25/45/80",
+        "WI-ESS-RELNOTES-001: 60/90/140"
+      ],
+      "work_item_id": "WI-ESS-RELNOTES-001"
+    }
+  ],
+  "content_digest": "sha256:44e61ea33272129a4f170dd349ec714124986e81d7c7b01f5b7c67220d57134f",
+  "currency": "USD",
+  "dangling_recommendation_ids": [
+    "REC-SYN-ESS-XX-999"
+  ],
+  "double_count_rule": "Shared work appears under every recommendation that needs it in the per-recommendation view, and exactly once in the portfolio roll-up. The difference is published below as shared_work_not_double_counted.",
+  "ledger_rule": "Five ledgers are reported separately and are never summed across: hours (one-time implementation); FTE-fraction per year (recurring staff load); currency (one-time); currency per year (recurring); staff-hours released per year (recurring). Adding across any two raises LedgerUnitError.",
+  "portfolio_rollup": {
+    "FTE-fraction per year (recurring staff load)": {
+      "complete": false,
+      "contributors": [
+        "OPP-IAM-02",
+        "WI-DEPLOY-APPROVALS-001",
+        "WI-ESS-RELNOTES-001",
+        "WI-PLATFORM-CI-001",
+        "WI-RIS-CONVENTIONS-001",
+        "WI-RIS-WINDOW-DOC-001",
+        "WI-TRAIN-ACCESSREV-001"
+      ],
+      "high": 0.4,
+      "ledger": "FTE-fraction per year (recurring staff load)",
+      "likely": 0.205,
+      "low": 0.107,
+      "note": "floor only: 2 contributor(s) supplied no estimate and are NOT counted as zero",
+      "state": "PARTIAL",
+      "unknown_contributors": [
+        "ECON-004",
+        "WI-SVCACCT-ROTATE-001"
+      ]
+    },
+    "currency (one-time)": {
+      "complete": false,
+      "contributors": [
+        "ECON-001",
+        "ECON-002",
+        "ECON-003",
+        "ECON-004",
+        "ECON-005"
+      ],
+      "high": 6000.0,
+      "ledger": "currency (one-time)",
+      "likely": 3800.0,
+      "low": 2400.0,
+      "note": "floor only: 4 contributor(s) supplied no estimate and are NOT counted as zero",
+      "state": "PARTIAL",
+      "unknown_contributors": [
+        "WI-DEPLOY-APPROVALS-001",
+        "WI-IAM-REVIEW-SUMMARY-001",
+        "WI-RIS-CONVENTIONS-001",
+        "WI-RIS-WINDOW-DOC-001"
+      ]
+    },
+    "currency per year (recurring)": {
+      "complete": false,
+      "contributors": [
+        "ECON-001",
+        "ECON-002",
+        "ECON-003",
+        "ECON-005"
+      ],
+      "high": 2200.0,
+      "ledger": "currency per year (recurring)",
+      "likely": 1400.0,
+      "low": 900.0,
+      "note": "floor only: 5 contributor(s) supplied no estimate and are NOT counted as zero",
+      "state": "PARTIAL",
+      "unknown_contributors": [
+        "ECON-004",
+        "WI-DEPLOY-APPROVALS-001",
+        "WI-IAM-REVIEW-SUMMARY-001",
+        "WI-RIS-CONVENTIONS-001",
+        "WI-RIS-WINDOW-DOC-001"
+      ]
+    },
+    "hours (one-time implementation)": {
+      "complete": false,
+      "contributors": [
+        "OPP-IAM-02",
+        "WI-DEPLOY-APPROVALS-001",
+        "WI-PLATFORM-CI-001",
+        "WI-RIS-CONVENTIONS-001",
+        "WI-RIS-WINDOW-DOC-001",
+        "WI-SVCACCT-ROTATE-001",
+        "WI-TRAIN-ACCESSREV-001"
+      ],
+      "high": 772.0,
+      "ledger": "hours (one-time implementation)",
+      "likely": 471.0,
+      "low": 282.0,
+      "note": "floor only: 2 contributor(s) supplied no estimate and are NOT counted as zero",
+      "state": "PARTIAL",
+      "unknown_contributors": [
+        "ECON-004",
+        "WI-ESS-RELNOTES-001"
+      ]
+    },
+    "staff-hours released per year (recurring)": {
+      "complete": false,
+      "contributors": [
+        "ECON-002",
+        "ECON-003",
+        "ECON-005",
+        "OPP-ESS-01"
+      ],
+      "high": 617.95,
+      "ledger": "staff-hours released per year (recurring)",
+      "likely": 363.0,
+      "low": 186.4,
+      "note": "floor only: 5 contributor(s) supplied no estimate and are NOT counted as zero",
+      "state": "PARTIAL",
+      "unknown_contributors": [
+        "ECON-004",
+        "WI-DEPLOY-APPROVALS-001",
+        "WI-IAM-REVIEW-SUMMARY-001",
+        "WI-RIS-CONVENTIONS-001",
+        "WI-RIS-WINDOW-DOC-001"
+      ]
+    }
+  },
+  "recommendations": [
+    {
+      "area": "AI",
+      "group": "ESS",
+      "ledgers": {
+        "FTE-fraction per year (recurring staff load)": {
+          "complete": false,
+          "contributors": [],
+          "high": "UNKNOWN",
+          "ledger": "FTE-fraction per year (recurring staff load)",
+          "likely": "UNKNOWN",
+          "low": "UNKNOWN",
+          "note": "no contributor supplied this ledger; not reported as zero",
+          "state": "UNKNOWN",
+          "unknown_contributors": [
+            "ECON-004"
+          ]
+        },
+        "currency (one-time)": {
+          "complete": true,
+          "contributors": [
+            "ECON-004"
+          ],
+          "high": 0.0,
+          "ledger": "currency (one-time)",
+          "likely": 0.0,
+          "low": 0.0,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "currency per year (recurring)": {
+          "complete": false,
+          "contributors": [],
+          "high": "UNKNOWN",
+          "ledger": "currency per year (recurring)",
+          "likely": "UNKNOWN",
+          "low": "UNKNOWN",
+          "note": "no contributor supplied this ledger; not reported as zero",
+          "state": "UNKNOWN",
+          "unknown_contributors": [
+            "ECON-004"
+          ]
+        },
+        "hours (one-time implementation)": {
+          "complete": false,
+          "contributors": [],
+          "high": "UNKNOWN",
+          "ledger": "hours (one-time implementation)",
+          "likely": "UNKNOWN",
+          "low": "UNKNOWN",
+          "note": "no contributor supplied this ledger; not reported as zero",
+          "state": "UNKNOWN",
+          "unknown_contributors": [
+            "ECON-004"
+          ]
+        },
+        "staff-hours released per year (recurring)": {
+          "complete": false,
+          "contributors": [],
+          "high": "UNKNOWN",
+          "ledger": "staff-hours released per year (recurring)",
+          "likely": "UNKNOWN",
+          "low": "UNKNOWN",
+          "note": "no contributor supplied this ledger; not reported as zero",
+          "state": "UNKNOWN",
+          "unknown_contributors": [
+            "ECON-004"
+          ]
+        }
+      },
+      "recommendation_id": "REC-SYN-ESS-AI-001",
+      "resourcing_note": "ledgers without a complete estimate: hours (one-time implementation), FTE-fraction per year (recurring staff load), currency per year (recurring), staff-hours released per year (recurring)",
+      "resourcing_state": "PARTIAL",
+      "shared_work_item_ids": [],
+      "title": "Inventory where the ESS group already uses assistive code generation",
+      "work_item_ids": [
+        "ECON-004"
+      ]
+    },
+    {
+      "area": "DEP",
+      "group": "ESS",
+      "ledgers": {
+        "FTE-fraction per year (recurring staff load)": {
+          "complete": true,
+          "contributors": [
+            "WI-ESS-RELNOTES-001"
+          ],
+          "high": 0.04,
+          "ledger": "FTE-fraction per year (recurring staff load)",
+          "likely": 0.02,
+          "low": 0.01,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "currency (one-time)": {
+          "complete": true,
+          "contributors": [
+            "ECON-001"
+          ],
+          "high": 0.0,
+          "ledger": "currency (one-time)",
+          "likely": 0.0,
+          "low": 0.0,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "currency per year (recurring)": {
+          "complete": true,
+          "contributors": [
+            "ECON-001"
+          ],
+          "high": 0.0,
+          "ledger": "currency per year (recurring)",
+          "likely": 0.0,
+          "low": 0.0,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "hours (one-time implementation)": {
+          "complete": false,
+          "contributors": [],
+          "high": "UNKNOWN",
+          "ledger": "hours (one-time implementation)",
+          "likely": "UNKNOWN",
+          "low": "UNKNOWN",
+          "note": "no contributor supplied this ledger; not reported as zero",
+          "state": "UNKNOWN",
+          "unknown_contributors": [
+            "WI-ESS-RELNOTES-001"
+          ]
+        },
+        "staff-hours released per year (recurring)": {
+          "complete": true,
+          "contributors": [
+            "OPP-ESS-01"
+          ],
+          "high": 112.95,
+          "ledger": "staff-hours released per year (recurring)",
+          "likely": 68.0,
+          "low": 26.4,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        }
+      },
+      "recommendation_id": "REC-SYN-ESS-DEP-001",
+      "resourcing_note": "ledgers without a complete estimate: hours (one-time implementation)",
+      "resourcing_state": "PARTIAL",
+      "shared_work_item_ids": [],
+      "title": "Generate ESS release notes from the change records instead of by hand",
+      "work_item_ids": [
+        "WI-ESS-RELNOTES-001"
+      ]
+    },
+    {
+      "area": "SD",
+      "group": "ESS",
+      "ledgers": {
+        "FTE-fraction per year (recurring staff load)": {
+          "complete": true,
+          "contributors": [
+            "WI-PLATFORM-CI-001"
+          ],
+          "high": 0.05,
+          "ledger": "FTE-fraction per year (recurring staff load)",
+          "likely": 0.02,
+          "low": 0.01,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "currency (one-time)": {
+          "complete": true,
+          "contributors": [
+            "ECON-003"
+          ],
+          "high": 0.0,
+          "ledger": "currency (one-time)",
+          "likely": 0.0,
+          "low": 0.0,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "currency per year (recurring)": {
+          "complete": true,
+          "contributors": [
+            "ECON-003"
+          ],
+          "high": 2200.0,
+          "ledger": "currency per year (recurring)",
+          "likely": 1400.0,
+          "low": 900.0,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "hours (one-time implementation)": {
+          "complete": true,
+          "contributors": [
+            "WI-PLATFORM-CI-001"
+          ],
+          "high": 130.0,
+          "ledger": "hours (one-time implementation)",
+          "likely": 80.0,
+          "low": 45.0,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "staff-hours released per year (recurring)": {
+          "complete": true,
+          "contributors": [
+            "ECON-003"
+          ],
+          "high": 240.0,
+          "ledger": "staff-hours released per year (recurring)",
+          "likely": 140.0,
+          "low": 80.0,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        }
+      },
+      "recommendation_id": "REC-SYN-ESS-SD-001",
+      "resourcing_note": "",
+      "resourcing_state": "COMPLETE",
+      "shared_work_item_ids": [
+        "WI-PLATFORM-CI-001"
+      ],
+      "title": "Extend the required build-and-test status check to the remaining ESS repositories",
+      "work_item_ids": [
+        "WI-PLATFORM-CI-001"
+      ]
+    },
+    {
+      "area": "SEC",
+      "group": "ESS",
+      "ledgers": {
+        "FTE-fraction per year (recurring staff load)": {
+          "complete": false,
+          "contributors": [],
+          "high": "UNKNOWN",
+          "ledger": "FTE-fraction per year (recurring staff load)",
+          "likely": "UNKNOWN",
+          "low": "UNKNOWN",
+          "note": "no contributor supplied this ledger; not reported as zero",
+          "state": "UNKNOWN",
+          "unknown_contributors": [
+            "WI-SVCACCT-ROTATE-001"
+          ]
+        },
+        "currency (one-time)": {
+          "complete": true,
+          "contributors": [
+            "ECON-005"
+          ],
+          "high": 0.0,
+          "ledger": "currency (one-time)",
+          "likely": 0.0,
+          "low": 0.0,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "currency per year (recurring)": {
+          "complete": true,
+          "contributors": [
+            "ECON-005"
+          ],
+          "high": 0.0,
+          "ledger": "currency per year (recurring)",
+          "likely": 0.0,
+          "low": 0.0,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "hours (one-time implementation)": {
+          "complete": true,
+          "contributors": [
+            "WI-SVCACCT-ROTATE-001"
+          ],
+          "high": 90.0,
+          "ledger": "hours (one-time implementation)",
+          "likely": 50.0,
+          "low": 30.0,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "staff-hours released per year (recurring)": {
+          "complete": true,
+          "contributors": [
+            "ECON-005"
+          ],
+          "high": 55.0,
+          "ledger": "staff-hours released per year (recurring)",
+          "likely": 35.0,
+          "low": 20.0,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        }
+      },
+      "recommendation_id": "REC-SYN-ESS-SEC-001",
+      "resourcing_note": "ledgers without a complete estimate: FTE-fraction per year (recurring staff load)",
+      "resourcing_state": "PARTIAL",
+      "shared_work_item_ids": [],
+      "title": "Move the ESS shared service account off a static credential",
+      "work_item_ids": [
+        "WI-SVCACCT-ROTATE-001"
+      ]
+    },
+    {
+      "area": "AI",
+      "group": "IAM",
+      "ledgers": {
+        "FTE-fraction per year (recurring staff load)": {
+          "complete": false,
+          "contributors": [],
+          "high": "UNKNOWN",
+          "ledger": "FTE-fraction per year (recurring staff load)",
+          "likely": "UNKNOWN",
+          "low": "UNKNOWN",
+          "note": "no contributor supplied this ledger; not reported as zero",
+          "state": "UNKNOWN",
+          "unknown_contributors": []
+        },
+        "currency (one-time)": {
+          "complete": false,
+          "contributors": [],
+          "high": "UNKNOWN",
+          "ledger": "currency (one-time)",
+          "likely": "UNKNOWN",
+          "low": "UNKNOWN",
+          "note": "no contributor supplied this ledger; not reported as zero",
+          "state": "UNKNOWN",
+          "unknown_contributors": []
+        },
+        "currency per year (recurring)": {
+          "complete": false,
+          "contributors": [],
+          "high": "UNKNOWN",
+          "ledger": "currency per year (recurring)",
+          "likely": "UNKNOWN",
+          "low": "UNKNOWN",
+          "note": "no contributor supplied this ledger; not reported as zero",
+          "state": "UNKNOWN",
+          "unknown_contributors": []
+        },
+        "hours (one-time implementation)": {
+          "complete": false,
+          "contributors": [],
+          "high": "UNKNOWN",
+          "ledger": "hours (one-time implementation)",
+          "likely": "UNKNOWN",
+          "low": "UNKNOWN",
+          "note": "no contributor supplied this ledger; not reported as zero",
+          "state": "UNKNOWN",
+          "unknown_contributors": []
+        },
+        "staff-hours released per year (recurring)": {
+          "complete": false,
+          "contributors": [],
+          "high": "UNKNOWN",
+          "ledger": "staff-hours released per year (recurring)",
+          "likely": "UNKNOWN",
+          "low": "UNKNOWN",
+          "note": "no contributor supplied this ledger; not reported as zero",
+          "state": "UNKNOWN",
+          "unknown_contributors": []
+        }
+      },
+      "recommendation_id": "REC-SYN-IAM-AI-001",
+      "resourcing_note": "no resource or economics record names this recommendation. It is not costed, which is not the same as costing nothing.",
+      "resourcing_state": "NO_RESOURCING_DATA",
+      "shared_work_item_ids": [],
+      "title": "Define an approval path for AI-assisted changes to IAM configuration",
+      "work_item_ids": []
+    },
+    {
+      "area": "DEP",
+      "group": "IAM",
+      "ledgers": {
+        "FTE-fraction per year (recurring staff load)": {
+          "complete": true,
+          "contributors": [
+            "WI-DEPLOY-APPROVALS-001"
+          ],
+          "high": 0.06,
+          "ledger": "FTE-fraction per year (recurring staff load)",
+          "likely": 0.03,
+          "low": 0.02,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "currency (one-time)": {
+          "complete": false,
+          "contributors": [],
+          "high": "UNKNOWN",
+          "ledger": "currency (one-time)",
+          "likely": "UNKNOWN",
+          "low": "UNKNOWN",
+          "note": "no contributor supplied this ledger; not reported as zero",
+          "state": "UNKNOWN",
+          "unknown_contributors": [
+            "WI-DEPLOY-APPROVALS-001"
+          ]
+        },
+        "currency per year (recurring)": {
+          "complete": false,
+          "contributors": [],
+          "high": "UNKNOWN",
+          "ledger": "currency per year (recurring)",
+          "likely": "UNKNOWN",
+          "low": "UNKNOWN",
+          "note": "no contributor supplied this ledger; not reported as zero",
+          "state": "UNKNOWN",
+          "unknown_contributors": [
+            "WI-DEPLOY-APPROVALS-001"
+          ]
+        },
+        "hours (one-time implementation)": {
+          "complete": true,
+          "contributors": [
+            "WI-DEPLOY-APPROVALS-001"
+          ],
+          "high": 130.0,
+          "ledger": "hours (one-time implementation)",
+          "likely": 85.0,
+          "low": 55.0,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "staff-hours released per year (recurring)": {
+          "complete": false,
+          "contributors": [],
+          "high": "UNKNOWN",
+          "ledger": "staff-hours released per year (recurring)",
+          "likely": "UNKNOWN",
+          "low": "UNKNOWN",
+          "note": "no contributor supplied this ledger; not reported as zero",
+          "state": "UNKNOWN",
+          "unknown_contributors": [
+            "WI-DEPLOY-APPROVALS-001"
+          ]
+        }
+      },
+      "recommendation_id": "REC-SYN-IAM-DEP-001",
+      "resourcing_note": "ledgers without a complete estimate: currency (one-time), currency per year (recurring), staff-hours released per year (recurring)",
+      "resourcing_state": "PARTIAL",
+      "shared_work_item_ids": [],
+      "title": "Reconcile production deployment approvals with the written two-approval procedure",
+      "work_item_ids": [
+        "WI-DEPLOY-APPROVALS-001"
+      ]
+    },
+    {
+      "area": "SD",
+      "group": "IAM",
+      "ledgers": {
+        "FTE-fraction per year (recurring staff load)": {
+          "complete": true,
+          "contributors": [
+            "WI-PLATFORM-CI-001"
+          ],
+          "high": 0.05,
+          "ledger": "FTE-fraction per year (recurring staff load)",
+          "likely": 0.02,
+          "low": 0.01,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "currency (one-time)": {
+          "complete": true,
+          "contributors": [
+            "ECON-003"
+          ],
+          "high": 0.0,
+          "ledger": "currency (one-time)",
+          "likely": 0.0,
+          "low": 0.0,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "currency per year (recurring)": {
+          "complete": true,
+          "contributors": [
+            "ECON-003"
+          ],
+          "high": 2200.0,
+          "ledger": "currency per year (recurring)",
+          "likely": 1400.0,
+          "low": 900.0,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "hours (one-time implementation)": {
+          "complete": true,
+          "contributors": [
+            "WI-PLATFORM-CI-001"
+          ],
+          "high": 130.0,
+          "ledger": "hours (one-time implementation)",
+          "likely": 80.0,
+          "low": 45.0,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "staff-hours released per year (recurring)": {
+          "complete": true,
+          "contributors": [
+            "ECON-003"
+          ],
+          "high": 240.0,
+          "ledger": "staff-hours released per year (recurring)",
+          "likely": 140.0,
+          "low": 80.0,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        }
+      },
+      "recommendation_id": "REC-SYN-IAM-SD-001",
+      "resourcing_note": "",
+      "resourcing_state": "COMPLETE",
+      "shared_work_item_ids": [
+        "WI-PLATFORM-CI-001"
+      ],
+      "title": "Replace the manual IAM connector release checklist with a scripted release",
+      "work_item_ids": [
+        "WI-PLATFORM-CI-001"
+      ]
+    },
+    {
+      "area": "SEC",
+      "group": "IAM",
+      "ledgers": {
+        "FTE-fraction per year (recurring staff load)": {
+          "complete": true,
+          "contributors": [
+            "OPP-IAM-02",
+            "WI-TRAIN-ACCESSREV-001"
+          ],
+          "high": 0.22,
+          "ledger": "FTE-fraction per year (recurring staff load)",
+          "likely": 0.12,
+          "low": 0.06,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "currency (one-time)": {
+          "complete": false,
+          "contributors": [
+            "ECON-002"
+          ],
+          "high": 6000.0,
+          "ledger": "currency (one-time)",
+          "likely": 3800.0,
+          "low": 2400.0,
+          "note": "floor only: 1 contributor(s) supplied no estimate and are NOT counted as zero",
+          "state": "PARTIAL",
+          "unknown_contributors": [
+            "WI-IAM-REVIEW-SUMMARY-001"
+          ]
+        },
+        "currency per year (recurring)": {
+          "complete": false,
+          "contributors": [
+            "ECON-002"
+          ],
+          "high": 0.0,
+          "ledger": "currency per year (recurring)",
+          "likely": 0.0,
+          "low": 0.0,
+          "note": "floor only: 1 contributor(s) supplied no estimate and are NOT counted as zero",
+          "state": "PARTIAL",
+          "unknown_contributors": [
+            "WI-IAM-REVIEW-SUMMARY-001"
+          ]
+        },
+        "hours (one-time implementation)": {
+          "complete": true,
+          "contributors": [
+            "OPP-IAM-02",
+            "WI-TRAIN-ACCESSREV-001"
+          ],
+          "high": 360.0,
+          "ledger": "hours (one-time implementation)",
+          "likely": 220.0,
+          "low": 130.0,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "staff-hours released per year (recurring)": {
+          "complete": false,
+          "contributors": [
+            "ECON-002"
+          ],
+          "high": 210.0,
+          "ledger": "staff-hours released per year (recurring)",
+          "likely": 120.0,
+          "low": 60.0,
+          "note": "floor only: 1 contributor(s) supplied no estimate and are NOT counted as zero",
+          "state": "PARTIAL",
+          "unknown_contributors": [
+            "WI-IAM-REVIEW-SUMMARY-001"
+          ]
+        }
+      },
+      "recommendation_id": "REC-SYN-IAM-SEC-001",
+      "resourcing_note": "ledgers without a complete estimate: currency (one-time), currency per year (recurring), staff-hours released per year (recurring)",
+      "resourcing_state": "PARTIAL",
+      "shared_work_item_ids": [
+        "WI-TRAIN-ACCESSREV-001"
+      ],
+      "title": "Consolidate the three group-membership review spreadsheets into one recorded quarterly review",
+      "work_item_ids": [
+        "WI-IAM-REVIEW-SUMMARY-001",
+        "WI-TRAIN-ACCESSREV-001"
+      ]
+    },
+    {
+      "area": "DEP",
+      "group": "RIS",
+      "ledgers": {
+        "FTE-fraction per year (recurring staff load)": {
+          "complete": true,
+          "contributors": [
+            "WI-RIS-WINDOW-DOC-001"
+          ],
+          "high": 0.01,
+          "ledger": "FTE-fraction per year (recurring staff load)",
+          "likely": 0.005,
+          "low": 0.002,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "currency (one-time)": {
+          "complete": false,
+          "contributors": [],
+          "high": "UNKNOWN",
+          "ledger": "currency (one-time)",
+          "likely": "UNKNOWN",
+          "low": "UNKNOWN",
+          "note": "no contributor supplied this ledger; not reported as zero",
+          "state": "UNKNOWN",
+          "unknown_contributors": [
+            "WI-RIS-WINDOW-DOC-001"
+          ]
+        },
+        "currency per year (recurring)": {
+          "complete": false,
+          "contributors": [],
+          "high": "UNKNOWN",
+          "ledger": "currency per year (recurring)",
+          "likely": "UNKNOWN",
+          "low": "UNKNOWN",
+          "note": "no contributor supplied this ledger; not reported as zero",
+          "state": "UNKNOWN",
+          "unknown_contributors": [
+            "WI-RIS-WINDOW-DOC-001"
+          ]
+        },
+        "hours (one-time implementation)": {
+          "complete": true,
+          "contributors": [
+            "WI-RIS-WINDOW-DOC-001"
+          ],
+          "high": 28.0,
+          "ledger": "hours (one-time implementation)",
+          "likely": 16.0,
+          "low": 10.0,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "staff-hours released per year (recurring)": {
+          "complete": false,
+          "contributors": [],
+          "high": "UNKNOWN",
+          "ledger": "staff-hours released per year (recurring)",
+          "likely": "UNKNOWN",
+          "low": "UNKNOWN",
+          "note": "no contributor supplied this ledger; not reported as zero",
+          "state": "UNKNOWN",
+          "unknown_contributors": [
+            "WI-RIS-WINDOW-DOC-001"
+          ]
+        }
+      },
+      "recommendation_id": "REC-SYN-RIS-DEP-001",
+      "resourcing_note": "ledgers without a complete estimate: currency (one-time), currency per year (recurring), staff-hours released per year (recurring)",
+      "resourcing_state": "PARTIAL",
+      "shared_work_item_ids": [],
+      "title": "Document the RIS maintenance-window handoff between the on-call and platform rotations",
+      "work_item_ids": [
+        "WI-RIS-WINDOW-DOC-001"
+      ]
+    },
+    {
+      "area": "SD",
+      "group": "RIS",
+      "ledgers": {
+        "FTE-fraction per year (recurring staff load)": {
+          "complete": true,
+          "contributors": [
+            "WI-RIS-CONVENTIONS-001"
+          ],
+          "high": 0.02,
+          "ledger": "FTE-fraction per year (recurring staff load)",
+          "likely": 0.01,
+          "low": 0.005,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "currency (one-time)": {
+          "complete": false,
+          "contributors": [],
+          "high": "UNKNOWN",
+          "ledger": "currency (one-time)",
+          "likely": "UNKNOWN",
+          "low": "UNKNOWN",
+          "note": "no contributor supplied this ledger; not reported as zero",
+          "state": "UNKNOWN",
+          "unknown_contributors": [
+            "WI-RIS-CONVENTIONS-001"
+          ]
+        },
+        "currency per year (recurring)": {
+          "complete": false,
+          "contributors": [],
+          "high": "UNKNOWN",
+          "ledger": "currency per year (recurring)",
+          "likely": "UNKNOWN",
+          "low": "UNKNOWN",
+          "note": "no contributor supplied this ledger; not reported as zero",
+          "state": "UNKNOWN",
+          "unknown_contributors": [
+            "WI-RIS-CONVENTIONS-001"
+          ]
+        },
+        "hours (one-time implementation)": {
+          "complete": true,
+          "contributors": [
+            "WI-RIS-CONVENTIONS-001"
+          ],
+          "high": 34.0,
+          "ledger": "hours (one-time implementation)",
+          "likely": 20.0,
+          "low": 12.0,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "staff-hours released per year (recurring)": {
+          "complete": false,
+          "contributors": [],
+          "high": "UNKNOWN",
+          "ledger": "staff-hours released per year (recurring)",
+          "likely": "UNKNOWN",
+          "low": "UNKNOWN",
+          "note": "no contributor supplied this ledger; not reported as zero",
+          "state": "UNKNOWN",
+          "unknown_contributors": [
+            "WI-RIS-CONVENTIONS-001"
+          ]
+        }
+      },
+      "recommendation_id": "REC-SYN-RIS-SD-001",
+      "resourcing_note": "ledgers without a complete estimate: currency (one-time), currency per year (recurring), staff-hours released per year (recurring)",
+      "resourcing_state": "PARTIAL",
+      "shared_work_item_ids": [],
+      "title": "Write down the RIS branch and review conventions that are currently held by convention",
+      "work_item_ids": [
+        "WI-RIS-CONVENTIONS-001"
+      ]
+    },
+    {
+      "area": "SEC",
+      "group": "RIS",
+      "ledgers": {
+        "FTE-fraction per year (recurring staff load)": {
+          "complete": true,
+          "contributors": [
+            "WI-TRAIN-ACCESSREV-001"
+          ],
+          "high": 0.07,
+          "ledger": "FTE-fraction per year (recurring staff load)",
+          "likely": 0.04,
+          "low": 0.02,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "currency (one-time)": {
+          "complete": true,
+          "contributors": [
+            "ECON-002"
+          ],
+          "high": 6000.0,
+          "ledger": "currency (one-time)",
+          "likely": 3800.0,
+          "low": 2400.0,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "currency per year (recurring)": {
+          "complete": true,
+          "contributors": [
+            "ECON-002"
+          ],
+          "high": 0.0,
+          "ledger": "currency per year (recurring)",
+          "likely": 0.0,
+          "low": 0.0,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "hours (one-time implementation)": {
+          "complete": true,
+          "contributors": [
+            "WI-TRAIN-ACCESSREV-001"
+          ],
+          "high": 160.0,
+          "ledger": "hours (one-time implementation)",
+          "likely": 110.0,
+          "low": 70.0,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        },
+        "staff-hours released per year (recurring)": {
+          "complete": true,
+          "contributors": [
+            "ECON-002"
+          ],
+          "high": 210.0,
+          "ledger": "staff-hours released per year (recurring)",
+          "likely": 120.0,
+          "low": 60.0,
+          "note": "",
+          "state": "COMPLETE",
+          "unknown_contributors": []
+        }
+      },
+      "recommendation_id": "REC-SYN-RIS-SEC-001",
+      "resourcing_note": "",
+      "resourcing_state": "COMPLETE",
+      "shared_work_item_ids": [
+        "WI-TRAIN-ACCESSREV-001"
+      ],
+      "title": "Re-run the privileged-access review and record the result against the published standard",
+      "work_item_ids": [
+        "WI-TRAIN-ACCESSREV-001"
+      ]
+    }
+  ],
+  "recommendations_without_resourcing": [
+    "REC-SYN-IAM-AI-001"
+  ],
+  "schema_version": "uiowa-105-integration/1",
+  "shared_work_items": [
+    {
+      "label": "Extend the shared CI status-check configuration",
+      "recommendation_ids": [
+        "REC-SYN-ESS-SD-001",
+        "REC-SYN-IAM-SD-001"
+      ],
+      "work_item_id": "WI-PLATFORM-CI-001"
+    },
+    {
+      "label": "Access-review training for application owners",
+      "recommendation_ids": [
+        "REC-SYN-IAM-SEC-001",
+        "REC-SYN-RIS-SEC-001"
+      ],
+      "work_item_id": "WI-TRAIN-ACCESSREV-001"
+    }
+  ],
+  "shared_work_not_double_counted": {
+    "FTE-fraction per year (recurring staff load)": {
+      "high": 0.12,
+      "likely": 0.06,
+      "low": 0.03
+    },
+    "currency (one-time)": {
+      "high": 6000.0,
+      "likely": 3800.0,
+      "low": 2400.0
+    },
+    "currency per year (recurring)": {
+      "high": 2200.0,
+      "likely": 1400.0,
+      "low": 900.0
+    },
+    "hours (one-time implementation)": {
+      "high": 290.0,
+      "likely": 190.0,
+      "low": 115.0
+    },
+    "staff-hours released per year (recurring)": {
+      "high": 450.0,
+      "likely": 260.0,
+      "low": 140.0
+    }
+  },
+  "sum_of_per_recommendation": {
+    "FTE-fraction per year (recurring staff load)": {
+      "complete": false,
+      "contributors": [
+        "OPP-IAM-02",
+        "WI-DEPLOY-APPROVALS-001",
+        "WI-ESS-RELNOTES-001",
+        "WI-PLATFORM-CI-001",
+        "WI-PLATFORM-CI-001",
+        "WI-RIS-CONVENTIONS-001",
+        "WI-RIS-WINDOW-DOC-001",
+        "WI-TRAIN-ACCESSREV-001",
+        "WI-TRAIN-ACCESSREV-001"
+      ],
+      "high": 0.52,
+      "ledger": "FTE-fraction per year (recurring staff load)",
+      "likely": 0.265,
+      "low": 0.137,
+      "note": "floor only: 2 contributor(s) supplied no estimate and are NOT counted as zero",
+      "state": "PARTIAL",
+      "unknown_contributors": [
+        "ECON-004",
+        "WI-SVCACCT-ROTATE-001"
+      ]
+    },
+    "currency (one-time)": {
+      "complete": false,
+      "contributors": [
+        "ECON-001",
+        "ECON-002",
+        "ECON-002",
+        "ECON-003",
+        "ECON-003",
+        "ECON-004",
+        "ECON-005"
+      ],
+      "high": 12000.0,
+      "ledger": "currency (one-time)",
+      "likely": 7600.0,
+      "low": 4800.0,
+      "note": "floor only: 4 contributor(s) supplied no estimate and are NOT counted as zero",
+      "state": "PARTIAL",
+      "unknown_contributors": [
+        "WI-DEPLOY-APPROVALS-001",
+        "WI-IAM-REVIEW-SUMMARY-001",
+        "WI-RIS-CONVENTIONS-001",
+        "WI-RIS-WINDOW-DOC-001"
+      ]
+    },
+    "currency per year (recurring)": {
+      "complete": false,
+      "contributors": [
+        "ECON-001",
+        "ECON-002",
+        "ECON-002",
+        "ECON-003",
+        "ECON-003",
+        "ECON-005"
+      ],
+      "high": 4400.0,
+      "ledger": "currency per year (recurring)",
+      "likely": 2800.0,
+      "low": 1800.0,
+      "note": "floor only: 5 contributor(s) supplied no estimate and are NOT counted as zero",
+      "state": "PARTIAL",
+      "unknown_contributors": [
+        "ECON-004",
+        "WI-DEPLOY-APPROVALS-001",
+        "WI-IAM-REVIEW-SUMMARY-001",
+        "WI-RIS-CONVENTIONS-001",
+        "WI-RIS-WINDOW-DOC-001"
+      ]
+    },
+    "hours (one-time implementation)": {
+      "complete": false,
+      "contributors": [
+        "OPP-IAM-02",
+        "WI-DEPLOY-APPROVALS-001",
+        "WI-PLATFORM-CI-001",
+        "WI-PLATFORM-CI-001",
+        "WI-RIS-CONVENTIONS-001",
+        "WI-RIS-WINDOW-DOC-001",
+        "WI-SVCACCT-ROTATE-001",
+        "WI-TRAIN-ACCESSREV-001",
+        "WI-TRAIN-ACCESSREV-001"
+      ],
+      "high": 1062.0,
+      "ledger": "hours (one-time implementation)",
+      "likely": 661.0,
+      "low": 397.0,
+      "note": "floor only: 2 contributor(s) supplied no estimate and are NOT counted as zero",
+      "state": "PARTIAL",
+      "unknown_contributors": [
+        "ECON-004",
+        "WI-ESS-RELNOTES-001"
+      ]
+    },
+    "staff-hours released per year (recurring)": {
+      "complete": false,
+      "contributors": [
+        "ECON-002",
+        "ECON-002",
+        "ECON-003",
+        "ECON-003",
+        "ECON-005",
+        "OPP-ESS-01"
+      ],
+      "high": 1067.95,
+      "ledger": "staff-hours released per year (recurring)",
+      "likely": 623.0,
+      "low": 326.4,
+      "note": "floor only: 5 contributor(s) supplied no estimate and are NOT counted as zero",
+      "state": "PARTIAL",
+      "unknown_contributors": [
+        "ECON-004",
+        "WI-DEPLOY-APPROVALS-001",
+        "WI-IAM-REVIEW-SUMMARY-001",
+        "WI-RIS-CONVENTIONS-001",
+        "WI-RIS-WINDOW-DOC-001"
+      ]
+    }
+  },
+  "unmapped_work_items": [
+    {
+      "label": "Auto-classify inbound registration support tickets to a routing queue",
+      "reason": "no crosswalk entry: this candidate is not yet tied to a recommendation, and the join is not guessed from the title",
+      "source_components": [
+        "uiowa-072-portfolio"
+      ],
+      "work_item_id": "WI-FROM-OPP-ESS-02"
+    },
+    {
+      "label": "Explain access-request denials in plain language to the requester",
+      "reason": "no crosswalk entry: this candidate is not yet tied to a recommendation, and the join is not guessed from the title",
+      "source_components": [
+        "uiowa-072-portfolio"
+      ],
+      "work_item_id": "WI-FROM-OPP-IAM-01"
+    },
+    {
+      "label": "Summarise sponsor policy documents into award-setup checklists",
+      "reason": "no crosswalk entry: this candidate is not yet tied to a recommendation, and the join is not guessed from the title",
+      "source_components": [
+        "uiowa-072-portfolio"
+      ],
+      "work_item_id": "WI-FROM-OPP-RIS-01"
+    },
+    {
+      "label": "Generate effort-certification reminder narratives",
+      "reason": "no crosswalk entry: this candidate is not yet tied to a recommendation, and the join is not guessed from the title",
+      "source_components": [
+        "uiowa-072-portfolio"
+      ],
+      "work_item_id": "WI-FROM-OPP-RIS-02"
+    },
+    {
+      "label": "Discovery spike on cross-group entitlement naming",
+      "reason": "the resource estimate names no recommendation_ids",
+      "source_components": [
+        "uiowa-086-resource-estimate"
+      ],
+      "work_item_id": "WI-UNSCOPED-DISCOVERY-001"
+    }
+  ],
+  "work_items": [
+    {
+      "amounts": {
+        "currency (one-time)": {
+          "basis": "assessed: inventory is internal effort",
+          "high": 0.0,
+          "ledger": "currency (one-time)",
+          "likely": 0.0,
+          "low": 0.0,
+          "source_component": "uiowa-078-economics",
+          "source_record_id": "ECON-004"
+        },
+        "currency per year (recurring)": "UNKNOWN",
+        "staff-hours released per year (recurring)": "UNKNOWN"
+      },
+      "known_recommendation_ids": [
+        "REC-SYN-ESS-AI-001"
+      ],
+      "label": "Assistive-coding inventory for ESS",
+      "notes": "Names no work_item_id, so it stands as its own item rather than attaching to shared work.",
+      "recommendation_ids": [
+        "REC-SYN-ESS-AI-001"
+      ],
+      "source_components": [
+        "uiowa-078-economics"
+      ],
+      "source_record_ids": [
+        "ECON-004"
+      ],
+      "specialist_roles": [],
+      "unmapped_reason": "",
+      "work_item_id": "ECON-004"
+    },
+    {
+      "amounts": {
+        "FTE-fraction per year (recurring staff load)": {
+          "basis": "exception handling",
+          "high": 0.06,
+          "ledger": "FTE-fraction per year (recurring staff load)",
+          "likely": 0.03,
+          "low": 0.02,
+          "source_component": "uiowa-086-resource-estimate",
+          "source_record_id": "WI-DEPLOY-APPROVALS-001"
+        },
+        "hours (one-time implementation)": {
+          "basis": "approval gate configuration plus back-reconciliation",
+          "high": 130.0,
+          "ledger": "hours (one-time implementation)",
+          "likely": 85.0,
+          "low": 55.0,
+          "source_component": "uiowa-086-resource-estimate",
+          "source_record_id": "WI-DEPLOY-APPROVALS-001"
+        }
+      },
+      "known_recommendation_ids": [
+        "REC-SYN-IAM-DEP-001"
+      ],
+      "label": "Reconcile deployment approvals with the written procedure",
+      "notes": "",
+      "recommendation_ids": [
+        "REC-SYN-IAM-DEP-001"
+      ],
+      "source_components": [
+        "uiowa-086-resource-estimate"
+      ],
+      "source_record_ids": [
+        "WI-DEPLOY-APPROVALS-001"
+      ],
+      "specialist_roles": [
+        {
+          "one_time_hours": {
+            "basis": "",
+            "high": 85.0,
+            "ledger": "hours (one-time implementation)",
+            "likely": 55.0,
+            "low": 35.0,
+            "source_component": "uiowa-086-resource-estimate",
+            "source_record_id": "WI-DEPLOY-APPROVALS-001"
+          },
+          "role": "Release engineering"
+        }
+      ],
+      "unmapped_reason": "",
+      "work_item_id": "WI-DEPLOY-APPROVALS-001"
+    },
+    {
+      "amounts": {
+        "FTE-fraction per year (recurring staff load)": {
+          "basis": "template upkeep as the change-record schema moves",
+          "high": 0.04,
+          "ledger": "FTE-fraction per year (recurring staff load)",
+          "likely": 0.02,
+          "low": 0.01,
+          "source_component": "uiowa-086-resource-estimate",
+          "source_record_id": "WI-ESS-RELNOTES-001"
+        },
+        "currency (one-time)": {
+          "basis": "assessed: no licence, no hardware, internal effort only. A real zero.",
+          "high": 0.0,
+          "ledger": "currency (one-time)",
+          "likely": 0.0,
+          "low": 0.0,
+          "source_component": "uiowa-078-economics",
+          "source_record_id": "ECON-001"
+        },
+        "currency per year (recurring)": {
+          "basis": "assessed: no recurring cash. A real zero.",
+          "high": 0.0,
+          "ledger": "currency per year (recurring)",
+          "likely": 0.0,
+          "low": 0.0,
+          "source_component": "uiowa-078-economics",
+          "source_record_id": "ECON-001"
+        },
+        "hours (one-time implementation)": "UNKNOWN",
+        "staff-hours released per year (recurring)": {
+          "basis": "carried from the opportunity portfolio; decision class PURSUE",
+          "high": 112.95,
+          "ledger": "staff-hours released per year (recurring)",
+          "likely": 68.0,
+          "low": 26.4,
+          "source_component": "uiowa-072-portfolio",
+          "source_record_id": "OPP-ESS-01"
+        }
+      },
+      "known_recommendation_ids": [
+        "REC-SYN-ESS-DEP-001"
+      ],
+      "label": "Automate ESS release-note drafting from change records",
+      "notes": "Deliberately estimated higher than the opportunity-portfolio screening figure for the same work, so the integrator has a real cross-component disagreement to surface. | Released capacity for this item is supplied by the opportunity portfolio, not re-derived here. | benefit is positive across the whole stated range (26.4 - 68.0 - 113.0 h/yr) with inputs available.",
+      "recommendation_ids": [
+        "REC-SYN-ESS-DEP-001"
+      ],
+      "source_components": [
+        "uiowa-086-resource-estimate",
+        "uiowa-078-economics",
+        "uiowa-072-portfolio"
+      ],
+      "source_record_ids": [
+        "WI-ESS-RELNOTES-001",
+        "ECON-001",
+        "OPP-ESS-01"
+      ],
+      "specialist_roles": [
+        {
+          "one_time_hours": {
+            "basis": "",
+            "high": 95.0,
+            "ledger": "hours (one-time implementation)",
+            "likely": 60.0,
+            "low": 40.0,
+            "source_component": "uiowa-086-resource-estimate",
+            "source_record_id": "WI-ESS-RELNOTES-001"
+          },
+          "role": "Release engineering"
+        },
+        {
+          "one_time_hours": {
+            "basis": "",
+            "high": 45.0,
+            "ledger": "hours (one-time implementation)",
+            "likely": 30.0,
+            "low": 20.0,
+            "source_component": "uiowa-086-resource-estimate",
+            "source_record_id": "WI-ESS-RELNOTES-001"
+          },
+          "role": "Technical writing"
+        }
+      ],
+      "unmapped_reason": "",
+      "work_item_id": "WI-ESS-RELNOTES-001"
+    },
+    {
+      "amounts": {
+        "FTE-fraction per year (recurring staff load)": {
+          "basis": "carried from the opportunity portfolio; decision class UNCERTAIN-NET-VALUE",
+          "high": 0.12,
+          "ledger": "FTE-fraction per year (recurring staff load)",
+          "likely": 0.06,
+          "low": 0.03,
+          "source_component": "uiowa-072-portfolio",
+          "source_record_id": "OPP-ESS-02"
+        },
+        "hours (one-time implementation)": {
+          "basis": "carried from the opportunity portfolio; decision class UNCERTAIN-NET-VALUE",
+          "high": 260.0,
+          "ledger": "hours (one-time implementation)",
+          "likely": 140.0,
+          "low": 80.0,
+          "source_component": "uiowa-072-portfolio",
+          "source_record_id": "OPP-ESS-02"
+        },
+        "staff-hours released per year (recurring)": {
+          "basis": "carried from the opportunity portfolio; decision class UNCERTAIN-NET-VALUE",
+          "high": 10.4167,
+          "ledger": "staff-hours released per year (recurring)",
+          "likely": -256.6667,
+          "low": -1041.6667,
+          "source_component": "uiowa-072-portfolio",
+          "source_record_id": "OPP-ESS-02"
+        }
+      },
+      "known_recommendation_ids": [],
+      "label": "Auto-classify inbound registration support tickets to a routing queue",
+      "notes": "benefit range straddles zero (-1041.7 - -256.7 - 10.4 h/yr): on current assumptions this can lose time as easily as save it.",
+      "recommendation_ids": [],
+      "source_components": [
+        "uiowa-072-portfolio"
+      ],
+      "source_record_ids": [
+        "OPP-ESS-02"
+      ],
+      "specialist_roles": [],
+      "unmapped_reason": "no crosswalk entry: this candidate is not yet tied to a recommendation, and the join is not guessed from the title",
+      "work_item_id": "WI-FROM-OPP-ESS-02"
+    },
+    {
+      "amounts": {
+        "FTE-fraction per year (recurring staff load)": {
+          "basis": "carried from the opportunity portfolio; decision class PURSUE",
+          "high": 0.3,
+          "ledger": "FTE-fraction per year (recurring staff load)",
+          "likely": 0.18,
+          "low": 0.1,
+          "source_component": "uiowa-072-portfolio",
+          "source_record_id": "OPP-IAM-01"
+        },
+        "hours (one-time implementation)": {
+          "basis": "carried from the opportunity portfolio; decision class PURSUE",
+          "high": 95.0,
+          "ledger": "hours (one-time implementation)",
+          "likely": 55.0,
+          "low": 30.0,
+          "source_component": "uiowa-072-portfolio",
+          "source_record_id": "OPP-IAM-01"
+        },
+        "staff-hours released per year (recurring)": {
+          "basis": "carried from the opportunity portfolio; decision class PURSUE",
+          "high": 274.0,
+          "ledger": "staff-hours released per year (recurring)",
+          "likely": 138.25,
+          "low": 37.5,
+          "source_component": "uiowa-072-portfolio",
+          "source_record_id": "OPP-IAM-01"
+        }
+      },
+      "known_recommendation_ids": [],
+      "label": "Explain access-request denials in plain language to the requester",
+      "notes": "benefit is positive across the whole stated range (37.5 - 138.2 - 274.0 h/yr) with inputs available. | FLAG: RECURRING-LOAD-EXCEEDS-BENEFIT: recurring upkeep at the likely case is about 374 h/yr of capacity, against 138 h/yr released. These are separate ledgers and are not netted; read both before treating the 0.40-year payback as the whole story.",
+      "recommendation_ids": [],
+      "source_components": [
+        "uiowa-072-portfolio"
+      ],
+      "source_record_ids": [
+        "OPP-IAM-01"
+      ],
+      "specialist_roles": [],
+      "unmapped_reason": "no crosswalk entry: this candidate is not yet tied to a recommendation, and the join is not guessed from the title",
+      "work_item_id": "WI-FROM-OPP-IAM-01"
+    },
+    {
+      "amounts": {
+        "FTE-fraction per year (recurring staff load)": {
+          "basis": "carried from the opportunity portfolio; decision class PURSUE-BUT-EFFORT-HEAVY",
+          "high": 0.22,
+          "ledger": "FTE-fraction per year (recurring staff load)",
+          "likely": 0.12,
+          "low": 0.06,
+          "source_component": "uiowa-072-portfolio",
+          "source_record_id": "OPP-RIS-01"
+        },
+        "hours (one-time implementation)": {
+          "basis": "carried from the opportunity portfolio; decision class PURSUE-BUT-EFFORT-HEAVY",
+          "high": 700.0,
+          "ledger": "hours (one-time implementation)",
+          "likely": 420.0,
+          "low": 260.0,
+          "source_component": "uiowa-072-portfolio",
+          "source_record_id": "OPP-RIS-01"
+        },
+        "staff-hours released per year (recurring)": {
+          "basis": "carried from the opportunity portfolio; decision class PURSUE-BUT-EFFORT-HEAVY",
+          "high": 322.625,
+          "ledger": "staff-hours released per year (recurring)",
+          "likely": 222.88,
+          "low": 138.0,
+          "source_component": "uiowa-072-portfolio",
+          "source_record_id": "OPP-RIS-01"
+        }
+      },
+      "known_recommendation_ids": [],
+      "label": "Summarise sponsor policy documents into award-setup checklists",
+      "notes": "positive benefit (138.0 - 222.9 - 322.6 h/yr) but input availability is LOW: the required inputs have to be assembled before any of it is reachable. | FLAG: RECURRING-LOAD-EXCEEDS-BENEFIT: recurring upkeep at the likely case is about 250 h/yr of capacity, against 223 h/yr released. These are separate ledgers and are not netted; read both before treating the 1.88-year payback as the whole story.",
+      "recommendation_ids": [],
+      "source_components": [
+        "uiowa-072-portfolio"
+      ],
+      "source_record_ids": [
+        "OPP-RIS-01"
+      ],
+      "specialist_roles": [],
+      "unmapped_reason": "no crosswalk entry: this candidate is not yet tied to a recommendation, and the join is not guessed from the title",
+      "work_item_id": "WI-FROM-OPP-RIS-01"
+    },
+    {
+      "amounts": {
+        "FTE-fraction per year (recurring staff load)": {
+          "basis": "carried from the opportunity portfolio; decision class DO-NOT-PURSUE",
+          "high": 0.08,
+          "ledger": "FTE-fraction per year (recurring staff load)",
+          "likely": 0.04,
+          "low": 0.02,
+          "source_component": "uiowa-072-portfolio",
+          "source_record_id": "OPP-RIS-02"
+        },
+        "hours (one-time implementation)": {
+          "basis": "carried from the opportunity portfolio; decision class DO-NOT-PURSUE",
+          "high": 120.0,
+          "ledger": "hours (one-time implementation)",
+          "likely": 70.0,
+          "low": 40.0,
+          "source_component": "uiowa-072-portfolio",
+          "source_record_id": "OPP-RIS-02"
+        },
+        "staff-hours released per year (recurring)": {
+          "basis": "carried from the opportunity portfolio; decision class DO-NOT-PURSUE",
+          "high": -11.0,
+          "ledger": "staff-hours released per year (recurring)",
+          "likely": -122.2,
+          "low": -346.0,
+          "source_component": "uiowa-072-portfolio",
+          "source_record_id": "OPP-RIS-02"
+        }
+      },
+      "known_recommendation_ids": [],
+      "label": "Generate effort-certification reminder narratives",
+      "notes": "task suitability is LOW: the work is not language-shaped, so an assisted workflow adds a checking step without removing one. The arithmetic agrees independently: even the optimistic bound releases no staff time (-346.0 - -122.2 - -11.0 h/yr).",
+      "recommendation_ids": [],
+      "source_components": [
+        "uiowa-072-portfolio"
+      ],
+      "source_record_ids": [
+        "OPP-RIS-02"
+      ],
+      "specialist_roles": [],
+      "unmapped_reason": "no crosswalk entry: this candidate is not yet tied to a recommendation, and the join is not guessed from the title",
+      "work_item_id": "WI-FROM-OPP-RIS-02"
+    },
+    {
+      "amounts": {
+        "FTE-fraction per year (recurring staff load)": {
+          "basis": "carried from the opportunity portfolio; decision class BLOCKED-UNKNOWN",
+          "high": 0.15,
+          "ledger": "FTE-fraction per year (recurring staff load)",
+          "likely": 0.08,
+          "low": 0.04,
+          "source_component": "uiowa-072-portfolio",
+          "source_record_id": "OPP-IAM-02"
+        },
+        "hours (one-time implementation)": {
+          "basis": "carried from the opportunity portfolio; decision class BLOCKED-UNKNOWN",
+          "high": 200.0,
+          "ledger": "hours (one-time implementation)",
+          "likely": 110.0,
+          "low": 60.0,
+          "source_component": "uiowa-072-portfolio",
+          "source_record_id": "OPP-IAM-02"
+        },
+        "staff-hours released per year (recurring)": "UNKNOWN"
+      },
+      "known_recommendation_ids": [
+        "REC-SYN-IAM-SEC-001"
+      ],
+      "label": "Draft quarterly access-review summaries for application owners",
+      "notes": "cannot be ranked: expected_benefit, input_availability not assessed. Absent evidence is held as UNKNOWN, not scored as zero.",
+      "recommendation_ids": [
+        "REC-SYN-IAM-SEC-001"
+      ],
+      "source_components": [
+        "uiowa-072-portfolio"
+      ],
+      "source_record_ids": [
+        "OPP-IAM-02"
+      ],
+      "specialist_roles": [],
+      "unmapped_reason": "",
+      "work_item_id": "WI-IAM-REVIEW-SUMMARY-001"
+    },
+    {
+      "amounts": {
+        "FTE-fraction per year (recurring staff load)": {
+          "basis": "check maintenance as repositories are added",
+          "high": 0.05,
+          "ledger": "FTE-fraction per year (recurring staff load)",
+          "likely": 0.02,
+          "low": 0.01,
+          "source_component": "uiowa-086-resource-estimate",
+          "source_record_id": "WI-PLATFORM-CI-001"
+        },
+        "currency (one-time)": {
+          "basis": "assessed: existing runners",
+          "high": 0.0,
+          "ledger": "currency (one-time)",
+          "likely": 0.0,
+          "low": 0.0,
+          "source_component": "uiowa-078-economics",
+          "source_record_id": "ECON-003"
+        },
+        "currency per year (recurring)": {
+          "basis": "additional runner minutes",
+          "high": 2200.0,
+          "ledger": "currency per year (recurring)",
+          "likely": 1400.0,
+          "low": 900.0,
+          "source_component": "uiowa-078-economics",
+          "source_record_id": "ECON-003"
+        },
+        "hours (one-time implementation)": {
+          "basis": "one configuration change covering both groups' repositories",
+          "high": 130.0,
+          "ledger": "hours (one-time implementation)",
+          "likely": 80.0,
+          "low": 45.0,
+          "source_component": "uiowa-086-resource-estimate",
+          "source_record_id": "WI-PLATFORM-CI-001"
+        },
+        "staff-hours released per year (recurring)": {
+          "basis": "fewer manual verification passes",
+          "high": 240.0,
+          "ledger": "staff-hours released per year (recurring)",
+          "likely": 140.0,
+          "low": 80.0,
+          "source_component": "uiowa-078-economics",
+          "source_record_id": "ECON-003"
+        }
+      },
+      "known_recommendation_ids": [
+        "REC-SYN-ESS-SD-001",
+        "REC-SYN-IAM-SD-001"
+      ],
+      "label": "Extend the shared CI status-check configuration",
+      "notes": "SHARED. | Runner-minute price held flat; no escalation applied.",
+      "recommendation_ids": [
+        "REC-SYN-ESS-SD-001",
+        "REC-SYN-IAM-SD-001"
+      ],
+      "source_components": [
+        "uiowa-086-resource-estimate",
+        "uiowa-078-economics"
+      ],
+      "source_record_ids": [
+        "WI-PLATFORM-CI-001",
+        "ECON-003"
+      ],
+      "specialist_roles": [
+        {
+          "one_time_hours": {
+            "basis": "",
+            "high": 130.0,
+            "ledger": "hours (one-time implementation)",
+            "likely": 80.0,
+            "low": 45.0,
+            "source_component": "uiowa-086-resource-estimate",
+            "source_record_id": "WI-PLATFORM-CI-001"
+          },
+          "role": "Platform engineering"
+        }
+      ],
+      "unmapped_reason": "",
+      "work_item_id": "WI-PLATFORM-CI-001"
+    },
+    {
+      "amounts": {
+        "FTE-fraction per year (recurring staff load)": {
+          "basis": "annual review",
+          "high": 0.02,
+          "ledger": "FTE-fraction per year (recurring staff load)",
+          "likely": 0.01,
+          "low": 0.005,
+          "source_component": "uiowa-086-resource-estimate",
+          "source_record_id": "WI-RIS-CONVENTIONS-001"
+        },
+        "hours (one-time implementation)": {
+          "basis": "documenting what is already practised",
+          "high": 34.0,
+          "ledger": "hours (one-time implementation)",
+          "likely": 20.0,
+          "low": 12.0,
+          "source_component": "uiowa-086-resource-estimate",
+          "source_record_id": "WI-RIS-CONVENTIONS-001"
+        }
+      },
+      "known_recommendation_ids": [
+        "REC-SYN-RIS-SD-001"
+      ],
+      "label": "Write down the RIS branch and review conventions",
+      "notes": "",
+      "recommendation_ids": [
+        "REC-SYN-RIS-SD-001"
+      ],
+      "source_components": [
+        "uiowa-086-resource-estimate"
+      ],
+      "source_record_ids": [
+        "WI-RIS-CONVENTIONS-001"
+      ],
+      "specialist_roles": [],
+      "unmapped_reason": "",
+      "work_item_id": "WI-RIS-CONVENTIONS-001"
+    },
+    {
+      "amounts": {
+        "FTE-fraction per year (recurring staff load)": {
+          "basis": "update per window change",
+          "high": 0.01,
+          "ledger": "FTE-fraction per year (recurring staff load)",
+          "likely": 0.005,
+          "low": 0.002,
+          "source_component": "uiowa-086-resource-estimate",
+          "source_record_id": "WI-RIS-WINDOW-DOC-001"
+        },
+        "hours (one-time implementation)": {
+          "basis": "write-up plus one walkthrough",
+          "high": 28.0,
+          "ledger": "hours (one-time implementation)",
+          "likely": 16.0,
+          "low": 10.0,
+          "source_component": "uiowa-086-resource-estimate",
+          "source_record_id": "WI-RIS-WINDOW-DOC-001"
+        }
+      },
+      "known_recommendation_ids": [
+        "REC-SYN-RIS-DEP-001"
+      ],
+      "label": "Document the RIS maintenance-window handoff",
+      "notes": "Deliberately references REC-SYN-ESS-XX-999, which is not in the register, so the integrator has a dangling reference to report.",
+      "recommendation_ids": [
+        "REC-SYN-ESS-XX-999",
+        "REC-SYN-RIS-DEP-001"
+      ],
+      "source_components": [
+        "uiowa-086-resource-estimate"
+      ],
+      "source_record_ids": [
+        "WI-RIS-WINDOW-DOC-001"
+      ],
+      "specialist_roles": [],
+      "unmapped_reason": "",
+      "work_item_id": "WI-RIS-WINDOW-DOC-001"
+    },
+    {
+      "amounts": {
+        "FTE-fraction per year (recurring staff load)": "UNKNOWN",
+        "currency (one-time)": {
+          "basis": "assessed: existing credential store",
+          "high": 0.0,
+          "ledger": "currency (one-time)",
+          "likely": 0.0,
+          "low": 0.0,
+          "source_component": "uiowa-078-economics",
+          "source_record_id": "ECON-005"
+        },
+        "currency per year (recurring)": {
+          "basis": "assessed: no additional licence",
+          "high": 0.0,
+          "ledger": "currency per year (recurring)",
+          "likely": 0.0,
+          "low": 0.0,
+          "source_component": "uiowa-078-economics",
+          "source_record_id": "ECON-005"
+        },
+        "hours (one-time implementation)": {
+          "basis": "credential store onboarding plus consumer cutover",
+          "high": 90.0,
+          "ledger": "hours (one-time implementation)",
+          "likely": 50.0,
+          "low": 30.0,
+          "source_component": "uiowa-086-resource-estimate",
+          "source_record_id": "WI-SVCACCT-ROTATE-001"
+        },
+        "staff-hours released per year (recurring)": {
+          "basis": "fewer manual credential handovers",
+          "high": 55.0,
+          "ledger": "staff-hours released per year (recurring)",
+          "likely": 35.0,
+          "low": 20.0,
+          "source_component": "uiowa-078-economics",
+          "source_record_id": "ECON-005"
+        }
+      },
+      "known_recommendation_ids": [
+        "REC-SYN-ESS-SEC-001"
+      ],
+      "label": "Move the ESS shared service account to a rotated credential",
+      "notes": "Recurring load is genuinely unestimated, not zero.",
+      "recommendation_ids": [
+        "REC-SYN-ESS-SEC-001"
+      ],
+      "source_components": [
+        "uiowa-086-resource-estimate",
+        "uiowa-078-economics"
+      ],
+      "source_record_ids": [
+        "WI-SVCACCT-ROTATE-001",
+        "ECON-005"
+      ],
+      "specialist_roles": [
+        {
+          "one_time_hours": {
+            "basis": "",
+            "high": 55.0,
+            "ledger": "hours (one-time implementation)",
+            "likely": 30.0,
+            "low": 18.0,
+            "source_component": "uiowa-086-resource-estimate",
+            "source_record_id": "WI-SVCACCT-ROTATE-001"
+          },
+          "role": "IAM analyst"
+        }
+      ],
+      "unmapped_reason": "",
+      "work_item_id": "WI-SVCACCT-ROTATE-001"
+    },
+    {
+      "amounts": {
+        "FTE-fraction per year (recurring staff load)": {
+          "basis": "refresh for new owners each year",
+          "high": 0.07,
+          "ledger": "FTE-fraction per year (recurring staff load)",
+          "likely": 0.04,
+          "low": 0.02,
+          "source_component": "uiowa-086-resource-estimate",
+          "source_record_id": "WI-TRAIN-ACCESSREV-001"
+        },
+        "currency (one-time)": {
+          "basis": "external trainer for one delivery covering both groups",
+          "high": 6000.0,
+          "ledger": "currency (one-time)",
+          "likely": 3800.0,
+          "low": 2400.0,
+          "source_component": "uiowa-078-economics",
+          "source_record_id": "ECON-002"
+        },
+        "currency per year (recurring)": {
+          "basis": "assessed: refresh delivered internally",
+          "high": 0.0,
+          "ledger": "currency per year (recurring)",
+          "likely": 0.0,
+          "low": 0.0,
+          "source_component": "uiowa-078-economics",
+          "source_record_id": "ECON-002"
+        },
+        "hours (one-time implementation)": {
+          "basis": "one curriculum, delivered once to both groups",
+          "high": 160.0,
+          "ledger": "hours (one-time implementation)",
+          "likely": 110.0,
+          "low": 70.0,
+          "source_component": "uiowa-086-resource-estimate",
+          "source_record_id": "WI-TRAIN-ACCESSREV-001"
+        },
+        "staff-hours released per year (recurring)": {
+          "basis": "shorter review cycles once owners know what they are certifying",
+          "high": 210.0,
+          "ledger": "staff-hours released per year (recurring)",
+          "likely": 120.0,
+          "low": 60.0,
+          "source_component": "uiowa-078-economics",
+          "source_record_id": "ECON-002"
+        }
+      },
+      "known_recommendation_ids": [
+        "REC-SYN-IAM-SEC-001",
+        "REC-SYN-RIS-SEC-001"
+      ],
+      "label": "Access-review training for application owners",
+      "notes": "SHARED. Two recommendations need this same curriculum. Building it twice is not the plan and charging the programme twice is not the arithmetic. | One curriculum serves both groups; the benefit is claimed once, not once per recommendation.",
+      "recommendation_ids": [
+        "REC-SYN-IAM-SEC-001",
+        "REC-SYN-RIS-SEC-001"
+      ],
+      "source_components": [
+        "uiowa-086-resource-estimate",
+        "uiowa-078-economics"
+      ],
+      "source_record_ids": [
+        "WI-TRAIN-ACCESSREV-001",
+        "ECON-002"
+      ],
+      "specialist_roles": [
+        {
+          "one_time_hours": {
+            "basis": "",
+            "high": 95.0,
+            "ledger": "hours (one-time implementation)",
+            "likely": 65.0,
+            "low": 40.0,
+            "source_component": "uiowa-086-resource-estimate",
+            "source_record_id": "WI-TRAIN-ACCESSREV-001"
+          },
+          "role": "IAM analyst"
+        },
+        {
+          "one_time_hours": {
+            "basis": "",
+            "high": 65.0,
+            "ledger": "hours (one-time implementation)",
+            "likely": 45.0,
+            "low": 30.0,
+            "source_component": "uiowa-086-resource-estimate",
+            "source_record_id": "WI-TRAIN-ACCESSREV-001"
+          },
+          "role": "Training"
+        }
+      ],
+      "unmapped_reason": "",
+      "work_item_id": "WI-TRAIN-ACCESSREV-001"
+    },
+    {
+      "amounts": {
+        "FTE-fraction per year (recurring staff load)": {
+          "basis": "assessed: a spike has no recurring load. This is a real zero, not a missing estimate.",
+          "high": 0.0,
+          "ledger": "FTE-fraction per year (recurring staff load)",
+          "likely": 0.0,
+          "low": 0.0,
+          "source_component": "uiowa-086-resource-estimate",
+          "source_record_id": "WI-UNSCOPED-DISCOVERY-001"
+        },
+        "hours (one-time implementation)": {
+          "basis": "timeboxed spike",
+          "high": 70.0,
+          "ledger": "hours (one-time implementation)",
+          "likely": 40.0,
+          "low": 20.0,
+          "source_component": "uiowa-086-resource-estimate",
+          "source_record_id": "WI-UNSCOPED-DISCOVERY-001"
+        }
+      },
+      "known_recommendation_ids": [],
+      "label": "Discovery spike on cross-group entitlement naming",
+      "notes": "Deliberately tied to no recommendation, so the integrator has an unmapped work item to carry rather than drop.",
+      "recommendation_ids": [],
+      "source_components": [
+        "uiowa-086-resource-estimate"
+      ],
+      "source_record_ids": [
+        "WI-UNSCOPED-DISCOVERY-001"
+      ],
+      "specialist_roles": [],
+      "unmapped_reason": "the resource estimate names no recommendation_ids",
+      "work_item_id": "WI-UNSCOPED-DISCOVERY-001"
+    }
+  ]
+}
