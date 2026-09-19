@@ -2,7 +2,7 @@
   "counts": {
     "open_issues": 114,
     "open_pull_requests": 57,
-    "runs_in_progress": 6,
+    "runs_in_progress": 2,
     "runs_queued": 70
   },
   "counts_source": "graphql",
@@ -69,13 +69,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-sol/windows-canonical-binary-io-20260918",
-      "created_at": "2026-09-19T01:29:22Z",
+      "branch": "anvil/retirement-portability-reconcile",
+      "created_at": "2026-09-19T01:54:02Z",
       "draft": false,
-      "head_sha": "2f8f629cdd95ad0070da17eaeaf5663718191e05",
-      "number": 16079,
-      "title": "fix: preserve canonical bytes on Windows low-level I/O",
-      "updated_at": "2026-09-19T01:37:38Z"
+      "head_sha": "7d5f250e6fac05b5d3e3a39022260e10f3329c82",
+      "number": 16081,
+      "title": "repin: post-merge fixpoint + restore deliberately-stale assert literals",
+      "updated_at": "2026-09-19T02:42:26Z"
     },
     {
       "author": "woahwhattheheck",
@@ -163,7 +163,7 @@
       "head_sha": "288f1a3b73d9e07b7c55180c0c696ac0b95480ad",
       "number": 15958,
       "title": "CI: recover provider-starvation-aware merge train",
-      "updated_at": "2026-09-18T08:17:47Z"
+      "updated_at": "2026-09-19T03:35:25Z"
     },
     {
       "author": "woahwhattheheck",
@@ -234,12 +234,67 @@
     "16047": "e5f30b4978379740e7631c4e33fd849878ff53e6",
     "16070": "e932d0b41af5ce74522c83681d7fe9ee109775d7",
     "16073": "253fcfa5935b08b0f63b14d7120fbbbf096ec62d",
-    "16079": "2f8f629cdd95ad0070da17eaeaf5663718191e05"
+    "16081": "7d5f250e6fac05b5d3e3a39022260e10f3329c82"
   },
   "pulls_listed": 57,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 11.7,
+  "queue_depth_per_runner": 35.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "chatgpt-pages-speed-retired-agent-rescue-20260919",
+      "closed_at": "2026-09-19T06:36:31Z",
+      "head_sha": "fdc811456acf84ae4e5de3011c987cfccdaac0ed",
+      "merged_at": null,
+      "number": 16084,
+      "state": "CLOSED",
+      "title": "tests: drop retired Agent Rescue speed case"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-grokbuild/restore-door-mounts-head-bust-20260919",
+      "closed_at": "2026-09-19T04:38:09Z",
+      "head_sha": "2f4785925d49159a14d1b2aff9e1d3ef31df7ddc",
+      "merged_at": "2026-09-19T04:38:08Z",
+      "number": 16083,
+      "state": "MERGED",
+      "title": "fix: restore current-work/whisper mounts and commit-stable Pages bust"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grok/repair-pixel-unify-room-chips-20260919",
+      "closed_at": "2026-09-19T04:27:40Z",
+      "head_sha": "d63ec2171e765825dc98b93e7fbc031c30817041",
+      "merged_at": "2026-09-19T04:27:40Z",
+      "number": 16082,
+      "state": "MERGED",
+      "title": "fix: restore pixel-unify accessible room chips"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/windows-canonical-binary-io-20260918",
+      "closed_at": "2026-09-19T03:31:48Z",
+      "head_sha": "e45ef7a257f661547c81a1e34bf7926baeac4c7e",
+      "merged_at": "2026-09-19T03:31:48Z",
+      "number": 16079,
+      "state": "MERGED",
+      "title": "fix: preserve canonical bytes on Windows low-level I/O"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol-1142/primitive-root-tail-20260918",
+      "closed_at": "2026-09-19T01:40:09Z",
+      "head_sha": "643e663a0aebd58acb48ade9ebc80c07c3e0122b",
+      "merged_at": "2026-09-19T01:40:09Z",
+      "number": 16080,
+      "state": "MERGED",
+      "title": "research: extend Erd\u0151s 1142 primitive-root tail sieve"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -349,65 +404,10 @@
       "number": 16072,
       "state": "MERGED",
       "title": "Erd\u0151s 978(iii): finite CRT sieve continuation"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol-entitlement-binding-fix-20260918",
-      "closed_at": "2026-09-18T22:27:24Z",
-      "head_sha": "b5beddde80b77a4850b475f9981689d30513358c",
-      "merged_at": null,
-      "number": 16067,
-      "state": "CLOSED",
-      "title": "Revenue collections: bind entitlement evidence to exact economics"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-z/revenue-entitlement-finalize-20260918",
-      "closed_at": "2026-09-18T22:25:26Z",
-      "head_sha": "e7fb90bcc88d520530ba1f59e1dc5a805fa9d0c2",
-      "merged_at": "2026-09-18T22:25:26Z",
-      "number": 16068,
-      "state": "MERGED",
-      "title": "Revenue Collection Desk: land entitlement evidence gate"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/erdos789-two-element-20260918",
-      "closed_at": "2026-09-18T21:31:42Z",
-      "head_sha": "18dd82f93184398d29e0f202a5cbf49d4df9d213",
-      "merged_at": "2026-09-18T21:31:42Z",
-      "number": 16066,
-      "state": "MERGED",
-      "title": "research: add Erd\u0151s 789 two-element separating-subset lemma carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "anvil/autopsy-retirement-stage2",
-      "closed_at": "2026-09-18T21:06:11Z",
-      "head_sha": "47b62d247da0b72d41404ea4d91c2683d01a6124",
-      "merged_at": "2026-09-18T21:06:11Z",
-      "number": 15952,
-      "state": "MERGED",
-      "title": "purge: finish Agent Failure Autopsy retirement \u2014 generators, registries, dead code, stale tests"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/titan-12096-forced-floor-current-abi",
-      "closed_at": "2026-09-18T21:02:55Z",
-      "head_sha": "ebf2ca8eae9225458f22031e02f195c127ded1c8",
-      "merged_at": "2026-09-18T21:02:55Z",
-      "number": 16061,
-      "state": "MERGED",
-      "title": "TITAN: port forced-feasibility economic floor to current ABI"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T01:37:52Z",
+  "unchanged_since": "2026-09-19T06:37:22Z",
   "undatable_pulls": []
 }
