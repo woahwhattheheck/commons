@@ -36,10 +36,11 @@ function makeApp(candidate, authority, options = {}) {
       return { ok: false, status: 400, json: async () => ({ error: "test endpoint rejected input" }) };
     }
   });
+  context.window = context;
   const appPath = options.appPath || process.env.WORKBENCH_APP || path.join(__dirname, "app.js");
   // Pending shared handoff helpers are loaded when present, preserving a single
   // test entry point when the adjacent restore/Markdown work is composed.
-  for (const helper of ["handoff.js", "draft_import.js"]) {
+  for (const helper of ["handoff.js", "handoff_import.js"]) {
     const helperPath = path.join(path.dirname(appPath), helper);
     if (fs.existsSync(helperPath)) vm.runInContext(fs.readFileSync(helperPath, "utf8"), context, { filename: helper });
   }
