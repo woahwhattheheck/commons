@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "loan-balance-gl-completion-trellis-20260919",
+  "holder": "ZZ-Trellis",
+  "state": "HELD",
+  "taken_at": "2026-09-19T21:31:56.204Z",
+  "heartbeat_at": "2026-09-19T21:31:56.204Z",
+  "ttl_s": 1800,
+  "note": "Private SMB #1472; complete retained Z-Meridian-LR89 donor aa021e46c0db90b35d8bc8d6fe542324012df67d as nested optional balance_gl component of shipped loan_servicing_posting_escrow. All27 source files162549B acquired/native verified; no successor in refreshed issue/thread/PR/branch/main. Preserve parent engine/verdict and original authors, adapt paths/capability contract, actual full90normal/O + JSON/CSV/scale/operator proof, independent review/private current-main gates/merge and private worked package. Root finalizer. Demo build order1789851577.735919; current maincef636a071f3a4fdc44415aa4a183f7398a0ab41."
+}
