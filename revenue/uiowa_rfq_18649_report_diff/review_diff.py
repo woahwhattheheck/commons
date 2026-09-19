@@ -274,7 +274,15 @@ def load_json(path: Path) -> Any:
         raw = handle.read(MAX_INPUT_BYTES + 1)
     if len(raw) > MAX_INPUT_BYTES:
         raise ContractError("input exceeds the JSON byte limit")
-    return loads_strict(raw.decode("utf-8"))
+    text = raw.decode("utf-8")
+    try:
+        return loads_strict(text)
+    except ContractError:
+        raise  # Preserve the parent's specific strict-JSON diagnostics.
+    except ValueError as exc:
+        # Python's integer digit limit is reported as ValueError, not
+        # JSONDecodeError. Keep this bounded input failure in the CLI contract.
+        raise ContractError("JSON decoder rejected a value") from exc
 
 
 def write_new(path: Path, raw: bytes) -> None:
