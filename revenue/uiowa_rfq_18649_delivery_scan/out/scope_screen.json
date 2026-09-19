@@ -1,0 +1,37 @@
+{
+  "status": "READ_ONLY_SCREEN_NOT_A_COMPLIANCE_CLAIM",
+  "disclaimer": "This is a **screen, not a proof.** A lane with no flags means the screen found nothing it knows how to look for -- it cannot read intent, and a determined author can write drift it will not catch. No score, percentage or pass/fail is assigned to any lane, and nothing here is a compliance claim about anybody's code. Every flag is a question for that lane's owner, not a defect ruling.",
+  "lanes_scanned": 51,
+  "files_scanned": 202,
+  "total_flags": 2,
+  "total_neutralized": 20,
+  "files_unreadable": [],
+  "flags": [
+    {
+      "status": "FLAG",
+      "rule_id": "AV-03",
+      "guard_class": "audit_verdict",
+      "source_id": "uiowa_rfq_18649_rating_model/22-rating-model.md",
+      "line": 9,
+      "matched": "material weakness",
+      "sentence": "A service can have many strong observations and one material weakness in a critical practice.",
+      "why": "Uses formal audit severity vocabulary, which carries an assurance meaning this engagement cannot support.",
+      "suggested_rewrite": "State the condition, its scope limit, and the confidence in the evidence.",
+      "neutralized_by": "",
+      "lane": "uiowa_rfq_18649_rating_model"
+    },
+    {
+      "status": "FLAG",
+      "rule_id": "AV-03",
+      "guard_class": "audit_verdict",
+      "source_id": "uiowa_rfq_18649_rating_model/22-rating-model.md",
+      "line": 146,
+      "matched": "material weakness",
+      "sentence": "The material weakness remains explicit.",
+      "why": "Uses formal audit severity vocabulary, which carries an assurance meaning this engagement cannot support.",
+      "suggested_rewrite": "State the condition, its scope limit, and the confidence in the evidence.",
+      "neutralized_by": "",
+      "lane": "uiowa_rfq_18649_rating_model"
+    }
+  ]
+}

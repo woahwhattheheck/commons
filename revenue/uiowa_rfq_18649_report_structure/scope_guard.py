@@ -59,6 +59,13 @@ class Rule:
     # the first run of this guard, which is precisely the over-firing that gets
     # a guard switched off. Personal-name rules carry flags=0.
     flags: int = re.IGNORECASE
+    # Some evaluative phrases are only about a person when a person is in the
+    # sentence. "should be replaced" is a personnel recommendation next to a
+    # role holder and an ordinary edit instruction next to a config value - the
+    # first cross-lane scan flagged "the corresponding `assumption_basis` should
+    # be replaced" as an individual evaluation. Rules with this set require a
+    # person/role token in the same sentence before they fire.
+    requires_person: bool = False
 
 
 # --------------------------------------------------------------------------
@@ -111,7 +118,8 @@ RULES: tuple[Rule, ...] = (
          r"\bshould\s+be\s+(?:reassigned|replaced|removed|terminated|let\s+go|disciplined)\b"
          r"|\bdisciplinary\s+(?:action|measure)\b",
          "Recommends action against a person.",
-         "Recommend the process or staffing-model change, addressed to the owning group."),
+         "Recommend the process or staffing-model change, addressed to the owning group.",
+         requires_person=True),
     Rule("IE-03", INDIVIDUAL_EVALUATION,
          r"\b(?:the|this|their)\s+(?:\w+\s+){0,3}?"
          r"(?:developer|engineer|administrator|analyst|DBA|manager|director|"
@@ -187,7 +195,7 @@ SAFE_CONTEXTS: tuple[str, ...] = (
     r"procurement|vendor\s+selection|performance\s+evaluation|employee\s+evaluation)",
     r"\bnot\s+an?\s+audit\b",
     r"\bdoes\s+not\s+(?:constitute|issue|provide|perform|include|make|determine|render|produce|"
-    r"recommend|endorse|select|rate|rank|evaluate|score)\b",
+    r"create|cover|expand|recommend|endorse|select|rate|rank|evaluate|score)\b",
     r"\bdo\s+not\s+(?:constitute|issue|provide|perform|include|determine|render|recommend|endorse|"
     r"select|rate|rank|evaluate|score)\b",
     r"\bwill\s+not\s+(?:constitute|issue|provide|perform|include|determine|recommend|endorse|select)\b",
@@ -197,9 +205,10 @@ SAFE_CONTEXTS: tuple[str, ...] = (
     r"\bno\s+(?:vendor|product|procurement|individual|employee|personnel|compliance|audit)\s+"
     r"(?:selection|recommendation|endorsement|evaluation|rating|scoring|opinion|determination|"
     r"verdict|is\s+recommended|is\s+made|is\s+issued)\b",
-    r"\bwithout\s+(?:a|an)?\s*(?:formal\s+)?(?:audit|compliance\s+determination|certification|"
-    r"employee\s+evaluation|performance\s+evaluation|vendor\s+procurement|procurement)\b",
-    r"\boutside\s+(?:the\s+|this\s+)?(?:scope|engagement|assessment)\b",
+    r"\bwithout\s+(?:\w+\s+){0,2}?(?:a|an)?\s*(?:formal\s+)?(?:audit|compliance\s+determination|"
+    r"certification|employee\s+evaluation|performance\s+evaluation|vendor\s+procurement|procurement)\b",
+    r"\boutside\s+(?:the\s+|this\s+|our\s+)?(?:scope|engagement|assessment|workshare|package|"
+    r"boundary|bounded|agreed|contract|frame)\w*\b",
     r"\bnot\s+in\s+scope\b|\bout\s+of\s+scope\b",
     r"\brather\s+than\s+(?:an?\s+)?(?:audit|compliance|certification|procurement|vendor|"
     r"performance\s+evaluation)\b",
@@ -208,15 +217,117 @@ SAFE_CONTEXTS: tuple[str, ...] = (
     r"\bguard_class\b|\bexcluded_deliverables\b|\bscope[-_\s]boundary\b|\bdrift\s+class\b",
     # an explicit operator escape hatch for a line that genuinely must quote the term
     r"\[scope-boundary\]",
+
+    # ---- added after the first cross-lane scan of the delivered tree -------
+    # 42 flags over 161 delivered markdown files; 41 were false positives, and
+    # the largest class was lanes declaring the boundary *correctly* in list
+    # form. The guard was punishing exactly the discipline it exists to
+    # encourage. Each pattern below comes from a real delivered sentence.
+    #
+    #   "Excludes line-by-line review, formal compliance audit, performance
+    #    evaluation of any individual or workgroup, ... procurement
+    #    recommendations"            - uiowa_rfq_18649_mobilization/README.md
+    r"\bexclude[sd]?\b|\bexclusions?\b",
+    #   "**Not attempted:** no model calls anywhere; no scoring, maturity
+    #    rating, percentile, certification verdict or individual/team
+    #    performance rating is produced by any path in this code"
+    #                           - uiowa_rfq_18649_qa_refusal_contract/README.md
+    r"\bnot\s+attempted\b",
+    r"\bno\b[^.]{0,140}?\b(?:is|are)\s+produced\b",
+    #   "there is no average, maturity score, confidence score, or employee
+    #    ranking."          - uiowa_rfq_18649_release_provenance/README.md
+    r"\bthere\s+(?:is|are)\s+no\b",
+    #   "(facilitator prompts, not employee scoring keys)"
+    #                    - uiowa_rfq_18649_secure_guidance/discussion-pack.md
+    r",\s*not\s+\w+",
+    # General negated enumerations: one "no"/"never"/"without" governing a
+    # comma list. `\bno\b` alone would be far too broad, so it is anchored to a
+    # following list separator within the same clause.
+    r"\bno\b[^.]{0,80}?,\s*(?:or\s+)?\w+",
+    r"\bdoes\s+not\s+(?:cover|address|extend\s+to)\b",
 )
 
 _SAFE_RE = tuple(re.compile(p, re.IGNORECASE) for p in SAFE_CONTEXTS)
 _RULE_RE = tuple((r, re.compile(r.pattern, r.flags)) for r in RULES)
 
-# Sentence split that tolerates markdown. Deliberately simple: a false sentence
-# break makes the guard *more* conservative (a smaller neutralizing window),
-# never less, so it cannot silently let a drift through.
-_SENT_SPLIT = re.compile(r"(?<=[.;:!?])\s+|\n")
+# Sentence split for markdown prose.
+#
+# This used to split on every newline, on the theory that a smaller neutralizing
+# window only makes the guard more conservative. The first scan of the delivered
+# tree proved that reasoning wrong in practice: markdown wraps one sentence
+# across several lines, so splitting on `\n` tore "no scoring, maturity rating,
+# percentile, certification verdict or individual/team performance rating is
+# produced" in half and flagged the orphaned second half. Being over-conservative
+# is not free - it is how a guard ends up with 41 false positives out of 42.
+#
+# So: split on sentence punctuation and on blank lines (paragraph breaks), and
+# keep a wrapped sentence whole.
+_SENT_SPLIT = re.compile(r"(?<=[.;!?])\s+|\n\s*\n")
+
+# Fenced code blocks are program output, transcripts and examples - not report
+# prose. 10 of the first scan's 42 flags were this guard's OWN CLI test string
+# ("The service is non-compliant and we recommend purchasing a new tool."),
+# captured into two lanes' verification logs when they executed the 082 suite.
+# The guard read its own test data back as a customer document.
+_FENCE = re.compile(r"^\s*(?:```|~~~)")
+
+# A "sentence" that is only a quoted fragment is a term being named, not a claim
+# being made - e.g. a rules table listing `"non-compliant"` as a phrase it bans.
+_QUOTED_TERM = re.compile(r'^[\s\-*|>]*["“`]([^"”`]{1,80})["”`][\s.,;:|]*$')
+
+# A markdown list item or table row inherits its lead-in. "Out of scope:" on one
+# line and the excluded items as bullets beneath it is the normal way to write an
+# exclusion, and the bullet alone carries no negation.
+_LIST_ITEM = re.compile(r"^\s*(?:[-*+]\s|\d+[.)]\s|\|)")
+
+# Tokens that make an evaluative verb about a person rather than a value.
+_PERSON_TOKEN = re.compile(
+    r"\b(?:developer|engineer|administrator|analyst|DBA|manager|director|architect|"
+    r"technician|staff|employee|personnel|contractor|individual|person|team\s+member|"
+    r"he|she|her|his|him|their|they)\b", re.IGNORECASE)
+
+
+# An inline code span names a term; it does not assert it. A rules table that
+# documents this guard reads:
+#
+#     - **`audit_verdict`** - `non-compliant`, `audit finding`, `material weakness`
+#
+# Every one of those is a phrase being *catalogued as forbidden*. The first
+# cross-lane scan flagged all five, in this guard's own README. Blanking code
+# spans (keeping the length, so offsets and line numbers hold) is the same
+# principle as skipping fenced blocks: quoted vocabulary is not prose.
+_CODE_SPAN = re.compile(r"`[^`\n]{1,120}`")
+
+# Markdown emphasis splits words that a safe-context pattern needs whole. The
+# sentence "the three deliverables this engagement must *not* turn into: ..."
+# carries its own negation, but `\bmust\s+not\b` cannot see it across the
+# asterisks - so the guard flagged its own README's description of itself.
+# Emphasis markers are unwrapped (padded back to the same width) rather than
+# deleted, so line numbers and offsets are untouched. A bare `*` starting a
+# line is left alone, because that is a list bullet, not emphasis.
+_EMPHASIS = re.compile(r"(?<!^)(\*{1,3})(\w[^*\n]{0,80}?)(\*{1,3})", re.MULTILINE)
+
+
+def strip_non_prose(text: str) -> str:
+    """Blank out fenced code blocks and inline code spans, preserving layout."""
+    out: list[str] = []
+    inside = False
+    for line in text.split("\n"):
+        if _FENCE.match(line):
+            inside = not inside
+            out.append("")
+            continue
+        if inside:
+            out.append("")
+            continue
+        # Replace each code span with spaces of the same width so that line
+        # numbers and any surrounding prose stay exactly where they were.
+        cleaned = _CODE_SPAN.sub(lambda m: " " * len(m.group(0)), line)
+        # Then unwrap emphasis, padding to preserve width.
+        cleaned = _EMPHASIS.sub(
+            lambda m: " " * len(m.group(1)) + m.group(2) + " " * len(m.group(3)), cleaned)
+        out.append(cleaned)
+    return "\n".join(out)
 
 FLAG = "FLAG"
 NEUTRALIZED = "NEUTRALIZED"
@@ -257,6 +368,24 @@ def _sentences_with_lines(text: str) -> list[tuple[int, str]]:
     return out
 
 
+def _lead_in(lines: Sequence[str], line_no: int) -> str:
+    """The nearest preceding non-empty, non-list line above a list item.
+
+    "Out of scope:" followed by bullets is the ordinary way to write an
+    exclusion. Judging the bullet alone means judging it without the word that
+    negates it.
+    """
+    i = line_no - 2  # line_no is 1-based; start one line above
+    looked = 0
+    while i >= 0 and looked < 8:
+        cand = lines[i].strip()
+        if cand and not _LIST_ITEM.match(lines[i]):
+            return cand
+        i -= 1
+        looked += 1
+    return ""
+
+
 def _safe_context(sentence: str) -> str:
     for pat in _SAFE_RE:
         m = pat.search(sentence)
@@ -265,13 +394,31 @@ def _safe_context(sentence: str) -> str:
     return ""
 
 
-def scan_text(text: str, source_id: str = "<text>") -> list[Hit]:
+def scan_text(text: str, source_id: str = "<text>", skip_code_blocks: bool = True) -> list[Hit]:
     """Return every drift hit in `text`, flagged or neutralized."""
+    body = strip_non_prose(text) if skip_code_blocks else text
+    lines = body.split("\n")
     hits: list[Hit] = []
-    for line, sentence in _sentences_with_lines(text):
-        safe = _safe_context(sentence)
+    for line, sentence in _sentences_with_lines(body):
+        # A sentence that is only a quoted term names the phrase; it does not
+        # assert it.
+        if _QUOTED_TERM.match(sentence):
+            safe = "quoted term, not an assertion"
+        else:
+            safe = _safe_context(sentence)
+            if not safe and _LIST_ITEM.match(sentence):
+                # Inherit the list's lead-in before judging the item alone.
+                lead = _lead_in(lines, line)
+                if lead:
+                    found = _safe_context(lead)
+                    if found:
+                        safe = f"{found} (lead-in: {lead[:60]})"
         for rule, rx in _RULE_RE:
             for m in rx.finditer(sentence):
+                if rule.requires_person and not _PERSON_TOKEN.search(sentence):
+                    # "the corresponding `assumption_basis` should be replaced"
+                    # is replacing a value, not a person.
+                    continue
                 hits.append(Hit(
                     status=NEUTRALIZED if safe else FLAG,
                     rule_id=rule.rule_id,

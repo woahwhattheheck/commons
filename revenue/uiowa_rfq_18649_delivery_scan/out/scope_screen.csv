@@ -1,0 +1,3 @@
+lane,file,line,rule_id,guard_class,matched,sentence
+uiowa_rfq_18649_rating_model,uiowa_rfq_18649_rating_model/22-rating-model.md,9,AV-03,audit_verdict,material weakness,A service can have many strong observations and one material weakness in a critical practice.
+uiowa_rfq_18649_rating_model,uiowa_rfq_18649_rating_model/22-rating-model.md,146,AV-03,audit_verdict,material weakness,The material weakness remains explicit.
