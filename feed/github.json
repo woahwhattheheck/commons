@@ -1,8 +1,8 @@
 {
   "counts": {
     "open_issues": 114,
-    "open_pull_requests": 57,
-    "runs_in_progress": 2,
+    "open_pull_requests": 58,
+    "runs_in_progress": 4,
     "runs_queued": 70
   },
   "counts_source": "graphql",
@@ -66,6 +66,17 @@
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/latch-owner-now-wb-hour-restore-ff1c",
+      "created_at": "2026-09-19T11:18:08Z",
+      "draft": false,
+      "head_sha": "75dc598cf6ddba6d212fa3ad00adcce9992ffda3",
+      "number": 16087,
+      "title": "Restore existing White Box hour Buy CTA on owner-now-revenue.html",
+      "updated_at": "2026-09-19T11:18:08Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -164,17 +175,6 @@
       "number": 15958,
       "title": "CI: recover provider-starvation-aware merge train",
       "updated_at": "2026-09-19T03:35:25Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol17/e2b-executor-15922-20260918-r2",
-      "created_at": "2026-09-18T06:32:11Z",
-      "draft": false,
-      "head_sha": "76a838d99f33d6acee4b73e7c833cd4da80f8caa",
-      "number": 15953,
-      "title": "E2B exact-head executor for off-owner-machine test receipts",
-      "updated_at": "2026-09-18T08:02:24Z"
     }
   ],
   "open_heads": {
@@ -234,12 +234,35 @@
     "16047": "e5f30b4978379740e7631c4e33fd849878ff53e6",
     "16070": "e932d0b41af5ce74522c83681d7fe9ee109775d7",
     "16073": "253fcfa5935b08b0f63b14d7120fbbbf096ec62d",
-    "16081": "7d5f250e6fac05b5d3e3a39022260e10f3329c82"
+    "16081": "7d5f250e6fac05b5d3e3a39022260e10f3329c82",
+    "16087": "75dc598cf6ddba6d212fa3ad00adcce9992ffda3"
   },
-  "pulls_listed": 57,
+  "pulls_listed": 58,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 35.0,
+  "queue_depth_per_runner": 17.5,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/resource-master-ci-fix-pack-99-activation-20260919-01",
+      "closed_at": "2026-09-19T10:44:20Z",
+      "head_sha": "973fd4d2d08044049617fbb8bc8f86997b526e2b",
+      "merged_at": "2026-09-19T10:44:20Z",
+      "number": 16086,
+      "state": "MERGED",
+      "title": "Activate CI Fix Pack 99 payment road"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/latch-cifix99-checkout-seat-20260919-05cd",
+      "closed_at": "2026-09-19T07:39:23Z",
+      "head_sha": "e14704bbb570d92f020a2d3a4deeec55eb17edfe",
+      "merged_at": "2026-09-19T07:39:23Z",
+      "number": 16085,
+      "state": "MERGED",
+      "title": "LATCH: wire existing ci-fix-pack-99 Payment Link into pack door"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -382,32 +405,10 @@
       "number": 16022,
       "state": "CLOSED",
       "title": "Repository estate rationalizer fix-forward"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-z/repo-estate-authority-fix-20260918",
-      "closed_at": "2026-09-18T22:40:09Z",
-      "head_sha": "068eb96b6ff37e9754e523f5560050f017d28943",
-      "merged_at": "2026-09-18T22:40:09Z",
-      "number": 16071,
-      "state": "MERGED",
-      "title": "Repo estate: source-bind production authority generation"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/erdos978-finite-crt-20260918",
-      "closed_at": "2026-09-18T22:33:05Z",
-      "head_sha": "56c44c023d987b276d612f6cffe47d6fbe70894f",
-      "merged_at": "2026-09-18T22:33:05Z",
-      "number": 16072,
-      "state": "MERGED",
-      "title": "Erd\u0151s 978(iii): finite CRT sieve continuation"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T06:37:22Z",
+  "unchanged_since": "2026-09-19T11:30:27Z",
   "undatable_pulls": []
 }
