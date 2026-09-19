@@ -1,13 +1,13 @@
 {
   "counts": {
-    "open_issues": 133,
-    "open_pull_requests": 61,
+    "open_issues": 145,
+    "open_pull_requests": 63,
     "runs_in_progress": 19,
-    "runs_queued": 121
+    "runs_queued": 160
   },
   "counts_source": "graphql",
   "degraded": [],
-  "drafts": 2,
+  "drafts": 3,
   "longest_open": [
     {
       "author": "woahwhattheheck",
@@ -69,13 +69,46 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zz-sol-uiowa-032-doc-extraction-20260919",
-      "created_at": "2026-09-19T13:36:29Z",
+      "branch": "swarm-zz-solstice-uiowa-060-security-event-review-20260919",
+      "created_at": "2026-09-19T13:38:37Z",
       "draft": false,
-      "head_sha": "7b4efd514d562f536f96324df93b8ee1a352e75f",
-      "number": 16120,
-      "title": "UIOWA-032: locator-preserving document extraction",
-      "updated_at": "2026-09-19T13:36:29Z"
+      "head_sha": "25939b5a906dd457f8a53a15149a5525c514e4d3",
+      "number": 16136,
+      "title": "feat(uiowa): add security-event review evidence kit",
+      "updated_at": "2026-09-19T13:38:37Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/uiowa-078-orbit27-ai-economics",
+      "created_at": "2026-09-19T13:38:13Z",
+      "draft": true,
+      "head_sha": "0d788098b9da196cab9efe387707672a86622516",
+      "number": 16134,
+      "title": "UIOWA-078: AI workflow economics, uncertainty and break-even calculator",
+      "updated_at": "2026-09-19T13:38:13Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-trellis/uiowa-workbench-handoff-20260919",
+      "created_at": "2026-09-19T13:37:25Z",
+      "draft": false,
+      "head_sha": "f91169044bc39b1ef7c99ada29d900932fbd15b6",
+      "number": 16130,
+      "title": "Iowa workbench: resume receipt-bound analyst reviews and export readable handoffs",
+      "updated_at": "2026-09-19T13:38:34Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "anchor-zz/uiowa-022-rating-composition-20260919",
+      "created_at": "2026-09-19T13:37:05Z",
+      "draft": false,
+      "head_sha": "ac9b596fa39410cf947420a306125c823c625f80",
+      "number": 16126,
+      "title": "UIOWA-022: compose ratings without hiding uncertainty",
+      "updated_at": "2026-09-19T13:37:05Z"
     },
     {
       "author": "woahwhattheheck",
@@ -91,24 +124,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "uiowa-065-observability-zzsol",
-      "created_at": "2026-09-19T13:36:13Z",
-      "draft": false,
-      "head_sha": "7ed02aeba6ffd638e83a3838442759e4c15f2b84",
-      "number": 16118,
-      "title": "UIOWA-065: add observability assessment kit",
-      "updated_at": "2026-09-19T13:36:13Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "swarm/anvil50-handoff-20260919",
       "created_at": "2026-09-19T13:32:46Z",
       "draft": false,
-      "head_sha": "aa2c892a647604c4d414655cdaa70905fdd6ecce",
+      "head_sha": "413837a89ac300e21979355a28c468e1e89c6a68",
       "number": 16110,
       "title": "UIOWA-050: development-to-operations handoff toolkit",
-      "updated_at": "2026-09-19T13:32:46Z"
+      "updated_at": "2026-09-19T13:38:38Z"
     },
     {
       "author": "woahwhattheheck",
@@ -153,28 +175,6 @@
       "number": 16047,
       "title": "Research: add high-value Erd\u0151s prize crosswalk",
       "updated_at": "2026-09-18T17:02:01Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-copperleaf/actions-auditor-classifier-generation-15756",
-      "created_at": "2026-09-18T07:42:48Z",
-      "draft": false,
-      "head_sha": "5c4e04aeccb9a02035cf0775750669180dde5521",
-      "number": 16015,
-      "title": "Harden stale Actions queue auditor classifier generation",
-      "updated_at": "2026-09-18T10:51:42Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "znf-k7p4/outreach-firewall-commercial-binding-20260918",
-      "created_at": "2026-09-18T07:41:12Z",
-      "draft": false,
-      "head_sha": "a08d73c13394cf6f1719befdb168065ec94381c8",
-      "number": 16012,
-      "title": "Fix outreach firewall commercial authority binding",
-      "updated_at": "2026-09-18T10:38:48Z"
     }
   ],
   "open_heads": {
@@ -235,15 +235,50 @@
     "16070": "e932d0b41af5ce74522c83681d7fe9ee109775d7",
     "16073": "253fcfa5935b08b0f63b14d7120fbbbf096ec62d",
     "16081": "7d5f250e6fac05b5d3e3a39022260e10f3329c82",
-    "16110": "aa2c892a647604c4d414655cdaa70905fdd6ecce",
-    "16118": "7ed02aeba6ffd638e83a3838442759e4c15f2b84",
+    "16110": "413837a89ac300e21979355a28c468e1e89c6a68",
     "16119": "9770af72d4e5d3124f12df08110961aaed62041a",
-    "16120": "7b4efd514d562f536f96324df93b8ee1a352e75f"
+    "16126": "ac9b596fa39410cf947420a306125c823c625f80",
+    "16130": "f91169044bc39b1ef7c99ada29d900932fbd15b6",
+    "16134": "0d788098b9da196cab9efe387707672a86622516",
+    "16136": "25939b5a906dd457f8a53a15149a5525c514e4d3"
   },
-  "pulls_listed": 61,
+  "pulls_listed": 63,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 6.4,
+  "queue_depth_per_runner": 8.4,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "uiowa-047-test-data-zzsol",
+      "closed_at": "2026-09-19T13:37:41Z",
+      "head_sha": "51b5d99b94c78f4e5f135eaedc41ee6dc531a3b9",
+      "merged_at": "2026-09-19T13:37:41Z",
+      "number": 16122,
+      "state": "MERGED",
+      "title": "UIOWA-047: add test-data readiness assessment kit"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "uiowa-065-observability-zzsol",
+      "closed_at": "2026-09-19T13:37:06Z",
+      "head_sha": "7ed02aeba6ffd638e83a3838442759e4c15f2b84",
+      "merged_at": "2026-09-19T13:37:06Z",
+      "number": 16118,
+      "state": "MERGED",
+      "title": "UIOWA-065: add observability assessment kit"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-sol-uiowa-032-doc-extraction-20260919",
+      "closed_at": "2026-09-19T13:36:47Z",
+      "head_sha": "7b4efd514d562f536f96324df93b8ee1a352e75f",
+      "merged_at": "2026-09-19T13:36:47Z",
+      "number": 16120,
+      "state": "MERGED",
+      "title": "UIOWA-032: locator-preserving document extraction"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -375,43 +410,10 @@
       "number": 16087,
       "state": "MERGED",
       "title": "Restore existing White Box hour Buy CTA on owner-now-revenue.html"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "codex/resource-master-ci-fix-pack-99-activation-20260919-01",
-      "closed_at": "2026-09-19T10:44:20Z",
-      "head_sha": "973fd4d2d08044049617fbb8bc8f86997b526e2b",
-      "merged_at": "2026-09-19T10:44:20Z",
-      "number": 16086,
-      "state": "MERGED",
-      "title": "Activate CI Fix Pack 99 payment road"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/latch-cifix99-checkout-seat-20260919-05cd",
-      "closed_at": "2026-09-19T07:39:23Z",
-      "head_sha": "e14704bbb570d92f020a2d3a4deeec55eb17edfe",
-      "merged_at": "2026-09-19T07:39:23Z",
-      "number": 16085,
-      "state": "MERGED",
-      "title": "LATCH: wire existing ci-fix-pack-99 Payment Link into pack door"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "chatgpt-pages-speed-retired-agent-rescue-20260919",
-      "closed_at": "2026-09-19T06:36:31Z",
-      "head_sha": "fdc811456acf84ae4e5de3011c987cfccdaac0ed",
-      "merged_at": null,
-      "number": 16084,
-      "state": "CLOSED",
-      "title": "tests: drop retired Agent Rescue speed case"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T13:36:38Z",
+  "unchanged_since": "2026-09-19T13:38:45Z",
   "undatable_pulls": []
 }
