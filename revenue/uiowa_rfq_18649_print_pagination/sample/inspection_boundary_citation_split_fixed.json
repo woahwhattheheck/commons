@@ -1,0 +1,32 @@
+{
+  "fiction_notice": "FICTIONAL CONTENT. Example State University is an invented organization. No finding, citation, locator or figure here describes the University of Iowa or any real institution, system or person.",
+  "renderer": "fixed",
+  "pages": 2,
+  "runs_checked": 50,
+  "defects": [],
+  "defect_meanings": {
+    "CLIPPED_TEXT": "A glyph run falls outside the printable content box. On paper this text is cut off at the page edge and cannot be read at all.",
+    "ORPHANED_HEADING": "A heading is the last thing on its page and the body it introduces begins on the next page. The reader turns the page to find out what the heading was about.",
+    "TABLE_HEADER_SEPARATED": "Table rows continue onto a page whose header row was left behind. The columns on that page are unlabelled.",
+    "CITATION_SPLIT": "A citation block is broken across a page boundary, so a source locator is torn in half and the reference cannot be followed."
+  },
+  "text_conservation": {
+    "source_chars": 3520,
+    "placed_chars": 3520,
+    "no_text_lost": true,
+    "missing_char_counts": {},
+    "added_chars": 0,
+    "note": "Compared as character multisets over non-whitespace characters. no_text_lost is the guarantee that matters: every character of the source reaches a page. Ordered comparison would be the wrong test -- a table wraps column-major while the source reads row-major, and the fixed renderer deliberately REPEATS a table header on each continuation page, so placed_chars legitimately exceeds source_chars. Note this audit says nothing about whether placed text is READABLE: the naive renderer also loses nothing here, because it places its overflow below the bottom of the page rather than dropping it. CLIPPED_TEXT is the check that catches that."
+  },
+  "pdf": {
+    "path": "boundary_citation_split_fixed.pdf",
+    "bytes": 2369,
+    "pages": 2,
+    "structurally_valid": true,
+    "problems": [],
+    "unencodable_characters": {},
+    "all_characters_encodable": true
+  },
+  "transliterations": {},
+  "visual_check_by_human": "OUTSTANDING - not performed"
+}

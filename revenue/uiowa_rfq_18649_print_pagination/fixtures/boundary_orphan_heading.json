@@ -1,0 +1,89 @@
+{
+  "title": "Boundary case - orphaned heading (FICTIONAL)",
+  "note": "FICTIONAL. Purpose-built regression fixture. The padding length was COMPUTED, not guessed: a search over pad sizes found the position at which the naive renderer leaves the Section B heading as the last line on its page. Changing the padding moves the boundary and the defect stops reproducing.",
+  "blocks": [
+    {
+      "id": "h-a",
+      "kind": "heading",
+      "level": 2,
+      "text": "Section A - padding"
+    },
+    {
+      "id": "p-pad-0",
+      "kind": "paragraph",
+      "text": "Filler line for deterministic boundary positioning in this fixture."
+    },
+    {
+      "id": "p-pad-1",
+      "kind": "paragraph",
+      "text": "Filler line for deterministic boundary positioning in this fixture."
+    },
+    {
+      "id": "p-pad-2",
+      "kind": "paragraph",
+      "text": "Filler line for deterministic boundary positioning in this fixture."
+    },
+    {
+      "id": "p-pad-3",
+      "kind": "paragraph",
+      "text": "Filler line for deterministic boundary positioning in this fixture."
+    },
+    {
+      "id": "p-pad-4",
+      "kind": "paragraph",
+      "text": "Filler line for deterministic boundary positioning in this fixture."
+    },
+    {
+      "id": "p-pad-5",
+      "kind": "paragraph",
+      "text": "Filler line for deterministic boundary positioning in this fixture."
+    },
+    {
+      "id": "p-pad-6",
+      "kind": "paragraph",
+      "text": "Filler line for deterministic boundary positioning in this fixture."
+    },
+    {
+      "id": "p-pad-7",
+      "kind": "paragraph",
+      "text": "Filler line for deterministic boundary positioning in this fixture."
+    },
+    {
+      "id": "p-pad-8",
+      "kind": "paragraph",
+      "text": "Filler line for deterministic boundary positioning in this fixture."
+    },
+    {
+      "id": "p-pad-9",
+      "kind": "paragraph",
+      "text": "Filler line for deterministic boundary positioning in this fixture."
+    },
+    {
+      "id": "p-a",
+      "kind": "paragraph",
+      "text": "Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture. Filler line for deterministic boundary positioning in this fixture."
+    },
+    {
+      "id": "h-b",
+      "kind": "heading",
+      "level": 2,
+      "text": "Section B - this heading must not be left alone at the foot of a page"
+    },
+    {
+      "id": "p-b",
+      "kind": "paragraph",
+      "text": "The body of section B follows its heading. If the renderer places the heading at the very bottom of a page and this paragraph on the next, the reader must turn the page to discover what the heading was introducing."
+    },
+    {
+      "id": "c-b",
+      "kind": "citation",
+      "lines": [
+        "Source: FICTIONAL. Boundary fixture record, retrieved 2026-08-30; locator",
+        "  boundary-fixture-2026-08-30.json, object path $.records[0].locator, which is long",
+        "  enough that tearing it across a page break makes the reference unusable.",
+        "Corroboration: FICTIONAL. Second locator line, deliberately multiline, so that a",
+        "  renderer without keep-together splits this block at whatever line the page ends."
+      ]
+    }
+  ]
+}

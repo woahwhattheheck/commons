@@ -1,0 +1,39 @@
+{
+  "title": "Boundary case - split citation (FICTIONAL)",
+  "note": "FICTIONAL. Purpose-built regression fixture. Padding COMPUTED so the naive renderer breaks the multiline citation across the page boundary, tearing a source locator in half.",
+  "blocks": [
+    {
+      "id": "h-a",
+      "kind": "heading",
+      "level": 2,
+      "text": "Section A - padding"
+    },
+    {
+      "id": "p-a",
+      "kind": "paragraph",
+      "text": "Filler text for boundary positioning. This paragraph exists only to push the blocks that follow it to a controlled position relative to the page break, so that the boundary defects below occur deterministically rather than by luck. Filler text for boundary positioning. This paragraph exists only to push the blocks that follow it to a controlled position relative to the page break, so that the boundary defects below occur deterministically rather than by luck. Filler text for boundary positioning. This paragraph exists only to push the blocks that follow it to a controlled position relative to the page break, so that the boundary defects below occur deterministically rather than by luck. Filler text for boundary positioning. This paragraph exists only to push the blocks that follow it to a controlled position relative to the page break, so that the boundary defects below occur deterministically rather than by luck. Filler text for boundary positioning. This paragraph exists only to push the blocks that follow it to a controlled position relative to the page break, so that the boundary defects below occur deterministically rather than by luck. Filler text for boundary positioning. This paragraph exists only to push the blocks that follow it to a controlled position relative to the page break, so that the boundary defects below occur deterministically rather than by luck. Filler text for boundary positioning. This paragraph exists only to push the blocks that follow it to a controlled position relative to the page break, so that the boundary defects below occur deterministically rather than by luck. Filler text for boundary positioning. This paragraph exists only to push the blocks that follow it to a controlled position relative to the page break, so that the boundary defects below occur deterministically rather than by luck. Filler text for boundary positioning. This paragraph exists only to push the blocks that follow it to a controlled position relative to the page break, so that the boundary defects below occur deterministically rather than by luck. Filler text for boundary positioning. This paragraph exists only to push the blocks that follow it to a controlled position relative to the page break, so that the boundary defects below occur deterministically rather than by luck. Filler text for boundary positioning. This paragraph exists only to push the blocks that follow it to a controlled position relative to the page break, so that the boundary defects below occur deterministically rather than by luck. Filler text for boundary positioning. This paragraph exists only to push the blocks that follow it to a controlled position relative to the page break, so that the boundary defects below occur deterministically rather than by luck. Filler text for boundary positioning. This paragraph exists only to push the blocks that follow it to a controlled position relative to the page break, so that the boundary defects below occur deterministically rather than by luck. Filler text for boundary positioning. This paragraph exists only to push the blocks that follow it to a controlled position relative to the page break, so that the boundary defects below occur deterministically rather than by luck. "
+    },
+    {
+      "id": "h-b",
+      "kind": "heading",
+      "level": 2,
+      "text": "Section B - this heading must not be left alone at the foot of a page"
+    },
+    {
+      "id": "p-b",
+      "kind": "paragraph",
+      "text": "The body of section B follows its heading. If the renderer places the heading at the very bottom of a page and this paragraph on the next, the reader must turn the page to discover what the heading was introducing."
+    },
+    {
+      "id": "c-b",
+      "kind": "citation",
+      "lines": [
+        "Source: FICTIONAL. Boundary fixture record, retrieved 2026-08-30; locator",
+        "  boundary-fixture-2026-08-30.json, object path $.records[0].locator, which is long",
+        "  enough that tearing it across a page break makes the reference unusable.",
+        "Corroboration: FICTIONAL. Second locator line, deliberately multiline, so that a",
+        "  renderer without keep-together splits this block at whatever line the page ends."
+      ]
+    }
+  ]
+}

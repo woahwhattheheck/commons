@@ -1,0 +1,490 @@
+{
+  "fiction_notice": "FICTIONAL CONTENT. Example State University is an invented organization. No finding, citation, locator or figure here describes the University of Iowa or any real institution, system or person.",
+  "renderer": "naive",
+  "pages": 4,
+  "runs_checked": 287,
+  "defects": [
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 2,
+      "block_id": "t-items",
+      "detail": "run ends at x=726.6pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Open question reference"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 2,
+      "block_id": "t-items",
+      "detail": "run ends at x=867.6pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Limitation on the finding"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=569.4pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Direct - artifact inspected"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=607.8pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "-"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=954.0pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Sample drawn from a single operating unit"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=569.4pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Direct - artifact inspected"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=624.0pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Q-02"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=954.0pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Sample drawn from a single operating unit"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=569.4pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Direct - artifact inspected"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=624.0pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Q-01"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=954.0pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Sample drawn from a single operating unit"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=569.4pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Direct - artifact inspected"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=624.0pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Q-05"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=954.0pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Sample drawn from a single operating unit"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=569.4pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Direct - artifact inspected"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=624.0pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Q-04"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=954.0pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Sample drawn from a single operating unit"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=569.4pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Direct - artifact inspected"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=607.8pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "-"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=954.0pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Sample drawn from a single operating unit"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=569.4pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Direct - artifact inspected"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=624.0pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Q-02"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=954.0pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Sample drawn from a single operating unit"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=569.4pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Direct - artifact inspected"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=624.0pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Q-01"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=954.0pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Sample drawn from a single operating unit"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=596.4pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Indirect - related artifact only"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=624.0pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Q-05"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=997.2pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Consistent but incomplete; no record captures the"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=754.2pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "step"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=596.4pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Indirect - related artifact only"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=624.0pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Q-04"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=997.2pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Consistent but incomplete; no record captures the"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=754.2pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "step"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=596.4pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Indirect - related artifact only"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=607.8pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "-"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=997.2pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Consistent but incomplete; no record captures the"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=754.2pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "step"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=596.4pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Indirect - related artifact only"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=624.0pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Q-02"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=997.2pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Consistent but incomplete; no record captures the"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=754.2pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "step"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=596.4pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Indirect - related artifact only"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=624.0pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Q-01"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=997.2pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Consistent but incomplete; no record captures the"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=754.2pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "step"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=624.0pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Q-05"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=959.4pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Applies to the three applications examined"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=624.0pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Q-04"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=959.4pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Applies to the three applications examined"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=607.8pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "-"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=959.4pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Applies to the three applications examined"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=624.0pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Q-02"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=1002.6pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Fieldwork window closed before records were opened"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=624.0pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Q-01"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=1002.6pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Fieldwork window closed before records were opened"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=624.0pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Q-05"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=1002.6pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Fieldwork window closed before records were opened"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=624.0pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Q-04"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=1002.6pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Fieldwork window closed before records were opened"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=607.8pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "-"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=1002.6pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Fieldwork window closed before records were opened"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=624.0pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Q-02"
+    },
+    {
+      "defect": "CLIPPED_TEXT",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "run ends at x=1002.6pt, past the right margin 558.0pt (column runs off the side of the page)",
+      "sample_text": "Fieldwork window closed before records were opened"
+    },
+    {
+      "defect": "TABLE_HEADER_SEPARATED",
+      "page": 3,
+      "block_id": "t-items",
+      "detail": "table rows appear on page 3 with no header row on that page",
+      "sample_text": ""
+    }
+  ],
+  "defect_meanings": {
+    "CLIPPED_TEXT": "A glyph run falls outside the printable content box. On paper this text is cut off at the page edge and cannot be read at all.",
+    "ORPHANED_HEADING": "A heading is the last thing on its page and the body it introduces begins on the next page. The reader turns the page to find out what the heading was about.",
+    "TABLE_HEADER_SEPARATED": "Table rows continue onto a page whose header row was left behind. The columns on that page are unlabelled.",
+    "CITATION_SPLIT": "A citation block is broken across a page boundary, so a source locator is torn in half and the reference cannot be followed."
+  },
+  "text_conservation": {
+    "source_chars": 10148,
+    "placed_chars": 10148,
+    "no_text_lost": true,
+    "missing_char_counts": {},
+    "added_chars": 0,
+    "note": "Compared as character multisets over non-whitespace characters. no_text_lost is the guarantee that matters: every character of the source reaches a page. Ordered comparison would be the wrong test -- a table wraps column-major while the source reads row-major, and the fixed renderer deliberately REPEATS a table header on each continuation page, so placed_chars legitimately exceeds source_chars. Note this audit says nothing about whether placed text is READABLE: the naive renderer also loses nothing here, because it places its overflow below the bottom of the page rather than dropping it. CLIPPED_TEXT is the check that catches that."
+  },
+  "pdf": {
+    "path": "report_document_naive.pdf",
+    "bytes": 8301,
+    "pages": 4,
+    "structurally_valid": true,
+    "problems": [],
+    "unencodable_characters": {},
+    "all_characters_encodable": true
+  },
+  "transliterations": {
+    "\u2014": 9
+  },
+  "visual_check_by_human": "OUTSTANDING - not performed"
+}
