@@ -1,10 +1,10 @@
 {
   "artifact": "cross-lane reproducibility audit",
   "counts": {
-    "FAILED": 13,
-    "REPRODUCIBLE": 36,
+    "FAILED": 16,
+    "REPRODUCIBLE": 41,
     "UNKNOWN": 8,
-    "VARIES": 4
+    "VARIES": 6
   },
   "lanes": [
     {
@@ -444,6 +444,11 @@
           "verdict": "REPRODUCIBLE"
         },
         {
+          "command": "python3 packcheck.py --sweep <directory>",
+          "detail": "uses shell redirection or chaining, which this audit does not run through a shell",
+          "verdict": "SKIPPED"
+        },
+        {
           "command": "python3 -m unittest test_bid_pack test_packcheck -v",
           "detail": "test suite, not an artifact command",
           "verdict": "SKIPPED"
@@ -500,10 +505,20 @@
         },
         {
           "causes": {
-            "results/BENCHMARK_REPORT.md": "timestamp_like",
-            "results/benchmark_results.csv": "timestamp_like",
-            "results/benchmark_results.json": "timestamp_like",
-            "results/environment.json": "timestamp_like"
+            "results/BENCHMARK_REPORT.md": [
+              "duration_like",
+              "timestamp_like"
+            ],
+            "results/benchmark_results.csv": [
+              "duration_like"
+            ],
+            "results/benchmark_results.json": [
+              "duration_like",
+              "timestamp_like"
+            ],
+            "results/environment.json": [
+              "timestamp_like"
+            ]
           },
           "command": "python3 benchmark.py",
           "differing_files": [
@@ -518,13 +533,70 @@
           "only_in_first_run": [],
           "only_in_second_run": [],
           "redirects": [],
+          "sample_differences": {
+            "results/BENCHMARK_REPORT.md": [
+              {
+                "first_run": "| measured_at_utc | 2026-09-19T14:25:45Z |",
+                "second_run": "| measured_at_utc | 2026-09-19T14:26:02Z |"
+              },
+              {
+                "first_run": "| small | 5 | 0.0042 | 0.0045 | 0.0040 | 0.0041 | 1.04x |",
+                "second_run": "| small | 5 | 0.0040 | 0.0041 | 0.0039 | 0.0040 | 1.01x |"
+              },
+              {
+                "first_run": "| medium | 5 | 0.0460 | 0.0465 | 0.0276 | 0.0281 | 1.67x |",
+                "second_run": "| medium | 5 | 0.0576 | 0.0591 | 0.0280 | 0.0287 | 2.06x |"
+              }
+            ],
+            "results/benchmark_results.csv": [
+              {
+                "first_run": "small,import,baseline,0.001501130,0.001600732,0.001685559,5,5,810360,True",
+                "second_run": "small,import,baseline,0.001477416,0.001528607,0.001561923,5,5,810226,True"
+              },
+              {
+                "first_run": "small,link_check,baseline,0.000272581,0.000288519,0.000327574,5,5,810360,True",
+                "second_run": "small,link_check,baseline,0.000270178,0.000271877,0.000325056,5,5,810226,True"
+              },
+              {
+                "first_run": "small,statement_presence,baseline,0.000192468,0.000193253,0.000199397,5,5,810360,True",
+                "second_run": "small,statement_presence,baseline,0.000190786,0.000192252,0.000192497,5,5,810226,True"
+              }
+            ],
+            "results/benchmark_results.json": [
+              {
+                "first_run": "\"median\": 8.923000223148847e-06,",
+                "second_run": "\"median\": 8.40700022308738e-06,"
+              },
+              {
+                "first_run": "\"min\": 8.42200006445637e-06,",
+                "second_run": "\"min\": 8.25100005386048e-06,"
+              },
+              {
+                "first_run": "\"median\": 9.387099999003112e-05,",
+                "second_run": "\"median\": 9.044099988386733e-05,"
+              }
+            ],
+            "results/environment.json": [
+              {
+                "first_run": "\"measured_at_utc\": \"2026-09-19T14:25:45Z\",",
+                "second_run": "\"measured_at_utc\": \"2026-09-19T14:26:02Z\","
+              }
+            ]
+          },
           "verdict": "VARIES"
         },
         {
           "causes": {
-            "results/benchmark_results.csv": "timestamp_like",
-            "results/benchmark_results.json": "timestamp_like",
-            "results/environment.json": "timestamp_like"
+            "results/benchmark_results.csv": [
+              "duration_like"
+            ],
+            "results/benchmark_results.json": [
+              "duration_like",
+              "timestamp_like"
+            ],
+            "results/environment.json": [
+              "timestamp_like"
+            ]
           },
           "command": "python3 benchmark.py --sizes small",
           "differing_files": [
@@ -533,19 +605,55 @@
             "results/environment.json"
           ],
           "exit_code": 1,
-          "files_compared": 9,
+          "files_compared": 10,
           "matches_committed_artifacts": false,
           "only_in_first_run": [],
           "only_in_second_run": [],
           "redirects": [],
+          "sample_differences": {
+            "results/benchmark_results.csv": [
+              {
+                "first_run": "small,import,baseline,0.001473358,0.004899494,0.005599822,5,5,809891,True",
+                "second_run": "small,import,baseline,0.001503007,0.001625078,0.001704607,5,5,810293,True"
+              },
+              {
+                "first_run": "small,link_check,baseline,0.000270697,0.000280578,0.000282717,5,5,809891,True",
+                "second_run": "small,link_check,baseline,0.000269604,0.000279442,0.000291637,5,5,810293,True"
+              },
+              {
+                "first_run": "small,statement_presence,baseline,0.000193174,0.000228301,0.000230509,5,5,809891,True",
+                "second_run": "small,statement_presence,baseline,0.000191075,0.000193876,0.000228783,5,5,810293,True"
+              }
+            ],
+            "results/benchmark_results.json": [
+              {
+                "first_run": "\"median\": 9.314000180893345e-06,",
+                "second_run": "\"median\": 9.084999874175992e-06,"
+              },
+              {
+                "first_run": "\"min\": 8.815999990474666e-06,",
+                "second_run": "\"min\": 8.77699994816794e-06,"
+              },
+              {
+                "first_run": "\"median\": 9.849400021266774e-05,",
+                "second_run": "\"median\": 9.09619998310518e-05,"
+              }
+            ],
+            "results/environment.json": [
+              {
+                "first_run": "\"measured_at_utc\": \"2026-09-19T14:26:22Z\",",
+                "second_run": "\"measured_at_utc\": \"2026-09-19T14:26:34Z\","
+              }
+            ]
+          },
           "verdict": "VARIES"
         },
         {
-          "artifacts_written": 206,
+          "artifacts_written": 207,
           "command": "python3 generate_collection.py --profile medium --out /tmp/c",
           "exit_code": 0,
           "exit_is_a_finding_signal": false,
-          "files_compared": 215,
+          "files_compared": 217,
           "matches_committed_artifacts": false,
           "redirects": [
             {
@@ -629,7 +737,10 @@
         },
         {
           "causes": {
-            "results/kit_scan_results.json": "unclassified"
+            "results/kit_scan_results.json": [
+              "absolute_path_like",
+              "duration_like"
+            ]
           },
           "command": "python3 scan_kit.py --revenue ../ --out results",
           "differing_files": [
@@ -643,6 +754,18 @@
           "only_in_second_run": [],
           "redirects": [],
           "references_outside_lane": true,
+          "sample_differences": {
+            "results/kit_scan_results.json": [
+              {
+                "first_run": "\"revenue_root\": \"/tmp/ra_a_clnph_lb\",",
+                "second_run": "\"revenue_root\": \"/tmp/repro_audit_second_operator_working_copy_b_w2uoi07u\","
+              },
+              {
+                "first_run": "\"scan_seconds\": 6.310001481324434e-07,",
+                "second_run": "\"scan_seconds\": 3.6600022212951444e-07,"
+              }
+            ]
+          },
           "verdict": "VARIES"
         },
         {
@@ -652,6 +775,136 @@
         }
       ],
       "lane": "uiowa_rfq_18649_capacity_scan",
+      "note": "",
+      "verdict": "VARIES"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 claim_audit.py --doc fixtures/exec_summary_BAD.md --register fixtures/register.json",
+          "exit_code": 1,
+          "exit_is_a_finding_signal": true,
+          "files_compared": 11,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 claim_audit.py --doc fixtures/exec_summary_GOOD.md --register fixtures/register.json",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 11,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest test_claim_audit -v",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python3 claim_audit.py --corpus <tree> --rules language",
+          "detail": "uses shell redirection or chaining, which this audit does not run through a shell",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_claim_audit",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "causes": {
+            "sample/claim_findings.json": [
+              "absolute_path_like"
+            ],
+            "sample/claim_findings.md": [
+              "absolute_path_like"
+            ]
+          },
+          "command": "python3 claim_guard.py --root ..",
+          "differing_files": [
+            "sample/claim_findings.json",
+            "sample/claim_findings.md"
+          ],
+          "exit_code": 0,
+          "files_compared": 12,
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "matches_committed_artifacts": false,
+          "only_in_first_run": [],
+          "only_in_second_run": [],
+          "redirects": [],
+          "references_outside_lane": true,
+          "sample_differences": {
+            "sample/claim_findings.json": [
+              {
+                "first_run": "\"root\": \"/tmp/ra_a_2a4gydzh\",",
+                "second_run": "\"root\": \"/tmp/repro_audit_second_operator_working_copy_b_bunwckmu\","
+              }
+            ],
+            "sample/claim_findings.md": [
+              {
+                "first_run": "Scanned `/tmp/ra_a_2a4gydzh` — **0 lanes, 0 files**.",
+                "second_run": "Scanned `/tmp/repro_audit_second_operator_working_copy_b_bunwckmu` — **0 lanes, 0 files**."
+              }
+            ]
+          },
+          "verdict": "VARIES"
+        },
+        {
+          "causes": {
+            "_audit_redirect/out/claim_findings.json": [
+              "absolute_path_like"
+            ],
+            "_audit_redirect/out/claim_findings.md": [
+              "absolute_path_like"
+            ]
+          },
+          "command": "python3 claim_guard.py --root .. --out /tmp/out",
+          "differing_files": [
+            "_audit_redirect/out/claim_findings.json",
+            "_audit_redirect/out/claim_findings.md"
+          ],
+          "exit_code": 0,
+          "files_compared": 15,
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "matches_committed_artifacts": false,
+          "only_in_first_run": [],
+          "only_in_second_run": [],
+          "redirects": [
+            {
+              "original": "/tmp/out",
+              "redirected_to": "_audit_redirect/out"
+            }
+          ],
+          "references_outside_lane": true,
+          "sample_differences": {
+            "_audit_redirect/out/claim_findings.json": [
+              {
+                "first_run": "\"root\": \"/tmp/ra_a_of8icfcg\",",
+                "second_run": "\"root\": \"/tmp/repro_audit_second_operator_working_copy_b_puszwpgy\","
+              }
+            ],
+            "_audit_redirect/out/claim_findings.md": [
+              {
+                "first_run": "Scanned `/tmp/ra_a_of8icfcg` — **0 lanes, 0 files**.",
+                "second_run": "Scanned `/tmp/repro_audit_second_operator_working_copy_b_puszwpgy` — **0 lanes, 0 files**."
+              }
+            ]
+          },
+          "verdict": "VARIES"
+        },
+        {
+          "command": "python3 -m unittest test_claim_guard -v",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_claim_guard",
       "note": "",
       "verdict": "VARIES"
     },
@@ -757,6 +1010,90 @@
       "lane": "uiowa_rfq_18649_deadline_continuity",
       "note": "",
       "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "command": "python3 -m unittest discover -v",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        },
+        {
+          "causes": {
+            "results/DEDUP_REPORT.md": [
+              "duration_like",
+              "timestamp_like"
+            ],
+            "results/dedup_results.csv": [
+              "duration_like"
+            ],
+            "results/dedup_results.json": [
+              "duration_like",
+              "timestamp_like"
+            ]
+          },
+          "command": "python3 bench_dedup.py",
+          "differing_files": [
+            "results/DEDUP_REPORT.md",
+            "results/dedup_results.csv",
+            "results/dedup_results.json"
+          ],
+          "exit_code": 0,
+          "files_compared": 7,
+          "matches_committed_artifacts": false,
+          "only_in_first_run": [],
+          "only_in_second_run": [],
+          "redirects": [],
+          "sample_differences": {
+            "results/DEDUP_REPORT.md": [
+              {
+                "first_run": "| measured_at_utc | 2026-09-19T14:26:46Z |",
+                "second_run": "| measured_at_utc | 2026-09-19T14:26:51Z |"
+              },
+              {
+                "first_run": "| 10 | 30 | 0.000010 | 0.000006 | 0.000006 | 0.000006 |",
+                "second_run": "| 10 | 30 | 0.000005 | 0.000006 | 0.000006 | 0.000006 |"
+              },
+              {
+                "first_run": "| 50 | 150 | 0.000069 | 0.000012 | 0.000014 | 0.000014 |",
+                "second_run": "| 50 | 150 | 0.000067 | 0.000012 | 0.000013 | 0.000014 |"
+              }
+            ],
+            "results/dedup_results.csv": [
+              {
+                "first_run": "10,30,list_scan,0.000009791,0.000010312,232,7",
+                "second_run": "10,30,list_scan,0.000005422,0.000010040,232,7"
+              },
+              {
+                "first_run": "10,30,dict_fromkeys,0.000006442,0.000006659,600,7",
+                "second_run": "10,30,dict_fromkeys,0.000006148,0.000006305,600,7"
+              },
+              {
+                "first_run": "10,30,set_aside,0.000005811,0.000005979,960,7",
+                "second_run": "10,30,set_aside,0.000005795,0.000005962,960,7"
+              }
+            ],
+            "results/dedup_results.json": [
+              {
+                "first_run": "\"speedup\": 3.7305855736395",
+                "second_run": "\"speedup\": 3.65296688250803"
+              },
+              {
+                "first_run": "\"speedup\": 3.284337817989285",
+                "second_run": "\"speedup\": 3.272520411190557"
+              },
+              {
+                "first_run": "\"speedup\": 3.5245848198117984",
+                "second_run": "\"speedup\": 3.387794308919893"
+              }
+            ]
+          },
+          "verdict": "VARIES"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_dedup_threshold",
+      "note": "",
+      "verdict": "VARIES"
     },
     {
       "commands": [],
@@ -890,7 +1227,7 @@
       "commands": [
         {
           "command": "python3 integrate.py",
-          "detail": "the documented command exited 2 and wrote nothing new: INTEGRATION ERROR: recommendation register not found at /tmp/ra_a_m9gtc26o/lane/fixtures/register.fallback.json",
+          "detail": "the documented command exited 2 and wrote nothing new: INTEGRATION ERROR: recommendation register not found at /tmp/ra_a_qg41k201/lane/fixtures/register.fallback.json",
           "owner_reason": "the command as documented did not run here",
           "probable_owner": "lane",
           "redirects": [],
@@ -903,11 +1240,23 @@
           "verdict": "SKIPPED"
         },
         {
+          "artifacts_written": 2,
+          "command": "python3 units.py --revenue-dir ..",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 24,
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "matches_committed_artifacts": false,
+          "redirects": [],
+          "references_outside_lane": true,
+          "verdict": "REPRODUCIBLE"
+        },
+        {
           "artifacts_written": 0,
           "command": "python3 check_contract.py --explain resource",
           "exit_code": 0,
           "exit_is_a_finding_signal": false,
-          "files_compared": 20,
+          "files_compared": 24,
           "matches_committed_artifacts": true,
           "redirects": [],
           "verdict": "REPRODUCIBLE"
@@ -978,57 +1327,182 @@
     {
       "commands": [
         {
+          "artifacts_written": 0,
+          "command": "python3 audit_kit.py fixtures",
+          "exit_code": 1,
+          "exit_is_a_finding_signal": true,
+          "files_compared": 21,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest -v test_exit_signals",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python3 audit_kit.py <path-to>/revenue --lane-prefix uiowa_rfq_18649_ --out evidence",
+          "detail": "uses shell redirection or chaining, which this audit does not run through a shell",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python3 wrap.py -- python3 some_lane/build_kit.py",
+          "detail": "the documented command exited 3 and wrote nothing new: python3: can't open file '/tmp/ra_a_f710y756/lane/some_lane/build_kit.py': [Errno 2] No such file or directory",
+          "owner_reason": "the command as documented did not run here",
+          "probable_owner": "lane",
+          "redirects": [],
+          "returncode": 3,
+          "verdict": "FAILED"
+        },
+        {
+          "command": "python3 wrap.py --rule exit_code -- python3 some_lane/build_kit.py",
+          "detail": "the documented command exited 1 and wrote nothing new: python3: can't open file '/tmp/ra_a_g3ogm6zx/lane/some_lane/build_kit.py': [Errno 2] No such file or directory",
+          "owner_reason": "the command as documented did not run here",
+          "probable_owner": "lane",
+          "redirects": [],
+          "returncode": 1,
+          "verdict": "FAILED"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 wrap.py --rule stdout_markers --marker FAIL -- python3 some_lane/build_kit.py",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 21,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_exit_signals",
+      "note": "",
+      "verdict": "FAILED"
+    },
+    {
+      "commands": [
+        {
           "causes": {
-            "examples/findings.json": "unclassified"
+            "examples/findings.json": [
+              "absolute_path_like"
+            ]
+          },
+          "command": "python3 export_safety.py scan --root .. --lane-prefix uiowa_rfq_18649_",
+          "differing_files": [
+            "examples/findings.json"
+          ],
+          "exit_code": 0,
+          "files_compared": 30,
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "matches_committed_artifacts": false,
+          "only_in_first_run": [],
+          "only_in_second_run": [],
+          "redirects": [],
+          "references_outside_lane": true,
+          "sample_differences": {
+            "examples/findings.json": [
+              {
+                "first_run": "\"root\": \"ra_a__yhrf5tl\",",
+                "second_run": "\"root\": \"repro_audit_second_operator_working_copy_b_7re82sld\","
+              }
+            ]
+          },
+          "verdict": "VARIES"
+        },
+        {
+          "artifacts_written": 3,
+          "command": "python3 json_safety.py scan --root .. --lane-prefix uiowa_rfq_18649_",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 30,
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "matches_committed_artifacts": false,
+          "redirects": [],
+          "references_outside_lane": true,
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "causes": {
+            "examples/findings.json": [
+              "absolute_path_like"
+            ]
           },
           "command": "python3 export_safety.py scan --root ..",
           "differing_files": [
             "examples/findings.json"
           ],
           "exit_code": 0,
-          "files_compared": 14,
+          "files_compared": 30,
           "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
           "matches_committed_artifacts": false,
           "only_in_first_run": [],
           "only_in_second_run": [],
           "redirects": [],
           "references_outside_lane": true,
+          "sample_differences": {
+            "examples/findings.json": [
+              {
+                "first_run": "\"root\": \"ra_a_y745xi35\",",
+                "second_run": "\"root\": \"repro_audit_second_operator_working_copy_b_k2o0u4d8\","
+              }
+            ]
+          },
           "verdict": "VARIES"
         },
         {
           "causes": {
-            "examples/findings.json": "unclassified"
+            "examples/findings.json": [
+              "absolute_path_like"
+            ]
           },
           "command": "python3 export_safety.py scan --root .. --lane uiowa_rfq_18649_workbench",
           "differing_files": [
             "examples/findings.json"
           ],
           "exit_code": 0,
-          "files_compared": 14,
+          "files_compared": 30,
           "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
           "matches_committed_artifacts": false,
           "only_in_first_run": [],
           "only_in_second_run": [],
           "redirects": [],
           "references_outside_lane": true,
+          "sample_differences": {
+            "examples/findings.json": [
+              {
+                "first_run": "\"root\": \"ra_a_3x8dpfi8\",",
+                "second_run": "\"root\": \"repro_audit_second_operator_working_copy_b_gqi3zrje\","
+              }
+            ]
+          },
           "verdict": "VARIES"
         },
         {
           "causes": {
-            "examples/findings.json": "unclassified"
+            "examples/findings.json": [
+              "absolute_path_like"
+            ]
           },
           "command": "python3 export_safety.py scan --root .. --skip-lane uiowa_rfq_18649_export_safety",
           "differing_files": [
             "examples/findings.json"
           ],
           "exit_code": 0,
-          "files_compared": 14,
+          "files_compared": 30,
           "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
           "matches_committed_artifacts": false,
           "only_in_first_run": [],
           "only_in_second_run": [],
           "redirects": [],
           "references_outside_lane": true,
+          "sample_differences": {
+            "examples/findings.json": [
+              {
+                "first_run": "\"root\": \"ra_a_ly8cbgcg\",",
+                "second_run": "\"root\": \"repro_audit_second_operator_working_copy_b_oy6wjjc3\","
+              }
+            ]
+          },
           "verdict": "VARIES"
         },
         {
@@ -1036,7 +1510,7 @@
           "command": "python3 export_safety.py scan --root fixtures --include-self-fixtures --out /tmp/fx",
           "exit_code": 0,
           "exit_is_a_finding_signal": false,
-          "files_compared": 17,
+          "files_compared": 33,
           "matches_committed_artifacts": false,
           "redirects": [
             {
@@ -1048,26 +1522,76 @@
         },
         {
           "causes": {
-            "examples/findings.json": "unclassified"
+            "examples/findings.json": [
+              "absolute_path_like"
+            ]
           },
           "command": "python3 export_safety.py scan --root .. --fail-on HIGH",
           "differing_files": [
             "examples/findings.json"
           ],
           "exit_code": 0,
-          "files_compared": 14,
+          "files_compared": 30,
           "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
           "matches_committed_artifacts": false,
           "only_in_first_run": [],
           "only_in_second_run": [],
           "redirects": [],
           "references_outside_lane": true,
+          "sample_differences": {
+            "examples/findings.json": [
+              {
+                "first_run": "\"root\": \"ra_a_s1tsn3ku\",",
+                "second_run": "\"root\": \"repro_audit_second_operator_working_copy_b_u1eiccn_\","
+              }
+            ]
+          },
           "verdict": "VARIES"
         },
         {
           "command": "python3 -m unittest -v",
           "detail": "test suite, not an artifact command",
           "verdict": "SKIPPED"
+        },
+        {
+          "causes": {
+            "examples/findings.json": [
+              "absolute_path_like"
+            ]
+          },
+          "command": "python3 export_safety.py scan --root .. --lane-prefix uiowa_rfq_18649_ --skip-lane uiowa_rfq_18649_export_safety",
+          "differing_files": [
+            "examples/findings.json"
+          ],
+          "exit_code": 0,
+          "files_compared": 30,
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "matches_committed_artifacts": false,
+          "only_in_first_run": [],
+          "only_in_second_run": [],
+          "redirects": [],
+          "references_outside_lane": true,
+          "sample_differences": {
+            "examples/findings.json": [
+              {
+                "first_run": "\"root\": \"ra_a_nq53kjhm\",",
+                "second_run": "\"root\": \"repro_audit_second_operator_working_copy_b_xq0c7g05\","
+              }
+            ]
+          },
+          "verdict": "VARIES"
+        },
+        {
+          "artifacts_written": 3,
+          "command": "python3 json_safety.py scan --root .. --lane-prefix uiowa_rfq_18649_ --skip-lane uiowa_rfq_18649_export_safety",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 30,
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "matches_committed_artifacts": false,
+          "redirects": [],
+          "references_outside_lane": true,
+          "verdict": "REPRODUCIBLE"
         }
       ],
       "lane": "uiowa_rfq_18649_export_safety",
@@ -1078,7 +1602,7 @@
       "commands": [
         {
           "command": "python3 fs_safety.py --root /path/to/revenue --lane-prefix uiowa_rfq_18649 --output-dir examples/live_snapshot",
-          "detail": "the documented command exited 2 and wrote nothing new: ERROR: not a directory: /tmp/ra_a_dr131emz/lane/_audit_redirect/revenue",
+          "detail": "the documented command exited 2 and wrote nothing new: ERROR: not a directory: /tmp/ra_a_d7lsqjo_/lane/_audit_redirect/revenue",
           "owner_reason": "an absolute path in the documented command was redirected into the copy and the command expected the original shape; re-run it by hand to judge",
           "probable_owner": "harness",
           "redirects": [
@@ -1134,6 +1658,43 @@
         }
       ],
       "lane": "uiowa_rfq_18649_handoff",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 importsafety.py reproduce",
+          "exit_code": 1,
+          "exit_is_a_finding_signal": true,
+          "files_compared": 8,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 importsafety.py scan <kit-root>",
+          "detail": "uses shell redirection or chaining, which this audit does not run through a shell",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python3 importsafety.py scan <kit-root> --json",
+          "detail": "uses shell redirection or chaining, which this audit does not run through a shell",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python3 importsafety.py reproduce <laneA> <laneB> <module>",
+          "detail": "uses shell redirection or chaining, which this audit does not run through a shell",
+          "verdict": "SKIPPED"
+        },
+        {
+          "command": "python3 -m unittest test_import_safety.py",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_import_safety",
       "note": "",
       "verdict": "REPRODUCIBLE"
     },
@@ -1208,6 +1769,59 @@
       "lane": "uiowa_rfq_18649_integration",
       "note": "no README.md, so no documented command to run; not assessed",
       "verdict": "UNKNOWN"
+    },
+    {
+      "commands": [
+        {
+          "command": "python3 label_scan.py --root /path/to/revenue --lane-prefix uiowa_rfq_18649 --output-dir examples/live_snapshot",
+          "detail": "the documented command exited 2 and wrote nothing new: ERROR: not a directory: /tmp/ra_a_mc2xj9v8/lane/_audit_redirect/revenue",
+          "owner_reason": "an absolute path in the documented command was redirected into the copy and the command expected the original shape; re-run it by hand to judge",
+          "probable_owner": "harness",
+          "redirects": [
+            {
+              "original": "/path/to/revenue",
+              "redirected_to": "_audit_redirect/revenue"
+            }
+          ],
+          "returncode": 2,
+          "verdict": "FAILED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_labeling_integrity",
+      "note": "",
+      "verdict": "FAILED"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 render_scale.py",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 9,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 render_scale.py --check",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 9,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest test_anchors",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_maturity_anchors",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
     },
     {
       "commands": [
@@ -1298,8 +1912,12 @@
         },
         {
           "causes": {
-            "sample/component_status.json": "unclassified",
-            "sample/verification_log.md": "unclassified"
+            "sample/component_status.json": [
+              "absolute_path_like"
+            ],
+            "sample/verification_log.md": [
+              "absolute_path_like"
+            ]
           },
           "command": "python3 verify_kit.py --root ../ --timeout 90 --out-json sample/component_status.json --out-csv sample/component_status.csv --out-md sample/verification_log.md",
           "differing_files": [
@@ -1314,6 +1932,20 @@
           "only_in_second_run": [],
           "redirects": [],
           "references_outside_lane": true,
+          "sample_differences": {
+            "sample/component_status.json": [
+              {
+                "first_run": "\"survey_root\": \"/tmp/ra_a_e33kweo8\",",
+                "second_run": "\"survey_root\": \"/tmp/repro_audit_second_operator_working_copy_b_z70xky7k\","
+              }
+            ],
+            "sample/verification_log.md": [
+              {
+                "first_run": "- survey root: `/tmp/ra_a_e33kweo8`",
+                "second_run": "- survey root: `/tmp/repro_audit_second_operator_working_copy_b_z70xky7k`"
+              }
+            ]
+          },
           "verdict": "VARIES"
         },
         {
@@ -1328,8 +1960,12 @@
         },
         {
           "causes": {
-            "COMMAND_INDEX.md": "unclassified",
-            "sample/command_index.json": "unclassified"
+            "COMMAND_INDEX.md": [
+              "absolute_path_like"
+            ],
+            "sample/command_index.json": [
+              "absolute_path_like"
+            ]
           },
           "command": "python3 command_index.py --root ../ --out COMMAND_INDEX.md --out-json sample/command_index.json",
           "differing_files": [
@@ -1344,6 +1980,20 @@
           "only_in_second_run": [],
           "redirects": [],
           "references_outside_lane": true,
+          "sample_differences": {
+            "COMMAND_INDEX.md": [
+              {
+                "first_run": "- survey root: `/tmp/ra_a_pdkb1jv1`",
+                "second_run": "- survey root: `/tmp/repro_audit_second_operator_working_copy_b_86fwbwzf`"
+              }
+            ],
+            "sample/command_index.json": [
+              {
+                "first_run": "\"survey_root\": \"/tmp/ra_a_pdkb1jv1\",",
+                "second_run": "\"survey_root\": \"/tmp/repro_audit_second_operator_working_copy_b_86fwbwzf\","
+              }
+            ]
+          },
           "verdict": "VARIES"
         }
       ],
@@ -2049,6 +2699,48 @@
       "commands": [
         {
           "artifacts_written": 0,
+          "command": "python3 roadmap_coherence.py check --report data/coherent-report.json --plan data/coherent-plan.json --deck data/coherent-deck.json",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 15,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 roadmap_coherence.py report --report data/coherent-report.json --plan data/coherent-plan.json --deck data/coherent-deck.json --outdir examples",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 15,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 roadmap_coherence.py rules",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 15,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest -v test_roadmap_coherence",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_roadmap_coherence",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
           "command": "python3 depcheck.py --outdir out_consistent",
           "exit_code": 0,
           "exit_is_a_finding_signal": false,
@@ -2091,7 +2783,7 @@
       "commands": [
         {
           "command": "python3 run_sweep.py --root /path/to/repo --observed-on 2026-09-19 --outdir out",
-          "detail": "the documented command exited 2 and wrote nothing new: error: root /tmp/ra_a_1d1vfdeg/lane/_audit_redirect/repo does not exist",
+          "detail": "the documented command exited 2 and wrote nothing new: error: root /tmp/ra_a_sqfgmy55/lane/_audit_redirect/repo does not exist",
           "owner_reason": "an absolute path in the documented command was redirected into the copy and the command expected the original shape; re-run it by hand to judge",
           "probable_owner": "harness",
           "redirects": [
@@ -2112,6 +2804,48 @@
       "lane": "uiowa_rfq_18649_run_sweep",
       "note": "",
       "verdict": "FAILED"
+    },
+    {
+      "commands": [
+        {
+          "artifacts_written": 0,
+          "command": "python3 check_soundness.py --measures fixtures/measures_UNSOUND.json",
+          "exit_code": 1,
+          "exit_is_a_finding_signal": true,
+          "files_compared": 10,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 check_soundness.py --measures fixtures/measures_SOUND.json",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 10,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 -m unittest test_soundness -v",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 check_soundness.py --measures fixtures/measures_SOUND.json --min-denominator 200",
+          "exit_code": 1,
+          "exit_is_a_finding_signal": true,
+          "files_compared": 10,
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "verdict": "REPRODUCIBLE"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_sample_soundness",
+      "note": "",
+      "verdict": "REPRODUCIBLE"
     },
     {
       "commands": [
@@ -2260,6 +2994,51 @@
     {
       "commands": [
         {
+          "artifacts_written": 3,
+          "command": "python3 testproof.py --root .. --outdir findings",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 12,
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "matches_committed_artifacts": false,
+          "redirects": [],
+          "references_outside_lane": true,
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "artifacts_written": 0,
+          "command": "python3 testproof.py --root .. --lane uiowa_rfq_18649_ai_use_inventory --print",
+          "exit_code": 0,
+          "exit_is_a_finding_signal": false,
+          "files_compared": 12,
+          "isolation_note": "This command reads above its own directory. Each lane is copied in isolation, so a sibling lane it expects is not present; read this result as an isolated run.",
+          "matches_committed_artifacts": true,
+          "redirects": [],
+          "references_outside_lane": true,
+          "verdict": "REPRODUCIBLE"
+        },
+        {
+          "command": "python3 testproof.py --root fixtures --include-fixtures --print",
+          "detail": "the documented command exited 1 and wrote nothing new: lanes=2 test_files=4 test_methods=9 assertions=7 defects=3 review=4",
+          "owner_reason": "the command as documented did not run here",
+          "probable_owner": "lane",
+          "redirects": [],
+          "returncode": 1,
+          "verdict": "FAILED"
+        },
+        {
+          "command": "python3 -m unittest -v test_testproof",
+          "detail": "test suite, not an artifact command",
+          "verdict": "SKIPPED"
+        }
+      ],
+      "lane": "uiowa_rfq_18649_test_proof_audit",
+      "note": "",
+      "verdict": "FAILED"
+    },
+    {
+      "commands": [
+        {
           "artifacts_written": 0,
           "command": "python3 trace_check.py bundle",
           "exit_code": 0,
@@ -2336,7 +3115,7 @@
         },
         {
           "command": "python3 audit_self_sealing.py /path/to/revenue",
-          "detail": "the documented command exited 1 and wrote nothing new: FileNotFoundError: [Errno 2] No such file or directory: '/tmp/ra_a_bymk1s9o/lane/_audit_redirect/revenue'",
+          "detail": "the documented command exited 1 and wrote nothing new: FileNotFoundError: [Errno 2] No such file or directory: '/tmp/ra_a_9xzu1aqg/lane/_audit_redirect/revenue'",
           "owner_reason": "an absolute path in the documented command was redirected into the copy and the command expected the original shape; re-run it by hand to judge",
           "probable_owner": "harness",
           "redirects": [
@@ -2355,7 +3134,7 @@
         },
         {
           "command": "python3 audit_self_sealing.py /path/to/revenue --format json",
-          "detail": "the documented command exited 1 and wrote nothing new: FileNotFoundError: [Errno 2] No such file or directory: '/tmp/ra_a_ior07ze6/lane/_audit_redirect/revenue'",
+          "detail": "the documented command exited 1 and wrote nothing new: FileNotFoundError: [Errno 2] No such file or directory: '/tmp/ra_a_f6zziygl/lane/_audit_redirect/revenue'",
           "owner_reason": "an absolute path in the documented command was redirected into the copy and the command expected the original shape; re-run it by hand to judge",
           "probable_owner": "harness",
           "redirects": [
@@ -2369,7 +3148,7 @@
         },
         {
           "command": "python3 audit_assertions.py /path/to/revenue",
-          "detail": "the documented command exited 1 and wrote nothing new: FileNotFoundError: [Errno 2] No such file or directory: '/tmp/ra_a_ifj6bos9/lane/_audit_redirect/revenue'",
+          "detail": "the documented command exited 1 and wrote nothing new: FileNotFoundError: [Errno 2] No such file or directory: '/tmp/ra_a_bna3yz22/lane/_audit_redirect/revenue'",
           "owner_reason": "an absolute path in the documented command was redirected into the copy and the command expected the original shape; re-run it by hand to judge",
           "probable_owner": "harness",
           "redirects": [
@@ -2383,7 +3162,7 @@
         },
         {
           "command": "python3 audit_assertions.py /path/to/revenue --format json",
-          "detail": "the documented command exited 1 and wrote nothing new: FileNotFoundError: [Errno 2] No such file or directory: '/tmp/ra_a_m7xeime4/lane/_audit_redirect/revenue'",
+          "detail": "the documented command exited 1 and wrote nothing new: FileNotFoundError: [Errno 2] No such file or directory: '/tmp/ra_a_htrsjpff/lane/_audit_redirect/revenue'",
           "owner_reason": "an absolute path in the documented command was redirected into the copy and the command expected the original shape; re-run it by hand to judge",
           "probable_owner": "harness",
           "redirects": [
@@ -2605,7 +3384,7 @@
         },
         {
           "command": "python compiler.py verify /tmp/uiowa-report.json",
-          "detail": "the documented command exited 2 and wrote nothing new: ERROR: cannot open input safely: /tmp/ra_a_0f9ut3fe/lane/_audit_redirect/uiowa-report.json: No such file or directory",
+          "detail": "the documented command exited 2 and wrote nothing new: ERROR: cannot open input safely: /tmp/ra_a_rwqcgyg7/lane/_audit_redirect/uiowa-report.json: No such file or directory",
           "owner_reason": "an absolute path in the documented command was redirected into the copy and the command expected the original shape; re-run it by hand to judge",
           "probable_owner": "harness",
           "redirects": [
@@ -2619,7 +3398,7 @@
         },
         {
           "command": "python compiler.py render /tmp/uiowa-report.json /tmp/uiowa-report.md",
-          "detail": "the documented command exited 2 and wrote nothing new: ERROR: cannot open input safely: /tmp/ra_a_n9dzfwiw/lane/_audit_redirect/uiowa-report.json: No such file or directory",
+          "detail": "the documented command exited 2 and wrote nothing new: ERROR: cannot open input safely: /tmp/ra_a_zjw87ccd/lane/_audit_redirect/uiowa-report.json: No such file or directory",
           "owner_reason": "an absolute path in the documented command was redirected into the copy and the command expected the original shape; re-run it by hand to judge",
           "probable_owner": "harness",
           "redirects": [
@@ -2651,7 +3430,7 @@
       "verdict": "FAILED"
     }
   ],
-  "lanes_audited": 61,
+  "lanes_audited": 71,
   "method": "Each command documented in a lane's own README is run twice, in separate processes, with PYTHONHASHSEED=0 and 1, on two private copies at two different absolute paths. The full resulting trees are byte-compared. Nothing runs against the tree itself.",
   "pattern": "uiowa_rfq_18649_*",
   "unknown_notice": "UNKNOWN means no documented command could be run. It is not a pass, and it is not a finding against the lane."

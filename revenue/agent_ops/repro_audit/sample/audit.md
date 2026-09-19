@@ -6,10 +6,10 @@
 
 | verdict | count |
 |---|---|
-| `FAILED` | 13 |
-| `REPRODUCIBLE` | 36 |
+| `FAILED` | 16 |
+| `REPRODUCIBLE` | 41 |
 | `UNKNOWN` | 8 |
-| `VARIES` | 4 |
+| `VARIES` | 6 |
 
 | lane | verdict | detail |
 |---|---|---|
@@ -25,28 +25,35 @@
 | `uiowa_rfq_18649_bid_pack` | **REPRODUCIBLE** | 36 files byte-identical |
 | `uiowa_rfq_18649_build_board` | **UNKNOWN** | no README.md, so no documented command to run; not assessed |
 | `uiowa_rfq_18649_capability_appendix` | **REPRODUCIBLE** | 15 files byte-identical |
-| `uiowa_rfq_18649_capacity_benchmark` | **VARIES** | differs: `results/BENCHMARK_REPORT.md`, `results/benchmark_results.csv`, `results/benchmark_results.json`, `results/environment.json` (timestamp_like) |
+| `uiowa_rfq_18649_capacity_benchmark` | **VARIES** | differs: `results/BENCHMARK_REPORT.md`, `results/benchmark_results.csv`, `results/benchmark_results.json`, `results/environment.json` (duration_like, timestamp_like) |
 | `uiowa_rfq_18649_capacity_feasibility` | **REPRODUCIBLE** | 9 files byte-identical; committed artifacts still match the code |
-| `uiowa_rfq_18649_capacity_scan` | **VARIES** | differs: `results/kit_scan_results.json` (unclassified) |
+| `uiowa_rfq_18649_capacity_scan` | **VARIES** | differs: `results/kit_scan_results.json` (absolute_path_like, duration_like) |
+| `uiowa_rfq_18649_claim_audit` | **REPRODUCIBLE** | 11 files byte-identical; committed artifacts still match the code |
+| `uiowa_rfq_18649_claim_guard` | **VARIES** | differs: `sample/claim_findings.json`, `sample/claim_findings.md` (absolute_path_like) |
 | `uiowa_rfq_18649_closeout` | **REPRODUCIBLE** | 15 files byte-identical |
 | `uiowa_rfq_18649_contractor_transition` | **FAILED** | the documented command exited 1 and wrote nothing new: items=6 completed=2 unresolved=2 no_evidence=2 closed=False issues=0 |
 | `uiowa_rfq_18649_deadline_continuity` | **REPRODUCIBLE** | 13 files byte-identical |
+| `uiowa_rfq_18649_dedup_threshold` | **VARIES** | differs: `results/DEDUP_REPORT.md`, `results/dedup_results.csv`, `results/dedup_results.json` (duration_like, timestamp_like) |
 | `uiowa_rfq_18649_delivery_metrics` | **UNKNOWN** | no README.md, so no documented command to run; not assessed |
 | `uiowa_rfq_18649_delivery_scan` | **FAILED** | the documented command exited 1 and wrote nothing new: This screen reuses the UIOWA-082 guard rather than reimplementing it. |
 | `uiowa_rfq_18649_doc_usability` | **UNKNOWN** | README documents no runnable command; not assessed. This is not a pass. |
 | `uiowa_rfq_18649_document_extraction` | **FAILED** | the documented command exited 1 and wrote nothing new: pyo3_runtime.PanicException: Python API call failed |
-| `uiowa_rfq_18649_economics_resource_adapters` | **FAILED** | the documented command exited 2 and wrote nothing new: INTEGRATION ERROR: recommendation register not found at /tmp/ra_a_m9gtc26o/lane/fixtures/register.fallback.json |
+| `uiowa_rfq_18649_economics_resource_adapters` | **FAILED** | the documented command exited 2 and wrote nothing new: INTEGRATION ERROR: recommendation register not found at /tmp/ra_a_qg41k201/lane/fixtures/register.fallback.json |
 | `uiowa_rfq_18649_exec_summary` | **REPRODUCIBLE** | 13 files byte-identical; committed artifacts still match the code |
-| `uiowa_rfq_18649_export_safety` | **VARIES** | differs: `examples/findings.json` (unclassified) |
-| `uiowa_rfq_18649_filesystem_safety` | **FAILED** | the documented command exited 2 and wrote nothing new: ERROR: not a directory: /tmp/ra_a_dr131emz/lane/_audit_redirect/revenue |
+| `uiowa_rfq_18649_exit_signals` | **FAILED** | the documented command exited 3 and wrote nothing new: python3: can't open file '/tmp/ra_a_f710y756/lane/some_lane/build_kit.py': [Errno 2] No such file or directory |
+| `uiowa_rfq_18649_export_safety` | **VARIES** | differs: `examples/findings.json` (absolute_path_like) |
+| `uiowa_rfq_18649_filesystem_safety` | **FAILED** | the documented command exited 2 and wrote nothing new: ERROR: not a directory: /tmp/ra_a_d7lsqjo_/lane/_audit_redirect/revenue |
 | `uiowa_rfq_18649_handoff` | **REPRODUCIBLE** | 7 files byte-identical; committed artifacts still match the code |
+| `uiowa_rfq_18649_import_safety` | **REPRODUCIBLE** | 8 files byte-identical; committed artifacts still match the code |
 | `uiowa_rfq_18649_incident_learning` | **UNKNOWN** | every documented command was skipped; not assessed. This is not a pass. |
 | `uiowa_rfq_18649_intake_rehearsal` | **REPRODUCIBLE** | 25 files byte-identical; committed artifacts still match the code |
 | `uiowa_rfq_18649_integration` | **UNKNOWN** | no README.md, so no documented command to run; not assessed |
+| `uiowa_rfq_18649_labeling_integrity` | **FAILED** | the documented command exited 2 and wrote nothing new: ERROR: not a directory: /tmp/ra_a_mc2xj9v8/lane/_audit_redirect/revenue |
+| `uiowa_rfq_18649_maturity_anchors` | **REPRODUCIBLE** | 9 files byte-identical; committed artifacts still match the code |
 | `uiowa_rfq_18649_milestone_packets` | **REPRODUCIBLE** | 32 files byte-identical; committed artifacts still match the code |
 | `uiowa_rfq_18649_mobilization` | **UNKNOWN** | README documents no runnable command; not assessed. This is not a pass. |
 | `uiowa_rfq_18649_observability` | **REPRODUCIBLE** | 5 files byte-identical; committed artifacts still match the code |
-| `uiowa_rfq_18649_operator_handoff` | **VARIES** | differs: `sample/component_status.json`, `sample/verification_log.md` (unclassified) |
+| `uiowa_rfq_18649_operator_handoff` | **VARIES** | differs: `sample/component_status.json`, `sample/verification_log.md` (absolute_path_like) |
 | `uiowa_rfq_18649_outcome_measurement` | **REPRODUCIBLE** | 7 files byte-identical; committed artifacts still match the code |
 | `uiowa_rfq_18649_output_agreement` | **REPRODUCIBLE** | 48 files byte-identical; committed artifacts still match the code |
 | `uiowa_rfq_18649_print_pagination` | **REPRODUCIBLE** | 24 files byte-identical; committed artifacts still match the code |
@@ -60,20 +67,23 @@
 | `uiowa_rfq_18649_release_recovery_case` | **REPRODUCIBLE** | 19 files byte-identical; committed artifacts still match the code |
 | `uiowa_rfq_18649_report_structure` | **FAILED** | the documented command exited 1 and wrote nothing new: FileNotFoundError: [Errno 2] No such file or directory: 'path/to/draft.md' |
 | `uiowa_rfq_18649_report_visuals` | **REPRODUCIBLE** | 37 files byte-identical; committed artifacts still match the code |
+| `uiowa_rfq_18649_roadmap_coherence` | **REPRODUCIBLE** | 15 files byte-identical; committed artifacts still match the code |
 | `uiowa_rfq_18649_roadmap_dependencies` | **REPRODUCIBLE** | 16 files byte-identical; committed artifacts still match the code |
-| `uiowa_rfq_18649_run_sweep` | **FAILED** | the documented command exited 2 and wrote nothing new: error: root /tmp/ra_a_1d1vfdeg/lane/_audit_redirect/repo does not exist |
+| `uiowa_rfq_18649_run_sweep` | **FAILED** | the documented command exited 2 and wrote nothing new: error: root /tmp/ra_a_sqfgmy55/lane/_audit_redirect/repo does not exist |
+| `uiowa_rfq_18649_sample_soundness` | **REPRODUCIBLE** | 10 files byte-identical; committed artifacts still match the code |
 | `uiowa_rfq_18649_scope_change` | **REPRODUCIBLE** | 8 files byte-identical; committed artifacts still match the code |
 | `uiowa_rfq_18649_secure_guidance` | **REPRODUCIBLE** | 7 files byte-identical; committed artifacts still match the code |
 | `uiowa_rfq_18649_security_event_review` | **REPRODUCIBLE** | 8 files byte-identical |
 | `uiowa_rfq_18649_synthetic_collection` | **UNKNOWN** | README documents no runnable command; not assessed. This is not a pass. |
 | `uiowa_rfq_18649_test_data_readiness` | **REPRODUCIBLE** | 10 files byte-identical; committed artifacts still match the code |
-| `uiowa_rfq_18649_traceability` | **FAILED** | the documented command exited 1 and wrote nothing new: FileNotFoundError: [Errno 2] No such file or directory: '/tmp/ra_a_bymk1s9o/lane/_audit_redirect/revenue' |
+| `uiowa_rfq_18649_test_proof_audit` | **FAILED** | the documented command exited 1 and wrote nothing new: lanes=2 test_files=4 test_methods=9 assertions=7 defects=3 review=4 |
+| `uiowa_rfq_18649_traceability` | **FAILED** | the documented command exited 1 and wrote nothing new: FileNotFoundError: [Errno 2] No such file or directory: '/tmp/ra_a_9xzu1aqg/lane/_audit_redirect/revenue' |
 | `uiowa_rfq_18649_traceability_rehearsal` | **REPRODUCIBLE** | 8 files byte-identical; committed artifacts still match the code |
 | `uiowa_rfq_18649_uncertainty_lint` | **REPRODUCIBLE** | 5 files byte-identical; committed artifacts still match the code |
 | `uiowa_rfq_18649_unknown_propagation` | **REPRODUCIBLE** | 11 files byte-identical; committed artifacts still match the code |
 | `uiowa_rfq_18649_vocabulary_crosswalk` | **FAILED** | the documented command exited 2 and wrote nothing new: FILE NOT FOUND: ../uiowa_rfq_18649_intake_rehearsal/artifacts/assessment_matrix.csv |
 | `uiowa_rfq_18649_workbench` | **FAILED** | the documented command exited 1 and wrote nothing new: ModuleNotFoundError: No module named 'playwright' |
-| `uiowa_rfq_18649_workshare` | **FAILED** | the documented command exited 2 and wrote nothing new: ERROR: cannot open input safely: /tmp/ra_a_0f9ut3fe/lane/_audit_redirect/uiowa-report.json: No such file or directory |
+| `uiowa_rfq_18649_workshare` | **FAILED** | the documented command exited 2 and wrote nothing new: ERROR: cannot open input safely: /tmp/ra_a_rwqcgyg7/lane/_audit_redirect/uiowa-report.json: No such file or directory |
 
 ## Commands run
 
@@ -146,6 +156,7 @@
 - `python3 bid_pack.py --manifest fixtures/manifest.json --out sample_output` → REPRODUCIBLE
 - `python3 bid_pack.py --manifest fixtures/manifest.json --out /tmp/x --strict` → REPRODUCIBLE
 - `python3 packcheck.py sample_output/proposal.pdf sample_output/proposal.docx` → REPRODUCIBLE
+- `python3 packcheck.py --sweep <directory>` → SKIPPED — uses shell redirection or chaining, which this audit does not run through a shell
 - `python3 -m unittest test_bid_pack test_packcheck -v` → SKIPPED — test suite, not an artifact command
 
 **`uiowa_rfq_18649_capability_appendix`**
@@ -175,6 +186,19 @@
 - `python3 scan_kit.py --revenue ../ --out results` → VARIES
 - `python3 scan_hotspots.py <any-directory>` → SKIPPED — uses shell redirection or chaining, which this audit does not run through a shell
 
+**`uiowa_rfq_18649_claim_audit`**
+
+- `python3 claim_audit.py --doc fixtures/exec_summary_BAD.md --register fixtures/register.json` → REPRODUCIBLE
+- `python3 claim_audit.py --doc fixtures/exec_summary_GOOD.md --register fixtures/register.json` → REPRODUCIBLE
+- `python3 -m unittest test_claim_audit -v` → SKIPPED — test suite, not an artifact command
+- `python3 claim_audit.py --corpus <tree> --rules language` → SKIPPED — uses shell redirection or chaining, which this audit does not run through a shell
+
+**`uiowa_rfq_18649_claim_guard`**
+
+- `python3 claim_guard.py --root ..` → VARIES
+- `python3 claim_guard.py --root .. --out /tmp/out` → VARIES
+- `python3 -m unittest test_claim_guard -v` → SKIPPED — test suite, not an artifact command
+
 **`uiowa_rfq_18649_closeout`**
 
 - `python -m unittest -v test_closeout.py` → SKIPPED — test suite, not an artifact command
@@ -192,6 +216,11 @@
 - `python3 continuity.py --input fixtures/ris_deadline_scenario.json --outdir out` → REPRODUCIBLE
 - `python3 continuity.py --input fixtures/ris_deadline_scenario.json --print` → REPRODUCIBLE
 - `python3 -m unittest -v test_continuity` → SKIPPED — test suite, not an artifact command
+
+**`uiowa_rfq_18649_dedup_threshold`**
+
+- `python3 -m unittest discover -v` → SKIPPED — test suite, not an artifact command
+- `python3 bench_dedup.py` → VARIES
 
 **`uiowa_rfq_18649_delivery_scan`**
 
@@ -214,8 +243,9 @@
 
 **`uiowa_rfq_18649_economics_resource_adapters`**
 
-- `python3 integrate.py` → FAILED — the documented command exited 2 and wrote nothing new: INTEGRATION ERROR: recommendation register not found at /tmp/ra_a_m9gtc26o/lane/fixtures/register.fallback.json
+- `python3 integrate.py` → FAILED — the documented command exited 2 and wrote nothing new: INTEGRATION ERROR: recommendation register not found at /tmp/ra_a_qg41k201/lane/fixtures/register.fallback.json
 - `python3 -m unittest discover -p "test_*.py"` → SKIPPED — test suite, not an artifact command
+- `python3 units.py --revenue-dir ..` → REPRODUCIBLE
 - `python3 check_contract.py --explain resource` → REPRODUCIBLE
 - `python3 check_contract.py --resource your_086_output.json` → FAILED — the documented command exited 2 and wrote nothing new: UNUSABLE: your_086_output.json not found
 - `python3 check_contract.py --economics your_078_output.json` → FAILED — the documented command exited 2 and wrote nothing new: UNUSABLE: your_078_output.json not found
@@ -227,18 +257,31 @@
 - `python3 build_summary.py` → REPRODUCIBLE
 - `python3 -m unittest -v test_exec_summary` → SKIPPED — test suite, not an artifact command
 
+**`uiowa_rfq_18649_exit_signals`**
+
+- `python3 audit_kit.py fixtures` → REPRODUCIBLE
+- `python3 -m unittest -v test_exit_signals` → SKIPPED — test suite, not an artifact command
+- `python3 audit_kit.py <path-to>/revenue --lane-prefix uiowa_rfq_18649_ --out evidence` → SKIPPED — uses shell redirection or chaining, which this audit does not run through a shell
+- `python3 wrap.py -- python3 some_lane/build_kit.py` → FAILED — the documented command exited 3 and wrote nothing new: python3: can't open file '/tmp/ra_a_f710y756/lane/some_lane/build_kit.py': [Errno 2] No such file or directory
+- `python3 wrap.py --rule exit_code -- python3 some_lane/build_kit.py` → FAILED — the documented command exited 1 and wrote nothing new: python3: can't open file '/tmp/ra_a_g3ogm6zx/lane/some_lane/build_kit.py': [Errno 2] No such file or directory
+- `python3 wrap.py --rule stdout_markers --marker FAIL -- python3 some_lane/build_kit.py` → REPRODUCIBLE
+
 **`uiowa_rfq_18649_export_safety`**
 
+- `python3 export_safety.py scan --root .. --lane-prefix uiowa_rfq_18649_` → VARIES
+- `python3 json_safety.py scan --root .. --lane-prefix uiowa_rfq_18649_` → REPRODUCIBLE
 - `python3 export_safety.py scan --root ..` → VARIES
 - `python3 export_safety.py scan --root .. --lane uiowa_rfq_18649_workbench` → VARIES
 - `python3 export_safety.py scan --root .. --skip-lane uiowa_rfq_18649_export_safety` → VARIES
 - `python3 export_safety.py scan --root fixtures --include-self-fixtures --out /tmp/fx` → REPRODUCIBLE
 - `python3 export_safety.py scan --root .. --fail-on HIGH` → VARIES
 - `python3 -m unittest -v` → SKIPPED — test suite, not an artifact command
+- `python3 export_safety.py scan --root .. --lane-prefix uiowa_rfq_18649_ --skip-lane uiowa_rfq_18649_export_safety` → VARIES
+- `python3 json_safety.py scan --root .. --lane-prefix uiowa_rfq_18649_ --skip-lane uiowa_rfq_18649_export_safety` → REPRODUCIBLE
 
 **`uiowa_rfq_18649_filesystem_safety`**
 
-- `python3 fs_safety.py --root /path/to/revenue --lane-prefix uiowa_rfq_18649 --output-dir examples/live_snapshot` → FAILED — the documented command exited 2 and wrote nothing new: ERROR: not a directory: /tmp/ra_a_dr131emz/lane/_audit_redirect/revenue
+- `python3 fs_safety.py --root /path/to/revenue --lane-prefix uiowa_rfq_18649 --output-dir examples/live_snapshot` → FAILED — the documented command exited 2 and wrote nothing new: ERROR: not a directory: /tmp/ra_a_d7lsqjo_/lane/_audit_redirect/revenue
 
 **`uiowa_rfq_18649_handoff`**
 
@@ -246,6 +289,14 @@
 - `python handoff.py render examples/planned_release.json` → REPRODUCIBLE
 - `python handoff.py validate examples/urgent_maintenance.json` → REPRODUCIBLE
 - `python -m unittest discover -s tests -v` → SKIPPED — test suite, not an artifact command
+
+**`uiowa_rfq_18649_import_safety`**
+
+- `python3 importsafety.py reproduce` → REPRODUCIBLE
+- `python3 importsafety.py scan <kit-root>` → SKIPPED — uses shell redirection or chaining, which this audit does not run through a shell
+- `python3 importsafety.py scan <kit-root> --json` → SKIPPED — uses shell redirection or chaining, which this audit does not run through a shell
+- `python3 importsafety.py reproduce <laneA> <laneB> <module>` → SKIPPED — uses shell redirection or chaining, which this audit does not run through a shell
+- `python3 -m unittest test_import_safety.py` → SKIPPED — test suite, not an artifact command
 
 **`uiowa_rfq_18649_incident_learning`**
 
@@ -259,6 +310,16 @@
 - `python3 rehearse_intake.py --collection sources --out artifacts --check-digest` → REPRODUCIBLE
 - `python3 -m unittest test_rehearsal` → SKIPPED — test suite, not an artifact command
 - `python3 rehearse_intake.py --collection sources --out artifacts --extra-collection ../uiowa_rfq_18649_synthetic_collection` → REPRODUCIBLE
+
+**`uiowa_rfq_18649_labeling_integrity`**
+
+- `python3 label_scan.py --root /path/to/revenue --lane-prefix uiowa_rfq_18649 --output-dir examples/live_snapshot` → FAILED — the documented command exited 2 and wrote nothing new: ERROR: not a directory: /tmp/ra_a_mc2xj9v8/lane/_audit_redirect/revenue
+
+**`uiowa_rfq_18649_maturity_anchors`**
+
+- `python3 render_scale.py` → REPRODUCIBLE
+- `python3 render_scale.py --check` → REPRODUCIBLE
+- `python3 -m unittest test_anchors` → SKIPPED — test suite, not an artifact command
 
 **`uiowa_rfq_18649_milestone_packets`**
 
@@ -380,6 +441,13 @@
 - `python3 render_report_visuals.py --check-encoding` → REPRODUCIBLE
 - `python3 -m unittest test_report_visuals` → SKIPPED — test suite, not an artifact command
 
+**`uiowa_rfq_18649_roadmap_coherence`**
+
+- `python3 roadmap_coherence.py check --report data/coherent-report.json --plan data/coherent-plan.json --deck data/coherent-deck.json` → REPRODUCIBLE
+- `python3 roadmap_coherence.py report --report data/coherent-report.json --plan data/coherent-plan.json --deck data/coherent-deck.json --outdir examples` → REPRODUCIBLE
+- `python3 roadmap_coherence.py rules` → REPRODUCIBLE
+- `python3 -m unittest -v test_roadmap_coherence` → SKIPPED — test suite, not an artifact command
+
 **`uiowa_rfq_18649_roadmap_dependencies`**
 
 - `python3 depcheck.py --outdir out_consistent` → REPRODUCIBLE
@@ -389,8 +457,15 @@
 
 **`uiowa_rfq_18649_run_sweep`**
 
-- `python3 run_sweep.py --root /path/to/repo --observed-on 2026-09-19 --outdir out` → FAILED — the documented command exited 2 and wrote nothing new: error: root /tmp/ra_a_1d1vfdeg/lane/_audit_redirect/repo does not exist
+- `python3 run_sweep.py --root /path/to/repo --observed-on 2026-09-19 --outdir out` → FAILED — the documented command exited 2 and wrote nothing new: error: root /tmp/ra_a_sqfgmy55/lane/_audit_redirect/repo does not exist
 - `python3 -m unittest -v test_run_sweep` → SKIPPED — test suite, not an artifact command
+
+**`uiowa_rfq_18649_sample_soundness`**
+
+- `python3 check_soundness.py --measures fixtures/measures_UNSOUND.json` → REPRODUCIBLE
+- `python3 check_soundness.py --measures fixtures/measures_SOUND.json` → REPRODUCIBLE
+- `python3 -m unittest test_soundness -v` → SKIPPED — test suite, not an artifact command
+- `python3 check_soundness.py --measures fixtures/measures_SOUND.json --min-denominator 200` → REPRODUCIBLE
 
 **`uiowa_rfq_18649_scope_change`**
 
@@ -418,6 +493,13 @@
 - `python3 test_data_assessor.py fixtures/catalog.synthetic.json --format json --output report.json` → REPRODUCIBLE
 - `python3 -m unittest -v tests/test_assessor.py` → SKIPPED — test suite, not an artifact command
 
+**`uiowa_rfq_18649_test_proof_audit`**
+
+- `python3 testproof.py --root .. --outdir findings` → REPRODUCIBLE
+- `python3 testproof.py --root .. --lane uiowa_rfq_18649_ai_use_inventory --print` → REPRODUCIBLE
+- `python3 testproof.py --root fixtures --include-fixtures --print` → FAILED — the documented command exited 1 and wrote nothing new: lanes=2 test_files=4 test_methods=9 assertions=7 defects=3 review=4
+- `python3 -m unittest -v test_testproof` → SKIPPED — test suite, not an artifact command
+
 **`uiowa_rfq_18649_traceability`**
 
 - `python3 trace_check.py bundle` → REPRODUCIBLE
@@ -428,11 +510,11 @@
 - `python3 -m unittest test_trace_check -v` → SKIPPED — test suite, not an artifact command
 - `python3 trace_check.py bundle --register` → REPRODUCIBLE
 - `python3 trace_check.py bundle --seal` → REPRODUCIBLE
-- `python3 audit_self_sealing.py /path/to/revenue` → FAILED — the documented command exited 1 and wrote nothing new: FileNotFoundError: [Errno 2] No such file or directory: '/tmp/ra_a_bymk1s9o/lane/_audit_redirect/revenue'
+- `python3 audit_self_sealing.py /path/to/revenue` → FAILED — the documented command exited 1 and wrote nothing new: FileNotFoundError: [Errno 2] No such file or directory: '/tmp/ra_a_9xzu1aqg/lane/_audit_redirect/revenue'
 - `python3 audit_self_sealing.py /path/to/revenue --only <lane>` → SKIPPED — uses shell redirection or chaining, which this audit does not run through a shell
-- `python3 audit_self_sealing.py /path/to/revenue --format json` → FAILED — the documented command exited 1 and wrote nothing new: FileNotFoundError: [Errno 2] No such file or directory: '/tmp/ra_a_ior07ze6/lane/_audit_redirect/revenue'
-- `python3 audit_assertions.py /path/to/revenue` → FAILED — the documented command exited 1 and wrote nothing new: FileNotFoundError: [Errno 2] No such file or directory: '/tmp/ra_a_ifj6bos9/lane/_audit_redirect/revenue'
-- `python3 audit_assertions.py /path/to/revenue --format json` → FAILED — the documented command exited 1 and wrote nothing new: FileNotFoundError: [Errno 2] No such file or directory: '/tmp/ra_a_m7xeime4/lane/_audit_redirect/revenue'
+- `python3 audit_self_sealing.py /path/to/revenue --format json` → FAILED — the documented command exited 1 and wrote nothing new: FileNotFoundError: [Errno 2] No such file or directory: '/tmp/ra_a_f6zziygl/lane/_audit_redirect/revenue'
+- `python3 audit_assertions.py /path/to/revenue` → FAILED — the documented command exited 1 and wrote nothing new: FileNotFoundError: [Errno 2] No such file or directory: '/tmp/ra_a_bna3yz22/lane/_audit_redirect/revenue'
+- `python3 audit_assertions.py /path/to/revenue --format json` → FAILED — the documented command exited 1 and wrote nothing new: FileNotFoundError: [Errno 2] No such file or directory: '/tmp/ra_a_htrsjpff/lane/_audit_redirect/revenue'
 
 **`uiowa_rfq_18649_traceability_rehearsal`**
 
@@ -472,7 +554,7 @@
 **`uiowa_rfq_18649_workshare`**
 
 - `python compiler.py compile fixtures/synthetic_packet.json fixtures/synthetic_authority.json /tmp/uiowa-report.json` → REPRODUCIBLE
-- `python compiler.py verify /tmp/uiowa-report.json` → FAILED — the documented command exited 2 and wrote nothing new: ERROR: cannot open input safely: /tmp/ra_a_0f9ut3fe/lane/_audit_redirect/uiowa-report.json: No such file or directory
-- `python compiler.py render /tmp/uiowa-report.json /tmp/uiowa-report.md` → FAILED — the documented command exited 2 and wrote nothing new: ERROR: cannot open input safely: /tmp/ra_a_n9dzfwiw/lane/_audit_redirect/uiowa-report.json: No such file or directory
+- `python compiler.py verify /tmp/uiowa-report.json` → FAILED — the documented command exited 2 and wrote nothing new: ERROR: cannot open input safely: /tmp/ra_a_rwqcgyg7/lane/_audit_redirect/uiowa-report.json: No such file or directory
+- `python compiler.py render /tmp/uiowa-report.json /tmp/uiowa-report.md` → FAILED — the documented command exited 2 and wrote nothing new: ERROR: cannot open input safely: /tmp/ra_a_zjw87ccd/lane/_audit_redirect/uiowa-report.json: No such file or directory
 - `python -m unittest -v test_compiler.py` → SKIPPED — test suite, not an artifact command
 - `python -O -m unittest -v test_compiler.py` → SKIPPED — test suite, not an artifact command

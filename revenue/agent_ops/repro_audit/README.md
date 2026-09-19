@@ -55,9 +55,22 @@ Each `FAILED` result carries a `probable_owner`:
 - `environment` — a dependency is not installed in this container.
 - `lane` — the command as documented did not run.
 
-Difference causes: `ordering_like` (same lines, different order — the hash-seed
-class), `timestamp_like`, `absolute_path_like`, `length_differs`,
+Difference causes are a **list** per file, not a single label — a file can be
+both path-derived and clock-derived, and reporting only the first found loses
+the other: `ordering_like` (same lines, different order — the hash-seed class),
+`timestamp_like`, `duration_like`, `absolute_path_like`, `length_differs`,
 `binary_or_unreadable`, `unclassified`, `nondeterministic_exit`.
+
+Every differing file also carries `sample_differences`: the actual differing
+line pairs, truncated. `unclassified` is never the end of the story — whatever
+the classifier concludes, the reader gets the bytes.
+
+Path detection compares the output against the copy root, the workroot above
+it, and both basenames. Two defects in the first version of this classifier are
+pinned by `ClassifierRegressionTests`: it compared only against the copy root
+(`<workroot>/lane`) while real output embeds the workroot or its basename, and
+its numeric pattern ended in `\b`, which can never match scientific notation
+(`5.290003173286095e-07`). Both produced `unclassified` on real artifacts.
 
 ## Run it
 

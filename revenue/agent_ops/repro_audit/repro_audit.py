@@ -79,9 +79,18 @@ REFUSE_PATTERNS = (
                                "audit does not run through a shell"),
 )
 
-TIMESTAMP_HINT = re.compile(
+CLOCK_HINT = re.compile(
     r"\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}|\d{2}:\d{2}:\d{2}|"
-    r"\b\d+\.\d{3,}\s*(s|sec|seconds|ms)?\b")
+    r"\b\d{10}(\.\d+)?\b")
+
+# A measured duration. The trailing \b in the first version of this pattern
+# could never match scientific notation - in `5.290003173286095e-07` the digits
+# run straight into `e`, so `\d+\.\d{3,}\b` fails everywhere and a real
+# duration difference was reported as `unclassified`.
+DURATION_HINT = re.compile(
+    r"\d+\.\d{3,}(e[+-]?\d+)?|"
+    r"\b\d+(\.\d+)?\s*(ms|msec|sec|secs|seconds)\b|"
+    r"[\"\']?[a-z_]*(seconds|duration|elapsed|_ms|_s)[\"\']?\s*[:=]")
 
 
 def sha256_file(path):
@@ -199,27 +208,71 @@ def redirect_absolute_paths(parts, copy_root):
 # Difference classification
 # --------------------------------------------------------------------------
 
-def classify_difference(text_a, text_b, path_a, path_b):
-    """Best-effort cause for two differing artifacts.
+def path_markers(path):
+    """Every form of a run directory that can end up inside an artifact.
 
-    Ordering is checked first: identical multiset of lines in a different
+    The first version of this compared only against the lane copy root
+    (`<workroot>/lane`), while real output embeds the workroot itself or just
+    its basename - so `absolute_path_like` was missed and the file fell through
+    to a weaker class.
+    """
+    markers = []
+    while path and path not in ("/", ""):
+        markers.append(path)
+        markers.append(os.path.basename(path))
+        parent = os.path.dirname(path)
+        if parent == path:
+            break
+        path = parent
+    return [m for m in markers if m and len(m) > 3]
+
+
+def classify_difference(text_a, text_b, path_a, path_b):
+    """Causes for two differing artifacts, as a sorted list.
+
+    A list rather than one label: a file can be both path-derived and
+    clock-derived, and reporting only the first found loses the other.
+
+    Ordering is checked first - an identical multiset of lines in a different
     order is the hash-seed signature, and it is the class a same-process
     double-run can never see.
     """
     if text_a is None or text_b is None:
-        return "binary_or_unreadable"
+        return ["binary_or_unreadable"]
     lines_a, lines_b = text_a.splitlines(), text_b.splitlines()
     if lines_a != lines_b and sorted(lines_a) == sorted(lines_b):
-        return "ordering_like"
+        return ["ordering_like"]
+
+    causes = set()
     differing = [(x, y) for x, y in zip(lines_a, lines_b) if x != y]
-    sample = " ".join(x + " " + y for x, y in differing[:20])
-    if path_a and path_b and (path_a in text_a or path_b in text_b):
-        return "absolute_path_like"
-    if TIMESTAMP_HINT.search(sample):
-        return "timestamp_like"
+    sample = " ".join(x + " " + y for x, y in differing[:40])
+    haystack = sample or (text_a + " " + text_b)
+
+    for marker in path_markers(path_a) + path_markers(path_b):
+        if marker in haystack:
+            causes.add("absolute_path_like")
+            break
+    if CLOCK_HINT.search(haystack):
+        causes.add("timestamp_like")
+    if DURATION_HINT.search(haystack):
+        causes.add("duration_like")
     if len(lines_a) != len(lines_b):
-        return "length_differs"
-    return "unclassified"
+        causes.add("length_differs")
+    return sorted(causes) or ["unclassified"]
+
+
+def sample_differences(text_a, text_b, limit=3):
+    """The actual differing line pairs, truncated.
+
+    `unclassified` must never be the end of the story: whatever the classifier
+    concludes, the reader gets the bytes that differed.
+    """
+    if text_a is None or text_b is None:
+        return []
+    pairs = [(x, y) for x, y in zip(text_a.splitlines(), text_b.splitlines())
+             if x != y]
+    return [{"first_run": x.strip()[:200], "second_run": y.strip()[:200]}
+            for x, y in pairs[:limit]]
 
 
 def probable_owner(command, detail, redirects):
@@ -296,7 +349,7 @@ def run_command_twice(lane_path, command, timeout=DEFAULT_TIMEOUT):
             return {"verdict": VARIES,
                     "detail": "exit code differed between runs: %s then %s"
                               % (left["returncode"], right["returncode"]),
-                    "causes": {"<exit code>": "nondeterministic_exit"},
+                    "causes": {"<exit code>": ["nondeterministic_exit"]},
                     "differing_files": []}
 
         touched = sorted(set(k for k in left["after"]
@@ -331,14 +384,17 @@ def run_command_twice(lane_path, command, timeout=DEFAULT_TIMEOUT):
                     "files_compared": len(keys)}
 
         causes = {}
+        samples = {}
         for name in differing[:10]:
-            causes[name] = classify_difference(
-                read_text(os.path.join(left["root"], name)),
-                read_text(os.path.join(right["root"], name)),
-                left["root"], right["root"])
+            text_left = read_text(os.path.join(left["root"], name))
+            text_right = read_text(os.path.join(right["root"], name))
+            causes[name] = classify_difference(text_left, text_right,
+                                               left["root"], right["root"])
+            samples[name] = sample_differences(text_left, text_right)
         return {"verdict": VARIES, "differing_files": differing,
                 "only_in_first_run": only_a, "only_in_second_run": only_b,
-                "causes": causes, "files_compared": len(keys),
+                "causes": causes, "sample_differences": samples,
+                "files_compared": len(keys),
                 "exit_code": left["returncode"],
                 "redirects": left["redirects"],
                 "matches_committed_artifacts": matches_committed}
@@ -446,7 +502,7 @@ def render_text(result):
                 extra += ", committed artifacts still match"
         elif record["verdict"] == VARIES:
             bad = [c for c in record["commands"] if c["verdict"] == VARIES][0]
-            causes = sorted(set(bad.get("causes", {}).values()))
+            causes = sorted({c for v in bad.get("causes", {}).values() for c in v})
             extra = "%d file(s) differ (%s)" % (len(bad.get("differing_files", [])),
                                                 ", ".join(causes) or "unclassified")
         elif record["verdict"] in (FAILED, TIMEOUT):
@@ -475,7 +531,8 @@ def render_markdown(result):
                 if command["verdict"] == VARIES:
                     detail = "differs: %s (%s)" % (
                         ", ".join("`%s`" % f for f in command["differing_files"][:4]),
-                        ", ".join(sorted(set(command.get("causes", {}).values()))))
+                        ", ".join(sorted({c for v in command.get("causes", {}).values()
+                                          for c in v})))
                 elif command["verdict"] == REPRODUCIBLE:
                     detail = "%d files byte-identical" % command.get("files_compared", 0)
                     if command.get("matches_committed_artifacts"):

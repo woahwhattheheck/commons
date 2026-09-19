@@ -107,27 +107,106 @@ class RedirectTests(unittest.TestCase):
 class DifferenceClassificationTests(unittest.TestCase):
 
     def test_same_lines_in_a_different_order_is_the_hash_seed_signature(self):
-        self.assertEqual("ordering_like",
+        self.assertEqual(["ordering_like"],
                          R.classify_difference("b\na\nc\n", "a\nc\nb\n", "/x", "/y"))
 
     def test_a_clock_in_the_output_is_recognised(self):
-        self.assertEqual("timestamp_like",
-                         R.classify_difference("run at 2026-09-19 10:00:01\n",
-                                               "run at 2026-09-19 10:00:09\n",
-                                               "/x", "/y"))
+        self.assertIn("timestamp_like",
+                      R.classify_difference("run at 2026-09-19 10:00:01\n",
+                                            "run at 2026-09-19 10:00:09\n",
+                                            "/x", "/y"))
 
     def test_an_embedded_working_directory_is_recognised(self):
-        self.assertEqual("absolute_path_like",
-                         R.classify_difference("in /alpha/lane\n", "in /beta/lane\n",
-                                               "/alpha", "/beta"))
+        self.assertIn("absolute_path_like",
+                      R.classify_difference("in /alpha/lane\n", "in /beta/lane\n",
+                                            "/alpha/lane", "/beta/lane"))
 
     def test_unreadable_bytes_are_named_rather_than_guessed(self):
-        self.assertEqual("binary_or_unreadable",
+        self.assertEqual(["binary_or_unreadable"],
                          R.classify_difference(None, "x", "/a", "/b"))
 
     def test_different_line_counts_are_reported_as_such(self):
-        self.assertEqual("length_differs",
-                         R.classify_difference("a\n", "a\nb\n", "/a", "/b"))
+        self.assertIn("length_differs",
+                      R.classify_difference("a\n", "a\nb\n", "/a", "/b"))
+
+    def test_a_file_can_carry_more_than_one_cause(self):
+        # Reporting only the first cause found loses the other one.
+        causes = R.classify_difference(
+            'root "/tmp/run_alpha"\nat 2026-09-19T10:00:01Z\n',
+            'root "/tmp/run_bravo"\nat 2026-09-19T10:00:09Z\n',
+            "/tmp/run_alpha/lane", "/tmp/run_bravo/lane")
+        self.assertEqual(["absolute_path_like", "timestamp_like"], causes)
+
+
+class ClassifierRegressionTests(unittest.TestCase):
+    """The three cases this audit reported as `unclassified` on its own first
+    run over the tree. Each is a real artifact pair, reduced."""
+
+    def test_workroot_not_only_copy_root_counts_as_an_embedded_path(self):
+        # Output embeds `<workroot>`; the copy handed to the classifier is
+        # `<workroot>/lane`. Comparing only the copy root missed it.
+        causes = R.classify_difference(
+            '{\n  "survey_root": "/tmp/dx_a_qj4c1wc9"\n}',
+            '{\n  "survey_root": "/tmp/dx_b_lyfakd9x"\n}',
+            "/tmp/dx_a_qj4c1wc9/lane", "/tmp/dx_b_lyfakd9x/lane")
+        self.assertIn("absolute_path_like", causes)
+
+    def test_a_bare_directory_basename_counts_too(self):
+        causes = R.classify_difference(
+            '{\n  "root": "dx_a_bge2xniz"\n}',
+            '{\n  "root": "dx_b_ttfpq3h9"\n}',
+            "/tmp/dx_a_bge2xniz/lane", "/tmp/dx_b_ttfpq3h9/lane")
+        self.assertIn("absolute_path_like", causes)
+
+    def test_a_duration_in_scientific_notation_is_recognised(self):
+        # `5.290003173286095e-07` - the digits run into `e`, so a pattern
+        # ending in \b can never match it, and a real duration difference was
+        # reported as `unclassified`.
+        causes = R.classify_difference(
+            '{"scan_seconds": 5.290003173286095e-07}',
+            '{"scan_seconds": 4.879998414253350e-07}', "/a/lane", "/b/lane")
+        self.assertIn("duration_like", causes)
+
+    def test_a_named_duration_field_is_recognised_without_a_long_decimal(self):
+        self.assertIn("duration_like",
+                      R.classify_difference('{"duration_ms": 41}',
+                                            '{"duration_ms": 43}', "/a", "/b"))
+
+    def test_nothing_recognisable_still_reports_unclassified(self):
+        self.assertEqual(["unclassified"],
+                         R.classify_difference("alpha\n", "bravo\n", "/a", "/b"))
+
+    def test_path_markers_walk_up_and_include_basenames(self):
+        markers = R.path_markers("/tmp/run_alpha/lane")
+        self.assertIn("/tmp/run_alpha/lane", markers)
+        self.assertIn("/tmp/run_alpha", markers)
+        self.assertIn("run_alpha", markers)
+        self.assertNotIn("/", markers)
+
+
+class SampleDifferenceTests(unittest.TestCase):
+
+    def test_the_differing_lines_are_always_shown(self):
+        pairs = R.sample_differences("a\nkeep\nb\n", "c\nkeep\nd\n")
+        self.assertEqual([{"first_run": "a", "second_run": "c"},
+                          {"first_run": "b", "second_run": "d"}], pairs)
+
+    def test_samples_are_truncated_not_unbounded(self):
+        left = "\n".join("l%d" % n for n in range(50))
+        right = "\n".join("r%d" % n for n in range(50))
+        self.assertEqual(3, len(R.sample_differences(left, right)))
+
+    def test_unreadable_files_produce_no_sample_rather_than_an_error(self):
+        self.assertEqual([], R.sample_differences(None, "x"))
+
+    def test_a_varying_lane_carries_its_sample_differences(self):
+        record = R.audit_lane(BAD)
+        failing = [c for c in record["commands"] if c["verdict"] == R.VARIES][0]
+        self.assertTrue(failing["sample_differences"])
+        for pairs in failing["sample_differences"].values():
+            for pair in pairs:
+                self.assertIn("first_run", pair)
+                self.assertIn("second_run", pair)
 
 
 class AuditVerdictTests(unittest.TestCase):
@@ -142,7 +221,7 @@ class AuditVerdictTests(unittest.TestCase):
         self.assertEqual(R.VARIES, record["verdict"])
         failing = [c for c in record["commands"] if c["verdict"] == R.VARIES][0]
         self.assertTrue(failing["differing_files"])
-        causes = set(failing["causes"].values())
+        causes = {c for v in failing["causes"].values() for c in v}
         self.assertIn("timestamp_like", causes)
         self.assertIn("absolute_path_like", causes)
 
