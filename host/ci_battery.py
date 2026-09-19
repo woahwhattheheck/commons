@@ -114,6 +114,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--shard-count", type=int, default=1)
     parser.add_argument("--shard-index", type=int, default=0, help="zero-based shard number")
     parser.add_argument("--timeout", type=float, default=0, help="per-file seconds; 0 preserves the unbounded battery")
+    parser.add_argument("--fail-fast", action="store_true", help="stop after the first failed test while preserving default exhaustive execution")
     parser.add_argument("--list", action="store_true", help="list selected commands without executing")
     args = parser.parse_args(argv)
     if args.output_dir and args.results:
@@ -152,7 +153,8 @@ def main(argv: list[str] | None = None) -> int:
     file_hashes = {}
     scope = {"kind": "selected" if requested else "full", "requested": requested,
              "shard_index": args.shard_index, "shard_count": args.shard_count,
-             "discovered_files": len(discovered), "planned_files": len(selected)}
+             "discovered_files": len(discovered), "planned_files": len(selected),
+             "fail_fast": args.fail_fast}
     if args.shard_count > 1:
         scope["kind"] = "selected-shard" if requested else "shard"
     dirty = None
@@ -203,6 +205,9 @@ def main(argv: list[str] | None = None) -> int:
                     record(handle, command, "./" + path, rc)
                     code = int(bool(code or rc))
                     print(("ok   " if rc == 0 else "FAIL ") + json.dumps(path), flush=True)
+                    if rc and args.fail_fast:
+                        print("fail-fast: stopping after first failed test", flush=True)
+                        break
                 record(handle, "battery_complete", "", code)
                 outcome = "failure" if code else "success"
                 if not selected:

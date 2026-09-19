@@ -82,6 +82,34 @@ class CloudBatteryTests(unittest.TestCase):
         self.assertEqual(codes["test_c.js"], 7)
         self.assertEqual(codes["test_d.js"], 0)
 
+    def test_fail_fast_stops_after_first_failure_but_default_stays_exhaustive(self):
+        self.write("infra/nested/test_b.py", "raise SystemExit(6)\n")
+        self.write("test_a.py", "raise SystemExit(9)\n")
+        self.commit()
+
+        fast = self.run_ci("--fail-fast")
+        self.assertEqual(fast.returncode, 1)
+        fast_report = self.report()
+        self.assertEqual(fast_report["conclusion"], "FAILED")
+        self.assertTrue(fast_report["scope"]["fail_fast"])
+        self.assertEqual(fast_report["scope"]["planned_files"], 2)
+        self.assertEqual(fast_report["counts"]["completed_files"], 1)
+        self.assertEqual(
+            [(row["path"], row["exit_code"]) for row in fast_report["results"]],
+            [("infra/nested/test_b.py", 6)],
+        )
+        self.assertIn("fail-fast: stopping after first failed test", fast.stdout)
+
+        exhaustive = self.run_ci()
+        self.assertEqual(exhaustive.returncode, 1)
+        exhaustive_report = self.report()
+        self.assertFalse(exhaustive_report["scope"]["fail_fast"])
+        self.assertEqual(exhaustive_report["counts"]["completed_files"], 2)
+        self.assertEqual(
+            {row["path"]: row["exit_code"] for row in exhaustive_report["results"]},
+            {"infra/nested/test_b.py": 6, "test_a.py": 9},
+        )
+
     def test_selected_scope_never_claims_full_battery(self):
         self.write("test_a.py", "raise SystemExit(6)\n")
         self.commit()
