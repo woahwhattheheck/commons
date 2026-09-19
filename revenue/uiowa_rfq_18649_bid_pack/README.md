@@ -1,6 +1,6 @@
 # UIOWA-136 — Bidder attachment assembly and navigation tool
 
-Work order **UIOWA-136** (RFQ-18649 lane). Seat **OP5-TOPAZ**, Claude Opus 5.
+Work orders **UIOWA-136** and **UIOWA-136B** (RFQ-18649 lane). Seat **OP5-TOPAZ**, Claude Opus 5.
 
 Turns a manifest of prepared proposal components into an orderly submission folder:
 stable filenames, an attachment index, section/page cross-references, and working
@@ -31,7 +31,8 @@ Python 3 stdlib only. No pip, no network, no `reportlab`, no `python-docx`.
 ```
 python3 bid_pack.py --manifest fixtures/manifest.json --out sample_output
 python3 bid_pack.py --manifest fixtures/manifest.json --out /tmp/x --strict   # exit 1 on any ERROR
-python3 -m unittest test_bid_pack -v
+python3 packcheck.py sample_output/proposal.pdf sample_output/proposal.docx   # exit 1 on any defect
+python3 -m unittest test_bid_pack test_packcheck -v
 ```
 
 Observed output of the first command (this is the real run, not an illustration):
@@ -57,7 +58,9 @@ assembled -> sample_output
 | `docxwrite.py` | Hand-written OOXML `.docx` writer **and reader** via `zipfile`: heading styles, `w:bookmarkStart`, internal `w:hyperlink w:anchor`, `docProps` title. |
 | `fixtures/` | The synthetic proposal. **Fiction — see below.** |
 | `sample_output/` | A committed run of the assembler over `fixtures/`. |
-| `test_bid_pack.py` | 35 `unittest` tests. |
+| `packcheck.py` | **UIOWA-136B.** Independent structural validator for the rendered PDF and DOCX. Does *not* use `pdfwrite`'s reader. |
+| `test_bid_pack.py` | 35 `unittest` tests for the assembler. |
+| `test_packcheck.py` | 27 `unittest` tests for the validator — almost all of them corrupt the real rendered document on purpose. |
 
 Output of a run (`sample_output/`): `proposal.pdf`, `proposal.docx`, `00-INDEX.md`,
 `attachment_index.csv`, `bid_pack.json` (versioned + content-digested),
@@ -165,3 +168,93 @@ and this order is about *submission packaging*, which is a different artifact. A
 integration could feed report sections produced by the report-structure lane into this
 manifest's `sections` list unchanged; the manifest format is deliberately plain enough
 for that, and it is **not** done here.
+
+
+---
+
+# UIOWA-136B — Structural validator (`packcheck.py`)
+
+## Why it exists
+
+`pdfwrite.py` writes a PDF and also reads it back, and the UIOWA-136 tests assert
+against that readback. That is better than trusting the builder's own report — and it
+is **still circular in one specific way**: the writer and the reader are the same
+author making the same assumptions. If both misunderstand the format in the same
+place, they agree perfectly, all 35 tests are green, and **the file still does not
+open in Acrobat or Preview**.
+
+`packcheck.py` therefore does not import `pdfwrite`'s reader. It parses the bytes from
+scratch and checks them against the format's own internal rules.
+
+The sharpest example is in the test suite: `test_xref_offset_off_by_one_is_caught`
+shifts one cross-reference offset by a single byte. `packcheck` reports
+`xref_offsets_resolve` as a defect. **`pdfwrite`'s own reader returns exactly the same
+9 pages it returned before the corruption** — because it scans for `N 0 obj` headers
+and never consults the xref table at all. The test asserts both facts side by side.
+That is the circularity, demonstrated rather than argued.
+
+## What it checks
+
+**PDF (17 checks on the sample):** `%PDF-` header · `%%EOF` present (truncation) ·
+objects present · `startxref` points at a real `xref` · xref subsection header · entry
+count · **every in-use xref offset lands on the object it claims** · trailer `/Size`
+greater than the highest real object number · every `/Length` equals the real stream
+byte count · every indirect `N 0 R` resolves · `/Root` is a `/Catalog` · `/Pages`
+exists · `/Count` equals the real `/Kids` length · every kid is `/Type /Page` · every
+`/Dest` targets a page in *this* document · every `/Annots` entry is a `/Link` · every
+font a content stream requests is in that page's `/Resources` · the outline chain
+terminates and does not loop.
+
+**DOCX (6 checks on the sample):** zip integrity · required parts present · every XML
+part well-formed (`xml.etree`) · every relationship target resolves to a real part ·
+every `w:hyperlink w:anchor` matches a real `w:bookmarkStart` · `bookmarkStart` and
+`bookmarkEnd` balanced.
+
+## Result on the committed sample — verbatim
+
+```
+sample_output/proposal.pdf: 17 check(s) run, 0 defect(s), 0 not run
+sample_output/proposal.docx: 6 check(s) run, 0 defect(s), 0 not run
+
+0 defect(s) across 2 file(s).
+```
+
+## What a pass means, and what it does not
+
+A clean result means **"no structural defect found by these checks."** It does **not**
+mean "valid PDF", it does **not** mean the page looks right, and it is **not** a
+PDF/UA, WCAG, or any other conformance statement. This module issues no certificate
+and makes no compliance claim; the CLI prints that disclaimer on every run and a test
+asserts it is there.
+
+**A check that did not run is reported as `NOT RUN`, never as a pass.** Hand it a
+Markdown file and it reports `0 check(s) run, 1 not run` — not a clean bill of health.
+`test_an_unchecked_file_is_reported_as_not_run_never_as_a_pass` enforces that.
+
+## How it is proved
+
+A validator that passes a file it should reject is worse than no validator, so 22 of
+the 27 tests **break the real rendered document on purpose** and assert the named
+defect fires: truncation · wrong magic header · xref offset off by one · falsified
+`/Length` · reference to a nonexistent object · `/Count` disagreeing with `/Kids` ·
+`/Dest` outside the document · font used but not declared · broken outline chain ·
+**outline chain that loops** (caught, not hung on) · missing `startxref` · `startxref`
+pointing at nothing · trailer `/Size` too small · a file with no objects · empty bytes
+· DOCX with a required part removed · DOCX with a dangling relationship · malformed
+XML part · hyperlink with no bookmark · unbalanced bookmarks · a `.docx` that is not a
+zip · a file that does not exist. Corruptions are byte-length-preserving wherever
+possible so the measured defect is the targeted one.
+
+## Limits, stated
+
+- **Structure only.** It cannot tell you a page *looks* right, that text is not
+  overlapping, or that a table is readable. Visual inspection is UIOWA-123's lane, not
+  this one.
+- Single-section classic `xref` tables only; **cross-reference streams and object
+  streams (PDF 1.5+) are not parsed.** A file using them would be reported as a
+  `startxref`/`xref_subsection` defect, which would be a false positive. The validator
+  is calibrated for the files this lane produces and says so rather than claiming
+  general-purpose coverage.
+- No encryption, no incremental updates, no linearization checks.
+- The DOCX side checks package structure and navigation wiring, not schema validity
+  against the ECMA-376 XSDs.
