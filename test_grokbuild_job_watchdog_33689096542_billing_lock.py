@@ -9,6 +9,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grok-build-job-watchdog-33689096542-billing-lock-20260902-01.md"
@@ -96,7 +97,7 @@ class TestGrokbuildJobWatchdog33689096542BillingLock(unittest.TestCase):
 
     def test_local_tick_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "harness_wake", "--tick"],
+            [sys.executable, "-m", "harness_wake", "--tick"],
             cwd=ROOT,
             text=True,
             capture_output=True,

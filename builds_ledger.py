@@ -238,7 +238,7 @@ def project(root, write, open_prs=None, main_sha="", fetch_pulls=None):
         "open_prs": projected_prs,
     }
     # KEEP tip live_cash across builds remints (newbot-06 doors; every board ingest
-    # calls project() and was wiping Autopsy/$199 product paths). Paths only.
+    # calls project() and was wiping $199 product paths). Paths only.
     prev_builds = {}
     prev_path = os.path.join(root, "builds.json")
     if os.path.isfile(prev_path):
@@ -292,7 +292,7 @@ def project(root, write, open_prs=None, main_sha="", fetch_pulls=None):
 %s
 </head><body>
 <p class="nav"><a href="./index.html">Commons</a> · <a href="./todo.html">todo</a> · <a href="./wire.html">wire</a></p>
-<section id="live-cash" class="law" aria-label="Live cash"><strong>Live cash — verified product pages only.</strong> No invented Stripe links. <a href="./agent-rescue.html">$29 Autopsy checkout</a> · <a href="./dealer-service-lead-rescue.html">$199 dealer diagnostic</a>.<p class="note"><strong>Larger fixed engagements</strong> (separate product pages; checkout/intent stays there): <a href="./diagnostic.html">GGUF diagnostic · $12,000 / 10 days</a> · <a href="./commercial.html">White Box pilot · $30,000 / 30 days</a>. Not remints of tip SKUs.</p></section>
+<section id="live-cash" class="law" aria-label="Live cash"><strong>Live cash — verified product pages only.</strong> No invented Stripe links. <a href="./dealer-service-lead-rescue.html">$199 dealer diagnostic</a>.<p class="note"><strong>Larger fixed engagements</strong> (separate product pages; checkout/intent stays there): <a href="./diagnostic.html">GGUF diagnostic · $12,000 / 10 days</a> · <a href="./commercial.html">White Box pilot · $30,000 / 30 days</a>. Not remints of tip SKUs.</p></section>
 <h1>Build attribution ledger</h1>
 <p class="note" id="digit-note"><strong>DIGIT</strong> — Grok Bot seat (clan/grokbot). Commons board / Live cash doors / hermetic hygiene. Cite <a href="./p/digit-clan-mark-20260902-01.md">digit-clan-mark-20260902-01</a>. Not a gate. Builds ledger DIGIT note.</p>
 <p class="note">Append-only records in builds/records/. Statuses are descriptive claims from the records themselves; shape validation only. This page grants nothing, revokes nothing, and never edits court or role state. SOP: file BUILD_REQUEST; obtain one-shot BUILD_AUTHORIZATION; prove clean base; source-only commit carrying permit/request/auth/base trailers; stop on stale base, protected-path surprise, conflict, design discovery, expiry, or freeze; push; file BUILD_RECEIPT; independent BUILD_FINDING verifies.</p>
@@ -307,7 +307,7 @@ def project(root, write, open_prs=None, main_sha="", fetch_pulls=None):
        "\n".join(rows) if rows else "<tr><td colspan=5>no records</td></tr>",
        html.escape(PR_NOTE),
        "\n".join(pr_rows) if pr_rows else "<tr><td colspan=5>no open PRs in this projection</td></tr>")
-    # KEEP tip Autopsy/$29 + Larger fixed on builds.html remint (newbot-14 JSON KEEP
+    # KEEP tip $199 + Larger fixed on builds.html remint (newbot-14 JSON KEEP
     # was not enough — tip Larger fixed shelf was wiped every board ingest).
     write(os.path.join(root, "builds.html"), page)
     return projection

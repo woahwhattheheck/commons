@@ -21,6 +21,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 ORIGINALS = (
@@ -77,7 +78,6 @@ class TestGrokbuildTestsBattery34406500391KeepLift(unittest.TestCase):
         self.assertEqual(
             products,
             [
-                ("Agent Failure Autopsy", 29, "agent-rescue.html"),
                 ("Dealer Service Lead Rescue", 199, "dealer-service-lead-rescue.html"),
                 ("Referral Intake Completeness", 199, "referral-intake-completeness.html"),
                 ("Repair Booking Preflight", 199, "repair-booking-preflight.html"),
@@ -99,7 +99,7 @@ class TestGrokbuildTestsBattery34406500391KeepLift(unittest.TestCase):
         for name in ORIGINALS:
             with self.subTest(name=name):
                 proc = subprocess.run(
-                    ["python3", name],
+                    [sys.executable, name],
                     cwd=ROOT,
                     text=True,
                     capture_output=True,

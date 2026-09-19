@@ -34,7 +34,6 @@ HOUR_PLINK = "plink_1U8lgGATH4EDE7XDlrVYTWhu"
 MUHL_URL = "https://buy.stripe.com/7sYbJ02Kpcrv9uF0Ku43S09"
 TYPE_PRODUCT_BUYS = frozenset(
     {
-        "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
         "https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e",
         "https://buy.stripe.com/28E9AS70F6378qB2SC43S0w",
         "https://buy.stripe.com/14AfZg1Gl3UZ7mxfFo43S0x",
@@ -81,7 +80,6 @@ SHELF = (
 SHELF_URLS = frozenset(row["url"] for row in SHELF)
 PAY_URLS = TYPE_PRODUCT_BUYS | SHELF_URLS | {HOUR_URL}
 SIBLING_RAILS = {
-    "agent-rescue.html": "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
     "dealer-service-lead-rescue.html": "https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b",
     "referral-intake-completeness.html": "https://buy.stripe.com/9B600i98N77b9uFeBk43S0c",
     "repair-booking-preflight.html": "https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d",
@@ -100,7 +98,7 @@ class GoatPayTipshelfCheckoutWire(unittest.TestCase):
             "provider-inert",
             html.split("<style>", 1)[0] + html.split("</style>", 1)[1],
         )
-        self.assertGreaterEqual(html.count("js-checkout-slot"), 8)
+        self.assertGreaterEqual(html.count("js-checkout-slot"), 7)
         self.assertIn('src="./pay.js?v=20260902a"', html)
         self.assertIn(HOUR_URL, html)
         self.assertIn("Buy White Box hour — $250", html)
@@ -128,7 +126,7 @@ class GoatPayTipshelfCheckoutWire(unittest.TestCase):
         )
 
         hrefs = [unescape(value) for value in STRIPE_HREF_RE.findall(html)]
-        self.assertGreaterEqual(len(hrefs), 17)
+        self.assertGreaterEqual(len(hrefs), 16)
         seen = set()
         for href in hrefs:
             parsed = urlsplit(href)

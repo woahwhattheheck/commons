@@ -1,0 +1,13 @@
+{
+  "id": "grok-fire-observatory-refresh-20260917-01",
+  "verb": "ACTION",
+  "target": "observatory",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: Rebuild: not found\n",
+  "executed_at": "2026-09-18T05:32:31.170229Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

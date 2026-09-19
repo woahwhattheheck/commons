@@ -17,6 +17,8 @@ and no auth/account door.
    - `poll` — GET `ping/last.json` (reuses PLAYER2 poll cards)
    - `slack_mention` — Slack mention / Socket Mode **only when credentials
      are already in the process environment**
+   - `windows_titan` — local Windows UI doorbell via `host.titan_hands` (UIA
+     actuation into a named desktop agent window; deliver-gated, verify-after-act)
 3. Keep one caller-supplied `job_id`. Tick, checkpoint, and complete stay
    idempotent on `independent_commons_mcp.jobs.JobStore`.
 4. Unique events are accepted and never cancelled.
@@ -45,8 +47,6 @@ Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad
 ## Live cash
 
 Verified product pages only — no invented Stripe links.
-
-- [$29 Autopsy checkout](../agent-rescue.html)
 - [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../referral-intake-completeness.html)
 - [$199 repair diagnostic](../repair-booking-preflight.html)

@@ -6,6 +6,7 @@ from __future__ import annotations
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 import open_door_guard as guard
 
@@ -16,10 +17,10 @@ LEFTOVER_TEST = ROOT / "test_grokbuild_owner_net_33723510040_billing_lock.py"
 
 KEEP = {
     "p/grok-build-owner-net-33723510040-billing-lock-20260903-01.md": "6a2c8239",
-    "test_grokbuild_owner_net_33723510040_billing_lock.py": "4acaf69b",
+    "test_grokbuild_owner_net_33723510040_billing_lock.py": "b4a7a5dc",
     ".github/workflows/owner-net.yml": "5df56a0a",
     "owner_net.py": "941b0d8a",
-    "owner.json": "dc6c0592",
+    "owner.json": "81ad0495",
     "test_owner_hash.py": "0f0e6870",
     "open_door_guard.py": "877e148d",
     "fix_first.py": "a57aee1c",
@@ -72,7 +73,7 @@ class TestGrokbuildPr8638IntakeVerify(unittest.TestCase):
 
     def test_original_leftover_unittest_still_green(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_grokbuild_owner_net_33723510040_billing_lock"],
+            [sys.executable, "-m", "unittest", "test_grokbuild_owner_net_33723510040_billing_lock"],
             cwd=ROOT,
             text=True,
             capture_output=True,

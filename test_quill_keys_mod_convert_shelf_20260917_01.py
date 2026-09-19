@@ -29,7 +29,6 @@ RENDERER = ROOT / "hub_pages.py"
 
 ALLOWED_LIVE_BUY_URLS = frozenset(
     {
-        "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
         "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
     }
 )
@@ -38,11 +37,9 @@ BUY_HOST_PATH = re.compile(
     re.IGNORECASE,
 )
 BUY_LABELS = (
-    "Buy Autopsy $29",
     "Buy one White Box hour $250",
 )
 LIVE_CASH_DOORS = (
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -110,7 +107,7 @@ class TestQuillKeysModConvertShelf2026091701(unittest.TestCase):
         source = RENDERER.read_text(encoding="utf-8")
         self.assertIn("KEYS_MOD_CONVERT_SHELF_HTML", source)
         self.assertIn('id="buy-now-live-checkout"', hub_pages.KEYS_MOD_CONVERT_SHELF_HTML)
-        self.assertIn("Buy Autopsy $29", hub_pages.KEYS_MOD_CONVERT_SHELF_HTML)
+
         self.assertIn("Buy one White Box hour $250", hub_pages.KEYS_MOD_CONVERT_SHELF_HTML)
         self.assertIn(CLAIM, hub_pages.KEYS_MOD_CONVERT_SHELF_HTML)
         found = live_buy_urls(hub_pages.KEYS_MOD_CONVERT_SHELF_HTML)

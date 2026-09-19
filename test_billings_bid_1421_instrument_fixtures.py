@@ -6,6 +6,7 @@ import importlib.util
 import json
 import pathlib
 import unittest
+import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent
 PACK = ROOT / "revenue" / "billings_bid_1421" / "instrument_fixtures"
@@ -133,7 +134,7 @@ class BillingsBid1421InstrumentFixturesTests(unittest.TestCase):
         import subprocess
 
         proc = subprocess.run(
-            ["python3", str(PACK / "runner.py")],
+            [sys.executable, str(PACK / "runner.py")],
             cwd=ROOT,
             check=False,
             capture_output=True,

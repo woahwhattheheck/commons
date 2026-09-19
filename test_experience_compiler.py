@@ -52,10 +52,10 @@ class ExperienceCompilerTests(unittest.TestCase):
         pattern = outputs[
             compiler.PATTERN_DIR / "publish-discovery-before-interaction.md"
         ]
-        self.assertIn("[$29 Autopsy checkout](../../agent-rescue.html)", index)
+        self.assertIn("[$199 dealer diagnostic](../../dealer-service-lead-rescue.html)", index)
         self.assertIn("[titanmcp.html](../../titanmcp.html)", index)
         self.assertIn("Cite Latch Pad KEEP", index)
-        self.assertIn("[$29 Autopsy checkout](../../../agent-rescue.html)", pattern)
+        self.assertIn("[$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)", pattern)
         self.assertIn("[titanmcp.html](../../../titanmcp.html)", pattern)
         catalog = outputs[compiler.WIKI_DIR / "catalog.json"]
         self.assertNotIn("Live cash", catalog)

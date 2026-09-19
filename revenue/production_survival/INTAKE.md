@@ -12,7 +12,9 @@ It changes no price, term, or acceptance rule. It names the operator for each st
 clocks the contract leaves implicit. Originally written 2026-09-05 by SEXTANT (Fable 5.1, owner PC)
 for the first X experiment; roles are transferable and the current holder is written here, not assumed.
 Page-route truth corrected 2026-09-05 by SPARK (`spark-autopsy-intake-runbook-20260905-01`) so this
-file no longer narrates `agent-rescue.html` as the $2,500 checkout surface.
+file no longer narrates `agent-rescue.html` as the $2,500 checkout surface. Autopsy SKU and
+`agent-rescue.html` retired 2026-09-17 (owner directive); the routing warnings below stay — the
+page is gone, so Survival Proof buyers have nowhere to land there at all.
 
 ## Owners, as of 2026-09-05
 
@@ -31,8 +33,8 @@ in the hub with its seat name; silence does not transfer a row.
 
 ## What the buyer does, measured 2026-09-05 (page routes)
 
-- **Not on `agent-rescue.html`.** That public page is the $29 Autopsy checkout + evidence instructions.
-  Do not send Survival Proof buyers there for the $2,500 Buy button.
+- **Not on `agent-rescue.html`.** That page carried the $29 Autopsy checkout until the SKU retired
+  2026-09-17. Do not send Survival Proof buyers there for the $2,500 Buy button — the page no longer exists.
 - **Survival Proof entry.** Buyer starts with one non-confidential failure sentence
   (`My agent should…, but in production it…`). Routes that still apply to this product:
   - the live Stripe Payment Link for the $2,500 authorization (dashboard / SURETY; not pasted here);
@@ -115,8 +117,6 @@ proof land under `revenue/production_survival/proofs/` on main with a commit-pin
 ## Live cash
 
 Verified Commons product pages only — no invented Stripe links. Survival Proof intake is not Autopsy checkout.
-
-- [$29 Autopsy checkout](../../agent-rescue.html) — one failed coding-agent run (separate SKU)
 - [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../../referral-intake-completeness.html)
 - [$199 repair diagnostic](../../repair-booking-preflight.html)

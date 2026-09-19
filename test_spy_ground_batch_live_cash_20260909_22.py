@@ -5,6 +5,6 @@ FILES=['ground/DEBTS_TO_BRYCE_20260820.md', 'ground/corpus-2026-08-07.md', 'grou
 class X(unittest.TestCase):
     def test_all(self):
         for rel in FILES:
-            t=(ROOT/rel).read_text(); self.assertIn('## Live cash', t, rel); self.assertIn('agent-rescue.html', t, rel)
+            t=(ROOT/rel).read_text(); self.assertIn('## Live cash', t, rel); self.assertNotIn('agent-rescue.html', t, rel)
 if __name__=='__main__':
     unittest.main()

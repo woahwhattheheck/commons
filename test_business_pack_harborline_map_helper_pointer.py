@@ -89,7 +89,7 @@ class BusinessPackHarborlineMapHelperPointerTest(unittest.TestCase):
             self.result["observed_at_land"][
                 "host/business_pack_harborline_tally_map_pointer.py"
             ],
-            "7df7dbba",
+            "90b0ae68",
         )
         self.assertEqual(
             self.result["observed_at_land"]["host/business_pack_desk_instance.py"],

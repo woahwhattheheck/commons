@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Hermetic: tip Autopsy/$199 doors keep exactly one Larger-fixed note.
+"""Hermetic: tip $199/$199 doors keep exactly one Larger-fixed note.
 
 Regression for 9a8d1ebe, which reminted a second note on doors that already
 carried Reed/moth Larger-fixed bytes. Compose keeps the unique shelf cite
@@ -13,7 +13,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 DOORS = (
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",

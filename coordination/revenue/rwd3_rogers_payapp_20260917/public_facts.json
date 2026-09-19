@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "operation_id": "RWD3-ROGERS-PAYAPP-RETAINAGE-OWNER-PACKET-ZSOL-20260917",
+  "observed_on": "2026-09-17",
+  "source_urls": [
+    "https://rwd3rogers.com/agenda-and-minutes",
+    "https://rwd3rogers.com/personnel",
+    "https://rwd3rogers.com/contact-us"
+  ],
+  "district": {
+    "name": "Rural Water District #3 Rogers County",
+    "district_manager": "Kelly King",
+    "contact_surface_class": "GENERAL_PUBLIC_CONTACT_SURFACE_NOT_SELECTED"
+  },
+  "agenda_items": [
+    {"project_ref":"RWD3-KEETONVILLE-TANK","contractor":"Crossland Heavy Contractors, Inc.","pay_request":"1","amount_minor_usd":12290625,"final":false,"retainage_release_explicit":false},
+    {"project_ref":"RWD3-TACORA-WTP-PUMP","contractor":"Beytco, Inc.","pay_request":"5-Final","amount_minor_usd":3576203,"final":true,"retainage_release_explicit":true},
+    {"project_ref":"RWD3-TACORA-MB-II","contractor":"Cunningham Construction","pay_request":"3","amount_minor_usd":15281933,"final":false,"retainage_release_explicit":false},
+    {"project_ref":"RWD3-GARDNER-POND-WATER-LINE","contractor":"King Excavating, Inc.","pay_request":"2-Final","amount_minor_usd":3352381,"final":true,"retainage_release_explicit":true}
+  ],
+  "assertions": {
+    "two_final_retainage_release_items_observed": true,
+    "defect_observed": false,
+    "buyer_need_observed": false,
+    "budget_observed": false,
+    "savings_observed": false,
+    "intent_to_buy_observed": false
+  },
+  "authority": {
+    "buyer_selected": false,
+    "route_selected": false,
+    "muse_requested": false,
+    "outbound_contact": false,
+    "provider_mutation": false,
+    "contract_acceptance": false,
+    "payment": false,
+    "revenue": false
+  }
+}

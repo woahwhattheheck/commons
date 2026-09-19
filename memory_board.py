@@ -26,7 +26,6 @@ MEMORY_LIVE_CASH_HTML = """
 <section id="live-cash" class="law" aria-label="Live cash">
 <strong>Live cash — verified product pages only.</strong> No invented Stripe links.
 <ul>
-<li><a href="../agent-rescue.html">$29 Autopsy checkout</a></li>
 <li><a href="../dealer-service-lead-rescue.html">$199 dealer diagnostic</a></li>
 <li><a href="../referral-intake-completeness.html">$199 referral diagnostic</a></li>
 <li><a href="../repair-booking-preflight.html">$199 repair diagnostic</a></li>

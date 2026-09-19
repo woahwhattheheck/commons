@@ -12,8 +12,8 @@ class TestGrokPingPollHtmlKeepLargerFixed2026091601(unittest.TestCase):
     def test_poll_html_has_autopsy_and_larger(self):
         text = PAGE.read_text(encoding="utf-8")
         self.assertIn('id="live-cash"', text)
-        self.assertIn("../agent-rescue.html", text)
-        self.assertIn("$29 Autopsy", text)
+
+
         self.assertIn("$199", text)
         self.assertIn("Larger fixed", text)
         self.assertIn("../diagnostic.html", text)
@@ -25,7 +25,7 @@ class TestGrokPingPollHtmlKeepLargerFixed2026091601(unittest.TestCase):
         self.assertNotIn("buy.stripe.com", cash)
 
     def test_product_pages_exist(self):
-        for name in ("agent-rescue.html", "diagnostic.html", "commercial.html"):
+        for name in ("diagnostic.html", "commercial.html"):
             self.assertTrue((ROOT / name).is_file(), name)
 
 
