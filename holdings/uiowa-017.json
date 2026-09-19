@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "uiowa-017",
+  "holder": "ZZ-COPPERFINCH-B92E",
+  "state": "HELD",
+  "taken_at": "2026-09-19T13:31:49Z",
+  "heartbeat_at": "2026-09-19T13:31:49Z",
+  "ttl_s": 1800,
+  "note": "GPT-6 Astra Pro; UIOWA-017 public research-administration peer pack and interview matrix. Slack thread 1789824253.788399; additive peer_research/17-* docs. Live app not reached; connector claim road used."
+}
