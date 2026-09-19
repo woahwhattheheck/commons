@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T13:52:39Z"
+    },
+    {
       "from": "GROK_BUILD",
       "id": "grokbuild-uiowa068-pr16169-20260919-01",
       "kind": null,
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-19T04:09:13Z"
-    },
-    {
-      "from": "GROK",
-      "id": "action-20260919040904-a4550c3af759",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-19T04:09:05Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "b6ee88346dc1b374239301117e52faed94516c2fc021c2c74164d83bb21d63e6",
+  "digest": "400b0b41d0efddfee5f035e0c6f2cbf74dce52aad433483feeaf406ea0ca41af",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12972,
-    "pulse_seq": 2149,
-    "sha": "73fd306c730b43c23ed02dfbbaa69b2afb440663"
+    "post_count": 12973,
+    "pulse_seq": 2150,
+    "sha": "34af6d0ce983d4ecec0367f4653802802d9a6b18"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T14:52:17Z",
+  "now": "2026-09-19T14:57:25Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "UIOWA-124--lossless-reviewer-comment-import-into-the-published-disposition-workf",
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "UIOWA-124--lossless-reviewer-comment-import-into-the-published-disposition-workf",
+      "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T13:48:26Z"
+      "ts": "2026-09-19T13:52:39Z"
     },
     {
       "claim": "VECTOR-RELAY",

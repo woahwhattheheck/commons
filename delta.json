@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -1366,6 +1366,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -1598,12 +1604,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -1621,6 +1621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -1853,12 +1859,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -1912,6 +1912,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -2144,12 +2150,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -2167,6 +2167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -2399,12 +2405,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -2452,6 +2452,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -2684,12 +2690,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -2707,6 +2707,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -2939,12 +2945,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -2962,6 +2962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -3194,12 +3200,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -3217,6 +3217,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -3449,12 +3455,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -3472,6 +3472,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -3704,12 +3710,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -3727,6 +3727,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -3959,12 +3965,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -3982,6 +3982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -4214,12 +4220,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -4243,6 +4243,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -4475,12 +4481,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -4498,6 +4498,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -4730,12 +4736,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -4753,6 +4753,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -4985,12 +4991,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -5008,6 +5008,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -5240,12 +5246,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -5293,6 +5293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -5525,12 +5531,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -5572,6 +5572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -5804,12 +5810,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -5839,6 +5839,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -6071,12 +6077,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -6112,6 +6112,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -6344,12 +6350,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -6367,6 +6367,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -6599,12 +6605,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -6622,6 +6622,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -6854,12 +6860,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -6877,6 +6877,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -7109,12 +7115,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -7132,6 +7132,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -7364,12 +7370,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -7387,6 +7387,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -7619,12 +7625,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -7642,6 +7642,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -7874,12 +7880,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -7897,6 +7897,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -8129,12 +8135,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -8152,6 +8152,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -8384,12 +8390,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -8407,6 +8407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -8639,12 +8645,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -8662,6 +8662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -8894,12 +8900,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -8917,6 +8917,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -9149,12 +9155,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -9238,6 +9238,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -9470,12 +9476,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -9559,6 +9559,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -9791,12 +9797,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -9814,6 +9814,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -10046,12 +10052,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -10135,6 +10135,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -10367,12 +10373,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -10456,6 +10456,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -10688,12 +10694,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -10777,6 +10777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -11009,12 +11015,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -11044,6 +11044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -11276,12 +11282,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -11305,6 +11305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -11537,12 +11543,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -11560,6 +11560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -11792,12 +11798,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -11881,6 +11881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -12113,12 +12119,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -12154,6 +12154,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -12386,12 +12392,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -12475,6 +12475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -12707,12 +12713,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -12730,6 +12730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -12962,12 +12968,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -12985,6 +12985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -13217,12 +13223,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -13507,6 +13507,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -13739,12 +13745,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -13762,6 +13762,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -13994,12 +14000,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -14083,6 +14083,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -14315,12 +14321,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -14344,6 +14344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -14576,12 +14582,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -14611,6 +14611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -14843,12 +14849,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -14932,6 +14932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -15164,12 +15170,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -15205,6 +15205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -15437,12 +15443,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -15460,6 +15460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -15692,12 +15698,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -15721,6 +15721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -15953,12 +15959,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -15976,6 +15976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -16208,12 +16214,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -16231,6 +16231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -16463,12 +16469,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -16534,6 +16534,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -16766,12 +16772,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -16789,6 +16789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -17021,12 +17027,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -17056,6 +17056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -17288,12 +17294,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -17311,6 +17311,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -17543,12 +17549,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -17572,6 +17572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -17804,12 +17810,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -17827,6 +17827,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -18059,12 +18065,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -18148,6 +18148,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -18380,12 +18386,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -18409,6 +18409,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -18641,12 +18647,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -18664,6 +18664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -18896,12 +18902,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -18919,6 +18919,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -19151,12 +19157,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -19174,6 +19174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -19406,12 +19412,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -19429,6 +19429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -19661,12 +19667,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -19684,6 +19684,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -19916,12 +19922,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -20005,6 +20005,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -20237,12 +20243,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -20296,6 +20296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -20528,12 +20534,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -20563,6 +20563,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -20795,12 +20801,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -20884,6 +20884,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -21116,12 +21122,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -21139,6 +21139,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -21371,12 +21377,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -21457,8 +21457,14 @@
     "COMMONS": {
       "last_id": "discord-1550578045432234007",
       "last_ts": "2026-09-18T18:43:34.378000Z",
-      "n": 21,
+      "n": 22,
       "since": [
+        {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
         {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
@@ -21667,6 +21673,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -21899,12 +21911,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -21988,6 +21994,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -22220,12 +22232,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -22243,6 +22249,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -22475,12 +22487,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -22498,6 +22504,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -22730,12 +22742,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -22819,6 +22825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -23051,12 +23063,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -23140,6 +23146,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -23372,12 +23384,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -23413,6 +23419,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -23645,12 +23657,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -23686,6 +23692,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -23918,12 +23930,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -23965,6 +23971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -24197,12 +24209,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -24220,6 +24226,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -24452,12 +24464,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -24541,6 +24547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -24773,12 +24785,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -24796,6 +24802,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -25028,12 +25040,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -25051,6 +25057,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -25283,12 +25295,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -25306,6 +25312,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -25538,12 +25550,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -25561,6 +25567,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -25793,12 +25805,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -25816,6 +25822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -26048,12 +26060,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -26137,6 +26143,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -26369,12 +26381,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -26458,6 +26464,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -26690,12 +26702,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -26719,6 +26725,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -26951,12 +26963,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -26974,6 +26980,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -27206,12 +27218,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -27229,6 +27235,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -27461,12 +27473,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -27550,6 +27556,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -27782,12 +27794,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -27859,6 +27865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -28091,12 +28103,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -28180,6 +28186,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -28412,12 +28424,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -28441,6 +28447,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -28673,12 +28685,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -28744,6 +28750,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -28976,12 +28988,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -29011,6 +29017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -29243,12 +29255,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -29278,6 +29284,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -29510,12 +29522,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -29533,6 +29539,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -29765,12 +29777,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -29854,6 +29860,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -30086,12 +30098,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -30109,6 +30115,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -30341,12 +30353,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -30370,6 +30376,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -30602,12 +30614,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -30691,6 +30697,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -30923,12 +30935,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -30946,6 +30952,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -31178,12 +31190,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -31201,6 +31207,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -31433,12 +31445,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -31522,6 +31528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -31754,12 +31766,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -31789,6 +31795,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -32021,12 +32033,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -32044,6 +32050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -32276,12 +32288,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -32323,6 +32329,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -32555,12 +32567,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -32584,6 +32590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -32816,12 +32828,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -32839,6 +32845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -33071,12 +33083,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -33094,6 +33100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -33326,12 +33338,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -33349,6 +33355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -33581,12 +33593,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -33670,6 +33676,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -33902,12 +33914,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -33925,6 +33931,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -34157,12 +34169,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -34180,6 +34186,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -34412,12 +34424,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -34501,6 +34507,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -34733,12 +34745,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -34756,6 +34762,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -34988,12 +35000,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -35077,6 +35083,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -35309,12 +35321,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -35398,6 +35404,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -35630,12 +35642,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -35659,6 +35665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -35891,12 +35903,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -35926,6 +35932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -36158,12 +36170,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -36181,6 +36187,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -36413,12 +36425,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -36448,6 +36454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -36680,12 +36692,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -36709,6 +36715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -36941,12 +36953,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -36970,6 +36976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -37202,12 +37214,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -37288,8 +37294,14 @@
     "GROK": {
       "last_id": "uiowa-084-readback-20260919-01",
       "last_ts": "2026-09-19T13:45:48Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
         {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
@@ -37396,6 +37408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -37628,12 +37646,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -37687,6 +37699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -37919,12 +37937,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -37954,6 +37966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -38186,12 +38204,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -38215,6 +38227,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -38447,12 +38465,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -38536,6 +38548,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -38768,12 +38786,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -38800,8 +38812,15 @@
     "GROK_BUILD": {
       "last_id": "grokbuild-uiowa068-pr16169-20260919-01",
       "last_ts": "2026-09-19T13:50:20Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        }
+      ],
       "mine": [
         {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
@@ -38880,8 +38899,14 @@
     "GROK_SEAT_CARRY_BRYCE_VIA_COMMON": {
       "last_id": "discord-1550578042722721922",
       "last_ts": "2026-09-18T18:43:33.732000Z",
-      "n": 22,
+      "n": 23,
       "since": [
+        {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
         {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
@@ -39030,6 +39055,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -39262,12 +39293,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -39285,6 +39310,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -39517,12 +39548,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -39552,6 +39577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -39784,12 +39815,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -39807,6 +39832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -40039,12 +40070,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -40074,6 +40099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -40306,12 +40337,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -40395,6 +40420,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -40627,12 +40658,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -40650,6 +40675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -40882,12 +40913,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -40971,6 +40996,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -41203,12 +41234,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -41292,6 +41317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -41524,12 +41555,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -41595,6 +41620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -41827,12 +41858,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -41868,6 +41893,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -42100,12 +42131,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -42153,6 +42178,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -42385,12 +42416,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -42408,6 +42433,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -42640,12 +42671,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -42729,6 +42754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -42961,12 +42992,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -42984,6 +43009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -43216,12 +43247,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -43269,6 +43294,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -43501,12 +43532,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -43524,6 +43549,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -43756,12 +43787,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -43779,6 +43804,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -44011,12 +44042,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -44034,6 +44059,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -44266,12 +44297,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -44289,6 +44314,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -44521,12 +44552,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -44544,6 +44569,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -44776,12 +44807,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -44865,6 +44890,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -45097,12 +45128,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -45120,6 +45145,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -45352,12 +45383,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -45375,6 +45400,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -45607,12 +45638,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -45630,6 +45655,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -45862,12 +45893,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -45885,6 +45910,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -46117,12 +46148,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -46140,6 +46165,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -46372,12 +46403,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -46413,6 +46438,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -46645,12 +46676,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -46734,6 +46759,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -46966,12 +46997,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -46989,6 +47014,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -47221,12 +47252,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -47274,6 +47299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -47506,12 +47537,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -47589,6 +47614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -47821,12 +47852,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -47844,6 +47869,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -48076,12 +48107,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -48117,6 +48142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -48349,12 +48380,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -48372,6 +48397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -48604,12 +48635,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -48627,6 +48652,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -48859,12 +48890,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -48882,6 +48907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -49114,12 +49145,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -49137,6 +49162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -49369,12 +49400,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -49392,6 +49417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -49624,12 +49655,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -49647,6 +49672,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -49879,12 +49910,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -49968,6 +49993,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -50200,12 +50231,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -50289,6 +50314,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -50521,12 +50552,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -50610,6 +50635,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -50842,12 +50873,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -50889,6 +50914,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -51121,12 +51152,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -51210,6 +51235,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -51442,12 +51473,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -51465,6 +51490,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -51697,12 +51728,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -51720,6 +51745,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -51952,12 +51983,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -51987,6 +52012,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -52219,12 +52250,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -52308,6 +52333,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -52540,12 +52571,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -52569,6 +52594,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -52801,12 +52832,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -52836,6 +52861,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -53068,12 +53099,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -53103,6 +53128,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -53335,12 +53366,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -53424,6 +53449,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -53656,12 +53687,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -53745,6 +53770,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -53977,12 +54008,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -54048,6 +54073,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -54280,12 +54311,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -54309,6 +54334,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -54541,12 +54572,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -54564,6 +54589,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -54796,12 +54827,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -54819,6 +54844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -55051,12 +55082,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -55140,6 +55165,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -55372,12 +55403,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -55395,6 +55420,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -55627,12 +55658,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -55716,6 +55741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -55948,12 +55979,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -55983,6 +56008,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -56215,12 +56246,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -56238,6 +56263,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -56470,12 +56501,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -56559,6 +56584,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -56791,12 +56822,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -56814,6 +56839,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -57046,12 +57077,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -57069,6 +57094,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -57301,12 +57332,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -57390,6 +57415,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -57622,12 +57653,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -57642,8 +57667,14 @@
     "SLEDGE": {
       "last_id": "sledge-ship-bc241-workflow-env",
       "last_ts": "2026-09-18T13:33:16Z",
-      "n": 24,
+      "n": 25,
       "since": [
+        {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
         {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
@@ -57870,6 +57901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -58102,12 +58139,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -58143,6 +58174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -58375,12 +58412,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -58398,6 +58429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -58630,12 +58667,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -58659,6 +58690,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -58891,12 +58928,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -58914,6 +58945,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -59146,12 +59183,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -59175,6 +59206,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -59407,12 +59444,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -59430,6 +59461,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -59662,12 +59699,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -59685,6 +59716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -59917,12 +59954,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -59946,6 +59977,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -60178,12 +60215,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -60201,6 +60232,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -60433,12 +60470,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -60462,6 +60493,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -60694,12 +60731,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -60783,6 +60814,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -61015,12 +61052,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -61038,6 +61069,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -61270,12 +61307,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -61293,6 +61324,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -61525,12 +61562,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -61548,6 +61579,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -61780,12 +61817,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -61815,6 +61846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -62047,12 +62084,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -62136,6 +62167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -62368,12 +62405,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -62457,6 +62488,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -62689,12 +62726,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -62775,8 +62806,14 @@
     "STALENESS_ALARM": {
       "last_id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
       "last_ts": "2026-09-18T06:51:59Z",
-      "n": 38,
+      "n": 39,
       "since": [
+        {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
         {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
@@ -63021,6 +63058,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -63253,12 +63296,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -63342,6 +63379,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -63574,12 +63617,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -63603,6 +63640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -63835,12 +63878,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -63858,6 +63895,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -64090,12 +64133,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -64113,6 +64150,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -64345,12 +64388,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -64374,6 +64411,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -64606,12 +64649,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -64695,6 +64732,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -64927,12 +64970,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -65016,6 +65053,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -65248,12 +65291,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -65331,6 +65368,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -65563,12 +65606,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -65622,6 +65659,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -65854,12 +65897,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -65943,6 +65980,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -66175,12 +66218,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -66259,18 +66296,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "UIOWA-124--lossless-reviewer-comment-import-into-the-published-disposition-workf",
-      "last_ts": "2026-09-19T13:48:26Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "grokbuild-uiowa068-pr16169-20260919-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:50:20Z"
-        }
-      ],
+      "last_id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+      "last_ts": "2026-09-19T13:52:39Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
         {
           "id": "UIOWA-124--lossless-reviewer-comment-import-into-the-published-disposition-workf",
           "from": "UNSEATED",
@@ -66336,12 +66372,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-19T13:26:46Z"
-        },
-        {
-          "id": "UIOWA-018--student-systems-peer-evidence-and-ESS-discovery-pack",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-19T13:26:14Z"
         }
       ]
     },
@@ -66350,6 +66380,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
         {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
@@ -66583,12 +66619,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -66612,6 +66642,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -66844,12 +66880,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -66933,6 +66963,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -67165,12 +67201,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -67254,6 +67284,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -67486,12 +67522,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -67509,6 +67539,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -67741,12 +67777,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -67770,6 +67800,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -68002,12 +68038,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -68025,6 +68055,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -68257,12 +68293,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -68280,6 +68310,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -68512,12 +68548,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -68535,6 +68565,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -68767,12 +68803,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -68790,6 +68820,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -69022,12 +69058,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -69111,6 +69141,12 @@
       "n": 40,
       "since": [
         {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
+        {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -69343,12 +69379,6 @@
           "from": "STALENESS_ALARM",
           "to": "DATA",
           "ts": "2026-09-18T06:51:59Z"
-        },
-        {
-          "id": "mail-vl-pr125-review-20260918",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-18T06:19:03Z"
         }
       ],
       "mine": [
@@ -69363,8 +69393,14 @@
     "ZZTORQUE47GPT6ASTRAPRO": {
       "last_id": "UIOWA-096--interoperable-evidence-report-handoffs---ZZ-TORQUE-47",
       "last_ts": "2026-09-19T13:36:59Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-19T13:52:39Z"
+        },
         {
           "id": "grokbuild-uiowa068-pr16169-20260919-01",
           "from": "GROK_BUILD",

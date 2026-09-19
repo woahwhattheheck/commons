@@ -1,9 +1,10 @@
 {
-  "seq": 2149,
-  "head": "73fd306c730b43c23ed02dfbbaa69b2afb440663",
-  "ts": "2026-09-19T14:52:17Z",
-  "post_count": 12972,
+  "seq": 2150,
+  "head": "34af6d0ce983d4ecec0367f4653802802d9a6b18",
+  "ts": "2026-09-19T14:57:25Z",
+  "post_count": 12973,
   "newest": [
+    "UIOWA-case-mix-lab--expose-aggregate-benchmark-reversals-and-unknown-outcomes",
     "grokbuild-uiowa068-pr16169-20260919-01",
     "UIOWA-124--lossless-reviewer-comment-import-into-the-published-disposition-workf",
     "UIOWA-138--exercised-analyst-to-analyst-continuation-packet--ZZ-BOREAL-138Q-",
@@ -12,8 +13,7 @@
     "UIOWA-103-identifier-mapping",
     "UIOWA-103--deterministic-cross-component-identifier-reconciliation",
     "UIOWA-098-integration-carrier-claim---ZZ-Forge",
-    "UIOWA-039---UIOWA-094--executable-consolidated-review-and-revision-rehearsal--ZZ",
-    "UIOWA-093-traceability-rehearsal-carrier"
+    "UIOWA-039---UIOWA-094--executable-consolidated-review-and-revision-rehearsal--ZZ"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {
