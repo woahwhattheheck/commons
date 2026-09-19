@@ -1,0 +1,262 @@
+{
+  "observed": {
+    "uiowa_rfq_18649_adoption_readiness": [
+      "person_hours",
+      "person_hours_per_month"
+    ],
+    "uiowa_rfq_18649_ai_decision_case": [
+      "currency_per_hour",
+      "documents_per_month",
+      "months"
+    ],
+    "uiowa_rfq_18649_ai_opportunity_portfolio": [
+      "FTE-fraction per year (recurring)",
+      "hours (one-time)",
+      "staff-hours released per year (recurring)"
+    ],
+    "uiowa_rfq_18649_capacity_feasibility": [
+      "staff-hours",
+      "staff-hours available to this programme per phase window"
+    ],
+    "uiowa_rfq_18649_deadline_continuity": [
+      "hours"
+    ],
+    "uiowa_rfq_18649_economics_resource_adapters": [
+      "FTE-fraction per year (recurring staff load)",
+      "currency (one-time)",
+      "currency per year (recurring)",
+      "hours (one-time implementation)",
+      "staff-hours released per year (recurring)"
+    ],
+    "uiowa_rfq_18649_intake_rehearsal": [
+      "backup job records carrying a restoration exercise",
+      "deployments carrying an identifier",
+      "findings carrying a remediation target",
+      "findings past remediation target without risk acceptance",
+      "in-scope privileged accounts dispositioned",
+      "out-of-window deployments without a documented exception",
+      "repositories with required review and status check",
+      "sampled changes recording a reviewer",
+      "sampled pull requests with an approving review",
+      "sampled releases below the recorded approval requirement",
+      "sampled releases without a test evidence reference"
+    ],
+    "uiowa_rfq_18649_readout_deck": [
+      "REPLACE",
+      "hours",
+      "of 12 sampled changes",
+      "of 12 sampled deployments",
+      "of 2 cycles requested",
+      "of 9 services",
+      "percent",
+      "staff-hours",
+      "staff-hours per month"
+    ]
+  },
+  "resolved": {
+    "out_of_scope": [
+      {
+        "component": "uiowa_rfq_18649_ai_decision_case",
+        "unit": "documents_per_month"
+      },
+      {
+        "component": "uiowa_rfq_18649_ai_decision_case",
+        "unit": "months"
+      },
+      {
+        "component": "uiowa_rfq_18649_intake_rehearsal",
+        "unit": "backup job records carrying a restoration exercise"
+      },
+      {
+        "component": "uiowa_rfq_18649_intake_rehearsal",
+        "unit": "deployments carrying an identifier"
+      },
+      {
+        "component": "uiowa_rfq_18649_intake_rehearsal",
+        "unit": "findings carrying a remediation target"
+      },
+      {
+        "component": "uiowa_rfq_18649_intake_rehearsal",
+        "unit": "findings past remediation target without risk acceptance"
+      },
+      {
+        "component": "uiowa_rfq_18649_intake_rehearsal",
+        "unit": "in-scope privileged accounts dispositioned"
+      },
+      {
+        "component": "uiowa_rfq_18649_intake_rehearsal",
+        "unit": "out-of-window deployments without a documented exception"
+      },
+      {
+        "component": "uiowa_rfq_18649_intake_rehearsal",
+        "unit": "repositories with required review and status check"
+      },
+      {
+        "component": "uiowa_rfq_18649_intake_rehearsal",
+        "unit": "sampled changes recording a reviewer"
+      },
+      {
+        "component": "uiowa_rfq_18649_intake_rehearsal",
+        "unit": "sampled pull requests with an approving review"
+      },
+      {
+        "component": "uiowa_rfq_18649_intake_rehearsal",
+        "unit": "sampled releases below the recorded approval requirement"
+      },
+      {
+        "component": "uiowa_rfq_18649_intake_rehearsal",
+        "unit": "sampled releases without a test evidence reference"
+      },
+      {
+        "component": "uiowa_rfq_18649_readout_deck",
+        "unit": "REPLACE"
+      },
+      {
+        "component": "uiowa_rfq_18649_readout_deck",
+        "unit": "of 12 sampled changes"
+      },
+      {
+        "component": "uiowa_rfq_18649_readout_deck",
+        "unit": "of 12 sampled deployments"
+      },
+      {
+        "component": "uiowa_rfq_18649_readout_deck",
+        "unit": "of 2 cycles requested"
+      },
+      {
+        "component": "uiowa_rfq_18649_readout_deck",
+        "unit": "of 9 services"
+      },
+      {
+        "component": "uiowa_rfq_18649_readout_deck",
+        "unit": "percent"
+      }
+    ],
+    "out_of_scope_count": 19,
+    "quantities": [
+      {
+        "components": [
+          "uiowa_rfq_18649_ai_opportunity_portfolio",
+          "uiowa_rfq_18649_economics_resource_adapters"
+        ],
+        "quantity": "FTE-fraction per year",
+        "spelling_count": 2,
+        "spellings": [
+          "FTE-fraction per year (recurring staff load)",
+          "FTE-fraction per year (recurring)"
+        ]
+      },
+      {
+        "components": [
+          "uiowa_rfq_18649_economics_resource_adapters"
+        ],
+        "quantity": "currency one-time",
+        "spelling_count": 1,
+        "spellings": [
+          "currency (one-time)"
+        ]
+      },
+      {
+        "components": [
+          "uiowa_rfq_18649_economics_resource_adapters"
+        ],
+        "quantity": "currency per year",
+        "spelling_count": 1,
+        "spellings": [
+          "currency per year (recurring)"
+        ]
+      },
+      {
+        "components": [
+          "uiowa_rfq_18649_ai_opportunity_portfolio",
+          "uiowa_rfq_18649_economics_resource_adapters"
+        ],
+        "quantity": "staff-hours one-time",
+        "spelling_count": 2,
+        "spellings": [
+          "hours (one-time implementation)",
+          "hours (one-time)"
+        ]
+      },
+      {
+        "components": [
+          "uiowa_rfq_18649_adoption_readiness",
+          "uiowa_rfq_18649_readout_deck"
+        ],
+        "quantity": "staff-hours per month",
+        "spelling_count": 2,
+        "spellings": [
+          "person_hours_per_month",
+          "staff-hours per month"
+        ]
+      },
+      {
+        "components": [
+          "uiowa_rfq_18649_capacity_feasibility"
+        ],
+        "quantity": "staff-hours per phase window",
+        "spelling_count": 1,
+        "spellings": [
+          "staff-hours available to this programme per phase window"
+        ]
+      },
+      {
+        "components": [
+          "uiowa_rfq_18649_ai_opportunity_portfolio",
+          "uiowa_rfq_18649_economics_resource_adapters"
+        ],
+        "quantity": "staff-hours per year",
+        "spelling_count": 1,
+        "spellings": [
+          "staff-hours released per year (recurring)"
+        ]
+      }
+    ],
+    "unresolved": [
+      {
+        "component": "uiowa_rfq_18649_adoption_readiness",
+        "measure": "staff-hours",
+        "note": "the period is not written in the unit string. It is NOT read as one-time: a bare hours unit can be a monthly or annual figure, and assuming otherwise turns a recurring commitment into a one-off cost.",
+        "period": "UNSTATED-PERIOD",
+        "unit": "person_hours"
+      },
+      {
+        "component": "uiowa_rfq_18649_ai_decision_case",
+        "measure": "staff-hours",
+        "note": "the period is not written in the unit string. It is NOT read as one-time: a bare hours unit can be a monthly or annual figure, and assuming otherwise turns a recurring commitment into a one-off cost.",
+        "period": "UNSTATED-PERIOD",
+        "unit": "currency_per_hour"
+      },
+      {
+        "component": "uiowa_rfq_18649_capacity_feasibility",
+        "measure": "staff-hours",
+        "note": "the period is not written in the unit string. It is NOT read as one-time: a bare hours unit can be a monthly or annual figure, and assuming otherwise turns a recurring commitment into a one-off cost.",
+        "period": "UNSTATED-PERIOD",
+        "unit": "staff-hours"
+      },
+      {
+        "component": "uiowa_rfq_18649_deadline_continuity",
+        "measure": "staff-hours",
+        "note": "the period is not written in the unit string. It is NOT read as one-time: a bare hours unit can be a monthly or annual figure, and assuming otherwise turns a recurring commitment into a one-off cost.",
+        "period": "UNSTATED-PERIOD",
+        "unit": "hours"
+      },
+      {
+        "component": "uiowa_rfq_18649_readout_deck",
+        "measure": "staff-hours",
+        "note": "the period is not written in the unit string. It is NOT read as one-time: a bare hours unit can be a monthly or annual figure, and assuming otherwise turns a recurring commitment into a one-off cost.",
+        "period": "UNSTATED-PERIOD",
+        "unit": "hours"
+      },
+      {
+        "component": "uiowa_rfq_18649_readout_deck",
+        "measure": "staff-hours",
+        "note": "the period is not written in the unit string. It is NOT read as one-time: a bare hours unit can be a monthly or annual figure, and assuming otherwise turns a recurring commitment into a one-off cost.",
+        "period": "UNSTATED-PERIOD",
+        "unit": "staff-hours"
+      }
+    ],
+    "verdict": "7 quantities observed under 10 spellings; 6 resourcing unit strings name a measure but no period and are listed rather than guessed; 19 strings carry no resourcing measure and are out of scope for this module."
+  },
+  "schema_version": "uiowa-105d-units/1"
+}

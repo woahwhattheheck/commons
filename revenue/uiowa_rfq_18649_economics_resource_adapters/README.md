@@ -11,7 +11,8 @@ deterministic (no clock, no RNG, sorted traversal).
 
 ```
 python3 integrate.py
-python3 -m unittest discover -p "test_*.py"     # 102 tests across the lane
+python3 -m unittest discover -p "test_*.py"     # 122 tests across the lane
+python3 units.py --revenue-dir ..                # unit vocabulary scan (read-only)
 ```
 
 **Component authors — check your output before you land:**
@@ -133,7 +134,7 @@ just no longer counted.
 
 **Real and working:** the five typed ledgers, all three adapters, the merge with conflict
 detection, the three-view accounting, the UNKNOWN handling, all four output writers, and the
-102-test suite (45 integration, 33 conformance checker, 24 ledger bridge). The integrator runs against two components genuinely on `main` and produces the
+122-test suite (45 integration, 33 conformance checker, 24 ledger bridge, 20 units). The integrator runs against two components genuinely on `main` and produces the
 files in `sample_output/`.
 
 **Draft / placeholder:** every number in `fixtures/`. The contract fixtures are shaped like
@@ -215,6 +216,31 @@ UNKNOWN and stay UNKNOWN. `recurring_figures_agree` returns AGREE / DIFFER / UNK
 Unestimated recommendations are listed in `unestimated` and are not emitted as items, so the
 roadmap cannot read them as zero capacity consumed. Emitted metadata carries the receiving lane's
 per-role, no-named-individual rule.
+
+## `units.py` — unit vocabulary across landed lanes
+
+A read-only scan of the landed lanes found 7 resourcing quantities written under 10 spellings.
+Three are spelled more than one way, including one across two different lanes:
+
+| Quantity | Spellings found | Lanes |
+|---|---|---|
+| `staff-hours per month` | `person_hours_per_month`, `staff-hours per month` | adoption_readiness, readout_deck |
+| `FTE-fraction per year` | two variants | this lane |
+| `staff-hours one-time` | two variants | this lane |
+
+**The rule:** a unit resolves only when both its measure and its period are written down.
+`person_hours_per_month` and `staff-hours per month` are the same quantity — person/staff and
+underscore/hyphen are orthography. A bare `staff-hours` does **not** resolve to one-time.
+`capacity_feasibility`'s item effort genuinely is one-time, but that is stated in its `meta`, not
+in the string. Reading a bare hours unit as one-time would silently turn a monthly figure into a
+one-off cost, so an unstated period yields `UNRESOLVED` and the caller has to look.
+`test_equivalent_is_never_returned_when_a_period_is_unstated` holds it across every vague/stated
+pair. Six landed unit strings name a measure but no period; they are listed, not guessed.
+
+Verdicts: `EQUIVALENT`, `CONVERTIBLE` (a declared constant relates the measures — with none
+supplied, no conversion is performed and no agreement is claimed), `DIFFERENT`, `UNRESOLVED`.
+Strings carrying no resourcing measure (measure denominators such as `of 12 sampled changes`) are
+counted as out of scope rather than reported as unresolved units.
 
 ## Handoff
 
