@@ -1,0 +1,77 @@
+{
+  "schema": "uiowa-125-synthetic-rehearsal/v1",
+  "classification": "SYNTHETIC_UI_ONLY_NOT_COMPILER_OUTPUT",
+  "source_composition": "c4c305db7944cb305625836d4767d6abcc37ae36",
+  "baseline_app_blob": "f180d24e5bb05489774d8c0baa4f60d3fd978656",
+  "browser_version": "144.0.7559.96",
+  "execution": "Real headless Chromium DOM with exact checked-in assets. Network/compiler responses in transport tests are synthetic stubs.",
+  "sample_cells": 12,
+  "repeated_cycles": 2,
+  "cycle_1_clean_export_identical": true,
+  "cycle_2_clean_export_identical": true,
+  "existing_download_preserved": true,
+  "tests_normal": {
+    "run": 18,
+    "failures": 0,
+    "errors": 0
+  },
+  "tests_optimized": {
+    "run": 18,
+    "failures": 0,
+    "errors": 0
+  },
+  "source_files": {
+    "app.js": {
+      "bytes": 16385,
+      "sha256": "6e81d9de0b164fa0037b25d5b5b476a381e6044e565a6eecbadc70a538a98373",
+      "git_blob_sha1": "e2fcf89eac59ec95bf745d5d9e59dc9c541d8c43"
+    },
+    "index.html": {
+      "bytes": 4449,
+      "sha256": "ba5eb7f6caaa5d179092f9601928aa6bca2c213fec38fccf488f463971bf4263",
+      "git_blob_sha1": "35acdf85053fd1e8e206aec3c0582cdc61daab08"
+    },
+    "handoff.js": {
+      "bytes": 13279,
+      "sha256": "0d0a4300d15dc5e8d19a4833cf58e9379406715129d77470253e328d7c5d4710",
+      "git_blob_sha1": "114e6c0bf9041a5dd178ed5b646e6b2069848d7e"
+    },
+    "handoff_import.js": {
+      "bytes": 4590,
+      "sha256": "919954318e549bacd421353b78faffecd56ec56addd32d2c58e8c6e32b8ab5d8",
+      "git_blob_sha1": "20703283260781e87ef88c7ca0af17b380541f74"
+    },
+    "style.css": {
+      "bytes": 1824,
+      "sha256": "b371126f0e2fa8a7334c0e45c9b998e6e9d87e8300a2f3a31bcc29ccddb14d9f",
+      "git_blob_sha1": "321f743b95640dcf404ed6d758a5948ba8b6fda2"
+    },
+    "test_sample_session.py": {
+      "bytes": 15302,
+      "sha256": "0dbf1f1c3ef628aefa95be1251b44baa230144fec6d684670f891878752dc993",
+      "git_blob_sha1": "657ae1414b503175c56caa1b8052d83743d34bdf"
+    }
+  },
+  "outputs": {
+    "clean_handoff.json": {
+      "bytes": 2850,
+      "sha256": "1d80bed47f8cbfef81441c77b1ae8af5ef2a0861b562c4a4694f09b666442c53",
+      "git_blob_sha1": "cff0c461fc6b7a3de7d5ff38489c7c5851d7d9da"
+    },
+    "edited_handoff.json": {
+      "bytes": 2941,
+      "sha256": "74a01876c3f7a98ac6227ecb70bc706899e012f1a64ee781632886965a8a25fb",
+      "git_blob_sha1": "ec1b8069a976b2c3f6f350abb0aea50a78cc815b"
+    }
+  },
+  "limits": [
+    "No live University evidence, no server/compiler execution claimed by this suite.",
+    "Prior work is parked only in tab memory; reload/close still requires a saved export.",
+    "Provider CI and main integration must be verified separately."
+  ],
+  "attribution": {
+    "Trellis": "Shared handoff schema, Markdown projection, original handoff continuity.",
+    "Keystone-43CF": "Strict draft parsing and generation/editRevision/draftLoadSequence stale-response protection.",
+    "ORTHOCLASE-9F2": "Reversible sample sessions, full filter reset and the 18-test sample integration suite."
+  }
+}
