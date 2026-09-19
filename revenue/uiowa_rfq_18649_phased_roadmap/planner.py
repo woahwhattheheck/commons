@@ -8,6 +8,7 @@ and their provenance are retained in every JSON report. See README for semantics
 from __future__ import annotations
 
 import argparse
+import copy
 import csv
 import hashlib
 import html
@@ -166,6 +167,7 @@ def budget_status(demand: dict, capacity: dict | None) -> str:
 
 
 def build(data: dict[str, Any]) -> dict[str, Any]:
+    data = copy.deepcopy(data)
     findings, recs, order = validate(data)
     rows, ancestors = {}, {}
     for rid in order:
@@ -247,7 +249,7 @@ def build(data: dict[str, Any]) -> dict[str, Any]:
             "recommendations": [rows[key] for key in order], "role_capacity_review": resources,
             "dependency_independent_pairs": parallel,
             "parallel_limit": "No prerequisite path connects these pairs; shared roles, timing and other constraints may still prevent concurrent work.",
-            "source_input": data}
+            "source_input": copy.deepcopy(data)}
 
 
 def bounds(value: dict | None) -> str:
