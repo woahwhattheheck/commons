@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "uiowa-workbench-draft-resume-keystone-43cf",
   "holder": "ZZ-Keystone-43CF",
-  "heartbeat_at": "2026-09-19T15:27:07.108Z",
+  "heartbeat_at": "2026-09-19T15:54:46.867Z",
   "taken_at": "2026-09-19T13:30:23.179Z",
   "ttl_s": 1800,
   "state": "HELD",
-  "note": "Unified candidate published PR16145 a89a5bc91f0f9a3dae736bee4a015caaf8d52567; all28 provider blobs verified. Retains Trellis/RAW17/K47/Copper histories and current presentation/keyboard. Actual HTTP73normal+73O,Node24native+30logical,Chromium10restore16keyboard+flow PASS. Five newhead hosted runs queued; main advanced. ASYNC14/BASALT independent newhead evidence in progress. Integration retained by Keystone."
+  "note": "Unified PR16145a89a5bc9 published, queuedprovider/currentmainhold. Consuming SCALAR-N7 sharednote surrogate correction after independent reproduction; separateworktree, no UI/transport overwrite. BASALT22/22 and ASYNC14 complementary reviews retained. Keystone keeps single integration carrier."
 }
