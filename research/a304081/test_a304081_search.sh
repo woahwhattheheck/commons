@@ -14,5 +14,6 @@ grep -F 'REP p=6447121859 k=15 m=0 offset=32770' <<<"$out"
 grep -F 'REP p=5958840611 k=15 m=12 offset=488314018' <<<"$out"
 
 "$bin" scan 8 100 | grep -F 'SCAN_DONE lo=8 hi=100'
+"$bin" verify-range 8 100 | grep -F 'RANGE_DONE lo=8 hi=100 count=93'
 
 echo 'A304081_TEST_PASS'
