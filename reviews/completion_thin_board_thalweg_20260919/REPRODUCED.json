@@ -1,0 +1,135 @@
+{
+  "source_head": "fad7e3dbbc61dc4f110395c408c8a9fe1c0629ad",
+  "source_blobs": {
+    "chunk_board.py": "fda86b05c83714aa47dddd547992d865acb2d6a5",
+    "completion_projection.py": "0700a3459d6adb12eb494cf4a8d156c78588d97c"
+  },
+  "state": "DEFECT_REPRODUCED",
+  "mismatches": [
+    "verified_completion"
+  ],
+  "cases": [
+    {
+      "case": "verified_completion",
+      "verified_ids": [
+        "THALWEG-COMPLETE-20260918"
+      ],
+      "expected_active_ids": [
+        "THALWEG-OPENWORK-20260918"
+      ],
+      "actual_chunk_ids": [
+        "THALWEG-COMPLETE-20260918",
+        "THALWEG-OPENWORK-20260918"
+      ],
+      "completed_body_in_html": true,
+      "projection_agrees": false,
+      "history_and_input_unchanged": true,
+      "real_git_ancestry": true
+    },
+    {
+      "case": "reopened_stale_history_flag",
+      "verified_ids": [],
+      "expected_active_ids": [
+        "THALWEG-COMPLETE-20260918",
+        "THALWEG-OPENWORK-20260918"
+      ],
+      "actual_chunk_ids": [
+        "THALWEG-COMPLETE-20260918",
+        "THALWEG-OPENWORK-20260918"
+      ],
+      "completed_body_in_html": true,
+      "projection_agrees": true,
+      "history_and_input_unchanged": true,
+      "real_git_ancestry": true
+    },
+    {
+      "case": "source_drift",
+      "verified_ids": [],
+      "expected_active_ids": [
+        "THALWEG-COMPLETE-20260918",
+        "THALWEG-OPENWORK-20260918"
+      ],
+      "actual_chunk_ids": [
+        "THALWEG-COMPLETE-20260918",
+        "THALWEG-OPENWORK-20260918"
+      ],
+      "completed_body_in_html": true,
+      "projection_agrees": true,
+      "history_and_input_unchanged": true,
+      "real_git_ancestry": true
+    },
+    {
+      "case": "nonancestor_marker",
+      "verified_ids": [],
+      "expected_active_ids": [
+        "THALWEG-COMPLETE-20260918",
+        "THALWEG-OPENWORK-20260918"
+      ],
+      "actual_chunk_ids": [
+        "THALWEG-COMPLETE-20260918",
+        "THALWEG-OPENWORK-20260918"
+      ],
+      "completed_body_in_html": true,
+      "projection_agrees": true,
+      "history_and_input_unchanged": true,
+      "real_git_ancestry": true
+    },
+    {
+      "case": "other_route",
+      "verified_ids": [
+        "THALWEG-COMPLETE-20260918"
+      ],
+      "expected_active_ids": [
+        "THALWEG-COMPLETE-20260918",
+        "THALWEG-OPENWORK-20260918"
+      ],
+      "actual_chunk_ids": [
+        "THALWEG-COMPLETE-20260918",
+        "THALWEG-OPENWORK-20260918"
+      ],
+      "completed_body_in_html": true,
+      "projection_agrees": true,
+      "history_and_input_unchanged": true,
+      "real_git_ancestry": true
+    },
+    {
+      "case": "named_sender",
+      "verified_ids": [
+        "THALWEG-COMPLETE-20260918"
+      ],
+      "expected_active_ids": [
+        "THALWEG-COMPLETE-20260918",
+        "THALWEG-OPENWORK-20260918"
+      ],
+      "actual_chunk_ids": [
+        "THALWEG-COMPLETE-20260918",
+        "THALWEG-OPENWORK-20260918"
+      ],
+      "completed_body_in_html": true,
+      "projection_agrees": true,
+      "history_and_input_unchanged": true,
+      "real_git_ancestry": true
+    },
+    {
+      "case": "moderated_completed",
+      "verified_ids": [
+        "THALWEG-COMPLETE-20260918"
+      ],
+      "expected_active_ids": [
+        "THALWEG-OPENWORK-20260918"
+      ],
+      "actual_chunk_ids": [
+        "THALWEG-OPENWORK-20260918"
+      ],
+      "completed_body_in_html": false,
+      "projection_agrees": true,
+      "history_and_input_unchanged": true,
+      "real_git_ancestry": true
+    }
+  ],
+  "limits": [
+    "Real thin-renderer/component run, not full board_ingest import or four-suite execution.",
+    "Provider metadata is synthetic; ancestry checks use an actual temporary Git repository.",
+    "Cached completed flags must not replace current marker validation."
+  ]
+}
