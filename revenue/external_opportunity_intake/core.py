@@ -578,14 +578,17 @@ def render_markdown(record: dict[str, Any]) -> str:
 
 
 def write_bundle(document: Any, output_dir: str | os.PathLike[str], *, clock: Callable[[], datetime] | None = None, historical_at: datetime | None = None) -> dict[str, Any]:
+    # Authenticate and render the complete semantic payload before reserving the
+    # output path. Invalid evidence must not poison a create-exclusive retry by
+    # leaving an empty destination directory behind.
+    record = compile_document(document, clock=clock, historical_at=historical_at)
+    record_bytes = canonical_bytes(record) + b"\n"
+    md = render_markdown(record).encode("utf-8")
     out = Path(output_dir)
     try:
         out.mkdir(parents=True, exist_ok=False)
     except FileExistsError as exc:
         raise IntakeError("output directory already exists") from exc
-    record = compile_document(document, clock=clock, historical_at=historical_at)
-    record_bytes = canonical_bytes(record) + b"\n"
-    md = render_markdown(record).encode("utf-8")
     (out / "record.json").write_bytes(record_bytes)
     (out / "routing.md").write_bytes(md)
     manifest = {
