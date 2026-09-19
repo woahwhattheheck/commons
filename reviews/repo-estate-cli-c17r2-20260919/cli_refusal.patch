@@ -1,0 +1,13 @@
+--- a/tools/repo_estate_rationalizer/rationalizer.py
++++ b/tools/repo_estate_rationalizer/rationalizer.py
+@@ -751,7 +751,9 @@
+             return 2
+         print("VERIFIED")
+         return 0
+-    except EstateError as exc:
++    except (EstateError, OSError, UnicodeError, TypeError) as exc:
++        # Normalize invalid public input and local I/O faults at the CLI only.
++        # Preserve the descriptor helpers' conservative partial-file retention.
+         print(f"REFUSED: {exc}", file=sys.stderr)
+         return 2
+ 

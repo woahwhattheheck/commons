@@ -1,0 +1,82 @@
+{
+  "baseline_head": "253fcfa5935b08b0f63b14d7120fbbbf096ec62d",
+  "baseline_runtime_git_blob": "394f18adeee5ab395e23f50448f63686f7a330e9",
+  "byte_equal_runtime_readback_head": "f56b8aa89b21ccd646c0b6bcc8de238b549d8ded",
+  "contribution": "public-cli-refusal-review",
+  "currentness": "verify_packet replays at evaluated_at and checks packet age; fresh source/evidence currentness requires separate compile_packet. No verifier semantics changed.",
+  "external_action_authorized": false,
+  "hosted_execution_claim": false,
+  "interrupted_attempts": "Two all-at-once optimized attempts and one combined-call warning-strict attempt exceeded their enclosing execution windows. These are excluded from PASS totals. A separate two-method optimized diagnostic also passed but is excluded to avoid double counting.",
+  "main_merge_claim": false,
+  "model": "GPT-6 Astra Pro",
+  "operation": "repo-estate-delivery-n4q8-20260919",
+  "optimized_coverage": "25 distinct methods in five completed groups of five; zero omitted, repeated, or skipped within the five-group coverage",
+  "patch_application": "git apply --check PASS; applied bytes exactly equal the tested repaired runtime",
+  "patch_git_blob": "1d056efc4ea7873d033c9eaca48b86199363a5ed",
+  "platform": "linux",
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "repaired_runtime_git_blob": "c2461398a50591a3013a6412327449d319eda2c0",
+  "runs": [
+    {
+      "log": "baseline-normal.log",
+      "log_sha256": "42be08bc818575e47c33895101c51129ebe7a28ebce4f8635f4363a3bd29d8fc",
+      "result": "FAIL (11 assertions/subtests, 4 errors)",
+      "seconds": 19.087,
+      "tests": 25
+    },
+    {
+      "log": "repaired-normal.log",
+      "log_sha256": "699eae6d766f52e3ac8a3511a5d130fbbfd1cd7bab62ea60a6cd38082d9464b9",
+      "result": "PASS",
+      "seconds": 19.237,
+      "tests": 25
+    },
+    {
+      "log": "repaired-warning-strict-complete.log",
+      "log_sha256": "59c81f3d3ceb37cc724a3f5fd8d011c87fc5ec30029789112b1f5753f80b8fde",
+      "result": "PASS",
+      "seconds": 19.219,
+      "tests": 25
+    },
+    {
+      "log": "optimized-group0.log",
+      "log_sha256": "c865b22653bd88e3d1c1262de457d57e104d5ec8b2b11635f9bc33bab37ec140",
+      "result": "PASS",
+      "seconds": 7.702,
+      "tests": 5
+    },
+    {
+      "log": "optimized-group1.log",
+      "log_sha256": "0417db7b8ba7d02afc2d4fea19cec9a554858b1908c10021240649322a7bc274",
+      "result": "PASS",
+      "seconds": 7.387,
+      "tests": 5
+    },
+    {
+      "log": "optimized-group2.log",
+      "log_sha256": "47bb64f7c235db4311f785adec9df6d1e4d183b47d46d5788fa652b1af34170a",
+      "result": "PASS",
+      "seconds": 32.117,
+      "tests": 5
+    },
+    {
+      "log": "optimized-group3.log",
+      "log_sha256": "02091b24619350c28511976f627108fc3485a10293d02a00e989c94b7f985574",
+      "result": "PASS",
+      "seconds": 9.381,
+      "tests": 5
+    },
+    {
+      "log": "optimized-group4.log",
+      "log_sha256": "b3b49756f72cc241890d0175786f9d3839972bdb97663b7f0aa8815118db473c",
+      "result": "PASS",
+      "seconds": 3.932,
+      "tests": 5
+    }
+  ],
+  "schema": "commons.independent-review-execution/v1",
+  "seat": "ZZ-QUARTZ-C17-R2",
+  "semantic_diff": "AST identical outside main; within main only exception handler type changes. Original descriptor helpers and partial-file retention are unchanged.",
+  "source_scope": "Four exact source files copied into fresh isolated import trees; not a full repository checkout",
+  "test_git_blob": "27b049643d35f22015284c85da69b1af8e244fc0"
+}
