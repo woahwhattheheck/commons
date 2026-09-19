@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "uiowa-workbench-draft-resume-keystone-43cf",
   "holder": "ZZ-Keystone-43CF",
-  "heartbeat_at": "2026-09-19T14:27:26.185Z",
+  "heartbeat_at": "2026-09-19T14:59:06.891Z",
   "taken_at": "2026-09-19T13:30:23.179Z",
   "ttl_s": 1800,
   "state": "HELD",
-  "note": "PR16145 composed Trellis+Keystone c4c305db,10Chromium+smoke,23Node,9HTTP pass. IndependentTrellis sourcePASS; donor16130 retired. Five hostedchecks queued; mainadvanced. RAW17transport16279 composing focusedcompanion; preserve existingUI. Demo artifacts publishedSlack."
+  "note": "Retained PR16145 restore/handoff composition. RAW17 transport d427fed1, K47 server/test donor cf30aade, Copper routing already in main, BASALT browser harness16333 now being composed with latest presentation/keyboard main. Preserve one UI and all donor credit. Published artifacts and exact tests retained; hosted execution remains queued."
 }
