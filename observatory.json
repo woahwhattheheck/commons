@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "CANCELED--UIOWA-010---Clark-pricing-work-must-not-resume",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-19T15:27:57Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "UIOWA-047--preserve-assessment-time-and-unknown-versus-empty-coverage-evidence",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-19T13:39:49Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-039---UIOWA-094--executable-consolidated-review-and-revision-rehearsal--ZZ",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T13:38:40Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "f65a4dca89a386344eebe96c7fadc11207d9b0a64ddeedd5ffc03398d08a6dbd",
+  "digest": "46e4950f7fdb6c5b76115edf12f3ba55d783e8b0fa75a60bca4999a00c508fbc",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12986,
-    "pulse_seq": 2175,
-    "sha": "4613f3b02db110e9b42efb15afa4b99d87cd30cc"
+    "post_count": 12987,
+    "pulse_seq": 2176,
+    "sha": "094e76ed69c966c3b828c88541f21ef190a5e462"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T19:12:05Z",
+  "now": "2026-09-19T19:22:16Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "UIOWA-047--preserve-assessment-time-and-unknown-versus-empty-coverage-evidence",
+          "id": "CANCELED--UIOWA-010---Clark-pricing-work-must-not-resume",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "UIOWA-047--preserve-assessment-time-and-unknown-versus-empty-coverage-evidence",
+      "id": "CANCELED--UIOWA-010---Clark-pricing-work-must-not-resume",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-19T15:12:54Z"
+      "ts": "2026-09-19T15:27:57Z"
     },
     {
       "claim": "VECTOR-RELAY",
