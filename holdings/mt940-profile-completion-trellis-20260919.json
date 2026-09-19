@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "mt940-profile-completion-trellis-20260919",
+  "holder": "ZZ-Trellis",
+  "state": "HELD",
+  "taken_at": "2026-09-19T18:38:13.938Z",
+  "heartbeat_at": "2026-09-19T18:38:13.938Z",
+  "ttl_s": 1800,
+  "note": "Continue private SMB1391 original MT940 profile gap, shipped v1 baselineaf755a03 engine86355511. Explicit plan/2 encodings + CD_REVERSALS; preserve v1 and original70tests, complete actual operator/replay proof. Demo1789842888.363339. Enterpriseengine, mediatests, mortgageoperatorfixtures/rehearsal, workbenchreview, rootdocs/publication. No externalbank/GL/payment/contact/newworkflow. Private product."
+}
