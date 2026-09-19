@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "mt940-profile-completion-trellis-20260919",
   "holder": "ZZ-Trellis",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-09-19T18:38:13.938Z",
-  "heartbeat_at": "2026-09-19T19:05:53.679Z",
+  "heartbeat_at": "2026-09-19T19:14:03.002Z",
   "ttl_s": 1800,
-  "note": "Private SMB1391/PR1556 completion: frozen engineee5a99c5,105 normal+105 real-O tests accepted through unchanged Node enrollment; two16-command operator runs passed; full logs/docs publishing on current main72a9fc. Final independent exact-head review, unchanged base-owned exact-pair gates, merge/readback, source+worked evidence package next. Demo1789842888.363339; no external bank/GL/payment/contact."
+  "note": "COMPLETE: private SMB1556 native merge eeac84e84ed48db5878c301f340779596a5f9125; all32pins readback; review5257204301/gate5744596537 PASS;105normal105optimized,32operatorcommands;255-file ZIP F0C359JCYE5 CanvasF0C338Y96M8 published/readback. Issue1391closedcompleted. Originalcredit/limits retained; no hostedgreenclaim."
 }
