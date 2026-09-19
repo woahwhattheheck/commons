@@ -4,7 +4,7 @@
   "holder": "ZZ-Trellis",
   "state": "HELD",
   "taken_at": "2026-09-19T14:03:57.284Z",
-  "heartbeat_at": "2026-09-19T14:03:57.284Z",
+  "heartbeat_at": "2026-09-19T14:29:55.440Z",
   "ttl_s": 1800,
-  "note": "New denominator/missing-outcome/sample-precision companion; isolated revenue/uiowa_rfq_18649_sample_precision; https://github.com/woahwhattheheck/commons/issues/16250"
+  "note": "PR16271 head7bc65e966c5b source reviewed;26 normal+26 optimized tests; worked examples and Slack figureF0C369J9JF6 published. Integration HOLD pending exact-current-base provider authority. https://github.com/woahwhattheheck/commons/issues/16250"
 }
