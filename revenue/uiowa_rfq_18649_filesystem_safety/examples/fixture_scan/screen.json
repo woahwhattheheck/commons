@@ -1,0 +1,106 @@
+{
+  "disclaimer": "This is a SCREEN, not a proof. CLEAN means the screen found nothing it could see -- it does not mean the module is safe. Dynamic dispatch, getattr, C extensions and anything inside a subprocess are invisible to an AST. No safety score is produced and no lane is marked compliant.",
+  "findings": [
+    {
+      "call": "open(mode='w')",
+      "classification": "SELF_SCOPED",
+      "kind": "WRITE",
+      "lane": "lane_clean",
+      "line": 11,
+      "module": "lane_clean/tool_clean.py",
+      "target": "target",
+      "why": "write target is caller-supplied, but the function resolves the path and raises on one outside its directory (heuristic)"
+    },
+    {
+      "call": "shutil.rmtree",
+      "classification": "REVIEW_REQUIRED",
+      "kind": "DESTRUCTIVE",
+      "lane": "lane_external",
+      "line": 12,
+      "module": "lane_external/test_sample_cleanup.py",
+      "target": "supplied_path",
+      "why": "target is the function parameter 'supplied_path' -- the caller chooses what gets removed"
+    },
+    {
+      "call": "shutil.rmtree",
+      "classification": "TEST_CONTEXT",
+      "kind": "DESTRUCTIVE",
+      "lane": "lane_external",
+      "line": 17,
+      "module": "lane_external/test_sample_cleanup.py",
+      "target": "scratch",
+      "why": "in a test module; 'scratch' is assigned from module-local values"
+    },
+    {
+      "call": "shutil.rmtree",
+      "classification": "REVIEW_REQUIRED",
+      "kind": "DESTRUCTIVE",
+      "lane": "lane_external",
+      "line": 13,
+      "module": "lane_external/tool_argv.py",
+      "target": "workspace",
+      "why": "target is the function parameter 'workspace' -- the caller chooses what gets removed"
+    },
+    {
+      "call": "shutil.rmtree",
+      "classification": "REVIEW_REQUIRED",
+      "kind": "DESTRUCTIVE",
+      "lane": "lane_external",
+      "line": 17,
+      "module": "lane_external/tool_argv.py",
+      "target": "sys.argv[1]",
+      "why": "target comes from sys.argv, which is external input"
+    },
+    {
+      "call": "os.remove",
+      "classification": "REVIEW_REQUIRED",
+      "kind": "DESTRUCTIVE",
+      "lane": "lane_external",
+      "line": 21,
+      "module": "lane_external/tool_argv.py",
+      "target": "os.path.join(root, name)",
+      "why": "path is joined from externally controlled parts"
+    },
+    {
+      "call": "subprocess.run",
+      "classification": "UNDETERMINED",
+      "kind": "OPAQUE_SUBPROCESS",
+      "lane": "lane_opaque",
+      "line": 6,
+      "module": "lane_opaque/tool_shell.py",
+      "target": "['python3', '-m', 'unittest', 'discover']",
+      "why": "shells out; what runs inside is not visible to this screen"
+    },
+    {
+      "call": "shutil.rmtree",
+      "classification": "SELF_SCOPED",
+      "kind": "DESTRUCTIVE",
+      "lane": "lane_self_scoped",
+      "line": 11,
+      "module": "lane_self_scoped/tool_temp.py",
+      "target": "scratch",
+      "why": "'scratch' is assigned from module-local values"
+    }
+  ],
+  "lane_prefix": "",
+  "root": "/home/user/fleet/staging/OP5-MARROW/revenue/uiowa_rfq_18649_filesystem_safety/fixtures",
+  "summary": {
+    "findings": 8,
+    "lanes_by_status": {
+      "lane_clean": "SELF_SCOPED",
+      "lane_external": "REVIEW_REQUIRED",
+      "lane_opaque": "UNDETERMINED",
+      "lane_self_scoped": "SELF_SCOPED"
+    },
+    "lanes_scanned": 4,
+    "modules_by_status": {
+      "REVIEW_REQUIRED": 2,
+      "SELF_SCOPED": 2,
+      "UNDETERMINED": 1
+    },
+    "modules_scanned": 5,
+    "review_required": 4,
+    "undetermined": 1
+  },
+  "unparseable": []
+}

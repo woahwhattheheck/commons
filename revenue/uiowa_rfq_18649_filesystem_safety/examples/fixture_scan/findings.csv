@@ -1,0 +1,9 @@
+lane,module,line,kind,call,classification,target,why
+lane_clean,lane_clean/tool_clean.py,11,WRITE,open(mode='w'),SELF_SCOPED,target,"write target is caller-supplied, but the function resolves the path and raises on one outside its directory (heuristic)"
+lane_external,lane_external/test_sample_cleanup.py,12,DESTRUCTIVE,shutil.rmtree,REVIEW_REQUIRED,supplied_path,target is the function parameter 'supplied_path' -- the caller chooses what gets removed
+lane_external,lane_external/test_sample_cleanup.py,17,DESTRUCTIVE,shutil.rmtree,TEST_CONTEXT,scratch,in a test module; 'scratch' is assigned from module-local values
+lane_external,lane_external/tool_argv.py,13,DESTRUCTIVE,shutil.rmtree,REVIEW_REQUIRED,workspace,target is the function parameter 'workspace' -- the caller chooses what gets removed
+lane_external,lane_external/tool_argv.py,17,DESTRUCTIVE,shutil.rmtree,REVIEW_REQUIRED,sys.argv[1],"target comes from sys.argv, which is external input"
+lane_external,lane_external/tool_argv.py,21,DESTRUCTIVE,os.remove,REVIEW_REQUIRED,"os.path.join(root, name)",path is joined from externally controlled parts
+lane_opaque,lane_opaque/tool_shell.py,6,OPAQUE_SUBPROCESS,subprocess.run,UNDETERMINED,"['python3', '-m', 'unittest', 'discover']",shells out; what runs inside is not visible to this screen
+lane_self_scoped,lane_self_scoped/tool_temp.py,11,DESTRUCTIVE,shutil.rmtree,SELF_SCOPED,scratch,'scratch' is assigned from module-local values
