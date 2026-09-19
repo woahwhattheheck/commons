@@ -98,17 +98,18 @@ def prepare_cycle(raw: bytes, source_id: str, source_name: str, document: dict,
                     validate_text(value, field)
                 except (TypeError, ValueError) as exc:
                     issues.append({"code": "NATIVE_TEXT_REJECTED", "field": field, "reason": str(exc)})
-        if native_id in existing:
-            if all(e.get("target_id") == values["finding_id"] and e.get("comment") == values["comment_text"]
-                   for e in existing[native_id]):
-                already_present.append({"native_comment_id": native_id, "record": deepcopy(item),
-                                        "code": "ALREADY_IN_REVIEW"})
-            else:
-                native_unresolved.append({"record": deepcopy(item),
-                                          "diagnostics": [{"code": "NATIVE_ID_CONFLICT"}]})
-            continue
+        # Re-import identity is not an exemption from current native validation.
+        # Preserve a collision alongside other diagnostics rather than erasing them.
+        if native_id in existing and not all(
+                e.get("target_id") == values["finding_id"] and e.get("comment") == values["comment_text"]
+                for e in existing[native_id]):
+            issues.append({"code": "NATIVE_ID_CONFLICT"})
         if issues:
             native_unresolved.append({"record": deepcopy(item), "diagnostics": issues})
+            continue
+        if native_id in existing:
+            already_present.append({"native_comment_id": native_id, "record": deepcopy(item),
+                                    "code": "ALREADY_IN_REVIEW"})
             continue
         native = {"id": native_id, "kind": kind, "target_type": "findings",
                   "target_id": values["finding_id"], "comment": values["comment_text"],
