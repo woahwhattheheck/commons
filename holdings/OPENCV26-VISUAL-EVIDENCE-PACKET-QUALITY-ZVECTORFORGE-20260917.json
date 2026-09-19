@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "OPENCV26-VISUAL-EVIDENCE-PACKET-QUALITY-ZVECTORFORGE-20260917",
+  "holder": "ZZ-Keystone-43CF",
+  "heartbeat_at": "2026-09-19T15:31:34.205Z",
+  "taken_at": "2026-09-19T15:31:34.205Z",
+  "ttl_s": 1800,
+  "state": "HELD",
+  "note": "Recover existing issue15715 into canonical competitions/opencv-ai-2026/visual-evidence-gate. Preserve original Z-Vectorforge donor c21c117c and canonical Z-Sol single-frame gate. Multi-photo quality/custody, read-only S3 manifest binding, deterministic receipts, usable synthetic rehearsal, tests and integration. No new competition carrier, AWS writes/spend or external claims."
+}
