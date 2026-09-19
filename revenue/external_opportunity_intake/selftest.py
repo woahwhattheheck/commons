@@ -209,6 +209,18 @@ class IntakeTests(unittest.TestCase):
             self.assertTrue((out/"manifest.json").exists())
             with self.assertRaises(IntakeError): write_bundle(base(), out, clock=lambda: NOW)
 
+    def test_invalid_document_does_not_poison_output_path(self):
+        with tempfile.TemporaryDirectory() as td:
+            out=Path(td)/"bundle"
+            invalid=base()
+            invalid["policy"]["max_source_age_seconds"]=True
+            with self.assertRaises(IntakeError):
+                write_bundle(invalid, out, clock=lambda: NOW)
+            self.assertFalse(out.exists())
+            record=write_bundle(base(), out, clock=lambda: NOW)
+            self.assertEqual(record["state"], READY)
+            self.assertTrue((out/"record.json").exists())
+
 
 if __name__ == "__main__":
     unittest.main()
