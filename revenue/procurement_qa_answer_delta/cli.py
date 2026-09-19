@@ -14,6 +14,7 @@ def _open_regular(path: str, *, write=False, exclusive=False):
     if exclusive:
         flags |= os.O_EXCL
     flags |= getattr(os, "O_CLOEXEC", 0) | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_NONBLOCK", 0)
+    flags |= getattr(os, "O_BINARY", 0)
     fd = os.open(path, flags, 0o644 if write else 0)
     try:
         st = os.fstat(fd)
