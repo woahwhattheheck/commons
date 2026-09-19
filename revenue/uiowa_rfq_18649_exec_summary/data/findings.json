@@ -1,0 +1,135 @@
+{
+  "_fiction_notice": "EVERY finding, unit, figure, date and locator in this file is FICTIONAL. Cedar Hollow Regional Authority does not exist. These are illustrative fixtures for work order UIOWA-081 and contain no University of Iowa data, findings, systems or measurements.",
+  "_source_label": "Cedar Hollow Regional Authority (FICTIONAL) - assessment findings register, draft",
+  "findings": [
+    {
+      "finding_id": "F-001",
+      "area": "Incident response",
+      "title": "Incident records retained with a named owner",
+      "observed": "Incident records are retained for all 5 units in scope, and every closed incident in the sampled period carried a named owner.",
+      "basis": "DOCUMENT_REVIEW",
+      "confidence": "HIGH",
+      "corroborating_sources": 3,
+      "severity": "SIGNIFICANT",
+      "units_established": 5,
+      "units_in_scope": 5,
+      "evidence": [
+        {"evidence_id": "E-001a", "kind": "document", "locator": "incident register export, all units, sampled period", "collected_on": "2026-08-11"},
+        {"evidence_id": "E-001b", "kind": "document", "locator": "closure checklist template v3", "collected_on": "2026-08-11"},
+        {"evidence_id": "E-001c", "kind": "interview", "locator": "operations leads, three units", "collected_on": "2026-08-14"},
+        {"evidence_id": "E-001d", "kind": "observation", "locator": "walkthrough of two closures", "collected_on": "2026-08-18"}
+      ],
+      "unresolved": []
+    },
+    {
+      "finding_id": "F-002",
+      "area": "Data readiness",
+      "title": "Data ownership documented in one unit",
+      "observed": "One unit described a documented owner for each system feeding its reporting pipeline. The practice was not observed or corroborated elsewhere.",
+      "basis": "INTERVIEW_SINGLE_SOURCE",
+      "confidence": "MODERATE",
+      "corroborating_sources": 1,
+      "severity": "SIGNIFICANT",
+      "units_established": 1,
+      "units_in_scope": 5,
+      "evidence": [
+        {"evidence_id": "E-002a", "kind": "interview", "locator": "reporting lead, unit 2", "collected_on": "2026-08-15"}
+      ],
+      "unresolved": [
+        "Whether the same documentation exists in the other 4 units - not examined.",
+        "Whether the documented owners are current - the register's last review date was not available."
+      ]
+    },
+    {
+      "finding_id": "F-003",
+      "area": "AI use and governance",
+      "title": "Review path for AI-assisted outputs",
+      "observed": "No review path for AI-assisted outputs was established during the assessment window. Neither the presence nor the absence of one was confirmed.",
+      "basis": "NOT_ESTABLISHED",
+      "confidence": "UNKNOWN",
+      "corroborating_sources": 0,
+      "severity": "CRITICAL",
+      "units_established": "UNKNOWN",
+      "units_in_scope": 5,
+      "evidence": [],
+      "unresolved": [
+        "Whether any unit reviews AI-assisted output before it takes effect - UNKNOWN.",
+        "Who would own such a review path if it exists - UNKNOWN.",
+        "This finding has NO evidence attached and cannot support any assertion. It is carried so that the gap is visible, not so that it can be summarized."
+      ]
+    },
+    {
+      "finding_id": "F-004",
+      "area": "Service delivery",
+      "title": "Same-day triage in the units reviewed",
+      "observed": "In the 2 of 5 units where intake was reviewed, requests were triaged within the same working day.",
+      "basis": "INTERVIEW_CORROBORATED",
+      "confidence": "MODERATE",
+      "corroborating_sources": 2,
+      "severity": "MINOR",
+      "units_established": 2,
+      "units_in_scope": 5,
+      "evidence": [
+        {"evidence_id": "E-004a", "kind": "interview", "locator": "intake coordinators, units 1 and 4", "collected_on": "2026-08-12"},
+        {"evidence_id": "E-004b", "kind": "document", "locator": "triage log extract, unit 1", "collected_on": "2026-08-12"},
+        {"evidence_id": "E-004c", "kind": "document", "locator": "triage log extract, unit 4", "collected_on": "2026-08-13"}
+      ],
+      "unresolved": [
+        "Triage timing in the remaining 3 units - not reviewed."
+      ]
+    },
+    {
+      "finding_id": "F-005",
+      "area": "Incident response",
+      "title": "Corrective actions recorded but not tracked to completion",
+      "observed": "Corrective actions were recorded at closure in 4 of 5 units, and in none of those units was there a mechanism that tracked whether the action was completed.",
+      "basis": "DIRECT_OBSERVATION",
+      "confidence": "HIGH",
+      "corroborating_sources": 2,
+      "severity": "CRITICAL",
+      "units_established": 4,
+      "units_in_scope": 5,
+      "evidence": [
+        {"evidence_id": "E-005a", "kind": "observation", "locator": "action register walkthrough, 4 units", "collected_on": "2026-08-19"},
+        {"evidence_id": "E-005b", "kind": "document", "locator": "open action export, 4 units", "collected_on": "2026-08-19"},
+        {"evidence_id": "E-005c", "kind": "interview", "locator": "operations leads, two units", "collected_on": "2026-08-20"}
+      ],
+      "unresolved": [
+        "Practice in the remaining unit - not reviewed."
+      ]
+    },
+    {
+      "finding_id": "F-006",
+      "area": "Data readiness",
+      "title": "Documented refresh schedule for catalogued reference data",
+      "observed": "A documented refresh schedule covers 31% of catalogued reference datasets, consistently across all 5 units in scope.",
+      "basis": "DOCUMENT_REVIEW",
+      "confidence": "HIGH",
+      "corroborating_sources": 2,
+      "severity": "MINOR",
+      "units_established": 5,
+      "units_in_scope": 5,
+      "evidence": [
+        {"evidence_id": "E-006a", "kind": "document", "locator": "data catalogue export with schedule column", "collected_on": "2026-08-21"},
+        {"evidence_id": "E-006b", "kind": "document", "locator": "refresh job inventory", "collected_on": "2026-08-21"}
+      ],
+      "unresolved": [
+        "Whether the uncovered 69% are intentionally static or simply unscheduled - UNKNOWN."
+      ]
+    },
+    {
+      "finding_id": "F-007-MALFORMED",
+      "area": "Data readiness",
+      "title": "Deliberately malformed record (hostile-input probe)",
+      "observed": "Present on purpose. Its severity value is outside the declared vocabulary, so it must be rejected at load and named -- never repaired with a default, because a repaired finding becomes citable.",
+      "basis": "DOCUMENT_REVIEW",
+      "confidence": "HIGH",
+      "corroborating_sources": 2,
+      "severity": "URGENT",
+      "units_established": 5,
+      "units_in_scope": 5,
+      "evidence": [],
+      "unresolved": []
+    }
+  ]
+}
