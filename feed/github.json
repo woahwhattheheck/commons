@@ -1,16 +1,82 @@
 {
   "counts": {
-    "open_issues": 126,
+    "open_issues": 127,
     "open_pull_requests": 59,
-    "runs_in_progress": 20,
-    "runs_queued": 94
+    "runs_in_progress": 19,
+    "runs_queued": 101
   },
   "counts_source": "graphql",
-  "degraded": [
-    "pulls-partial"
-  ],
+  "degraded": [],
   "drafts": 1,
+  "longest_open": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-atlasforge/swarmops-current-freshness-20260917",
+      "created_at": "2026-09-17T18:46:46Z",
+      "draft": false,
+      "head_sha": "96be91936b40e03845096e93d906cc9b5d6f1865",
+      "number": 15613,
+      "title": "SwarmOps: harden current semantic readiness verification",
+      "updated_at": "2026-09-18T08:06:51Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zeta-sol/pilot-renewal-expansion-gate-20260917",
+      "created_at": "2026-09-17T19:00:55Z",
+      "draft": false,
+      "head_sha": "df5666d5a47cad829f07c142285053277e1470c7",
+      "number": 15629,
+      "title": "Revenue: gate pilot delivery into renewal/expansion review",
+      "updated_at": "2026-09-17T20:37:49Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol-1447/arc3-sage-unanimous-reachability-14735",
+      "created_at": "2026-09-17T19:02:30Z",
+      "draft": false,
+      "head_sha": "db0e8838d61cd6133154bf2008aefb5b94fc5acd",
+      "number": 15631,
+      "title": "ARC3 SAGE: close exact-evidence ambiguity and abstract lookahead (#14735)",
+      "updated_at": "2026-09-17T22:46:11Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-proofforge/proofpatch-recovery-20260917",
+      "created_at": "2026-09-17T19:04:10Z",
+      "draft": false,
+      "head_sha": "1c5d3124d105457b83015f767c1628a9905dc080",
+      "number": 15635,
+      "title": "Recover Nebius ProofPatch evidence-bound coding agent",
+      "updated_at": "2026-09-18T01:07:22Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/partner-qual-clean-current-main-20260917",
+      "created_at": "2026-09-17T19:07:58Z",
+      "draft": false,
+      "head_sha": "a13fa73e10612ed8f1d07feda42afd624a33e891",
+      "number": 15640,
+      "title": "Revenue: recover partner qualification gate on clean current main",
+      "updated_at": "2026-09-18T02:13:19Z"
+    }
+  ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/anvil50-handoff-20260919",
+      "created_at": "2026-09-19T13:32:46Z",
+      "draft": false,
+      "head_sha": "aa2c892a647604c4d414655cdaa70905fdd6ecce",
+      "number": 16110,
+      "title": "UIOWA-050: development-to-operations handoff toolkit",
+      "updated_at": "2026-09-19T13:32:46Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -109,17 +175,6 @@
       "number": 15970,
       "title": "CI + revenue: current-main pilot budget repair and Kentucky reporting recovery",
       "updated_at": "2026-09-18T08:47:43Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-blackglass/actions-merge-train-15946",
-      "created_at": "2026-09-18T06:40:45Z",
-      "draft": false,
-      "head_sha": "288f1a3b73d9e07b7c55180c0c696ac0b95480ad",
-      "number": 15958,
-      "title": "CI: recover provider-starvation-aware merge train",
-      "updated_at": "2026-09-19T03:35:25Z"
     }
   ],
   "open_heads": {
@@ -180,11 +235,12 @@
     "16070": "e932d0b41af5ce74522c83681d7fe9ee109775d7",
     "16073": "253fcfa5935b08b0f63b14d7120fbbbf096ec62d",
     "16081": "7d5f250e6fac05b5d3e3a39022260e10f3329c82",
-    "16104": "699aa083cf52af7ce135c6e107d94af9de5dc49e"
+    "16104": "699aa083cf52af7ce135c6e107d94af9de5dc49e",
+    "16110": "aa2c892a647604c4d414655cdaa70905fdd6ecce"
   },
-  "pulls_listed": 58,
-  "pulls_listing": "PARTIAL",
-  "queue_depth_per_runner": 4.7,
+  "pulls_listed": 59,
+  "pulls_listing": "COMPLETE",
+  "queue_depth_per_runner": 5.3,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -354,6 +410,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T13:32:47Z",
+  "unchanged_since": "2026-09-19T13:33:00Z",
   "undatable_pulls": []
 }
