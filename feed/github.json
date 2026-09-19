@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 189,
-    "open_pull_requests": 130,
-    "runs_in_progress": 9,
-    "runs_queued": 1001
+    "open_pull_requests": 131,
+    "runs_in_progress": 13,
+    "runs_queued": 1014
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,39 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zz-kestrel-exec31/arc3-independent-review-20260919",
+      "created_at": "2026-09-19T15:03:21Z",
+      "draft": false,
+      "head_sha": "86042e099f22db00be9ce3351e1f799341414e60",
+      "number": 16355,
+      "title": "ARC3: publish independent temporal/action review and reproducible evidence",
+      "updated_at": "2026-09-19T15:03:21Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-copperfinch-82d6/report-visuals-full-text-20260919",
+      "created_at": "2026-09-19T15:01:55Z",
+      "draft": true,
+      "head_sha": "206552d92cbd76da2ed9aa81dfd05f86a7519266",
+      "number": 16353,
+      "title": "Report visuals: preserve complete text with content-sized layouts",
+      "updated_at": "2026-09-19T15:01:55Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/halyard86-uiowa095-operator-notes",
+      "created_at": "2026-09-19T15:01:36Z",
+      "draft": false,
+      "head_sha": "5a96f2930744d9cc83880c20d0f825b1eed68ab5",
+      "number": 16352,
+      "title": "UIOWA-095: publish operator preservation guide and executed repair evidence",
+      "updated_at": "2026-09-19T15:01:36Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zz-kestrel73e7/uiowa096-independent-proof-20260919",
       "created_at": "2026-09-19T15:00:11Z",
       "draft": false,
@@ -105,10 +138,10 @@
       "branch": "swarm/zz-faraday-io-da397452-output-integrity",
       "created_at": "2026-09-19T14:57:45Z",
       "draft": false,
-      "head_sha": "fc11a8275ebbf1209fda01c79a8252ba5274e6f7",
+      "head_sha": "eed458ddaf41db867a4b56a24a4222618b1abb1f",
       "number": 16348,
       "title": "UIOWA-064: preserve input evidence and prior reports during output publication",
-      "updated_at": "2026-09-19T14:57:45Z"
+      "updated_at": "2026-09-19T15:02:10Z"
     },
     {
       "author": "woahwhattheheck",
@@ -141,40 +174,7 @@
       "head_sha": "33fde1145e7f152cfb8f34b2582e6a8466fdbd65",
       "number": 16344,
       "title": "Recover Framer LMS FAQ and complete delivery acceptance planning",
-      "updated_at": "2026-09-19T14:56:30Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/zz-basalt42-retained-review-20260919",
-      "created_at": "2026-09-19T14:56:05Z",
-      "draft": false,
-      "head_sha": "a0e5620f42a08d9b2cc410d4425a6acf22f4d721",
-      "number": 16343,
-      "title": "Recover BASALT42 workbench review, executable archive and replay evidence",
-      "updated_at": "2026-09-19T14:56:05Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/zz-basalt42r7q-input-fidelity-review-20260919",
-      "created_at": "2026-09-19T14:54:41Z",
-      "draft": false,
-      "head_sha": "083c96ed2553fac1752f072eee9cf7a581873f3f",
-      "number": 16341,
-      "title": "Iowa workbench: publish independent input-fidelity review and paired results",
-      "updated_at": "2026-09-19T14:56:50Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/zz-quartz-v9n2-uiowa100-reproducibility",
-      "created_at": "2026-09-19T14:52:35Z",
-      "draft": false,
-      "head_sha": "e6a98a71f24ad3674f41d50e3c384fe00542b15c",
-      "number": 16337,
-      "title": "UIOWA-100: reproducible verifier artifacts without losing raw execution evidence",
-      "updated_at": "2026-09-19T14:52:35Z"
+      "updated_at": "2026-09-19T15:02:01Z"
     }
   ],
   "open_heads": {
@@ -256,7 +256,6 @@
     "16249": "5e29b5c18647995c540d4b72bb25e041f725c8a4",
     "16254": "3de943a953c37feb43c18e2515536d98728ed466",
     "16255": "2bb3b454e11cf76b01632779b0608cceda04cfd2",
-    "16256": "3cd3eac1a77933c7c4d6e867e4bde3e1abca9a70",
     "16260": "f3dab31e57379f419f64712072e9e3c5ebc4b2b4",
     "16265": "7a710b90554e2bf0428ad506a2893e8cc0a12981",
     "16266": "e0a78c06317c3e299219f282c6afd0f90abd3d46",
@@ -272,7 +271,7 @@
     "16283": "a2abe1adc85d057d811770bd6b0bbcd8baf2797c",
     "16287": "df6d0058feb8d49895dd9b6b250db679792178f9",
     "16289": "fad7e3dbbc61dc4f110395c408c8a9fe1c0629ad",
-    "16290": "2001e7c1c350fe56a0276ad234f5d687ce9865ca",
+    "16290": "0973e6893c4bcf4cdd17fad096eea5d82d29d663",
     "16291": "598c7b3e4b012625a9309e14126acbeb541601d1",
     "16297": "29eab0c93eda34dba6f7df3d5c9bb88feb10dd0a",
     "16298": "7f61f32b8f1737db8ae143b15fcea43b0b14a509",
@@ -283,9 +282,8 @@
     "16308": "231f60d6a416bb4583fc5165e2ccadc5a06b1e64",
     "16309": "eaa29d8cce87928c4aab92321be3099966d69473",
     "16312": "14e7900b18db700ed597744a721540068449fdf6",
-    "16314": "f1d31ce74bf770adf949489f52c672a38546fcc8",
     "16317": "c94723133cc6052b51a06a677f9dfc9240b4e65a",
-    "16318": "459c90ad8bb4627363be2039115f40717c72545d",
+    "16318": "3524ef793443dd0e2d8f2f5f27bd57a0e6dabe9f",
     "16319": "bf37c706860821f1f6b1139fab81e5444d3786ee",
     "16320": "ff9a08f04298e68a371f54f5b1f414d090755ebb",
     "16321": "d74367c09d27cdecb03017c12d58d3f112bca336",
@@ -293,7 +291,7 @@
     "16325": "f693abe5578f6ed9e56634fbae5eafcc631b0d31",
     "16326": "5406ef6ca6c75eccf18434a0b809069911326e3f",
     "16327": "fefde600866ed34492aee8c7bba64a2eaecdea4c",
-    "16328": "73732d79040c263a623504636b9c7eb3b1c7a60e",
+    "16328": "f9f21f53b85ca8190a2e42fb66acfc7d0fabe62e",
     "16329": "75b791dbc19e809c0273e7624defb54e2c833078",
     "16330": "e450d92a0e14fbddae91129d9747ee8aab509973",
     "16331": "77f2774a38de51d0a43bae6ade1fed9a231dc55a",
@@ -304,15 +302,40 @@
     "16344": "33fde1145e7f152cfb8f34b2582e6a8466fdbd65",
     "16346": "32af7fac5013e6d19fa62357b4256a35237a77ab",
     "16347": "4ce71b059e57ecb991f902968e674a74de978a35",
-    "16348": "fc11a8275ebbf1209fda01c79a8252ba5274e6f7",
+    "16348": "eed458ddaf41db867a4b56a24a4222618b1abb1f",
     "16349": "9da22b32e02344ec634badb8d42f3ef1d77f70e7",
     "16350": "e9bf51ac822c398416f163a80e6558d288b6086b",
-    "16351": "03854a5d883723d75fbd11ce4271f74365c7f4ac"
+    "16351": "03854a5d883723d75fbd11ce4271f74365c7f4ac",
+    "16352": "5a96f2930744d9cc83880c20d0f825b1eed68ab5",
+    "16353": "206552d92cbd76da2ed9aa81dfd05f86a7519266",
+    "16355": "86042e099f22db00be9ce3351e1f799341414e60"
   },
-  "pulls_listed": 130,
+  "pulls_listed": 131,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 111.2,
+  "queue_depth_per_runner": 78.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-rivet82/uiowa-050-handoff-correctness-20260919",
+      "closed_at": "2026-09-19T15:02:42Z",
+      "head_sha": "3cd3eac1a77933c7c4d6e867e4bde3e1abca9a70",
+      "merged_at": "2026-09-19T15:02:42Z",
+      "number": 16256,
+      "state": "MERGED",
+      "title": "fix(uiowa-050): complete robust handoff validation and operator report delivery"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "uiowa-056-kestrel731-interview",
+      "closed_at": "2026-09-19T15:02:21Z",
+      "head_sha": "9692bfc874a8ff6576853e41384eca9eb027658d",
+      "merged_at": "2026-09-19T15:02:21Z",
+      "number": 16314,
+      "state": "MERGED",
+      "title": "UIOWA-056: standalone maintenance interview and worked rehearsal"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -455,32 +478,10 @@
       "number": 16306,
       "state": "MERGED",
       "title": "UIOWA-050: complete nested schema and independent interchange conformance"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-proofforge/proofpatch-recovery-20260917",
-      "closed_at": "2026-09-19T14:44:52Z",
-      "head_sha": "b5224a67495cec7956ed2ed1682275fff749d0e6",
-      "merged_at": "2026-09-19T14:44:52Z",
-      "number": 15635,
-      "state": "MERGED",
-      "title": "Recover Nebius ProofPatch evidence-bound coding agent"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa-064-kestrel6d9f-boundary-repair",
-      "closed_at": "2026-09-19T14:42:37Z",
-      "head_sha": "6496d2bc1f63b982dfb5aac43e716801ff228275",
-      "merged_at": "2026-09-19T14:42:37Z",
-      "number": 16305,
-      "state": "MERGED",
-      "title": "UIOWA-064: preserve recovery uncertainty and unify validated input paths"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T15:00:54Z",
+  "unchanged_since": "2026-09-19T15:03:31Z",
   "undatable_pulls": []
 }
