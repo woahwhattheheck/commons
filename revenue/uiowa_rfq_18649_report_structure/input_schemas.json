@@ -1,0 +1,242 @@
+{
+  "_note": "Field names are READ FROM the checked-in registers other seats landed. Do not invent fields; add a dataset instead.",
+  "datasets": {
+    "evidence_register": {
+      "provenance": "workbench_pinned",
+      "source_path": "revenue/uiowa_rfq_18649_workshare/methodology/23-synthetic-evidence-register.csv",
+      "description": "EV/OBS/FND evidence chain with the five confidence dimensions (UIOWA-023).",
+      "fields": [
+        "evidence_id",
+        "observation_id",
+        "finding_id",
+        "group",
+        "area",
+        "source_type",
+        "source_ref",
+        "captured_at",
+        "represented_period",
+        "claim",
+        "scope_limit",
+        "directness",
+        "recency",
+        "representativeness",
+        "corroboration",
+        "evidence_state",
+        "confidence",
+        "conflict_group",
+        "universe_definition",
+        "enumerator_authority",
+        "completeness_basis",
+        "follow_up"
+      ]
+    },
+    "peer_context_table": {
+      "provenance": "workbench_pinned",
+      "source_path": "revenue/uiowa_rfq_18649_workbench/19-metric-comparability.csv",
+      "description": "External peer/published-practice context with explicit comparability status (UIOWA-019).",
+      "fields": [
+        "peer",
+        "service_or_context",
+        "metric_or_measure",
+        "value",
+        "period_or_window",
+        "denominator_or_scope",
+        "measure_class",
+        "source_currency",
+        "comparison_status",
+        "comparability_notes",
+        "source_url",
+        "accessed_date"
+      ]
+    },
+    "policy_context_register": {
+      "provenance": "workbench_pinned",
+      "source_path": "revenue/uiowa_rfq_18649_workbench/12-policy-context.csv",
+      "description": "Authoritative policy clauses and their operational implications (UIOWA-012).",
+      "fields": [
+        "source_id",
+        "authority_type",
+        "issuer",
+        "title",
+        "policy_or_section",
+        "version_or_review_date",
+        "source_url",
+        "source_clause",
+        "assessment_area",
+        "operational_implication",
+        "discovery_question",
+        "applicability_caveat",
+        "evidence_strength",
+        "accessed_date"
+      ]
+    },
+    "framework_crosswalk": {
+      "provenance": "workbench_pinned",
+      "source_path": "revenue/uiowa_rfq_18649_workbench/framework_crosswalk/20-framework-crosswalk.csv",
+      "description": "Framework practice references used as interview/artifact prompts, not criteria (UIOWA-020).",
+      "fields": [
+        "framework",
+        "version",
+        "publication_date",
+        "locator",
+        "source_concept",
+        "assessment_area",
+        "proposed_assessment_use",
+        "evidence_examples",
+        "adaptation_limit",
+        "source_url"
+      ]
+    },
+    "source_version_register": {
+      "provenance": "workbench_pinned",
+      "source_path": "revenue/uiowa_rfq_18649_workbench/framework_crosswalk/20-source-version-register.csv",
+      "description": "Frozen framework versions and their treatment (UIOWA-020).",
+      "fields": [
+        "framework",
+        "publication",
+        "identifier",
+        "publication_date",
+        "status_on_2026_09_19",
+        "role_in_uiowa_020",
+        "version_treatment",
+        "official_source"
+      ]
+    },
+    "service_responsibility": {
+      "provenance": "workbench_pinned",
+      "source_path": "revenue/uiowa_rfq_18649_workbench/11-ais-service-responsibility.csv",
+      "description": "Public AIS scope/responsibility statements and kickoff questions (UIOWA-011).",
+      "fields": [
+        "scope",
+        "public_responsibility",
+        "visible_interfaces",
+        "kickoff_question",
+        "evidence_strength",
+        "source_ids",
+        "accessed"
+      ]
+    },
+    "sdlc_evidence_worksheet": {
+      "provenance": "workbench_pinned",
+      "source_path": "revenue/uiowa_rfq_18649_workbench/41-sdlc-evidence-worksheet.csv",
+      "description": "Per-change delivery stage trace with evidence semantics (UIOWA-041).",
+      "fields": [
+        "change_id",
+        "group",
+        "stage_order",
+        "stage_name",
+        "documented_expected",
+        "observed_activity",
+        "status",
+        "owner_role",
+        "handoff_from",
+        "handoff_to",
+        "queue_enter",
+        "work_start",
+        "work_end",
+        "queue_wait_hours",
+        "active_hours",
+        "evidence_ref",
+        "evidence_type",
+        "evidence_semantics",
+        "exception_type",
+        "gap_or_conflict",
+        "follow_up_question"
+      ]
+    },
+    "finding_matrix": {
+      "provenance": "lane_local",
+      "source_path": "revenue/uiowa_rfq_18649_report_structure/fixtures/synthetic_finding_matrix.csv",
+      "description": "12-cell ESS|RIS|IAM x SD|SEC|DEP|AI current-state matrix. Cell status vocabulary matches the 41- worksheet; confidence matches the 23- register.",
+      "fields": [
+        "finding_id",
+        "group",
+        "area",
+        "status",
+        "confidence",
+        "statement",
+        "scope_limit",
+        "evidence_refs",
+        "follow_up_question"
+      ],
+      "controlled_values": {
+        "group": [
+          "ESS",
+          "RIS",
+          "IAM"
+        ],
+        "area": [
+          "SD",
+          "SEC",
+          "DEP",
+          "AI"
+        ],
+        "status": [
+          "SUPPORTED",
+          "PARTIAL",
+          "CONFLICT",
+          "UNKNOWN",
+          "NOT_APPLICABLE"
+        ],
+        "confidence": [
+          "HIGH",
+          "MODERATE",
+          "LOW",
+          "UNRESOLVED",
+          "NOT_EVIDENCED"
+        ]
+      }
+    },
+    "recommendation_register": {
+      "provenance": "lane_local",
+      "source_path": "revenue/uiowa_rfq_18649_report_structure/fixtures/synthetic_recommendation_register.csv",
+      "description": "REC- records linked to finding_ids. Horizon buckets are the RFQ's 0-90/90-180/180+; a recommendation never inherits certainty from its finding.",
+      "fields": [
+        "recommendation_id",
+        "group",
+        "area",
+        "finding_refs",
+        "statement",
+        "horizon",
+        "rationale",
+        "resource_note",
+        "dependency",
+        "theme_id"
+      ],
+      "controlled_values": {
+        "group": [
+          "ESS",
+          "RIS",
+          "IAM",
+          "CROSS"
+        ],
+        "area": [
+          "SD",
+          "SEC",
+          "DEP",
+          "AI"
+        ],
+        "horizon": [
+          "0-90",
+          "90-180",
+          "180+",
+          "UNKNOWN"
+        ]
+      }
+    },
+    "theme_register": {
+      "provenance": "lane_local",
+      "source_path": "revenue/uiowa_rfq_18649_report_structure/fixtures/synthetic_theme_register.csv",
+      "description": "Cross-cutting themes. A theme must cite the individual finding_ids it spans so findings stay traceable rather than dissolving into a generic summary (UIOWA-083 consumes/replaces this).",
+      "fields": [
+        "theme_id",
+        "statement",
+        "finding_refs",
+        "groups_spanned",
+        "areas_spanned",
+        "counter_evidence",
+        "scope_limit"
+      ]
+    }
+  }
+}

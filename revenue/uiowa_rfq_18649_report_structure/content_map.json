@@ -1,0 +1,715 @@
+{
+  "map_id": "uiowa-rfq-18649-report-structure-v1",
+  "status": "PROPOSED REPORT STRUCTURE / NOT A UNIVERSITY FINDING",
+  "work_order": "UIOWA-082",
+  "description": "Machine-readable map of RFQ report element -> report section -> required inputs. The coverage checker in report_structure.py fails closed on an unmapped element, a section with no source, an unknown dataset, or a field absent from the real register schema.",
+  "excluded_deliverables": [
+    {
+      "id": "EX-01",
+      "name": "Formal audit or compliance opinion",
+      "why": "This engagement produces an assessment of current practice against reference frameworks used as prompts. It does not issue an audit opinion, a compliance determination, a certification, or an attestation.",
+      "guard_class": "audit_verdict"
+    },
+    {
+      "id": "EX-02",
+      "name": "Employee or individual performance evaluation",
+      "why": "Findings describe organizational practice, systems and process. No statement rates, ranks or evaluates a named person or role holder.",
+      "guard_class": "individual_evaluation"
+    },
+    {
+      "id": "EX-03",
+      "name": "Vendor or product procurement recommendation",
+      "why": "Recommendations describe capabilities and decisions the University would need to make. Selecting, endorsing or pricing a specific product or vendor is outside this engagement.",
+      "guard_class": "product_procurement"
+    }
+  ],
+  "rfq_elements": [
+    {
+      "element_id": "RFQ-E01",
+      "name": "Executive summary",
+      "rfq_basis": "Leadership-readable summary of what was assessed, what was found, and what is proposed.",
+      "must_not": "Must not introduce a statement that no finding supports."
+    },
+    {
+      "element_id": "RFQ-E02",
+      "name": "Engagement scope and assessment areas",
+      "rfq_basis": "What was in scope: ESS, RIS, IAM across software development, security, deployment/operations, AI readiness.",
+      "must_not": "Must not imply coverage of services or areas that were not assessed."
+    },
+    {
+      "element_id": "RFQ-E03",
+      "name": "Methodology",
+      "rfq_basis": "How evidence was collected, how interviews and artifacts were used, how findings were formed.",
+      "must_not": "Must not present the method as an audit procedure or a certification process."
+    },
+    {
+      "element_id": "RFQ-E04",
+      "name": "Evidence standard, confidence and limitations",
+      "rfq_basis": "The confidence vocabulary, what each class means, and the declared limits of the engagement.",
+      "must_not": "Must not average confidence dimensions into a maturity score."
+    },
+    {
+      "element_id": "RFQ-E05",
+      "name": "Peer and published-practice context",
+      "rfq_basis": "External reference points that help interpret current practice.",
+      "must_not": "Must not rank the University against peers or state a percentile."
+    },
+    {
+      "element_id": "RFQ-E06",
+      "name": "Current-state findings by group and area",
+      "rfq_basis": "The 12-cell ESS|RIS|IAM x SD|SEC|DEP|AI view plus the per-group narrative.",
+      "must_not": "Must not convert an unassessed cell into a low rating."
+    },
+    {
+      "element_id": "RFQ-E07",
+      "name": "Cross-cutting themes",
+      "rfq_basis": "Patterns that span groups or areas, each still traceable to the individual findings it spans.",
+      "must_not": "Must not dissolve individual findings into a generic summary."
+    },
+    {
+      "element_id": "RFQ-E08",
+      "name": "Group and department recommendations",
+      "rfq_basis": "Proposed actions addressed to a named group, each linked to the findings that motivate it.",
+      "must_not": "Must not recommend a specific product, vendor, or purchase."
+    },
+    {
+      "element_id": "RFQ-E09",
+      "name": "Prioritization and phasing",
+      "rfq_basis": "Sequencing of recommendations across 0-90 / 90-180 / 180+ day horizons with visible assumptions.",
+      "must_not": "Must not present an estimate that was never supplied as a computed number."
+    },
+    {
+      "element_id": "RFQ-E10",
+      "name": "Supporting evidence",
+      "rfq_basis": "The evidence items behind every finding, with source locators and scope limits.",
+      "must_not": "Must not expose sensitive locators that the engagement agreed to keep controlled."
+    },
+    {
+      "element_id": "RFQ-E11",
+      "name": "Source and version register",
+      "rfq_basis": "Every external framework and source, pinned to the version actually used.",
+      "must_not": "Must not cite a draft framework revision as final practice."
+    },
+    {
+      "element_id": "RFQ-E12",
+      "name": "Open questions and unresolved inputs",
+      "rfq_basis": "What stayed UNKNOWN, why, and what would resolve it.",
+      "must_not": "Must not silently drop an unresolved input to make the report look complete."
+    }
+  ],
+  "sections": [
+    {
+      "section_id": "SEC-01",
+      "number": "1",
+      "title": "Executive Summary",
+      "covers": [
+        "RFQ-E01"
+      ],
+      "audience": "leadership",
+      "purpose": "Answer, in one page, what was assessed, what holds up, what does not, and what is proposed next.",
+      "required_inputs": [
+        {
+          "dataset": "finding_matrix",
+          "fields": [
+            "finding_id",
+            "group",
+            "area",
+            "status",
+            "confidence"
+          ],
+          "why": "Every summary statement names the finding_id it rests on."
+        },
+        {
+          "dataset": "recommendation_register",
+          "fields": [
+            "recommendation_id",
+            "statement",
+            "horizon",
+            "finding_refs"
+          ],
+          "why": "Proposed next steps, each already linked to findings."
+        },
+        {
+          "dataset": "theme_register",
+          "fields": [
+            "theme_id",
+            "statement",
+            "finding_refs"
+          ],
+          "why": "The small number of patterns leadership needs before the detail."
+        }
+      ],
+      "traceability_rule": "Every sentence that asserts a condition carries at least one finding_id or theme_id.",
+      "unknown_rule": "Areas with status UNKNOWN are named here as unassessed, never omitted to make coverage look complete.",
+      "prompts": [
+        "What did we actually look at, and over what window?",
+        "Which two or three conditions most affect delivery and risk?",
+        "What is proposed in the first 90 days, and what does it depend on?",
+        "What could we not determine, and what would settle it?"
+      ]
+    },
+    {
+      "section_id": "SEC-02",
+      "number": "2",
+      "title": "Engagement Scope and Assessment Areas",
+      "covers": [
+        "RFQ-E02"
+      ],
+      "audience": "all",
+      "purpose": "State exactly which groups, services and assessment areas were in scope, and which were not.",
+      "required_inputs": [
+        {
+          "dataset": "service_responsibility",
+          "fields": [
+            "scope",
+            "public_responsibility",
+            "visible_interfaces",
+            "source_ids"
+          ],
+          "why": "Scope statements grounded in the documented responsibilities of each group."
+        },
+        {
+          "dataset": "finding_matrix",
+          "fields": [
+            "group",
+            "area",
+            "status"
+          ],
+          "why": "The assessed cell set; anything outside it is declared out of scope."
+        }
+      ],
+      "traceability_rule": "Each in-scope service traces to a source_ids entry confirming the responsibility boundary.",
+      "unknown_rule": "A service in scope but not reached is listed as in-scope/not-assessed, not quietly dropped.",
+      "prompts": [
+        "Which applications and shared platforms are in scope for each group?",
+        "Which assessment areas were covered for each group?",
+        "What was explicitly excluded, and why?"
+      ]
+    },
+    {
+      "section_id": "SEC-03",
+      "number": "3",
+      "title": "Methodology",
+      "covers": [
+        "RFQ-E03"
+      ],
+      "audience": "all",
+      "purpose": "Describe how evidence was gathered and how findings were formed, so a reader can judge the work.",
+      "required_inputs": [
+        {
+          "dataset": "framework_crosswalk",
+          "fields": [
+            "framework",
+            "version",
+            "locator",
+            "proposed_assessment_use",
+            "adaptation_limit"
+          ],
+          "why": "Frameworks used as interview and artifact prompts, with each one's stated adaptation limit."
+        },
+        {
+          "dataset": "evidence_register",
+          "fields": [
+            "source_type",
+            "captured_at",
+            "represented_period"
+          ],
+          "why": "The actual source mix and collection window, reported rather than asserted."
+        }
+      ],
+      "traceability_rule": "Every framework reference cites framework + version + locator.",
+      "unknown_rule": "Where a planned collection step did not happen, the method section says so.",
+      "prompts": [
+        "What was collected, from whom, over what period?",
+        "How were interview statements separated from artifact evidence?",
+        "How were framework references used as prompts rather than as criteria?",
+        "What is the declared freshness window for volatile evidence?"
+      ]
+    },
+    {
+      "section_id": "SEC-04",
+      "number": "4",
+      "title": "Evidence Standard, Confidence and Limitations",
+      "covers": [
+        "RFQ-E04"
+      ],
+      "audience": "all",
+      "purpose": "Define the confidence vocabulary and the limits of what this engagement can support.",
+      "required_inputs": [
+        {
+          "dataset": "evidence_register",
+          "fields": [
+            "directness",
+            "recency",
+            "representativeness",
+            "corroboration",
+            "evidence_state",
+            "confidence",
+            "scope_limit"
+          ],
+          "why": "The five confidence dimensions, reported separately and never averaged."
+        }
+      ],
+      "traceability_rule": "Each confidence class shown here matches the definition in the evidence method the register was built against.",
+      "unknown_rule": "NOT_EVIDENCED and UNRESOLVED are defined as distinct from a negative finding.",
+      "prompts": [
+        "What does each confidence class mean in this report?",
+        "Which limits apply to the whole engagement rather than a single finding?",
+        "Where did contradictory evidence remain unresolved?"
+      ]
+    },
+    {
+      "section_id": "SEC-05",
+      "number": "5",
+      "title": "Peer and Published-Practice Context",
+      "covers": [
+        "RFQ-E05"
+      ],
+      "audience": "leadership",
+      "purpose": "Offer external reference points that help interpret current practice, with comparability stated.",
+      "required_inputs": [
+        {
+          "dataset": "peer_context_table",
+          "fields": [
+            "peer",
+            "service_or_context",
+            "metric_or_measure",
+            "value",
+            "period_or_window",
+            "denominator_or_scope",
+            "measure_class",
+            "comparison_status",
+            "comparability_notes",
+            "source_url",
+            "accessed_date"
+          ],
+          "why": "Each peer reference carries its own comparability status and the denominator it was measured against."
+        }
+      ],
+      "traceability_rule": "Every peer row displays comparison_status and comparability_notes next to the value.",
+      "unknown_rule": "A published process target is labeled as intent, not as attained performance.",
+      "prompts": [
+        "What do comparable institutions publish about this practice?",
+        "What would have to be normalized before these numbers could be compared?",
+        "Which references are context only and cannot support a comparison?"
+      ]
+    },
+    {
+      "section_id": "SEC-06",
+      "number": "6",
+      "title": "Current-State Matrix",
+      "covers": [
+        "RFQ-E06"
+      ],
+      "audience": "all",
+      "purpose": "Show all twelve group-by-area cells at once, including the ones that were not assessed.",
+      "required_inputs": [
+        {
+          "dataset": "finding_matrix",
+          "fields": [
+            "finding_id",
+            "group",
+            "area",
+            "status",
+            "confidence",
+            "statement",
+            "scope_limit"
+          ],
+          "why": "The matrix itself; one row per assessed cell."
+        }
+      ],
+      "traceability_rule": "Each populated cell shows its finding_id.",
+      "unknown_rule": "A cell with status UNKNOWN renders as UNKNOWN - not assessed, is visually distinct from a weak result, and is excluded from every count of assessed cells.",
+      "prompts": [
+        "Which cells are supported, partial, in conflict, or unassessed?",
+        "Where does the evidence disagree with itself?"
+      ]
+    },
+    {
+      "section_id": "SEC-07",
+      "number": "7.1",
+      "title": "Group Findings - Enterprise Systems and Services (ESS)",
+      "covers": [
+        "RFQ-E06"
+      ],
+      "audience": "practitioner",
+      "purpose": "Narrative findings for ESS across the four assessment areas.",
+      "required_inputs": [
+        {
+          "dataset": "finding_matrix",
+          "fields": [
+            "finding_id",
+            "group",
+            "area",
+            "status",
+            "confidence",
+            "statement",
+            "scope_limit",
+            "follow_up_question"
+          ],
+          "why": "The ESS rows of the matrix."
+        },
+        {
+          "dataset": "evidence_register",
+          "fields": [
+            "evidence_id",
+            "observation_id",
+            "finding_id",
+            "claim",
+            "scope_limit",
+            "source_ref"
+          ],
+          "why": "The observations behind each ESS finding."
+        }
+      ],
+      "traceability_rule": "Every narrative claim names its finding_id; every finding names its supporting evidence_ids.",
+      "unknown_rule": "Where ESS evidence covers one service only, the narrative says so instead of generalizing to the group.",
+      "prompts": [
+        "What holds up across ESS, and on what evidence?",
+        "Where is the evidence single-service rather than group-wide?",
+        "What follow-up would resolve each partial or conflicting cell?"
+      ]
+    },
+    {
+      "section_id": "SEC-08",
+      "number": "7.2",
+      "title": "Group Findings - Research Information Systems (RIS)",
+      "covers": [
+        "RFQ-E06"
+      ],
+      "audience": "practitioner",
+      "purpose": "Narrative findings for RIS across the four assessment areas.",
+      "required_inputs": [
+        {
+          "dataset": "finding_matrix",
+          "fields": [
+            "finding_id",
+            "group",
+            "area",
+            "status",
+            "confidence",
+            "statement",
+            "scope_limit",
+            "follow_up_question"
+          ],
+          "why": "The RIS rows of the matrix."
+        },
+        {
+          "dataset": "evidence_register",
+          "fields": [
+            "evidence_id",
+            "observation_id",
+            "finding_id",
+            "claim",
+            "scope_limit",
+            "source_ref"
+          ],
+          "why": "The observations behind each RIS finding."
+        }
+      ],
+      "traceability_rule": "Every narrative claim names its finding_id; every finding names its supporting evidence_ids.",
+      "unknown_rule": "A policy that documents intent is not reported as demonstrated implementation.",
+      "prompts": [
+        "What holds up across RIS, and on what evidence?",
+        "Which RIS claims rest on policy intent rather than observed practice?"
+      ]
+    },
+    {
+      "section_id": "SEC-09",
+      "number": "7.3",
+      "title": "Group Findings - Identity and Access Management (IAM)",
+      "covers": [
+        "RFQ-E06"
+      ],
+      "audience": "practitioner",
+      "purpose": "Narrative findings for IAM across the four assessment areas.",
+      "required_inputs": [
+        {
+          "dataset": "finding_matrix",
+          "fields": [
+            "finding_id",
+            "group",
+            "area",
+            "status",
+            "confidence",
+            "statement",
+            "scope_limit",
+            "follow_up_question"
+          ],
+          "why": "The IAM rows of the matrix."
+        },
+        {
+          "dataset": "evidence_register",
+          "fields": [
+            "evidence_id",
+            "observation_id",
+            "finding_id",
+            "claim",
+            "scope_limit",
+            "source_ref"
+          ],
+          "why": "The observations behind each IAM finding."
+        }
+      ],
+      "traceability_rule": "Every narrative claim names its finding_id; every finding names its supporting evidence_ids.",
+      "unknown_rule": "An absent access-review record is reported as no evidence observed, not as a failed control.",
+      "prompts": [
+        "What holds up across IAM, and on what evidence?",
+        "Where is an absence of records being read as an absence of practice?"
+      ]
+    },
+    {
+      "section_id": "SEC-10",
+      "number": "8",
+      "title": "Cross-Cutting Themes",
+      "covers": [
+        "RFQ-E07"
+      ],
+      "audience": "leadership",
+      "purpose": "Name the patterns that span groups or areas without erasing the findings underneath them.",
+      "required_inputs": [
+        {
+          "dataset": "theme_register",
+          "fields": [
+            "theme_id",
+            "statement",
+            "finding_refs",
+            "groups_spanned",
+            "areas_spanned",
+            "counter_evidence",
+            "scope_limit"
+          ],
+          "why": "Each theme cites the exact findings it spans and any evidence that cuts against it."
+        },
+        {
+          "dataset": "finding_matrix",
+          "fields": [
+            "finding_id",
+            "group",
+            "area",
+            "status"
+          ],
+          "why": "Used to confirm every cited finding exists and that the span claim matches the matrix."
+        }
+      ],
+      "traceability_rule": "A theme cites at least two finding_ids from at least two distinct groups or areas.",
+      "unknown_rule": "A theme that would require an unassessed cell to hold is stated with that gap named.",
+      "prompts": [
+        "Which conditions recur across groups rather than being local?",
+        "What evidence cuts against each theme?",
+        "Which findings does this theme deliberately not cover?"
+      ]
+    },
+    {
+      "section_id": "SEC-11",
+      "number": "9",
+      "title": "Recommendations by Group and Department",
+      "covers": [
+        "RFQ-E08"
+      ],
+      "audience": "leadership",
+      "purpose": "Proposed actions addressed to a named owner group, each tied to the findings that motivate it.",
+      "required_inputs": [
+        {
+          "dataset": "recommendation_register",
+          "fields": [
+            "recommendation_id",
+            "group",
+            "area",
+            "finding_refs",
+            "statement",
+            "rationale",
+            "resource_note",
+            "dependency"
+          ],
+          "why": "The recommendation records, each carrying its own finding links and resource note."
+        },
+        {
+          "dataset": "finding_matrix",
+          "fields": [
+            "finding_id",
+            "status",
+            "confidence"
+          ],
+          "why": "Used to show the strength of the evidence a recommendation rests on."
+        }
+      ],
+      "traceability_rule": "Every recommendation cites at least one finding_id and does not inherit that finding's confidence automatically.",
+      "unknown_rule": "A recommendation motivated by an unresolved question is labeled as investigate-first rather than implement.",
+      "prompts": [
+        "What should this group do, and which finding motivates it?",
+        "What capability is needed - stated as a capability, not a product?",
+        "What does this action depend on before it can start?"
+      ]
+    },
+    {
+      "section_id": "SEC-12",
+      "number": "10",
+      "title": "Prioritization and Phasing",
+      "covers": [
+        "RFQ-E09"
+      ],
+      "audience": "leadership",
+      "purpose": "Sequence the recommendations across the 0-90 / 90-180 / 180+ horizons with the assumptions visible.",
+      "required_inputs": [
+        {
+          "dataset": "recommendation_register",
+          "fields": [
+            "recommendation_id",
+            "horizon",
+            "dependency",
+            "resource_note",
+            "finding_refs"
+          ],
+          "why": "Horizon and dependency per recommendation, with the resource assumption shown rather than computed away."
+        }
+      ],
+      "traceability_rule": "Every phased item links back to a recommendation_id, and no item appears in a phase earlier than its dependency.",
+      "unknown_rule": "A recommendation with horizon UNKNOWN is listed in an unsequenced bucket with the missing input named, never defaulted into 180+.",
+      "prompts": [
+        "What must happen first because something else depends on it?",
+        "Which items are sequenced by evidence rather than by preference?",
+        "Which estimates are missing, and what would supply them?"
+      ]
+    },
+    {
+      "section_id": "SEC-13",
+      "number": "A",
+      "title": "Appendix A - Supporting Evidence",
+      "covers": [
+        "RFQ-E10"
+      ],
+      "audience": "practitioner",
+      "purpose": "The evidence items behind every finding, so a reviewer can re-open any source.",
+      "required_inputs": [
+        {
+          "dataset": "evidence_register",
+          "fields": [
+            "evidence_id",
+            "observation_id",
+            "finding_id",
+            "group",
+            "area",
+            "source_type",
+            "source_ref",
+            "captured_at",
+            "represented_period",
+            "claim",
+            "scope_limit",
+            "directness",
+            "recency",
+            "representativeness",
+            "corroboration",
+            "evidence_state",
+            "confidence",
+            "follow_up"
+          ],
+          "why": "The full register, unabridged, so nothing in the body rests on an item that is not listed here."
+        },
+        {
+          "dataset": "sdlc_evidence_worksheet",
+          "fields": [
+            "change_id",
+            "group",
+            "stage_name",
+            "status",
+            "evidence_ref",
+            "evidence_semantics",
+            "gap_or_conflict"
+          ],
+          "why": "Per-change delivery traces where a finding rests on observed change activity."
+        }
+      ],
+      "traceability_rule": "Every finding_id cited anywhere in the body appears in this appendix with at least one evidence item.",
+      "unknown_rule": "An evidence item whose represented_period could not be established keeps recency UNKNOWN rather than being assumed current.",
+      "prompts": [
+        "What exactly did we see, and what does it establish?",
+        "What is the scope limit of each source?"
+      ]
+    },
+    {
+      "section_id": "SEC-14",
+      "number": "B",
+      "title": "Appendix B - Source and Version Register",
+      "covers": [
+        "RFQ-E11"
+      ],
+      "audience": "practitioner",
+      "purpose": "Pin every external framework and published source to the version actually used.",
+      "required_inputs": [
+        {
+          "dataset": "source_version_register",
+          "fields": [
+            "framework",
+            "publication",
+            "identifier",
+            "publication_date",
+            "version_treatment",
+            "official_source"
+          ],
+          "why": "The frozen framework versions and how each was treated."
+        },
+        {
+          "dataset": "policy_context_register",
+          "fields": [
+            "source_id",
+            "issuer",
+            "title",
+            "policy_or_section",
+            "version_or_review_date",
+            "source_url",
+            "applicability_caveat",
+            "accessed_date"
+          ],
+          "why": "Policy sources with their applicability caveats intact."
+        }
+      ],
+      "traceability_rule": "Every external citation in the body resolves to a row here with a version or review date.",
+      "unknown_rule": "A draft revision is recorded as a horizon-scan item and is never cited as current practice.",
+      "prompts": [
+        "Which version of each framework was used?",
+        "Which sources were accessed on which date?"
+      ]
+    },
+    {
+      "section_id": "SEC-15",
+      "number": "C",
+      "title": "Appendix C - Open Questions and Unresolved Inputs",
+      "covers": [
+        "RFQ-E12"
+      ],
+      "audience": "all",
+      "purpose": "Carry forward everything that stayed UNKNOWN, and say what would resolve it.",
+      "required_inputs": [
+        {
+          "dataset": "finding_matrix",
+          "fields": [
+            "finding_id",
+            "group",
+            "area",
+            "status",
+            "follow_up_question"
+          ],
+          "why": "Every cell that is UNKNOWN, PARTIAL or CONFLICT, with the question that would resolve it."
+        },
+        {
+          "dataset": "evidence_register",
+          "fields": [
+            "evidence_id",
+            "evidence_state",
+            "confidence",
+            "follow_up"
+          ],
+          "why": "Evidence items left UNRESOLVED or NOT_EVIDENCED, with their follow-up."
+        }
+      ],
+      "traceability_rule": "Every UNKNOWN, PARTIAL or CONFLICT cell in the matrix appears here exactly once.",
+      "unknown_rule": "This section is the reason an absent input never has to become a zero anywhere else in the report.",
+      "prompts": [
+        "What could we not determine?",
+        "What specific artifact or access would resolve it?",
+        "Who owns supplying it?"
+      ]
+    }
+  ]
+}
