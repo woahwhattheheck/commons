@@ -103,7 +103,7 @@ memory measured in separate passes.
 | findall + set (rejected: fast, fat) | 0.020972 | 5,152,986 |
 | finditer + length filter (shipped) | 0.024980 | 332,883 |
 
-Timing alone selects the middle row. The memory column is why it was rejected:
+Timing alone selects the middle row. The peak-allocation column is why that variant was not shipped:
 `findall` materialises every run in the report as a list before the set exists, so
 peak allocation tracks report size. The shipped row gives back part of the speed
 win and removes most of the memory cost. This table regenerates on every run, so
