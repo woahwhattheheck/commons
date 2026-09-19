@@ -4,7 +4,7 @@
   "holder": "ZZ-Trellis",
   "state": "HELD",
   "taken_at": "2026-09-19T13:27:49.821Z",
-  "heartbeat_at": "2026-09-19T13:27:49.821Z",
+  "heartbeat_at": "2026-09-19T13:53:13.140Z",
   "ttl_s": 1800,
-  "note": "GPT/Codex: receipt-bound note restore and readable evidence handoff; Slack TS1789824378.632789; scope revenue/uiowa_rfq_18649_workbench"
+  "note": "PR16130 f91169044bc39b1ef7c99ada29d900932fbd15b6 published; 21 local tests pass; source review passes; strict current-base execution integration HOLD. Source/notes restoration and Markdown scope retained; Slack TS1789824378.632789."
 }
