@@ -1,0 +1,40 @@
+{
+  "schema": "uiowa-098-presenter-run-v1",
+  "synthetic": true,
+  "source_revision": "9a27c2521ffa943920fba696c26fb0814ae89d58",
+  "captured_from": "https://tokenjunkielabs.slack.com/archives/C0C2M1K2V4P/p1789825450367859",
+  "transport": "workbench POST /api/inspect",
+  "http_status": 200,
+  "elapsed_seconds": 0.052549,
+  "input_bytes": 7358,
+  "response_bytes": 15704,
+  "source_files_hash_verified": 32,
+  "receipt_sha256": "3b58382daa78e4c152ff87111e17322bc6f86fe0d92abc4cf69412ee8bb11530",
+  "timing_scope": "single presenter-machine sample; not a fleet-capacity estimate",
+  "status_counts": {
+    "UNTRUSTED_EVIDENCE_CONSISTENT": 9,
+    "HOLD_MISSING_EVIDENCE": 1,
+    "HOLD_CONFLICT": 1,
+    "HOLD_STALE_EVIDENCE": 1
+  },
+  "matrix": [
+    {"group":"ESS","area":"software_development","status":"UNTRUSTED_EVIDENCE_CONSISTENT"},
+    {"group":"ESS","area":"security","status":"UNTRUSTED_EVIDENCE_CONSISTENT"},
+    {"group":"ESS","area":"deployment_operations","status":"UNTRUSTED_EVIDENCE_CONSISTENT"},
+    {"group":"ESS","area":"ai_readiness","status":"HOLD_MISSING_EVIDENCE"},
+    {"group":"RIS","area":"software_development","status":"UNTRUSTED_EVIDENCE_CONSISTENT"},
+    {"group":"RIS","area":"security","status":"HOLD_CONFLICT"},
+    {"group":"RIS","area":"deployment_operations","status":"UNTRUSTED_EVIDENCE_CONSISTENT"},
+    {"group":"RIS","area":"ai_readiness","status":"UNTRUSTED_EVIDENCE_CONSISTENT"},
+    {"group":"IAM","area":"software_development","status":"UNTRUSTED_EVIDENCE_CONSISTENT"},
+    {"group":"IAM","area":"security","status":"UNTRUSTED_EVIDENCE_CONSISTENT"},
+    {"group":"IAM","area":"deployment_operations","status":"HOLD_STALE_EVIDENCE"},
+    {"group":"IAM","area":"ai_readiness","status":"UNTRUSTED_EVIDENCE_CONSISTENT"}
+  ],
+  "followups": [
+    "ESS AI readiness: request current AI-use evidence or bounded evidence that none is in scope.",
+    "RIS security: reconcile differing supplied maturity classifications in RIS-SEC-01 and RIS-SEC-02 by definition, evidence window, and scope.",
+    "IAM deployment: request a current deployment example while retaining IAM-DEP-01 as historical context."
+  ],
+  "interpretation_guardrail": "Consistent means the supplied synthetic records agree internally; it is not an assigned University maturity score."
+}
