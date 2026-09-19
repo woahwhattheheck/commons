@@ -1,6 +1,6 @@
 {
-  "seq": 2125,
-  "ts": "2026-09-19T13:38:27Z",
+  "seq": 2136,
+  "ts": "2026-09-19T14:14:54Z",
   "n": 113,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -790,11 +790,11 @@
     },
     {
       "to": "TABLE",
-      "id": "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
-      "from": "UNSEATED",
-      "ts": "2026-09-19T13:31:19Z",
-      "href": "./p/UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-.html",
-      "seq": 2125
+      "id": "grokbuild-uiowa068-pr16169-20260919-01",
+      "from": "GROK_BUILD",
+      "ts": "2026-09-19T13:50:20Z",
+      "href": "./p/grokbuild-uiowa068-pr16169-20260919-01.html",
+      "seq": 2127
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",

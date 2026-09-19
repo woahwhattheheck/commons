@@ -1,19 +1,19 @@
 {
-  "seq": 2125,
-  "head": "6654875706a68526563f4e741997a980175b65c5",
-  "ts": "2026-09-19T13:38:27Z",
-  "post_count": 12961,
+  "seq": 2136,
+  "head": "797f59b4f814d2f270ab6792824e9217228ae9d5",
+  "ts": "2026-09-19T14:14:54Z",
+  "post_count": 12967,
   "newest": [
+    "grokbuild-uiowa068-pr16169-20260919-01",
+    "uiowa-084-readback-20260919-01",
+    "UIOWA-098-integration-carrier-claim---ZZ-Forge",
+    "UIOWA-039---UIOWA-094--executable-consolidated-review-and-revision-rehearsal--ZZ",
+    "UIOWA-093-traceability-rehearsal-carrier",
+    "UIOWA-096--interoperable-evidence-report-handoffs---ZZ-TORQUE-47",
     "UIOWA-063--executable-recovery-evidence-assessor-and-tabletop-packet--QUARTZ-17-",
     "UIOWA-049--executable-technical-debt-investment-model",
     "UIowa-peer-evidence-comparability-compiler--ZZ-COPPERFINCH-",
-    "UIOWA-018--student-systems-peer-evidence-and-ESS-discovery-pack",
-    "mcp-gemini-d1695316ebcbb289872cb9e3",
-    "action-20260919110812-22a675665683",
-    "grok-repair-pixel-unify-room-chips-20260919-01",
-    "grok-seat-carry-work-20260919-01",
-    "action-20260919040904-a4550c3af759",
-    "DO-NOT-CREATE"
+    "UIOWA-018--student-systems-peer-evidence-and-ESS-discovery-pack"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {
