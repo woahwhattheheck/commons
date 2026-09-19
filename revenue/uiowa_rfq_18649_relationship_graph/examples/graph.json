@@ -1,0 +1,613 @@
+{
+  "schema": "uiowa-104-relationship-graph-v1",
+  "synthetic": true,
+  "source_bundle": "revenue/uiowa_rfq_18649_traceability_rehearsal",
+  "nodes": [
+    {
+      "id": "EV:E-001",
+      "type": "evidence",
+      "label": "E-001",
+      "service": "ESS",
+      "state": "current",
+      "details": {
+        "source_type": "requirement",
+        "source_name": "Fictional enrollment change request",
+        "locator": "section 2 acceptance criteria",
+        "evidence_state": "current"
+      }
+    },
+    {
+      "id": "EV:E-002",
+      "type": "evidence",
+      "label": "E-002",
+      "service": "ESS",
+      "state": "current",
+      "details": {
+        "source_type": "test_result",
+        "source_name": "Fictional enrollment integration result",
+        "locator": "case ENR-17 / run 2026-08-14",
+        "evidence_state": "current"
+      }
+    },
+    {
+      "id": "EV:E-003",
+      "type": "evidence",
+      "label": "E-003",
+      "service": "ESS",
+      "state": "current",
+      "details": {
+        "source_type": "acceptance_record",
+        "source_name": "Fictional registrar acceptance note",
+        "locator": "criterion AC-3 / 2026-08-15",
+        "evidence_state": "current"
+      }
+    },
+    {
+      "id": "EV:E-004",
+      "type": "evidence",
+      "label": "E-004",
+      "service": "RIS",
+      "state": "current",
+      "details": {
+        "source_type": "design_record",
+        "source_name": "Fictional reporting handoff design",
+        "locator": "interface section 4",
+        "evidence_state": "current"
+      }
+    },
+    {
+      "id": "EV:E-005",
+      "type": "evidence",
+      "label": "E-005",
+      "service": "RIS",
+      "state": "current",
+      "details": {
+        "source_type": "test_inventory",
+        "source_name": "Fictional RIS test inventory",
+        "locator": "row reporting-contract-04",
+        "evidence_state": "current"
+      }
+    },
+    {
+      "id": "EV:E-006",
+      "type": "evidence",
+      "label": "E-006",
+      "service": "RIS",
+      "state": "interview_only",
+      "details": {
+        "source_type": "interview_note",
+        "source_name": "Fictional RIS interview note",
+        "locator": "Q12 / statement 3",
+        "evidence_state": "interview_only"
+      }
+    },
+    {
+      "id": "EV:E-007",
+      "type": "evidence",
+      "label": "E-007",
+      "service": "IAM",
+      "state": "current",
+      "details": {
+        "source_type": "test_result",
+        "source_name": "Fictional directory profile propagation result",
+        "locator": "scenario PROF-09 / consumer A",
+        "evidence_state": "current"
+      }
+    },
+    {
+      "id": "EV:E-008",
+      "type": "evidence",
+      "label": "E-008",
+      "service": "IAM",
+      "state": "current",
+      "details": {
+        "source_type": "inventory",
+        "source_name": "Fictional dependent-application inventory",
+        "locator": "rows 1-7",
+        "evidence_state": "current"
+      }
+    },
+    {
+      "id": "FND:F-001",
+      "type": "finding",
+      "label": "F-001 — Traceable acceptance chain",
+      "service": "ESS",
+      "state": "strength",
+      "details": {
+        "statement": "The fictional ESS example retains linked requirement, integration-test, and acceptance evidence for the covered enrollment behavior",
+        "confidence": "high",
+        "limitation": "Applies only to the synthetic covered behavior and does not establish all ESS workflows",
+        "evidence_ids": [
+          "E-001",
+          "E-002",
+          "E-003"
+        ],
+        "report_references": [
+          {
+            "statement_id": "S-001",
+            "report_location": "executive-summary.md#supported-strength",
+            "statement_summary": "Synthetic ESS retains a traceable requirement-to-acceptance chain"
+          }
+        ]
+      }
+    },
+    {
+      "id": "FND:F-002",
+      "type": "finding",
+      "label": "F-002 — Propagation evidence remains incomplete",
+      "service": "RIS",
+      "state": "gap",
+      "details": {
+        "statement": "The fictional RIS example documents the intended downstream reporting handoff and a contract check, but the packet does not contain retained evidence of an end-to-end propagation check",
+        "confidence": "moderate",
+        "limitation": "Missing retained evidence is not proof that no manual or undocumented check occurred",
+        "evidence_ids": [
+          "E-004",
+          "E-005",
+          "E-006"
+        ],
+        "report_references": [
+          {
+            "statement_id": "S-002",
+            "report_location": "executive-summary.md#material-gap",
+            "statement_summary": "Synthetic RIS packet lacks retained end-to-end propagation evidence"
+          },
+          {
+            "statement_id": "S-004",
+            "report_location": "final-report.md#recommendation-1",
+            "statement_summary": "Retain a representative RIS propagation example when the behavior changes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "FND:F-003",
+      "type": "finding",
+      "label": "F-003 — Representative propagation evidence only",
+      "service": "IAM",
+      "state": "mixed",
+      "details": {
+        "statement": "The fictional IAM example has direct evidence for one dependent application, while the packet does not establish equivalent propagation evidence for the other listed consumers",
+        "confidence": "high",
+        "limitation": "Do not extrapolate one representative consumer to all dependents",
+        "evidence_ids": [
+          "E-007",
+          "E-008"
+        ],
+        "report_references": [
+          {
+            "statement_id": "S-003",
+            "report_location": "executive-summary.md#uncertainty-boundary",
+            "statement_summary": "Synthetic IAM evidence supports one representative consumer rather than every dependent application"
+          },
+          {
+            "statement_id": "S-005",
+            "report_location": "final-report.md#recommendation-2",
+            "statement_summary": "Make the represented and unassessed IAM consumers explicit"
+          }
+        ]
+      }
+    },
+    {
+      "id": "MISSING:F-DEMO-999",
+      "type": "missing",
+      "label": "Missing finding F-DEMO-999",
+      "service": "DEMO",
+      "state": "unsupported_reference",
+      "details": {
+        "demo_only": true,
+        "missing_id": "MISSING:F-DEMO-999"
+      }
+    },
+    {
+      "id": "OBS:E-001",
+      "type": "observation",
+      "label": "E-001 observation",
+      "service": "ESS",
+      "state": "current",
+      "details": {
+        "observation": "Selected course and resulting enrollment state must remain consistent through the workflow",
+        "evidence_state": "current"
+      }
+    },
+    {
+      "id": "OBS:E-002",
+      "type": "observation",
+      "label": "E-002 observation",
+      "service": "ESS",
+      "state": "current",
+      "details": {
+        "observation": "Persistence round trip passed for the covered scenario",
+        "evidence_state": "current"
+      }
+    },
+    {
+      "id": "OBS:E-003",
+      "type": "observation",
+      "label": "E-003 observation",
+      "service": "ESS",
+      "state": "current",
+      "details": {
+        "observation": "Business representative accepted the covered enrollment workflow",
+        "evidence_state": "current"
+      }
+    },
+    {
+      "id": "OBS:E-004",
+      "type": "observation",
+      "label": "E-004 observation",
+      "service": "RIS",
+      "state": "current",
+      "details": {
+        "observation": "Approved proposal status is intended to appear in downstream reporting",
+        "evidence_state": "current"
+      }
+    },
+    {
+      "id": "OBS:E-005",
+      "type": "observation",
+      "label": "E-005 observation",
+      "service": "RIS",
+      "state": "current",
+      "details": {
+        "observation": "Contract compatibility is covered; no end-to-end propagation scenario is listed",
+        "evidence_state": "current"
+      }
+    },
+    {
+      "id": "OBS:E-006",
+      "type": "observation",
+      "label": "E-006 observation",
+      "service": "RIS",
+      "state": "interview_only",
+      "details": {
+        "observation": "Participant recalls periodic manual checking but no retained example was identified in the rehearsal packet",
+        "evidence_state": "interview_only"
+      }
+    },
+    {
+      "id": "OBS:E-007",
+      "type": "observation",
+      "label": "E-007 observation",
+      "service": "IAM",
+      "state": "current",
+      "details": {
+        "observation": "One representative dependent application reflected the profile update",
+        "evidence_state": "current"
+      }
+    },
+    {
+      "id": "OBS:E-008",
+      "type": "observation",
+      "label": "E-008 observation",
+      "service": "IAM",
+      "state": "current",
+      "details": {
+        "observation": "Seven dependent applications are listed; no common propagation evidence is attached for the other six",
+        "evidence_state": "current"
+      }
+    },
+    {
+      "id": "REC:DEMO-UNSUPPORTED",
+      "type": "recommendation",
+      "label": "DEMO — recommendation with missing finding support",
+      "service": "DEMO",
+      "state": "demo_only",
+      "details": {
+        "demo_only": true,
+        "note": "Deliberately unsupported link used only to prove the graph retains and exposes missing targets."
+      }
+    },
+    {
+      "id": "REC:R-001",
+      "type": "recommendation",
+      "label": "R-001 — Retain one RIS end-to-end propagation example",
+      "service": "CROSS",
+      "state": "recommendation",
+      "details": {
+        "action": "Add a small representative propagation scenario or retain equivalent operational evidence when this behavior changes",
+        "expected_outcome": "Reduce uncertainty about whether contract-compatible changes reach the downstream report",
+        "effort": "low_to_medium",
+        "dependency": "Stable rehearsal data and a representative downstream consumer",
+        "linked_findings": [
+          "F-002"
+        ]
+      }
+    },
+    {
+      "id": "REC:R-002",
+      "type": "recommendation",
+      "label": "R-002 — Make representative IAM coverage explicit",
+      "service": "CROSS",
+      "state": "recommendation",
+      "details": {
+        "action": "Document which dependent applications are represented by shared propagation evidence and which remain unassessed",
+        "expected_outcome": "Prevent one successful representative path from being interpreted as universal coverage",
+        "effort": "low",
+        "dependency": "Current dependent-application inventory",
+        "linked_findings": [
+          "F-003"
+        ]
+      }
+    },
+    {
+      "id": "SRC:E-001",
+      "type": "source",
+      "label": "Fictional enrollment change request",
+      "service": "ESS",
+      "state": "locator",
+      "details": {
+        "source_name": "Fictional enrollment change request",
+        "locator": "section 2 acceptance criteria",
+        "source_type": "requirement"
+      }
+    },
+    {
+      "id": "SRC:E-002",
+      "type": "source",
+      "label": "Fictional enrollment integration result",
+      "service": "ESS",
+      "state": "locator",
+      "details": {
+        "source_name": "Fictional enrollment integration result",
+        "locator": "case ENR-17 / run 2026-08-14",
+        "source_type": "test_result"
+      }
+    },
+    {
+      "id": "SRC:E-003",
+      "type": "source",
+      "label": "Fictional registrar acceptance note",
+      "service": "ESS",
+      "state": "locator",
+      "details": {
+        "source_name": "Fictional registrar acceptance note",
+        "locator": "criterion AC-3 / 2026-08-15",
+        "source_type": "acceptance_record"
+      }
+    },
+    {
+      "id": "SRC:E-004",
+      "type": "source",
+      "label": "Fictional reporting handoff design",
+      "service": "RIS",
+      "state": "locator",
+      "details": {
+        "source_name": "Fictional reporting handoff design",
+        "locator": "interface section 4",
+        "source_type": "design_record"
+      }
+    },
+    {
+      "id": "SRC:E-005",
+      "type": "source",
+      "label": "Fictional RIS test inventory",
+      "service": "RIS",
+      "state": "locator",
+      "details": {
+        "source_name": "Fictional RIS test inventory",
+        "locator": "row reporting-contract-04",
+        "source_type": "test_inventory"
+      }
+    },
+    {
+      "id": "SRC:E-006",
+      "type": "source",
+      "label": "Fictional RIS interview note",
+      "service": "RIS",
+      "state": "locator",
+      "details": {
+        "source_name": "Fictional RIS interview note",
+        "locator": "Q12 / statement 3",
+        "source_type": "interview_note"
+      }
+    },
+    {
+      "id": "SRC:E-007",
+      "type": "source",
+      "label": "Fictional directory profile propagation result",
+      "service": "IAM",
+      "state": "locator",
+      "details": {
+        "source_name": "Fictional directory profile propagation result",
+        "locator": "scenario PROF-09 / consumer A",
+        "source_type": "test_result"
+      }
+    },
+    {
+      "id": "SRC:E-008",
+      "type": "source",
+      "label": "Fictional dependent-application inventory",
+      "service": "IAM",
+      "state": "locator",
+      "details": {
+        "source_name": "Fictional dependent-application inventory",
+        "locator": "rows 1-7",
+        "source_type": "inventory"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "EV:E-001",
+      "to": "SRC:E-001",
+      "relation": "evidence_to_source",
+      "state": "supported"
+    },
+    {
+      "from": "EV:E-002",
+      "to": "SRC:E-002",
+      "relation": "evidence_to_source",
+      "state": "supported"
+    },
+    {
+      "from": "EV:E-003",
+      "to": "SRC:E-003",
+      "relation": "evidence_to_source",
+      "state": "supported"
+    },
+    {
+      "from": "EV:E-004",
+      "to": "SRC:E-004",
+      "relation": "evidence_to_source",
+      "state": "supported"
+    },
+    {
+      "from": "EV:E-005",
+      "to": "SRC:E-005",
+      "relation": "evidence_to_source",
+      "state": "supported"
+    },
+    {
+      "from": "EV:E-006",
+      "to": "SRC:E-006",
+      "relation": "evidence_to_source",
+      "state": "supported"
+    },
+    {
+      "from": "EV:E-007",
+      "to": "SRC:E-007",
+      "relation": "evidence_to_source",
+      "state": "supported"
+    },
+    {
+      "from": "EV:E-008",
+      "to": "SRC:E-008",
+      "relation": "evidence_to_source",
+      "state": "supported"
+    },
+    {
+      "from": "FND:F-001",
+      "to": "OBS:E-001",
+      "relation": "finding_to_observation",
+      "state": "supporting"
+    },
+    {
+      "from": "FND:F-001",
+      "to": "OBS:E-002",
+      "relation": "finding_to_observation",
+      "state": "supporting"
+    },
+    {
+      "from": "FND:F-001",
+      "to": "OBS:E-003",
+      "relation": "finding_to_observation",
+      "state": "supporting"
+    },
+    {
+      "from": "FND:F-002",
+      "to": "OBS:E-004",
+      "relation": "finding_to_observation",
+      "state": "supporting"
+    },
+    {
+      "from": "FND:F-002",
+      "to": "OBS:E-005",
+      "relation": "finding_to_observation",
+      "state": "supporting"
+    },
+    {
+      "from": "FND:F-002",
+      "to": "OBS:E-006",
+      "relation": "finding_to_observation",
+      "state": "counter_evidence"
+    },
+    {
+      "from": "FND:F-003",
+      "to": "OBS:E-007",
+      "relation": "finding_to_observation",
+      "state": "supporting"
+    },
+    {
+      "from": "FND:F-003",
+      "to": "OBS:E-008",
+      "relation": "finding_to_observation",
+      "state": "context"
+    },
+    {
+      "from": "OBS:E-001",
+      "to": "EV:E-001",
+      "relation": "observation_to_evidence",
+      "state": "supported"
+    },
+    {
+      "from": "OBS:E-002",
+      "to": "EV:E-002",
+      "relation": "observation_to_evidence",
+      "state": "supported"
+    },
+    {
+      "from": "OBS:E-003",
+      "to": "EV:E-003",
+      "relation": "observation_to_evidence",
+      "state": "supported"
+    },
+    {
+      "from": "OBS:E-004",
+      "to": "EV:E-004",
+      "relation": "observation_to_evidence",
+      "state": "supported"
+    },
+    {
+      "from": "OBS:E-005",
+      "to": "EV:E-005",
+      "relation": "observation_to_evidence",
+      "state": "supported"
+    },
+    {
+      "from": "OBS:E-006",
+      "to": "EV:E-006",
+      "relation": "observation_to_evidence",
+      "state": "supported"
+    },
+    {
+      "from": "OBS:E-007",
+      "to": "EV:E-007",
+      "relation": "observation_to_evidence",
+      "state": "supported"
+    },
+    {
+      "from": "OBS:E-008",
+      "to": "EV:E-008",
+      "relation": "observation_to_evidence",
+      "state": "supported"
+    },
+    {
+      "from": "REC:DEMO-UNSUPPORTED",
+      "to": "MISSING:F-DEMO-999",
+      "relation": "recommendation_to_finding",
+      "state": "unsupported"
+    },
+    {
+      "from": "REC:R-001",
+      "to": "FND:F-002",
+      "relation": "recommendation_to_finding",
+      "state": "supported"
+    },
+    {
+      "from": "REC:R-002",
+      "to": "FND:F-003",
+      "relation": "recommendation_to_finding",
+      "state": "supported"
+    }
+  ],
+  "summary": {
+    "node_count": 31,
+    "edge_count": 27,
+    "node_types": {
+      "evidence": 8,
+      "finding": 3,
+      "missing": 1,
+      "observation": 8,
+      "recommendation": 3,
+      "source": 8
+    },
+    "edge_states": {
+      "context": 1,
+      "counter_evidence": 1,
+      "supported": 18,
+      "supporting": 6,
+      "unsupported": 1
+    }
+  }
+}
