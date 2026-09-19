@@ -110,38 +110,50 @@ def classify_item(record, changes, dangling_refs, invalid_refs=None):
         and c["evidence_ref"].strip()
         and scenario.valid_completion_date(c.get("completed_at"))
     ]
-    if completed:
-        for c in completed:
-            evidence.append(c["evidence_ref"])
-            reasons.append("%s recorded %s on %s" % (c["id"], c["action"], c.get("completed_at", "an unstated date")))
-        return "COMPLETED", reasons, evidence
+    # MERIDIAN-Q7's semantic review distinguishes a completed action from a
+    # complete handoff. Retain supported action locators while ownership or a
+    # separately declared action remains open; never infer supersession.
+    for c in completed:
+        evidence.append(c["evidence_ref"])
+        reasons.append("%s recorded %s on %s" % (c["id"], c["action"], c["completed_at"]))
 
+    incomplete = []
     claimed_complete = [c for c in changes if c.get("status") == "COMPLETED"]
-    if claimed_complete:
+    for c in claimed_complete:
+        if c in completed:
+            continue
         # Status alone is somebody typing a word into a field.
-        for c in claimed_complete:
-            locator = c.get("evidence_ref")
-            if not isinstance(locator, str) or not locator.strip():
-                reasons.append("%s is marked COMPLETED but carries no evidence locator" % c.get("id", "UNKNOWN"))
-            if not scenario.valid_completion_date(c.get("completed_at")):
-                reasons.append("%s is marked COMPLETED but carries no valid completion date" % c.get("id", "UNKNOWN"))
-            if c.get("action") not in scenario.ACCESS_ACTIONS:
-                reasons.append("%s has no recognized completion action" % c.get("id", "UNKNOWN"))
-        return "NO_EVIDENCE", reasons, evidence
+        locator = c.get("evidence_ref")
+        if not isinstance(locator, str) or not locator.strip():
+            incomplete.append("%s is marked COMPLETED but carries no evidence locator" % c.get("id", "UNKNOWN"))
+        if not scenario.valid_completion_date(c.get("completed_at")):
+            incomplete.append("%s is marked COMPLETED but carries no valid completion date" % c.get("id", "UNKNOWN"))
+        if c.get("action") not in scenario.ACCESS_ACTIONS:
+            incomplete.append("%s has no recognized completion action" % c.get("id", "UNKNOWN"))
+    for c in changes:
+        if c.get("status") != "COMPLETED":
+            incomplete.append("%s is %s, not complete" % (c.get("id", "UNKNOWN"), c.get("status", "UNKNOWN")))
 
     successor = record.get("successor_ref")
-    if not successor:
-        reasons.append("still owned by the departing contractor and no successor is recorded")
+    if not successor or successor == record.get("owner_ref"):
+        reasons.append("still owned by the departing contractor and no successor is recorded"
+                       if not successor else "the departing contractor is also the named successor")
+        reasons.extend(incomplete)
         return "UNRESOLVED_OWNERSHIP", reasons, evidence
+
+    if completed and not incomplete:
+        return "COMPLETED", reasons, evidence
+
+    if claimed_complete:
+        reasons.extend(incomplete)
+        return "NO_EVIDENCE", reasons, evidence
 
     # A successor is named. That is a plan, not a handoff.
     reasons.append(
         "successor %s is named but no completed change record shows the handoff occurred; "
         "a named successor is a plan, not evidence" % successor
     )
-    in_flight = [c for c in changes if c.get("status") in ("REQUESTED", "IN_PROGRESS")]
-    for c in in_flight:
-        reasons.append("%s is %s, not complete" % (c["id"], c["status"]))
+    reasons.extend(incomplete)
     return "NO_EVIDENCE", reasons, evidence
 
 

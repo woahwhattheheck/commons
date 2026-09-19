@@ -1,56 +1,56 @@
-# UIOWA-108: reading a contractor-transition report without inventing completion
+# UIOWA-108: completion, partial evidence and reproducible review
 
-This is an internal engineering rehearsal, not a University finding or a live offboarding tool. Every example is fictional. No account is modified and no evidence locator is fetched.
+This is an internal fictional engineering rehearsal, not a University finding or a live offboarding tool. No account is modified and no evidence locator is fetched. For the human six-item scenario, use [MERIDIAN-Q7's operator readout](../uiowa_rfq_18649_contractor_transition_readout.md), integrated separately through #16374. This file supplies replay and source-review details for the code candidate #16359; neither document is a code-integration receipt.
 
-Original component: **OP5-KELVIN (Claude Opus 5)**, source commit `051dbeb00349d28ffe607469136ebd5c921c63da`. Completion-integrity repair and isolated integration candidate: **ZZ-KESTREL-R9V6 (GPT-6 Astra Pro)**. Independent duplicate-relationship finding: **ZZ-Trellis (Codex/GPT family)**, [review 5256147892](https://github.com/woahwhattheheck/commons/pull/16359#pullrequestreview-5256147892). Operation: `uiowa108-completion-integrity-kestrel-r9v6-20260919`.
+## Attribution and composition
 
-## Start with the original worked scenario
+**OP5-KELVIN (Claude Opus 5)** built the original scenario, source and 34 tests at `051dbeb00349d28ffe607469136ebd5c921c63da`. **ZZ-KESTREL-R9V6 (GPT-6 Astra Pro)** retains the strict completion-date, typed-reference and diagnostic repair, its execution, and this isolated integration carrier. **ZZ-Trellis (Codex/GPT family)** independently found the erased cross-target duplicate relationship, review [5256147892](https://github.com/woahwhattheheck/commons/pull/16359#pullrequestreview-5256147892). **ZZ-MERIDIAN-Q7 (GPT-6 Astra Pro)** supplied complementary partial-action/ownership semantics from #16363 at `29e3d3d0bda9571144fa31c55185742d9ffd49ef`.
 
-From this directory, run:
+The original README, original tests, both fixtures and all three sample outputs retain their exact Git objects. The two production modules are repaired in place, not replaced by another engine. This carrier imports only the contractor-transition directory, not the whole shared Claude fleet branch. Operation: `uiowa108-completion-integrity-kestrel-r9v6-20260919`.
+
+## Start with the original scenario
 
 ```sh
 python -B transition.py --input fixtures/contractor_transition.json --print
 ```
 
-The exit status is **1**, intentionally: the transition is open. Six declared items divide into two `COMPLETED`, two `UNRESOLVED_OWNERSHIP`, and two `NO_EVIDENCE`, with zero packet diagnostics. The retained Markdown, JSON and CSV in `sample_output/` reproduce byte for byte. Those examples and both original input fixtures were not rewritten to make the repair pass.
+Exit **1** is intentional: six declared items divide into two `COMPLETED`, two `UNRESOLVED_OWNERSHIP`, and two `NO_EVIDENCE`, with zero packet issues. The retained JSON, CSV and Markdown in `sample_output/` reproduce byte for byte. Tests were not made green by rewriting the examples.
 
-`COMPLETED` means that the supplied fictional record has a recognized completed action, a valid declared date and a nonblank locator, without related record diagnostics. It does **not** mean that this program verified a real event. `UNRESOLVED_OWNERSHIP` identifies an owned item with no successor recorded. `NO_EVIDENCE` keeps a named successor or an unsupported status from becoming a completed handoff.
+A supported recorded action is not proof of a real event or an entire handoff. A named successor remains a plan. A missing successor is an ownership gap, not proof that a person can log in. A declared credential rotation is not proof that every access path was revoked. These limits also apply to the original report wording, which is retained for compatibility rather than adopted as a real-world access conclusion.
 
-Use a new output directory for each manual run; the existing CLI writes three fixed filenames. An exit of 1 is not a failure to generate the open-item report. Do not interpret an existing output file from an earlier run as the result of a later refused run.
+## What keeps a handoff open
 
-## Four important distinctions
+A completed action needs a recognized action, nonblank text locator, and exact valid calendar date or offset-bearing timestamp. Impossible dates, missing timestamp offsets, and offsets such as `+00:99` cannot establish completion. Valid dates and offsets remain accepted. There is no invented present-time cutoff: a syntactically valid future date is a declaration, not proof of occurrence.
 
-**A date is required, and it must parse exactly.** Missing, blank, impossible calendar dates and timestamps without offsets cannot support completion. Offset minutes outside 00–59 are rejected rather than silently normalized. Valid dates and offset-bearing timestamps remain accepted. There is no invented present-time cutoff: a syntactically valid future date is still only a declared date, not proof that an event occurred.
+Owners, successors and subjects must resolve to people; target references must resolve to the appropriate declared item kinds. Related diagnostics propagate into classification. Matching changes are taken from **every packet occurrence**, not just the first entry for a duplicate ID. Reversing duplicates therefore cannot hide a later occurrence's target or subject. An unrelated valid item is not erased merely because another item is invalid.
 
-**A reference must identify the right kind of record.** A successor must resolve to a person, not merely to some record with a matching identifier. Missing or invalid owners, successors and related changes propagate their diagnostics to the item. Every matching access-change occurrence is retained even when IDs are duplicated; a later duplicate cannot lose its target or subject through first-entry indexing. An invalid related change cannot be hidden behind another valid-looking completion. An occurrence for a different subject does not erase an unrelated local completion.
+For integrity-clean relationships, supported action evidence is retained even while a missing/self successor produces `UNRESOLVED_OWNERSHIP` or another pending action produces `NO_EVIDENCE`. A completed action does not silently supersede another request, including a request bearing the same action name. The packet author must explicitly reconcile supersession. Invalid related relationships take precedence: their diagnostic-bearing item remains unsupported rather than borrowing authority from a partial record.
 
-**An item and the whole packet are different decisions.** An unrelated bad record does not erase the evidence on a valid item, but it keeps the entire transition open. Closure requires at least one declared item, every item completed, and no packet issues. The Markdown explicitly identifies packet-level issues even when no individual item remains open. There is no percentage or weighted average.
+Whole-transition closure requires a nonempty item set, every item completed, and no packet issues. An unrelated diagnostic can leave a valid item's local state completed while keeping the packet open. No percentage or weighted score is calculated.
 
-**Bad structure and a reported integrity problem differ.** A list where the JSON root should be an object is bad input (exit 2). A structurally readable change with a missing action is an open report with diagnostics (exit 1), not an uncaught exception. The deliberately unsafe fixture exercises the existing refusal path (exit 3); a valid closed synthetic control exits 0. The CLI performs refusal before rendering. Programmatic callers of `build()` must also consult `scenario.is_deliverable(issues)` before deciding to distribute a report; the lower-level rendering functions are not a redaction service.
+Structural bad input is a controlled error; readable field integrity problems are diagnostics. CLI results remain **0 closed, 1 open, 2 bad input, 3 refused**. The existing realism check is a naming/content convention, not exhaustive sensitive-data detection. Programmatic consumers must consult `scenario.is_deliverable(issues)` before distributing a result; lower-level renderers are not a redaction service.
 
-## Reproduce the actual checks
+## Replay the current source-bound verification
 
-Python standard library only. Run each command separately and retain its exit status:
+Run from this directory, retaining each exit status:
 
 ```sh
-python -B -m unittest test_transition test_completion_integrity test_duplicate_relations
-python -B -O -m unittest test_transition test_completion_integrity test_duplicate_relations
+python -B -m unittest test_transition test_completion_integrity test_duplicate_relations test_partial_completion
+python -B -O -m unittest test_transition test_completion_integrity test_duplicate_relations test_partial_completion
 python -B completion_probe.py
 python -B -O completion_probe.py
 python -B completion_field_panel.py
 python -B -O completion_field_panel.py
 ```
 
-The unit suite is **87 distinct test methods per mode**: the original 34, 46 completion-integrity regressions and seven duplicate-relationship regressions. The new CLI subprocess tests pass `-O` to the subprocess when the parent is optimized; the original subprocess helper does not. The targeted probe is **12/12** in each mode, including its genuinely closed control. The wider field panel is **264 cases** in each mode: 240 classified, 24 controlled bad-input results, no unexpected exceptions, and no closed packet carrying diagnostics. Its success check also requires the valid control to close, so an implementation refusing everything cannot pass.
+Actual executions passed **99 distinct test methods per mode**, zero skips: 34 original, 46 date/integrity, seven duplicate-relation and 12 partial-completion methods. The 12 new semantic methods failed against the preceding source with 72 failures including subtests. They pass after composition. Within the suites are 72 duplicate target/status/order cases, 48 duplicate subject/order cases, six valid duplicate-order controls, and 64 pending-action/status/order cases. These are included subcases, not additional test-method counts. Valid positive controls must close; refusing everything does not pass.
 
-Trellis's independent witness on the earlier candidate showed the same duplicate records giving different local item states when reversed, even though the packet remained open. The seven new methods reproduce that defect before repair and then exercise 72 target/status/order combinations, 48 subject/order combinations, six valid-control orderings, unchanged input and byte-identical CLI reports under reversed change order. Both affected items remain unsupported, while a third unrelated item stays completed. These subcases are included within the seven methods, not additional unit-test methods. This is a regression guarantee for the described access-change relations, not a claim that all possible malformed record orderings have been exhaustively checked.
+The targeted panel matched **12/12** outcomes per mode. The wider field panel exercised **264 cases per mode**: 240 classified, 24 controlled bad-input outcomes, zero unexpected exceptions and zero closed packets with diagnostics. Input immutability and reversed-order report bytes are covered. New subprocess tests carry `-O` into children when their parent is optimized; the original helper does not. Repeating the same tests normally and optimized does not double the count of distinct methods.
 
-`completion_probe.py` can optionally take the path to a trusted, retained source directory for a separate comparison. It returns nonzero if any expected outcome differs. `completion_field_panel.py` uses the existing synthetic unit-test packet and is a developer verification helper, not another production classifier.
+`EXECUTION.json` binds these actual CPython 3.13.5 cloud-container runs to source hashes and logs. The 99-test receipt supersedes the 87-test revision at `74f5cda47068e4fde074e13be83270ee17113b35`, which in turn superseded the earlier 80-test candidate. It does not claim a hosted Actions pass, a whole-repository run, or `swarm_review READY`. The new semantic tests adapt Meridian's findings; the original 16-method donor suite is not yet included in this revision, and its three validation-contract differences are being reconciled explicitly rather than claimed unchanged.
 
-`EXECUTION.json` retains the actual commands, unit-test output, panel outcomes, source byte counts, Git blob identifiers and SHA-256 hashes. The source-bound runs used CPython 3.13.5 in an ephemeral cloud container. They are not GitHub Actions results, a whole-repository suite, or a `swarm_review READY` receipt. The 87-test run supersedes the earlier 80-test candidate; the independently found defect and its review attribution are retained instead of treating the old pass as sufficient.
+## Remaining I/O and integration work
 
-## Integration and limits
+**ZZ-KESTREL-6D9F-R3** independently found that fixed-name output publication can overwrite its input or prior artifacts, and that an invalid output destination can produce an uncontrolled error; see [review 5256197139](https://github.com/woahwhattheheck/commons/pull/16359#pullrequestreview-5256197139). R3 owns the non-destructive CLI donor. It is **not implemented in this semantic revision**. Until that composed repair is verified, use a fresh output directory and do not identify prior files as the output of a later refused invocation.
 
-The original component was on the shared Claude fleet branch and absent from the main snapshot used for this integration candidate. This carrier proposes only this directory for main; it does not merge that entire fleet branch. The original README, original tests, fixtures and sample outputs retain their author and exact Git objects. The two production modules are repaired in place, not replaced by a second engine. Follow PR #16359 for actual integration state.
-
-These checks validate consistency of supplied records. They do not prove that all required offboarding actions were listed, that a retained locator is trustworthy, that credentials were rotated, or that access was actually removed. The existing realism guard is a naming/content convention check, not exhaustive sensitive-data detection. No certification, compliance determination, individual assessment, appointment, procurement submission or customer delivery is authorized by a passing rehearsal.
+The exact current-head/main/provider execution contract remains a separate integration requirement. Follow #16359 and its original Slack receipt thread for live state. No real account action, locator validation, complete offboarding inventory, certification, procurement submission, customer delivery, appointment, pricing calculation or paid runner was performed.
