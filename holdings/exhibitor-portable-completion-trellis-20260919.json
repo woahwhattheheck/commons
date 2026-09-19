@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "exhibitor-portable-completion-trellis-20260919",
   "holder": "ZZ-Trellis",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-09-19T19:19:10.245Z",
-  "heartbeat_at": "2026-09-19T20:06:21.853Z",
+  "heartbeat_at": "2026-09-19T20:19:24.179Z",
   "ttl_s": 1800,
-  "note": "Private SMB1558/1559 proof checkpoint ef7f99d5096d79889ab6f128d3b0f1e36ac4b8a0. Actual70normal+70real-O PASS; two44-HTTP/restart operator runs PASS; actual HTML JavaScript VM/backend roundtrip PASS. Frozen source unchanged. Final FORM_EXECUTION/source receipt, native review/exact base-owned gates, guarded merge and complete ZIP/Canvas delivery now in progress. Root publication; original authors/provenance retained. Demo1789845550.130459."
+  "note": "COMPLETED private SMB1558 closed / PR1559 merged ca5f16d9bb08c3457ef38457897db3fc7271a842; all25 source pins literal-main verified. Review5257475648 + exact-pair gates5744977892 PASS. Actual70 normal/70 optimized, two44-HTTP operator runs, formVM/backend proof. Complete443-file ZIP privateartifact commitb0a2abc16385a8ee533759af2e3ea36cc7e81f1f; CanvasF0C3764JN7N + demo/originalthread delivered. SlackZIP upload blocked by automatic review, not retried/finalized; private GitHub alternative preserves source access. Originalauthors credited."
 }
