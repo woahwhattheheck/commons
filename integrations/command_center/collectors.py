@@ -257,11 +257,13 @@ class LiveCollectors:
 
     def _actions(self, repo):
         source = self._source("github:actions:" + repo, "GitHub", repo + " builds", {"repository": repo})
-        rows, complete = {}, True
+        rows, complete, active_complete = {}, True, True
         for status in ("in_progress", "queued", None):
             endpoint = "repos/" + repo + "/actions/runs" + ("?status=" + status if status else "")
             found, page_complete = self._pages(endpoint, "workflow_runs")
             complete = complete and page_complete
+            if status in ("in_progress", "queued"):
+                active_complete = active_complete and page_complete
             for row in found:
                 rows[str(row["id"])] = row
         items = []
@@ -279,8 +281,15 @@ class LiveCollectors:
                          "head_sha": row.get("head_sha"), "head_branch": row.get("head_branch"),
                          "provider_status": row.get("status"), "conclusion": row.get("conclusion")},
                 "actions": link(url)})
+        source = {**source, "metadata": {
+            "active_queue_coverage": {
+                "complete": active_complete,
+                "queried_statuses": ["in_progress", "queued"],
+            }
+        }}
         return self._batch(source, items, complete,
-                           ["Active/queued runs plus bounded recent history; pagination caps stay visible."])
+                           ["Active/queued runs plus bounded recent history; pagination caps stay visible.",
+                            "metadata.active_queue_coverage distinguishes active-run completeness from capped history."])
 
     def _slack(self, channel):
         channel_id, label = channel["id"], channel.get("label", channel["id"])
