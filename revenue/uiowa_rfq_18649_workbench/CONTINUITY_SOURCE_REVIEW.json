@@ -1,0 +1,95 @@
+{
+  "schema": "uiowa-workbench-session-continuity-source-review/v1",
+  "reviewed_at": "2026-09-19T16:25:04.576316+00:00",
+  "reviewer": "ZZ–Keystone-43CF / workbench-review",
+  "model": "Codex / GPT family (exact model identifier unavailable)",
+  "decision": "PASS",
+  "baseline_commit": "da9857b6240157df0549bc67dcf07480cf1ff669",
+  "scope": "Independent static source review of tab-memory draft continuity, report lifecycle, source binding, Unicode scalar validation, serialization failure preservation and native UI controls. No code edits, external writes or independent execution of feature test suites in this review.",
+  "reviewed_files": [
+    {
+      "path": "revenue/uiowa_rfq_18649_workbench/app.js",
+      "bytes": 27261,
+      "git_blob": "80a9d3c93b02c30c10e2a5677fcb3069e01481dc",
+      "sha256": "a35cc3215e5793528d6ce4f0ffa7403565e0b164d3175b5210bf73e0ce9cda57",
+      "base_git_blob": "87110be97624cdb4442263060374ac8c4181dfad",
+      "review_role": "changed production"
+    },
+    {
+      "path": "revenue/uiowa_rfq_18649_workbench/index.html",
+      "bytes": 6573,
+      "git_blob": "2b4d00e0bc417d9c3a436fb92bbe04382770b21d",
+      "sha256": "d9ba6c3ebae5b7c52facfdd905698fce0f6b9197bf790307a314aa02c5dca1ce",
+      "base_git_blob": "b8b5e568b0bcf04095263c70e792643c6276bf05",
+      "review_role": "changed production"
+    },
+    {
+      "path": "revenue/uiowa_rfq_18649_workbench/handoff.js",
+      "bytes": 13895,
+      "git_blob": "ff7d80968b6c1de8254d27460dee1830980588f8",
+      "sha256": "7bf91fb5d4a2e1372ee164ad6f0a6f542ab3b1d277f26775f0cd81af87e38b88",
+      "base_git_blob": "ff7d80968b6c1de8254d27460dee1830980588f8",
+      "review_role": "unchanged reviewed dependency"
+    },
+    {
+      "path": "revenue/uiowa_rfq_18649_workbench/handoff_import.js",
+      "bytes": 4590,
+      "git_blob": "20703283260781e87ef88c7ca0af17b380541f74",
+      "sha256": "919954318e549bacd421353b78faffecd56ec56addd32d2c58e8c6e32b8ab5d8",
+      "base_git_blob": "20703283260781e87ef88c7ca0af17b380541f74",
+      "review_role": "unchanged reviewed dependency"
+    },
+    {
+      "path": "revenue/uiowa_rfq_18649_workbench/style.css",
+      "bytes": 9327,
+      "git_blob": "93c1bfc40f9d6da9c9b56d6fbf3bb311bcd196c9",
+      "sha256": "5b6b5428a6f3656f1b136c209901ccfe371c1d8695ed2a2937c030b44dc198a7",
+      "base_git_blob": "93c1bfc40f9d6da9c9b56d6fbf3bb311bcd196c9",
+      "review_role": "unchanged reviewed dependency"
+    }
+  ],
+  "findings": [],
+  "observations": [
+    "Cache entries hold a serialized v1 draft plus counts, not a compiler report or original evidence. No new storage or network persistence path and no cache eviction are introduced.",
+    "Both snapshot construction and restoration use the existing full shared handoff schema, including exact receipt, mode, aggregate state, synthetic identity, all 12 unique matching cells/statuses, disposition enum, note bounds and literal false authority flags.",
+    "Draft construction, serialization and validation complete before cache assignment. Active edit maps remain available after a snapshot validation failure, and Clear, demo replacement and evidence replacement abort rather than discarding that active work.",
+    "Existing saved receipts are updated even when the last note/disposition is explicitly emptied; pristine untouched reports do not create new cache entries.",
+    "Inspection resets active report/maps and disables exports before asynchronous loading. Failures retain only independently downloadable serialized draft notes, and successful matching inspection reconstructs maps through validation.",
+    "Different receipts do not receive prior notes. Saved downloads use the selected snapshot receipt even with no active report, while restore remains unavailable until a matching report is active.",
+    "Generation, editRevision and draftLoadSequence checks continue to prevent stale inspection or file-import completion from overwriting newer active work. Synchronous tab restore increments edit revision and draft-load sequence.",
+    "The unchanged shared validator rejects lone surrogate code units while retaining valid pairs, literal replacement characters, combining sequences and other Unicode scalar values. UTF-8 file decoding and raw evidence transport remain unchanged.",
+    "New controls use a native details/summary disclosure, an enclosing select label, native buttons/disabled states, polite status feedback and existing focus-visible CSS. Existing report/cell focus behavior remains intact."
+  ],
+  "verification": [
+    {
+      "method": "Static inspection",
+      "result": "PASS",
+      "detail": "Read complete continuity production diff plus report install/reset/import/export paths and shared schema/parser dependencies."
+    },
+    {
+      "method": "git -c core.whitespace=cr-at-eol diff --check",
+      "result": "PASS",
+      "exit_code": 0,
+      "detail": "Existing CRLF in app/index is preserved. Plain git diff --check reports CR end-of-line whitespace; no normalization was performed."
+    }
+  ],
+  "execution_scope": "Feature execution evidence is supplied separately by the test-owning sibling. No browser execution, keyboard/screen-reader certification, provider CI success or main integration is claimed by this static review.",
+  "limitations": [
+    "Drafts are intentionally only in this tab memory and are removed by a reload or closed tab. The UI explains downloading JSON for retention.",
+    "There is no eviction or browser-memory quota guarantee. The UI does not retain reports, authenticate analysts or confer evidence, approval or payment authority.",
+    "A cached draft is a latest validated snapshot, not an undo history. Invalid unsaved active edits must be corrected before a destructive transition can proceed.",
+    "Receipt equality plus shared-schema matching is not an independent cryptographic recomputation of a compiler report in the browser; compiler validation remains the existing server contract."
+  ],
+  "supplemental_reviews": [
+    {
+      "reviewed_at": "2026-09-19T16:28:02.819867+00:00",
+      "decision": "PASS",
+      "path": "revenue/uiowa_rfq_18649_workbench/style.css",
+      "git_blob": "e9993b74074da6011c6656da91a6eff7a2da15af",
+      "sha256": "003352eccc4d1f3ba02f72dae792221e4c38ecb8fbeb2211ddd4c99bec2114ac",
+      "bytes": 9370,
+      "scope": "One scoped rule #savedDraftStatus{overflow-wrap:anywhere} allows full receipt text to wrap on narrow layouts. Existing style dependency hash above is historical initial review; this exact supplementary blob supersedes it for composition. app.js and index.html remain unchanged.",
+      "verification": "Static review only; test owner independently confirmed original overflow at 360px and owns targeted visual recheck. No new test execution is claimed by reviewer."
+    }
+  ]
+}

@@ -1,11 +1,16 @@
 "use strict";
 
-const state = { report: null, cells: [], selectedKey: null, notes: new Map(), dispositions: new Map() };
+const state = {
+  report: null, cells: [], selectedKey: null, notes: new Map(), dispositions: new Map(),
+  generation: 0, editRevision: 0, draftLoadSequence: 0, savedDrafts: new Map()
+};
 const el = Object.fromEntries([
   "candidateFile","authorityFile","inspectBtn","demoBtn","resetBtn","error","summary","search",
   "statusFilter","matrix","detail","disposition","note","exportBtn","exportStatus",
   "sampleBadge","importPanel","matrixCount","cellSummary","sourceList","reportMeta",
-  "matrixStatus","backToCellBtn"
+  "matrixStatus","backToCellBtn",
+  "handoffFile","importDraftBtn","markdownBtn",
+  "savedDraftSelect","restoreTabDraftBtn","downloadTabDraftBtn","savedDraftStatus"
 ].map(id => [id, document.getElementById(id)]));
 
 function keyFor(cell) { return `${cell.group}|${cell.dimension}`; }
@@ -70,17 +75,100 @@ function syntheticReport() {
   };
 }
 
+// Snapshots are immutable serialized handoffs, not retained report objects.
+// New receipts enter the tab cache only after meaningful work. Once present,
+// explicitly emptied drafts replace their prior contents so deleted notes stay deleted.
+function rememberDraft(report, notes, dispositions) {
+  const draft = WorkbenchHandoff.buildDraft(report, notes, dispositions);
+  const contents = JSON.stringify(draft, null, 2) + "\n";
+  HandoffImport.parseDraft(contents, report);
+  const notesCount = draft.cell_notes.filter(row => row.analyst_note !== "").length;
+  const dispositionCount = draft.cell_notes.filter(row => row.disposition !== "UNREVIEWED").length;
+  if (notesCount || dispositionCount || state.savedDrafts.has(report.receipt_sha256)) {
+    state.savedDrafts.set(report.receipt_sha256, Object.freeze({ text: contents, notesCount, dispositionCount }));
+  }
+  renderSavedDrafts();
+}
+
+function rememberActiveDraft() {
+  if (state.report) rememberDraft(state.report, state.notes, state.dispositions);
+}
+
+function preservationError(err) {
+  setError(`Your current work is still here, but could not be saved in this tab. ${err instanceof Error ? err.message : String(err)}`);
+}
+
+function rememberEditedDraft() {
+  try { rememberActiveDraft(); setError(""); }
+  catch (err) { preservationError(err); }
+}
+
+function renderSavedDrafts(preferredReceipt = "") {
+  const previous = preferredReceipt || el.savedDraftSelect.value;
+  const receipts = [...state.savedDrafts.keys()];
+  el.savedDraftSelect.replaceChildren(...(receipts.length ? receipts.map(receipt => {
+    const saved = state.savedDrafts.get(receipt);
+    return new Option(`${receipt.slice(0, 12)}… · ${saved.notesCount} notes · ${saved.dispositionCount} dispositions`, receipt);
+  }) : [new Option("No drafts saved yet", "")]));
+  el.savedDraftSelect.value = state.savedDrafts.has(previous) ? previous : (receipts[0] || "");
+  el.savedDraftSelect.disabled = !receipts.length;
+  const selected = el.savedDraftSelect.value;
+  const saved = state.savedDrafts.get(selected);
+  const matches = !!saved && state.report?.receipt_sha256 === selected;
+  el.downloadTabDraftBtn.disabled = !saved;
+  el.restoreTabDraftBtn.disabled = !matches;
+  el.savedDraftStatus.textContent = saved
+    ? `${receipts.length} draft${receipts.length === 1 ? "" : "s"} saved in this tab. Selected report receipt: ${selected}. ${saved.notesCount} notes; ${saved.dispositionCount} reviewed dispositions. ${matches ? "Matches the active report." : "Inspect the matching evidence files before restoring this draft."}`
+    : "Notes and dispositions are saved here as you work. Nothing is saved outside this tab.";
+}
+
+function restoreTabDraft() {
+  if (!state.report) return;
+  try {
+    rememberActiveDraft();
+    const saved = state.savedDrafts.get(el.savedDraftSelect.value);
+    if (!saved) throw new Error("Select a draft saved in this tab.");
+    const restored = HandoffImport.parseDraft(saved.text, state.report);
+    state.notes = restored.notes;
+    state.dispositions = restored.dispositions;
+    state.editRevision++;
+    state.draftLoadSequence++;
+    el.importDraftBtn.disabled = false;
+    selectCell(state.selectedKey || keyFor(state.cells[0]));
+    setError("");
+    el.exportStatus.textContent = "Draft restored from this tab for the matching report. No approval authority is created.";
+  } catch (err) { setError(err instanceof Error ? err.message : String(err)); }
+}
+
+function downloadTabDraft() {
+  try {
+    const receipt = el.savedDraftSelect.value;
+    const saved = state.savedDrafts.get(receipt);
+    if (!saved) throw new Error("Select a draft saved in this tab.");
+    downloadText(saved.text, "json", "application/json", receipt);
+    setError("");
+    el.savedDraftStatus.textContent = `Saved draft downloaded for report receipt ${receipt}. Inspect its matching evidence files to restore it.`;
+  } catch (err) { setError(err instanceof Error ? err.message : String(err)); }
+}
+
 function installReport(report) {
   if (!report || !Array.isArray(report.assessment_matrix) || report.assessment_matrix.length !== 12) {
     throw new Error("Expected a 12-cell compiler report.");
   }
   if (report.mode !== "UNTRUSTED_INSPECTION") throw new Error("Workbench accepts untrusted inspection reports only.");
   if (report.trust?.current_evidence_review_authority !== false) throw new Error("Report unexpectedly carries current review authority.");
+  WorkbenchHandoff.buildDraft(report);
+  rememberActiveDraft();
+  const saved = state.savedDrafts.get(report.receipt_sha256);
+  const restored = saved ? HandoffImport.parseDraft(saved.text, report) : null;
+  state.generation++;
+  state.editRevision = 0;
+  state.draftLoadSequence++;
   state.report = report;
   state.cells = report.assessment_matrix.slice();
   state.selectedKey = null;
-  state.notes = new Map();
-  state.dispositions = new Map();
+  state.notes = restored ? restored.notes : new Map();
+  state.dispositions = restored ? restored.dispositions : new Map();
   el.search.value = "";
   el.note.value = "";
   el.disposition.value = "UNREVIEWED";
@@ -89,6 +177,9 @@ function installReport(report) {
   el.search.disabled = false;
   el.statusFilter.disabled = false;
   el.exportBtn.disabled = false;
+  el.importDraftBtn.disabled = false;
+  el.markdownBtn.disabled = false;
+  el.inspectBtn.disabled = false;
   el.exportStatus.textContent = "";
   renderSummary();
   rebuildStatuses();
@@ -96,6 +187,8 @@ function installReport(report) {
   el.detail.textContent = "Select a cell.";
   el.importPanel.open = false;
   if (state.cells.length) selectCell(keyFor(state.cells[0]), false);
+  renderSavedDrafts(report.receipt_sha256);
+  if (restored) el.exportStatus.textContent = "Draft restored from this tab for the same report receipt. No approval authority is created.";
 }
 
 function renderSummary() {
@@ -211,6 +304,11 @@ function selectCell(key, focusDetail = true) {
 }
 
 function resetWorkbench() {
+  try { rememberActiveDraft(); }
+  catch (err) { preservationError(err); return false; }
+  state.generation++;
+  state.editRevision = 0;
+  state.draftLoadSequence++;
   state.report = null; state.cells = []; state.selectedKey = null;
   state.notes = new Map(); state.dispositions = new Map();
   el.summary.replaceChildren(); el.matrix.replaceChildren();
@@ -231,17 +329,53 @@ function resetWorkbench() {
   el.reportMeta.textContent = "Load a package to view its report metadata.";
   el.matrixCount.textContent = "Select an area";
   el.importPanel.open = true;
+  el.importDraftBtn.disabled = true;
+  el.markdownBtn.disabled = true;
+  el.inspectBtn.disabled = false;
+  renderSavedDrafts();
   setError("");
+  return true;
+}
+
+// Validate the shape, but never use the parsed value as transport data. JSON.parse
+// collapses duplicate keys and rounds large integers; the parent strict parser
+// must receive the original document, not a browser-normalized substitute.
+function validateJsonObjectText(raw, label) {
+  if (typeof raw !== "string") throw new Error(`${label} must be JSON source text.`);
+  let value;
+  try { value = JSON.parse(raw); } catch { throw new Error(`${label} is not valid JSON.`); }
+  if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error(`${label} must be a JSON object.`);
+  return raw;
+}
+
+async function readUtf8File(file, label) {
+  if (file.size > 1024 * 1024) throw new Error(`${label} file exceeds 1 MiB browser intake limit.`);
+  const bytes = await file.arrayBuffer();
+  if (bytes.byteLength > 1024 * 1024) throw new Error(`${label} file exceeds 1 MiB browser intake limit.`);
+  let raw;
+  try {
+    // Blob.text() replaces invalid UTF-8. Fatal decoding rejects it instead.
+    // ignoreBOM=true preserves a BOM so JSON validation rejects, not strips, it.
+    raw = new TextDecoder("utf-8", { fatal: true, ignoreBOM: true }).decode(bytes);
+  } catch { throw new Error(`${label} must be valid UTF-8.`); }
+  return raw;
 }
 
 async function readJsonFile(input, label) {
   const file = input.files?.[0];
   if (!file) throw new Error(`${label} file is required.`);
-  if (file.size > 1024 * 1024) throw new Error(`${label} file exceeds 1 MiB browser intake limit.`);
-  let value;
-  try { value = JSON.parse(await file.text()); } catch { throw new Error(`${label} is not valid JSON.`); }
-  if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error(`${label} must be a JSON object.`);
-  return value;
+  return validateJsonObjectText(await readUtf8File(file, label), label);
+}
+
+function buildInspectionBody(candidate, authority) {
+  // Each fragment must be one complete object before insertion. This prevents
+  // trailing data from changing the envelope while retaining duplicate members
+  // for server-side rejection. Do not stringify the parsed fragment objects.
+  const body = `{"candidate":${validateJsonObjectText(candidate, "Candidate")},"authority":${validateJsonObjectText(authority, "Authority")}}`;
+  if (new TextEncoder().encode(body).byteLength > 2 * 1024 * 1024) {
+    throw new Error("Combined evidence files and request envelope exceed the 2 MiB server intake limit.");
+  }
+  return body;
 }
 
 async function inspectFiles() {
@@ -249,83 +383,135 @@ async function inspectFiles() {
   // A replacement attempt invalidates the prior generation immediately. If file
   // parsing, transport, or compiler inspection fails, stale notes/export authority
   // must not remain actionable under the guise of the attempted new import.
-  resetWorkbench();
+  if (!resetWorkbench()) return;
+  const generation = state.generation;
   el.inspectBtn.disabled = true;
   try {
     const [candidate, authority] = await Promise.all([
       readJsonFile(el.candidateFile, "Candidate"), readJsonFile(el.authorityFile, "Authority")
     ]);
+    if (generation !== state.generation) return;
     const response = await fetch("/api/inspect", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ candidate, authority }),
+      body: buildInspectionBody(candidate, authority),
       credentials: "same-origin",
       cache: "no-store"
     });
     const payload = await response.json().catch(() => ({}));
+    if (generation !== state.generation) return;
     if (!response.ok) throw new Error(payload.error || `Inspection failed (${response.status}).`);
     installReport(payload.report);
-  } catch (err) { setError(err instanceof Error ? err.message : String(err)); }
-  finally {
-    el.inspectBtn.disabled = false;
     if (restoreInvokerFocus && document.activeElement === document.body) {
-      (state.report ? document.getElementById("summary-heading") : el.inspectBtn).focus();
+      document.getElementById("summary-heading").focus();
+    }
+  } catch (err) {
+    if (generation === state.generation) setError(err instanceof Error ? err.message : String(err));
+  } finally {
+    if (generation === state.generation) {
+      el.inspectBtn.disabled = false;
+      if (restoreInvokerFocus && document.activeElement === document.body) {
+        (state.report ? document.getElementById("summary-heading") : el.inspectBtn).focus();
+      }
     }
   }
 }
 
-function exportDraft() {
+async function importDraft() {
   if (!state.report) return;
-  const cellNotes = state.cells.map(cell => {
-    const key = keyFor(cell);
-    return {
-      group: cell.group,
-      dimension: cell.dimension,
-      compiler_status: cell.status,
-      disposition: state.dispositions.get(key) || "UNREVIEWED",
-      analyst_note: state.notes.get(key) || ""
-    };
-  });
-  const handoff = {
-    schema: "uiowa-rfq18649-analyst-handoff-draft/v1",
-    status: "DRAFT_NON_AUTHORITATIVE",
-    report_receipt_sha256: state.report.receipt_sha256,
-    report_mode: state.report.mode,
-    aggregate_state: state.report.aggregate_state,
-    synthetic_demo: state.report.synthetic_demo === true,
-    cell_notes: cellNotes,
-    authority: {
-      buyer_approved: false,
-      prime_approved: false,
-      current_evidence_review_authority: false,
-      submission_authorized: false,
-      signature_authorized: false,
-      invoice_or_payment_authorized: false,
-      recognized_revenue: false
+  const report = state.report;
+  const generation = state.generation;
+  const editRevision = state.editRevision;
+  const sequence = ++state.draftLoadSequence;
+  el.importDraftBtn.disabled = true;
+  setError("");
+  try {
+    const file = el.handoffFile.files?.[0];
+    if (!file) throw new Error("Choose a saved draft handoff JSON file.");
+    const contents = await readUtf8File(file, "Saved draft");
+    if (generation !== state.generation || sequence !== state.draftLoadSequence) return;
+    if (editRevision !== state.editRevision) {
+      throw new Error("Notes changed while the draft was loading. Restore again if you want to replace them.");
     }
-  };
-  const blob = new Blob([JSON.stringify(handoff, null, 2) + "\n"], { type: "application/json" });
+    const restored = HandoffImport.parseDraft(contents, report);
+    rememberDraft(report, restored.notes, restored.dispositions);
+    // Validation completes before either map is replaced. Failed imports preserve
+    // the active report and every note, disposition, selection and filter.
+    state.notes = restored.notes;
+    state.dispositions = restored.dispositions;
+    state.editRevision++;
+    const key = state.selectedKey || keyFor(state.cells.find(cell =>
+      state.notes.get(keyFor(cell)) || state.dispositions.get(keyFor(cell)) !== "UNREVIEWED"
+    ) || state.cells[0]);
+    selectCell(key);
+    el.exportStatus.textContent = "Saved draft restored for this report. All 12 cell notes and dispositions replaced; no approval authority is created.";
+  } catch (err) {
+    if (generation === state.generation && sequence === state.draftLoadSequence) {
+      setError(err instanceof Error ? err.message : String(err));
+    }
+  } finally {
+    if (generation === state.generation && sequence === state.draftLoadSequence) {
+      el.importDraftBtn.disabled = !state.report;
+    }
+  }
+}
+
+// Export projection from Trellis's handoff continuity work (PR #16130).
+function downloadText(contents, extension, contentType, receipt = state.report?.receipt_sha256) {
+  if (typeof receipt !== "string" || !/^[a-f0-9]{64}$/.test(receipt)) throw new Error("A report receipt is required for this download.");
+  const blob = new Blob([contents], { type: contentType });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = `uiowa-rfq18649-draft-handoff-${state.report.receipt_sha256.slice(0, 12)}.json`;
-  document.body.append(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-  el.exportStatus.textContent = "Review handoff exported. Your notes are linked to this report.";
+  a.download = `uiowa-rfq18649-draft-handoff-${receipt.slice(0, 12)}.${extension}`;
+  document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 0);
+}
+
+function exportDraft() {
+  if (!state.report) return;
+  try {
+    const handoff = WorkbenchHandoff.buildDraft(state.report, state.notes, state.dispositions);
+    downloadText(JSON.stringify(handoff, null, 2) + "\n", "json", "application/json");
+    setError("");
+    el.exportStatus.textContent = "Draft handoff exported. It carries no approval or payment authority.";
+  } catch (err) { setError(err instanceof Error ? err.message : String(err)); }
+}
+
+function exportMarkdown() {
+  if (!state.report) return;
+  try {
+    const handoff = WorkbenchHandoff.buildDraft(state.report, state.notes, state.dispositions);
+    downloadText(WorkbenchHandoff.renderMarkdown(state.report, handoff), "md", "text/markdown;charset=utf-8");
+    setError("");
+    el.exportStatus.textContent = "Readable draft exported with evidence references and open follow-ups.";
+  } catch (err) { setError(err instanceof Error ? err.message : String(err)); }
 }
 
 el.inspectBtn.addEventListener("click", inspectFiles);
 el.demoBtn.addEventListener("click", () => {
   const restoreInvokerFocus = document.activeElement === el.demoBtn;
-  setError(""); installReport(syntheticReport());
-  if (restoreInvokerFocus) document.getElementById("summary-heading").focus();
+  try {
+    setError(""); installReport(syntheticReport());
+    if (restoreInvokerFocus) document.getElementById("summary-heading").focus();
+  } catch (err) { preservationError(err); }
 });
 el.resetBtn.addEventListener("click", resetWorkbench);
 el.search.addEventListener("input", renderMatrix);
 el.statusFilter.addEventListener("change", renderMatrix);
-el.note.addEventListener("input", () => { if (state.selectedKey) state.notes.set(state.selectedKey, el.note.value); });
-el.disposition.addEventListener("change", () => { if (state.selectedKey) state.dispositions.set(state.selectedKey, el.disposition.value); });
+el.note.addEventListener("input", () => {
+  if (state.selectedKey) { state.notes.set(state.selectedKey, el.note.value); state.editRevision++; rememberEditedDraft(); }
+});
+el.disposition.addEventListener("change", () => {
+  if (state.selectedKey) { state.dispositions.set(state.selectedKey, el.disposition.value); state.editRevision++; rememberEditedDraft(); }
+});
 el.exportBtn.addEventListener("click", exportDraft);
 el.backToCellBtn.addEventListener("click", returnToSelectedCell);
+el.markdownBtn.addEventListener("click", exportMarkdown);
+el.importDraftBtn.addEventListener("click", importDraft);
+el.savedDraftSelect.addEventListener("change", () => renderSavedDrafts());
+el.restoreTabDraftBtn.addEventListener("click", restoreTabDraft);
+el.downloadTabDraftBtn.addEventListener("click", downloadTabDraft);
 
 resetWorkbench();
 if (new URLSearchParams(location.search).get("demo") === "1") installReport(syntheticReport());

@@ -1,0 +1,53 @@
+{
+  "executions": [
+    {
+      "command": "python -m unittest -v test_intake_transport.py",
+      "log": "union-normal.log",
+      "log_sha256": "11c80472ee04968bb7fb09bcddc1a633c73af721cd369b6310c9e8f7986e4bcb",
+      "returncode": 0,
+      "skipped": 0,
+      "tests": 39
+    },
+    {
+      "command": "python -O -m unittest -v test_intake_transport.py",
+      "log": "union-optimized.log",
+      "log_sha256": "7cfffd2f3a24a689e2fb5ceb52408a5a4bce5a911807f6612f6e98121db38328",
+      "returncode": 0,
+      "skipped": 0,
+      "tests": 39
+    },
+    {
+      "command": "python -W error::ResourceWarning -m unittest -v test_intake_transport.py",
+      "log": "union-resource-warnings.log",
+      "log_sha256": "5ed232936a4ade394ebed48841a957fa6ffeab1e798024ef7f54525c6807e50c",
+      "returncode": 0,
+      "skipped": 0,
+      "tests": 39
+    },
+    {
+      "command": "UIOWA_INTAKE_SOURCE=<original-KESTREL-repair> python -m unittest -v test_intake_transport.py",
+      "log": "union-original-repair.log",
+      "log_sha256": "4c120b76b7e553a505ccd7116014526e352033f55de39f0765495066a921c859",
+      "returncode": 0,
+      "skipped": 0,
+      "tests": 39
+    }
+  ],
+  "integration_instruction": "Keep RAW17 composed app; take strict server, harness, diagnostic-neutral tests and root shim. Preserve prior immutable INTAKE_EXECUTION as its original-source receipt, and use this receipt for union execution.",
+  "operation": "uiowa-original-intake-kestrel47-20260919",
+  "retained_app_author": "ZZ-KESTREL-RAW17; ZZ-Keystone-43CF; ZZ-Trellis",
+  "retained_app_git_blob": "22c30f639410050ff050da4b0f9d59c12482c632",
+  "schema": "uiowa-original-intake-union/v1",
+  "scope": {
+    "actual_app_and_loopback_http": true,
+    "chromium_executed": false,
+    "compiler_adapter_is_recording_spy": true,
+    "hosted_success_verified": false,
+    "parent_compiler_executed": false
+  },
+  "seat": "ZZ-KESTREL-47",
+  "strict_server_git_blob": "d0ae12ec2d82ea4a2e41f834b591b7b1d1d2662c",
+  "test_change": "Four diagnostic substrings generalized: UTF-8, read, and Combined evidence. Every adapter exclusion, body equality, numeric, Unicode, size and race assertion is retained.",
+  "test_git_blob": "a9cea1541f4e2c0527bdc4a0fa05456fbd0020b4",
+  "upstream_ui": "c4c305db7944cb305625836d4767d6abcc37ae36"
+}

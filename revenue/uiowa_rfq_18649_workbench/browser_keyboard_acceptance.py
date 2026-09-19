@@ -130,6 +130,8 @@ class KeyboardAcceptance(unittest.TestCase):
     def test_complete_evidence_including_digests_is_visible(self):
         self.load_demo()
         self.select_first()
+        self.tab_to(".technical-details > summary")
+        self.page.keyboard.press("Enter")
         detail = json.loads(self.page.locator("#detail").inner_text())
         self.assertEqual(detail, self.page.evaluate("state.cells[0]"))
         self.assertEqual(detail["source_record_sha256s"], ["0" * 64])
@@ -145,6 +147,8 @@ class KeyboardAcceptance(unittest.TestCase):
           installReport(report);
         }''')
         self.select_first()
+        self.tab_to(".technical-details > summary")
+        self.page.keyboard.press("Enter")
         detail = json.loads(self.page.locator("#detail").inner_text())
         self.assertEqual(detail["confidence_bp"], 0)
         self.assertIsNone(detail["maturity"])
@@ -203,14 +207,14 @@ class KeyboardAcceptance(unittest.TestCase):
         self.assertIn("No report loaded", self.page.locator("#matrixStatus").inner_text())
         self.assertEqual(self.page.evaluate("document.activeElement.id"), "resetBtn")
 
-    def test_new_generation_clears_previous_notes(self):
+    def test_same_receipt_reinspection_preserves_previous_notes(self):
         self.load_demo()
         self.select_first()
         self.tab_to("#note")
         self.page.keyboard.type("Old generation note")
         self.load_demo()
         self.select_first()
-        self.assertEqual(self.page.locator("#note").input_value(), "")
+        self.assertEqual(self.page.locator("#note").input_value(), "Old generation note")
 
     def test_skip_link_is_first_and_targets_focusable_heading(self):
         self.page.keyboard.press("Tab")
@@ -260,4 +264,3 @@ class KeyboardAcceptance(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
-
