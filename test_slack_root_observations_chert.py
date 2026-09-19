@@ -215,12 +215,15 @@ class RootObservationTests(unittest.TestCase):
         self.assertEqual(rows, [row])
 
     def test_provider_observations_are_not_mutated(self):
-        history = [broadcast(2)]
-        source = page([parent(2), reply(FIRST), reply()])
-        before = copy.deepcopy((history, source))
-        (_, _, complete), _ = channel(history, [source])
+        responses = [page([broadcast(2)]), page([parent(2), reply(FIRST), reply()])]
+        before = copy.deepcopy(responses)
+        pending = list(responses)
+        def read(method, params):
+            return pending.pop(0)
+        _, _, complete = read_channel(read, CHANNEL, page_size=100,
+                                       max_pages=2, max_threads=1)
         self.assertTrue(complete)
-        self.assertEqual((history, source), before)
+        self.assertEqual(responses, before)
 
     def test_root_anchor_fanout_respects_existing_thread_cap(self):
         roots = [{"ts": str(1700000000 + i), "reply_count": 0,
@@ -230,6 +233,39 @@ class RootObservationTests(unittest.TestCase):
         self.assertEqual(metadata["threads_observed_count"], 3)
         self.assertEqual(metadata["threads_read_count"], 1)
         self.assertEqual(len(provider.calls), 2)
+
+    def test_reply_page_nested_count_survives_channel_expansion(self):
+        nested = {**broadcast(3), "thread_ts": ROOT}
+        (_, metadata, complete), _ = channel([parent(1)], [page([parent(1), nested])])
+        self.assertFalse(complete)
+        self.assertEqual(metadata["thread_coverage"][0]["expected_replies"], 3)
+
+    def test_reply_page_nested_count_survives_direct_context_read(self):
+        nested = {**broadcast(3), "thread_ts": ROOT}
+        provider = Provider([page([parent(1), nested])])
+        _, metadata, complete = read_thread_context(provider.read, CHANNEL, parent(1))
+        self.assertFalse(complete)
+        self.assertEqual(metadata["expected_replies"], 3)
+
+    def test_reply_page_nested_latest_survives_channel_expansion(self):
+        nested = {**broadcast(1, latest=FIRST), "thread_ts": ROOT}
+        (_, metadata, complete), _ = channel([parent(1)], [page([parent(1), nested])])
+        self.assertFalse(complete)
+        self.assertEqual(metadata["thread_coverage"][0]["expected_replies"], 1)
+
+    def test_reply_page_nested_latest_survives_direct_context_read(self):
+        nested = {**broadcast(1, latest=FIRST), "thread_ts": ROOT}
+        provider = Provider([page([parent(1), nested])])
+        _, metadata, complete = read_thread_context(provider.read, CHANNEL, parent(1))
+        self.assertFalse(complete)
+        self.assertEqual(metadata["expected_replies"], 1)
+
+    def test_satisfied_nested_reply_page_evidence_can_be_complete(self):
+        nested = {**broadcast(2, latest=FIRST), "thread_ts": ROOT}
+        (_, metadata, complete), _ = channel(
+            [parent(1)], [page([parent(2), reply(FIRST), nested])])
+        self.assertTrue(complete)
+        self.assertEqual(metadata["thread_coverage"][0]["expected_replies"], 2)
 
     def test_count_and_anchor_missingness_matrix(self):
         for prior_count, observed_count, anchor_missing in itertools.product(
