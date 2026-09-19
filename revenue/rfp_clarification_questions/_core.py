@@ -7,7 +7,6 @@ buyer-safe draft packet ready for owner review.
 from __future__ import annotations
 
 import argparse
-import fcntl
 import hashlib
 import json
 import os

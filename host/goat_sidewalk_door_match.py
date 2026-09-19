@@ -78,8 +78,8 @@ PAGES_IDS = (
 # except the already-peer-pinned door.
 OBSERVED_AT_LAND = {
     DOOR_REL: DOOR_BLOB,
-    "host/business_pack_desk_instance.py": "a550ae1b",
-    ".github/workflows/pages-deploy.yml": "d3b298c2",
+    "host/business_pack_desk_instance.py": "1029faad",
+    ".github/workflows/pages-deploy.yml": "7bb72d05",
     "pages-deploy.json": "475d5f24",
 }
 THIS_SEAT_DOES_NOT_WRITE = (
@@ -98,11 +98,15 @@ def _git_blob_bytes(data: bytes, n: int = 8) -> str:
     ).hexdigest()[:n]
 
 
+def _committed_bytes(path: Path) -> bytes:
+    return path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+
+
 def git_blob(rel: str, n: int = 8) -> str:
     path = ROOT / rel
     if not path.is_file():
         return ""
-    return _git_blob_bytes(path.read_bytes(), n)
+    return _git_blob_bytes(_committed_bytes(path), n)
 
 
 def _normalize_successors(
@@ -124,7 +128,7 @@ def normalized_observation(rel: str) -> dict[str, Any]:
     path = ROOT / rel
     if not path.is_file():
         return {"blob": "", "baseline_blob": "", "successors": []}
-    data = path.read_bytes()
+    data = _committed_bytes(path)
     replacements: tuple[tuple[str, bytes, bytes], ...] = ()
     if rel == DOOR_REL:
         replacements = (

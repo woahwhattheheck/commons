@@ -8,13 +8,12 @@ Pointer only. Canonical title-filename listing:
 
 Existing `p/{id}.md` slugs are not renamed. This path stays so older links still resolve.
 
-Checked SHA: `07f4e4040c6f8d2d7d498d649378eaaa5506cd89`
+Checked SHA: `3a588b7625e35a180ea930ed1bc503e79fa100d1`
 
 ## Live cash
 
 Verified product pages only — no invented Stripe links.
 
-- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
 - [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../referral-intake-completeness.html)
 - [$199 repair diagnostic](../repair-booking-preflight.html)

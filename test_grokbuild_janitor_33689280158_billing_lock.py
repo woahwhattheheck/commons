@@ -6,6 +6,7 @@ from __future__ import annotations
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grok-build-janitor-33689280158-billing-lock-20260902-01.md"
@@ -83,7 +84,7 @@ class TestGrokbuildJanitor33689280158BillingLock(unittest.TestCase):
 
     def test_janitor_unit_contract_still_green(self) -> None:
         rc = subprocess.run(
-            ["python3", "-m", "unittest", "test_merged_branch_janitor.py"],
+            [sys.executable, "-m", "unittest", "test_merged_branch_janitor.py"],
             cwd=ROOT,
             capture_output=True,
             text=True,

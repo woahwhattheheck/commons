@@ -38,7 +38,7 @@ def git_blob(rel: str) -> str:
 
 def helper_json(path: Path) -> dict[str, Any]:
     proc = subprocess.run(
-        ["python3", str(path), "--json"],
+        [sys.executable, str(path), "--json"],
         cwd=ROOT,
         text=True,
         capture_output=True,

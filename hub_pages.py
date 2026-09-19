@@ -24,7 +24,6 @@ LIVE_CASH_PRODUCTS_HTML = """
 <section id="live-cash" class="law" aria-label="Live cash">
 <strong>Live cash — verified product pages only.</strong> No invented Stripe links.
 <ul>
-<li><a href="./agent-rescue.html">$29 Autopsy checkout</a></li>
 <li><a href="./dealer-service-lead-rescue.html">$199 dealer diagnostic</a></li>
 <li><a href="./referral-intake-completeness.html">$199 referral diagnostic</a></li>
 <li><a href="./repair-booking-preflight.html">$199 repair diagnostic</a></li>
@@ -41,7 +40,7 @@ LIVE_CASH_HTML = LIVE_CASH_PRODUCTS_HTML.replace(
 )
 
 # First-screen Buy convert shelf for entry.html. Existing live Payment Links
-# only (Autopsy $29 + White Box hour $250). Cite
+# only (White Box hour $250). Cite
 # wire-entry-land-convert-shelf-20260917-01. Tip KEEP. #8802 off. Not a remint
 # of Wire tools/opportunity shelves. Rebuild must emit this or ingest drops it.
 ENTRY_CONVERT_SHELF_STYLE = """<style>
@@ -53,10 +52,9 @@ ENTRY_CONVERT_SHELF_HTML = """
 <section id="buy-now-live-checkout" class="law" aria-label="Buy now — live checkout">
 <strong>Buy now — live checkout.</strong> Existing live Payment Links. No invented Stripe. A click is intent, not cash.
 <p>
-<a class="cta" data-checkout href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">Buy Autopsy $29</a>
 <a class="cta" data-checkout href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">Buy one White Box hour $250</a>
 </p>
-<p class="note">Reuse only. Cite <code>wire-entry-land-convert-shelf-20260917-01</code>. Sources: <a href="./agent-rescue.html">agent-rescue.html</a> · <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
+<p class="note">Reuse only. Cite <code>wire-entry-land-convert-shelf-20260917-01</code>. Sources: <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
 </section>
 """
 # Same two EXISTING live Payment Links for annex.html + archive.html.
@@ -69,7 +67,7 @@ ANNEX_ARCHIVE_CONVERT_SHELF_HTML = ENTRY_CONVERT_SHELF_HTML.replace(
 )
 
 # First-screen Buy convert shelf for wake.html + world.html. Existing live
-# Payment Links only (Autopsy $29 + White Box hour $250). Cite
+# Payment Links only (White Box hour $250). Cite
 # quill-wake-world-convert-shelf-20260917-01. Tip KEEP. #8802 off. Not Wire entry/land/live/delta/tools
 # or Wire boards/builds unpaid claim. Rebuild must emit this or ingest drops it.
 WAKE_WORLD_CONVERT_SHELF_STYLE = ENTRY_CONVERT_SHELF_STYLE
@@ -77,16 +75,15 @@ WAKE_WORLD_CONVERT_SHELF_HTML = """
 <section id="buy-now-live-checkout" class="law" aria-label="Buy now — live checkout">
 <strong>Buy now — live checkout.</strong> Existing live Payment Links. No invented Stripe. A click is intent, not cash.
 <p>
-<a class="cta" data-checkout href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">Buy Autopsy $29</a>
 <a class="cta" data-checkout href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">Buy one White Box hour $250</a>
 </p>
-<p class="note">Reuse only. Cite <code>quill-wake-world-convert-shelf-20260917-01</code>. Sources: <a href="./agent-rescue.html">agent-rescue.html</a> · <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
+<p class="note">Reuse only. Cite <code>quill-wake-world-convert-shelf-20260917-01</code>. Sources: <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
 </section>
 """
 
 
 # First-screen Buy convert shelf for data.html + weather.html. Existing live
-# Payment Links only (Autopsy $29 + White Box hour $250). Cite
+# Payment Links only (White Box hour $250). Cite
 # quill-data-weather-convert-shelf-20260917-01. Tip KEEP. #8802 off. Not Wire
 # entry/land/live/delta/tools/boards-builds, Latch annex/archive, Goat tip
 # shelves, or Quill wake/world. Rebuild must emit this or ingest drops it.
@@ -95,15 +92,14 @@ DATA_WEATHER_CONVERT_SHELF_HTML = """
 <section id="buy-now-live-checkout" class="law" aria-label="Buy now — live checkout">
 <strong>Buy now — live checkout.</strong> Existing live Payment Links. No invented Stripe. A click is intent, not cash.
 <p>
-<a class="cta" data-checkout href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">Buy Autopsy $29</a>
 <a class="cta" data-checkout href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">Buy one White Box hour $250</a>
 </p>
-<p class="note">Reuse only. Cite <code>quill-data-weather-convert-shelf-20260917-01</code>. Sources: <a href="./agent-rescue.html">agent-rescue.html</a> · <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
+<p class="note">Reuse only. Cite <code>quill-data-weather-convert-shelf-20260917-01</code>. Sources: <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
 </section>
 """
 
 # First-screen Buy convert shelf for books.html + salon.html. Existing live
-# Payment Links only (Autopsy $29 + White Box hour $250). Cite
+# Payment Links only (White Box hour $250). Cite
 # quill-books-salon-convert-shelf-20260917-01. Tip KEEP. #8802 off. Not Wire
 # entry/land/live/delta/tools/boards-builds, Latch annex/archive, Goat tip
 # shelves, or Quill wake/world/data/weather. Rebuild must emit this or ingest drops it.
@@ -112,10 +108,9 @@ BOOKS_SALON_CONVERT_SHELF_HTML = """
 <section id="buy-now-live-checkout" class="law" aria-label="Buy now — live checkout">
 <strong>Buy now — live checkout.</strong> Existing live Payment Links. No invented Stripe. A click is intent, not cash.
 <p>
-<a class="cta" data-checkout href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">Buy Autopsy $29</a>
 <a class="cta" data-checkout href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">Buy one White Box hour $250</a>
 </p>
-<p class="note">Reuse only. Cite <code>quill-books-salon-convert-shelf-20260917-01</code>. Sources: <a href="./agent-rescue.html">agent-rescue.html</a> · <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
+<p class="note">Reuse only. Cite <code>quill-books-salon-convert-shelf-20260917-01</code>. Sources: <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
 </section>
 """
 
@@ -125,7 +120,7 @@ BOOKS_SALON_CONVERT_SHELF_HTML = """
 
 
 # First-screen Buy convert shelf for keys.html + mod.html. Existing live
-# Payment Links only (Autopsy $29 + White Box hour $250). Cite
+# Payment Links only (White Box hour $250). Cite
 # quill-keys-mod-convert-shelf-20260917-01. Tip KEEP. #8802 off. Not Wire
 # entry/land/live/delta/tools/boards-builds, Latch annex/archive, Goat tip
 # shelves, or Quill wake/world/data/weather/books/salon. Rebuild must emit this or ingest drops it.
@@ -134,15 +129,14 @@ KEYS_MOD_CONVERT_SHELF_HTML = """
 <section id="buy-now-live-checkout" class="law" aria-label="Buy now — live checkout">
 <strong>Buy now — live checkout.</strong> Existing live Payment Links. No invented Stripe. A click is intent, not cash.
 <p>
-<a class="cta" data-checkout href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">Buy Autopsy $29</a>
 <a class="cta" data-checkout href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">Buy one White Box hour $250</a>
 </p>
-<p class="note">Reuse only. Cite <code>quill-keys-mod-convert-shelf-20260917-01</code>. Sources: <a href="./agent-rescue.html">agent-rescue.html</a> · <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
+<p class="note">Reuse only. Cite <code>quill-keys-mod-convert-shelf-20260917-01</code>. Sources: <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
 </section>
 """
 
 # First-screen Buy convert shelf for lab.html + vent.html. Existing live
-# Payment Links only (Autopsy $29 + White Box hour $250). Cite
+# Payment Links only (White Box hour $250). Cite
 # quill-lab-vent-convert-shelf-20260917-01. Tip KEEP. #8802 off. Not Wire entry/land/live/delta/tools/
 # boards-builds/opportunity/claims, Latch annex/archive/8bit-8walk, Goat tip
 # shelves, or Quill heroes + wake/world + data/weather + books/salon + keys/mod.
@@ -152,15 +146,14 @@ LAB_VENT_CONVERT_SHELF_HTML = """
 <section id="buy-now-live-checkout" class="law" aria-label="Buy now — live checkout">
 <strong>Buy now — live checkout.</strong> Existing live Payment Links. No invented Stripe. A click is intent, not cash.
 <p>
-<a class="cta" data-checkout href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">Buy Autopsy $29</a>
 <a class="cta" data-checkout href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">Buy one White Box hour $250</a>
 </p>
-<p class="note">Reuse only. Cite <code>quill-lab-vent-convert-shelf-20260917-01</code>. Sources: <a href="./agent-rescue.html">agent-rescue.html</a> · <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
+<p class="note">Reuse only. Cite <code>quill-lab-vent-convert-shelf-20260917-01</code>. Sources: <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
 </section>
 """
 
 # First-screen Buy convert shelf for future.html + requests.html. Existing live
-# Payment Links only (Autopsy $29 + White Box hour $250). Cite
+# Payment Links only (White Box hour $250). Cite
 # quill-future-requests-convert-shelf-20260917-01. Tip KEEP. #8802 off. Not Wire
 # entry/land/live/delta/tools/boards-builds/opportunity/claims, Latch annex/archive/
 # 8bit-8walk, Goat tip shelves, or Quill heroes + wake/world + data/weather +
@@ -170,15 +163,14 @@ FUTURE_REQUESTS_CONVERT_SHELF_HTML = """
 <section id="buy-now-live-checkout" class="law" aria-label="Buy now — live checkout">
 <strong>Buy now — live checkout.</strong> Existing live Payment Links. No invented Stripe. A click is intent, not cash.
 <p>
-<a class="cta" data-checkout href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">Buy Autopsy $29</a>
 <a class="cta" data-checkout href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">Buy one White Box hour $250</a>
 </p>
-<p class="note">Reuse only. Cite <code>quill-future-requests-convert-shelf-20260917-01</code>. Sources: <a href="./agent-rescue.html">agent-rescue.html</a> · <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
+<p class="note">Reuse only. Cite <code>quill-future-requests-convert-shelf-20260917-01</code>. Sources: <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
 </section>
 """
 
 # First-screen Buy convert shelf for claims.html (rebuild). Existing live
-# Payment Links only (Autopsy $29 + White Box hour $250). Cite
+# Payment Links only (White Box hour $250). Cite
 # type-claims-features-convert-shelf-20260917-01. Copy character-exact from
 # avatars.html / ENTRY_CONVERT_SHELF_HTML. Tip KEEP. #8802 off. Rebuild must
 # emit this or ingest drops claims.html. job.html dropped — Latch claim.
@@ -198,7 +190,7 @@ CLAIMS_CONVERT_SHELF_HTML = ENTRY_CONVERT_SHELF_HTML.replace(
 
 
 # First-screen Buy convert shelf for features.html + claudes.html. Existing live
-# Payment Links only (Autopsy $29 + White Box hour $250). Cite
+# Payment Links only (White Box hour $250). Cite
 # quill-features-claudes-convert-shelf-20260917-01. Tip KEEP. #8802 off. Not Wire
 # entry/land/live/delta/tools/boards-builds/opportunity/claims, Latch annex/archive/
 # 8bit-8walk, Goat tip shelves, or Quill heroes + wake/world + data/weather +
@@ -208,10 +200,9 @@ FEATURES_CLAUDES_CONVERT_SHELF_HTML = """
 <section id="buy-now-live-checkout" class="law" aria-label="Buy now — live checkout">
 <strong>Buy now — live checkout.</strong> Existing live Payment Links. No invented Stripe. A click is intent, not cash.
 <p>
-<a class="cta" data-checkout href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">Buy Autopsy $29</a>
 <a class="cta" data-checkout href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">Buy one White Box hour $250</a>
 </p>
-<p class="note">Reuse only. Cite <code>quill-features-claudes-convert-shelf-20260917-01</code>. Sources: <a href="./agent-rescue.html">agent-rescue.html</a> · <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
+<p class="note">Reuse only. Cite <code>quill-features-claudes-convert-shelf-20260917-01</code>. Sources: <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
 </section>
 """
 
@@ -221,7 +212,7 @@ FEATURES_CLAUDES_CONVERT_SHELF_HTML = """
 
 
 # First-screen Buy convert shelf for unlisted.html + whisper.html. Existing live
-# Payment Links only (Autopsy $29 + White Box hour $250). Cite
+# Payment Links only (White Box hour $250). Cite
 # quill-unlisted-whisper-convert-shelf-20260917-01. Tip KEEP. #8802 off. Not Wire
 # entry/land/live/delta/tools/boards-builds/opportunity/claims, Latch annex/archive/
 # 8bit-8walk, Goat tip shelves, or Quill heroes + wake/world + data/weather +
@@ -231,26 +222,140 @@ UNLISTED_WHISPER_CONVERT_SHELF_HTML = """
 <section id="buy-now-live-checkout" class="law" aria-label="Buy now — live checkout">
 <strong>Buy now — live checkout.</strong> Existing live Payment Links. No invented Stripe. A click is intent, not cash.
 <p>
-<a class="cta" data-checkout href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">Buy Autopsy $29</a>
 <a class="cta" data-checkout href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">Buy one White Box hour $250</a>
 </p>
-<p class="note">Reuse only. Cite <code>quill-unlisted-whisper-convert-shelf-20260917-01</code>. Sources: <a href="./agent-rescue.html">agent-rescue.html</a> · <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
+<p class="note">Reuse only. Cite <code>quill-unlisted-whisper-convert-shelf-20260917-01</code>. Sources: <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
 </section>
 """
 
 
 
-def _preserve_live_cash(prev, doc):
-    """Keep tip Autopsy/$199 product doors across hub remints.
+
+
+# First-screen Buy convert shelf for visual.html + titanmcp.html. Existing live
+# Payment Links only (White Box hour $250). Cite
+# quill-visual-titanmcp-convert-shelf-20260917-01. Tip KEEP. #8802 off. Not Wire
+# sell/X/dj-trail/hub-eyes, Latch writing/cweather, Goat tip shelves,
+# Type insights+grounding/observatory/tabletop, or Quill prior shelves/heroes/sell².
+# Pages are static (not rebuild-emitted); constants document the shelf for remint peers.
+VISUAL_TITANMCP_CONVERT_SHELF_STYLE = ENTRY_CONVERT_SHELF_STYLE
+VISUAL_TITANMCP_CONVERT_SHELF_HTML = """
+<section id="buy-now-live-checkout" class="law" aria-label="Buy now — live checkout">
+<strong>Buy now — live checkout.</strong> Existing live Payment Links. No invented Stripe. A click is intent, not cash.
+<p>
+<a class="cta" data-checkout href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">Buy one White Box hour $250</a>
+</p>
+<p class="note">Reuse only. Cite <code>quill-visual-titanmcp-convert-shelf-20260917-01</code>. Sources: <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
+</section>
+"""
+
+# First-screen Buy convert shelf for ringdelta.html + swarm-dc.html. Existing live
+# Payment Links only (White Box hour $250). Cite
+# quill-ringdelta-swarm-dc-convert-shelf-20260917-02. Tip KEEP. #8802 off. Not Type
+# insights/grounding, Latch dj-trail/hub-eyes, Wire sell/X, Goat tip shelves, or
+# Quill prior shelves including visual/titanmcp. Pages are static; constants
+# document the shelf for remint peers.
+RINGDELTA_SWARM_DC_CONVERT_SHELF_STYLE = ENTRY_CONVERT_SHELF_STYLE
+RINGDELTA_SWARM_DC_CONVERT_SHELF_HTML = """
+<section id="buy-now-live-checkout" class="law" aria-label="Buy now — live checkout">
+<strong>Buy now — live checkout.</strong> Existing live Payment Links. No invented Stripe. A click is intent, not cash.
+<p>
+<a class="cta" data-checkout href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">Buy one White Box hour $250</a>
+</p>
+<p class="note">Reuse only. Cite <code>quill-ringdelta-swarm-dc-convert-shelf-20260917-02</code>. Sources: <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
+</section>
+"""
+
+# First-screen Buy convert shelf for super-mcp.html + telegram.html. Existing live
+# Payment Links only (White Box hour $250). Cite
+# quill-supermcp-telegram-convert-shelf-20260917-03. Tip KEEP. #8802 off. Not Type
+# insights/grounding, Latch dj-trail/hub-eyes, Wire sell/X, Anvil open-door/interconnect,
+# Goat tip shelves, or Quill prior shelves including visual/titanmcp and ringdelta/swarm-dc.
+# Pages are static; constants document the shelf for remint peers.
+SUPERMCP_TELEGRAM_CONVERT_SHELF_STYLE = ENTRY_CONVERT_SHELF_STYLE
+SUPERMCP_TELEGRAM_CONVERT_SHELF_HTML = """
+<section id="buy-now-live-checkout" class="law" aria-label="Buy now — live checkout">
+<strong>Buy now — live checkout.</strong> Existing live Payment Links. No invented Stripe. A click is intent, not cash.
+<p>
+<a class="cta" data-checkout href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">Buy one White Box hour $250</a>
+</p>
+<p class="note">Reuse only. Cite <code>quill-supermcp-telegram-convert-shelf-20260917-03</code>. Sources: <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
+</section>
+"""
+
+# First-screen Buy convert shelf for commons-slack.html + commons-slack-chunk.html. Existing live
+# Payment Links only (White Box hour $250). Cite
+# quill-commons-slack-convert-shelf-20260917-04. Tip KEEP. #8802 off. Not Type
+# expertise/interconnect, Latch demand-survive/first-night, Wire sell/X, Anvil open-door/interconnect,
+# Goat tip shelves / owner-now-revenue, Muse, or Quill prior shelves including visual/titanmcp,
+# ringdelta/swarm-dc, and supermcp/telegram. Pages are static; constants document the shelf for remint peers.
+COMMONS_SLACK_CONVERT_SHELF_STYLE = ENTRY_CONVERT_SHELF_STYLE
+COMMONS_SLACK_CONVERT_SHELF_HTML = """
+<section id="buy-now-live-checkout" class="law" aria-label="Buy now — live checkout">
+<strong>Buy now — live checkout.</strong> Existing live Payment Links. No invented Stripe. A click is intent, not cash.
+<p>
+<a class="cta" data-checkout href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">Buy one White Box hour $250</a>
+</p>
+<p class="note">Reuse only. Cite <code>quill-commons-slack-convert-shelf-20260917-04</code>. Sources: <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
+</section>
+"""
+
+# First-screen Buy convert shelf for plug.html + slack-tags.html. Existing live
+# Payment Links only (White Box hour $250). Cite
+# quill-plug-slack-tags-convert-shelf-20260917-05. Tip KEEP. #8802 off. Not Type
+# expertise/interconnect, Latch demand-survive/first-night, Wire sell/X, Anvil open-door/interconnect,
+# Goat tip shelves / owner-now-revenue, Muse, or Quill prior shelves including visual/titanmcp,
+# ringdelta/swarm-dc, supermcp/telegram, and commons-slack. Pages are static; constants document the shelf for remint peers.
+PLUG_SLACK_TAGS_CONVERT_SHELF_STYLE = ENTRY_CONVERT_SHELF_STYLE
+PLUG_SLACK_TAGS_CONVERT_SHELF_HTML = """
+<section id="buy-now-live-checkout" class="law" aria-label="Buy now — live checkout">
+<strong>Buy now — live checkout.</strong> Existing live Payment Links. No invented Stripe. A click is intent, not cash.
+<p>
+<a class="cta" data-checkout href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">Buy one White Box hour $250</a>
+</p>
+<p class="note">Reuse only. Cite <code>quill-plug-slack-tags-convert-shelf-20260917-05</code>. Sources: <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
+</section>
+"""
+
+
+
+
+
+
+def _live_product_entry_ok(entry, root):
+    """A preserved live-cash entry survives only while its checkout path exists."""
+    if not isinstance(entry, dict):
+        return bool(entry)
+    path = entry.get("path")
+    if not path or root is None:
+        return True
+    return os.path.isfile(os.path.join(root, path))
+
+
+def _preserve_live_cash(prev, doc, root=None):
+    """Keep tip $199 product doors across hub remints.
 
     rebuild_* rewrites observation/board fields on tip JSON doors that already
     carry live_cash (newbot-06/07). Without KEEP, machine readers lose checkout
     product paths after every board ingest. Paths only — never invent Stripe.
+    Retired products (deleted checkout page) must not be resurrected, so when
+    root is given each preserved entry must still resolve to a file on disk.
     """
     if not isinstance(prev, dict) or not isinstance(doc, dict):
         return doc
     live = prev.get("live_cash")
     if isinstance(live, dict) and live.get("products"):
+        if root is not None:
+            live = dict(live)
+            for key in ("products", "larger_fixed"):
+                items = live.get(key)
+                if isinstance(items, list):
+                    live[key] = [
+                        item for item in items
+                        if _live_product_entry_ok(item, root)
+                    ]
+            if not live.get("products") and not live.get("larger_fixed"):
+                return doc
         doc["live_cash"] = live
     return doc
 
@@ -552,7 +657,7 @@ def rebuild_share(mod, rows):
         "receipts": st["receipts"],
         "button": "python host/muhl_tools_once.py --go",
     }
-    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "share.json"), public)
+    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "share.json"), public, getattr(mod, "ROOT", None))
     mod._write(os.path.join(mod.ROOT, "share.json"), json.dumps(public, indent=2) + "\n")
     return st
 
@@ -802,7 +907,6 @@ or none in six hours, is a line to take, not a line to read.</p>
   <h2 id="live-cash-doors-heading">Live diagnostics (optional cash)</h2>
   <p>Boards stay free to browse. Paid diagnostics keep live checkout on their product pages — linked here without embedding Stripe URLs. Cite forge tip-shelf · goat-writing-live-cash-doors — parallel boards surface, no remint writing/tips/tools.</p>
   <ul>
-    <li id="sku-agent-failure-autopsy"><a href="./agent-rescue.html">Agent Failure Autopsy — $29</a> (Open $29 Autopsy checkout)</li>
     <li id="sku-dealer-service-lead-rescue"><a href="./dealer-service-lead-rescue.html">Dealer Service Lead Rescue — $199</a> (Open $199 dealer diagnostic)</li>
     <li id="sku-referral-intake-completeness"><a href="./referral-intake-completeness.html">Referral Intake Completeness — $199</a> (Open $199 referral diagnostic)</li>
     <li id="sku-repair-booking-preflight"><a href="./repair-booking-preflight.html">Repair Booking Preflight — $199</a> (Open $199 repair diagnostic)</li>
@@ -1508,7 +1612,7 @@ def rebuild_wake(mod, rows):
         "held_cursor": [r for r in reqs if r.get("status") == "HELD_CURSOR"],
         "invalid": [r for r in reqs if r.get("status") == "SCHEMA_INVALID"],
     }
-    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "wake.json"), public)
+    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "wake.json"), public, getattr(mod, "ROOT", None))
     mod._write(os.path.join(mod.ROOT, "wake.json"), json.dumps(public, indent=2) + "\n")
     extra = (
         WAKE_WORLD_CONVERT_SHELF_STYLE
@@ -1606,13 +1710,13 @@ def rebuild_lanes(mod, rows):
         })
     public = {k.lower(): {"n": len(grouped[k]), "posts": grouped[k][:80]} for k in LANE_BOARDS}
     public["n"] = sum(len(grouped[k]) for k in LANE_BOARDS)
-    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "lanes.json"), public)
+    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "lanes.json"), public, getattr(mod, "ROOT", None))
     salon_doc = public.get("salon") or {"n": 0, "posts": []}
     if not isinstance(salon_doc, dict):
         salon_doc = {"n": 0, "posts": []}
     else:
         salon_doc = dict(salon_doc)
-    salon_doc = _preserve_live_cash(_load_prev_live_cash_doc(mod, "salon.json"), salon_doc)
+    salon_doc = _preserve_live_cash(_load_prev_live_cash_doc(mod, "salon.json"), salon_doc, getattr(mod, "ROOT", None))
     mod._write(os.path.join(mod.ROOT, "lanes.json"), json.dumps(public, indent=2) + "\n")
     mod._write(os.path.join(mod.ROOT, "salon.json"), json.dumps(salon_doc, indent=2) + "\n")
     extra_board = (
@@ -1745,7 +1849,7 @@ def rebuild_keys(mod, rows):
         "note": "Public keys only. Private keys never enter this repo, forms, logs, or workflow secrets. Empty until Court-ratified registration. SEALED is not this page. UNLISTED is a side lane, not encryption.",
         "keys": keys,
     }
-    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "keys.json"), public)
+    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "keys.json"), public, getattr(mod, "ROOT", None))
     mod._write(path, json.dumps(public, indent=2) + "\n")
     extra = BOARD_JS_TAG
     recs = []
@@ -2034,7 +2138,7 @@ def rebuild_claims(mod, rows):
         "n": len(recs),
         "claims": recs,
     }
-    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "claims.json"), public)
+    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "claims.json"), public, getattr(mod, "ROOT", None))
     mod._write(os.path.join(mod.ROOT, "claims.json"), json.dumps(public, indent=2) + "\n")
     extra = CLAIMS_CONVERT_SHELF_STYLE + "\n" + BOARD_JS_TAG
     seed_ids = {s["id"] for s in SEED_CLAIMS}
@@ -2237,7 +2341,7 @@ def rebuild_orient(mod, rows):
         "text": text,
         "dropped": dropped,
     }
-    packet = _preserve_live_cash(_load_prev_live_cash_doc(mod, "orient.json"), packet)
+    packet = _preserve_live_cash(_load_prev_live_cash_doc(mod, "orient.json"), packet, getattr(mod, "ROOT", None))
     mod._write(os.path.join(mod.ROOT, "orient.json"), json.dumps(packet, indent=2) + "\n")
     return packet
 
@@ -2292,7 +2396,7 @@ def rebuild_delta(mod, rows):
         "note": "since = posts after your last post (not yours). mine = your last 12. Hidden ids stay off. Not a second mailbox.",
         "claims": claims,
     }
-    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "delta.json"), public)
+    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "delta.json"), public, getattr(mod, "ROOT", None))
     mod._write(os.path.join(mod.ROOT, "delta.json"), json.dumps(public, indent=2) + "\n")
     extra = BOARD_JS_TAG
     names = sorted(claims)

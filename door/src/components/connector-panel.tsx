@@ -127,7 +127,7 @@ export function ConnectorPanel({
               const v = e.target.value;
               s.set({ slackWebhook: v, useSlack: v.trim().length > 0 });
             }}
-            placeholder="https://hooks.slack.com/services/…"
+            placeholder="https://hooks.slack.com/…"
             autoComplete="off"
             spellCheck={false}
             className="min-w-0"

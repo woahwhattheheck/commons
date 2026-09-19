@@ -36,7 +36,7 @@ def battery_script():
 
 class BatteryReportTests(unittest.TestCase):
     def setUp(self):
-        self.temp = tempfile.TemporaryDirectory()
+        self.temp = tempfile.TemporaryDirectory(ignore_cleanup_errors=True)
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
         self.git("init", "-q")
@@ -124,6 +124,7 @@ class BatteryReportTests(unittest.TestCase):
         self.assertEqual(self.build(mismatch, "failure")["conclusion"], "INCOMPLETE")
         self.assertEqual(self.build(self.raw(("python3", "test_alpha.py", 7), failed=1))["conclusion"], "INCOMPLETE")
 
+    @unittest.skipUnless(os.name == "posix", "fixture filename needs POSIX rules")
     def test_unusual_filename_and_summary_are_lossless_and_escaped(self):
         name = "test_a | <b>`\n\t.py"
         (self.root / name).write_text("pass\n", encoding="utf-8")

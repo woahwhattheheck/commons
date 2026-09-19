@@ -26,7 +26,6 @@ INGEST = ROOT / "board_ingest.py"
 
 ALLOWED_LIVE_BUY_URLS = frozenset(
     {
-        "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
         "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
     }
 )
@@ -35,11 +34,9 @@ BUY_HOST_PATH = re.compile(
     re.IGNORECASE,
 )
 BUY_LABELS = (
-    "Buy Autopsy $29",
     "Buy one White Box hour $250",
 )
 PRODUCT_PAGES = (
-    "agent-rescue.html",
     "commercial.html",
     "diagnostic.html",
 )
@@ -87,7 +84,6 @@ class TestWireArbitrageAttestedConvertShelf2026091701(unittest.TestCase):
                 live_cash = html.split('id="live-cash"', 1)[1]
                 live_cash = live_cash.split("</section>", 1)[0]
                 self.assertNotIn("buy.stripe.com", live_cash)
-                self.assertIn("agent-rescue.html", html)
                 self.assertIn("Larger fixed engagements", html)
                 self.assertIn("diagnostic.html", html)
                 self.assertIn("commercial.html", html)

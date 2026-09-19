@@ -23,6 +23,7 @@ from compose_statistics import (
     compose,
     identity,
 )
+import sys
 
 ALGORITHM_FUNCTIONS = {
     "dag": "Dag& dag(",
@@ -152,7 +153,7 @@ def validate(args: argparse.Namespace) -> dict[str, Any]:
         for label in ("gcc", "clang"):
             passed_report = root / f"passed-{label}.json"
             run([
-                "python3",
+                sys.executable,
                 "-B",
                 str(regression),
                 "--binary",
@@ -170,7 +171,7 @@ def validate(args: argparse.Namespace) -> dict[str, Any]:
 
             control_report = root / f"control-{label}.json"
             control_run = subprocess.run([
-                "python3",
+                sys.executable,
                 "-B",
                 str(regression),
                 "--binary",
@@ -203,7 +204,7 @@ def validate(args: argparse.Namespace) -> dict[str, Any]:
         for arm, binary in (("frozen", binaries["gcc"]["frozen"]), ("composed", binaries["gcc"]["composed"])):
             output = root / f"joint-{arm}"
             run([
-                "python3",
+                sys.executable,
                 "-B",
                 str(verifier),
                 "--solver",

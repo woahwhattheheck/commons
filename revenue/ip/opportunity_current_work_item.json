@@ -16,5 +16,7 @@
     "p/grok-opportunity-registry-20260828-02.md"
   ],
   "acceptance": "Official main SHA plus each claimed path readable at that SHA. Chat is not a close.",
-  "notes": "Compose grants ledger, White Box offers, collaboration targets, procurement channels, and listing-registry. Do not submit applications or claim cash. Sidecar: revenue/ip/opportunity_current_work_item.json."
+  "notes": "Compose grants ledger, White Box offers, collaboration targets, procurement channels, and listing-registry. Do not submit applications or claim cash. Sidecar: revenue/ip/opportunity_current_work_item.json. Closed on official main 786fe05c34a2d6fc4b7b0fc4e81a7b6b0be5debb. Receipt: p/latch-current-work-close-20260917-01.md.",
+  "status": "CLOSED",
+  "main_sha": "786fe05c34a2d6fc4b7b0fc4e81a7b6b0be5debb"
 }

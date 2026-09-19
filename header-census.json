@@ -1,0 +1,79 @@
+{
+  "errors": [],
+  "folds": {
+    "linear": 405,
+    "tree": 398
+  },
+  "law": "muhlnickel is the computer; this is host offload",
+  "n_errors": 0,
+  "n_layouts": 803,
+  "sample": [
+    {
+      "cursors": 128,
+      "file": "R_t16_g4_l_c128_s0of4.layout.json",
+      "fold": "linear",
+      "gates": 75776,
+      "group": 4,
+      "header_bytes_in_container": 0,
+      "mno": "R_t16_g4_l_c128_s0of4.mno",
+      "shard": 0,
+      "split": 4,
+      "targets": 16
+    },
+    {
+      "cursors": 128,
+      "file": "R_t16_g4_l_c128_s0of8.layout.json",
+      "fold": "linear",
+      "gates": 151552,
+      "group": 4,
+      "header_bytes_in_container": 0,
+      "mno": "R_t16_g4_l_c128_s0of8.mno",
+      "shard": 0,
+      "split": 8,
+      "targets": 16
+    },
+    {
+      "cursors": 128,
+      "file": "R_t16_g4_l_c128_s1of4.layout.json",
+      "fold": "linear",
+      "gates": 75776,
+      "group": 4,
+      "header_bytes_in_container": 0,
+      "mno": "R_t16_g4_l_c128_s1of4.mno",
+      "shard": 1,
+      "split": 4,
+      "targets": 16
+    },
+    {
+      "cursors": 128,
+      "file": "R_t16_g4_l_c128_s1of8.layout.json",
+      "fold": "linear",
+      "gates": 151552,
+      "group": 4,
+      "header_bytes_in_container": 0,
+      "mno": "R_t16_g4_l_c128_s1of8.mno",
+      "shard": 1,
+      "split": 8,
+      "targets": 16
+    },
+    {
+      "cursors": 128,
+      "file": "R_t16_g4_l_c128_s2of4.layout.json",
+      "fold": "linear",
+      "gates": 75776,
+      "group": 4,
+      "header_bytes_in_container": 0,
+      "mno": "R_t16_g4_l_c128_s2of4.mno",
+      "shard": 2,
+      "split": 4,
+      "targets": 16
+    }
+  ],
+  "splits": {
+    "1": 53,
+    "2": 106,
+    "4": 212,
+    "8": 432
+  },
+  "walk": "headers only"
+}

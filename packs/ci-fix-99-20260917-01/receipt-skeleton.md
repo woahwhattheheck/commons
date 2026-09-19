@@ -1,0 +1,24 @@
+# CI-fix $99 receipt
+
+- id:
+- sku: ci-fix-pack-99
+- work_order: WO-CI-FIX-PACK-99
+- cite: latch-ci-fix-pack-99-20260917-01
+- price_usd: 99
+- checkout: NOT_MINTED
+- cash_usd: 0
+- buyer: (external; never Bryce-as-buyer)
+- public_repo:
+- actions_run_url:
+- check_name:
+- failing_sha:
+- class_id:
+- patch_path:
+- local_red: yes / command:
+- local_green: yes / command:
+- pr_url:
+- delivered_at:
+- turnaround_ok: yes / no
+- secrets_in_diff: no
+- invented_stripe: no
+- autopsy_sold: no

@@ -1,0 +1,13 @@
+{
+  "id": "action-20260917194711-2df08d46d573",
+  "verb": "SHELL",
+  "target": "",
+  "scope": "github",
+  "ok": true,
+  "output": "---\n---NOSTRIPE_WITH_BUY---\n/bin/sh: 1: rg: not found\n/bin/sh: 1: rg: not found\n/bin/sh: 1: rg: not found\n",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": [],
+  "executed_at": "2026-09-18T05:32:30.916897Z"
+}

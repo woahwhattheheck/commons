@@ -9,7 +9,10 @@
   "license_sha256": "2f8d94e96cab28aeefdb4bae7d35295bf14a8e590bcc075f91d33b8e172f4f87",
   "copyright": "Copyright (c) 2026 Jonathan Day",
   "redistribution": "authorized-with-copyright-and-license-notice",
-  "dependencies": ["python-standard-library", "optional-numpy-scipy-acceleration"],
+  "dependencies": [
+    "python-standard-library",
+    "optional-numpy-scipy-acceleration"
+  ],
   "effective_config": {
     "COW_MAX": 8,
     "SHEEP_MAX": 6,
@@ -24,5 +27,7 @@
   "default_enabled": false,
   "public_score_used_for_promotion": false,
   "kaggle_submission": "NOT_PERFORMED",
-  "acquired_utc": "2026-08-22T00:39:00Z"
+  "acquired_utc": "2026-08-22T00:39:00Z",
+  "family": "animal-heavy",
+  "vendored_as": "lonespear_care"
 }

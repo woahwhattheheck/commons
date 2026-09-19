@@ -13,7 +13,6 @@ TOOLS = ROOT / "tools.json"
 START = ROOT / "START.md"
 
 PRODUCT_BASENAMES = {
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",

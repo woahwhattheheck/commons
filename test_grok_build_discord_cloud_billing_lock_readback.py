@@ -6,6 +6,7 @@ from __future__ import annotations
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grok-build-discord-cloud-billing-lock-readback-20260902-01.md"
@@ -19,15 +20,15 @@ KEEP = {
     "test_discord_mirror.py": "45043494",
     "infra/discord/test_commons_discord_bridge.py": "9c623e59",
     "infra/discord/test_windows_runtime.py": "158feb48",
-    ".github/workflows/commons-discord-cloud.yml": "6f1c1479",
+    ".github/workflows/commons-discord-cloud.yml": "90738ad6",
     "p/grok-discord-cloud-dark-20260831-01.md": "cdbad10b",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
-    "host/merge_on_pr.py": "0270094d",
+    "host/merge_on_pr.py": "5062c29b",
     "p/cursor-mcp-get-grounding-readback-20260902-01.md": "4d7bc317",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
-    "hub_pages.py": "7bc61c8b",
-    "door.js": "de1d570b",
+    "hub_pages.py": "673dab89",
+    "door.js": "5899223c",
     "api/mcp.py": "393da756",
 }
 
@@ -58,7 +59,7 @@ class TestGrokBuildDiscordCloudBillingLockReadback(unittest.TestCase):
     def test_leftover_tests_still_pass(self) -> None:
         proc = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "-m",
                 "unittest",
                 "test_commons_discord.py",
@@ -76,7 +77,7 @@ class TestGrokBuildDiscordCloudBillingLockReadback(unittest.TestCase):
 
     def test_adjacent_item6_leftover_tests_still_pass(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_merge_on_pr.py"],
+            [sys.executable, "-m", "unittest", "test_merge_on_pr.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

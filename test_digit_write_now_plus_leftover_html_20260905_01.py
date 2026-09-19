@@ -6,7 +6,7 @@ def test_html():
     if rel.endswith('.md'):
       continue
     html=(ROOT/rel).read_text(encoding='utf-8')
-    assert 'live-cash' in html and 'agent-rescue.html' in html
+    assert 'live-cash' in html and 'agent-rescue.html' not in html
 def test_write_now():
   md=(ROOT/'ground/WRITE-NOW.md').read_text(encoding='utf-8')
-  assert 'Live cash doors' in md and 'agent-rescue.html' in md
+  assert 'Live cash doors' in md and 'agent-rescue.html' not in md

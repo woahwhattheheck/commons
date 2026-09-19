@@ -1,0 +1,29 @@
+{
+  "schema_version": "commons.swarm-terminality-snapshot/v1",
+  "evaluated_at_utc": "2026-09-17T19:22:00Z",
+  "max_provider_age_seconds": 900,
+  "max_heartbeat_age_seconds": 600,
+  "items": [
+    {"id":"issue-old","kind":"ISSUE","locator":"github://commons/issues/100","provider_observation_id":"obs-issue-old"},
+    {"id":"pr-merged","kind":"PR","locator":"github://commons/pulls/101","provider_observation_id":"obs-pr-merged"},
+    {"id":"pr-stale","kind":"PR","locator":"github://commons/pulls/102","provider_observation_id":"obs-pr-stale"},
+    {"id":"op-active","kind":"OPERATION","locator":"slack://build-demand/op-active","provider_observation_id":"obs-op-active"},
+    {"id":"op-recover","kind":"OPERATION","locator":"slack://build-demand/op-recover","provider_observation_id":"obs-op-recover"},
+    {"id":"branch-unknown","kind":"BRANCH","locator":"github://commons/branches/unknown","provider_observation_id":"obs-branch-unknown"}
+  ],
+  "provider_observations": [
+    {"id":"obs-issue-old","item_id":"issue-old","provider":"GITHUB","source_url":"https://github.com/example/commons/issues/100","source_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","observed_at_utc":"2026-09-17T19:21:30Z","provider_state":"OPEN","head_sha":null,"merged_sha":null},
+    {"id":"obs-pr-merged","item_id":"pr-merged","provider":"GITHUB","source_url":"https://github.com/example/commons/pull/101","source_sha256":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","observed_at_utc":"2026-09-17T19:21:35Z","provider_state":"MERGED","head_sha":"1111111111111111111111111111111111111111","merged_sha":"2222222222222222222222222222222222222222"},
+    {"id":"obs-pr-stale","item_id":"pr-stale","provider":"GITHUB","source_url":"https://github.com/example/commons/pull/102","source_sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","observed_at_utc":"2026-09-17T19:21:36Z","provider_state":"OPEN","head_sha":"3333333333333333333333333333333333333333","merged_sha":null},
+    {"id":"obs-op-active","item_id":"op-active","provider":"SLACK","source_url":"https://example.slack.com/archives/C1/p1","source_sha256":"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd","observed_at_utc":"2026-09-17T19:21:40Z","provider_state":"OPEN","head_sha":null,"merged_sha":null},
+    {"id":"obs-op-recover","item_id":"op-recover","provider":"SLACK","source_url":"https://example.slack.com/archives/C1/p2","source_sha256":"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee","observed_at_utc":"2026-09-17T19:21:41Z","provider_state":"OPEN","head_sha":null,"merged_sha":null},
+    {"id":"obs-branch-unknown","item_id":"branch-unknown","provider":"GITHUB","source_url":"https://github.com/example/commons/tree/unknown","source_sha256":"ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff","observed_at_utc":"2026-09-17T18:00:00Z","provider_state":"UNKNOWN","head_sha":null,"merged_sha":null}
+  ],
+  "heartbeats": [
+    {"id":"hb-active","item_id":"op-active","owner":"Z-Example","observed_at_utc":"2026-09-17T19:21:45Z","expires_at_utc":"2026-09-17T19:31:45Z","source_observation_id":"obs-op-active"}
+  ],
+  "successors": [
+    {"id":"succ-old-to-merged","predecessor_item_id":"issue-old","successor_item_id":"pr-merged","relationship":"CANONICAL_SUCCESSOR","source_observation_ids":["obs-issue-old","obs-pr-merged"]},
+    {"id":"succ-pr-stale-to-merged","predecessor_item_id":"pr-stale","successor_item_id":"pr-merged","relationship":"CANONICAL_SUCCESSOR","source_observation_ids":["obs-pr-stale","obs-pr-merged"]}
+  ]
+}

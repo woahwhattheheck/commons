@@ -141,7 +141,6 @@ def main() -> None:
     assert cash, "door/index.html keeps the live-cash note"
     section = cash.group()
     for href in (
-        "../agent-rescue.html",
         "../dealer-service-lead-rescue.html",
         "../referral-intake-completeness.html",
         "../repair-booking-preflight.html",

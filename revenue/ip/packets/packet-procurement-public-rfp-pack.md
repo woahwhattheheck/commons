@@ -31,27 +31,27 @@ ANALYSIS: Procurement channel public-rfp-pack is composed from the distribution 
 
 ### Open carrier and distribution roads (`carrier-infrastructure`, `SHIPPED_ON_MAIN`)
 
-- `carrier.js` sha256 `5df2a26164edec15288eaa213d8533b2d26f0e7062009dad088a0d1257b01ef4` (63703 bytes)
-- `distribution.html` sha256 `3ab84fcfa02a9e84ea88aaf4d5f66981756aed70a97546f9af4928d63cb09390` (8427 bytes)
-- `host/distribution.py` sha256 `2ae7a466c9c2ba64b59329e404aaa49c2c94973ec5d432d3d907a095ffd0ef92` (29867 bytes)
-- `ground/DISTRIBUTION.md` sha256 `47823a33df0952378ecf9747d7efa0606a45dd4a46182dc359ee6d9a394f37c3` (3212 bytes)
-- `p/grok-distribution-layer-20260828-01.md` sha256 `79687f5a59620f85af6befd1a4879b88bc7bc8c5ce3d0156bc8176d2486469ec` (1977 bytes)
+- `carrier.js` sha256 `8fa9978c292a0bb3ddd2401f4f9252c7fdee9ef7cca82cdccb45f9e75f9126b7` (65175 bytes)
+- `distribution.html` sha256 `788e3ca735530138f5e97c18f8701d240ae7719f525207049fc6af671b896a8b` (9988 bytes)
+- `host/distribution.py` sha256 `e85efed6c982918eba61d91fc63b58882a560337d9785a1eaac43945624f5763` (30605 bytes)
+- `ground/DISTRIBUTION.md` sha256 `7cdc98cfa3ed5fcee2bb7b1b4a74488e489bb42d8ba769efb9186ff27ab963f8` (3716 bytes)
+- `p/grok-distribution-layer-20260828-01.md` sha256 `fe6028dcb971e4efa0164ff869ec72081c22b2f5b9f147465704556cfda327af` (2017 bytes)
 
 ### Feature and resource trackers (`resource-feature-trackers`, `SHIPPED_ON_MAIN`)
 
-- `ground/FEATURES.md` sha256 `bd2b7c314d28529ceaf40fc7368e8ac6a30e9e8807f4affabb4b639560cc8085` (1344 bytes)
-- `ground/FEATURE_TRACKER.md` sha256 `0792cdb75797bb71fa44b1280070b56a06516582ec46d9c9e5c6eff20bebb4b7` (4615 bytes)
-- `host/feature_tracker.py` sha256 `02b520eb32b2113370d955786c34b52f335ade70902222a4cd5f1f1339c718c0` (38400 bytes)
-- `test_feature_tracker.py` sha256 `57a18fe043e0f0d6aac74ec86fafa6a504df62402e6759459a2fe0b5623232da` (27984 bytes)
-- `features/registry/feature-tracker-20260828-01.json` sha256 `210d74192ab08fa9348c87f1ec5e6bf28e72c5c0c517ae44d47478d3cf424f4e` (1123 bytes)
-- `resources.html` sha256 `9b999813aff51306977c47ed1a30ad650a60c4bb7e91861fde2c027b0197bc90` (16619 bytes)
-- `ground/RESOURCE_LEDGER.json` sha256 `b61a3f5c96c19ae205b1ee09a966d3908906935568c513cf1feb29c9eeaac1f5` (161041 bytes)
-- `host/resource_ledger.py` sha256 `750441778da389cc2f5a55c674e1c8226d566826bdfbfe8adcd896cbfdb9934c` (21801 bytes)
+- `ground/FEATURES.md` sha256 `8a72aa6b200e7e1a2e8355a80e5229ef897ea066e504466a11643bdbac54b21d` (2129 bytes)
+- `ground/FEATURE_TRACKER.md` sha256 `cd3968d0c3c33a538c9d919176892176fdf17000c1f6dad981da36ba5eb24411` (5127 bytes)
+- `host/feature_tracker.py` sha256 `aeada06fa0540bc12e2b9ed9eaafc24ebb367b8897d584c7bf54373c23cfc466` (41232 bytes)
+- `test_feature_tracker.py` sha256 `38afed797a17878c788d5b11fddc3eebc1da2aae88428e4f4d8ed219af57dbe1` (28490 bytes)
+- `features/registry/feature-tracker-20260828-01.json` sha256 `733bc99a1af05c4f99596a30bfece1ca133ac9106bc2db6b616f520f28c95f07` (1161 bytes)
+- `resources.html` sha256 `56ab6c1bbb297675f1228dfd17ade47f47eeb122a0aca936290f39253e437f82` (16285 bytes)
+- `ground/RESOURCE_LEDGER.json` sha256 `47ed2e17392724fb12eb709216be9c0eee23754a606a5eb05d37c602d1b7a05e` (201760 bytes)
+- `host/resource_ledger.py` sha256 `8ae983e3b285c310f05150a948cb5a055077e0c9ed44d78a27e3d93e62fca620` (22370 bytes)
 
 ### Public evidence record and required-reading corpus (`evidence-record`, `SHIPPED_ON_MAIN`)
 
-- `evidence/README.md` sha256 `c23d0b482e84507e8212fac65320f6f529b7fd383d5cec3d17ed9fa12849503c` (2012 bytes)
-- `ground/03_EVIDENCE_ANNEX.md` sha256 `2b94d30faa059699e0faf0935da759035dc8035958d0cb888e474f19e07546c8` (4197 bytes)
+- `evidence/README.md` sha256 `5ec472f58475d3245b002bc3a693fce84058e4b127ec4a6c3793782034fc9b90` (2685 bytes)
+- `ground/03_EVIDENCE_ANNEX.md` sha256 `15bf2f8da1bba829240683e258c20e4cfaabad958d9595520ddad37c987ac43d` (4714 bytes)
 
 ## Stated funding (not expected value)
 
@@ -82,8 +82,6 @@ submission_status: `NOT_SUBMITTED`. award_status: `NOT_AWARDED`. cash_received_u
 ## Live cash
 
 Verified product pages only — no invented Stripe links.
-
-- [$29 Autopsy checkout](../../../agent-rescue.html)
 - [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../../../referral-intake-completeness.html)
 - [$199 repair diagnostic](../../../repair-booking-preflight.html)

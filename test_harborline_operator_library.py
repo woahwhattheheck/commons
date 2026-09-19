@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 HELPER = ROOT / "host/harborline_operator_library.py"
@@ -16,21 +17,21 @@ COMPOSE_HELPER = ROOT / "host/harborline_commerce_compose.py"
 
 KEEP = {
     "p/cursor-harborline-merchant-portal-20260903-01.md": "18f06c0d",
-    "host/harborline_merchant_portal.py": "c54f35e2",
-    "test_harborline_merchant_portal.py": "dc879dfc",
+    "host/harborline_merchant_portal.py": "1e82f038",
+    "test_harborline_merchant_portal.py": "36ff2f06",
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
-    "test_cursor_harborline_commerce_compose_keep_lift_readback.py": "c6b29153",
+    "test_cursor_harborline_commerce_compose_keep_lift_readback.py": "64625393",
     "host/harborline_commerce_compose.py": "75128e5d",
     "p/cursor-harborline-commerce-compose-20260902-01.md": "45b7d435",
     "p/cursor-harborline-commerce-compose-keep-lift-20260902-01.md": "668dd5c4",
-    "test_harborline_commerce_compose.py": "04480989",
-    "test_harborline_commerce_compose_keep_lift.py": "6d0cf122",
+    "test_harborline_commerce_compose.py": "4d0997c4",
+    "test_harborline_commerce_compose_keep_lift.py": "75479447",
     "p/cursor-harborline-commerce-compose-readback-20260902-01.md": "b33e2e24",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "p/cursor-desk-website-harborline-20260902-01.md": "655b9eb1",
     "p/cursor-what-a-pack-is-20260902-01.md": "a4e4dd89",
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
-    "ground/CLAUDE_PEER_CHECK.md": "bf4dc9bf",
+    "ground/CLAUDE_PEER_CHECK.md": "58b22b69",
 }
 
 
@@ -42,7 +43,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,
@@ -95,7 +96,7 @@ class TestHarborlineOperatorLibrary(unittest.TestCase):
         self.assertIn("yes_first_outreach", packet["tools"])
         self.assertNotIn("buy.stripe.com", proc.stdout)
         merchant = subprocess.run(
-            ["python3", str(MERCHANT_HELPER), "--json"],
+            [sys.executable, str(MERCHANT_HELPER), "--json"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -106,7 +107,7 @@ class TestHarborlineOperatorLibrary(unittest.TestCase):
         self.assertEqual(merchant_packet["desk_route"], "/merchant")
         self.assertEqual(merchant_packet["listing"]["price_usd"], 250)
         leftover = subprocess.run(
-            ["python3", str(COMPOSE_HELPER), "--json"],
+            [sys.executable, str(COMPOSE_HELPER), "--json"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -129,7 +130,7 @@ class TestHarborlineOperatorLibrary(unittest.TestCase):
 
     def test_independently_leftover_merchant_tests_still_pass(self) -> None:
         leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_harborline_merchant_portal.py"],
+            [sys.executable, "-m", "unittest", "test_harborline_merchant_portal.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

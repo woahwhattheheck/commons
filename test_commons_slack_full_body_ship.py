@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 HELPER = ROOT / "host/commons_slack_full_body_ship.py"
@@ -15,11 +16,11 @@ LEFTOVER = ROOT / "p/cursor-commons-slack-full-body-20260902-01.md"
 
 KEEP = {
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
-    "host/commons_slack_full_body.py": "d5338810",
-    "test_commons_slack_full_body.py": "62e1401b",
+    "host/commons_slack_full_body.py": "7a6067d7",
+    "test_commons_slack_full_body.py": "6a66d3f8",
     "ground/COMMONS_SLACK_FULL_BODY.json": "5b2bf0e0",
-    "ground/COMMONS_SLACK_FULL_BODY.md": "d87b578a",
-    "commons-slack.html": "16a25386",
+    "ground/COMMONS_SLACK_FULL_BODY.md": "456ed9a6",
+    "commons-slack.html": "b7630b56",
     "host/slack_mirror.py": "72c0844e",
     "slack_ingest.py": "a35169fe",
     "test_slack_mirror.py": "739d5ee8",
@@ -34,7 +35,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,

@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -17,8 +18,8 @@ HUB_TICK = ROOT / "ground/HUB_TICK.md"
 WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
-    ".github/workflows/tests.yml": "fd94b65c",
-    "ground/HUB_TICK.md": "3d564798",
+    ".github/workflows/tests.yml": "57d36525",
+    "ground/HUB_TICK.md": "117e2310",
     "p/grokbuild-tests-33689083188-billing-lock-20260902-01.md": "ea4625e6",
     "p/grokbuild-tests-33689243523-billing-lock-20260902-01.md": "119ccb17",
     "p/grokbuild-tests-33689281316-billing-lock-20260902-01.md": "3db0ab2e",
@@ -45,7 +46,11 @@ class TestGrokbuildTests33694246830BillingLock(unittest.TestCase):
         self.assertIn("name: tests", yml)
         self.assertIn("battery:", yml)
         self.assertIn("the whole battery, one failure fails the run", yml)
-        self.assertIn("find . -maxdepth 1 -type f -name 'test_*.py'", yml)
+        self.assertIn(
+            "find . -maxdepth 1 -type f \( -name 'test_*.py' -o -name 'test_*.js' \) -print",
+            yml,
+        )
+        self.assertIn("find infra -type f -name 'test_*.py' -print", yml)
         self.assertIn("ground/**", yml)
         self.assertNotIn("if: false", yml)
         self.assertNotIn("continue-on-error", yml)
@@ -55,7 +60,7 @@ class TestGrokbuildTests33694246830BillingLock(unittest.TestCase):
 
     def test_local_failed_step_contract_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_fix_first"],
+            [sys.executable, "-m", "unittest", "test_fix_first"],
             cwd=ROOT,
             text=True,
             capture_output=True,

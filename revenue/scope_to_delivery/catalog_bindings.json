@@ -431,47 +431,6 @@
           ]
         }
       ]
-    },
-    "agent-failure-autopsy-29": {
-      "family": "service",
-      "in_scope": [
-        "an evidence-linked timeline and failure chain with the first meaningful divergence marked",
-        "primary and contributing causes with calibrated confidence",
-        "an adversarial challenge of each causal explanation against plausible alternatives",
-        "concrete prompt, configuration, or code fix steps only where the supplied evidence supports them",
-        "one replay or regression-prevention check"
-      ],
-      "out_of_scope": [
-        "repository-access",
-        "production-access",
-        "code-implementation",
-        "live-deployment",
-        "ongoing-monitoring",
-        "incident-response",
-        "credentials",
-        "unredacted-secrets"
-      ],
-      "deliverables": [
-        "evidence-linked-timeline-and-failure-chain",
-        "causes-with-calibrated-confidence",
-        "adversarial-causal-challenge",
-        "supported-fix-steps",
-        "replay-or-prevention-check",
-        "independent-review-record"
-      ],
-      "refund_text": "Refund USD 29 when the accepted artifacts cannot support a defensible diagnosis after the included clarification, when a legitimate one-run case cannot fit the intake boundary, when quarantined evidence remains unusable after the slice opportunity, when a seemingly usable case does not survive adversarial review, or when a defensible diagnosis cannot be delivered within the recorded one-business-day window. Never rush an unsupported diagnosis to meet the clock.",
-      "default_acceptance_rows": [
-        {
-          "id": "evidence-linked-autopsy",
-          "given": "One accepted, sanitized failed-run corpus within the canonical intake boundary",
-          "when": "The one-business-day delivery window ends",
-          "then": "A public-safe receipt hashes one independently reviewed private autopsy containing the canonical evidence-linked diagnosis and prevention check",
-          "evidence_required": [
-            "public_ref",
-            "sha256"
-          ]
-        }
-      ]
     }
   }
 }

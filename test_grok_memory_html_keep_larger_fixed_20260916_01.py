@@ -10,7 +10,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 CLAIM = "grok-memory-html-keep-larger-fixed-20260916-01"
 PRODUCTS = [
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -40,8 +39,8 @@ class TestGrokMemoryHtmlKeepLargerFixed2026091601(unittest.TestCase):
         import memory_board
         html = memory_board.MEMORY_LIVE_CASH_HTML
         self.assertIn('id="live-cash"', html)
-        self.assertIn("../agent-rescue.html", html)
-        self.assertIn("$29", html)
+
+
         self.assertIn("Larger fixed engagements", html)
         self.assertIn("../diagnostic.html", html)
         self.assertIn("../commercial.html", html)
@@ -57,8 +56,8 @@ class TestGrokMemoryHtmlKeepLargerFixed2026091601(unittest.TestCase):
             self.assertTrue(path.is_file(), rel)
             html = path.read_text(encoding="utf-8")
             self.assertIn('id="live-cash"', html, rel)
-            self.assertIn("../agent-rescue.html", html, rel)
-            self.assertIn("$29", html, rel)
+
+
             self.assertIn("Larger fixed engagements", html, rel)
             self.assertIn("../diagnostic.html", html, rel)
             self.assertIn("../commercial.html", html, rel)
@@ -92,8 +91,8 @@ class TestGrokMemoryHtmlKeepLargerFixed2026091601(unittest.TestCase):
         )
         html = written.get("index.html") or (root / "memory" / "index.html").read_text(encoding="utf-8")
         self.assertIn('id="live-cash"', html)
-        self.assertIn("../agent-rescue.html", html)
-        self.assertIn("$29", html)
+
+
         self.assertIn("Larger fixed engagements", html)
         self.assertIn("../diagnostic.html", html)
         self.assertIn("../commercial.html", html)

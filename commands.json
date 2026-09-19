@@ -107,11 +107,7 @@
     ],
     "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Larger fixed engagements are separate product pages (checkout/intent stays there). Canonical payload above stays authoritative. commands.html already surfaces Live cash and Larger fixed and loads this JSON. No invent Stripe URLs.",
     "products": [
-      {
-        "name": "Agent Failure Autopsy",
-        "price_usd": 29,
-        "path": "agent-rescue.html"
-      },
+      
       {
         "name": "Dealer Service Lead Rescue",
         "price_usd": 199,

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Hermetic: todo.html surfaces live Autopsy + $199 product doors."""
+"""Hermetic: todo.html surfaces live $199 product doors."""
 
 from __future__ import annotations
 
@@ -14,8 +14,8 @@ class BassTodoLiveCashTest(unittest.TestCase):
     def test_live_cash_section(self) -> None:
         text = TODO.read_text(encoding="utf-8")
         self.assertIn('id="live-cash"', text)
-        self.assertIn("agent-rescue.html", text)
-        self.assertIn("$29", text)
+
+
         self.assertIn("dealer-service-lead-rescue.html", text)
         self.assertIn("referral-intake-completeness.html", text)
         self.assertIn("repair-booking-preflight.html", text)

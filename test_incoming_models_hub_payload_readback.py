@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-incoming-models-hub-payload-readback-20260902-01.md"
@@ -14,15 +15,15 @@ HELPER = ROOT / "host/incoming_models.py"
 
 KEEP = {
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
-    "host/incoming_models.py": "108797f0",
+    "host/incoming_models.py": "b1963da4",
     "test_incoming_models.py": "d8f2ddbd",
     "ground/INCOMING_MODELS.json": "6b5e89dc",
-    "ground/INCOMING_MODELS.md": "b9c37880",
-    "incoming-models.html": "56aab207",
+    "ground/INCOMING_MODELS.md": "7717fcd2",
+    "incoming-models.html": "9cfbf0af",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
-    "ground/OWNER_NOW.md": "a17b0afb",
+    "ground/OWNER_NOW.md": "39a0e0c3",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
-    "autogtm.html": "1009c4cd",
+    "autogtm.html": "5c966110",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
 }
 
@@ -44,7 +45,7 @@ class TestIncomingModelsHubPayloadReadback(unittest.TestCase):
 
     def test_leftover_check_still_ok_without_probe(self) -> None:
         proc = subprocess.run(
-            ["python3", str(HELPER), "--check", "--json"],
+            [sys.executable, str(HELPER), "--check", "--json"],
             cwd=ROOT,
             text=True,
             capture_output=True,

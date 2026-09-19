@@ -8,6 +8,7 @@ import subprocess
 import unittest
 import urllib.request
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-webmcp-adapter-keep-lift-20260903-01.md"
@@ -17,7 +18,7 @@ ADAPTER = ROOT / "api" / "mcp.py"
 
 KEEP = {
     "p/wire-webmcp-challenge-20260903-01.md": "0e815c6d",
-    "webmcp.html": "1fc25f8b",
+    "webmcp.html": "8bb181e0",
     "api/mcp.py": "393da756",
     "p/cursor-webmcp-contest-20260903-01.md": "98fb6b6f",
     "p/cursor-webmcp-judge-url-20260903-01.md": "eb52debf",
@@ -29,10 +30,10 @@ KEEP = {
     "p/cursor-wire-hall-pass-unique-pack-ship-20260902-01.md": "7900eaba",
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
-    "wire.html": "3f030862",
-    "ground/WIRE_SUPER_MCP.md": "6a50f614",
-    "hub_pages.py": "7bc61c8b",
-    "door.js": "de1d570b",
+    "wire.html": "623602a7",
+    "ground/WIRE_SUPER_MCP.md": "626b07f7",
+    "hub_pages.py": "673dab89",
+    "door.js": "5899223c",
 }
 
 
@@ -56,7 +57,7 @@ class TestCursorWebmcpAdapterKeepLift(unittest.TestCase):
     def test_leftover_unique_pack_tests_pass_after_keep_lift(self) -> None:
         leftover = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "-m",
                 "unittest",
                 "test_cursor_wire_shared_super_mcp_catalog_readback.py",
@@ -75,7 +76,7 @@ class TestCursorWebmcpAdapterKeepLift(unittest.TestCase):
     def test_leftover_rematch_and_hall_pass_ship_tests_pass(self) -> None:
         leftover = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "-m",
                 "unittest",
                 "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py",
@@ -91,7 +92,7 @@ class TestCursorWebmcpAdapterKeepLift(unittest.TestCase):
 
     def test_leftover_contest_remainder_tests_pass(self) -> None:
         leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_cursor_webmcp_contest.py"],
+            [sys.executable, "-m", "unittest", "test_cursor_webmcp_contest.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -102,7 +103,7 @@ class TestCursorWebmcpAdapterKeepLift(unittest.TestCase):
 
     def test_leftover_door_tests_still_pass(self) -> None:
         leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_webmcp_door.py"],
+            [sys.executable, "-m", "unittest", "test_webmcp_door.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

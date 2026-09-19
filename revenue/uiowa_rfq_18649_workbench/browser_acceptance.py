@@ -9,6 +9,7 @@ covered separately by ``test_workbench.py`` against the actual loopback server.
 from __future__ import annotations
 
 import json
+import os
 import tempfile
 from pathlib import Path
 
@@ -21,7 +22,7 @@ ROOT = Path(__file__).resolve().parent
 def main() -> int:
     with tempfile.TemporaryDirectory() as td:
         td_path = Path(td)
-        html = (ROOT / "index.html").read_text()
+        html = (ROOT / "index.html").read_text(encoding="utf-8")
         # Enterprise browser policy in some ChatGPT sandboxes blocks navigation entirely.
         # set_content + explicit checked-in assets still executes the exact UI bytes in Chromium.
         html = html.replace('<link rel="stylesheet" href="/style.css">', '').replace('<script src="/app.js" defer></script>', '')
@@ -29,16 +30,19 @@ def main() -> int:
         with sync_playwright() as p:
             browser = p.chromium.launch(
                 headless=True,
-                executable_path="/usr/bin/chromium",
+                executable_path=os.environ.get("CHROMIUM_PATH", "/usr/bin/chromium"),
                 args=["--no-sandbox", "--allow-file-access-from-files"],
             )
             page = browser.new_page(accept_downloads=True)
             page.set_content(html, wait_until="load")
-            page.add_style_tag(content=(ROOT / "style.css").read_text())
-            page.add_script_tag(content=(ROOT / "app.js").read_text())
+            page.add_style_tag(content=(ROOT / "style.css").read_text(encoding="utf-8"))
+            page.add_script_tag(content=(ROOT / "app.js").read_text(encoding="utf-8"))
             page.get_by_role("button", name="Load synthetic UI demo").click()
             assert page.locator("#matrix").get_attribute("data-rendered-cells") == "12"
-            assert page.locator("#summary").get_by_text("UNTRUSTED_INSPECTION").count() == 1
+            assert page.locator("#summary").get_by_text("Evidence consistent").count() == 1
+            assert page.locator("#sampleBadge").text_content() == "Synthetic sample · UI demonstration"
+            assert page.locator(".report-details").get_attribute("open") is None
+            assert "HOLD_" not in " ".join(page.locator(".cell .status").all_text_contents())
 
             first = page.locator(".cell").first
             first.focus(); page.keyboard.press("Enter")
@@ -49,6 +53,7 @@ def main() -> int:
             assert page.locator("#disposition").input_value() == "NEEDS_EVIDENCE"
 
             # A successful new import must never silently inherit notes from the previous generation.
+            page.locator("#importPanel > summary").click()
             page.get_by_role("button", name="Load synthetic UI demo").click()
             page.locator(".cell").first.click()
             assert page.locator("#note").input_value() == ""
@@ -59,10 +64,11 @@ def main() -> int:
             page.locator("#note").fill("THIS MUST NOT SURVIVE A FAILED REPLACEMENT")
             malformed = td_path / "malformed-candidate.json"
             malformed.write_text("{not-json")
+            page.locator("#importPanel > summary").click()
             page.locator("#candidateFile").set_input_files(str(malformed))
             # Deliberately leave authorityFile empty; either local validation failure is
             # sufficient, but the prior generation must already be gone.
-            page.get_by_role("button", name="Inspect with parent compiler").click()
+            page.get_by_role("button", name="Inspect evidence").click()
             assert page.locator("#matrix").get_attribute("data-rendered-cells") == "0"
             assert page.locator("#exportBtn").is_disabled()
             assert page.locator("#note").is_disabled()
@@ -76,7 +82,7 @@ def main() -> int:
             page.locator("#search").fill("")
 
             with page.expect_download() as download_info:
-                page.get_by_role("button", name="Export draft handoff JSON").click()
+                page.get_by_role("button", name="Export review handoff").click()
             download = download_info.value
             path = td_path / download.suggested_filename
             download.save_as(path)

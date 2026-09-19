@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-harborline-pack-market-render-readback-rematch-20260902-01.md"
@@ -18,7 +19,7 @@ KEEP = {
     "p/cursor-harborline-pack-market-render-readback-20260902-01.md": "6efbac54",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "host/harborline_pack_market_render.py": "cc9a3320",
-    "ground/OWNER_NOW.md": "a17b0afb",
+    "ground/OWNER_NOW.md": "39a0e0c3",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-owner-now-revenue-20260902-01.md": "fe5ba035",
     "p/cursor-owner-now-revenue-readback-20260902-01.md": "3449da29",
@@ -28,7 +29,7 @@ KEEP = {
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "p/cursor-incoming-models-hub-payload-readback-rematch-20260902-01.md": "c6707847",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
-    "autogtm.html": "1009c4cd",
+    "autogtm.html": "5c966110",
 }
 
 
@@ -49,7 +50,7 @@ class TestHarborlinePackMarketRenderReadbackRematch(unittest.TestCase):
 
     def test_leftover_json_still_renders_standalone(self) -> None:
         proc = subprocess.run(
-            ["python3", str(HELPER), "--json"],
+            [sys.executable, str(HELPER), "--json"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -69,12 +70,12 @@ class TestHarborlinePackMarketRenderReadbackRematch(unittest.TestCase):
 
     def test_leftover_hub_pages_keep_unpinned_on_later_main(self) -> None:
         hub = git_blob("hub_pages.py")
-        self.assertTrue(hub.startswith("12186f65"), hub)
+        self.assertTrue(hub.startswith("673dab89"), hub)
         self.assertFalse(hub.startswith("14eeedb0"), hub)
         import test_harborline_pack_market_render as leftover
         self.assertNotEqual(leftover.KEEP.get("hub_pages.py"), "14eeedb0")
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_harborline_pack_market_render.py"],
+            [sys.executable, "-m", "unittest", "test_harborline_pack_market_render.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

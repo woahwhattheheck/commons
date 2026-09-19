@@ -1,4 +1,4 @@
-"""Hermetic: commons-apk.html surfaces live Autopsy + $199 product doors."""
+"""Hermetic: commons-apk.html surfaces live $199 product doors."""
 
 from __future__ import annotations
 
@@ -9,7 +9,6 @@ ROOT = pathlib.Path(__file__).resolve().parent
 HTML = ROOT / "commons-apk.html"
 
 PRODUCT_HREFS = (
-    "./agent-rescue.html",
     "./dealer-service-lead-rescue.html",
     "./referral-intake-completeness.html",
     "./repair-booking-preflight.html",

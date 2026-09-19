@@ -33,7 +33,6 @@ with that SHA in subsequent Contents API or raw-file requests.
 
 Verified product pages only — no invented Stripe links. Crawler / DNS fallbacks are transport; cash doors stay the same:
 
-- [$29 Agent Failure Autopsy](https://woahwhattheheck.github.io/commons/agent-rescue.html)
 - [$199 Dealer Service Lead Rescue](https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html)
 - [$199 Referral Intake Completeness](https://woahwhattheheck.github.io/commons/referral-intake-completeness.html)
 - [$199 Repair Booking Preflight](https://woahwhattheheck.github.io/commons/repair-booking-preflight.html)

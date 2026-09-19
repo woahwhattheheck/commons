@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -55,7 +56,7 @@ class TestGrokbuildRepoPulse33791371678BillingLock(unittest.TestCase):
 
     def test_local_failed_step_still_passes(self) -> None:
         pulse = subprocess.run(
-            ["python3", "test_repo_pulse.py"],
+            [sys.executable, "test_repo_pulse.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -63,7 +64,7 @@ class TestGrokbuildRepoPulse33791371678BillingLock(unittest.TestCase):
         )
         self.assertEqual(pulse.returncode, 0, msg=pulse.stdout + pulse.stderr)
         slack = subprocess.run(
-            ["python3", "-m", "unittest", "-q", "test_slack_ingest.py"],
+            [sys.executable, "-m", "unittest", "-q", "test_slack_ingest.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
