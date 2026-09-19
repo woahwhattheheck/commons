@@ -48,7 +48,11 @@ class TestGrokbuildTests33689281316BillingLock(unittest.TestCase):
         yml = WORKFLOW.read_text(encoding="utf-8")
         self.assertIn("the whole battery, one failure fails the run", yml)
         self.assertIn("runs-on: ubuntu-latest", yml)
-        self.assertIn("find . -maxdepth 1 -type f -name 'test_*.py'", yml)
+        self.assertIn(
+            "find . -maxdepth 1 -type f \( -name 'test_*.py' -o -name 'test_*.js' \) -print",
+            yml,
+        )
+        self.assertIn("find infra -type f -name 'test_*.py' -print", yml)
         self.assertNotIn("billing", yml.lower())
         self.assertNotIn("if: false", yml)
 

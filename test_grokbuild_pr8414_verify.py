@@ -16,7 +16,7 @@ ORIGINAL = ROOT / "p/cursor-merge-on-pr-20260902-01.md"
 
 KEEP = {
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
-    "test_cursor_merge_on_pr_readback.py": "36a79283",
+    "test_cursor_merge_on_pr_readback.py": "c017841f",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "host/merge_on_pr.py": "5062c29b",
     "ground/MERGE_ON_PR.json": "4e7967dc",
@@ -76,7 +76,7 @@ class TestGrokbuildPr8414Verify(unittest.TestCase):
         self.assertIn("920d8c03", text)
         self.assertIn("e160b2c3", text)
         self.assertIn("22b63e25", text)
-        self.assertIn("5062c29b", text)
+        self.assertIn("0270094d", text)
         self.assertIn("ALREADY_MERGED_VERIFIED", text)
         self.assertIn("Did not remint leftover", text)
         self.assertIn("Did not reopen #7915", text)

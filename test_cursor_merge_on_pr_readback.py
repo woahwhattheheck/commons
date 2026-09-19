@@ -29,7 +29,7 @@ KEEP = {
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "host/harborline_qualify_live_probe.py": "2c1797b2",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
-    "host/stealable_lanes.py": "60ac60e1",
+    "host/stealable_lanes.py": "6f6456e4",
     "ground/STEALABLE_LANES.json": "20b0a875",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
@@ -144,7 +144,7 @@ class TestCursorMergeOnPrReadback(unittest.TestCase):
         self.assertIn("cursor-merge-on-pr-readback-20260902-01", text)
         self.assertIn("8b42a78e0", text)
         self.assertIn("22b63e25", text)
-        self.assertIn("5062c29b", text)
+        self.assertIn("0270094d", text)
         self.assertIn("Did **not** remint leftover id", text)
         self.assertIn("Did **not** reopen", text)
         self.assertIn("1788386939.481919", text)

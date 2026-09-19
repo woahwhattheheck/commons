@@ -26,9 +26,9 @@ KEEP = {
     "fix_first.py": "a57aee1c",
     "p/grokbuild-tests-33694253421-billing-lock-20260902-01.md": "da396946",
     "p/grokbuild-tests-33694246830-billing-lock-20260902-01.md": "b07d6192",
-    "test_grokbuild_tests_33694246830_billing_lock.py": "80617e93",
+    "test_grokbuild_tests_33694246830_billing_lock.py": "4d2c2798",
     "p/grokbuild-tests-33689281316-billing-lock-20260902-01.md": "3db0ab2e",
-    "test_grokbuild_tests_33689281316_billing_lock.py": "8f146b54",
+    "test_grokbuild_tests_33689281316_billing_lock.py": "70bcf8c5",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
     "test_grokbuild_llms_txt_33699286770_billing_lock.py": "71ad16e0",
     "p/grok-build-llms-txt-33694402716-billing-lock-20260902-01.md": "6a8728e3",
@@ -57,7 +57,11 @@ class TestGrokbuildTests33699939421BillingLock(unittest.TestCase):
         self.assertIn("name: tests", yml)
         self.assertIn("battery:", yml)
         self.assertIn("the whole battery, one failure fails the run", yml)
-        self.assertIn("find . -maxdepth 1 -type f -name 'test_*.py'", yml)
+        self.assertIn(
+            "find . -maxdepth 1 -type f \( -name 'test_*.py' -o -name 'test_*.js' \) -print",
+            yml,
+        )
+        self.assertIn("find infra -type f -name 'test_*.py' -print", yml)
         self.assertIn("runs-on: ubuntu-latest", yml)
         self.assertNotIn("billing", yml.lower())
         self.assertNotIn("if: false", yml)

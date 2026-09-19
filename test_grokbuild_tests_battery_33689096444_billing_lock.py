@@ -20,7 +20,7 @@ WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
     ".github/workflows/tests.yml": "57d36525",
-    "test_cursor_merge_on_pr_readback.py": "36a79283",
+    "test_cursor_merge_on_pr_readback.py": "c017841f",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "host/merge_on_pr.py": "5062c29b",
@@ -56,7 +56,11 @@ class TestGrokbuildTestsBattery33689096444BillingLock(unittest.TestCase):
         yml = WORKFLOW.read_text(encoding="utf-8")
         self.assertIn("the whole battery, one failure fails the run", yml)
         self.assertIn("runs-on: ubuntu-latest", yml)
-        self.assertIn("find . -maxdepth 1 -type f -name 'test_*.py'", yml)
+        self.assertIn(
+            "find . -maxdepth 1 -type f \\( -name 'test_*.py' -o -name 'test_*.js' \\) -print",
+            yml,
+        )
+        self.assertIn("find infra -type f -name 'test_*.py' -print", yml)
         self.assertNotIn("if: false", yml)
 
     def test_local_failed_step_contract_still_passes(self) -> None:

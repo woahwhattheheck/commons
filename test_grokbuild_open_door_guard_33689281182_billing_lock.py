@@ -24,7 +24,7 @@ KEEP = {
     "test_open_door_guard.py": "2e2cc164",
     ".github/workflows/open-door-guard.yml": "ac6c46c4",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
-    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "5f3c1ed5",
+    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "5373fe9d",
     "p/grokbuild-pr8408-verify-20260902-01.md": "0a594dda",
     "p/grokbuild-pr8411-verify-20260902-01.md": "642dea64",
     "test_grokbuild_pr8411_verify.py": "c1c37c21",
@@ -32,9 +32,9 @@ KEEP = {
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
-    "test_cursor_stealable_lanes_occupancy_readback.py": "3398d0bf",
-    "test_stealable_lanes_occupancy.py": "ad9cd1f2",
-    "host/stealable_lanes.py": "60ac60e1",
+    "test_cursor_stealable_lanes_occupancy_readback.py": "271de4d3",
+    "test_stealable_lanes_occupancy.py": "36d26523",
+    "host/stealable_lanes.py": "6f6456e4",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
 }
 

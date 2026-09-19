@@ -29,7 +29,7 @@ KEEP = {
     "p/grokbuild-muhlnickel-spec-guard-33699600936-billing-lock-20260903-01.md": "e063cc7e",
     "test_grokbuild_muhlnickel_spec_guard_33699600936_billing_lock.py": "81dfa38a",
     "p/grokbuild-muhlnickel-spec-guard-33699939446-billing-lock-20260903-01.md": "00072bfa",
-    "test_grokbuild_muhlnickel_spec_guard_33699939446_billing_lock.py": "62b639d8",
+    "test_grokbuild_muhlnickel_spec_guard_33699939446_billing_lock.py": "bad53853",
     "p/cursor-wire-catalog-marketplace-latch-readback-rematch-20260903-01.md": "f23e1db8",
     "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "d11f2988",
     "wire.html": "5f0d0f84",

@@ -32,7 +32,7 @@ KEEP = {
     "p/cursor-what-a-pack-is-20260902-01.md": "a4e4dd89",
     "host/autogtm_same_loop.py": "86415634",
     "autogtm.html": "5c966110",
-    "host/payment_capability.py": "3617ac3d",
+    "host/payment_capability.py": "55dc4d6f",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "door.js": "5899223c",

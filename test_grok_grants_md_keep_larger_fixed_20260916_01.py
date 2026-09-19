@@ -41,6 +41,7 @@ class TestGrokGrantsMdKeepLargerFixed2026091601(unittest.TestCase):
             [
                 "bass-grants-live-cash-v2",
                 "grok-grants-md-keep-larger-fixed-20260916-01",
+                "anvil-grants-autopsy-retirement-20260918-01",
             ],
         )
         raw = GRANTS.read_bytes()
@@ -48,8 +49,8 @@ class TestGrokGrantsMdKeepLargerFixed2026091601(unittest.TestCase):
         self.assertEqual(
             applied,
             [
-                "bass-grants-live-cash-v2",
                 "grok-grants-md-keep-larger-fixed-20260916-01",
+                "anvil-grants-autopsy-retirement-20260918-01",
             ],
         )
         self.assertEqual(docket._git_blob_oid(baseline), BASELINE_BLOB)
