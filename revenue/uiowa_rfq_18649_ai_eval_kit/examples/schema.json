@@ -1,0 +1,94 @@
+{
+  "columns": [
+    {
+      "kind": "text",
+      "name": "workflow_id"
+    },
+    {
+      "kind": "text",
+      "name": "task_id"
+    },
+    {
+      "kind": "text",
+      "name": "family"
+    },
+    {
+      "kind": "text",
+      "name": "case_class"
+    },
+    {
+      "kind": "text",
+      "name": "status"
+    },
+    {
+      "kind": "text",
+      "name": "matched_variant"
+    },
+    {
+      "kind": "text",
+      "name": "tied_variants"
+    },
+    {
+      "kind": "int",
+      "name": "required_total"
+    },
+    {
+      "kind": "int",
+      "name": "required_hit"
+    },
+    {
+      "kind": "float",
+      "name": "completeness"
+    },
+    {
+      "kind": "int",
+      "name": "forbidden_fired"
+    },
+    {
+      "kind": "float",
+      "name": "correctness"
+    },
+    {
+      "kind": "int",
+      "name": "modeled_repair_minutes"
+    },
+    {
+      "kind": "int",
+      "name": "measured_repair_minutes"
+    },
+    {
+      "kind": "text",
+      "name": "repair_basis"
+    },
+    {
+      "kind": "int",
+      "name": "generation_minutes"
+    },
+    {
+      "kind": "int",
+      "name": "from_scratch_minutes"
+    },
+    {
+      "kind": "int",
+      "name": "net_minutes_saved"
+    },
+    {
+      "kind": "text",
+      "name": "reviewer"
+    },
+    {
+      "kind": "text",
+      "name": "reviewer_note"
+    },
+    {
+      "kind": "text",
+      "name": "analyst_followup"
+    },
+    {
+      "kind": "text",
+      "name": "review_locator"
+    }
+  ],
+  "note": "Column dictionary for results.csv. NULL (never recorded) is the sentinel \\N; an empty field is the empty string; a literal 'NA' is the two characters NA. A leading apostrophe is an export-safety marker and is removed on import.",
+  "null_sentinel": "\\N"
+}

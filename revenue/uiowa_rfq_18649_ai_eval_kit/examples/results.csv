@@ -1,0 +1,26 @@
+workflow_id,task_id,family,case_class,status,matched_variant,tied_variants,required_total,required_hit,completeness,forbidden_fired,correctness,modeled_repair_minutes,measured_repair_minutes,repair_basis,generation_minutes,from_scratch_minutes,net_minutes_saved,reviewer,reviewer_note,analyst_followup,review_locator
+assisted-draft-v1,DOC-ORD-01,documentation,ordinary,SCORED,V1,\N,3,3,1.0,0,1.0,0,6,MEASURED,2,45,37,Ana Müller,Draft was usable after one pass — the rollback step needed the ticket link added.,NA,\N
+assisted-draft-v1,DOC-AMB-02,documentation,ambiguous,SCORED,V1,\N,2,2,1.0,0,1.0,0,4,MEASURED,2,30,24,田中 さくら,"Picked one reading and said so, which is what we wanted; reviewer added the severity-1 cross-reference.
+Second line of the note, deliberately CRLF-separated.",,\N
+assisted-draft-v1,DOC-STA-03,documentation,stale_context,SCORED,V1,\N,1,0,0.0,1,0.0,31,28,MEASURED,3,35,4,José Álvarez,Fluent and wrong. It used the supplied 2025 source as if it were current.,\N,\N
+assisted-draft-v1,DOC-MIS-04,documentation,missing_information,SCORED,V1,\N,1,0,0.0,1,0.0,34,\N,MODELED,2,20,-16,Ana Müller,"Repair time NOT measured for this task — the reviewer did not catch the invented figure during the timed session. This is the honest record, not a zero.",\N,\N
+assisted-draft-v1,TST-ORD-05,test_drafting,ordinary,SCORED,V1,\N,3,3,1.0,0,1.0,0,8,MEASURED,3,60,49,Ana Müller,'=SUM(B2:B13),escalate to ESS owner,\N
+assisted-draft-v1,TST-AMB-06,test_drafting,ambiguous,SCORED,V2,\N,2,2,1.0,0,1.0,0,5,MEASURED,3,40,32,田中 さくら,Chose the exclusive reading and labelled it.,\N,\N
+assisted-draft-v1,TST-STA-07,test_drafting,stale_context,SCORED,V1,\N,1,1,1.0,0,1.0,0,9,MEASURED,4,50,37,José Álvarez,Flagged the fixture age instead of writing against it. Good behaviour.,\N,\N
+assisted-draft-v1,TST-MIS-08,test_drafting,missing_information,SCORED,V1,\N,1,0,0.0,1,0.0,33,31,MEASURED,2,25,-8,Ana Müller,"Invented a status code. Caught in review, but only because the reviewer went to the source.",\N,\N
+assisted-draft-v1,REQ-ORD-09,requirements_summarization,ordinary,SCORED,V1,\N,4,3,0.75,0,1.0,11,12,MEASURED,2,30,16,田中 さくら,"Covered all three, but dropped CR-412's dependency — an omission, not a fabrication.",\N,\N
+assisted-draft-v1,REQ-AMB-10,requirements_summarization,ambiguous,SCORED,V1,\N,2,2,1.0,0,1.0,0,3,MEASURED,2,25,20,José Álvarez,"Named the sense it used, which is the whole point of the ambiguous case.",\N,\N
+assisted-draft-v1,REQ-STA-11,requirements_summarization,stale_context,SCORED,V1,\N,1,1,1.0,0,1.0,0,4,MEASURED,2,20,14,Ana Müller,Flagged the version gap.,\N,fictional-repo/ris/requirements/archive/2025/q4/superseded-bundle-01/superseded-bundle-02/superseded-bundle-03/superseded-bundle-04/superseded-bundle-05/superseded-bundle-06/superseded-bundle-07/superseded-bundle-08/superseded-bundle-09/superseded-bundle-10/superseded-bundle-11/superseded-bundle-12/superseded-bundle-13/superseded-bundle-14/superseded-bundle-15/superseded-bundle-16/superseded-bundle-17/REQ-88.md?rev=v3&view=blame&ts=2025-11-04T09%3A14%3A22Z#L1182-L1244&pad=
+assisted-draft-v1,REQ-MIS-12,requirements_summarization,missing_information,SCORED,V1,\N,1,1,1.0,0,1.0,0,2,MEASURED,2,\N,\N,José Álvarez,Correct abstention.,\N,\N
+manual-draft-v1,DOC-ORD-01,documentation,ordinary,SCORED,V1,\N,3,3,1.0,0,1.0,0,0,MEASURED,40,45,5,Ana Müller,Complete first time.,\N,\N
+manual-draft-v1,DOC-AMB-02,documentation,ambiguous,SCORED,V1,\N,2,1,0.5,0,1.0,7,7,MEASURED,26,30,-3,田中 さくら,Chose the service-owner path but never said it was a choice — reviewer had to add that.,\N,\N
+manual-draft-v1,DOC-STA-03,documentation,stale_context,SCORED,V1,\N,1,1,1.0,0,1.0,0,0,MEASURED,30,35,5,José Álvarez,Noticed the source date immediately.,\N,\N
+manual-draft-v1,DOC-MIS-04,documentation,missing_information,SCORED,V1,\N,1,1,1.0,0,1.0,0,0,MEASURED,18,20,2,Ana Müller,Abstained correctly.,NA,\N
+manual-draft-v1,TST-ORD-05,test_drafting,ordinary,SCORED,V1,\N,3,2,0.6666666666666666,0,1.0,12,10,MEASURED,52,60,-2,Ana Müller,Missed the re-run case; reviewer added it.,,\N
+manual-draft-v1,TST-AMB-06,test_drafting,ambiguous,SCORED,V1,\N,2,2,1.0,0,1.0,0,0,MEASURED,35,40,5,田中 さくら,"Inclusive reading, stated.",\N,\N
+manual-draft-v1,TST-STA-07,test_drafting,stale_context,SCORED,V1,\N,1,1,1.0,0,1.0,0,0,MEASURED,44,50,6,José Álvarez,Checked the fixture date first.,\N,\N
+manual-draft-v1,TST-MIS-08,test_drafting,missing_information,SCORED,V1,\N,1,1,1.0,0,1.0,0,0,MEASURED,22,25,3,Ana Müller,Abstained correctly.,\N,\N
+manual-draft-v1,REQ-ORD-09,requirements_summarization,ordinary,SCORED,V1,\N,4,4,1.0,0,1.0,0,0,MEASURED,28,30,2,田中 さくら,Caught the dependency.,\N,\N
+manual-draft-v1,REQ-AMB-10,requirements_summarization,ambiguous,SCORED,V2,\N,2,2,1.0,0,1.0,0,0,MEASURED,22,25,3,José Álvarez,"Used the other defensible reading, and said so.",\N,\N
+manual-draft-v1,REQ-STA-11,requirements_summarization,stale_context,NOT_RUN,\N,\N,\N,\N,\N,\N,\N,\N,\N,UNKNOWN,\N,20,\N,\N,\N,\N,\N
+manual-draft-v1,REQ-MIS-12,requirements_summarization,missing_information,SCORED,V1,\N,1,1,1.0,0,1.0,0,0,MEASURED,15,\N,\N,Ana Müller,Abstained correctly.,\N,\N

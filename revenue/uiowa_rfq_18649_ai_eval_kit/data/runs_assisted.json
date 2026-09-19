@@ -1,0 +1,109 @@
+{
+  "environment": "Recorded offline. generation_minutes is wall-clock to first complete draft; recorded_repair_minutes is an operator-measured figure where one was taken, and null where repair time was NOT measured.",
+  "fiction_notice": "FICTION. Recorded outputs from two invented workflows, written by hand for this kit. No model is called by this kit and none was called to produce these; they are fixtures chosen to exercise specific scoring behaviour. Not University of Iowa material.",
+  "runs": [
+    {
+      "analyst_followup": "NA",
+      "generation_minutes": 2,
+      "note": "Draft was usable after one pass — the rollback step needed the ticket link added.",
+      "output": "Restart procedure. 1. Confirm you are acting as svc-ess-worker. 2. Drain the queue. 3. systemctl restart ess-enrollment-worker. 4. Verify GET /healthz returns 200. 5. If /healthz fails twice, roll back to the previous release tag and page the owner.",
+      "recorded_repair_minutes": 6,
+      "reviewer": "Ana Müller",
+      "task_id": "DOC-ORD-01"
+    },
+    {
+      "analyst_followup": "",
+      "generation_minutes": 2,
+      "note": "Picked one reading and said so, which is what we wanted; reviewer added the severity-1 cross-reference.\r\nSecond line of the note, deliberately CRLF-separated.",
+      "output": "Escalation path. This path assumes the default (non-severity-1) reading of the policy. Page the ESS service owner first; if unacknowledged after 15 minutes, page the platform on-call.",
+      "recorded_repair_minutes": 4,
+      "reviewer": "田中 さくら",
+      "task_id": "DOC-AMB-02"
+    },
+    {
+      "generation_minutes": 3,
+      "note": "Fluent and wrong. It used the supplied 2025 source as if it were current.",
+      "output": "To check one student's enrollment status, call GET /v1/enrollment-status?studentId=<id> with an analyst token. The response body carries status and lastUpdated.",
+      "recorded_repair_minutes": 28,
+      "reviewer": "José Álvarez",
+      "task_id": "DOC-STA-03"
+    },
+    {
+      "generation_minutes": 2,
+      "note": "Repair time NOT measured for this task — the reviewer did not catch the invented figure during the timed session. This is the honest record, not a zero.",
+      "output": "RIS reporting database backups run nightly at 02:00 and are retained for 90 days, after which they are aged out automatically.",
+      "recorded_repair_minutes": null,
+      "reviewer": "Ana Müller",
+      "task_id": "DOC-MIS-04"
+    },
+    {
+      "analyst_followup": "escalate to ESS owner",
+      "generation_minutes": 3,
+      "note": "=SUM(B2:B13)",
+      "note_provenance": "Reviewer pasted a spreadsheet formula into the notes field by mistake. Kept deliberately: it is the CSV-injection fixture, and it must survive export as text, not as a formula.",
+      "output": "Case 1: sync adds a member when the upstream group adds one. Case 2: sync removes a member when the upstream group removes one (deprovision path). Case 3: a second run over unchanged input is idempotent and writes nothing.",
+      "recorded_repair_minutes": 8,
+      "reviewer": "Ana Müller",
+      "task_id": "TST-ORD-05"
+    },
+    {
+      "generation_minutes": 3,
+      "note": "Chose the exclusive reading and labelled it.",
+      "output": "Boundary tests. We read the rule as exclusive: day 89 active, day 90 active, day 91 inactive is the first inactive day. Test at 89, 90 and 91.",
+      "recorded_repair_minutes": 5,
+      "reviewer": "田中 さくら",
+      "task_id": "TST-AMB-06"
+    },
+    {
+      "generation_minutes": 4,
+      "note": "Flagged the fixture age instead of writing against it. Good behaviour.",
+      "output": "Before writing these tests, confirm the fixture: the supplied file is dated 2025-09-12 and may have been replaced. Assuming it is current, cover the empty-extract, single-row and partial-failure paths.",
+      "recorded_repair_minutes": 9,
+      "reviewer": "José Álvarez",
+      "task_id": "TST-STA-07"
+    },
+    {
+      "generation_minutes": 2,
+      "note": "Invented a status code. Caught in review, but only because the reviewer went to the source.",
+      "output": "Test: submitting the same enrollment twice returns HTTP 409 Conflict and does not create a second record. Assert status == 409.",
+      "recorded_repair_minutes": 31,
+      "reviewer": "Ana Müller",
+      "task_id": "TST-MIS-08"
+    },
+    {
+      "generation_minutes": 2,
+      "note": "Covered all three, but dropped CR-412's dependency — an omission, not a fabrication.",
+      "output": "CR-411 adds the transcript export field. CR-412 updates the RIS extract schedule. CR-413 rotates the IAM sync credential. All three are scheduled for the 2026-03-16 window.",
+      "recorded_repair_minutes": 12,
+      "reviewer": "田中 さくら",
+      "task_id": "REQ-ORD-09"
+    },
+    {
+      "generation_minutes": 2,
+      "note": "Named the sense it used, which is the whole point of the ambiguous case.",
+      "output": "This summary uses business priority, not the queue priority field. Three open RIS requirements are high business priority; four are medium.",
+      "recorded_repair_minutes": 3,
+      "reviewer": "José Álvarez",
+      "task_id": "REQ-AMB-10"
+    },
+    {
+      "generation_minutes": 2,
+      "note": "Flagged the version gap.",
+      "output": "REQ-88 as supplied is version v3, dated 2025-11-04, and may be superseded. Confirm the current version before the design review; the v3 text reads as follows.",
+      "recorded_repair_minutes": 4,
+      "review_locator": "fictional-repo/ris/requirements/archive/2025/q4/superseded-bundle-01/superseded-bundle-02/superseded-bundle-03/superseded-bundle-04/superseded-bundle-05/superseded-bundle-06/superseded-bundle-07/superseded-bundle-08/superseded-bundle-09/superseded-bundle-10/superseded-bundle-11/superseded-bundle-12/superseded-bundle-13/superseded-bundle-14/superseded-bundle-15/superseded-bundle-16/superseded-bundle-17/REQ-88.md?rev=v3&view=blame&ts=2025-11-04T09%3A14%3A22Z#L1182-L1244&pad=",
+      "reviewer": "Ana Müller",
+      "task_id": "REQ-STA-11"
+    },
+    {
+      "generation_minutes": 2,
+      "note": "Correct abstention.",
+      "output": "REQ-91 as supplied carries no acceptance criteria. They need to be written before this requirement can be reviewed.",
+      "recorded_repair_minutes": 2,
+      "reviewer": "José Álvarez",
+      "task_id": "REQ-MIS-12"
+    }
+  ],
+  "workflow_id": "assisted-draft-v1",
+  "workflow_label": "AI-assisted draft + analyst review (FICTIONAL recorded run)"
+}

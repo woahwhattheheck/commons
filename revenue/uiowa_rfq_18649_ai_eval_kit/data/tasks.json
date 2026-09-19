@@ -1,0 +1,702 @@
+{
+  "dataset_id": "UIOWA-075-SYNTH-v1",
+  "fiction_notice": "EVERY task, context source, and locator below is FICTION, invented for the UIOWA-18649 preparation work. None of it is a University of Iowa finding, system, document, or person. Service names ESS/RIS/IAM are the fictional teams used across this engagement's synthetic material.",
+  "scoring_notes": "repair_minutes on a forbidden element is deliberately larger than on a required element: a missing statement announces itself, a confident wrong statement has to be caught first. That asymmetry is the whole reason repair time is measured instead of assumed.",
+  "tasks": [
+    {
+      "answer_variants": [
+        {
+          "forbidden": [
+            {
+              "any_of": [
+                "update enrollment set",
+                "edit the database directly"
+              ],
+              "description": "tells the operator to edit the database directly",
+              "element_id": "F-DBEDIT",
+              "reason": "unsafe instruction a reader would follow",
+              "repair_minutes": 25
+            }
+          ],
+          "label": "standard restart procedure",
+          "required": [
+            {
+              "all_of": [
+                "svc-ess-worker"
+              ],
+              "description": "names the svc-ess-worker service account",
+              "element_id": "E-ACCOUNT",
+              "repair_minutes": 6
+            },
+            {
+              "all_of": [
+                "/healthz"
+              ],
+              "description": "gives the post-restart health check",
+              "element_id": "E-HEALTH",
+              "repair_minutes": 8
+            },
+            {
+              "any_of": [
+                "rollback",
+                "roll back",
+                "revert"
+              ],
+              "description": "states the rollback step",
+              "element_id": "E-ROLLBACK",
+              "repair_minutes": 10
+            }
+          ],
+          "variant_id": "V1"
+        }
+      ],
+      "case_class": "ordinary",
+      "context": [
+        {
+          "as_of": "2026-02-10",
+          "locator": "fictional-repo/ess/runbooks/enrollment-worker.md#restart",
+          "source_id": "SRC-ESS-RUN-4",
+          "stale": false
+        }
+      ],
+      "family": "documentation",
+      "from_scratch_minutes": 45,
+      "prompt": "Write the runbook section for restarting the ESS enrollment worker.",
+      "task_id": "DOC-ORD-01"
+    },
+    {
+      "answer_variants": [
+        {
+          "forbidden": [],
+          "label": "service owner first (the policy's default path)",
+          "required": [
+            {
+              "all_of": [
+                "service owner first"
+              ],
+              "description": "escalates to the ESS service owner FIRST",
+              "element_id": "E-OWNER-FIRST",
+              "none_of": [
+                "platform on-call first"
+              ],
+              "repair_minutes": 5
+            },
+            {
+              "any_of": [
+                "assumes",
+                "this path assumes",
+                "reading of the policy"
+              ],
+              "description": "states which reading of the policy it used",
+              "element_id": "E-STATES-ASSUMPTION",
+              "repair_minutes": 7
+            }
+          ],
+          "variant_id": "V1"
+        },
+        {
+          "forbidden": [],
+          "label": "platform on-call first (the policy's severity-1 path)",
+          "required": [
+            {
+              "all_of": [
+                "platform on-call first"
+              ],
+              "description": "escalates to the platform on-call FIRST",
+              "element_id": "E-PLATFORM-FIRST",
+              "none_of": [
+                "service owner first"
+              ],
+              "repair_minutes": 5
+            },
+            {
+              "any_of": [
+                "assumes",
+                "this path assumes",
+                "reading of the policy"
+              ],
+              "description": "states which reading of the policy it used",
+              "element_id": "E-STATES-ASSUMPTION",
+              "repair_minutes": 7
+            }
+          ],
+          "variant_id": "V2"
+        }
+      ],
+      "case_class": "ambiguous",
+      "context": [
+        {
+          "as_of": "2026-01-20",
+          "locator": "fictional-repo/ess/policy/escalation.md",
+          "source_id": "SRC-ESS-ESC-1",
+          "stale": false
+        }
+      ],
+      "family": "documentation",
+      "from_scratch_minutes": 30,
+      "prompt": "Document the on-call escalation path for an ESS enrollment outage.",
+      "task_id": "DOC-AMB-02"
+    },
+    {
+      "answer_variants": [
+        {
+          "forbidden": [
+            {
+              "all_of": [
+                "/v1/enrollment-status"
+              ],
+              "description": "presents the retired /v1/enrollment-status endpoint as current",
+              "element_id": "F-RETIRED-EP",
+              "reason": "reader follows a retired endpoint and the procedure silently fails",
+              "repair_minutes": 22
+            }
+          ],
+          "label": "flags the stale source rather than using it",
+          "required": [
+            {
+              "any_of": [
+                "out of date",
+                "outdated",
+                "stale",
+                "may no longer be current"
+              ],
+              "description": "flags that the supplied source is out of date",
+              "element_id": "E-FLAG-STALE",
+              "repair_minutes": 9
+            }
+          ],
+          "variant_id": "V1"
+        }
+      ],
+      "case_class": "stale_context",
+      "context": [
+        {
+          "as_of": "2025-06-01",
+          "locator": "fictional-repo/ess/api/status-endpoint.md",
+          "source_id": "SRC-ESS-API-2",
+          "stale": true
+        }
+      ],
+      "family": "documentation",
+      "from_scratch_minutes": 35,
+      "prompt": "Document how a support analyst checks ESS enrollment status for one student.",
+      "task_id": "DOC-STA-03"
+    },
+    {
+      "answer_variants": [
+        {
+          "forbidden": [
+            {
+              "any_of": [
+                "retained for 30 days",
+                "retained for 90 days",
+                "retained for 365 days",
+                "retention period is 90 days"
+              ],
+              "description": "asserts a specific retention period the sources never state",
+              "element_id": "F-INVENT-RET",
+              "reason": "a plausible invented number is the most expensive defect in the set: it reads as an answer",
+              "repair_minutes": 30
+            }
+          ],
+          "label": "states the retention period is not in the supplied sources",
+          "required": [
+            {
+              "any_of": [
+                "not stated in the supplied",
+                "not present in the supplied",
+                "not specified in the supplied",
+                "could not be determined from the supplied"
+              ],
+              "description": "says the retention period is not present in the supplied sources",
+              "element_id": "E-ABSTAIN",
+              "repair_minutes": 4
+            }
+          ],
+          "variant_id": "V1"
+        }
+      ],
+      "case_class": "missing_information",
+      "context": [
+        {
+          "as_of": "2026-03-02",
+          "locator": "fictional-repo/ris/ops/backup-schedule.md",
+          "source_id": "SRC-RIS-BKP-7",
+          "stale": false
+        }
+      ],
+      "family": "documentation",
+      "from_scratch_minutes": 20,
+      "prompt": "Document the backup retention period for the RIS reporting database.",
+      "task_id": "DOC-MIS-04"
+    },
+    {
+      "answer_variants": [
+        {
+          "forbidden": [
+            {
+              "any_of": [
+                "these tests pass",
+                "all tests pass",
+                "verified passing"
+              ],
+              "description": "claims the drafted tests already pass",
+              "element_id": "F-CLAIMS-PASS",
+              "reason": "a draft asserting its own green result is the exact thing the RFQ asks us not to accept",
+              "repair_minutes": 20
+            }
+          ],
+          "label": "covers add, remove and re-run",
+          "required": [
+            {
+              "any_of": [
+                "adds a member",
+                "membership is added",
+                "add member"
+              ],
+              "description": "a membership-add case",
+              "element_id": "E-ADD",
+              "repair_minutes": 7
+            },
+            {
+              "any_of": [
+                "removes a member",
+                "deprovision",
+                "membership is removed"
+              ],
+              "description": "a removal/deprovision case",
+              "element_id": "E-REMOVE",
+              "repair_minutes": 9
+            },
+            {
+              "any_of": [
+                "idempotent",
+                "re-run",
+                "second run"
+              ],
+              "description": "a re-run/idempotency case",
+              "element_id": "E-IDEMPOTENT",
+              "repair_minutes": 12
+            }
+          ],
+          "variant_id": "V1"
+        }
+      ],
+      "case_class": "ordinary",
+      "context": [
+        {
+          "as_of": "2026-02-28",
+          "locator": "fictional-repo/iam/sync/README.md#behaviour",
+          "source_id": "SRC-IAM-SYNC-3",
+          "stale": false
+        }
+      ],
+      "family": "test_drafting",
+      "from_scratch_minutes": 60,
+      "prompt": "Draft the test cases for the IAM group-membership sync job.",
+      "task_id": "TST-ORD-05"
+    },
+    {
+      "answer_variants": [
+        {
+          "forbidden": [],
+          "label": "day 90 is already inactive (inclusive)",
+          "required": [
+            {
+              "any_of": [
+                "day 90 the account is already inactive",
+                "day 90 is already inactive",
+                "day 90 inactive"
+              ],
+              "description": "calls day 90 already inactive (inclusive reading)",
+              "element_id": "E-INCLUSIVE",
+              "none_of": [
+                "day 90 active"
+              ],
+              "repair_minutes": 6
+            },
+            {
+              "any_of": [
+                "assumes",
+                "we read the rule as",
+                "this draft assumes"
+              ],
+              "description": "states that it picked a reading (reading-agnostic)",
+              "element_id": "E-NAMES-READING",
+              "repair_minutes": 8
+            }
+          ],
+          "variant_id": "V1"
+        },
+        {
+          "forbidden": [],
+          "label": "day 91 is the first inactive day (exclusive)",
+          "required": [
+            {
+              "any_of": [
+                "day 91 inactive is the first inactive day",
+                "day 91 is the first inactive day",
+                "day 90 active"
+              ],
+              "description": "calls day 91 the first inactive day (exclusive reading)",
+              "element_id": "E-EXCLUSIVE",
+              "none_of": [
+                "day 90 inactive"
+              ],
+              "repair_minutes": 6
+            },
+            {
+              "any_of": [
+                "assumes",
+                "we read the rule as",
+                "this draft assumes"
+              ],
+              "description": "states that it picked a reading (reading-agnostic)",
+              "element_id": "E-NAMES-READING",
+              "repair_minutes": 8
+            }
+          ],
+          "variant_id": "V2"
+        }
+      ],
+      "case_class": "ambiguous",
+      "context": [
+        {
+          "as_of": "2026-02-14",
+          "locator": "fictional-repo/iam/policy/inactivity.md",
+          "source_id": "SRC-IAM-INACT-5",
+          "stale": false
+        }
+      ],
+      "family": "test_drafting",
+      "from_scratch_minutes": 40,
+      "prompt": "Draft the boundary tests for the 'inactive after 90 days' account rule.",
+      "task_id": "TST-AMB-06"
+    },
+    {
+      "answer_variants": [
+        {
+          "forbidden": [
+            {
+              "all_of": [
+                "extract-fixture-v2.json"
+              ],
+              "description": "cites extract-fixture-v2.json as the current fixture",
+              "element_id": "F-CITES-V2",
+              "reason": "tests are written against a fixture that no longer exists",
+              "repair_minutes": 18
+            }
+          ],
+          "label": "flags the fixture as possibly replaced",
+          "required": [
+            {
+              "any_of": [
+                "may have been replaced",
+                "out of date",
+                "outdated",
+                "confirm the fixture"
+              ],
+              "description": "flags that the supplied fixture may have been replaced",
+              "element_id": "E-FLAG-FIXTURE",
+              "repair_minutes": 10
+            }
+          ],
+          "variant_id": "V1"
+        }
+      ],
+      "case_class": "stale_context",
+      "context": [
+        {
+          "as_of": "2025-09-12",
+          "locator": "fictional-repo/ris/testdata/extract-fixture-v2.json",
+          "source_id": "SRC-RIS-FIX-9",
+          "stale": true
+        }
+      ],
+      "family": "test_drafting",
+      "from_scratch_minutes": 50,
+      "prompt": "Draft integration tests for the RIS extract job using the supplied fixture.",
+      "task_id": "TST-STA-07"
+    },
+    {
+      "answer_variants": [
+        {
+          "forbidden": [
+            {
+              "any_of": [
+                "returns http 409",
+                "returns 409 conflict",
+                "responds with 409"
+              ],
+              "description": "asserts a specific status code the sources never state",
+              "element_id": "F-INVENT-409",
+              "reason": "the test would be written, reviewed and merged around a status code nobody chose",
+              "repair_minutes": 28
+            }
+          ],
+          "label": "states the expected behaviour is unspecified",
+          "required": [
+            {
+              "any_of": [
+                "not specified",
+                "is undefined in the supplied",
+                "needs to be confirmed",
+                "not stated in the supplied"
+              ],
+              "description": "says the expected duplicate-submission behaviour is not specified",
+              "element_id": "E-ABSTAIN",
+              "repair_minutes": 5
+            }
+          ],
+          "variant_id": "V1"
+        }
+      ],
+      "case_class": "missing_information",
+      "context": [
+        {
+          "as_of": "2026-03-05",
+          "locator": "fictional-repo/ess/api/enrollment.md",
+          "source_id": "SRC-ESS-ENR-6",
+          "stale": false
+        }
+      ],
+      "family": "test_drafting",
+      "from_scratch_minutes": 25,
+      "prompt": "Draft the test for what ESS does on a duplicate enrollment submission.",
+      "task_id": "TST-MIS-08"
+    },
+    {
+      "answer_variants": [
+        {
+          "forbidden": [
+            {
+              "any_of": [
+                "all three are ready",
+                "all are ready to proceed"
+              ],
+              "description": "says all three are ready to proceed",
+              "element_id": "F-ALL-READY",
+              "reason": "the review approves a blocked change",
+              "repair_minutes": 24
+            }
+          ],
+          "label": "all three, with the blocked one flagged",
+          "required": [
+            {
+              "all_of": [
+                "cr-411"
+              ],
+              "description": "covers CR-411",
+              "element_id": "E-CR411",
+              "repair_minutes": 5
+            },
+            {
+              "all_of": [
+                "cr-412"
+              ],
+              "description": "covers CR-412",
+              "element_id": "E-CR412",
+              "repair_minutes": 5
+            },
+            {
+              "all_of": [
+                "cr-413"
+              ],
+              "description": "covers CR-413",
+              "element_id": "E-CR413",
+              "repair_minutes": 5
+            },
+            {
+              "any_of": [
+                "open dependency",
+                "blocked",
+                "waiting on"
+              ],
+              "description": "flags CR-412's open dependency",
+              "element_id": "E-BLOCKED",
+              "repair_minutes": 11
+            }
+          ],
+          "variant_id": "V1"
+        }
+      ],
+      "case_class": "ordinary",
+      "context": [
+        {
+          "as_of": "2026-03-09",
+          "locator": "fictional-repo/change/weekly/2026-03-09.md",
+          "source_id": "SRC-CR-WEEK-11",
+          "stale": false
+        }
+      ],
+      "family": "requirements_summarization",
+      "from_scratch_minutes": 30,
+      "prompt": "Summarize change requests CR-411, CR-412 and CR-413 for the weekly review.",
+      "task_id": "REQ-ORD-09"
+    },
+    {
+      "answer_variants": [
+        {
+          "forbidden": [],
+          "label": "reads 'priority' as business priority",
+          "required": [
+            {
+              "all_of": [
+                "uses business priority"
+              ],
+              "description": "states it uses the business-priority reading",
+              "element_id": "E-BUSINESS",
+              "none_of": [
+                "uses queue priority"
+              ],
+              "repair_minutes": 6
+            },
+            {
+              "any_of": [
+                "two different senses",
+                "this summary uses",
+                "we use"
+              ],
+              "description": "names which sense of 'priority' it used",
+              "element_id": "E-NAMES-SENSE",
+              "repair_minutes": 9
+            }
+          ],
+          "variant_id": "V1"
+        },
+        {
+          "forbidden": [],
+          "label": "reads 'priority' as queue priority",
+          "required": [
+            {
+              "all_of": [
+                "uses queue priority"
+              ],
+              "description": "states it uses the queue-priority reading",
+              "element_id": "E-QUEUE",
+              "none_of": [
+                "uses business priority"
+              ],
+              "repair_minutes": 6
+            },
+            {
+              "any_of": [
+                "two different senses",
+                "this summary uses",
+                "we use"
+              ],
+              "description": "names which sense of 'priority' it used",
+              "element_id": "E-NAMES-SENSE",
+              "repair_minutes": 9
+            }
+          ],
+          "variant_id": "V2"
+        }
+      ],
+      "case_class": "ambiguous",
+      "context": [
+        {
+          "as_of": "2026-03-01",
+          "locator": "fictional-repo/ris/requirements/open.md",
+          "source_id": "SRC-RIS-REQ-2",
+          "stale": false
+        }
+      ],
+      "family": "requirements_summarization",
+      "from_scratch_minutes": 25,
+      "prompt": "Summarize the priority of the open RIS requirements.",
+      "task_id": "REQ-AMB-10"
+    },
+    {
+      "answer_variants": [
+        {
+          "forbidden": [
+            {
+              "any_of": [
+                "the current requirement states",
+                "req-88 currently requires"
+              ],
+              "description": "presents v3 text as the current requirement",
+              "element_id": "F-V3-CURRENT",
+              "reason": "a design review proceeds against a superseded requirement",
+              "repair_minutes": 21
+            }
+          ],
+          "label": "flags the version gap",
+          "required": [
+            {
+              "any_of": [
+                "superseded",
+                "may not be the current version",
+                "out of date",
+                "confirm the current version"
+              ],
+              "description": "flags that the supplied version may be superseded",
+              "element_id": "E-FLAG-VERSION",
+              "repair_minutes": 8
+            }
+          ],
+          "variant_id": "V1"
+        }
+      ],
+      "case_class": "stale_context",
+      "context": [
+        {
+          "as_of": "2025-11-04",
+          "locator": "fictional-repo/ris/requirements/REQ-88.md@v3",
+          "source_id": "SRC-REQ88-V3",
+          "stale": true
+        }
+      ],
+      "family": "requirements_summarization",
+      "from_scratch_minutes": 20,
+      "prompt": "Summarize requirement REQ-88 for the design review.",
+      "task_id": "REQ-STA-11"
+    },
+    {
+      "answer_variants": [
+        {
+          "forbidden": [
+            {
+              "any_of": [
+                "acceptance criteria are as follows",
+                "the acceptance criteria require"
+              ],
+              "description": "supplies acceptance criteria the source never states",
+              "element_id": "F-INVENT-AC",
+              "reason": "invented criteria get approved and then built against",
+              "repair_minutes": 26
+            }
+          ],
+          "label": "states the acceptance criteria are absent",
+          "required": [
+            {
+              "any_of": [
+                "no acceptance criteria",
+                "acceptance criteria are not",
+                "does not state acceptance criteria"
+              ],
+              "description": "says REQ-91 carries no acceptance criteria in the supplied source",
+              "element_id": "E-ABSTAIN",
+              "repair_minutes": 4
+            }
+          ],
+          "variant_id": "V1"
+        }
+      ],
+      "case_class": "missing_information",
+      "context": [
+        {
+          "as_of": "2026-03-04",
+          "locator": "fictional-repo/ris/requirements/REQ-91.md",
+          "source_id": "SRC-REQ91-V1",
+          "stale": false
+        }
+      ],
+      "family": "requirements_summarization",
+      "from_scratch_minutes": null,
+      "prompt": "Summarize the acceptance criteria for requirement REQ-91.",
+      "task_id": "REQ-MIS-12"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "environment": "Recorded offline. Same 12 tasks, same reviewers. REQ-STA-11 was NOT attempted in this run; there is deliberately no record for it.",
+  "fiction_notice": "FICTION. Recorded outputs from two invented workflows, written by hand for this kit. No model is called by this kit and none was called to produce these; they are fixtures chosen to exercise specific scoring behaviour. Not University of Iowa material.",
+  "runs": [
+    {
+      "generation_minutes": 40,
+      "note": "Complete first time.",
+      "output": "Restart the worker as svc-ess-worker, drain the queue, restart the unit, then check GET /healthz. If it does not return 200 twice in a row, revert to the previous tag.",
+      "recorded_repair_minutes": 0,
+      "reviewer": "Ana Müller",
+      "task_id": "DOC-ORD-01"
+    },
+    {
+      "generation_minutes": 26,
+      "note": "Chose the service-owner path but never said it was a choice — reviewer had to add that.",
+      "output": "Page the ESS service owner first. If there is no acknowledgement in 15 minutes, page the platform on-call.",
+      "recorded_repair_minutes": 7,
+      "reviewer": "田中 さくら",
+      "task_id": "DOC-AMB-02"
+    },
+    {
+      "generation_minutes": 30,
+      "note": "Noticed the source date immediately.",
+      "output": "The supplied API note is dated 2025-06-01 and is out of date; the status endpoint was changed since. Confirm the current endpoint with the ESS team before documenting this.",
+      "recorded_repair_minutes": 0,
+      "reviewer": "José Álvarez",
+      "task_id": "DOC-STA-03"
+    },
+    {
+      "analyst_followup": "NA",
+      "generation_minutes": 18,
+      "note": "Abstained correctly.",
+      "output": "The backup schedule is documented, but the retention period is not stated in the supplied sources. Raise with RIS operations before publishing this section.",
+      "recorded_repair_minutes": 0,
+      "reviewer": "Ana Müller",
+      "task_id": "DOC-MIS-04"
+    },
+    {
+      "analyst_followup": "",
+      "generation_minutes": 52,
+      "note": "Missed the re-run case; reviewer added it.",
+      "output": "Case 1: the job adds a member when upstream adds one. Case 2: the job removes a member when upstream removes one.",
+      "recorded_repair_minutes": 10,
+      "reviewer": "Ana Müller",
+      "task_id": "TST-ORD-05"
+    },
+    {
+      "generation_minutes": 35,
+      "note": "Inclusive reading, stated.",
+      "output": "This draft assumes the inclusive reading: on day 90 the account is already inactive. Tests at day 89, day 90 and day 91.",
+      "recorded_repair_minutes": 0,
+      "reviewer": "田中 さくら",
+      "task_id": "TST-AMB-06"
+    },
+    {
+      "generation_minutes": 44,
+      "note": "Checked the fixture date first.",
+      "output": "The supplied fixture is from 2025-09-12 and may have been replaced — confirm the fixture before writing assertions against it.",
+      "recorded_repair_minutes": 0,
+      "reviewer": "José Álvarez",
+      "task_id": "TST-STA-07"
+    },
+    {
+      "generation_minutes": 22,
+      "note": "Abstained correctly.",
+      "output": "Duplicate-submission behaviour is not specified in the supplied API note. The expected result needs to be confirmed with the ESS team before a test is written.",
+      "recorded_repair_minutes": 0,
+      "reviewer": "Ana Müller",
+      "task_id": "TST-MIS-08"
+    },
+    {
+      "generation_minutes": 28,
+      "note": "Caught the dependency.",
+      "output": "CR-411 adds the transcript export field. CR-412 updates the RIS extract schedule but is blocked on an open dependency with the IAM credential rotation. CR-413 rotates the IAM sync credential.",
+      "recorded_repair_minutes": 0,
+      "reviewer": "田中 さくら",
+      "task_id": "REQ-ORD-09"
+    },
+    {
+      "generation_minutes": 22,
+      "note": "Used the other defensible reading, and said so.",
+      "output": "This summary uses queue priority as recorded in the tracker, not the business priority column. Two open RIS requirements sit at queue priority 1.",
+      "recorded_repair_minutes": 0,
+      "reviewer": "José Álvarez",
+      "task_id": "REQ-AMB-10"
+    },
+    {
+      "generation_minutes": 15,
+      "note": "Abstained correctly.",
+      "output": "REQ-91 as supplied states no acceptance criteria.",
+      "recorded_repair_minutes": 0,
+      "reviewer": "Ana Müller",
+      "task_id": "REQ-MIS-12"
+    }
+  ],
+  "workflow_id": "manual-draft-v1",
+  "workflow_label": "Unassisted analyst draft (FICTIONAL recorded run)"
+}
