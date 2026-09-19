@@ -46,7 +46,8 @@ def markdown(report: dict) -> str:
                   "", "Incident → condition: " + cell(", ".join(action["incident_ids"]) + " → " + ", ".join(action["condition_ids"])),
                   "", "Implementation / verification sources: " + cell(", ".join(action["implementation_evidence_ids"]) or "UNKNOWN") + " / " + cell(", ".join(action["verification_evidence_ids"]) or "UNKNOWN"),
                   "", "Follow-up: " + cell("; ".join(action["issues"]) or "none from structural checks"),
-                  "", "Comparison: " + cell(json.dumps(action["effectiveness"], sort_keys=True))]
+                  "", "Comparison: " + cell(json.dumps(action["effectiveness"], sort_keys=True)),
+                  "", "Measurement windows, counts and exposure: " + cell(json.dumps(action["measurement"], sort_keys=True))]
         if action["replacement"]:
             lines += ["", "Replacement decision: " + cell(json.dumps(action["replacement"], sort_keys=True))]
     lines += ["", "## Contributing-condition trace", ""]
@@ -62,7 +63,7 @@ def markdown(report: dict) -> str:
 
 def actions_csv(report: dict) -> str:
     out = io.StringIO(newline="")
-    fields = ["id", "owner_role", "reported_status", "evidence_state", "due_at", "overdue_unresolved", "days_past_due", "incident_ids", "condition_ids", "implementation_evidence_ids", "verification_evidence_ids", "issues", "effectiveness"]
+    fields = ["id", "owner_role", "reported_status", "evidence_state", "due_at", "overdue_unresolved", "days_past_due", "incident_ids", "condition_ids", "implementation_evidence_ids", "verification_evidence_ids", "issues", "effectiveness", "created_at", "completed_at", "late_completion_days", "measurement"]
     writer = csv.DictWriter(out, fieldnames=fields, lineterminator="\n")
     writer.writeheader()
     for action in report["actions"]:

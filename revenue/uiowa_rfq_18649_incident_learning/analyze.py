@@ -76,7 +76,9 @@ def action_result(action: dict, data: dict, sources: dict) -> dict:
     overdue = due is not None and as_of > due and state not in ("implementation_verified", "replacement_documented")
     result = {"id": action["id"], "description": action["description"], "incident_ids": action["incident_ids"],
               "condition_ids": action["condition_ids"], "owner_role": action["owner_role"],
-              "reported_status": action["status"], "evidence_state": state, "due_at": action.get("due_at"),
+              "reported_status": action["status"], "evidence_state": state,
+              "created_at": action["created_at"], "completed_at": action.get("completed_at"),
+              "measurement": action.get("effectiveness"), "due_at": action.get("due_at"),
               "overdue_unresolved": overdue,
               "days_past_due": round((as_of - due).total_seconds() / 86400, 3) if overdue else 0,
               "late_completion_days": round(max(0, (completed - due).total_seconds()) / 86400, 3)

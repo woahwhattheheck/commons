@@ -9,11 +9,11 @@ import tempfile
 import unittest
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from analyze import analyze
-from contract import load, validate
-from fixture import sample
-from report import actions_csv, markdown
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from revenue.uiowa_rfq_18649_incident_learning.analyze import analyze
+from revenue.uiowa_rfq_18649_incident_learning.contract import load, validate
+from revenue.uiowa_rfq_18649_incident_learning.fixture import sample
+from revenue.uiowa_rfq_18649_incident_learning.report import actions_csv, markdown
 
 
 class IncidentLearningTests(unittest.TestCase):
