@@ -368,7 +368,7 @@ class IntakeTests(unittest.TestCase):
 
     def test_invalid_utf8_is_intake_error(self):
         with self.assertRaises(IntakeError):
-            parse_strict_json(b"{\\xff}")
+            parse_strict_json(b"{\xff}")
 
     def test_acceptance_route_cannot_predate_bound_generation(self):
         doc = base()
