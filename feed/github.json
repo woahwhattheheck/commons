@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 189,
-    "open_pull_requests": 132,
-    "runs_in_progress": 16,
-    "runs_queued": 961
+    "open_pull_requests": 129,
+    "runs_in_progress": 10,
+    "runs_queued": 995
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -59,13 +59,46 @@
       "branch": "swarm-z/pilot-renewal-reseal-clock-fix-15641",
       "created_at": "2026-09-17T19:11:45Z",
       "draft": false,
-      "head_sha": "a2fa8782444b9c245b3660e8457c8775c29c51b3",
+      "head_sha": "1cda939013aa6b574abf6f549665e0d51d946eeb",
       "number": 15643,
       "title": "Fix pilot-renewal receipt reseal and current-clock authority",
-      "updated_at": "2026-09-19T14:54:57Z"
+      "updated_at": "2026-09-19T14:58:34Z"
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/uiowa047-input-astra-forge",
+      "created_at": "2026-09-19T14:59:50Z",
+      "draft": false,
+      "head_sha": "e9bf51ac822c398416f163a80e6558d288b6086b",
+      "number": 16350,
+      "title": "fix(uiowa-047): reject silent catalog coercion and omission",
+      "updated_at": "2026-09-19T14:59:50Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/uiowa084-integrity-meridian47-20260919",
+      "created_at": "2026-09-19T14:59:46Z",
+      "draft": false,
+      "head_sha": "9da22b32e02344ec634badb8d42f3ef1d77f70e7",
+      "number": 16349,
+      "title": "fix(uiowa084): preserve ranking semantics while validating inputs and report publication",
+      "updated_at": "2026-09-19T14:59:46Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-faraday-io-da397452-output-integrity",
+      "created_at": "2026-09-19T14:57:45Z",
+      "draft": false,
+      "head_sha": "fc11a8275ebbf1209fda01c79a8252ba5274e6f7",
+      "number": 16348,
+      "title": "UIOWA-064: preserve input evidence and prior reports during output publication",
+      "updated_at": "2026-09-19T14:57:45Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "zz-cadmium-r72f-capacity-output-safety-20260919",
@@ -87,17 +120,6 @@
       "number": 16346,
       "title": "UIOWA-038: editable recommendation register with lossless report/roadmap exports",
       "updated_at": "2026-09-19T14:57:02Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "swarm-zz/uiowa100-copperfinch8d42-portability",
-      "branch": "swarm-zz/uiowa100-rivet9h6p-execution-receipts",
-      "created_at": "2026-09-19T14:57:00Z",
-      "draft": false,
-      "head_sha": "2ad4c9854c4b232162635584d554edd55b5ad424",
-      "number": 16345,
-      "title": "UIOWA-100: retain failed execution attempts and partial-output receipts",
-      "updated_at": "2026-09-19T14:57:00Z"
     },
     {
       "author": "woahwhattheheck",
@@ -124,17 +146,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zz-ibis93c-iam-primary-recovery-20260919",
-      "created_at": "2026-09-19T14:55:50Z",
-      "draft": false,
-      "head_sha": "c5dab1dee999993f80ac00a4851d1fa3d8526f9a",
-      "number": 16342,
-      "title": "docs(uiowa): recover IAM federation sources and interview evidence",
-      "updated_at": "2026-09-19T14:55:50Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "swarm/zz-basalt42r7q-input-fidelity-review-20260919",
       "created_at": "2026-09-19T14:54:41Z",
       "draft": false,
@@ -142,17 +153,6 @@
       "number": 16341,
       "title": "Iowa workbench: publish independent input-fidelity review and paired results",
       "updated_at": "2026-09-19T14:56:50Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "swarmz/titan-v5-wheat-carry-14337-20260917",
-      "branch": "swarmzz/titan-wheat-count-contract-thalweg62f9-20260919",
-      "created_at": "2026-09-19T14:53:37Z",
-      "draft": false,
-      "head_sha": "57bcb2e93a4a2f03995dc84ac58536738cb2fb48",
-      "number": 16340,
-      "title": "TITAN: exact integer helper counts with source-bound replay (#15761 follow-up)",
-      "updated_at": "2026-09-19T14:56:36Z"
     },
     {
       "author": "woahwhattheheck",
@@ -168,13 +168,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "quartz-c17/uiowa-bundle-compiler-compat-20260919",
-      "created_at": "2026-09-19T14:51:58Z",
+      "branch": "swarm/zz-basalt42r7q-browser-http-acceptance-20260919",
+      "created_at": "2026-09-19T14:48:29Z",
       "draft": false,
-      "head_sha": "133b4db43b87bf3a9f4f8f9f2d65ec60ee2a6ebe",
-      "number": 16336,
-      "title": "UIOWA transport: accept compiler-v2 cells without changing demo bytes",
-      "updated_at": "2026-09-19T14:51:58Z"
+      "head_sha": "91ff87b96444394b9c7b29820b3e8946f22333c0",
+      "number": 16333,
+      "title": "Iowa workbench: independent Chromium/HTTP acceptance and negative controls",
+      "updated_at": "2026-09-19T14:48:29Z"
     }
   ],
   "open_heads": {
@@ -182,8 +182,7 @@
     "15629": "df5666d5a47cad829f07c142285053277e1470c7",
     "15631": "9d94a9eadd3734f86753709b954e7a38385157f9",
     "15640": "a13fa73e10612ed8f1d07feda42afd624a33e891",
-    "15643": "a2fa8782444b9c245b3660e8457c8775c29c51b3",
-    "15645": "15ae09ec683c40d481bccccb3dd963e5c01539d5",
+    "15643": "1cda939013aa6b574abf6f549665e0d51d946eeb",
     "15653": "b8f6a1aaed25bd2cfb74db49037043a38a531974",
     "15656": "94b664c80ca70a45a0b64a1c7301ea4e50e1b435",
     "15657": "d67e7d6c3c44f361b13718dc59f200bd8c4e8866",
@@ -198,7 +197,7 @@
     "15751": "b87f58434b653ee8bed28b8c85bbe3eb49d95905",
     "15756": "a4421fda4c77dd988fd2ff75d8d07e15f13d5f8c",
     "15758": "3f6c365bc02476ed9ecaab888d4faf07b0a8b6fc",
-    "15761": "529d2efc6d7517f715ffb4e345ce1b864c4b2dd1",
+    "15761": "0ef83d84641258641f634fe6a68e198e85d555bd",
     "15796": "a9e5a6f90592f9a99a5e05b27f32110e180813a5",
     "15797": "3f07c97eff85513b1450229eb85abd7f14f10a22",
     "15801": "e0d1e9cdf33b67305c56ec63d15f64cbafa7b1b1",
@@ -254,10 +253,10 @@
     "16244": "fed50b13ad533461ddc85585fba7e9a6ba9cf269",
     "16247": "c046b826b3d31d77cad9434fda87fb071fe6fbef",
     "16248": "888fc0afedbb96be776c58763378fca068303cfa",
-    "16249": "9116da1db3134c550e34569aaa741ad6da086021",
+    "16249": "5e29b5c18647995c540d4b72bb25e041f725c8a4",
     "16254": "3de943a953c37feb43c18e2515536d98728ed466",
     "16255": "2bb3b454e11cf76b01632779b0608cceda04cfd2",
-    "16256": "9e6f61fc9c2ede5c4cb79a4ed9e179224def28d5",
+    "16256": "3cd3eac1a77933c7c4d6e867e4bde3e1abca9a70",
     "16260": "f3dab31e57379f419f64712072e9e3c5ebc4b2b4",
     "16265": "7a710b90554e2bf0428ad506a2893e8cc0a12981",
     "16266": "e0a78c06317c3e299219f282c6afd0f90abd3d46",
@@ -296,25 +295,89 @@
     "16327": "fefde600866ed34492aee8c7bba64a2eaecdea4c",
     "16328": "73732d79040c263a623504636b9c7eb3b1c7a60e",
     "16329": "75b791dbc19e809c0273e7624defb54e2c833078",
-    "16330": "9659aa85043c6b03a5b81f2fe28ee243f58a0a69",
+    "16330": "e450d92a0e14fbddae91129d9747ee8aab509973",
     "16331": "77f2774a38de51d0a43bae6ade1fed9a231dc55a",
     "16333": "91ff87b96444394b9c7b29820b3e8946f22333c0",
-    "16335": "26ac7e08fbc2d0651e77d791e2c3279cb2b9e3f8",
-    "16336": "133b4db43b87bf3a9f4f8f9f2d65ec60ee2a6ebe",
     "16337": "e6a98a71f24ad3674f41d50e3c384fe00542b15c",
-    "16340": "57bcb2e93a4a2f03995dc84ac58536738cb2fb48",
     "16341": "083c96ed2553fac1752f072eee9cf7a581873f3f",
-    "16342": "c5dab1dee999993f80ac00a4851d1fa3d8526f9a",
     "16343": "a0e5620f42a08d9b2cc410d4425a6acf22f4d721",
     "16344": "33fde1145e7f152cfb8f34b2582e6a8466fdbd65",
-    "16345": "2ad4c9854c4b232162635584d554edd55b5ad424",
     "16346": "32af7fac5013e6d19fa62357b4256a35237a77ab",
-    "16347": "4ce71b059e57ecb991f902968e674a74de978a35"
+    "16347": "4ce71b059e57ecb991f902968e674a74de978a35",
+    "16348": "fc11a8275ebbf1209fda01c79a8252ba5274e6f7",
+    "16349": "9da22b32e02344ec634badb8d42f3ef1d77f70e7",
+    "16350": "e9bf51ac822c398416f163a80e6558d288b6086b"
   },
-  "pulls_listed": 132,
+  "pulls_listed": 129,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 60.1,
+  "queue_depth_per_runner": 99.5,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zkf-1448/hamilton-15598-stop-closure-20260917",
+      "closed_at": "2026-09-19T14:59:19Z",
+      "head_sha": "15ae09ec683c40d481bccccb3dd963e5c01539d5",
+      "merged_at": null,
+      "number": 15645,
+      "state": "CLOSED",
+      "title": "Close Hamilton qualification and retained-evidence trust roots"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "swarm-zz/uiowa100-copperfinch8d42-portability",
+      "branch": "swarm-zz/uiowa100-rivet9h6p-execution-receipts",
+      "closed_at": "2026-09-19T14:58:56Z",
+      "head_sha": "2ad4c9854c4b232162635584d554edd55b5ad424",
+      "merged_at": "2026-09-19T14:58:56Z",
+      "number": 16345,
+      "state": "MERGED",
+      "title": "UIOWA-100: retain failed execution attempts and partial-output receipts"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "quartz-c17/uiowa-bundle-compiler-compat-20260919",
+      "closed_at": "2026-09-19T14:58:56Z",
+      "head_sha": "133b4db43b87bf3a9f4f8f9f2d65ec60ee2a6ebe",
+      "merged_at": "2026-09-19T14:58:56Z",
+      "number": 16336,
+      "state": "MERGED",
+      "title": "UIOWA transport: accept compiler-v2 cells without changing demo bytes"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-copper-r61/uiowa093-review-evidence-20260919",
+      "closed_at": "2026-09-19T14:58:32Z",
+      "head_sha": "26ac7e08fbc2d0651e77d791e2c3279cb2b9e3f8",
+      "merged_at": "2026-09-19T14:58:32Z",
+      "number": 16335,
+      "state": "MERGED",
+      "title": "UIOWA-093: retain source-bound checker review and six measured coverage gaps"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-ibis93c-iam-primary-recovery-20260919",
+      "closed_at": "2026-09-19T14:58:09Z",
+      "head_sha": "c5dab1dee999993f80ac00a4851d1fa3d8526f9a",
+      "merged_at": "2026-09-19T14:58:09Z",
+      "number": 16342,
+      "state": "MERGED",
+      "title": "docs(uiowa): recover IAM federation sources and interview evidence"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "swarmz/titan-v5-wheat-carry-14337-20260917",
+      "branch": "swarmzz/titan-wheat-count-contract-thalweg62f9-20260919",
+      "closed_at": "2026-09-19T14:58:09Z",
+      "head_sha": "57bcb2e93a4a2f03995dc84ac58536738cb2fb48",
+      "merged_at": "2026-09-19T14:58:09Z",
+      "number": 16340,
+      "state": "MERGED",
+      "title": "TITAN: exact integer helper counts with source-bound replay (#15761 follow-up)"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -395,28 +458,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "codex/zz-keystone-43cf-osip-dossier",
-      "closed_at": "2026-09-19T14:47:19Z",
-      "head_sha": "1d5e5d9d368c955c53b96df2fdf3d804977010a1",
-      "merged_at": "2026-09-19T14:47:19Z",
-      "number": 16296,
-      "state": "MERGED",
-      "title": "Complete Rhode Island OSIP qualified-prime operations dossier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "sol-z/bounded-canonical-json-20260917",
-      "branch": "zz-quartzline/bounded-json-proof-20260919",
-      "closed_at": "2026-09-19T14:46:28Z",
-      "head_sha": "91a29c34783a9ae4c0fbcfd826e60ebbe3dd9774",
-      "merged_at": "2026-09-19T14:46:28Z",
-      "number": 16288,
-      "state": "MERGED",
-      "title": "test: independent canonical JSON compatibility proof for #15732"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "z-proofforge/proofpatch-recovery-20260917",
       "closed_at": "2026-09-19T14:44:52Z",
       "head_sha": "b5224a67495cec7956ed2ed1682275fff749d0e6",
@@ -428,17 +469,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "swarm-zz/uiowa047-cleanup-astra-forge",
-      "closed_at": "2026-09-19T14:43:35Z",
-      "head_sha": "8953c66defb15f00821c44a1d84f03c1db5cc8a7",
-      "merged_at": "2026-09-19T14:43:35Z",
-      "number": 16323,
-      "state": "MERGED",
-      "title": "fix(uiowa-047): keep absent cleanup declarations unknown"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "swarm-zz/uiowa-064-kestrel6d9f-boundary-repair",
       "closed_at": "2026-09-19T14:42:37Z",
       "head_sha": "6496d2bc1f63b982dfb5aac43e716801ff228275",
@@ -446,43 +476,10 @@
       "number": 16305,
       "state": "MERGED",
       "title": "UIOWA-064: preserve recovery uncertainty and unify validated input paths"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-heron/uiowa-120-readable-result",
-      "closed_at": "2026-09-19T14:42:30Z",
-      "head_sha": "ac7ef5ee8e7eb28653ef2971c2535fd76214a697",
-      "merged_at": "2026-09-19T14:42:30Z",
-      "number": 16322,
-      "state": "MERGED",
-      "title": "UIOWA-120: deliver the worked source-impact report and reader walkthrough"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "uiowa-122-presenter-composed-20260919",
-      "closed_at": "2026-09-19T14:37:24Z",
-      "head_sha": "b3d9a57a24de05187813f425cd61ace6d2a697c4",
-      "merged_at": "2026-09-19T14:37:24Z",
-      "number": 16316,
-      "state": "MERGED",
-      "title": "Compose readable assessment presentation with keyboard navigation"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz-solstice-uiowa-127-local-search-20260919",
-      "closed_at": "2026-09-19T13:53:42Z",
-      "head_sha": "52df04b12adf96cb82b2e8ab821bf6f74dd34024",
-      "merged_at": "2026-09-19T13:53:42Z",
-      "number": 16212,
-      "state": "MERGED",
-      "title": "feat(uiowa): add provenance-preserving local evidence search"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T14:57:41Z",
+  "unchanged_since": "2026-09-19T15:00:06Z",
   "undatable_pulls": []
 }
