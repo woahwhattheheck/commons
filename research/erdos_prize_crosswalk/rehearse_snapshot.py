@@ -27,11 +27,11 @@ LIMITS = (
 def report_snapshot(doc: dict) -> dict:
     """Validate with the canonical verifier, then detach the displayed records."""
     digest = vc.verify(doc)
-    rows = json.loads(json.dumps(doc["problems"], ensure_ascii=False))
+    snapshot = json.loads(json.dumps(doc, ensure_ascii=False))
+    rows = snapshot["problems"]
     return {
-        "schema_version": 1,
+        **snapshot,
         "status": "RETAINED_SNAPSHOT_VERIFIED",
-        "snapshot_date": doc["snapshot_date"],
         "snapshot_sha256": digest,
         "live_source_check_performed": False,
         "summary": {
@@ -43,8 +43,6 @@ def report_snapshot(doc: dict) -> dict:
             "ppl_mapped_count": sum(r["ppl_id"] is not None for r in rows),
             "historical_active_take_count": sum(r["commons_ownership"]["status"] == "ACTIVE_TAKE" for r in rows),
         },
-        "source_snapshot": dict(doc["source_snapshot"]),
-        "problems": rows,
         "limits": list(LIMITS),
         "before_any_new_theorem_take": [
             "Read current primary sponsor terms and problem status.",

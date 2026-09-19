@@ -30,6 +30,27 @@ class RehearsalTests(unittest.TestCase):
         self.assertEqual(result["problems"], self.doc["problems"])
         self.assertEqual(result["source_snapshot"], self.doc["source_snapshot"])
 
+    def test_all_root_fields_reconstruct_the_exact_snapshot(self):
+        result = rehearsal.report_snapshot(self.doc)
+        reconstructed = {key: result[key] for key in self.doc}
+        self.assertEqual(reconstructed, self.doc)
+        self.assertEqual(vc.verify(reconstructed), result["snapshot_sha256"])
+        cli = self.cli("--format", "json")
+        self.assertEqual(cli.returncode, 0, cli.stderr)
+        emitted = json.loads(cli.stdout)
+        self.assertEqual({key: emitted[key] for key in self.doc}, self.doc)
+
+    def test_scope_is_exact_and_recursively_detached(self):
+        before = copy.deepcopy(self.doc)
+        result = rehearsal.report_snapshot(self.doc)
+        self.assertEqual(result["scope"], self.doc["scope"])
+        result["scope"]["expected_problem_numbers"].append(9999)
+        result["scope"]["description"] = "changed only in the returned report"
+        result["scope"]["parallel_platform_rewards_counted"] = True
+        result["scope"]["expected_total_usd"] = 0
+        self.assertEqual(self.doc, before)
+        self.assertEqual(rehearsal.report_snapshot(self.doc)["scope"], before["scope"])
+
     def test_summary_matches_actual_records(self):
         self.assertEqual(rehearsal.report_snapshot(self.doc)["summary"], {
             "row_count": 9, "catalog_value_usd": 22000, "parallel_rewards_included": False,

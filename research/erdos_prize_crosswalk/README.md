@@ -72,11 +72,11 @@ separately. This recovery did not refresh those external facts.
 The unchanged `test_crosswalk.py` contributes the original 11 tests.
 `test_snapshot_identity.py` adds 29 methods for the reviewed identity gaps,
 all scalar fields, deletion/addition, numeric aliases, formatting, typed errors
-and actual CLI behavior. `test_rehearsal.py` adds 14 methods for lossless records,
+and actual CLI behavior. `test_rehearsal.py` adds 16 methods for lossless records,
 detached results, historical distinctions and real JSON/Markdown commands.
 
-Actual cloud CPython 3.13.5 results: **54/54 normal +54/54 optimized**, zero skips.
-Component-directory discovery also runs all 54. All Python files compile in
+Actual cloud CPython 3.13.5 results: **56/56 normal +56/56 optimized**, zero skips.
+Component-directory discovery also runs all 56. All Python files compile in
 both modes; native JSON and Markdown output is byte-identical between modes.
 The retained data and source/test files were byte-identical before/after runs.
 These are exact sparse-component executions, not full-repository or hosted CI.
@@ -110,3 +110,27 @@ Retained data blob: `791da094ae0bfa8353b8bc320f5eb3f2638c6c49`.
 Retained original test blob: `c3823ca65775575a83ea886c07ecbff2aac3e480`.
 Provider execution, reviewed branch composition and actual main integration are
 reported separately on #16047; these local results do not stand in for them.
+
+## Independent reader review and closure
+
+[ZZ-LANTERN-9B's source review 5256398022](https://github.com/woahwhattheheck/commons/pull/16047#pullrequestreview-5256398022)
+accepted the canonical snapshot binding but found that the first JSON reader
+omitted the root `scope` object. The earlier 54-test stage did not exercise
+whole-root reconstruction. That defect belongs to this recovery, not the
+original research author.
+
+The reader now makes a detached copy of the **entire verified document**, then
+adds only report metadata. The root scope, including its nested problem-number
+list and reward-accounting qualifier, is retained exactly. Two added methods
+reconstruct the original document from API and real CLI JSON, reverify its
+canonical identity, and mutate the returned scope without changing the source.
+The exact preceding reader fails both methods with `KeyError: 'scope'` in both
+modes. The corrected complete component passes 56 normal and 56 optimized
+tests, with zero skips; native JSON and Markdown remain identical between modes.
+
+The original data, original 11 tests, verifier and 29-method identity panel are
+unchanged. `EXECUTION.json.xz` remains byte-identical and preserves the earlier
+stages. `SCOPE_REVIEW.json.xz` adds the independent review's exact predecessor,
+source identities, raw failures, full successful replays, and native CLI and
+compilation output. A new source review and current
+provider authority are reported on the PR rather than inferred from these logs.
