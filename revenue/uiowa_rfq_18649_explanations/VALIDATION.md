@@ -1,6 +1,6 @@
 # UIOWA-118 — Documentation validation
 
-These checks validate the authored help records, internal links, source-reference shape,
+These checks validate the authored help records, internal links, source-reference shape and exact worked-number source edges,
 fiction labels, and the arithmetic in eight worked cases. They do not run the assessment,
 delivery, recovery or resource-estimator modules; a mathematical replay is not an engine
 regression test. Native GitHub reads, rather than these checks, established the source
@@ -19,15 +19,24 @@ python -O /tmp/validate_explanations.py revenue/uiowa_rfq_18649_explanations
 
 The checker is reproduced as documentation, not installed into the repository's test
 runner. Its negative controls intentionally introduce a duplicate help ID, unresolved
-source ID and incorrect expanded-help anchor; those inputs must be rejected. It neither
+source ID and incorrect expanded-help anchor; those inputs must be rejected. Numeric-source controls
+also reject a missing results path, incorrect results blob and a results link redirected
+to the sibling README. It neither
 changes the source components nor adds a runtime integration gate.
 
 ## Executed result
 
-Local cloud-container CPython; 17 checks passed normally and 17 under real `-O` after
-completing this validation document. The initial pass caught the README's link to this
-not-yet-created file; the link check was retained and the file was added. No specialist
-suite, repository-wide suite or GitHub Actions success is claimed.
+Local cloud-container CPython 3.13.5. The initial 17 checks passed normally and under
+real `-O`. Peer semantic review then identified that S07 named the estimator README but
+not the separate file holding its exact numeric results. S07 now explicitly binds both
+files at the same candidate. The expanded suite passes **19 checks normally and 19 under
+real `-O`**, with three numeric-source-edge negative controls. The reproduced checker
+and actual source file remain distinct: these checks validate the declared binding;
+native provider reads established the source bytes.
+
+The initial documentation pass also caught the README's link to this not-yet-created
+validation file; the link check was retained and the file was added. No specialist suite,
+repository-wide suite or GitHub Actions success is claimed.
 
 ## Checker
 
@@ -74,6 +83,33 @@ def validate_records(data):
             raise ValueError('unresolved source ID')
     return len(records)
 
+
+def validate_numeric_sources(readme, walkthrough, glossary):
+    """The worked numeric edge must name the result file, not just a sibling README."""
+    candidate = '6f81659074130a3dd1e2bbc140c1f145e993b7fa'
+    expected = {
+        'revenue/uiowa_rfq_18649_resource_estimator/README.md': '9249b72a153fda1071aa42ed09bb49079ee2e0fc',
+        'revenue/uiowa_rfq_18649_resource_estimator/sample-results.md': '89674b4be564bade0fbebd86daec7afafe29e38f',
+    }
+    section = readme.split('## S07\n', 1)[1].split('## S08\n', 1)[0]
+    triples = re.findall(r'Path: `([^`]+)`\s+Commit: `([0-9a-f]{40})`\s+Git blob: `([0-9a-f]{40})`', section)
+    bindings = {path: (commit, blob) for path, commit, blob in triples}
+    if len(bindings) != len(triples) or bindings != {p: (candidate, b) for p, b in expected.items()}:
+        raise ValueError('missing or incorrect numeric result source binding')
+    for path in expected:
+        url = 'https://github.com/woahwhattheheck/commons/blob/' + candidate + '/' + path
+        if '[Read the pinned source](' + url + ')' not in section:
+            raise ValueError('missing pinned numeric source link')
+    for case in ('W07', 'W08'):
+        part = walkthrough.split('## ' + case, 1)[1].split('\n## ', 1)[0]
+        if '[S07](README.md#s07)' not in part:
+            raise ValueError('worked numeric case lost result-source reference')
+    for term in ('recurring-effort', 'scenario-range', 'unknown-total', 'specialist-capacity'):
+        part = glossary.split('## ' + term + '\n', 1)[1].split('\n## ', 1)[0]
+        if '[S07](README.md#s07)' not in part:
+            raise ValueError('numeric glossary example lost result-source reference')
+    return len(bindings)
+
 class ExplanationChecks(unittest.TestCase):
     def test_01_record_contract(self):
         self.assertEqual(validate_records(load_records()), 29)
@@ -89,11 +125,11 @@ class ExplanationChecks(unittest.TestCase):
             for marker in ('**Short:**','**Expanded:**','**Example:**','**Source:**'):
                 self.assertIn(marker, chunk)
 
-    def test_04_eight_exact_source_bindings(self):
+    def test_04_eight_source_groups_nine_bound_files(self):
         readme = text('README.md')
         self.assertEqual(len(re.findall(r'^## S\d{2}$', readme, re.M)), 8)
-        self.assertEqual(len(re.findall(r'Git blob: `[0-9a-f]{40}`', readme)), 8)
-        self.assertEqual(len(re.findall(r'\[Read the pinned source\]\(https://github.com/woahwhattheheck/commons/blob/[0-9a-f]{40}/[^)]+\)', readme)), 8)
+        self.assertEqual(len(re.findall(r'Git blob: `[0-9a-f]{40}`', readme)), 9)
+        self.assertEqual(len(re.findall(r'\[Read the pinned source\]\(https://github.com/woahwhattheheck/commons/blob/[0-9a-f]{40}/[^)]+\)', readme)), 9)
 
     def test_05_internal_links_and_fragments(self):
         for file in ROOT.glob('*.md'):
@@ -191,6 +227,22 @@ class ExplanationChecks(unittest.TestCase):
         self.assertEqual(data['examples'], 'FICTIONAL_NOT_UNIVERSITY_FINDINGS')
         self.assertIn('not outputs from a specialist engine run', text('WALKTHROUGH.md'))
         self.assertIn('does not implement a new', text('README.md'))
+
+
+    def test_18_numeric_sources_resolve_to_exact_result_file(self):
+        self.assertEqual(validate_numeric_sources(text('README.md'), text('WALKTHROUGH.md'), text('GLOSSARY.md')), 2)
+
+    def test_19_numeric_source_edge_negative_controls(self):
+        good = text('README.md')
+        bad_variants = (
+            good.replace('sample-results.md', 'missing-results.md'),
+            good.replace('89674b4be564bade0fbebd86daec7afafe29e38f', '0' * 40),
+            good.replace('/sample-results.md).', '/README.md).'),
+        )
+        for bad in bad_variants:
+            with self.subTest(kind=bad[-200:]):
+                with self.assertRaisesRegex(ValueError, 'numeric'):
+                    validate_numeric_sources(bad, text('WALKTHROUGH.md'), text('GLOSSARY.md'))
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

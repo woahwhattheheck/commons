@@ -112,12 +112,32 @@ Locator: Core evidence rules; Synthetic acceptance result; Authority boundary.
 
 ## S07
 
-**Resource and adoption estimator definitions.** [Read the pinned source](https://github.com/woahwhattheheck/commons/blob/6f81659074130a3dd1e2bbc140c1f145e993b7fa/revenue/uiowa_rfq_18649_resource_estimator/README.md).
+**Resource and adoption estimator: definitions and numeric results.**
+
+The S07 reference is a two-file binding at one candidate. Use the first file for units,
+unknowns and model boundaries, and the second for the published fictional numeric
+ envelopes used in W07/W08 and the glossary examples.
+
+**Definitions.** [Read the pinned source](https://github.com/woahwhattheheck/commons/blob/6f81659074130a3dd1e2bbc140c1f145e993b7fa/revenue/uiowa_rfq_18649_resource_estimator/README.md).
 
 Path: `revenue/uiowa_rfq_18649_resource_estimator/README.md`  
 Commit: `6f81659074130a3dd1e2bbc140c1f145e993b7fa`  
 Git blob: `9249b72a153fda1071aa42ed09bb49079ee2e0fc`  
 Locator: What the model computes; Capacity; Missing does not mean zero; Output contract.
+
+
+**Worked numeric results.** [Read the pinned source](https://github.com/woahwhattheheck/commons/blob/6f81659074130a3dd1e2bbc140c1f145e993b7fa/revenue/uiowa_rfq_18649_resource_estimator/sample-results.md).
+
+Path: `revenue/uiowa_rfq_18649_resource_estimator/sample-results.md`  
+Commit: `6f81659074130a3dd1e2bbc140c1f145e993b7fa`  
+Git blob: `89674b4be564bade0fbebd86daec7afafe29e38f`  
+Locator: Opening case table (release and reliability); Release handoff; Secure-development practice; Operational reliability.
+
+The release row supplies one-time 52/84/128, monthly 6/10/16 and three-month
+70/114/176 person-hours. Operational reliability supplies the known one-time subtotal
+34/56/90 with an UNKNOWN complete total. Secure-development practice supplies specialist
+demand 20/28/42 against two-month capacity 8/12/16. These are the source author's
+fictional CLI results, not runs or University measurements performed by this seat.
 
 ## S08
 
