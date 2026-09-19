@@ -1,11 +1,12 @@
 phase,component,status,kind,tests_ran,check_files,reason
-kickoff,uiowa_rfq_18649_operator_handoff,WORKING,executable,30,test_verify_kit.py,"executed 1 test file(s) here, 30 tests ran, all passed"
+kickoff,uiowa_rfq_18649_operator_handoff,WORKING,executable,37,test_verify_kit.py,"executed 1 test file(s) here, 37 tests ran, all passed"
 kickoff,uiowa_rfq_18649_mobilization,DRAFT,document,0,-,document component: 2 document/data files and no executable code; completeness of prose is not machine-checkable and needs a human read
 kickoff,uiowa_rfq_18649_workshare,WORKING,executable,34,methodology/test_validate_23_evidence_register.py;test_compiler.py,"executed 2 test file(s) here, 34 tests ran, all passed"
 kickoff,uiowa_rfq_18649_build_board,DRAFT,document,0,-,document component: 3 document/data files and no executable code; completeness of prose is not machine-checkable and needs a human read
-kickoff,uiowa_rfq_18649_capability_appendix,WORKING,executable,39,test_capability_appendix.py,"executed 1 test file(s) here, 39 tests ran, all passed"
+kickoff,uiowa_rfq_18649_capability_appendix,DRAFT,executable,39,test_capability_appendix.py,check executed and did not pass: 1 of 1 test file(s) failed
 kickoff,uiowa_rfq_18649_scope_change,WORKING,executable,48,test_scope_change.py,"executed 1 test file(s) here, 48 tests ran, all passed"
-kickoff,uiowa_rfq_18649_bid_pack,WORKING,executable,35,test_bid_pack.py,"executed 1 test file(s) here, 35 tests ran, all passed"
+kickoff,uiowa_rfq_18649_bid_pack,WORKING,executable,62,test_bid_pack.py;test_packcheck.py,"executed 2 test file(s) here, 62 tests ran, all passed"
+kickoff,uiowa_rfq_18649_filesystem_safety,WORKING,executable,24,test_fsaudit.py,"executed 1 test file(s) here, 24 tests ran, all passed"
 evidence_collection,uiowa_rfq_18649_synthetic_collection,WORKING,executable,5,tests/test_collection.py,"executed 1 test file(s) here, 5 tests ran, all passed"
 evidence_collection,uiowa_rfq_18649_intake_rehearsal,WORKING,executable,34,test_rehearsal.py,"executed 1 test file(s) here, 34 tests ran, all passed"
 evidence_collection,uiowa_rfq_18649_document_extraction,DRAFT,executable,6,test_extract.py,"check could not run offline: missing dependency 'pypdf' (declared: pypdf>=6,<7)"
@@ -20,7 +21,9 @@ evidence_collection,uiowa_rfq_18649_handoff,WORKING,executable,6,tests/test_hand
 evidence_collection,uiowa_rfq_18649_ai_use_inventory,WORKING,executable,43,test_inventory.py,"executed 1 test file(s) here, 43 tests ran, all passed"
 evidence_collection,uiowa_rfq_18649_knowledge_readiness,MISSING,unbuilt,0,-,no directory for this component exists under the survey root
 evidence_collection,uiowa_rfq_18649_contractor_transition,WORKING,executable,34,test_transition.py,"executed 1 test file(s) here, 34 tests ran, all passed"
-evidence_collection,uiowa_rfq_18649_question_cards,WORKING,executable,35,test_question_cards.py,"executed 1 test file(s) here, 35 tests ran, all passed"
+evidence_collection,uiowa_rfq_18649_question_cards,WORKING,executable,40,test_question_cards.py,"executed 1 test file(s) here, 40 tests ran, all passed"
+evidence_collection,uiowa_rfq_18649_deadline_continuity,WORKING,executable,42,test_continuity.py,"executed 1 test file(s) here, 42 tests ran, all passed"
+evidence_collection,uiowa_rfq_18649_vocabulary_crosswalk,DRAFT,executable,24,test_vocabulary.py,check executed and did not pass: 1 of 1 test file(s) failed
 analysis,uiowa_rfq_18649_rating_model,WORKING,executable,7,test_rating_model.py,"executed 1 test file(s) here, 7 tests ran, all passed"
 analysis,uiowa_rfq_18649_prioritization,WORKING,executable,48,test_prioritize.py,"executed 1 test file(s) here, 48 tests ran, all passed"
 analysis,uiowa_rfq_18649_delivery_metrics,WORKING,executable,6,test_calculator.py,"executed 1 test file(s) here, 6 tests ran, all passed"
@@ -32,20 +35,24 @@ analysis,uiowa_rfq_18649_ai_policy_to_workflow,WORKING,executable,36,test_policy
 analysis,uiowa_rfq_18649_adoption_readiness,WORKING,executable,49,test_readiness.py,"executed 1 test file(s) here, 49 tests ran, all passed"
 analysis,uiowa_rfq_18649_ai_integration,WORKING,executable,46,test_ai_integration.py,"executed 1 test file(s) here, 46 tests ran, all passed"
 analysis,uiowa_rfq_18649_ai_eval_kit,WORKING,executable,29,test_eval_kit.py,"executed 1 test file(s) here, 29 tests ran, all passed"
-analysis,uiowa_rfq_18649_economics_resource_adapters,WORKING,executable,45,test_integrate.py,"executed 1 test file(s) here, 45 tests ran, all passed"
+analysis,uiowa_rfq_18649_economics_resource_adapters,WORKING,executable,78,test_check_contract.py;test_integrate.py,"executed 2 test file(s) here, 78 tests ran, all passed"
 analysis,uiowa_rfq_18649_roadmap_dependencies,WORKING,executable,47,test_depcheck.py,"executed 1 test file(s) here, 47 tests ran, all passed"
+analysis,uiowa_rfq_18649_ai_decision_case,WORKING,executable,34,test_ai_decision_case.py,"executed 1 test file(s) here, 34 tests ran, all passed"
+analysis,uiowa_rfq_18649_capacity_feasibility,WORKING,executable,51,test_capacity_roadmap.py,"executed 1 test file(s) here, 51 tests ran, all passed"
 draft_review,uiowa_rfq_18649_traceability_rehearsal,WORKING,runner,0,-,no unittest suite; documented runner `python3 validate_trace.py` was executed here and exited 0 with output
 draft_review,uiowa_rfq_18649_doc_usability,DRAFT,document,0,-,document component: 6 document/data files and no executable code; completeness of prose is not machine-checkable and needs a human read
 draft_review,uiowa_rfq_18649_qa_kit,MISSING,unbuilt,0,-,no directory for this component exists under the survey root
 draft_review,uiowa_rfq_18649_interchange,MISSING,unbuilt,0,-,no directory for this component exists under the survey root
-draft_review,uiowa_rfq_18649_traceability,WORKING,executable,44,test_audit_self_sealing.py;test_trace_check.py,"executed 2 test file(s) here, 44 tests ran, all passed"
+draft_review,uiowa_rfq_18649_traceability,WORKING,executable,66,test_audit_assertions.py;test_audit_self_sealing.py;test_trace_check.py,"executed 3 test file(s) here, 66 tests ran, all passed"
 draft_review,uiowa_rfq_18649_output_agreement,WORKING,executable,41,test_output_agreement.py,"executed 1 test file(s) here, 41 tests ran, all passed"
 final_delivery,uiowa_rfq_18649_report_structure,WORKING,executable,55,test_report_structure.py,"executed 1 test file(s) here, 55 tests ran, all passed"
 final_delivery,uiowa_rfq_18649_report_visuals,WORKING,executable,90,test_report_visuals.py,"executed 1 test file(s) here, 90 tests ran, all passed"
-final_delivery,uiowa_rfq_18649_integration,WORKING,runner,0,-,no unittest suite; documented runner `python3 integrate_tabular.py --repo /home/user/commons --out /tmp/verify_kit_out_sqj133ym/integration.json` was executed here and exited 0 with output
+final_delivery,uiowa_rfq_18649_integration,WORKING,runner,0,-,no unittest suite; documented runner `python3 integrate_tabular.py --repo /home/user/commons --out /tmp/verify_kit_out_flpo2l13/integration.json` was executed here and exited 0 with output
 final_delivery,uiowa_rfq_18649_closeout,WORKING,executable,7,test_closeout.py,"executed 1 test file(s) here, 7 tests ran, all passed"
 final_delivery,uiowa_rfq_18649_acceptance_map,DRAFT,executable,18,test_acceptance_map.py,check executed and did not pass: 1 of 1 test file(s) failed
 final_delivery,uiowa_rfq_18649_milestone_packets,WORKING,executable,55,test_milestone_packets.py,"executed 1 test file(s) here, 55 tests ran, all passed"
+final_delivery,uiowa_rfq_18649_exec_summary,WORKING,executable,42,test_exec_summary.py,"executed 1 test file(s) here, 42 tests ran, all passed"
+final_delivery,uiowa_rfq_18649_print_pagination,WORKING,executable,39,test_printreport.py,"executed 1 test file(s) here, 39 tests ran, all passed"
 readout,uiowa_rfq_18649_readout_deck,WORKING,executable,56,test_deck_architecture.py,"executed 1 test file(s) here, 56 tests ran, all passed"
 readout,uiowa_rfq_18649_qa_kit,MISSING,unbuilt,0,-,no directory for this component exists under the survey root
 readout,uiowa_rfq_18649_qa_refusal_contract,WORKING,executable,57,test_qa.py,"executed 1 test file(s) here, 57 tests ran, all passed"

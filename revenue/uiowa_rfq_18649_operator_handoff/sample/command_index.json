@@ -1,0 +1,2147 @@
+{
+  "survey_root": "/tmp/claude-0/-home-user/6e551c41-37c5-5a0b-95f1-fb4584e151a7/scratchpad/m3QGjY",
+  "generated_at_utc": "2026-09-19T14:16:43Z",
+  "python": "3.11.15",
+  "components": 57,
+  "components_with_a_command_line": 43,
+  "verified_commands": 54,
+  "rows": [
+    {
+      "phase": "kickoff",
+      "phase_order": 1,
+      "phase_title": "Kickoff and mobilization",
+      "component": "uiowa_rfq_18649_operator_handoff",
+      "role": "This handoff: the six-phase guide, the component verifier, and the UNKNOWN register. Start here.",
+      "present": true,
+      "commands": [
+        {
+          "script": "command_index.py",
+          "command": "python3 command_index.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.05,
+          "is_cli": true,
+          "usage_line": "usage: command_index.py [-h] [--root ROOT] [--manifest MANIFEST]",
+          "library_hint": false,
+          "output_tail": "usage: command_index.py [-h] [--root ROOT] [--manifest MANIFEST]\n                        [--timeout TIMEOUT] [--out OUT] [--out-json OUT_JSON]\n                        [--quiet]\n\noptions:\n  -h, --help           show this help message and exit\n  --root ROOT\n  --manifest MANIFEST\n  --timeout TIMEOUT\n  --out OUT\n  --out-json OUT_JSON\n  --quiet"
+        },
+        {
+          "script": "render_guide.py",
+          "command": "python3 render_guide.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": true,
+          "usage_line": "usage: render_guide.py [-h] [--manifest MANIFEST] [--status STATUS]",
+          "library_hint": false,
+          "output_tail": "usage: render_guide.py [-h] [--manifest MANIFEST] [--status STATUS]\n                       [--unknowns UNKNOWNS] [--out OUT]\n\noptions:\n  -h, --help           show this help message and exit\n  --manifest MANIFEST\n  --status STATUS\n  --unknowns UNKNOWNS\n  --out OUT"
+        },
+        {
+          "script": "verify_kit.py",
+          "command": "python3 verify_kit.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": true,
+          "usage_line": "usage: verify_kit.py [-h] [--root ROOT] [--manifest MANIFEST]",
+          "library_hint": false,
+          "output_tail": "] [--quiet]\n\nEarn a status for every kit component by running it.\n\noptions:\n  -h, --help            show this help message and exit\n  --root ROOT           directory containing the uiowa_rfq_18649_* lane\n                        directories\n  --manifest MANIFEST\n  --timeout TIMEOUT     seconds per check file\n  --no-exec             inventory only; execute nothing\n  --out-json OUT_JSON\n  --out-csv OUT_CSV\n  --out-md OUT_MD\n  --repo-root REPO_ROOT\n                        repository root for a component runner's {REPO}\n                        placeholder; defaults to the parent of --root\n  --quiet"
+        }
+      ],
+      "rejected": [],
+      "manifest_runner": "python3 verify_kit.py --root fixtures/minikit --manifest fixtures/minikit_manifest.json --timeout 30",
+      "note": "3 verified command line(s)"
+    },
+    {
+      "phase": "kickoff",
+      "phase_order": 1,
+      "phase_title": "Kickoff and mobilization",
+      "component": "uiowa_rfq_18649_mobilization",
+      "role": "Eight-week and six-week plan shapes, coordination forms, scope-confirmation agenda.",
+      "present": true,
+      "commands": [],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "no top-level python modules; this component is documents or data"
+    },
+    {
+      "phase": "kickoff",
+      "phase_order": 1,
+      "phase_title": "Kickoff and mobilization",
+      "component": "uiowa_rfq_18649_workshare",
+      "role": "Carrier record and evidence-authority boundary for the whole workstream.",
+      "present": true,
+      "commands": [
+        {
+          "script": "compiler.py",
+          "command": "python3 compiler.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.05,
+          "is_cli": true,
+          "usage_line": "usage: compiler.py [-h] {compile,verify,render} ...",
+          "library_hint": false,
+          "output_tail": "er} ...\n\nOffline CLI and compatibility surface for the Iowa RFQ 18649 carrier. The\npublic CLI is deliberately non-authorizing. Trusted hosts import\n``compile_current`` and ``verify_current`` and supply an independently\nretained authority root.\n\npositional arguments:\n  {compile,verify,render}\n    compile             compile an UNTRUSTED_INSPECTION packet; public CLI\n                        cannot mint current READY\n    verify              verify semantic integrity only; public CLI has no\n                        trusted-root input\n\noptions:\n  -h, --help            show this help message and exit"
+        }
+      ],
+      "rejected": [
+        {
+          "script": "authority_test_helpers.py",
+          "command": "python3 authority_test_helpers.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.11,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": true,
+          "output_tail": ""
+        },
+        {
+          "script": "authority_tests.py",
+          "command": "python3 authority_tests.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.1,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "authority_tests_core.py",
+          "command": "python3 authority_tests_core.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.1,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "authority_tests_verification.py",
+          "command": "python3 authority_tests_verification.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.1,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "filesystem_tests.py",
+          "command": "python3 filesystem_tests.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.1,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "filesystem_tests_cli.py",
+          "command": "python3 filesystem_tests_cli.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.06,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "filesystem_tests_io.py",
+          "command": "python3 filesystem_tests_io.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.1,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "workshare_assessment.py",
+          "command": "python3 workshare_assessment.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "workshare_authority.py",
+          "command": "python3 workshare_authority.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.03,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "workshare_candidate.py",
+          "command": "python3 workshare_candidate.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.03,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "workshare_compile.py",
+          "command": "python3 workshare_compile.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.03,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "workshare_constants.py",
+          "command": "python3 workshare_constants.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.03,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "workshare_contract.py",
+          "command": "python3 workshare_contract.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.03,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "workshare_core.py",
+          "command": "python3 workshare_core.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.03,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "workshare_engine.py",
+          "command": "python3 workshare_engine.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "workshare_io.py",
+          "command": "python3 workshare_io.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "workshare_read.py",
+          "command": "python3 workshare_read.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "workshare_render.py",
+          "command": "python3 workshare_render.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.03,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "workshare_verify.py",
+          "command": "python3 workshare_verify.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.03,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "workshare_write.py",
+          "command": "python3 workshare_write.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        }
+      ],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "kickoff",
+      "phase_order": 1,
+      "phase_title": "Kickoff and mobilization",
+      "component": "uiowa_rfq_18649_build_board",
+      "role": "Assessment context notes used to brief the team.",
+      "present": true,
+      "commands": [],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "no top-level python modules; this component is documents or data"
+    },
+    {
+      "phase": "kickoff",
+      "phase_order": 1,
+      "phase_title": "Kickoff and mobilization",
+      "component": "uiowa_rfq_18649_capability_appendix",
+      "role": "UIOWA-137: proposal capability appendix where no claim prints without a recorded demonstration.",
+      "present": true,
+      "commands": [
+        {
+          "script": "capability_appendix.py",
+          "command": "python3 capability_appendix.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": true,
+          "usage_line": "usage: capability_appendix.py [-h] [--register REGISTER]",
+          "library_hint": false,
+          "output_tail": "ISTER]\n                              [--observations OBSERVATIONS] [--base BASE]\n                              {record,build} ...\n\nBuild an evidence-backed capability appendix in which no claim can be printed\nwithout a recorded demonstration.\n\npositional arguments:\n  {record,build}\n    record              execute and record each demonstration\n    build               render the appendix; executes nothing\n\noptions:\n  -h, --help            show this help message and exit\n  --register REGISTER\n  --observations OBSERVATIONS\n  --base BASE           repository root that artifact paths resolve against"
+        }
+      ],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "kickoff",
+      "phase_order": 1,
+      "phase_title": "Kickoff and mobilization",
+      "component": "uiowa_rfq_18649_scope_change",
+      "role": "UIOWA-133: scope-change impact calculator; prices a change against the baseline with its assumptions printed next to the answer.",
+      "present": true,
+      "commands": [
+        {
+          "script": "scope_change.py",
+          "command": "python3 scope_change.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": true,
+          "usage_line": "usage: scope_change.py [-h] [--baseline BASELINE] [--requests REQUESTS]",
+          "library_hint": false,
+          "output_tail": "UT] [--csv-out CSV_OUT]\n                       [--markdown-out MARKDOWN_OUT] [--sweep-role SWEEP_ROLE]\n                       [--no-sensitivity]\n\nPrice scope changes against the proposed baseline, keeping a no-charge defect\ncorrection distinguishable from added work.\n\noptions:\n  -h, --help            show this help message and exit\n  --baseline BASELINE\n  --requests REQUESTS\n  --json-out JSON_OUT\n  --csv-out CSV_OUT\n  --markdown-out MARKDOWN_OUT\n  --sweep-role SWEEP_ROLE\n                        role whose loaded rate is scaled for the assumption\n                        sweep\n  --no-sensitivity"
+        }
+      ],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "kickoff",
+      "phase_order": 1,
+      "phase_title": "Kickoff and mobilization",
+      "component": "uiowa_rfq_18649_bid_pack",
+      "role": "UIOWA-136: assembles prepared proposal components into a navigable bidder attachment set.",
+      "present": true,
+      "commands": [
+        {
+          "script": "bid_pack.py",
+          "command": "python3 bid_pack.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.08,
+          "is_cli": true,
+          "usage_line": "usage: bid_pack.py [-h] --manifest MANIFEST --out OUT [--strict]",
+          "library_hint": false,
+          "output_tail": "usage: bid_pack.py [-h] --manifest MANIFEST --out OUT [--strict]\n\nAssemble a bid submission folder.\n\noptions:\n  -h, --help           show this help message and exit\n  --manifest MANIFEST\n  --out OUT\n  --strict             exit 1 if any ERROR-severity issue was raised"
+        }
+      ],
+      "rejected": [
+        {
+          "script": "docxwrite.py",
+          "command": "python3 docxwrite.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.06,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "packcheck.py",
+          "command": "python3 packcheck.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": "--help: 0 check(s) run, 0 defect(s), 1 not run\n  [---] format                         NOT RUN: not a .pdf or .docx; nothing was checked\n\n0 defect(s) across 1 file(s).\nA clean result means: no structural defect found by these checks. It is not a validity, PDF/UA, WCAG or any other conformance claim."
+        },
+        {
+          "script": "pdfwrite.py",
+          "command": "python3 pdfwrite.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.03,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        }
+      ],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "kickoff",
+      "phase_order": 1,
+      "phase_title": "Kickoff and mobilization",
+      "component": "uiowa_rfq_18649_filesystem_safety",
+      "role": "Read-only static screen over every Python tool in the kit: what can it write, and where. Run it before pointing any component at real material.",
+      "present": true,
+      "commands": [
+        {
+          "script": "fs_safety.py",
+          "command": "python3 fs_safety.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.05,
+          "is_cli": true,
+          "usage_line": "usage: fs_safety.py [-h] --root ROOT [--lane-prefix LANE_PREFIX]",
+          "library_hint": false,
+          "output_tail": "usage: fs_safety.py [-h] --root ROOT [--lane-prefix LANE_PREFIX]\n                    [--output-dir OUTPUT_DIR]\n\nCLI for the filesystem-safety screen.\n\noptions:\n  -h, --help            show this help message and exit\n  --root ROOT           directory to scan (read-only)\n  --lane-prefix LANE_PREFIX\n                        only scan lanes whose directory name starts with this\n  --output-dir OUTPUT_DIR\n                        where the report is written; nothing is written\n                        outside it"
+        }
+      ],
+      "rejected": [
+        {
+          "script": "fsaudit.py",
+          "command": "python3 fsaudit.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        }
+      ],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_order": 2,
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_synthetic_collection",
+      "role": "Fictional AIS evidence corpus; the safe input for every rehearsal.",
+      "present": true,
+      "commands": [],
+      "rejected": [
+        {
+          "script": "validate_collection.py",
+          "command": "python3 validate_collection.py --help",
+          "exit_code": 1,
+          "timed_out": false,
+          "duration_s": 0.03,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": "on.py\", line 20, in validate\n    facts_doc = load_json(root / \"facts.json\")\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/cmdidx_fz6m61ww/uiowa_rfq_18649_synthetic_collection/validate_collection.py\", line 15, in load_json\n    with path.open(\"r\", encoding=\"utf-8\") as fh:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.11/pathlib.py\", line 1044, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '--help/facts.json'"
+        }
+      ],
+      "manifest_runner": null,
+      "note": "no verified command line: 1 module(s) probed, none answered --help with a usage line"
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_order": 2,
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_intake_rehearsal",
+      "role": "Intake-to-assessment rehearsal; malformed-input handling.",
+      "present": true,
+      "commands": [
+        {
+          "script": "rehearse_intake.py",
+          "command": "python3 rehearse_intake.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": true,
+          "usage_line": "usage: rehearse_intake.py [-h] [--collection COLLECTION] [--out OUT]",
+          "library_hint": false,
+          "output_tail": "EXTRA_COLLECTION]\n                          [--check-digest]\n\nUIOWA-092 - intake-to-assessment integration rehearsal.\n\noptions:\n  -h, --help            show this help message and exit\n  --collection COLLECTION\n                        collection root (default: sources)\n  --out OUT             artifact output dir (default: artifacts)\n  --extra-collection EXTRA_COLLECTION\n                        optional external collection dir holding\n                        evidence_manifest.json\n  --check-digest        recompute artifacts and compare against the recorded\n                        RUN_DIGEST.json"
+        }
+      ],
+      "rejected": [
+        {
+          "script": "intake_schema.py",
+          "command": "python3 intake_schema.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.02,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": true,
+          "output_tail": ""
+        }
+      ],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_order": 2,
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_document_extraction",
+      "role": "Locator-preserving extraction from PDF/DOCX/text evidence.",
+      "present": true,
+      "commands": [
+        {
+          "script": "extract.py",
+          "command": "python3 extract.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.06,
+          "is_cli": true,
+          "usage_line": "usage: extract.py [-h] [-o OUTPUT] input",
+          "library_hint": false,
+          "output_tail": "usage: extract.py [-h] [-o OUTPUT] input\n\npositional arguments:\n  input\n\noptions:\n  -h, --help            show this help message and exit\n  -o OUTPUT, --output OUTPUT"
+        }
+      ],
+      "rejected": [
+        {
+          "script": "make_synthetic_corpus.py",
+          "command": "python3 make_synthetic_corpus.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.07,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        }
+      ],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_order": 2,
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_test_data_readiness",
+      "role": "Test-data catalog readiness evidence.",
+      "present": true,
+      "commands": [],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "no top-level python modules; this component is documents or data"
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_order": 2,
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_secure_guidance",
+      "role": "Secure-development guidance usability evidence.",
+      "present": true,
+      "commands": [
+        {
+          "script": "assess_guidance.py",
+          "command": "python3 assess_guidance.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.06,
+          "is_cli": true,
+          "usage_line": "usage: assess_guidance.py [-h] --csv-out CSV_OUT --md-out MD_OUT packet",
+          "library_hint": false,
+          "output_tail": "usage: assess_guidance.py [-h] --csv-out CSV_OUT --md-out MD_OUT packet\n\nUIOWA-058 offline secure-development guidance usability assessor.\n\npositional arguments:\n  packet\n\noptions:\n  -h, --help         show this help message and exit\n  --csv-out CSV_OUT\n  --md-out MD_OUT"
+        }
+      ],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_order": 2,
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_security_event_review",
+      "role": "Security-event review and ownership evidence.",
+      "present": true,
+      "commands": [
+        {
+          "script": "assess_security_events.py",
+          "command": "python3 assess_security_events.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.06,
+          "is_cli": true,
+          "usage_line": "usage: assess_security_events.py [-h] --json-out JSON_OUT --csv-out CSV_OUT",
+          "library_hint": false,
+          "output_tail": "usage: assess_security_events.py [-h] --json-out JSON_OUT --csv-out CSV_OUT\n                                 --md-out MD_OUT\n                                 input\n\nOffline security-event review evidence assessor for UIOWA-060. The tool\nevaluates supplied records only. It never connects to live systems, reads\ncredentials, or turns missing evidence into a security/compliance verdict.\n\npositional arguments:\n  input                JSON event packet\n\noptions:\n  -h, --help           show this help message and exit\n  --json-out JSON_OUT\n  --csv-out CSV_OUT\n  --md-out MD_OUT"
+        }
+      ],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_order": 2,
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_observability",
+      "role": "Observability and service-objective evidence.",
+      "present": true,
+      "commands": [
+        {
+          "script": "observability.py",
+          "command": "python3 observability.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.05,
+          "is_cli": true,
+          "usage_line": "usage: observability.py [-h] [--out OUT] packet",
+          "library_hint": false,
+          "output_tail": "usage: observability.py [-h] [--out OUT] packet\n\nOffline evidence assessor for UIOWA-065 service observability and objectives.\nThis tool evaluates supplied synthetic or engagement evidence. It never\ncontacts monitoring systems and never treats missing evidence as a negative\nobservation.\n\npositional arguments:\n  packet      JSON evidence packet\n\noptions:\n  -h, --help  show this help message and exit\n  --out OUT   write JSON result"
+        }
+      ],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_order": 2,
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_recovery_evidence",
+      "role": "Backup completion vs demonstrated restoration.",
+      "present": true,
+      "commands": [
+        {
+          "script": "assess_recovery.py",
+          "command": "python3 assess_recovery.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": true,
+          "usage_line": "usage: assess_recovery.py [-h] [--json-output JSON_OUTPUT]",
+          "library_hint": false,
+          "output_tail": "usage: assess_recovery.py [-h] [--json-output JSON_OUTPUT]\n                          [--csv-output CSV_OUTPUT]\n                          [--markdown-output MARKDOWN_OUTPUT]\n                          input_json\n\npositional arguments:\n  input_json\n\noptions:\n  -h, --help            show this help message and exit\n  --json-output JSON_OUTPUT\n  --csv-output CSV_OUTPUT\n  --markdown-output MARKDOWN_OUTPUT"
+        },
+        {
+          "script": "recovery_evidence.py",
+          "command": "python3 recovery_evidence.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": true,
+          "usage_line": "usage: recovery_evidence.py [-h] [--estate ESTATE] [--outdir OUTDIR]",
+          "library_hint": false,
+          "output_tail": "usage: recovery_evidence.py [-h] [--estate ESTATE] [--outdir OUTDIR]\n                            [--scenario-service SCENARIO_SERVICE] [--quiet]\n\nBuild a recovery evidence matrix and worked restoration scenario from service,\nbackup and exercise records.\n\noptions:\n  -h, --help            show this help message and exit\n  --estate ESTATE       path to the estate JSON file\n  --outdir OUTDIR       directory for generated artifacts\n  --scenario-service SCENARIO_SERVICE\n                        service to walk in the worked restoration scenario\n  --quiet               suppress the console summary"
+        }
+      ],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "2 verified command line(s)"
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_order": 2,
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_incident_learning",
+      "role": "Incident timelines, postmortems, corrective-action follow-through.",
+      "present": true,
+      "commands": [],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "no top-level python modules; this component is documents or data"
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_order": 2,
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_release_provenance",
+      "role": "Deployment record traced to artifact digest and approval evidence.",
+      "present": true,
+      "commands": [
+        {
+          "script": "provenance.py",
+          "command": "python3 provenance.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.05,
+          "is_cli": true,
+          "usage_line": "usage: provenance.py [-h] [--case CASE] [--schema] [--format {json,markdown}]",
+          "library_hint": false,
+          "output_tail": "age: provenance.py [-h] [--case CASE] [--schema] [--format {json,markdown}]\n                     [--artifact-root ARTIFACT_ROOT]\n                     [packet]\n\nOffline release-record consistency inspector; not an authenticity verifier.\n\npositional arguments:\n  packet\n\noptions:\n  -h, --help            show this help message and exit\n  --case CASE           select a named packet from a fixture collection\n  --schema              print JSON Schema; no input needed\n  --format {json,markdown}\n  --artifact-root ARTIFACT_ROOT\n                        optionally hash supplied local artifacts; no network"
+        }
+      ],
+      "rejected": [
+        {
+          "script": "make_fixtures.py",
+          "command": "python3 make_fixtures.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.05,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        }
+      ],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_order": 2,
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_handoff",
+      "role": "Development-to-operations handoff packet evidence.",
+      "present": true,
+      "commands": [
+        {
+          "script": "handoff.py",
+          "command": "python3 handoff.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.06,
+          "is_cli": true,
+          "usage_line": "usage: handoff.py [-h] {validate,render} ...",
+          "library_hint": false,
+          "output_tail": "usage: handoff.py [-h] {validate,render} ...\n\nValidate and render UIOWA-050 development-to-operations handoff packets. No\nthird-party dependencies. A successful validation means the packet is\nstructurally reviewable; it does not mean the change is approved or\nproduction-ready.\n\npositional arguments:\n  {validate,render}\n    validate         Validate a handoff JSON packet\n    render           Render a handoff JSON packet as Markdown\n\noptions:\n  -h, --help         show this help message and exit"
+        }
+      ],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_order": 2,
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_ai_use_inventory",
+      "role": "Current AI use: active vs informal experiment vs planned.",
+      "present": true,
+      "commands": [
+        {
+          "script": "interview_guide.py",
+          "command": "python3 interview_guide.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": true,
+          "usage_line": "usage: interview_guide.py [-h] [--guide] [--probes PROBES]",
+          "library_hint": false,
+          "output_tail": "usage: interview_guide.py [-h] [--guide] [--probes PROBES]\n\nAI-use discovery instrument.\n\noptions:\n  -h, --help       show this help message and exit\n  --guide          print the interview guide\n  --probes PROBES  print the probes a classified collection requires"
+        },
+        {
+          "script": "inventory.py",
+          "command": "python3 inventory.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": true,
+          "usage_line": "usage: inventory.py [-h] --input INPUT [--outdir OUTDIR] [--print]",
+          "library_hint": false,
+          "output_tail": "usage: inventory.py [-h] --input INPUT [--outdir OUTDIR] [--print]\n\nClassify an AI-use inventory collection.\n\noptions:\n  -h, --help       show this help message and exit\n  --input INPUT    path to a JSON collection\n  --outdir OUTDIR  write CSV/JSON/Markdown here\n  --print          print the Markdown report"
+        }
+      ],
+      "rejected": [
+        {
+          "script": "schema.py",
+          "command": "python3 schema.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.02,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": true,
+          "output_tail": ""
+        }
+      ],
+      "manifest_runner": null,
+      "note": "2 verified command line(s)"
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_order": 2,
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_knowledge_readiness",
+      "role": "AI knowledge and data readiness evidence.",
+      "present": false,
+      "commands": [],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "component not built yet"
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_order": 2,
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_contractor_transition",
+      "role": "UIOWA-108: staff-role changes, application ownership, service identities and runbook updates as one handoff scenario.",
+      "present": true,
+      "commands": [
+        {
+          "script": "transition.py",
+          "command": "python3 transition.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": true,
+          "usage_line": "usage: transition.py [-h] --input INPUT [--outdir OUTDIR] [--print]",
+          "library_hint": false,
+          "output_tail": "usage: transition.py [-h] --input INPUT [--outdir OUTDIR] [--print]\n\nClassify a contractor-transition packet.\n\noptions:\n  -h, --help       show this help message and exit\n  --input INPUT\n  --outdir OUTDIR\n  --print"
+        }
+      ],
+      "rejected": [
+        {
+          "script": "scenario.py",
+          "command": "python3 scenario.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.02,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        }
+      ],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_order": 2,
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_question_cards",
+      "role": "UIOWA-114: turns one unresolved observation into the follow-up question that would resolve it.",
+      "present": true,
+      "commands": [
+        {
+          "script": "question_cards.py",
+          "command": "python3 question_cards.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": true,
+          "usage_line": "usage: question_cards.py [-h] [--data DATA] [--observations OBSERVATIONS]",
+          "library_hint": false,
+          "output_tail": "usage: question_cards.py [-h] [--data DATA] [--observations OBSERVATIONS]\n                         [--out OUT] [--query QUERY]\n                         {build,check,search,verify-export}\n\nUIOWA-114 -- follow-up interview question cards.\n\npositional arguments:\n  {build,check,search,verify-export}\n\noptions:\n  -h, --help            show this help message and exit\n  --data DATA\n  --observations OBSERVATIONS\n  --out OUT\n  --query QUERY"
+        }
+      ],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_order": 2,
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_deadline_continuity",
+      "role": "UIOWA-107: research-administration continuity scenario across a hard external deadline.",
+      "present": true,
+      "commands": [
+        {
+          "script": "continuity.py",
+          "command": "python3 continuity.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": true,
+          "usage_line": "usage: continuity.py [-h] --input INPUT [--outdir OUTDIR] [--print]",
+          "library_hint": false,
+          "output_tail": "usage: continuity.py [-h] --input INPUT [--outdir OUTDIR] [--print]\n\nAnalyse a deadline-continuity scenario.\n\noptions:\n  -h, --help       show this help message and exit\n  --input INPUT\n  --outdir OUTDIR\n  --print"
+        }
+      ],
+      "rejected": [
+        {
+          "script": "intervals.py",
+          "command": "python3 intervals.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.01,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        }
+      ],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "evidence_collection",
+      "phase_order": 2,
+      "phase_title": "Evidence collection",
+      "component": "uiowa_rfq_18649_vocabulary_crosswalk",
+      "role": "Reconciles group and assessment-area vocabulary across components so the same thing has one name.",
+      "present": true,
+      "commands": [
+        {
+          "script": "reconcile.py",
+          "command": "python3 reconcile.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": true,
+          "usage_line": "usage: reconcile.py [-h] [--revenue-root REVENUE_ROOT] [--crosswalk CROSSWALK]",
+          "library_hint": false,
+          "output_tail": "usage: reconcile.py [-h] [--revenue-root REVENUE_ROOT] [--crosswalk CROSSWALK]\n                    [--out OUT]\n\nReconcile the group and assessment-area vocabularies used across the RFQ-18649\nlanes.\n\noptions:\n  -h, --help            show this help message and exit\n  --revenue-root REVENUE_ROOT\n  --crosswalk CROSSWALK\n  --out OUT"
+        }
+      ],
+      "rejected": [
+        {
+          "script": "scan_vocabulary.py",
+          "command": "python3 scan_vocabulary.py --help",
+          "exit_code": 1,
+          "timed_out": false,
+          "duration_s": 0.03,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": "Traceback (most recent call last):\n  File \"/tmp/cmdidx_8jyrtjvy/uiowa_rfq_18649_vocabulary_crosswalk/scan_vocabulary.py\", line 119, in <module>\n    obs = scan(root)\n          ^^^^^^^^^^\n  File \"/tmp/cmdidx_8jyrtjvy/uiowa_rfq_18649_vocabulary_crosswalk/scan_vocabulary.py\", line 54, in scan\n    for lane in sorted(os.listdir(root)):\n                       ^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '--help'"
+        }
+      ],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "analysis",
+      "phase_order": 3,
+      "phase_title": "Analysis",
+      "component": "uiowa_rfq_18649_rating_model",
+      "role": "Area rating with an explicit decision table.",
+      "present": true,
+      "commands": [
+        {
+          "script": "rating_model.py",
+          "command": "python3 rating_model.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.05,
+          "is_cli": true,
+          "usage_line": "usage: rating_model.py [-h] [--json-out JSON_OUT]",
+          "library_hint": false,
+          "output_tail": "usage: rating_model.py [-h] [--json-out JSON_OUT]\n                       [--markdown-out MARKDOWN_OUT]\n                       input_json\n\npositional arguments:\n  input_json\n\noptions:\n  -h, --help            show this help message and exit\n  --json-out JSON_OUT\n  --markdown-out MARKDOWN_OUT"
+        }
+      ],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "analysis",
+      "phase_order": 3,
+      "phase_title": "Analysis",
+      "component": "uiowa_rfq_18649_prioritization",
+      "role": "Recommendation prioritization with visible weights and sensitivity.",
+      "present": true,
+      "commands": [
+        {
+          "script": "prioritize.py",
+          "command": "python3 prioritize.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.05,
+          "is_cli": true,
+          "usage_line": "usage: prioritize.py [-h] [--recommendations RECOMMENDATIONS]",
+          "library_hint": false,
+          "output_tail": "points\n                        keep every sampled point of the crossover sweep in the\n                        JSON. Off by default: the points are intermediate\n                        scaffolding and the crossovers derived from them are\n                        the result. Turn it on to plot the sweep.\n  --json-out JSON_OUT   write the full result as JSON\n  --csv-out CSV_OUT     write the ranked table as CSV\n  --markdown-out MARKDOWN_OUT\n                        write the readable worksheet\n  --no-sensitivity      rank under one weighting only, skipping the scenario\n                        sweep"
+        }
+      ],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "analysis",
+      "phase_order": 3,
+      "phase_title": "Analysis",
+      "component": "uiowa_rfq_18649_delivery_metrics",
+      "role": "Delivery metric calculation, data dictionary, interpretation notes.",
+      "present": true,
+      "commands": [
+        {
+          "script": "calculator.py",
+          "command": "python3 calculator.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.06,
+          "is_cli": true,
+          "usage_line": "usage: calculator.py [-h] --window-start WINDOW_START --window-end WINDOW_END",
+          "library_hint": false,
+          "output_tail": "usage: calculator.py [-h] --window-start WINDOW_START --window-end WINDOW_END\n                     [--service SERVICE] [--output OUTPUT]\n                     csv_path\n\npositional arguments:\n  csv_path\n\noptions:\n  -h, --help            show this help message and exit\n  --window-start WINDOW_START\n  --window-end WINDOW_END\n  --service SERVICE\n  --output OUTPUT"
+        }
+      ],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "analysis",
+      "phase_order": 3,
+      "phase_title": "Analysis",
+      "component": "uiowa_rfq_18649_outcome_measurement",
+      "role": "Adoption vs operational outcome, kept separate.",
+      "present": true,
+      "commands": [
+        {
+          "script": "analyze.py",
+          "command": "python3 analyze.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.06,
+          "is_cli": true,
+          "usage_line": "usage: analyze.py [-h] {validate,report} ...",
+          "library_hint": false,
+          "output_tail": "usage: analyze.py [-h] {validate,report} ...\n\nValidate and report UIOWA-087 recommendation-linked outcome measures. The tool\nreports directional measurement evidence. It never attributes causality,\ncombines adoption and outcome into an effectiveness score, or rates\nindividuals.\n\npositional arguments:\n  {validate,report}\n\noptions:\n  -h, --help         show this help message and exit"
+        }
+      ],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "analysis",
+      "phase_order": 3,
+      "phase_title": "Analysis",
+      "component": "uiowa_rfq_18649_workbench",
+      "role": "Local analyst surface over the workshare compiler.",
+      "present": true,
+      "commands": [
+        {
+          "script": "server.py",
+          "command": "python3 server.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.07,
+          "is_cli": true,
+          "usage_line": "usage: server.py [-h] [--port PORT]",
+          "library_hint": false,
+          "output_tail": "usage: server.py [-h] [--port PORT]\n\nLoopback-only analyst workbench for the University of Iowa RFQ 18649 carrier.\nThis server deliberately exposes only the existing compiler's *untrusted\ninspection* path. It cannot accept or mint a trusted authority root and cannot\nemit current READY or any buyer/commercial authority.\n\noptions:\n  -h, --help   show this help message and exit\n  --port PORT"
+        }
+      ],
+      "rejected": [
+        {
+          "script": "browser_acceptance.py",
+          "command": "python3 browser_acceptance.py --help",
+          "exit_code": 1,
+          "timed_out": false,
+          "duration_s": 0.03,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": "Traceback (most recent call last):\n  File \"/tmp/cmdidx_8k148dc9/uiowa_rfq_18649_workbench/browser_acceptance.py\", line 15, in <module>\n    from playwright.sync_api import sync_playwright\nModuleNotFoundError: No module named 'playwright'"
+        }
+      ],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "analysis",
+      "phase_order": 3,
+      "phase_title": "Analysis",
+      "component": "uiowa_rfq_18649_capacity_benchmark",
+      "role": "Workflow capacity benchmark; measured vs estimated.",
+      "present": true,
+      "commands": [
+        {
+          "script": "benchmark.py",
+          "command": "python3 benchmark.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.07,
+          "is_cli": true,
+          "usage_line": "usage: benchmark.py [-h] [--sizes [{small,medium,large} ...]]",
+          "library_hint": false,
+          "output_tail": "usage: benchmark.py [-h] [--sizes [{small,medium,large} ...]]\n                    [--results-dir RESULTS_DIR] [--seed SEED]\n                    [--keep-workdir KEEP_WORKDIR]\n\nRun the UIOWA-095 capacity benchmark.\n\noptions:\n  -h, --help            show this help message and exit\n  --sizes [{small,medium,large} ...]\n  --results-dir RESULTS_DIR\n  --seed SEED\n  --keep-workdir KEEP_WORKDIR\n                        Write collections here instead of a temp dir (for\n                        inspection)."
+        },
+        {
+          "script": "generate_collection.py",
+          "command": "python3 generate_collection.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.06,
+          "is_cli": true,
+          "usage_line": "usage: generate_collection.py [-h] [--profile {large,medium,small}] --out OUT",
+          "library_hint": false,
+          "output_tail": "usage: generate_collection.py [-h] [--profile {large,medium,small}] --out OUT\n                              [--seed SEED]\n\nGenerate a synthetic UIOWA-095 benchmark collection.\n\noptions:\n  -h, --help            show this help message and exit\n  --profile {large,medium,small}\n  --out OUT\n  --seed SEED"
+        },
+        {
+          "script": "workflow.py",
+          "command": "python3 workflow.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.05,
+          "is_cli": true,
+          "usage_line": "usage: workflow.py [-h] [--mode {baseline,optimized}] [--out OUT] collection",
+          "library_hint": false,
+          "output_tail": "usage: workflow.py [-h] [--mode {baseline,optimized}] [--out OUT] collection\n\nRun the UIOWA-095 preparation workflow once.\n\npositional arguments:\n  collection\n\noptions:\n  -h, --help            show this help message and exit\n  --mode {baseline,optimized}\n  --out OUT"
+        }
+      ],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "3 verified command line(s)"
+    },
+    {
+      "phase": "analysis",
+      "phase_order": 3,
+      "phase_title": "Analysis",
+      "component": "uiowa_rfq_18649_ai_opportunity_portfolio",
+      "role": "AI task suitability, benefit, integration effort.",
+      "present": true,
+      "commands": [
+        {
+          "script": "opportunity_portfolio.py",
+          "command": "python3 opportunity_portfolio.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": true,
+          "usage_line": "usage: opportunity_portfolio.py [-h] [--candidates CANDIDATES] [--out OUT]",
+          "library_hint": false,
+          "output_tail": "usage: opportunity_portfolio.py [-h] [--candidates CANDIDATES] [--out OUT]\n                                [--composite]\n\nUIOWA-072 AI opportunity portfolio\n\noptions:\n  -h, --help            show this help message and exit\n  --candidates CANDIDATES\n  --out OUT\n  --composite           also emit the blended score (refused per candidate\n                        whenever any dimension is UNKNOWN)"
+        }
+      ],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "analysis",
+      "phase_order": 3,
+      "phase_title": "Analysis",
+      "component": "uiowa_rfq_18649_ai_policy_to_workflow",
+      "role": "Policy-to-workflow assessment (NIST AI RMF as reference only).",
+      "present": true,
+      "commands": [
+        {
+          "script": "policy_matrix.py",
+          "command": "python3 policy_matrix.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.03,
+          "is_cli": true,
+          "usage_line": "usage: policy_matrix.py [-h] [--fixtures FIXTURES] [--out OUT]",
+          "library_hint": false,
+          "output_tail": "usage: policy_matrix.py [-h] [--fixtures FIXTURES] [--out OUT]\n\nPolicy-to-practice matrix generator (UIOWA-074, AI policy-to-workflow\nassessment).\n\noptions:\n  -h, --help           show this help message and exit\n  --fixtures FIXTURES\n  --out OUT"
+        }
+      ],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "analysis",
+      "phase_order": 3,
+      "phase_title": "Analysis",
+      "component": "uiowa_rfq_18649_adoption_readiness",
+      "role": "Organizational adoption readiness; never rates individuals.",
+      "present": true,
+      "commands": [
+        {
+          "script": "readiness.py",
+          "command": "python3 readiness.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": true,
+          "usage_line": "usage: readiness.py [-h] [--teams TEAMS] [--indicators INDICATORS]",
+          "library_hint": false,
+          "output_tail": "usage: readiness.py [-h] [--teams TEAMS] [--indicators INDICATORS]\n                    [--catalog CATALOG] [--outdir OUTDIR]\n                    [--min-contributors MIN_CONTRIBUTORS]\n                    [--min-indicators MIN_INDICATORS] [--instrument-only]\n\nUIOWA-077 - Organizational AI adoption readiness.\n\noptions:\n  -h, --help            show this help message and exit\n  --teams TEAMS\n  --indicators INDICATORS\n  --catalog CATALOG\n  --outdir OUTDIR\n  --min-contributors MIN_CONTRIBUTORS\n  --min-indicators MIN_INDICATORS\n  --instrument-only     Render only the interview instrument and exit."
+        }
+      ],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "analysis",
+      "phase_order": 3,
+      "phase_title": "Analysis",
+      "component": "uiowa_rfq_18649_ai_integration",
+      "role": "Integration and portability readiness patterns.",
+      "present": true,
+      "commands": [],
+      "rejected": [
+        {
+          "script": "build_kit.py",
+          "command": "python3 build_kit.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.07,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": "               discarded: answer_useful_within='someday' not in ('only_in_session', 'minutes', 'hours', 'days'); consequential='yes' is not a boolean; peak_items_per_hour='lots' is not a number\n\nPortability (provider-swap blast radius)\n  HRI-INTAKE-01       39 edit points  PERVASIVE\n  HRI-ARCHIVE-02       2 edit points  CONTAINED\n  HRI-AWARD-03         6 edit points  INSUFFICIENT_EVIDENCE (FLOOR, incomplete inventory)\n  HRI-MALFORMED-99   NOT SCORED - surface counts must be non-negative integers or UNKNOWN: ['wire_shape_reads']\n\nVendor-neutrality tripwire over generated artifacts: 0 finding(s)"
+        },
+        {
+          "script": "demo_swap.py",
+          "command": "python3 demo_swap.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.06,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": "-------------------------------\ncaller.py unchanged across every run : True\ndistinct caller.py hashes observed   : 1\nlines of calling code changed to swap: 0\nscan portlib/caller.py               : independent=True, violations=0\nscan portlib/caller_leaky.py (control): independent=False, violations=5 (AlphaTimeout, _AlphaWireClient, fake_alpha)\nBEHAVIOR delta, same code, healthy A vs healthy B:\n  items routed differently             : 1/5 (doc-4)\n  auto-routed A vs B                   : 3 vs 2\n--------------------------------------------------------------------------\n\nwrote out/swap_receipt.json"
+        },
+        {
+          "script": "patterns.py",
+          "command": "python3 patterns.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.02,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "portability.py",
+          "command": "python3 portability.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.03,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "unknowns.py",
+          "command": "python3 unknowns.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.01,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "worksheet.py",
+          "command": "python3 worksheet.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.03,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        }
+      ],
+      "manifest_runner": null,
+      "note": "no verified command line: 6 module(s) probed, none answered --help with a usage line"
+    },
+    {
+      "phase": "analysis",
+      "phase_order": 3,
+      "phase_title": "Analysis",
+      "component": "uiowa_rfq_18649_ai_eval_kit",
+      "role": "AI usefulness evaluation tasks with known answers.",
+      "present": true,
+      "commands": [
+        {
+          "script": "eval_kit.py",
+          "command": "python3 eval_kit.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.05,
+          "is_cli": true,
+          "usage_line": "usage: eval_kit.py [-h] [--tasks TASKS] [--runs RUNS [RUNS ...]] [--out OUT]",
+          "library_hint": false,
+          "output_tail": "usage: eval_kit.py [-h] [--tasks TASKS] [--runs RUNS [RUNS ...]] [--out OUT]\n                   {validate,report,check-digest}\n\nUIOWA-075 -- AI usefulness evaluation kit.\n\npositional arguments:\n  {validate,report,check-digest}\n\noptions:\n  -h, --help            show this help message and exit\n  --tasks TASKS\n  --runs RUNS [RUNS ...]\n  --out OUT"
+        }
+      ],
+      "rejected": [
+        {
+          "script": "interchange.py",
+          "command": "python3 interchange.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.03,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        }
+      ],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "analysis",
+      "phase_order": 3,
+      "phase_title": "Analysis",
+      "component": "uiowa_rfq_18649_economics_resource_adapters",
+      "role": "UIOWA-105: joins economics and resource estimates onto the recommendation register, keeping effort, recurring cost, cash cost and released capacity separate.",
+      "present": true,
+      "commands": [
+        {
+          "script": "check_contract.py",
+          "command": "python3 check_contract.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": true,
+          "usage_line": "usage: check_contract.py [-h]",
+          "library_hint": false,
+          "output_tail": "source})\n                         [--json]\n                         [file]\n\nCheck a component file against the UIOWA-105 adapter contracts\n\npositional arguments:\n  file                  the candidate JSON file\n\noptions:\n  -h, --help            show this help message and exit\n  --economics           check against the economics contract\n  --portfolio           check against the portfolio contract\n  --resource            check against the resource contract\n  --explain {economics,portfolio,resource}\n                        print the contract and exit\n  --json                machine-readable output"
+        },
+        {
+          "script": "integrate.py",
+          "command": "python3 integrate.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": true,
+          "usage_line": "usage: integrate.py [-h] [--register REGISTER]",
+          "library_hint": false,
+          "output_tail": "usage: integrate.py [-h] [--register REGISTER]\n                    [--resource-estimates RESOURCE_ESTIMATES]\n                    [--economics ECONOMICS] [--portfolio PORTFOLIO]\n                    [--crosswalk CROSSWALK] [--out OUT]\n\nUIOWA-105 resourcing integration\n\noptions:\n  -h, --help            show this help message and exit\n  --register REGISTER\n  --resource-estimates RESOURCE_ESTIMATES\n  --economics ECONOMICS\n  --portfolio PORTFOLIO\n  --crosswalk CROSSWALK\n  --out OUT"
+        }
+      ],
+      "rejected": [
+        {
+          "script": "adapters.py",
+          "command": "python3 adapters.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.02,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": true,
+          "output_tail": ""
+        },
+        {
+          "script": "ledgers.py",
+          "command": "python3 ledgers.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.02,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        }
+      ],
+      "manifest_runner": null,
+      "note": "2 verified command line(s)"
+    },
+    {
+      "phase": "analysis",
+      "phase_order": 3,
+      "phase_title": "Analysis",
+      "component": "uiowa_rfq_18649_roadmap_dependencies",
+      "role": "UIOWA-115: graph check over recommendation prerequisites; finds cycles, missing prerequisites and phase inversions.",
+      "present": true,
+      "commands": [
+        {
+          "script": "depcheck.py",
+          "command": "python3 depcheck.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": true,
+          "usage_line": "usage: depcheck.py [-h] [--roadmap ROADMAP] [--outdir OUTDIR]",
+          "library_hint": false,
+          "output_tail": "usage: depcheck.py [-h] [--roadmap ROADMAP] [--outdir OUTDIR]\n                   [--fanin-threshold FANIN_THRESHOLD] [--rehearse-repairs]\n\nUIOWA-115 - Roadmap dependency consistency checker.\n\noptions:\n  -h, --help            show this help message and exit\n  --roadmap ROADMAP\n  --outdir OUTDIR\n  --fanin-threshold FANIN_THRESHOLD\n  --rehearse-repairs    Apply only the mechanically safe repairs to a COPY,\n                        re-check it, and write the proposal beside the report."
+        }
+      ],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "analysis",
+      "phase_order": 3,
+      "phase_title": "Analysis",
+      "component": "uiowa_rfq_18649_ai_decision_case",
+      "role": "UIOWA-111: connects AI evaluation, lifecycle and economics into one decision case.",
+      "present": true,
+      "commands": [
+        {
+          "script": "ai_decision_case.py",
+          "command": "python3 ai_decision_case.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.06,
+          "is_cli": true,
+          "usage_line": "usage: ai_decision_case.py [-h] --case CASE [--format {markdown,json,text}]",
+          "library_hint": false,
+          "output_tail": "--set NAME=VALUE] [--sweep] [--diff] [--out OUT]\n\nIntegrated AI decision case: quality, lifecycle and economics in one run.\n\noptions:\n  -h, --help            show this help message and exit\n  --case CASE           path to a synthetic case JSON file\n  --format {markdown,json,text}\n  --set NAME=VALUE      override an assumption and re-run (repeatable)\n  --sweep               classify every assumption and report the break-even\n                        margin\n  --diff                with --set, print the line-level explanation diff\n  --out OUT             write explanation.md and decision.json here"
+        }
+      ],
+      "rejected": [
+        {
+          "script": "case.py",
+          "command": "python3 case.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.05,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "explain.py",
+          "command": "python3 explain.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.05,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "model.py",
+          "command": "python3 model.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "sensitivity.py",
+          "command": "python3 sensitivity.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.05,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        }
+      ],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "analysis",
+      "phase_order": 3,
+      "phase_title": "Analysis",
+      "component": "uiowa_rfq_18649_capacity_feasibility",
+      "role": "UIOWA-116: joins resource ranges to roadmap feasibility with real role-capacity arithmetic.",
+      "present": true,
+      "commands": [
+        {
+          "script": "capacity_roadmap.py",
+          "command": "python3 capacity_roadmap.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": true,
+          "usage_line": "usage: capacity_roadmap.py [-h] {check,plan,rules} ...",
+          "library_hint": false,
+          "output_tail": "usage: capacity_roadmap.py [-h] {check,plan,rules} ...\n\nConnect resource ranges to roadmap feasibility: dependency graph + capacity.\n\npositional arguments:\n  {check,plan,rules}\n    check             dependency and capacity checks; exit 1 on an error\n    plan              write the ASCII roadmap, report and planning tables\n    rules             print the rule table\n\noptions:\n  -h, --help          show this help message and exit"
+        }
+      ],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "draft_review",
+      "phase_order": 4,
+      "phase_title": "Draft review",
+      "component": "uiowa_rfq_18649_traceability_rehearsal",
+      "role": "Evidence to finding to recommendation to report-line trace validator.",
+      "present": true,
+      "commands": [],
+      "rejected": [
+        {
+          "script": "validate_trace.py",
+          "command": "python3 validate_trace.py --help",
+          "exit_code": 1,
+          "timed_out": false,
+          "duration_s": 0.03,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": "e_trace.py\", line 19, in main\n    evidence = load(root / \"evidence.csv\")\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/cmdidx_55lnkd86/uiowa_rfq_18649_traceability_rehearsal/validate_trace.py\", line 10, in load\n    with path.open(newline=\"\", encoding=\"utf-8\") as f:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.11/pathlib.py\", line 1044, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '--help/evidence.csv'"
+        }
+      ],
+      "manifest_runner": "python3 validate_trace.py",
+      "note": "no --help interface, but the manifest records a documented runner that verify_kit executes"
+    },
+    {
+      "phase": "draft_review",
+      "phase_order": 4,
+      "phase_title": "Draft review",
+      "component": "uiowa_rfq_18649_doc_usability",
+      "role": "Reviewer usability method and worksheets.",
+      "present": true,
+      "commands": [],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "no top-level python modules; this component is documents or data"
+    },
+    {
+      "phase": "draft_review",
+      "phase_order": 4,
+      "phase_title": "Draft review",
+      "component": "uiowa_rfq_18649_qa_kit",
+      "role": "Evidence-backed discussion and Q&A kit.",
+      "present": false,
+      "commands": [],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "component not built yet"
+    },
+    {
+      "phase": "draft_review",
+      "phase_order": 4,
+      "phase_title": "Draft review",
+      "component": "uiowa_rfq_18649_interchange",
+      "role": "CSV/JSON/doc interchange verification for review handoffs.",
+      "present": false,
+      "commands": [],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "component not built yet"
+    },
+    {
+      "phase": "draft_review",
+      "phase_order": 4,
+      "phase_title": "Draft review",
+      "component": "uiowa_rfq_18649_traceability",
+      "role": "UIOWA-093: statement to finding to citation to source bytes, with drift detection; fails loudly on an orphan at any level.",
+      "present": true,
+      "commands": [
+        {
+          "script": "audit_assertions.py",
+          "command": "python3 audit_assertions.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": true,
+          "usage_line": "usage: audit_assertions.py [-h] [--prefix PREFIX] [--format {text,json}]",
+          "library_hint": false,
+          "output_tail": "usage: audit_assertions.py [-h] [--prefix PREFIX] [--format {text,json}]\n                           [--only ONLY]\n                           root\n\nFind tests that cannot fail, across every landed lane.\n\npositional arguments:\n  root\n\noptions:\n  -h, --help            show this help message and exit\n  --prefix PREFIX\n  --format {text,json}\n  --only ONLY"
+        },
+        {
+          "script": "audit_self_sealing.py",
+          "command": "python3 audit_self_sealing.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.05,
+          "is_cli": true,
+          "usage_line": "usage: audit_self_sealing.py [-h] [--prefix PREFIX] [--timeout TIMEOUT]",
+          "library_hint": false,
+          "output_tail": "usage: audit_self_sealing.py [-h] [--prefix PREFIX] [--timeout TIMEOUT]\n                             [--format {text,json}] [--only ONLY]\n                             root\n\nFind checks that have stopped checking, across every landed lane.\n\npositional arguments:\n  root                  directory holding the lanes\n\noptions:\n  -h, --help            show this help message and exit\n  --prefix PREFIX\n  --timeout TIMEOUT\n  --format {text,json}\n  --only ONLY           audit a single lane by directory name"
+        },
+        {
+          "script": "trace_check.py",
+          "command": "python3 trace_check.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.05,
+          "is_cli": true,
+          "usage_line": "usage: trace_check.py [-h] [--format {text,json,markdown}] [--register]",
+          "library_hint": false,
+          "output_tail": "mat {text,json,markdown}] [--register]\n                      [--seal] [--rules]\n                      bundle\n\nFour-level traceability checker for a miniature assessment report bundle.\n\npositional arguments:\n  bundle                path to the bundle directory\n\noptions:\n  -h, --help            show this help message and exit\n  --format {text,json,markdown}\n  --register            recompute statement/finding digests after a deliberate\n                        edit\n  --seal                record the sha256 of each source record (deliberate)\n  --rules               print the rule catalogue and exit"
+        }
+      ],
+      "rejected": [
+        {
+          "script": "schema.py",
+          "command": "python3 schema.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.03,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": true,
+          "output_tail": ""
+        }
+      ],
+      "manifest_runner": null,
+      "note": "3 verified command line(s)"
+    },
+    {
+      "phase": "draft_review",
+      "phase_order": 4,
+      "phase_title": "Draft review",
+      "component": "uiowa_rfq_18649_output_agreement",
+      "role": "UIOWA-117: checks the matrix, recommendation register, executive summary and presentation agree with each other.",
+      "present": true,
+      "commands": [
+        {
+          "script": "make_bundle.py",
+          "command": "python3 make_bundle.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.06,
+          "is_cli": true,
+          "usage_line": "usage: make_bundle.py [-h] [--out OUT]",
+          "library_hint": false,
+          "output_tail": "usage: make_bundle.py [-h] [--out OUT]\n\nWrite the consistent bundle and every mismatch example.\n\noptions:\n  -h, --help  show this help message and exit\n  --out OUT"
+        },
+        {
+          "script": "output_agreement.py",
+          "command": "python3 output_agreement.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.06,
+          "is_cli": true,
+          "usage_line": "usage: output_agreement.py [-h] [--json] [--regenerate OUT] bundle",
+          "library_hint": false,
+          "output_tail": "usage: output_agreement.py [-h] [--json] [--regenerate OUT] bundle\n\nCheck that a report bundle's four outputs agree.\n\npositional arguments:\n  bundle            bundle directory\n\noptions:\n  -h, --help        show this help message and exit\n  --json\n  --regenerate OUT  recompute derived values from source and write the\n                    corrected bundle"
+        }
+      ],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "2 verified command line(s)"
+    },
+    {
+      "phase": "final_delivery",
+      "phase_order": 5,
+      "phase_title": "Final delivery",
+      "component": "uiowa_rfq_18649_report_structure",
+      "role": "RFQ-aligned final-report structure.",
+      "present": true,
+      "commands": [
+        {
+          "script": "report_structure.py",
+          "command": "python3 report_structure.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.06,
+          "is_cli": true,
+          "usage_line": "usage: report_structure.py [-h] [--map MAP] [--schemas SCHEMAS]",
+          "library_hint": false,
+          "output_tail": "\n                           [--render-map-csv PATH] [--scope-guard]\n\nUIOWA-082 report structure: check and render.\n\noptions:\n  -h, --help            show this help message and exit\n  --map MAP\n  --schemas SCHEMAS\n  --fixtures FIXTURES\n  --check               run the coverage checker\n  --verify-workbench REPO_ROOT\n                        re-read the landed registers and fail on pinned-field\n                        drift\n  --render-template PATH\n  --render-sample PATH\n  --render-map-csv PATH\n  --scope-guard         run the scope guard over the rendered template and\n                        sample"
+        },
+        {
+          "script": "scope_guard.py",
+          "command": "python3 scope_guard.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.07,
+          "is_cli": true,
+          "usage_line": "usage: scope_guard.py [-h] [--json] [--show-neutralized] [paths ...]",
+          "library_hint": false,
+          "output_tail": "usage: scope_guard.py [-h] [--json] [--show-neutralized] [paths ...]\n\nFlag audit/evaluation/procurement drift in report prose.\n\npositional arguments:\n  paths               files to scan (default: stdin)\n\noptions:\n  -h, --help          show this help message and exit\n  --json              emit findings as JSON\n  --show-neutralized  also list matches that scope-boundary language\n                      neutralized"
+        }
+      ],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "2 verified command line(s)"
+    },
+    {
+      "phase": "final_delivery",
+      "phase_order": 5,
+      "phase_title": "Final delivery",
+      "component": "uiowa_rfq_18649_report_visuals",
+      "role": "Accessible visual language; unassessed stays distinct.",
+      "present": true,
+      "commands": [
+        {
+          "script": "render_report_visuals.py",
+          "command": "python3 render_report_visuals.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.06,
+          "is_cli": true,
+          "usage_line": "usage: render_report_visuals.py [-h] [--data DATA] [--out OUT]",
+          "library_hint": false,
+          "output_tail": "oding   # redundancy contract\n\nDeterministic on purpose: no clock, no randomness, sorted traversal. A second\noperator running the same command on the same input gets byte-identical files,\nso a diff means the data changed and nothing else.\n\nPython 3 standard library only. No network.\n\noptions:\n  -h, --help            show this help message and exit\n  --data DATA\n  --out OUT\n  --theme {print,screen}\n                        repeatable; defaults to print and screen\n  --audit               print the WCAG contrast audit and exit\n  --check-encoding      verify the redundant-encoding contract and exit"
+        }
+      ],
+      "rejected": [
+        {
+          "script": "alt_text.py",
+          "command": "python3 alt_text.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.03,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "contrast.py",
+          "command": "python3 contrast.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.02,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "figures.py",
+          "command": "python3 figures.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.03,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "model.py",
+          "command": "python3 model.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "monochrome.py",
+          "command": "python3 monochrome.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "palette.py",
+          "command": "python3 palette.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.02,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "svg.py",
+          "command": "python3 svg.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.02,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        }
+      ],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "final_delivery",
+      "phase_order": 5,
+      "phase_title": "Final delivery",
+      "component": "uiowa_rfq_18649_integration",
+      "role": "Field-name and taxonomy reconciliation across components.",
+      "present": true,
+      "commands": [
+        {
+          "script": "integrate_tabular.py",
+          "command": "python3 integrate_tabular.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.06,
+          "is_cli": true,
+          "usage_line": "usage: integrate_tabular.py [-h] [--repo REPO] --out OUT",
+          "library_hint": false,
+          "output_tail": "usage: integrate_tabular.py [-h] [--repo REPO] --out OUT\n\noptions:\n  -h, --help   show this help message and exit\n  --repo REPO\n  --out OUT"
+        }
+      ],
+      "rejected": [
+        {
+          "script": "adapter_tabular.py",
+          "command": "python3 adapter_tabular.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": true,
+          "output_tail": ""
+        }
+      ],
+      "manifest_runner": "python3 integrate_tabular.py --repo {REPO} --out {OUT}/integration.json",
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "final_delivery",
+      "phase_order": 5,
+      "phase_title": "Final delivery",
+      "component": "uiowa_rfq_18649_closeout",
+      "role": "Evidence lifecycle and 30-day post-completion closeout templates.",
+      "present": true,
+      "commands": [
+        {
+          "script": "closeout.py",
+          "command": "python3 closeout.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.05,
+          "is_cli": true,
+          "usage_line": "usage: closeout.py [-h] [--as-of AS_OF] [--json-out JSON_OUT]",
+          "library_hint": false,
+          "output_tail": "usage: closeout.py [-h] [--as-of AS_OF] [--json-out JSON_OUT]\n                   [--md-out MD_OUT]\n                   engagement inventory dispositions\n\nValidate UIOWA-099 evidence closeout records.\n\npositional arguments:\n  engagement\n  inventory\n  dispositions\n\noptions:\n  -h, --help           show this help message and exit\n  --as-of AS_OF        YYYY-MM-DD; defaults to today\n  --json-out JSON_OUT\n  --md-out MD_OUT"
+        }
+      ],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "final_delivery",
+      "phase_order": 5,
+      "phase_title": "Final delivery",
+      "component": "uiowa_rfq_18649_acceptance_map",
+      "role": "UIOWA-130: delivery acceptance criteria mapped to the artifacts that actually satisfy them.",
+      "present": true,
+      "commands": [
+        {
+          "script": "build_index.py",
+          "command": "python3 build_index.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.05,
+          "is_cli": true,
+          "usage_line": "usage: build_index.py [-h] [--revenue-root REVENUE_ROOT] [--exhibit EXHIBIT]",
+          "library_hint": false,
+          "output_tail": "usage: build_index.py [-h] [--revenue-root REVENUE_ROOT] [--exhibit EXHIBIT]\n                      [--map MAP] [--out OUT]\n\nUIOWA-130 - map delivery acceptance criteria to the artifacts that demonstrate\nthem.\n\noptions:\n  -h, --help            show this help message and exit\n  --revenue-root REVENUE_ROOT\n                        directory holding the uiowa_rfq_18649_* lanes\n                        (default: ..)\n  --exhibit EXHIBIT     path to ACCEPTANCE_EXHIBIT.md\n  --map MAP\n  --out OUT"
+        }
+      ],
+      "rejected": [
+        {
+          "script": "checks.py",
+          "command": "python3 checks.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "exhibit_parser.py",
+          "command": "python3 exhibit_parser.py --help",
+          "exit_code": 1,
+          "timed_out": false,
+          "duration_s": 0.03,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": "Traceback (most recent call last):\n  File \"/tmp/cmdidx_1ng0ifqa/uiowa_rfq_18649_acceptance_map/exhibit_parser.py\", line 96, in <module>\n    print(json.dumps(parse_exhibit(p), indent=2))\n                     ^^^^^^^^^^^^^^^^\n  File \"/tmp/cmdidx_1ng0ifqa/uiowa_rfq_18649_acceptance_map/exhibit_parser.py\", line 32, in parse_exhibit\n    with open(path, \"rb\") as fh:\n         ^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '--help'"
+        }
+      ],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "final_delivery",
+      "phase_order": 5,
+      "phase_title": "Final delivery",
+      "component": "uiowa_rfq_18649_milestone_packets",
+      "role": "UIOWA-135: milestone delivery packets; verifies every cited artifact by opening it.",
+      "present": true,
+      "commands": [
+        {
+          "script": "milestone_packets.py",
+          "command": "python3 milestone_packets.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.07,
+          "is_cli": true,
+          "usage_line": "usage: milestone_packets.py [-h] [--artifact-root ARTIFACT_ROOT]",
+          "library_hint": false,
+          "output_tail": "_DIR] [--as-of AS_OF]\n                            engagement\n\nCLI: build milestone delivery + billing evidence packets (UIOWA-135).\n\npositional arguments:\n  engagement            path to the engagement/milestone JSON\n\noptions:\n  -h, --help            show this help message and exit\n  --artifact-root ARTIFACT_ROOT\n                        root the index paths are resolved against (read-only)\n  --output-dir OUTPUT_DIR\n                        directory to write packets into; nothing is written\n                        outside it\n  --as-of AS_OF         YYYY-MM-DD date the report is computed against"
+        }
+      ],
+      "rejected": [
+        {
+          "script": "completeness.py",
+          "command": "python3 completeness.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.05,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "packets.py",
+          "command": "python3 packets.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.05,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "resolve.py",
+          "command": "python3 resolve.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.05,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "schedule.py",
+          "command": "python3 schedule.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.06,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "schema.py",
+          "command": "python3 schema.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.05,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": true,
+          "output_tail": ""
+        }
+      ],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "final_delivery",
+      "phase_order": 5,
+      "phase_title": "Final delivery",
+      "component": "uiowa_rfq_18649_exec_summary",
+      "role": "UIOWA-081: leadership executive-summary template where every statement is traceable to a finding.",
+      "present": true,
+      "commands": [],
+      "rejected": [
+        {
+          "script": "build_summary.py",
+          "command": "python3 build_summary.py --help",
+          "exit_code": 1,
+          "timed_out": false,
+          "duration_s": 0.05,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": "\n\nStatements: 4 accepted, 8 rejected, of 12 drafted\n  REJECT S-002  OVERCLAIM\n  REJECT S-003  SCOPE_OVERREACH\n  REJECT S-004  UNKNOWN_FINDING\n  REJECT S-005  NO_CITATION\n  REJECT S-006  ASSERTS_NOT_ESTABLISHED\n  REJECT S-007  UNSUPPORTED_NUMBER\n  REJECT S-010  INDIVIDUAL_ATTRIBUTION\n  REJECT S-011  OVERCLAIM\n\nFindings rejected at load: F-007-MALFORMED\n\nCoverage: 4/6 findings cited by an accepted statement\n  F-003 (CRITICAL) NOT ASSERTABLE - belongs in open questions\n  F-005 (CRITICAL) ASSERTABLE BUT UNCITED\n\nFAIL: 1 assertable SIGNIFICANT/CRITICAL finding(s) are missing from the summary: F-005"
+        },
+        {
+          "script": "evidence.py",
+          "command": "python3 evidence.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.01,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "findings.py",
+          "command": "python3 findings.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "render.py",
+          "command": "python3 render.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.03,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "summary.py",
+          "command": "python3 summary.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        }
+      ],
+      "manifest_runner": null,
+      "note": "no verified command line: 5 module(s) probed, none answered --help with a usage line"
+    },
+    {
+      "phase": "final_delivery",
+      "phase_order": 5,
+      "phase_title": "Final delivery",
+      "component": "uiowa_rfq_18649_print_pagination",
+      "role": "UIOWA-123: renders the report to PDF and inspects every page for the defects that ruin a printed deliverable.",
+      "present": true,
+      "commands": [
+        {
+          "script": "printreport.py",
+          "command": "python3 printreport.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.05,
+          "is_cli": true,
+          "usage_line": "usage: printreport.py [-h] [--document DOCUMENT] [--out OUT]",
+          "library_hint": false,
+          "output_tail": "usage: printreport.py [-h] [--document DOCUMENT] [--out OUT]\n\nPrint-pagination renderer and page inspector (UIOWA-123).\n\noptions:\n  -h, --help           show this help message and exit\n  --document DOCUMENT  document JSON; repeatable. Default: all three fixtures.\n  --out OUT"
+        }
+      ],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "readout",
+      "phase_order": 6,
+      "phase_title": "Optional readout",
+      "component": "uiowa_rfq_18649_readout_deck",
+      "role": "Deck architecture that agrees with the example report.",
+      "present": true,
+      "commands": [
+        {
+          "script": "deck_architecture.py",
+          "command": "python3 deck_architecture.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": true,
+          "usage_line": "usage: deck_architecture.py [-h] {check,render,rules} ...",
+          "library_hint": false,
+          "output_tail": "usage: deck_architecture.py [-h] {check,render,rules} ...\n\nReadout deck architecture: check and render a deck against its report.\n\npositional arguments:\n  {check,render,rules}\n    check               check the deck against the report; exit 1 on\n                        disagreement\n    render              render deck markdown, ASCII frames, agreement report\n                        and planning CSV\n    rules               print the rule table\n\noptions:\n  -h, --help            show this help message and exit"
+        }
+      ],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "1 verified command line(s)"
+    },
+    {
+      "phase": "readout",
+      "phase_order": 6,
+      "phase_title": "Optional readout",
+      "component": "uiowa_rfq_18649_qa_kit",
+      "role": "Q&A answers substantiated from supplied evidence.",
+      "present": false,
+      "commands": [],
+      "rejected": [],
+      "manifest_runner": null,
+      "note": "component not built yet"
+    },
+    {
+      "phase": "readout",
+      "phase_order": 6,
+      "phase_title": "Optional readout",
+      "component": "uiowa_rfq_18649_qa_refusal_contract",
+      "role": "UIOWA-089C: what the Q&A kit does when the evidence does NOT support an answer.",
+      "present": true,
+      "commands": [],
+      "rejected": [
+        {
+          "script": "cli.py",
+          "command": "python3 cli.py --help",
+          "exit_code": 2,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": "worst?\" --json\n    python3 cli.py audit\n    python3 cli.py drill            # run the whole question bank\n    python3 cli.py explain \"...\"    # the routing arithmetic, no answer\n    python3 cli.py claim-types\n\nOutput is plain ASCII, wrapped to 78 columns. State is carried in words and in\nmarks -- [found], [none in what we searched], [not assessed], [evidence\ndisagrees] -- never in colour, so a photocopy, a terminal without colour and a\nscreen reader all carry the same information. `test_qa.py` asserts both\nproperties against real rendered output rather than taking this paragraph's\nword for it."
+        },
+        {
+          "script": "index.py",
+          "command": "python3 index.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.03,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "qa.py",
+          "command": "python3 qa.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.03,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        },
+        {
+          "script": "uncertainty.py",
+          "command": "python3 uncertainty.py --help",
+          "exit_code": 0,
+          "timed_out": false,
+          "duration_s": 0.04,
+          "is_cli": false,
+          "usage_line": "",
+          "library_hint": false,
+          "output_tail": ""
+        }
+      ],
+      "manifest_runner": null,
+      "note": "no verified command line: 4 module(s) probed, none answered --help with a usage line"
+    }
+  ]
+}

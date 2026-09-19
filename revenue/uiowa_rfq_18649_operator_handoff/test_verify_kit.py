@@ -22,6 +22,7 @@ sys.path.insert(0, HERE)
 
 import verify_kit  # noqa: E402
 import render_guide  # noqa: E402
+import command_index  # noqa: E402
 
 FIXTURE_ROOT = os.path.join(HERE, "fixtures", "minikit")
 FIXTURE_MANIFEST = os.path.join(HERE, "fixtures", "minikit_manifest.json")
@@ -341,6 +342,101 @@ class Outputs(unittest.TestCase):
         self.assertEqual(proc.returncode, 0, proc.stdout.decode())
         self.assertTrue(os.path.exists(out))
         self.assertIn(b"WORKING", proc.stdout)
+
+
+class CommandDiscovery(unittest.TestCase):
+    """The index must only print a command it actually watched respond."""
+
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp(prefix="vk_cmd_")
+
+    def tearDown(self):
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def _index(self, lanes, runners=None):
+        man = manifest_for(lanes)
+        for comp in man["phases"][0]["components"]:
+            if runners and comp["lane"] in runners:
+                comp["runner"] = runners[comp["lane"]]
+        return command_index.index(self.tmp, man, timeout=20)
+
+    def _row(self, idx, lane):
+        for r in idx["rows"]:
+            if r["component"] == lane:
+                return r
+        raise AssertionError("no row for %s" % lane)
+
+    def test_a_real_argparse_cli_is_discovered_with_its_usage_line(self):
+        write_lane(self.tmp, "uiowa_rfq_18649_hascli", {
+            "tool.py": ("import argparse\n"
+                        "p = argparse.ArgumentParser()\n"
+                        "p.add_argument('--thing')\n"
+                        "p.parse_args()\n"),
+        })
+        r = self._row(self._index(["uiowa_rfq_18649_hascli"]), "uiowa_rfq_18649_hascli")
+        self.assertEqual(len(r["commands"]), 1)
+        self.assertIn("usage:", r["commands"][0]["usage_line"])
+        self.assertIn("tool.py", r["commands"][0]["usage_line"])
+
+    def test_a_script_that_errors_on_help_yields_no_command(self):
+        # Never hand an operator a command that does not work.
+        write_lane(self.tmp, "uiowa_rfq_18649_angry", {
+            "tool.py": "import sys\nsys.exit(2)\n",
+        })
+        r = self._row(self._index(["uiowa_rfq_18649_angry"]), "uiowa_rfq_18649_angry")
+        self.assertEqual(r["commands"], [])
+        self.assertIn("no verified command line", r["note"])
+
+    def test_a_script_that_hangs_on_help_is_killed_and_yields_no_command(self):
+        write_lane(self.tmp, "uiowa_rfq_18649_hangcli", {
+            "tool.py": "import time\ntime.sleep(30)\n",
+        })
+        man = manifest_for(["uiowa_rfq_18649_hangcli"])
+        idx = command_index.index(self.tmp, man, timeout=2)
+        r = self._row(idx, "uiowa_rfq_18649_hangcli")
+        self.assertEqual(r["commands"], [])
+        self.assertTrue(any(p["timed_out"] for p in r["rejected"]))
+
+    def test_test_files_are_never_offered_as_commands(self):
+        write_lane(self.tmp, "uiowa_rfq_18649_onlytests", {
+            "test_thing.py": ("import unittest\n\nclass T(unittest.TestCase):\n"
+                              "    def test_x(self):\n        self.assertTrue(True)\n"),
+        })
+        r = self._row(self._index(["uiowa_rfq_18649_onlytests"]), "uiowa_rfq_18649_onlytests")
+        self.assertEqual(r["commands"], [])
+        self.assertEqual(r["rejected"], [])
+
+    def test_a_runnable_component_without_help_shows_its_documented_runner(self):
+        # Takes no arguments, so it never answers --help -- but it is not "no way to
+        # run this", and the index must not imply that.
+        write_lane(self.tmp, "uiowa_rfq_18649_noargs", {"go.py": "print('done')\n"})
+        idx = self._index(["uiowa_rfq_18649_noargs"],
+                          runners={"uiowa_rfq_18649_noargs": {"cmd": ["python3", "go.py"],
+                                                              "note": "t"}})
+        r = self._row(idx, "uiowa_rfq_18649_noargs")
+        self.assertEqual(r["commands"], [])
+        self.assertEqual(r["manifest_runner"], "python3 go.py")
+        text = command_index.render(idx)
+        self.assertIn("python3 go.py", text)
+        self.assertIn("no `--help` interface", text)
+
+    def test_unbuilt_component_says_nothing_to_run(self):
+        idx = self._index(["uiowa_rfq_18649_absent"])
+        r = self._row(idx, "uiowa_rfq_18649_absent")
+        self.assertFalse(r["present"])
+        self.assertIn("Not built yet", command_index.render(idx))
+
+    def test_index_does_not_modify_the_source_lane(self):
+        lane = write_lane(self.tmp, "uiowa_rfq_18649_writer2", {
+            "tool.py": ("import argparse, os\n"
+                        "open(os.path.join(os.path.dirname(os.path.abspath(__file__)),"
+                        " 'touched.txt'), 'w').write('x')\n"
+                        "argparse.ArgumentParser().parse_args()\n"),
+        })
+        before = sorted(os.listdir(lane))
+        self._index(["uiowa_rfq_18649_writer2"])
+        self.assertEqual(sorted(os.listdir(lane)), before)
+        self.assertFalse(os.path.exists(os.path.join(lane, "touched.txt")))
 
 
 class HandoffIntegrity(unittest.TestCase):

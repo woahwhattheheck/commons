@@ -55,6 +55,10 @@
         {
           "lane": "uiowa_rfq_18649_bid_pack",
           "role": "UIOWA-136: assembles prepared proposal components into a navigable bidder attachment set."
+        },
+        {
+          "lane": "uiowa_rfq_18649_filesystem_safety",
+          "role": "Read-only static screen over every Python tool in the kit: what can it write, and where. Run it before pointing any component at real material."
         }
       ]
     },
@@ -129,6 +133,14 @@
         {
           "lane": "uiowa_rfq_18649_question_cards",
           "role": "UIOWA-114: turns one unresolved observation into the follow-up question that would resolve it."
+        },
+        {
+          "lane": "uiowa_rfq_18649_deadline_continuity",
+          "role": "UIOWA-107: research-administration continuity scenario across a hard external deadline."
+        },
+        {
+          "lane": "uiowa_rfq_18649_vocabulary_crosswalk",
+          "role": "Reconciles group and assessment-area vocabulary across components so the same thing has one name."
         }
       ]
     },
@@ -194,6 +206,14 @@
         {
           "lane": "uiowa_rfq_18649_roadmap_dependencies",
           "role": "UIOWA-115: graph check over recommendation prerequisites; finds cycles, missing prerequisites and phase inversions."
+        },
+        {
+          "lane": "uiowa_rfq_18649_ai_decision_case",
+          "role": "UIOWA-111: connects AI evaluation, lifecycle and economics into one decision case."
+        },
+        {
+          "lane": "uiowa_rfq_18649_capacity_feasibility",
+          "role": "UIOWA-116: joins resource ranges to roadmap feasibility with real role-capacity arithmetic."
         }
       ]
     },
@@ -286,6 +306,14 @@
         {
           "lane": "uiowa_rfq_18649_milestone_packets",
           "role": "UIOWA-135: milestone delivery packets; verifies every cited artifact by opening it."
+        },
+        {
+          "lane": "uiowa_rfq_18649_exec_summary",
+          "role": "UIOWA-081: leadership executive-summary template where every statement is traceable to a finding."
+        },
+        {
+          "lane": "uiowa_rfq_18649_print_pagination",
+          "role": "UIOWA-123: renders the report to PDF and inspects every page for the defects that ruin a printed deliverable."
         }
       ]
     },

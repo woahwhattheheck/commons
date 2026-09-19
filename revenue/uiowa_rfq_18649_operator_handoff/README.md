@@ -50,6 +50,8 @@ python3 verify_kit.py --root ../ --timeout 90 \
     --out-md   sample/verification_log.md                # the real survey
 python3 render_guide.py --status sample/component_status.json \
     --out OPERATOR_GUIDE.md                              # regenerate the guide
+python3 command_index.py --root ../ --out COMMAND_INDEX.md \
+    --out-json sample/command_index.json                 # regenerate the command index
 ```
 
 Python 3 standard library only. No network, no pip install, no service.
@@ -58,7 +60,9 @@ Python 3 standard library only. No network, no pip install, no service.
 
 | file | what it is |
 |---|---|
-| `OPERATOR_GUIDE.md` | **generated.** The six phases, what the operator does in each, the components that serve it with real statuses, the commands that were executed, and the UNKNOWN register |
+| `OPERATOR_GUIDE.md` | **generated.** The six phases, phase readiness, what the operator does in each, the components that serve it with real statuses, and the UNKNOWN register |
+| `COMMAND_INDEX.md` | **generated.** What to type, per component — every command discovered by running the script with `--help`, never copied from a README |
+| `command_index.py` | the discovery tool behind it |
 | `kit_manifest.json` | the phase → component map, plus each component's role and optional documented runner |
 | `verify_kit.py` | the verifier. Surveys, isolates, executes, classifies, writes JSON/CSV/Markdown |
 | `render_guide.py` | manifest + survey + UNKNOWN register → `OPERATOR_GUIDE.md` |
@@ -72,9 +76,9 @@ Python 3 standard library only. No network, no pip install, no service.
 
 ## Real vs draft, in this lane specifically
 
-**Working and executed here:** `verify_kit.py`, `render_guide.py`, `sample_run.sh`,
-`test_verify_kit.py` (22 passing), the fixture mini-kit, and the generated
-`OPERATOR_GUIDE.md`. The statuses inside the guide are themselves execution results.
+**Working and executed here:** `verify_kit.py`, `render_guide.py`, `command_index.py`,
+`sample_run.sh`, `test_verify_kit.py` (37 passing), the fixture mini-kit, and the
+generated `OPERATOR_GUIDE.md` and `COMMAND_INDEX.md`. The statuses inside the guide are themselves execution results.
 
 **Snapshot, not a standing fact:** the counts in `OPERATOR_GUIDE.md` and `sample/` are
 true for the UTC timestamp printed at the top of each and for this machine's Python
@@ -104,6 +108,12 @@ belongs to that component's author.
   with the names and `OPERATOR_GUIDE.md` opens with **⚠ THIS GUIDE IS INCOMPLETE**. It is
   meant to fire again; that is the signal to place the new lanes and regenerate, and it is
   strictly better than quietly handing an operator a map with holes in it.
+- **No command is printed that was not watched responding.** The command index runs each
+  script with `--help` in a copy and keeps only the ones that answer with a real usage
+  line. A script that errors, hangs, or is a test file yields no command. A component that
+  takes no arguments shows its documented runner instead of being written off as
+  un-runnable — and a component with neither is reported as having no verified command
+  line, never handed a guessed one.
 - **A phase is never "mostly ready".** Phase readiness is `ready` only when *every*
   component in it earned WORKING. One hole makes it `partial` and the hole is named. An
   operator is stopped by the one broken step, not by the average.

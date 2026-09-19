@@ -10,9 +10,13 @@ column below is not a promise from the people who wrote each component — it is
 result of `verify_kit.py` actually executing them, in an isolated copy, at the
 timestamp shown. Regenerate it before you trust it.
 
-- survey root: `/tmp/claude-0/-home-user/6e551c41-37c5-5a0b-95f1-fb4584e151a7/scratchpad/m2oyBj`
-- snapshot taken (UTC): **2026-09-19T14:10:22Z** · python 3.11.15
-- **WORKING 38 · DRAFT 8 · MISSING 4 · UNMAPPED 0**
+- survey root: `/tmp/claude-0/-home-user/6e551c41-37c5-5a0b-95f1-fb4584e151a7/scratchpad/m3QGjY`
+- snapshot taken (UTC): **2026-09-19T14:16:38Z** · python 3.11.15
+- **WORKING 43 · DRAFT 10 · MISSING 4 · UNMAPPED 0**
+
+**What do I type?** `COMMAND_INDEX.md`, beside this file, lists every
+component's real command line — discovered by executing each script with
+`--help`, not copied from a README. Regenerate it with `command_index.py`.
 
 ## Can I run this phase today?
 
@@ -23,11 +27,11 @@ works: a hole in the middle of a phase is what stops an operator, not an average
 
 | # | phase | today | working | draft | missing | what is in the way |
 |---|---|---|---|---|---|---|
-| 1 | Kickoff and mobilization | **partial** | 5 | 2 | 0 | `mobilization` (DRAFT), `build_board` (DRAFT) |
-| 2 | Evidence collection | **partial** | 11 | 3 | 1 | `document_extraction` (DRAFT), `test_data_readiness` (DRAFT), `incident_learning` (DRAFT), `knowledge_readiness` (MISSING) |
-| 3 | Analysis | **partial** | 12 | 1 | 0 | `workbench` (DRAFT) |
+| 1 | Kickoff and mobilization | **partial** | 5 | 3 | 0 | `mobilization` (DRAFT), `build_board` (DRAFT), `capability_appendix` (DRAFT) |
+| 2 | Evidence collection | **partial** | 12 | 4 | 1 | `document_extraction` (DRAFT), `test_data_readiness` (DRAFT), `incident_learning` (DRAFT), `vocabulary_crosswalk` (DRAFT), `knowledge_readiness` (MISSING) |
+| 3 | Analysis | **partial** | 14 | 1 | 0 | `workbench` (DRAFT) |
 | 4 | Draft review | **partial** | 3 | 1 | 2 | `doc_usability` (DRAFT), `qa_kit` (MISSING), `interchange` (MISSING) |
-| 5 | Final delivery | **partial** | 5 | 1 | 0 | `acceptance_map` (DRAFT) |
+| 5 | Final delivery | **partial** | 7 | 1 | 0 | `acceptance_map` (DRAFT) |
 | 6 | Optional readout | **partial** | 2 | 0 | 1 | `qa_kit` (MISSING) |
 
 ## Refresh the status table before you rely on it
@@ -60,11 +64,11 @@ author's claim; the status column is an execution result.
 
 | # | phase | components | WORKING | DRAFT | MISSING |
 |---|---|---|---|---|---|
-| 1 | [Kickoff and mobilization](#1-kickoff) | 7 | 5 | 2 | 0 |
-| 2 | [Evidence collection](#2-evidence-collection) | 15 | 11 | 3 | 1 |
-| 3 | [Analysis](#3-analysis) | 13 | 12 | 1 | 0 |
+| 1 | [Kickoff and mobilization](#1-kickoff) | 8 | 5 | 3 | 0 |
+| 2 | [Evidence collection](#2-evidence-collection) | 17 | 12 | 4 | 1 |
+| 3 | [Analysis](#3-analysis) | 15 | 14 | 1 | 0 |
 | 4 | [Draft review](#4-draft-review) | 6 | 3 | 1 | 2 |
-| 5 | [Final delivery](#5-final-delivery) | 6 | 5 | 1 | 0 |
+| 5 | [Final delivery](#5-final-delivery) | 8 | 7 | 1 | 0 |
 | 6 | [Optional readout](#6-readout) | 3 | 2 | 0 | 1 |
 
 ---
@@ -82,11 +86,12 @@ Stand the engagement up: scope confirmation, contacts, schedule shape, coordinat
 | component (directory under `revenue/`) | status | what it is for |
 |---|---|---|
 | `uiowa_rfq_18649_bid_pack` | **WORKING** | UIOWA-136: assembles prepared proposal components into a navigable bidder attachment set. |
-| `uiowa_rfq_18649_capability_appendix` | **WORKING** | UIOWA-137: proposal capability appendix where no claim prints without a recorded demonstration. |
+| `uiowa_rfq_18649_filesystem_safety` | **WORKING** | Read-only static screen over every Python tool in the kit: what can it write, and where. Run it before pointing any component at real material. |
 | `uiowa_rfq_18649_operator_handoff` | **WORKING** | This handoff: the six-phase guide, the component verifier, and the UNKNOWN register. Start here. |
 | `uiowa_rfq_18649_scope_change` | **WORKING** | UIOWA-133: scope-change impact calculator; prices a change against the baseline with its assumptions printed next to the answer. |
 | `uiowa_rfq_18649_workshare` | **WORKING** | Carrier record and evidence-authority boundary for the whole workstream. |
 | `uiowa_rfq_18649_build_board` | DRAFT | Assessment context notes used to brief the team. |
+| `uiowa_rfq_18649_capability_appendix` | DRAFT | UIOWA-137: proposal capability appendix where no claim prints without a recorded demonstration. |
 | `uiowa_rfq_18649_mobilization` | DRAFT | Eight-week and six-week plan shapes, coordination forms, scope-confirmation agenda. |
 
 **Commands that were executed for this phase in the snapshot above**
@@ -95,15 +100,17 @@ Stand the engagement up: scope confirmation, contacts, schedule shape, coordinat
 (cd revenue/uiowa_rfq_18649_operator_handoff && python3 -m unittest test_verify_kit)
 (cd revenue/uiowa_rfq_18649_workshare/methodology && python3 -m unittest test_validate_23_evidence_register)
 (cd revenue/uiowa_rfq_18649_workshare && python3 -m unittest test_compiler)
-(cd revenue/uiowa_rfq_18649_capability_appendix && python3 -m unittest test_capability_appendix)
 (cd revenue/uiowa_rfq_18649_scope_change && python3 -m unittest test_scope_change)
 (cd revenue/uiowa_rfq_18649_bid_pack && python3 -m unittest test_bid_pack)
+(cd revenue/uiowa_rfq_18649_bid_pack && python3 -m unittest test_packcheck)
+(cd revenue/uiowa_rfq_18649_filesystem_safety && python3 -m unittest test_fsaudit)
 ```
 
 **What is not ready in this phase, and why**
 
 - `uiowa_rfq_18649_mobilization` — **DRAFT**: document component: 2 document/data files and no executable code; completeness of prose is not machine-checkable and needs a human read
 - `uiowa_rfq_18649_build_board` — **DRAFT**: document component: 3 document/data files and no executable code; completeness of prose is not machine-checkable and needs a human read
+- `uiowa_rfq_18649_capability_appendix` — **DRAFT**: check executed and did not pass: 1 of 1 test file(s) failed
 
 ---
 
@@ -122,6 +129,7 @@ Gather what the University actually supplies, register it with stable IDs and ex
 |---|---|---|
 | `uiowa_rfq_18649_ai_use_inventory` | **WORKING** | Current AI use: active vs informal experiment vs planned. |
 | `uiowa_rfq_18649_contractor_transition` | **WORKING** | UIOWA-108: staff-role changes, application ownership, service identities and runbook updates as one handoff scenario. |
+| `uiowa_rfq_18649_deadline_continuity` | **WORKING** | UIOWA-107: research-administration continuity scenario across a hard external deadline. |
 | `uiowa_rfq_18649_handoff` | **WORKING** | Development-to-operations handoff packet evidence. |
 | `uiowa_rfq_18649_intake_rehearsal` | **WORKING** | Intake-to-assessment rehearsal; malformed-input handling. |
 | `uiowa_rfq_18649_observability` | **WORKING** | Observability and service-objective evidence. |
@@ -135,6 +143,7 @@ Gather what the University actually supplies, register it with stable IDs and ex
 | `uiowa_rfq_18649_incident_learning` | DRAFT | Incident timelines, postmortems, corrective-action follow-through. |
 | `uiowa_rfq_18649_knowledge_readiness` | MISSING | AI knowledge and data readiness evidence. |
 | `uiowa_rfq_18649_test_data_readiness` | DRAFT | Test-data catalog readiness evidence. |
+| `uiowa_rfq_18649_vocabulary_crosswalk` | DRAFT | Reconciles group and assessment-area vocabulary across components so the same thing has one name. |
 
 **Commands that were executed for this phase in the snapshot above**
 
@@ -151,6 +160,7 @@ Gather what the University actually supplies, register it with stable IDs and ex
 (cd revenue/uiowa_rfq_18649_ai_use_inventory && python3 -m unittest test_inventory)
 (cd revenue/uiowa_rfq_18649_contractor_transition && python3 -m unittest test_transition)
 (cd revenue/uiowa_rfq_18649_question_cards && python3 -m unittest test_question_cards)
+(cd revenue/uiowa_rfq_18649_deadline_continuity && python3 -m unittest test_continuity)
 ```
 
 **What is not ready in this phase, and why**
@@ -159,6 +169,7 @@ Gather what the University actually supplies, register it with stable IDs and ex
 - `uiowa_rfq_18649_test_data_readiness` — **DRAFT**: check executed and did not pass: 1 of 2 test file(s) failed
 - `uiowa_rfq_18649_incident_learning` — **DRAFT**: document component: 2 document/data files and no executable code; completeness of prose is not machine-checkable and needs a human read
 - `uiowa_rfq_18649_knowledge_readiness` — **MISSING**: no directory for this component exists under the survey root
+- `uiowa_rfq_18649_vocabulary_crosswalk` — **DRAFT**: check executed and did not pass: 1 of 1 test file(s) failed
 
 ---
 
@@ -175,11 +186,13 @@ Turn registered evidence into findings and prioritized recommendations with visi
 | component (directory under `revenue/`) | status | what it is for |
 |---|---|---|
 | `uiowa_rfq_18649_adoption_readiness` | **WORKING** | Organizational adoption readiness; never rates individuals. |
+| `uiowa_rfq_18649_ai_decision_case` | **WORKING** | UIOWA-111: connects AI evaluation, lifecycle and economics into one decision case. |
 | `uiowa_rfq_18649_ai_eval_kit` | **WORKING** | AI usefulness evaluation tasks with known answers. |
 | `uiowa_rfq_18649_ai_integration` | **WORKING** | Integration and portability readiness patterns. |
 | `uiowa_rfq_18649_ai_opportunity_portfolio` | **WORKING** | AI task suitability, benefit, integration effort. |
 | `uiowa_rfq_18649_ai_policy_to_workflow` | **WORKING** | Policy-to-workflow assessment (NIST AI RMF as reference only). |
 | `uiowa_rfq_18649_capacity_benchmark` | **WORKING** | Workflow capacity benchmark; measured vs estimated. |
+| `uiowa_rfq_18649_capacity_feasibility` | **WORKING** | UIOWA-116: joins resource ranges to roadmap feasibility with real role-capacity arithmetic. |
 | `uiowa_rfq_18649_delivery_metrics` | **WORKING** | Delivery metric calculation, data dictionary, interpretation notes. |
 | `uiowa_rfq_18649_economics_resource_adapters` | **WORKING** | UIOWA-105: joins economics and resource estimates onto the recommendation register, keeping effort, recurring cost, cash cost and released capacity separate. |
 | `uiowa_rfq_18649_outcome_measurement` | **WORKING** | Adoption vs operational outcome, kept separate. |
@@ -201,8 +214,11 @@ Turn registered evidence into findings and prioritized recommendations with visi
 (cd revenue/uiowa_rfq_18649_adoption_readiness && python3 -m unittest test_readiness)
 (cd revenue/uiowa_rfq_18649_ai_integration && python3 -m unittest test_ai_integration)
 (cd revenue/uiowa_rfq_18649_ai_eval_kit && python3 -m unittest test_eval_kit)
+(cd revenue/uiowa_rfq_18649_economics_resource_adapters && python3 -m unittest test_check_contract)
 (cd revenue/uiowa_rfq_18649_economics_resource_adapters && python3 -m unittest test_integrate)
 (cd revenue/uiowa_rfq_18649_roadmap_dependencies && python3 -m unittest test_depcheck)
+(cd revenue/uiowa_rfq_18649_ai_decision_case && python3 -m unittest test_ai_decision_case)
+(cd revenue/uiowa_rfq_18649_capacity_feasibility && python3 -m unittest test_capacity_roadmap)
 ```
 
 **What is not ready in this phase, and why**
@@ -233,6 +249,7 @@ Prove the draft is followable back to source and usable by its readers, and capt
 **Commands that were executed for this phase in the snapshot above**
 
 ```bash
+(cd revenue/uiowa_rfq_18649_traceability && python3 -m unittest test_audit_assertions)
 (cd revenue/uiowa_rfq_18649_traceability && python3 -m unittest test_audit_self_sealing)
 (cd revenue/uiowa_rfq_18649_traceability && python3 -m unittest test_trace_check)
 (cd revenue/uiowa_rfq_18649_output_agreement && python3 -m unittest test_output_agreement)
@@ -260,8 +277,10 @@ Assemble the RFQ-aligned final report, check its accessible visual language, and
 | component (directory under `revenue/`) | status | what it is for |
 |---|---|---|
 | `uiowa_rfq_18649_closeout` | **WORKING** | Evidence lifecycle and 30-day post-completion closeout templates. |
+| `uiowa_rfq_18649_exec_summary` | **WORKING** | UIOWA-081: leadership executive-summary template where every statement is traceable to a finding. |
 | `uiowa_rfq_18649_integration` | **WORKING** | Field-name and taxonomy reconciliation across components. |
 | `uiowa_rfq_18649_milestone_packets` | **WORKING** | UIOWA-135: milestone delivery packets; verifies every cited artifact by opening it. |
+| `uiowa_rfq_18649_print_pagination` | **WORKING** | UIOWA-123: renders the report to PDF and inspects every page for the defects that ruin a printed deliverable. |
 | `uiowa_rfq_18649_report_structure` | **WORKING** | RFQ-aligned final-report structure. |
 | `uiowa_rfq_18649_report_visuals` | **WORKING** | Accessible visual language; unassessed stays distinct. |
 | `uiowa_rfq_18649_acceptance_map` | DRAFT | UIOWA-130: delivery acceptance criteria mapped to the artifacts that actually satisfy them. |
@@ -273,7 +292,9 @@ Assemble the RFQ-aligned final report, check its accessible visual language, and
 (cd revenue/uiowa_rfq_18649_report_visuals && python3 -m unittest test_report_visuals)
 (cd revenue/uiowa_rfq_18649_closeout && python3 -m unittest test_closeout)
 (cd revenue/uiowa_rfq_18649_milestone_packets && python3 -m unittest test_milestone_packets)
-(cd revenue/uiowa_rfq_18649_integration && python3 integrate_tabular.py --repo /home/user/commons --out /tmp/verify_kit_out_sqj133ym/integration.json)
+(cd revenue/uiowa_rfq_18649_exec_summary && python3 -m unittest test_exec_summary)
+(cd revenue/uiowa_rfq_18649_print_pagination && python3 -m unittest test_printreport)
+(cd revenue/uiowa_rfq_18649_integration && python3 integrate_tabular.py --repo /home/user/commons --out /tmp/verify_kit_out_flpo2l13/integration.json)
 ```
 
 **What is not ready in this phase, and why**
