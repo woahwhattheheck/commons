@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "0868364e9262521636c100bca9de9a0cc6956ddf58db9adb2c9127faa68e76f2",
+  "digest": "55be16b267a59a237785f38c7e404c99ae7a14d814813f579b6e2e11244a5c96",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -354,8 +354,8 @@
       }
     ],
     "post_count": 12969,
-    "pulse_seq": 2141,
-    "sha": "8e629cecfa79c8e5706c0dcddc3b9a28401f5f6c"
+    "pulse_seq": 2142,
+    "sha": "11e43518dd5789ae2bb770b658d87ff1c3d39633"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-19T14:35:09Z",
+  "now": "2026-09-19T14:38:27Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5251,7 +5251,7 @@
       "id": "UIOWA-096--interoperable-evidence-report-handoffs---ZZ-TORQUE-47",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-19T13:36:59Z"
