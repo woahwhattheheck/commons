@@ -3,6 +3,7 @@ from __future__ import annotations
 import copy
 import json
 import os
+import tempfile
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
@@ -451,6 +452,40 @@ def _optimized_smoke():
         raise RuntimeError("optimized smoke: live fixture count")
     if sum(x["visibility"] == "private" for x in snap["repositories"]) != 15:
         raise RuntimeError("optimized smoke: live private count")
+
+    with tempfile.TemporaryDirectory(prefix="estate-cli-opt-") as tmp:
+        root = Path(tmp)
+        snap_path = root / "snapshot.json"
+        evidence_path = root / "evidence.json"
+        out_path = root / "packet.json"
+        markdown_path = root / "packet.md"
+        malformed = snapshot()
+        malformed["repositories"][1]["visibility"] = []
+        snap_path.write_text(json.dumps(malformed), encoding="utf-8")
+        evidence_path.write_text(json.dumps(evidence()), encoding="utf-8")
+        rc = rr.main([
+            "compile",
+            "--snapshot", str(snap_path),
+            "--evidence", str(evidence_path),
+            "--out", str(out_path),
+            "--markdown", str(markdown_path),
+        ])
+        if rc != 2 or out_path.exists():
+            raise RuntimeError("optimized smoke: malformed CLI shape escaped refusal")
+
+        snap_path.write_text(json.dumps(snapshot()), encoding="utf-8")
+        parent = root / "not-a-directory"
+        parent.write_text("retained-parent", encoding="utf-8")
+        rc = rr.main([
+            "compile",
+            "--snapshot", str(snap_path),
+            "--evidence", str(evidence_path),
+            "--out", str(parent / "packet.json"),
+            "--markdown", str(markdown_path),
+        ])
+        if rc != 2 or parent.read_text(encoding="utf-8") != "retained-parent":
+            raise RuntimeError("optimized smoke: local I/O fault escaped refusal")
+
     print("OPTIMIZED_REPO_ESTATE_SMOKE_PASS")
 
 
