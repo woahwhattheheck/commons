@@ -55,7 +55,7 @@ This is research preparation, not a compliance audit, procurement recommendation
 **Institution and issuer:** University of Washington, UW Research.  
 **Actual comparison boundary:** SAGE proposal, award, budget, advance, and subaward administration, with the selected award-to-finance interface. The general service page describes training and support resources; those descriptions do not establish adoption or learning outcomes. [UW-01](17-source-register.md#uw-01).
 
-**Dated change example:** the **September 8, 2026** release note says award-setup and modification requests in SAGE Central will show more integration success/failure detail to support Grants and Contracts Accounting follow-up in Workday. The note describes the intended operational help, not a measured reduction in reconciliation time or errors. [UW-02](17-source-register.md#uw-02).
+**Dated change example:** the **September 8, 2026** release note says award-setup and modification requests in SAGE Central will show more integration success/failure detail to support GCA follow-up in Workday. The note describes the intended operational help, not a measured reduction in reconciliation time or errors. [UW-02](17-source-register.md#uw-02).
 
 **Deliberate boundary:** the same release note also discusses an occupational-health transition. That material is excluded from the research-administration comparison; sharing a release-note page is not evidence of identical service ownership or of Iowa RIS clinical scope. [UW-02](17-source-register.md#uw-02).
 
