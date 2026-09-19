@@ -18,13 +18,16 @@ The official LACSD detail page describes a replacement for manual, template-depe
 Sources:
 
 - Detail: <https://www.lacsd.org/Home/Components/RFP/RFP/954/488?selsta=4>
-- Current procurement list: <https://www.lacsd.org/opportunities/bids-purchasing/purchasing-section-projects/-sortn-RFPTitle>
+- Current RFP Posts List: <https://www.lacsd.org/about-us/advanced-components/list-detail-pages/rfp-posts-list>
+- QuestCDN submission rules: <https://www.lacsd.org/opportunities/bids-purchasing/purchasing-section-projects>
 
-### Deadline conflict is deliberately fail-closed
+### Current deadline consensus is separate from submission authority
 
-At source capture on 2026-09-16, the detail page showed **2026-10-15 11:00 PT**, while the procurement list still showed **2026-09-30 11:00 PT**. The code does not pick the more convenient date. It emits `HOLD_PACKET_REQUIRED` until the authorized QuestCDN packet/addenda resolves the conflict.
+The 2026-09-17 refresh binds the current 04252 detail generation and current RFP Posts List to **2026-10-15 11:00 PT**. Older/alternate Purchasing Section Projects generations still surface **2026-09-30 11:00 PT**; that value is retained only as a stale-source hostile and cannot replace the current deadline root.
 
-The public procurement page also states that only bidders who properly download the authorized bid documents through QuestCDN appear on the planholders list and may submit, and that paper/email submission is not accepted. This repository does **not** represent Token Junkie Labs as a planholder, bidder of record, Oracle product vendor, or qualified prime.
+The buyer's QuestCDN rules remain independently fail-closed: QuestCDN is the authorized bid-document distributor, proper download is required for planholder/submission eligibility, and paper/email submission is not accepted. This carrier has **no retained evidence** that Token Junkie Labs possesses the authorized packet, completed the required download, or is a planholder. Therefore deadline conflict is false, but submission remains `HOLD_QUESTCDN_PACKET_AND_PLANHOLDER`.
+
+This repository does **not** represent Token Junkie Labs as a planholder, bidder of record, Oracle product vendor, or qualified prime.
 
 ## What the implementation proves
 
@@ -32,7 +35,7 @@ The public procurement page also states that only bidders who properly download 
 
 ### 1. Pursuit/source contract
 
-The manifest binds the exact solicitation identity, both official source surfaces, the conflicting public deadlines, the buyer-stated acceptance targets, and an explicit authority ceiling. Source drift, future source timestamps, target dilution, price-state promotion, or any attempt to authorize buyer contact/submission/Oracle writes fails closed.
+The manifest binds the exact solicitation identity, the current detail + RFP-list deadline root, the independent QuestCDN submission controls, the buyer-stated acceptance targets, and an explicit authority ceiling. Stale September 30 transplantation, source drift, future source timestamps, self-attested packet/download/planholder status, target dilution, price-state promotion, or any attempt to authorize buyer contact/submission/Oracle writes fails closed.
 
 ### 2. Invoice acceptance matrix
 
