@@ -1,6 +1,6 @@
 # Kit exit-signal audit
 
-Scanned `fixtures` - 1 lane(s), 7 entrypoint(s) with a `__main__` guard (0 non-entrypoint files skipped).
+Scanned `/home/user/fleet/staging/OP5-QUARRY/revenue/uiowa_rfq_18649_exit_signals/fixtures` - 1 lane(s), 7 entrypoint(s) with a `__main__` guard (0 non-entrypoint files skipped).
 
 | Classification | Count | Meaning |
 |---|---|---|

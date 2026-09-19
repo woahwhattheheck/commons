@@ -282,3 +282,24 @@ portlib/providers/     fake_alpha.py, fake_beta.py — FICTIONAL adapters
 data/workflows.json    FICTIONAL fixtures
 test_ai_integration.py 46 unittest cases
 ```
+
+---
+
+## Runner contract
+
+This lane emits a `KIT-STATUS` line and exits by the four-code contract in
+`revenue/uiowa_rfq_18649_exit_signals/contract.py`:
+`0 CLEAN` / `1 FINDINGS` / `2 INPUT_ERROR` / `3 INDETERMINATE`.
+
+`kit_status.py` here is a six-line local emitter. It does **not** import the other
+lane, deliberately: lanes in this kit are independently runnable and a cross-lane
+import would break that. The line format is the interface.
+
+Real output from `python3 build_kit.py`:
+
+```
+KIT-STATUS: code=1 status=FINDINGS tool=build_kit findings=1 indeterminate=5 note=0 neutrality finding(s), 1 rejected inventory(ies), 5 unresolved item(s)
+```
+
+`INDETERMINATE` outranks `CLEAN` in the precedence order, so unresolved evidence can
+never be reported as a clean run.

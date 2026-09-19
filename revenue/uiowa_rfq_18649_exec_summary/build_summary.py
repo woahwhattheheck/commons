@@ -9,6 +9,7 @@ import json
 import os
 import sys
 
+import kit_status
 from findings import load_findings
 from render import (
     render_compile_report,
@@ -92,8 +93,18 @@ def main():
         print(f"\nFAIL: {len(serious)} assertable "
               f"SIGNIFICANT/CRITICAL finding(s) are missing from the summary: "
               f"{', '.join(f.finding_id for f in serious)}")
-        return 1
-    return 0
+
+    # Signal the result instead of leaving it in stdout. Rejected statements, a
+    # dropped serious finding and a malformed finding record all need action.
+    # A finding that is NOT_ESTABLISHED is unresolved evidence, not a clean result.
+    findings = (len(result["rejected"]) + len(serious) + len(rejected_findings))
+    unresolved = sum(1 for finding in store.all()
+                     if finding.max_strength == "NOT_ESTABLISHED")
+    return kit_status.emit("build_summary", findings=findings,
+                           indeterminate=unresolved,
+                           note=f"{stats['statements_rejected']} statement(s) rejected, "
+                                f"{len(serious)} serious finding(s) missing, "
+                                f"{unresolved} not-established finding(s)")
 
 
 if __name__ == "__main__":

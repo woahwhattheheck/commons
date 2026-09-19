@@ -463,3 +463,52 @@ class TestFixturesAreConsistentAndLabelled(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
+
+
+class TestRunnerContractAdoption(unittest.TestCase):
+    """build_kit.py must tell a runner what it found, not only print it.
+
+    Added when the kit-wide exit-signal audit measured that most lanes cannot return
+    a non-zero code. These assert this lane is not one of them.
+    """
+
+    def _run(self, args=()):
+        import subprocess
+        return subprocess.run(
+            [sys.executable, os.path.join(HERE, "build_kit.py"), *args],
+            capture_output=True, text=True, cwd=HERE, timeout=180, check=False)
+
+    def _status(self, text):
+        for line in reversed(text.splitlines()):
+            if line.startswith("KIT-STATUS:"):
+                return dict(token.split("=", 1)
+                            for token in line[len("KIT-STATUS:"):].strip().split(" ")
+                            if "=" in token)
+        return None
+
+    def test_build_kit_emits_a_status_line_and_a_matching_exit_code(self):
+        completed = self._run()
+        status = self._status(completed.stdout)
+        self.assertIsNotNone(status, completed.stdout[-500:])
+        self.assertEqual(int(status["code"]), completed.returncode)
+
+    def test_rejected_inventory_is_reported_as_findings_not_clean(self):
+        """The fixture set contains a malformed inventory, so a clean run is wrong."""
+        completed = self._run()
+        self.assertNotEqual(completed.returncode, 0)
+        self.assertEqual(self._status(completed.stdout)["status"], "FINDINGS")
+
+    def test_unresolved_evidence_is_counted_and_never_zero(self):
+        status = self._status(self._run().stdout)
+        self.assertGreater(int(status["indeterminate"]), 0,
+                           "the fixtures carry UNDETERMINED verdicts and an "
+                           "incomplete inventory; reporting zero unresolved items "
+                           "would be the exact failure this kit guards against")
+
+    def test_contract_precedence_puts_indeterminate_above_clean(self):
+        import kit_status
+        self.assertEqual(kit_status.decide(0, 0), kit_status.CLEAN)
+        self.assertEqual(kit_status.decide(0, 1), kit_status.INDETERMINATE)
+        self.assertEqual(kit_status.decide(1, 9), kit_status.FINDINGS)
+        self.assertEqual(kit_status.decide(9, 9, input_error=True),
+                         kit_status.INPUT_ERROR)

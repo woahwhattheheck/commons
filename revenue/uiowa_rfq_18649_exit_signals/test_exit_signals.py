@@ -224,7 +224,7 @@ class TestAuditorObeysItsOwnContract(unittest.TestCase):
         return subprocess.run(
             [sys.executable, os.path.join(HERE, "audit_kit.py"), root,
              "--out", os.path.join(HERE, "out"), "--quiet", *extra],
-            capture_output=True, text=True, cwd=HERE, check=False)
+            capture_output=True, text=True, cwd=HERE, check=False, timeout=180)
 
     def test_auditing_the_fixtures_returns_findings(self):
         completed = self._audit(FIXTURES)

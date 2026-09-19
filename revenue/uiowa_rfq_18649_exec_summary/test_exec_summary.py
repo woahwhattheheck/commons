@@ -355,3 +355,41 @@ class TestCompile(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
+
+
+class TestRunnerContractAdoption(unittest.TestCase):
+    """build_summary.py must signal a dropped serious finding to a runner."""
+
+    def _run(self):
+        import subprocess
+        return subprocess.run(
+            [sys.executable, os.path.join(HERE, "build_summary.py")],
+            capture_output=True, text=True, cwd=HERE, timeout=180, check=False)
+
+    def _status(self, text):
+        for line in reversed(text.splitlines()):
+            if line.startswith("KIT-STATUS:"):
+                return dict(token.split("=", 1)
+                            for token in line[len("KIT-STATUS:"):].strip().split(" ")
+                            if "=" in token)
+        return None
+
+    def test_emits_a_status_line_matching_its_exit_code(self):
+        completed = self._run()
+        status = self._status(completed.stdout)
+        self.assertIsNotNone(status, completed.stdout[-500:])
+        self.assertEqual(int(status["code"]), completed.returncode)
+
+    def test_dropped_serious_finding_is_reported_as_findings(self):
+        completed = self._run()
+        self.assertEqual(completed.returncode, 1)
+        self.assertEqual(self._status(completed.stdout)["status"], "FINDINGS")
+
+    def test_not_established_findings_are_counted_as_indeterminate(self):
+        status = self._status(self._run().stdout)
+        self.assertGreater(int(status["indeterminate"]), 0)
+
+    def test_contract_precedence_puts_indeterminate_above_clean(self):
+        import kit_status
+        self.assertEqual(kit_status.decide(0, 0), kit_status.CLEAN)
+        self.assertEqual(kit_status.decide(0, 2), kit_status.INDETERMINATE)

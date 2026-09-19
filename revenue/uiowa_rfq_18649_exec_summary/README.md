@@ -237,3 +237,24 @@ data/findings.json   FICTIONAL findings register (+ one malformed probe)
 data/draft_statements.json  FICTIONAL draft, seeded with every failure mode
 test_exec_summary.py 42 unittest cases
 ```
+
+---
+
+## Runner contract
+
+This lane emits a `KIT-STATUS` line and exits by the four-code contract in
+`revenue/uiowa_rfq_18649_exit_signals/contract.py`:
+`0 CLEAN` / `1 FINDINGS` / `2 INPUT_ERROR` / `3 INDETERMINATE`.
+
+`kit_status.py` here is a six-line local emitter. It does **not** import the other
+lane, deliberately: lanes in this kit are independently runnable and a cross-lane
+import would break that. The line format is the interface.
+
+Real output from `python3 build_summary.py`:
+
+```
+KIT-STATUS: code=1 status=FINDINGS tool=build_summary findings=10 indeterminate=1 note=8 statement(s) rejected, 1 serious finding(s) missing, 1 not-established finding(s)
+```
+
+`INDETERMINATE` outranks `CLEAN` in the precedence order, so unresolved evidence can
+never be reported as a clean run.

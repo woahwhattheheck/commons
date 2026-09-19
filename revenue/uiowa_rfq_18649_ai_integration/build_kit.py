@@ -10,6 +10,7 @@ import json
 import os
 import sys
 
+import kit_status
 import patterns as patterns_mod
 import portability
 import worksheet as worksheet_mod
@@ -117,8 +118,20 @@ def main():
           f"{failures} finding(s)")
     if failures:
         print("  ARTIFACTS CONTAIN PROCUREMENT/PRODUCT LANGUAGE - review before use")
-        return 1
-    return 0
+
+    # Signal the result to whoever ran this, rather than leaving it in stdout for a
+    # human to notice. A rejected inventory and a neutrality hit both need action;
+    # an incomplete inventory or an UNDETERMINED pattern verdict is unresolved
+    # evidence, which is INDETERMINATE and must not be reported as a clean run.
+    findings = failures + len(rejected)
+    unresolved = sum(1 for score in scores if score["total_is_floor"])
+    unresolved += sum(1 for evaluation in evaluations
+                      if any(evaluation["patterns"][pattern_id]["fit"] == "UNDETERMINED"
+                             for pattern_id in patterns_mod.PATTERN_ORDER))
+    return kit_status.emit("build_kit", findings=findings, indeterminate=unresolved,
+                           note=f"{failures} neutrality finding(s), "
+                                f"{len(rejected)} rejected inventory(ies), "
+                                f"{unresolved} unresolved item(s)")
 
 
 if __name__ == "__main__":

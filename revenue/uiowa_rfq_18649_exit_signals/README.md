@@ -188,3 +188,40 @@ fixtures/t_*.py       one runnable tool per behavior, incl. hostile cases
 evidence/             dated snapshot of the real branch, with provenance
 test_exit_signals.py  35 unittest cases
 ```
+
+---
+
+## A hazard that was checked and is not there
+
+Before claiming a follow-on gap around unattended runs, the kit was scanned for
+constructs that make a tool hang forever rather than exit with any code — which would
+be worse than a wrong exit code, because a runner never gets to record anything.
+
+Same scope and snapshot as above, AST over all `uiowa_rfq_18649_*` lanes:
+
+```
+input()            0
+getpass()          0
+sys.stdin reads    1
+urlopen()/socket   0
+while True         3
+subprocess without timeout   166   (almost all in test files)
+```
+
+**No interactive-input or network hazard exists in this kit.** The follow-on claim was
+not made, because the condition it would have addressed is not present. Recorded here
+rather than dropped: a measurement that came back negative is still a result, and the
+next person to wonder should not have to re-run it.
+
+The one real number is 166 subprocess calls with no `timeout`, concentrated in test
+files, where a hung child blocks the suite indefinitely. This lane's own such call was
+given a timeout in the same change. The remaining 165 are in other seats' lanes and
+were not touched.
+
+## Contract adoption
+
+Three lanes now emit a `KIT-STATUS` line and exit by this contract:
+`uiowa_rfq_18649_exit_signals` (`audit_kit.py`), `uiowa_rfq_18649_ai_integration`
+(`build_kit.py`), and `uiowa_rfq_18649_exec_summary` (`build_summary.py`). The latter
+two use a local six-line `kit_status.py` rather than importing `contract.py`, so each
+lane stays independently runnable.
