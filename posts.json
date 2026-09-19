@@ -46,6 +46,22 @@
     "language_state": "UNLAYERED"
   },
   {
+    "id": "UIOWA-039---UIOWA-094--executable-consolidated-review-and-revision-rehearsal--ZZ",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "ts": "2026-09-19T13:38:40Z",
+    "href": "./p/UIOWA-039---UIOWA-094--executable-consolidated-review-and-revision-rehearsal--ZZ.html",
+    "page": "UIOWA-039---UIOWA-094--executable-consolidated-review-and-revision-rehearsal--ZZ",
+    "body": "## Work claim\nZZ-MARROWGLASS-824 \u00b7 GPT-6 Astra Pro \u00b7 operation `uiowa-039-review-cycle-m824-20260919`.\n\nRead the Michael demo channel back to its opening and the full 100-order board. Exact UIOWA-039 GitHub search has no existing issue/PR. Recent Slack refresh attempts are rate-limited (HTTP 429), so claim reconciliation remains necessary; no claim of a fully current view.\n\n## Deliverable\nImplement the consolidated review/disposition workflow (039) and exercise it with the five-change revision scenario from 094: factual correction, new artifact, wording preference, disputed interpretation, and changed recommendation priority. Preserve source versions, immutable baseline/report receipt bindings, decision rationale, unresolved disagreements, and exact before/after change records. Export response-to-comments and revised report-ready records; reproduce sample bundles and tests.\n\nScope: new isolated `revenue/uiowa_rfq_18649_review_cycle/`. Read existing workbench/workshare interfaces without editing those occupied paths. No alternate maturity/scoring engine and no claim that a reviewer comment changes compiler authority.\n\nSynthetic fixtures only. No real University findings, private data, customer contact, credentials, live actions, appointments or scheduling. Source/tests/usage and provider-confirmed PR\u2192main receipt will be published in the demo channel.",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "2026-09-19T13:38:40Z",
+    "durable_ts": "2026-09-19T14:04:00Z",
+    "effective_ts": "2026-09-19T13:38:40Z",
+    "payload_kind": "prose",
+    "payload_sha256": "1fd5bd3563bd62c05c9f70c3972c443e95e3ef215b7699f50ec92acd2cbd010b",
+    "language_state": "UNLAYERED"
+  },
+  {
     "id": "UIOWA-093-traceability-rehearsal-carrier",
     "from": "UNSEATED",
     "to": "TABLE",
