@@ -3,12 +3,34 @@
 const state = { report: null, cells: [], selectedKey: null, notes: new Map(), dispositions: new Map() };
 const el = Object.fromEntries([
   "candidateFile","authorityFile","inspectBtn","demoBtn","resetBtn","error","summary","search",
-  "statusFilter","matrix","detail","disposition","note","exportBtn","exportStatus"
+  "statusFilter","matrix","detail","disposition","note","exportBtn","exportStatus",
+  "sampleBadge","importPanel","matrixCount","cellSummary","sourceList","reportMeta"
 ].map(id => [id, document.getElementById(id)]));
 
 function keyFor(cell) { return `${cell.group}|${cell.dimension}`; }
-function text(value) { return value == null ? "—" : String(value); }
+function text(value) { return value == null ? "â€”" : String(value); }
 function setError(message="") { el.error.textContent = message; }
+
+const groupLabels = { ESS: "Enterprise Student Systems", RIS: "Research Information Systems", IAM: "Identity & Access Management" };
+const areaLabels = { software: "Software development", software_development: "Software development", security: "Security", deployment: "Deployment", ai_readiness: "AI readiness" };
+const evidenceStates = {
+  UNTRUSTED_EVIDENCE_CONSISTENT: { label: "Evidence consistent", tone: "consistent", next: "Review the supporting records in context, then capture the observation or follow-up that belongs in the assessment." },
+  HOLD_MISSING_EVIDENCE: { label: "Evidence needed", tone: "needed", next: "Identify the specific artifact or example needed to understand this practice. An empty evidence set leaves the assessment open." },
+  HOLD_CONFLICT: { label: "Sources disagree", tone: "conflict", next: "Compare the sources' definitions, dates, and scope. Record what would resolve the disagreement before selecting a conclusion." },
+  HOLD_STALE_EVIDENCE: { label: "Update source", tone: "stale", next: "Request a recent example of this practice. Keep the older record as context and check what has changed." }
+};
+function evidenceState(cell) { return evidenceStates[cell.status] || { label: "Review evidence", tone: "needed", next: "Review the source record and its technical details." }; }
+function appendText(parent, tag, value, className="") {
+  const node = document.createElement(tag); node.textContent = value;
+  if (className) node.className = className;
+  parent.append(node); return node;
+}
+function statusBadge(cell, className="status") {
+  const badge = document.createElement("span"); badge.className = className;
+  badge.dataset.tone = evidenceState(cell).tone;
+  const dot = document.createElement("span"); dot.className = "status-dot"; dot.setAttribute("aria-hidden", "true");
+  badge.append(dot, document.createTextNode(evidenceState(cell).label)); return badge;
+}
 
 function syntheticReport() {
   const groups = ["ESS", "RIS", "IAM"];
@@ -62,29 +84,35 @@ function installReport(report) {
   rebuildStatuses();
   renderMatrix();
   el.detail.textContent = "Select a cell.";
+  el.importPanel.open = false;
+  if (state.cells.length) selectCell(keyFor(state.cells[0]));
 }
 
 function renderSummary() {
-  const rows = [
-    ["Mode", state.report.mode],
-    ["Aggregate", state.report.aggregate_state],
-    ["Receipt", state.report.receipt_sha256],
-    ["Commercial", state.report.commercial_terms?.status || "UNKNOWN"],
-    ["Current authority", "false"],
-    ["Synthetic demo", state.report.synthetic_demo === true ? "YES — UI ONLY" : "no"]
-  ];
   el.summary.replaceChildren();
-  for (const [k,v] of rows) {
-    const dt = document.createElement("dt"); dt.textContent = k;
-    const dd = document.createElement("dd"); dd.textContent = text(v);
-    el.summary.append(dt, dd);
+  for (const [code, presentation] of Object.entries(evidenceStates)) {
+    const item = document.createElement("div");
+    appendText(item, "dt", presentation.label);
+    appendText(item, "dd", String(state.cells.filter(cell => cell.status === code).length));
+    el.summary.append(item);
   }
+  const sources = state.report.evidence_authority?.sources || [];
+  const syntheticEvidence = sources.length > 0 && sources.every(source => String(source.source_ref || "").startsWith("synthetic://"));
+  el.sampleBadge.hidden = false;
+  el.sampleBadge.textContent = state.report.synthetic_demo === true ? "Synthetic sample Â· UI demonstration" : syntheticEvidence ? "Synthetic evidence Â· compiler run" : "Imported evidence package";
+  el.reportMeta.textContent = JSON.stringify({
+    mode: state.report.mode, aggregate_state: state.report.aggregate_state,
+    receipt_sha256: state.report.receipt_sha256, trust: state.report.trust,
+    commercial_terms: state.report.commercial_terms,
+    synthetic_ui_demo: state.report.synthetic_demo === true,
+    synthetic_source_records: syntheticEvidence
+  }, null, 2);
 }
 
 function rebuildStatuses() {
   const current = el.statusFilter.value;
   const statuses = [...new Set(state.cells.map(c => c.status))].sort();
-  el.statusFilter.replaceChildren(new Option("All statuses", ""), ...statuses.map(s => new Option(s, s)));
+  el.statusFilter.replaceChildren(new Option("All evidence states", ""), ...statuses.map(s => new Option(evidenceState({status:s}).label, s)));
   if (statuses.includes(current)) el.statusFilter.value = current;
 }
 
@@ -94,28 +122,38 @@ function visibleCells() {
   return state.cells.filter(cell => {
     if (status && cell.status !== status) return false;
     if (!q) return true;
-    const hay = [cell.group, cell.dimension, cell.status, ...(cell.reason_codes || []), ...(cell.source_ids || [])].join(" ").toLowerCase();
+    const hay = [cell.group, groupLabels[cell.group], cell.dimension, areaLabels[cell.dimension], cell.status, evidenceState(cell).label, ...(cell.reason_codes || []), ...(cell.source_ids || [])].join(" ").toLowerCase();
     return hay.includes(q);
   });
 }
 
 function renderMatrix() {
   el.matrix.replaceChildren();
+  let previousGroup = null;
   for (const cell of visibleCells()) {
+    if (cell.group !== previousGroup) {
+      const heading = document.createElement("div"); heading.className = "matrix-group";
+      appendText(heading, "strong", cell.group); appendText(heading, "span", groupLabels[cell.group] || cell.group);
+      el.matrix.append(heading); previousGroup = cell.group;
+    }
     const key = keyFor(cell);
     const button = document.createElement("button");
     button.type = "button";
     button.className = "cell";
     button.dataset.key = key;
+    button.dataset.tone = evidenceState(cell).tone;
+    button.setAttribute("aria-label", `${cell.group}: ${areaLabels[cell.dimension] || cell.dimension}, ${evidenceState(cell).label}`);
     button.setAttribute("aria-current", state.selectedKey === key ? "true" : "false");
-    const group = document.createElement("strong"); group.textContent = cell.group;
-    const dimension = document.createElement("span"); dimension.textContent = cell.dimension;
-    const status = document.createElement("span"); status.className = "status"; status.textContent = cell.status;
-    button.append(group, dimension, status);
+    appendText(button, "span", areaLabels[cell.dimension] || cell.dimension, "area");
+    button.append(statusBadge(cell));
+    const count = (cell.source_ids || []).length;
+    appendText(button, "span", `${count} source${count === 1 ? "" : "s"}`, "source-count");
     button.addEventListener("click", () => selectCell(key));
     el.matrix.append(button);
   }
-  el.matrix.dataset.renderedCells = String(el.matrix.childElementCount);
+  const renderedCount = el.matrix.querySelectorAll(".cell").length;
+  el.matrix.dataset.renderedCells = String(renderedCount);
+  el.matrixCount.textContent = `${renderedCount} of ${state.cells.length} areas`;
 }
 
 function selectCell(key) {
@@ -132,6 +170,26 @@ function selectCell(key) {
     source_ids: cell.source_ids || [],
     reason_codes: cell.reason_codes || []
   }, null, 2);
+  el.cellSummary.replaceChildren();
+  appendText(el.cellSummary, "h3", `${cell.group} / ${areaLabels[cell.dimension] || cell.dimension}`);
+  appendText(el.cellSummary, "p", groupLabels[cell.group] || cell.group, "team-context");
+  el.cellSummary.append(statusBadge(cell, "evidence-status"));
+  const next = document.createElement("p"); next.className = "next-step";
+  appendText(next, "strong", "Useful next step"); next.append(document.createTextNode(evidenceState(cell).next)); el.cellSummary.append(next);
+  el.sourceList.replaceChildren();
+  const records = state.report.evidence_authority?.sources || [];
+  for (const sourceId of cell.source_ids || []) {
+    const source = records.find(row => row.source_id === sourceId);
+    const card = document.createElement("div"); card.className = "source-card";
+    appendText(card, "span", sourceId, "source-id");
+    if (source) {
+      appendText(card, "p", source.claim || "Source record available for review.");
+      appendText(card, "small", [source.evidence_kind, source.observed_at?.slice(0, 10)].filter(Boolean).join(" Â· "));
+      const record = document.createElement("details");
+      appendText(record, "summary", "View source record"); appendText(record, "pre", JSON.stringify(source, null, 2)); card.append(record);
+    } else appendText(card, "p", state.report.synthetic_demo === true ? "Illustrative source identifier for this UI sample. Import the sample evidence files to inspect the actual compiler output." : "This source identifier is retained in the report; its full record is not included in this view.");
+    el.sourceList.append(card);
+  }
   el.note.disabled = false;
   el.disposition.disabled = false;
   el.note.value = state.notes.get(key) || "";
@@ -149,6 +207,11 @@ function resetWorkbench() {
   el.note.value = ""; el.note.disabled = true;
   el.disposition.value = "UNREVIEWED"; el.disposition.disabled = true;
   el.exportBtn.disabled = true; el.exportStatus.textContent = "";
+  el.cellSummary.replaceChildren(); appendText(el.cellSummary, "p", "Choose an area to explore its sources and next step.", "empty-state");
+  el.sourceList.replaceChildren(); el.sampleBadge.hidden = true;
+  el.reportMeta.textContent = "Load a package to view its report metadata.";
+  el.matrixCount.textContent = "Select an area";
+  el.importPanel.open = true;
   setError("");
 }
 
@@ -222,7 +285,7 @@ function exportDraft() {
   a.href = url;
   a.download = `uiowa-rfq18649-draft-handoff-${state.report.receipt_sha256.slice(0, 12)}.json`;
   document.body.append(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-  el.exportStatus.textContent = "Draft handoff exported. It carries no approval or payment authority.";
+  el.exportStatus.textContent = "Review handoff exported. Your notes are linked to this report.";
 }
 
 el.inspectBtn.addEventListener("click", inspectFiles);
