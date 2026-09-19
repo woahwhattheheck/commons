@@ -1,0 +1,1581 @@
+{
+  "observed_on": "2026-09-19",
+  "root": "/home/user/commons/revenue",
+  "pattern": "uiowa_rfq_18649_",
+  "lanes": [
+    {
+      "lane": "uiowa_rfq_18649_acceptance_map",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 33,
+      "suites": [
+        {
+          "suite": "test_acceptance_map.py",
+          "command": "/usr/local/bin/python3 -m unittest test_acceptance_map",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 33,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [
+        "OP5-BASALT",
+        "OP5-MARROW"
+      ],
+      "multi_seat": true,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_adoption_readiness",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 49,
+      "suites": [
+        {
+          "suite": "test_readiness.py",
+          "command": "/usr/local/bin/python3 -m unittest test_readiness",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 49,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [
+        "OP5-JUNIPER"
+      ],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_ai_decision_case",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 34,
+      "suites": [
+        {
+          "suite": "test_ai_decision_case.py",
+          "command": "/usr/local/bin/python3 -m unittest test_ai_decision_case",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 34,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_ai_eval_kit",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 29,
+      "suites": [
+        {
+          "suite": "test_eval_kit.py",
+          "command": "/usr/local/bin/python3 -m unittest test_eval_kit",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 29,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [
+        "OP5-FLINT"
+      ],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_ai_integration",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 46,
+      "suites": [
+        {
+          "suite": "test_ai_integration.py",
+          "command": "/usr/local/bin/python3 -m unittest test_ai_integration",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 46,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [
+        "OP5-QUARRY"
+      ],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_ai_opportunity_portfolio",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 39,
+      "suites": [
+        {
+          "suite": "test_opportunity_portfolio.py",
+          "command": "/usr/local/bin/python3 -m unittest test_opportunity_portfolio",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 39,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [
+        "OP5-HALYARD",
+        "ZZ-KESTREL-V78",
+        "ZZ-Kestrel-42"
+      ],
+      "multi_seat": true,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_ai_policy_to_workflow",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 36,
+      "suites": [
+        {
+          "suite": "test_policy_matrix.py",
+          "command": "/usr/local/bin/python3 -m unittest test_policy_matrix",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 36,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_ai_use_inventory",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 43,
+      "suites": [
+        {
+          "suite": "test_inventory.py",
+          "command": "/usr/local/bin/python3 -m unittest test_inventory",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 43,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [
+        "OP5-KELVIN"
+      ],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_bid_pack",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 35,
+      "suites": [
+        {
+          "suite": "test_bid_pack.py",
+          "command": "/usr/local/bin/python3 -m unittest test_bid_pack",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 35,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [
+        "OP5-TOPAZ"
+      ],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_build_board",
+      "category": "DOCUMENTS_ONLY",
+      "lane_outcome": "NO_SUITE",
+      "suite_count": 0,
+      "tests_run_total": 0,
+      "suites": [],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [],
+      "root_readme_files": [],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_capability_appendix",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 39,
+      "suites": [
+        {
+          "suite": "test_capability_appendix.py",
+          "command": "/usr/local/bin/python3 -m unittest test_capability_appendix",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 39,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [
+        "OP5-GRANITE",
+        "OP5-IRONWOOD",
+        "ZZ-Lattice",
+        "ZZ-Semaphore",
+        "ZZ-Sol"
+      ],
+      "multi_seat": true,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_capacity_benchmark",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 36,
+      "suites": [
+        {
+          "suite": "test_capacity_benchmark.py",
+          "command": "/usr/local/bin/python3 -m unittest test_capacity_benchmark",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 36,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [
+        "OP5-OBSIDIAN"
+      ],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_capacity_feasibility",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 51,
+      "suites": [
+        {
+          "suite": "test_capacity_roadmap.py",
+          "command": "/usr/local/bin/python3 -m unittest test_capacity_roadmap",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 51,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_closeout",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 7,
+      "suites": [
+        {
+          "suite": "test_closeout.py",
+          "command": "/usr/local/bin/python3 -m unittest test_closeout",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 7,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_contractor_transition",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 34,
+      "suites": [
+        {
+          "suite": "test_transition.py",
+          "command": "/usr/local/bin/python3 -m unittest test_transition",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 34,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [
+        "OP5-KELVIN"
+      ],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_deadline_continuity",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 42,
+      "suites": [
+        {
+          "suite": "test_continuity.py",
+          "command": "/usr/local/bin/python3 -m unittest test_continuity",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 42,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [
+        "OP5-KELVIN"
+      ],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_delivery_metrics",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 6,
+      "suites": [
+        {
+          "suite": "test_calculator.py",
+          "command": "/usr/local/bin/python3 -m unittest test_calculator",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 6,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [
+        "ZZ-Semaphore"
+      ],
+      "multi_seat": false,
+      "readme_files": [],
+      "root_readme_files": [],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_doc_usability",
+      "category": "DOCUMENTS_ONLY",
+      "lane_outcome": "NO_SUITE",
+      "suite_count": 0,
+      "tests_run_total": 0,
+      "suites": [],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_document_extraction",
+      "category": "TESTED",
+      "lane_outcome": "FAIL",
+      "suite_count": 1,
+      "tests_run_total": 6,
+      "suites": [
+        {
+          "suite": "test_extract.py",
+          "command": "/usr/local/bin/python3 -m unittest test_extract",
+          "outcome": "FAIL",
+          "exit_code": 1,
+          "tests_run": 6,
+          "status_line": "FAILED (errors=2)",
+          "note": "",
+          "tail": "  File \"/home/user/commons/revenue/uiowa_rfq_18649_document_extraction/test_extract.py\", line 42, in test_pdf_uses_page_locators\n    result = extract.extract(FIXTURES / \"sample.pdf\")\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/user/commons/revenue/uiowa_rfq_18649_document_extraction/extract.py\", line 343, in extract\n    segments, warnings = extract_pdf(path)\n                         ^^^^^^^^^^^^^^^^^\n  File \"/home/user/commons/revenue/uiowa_rfq_18649_document_extraction/extract.py\", line 255, in extract_pdf\n    raise ExtractionError(\nextract.ExtractionError: PDF_BACKEND_UNAVAILABLE: install pypdf>=6,<7\n----------------------------------------------------------------------\nRan 6 tests in 0.072s\nFAILED (errors=2)"
+        }
+      ],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": "requirements.txt"
+    },
+    {
+      "lane": "uiowa_rfq_18649_economics_resource_adapters",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 2,
+      "tests_run_total": 78,
+      "suites": [
+        {
+          "suite": "test_check_contract.py",
+          "command": "/usr/local/bin/python3 -m unittest test_check_contract",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 33,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        },
+        {
+          "suite": "test_integrate.py",
+          "command": "/usr/local/bin/python3 -m unittest test_integrate",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 45,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [
+        "OP5-HALYARD"
+      ],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_exec_summary",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 42,
+      "suites": [
+        {
+          "suite": "test_exec_summary.py",
+          "command": "/usr/local/bin/python3 -m unittest test_exec_summary",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 42,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [
+        "OP5-QUARRY"
+      ],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_filesystem_safety",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 24,
+      "suites": [
+        {
+          "suite": "test_fsaudit.py",
+          "command": "/usr/local/bin/python3 -m unittest test_fsaudit",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 24,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [
+        "OP5-MARROW"
+      ],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md",
+        "fixtures/README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_handoff",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 6,
+      "suites": [
+        {
+          "suite": "tests/",
+          "command": "/usr/local/bin/python3 -m unittest discover -s tests",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 6,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_incident_learning",
+      "category": "DOCUMENTS_ONLY",
+      "lane_outcome": "NO_SUITE",
+      "suite_count": 0,
+      "tests_run_total": 0,
+      "suites": [],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_intake_rehearsal",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 34,
+      "suites": [
+        {
+          "suite": "test_rehearsal.py",
+          "command": "/usr/local/bin/python3 -m unittest test_rehearsal",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 34,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [
+        "OP5-BASALT"
+      ],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_integration",
+      "category": "EXECUTABLE_NO_SUITE",
+      "lane_outcome": "NO_SUITE",
+      "suite_count": 0,
+      "tests_run_total": 0,
+      "suites": [],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [],
+      "root_readme_files": [],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_milestone_packets",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 55,
+      "suites": [
+        {
+          "suite": "test_milestone_packets.py",
+          "command": "/usr/local/bin/python3 -m unittest test_milestone_packets",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 55,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [
+        "OP5-CINDER",
+        "ZZ-Lattice"
+      ],
+      "multi_seat": true,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_mobilization",
+      "category": "DOCUMENTS_ONLY",
+      "lane_outcome": "NO_SUITE",
+      "suite_count": 0,
+      "tests_run_total": 0,
+      "suites": [],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_observability",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 5,
+      "suites": [
+        {
+          "suite": "test_observability.py",
+          "command": "/usr/local/bin/python3 -m unittest test_observability",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 5,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_operator_handoff",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 30,
+      "suites": [
+        {
+          "suite": "test_verify_kit.py",
+          "command": "/usr/local/bin/python3 -m unittest test_verify_kit",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 30,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [
+        "OP5-SLATE"
+      ],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md",
+        "fixtures/minikit/README.md",
+        "fixtures/minikit/uiowa_rfq_18649_alpha/README.md",
+        "fixtures/minikit/uiowa_rfq_18649_bravo/README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_outcome_measurement",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 6,
+      "suites": [
+        {
+          "suite": "tests/",
+          "command": "/usr/local/bin/python3 -m unittest discover -s tests",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 6,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_output_agreement",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 41,
+      "suites": [
+        {
+          "suite": "test_output_agreement.py",
+          "command": "/usr/local/bin/python3 -m unittest test_output_agreement",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 41,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_print_pagination",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 39,
+      "suites": [
+        {
+          "suite": "test_printreport.py",
+          "command": "/usr/local/bin/python3 -m unittest test_printreport",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 39,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_prioritization",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 48,
+      "suites": [
+        {
+          "suite": "test_prioritize.py",
+          "command": "/usr/local/bin/python3 -m unittest test_prioritize",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 48,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [
+        "OP5-CINDER",
+        "ZZ-Meridian"
+      ],
+      "multi_seat": true,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_qa_refusal_contract",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 57,
+      "suites": [
+        {
+          "suite": "test_qa.py",
+          "command": "/usr/local/bin/python3 -m unittest test_qa",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 57,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_question_cards",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 40,
+      "suites": [
+        {
+          "suite": "test_question_cards.py",
+          "command": "/usr/local/bin/python3 -m unittest test_question_cards",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 40,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [
+        "OP5-FLINT",
+        "ZZ-COPPERLINE"
+      ],
+      "multi_seat": true,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_rating_model",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 7,
+      "suites": [
+        {
+          "suite": "test_rating_model.py",
+          "command": "/usr/local/bin/python3 -m unittest test_rating_model",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 7,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [],
+      "root_readme_files": [],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_readout_deck",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 56,
+      "suites": [
+        {
+          "suite": "test_deck_architecture.py",
+          "command": "/usr/local/bin/python3 -m unittest test_deck_architecture",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 56,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_recovery_evidence",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 2,
+      "tests_run_total": 57,
+      "suites": [
+        {
+          "suite": "test_assess_recovery.py",
+          "command": "/usr/local/bin/python3 -m unittest test_assess_recovery",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 7,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        },
+        {
+          "suite": "test_recovery_evidence.py",
+          "command": "/usr/local/bin/python3 -m unittest test_recovery_evidence",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 50,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [
+        "OP5-IRONWOOD",
+        "ZZ-Semaphore"
+      ],
+      "multi_seat": true,
+      "readme_files": [
+        "README-OP5-IRONWOOD-second-implementation.md",
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README-OP5-IRONWOOD-second-implementation.md",
+        "README.md"
+      ],
+      "shared_directory_signal": true,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_release_provenance",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 34,
+      "suites": [
+        {
+          "suite": "test_provenance.py",
+          "command": "/usr/local/bin/python3 -m unittest test_provenance",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 34,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [
+        "ZZ-KESTREL-P57B"
+      ],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_report_structure",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 55,
+      "suites": [
+        {
+          "suite": "test_report_structure.py",
+          "command": "/usr/local/bin/python3 -m unittest test_report_structure",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 55,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_report_visuals",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 90,
+      "suites": [
+        {
+          "suite": "test_report_visuals.py",
+          "command": "/usr/local/bin/python3 -m unittest test_report_visuals",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 90,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_roadmap_dependencies",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 47,
+      "suites": [
+        {
+          "suite": "test_depcheck.py",
+          "command": "/usr/local/bin/python3 -m unittest test_depcheck",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 47,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [
+        "OP5-JUNIPER"
+      ],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_scope_change",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 48,
+      "suites": [
+        {
+          "suite": "test_scope_change.py",
+          "command": "/usr/local/bin/python3 -m unittest test_scope_change",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 48,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [
+        "OP5-CINDER"
+      ],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_secure_guidance",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 8,
+      "suites": [
+        {
+          "suite": "test_assess_guidance.py",
+          "command": "/usr/local/bin/python3 -m unittest test_assess_guidance",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 8,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_security_event_review",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 9,
+      "suites": [
+        {
+          "suite": "test_assess_security_events.py",
+          "command": "/usr/local/bin/python3 -m unittest test_assess_security_events",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 9,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_synthetic_collection",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 5,
+      "suites": [
+        {
+          "suite": "tests/",
+          "command": "/usr/local/bin/python3 -m unittest discover -s tests",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 5,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_test_data_readiness",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 2,
+      "tests_run_total": 7,
+      "suites": [
+        {
+          "suite": "test_data_assessor.py",
+          "command": "/usr/local/bin/python3 -m unittest test_data_assessor",
+          "outcome": "EMPTY",
+          "exit_code": 0,
+          "tests_run": 0,
+          "status_line": "OK",
+          "note": "",
+          "tail": "----------------------------------------------------------------------\nRan 0 tests in 0.000s\nOK"
+        },
+        {
+          "suite": "tests/",
+          "command": "/usr/local/bin/python3 -m unittest discover -s tests",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 7,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_traceability",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 3,
+      "tests_run_total": 66,
+      "suites": [
+        {
+          "suite": "test_audit_assertions.py",
+          "command": "/usr/local/bin/python3 -m unittest test_audit_assertions",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 22,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        },
+        {
+          "suite": "test_audit_self_sealing.py",
+          "command": "/usr/local/bin/python3 -m unittest test_audit_self_sealing",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 10,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        },
+        {
+          "suite": "test_trace_check.py",
+          "command": "/usr/local/bin/python3 -m unittest test_trace_check",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 34,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_traceability_rehearsal",
+      "category": "EXECUTABLE_NO_SUITE",
+      "lane_outcome": "NO_SUITE",
+      "suite_count": 0,
+      "tests_run_total": 0,
+      "suites": [],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_workbench",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 9,
+      "suites": [
+        {
+          "suite": "test_workbench.py",
+          "command": "/usr/local/bin/python3 -m unittest test_workbench",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 9,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [],
+      "multi_seat": false,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    },
+    {
+      "lane": "uiowa_rfq_18649_workshare",
+      "category": "TESTED",
+      "lane_outcome": "PASS",
+      "suite_count": 1,
+      "tests_run_total": 29,
+      "suites": [
+        {
+          "suite": "test_compiler.py",
+          "command": "/usr/local/bin/python3 -m unittest test_compiler",
+          "outcome": "PASS",
+          "exit_code": 0,
+          "tests_run": 29,
+          "status_line": "OK",
+          "note": "",
+          "tail": ""
+        }
+      ],
+      "seats_named": [
+        "ZZ-COPPERFINCH-B92E",
+        "ZZ-Semaphore"
+      ],
+      "multi_seat": true,
+      "readme_files": [
+        "README.md"
+      ],
+      "root_readme_files": [
+        "README.md"
+      ],
+      "shared_directory_signal": false,
+      "prerequisites_file": null
+    }
+  ],
+  "summary": {
+    "lanes_seen": 52,
+    "lanes_with_a_suite": 46,
+    "lanes_passing": 45,
+    "lanes_failing": 1,
+    "lanes_asserting_nothing": 0,
+    "lanes_without_a_suite": 2,
+    "lanes_documents_only": 4,
+    "tests_executed": 1597,
+    "empty_suites": [
+      "uiowa_rfq_18649_test_data_readiness::test_data_assessor.py"
+    ],
+    "multi_seat_lanes": [
+      "uiowa_rfq_18649_acceptance_map",
+      "uiowa_rfq_18649_ai_opportunity_portfolio",
+      "uiowa_rfq_18649_capability_appendix",
+      "uiowa_rfq_18649_milestone_packets",
+      "uiowa_rfq_18649_prioritization",
+      "uiowa_rfq_18649_question_cards",
+      "uiowa_rfq_18649_recovery_evidence",
+      "uiowa_rfq_18649_workshare"
+    ],
+    "shared_directory_lanes": [
+      "uiowa_rfq_18649_recovery_evidence"
+    ],
+    "lanes_with_prerequisites": [
+      "uiowa_rfq_18649_document_extraction"
+    ]
+  },
+  "note": "Durations are observations of one machine at one moment and are not part of the reproducible result. Lane classification is deterministic given the same tree."
+}

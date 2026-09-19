@@ -1,0 +1,53 @@
+lane,category,lane_outcome,suite_count,tests_run_total,empty_suites,failing_suites,seats_named,prerequisites_file
+uiowa_rfq_18649_acceptance_map,TESTED,PASS,1,33,none,none,OP5-BASALT; OP5-MARROW,UNKNOWN
+uiowa_rfq_18649_adoption_readiness,TESTED,PASS,1,49,none,none,OP5-JUNIPER,UNKNOWN
+uiowa_rfq_18649_ai_decision_case,TESTED,PASS,1,34,none,none,none,UNKNOWN
+uiowa_rfq_18649_ai_eval_kit,TESTED,PASS,1,29,none,none,OP5-FLINT,UNKNOWN
+uiowa_rfq_18649_ai_integration,TESTED,PASS,1,46,none,none,OP5-QUARRY,UNKNOWN
+uiowa_rfq_18649_ai_opportunity_portfolio,TESTED,PASS,1,39,none,none,OP5-HALYARD; ZZ-KESTREL-V78; ZZ-Kestrel-42,UNKNOWN
+uiowa_rfq_18649_ai_policy_to_workflow,TESTED,PASS,1,36,none,none,none,UNKNOWN
+uiowa_rfq_18649_ai_use_inventory,TESTED,PASS,1,43,none,none,OP5-KELVIN,UNKNOWN
+uiowa_rfq_18649_bid_pack,TESTED,PASS,1,35,none,none,OP5-TOPAZ,UNKNOWN
+uiowa_rfq_18649_build_board,DOCUMENTS_ONLY,NO_SUITE,0,0,none,none,none,UNKNOWN
+uiowa_rfq_18649_capability_appendix,TESTED,PASS,1,39,none,none,OP5-GRANITE; OP5-IRONWOOD; ZZ-Lattice; ZZ-Semaphore; ZZ-Sol,UNKNOWN
+uiowa_rfq_18649_capacity_benchmark,TESTED,PASS,1,36,none,none,OP5-OBSIDIAN,UNKNOWN
+uiowa_rfq_18649_capacity_feasibility,TESTED,PASS,1,51,none,none,none,UNKNOWN
+uiowa_rfq_18649_closeout,TESTED,PASS,1,7,none,none,none,UNKNOWN
+uiowa_rfq_18649_contractor_transition,TESTED,PASS,1,34,none,none,OP5-KELVIN,UNKNOWN
+uiowa_rfq_18649_deadline_continuity,TESTED,PASS,1,42,none,none,OP5-KELVIN,UNKNOWN
+uiowa_rfq_18649_delivery_metrics,TESTED,PASS,1,6,none,none,ZZ-Semaphore,UNKNOWN
+uiowa_rfq_18649_doc_usability,DOCUMENTS_ONLY,NO_SUITE,0,0,none,none,none,UNKNOWN
+uiowa_rfq_18649_document_extraction,TESTED,FAIL,1,6,none,test_extract.py,none,requirements.txt
+uiowa_rfq_18649_economics_resource_adapters,TESTED,PASS,2,78,none,none,OP5-HALYARD,UNKNOWN
+uiowa_rfq_18649_exec_summary,TESTED,PASS,1,42,none,none,OP5-QUARRY,UNKNOWN
+uiowa_rfq_18649_filesystem_safety,TESTED,PASS,1,24,none,none,OP5-MARROW,UNKNOWN
+uiowa_rfq_18649_handoff,TESTED,PASS,1,6,none,none,none,UNKNOWN
+uiowa_rfq_18649_incident_learning,DOCUMENTS_ONLY,NO_SUITE,0,0,none,none,none,UNKNOWN
+uiowa_rfq_18649_intake_rehearsal,TESTED,PASS,1,34,none,none,OP5-BASALT,UNKNOWN
+uiowa_rfq_18649_integration,EXECUTABLE_NO_SUITE,NO_SUITE,0,0,none,none,none,UNKNOWN
+uiowa_rfq_18649_milestone_packets,TESTED,PASS,1,55,none,none,OP5-CINDER; ZZ-Lattice,UNKNOWN
+uiowa_rfq_18649_mobilization,DOCUMENTS_ONLY,NO_SUITE,0,0,none,none,none,UNKNOWN
+uiowa_rfq_18649_observability,TESTED,PASS,1,5,none,none,none,UNKNOWN
+uiowa_rfq_18649_operator_handoff,TESTED,PASS,1,30,none,none,OP5-SLATE,UNKNOWN
+uiowa_rfq_18649_outcome_measurement,TESTED,PASS,1,6,none,none,none,UNKNOWN
+uiowa_rfq_18649_output_agreement,TESTED,PASS,1,41,none,none,none,UNKNOWN
+uiowa_rfq_18649_print_pagination,TESTED,PASS,1,39,none,none,none,UNKNOWN
+uiowa_rfq_18649_prioritization,TESTED,PASS,1,48,none,none,OP5-CINDER; ZZ-Meridian,UNKNOWN
+uiowa_rfq_18649_qa_refusal_contract,TESTED,PASS,1,57,none,none,none,UNKNOWN
+uiowa_rfq_18649_question_cards,TESTED,PASS,1,40,none,none,OP5-FLINT; ZZ-COPPERLINE,UNKNOWN
+uiowa_rfq_18649_rating_model,TESTED,PASS,1,7,none,none,none,UNKNOWN
+uiowa_rfq_18649_readout_deck,TESTED,PASS,1,56,none,none,none,UNKNOWN
+uiowa_rfq_18649_recovery_evidence,TESTED,PASS,2,57,none,none,OP5-IRONWOOD; ZZ-Semaphore,UNKNOWN
+uiowa_rfq_18649_release_provenance,TESTED,PASS,1,34,none,none,ZZ-KESTREL-P57B,UNKNOWN
+uiowa_rfq_18649_report_structure,TESTED,PASS,1,55,none,none,none,UNKNOWN
+uiowa_rfq_18649_report_visuals,TESTED,PASS,1,90,none,none,none,UNKNOWN
+uiowa_rfq_18649_roadmap_dependencies,TESTED,PASS,1,47,none,none,OP5-JUNIPER,UNKNOWN
+uiowa_rfq_18649_scope_change,TESTED,PASS,1,48,none,none,OP5-CINDER,UNKNOWN
+uiowa_rfq_18649_secure_guidance,TESTED,PASS,1,8,none,none,none,UNKNOWN
+uiowa_rfq_18649_security_event_review,TESTED,PASS,1,9,none,none,none,UNKNOWN
+uiowa_rfq_18649_synthetic_collection,TESTED,PASS,1,5,none,none,none,UNKNOWN
+uiowa_rfq_18649_test_data_readiness,TESTED,PASS,2,7,test_data_assessor.py,none,none,UNKNOWN
+uiowa_rfq_18649_traceability,TESTED,PASS,3,66,none,none,none,UNKNOWN
+uiowa_rfq_18649_traceability_rehearsal,EXECUTABLE_NO_SUITE,NO_SUITE,0,0,none,none,none,UNKNOWN
+uiowa_rfq_18649_workbench,TESTED,PASS,1,9,none,none,none,UNKNOWN
+uiowa_rfq_18649_workshare,TESTED,PASS,1,29,none,none,ZZ-COPPERFINCH-B92E; ZZ-Semaphore,UNKNOWN
