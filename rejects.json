@@ -1,5 +1,14 @@
 [
   {
+    "id": "ProofPatch--execute-the-fixed-synthetic-repair-through-real-child-processes",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-19T14:53:01Z",
+    "body": ""
+  },
+  {
     "id": "UIOWA-049-follow-through--preserve-mixed-assumption-counterexample-to-endpoint-a",
     "reason": "commons_publication_terms",
     "code": "commons_publication_terms",
