@@ -14,10 +14,10 @@ The component working directory was `competitions/gatewayhacks-2026-civic-ledger
 | `civic_ledger/core.py` | `964cf5231cf4c72390fe9fb30bddc45813ebeac9` |
 | `civic_ledger/__init__.py` | `8d669e2ffdca9f728e961c5e6a64f2f164d57628` |
 | `tests/test_handoff.py` — direct normal and optimized runs | `efb70c7be87a5816fb4ee940d5fd76b65078312a` |
-| `tests/test_handoff.py` — final helper and root bridge run | `56461284edf6bc78cd5c2f07d409d8921225b5d8` |
+| `tests/test_handoff.py` — final helper and normal/optimized root bridge runs | `56461284edf6bc78cd5c2f07d409d8921225b5d8` |
 | Repository-root `test_civic_portable_handoff.py` | `5290743958455c8e0b98c64a60ffe7a3fc0f6153` |
 
-After the two direct 15-test passes, the only component-test change was to construct the subprocess optimization flag from `sys.flags.optimize`, preserving `-OO` as well as `-O`. It did not change test assertions, fixture inputs, or normal/`-O` argument values. The root bridge received the same flag propagation and a 60-second timeout. Its subsequent normal invocation passed against the final test blob. An `-OO` run is **not claimed**.
+After the two direct 15-test passes, the only component-test change was to construct the subprocess optimization flag from `sys.flags.optimize`, preserving `-OO` as well as `-O`. It did not change test assertions, fixture inputs, or normal/`-O` argument values. The root bridge received the same flag propagation and a 60-second timeout. Its subsequent normal invocation passed against the final test blob. One later optimized bridge invocation specifically checked this final driver path, as recorded below. An `-OO` run is **not claimed**.
 
 The first exploratory run had one failed test because its expectation required relative source-download URLs. The reader instead intentionally embeds standalone data URLs. The corrected test decodes all eight fixture downloads and compares their bytes with the four native files, exact workspace, and three normalized sources. The accepted outputs below are from that correction; no production-source change was required for it.
 
@@ -106,6 +106,27 @@ Ran 1 test in 0.437s
 OK
 ```
 
+## Final optimized repository bridge
+
+This single additional run was requested to check the changed optimization-forwarding path on the final published test bytes. It was not a repeat of the original core suite or a rerun merely to preserve logs.
+
+Command, from the repository root:
+
+```sh
+python3 -B -O -m unittest test_civic_portable_handoff -v
+```
+
+Execution-tool chunk `782874`; exit code **0**. Runtime remained `bed0659a3b622368f4c7f48b203c1bdd4fc65894`, component tests `56461284edf6bc78cd5c2f07d409d8921225b5d8`, and bridge `5290743958455c8e0b98c64a60ffe7a3fc0f6153`. The bridge invokes the focused 15-test suite with `-O`; no `-OO` execution is claimed.
+
+```text
+test_component_suite (test_civic_portable_handoff.CivicPortableHandoffSuite.test_component_suite) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 1.318s
+
+OK
+```
+
 ## Scope of the accepted checks
 
 The tests cover native four-file byte compatibility; exact workspace retention and payload hashes; normalized source downloads, line hashes and anchors; conflict, unknown and decided states; an explicit stale assessment; Unicode and literal markup display; static filter-control structure; actual CLI export and verification; source, receipt and resealed derived-artifact tampering; existing files, directories and symlinks; and deterministic exports without input mutation.
@@ -113,4 +134,3 @@ The tests cover native four-file byte compatibility; exact workspace retention a
 The CLI test also starts the copied verifier from inside the output directory using `python -B -m civic_ledger.handoff verify --output-dir .`, checks success, and checks that the payload inventory remains unchanged. Keep `-B` in this command: Python may otherwise write package caches before the module's bytecode setting takes effect. The check is reproduction and integrity under the stated invocation, not attestation of arbitrary interpreter behavior.
 
 Source review found no defect within this bounded scope. Static HTML assertions establish the presence of controls, safe text rendering, embedded downloads and source anchors; no browser session or interaction test was performed. Previously accepted original core tests were not rerun.
-
