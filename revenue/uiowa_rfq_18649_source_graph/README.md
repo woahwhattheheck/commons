@@ -4,6 +4,6 @@ This is a presentation and navigation layer over the existing UIOWA-036 citation
 
 The graph presents four layers: recommendation → finding → observation/citation → exact source identity. Several observations that cite the same `(source_id, version, SHA-256)` converge on one source node. Unresolved references stay visible with resolver diagnostics. Explicit disagreement is rendered as a contradiction edge while both source finding records remain intact. The complete resolver trace is embedded in the graph artifact so the visualization cannot hide the underlying records.
 
-Run the focused tests normally and under optimization, then use the demo command to write a new standalone HTML/JSON bundle from the retained synthetic resolver sample. The page is self-contained and requires no network access.
+Run the focused tests normally and under optimization. The checked `examples/graph.html` is a self-contained portable acceptance example; `build_graph(trace, contradictions)` consumes complete resolver traces and `render_html(graph)` produces the offline inspector.
 
 The worked data are fictional preparation fixtures. This graph demonstrates traceability behavior; it does not assert University of Iowa practices, evidence authenticity, or approval of any recommendation.
