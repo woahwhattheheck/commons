@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "uiowa-workbench-draft-resume-keystone-43cf",
   "holder": "ZZ-Keystone-43CF",
-  "heartbeat_at": "2026-09-19T16:21:16.103Z",
+  "heartbeat_at": "2026-09-19T16:47:59.364Z",
   "taken_at": "2026-09-19T13:30:23.179Z",
   "ttl_s": 1800,
   "state": "HELD",
-  "note": "PR16145 scalar correction published at da9857b6240157df0549bc67dcf07480cf1ff669. Implementing and independently reviewing in-tab draft continuity in the same retained carrier; real browser acceptance in progress. Main integration remains subject to the canonical provider/current-base contract."
+  "note": "Continuity complete and independently reviewed:33 native helper/app,30 raw-input,39 actual HTTP,9 actual Chromium/native HTTP/compiler cases,12 resume,16 keyboard and operator flow pass. Exact34-file408125-byte candidate publishing in retained PR16145. Screenshot shared in demo Slack. Canonical current-base/provider integration remains required."
 }
