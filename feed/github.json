@@ -1,71 +1,49 @@
 {
   "counts": {
-    "open_issues": 188,
-    "open_pull_requests": 166,
-    "runs_in_progress": 14,
-    "runs_queued": 1255
+    "open_issues": 189,
+    "open_pull_requests": 170,
+    "runs_in_progress": 13,
+    "runs_queued": 1245
   },
   "counts_source": "graphql",
-  "degraded": [],
-  "drafts": 12,
-  "longest_open": [
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-atlasforge/swarmops-current-freshness-20260917",
-      "created_at": "2026-09-17T18:46:46Z",
-      "draft": false,
-      "head_sha": "96be91936b40e03845096e93d906cc9b5d6f1865",
-      "number": 15613,
-      "title": "SwarmOps: harden current semantic readiness verification",
-      "updated_at": "2026-09-18T08:06:51Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zeta-sol/pilot-renewal-expansion-gate-20260917",
-      "created_at": "2026-09-17T19:00:55Z",
-      "draft": false,
-      "head_sha": "df5666d5a47cad829f07c142285053277e1470c7",
-      "number": 15629,
-      "title": "Revenue: gate pilot delivery into renewal/expansion review",
-      "updated_at": "2026-09-19T14:49:25Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol-1447/arc3-sage-unanimous-reachability-14735",
-      "created_at": "2026-09-17T19:02:30Z",
-      "draft": false,
-      "head_sha": "9d94a9eadd3734f86753709b954e7a38385157f9",
-      "number": 15631,
-      "title": "ARC3 SAGE: close exact-evidence ambiguity and abstract lookahead (#14735)",
-      "updated_at": "2026-09-19T14:55:38Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/partner-qual-clean-current-main-20260917",
-      "created_at": "2026-09-17T19:07:58Z",
-      "draft": false,
-      "head_sha": "a13fa73e10612ed8f1d07feda42afd624a33e891",
-      "number": 15640,
-      "title": "Revenue: recover partner qualification gate on clean current main",
-      "updated_at": "2026-09-19T15:24:12Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-z/pilot-renewal-reseal-clock-fix-15641",
-      "created_at": "2026-09-17T19:11:45Z",
-      "draft": false,
-      "head_sha": "1cda939013aa6b574abf6f549665e0d51d946eeb",
-      "number": 15643,
-      "title": "Fix pilot-renewal receipt reseal and current-clock authority",
-      "updated_at": "2026-09-19T14:58:34Z"
-    }
+  "degraded": [
+    "pulls-partial"
   ],
+  "drafts": 12,
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-basalt42-atomicity-test-20260919",
+      "created_at": "2026-09-19T16:19:45Z",
+      "draft": false,
+      "head_sha": "4f475618e58dac673948cf60ced73b04de0e427f",
+      "number": 16444,
+      "title": "Iowa workbench: prove rejected final rows cannot partially replace reviews",
+      "updated_at": "2026-09-19T16:19:45Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-kestrel-ad7b-workfeed-14484-20260919",
+      "created_at": "2026-09-19T16:11:56Z",
+      "draft": false,
+      "head_sha": "e0f55b007196beae660a9cdd27639d88070cd391",
+      "number": 16441,
+      "title": "Command center: work-feed evidence composition and read-only dispatch preview",
+      "updated_at": "2026-09-19T16:11:56Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/uiowa024-fieldkit-harborc9v2-20260919",
+      "created_at": "2026-09-19T16:10:58Z",
+      "draft": false,
+      "head_sha": "dac4d080d49cf5fcd80b974504154a5ada21bd7f",
+      "number": 16440,
+      "title": "UIOWA-024: complete sampling method, editable coverage matrix and worked field kit",
+      "updated_at": "2026-09-19T16:14:18Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -75,7 +53,7 @@
       "head_sha": "82be8db3d9763c6b3f3d21a5c1be3d24bbde8dbd",
       "number": 16438,
       "title": "MCP audit: readable reports that distinguish capture checks from receipt integrity",
-      "updated_at": "2026-09-19T16:06:07Z"
+      "updated_at": "2026-09-19T16:09:56Z"
     },
     {
       "author": "woahwhattheheck",
@@ -86,7 +64,7 @@
       "head_sha": "9f7d99310782196a80601e50169c28b53696f60c",
       "number": 16436,
       "title": "feat(uiowa): recover native UIOWA-031 evidence register on current 023 schema",
-      "updated_at": "2026-09-19T16:05:08Z"
+      "updated_at": "2026-09-19T16:16:48Z"
     },
     {
       "author": "woahwhattheheck",
@@ -105,10 +83,10 @@
       "branch": "swarm/zz-kestrel-x6j4-uiowa033-recovery-20260919",
       "created_at": "2026-09-19T16:02:24Z",
       "draft": false,
-      "head_sha": "507a490240cd8ccaad2a9503ec78911159c8f62b",
+      "head_sha": "b0cd8c8e318c655793bbab399d8e7b7d1cd93bae",
       "number": 16434,
       "title": "UIOWA-033 recovery: complete lineage tool, missing-terminal repair and seven-case rehearsal",
-      "updated_at": "2026-09-19T16:02:24Z"
+      "updated_at": "2026-09-19T16:18:24Z"
     },
     {
       "author": "woahwhattheheck",
@@ -119,7 +97,7 @@
       "head_sha": "cce7b5f2867dacfb8552709f1d3dbfec917b8970",
       "number": 16432,
       "title": "Complete OpenCV multi-photo evidence packet quality and custody",
-      "updated_at": "2026-09-19T16:03:46Z"
+      "updated_at": "2026-09-19T16:13:39Z"
     },
     {
       "author": "woahwhattheheck",
@@ -138,43 +116,10 @@
       "branch": "zz-limen7c94/uiowa042-independent-delivery-review-20260919",
       "created_at": "2026-09-19T15:58:30Z",
       "draft": false,
-      "head_sha": "cbb2d783b2937261ba1781bfdb9f81de4009ebfc",
+      "head_sha": "7b7963f774277644375f1e967163debbf85bffbd",
       "number": 16429,
-      "title": "UIOWA-042: independent review, complete delivery patch and executable evidence",
-      "updated_at": "2026-09-19T15:58:30Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz/sextant47-sample-soundness-20260919",
-      "created_at": "2026-09-19T15:57:54Z",
-      "draft": false,
-      "head_sha": "184040c6fcf3b7e84ddb435bca05bc5d3c2c3383",
-      "number": 16428,
-      "title": "Deliver complete sample-soundness checker with reviewed inference and input contracts",
-      "updated_at": "2026-09-19T15:57:54Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-zz/uiowa034-capture-kestrel-q9f2",
-      "created_at": "2026-09-19T15:56:33Z",
-      "draft": false,
-      "head_sha": "f78d502cfa3686b85327c3b29ff880288f82d633",
-      "number": 16426,
-      "title": "UIOWA-034: preserve interview disagreement and ship a reproducible capture workflow",
-      "updated_at": "2026-09-19T16:00:05Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zz-chert6b21/slack-root-observation-donor-20260919",
-      "branch": "zz-osprey47/slack-context-inspector-20260919",
-      "created_at": "2026-09-19T15:56:05Z",
-      "draft": false,
-      "head_sha": "fa7167b9853ca684a421ade35ea2c32a5a5be7eb",
-      "number": 16425,
-      "title": "feat(command-center): runnable captured-context inspector on the canonical root reader",
-      "updated_at": "2026-09-19T16:06:10Z"
+      "title": "UIOWA-042: install reviewed delivery repair with complete execution evidence",
+      "updated_at": "2026-09-19T16:19:09Z"
     }
   ],
   "open_heads": {
@@ -192,7 +137,7 @@
     "15721": "f691d4d452180f1df152a4b504b730fa4854f000",
     "15724": "d281fe366864f16b72f2e0de4f2ca8de0c882285",
     "15730": "8efdd09880cc6d37de5122d930091eb90c1409ee",
-    "15731": "0900f7c40284d7576b016cbafb541d5ec06edb0d",
+    "15731": "6217f11515fdd562b29b20e951a35ad964fc6f7c",
     "15732": "b229fa33e3ac899010b105d1d3c01c727d6062b7",
     "15751": "b87f58434b653ee8bed28b8c85bbe3eb49d95905",
     "15756": "a4421fda4c77dd988fd2ff75d8d07e15f13d5f8c",
@@ -213,7 +158,7 @@
     "15843": "61b90f87acb3ae59853e2095300f7ceeb676d8ed",
     "15865": "d6ba9099718fab8b308daeab7c7b57d1e97aa786",
     "15866": "a0868fe0b363046ef8743aa52c750aaa88aa7f20",
-    "15867": "7353c760d9f4c8a3d9f9ceeb1e753f93887c5067",
+    "15867": "80d029fb23290c2ee9ebd2c7f2a715ef3061f333",
     "15875": "6c2b11996ab4ad34059e8203261bcc0255ce4124",
     "15877": "a4672c41352745889717172e08616533a542467a",
     "15884": "fc85ecf3036d57c69c8685068a1f2f49d88c2e8c",
@@ -232,7 +177,7 @@
     "16081": "7d5f250e6fac05b5d3e3a39022260e10f3329c82",
     "16134": "0d788098b9da196cab9efe387707672a86622516",
     "16139": "ec44fe0b9f1d31041c3cc6ed63567c5f97fbd267",
-    "16145": "a89a5bc91f0f9a3dae736bee4a015caaf8d52567",
+    "16145": "da9857b6240157df0549bc67dcf07480cf1ff669",
     "16152": "5a9350e58434152d1d0752bbdf94b30f48899d38",
     "16175": "4f9fdb429ab9e907745dbfe730c7e39a2da7e988",
     "16191": "93869645138551310da7a83665ebbfaa83cc1371",
@@ -321,34 +266,70 @@
     "16394": "93f5df0a8d00bc7e2b010ea7f95f0a45f47754f6",
     "16395": "f559a1fa0f96ef7ef70b0ce2e9f618057ed3f16b",
     "16397": "650d258693f0d479bf17d12fc0eb2abb31631dd8",
-    "16398": "5559bb173e2d0a900998d9a1de3838e26cb86dad",
+    "16398": "c7dcb30fb99d0caef71738f54dc91b771484b7a4",
     "16399": "1d03cc0c89778c81f7976ec274a04836066ff25d",
     "16400": "f85af6742cb155326cdf76a9caae491d10264593",
     "16401": "f19b0074be03409abed2d384bd2587c6d2e88da4",
     "16404": "a09a574ba74d9a268fe4aab7fb3fb4468f0ca084",
     "16406": "ba1757c8d6e460e884d34c1480d6ec188d2eed3a",
-    "16407": "45439a3b1fe0abb7a8c724fe8041132c3406ee67",
+    "16407": "6cd07f9ab07610c64bdf24da8791417a13a9c8e3",
     "16409": "83962c6bfac10177a1639eb2b2f5e3c7f1331bef",
     "16412": "614f17f3754bd33e67076257fede84a4dd744e8a",
-    "16413": "2201f47e5a9b66ca12eb8feab2648f1cc87a5570",
+    "16413": "a7b66842cc3de843dda96bd2807e9671b2c8d9c2",
     "16416": "7e9cd8bd4b89be1aa0faee987819d6e18f84aea7",
     "16419": "271d997303b621375b493f75b9d64c0e47eabe1a",
     "16423": "60d9c5e9da0a0a396138a0efd621a7911acf21f3",
     "16425": "fa7167b9853ca684a421ade35ea2c32a5a5be7eb",
     "16426": "f78d502cfa3686b85327c3b29ff880288f82d633",
     "16428": "184040c6fcf3b7e84ddb435bca05bc5d3c2c3383",
-    "16429": "cbb2d783b2937261ba1781bfdb9f81de4009ebfc",
+    "16429": "7b7963f774277644375f1e967163debbf85bffbd",
     "16431": "f6bd5e0731a84db94e4978a62efe973858549f97",
     "16432": "cce7b5f2867dacfb8552709f1d3dbfec917b8970",
-    "16434": "507a490240cd8ccaad2a9503ec78911159c8f62b",
+    "16434": "b0cd8c8e318c655793bbab399d8e7b7d1cd93bae",
     "16435": "12f3e9197ac439095e4951e19e787430b5dd631d",
     "16436": "9f7d99310782196a80601e50169c28b53696f60c",
-    "16438": "82be8db3d9763c6b3f3d21a5c1be3d24bbde8dbd"
+    "16438": "82be8db3d9763c6b3f3d21a5c1be3d24bbde8dbd",
+    "16440": "dac4d080d49cf5fcd80b974504154a5ada21bd7f",
+    "16441": "e0f55b007196beae660a9cdd27639d88070cd391",
+    "16444": "4f475618e58dac673948cf60ced73b04de0e427f"
   },
-  "pulls_listed": 166,
-  "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 89.6,
+  "pulls_listed": 169,
+  "pulls_listing": "PARTIAL",
+  "queue_depth_per_runner": 95.8,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-zz/erdos-crosswalk-operator-keystone-k4j9-r2",
+      "closed_at": "2026-09-19T16:15:55Z",
+      "head_sha": "7f75d03b7d695d086b672444216a173d7e7e82a3",
+      "merged_at": "2026-09-19T16:15:55Z",
+      "number": 16443,
+      "state": "MERGED",
+      "title": "docs(research): deliver the worked retained-crosswalk demonstration"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/uiowa047-output-guide-copperfin-q8d6-20260919",
+      "closed_at": "2026-09-19T16:14:19Z",
+      "head_sha": "12c29d0a8213aaf005ad7dbe03d400006355444a",
+      "merged_at": "2026-09-19T16:14:19Z",
+      "number": 16442,
+      "state": "MERGED",
+      "title": "UIOWA-047: worked report-preservation guide and source-bound replay results"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-celadon-c5-extraction-walkthrough-20260919",
+      "closed_at": "2026-09-19T16:11:25Z",
+      "head_sha": "44ac6f72f0ae8a2b56c931ab5b320df96ddb2b7a",
+      "merged_at": "2026-09-19T16:11:25Z",
+      "number": 16439,
+      "state": "MERGED",
+      "title": "docs(uiowa-032): executed TXT/DOCX evidence-fidelity walkthrough"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -473,28 +454,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "swarm/zz-faraday-io-da397452-operator-guide",
-      "closed_at": "2026-09-19T15:47:02Z",
-      "head_sha": "a32f438558064e543fcecbb121baef7e52d209f1",
-      "merged_at": "2026-09-19T15:47:02Z",
-      "number": 16414,
-      "state": "MERGED",
-      "title": "UIOWA-064: deliver executed output-preservation operator guide"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/zz-harborglass23r-transport-readout-20260919",
-      "closed_at": "2026-09-19T15:46:19Z",
-      "head_sha": "c5cf4ade6a63fc25bbfc387d7a19397c69f83be0",
-      "merged_at": "2026-09-19T15:46:19Z",
-      "number": 16411,
-      "state": "MERGED",
-      "title": "UIOWA-031: source-bound worked transport example for the live demo"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "swarm-zz/uiowa048-helio-c72a-20260919",
       "closed_at": "2026-09-19T15:45:11Z",
       "head_sha": "c9f9380793a2b4867187efff5cfa60e5dcef005d",
@@ -502,21 +461,10 @@
       "number": 16410,
       "state": "MERGED",
       "title": "UIOWA-048: executable documentation-usability review and operator rehearsal"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zz/sextant47-sample-soundness-20260919",
-      "branch": "zz/keyframe9d7e-soundness-contract-20260919",
-      "closed_at": "2026-09-19T15:43:19Z",
-      "head_sha": "d1c04b63ae752586373d78bd1d3b5dcb0f98262b",
-      "merged_at": "2026-09-19T15:43:19Z",
-      "number": 16391,
-      "state": "MERGED",
-      "title": "Complete sample-soundness input contract and runnable composed kit"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-19T16:06:29Z",
+  "unchanged_since": "2026-09-19T16:21:19Z",
   "undatable_pulls": []
 }
