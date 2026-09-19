@@ -8,6 +8,8 @@ structurally reviewable; it does not mean the change is approved or production-r
 from __future__ import annotations
 
 import argparse
+import html
+import math
 import json
 import sys
 from dataclasses import dataclass
@@ -121,6 +123,86 @@ def _require_fields(
             )
 
 
+
+def _shape_findings(packet: dict[str, Any]) -> list[Finding]:
+    """Check types before enum membership, ID lookup, or iteration.
+
+    Missing/null information is left to the existing gap rules, except for
+    containers and the required Boolean synthetic flag. Do not coerce IDs,
+    string booleans, or malformed references into apparently valid records.
+    """
+    findings: list[Finding] = []
+    text_fields = {
+        "metadata": tuple(f for f in REQUIRED_METADATA if f != "synthetic") + ("urgency_reason",),
+        "user_facing_behavior": ("before", "after", "communications"),
+        "rollback_and_recovery": ("rollback_trigger", "rollback_method", "data_recovery_notes", "owner_role"),
+        "known_limitations": ("id", "description", "affected_scope", "owner_role", "follow_up_trigger", "mitigation"),
+        "requirements": ("id", "statement", "acceptance_criteria"),
+        "acceptance_evidence": ("id", "kind", "locator", "result", "notes"),
+        "support_readiness": ("id", "item", "owner_role", "status", "locator", "follow_up_trigger"),
+        "operational_needs": ("id", "kind", "need", "owner_role", "status", "verification", "follow_up_trigger"),
+        "documentation_updates": ("document", "owner_role", "status", "locator", "follow_up_trigger"),
+        "open_items": ("id", "severity", "question", "owner_role", "resolution_trigger"),
+    }
+    objects = {"metadata", "user_facing_behavior", "rollback_and_recovery"}
+    for section in REQUIRED_TOP:
+        value = packet[section]
+        if section in objects:
+            if not isinstance(value, dict):
+                findings.append(Finding("ERROR", "EXPECTED_OBJECT", section, "Expected an object."))
+                continue
+            rows = [(section, value)]
+        else:
+            if not isinstance(value, list):
+                findings.append(Finding("ERROR", "EXPECTED_LIST", section, "Expected a list."))
+                continue
+            rows = [(f"{section}[{i}]", item) for i, item in enumerate(value)]
+        for path, item in rows:
+            if not isinstance(item, dict):
+                findings.append(Finding("ERROR", "EXPECTED_OBJECT", path, "Expected an object."))
+                continue
+            for field in text_fields[section]:
+                if field in item and item[field] is not None and not isinstance(item[field], str):
+                    findings.append(Finding("ERROR", "EXPECTED_STRING", f"{path}.{field}", "Expected text, not a coerced value."))
+            if section == "metadata" and "synthetic" in item and type(item["synthetic"]) is not bool:
+                findings.append(Finding("ERROR", "EXPECTED_BOOLEAN", f"{path}.synthetic", "Expected JSON true or false."))
+            if section == "requirements":
+                for field in ("acceptance_evidence", "support_readiness"):
+                    refs = item.get(field)
+                    if refs is None:
+                        continue  # Missing linkage remains an evidence gap.
+                    if not isinstance(refs, list):
+                        findings.append(Finding("ERROR", "EXPECTED_LIST", f"{path}.{field}", "Expected an array of reference IDs."))
+                        continue
+                    for index, ref in enumerate(refs):
+                        if not isinstance(ref, str) or not ref.strip():
+                            findings.append(Finding("ERROR", "INVALID_REFERENCE_ID", f"{path}.{field}[{index}]", "Reference IDs must be non-empty strings."))
+            if section == "user_facing_behavior":
+                users = item.get("affected_users")
+                if users is not None and not (isinstance(users, str) or
+                        isinstance(users, list) and all(isinstance(user, str) and user.strip() for user in users)):
+                    findings.append(Finding("ERROR", "INVALID_AFFECTED_USERS", f"{path}.affected_users", "Expected text or a list of non-empty persona descriptions."))
+    return findings
+
+
+def _mapping(value: Any) -> dict[str, Any]:
+    return value if isinstance(value, dict) else {}
+
+
+def _cell(value: Any) -> str:
+    """Keep a supplied value in one readable Markdown table cell."""
+    text = "not recorded" if value is None else str(value)
+    return (html.escape(text, quote=False).replace("\\", "\\\\")
+            .replace("|", "\\|").replace("\r\n", "\n").replace("\r", "\n")
+            .replace("\n", "<br>"))
+
+
+def _reference_text(value: Any) -> str:
+    if isinstance(value, list):
+        return ", ".join(map(str, value))
+    return "not recorded" if value is None else f"invalid reference list: {value}"
+
+
 def validate(packet: Any) -> list[Finding]:
     findings: list[Finding] = []
     if not isinstance(packet, dict):
@@ -131,6 +213,10 @@ def validate(packet: Any) -> list[Finding]:
             findings.append(Finding("ERROR", "MISSING_SECTION", key, "Required section is absent."))
 
     if any(f.code == "MISSING_SECTION" for f in findings):
+        return findings
+
+    findings.extend(_shape_findings(packet))
+    if findings:
         return findings
 
     metadata = packet.get("metadata")
@@ -190,6 +276,9 @@ def validate(packet: Any) -> list[Finding]:
     evidence = _id_map(packet.get("acceptance_evidence"), "acceptance_evidence", findings)
     support = _id_map(packet.get("support_readiness"), "support_readiness", findings)
     operations = _id_map(packet.get("operational_needs"), "operational_needs", findings)
+    for shared_id in sorted(set(support) & set(operations)):
+        findings.append(Finding("ERROR", "AMBIGUOUS_READINESS_ID", "support_readiness/operational_needs",
+                                f"Readiness ID names both support and operational records: {shared_id}"))
 
     for item_id, item in evidence.items():
         _require_fields(
@@ -209,13 +298,15 @@ def validate(packet: Any) -> list[Finding]:
                 Finding("ERROR", "INVALID_STATUS", f"{path}.status",
                         f"Expected one of {sorted(READINESS_STATES)}.")
             )
-        if status != "complete" and not (
-            _present(item.get("locator")) or _present(item.get("follow_up_trigger"))
-        ):
-            findings.append(
-                Finding("GAP", "FOLLOWUP_TRIGGER_MISSING", path,
-                        "Incomplete support item needs a locator or follow-up trigger.")
-            )
+        if status in {"pending", "deferred_with_owner"}:
+            findings.append(Finding("WARNING", "SUPPORT_FOLLOWUP_OPEN", path,
+                                    "Support work remains explicitly open; a locator is not completion."))
+            if not _present(item.get("follow_up_trigger")):
+                findings.append(Finding("GAP", "FOLLOWUP_TRIGGER_MISSING", path,
+                                        "Incomplete support item needs a follow-up trigger, even when a locator exists."))
+        elif status == "complete" and not _present(item.get("locator")):
+            findings.append(Finding("GAP", "SUPPORT_LOCATOR_MISSING", path,
+                                    "Reported completion has no support evidence locator."))
 
     for item_id, item in operations.items():
         path = f"operational_needs[{item_id}]"
@@ -226,13 +317,15 @@ def validate(packet: Any) -> list[Finding]:
                 Finding("ERROR", "INVALID_STATUS", f"{path}.status",
                         f"Expected one of {sorted(READINESS_STATES)}.")
             )
-        if status != "complete" and not (
-            _present(item.get("verification")) or _present(item.get("follow_up_trigger"))
-        ):
-            findings.append(
-                Finding("GAP", "FOLLOWUP_TRIGGER_MISSING", path,
-                        "Incomplete operational item needs verification detail or a follow-up trigger.")
-            )
+        if status in {"pending", "deferred_with_owner"}:
+            findings.append(Finding("WARNING", "OPERATIONAL_FOLLOWUP_OPEN", path,
+                                    "Operational work remains explicitly open; verification text is not completion."))
+            if not _present(item.get("follow_up_trigger")):
+                findings.append(Finding("GAP", "FOLLOWUP_TRIGGER_MISSING", path,
+                                        "Incomplete operational item needs a follow-up trigger."))
+        elif status == "complete" and not _present(item.get("verification")):
+            findings.append(Finding("GAP", "OPERATION_VERIFICATION_MISSING", path,
+                                    "Reported completion has no operational verification detail."))
 
     requirements = packet.get("requirements")
     requirement_ids: set[str] = set()
@@ -374,8 +467,11 @@ def assessment_state(findings: list[Finding]) -> str:
     return "REVIEWABLE_NO_RECORDED_GAPS"
 
 
-def render(packet: dict[str, Any], findings: list[Finding]) -> str:
-    metadata = packet.get("metadata", {})
+def render(packet: Any, findings: list[Finding]) -> str:
+    # Re-evaluate the packet so stale caller findings cannot conceal its errors.
+    findings = list(dict.fromkeys([*validate(packet), *findings]))
+    packet = _mapping(packet)
+    metadata = _mapping(packet.get("metadata"))
     state = assessment_state(findings)
 
     out = [
@@ -394,8 +490,8 @@ def render(packet: dict[str, Any], findings: list[Finding]) -> str:
         "",
         "## User-facing behavior",
         "",
-        f"- **Before:** {packet.get('user_facing_behavior', {}).get('before', '')}",
-        f"- **After:** {packet.get('user_facing_behavior', {}).get('after', '')}",
+        f"- **Before:** {_mapping(packet.get('user_facing_behavior')).get('before', '')}",
+        f"- **After:** {_mapping(packet.get('user_facing_behavior')).get('after', '')}",
         "",
         "## Requirement traceability",
         "",
@@ -406,12 +502,29 @@ def render(packet: dict[str, Any], findings: list[Finding]) -> str:
     for requirement in _objects(packet.get("requirements")):
         out.append(
             "| {rid} | {criteria} | {evidence} | {ready} |".format(
-                rid=str(requirement.get("id", "")).replace("|", "\\|"),
-                criteria=str(requirement.get("acceptance_criteria", "")).replace("|", "\\|"),
-                evidence=", ".join(map(str, requirement.get("acceptance_evidence", []))).replace("|", "\\|"),
-                ready=", ".join(map(str, requirement.get("support_readiness", []))).replace("|", "\\|"),
+                rid=_cell(requirement.get("id")),
+                criteria=_cell(requirement.get("acceptance_criteria")),
+                evidence=_cell(_reference_text(requirement.get("acceptance_evidence"))),
+                ready=_cell(_reference_text(requirement.get("support_readiness"))),
             )
         )
+
+    out.extend(["", "## Acceptance evidence", "",
+                "| ID | Kind | Locator | Recorded result | Notes |",
+                "| --- | --- | --- | --- | --- |"])
+    for item in _objects(packet.get("acceptance_evidence")):
+        out.append("| " + " | ".join(_cell(item.get(key)) for key in
+                                     ("id", "kind", "locator", "result", "notes")) + " |")
+    out.extend(["", "## Support and operational readiness", "",
+                "| ID | Scope | Item / need | Owner role | Recorded status | Evidence / verification | Follow-up trigger |",
+                "| --- | --- | --- | --- | --- | --- | --- |"])
+    for section, label, description, evidence_field in (
+            ("support_readiness", "support", "item", "locator"),
+            ("operational_needs", "operations", "need", "verification")):
+        for item in _objects(packet.get(section)):
+            values = (item.get("id"), label, item.get(description), item.get("owner_role"),
+                      item.get("status"), item.get(evidence_field), item.get("follow_up_trigger"))
+            out.append("| " + " | ".join(_cell(value) for value in values) + " |")
 
     out.extend(["", "## Known limitations", ""])
     for item in _objects(packet.get("known_limitations")):
@@ -454,9 +567,30 @@ def render(packet: dict[str, Any], findings: list[Finding]) -> str:
     return "\n".join(out)
 
 
+def _unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError(f"Duplicate JSON object key: {key}")
+        result[key] = value
+    return result
+
+
+def _reject_constant(value: str) -> Any:
+    raise ValueError(f"Non-finite JSON number: {value}")
+
+
+def _finite_float(value: str) -> float:
+    number = float(value)
+    if not math.isfinite(number):
+        raise ValueError("JSON number is outside the finite numeric range")
+    return number
+
+
 def load_packet(path: str) -> dict[str, Any]:
     with Path(path).open("r", encoding="utf-8") as handle:
-        value = json.load(handle)
+        value = json.load(handle, object_pairs_hook=_unique_object,
+                          parse_constant=_reject_constant, parse_float=_finite_float)
     if not isinstance(value, dict):
         raise ValueError("Packet root must be a JSON object")
     return value
@@ -507,10 +641,19 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
-    if args.command == "validate":
-        return command_validate(args.path, args.json_output)
-    if args.command == "render":
-        return command_render(args.path, args.output)
+    try:
+        if args.command == "validate":
+            return command_validate(args.path, args.json_output)
+        if args.command == "render":
+            return command_render(args.path, args.output)
+    except (OSError, ValueError, UnicodeError, RecursionError) as exc:
+        finding = Finding("ERROR", "INPUT_OR_OUTPUT_ERROR", "$", str(exc))
+        if args.command == "validate" and args.json_output:
+            print(json.dumps({"assessment_state": "UNRELIABLE_PACKET",
+                              "findings": [finding.as_dict()]}, indent=2, sort_keys=True))
+        else:
+            print(f"ERROR: {finding.code}: {finding.message}", file=sys.stderr)
+        return 2
     raise AssertionError("unreachable")
 
 
