@@ -205,6 +205,56 @@ class TrainTests(unittest.TestCase):
         row = core.compile_capture(capture([workflow("source-parses", [green, red])]))["workflows"][0]
         self.assertEqual(row["disposition"], "HOLD_AMBIGUOUS")
 
+    def test_distinct_green_plus_provider_hold_never_mints_ready(self):
+        providers = (
+            (
+                case(2, status="queued", conclusion=None, runner_id=0, steps=[]),
+                "PROVIDER_QUEUED",
+                "HOLD_PROVIDER_QUEUED",
+            ),
+            (
+                case(2, conclusion="failure", runner_id=0, steps=[]),
+                "PROVIDER_NO_RUN",
+                "HOLD_PROVIDER_STARVATION",
+            ),
+            (
+                case(2, conclusion="cancelled", runner_id=0, steps=[]),
+                "PROVIDER_CANCELLED_BEFORE_EXECUTION",
+                "HOLD_PROVIDER_STARVATION",
+            ),
+        )
+        for provider, workflow_disposition, overall in providers:
+            for cases in ([case(1), provider], [provider, case(1)]):
+                with self.subTest(
+                    workflow_disposition=workflow_disposition,
+                    first_run_id=cases[0]["run"]["run"]["id"],
+                ):
+                    compiled = core.compile_capture(capture([workflow("source-parses", cases)]))
+                    self.assertEqual(compiled["workflows"][0]["disposition"], workflow_disposition)
+                    self.assertEqual(compiled["overall_disposition"], overall)
+                    self.assertTrue(compiled["work_feed_projection"]["provider_hold"])
+                    self.assertNotEqual(compiled["overall_disposition"], "READY_FOR_GUARDED_REVIEW")
+
+    def test_green_plus_multiple_provider_states_prefers_queued_hold(self):
+        compiled = core.compile_capture(
+            capture(
+                [
+                    workflow(
+                        "source-parses",
+                        [
+                            case(1),
+                            case(2, conclusion="failure", runner_id=0, steps=[]),
+                            case(3, conclusion="cancelled", runner_id=0, steps=[]),
+                            case(4, status="queued", conclusion=None, runner_id=0, steps=[]),
+                        ],
+                    )
+                ]
+            )
+        )
+        self.assertEqual(compiled["workflows"][0]["disposition"], "PROVIDER_QUEUED")
+        self.assertEqual(compiled["overall_disposition"], "HOLD_PROVIDER_QUEUED")
+        self.assertTrue(compiled["work_feed_projection"]["provider_hold"])
+
     def test_review_and_topology_are_independent_holds(self):
         self.assertEqual(core.compile_capture(capture(review="RED"))["overall_disposition"], "HOLD_SOURCE_REVIEW_RED")
         self.assertEqual(

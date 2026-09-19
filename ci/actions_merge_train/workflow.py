@@ -79,7 +79,6 @@ def workflow_result(workflow, repository, head):
             disposition = "HOLD_AMBIGUOUS"
         elif "SOURCE_EXECUTED_RED" in kinds:
             disposition = "SOURCE_EXECUTED_RED"
-        # Distinct run ids are not superseded: green requires unanimity.
         elif kinds == {"SOURCE_EXECUTED_GREEN"}:
             disposition = "SOURCE_EXECUTED_GREEN"
         elif "PROVIDER_QUEUED" in kinds:
