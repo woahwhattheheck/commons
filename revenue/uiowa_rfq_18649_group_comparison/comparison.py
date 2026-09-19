@@ -23,6 +23,7 @@ DIMENSIONS = ("software", "security", "deployment", "ai")
 ROLES = ("support_ids", "dissent_ids", "limitation_ids", "mechanism_source_ids")
 MAX_BYTES = 8 * 1024 * 1024
 MAX_RECORDS = 5000
+MAX_PRESENTATION_BYTES = 16 * 1024 * 1024
 MAX_TEXT = 20000
 TEXT_FIELDS = ("finding_id", "group", "dimension", "practice_key", "state", "basis",
                "service_id", "statement", "context", "window_start", "window_end", "topology")
@@ -105,6 +106,8 @@ def project(raw: bytes) -> dict:
         if source["source_id"] in sources:
             raise ComparisonError(f"Duplicate source ID: {source['source_id']}")
         sources[source["source_id"]] = source
+    source_sizes = {key: len(compact(value).encode("utf-8")) for key, value in sources.items()}
+    presentation_bytes = 0
     grouped = defaultdict(list)
     seen = set()
     for item in native["findings"]:
@@ -137,6 +140,9 @@ def project(raw: bytes) -> dict:
                 raise ComparisonError(f"{role} must be a bounded array")
             if any(not isinstance(ref, str) or ref not in sources for ref in refs):
                 raise ComparisonError(f"Unresolved evidence reference in {finding['finding_id']}: {role}")
+            presentation_bytes += sum(source_sizes[ref] for ref in refs)
+            if presentation_bytes > MAX_PRESENTATION_BYTES:
+                raise ComparisonError("Expanded evidence exceeds the 16 MiB presentation budget")
             finding[role] = refs
         key = tuple(finding[key] for key in ("dimension", "practice_key", "window_start", "window_end"))
         grouped[key].append(finding)
