@@ -1,0 +1,317 @@
+{
+  "attachments": [
+    {
+      "bytes": 385,
+      "category": "financial",
+      "filename": "A01-financial-capacity-letter.txt",
+      "id": "ATT-FIN-01",
+      "index_page": 2,
+      "note": "",
+      "ordinal": 1,
+      "present": true,
+      "required": true,
+      "sha256": "110d1deb877bf3b6bab7dd9efa20d62151cb38ed26ab8b32fd211be0132f2c38",
+      "source": "attachments/fin_capacity_letter.txt",
+      "status": "SUPPLIED",
+      "title": "Financial Capacity Letter"
+    },
+    {
+      "bytes": null,
+      "category": "financial",
+      "filename": null,
+      "id": "ATT-FIN-02",
+      "index_page": 2,
+      "note": "Referenced by the Price Proposal. Not supplied in this fixture - this is the gap the fixture is built to show.",
+      "ordinal": 2,
+      "present": false,
+      "required": true,
+      "sha256": null,
+      "source": "attachments/cost_rate_schedule.pdf",
+      "status": "PLACEHOLDER-NOT SUPPLIED",
+      "title": "Certified Cost Rate Schedule"
+    },
+    {
+      "bytes": 316,
+      "category": "qualification",
+      "filename": "A03-vendor-registration-and-taxpayer-identification.txt",
+      "id": "ATT-QUAL-01",
+      "index_page": 2,
+      "note": "",
+      "ordinal": 3,
+      "present": true,
+      "required": true,
+      "sha256": "735ea0aa278ac0f796cbb979978f648f5de3289b8d1cfa356551a5e5b63849eb",
+      "source": "attachments/vendor_registration.txt",
+      "status": "SUPPLIED",
+      "title": "Vendor Registration and Taxpayer Identification"
+    },
+    {
+      "bytes": null,
+      "category": "qualification",
+      "filename": null,
+      "id": "ATT-QUAL-02",
+      "index_page": 2,
+      "note": "Not supplied in this fixture.",
+      "ordinal": 4,
+      "present": false,
+      "required": true,
+      "sha256": null,
+      "source": "attachments/certificate_of_insurance.pdf",
+      "status": "PLACEHOLDER-NOT SUPPLIED",
+      "title": "Certificate of Insurance"
+    },
+    {
+      "bytes": null,
+      "category": "qualification",
+      "filename": null,
+      "id": "ATT-QUAL-03",
+      "index_page": 2,
+      "note": "Referenced by two sections. Not supplied in this fixture.",
+      "ordinal": 5,
+      "present": false,
+      "required": true,
+      "sha256": null,
+      "source": "attachments/key_personnel_resumes.pdf",
+      "status": "PLACEHOLDER-NOT SUPPLIED",
+      "title": "Key Personnel Resumes"
+    },
+    {
+      "bytes": 286,
+      "category": "qualification",
+      "filename": "A06-client-references.txt",
+      "id": "ATT-REF-01",
+      "index_page": 2,
+      "note": "",
+      "ordinal": 6,
+      "present": true,
+      "required": false,
+      "sha256": "52627cda38b5c84a5204c0e1b2f7cbcb27f978c3b13d5dd98e8b97617f4ecbf4",
+      "source": "attachments/client_references.txt",
+      "status": "SUPPLIED",
+      "title": "Client References"
+    }
+  ],
+  "content_digest": "01cd58cabdf863ecfcf2ccdd359052d57faee337caaa8c9368c8998aa6e8479f",
+  "cross_references": [
+    {
+      "from": "S-COVER",
+      "kind": "section",
+      "label": "Scope of Work and Methodology",
+      "status": "RESOLVED",
+      "to": "S-SCOPE"
+    },
+    {
+      "from": "S-COVER",
+      "kind": "section",
+      "label": "Price Proposal",
+      "status": "RESOLVED",
+      "to": "S-PRICE"
+    },
+    {
+      "from": "S-EXEC",
+      "kind": "section",
+      "label": "Scope of Work and Methodology",
+      "status": "RESOLVED",
+      "to": "S-SCOPE"
+    },
+    {
+      "from": "S-EXEC",
+      "kind": "section",
+      "label": "Staffing and Key Personnel",
+      "status": "RESOLVED",
+      "to": "S-STAFF"
+    },
+    {
+      "from": "S-EXEC",
+      "kind": "attachment",
+      "label": "Financial Capacity Letter",
+      "status": "RESOLVED",
+      "to": "ATT-FIN-01"
+    },
+    {
+      "from": "S-QUAL",
+      "kind": "attachment",
+      "label": "Client References",
+      "status": "RESOLVED",
+      "to": "ATT-REF-01"
+    },
+    {
+      "from": "S-QUAL",
+      "kind": "attachment",
+      "label": "Key Personnel Resumes",
+      "status": "RESOLVED",
+      "to": "ATT-QUAL-03"
+    },
+    {
+      "from": "S-SCOPE",
+      "kind": "section",
+      "label": "Staffing and Key Personnel",
+      "status": "RESOLVED",
+      "to": "S-STAFF"
+    },
+    {
+      "from": "S-SCOPE",
+      "kind": "section",
+      "label": "Price Proposal",
+      "status": "RESOLVED",
+      "to": "S-PRICE"
+    },
+    {
+      "from": "S-SCOPE",
+      "kind": "unknown",
+      "label": null,
+      "status": "UNRESOLVED",
+      "to": "S-APPENDIX-C"
+    },
+    {
+      "from": "S-STAFF",
+      "kind": "attachment",
+      "label": "Key Personnel Resumes",
+      "status": "RESOLVED",
+      "to": "ATT-QUAL-03"
+    },
+    {
+      "from": "S-PRICE",
+      "kind": "section",
+      "label": "Scope of Work and Methodology",
+      "status": "RESOLVED",
+      "to": "S-SCOPE"
+    },
+    {
+      "from": "S-PRICE",
+      "kind": "attachment",
+      "label": "Certified Cost Rate Schedule",
+      "status": "RESOLVED",
+      "to": "ATT-FIN-02"
+    },
+    {
+      "from": "S-PRICE",
+      "kind": "attachment",
+      "label": "Financial Capacity Letter",
+      "status": "RESOLVED",
+      "to": "ATT-FIN-01"
+    },
+    {
+      "from": "S-EXCEPT",
+      "kind": "section",
+      "label": "Price Proposal",
+      "status": "RESOLVED",
+      "to": "S-PRICE"
+    }
+  ],
+  "fiction_notice": "SYNTHETIC FIXTURE - FICTION. Northgate Assessment Partners LLC does not exist. No content in this pack is a representation about any real bidder, any real University of Iowa requirement, or any real document. It exists to exercise the assembler.",
+  "issues": [
+    {
+      "code": "ATTACHMENT_NOT_SUPPLIED",
+      "detail": "required attachment ATT-FIN-02 (Certified Cost Rate Schedule) is declared but no file was supplied; emitted as a placeholder",
+      "ref": "ATT-FIN-02",
+      "severity": "WARN"
+    },
+    {
+      "code": "ATTACHMENT_NOT_SUPPLIED",
+      "detail": "required attachment ATT-QUAL-02 (Certificate of Insurance) is declared but no file was supplied; emitted as a placeholder",
+      "ref": "ATT-QUAL-02",
+      "severity": "WARN"
+    },
+    {
+      "code": "ATTACHMENT_NOT_SUPPLIED",
+      "detail": "required attachment ATT-QUAL-03 (Key Personnel Resumes) is declared but no file was supplied; emitted as a placeholder",
+      "ref": "ATT-QUAL-03",
+      "severity": "WARN"
+    },
+    {
+      "code": "XREF_UNRESOLVED",
+      "detail": "section S-SCOPE references 'S-APPENDIX-C', which is not a section or an attachment in this pack",
+      "ref": "S-SCOPE",
+      "severity": "WARN"
+    }
+  ],
+  "readiness": {
+    "note": "Counts describe declared-vs-present documents in this pack only. Whether this list of attachments is the list the University actually requires is UNKNOWN.",
+    "required_declared": 5,
+    "required_not_supplied": [
+      "ATT-FIN-02",
+      "ATT-QUAL-02",
+      "ATT-QUAL-03"
+    ],
+    "required_present": 2,
+    "status": "SUBMISSION_INCOMPLETE"
+  },
+  "render": {
+    "pagination_passes": 2,
+    "pdf_bytes": 23790,
+    "pdf_pages": 9
+  },
+  "schema": "uiowa-136-bid-pack/1",
+  "sections": [
+    {
+      "content_status": "SUPPLIED",
+      "filename": "01-cover-letter.md",
+      "id": "S-COVER",
+      "ordinal": 1,
+      "page": 3,
+      "source": "sections/cover.md",
+      "title": "Cover Letter"
+    },
+    {
+      "content_status": "SUPPLIED",
+      "filename": "02-executive-summary.md",
+      "id": "S-EXEC",
+      "ordinal": 2,
+      "page": 4,
+      "source": "sections/exec.md",
+      "title": "Executive Summary"
+    },
+    {
+      "content_status": "SUPPLIED",
+      "filename": "03-firm-qualifications.md",
+      "id": "S-QUAL",
+      "ordinal": 3,
+      "page": 5,
+      "source": "sections/qual.md",
+      "title": "Firm Qualifications"
+    },
+    {
+      "content_status": "SUPPLIED",
+      "filename": "04-scope-of-work-and-methodology.md",
+      "id": "S-SCOPE",
+      "ordinal": 4,
+      "page": 6,
+      "source": "sections/scope.md",
+      "title": "Scope of Work and Methodology"
+    },
+    {
+      "content_status": "SUPPLIED",
+      "filename": "05-staffing-and-key-personnel.md",
+      "id": "S-STAFF",
+      "ordinal": 5,
+      "page": 7,
+      "source": "sections/staff.md",
+      "title": "Staffing and Key Personnel"
+    },
+    {
+      "content_status": "SUPPLIED",
+      "filename": "06-price-proposal.md",
+      "id": "S-PRICE",
+      "ordinal": 6,
+      "page": 8,
+      "source": "sections/price.md",
+      "title": "Price Proposal"
+    },
+    {
+      "content_status": "SUPPLIED",
+      "filename": "07-exceptions-and-assumptions.md",
+      "id": "S-EXCEPT",
+      "ordinal": 7,
+      "page": 9,
+      "source": "sections/except.md",
+      "title": "Exceptions and Assumptions"
+    }
+  ],
+  "submission": {
+    "bidder_name": "Northgate Assessment Partners LLC (FICTIONAL)",
+    "solicitation_id": "RFQ-18649",
+    "status_label": "DRAFT - NOT SUBMITTED",
+    "title": "Response to RFQ-18649 - Application and Infrastructure Services Assessment"
+  }
+}

@@ -1,0 +1,7 @@
+attachment_id,title,category,required,status,filename,bytes,sha256,index_page
+ATT-FIN-01,Financial Capacity Letter,financial,yes,SUPPLIED,A01-financial-capacity-letter.txt,385,110d1deb877bf3b6bab7dd9efa20d62151cb38ed26ab8b32fd211be0132f2c38,2
+ATT-FIN-02,Certified Cost Rate Schedule,financial,yes,PLACEHOLDER-NOT SUPPLIED,UNKNOWN,UNKNOWN,UNKNOWN,2
+ATT-QUAL-01,Vendor Registration and Taxpayer Identification,qualification,yes,SUPPLIED,A03-vendor-registration-and-taxpayer-identification.txt,316,735ea0aa278ac0f796cbb979978f648f5de3289b8d1cfa356551a5e5b63849eb,2
+ATT-QUAL-02,Certificate of Insurance,qualification,yes,PLACEHOLDER-NOT SUPPLIED,UNKNOWN,UNKNOWN,UNKNOWN,2
+ATT-QUAL-03,Key Personnel Resumes,qualification,yes,PLACEHOLDER-NOT SUPPLIED,UNKNOWN,UNKNOWN,UNKNOWN,2
+ATT-REF-01,Client References,qualification,no,SUPPLIED,A06-client-references.txt,286,52627cda38b5c84a5204c0e1b2f7cbcb27f978c3b13d5dd98e8b97617f4ecbf4,2

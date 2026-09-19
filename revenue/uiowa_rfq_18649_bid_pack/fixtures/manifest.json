@@ -1,0 +1,41 @@
+{
+  "schema": "uiowa-136-bid-pack/1",
+  "fiction_notice": "SYNTHETIC FIXTURE - FICTION. Northgate Assessment Partners LLC does not exist. No content in this pack is a representation about any real bidder, any real University of Iowa requirement, or any real document. It exists to exercise the assembler.",
+  "submission": {
+    "title": "Response to RFQ-18649 - Application and Infrastructure Services Assessment",
+    "solicitation_id": "RFQ-18649",
+    "bidder_name": "Northgate Assessment Partners LLC (FICTIONAL)",
+    "status_label": "DRAFT - NOT SUBMITTED"
+  },
+  "sections": [
+    {"id": "S-COVER",  "title": "Cover Letter",                      "source": "sections/cover.md"},
+    {"id": "S-EXEC",   "title": "Executive Summary",                 "source": "sections/exec.md"},
+    {"id": "S-QUAL",   "title": "Firm Qualifications",               "source": "sections/qual.md"},
+    {"id": "S-SCOPE",  "title": "Scope of Work and Methodology",     "source": "sections/scope.md"},
+    {"id": "S-STAFF",  "title": "Staffing and Key Personnel",        "source": "sections/staff.md"},
+    {"id": "S-PRICE",  "title": "Price Proposal",                    "source": "sections/price.md"},
+    {"id": "S-EXCEPT", "title": "Exceptions and Assumptions",        "source": "sections/except.md"}
+  ],
+  "attachments": [
+    {"id": "ATT-FIN-01",  "title": "Financial Capacity Letter",        "category": "financial",
+     "required": true,  "provided": true,  "source": "attachments/fin_capacity_letter.txt"},
+
+    {"id": "ATT-FIN-02",  "title": "Certified Cost Rate Schedule",     "category": "financial",
+     "required": true,  "provided": false, "source": "attachments/cost_rate_schedule.pdf",
+     "note": "Referenced by the Price Proposal. Not supplied in this fixture - this is the gap the fixture is built to show."},
+
+    {"id": "ATT-QUAL-01", "title": "Vendor Registration and Taxpayer Identification", "category": "qualification",
+     "required": true,  "provided": true,  "source": "attachments/vendor_registration.txt"},
+
+    {"id": "ATT-QUAL-02", "title": "Certificate of Insurance",         "category": "qualification",
+     "required": true,  "provided": false, "source": "attachments/certificate_of_insurance.pdf",
+     "note": "Not supplied in this fixture."},
+
+    {"id": "ATT-QUAL-03", "title": "Key Personnel Resumes",            "category": "qualification",
+     "required": true,  "provided": false, "source": "attachments/key_personnel_resumes.pdf",
+     "note": "Referenced by two sections. Not supplied in this fixture."},
+
+    {"id": "ATT-REF-01",  "title": "Client References",                "category": "qualification",
+     "required": false, "provided": true,  "source": "attachments/client_references.txt"}
+  ]
+}
