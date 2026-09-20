@@ -1,6 +1,9 @@
 {
  "lanes": [
+  {"canonical":16469,"chain":[16441,16469],"content_keys":["046247c5f5fd2635"],"families":["WORK-FEED-14484-RECOVERY-AD7B"],"lane":"lane-16441","open":[16441,16469],"state":"OPEN","title":"Command center: fresh-main work-feed evidence composition"},
+  {"canonical":16468,"chain":[16423,16468],"content_keys":["aaf05c974a1de86c"],"families":[],"lane":"lane-16423","open":[16423,16468],"state":"OPEN","title":"UIOWA-129: integrate reviewed rehearsal source binding on current main"},
   {"canonical":15840,"chain":[15811,15840],"content_keys":["10ace36f5f61f2d9"],"families":[],"lane":"lane-15811","open":[15811,15840],"state":"OPEN","title":"CI: rejoin pilot-renewal trust repair with 67-slot workflow recovery"},
+  {"canonical":16175,"chain":[16175,16497],"content_keys":["e57fe223b3804777"],"families":[],"lane":"lane-16175","open":[16175],"state":"OPEN","title":"UIOWA-046: rejoin reviewed test reliability kit to current main"},
   {"canonical":16152,"chain":[16152,16193],"content_keys":["b6515f2cf6908b65","c75452dae3da2604"],"families":["COMMONS-CI-STARVATION-MERGE-TRAIN-20260917-ZSOL"],"lane":"lane-16152","open":[16152],"state":"OPEN","title":"CI review delta: retain distinct latest-run holds and 36-pair regressions"},
   {"canonical":15949,"chain":[15949,15999],"content_keys":["05defcf6a6875d51"],"families":[],"lane":"lane-15949","open":[15949],"state":"OPEN","title":"CI: current-main 68→67 workflow budget repair"},
   {"canonical":15880,"chain":[15876,15880],"content_keys":["ca75b0eb7559c999","e89e936465197d7f"],"families":["PRODUCT-LIFECYCLE-STRUCTURED-WAKE-CLOSURE-ZSOL17"],"lane":"lane-15876","open":[],"state":"MERGED","title":"revenue: close structured lifecycle guard bypasses"},
@@ -9,8 +12,9 @@
   {"canonical":15825,"chain":[15819,15825],"content_keys":["cd4f6bcfa49cdbb9"],"families":[],"lane":"lane-15819","open":[],"state":"CLOSED","title":"CI: rejoin 264/day cron floor recovery onto current main"}
  ],
  "note": "lanes with two or more members; an open pull request row without a lane field is a lane of its own",
- "observed_at": "2026-09-19T21:43:11Z",
+ "observed_at": "2026-09-20T00:04:37Z",
  "recent_closed": [
+  {"closed_at":"2026-09-19T22:49:44Z","content_key":"e57fe223b3804777","created_at":"2026-09-19T22:45:48Z","head":"6c1fa8a3f521a879a7baabc506acbd98c7936b29","links":[],"markers":[],"number":16497,"state":"MERGED","title":"UIOWA-046: rejoin reviewed test reliability kit to current main"},
   {"closed_at":"2026-09-19T13:52:25Z","content_key":"c75452dae3da2604","created_at":"2026-09-19T13:49:19Z","head":"11d62710e2deba1d7af8931bd5e5e164f41ba5d7","links":[16152],"markers":[],"number":16193,"state":"CLOSED","title":"CI review delta: retain distinct latest-run holds and 36-pair regressions"},
   {"closed_at":"2026-09-18T07:39:35Z","content_key":"UNKNOWN","created_at":"2026-09-18T07:31:10Z","head":"626eb3925717460635371cc0cbc5860eebafa99c","links":[],"markers":[],"number":15999,"state":"MERGED","title":"CI: current-main 68→67 workflow budget repair"},
   {"closed_at":"2026-09-18T02:17:32Z","content_key":"ca75b0eb7559c999","created_at":"2026-09-18T02:10:02Z","head":"43ef1cfcdb22835ad169b4ffe906bf33f84017a0","links":[],"markers":["PRODUCT-LIFECYCLE-STRUCTURED-WAKE-CLOSURE-ZSOL17"],"number":15880,"state":"MERGED","title":"revenue: close structured lifecycle guard bypasses"},
