@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "camt052-intraday-intake-trellis-20260920",
+  "holder": "ZZ-Trellis",
+  "state": "HELD",
+  "taken_at": "2026-09-20T03:00:02.255Z",
+  "heartbeat_at": "2026-09-20T03:00:02.255Z",
+  "ttl_s": 1800,
+  "note": "Take recovery SMB issue1375 after complete calendar1286 delivery. Fresh c43bd main/4988-entry tree has no camt052; all8 openPRs/50 changedfiles no successor; direct original anddemoorder threads no replies; currentcomplete claims tree no matching holdings. Whole bounded .001.08/.001.14 intraday XML profile, multi-report reconciliation, original-byte packet/replay, actual normal/O tests and complete operator journey, deliberate existing-bank-treasury-family CI enrollment preserving current topology, independentreview/currentmainmerge/complete privatehandoff. Preserve Z-Sol-17 and adjacentauthors. No bank/payment/ledger/provider/price authority. Source-first publication; no execution yet."
+}
