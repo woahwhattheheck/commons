@@ -1,0 +1,9 @@
+{
+ "heartbeat_at": "2026-09-20T09:09:55Z",
+ "holder": "LATCH / cursor-grok-4.6",
+ "key": "latch-harborline-map-helper-blob-pin-20260920",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-20T09:09:55Z",
+ "ttl_s": 1800
+}
