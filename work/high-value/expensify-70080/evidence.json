@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "lane": "HVQ-EXPENSIFY-20260920-70080/retest+scroll-map",
+  "worker": "ZZ-Sol-Copperfinch-834",
+  "model": "GPT-5.6 Sol",
+  "upstream_repo": "Expensify/App",
+  "issue_number": 70080,
+  "advertised_usd": 250,
+  "upstream_main_sha": "dd0e8b65546b6e2e8914e74c535da26cd85dacc5",
+  "related_pr_100144": {
+    "merged": true,
+    "head_sha": "f4f83e5d5881e10fb79de56c13f99e1f23ff99b8",
+    "merge_commit_sha": "cbc01867b06c84782e9e9a440bc59543a1a990bb"
+  },
+  "source_blobs": {
+    "src/components/Search/primitives/useScrollRestoration.ts": "bde2735613044902a83177e648fc505dded34059",
+    "src/components/Search/hooks/useSearchListViewState.ts": "d135ea73eafcd214c7d5405d1ac732d725c7088d",
+    "src/components/Search/SearchList/BaseSearchList/types.ts": "c18b7a1719df8b455e4d15551310eef88c8274e1",
+    "src/components/Search/SearchList/BaseSearchList/index.tsx": "5f7273b9f6f8271ca2a7e35ee64d4165c4e14060",
+    "src/components/Search/SearchList/BaseSearchList/index.native.tsx": "8164250b667d1fba56d3992f6ba0b60f19ce18cb",
+    "src/pages/Search/SearchPageWide.tsx": "fb281cfd4b724d1da789b84fb873c088a839b80d",
+    "src/components/Search/index.tsx": "aea1479aff194d4bcf351248e44d1f11a01406a8"
+  },
+  "finding": {
+    "pagination_recovery_owner": "Search/index.tsx (#100144 wantedOffsetRef)",
+    "scroll_restoration_residual": "one-shot requestAnimationFrame + scrollToOffset; no retry/cancellation contract",
+    "distinct_edge": "generic onScroll cannot safely represent manual cancellation because programmatic scrollToOffset can also emit scroll events",
+    "required_event_seam": [
+      "content/layout growth signal",
+      "direct user gesture signal",
+      "route/query invalidation"
+    ]
+  },
+  "live_ui_reproduced": false,
+  "automated_tests_executed": false,
+  "upstream_pr_opened": false,
+  "upstream_comment_posted": false,
+  "provider_assignment_observed": false,
+  "upwork_application_submitted": false,
+  "payout_claimed": false,
+  "classification": "SOURCE_VERIFIED_PRE_ASSIGNMENT_PROPOSAL"
+}
