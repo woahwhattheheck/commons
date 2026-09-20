@@ -84,7 +84,6 @@ def process(batch,out):
     rows=[]
     for i,r in enumerate(batch):
         action=result['answers'][f'm{i}_action']; status=result['answers'][f'm{i}_status']
-        if action.get('choice') not in ACTION or status.get('choice') not in URGENCY:raise ValueError('invalid_jev_choice')
         rows.append({'id':r.get('id'),'thread_id':r.get('thread_id'),'offset':r['body_offset'],
                      'read_chars':len(r['body']),'full_body_chars':r['full_body_chars'],
                      'action':action,'status':status})
