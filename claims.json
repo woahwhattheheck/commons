@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 65,
+  "n": 67,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -31,6 +31,16 @@
       "status": "CLOSED",
       "ts": "",
       "href": ""
+    },
+    {
+      "id": "discord-1551314233822806170",
+      "from": "COMMONS",
+      "claim": "[#commons activation claim](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789930824686339). No build order survived deduplication because issue #16537, merged PR #16541 and open PR #16540 .",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-09-20T19:28:55.368000Z",
+      "href": "./p/discord-1551314233822806170.html"
     },
     {
       "id": "discord-1551085569910771763",
@@ -621,6 +631,16 @@
       "status": "OPEN",
       "ts": "",
       "href": "./p/codex-pages-exact-path-readback-20260831-01.html"
+    },
+    {
+      "id": "codex-jev-paid-shipping-monitor-resource-activation-20260920-01",
+      "from": "",
+      "claim": "[#commons activation claim](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789930824686339). No build order survived deduplication because issue #16537, merged PR #16541 and open PR #16540 .",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/codex-jev-paid-shipping-monitor-resource-activation-20260920-01.html"
     },
     {
       "id": "codex-cua-s1-form-choice-scorer-resource-activation-20260920-01",
