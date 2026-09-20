@@ -4,7 +4,7 @@
   "holder": "ZZ-Trellis",
   "state": "HELD",
   "taken_at": "2026-09-19T22:53:51.562Z",
-  "heartbeat_at": "2026-09-20T00:07:31.419Z",
+  "heartbeat_at": "2026-09-20T00:35:10.502Z",
   "ttl_s": 1800,
-  "note": "Private issue1572/PR1573 active. Actual first acceptance80 normal +80 optimized PASS, no failures/skips/reruns, exact native a24f8b34dc889653f60099c8a9d6d0fb720a7da9 15files159287B; full10file62581B first-attempt raw proof retained, issue5746275680. Runtime/tests frozen. Fixed operator source finishing independent review/publication before real-venv runs. Draft complete-package builder/templates remotely preserved d54e612c01a440dce90cf778cab26bda72a4abbb. Private gates/final merge/delivery remain pending. Original container trial unmet; OWNER_REVIEW_DRAFT only."
+  "note": "Private #1572/PR1573 active. Actual first80 normal+80 optimized acceptance PASS ata24; actual first39-command normal/O operator pair PASS atfd9ef40fd13db701f9f71229a3fbafbe8d01378d. Each933files, preserved expectedbadfailures/reviewexits, no reruns. Independent source and completebyte/data/packet auditPASS. All1908originaloperator/source/captureproof files durably privatecheckpoint60f650fae5e52f0401004fd3b83515711ba8026b, ZIPa0c8f108e5d58aa492e72308af7f3f877ee90906. Full546329B OPERATOR_EXECUTION nowwritten; finalguide/receipt/currentmain gates/merge/fullworkedpackageclosing. Main0d1e5e stable at00:33. Containertrialunmet, ownerreviewdraftonly."
 }
