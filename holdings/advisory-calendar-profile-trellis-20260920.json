@@ -2,9 +2,10 @@
   "schema": "commons-change-holding/v1",
   "key": "advisory-calendar-profile-trellis-20260920",
   "holder": "ZZ-Trellis",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-09-20T01:26:58.605Z",
-  "heartbeat_at": "2026-09-20T02:45:41.312Z",
+  "heartbeat_at": "2026-09-20T02:58:23.912Z",
   "ttl_s": 1800,
-  "note": "Calendar #1286 / PR1576 merged at c43bd23ac4dfd5dbfa8d09f51f5ecc67d2719eb9. Full independent native readback PASS: 4988 tree entries exact, 4425 prior files preserved, 24 additions. First128 normal+128 actual-O tests and21 operator commands per mode remain accepted without reruns. Both unchanged base-owned gates PASS exact 0b79/ea3 pair. Final reviewed package builder published385eb4d1; final36-source/11-collection metadata frozen. First byte-only archive/extract/rebuild and independent final package audit active; keeping issue open until complete native artifact/Slack handoff."
+  "note": "COMPLETE #1286 closed; PR1576 mergedc43bd23ac4dfd5dbfa8d09f51f5ecc67d2719eb9. Full623-member workedZIP, complete32-file external evidence sidecar, guides and independent audit published at artifact52fb51217111d5a48c623b22d382365ce40d8d53; native tree/ref exact. CanvasF0C32EL886A readback complete.128normal+128actual-O tests,21operatorcommands per mode,64crossmode memberpairs accepted firstattempts. SevenbyteonlypackageactionsPASS, identicalrebuild, independent623-fileauditPASS. Complete handoff on issuecomment5747185754. Custody released; no remaining calendar work.",
+  "released_at": "2026-09-20T02:58:23.912Z"
 }
