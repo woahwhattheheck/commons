@@ -20,6 +20,8 @@ on:
       - ".github/workflows/commons-discord-cloud.yml"
       - "revenue/opportunities/unc_ap_ai_peoplesoft/**"
       - "test_unc_ap_ai_peoplesoft_batch.py"
+      - "revenue/external_opportunity_intake/**"
+      - "revenue/uiowa_rfq_18649_recovery_evidence/**"
   pull_request:
     paths:
       - "**/*.py"
@@ -28,6 +30,8 @@ on:
       - ".github/workflows/commons-discord-cloud.yml"
       - "revenue/opportunities/unc_ap_ai_peoplesoft/**"
       - "test_unc_ap_ai_peoplesoft_batch.py"
+      - "revenue/external_opportunity_intake/**"
+      - "revenue/uiowa_rfq_18649_recovery_evidence/**"
 
 permissions:
   contents: read
@@ -112,6 +116,30 @@ jobs:
             cd revenue/opportunities/unc_ap_ai_peoplesoft
             python3 exercise_batch.py
             python3 -O exercise_batch.py
+          )
+
+      - name: Verify external opportunity intake without another workflow slot
+        shell: bash
+        run: |
+          python3 -m py_compile revenue/external_opportunity_intake/*.py
+          python3 -m revenue.external_opportunity_intake.selftest
+          python3 -O -m revenue.external_opportunity_intake.selftest
+
+      - name: Verify UIOWA-068 recovery evidence without another workflow slot
+        shell: bash
+        run: |
+          python3 -m py_compile \
+            revenue/uiowa_rfq_18649_recovery_evidence/assess_recovery.py \
+            revenue/uiowa_rfq_18649_recovery_evidence/test_assess_recovery.py
+          (
+            cd revenue/uiowa_rfq_18649_recovery_evidence
+            python3 -m unittest -v test_assess_recovery.py
+            python3 assess_recovery.py fixtures/synthetic_recovery_records.json \
+              --json-output /tmp/uiowa-068-report.json \
+              --csv-output /tmp/uiowa-068-matrix.csv \
+              --markdown-output /tmp/uiowa-068-scenario.md
+            grep -q 'DEMONSTRATED' /tmp/uiowa-068-matrix.csv
+            grep -q 'Successful backup evidence does not demonstrate restoration' /tmp/uiowa-068-scenario.md
           )
 
   provider-cost-truth:

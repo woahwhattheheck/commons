@@ -1,7 +1,7 @@
 {
   "schema": "commons.workflow-surface.v1",
   "source_commit": "4592104ca9fd37f7546b0b39f01badb83f8a1300",
-  "source_workflows": 436,
+  "source_workflows": 438,
   "max_active_workflows": 67,
   "retained": [
     ".github/workflows/affordable-housing-compliance-demo.yml",
@@ -456,6 +456,12 @@
       "archive": "ci/workflow-recipes/expertise-catalog.yml",
       "sha256": "add49c444f7a815a6d1fb032e767e8fdc6e348d98385c2e921aa3525aa54aef5",
       "bytes": 886
+    },
+    {
+      "source": ".github/workflows/external-opportunity-intake.yml",
+      "archive": "ci/workflow-recipes/external-opportunity-intake.yml",
+      "sha256": "74b4554a3b15ffcecd792c0b8f5a633a563fbf20721f04237170dc5fe9f122a3",
+      "bytes": 709
     },
     {
       "source": ".github/workflows/flora-kag-composition.yml",
@@ -2178,6 +2184,12 @@
       "archive": "ci/workflow-recipes/uark-rfp09112026-cmmc.yml",
       "sha256": "863cba92948caa6e9bf047129cfa149171aa38e11fbded813018db138b97d820",
       "bytes": 1357
+    },
+    {
+      "source": ".github/workflows/uiowa-068-recovery-evidence.yml",
+      "archive": "ci/workflow-recipes/uiowa-068-recovery-evidence.yml",
+      "sha256": "bf6d365da2880868a665223759887ccbb108e1ed33ef6bdef08cf228de165ce9",
+      "bytes": 1434
     },
     {
       "source": ".github/workflows/uiowa-rfq18649-workshare.yml",
