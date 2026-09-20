@@ -25,6 +25,7 @@
   "priority_queue": [],
   "production_write": false,
   "record_sources": [
+    "inventory/resources/records/codex-uiowa-peer-evidence-comparability-resource-activation-20260920-01.json",
     "inventory/resources/records/codex-grantfox-fwc26-workfeed-compiler-resource-activation-20260919-01.json",
     "inventory/resources/records/codex-uiowa-source-relationship-graph-resource-activation-20260919-01.json",
     "inventory/resources/records/codex-uiowa-environment-drift-kit-resource-activation-20260919-01.json",
@@ -103,15 +104,15 @@
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1789855095.683589",
+  "slack_ts": "1789866503.109939",
   "snapshot": {
-    "base_main_sha": "b8f5cd7adbcbca8df75b5dc1033cbce60d7631aa",
-    "observed_at": "2026-09-19T21:56:00Z",
+    "base_main_sha": "eac6dca49f718e8c3ebebd881b2c4bfcff930b4d",
+    "observed_at": "2026-09-20T01:12:29Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-grantfox-fwc26-workfeed-compiler-resource-activation-20260919-01",
+  "source_id": "codex-uiowa-peer-evidence-comparability-resource-activation-20260920-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -120,8 +121,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — GrantFox FWC26 workfeed compiler",
+  "subject": "MASTER RESOURCE LEDGER — UIowa peer-evidence comparability compiler",
   "supersedes_source_ids": [
+    "codex-uiowa-peer-evidence-comparability-resource-activation-20260920-01",
     "codex-grantfox-fwc26-workfeed-compiler-resource-activation-20260919-01",
     "codex-uiowa-source-relationship-graph-resource-activation-20260919-01",
     "codex-uiowa-environment-drift-kit-resource-activation-20260919-01",
@@ -2447,6 +2449,28 @@
       "last_receipt": "codex-commons-context-dispatch-compiler-resource-activation-20260913-01",
       "last_used_at": "2026-09-13T13:10:45Z",
       "stale_after": "next compiler, CLI, packet schema, selection/budget policy, source allowlist, pulse/coordination/claim contract, source blob or authority change",
+      "priority": 99
+    },
+    {
+      "name": "uiowa-peer-evidence-comparability-compiler",
+      "kind": "SOURCE_LINKED_PEER_EVIDENCE_COMPARABILITY_COMPILER",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / UIowa public-source peer-research operators",
+      "authority": "SHARED_ALL_CARRIERS; PUBLIC_CURRENT_MAIN_READ_COMPILE_VERIFY_AND_COMPOSE; EXACT_PR16198_HEAD_0223E01708F2FBE1C7AEFC71FA7064AB8A38EF11_MERGE_637657F64F27ED3ED5A6F192B97280B8DA4F9D85_AND_FIVE_SOURCE_BLOBS_REQUIRED; SOURCE_AUTHENTICATION_FALSE; LOCAL_ASSESSMENT_FALSE; RANKING_FALSE; PROCUREMENT_RECOMMENDATION_FALSE; CUSTOMER_CONTACT_FALSE; SCHEDULING_FALSE; PAYMENT_FALSE; REVENUE_FALSE; DEPLOYMENT_FALSE",
+      "consumer": "UIowa peer-research lanes 014–020 and their analysts, who need deterministic source registers, practice cards, metric context and comparison advisories without converting public context into local findings.",
+      "value": "The released standard-library compiler turns explicitly sourced research records into deterministic JSON, Markdown and text-safe CSV bundles while preserving missing definitions, populations, periods, denominators, direct locators and evidence-kind distinctions.",
+      "next_action": "Researchers may map approved public-source evidence into the documented schema, compile a new output directory and carry the resulting context advisories into separately reviewed analysis while retaining unresolved and contradictory evidence.",
+      "source": "revenue/uiowa_peer_evidence; source PR #16198 head 0223e01708f2fbe1c7aefc71fa7064ab8a38ef11 merge 637657f64f27ed3ed5a6f192b97280b8da4f9d85",
+      "evidence_ts": "2026-09-20T01:12:29Z",
+      "auth_surface": "public current-main source plus caller-supplied public research metadata; local compile, verification and export require no Commons login, credential, private University data, provider session or repeated owner approval",
+      "exact_safe_probe": "Current main eac6dca49f718e8c3ebebd881b2c4bfcff930b4d retained all five source-head blobs: README 7f022ece8f8bcce1a38ccde356e798467dd4fb42, rehearsal 96289e32ffdb643f9dc3dea85ea614aee1d7f348, example f47f4bec6305fc18dee2c21ee0b8929490b3abe4, compiler fc528ec39cee8791b4afe4a5278295cd8ddd5916 and tests 924d3ea5ab3a69782bc7c5ee9b3de20a61999a9c. The focused suite passes 45/45 normally and 45/45 under python -O; the exact source head's four hosted guards were recorded terminal SUCCESS in PR review 5258091530.",
+      "rate_plan_boundary": "The compiler uses local public-source compute and no paid provider call. Its output is peer context only: it does not authenticate sources, establish private University practice, create an assessment finding or ranking, contact a customer, schedule work, recommend procurement, deploy, accept payment, recognize revenue or create cash.",
+      "assigned_backlog": "available to existing UIowa public-source research and report-drafting lanes; no private-data intake, external outreach, new assessment engine, provider operation or verifier-only delegation is created",
+      "last_receipt": "codex-uiowa-peer-evidence-comparability-resource-activation-20260920-01",
+      "last_used_at": "2026-09-20T01:12:29Z",
+      "stale_after": "next compiler, schema, evidence-kind, source-locator, metric-context, comparison, export, source-blob or authority change",
       "priority": 99
     }
   ],
