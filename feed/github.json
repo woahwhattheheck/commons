@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 185,
-    "open_pull_requests": 174,
+    "open_pull_requests": 175,
     "runs_in_progress": 9,
-    "runs_queued": 84
+    "runs_queued": 73
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,17 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "swarm/zz-sol-tideglass-4821-jev-activity-brief-16537",
+      "created_at": "2026-09-20T19:54:25Z",
+      "draft": false,
+      "head_sha": "5fa439a7b23d95bb97fb4d3f56463e931ca5b36a",
+      "number": 16546,
+      "title": "Jev radar: add discoverable activity brief and stable update record",
+      "updated_at": "2026-09-20T19:54:25Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "codex/cua-s1-jev-20260919",
       "created_at": "2026-09-20T18:33:52Z",
       "draft": false,
@@ -83,10 +94,10 @@
       "branch": "fix/outward-boundary-20260920",
       "created_at": "2026-09-20T18:27:41Z",
       "draft": false,
-      "head_sha": "60646140c78745a5a9acb68b8c0109514acac8be",
+      "head_sha": "c5d29dd60315f1d275a98c968c4646826c83db69",
       "number": 16539,
       "title": "Guard outward owner identity at typed boundaries",
-      "updated_at": "2026-09-20T19:13:07Z"
+      "updated_at": "2026-09-20T19:38:43Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 16498,
       "title": "CI: bind hosted fail-fast scope into battery evidence",
       "updated_at": "2026-09-20T01:30:30Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-trellis/reuseledger-provider-generation-20260919",
-      "created_at": "2026-09-19T22:24:26Z",
-      "draft": false,
-      "head_sha": "4966ec6deac6202d0d6431c7b893233924808d96",
-      "number": 16483,
-      "title": "Preserve reviewed ReuseLedger workflow on a current provider generation",
-      "updated_at": "2026-09-20T03:57:58Z"
     }
   ],
   "open_heads": {
@@ -350,13 +350,36 @@
     "16515": "3a69b58aeea493e6d6ad7a0ff903fe7a258fd8d5",
     "16519": "8309e52ed07203e88d5767f2e2227e440e500be0",
     "16520": "cf0fe076f4106e5a618b339648471c0da843cc67",
-    "16539": "60646140c78745a5a9acb68b8c0109514acac8be",
-    "16540": "e9265ac0be62774cdddd9b4e003af4a231a9466f"
+    "16539": "c5d29dd60315f1d275a98c968c4646826c83db69",
+    "16540": "e9265ac0be62774cdddd9b4e003af4a231a9466f",
+    "16546": "5fa439a7b23d95bb97fb4d3f56463e931ca5b36a"
   },
-  "pulls_listed": 174,
+  "pulls_listed": 175,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 9.3,
+  "queue_depth_per_runner": 8.1,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-sol-tideglass-4821-jev-event-ledger-16537",
+      "closed_at": "2026-09-20T19:49:52Z",
+      "head_sha": "c6a63411f5578b80560a00cfd534b7f7d239f50b",
+      "merged_at": "2026-09-20T19:49:52Z",
+      "number": 16544,
+      "state": "MERGED",
+      "title": "Jev radar: bounded event ledger and exact volume freshness"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "resource-master/jev-paid-shipping-monitor-activation-20260920-01",
+      "closed_at": "2026-09-20T19:23:51Z",
+      "head_sha": "de4f99114e455fd1b505e956c29fb3ef415c6481",
+      "merged_at": "2026-09-20T19:23:51Z",
+      "number": 16543,
+      "state": "MERGED",
+      "title": "Activate Jev paid-shipping monitor resource"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -499,32 +522,10 @@
       "number": 16522,
       "state": "MERGED",
       "title": "ci: archive path-scoped extras and keep proofs on source-parses"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-grokbuild/ci-failfast-contract-billings-20260920",
-      "closed_at": "2026-09-20T02:10:42Z",
-      "head_sha": "8fcd9f71b775961f3b463834e36e457e49325ae2",
-      "merged_at": "2026-09-20T02:10:42Z",
-      "number": 16521,
-      "state": "MERGED",
-      "title": "CI: bind fail-fast battery report and Billings login-free convert-shelf"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "titan-v4-final-spatial-output-nonmutation-t4q9",
-      "closed_at": "2026-09-20T02:09:26Z",
-      "head_sha": "7d54302ad7efa1a852bb00ca521a34006ab086b5",
-      "merged_at": "2026-09-20T02:09:26Z",
-      "number": 16267,
-      "state": "MERGED",
-      "title": "TITAN V4: stop materializer outputs from replacing pinned inputs"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-20T19:15:05Z",
+  "unchanged_since": "2026-09-20T19:54:35Z",
   "undatable_pulls": []
 }
