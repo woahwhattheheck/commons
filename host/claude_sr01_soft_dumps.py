@@ -70,9 +70,9 @@ DO_NOT_REWRITE = SOFT_DUMPS + RECEIVE_BASELINE
 # Live dumps keep their soft/RECEIVE needles. Current HEAD blobs include
 # additive live-cash / Latch Pad KEEP tails. Stamp receipts not reminted.
 KNOWN_BLOBS = {
-    os.path.join("muhl", "docs", "CLAUDE_PROOF_PACKET.md"): "d09bf2fe3b63c703c17b64deb0d6736d85fc8b9c",
+    os.path.join("muhl", "docs", "CLAUDE_PROOF_PACKET.md"): "357213256815377675c0fb638019bd63ac38b439",
     os.path.join("muhl", "docs", "BULLY_CLAUDE.txt"): "a6adc3088fa94f71e3930eac4441cef5313315f8",
-    os.path.join("muhl", "docs", "CHAIR.md"): "05d376390b4b075fc9e4ac5cfc7aa9e7bb04629a",
+    os.path.join("muhl", "docs", "CHAIR.md"): "66d5c2af91f516445d14da4925a6e08376010292",
     os.path.join("muhl", "docs", "FABLE_PLAYER_PAD.txt"): "cdaf8484ac1184bccf3330c1cc577f69edede7c5",
     os.path.join("evidence", "bully_sessions", "CLAUDE_PROOF_PACKET.md"): "56954b0adef0b1c0aff174e31c3d94d10203c0bb",
     os.path.join("evidence", "bully_sessions", "BULLY_CLAUDE.txt"): "f637231f453edc7a77b86707a482edeb8632ae39",
