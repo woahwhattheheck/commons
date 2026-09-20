@@ -68,6 +68,10 @@ class CloudBatteryTests(unittest.TestCase):
         self.assertNotIn("ci-private-sentinel", json.dumps(report))
         for row in report["results"]:
             self.assertEqual(row["source_blob_sha"], self.git("rev-parse", self.sha + ":" + row["path"]))
+            self.assertIsInstance(row["duration_ms"], int)
+            self.assertGreaterEqual(row["duration_ms"], 0)
+        self.assertEqual(report["timing"]["measured_files"], 2)
+        self.assertLessEqual(len(report["timing"]["slowest"]), 10)
 
     @unittest.skipUnless(shutil.which("node"), "requires Node")
     def test_node_failure_does_not_hide_later_node_test(self):
@@ -98,6 +102,8 @@ class CloudBatteryTests(unittest.TestCase):
             [(row["path"], row["exit_code"]) for row in fast_report["results"]],
             [("infra/nested/test_b.py", 6)],
         )
+        self.assertEqual(fast_report["timing"]["measured_files"], 1)
+        self.assertGreaterEqual(fast_report["results"][0]["duration_ms"], 0)
         self.assertIn("fail-fast: stopping after first failed test", fast.stdout)
 
         exhaustive = self.run_ci()
@@ -149,6 +155,10 @@ class CloudBatteryTests(unittest.TestCase):
         self.assertEqual(report["conclusion"], "FAILED")
         codes = {row["path"]: row["exit_code"] for row in report["results"]}
         self.assertEqual(codes, {"infra/nested/test_b.py": 124, "test_a.py": 0})
+        timed_out = next(row for row in report["results"] if row["path"] == "infra/nested/test_b.py")
+        self.assertEqual(timed_out["exit_code"], 124)
+        self.assertIsInstance(timed_out["duration_ms"], int)
+        self.assertGreaterEqual(timed_out["duration_ms"], 0)
 
     @unittest.skipUnless(os.name == "posix", "POSIX process groups")
     def test_timeout_stops_child_process_group(self):
