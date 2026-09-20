@@ -76,10 +76,10 @@ class BusinessPackHarborlineMapHelperPointerTest(unittest.TestCase):
         )
         self.assertTrue(
             pointer.EXPECTED_BLOBS["packs/desk-website-service-20260902-01/door.html"].startswith(
-                "299b01fd"
+                "d75b3f3b"
             )
         )
-        self.assertTrue(pointer.EXPECTED_BLOBS["packs/waitlist.html"].startswith("211db2dc"))
+        self.assertTrue(pointer.EXPECTED_BLOBS["packs/waitlist.html"].startswith("f93c8f32"))
         self.assertTrue(
             self.result["blobs"][
                 "p/cursor-business-pack-harborline-map-helper-pointer-20260902-01.md"
@@ -173,8 +173,8 @@ class BusinessPackHarborlineMapHelperPointerTest(unittest.TestCase):
         hist_door = pointer.EXPECTED_BLOBS[
             "packs/desk-website-service-20260902-01/door.html"
         ]
-        self.assertEqual(hist_door, "299b01fd")
-        self.assertEqual(pointer.EXPECTED_BLOBS["packs/waitlist.html"], "211db2dc")
+        self.assertEqual(hist_door, "d75b3f3b")
+        self.assertEqual(pointer.EXPECTED_BLOBS["packs/waitlist.html"], "f93c8f32")
         self.assertEqual(
             pointer.OBSERVED_AT_LAND[
                 "packs/sidewalk-signal-web-desk-20260902-01/index.html"

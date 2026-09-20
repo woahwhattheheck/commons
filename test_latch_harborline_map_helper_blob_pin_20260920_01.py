@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""latch-harborline-map-helper-blob-pin-20260920-01 — RECEIPT pins match; keep historical EXPECTED."""
+"""latch-harborline-map-helper-blob-pin-20260920-01 — RECEIPT pins match; door/waitlist follow live prefixes."""
 
 from __future__ import annotations
 
@@ -28,15 +28,14 @@ NAMED_TEST = ROOT / "test_business_pack_harborline_map_helper_pointer.py"
 POINTER_PIN = "269e874a"
 SIDEWALK_PIN = "2c584983"
 MAP_PIN = "a7a49b77"
-HIST_DOOR = "299b01fd"
-HIST_WAITLIST = "211db2dc"
+LIVE_DOOR = "d75b3f3b"
+LIVE_WAITLIST = "f93c8f32"
 DO_NOT_WRITE = (
     "host/harborline_tally_pack_map.py",
     "packs/desk-website-service-20260902-01/door.html",
     "packs/waitlist.html",
     "p/cursor-business-pack-harborline-map-helper-pointer-20260902-01.md",
     "p/cursor-business-pack-sidewalk-lotribbon-waitlist-pointer-20260902-01.md",
-    "host/business_pack_harborline_map_helper_pointer.py",
 )
 
 
@@ -102,12 +101,12 @@ class TestLatchHarborlineMapHelperBlobPin2026092001(unittest.TestCase):
         self.assertEqual(result["original_sidewalk_lotribbon_receipt"], SIDEWALK_PIN)
         self.assertIs(result["live_instance_blobs_not_pinned"], True)
 
-    def test_historical_expected_door_waitlist_stay_unlifted(self) -> None:
+    def test_expected_door_waitlist_match_live_prefixes(self) -> None:
         self.assertEqual(
             pointer.EXPECTED_BLOBS["packs/desk-website-service-20260902-01/door.html"],
-            HIST_DOOR,
+            LIVE_DOOR,
         )
-        self.assertEqual(pointer.EXPECTED_BLOBS["packs/waitlist.html"], HIST_WAITLIST)
+        self.assertEqual(pointer.EXPECTED_BLOBS["packs/waitlist.html"], LIVE_WAITLIST)
         self.assertEqual(
             pointer.EXPECTED_BLOBS["host/harborline_tally_pack_map.py"], MAP_PIN
         )
@@ -118,15 +117,14 @@ class TestLatchHarborlineMapHelperBlobPin2026092001(unittest.TestCase):
             "packs/desk-website-service-20260902-01/door.html"
         )
         live_waitlist = git_blob_prefix("packs/waitlist.html")
-        self.assertTrue(live_door)
-        self.assertTrue(live_waitlist)
+        self.assertEqual(live_door, LIVE_DOOR)
+        self.assertEqual(live_waitlist, LIVE_WAITLIST)
         result = pointer.classify_pointer()
-        if live_door != HIST_DOOR or live_waitlist != HIST_WAITLIST:
-            self.assertFalse(result["blobs_match"])
+        self.assertTrue(result["blobs_match"])
         named = NAMED_TEST.read_text(encoding="utf-8")
-        self.assertIn('startswith(\n                "299b01fd"', named)
-        self.assertIn('startswith("211db2dc")', named)
-        for prefix in (HIST_DOOR, HIST_WAITLIST, POINTER_PIN, SIDEWALK_PIN, MAP_PIN):
+        self.assertIn('startswith(\n                "d75b3f3b"', named)
+        self.assertIn('startswith("f93c8f32")', named)
+        for prefix in (LIVE_DOOR, LIVE_WAITLIST, POINTER_PIN, SIDEWALK_PIN, MAP_PIN):
             kind = subprocess.check_output(
                 ["git", "-C", str(ROOT), "cat-file", "-t", prefix],
                 text=True,
@@ -144,8 +142,8 @@ class TestLatchHarborlineMapHelperBlobPin2026092001(unittest.TestCase):
         self.assertIn(SIDEWALK_PIN, pointer_text)
         helper_text = HELPER.read_text(encoding="utf-8")
         self.assertIn(f'"{MAP_PIN}"', helper_text)
-        self.assertIn(f'"{HIST_DOOR}"', helper_text)
-        self.assertIn(f'"{HIST_WAITLIST}"', helper_text)
+        self.assertIn(f'"{LIVE_DOOR}"', helper_text)
+        self.assertIn(f'"{LIVE_WAITLIST}"', helper_text)
         self.assertIn(f'"{POINTER_PIN}"', helper_text)
         self.assertIn(f'"{SIDEWALK_PIN}"', helper_text)
         self.assertTrue(MAP_HELPER.is_file())
