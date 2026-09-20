@@ -1,5 +1,4 @@
 import copy
-import json
 import unittest
 
 from integrations.command_center import jev_connector_projection as cp
@@ -88,6 +87,17 @@ class ConnectorProjectionTests(unittest.TestCase):
         p["sources"][0]["scope"].append("COTHER")
         second = record(resource="COTHER")
         second["provider_event_id"] = p["sources"][0]["records"][0]["provider_event_id"]
+        p["sources"][0]["records"].append(second)
+        p["sources"][0]["coverage"]["items_read"] = 2
+        out = cp.project(p)
+        self.assertNotEqual(out["events"][0]["event_id"], out["events"][1]["event_id"])
+
+    def test_event_id_binds_event_type_namespace(self):
+        p = packet()
+        p["sources"][0]["provider"] = "other"
+        p["sources"][0]["connector"] = "generic-provider"
+        second = copy.deepcopy(p["sources"][0]["records"][0])
+        second["event_type"] = "COMMENT"
         p["sources"][0]["records"].append(second)
         p["sources"][0]["coverage"]["items_read"] = 2
         out = cp.project(p)
