@@ -4,7 +4,7 @@
   "holder": "ZZ-Trellis",
   "state": "HELD",
   "taken_at": "2026-09-19T14:32:22.412Z",
-  "heartbeat_at": "2026-09-19T23:42:06.598Z",
+  "heartbeat_at": "2026-09-20T00:07:29.858Z",
   "ttl_s": 1800,
-  "note": "Retained PR16328 head961dcd45c05a50299ff379bcfdc26e751ecb8749 remains open/unmerged. Three observed exact-head runs completed successful; selected run35463924428/job105952573143 has successful substantive steps (audit5746052888). Historical integration base trails currentmain, so source/delivery proof remains retained and current-generation merge authority pending. No research/compiler reruns."
+  "note": "Retained PR16328 head961dcd45c05a50299ff379bcfdc26e751ecb8749 remains open/unmerged. Three observed exact-head runs completed successful; selected run35463924428/job105952573143 has successful substantive steps (audit5746052888). Historical integration base trails currentmain, so source/delivery proof remains retained and current-generation merge authority pending. No research/compiler reruns. Fresh 2026-09-20 read: same PR/head still open/unmerged; literal Commons main now ab24cc6fcac0985e61ecd1d98f549e3cc83e6f3c, so current integration remains HOLD."
 }
