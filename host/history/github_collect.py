@@ -296,11 +296,20 @@ class Reader:
             for action in order:
                 if self.calls >= self.budget: break
                 before = self.calls
-                path = action()
+                try:
+                    path = action()
+                except StopIteration:
+                    # An action may need several reads; the budget is a normal
+                    # checkpoint boundary, even when reached inside that action.
+                    self.save()
+                    return self.summary(paths)
                 if path: paths.append(str(path))
                 if self.calls > before: progressed = True
             if not progressed: break
         self.save()
+        return self.summary(paths)
+
+    def summary(self, paths):
         return {'account': self.account, 'requests': self.calls, 'files': len(paths),
                 'road_pages': {k: v.get('pages') for k, v in self.state['roads'].items()},
                 'queued_details': len(self.state['details']), 'queued_repositories': len(self.state['repositories']),
