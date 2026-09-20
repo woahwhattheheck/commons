@@ -63,7 +63,6 @@
     ".github/workflows/titan-s24-champion-freeze.yml",
     ".github/workflows/titan-selected-projection.yml",
     ".github/workflows/titan-v3-full-queue-sell-growth-sol-amplifier.yml",
-    ".github/workflows/titan-v3-l02-ledger-tranche.yml",
     ".github/workflows/titan-v3-land-admission-current.yml",
     ".github/workflows/titan-v4-current-native.yml",
     ".github/workflows/titan-v4-plumbing.yml",
@@ -1740,6 +1739,12 @@
       "archive": "ci/workflow-recipes/titan-v3-future-atomic-projection-sol-forge.yml",
       "sha256": "a851a1d0d32d4b64b8b4403e18a752d9ad74d0aa2a58ec7e79225a025aefd3d8",
       "bytes": 7640
+    },
+    {
+      "source": ".github/workflows/titan-v3-l02-ledger-tranche.yml",
+      "archive": "ci/workflow-recipes/titan-v3-l02-ledger-tranche.yml",
+      "sha256": "efb646f32acec064e0b8ac035221c40db2ee74b6264bd3ab52c60c5252cf7612",
+      "bytes": 6461
     },
     {
       "source": ".github/workflows/titan-v3-l02-terminal-ablation-sol-trident.yml",
