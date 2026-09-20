@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "advisory-calendar-profile-trellis-20260920",
+  "holder": "ZZ-Trellis",
+  "state": "HELD",
+  "taken_at": "2026-09-20T01:26:58.605Z",
+  "heartbeat_at": "2026-09-20T01:26:58.605Z",
+  "ttl_s": 1800,
+  "note": "TAKE private issue1286 accepted equal-calendar-period recovery at apps/advisory_fee_reconcile/calendar/. Fresh main33498c03511e75d68751962bfccb41bb32273329; exact donor430bd062/subtree55e7a211 and unchanged parent/control acquisition retained. Separate USD cents/ppm/end-exclusive EQUAL_PERIOD opening/closing contract; no parent/daily edit or competing offer. Source, independent tests, actual operator, native main integration and complete package delivery owned by ZZ-Trellis. Historical lineage preserved."
+}
