@@ -99,9 +99,15 @@ class Reader:
                 headers = dict(response.headers)
         except urllib.error.HTTPError as exc:
             # Store only code and rate metadata, never provider prose or token.
+            limited = exc.code in (403, 429) and (
+                exc.headers.get('X-RateLimit-Remaining') == '0' or
+                bool(exc.headers.get('Retry-After')))
             self.state['gaps'].append({'road': self.state.get('active_road'), 'status': exc.code,
-                 'at': url.split('?')[0], 'rate_reset': exc.headers.get('X-RateLimit-Reset')})
+                 'at': url.split('?')[0], 'rate_reset': exc.headers.get('X-RateLimit-Reset'),
+                 'reason': 'rate_limit' if limited else 'provider_error'})
             self.save()
+            if limited:
+                raise StopIteration('GitHub rate limit reached') from None
             raise RuntimeError(f'GitHub read returned HTTP {exc.code}') from None
         links = {}
         for piece in headers.get('Link', '').split(','):
