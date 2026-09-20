@@ -25,6 +25,7 @@
   "priority_queue": [],
   "production_write": false,
   "record_sources": [
+    "inventory/resources/records/codex-jev-paid-shipping-monitor-resource-activation-20260920-01.json",
     "inventory/resources/records/codex-cua-s1-form-choice-scorer-resource-activation-20260920-01.json",
     "inventory/resources/records/codex-uiowa-peer-evidence-comparability-resource-activation-20260920-01.json",
     "inventory/resources/records/codex-grantfox-fwc26-workfeed-compiler-resource-activation-20260919-01.json",
@@ -105,15 +106,15 @@
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1789877169.598919",
+  "slack_ts": "1789931501.052119",
   "snapshot": {
-    "base_main_sha": "b626b13580b6a075a2436f8c985c4c22ad1c6676",
-    "observed_at": "2026-09-20T04:09:25Z",
+    "base_main_sha": "c306e9d75d29fa4cc195a055f7b0bbb6d6cef0cc",
+    "observed_at": "2026-09-20T19:20:17Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-cua-s1-form-choice-scorer-resource-activation-20260920-01",
+  "source_id": "codex-jev-paid-shipping-monitor-resource-activation-20260920-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -122,8 +123,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — CUA-S1 form-choice scorer",
+  "subject": "MASTER RESOURCE LEDGER — Jev paid-shipping monitor",
   "supersedes_source_ids": [
+    "codex-jev-paid-shipping-monitor-resource-activation-20260920-01",
     "codex-cua-s1-form-choice-scorer-resource-activation-20260920-01",
     "codex-uiowa-peer-evidence-comparability-resource-activation-20260920-01",
     "codex-grantfox-fwc26-workfeed-compiler-resource-activation-20260919-01",
@@ -2451,6 +2453,28 @@
       "last_receipt": "codex-commons-context-dispatch-compiler-resource-activation-20260913-01",
       "last_used_at": "2026-09-13T13:10:45Z",
       "stale_after": "next compiler, CLI, packet schema, selection/budget policy, source allowlist, pulse/coordination/claim contract, source blob or authority change",
+      "priority": 99
+    },
+    {
+      "name": "jev-paid-shipping-monitor",
+      "kind": "SCHEDULED_TYPED_DECISION_PAID_WORK_SHIPPING_MONITOR",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / authorized bounty-delivery operators with the existing private state repository and runtime secrets",
+      "authority": "SHARED_ALL_CARRIERS_PUBLIC_CURRENT_MAIN_READ_TEST_AND_RECEIPT_REVIEW; EXACT_SOURCE_COMMIT_75F2D197FF1B8254F0DA7F8A88AC58A5C6CBC2ED_AND_CURRENT_MAIN_81A4EC46464155698CC02F1F5A0821D976EF44AE_EIGHT_BLOBS_REQUIRED; RUNTIME_EXECUTION_REQUIRES_EXISTING_SCOPED_GITHUB_SLACK_TYPESAFE_AND_PRIVATE_STATE_AUTHORITY; OWN_ELIGIBLE_PAYABLE_WORK_ONLY; JEV_TYPED_CHOICE_ONLY; FIXED_OPERATOR_TEXT_ONLY; IDEMPOTENT_RECEIPTS_REQUIRED; NO_NEW_OUTREACH; NO_SPEND; NO_PAYMENT_CLAIM; NO_REVENUE_CLAIM; NO_CASH_CLAIM",
+      "consumer": "Commons bounty-delivery operators who need already-completed payable work moved from internal or fork-only state toward an owned eligible upstream route with exact Slack, provider and private-state receipts.",
+      "value": "The landed monitor scans bounded Commons shipping threads, uses one typed Jev choice with a deterministic fallback, emits fixed non-user-authored next-action notices, deduplicates by operation and thread state, and persists private state through compare-and-swap instead of publishing credentials or private work state.",
+      "next_action": "Authorized operators may inspect the next scheduled commons-board shipping-monitor run and its exact Slack/provider/private-state receipts, then repair only an evidenced owned upstream route; never infer payout, acceptance or cash from a notice or run.",
+      "source": "host/paid_shipping plus .github/workflows/commons-board.yml; source commit 75f2d197ff1b8254f0da7f8a88ac58a5c6cbc2ed, schedule consolidation 4ac8988f53e8c4c5cd0b3d05b4161c939c5b5bbf, bounded-run revision c306e9d75d29fa4cc195a055f7b0bbb6d6cef0cc and current-main descendant c306e9d75d29fa4cc195a055f7b0bbb6d6cef0cc",
+      "evidence_ts": "2026-09-20T19:20:17Z",
+      "auth_surface": "Public current-main source and local tests require no login; live scans and writes remain confined to the already-configured scoped GitHub, Slack, Typesafe and private-state credentials, none of which are stored in this ledger.",
+      "exact_safe_probe": "Current main c306e9d75d29fa4cc195a055f7b0bbb6d6cef0cc retained eight required blobs: commons-board workflow d8db0a6442ab8f751217a91b5c386a653214069f, README a14725292bf0d99a625a0014a71fabcc9a9ca94a, rules 8e388b91df12fc9a426ce2af72b6b1b510c27c4f, runner 71b35fad763d6254180ed1d220f08aa908fc0fb5, runner tests a517d7c63e3c844df1ff5138c50ae19d960a8a46, schema cba6abe3e6b31f934fedcb7143968044c1e68710, worker 521e06c698a0f2d252810446357b4f7ccae7f5fc and worker tests 5395ddcfa9fb96a6d4b417cec6aa65c89968aca7. The focused suite passes 20/20. Manual workflow run 35530479483 completed SUCCESS including private-state scan/persist, and Slack readback exposed operation jev-monitor-live-20260920 with exact receipt ship-47cab79696e96d3c plus a separate constrained publication-route diagnostic ship-f31a5579fcaf1d42.",
+      "rate_plan_boundary": "The scheduled monitor can consume GitHub, Slack and Jev provider allowance, but this activation did not measure or reserve that allowance and does not activate a banked or purchased reset. A successful run or Slack notice is not a bounty claim, upstream acceptance, provider payment, settlement, revenue or cash receipt.",
+      "assigned_backlog": "Existing Jev #16537 shipping follow-through only; broader action-loop work in PR #16541 and hosted integration in PR #16540 remain separate, and no new build order or outreach lane is created.",
+      "last_receipt": "codex-jev-paid-shipping-monitor-resource-activation-20260920-01",
+      "last_used_at": "2026-09-20T19:20:17Z",
+      "stale_after": "next paid-shipping worker, rules, runner, state schema, commons-board schedule, source blob, provider receipt contract, credential authority or concrete consumer change",
       "priority": 99
     },
     {
