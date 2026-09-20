@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1789866503.109939")
+        self.assertEqual(catalog["slack_ts"], "1789877169.598919")
         self.assertEqual(
             catalog["source_id"],
+            "codex-cua-s1-form-choice-scorer-resource-activation-20260920-01",
+        )
+        self.assertIn(
             "codex-uiowa-peer-evidence-comparability-resource-activation-20260920-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-commons-context-dispatch-compiler-resource-activation-20260913-01",
@@ -351,10 +355,10 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-uiowa-peer-evidence-comparability-resource-activation-20260920-01.json",
+            "codex-cua-s1-form-choice-scorer-resource-activation-20260920-01.json",
         )
         self.assertIn(
-            "inventory/resources/records/codex-uiowa-peer-evidence-comparability-resource-activation-20260920-01.json",
+            "inventory/resources/records/codex-cua-s1-form-choice-scorer-resource-activation-20260920-01.json",
             raw.get("record_sources") or [],
         )
         with open(current_activation_path, encoding="utf-8") as handle:
@@ -366,42 +370,40 @@ class TestResourceLedger(unittest.TestCase):
         )
         self.assertEqual(
             current_activation["selected_resource"],
-            "uiowa-peer-evidence-comparability-compiler",
+            "cua-s1-form-choice-scorer",
         )
-        self.assertEqual(current_activation["projection"]["resources"], 105)
-        self.assertEqual(current_activation["projection"]["producing"], 77)
-        self.assertEqual(current_activation["projection"]["inventory_records"], 67)
+        self.assertEqual(current_activation["projection"]["resources"], 106)
+        self.assertEqual(current_activation["projection"]["producing"], 78)
+        self.assertEqual(current_activation["projection"]["inventory_records"], 68)
         self.assertEqual(
             current_activation["production_truth"]["source_repository"],
             "woahwhattheheck/commons",
         )
-        self.assertEqual(current_activation["production_truth"]["source_pr"], 16198)
+        self.assertEqual(current_activation["production_truth"]["source_pr"], 16517)
         self.assertEqual(
             current_activation["production_truth"]["source_merge_sha"],
-            "637657f64f27ed3ed5a6f192b97280b8da4f9d85",
+            "8692e26a94925f58f4bb10fcfbd8d6f3a877879c",
         )
         self.assertEqual(
             set(current_activation["production_truth"]["source_paths"]),
             {
-                "revenue/uiowa_peer_evidence/README.md",
-                "revenue/uiowa_peer_evidence/REHEARSAL.md",
-                "revenue/uiowa_peer_evidence/example.json",
-                "revenue/uiowa_peer_evidence/peer_evidence.py",
-                "revenue/uiowa_peer_evidence/test_peer_evidence.py",
+                ".agents/skills/cua-s1-forms/SKILL.md",
+                "host/CUA_S1_FORMS.md",
+                "host/cua_s1_forms.py",
             },
         )
         self.assertEqual(
             current_activation["production_truth"]["source_paths"]
-            ["revenue/uiowa_peer_evidence/peer_evidence.py"],
-            "fc528ec39cee8791b4afe4a5278295cd8ddd5916",
+            ["host/cua_s1_forms.py"],
+            "ecce06285d8bea21e15eea49738b08536c23c06b",
         )
         self.assertEqual(
             current_activation["production_truth"]["maximum_state"],
-            "OFFLINE_PEER_CONTEXT_COMPILER_READY",
+            "LOCAL_FORM_CHOICE_PROPOSAL_READY",
         )
         self.assertEqual(
-            current_activation["production_truth"]["focused_tests"]["source_suite"],
-            "45/45 PASS NORMAL_AND_OPTIMIZED",
+            current_activation["production_truth"]["focused_tests"]["source_contract_probe"],
+            "4/4 PASS NORMAL_AND_OPTIMIZED",
         )
         self.assertEqual(current_activation["production_truth"]["provider_writes"], 0)
         self.assertFalse(current_activation["production_truth"]["customer_contact"])
@@ -410,12 +412,14 @@ class TestResourceLedger(unittest.TestCase):
         self.assertFalse(current_activation["production_truth"]["revenue_recognition"])
         self.assertFalse(current_activation["production_truth"]["current_cash_claim"])
         self.assertFalse(current_activation["production_truth"]["scheduling_action"])
-        self.assertFalse(current_activation["production_truth"]["source_authentication"])
-        self.assertFalse(current_activation["production_truth"]["local_assessment"])
-        self.assertFalse(current_activation["production_truth"]["private_university_data"])
+        self.assertFalse(current_activation["production_truth"]["browser_control"])
+        self.assertFalse(current_activation["production_truth"]["form_mutation"])
+        self.assertFalse(current_activation["production_truth"]["form_submission"])
+        self.assertFalse(current_activation["production_truth"]["executed"])
+        self.assertFalse(current_activation["production_truth"]["checkpoint_in_repository"])
         self.assertEqual(current_activation["build_orders"], [])
         self.assertIn(
-            "p1789866009733409", current_activation["evidence"]["slack_claim"]
+            "p1789877169598919", current_activation["evidence"]["slack_claim"]
         )
         activation_path = os.path.join(
             ROOT,
