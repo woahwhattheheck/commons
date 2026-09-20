@@ -1,0 +1,33 @@
+name: Commons shipping monitor
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: commons-shipping-monitor
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout: |
+            host/paid_shipping
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Scan and persist private state
+        working-directory: host/paid_shipping
+        env:
+          COMMONS_GITHUB_TOKEN: ${{ secrets.COMMONS_GITHUB_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
+          NODE_OPTIONS: --experimental-sqlite
+        run: node runner.mjs
