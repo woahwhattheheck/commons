@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 184,
-    "open_pull_requests": 172,
-    "runs_in_progress": 1,
-    "runs_queued": 70
+    "open_issues": 185,
+    "open_pull_requests": 173,
+    "runs_in_progress": 5,
+    "runs_queued": 73
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -66,6 +66,17 @@
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grok-build/restore-mcp-grounding-source-rev-keep-20260920",
+      "created_at": "2026-09-20T18:22:09Z",
+      "draft": false,
+      "head_sha": "597897ad8a328deb26308853c9cb925eefaa80ad",
+      "number": 16538,
+      "title": "test: restore SOURCE_REV leftover KEEP pins after grounding.html",
+      "updated_at": "2026-09-20T18:22:09Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -164,17 +175,6 @@
       "number": 16482,
       "title": "Preserve reviewed UIOWA sample precision on current main (successor to #16271)",
       "updated_at": "2026-09-19T23:17:54Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-keystone-s7m2/uiowa129-rehearsal-binding-integration-20260919",
-      "created_at": "2026-09-19T21:43:48Z",
-      "draft": false,
-      "head_sha": "ba0fa6f67aa7915b13e62c3a85c0031a6d70bfb8",
-      "number": 16468,
-      "title": "UIOWA-129: integrate reviewed rehearsal source binding on current main",
-      "updated_at": "2026-09-20T00:00:27Z"
     }
   ],
   "open_heads": {
@@ -349,11 +349,12 @@
     "16507": "0fcec652c9da5356cf84193db68ec898645af138",
     "16515": "3a69b58aeea493e6d6ad7a0ff903fe7a258fd8d5",
     "16519": "8309e52ed07203e88d5767f2e2227e440e500be0",
-    "16520": "cf0fe076f4106e5a618b339648471c0da843cc67"
+    "16520": "cf0fe076f4106e5a618b339648471c0da843cc67",
+    "16538": "597897ad8a328deb26308853c9cb925eefaa80ad"
   },
-  "pulls_listed": 172,
+  "pulls_listed": 173,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 70.0,
+  "queue_depth_per_runner": 14.6,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -523,6 +524,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-20T17:51:27Z",
+  "unchanged_since": "2026-09-20T18:22:18Z",
   "undatable_pulls": []
 }
