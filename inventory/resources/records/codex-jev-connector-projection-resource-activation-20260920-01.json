@@ -1,0 +1,121 @@
+{
+  "schema": "commons-resource-event/v1",
+  "event_id": "codex-jev-connector-projection-resource-activation-20260920-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "observed_at": "2026-09-20T22:10:45Z",
+  "actor": "Commons Resource Master / Codex",
+  "selected_resource": "jev-connector-projection",
+  "concrete_consumer": "The active JEV-16537 connector-to-ledger-to-action routing pipeline",
+  "measurable_outcome": "The already-merged privacy-safe connector adapter is canonical producing resource metadata, its three exact current-main blobs are pinned, and its real ledger round-trip passes 21 focused tests normally and optimized.",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "MERGED_UNCATALOGED",
+    "condition": "CONSTRAINED",
+    "holder": "Merged PR #16547 source custody",
+    "consumer": "EVIDENCED_BY_ACTIVE_PIPELINE_BUT_UNROUTED_IN_CANONICAL_RESOURCE_GRAPH"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "holder": "Commons / Jev radar and routing-pipeline operators",
+    "consumer": "Active JEV-16537 routing pipeline"
+  },
+  "production_truth": {
+    "source_repository": "woahwhattheheck/commons",
+    "source_pr": 16547,
+    "source_head": "dae4ce711c7f21bdcf45fa4dbc9b3a80c9a09fb0",
+    "source_merge_commit": "0679a942bcb739f0926234a0681684b382e82c0e",
+    "source_descendant_main_sha": "3e92e7f9bae59b7945087680a5d73a9317934ba7",
+    "source_paths": {
+      "integrations/command_center/jev_connector_projection.py": "aa58dc2a77d278f06f56ba3731b5a26598bc5372",
+      "test_jev_connector_projection.py": "13542a2ff03aea4b65852f827db906961271e914",
+      "ground/JEV_CONNECTOR_PROJECTION.md": "66a9f43d6969ad80614f03934ff94dd0af01c8c2"
+    },
+    "focused_tests": {
+      "source_suite": "21/21 PASS NORMAL_AND_OPTIMIZED",
+      "real_event_ledger_round_trip": "PASS",
+      "resource_ledger": "23/23 PASS NORMAL_AND_OPTIMIZED",
+      "resource_projection": "18/18 PASS NORMAL_AND_OPTIMIZED",
+      "open_door": "PASS_LOCAL_MATRIX"
+    },
+    "hosted_workflow_runs_at_merge_commit": 0,
+    "maximum_state": "MERGED_PURE_ADAPTER_WITH_LOCAL_EXACT_HEAD_ROUND_TRIP",
+    "connector_read_performed_by_activation": false,
+    "raw_private_text_persisted": false,
+    "credentials_configured_by_activation": false,
+    "customer_data": false,
+    "customer_contact": false,
+    "provider_write": false,
+    "jev_call": false,
+    "work_claim": false,
+    "buyer_acceptance": false,
+    "payment_observed": false,
+    "settlement_observed": false,
+    "revenue_recognition": false,
+    "current_cash_claim": false,
+    "deployment_by_activation": false,
+    "spend_by_activation": false,
+    "banked_reset_activated": false
+  },
+  "delta": {
+    "prior_terminal_main_sha": "f91c317070d0a23cbb3749be775316297b992893",
+    "activation_base_main_sha": "3e92e7f9bae59b7945087680a5d73a9317934ba7",
+    "commits_in_delta": 46,
+    "changed_paths_in_delta": 96,
+    "remote_branches_observed": 4645,
+    "remote_branch_pages": 48,
+    "prior_terminal_slack_ts": "1789932296.687299",
+    "latest_delta_slack_ts": "1789941300.041829",
+    "slack_top_level_messages": {
+      "commons": 4,
+      "delegations": 10,
+      "todo": 0,
+      "shipped_builds": 0,
+      "products": 0,
+      "leads": 0,
+      "sales": 0,
+      "coordination": 59
+    },
+    "automations": "Thirty-eight visible; the Commons Resource Master remains enabled and no automation lifecycle mutation was made.",
+    "github_state": "Forty-six commits and 96 changed paths were reconciled. PR #16547 and PR #16544 are merged; PR #16549 actively owns the composition seam, PR #16546 owns the activity brief, and PR #16540 owns hosted Jev/client work. Generated board/projection churn was not treated as new capacity.",
+    "connector_state": "The observed Jev checkpoint reported 60/60 bounded channel-history messages and 5/5 changed GitHub descriptions/comments with zero call errors, while explicitly excluding thread replies, email and older history. This activation does not widen that claim."
+  },
+  "verification": {
+    "privacy": "The adapter schema rejects raw message body, title, diff, attachment and arbitrary metadata fields; this record persists no credential, private account identifier, customer data or private file name.",
+    "open_door": "Public source, local execution and exact blob verification require no Commons login. Provider connectors remain optional caller inputs, not admission gates.",
+    "zero_fabrication": "A projected provider event remains stage EVENT and is not proof of active work, claim, session, delivery, deployment, acceptance, payment, revenue or cash.",
+    "collision": "Only canonical ledger, projection, assertions and append-only activation records are owned. PR #16549 source paths, PR #16546 presentation paths, PR #16540 hosted paths and all PR #16547 source paths remain untouched."
+  },
+  "build_order_decision": "No build order posted. The Android phone-host gap already has a root build order in #delegations, and the Jev composition, activity-brief and hosted-integration gaps have active claims or open PRs; another order would duplicate work.",
+  "build_orders": [],
+  "quota_lifecycle": {
+    "official_observation": "The single official-source check found no quota reset newer than the previously recorded September 7 automatic reset; the latest visible official release-note entry remained September 17, 2026 and described unrelated product changes.",
+    "classification": "PRIOR_QUOTA_STATE_RETAINED_CURRENT_ALLOWANCE_UNMEASURED",
+    "current_meter": "NOT_DIRECTLY_OBSERVED",
+    "banked_reset_activated": false
+  },
+  "projection": {
+    "resources": 108,
+    "producing": 80,
+    "inventory_records": 70
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789942090133169",
+    "source_pr": "https://github.com/woahwhattheheck/commons/pull/16547",
+    "durable_lane": "https://github.com/woahwhattheheck/commons/issues/16537",
+    "active_consumer_pr": "https://github.com/woahwhattheheck/commons/pull/16549",
+    "delta_checkpoint": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789937566263169",
+    "official_release_notes": "https://help.openai.com/en/articles/6825453/chatgpt-release-notes"
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-20T22:10:45Z",
+    "activation_base_main_sha": "3e92e7f9bae59b7945087680a5d73a9317934ba7",
+    "latest_delta_slack_ts": "1789941300.041829",
+    "source_merge_commit": "0679a942bcb739f0926234a0681684b382e82c0e",
+    "remote_branches_observed": 4645
+  },
+  "non_claims": [
+    "No connector read, Jev call, provider write, customer contact, outreach, work claim, submission, deployment, spend, payment, settlement, revenue or cash is claimed."
+  ]
+}

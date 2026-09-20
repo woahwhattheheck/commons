@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1789931501.052119")
+        self.assertEqual(catalog["slack_ts"], "1789941300.041829")
         self.assertEqual(
             catalog["source_id"],
+            "codex-jev-connector-projection-resource-activation-20260920-01",
+        )
+        self.assertIn(
             "codex-jev-paid-shipping-monitor-resource-activation-20260920-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-cua-s1-form-choice-scorer-resource-activation-20260920-01",
@@ -355,10 +359,10 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-jev-paid-shipping-monitor-resource-activation-20260920-01.json",
+            "codex-jev-connector-projection-resource-activation-20260920-01.json",
         )
         self.assertIn(
-            "inventory/resources/records/codex-jev-paid-shipping-monitor-resource-activation-20260920-01.json",
+            "inventory/resources/records/codex-jev-connector-projection-resource-activation-20260920-01.json",
             raw.get("record_sources") or [],
         )
         with open(current_activation_path, encoding="utf-8") as handle:
@@ -370,63 +374,52 @@ class TestResourceLedger(unittest.TestCase):
         )
         self.assertEqual(
             current_activation["selected_resource"],
-            "jev-paid-shipping-monitor",
+            "jev-connector-projection",
         )
-        self.assertEqual(current_activation["projection"]["resources"], 107)
-        self.assertEqual(current_activation["projection"]["producing"], 79)
-        self.assertEqual(current_activation["projection"]["inventory_records"], 69)
+        self.assertEqual(current_activation["projection"]["resources"], 108)
+        self.assertEqual(current_activation["projection"]["producing"], 80)
+        self.assertEqual(current_activation["projection"]["inventory_records"], 70)
         self.assertEqual(
             current_activation["production_truth"]["source_repository"],
             "woahwhattheheck/commons",
         )
         self.assertEqual(
-            current_activation["production_truth"]["source_commit"],
-            "75f2d197ff1b8254f0da7f8a88ac58a5c6cbc2ed",
+            current_activation["production_truth"]["source_merge_commit"],
+            "0679a942bcb739f0926234a0681684b382e82c0e",
         )
         self.assertEqual(
             set(current_activation["production_truth"]["source_paths"]),
             {
-                ".github/workflows/commons-board.yml",
-                "host/paid_shipping/README.md",
-                "host/paid_shipping/rules.mjs",
-                "host/paid_shipping/runner.mjs",
-                "host/paid_shipping/runner.test.mjs",
-                "host/paid_shipping/schema.sql",
-                "host/paid_shipping/worker.mjs",
-                "host/paid_shipping/worker.test.mjs",
+                "integrations/command_center/jev_connector_projection.py",
+                "test_jev_connector_projection.py",
+                "ground/JEV_CONNECTOR_PROJECTION.md",
             },
         )
         self.assertEqual(
             current_activation["production_truth"]["source_paths"]
-            ["host/paid_shipping/worker.mjs"],
-            "521e06c698a0f2d252810446357b4f7ccae7f5fc",
+            ["integrations/command_center/jev_connector_projection.py"],
+            "aa58dc2a77d278f06f56ba3731b5a26598bc5372",
         )
         self.assertEqual(
             current_activation["production_truth"]["maximum_state"],
-            "SCHEDULED_MONITOR_LIVE_WITH_MANUAL_RUN_AND_SLACK_READBACK",
+            "MERGED_PURE_ADAPTER_WITH_LOCAL_EXACT_HEAD_ROUND_TRIP",
         )
         self.assertEqual(
             current_activation["production_truth"]["focused_tests"]["source_suite"],
-            "20/20 PASS",
-        )
-        self.assertEqual(
-            current_activation["production_truth"]["live_workflow_run"]["conclusion"],
-            "success",
+            "21/21 PASS NORMAL_AND_OPTIMIZED",
         )
         self.assertFalse(current_activation["production_truth"]["customer_contact"])
         self.assertFalse(current_activation["production_truth"]["payment_observed"])
         self.assertFalse(current_activation["production_truth"]["buyer_acceptance"])
         self.assertFalse(current_activation["production_truth"]["revenue_recognition"])
         self.assertFalse(current_activation["production_truth"]["current_cash_claim"])
-        self.assertFalse(current_activation["production_truth"]["bounty_claim"])
-        self.assertFalse(current_activation["production_truth"]["provider_payment"])
         self.assertFalse(current_activation["production_truth"]["settlement_observed"])
         self.assertFalse(current_activation["production_truth"]["deployment_by_activation"])
         self.assertFalse(current_activation["production_truth"]["spend_by_activation"])
         self.assertFalse(current_activation["production_truth"]["banked_reset_activated"])
         self.assertEqual(current_activation["build_orders"], [])
         self.assertIn(
-            "p1789930824686339", current_activation["evidence"]["slack_claim"]
+            "p1789942090133169", current_activation["evidence"]["slack_claim"]
         )
         activation_path = os.path.join(
             ROOT,
