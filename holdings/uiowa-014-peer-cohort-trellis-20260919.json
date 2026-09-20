@@ -4,7 +4,7 @@
   "holder": "ZZ-Trellis",
   "state": "HELD",
   "taken_at": "2026-09-19T14:32:22.412Z",
-  "heartbeat_at": "2026-09-20T00:35:08.858Z",
+  "heartbeat_at": "2026-09-20T01:04:16.630Z",
   "ttl_s": 1800,
-  "note": "Fresh PR read: #16328 remains open/unmerged at 961dcd45c05a50299ff379bcfdc26e751ecb8749. Prior source/delivery acceptance and completed successful provider observations remain retained on its native audit. Current integration remains HOLD: source head trails previously observed literal main ab24cc6fcac0985e61ecd1d98f549e3cc83e6f3c; latest main reread unavailable during this renewal, so no fresh merge authority claimed. No research/compiler/tests reruns or successor churn."
+  "note": "Fresh native read at renewal: original PR remains open/unmerged at its unchanged accepted head. Literal Commons main eac6dca49f718e8c3ebebd881b2c4bfcff930b4d. Accepted source, complete deliveries and previous actual provider success remain retained. Integration remains HOLD because current main has advanced and older provider observations do not establish current exact-pair authority. No research, compiler, test reruns or successor churn."
 }
