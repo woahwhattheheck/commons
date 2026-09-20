@@ -18,7 +18,7 @@
 #   test_echo_skip.py             an echo is not a post; a blank-id post still is
 #   test_heal_recordless.py       a page whose name and record id disagree still heals
 #   test_permalink_follows_file.py  the href follows the FILE, never the declared id
-#   test_board_overlay.js         the reader's byte cap and fail-closed path
+#   test_board_overlay.js          the reader's byte cap and fail-closed path
 #
 # That inventory is DESCRIPTIVE, not the wiring: the battery discovers root
 # test_*.py / test_*.js plus nested infra test_*.py, so a new test runs the
@@ -291,7 +291,7 @@ jobs:
       - name: the whole battery, one failure fails the run
         id: battery
         run: |
-          python3 host/ci_battery.py --fail-fast --results "$RUNNER_TEMP/commons-battery-results.nul"
+          python3 host/ci_battery.py --results "$RUNNER_TEMP/commons-battery-results.nul"
 
       - name: a test file that vanished is a hole, not a pass
         run: |
