@@ -2,7 +2,7 @@
   "counts": {
     "open_issues": 184,
     "open_pull_requests": 172,
-    "runs_in_progress": 1,
+    "runs_in_progress": 2,
     "runs_queued": 70
   },
   "counts_source": "graphql",
@@ -353,8 +353,19 @@
   },
   "pulls_listed": 172,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 70.0,
+  "queue_depth_per_runner": 35.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grok/align-retired-autopsy-cash-pins-20260920",
+      "closed_at": "2026-09-20T12:15:01Z",
+      "head_sha": "00197debb821ba6e2ac27b3b19d147ec7d4155b0",
+      "merged_at": "2026-09-20T12:15:01Z",
+      "number": 16536,
+      "state": "MERGED",
+      "title": "Align live-cash pins with retired Autopsy product"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -508,21 +519,10 @@
       "number": 15756,
       "state": "CLOSED",
       "title": "Add deterministic stale Actions queue auditor"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-copperleaf/actions-auditor-classifier-generation-15756",
-      "closed_at": "2026-09-20T01:35:01Z",
-      "head_sha": "de9ff954de51bed3f9b01cedec1cd22ce699d3e8",
-      "merged_at": "2026-09-20T01:35:01Z",
-      "number": 16015,
-      "state": "MERGED",
-      "title": "Harden stale Actions queue auditor classifier generation"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-20T11:51:52Z",
+  "unchanged_since": "2026-09-20T14:59:26Z",
   "undatable_pulls": []
 }
