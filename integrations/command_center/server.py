@@ -8,6 +8,7 @@ from pathlib import Path
 from urllib.parse import urlsplit, parse_qs
 from .core import CommandCenter, CoreError
 from .telemetry import with_host
+from . import work_feed_evidence
 
 WEB = Path(__file__).with_name("web")
 # integrations/command_center/server.py -> repository root. The observability
@@ -25,6 +26,7 @@ MANIFEST = {
     "mutations": ROUTES,
     "observability": "GET /api/observability; the four board bakes read from main at the current commit (checkout fallback, labelled), liveness recomputed at read time; optional limit=N caps the board events returned, refresh=1 re-reads main now",
     "work": "GET /api/work; any read older than freshness.ttl_seconds since the last completed collection starts one bounded direct-provider read in the background and returns at once, with a freshness block; GET /api/work?refresh=1 starts one now",
+    "dispatch_preview": "POST /api/work/dispatch-preview: bounded normalized exports -> process-time advisory evidence preview; no source reads, state changes, claims or sends. Supplied coverage is not provider authentication.",
     "ingest_work": "POST /api/work/ingest: operation_id, source with explicit scope/coverage/observed_at, selected items",
     "direct_work_refresh": "POST /api/work/refresh; status is included in GET /api/work",
     "owner_work": "POST /api/work/item: operation_id, source_id, item_id, priority, next_action, optional prepared job",
@@ -153,7 +155,7 @@ class Handler(BaseHTTPRequestHandler):
             self.send_json(400, {"error": "invalid_origin"})
             return
         path = urlsplit(self.path).path
-        if path not in ROUTES and path not in {"/api/tools/call", "/api/work/ingest", "/api/work/item", "/api/work/refresh"}:
+        if path not in ROUTES and path not in {"/api/tools/call", "/api/work/ingest", "/api/work/item", "/api/work/refresh", "/api/work/dispatch-preview"}:
             self.send_json(404, {"error": "not_found"})
             return
         try:
@@ -164,10 +166,14 @@ class Handler(BaseHTTPRequestHandler):
             if not 0 < size <= 1048576:
                 self.send_json(413, {"error": "body_size"})
                 return
-            payload = json.loads(self.rfile.read(size).decode("utf-8"))
+            raw_body = self.rfile.read(size)
+            payload = (work_feed_evidence.load_json(raw_body) if path == "/api/work/dispatch-preview"
+                       else json.loads(raw_body.decode("utf-8")))
             if not isinstance(payload, dict):
                 raise ValueError("JSON object required")
-            if path == "/api/work/ingest":
+            if path == "/api/work/dispatch-preview":
+                result = work_feed_evidence.compile_current(payload)
+            elif path == "/api/work/ingest":
                 result = self.server.center.ingest_work(payload)
             elif path == "/api/work/item":
                 result = {**self.server.center.update_work(payload), "status": "completed"}
