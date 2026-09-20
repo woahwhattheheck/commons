@@ -47,6 +47,8 @@ TARGETS = (
 # (sledge-mergeonpr-landedwork-convert-shelf-20260917-01).
 # lexington-mrf-diversion-gate.html convert shelf reuses the White Box
 # hour link (sledge-kincell-lexington-convert-shelf-20260917-01).
+# image-drop.html convert shelf reuses the White Box hour link
+# (sledge-fleetworkorder-imagedrop-convert-shelf-20260917-01).
 VERIFIED_PRODUCT_CHECKOUT = {
     'invoice-exception-pack.html': (
         b'https://buy.stripe.com/14A00i84Jdvz36hdxg43S0l',
@@ -86,6 +88,9 @@ VERIFIED_PRODUCT_CHECKOUT = {
         b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
     ),
     'interconnect.html': (
+        b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
+    ),
+    'image-drop.html': (
         b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
     ),
     'landed-work.html': (
