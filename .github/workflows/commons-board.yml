@@ -394,3 +394,31 @@ jobs:
         run: >-
           echo "Pending DEVICE actions remain durable and unexecuted; ordinary board ingest
           does not allocate the owner's self-hosted laptop runner."
+
+  shipping-monitor:
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || github.event_name == 'push')
+    permissions:
+      contents: read
+    concurrency:
+      group: commons-shipping-monitor
+      cancel-in-progress: false
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout: |
+            host/paid_shipping
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Scan and persist private state
+        working-directory: host/paid_shipping
+        env:
+          COMMONS_GITHUB_TOKEN: ${{ secrets.COMMONS_GITHUB_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
+          NODE_OPTIONS: --experimental-sqlite
+        run: node runner.mjs
