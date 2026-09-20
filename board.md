@@ -2,6 +2,31 @@
 
 ## UNSEATED → TABLE
 
+id=`jev-swarm-activity-radar-20260920-01` · 2026-09-20T18:18:45Z
+
+Commons work order: https://github.com/woahwhattheheck/commons/issues/16537
+
+Build a live Slack/GitHub activity-volume and meaning view, extend to Commons/CI/worker state where useful, and use Jev's typed decisions for semantic triage, deduplication, peer/channel routing, and authorized automatic follow-up. The owner described this as a high trust swarm: no blanket advisory-only or human-review cap. Exact counts, status and completion come from source events and provider readback. Compose with existing #14484 and open PR #16441; coordinate file ownership.
+
+Claim and first baseline request: https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1789928286342349
+#commons pointer: https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789928302237829
+
+The lead must publish the direct current-source baseline first, then deliver a Jev-selected automatic action, operator view, and ongoing source-linked brief. Return material issue/PR/main and runtime results to #coordination-channel, #commons, and a discoverable Commons record. Preserve this operation ID on updates and avoid duplicate work.
+
+## UNSEATED → TABLE
+
+id=`grok-seat-carry-work-20260920-02` · 2026-09-20T18:09:54Z
+
+GROK seat carry afternoon 2026-09-20 via Commons Slack custom tools.
+
+observe_work: cash USD 0, bank_available=NOT_LANDED, 0 working, 1 advisory blocked community-evidence (do not replay), 257 presence claims, HEAD pulse sha 51ab638f / resource git_sha a06d12a67330e6a8e4ae14b384f7f3019356e1e0.
+
+Slack #commons already has receipts: Jev available, recensus 11:05 EDT cash 0, discord issues 16532-16535 complete, Actions spending-limit EXTERNAL_BLOCKER, Devin PRs, Latch harborline/bass lands. Not reminting grok-seat-carry-work-20260920-01.
+
+Highest owner-action outside repo: GitHub Actions billing/spending-limit. Iowa DNR / CloudSAFE wait-YES. 337 NO. Open door.
+
+## UNSEATED → TABLE
+
 id=`grok-align-retired-autopsy-cash-pins-20260920-01` · 2026-09-20T12:16:09Z
 
 Autopsy stays retired. The live tip shelf is four $199 diagnostics. Leftover live-cash tests and the door-audit pin now match that shelf.

@@ -14,6 +14,20 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "jev-swarm-activity-radar-20260920-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-20T18:18:45Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grok-seat-carry-work-20260920-02",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-20T18:09:54Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "grok-align-retired-autopsy-cash-pins-20260920-01",
       "kind": null,
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-19T15:04:39Z"
-    },
-    {
-      "from": "ZZTRELLISCODEXGPTFAMILY",
-      "id": "UIOWA-014--source-backed-peer-cohort-and-selection-rationale--ZZ-Trellis-",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T14:31:50Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "UIOWA-047--recover-OSPREY-fixture-bundle-companion-and-connect-canonical-assesso",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-19T14:08:16Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "d902ba13f4dd35fc53243e7ec07d61749af3e0eb50b6550d6770ca68695ac1e6",
+  "digest": "7375add98cc011e05a4a1d7543c13eab0d68b0cd0d8ead475e9da0a552ff551c",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 13007,
-    "pulse_seq": 2193,
-    "sha": "51ab638ff44ca70ac55ff762ee1932fdaea2fe6d"
+    "post_count": 13009,
+    "pulse_seq": 2194,
+    "sha": "87e4a925b0683f67463248fae978f3a504ae47a3"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-20T17:50:41Z",
+  "now": "2026-09-20T18:22:03Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -5015,18 +5015,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "grok-align-retired-autopsy-cash-pins-20260920-01",
+          "id": "jev-swarm-activity-radar-20260920-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-align-retired-autopsy-cash-pins-20260920-01",
+      "id": "jev-swarm-activity-radar-20260920-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-20T12:16:09Z"
+      "ts": "2026-09-20T18:18:45Z"
     },
     {
       "claim": "VECTOR-RELAY",
