@@ -1,6 +1,6 @@
 {
  "note": "paths each open pull request changes since its merge-base (first 40; drift --pr N prints all)",
- "observed_at": "2026-09-20T14:06:49Z",
+ "observed_at": "2026-09-20T17:26:30Z",
  "prs": [
   {"number":16520,"path_count":1,"paths":["test_battery_report.py"]},
   {"number":16519,"path_count":9,"paths":[".github/workflows/tests.yml","test_revenue_collection_desk.py","test_revenue_collection_desk_exact.py","test_revenue_collection_desk_rehearsal.py","tools/revenue_collection_desk/EXECUTION.md","tools/revenue_collection_desk/README.md","tools/revenue_collection_desk/core.py","tools/revenue_collection_desk/example.json","tools/revenue_collection_desk/rehearsal.py"]},

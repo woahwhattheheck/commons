@@ -7,7 +7,7 @@
   {"canonical":16152,"chain":[16152,16193],"content_keys":["b6515f2cf6908b65","c75452dae3da2604"],"families":["COMMONS-CI-STARVATION-MERGE-TRAIN-20260917-ZSOL"],"lane":"lane-16152","open":[16152],"state":"OPEN","title":"CI review delta: retain distinct latest-run holds and 36-pair regressions"}
  ],
  "note": "lanes with two or more members; an open pull request row without a lane field is a lane of its own",
- "observed_at": "2026-09-20T14:06:49Z",
+ "observed_at": "2026-09-20T17:26:30Z",
  "recent_closed": [
   {"closed_at":"2026-09-20T01:39:26Z","content_key":"046247c5f5fd2635","created_at":"2026-09-20T01:31:43Z","head":"fea0ab0216565ab69e07e49f0e84bd37b11b2a51","links":[],"markers":[],"number":16518,"state":"MERGED","title":"Command center: current-main work-feed evidence rejoin (#14484)"},
   {"closed_at":"2026-09-19T22:49:44Z","content_key":"e57fe223b3804777","created_at":"2026-09-19T22:45:48Z","head":"6c1fa8a3f521a879a7baabc506acbd98c7936b29","links":[],"markers":[],"number":16497,"state":"MERGED","title":"UIOWA-046: rejoin reviewed test reliability kit to current main"},
