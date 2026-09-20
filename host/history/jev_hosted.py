@@ -12,6 +12,7 @@ import io
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import sys
@@ -101,7 +102,20 @@ def process(corpus, pattern, source_dir):
                                  str(source_dir), "--pattern", pattern, "--workers", "4"],
                                 capture_output=True, text=True, timeout=5 * 60 * 60)
         if result.returncode:
-            raise RuntimeError("jev_process_failed_" + ("gmail" if source_dir == corpus else "slack"))
+            tail = result.stdout.strip().splitlines()[-1:] or ['']
+            try:
+                failed = json.loads(tail[0])
+            except ValueError:
+                failed = {}
+            diagnostic = failed.get('stderr_tail', '')
+            known = re.search(r'(?:JevError: (HTTP_\d+|TRANSPORT|BAD_REPLY|NO_KEY|STATE_TOO_LARGE|BAD_QUESTIONS)|'
+                              r'(incomplete_jev_answers|invalid_jev_choice|missing completion receipt))', diagnostic)
+            code = known.group(1) or known.group(2) if known else 'UNCLASSIFIED'
+            source = failed.get('source_file', '')
+            if not isinstance(source, str) or not re.fullmatch(r'(?:mail|batch)-[A-Za-z0-9_-]{1,100}\.json', source):
+                source = 'unknown'
+            raise RuntimeError('jev_process_failed_' + ('gmail' if source_dir == corpus else 'slack')
+                               + ':' + source + ':' + code)
     total_messages = total_chars = 0
     for source in sources:
         receipt = source.parent / "jev-results" / (source.stem + "-complete.json")
