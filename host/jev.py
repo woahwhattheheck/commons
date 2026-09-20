@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """host/jev.py — TypeSafe Jev (System One) client for Commons swarm decisions.
 
+JEV INTEGRATION STATUS: WORKING. Shared-vault live call verified 2026-09-20.
+
 Jev is a decision model, not a chat model: send `state` plus typed
 `questions` (choice / score / noul), get typed answers with calibrated
 probabilities and confidence in a single parallel call (~70-500 ms,
