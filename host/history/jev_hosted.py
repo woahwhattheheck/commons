@@ -74,7 +74,8 @@ def private_put(path, raw, token):
     operation = "jev-hosted-" + digest(path.encode() + b"\n" + raw)[:48]
     payload = {"operation_id": operation, "operation": "file.put", "args": {
         "owner": "woahwhattheheck", "repo": "commons-ship-enforcer",
-        "path": path, "message": "Store private JEV history receipt bundle",
+        "path": path, "message": ("Store private JEV history bundle chunk"
+                            if Path(path).name.startswith("chunk-") else "Store private JEV history receipt manifest"),
         "content": base64.b64encode(raw).decode(),
     }}
     for attempt in range(8):
