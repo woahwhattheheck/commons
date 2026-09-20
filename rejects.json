@@ -1,5 +1,23 @@
 [
   {
+    "id": "grok-enforcer-unit-tests-billing-20260920-01",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-20T21:18:43Z",
+    "body": ""
+  },
+  {
+    "id": "grok-enforcer-unit-tests-billing-20260920-01",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-20T21:18:37Z",
+    "body": ""
+  },
+  {
     "id": "UIOWA-047--preserve-the-source-catalog-and-prior-report-during-CLI-output-failur",
     "reason": "commons_publication_terms",
     "code": "commons_publication_terms",
