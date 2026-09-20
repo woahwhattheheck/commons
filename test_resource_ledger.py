@@ -145,13 +145,13 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1789877169.598919")
+        self.assertEqual(catalog["slack_ts"], "1789931501.052119")
         self.assertEqual(
             catalog["source_id"],
-            "codex-cua-s1-form-choice-scorer-resource-activation-20260920-01",
+            "codex-jev-paid-shipping-monitor-resource-activation-20260920-01",
         )
         self.assertIn(
-            "codex-uiowa-peer-evidence-comparability-resource-activation-20260920-01",
+            "codex-cua-s1-form-choice-scorer-resource-activation-20260920-01",
             raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
@@ -355,10 +355,10 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-cua-s1-form-choice-scorer-resource-activation-20260920-01.json",
+            "codex-jev-paid-shipping-monitor-resource-activation-20260920-01.json",
         )
         self.assertIn(
-            "inventory/resources/records/codex-cua-s1-form-choice-scorer-resource-activation-20260920-01.json",
+            "inventory/resources/records/codex-jev-paid-shipping-monitor-resource-activation-20260920-01.json",
             raw.get("record_sources") or [],
         )
         with open(current_activation_path, encoding="utf-8") as handle:
@@ -370,56 +370,63 @@ class TestResourceLedger(unittest.TestCase):
         )
         self.assertEqual(
             current_activation["selected_resource"],
-            "cua-s1-form-choice-scorer",
+            "jev-paid-shipping-monitor",
         )
-        self.assertEqual(current_activation["projection"]["resources"], 106)
-        self.assertEqual(current_activation["projection"]["producing"], 78)
-        self.assertEqual(current_activation["projection"]["inventory_records"], 68)
+        self.assertEqual(current_activation["projection"]["resources"], 107)
+        self.assertEqual(current_activation["projection"]["producing"], 79)
+        self.assertEqual(current_activation["projection"]["inventory_records"], 69)
         self.assertEqual(
             current_activation["production_truth"]["source_repository"],
             "woahwhattheheck/commons",
         )
-        self.assertEqual(current_activation["production_truth"]["source_pr"], 16517)
         self.assertEqual(
-            current_activation["production_truth"]["source_merge_sha"],
-            "8692e26a94925f58f4bb10fcfbd8d6f3a877879c",
+            current_activation["production_truth"]["source_commit"],
+            "75f2d197ff1b8254f0da7f8a88ac58a5c6cbc2ed",
         )
         self.assertEqual(
             set(current_activation["production_truth"]["source_paths"]),
             {
-                ".agents/skills/cua-s1-forms/SKILL.md",
-                "host/CUA_S1_FORMS.md",
-                "host/cua_s1_forms.py",
+                ".github/workflows/commons-board.yml",
+                "host/paid_shipping/README.md",
+                "host/paid_shipping/rules.mjs",
+                "host/paid_shipping/runner.mjs",
+                "host/paid_shipping/runner.test.mjs",
+                "host/paid_shipping/schema.sql",
+                "host/paid_shipping/worker.mjs",
+                "host/paid_shipping/worker.test.mjs",
             },
         )
         self.assertEqual(
             current_activation["production_truth"]["source_paths"]
-            ["host/cua_s1_forms.py"],
-            "ecce06285d8bea21e15eea49738b08536c23c06b",
+            ["host/paid_shipping/worker.mjs"],
+            "521e06c698a0f2d252810446357b4f7ccae7f5fc",
         )
         self.assertEqual(
             current_activation["production_truth"]["maximum_state"],
-            "LOCAL_FORM_CHOICE_PROPOSAL_READY",
+            "SCHEDULED_MONITOR_LIVE_WITH_MANUAL_RUN_AND_SLACK_READBACK",
         )
         self.assertEqual(
-            current_activation["production_truth"]["focused_tests"]["source_contract_probe"],
-            "4/4 PASS NORMAL_AND_OPTIMIZED",
+            current_activation["production_truth"]["focused_tests"]["source_suite"],
+            "20/20 PASS",
         )
-        self.assertEqual(current_activation["production_truth"]["provider_writes"], 0)
+        self.assertEqual(
+            current_activation["production_truth"]["live_workflow_run"]["conclusion"],
+            "success",
+        )
         self.assertFalse(current_activation["production_truth"]["customer_contact"])
         self.assertFalse(current_activation["production_truth"]["payment_observed"])
         self.assertFalse(current_activation["production_truth"]["buyer_acceptance"])
         self.assertFalse(current_activation["production_truth"]["revenue_recognition"])
         self.assertFalse(current_activation["production_truth"]["current_cash_claim"])
-        self.assertFalse(current_activation["production_truth"]["scheduling_action"])
-        self.assertFalse(current_activation["production_truth"]["browser_control"])
-        self.assertFalse(current_activation["production_truth"]["form_mutation"])
-        self.assertFalse(current_activation["production_truth"]["form_submission"])
-        self.assertFalse(current_activation["production_truth"]["executed"])
-        self.assertFalse(current_activation["production_truth"]["checkpoint_in_repository"])
+        self.assertFalse(current_activation["production_truth"]["bounty_claim"])
+        self.assertFalse(current_activation["production_truth"]["provider_payment"])
+        self.assertFalse(current_activation["production_truth"]["settlement_observed"])
+        self.assertFalse(current_activation["production_truth"]["deployment_by_activation"])
+        self.assertFalse(current_activation["production_truth"]["spend_by_activation"])
+        self.assertFalse(current_activation["production_truth"]["banked_reset_activated"])
         self.assertEqual(current_activation["build_orders"], [])
         self.assertIn(
-            "p1789877169598919", current_activation["evidence"]["slack_claim"]
+            "p1789930824686339", current_activation["evidence"]["slack_claim"]
         )
         activation_path = os.path.join(
             ROOT,
