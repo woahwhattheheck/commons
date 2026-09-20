@@ -422,3 +422,27 @@ jobs:
           TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
           NODE_OPTIONS: --experimental-sqlite
         run: node runner.mjs
+
+  github-history:
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+    permissions:
+      contents: read
+    concurrency:
+      group: commons-github-history
+      cancel-in-progress: false
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout: |
+            host/history
+      - name: Continue private GitHub history intake
+        working-directory: host/history
+        env:
+          COMMONS_GITHUB_TOKEN: ${{ secrets.COMMONS_GITHUB_TOKEN }}
+          GH_TOKEN_PRIMARY: ${{ secrets.COMMONS_GITHUB_TOKEN }}
+          GH_TOKEN_SECONDARY: ${{ secrets.GH_TOKEN_SECONDARY }}
+        run: python3 github_cloud.py
