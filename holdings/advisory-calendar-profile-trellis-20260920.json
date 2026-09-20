@@ -4,7 +4,7 @@
   "holder": "ZZ-Trellis",
   "state": "HELD",
   "taken_at": "2026-09-20T01:26:58.605Z",
-  "heartbeat_at": "2026-09-20T01:54:34.627Z",
+  "heartbeat_at": "2026-09-20T02:19:27.792Z",
   "ttl_s": 1800,
-  "note": "Active private #1286 / draft PR1576. Complete7-runtime calendar profile plus contract/provenance/acquisition and38independenttestmethods published c49ec6d00ccd444dcadbf4bf063c7f68afba149d/tree3e1af2c36c0cadcf17044afc04ed94d5dae6ba1c,12adds149798B with exactnativepins. Independent engine,packet/CLI/I/O/reporting source reviews PASS; latewrite markerhandling repaired beforeexecution. FixedfixtureindependentFraction expectations and21-command operator source review PASS;240accounts/80householdsscale. Fullpacket/CLItests andsourcecaptureclosing beforefirstnormal/Oacceptance. No product/test/operator execution yet. Parent/control/sourceprovenance unchanged; no commercial expansion."
+  "note": "Active private #1286 / PR1576. First128normal+128actual-O tests PASS at native d451f2162da992733727408163610a616ea9b08b; complete literal10file120611B evidence published in TEST_EXECUTION receipt ce13d59b7b6d6fd4631f6fb73986bcf5e1138982, independent auditPASS. First21-command operator per mode17exit0/1reviewexit1/3refusalsexit2 PASS,64 original/copied memberpairs byteidentical, 240account80household scale. Full operator records frozen, independent audit/final docs inprogress. Currentmain0b79d344 and exact ancestry acquired; finalcurrent-main composition/gates/merge/fullpackage pending. Early builder checkpoint f7cc4b72 durably published. No reruns, source/runtime unchanged."
 }
