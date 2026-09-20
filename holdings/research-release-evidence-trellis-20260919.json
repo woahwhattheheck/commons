@@ -2,9 +2,10 @@
   "schema": "commons-change-holding/v1",
   "key": "research-release-evidence-trellis-20260919",
   "holder": "ZZ-Trellis",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-09-19T22:53:51.562Z",
-  "heartbeat_at": "2026-09-20T01:04:15.143Z",
+  "heartbeat_at": "2026-09-20T01:17:59.101Z",
   "ttl_s": 1800,
-  "note": "Private #1572/PR1573 merged 63b51b97330ceb53346bc50240e877d9f6b20de2 at exact source689d36057d73a093cbfc02c4a4b2875cf9b931d7, reviewed tree207d3e2587b724a540aa5fd4b4c5c7bcb2fea957. Both unchanged integration gates passed base0d1e5e/head689; all4374 prior entries preserved and32 additions. Current main33498c03511e75d68751962bfccb41bb32273329 directly descends from merge; all source additions intact. Actual80+80 tests and39+39 operator commands retained without reruns. Final complete worked package/Canvas delivery active; raw checkpoint60f650 remains durable. Container milestone unmet and commercial linkage draft only."
+  "note": "Completed private issue1572 / PR1573 merged63b51b97330ceb53346bc50240e877d9f6b20de2 at source689d36057d73a093cbfc02c4a4b2875cf9b931d7. Final artifact266198f16014c6fa2c3ca26aa515b9cc59f65b7e has complete2076-member ZIP, all actual packaging captures, independent review and native readback. CanvasF0C3284F294; completion issuecomment5746643140. Actual80+80 acceptance and39+39 operator commands, no reruns. Five packaging phases passed, extracted bytes and included-builder rebuild match exactly. Original container milestone unexecuted; owner commercial authority separate. All delivery work complete; custody released.",
+  "released_at": "2026-09-20T01:17:59.101Z"
 }
