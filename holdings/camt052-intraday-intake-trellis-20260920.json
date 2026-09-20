@@ -4,7 +4,7 @@
   "holder": "ZZ-Trellis",
   "state": "HELD",
   "taken_at": "2026-09-20T03:00:02.255Z",
-  "heartbeat_at": "2026-09-20T04:30:39.631Z",
+  "heartbeat_at": "2026-09-20T04:58:45.041Z",
   "ttl_s": 1800,
-  "note": "Active SMB #1375 / PR1578. Frozen complete runtime c0d98fdd; failed first combined acceptance retained natively at c70e45b1 with all ten files and classification: 272 discovered,259 started,237 successful; all67 new methods passed normal, unchanged bridge requires Node22 while default24 was used. Optimized not launched. Official22.16.0 runtime acquisition supported and underway; no source/guard changes or quiet reruns. Independent 39 normal/39 optimized structural PASS; operator10+3 native closure ready, first operator run pending explicit GO. Whole package preparation and final current-main gates/merge remain in progress. V14 unconditional HOLD stays locked."
+  "note": "Active SMB #1375 / PR1578: exactc0d98 source accepted in separately recorded attempt2,272normal+272actual-O withofficialNode22.16.0; independent review87daec43 PASS. Failed Node24 attempt1 and executable-mode repair/HOLD history retained, no source/guard changes. First operator25commands/mode and144memberpairs PASS;582files independently audited133b3c2e. Structural39normal/39-O PASS. Product branch1fb99b87; full operatorreport e6469614 nativee015. Reviewed8-file package preparation separatelynative d28e4a90. Final testdoc/current-main gates/guardedmerge/fullworkedZIP/Canvas pending; custody continues through whole delivery. V14 retainedHTTP403 and unconditionalHOLD."
 }
