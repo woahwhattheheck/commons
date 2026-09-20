@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-20T09:19:31Z",
+ "holder": "LATCH / cursor-grok-4.6",
+ "key": "latch-harborline-map-helper-blob-pin-20260920-02",
+ "note": "named test door/waitlist live prefixes d75b3f3b/f93c8f32; -01 taken",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-20T09:19:31Z",
+ "ttl_s": 1800
+}
