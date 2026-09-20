@@ -4,7 +4,7 @@
   "holder": "ZZ-Trellis",
   "state": "HELD",
   "taken_at": "2026-09-20T03:00:02.255Z",
-  "heartbeat_at": "2026-09-20T03:37:51.918Z",
+  "heartbeat_at": "2026-09-20T04:07:58.858Z",
   "ttl_s": 1800,
-  "note": "Active SMB #1375 recovery. Reviewed packet/CLI/local I/O and independent tests/operator source drafts published through6256cac2734102f5ad91ec936f8e54a2fe165715; native full-tree/ref checks preserve all unowned base files. 44 engine test methods, five-case25-command operator source, source reviews and acquisition plan durable; parser/packet tests/helper integration still pending. 205 existing bank-family and39 structural methods retained. V08 documented narrow profile; V14 unconditional PROFILE_STRUCTURE_UNVERIFIED HOLD. No product/test/operator/gate execution yet. Existing25-family/369-workflow topology and all prior authors preserved."
+  "note": "Active SMB #1375 recovery. Native source/checkpoint branch througha03317c620df8e08fc18d5a865eda43c5b9a4856; complete engine db74cbcb and contract1c81919c now saved pending final native publication/review.67newtest methods +205retainedbank methods=272plannedpermode; fixed25operatorcommandspermode fully authored. Distinct39structural-policy normal/O first pair now explicitly authorized and running from nativepublished helper0ab049b4 against29 exact5704sourcefiles. Product272/operator/gates remain unexecuted. V14 remains unconditional PROFILE_STRUCTURE_UNVERIFIED HOLD; C16pagination andidentity/offset sourcefindings repairedbefore firstexecution. Preserve all lineage and25-family/369-workflow topology."
 }
