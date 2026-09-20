@@ -18,6 +18,7 @@ import signal
 import subprocess
 import sys
 import tempfile
+import time
 
 # Importing the local report helper must not manufacture an ignored __pycache__
 # before the checkout preflight inventories ignored working-tree inputs.
@@ -201,8 +202,11 @@ def main(argv: list[str] | None = None) -> int:
                         file_hashes[path] = hashlib.sha256((root / path).read_bytes()).hexdigest()
                     except OSError:
                         file_hashes[path] = None
+                    started = time.monotonic()
                     rc = execute(root, command, path, args.timeout or None)
+                    duration_ms = max(0, round((time.monotonic() - started) * 1000))
                     record(handle, command, "./" + path, rc)
+                    record(handle, "timing_ms", "./" + path, duration_ms)
                     code = int(bool(code or rc))
                     print(("ok   " if rc == 0 else "FAIL ") + json.dumps(path), flush=True)
                     if rc and args.fail_fast:
