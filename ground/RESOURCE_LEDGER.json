@@ -25,6 +25,7 @@
   "priority_queue": [],
   "production_write": false,
   "record_sources": [
+    "inventory/resources/records/codex-cua-s1-form-choice-scorer-resource-activation-20260920-01.json",
     "inventory/resources/records/codex-uiowa-peer-evidence-comparability-resource-activation-20260920-01.json",
     "inventory/resources/records/codex-grantfox-fwc26-workfeed-compiler-resource-activation-20260919-01.json",
     "inventory/resources/records/codex-uiowa-source-relationship-graph-resource-activation-20260919-01.json",
@@ -104,15 +105,15 @@
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1789866503.109939",
+  "slack_ts": "1789877169.598919",
   "snapshot": {
-    "base_main_sha": "eac6dca49f718e8c3ebebd881b2c4bfcff930b4d",
-    "observed_at": "2026-09-20T01:12:29Z",
+    "base_main_sha": "b626b13580b6a075a2436f8c985c4c22ad1c6676",
+    "observed_at": "2026-09-20T04:09:25Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-uiowa-peer-evidence-comparability-resource-activation-20260920-01",
+  "source_id": "codex-cua-s1-form-choice-scorer-resource-activation-20260920-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -121,8 +122,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — UIowa peer-evidence comparability compiler",
+  "subject": "MASTER RESOURCE LEDGER — CUA-S1 form-choice scorer",
   "supersedes_source_ids": [
+    "codex-cua-s1-form-choice-scorer-resource-activation-20260920-01",
     "codex-uiowa-peer-evidence-comparability-resource-activation-20260920-01",
     "codex-grantfox-fwc26-workfeed-compiler-resource-activation-20260919-01",
     "codex-uiowa-source-relationship-graph-resource-activation-20260919-01",
@@ -2449,6 +2451,28 @@
       "last_receipt": "codex-commons-context-dispatch-compiler-resource-activation-20260913-01",
       "last_used_at": "2026-09-13T13:10:45Z",
       "stale_after": "next compiler, CLI, packet schema, selection/budget policy, source allowlist, pulse/coordination/claim contract, source blob or authority change",
+      "priority": 99
+    },
+    {
+      "name": "cua-s1-form-choice-scorer",
+      "kind": "CHECKPOINT_BOUND_NON_EXECUTING_FORM_CHOICE_SCORER",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / bounded form-choice analysis operators",
+      "authority": "SHARED_ALL_CARRIERS; PUBLIC_CURRENT_MAIN_READ_RUN_AND_SCORE; EXACT_PR16517_HEAD_469DFE9502EC38DB847C40A4ADA1DDAF969EA46D_MERGE_8692E26A94925F58F4BB10FCFBD8D6F3A877879C_AND_THREE_SOURCE_BLOBS_REQUIRED; EXPLICIT_OPTIONS_ONLY; PROPOSAL_ONLY; EXECUTED_FALSE; BROWSER_CONTROL_FALSE; FORM_MUTATION_FALSE; SUBMISSION_FALSE; CUSTOMER_DATA_FALSE; OUTREACH_FALSE; PAYMENT_FALSE; REVENUE_FALSE; DEPLOYMENT_FALSE",
+      "consumer": "Commons form workflows that already have a parsed form-element context and explicit candidate options and need one bounded, inspectable probability-ranked proposal before separate human or authorized execution.",
+      "value": "The released local wrapper loads the official CUA-S1-FORMS checkpoint, preserves caller option order, returns one probability per supplied option and an explicit selected index, and always marks the result executed=false.",
+      "next_action": "An operator with the official matching checkpoint and sidecar may score one explicit candidate set locally, inspect the probabilities and proposed selection, and independently verify any later target and outcome; never treat scoring as execution or submission.",
+      "source": "host/cua_s1_forms.py, host/CUA_S1_FORMS.md and .agents/skills/cua-s1-forms/SKILL.md; source PR #16517 head 469dfe9502ec38db847c40a4ada1ddaf969ea46d merge 8692e26a94925f58f4bb10fcfbd8d6f3a877879c",
+      "evidence_ts": "2026-09-20T04:09:25Z",
+      "auth_surface": "public current-main wrapper plus an operator-supplied official CUA-S1-FORMS checkpoint and matching sidecar; scoring itself requires no Commons login, browser session, customer identity, provider write or repeated owner approval",
+      "exact_safe_probe": "Current main b626b13580b6a075a2436f8c985c4c22ad1c6676 retained all three source-head blobs: skill 222d8739b0e4b4abee113ffea9dc8b57573cbbad, guide 989642e17cfdba86fad8c9f8b093bfbf397e5fa3 and scorer ecce06285d8bea21e15eea49738b08536c23c06b. A dependency-isolated contract probe passes 4/4 normally and 4/4 under python -O; compilation passes; exact-head path-manifest, open-door, spec and source-parse guards were successful.",
+      "rate_plan_boundary": "The wrapper does not include or purchase the model checkpoint and makes no paid provider call by itself. A score is a bounded proposal from supplied options only; it does not establish model reliability, control a browser, fill or submit a form, verify target state, contact a customer, create acceptance, spend, deploy, accept payment, recognize revenue or create cash.",
+      "assigned_backlog": "available to existing parsed-form analysis lanes; no automatic fill backend, browser driver, form mutation, customer-data intake, provider operation, tester-only loop or new implementation lane is created",
+      "last_receipt": "codex-cua-s1-form-choice-scorer-resource-activation-20260920-01",
+      "last_used_at": "2026-09-20T04:09:25Z",
+      "stale_after": "next scorer, upstream package, checkpoint format, model card, option contract, source blob, execution boundary or consumer change",
       "priority": 99
     },
     {
