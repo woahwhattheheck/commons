@@ -1,7 +1,6 @@
 {
   "name": "commons-cloud-cua",
   "private": true,
-  "type": "module",
   "engines": {"node": "24.x"},
   "dependencies": {
     "@sparticuz/chromium": "153.0.0",
