@@ -4,7 +4,7 @@
   "holder": "ZZ-Trellis",
   "state": "HELD",
   "taken_at": "2026-09-20T03:00:02.255Z",
-  "heartbeat_at": "2026-09-20T04:58:45.041Z",
+  "heartbeat_at": "2026-09-20T05:29:04.242Z",
   "ttl_s": 1800,
-  "note": "Active SMB #1375 / PR1578: exactc0d98 source accepted in separately recorded attempt2,272normal+272actual-O withofficialNode22.16.0; independent review87daec43 PASS. Failed Node24 attempt1 and executable-mode repair/HOLD history retained, no source/guard changes. First operator25commands/mode and144memberpairs PASS;582files independently audited133b3c2e. Structural39normal/39-O PASS. Product branch1fb99b87; full operatorreport e6469614 nativee015. Reviewed8-file package preparation separatelynative d28e4a90. Final testdoc/current-main gates/guardedmerge/fullworkedZIP/Canvas pending; custody continues through whole delivery. V14 retainedHTTP403 and unconditionalHOLD."
+  "note": "SMB #1375 / PR1578 MERGED at1c120671b1f232c9edbad720b0f85e80af4ee95a, sourceb11. Complete main readback PASS:146additions,3assignedCIchanges,4446otherfilespreserved,0removals. Actual272normal+272optimized;operator25commands/mode144pairs;structural39+39;independentreviews and unchangedprivategates PASS. First seven package actions authorized with independently reviewed metadata.v2 3378dea6; fullworkedZIP/Canvas delivery pending. FailedNode24attempt/mode-repairhistory and V14HOLD retained. Custody continues through complete publication."
 }
