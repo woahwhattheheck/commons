@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 185,
     "open_pull_requests": 175,
-    "runs_in_progress": 1,
-    "runs_queued": 70
+    "runs_in_progress": 7,
+    "runs_queued": 72
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -66,6 +66,17 @@
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-sol-autumn-731/jev-16537-connector-projection-20260920",
+      "created_at": "2026-09-20T20:25:08Z",
+      "draft": false,
+      "head_sha": "30d0fef400746ed67ec1ca2b2a6b8706b1fd2348",
+      "number": 16547,
+      "title": "Jev radar: project installed-connector reads into event ledger",
+      "updated_at": "2026-09-20T20:28:29Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -164,17 +175,6 @@
       "number": 16501,
       "title": "Command center: surface Actions queue pressure",
       "updated_at": "2026-09-20T01:47:14Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-solforge/ci-fail-fast-evidence-followup-20260919",
-      "created_at": "2026-09-19T22:47:14Z",
-      "draft": false,
-      "head_sha": "9e9bb0acfe870b0bcc0a41e777930f7448525928",
-      "number": 16498,
-      "title": "CI: bind hosted fail-fast scope into battery evidence",
-      "updated_at": "2026-09-20T01:30:30Z"
     }
   ],
   "open_heads": {
@@ -335,7 +335,6 @@
     "16436": "9f7d99310782196a80601e50169c28b53696f60c",
     "16438": "82be8db3d9763c6b3f3d21a5c1be3d24bbde8dbd",
     "16440": "dac4d080d49cf5fcd80b974504154a5ada21bd7f",
-    "16441": "e0f55b007196beae660a9cdd27639d88070cd391",
     "16450": "1413886400e3af9a6348e1db3c1f71c377b1e4a3",
     "16455": "7166b76acf4d5db7de524502283d8fd26bb127da",
     "16456": "2fe02ef45fc586fcedd1707da53abb8a0ce535f9",
@@ -352,12 +351,24 @@
     "16520": "cf0fe076f4106e5a618b339648471c0da843cc67",
     "16539": "c5d29dd60315f1d275a98c968c4646826c83db69",
     "16540": "e9265ac0be62774cdddd9b4e003af4a231a9466f",
-    "16546": "5fa439a7b23d95bb97fb4d3f56463e931ca5b36a"
+    "16546": "5fa439a7b23d95bb97fb4d3f56463e931ca5b36a",
+    "16547": "30d0fef400746ed67ec1ca2b2a6b8706b1fd2348"
   },
   "pulls_listed": 175,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 70.0,
+  "queue_depth_per_runner": 10.3,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zz-kestrel-ad7b-workfeed-14484-20260919",
+      "closed_at": "2026-09-20T20:19:42Z",
+      "head_sha": "e0f55b007196beae660a9cdd27639d88070cd391",
+      "merged_at": null,
+      "number": 16441,
+      "state": "CLOSED",
+      "title": "Command center: work-feed evidence composition and read-only dispatch preview"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -511,21 +522,10 @@
       "number": 16523,
       "state": "MERGED",
       "title": "Activate CUA-S1 form-choice scorer resource"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-grok-build/archive-intake-uiowa068-20260919",
-      "closed_at": "2026-09-20T02:16:31Z",
-      "head_sha": "9daf87ad986ecba4e48c7ca01903ab25cdacc486",
-      "merged_at": "2026-09-20T02:16:31Z",
-      "number": 16522,
-      "state": "MERGED",
-      "title": "ci: archive path-scoped extras and keep proofs on source-parses"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-20T20:16:11Z",
+  "unchanged_since": "2026-09-20T20:28:40Z",
   "undatable_pulls": []
 }
