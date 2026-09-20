@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 185,
-    "open_pull_requests": 175,
-    "runs_in_progress": 7,
-    "runs_queued": 72
+    "open_pull_requests": 174,
+    "runs_in_progress": 4,
+    "runs_queued": 70
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -66,17 +66,6 @@
     }
   ],
   "newest_pulls": [
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zz-sol-autumn-731/jev-16537-connector-projection-20260920",
-      "created_at": "2026-09-20T20:25:08Z",
-      "draft": false,
-      "head_sha": "30d0fef400746ed67ec1ca2b2a6b8706b1fd2348",
-      "number": 16547,
-      "title": "Jev radar: project installed-connector reads into event ledger",
-      "updated_at": "2026-09-20T20:28:29Z"
-    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -175,6 +164,17 @@
       "number": 16501,
       "title": "Command center: surface Actions queue pressure",
       "updated_at": "2026-09-20T01:47:14Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-solforge/ci-fail-fast-evidence-followup-20260919",
+      "created_at": "2026-09-19T22:47:14Z",
+      "draft": false,
+      "head_sha": "9e9bb0acfe870b0bcc0a41e777930f7448525928",
+      "number": 16498,
+      "title": "CI: bind hosted fail-fast scope into battery evidence",
+      "updated_at": "2026-09-20T01:30:30Z"
     }
   ],
   "open_heads": {
@@ -351,13 +351,23 @@
     "16520": "cf0fe076f4106e5a618b339648471c0da843cc67",
     "16539": "c5d29dd60315f1d275a98c968c4646826c83db69",
     "16540": "e9265ac0be62774cdddd9b4e003af4a231a9466f",
-    "16546": "5fa439a7b23d95bb97fb4d3f56463e931ca5b36a",
-    "16547": "30d0fef400746ed67ec1ca2b2a6b8706b1fd2348"
+    "16546": "5fa439a7b23d95bb97fb4d3f56463e931ca5b36a"
   },
-  "pulls_listed": 175,
+  "pulls_listed": 174,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 10.3,
+  "queue_depth_per_runner": 17.5,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zz-sol-autumn-731/jev-16537-connector-projection-20260920",
+      "closed_at": "2026-09-20T20:32:12Z",
+      "head_sha": "dae4ce711c7f21bdcf45fa4dbc9b3a80c9a09fb0",
+      "merged_at": "2026-09-20T20:32:12Z",
+      "number": 16547,
+      "state": "MERGED",
+      "title": "Jev radar: project installed-connector reads into event ledger"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -511,21 +521,10 @@
       "number": 16524,
       "state": "MERGED",
       "title": "board: bank-treasury-fee-leakage billing hold receipt"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "codex/resource-activate-cua-s1-form-choice-scorer-20260920-01",
-      "closed_at": "2026-09-20T04:16:22Z",
-      "head_sha": "2714508844cc8087d32269e7feb1c22cc94d8a32",
-      "merged_at": "2026-09-20T04:16:22Z",
-      "number": 16523,
-      "state": "MERGED",
-      "title": "Activate CUA-S1 form-choice scorer resource"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-20T20:28:40Z",
+  "unchanged_since": "2026-09-20T20:34:18Z",
   "undatable_pulls": []
 }
