@@ -16,6 +16,11 @@ on:
         required: false
         type: boolean
         default: false
+      jev_full_history:
+        description: Continue full-body JEV review from verified private history bundles
+        required: false
+        type: boolean
+        default: false
   repository_dispatch:
     types: [commons-board]
   issues:
@@ -452,6 +457,38 @@ jobs:
           GH_TOKEN_PRIMARY: ${{ secrets.COMMONS_GITHUB_TOKEN }}
           GH_TOKEN_SECONDARY: ${{ secrets.GH_TOKEN_SECONDARY }}
         run: python3 github_cloud.py
+
+  jev-full-history:
+    if: github.event_name == 'workflow_dispatch' && inputs.jev_full_history
+    permissions:
+      contents: read
+    concurrency:
+      group: commons-jev-full-history
+      cancel-in-progress: false
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout: |
+            host/history
+      - uses: actions/checkout@v4
+        with:
+          repository: woahwhattheheck/commons-ship-enforcer
+          token: ${{ secrets.COMMONS_GITHUB_TOKEN }}
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout: |
+            history-review/2026-09-20/private-bundles
+          path: private-history
+      - name: Review complete archived bodies and retain private receipts
+        env:
+          COMMONS_GITHUB_TOKEN: ${{ secrets.COMMONS_GITHUB_TOKEN }}
+          TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
+          PRIVATE_HISTORY_CHECKOUT: ${{ github.workspace }}/private-history
+        run: python3 host/history/jev_hosted.py
 
   jhipster-174-validation:
     if: github.event_name == 'workflow_dispatch' && inputs.jhipster_174_validation
