@@ -1,12 +1,10 @@
 # Free Commons shipping monitor candidate
 
-Publish `host/paid_shipping/{worker.mjs,rules.mjs,schema.sql,runner.mjs}` and
-`.github/workflows/commons-shipping-monitor.yml` to the **public**
-`woahwhattheheck/commons` repository. Keep tests in source if useful. The
-workflow uses a standard Ubuntu runner, Node 22, no package install, and no
-artifact or cache upload. Do not enable it until a manual `workflow_dispatch`
-actually starts and succeeds on this account; billing or account settings may
-block Actions even though GitHub's public-runner pricing is free.
+Publish `host/paid_shipping/{worker.mjs,rules.mjs,schema.sql,runner.mjs}` to the
+**public** `woahwhattheheck/commons` repository and invoke it from the retained
+scheduled workflow. The runner uses Node 22 with no package install, artifact,
+or cache upload. Confirm an actual hosted run on this account after updating
+the source; a pricing rule alone does not establish execution.
 
 Set repository Actions secrets `COMMONS_GITHUB_TOKEN` (the existing shared
 GitHub credential with private `commons-ship-enforcer` read/write and publisher
@@ -35,6 +33,20 @@ checks still verify our upstream PR before a notice. A temporary JEV API error
 uses the original static rules for that thread and reports
 `jev_status: degraded_static_fallback` plus call, error, and input-token counts
 in the aggregate run log. The required key is checked at runner start.
+
+The free Actions path reserves 145 seconds of each run for at most 120 thread
+pages. It alternates newly active/changed work with historical baseline pages
+at roughly 2:1 while both queues exist, and gives all spare pages to the queue
+that remains. The existing D1-sized loop is retained only for non-Actions
+compatibility. A separate recent-history cursor catches new messages while a
+48-hour history snapshot is still paginating. Slack 429 `Retry-After` is saved
+in the private journal; the runner waits only when the remaining run budget
+allows and otherwise defers that method to the next tick without advancing its
+cursor. These are per-run timing limits for the hosted job, not agent or
+publication admission limits. JEV runs only when the peer thread content has
+changed; baseline and unchanged scans remain quiet. Aggregate run logs include
+thread pages, recent-history message count, deadline, and rate-limit status
+without Slack content.
 
 Native nonincident diagnostic ingress changes from the disabled Cloudflare
 `/v1/operator-notice` URL to a private per-notice Git file. For a validated

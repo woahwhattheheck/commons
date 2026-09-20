@@ -149,13 +149,17 @@ export async function runMonitor(env = process.env) {
   const { sqlite, DB } = openState(stored.text);
   try {
     const imported = await importNotices(env, sqlite);
-    const result = await tick({ DB, SLACK_BOT_TOKEN: env.SLACK_BOT_TOKEN,
+    const result = await tick({ DB, FREE_ACTIONS: true, SLACK_BOT_TOKEN: env.SLACK_BOT_TOKEN,
       GITHUB_TOKEN: env.COMMONS_GITHUB_TOKEN, TYPESAFE_API_KEY: env.TYPESAFE_API_KEY });
     const next = serializeState(sqlite);
     if (next !== stored.text) await putPrivateFile(env, STATE_PATH, next, stored.sha);
     return { imported, channels: result.channels.map(c => ({ channel: c.channel,
-      messages: c.messages || 0, queued: c.queued || 0, error: c.error || null })),
+      messages: c.messages || 0, queued: c.queued || 0,
+      recent_messages: c.recent?.messages || 0, recent_queued: c.recent?.queued || 0,
+      error: c.error || null })),
       thread_pages: result.threads.pages || 0,
+      thread_rate_limited: Boolean(result.threads.rate_limited),
+      thread_deadline_reached: Boolean(result.threads.deadline_reached),
       thread_error: result.threads.error || null,
       incident_error: result.incidents.error || null,
       operator_error: result.operators?.error || null,
@@ -167,12 +171,19 @@ export async function runMonitor(env = process.env) {
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   runMonitor().then(result => {
-    if (result.channels.some(c => c.error) || result.thread_error || result.incident_error ||
-      result.operator_error || result.delivery_error)
+    const rateLimited = result.thread_rate_limited || result.channels.some(c => c.error === 'slack_rate_limited') ||
+      result.delivery_error === 'slack_rate_limited';
+    if (result.channels.some(c => c.error && c.error !== 'slack_rate_limited') || result.thread_error ||
+      result.incident_error || result.operator_error ||
+      result.delivery_error && result.delivery_error !== 'slack_rate_limited')
       throw new Error('tick_partial_failure');
     console.log(JSON.stringify({ channels: result.channels.length,
       messages: result.channels.reduce((n, c) => n + c.messages, 0),
+      recent_messages: result.channels.reduce((n, c) => n + c.recent_messages, 0),
       thread_pages: result.thread_pages, imported: result.imported, delivered: result.delivered,
+      thread_rate_limited: result.thread_rate_limited,
+      thread_deadline_reached: result.thread_deadline_reached,
+      rate_limited: rateLimited,
       jev_calls: result.jev.calls, jev_input_tokens: result.jev.input_tokens,
       jev_errors: result.jev.errors, jev_status: result.jev.status }));
   }).catch(error => {

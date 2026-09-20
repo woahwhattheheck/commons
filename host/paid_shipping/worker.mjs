@@ -1,11 +1,11 @@
 import { CHANNELS, COORDINATION_CHANNEL, OWNER_IDS, candidateThread, classifyThread, incidentNotice, incidentRefs, operatorNotice, refsIn } from './rules.mjs';
 
-export const VERSION = 'commons-slack-shipping-enforcer-2026-09-20.2';
+export const VERSION = 'commons-slack-shipping-enforcer-2026-09-20.3';
 const JEV_API = 'https://api.typesafe.ai/v1/systemone';
 const ACTIONS = Object.freeze({
   submit_own_patch: { code: 'jev_submit_own_patch', text: 'Carry the completed bounty fix into our eligible upstream PR, run sponsor-required checks, and link the live submission and payment route here.' },
   follow_existing_pr: { code: 'jev_follow_existing_pr', text: 'Follow our existing eligible upstream PR: complete sponsor-required checks or review fixes, then track the sponsor decision and payment route in this thread.' },
-  complete_claim_step: { code: 'jev_complete_claim_step', text: 'Complete the sponsor-mandated claim, assignment, or proposal step for our eligible payout, then continue the upstream submission.' },
+  complete_claim_step: { code: 'jev_complete_claim_step', text: 'Complete the sponsor-required claim, assignment, or proposal step for our eligible payout, then continue the upstream submission.' },
   repair_route: { code: 'jev_repair_route', text: 'Repair the shared authenticated upstream publication route, retry with the same operation ID, and confirm the provider receipt for our own payable submission.' },
   no_followup: null
 });
@@ -13,6 +13,9 @@ const LOOKBACK_SECONDS = 30 * 86400;
 const BASELINE_SECONDS = 48 * 3600;
 const THREAD_PAGES_PER_TICK = 4;
 const OUTBOX_ROWS_PER_TICK = 3;
+const FREE_THREAD_PAGES_PER_TICK = 120;
+const FREE_OUTBOX_ROWS_PER_TICK = 8;
+const FREE_TICK_BUDGET_MS = 145_000;
 const INCIDENT_ROWS_PER_TICK = 3;
 const OPERATOR_ROWS_PER_TICK = 2;
 const API = 'https://slack.com/api/';
@@ -49,11 +52,11 @@ async function decideThread(env, messages) {
       'User-Agent': 'Commons-Shipping-Enforcer/1.0'
     }, body: JSON.stringify({ model: 'jev-latest', state, questions: { next_action: {
       type: 'choice',
-      instructions: 'Choose the one next action for our own meaningful payable bounty work. Do not recommend unpaid third-party review, speculative microbounties, unrelated product updates, or duplicate work. A sponsor-mandated claim step is legitimate. Prefer no_followup if work is already properly upstream or the context is uncertain. Answer only from this thread.',
+      instructions: 'Choose the one next action for our own meaningful payable bounty work. Do not recommend unpaid third-party review, speculative microbounties, unrelated product updates, or duplicate work. A sponsor-required claim step is legitimate. Prefer no_followup if work is already properly upstream or the context is uncertain. Answer only from this thread.',
       criteria: {
         submit_own_patch: 'Completed work is only internal or in an owner fork and needs our own eligible upstream PR.',
         follow_existing_pr: 'Our upstream PR already exists and has a concrete sponsor-required check, review fix, or payment follow-through.',
-        complete_claim_step: 'Our eligible bounty still needs the sponsor-mandated claim, assignment, or proposal before substantial work.',
+        complete_claim_step: 'Our eligible bounty still needs the sponsor-required claim, assignment, or proposal before substantial work.',
         repair_route: 'A concrete authenticated upstream publishing error blocks our own payable submission.',
         no_followup: 'No internal shipping intervention is warranted or evidence is insufficient.'
       }
@@ -81,17 +84,39 @@ async function slack(env, method, input) {
   const read = method === 'conversations.history' || method === 'conversations.replies';
   const url = new URL(API + method);
   if (read) for (const [key, value] of Object.entries(input)) url.searchParams.set(key, String(value));
-  const response = await fetch(url, {
-    method: read ? 'GET' : 'POST',
-    headers: { 'Authorization': `Bearer ${env.SLACK_BOT_TOKEN}`,
-      ...(read ? {} : { 'Content-Type': 'application/json; charset=utf-8' }) },
-    ...(read ? {} : { body: JSON.stringify(input) })
-  });
-  if (response.status === 429) throw new Error(`slack_rate_limited:${response.headers.get('Retry-After') || ''}`);
-  if (!response.ok) throw new Error(`slack_http_${response.status}`);
-  const data = await response.json();
-  if (!data.ok) throw new Error(`slack_${data.error || 'unknown_error'}`);
-  return data;
+  const cooldowns = env.FREE_ACTIONS ? (env.SLACK_COOLDOWNS ||= new Map()) : null;
+  if (cooldowns && !cooldowns.has(method)) {
+    const saved = await state(env, `slack_retry:${method}`);
+    cooldowns.set(method, Number(saved?.value || 0));
+  }
+  for (let attempt = 0; attempt < 2; attempt++) {
+    const waitMs = Math.max(0, (cooldowns?.get(method) || 0) - Date.now());
+    if (waitMs) {
+      if (Date.now() + waitMs + 15_000 >= env.RUN_DEADLINE_MS) throw new Error('slack_rate_limited');
+      await new Promise(resolve => setTimeout(resolve, waitMs));
+    }
+    const response = await fetch(url, {
+      method: read ? 'GET' : 'POST',
+      headers: { 'Authorization': `Bearer ${env.SLACK_BOT_TOKEN}`,
+        ...(read ? {} : { 'Content-Type': 'application/json; charset=utf-8' }) },
+      ...(read ? {} : { body: JSON.stringify(input) })
+    });
+    if (response.status === 429) {
+      const seconds = Number(response.headers.get('Retry-After'));
+      const until = Date.now() + (Number.isFinite(seconds) && seconds > 0 ? Math.ceil(seconds * 1000) : 60_000);
+      if (cooldowns) {
+        cooldowns.set(method, until);
+        await setState(env, `slack_retry:${method}`, until);
+      }
+      if (!cooldowns || attempt === 1) throw new Error('slack_rate_limited');
+      continue;
+    }
+    if (!response.ok) throw new Error(`slack_http_${response.status}`);
+    const data = await response.json();
+    if (!data.ok) throw new Error(`slack_${data.error || 'unknown_error'}`);
+    return data;
+  }
+  throw new Error('slack_rate_limited');
 }
 
 const nextCursor = page => page.response_metadata?.next_cursor || '';
@@ -192,8 +217,22 @@ async function scanChannelPage(env, channel) {
     channel, oldest, latest: upper, limit: 100,
     ...(cursor?.page_cursor ? { cursor: cursor.page_cursor } : {})
   });
+  const queued = await insertHistoryRoots(env, channel, page.messages || [], baseline);
+  const next = nextCursor(page);
+  if (next && next === cursor?.page_cursor) throw new Error('slack_pagination_loop');
+  await run(env, `INSERT INTO slack_shipping_cursors
+    (channel,latest_ts,initialized,page_cursor,scan_upper_ts,updated_at)
+    VALUES (?,?,?,?,?,?) ON CONFLICT(channel) DO UPDATE SET
+    latest_ts=excluded.latest_ts,initialized=excluded.initialized,page_cursor=excluded.page_cursor,
+    scan_upper_ts=excluded.scan_upper_ts,updated_at=excluded.updated_at`,
+    channel, next ? oldest : upper, next ? Number(cursor?.initialized || 0) : 1,
+    next || null, next ? upper : null, now());
+  return { channel, messages: (page.messages || []).length, queued, baseline, more: Boolean(next), upper };
+}
+
+async function insertHistoryRoots(env, channel, messages, baseline) {
   const discovered = new Map();
-  for (const message of page.messages || []) {
+  for (const message of messages) {
     if (!candidateThread([message]) || message.metadata?.event_type === 'tjlabs_shipping_enforcer' ||
       String(message.text || '').includes('Ref: `ship-')) continue;
     const root = String(message.thread_ts || message.ts);
@@ -205,19 +244,61 @@ async function scanChannelPage(env, channel) {
     SELECT ?,json_extract(value,'$.root'),json_extract(value,'$.root'),
       json_extract(value,'$.refs'),'',?,0 FROM json_each(?)`,
     channel, baseline ? 1 : 0, JSON.stringify([...discovered.values()]));
+  return discovered.size;
+}
+
+async function scanRecentChannelPage(env, channel, baselineUpper) {
+  const key = `hot_history:${channel}`;
+  const saved = await state(env, key);
+  if (!saved) {
+    await setState(env, key, JSON.stringify({ latest_ts: baselineUpper }));
+    return { channel, messages: 0, queued: 0, initialized: true };
+  }
+  const cursor = JSON.parse(saved.value);
+  const upper = cursor.scan_upper_ts || `${now() - 5}.999999`;
+  const page = await slack(env, 'conversations.history', {
+    channel, oldest: cursor.latest_ts, latest: upper, limit: 100,
+    ...(cursor.page_cursor ? { cursor: cursor.page_cursor } : {})
+  });
+  const queued = await insertHistoryRoots(env, channel, page.messages || [], false);
   const next = nextCursor(page);
-  if (next && next === cursor?.page_cursor) throw new Error('slack_pagination_loop');
-  await run(env, `INSERT INTO slack_shipping_cursors
-    (channel,latest_ts,initialized,page_cursor,scan_upper_ts,updated_at)
-    VALUES (?,?,?,?,?,?) ON CONFLICT(channel) DO UPDATE SET
-    latest_ts=excluded.latest_ts,initialized=excluded.initialized,page_cursor=excluded.page_cursor,
-    scan_upper_ts=excluded.scan_upper_ts,updated_at=excluded.updated_at`,
-    channel, next ? oldest : upper, next ? Number(cursor?.initialized || 0) : 1,
-    next || null, next ? upper : null, now());
-  return { channel, messages: (page.messages || []).length, queued: discovered.size, baseline, more: Boolean(next) };
+  if (next && next === cursor.page_cursor) throw new Error('slack_pagination_loop');
+  await setState(env, key, JSON.stringify({ latest_ts: next ? cursor.latest_ts : upper,
+    page_cursor: next || null, scan_upper_ts: next ? upper : null }));
+  return { channel, messages: (page.messages || []).length, queued, more: Boolean(next) };
 }
 
 async function scanTrackedThreadPages(env) {
+  if (env.FREE_ACTIONS) {
+    const hot = await all(env, `SELECT * FROM slack_shipping_threads WHERE active=1 AND baseline=0
+      AND CAST(latest_ts AS REAL)>=? ORDER BY CASE WHEN signature='' THEN 0 ELSE 1 END,
+      updated_at ASC LIMIT 500`, now() - LOOKBACK_SECONDS);
+    const cold = await all(env, `SELECT * FROM slack_shipping_threads WHERE active=1 AND baseline=1
+      AND CAST(latest_ts AS REAL)>=? ORDER BY updated_at ASC LIMIT 500`, now() - LOOKBACK_SECONDS);
+    let pages = 0, completed = 0, hotStreak = 0, rateLimited = false;
+    while ((hot.length || cold.length) && pages < FREE_THREAD_PAGES_PER_TICK &&
+      Date.now() + 5_000 < env.RUN_DEADLINE_MS) {
+      const chooseHot = hot.length && (hotStreak < 2 || !cold.length);
+      const queue = chooseHot ? hot : cold;
+      const row = queue.shift();
+      try {
+        const result = await scanThreadPage(env, row);
+        pages++;
+        if (result.complete) completed++;
+        else {
+          const updated = await one(env, 'SELECT * FROM slack_shipping_threads WHERE channel=? AND root_ts=?',
+            row.channel, row.root_ts);
+          if (updated) queue.push(updated);
+        }
+        hotStreak = chooseHot ? hotStreak + 1 : 0;
+      } catch (error) {
+        if (String(error.message || error).startsWith('slack_rate_limited')) { rateLimited = true; break; }
+        throw error;
+      }
+    }
+    return { pages, completed, rate_limited: rateLimited,
+      backlog: hot.length + cold.length, deadline_reached: Date.now() + 5_000 >= env.RUN_DEADLINE_MS };
+  }
   const hot = await all(env, `SELECT * FROM slack_shipping_threads WHERE active=1 AND baseline=0
     AND CAST(latest_ts AS REAL)>=? ORDER BY CASE WHEN signature='' THEN 0 ELSE 1 END,
     updated_at ASC LIMIT 4`, now() - LOOKBACK_SECONDS);
@@ -306,7 +387,7 @@ async function readbackPage(env, row) {
 async function deliver(env) {
   const rows = await all(env, `SELECT * FROM slack_shipping_outbox
     WHERE state IN ('pending','sending') OR (state='uncertain' AND readback_complete=0)
-    ORDER BY created_at LIMIT ?`, OUTBOX_ROWS_PER_TICK);
+    ORDER BY created_at LIMIT ?`, env.FREE_ACTIONS ? FREE_OUTBOX_ROWS_PER_TICK : OUTBOX_ROWS_PER_TICK);
   let accepted = 0;
   for (const row of rows) {
     const readback = await readbackPage(env, row);
@@ -351,11 +432,22 @@ async function deliver(env) {
 }
 
 export async function tick(env) {
+  if (env.FREE_ACTIONS) env.RUN_DEADLINE_MS = Date.now() + FREE_TICK_BUDGET_MS;
   env.JEV_CACHE = new Map();
   env.JEV_METRICS = { calls: 0, input_tokens: 0, errors: 0 };
   const channels = [];
   for (const channel of CHANNELS) {
-    try { channels.push(await scanChannelPage(env, channel)); }
+    try {
+      let recent = null;
+      if (env.FREE_ACTIONS) {
+        const cursor = await one(env, 'SELECT page_cursor,scan_upper_ts FROM slack_shipping_cursors WHERE channel=?', channel);
+        if (cursor?.page_cursor) recent = await scanRecentChannelPage(env, channel, cursor.scan_upper_ts);
+      }
+      const history = await scanChannelPage(env, channel);
+      if (env.FREE_ACTIONS && history.more && !recent)
+        recent = await scanRecentChannelPage(env, channel, history.upper);
+      channels.push({ ...history, ...(recent ? { recent } : {}) });
+    }
     catch (error) { channels.push({ channel, error: String(error.message || error) }); }
   }
   let threads, incidents, operators, delivered;

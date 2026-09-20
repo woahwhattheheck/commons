@@ -30,6 +30,7 @@ function fixture() {
   const posts = [];
   const requests = [];
   let failPostAfterInsert = false;
+  let rateLimitMethod = null;
   let forkUpstream = [];
   let historyPageSize = 1;
   globalThis.fetch = async (url, options = {}) => {
@@ -48,6 +49,10 @@ function fixture() {
       return Response.json({}, { status: 404 });
     }
     const method = new URL(String(url)).pathname.split('/').at(-1);
+    if (method === rateLimitMethod) {
+      rateLimitMethod = null;
+      return new Response(null, { status: 429, headers: { 'Retry-After': '600' } });
+    }
     const body = options.body ? JSON.parse(options.body) : Object.fromEntries(new URL(String(url)).searchParams);
     if (method === 'chat.postMessage') {
       const ts = String(Number(baseTs) + 1000 + posts.length) + '.000001';
@@ -86,6 +91,7 @@ function fixture() {
       return message;
     },
     setPostConnectionLoss() { failPostAfterInsert = true; },
+    setRateLimitOnce(method) { rateLimitMethod = method; },
     setForkUpstream(value) { forkUpstream = value; }
   };
 }
@@ -319,4 +325,64 @@ test('new active work gets priority while a baseline slot advances each minute',
   assert.ok(result.threads.pages >= 2 && result.threads.pages <= 4);
   assert.equal(f.sqlite.prepare('SELECT baseline FROM slack_shipping_threads WHERE channel=? AND root_ts=?').get(channels[1], hotTs).baseline, 0);
   assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM slack_shipping_threads WHERE baseline=1').get().n, 5);
+});
+
+test('free runner clears a large baseline slice and discovers new work during paginated history', async () => {
+  const f = fixture();
+  f.env.FREE_ACTIONS = true;
+  f.setHistoryPageSize(100);
+  for (let i = 1; i <= 258; i++)
+    f.add(channels[0], `${baseTs}.${String(i).padStart(6, '0')}`, `Bounty issue context ${i}.`);
+  const first = await tick(f.env);
+  assert.equal(first.channels[0].queued, 100);
+  assert.equal(first.threads.pages, 100);
+  assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM slack_shipping_threads WHERE baseline=1').get().n, 0);
+  assert.equal(f.posts.length, 0);
+  f.advance(10);
+  const newRoot = `${Number(baseTs) + 120}.000001`;
+  f.add(channels[0], newRoot, 'Bounty fix done in internal packet.');
+  const second = await tick(f.env);
+  assert.equal(second.channels[0].recent.queued, 1);
+  assert.equal(second.threads.pages, 120);
+  const hot = f.sqlite.prepare('SELECT baseline,signature FROM slack_shipping_threads WHERE channel=? AND root_ts=?')
+    .get(channels[0], newRoot);
+  assert.equal(hot.baseline, 0);
+  assert.notEqual(hot.signature, '');
+  assert.equal(f.posts.length, 1);
+});
+
+test('free runner persists Slack Retry-After and defers without consuming the thread cursor', async () => {
+  const f = fixture();
+  f.env.FREE_ACTIONS = true;
+  f.add(channels[0], `${baseTs}.000001`, 'Bounty issue context.');
+  f.setRateLimitOnce('conversations.replies');
+  const first = await tick(f.env);
+  assert.equal(first.threads.rate_limited, true);
+  assert.equal(first.threads.pages, 0);
+  const retry = f.sqlite.prepare('SELECT value FROM slack_shipping_state WHERE key=?')
+    .get('slack_retry:conversations.replies');
+  assert.ok(Number(retry.value) > Date.now());
+  assert.equal(f.sqlite.prepare('SELECT signature FROM slack_shipping_threads').get().signature, '');
+  const calls = f.requests.filter(u => new URL(u).pathname.endsWith('/conversations.replies')).length;
+  await tick({ ...f.env, SLACK_COOLDOWNS: undefined });
+  assert.equal(f.requests.filter(u => new URL(u).pathname.endsWith('/conversations.replies')).length, calls);
+});
+
+test('free runner stops thread scanning at elapsed-time budget and retains backlog', async () => {
+  const f = fixture();
+  f.env.FREE_ACTIONS = true;
+  f.setHistoryPageSize(100);
+  for (let i = 1; i <= 100; i++)
+    f.add(channels[0], `${baseTs}.${String(i).padStart(6, '0')}`, `Bounty issue context ${i}.`);
+  const fetchBefore = globalThis.fetch;
+  globalThis.fetch = async (url, options) => {
+    if (new URL(String(url)).pathname.endsWith('/conversations.replies')) f.advance(10);
+    return fetchBefore(url, options);
+  };
+  let result;
+  try { result = await tick(f.env); }
+  finally { globalThis.fetch = fetchBefore; }
+  assert.ok(result.threads.pages > 0 && result.threads.pages < 100);
+  assert.equal(result.threads.deadline_reached, true);
+  assert.ok(f.sqlite.prepare('SELECT COUNT(*) AS n FROM slack_shipping_threads WHERE baseline=1').get().n > 0);
 });
