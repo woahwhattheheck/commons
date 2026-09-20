@@ -26,6 +26,7 @@ on:
       - "api/jev.py"
       - "api/cua_s1.py"
       - "api/cua_s1_form.mjs"
+      - "api/cua_s1_fixture.mjs"
       - "api/test_cua_s1_form.mjs"
       - "host/jev.py"
       - "host/cua_s1_cloud/**"
@@ -337,9 +338,20 @@ jobs:
           assert scored.get("selected_index") in (0, 1) and scored.get("executed") is False, scored
           browser = request("/cua-s1/form")
           assert browser.get("ok") and browser.get("browser_runtime") == "vercel-chromium", browser
-          preview = request("/cua-s1/form", {"url": "https://example.com/", "form_title": "Cloud browser smoke", "entities": []})
-          assert preview.get("ok") and preview.get("executed") is False and preview.get("elements_scored") == 0, preview
+          form = {"url": base + "/cua-s1/fixture", "form_title": "Contact",
+                  "entities": [{"label": "Name", "value": "Ada"}], "submit": False}
+          preview = request("/cua-s1/form", form)
+          assert preview.get("ok") and preview.get("executed") is False, preview
+          assert preview.get("elements_scored") == 1, preview
+          assert any(action.get("action") == "fill" and action.get("label") == "Name"
+                     for action in preview.get("planned_actions", [])), preview
+          executed = request("/cua-s1/form", {**form, "execute": True})
+          assert executed.get("ok") and executed.get("executed") is True, executed
+          assert executed.get("submit_requested") is False and executed.get("submission_verified") is False, executed
+          assert len(executed.get("execution_order", [])) == 1, executed
+          assert executed["execution_order"][0].get("action") == "fill", executed
+          assert executed["execution_order"][0].get("verified_value") is True, executed
           print("LIVE_JEV_PROVIDER")
           print("LIVE_CUA_MODEL", cua["artifact_sha256"])
-          print("LIVE_CUA_BROWSER_PREVIEW")
+          print("LIVE_CUA_BROWSER_PREVIEW_AND_VERIFIED_FILL")
           PY

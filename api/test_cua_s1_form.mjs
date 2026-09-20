@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { browserNetworkRules, handleRequest, runForm, scoreOptions, validateRequest, validateUrl } from './cua_s1_form.mjs';
+import fixtureHandler from './cua_s1_fixture.mjs';
 
 const input = { url: 'https://example.com/form', form_title: 'Contact',
   entities: [{ label: 'Name', value: 'Ada' }] };
@@ -114,4 +115,17 @@ test('HTTP handler returns typed failure for private URL', async () => {
     text: async () => JSON.stringify({ ...input, url: 'http://127.0.0.1/' }) }, fixture());
   assert.equal(result.status, 400);
   assert.equal(result.body.error.code, 'PRIVATE_URL');
+});
+
+test('hosted fixture has one labeled field and no submission control', () => {
+  const headers = {};
+  const response = { setHeader: (key, value) => { headers[key] = value; },
+    status(code) { this.statusCode = code; return this; },
+    send(body) { this.body = body; return this; } };
+  fixtureHandler({ method: 'GET' }, response);
+  assert.equal(response.statusCode, 200);
+  assert.match(headers['content-type'], /text\/html/);
+  assert.match(response.body, /<label for="cua-name">Name<\/label>/);
+  assert.match(response.body, /<input id="cua-name"/);
+  assert.doesNotMatch(response.body, /<button|type="submit"/);
 });

@@ -89,6 +89,10 @@
     {
       "source": "/cua-s1/form/",
       "destination": "/api/cua_s1_form"
+    },
+    {
+      "source": "/cua-s1/fixture",
+      "destination": "/api/cua_s1_fixture"
     }
   ]
 }

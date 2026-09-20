@@ -21,6 +21,7 @@ RUNTIME_FILES = (
     "api/jev.py",
     "api/cua_s1.py",
     "api/cua_s1_form.mjs",
+    "api/cua_s1_fixture.mjs",
     "commons_mcp.py",
     "commons_publication_policy.py",
     "commons_mcp_app.html",
