@@ -71,6 +71,45 @@ class BatteryReportTests(unittest.TestCase):
         self.assertEqual(data["workflow_ref"], "owner/repo/.github/workflows/tests.yml@refs/heads/main")
         self.assertEqual(data["results"][0]["source_blob_sha"], self.git("rev-parse", self.sha + ":test_alpha.py"))
 
+    def test_timing_records_are_bound_to_tests_and_slowest_summary_is_bounded(self):
+        records = []
+        for index in range(12):
+            path = "test_timing_%02d.py" % index
+            duration = 9 if index in (0, 1) else index
+            records.extend([
+                ("python3", path, 0),
+                ("timing_ms", path, duration),
+            ])
+        data = self.build(self.raw(*records))
+        self.assertEqual(data["conclusion"], "PASSED")
+        self.assertEqual(data["timing"]["clock"], "monotonic")
+        self.assertEqual(data["timing"]["unit"], "ms")
+        self.assertEqual(data["timing"]["measured_files"], 12)
+        self.assertEqual(data["timing"]["slowest_limit"], 10)
+        self.assertEqual(len(data["timing"]["slowest"]), 10)
+        durations = [row["duration_ms"] for row in data["timing"]["slowest"]]
+        self.assertEqual(durations, sorted(durations, reverse=True))
+        tied_nine = [row["path"] for row in data["timing"]["slowest"] if row["duration_ms"] == 9]
+        self.assertEqual(tied_nine, sorted(tied_nine, key=os.fsencode))
+        self.assertTrue(all(isinstance(row["duration_ms"], int) for row in data["results"]))
+
+    def test_orphan_duplicate_and_malformed_timing_are_incomplete(self):
+        cases = [
+            self.raw(("timing_ms", "test_alpha.py", 3)),
+            self.raw(("python3", "test_alpha.py", 0),
+                     ("timing_ms", "test_alpha.py", 3),
+                     ("timing_ms", "test_alpha.py", 4)),
+            self.raw(("python3", "test_alpha.py", 0),
+                     ("timing_ms", "test_alpha.py", "nan")),
+            self.raw(("python3", "test_alpha.py", 0),
+                     ("timing_ms", "other.py", 3)),
+        ]
+        for raw in cases:
+            with self.subTest(raw=raw):
+                data = self.build(raw)
+                self.assertEqual(data["conclusion"], "INCOMPLETE")
+                self.assertFalse(data["complete"])
+
     def test_moving_head_does_not_change_source_attribution(self):
         raw = self.raw(("python3", "test_alpha.py", 0))
         old_sha = self.sha
