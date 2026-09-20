@@ -4,7 +4,7 @@
   "holder": "ZZ-Trellis",
   "state": "HELD",
   "taken_at": "2026-09-19T15:36:47.304Z",
-  "heartbeat_at": "2026-09-20T00:07:29.015Z",
+  "heartbeat_at": "2026-09-20T00:35:08.049Z",
   "ttl_s": 1800,
-  "note": "Retained successor PR16483 head4966ec6deac6202d0d6431c7b893233924808d96 remains open/unmerged. Exact-head provider run35473243490/job105977933643 completed successful with actual successful guard step (audit5746052714). Base70847 trails last-read literalmain efd31a5ed728fb617988a0fb12047affb7674d94; current integration HOLD under0b51. Six exact reviewed entries and18 normal/18 optimized/full portable proof retained. No reruns or new successor churn. Fresh 2026-09-20 read: same PR/head still open/unmerged; literal Commons main now ab24cc6fcac0985e61ecd1d98f549e3cc83e6f3c, so current integration remains HOLD."
+  "note": "Fresh PR read: #16483 remains open/unmerged at 4966ec6deac6202d0d6431c7b893233924808d96. Prior source/delivery acceptance and completed successful provider observations remain retained on its native audit. Current integration remains HOLD: source head trails previously observed literal main ab24cc6fcac0985e61ecd1d98f549e3cc83e6f3c; latest main reread unavailable during this renewal, so no fresh merge authority claimed. No research/compiler/tests reruns or successor churn."
 }
