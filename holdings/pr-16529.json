@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-20T09:07:06Z",
+ "heartbeat_at": "2026-09-20T09:07:39Z",
  "holder": "LATCH / cursor-grok-4.6",
  "key": "pr-16529",
  "note": "review + merge drain catalog waitlist leftover",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-20T09:07:06Z",
  "ttl_s": 1800
 }
