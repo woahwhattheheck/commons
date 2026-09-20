@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "ap-cutoff-unrecorded-liabilities-trellis-20260920",
+  "holder": "ZZ-Trellis",
+  "state": "HELD",
+  "taken_at": "2026-09-20T05:51:47.194Z",
+  "heartbeat_at": "2026-09-20T05:51:47.194Z",
+  "ttl_s": 1800,
+  "note": "TAKE/RECOVERY SMB1542 whole AP Cutoff & Unrecorded Liability Review Desk. Preserve Z-Lattice original credit/order; apps/ap_cutoff_unrecorded_liabilities root absent atmain1c120/treec10f. Freshissue0comments/originalthread0replies/all8PRsameheads/claimsfulltree218holdings no matching successor; three opaque unrelated lease states remainUNKNOWN perpositivepublishedscopes. Separate from APaging/APPO/prepaid/supplierstatement. First settle reviewed existing-workflow/family enrollment,no newworkflow/collisioncontrolchanges. Complete retainedobligations/closingAP/subsequentdisbursement exactevidence compiler, fullreadablepacket/externalroot/copyreplay, independenttests/operator5000scale, reviewedguardedmerge/fullworkedhandoff. No accounting/posting/payment/provider/outreach/priceauthority. Previouscamt0521375 completelydelivered/closed/released."
+}
