@@ -5,7 +5,7 @@ const JEV_API = 'https://api.typesafe.ai/v1/systemone';
 const ACTIONS = Object.freeze({
   submit_own_patch: { code: 'jev_submit_own_patch', text: 'Carry the completed bounty fix into our eligible upstream PR, run sponsor-required checks, and link the live submission and payment route here.' },
   follow_existing_pr: { code: 'jev_follow_existing_pr', text: 'Follow our existing eligible upstream PR: complete sponsor-required checks or review fixes, then track the sponsor decision and payment route in this thread.' },
-  complete_claim_step: { code: 'jev_complete_claim_step', text: 'Complete the sponsor-required claim, assignment, or proposal step for our eligible payout, then continue the upstream submission.' },
+  complete_claim_step: { code: 'jev_complete_claim_step', text: 'Complete the sponsor-mandated claim, assignment, or proposal step for our eligible payout, then continue the upstream submission.' },
   repair_route: { code: 'jev_repair_route', text: 'Repair the shared authenticated upstream publication route, retry with the same operation ID, and confirm the provider receipt for our own payable submission.' },
   no_followup: null
 });
@@ -49,11 +49,11 @@ async function decideThread(env, messages) {
       'User-Agent': 'Commons-Shipping-Enforcer/1.0'
     }, body: JSON.stringify({ model: 'jev-latest', state, questions: { next_action: {
       type: 'choice',
-      instructions: 'Choose the one next action for our own meaningful payable bounty work. Do not recommend unpaid third-party review, speculative microbounties, unrelated product updates, or duplicate work. A sponsor-required claim step is legitimate. Prefer no_followup if work is already properly upstream or the context is uncertain. Answer only from this thread.',
+      instructions: 'Choose the one next action for our own meaningful payable bounty work. Do not recommend unpaid third-party review, speculative microbounties, unrelated product updates, or duplicate work. A sponsor-mandated claim step is legitimate. Prefer no_followup if work is already properly upstream or the context is uncertain. Answer only from this thread.',
       criteria: {
         submit_own_patch: 'Completed work is only internal or in an owner fork and needs our own eligible upstream PR.',
         follow_existing_pr: 'Our upstream PR already exists and has a concrete sponsor-required check, review fix, or payment follow-through.',
-        complete_claim_step: 'Our eligible bounty still needs the sponsor-required claim, assignment, or proposal before substantial work.',
+        complete_claim_step: 'Our eligible bounty still needs the sponsor-mandated claim, assignment, or proposal before substantial work.',
         repair_route: 'A concrete authenticated upstream publishing error blocks our own payable submission.',
         no_followup: 'No internal shipping intervention is warranted or evidence is insufficient.'
       }
