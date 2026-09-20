@@ -50,19 +50,43 @@ def patch_bytes(main_source: bytes) -> bytes:
     return candidate.encode("utf-8")
 
 
-def materialize(tree: Path, output: Path) -> dict:
+def _new_output_path(tree: Path, requested: Path) -> Path:
+    # Resolve directory aliases, but never dereference an output leaf: even a
+    # dangling symlink must be refused rather than followed into a new file.
+    target = requested.absolute()
+    target = target.parent.resolve() / target.name
+    if target == tree or tree in target.parents:
+        raise ValueError("outputs must be outside the canonical source tree")
+    try:
+        target.lstat()
+    except FileNotFoundError:
+        pass
+    else:
+        raise FileExistsError(f"refusing to replace an existing output: {target}")
+    return target
+
+
+def _write_new_bytes(target: Path, data: bytes) -> None:
+    target.parent.mkdir(parents=True, exist_ok=True)
+    # 'x' reserves a fresh inode atomically. A file/link that appears after
+    # preflight cannot be truncated, including a hardlink to either input.
+    with target.open("xb") as stream:
+        stream.write(data)
+    if target.read_bytes() != data:
+        raise OSError(f"output readback mismatch: {target}")
+
+
+def materialize(tree: Path, output: Path, *, receipt_path: Path | None = None) -> dict:
     tree = tree.resolve()
     main_source, spatial_source = validate_sources(tree)
     candidate = patch_bytes(main_source)
-    source_path = (tree / TARGET).resolve()
-    target = output.resolve()
-    if target == source_path:
-        raise ValueError("in-place canonical mutation is not supported by this carrier")
-    target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_bytes(candidate)
-    if target.read_bytes() != candidate:
-        raise OSError("candidate readback mismatch")
-    return {
+    target = _new_output_path(tree, output)
+    receipt_target = (
+        _new_output_path(tree, receipt_path) if receipt_path is not None else None
+    )
+    if target == receipt_target:
+        raise ValueError("candidate and receipt must use distinct new paths")
+    receipt = {
         "operation": OPERATION,
         "target": TARGET.as_posix(),
         "guard_source": SPATIAL_TARGET.as_posix(),
@@ -74,6 +98,14 @@ def materialize(tree: Path, output: Path) -> dict:
         "changed": main_source != candidate,
         "composition_authority": "none; current-ABI carrier only",
     }
+    _write_new_bytes(target, candidate)
+    # Re-authenticate both inputs before emitting a success receipt. This is
+    # source/nonmutation custody, not authorization to install the candidate.
+    validate_sources(tree)
+    if receipt_target is not None:
+        payload = json.dumps(receipt, indent=2, sort_keys=True) + "\n"
+        _write_new_bytes(receipt_target, payload.encode("utf-8"))
+    return receipt
 
 
 def main() -> int:
@@ -82,10 +114,8 @@ def main() -> int:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--receipt", type=Path)
     args = parser.parse_args()
-    receipt = materialize(args.tree, args.output)
+    receipt = materialize(args.tree, args.output, receipt_path=args.receipt)
     payload = json.dumps(receipt, indent=2, sort_keys=True) + "\n"
-    if args.receipt is not None:
-        args.receipt.write_text(payload, encoding="utf-8")
     print(payload, end="")
     return 0
 
