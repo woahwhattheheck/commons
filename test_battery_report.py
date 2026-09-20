@@ -157,7 +157,7 @@ class BatteryReportTests(unittest.TestCase):
         self.assertNotIn("private-test-value", text + note.read_text(encoding="utf-8") + process.stdout + process.stderr)
 
     @unittest.skipUnless(shutil.which("bash") and shutil.which("node"), "workflow requires Bash and Node")
-    def test_real_workflow_loop_records_exits_and_continues_after_failures(self):
+    def test_real_workflow_fail_fast_records_first_failure_and_stops(self):
         (self.root / "test_omega.py").write_text("print('after earlier failure')\n", encoding="utf-8")
         (self.root / "test_node_pass.js").write_text("process.exit(0);\n", encoding="utf-8")
         (self.root / "test_node_fail.js").write_text("process.exit(4);\n", encoding="utf-8")
@@ -169,16 +169,19 @@ class BatteryReportTests(unittest.TestCase):
         process = subprocess.run(["bash", "--noprofile", "--norc", "-eo", "pipefail", "-c", battery_script()],
                                  cwd=self.root, env=env, capture_output=True, text=True, timeout=30)
         self.assertEqual(process.returncode, 1)
+        self.assertIn("fail-fast: stopping after first failed test", process.stdout)
         path = runner_temp / "commons-battery-results.nul"
         self.assertTrue(path.is_file(), "workflow emitted no structured result stream")
         data = self.build(path.read_bytes(), "failure")
         self.assertTrue(data["complete"])
         self.assertEqual(data["conclusion"], "FAILED")
-        self.assertEqual(data["counts"], {"completed_files": 5, "passed_files": 3, "failed_files": 2, "unresolved_source_files": 0})
+        self.assertEqual(data["counts"], {"completed_files": 1, "passed_files": 0, "failed_files": 1, "unresolved_source_files": 0})
         codes = {row["path"]: row["exit_code"] for row in data["results"]}
-        self.assertEqual(codes["infra/test_beta.py"], 7)
-        self.assertEqual(codes["test_node_fail.js"], 4)
-        self.assertEqual(codes["test_omega.py"], 0)
+        self.assertEqual(codes, {"infra/test_beta.py": 7})
+        self.assertNotIn("test_alpha.py", codes)
+        self.assertNotIn("test_omega.py", codes)
+        self.assertNotIn("test_node_pass.js", codes)
+        self.assertNotIn("test_node_fail.js", codes)
 
     @unittest.skipUnless(shutil.which("bash") and shutil.which("node"), "workflow requires Bash and Node")
     def test_real_workflow_success_and_empty_discovery(self):
@@ -210,6 +213,7 @@ class BatteryReportTests(unittest.TestCase):
         text = (ROOT / ".github/workflows/tests.yml").read_text(encoding="utf-8")
         self.assertIn("id: battery", text)
         self.assertIn("id: checkout", text)
+        self.assertIn("python3 host/ci_battery.py --fail-fast", text)
         self.assertIn("--outcome \"${{ steps.battery.outcome }}\"", text)
         self.assertEqual(text.count("if: ${{ always() && steps.checkout.outcome == 'success' }}"), 2)
         self.assertIn("uses: actions/upload-artifact@v4", text)
